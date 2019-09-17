@@ -1,0 +1,44 @@
+{
+  "name": "esa-climate-from-space",
+  "version": "1.0.0",
+  "description": "Climate from Space application for ESAs CCI+ program.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && webpack -p",
+    "clean": "rm -rf ./dist",
+    "start": "webpack-dev-server",
+    "format": "prettier 'src/scripts/**/*.{ts,tsx}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ubilabs/esa-climate-from-space.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ubilabs/esa-climate-from-space/issues"
+  },
+  "homepage": "https://github.com/ubilabs/esa-climate-from-space#readme",
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "prettier": "^1.18.2",
+    "style-loader": "^1.0.0",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "terser-webpack-plugin": "^2.1.0",
+    "ts-loader": "^6.1.0",
+    "typescript": "^3.6.3",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1"
+  }
+}
