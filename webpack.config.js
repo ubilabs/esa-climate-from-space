@@ -8,9 +8,12 @@ module.exports = (env, {mode} = {}) => {
   const isProduction = mode === 'production';
   return {
     entry: './src/scripts/index.tsx',
-    devtool: 'inline-source-map',
+    devtool: isProduction ? undefined : 'inline-source-map',
     optimization: {
-      minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
+      minimizer: [
+        new TerserJSPlugin({extractComments: false}),
+        new OptimizeCSSAssetsPlugin({})
+      ]
     },
     module: {
       rules: [
