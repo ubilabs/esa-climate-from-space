@@ -1,4 +1,7 @@
 const path = require('path');
+const webpack = require('webpack');
+const gitState = require('git-state');
+const packageJson = require('./package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
@@ -6,6 +9,9 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = (env, {mode} = {}) => {
   const isProduction = mode === 'production';
+  const gitHash =
+    (gitState.isGitSync(__dirname) && gitState.commitSync(__dirname)) || '-';
+
   return {
     entry: './src/scripts/index.tsx',
     devtool: isProduction ? undefined : 'inline-source-map',
@@ -33,7 +39,7 @@ module.exports = (env, {mode} = {}) => {
             {
               loader: 'css-loader',
               options: {
-                modules: false
+                modules: true
               }
             },
             {loader: 'stylus-loader'}
@@ -59,6 +65,11 @@ module.exports = (env, {mode} = {}) => {
       }),
       new MiniCssExtractPlugin({
         filename: 'styles.[hash].css'
+      }),
+      new webpack.DefinePlugin({
+        INFO_BUILD_TIME: JSON.stringify(new Date().toISOString()),
+        INFO_GIT_HASH: JSON.stringify(gitHash),
+        INFO_VERSION: JSON.stringify(packageJson.version)
       })
     ]
   };
