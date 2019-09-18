@@ -14,7 +14,7 @@ module.exports = (env, {mode} = {}) => {
 
   return {
     entry: './src/scripts/index.tsx',
-    devtool: isProduction ? undefined : 'inline-source-map',
+    devtool: isProduction ? undefined : 'inline-source-map', // eslint-disable-line no-undefined
     optimization: {
       minimizer: [
         new TerserJSPlugin({extractComments: false}),
