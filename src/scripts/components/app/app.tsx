@@ -1,7 +1,8 @@
 import React, {FunctionComponent} from 'react';
+import styles from './app.styl';
 
 const App: FunctionComponent<{}> = () => {
-  return <h1>Hello</h1>;
+  return <h1 className={styles.app}>Hello</h1>;
 };
 
 export default App;
