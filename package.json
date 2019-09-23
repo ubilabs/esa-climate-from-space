@@ -21,12 +21,17 @@
   },
   "homepage": "https://github.com/ubilabs/esa-climate-from-space#readme",
   "dependencies": {
+    "@types/redux-logger": "^3.0.7",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.2",
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
     "css-loader": "^3.2.0",
