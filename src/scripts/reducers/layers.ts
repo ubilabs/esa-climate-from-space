@@ -1,7 +1,7 @@
-import {ADD_LAYERS} from '../actions/layers';
+import {FETCH_LAYERS_SUCCESS, Layer} from '../actions/fetch-layers';
 import {Action, State} from './index';
 
-export type LayersState = number[];
+export type LayersState = Layer[];
 const initialState: LayersState = [];
 
 function layersReducer(
@@ -9,8 +9,8 @@ function layersReducer(
   action: Action
 ): LayersState {
   switch (action.type) {
-    case ADD_LAYERS:
-      return layersState.concat(action.layers);
+    case FETCH_LAYERS_SUCCESS:
+      return action.layers;
     default:
       return layersState;
   }
