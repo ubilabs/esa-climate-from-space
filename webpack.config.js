@@ -22,11 +22,20 @@ module.exports = (env, {mode} = {}) => {
       ]
     },
     module: {
+      unknownContextCritical: false,
       rules: [
         {
           test: /\.tsx?$/,
           use: 'ts-loader',
           exclude: /node_modules/
+        },
+        {
+          test: /\.(png|gif|jpg|jpeg)$/,
+          loader: 'file-loader'
+        },
+        {
+          test: /\.css$/,
+          use: [{loader: 'style-loader'}, {loader: 'css-loader'}]
         },
         {
           test: /\.styl$/,
@@ -53,7 +62,8 @@ module.exports = (env, {mode} = {}) => {
     output: {
       filename: 'bundle.[hash].js',
       path: path.resolve(__dirname, 'dist'),
-      hashDigestLength: 8
+      hashDigestLength: 8,
+      sourcePrefix: ''
     },
     devServer: {
       contentBase: path.join(__dirname, 'dist'),

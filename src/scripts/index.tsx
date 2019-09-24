@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import 'cesium/Source/Widgets/widgets.css';
+import BuildModuleUrl from 'cesium/Source/Core/buildModuleUrl';
+import Viewer from 'cesium/Source/Widgets/Viewer/Viewer';
+
 import App from './components/app/app';
 
 ReactDOM.render(<App />, document.getElementById('app'));
@@ -15,3 +19,6 @@ window.__buildInfo = {
   // @ts-ignore
   version: INFO_VERSION
 };
+
+BuildModuleUrl.setBaseUrl('./');
+const viewer = new Viewer('cesium');
