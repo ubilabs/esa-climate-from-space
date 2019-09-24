@@ -1,0 +1,21 @@
+[
+  {
+    "id": "layer1",
+    "name": "Layer 1",
+    "description": "This is the first layer",
+    "metadataUrl": "https://..."
+  },
+  {
+    "id": "layer1a",
+    "name": "Layer 1a",
+    "description": "This is the first sublayer",
+    "metadataUrl": "https://...",
+    "parentId": "layer1"
+  },
+  {
+    "id": "layer2",
+    "name": "Layer 2",
+    "description": "This is the second layer",
+    "metadataUrl": "https://..."
+  }
+]

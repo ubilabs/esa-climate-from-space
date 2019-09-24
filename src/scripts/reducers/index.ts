@@ -1,11 +1,11 @@
 import layersReducer, {LayersState} from './layers';
-import {AddLayersAction} from '../actions/layers';
+import {FetchLayersSuccessAction} from '../actions/fetch-layers';
 
 export interface State {
   layers: LayersState;
 }
 
-export type Action = AddLayersAction;
+export type Action = FetchLayersSuccessAction;
 
 const initialState: State = {
   layers: []
