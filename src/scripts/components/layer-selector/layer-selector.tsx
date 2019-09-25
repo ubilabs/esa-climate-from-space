@@ -2,6 +2,7 @@ import React, {FunctionComponent, useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {layersSelector} from '../../reducers/layers';
 import fetchLayers from '../../actions/fetch-layers';
+import {setSelectedLayerIdAction} from '../../actions/set-selected-layer';
 import LayerList from '../layer-list/layer-list';
 import {Dispatch} from 'redux';
 
@@ -19,13 +20,13 @@ const LayerSelector: FunctionComponent<{}> = () => {
       {activeTab === 0 ? (
         <LayerList
           layers={layers}
-          onSelect={id => console.log('clicked', id)}
+          onSelect={id => dispatch(setSelectedLayerIdAction(id))}
           selected={'layer1'}
         />
       ) : (
         <LayerList
           layers={layers}
-          onSelect={id => console.log('clicked', id)}
+          onSelect={id => dispatch(setSelectedLayerIdAction(id))}
           selected={'layer1'}
         />
       )}
