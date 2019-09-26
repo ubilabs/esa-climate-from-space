@@ -1,7 +1,7 @@
 [
   {
     "id": "layer1",
-    "name": "Layer 123",
+    "name": "Layer 1",
     "description": "This is the first layer",
     "metadataUrl": "https://...",
     "subLayer": [

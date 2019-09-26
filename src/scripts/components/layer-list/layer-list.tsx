@@ -15,7 +15,12 @@ const LayerList: FunctionComponent<Props> = ({layers, selected, onSelect}) => {
         <li
           className={styles.layerItem}
           key={layer.id}
-          onClick={() => onSelect(layer.id)}>
+          onClick={() => {
+            if (layer.subLayer && layer.subLayer.length) {
+              return;
+            }
+            onSelect(layer.id);
+          }}>
           {layer.name}
           {layer.subLayer ? (
             <ul className={styles.subLayerList}>

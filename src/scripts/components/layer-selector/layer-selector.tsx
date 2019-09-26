@@ -1,16 +1,19 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
+import {Dispatch} from 'redux';
+
 import {useSelector, useDispatch} from 'react-redux';
 import {layersSelector} from '../../reducers/layers';
 import fetchLayers from '../../actions/fetch-layers';
 import {setSelectedLayerIdAction} from '../../actions/set-selected-layer';
+import {setActiveTabSelector} from '../../reducers/active-tab';
 import LayerList from '../layer-list/layer-list';
-import {Dispatch} from 'redux';
+import Tabs from '../tabs/tabs';
 import styles from './layer-selector.styl';
 
 const LayerSelector: FunctionComponent<{}> = () => {
   const layers = useSelector(layersSelector);
+  const activeTab = useSelector(setActiveTabSelector);
   const dispatch = useDispatch();
-  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
     dispatch(fetchLayers());
@@ -18,7 +21,8 @@ const LayerSelector: FunctionComponent<{}> = () => {
 
   return (
     <div className={styles.layerContainer}>
-      {activeTab === 0 ? (
+      <Tabs />
+      {activeTab === 'main' ? (
         <LayerList
           layers={layers}
           onSelect={id => dispatch(setSelectedLayerIdAction(id))}
@@ -28,7 +32,7 @@ const LayerSelector: FunctionComponent<{}> = () => {
         <LayerList
           layers={layers}
           onSelect={id => dispatch(setSelectedLayerIdAction(id))}
-          selected={'layer1'}
+          selected={'layer2'}
         />
       )}
     </div>
