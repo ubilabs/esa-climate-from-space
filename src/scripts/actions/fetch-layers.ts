@@ -9,6 +9,7 @@ export interface Layer {
   name: string;
   description: string;
   metadataUrl: string;
+  subLayer: Layer[];
 }
 
 export interface FetchLayersSuccessAction {

@@ -1,5 +1,6 @@
 import React, {FunctionComponent} from 'react';
 import {Layer} from '../../actions/fetch-layers';
+import styles from './layer-list.styl';
 
 interface Props {
   layers: Layer[];
@@ -9,10 +10,25 @@ interface Props {
 
 const LayerList: FunctionComponent<Props> = ({layers, selected, onSelect}) => {
   return (
-    <ul>
+    <ul className={styles.layerList}>
       {layers.map(layer => (
-        <li key={layer.id} onClick={() => onSelect(layer.id)}>
+        <li
+          className={styles.layerItem}
+          key={layer.id}
+          onClick={() => onSelect(layer.id)}>
           {layer.name}
+          {layer.subLayer ? (
+            <ul className={styles.subLayerList}>
+              {layer.subLayer.map(subLayer => (
+                <li
+                  className={styles.subLayerItem}
+                  key={subLayer.id}
+                  onClick={() => onSelect(subLayer.id)}>
+                  {subLayer.name}
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </li>
       ))}
     </ul>

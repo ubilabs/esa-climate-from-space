@@ -5,6 +5,7 @@ import fetchLayers from '../../actions/fetch-layers';
 import {setSelectedLayerIdAction} from '../../actions/set-selected-layer';
 import LayerList from '../layer-list/layer-list';
 import {Dispatch} from 'redux';
+import styles from './layer-selector.styl';
 
 const LayerSelector: FunctionComponent<{}> = () => {
   const layers = useSelector(layersSelector);
@@ -16,7 +17,7 @@ const LayerSelector: FunctionComponent<{}> = () => {
   }, []);
 
   return (
-    <div>
+    <div className={styles.layerContainer}>
       {activeTab === 0 ? (
         <LayerList
           layers={layers}
