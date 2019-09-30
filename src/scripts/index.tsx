@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import 'cesium/Source/Widgets/widgets.css';
-
-import 'cesium/Build/Cesium/Cesium';
-
 import App from './components/app/app';
 
 ReactDOM.render(<App />, document.getElementById('app'));
@@ -19,7 +15,3 @@ window.__buildInfo = {
   // @ts-ignore
   version: INFO_VERSION
 };
-
-const Cesium = window.Cesium;
-Cesium.buildModuleUrl.setBaseUrl('./cesium/');
-const viewer = new Cesium.Viewer('cesium');

@@ -49,7 +49,9 @@ module.exports = (env, {mode} = {}) => {
             {
               loader: 'css-loader',
               options: {
-                modules: true
+                modules: {
+                  localIdentName: '[name]__[local]___[hash:base64:5]'
+                }
               }
             },
             {loader: 'stylus-loader'}
