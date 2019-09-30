@@ -12,7 +12,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 const App: FunctionComponent<{}> = () => (
   <Provider store={store}>
-    <h1 className={styles.app}>Hello</h1>
+    <div className={styles.app}></div>
     <LayerSelector />
   </Provider>
 );
