@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, {mode} = {}) => {
   const isProduction = mode === 'production';
@@ -80,7 +81,25 @@ module.exports = (env, {mode} = {}) => {
         INFO_BUILD_TIME: JSON.stringify(new Date().toISOString()),
         INFO_GIT_HASH: JSON.stringify(gitHash),
         INFO_VERSION: JSON.stringify(packageJson.version)
-      })
+      }),
+      new CopyPlugin([
+        {
+          from: './node_modules/cesium/Build/Cesium/Assets',
+          to: './cesium/Assets'
+        },
+        {
+          from: './node_modules/cesium/Build/Cesium/ThirdParty',
+          to: './cesium/ThirdParty'
+        },
+        {
+          from: './node_modules/cesium/Build/Cesium/Widgets',
+          to: './cesium/Widgets'
+        },
+        {
+          from: './node_modules/cesium/Build/Cesium/Workers',
+          to: './cesium/Workers'
+        }
+      ])
     ]
   };
 };

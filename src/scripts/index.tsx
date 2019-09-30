@@ -21,5 +21,5 @@ window.__buildInfo = {
 };
 
 const Cesium = window.Cesium;
-Cesium.buildModuleUrl.setBaseUrl('./');
+Cesium.buildModuleUrl.setBaseUrl('./cesium/');
 const viewer = new Cesium.Viewer('cesium');
