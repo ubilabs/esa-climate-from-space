@@ -1,0 +1,10 @@
+steps:
+  - name: 'gcr.io/cloud-builders/npm'
+    entrypoint: npm
+    args: ['ci']
+  - name: 'gcr.io/cloud-builders/npm'
+    entrypoint: npm
+    args: ['run', 'eslint']
+  - name: 'gcr.io/cloud-builders/npm'
+    entrypoint: npm
+    args: ['run', 'build']
