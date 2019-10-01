@@ -6,9 +6,7 @@ steps:
     entrypoint: npm
     args: ['run', 'build']
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['rm', '-r', 'gs://esa-cfs-versions/${BRANCH_NAME}']
-  - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', '-r', './dist', 'gs://esa-cfs-versions/${BRANCH_NAME}']
+    args: ['rsync', './dist', 'gs://esa-cfs-versions/${BRANCH_NAME}']
   - name: 'gcr.io/cloud-builders/gsutil'
     args:
       [
@@ -31,5 +29,5 @@ steps:
     args: [
       '--data',
       '{"text": "New deployment from outer space is ready -> <https://storage.googleapis.com/esa-cfs-versions/${BRANCH_NAME}/index.html>"}',
-      '_SLACK_HOOK_URL'
+      '${_SLACK_HOOK_URL}'
     ]
