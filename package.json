@@ -4,11 +4,12 @@
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && webpack -p",
-    "clean": "rm -rf ./dist",
     "start": "webpack-dev-server",
-    "format": "prettier 'src/scripts/**/*.{ts,tsx}'",
-    "eslint": "eslint . --ext .ts,.tsx,.js"
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && webpack -p",
+    "test": "npm run eslint",
+    "eslint": "eslint . --ext .ts,.tsx,.js",
+    "format": "prettier 'src/scripts/**/*.{ts,tsx}'"
   },
   "repository": {
     "type": "git",
@@ -32,12 +33,14 @@
   },
   "devDependencies": {
     "@types/cesium": "^1.59.0",
+    "@types/classnames": "^2.2.9",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.2",
     "@types/redux-thunk": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
+    "classnames": "^2.2.6",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "eslint": "^6.4.0",

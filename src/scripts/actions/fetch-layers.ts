@@ -9,6 +9,7 @@ export interface Layer {
   name: string;
   description: string;
   metadataUrl: string;
+  subLayers: Layer[];
 }
 
 export interface FetchLayersSuccessAction {
@@ -35,11 +36,10 @@ function fetchLayersErrorAction(message: string) {
   };
 }
 
-const fetchLayers = () => (dispatch: Dispatch) => {
-  return fetch(config.api.layers)
+const fetchLayers = () => (dispatch: Dispatch) =>
+  fetch(config.api.layers)
     .then(res => res.json())
     .then(layers => dispatch(fetchLayersSuccessAction(layers)))
     .catch(error => dispatch(fetchLayersErrorAction(error.message)));
-};
 
 export default fetchLayers;
