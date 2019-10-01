@@ -27,3 +27,9 @@ steps:
         'cache-control:no-cache',
         'gs://esa-cfs-versions/${BRANCH_NAME}/*',
       ]
+  - name: 'gcr.io/cloud-builders/curl'
+    args: [
+      '--data'
+      '{"text": "New deployment from outer space is ready -> <https://storage.googleapis.com/esa-cfs-versions/${BRANCH_NAME}/index.html>"}'
+      '_SLACK_HOOK_URL'
+    ]
