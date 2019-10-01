@@ -1,30 +1,30 @@
 import React, {FunctionComponent} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
 import Tab from '../tab/tab';
 import styles from './tabs.styl';
-import {setActiveTabSelector} from '../../reducers/active-tab';
-import {setActiveTabAction} from '../../actions/set-active-tab';
 
-const Tabs: FunctionComponent<{}> = () => {
-  const activeTab = useSelector(setActiveTabSelector);
-  const dispatch = useDispatch();
+interface Tab {
+  id: string;
+  label: string;
+}
 
-  return (
-    <div className={styles.tabsContainer}>
+interface Props {
+  tabs: Tab[];
+  activeTabId: string;
+  onTabChanged: (name: string) => void;
+}
+
+const Tabs: FunctionComponent<Props> = ({tabs, activeTabId, onTabChanged}) => (
+  <div className={styles.tabsContainer}>
+    {tabs.map(tab => (
       <Tab
-        name="main"
-        activeTab={activeTab}
-        selectTab={name => dispatch(setActiveTabAction(name))}>
-        Main
+        key={tab.id}
+        id={tab.id}
+        activeTabId={activeTabId}
+        onSelectTabId={id => onTabChanged(id)}>
+        {tab.label}
       </Tab>
-      <Tab
-        name="compare"
-        activeTab={activeTab}
-        selectTab={name => dispatch(setActiveTabAction(name))}>
-        Compare
-      </Tab>
-    </div>
-  );
-};
+    ))}
+  </div>
+);
 
 export default Tabs;

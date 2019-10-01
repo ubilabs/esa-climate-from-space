@@ -4,7 +4,7 @@
     "name": "Layer 1",
     "description": "This is the first layer",
     "metadataUrl": "https://...",
-    "subLayer": [
+    "subLayers": [
       {
         "id": "layer1a",
         "name": "Layer 1ab",
@@ -23,6 +23,7 @@
     "id": "layer2",
     "name": "Layer 2",
     "description": "This is the second layer",
-    "metadataUrl": "https://..."
+    "metadataUrl": "https://...",
+    "subLayers": []
   }
 ]
