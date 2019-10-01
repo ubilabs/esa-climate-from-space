@@ -1,6 +1,6 @@
 {
   "name": "esa-climate-from-space",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "index.js",
   "scripts": {
@@ -9,13 +9,17 @@
     "build": "npm run clean && webpack -p",
     "test": "npm run eslint",
     "eslint": "eslint . --ext .ts,.tsx,.js",
-    "format": "prettier 'src/scripts/**/*.{ts,tsx}'"
+    "format": "prettier 'src/scripts/**/*.{ts,tsx}'",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "preversion": "npm run test",
+    "version": "npm run changelog && git checkout -b chore/release-${npm_package_version} && git add .",
+    "postversion": "git push -u origin chore/release-${npm_package_version} && git push --tags --no-verify"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ubilabs/esa-climate-from-space.git"
   },
-  "author": "",
+  "author": "Ubilabs GmbH",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ubilabs/esa-climate-from-space/issues"
@@ -41,6 +45,7 @@
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
     "classnames": "^2.2.6",
+    "conventional-changelog-cli": "^2.0.23",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "eslint": "^6.4.0",
