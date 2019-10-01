@@ -22,6 +22,7 @@
   "homepage": "https://github.com/ubilabs/esa-climate-from-space#readme",
   "dependencies": {
     "@types/redux-logger": "^3.0.7",
+    "cesium": "^1.61.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
@@ -30,6 +31,7 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "@types/cesium": "^1.59.0",
     "@types/classnames": "^2.2.9",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
@@ -38,10 +40,12 @@
     "@typescript-eslint/eslint-plugin": "^2.3.0",
     "@typescript-eslint/parser": "^2.3.0",
     "classnames": "^2.2.6",
+    "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-react": "^7.14.3",
+    "file-loader": "^4.2.0",
     "git-state": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.8.0",
