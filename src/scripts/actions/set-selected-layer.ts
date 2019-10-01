@@ -11,10 +11,8 @@ export interface SetSelectedLayerIdAction {
 export const setSelectedLayerIdAction = (
   layerId: LayerId,
   isPrimary: boolean
-): SetSelectedLayerIdAction => {
-  return {
-    type: SET_SELECTED_LAYER_ID,
-    layerId,
-    isPrimary
-  };
-};
+): SetSelectedLayerIdAction => ({
+  type: SET_SELECTED_LAYER_ID,
+  layerId,
+  isPrimary
+});

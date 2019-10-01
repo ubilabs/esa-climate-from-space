@@ -4,11 +4,12 @@
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && webpack -p",
-    "clean": "rm -rf ./dist",
     "start": "webpack-dev-server",
-    "format": "prettier 'src/scripts/**/*.{ts,tsx}'",
-    "eslint": "eslint . --ext .ts,.tsx,.js"
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && webpack -p",
+    "test": "npm run eslint",
+    "eslint": "eslint . --ext .ts,.tsx,.js",
+    "format": "prettier 'src/scripts/**/*.{ts,tsx}'"
   },
   "repository": {
     "type": "git",

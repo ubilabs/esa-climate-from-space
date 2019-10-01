@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
+import React, {FunctionComponent, useRef, useEffect} from 'react';
 
 import 'cesium/Source/Widgets/widgets.css';
 import 'cesium/Build/Cesium/Cesium';
@@ -22,19 +22,16 @@ const viewerOptions = {
 };
 
 const Globe: FunctionComponent<{}> = () => {
-  const ref = useRef();
-  const [viewer, setViewer] = useState(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!ref || !ref.current) {
-      return;
+      return () => {};
     }
 
-    const viewer = new Cesium.Viewer(ref.current, viewerOptions);
-    return () => {
-      viewer.destroy();
-      setViewer(null);
-    };
+    const scopedViewer = new Cesium.Viewer(ref.current, viewerOptions);
+
+    return () => scopedViewer.destroy();
   }, [ref]);
 
   return <div className={styles.globe} ref={ref} />;
