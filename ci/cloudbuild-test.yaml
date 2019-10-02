@@ -8,3 +8,12 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: npm
     args: ['run', 'build']
+  - name: 'gcr.io/esa-climate-from-space/electron-packager'
+    entrypoint: electron-packager
+    args: [
+      '.',
+      '--platform',
+      'darwin',
+      '--arch',
+      'x64'
+    ]
