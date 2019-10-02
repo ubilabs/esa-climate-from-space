@@ -3,19 +3,27 @@
     "id": "layer1",
     "name": "Layer 1",
     "description": "This is the first layer",
-    "metadataUrl": "https://..."
-  },
-  {
-    "id": "layer1a",
-    "name": "Layer 1a",
-    "description": "This is the first sublayer",
     "metadataUrl": "https://...",
-    "parentId": "layer1"
+    "subLayers": [
+      {
+        "id": "layer1a",
+        "name": "Layer 1ab",
+        "description": "This is the first sublayer",
+        "metadataUrl": "https://..."
+      },
+      {
+        "name": "Layer 1b",
+        "id": "layer1b",
+        "description": "This is the first sublayer",
+        "metadataUrl": "https://..."
+      }
+    ]
   },
   {
     "id": "layer2",
     "name": "Layer 2",
     "description": "This is the second layer",
-    "metadataUrl": "https://..."
+    "metadataUrl": "https://...",
+    "subLayers": []
   }
 ]
