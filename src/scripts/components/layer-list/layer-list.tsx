@@ -1,14 +1,15 @@
 import React, {FunctionComponent, MouseEvent} from 'react';
+import cx from 'classnames';
 import {Layer} from '../../actions/fetch-layers';
 import styles from './layer-list.styl';
 
 interface Props {
   layers: Layer[];
-  selected: string;
+  selected: string | null;
   onSelect: (id: string) => void;
 }
 
-const LayerList: FunctionComponent<Props> = ({layers, onSelect}) => (
+const LayerList: FunctionComponent<Props> = ({layers, selected, onSelect}) => (
   <ul className={styles.layerList}>
     {layers.map(layer => {
       const layerClickHandler = () => {
@@ -16,10 +17,12 @@ const LayerList: FunctionComponent<Props> = ({layers, onSelect}) => (
           onSelect(layer.id);
         }
       };
-
+      const layerItemClass = cx(styles.layerItem, {
+        [styles.layerItemSelected]: selected === layer.id
+      });
       return (
         <li
-          className={styles.layerItem}
+          className={layerItemClass}
           key={layer.id}
           onClick={() => layerClickHandler()}>
           {layer.name}
@@ -31,9 +34,12 @@ const LayerList: FunctionComponent<Props> = ({layers, onSelect}) => (
                   event.stopPropagation();
                   onSelect(subLayer.id);
                 };
+                const subLayerItemClass = cx(styles.subLayerItem, {
+                  [styles.subLayerItemSelected]: selected === subLayer.id
+                });
                 return (
                   <li
-                    className={styles.subLayerItem}
+                    className={subLayerItemClass}
                     key={subLayer.id}
                     onClick={event => subLayerClickHandler(event)}>
                     {subLayer.name}

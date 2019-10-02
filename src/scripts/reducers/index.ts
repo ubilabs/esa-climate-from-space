@@ -12,7 +12,10 @@ export type Action = FetchLayersSuccessAction | SetSelectedLayerIdAction;
 
 const initialState: State = {
   layers: [],
-  selectedLayer: []
+  selectedLayer: {
+    main: null,
+    compare: null
+  }
 };
 
 function reducer(state: State = initialState, action: Action): State {

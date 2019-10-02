@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from 'react';
+import cx from 'classnames';
 import styles from './tab.styl';
-import classNames from 'classnames';
 
 interface Props {
   id: string;
@@ -14,7 +14,7 @@ const Tab: FunctionComponent<Props> = ({
   onSelectTabId,
   children
 }) => {
-  const btnClass = classNames(styles.btn, {
+  const btnClass = cx(styles.btn, {
     [styles.btnInactive]: activeTabId !== id
   });
   return (
