@@ -17,3 +17,8 @@ steps:
       '--arch',
       'x64'
     ]
+  - name: 'gcr.io/$PROJECT_ID/zip'
+    args: ['-r', './esa-climate-from-space-darwin-x64.zip', './esa-climate-from-space-darwin-x64']
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['cp', '-J', './esa-climate-from-space-darwin-x64.zip', 'gs://esa-cfs-versions/${BRANCH_NAME}-electron']
+ 
