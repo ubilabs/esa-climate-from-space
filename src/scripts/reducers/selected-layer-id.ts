@@ -1,11 +1,15 @@
-import {SET_SELECTED_LAYER_ID, LayerId} from '../actions/set-selected-layer';
-import {Action, State} from './index';
+import {
+  SET_SELECTED_LAYER_ID,
+  LayerId,
+  SetSelectedLayerIdAction
+} from '../actions/set-selected-layer';
+import {State} from './index';
 
 export type SelectedLayersState = LayerId[];
 
 function selectedLayerReducer(
   state: SelectedLayersState = [],
-  action: Action
+  action: SetSelectedLayerIdAction
 ): SelectedLayersState {
   switch (action.type) {
     case SET_SELECTED_LAYER_ID:

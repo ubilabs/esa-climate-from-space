@@ -12,15 +12,19 @@ export interface Layer {
   subLayers: Layer[];
 }
 
-export interface FetchLayersSuccessAction {
+interface FetchLayersSuccessAction {
   type: typeof FETCH_LAYERS_SUCCESS;
   layers: Layer[];
 }
 
-export interface FetchLayersErrorAction {
+interface FetchLayersErrorAction {
   type: typeof FETCH_LAYERS_ERROR;
   message: string;
 }
+
+export type FetchLayersActions =
+  | FetchLayersSuccessAction
+  | FetchLayersErrorAction;
 
 function fetchLayersSuccessAction(layers: Layer[]) {
   return {

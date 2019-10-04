@@ -1,12 +1,16 @@
-import {FETCH_LAYERS_SUCCESS, Layer} from '../actions/fetch-layers';
-import {Action, State} from './index';
+import {State} from './index';
+import {
+  FETCH_LAYERS_SUCCESS,
+  Layer,
+  FetchLayersActions
+} from '../actions/fetch-layers';
 
 export type LayersState = Layer[];
 const initialState: LayersState = [];
 
 function layersReducer(
   layersState: LayersState = initialState,
-  action: Action
+  action: FetchLayersActions
 ): LayersState {
   switch (action.type) {
     case FETCH_LAYERS_SUCCESS:
