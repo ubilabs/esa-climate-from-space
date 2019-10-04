@@ -6,7 +6,7 @@ steps:
     entrypoint: npm
     args: ['run', 'build']
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['rsync', './dist', 'gs://esa-cfs-versions/${BRANCH_NAME}']
+    args: ['rsync', '-r', '-d', './dist', 'gs://esa-cfs-versions/web/${BRANCH_NAME}']
   - name: 'gcr.io/cloud-builders/gsutil'
     args:
       [
@@ -28,6 +28,7 @@ steps:
   - name: 'gcr.io/cloud-builders/curl'
     args: [
       '--data',
-      '{"text": "New deployment from outer space is ready -> <https://storage.googleapis.com/esa-cfs-versions/${BRANCH_NAME}/index.html>"}',
+      '{"text": "New deployment from outer space is ready -> <https://storage.googleapis.com/esa-cfs-versions/web/${BRANCH_NAME}/index.html> (commit: <https://github.com/ubilabs/esa-climate-from-space/commit/${COMMIT_SHA}>)"}',
       '${_SLACK_HOOK_URL}'
     ]
+

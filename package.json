@@ -14,7 +14,10 @@
     "preversion": "npm run test",
     "version": "npm run changelog && git checkout -b chore/release-${npm_package_version} && git add .",
     "postversion": "git push -u origin chore/release-${npm_package_version} && git push --tags --no-verify",
-    "electron": "electron ."
+    "electron:start": "electron .",
+    "electron:install": "electron-builder install-app-deps",
+    "electron:clean": "rm -rf ./dist-electron",
+    "electron:build": "npm run electron:clean && npm run electron:install && electron-builder -mwl --x64 --config electron-builder.json"
   },
   "repository": {
     "type": "git",
@@ -50,7 +53,7 @@
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "electron": "6.0.11",
-    "electron-packager": "^14.0.6",
+    "electron-builder": "^21.2.0",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-react": "^7.14.3",
