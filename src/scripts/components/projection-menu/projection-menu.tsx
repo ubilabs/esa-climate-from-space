@@ -1,26 +1,16 @@
 import React, {FunctionComponent, useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {setProjectionAction, Projection} from '../../actions/set-projection';
 import styles from './projection-menu.styl';
 
-interface ProjectionMenuItem {
-  id: string;
-  name: string;
-}
-
 const ProjectionMenu: FunctionComponent<{}> = () => {
-  const projectionItems = [
-    {
-      id: 'sphere',
-      name: 'Sphere'
-    },
-    {
-      id: 'mercator',
-      name: 'Mercator'
-    },
-    {
-      id: 'plate-carrée ',
-      name: 'Plate carrée '
-    }
-  ] as ProjectionMenuItem[];
+  const projections = Object.values(Projection);
+
+  const dispatch = useDispatch();
+
+  const onProjectionClick = (projection: Projection) => {
+    dispatch(setProjectionAction(projection));
+  };
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -35,9 +25,12 @@ const ProjectionMenu: FunctionComponent<{}> = () => {
       </button>
       {isOpen && (
         <ul className={styles.projectionList}>
-          {projectionItems.map(projectionItem => (
-            <li className={styles.projectionListItem} key={projectionItem.id}>
-              {projectionItem.name}
+          {projections.map(projection => (
+            <li
+              onClick={() => onProjectionClick(projection)}
+              className={styles.projectionListItem}
+              key={projection}>
+              {projection}
             </li>
           ))}
         </ul>

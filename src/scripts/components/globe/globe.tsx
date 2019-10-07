@@ -1,4 +1,7 @@
-import React, {FunctionComponent, useRef, useEffect} from 'react';
+import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
+
+import {projectionSelector} from '../../reducers/projection';
 
 import 'cesium/Source/Widgets/widgets.css';
 import 'cesium/Build/Cesium/Cesium';
@@ -22,6 +25,8 @@ const viewerOptions = {
 };
 
 const Globe: FunctionComponent<{}> = () => {
+  const [viewer, setViewer] = useState<Cesium.Viewer | null>(null);
+  const projection = useSelector(projectionSelector);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -30,9 +35,18 @@ const Globe: FunctionComponent<{}> = () => {
     }
 
     const scopedViewer = new Cesium.Viewer(ref.current, viewerOptions);
+    setViewer(scopedViewer);
 
     return () => scopedViewer.destroy();
   }, [ref]);
+
+  useEffect(() => {
+    if (!viewer) {
+      return;
+    }
+
+    viewer.scene.mode = Cesium.SceneMode.SCENE3D;
+  }, [viewer, projection]);
 
   return <div className={styles.globe} ref={ref} />;
 };
