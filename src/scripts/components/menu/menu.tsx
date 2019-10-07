@@ -1,41 +1,33 @@
 import React, {FunctionComponent, useState} from 'react';
 import styles from './menu.styl';
 
-interface MenuItems {
-  id: number;
+interface MenuItem {
+  id: string;
   name: string;
-  link: string | null;
+  link?: string;
 }
 
 const Menu: FunctionComponent<{}> = () => {
   const menuItems = [
     {
-      id: 1,
+      id: 'presenter-mode',
       name: 'Presenter Mode',
       link: 'http://....'
     },
     {
-      id: 2,
+      id: 'show-case-mode',
       name: 'Show Case Mode',
       link: 'http://....'
     },
-    {id: 3, name: 'Change language'},
-    {id: 4, name: 'Share Content'},
-    {id: 5, name: 'Export Data'},
-    {id: 6, name: 'More Information'}
-  ];
+    {id: 'language', name: 'Change language'},
+    {id: 'share', name: 'Share Content'},
+    {id: 'export', name: 'Export Data'},
+    {id: 'info', name: 'More Information'}
+  ] as MenuItem[];
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const onButtonClickHandler = () => {
-    if (!isOpen) {
-      setIsOpen(true);
-      return;
-    }
-    if (isOpen) {
-      setIsOpen(false);
-    }
-  };
+  const onButtonClickHandler = () => setIsOpen(!isOpen);
 
   return (
     <div className={styles.menuContainer}>
@@ -49,7 +41,7 @@ const Menu: FunctionComponent<{}> = () => {
           {menuItems.map(menuItem => (
             <li className={styles.menuListItem} key={menuItem.id}>
               {menuItem.link ? (
-                <a href="{link}">{menuItem.name}</a>
+                <a href={menuItem.link}>{menuItem.name}</a>
               ) : (
                 menuItem.name
               )}
