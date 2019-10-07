@@ -1,0 +1,16 @@
+{
+  "directories": {
+    "output": "dist-electron"
+  },
+  "appId": "com.ubilabs.esa.cfs",
+  "files": ["./src/electron/**/*", "./dist/**/*"],
+  "win": {
+    "target": "portable"
+  },
+  "mac": {
+    "target": "zip"
+  },
+  "linux": {
+    "target": "zip"
+  }
+}
