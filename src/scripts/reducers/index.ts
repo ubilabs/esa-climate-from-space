@@ -1,28 +1,12 @@
-import layersReducer, {LayersState} from './layers';
-import {FetchLayersSuccessAction} from '../actions/fetch-layers';
-import {SetSelectedLayerIdAction} from '../actions/set-selected-layer';
-import selectedLayerReducer, {SelectedLayersState} from './selected-layer-id';
+import {combineReducers} from 'redux';
 
-export interface State {
-  layers: LayersState;
-  selectedLayer: SelectedLayersState;
-}
+import layersReducer from './layers';
+import selectedLayerReducer from './selected-layer-id';
 
-export type Action = FetchLayersSuccessAction | SetSelectedLayerIdAction;
+const rootReducer = combineReducers({
+  layers: layersReducer,
+  selectedLayer: selectedLayerReducer
+});
 
-const initialState: State = {
-  layers: [],
-  selectedLayer: {
-    main: null,
-    compare: null
-  }
-};
-
-function reducer(state: State = initialState, action: Action): State {
-  return {
-    layers: layersReducer(state.layers, action),
-    selectedLayer: selectedLayerReducer(state.selectedLayer, action)
-  };
-}
-
-export default reducer;
+export default rootReducer;
+export type State = ReturnType<typeof rootReducer>;
