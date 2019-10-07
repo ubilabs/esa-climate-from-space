@@ -1,0 +1,13 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/electron-builder',
+        '-f',
+        './docker/Dockerfile.electron-builder',
+        '.',
+      ]
+images:
+  - 'gcr.io/$PROJECT_ID/electron-builder'
