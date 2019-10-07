@@ -5,3 +5,20 @@
 .app
   height: 100%
   font-family: Arial, Helvetica, sans-serif
+
+.layoutContainer
+    position: relative
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    pointer-events: none
+    height: 100%
+    align-items: flex-end
+
+.layoutContainer > *
+  pointer-events: auto
+  border: 1px solid red
+
+
+.timeslider
+  flex-grow: 1
