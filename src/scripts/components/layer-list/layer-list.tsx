@@ -17,12 +17,15 @@ const LayerList: FunctionComponent<Props> = ({layers, selected, onSelect}) => (
           onSelect(layer.id);
         }
       };
-      const layerItemClass = cx(styles.layerItem, {
-        [styles.layerItemSelected]: selected === layer.id
-      });
+      const isSelected = selected === layer.id;
+      const layerItemClasses = cx(
+        styles.layerItem,
+        isSelected && styles.layerItemSelected
+      );
+
       return (
         <li
-          className={layerItemClass}
+          className={layerItemClasses}
           key={layer.id}
           onClick={() => layerClickHandler()}>
           {layer.name}
@@ -34,12 +37,15 @@ const LayerList: FunctionComponent<Props> = ({layers, selected, onSelect}) => (
                   event.stopPropagation();
                   onSelect(subLayer.id);
                 };
-                const subLayerItemClass = cx(styles.subLayerItem, {
-                  [styles.subLayerItemSelected]: selected === subLayer.id
-                });
+                const isSubSelected = selected === subLayer.id;
+                const subLayerItemClasses = cx(
+                  styles.subLayerItem,
+                  isSubSelected && styles.subLayerItemSelected
+                );
+
                 return (
                   <li
-                    className={subLayerItemClass}
+                    className={subLayerItemClasses}
                     key={subLayer.id}
                     onClick={event => subLayerClickHandler(event)}>
                     {subLayer.name}

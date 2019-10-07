@@ -14,11 +14,11 @@ const Tab: FunctionComponent<Props> = ({
   onSelectTabId,
   children
 }) => {
-  const btnClass = cx(styles.btn, {
-    [styles.btnInactive]: activeTabId !== id
-  });
+  const isActive = activeTabId === id;
+  const tabClasses = cx(styles.tab, isActive && styles.tabActive);
+
   return (
-    <button className={btnClass} onClick={() => onSelectTabId(id)}>
+    <button className={tabClasses} onClick={() => onSelectTabId(id)}>
       {children}
     </button>
   );
