@@ -16,17 +16,11 @@ const App: FunctionComponent<{}> = () => (
   <Provider store={store}>
     <div className={styles.app}>
       <Globe />
-<<<<<<< Updated upstream
-      <LayerSelector />
-      <Menu />
-=======
       <div className={styles.layoutContainer}>
         <Menu />
         <div className={styles.timeslider} />
-        <ProjectionMenu />
         <LayerSelector />
       </div>
->>>>>>> Stashed changes
     </div>
   </Provider>
 );
