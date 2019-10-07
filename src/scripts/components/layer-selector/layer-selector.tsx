@@ -1,6 +1,7 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {layersSelector} from '../../reducers/layers';
+import {selectedLayerIdSelector} from '../../reducers/selected-layer-id';
 import fetchLayers from '../../actions/fetch-layers';
 import {setSelectedLayerIdAction} from '../../actions/set-selected-layer';
 import LayerList from '../layer-list/layer-list';
@@ -9,6 +10,7 @@ import styles from './layer-selector.styl';
 
 const LayerSelector: FunctionComponent<{}> = () => {
   const layers = useSelector(layersSelector);
+  const layerIds = useSelector(selectedLayerIdSelector);
   const dispatch = useDispatch();
   const tabs = [
     {
@@ -22,7 +24,27 @@ const LayerSelector: FunctionComponent<{}> = () => {
   ];
 
   const [activeTabId, setActiveTabId] = useState(tabs[0].id);
+  const [isOpen, setIsOpen] = useState(false);
   const isMainTabSelected = activeTabId === tabs[0].id;
+  const selectedLayer = isMainTabSelected ? layerIds.main : layerIds.compare;
+
+  const onTabClick = (id: string) => {
+    setActiveTabId(id);
+
+    if (!isOpen) {
+      setIsOpen(true);
+      return;
+    }
+
+    if (activeTabId === id) {
+      setIsOpen(false);
+    }
+  };
+
+  const onLayerClick = (id: string) => {
+    const newId = selectedLayer === id ? null : id;
+    dispatch(setSelectedLayerIdAction(newId, isMainTabSelected));
+  };
 
   useEffect(() => {
     dispatch(fetchLayers());
@@ -33,15 +55,15 @@ const LayerSelector: FunctionComponent<{}> = () => {
       <Tabs
         tabs={tabs}
         activeTabId={activeTabId}
-        onTabChanged={id => setActiveTabId(id)}
+        onTabChanged={id => onTabClick(id)}
       />
-      <LayerList
-        layers={layers}
-        selected={'layer1'}
-        onSelect={id =>
-          dispatch(setSelectedLayerIdAction(id, isMainTabSelected))
-        }
-      />
+      {isOpen && (
+        <LayerList
+          layers={layers}
+          selected={selectedLayer}
+          onSelect={id => onLayerClick(id)}
+        />
+      )}
     </div>
   );
 };

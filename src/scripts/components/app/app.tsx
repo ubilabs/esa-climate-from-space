@@ -6,6 +6,7 @@ import logger from 'redux-logger';
 import rootReducer from '../../reducers/index';
 import LayerSelector from '../layer-selector/layer-selector';
 import Globe from '../globe/globe';
+import Menu from '../menu/menu';
 
 import styles from './app.styl';
 
@@ -16,6 +17,7 @@ const App: FunctionComponent<{}> = () => (
     <div className={styles.app}>
       <Globe />
       <LayerSelector />
+      <Menu />
     </div>
   </Provider>
 );
