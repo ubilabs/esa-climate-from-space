@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+import {createLogger} from 'redux-logger';
 import {IntlProvider} from 'react-intl';
 
 import rootReducer from '../../reducers/index';
@@ -15,7 +15,10 @@ import translations from '../../i18n';
 
 import styles from './app.styl';
 
-const store = createStore(rootReducer, applyMiddleware(thunk, logger));
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk, createLogger({collapsed: true}))
+);
 
 const App: FunctionComponent<{}> = () => (
   <StoreProvider store={store}>

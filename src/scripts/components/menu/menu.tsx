@@ -8,7 +8,7 @@ interface MenuItem {
 }
 
 const Menu: FunctionComponent<{}> = () => {
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     {
       id: 'presenter-mode',
       name: 'Presenter Mode',
@@ -23,7 +23,7 @@ const Menu: FunctionComponent<{}> = () => {
     {id: 'share', name: 'Share Content'},
     {id: 'export', name: 'Export Data'},
     {id: 'info', name: 'More Information'}
-  ] as MenuItem[];
+  ];
 
   const [isOpen, setIsOpen] = useState(false);
 

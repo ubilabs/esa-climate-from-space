@@ -1,5 +1,8 @@
 import {Dispatch} from 'redux';
-import config from '../config/main';
+
+import fetchLayersApi from '../api/fetch-layers';
+import {localeSelector} from '../reducers/locale';
+import {State} from '../reducers/index';
 
 export const FETCH_LAYERS_SUCCESS = 'FETCH_LAYERS_SUCCESS';
 export const FETCH_LAYERS_ERROR = 'FETCH_LAYERS_ERROR';
@@ -40,10 +43,12 @@ function fetchLayersErrorAction(message: string) {
   };
 }
 
-const fetchLayers = () => (dispatch: Dispatch) =>
-  fetch(config.api.layers)
-    .then(res => res.json())
+const fetchLayers = () => (dispatch: Dispatch, getState: () => State) => {
+  const locale = localeSelector(getState());
+
+  return fetchLayersApi(locale)
     .then(layers => dispatch(fetchLayersSuccessAction(layers)))
     .catch(error => dispatch(fetchLayersErrorAction(error.message)));
+};
 
 export default fetchLayers;
