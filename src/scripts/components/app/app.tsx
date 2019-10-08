@@ -6,13 +6,13 @@ import {createLogger} from 'redux-logger';
 import {IntlProvider} from 'react-intl';
 
 import rootReducer from '../../reducers/index';
+import {localeSelector} from '../../reducers/locale';
 import LayerSelector from '../layer-selector/layer-selector';
 import Globe from '../globe/globe';
 import Menu from '../menu/menu';
+import ProjectionMenu from '../projection-menu/projection-menu';
 
-import {localeSelector} from '../../reducers/locale';
 import translations from '../../i18n';
-
 import styles from './app.styl';
 
 const store = createStore(
@@ -33,8 +33,12 @@ const TranslatedApp: FunctionComponent<{}> = () => {
     <IntlProvider locale={locale} messages={translations[locale]}>
       <div className={styles.app}>
         <Globe />
-        <LayerSelector />
-        <Menu />
+        <div className={styles.layoutContainer}>
+          <Menu />
+          <div className={styles.timeslider} />
+          <ProjectionMenu />
+          <LayerSelector />
+        </div>
       </div>
     </IntlProvider>
   );
