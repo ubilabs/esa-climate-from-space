@@ -7,6 +7,7 @@ import {IntlProvider} from 'react-intl';
 
 import rootReducer from '../../reducers/index';
 import {localeSelector} from '../../reducers/locale';
+import {selectedLayersSelector} from '../../reducers/selected-layers';
 import LayerSelector from '../layer-selector/layer-selector';
 import Globe from '../globe/globe';
 import Menu from '../menu/menu';
@@ -28,11 +29,15 @@ const App: FunctionComponent<{}> = () => (
 
 const TranslatedApp: FunctionComponent<{}> = () => {
   const locale = useSelector(localeSelector);
+  const selectedLayers = useSelector(selectedLayersSelector);
 
   return (
     <IntlProvider locale={locale} messages={translations[locale]}>
       <div className={styles.app}>
-        <Globe />
+        <div className={styles.globeContainer}>
+          <Globe />
+          {selectedLayers.compare && <Globe />}
+        </div>
         <div className={styles.layoutContainer}>
           <Menu />
           <div className={styles.timeslider} />
