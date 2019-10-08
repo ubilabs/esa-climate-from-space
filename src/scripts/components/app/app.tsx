@@ -19,9 +19,8 @@ const App: FunctionComponent<{}> = () => (
       <div className={styles.layoutContainer}>
         <Menu />
         <div className={styles.timeslider} />
-        <LayerSelector />
-        <Menu />
         <ProjectionMenu />
+        <LayerSelector />
       </div>
     </div>
   </Provider>
