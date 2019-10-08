@@ -4,6 +4,7 @@ import {Provider as StoreProvider, useSelector} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
 import {IntlProvider} from 'react-intl';
+import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 
 import rootReducer from '../../reducers/index';
 import {localeSelector} from '../../reducers/locale';
@@ -32,20 +33,32 @@ const TranslatedApp: FunctionComponent<{}> = () => {
   const selectedLayers = useSelector(selectedLayersSelector);
 
   return (
-    <IntlProvider locale={locale} messages={translations[locale]}>
-      <div className={styles.app}>
-        <div className={styles.globeContainer}>
-          <Globe />
-          {selectedLayers.compare && <Globe />}
+    <Router>
+      <IntlProvider locale={locale} messages={translations[locale]}>
+        <div className={styles.app}>
+          <Switch>
+            <Route path="/" exact>
+              <div className={styles.globeContainer}>
+                <Globe />
+                {selectedLayers.compare && <Globe />}
+              </div>
+              <div className={styles.layoutContainer}>
+                <Menu />
+                <div className={styles.timeslider} />
+                <ProjectionMenu />
+                <LayerSelector />
+              </div>
+            </Route>
+            <Route path="/present">
+              <h1>presenter mode</h1>
+            </Route>
+            <Route path="/showcase">
+              <h1>show case mode</h1>
+            </Route>
+          </Switch>
         </div>
-        <div className={styles.layoutContainer}>
-          <Menu />
-          <div className={styles.timeslider} />
-          <ProjectionMenu />
-          <LayerSelector />
-        </div>
-      </div>
-    </IntlProvider>
+      </IntlProvider>
+    </Router>
   );
 };
 
