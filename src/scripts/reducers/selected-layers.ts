@@ -15,7 +15,7 @@ const initialState = {
   compare: null
 };
 
-function selectedLayerReducer(
+function selectedLayersReducer(
   state: SelectedLayersState = initialState,
   action: SetSelectedLayerIdAction
 ): SelectedLayersState {
@@ -29,7 +29,7 @@ function selectedLayerReducer(
       return state;
   }
 }
-export function selectedLayerIdSelector(state: State): SelectedLayersState {
-  return state.selectedLayer;
+export function selectedLayersSelector(state: State): SelectedLayersState {
+  return state.selectedLayers;
 }
-export default selectedLayerReducer;
+export default selectedLayersReducer;

@@ -1,6 +1,7 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
 import {useSelector} from 'react-redux';
 
+import {Projection} from '../../actions/set-projection';
 import {projectionSelector} from '../../reducers/projection';
 
 import 'cesium/Source/Widgets/widgets.css';
@@ -48,7 +49,11 @@ const Globe: FunctionComponent<{}> = () => {
       return;
     }
 
-    viewer.scene.mode = Cesium.SceneMode.SCENE3D;
+    if (projection === Projection.Sphere) {
+      viewer.scene.morphTo3D();
+    } else {
+      viewer.scene.morphTo2D();
+    }
   }, [viewer, projection]);
 
   return <div className={styles.globe} ref={ref} />;
