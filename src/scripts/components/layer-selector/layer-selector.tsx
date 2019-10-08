@@ -1,5 +1,7 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {useIntl} from 'react-intl';
+
 import {layersSelector} from '../../reducers/layers';
 import {selectedLayerIdSelector} from '../../reducers/selected-layer-id';
 import fetchLayers from '../../actions/fetch-layers';
@@ -9,17 +11,18 @@ import Tabs from '../tabs/tabs';
 import styles from './layer-selector.styl';
 
 const LayerSelector: FunctionComponent<{}> = () => {
+  const intl = useIntl();
   const layers = useSelector(layersSelector);
   const layerIds = useSelector(selectedLayerIdSelector);
   const dispatch = useDispatch();
   const tabs = [
     {
       id: 'main',
-      label: 'Main'
+      label: intl.formatMessage({id: 'layerSelector.main'})
     },
     {
       id: 'compare',
-      label: 'Compare'
+      label: intl.formatMessage({id: 'layerSelector.compare'})
     }
   ];
 
