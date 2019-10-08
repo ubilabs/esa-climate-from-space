@@ -16,8 +16,11 @@ const App: FunctionComponent<{}> = () => (
   <Provider store={store}>
     <div className={styles.app}>
       <Globe />
-      <LayerSelector />
-      <Menu />
+      <div className={styles.layoutContainer}>
+        <Menu />
+        <div className={styles.timeslider} />
+        <LayerSelector />
+      </div>
     </div>
   </Provider>
 );
