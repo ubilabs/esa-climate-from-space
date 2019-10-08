@@ -37,7 +37,10 @@ const Globe: FunctionComponent<{}> = () => {
     const scopedViewer = new Cesium.Viewer(ref.current, viewerOptions);
     setViewer(scopedViewer);
 
-    return () => scopedViewer.destroy();
+    return () => {
+      scopedViewer.destroy();
+      setViewer(null);
+    };
   }, [ref]);
 
   useEffect(() => {

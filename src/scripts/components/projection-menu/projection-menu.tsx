@@ -5,15 +5,11 @@ import styles from './projection-menu.styl';
 
 const ProjectionMenu: FunctionComponent<{}> = () => {
   const projections = Object.values(Projection);
-
   const dispatch = useDispatch();
-
   const onProjectionClick = (projection: Projection) => {
     dispatch(setProjectionAction(projection));
   };
-
   const [isOpen, setIsOpen] = useState(false);
-
   const onButtonClickHandler = () => setIsOpen(!isOpen);
 
   return (
@@ -21,7 +17,7 @@ const ProjectionMenu: FunctionComponent<{}> = () => {
       <button
         onClick={() => onButtonClickHandler()}
         className={styles.projectionButton}>
-        mode
+        Projection
       </button>
       {isOpen && (
         <ul className={styles.projectionList}>
