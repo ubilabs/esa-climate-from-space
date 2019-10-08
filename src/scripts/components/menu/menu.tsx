@@ -1,6 +1,8 @@
 import React, {FunctionComponent, useState} from 'react';
 import styles from './menu.styl';
 
+import LanguageSelector from '../language-selector/language-selector';
+
 interface MenuItem {
   id: string;
   name: string;
@@ -45,6 +47,8 @@ const Menu: FunctionComponent<{}> = () => {
               ) : (
                 menuItem.name
               )}
+
+              {menuItem.id === 'language' && <LanguageSelector />}
             </li>
           ))}
         </ul>
