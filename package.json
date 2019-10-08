@@ -31,7 +31,6 @@
   },
   "homepage": "https://github.com/ubilabs/esa-climate-from-space#readme",
   "dependencies": {
-    "@types/react-router": "^5.1.1",
     "@types/react-router-dom": "^5.1.0",
     "@types/redux-logger": "^3.0.7",
     "cesium": "^1.61.0",
