@@ -7,7 +7,7 @@ import rootReducer from '../../reducers/index';
 import LayerSelector from '../layer-selector/layer-selector';
 import Globe from '../globe/globe';
 import Menu from '../menu/menu';
-
+import ProjectionMenu from '../projection-menu/projection-menu';
 import styles from './app.styl';
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
@@ -20,6 +20,8 @@ const App: FunctionComponent<{}> = () => (
         <Menu />
         <div className={styles.timeslider} />
         <LayerSelector />
+        <Menu />
+        <ProjectionMenu />
       </div>
     </div>
   </Provider>
