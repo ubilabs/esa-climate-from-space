@@ -8,9 +8,8 @@ import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 
 import rootReducer from '../../reducers/index';
 import {localeSelector} from '../../reducers/locale';
-import {selectedLayersSelector} from '../../reducers/selected-layers';
 import LayerSelector from '../layer-selector/layer-selector';
-import Globe from '../globe/globe';
+import Globes from '../globes/globes';
 import Menu from '../menu/menu';
 import ProjectionMenu from '../projection-menu/projection-menu';
 
@@ -30,7 +29,6 @@ const App: FunctionComponent<{}> = () => (
 
 const TranslatedApp: FunctionComponent<{}> = () => {
   const locale = useSelector(localeSelector);
-  const selectedLayers = useSelector(selectedLayersSelector);
 
   return (
     <Router>
@@ -38,10 +36,8 @@ const TranslatedApp: FunctionComponent<{}> = () => {
         <div className={styles.app}>
           <Switch>
             <Route path="/" exact>
-              <div className={styles.globeContainer}>
-                <Globe />
-                {selectedLayers.compare && <Globe />}
-              </div>
+              <Globes />
+
               <div className={styles.layoutContainer}>
                 <Menu />
                 <div className={styles.timeslider} />
@@ -49,9 +45,11 @@ const TranslatedApp: FunctionComponent<{}> = () => {
                 <LayerSelector />
               </div>
             </Route>
+
             <Route path="/present">
               <h1>presenter mode</h1>
             </Route>
+
             <Route path="/showcase">
               <h1>show case mode</h1>
             </Route>
