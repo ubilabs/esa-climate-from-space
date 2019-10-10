@@ -13,6 +13,8 @@ import LayerSelector from '../layer-selector/layer-selector';
 import Globe from '../globe/globe';
 import Menu from '../menu/menu';
 import ProjectionMenu from '../projection-menu/projection-menu';
+import PresenterMode from '../presenter-mode/presenter-mode';
+import ShowCaseMode from '../show-case-mode/show-case-mode';
 
 import translations from '../../i18n';
 import styles from './app.styl';
@@ -50,10 +52,10 @@ const TranslatedApp: FunctionComponent<{}> = () => {
               </div>
             </Route>
             <Route path="/present">
-              <h1>presenter mode</h1>
+              <PresenterMode />
             </Route>
             <Route path="/showcase">
-              <h1>show case mode</h1>
+              <ShowCaseMode />
             </Route>
           </Switch>
         </div>
