@@ -1,4 +1,6 @@
 {
   "layerSelector.main": "Main",
-  "layerSelector.compare": "Compare"
+  "layerSelector.compare": "Compare",
+  "language.en": "English",
+  "language.de": "German"
 }
