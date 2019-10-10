@@ -16,7 +16,7 @@ const Stories: FunctionComponent<{}> = () => {
 
   return (
     <div className={styles.storyContainer}>
-      <h2>Stories</h2>
+      <h2>{stories.length && stories[0].title}</h2>
     </div>
   );
 };
