@@ -2,19 +2,20 @@ import React, {FunctionComponent} from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useDispatch} from 'react-redux';
 
-import setLocaleAction, {Locale} from '../../actions/set-locale';
+import setLanguageAction, {Language} from '../../actions/set-language';
 
-const locales = Object.values(Locale);
+const languages = Object.values(Language);
 
 const LanguageSelector: FunctionComponent<{}> = () => {
   const dispatch = useDispatch();
-  const setLocale = (locale: Locale) => dispatch(setLocaleAction(locale));
+  const setLanguage = (language: Language) =>
+    dispatch(setLanguageAction(language));
 
   return (
     <ul>
-      {locales.map(locale => (
-        <li key={locale} onClick={() => setLocale(locale)}>
-          <FormattedMessage id={`language.${locale}`} />
+      {languages.map(language => (
+        <li key={language} onClick={() => setLanguage(language)}>
+          <FormattedMessage id={`language.${language}`} />
         </li>
       ))}
     </ul>

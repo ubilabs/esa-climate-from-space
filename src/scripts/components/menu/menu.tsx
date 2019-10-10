@@ -1,4 +1,6 @@
 import React, {FunctionComponent, useState} from 'react';
+import {Link} from 'react-router-dom';
+
 import styles from './menu.styl';
 
 import LanguageSelector from '../language-selector/language-selector';
@@ -14,12 +16,12 @@ const Menu: FunctionComponent<{}> = () => {
     {
       id: 'presenter-mode',
       name: 'Presenter Mode',
-      link: 'http://....'
+      link: '/present'
     },
     {
       id: 'show-case-mode',
       name: 'Show Case Mode',
-      link: 'http://....'
+      link: '/showcase'
     },
     {id: 'language', name: 'Change language'},
     {id: 'share', name: 'Share Content'},
@@ -43,7 +45,7 @@ const Menu: FunctionComponent<{}> = () => {
           {menuItems.map(menuItem => (
             <li className={styles.menuListItem} key={menuItem.id}>
               {menuItem.link ? (
-                <a href={menuItem.link}>{menuItem.name}</a>
+                <Link to={menuItem.link}>{menuItem.name}</Link>
               ) : (
                 menuItem.name
               )}

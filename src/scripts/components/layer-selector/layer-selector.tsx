@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useIntl} from 'react-intl';
 
 import {layersSelector} from '../../reducers/layers';
-import {selectedLayerIdSelector} from '../../reducers/selected-layer-id';
+import {selectedLayersSelector} from '../../reducers/selected-layers';
 import fetchLayers from '../../actions/fetch-layers';
 import {setSelectedLayerIdAction} from '../../actions/set-selected-layer';
 import LayerList from '../layer-list/layer-list';
@@ -13,7 +13,7 @@ import styles from './layer-selector.styl';
 const LayerSelector: FunctionComponent<{}> = () => {
   const intl = useIntl();
   const layers = useSelector(layersSelector);
-  const layerIds = useSelector(selectedLayerIdSelector);
+  const layerIds = useSelector(selectedLayersSelector);
   const dispatch = useDispatch();
   const tabs = [
     {
