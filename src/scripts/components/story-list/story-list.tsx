@@ -3,10 +3,15 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import {storiesSelector} from '../../reducers/stories';
 import fetchStories from '../../actions/fetch-stories';
+import styles from './story-list.styl';
+import StoryItem from '../story-item/story-item';
 
-import styles from './stories.styl';
+interface Story {
+  id: string;
+  title: string;
+}
 
-const Stories: FunctionComponent<{}> = () => {
+const StoryList: FunctionComponent<{}> = () => {
   const stories = useSelector(storiesSelector);
   const dispatch = useDispatch();
 
@@ -16,9 +21,11 @@ const Stories: FunctionComponent<{}> = () => {
 
   return (
     <div className={styles.stories}>
-      <h2>{stories.length && stories[0].title}</h2>
+      {stories.map(story => (
+        <StoryItem key={story.id} story={story} />
+      ))}
     </div>
   );
 };
 
-export default Stories;
+export default StoryList;

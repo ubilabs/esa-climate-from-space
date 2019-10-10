@@ -1,12 +1,14 @@
 import React, {FunctionComponent} from 'react';
+import {Link} from 'react-router-dom';
 
 import styles from './showcase-selector.styl';
-import Stories from '../stories/stories';
+import StoryList from '../story-list/story-list';
 
 const ShowcaseSelector: FunctionComponent<{}> = () => (
   <div className={styles.showcaseSelector}>
-    <h1>Showcase Test</h1>
-    <Stories />
+    <Link to="/">Go back</Link>
+    <h1>Showcase Mode</h1>
+    <StoryList />
   </div>
 );
 
