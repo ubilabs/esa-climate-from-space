@@ -12,9 +12,18 @@ import 'cesium/Build/Cesium/Cesium';
 
 import styles from './globe.styl';
 
-// set global base url
 const Cesium = window.Cesium;
+// set global base url
 Cesium.buildModuleUrl.setBaseUrl('./cesium/');
+// we do not use cesium ion tile server
+// @ts-ignore
+Cesium.Ion.defaultAccessToken = '';
+// create default imagery provider
+// @ts-ignore
+const tileUrl = window.Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII');
+const imageryProvider = window.Cesium.createTileMapServiceImageryProvider({
+  url: tileUrl
+});
 
 interface Props {
   active: boolean;
@@ -43,7 +52,12 @@ const Globe: FunctionComponent<Props> = ({
       return () => {};
     }
 
-    const scopedViewer = new Cesium.Viewer(ref.current, config.globe.options);
+    // create cesium viewer
+    const options = {
+      ...config.globe.options,
+      imageryProvider
+    };
+    const scopedViewer = new Cesium.Viewer(ref.current, options);
 
     // save viewer reference
     setViewer(scopedViewer);
