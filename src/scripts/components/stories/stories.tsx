@@ -17,7 +17,6 @@ const Stories: FunctionComponent<{}> = () => {
   return (
     <div className={styles.storyContainer}>
       <h2>Stories</h2>
-      {console.log('stories', stories)}
     </div>
   );
 };
