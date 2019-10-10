@@ -1,7 +1,7 @@
 import {Dispatch} from 'redux';
 
 import fetchLayersApi from '../api/fetch-layers';
-import {localeSelector} from '../reducers/locale';
+import {languageSelector} from '../reducers/language';
 import {State} from '../reducers/index';
 
 export const FETCH_LAYERS_SUCCESS = 'FETCH_LAYERS_SUCCESS';
@@ -44,9 +44,9 @@ function fetchLayersErrorAction(message: string) {
 }
 
 const fetchLayers = () => (dispatch: Dispatch, getState: () => State) => {
-  const locale = localeSelector(getState());
+  const language = languageSelector(getState());
 
-  return fetchLayersApi(locale)
+  return fetchLayersApi(language)
     .then(layers => dispatch(fetchLayersSuccessAction(layers)))
     .catch(error => dispatch(fetchLayersErrorAction(error.message)));
 };

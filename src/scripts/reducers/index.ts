@@ -1,13 +1,13 @@
 import {combineReducers} from 'redux';
 
-import localeReducer from './locale';
+import languageReducer from './language';
 import layersReducer from './layers';
 import storiesReducer from './stories';
 import selectedLayersReducer from './selected-layers';
 import projectionReducer from './projection';
 
 const rootReducer = combineReducers({
-  locale: localeReducer,
+  language: languageReducer,
   layers: layersReducer,
   stories: storiesReducer,
   selectedLayers: selectedLayersReducer,

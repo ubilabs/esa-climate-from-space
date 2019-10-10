@@ -1,7 +1,7 @@
 import {Dispatch} from 'redux';
 
 import fetchStoriesApi from '../api/fetch-stories';
-import {localeSelector} from '../reducers/locale';
+import {languageSelector} from '../reducers/language';
 import {State} from '../reducers/index';
 
 export const FETCH_STORIES_SUCCESS = 'FETCH_STORIES_SUCCESS';
@@ -43,9 +43,9 @@ function fetchStoriesErrorAction(message: string) {
 }
 
 const fetchStories = () => (dispatch: Dispatch, getState: () => State) => {
-  const locale = localeSelector(getState());
+  const language = languageSelector(getState());
 
-  return fetchStoriesApi(locale)
+  return fetchStoriesApi(language)
     .then(stories => dispatch(fetchStoriesSuccessAction(stories)))
     .catch(error => dispatch(fetchStoriesErrorAction(error.message)));
 };

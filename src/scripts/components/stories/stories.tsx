@@ -15,7 +15,7 @@ const Stories: FunctionComponent<{}> = () => {
   }, []);
 
   return (
-    <div className={styles.storyContainer}>
+    <div className={styles.stories}>
       <h2>{stories.length && stories[0].title}</h2>
     </div>
   );
