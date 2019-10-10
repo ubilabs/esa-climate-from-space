@@ -7,7 +7,7 @@ import {IntlProvider} from 'react-intl';
 import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 
 import rootReducer from '../../reducers/index';
-import {localeSelector} from '../../reducers/locale';
+import {languageSelector} from '../../reducers/language';
 import LayerSelector from '../layer-selector/layer-selector';
 import Globes from '../globes/globes';
 import Menu from '../menu/menu';
@@ -28,11 +28,11 @@ const App: FunctionComponent<{}> = () => (
 );
 
 const TranslatedApp: FunctionComponent<{}> = () => {
-  const locale = useSelector(localeSelector);
+  const language = useSelector(languageSelector);
 
   return (
     <Router>
-      <IntlProvider locale={locale} messages={translations[locale]}>
+      <IntlProvider locale={language} messages={translations[language]}>
         <div className={styles.app}>
           <Switch>
             <Route path="/" exact>
