@@ -9,8 +9,8 @@ interface Props {
 
 const StoryItem: FunctionComponent<Props> = ({story}) => (
   <div className={styles.storyItem}>
-    <div className={styles.storyItemImage}></div>
-    <p className={styles.storyItemTitle}>{story.title}</p>
+    <div className={styles.image}></div>
+    <p className={styles.title}>{story.title}</p>
   </div>
 );
 
