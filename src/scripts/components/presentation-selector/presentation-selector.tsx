@@ -1,12 +1,14 @@
 import React, {FunctionComponent} from 'react';
+import {Link} from 'react-router-dom';
 
 import styles from './presentation-selector.styl';
-import Stories from '../stories/stories';
+import StoryList from '../story-list/story-list';
 
 const PresentationSelector: FunctionComponent<{}> = () => (
   <div className={styles.presentationSelector}>
-    <h1>Presenter Test</h1>
-    <Stories />
+    <Link to="/">Go back</Link>
+    <h1>Presenter Mode</h1>
+    <StoryList />
   </div>
 );
 
