@@ -20,7 +20,7 @@ const StoryList: FunctionComponent<{}> = () => {
   }, []);
 
   return (
-    <div className={styles.stories}>
+    <div className={styles.storyList}>
       {stories.map(story => (
         <StoryItem key={story.id} story={story} />
       ))}

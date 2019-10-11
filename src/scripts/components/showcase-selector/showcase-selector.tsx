@@ -6,8 +6,10 @@ import StoryList from '../story-list/story-list';
 
 const ShowcaseSelector: FunctionComponent<{}> = () => (
   <div className={styles.showcaseSelector}>
-    <Link to="/">Go back</Link>
-    <h1>Showcase Mode</h1>
+    <Link to="/" className={styles.backButton}>
+      Go back
+    </Link>
+    <h1 className={styles.title}>Showcase Mode</h1>
     <StoryList />
   </div>
 );
