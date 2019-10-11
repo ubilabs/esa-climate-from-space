@@ -1,6 +1,6 @@
 {
   "name": "esa-climate-from-space",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "src/electron/main.js",
   "scripts": {
