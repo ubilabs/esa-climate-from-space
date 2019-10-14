@@ -4,3 +4,19 @@
 
 .app
   height: 100%
+  font-family: Arial, Helvetica, sans-serif
+
+.layoutContainer
+  position: relative
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
+  align-items: flex-end
+  height: 100%
+  pointer-events: none
+
+.layoutContainer > *
+  pointer-events: auto
+
+.timeslider
+  flex-grow: 1

@@ -1,5 +1,8 @@
 import {Dispatch} from 'redux';
-import config from '../config/main';
+
+import fetchLayersApi from '../api/fetch-layers';
+import {languageSelector} from '../reducers/language';
+import {State} from '../reducers/index';
 
 export const FETCH_LAYERS_SUCCESS = 'FETCH_LAYERS_SUCCESS';
 export const FETCH_LAYERS_ERROR = 'FETCH_LAYERS_ERROR';
@@ -12,15 +15,19 @@ export interface Layer {
   subLayers: Layer[];
 }
 
-export interface FetchLayersSuccessAction {
+interface FetchLayersSuccessAction {
   type: typeof FETCH_LAYERS_SUCCESS;
   layers: Layer[];
 }
 
-export interface FetchLayersErrorAction {
+interface FetchLayersErrorAction {
   type: typeof FETCH_LAYERS_ERROR;
   message: string;
 }
+
+export type FetchLayersActions =
+  | FetchLayersSuccessAction
+  | FetchLayersErrorAction;
 
 function fetchLayersSuccessAction(layers: Layer[]) {
   return {
@@ -36,10 +43,12 @@ function fetchLayersErrorAction(message: string) {
   };
 }
 
-const fetchLayers = () => (dispatch: Dispatch) =>
-  fetch(config.api.layers)
-    .then(res => res.json())
+const fetchLayers = () => (dispatch: Dispatch, getState: () => State) => {
+  const language = languageSelector(getState());
+
+  return fetchLayersApi(language)
     .then(layers => dispatch(fetchLayersSuccessAction(layers)))
     .catch(error => dispatch(fetchLayersErrorAction(error.message)));
+};
 
 export default fetchLayers;

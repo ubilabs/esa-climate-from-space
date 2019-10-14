@@ -1,0 +1,13 @@
+{
+  "blocks": false,
+  "brackets": "never",
+  "colons": "always",
+  "colors": false,
+  "commaSpace": "always",
+  "commentSpace": "always",
+  "semicolons": "never",
+  "sortOrder": "grouped",
+  "exclude": ["node_modules/**/*"],
+  "indentPref": 2,
+  "maxWarnings": 0
+}
