@@ -1,5 +1,5 @@
 import 'cesium/Build/Cesium/Cesium';
-import {View} from '../components/globes/globes';
+import GlobeView from '../types/globe-view';
 
 interface CesiumView {
   destination: Cesium.Cartesian3;
@@ -10,7 +10,7 @@ interface CesiumView {
   };
 }
 
-export function cesiumViewToPlainView(cesiumView: CesiumView): View {
+export function cesiumViewToPlainView(cesiumView: CesiumView): GlobeView {
   const {destination} = cesiumView;
 
   return {
@@ -19,7 +19,7 @@ export function cesiumViewToPlainView(cesiumView: CesiumView): View {
   };
 }
 
-export function plainViewToCesiumView(plainView: View): CesiumView {
+export function plainViewToCesiumView(plainView: GlobeView): CesiumView {
   const {destination} = plainView;
 
   return {
@@ -29,7 +29,7 @@ export function plainViewToCesiumView(plainView: View): CesiumView {
 }
 
 // get the position and camera distance from a cesium viewer
-export default function getGlobeView(viewer: Cesium.Viewer): View {
+export default function getGlobeView(viewer: Cesium.Viewer): GlobeView {
   const camera = viewer.scene.camera;
   const destination = camera.positionWC;
 

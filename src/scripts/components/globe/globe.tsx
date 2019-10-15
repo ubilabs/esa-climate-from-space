@@ -1,11 +1,8 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
 
-import {projectionSelector} from '../../reducers/projection';
-import {Projection} from '../../actions/set-projection';
+import {GlobeProjection} from '../../actions/set-globe-projection';
 import getGlobeView, {plainViewToCesiumView} from '../../libs/get-globe-view';
-import {View} from '../globes/globes';
-import config from '../../config/main';
+import GlobeView from '../../types/globe-view';
 
 import 'cesium/Source/Widgets/widgets.css';
 import 'cesium/Build/Cesium/Cesium';
@@ -27,20 +24,21 @@ const imageryProvider = window.Cesium.createTileMapServiceImageryProvider({
 
 interface Props {
   active: boolean;
-  view: View;
+  view: GlobeView;
+  projection: GlobeProjection;
   onMouseEnter: () => void;
   onChange: (view: View) => void;
 }
 
 const Globe: FunctionComponent<Props> = ({
   view,
+  projection,
   active,
   onMouseEnter,
   onChange
 }) => {
   const [viewer, setViewer] = useState<Cesium.Viewer | null>(null);
   const ref = useRef<HTMLDivElement>(null);
-  const projection = useSelector(projectionSelector);
 
   // make latest "active" value always accessible in camera change handler
   const isActiveRef = useRef<boolean>(active);
@@ -53,11 +51,7 @@ const Globe: FunctionComponent<Props> = ({
     }
 
     // create cesium viewer
-    const options = {
-      ...config.globe.options,
-      imageryProvider
-    };
-    const scopedViewer = new Cesium.Viewer(ref.current, options);
+    const scopedViewer = new Cesium.Viewer(ref.current, cesiumOptions);
 
     // save viewer reference
     setViewer(scopedViewer);
@@ -86,7 +80,7 @@ const Globe: FunctionComponent<Props> = ({
       return;
     }
 
-    projection === Projection.Sphere
+    projection === GlobeProjection.Sphere
       ? viewer.scene.morphTo3D()
       : viewer.scene.morphTo2D();
   }, [viewer, projection]);

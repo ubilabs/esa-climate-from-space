@@ -4,14 +4,14 @@ import languageReducer from './language';
 import layersReducer from './layers';
 import storiesReducer from './stories';
 import selectedLayersReducer from './selected-layers';
-import projectionReducer from './projection';
+import globeReducer from './globe';
 
 const rootReducer = combineReducers({
   language: languageReducer,
   layers: layersReducer,
   stories: storiesReducer,
   selectedLayers: selectedLayersReducer,
-  projection: projectionReducer
+  globe: globeReducer
 });
 
 export default rootReducer;

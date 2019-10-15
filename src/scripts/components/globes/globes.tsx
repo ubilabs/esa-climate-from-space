@@ -1,24 +1,17 @@
 import React, {FunctionComponent, useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 import {selectedLayersSelector} from '../../reducers/selected-layers';
+import {globeViewSelector} from '../../reducers/globe/view';
+import {projectionSelector} from '../../reducers/globe/projection';
 import Globe from '../globe/globe';
-import config from '../../config/main';
+
+import GlobeView from '../../types/globe-view';
 
 import styles from './globes.styl';
 
-export interface View {
-  destination: [number, number, number];
-  orientation: {
-    heading: number;
-    pitch: number;
-    roll: number;
-  };
-}
-
 const Globes: FunctionComponent<{}> = () => {
-  const initialView = config.globe.view as View;
-  const [currentView, setCurrentView] = useState<View>(initialView);
+  const projection = useSelector(projectionSelector);
   const [isMainActive, setIsMainActive] = useState(true);
   const selectedLayers = useSelector(selectedLayersSelector);
   const onChangeHandler = (view: View) => setCurrentView(view);
@@ -28,6 +21,7 @@ const Globes: FunctionComponent<{}> = () => {
       <Globe
         active={isMainActive}
         view={currentView}
+        projection={projection}
         onMouseEnter={() => setIsMainActive(true)}
         onChange={onChangeHandler}
       />
@@ -36,6 +30,7 @@ const Globes: FunctionComponent<{}> = () => {
         <Globe
           active={!isMainActive}
           view={currentView}
+          projection={projection}
           onMouseEnter={() => setIsMainActive(false)}
           onChange={onChangeHandler}
         />

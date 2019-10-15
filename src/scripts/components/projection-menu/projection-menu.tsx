@@ -1,13 +1,15 @@
 import React, {FunctionComponent, useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {setProjectionAction, Projection} from '../../actions/set-projection';
+import setGlobeProjectionAction, {
+  GlobeProjection
+} from '../../actions/set-globe-projection';
 import styles from './projection-menu.styl';
 
 const ProjectionMenu: FunctionComponent<{}> = () => {
-  const projections = Object.values(Projection);
+  const projections = Object.values(GlobeProjection);
   const dispatch = useDispatch();
-  const onProjectionClick = (projection: Projection) => {
-    dispatch(setProjectionAction(projection));
+  const onProjectionClick = (projection: GlobeProjection) => {
+    dispatch(setGlobeProjectionAction(projection));
   };
   const [isOpen, setIsOpen] = useState(false);
   const onButtonClickHandler = () => setIsOpen(!isOpen);
