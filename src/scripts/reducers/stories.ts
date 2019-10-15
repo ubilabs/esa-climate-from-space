@@ -1,9 +1,10 @@
-import {State} from './index';
 import {
   FETCH_STORIES_SUCCESS,
-  Story,
   FetchStoriesActions
 } from '../actions/fetch-stories';
+
+import {Story} from '../types/story';
+import {State} from './index';
 
 export type StoriesState = Story[];
 const initialState: StoriesState = [];

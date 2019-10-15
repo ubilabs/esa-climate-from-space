@@ -1,14 +1,7 @@
 import 'cesium/Build/Cesium/Cesium';
-import GlobeView from '../types/globe-view';
 
-interface CesiumView {
-  destination: Cesium.Cartesian3;
-  orientation: {
-    heading: number;
-    pitch: number;
-    roll: number;
-  };
-}
+import {CesiumView} from '../types/cesium-view';
+import {GlobeView} from '../types/globe-view';
 
 export function cesiumViewToPlainView(cesiumView: CesiumView): GlobeView {
   const {destination} = cesiumView;

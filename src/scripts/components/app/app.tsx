@@ -17,6 +17,7 @@ import ShowcaseSelector from '../showcase-selector/showcase-selector';
 import UrlSync from '../url-sync/url-sync';
 
 import translations from '../../i18n';
+
 import styles from './app.styl';
 
 const store = createStore(

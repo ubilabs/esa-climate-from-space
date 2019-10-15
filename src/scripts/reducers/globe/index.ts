@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux';
+
 import projectionReducer from './projection';
 import viewReducer from './view';
+
 import {State} from '../index';
 
 const globeReducer = combineReducers({

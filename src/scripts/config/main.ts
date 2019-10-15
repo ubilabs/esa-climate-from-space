@@ -1,5 +1,5 @@
 import {GlobeState} from '../reducers/globe/index';
-import {GlobeProjection} from '../actions/set-globe-projection';
+import {GlobeProjection} from '../types/globe-projection';
 
 const globeState: GlobeState = {
   projection: GlobeProjection.Sphere,

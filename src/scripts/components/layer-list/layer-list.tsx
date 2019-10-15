@@ -1,7 +1,8 @@
 import React, {FunctionComponent, MouseEvent} from 'react';
 import cx from 'classnames';
-import {Layer} from '../../actions/fetch-layers';
 import styles from './layer-list.styl';
+
+import {Layer} from '../../types/layer';
 
 interface Props {
   layers: Layer[];

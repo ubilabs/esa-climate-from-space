@@ -2,7 +2,9 @@ import React, {FunctionComponent} from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useDispatch} from 'react-redux';
 
-import setLanguageAction, {Language} from '../../actions/set-language';
+import setLanguageAction from '../../actions/set-language';
+
+import {Language} from '../../types/language';
 
 const languages = Object.values(Language);
 

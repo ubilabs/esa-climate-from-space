@@ -2,13 +2,10 @@ import React, {FunctionComponent} from 'react';
 import Tab from '../tab/tab';
 import styles from './tabs.styl';
 
-interface Tab {
-  id: string;
-  label: string;
-}
+import {Tab as TabInterface} from '../../types/tab';
 
 interface Props {
-  tabs: Tab[];
+  tabs: TabInterface[];
   activeTabId: string;
   onTabChanged: (name: string) => void;
 }

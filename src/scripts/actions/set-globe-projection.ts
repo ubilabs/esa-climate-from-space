@@ -1,10 +1,6 @@
-export const SET_GLOBE_PROJECTION = 'SET_GLOBE_PROJECTION';
+import {GlobeProjection} from '../types/globe-projection';
 
-export enum GlobeProjection {
-  Sphere = 'Sphere',
-  Mercator = 'Mercator',
-  PlateCaree = 'PlateCaree'
-}
+export const SET_GLOBE_PROJECTION = 'SET_GLOBE_PROJECTION';
 
 export interface SetGlobeProjectionAction {
   type: typeof SET_GLOBE_PROJECTION;

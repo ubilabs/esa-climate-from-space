@@ -1,5 +1,5 @@
-export interface GlobeView {
-  destination: [number, number, number];
+export interface CesiumView {
+  destination: Cesium.Cartesian3;
   orientation: {
     heading: number;
     pitch: number;

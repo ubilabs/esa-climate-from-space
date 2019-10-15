@@ -3,13 +3,9 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import {storiesSelector} from '../../reducers/stories';
 import fetchStories from '../../actions/fetch-stories';
-import styles from './story-list.styl';
 import StoryItem from '../story-item/story-item';
 
-interface Story {
-  id: string;
-  title: string;
-}
+import styles from './story-list.styl';
 
 const StoryList: FunctionComponent<{}> = () => {
   const stories = useSelector(storiesSelector);

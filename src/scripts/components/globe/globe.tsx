@@ -1,8 +1,9 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
 
-import {GlobeProjection} from '../../actions/set-globe-projection';
 import getGlobeView, {plainViewToCesiumView} from '../../libs/get-globe-view';
-import GlobeView from '../../types/globe-view';
+
+import {GlobeView} from '../../types/globe-view';
+import {GlobeProjection} from '../../types/globe-projection';
 
 import 'cesium/Source/Widgets/widgets.css';
 import 'cesium/Build/Cesium/Cesium';

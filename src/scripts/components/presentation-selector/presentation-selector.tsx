@@ -1,8 +1,9 @@
 import React, {FunctionComponent} from 'react';
 import {Link} from 'react-router-dom';
 
-import styles from './presentation-selector.styl';
 import StoryList from '../story-list/story-list';
+
+import styles from './presentation-selector.styl';
 
 const PresentationSelector: FunctionComponent<{}> = () => (
   <div className={styles.presentationSelector}>

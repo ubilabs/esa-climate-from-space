@@ -2,18 +2,12 @@ import {Dispatch} from 'redux';
 
 import fetchLayersApi from '../api/fetch-layers';
 import {languageSelector} from '../reducers/language';
+
 import {State} from '../reducers/index';
+import {Layer} from '../types/layer';
 
 export const FETCH_LAYERS_SUCCESS = 'FETCH_LAYERS_SUCCESS';
 export const FETCH_LAYERS_ERROR = 'FETCH_LAYERS_ERROR';
-
-export interface Layer {
-  id: string;
-  name: string;
-  description: string;
-  metadataUrl: string;
-  subLayers: Layer[];
-}
 
 interface FetchLayersSuccessAction {
   type: typeof FETCH_LAYERS_SUCCESS;

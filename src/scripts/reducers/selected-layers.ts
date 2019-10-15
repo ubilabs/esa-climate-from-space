@@ -1,13 +1,13 @@
 import {
   SET_SELECTED_LAYER_ID,
-  LayerId,
   SetSelectedLayerIdAction
 } from '../actions/set-selected-layer';
+
 import {State} from './index';
 
 export interface SelectedLayersState {
-  main: LayerId | null;
-  compare: LayerId | null;
+  main: string | null;
+  compare: string | null;
 }
 
 const initialState = {
