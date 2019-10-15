@@ -22,12 +22,26 @@ const imageryProvider = window.Cesium.createTileMapServiceImageryProvider({
   url: tileUrl
 });
 
+const cesiumOptions = {
+  homeButton: false,
+  fullscreenButton: false,
+  sceneModePicker: false,
+  infoBox: false,
+  geocoder: false,
+  navigationHelpButton: false,
+  animation: false,
+  timeline: false,
+  baseLayerPicker: false,
+  imageryProvider
+};
+
 interface Props {
   active: boolean;
   view: GlobeView;
   projection: GlobeProjection;
   onMouseEnter: () => void;
-  onChange: (view: View) => void;
+  onChange: (view: GlobeView) => void;
+  onMoveEnd: (view: GlobeView) => void;
 }
 
 const Globe: FunctionComponent<Props> = ({
@@ -35,7 +49,8 @@ const Globe: FunctionComponent<Props> = ({
   projection,
   active,
   onMouseEnter,
-  onChange
+  onChange,
+  onMoveEnd
 }) => {
   const [viewer, setViewer] = useState<Cesium.Viewer | null>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -65,6 +80,11 @@ const Globe: FunctionComponent<Props> = ({
     // add camera change listener
     scopedViewer.camera.changed.addEventListener(() => {
       isActiveRef.current && onChange(getGlobeView(scopedViewer));
+    });
+
+    // add camera move end listener
+    scopedViewer.camera.moveEnd.addEventListener(() => {
+      isActiveRef.current && onMoveEnd(getGlobeView(scopedViewer));
     });
 
     // clean up

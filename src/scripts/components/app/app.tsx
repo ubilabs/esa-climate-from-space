@@ -14,6 +14,7 @@ import Menu from '../menu/menu';
 import ProjectionMenu from '../projection-menu/projection-menu';
 import PresentationSelector from '../presentation-selector/presentation-selector';
 import ShowcaseSelector from '../showcase-selector/showcase-selector';
+import UrlSync from '../url-sync/url-sync';
 
 import translations from '../../i18n';
 import styles from './app.styl';
@@ -58,6 +59,8 @@ const TranslatedApp: FunctionComponent<{}> = () => {
           </Switch>
         </div>
       </IntlProvider>
+
+      <UrlSync />
     </Router>
   );
 };
