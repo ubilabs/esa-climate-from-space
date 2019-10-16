@@ -13,8 +13,13 @@ const UrlSync: FunctionComponent<{}> = () => {
 
   // set globe query params in url when globe state changes
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
     const globeValue = getParamString(globeState);
+
+    if (!globeValue) {
+      return;
+    }
+
+    const params = new URLSearchParams(location.search);
     params.set('globe', globeValue);
     history.replace({search: params.toString()});
   }, [globeState]);

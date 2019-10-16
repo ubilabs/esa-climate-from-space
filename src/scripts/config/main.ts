@@ -4,10 +4,14 @@ import {GlobeProjection} from '../types/globe-projection';
 const globeState: GlobeState = {
   projection: GlobeProjection.Sphere,
   view: {
-    destination: [18888448, 279066, 15407835],
+    position: {
+      height: 14484862,
+      latitude: 0.659017,
+      longitude: 0.002816
+    },
     orientation: {
-      heading: 6.2,
-      pitch: -1.59,
+      heading: Math.PI * 2,
+      pitch: Math.PI / -2,
       roll: 0
     }
   }
