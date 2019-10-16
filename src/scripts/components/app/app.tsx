@@ -14,12 +14,12 @@ import Menu from '../menu/menu';
 import ProjectionMenu from '../projection-menu/projection-menu';
 import PresentationSelector from '../presentation-selector/presentation-selector';
 import ShowcaseSelector from '../showcase-selector/showcase-selector';
+import StoriesSelector from '../stories-selector/stories-selector';
 import StoriesButton from '../stories-button/stories-button';
 import UrlSync from '../url-sync/url-sync';
 
 import translations from '../../i18n';
 import styles from './app.styl';
-import StoriesSelector from '../stories-selector/stories-selector';
 
 const store = createStore(
   rootReducer,

@@ -3,5 +3,7 @@
   "layerSelector.compare": "Compare",
   "language.en": "English",
   "language.de": "German",
-  "stories": "Stories"
+  "stories": "Stories",
+  "goBack": "Go back",
+  "storymode": "Story Mode"
 }
