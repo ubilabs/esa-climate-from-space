@@ -2,5 +2,8 @@
   "layerSelector.main": "Main",
   "layerSelector.compare": "Compare",
   "language.en": "English",
-  "language.de": "German"
+  "language.de": "German",
+  "stories": "Stories",
+  "goBack": "Go back",
+  "storymode": "Story Mode"
 }
