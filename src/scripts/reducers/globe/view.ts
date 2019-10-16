@@ -1,8 +1,9 @@
 import {SET_GLOBE_VIEW, SetGlobeViewAction} from '../../actions/set-globe-view';
-import GlobeView from '../../types/globe-view';
-import {State} from '../index';
 import {parseUrl} from '../../libs/globe-url-parameter';
 import config from '../../config/main';
+
+import {State} from '../index';
+import {GlobeView} from '../../types/globe-view';
 
 // get initial state from url or fallback to default state in config
 const globeState = parseUrl() || config.globe;

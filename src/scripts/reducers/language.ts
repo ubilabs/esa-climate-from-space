@@ -1,10 +1,8 @@
-import {State} from './index';
-import {
-  SET_LANGUAGE,
-  Language,
-  SetLanguageAction
-} from '../actions/set-language';
+import {SET_LANGUAGE, SetLanguageAction} from '../actions/set-language';
 import getBrowserLanguage from '../libs/get-browser-language';
+
+import {State} from './index';
+import {Language} from '../types/language';
 
 const initialState: Language = getBrowserLanguage() || Language.EN;
 

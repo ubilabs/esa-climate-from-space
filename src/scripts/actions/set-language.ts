@@ -1,14 +1,11 @@
 import {ThunkDispatch} from 'redux-thunk';
 
-import {State} from '../reducers/index';
 import fetchLayers, {FetchLayersActions} from './fetch-layers';
 
-export const SET_LANGUAGE = 'SET_LANGUAGE';
+import {State} from '../reducers/index';
+import {Language} from '../types/language';
 
-export enum Language {
-  EN = 'en',
-  DE = 'de'
-}
+export const SET_LANGUAGE = 'SET_LANGUAGE';
 
 export interface SetLanguageAction {
   type: typeof SET_LANGUAGE;

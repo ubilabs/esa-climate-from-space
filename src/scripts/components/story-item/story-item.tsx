@@ -1,7 +1,8 @@
 import React, {FunctionComponent} from 'react';
 
+import {Story} from '../../types/story';
+
 import styles from './story-item.styl';
-import {Story} from '../../actions/fetch-stories';
 
 interface Props {
   story: Story;

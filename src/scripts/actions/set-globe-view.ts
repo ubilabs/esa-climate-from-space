@@ -1,4 +1,4 @@
-import GlobeView from '../types/globe-view';
+import {GlobeView} from '../types/globe-view';
 
 export const SET_GLOBE_VIEW = 'SET_GLOBE_VIEW';
 

@@ -1,15 +1,11 @@
 import React, {FunctionComponent, useState} from 'react';
 import {Link} from 'react-router-dom';
 
-import styles from './menu.styl';
-
 import LanguageSelector from '../language-selector/language-selector';
 
-interface MenuItem {
-  id: string;
-  name: string;
-  link?: string;
-}
+import {MenuItem} from '../../types/menu-item';
+
+import styles from './menu.styl';
 
 const Menu: FunctionComponent<{}> = () => {
   const menuItems: MenuItem[] = [

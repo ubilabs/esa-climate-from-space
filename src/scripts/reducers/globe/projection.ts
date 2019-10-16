@@ -1,10 +1,11 @@
 import {
   SET_GLOBE_PROJECTION,
-  GlobeProjection,
   SetGlobeProjectionAction
 } from '../../actions/set-globe-projection';
 import {parseUrl} from '../../libs/globe-url-parameter';
 import config from '../../config/main';
+
+import {GlobeProjection} from '../../types/globe-projection';
 import {State} from '../index';
 
 // get initial state from url or fallback to default state in config

@@ -1,9 +1,10 @@
-import {State} from './index';
 import {
   FETCH_LAYERS_SUCCESS,
-  Layer,
   FetchLayersActions
 } from '../actions/fetch-layers';
+
+import {State} from './index';
+import {Layer} from '../types/layer';
 
 export type LayersState = Layer[];
 const initialState: LayersState = [];

@@ -5,9 +5,10 @@ import {useIntl} from 'react-intl';
 import {layersSelector} from '../../reducers/layers';
 import {selectedLayersSelector} from '../../reducers/selected-layers';
 import fetchLayers from '../../actions/fetch-layers';
-import {setSelectedLayerIdAction} from '../../actions/set-selected-layer';
+import setSelectedLayerIdAction from '../../actions/set-selected-layer';
 import LayerList from '../layer-list/layer-list';
 import Tabs from '../tabs/tabs';
+
 import styles from './layer-selector.styl';
 
 const LayerSelector: FunctionComponent<{}> = () => {

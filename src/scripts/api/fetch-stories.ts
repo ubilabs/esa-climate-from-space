@@ -1,5 +1,6 @@
-import {Language} from '../actions/set-language';
 import config from '../config/main';
+
+import {Language} from '../types/language';
 
 export default function fetchStories(language: Language) {
   const url = `${config.api.stories}-${language.toLowerCase()}.json`;

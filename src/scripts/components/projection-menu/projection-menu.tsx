@@ -1,8 +1,10 @@
 import React, {FunctionComponent, useState} from 'react';
 import {useDispatch} from 'react-redux';
-import setGlobeProjectionAction, {
-  GlobeProjection
-} from '../../actions/set-globe-projection';
+
+import setGlobeProjectionAction from '../../actions/set-globe-projection';
+
+import {GlobeProjection} from '../../types/globe-projection';
+
 import styles from './projection-menu.styl';
 
 const ProjectionMenu: FunctionComponent<{}> = () => {

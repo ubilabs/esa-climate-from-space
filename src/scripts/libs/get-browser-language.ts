@@ -1,4 +1,4 @@
-import {Language} from '../actions/set-language';
+import {Language} from '../types/language';
 
 export default function getBrowserLanguage(): Language | null {
   const browserLanguage = window.navigator.language;
