@@ -42,13 +42,13 @@ const TranslatedApp: FunctionComponent<{}> = () => {
           <Switch>
             <Route path="/" exact>
               <Globes />
+              <StoriesButton />
 
               <div className={styles.layoutContainer}>
                 <Menu />
                 <div className={styles.timeslider} />
                 <ProjectionMenu />
                 <LayerSelector />
-                <StoriesButton />
               </div>
             </Route>
 
