@@ -1,39 +1,39 @@
 import 'cesium/Build/Cesium/Cesium';
 
-import {CesiumView} from '../types/cesium-view';
 import {GlobeView} from '../types/globe-view';
 
-export function cesiumViewToPlainView(cesiumView: CesiumView): GlobeView {
-  const {destination} = cesiumView;
+const Cesium = window.Cesium;
 
-  return {
-    ...cesiumView,
-    destination: [destination.x, destination.y, destination.z]
-  };
-}
-
-export function plainViewToCesiumView(plainView: GlobeView): CesiumView {
-  const {destination} = plainView;
-
-  return {
-    ...plainView,
-    destination: window.Cesium.Cartesian3.fromArray(destination)
-  };
-}
-
-// get the position and camera distance from a cesium viewer
-export default function getGlobeView(viewer: Cesium.Viewer): GlobeView {
-  const camera = viewer.scene.camera;
-  const destination = camera.positionWC;
-
+// set the camera according to the given globe view
+export function setGlobeView(viewer: Cesium.Viewer, view: GlobeView): void {
+  const {position, orientation} = view;
   const cesiumView = {
-    destination,
+    destination: Cesium.Cartesian3.fromRadians(
+      position.longitude,
+      position.latitude,
+      position.height
+    ),
+    orientation
+  };
+
+  viewer.scene.camera.setView(cesiumView);
+}
+
+// get the globe view from the current cesium camera
+export function getGlobeView(viewer: Cesium.Viewer): GlobeView {
+  const camera = viewer.scene.camera;
+  const position = camera.positionCartographic;
+
+  return {
+    position: {
+      longitude: position.longitude,
+      latitude: position.latitude,
+      height: position.height
+    },
     orientation: {
       heading: camera.heading,
       pitch: camera.pitch,
       roll: camera.roll
     }
   };
-
-  return cesiumViewToPlainView(cesiumView);
 }

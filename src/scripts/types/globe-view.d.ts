@@ -1,5 +1,9 @@
 export interface GlobeView {
-  destination: [number, number, number];
+  position: {
+    longitude: number;
+    latitude: number;
+    height: number;
+  };
   orientation: {
     heading: number;
     pitch: number;

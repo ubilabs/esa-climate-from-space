@@ -41,28 +41,43 @@ export function parseUrl(): GlobeState | null {
     return null;
   }
 
+  // convert degree to radians
+  values[0] = values[0] * (Math.PI / 180);
+  values[1] = values[1] * (Math.PI / 180);
+
   return {
     view: {
-      orientation: {
-        heading: values[0],
-        pitch: values[1],
-        roll: values[2]
+      position: {
+        longitude: values[0],
+        latitude: values[1],
+        height: values[2]
       },
-      destination: [values[3], values[4], values[5]]
+      orientation: {
+        heading: values[3],
+        pitch: values[4],
+        roll: values[5]
+      }
     },
     projection
   };
 }
 
-export function getParamString(globeState: GlobeState): string {
+export function getParamString(globeState: GlobeState): string | null {
   const {view, projection} = globeState;
-  const {orientation, destination} = view;
+  const {position, orientation} = view;
+  const {longitude, latitude, height} = position;
   const {heading, pitch, roll} = orientation;
+  const values = [longitude, latitude, height, heading, pitch, roll];
 
-  const orientationString = [heading, pitch, roll]
-    .map(num => num.toFixed(2))
-    .join(char);
-  const destinationString = destination.map(num => Math.round(num)).join(char);
+  if (values.some(num => isNaN(num))) {
+    return null;
+  }
 
-  return [projection[0], orientationString, destinationString].join(char);
+  // convert radians to degree
+  values[0] = values[0] * (180 / Math.PI);
+  values[1] = values[1] * (180 / Math.PI);
+
+  const compactValues = values.map(num => num.toFixed(2));
+
+  return [projection[0], ...compactValues].join(char);
 }

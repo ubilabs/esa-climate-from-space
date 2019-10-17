@@ -1,6 +1,6 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
 
-import getGlobeView, {plainViewToCesiumView} from '../../libs/get-globe-view';
+import {getGlobeView, setGlobeView} from '../../libs/get-globe-view';
 
 import {GlobeView} from '../../types/globe-view';
 import {GlobeProjection} from '../../types/globe-projection';
@@ -66,17 +66,24 @@ const Globe: FunctionComponent<Props> = ({
       return () => {};
     }
 
+    // set correct scene mode
+    const sceneMode =
+      projection === GlobeProjection.Sphere
+        ? Cesium.SceneMode.SCENE3D
+        : Cesium.SceneMode.SCENE2D;
+    const options = {...cesiumOptions, sceneMode};
+
     // create cesium viewer
-    const scopedViewer = new Cesium.Viewer(ref.current, cesiumOptions);
+    const scopedViewer = new Cesium.Viewer(ref.current, options);
 
     // save viewer reference
     setViewer(scopedViewer);
 
     // set initial camera view
-    scopedViewer.scene.camera.setView(plainViewToCesiumView(view));
+    setGlobeView(scopedViewer, view);
 
     // make camera change listener more sensitiv
-    scopedViewer.camera.percentageChanged = 0.01;
+    scopedViewer.camera.percentageChanged = 0.001;
 
     // add camera change listener
     scopedViewer.camera.changed.addEventListener(() => {
@@ -117,7 +124,7 @@ const Globe: FunctionComponent<Props> = ({
       return;
     }
 
-    viewer.scene.camera.setView(plainViewToCesiumView(view));
+    setGlobeView(viewer, view);
   }, [viewer, view]);
 
   return (
