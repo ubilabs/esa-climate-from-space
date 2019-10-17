@@ -12,15 +12,18 @@ interface Props {
 
 const Tabs: FunctionComponent<Props> = ({tabs, activeTabId, onTabChanged}) => (
   <div className={styles.tabsContainer}>
-    {tabs.map(tab => (
-      <Tab
-        key={tab.id}
-        id={tab.id}
-        activeTabId={activeTabId}
-        onSelectTabId={id => onTabChanged(id)}>
-        {tab.label}
-      </Tab>
-    ))}
+    {tabs.map(tab => {
+      const Icon = tab.icon;
+      return (
+        <Tab
+          key={tab.id}
+          id={tab.id}
+          activeTabId={activeTabId}
+          onSelectTabId={id => onTabChanged(id)}>
+          {Icon ? <Icon /> : tab.label}
+        </Tab>
+      );
+    })}
   </div>
 );
 

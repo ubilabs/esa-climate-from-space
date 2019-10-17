@@ -2,6 +2,7 @@ import React, {FunctionComponent, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
 import setGlobeProjectionAction from '../../actions/set-globe-projection';
+import {ProjectionIcon} from '../icons/ProjectionIcon';
 
 import {GlobeProjection} from '../../types/globe-projection';
 
@@ -21,7 +22,7 @@ const ProjectionMenu: FunctionComponent<{}> = () => {
       <button
         onClick={() => onButtonClickHandler()}
         className={styles.projectionButton}>
-        Projection
+        <ProjectionIcon />
       </button>
       {isOpen && (
         <ul className={styles.projectionList}>
