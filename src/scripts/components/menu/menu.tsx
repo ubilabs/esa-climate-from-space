@@ -1,5 +1,6 @@
 import React, {FunctionComponent, useState} from 'react';
 import {Link} from 'react-router-dom';
+import {useIntl} from 'react-intl';
 
 import {MenuIcon} from '../icons/MenuIcon';
 import {PresenterIcon} from '../icons/PresenterIcon';
@@ -35,13 +36,14 @@ const Menu: FunctionComponent = () => {
   ];
 
   const [isOpen, setIsOpen] = useState(false);
-
+  const intl = useIntl();
   const onButtonClickHandler = () => setIsOpen(!isOpen);
 
   return (
     <div className={styles.menuContainer}>
       <button
         onClick={() => onButtonClickHandler()}
+        title={intl.formatMessage({id: 'menu'})}
         className={styles.menuButton}>
         <MenuIcon />
       </button>
@@ -49,6 +51,7 @@ const Menu: FunctionComponent = () => {
         <ul className={styles.menuList}>
           {menuItems.map(menuItem => {
             const Icon = menuItem.icon;
+
             return (
               <li className={styles.menuListItem} key={menuItem.id}>
                 {menuItem.link ? (
