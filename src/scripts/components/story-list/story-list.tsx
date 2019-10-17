@@ -7,7 +7,7 @@ import StoryItem from '../story-item/story-item';
 
 import styles from './story-list.styl';
 
-const StoryList: FunctionComponent<{}> = () => {
+const StoryList: FunctionComponent = () => {
   const stories = useSelector(storiesSelector);
   const dispatch = useDispatch();
 

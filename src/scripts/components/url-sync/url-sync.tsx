@@ -6,7 +6,7 @@ import {globeStateSelector} from '../../reducers/globe/index';
 import {getParamString} from '../../libs/globe-url-parameter';
 
 // syncs the query parameters of the url when values change in store
-const UrlSync: FunctionComponent<{}> = () => {
+const UrlSync: FunctionComponent = () => {
   const history = useHistory();
   const location = useLocation();
   const globeState = useSelector(globeStateSelector);

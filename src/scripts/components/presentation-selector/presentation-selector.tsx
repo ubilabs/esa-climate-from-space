@@ -5,7 +5,7 @@ import StoryList from '../story-list/story-list';
 
 import styles from './presentation-selector.styl';
 
-const PresentationSelector: FunctionComponent<{}> = () => (
+const PresentationSelector: FunctionComponent = () => (
   <div className={styles.presentationSelector}>
     <Link to="/" className={styles.backButton}>
       Go back
