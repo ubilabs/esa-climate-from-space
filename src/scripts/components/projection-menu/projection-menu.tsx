@@ -8,7 +8,7 @@ import {GlobeProjection} from '../../types/globe-projection';
 
 import styles from './projection-menu.styl';
 
-const ProjectionMenu: FunctionComponent<{}> = () => {
+const ProjectionMenu: FunctionComponent = () => {
   const projections = Object.values(GlobeProjection);
   const dispatch = useDispatch();
   const onProjectionClick = (projection: GlobeProjection) => {

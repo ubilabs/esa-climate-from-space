@@ -6,7 +6,7 @@ import {StoryIcon} from '../icons/StoryIcon';
 
 import styles from './stories-button.styl';
 
-const StoriesButton: FunctionComponent<{}> = () => (
+const StoriesButton: FunctionComponent = () => (
   <Link to={'/stories'} className={styles.storiesButton}>
     <div className={styles.storiesLabel}>
       <StoryIcon />

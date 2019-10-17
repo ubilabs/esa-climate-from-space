@@ -14,7 +14,7 @@ import {MenuItem} from '../../types/menu-item';
 
 import styles from './menu.styl';
 
-const Menu: FunctionComponent<{}> = () => {
+const Menu: FunctionComponent = () => {
   const menuItems: MenuItem[] = [
     {
       id: 'presenter-mode',

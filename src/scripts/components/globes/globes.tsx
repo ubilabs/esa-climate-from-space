@@ -11,7 +11,7 @@ import {GlobeView} from '../../types/globe-view';
 
 import styles from './globes.styl';
 
-const Globes: FunctionComponent<{}> = () => {
+const Globes: FunctionComponent = () => {
   const dispatch = useDispatch();
   const projection = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);

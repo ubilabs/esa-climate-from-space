@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from 'react';
 
-export const PresenterIcon: FunctionComponent<{}> = () => (
+export const PresenterIcon: FunctionComponent = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     version="1.1"

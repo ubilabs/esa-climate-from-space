@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from 'react';
 
-export const StoryIcon: FunctionComponent<{}> = () => (
+export const StoryIcon: FunctionComponent = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
