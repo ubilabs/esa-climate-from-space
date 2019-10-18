@@ -1,4 +1,9 @@
-import React, {FunctionComponent, useState, useEffect} from 'react';
+import React, {
+  FunctionComponent,
+  useState,
+  useEffect,
+  useCallback
+} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {selectedLayersSelector} from '../../reducers/selected-layers';
@@ -18,9 +23,14 @@ const Globes: FunctionComponent = () => {
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
   const selectedLayers = useSelector(selectedLayersSelector);
-  const onChangeHandler = (view: GlobeView) => setCurrentView(view);
-  const onMoveEndHandler = (view: GlobeView) =>
-    dispatch(setGlobeViewAction(view));
+  const onChangeHandler = useCallback(
+    (view: GlobeView) => setCurrentView(view),
+    []
+  );
+  const onMoveEndHandler = useCallback(
+    (view: GlobeView) => dispatch(setGlobeViewAction(view)),
+    [dispatch]
+  );
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
