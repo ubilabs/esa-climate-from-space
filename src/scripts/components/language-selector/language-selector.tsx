@@ -8,7 +8,7 @@ import {Language} from '../../types/language';
 
 const languages = Object.values(Language);
 
-const LanguageSelector: FunctionComponent<{}> = () => {
+const LanguageSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
   const setLanguage = (language: Language) =>
     dispatch(setLanguageAction(language));

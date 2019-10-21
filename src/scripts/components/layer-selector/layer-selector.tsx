@@ -4,26 +4,32 @@ import {useIntl} from 'react-intl';
 
 import {layersSelector} from '../../reducers/layers';
 import {selectedLayersSelector} from '../../reducers/selected-layers';
+import {LayersIcon} from '../icons/LayersIcon';
+import {CompareIcon} from '../icons/CompareIcon';
 import fetchLayers from '../../actions/fetch-layers';
 import setSelectedLayerIdAction from '../../actions/set-selected-layer';
 import LayerList from '../layer-list/layer-list';
 import Tabs from '../tabs/tabs';
 
+import {Tab} from '../../types/tab';
+
 import styles from './layer-selector.styl';
 
-const LayerSelector: FunctionComponent<{}> = () => {
+const LayerSelector: FunctionComponent = () => {
   const intl = useIntl();
   const layers = useSelector(layersSelector);
   const layerIds = useSelector(selectedLayersSelector);
   const dispatch = useDispatch();
-  const tabs = [
+  const tabs: Tab[] = [
     {
       id: 'main',
-      label: intl.formatMessage({id: 'layerSelector.main'})
+      label: intl.formatMessage({id: 'layerSelector.main'}),
+      icon: LayersIcon
     },
     {
       id: 'compare',
-      label: intl.formatMessage({id: 'layerSelector.compare'})
+      label: intl.formatMessage({id: 'layerSelector.compare'}),
+      icon: CompareIcon
     }
   ];
 

@@ -27,13 +27,13 @@ const store = createStore(
   applyMiddleware(thunk, createLogger({collapsed: true}))
 );
 
-const App: FunctionComponent<{}> = () => (
+const App: FunctionComponent = () => (
   <StoreProvider store={store}>
     <TranslatedApp />
   </StoreProvider>
 );
 
-const TranslatedApp: FunctionComponent<{}> = () => {
+const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
 
   return (

@@ -6,7 +6,7 @@ import StoryList from '../story-list/story-list';
 
 import styles from './stories-selector.styl';
 
-const StoriesSelector: FunctionComponent<{}> = () => (
+const StoriesSelector: FunctionComponent = () => (
   <div className={styles.storiesSelector}>
     <Link to="/" className={styles.backButton}>
       <FormattedMessage id="goBack" />

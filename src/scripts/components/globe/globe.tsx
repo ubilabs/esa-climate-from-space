@@ -100,7 +100,9 @@ const Globe: FunctionComponent<Props> = ({
       scopedViewer.destroy();
       setViewer(null);
     };
-  }, [ref]);
+    // we use 'projection' and 'view' here only once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ref, onChange, onMoveEnd]);
 
   // switch projections
   useEffect(() => {
@@ -125,7 +127,7 @@ const Globe: FunctionComponent<Props> = ({
     }
 
     setGlobeView(viewer, view);
-  }, [viewer, view]);
+  }, [viewer, view, active]);
 
   return (
     <div
