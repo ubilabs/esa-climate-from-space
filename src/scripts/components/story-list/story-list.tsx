@@ -13,7 +13,7 @@ const StoryList: FunctionComponent = () => {
 
   useEffect(() => {
     dispatch(fetchStories());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.storyList}>

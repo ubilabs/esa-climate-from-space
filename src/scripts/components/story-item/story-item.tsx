@@ -11,8 +11,9 @@ interface Props {
 const StoryItem: FunctionComponent<Props> = ({story}) => (
   <Link to={`/stories/${story.id}`}>
     <div className={styles.storyItem}>
-      <div className={styles.image}></div>
+      <img src={story.image} className={styles.image} />
       <p className={styles.title}>{story.title}</p>
+      <p className={styles.description}>{story.description}</p>
     </div>
   </Link>
 );
