@@ -17,6 +17,7 @@ import ShowcaseSelector from '../showcase-selector/showcase-selector';
 import StoriesSelector from '../stories-selector/stories-selector';
 import StoriesButton from '../stories-button/stories-button';
 import UrlSync from '../url-sync/url-sync';
+import LayerLoader from '../layer-loader/layer-loader';
 
 import translations from '../../i18n';
 import styles from './app.styl';
@@ -68,6 +69,7 @@ const TranslatedApp: FunctionComponent = () => {
       </IntlProvider>
 
       <UrlSync />
+      <LayerLoader />
     </Router>
   );
 };

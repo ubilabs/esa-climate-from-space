@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {selectedLayersSelector} from '../../reducers/selected-layers';
+import {selectedLayersSelector} from '../../reducers/layers/selected';
 import {globeViewSelector} from '../../reducers/globe/view';
 import {projectionSelector} from '../../reducers/globe/projection';
 import setGlobeViewAction from '../../actions/set-globe-view';
