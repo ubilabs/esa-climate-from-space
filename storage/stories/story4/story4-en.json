@@ -5,13 +5,13 @@
       "title": "Story slide 1",
       "subtitle": "This is story slide 1",
       "bodytext": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
-      "image": "./assets/story4.jpeg"
+      "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story4/assets/story4.jpeg"
     },
     {
       "title": "Story slide 2",
       "subtitle": "This is story slide 2",
       "bodytext": "Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
-      "image": "./assets/story4.jpeg"
+      "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story4/assets/story4.jpeg"
     }
   ]
 }
