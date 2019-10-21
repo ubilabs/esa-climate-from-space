@@ -1,12 +1,11 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useIntl} from 'react-intl';
 
-import {layersSelector} from '../../reducers/layers';
-import {selectedLayersSelector} from '../../reducers/selected-layers';
+import {layersSelector} from '../../reducers/layers/list';
+import {selectedLayersSelector} from '../../reducers/layers/selected';
 import {LayersIcon} from '../icons/LayersIcon';
 import {CompareIcon} from '../icons/CompareIcon';
-import fetchLayers from '../../actions/fetch-layers';
 import setSelectedLayerIdAction from '../../actions/set-selected-layer';
 import LayerList from '../layer-list/layer-list';
 import Tabs from '../tabs/tabs';
@@ -55,10 +54,6 @@ const LayerSelector: FunctionComponent = () => {
     const newId = selectedLayer === id ? null : id;
     dispatch(setSelectedLayerIdAction(newId, isMainTabSelected));
   };
-
-  useEffect(() => {
-    dispatch(fetchLayers());
-  }, []);
 
   return (
     <div className={styles.layerContainer}>

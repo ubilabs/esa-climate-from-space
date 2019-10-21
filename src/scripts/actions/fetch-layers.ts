@@ -4,14 +4,14 @@ import fetchLayersApi from '../api/fetch-layers';
 import {languageSelector} from '../reducers/language';
 
 import {State} from '../reducers/index';
-import {Layer} from '../types/layer';
+import {LayerList} from '../types/layer-list';
 
 export const FETCH_LAYERS_SUCCESS = 'FETCH_LAYERS_SUCCESS';
 export const FETCH_LAYERS_ERROR = 'FETCH_LAYERS_ERROR';
 
 interface FetchLayersSuccessAction {
   type: typeof FETCH_LAYERS_SUCCESS;
-  layers: Layer[];
+  layers: LayerList;
 }
 
 interface FetchLayersErrorAction {
@@ -23,7 +23,7 @@ export type FetchLayersActions =
   | FetchLayersSuccessAction
   | FetchLayersErrorAction;
 
-function fetchLayersSuccessAction(layers: Layer[]) {
+function fetchLayersSuccessAction(layers: LayerList) {
   return {
     type: FETCH_LAYERS_SUCCESS,
     layers
