@@ -3,10 +3,10 @@ import {
   FetchStoriesActions
 } from '../actions/fetch-stories';
 
-import {Story} from '../types/story';
+import {StoriesItem} from '../types/stories-item';
 import {State} from './index';
 
-export type StoriesState = Story[];
+export type StoriesState = StoriesItem[];
 const initialState: StoriesState = [];
 
 function storiesReducer(

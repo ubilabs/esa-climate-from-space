@@ -1,12 +1,12 @@
 import React, {FunctionComponent} from 'react';
 
-import {Story} from '../../types/story';
+import {StoriesItem} from '../../types/stories-item';
 import {Link} from 'react-router-dom';
 
 import styles from './story-item.styl';
 
 interface Props {
-  story: Story;
+  story: StoriesItem;
 }
 const StoryItem: FunctionComponent<Props> = ({story}) => (
   <Link to={`/stories/${story.id}`}>
