@@ -1,0 +1,25 @@
+[
+  {
+    "id": "layer1",
+    "name": "Layer 1",
+    "description": "This is the first layer",
+    "subLayers": [
+      {
+        "id": "layer1a",
+        "name": "Layer 1ab",
+        "description": "This is the first sublayer"
+      },
+      {
+        "name": "SST",
+        "id": "sst",
+        "description": "This is the first sublayer"
+      }
+    ]
+  },
+  {
+    "id": "clouds",
+    "name": "Clouds Concentration",
+    "description": "This is the second layer",
+    "subLayers": []
+  }
+]
