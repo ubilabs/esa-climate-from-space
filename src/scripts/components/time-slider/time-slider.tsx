@@ -1,16 +1,33 @@
-import React, {FunctionComponent, useState, useMemo, useEffect} from 'react';
-import {useSelector} from 'react-redux';
+import React, {
+  FunctionComponent,
+  useState,
+  useMemo,
+  useEffect,
+  useCallback
+} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import debounce from 'lodash.debounce';
 
 import {selectedLayersSelector} from '../../reducers/layers/selected';
 import {detailedLayersSelector} from '../../reducers/layers/details';
+import setGlobeTime from '../../actions/set-globe-time';
 
 import styles from './time-slider.styl';
 
+const DELAY = 200;
+
 const TimeSlider: FunctionComponent = () => {
+  const dispatch = useDispatch();
   const [time, setTime] = useState(0);
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const selectedLayers = useSelector(selectedLayersSelector);
   const detailedLayers = useSelector(detailedLayersSelector);
+  const debouncedSetGlobeTime = useCallback(
+    debounce((newTime: number) => dispatch(setGlobeTime(newTime)), DELAY, {
+      maxWait: DELAY
+    }),
+    []
+  );
 
   // get only active layer ids
   const activeLayers = useMemo(
@@ -62,7 +79,11 @@ const TimeSlider: FunctionComponent = () => {
         className={styles.input}
         type="range"
         value={time}
-        onChange={({target}) => setTime(parseInt(target.value, 10))}
+        onChange={({target}) => {
+          const newTime = parseInt(target.value, 10);
+          setTime(newTime);
+          debouncedSetGlobeTime(newTime);
+        }}
         min={min}
         max={max}
         step={stepSize}

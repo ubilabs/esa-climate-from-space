@@ -20,7 +20,7 @@ export function parseUrl(): GlobeState | null {
 
   const splitted = globeParam.split(char);
 
-  if (splitted.length !== 7) {
+  if (splitted.length !== 8) {
     return null;
   }
 
@@ -58,16 +58,17 @@ export function parseUrl(): GlobeState | null {
         roll: values[5]
       }
     },
-    projection
+    projection,
+    time: values[6]
   };
 }
 
 export function getParamString(globeState: GlobeState): string | null {
-  const {view, projection} = globeState;
+  const {view, projection, time} = globeState;
   const {position, orientation} = view;
   const {longitude, latitude, height} = position;
   const {heading, pitch, roll} = orientation;
-  const values = [longitude, latitude, height, heading, pitch, roll];
+  const values = [longitude, latitude, height, heading, pitch, roll, time];
 
   if (values.some(num => isNaN(num))) {
     return null;
