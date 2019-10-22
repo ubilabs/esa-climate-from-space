@@ -69,13 +69,12 @@ const TranslatedApp: FunctionComponent = () => {
             <Route path="/stories/:storyId/:page">
               <Story />
             </Route>
-            
+
             <Route
               path="/stories/:storyId"
               render={props => (
                 <Redirect to={`${props.match.url}/0`} />
               )}></Route>
-
           </Switch>
         </div>
       </IntlProvider>
