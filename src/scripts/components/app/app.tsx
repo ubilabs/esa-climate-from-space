@@ -22,7 +22,6 @@ import LayerLoader from '../layer-loader/layer-loader';
 
 import translations from '../../i18n';
 import styles from './app.styl';
-import {match} from 'minimatch';
 
 const store = createStore(
   rootReducer,
