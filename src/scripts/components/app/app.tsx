@@ -16,6 +16,7 @@ import PresentationSelector from '../presentation-selector/presentation-selector
 import ShowcaseSelector from '../showcase-selector/showcase-selector';
 import StoriesSelector from '../stories-selector/stories-selector';
 import StoriesButton from '../stories-button/stories-button';
+import Story from '../story/story';
 import UrlSync from '../url-sync/url-sync';
 import LayerLoader from '../layer-loader/layer-loader';
 import TimeSlider from '../time-slider/time-slider';
@@ -41,9 +42,9 @@ const TranslatedApp: FunctionComponent = () => {
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <div className={styles.app}>
+          <Globes />
           <Switch>
             <Route path="/" exact>
-              <Globes />
               <StoriesButton />
               <TimeSlider />
 
@@ -63,8 +64,12 @@ const TranslatedApp: FunctionComponent = () => {
               <ShowcaseSelector />
             </Route>
 
-            <Route path="/stories">
+            <Route path="/stories" exact>
               <StoriesSelector />
+            </Route>
+
+            <Route path="/stories/:storyId">
+              <Story />
             </Route>
           </Switch>
         </div>
