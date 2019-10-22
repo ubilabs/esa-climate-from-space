@@ -18,6 +18,7 @@ import StoriesSelector from '../stories-selector/stories-selector';
 import StoriesButton from '../stories-button/stories-button';
 import UrlSync from '../url-sync/url-sync';
 import LayerLoader from '../layer-loader/layer-loader';
+import TimeSlider from '../time-slider/time-slider';
 
 import translations from '../../i18n';
 import styles from './app.styl';
@@ -44,6 +45,7 @@ const TranslatedApp: FunctionComponent = () => {
             <Route path="/" exact>
               <Globes />
               <StoriesButton />
+              <TimeSlider />
 
               <div className={styles.layoutContainer}>
                 <Menu />
