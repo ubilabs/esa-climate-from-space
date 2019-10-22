@@ -13,6 +13,7 @@ const Story: FunctionComponent = () => {
   const {storyId, page} = useParams();
   const pageNumber = parseInt(page || '0', 10);
   const slide = story && story.slides[pageNumber];
+  const activeStoryId = story && story.id;
 
   useEffect(() => {
     storyId && dispatch(fetchStory(storyId));
@@ -20,6 +21,10 @@ const Story: FunctionComponent = () => {
 
   if (!slide) {
     return <Redirect to={`/stories/${storyId}/0`} />;
+  }
+
+  if (activeStoryId !== storyId) {
+    return null;
   }
 
   return (

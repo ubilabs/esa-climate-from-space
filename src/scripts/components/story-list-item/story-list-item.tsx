@@ -1,15 +1,15 @@
 import React, {FunctionComponent} from 'react';
 import {Link} from 'react-router-dom';
 
-import {StoriesItem} from '../../types/stories-item';
+import {StoryListItem as StoryListItemType} from '../../types/story-list';
 
-import styles from './story-item.styl';
+import styles from './story-list-item.styl';
 
 interface Props {
-  story: StoriesItem;
+  story: StoryListItemType;
 }
-const StoryItem: FunctionComponent<Props> = ({story}) => (
-  <Link to={`/stories/${story.id}/0`}>
+const StoryListItem: FunctionComponent<Props> = ({story}) => (
+  <Link to={`/stories/${story.id}`}>
     <div className={styles.storyItem}>
       <img src={story.image} className={styles.image} />
       <p className={styles.title}>{story.title}</p>
@@ -18,4 +18,4 @@ const StoryItem: FunctionComponent<Props> = ({story}) => (
   </Link>
 );
 
-export default StoryItem;
+export default StoryListItem;

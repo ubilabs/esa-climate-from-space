@@ -3,16 +3,15 @@ import {
   FetchStoriesActions
 } from '../actions/fetch-stories';
 
-import {StoriesItem} from '../types/stories-item';
+import {StoryList} from '../types/story-list';
 import {State} from './index';
 
-export type StoriesState = StoriesItem[];
-const initialState: StoriesState = [];
+const initialState: StoryList = [];
 
 function storiesReducer(
-  storiesState: StoriesState = initialState,
+  storiesState: StoryList = initialState,
   action: FetchStoriesActions
-): StoriesState {
+): StoryList {
   switch (action.type) {
     case FETCH_STORIES_SUCCESS:
       return action.stories;

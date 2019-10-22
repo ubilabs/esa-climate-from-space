@@ -4,14 +4,14 @@ import fetchStoriesApi from '../api/fetch-stories';
 import {languageSelector} from '../reducers/language';
 
 import {State} from '../reducers/index';
-import {StoriesItem} from '../types/stories-item';
+import {StoryList} from '../types/story-list';
 
 export const FETCH_STORIES_SUCCESS = 'FETCH_STORIES_SUCCESS';
 export const FETCH_STORIES_ERROR = 'FETCH_STORIES_ERROR';
 
 interface FetchStoriesSuccessAction {
   type: typeof FETCH_STORIES_SUCCESS;
-  stories: StoriesItem[];
+  stories: StoryList;
 }
 
 interface FetchStoriesErrorAction {
@@ -23,7 +23,7 @@ export type FetchStoriesActions =
   | FetchStoriesSuccessAction
   | FetchStoriesErrorAction;
 
-function fetchStoriesSuccessAction(stories: StoriesItem[]) {
+function fetchStoriesSuccessAction(stories: StoryList) {
   return {
     type: FETCH_STORIES_SUCCESS,
     stories
