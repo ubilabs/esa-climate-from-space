@@ -37,6 +37,7 @@
     "@types/react-router-dom": "^5.1.0",
     "@types/redux-logger": "^3.0.7",
     "cesium": "^1.61.0",
+    "lodash.debounce": "^4.0.8",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-intl": "^3.3.2",
@@ -49,6 +50,7 @@
   "devDependencies": {
     "@types/cesium": "^1.59.0",
     "@types/classnames": "^2.2.9",
+    "@types/lodash.debounce": "^4.0.6",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.2",
