@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
+import {Link} from 'react-router-dom';
 
 import {StoriesItem} from '../../types/stories-item';
-import {Link} from 'react-router-dom';
 
 import styles from './story-item.styl';
 
