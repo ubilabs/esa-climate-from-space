@@ -2,10 +2,10 @@ import React, {FunctionComponent, MouseEvent} from 'react';
 import cx from 'classnames';
 import styles from './layer-list.styl';
 
-import {Layer} from '../../types/layer';
+import {LayerList as LayerListType} from '../../types/layer-list';
 
 interface Props {
-  layers: Layer[];
+  layers: LayerListType;
   selected: string | null;
   onSelect: (id: string) => void;
 }

@@ -1,0 +1,12 @@
+{
+  "type": "image",
+  "timestamps": ["2019-10-18T00:00:00Z", "2019-10-19T00:00:00Z"],
+  "timeFormat": {
+    "year": "numeric",
+    "month": "numeric",
+    "day": "numeric",
+    "hour": "numeric",
+    "minute": "numeric",
+    "second": "numeric"
+  }
+}

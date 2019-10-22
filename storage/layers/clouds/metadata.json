@@ -1,0 +1,9 @@
+{
+  "type": "image",
+  "timestamps": ["2000-12-24T00:00:00Z", "2000-12-25T00:00:00Z"],
+  "timeFormat": {
+    "year": "2-digit",
+    "month": "numeric",
+    "day": "numeric"
+  }
+}

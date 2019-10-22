@@ -19,7 +19,9 @@ const globeState: GlobeState = {
 
 export default {
   api: {
-    layers: 'https://storage.googleapis.com/esa-cfs-storage/layers',
+    layers: 'https://storage.googleapis.com/esa-cfs-storage/layers-{lang}.json',
+    layer:
+      'https://storage.googleapis.com/esa-cfs-storage/layers/{id}/metadata.json',
     stories: 'https://storage.googleapis.com/esa-cfs-storage/stories'
   },
   globe: globeState

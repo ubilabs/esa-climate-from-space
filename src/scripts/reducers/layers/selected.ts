@@ -1,9 +1,9 @@
 import {
   SET_SELECTED_LAYER_ID,
   SetSelectedLayerIdAction
-} from '../actions/set-selected-layer';
+} from '../../actions/set-selected-layer';
 
-import {State} from './index';
+import {State} from '../index';
 
 export interface SelectedLayersState {
   main: string | null;
@@ -30,6 +30,6 @@ function selectedLayersReducer(
   }
 }
 export function selectedLayersSelector(state: State): SelectedLayersState {
-  return state.selectedLayers;
+  return state.layers.selected;
 }
 export default selectedLayersReducer;

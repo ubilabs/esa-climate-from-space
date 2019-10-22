@@ -1,0 +1,58 @@
+[
+  {
+    "id": "story1",
+    "title": "Geschichte 1",
+    "description": "This is story 1",
+    "link": "https://...",
+    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story1/img/story1.jpeg?supportedpurview=project"
+  },
+  {
+    "id": "story2",
+    "title": "Geschichte 2",
+    "description": "This is story 2",
+    "link": "https://...",
+    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story2/img/story2.jpeg?supportedpurview=project"
+  },
+  {
+    "id": "story3",
+    "title": "Geschichte 3",
+    "description": "Das ist Geschichte 3",
+    "link": "https://...",
+    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story3/img/story3.jpeg?supportedpurview=project"
+  },
+  {
+    "id": "story4",
+    "title": "Geschichte 4",
+    "description": "Das ist Geschichte 4",
+    "link": "https://...",
+    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story4/img/story4.jpeg?supportedpurview=project"
+  },
+  {
+    "id": "story5",
+    "title": "Geschichte 5",
+    "description": "Das ist Geschichte 5",
+    "link": "https://...",
+    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story5/img/story5.jpeg?supportedpurview=project"
+  },
+  {
+    "id": "story6",
+    "title": "Geschichte 6",
+    "description": "Das ist Geschichte 6",
+    "link": "https://...",
+    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story6/img/story6.jpeg?supportedpurview=project"
+  },
+  {
+    "id": "story7",
+    "title": "Geschichte 7",
+    "description": "Das ist Geschichte 7",
+    "link": "https://...",
+    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story7/img/story7.jpeg?supportedpurview=project"
+  },
+  {
+    "id": "story8",
+    "title": "Geschichte 8",
+    "description": "Das ist Geschichte 8",
+    "link": "https://...",
+    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story8/img/story8.jpeg?supportedpurview=project"
+  }
+]
