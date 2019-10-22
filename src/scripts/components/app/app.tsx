@@ -4,7 +4,7 @@ import {Provider as StoreProvider, useSelector} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
 import {IntlProvider} from 'react-intl';
-import {HashRouter as Router, Switch, Route} from 'react-router-dom';
+import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
 import rootReducer from '../../reducers/index';
 import {languageSelector} from '../../reducers/language';
@@ -68,9 +68,15 @@ const TranslatedApp: FunctionComponent = () => {
               <StoriesSelector />
             </Route>
 
-            <Route path="/stories/:storyId">
+            <Route path="/stories/:storyId/:page">
               <Story />
             </Route>
+
+            <Route
+              path="/stories/:storyId"
+              render={props => (
+                <Redirect to={`${props.match.url}/0`} />
+              )}></Route>
           </Switch>
         </div>
       </IntlProvider>

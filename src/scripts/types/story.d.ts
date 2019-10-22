@@ -1,7 +1,11 @@
 export interface Story {
   id: string;
+  slides: Slide[];
+}
+
+interface Slide {
   title: string;
-  description: string;
-  link: string;
+  subtitle: string;
+  bodytext: string;
   image: string;
 }

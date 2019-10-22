@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import {storiesSelector} from '../../reducers/stories';
 import fetchStories from '../../actions/fetch-stories';
-import StoryItem from '../story-item/story-item';
+import StoryListItem from '../story-list-item/story-list-item';
 
 import styles from './story-list.styl';
 
@@ -18,7 +18,7 @@ const StoryList: FunctionComponent = () => {
   return (
     <div className={styles.storyList}>
       {stories.map(story => (
-        <StoryItem key={story.id} story={story} />
+        <StoryListItem key={story.id} story={story} />
       ))}
     </div>
   );

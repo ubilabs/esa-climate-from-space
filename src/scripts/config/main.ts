@@ -23,7 +23,10 @@ export default {
       'https://storage.googleapis.com/esa-cfs-storage/layers/layers-{lang}.json',
     layer:
       'https://storage.googleapis.com/esa-cfs-storage/layers/{id}/metadata.json',
-    stories: 'https://storage.googleapis.com/esa-cfs-storage/stories'
+    stories:
+      'https://storage.googleapis.com/esa-cfs-storage/stories/stories-{lang}.json',
+    story:
+      'https://storage.googleapis.com/esa-cfs-storage/stories/{id}/{id}-{lang}.json'
   },
   globe: globeState
 };
