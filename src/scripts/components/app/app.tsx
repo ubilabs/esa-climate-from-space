@@ -70,6 +70,7 @@ const TranslatedApp: FunctionComponent = () => {
 
               <Route
                 path="/stories/:storyId"
+                exact
                 render={props => (
                   <Redirect to={`${props.match.url}/0`} />
                 )}></Route>
