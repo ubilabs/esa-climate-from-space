@@ -42,7 +42,13 @@ const TranslatedApp: FunctionComponent = () => {
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <div className={styles.app}>
-          <Globes />
+          <div className={styles.story}>
+            <Globes />
+            <Route path="/stories/:storyId/:page">
+              <Story />
+            </Route>
+          </div>
+
           <Switch>
             <Route path="/" exact>
               <StoriesButton />
@@ -66,10 +72,6 @@ const TranslatedApp: FunctionComponent = () => {
 
             <Route path="/stories" exact>
               <StoriesSelector />
-            </Route>
-
-            <Route path="/stories/:storyId/:page">
-              <Story />
             </Route>
 
             <Route
