@@ -6,7 +6,7 @@ import {
 import {State} from '../index';
 import {Layer} from '../../types/layer';
 
-type DetailsById = {[id: string]: Layer};
+export type DetailsById = {[id: string]: Layer};
 
 function detailsReducer(
   state: DetailsById = {},

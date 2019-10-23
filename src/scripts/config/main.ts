@@ -24,6 +24,8 @@ export default {
       'https://storage.googleapis.com/esa-cfs-storage/layers/layers-{lang}.json',
     layer:
       'https://storage.googleapis.com/esa-cfs-storage/layers/{id}/metadata.json',
+    layerTiles:
+      'https://storage.googleapis.com/esa-cfs-tiles/test/{id}/{name}.jpg',
     stories:
       'https://storage.googleapis.com/esa-cfs-storage/stories/stories-{lang}.json',
     story:

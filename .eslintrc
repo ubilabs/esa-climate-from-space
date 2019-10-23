@@ -329,6 +329,7 @@
     "sort-imports": 0,
     "template-curly-spacing": [2, "never"],
     "yield-star-spacing": 1,
+    "@typescript-eslint/no-use-before-define": [2, "nofunc"],
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/ban-ts-ignore": 0,
