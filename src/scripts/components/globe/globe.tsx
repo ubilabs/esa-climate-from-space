@@ -40,6 +40,7 @@ interface Props {
   active: boolean;
   view: GlobeView;
   projection: GlobeProjection;
+  imageUrl: string | null;
   onMouseEnter: () => void;
   onChange: (view: GlobeView) => void;
   onMoveEnd: (view: GlobeView) => void;
@@ -48,6 +49,7 @@ interface Props {
 const Globe: FunctionComponent<Props> = ({
   view,
   projection,
+  imageUrl,
   active,
   onMouseEnter,
   onChange,
@@ -128,6 +130,31 @@ const Globe: FunctionComponent<Props> = ({
 
     setGlobeView(viewer, view);
   }, [viewer, view, active]);
+
+  // update layer image when url changes
+  useEffect(() => {
+    if (!viewer) {
+      return;
+    }
+
+    const url = imageUrl;
+    const layers = viewer.scene.imageryLayers;
+    const oldLayer = layers.length > 1 && layers.get(1);
+
+    if (url) {
+      const imageProvider = new Cesium.SingleTileImageryProvider({url});
+      imageProvider.readyPromise.then(() => {
+        viewer.scene.imageryLayers.addImageryProvider(imageProvider);
+        // remove and destroy old layer if exists
+        // we do not clean it up in the useEffect clean function because we want
+        // to wait until the new layer is ready to prevent flickering
+        oldLayer && setTimeout(() => layers.remove(oldLayer, true), 100);
+      });
+    } else if (oldLayer) {
+      // remove old layer when no image should be shown anymore
+      layers.remove(oldLayer, true);
+    }
+  }, [viewer, imageUrl]);
 
   return (
     <div
