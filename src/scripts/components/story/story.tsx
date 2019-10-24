@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import React, {FunctionComponent, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams, Redirect, Link} from 'react-router-dom';

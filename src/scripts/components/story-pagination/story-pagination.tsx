@@ -21,7 +21,7 @@ const StoryPagination: FunctionComponent<Props> = ({
 }) => {
   const nextPageNumber = currentPage + 1;
   const previousPageNumber = currentPage - 1;
-  const slidesLength = slides.length || 0;
+  const slidesLength = slides.length;
   const showNextButton = nextPageNumber < slidesLength;
   const showPreviousButton = previousPageNumber >= 0;
 
