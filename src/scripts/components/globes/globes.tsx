@@ -7,10 +7,13 @@ import React, {
 import {useSelector, useDispatch} from 'react-redux';
 
 import {selectedLayersSelector} from '../../reducers/layers/selected';
+import {detailedLayersSelector} from '../../reducers/layers/details';
 import {globeViewSelector} from '../../reducers/globe/view';
+import {timeSelector} from '../../reducers/globe/time';
 import {projectionSelector} from '../../reducers/globe/projection';
 import setGlobeViewAction from '../../actions/set-globe-view';
 import Globe from '../globe/globe';
+import {getLayerTileUrl} from '../../libs/get-layer-tile-url';
 
 import {GlobeView} from '../../types/globe-view';
 
@@ -20,6 +23,8 @@ const Globes: FunctionComponent = () => {
   const dispatch = useDispatch();
   const projection = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
+  const detailedLayers = useSelector(detailedLayersSelector);
+  const time = useSelector(timeSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
   const selectedLayers = useSelector(selectedLayersSelector);
@@ -30,6 +35,17 @@ const Globes: FunctionComponent = () => {
   const onMoveEndHandler = useCallback(
     (view: GlobeView) => dispatch(setGlobeViewAction(view)),
     [dispatch]
+  );
+
+  const mainImageUrl = getLayerTileUrl(
+    selectedLayers.main,
+    detailedLayers,
+    time
+  );
+  const compareImageUrl = getLayerTileUrl(
+    selectedLayers.compare,
+    detailedLayers,
+    time
   );
 
   // apply changes in the app state view to our local view copy
@@ -44,6 +60,7 @@ const Globes: FunctionComponent = () => {
         active={isMainActive}
         view={currentView}
         projection={projection}
+        imageUrl={mainImageUrl}
         onMouseEnter={() => setIsMainActive(true)}
         onChange={onChangeHandler}
         onMoveEnd={onMoveEndHandler}
@@ -54,6 +71,7 @@ const Globes: FunctionComponent = () => {
           active={!isMainActive}
           view={currentView}
           projection={projection}
+          imageUrl={compareImageUrl}
           onMouseEnter={() => setIsMainActive(false)}
           onChange={onChangeHandler}
           onMoveEnd={onMoveEndHandler}
