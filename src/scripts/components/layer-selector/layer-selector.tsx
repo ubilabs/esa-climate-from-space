@@ -4,8 +4,8 @@ import {useIntl} from 'react-intl';
 
 import {layersSelector} from '../../reducers/layers/list';
 import {selectedLayersSelector} from '../../reducers/layers/selected';
-import {LayersIcon} from '../icons/LayersIcon';
-import {CompareIcon} from '../icons/CompareIcon';
+import {LayersIcon} from '../icons/layers-icon';
+import {CompareIcon} from '../icons/compare-icon';
 import setSelectedLayerIdAction from '../../actions/set-selected-layer';
 import LayerList from '../layer-list/layer-list';
 import Tabs from '../tabs/tabs';

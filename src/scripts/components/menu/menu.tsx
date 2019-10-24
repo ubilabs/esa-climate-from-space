@@ -2,13 +2,13 @@ import React, {FunctionComponent, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {useIntl} from 'react-intl';
 
-import {MenuIcon} from '../icons/MenuIcon';
-import {PresenterIcon} from '../icons/PresenterIcon';
-import {ShowCaseIcon} from '../icons/ShowCaseIcon';
-import {LanguageIcon} from '../icons/LanguageIcon';
-import {ShareIcon} from '../icons/ShareIcon';
-import {InfoIcon} from '../icons/InfoIcon';
-import {ExportIcon} from '../icons/ExportIcon';
+import {MenuIcon} from '../icons/menu-icon';
+import {PresenterIcon} from '../icons/presenter-icon';
+import {ShowCaseIcon} from '../icons/show-case-icon';
+import {LanguageIcon} from '../icons/language-icon';
+import {ShareIcon} from '../icons/share-icon';
+import {InfoIcon} from '../icons/info-icon';
+import {ExportIcon} from '../icons/export-icon';
 import LanguageSelector from '../language-selector/language-selector';
 
 import {MenuItem} from '../../types/menu-item';

@@ -6,8 +6,8 @@ import {FormattedMessage} from 'react-intl';
 
 import fetchStory from '../../actions/fetch-story';
 import {storySelector} from '../../reducers/story';
-import {BackIcon} from '../icons/backicon';
-import {NextIcon} from '../icons/nextIcon';
+import {BackIcon} from '../icons/back-icon';
+import {NextIcon} from '../icons/next-icon';
 
 import styles from './story.styl';
 
