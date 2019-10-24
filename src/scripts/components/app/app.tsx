@@ -42,42 +42,46 @@ const TranslatedApp: FunctionComponent = () => {
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <div className={styles.app}>
-          <Globes />
-          <Switch>
-            <Route path="/" exact>
-              <StoriesButton />
-              <TimeSlider />
+          <div className={styles.layout}>
+            <Switch>
+              <Route path="/" exact>
+                <TimeSlider />
+                <StoriesButton />
 
-              <div className={styles.layoutContainer}>
-                <Menu />
-                <div className={styles.timeslider} />
-                <ProjectionMenu />
-                <LayerSelector />
-              </div>
-            </Route>
+                <div className={styles.nav}>
+                  <Menu />
+                  <div className={styles.timeslider} />
+                  <ProjectionMenu />
+                  <LayerSelector />
+                </div>
+              </Route>
 
-            <Route path="/present">
-              <PresentationSelector />
-            </Route>
+              <Route path="/present">
+                <PresentationSelector />
+              </Route>
 
-            <Route path="/showcase">
-              <ShowcaseSelector />
-            </Route>
+              <Route path="/showcase">
+                <ShowcaseSelector />
+              </Route>
 
-            <Route path="/stories" exact>
-              <StoriesSelector />
-            </Route>
+              <Route path="/stories" exact>
+                <StoriesSelector />
+              </Route>
 
+              <Route
+                path="/stories/:storyId"
+                render={props => (
+                  <Redirect to={`${props.match.url}/0`} />
+                )}></Route>
+            </Switch>
+          </div>
+
+          <div className={styles.story}>
+            <Globes />
             <Route path="/stories/:storyId/:page">
               <Story />
             </Route>
-
-            <Route
-              path="/stories/:storyId"
-              render={props => (
-                <Redirect to={`${props.match.url}/0`} />
-              )}></Route>
-          </Switch>
+          </div>
         </div>
       </IntlProvider>
 

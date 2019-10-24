@@ -1,6 +1,7 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {useParams, Redirect} from 'react-router-dom';
+import {useParams, Redirect, Link} from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
 
 import fetchStory from '../../actions/fetch-story';
 import {storySelector} from '../../reducers/story';
@@ -29,6 +30,9 @@ const Story: FunctionComponent = () => {
 
   return (
     <div className={styles.story}>
+      <Link to="/stories" className={styles.backButton}>
+        <FormattedMessage id="goBack" />
+      </Link>
       {story && (
         <div className={styles.sidepanel} key={slide.title}>
           <img src={slide.image} className={styles.previewImage} />
