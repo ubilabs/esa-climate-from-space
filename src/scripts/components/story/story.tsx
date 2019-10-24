@@ -4,10 +4,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useParams, Redirect, Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 
+import StoryPagination from '../story-pagination/story-pagination';
 import fetchStory from '../../actions/fetch-story';
 import {storySelector} from '../../reducers/story';
-import {BackIcon} from '../icons/back-icon';
-import {NextIcon} from '../icons/next-icon';
 
 import styles from './story.styl';
 
@@ -18,11 +17,6 @@ const Story: FunctionComponent = () => {
   const pageNumber = parseInt(page || '0', 10);
   const slide = story && story.slides[pageNumber];
   const activeStoryId = story && story.id;
-  const nextPageNumber = pageNumber + 1;
-  const previousPageNumber = pageNumber - 1;
-  const slidesLength = (story && story.slides.length) || 0;
-  const showNextButton = nextPageNumber < slidesLength;
-  const showPreviousButton = previousPageNumber >= 0;
 
   useEffect(() => {
     storyId && dispatch(fetchStory(storyId));
@@ -52,29 +46,13 @@ const Story: FunctionComponent = () => {
           </div>
         </div>
       )}
-      <div className={styles.pagination}>
-        {showPreviousButton ? (
-          <Link
-            to={`/stories/${storyId}/${previousPageNumber}`}
-            className={styles.icon}>
-            <BackIcon />
-          </Link>
-        ) : (
-          <div className={styles.emptyIcon} />
-        )}
-        <span>
-          {pageNumber + 1}/{slidesLength}
-        </span>
-        {showNextButton ? (
-          <Link
-            to={`/stories/${storyId}/${nextPageNumber}`}
-            className={styles.icon}>
-            <NextIcon />
-          </Link>
-        ) : (
-          <div className={styles.emptyIcon} />
-        )}
-      </div>
+      {story && (
+        <StoryPagination
+          currentPage={pageNumber}
+          storyId={story.id}
+          slides={story.slides}
+        />
+      )}
     </div>
   );
 };
