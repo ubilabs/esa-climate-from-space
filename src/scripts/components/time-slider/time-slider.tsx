@@ -29,29 +29,35 @@ const TimeSlider: FunctionComponent = () => {
     []
   );
 
-  // get only active layer ids
+  // get only active layers
   const activeLayers = useMemo(
-    () => Object.values(selectedLayers).filter(Boolean),
-    [selectedLayers]
+    () =>
+      Object.values(selectedLayers)
+        .filter(Boolean)
+        .map(id => detailedLayers[id])
+        .filter(Boolean),
+    [selectedLayers, detailedLayers]
+  );
+
+  const timestampsPerLayer = useMemo(
+    () => activeLayers.map(({timestamps}) => timestamps),
+    [activeLayers]
   );
 
   // get combined and sorted timestamps from all active layers
-  const allTimestamps = useMemo(
+  const combinedTimestamps = useMemo(
     () =>
-      activeLayers
-        .map(id => detailedLayers[id])
-        .filter(Boolean)
-        .map(({timestamps}) => timestamps)
+      timestampsPerLayer
         // @ts-ignore
         .flat()
         .map((isoString: string) => Number(new Date(isoString)))
         .sort((a: number, b: number) => a - b),
-    [activeLayers, detailedLayers]
+    [timestampsPerLayer]
   );
 
-  const min = allTimestamps[0];
-  const max = allTimestamps[allTimestamps.length - 1];
-  const timestampsAvailable = allTimestamps.length > 0;
+  const min = combinedTimestamps[0];
+  const max = combinedTimestamps[combinedTimestamps.length - 1];
+  const timestampsAvailable = combinedTimestamps.length > 0;
 
   // clamp time according to min/max
   useEffect(() => {
@@ -93,3 +99,37 @@ const TimeSlider: FunctionComponent = () => {
 };
 
 export default TimeSlider;
+
+// eslint-disable-next-line complexity
+function getTimestamps(selectedLayers, detailedLayers) {
+  const mainLayer = selectedLayers.main && detailedLayers[selectedLayers.main];
+  const compareLayer =
+    selectedLayers.compare && detailedLayers[selectedLayers.compare];
+
+  const main = (mainLayer && getTimeRange(mainLayer.timestamps)) || null;
+  const compare =
+    (compareLayer && getTimeRange(compareLayer.timestamps)) || null;
+
+  const combined = getTimeRange([
+    ...((main && main.timestamps) || []),
+    ...((compare && compare.timestamps) || [])
+  ]);
+
+  return {
+    main,
+    compare,
+    combined
+  };
+}
+
+function getTimeRange(timestamps: string[]) {
+  const sorted = timestamps
+    .map((isoString: string) => new Date(isoString))
+    .sort((a: Date, b: Date) => Number(a) - Number(b));
+
+  return {
+    min: sorted[0].toISOString(),
+    max: sorted[sorted.length - 1].toISOString(),
+    timestamps: sorted.map(date => date.toISOString())
+  };
+}
