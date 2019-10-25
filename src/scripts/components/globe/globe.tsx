@@ -1,6 +1,10 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
 
-import {getGlobeView, setGlobeView} from '../../libs/get-globe-view';
+import {
+  getGlobeView,
+  setGlobeView,
+  flyToGlobeView
+} from '../../libs/get-globe-view';
 
 import {GlobeView} from '../../types/globe-view';
 import {GlobeProjection} from '../../types/globe-projection';
@@ -41,6 +45,7 @@ interface Props {
   view: GlobeView;
   projection: GlobeProjection;
   imageUrl: string | null;
+  flyTo: GlobeView | null;
   onMouseEnter: () => void;
   onChange: (view: GlobeView) => void;
   onMoveEnd: (view: GlobeView) => void;
@@ -51,6 +56,7 @@ const Globe: FunctionComponent<Props> = ({
   projection,
   imageUrl,
   active,
+  flyTo,
   onMouseEnter,
   onChange,
   onMoveEnd
@@ -155,6 +161,14 @@ const Globe: FunctionComponent<Props> = ({
       layers.remove(oldLayer, true);
     }
   }, [viewer, imageUrl]);
+
+  // fly to location
+  useEffect(() => {
+    if (!viewer || !flyTo) {
+      return;
+    }
+    flyToGlobeView(viewer, flyTo);
+  }, [viewer, flyTo]);
 
   return (
     <div

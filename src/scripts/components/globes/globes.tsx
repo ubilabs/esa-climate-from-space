@@ -14,6 +14,7 @@ import {projectionSelector} from '../../reducers/globe/projection';
 import setGlobeViewAction from '../../actions/set-globe-view';
 import Globe from '../globe/globe';
 import {getLayerTileUrl} from '../../libs/get-layer-tile-url';
+import {flyToSelector} from '../../reducers/fly-to';
 
 import {GlobeView} from '../../types/globe-view';
 
@@ -28,6 +29,7 @@ const Globes: FunctionComponent = () => {
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
   const selectedLayers = useSelector(selectedLayersSelector);
+  const flyTo = useSelector(flyToSelector);
   const onChangeHandler = useCallback(
     (view: GlobeView) => setCurrentView(view),
     []
@@ -61,6 +63,7 @@ const Globes: FunctionComponent = () => {
         view={currentView}
         projection={projection}
         imageUrl={mainImageUrl}
+        flyTo={flyTo}
         onMouseEnter={() => setIsMainActive(true)}
         onChange={onChangeHandler}
         onMoveEnd={onMoveEndHandler}
@@ -72,6 +75,7 @@ const Globes: FunctionComponent = () => {
           view={currentView}
           projection={projection}
           imageUrl={compareImageUrl}
+          flyTo={flyTo}
           onMouseEnter={() => setIsMainActive(false)}
           onChange={onChangeHandler}
           onMoveEnd={onMoveEndHandler}
