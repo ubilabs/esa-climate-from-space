@@ -1,6 +1,9 @@
 import {ThunkDispatch} from 'redux-thunk';
 
+import {storySelector} from '../reducers/story';
 import fetchLayers, {FetchLayersActions} from './fetch-layers';
+import fetchStories from './fetch-stories';
+import fetchStory from './fetch-story';
 
 import {State} from '../reducers/index';
 import {Language} from '../types/language';
@@ -15,7 +18,8 @@ export interface SetLanguageAction {
 type AllThunkActions = SetLanguageAction | FetchLayersActions;
 
 const setLanguageAction = (language: Language) => (
-  dispatch: ThunkDispatch<State, void, AllThunkActions>
+  dispatch: ThunkDispatch<State, void, AllThunkActions>,
+  getState: () => State
 ) => {
   dispatch({
     type: SET_LANGUAGE,
@@ -23,6 +27,11 @@ const setLanguageAction = (language: Language) => (
   });
 
   dispatch(fetchLayers());
+  dispatch(fetchStories());
+
+  const state = getState();
+  const story = storySelector(state);
+  story && dispatch(fetchStory(story.id));
 };
 
 export default setLanguageAction;
