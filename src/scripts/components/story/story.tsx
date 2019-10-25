@@ -18,7 +18,7 @@ const Story: FunctionComponent = () => {
   const slide = story && story.slides[pageNumber];
   const activeStoryId = story && story.id;
   const stories = useSelector(storiesSelector);
-  const findStory = stories.find(storyItem => storyItem.id === storyId);
+  const storyListItem = stories.find(storyItem => storyItem.id === storyId);
 
   useEffect(() => {
     storyId && dispatch(fetchStory(storyId));
@@ -40,7 +40,9 @@ const Story: FunctionComponent = () => {
         <Link to="/stories" className={styles.backButton}>
           <FormattedMessage id="goBack" />
         </Link>
-        <h2 className={styles.storyTitle}>{findStory && findStory.title}</h2>
+        <h2 className={styles.storyTitle}>
+          {storyListItem && storyListItem.title}
+        </h2>
       </div>
       {slide && (
         <div className={styles.sidepanel} key={slide.title}>
