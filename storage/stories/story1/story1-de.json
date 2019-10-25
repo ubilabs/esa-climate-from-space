@@ -4,13 +4,25 @@
     {
       "title": "Story slide 1",
       "subtitle": "Das ist story slide 1",
-      "bodytext": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
+      "bodytext": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste veniam laborum necessitatibus suscipit commodi? Officia ipsum blanditiis itaque, fugiat nostrum, reiciendis doloribus perferendis quisquam iure dolorem dolorum, deleniti cupiditate soluta?",
       "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
     },
     {
       "title": "Story slide 2",
       "subtitle": "Das ist story slide 2",
       "bodytext": "Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
+      "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
+    },
+    {
+      "title": "Story slide 3",
+      "subtitle": "Das ist story slide 3",
+      "bodytext": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
+      "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
+    },
+    {
+      "title": "Story slide 4",
+      "subtitle": "Das ist story slide 4",
+      "bodytext": "Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
       "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
     }
   ]

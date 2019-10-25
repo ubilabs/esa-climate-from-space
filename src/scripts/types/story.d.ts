@@ -3,7 +3,7 @@ export interface Story {
   slides: Slide[];
 }
 
-interface Slide {
+export interface Slide {
   title: string;
   subtitle: string;
   bodytext: string;

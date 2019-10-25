@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {useIntl} from 'react-intl';
 
 import setGlobeProjectionAction from '../../actions/set-globe-projection';
-import {ProjectionIcon} from '../icons/ProjectionIcon';
+import {ProjectionIcon} from '../icons/projection-icon';
 
 import {GlobeProjection} from '../../types/globe-projection';
 
