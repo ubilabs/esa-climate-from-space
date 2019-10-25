@@ -20,6 +20,7 @@ import Story from '../story/story';
 import UrlSync from '../url-sync/url-sync';
 import LayerLoader from '../layer-loader/layer-loader';
 import TimeSlider from '../time-slider/time-slider';
+import Init from '../init/init';
 
 import translations from '../../i18n';
 import styles from './app.styl';
@@ -88,6 +89,7 @@ const TranslatedApp: FunctionComponent = () => {
 
       <UrlSync />
       <LayerLoader />
+      <Init />
     </Router>
   );
 };

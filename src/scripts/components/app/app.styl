@@ -15,6 +15,9 @@
   height: 100%
   pointer-events: none
 
+  & > *
+    pointer-events: auto
+
 .story
   display: flex
   flex-direction: row
@@ -29,9 +32,10 @@
   align-items: flex-end
   width: 100%
   height: 100%
+  pointer-events: none
 
-.nav > *
-  pointer-events: auto
+  & > *
+    pointer-events: auto
 
 .timeslider
   flex-grow: 1
