@@ -6,6 +6,7 @@ import {FormattedMessage} from 'react-intl';
 import StoryPagination from '../story-pagination/story-pagination';
 import fetchStory from '../../actions/fetch-story';
 import {storySelector} from '../../reducers/story';
+import {storiesSelector} from '../../reducers/stories';
 
 import styles from './story.styl';
 
@@ -16,6 +17,8 @@ const Story: FunctionComponent = () => {
   const pageNumber = parseInt(page || '0', 10);
   const slide = story && story.slides[pageNumber];
   const activeStoryId = story && story.id;
+  const stories = useSelector(storiesSelector);
+  const storyListItem = stories.find(storyItem => storyItem.id === storyId);
 
   useEffect(() => {
     storyId && dispatch(fetchStory(storyId));
@@ -33,9 +36,14 @@ const Story: FunctionComponent = () => {
 
   return (
     <div className={styles.story}>
-      <Link to="/stories" className={styles.backButton}>
-        <FormattedMessage id="goBack" />
-      </Link>
+      <div className={styles.header}>
+        <Link to="/stories" className={styles.backButton}>
+          <FormattedMessage id="goBack" />
+        </Link>
+        <h2 className={styles.storyTitle}>
+          {storyListItem && storyListItem.title}
+        </h2>
+      </div>
       {slide && (
         <div className={styles.sidepanel} key={slide.title}>
           <img src={slide.image} className={styles.previewImage} />

@@ -2,13 +2,13 @@
   {
     "id": "story1",
     "title": "Geschichte 1",
-    "description": "This is story 1",
+    "description": "Das ist Geschichte 1",
     "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
   },
   {
     "id": "story2",
     "title": "Geschichte 2",
-    "description": "This is story 2",
+    "description": "Das ist Geschichte 2",
     "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story2/assets/story2.jpeg"
   },
   {
