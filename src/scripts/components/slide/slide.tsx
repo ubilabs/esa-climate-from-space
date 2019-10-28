@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Slide: FunctionComponent<Props> = ({slide}) => (
-  <div className={styles.sidepanel}>
+  <div className={styles.slide}>
     <img src={slide.image} className={styles.previewImage} />
     <div className={styles.content}>
       <h1>{slide.title}</h1>
