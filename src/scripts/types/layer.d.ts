@@ -1,7 +1,5 @@
 export interface Layer {
   id: string;
-  url: string;
-  rectangle: [number, number, number, number] | null;
   timestamps: string[]; // ISO 8601 timestamps
   timeFormat: {
     year?: 'numeric' | '2-digit';

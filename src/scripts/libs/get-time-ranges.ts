@@ -1,25 +1,17 @@
-import {SelectedLayersState} from '../reducers/layers/selected';
-import {DetailsById} from '../reducers/layers/details';
-
 import {Layer} from '../types/layer';
 import {TimeRange} from '../types/time-range';
 
 // eslint-disable-next-line complexity
 export function getTimeRanges(
-  selectedLayers: SelectedLayersState,
-  detailedLayers: DetailsById
+  mainLayer: Layer | null,
+  compareLayer: Layer | null
 ): {
   main: TimeRange | null;
   compare: TimeRange | null;
   combined: TimeRange;
 } {
-  const mainId = selectedLayers.main;
-  const mainLayer = (mainId && detailedLayers[mainId]) || null;
   const mainRange = getLayerTimeRange(mainLayer);
   const mainTimestamps = (mainRange && mainRange.timestamps) || [];
-
-  const compareId = selectedLayers.compare;
-  const compareLayer = (compareId && detailedLayers[compareId]) || null;
   const compareRange = getLayerTimeRange(compareLayer);
   const compareTimestamps = (compareRange && compareRange.timestamps) || [];
 

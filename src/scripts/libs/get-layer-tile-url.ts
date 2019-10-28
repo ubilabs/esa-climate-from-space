@@ -1,23 +1,16 @@
 import config from '../config/main';
 import {replaceUrlPlaceholders} from '../libs/replace-url-placeholders';
 
-import {DetailsById} from '../reducers/layers/details';
+import {Layer} from '../types/layer';
 
 /**
  * Returns the current layer tile url based on the time and the
  * layer's availbale timestmaps
  */
 export function getLayerTileUrl(
-  id: string | null,
-  detailedLayers: DetailsById,
+  layer: Layer | null,
   time: number
 ): string | null {
-  if (!id) {
-    return null;
-  }
-
-  const layer = detailedLayers[id];
-
   if (!layer) {
     return null;
   }
@@ -29,7 +22,7 @@ export function getLayerTileUrl(
     .substr(0, 10)
     .replace(/-/g, '');
 
-  return replaceUrlPlaceholders(config.api.layerTiles, {id, name});
+  return replaceUrlPlaceholders(config.api.layerTiles, {id: layer.id, name});
 }
 
 /**

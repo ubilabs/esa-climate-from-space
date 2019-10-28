@@ -9,8 +9,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import debounce from 'lodash.debounce';
 
 import {languageSelector} from '../../reducers/language';
-import {selectedLayersSelector} from '../../reducers/layers/selected';
-import {detailedLayersSelector} from '../../reducers/layers/details';
+import {activeLayersSelector} from '../../reducers/layers/details';
 import setGlobeTime from '../../actions/set-globe-time';
 import {getTimeRanges} from '../../libs/get-time-ranges';
 
@@ -24,13 +23,10 @@ const TimeSlider: FunctionComponent = () => {
   const [time, setTime] = useState(0);
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const language = useSelector(languageSelector);
-  const selectedLayers = useSelector(selectedLayersSelector);
-  const detailedLayers = useSelector(detailedLayersSelector);
+  const activeLayers = useSelector(activeLayersSelector);
 
   // date format
-  const mainLayer =
-    (selectedLayers.main && detailedLayers[selectedLayers.main]) || null;
-  const mainDateFormat = mainLayer && mainLayer.timeFormat;
+  const mainDateFormat = activeLayers.main && activeLayers.main.timeFormat;
   const {format} = useMemo(
     () => new Intl.DateTimeFormat(language, mainDateFormat || {}),
     [language, mainDateFormat]
@@ -38,8 +34,8 @@ const TimeSlider: FunctionComponent = () => {
 
   // ranges
   const {main, compare, combined} = useMemo(
-    () => getTimeRanges(selectedLayers, detailedLayers),
-    [selectedLayers, detailedLayers]
+    () => getTimeRanges(activeLayers.main, activeLayers.compare),
+    [activeLayers.main, activeLayers.compare]
   );
   const timestampsAvailable = combined.timestamps.length > 0;
   const totalRange = combined.max - combined.min;
