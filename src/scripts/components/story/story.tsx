@@ -7,22 +7,31 @@ import StoryPagination from '../story-pagination/story-pagination';
 import fetchStory from '../../actions/fetch-story';
 import {storySelector} from '../../reducers/story';
 import {storiesSelector} from '../../reducers/stories';
+import setFlyToAction from '../../actions/set-fly-to';
 
 import styles from './story.styl';
 
 const Story: FunctionComponent = () => {
   const story = useSelector(storySelector);
+  const stories = useSelector(storiesSelector);
   const dispatch = useDispatch();
   const {storyId, page} = useParams();
   const pageNumber = parseInt(page || '0', 10);
   const slide = story && story.slides[pageNumber];
   const activeStoryId = story && story.id;
-  const stories = useSelector(storiesSelector);
   const storyListItem = stories.find(storyItem => storyItem.id === storyId);
 
+  // fetch story of active storyId
   useEffect(() => {
     storyId && dispatch(fetchStory(storyId));
-  }, [storyId, dispatch]);
+  }, [dispatch, storyId]);
+
+  // fly to position given in a slide
+  useEffect(() => {
+    if (slide && slide.flyTo) {
+      dispatch(setFlyToAction(slide.flyTo));
+    }
+  }, [dispatch, slide]);
 
   // redirect to first slide when current slide does not exist
   if (story && !slide) {

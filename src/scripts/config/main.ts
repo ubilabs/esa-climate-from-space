@@ -11,8 +11,8 @@ const globeState: GlobeState = {
       longitude: 0.002816
     },
     orientation: {
-      heading: Math.PI * 2,
-      pitch: Math.PI / -2,
+      heading: 0,
+      pitch: -90,
       roll: 0
     }
   }
