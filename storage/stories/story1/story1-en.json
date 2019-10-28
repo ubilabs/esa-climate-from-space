@@ -5,13 +5,37 @@
       "title": "Story slide 1",
       "subtitle": "This is story slide 1",
       "bodytext": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste veniam laborum necessitatibus suscipit commodi? Officia ipsum blanditiis itaque, fugiat nostrum, reiciendis doloribus perferendis quisquam iure dolorem dolorum, deleniti cupiditate soluta?",
-      "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
+      "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story1/assets/story1.jpeg",
+      "flyTo": {
+        "position": {
+          "height": 1000000,
+          "latitude": 13.1,
+          "longitude": -86.4
+        },
+        "orientation": {
+          "heading": 0,
+          "pitch": -90,
+          "roll": 0
+        }
+      }
     },
     {
       "title": "Story slide 2",
       "subtitle": "This is story slide 2",
       "bodytext": "Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
-      "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
+      "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story1/assets/story1.jpeg",
+      "flyTo": {
+        "position": {
+          "height": 10000000,
+          "latitude": 67.1,
+          "longitude": 96.4
+        },
+        "orientation": {
+          "heading": 0,
+          "pitch": -90,
+          "roll": 0
+        }
+      }
     },
     {
       "title": "Story slide 3",

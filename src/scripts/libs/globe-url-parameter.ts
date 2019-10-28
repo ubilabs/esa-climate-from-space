@@ -41,10 +41,6 @@ export function parseUrl(): GlobeState | null {
     return null;
   }
 
-  // convert degree to radians
-  values[0] = values[0] * (Math.PI / 180);
-  values[1] = values[1] * (Math.PI / 180);
-
   return {
     view: {
       position: {
@@ -73,10 +69,6 @@ export function getParamString(globeState: GlobeState): string | null {
   if (values.some(num => isNaN(num))) {
     return null;
   }
-
-  // convert radians to degree
-  values[0] = values[0] * (180 / Math.PI);
-  values[1] = values[1] * (180 / Math.PI);
 
   const compactValues = values.map(num => num.toFixed(2));
 
