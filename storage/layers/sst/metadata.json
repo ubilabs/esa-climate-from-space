@@ -1,4 +1,5 @@
 {
+  "id": "sst",
   "type": "image",
   "timeFormat": {
     "year": "numeric",

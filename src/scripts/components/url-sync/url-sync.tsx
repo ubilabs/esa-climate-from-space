@@ -22,7 +22,9 @@ const UrlSync: FunctionComponent = () => {
     const params = new URLSearchParams(location.search);
     params.set('globe', globeValue);
     history.replace({search: params.toString()});
-  }, [globeState]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [globeState, history]); // we don't want to check for location.search changes
 
   return null;
 };

@@ -8,20 +8,39 @@ import React, {
 import {useSelector, useDispatch} from 'react-redux';
 import debounce from 'lodash.debounce';
 
-import {selectedLayersSelector} from '../../reducers/layers/selected';
-import {detailedLayersSelector} from '../../reducers/layers/details';
+import {languageSelector} from '../../reducers/language';
+import {activeLayersSelector} from '../../reducers/layers/details';
 import setGlobeTime from '../../actions/set-globe-time';
+import {getTimeRanges} from '../../libs/get-time-ranges';
 
 import styles from './time-slider.styl';
 
+// debounce the time update
 const DELAY = 200;
 
 const TimeSlider: FunctionComponent = () => {
   const dispatch = useDispatch();
   const [time, setTime] = useState(0);
   const stepSize = 1000 * 60 * 60 * 24; // one day
-  const selectedLayers = useSelector(selectedLayersSelector);
-  const detailedLayers = useSelector(detailedLayersSelector);
+  const language = useSelector(languageSelector);
+  const activeLayers = useSelector(activeLayersSelector);
+
+  // date format
+  const mainDateFormat = activeLayers.main && activeLayers.main.timeFormat;
+  const {format} = useMemo(
+    () => new Intl.DateTimeFormat(language, mainDateFormat || {}),
+    [language, mainDateFormat]
+  );
+
+  // ranges
+  const {main, compare, combined} = useMemo(
+    () => getTimeRanges(activeLayers.main, activeLayers.compare),
+    [activeLayers.main, activeLayers.compare]
+  );
+  const timestampsAvailable = combined.timestamps.length > 0;
+  const totalRange = combined.max - combined.min;
+
+  // update app state
   const debouncedSetGlobeTime = useCallback(
     debounce((newTime: number) => dispatch(setGlobeTime(newTime)), DELAY, {
       maxWait: DELAY
@@ -29,65 +48,71 @@ const TimeSlider: FunctionComponent = () => {
     []
   );
 
-  // get only active layer ids
-  const activeLayers = useMemo(
-    () => Object.values(selectedLayers).filter(Boolean),
-    [selectedLayers]
-  );
-
-  // get combined and sorted timestamps from all active layers
-  const allTimestamps = useMemo(
-    () =>
-      activeLayers
-        .map(id => detailedLayers[id])
-        .filter(Boolean)
-        .map(({timestamps}) => timestamps)
-        // @ts-ignore
-        .flat()
-        .map((isoString: string) => Number(new Date(isoString)))
-        .sort((a: number, b: number) => a - b),
-    [activeLayers, detailedLayers]
-  );
-
-  const min = allTimestamps[0];
-  const max = allTimestamps[allTimestamps.length - 1];
-  const timestampsAvailable = allTimestamps.length > 0;
-
   // clamp time according to min/max
   useEffect(() => {
-    if (time < min) {
-      setTime(min);
+    if (time < combined.min) {
+      setTime(combined.min);
     }
 
-    if (time > max) {
-      setTime(max);
+    if (time > combined.max) {
+      setTime(combined.max);
     }
-  }, [time, min, max]);
+  }, [time, combined.min, combined.max]);
 
   // return nothing when no timesteps available
   if (!timestampsAvailable) {
     return null;
   }
 
+  const getRangeStyle = (
+    min: number,
+    max: number
+  ): {left: string; right: string} => {
+    const left = Math.round(((min - combined.min) / totalRange) * 100);
+    const right = 100 - Math.round(((max - combined.min) / totalRange) * 100);
+
+    return {
+      left: `${left}%`,
+      right: `${right}%`
+    };
+  };
+
   return (
     <div className={styles.timeSlider}>
-      <div className={styles.label}>
-        {new Date(time).toISOString().substr(0, 10)}
-      </div>
+      <div className={styles.container}>
+        <div className={styles.label}>
+          <div className={styles.labelMin}>{format(combined.min)}</div>
+          <div>{format(time)}</div>
+          <div className={styles.labelMax}>{format(combined.max)}</div>
+        </div>
 
-      <input
-        className={styles.input}
-        type="range"
-        value={time}
-        onChange={({target}) => {
-          const newTime = parseInt(target.value, 10);
-          setTime(newTime);
-          debouncedSetGlobeTime(newTime);
-        }}
-        min={min}
-        max={max}
-        step={stepSize}
-      />
+        <input
+          className={styles.input}
+          type="range"
+          value={time}
+          onChange={({target}) => {
+            const newTime = parseInt(target.value, 10);
+            setTime(newTime);
+            debouncedSetGlobeTime(newTime);
+          }}
+          min={combined.min}
+          max={combined.max}
+          step={stepSize}
+        />
+
+        <div className={styles.ranges}>
+          {main && (
+            <div
+              className={styles.rangeMain}
+              style={getRangeStyle(main.min, main.max)}></div>
+          )}
+          {compare && (
+            <div
+              className={styles.rangeCompare}
+              style={getRangeStyle(compare.min, compare.max)}></div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
