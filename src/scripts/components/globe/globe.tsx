@@ -167,6 +167,7 @@ const Globe: FunctionComponent<Props> = ({
     if (!viewer || !flyTo) {
       return;
     }
+
     flyToGlobeView(viewer, flyTo);
   }, [viewer, flyTo]);
 

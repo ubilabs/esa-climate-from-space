@@ -21,10 +21,12 @@ const Story: FunctionComponent = () => {
   const activeStoryId = story && story.id;
   const storyListItem = stories.find(storyItem => storyItem.id === storyId);
 
+  // fetch story of active storyId
   useEffect(() => {
     storyId && dispatch(fetchStory(storyId));
   }, [dispatch, storyId]);
 
+  // fly to position given in a slide
   useEffect(() => {
     if (slide && slide.flyTo) {
       dispatch(setFlyToAction(slide.flyTo));
