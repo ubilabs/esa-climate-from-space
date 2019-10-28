@@ -8,6 +8,7 @@ import fetchStory from '../../actions/fetch-story';
 import {storySelector} from '../../reducers/story';
 import {storiesSelector} from '../../reducers/stories';
 import setFlyToAction from '../../actions/set-fly-to';
+import Slide from '../slide/slide';
 
 import styles from './story.styl';
 import {State} from '../../reducers';
@@ -48,15 +49,7 @@ const Story: FunctionComponent = () => {
           {storyListItem && storyListItem.title}
         </h2>
       </div>
-      {slide && (
-        <div className={styles.sidepanel} key={slide.title}>
-          <img src={slide.image} className={styles.previewImage} />
-          <div className={styles.content}>
-            <h1>{slide.title}</h1>
-            <p>{slide.bodytext}</p>
-          </div>
-        </div>
-      )}
+      {slide && <Slide slide={slide} />}
       {story && (
         <StoryPagination
           currentPage={pageNumber}
