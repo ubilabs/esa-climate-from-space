@@ -15,8 +15,12 @@ function storyReducer(
   }
 }
 
-export function storySelector(state: State): Story | null {
-  return state.story;
+export function storySelector(state: State, storyId?: string): Story | null {
+  if (!state.story || !storyId) {
+    return null;
+  }
+
+  return state.story.id === storyId ? state.story : null;
 }
 
 export default storyReducer;
