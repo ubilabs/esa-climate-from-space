@@ -9,6 +9,6 @@ export interface Slide {
   title: string;
   subtitle: string;
   bodytext: string;
-  image: string;
+  images?: [];
   flyTo: GlobeView;
 }

@@ -1,0 +1,26 @@
+.storyGallery
+  position: relative
+  overflow: hidden
+  width: 100%
+  height: 40%
+
+.buttonContainer
+  position: absolute
+  top: 50%
+  z-index: 1
+  display: flex
+  justify-content: space-between
+  width: 100%
+  transform: translateY(-50%)
+
+  > *
+    fill: #fff
+
+.slider
+  display: flex
+  height: 100%
+  transition: transform ease-out 0.5s
+
+.sliderImage
+  height: 100%
+  object-fit: cover

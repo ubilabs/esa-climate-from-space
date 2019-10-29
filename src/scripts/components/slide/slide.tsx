@@ -1,5 +1,9 @@
 import React, {FunctionComponent} from 'react';
+
+import StoryGallery from '../story-gallery/story-gallery';
+
 import {Slide as SlideType} from '../../types/story';
+
 import styles from './slide.styl';
 
 interface Props {
@@ -8,7 +12,9 @@ interface Props {
 
 const Slide: FunctionComponent<Props> = ({slide}) => (
   <div className={styles.slide}>
-    <img src={slide.image} className={styles.previewImage} />
+    {slide.images && slide.images.length && (
+      <StoryGallery images={slide.images} />
+    )}
     <div className={styles.content}>
       <h1>{slide.title}</h1>
       <p>{slide.bodytext}</p>
