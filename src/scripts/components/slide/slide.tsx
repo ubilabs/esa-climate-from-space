@@ -1,7 +1,10 @@
 import React, {FunctionComponent} from 'react';
-import {Slide as SlideType} from '../../types/story';
-import styles from './slide.styl';
+
 import StoryGallery from '../story-gallery/story-gallery';
+
+import {Slide as SlideType} from '../../types/story';
+
+import styles from './slide.styl';
 
 interface Props {
   slide: SlideType;

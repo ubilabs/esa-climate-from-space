@@ -1,4 +1,5 @@
 import React, {FunctionComponent, useState} from 'react';
+
 import {BackIcon} from '../icons/back-icon';
 import {NextIcon} from '../icons/next-icon';
 
