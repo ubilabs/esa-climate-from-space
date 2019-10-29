@@ -5,7 +5,7 @@
       "title": "Story slide 1",
       "subtitle": "Das ist story slide 1",
       "bodytext": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
-      "image": [
+      "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story5/assets/story5.jpeg"
       ]
     },
@@ -13,7 +13,7 @@
       "title": "Story slide 2",
       "subtitle": "Das ist story slide 2",
       "bodytext": "Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
-      "image": [
+      "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story5/assets/story5.jpeg"
       ]
     }
