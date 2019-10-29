@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {Link} from 'react-router-dom';
 
-import {BackIcon} from '../icons/back-icon';
+import {PreviousIcon} from '../icons/back-icon';
 import {NextIcon} from '../icons/next-icon';
 
 import {Slide} from '../../types/story';
@@ -31,7 +31,7 @@ const StoryPagination: FunctionComponent<Props> = ({
         <Link
           to={`/stories/${storyId}/${previousPageNumber}`}
           className={styles.icon}>
-          <BackIcon />
+          <PreviousIcon />
         </Link>
       ) : (
         <div className={styles.emptyIcon} />
