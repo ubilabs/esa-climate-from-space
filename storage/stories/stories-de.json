@@ -3,48 +3,48 @@
     "id": "story1",
     "title": "Geschichte 1",
     "description": "Das ist Geschichte 1",
-    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
+    "image": "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
   },
   {
     "id": "story2",
     "title": "Geschichte 2",
     "description": "Das ist Geschichte 2",
-    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story2/assets/story2.jpeg"
+    "image": "https://storage.googleapis.com/esa-cfs-storage/stories/story2/assets/story2.jpeg"
   },
   {
     "id": "story3",
     "title": "Geschichte 3",
     "description": "Das ist Geschichte 3",
-    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story3/assets/story3.jpeg"
+    "image": "https://storage.googleapis.com/esa-cfs-storage/stories/story3/assets/story3.jpeg"
   },
   {
     "id": "story4",
     "title": "Geschichte 4",
     "description": "Das ist Geschichte 4",
-    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story4/assets/story4.jpeg"
+    "image": "https://storage.googleapis.com/esa-cfs-storage/stories/story4/assets/story4.jpeg"
   },
   {
     "id": "story5",
     "title": "Geschichte 5",
     "description": "Das ist Geschichte 5",
-    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story5/assets/story5.jpeg"
+    "image": "https://storage.googleapis.com/esa-cfs-storage/stories/story5/assets/story5.jpeg"
   },
   {
     "id": "story6",
     "title": "Geschichte 6",
     "description": "Das ist Geschichte 6",
-    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story6/assets/story6.jpeg"
+    "image": "https://storage.googleapis.com/esa-cfs-storage/stories/story6/assets/story6.jpeg"
   },
   {
     "id": "story7",
     "title": "Geschichte 7",
     "description": "Das ist Geschichte 7",
-    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story7/assets/story7.jpeg"
+    "image": "https://storage.googleapis.com/esa-cfs-storage/stories/story7/assets/story7.jpeg"
   },
   {
     "id": "story8",
     "title": "Geschichte 8",
     "description": "Das ist Geschichte 8",
-    "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story8/assets/story8.jpeg"
+    "image": "https://storage.googleapis.com/esa-cfs-storage/stories/story8/assets/story8.jpeg"
   }
 ]

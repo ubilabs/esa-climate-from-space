@@ -5,13 +5,17 @@
       "title": "Story slide 1",
       "subtitle": "This is story slide 1",
       "bodytext": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
-      "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story7/assets/story7.jpeg"
+      "image": [
+        "https://storage.googleapis.com/esa-cfs-storage/stories/story7/assets/story7.jpeg"
+      ]
     },
     {
       "title": "Story slide 2",
       "subtitle": "This is story slide 2",
       "bodytext": "Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
-      "image": "https://storage.cloud.google.com/esa-cfs-storage/stories/story7/assets/story7.jpeg"
+      "image": [
+        "https://storage.googleapis.com/esa-cfs-storage/stories/story7/assets/story7.jpeg"
+      ]
     }
   ]
 }
