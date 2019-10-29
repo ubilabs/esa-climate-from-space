@@ -11,15 +11,15 @@ import setFlyToAction from '../../actions/set-fly-to';
 import Slide from '../slide/slide';
 
 import styles from './story.styl';
+import {State} from '../../reducers';
 
 const Story: FunctionComponent = () => {
-  const story = useSelector(storySelector);
+  const {storyId, page} = useParams();
+  const story = useSelector((state: State) => storySelector(state, storyId));
   const stories = useSelector(storiesSelector);
   const dispatch = useDispatch();
-  const {storyId, page} = useParams();
   const pageNumber = parseInt(page || '0', 10);
   const slide = story && story.slides[pageNumber];
-  const activeStoryId = story && story.id;
   const storyListItem = stories.find(storyItem => storyItem.id === storyId);
 
   // fetch story of active storyId
@@ -37,11 +37,6 @@ const Story: FunctionComponent = () => {
   // redirect to first slide when current slide does not exist
   if (story && !slide) {
     return <Redirect to={`/stories/${storyId}/0`} />;
-  }
-
-  // only render matching story
-  if (activeStoryId !== storyId) {
-    return null;
   }
 
   return (
