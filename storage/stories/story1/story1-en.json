@@ -46,9 +46,7 @@
       "title": "Story slide 3",
       "subtitle": "This is story slide 3",
       "bodytext": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
-      "images": [
-        "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
-      ]
+      "videoId": "U1SMPkVCG3o"
     },
     {
       "title": "Story slide 4",

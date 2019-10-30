@@ -10,5 +10,6 @@ export interface Slide {
   subtitle: string;
   bodytext: string;
   images?: [];
+  videoId?: string;
   flyTo: GlobeView;
 }
