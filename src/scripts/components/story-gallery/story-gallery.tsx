@@ -1,4 +1,5 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, {FunctionComponent, useState, useEffect} from 'react';
+import cx from 'classnames';
 
 import {PreviousIcon} from '../icons/back-icon';
 import {NextIcon} from '../icons/next-icon';
@@ -31,6 +32,12 @@ const StoryGallery: FunctionComponent<Props> = ({images}) => {
     setCurrentIndex(currentIndex + 1);
   };
 
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [images]);
+
+  const classes = cx([styles.slider, images.length > 1 && styles.transition]);
+
   return (
     <div className={styles.storyGallery}>
       <div className={styles.buttonContainer}>
@@ -40,7 +47,7 @@ const StoryGallery: FunctionComponent<Props> = ({images}) => {
         <div onClick={onNextClick}>{showNextButton ? <NextIcon /> : null}</div>
       </div>
       <div
-        className={styles.slider}
+        className={classes}
         style={{
           width: `${containerWidth}%`,
           transform: `translateX(-${imageWidth * currentIndex}%)`
