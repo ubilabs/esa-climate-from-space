@@ -3,6 +3,8 @@ import cx from 'classnames';
 
 import {PreviousIcon} from '../icons/back-icon';
 import {NextIcon} from '../icons/next-icon';
+import {FullscreenIcon} from '../icons/fullscreen-icon';
+import {FullscreenExitIcon} from '../icons/fullscreen-exit-icon';
 
 import styles from './story-gallery.styl';
 
@@ -15,6 +17,7 @@ const StoryGallery: FunctionComponent<Props> = ({images}) => {
   const containerWidth = imagesLength * 100;
   const imageWidth = 100 / imagesLength;
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showFullscreen, setShowFullscreen] = useState(false);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < imagesLength - 1;
 
@@ -36,30 +39,57 @@ const StoryGallery: FunctionComponent<Props> = ({images}) => {
     setCurrentIndex(0);
   }, [images]);
 
-  const classes = cx([styles.slider, images.length > 1 && styles.transition]);
+  const imgClasses = cx([
+    styles.slider,
+    images.length > 1 && styles.transition
+  ]);
+
+  const lightboxClasses = cx([showFullscreen && styles.lightbox]);
+
+  const galleryClasses = cx([
+    styles.storyGallery,
+    showFullscreen && styles.fullscreenGallery
+  ]);
 
   return (
-    <div className={styles.storyGallery}>
-      <div className={styles.buttonContainer}>
-        <div onClick={onPrevClick}>
-          {showPrevButton ? <PreviousIcon /> : null}
+    <div className={lightboxClasses}>
+      <div className={galleryClasses}>
+        <div className={styles.buttonContainer}>
+          <div onClick={onPrevClick}>
+            {showPrevButton ? <PreviousIcon /> : null}
+          </div>
+          <div onClick={onNextClick}>
+            {showNextButton ? <NextIcon /> : null}
+          </div>
         </div>
-        <div onClick={onNextClick}>{showNextButton ? <NextIcon /> : null}</div>
-      </div>
-      <div
-        className={classes}
-        style={{
-          width: `${containerWidth}%`,
-          transform: `translateX(-${imageWidth * currentIndex}%)`
-        }}>
-        {images.map((image, index) => (
-          <img
-            className={styles.sliderImage}
-            src={image}
-            key={index}
-            style={{width: `${imageWidth}%`}}
-          />
-        ))}
+        {showFullscreen ? (
+          <div
+            className={styles.fullscreenIcon}
+            onClick={() => setShowFullscreen(false)}>
+            <FullscreenExitIcon />
+          </div>
+        ) : (
+          <div
+            className={styles.fullscreenIcon}
+            onClick={() => setShowFullscreen(true)}>
+            <FullscreenIcon />
+          </div>
+        )}
+        <div
+          className={imgClasses}
+          style={{
+            width: `${containerWidth}%`,
+            transform: `translateX(-${imageWidth * currentIndex}%)`
+          }}>
+          {images.map((image, index) => (
+            <img
+              className={styles.sliderImage}
+              src={image}
+              key={index}
+              style={{width: `${imageWidth}%`}}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
