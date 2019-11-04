@@ -11,17 +11,15 @@ interface Props {
   slide: SlideType;
 }
 
-const Slide: FunctionComponent<Props> = ({slide}) => {
-  return (
-    <div className={styles.slide}>
-      {(slide.images && <StoryGallery images={slide.images} />) ||
-        (slide.videoId && <StoryVideo videoId={slide.videoId} />)}
-      <div className={styles.content}>
-        <h1 className={styles.title}>{slide.title}</h1>
-        <p className={styles.bodytext}>{slide.bodytext}</p>
-      </div>
+const Slide: FunctionComponent<Props> = ({slide}) => (
+  <div className={styles.slide}>
+    {(slide.images && <StoryGallery images={slide.images} />) ||
+      (slide.videoId && <StoryVideo videoId={slide.videoId} />)}
+    <div className={styles.content}>
+      <h1 className={styles.title}>{slide.title}</h1>
+      <p className={styles.bodytext}>{slide.bodytext}</p>
     </div>
-  );
-};
+  </div>
+);
 
 export default Slide;
