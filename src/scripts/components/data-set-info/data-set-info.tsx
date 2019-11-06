@@ -12,49 +12,53 @@ interface Props {
 }
 
 const DataSetInfo: FunctionComponent<Props> = ({isMain}) => {
-  const selectedLayers = useSelector(selectedLayersSelector);
+  const selectedLayerIds = useSelector(selectedLayersSelector);
   const layers = useSelector(layersSelector);
-  let selectedMain: LayerListItem | null = null;
-  let selectedCompare: LayerListItem | null = null;
 
-  const layerbyId = (layer: LayerListItem) => {
-    if (layer.subLayers.length === 0) {
-      if (selectedLayers.main === layer.id) {
-        selectedMain = layer;
-      }
-      if (selectedLayers.compare === layer.id) {
-        selectedCompare = layer;
-      }
-    }
-    layer.subLayers.forEach((sublayer: LayerListItem) => {
-      if (selectedLayers.main === sublayer.id) {
-        selectedMain = sublayer;
-      }
-    });
-    layer.subLayers.forEach((sublayer: LayerListItem) => {
-      if (selectedLayers.compare === sublayer.id) {
-        selectedCompare = sublayer;
-      }
-    });
-  };
+  const {main, compare} = layers.reduce(
+    (
+      selectedLayers: {
+        main: LayerListItem | null;
+        compare: LayerListItem | null;
+      },
+      layer: LayerListItem
+    ): {
+      main: LayerListItem | null;
+      compare: LayerListItem | null;
+    } => {
+      if (layer.subLayers.length) {
+        const mainLayer = layer.subLayers.find(
+          subLayer => subLayer.id === selectedLayerIds.main
+        );
+        const compareLayer = layer.subLayers.find(
+          subLayer => subLayer.id === selectedLayerIds.compare
+        );
 
-  layers.forEach(layerbyId);
+        return {
+          main: mainLayer || selectedLayers.main,
+          compare: compareLayer || selectedLayers.compare
+        };
+      }
 
-  const mainLayerName = selectedMain && (selectedMain as LayerListItem).name;
-  const mainLayerDescription =
-    selectedMain && (selectedMain as LayerListItem).description;
-  const compareLayerName =
-    selectedCompare && (selectedCompare as LayerListItem).name;
-  const compareLayerDescription =
-    selectedCompare && (selectedCompare as LayerListItem).description;
+      const isMainLayer = layer.id === selectedLayerIds.main;
+      const isCompareLayer = layer.id === selectedLayerIds.compare;
+      console.log('isMainLayer', isMainLayer);
+
+      return {
+        main: isMainLayer ? layer : selectedLayers.main,
+        compare: isCompareLayer ? layer : selectedLayers.compare
+      };
+    },
+    {main: null, compare: null}
+  );
 
   return (
     <div className={styles.dataSetInfo}>
       <h1 className={styles.title}>
-        {isMain ? mainLayerName : compareLayerName}
+        {isMain ? main && main.name : compare && compare.name}
       </h1>
       <h2 className={styles.description}>
-        {isMain ? mainLayerDescription : compareLayerDescription}
+        {isMain ? main && main.description : compare && compare.description}
       </h2>
     </div>
   );
