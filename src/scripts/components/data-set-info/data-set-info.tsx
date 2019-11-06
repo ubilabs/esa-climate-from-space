@@ -42,7 +42,6 @@ const DataSetInfo: FunctionComponent<Props> = ({isMain}) => {
 
       const isMainLayer = layer.id === selectedLayerIds.main;
       const isCompareLayer = layer.id === selectedLayerIds.compare;
-      console.log('isMainLayer', isMainLayer);
 
       return {
         main: isMainLayer ? layer : selectedLayers.main,
