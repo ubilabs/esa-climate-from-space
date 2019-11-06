@@ -21,5 +21,11 @@
     "name": "Clouds Concentration",
     "description": "This is the second layer",
     "subLayers": []
+  },
+  {
+    "id": "layer3",
+    "name": "Layer 3",
+    "description": "This is the third layer",
+    "subLayers": []
   }
 ]

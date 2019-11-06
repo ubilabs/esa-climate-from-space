@@ -48,7 +48,6 @@ const TranslatedApp: FunctionComponent = () => {
               <Route path="/" exact>
                 <TimeSlider />
                 <StoriesButton />
-
                 <div className={styles.nav}>
                   <Menu />
                   <div className={styles.timeslider} />

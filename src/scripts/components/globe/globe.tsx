@@ -1,10 +1,18 @@
-import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
+import React, {
+  FunctionComponent,
+  useRef,
+  useEffect,
+  useState,
+  Fragment
+} from 'react';
 
 import {
   getGlobeView,
   setGlobeView,
   flyToGlobeView
 } from '../../libs/get-globe-view';
+
+import DataSetInfo from '../data-set-info/data-set-info';
 
 import {GlobeView} from '../../types/globe-view';
 import {GlobeProjection} from '../../types/globe-projection';
@@ -42,6 +50,7 @@ const cesiumOptions = {
 
 interface Props {
   active: boolean;
+  isMain?: boolean;
   view: GlobeView;
   projection: GlobeProjection;
   imageUrl: string | null;
@@ -56,6 +65,7 @@ const Globe: FunctionComponent<Props> = ({
   projection,
   imageUrl,
   active,
+  isMain,
   flyTo,
   onMouseEnter,
   onChange,
@@ -172,11 +182,14 @@ const Globe: FunctionComponent<Props> = ({
   }, [viewer, flyTo]);
 
   return (
-    <div
-      className={styles.globe}
-      onMouseEnter={() => onMouseEnter()}
-      ref={ref}
-    />
+    <Fragment>
+      <div
+        className={styles.globe}
+        onMouseEnter={() => onMouseEnter()}
+        ref={ref}>
+        <DataSetInfo isMain={isMain} />
+      </div>
+    </Fragment>
   );
 };
 

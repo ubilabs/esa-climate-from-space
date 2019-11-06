@@ -52,6 +52,7 @@ const Globes: FunctionComponent = () => {
     <div className={styles.globes}>
       <Globe
         active={isMainActive}
+        isMain
         view={currentView}
         projection={projection}
         imageUrl={mainImageUrl}
