@@ -54,7 +54,8 @@
       "bodytext": "Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
-      ]
+      ],
+      "fullscreenGallery": true
     }
   ]
 }

@@ -10,14 +10,18 @@ import styles from './story-gallery.styl';
 
 interface Props {
   images: string[];
+  fullscreenGallery?: boolean;
 }
 
-const StoryGallery: FunctionComponent<Props> = ({images}) => {
+const StoryGallery: FunctionComponent<Props> = ({
+  images,
+  fullscreenGallery
+}) => {
   const imagesLength = images.length;
   const containerWidth = imagesLength * 100;
   const imageWidth = 100 / imagesLength;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showFullscreen, setShowFullscreen] = useState(false);
+  const [showLightbox, setShowLightbox] = useState(false);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < imagesLength - 1;
 
@@ -44,11 +48,14 @@ const StoryGallery: FunctionComponent<Props> = ({images}) => {
     images.length > 1 && styles.transition
   ]);
 
-  const lightboxClasses = cx([showFullscreen && styles.lightbox]);
+  const lightboxClasses = cx([
+    showLightbox && styles.lightbox,
+    fullscreenGallery && styles.fullscreen
+  ]);
 
   const galleryClasses = cx([
     styles.storyGallery,
-    showFullscreen && styles.fullscreenGallery
+    showLightbox && styles.lightboxGallery
   ]);
 
   return (
@@ -62,16 +69,16 @@ const StoryGallery: FunctionComponent<Props> = ({images}) => {
             {showNextButton ? <NextIcon /> : null}
           </div>
         </div>
-        {showFullscreen ? (
+        {showLightbox ? (
           <div
             className={styles.fullscreenIcon}
-            onClick={() => setShowFullscreen(false)}>
+            onClick={() => setShowLightbox(false)}>
             <FullscreenExitIcon />
           </div>
         ) : (
           <div
             className={styles.fullscreenIcon}
-            onClick={() => setShowFullscreen(true)}>
+            onClick={() => setShowLightbox(true)}>
             <FullscreenIcon />
           </div>
         )}

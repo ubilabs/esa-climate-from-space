@@ -12,4 +12,5 @@ export interface Slide {
   images?: [];
   videoId?: string;
   flyTo: GlobeView;
+  fullscreenGallery?: boolean;
 }

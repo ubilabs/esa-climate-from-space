@@ -13,7 +13,12 @@ interface Props {
 
 const Slide: FunctionComponent<Props> = ({slide}) => (
   <div className={styles.slide}>
-    {(slide.images && <StoryGallery images={slide.images} />) ||
+    {(slide.images && (
+      <StoryGallery
+        images={slide.images}
+        fullscreenGallery={slide.fullscreenGallery}
+      />
+    )) ||
       (slide.videoId && <StoryVideo videoId={slide.videoId} />)}
     <div className={styles.content}>
       <h1 className={styles.title}>{slide.title}</h1>
