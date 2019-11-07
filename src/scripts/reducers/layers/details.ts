@@ -2,7 +2,7 @@ import {
   FETCH_LAYER_SUCCESS,
   FetchLayerSuccessAction
 } from '../../actions/fetch-layer';
-import {selectedLayersSelector} from './selected';
+import {selectedLayerIdsSelector} from './selected-ids';
 
 import {State} from '../index';
 import {Layer} from '../../types/layer';
@@ -29,7 +29,7 @@ export function detailedLayersSelector(state: State): DetailsById {
 }
 
 export function activeLayersSelector(state: State) {
-  const {main: mainId, compare: compareId} = selectedLayersSelector(state);
+  const {main: mainId, compare: compareId} = selectedLayerIdsSelector(state);
 
   return {
     main: (mainId && state.layers.details[mainId]) || null,

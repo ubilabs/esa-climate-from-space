@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {selectedLayersSelector} from '../../reducers/layers/selected';
+import {selectedLayerIdsSelector} from '../../reducers/layers/selected-ids';
 import {activeLayersSelector} from '../../reducers/layers/details';
 import {globeViewSelector} from '../../reducers/globe/view';
 import {timeSelector} from '../../reducers/globe/time';
@@ -28,7 +28,7 @@ const Globes: FunctionComponent = () => {
   const time = useSelector(timeSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
-  const selectedLayers = useSelector(selectedLayersSelector);
+  const selectedLayers = useSelector(selectedLayerIdsSelector);
   const flyTo = useSelector(flyToSelector);
   const onChangeHandler = useCallback(
     (view: GlobeView) => setCurrentView(view),

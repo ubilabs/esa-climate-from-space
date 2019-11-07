@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import fetchLayers from '../../actions/fetch-layers';
 import fetchLayerAction from '../../actions/fetch-layer';
-import {selectedLayersSelector} from '../../reducers/layers/selected';
+import {selectedLayerIdsSelector} from '../../reducers/layers/selected-ids';
 import {detailedLayersSelector} from '../../reducers/layers/details';
 
 /**
@@ -11,7 +11,7 @@ import {detailedLayersSelector} from '../../reducers/layers/details';
  */
 const LayerLoader: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const selectedLayers = useSelector(selectedLayersSelector);
+  const selectedLayers = useSelector(selectedLayerIdsSelector);
   const detailedLayers = useSelector(detailedLayersSelector);
 
   // load layer list on mount

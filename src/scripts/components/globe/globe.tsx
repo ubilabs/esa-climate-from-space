@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  useRef,
-  useEffect,
-  useState,
-  Fragment
-} from 'react';
+import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
 
 import {
   getGlobeView,
@@ -182,14 +176,9 @@ const Globe: FunctionComponent<Props> = ({
   }, [viewer, flyTo]);
 
   return (
-    <Fragment>
-      <div
-        className={styles.globe}
-        onMouseEnter={() => onMouseEnter()}
-        ref={ref}>
-        <DataSetInfo isMain={isMain} />
-      </div>
-    </Fragment>
+    <div className={styles.globe} onMouseEnter={() => onMouseEnter()} ref={ref}>
+      <DataSetInfo isMain={isMain} />
+    </div>
   );
 };
 

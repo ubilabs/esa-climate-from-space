@@ -2,14 +2,16 @@ import {combineReducers} from 'redux';
 
 import listReducer from './list';
 import detailsReducer from './details';
-import selectedReducer from './selected';
+import selectedIdsReducer from './selected-ids';
+import selectedLayersReducer from './selected';
 
 import {State} from '../index';
 
 const layersReducer = combineReducers({
   list: listReducer,
   details: detailsReducer,
-  selected: selectedReducer
+  selectedIds: selectedIdsReducer,
+  selected: selectedLayersReducer
 });
 
 export default layersReducer;
