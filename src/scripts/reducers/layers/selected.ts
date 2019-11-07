@@ -30,8 +30,8 @@ interface SelectedLayerItems {
 const getSelectedLayers = (
   layers: LayerList,
   selectedLayerIds: SelectedLayerIdsState
-): SelectedLayerItems => {
-  return layers.reduce(
+): SelectedLayerItems =>
+  layers.reduce(
     (
       selectedLayers: SelectedLayerItems,
       layer: LayerListItem
@@ -60,7 +60,6 @@ const getSelectedLayers = (
     },
     {main: null, compare: null}
   );
-};
 
 export function selectedLayersSelector(state: State): SelectedLayerItems {
   const layers = layersSelector(state);
