@@ -6,7 +6,7 @@ import {
 import {Story} from '../../types/story';
 import {State} from '../index';
 
-function storyItemReducer(
+function selectedStoryReducer(
   storyState: Story | null = null,
   action: FetchStoryActions
 ): Story | null {
@@ -18,15 +18,15 @@ function storyItemReducer(
   }
 }
 
-export function storyItemSelector(
+export function selectedStorySelector(
   state: State,
   storyId?: string
 ): Story | null {
-  if (!state.stories.item || !storyId) {
+  if (!state.stories.selected || !storyId) {
     return null;
   }
 
-  return state.stories.item.id === storyId ? state.stories.item : null;
+  return state.stories.selected.id === storyId ? state.stories.selected : null;
 }
 
-export default storyItemReducer;
+export default selectedStoryReducer;

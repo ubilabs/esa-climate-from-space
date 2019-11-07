@@ -1,13 +1,13 @@
 import {combineReducers} from 'redux';
 
 import listReducer from './list';
-import itemReducer from './item';
+import selectedReducer from './selected';
 
 import {State} from '../index';
 
 const storiesReducer = combineReducers({
   list: listReducer,
-  item: itemReducer
+  selected: selectedReducer
 });
 
 export default storiesReducer;
