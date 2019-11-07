@@ -7,5 +7,11 @@
   "goBack": "Zurück",
   "storymode": "Geschichtsmodus",
   "projection": "Projektion",
-  "menu": "Menü"
+  "menu": "Menü",
+  "presenter-mode": "Präsentations-Modus",
+  "showcase-mode": "Show-Case-Modus",
+  "language": "Sprache wechseln",
+  "share": "Inhalt teilen",
+  "export": "Daten exportieren",
+  "info": "Weitere Informationen"
 }

@@ -16,27 +16,31 @@ import {MenuItem} from '../../types/menu-item';
 import styles from './menu.styl';
 
 const Menu: FunctionComponent = () => {
+  const intl = useIntl();
   const menuItems: MenuItem[] = [
     {
       id: 'presenter-mode',
-      name: 'Presenter Mode',
+      name: intl.formatMessage({id: 'presenter-mode'}),
       link: '/present',
       icon: PresenterIcon
     },
     {
       id: 'show-case-mode',
-      name: 'Show Case Mode',
+      name: intl.formatMessage({id: 'showcase-mode'}),
       link: '/showcase',
       icon: ShowCaseIcon
     },
-    {id: 'language', name: 'Change language', icon: LanguageIcon},
-    {id: 'share', name: 'Share Content', icon: ShareIcon},
-    {id: 'export', name: 'Export Data', icon: ExportIcon},
-    {id: 'info', name: 'More Information', icon: InfoIcon}
+    {
+      id: 'language',
+      name: intl.formatMessage({id: 'language'}),
+      icon: LanguageIcon
+    },
+    {id: 'share', name: intl.formatMessage({id: 'share'}), icon: ShareIcon},
+    {id: 'export', name: intl.formatMessage({id: 'export'}), icon: ExportIcon},
+    {id: 'info', name: intl.formatMessage({id: 'info'}), icon: InfoIcon}
   ];
 
   const [isOpen, setIsOpen] = useState(false);
-  const intl = useIntl();
   const onButtonClickHandler = () => setIsOpen(!isOpen);
 
   return (
