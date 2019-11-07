@@ -5,8 +5,8 @@ import {FormattedMessage} from 'react-intl';
 
 import StoryPagination from '../story-pagination/story-pagination';
 import fetchStory from '../../actions/fetch-story';
-import {storySelector} from '../../reducers/story';
-import {storiesSelector} from '../../reducers/stories';
+import {selectedStorySelector} from '../../reducers/story/selected';
+import {storyListSelector} from '../../reducers/story/list';
 import setFlyToAction from '../../actions/set-fly-to';
 import Slide from '../slide/slide';
 
@@ -15,8 +15,10 @@ import {State} from '../../reducers';
 
 const Story: FunctionComponent = () => {
   const {storyId, page} = useParams();
-  const story = useSelector((state: State) => storySelector(state, storyId));
-  const stories = useSelector(storiesSelector);
+  const story = useSelector((state: State) =>
+    selectedStorySelector(state, storyId)
+  );
+  const stories = useSelector(storyListSelector);
   const dispatch = useDispatch();
   const pageNumber = parseInt(page || '0', 10);
   const slide = story && story.slides[pageNumber];

@@ -1,6 +1,6 @@
 import {ThunkDispatch} from 'redux-thunk';
 
-import {storySelector} from '../reducers/story';
+import {selectedStorySelector} from '../reducers/story/selected';
 import fetchLayers, {FetchLayersActions} from './fetch-layers';
 import fetchStories from './fetch-stories';
 import fetchStory from './fetch-story';
@@ -30,7 +30,7 @@ const setLanguageAction = (language: Language) => (
   dispatch(fetchStories());
 
   const state = getState();
-  const story = storySelector(state);
+  const story = selectedStorySelector(state);
   story && dispatch(fetchStory(story.id));
 };
 
