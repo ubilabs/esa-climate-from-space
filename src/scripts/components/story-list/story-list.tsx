@@ -1,13 +1,13 @@
 import React, {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 
-import {storiesSelector} from '../../reducers/stories';
+import {storyListSelector} from '../../reducers/story/list';
 import StoryListItem from '../story-list-item/story-list-item';
 
 import styles from './story-list.styl';
 
 const StoryList: FunctionComponent = () => {
-  const stories = useSelector(storiesSelector);
+  const stories = useSelector(storyListSelector);
 
   return (
     <div className={styles.storyList}>

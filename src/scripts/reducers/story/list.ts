@@ -1,14 +1,14 @@
 import {
   FETCH_STORIES_SUCCESS,
   FetchStoriesActions
-} from '../actions/fetch-stories';
+} from '../../actions/fetch-stories';
 
-import {StoryList} from '../types/story-list';
-import {State} from './index';
+import {StoryList} from '../../types/story-list';
+import {State} from '../index';
 
 const initialState: StoryList = [];
 
-function storiesReducer(
+function storyListReducer(
   storiesState: StoryList = initialState,
   action: FetchStoriesActions
 ): StoryList {
@@ -20,8 +20,8 @@ function storiesReducer(
   }
 }
 
-export function storiesSelector(state: State) {
-  return state.stories;
+export function storyListSelector(state: State) {
+  return state.stories.list;
 }
 
-export default storiesReducer;
+export default storyListReducer;
