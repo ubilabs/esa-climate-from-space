@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 
 import styles from './data-set-info.styl';
-import {selectedLayersSelector} from '../../reducers/layers/selected';
+import {selectedLayersSelector} from '../../selectors/layers/selected';
 
 interface Props {
   isMain?: boolean;

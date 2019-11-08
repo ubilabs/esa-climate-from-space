@@ -3,8 +3,8 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import fetchLayers from '../../actions/fetch-layers';
 import fetchLayerAction from '../../actions/fetch-layer';
-import {selectedLayerIdsSelector} from '../../reducers/layers/selected-ids';
-import {detailedLayersSelector} from '../../reducers/layers/details';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
+import {detailedLayersSelector} from '../../selectors/layers/details';
 
 /**
  * Handles loading of layer list and layer details data

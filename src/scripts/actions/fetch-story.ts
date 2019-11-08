@@ -1,7 +1,7 @@
 import {Dispatch} from 'redux';
 
 import fetchStoryApi from '../api/fetch-story';
-import {languageSelector} from '../reducers/language';
+import {languageSelector} from '../selectors/language';
 import {State} from '../reducers/index';
 
 import {Story} from '../types/story';

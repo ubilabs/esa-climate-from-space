@@ -2,8 +2,8 @@ import React, {FunctionComponent, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useIntl} from 'react-intl';
 
-import {layersSelector} from '../../reducers/layers/list';
-import {selectedLayerIdsSelector} from '../../reducers/layers/selected-ids';
+import {layersSelector} from '../../selectors/layers/list';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 import {LayersIcon} from '../icons/layers-icon';
 import {CompareIcon} from '../icons/compare-icon';
 import setSelectedLayerIdAction from '../../actions/set-selected-layer-ids';

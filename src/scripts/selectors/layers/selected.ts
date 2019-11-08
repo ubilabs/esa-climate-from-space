@@ -1,26 +1,9 @@
-import {
-  SET_SELECTED_LAYERS,
-  SetSelectedLayersAction
-} from '../../actions/set-selected-layers';
-import {selectedLayerIdsSelector, SelectedLayerIdsState} from './selected-ids';
-import {layersSelector} from './list';
+import {SelectedLayerIdsState} from '../../reducers/layers/selected-ids';
+import {layersSelector} from '../../selectors/layers/list';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
+import {State} from '../../reducers/index';
 
-import {State} from '../index';
 import {LayerList, LayerListItem} from '../../types/layer-list';
-
-const initialState: LayerList = [];
-
-function selectedLayersReducer(
-  layersState: LayerList = initialState,
-  action: SetSelectedLayersAction
-): LayerList {
-  switch (action.type) {
-    case SET_SELECTED_LAYERS:
-      return action.layers;
-    default:
-      return layersState;
-  }
-}
 
 interface SelectedLayerItems {
   main: LayerListItem | null;
@@ -66,5 +49,3 @@ export function selectedLayersSelector(state: State): SelectedLayerItems {
   const selectedLayerIds = selectedLayerIdsSelector(state);
   return getSelectedLayers(layers, selectedLayerIds);
 }
-
-export default selectedLayersReducer;

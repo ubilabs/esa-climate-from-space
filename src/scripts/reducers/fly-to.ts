@@ -1,6 +1,5 @@
 import {SET_FLY_TO, SetFlyToAction} from '../actions/set-fly-to';
 
-import {State} from './index';
 import {GlobeView} from '../types/globe-view';
 
 const initialState = null;
@@ -15,10 +14,6 @@ function flyToReducer(
     default:
       return state;
   }
-}
-
-export function flyToSelector(state: State): GlobeView | null {
-  return state.flyTo;
 }
 
 export default flyToReducer;

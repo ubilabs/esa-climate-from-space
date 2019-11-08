@@ -4,7 +4,6 @@ import {
 } from '../../actions/fetch-stories';
 
 import {StoryList} from '../../types/story-list';
-import {State} from '../index';
 
 const initialState: StoryList = [];
 
@@ -18,10 +17,6 @@ function storyListReducer(
     default:
       return storiesState;
   }
-}
-
-export function storyListSelector(state: State) {
-  return state.stories.list;
 }
 
 export default storyListReducer;

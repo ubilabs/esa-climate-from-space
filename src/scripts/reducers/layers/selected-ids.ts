@@ -3,8 +3,6 @@ import {
   SetSelectedLayerIdsAction
 } from '../../actions/set-selected-layer-ids';
 
-import {State} from '../index';
-
 export interface SelectedLayerIdsState {
   main: string | null;
   compare: string | null;
@@ -29,7 +27,5 @@ function selectedLayerIdsReducer(
       return state;
   }
 }
-export function selectedLayerIdsSelector(state: State): SelectedLayerIdsState {
-  return state.layers.selectedIds;
-}
+
 export default selectedLayerIdsReducer;

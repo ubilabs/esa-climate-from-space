@@ -1,6 +1,6 @@
 import {ThunkDispatch} from 'redux-thunk';
 
-import {selectedStorySelector} from '../reducers/story/selected';
+import {selectedStorySelector} from '../selectors/story/selected';
 import fetchLayers, {FetchLayersActions} from './fetch-layers';
 import fetchStories from './fetch-stories';
 import fetchStory from './fetch-story';
