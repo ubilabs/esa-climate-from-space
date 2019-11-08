@@ -11,7 +11,7 @@ import {detailedLayersSelector} from '../../selectors/layers/details';
  */
 const LayerLoader: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const selectedLayers = useSelector(selectedLayerIdsSelector);
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const detailedLayers = useSelector(detailedLayersSelector);
 
   // load layer list on mount
@@ -21,7 +21,7 @@ const LayerLoader: FunctionComponent = () => {
 
   // fetch layer if it is selected and not already downloaded
   useEffect(() => {
-    const {main, compare} = selectedLayers;
+    const {main, compare} = selectedLayerIds;
 
     if (main && !detailedLayers[main]) {
       dispatch(fetchLayerAction(main));
@@ -30,7 +30,7 @@ const LayerLoader: FunctionComponent = () => {
     if (compare && !detailedLayers[compare]) {
       dispatch(fetchLayerAction(compare));
     }
-  }, [dispatch, selectedLayers, detailedLayers]);
+  }, [dispatch, selectedLayerIds, detailedLayers]);
 
   return null;
 };
