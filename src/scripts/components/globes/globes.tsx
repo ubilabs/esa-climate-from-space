@@ -28,7 +28,7 @@ const Globes: FunctionComponent = () => {
   const time = useSelector(timeSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
-  const selectedLayers = useSelector(selectedLayerIdsSelector);
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const flyTo = useSelector(flyToSelector);
   const onChangeHandler = useCallback(
     (view: GlobeView) => setCurrentView(view),
@@ -62,7 +62,7 @@ const Globes: FunctionComponent = () => {
         onMoveEnd={onMoveEndHandler}
       />
 
-      {selectedLayers.compare && (
+      {selectedLayerIds.compare && (
         <Globe
           active={!isMainActive}
           view={currentView}
