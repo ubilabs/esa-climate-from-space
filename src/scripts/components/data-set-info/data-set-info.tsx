@@ -21,7 +21,9 @@ const DataSetInfo: FunctionComponent<Props> = ({isMain}) => {
       <h2 className={styles.description}>
         {isMain ? main && main.description : compare && compare.description}
       </h2>
-      {isMain ? main && <InfoButton /> : compare && <InfoButton />}
+      {isMain
+        ? main && <InfoButton main={main} compare={compare} />
+        : compare && <InfoButton main={main} compare={compare} />}
     </div>
   );
 };
