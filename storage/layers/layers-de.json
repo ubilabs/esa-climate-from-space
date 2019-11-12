@@ -3,16 +3,19 @@
     "id": "layer1",
     "name": "Layer 1 DE",
     "description": "Das ist der erste Layer",
+    "link": "http://...",
     "subLayers": [
       {
         "id": "layer1a",
         "name": "Layer 1a DE",
-        "description": "Das ist der erste SubLayer"
+        "description": "Das ist der erste SubLayer",
+        "link": "http://..."
       },
       {
         "name": "SST De",
         "id": "sst",
-        "description": "Das ist der zweite SubLayer"
+        "description": "Das ist der zweite SubLayer",
+        "link": "http://..."
       }
     ]
   },
@@ -20,6 +23,14 @@
     "id": "clouds",
     "name": "Wolken Konzentration",
     "description": "Das ist der zweite SubLayer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "layer3",
+    "name": "Layer 3",
+    "description": "Das ist der dritte Layer",
+    "link": "http://...",
     "subLayers": []
   },
   {
