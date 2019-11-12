@@ -23,7 +23,19 @@ const Slide: FunctionComponent<Props> = ({slide}) => (
       (slide.videoId && <StoryVideo videoId={slide.videoId} />)}
     <div className={styles.content}>
       <h1 className={styles.title}>{slide.title}</h1>
-      <ReactMarkdown source={slide.bodytext} />
+      <ReactMarkdown
+        source={slide.bodytext}
+        allowedTypes={[
+          'heading',
+          'text',
+          'paragraph',
+          'break',
+          'strong',
+          'emphasis',
+          'list',
+          'listItem'
+        ]}
+      />
     </div>
   </div>
 );
