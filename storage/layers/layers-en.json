@@ -32,5 +32,11 @@
     "description": "This is the third layer",
     "link": "http://...",
     "subLayers": []
+  },
+  {
+    "id": "layer3",
+    "name": "Layer 3",
+    "description": "This is the third layer",
+    "subLayers": []
   }
 ]
