@@ -5,8 +5,8 @@ import {FormattedMessage} from 'react-intl';
 
 import StoryPagination from '../story-pagination/story-pagination';
 import fetchStory from '../../actions/fetch-story';
-import {selectedStorySelector} from '../../reducers/story/selected';
-import {storyListSelector} from '../../reducers/story/list';
+import {selectedStorySelector} from '../../selectors/story/selected';
+import {storyListSelector} from '../../selectors/story/list';
 import setFlyToAction from '../../actions/set-fly-to';
 import Slide from '../slide/slide';
 

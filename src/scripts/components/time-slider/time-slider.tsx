@@ -8,8 +8,8 @@ import React, {
 import {useSelector, useDispatch} from 'react-redux';
 import debounce from 'lodash.debounce';
 
-import {languageSelector} from '../../reducers/language';
-import {activeLayersSelector} from '../../reducers/layers/details';
+import {languageSelector} from '../../selectors/language';
+import {activeLayersSelector} from '../../selectors/layers/active';
 import setGlobeTime from '../../actions/set-globe-time';
 import {getTimeRanges} from '../../libs/get-time-ranges';
 

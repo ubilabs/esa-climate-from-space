@@ -3,15 +3,15 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import fetchLayers from '../../actions/fetch-layers';
 import fetchLayerAction from '../../actions/fetch-layer';
-import {selectedLayersSelector} from '../../reducers/layers/selected';
-import {detailedLayersSelector} from '../../reducers/layers/details';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
+import {detailedLayersSelector} from '../../selectors/layers/details';
 
 /**
  * Handles loading of layer list and layer details data
  */
 const LayerLoader: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const selectedLayers = useSelector(selectedLayersSelector);
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const detailedLayers = useSelector(detailedLayersSelector);
 
   // load layer list on mount
@@ -21,7 +21,7 @@ const LayerLoader: FunctionComponent = () => {
 
   // fetch layer if it is selected and not already downloaded
   useEffect(() => {
-    const {main, compare} = selectedLayers;
+    const {main, compare} = selectedLayerIds;
 
     if (main && !detailedLayers[main]) {
       dispatch(fetchLayerAction(main));
@@ -30,7 +30,7 @@ const LayerLoader: FunctionComponent = () => {
     if (compare && !detailedLayers[compare]) {
       dispatch(fetchLayerAction(compare));
     }
-  }, [dispatch, selectedLayers, detailedLayers]);
+  }, [dispatch, selectedLayerIds, detailedLayers]);
 
   return null;
 };

@@ -3,7 +3,6 @@ import {
   FetchLayersActions
 } from '../../actions/fetch-layers';
 
-import {State} from '../index';
 import {LayerList} from '../../types/layer-list';
 
 const initialState: LayerList = [];
@@ -18,10 +17,6 @@ function layersReducer(
     default:
       return layersState;
   }
-}
-
-export function layersSelector(state: State): LayerList {
-  return state.layers.list;
 }
 
 export default layersReducer;

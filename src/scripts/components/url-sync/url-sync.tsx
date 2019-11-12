@@ -2,7 +2,7 @@ import {FunctionComponent, useEffect} from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
-import {globeStateSelector} from '../../reducers/globe/index';
+import {globeStateSelector} from '../../selectors/globe/globe-state';
 import {getParamString} from '../../libs/globe-url-parameter';
 
 // syncs the query parameters of the url when values change in store

@@ -2,7 +2,6 @@ import {SET_GLOBE_VIEW, SetGlobeViewAction} from '../../actions/set-globe-view';
 import {parseUrl} from '../../libs/globe-url-parameter';
 import config from '../../config/main';
 
-import {State} from '../index';
 import {GlobeView} from '../../types/globe-view';
 
 // get initial state from url or fallback to default state in config
@@ -19,10 +18,6 @@ function globeViewReducer(
     default:
       return state;
   }
-}
-
-export function globeViewSelector(state: State): GlobeView {
-  return state.globe.view;
 }
 
 export default globeViewReducer;

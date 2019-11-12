@@ -6,15 +6,15 @@ import React, {
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {selectedLayersSelector} from '../../reducers/layers/selected';
-import {activeLayersSelector} from '../../reducers/layers/details';
-import {globeViewSelector} from '../../reducers/globe/view';
-import {timeSelector} from '../../reducers/globe/time';
-import {projectionSelector} from '../../reducers/globe/projection';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
+import {activeLayersSelector} from '../../selectors/layers/active';
+import {globeViewSelector} from '../../selectors/globe/view';
+import {timeSelector} from '../../selectors/globe/time';
+import {projectionSelector} from '../../selectors/globe/projection';
 import setGlobeViewAction from '../../actions/set-globe-view';
 import Globe from '../globe/globe';
 import {getLayerTileUrl} from '../../libs/get-layer-tile-url';
-import {flyToSelector} from '../../reducers/fly-to';
+import {flyToSelector} from '../../selectors/fly-to';
 
 import {GlobeView} from '../../types/globe-view';
 
@@ -28,7 +28,7 @@ const Globes: FunctionComponent = () => {
   const time = useSelector(timeSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
-  const selectedLayers = useSelector(selectedLayersSelector);
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const flyTo = useSelector(flyToSelector);
   const onChangeHandler = useCallback(
     (view: GlobeView) => setCurrentView(view),
@@ -52,6 +52,7 @@ const Globes: FunctionComponent = () => {
     <div className={styles.globes}>
       <Globe
         active={isMainActive}
+        isMain
         view={currentView}
         projection={projection}
         imageUrl={mainImageUrl}
@@ -61,7 +62,7 @@ const Globes: FunctionComponent = () => {
         onMoveEnd={onMoveEndHandler}
       />
 
-      {selectedLayers.compare && (
+      {selectedLayerIds.compare && (
         <Globe
           active={!isMainActive}
           view={currentView}

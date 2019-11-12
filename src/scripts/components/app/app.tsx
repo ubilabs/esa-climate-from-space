@@ -7,7 +7,7 @@ import {IntlProvider} from 'react-intl';
 import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
 import rootReducer from '../../reducers/index';
-import {languageSelector} from '../../reducers/language';
+import {languageSelector} from '../../selectors/language';
 import LayerSelector from '../layer-selector/layer-selector';
 import Globes from '../globes/globes';
 import Menu from '../menu/menu';
@@ -48,7 +48,6 @@ const TranslatedApp: FunctionComponent = () => {
               <Route path="/" exact>
                 <TimeSlider />
                 <StoriesButton />
-
                 <div className={styles.nav}>
                   <Menu />
                   <div className={styles.timeslider} />

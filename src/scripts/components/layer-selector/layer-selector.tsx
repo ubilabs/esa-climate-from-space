@@ -2,11 +2,11 @@ import React, {FunctionComponent, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useIntl} from 'react-intl';
 
-import {layersSelector} from '../../reducers/layers/list';
-import {selectedLayersSelector} from '../../reducers/layers/selected';
+import {layersSelector} from '../../selectors/layers/list';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 import {LayersIcon} from '../icons/layers-icon';
 import {CompareIcon} from '../icons/compare-icon';
-import setSelectedLayerIdAction from '../../actions/set-selected-layer';
+import setSelectedLayerIdAction from '../../actions/set-selected-layer-ids';
 import LayerList from '../layer-list/layer-list';
 import Tabs from '../tabs/tabs';
 
@@ -17,7 +17,7 @@ import styles from './layer-selector.styl';
 const LayerSelector: FunctionComponent = () => {
   const intl = useIntl();
   const layers = useSelector(layersSelector);
-  const layerIds = useSelector(selectedLayersSelector);
+  const layerIds = useSelector(selectedLayerIdsSelector);
   const dispatch = useDispatch();
   const tabs: Tab[] = [
     {

@@ -6,7 +6,6 @@ import {parseUrl} from '../../libs/globe-url-parameter';
 import config from '../../config/main';
 
 import {GlobeProjection} from '../../types/globe-projection';
-import {State} from '../index';
 
 // get initial state from url or fallback to default state in config
 const globeState = parseUrl() || config.globe;
@@ -22,10 +21,6 @@ function projectionReducer(
     default:
       return state;
   }
-}
-
-export function projectionSelector(state: State): GlobeProjection {
-  return state.globe.projection;
 }
 
 export default projectionReducer;

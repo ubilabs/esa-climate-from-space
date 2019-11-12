@@ -1,7 +1,7 @@
 import {Dispatch} from 'redux';
 
 import fetchLayersApi from '../api/fetch-layers';
-import {languageSelector} from '../reducers/language';
+import {languageSelector} from '../selectors/language';
 
 import {State} from '../reducers/index';
 import {LayerList} from '../types/layer-list';

@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 
-import {storyListSelector} from '../../reducers/story/list';
+import {storyListSelector} from '../../selectors/story/list';
 import StoryListItem from '../story-list-item/story-list-item';
 
 import styles from './story-list.styl';
