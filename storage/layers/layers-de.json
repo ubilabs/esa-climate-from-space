@@ -38,5 +38,11 @@
     "name": "Layer 3",
     "description": "Das ist der dritte Layer",
     "subLayers": []
+  },
+  {
+    "id": "layer3",
+    "name": "Layer 3",
+    "description": "Das ist der dritte Layer",
+    "subLayers": []
   }
 ]
