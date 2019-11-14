@@ -23,18 +23,33 @@ const Story: FunctionComponent = () => {
   const pageNumber = parseInt(page || '0', 10);
   const slide = story && story.slides[pageNumber];
   const storyListItem = stories.find(storyItem => storyItem.id === storyId);
+  const defaultView = {
+    position: {
+      height: 14484862,
+      latitude: 40.659017,
+      longitude: 0.002816
+    },
+    orientation: {
+      heading: 0,
+      pitch: -90,
+      roll: 0
+    }
+  };
 
   // fetch story of active storyId
   useEffect(() => {
     storyId && dispatch(fetchStory(storyId));
   }, [dispatch, storyId]);
 
-  // fly to position given in a slide
+  // fly to position given in a slide, if none given set to default
   useEffect(() => {
     if (slide && slide.flyTo) {
       dispatch(setFlyToAction(slide.flyTo));
     }
-  }, [dispatch, slide]);
+    if (slide && !slide.flyTo) {
+      dispatch(setFlyToAction(defaultView));
+    }
+  }, [dispatch, slide, defaultView]);
 
   // redirect to first slide when current slide does not exist
   if (story && !slide) {
