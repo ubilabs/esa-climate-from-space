@@ -6,12 +6,14 @@ import React, {
   useCallback
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {useParams} from 'react-router';
 import debounce from 'lodash.debounce';
 
 import {languageSelector} from '../../selectors/language';
 import {activeLayersSelector} from '../../selectors/layers/active';
 import setGlobeTime from '../../actions/set-globe-time';
 import {getTimeRanges} from '../../libs/get-time-ranges';
+import {State} from '../../reducers';
 
 import styles from './time-slider.styl';
 
@@ -19,14 +21,17 @@ import styles from './time-slider.styl';
 const DELAY = 200;
 
 const TimeSlider: FunctionComponent = () => {
+  const params = useParams();
   const dispatch = useDispatch();
   const [time, setTime] = useState(0);
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const language = useSelector(languageSelector);
-  const activeLayers = useSelector(activeLayersSelector);
+  const {mainLayerDetails, compareLayerDetails} = useSelector((state: State) =>
+    activeLayersSelector(state, params)
+  );
 
   // date format
-  const mainDateFormat = activeLayers.main && activeLayers.main.timeFormat;
+  const mainDateFormat = mainLayerDetails && mainLayerDetails.timeFormat;
   const {format} = useMemo(
     () => new Intl.DateTimeFormat(language, mainDateFormat || {}),
     [language, mainDateFormat]
@@ -34,8 +39,8 @@ const TimeSlider: FunctionComponent = () => {
 
   // ranges
   const {main, compare, combined} = useMemo(
-    () => getTimeRanges(activeLayers.main, activeLayers.compare),
-    [activeLayers.main, activeLayers.compare]
+    () => getTimeRanges(mainLayerDetails, compareLayerDetails),
+    [mainLayerDetails, compareLayerDetails]
   );
   const timestampsAvailable = combined.timestamps.length > 0;
   const totalRange = combined.max - combined.min;

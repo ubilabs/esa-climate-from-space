@@ -1,6 +1,4 @@
-import {SelectedLayerIdsState} from '../../reducers/layers/selected-ids';
 import {layersSelector} from '../../selectors/layers/list';
-import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 import {State} from '../../reducers/index';
 
 import {LayerList, LayerListItem} from '../../types/layer-list';
@@ -10,21 +8,28 @@ interface SelectedLayerItems {
   compare: LayerListItem | null;
 }
 
+interface SelectedLayerIds {
+  mainLayerId: string | undefined;
+  compareLayerId: string | undefined;
+}
+
 const getSelectedLayers = (
   layers: LayerList,
-  selectedLayerIds: SelectedLayerIdsState
-): SelectedLayerItems =>
-  layers.reduce(
+  selectedLayerIds: SelectedLayerIds
+): SelectedLayerItems => {
+  const {mainLayerId, compareLayerId} = selectedLayerIds;
+
+  return layers.reduce(
     (
       selectedLayers: SelectedLayerItems,
       layer: LayerListItem
     ): SelectedLayerItems => {
       if (layer.subLayers.length) {
         const mainLayer = layer.subLayers.find(
-          subLayer => subLayer.id === selectedLayerIds.main
+          subLayer => subLayer.id === mainLayerId
         );
         const compareLayer = layer.subLayers.find(
-          subLayer => subLayer.id === selectedLayerIds.compare
+          subLayer => subLayer.id === compareLayerId
         );
 
         return {
@@ -33,8 +38,8 @@ const getSelectedLayers = (
         };
       }
 
-      const isMainLayer = layer.id === selectedLayerIds.main;
-      const isCompareLayer = layer.id === selectedLayerIds.compare;
+      const isMainLayer = layer.id === mainLayerId;
+      const isCompareLayer = layer.id === compareLayerId;
 
       return {
         main: isMainLayer ? layer : selectedLayers.main,
@@ -43,9 +48,13 @@ const getSelectedLayers = (
     },
     {main: null, compare: null}
   );
+};
 
-export function selectedLayersSelector(state: State): SelectedLayerItems {
+export function selectedLayersSelector(
+  state: State,
+  props: {[key: string]: string} | null
+): SelectedLayerItems {
   const layers = layersSelector(state);
-  const selectedLayerIds = selectedLayerIdsSelector(state);
-  return getSelectedLayers(layers, selectedLayerIds);
+  const {mainLayerId, compareLayerId} = props || {};
+  return getSelectedLayers(layers, {mainLayerId, compareLayerId});
 }

@@ -14,6 +14,8 @@ import {GlobeProjection} from '../../types/globe-projection';
 import 'cesium/Source/Widgets/widgets.css';
 import 'cesium/Build/Cesium/Cesium';
 
+import {LayerListItem} from '../../types/layer-list';
+
 import styles from './globe.styl';
 
 const Cesium = window.Cesium;
@@ -44,6 +46,7 @@ const cesiumOptions = {
 
 interface Props {
   active: boolean;
+  layer: LayerListItem | null;
   isMain?: boolean;
   view: GlobeView;
   projection: GlobeProjection;
@@ -59,6 +62,7 @@ const Globe: FunctionComponent<Props> = ({
   projection,
   imageUrl,
   active,
+  layer,
   isMain,
   flyTo,
   onMouseEnter,
@@ -177,7 +181,7 @@ const Globe: FunctionComponent<Props> = ({
 
   return (
     <div className={styles.globe} onMouseEnter={() => onMouseEnter()} ref={ref}>
-      <DataSetInfo isMain={isMain} />
+      <DataSetInfo layer={layer} isMain={isMain} />
     </div>
   );
 };
