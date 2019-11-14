@@ -74,7 +74,6 @@ const TranslatedApp: FunctionComponent = () => {
                 render={props => (
                   <Redirect to={`${props.match.url}/0`} />
                 )}></Route>
-
               <Redirect to="/" />
             </Switch>
           </div>
