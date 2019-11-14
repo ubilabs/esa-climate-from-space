@@ -1,11 +1,15 @@
 import {State} from '../../reducers/index';
-import {selectedLayerIdsSelector} from './selected-ids';
 
-export function activeLayersSelector(state: State) {
-  const {main: mainId, compare: compareId} = selectedLayerIdsSelector(state);
+export function activeLayersSelector(
+  state: State,
+  props: {[key: string]: string} | null
+) {
+  const {mainLayerId, compareLayerId} = props || {};
 
   return {
-    main: (mainId && state.layers.details[mainId]) || null,
-    compare: (compareId && state.layers.details[compareId]) || null
+    mainLayerDetails:
+      (mainLayerId && state.layers.details[mainLayerId]) || null,
+    compareLayerDetails:
+      (compareLayerId && state.layers.details[compareLayerId]) || null
   };
 }

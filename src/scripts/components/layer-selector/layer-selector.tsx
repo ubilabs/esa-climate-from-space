@@ -1,12 +1,10 @@
 import React, {FunctionComponent, useState} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {useIntl} from 'react-intl';
 
 import {layersSelector} from '../../selectors/layers/list';
-import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 import {LayersIcon} from '../icons/layers-icon';
 import {CompareIcon} from '../icons/compare-icon';
-import setSelectedLayerIdAction from '../../actions/set-selected-layer-ids';
 import LayerList from '../layer-list/layer-list';
 import Tabs from '../tabs/tabs';
 
@@ -17,8 +15,6 @@ import styles from './layer-selector.styl';
 const LayerSelector: FunctionComponent = () => {
   const intl = useIntl();
   const layers = useSelector(layersSelector);
-  const layerIds = useSelector(selectedLayerIdsSelector);
-  const dispatch = useDispatch();
   const tabs: Tab[] = [
     {
       id: 'main',
@@ -35,7 +31,6 @@ const LayerSelector: FunctionComponent = () => {
   const [activeTabId, setActiveTabId] = useState(tabs[0].id);
   const [isOpen, setIsOpen] = useState(false);
   const isMainTabSelected = activeTabId === tabs[0].id;
-  const selectedLayer = isMainTabSelected ? layerIds.main : layerIds.compare;
 
   const onTabClick = (id: string) => {
     setActiveTabId(id);
@@ -50,11 +45,6 @@ const LayerSelector: FunctionComponent = () => {
     }
   };
 
-  const onLayerClick = (id: string) => {
-    const newId = selectedLayer === id ? null : id;
-    dispatch(setSelectedLayerIdAction(newId, isMainTabSelected));
-  };
-
   return (
     <div className={styles.layerContainer}>
       <Tabs
@@ -62,13 +52,7 @@ const LayerSelector: FunctionComponent = () => {
         activeTabId={activeTabId}
         onTabChanged={id => onTabClick(id)}
       />
-      {isOpen && (
-        <LayerList
-          layers={layers}
-          selected={selectedLayer}
-          onSelect={id => onLayerClick(id)}
-        />
-      )}
+      {isOpen && <LayerList isMain={isMainTabSelected} layers={layers} />}
     </div>
   );
 };
