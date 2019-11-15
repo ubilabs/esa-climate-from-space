@@ -6,16 +6,18 @@ import StoryList from '../story-list/story-list';
 
 import styles from './presentation-selector.styl';
 
-const PresentationSelector: FunctionComponent = () => (
-  <div className={styles.presentationSelector}>
-    <Link to="/" className={styles.backButton}>
-      <FormattedMessage id="goBack" />
-    </Link>
-    <h1 className={styles.title}>
-      <FormattedMessage id="presenter-mode" />
-    </h1>
-    <StoryList />
-  </div>
-);
+const PresentationSelector: FunctionComponent = () => {
+  return (
+    <div className={styles.presentationSelector}>
+      <Link to="/" className={styles.backButton}>
+        <FormattedMessage id="goBack" />
+      </Link>
+      <h1 className={styles.title}>
+        <FormattedMessage id="presenter-mode" />
+      </h1>
+      <StoryList />
+    </div>
+  );
+};
 
 export default PresentationSelector;
