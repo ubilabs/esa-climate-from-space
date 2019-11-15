@@ -1,4 +1,4 @@
-import {layersSelector} from '../../selectors/layers/list';
+import {layersSelector} from './list';
 import {State} from '../../reducers/index';
 
 import {LayerList, LayerListItem} from '../../types/layer-list';
@@ -50,7 +50,7 @@ const getSelectedLayers = (
   );
 };
 
-export function selectedLayersSelector(
+export function layerListItemSelector(
   state: State,
   props: {[key: string]: string} | null
 ): SelectedLayerItems {

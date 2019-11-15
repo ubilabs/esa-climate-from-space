@@ -10,7 +10,7 @@ import {useParams} from 'react-router';
 import debounce from 'lodash.debounce';
 
 import {languageSelector} from '../../selectors/language';
-import {activeLayersSelector} from '../../selectors/layers/active';
+import {layerDetailsSelector} from '../../selectors/layers/layer-details';
 import setGlobeTime from '../../actions/set-globe-time';
 import {getTimeRanges} from '../../libs/get-time-ranges';
 import {State} from '../../reducers';
@@ -27,7 +27,7 @@ const TimeSlider: FunctionComponent = () => {
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const language = useSelector(languageSelector);
   const {mainLayerDetails, compareLayerDetails} = useSelector((state: State) =>
-    activeLayersSelector(state, params)
+    layerDetailsSelector(state, params)
   );
 
   // date format

@@ -7,7 +7,7 @@ import React, {
 import {useSelector, useDispatch} from 'react-redux';
 import {matchPath, useLocation} from 'react-router';
 
-import {activeLayersSelector} from '../../selectors/layers/active';
+import {layerListItemSelector} from '../../selectors/layers/list-item';
 import {globeViewSelector} from '../../selectors/globe/view';
 import {timeSelector} from '../../selectors/globe/time';
 import {projectionSelector} from '../../selectors/globe/projection';
@@ -20,7 +20,7 @@ import {State} from '../../reducers';
 import {GlobeView} from '../../types/globe-view';
 
 import styles from './globes.styl';
-import {selectedLayersSelector} from '../../selectors/layers/selected';
+import {layerDetailsSelector} from '../../selectors/layers/layer-details';
 
 const Globes: FunctionComponent = () => {
   const location = useLocation();
@@ -31,11 +31,11 @@ const Globes: FunctionComponent = () => {
   const dispatch = useDispatch();
   const projection = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
-  const {mainLayerDetails, compareLayerDetails} = useSelector((state: State) =>
-    activeLayersSelector(state, match && match.params)
-  );
   const {main, compare} = useSelector((state: State) =>
-    selectedLayersSelector(state, match && match.params)
+    layerListItemSelector(state, match && match.params)
+  );
+  const {mainLayerDetails, compareLayerDetails} = useSelector((state: State) =>
+    layerDetailsSelector(state, match && match.params)
   );
   const time = useSelector(timeSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
