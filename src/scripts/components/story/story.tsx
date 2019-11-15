@@ -43,13 +43,11 @@ const Story: FunctionComponent = () => {
 
   // fly to position given in a slide, if none given set to default
   useEffect(() => {
-    if (slide && slide.flyTo) {
-      dispatch(setFlyToAction(slide.flyTo));
+    if (slide) {
+      dispatch(setFlyToAction(slide.flyTo || defaultView));
     }
-    if (slide && !slide.flyTo) {
-      dispatch(setFlyToAction(defaultView));
-    }
-  }, [dispatch, slide, defaultView]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, slide]);
 
   // redirect to first slide when current slide does not exist
   if (story && !slide) {
