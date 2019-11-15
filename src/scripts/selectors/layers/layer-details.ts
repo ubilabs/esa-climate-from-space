@@ -1,8 +1,8 @@
 import {State} from '../../reducers/index';
 
-export function activeLayersSelector(
+export function layerDetailsSelector(
   state: State,
-  props: {[key: string]: string} | null
+  props: {mainLayerId?: string; compareLayerId?: string} | null
 ) {
   const {mainLayerId, compareLayerId} = props || {};
 

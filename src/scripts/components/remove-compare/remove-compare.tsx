@@ -1,28 +1,32 @@
 import React, {FunctionComponent} from 'react';
-import {useDispatch} from 'react-redux';
 import {useIntl} from 'react-intl';
+import {Link, matchPath, useLocation} from 'react-router-dom';
 
-import setSelectedLayerIdsAction from '../../actions/set-selected-layer-ids';
 import {RemoveIcon} from '../icons/remove-icon';
 
 import styles from './remove-compare.styl';
 
 const RemoveCompare: FunctionComponent = () => {
   const intl = useIntl();
-  const dispatch = useDispatch();
+  const location = useLocation();
+  const match = matchPath(location.pathname, {
+    path: '(/|/layers)/:mainLayerId?/:compareLayerId?',
+    exact: true
+  });
 
-  const onButtonClick = () => {
-    dispatch(setSelectedLayerIdsAction(null, false));
-  };
+  const params = match && match.params;
+  const mainLayerId = (params && (params as any).mainLayerId) || '';
+  const newPath = mainLayerId ? `/layers/${mainLayerId}` : '/';
 
   return (
     <div className={styles.removeCompare}>
-      <button
-        className={styles.icon}
-        title={intl.formatMessage({id: 'remove-compare'})}
-        onClick={onButtonClick}>
-        <RemoveIcon />
-      </button>
+      <Link to={newPath}>
+        <button
+          className={styles.icon}
+          title={intl.formatMessage({id: 'remove-compare'})}>
+          <RemoveIcon />
+        </button>
+      </Link>
     </div>
   );
 };

@@ -4,7 +4,7 @@
     {
       "title": "Story slide 1",
       "subtitle": "This is story slide 1",
-      "bodytext": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste veniam laborum necessitatibus suscipit commodi? Officia ipsum blanditiis itaque, fugiat nostrum, reiciendis doloribus perferendis quisquam iure dolorem dolorum, deleniti cupiditate soluta?",
+      "bodytext": "## This is a subheader\n\nAnd this is a paragraph\n\nMarkdown test: Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story1.jpeg",
         "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story2.jpeg"
