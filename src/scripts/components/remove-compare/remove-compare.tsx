@@ -16,10 +16,11 @@ const RemoveCompare: FunctionComponent = () => {
 
   const params = match && match.params;
   const mainLayerId = (params && (params as any).mainLayerId) || '';
+  const newPath = mainLayerId ? `/layers/${mainLayerId}` : '/';
 
   return (
     <div className={styles.removeCompare}>
-      <Link to={`/layers/${mainLayerId}`}>
+      <Link to={newPath}>
         <button
           className={styles.icon}
           title={intl.formatMessage({id: 'remove-compare'})}>
