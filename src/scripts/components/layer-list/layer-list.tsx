@@ -1,64 +1,88 @@
 import React, {FunctionComponent, MouseEvent} from 'react';
+import {useHistory, useParams} from 'react-router';
 import cx from 'classnames';
-import styles from './layer-list.styl';
 
 import {LayerList as LayerListType} from '../../types/layer-list';
 
+import styles from './layer-list.styl';
+
 interface Props {
   layers: LayerListType;
-  selected: string | null;
-  onSelect: (id: string) => void;
+  isMain: boolean;
 }
 
-const LayerList: FunctionComponent<Props> = ({layers, selected, onSelect}) => (
-  <ul className={styles.layerList}>
-    {layers.map(layer => {
-      const layerClickHandler = () => {
+const LayerList: FunctionComponent<Props> = ({layers, isMain}) => {
+  const history = useHistory();
+  const {mainLayerId = '', compareLayerId = ''} = useParams();
+  const selectedLayerId = isMain ? mainLayerId : compareLayerId;
+
+  const layerClickHandler = (event: MouseEvent, id: string) => {
+    event.stopPropagation();
+
+    if (id === selectedLayerId) {
+      if (!isMain || !compareLayerId) {
+        const newPath = isMain ? '/' : `/layers/${mainLayerId}`;
+        history.push(newPath);
+      }
+      return;
+    }
+
+    const newPath = isMain
+      ? `/layers/${id}/${compareLayerId}`
+      : `/layers/${mainLayerId}/${id}`;
+
+    history.push(newPath);
+  };
+
+  return (
+    <ul className={styles.layerList}>
+      {layers.map(layer => {
+        const isSelected = selectedLayerId === layer.id;
+        const layerItemClasses = cx(
+          styles.layerItem,
+          isSelected && styles.layerItemSelected
+        );
+
         if (layer.subLayers.length === 0) {
-          onSelect(layer.id);
+          return (
+            <li
+              className={layerItemClasses}
+              key={layer.id}
+              onClick={event => layerClickHandler(event, layer.id)}>
+              {layer.name}
+            </li>
+          );
         }
-      };
-      const isSelected = selected === layer.id;
-      const layerItemClasses = cx(
-        styles.layerItem,
-        isSelected && styles.layerItemSelected
-      );
 
-      return (
-        <li
-          className={layerItemClasses}
-          key={layer.id}
-          onClick={() => layerClickHandler()}>
-          {layer.name}
+        return (
+          <li className={layerItemClasses} key={layer.id}>
+            {layer.name}
 
-          {layer.subLayers && (
-            <ul className={styles.subLayersList}>
-              {layer.subLayers.map(subLayer => {
-                const subLayerClickHandler = (event: MouseEvent) => {
-                  event.stopPropagation();
-                  onSelect(subLayer.id);
-                };
-                const isSubSelected = selected === subLayer.id;
-                const subLayerItemClasses = cx(
-                  styles.subLayerItem,
-                  isSubSelected && styles.subLayerItemSelected
-                );
+            {layer.subLayers && (
+              <ul className={styles.subLayersList}>
+                {layer.subLayers.map(subLayer => {
+                  const isSubSelected = selectedLayerId === subLayer.id;
+                  const subLayerItemClasses = cx(
+                    styles.subLayerItem,
+                    isSubSelected && styles.subLayerItemSelected
+                  );
 
-                return (
-                  <li
-                    className={subLayerItemClasses}
-                    key={subLayer.id}
-                    onClick={event => subLayerClickHandler(event)}>
-                    {subLayer.name}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-        </li>
-      );
-    })}
-  </ul>
-);
+                  return (
+                    <li
+                      className={subLayerItemClasses}
+                      onClick={event => layerClickHandler(event, subLayer.id)}
+                      key={subLayer.id}>
+                      {subLayer.name}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
 
 export default LayerList;

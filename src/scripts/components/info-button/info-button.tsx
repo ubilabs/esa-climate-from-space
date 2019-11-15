@@ -3,8 +3,9 @@ import {useIntl} from 'react-intl';
 
 import {InfoIcon} from '../icons/info-icon';
 
-import styles from './info-button.styl';
 import {LayerListItem} from '../../types/layer-list';
+
+import styles from './info-button.styl';
 
 interface Props {
   layer: LayerListItem | null;

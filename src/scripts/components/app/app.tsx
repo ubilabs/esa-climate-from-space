@@ -45,7 +45,7 @@ const TranslatedApp: FunctionComponent = () => {
         <div className={styles.app}>
           <div className={styles.layout}>
             <Switch>
-              <Route path="/" exact>
+              <Route path="(/|/layers)/:mainLayerId?/:compareLayerId?">
                 <TimeSlider />
                 <StoriesButton />
                 <div className={styles.nav}>
@@ -54,6 +54,7 @@ const TranslatedApp: FunctionComponent = () => {
                   <ProjectionMenu />
                   <LayerSelector />
                 </div>
+                <LayerLoader />
               </Route>
 
               <Route path="/present">
@@ -70,13 +71,12 @@ const TranslatedApp: FunctionComponent = () => {
 
               <Route
                 path="/stories/:storyId"
-                exact
                 render={props => (
                   <Redirect to={`${props.match.url}/0`} />
                 )}></Route>
+              <Redirect to="/" />
             </Switch>
           </div>
-
           <div className={styles.story}>
             <Globes />
             <Route path="/stories/:storyId/:page">
@@ -85,9 +85,7 @@ const TranslatedApp: FunctionComponent = () => {
           </div>
         </div>
       </IntlProvider>
-
       <UrlSync />
-      <LayerLoader />
       <Init />
     </Router>
   );
