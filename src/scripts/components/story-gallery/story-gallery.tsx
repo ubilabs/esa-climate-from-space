@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useState, useEffect} from 'react';
 import cx from 'classnames';
 
-import {PreviousIcon} from '../icons/back-icon';
+import {PreviousIcon} from '../icons/previous-icon';
 import {NextIcon} from '../icons/next-icon';
 import {FullscreenIcon} from '../icons/fullscreen-icon';
 import {FullscreenExitIcon} from '../icons/fullscreen-exit-icon';
