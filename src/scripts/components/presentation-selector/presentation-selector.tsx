@@ -8,8 +8,7 @@ import {StoryMode} from '../../types/story-mode';
 
 import styles from './presentation-selector.styl';
 
-const PresentationSelector: FunctionComponent = () => {
-  return (
+const PresentationSelector: FunctionComponent = () =>(
     <div className={styles.presentationSelector}>
       <Link to="/" className={styles.backButton}>
         <FormattedMessage id="goBack" />
@@ -20,6 +19,6 @@ const PresentationSelector: FunctionComponent = () => {
       <StoryList mode={StoryMode.Present} />
     </div>
   );
-};
+);
 
 export default PresentationSelector;
