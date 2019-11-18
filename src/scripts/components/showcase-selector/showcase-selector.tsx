@@ -4,6 +4,8 @@ import {FormattedMessage} from 'react-intl';
 
 import StoryList from '../story-list/story-list';
 
+import {StoryMode} from '../../types/story-mode';
+
 import styles from './showcase-selector.styl';
 
 const ShowcaseSelector: FunctionComponent = () => (
@@ -14,7 +16,7 @@ const ShowcaseSelector: FunctionComponent = () => (
     <h1 className={styles.title}>
       <FormattedMessage id="showcase-mode" />
     </h1>
-    <StoryList />
+    <StoryList mode={StoryMode.Showcase} />
   </div>
 );
 
