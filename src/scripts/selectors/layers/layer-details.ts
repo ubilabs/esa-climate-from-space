@@ -1,15 +1,14 @@
 import {State} from '../../reducers/index';
 
+import {Layer} from '../../types/layer';
+
 export function layerDetailsSelector(
   state: State,
-  props: {mainLayerId?: string; compareLayerId?: string} | null
-) {
-  const {mainLayerId, compareLayerId} = props || {};
+  layerId?: string | null
+): Layer | null {
+  if (!layerId) {
+    return null;
+  }
 
-  return {
-    mainLayerDetails:
-      (mainLayerId && state.layers.details[mainLayerId]) || null,
-    compareLayerDetails:
-      (compareLayerId && state.layers.details[compareLayerId]) || null
-  };
+  return state.layers.details[layerId] || null;
 }
