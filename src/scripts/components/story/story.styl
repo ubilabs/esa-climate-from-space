@@ -1,8 +1,10 @@
+@require '../../../variables.styl'
+
 .story
   display: flex
   flex-shrink: 0
   flex-direction: column
-  width: 500px
+  width: $storyWidth
   height: 100%
 
 .presentStory
@@ -14,7 +16,7 @@
 
 .header
   position: absolute
-  right: 500px
+  right: $storyWidth
   left: 0
   z-index: 1
   display: flex

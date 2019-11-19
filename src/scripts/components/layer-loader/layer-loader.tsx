@@ -13,8 +13,11 @@ import {layerDetailsSelector} from '../../selectors/layers/layer-details';
 const LayerLoader: FunctionComponent = () => {
   const dispatch = useDispatch();
   const {mainLayerId, compareLayerId} = useParams();
-  const {mainLayerDetails, compareLayerDetails} = useSelector((state: State) =>
-    layerDetailsSelector(state, {mainLayerId, compareLayerId})
+  const mainLayerDetails = useSelector((state: State) =>
+    layerDetailsSelector(state, mainLayerId)
+  );
+  const compareLayerDetails = useSelector((state: State) =>
+    layerDetailsSelector(state, compareLayerId)
   );
 
   // load layer list on mount
