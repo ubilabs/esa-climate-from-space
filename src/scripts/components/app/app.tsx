@@ -45,7 +45,9 @@ const TranslatedApp: FunctionComponent = () => {
         <div className={styles.app}>
           <div className={styles.layout}>
             <Switch>
-              <Route path="(/|/layers)/:mainLayerId?/:compareLayerId?">
+              <Route
+                path={['/layers/:mainLayerId?/:compareLayerId?', '/']}
+                exact>
                 <TimeSlider />
                 <StoriesButton />
                 <div className={styles.nav}>
