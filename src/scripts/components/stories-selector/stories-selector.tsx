@@ -4,6 +4,8 @@ import {FormattedMessage} from 'react-intl';
 
 import StoryList from '../story-list/story-list';
 
+import {StoryMode} from '../../types/story-mode';
+
 import styles from './stories-selector.styl';
 
 const StoriesSelector: FunctionComponent = () => (
@@ -14,7 +16,7 @@ const StoriesSelector: FunctionComponent = () => (
     <h1 className={styles.title}>
       <FormattedMessage id="storymode" />
     </h1>
-    <StoryList />
+    <StoryList mode={StoryMode.Stories} />
   </div>
 );
 

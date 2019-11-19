@@ -2,6 +2,7 @@ import React, {FunctionComponent, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useParams, Redirect, Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
+import cx from 'classnames';
 
 import StoryPagination from '../story-pagination/story-pagination';
 import fetchStory from '../../actions/fetch-story';
@@ -9,11 +10,17 @@ import {selectedStorySelector} from '../../selectors/story/selected';
 import {storyListSelector} from '../../selectors/story/list';
 import setFlyToAction from '../../actions/set-fly-to';
 import Slide from '../slide/slide';
-
-import styles from './story.styl';
 import {State} from '../../reducers';
 
-const Story: FunctionComponent = () => {
+import {StoryMode} from '../../types/story-mode';
+
+import styles from './story.styl';
+
+interface Props {
+  mode: StoryMode;
+}
+
+const Story: FunctionComponent<Props> = ({mode}) => {
   const {storyId, page} = useParams();
   const story = useSelector((state: State) =>
     selectedStorySelector(state, storyId)
@@ -51,13 +58,18 @@ const Story: FunctionComponent = () => {
 
   // redirect to first slide when current slide does not exist
   if (story && !slide) {
-    return <Redirect to={`/stories/${storyId}/0`} />;
+    return <Redirect to={`/${mode}/${storyId}/0`} />;
   }
 
+  const storyClasses = cx(
+    styles.story,
+    mode === 'present' && styles.presentStory
+  );
+
   return (
-    <div className={styles.story}>
+    <div className={storyClasses}>
       <div className={styles.header}>
-        <Link to="/stories" className={styles.backButton}>
+        <Link to={`/${mode}`} className={styles.backButton}>
           <FormattedMessage id="goBack" />
         </Link>
         <h2 className={styles.storyTitle}>
@@ -70,13 +82,16 @@ const Story: FunctionComponent = () => {
       {story &&
         story.slides.map(
           (currentSlide, index) =>
-            index === pageNumber && <Slide slide={currentSlide} key={index} />
+            index === pageNumber && (
+              <Slide mode={mode} slide={currentSlide} key={index} />
+            )
         )}
 
       {story && (
         <StoryPagination
           currentPage={pageNumber}
           storyId={story.id}
+          mode={mode}
           slides={story.slides}
         />
       )}

@@ -11,12 +11,14 @@ import styles from './story-pagination.styl';
 interface Props {
   currentPage: number;
   storyId: string;
+  mode: string;
   slides: Slide[];
 }
 
 const StoryPagination: FunctionComponent<Props> = ({
   currentPage,
   storyId,
+  mode,
   slides
 }) => {
   const nextPageNumber = currentPage + 1;
@@ -29,7 +31,7 @@ const StoryPagination: FunctionComponent<Props> = ({
     <div className={styles.pagination}>
       {showPreviousButton ? (
         <Link
-          to={`/stories/${storyId}/${previousPageNumber}`}
+          to={`/${mode}/${storyId}/${previousPageNumber}`}
           className={styles.icon}>
           <PreviousIcon />
         </Link>
@@ -41,7 +43,7 @@ const StoryPagination: FunctionComponent<Props> = ({
       </span>
       {showNextButton ? (
         <Link
-          to={`/stories/${storyId}/${nextPageNumber}`}
+          to={`/${mode}/${storyId}/${nextPageNumber}`}
           className={styles.icon}>
           <NextIcon />
         </Link>

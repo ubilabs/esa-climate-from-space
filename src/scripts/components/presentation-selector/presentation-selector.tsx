@@ -4,6 +4,8 @@ import {FormattedMessage} from 'react-intl';
 
 import StoryList from '../story-list/story-list';
 
+import {StoryMode} from '../../types/story-mode';
+
 import styles from './presentation-selector.styl';
 
 const PresentationSelector: FunctionComponent = () => (
@@ -14,7 +16,7 @@ const PresentationSelector: FunctionComponent = () => (
     <h1 className={styles.title}>
       <FormattedMessage id="presenter-mode" />
     </h1>
-    <StoryList />
+    <StoryList mode={StoryMode.Present} />
   </div>
 );
 
