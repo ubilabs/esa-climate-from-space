@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState, useEffect} from 'react';
+import React, {FunctionComponent, useState} from 'react';
 import cx from 'classnames';
 
 import {PreviousIcon} from '../icons/back-icon';
@@ -38,10 +38,6 @@ const StoryGallery: FunctionComponent<Props> = ({
     }
     setCurrentIndex(currentIndex + 1);
   };
-
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [images]);
 
   const imgClasses = cx([
     styles.slider,
