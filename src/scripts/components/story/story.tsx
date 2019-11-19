@@ -12,10 +12,12 @@ import setFlyToAction from '../../actions/set-fly-to';
 import Slide from '../slide/slide';
 import {State} from '../../reducers';
 
+import {StoryMode} from '../../types/story-mode';
+
 import styles from './story.styl';
 
 interface Props {
-  mode: string;
+  mode: StoryMode;
 }
 
 const Story: FunctionComponent<Props> = ({mode}) => {

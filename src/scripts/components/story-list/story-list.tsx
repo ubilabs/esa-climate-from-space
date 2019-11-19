@@ -5,16 +5,21 @@ import cx from 'classnames';
 import {storyListSelector} from '../../selectors/story/list';
 import StoryListItem from '../story-list-item/story-list-item';
 
+import {StoryMode} from '../../types/story-mode';
+
 import styles from './story-list.styl';
 
 interface Props {
-  mode: string;
+  mode: StoryMode;
 }
 
 const StoryList: FunctionComponent<Props> = ({mode}) => {
   const stories = useSelector(storyListSelector);
 
-  const classes = cx(styles.storyList, mode === 'present' && styles.present);
+  const classes = cx(
+    styles.storyList,
+    mode === StoryMode.Present && styles.present
+  );
 
   return (
     <div className={classes}>

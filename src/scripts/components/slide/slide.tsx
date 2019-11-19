@@ -6,18 +6,19 @@ import StoryVideo from '../story-video/story-video';
 import cx from 'classnames';
 
 import {Slide as SlideType} from '../../types/story';
+import {StoryMode} from '../../types/story-mode';
 
 import styles from './slide.styl';
 
 interface Props {
-  mode: string;
+  mode: StoryMode;
   slide: SlideType;
 }
 
 const Slide: FunctionComponent<Props> = ({mode, slide}) => {
   const slideClasses = cx(
     styles.slide,
-    mode === 'present' && styles.presentSlide
+    mode === StoryMode.Present && styles.presentSlide
   );
   return (
     <div className={slideClasses}>
