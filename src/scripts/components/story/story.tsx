@@ -64,7 +64,15 @@ const Story: FunctionComponent = () => {
           {storyListItem && storyListItem.title}
         </h2>
       </div>
-      {slide && <Slide slide={slide} />}
+
+      {/* Instead of rendering only the currect slide we map over all slides to
+        enforce a newly mounted component when the pageNumber changes */}
+      {story &&
+        story.slides.map(
+          (currentSlide, index) =>
+            index === pageNumber && <Slide slide={currentSlide} key={index} />
+        )}
+
       {story && (
         <StoryPagination
           currentPage={pageNumber}
