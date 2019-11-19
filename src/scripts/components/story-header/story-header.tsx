@@ -18,7 +18,7 @@ const StoryHeader: FunctionComponent<Props> = ({story, mode}) => {
   const Showcase = mode === StoryMode.Showcase;
 
   const storyClasses = cx(
-    styles.header,
+    styles.storyHeader,
     Present && styles.present,
     Showcase && styles.showcase
   );
