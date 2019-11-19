@@ -3,18 +3,19 @@ import {FormattedMessage} from 'react-intl';
 import {Link} from 'react-router-dom';
 import cx from 'classnames';
 
+import {StoryListItem} from '../../types/story-list';
+import {StoryMode} from '../../types/story-mode';
+
 import styles from './story-header.styl';
 
-import {StoryListItem} from '../../types/story-list';
-
 interface Props {
-  mode: string;
+  mode: StoryMode;
   story: StoryListItem;
 }
 
 const StoryHeader: FunctionComponent<Props> = ({story, mode}) => {
-  const Present = mode === 'present';
-  const Showcase = mode === 'showcase';
+  const Present = mode === StoryMode.Present;
+  const Showcase = mode === StoryMode.Showcase;
 
   const storyClasses = cx(
     styles.header,
@@ -32,7 +33,6 @@ const StoryHeader: FunctionComponent<Props> = ({story, mode}) => {
         {Showcase && (
           <h3 className={styles.subtitle}>{story && story.description}</h3>
         )}
-        {Present && <h3 className={styles.subtitle}>Pagination?</h3>}
       </div>
     </div>
   );

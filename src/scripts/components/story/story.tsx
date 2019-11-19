@@ -11,10 +11,12 @@ import Slide from '../slide/slide';
 import {State} from '../../reducers';
 import StoryHeader from '../story-header/story-header';
 
+import {StoryMode} from '../../types/story-mode';
+
 import styles from './story.styl';
 
 interface Props {
-  mode: string;
+  mode: StoryMode;
 }
 
 const Story: FunctionComponent<Props> = ({mode}) => {
