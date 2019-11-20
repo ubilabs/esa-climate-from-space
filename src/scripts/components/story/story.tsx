@@ -11,7 +11,7 @@ import {storyListSelector} from '../../selectors/story/list';
 import setFlyToAction from '../../actions/set-fly-to';
 import Slide from '../slide/slide';
 import {State} from '../../reducers';
-import globeState from '../../config/main';
+import {globeState} from '../../config/main';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -31,7 +31,7 @@ const Story: FunctionComponent<Props> = ({mode}) => {
   const pageNumber = parseInt(page || '0', 10);
   const slide = story && story.slides[pageNumber];
   const storyListItem = stories.find(storyItem => storyItem.id === storyId);
-  const defaultView = globeState.globe.view;
+  const defaultView = globeState.view;
 
   // fetch story of active storyId
   useEffect(() => {
