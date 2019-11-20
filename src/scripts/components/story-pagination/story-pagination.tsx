@@ -32,8 +32,8 @@ const StoryPagination: FunctionComponent<Props> = ({
   const slidesLength = slides.length;
   const showNextButton = nextPageNumber < slidesLength;
   const showPreviousButton = previousPageNumber >= 0;
-  const presenterMode = mode === StoryMode.Present;
-  const classes = cx(styles.pagination, presenterMode && styles.present);
+  const isPresenterMode = mode === StoryMode.Present;
+  const classes = cx(styles.pagination, isPresenterMode && styles.present);
 
   return (
     <div className={classes}>
@@ -47,9 +47,11 @@ const StoryPagination: FunctionComponent<Props> = ({
         ) : (
           <div className={styles.emptyIcon} />
         )}
+
         <span>
           {currentPage + 1}/{slidesLength}
         </span>
+
         {showNextButton ? (
           <Link
             to={`/${mode}/${storyId}/${nextPageNumber}`}
@@ -59,7 +61,8 @@ const StoryPagination: FunctionComponent<Props> = ({
         ) : (
           <div className={styles.emptyIcon} />
         )}
-        {presenterMode && (
+
+        {isPresenterMode && (
           <div className={styles.icons}>
             <PlayIcon />
             <Link
