@@ -8,12 +8,12 @@
   "storymode": "Story Mode",
   "projection": "Projection",
   "menu": "Menu",
-  "presenter-mode": "Presenter Mode",
-  "showcase-mode": "Show Case Mode",
+  "presenterMode": "Presenter Mode",
+  "showcaseMode": "Show Case Mode",
   "language": "Change language",
   "share": "Share Content",
   "export": "Export Data",
   "info": "More Information",
-  "remove-compare": "Remove Compare",
-  "data-info": "Data Information"
+  "removeCompare": "Remove Compare",
+  "dataInfo": "Data Information"
 }

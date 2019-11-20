@@ -12,8 +12,8 @@ interface Props {
 
 const DataSetInfo: FunctionComponent<Props> = ({layer, isMain}) => (
   <div className={styles.dataSetInfo}>
-    <h1 className={styles.title}>{layer && layer.name}</h1>
-    <h2 className={styles.description}>{layer && layer.description}</h2>
+    <h1 className={styles.title}>{layer?.name}</h1>
+    <h2 className={styles.description}>{layer?.description}</h2>
     <div className={styles.buttons}>
       <InfoButton layer={layer} />
       {!isMain && <RemoveCompare />}

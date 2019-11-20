@@ -39,20 +39,17 @@ const StoryGallery: FunctionComponent<Props> = ({
     setCurrentIndex(currentIndex + 1);
   };
 
-  const imgClasses = cx([
-    styles.slider,
-    images.length > 1 && styles.transition
-  ]);
+  const imgClasses = cx(styles.slider, images.length > 1 && styles.transition);
 
-  const lightboxClasses = cx([
+  const lightboxClasses = cx(
     showLightbox && styles.lightbox,
     fullscreenGallery && styles.fullscreen
-  ]);
+  );
 
-  const galleryClasses = cx([
+  const galleryClasses = cx(
     styles.storyGallery,
     showLightbox && styles.lightboxGallery
-  ]);
+  );
 
   return (
     <div className={lightboxClasses}>
