@@ -5,16 +5,16 @@
   "language.de": "Deutsch",
   "stories": "Geschichten",
   "goBack": "Zurück",
-  "storymode": "Geschichtsmodus",
+  "storyMode": "Geschichtsmodus",
   "projection": "Projektion",
   "menu": "Menü",
-  "presenter-mode": "Präsentations-Modus",
-  "showcase-mode": "Show-Case-Modus",
+  "presenterMode": "Präsentations-Modus",
+  "showcaseMode": "Show-Case-Modus",
   "language": "Sprache wechseln",
   "share": "Inhalt teilen",
   "export": "Daten exportieren",
   "info": "Weitere Informationen",
-  "remove-compare": "Vergleich entfernen",
-  "data-info": "Dateninformation",
-  "closeStory": "Geschichte schließen"
+  "closeStory": "Geschichte schließen",
+  "removeCompare": "Vergleich entfernen",
+  "dataInfo": "Dateninformation"
 }

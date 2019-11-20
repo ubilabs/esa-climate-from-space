@@ -28,7 +28,7 @@ const RemoveCompare: FunctionComponent = () => {
       <Link to={newPath}>
         <button
           className={styles.icon}
-          title={intl.formatMessage({id: 'remove-compare'})}>
+          title={intl.formatMessage({id: 'removeCompare'})}>
           <RemoveIcon />
         </button>
       </Link>

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {useIntl} from 'react-intl';
 import cx from 'classnames';
 
-import {PreviousIcon} from '../icons/back-icon';
+import {PreviousIcon} from '../icons/previous-icon';
 import {NextIcon} from '../icons/next-icon';
 import {PlayIcon} from '../icons/play-icon';
 import {RemoveIcon} from '../icons/remove-icon';
