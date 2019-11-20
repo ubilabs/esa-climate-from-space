@@ -1,8 +1,6 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {useParams, Redirect, Link} from 'react-router-dom';
-import {FormattedMessage} from 'react-intl';
-import cx from 'classnames';
+import {useParams, Redirect} from 'react-router-dom';
 
 import StoryPagination from '../story-pagination/story-pagination';
 import fetchStory from '../../actions/fetch-story';
@@ -12,6 +10,7 @@ import setFlyToAction from '../../actions/set-fly-to';
 import Slide from '../slide/slide';
 import {State} from '../../reducers';
 import config from '../../config/main';
+import StoryHeader from '../story-header/story-header';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -29,7 +28,7 @@ const Story: FunctionComponent<Props> = ({mode}) => {
   const stories = useSelector(storyListSelector);
   const dispatch = useDispatch();
   const pageNumber = parseInt(page || '0', 10);
-  const slide = story && story.slides[pageNumber];
+  const slide = story?.slides[pageNumber];
   const storyListItem = stories.find(storyItem => storyItem.id === storyId);
   const defaultView = config.globe.view;
 
@@ -51,31 +50,18 @@ const Story: FunctionComponent<Props> = ({mode}) => {
     return <Redirect to={`/${mode}/${storyId}/0`} />;
   }
 
-  const storyClasses = cx(
-    styles.story,
-    mode === 'present' && styles.presentStory
-  );
-
   return (
-    <div className={storyClasses}>
-      <div className={styles.header}>
-        <Link to={`/${mode}`} className={styles.backButton}>
-          <FormattedMessage id="goBack" />
-        </Link>
-        <h2 className={styles.storyTitle}>
-          {storyListItem && storyListItem.title}
-        </h2>
-      </div>
+    <div className={styles.story}>
+      {storyListItem && <StoryHeader story={storyListItem} mode={mode} />}
 
       {/* Instead of rendering only the currect slide we map over all slides to
         enforce a newly mounted component when the pageNumber changes */}
-      {story &&
-        story.slides.map(
-          (currentSlide, index) =>
-            index === pageNumber && (
-              <Slide mode={mode} slide={currentSlide} key={index} />
-            )
-        )}
+      {story?.slides.map(
+        (currentSlide, index) =>
+          index === pageNumber && (
+            <Slide mode={mode} slide={currentSlide} key={index} />
+          )
+      )}
 
       {story && (
         <StoryPagination

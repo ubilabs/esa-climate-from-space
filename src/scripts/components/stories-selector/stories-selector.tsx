@@ -14,7 +14,7 @@ const StoriesSelector: FunctionComponent = () => (
       <FormattedMessage id="goBack" />
     </Link>
     <h1 className={styles.title}>
-      <FormattedMessage id="storymode" />
+      <FormattedMessage id="storyMode" />
     </h1>
     <StoryList mode={StoryMode.Stories} />
   </div>

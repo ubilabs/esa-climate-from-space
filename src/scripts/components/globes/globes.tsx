@@ -35,7 +35,7 @@ const Globes: FunctionComponent = () => {
   const projection = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
 
-  const mainLayerId = match && match.params.mainLayerId;
+  const mainLayerId = match?.params.mainLayerId;
   const main = useSelector((state: State) =>
     layerListItemSelector(state, mainLayerId)
   );
@@ -43,7 +43,7 @@ const Globes: FunctionComponent = () => {
     layerDetailsSelector(state, mainLayerId)
   );
 
-  const compareLayerId = match && match.params.compareLayerId;
+  const compareLayerId = match?.params.compareLayerId;
   const compare = useSelector((state: State) =>
     layerListItemSelector(state, compareLayerId)
   );
