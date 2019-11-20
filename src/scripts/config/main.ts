@@ -1,7 +1,7 @@
 import {GlobeState} from '../reducers/globe/index';
 import {GlobeProjection} from '../types/globe-projection';
 
-export const globeState: GlobeState = {
+const globeState: GlobeState = {
   time: 0,
   projection: GlobeProjection.Sphere,
   view: {
