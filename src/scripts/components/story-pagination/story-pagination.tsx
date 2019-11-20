@@ -6,12 +6,12 @@ import cx from 'classnames';
 import {PreviousIcon} from '../icons/back-icon';
 import {NextIcon} from '../icons/next-icon';
 import {PlayIcon} from '../icons/play-icon';
+import {RemoveIcon} from '../icons/remove-icon';
 
 import {Slide} from '../../types/story';
 import {StoryMode} from '../../types/story-mode';
 
 import styles from './story-pagination.styl';
-import {RemoveIcon} from '../icons/remove-icon';
 
 interface Props {
   currentPage: number;

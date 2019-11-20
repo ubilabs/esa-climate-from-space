@@ -29,7 +29,6 @@ const Slide: FunctionComponent<Props> = ({mode, slide}) => {
         />
       )) ||
         (slide.videoId && <StoryVideo videoId={slide.videoId} />)}
-      {}
       <div className={styles.content}>
         <ReactMarkdown
           source={slide.bodytext}
