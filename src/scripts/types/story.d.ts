@@ -6,9 +6,8 @@ export interface Story {
 }
 
 export interface Slide {
-  title: string;
-  subtitle: string;
   bodytext: string;
+  bulletList?: string;
   images?: [];
   videoId?: string;
   flyTo: GlobeView;
