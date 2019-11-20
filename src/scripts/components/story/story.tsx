@@ -9,6 +9,7 @@ import {storyListSelector} from '../../selectors/story/list';
 import setFlyToAction from '../../actions/set-fly-to';
 import Slide from '../slide/slide';
 import {State} from '../../reducers';
+import config from '../../config/main';
 import StoryHeader from '../story-header/story-header';
 
 import {StoryMode} from '../../types/story-mode';
@@ -29,18 +30,7 @@ const Story: FunctionComponent<Props> = ({mode}) => {
   const pageNumber = parseInt(page || '0', 10);
   const slide = story?.slides[pageNumber];
   const storyListItem = stories.find(storyItem => storyItem.id === storyId);
-  const defaultView = {
-    position: {
-      height: 14484862,
-      latitude: 40.659017,
-      longitude: 0.002816
-    },
-    orientation: {
-      heading: 0,
-      pitch: -90,
-      roll: 0
-    }
-  };
+  const defaultView = config.globe.view;
 
   // fetch story of active storyId
   useEffect(() => {
