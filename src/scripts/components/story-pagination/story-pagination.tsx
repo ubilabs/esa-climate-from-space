@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {Link} from 'react-router-dom';
 
-import {PreviousIcon} from '../icons/back-icon';
+import {PreviousIcon} from '../icons/previous-icon';
 import {NextIcon} from '../icons/next-icon';
 
 import {Slide} from '../../types/story';
