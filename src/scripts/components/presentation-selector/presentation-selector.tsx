@@ -14,7 +14,7 @@ const PresentationSelector: FunctionComponent = () => (
       <FormattedMessage id="goBack" />
     </Link>
     <h1 className={styles.title}>
-      <FormattedMessage id="presenter-mode" />
+      <FormattedMessage id="presenterMode" />
     </h1>
     <StoryList mode={StoryMode.Present} />
   </div>
