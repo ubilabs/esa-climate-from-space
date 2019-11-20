@@ -34,7 +34,7 @@ const TimeSlider: FunctionComponent = () => {
   );
 
   // date format
-  const mainDateFormat = mainLayerDetails && mainLayerDetails.timeFormat;
+  const mainDateFormat = mainLayerDetails?.timeFormat;
   const {format} = useMemo(
     () => new Intl.DateTimeFormat(language, mainDateFormat || {}),
     [language, mainDateFormat]

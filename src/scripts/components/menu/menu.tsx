@@ -20,13 +20,13 @@ const Menu: FunctionComponent = () => {
   const menuItems: MenuItem[] = [
     {
       id: 'presenter-mode',
-      name: intl.formatMessage({id: 'presenter-mode'}),
+      name: intl.formatMessage({id: 'presenterMode'}),
       link: '/present',
       icon: PresenterIcon
     },
     {
       id: 'show-case-mode',
-      name: intl.formatMessage({id: 'showcase-mode'}),
+      name: intl.formatMessage({id: 'showcaseMode'}),
       link: '/showcase',
       icon: ShowCaseIcon
     },
