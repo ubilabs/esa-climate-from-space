@@ -2,8 +2,8 @@
   "id": "story1",
   "slides": [
     {
-      "bodytext": "# Story title\n\n## Das ist ein subheader\n\nAnd this is a paragraph\n\nMarkdown test: Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in",
-      "bulletList": "- Lorem ipsum\n\n- Exercitationem\n\n- sapiente",
+      "text": "# Story title\n\n## Das ist ein subheader\n\nAnd this is a paragraph\n\nMarkdown test: Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in",
+      "shortText": "- Lorem ipsum\n\n- Exercitationem\n\n- sapiente",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story1.jpeg",
         "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story2.jpeg"
@@ -22,8 +22,8 @@
       }
     },
     {
-      "bodytext": "# Story title\n\n## Das ist ein subheader\n\nExercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
-      "bulletList": "- Lorem ipsum",
+      "text": "# Story title\n\n## Das ist ein subheader\n\nExercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
+      "shortText": "- Lorem ipsum",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
       ],
@@ -41,13 +41,13 @@
       }
     },
     {
-      "bodytext": "# Story title\n\n## Das ist ein subheader\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
-      "bulletList": "- Lorem ipsum",
+      "text": "# Story title\n\n## Das ist ein subheader\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
+      "shortText": "- Lorem ipsum",
       "videoId": "U1SMPkVCG3o"
     },
     {
-      "bodytext": "# Story title\n\n## Das ist ein subheader\n\nPraesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
-      "bulletList": "- Lorem ipsum",
+      "text": "# Story title\n\n## Das ist ein subheader\n\nPraesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
+      "shortText": "- Lorem ipsum",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
       ],

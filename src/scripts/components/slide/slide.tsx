@@ -16,6 +16,8 @@ interface Props {
 }
 
 const Slide: FunctionComponent<Props> = ({mode, slide}) => {
+  const isStoryMode = mode === StoryMode.Stories;
+  const source = isStoryMode ? slide.text : slide.shortText;
   const slideClasses = cx(
     styles.slide,
     mode === StoryMode.Present && styles.presentSlide,
@@ -32,33 +34,19 @@ const Slide: FunctionComponent<Props> = ({mode, slide}) => {
       )) ||
         (slide.videoId && <StoryVideo videoId={slide.videoId} />)}
       <div className={styles.content}>
-        {mode === StoryMode.Stories ? (
-          <ReactMarkdown
-            source={slide.bodytext}
-            allowedTypes={[
-              'heading',
-              'text',
-              'paragraph',
-              'break',
-              'strong',
-              'emphasis',
-              'list',
-              'listItem'
-            ]}
-          />
-        ) : (
-          <ReactMarkdown
-            source={slide.bulletList}
-            allowedTypes={[
-              'text',
-              'paragraph',
-              'strong',
-              'emphasis',
-              'list',
-              'listItem'
-            ]}
-          />
-        )}
+        <ReactMarkdown
+          source={source}
+          allowedTypes={[
+            'heading',
+            'text',
+            'paragraph',
+            'break',
+            'strong',
+            'emphasis',
+            'list',
+            'listItem'
+          ]}
+        />
       </div>
     </div>
   );

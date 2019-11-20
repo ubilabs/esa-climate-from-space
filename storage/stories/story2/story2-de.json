@@ -2,13 +2,13 @@
   "id": "story2",
   "slides": [
     {
-      "bodytext": "# Story title ## Das ist ein subheader\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
+      "text": "# Story title ## Das ist ein subheader\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story2/assets/story2.jpeg"
       ]
     },
     {
-      "bodytext": "# Story title ## Das ist ein subheader\n\nExercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
+      "text": "# Story title ## Das ist ein subheader\n\nExercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story2/assets/story2.jpeg"
       ]
