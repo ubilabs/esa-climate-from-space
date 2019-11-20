@@ -16,10 +16,14 @@ interface Props {
 }
 
 const Slide: FunctionComponent<Props> = ({mode, slide}) => {
+  const isStoryMode = mode === StoryMode.Stories;
+  const source = isStoryMode ? slide.text : slide.shortText;
   const slideClasses = cx(
     styles.slide,
-    mode === StoryMode.Present && styles.presentSlide
+    mode === StoryMode.Present && styles.presentSlide,
+    mode === StoryMode.Showcase && styles.showcaseSlide
   );
+
   return (
     <div className={slideClasses}>
       {(slide.images && (
@@ -29,10 +33,9 @@ const Slide: FunctionComponent<Props> = ({mode, slide}) => {
         />
       )) ||
         (slide.videoId && <StoryVideo videoId={slide.videoId} />)}
-      {}
       <div className={styles.content}>
         <ReactMarkdown
-          source={slide.bodytext}
+          source={source}
           allowedTypes={[
             'heading',
             'text',
