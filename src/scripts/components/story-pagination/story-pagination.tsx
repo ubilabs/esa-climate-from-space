@@ -1,5 +1,6 @@
 import React, {FunctionComponent} from 'react';
 import {Link} from 'react-router-dom';
+import {useIntl} from 'react-intl';
 import cx from 'classnames';
 
 import {PreviousIcon} from '../icons/back-icon';
@@ -25,14 +26,13 @@ const StoryPagination: FunctionComponent<Props> = ({
   mode,
   slides
 }) => {
+  const intl = useIntl();
   const nextPageNumber = currentPage + 1;
   const previousPageNumber = currentPage - 1;
   const slidesLength = slides.length;
   const showNextButton = nextPageNumber < slidesLength;
   const showPreviousButton = previousPageNumber >= 0;
-
   const presenterMode = mode === StoryMode.Present;
-
   const classes = cx(styles.pagination, presenterMode && styles.present);
 
   return (
@@ -61,7 +61,12 @@ const StoryPagination: FunctionComponent<Props> = ({
         )}
         {presenterMode && (
           <div className={styles.icons}>
-            <PlayIcon /> <RemoveIcon />
+            <PlayIcon />
+            <Link
+              to={`/${mode}`}
+              title={intl.formatMessage({id: 'closeStory'})}>
+              <RemoveIcon />
+            </Link>
           </div>
         )}
       </div>

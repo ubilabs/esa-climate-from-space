@@ -15,5 +15,6 @@
   "export": "Export Data",
   "info": "More Information",
   "remove-compare": "Remove Compare",
-  "data-info": "Data Information"
+  "data-info": "Data Information",
+  "closeStory": "Close story"
 }

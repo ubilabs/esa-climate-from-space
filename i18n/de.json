@@ -15,5 +15,6 @@
   "export": "Daten exportieren",
   "info": "Weitere Informationen",
   "remove-compare": "Vergleich entfernen",
-  "data-info": "Dateninformation"
+  "data-info": "Dateninformation",
+  "closeStory": "Geschichte schließen"
 }
