@@ -14,7 +14,7 @@ const ShowcaseSelector: FunctionComponent = () => (
       <FormattedMessage id="goBack" />
     </Link>
     <h1 className={styles.title}>
-      <FormattedMessage id="showcase-mode" />
+      <FormattedMessage id="showcaseMode" />
     </h1>
     <StoryList mode={StoryMode.Showcase} />
   </div>
