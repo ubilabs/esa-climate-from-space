@@ -8,7 +8,7 @@ export function unsafeSelectedStorySelector(state: State): Story | null {
 
 export function selectedStorySelector(
   state: State,
-  storyId?: string
+  storyId: string | null
 ): Story | null {
   if (!state.stories.selected || !storyId) {
     return null;

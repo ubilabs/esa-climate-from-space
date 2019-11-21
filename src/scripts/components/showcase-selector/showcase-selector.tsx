@@ -1,5 +1,5 @@
 import React, {FunctionComponent, useState} from 'react';
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 import {PlayIcon} from '../icons/play-icon';
 
@@ -10,14 +10,7 @@ import {StoryMode} from '../../types/story-mode';
 import styles from './showcase-selector.styl';
 
 const ShowcaseSelector: FunctionComponent = () => {
-  const history = useHistory();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
-
-  const setUrl = (newIds: string[]) => {
-    const urlIds = newIds.join('&');
-    const newPath = `/showcase/${urlIds}`;
-    history.push(newPath);
-  };
 
   const onSelectStory = (id: string) => {
     const isInList = selectedIds.includes(id);
@@ -25,7 +18,6 @@ const ShowcaseSelector: FunctionComponent = () => {
       ? selectedIds.filter(selectedId => selectedId !== id)
       : selectedIds.concat(id);
     setSelectedIds(newIds);
-    setUrl(newIds);
   };
 
   return (
@@ -39,7 +31,9 @@ const ShowcaseSelector: FunctionComponent = () => {
         </h1>
         <div className={styles.play}>
           <span>{selectedIds.length} stories selected</span>
-          <PlayIcon />
+          <Link to={`/showcase/${selectedIds.join('&')}/0/0`}>
+            <PlayIcon />
+          </Link>
         </div>
       </div>
       <StoryList

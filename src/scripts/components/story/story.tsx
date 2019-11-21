@@ -20,8 +20,23 @@ interface Props {
   mode: StoryMode;
 }
 
+// eslint-disable-next-line
 const Story: FunctionComponent<Props> = ({mode}) => {
-  const {storyId, page} = useParams();
+  const {
+    storyIds: storyIdsString,
+    storyNumber,
+    storyId: storyModeStoryId,
+    page
+  } = useParams();
+  let storyId: string | null = null;
+
+  if (mode === StoryMode.Showcase) {
+    const storyIds = storyIdsString?.split('&');
+    const storyIndex = parseInt(storyNumber || '0', 10);
+    storyId = (storyIds && storyIds[storyIndex || 0]) || null;
+  } else {
+    storyId = storyModeStoryId || null;
+  }
   const story = useSelector((state: State) =>
     selectedStorySelector(state, storyId)
   );
