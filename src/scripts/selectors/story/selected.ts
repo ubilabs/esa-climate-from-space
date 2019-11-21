@@ -2,6 +2,10 @@ import {State} from '../../reducers/index';
 
 import {Story} from '../../types/story';
 
+export function unsafeSelectedStorySelector(state: State): Story | null {
+  return state.stories.selected;
+}
+
 export function selectedStorySelector(
   state: State,
   storyId?: string
