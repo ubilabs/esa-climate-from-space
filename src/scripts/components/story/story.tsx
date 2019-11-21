@@ -1,7 +1,6 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {useParams, Redirect, Link} from 'react-router-dom';
-import {FormattedMessage} from 'react-intl';
+import {useParams, Redirect} from 'react-router-dom';
 
 import StoryPagination from '../story-pagination/story-pagination';
 import fetchStory from '../../actions/fetch-story';
@@ -9,11 +8,19 @@ import {selectedStorySelector} from '../../selectors/story/selected';
 import {storyListSelector} from '../../selectors/story/list';
 import setFlyToAction from '../../actions/set-fly-to';
 import Slide from '../slide/slide';
+import {State} from '../../reducers';
+import config from '../../config/main';
+import StoryHeader from '../story-header/story-header';
+
+import {StoryMode} from '../../types/story-mode';
 
 import styles from './story.styl';
-import {State} from '../../reducers';
 
-const Story: FunctionComponent = () => {
+interface Props {
+  mode: StoryMode;
+}
+
+const Story: FunctionComponent<Props> = ({mode}) => {
   const {storyId, page} = useParams();
   const story = useSelector((state: State) =>
     selectedStorySelector(state, storyId)
@@ -21,20 +28,9 @@ const Story: FunctionComponent = () => {
   const stories = useSelector(storyListSelector);
   const dispatch = useDispatch();
   const pageNumber = parseInt(page || '0', 10);
-  const slide = story && story.slides[pageNumber];
+  const slide = story?.slides[pageNumber];
   const storyListItem = stories.find(storyItem => storyItem.id === storyId);
-  const defaultView = {
-    position: {
-      height: 14484862,
-      latitude: 40.659017,
-      longitude: 0.002816
-    },
-    orientation: {
-      heading: 0,
-      pitch: -90,
-      roll: 0
-    }
-  };
+  const defaultView = config.globe.view;
 
   // fetch story of active storyId
   useEffect(() => {
@@ -51,24 +47,27 @@ const Story: FunctionComponent = () => {
 
   // redirect to first slide when current slide does not exist
   if (story && !slide) {
-    return <Redirect to={`/stories/${storyId}/0`} />;
+    return <Redirect to={`/${mode}/${storyId}/0`} />;
   }
 
   return (
     <div className={styles.story}>
-      <div className={styles.header}>
-        <Link to="/stories" className={styles.backButton}>
-          <FormattedMessage id="goBack" />
-        </Link>
-        <h2 className={styles.storyTitle}>
-          {storyListItem && storyListItem.title}
-        </h2>
-      </div>
-      {slide && <Slide slide={slide} />}
+      {storyListItem && <StoryHeader story={storyListItem} mode={mode} />}
+
+      {/* Instead of rendering only the currect slide we map over all slides to
+        enforce a newly mounted component when the pageNumber changes */}
+      {story?.slides.map(
+        (currentSlide, index) =>
+          index === pageNumber && (
+            <Slide mode={mode} slide={currentSlide} key={index} />
+          )
+      )}
+
       {story && (
         <StoryPagination
           currentPage={pageNumber}
           storyId={story.id}
+          mode={mode}
           slides={story.slides}
         />
       )}

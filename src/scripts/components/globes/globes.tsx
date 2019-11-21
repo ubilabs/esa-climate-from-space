@@ -24,19 +24,33 @@ import {layerDetailsSelector} from '../../selectors/layers/layer-details';
 
 const Globes: FunctionComponent = () => {
   const location = useLocation();
-  const match = matchPath(location.pathname, {
-    path: '(/|/layers)/:mainLayerId?/:compareLayerId?',
-    exact: true
-  });
+  const match = matchPath<{mainLayerId?: string; compareLayerId?: string}>(
+    location.pathname,
+    {
+      path: ['/layers/:mainLayerId?/:compareLayerId?', '/'],
+      exact: true
+    }
+  );
   const dispatch = useDispatch();
   const projection = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
-  const {main, compare} = useSelector((state: State) =>
-    layerListItemSelector(state, match && match.params)
+
+  const mainLayerId = match?.params.mainLayerId;
+  const main = useSelector((state: State) =>
+    layerListItemSelector(state, mainLayerId)
   );
-  const {mainLayerDetails, compareLayerDetails} = useSelector((state: State) =>
-    layerDetailsSelector(state, match && match.params)
+  const mainLayerDetails = useSelector((state: State) =>
+    layerDetailsSelector(state, mainLayerId)
   );
+
+  const compareLayerId = match?.params.compareLayerId;
+  const compare = useSelector((state: State) =>
+    layerListItemSelector(state, compareLayerId)
+  );
+  const compareLayerDetails = useSelector((state: State) =>
+    layerDetailsSelector(state, compareLayerId)
+  );
+
   const time = useSelector(timeSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);

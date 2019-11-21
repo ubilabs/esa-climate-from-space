@@ -21,17 +21,20 @@ import styles from './time-slider.styl';
 const DELAY = 200;
 
 const TimeSlider: FunctionComponent = () => {
-  const params = useParams();
+  const {mainLayerId, compareLayerId} = useParams();
   const dispatch = useDispatch();
   const [time, setTime] = useState(0);
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const language = useSelector(languageSelector);
-  const {mainLayerDetails, compareLayerDetails} = useSelector((state: State) =>
-    layerDetailsSelector(state, params)
+  const mainLayerDetails = useSelector((state: State) =>
+    layerDetailsSelector(state, mainLayerId)
+  );
+  const compareLayerDetails = useSelector((state: State) =>
+    layerDetailsSelector(state, compareLayerId)
   );
 
   // date format
-  const mainDateFormat = mainLayerDetails && mainLayerDetails.timeFormat;
+  const mainDateFormat = mainLayerDetails?.timeFormat;
   const {format} = useMemo(
     () => new Intl.DateTimeFormat(language, mainDateFormat || {}),
     [language, mainDateFormat]

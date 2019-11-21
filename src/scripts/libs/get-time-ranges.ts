@@ -11,9 +11,9 @@ export function getTimeRanges(
   combined: TimeRange;
 } {
   const mainRange = getLayerTimeRange(mainLayer);
-  const mainTimestamps = (mainRange && mainRange.timestamps) || [];
+  const mainTimestamps = mainRange?.timestamps || [];
   const compareRange = getLayerTimeRange(compareLayer);
-  const compareTimestamps = (compareRange && compareRange.timestamps) || [];
+  const compareTimestamps = compareRange?.timestamps || [];
 
   const combinedRange = getTimeRange([...mainTimestamps, ...compareTimestamps]);
 

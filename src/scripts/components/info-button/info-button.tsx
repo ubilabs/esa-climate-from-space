@@ -23,7 +23,7 @@ const InfoButton: FunctionComponent<Props> = ({layer}) => {
       <div className={styles.infoButton}>
         <button
           className={styles.icon}
-          title={intl.formatMessage({id: 'data-info'})}
+          title={intl.formatMessage({id: 'dataInfo'})}
           onClick={() => onButtonClickHandler()}>
           <InfoIcon />
         </button>

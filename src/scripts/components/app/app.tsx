@@ -23,6 +23,9 @@ import TimeSlider from '../time-slider/time-slider';
 import Init from '../init/init';
 
 import translations from '../../i18n';
+
+import {StoryMode} from '../../types/story-mode';
+
 import styles from './app.styl';
 
 const store = createStore(
@@ -45,7 +48,9 @@ const TranslatedApp: FunctionComponent = () => {
         <div className={styles.app}>
           <div className={styles.layout}>
             <Switch>
-              <Route path="(/|/layers)/:mainLayerId?/:compareLayerId?">
+              <Route
+                path={['/layers/:mainLayerId?/:compareLayerId?', '/']}
+                exact>
                 <TimeSlider />
                 <StoriesButton />
                 <div className={styles.nav}>
@@ -57,11 +62,11 @@ const TranslatedApp: FunctionComponent = () => {
                 <LayerLoader />
               </Route>
 
-              <Route path="/present">
+              <Route path="/present" exact>
                 <PresentationSelector />
               </Route>
 
-              <Route path="/showcase">
+              <Route path="/showcase" exact>
                 <ShowcaseSelector />
               </Route>
 
@@ -70,7 +75,11 @@ const TranslatedApp: FunctionComponent = () => {
               </Route>
 
               <Route
-                path="/stories/:storyId"
+                path={[
+                  '/present/:storyId',
+                  '/showcase/:storyId',
+                  '/stories/:storyId'
+                ]}
                 render={props => (
                   <Redirect to={`${props.match.url}/0`} />
                 )}></Route>
@@ -79,8 +88,14 @@ const TranslatedApp: FunctionComponent = () => {
           </div>
           <div className={styles.story}>
             <Globes />
-            <Route path="/stories/:storyId/:page">
-              <Story />
+            <Route path={'/stories/:storyId/:page'}>
+              <Story mode={StoryMode.Stories} />
+            </Route>
+            <Route path={'/present/:storyId/:page'}>
+              <Story mode={StoryMode.Present} />
+            </Route>
+            <Route path={'/showcase/:storyId/:page'}>
+              <Story mode={StoryMode.Showcase} />
             </Route>
           </div>
         </div>

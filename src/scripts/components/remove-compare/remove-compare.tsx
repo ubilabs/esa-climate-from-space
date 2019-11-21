@@ -9,21 +9,26 @@ import styles from './remove-compare.styl';
 const RemoveCompare: FunctionComponent = () => {
   const intl = useIntl();
   const location = useLocation();
-  const match = matchPath(location.pathname, {
-    path: '(/|/layers)/:mainLayerId?/:compareLayerId?',
-    exact: true
-  });
+  const match = matchPath<{mainLayerId: string; compareLayerId: string}>(
+    location.pathname,
+    {
+      path: '/layers/:mainLayerId/:compareLayerId',
+      exact: true
+    }
+  );
 
-  const params = match && match.params;
-  const mainLayerId = (params && (params as any).mainLayerId) || '';
-  const newPath = mainLayerId ? `/layers/${mainLayerId}` : '/';
+  if (!match) {
+    return null;
+  }
+
+  const newPath = `/layers/${match.params.mainLayerId}`;
 
   return (
     <div className={styles.removeCompare}>
       <Link to={newPath}>
         <button
           className={styles.icon}
-          title={intl.formatMessage({id: 'remove-compare'})}>
+          title={intl.formatMessage({id: 'removeCompare'})}>
           <RemoveIcon />
         </button>
       </Link>
