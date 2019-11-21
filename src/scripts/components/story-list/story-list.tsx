@@ -11,9 +11,13 @@ import styles from './story-list.styl';
 
 interface Props {
   mode: StoryMode;
+  onSelectStory?: (id: string) => void;
 }
 
-const StoryList: FunctionComponent<Props> = ({mode}) => {
+const StoryList: FunctionComponent<Props> = ({
+  mode,
+  onSelectStory = () => {}
+}) => {
   const stories = useSelector(storyListSelector);
 
   const classes = cx(
@@ -24,7 +28,12 @@ const StoryList: FunctionComponent<Props> = ({mode}) => {
   return (
     <div className={classes}>
       {stories.map(story => (
-        <StoryListItem key={story.id} story={story} mode={mode} />
+        <StoryListItem
+          key={story.id}
+          story={story}
+          mode={mode}
+          onSelectStory={id => onSelectStory(id)}
+        />
       ))}
     </div>
   );

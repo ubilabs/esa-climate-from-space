@@ -66,7 +66,7 @@ const TranslatedApp: FunctionComponent = () => {
                 <PresentationSelector />
               </Route>
 
-              <Route path="/showcase" exact>
+              <Route path={['/showcase/:storyIds', '/showcase/']} exact>
                 <ShowcaseSelector />
               </Route>
 
@@ -94,7 +94,7 @@ const TranslatedApp: FunctionComponent = () => {
             <Route path={'/present/:storyId/:page'}>
               <Story mode={StoryMode.Present} />
             </Route>
-            <Route path={'/showcase/:storyId/:page'}>
+            <Route path={'/showcase/:storyIds/:storyNumber/:pageNumber'}>
               <Story mode={StoryMode.Showcase} />
             </Route>
           </div>
