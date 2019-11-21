@@ -1,6 +1,7 @@
 import React, {FunctionComponent, useState} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
+import {PlayIcon} from '../icons/play-icon';
 
 import StoryList from '../story-list/story-list';
 
@@ -29,12 +30,18 @@ const ShowcaseSelector: FunctionComponent = () => {
 
   return (
     <div className={styles.showcaseSelector}>
-      <Link to="/" className={styles.backButton}>
-        <FormattedMessage id="goBack" />
-      </Link>
-      <h1 className={styles.title}>
-        <FormattedMessage id="showcaseMode" />
-      </h1>
+      <div className={styles.header}>
+        <Link to="/" className={styles.backButton}>
+          <FormattedMessage id="goBack" />
+        </Link>
+        <h1 className={styles.title}>
+          <FormattedMessage id="showcaseMode" />
+        </h1>
+        <div className={styles.play}>
+          <span>{selectedIds.length} stories selected</span>
+          <PlayIcon />
+        </div>
+      </div>
       <StoryList
         mode={StoryMode.Showcase}
         onSelectStory={id => onSelectStory(id)}
