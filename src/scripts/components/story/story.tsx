@@ -67,7 +67,13 @@ const Story: FunctionComponent<Props> = ({mode}) => {
 
   return (
     <div className={styles.story}>
-      {storyListItem && <StoryHeader story={storyListItem} mode={mode} />}
+      {storyListItem && (
+        <StoryHeader
+          story={storyListItem}
+          mode={mode}
+          storyIds={storyIdsString}
+        />
+      )}
 
       {/* Instead of rendering only the currect slide we map over all slides to
         enforce a newly mounted component when the pageNumber changes */}

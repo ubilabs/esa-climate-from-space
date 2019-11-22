@@ -66,7 +66,7 @@ const TranslatedApp: FunctionComponent = () => {
                 <PresentationSelector />
               </Route>
 
-              <Route path={['/showcase']} exact>
+              <Route path={['/showcase/:storyIds', '/showcase/']} exact>
                 <ShowcaseSelector />
               </Route>
 

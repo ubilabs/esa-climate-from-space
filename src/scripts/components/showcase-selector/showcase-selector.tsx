@@ -1,5 +1,5 @@
-import React, {FunctionComponent, useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, {FunctionComponent} from 'react';
+import {Link, useHistory, useParams} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 import {PlayIcon} from '../icons/play-icon';
 
@@ -10,14 +10,20 @@ import {StoryMode} from '../../types/story-mode';
 import styles from './showcase-selector.styl';
 
 const ShowcaseSelector: FunctionComponent = () => {
-  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const params = useParams<{storyIds?: string}>();
+  const history = useHistory();
+  const storyIds = params.storyIds?.split('&');
+  const selectedIds = storyIds || [];
 
   const onSelectStory = (id: string) => {
     const isInList = selectedIds.includes(id);
     const newIds = isInList
       ? selectedIds.filter(selectedId => selectedId !== id)
       : selectedIds.concat(id);
-    setSelectedIds(newIds);
+
+    const newIdsString = newIds.join('&');
+
+    history.replace(`/showcase/${newIdsString}`);
   };
 
   return (
