@@ -39,6 +39,7 @@ const ShowcaseSelector: FunctionComponent = () => {
       <StoryList
         mode={StoryMode.Showcase}
         onSelectStory={id => onSelectStory(id)}
+        selectedIds={selectedIds}
       />
     </div>
   );

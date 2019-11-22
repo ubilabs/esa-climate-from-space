@@ -10,17 +10,20 @@ import styles from './story-list-item.styl';
 interface Props {
   story: StoryListItemType;
   mode: StoryMode;
+  selectedIndex: number;
   onSelectStory: (id: string) => void;
 }
 
 const StoryListItemContent: FunctionComponent<Props> = ({
   mode,
   story,
+  selectedIndex,
   onSelectStory
 }) => {
   const classes = cx(
     styles.storyItem,
-    mode === StoryMode.Present && styles.present
+    mode === StoryMode.Present && styles.present,
+    selectedIndex >= 0 && styles.showcase
   );
 
   return (
@@ -28,6 +31,11 @@ const StoryListItemContent: FunctionComponent<Props> = ({
       className={classes}
       onClick={() => mode === StoryMode.Showcase && onSelectStory(story.id)}>
       <img src={story.image} className={styles.image} />
+      {selectedIndex >= 0 && (
+        <div className={styles.storyNumber}>
+          <span>{selectedIndex + 1}</span>
+        </div>
+      )}
       <p className={styles.title}>{story.title}</p>
       <p className={styles.description}>{story.description}</p>
     </div>
@@ -37,6 +45,7 @@ const StoryListItemContent: FunctionComponent<Props> = ({
 const StoryListItem: FunctionComponent<Props> = ({
   story,
   mode,
+  selectedIndex,
   onSelectStory
 }) => {
   const isShowcaseMode = mode === StoryMode.Showcase;
@@ -44,6 +53,7 @@ const StoryListItem: FunctionComponent<Props> = ({
   return !isShowcaseMode ? (
     <Link to={`/${mode}/${story.id}`}>
       <StoryListItemContent
+        selectedIndex={selectedIndex}
         mode={mode}
         story={story}
         onSelectStory={id => onSelectStory(id)}
@@ -51,6 +61,7 @@ const StoryListItem: FunctionComponent<Props> = ({
     </Link>
   ) : (
     <StoryListItemContent
+      selectedIndex={selectedIndex}
       mode={mode}
       story={story}
       onSelectStory={id => onSelectStory(id)}

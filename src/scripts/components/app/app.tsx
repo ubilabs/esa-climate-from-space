@@ -66,7 +66,7 @@ const TranslatedApp: FunctionComponent = () => {
                 <PresentationSelector />
               </Route>
 
-              <Route path={['/showcase/:storyIds', '/showcase/']} exact>
+              <Route path={['/showcase']} exact>
                 <ShowcaseSelector />
               </Route>
 
@@ -79,7 +79,6 @@ const TranslatedApp: FunctionComponent = () => {
                 render={props => (
                   <Redirect to={`${props.match.url}/0`} />
                 )}></Route>
-              <Redirect to="/" />
             </Switch>
           </div>
           <div className={styles.story}>

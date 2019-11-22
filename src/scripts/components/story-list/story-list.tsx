@@ -11,11 +11,13 @@ import styles from './story-list.styl';
 
 interface Props {
   mode: StoryMode;
+  selectedIds?: string[];
   onSelectStory?: (id: string) => void;
 }
 
 const StoryList: FunctionComponent<Props> = ({
   mode,
+  selectedIds,
   onSelectStory = () => {}
 }) => {
   const stories = useSelector(storyListSelector);
@@ -27,14 +29,23 @@ const StoryList: FunctionComponent<Props> = ({
 
   return (
     <div className={classes}>
-      {stories.map(story => (
-        <StoryListItem
-          key={story.id}
-          story={story}
-          mode={mode}
-          onSelectStory={id => onSelectStory(id)}
-        />
-      ))}
+      {stories.map(story => {
+        let selectedIndex = selectedIds?.indexOf(story.id);
+
+        if (typeof selectedIndex !== 'number') {
+          selectedIndex = -1;
+        }
+
+        return (
+          <StoryListItem
+            key={story.id}
+            story={story}
+            mode={mode}
+            selectedIndex={selectedIndex}
+            onSelectStory={id => onSelectStory(id)}
+          />
+        );
+      })}
     </div>
   );
 };
