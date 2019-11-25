@@ -30,7 +30,7 @@ const StoryPagination: FunctionComponent<Props> = ({
   const isPresenterMode = mode === StoryMode.Present;
   const classes = cx(styles.pagination, isPresenterMode && styles.present);
 
-  const {previous, showPrevious, next, showNext} = useStoryNavigation(
+  const {previousLink, showPrevious, nextLink, showNext} = useStoryNavigation(
     slides,
     currentPage
   );
@@ -39,7 +39,7 @@ const StoryPagination: FunctionComponent<Props> = ({
     <div className={classes}>
       <div className={styles.controls}>
         {showPrevious ? (
-          <Link to={previous} className={styles.icon}>
+          <Link to={previousLink} className={styles.icon}>
             <PreviousIcon />
           </Link>
         ) : (
@@ -51,7 +51,7 @@ const StoryPagination: FunctionComponent<Props> = ({
         </span>
 
         {showNext ? (
-          <Link to={next} className={styles.icon}>
+          <Link to={nextLink} className={styles.icon}>
             <NextIcon />
           </Link>
         ) : (

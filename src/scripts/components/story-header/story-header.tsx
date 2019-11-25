@@ -24,11 +24,11 @@ const StoryHeader: FunctionComponent<Props> = ({storyIds, story, mode}) => {
     Showcase && styles.showcase
   );
 
-  const newPath = storyIds ? `/showcase/${storyIds}` : `/${mode}`;
+  const backLink = storyIds ? `/showcase/${storyIds}` : `/${mode}`;
 
   return (
     <div className={storyClasses}>
-      <Link to={newPath} className={styles.backButton}>
+      <Link to={backLink} className={styles.backButton}>
         <FormattedMessage id="goBack" />
       </Link>
       <div>

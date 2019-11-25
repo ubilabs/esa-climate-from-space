@@ -20,10 +20,7 @@ const ShowcaseSelector: FunctionComponent = () => {
     const newIds = isInList
       ? selectedIds.filter(selectedId => selectedId !== id)
       : selectedIds.concat(id);
-
-    const newIdsString = newIds.join('&');
-
-    history.replace(`/showcase/${newIdsString}`);
+    history.replace(`/showcase/${newIds.join('&')}`);
   };
 
   return (
@@ -35,8 +32,11 @@ const ShowcaseSelector: FunctionComponent = () => {
         <h1 className={styles.title}>
           <FormattedMessage id="showcaseMode" />
         </h1>
-        <div className={styles.play}>
-          <span>{selectedIds.length} stories selected</span>
+        <div className={styles.playButton}>
+          <FormattedMessage
+            id="storiesSelected"
+            values={{numberSelected: selectedIds.length}}
+          />
           <Link to={`/showcase/${selectedIds.join('&')}/0/0`}>
             <PlayIcon />
           </Link>

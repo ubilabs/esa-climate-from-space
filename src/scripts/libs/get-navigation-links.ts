@@ -16,9 +16,9 @@ export const useStoryNavigation = (slides: Slide[], currentPage: number) => {
     .join('/');
 
   return {
-    previous: previousPath,
+    previousLink: previousPath,
     showPrevious: showPreviousButton,
-    next: nextPath,
+    nextLink: nextPath,
     showNext: showNextButton
   };
 };

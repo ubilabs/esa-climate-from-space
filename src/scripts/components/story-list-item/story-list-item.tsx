@@ -23,7 +23,7 @@ const StoryListItemContent: FunctionComponent<Props> = ({
   const classes = cx(
     styles.storyItem,
     mode === StoryMode.Present && styles.present,
-    selectedIndex >= 0 && styles.showcase
+    selectedIndex >= 0 && styles.selected
   );
 
   return (
@@ -32,9 +32,7 @@ const StoryListItemContent: FunctionComponent<Props> = ({
       onClick={() => mode === StoryMode.Showcase && onSelectStory(story.id)}>
       <img src={story.image} className={styles.image} />
       {selectedIndex >= 0 && (
-        <div className={styles.storyNumber}>
-          <span>{selectedIndex + 1}</span>
-        </div>
+        <div className={styles.storyNumber}>{selectedIndex + 1}</div>
       )}
       <p className={styles.title}>{story.title}</p>
       <p className={styles.description}>{story.description}</p>

@@ -20,29 +20,32 @@ interface Props {
   mode: StoryMode;
 }
 
-// eslint-disable-next-line
-const Story: FunctionComponent<Props> = ({mode}) => {
-  const {
-    storyIds: storyIdsString,
-    storyNumber,
-    storyId: storyModeStoryId,
-    page
-  } = useParams();
-  let storyId: string | null = null;
+interface Params {
+  storyId?: string;
+  storyIds?: string;
+  storyNumber?: string;
+  page?: string;
+}
 
+const getStoryId = (params: Params, mode: StoryMode) => {
   if (mode === StoryMode.Showcase) {
-    const storyIds = storyIdsString?.split('&');
-    const storyIndex = parseInt(storyNumber || '0', 10);
-    storyId = (storyIds && storyIds[storyIndex || 0]) || null;
-  } else {
-    storyId = storyModeStoryId || null;
+    const storyIds = params.storyIds?.split('&');
+    const storyIndex = parseInt(params.storyNumber || '0', 10);
+    return (storyIds && storyIds[storyIndex || 0]) || null;
   }
+
+  return params.storyId || null;
+};
+
+const Story: FunctionComponent<Props> = ({mode}) => {
+  const params = useParams<Params>();
+  const storyId = getStoryId(params, mode);
   const story = useSelector((state: State) =>
     selectedStorySelector(state, storyId)
   );
   const stories = useSelector(storyListSelector);
   const dispatch = useDispatch();
-  const pageNumber = parseInt(page || '0', 10);
+  const pageNumber = parseInt(params.page || '0', 10);
   const slide = story?.slides[pageNumber];
   const storyListItem = stories.find(storyItem => storyItem.id === storyId);
   const defaultView = config.globe.view;
@@ -71,7 +74,7 @@ const Story: FunctionComponent<Props> = ({mode}) => {
         <StoryHeader
           story={storyListItem}
           mode={mode}
-          storyIds={storyIdsString}
+          storyIds={params.storyIds}
         />
       )}
 

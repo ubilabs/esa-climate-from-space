@@ -16,5 +16,6 @@
   "info": "Weitere Informationen",
   "closeStory": "Geschichte schließen",
   "removeCompare": "Vergleich entfernen",
-  "dataInfo": "Dateninformation"
+  "dataInfo": "Dateninformation",
+  "storiesSelected": "{numberSelected, number} {numberSelected, plural, one {Geschichte} other {Geschichten}} ausgewählt"
 }
