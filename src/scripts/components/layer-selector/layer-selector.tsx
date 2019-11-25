@@ -1,6 +1,7 @@
 import React, {FunctionComponent, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useIntl} from 'react-intl';
+import {useParams} from 'react-router-dom';
 
 import {layersSelector} from '../../selectors/layers/list';
 import {LayersIcon} from '../icons/layers-icon';
@@ -15,6 +16,7 @@ import styles from './layer-selector.styl';
 const LayerSelector: FunctionComponent = () => {
   const intl = useIntl();
   const layers = useSelector(layersSelector);
+  const {mainLayerId} = useParams();
   const tabs: Tab[] = [
     {
       id: 'main',
@@ -33,11 +35,19 @@ const LayerSelector: FunctionComponent = () => {
   const isMainTabSelected = activeTabId === tabs[0].id;
 
   const onTabClick = (id: string) => {
-    setActiveTabId(id);
-
-    if (!isOpen) {
-      setIsOpen(true);
-      return;
+    if (id === 'main') {
+      setActiveTabId(id);
+      if (!isOpen) {
+        setIsOpen(true);
+        return;
+      }
+    }
+    if (mainLayerId) {
+      setActiveTabId(id);
+      if (!isOpen) {
+        setIsOpen(true);
+        return;
+      }
     }
 
     if (activeTabId === id) {

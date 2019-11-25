@@ -1,4 +1,5 @@
 import React, {FunctionComponent} from 'react';
+import {useParams} from 'react-router-dom';
 import cx from 'classnames';
 
 import styles from './tab.styl';
@@ -17,8 +18,14 @@ const Tab: FunctionComponent<Props> = ({
   onSelectTabId,
   children
 }) => {
+  const {mainLayerId} = useParams();
   const isActive = activeTabId === id;
-  const tabClasses = cx(styles.tab, isActive && styles.tabActive);
+  const tabClasses = cx(
+    styles.tab,
+    isActive && styles.tabActive,
+    !mainLayerId && styles.disabled
+  );
+
   return (
     <button
       title={label}
