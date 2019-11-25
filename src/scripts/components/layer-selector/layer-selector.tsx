@@ -21,12 +21,14 @@ const LayerSelector: FunctionComponent = () => {
     {
       id: 'main',
       label: intl.formatMessage({id: 'layerSelector.main'}),
-      icon: LayersIcon
+      icon: LayersIcon,
+      disabled: false
     },
     {
       id: 'compare',
       label: intl.formatMessage({id: 'layerSelector.compare'}),
-      icon: CompareIcon
+      icon: CompareIcon,
+      disabled: !mainLayerId
     }
   ];
 
@@ -35,21 +37,12 @@ const LayerSelector: FunctionComponent = () => {
   const isMainTabSelected = activeTabId === tabs[0].id;
 
   const onTabClick = (id: string) => {
-    if (id === 'main') {
-      setActiveTabId(id);
-      if (!isOpen) {
-        setIsOpen(true);
-        return;
-      }
-    }
-    if (mainLayerId) {
-      setActiveTabId(id);
-      if (!isOpen) {
-        setIsOpen(true);
-        return;
-      }
-    }
+    setActiveTabId(id);
 
+    if (!isOpen) {
+      setIsOpen(true);
+      return;
+    }
     if (activeTabId === id) {
       setIsOpen(false);
     }
