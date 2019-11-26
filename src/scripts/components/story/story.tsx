@@ -12,6 +12,7 @@ import {State} from '../../reducers';
 import config from '../../config/main';
 import StoryHeader from '../story-header/story-header';
 import {useInterval} from '../../hooks/use-interval';
+import {getStorySlideNavigation} from '../../libs/get-story-slide-navigation';
 import {getStoryNavigation} from '../../libs/get-story-navigation';
 
 import {StoryMode} from '../../types/story-mode';
@@ -44,6 +45,8 @@ const Story: FunctionComponent<Props> = ({mode}) => {
   const {pathname} = useLocation();
   const history = useHistory();
   const storyId = getStoryId(params, mode);
+  const currentStory = parseInt(params.storyNumber || '0', 10);
+  const showcaseMode = mode === StoryMode.Showcase;
   const story = useSelector((state: State) =>
     selectedStorySelector(state, storyId)
   );
@@ -75,25 +78,37 @@ const Story: FunctionComponent<Props> = ({mode}) => {
     [dispatch]
   );
 
-  const navigationData = getStoryNavigation({
+  const navigationData = getStorySlideNavigation({
     pathname,
     pageNumber,
     slides: story?.slides
   });
 
+  const storyPath = getStoryNavigation(
+    pathname,
+    mode,
+    currentStory,
+    params.storyIds
+  );
+
   const showNext = navigationData?.showNext;
   const showPrevious = navigationData?.showPrevious;
   const nextLink = navigationData?.nextLink;
   const previousLink = navigationData?.previousLink;
+  const showNextStory = storyPath?.showNextStory;
+  const nextStoryPath = storyPath?.nextStoryPath;
+  const initialPath = storyPath?.initialPath;
 
   useInterval(() => {
-    if (mode === StoryMode.Showcase) {
+    if (showcaseMode) {
       showNext && history.replace(`${nextLink}`);
+      !showNext && showNextStory && history.replace(`${nextStoryPath}`);
+      !showNextStory && history.replace(`${initialPath}`);
     }
   }, 5000);
 
   // redirect to first slide when current slide does not exist
-  if (story && !slide) {
+  if (story && !slide && !showcaseMode) {
     return <Redirect to={`/${mode}/${storyId}/0`} />;
   }
 

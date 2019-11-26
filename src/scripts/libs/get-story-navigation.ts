@@ -1,4 +1,5 @@
 import {Slide} from '../types/story';
+import {StoryMode} from '../types/story-mode';
 
 interface Params {
   pathname: string;
@@ -6,27 +7,23 @@ interface Params {
   slides?: Slide[];
 }
 
-export const getStoryNavigation = ({pathname, pageNumber, slides}: Params) => {
-  if (!slides) {
-    return null;
+export const getStoryNavigation = (
+  pathname: string,
+  mode: StoryMode,
+  currentStory: number,
+  storyIds?: string
+) => {
+  if (mode === StoryMode.Showcase) {
+    if (!storyIds) {
+      return null;
+    }
+    const stories = storyIds.split('&');
+    const nextStoryNumber = currentStory + 1;
+    const showNextStory = currentStory < stories.length;
+    const nextStoryPath = `/showcase/${storyIds}/${nextStoryNumber}/0`;
+    const initialPath = `/showcase/${storyIds}/0/0`;
+
+    return {nextStoryPath, showNextStory, initialPath};
   }
-
-  const nextPageNumber = pageNumber + 1;
-  const previousPageNumber = pageNumber - 1;
-  const showNextButton = nextPageNumber < slides.length;
-  const showPreviousButton = previousPageNumber >= 0;
-
-  const pathParts = pathname.split('/');
-  pathParts.pop();
-  const nextPath = pathParts.concat(nextPageNumber.toString()).join('/');
-  const previousPath = pathParts
-    .concat(previousPageNumber.toString())
-    .join('/');
-
-  return {
-    previousLink: previousPath,
-    showPrevious: showPreviousButton,
-    nextLink: nextPath,
-    showNext: showNextButton
-  };
+  return null;
 };
