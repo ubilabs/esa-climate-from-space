@@ -9,11 +9,12 @@ import {StoryMode} from '../../types/story-mode';
 import styles from './story-header.styl';
 
 interface Props {
+  storyIds?: string;
   mode: StoryMode;
   story: StoryListItem;
 }
 
-const StoryHeader: FunctionComponent<Props> = ({story, mode}) => {
+const StoryHeader: FunctionComponent<Props> = ({storyIds, story, mode}) => {
   const Present = mode === StoryMode.Present;
   const Showcase = mode === StoryMode.Showcase;
 
@@ -23,9 +24,11 @@ const StoryHeader: FunctionComponent<Props> = ({story, mode}) => {
     Showcase && styles.showcase
   );
 
+  const backLink = storyIds ? `/showcase/${storyIds}` : `/${mode}`;
+
   return (
     <div className={storyClasses}>
-      <Link to={`/${mode}`} className={styles.backButton}>
+      <Link to={backLink} className={styles.backButton}>
         <FormattedMessage id="goBack" />
       </Link>
       <div>

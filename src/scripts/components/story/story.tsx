@@ -20,14 +20,32 @@ interface Props {
   mode: StoryMode;
 }
 
+interface Params {
+  storyId?: string;
+  storyIds?: string;
+  storyNumber?: string;
+  page?: string;
+}
+
+const getStoryId = (params: Params, mode: StoryMode) => {
+  if (mode === StoryMode.Showcase) {
+    const storyIds = params.storyIds?.split('&');
+    const storyIndex = parseInt(params.storyNumber || '0', 10);
+    return (storyIds && storyIds[storyIndex || 0]) || null;
+  }
+
+  return params.storyId || null;
+};
+
 const Story: FunctionComponent<Props> = ({mode}) => {
-  const {storyId, page} = useParams();
+  const params = useParams<Params>();
+  const storyId = getStoryId(params, mode);
   const story = useSelector((state: State) =>
     selectedStorySelector(state, storyId)
   );
   const stories = useSelector(storyListSelector);
   const dispatch = useDispatch();
-  const pageNumber = parseInt(page || '0', 10);
+  const pageNumber = parseInt(params.page || '0', 10);
   const slide = story?.slides[pageNumber];
   const storyListItem = stories.find(storyItem => storyItem.id === storyId);
   const defaultView = config.globe.view;
@@ -60,7 +78,13 @@ const Story: FunctionComponent<Props> = ({mode}) => {
 
   return (
     <div className={styles.story}>
-      {storyListItem && <StoryHeader story={storyListItem} mode={mode} />}
+      {storyListItem && (
+        <StoryHeader
+          story={storyListItem}
+          mode={mode}
+          storyIds={params.storyIds}
+        />
+      )}
 
       {/* Instead of rendering only the currect slide we map over all slides to
         enforce a newly mounted component when the pageNumber changes */}
