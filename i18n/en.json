@@ -16,5 +16,6 @@
   "info": "More Information",
   "closeStory": "Close story",
   "removeCompare": "Remove Compare",
-  "dataInfo": "Data Information"
+  "dataInfo": "Data Information",
+  "storiesSelected": "{numberSelected, number} {numberSelected, plural, one {Story} other {Stories}} selected"
 }
