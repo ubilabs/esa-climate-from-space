@@ -1,6 +1,6 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {useParams, Redirect} from 'react-router-dom';
+import {useParams, Redirect, useLocation, useHistory} from 'react-router-dom';
 
 import StoryPagination from '../story-pagination/story-pagination';
 import fetchStory from '../../actions/fetch-story';
@@ -11,6 +11,8 @@ import Slide from '../slide/slide';
 import {State} from '../../reducers';
 import config from '../../config/main';
 import StoryHeader from '../story-header/story-header';
+import {useInterval} from '../../hooks/use-interval';
+import {getStoryNavigation} from '../../libs/get-story-navigation';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -39,6 +41,8 @@ const getStoryId = (params: Params, mode: StoryMode) => {
 
 const Story: FunctionComponent<Props> = ({mode}) => {
   const params = useParams<Params>();
+  const {pathname} = useLocation();
+  const history = useHistory();
   const storyId = getStoryId(params, mode);
   const story = useSelector((state: State) =>
     selectedStorySelector(state, storyId)
@@ -71,6 +75,23 @@ const Story: FunctionComponent<Props> = ({mode}) => {
     [dispatch]
   );
 
+  const navigationData = getStoryNavigation({
+    pathname,
+    pageNumber,
+    slides: story?.slides
+  });
+
+  const showNext = navigationData?.showNext;
+  const showPrevious = navigationData?.showPrevious;
+  const nextLink = navigationData?.nextLink;
+  const previousLink = navigationData?.previousLink;
+
+  useInterval(() => {
+    if (mode === StoryMode.Showcase) {
+      showNext && history.replace(`${nextLink}`);
+    }
+  }, 5000);
+
   // redirect to first slide when current slide does not exist
   if (story && !slide) {
     return <Redirect to={`/${mode}/${storyId}/0`} />;
@@ -101,6 +122,10 @@ const Story: FunctionComponent<Props> = ({mode}) => {
           storyId={story.id}
           mode={mode}
           slides={story.slides}
+          previousLink={previousLink}
+          showPrevious={showPrevious}
+          nextLink={nextLink}
+          showNext={showNext}
         />
       )}
     </div>
