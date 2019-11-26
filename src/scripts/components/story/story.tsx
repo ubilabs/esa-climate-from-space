@@ -45,6 +45,14 @@ const Story: FunctionComponent<Props> = ({mode}) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, slide]);
 
+  // clean up story fly to on unmount
+  useEffect(
+    () => () => {
+      dispatch(setFlyToAction(null));
+    },
+    [dispatch]
+  );
+
   // redirect to first slide when current slide does not exist
   if (story && !slide) {
     return <Redirect to={`/${mode}/${storyId}/0`} />;
