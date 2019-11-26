@@ -19,6 +19,7 @@ const Tabs: FunctionComponent<Props> = ({tabs, activeTabId, onTabChanged}) => (
         <Tab
           key={tab.id}
           id={tab.id}
+          disabled={tab.disabled}
           label={tab.label}
           activeTabId={activeTabId}
           onSelectTabId={id => onTabChanged(id)}>

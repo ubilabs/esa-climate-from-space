@@ -7,6 +7,7 @@ interface Props {
   id: string;
   label: string;
   activeTabId: string;
+  disabled: boolean;
   onSelectTabId: (id: string) => void;
 }
 
@@ -14,16 +15,22 @@ const Tab: FunctionComponent<Props> = ({
   id,
   label,
   activeTabId,
+  disabled,
   onSelectTabId,
   children
 }) => {
   const isActive = activeTabId === id;
-  const tabClasses = cx(styles.tab, isActive && styles.tabActive);
+  const tabClasses = cx(
+    styles.tab,
+    isActive && styles.tabActive,
+    disabled && styles.disabled
+  );
+
   return (
     <button
       title={label}
       className={tabClasses}
-      onClick={() => onSelectTabId(id)}>
+      onClick={() => !disabled && onSelectTabId(id)}>
       {children}
     </button>
   );

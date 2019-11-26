@@ -1,6 +1,7 @@
 import React, {FunctionComponent, useState} from 'react';
 import {useSelector} from 'react-redux';
 import {useIntl} from 'react-intl';
+import {useParams} from 'react-router-dom';
 
 import {layersSelector} from '../../selectors/layers/list';
 import {LayersIcon} from '../icons/layers-icon';
@@ -15,16 +16,19 @@ import styles from './layer-selector.styl';
 const LayerSelector: FunctionComponent = () => {
   const intl = useIntl();
   const layers = useSelector(layersSelector);
+  const {mainLayerId} = useParams();
   const tabs: Tab[] = [
     {
       id: 'main',
       label: intl.formatMessage({id: 'layerSelector.main'}),
-      icon: LayersIcon
+      icon: LayersIcon,
+      disabled: false
     },
     {
       id: 'compare',
       label: intl.formatMessage({id: 'layerSelector.compare'}),
-      icon: CompareIcon
+      icon: CompareIcon,
+      disabled: !mainLayerId
     }
   ];
 
@@ -39,7 +43,6 @@ const LayerSelector: FunctionComponent = () => {
       setIsOpen(true);
       return;
     }
-
     if (activeTabId === id) {
       setIsOpen(false);
     }
