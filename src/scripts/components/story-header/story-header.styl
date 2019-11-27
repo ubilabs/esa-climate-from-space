@@ -1,6 +1,8 @@
+@require '../../../variables.styl'
+
 .storyHeader
   position: absolute
-  right: 500px
+  right: $storyWidth
   left: 0
   z-index: 1
   display: flex
@@ -16,11 +18,7 @@
   margin: 0
 
 .present
+  justify-content: center
+
   .title
     font-size: 2em
-
-  .subtitle
-    font-size: 1.3em
-
-  .backButton
-    font-size: 1.3em
