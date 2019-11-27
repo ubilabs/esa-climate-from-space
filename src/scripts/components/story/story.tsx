@@ -78,26 +78,26 @@ const Story: FunctionComponent<Props> = ({mode}) => {
     [dispatch]
   );
 
-  const navigationData = getStorySlideNavigation({
+  const slideNavData = getStorySlideNavigation({
     pathname,
     pageNumber,
     slides: story?.slides
   });
 
-  const storyPath = getStoryNavigation(
+  const storyNavData = getStoryNavigation(
     pathname,
     mode,
     currentStory,
     params.storyIds
   );
 
-  const showNext = navigationData?.showNext;
-  const showPrevious = navigationData?.showPrevious;
-  const nextLink = navigationData?.nextLink;
-  const previousLink = navigationData?.previousLink;
-  const showNextStory = storyPath?.showNextStory;
-  const nextStoryPath = storyPath?.nextStoryPath;
-  const initialPath = storyPath?.initialPath;
+  const showNext = slideNavData?.showNext;
+  const showPrevious = slideNavData?.showPrevious;
+  const nextLink = slideNavData?.nextLink;
+  const previousLink = slideNavData?.previousLink;
+  const showNextStory = storyNavData?.showNextStory;
+  const nextStoryPath = storyNavData?.nextStoryPath;
+  const initialPath = storyNavData?.initialPath;
 
   useInterval(() => {
     if (showcaseMode) {
@@ -105,7 +105,7 @@ const Story: FunctionComponent<Props> = ({mode}) => {
       !showNext && showNextStory && history.replace(`${nextStoryPath}`);
       !showNextStory && history.replace(`${initialPath}`);
     }
-  }, 5000);
+  }, 4000);
 
   // redirect to first slide when current slide does not exist
   if (story && !slide && !showcaseMode) {
