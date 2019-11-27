@@ -8,30 +8,24 @@ import {NextIcon} from '../icons/next-icon';
 import {PlayIcon} from '../icons/play-icon';
 import {RemoveIcon} from '../icons/remove-icon';
 
-import {Slide} from '../../types/story';
 import {StoryMode} from '../../types/story-mode';
 
 import styles from './story-pagination.styl';
 
 interface Props {
-  currentPage: number;
-  storyId: string;
   mode: StoryMode;
-  slides: Slide[];
-  previousLink?: string;
-  showPrevious?: boolean;
-  nextLink?: string;
-  showNext?: boolean;
+  slideIndex: number;
+  numberOfSlides: number;
+  previousSlideLink?: string | null;
+  nextSlideLink?: string | null;
 }
 
 const StoryPagination: FunctionComponent<Props> = ({
-  currentPage,
   mode,
-  slides,
-  previousLink,
-  showPrevious,
-  nextLink,
-  showNext
+  slideIndex,
+  numberOfSlides,
+  previousSlideLink,
+  nextSlideLink
 }) => {
   const intl = useIntl();
   const isPresenterMode = mode === StoryMode.Present;
@@ -40,8 +34,8 @@ const StoryPagination: FunctionComponent<Props> = ({
   return (
     <div className={classes}>
       <div className={styles.controls}>
-        {showPrevious && previousLink ? (
-          <Link to={previousLink} className={styles.icon}>
+        {previousSlideLink ? (
+          <Link to={previousSlideLink} className={styles.icon}>
             <PreviousIcon />
           </Link>
         ) : (
@@ -49,11 +43,11 @@ const StoryPagination: FunctionComponent<Props> = ({
         )}
 
         <span>
-          {currentPage + 1}/{slides.length}
+          {slideIndex + 1}/{numberOfSlides}
         </span>
 
-        {showNext && nextLink ? (
-          <Link to={nextLink} className={styles.icon}>
+        {nextSlideLink ? (
+          <Link to={nextSlideLink} className={styles.icon}>
             <NextIcon />
           </Link>
         ) : (
