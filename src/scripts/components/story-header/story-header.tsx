@@ -18,14 +18,12 @@ const StoryHeader: FunctionComponent<Props> = ({storyIds, story, mode}) => {
   const history = useHistory();
   const isPresenterMode = mode === StoryMode.Present;
   const isShowcaseMode = mode === StoryMode.Showcase;
-
+  const backLink = storyIds ? `/showcase/${storyIds}` : `/${mode}`;
   const storyClasses = cx(
     styles.storyHeader,
     isPresenterMode && styles.present,
     isShowcaseMode && styles.showcase
   );
-
-  const backLink = storyIds ? `/showcase/${storyIds}` : `/${mode}`;
 
   const onKeyDownHandler = (event: KeyboardEvent) => {
     if (event.keyCode === 27) {
