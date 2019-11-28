@@ -5,7 +5,6 @@ import cx from 'classnames';
 
 import {PreviousIcon} from '../icons/previous-icon';
 import {NextIcon} from '../icons/next-icon';
-import {PlayIcon} from '../icons/play-icon';
 import {RemoveIcon} from '../icons/remove-icon';
 
 import {StoryMode} from '../../types/story-mode';
@@ -56,7 +55,6 @@ const StoryPagination: FunctionComponent<Props> = ({
 
         {isPresenterMode && (
           <div className={styles.icons}>
-            <PlayIcon />
             <Link
               to={`/${mode}`}
               title={intl.formatMessage({id: 'closeStory'})}>

@@ -28,9 +28,11 @@ const StoryHeader: FunctionComponent<Props> = ({storyIds, story, mode}) => {
 
   return (
     <div className={storyClasses}>
-      <Link to={backLink} className={styles.backButton}>
-        <FormattedMessage id="goBack" />
-      </Link>
+      {!isPresenterMode && (
+        <Link to={backLink} className={styles.backButton}>
+          <FormattedMessage id="goBack" />
+        </Link>
+      )}
       <div>
         <h2 className={styles.title}>{story && story.title}</h2>
         {isShowcaseMode && (
