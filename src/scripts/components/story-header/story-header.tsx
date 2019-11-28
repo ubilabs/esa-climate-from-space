@@ -15,27 +15,27 @@ interface Props {
 }
 
 const StoryHeader: FunctionComponent<Props> = ({storyIds, story, mode}) => {
-  const isPresent = mode === StoryMode.Present;
-  const isShowcase = mode === StoryMode.Showcase;
+  const Present = mode === StoryMode.Present;
+  const Showcase = mode === StoryMode.Showcase;
 
   const storyClasses = cx(
     styles.storyHeader,
-    isPresent && styles.present,
-    isShowcase && styles.showcase
+    Present && styles.present,
+    Showcase && styles.showcase
   );
 
   const backLink = storyIds ? `/showcase/${storyIds}` : `/${mode}`;
 
   return (
     <div className={storyClasses}>
-      {!isPresent && (
+      {!Present && (
         <Link to={backLink} className={styles.backButton}>
           <FormattedMessage id="goBack" />
         </Link>
       )}
       <div>
         <h2 className={styles.title}>{story && story.title}</h2>
-        {isShowcase && (
+        {Showcase && (
           <h3 className={styles.subtitle}>{story && story.description}</h3>
         )}
       </div>
