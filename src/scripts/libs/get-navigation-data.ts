@@ -8,7 +8,7 @@ interface Params {
   storyIds?: string;
   numberOfSlides?: number;
 }
-// eslint-disable-next-line
+
 export const getNavigationData = ({
   mode,
   slideIndex,
@@ -38,10 +38,13 @@ export const getNavigationData = ({
     const stories = storyIds.split('&');
     const nextStoryIndex = storyIndex + 1;
 
+    // go through all slides of one story
     if (slideIndex + 1 < numberOfSlides) {
       autoPlayLink = `/showcase/${storyIds}/${storyIndex}/${nextSlideIndex}`;
+      // when no slides are left, go to first slide of next story
     } else if (nextStoryIndex < stories.length) {
       autoPlayLink = `/showcase/${storyIds}/${nextStoryIndex}/0`;
+      // after the last story, return to the beginning
     } else {
       autoPlayLink = `/showcase/${storyIds}/0/0`;
     }
