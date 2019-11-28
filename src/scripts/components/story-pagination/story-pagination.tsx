@@ -1,5 +1,5 @@
-import React, {FunctionComponent} from 'react';
-import {Link} from 'react-router-dom';
+import React, {FunctionComponent, useEffect, useCallback} from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import {useIntl} from 'react-intl';
 import cx from 'classnames';
 
@@ -26,14 +26,38 @@ const StoryPagination: FunctionComponent<Props> = ({
   previousSlideLink,
   nextSlideLink
 }) => {
+  const history = useHistory();
   const intl = useIntl();
   const isPresenterMode = mode === StoryMode.Present;
+  const isShowcaseMode = mode === StoryMode.Showcase;
   const classes = cx(styles.pagination, isPresenterMode && styles.present);
+
+  const onKeyDownHandler = useCallback(
+    event => {
+      if (!isShowcaseMode) {
+        if (event.keyCode === 37) {
+          previousSlideLink && history.push(previousSlideLink);
+        }
+        if (event.keyCode === 39) {
+          nextSlideLink && history.push(nextSlideLink);
+        }
+      }
+    },
+    [isShowcaseMode, history, previousSlideLink, nextSlideLink]
+  );
+
+  // add and remove event listener for keyboard events
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyDownHandler);
+    return () => {
+      window.removeEventListener('keydown', onKeyDownHandler);
+    };
+  }, [onKeyDownHandler]);
 
   return (
     <div className={classes}>
       <div className={styles.controls}>
-        {previousSlideLink ? (
+        {previousSlideLink && !isShowcaseMode ? (
           <Link to={previousSlideLink} className={styles.icon}>
             <PreviousIcon />
           </Link>
@@ -45,7 +69,7 @@ const StoryPagination: FunctionComponent<Props> = ({
           {slideIndex + 1}/{numberOfSlides}
         </span>
 
-        {nextSlideLink ? (
+        {nextSlideLink && !isShowcaseMode ? (
           <Link to={nextSlideLink} className={styles.icon}>
             <NextIcon />
           </Link>

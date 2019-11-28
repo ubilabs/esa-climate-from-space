@@ -1,6 +1,6 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useEffect} from 'react';
 import {FormattedMessage} from 'react-intl';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import cx from 'classnames';
 
 import {StoryListItem} from '../../types/story-list';
@@ -15,6 +15,7 @@ interface Props {
 }
 
 const StoryHeader: FunctionComponent<Props> = ({storyIds, story, mode}) => {
+  const history = useHistory();
   const isPresenterMode = mode === StoryMode.Present;
   const isShowcaseMode = mode === StoryMode.Showcase;
 
@@ -25,6 +26,21 @@ const StoryHeader: FunctionComponent<Props> = ({storyIds, story, mode}) => {
   );
 
   const backLink = storyIds ? `/showcase/${storyIds}` : `/${mode}`;
+
+  const onKeyDownHandler = (event: KeyboardEvent) => {
+    if (event.keyCode === 27) {
+      history.push(backLink);
+    }
+  };
+
+  // add and remove event listener for keyboard events
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyDownHandler);
+    return () => {
+      window.removeEventListener('keydown', onKeyDownHandler);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className={storyClasses}>
