@@ -3,12 +3,14 @@
   "slides": [
     {
       "text": "# Story title\n\n## Das ist ein subheader\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
+      "shortText": "- Lorem ipsum\n\n- Exercitationem\n\n- sapiente\n\n- Exercitationem\n\n- sapiente",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story2/assets/story2.jpeg"
       ]
     },
     {
       "text": "# Story title\n\n## Das ist ein subheader\n\nExercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
+      "shortText": "- Lorem ipsum\n\n- Exercitationem\n\n- sapiente",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story2/assets/story2.jpeg"
       ]
