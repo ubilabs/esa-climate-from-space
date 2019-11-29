@@ -35,9 +35,11 @@ const StoryPagination: FunctionComponent<Props> = ({
   const onKeyDownHandler = useCallback(
     event => {
       if (!isShowcaseMode) {
+        // 37 - arrow left
         if (event.keyCode === 37) {
           previousSlideLink && history.push(previousSlideLink);
         }
+        // 39 - arrow right
         if (event.keyCode === 39) {
           nextSlideLink && history.push(nextSlideLink);
         }
