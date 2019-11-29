@@ -87,10 +87,23 @@ const Globe: FunctionComponent<Props> = ({
       projection === GlobeProjection.Sphere
         ? Cesium.SceneMode.SCENE3D
         : Cesium.SceneMode.SCENE2D;
+
     const options = {...cesiumOptions, sceneMode};
 
     // create cesium viewer
     const scopedViewer = new Cesium.Viewer(ref.current, options);
+
+    if (scopedViewer.scene.sun) {
+      scopedViewer.scene.sun.show = false;
+    }
+
+    if (scopedViewer.scene.skyBox) {
+      scopedViewer.scene.skyBox.show = false;
+    }
+
+    if (scopedViewer.scene.skyAtmosphere) {
+      scopedViewer.scene.skyAtmosphere.show = false;
+    }
 
     // save viewer reference
     setViewer(scopedViewer);
