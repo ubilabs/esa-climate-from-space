@@ -26,6 +26,7 @@ const StoryHeader: FunctionComponent<Props> = ({storyIds, story, mode}) => {
   );
 
   const onKeyDownHandler = (event: KeyboardEvent) => {
+    // 27 - esc
     if (event.keyCode === 27) {
       history.push(backLink);
     }
