@@ -52,7 +52,7 @@ const Menu: FunctionComponent = () => {
         <MenuIcon />
       </button>
       {isOpen && (
-        <ul className={styles.menuList}>
+        <ul className={styles.menuList} onClick={() => setIsOpen(false)}>
           {menuItems.map(menuItem => {
             const Icon = menuItem.icon;
 

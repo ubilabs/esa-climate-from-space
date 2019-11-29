@@ -13,10 +13,11 @@ const ProjectionMenu: FunctionComponent = () => {
   const intl = useIntl();
   const projections = Object.values(GlobeProjection);
   const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
   const onProjectionClick = (projection: GlobeProjection) => {
+    setIsOpen(false);
     dispatch(setGlobeProjectionAction(projection));
   };
-  const [isOpen, setIsOpen] = useState(false);
   const onButtonClickHandler = () => setIsOpen(!isOpen);
 
   return (
