@@ -97,12 +97,31 @@ const Globe: FunctionComponent<Props> = ({
       scopedViewer.scene.sun.show = false;
     }
 
+    if (scopedViewer.scene.moon) {
+      scopedViewer.scene.moon.show = false;
+    }
+
     if (scopedViewer.scene.skyBox) {
       scopedViewer.scene.skyBox.show = false;
     }
 
     if (scopedViewer.scene.skyAtmosphere) {
       scopedViewer.scene.skyAtmosphere.show = false;
+    }
+
+    if (scopedViewer.scene.backgroundColor) {
+      scopedViewer.scene.backgroundColor = new Cesium.Color(
+        0.12,
+        0.12,
+        0.12,
+        0
+      );
+    }
+
+    // @ts-ignore
+    if (scopedViewer.scene.globe.showGroundAtmosphere) {
+      // @ts-ignore
+      scopedViewer.scene.globe.showGroundAtmosphere = false;
     }
 
     // save viewer reference
