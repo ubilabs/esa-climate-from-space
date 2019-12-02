@@ -11,16 +11,17 @@ import {layerListItemSelector} from '../../selectors/layers/list-item';
 import {globeViewSelector} from '../../selectors/globe/view';
 import {timeSelector} from '../../selectors/globe/time';
 import {projectionSelector} from '../../selectors/globe/projection';
+import {flyToSelector} from '../../selectors/fly-to';
+import {storyLayerSelector} from '../../selectors/story-layer';
 import setGlobeViewAction from '../../actions/set-globe-view';
 import Globe from '../globe/globe';
 import {getLayerTileUrl} from '../../libs/get-layer-tile-url';
-import {flyToSelector} from '../../selectors/fly-to';
 import {State} from '../../reducers';
+import {layerDetailsSelector} from '../../selectors/layers/layer-details';
 
 import {GlobeView} from '../../types/globe-view';
 
 import styles from './globes.styl';
-import {layerDetailsSelector} from '../../selectors/layers/layer-details';
 
 const Globes: FunctionComponent = () => {
   const location = useLocation();
@@ -34,13 +35,15 @@ const Globes: FunctionComponent = () => {
   const dispatch = useDispatch();
   const projection = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
-
+  const storyLayer = useSelector(storyLayerSelector);
   const mainLayerId = match?.params.mainLayerId;
   const main = useSelector((state: State) =>
     layerListItemSelector(state, mainLayerId)
   );
+  const layerId = mainLayerId ? mainLayerId : storyLayer?.id;
+
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, mainLayerId)
+    layerDetailsSelector(state, layerId)
   );
 
   const compareLayerId = match?.params.compareLayerId;
@@ -51,7 +54,12 @@ const Globes: FunctionComponent = () => {
     layerDetailsSelector(state, compareLayerId)
   );
 
-  const time = useSelector(timeSelector);
+  let time = useSelector(timeSelector);
+
+  if (storyLayer) {
+    time = storyLayer.timestamp;
+  }
+
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
   const flyTo = useSelector(flyToSelector);

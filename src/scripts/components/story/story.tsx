@@ -7,6 +7,7 @@ import fetchStory from '../../actions/fetch-story';
 import {selectedStorySelector} from '../../selectors/story/selected';
 import {storyListSelector} from '../../selectors/story/list';
 import setFlyToAction from '../../actions/set-fly-to';
+import setStoryLayerAction from '../../actions/set-story-layer';
 import Slide from '../slide/slide';
 import {State} from '../../reducers';
 import config from '../../config/main';
@@ -69,9 +70,11 @@ const Story: FunctionComponent<Props> = ({mode}) => {
   }, [dispatch, storyId]);
 
   // fly to position given in a slide, if none given set to default
+  // set layer given by story slide
   useEffect(() => {
     if (slide) {
       dispatch(setFlyToAction(slide.flyTo || defaultView));
+      dispatch(setStoryLayerAction(slide.layer || null));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, slide]);
@@ -80,6 +83,7 @@ const Story: FunctionComponent<Props> = ({mode}) => {
   useEffect(
     () => () => {
       dispatch(setFlyToAction(null));
+      dispatch(setStoryLayerAction(null));
     },
     [dispatch]
   );
