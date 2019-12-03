@@ -14,6 +14,7 @@ import config from '../../config/main';
 import StoryHeader from '../story-header/story-header';
 import {getNavigationData} from '../../libs/get-navigation-data';
 import Autoplay from '../autoplay/autoplay';
+import setGlobeTimeAction from '../../actions/set-globe-time';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -75,6 +76,9 @@ const Story: FunctionComponent<Props> = ({mode}) => {
     if (slide) {
       dispatch(setFlyToAction(slide.flyTo || defaultView));
       dispatch(setStoryLayerAction(slide.layer || null));
+      if (slide.layer) {
+        dispatch(setGlobeTimeAction(slide.layer.timestamp));
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, slide]);
@@ -84,6 +88,7 @@ const Story: FunctionComponent<Props> = ({mode}) => {
     () => () => {
       dispatch(setFlyToAction(null));
       dispatch(setStoryLayerAction(null));
+      dispatch(setGlobeTimeAction(0));
     },
     [dispatch]
   );

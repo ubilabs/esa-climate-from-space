@@ -54,11 +54,7 @@ const Globes: FunctionComponent = () => {
     layerDetailsSelector(state, compareLayerId)
   );
 
-  let time = useSelector(timeSelector);
-
-  if (storyLayer) {
-    time = storyLayer.timestamp;
-  }
+  const time = useSelector(timeSelector);
 
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
