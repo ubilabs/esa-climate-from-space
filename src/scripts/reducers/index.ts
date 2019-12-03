@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   stories: storiesReducer,
   globe: globeReducer,
   flyTo: flyToReducer,
-  storyLayer: storyLayerReducer
+  storyLayerId: storyLayerReducer
 });
 
 export default rootReducer;

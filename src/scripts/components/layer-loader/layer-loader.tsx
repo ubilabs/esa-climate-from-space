@@ -17,16 +17,15 @@ const LayerLoader: FunctionComponent = () => {
   const match = matchPath<{mainLayerId?: string; compareLayerId?: string}>(
     location.pathname,
     {
-      path: ['/layers/:mainLayerId?/:compareLayerId?', '/'],
+      path: ['/layers/:mainLayerId?/:compareLayerId?'],
       exact: true
     }
   );
-  const mainLayerId = match?.params.mainLayerId;
+  const storyLayerId = useSelector(storyLayerSelector);
+  const mainLayerId = match?.params.mainLayerId || storyLayerId;
   const compareLayerId = match?.params.compareLayerId;
-  const storyLayer = useSelector(storyLayerSelector);
-  const layerId = mainLayerId ? mainLayerId : storyLayer?.id;
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, layerId)
+    layerDetailsSelector(state, mainLayerId)
   );
   const compareLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, compareLayerId)
@@ -39,8 +38,8 @@ const LayerLoader: FunctionComponent = () => {
 
   // fetch layer if it is selected and not already downloaded
   useEffect(() => {
-    if (layerId && !mainLayerDetails) {
-      dispatch(fetchLayerAction(layerId));
+    if (mainLayerId && !mainLayerDetails) {
+      dispatch(fetchLayerAction(mainLayerId));
     }
 
     if (compareLayerId && !compareLayerDetails) {
@@ -48,7 +47,7 @@ const LayerLoader: FunctionComponent = () => {
     }
   }, [
     dispatch,
-    layerId,
+    mainLayerId,
     mainLayerDetails,
     compareLayerId,
     compareLayerDetails

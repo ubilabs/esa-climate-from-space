@@ -1,17 +1,15 @@
-import {StoryLayer} from '../types/story-layer';
-
 export const SET_STORY_LAYER = 'SET_STORY_LAYER';
 
 export interface SetStoryLayerAction {
   type: typeof SET_STORY_LAYER;
-  storyLayer: StoryLayer | null;
+  storyLayerId: string | null;
 }
 
 const setStoryLayerAction = (
-  storyLayer: StoryLayer | null
+  storyLayerId: string | null
 ): SetStoryLayerAction => ({
   type: SET_STORY_LAYER,
-  storyLayer
+  storyLayerId
 });
 
 export default setStoryLayerAction;

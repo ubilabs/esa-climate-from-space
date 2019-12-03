@@ -75,10 +75,8 @@ const Story: FunctionComponent<Props> = ({mode}) => {
   useEffect(() => {
     if (slide) {
       dispatch(setFlyToAction(slide.flyTo || defaultView));
-      dispatch(setStoryLayerAction(slide.layer || null));
-      if (slide.layer) {
-        dispatch(setGlobeTimeAction(slide.layer.timestamp));
-      }
+      dispatch(setStoryLayerAction(slide.layer?.id || null));
+      dispatch(setGlobeTimeAction(slide.layer?.timestamp || 0));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, slide]);

@@ -35,15 +35,13 @@ const Globes: FunctionComponent = () => {
   const dispatch = useDispatch();
   const projection = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
-  const storyLayer = useSelector(storyLayerSelector);
-  const mainLayerId = match?.params.mainLayerId;
+  const storyLayerId = useSelector(storyLayerSelector);
+  const mainLayerId = match?.params.mainLayerId || storyLayerId;
   const main = useSelector((state: State) =>
     layerListItemSelector(state, mainLayerId)
   );
-  const layerId = mainLayerId ? mainLayerId : storyLayer?.id;
-
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, layerId)
+    layerDetailsSelector(state, mainLayerId)
   );
 
   const compareLayerId = match?.params.compareLayerId;
@@ -55,7 +53,6 @@ const Globes: FunctionComponent = () => {
   );
 
   const time = useSelector(timeSelector);
-
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
   const flyTo = useSelector(flyToSelector);
