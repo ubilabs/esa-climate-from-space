@@ -17,7 +17,7 @@ const LayerLoader: FunctionComponent = () => {
   const match = matchPath<{mainLayerId?: string; compareLayerId?: string}>(
     location.pathname,
     {
-      path: ['/layers/:mainLayerId?/:compareLayerId?'],
+      path: '/layers/:mainLayerId?/:compareLayerId?',
       exact: true
     }
   );
