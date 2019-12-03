@@ -93,8 +93,15 @@ const Globe: FunctionComponent<Props> = ({
     // create cesium viewer
     const scopedViewer = new Cesium.Viewer(ref.current, options);
 
+    const color = new Cesium.Color(0.12, 0.12, 0.12, 1);
+    scopedViewer.scene.backgroundColor = color;
+
     if (scopedViewer.scene.sun) {
       scopedViewer.scene.sun.show = false;
+    }
+
+    if (scopedViewer.scene.moon) {
+      scopedViewer.scene.moon.show = false;
     }
 
     if (scopedViewer.scene.skyBox) {
@@ -103,6 +110,12 @@ const Globe: FunctionComponent<Props> = ({
 
     if (scopedViewer.scene.skyAtmosphere) {
       scopedViewer.scene.skyAtmosphere.show = false;
+    }
+
+    // @ts-ignore
+    if (scopedViewer.scene.globe.showGroundAtmosphere) {
+      // @ts-ignore
+      scopedViewer.scene.globe.showGroundAtmosphere = false;
     }
 
     // save viewer reference
