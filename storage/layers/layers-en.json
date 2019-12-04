@@ -27,8 +27,8 @@
     "subLayers": []
   },
   {
-    "id": "layer3",
-    "name": "Layer 3",
+    "id": "analysed_sst",
+    "name": "Analysed SST",
     "description": "This is the third layer",
     "link": "http://...",
     "subLayers": []

@@ -15,14 +15,16 @@ export function getLayerTileUrl(
     return null;
   }
 
-  const layerTime = getLayerTime(time, layer.timestamps);
-  const date = new Date(layerTime);
-  const name = date
-    .toISOString()
-    .substr(0, 10)
-    .replace(/-/g, '');
+  const timeIndex = getLayerTime(time, layer.timestamps).toString();
+  const imageBaseUrl =
+    layer.type === 'tiles'
+      ? config.api.layerTiles
+      : config.api.layerSingleImage;
 
-  return replaceUrlPlaceholders(config.api.layerTiles, {id: layer.id, name});
+  return replaceUrlPlaceholders(imageBaseUrl, {
+    id: layer.id,
+    timeIndex
+  });
 }
 
 /**
@@ -30,17 +32,16 @@ export function getLayerTileUrl(
  * based on the current global time
  */
 function getLayerTime(sliderTime: number, timestamps: string[]): number {
-  const lastTimestamp = timestamps[timestamps.length - 1];
-  let time = Number(new Date(lastTimestamp));
+  let index = timestamps.length - 1;
 
   for (let i = timestamps.length - 1; i > 0; i--) {
     const layerTime = Number(new Date(timestamps[i]));
 
     if (sliderTime > layerTime) {
-      time = layerTime;
+      index = i;
       break;
     }
   }
 
-  return time;
+  return index;
 }

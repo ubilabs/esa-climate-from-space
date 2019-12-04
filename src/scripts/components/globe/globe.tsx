@@ -182,7 +182,11 @@ const Globe: FunctionComponent<Props> = ({
     const oldLayer = layers.length > 1 && layers.get(1);
 
     if (url) {
-      const imageProvider = new Cesium.SingleTileImageryProvider({url});
+      const imageProvider = window.Cesium.createTileMapServiceImageryProvider({
+        url
+      });
+      // @ts-ignore
+      window.imageryProvider = imageProvider;
       imageProvider.readyPromise.then(() => {
         viewer.scene.imageryLayers.addImageryProvider(imageProvider);
         // remove and destroy old layer if exists
