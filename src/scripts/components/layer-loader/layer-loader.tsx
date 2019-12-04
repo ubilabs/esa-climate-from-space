@@ -1,18 +1,29 @@
 import {FunctionComponent, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {useParams} from 'react-router';
+import {matchPath, useLocation} from 'react-router';
 
 import fetchLayers from '../../actions/fetch-layers';
 import fetchLayerAction from '../../actions/fetch-layer';
 import {State} from '../../reducers';
 import {layerDetailsSelector} from '../../selectors/layers/layer-details';
+import {storyLayerSelector} from '../../selectors/story-layer';
 
 /**
  * Handles loading of layer list and layer details data
  */
 const LayerLoader: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const {mainLayerId, compareLayerId} = useParams();
+  const location = useLocation();
+  const match = matchPath<{mainLayerId?: string; compareLayerId?: string}>(
+    location.pathname,
+    {
+      path: '/layers/:mainLayerId?/:compareLayerId?',
+      exact: true
+    }
+  );
+  const storyLayerId = useSelector(storyLayerSelector);
+  const mainLayerId = match?.params.mainLayerId || storyLayerId;
+  const compareLayerId = match?.params.compareLayerId;
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainLayerId)
   );

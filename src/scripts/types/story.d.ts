@@ -1,4 +1,5 @@
 import {GlobeView} from './globe-view';
+import {StoryLayer} from './story-layer';
 
 export interface Story {
   id: string;
@@ -10,6 +11,7 @@ export interface Slide {
   shortText?: string;
   images?: [];
   videoId?: string;
-  flyTo: GlobeView;
+  layer?: StoryLayer;
   fullscreenGallery?: boolean;
+  flyTo: GlobeView;
 }

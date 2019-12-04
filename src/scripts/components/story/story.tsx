@@ -7,12 +7,14 @@ import fetchStory from '../../actions/fetch-story';
 import {selectedStorySelector} from '../../selectors/story/selected';
 import {storyListSelector} from '../../selectors/story/list';
 import setFlyToAction from '../../actions/set-fly-to';
+import setStoryLayerAction from '../../actions/set-story-layer';
 import Slide from '../slide/slide';
 import {State} from '../../reducers';
 import config from '../../config/main';
 import StoryHeader from '../story-header/story-header';
 import {getNavigationData} from '../../libs/get-navigation-data';
 import Autoplay from '../autoplay/autoplay';
+import setGlobeTimeAction from '../../actions/set-globe-time';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -69,9 +71,12 @@ const Story: FunctionComponent<Props> = ({mode}) => {
   }, [dispatch, storyId]);
 
   // fly to position given in a slide, if none given set to default
+  // set layer given by story slide
   useEffect(() => {
     if (slide) {
       dispatch(setFlyToAction(slide.flyTo || defaultView));
+      dispatch(setStoryLayerAction(slide.layer?.id || null));
+      dispatch(setGlobeTimeAction(slide.layer?.timestamp || 0));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, slide]);
@@ -80,6 +85,8 @@ const Story: FunctionComponent<Props> = ({mode}) => {
   useEffect(
     () => () => {
       dispatch(setFlyToAction(null));
+      dispatch(setStoryLayerAction(null));
+      dispatch(setGlobeTimeAction(0));
     },
     [dispatch]
   );

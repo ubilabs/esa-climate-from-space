@@ -6,7 +6,11 @@
       "shortText": "- Lorem ipsum\n\n- Exercitationem\n\n- sapiente",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story3/assets/story3.jpeg"
-      ]
+      ],
+      "layer": {
+        "id": "sst",
+        "timestamp": "2008-01-03"
+      }
     },
     {
       "text": "# Story title\n\n## This is a subheader\n\nExercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",

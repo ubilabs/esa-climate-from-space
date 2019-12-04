@@ -59,7 +59,6 @@ const TranslatedApp: FunctionComponent = () => {
                   <ProjectionMenu />
                   <LayerSelector />
                 </div>
-                <LayerLoader />
               </Route>
 
               <Route path="/present" exact>
@@ -96,6 +95,7 @@ const TranslatedApp: FunctionComponent = () => {
         </div>
       </IntlProvider>
       <UrlSync />
+      <LayerLoader />
       <Init />
     </Router>
   );
