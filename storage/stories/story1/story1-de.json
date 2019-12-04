@@ -55,7 +55,7 @@
     {
       "text": "# CCI Temperatur der Meeresoberfläche\n\nIt is likely that the upper ocean has been warming since the middle of the nineteenth century, and scientists have been able to measure the warming of the ocean surface from space since the 1970s. The CCI SST team has harmonised data across many generations of the two types of sensor on sixteen satellites, combining the highly accurate, stable and well-calibrated ATSR measurements with the greater coverage of AVHRR. The result is a complete, daily, stable, low-bias SST data set spanning twenty years. The use of ATSR makes this dataset independent of in situ observations, and more accurate and stable than previous SST products. CCI SST is a door-opener for climate scientists, who can now rely on high quality data that is harmonised between different satellite systems over several decades. The team’s next step is to include an additional 15 years of measurements, extending the data sequence to 35 years.\n\n![Sea Surface Temperature](https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/sst_large_10.jpg 'Sea Surface Temperature')\n\nSea surface temperature is measured using two wavelengths in the thermal infrared part of the electromagnetic spectrum.",
       "shortText": "# Temperatur der Meeresoberfläche\n\nThe CCI SST team has harmonised data across many generations of the two types of sensor on sixteen satellites, combining the highly accurate, stable and well-calibrated ATSR measurements with the greater coverage of AVHRR.",
-      "videoId": "EcXlJtQ-zi8&t"
+      "videoId": "EcXlJtQ-zi8"
     }
   ]
 }
