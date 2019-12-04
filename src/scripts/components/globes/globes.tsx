@@ -43,7 +43,6 @@ const Globes: FunctionComponent = () => {
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainLayerId)
   );
-
   const compareLayerId = match?.params.compareLayerId;
   const compare = useSelector((state: State) =>
     layerListItemSelector(state, compareLayerId)
