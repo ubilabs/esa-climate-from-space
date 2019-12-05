@@ -26,7 +26,7 @@ const Slide: FunctionComponent<Props> = ({mode, slide}) => {
 
   return (
     <div className={slideClasses}>
-      {(slide.images && (
+      {(slide.images?.length && (
         <StoryGallery
           images={slide.images}
           fullscreenGallery={slide.fullscreenGallery}
@@ -43,6 +43,8 @@ const Slide: FunctionComponent<Props> = ({mode, slide}) => {
             'break',
             'strong',
             'emphasis',
+            'image',
+            'imageReference',
             'list',
             'listItem'
           ]}
