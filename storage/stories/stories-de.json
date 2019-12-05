@@ -1,9 +1,9 @@
 [
   {
     "id": "story1",
-    "title": "Geschichte 1",
-    "description": "Das ist Geschichte 1",
-    "image": "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
+    "title": "Planetarer Wärmespeicher",
+    "description": "",
+    "image": "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/sst_large_18.jpg"
   },
   {
     "id": "story2",

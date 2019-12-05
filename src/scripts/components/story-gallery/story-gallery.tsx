@@ -55,10 +55,10 @@ const StoryGallery: FunctionComponent<Props> = ({
     <div className={lightboxClasses}>
       <div className={galleryClasses}>
         <div className={styles.buttonContainer}>
-          <div onClick={onPrevClick}>
+          <div onClick={onPrevClick} className={styles.navIcon}>
             {showPrevButton ? <PreviousIcon /> : null}
           </div>
-          <div onClick={onNextClick}>
+          <div onClick={onNextClick} className={styles.navIcon}>
             {showNextButton ? <NextIcon /> : null}
           </div>
         </div>
