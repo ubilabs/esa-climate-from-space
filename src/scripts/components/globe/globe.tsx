@@ -48,6 +48,7 @@ interface Props {
   active: boolean;
   layer: LayerListItem | null;
   isMain?: boolean;
+  layerType?: string;
   view: GlobeView;
   projection: GlobeProjection;
   imageUrl: string | null;
@@ -63,6 +64,7 @@ const Globe: FunctionComponent<Props> = ({
   imageUrl,
   active,
   layer,
+  layerType,
   isMain,
   flyTo,
   onMouseEnter,
@@ -180,11 +182,13 @@ const Globe: FunctionComponent<Props> = ({
     const url = imageUrl;
     const layers = viewer.scene.imageryLayers;
     const oldLayer = layers.length > 1 && layers.get(1);
-
     if (url) {
-      const imageProvider = window.Cesium.createTileMapServiceImageryProvider({
-        url
-      });
+      const imageProvider =
+        layerType === 'tiles'
+          ? window.Cesium.createTileMapServiceImageryProvider({
+              url
+            })
+          : new Cesium.SingleTileImageryProvider({url});
       // @ts-ignore
       window.imageryProvider = imageProvider;
       imageProvider.readyPromise.then(() => {
@@ -198,7 +202,7 @@ const Globe: FunctionComponent<Props> = ({
       // remove old layer when no image should be shown anymore
       layers.remove(oldLayer, true);
     }
-  }, [viewer, imageUrl]);
+  }, [layerType, viewer, imageUrl]);
 
   // fly to location
   useEffect(() => {

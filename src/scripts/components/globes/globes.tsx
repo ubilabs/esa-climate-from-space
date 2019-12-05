@@ -80,6 +80,7 @@ const Globes: FunctionComponent = () => {
         layer={main}
         active={isMainActive}
         isMain
+        layerType={mainLayerDetails?.type}
         view={currentView}
         projection={projection}
         imageUrl={mainImageUrl}
@@ -93,6 +94,7 @@ const Globes: FunctionComponent = () => {
         <Globe
           layer={compare}
           active={!isMainActive}
+          layerType={compareLayerDetails?.type}
           view={currentView}
           projection={projection}
           imageUrl={compareImageUrl}
