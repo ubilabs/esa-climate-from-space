@@ -185,14 +185,27 @@ const Globe: FunctionComponent<Props> = ({
     if (url) {
       const imageProvider =
         layerType === 'tiles'
-          ? window.Cesium.createTileMapServiceImageryProvider({
-              url
+          ? new Cesium.UrlTemplateImageryProvider({
+              url,
+              tilingScheme: new Cesium.GeographicTilingScheme(),
+              minimumLevel: 0,
+              maximumLevel: 3,
+              tileWidth: 270,
+              tileHeight: 270
             })
           : new Cesium.SingleTileImageryProvider({url});
-      // @ts-ignore
-      window.imageryProvider = imageProvider;
+
       imageProvider.readyPromise.then(() => {
-        viewer.scene.imageryLayers.addImageryProvider(imageProvider);
+        const newLayer = viewer.scene.imageryLayers.addImageryProvider(
+          imageProvider
+        );
+        // @ts-ignore
+        newLayer.minificationFilter = Cesium.TextureMinificationFilter.NEAREST;
+        // @ts-ignore
+        newLayer.magnificationFilter =
+          // @ts-ignore
+          Cesium.TextureMagnificationFilter.NEAREST;
+
         // remove and destroy old layer if exists
         // we do not clean it up in the useEffect clean function because we want
         // to wait until the new layer is ready to prevent flickering
