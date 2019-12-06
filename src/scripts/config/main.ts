@@ -6,12 +6,12 @@ const globeState: GlobeState = {
   projection: GlobeProjection.Sphere,
   view: {
     position: {
-      height: 14484862,
-      latitude: 0.659017,
-      longitude: 0.002816
+      height: 25003000,
+      latitude: 21.5,
+      longitude: -0.32
     },
     orientation: {
-      heading: 0,
+      heading: 360,
       pitch: -90,
       roll: 0
     }
@@ -25,7 +25,7 @@ export default {
     layer:
       'https://storage.googleapis.com/esa-cfs-storage/layers/{id}/metadata.json',
     layerTiles:
-      'https://storage.googleapis.com/esa-cfs-tiles/test/{id}/{timeIndex}',
+      'https://storage.googleapis.com/esa-cfs-tiles/test/{id}/{timeIndex}/{z}/{y}/{x}.png',
     layerSingleImage:
       'https://storage.googleapis.com/esa-cfs-tiles/test/{id}/{timeIndex}.jpg',
     stories:
