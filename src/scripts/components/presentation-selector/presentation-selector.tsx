@@ -1,16 +1,22 @@
 import React, {FunctionComponent} from 'react';
 import {Link} from 'react-router-dom';
+import {FormattedMessage} from 'react-intl';
 
-import styles from './presentation-selector.styl';
 import StoryList from '../story-list/story-list';
 
-const PresentationSelector: FunctionComponent<{}> = () => (
+import {StoryMode} from '../../types/story-mode';
+
+import styles from './presentation-selector.styl';
+
+const PresentationSelector: FunctionComponent = () => (
   <div className={styles.presentationSelector}>
     <Link to="/" className={styles.backButton}>
-      Go back
+      <FormattedMessage id="goBack" />
     </Link>
-    <h1 className={styles.title}>Presenter Mode</h1>
-    <StoryList />
+    <h1 className={styles.title}>
+      <FormattedMessage id="presenterMode" />
+    </h1>
+    <StoryList mode={StoryMode.Present} />
   </div>
 );
 

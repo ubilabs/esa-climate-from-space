@@ -1,17 +1,19 @@
 import {combineReducers} from 'redux';
 
 import languageReducer from './language';
-import layersReducer from './layers';
-import storiesReducer from './stories';
-import selectedLayersReducer from './selected-layers';
-import projectionReducer from './projection';
+import layersReducer from './layers/index';
+import storiesReducer from './story/index';
+import globeReducer from './globe';
+import flyToReducer from './fly-to';
+import storyLayerReducer from './story-layer';
 
 const rootReducer = combineReducers({
   language: languageReducer,
   layers: layersReducer,
   stories: storiesReducer,
-  selectedLayers: selectedLayersReducer,
-  projection: projectionReducer
+  globe: globeReducer,
+  flyTo: flyToReducer,
+  storyLayerId: storyLayerReducer
 });
 
 export default rootReducer;

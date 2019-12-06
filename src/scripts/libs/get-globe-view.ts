@@ -1,46 +1,64 @@
 import 'cesium/Build/Cesium/Cesium';
-import {View} from '../components/globes/globes';
 
-interface CesiumView {
-  destination: Cesium.Cartesian3;
-  orientation: {
-    heading: number;
-    pitch: number;
-    roll: number;
-  };
-}
+import {radToDeg, degToRad} from './math-helpers';
 
-export function cesiumViewToPlainView(cesiumView: CesiumView): View {
-  const {destination} = cesiumView;
+import {GlobeView} from '../types/globe-view';
 
-  return {
-    ...cesiumView,
-    destination: [destination.x, destination.y, destination.z]
-  };
-}
+const Cesium = window.Cesium;
 
-export function plainViewToCesiumView(plainView: View): CesiumView {
-  const {destination} = plainView;
-
-  return {
-    ...plainView,
-    destination: window.Cesium.Cartesian3.fromArray(destination)
-  };
-}
-
-// get the position and camera distance from a cesium viewer
-export default function getGlobeView(viewer: Cesium.Viewer): View {
-  const camera = viewer.scene.camera;
-  const destination = camera.positionWC;
-
+// set the camera according to the given globe view (lng, lat in radians)
+export function setGlobeView(viewer: Cesium.Viewer, view: GlobeView): void {
+  const {position, orientation} = view;
   const cesiumView = {
-    destination,
+    destination: Cesium.Cartesian3.fromDegrees(
+      position.longitude,
+      position.latitude,
+      position.height
+    ),
     orientation: {
-      heading: camera.heading,
-      pitch: camera.pitch,
-      roll: camera.roll
+      heading: degToRad(orientation.heading),
+      pitch: degToRad(orientation.pitch),
+      roll: degToRad(orientation.roll)
     }
   };
 
-  return cesiumViewToPlainView(cesiumView);
+  viewer.scene.camera.setView(cesiumView);
+}
+
+// set the camera according to the given globe view (lng, lat in degrees)
+export function flyToGlobeView(viewer: Cesium.Viewer, view: GlobeView): void {
+  const {position, orientation} = view;
+  const cesiumView = {
+    destination: Cesium.Cartesian3.fromDegrees(
+      position.longitude,
+      position.latitude,
+      position.height
+    ),
+    orientation: {
+      heading: degToRad(orientation.heading),
+      pitch: degToRad(orientation.pitch),
+      roll: degToRad(orientation.roll)
+    }
+  };
+
+  viewer.scene.camera.flyTo(cesiumView);
+}
+
+// get the globe view from the current cesium camera
+export function getGlobeView(viewer: Cesium.Viewer): GlobeView {
+  const camera = viewer.scene.camera;
+  const position = camera.positionCartographic;
+
+  return {
+    position: {
+      longitude: radToDeg(position.longitude),
+      latitude: radToDeg(position.latitude),
+      height: position.height
+    },
+    orientation: {
+      heading: radToDeg(camera.heading),
+      pitch: radToDeg(camera.pitch),
+      roll: radToDeg(camera.roll)
+    }
+  };
 }

@@ -1,27 +1,37 @@
-export default {
-  api: {
-    layers: 'https://storage.googleapis.com/esa-cfs-storage/layers',
-    stories: 'https://storage.googleapis.com/esa-cfs-storage/stories'
-  },
-  globe: {
-    view: {
-      destination: [18888448, 279066, 15407835],
-      orientation: {
-        heading: 6.2,
-        pitch: -1.59,
-        roll: 0
-      }
+import {GlobeState} from '../reducers/globe/index';
+import {GlobeProjection} from '../types/globe-projection';
+
+const globeState: GlobeState = {
+  time: 0,
+  projection: GlobeProjection.Sphere,
+  view: {
+    position: {
+      height: 25003000,
+      latitude: 21.5,
+      longitude: -0.32
     },
-    options: {
-      homeButton: false,
-      fullscreenButton: false,
-      sceneModePicker: false,
-      infoBox: false,
-      geocoder: false,
-      navigationHelpButton: false,
-      animation: false,
-      timeline: false,
-      baseLayerPicker: false
+    orientation: {
+      heading: 360,
+      pitch: -90,
+      roll: 0
     }
   }
+};
+
+export default {
+  api: {
+    layers:
+      'https://storage.googleapis.com/esa-cfs-storage/layers/layers-{lang}.json',
+    layer:
+      'https://storage.googleapis.com/esa-cfs-storage/layers/{id}/metadata.json',
+    layerTiles:
+      'https://storage.googleapis.com/esa-cfs-tiles/test/{id}/{timeIndex}/{z}/{y}/{x}.png',
+    layerSingleImage:
+      'https://storage.googleapis.com/esa-cfs-tiles/test/{id}/{timeIndex}.jpg',
+    stories:
+      'https://storage.googleapis.com/esa-cfs-storage/stories/stories-{lang}.json',
+    story:
+      'https://storage.googleapis.com/esa-cfs-storage/stories/{id}/{id}-{lang}.json'
+  },
+  globe: globeState
 };

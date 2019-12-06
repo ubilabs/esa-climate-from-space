@@ -1,29 +1,51 @@
-import React, {FunctionComponent, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, {FunctionComponent} from 'react';
+import {useSelector} from 'react-redux';
+import cx from 'classnames';
 
-import {storiesSelector} from '../../reducers/stories';
-import fetchStories from '../../actions/fetch-stories';
+import {storyListSelector} from '../../selectors/story/list';
+import StoryListItem from '../story-list-item/story-list-item';
+
+import {StoryMode} from '../../types/story-mode';
+
 import styles from './story-list.styl';
-import StoryItem from '../story-item/story-item';
 
-interface Story {
-  id: string;
-  title: string;
+interface Props {
+  mode: StoryMode;
+  selectedIds?: string[];
+  onSelectStory?: (id: string) => void;
 }
 
-const StoryList: FunctionComponent<{}> = () => {
-  const stories = useSelector(storiesSelector);
-  const dispatch = useDispatch();
+const StoryList: FunctionComponent<Props> = ({
+  mode,
+  selectedIds,
+  onSelectStory = () => {}
+}) => {
+  const stories = useSelector(storyListSelector);
 
-  useEffect(() => {
-    dispatch(fetchStories());
-  }, []);
+  const classes = cx(
+    styles.storyList,
+    mode === StoryMode.Present && styles.present
+  );
 
   return (
-    <div className={styles.storyList}>
-      {stories.map(story => (
-        <StoryItem key={story.id} story={story} />
-      ))}
+    <div className={classes}>
+      {stories.map(story => {
+        let selectedIndex = selectedIds?.indexOf(story.id);
+
+        if (typeof selectedIndex !== 'number') {
+          selectedIndex = -1;
+        }
+
+        return (
+          <StoryListItem
+            key={story.id}
+            story={story}
+            mode={mode}
+            selectedIndex={selectedIndex}
+            onSelectStory={id => onSelectStory(id)}
+          />
+        );
+      })}
     </div>
   );
 };

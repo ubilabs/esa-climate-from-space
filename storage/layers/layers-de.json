@@ -1,0 +1,183 @@
+[
+  {
+    "id": "layer1",
+    "name": "Layer 1 DE",
+    "description": "Das ist der erste Layer",
+    "link": "http://...",
+    "subLayers": [
+      {
+        "id": "layer1a",
+        "name": "Layer 1a DE",
+        "description": "Das ist der erste SubLayer",
+        "link": "http://..."
+      },
+      {
+        "name": "SST De",
+        "id": "sst",
+        "description": "Das ist der zweite SubLayer",
+        "link": "http://..."
+      }
+    ]
+  },
+  {
+    "id": "clouds",
+    "name": "Wolken Konzentration",
+    "description": "Das ist der zweite SubLayer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "analysed_sst",
+    "name": "Analysierte SST",
+    "description": "Das ist der dritte Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "aerosol",
+    "name": "Aerosol",
+    "description": "Das ist der Aerosol Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "ais",
+    "name": "Antarktische Eisdecke",
+    "description": "Das ist der Antarctic Ice Sheet Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "biomass",
+    "name": "Biomasse",
+    "description": "Das ist der dritte Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "fire",
+    "name": "Feuer",
+    "description": "Das ist der Fire Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "glaciers",
+    "name": "Gletscher",
+    "description": "Das ist der Glaciers Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "greenhouseGases",
+    "name": "Treibhausgase",
+    "description": " Das ist der Greenhouse Gases Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "gis",
+    "name": "Grönland Eisdecke",
+    "description": "Das ist der Greenland Ice Sheet Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "hrl",
+    "name": "HR Landabdeckung",
+    "description": "Das ist der Greenhouse Gases Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "lakes",
+    "name": "Seen",
+    "description": "Das ist der Lakes Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "landCover",
+    "name": "Landabdeckung",
+    "description": "Das ist der Land Cover Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "lst",
+    "name": "Temperatur der Landoberfläche",
+    "description": "Das ist der Land Surface Temperature Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "oceanColour",
+    "name": "Ozeanfarbe",
+    "description": "Das ist der Ocean Colour Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "ozone",
+    "name": "Ozon",
+    "description": "Das ist der Ozone Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "permafrost",
+    "name": "Permafrost",
+    "description": "Das ist der Permafrost Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "seaIce",
+    "name": "Meereis",
+    "description": "Das ist der Sea Ice Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "seaLevel",
+    "name": "Meeresspiegel",
+    "description": "Das ist der Sea Level Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "seaState",
+    "name": "Seegang",
+    "description": "Das ist der Sea State Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "seaSurfaceSalinity",
+    "name": "Salzgehalt der Meeresoberfläche",
+    "description": "Das ist der Sea Surface Salinity Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "snow",
+    "name": "Schnee",
+    "description": "Das ist der Snow Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "soilMoisture",
+    "name": "Bodenfeuchtigkeit",
+    "description": "Das ist der Soil Moisture Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "waterVapour",
+    "name": "Wasserdampf",
+    "description": "Das ist der Water Vapour Layer",
+    "link": "http://...",
+    "subLayers": []
+  }
+]

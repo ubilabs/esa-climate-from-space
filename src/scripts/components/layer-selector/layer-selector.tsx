@@ -1,35 +1,40 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, {FunctionComponent, useState} from 'react';
+import {useSelector} from 'react-redux';
 import {useIntl} from 'react-intl';
+import {useParams} from 'react-router-dom';
 
-import {layersSelector} from '../../reducers/layers';
-import {selectedLayersSelector} from '../../reducers/selected-layers';
-import fetchLayers from '../../actions/fetch-layers';
-import {setSelectedLayerIdAction} from '../../actions/set-selected-layer';
+import {layersSelector} from '../../selectors/layers/list';
+import {LayersIcon} from '../icons/layers-icon';
+import {CompareIcon} from '../icons/compare-icon';
 import LayerList from '../layer-list/layer-list';
 import Tabs from '../tabs/tabs';
+
+import {Tab} from '../../types/tab';
+
 import styles from './layer-selector.styl';
 
-const LayerSelector: FunctionComponent<{}> = () => {
+const LayerSelector: FunctionComponent = () => {
   const intl = useIntl();
   const layers = useSelector(layersSelector);
-  const layerIds = useSelector(selectedLayersSelector);
-  const dispatch = useDispatch();
-  const tabs = [
+  const {mainLayerId} = useParams();
+  const tabs: Tab[] = [
     {
       id: 'main',
-      label: intl.formatMessage({id: 'layerSelector.main'})
+      label: intl.formatMessage({id: 'layerSelector.main'}),
+      icon: LayersIcon,
+      disabled: false
     },
     {
       id: 'compare',
-      label: intl.formatMessage({id: 'layerSelector.compare'})
+      label: intl.formatMessage({id: 'layerSelector.compare'}),
+      icon: CompareIcon,
+      disabled: !mainLayerId
     }
   ];
 
   const [activeTabId, setActiveTabId] = useState(tabs[0].id);
   const [isOpen, setIsOpen] = useState(false);
   const isMainTabSelected = activeTabId === tabs[0].id;
-  const selectedLayer = isMainTabSelected ? layerIds.main : layerIds.compare;
 
   const onTabClick = (id: string) => {
     setActiveTabId(id);
@@ -38,20 +43,10 @@ const LayerSelector: FunctionComponent<{}> = () => {
       setIsOpen(true);
       return;
     }
-
     if (activeTabId === id) {
       setIsOpen(false);
     }
   };
-
-  const onLayerClick = (id: string) => {
-    const newId = selectedLayer === id ? null : id;
-    dispatch(setSelectedLayerIdAction(newId, isMainTabSelected));
-  };
-
-  useEffect(() => {
-    dispatch(fetchLayers());
-  }, []);
 
   return (
     <div className={styles.layerContainer}>
@@ -60,13 +55,7 @@ const LayerSelector: FunctionComponent<{}> = () => {
         activeTabId={activeTabId}
         onTabChanged={id => onTabClick(id)}
       />
-      {isOpen && (
-        <LayerList
-          layers={layers}
-          selected={selectedLayer}
-          onSelect={id => onLayerClick(id)}
-        />
-      )}
+      {isOpen && <LayerList isMain={isMainTabSelected} layers={layers} />}
     </div>
   );
 };

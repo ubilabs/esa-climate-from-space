@@ -1,0 +1,176 @@
+[
+  {
+    "id": "layer1",
+    "name": "Layer 1 EN",
+    "description": "This is the first Layer",
+    "link": "http://...",
+    "subLayers": [
+      {
+        "id": "layer1a",
+        "name": "Layer 1a EN",
+        "description": "This is the first SubLayer",
+        "link": "http://..."
+      },
+      {
+        "name": "SST",
+        "id": "sst",
+        "description": "This is the second SubLayer",
+        "link": "http://..."
+      }
+    ]
+  },
+  {
+    "id": "clouds",
+    "name": "Cloud Concentration",
+    "description": "This is the second SubLayer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "analysed_sst",
+    "name": "Analysed SST",
+    "description": "This is the third Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "aerosol",
+    "name": "Aerosol",
+    "description": "This is the Aerosol Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "ais",
+    "name": "Antarctic Ice Sheet",
+    "description": "This is the Antarctic Ice Sheet Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "biomass",
+    "name": "Biomass",
+    "description": "This is the dritte Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "fire",
+    "name": "Fire",
+    "description": "This is the Fire Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "greenhouseGases",
+    "name": "Greenhouse Gases",
+    "description": "This is the Greenhouse Gases Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "gis",
+    "name": "Greenland Ice Sheet",
+    "description": "This is the Greenland Ice Sheet Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "hrl",
+    "name": "HR Landcover",
+    "description": "This is the Greenhouse Gases Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "lakes",
+    "name": "Lakes",
+    "description": "This is the Lakes Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "landCover",
+    "name": "Land Cover",
+    "description": "This is the Land Cover Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "lst",
+    "name": "Land Surface Temperature",
+    "description": "This is the Land Surface Temperature Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "oceanColour",
+    "name": "Ocean Colour",
+    "description": "This is the Ocean Colour Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "ozone",
+    "name": "Ozone",
+    "description": "This is the Ozone Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "permafrost",
+    "name": "Permafrost",
+    "description": "This is the Permafrost Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "seaIce",
+    "name": "Sea Ice",
+    "description": "This is the Sea Ice Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "seaLevel",
+    "name": "Sea Level",
+    "description": "This is the Sea Level Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "seaState",
+    "name": "Sea State",
+    "description": "This is the Sea State Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "seaSurfaceSalinity",
+    "name": "Sea Surface Salinity",
+    "description": "This is the Sea Surface Salinity Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "snow",
+    "name": "Snow",
+    "description": "This is the Snow Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "soilMoisture",
+    "name": "Soil Moisture",
+    "description": "This is the Soil Moisture Layer",
+    "link": "http://...",
+    "subLayers": []
+  },
+  {
+    "id": "waterVapour",
+    "name": "Water Vapour",
+    "description": "This is the Water Vapour Layer",
+    "link": "http://...",
+    "subLayers": []
+  }
+]

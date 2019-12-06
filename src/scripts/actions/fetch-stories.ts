@@ -1,22 +1,17 @@
 import {Dispatch} from 'redux';
 
 import fetchStoriesApi from '../api/fetch-stories';
-import {languageSelector} from '../reducers/language';
+import {languageSelector} from '../selectors/language';
+
 import {State} from '../reducers/index';
+import {StoryList} from '../types/story-list';
 
 export const FETCH_STORIES_SUCCESS = 'FETCH_STORIES_SUCCESS';
 export const FETCH_STORIES_ERROR = 'FETCH_STORIES_ERROR';
 
-export interface Story {
-  id: string;
-  title: string;
-  link: string;
-  image: string;
-}
-
 interface FetchStoriesSuccessAction {
   type: typeof FETCH_STORIES_SUCCESS;
-  stories: Story[];
+  stories: StoryList;
 }
 
 interface FetchStoriesErrorAction {
@@ -28,7 +23,7 @@ export type FetchStoriesActions =
   | FetchStoriesSuccessAction
   | FetchStoriesErrorAction;
 
-function fetchStoriesSuccessAction(stories: Story[]) {
+function fetchStoriesSuccessAction(stories: StoryList) {
   return {
     type: FETCH_STORIES_SUCCESS,
     stories

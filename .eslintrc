@@ -1,6 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "react-hooks"],
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
@@ -329,10 +329,13 @@
     "sort-imports": 0,
     "template-curly-spacing": [2, "never"],
     "yield-star-spacing": 1,
+    "@typescript-eslint/no-use-before-define": [2, "nofunc"],
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/ban-ts-ignore": 0,
     "@typescript-eslint/no-unused-vars": 2,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }

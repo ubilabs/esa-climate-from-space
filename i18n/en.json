@@ -2,5 +2,20 @@
   "layerSelector.main": "Main",
   "layerSelector.compare": "Compare",
   "language.en": "English",
-  "language.de": "German"
+  "language.de": "German",
+  "stories": "Stories",
+  "goBack": "Go back",
+  "storyMode": "Story Mode",
+  "projection": "Projection",
+  "menu": "Menu",
+  "presenterMode": "Presenter Mode",
+  "showcaseMode": "Show Case Mode",
+  "language": "Change language",
+  "share": "Share Content",
+  "export": "Export Data",
+  "info": "More Information",
+  "closeStory": "Close story",
+  "removeCompare": "Remove Compare",
+  "dataInfo": "Data Information",
+  "storiesSelected": "{numberSelected, number} {numberSelected, plural, one {Story} other {Stories}} selected"
 }

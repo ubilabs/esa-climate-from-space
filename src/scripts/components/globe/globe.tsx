@@ -1,14 +1,20 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
 
-import {projectionSelector} from '../../reducers/projection';
-import {Projection} from '../../actions/set-projection';
-import getGlobeView, {plainViewToCesiumView} from '../../libs/get-globe-view';
-import {View} from '../globes/globes';
-import config from '../../config/main';
+import {
+  getGlobeView,
+  setGlobeView,
+  flyToGlobeView
+} from '../../libs/get-globe-view';
+
+import DataSetInfo from '../data-set-info/data-set-info';
+
+import {GlobeView} from '../../types/globe-view';
+import {GlobeProjection} from '../../types/globe-projection';
 
 import 'cesium/Source/Widgets/widgets.css';
 import 'cesium/Build/Cesium/Cesium';
+
+import {LayerListItem} from '../../types/layer-list';
 
 import styles from './globe.styl';
 
@@ -25,22 +31,48 @@ const imageryProvider = window.Cesium.createTileMapServiceImageryProvider({
   url: tileUrl
 });
 
+const cesiumOptions = {
+  homeButton: false,
+  fullscreenButton: false,
+  sceneModePicker: false,
+  infoBox: false,
+  geocoder: false,
+  navigationHelpButton: false,
+  animation: false,
+  timeline: false,
+  baseLayerPicker: false,
+  imageryProvider
+};
+
 interface Props {
   active: boolean;
-  view: View;
+  layer: LayerListItem | null;
+  isMain?: boolean;
+  layerType?: string;
+  view: GlobeView;
+  projection: GlobeProjection;
+  imageUrl: string | null;
+  flyTo: GlobeView | null;
   onMouseEnter: () => void;
-  onChange: (view: View) => void;
+  onChange: (view: GlobeView) => void;
+  onMoveEnd: (view: GlobeView) => void;
 }
 
 const Globe: FunctionComponent<Props> = ({
   view,
+  projection,
+  imageUrl,
   active,
+  layer,
+  layerType,
+  isMain,
+  flyTo,
   onMouseEnter,
-  onChange
+  onChange,
+  onMoveEnd
 }) => {
   const [viewer, setViewer] = useState<Cesium.Viewer | null>(null);
   const ref = useRef<HTMLDivElement>(null);
-  const projection = useSelector(projectionSelector);
 
   // make latest "active" value always accessible in camera change handler
   const isActiveRef = useRef<boolean>(active);
@@ -52,25 +84,59 @@ const Globe: FunctionComponent<Props> = ({
       return () => {};
     }
 
+    // set correct scene mode
+    const sceneMode =
+      projection === GlobeProjection.Sphere
+        ? Cesium.SceneMode.SCENE3D
+        : Cesium.SceneMode.SCENE2D;
+
+    const options = {...cesiumOptions, sceneMode};
+
     // create cesium viewer
-    const options = {
-      ...config.globe.options,
-      imageryProvider
-    };
     const scopedViewer = new Cesium.Viewer(ref.current, options);
+
+    const color = new Cesium.Color(0.12, 0.12, 0.12, 1);
+    scopedViewer.scene.backgroundColor = color;
+
+    if (scopedViewer.scene.sun) {
+      scopedViewer.scene.sun.show = false;
+    }
+
+    if (scopedViewer.scene.moon) {
+      scopedViewer.scene.moon.show = false;
+    }
+
+    if (scopedViewer.scene.skyBox) {
+      scopedViewer.scene.skyBox.show = false;
+    }
+
+    if (scopedViewer.scene.skyAtmosphere) {
+      scopedViewer.scene.skyAtmosphere.show = false;
+    }
+
+    // @ts-ignore
+    if (scopedViewer.scene.globe.showGroundAtmosphere) {
+      // @ts-ignore
+      scopedViewer.scene.globe.showGroundAtmosphere = false;
+    }
 
     // save viewer reference
     setViewer(scopedViewer);
 
     // set initial camera view
-    scopedViewer.scene.camera.setView(plainViewToCesiumView(view));
+    setGlobeView(scopedViewer, view);
 
     // make camera change listener more sensitiv
-    scopedViewer.camera.percentageChanged = 0.01;
+    scopedViewer.camera.percentageChanged = 0.001;
 
     // add camera change listener
     scopedViewer.camera.changed.addEventListener(() => {
       isActiveRef.current && onChange(getGlobeView(scopedViewer));
+    });
+
+    // add camera move end listener
+    scopedViewer.camera.moveEnd.addEventListener(() => {
+      isActiveRef.current && onMoveEnd(getGlobeView(scopedViewer));
     });
 
     // clean up
@@ -78,7 +144,9 @@ const Globe: FunctionComponent<Props> = ({
       scopedViewer.destroy();
       setViewer(null);
     };
-  }, [ref]);
+    // we use 'projection' and 'view' here only once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ref, onChange, onMoveEnd]);
 
   // switch projections
   useEffect(() => {
@@ -86,7 +154,7 @@ const Globe: FunctionComponent<Props> = ({
       return;
     }
 
-    projection === Projection.Sphere
+    projection === GlobeProjection.Sphere
       ? viewer.scene.morphTo3D()
       : viewer.scene.morphTo2D();
   }, [viewer, projection]);
@@ -102,15 +170,66 @@ const Globe: FunctionComponent<Props> = ({
       return;
     }
 
-    viewer.scene.camera.setView(plainViewToCesiumView(view));
-  }, [viewer, view]);
+    setGlobeView(viewer, view);
+  }, [viewer, view, active]);
+
+  // update layer image when url changes
+  useEffect(() => {
+    if (!viewer) {
+      return;
+    }
+
+    const url = imageUrl;
+    const layers = viewer.scene.imageryLayers;
+    const oldLayer = layers.length > 1 && layers.get(1);
+    if (url) {
+      const imageProvider =
+        layerType === 'tiles'
+          ? new Cesium.UrlTemplateImageryProvider({
+              url,
+              tilingScheme: new Cesium.GeographicTilingScheme(),
+              minimumLevel: 0,
+              maximumLevel: 3,
+              tileWidth: 270,
+              tileHeight: 270
+            })
+          : new Cesium.SingleTileImageryProvider({url});
+
+      imageProvider.readyPromise.then(() => {
+        const newLayer = viewer.scene.imageryLayers.addImageryProvider(
+          imageProvider
+        );
+        // @ts-ignore
+        newLayer.minificationFilter = Cesium.TextureMinificationFilter.NEAREST;
+        // @ts-ignore
+        newLayer.magnificationFilter =
+          // @ts-ignore
+          Cesium.TextureMagnificationFilter.NEAREST;
+
+        // remove and destroy old layer if exists
+        // we do not clean it up in the useEffect clean function because we want
+        // to wait until the new layer is ready to prevent flickering
+        oldLayer && setTimeout(() => layers.remove(oldLayer, true), 100);
+      });
+    } else if (oldLayer) {
+      // remove old layer when no image should be shown anymore
+      layers.remove(oldLayer, true);
+    }
+  }, [layerType, viewer, imageUrl]);
+
+  // fly to location
+  useEffect(() => {
+    if (!viewer || !flyTo) {
+      return;
+    }
+
+    flyToGlobeView(viewer, flyTo);
+  }, [viewer, flyTo]);
 
   return (
-    <div
-      className={styles.globe}
-      onMouseEnter={() => onMouseEnter()}
-      ref={ref}
-    />
+    <div className={styles.globe} onMouseEnter={() => onMouseEnter()} ref={ref}>
+      <DataSetInfo layer={layer} isMain={isMain} />
+    </div>
   );
 };
 

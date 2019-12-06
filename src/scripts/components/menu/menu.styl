@@ -1,13 +1,15 @@
 .menuContainer
   position: relative
-  align-self: left
   margin: 20px
 
 .menuButton
+  padding: 2px
   outline: 0
   border-radius: 50%
   background-color: #ccc
   font-size: 1em
+  line-height: 50%
+  cursor: pointer
 
 .menuList
   position: absolute
@@ -15,12 +17,27 @@
   left: 0
   padding: 0
   min-width: 250px
+  border-radius: 5px
   background-color: #fff
   list-style: none
 
 .menuListItem
+  display: flex
+  flex-flow: wrap
+  align-items: center
   margin: 7px
   padding: 10px 15px
+  cursor: pointer
 
-.menuListItem:hover, .menuListItem:focus
-  background-color: #e0f1ff
+  svg
+    padding-right: 15px
+
+  a
+    display: flex
+    flex-flow: wrap
+    align-items: center
+    color: #000
+    text-decoration: none
+
+  &:hover, &:focus
+    background-color: #e0f1ff
