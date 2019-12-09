@@ -6,7 +6,7 @@ import timeReducer from './time';
 
 const globeReducer = combineReducers({
   view: viewReducer,
-  projection: projectionReducer,
+  projectionState: projectionReducer,
   time: timeReducer
 });
 

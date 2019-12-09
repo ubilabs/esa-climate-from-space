@@ -5,19 +5,22 @@ import {
 import {parseUrl} from '../../libs/globe-url-parameter';
 import config from '../../config/main';
 
-import {GlobeProjection} from '../../types/globe-projection';
+import {GlobeProjectionState} from '../../types/globe-projection-state';
 
 // get initial state from url or fallback to default state in config
 const globeState = parseUrl() || config.globe;
-const initialState = globeState.projection;
+const initialState = {
+  projection: globeState.projectionState.projection,
+  morphTime: 2
+};
 
 function projectionReducer(
-  state: GlobeProjection = initialState,
+  state: GlobeProjectionState = initialState,
   action: SetGlobeProjectionAction
-): GlobeProjection {
+): GlobeProjectionState {
   switch (action.type) {
     case SET_GLOBE_PROJECTION:
-      return action.projection;
+      return {projection: action.projection, morphTime: action.morphTime};
     default:
       return state;
   }
