@@ -15,8 +15,10 @@ import StoryHeader from '../story-header/story-header';
 import {getNavigationData} from '../../libs/get-navigation-data';
 import Autoplay from '../autoplay/autoplay';
 import setGlobeTimeAction from '../../actions/set-globe-time';
+import setGlobeProjectionAction from '../../actions/set-globe-projection';
 
 import {StoryMode} from '../../types/story-mode';
+import {GlobeProjection} from '../../types/globe-projection';
 
 import styles from './story.styl';
 
@@ -43,6 +45,7 @@ const getStoryId = (params: Params, mode: StoryMode) => {
 
 const Story: FunctionComponent<Props> = ({mode}) => {
   const params = useParams<Params>();
+  const sphereProjection = GlobeProjection.Sphere;
   const storyId = getStoryId(params, mode);
   const storyIds = params.storyIds;
   const storyIndex = parseInt(params.storyNumber || '0', 10);
@@ -68,7 +71,8 @@ const Story: FunctionComponent<Props> = ({mode}) => {
   // fetch story of active storyId
   useEffect(() => {
     storyId && dispatch(fetchStory(storyId));
-  }, [dispatch, storyId]);
+    dispatch(setGlobeProjectionAction(sphereProjection, 0));
+  }, [dispatch, storyId, sphereProjection]);
 
   // fly to position given in a slide, if none given set to default
   // set layer given by story slide

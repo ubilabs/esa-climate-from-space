@@ -15,6 +15,7 @@ import 'cesium/Source/Widgets/widgets.css';
 import 'cesium/Build/Cesium/Cesium';
 
 import {LayerListItem} from '../../types/layer-list';
+import {GlobeProjectionState} from '../../types/globe-projection-state';
 
 import styles from './globe.styl';
 
@@ -50,7 +51,7 @@ interface Props {
   isMain?: boolean;
   layerType?: string;
   view: GlobeView;
-  projection: GlobeProjection;
+  projectionState: GlobeProjectionState;
   imageUrl: string | null;
   flyTo: GlobeView | null;
   onMouseEnter: () => void;
@@ -60,7 +61,7 @@ interface Props {
 
 const Globe: FunctionComponent<Props> = ({
   view,
-  projection,
+  projectionState,
   imageUrl,
   active,
   layer,
@@ -86,7 +87,7 @@ const Globe: FunctionComponent<Props> = ({
 
     // set correct scene mode
     const sceneMode =
-      projection === GlobeProjection.Sphere
+      projectionState.projection === GlobeProjection.Sphere
         ? Cesium.SceneMode.SCENE3D
         : Cesium.SceneMode.SCENE2D;
 
@@ -154,10 +155,10 @@ const Globe: FunctionComponent<Props> = ({
       return;
     }
 
-    projection === GlobeProjection.Sphere
-      ? viewer.scene.morphTo3D()
-      : viewer.scene.morphTo2D();
-  }, [viewer, projection]);
+    projectionState.projection === GlobeProjection.Sphere
+      ? viewer.scene.morphTo3D(projectionState.morphTime)
+      : viewer.scene.morphTo2D(projectionState.morphTime);
+  }, [viewer, projectionState]);
 
   // update position and distance when view changes
   useEffect(() => {
