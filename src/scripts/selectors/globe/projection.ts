@@ -1,7 +1,7 @@
 import {State} from '../../reducers/index';
 
-import {GlobeProjection} from '../../types/globe-projection';
+import {GlobeProjectionState} from '../../types/globe-projection-state';
 
-export function projectionSelector(state: State): GlobeProjection {
-  return state.globe.projection;
+export function projectionSelector(state: State): GlobeProjectionState {
+  return state.globe.projectionState;
 }

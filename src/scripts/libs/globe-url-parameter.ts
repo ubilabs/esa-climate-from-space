@@ -54,13 +54,16 @@ export function parseUrl(): GlobeState | null {
         roll: values[5]
       }
     },
-    projection,
+    projectionState: {
+      projection: GlobeProjection.Sphere,
+      morphTime: 2
+    },
     time: values[6]
   };
 }
 
 export function getParamString(globeState: GlobeState): string | null {
-  const {view, projection, time} = globeState;
+  const {view, projectionState, time} = globeState;
   const {position, orientation} = view;
   const {longitude, latitude, height} = position;
   const {heading, pitch, roll} = orientation;
@@ -72,5 +75,5 @@ export function getParamString(globeState: GlobeState): string | null {
 
   const compactValues = values.map(num => num.toFixed(2));
 
-  return [projection[0], ...compactValues].join(char);
+  return [projectionState.projection[0], ...compactValues].join(char);
 }
