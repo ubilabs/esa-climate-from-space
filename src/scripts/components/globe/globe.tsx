@@ -173,7 +173,7 @@ const Globe: FunctionComponent<Props> = ({
 
     const url = imageUrl;
     const layers = viewer.scene.imageryLayers;
-    const oldLayer = layers.length > 1 && layers.get(1);
+
     if (url) {
       const imageProvider =
         layerType === 'tiles'
@@ -201,11 +201,21 @@ const Globe: FunctionComponent<Props> = ({
         // remove and destroy old layer if exists
         // we do not clean it up in the useEffect clean function because we want
         // to wait until the new layer is ready to prevent flickering
-        oldLayer && setTimeout(() => layers.remove(oldLayer, true), 100);
+        setTimeout(() => {
+          for (let i = 0; i < layers.length; i++) {
+            const layer = layers.get(i);
+            if (i !== 0 && layer !== newLayer) {
+              layers.remove(layer, true);
+            }
+          }
+        }, 100);
       });
-    } else if (oldLayer) {
+    } else if (layers.length > 1) {
       // remove old layer when no image should be shown anymore
-      layers.remove(oldLayer, true);
+      for (let i = 1; i < layers.length; i++) {
+        const layer = layers.get(i);
+        layers.remove(layer, true);
+      }
     }
   }, [layerType, viewer, imageUrl]);
 
