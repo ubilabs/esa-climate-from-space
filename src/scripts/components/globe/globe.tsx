@@ -198,7 +198,7 @@ const Globe: FunctionComponent<Props> = ({
           // @ts-ignore
           Cesium.TextureMagnificationFilter.NEAREST;
 
-        // remove and destroy old layer if exists
+        // remove and destroy old layers if they exist
         // we do not clean it up in the useEffect clean function because we want
         // to wait until the new layer is ready to prevent flickering
         setTimeout(() => {
@@ -211,7 +211,7 @@ const Globe: FunctionComponent<Props> = ({
         }, 100);
       });
     } else if (layers.length > 1) {
-      // remove old layer when no image should be shown anymore
+      // remove old layers when no image should be shown anymore
       for (let i = 1; i < layers.length; i++) {
         const layer = layers.get(i);
         layers.remove(layer, true);
