@@ -33,13 +33,10 @@ const Globes: FunctionComponent = () => {
     }
   );
   const dispatch = useDispatch();
-  const projection = useSelector(projectionSelector);
+  const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
   const storyLayerId = useSelector(storyLayerSelector);
   const mainLayerId = match?.params.mainLayerId || storyLayerId;
-  const main = useSelector((state: State) =>
-    layerListItemSelector(state, mainLayerId)
-  );
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainLayerId)
   );
@@ -76,12 +73,10 @@ const Globes: FunctionComponent = () => {
   return (
     <div className={styles.globes}>
       <Globe
-        layer={main}
         active={isMainActive}
-        isMain
         layerType={mainLayerDetails?.type}
         view={currentView}
-        projection={projection}
+        projectionState={projectionState}
         imageUrl={mainImageUrl}
         flyTo={flyTo}
         onMouseEnter={() => setIsMainActive(true)}
@@ -91,11 +86,10 @@ const Globes: FunctionComponent = () => {
 
       {compare && (
         <Globe
-          layer={compare}
           active={!isMainActive}
           layerType={compareLayerDetails?.type}
           view={currentView}
-          projection={projection}
+          projectionState={projectionState}
           imageUrl={compareImageUrl}
           flyTo={flyTo}
           onMouseEnter={() => setIsMainActive(false)}

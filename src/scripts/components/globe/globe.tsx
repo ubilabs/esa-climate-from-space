@@ -6,15 +6,13 @@ import {
   flyToGlobeView
 } from '../../libs/get-globe-view';
 
-import DataSetInfo from '../data-set-info/data-set-info';
-
 import {GlobeView} from '../../types/globe-view';
 import {GlobeProjection} from '../../types/globe-projection';
 
 import 'cesium/Source/Widgets/widgets.css';
 import 'cesium/Build/Cesium/Cesium';
 
-import {LayerListItem} from '../../types/layer-list';
+import {GlobeProjectionState} from '../../types/globe-projection-state';
 
 import styles from './globe.styl';
 
@@ -46,11 +44,9 @@ const cesiumOptions = {
 
 interface Props {
   active: boolean;
-  layer: LayerListItem | null;
-  isMain?: boolean;
   layerType?: string;
   view: GlobeView;
-  projection: GlobeProjection;
+  projectionState: GlobeProjectionState;
   imageUrl: string | null;
   flyTo: GlobeView | null;
   onMouseEnter: () => void;
@@ -60,12 +56,10 @@ interface Props {
 
 const Globe: FunctionComponent<Props> = ({
   view,
-  projection,
+  projectionState,
   imageUrl,
   active,
-  layer,
   layerType,
-  isMain,
   flyTo,
   onMouseEnter,
   onChange,
@@ -86,7 +80,7 @@ const Globe: FunctionComponent<Props> = ({
 
     // set correct scene mode
     const sceneMode =
-      projection === GlobeProjection.Sphere
+      projectionState.projection === GlobeProjection.Sphere
         ? Cesium.SceneMode.SCENE3D
         : Cesium.SceneMode.SCENE2D;
 
@@ -154,10 +148,10 @@ const Globe: FunctionComponent<Props> = ({
       return;
     }
 
-    projection === GlobeProjection.Sphere
-      ? viewer.scene.morphTo3D()
-      : viewer.scene.morphTo2D();
-  }, [viewer, projection]);
+    projectionState.projection === GlobeProjection.Sphere
+      ? viewer.scene.morphTo3D(projectionState.morphTime)
+      : viewer.scene.morphTo2D(projectionState.morphTime);
+  }, [viewer, projectionState]);
 
   // update position and distance when view changes
   useEffect(() => {
@@ -181,7 +175,7 @@ const Globe: FunctionComponent<Props> = ({
 
     const url = imageUrl;
     const layers = viewer.scene.imageryLayers;
-    const oldLayer = layers.length > 1 && layers.get(1);
+
     if (url) {
       const imageProvider =
         layerType === 'tiles'
@@ -206,14 +200,24 @@ const Globe: FunctionComponent<Props> = ({
           // @ts-ignore
           Cesium.TextureMagnificationFilter.NEAREST;
 
-        // remove and destroy old layer if exists
+        // remove and destroy old layers if they exist
         // we do not clean it up in the useEffect clean function because we want
         // to wait until the new layer is ready to prevent flickering
-        oldLayer && setTimeout(() => layers.remove(oldLayer, true), 100);
+        setTimeout(() => {
+          for (let i = 0; i < layers.length; i++) {
+            const layer = layers.get(i);
+            if (i !== 0 && layer !== newLayer) {
+              layers.remove(layer, true);
+            }
+          }
+        }, 100);
       });
-    } else if (oldLayer) {
-      // remove old layer when no image should be shown anymore
-      layers.remove(oldLayer, true);
+    } else if (layers.length > 1) {
+      // remove old layers when no image should be shown anymore
+      for (let i = 1; i < layers.length; i++) {
+        const layer = layers.get(i);
+        layers.remove(layer, true);
+      }
     }
   }, [layerType, viewer, imageUrl]);
 
@@ -227,9 +231,11 @@ const Globe: FunctionComponent<Props> = ({
   }, [viewer, flyTo]);
 
   return (
-    <div className={styles.globe} onMouseEnter={() => onMouseEnter()} ref={ref}>
-      <DataSetInfo layer={layer} isMain={isMain} />
-    </div>
+    <div
+      className={styles.globe}
+      onMouseEnter={() => onMouseEnter()}
+      ref={ref}
+    />
   );
 };
 

@@ -3,7 +3,10 @@ import {GlobeProjection} from '../types/globe-projection';
 
 const globeState: GlobeState = {
   time: 0,
-  projection: GlobeProjection.Sphere,
+  projectionState: {
+    projection: GlobeProjection.Sphere,
+    morphTime: 2
+  },
   view: {
     position: {
       height: 25003000,

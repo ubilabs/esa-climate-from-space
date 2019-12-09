@@ -20,6 +20,7 @@ import Story from '../story/story';
 import UrlSync from '../url-sync/url-sync';
 import LayerLoader from '../layer-loader/layer-loader';
 import TimeSlider from '../time-slider/time-slider';
+import DataSetInfo from '../data-set-info/data-set-info';
 import Init from '../init/init';
 
 import translations from '../../i18n';
@@ -51,6 +52,7 @@ const TranslatedApp: FunctionComponent = () => {
               <Route
                 path={['/layers/:mainLayerId?/:compareLayerId?', '/']}
                 exact>
+                <DataSetInfo />
                 <TimeSlider />
                 <StoriesButton />
                 <div className={styles.nav}>

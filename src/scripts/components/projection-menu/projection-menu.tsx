@@ -16,7 +16,7 @@ const ProjectionMenu: FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const onProjectionClick = (projection: GlobeProjection) => {
     setIsOpen(false);
-    dispatch(setGlobeProjectionAction(projection));
+    dispatch(setGlobeProjectionAction(projection, 2));
   };
   const onButtonClickHandler = () => setIsOpen(!isOpen);
 
