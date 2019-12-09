@@ -6,15 +6,11 @@ import {
   flyToGlobeView
 } from '../../libs/get-globe-view';
 
-import DataSetInfo from '../data-set-info/data-set-info';
-
 import {GlobeView} from '../../types/globe-view';
 import {GlobeProjection} from '../../types/globe-projection';
 
 import 'cesium/Source/Widgets/widgets.css';
 import 'cesium/Build/Cesium/Cesium';
-
-import {LayerListItem} from '../../types/layer-list';
 
 import styles from './globe.styl';
 
@@ -46,8 +42,6 @@ const cesiumOptions = {
 
 interface Props {
   active: boolean;
-  layer: LayerListItem | null;
-  isMain?: boolean;
   layerType?: string;
   view: GlobeView;
   projection: GlobeProjection;
@@ -63,9 +57,7 @@ const Globe: FunctionComponent<Props> = ({
   projection,
   imageUrl,
   active,
-  layer,
   layerType,
-  isMain,
   flyTo,
   onMouseEnter,
   onChange,
@@ -227,9 +219,11 @@ const Globe: FunctionComponent<Props> = ({
   }, [viewer, flyTo]);
 
   return (
-    <div className={styles.globe} onMouseEnter={() => onMouseEnter()} ref={ref}>
-      <DataSetInfo layer={layer} isMain={isMain} />
-    </div>
+    <div
+      className={styles.globe}
+      onMouseEnter={() => onMouseEnter()}
+      ref={ref}
+    />
   );
 };
 
