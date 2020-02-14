@@ -17,7 +17,6 @@ const PresentationSelector: FunctionComponent = () => (
       <h1 className={styles.title}>
         <FormattedMessage id="presenterMode" />
       </h1>
-      <span className={styles.filter}></span>
     </div>
     <StoryList mode={StoryMode.Present} />
   </div>

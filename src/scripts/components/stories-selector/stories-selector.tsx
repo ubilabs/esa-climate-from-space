@@ -17,7 +17,6 @@ const StoriesSelector: FunctionComponent = () => (
       <h1 className={styles.title}>
         <FormattedMessage id="storyMode" />
       </h1>
-      <span className={styles.filter}>Reset Filter</span>
     </div>
     <StoryList mode={StoryMode.Stories} />
   </div>
