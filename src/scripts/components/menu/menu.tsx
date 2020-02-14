@@ -1,8 +1,7 @@
 import React, {FunctionComponent, useState} from 'react';
 import {Link} from 'react-router-dom';
-import {useIntl} from 'react-intl';
+import {useIntl, FormattedMessage} from 'react-intl';
 
-import {MenuIcon} from '../icons/menu-icon';
 import {PresenterIcon} from '../icons/presenter-icon';
 import {ShowCaseIcon} from '../icons/show-case-icon';
 import {LanguageIcon} from '../icons/language-icon';
@@ -45,12 +44,12 @@ const Menu: FunctionComponent = () => {
 
   return (
     <div className={styles.menuContainer}>
-      <button
+      <div
         onClick={() => onButtonClickHandler()}
-        title={intl.formatMessage({id: 'menu'})}
+        title={intl.formatMessage({id: 'more'})}
         className={styles.menuButton}>
-        <MenuIcon />
-      </button>
+        <FormattedMessage id="more" />
+      </div>
       {isOpen && (
         <ul className={styles.menuList} onClick={() => setIsOpen(false)}>
           {menuItems.map(menuItem => {
