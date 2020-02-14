@@ -28,14 +28,16 @@ const StoryListItemContent: FunctionComponent<Props> = ({
 
   return (
     <div
+      style={{background: `url(${story.image})`}}
       className={classes}
       onClick={() => mode === StoryMode.Showcase && onSelectStory(story.id)}>
-      <img src={story.image} className={styles.image} />
       {selectedIndex >= 0 && (
         <div className={styles.storyNumber}>{selectedIndex + 1}</div>
       )}
-      <p className={styles.title}>{story.title}</p>
-      <p className={styles.description}>{story.description}</p>
+      <div className={styles.imageInfo}>
+        <p className={styles.title}>{story.title}</p>
+        <p className={styles.description}>{story.description}</p>
+      </div>
     </div>
   );
 };

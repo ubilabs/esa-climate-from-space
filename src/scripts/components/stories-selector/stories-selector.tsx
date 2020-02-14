@@ -10,12 +10,15 @@ import styles from './stories-selector.styl';
 
 const StoriesSelector: FunctionComponent = () => (
   <div className={styles.storiesSelector}>
-    <Link to="/" className={styles.backButton}>
-      <FormattedMessage id="goBack" />
-    </Link>
-    <h1 className={styles.title}>
-      <FormattedMessage id="storyMode" />
-    </h1>
+    <div className={styles.header}>
+      <Link to="/" className={styles.backButton}>
+        <FormattedMessage id="goBack" />
+      </Link>
+      <h1 className={styles.title}>
+        <FormattedMessage id="storyMode" />
+      </h1>
+      <span className={styles.filter}>Reset Filter</span>
+    </div>
     <StoryList mode={StoryMode.Stories} />
   </div>
 );

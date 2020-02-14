@@ -10,12 +10,15 @@ import styles from './presentation-selector.styl';
 
 const PresentationSelector: FunctionComponent = () => (
   <div className={styles.presentationSelector}>
-    <Link to="/" className={styles.backButton}>
-      <FormattedMessage id="goBack" />
-    </Link>
-    <h1 className={styles.title}>
-      <FormattedMessage id="presenterMode" />
-    </h1>
+    <div className={styles.header}>
+      <Link to="/" className={styles.backButton}>
+        <FormattedMessage id="goBack" />
+      </Link>
+      <h1 className={styles.title}>
+        <FormattedMessage id="presenterMode" />
+      </h1>
+      <span className={styles.filter}></span>
+    </div>
     <StoryList mode={StoryMode.Present} />
   </div>
 );
