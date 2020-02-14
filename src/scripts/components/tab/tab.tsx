@@ -27,12 +27,12 @@ const Tab: FunctionComponent<Props> = ({
   );
 
   return (
-    <button
+    <div
       title={label}
       className={tabClasses}
       onClick={() => !disabled && onSelectTabId(id)}>
       {children}
-    </button>
+    </div>
   );
 };
 
