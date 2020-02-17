@@ -28,7 +28,7 @@ const StoryListItemContent: FunctionComponent<Props> = ({
 
   return (
     <div
-      style={{background: `url(${story.image})`}}
+      style={{background: `url(${story.image})`, backgroundSize: 'cover'}}
       className={classes}
       onClick={() => mode === StoryMode.Showcase && onSelectStory(story.id)}>
       {selectedIndex >= 0 && (
