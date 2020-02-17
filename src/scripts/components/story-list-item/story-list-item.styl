@@ -1,3 +1,5 @@
+@require '../../../variables.styl'
+
 .storyItem
   display: flex
   flex-direction: column
@@ -6,11 +8,11 @@
   height: 100%
   height: 300px
   border-radius: 4px
-  background: rgba(24, 32, 38, 0.95)
+  border: 2px solid $darkGrey1
 
 .selected
   position: relative
-  background: #ccc
+  border: 2px solid $main
 
 .storyNumber
   position: absolute
@@ -18,30 +20,30 @@
   right: 10px
   width: 30px
   height: 30px
-  border: 1px solid #000
   border-radius: 50%
-  background-color: #ccc
-  color: #fff
+  background-color: $main
+  color: $textWhite
   text-align: center
   line-height: 30px
 
 .imageInfo
   padding: 16px
   height: 40%
-  background: rgba(24, 32, 38, 0.95)
+  background-color: $darkGrey1
+  opacity: 0.95;
 
 .title
   margin: 0
   margin-top: 5px
-  color: #00AE9D
+  color: $main
   font-size: 1.125em
 
 .description
-  color: #939597
+  color: $textDefault
   font-size: 1.125em
 
 a
-  color: #939597
+  color: $textDefault
   text-decoration: none
 
 .present
