@@ -8,10 +8,10 @@ import styles from './stories-button.styl';
 
 const StoriesButton: FunctionComponent = () => (
   <Link to={'/stories'} className={styles.storiesButton}>
-    <div className={styles.storiesLabel}>
+    <button className={styles.storiesLabel}>
       <StoryIcon />
       <FormattedMessage id="stories" />
-    </div>
+    </button>
   </Link>
 );
 
