@@ -24,6 +24,7 @@ const Tabs: FunctionComponent<Props> = ({tabs, activeTabId, onTabChanged}) => (
           activeTabId={activeTabId}
           onSelectTabId={id => onTabChanged(id)}>
           {Icon ? <Icon /> : tab.label}
+          {tab.label}
         </Tab>
       );
     })}
