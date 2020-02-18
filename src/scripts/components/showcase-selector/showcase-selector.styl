@@ -1,28 +1,45 @@
+@require '../../../variables.styl'
+
 .showcaseSelector
   position: relative
   width: 100%
   height: 100%
-  background-color: #fff
+  background-color: $black
   pointer-events: auto
 
 .header
   display: flex
-  flex-direction: column
+  justify-content: space-between
+  align-items: center
+  padding: 10px
+  background-color: $darkGrey1
 
 .title
-  margin: 0
+  display: flex
+  flex: 1
+  justify-content: center
+  align-items: center
+  color: $textWhite
   text-align: center
-  font-size: 1.7em
+  text-transform: uppercase
+  font-size: 1.1em
+
+.backButton
+  display: flex
+  flex: 1
+  justify-content: flex-start
+  align-items: center
+  color: $textWhite
+  font-size: 1.1em
 
 .playButton
   display: flex
-  align-self: flex-end
+  flex: 1
+  justify-content: flex-end
   align-items: center
   padding-right: 20px
+  color: $textDefault
 
   svg
     padding-left: 10px
-
-.backButton
-  display: block
-  padding: 20px 0 0 20px
+    fill: $textWhite
