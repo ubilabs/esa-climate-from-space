@@ -2,15 +2,15 @@ import React, {FunctionComponent} from 'react';
 
 export const StoryIcon: FunctionComponent = () => (
   <svg
-    width="18"
-    height="21"
-    viewBox="0 0 18 21"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M12 3C12 4.66 10.66 6 9 6C7.34 6 6 4.66 6 3C6 1.34 7.34 0 9 0C10.66 0 12 1.34 12 3ZM0 6C3.48 6 6.64 7.35 9 9.55C11.36 7.35 14.52 6 18 6V17C14.52 17 11.36 18.36 9 20.55C6.64 18.35 3.48 17 0 17V6Z"
+      d="M15 5C15 6.66 13.66 8 12 8C10.34 8 9 6.66 9 5C9 3.34 10.34 2 12 2C13.66 2 15 3.34 15 5ZM3 8C6.48 8 9.64 9.35 12 11.55C14.36 9.35 17.52 8 21 8V19C17.52 19 14.36 20.36 12 22.55C9.64 20.35 6.48 19 3 19V8Z"
       fill="white"
     />
   </svg>
