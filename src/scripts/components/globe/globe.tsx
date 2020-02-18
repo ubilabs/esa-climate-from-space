@@ -89,7 +89,7 @@ const Globe: FunctionComponent<Props> = ({
     // create cesium viewer
     const scopedViewer = new Cesium.Viewer(ref.current, options);
 
-    const color = Cesium.Color.fromCssColorString('#10161A;');
+    const color = Cesium.Color.fromCssColorString('#10161A');
 
     scopedViewer.scene.backgroundColor = color;
 
