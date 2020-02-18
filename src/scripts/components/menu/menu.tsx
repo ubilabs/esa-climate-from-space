@@ -44,12 +44,12 @@ const Menu: FunctionComponent = () => {
 
   return (
     <div className={styles.menuContainer}>
-      <div
+      <button
         onClick={() => onButtonClickHandler()}
         title={intl.formatMessage({id: 'more'})}
         className={styles.menuButton}>
         <FormattedMessage id="more" />
-      </div>
+      </button>
       {isOpen && (
         <ul className={styles.menuList} onClick={() => setIsOpen(false)}>
           {menuItems.map(menuItem => {
