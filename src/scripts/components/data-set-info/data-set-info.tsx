@@ -19,7 +19,6 @@ interface Props {
 const DataSetContent: FunctionComponent<Props> = ({layer, isCompare}) => (
   <div className={styles.dataSetContent}>
     <h1 className={styles.title}>{layer?.name}</h1>
-    <h2 className={styles.description}>{layer?.description}</h2>
     <div className={styles.buttons}>
       <InfoButton layer={layer} />
       {isCompare && <RemoveCompare />}
