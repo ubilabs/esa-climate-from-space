@@ -1,27 +1,31 @@
+@require '../../../variables.styl'
+
 .layerList
-  flex-grow: 1
   overflow: scroll
   margin: 0
   padding: 0
   height: calc(100vh - 80px)
-  background-color: #fff
+  background-color: $darkGrey1
   list-style: none
 
 .layerItem
   padding: 15px
-  font-size: 1.1em
+  color: $textDefault
+  font-size: 1.125em
   cursor: pointer
 
 .layerItem:hover, .layerItem:focus
-  background-color: #e0f1ff
+  background: $darkGray4
+  color: $textColor
 
 .layerItemSelected, .layerItemSelected:hover, .layerItemSelected:focus
-  background-color: #a8d7ff
+  background: $darkGray4
+  color: $textColor
 
 .subLayerItem
   margin: 5px
   padding: 15px
-  font-size: 1em
 
 .subLayerItemSelected
-  background-color: #a8d7ff
+  background: $darkGray4
+  color: $textColor
