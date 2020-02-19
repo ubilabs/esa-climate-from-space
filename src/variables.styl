@@ -8,3 +8,15 @@ $darkGrey4 = #30404D
 $textDefault = #939597
 $textColor = #00AE9D
 $textWhite = #FFFFFF
+
+/**
+ * calculate an rem-value for a given pixel-size
+ */
+remCalc(_px, _base = 16)
+  return (_px / _base) rem
+
+/**
+ * calculate an em-value for a given pixel-size
+ */
+emCalc(_px, _base = 16)
+  return (_px / _base) em
