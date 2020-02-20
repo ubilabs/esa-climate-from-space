@@ -2,22 +2,14 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: npm
     args: ['ci']
-  - name: 'gcr.io/cloud-builders/npm'
-    entrypoint: npm
-    args: ['run', 'build']
   - name: 'gcr.io/esa-climate-from-space/electron-builder'
     env:
-    - 'ELECTRON_CACHE=/root/.cache/electron'
-    - 'ELECTRON_BUILDER_CACHE=/root/.cache/electron-builder'
+      - 'ELECTRON_CACHE=/root/.cache/electron'
+      - 'ELECTRON_BUILDER_CACHE=/root/.cache/electron-builder'
     entrypoint: 'npm'
-    args: [
-      'run',
-      'electron:build'
-    ]
-  - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', './dist-electron/*.zip', 'gs://esa-cfs-versions/electron/${BRANCH_NAME}/']
-  - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', './dist-electron/*.exe', 'gs://esa-cfs-versions/electron/${BRANCH_NAME}/']
-timeout: 1000s
-
-
+    args: ['run', 'electron:build']
+artifacts:
+  objects:
+    location: 'gs://esa-cfs-versions/electron/${BRANCH_NAME}'
+    paths: ['./dist-electron/esa-climate*']
+timeout: 1500s
