@@ -4,28 +4,19 @@ import {Provider as StoreProvider, useSelector} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
 import {IntlProvider} from 'react-intl';
-import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import {HashRouter as Router} from 'react-router-dom';
 
 import rootReducer from '../../reducers/index';
 import {languageSelector} from '../../selectors/language';
-import LayerSelector from '../layer-selector/layer-selector';
-import Globes from '../globes/globes';
-import Menu from '../menu/menu';
-import PresentationSelector from '../presentation-selector/presentation-selector';
-import ShowcaseSelector from '../showcase-selector/showcase-selector';
-import StoriesSelector from '../stories-selector/stories-selector';
-import StoriesButton from '../stories-button/stories-button';
-import Story from '../story/story';
 import UrlSync from '../url-sync/url-sync';
 import LayerLoader from '../layer-loader/layer-loader';
-import TimeSlider from '../time-slider/time-slider';
-import DataSetInfo from '../data-set-info/data-set-info';
 import Init from '../init/init';
-import {EsaLogo} from '../icons/esa-logo';
+
+import Logo from '../logo/logo';
+import Navigation from '../navigation/navigation';
+import GlobeZoom from '../globe-zoom/globe-zoom';
 
 import translations from '../../i18n';
-
-import {StoryMode} from '../../types/story-mode';
 
 import styles from './app.styl';
 
@@ -47,55 +38,9 @@ const TranslatedApp: FunctionComponent = () => {
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <div className={styles.app}>
-          <div className={styles.layout}>
-            <Switch>
-              <Route
-                path={['/layers/:mainLayerId?/:compareLayerId?', '/']}
-                exact>
-                <DataSetInfo />
-                <TimeSlider />
-                <div className={styles.nav}>
-                  <div className={styles.logo}>
-                    <EsaLogo />
-                  </div>
-                  <div className={styles.timeslider} />
-                  <StoriesButton />
-                  <LayerSelector />
-                  <Menu />
-                </div>
-              </Route>
-
-              <Route path="/present" exact>
-                <PresentationSelector />
-              </Route>
-
-              <Route path={['/showcase/:storyIds', '/showcase/']} exact>
-                <ShowcaseSelector />
-              </Route>
-
-              <Route path="/stories" exact>
-                <StoriesSelector />
-              </Route>
-
-              <Route
-                path={['/present/:storyId', '/stories/:storyId']}
-                render={props => (
-                  <Redirect to={`${props.match.url}/0`} />
-                )}></Route>
-            </Switch>
-          </div>
-          <div className={styles.story}>
-            <Globes />
-            <Route path={'/stories/:storyId/:page'}>
-              <Story mode={StoryMode.Stories} />
-            </Route>
-            <Route path={'/present/:storyId/:page'}>
-              <Story mode={StoryMode.Present} />
-            </Route>
-            <Route path={'/showcase/:storyIds/:storyNumber/:page'}>
-              <Story mode={StoryMode.Showcase} />
-            </Route>
-          </div>
+          <Logo />
+          <Navigation />
+          <GlobeZoom />
         </div>
       </IntlProvider>
       <UrlSync />
