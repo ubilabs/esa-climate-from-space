@@ -2,11 +2,11 @@ import React, {FunctionComponent} from 'react';
 
 export const ZoomIn: FunctionComponent = () => (
   <svg
-    width="14"
-    height="14"
-    viewBox="0 0 14 14"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg">
-    <path d="M14 8H8V14H6V8H0V6H6V0H8V6H14V8Z" fill="white" />
+    <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="white" />
   </svg>
 );

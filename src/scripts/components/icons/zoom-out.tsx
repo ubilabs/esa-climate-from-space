@@ -2,11 +2,11 @@ import React, {FunctionComponent} from 'react';
 
 export const ZoomOut: FunctionComponent = () => (
   <svg
-    width="14"
-    height="2"
-    viewBox="0 0 14 2"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg">
-    <path d="M14 2H0V0H14V2Z" fill="white" />
+    <path d="M19 13H5V11H19V13Z" fill="white" />
   </svg>
 );
