@@ -17,8 +17,8 @@ function createWindow() {
   windows.push(window);
 
   // and load the index.html of the app.
-  const indexPath = path.resolve(__dirname, '../../dist/index.html');
-  window.loadFile(indexPath);
+  const indexPath = `file://${__dirname}/../../dist/index.html`;
+  window.loadURL(indexPath);
 
   // window.webContents.openDevTools();
 
