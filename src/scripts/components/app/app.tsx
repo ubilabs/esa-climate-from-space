@@ -11,7 +11,6 @@ import {languageSelector} from '../../selectors/language';
 import UrlSync from '../url-sync/url-sync';
 import LayerLoader from '../layer-loader/layer-loader';
 import Init from '../init/init';
-
 import Logo from '../logo/logo';
 import Navigation from '../navigation/navigation';
 import GlobeZoom from '../globe-zoom/globe-zoom';

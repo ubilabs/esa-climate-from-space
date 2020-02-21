@@ -1,21 +1,17 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useState} from 'react';
 
 import Button from '../button/button';
-import {StoryIcon} from '../icons/story-icon';
-import {LayersIcon} from '../icons/layers-icon';
 
 import styles from './navigation.styl';
+import Overlay from '../overlay/overlay';
 
 const Navigation: FunctionComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className={styles.navigation}>
-      <Button label="stories" link="/stories" icon={StoryIcon} />
-      <Button
-        label="layers"
-        onClick={() => console.log('placeholder')}
-        icon={LayersIcon}
-      />
-      <Button label="more" onClick={() => console.log('placeholder')} />
+      <Button label="more" onClick={() => setIsOpen(true)} />
+      {isOpen && <Overlay onClose={() => setIsOpen(false)} isOpen={isOpen} />}
     </div>
   );
 };
