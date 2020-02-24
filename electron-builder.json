@@ -12,5 +12,6 @@
   },
   "linux": {
     "target": "zip"
-  }
+  },
+  "artifactName": "${productName}-${version}-${os}.${ext}"
 }

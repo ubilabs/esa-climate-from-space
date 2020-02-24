@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "clean": "rm -rf ./dist",
-    "build": "npm run clean && webpack -p",
+    "build": "npm run clean && webpack --display=errors-only -p",
     "test": "npm run stylint && npm run eslint && npm run license-check",
     "eslint": "eslint . --ext .ts,.tsx,.js",
     "stylint": "stylint",
@@ -20,7 +20,7 @@
     "electron:start": "electron .",
     "electron:install": "electron-builder install-app-deps",
     "electron:clean": "rm -rf ./dist-electron",
-    "electron:build": "npm run electron:clean && npm run electron:install && electron-builder -mwl --x64 --config electron-builder.json",
+    "electron:build": "npm run electron:clean && npm run electron:install && npm run build && electron-builder -mwl --x64 --config electron-builder.json",
     "upload-storage": "gsutil rsync -r -x \".DS_Store\" ./storage gs://esa-cfs-storage && gsutil acl ch -r -u AllUsers:R gs://esa-cfs-storage && gsutil setmeta -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/**/*"
   },
   "repository": {
@@ -62,8 +62,8 @@
     "conventional-changelog-cli": "^2.0.31",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
-    "electron": "6.0.11",
-    "electron-builder": "^21.2.0",
+    "electron": "^8.0.1",
+    "electron-builder": "^22.3.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-react": "^7.18.3",
