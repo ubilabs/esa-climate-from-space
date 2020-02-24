@@ -1,21 +1,33 @@
 import React, {FunctionComponent} from 'react';
+import {createPortal} from 'react-dom';
 
-import styles from './overlay.styl';
+import Button from '../button/button';
 import {RemoveIcon} from '../icons/remove-icon';
 
+import styles from './overlay.styl';
+
 interface Props {
-  isOpen: boolean;
   onClose: () => void;
 }
-const Overlay: FunctionComponent<Props> = ({onClose}) => {
-  return (
-    <div className={styles.overlay}>
-      <h1>test</h1>
-      <div onClick={() => onClose()}>
-        <RemoveIcon />
-      </div>
+
+const Overlay: FunctionComponent<Props> = ({children, onClose}) => {
+  const modalElement = document.getElementById('modal');
+
+  const Content = (
+    <div className={styles.overlay} onClick={() => onClose()}>
+      <Button
+        icon={RemoveIcon}
+        className={styles.closeButton}
+        onClick={() => onClose()}
+      />
+      <div className={styles.content}>{children}</div>
     </div>
   );
+
+  if (modalElement) {
+    return createPortal(Content, modalElement);
+  }
+  return null;
 };
 
 export default Overlay;

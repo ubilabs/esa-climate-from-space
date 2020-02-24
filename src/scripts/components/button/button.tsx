@@ -8,6 +8,7 @@ interface Props {
   label?: string;
   icon?: FunctionComponent;
   link?: string;
+  className?: string;
   onClick?: () => void;
 }
 
@@ -15,14 +16,17 @@ const Button: FunctionComponent<Props> = ({
   label,
   link,
   icon: Icon,
+  className = '',
   onClick
 }) => {
+  const classes = `${styles.button} ${className}`;
+
   return link ? (
-    <Link className={styles.button} to={link}>
+    <Link className={classes} to={link}>
       {Icon && <Icon />} {label && <FormattedMessage id={label} />}
     </Link>
   ) : (
-    <button className={styles.button} onClick={onClick}>
+    <button className={classes} onClick={onClick}>
       {Icon && <Icon />}
       {label && <FormattedMessage id={label} />}
     </button>

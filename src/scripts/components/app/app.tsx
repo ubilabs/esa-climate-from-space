@@ -11,9 +11,9 @@ import {languageSelector} from '../../selectors/language';
 import UrlSync from '../url-sync/url-sync';
 import LayerLoader from '../layer-loader/layer-loader';
 import Init from '../init/init';
-import Logo from '../logo/logo';
 import Navigation from '../navigation/navigation';
 import GlobeZoom from '../globe-zoom/globe-zoom';
+import {EsaLogo} from '../icons/esa-logo';
 
 import translations from '../../i18n';
 
@@ -37,7 +37,9 @@ const TranslatedApp: FunctionComponent = () => {
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <div className={styles.app}>
-          <Logo />
+          <div className={styles.logo}>
+            <EsaLogo />
+          </div>
           <Navigation />
           <GlobeZoom />
         </div>
