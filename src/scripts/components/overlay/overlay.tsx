@@ -20,7 +20,7 @@ const Overlay: FunctionComponent<Props> = ({children, onClose}) => {
         className={styles.closeButton}
         onClick={() => onClose()}
       />
-      <div className={styles.content}>{children}</div>
+      <div>{children}</div>
     </div>
   );
 
