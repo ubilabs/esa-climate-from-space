@@ -9,7 +9,7 @@ import {StoryIcon} from '../icons/story-icon';
 import styles from './navigation.styl';
 
 const Navigation: FunctionComponent = () => {
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div className={styles.navigation}>
@@ -28,10 +28,10 @@ const Navigation: FunctionComponent = () => {
       <Button
         className={styles.button}
         label="more"
-        onClick={() => setShowOverlay(true)}
+        onClick={() => setShowMenu(true)}
       />
-      {showOverlay && (
-        <Overlay onClose={() => setShowOverlay(false)}>
+      {showMenu && (
+        <Overlay onClose={() => setShowMenu(false)}>
           <Menu />
         </Overlay>
       )}
