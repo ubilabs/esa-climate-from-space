@@ -1,0 +1,30 @@
+# manually run with "gcloud builds submit --config ./ci/cloudbuild-tiles.yaml --timeout=2000 --substitutions _VARIABLE_ID="burned_area",_DATASET_ID="esacci.FIRE.mon.L4.BA.MODIS.Terra.MODIS_TERRA.v5-1.r1",_TIME_RANGE="2010-01-01.2011-01-01",_TILE_SIZE=256 ."
+
+steps:
+  - name: 'gcr.io/esa-climate-from-space/cate:latest'
+    args:
+      - "/bin/bash"
+      - "-c"
+      - "conda run -n cate-env python data/export.py -d ${_DATASET_ID} -v ${_VARIABLE_ID} -t ${_TIME_RANGE}"
+  - name: 'gcr.io/esa-climate-from-space/xcube:latest'
+    args:
+      - "/bin/bash"
+      - "-c"
+      - "conda run -n xcube xcube tile --verbose --tile-size ${_TILE_SIZE} ./cube.zarr"
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args:
+      - "-m"
+      - "cp"
+      - "-r"
+      - "./out.tiles/*"
+      - "gs://esa-cfs-tiles/generated/${_VARIABLE_ID}"
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args:
+      - "-m"
+      - "acl"
+      - "ch"
+      - "-r"
+      - "-u"
+      - "AllUsers:R"
+      - "gs://esa-cfs-tiles/generated/${_VARIABLE_ID}/*"
+

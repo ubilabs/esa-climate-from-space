@@ -1,0 +1,15 @@
+# build with "gcloud builds submit --config ./ci/cloudbuild-build-cate.yaml --timeout=2000 ./ci/docker"
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/cate',
+        '-f',
+        './cate/Dockerfile',
+        '.',
+      ]
+images:
+  - 'gcr.io/$PROJECT_ID/cate'
