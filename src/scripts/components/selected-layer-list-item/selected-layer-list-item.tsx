@@ -8,24 +8,24 @@ import styles from './selected-layer-list-item.styl';
 
 interface Props {
   layer: LayerListItem;
-  isCompare?: boolean;
-  onLayerRemove: () => void;
+  showRemoveButton?: boolean;
+  onRemove: () => void;
 }
 
 const SelectedLayerListItem: FunctionComponent<Props> = ({
   layer,
-  isCompare,
-  onLayerRemove
+  showRemoveButton,
+  onRemove
 }) => (
   <div className={styles.selectedLayerListItem}>
     <div className={styles.layerTitle}>
       <div className={styles.layerIcon}></div>
       <span className={styles.layerTitle}>{layer.name}</span>
     </div>
-    {isCompare && (
-      <div className={styles.removeIcon} onClick={() => onLayerRemove()}>
+    {showRemoveButton && (
+      <button className={styles.removeIcon} onClick={() => onRemove()}>
         <RemoveIcon />
-      </div>
+      </button>
     )}
   </div>
 );

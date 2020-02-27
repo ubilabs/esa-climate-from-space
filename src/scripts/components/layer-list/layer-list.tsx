@@ -19,7 +19,8 @@ const LayerList: FunctionComponent<Props> = ({
   onMainSelect,
   onCompareSelect
 }) => {
-  const [mainLayer] = selectedIds;
+  const [mainId] = selectedIds;
+  const mainSelected = mainId !== '';
 
   return (
     <ul className={styles.layerList}>
@@ -30,7 +31,7 @@ const LayerList: FunctionComponent<Props> = ({
             <LayerListItem
               onMainSelect={id => onMainSelect(id)}
               onCompareSelect={id => onCompareSelect(id)}
-              isMainSelected={mainLayer}
+              isMainSelected={mainSelected}
               layer={layer}
             />
           </li>
