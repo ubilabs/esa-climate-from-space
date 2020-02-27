@@ -12,25 +12,25 @@ steps:
     args:
       - "/bin/bash"
       - "-c"
-      - "conda run -n xcube xcube tile --verbose --tile-size ${_TILE_SIZE} --output ./tmp/tiles ./dataset.zarr"
+      - "conda run -n xcube xcube tile --verbose --tile-size ${_TILE_SIZE} --output ./tmp/tiles --config ./style.yaml --style cci ./dataset.zarr"
   # generate one big global image from zarr
   - name: gcr.io/esa-climate-from-space/xcube:latest
     args:
       - "/bin/bash"
       - "-c"
-      - "conda run -n xcube xcube tile --verbose --tile-size 2048,1024 --output ./tmp/full ./dataset.zarr"
-  # zip the dataset
-  # - name: gcr.io/esa-climate-from-space/zip
-  #   args:
-  #     - "-r"
-  #     - "--quiet"
-  #     - "./tmp/dataset.zip"
-  #     - "./dataset.zarr"
+      - "conda run -n xcube xcube tile --verbose --tile-size 2048,1024 --output ./tmp/full --config ./style.yaml --style cci ./dataset.zarr"
   # prepare the upload folder
   - name: gcr.io/esa-climate-from-space/tile-mover
     args:
       - "./data/prepare-tile-upload.sh"
       - "${_VARIABLE_ID}"
+  # zip the files to make an package for offline usage
+  - name: gcr.io/esa-climate-from-space/zip
+    args:
+      - "-r"
+      - "--quiet"
+      - "./upload/package.zip"
+      - "./upload/*"
   # upload tiles into bucket
   - name: gcr.io/cloud-builders/gsutil
     args:
