@@ -1,86 +1,40 @@
-import React, {FunctionComponent, MouseEvent} from 'react';
-import {useHistory, useParams} from 'react-router';
-import cx from 'classnames';
+import React, {FunctionComponent} from 'react';
 
-import {LayerList as LayerListType} from '../../types/layer-list';
+import LayerListItem from '../layer-list-item/layer-list-item';
+
+import {LayerListItem as LayerListItemType} from '../../types/layer-list';
 
 import styles from './layer-list.styl';
 
 interface Props {
-  layers: LayerListType;
-  isMain: boolean;
+  selectedIds: string[];
+  layers: LayerListItemType[];
+  onMainSelect: (id: string) => void;
+  onCompareSelect: (id: string) => void;
 }
 
-const LayerList: FunctionComponent<Props> = ({layers, isMain}) => {
-  const history = useHistory();
-  const {mainLayerId = '', compareLayerId = ''} = useParams();
-  const selectedLayerId = isMain ? mainLayerId : compareLayerId;
-
-  const layerClickHandler = (event: MouseEvent, id: string) => {
-    event.stopPropagation();
-
-    if (id === selectedLayerId) {
-      if (!isMain || !compareLayerId) {
-        const newPath = isMain ? '/' : `/layers/${mainLayerId}`;
-        history.push(newPath);
-      }
-      return;
-    }
-
-    const newPath = isMain
-      ? `/layers/${id}/${compareLayerId}`
-      : `/layers/${mainLayerId}/${id}`;
-
-    history.push(newPath);
-  };
+const LayerList: FunctionComponent<Props> = ({
+  selectedIds,
+  layers,
+  onMainSelect,
+  onCompareSelect
+}) => {
+  const [mainLayer] = selectedIds;
 
   return (
     <ul className={styles.layerList}>
-      {layers.map(layer => {
-        const isSelected = selectedLayerId === layer.id;
-        const layerItemClasses = cx(
-          styles.layerItem,
-          isSelected && styles.layerItemSelected
-        );
-
-        if (layer.subLayers.length === 0) {
-          return (
-            <li
-              className={layerItemClasses}
-              key={layer.id}
-              onClick={event => layerClickHandler(event, layer.id)}>
-              {layer.name}
-            </li>
-          );
-        }
-
-        return (
-          <li className={layerItemClasses} key={layer.id}>
-            {layer.name}
-
-            {layer.subLayers && (
-              <ul className={styles.subLayersList}>
-                {layer.subLayers.map(subLayer => {
-                  const isSubSelected = selectedLayerId === subLayer.id;
-                  const subLayerItemClasses = cx(
-                    styles.subLayerItem,
-                    isSubSelected && styles.subLayerItemSelected
-                  );
-
-                  return (
-                    <li
-                      className={subLayerItemClasses}
-                      onClick={event => layerClickHandler(event, subLayer.id)}
-                      key={subLayer.id}>
-                      {subLayer.name}
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
+      {layers
+        .filter(layer => !selectedIds.includes(layer.id))
+        .map(layer => (
+          <li key={layer.id}>
+            <LayerListItem
+              onMainSelect={id => onMainSelect(id)}
+              onCompareSelect={id => onCompareSelect(id)}
+              isMainSelected={mainLayer}
+              layer={layer}
+            />
           </li>
-        );
-      })}
+        ))}
     </ul>
   );
 };

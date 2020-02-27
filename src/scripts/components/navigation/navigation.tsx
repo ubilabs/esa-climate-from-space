@@ -1,15 +1,18 @@
 import React, {FunctionComponent, useState} from 'react';
+import {useDispatch} from 'react-redux';
 
 import Button from '../button/button';
 import Overlay from '../overlay/overlay';
 import Menu from '../menu/menu';
 import {LayersIcon} from '../icons/layers-icon';
 import {StoryIcon} from '../icons/story-icon';
+import showLayerSelectorAction from '../../actions/show-layer-selector';
 
 import styles from './navigation.styl';
 
 const Navigation: FunctionComponent = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.navigation}>
@@ -22,7 +25,7 @@ const Navigation: FunctionComponent = () => {
       <Button
         className={styles.button}
         label="layers"
-        onClick={() => console.log('placeholder')}
+        onClick={() => dispatch(showLayerSelectorAction(true))}
         icon={LayersIcon}
       />
       <Button

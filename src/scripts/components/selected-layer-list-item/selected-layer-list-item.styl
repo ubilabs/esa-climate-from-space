@@ -1,0 +1,27 @@
+@require '../../../variables.styl'
+
+.selectedLayerListItem
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: emCalc(11px) emCalc(32px)
+  background-color: $darkGrey4
+
+.layerTitle
+  display: flex
+  align-items: center
+  color: $textColor
+  font-weight: bold
+
+.layerIcon
+  margin-right: 1em
+  width: 24px
+  height: 24px
+  border: 1px solid $main
+  border-radius: 50%
+
+.removeIcon
+  width: 18px
+  height: 18px
+  cursor: pointer
+  fill: $textDefault

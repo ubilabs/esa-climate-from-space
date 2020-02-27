@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {createPortal} from 'react-dom';
 
 import Button from '../button/button';
-import {RemoveIcon} from '../icons/remove-icon';
+import {CloseIcon} from '../icons/close-icon';
 
 import styles from './overlay.styl';
 
@@ -16,7 +16,7 @@ const Overlay: FunctionComponent<Props> = ({children, onClose}) => {
   const Content = (
     <div className={styles.overlay} onClick={() => onClose()}>
       <Button
-        icon={RemoveIcon}
+        icon={CloseIcon}
         className={styles.closeButton}
         onClick={() => onClose()}
       />
