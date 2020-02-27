@@ -20,7 +20,7 @@ const LayerList: FunctionComponent<Props> = ({
   onCompareSelect
 }) => {
   const [mainId] = selectedIds;
-  const mainSelected = mainId !== '';
+  const mainSelected = Boolean(mainId);
 
   return (
     <ul className={styles.layerList}>

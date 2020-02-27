@@ -14,9 +14,11 @@ import styles from './layer-selector.styl';
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
   const layers = useSelector(layersSelector);
-  const [selectedMainId, setSelectedMainId] = useState<string>('clouds');
-  const [selectedCompareId, setSelectedCompareId] = useState<string>('');
-  const selectedIds = [selectedMainId, selectedCompareId];
+  const [selectedMainId, setSelectedMainId] = useState<string | null>('clouds');
+  const [selectedCompareId, setSelectedCompareId] = useState<string | null>();
+  const selectedIds = [selectedMainId, selectedCompareId].filter(
+    Boolean
+  ) as string[];
   const selectedMainLayer = layers.find(layer => layer.id === selectedMainId);
   const selectedCompareLayer = layers.find(
     layer => layer.id === selectedCompareId
@@ -37,14 +39,14 @@ const LayerSelector: FunctionComponent = () => {
       {selectedMainLayer && (
         <SelectedLayerListItem
           layer={selectedMainLayer}
-          onRemove={() => setSelectedMainId('')}
+          onRemove={() => setSelectedMainId(null)}
         />
       )}
       {selectedCompareLayer && (
         <SelectedLayerListItem
           showRemoveButton
           layer={selectedCompareLayer}
-          onRemove={() => setSelectedCompareId('')}
+          onRemove={() => setSelectedCompareId(null)}
         />
       )}
       <LayerList
