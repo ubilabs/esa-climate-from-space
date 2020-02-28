@@ -1,61 +1,60 @@
 import React, {FunctionComponent, useState} from 'react';
-import {useSelector} from 'react-redux';
-import {useIntl} from 'react-intl';
-import {useParams} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {FormattedMessage} from 'react-intl';
 
-import {layersSelector} from '../../selectors/layers/list';
-import {LayersIcon} from '../icons/layers-icon';
-import {CompareIcon} from '../icons/compare-icon';
+import Button from '../button/button';
+import {CloseIcon} from '../icons/close-icon';
+import showLayerSelectorAction from '../../actions/show-layer-selector';
 import LayerList from '../layer-list/layer-list';
-import Tabs from '../tabs/tabs';
-
-import {Tab} from '../../types/tab';
+import SelectedLayerListItem from '../selected-layer-list-item/selected-layer-list-item';
+import {layersSelector} from '../../selectors/layers/list';
 
 import styles from './layer-selector.styl';
 
 const LayerSelector: FunctionComponent = () => {
-  const intl = useIntl();
+  const dispatch = useDispatch();
   const layers = useSelector(layersSelector);
-  const {mainLayerId} = useParams();
-  const tabs: Tab[] = [
-    {
-      id: 'main',
-      label: intl.formatMessage({id: 'layerSelector.main'}),
-      icon: LayersIcon,
-      disabled: false
-    },
-    {
-      id: 'compare',
-      label: intl.formatMessage({id: 'layerSelector.compare'}),
-      icon: CompareIcon,
-      disabled: !mainLayerId
-    }
-  ];
-
-  const [activeTabId, setActiveTabId] = useState(tabs[0].id);
-  const [isOpen, setIsOpen] = useState(false);
-  const isMainTabSelected = activeTabId === tabs[0].id;
-
-  const onTabClick = (id: string) => {
-    setActiveTabId(id);
-
-    if (!isOpen) {
-      setIsOpen(true);
-      return;
-    }
-    if (activeTabId === id) {
-      setIsOpen(false);
-    }
-  };
+  const [selectedMainId, setSelectedMainId] = useState<string | null>('clouds');
+  const [selectedCompareId, setSelectedCompareId] = useState<string | null>();
+  const selectedIds = [selectedMainId, selectedCompareId].filter(
+    Boolean
+  ) as string[];
+  const selectedMainLayer = layers.find(layer => layer.id === selectedMainId);
+  const selectedCompareLayer = layers.find(
+    layer => layer.id === selectedCompareId
+  );
 
   return (
-    <div className={styles.layerContainer}>
-      <Tabs
-        tabs={tabs}
-        activeTabId={activeTabId}
-        onTabChanged={id => onTabClick(id)}
+    <div className={styles.layerSelector}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>
+          <FormattedMessage id={'layers'} />
+        </h1>
+        <Button
+          className={styles.button}
+          icon={CloseIcon}
+          onClick={() => dispatch(showLayerSelectorAction(false))}
+        />
+      </div>
+      {selectedMainLayer && (
+        <SelectedLayerListItem
+          layer={selectedMainLayer}
+          onRemove={() => setSelectedMainId(null)}
+        />
+      )}
+      {selectedCompareLayer && (
+        <SelectedLayerListItem
+          showRemoveButton
+          layer={selectedCompareLayer}
+          onRemove={() => setSelectedCompareId(null)}
+        />
+      )}
+      <LayerList
+        layers={layers}
+        selectedIds={selectedIds}
+        onMainSelect={layerId => setSelectedMainId(layerId)}
+        onCompareSelect={layerId => setSelectedCompareId(layerId)}
       />
-      {isOpen && <LayerList isMain={isMainTabSelected} layers={layers} />}
     </div>
   );
 };

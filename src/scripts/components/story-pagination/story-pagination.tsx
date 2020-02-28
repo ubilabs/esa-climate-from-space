@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import {PreviousIcon} from '../icons/previous-icon';
 import {NextIcon} from '../icons/next-icon';
-import {RemoveIcon} from '../icons/remove-icon';
+import {CloseIcon} from '../icons/close-icon';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -92,7 +92,7 @@ const StoryPagination: FunctionComponent<Props> = ({
             <Link
               to={`/${mode}`}
               title={intl.formatMessage({id: 'closeStory'})}>
-              <RemoveIcon />
+              <CloseIcon />
             </Link>
           </div>
         )}
