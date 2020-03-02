@@ -8,7 +8,6 @@ import {HashRouter as Router} from 'react-router-dom';
 
 import rootReducer from '../../reducers/index';
 import {languageSelector} from '../../selectors/language';
-import {showLayerSelector} from '../../selectors/show-layer-selector';
 import UrlSync from '../url-sync/url-sync';
 import LayerLoader from '../layer-loader/layer-loader';
 import Init from '../init/init';
@@ -34,7 +33,6 @@ const App: FunctionComponent = () => (
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
-  const layerSelector = useSelector(showLayerSelector);
 
   return (
     <Router>
@@ -43,14 +41,9 @@ const TranslatedApp: FunctionComponent = () => {
           <div className={styles.logo}>
             <EsaLogo />
           </div>
-          {layerSelector ? (
-            <LayerSelector />
-          ) : (
-            <React.Fragment>
-              <Navigation />
-              <GlobeZoom />
-            </React.Fragment>
-          )}
+          <Navigation />
+          <GlobeZoom />
+          <LayerSelector />
         </div>
       </IntlProvider>
       <UrlSync />

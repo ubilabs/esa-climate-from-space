@@ -1,11 +1,13 @@
 @require '../../../variables.styl'
 
 :global(html), :global(body), :global(#app)
+  overflow: hidden
   margin: 0
   height: 100%
 
 .app
   position: relative
+  overflow: hidden
   width: 100%
   height: 100%
   background-color: $black
@@ -17,3 +19,9 @@
   left: emCalc(22px)
   z-index: 1
   fill: $textWhite
+
+.main
+  display: flex
+  flex-direction: row
+  width: 100%
+  height: 100%

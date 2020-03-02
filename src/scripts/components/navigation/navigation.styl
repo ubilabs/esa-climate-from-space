@@ -1,5 +1,10 @@
 @require '../../../variables.styl'
 
+@font-face
+  font-style: normal
+  font-family: NotesEsa
+  src: url('../../../fonts/NotesEsaReg.otf')
+
 .navigation
   position: absolute
   top: emCalc(22px)
@@ -7,5 +12,9 @@
   display: flex
 
 .button
-  &:not(:first-child)
+  font-size: emCalc(18px)
+  font-family: NotesEsa
+  line-height: emCalc(22px)
+
+  .button, &:not(:first-child)
     padding-left: emCalc(30px)

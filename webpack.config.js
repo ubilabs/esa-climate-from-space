@@ -56,6 +56,16 @@ module.exports = (env, {mode} = {}) => {
             },
             {loader: 'stylus-loader'}
           ]
+        },
+        {
+          test: /\.(woff(2)?|ttf|otf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
         }
       ]
     },
