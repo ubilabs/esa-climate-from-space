@@ -16,6 +16,7 @@ import LayerSelector from '../layer-selector/layer-selector';
 import Navigation from '../navigation/navigation';
 import GlobeZoom from '../globe-zoom/globe-zoom';
 import {EsaLogo} from '../icons/esa-logo';
+import Globes from '../globes/globes';
 
 import translations from '../../i18n';
 
@@ -43,6 +44,11 @@ const TranslatedApp: FunctionComponent = () => {
           <div className={styles.logo}>
             <EsaLogo />
           </div>
+          <main className={styles.main}>
+            {false && <div>StoryContent</div>}
+            <Globes />
+            {false && <div>StoryMedia</div>}
+          </main>
           {layerSelector ? (
             <LayerSelector />
           ) : (
