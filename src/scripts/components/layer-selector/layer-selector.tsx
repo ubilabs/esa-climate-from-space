@@ -2,7 +2,7 @@ import React, {FunctionComponent, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {FormattedMessage} from 'react-intl';
 import {motion, AnimatePresence} from 'framer-motion';
-import {showLayerSelector} from '../../selectors/show-layer-selector';
+import {showLayerSelector as showLayerSelectorSelector} from '../../selectors/show-layer-selector';
 
 import Button from '../button/button';
 import {CloseIcon} from '../icons/close-icon';
@@ -16,7 +16,7 @@ import styles from './layer-selector.styl';
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
   const layers = useSelector(layersSelector);
-  const layerSelector = useSelector(showLayerSelector);
+  const showLayerSelector = useSelector(showLayerSelectorSelector);
   const [selectedMainId, setSelectedMainId] = useState<string | null>('clouds');
   const [selectedCompareId, setSelectedCompareId] = useState<string | null>();
   const selectedIds = [selectedMainId, selectedCompareId].filter(
@@ -29,7 +29,7 @@ const LayerSelector: FunctionComponent = () => {
 
   return (
     <AnimatePresence>
-      {layerSelector ? (
+      {showLayerSelector ? (
         <motion.div
           className={styles.layerSelector}
           initial={{x: '100%'}}
