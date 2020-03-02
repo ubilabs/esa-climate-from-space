@@ -1,21 +1,19 @@
 @require '../../../variables.styl'
 
-@font-face
-  font-style: normal
-  font-family: NotesEsa
-  src: url('../../../fonts/NotesEsaReg.otf')
-
 .layerSelector
   position: absolute
   top: 0
   right: 0
-  display: flex
-  flex-direction: column
   min-width: emCalc(300px)
   max-width: emCalc(500px)
   width: 33%
   height: 100%
   background-color: $darkGrey2
+
+.content
+  display: flex
+  flex-direction: column
+  height: 100%
 
 .header
   display: flex
