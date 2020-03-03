@@ -13,9 +13,9 @@ import {layerDetailsSelector} from '../../selectors/layers/layer-details';
 import setGlobeTime from '../../actions/set-globe-time';
 import {getTimeRanges} from '../../libs/get-time-ranges';
 import {State} from '../../reducers';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 
 import styles from './time-slider.styl';
-import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 
 // debounce the time update
 const DELAY = 200;

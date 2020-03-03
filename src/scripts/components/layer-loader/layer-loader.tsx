@@ -12,8 +12,8 @@ import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
  */
 const LayerLoader: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const selectedLayerds = useSelector(selectedLayerIdsSelector);
-  const {main, compare} = selectedLayerds;
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+  const {main, compare} = selectedLayerIds;
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, main)
   );

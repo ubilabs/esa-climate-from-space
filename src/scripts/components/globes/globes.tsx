@@ -24,10 +24,10 @@ import styles from './globes.styl';
 
 const Globes: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const selectedLayerds = useSelector(selectedLayerIdsSelector);
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
-  const {main, compare} = selectedLayerds;
+  const {main, compare} = selectedLayerIds;
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, main)
   );
