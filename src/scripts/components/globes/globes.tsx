@@ -5,47 +5,37 @@ import React, {
   useCallback
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {matchPath, useLocation} from 'react-router';
 
 import {layerListItemSelector} from '../../selectors/layers/list-item';
 import {globeViewSelector} from '../../selectors/globe/view';
 import {timeSelector} from '../../selectors/globe/time';
 import {projectionSelector} from '../../selectors/globe/projection';
 import {flyToSelector} from '../../selectors/fly-to';
-import {storyLayerSelector} from '../../selectors/story-layer';
 import setGlobeViewAction from '../../actions/set-globe-view';
 import Globe from '../globe/globe';
 import {getLayerTileUrl} from '../../libs/get-layer-tile-url';
 import {State} from '../../reducers';
 import {layerDetailsSelector} from '../../selectors/layers/layer-details';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 
 import {GlobeView} from '../../types/globe-view';
 
 import styles from './globes.styl';
 
 const Globes: FunctionComponent = () => {
-  const location = useLocation();
-  const match = matchPath<{mainLayerId?: string; compareLayerId?: string}>(
-    location.pathname,
-    {
-      path: ['/layers/:mainLayerId?/:compareLayerId?', '/'],
-      exact: true
-    }
-  );
   const dispatch = useDispatch();
+  const selectedLayerds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
-  const storyLayerId = useSelector(storyLayerSelector);
-  const mainLayerId = match?.params.mainLayerId || storyLayerId;
+  const {main, compare} = selectedLayerds;
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, mainLayerId)
+    layerDetailsSelector(state, main)
   );
-  const compareLayerId = match?.params.compareLayerId;
-  const compare = useSelector((state: State) =>
-    layerListItemSelector(state, compareLayerId)
+  const compareLayer = useSelector((state: State) =>
+    layerListItemSelector(state, compare)
   );
   const compareLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, compareLayerId)
+    layerDetailsSelector(state, compare)
   );
 
   const time = useSelector(timeSelector);
@@ -84,7 +74,7 @@ const Globes: FunctionComponent = () => {
         onMoveEnd={onMoveEndHandler}
       />
 
-      {compare && (
+      {compareLayer && (
         <Globe
           active={!isMainActive}
           layerType={compareLayerDetails?.type}

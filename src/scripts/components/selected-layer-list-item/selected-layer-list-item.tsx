@@ -9,7 +9,7 @@ import styles from './selected-layer-list-item.styl';
 interface Props {
   layer: LayerListItem;
   showRemoveButton?: boolean;
-  onRemove: () => void;
+  onRemove?: () => void;
 }
 
 const SelectedLayerListItem: FunctionComponent<Props> = ({
@@ -23,7 +23,13 @@ const SelectedLayerListItem: FunctionComponent<Props> = ({
       <span className={styles.layerTitle}>{layer.name}</span>
     </div>
     {showRemoveButton && (
-      <button className={styles.removeIcon} onClick={() => onRemove()}>
+      <button
+        className={styles.removeIcon}
+        onClick={() => {
+          if (typeof onRemove === 'function') {
+            onRemove();
+          }
+        }}>
         <RemoveIcon />
       </button>
     )}
