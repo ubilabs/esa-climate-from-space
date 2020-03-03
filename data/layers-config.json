@@ -1,0 +1,16 @@
+{
+  "clouds": {
+    "timeFormat": {
+      "year": "2-digit",
+      "month": "numeric",
+      "day": "numeric"
+    }
+  },
+  "burned_area": {
+    "timeFormat": {
+      "year": "2-digit",
+      "month": "numeric",
+      "day": "numeric"
+    }
+  }
+}

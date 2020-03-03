@@ -5,9 +5,11 @@ folder=$1
 mkdir -p upload/tiles
 mkdir upload/full
 
-mv tmp/tiles/$folder/metadata.json upload/
+rm tmp/tiles/$folder/metadata.json
 mv tmp/tiles/$folder/* upload/tiles/
+mv tmp/new-metadata.json upload/metadata.json
 mmv "tmp/full/$folder/*/0/0/0.png" "upload/full/#1.png"
-# mv tmp/dataset.zip upload/
 
-ls -la upload
+cd upload && zip -r ./package.zip ./*
+
+ls -la .
