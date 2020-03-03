@@ -3,35 +3,33 @@ import React, {FunctionComponent} from 'react';
 import LayerListItem from '../layer-list-item/layer-list-item';
 
 import {LayerListItem as LayerListItemType} from '../../types/layer-list';
+import {SelectedLayerIdsState} from '../../reducers/layers/selected-ids';
 
 import styles from './layer-list.styl';
 
 interface Props {
-  selectedIds: string[];
+  selectedLayerIds: SelectedLayerIdsState;
   layers: LayerListItemType[];
-  onMainSelect: (id: string) => void;
-  onCompareSelect: (id: string) => void;
+  onSelect: (id: string, isMain: boolean) => void;
 }
 
 const LayerList: FunctionComponent<Props> = ({
-  selectedIds,
+  selectedLayerIds,
   layers,
-  onMainSelect,
-  onCompareSelect
+  onSelect
 }) => {
-  const [mainId] = selectedIds;
-  const mainSelected = Boolean(mainId);
+  const {mainId} = selectedLayerIds;
+  const isMainSelected = Boolean(mainId);
 
   return (
     <ul className={styles.layerList}>
       {layers
-        .filter(layer => !selectedIds.includes(layer.id))
+        .filter(layer => !Object.values(selectedLayerIds).includes(layer.id))
         .map(layer => (
           <li key={layer.id}>
             <LayerListItem
-              onMainSelect={id => onMainSelect(id)}
-              onCompareSelect={id => onCompareSelect(id)}
-              isMainSelected={mainSelected}
+              onSelect={(id, isMain) => onSelect(id, isMain)}
+              isMainSelected={isMainSelected}
               layer={layer}
             />
           </li>

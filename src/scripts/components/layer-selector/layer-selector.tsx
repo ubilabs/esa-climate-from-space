@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, {FunctionComponent} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {FormattedMessage} from 'react-intl';
 import {motion, AnimatePresence} from 'framer-motion';
@@ -12,19 +12,19 @@ import SelectedLayerListItem from '../selected-layer-list-item/selected-layer-li
 import {layersSelector} from '../../selectors/layers/list';
 
 import styles from './layer-selector.styl';
+import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
   const layers = useSelector(layersSelector);
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const showLayerSelector = useSelector(showLayerSelectorSelector);
-  const [selectedMainId, setSelectedMainId] = useState<string | null>('clouds');
-  const [selectedCompareId, setSelectedCompareId] = useState<string | null>();
-  const selectedIds = [selectedMainId, selectedCompareId].filter(
-    Boolean
-  ) as string[];
-  const selectedMainLayer = layers.find(layer => layer.id === selectedMainId);
+  const selectedMainLayer = layers.find(
+    layer => layer.id === selectedLayerIds.mainId
+  );
   const selectedCompareLayer = layers.find(
-    layer => layer.id === selectedCompareId
+    layer => layer.id === selectedLayerIds.compareId
   );
 
   return (
@@ -50,23 +50,22 @@ const LayerSelector: FunctionComponent = () => {
               />
             </div>
             {selectedMainLayer && (
-              <SelectedLayerListItem
-                layer={selectedMainLayer}
-                onRemove={() => setSelectedMainId(null)}
-              />
+              <SelectedLayerListItem layer={selectedMainLayer} />
             )}
             {selectedCompareLayer && (
               <SelectedLayerListItem
-                showRemoveButton
                 layer={selectedCompareLayer}
-                onRemove={() => setSelectedCompareId(null)}
+                onRemove={() =>
+                  dispatch(setSelectedLayerIdsAction(null, false))
+                }
               />
             )}
             <LayerList
               layers={layers}
-              selectedIds={selectedIds}
-              onMainSelect={layerId => setSelectedMainId(layerId)}
-              onCompareSelect={layerId => setSelectedCompareId(layerId)}
+              selectedLayerIds={selectedLayerIds}
+              onSelect={(layerId, isMain) =>
+                dispatch(setSelectedLayerIdsAction(layerId, isMain))
+              }
             />
           </div>
         </motion.div>
