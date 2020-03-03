@@ -13,12 +13,12 @@ import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 const LayerLoader: FunctionComponent = () => {
   const dispatch = useDispatch();
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  const {main, compare} = selectedLayerIds;
+  const {mainId, compareId} = selectedLayerIds;
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, main)
+    layerDetailsSelector(state, mainId)
   );
   const compareLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, compare)
+    layerDetailsSelector(state, compareId)
   );
 
   // load layer list on mount
@@ -28,14 +28,14 @@ const LayerLoader: FunctionComponent = () => {
 
   // fetch layer if it is selected and not already downloaded
   useEffect(() => {
-    if (main && !mainLayerDetails) {
-      dispatch(fetchLayerAction(main));
+    if (mainId && !mainLayerDetails) {
+      dispatch(fetchLayerAction(mainId));
     }
 
-    if (compare && !compareLayerDetails) {
-      dispatch(fetchLayerAction(compare));
+    if (compareId && !compareLayerDetails) {
+      dispatch(fetchLayerAction(compareId));
     }
-  }, [dispatch, main, mainLayerDetails, compare, compareLayerDetails]);
+  }, [dispatch, mainId, mainLayerDetails, compareId, compareLayerDetails]);
 
   return null;
 };

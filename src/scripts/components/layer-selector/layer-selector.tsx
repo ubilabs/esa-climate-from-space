@@ -12,7 +12,7 @@ import SelectedLayerListItem from '../selected-layer-list-item/selected-layer-li
 import {layersSelector} from '../../selectors/layers/list';
 
 import styles from './layer-selector.styl';
-import setSelectedLayerIdsAction from '../../actions/set-selected-layer-ids';
+import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
 import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 
 const LayerSelector: FunctionComponent = () => {
@@ -21,10 +21,10 @@ const LayerSelector: FunctionComponent = () => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const showLayerSelector = useSelector(showLayerSelectorSelector);
   const selectedMainLayer = layers.find(
-    layer => layer.id === selectedLayerIds.main
+    layer => layer.id === selectedLayerIds.mainId
   );
   const selectedCompareLayer = layers.find(
-    layer => layer.id === selectedLayerIds.compare
+    layer => layer.id === selectedLayerIds.compareId
   );
 
   return (
@@ -54,7 +54,6 @@ const LayerSelector: FunctionComponent = () => {
             )}
             {selectedCompareLayer && (
               <SelectedLayerListItem
-                showRemoveButton
                 layer={selectedCompareLayer}
                 onRemove={() =>
                   dispatch(setSelectedLayerIdsAction(null, false))

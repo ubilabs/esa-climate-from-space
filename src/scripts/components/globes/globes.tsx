@@ -27,15 +27,15 @@ const Globes: FunctionComponent = () => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
-  const {main, compare} = selectedLayerIds;
+  const {mainId, compareId} = selectedLayerIds;
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, main)
+    layerDetailsSelector(state, mainId)
   );
   const compareLayer = useSelector((state: State) =>
-    layerListItemSelector(state, compare)
+    layerListItemSelector(state, compareId)
   );
   const compareLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, compare)
+    layerDetailsSelector(state, compareId)
   );
 
   const time = useSelector(timeSelector);

@@ -1,27 +1,27 @@
 import {
-  SET_SELECTED_LAYER_IDS,
-  SetSelectedLayerIdsAction
-} from '../../actions/set-selected-layer-ids';
+  SET_SELECTED_LAYER_ID,
+  SetSelectedLayerIdAction
+} from '../../actions/set-selected-layer-id';
 
 export interface SelectedLayerIdsState {
-  main: string | null;
-  compare: string | null;
+  mainId: string | null;
+  compareId: string | null;
 }
 
 const initialState = {
-  main: null,
-  compare: null
+  mainId: null,
+  compareId: null
 };
 
 function selectedLayerIdsReducer(
   state: SelectedLayerIdsState = initialState,
-  action: SetSelectedLayerIdsAction
+  action: SetSelectedLayerIdAction
 ): SelectedLayerIdsState {
   switch (action.type) {
-    case SET_SELECTED_LAYER_IDS:
+    case SET_SELECTED_LAYER_ID:
       const newState = {...state};
-      const key = action.isPrimary ? 'main' : 'compare';
-      newState[key] = action.layerIds;
+      const key = action.isPrimary ? 'mainId' : 'compareId';
+      newState[key] = action.layerId;
       return newState;
     default:
       return state;

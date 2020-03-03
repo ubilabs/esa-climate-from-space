@@ -22,16 +22,16 @@ const DELAY = 200;
 
 const TimeSlider: FunctionComponent = () => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  const {main, compare} = selectedLayerIds;
+  const {mainId, compareId} = selectedLayerIds;
   const dispatch = useDispatch();
   const [time, setTime] = useState(0);
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const language = useSelector(languageSelector);
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, main)
+    layerDetailsSelector(state, mainId)
   );
   const compareLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, compare)
+    layerDetailsSelector(state, compareId)
   );
 
   // date format

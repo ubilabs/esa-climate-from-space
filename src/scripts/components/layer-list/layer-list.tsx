@@ -18,8 +18,8 @@ const LayerList: FunctionComponent<Props> = ({
   layers,
   onSelect
 }) => {
-  const {main} = selectedLayerIds;
-  const isMainSelected = Boolean(main);
+  const {mainId} = selectedLayerIds;
+  const isMainSelected = Boolean(mainId);
 
   return (
     <ul className={styles.layerList}>

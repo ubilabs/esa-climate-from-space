@@ -8,21 +8,16 @@ import styles from './selected-layer-list-item.styl';
 
 interface Props {
   layer: LayerListItem;
-  showRemoveButton?: boolean;
   onRemove?: () => void;
 }
 
-const SelectedLayerListItem: FunctionComponent<Props> = ({
-  layer,
-  showRemoveButton,
-  onRemove
-}) => (
+const SelectedLayerListItem: FunctionComponent<Props> = ({layer, onRemove}) => (
   <div className={styles.selectedLayerListItem}>
     <div className={styles.layerTitle}>
       <div className={styles.layerIcon}></div>
       <span className={styles.layerTitle}>{layer.name}</span>
     </div>
-    {showRemoveButton && (
+    {onRemove && (
       <button
         className={styles.removeIcon}
         onClick={() => {
