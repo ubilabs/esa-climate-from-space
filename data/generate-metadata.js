@@ -13,6 +13,14 @@ if (!variableId || !layerId || !layer) {
   throw new Error('No valid layer or variable Id defined!');
 }
 
+// get the number of zoom levels by counting the <TileSet> tags in the tilemapresource.xml file
+const tileMapResource = fs.readFileSync(
+  path.join(__dirname, `../tmp/tiles/${variableId}/0/tilemapresource.xml`),
+  'utf8'
+);
+const zoomLevels = tileMapResource.match(/<TileSet\s/g).length;
+
+// get the tiles metadata
 const tiles = require(path.join(
   __dirname,
   `../tmp/tiles/${variableId}/metadata.json`
@@ -21,6 +29,7 @@ const timestamps = tiles.coordinates.time;
 const metadata = {
   ...layer,
   id: layerId,
+  zoomLevels,
   timestamps
 };
 
