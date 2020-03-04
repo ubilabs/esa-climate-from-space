@@ -1,12 +1,6 @@
 {
-  "clouds": {
-    "timeFormat": {
-      "year": "2-digit",
-      "month": "numeric",
-      "day": "numeric"
-    }
-  },
-  "burned_area": {
+  "fire.burned_area": {
+    "colorMap": "hot",
     "timeFormat": {
       "year": "2-digit",
       "month": "numeric",

@@ -1,9 +1,10 @@
 import cate.ops
 import sys
+import json
 from argparse import ArgumentParser
-from colors import colors
 
 parser = ArgumentParser()
+parser.add_argument("-l", "--layer", dest="layer_name")
 parser.add_argument("-d", "--dataset", dest="dataset_id")
 parser.add_argument("-v", "--variable", dest="variable_id")
 parser.add_argument("-t", "--time_range", dest="time_range")
@@ -16,6 +17,7 @@ if not args.output:
 # Cloud build substitutions do not allow commas
 time_range = args.time_range.replace('.', ',');
 
+print("layer_name: ", args.layer_name)
 print("dataset_id: ", args.dataset_id)
 print("variable_id: ", args.variable_id)
 print("time_range: ", time_range)
@@ -29,8 +31,12 @@ ds.to_zarr(args.output)
 min = float(ds[args.variable_id].min(dim="time", skipna=True).min())
 max = float(ds[args.variable_id].max(dim="time", skipna=True).max())
 
+# load layer config file for colormap
+with open('./data/layers-config.json') as f:
+  layer_config = json.load(f)
+
 style_config = """Styles:
-  - Identifier: cci
+  - Identifier: cfs
     ColorMappings:
       {variable}:
         ColorBar: {colormap}
@@ -38,7 +44,7 @@ style_config = """Styles:
           min=min,
           max=max,
           variable=args.variable_id,
-          colormap=colors[args.variable_id]
+          colormap=layer_config[args.layer_name]['colorMap']
         )
 
 print(style_config)
