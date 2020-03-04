@@ -10,6 +10,10 @@ import showLayerSelectorAction from '../../actions/show-layer-selector';
 import LayerList from '../layer-list/layer-list';
 import SelectedLayerListItem from '../selected-layer-list-item/selected-layer-list-item';
 import {layersSelector} from '../../selectors/layers/list';
+import {replaceUrlPlaceholders} from '../../libs/replace-url-placeholders';
+import config from '../../config/main';
+// @ts-ignore
+import {isElectron, downloadUrl} from 'electronHelpers'; // this is an webpack alias
 
 import styles from './layer-selector.styl';
 
@@ -26,6 +30,13 @@ const LayerSelector: FunctionComponent = () => {
   const selectedCompareLayer = layers.find(
     layer => layer.id === selectedCompareId
   );
+
+  const onDownload = isElectron()
+    ? (layerId: string) =>
+        downloadUrl(
+          replaceUrlPlaceholders(config.api.layerOfflinePackage, {id: layerId})
+        )
+    : null;
 
   return (
     <AnimatePresence>
@@ -67,6 +78,7 @@ const LayerSelector: FunctionComponent = () => {
               selectedIds={selectedIds}
               onMainSelect={layerId => setSelectedMainId(layerId)}
               onCompareSelect={layerId => setSelectedCompareId(layerId)}
+              onDownload={onDownload}
             />
           </div>
         </motion.div>

@@ -10,13 +10,15 @@ interface Props {
   isMainSelected: boolean;
   onMainSelect: (id: string) => void;
   onCompareSelect: (id: string) => void;
+  onDownload: null | ((id: string) => void);
 }
 
 const LayerListItem: FunctionComponent<Props> = ({
   layer,
   isMainSelected,
   onMainSelect,
-  onCompareSelect
+  onCompareSelect,
+  onDownload
 }) => (
   <div className={styles.layerItem} onClick={() => onMainSelect(layer.id)}>
     <span className={styles.layerTitle}>{layer.name}</span>
@@ -29,6 +31,9 @@ const LayerListItem: FunctionComponent<Props> = ({
         }}>
         <FormattedMessage id={'layerSelector.compare'} />
       </button>
+    )}
+    {onDownload && (
+      <button onClick={() => onDownload(layer.id)}>Download</button>
     )}
   </div>
 );

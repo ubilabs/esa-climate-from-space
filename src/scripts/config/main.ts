@@ -31,6 +31,8 @@ export default {
       'https://storage.googleapis.com/esa-cfs-tiles/test/{id}/{timeIndex}/{z}/{y}/{x}.png',
     layerSingleImage:
       'https://storage.googleapis.com/esa-cfs-tiles/test/{id}/{timeIndex}.jpg',
+    layerOfflinePackage:
+      'https://storage.googleapis.com/esa-cfs-tiles/generated/{id}/package.zip',
     stories:
       'https://storage.googleapis.com/esa-cfs-storage/stories/stories-{lang}.json',
     story:
