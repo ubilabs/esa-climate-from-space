@@ -28,7 +28,7 @@ export default {
     layer:
       'https://storage.googleapis.com/esa-cfs-tiles/generated/{id}/metadata.json',
     layerTiles:
-      'https://storage.googleapis.com/esa-cfs-tiles/generated/{id}/{timeIndex}/{z}/{x}/{reverseY}.png',
+      'https://storage.googleapis.com/esa-cfs-tiles/generated/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png',
     layerOfflinePackage:
       'https://storage.googleapis.com/esa-cfs-tiles/generated/{id}/package.zip',
     stories:

@@ -29,10 +29,10 @@ export function getLayerTileUrl(
 function getLayerTime(sliderTime: number, timestamps: string[]): number {
   let index = timestamps.length - 1;
 
-  for (let i = timestamps.length - 1; i > 0; i--) {
+  for (let i = timestamps.length - 1; i >= 0; i--) {
     const layerTime = Number(new Date(timestamps[i]));
 
-    if (sliderTime > layerTime) {
+    if (sliderTime >= layerTime) {
       index = i;
       break;
     }

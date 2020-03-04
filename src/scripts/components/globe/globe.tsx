@@ -14,7 +14,6 @@ import {
   Viewer,
   SceneMode,
   Color,
-  SingleTileImageryProvider,
   GeographicTilingScheme,
   TileMapServiceImageryProvider,
   UrlTemplateImageryProvider,
@@ -185,7 +184,7 @@ const Globe: FunctionComponent<Props> = ({
         url: tilesUrl,
         tilingScheme: new GeographicTilingScheme(),
         minimumLevel: 0,
-        maximumLevel: zoomLevels,
+        maximumLevel: zoomLevels - 1,
         tileWidth: 256,
         tileHeight: 256
       });
@@ -220,7 +219,7 @@ const Globe: FunctionComponent<Props> = ({
         layers.remove(layer, true);
       }
     }
-  }, [viewer, tilesUrl]);
+  }, [viewer, tilesUrl, zoomLevels]);
 
   // fly to location
   useEffect(() => {
