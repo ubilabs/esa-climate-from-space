@@ -48,10 +48,10 @@ const cesiumOptions = {
 
 interface Props {
   active: boolean;
-  layerType?: string;
   view: GlobeView;
   projectionState: GlobeProjectionState;
-  imageUrl: string | null;
+  tilesUrl: string | null;
+  zoomLevels: number;
   flyTo: GlobeView | null;
   onMouseEnter: () => void;
   onChange: (view: GlobeView) => void;
@@ -61,9 +61,9 @@ interface Props {
 const Globe: FunctionComponent<Props> = ({
   view,
   projectionState,
-  imageUrl,
+  tilesUrl,
+  zoomLevels,
   active,
-  layerType,
   flyTo,
   onMouseEnter,
   onChange,
@@ -178,21 +178,17 @@ const Globe: FunctionComponent<Props> = ({
       return;
     }
 
-    const url = imageUrl;
     const layers = viewer.scene.imageryLayers;
 
-    if (url) {
-      const imageProvider =
-        layerType === 'tiles'
-          ? new UrlTemplateImageryProvider({
-              url,
-              tilingScheme: new GeographicTilingScheme(),
-              minimumLevel: 0,
-              maximumLevel: 3,
-              tileWidth: 270,
-              tileHeight: 270
-            })
-          : new SingleTileImageryProvider({url});
+    if (tilesUrl) {
+      const imageProvider = new UrlTemplateImageryProvider({
+        url: tilesUrl,
+        tilingScheme: new GeographicTilingScheme(),
+        minimumLevel: 0,
+        maximumLevel: zoomLevels,
+        tileWidth: 256,
+        tileHeight: 256
+      });
 
       imageProvider.readyPromise.then(() => {
         const newLayer = viewer.scene.imageryLayers.addImageryProvider(
@@ -224,7 +220,7 @@ const Globe: FunctionComponent<Props> = ({
         layers.remove(layer, true);
       }
     }
-  }, [layerType, viewer, imageUrl]);
+  }, [viewer, tilesUrl]);
 
   // fly to location
   useEffect(() => {

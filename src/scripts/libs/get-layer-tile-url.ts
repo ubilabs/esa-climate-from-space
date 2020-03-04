@@ -16,12 +16,7 @@ export function getLayerTileUrl(
   }
 
   const timeIndex = getLayerTime(time, layer.timestamps).toString();
-  const imageBaseUrl =
-    layer.type === 'tiles'
-      ? config.api.layerTiles
-      : config.api.layerSingleImage;
-
-  return replaceUrlPlaceholders(imageBaseUrl, {
+  return replaceUrlPlaceholders(config.api.layerTiles, {
     id: layer.id,
     timeIndex
   });
