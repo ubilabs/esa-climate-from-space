@@ -1,8 +1,8 @@
 import React, {FunctionComponent} from 'react';
-import {FormattedMessage} from 'react-intl';
 import {useDispatch} from 'react-redux';
 
 import setLanguageAction from '../../actions/set-language';
+import Button from '../button/button';
 
 import {Language} from '../../types/language';
 
@@ -16,9 +16,11 @@ const LanguageSelector: FunctionComponent = () => {
   return (
     <ul>
       {languages.map(language => (
-        <li key={language} onClick={() => setLanguage(language)}>
-          <FormattedMessage id={`language.${language}`} />
-        </li>
+        <Button
+          key={language}
+          onClick={() => setLanguage(language)}
+          label={`language.${language}`}
+        />
       ))}
     </ul>
   );

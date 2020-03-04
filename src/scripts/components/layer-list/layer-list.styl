@@ -1,31 +1,8 @@
 @require '../../../variables.styl'
 
 .layerList
-  overflow: scroll
+  overflow-y: scroll
   margin: 0
   padding: 0
-  height: calc(100vh - 80px)
-  background-color: $darkGrey1
+  height: 100%
   list-style: none
-
-.layerItem
-  padding: 15px
-  color: $textDefault
-  font-size: 1.125em
-  cursor: pointer
-
-.layerItem:hover, .layerItem:focus
-  background: $darkGray4
-  color: $textColor
-
-.layerItemSelected, .layerItemSelected:hover, .layerItemSelected:focus
-  background: $darkGray4
-  color: $textColor
-
-.subLayerItem
-  margin: 5px
-  padding: 15px
-
-.subLayerItemSelected
-  background: $darkGray4
-  color: $textColor

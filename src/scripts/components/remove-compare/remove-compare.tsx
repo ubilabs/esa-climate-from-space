@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {useIntl} from 'react-intl';
 import {Link, matchPath, useLocation} from 'react-router-dom';
 
-import {RemoveIcon} from '../icons/remove-icon';
+import {CloseIcon} from '../icons/close-icon';
 
 import styles from './remove-compare.styl';
 
@@ -29,7 +29,7 @@ const RemoveCompare: FunctionComponent = () => {
         <button
           className={styles.icon}
           title={intl.formatMessage({id: 'removeCompare'})}>
-          <RemoveIcon />
+          <CloseIcon />
         </button>
       </Link>
     </div>

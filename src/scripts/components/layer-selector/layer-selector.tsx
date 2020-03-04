@@ -1,62 +1,76 @@
-import React, {FunctionComponent, useState} from 'react';
-import {useSelector} from 'react-redux';
-import {useIntl} from 'react-intl';
-import {useParams} from 'react-router-dom';
+import React, {FunctionComponent} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {FormattedMessage} from 'react-intl';
+import {motion, AnimatePresence} from 'framer-motion';
+import {showLayerSelector as showLayerSelectorSelector} from '../../selectors/show-layer-selector';
 
-import {layersSelector} from '../../selectors/layers/list';
-import {LayersIcon} from '../icons/layers-icon';
-import {CompareIcon} from '../icons/compare-icon';
+import Button from '../button/button';
+import {CloseIcon} from '../icons/close-icon';
+import showLayerSelectorAction from '../../actions/show-layer-selector';
 import LayerList from '../layer-list/layer-list';
-import Tabs from '../tabs/tabs';
-
-import {Tab} from '../../types/tab';
+import SelectedLayerListItem from '../selected-layer-list-item/selected-layer-list-item';
+import {layersSelector} from '../../selectors/layers/list';
 
 import styles from './layer-selector.styl';
+import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 
 const LayerSelector: FunctionComponent = () => {
-  const intl = useIntl();
+  const dispatch = useDispatch();
   const layers = useSelector(layersSelector);
-  const {mainLayerId} = useParams();
-  const tabs: Tab[] = [
-    {
-      id: 'main',
-      label: intl.formatMessage({id: 'layerSelector.main'}),
-      icon: LayersIcon,
-      disabled: false
-    },
-    {
-      id: 'compare',
-      label: intl.formatMessage({id: 'layerSelector.compare'}),
-      icon: CompareIcon,
-      disabled: !mainLayerId
-    }
-  ];
-
-  const [activeTabId, setActiveTabId] = useState(tabs[0].id);
-  const [isOpen, setIsOpen] = useState(false);
-  const isMainTabSelected = activeTabId === tabs[0].id;
-
-  const onTabClick = (id: string) => {
-    setActiveTabId(id);
-
-    if (!isOpen) {
-      setIsOpen(true);
-      return;
-    }
-    if (activeTabId === id) {
-      setIsOpen(false);
-    }
-  };
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+  const showLayerSelector = useSelector(showLayerSelectorSelector);
+  const selectedMainLayer = layers.find(
+    layer => layer.id === selectedLayerIds.mainId
+  );
+  const selectedCompareLayer = layers.find(
+    layer => layer.id === selectedLayerIds.compareId
+  );
 
   return (
-    <div className={styles.layerContainer}>
-      <Tabs
-        tabs={tabs}
-        activeTabId={activeTabId}
-        onTabChanged={id => onTabClick(id)}
-      />
-      {isOpen && <LayerList isMain={isMainTabSelected} layers={layers} />}
-    </div>
+    <AnimatePresence>
+      {showLayerSelector ? (
+        <motion.div
+          className={styles.layerSelector}
+          initial={{x: '100%'}}
+          animate={{x: 0}}
+          transition={{type: 'spring', damping: 300, ease: 'easeOut'}}
+          exit={{x: '100%'}}>
+          <div className={styles.content}>
+            <div className={styles.header}>
+              <h1 className={styles.title}>
+                <FormattedMessage id={'layers'} />
+              </h1>
+              <Button
+                className={styles.button}
+                icon={CloseIcon}
+                onClick={() => {
+                  dispatch(showLayerSelectorAction(false));
+                }}
+              />
+            </div>
+            {selectedMainLayer && (
+              <SelectedLayerListItem layer={selectedMainLayer} />
+            )}
+            {selectedCompareLayer && (
+              <SelectedLayerListItem
+                layer={selectedCompareLayer}
+                onRemove={() =>
+                  dispatch(setSelectedLayerIdsAction(null, false))
+                }
+              />
+            )}
+            <LayerList
+              layers={layers}
+              selectedLayerIds={selectedLayerIds}
+              onSelect={(layerId, isMain) =>
+                dispatch(setSelectedLayerIdsAction(layerId, isMain))
+              }
+            />
+          </div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
   );
 };
 
