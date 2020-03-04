@@ -16,7 +16,7 @@ const GlobeNavigation: FunctionComponent = () => {
   const label =
     projectionState.projection === GlobeProjection.Sphere ? '2D' : '3D';
 
-  const onButtonClickHandler = () => {
+  const onProjectionHandler = () => {
     const newProjection =
       projectionState.projection === GlobeProjection.Sphere
         ? GlobeProjection.PlateCaree
@@ -27,7 +27,7 @@ const GlobeNavigation: FunctionComponent = () => {
 
   return (
     <div className={styles.globeNavigation}>
-      <Button label={label} onClick={() => onButtonClickHandler()} />
+      <Button label={label} onClick={() => onProjectionHandler()} />
       <Button
         className={styles.compassIcon}
         icon={CompassIcon}
