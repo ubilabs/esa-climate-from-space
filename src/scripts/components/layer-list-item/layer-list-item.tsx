@@ -8,25 +8,23 @@ import styles from './layer-list-item.styl';
 interface Props {
   layer: LayerListItemType;
   isMainSelected: boolean;
-  onMainSelect: (id: string) => void;
-  onCompareSelect: (id: string) => void;
+  onSelect: (id: string, isMain: boolean) => void;
   onDownload: null | ((id: string) => void);
 }
 
 const LayerListItem: FunctionComponent<Props> = ({
   layer,
   isMainSelected,
-  onMainSelect,
-  onCompareSelect,
+  onSelect,
   onDownload
 }) => (
-  <div className={styles.layerItem} onClick={() => onMainSelect(layer.id)}>
+  <div className={styles.layerItem} onClick={() => onSelect(layer.id, true)}>
     <span className={styles.layerTitle}>{layer.name}</span>
     {isMainSelected && (
       <button
         className={styles.compare}
         onClick={event => {
-          onCompareSelect(layer.id);
+          onSelect(layer.id, false);
           event.stopPropagation();
         }}>
         <FormattedMessage id={'layerSelector.compare'} />

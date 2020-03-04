@@ -6,7 +6,6 @@ import React, {
   useCallback
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {useParams} from 'react-router';
 import debounce from 'lodash.debounce';
 
 import {languageSelector} from '../../selectors/language';
@@ -14,6 +13,7 @@ import {layerDetailsSelector} from '../../selectors/layers/layer-details';
 import setGlobeTime from '../../actions/set-globe-time';
 import {getTimeRanges} from '../../libs/get-time-ranges';
 import {State} from '../../reducers';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 
 import styles from './time-slider.styl';
 
@@ -21,16 +21,17 @@ import styles from './time-slider.styl';
 const DELAY = 200;
 
 const TimeSlider: FunctionComponent = () => {
-  const {mainLayerId, compareLayerId} = useParams();
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+  const {mainId, compareId} = selectedLayerIds;
   const dispatch = useDispatch();
   const [time, setTime] = useState(0);
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const language = useSelector(languageSelector);
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, mainLayerId)
+    layerDetailsSelector(state, mainId)
   );
   const compareLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, compareLayerId)
+    layerDetailsSelector(state, compareId)
   );
 
   // date format
@@ -41,7 +42,7 @@ const TimeSlider: FunctionComponent = () => {
   );
 
   // ranges
-  const {main, compare, combined} = useMemo(
+  const {main: rangeMain, compare: rangeCompare, combined} = useMemo(
     () => getTimeRanges(mainLayerDetails, compareLayerDetails),
     [mainLayerDetails, compareLayerDetails]
   );
@@ -109,15 +110,15 @@ const TimeSlider: FunctionComponent = () => {
         />
 
         <div className={styles.ranges}>
-          {main && (
+          {rangeMain && (
             <div
               className={styles.rangeMain}
-              style={getRangeStyle(main.min, main.max)}></div>
+              style={getRangeStyle(rangeMain.min, rangeMain.max)}></div>
           )}
-          {compare && (
+          {rangeCompare && (
             <div
               className={styles.rangeCompare}
-              style={getRangeStyle(compare.min, compare.max)}></div>
+              style={getRangeStyle(rangeCompare.min, rangeCompare.max)}></div>
           )}
         </div>
       </div>

@@ -77,6 +77,16 @@ module.exports = (env, {mode} = {}) => {
               outputPath: 'fonts/'
             }
           }
+        },
+        {
+          test: /\.(svg)?$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/'
+            }
+          }
         }
       ]
     },
@@ -92,7 +102,8 @@ module.exports = (env, {mode} = {}) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: 'src/index.html'
+        template: 'src/index.html',
+        favicon: 'assets/images/favicon.svg'
       }),
       new MiniCssExtractPlugin({
         filename: 'styles.[hash].css'
