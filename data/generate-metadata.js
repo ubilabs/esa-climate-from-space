@@ -20,6 +20,7 @@ const tiles = require(path.join(
 const timestamps = tiles.coordinates.time;
 const metadata = {
   ...layer,
+  id: layerId,
   timestamps
 };
 

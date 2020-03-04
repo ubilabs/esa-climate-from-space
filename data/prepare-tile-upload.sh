@@ -6,6 +6,7 @@ layer=$2
 mkdir -p upload/$layer/tiles
 mkdir upload/$layer/full
 
+cat tmp/tiles/$variable/metadata.json
 rm tmp/tiles/$variable/metadata.json
 mv tmp/tiles/$variable/* upload/$layer/tiles/
 mv tmp/new-metadata.json upload/$layer/metadata.json
