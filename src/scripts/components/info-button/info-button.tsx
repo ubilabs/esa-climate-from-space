@@ -1,7 +1,9 @@
 import React, {FunctionComponent, useState} from 'react';
 import {useIntl} from 'react-intl';
 
+import Overlay from '../overlay/overlay';
 import {InfoIcon} from '../icons/info-icon';
+import LayerInfo from '../layer-info/layer-info';
 
 import {LayerListItem} from '../../types/layer-list';
 
@@ -13,10 +15,7 @@ interface Props {
 
 const InfoButton: FunctionComponent<Props> = ({layer}) => {
   const intl = useIntl();
-  const [isOpen, setIsOpen] = useState(false);
-  const onButtonClickHandler = () => {
-    setIsOpen(!isOpen);
-  };
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
     layer && (
@@ -24,16 +23,14 @@ const InfoButton: FunctionComponent<Props> = ({layer}) => {
         <button
           className={styles.icon}
           title={intl.formatMessage({id: 'dataInfo'})}
-          onClick={() => onButtonClickHandler()}>
+          onClick={() => setShowMenu(true)}>
           <InfoIcon />
         </button>
-        {isOpen && (
-          <div className={styles.modal}>
-            <span className={styles.description}>{layer.description}</span>
-            <a className={styles.link} href={layer.link}>
-              {layer.name}
-            </a>
-          </div>
+
+        {showMenu && (
+          <Overlay onClose={() => setShowMenu(false)}>
+            <LayerInfo layer={layer} />
+          </Overlay>
         )}
       </div>
     )

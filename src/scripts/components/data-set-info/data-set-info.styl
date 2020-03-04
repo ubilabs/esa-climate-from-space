@@ -1,20 +1,30 @@
+@require '../../../variables.styl'
+
 .dataSetInfo
   position: absolute
-  bottom: 6em
+  bottom: emCalc(14px)
   display: flex
   flex-direction: row
   width: 100%
 
 .dataSetContent
-  top: 5px
+  top: emCalc(5px)
   display: flex
   justify-content: center
   align-items: center
   width: 100%
 
+  svg
+    outline: 0
+
+  &:hover, &:focus
+    svg
+      fill: $main
+
 .title
+  margin: 0
   color: #fff
-  font-size: 1.125em
+  font-size: 1em
 
 .buttons
   display: flex
