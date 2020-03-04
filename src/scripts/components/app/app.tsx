@@ -11,9 +11,12 @@ import {languageSelector} from '../../selectors/language';
 import UrlSync from '../url-sync/url-sync';
 import LayerLoader from '../layer-loader/layer-loader';
 import Init from '../init/init';
+import LayerSelector from '../layer-selector/layer-selector';
 import Navigation from '../navigation/navigation';
 import GlobeZoom from '../globe-zoom/globe-zoom';
 import {EsaLogo} from '../icons/esa-logo';
+import Globes from '../globes/globes';
+import TimeSlider from '../time-slider/time-slider';
 
 import translations from '../../i18n';
 
@@ -40,8 +43,15 @@ const TranslatedApp: FunctionComponent = () => {
           <div className={styles.logo}>
             <EsaLogo />
           </div>
+          <main className={styles.main}>
+            {false && <div>StoryContent</div>}
+            <Globes />
+            {false && <div>StoryMedia</div>}
+          </main>
           <Navigation />
           <GlobeZoom />
+          <TimeSlider />
+          <LayerSelector />
         </div>
       </IntlProvider>
       <UrlSync />
