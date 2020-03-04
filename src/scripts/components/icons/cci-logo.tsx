@@ -89,7 +89,7 @@ export const CCILogo: FunctionComponent = () => (
         />
       </filter>
       <clipPath id="clip0">
-        <rect width="267.429" height="26" fill="white" />
+        <rect width="267.429" height="26" />
       </clipPath>
     </defs>
   </svg>
