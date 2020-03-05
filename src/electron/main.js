@@ -18,6 +18,11 @@ function createWindow() {
   // save window's reference
   windows.push(window);
 
+  // add download handler
+  const downloadsPath = path.join(app.getPath('home'), '.esa-cfs', 'offline');
+  app.setPath('downloads', downloadsPath);
+  addDownloadHandler(window);
+
   // load the index page in the window
   const indexPath = `file://${__dirname}/../../dist/index.html`;
   window.loadURL(indexPath);
@@ -28,11 +33,6 @@ function createWindow() {
   window.on('closed', () => {
     windows = windows.filter(w => w !== window);
   });
-
-  // add download handler
-  const downloadsPath = path.join(app.getPath('home'), '.esa-cfs', 'offline');
-  app.setPath('downloads', downloadsPath);
-  addDownloadHandler(window);
 }
 
 app.on('ready', createWindow);

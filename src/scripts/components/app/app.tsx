@@ -18,6 +18,8 @@ import {EsaLogo} from '../icons/esa-logo';
 import Globes from '../globes/globes';
 import TimeSlider from '../time-slider/time-slider';
 import DataSetInfo from '../data-set-info/data-set-info';
+// @ts-ignore
+import {isElectron, connectToStore} from 'electronHelpers'; // this is an webpack alias
 
 import translations from '../../i18n';
 
@@ -27,6 +29,11 @@ const store = createStore(
   rootReducer,
   applyMiddleware(thunk, createLogger({collapsed: true}))
 );
+
+// connect electron messages to redux store
+if (isElectron()) {
+  connectToStore(store.dispatch);
+}
 
 const App: FunctionComponent = () => (
   <StoreProvider store={store}>

@@ -10,15 +10,15 @@ import styles from './layer-list.styl';
 interface Props {
   selectedLayerIds: SelectedLayerIdsState;
   layers: LayerListItemType[];
+  downloadedLayerIds: string[];
   onSelect: (id: string, isMain: boolean) => void;
-  onDownload: null | ((id: string) => void);
 }
 
 const LayerList: FunctionComponent<Props> = ({
   selectedLayerIds,
   layers,
-  onSelect,
-  onDownload
+  downloadedLayerIds,
+  onSelect
 }) => {
   const {mainId} = selectedLayerIds;
   const isMainSelected = Boolean(mainId);
@@ -32,7 +32,7 @@ const LayerList: FunctionComponent<Props> = ({
             <LayerListItem
               onSelect={(id, isMain) => onSelect(id, isMain)}
               isMainSelected={isMainSelected}
-              onDownload={onDownload}
+              isDownloaded={downloadedLayerIds.includes(layer.id)}
               layer={layer}
             />
           </li>

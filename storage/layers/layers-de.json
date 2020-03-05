@@ -179,5 +179,12 @@
     "description": "Das ist das verbranntes Gebiet",
     "link": "http://...",
     "subLayers": []
+  },
+  {
+    "id": "soilmoisture.sm",
+    "name": "Bodenfeuchtigkeit",
+    "description": "Das ist die Bodenfeuchtigkeit",
+    "link": "http://...",
+    "subLayers": []
   }
 ]

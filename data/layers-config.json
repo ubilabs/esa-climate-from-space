@@ -6,5 +6,13 @@
       "month": "numeric",
       "day": "numeric"
     }
+  },
+  "soilmoisture.sm": {
+    "colorMap": "prism",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
   }
 }
