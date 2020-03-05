@@ -1,6 +1,7 @@
 export interface Layer {
   id: string;
   type: 'image' | 'tiles';
+  zoomLevels: number;
   timestamps: string[]; // ISO 8601 timestamps
   timeFormat: {
     year?: 'numeric' | '2-digit';

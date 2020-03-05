@@ -14,7 +14,6 @@ import {
   Viewer,
   SceneMode,
   Color,
-  SingleTileImageryProvider,
   GeographicTilingScheme,
   TileMapServiceImageryProvider,
   UrlTemplateImageryProvider,
@@ -48,10 +47,10 @@ const cesiumOptions = {
 
 interface Props {
   active: boolean;
-  layerType?: string;
   view: GlobeView;
   projectionState: GlobeProjectionState;
-  imageUrl: string | null;
+  tilesUrl: string | null;
+  zoomLevels: number;
   flyTo: GlobeView | null;
   onMouseEnter: () => void;
   onChange: (view: GlobeView) => void;
@@ -61,9 +60,9 @@ interface Props {
 const Globe: FunctionComponent<Props> = ({
   view,
   projectionState,
-  imageUrl,
+  tilesUrl,
+  zoomLevels,
   active,
-  layerType,
   flyTo,
   onMouseEnter,
   onChange,
@@ -178,21 +177,17 @@ const Globe: FunctionComponent<Props> = ({
       return;
     }
 
-    const url = imageUrl;
     const layers = viewer.scene.imageryLayers;
 
-    if (url) {
-      const imageProvider =
-        layerType === 'tiles'
-          ? new UrlTemplateImageryProvider({
-              url,
-              tilingScheme: new GeographicTilingScheme(),
-              minimumLevel: 0,
-              maximumLevel: 3,
-              tileWidth: 270,
-              tileHeight: 270
-            })
-          : new SingleTileImageryProvider({url});
+    if (tilesUrl) {
+      const imageProvider = new UrlTemplateImageryProvider({
+        url: tilesUrl,
+        tilingScheme: new GeographicTilingScheme(),
+        minimumLevel: 0,
+        maximumLevel: zoomLevels - 1,
+        tileWidth: 256,
+        tileHeight: 256
+      });
 
       imageProvider.readyPromise.then(() => {
         const newLayer = viewer.scene.imageryLayers.addImageryProvider(
@@ -201,9 +196,8 @@ const Globe: FunctionComponent<Props> = ({
         // @ts-ignore
         newLayer.minificationFilter = TextureMinificationFilter.NEAREST;
         // @ts-ignore
-        newLayer.magnificationFilter =
-          // @ts-ignore
-          TextureMagnificationFilter.NEAREST;
+        newLayer.magnificationFilter = TextureMagnificationFilter.NEAREST;
+        newLayer.alpha = 0.75;
 
         // remove and destroy old layers if they exist
         // we do not clean it up in the useEffect clean function because we want
@@ -224,7 +218,7 @@ const Globe: FunctionComponent<Props> = ({
         layers.remove(layer, true);
       }
     }
-  }, [layerType, viewer, imageUrl]);
+  }, [viewer, tilesUrl, zoomLevels]);
 
   // fly to location
   useEffect(() => {

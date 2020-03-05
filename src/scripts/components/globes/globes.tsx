@@ -51,8 +51,8 @@ const Globes: FunctionComponent = () => {
     [dispatch]
   );
 
-  const mainImageUrl = getLayerTileUrl(mainLayerDetails, time);
-  const compareImageUrl = getLayerTileUrl(compareLayerDetails, time);
+  const mainTilesUrl = getLayerTileUrl(mainLayerDetails, time);
+  const compareTilesUrl = getLayerTileUrl(compareLayerDetails, time);
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
@@ -64,10 +64,10 @@ const Globes: FunctionComponent = () => {
     <div className={styles.globes}>
       <Globe
         active={isMainActive}
-        layerType={mainLayerDetails?.type}
         view={currentView}
         projectionState={projectionState}
-        imageUrl={mainImageUrl}
+        tilesUrl={mainTilesUrl}
+        zoomLevels={mainLayerDetails?.zoomLevels || 0}
         flyTo={flyTo}
         onMouseEnter={() => setIsMainActive(true)}
         onChange={onChangeHandler}
@@ -77,10 +77,10 @@ const Globes: FunctionComponent = () => {
       {compareLayer && (
         <Globe
           active={!isMainActive}
-          layerType={compareLayerDetails?.type}
           view={currentView}
           projectionState={projectionState}
-          imageUrl={compareImageUrl}
+          tilesUrl={compareTilesUrl}
+          zoomLevels={compareLayerDetails?.zoomLevels || 0}
           flyTo={flyTo}
           onMouseEnter={() => setIsMainActive(false)}
           onChange={onChangeHandler}
