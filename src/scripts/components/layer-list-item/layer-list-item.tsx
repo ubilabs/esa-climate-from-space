@@ -9,12 +9,14 @@ interface Props {
   layer: LayerListItemType;
   isMainSelected: boolean;
   onSelect: (id: string, isMain: boolean) => void;
+  onDownload: null | ((id: string) => void);
 }
 
 const LayerListItem: FunctionComponent<Props> = ({
   layer,
   isMainSelected,
-  onSelect
+  onSelect,
+  onDownload
 }) => (
   <div className={styles.layerItem} onClick={() => onSelect(layer.id, true)}>
     <span className={styles.layerTitle}>{layer.name}</span>
@@ -27,6 +29,9 @@ const LayerListItem: FunctionComponent<Props> = ({
         }}>
         <FormattedMessage id={'layerSelector.compare'} />
       </button>
+    )}
+    {onDownload && (
+      <button onClick={() => onDownload(layer.id)}>Download</button>
     )}
   </div>
 );

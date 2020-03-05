@@ -11,12 +11,14 @@ interface Props {
   selectedLayerIds: SelectedLayerIdsState;
   layers: LayerListItemType[];
   onSelect: (id: string, isMain: boolean) => void;
+  onDownload: null | ((id: string) => void);
 }
 
 const LayerList: FunctionComponent<Props> = ({
   selectedLayerIds,
   layers,
-  onSelect
+  onSelect,
+  onDownload
 }) => {
   const {mainId} = selectedLayerIds;
   const isMainSelected = Boolean(mainId);
@@ -30,6 +32,7 @@ const LayerList: FunctionComponent<Props> = ({
             <LayerListItem
               onSelect={(id, isMain) => onSelect(id, isMain)}
               isMainSelected={isMainSelected}
+              onDownload={onDownload}
               layer={layer}
             />
           </li>
