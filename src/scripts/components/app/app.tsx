@@ -17,6 +17,7 @@ import GlobeNavigation from '../globe-navigation/globe-navigation';
 import {EsaLogo} from '../icons/esa-logo';
 import Globes from '../globes/globes';
 import TimeSlider from '../time-slider/time-slider';
+import DataSetInfo from '../data-set-info/data-set-info';
 
 import translations from '../../i18n';
 
@@ -51,6 +52,7 @@ const TranslatedApp: FunctionComponent = () => {
           <Navigation />
           <GlobeNavigation />
           <TimeSlider />
+          <DataSetInfo />
           <LayerSelector />
         </div>
       </IntlProvider>
