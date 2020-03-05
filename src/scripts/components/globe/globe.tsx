@@ -196,9 +196,8 @@ const Globe: FunctionComponent<Props> = ({
         // @ts-ignore
         newLayer.minificationFilter = TextureMinificationFilter.NEAREST;
         // @ts-ignore
-        newLayer.magnificationFilter =
-          // @ts-ignore
-          TextureMagnificationFilter.NEAREST;
+        newLayer.magnificationFilter = TextureMagnificationFilter.NEAREST;
+        newLayer.alpha = 0.75;
 
         // remove and destroy old layers if they exist
         // we do not clean it up in the useEffect clean function because we want

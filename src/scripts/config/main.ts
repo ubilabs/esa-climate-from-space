@@ -2,7 +2,7 @@ import {GlobeState} from '../reducers/globe/index';
 import {GlobeProjection} from '../types/globe-projection';
 
 const globeState: GlobeState = {
-  time: 0,
+  time: Date.now(),
   projectionState: {
     projection: GlobeProjection.Sphere,
     morphTime: 2
