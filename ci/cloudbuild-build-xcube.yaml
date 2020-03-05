@@ -1,0 +1,16 @@
+# build with "gcloud builds submit --config ./ci/cloudbuild-build-xcube.yaml --timeout=2000 ./ci/docker"
+
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'gcr.io/$PROJECT_ID/xcube',
+        '-f',
+        './xcube/Dockerfile',
+        '.',
+      ]
+images:
+  - 'gcr.io/$PROJECT_ID/xcube'

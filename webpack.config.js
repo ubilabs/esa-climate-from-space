@@ -22,6 +22,17 @@ module.exports = (env, {mode} = {}) => {
         new OptimizeCSSAssetsPlugin({})
       ]
     },
+    target: 'web',
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js', '.styl'],
+      alias: {
+        // use an empty mock module for web
+        electronHelpers: path.resolve(
+          __dirname,
+          './src/scripts/libs/electron-helpers-mock.ts'
+        )
+      }
+    },
     module: {
       unknownContextCritical: false,
       rules: [
@@ -78,9 +89,6 @@ module.exports = (env, {mode} = {}) => {
           }
         }
       ]
-    },
-    resolve: {
-      extensions: ['.tsx', '.ts', '.js', '.styl']
     },
     output: {
       filename: 'bundle.[hash].js',

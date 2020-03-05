@@ -12,10 +12,6 @@ Optional tools to work with and explore datasets:
 - Cate Desktop (GUI for the ESA CCI Toolbox) https://github.com/CCI-Tools/cate-desktop
 - Jupyter Lab
 
-## Download dataset
-
-see `download-zarr.py`
-
 ## Inspect zarr file
 
 see `inspect-zarr.ipynb` (open with Jupyter Lab)
@@ -23,3 +19,15 @@ see `inspect-zarr.ipynb` (open with Jupyter Lab)
 ## Generate Tiles from zarr file
 
 `xcube level ../cate/myzarr.zarr`
+
+## CI Pipeline
+
+The cloud build task `cloudbuild-tiles` runs several docker containers to produce
+tiles for a given dataset and variable Id. The result of the pipeline is a folder
+in the cloud storage bucket `esa-cfs-tiles/generated`.
+
+The folder includes:
+
+- tiles and a full global image for every timestamp
+- metadata.json with timestamp mappings
+- a `package.zip` with the above data to download for offline mode

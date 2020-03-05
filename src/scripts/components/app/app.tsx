@@ -13,7 +13,7 @@ import LayerLoader from '../layer-loader/layer-loader';
 import Init from '../init/init';
 import LayerSelector from '../layer-selector/layer-selector';
 import Navigation from '../navigation/navigation';
-import GlobeZoom from '../globe-zoom/globe-zoom';
+import GlobeNavigation from '../globe-navigation/globe-navigation';
 import {EsaLogo} from '../icons/esa-logo';
 import Globes from '../globes/globes';
 import TimeSlider from '../time-slider/time-slider';
@@ -50,7 +50,7 @@ const TranslatedApp: FunctionComponent = () => {
             {false && <div>StoryMedia</div>}
           </main>
           <Navigation />
-          <GlobeZoom />
+          <GlobeNavigation />
           <TimeSlider />
           <DataSetInfo />
           <LayerSelector />

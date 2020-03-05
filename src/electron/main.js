@@ -1,30 +1,38 @@
 const path = require('path');
 const {app, BrowserWindow} = require('electron');
+const {addDownloadHandler} = require('./download-handler.js');
+
+// future proof for electron 9 and prevent annoying deprecation warning message
+app.allowRendererProcessReuse = true;
 
 let windows = [];
 
 function createWindow() {
-  // Create the browser window.
+  // cerate a new browser window
   const window = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      nodeIntegration: false,
-      preload: path.resolve(__dirname, 'preload.js')
-    }
+    width: 1024,
+    height: 768,
+    webPreferences: {nodeIntegration: true}
   });
 
+  // save window's reference
   windows.push(window);
 
-  // and load the index.html of the app.
+  // load the index page in the window
   const indexPath = `file://${__dirname}/../../dist/index.html`;
   window.loadURL(indexPath);
 
-  // window.webContents.openDevTools();
+  window.webContents.openDevTools();
 
+  // free window reference when closed
   window.on('closed', () => {
     windows = windows.filter(w => w !== window);
   });
+
+  // add download handler
+  const downloadsPath = path.join(app.getPath('home'), '.esa-cfs', 'offline');
+  app.setPath('downloads', downloadsPath);
+  addDownloadHandler(window);
 }
 
 app.on('ready', createWindow);

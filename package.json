@@ -7,6 +7,7 @@
     "start": "webpack-dev-server",
     "clean": "rm -rf ./dist",
     "build": "npm run clean && webpack --display=errors-only -p",
+    "build:electron": "npm run clean && webpack --config webpack.config.electron.js --display=errors-only -p",
     "test": "npm run stylint && npm run eslint && npm run license-check",
     "eslint": "eslint . --ext .ts,.tsx,.js",
     "stylint": "stylint",
@@ -20,7 +21,7 @@
     "electron:start": "electron .",
     "electron:install": "electron-builder install-app-deps",
     "electron:clean": "rm -rf ./dist-electron",
-    "electron:build": "npm run electron:clean && npm run electron:install && npm run build && electron-builder -mwl --x64 --config electron-builder.json",
+    "electron:build": "npm run electron:clean && npm run electron:install && npm run build:electron && electron-builder -mwl --x64 --config electron-builder.json",
     "upload-storage": "gsutil rsync -r -x \".DS_Store\" ./storage gs://esa-cfs-storage && gsutil acl ch -r -u AllUsers:R gs://esa-cfs-storage && gsutil setmeta -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/**/*"
   },
   "repository": {
@@ -37,6 +38,7 @@
     "@types/react-router-dom": "^5.1.3",
     "@types/redux-logger": "^3.0.7",
     "cesium": "^1.66.0",
+    "cross-zip": "^3.0.0",
     "framer-motion": "^1.8.4",
     "lodash.debounce": "^4.0.8",
     "react": "^16.12.0",
