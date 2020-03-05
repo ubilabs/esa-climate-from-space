@@ -1,11 +1,11 @@
 import React, {FunctionComponent} from 'react';
-import {useParams} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
 import InfoButton from '../info-button/info-button';
 import {State} from '../../reducers';
 import {layerListItemSelector} from '../../selectors/layers/list-item';
 import RemoveCompare from '../remove-compare/remove-compare';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 
 import {LayerListItem} from '../../types/layer-list';
 
@@ -27,12 +27,13 @@ const DataSetContent: FunctionComponent<Props> = ({layer, isCompare}) => (
 );
 
 const DataSetInfo: FunctionComponent = () => {
-  const {mainLayerId, compareLayerId} = useParams();
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+  const {mainId, compareId} = selectedLayerIds;
   const mainLayer = useSelector((state: State) =>
-    layerListItemSelector(state, mainLayerId)
+    layerListItemSelector(state, mainId)
   );
   const compareLayer = useSelector((state: State) =>
-    layerListItemSelector(state, compareLayerId)
+    layerListItemSelector(state, compareId)
   );
 
   return (
