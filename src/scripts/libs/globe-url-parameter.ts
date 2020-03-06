@@ -1,6 +1,7 @@
 import {GlobeState} from '../reducers/globe/index';
-import {GlobeProjection} from '../types/globe-projection';
 import {UrlHashState} from '../types/url-hash-state';
+
+import {GlobeProjection} from '../types/globe-projection';
 
 const char = '--';
 
