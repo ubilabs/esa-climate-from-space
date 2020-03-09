@@ -1,3 +1,19 @@
+# [0.4.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.3.0...v0.4.0) (2020-03-09)
+
+
+### Bug Fixes
+
+* **globe:** remove layers when new layer is selected ([f8eaf07](https://github.com/ubilabs/esa-climate-from-space/commit/f8eaf07d4e95238e89c5587aadf651306a6632a4))
+
+
+### Features
+
+* **README:** update readme ([9fd979a](https://github.com/ubilabs/esa-climate-from-space/commit/9fd979aacf937e6969b0bd6fd5821d0f66ded051))
+* **story-globe:** switch to sphere projection in story mode ([9237d54](https://github.com/ubilabs/esa-climate-from-space/commit/9237d54c2f26abcbd1367b4b12f00386c31593ca))
+* **versioning:** load remote data from versioned urls ([bb5b56b](https://github.com/ubilabs/esa-climate-from-space/commit/bb5b56be58083f19fc7e8d7f17cf6709f411aac8))
+
+
+
 # [0.3.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.2.0...v0.3.0) (2019-12-06)
 
 
