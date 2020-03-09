@@ -8,7 +8,7 @@
     }
   },
   "soilmoisture.sm": {
-    "colorMap": "prism",
+    "colorMap": "inferno",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
