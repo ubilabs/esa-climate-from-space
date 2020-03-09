@@ -26,7 +26,7 @@ const UrlSync: FunctionComponent = () => {
     history.replace({search: params.toString()});
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [globeState, history]); // we don't want to check for location.search changes
+  }, [globeState, mainId, compareId, history]); // we don't want to check for location.search changes
 
   return null;
 };

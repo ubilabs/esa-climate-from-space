@@ -3,7 +3,7 @@ import {UrlHashState} from '../types/url-hash-state';
 
 import {GlobeProjection} from '../types/globe-projection';
 
-const char = '--';
+const char = 'I';
 
 // parses window.location and generates a globe state from query params
 //
