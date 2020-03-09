@@ -165,5 +165,12 @@
     "description": "This is the Water Vapour Layer",
     "link": "http://...",
     "subLayers": []
+  },
+  {
+    "id": "fire.burned_area",
+    "name": "Burned Area",
+    "description": "This is the Burned Area",
+    "link": "http://...",
+    "subLayers": []
   }
 ]

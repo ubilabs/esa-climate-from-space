@@ -9,6 +9,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import debounce from 'lodash.debounce';
 
 import {languageSelector} from '../../selectors/language';
+import {timeSelector} from '../../selectors/globe/time';
 import {layerDetailsSelector} from '../../selectors/layers/layer-details';
 import setGlobeTime from '../../actions/set-globe-time';
 import {getTimeRanges} from '../../libs/get-time-ranges';
@@ -24,9 +25,11 @@ const TimeSlider: FunctionComponent = () => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const {mainId, compareId} = selectedLayerIds;
   const dispatch = useDispatch();
-  const [time, setTime] = useState(0);
-  const stepSize = 1000 * 60 * 60 * 24; // one day
   const language = useSelector(languageSelector);
+  const globeTime = useSelector(timeSelector);
+
+  const [time, setTime] = useState(globeTime);
+  const stepSize = 1000 * 60 * 60 * 24; // one day
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId)
   );

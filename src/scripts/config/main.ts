@@ -2,7 +2,7 @@ import {GlobeState} from '../reducers/globe/index';
 import {GlobeProjection} from '../types/globe-projection';
 
 const globeState: GlobeState = {
-  time: 0,
+  time: Date.now(),
   projectionState: {
     projection: GlobeProjection.Sphere,
     morphTime: 2
@@ -26,11 +26,9 @@ export default {
     layers:
       'https://storage.googleapis.com/esa-cfs-storage/layers/layers-{lang}.json',
     layer:
-      'https://storage.googleapis.com/esa-cfs-storage/layers/{id}/metadata.json',
+      'https://storage.googleapis.com/esa-cfs-tiles/generated/{id}/metadata.json',
     layerTiles:
-      'https://storage.googleapis.com/esa-cfs-tiles/test/{id}/{timeIndex}/{z}/{y}/{x}.png',
-    layerSingleImage:
-      'https://storage.googleapis.com/esa-cfs-tiles/test/{id}/{timeIndex}.jpg',
+      'https://storage.googleapis.com/esa-cfs-tiles/generated/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png',
     layerOfflinePackage:
       'https://storage.googleapis.com/esa-cfs-tiles/generated/{id}/package.zip',
     stories:
