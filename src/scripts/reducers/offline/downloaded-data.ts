@@ -1,9 +1,9 @@
 import {
   SET_DOWNLOADED_DATA,
   SetDownloadedDataAction
-} from '../actions/set-downloaded-data';
+} from '../../actions/set-downloaded-data';
 
-import {DownloadedData} from '../types/downloaded-data';
+import {DownloadedData} from '../../types/downloaded-data';
 
 const initialState: DownloadedData = {
   layers: [],

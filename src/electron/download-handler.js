@@ -3,6 +3,8 @@ const path = require('path');
 const zip = require('cross-zip');
 const {app} = require('electron');
 
+const activeDownloads = {};
+
 /**
  * Intercepts all browser downloads in the given window
  */
@@ -20,6 +22,8 @@ module.exports.addDownloadHandler = function(browserWindow) {
     const tmpFilePath = path.join(downloadsPath, `${Date.now()}.zip`);
     item.setSavePath(tmpFilePath);
 
+    activeDownloads[item.getURL()] = 0;
+
     console.log(`Downloading file ${item.getURL()} to ${item.savePath}`);
 
     item.on('updated', (event, state) => {
@@ -29,7 +33,13 @@ module.exports.addDownloadHandler = function(browserWindow) {
         if (item.isPaused()) {
           console.log('Download is paused');
         } else {
-          console.log(`Received bytes: ${item.getReceivedBytes()}`);
+          const progress = item.getReceivedBytes() / item.getTotalBytes();
+          activeDownloads[item.getURL()] = progress;
+          browserWindow.webContents.send(
+            'progress-update',
+            JSON.stringify(activeDownloads)
+          );
+          console.log(`Download progress: ${progress}`);
         }
       }
     });
@@ -42,6 +52,12 @@ module.exports.addDownloadHandler = function(browserWindow) {
         browserWindow.webContents.send(
           'offline-update',
           JSON.stringify(getDownloadedIds())
+        );
+
+        delete activeDownloads[item.getURL()];
+        browserWindow.webContents.send(
+          'progress-update',
+          JSON.stringify(activeDownloads)
         );
       } else {
         console.log(`Download failed: ${state}`, item.savePath);
