@@ -10,16 +10,6 @@ steps:
   - name: 'gcr.io/cloud-builders/gsutil'
     args:
       [
-        'acl',
-        'ch',
-        '-r',
-        '-u',
-        'AllUsers:R',
-        'gs://esa-cfs-versions/web/${BRANCH_NAME}/*',
-      ]
-  - name: 'gcr.io/cloud-builders/gsutil'
-    args:
-      [
         'setmeta',
         '-h',
         'cache-control:no-cache',

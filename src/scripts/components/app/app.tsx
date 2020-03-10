@@ -22,6 +22,8 @@ import StoriesSelector from '../stories-selector/stories-selector';
 import PresentationSelector from '../presentation-selector/presentation-selector';
 import ShowcaseSelector from '../showcase-selector/showcase-selector';
 import Globes from '../globes/globes';
+// @ts-ignore
+import {isElectron, connectToStore} from 'electronHelpers'; // this is an webpack alias
 
 import translations from '../../i18n';
 
@@ -31,6 +33,11 @@ const store = createStore(
   rootReducer,
   applyMiddleware(thunk, createLogger({collapsed: true}))
 );
+
+// connect electron messages to redux store
+if (isElectron()) {
+  connectToStore(store.dispatch);
+}
 
 const App: FunctionComponent = () => (
   <StoreProvider store={store}>

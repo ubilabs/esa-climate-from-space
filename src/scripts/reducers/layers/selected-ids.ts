@@ -2,16 +2,15 @@ import {
   SET_SELECTED_LAYER_ID,
   SetSelectedLayerIdAction
 } from '../../actions/set-selected-layer-id';
+import {parseUrl} from '../../libs/globe-url-parameter';
 
 export interface SelectedLayerIdsState {
   mainId: string | null;
   compareId: string | null;
 }
 
-const initialState = {
-  mainId: null,
-  compareId: null
-};
+// get layer ids from url once on load
+const initialState = parseUrl()?.layerIds || {mainId: null, compareId: null};
 
 function selectedLayerIdsReducer(
   state: SelectedLayerIdsState = initialState,

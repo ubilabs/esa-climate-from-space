@@ -1,13 +1,15 @@
 import {GlobeState} from '../reducers/globe/index';
+import {UrlHashState} from '../types/url-hash-state';
+
 import {GlobeProjection} from '../types/globe-projection';
 
-const char = 'l';
+const char = 'I';
 
 // parses window.location and generates a globe state from query params
 //
 // note: we do not use the location.search prop here because the HashRouter
 // stores the query parameters in the location.hash prop
-export function parseUrl(): GlobeState | null {
+export function parseUrl(): UrlHashState | null {
   const {hash} = location;
   // only take the query portion of the hash string
   const queryString = hash.substr(hash.indexOf('?'));
@@ -20,7 +22,7 @@ export function parseUrl(): GlobeState | null {
 
   const splitted = globeParam.split(char);
 
-  if (splitted.length !== 8) {
+  if (splitted.length !== 10) {
     return null;
   }
 
@@ -35,34 +37,47 @@ export function parseUrl(): GlobeState | null {
   }
 
   // globe view values
-  const values = splitted.slice(1).map(str => parseFloat(str));
+  const values = splitted.slice(1, 7).map(str => parseFloat(str));
 
   if (values.some(num => isNaN(num))) {
     return null;
   }
 
+  // selected main and compare layer ids
+  const layerIds = splitted.slice(8, 10).map(id => id || null);
+
   return {
-    view: {
-      position: {
-        longitude: values[0],
-        latitude: values[1],
-        height: values[2]
+    globeState: {
+      view: {
+        position: {
+          longitude: values[0],
+          latitude: values[1],
+          height: values[2]
+        },
+        orientation: {
+          heading: values[3],
+          pitch: values[4],
+          roll: values[5]
+        }
       },
-      orientation: {
-        heading: values[3],
-        pitch: values[4],
-        roll: values[5]
-      }
+      projectionState: {
+        projection: GlobeProjection.Sphere,
+        morphTime: 2
+      },
+      time: values[6]
     },
-    projectionState: {
-      projection: GlobeProjection.Sphere,
-      morphTime: 2
-    },
-    time: values[6]
+    layerIds: {
+      mainId: layerIds[0],
+      compareId: layerIds[1]
+    }
   };
 }
 
-export function getParamString(globeState: GlobeState): string | null {
+export function getParamString(
+  globeState: GlobeState,
+  mainId: string | null,
+  compareId: string | null
+): string | null {
   const {view, projectionState, time} = globeState;
   const {position, orientation} = view;
   const {longitude, latitude, height} = position;
@@ -75,5 +90,10 @@ export function getParamString(globeState: GlobeState): string | null {
 
   const compactValues = values.map(num => num.toFixed(2));
 
-  return [projectionState.projection[0], ...compactValues].join(char);
+  return [
+    projectionState.projection[0],
+    ...compactValues,
+    mainId,
+    compareId
+  ].join(char);
 }

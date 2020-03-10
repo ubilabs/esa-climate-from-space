@@ -8,7 +8,7 @@ import config from '../../config/main';
 import {GlobeProjectionState} from '../../types/globe-projection-state';
 
 // get initial state from url or fallback to default state in config
-const globeState = parseUrl() || config.globe;
+const globeState = parseUrl()?.globeState || config.globe;
 const initialState = {
   projection: globeState.projectionState.projection,
   morphTime: 2
