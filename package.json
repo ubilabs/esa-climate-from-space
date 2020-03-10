@@ -29,7 +29,7 @@
     "url": "git+https://github.com/ubilabs/esa-climate-from-space.git"
   },
   "author": "Ubilabs GmbH",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ubilabs/esa-climate-from-space/issues"
   },
