@@ -1,3 +1,30 @@
+## [0.4.1](https://github.com/ubilabs/esa-climate-from-space/compare/v0.4.0...v0.4.1) (2020-03-10)
+
+
+### Bug Fixes
+
+* **config:** fix versioning in url paths ([f691dad](https://github.com/ubilabs/esa-climate-from-space/commit/f691dad46e83b5362cb42528cda3b930963517b2))
+
+
+### Features
+
+* **animation:** add framer motion to layer-selector ([#273](https://github.com/ubilabs/esa-climate-from-space/issues/273)) ([1890f70](https://github.com/ubilabs/esa-climate-from-space/commit/1890f70477f2490bf14946beb46c51d33b48585e))
+* **cesium:** update cesium to use es6 modules ([#258](https://github.com/ubilabs/esa-climate-from-space/issues/258)) ([71fa208](https://github.com/ubilabs/esa-climate-from-space/commit/71fa208747d90c7e58f54ef2963c4f8283a169d4))
+* **data:** add readme and scripts ([#257](https://github.com/ubilabs/esa-climate-from-space/issues/257)) ([5ea0948](https://github.com/ubilabs/esa-climate-from-space/commit/5ea094803b3246669d67c28b83bc4f159b047df4))
+* **data:** load remote data from versioned urls ([#287](https://github.com/ubilabs/esa-climate-from-space/issues/287)) ([b3a4b39](https://github.com/ubilabs/esa-climate-from-space/commit/b3a4b39161063b59df14f7de57a8499843376ef5))
+* **electron:** add basic download functionality ([#277](https://github.com/ubilabs/esa-climate-from-space/issues/277)) ([21bad70](https://github.com/ubilabs/esa-climate-from-space/commit/21bad707fb6b7035f374ec3de17851359fd85ff6))
+* **favicon:** add favicon ([#276](https://github.com/ubilabs/esa-climate-from-space/issues/276)) ([fb031c4](https://github.com/ubilabs/esa-climate-from-space/commit/fb031c4f15ea3364e175699fe09253e91eed2660))
+* **fonts:** add font ([#272](https://github.com/ubilabs/esa-climate-from-space/issues/272)) ([9721ddc](https://github.com/ubilabs/esa-climate-from-space/commit/9721ddcc0b61c0eeb5918c7ad238aeae438895ff))
+* **globe:** add reset globe position button ([#281](https://github.com/ubilabs/esa-climate-from-space/issues/281)) ([031a601](https://github.com/ubilabs/esa-climate-from-space/commit/031a6015c69fe890b7bf88ed16f504bdcde584d7))
+* **globe-navigation:** add projection switch and navigation icons ([#279](https://github.com/ubilabs/esa-climate-from-space/issues/279)) ([2b5da72](https://github.com/ubilabs/esa-climate-from-space/commit/2b5da72f71b5da3964b46dc19ccf402cc870df87))
+* **layer-selector:** add new layer selector ([#271](https://github.com/ubilabs/esa-climate-from-space/issues/271)) ([8f9d1e5](https://github.com/ubilabs/esa-climate-from-space/commit/8f9d1e5c7a854d012b183f6d3280d26a4af5b3d9))
+* **layers:** integrate new tiles ([#280](https://github.com/ubilabs/esa-climate-from-space/issues/280)) ([c2d7ead](https://github.com/ubilabs/esa-climate-from-space/commit/c2d7eada8ad38e51529b5bef33cf8efa6d64e222))
+* **menu:** use button component in menu ([#263](https://github.com/ubilabs/esa-climate-from-space/issues/263)) ([5e7bcd0](https://github.com/ubilabs/esa-climate-from-space/commit/5e7bcd058ba248f039d759a7c66ac9b2e3a78f59))
+* **offline-mode:** add downloaded data to store ([2831e00](https://github.com/ubilabs/esa-climate-from-space/commit/2831e00c13a4e338d5d15bf19eb5e40067ef4060))
+* **overlay:** add react portals and overlay component ([#262](https://github.com/ubilabs/esa-climate-from-space/issues/262)) ([ddd25e0](https://github.com/ubilabs/esa-climate-from-space/commit/ddd25e0622f230116418e80a65fcf0c92479aab0))
+
+
+
 # [0.4.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.3.0...v0.4.0) (2020-03-09)
 
 
