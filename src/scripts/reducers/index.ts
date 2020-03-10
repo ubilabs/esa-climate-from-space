@@ -7,6 +7,7 @@ import globeReducer from './globe';
 import flyToReducer from './fly-to';
 import storyLayerReducer from './story-layer';
 import showLayerSelectorReducer from './show-layer-selector';
+import downloadedDataReducer from './downloaded-data';
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   globe: globeReducer,
   flyTo: flyToReducer,
   storyLayerId: storyLayerReducer,
-  showLayerSelector: showLayerSelectorReducer
+  showLayerSelector: showLayerSelectorReducer,
+  downloadedData: downloadedDataReducer
 });
 
 export default rootReducer;

@@ -10,33 +10,24 @@ import showLayerSelectorAction from '../../actions/show-layer-selector';
 import LayerList from '../layer-list/layer-list';
 import SelectedLayerListItem from '../selected-layer-list-item/selected-layer-list-item';
 import {layersSelector} from '../../selectors/layers/list';
-import {replaceUrlPlaceholders} from '../../libs/replace-url-placeholders';
-import config from '../../config/main';
-// @ts-ignore
-import {isElectron, downloadUrl} from 'electronHelpers'; // this is an webpack alias
 
 import styles from './layer-selector.styl';
 import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
 import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
+import {downloadedDataSelector} from '../../selectors/downloaded-data';
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
   const layers = useSelector(layersSelector);
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const showLayerSelector = useSelector(showLayerSelectorSelector);
+  const downloadedData = useSelector(downloadedDataSelector);
   const selectedMainLayer = layers.find(
     layer => layer.id === selectedLayerIds.mainId
   );
   const selectedCompareLayer = layers.find(
     layer => layer.id === selectedLayerIds.compareId
   );
-
-  const onDownload = isElectron()
-    ? (layerId: string) =>
-        downloadUrl(
-          replaceUrlPlaceholders(config.api.layerOfflinePackage, {id: layerId})
-        )
-    : null;
 
   return (
     <AnimatePresence>
@@ -74,10 +65,10 @@ const LayerSelector: FunctionComponent = () => {
             <LayerList
               layers={layers}
               selectedLayerIds={selectedLayerIds}
+              downloadedLayerIds={downloadedData.layers}
               onSelect={(layerId, isMain) =>
                 dispatch(setSelectedLayerIdsAction(layerId, isMain))
               }
-              onDownload={onDownload}
             />
           </div>
         </motion.div>

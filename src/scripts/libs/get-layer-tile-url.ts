@@ -1,6 +1,9 @@
 import config from '../config/main';
 import {replaceUrlPlaceholders} from '../libs/replace-url-placeholders';
 
+// @ts-ignore
+import {isElectron, isOffline, getOfflineTilesUrl} from 'electronHelpers'; // this is an webpack alias
+
 import {Layer} from '../types/layer';
 
 /**
@@ -15,8 +18,12 @@ export function getLayerTileUrl(
     return null;
   }
 
+  // decide between remote or local tiles
+  const url =
+    isElectron() && isOffline() ? getOfflineTilesUrl() : config.api.layerTiles;
+
   const timeIndex = getLayerTime(time, layer.timestamps).toString();
-  return replaceUrlPlaceholders(config.api.layerTiles, {
+  return replaceUrlPlaceholders(url, {
     id: layer.id,
     timeIndex
   });

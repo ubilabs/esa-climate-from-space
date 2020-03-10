@@ -172,5 +172,12 @@
     "description": "This is the Burned Area",
     "link": "http://...",
     "subLayers": []
+  },
+  {
+    "id": "soilmoisture.sm",
+    "name": "Soil Moisture",
+    "description": "This is the Soil Moisture",
+    "link": "http://...",
+    "subLayers": []
   }
 ]
