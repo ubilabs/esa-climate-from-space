@@ -67,6 +67,21 @@ npm run electron:build
 
 The final output will be in a folder called `dist-electron` in the project's root directory.
 
+### Release New Version
+
+Run the following command to create a new tagged release.
+
+```sh
+npm version <major|minor|patch|prerelease --preid=rc>
+```
+
+A new git branch `chore/release-${VERSION}` will be pushed.
+In addition all remote files on cloud storage have to be updated to the new version folder. Run the follwing command with the correct version numbers:
+
+```sh
+./increase-storage-version <old_version> <new_version> # e.g. increase-storage-version 0.9.3 1.0.0
+```
+
 ## Contact
 
 - PM Ubilabs: Patrick Mast <mast@ubilabs.net>
