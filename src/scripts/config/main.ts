@@ -27,9 +27,9 @@ const version = INFO_VERSION;
 export default {
   api: {
     layers: `https://storage.googleapis.com/esa-cfs-storage/${version}/layers/layers-{lang}.json`,
-    layer: `https://storage.googleapis.com/esa-cfs-tiles/generated/${version}/{id}/metadata.json`,
-    layerTiles: `https://storage.googleapis.com/esa-cfs-tiles/generated/${version}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
-    layerOfflinePackage: `https://storage.googleapis.com/esa-cfs-tiles/generated/${version}/{id}/package.zip`,
+    layer: `https://storage.googleapis.com/esa-cfs-tiles/${version}/{id}/metadata.json`,
+    layerTiles: `https://storage.googleapis.com/esa-cfs-tiles/${version}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
+    layerOfflinePackage: `https://storage.googleapis.com/esa-cfs-tiles/${version}/{id}/package.zip`,
     stories: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/stories-{lang}.json`,
     story: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}/{id}-{lang}.json`
   },
