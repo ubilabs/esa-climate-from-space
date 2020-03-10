@@ -21,7 +21,7 @@ export function parseUrl(): UrlHashState | null {
   }
 
   const splitted = globeParam.split(char);
-  console.log(splitted);
+
   if (splitted.length !== 10) {
     return null;
   }
