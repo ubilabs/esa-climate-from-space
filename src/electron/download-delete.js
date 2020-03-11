@@ -2,32 +2,32 @@ const fs = require('fs');
 const path = require('path');
 const {app} = require('electron');
 
-// const {getDownloadedIds} = require('./get-downloaded-ids');
-
-console.log('Node', process.version);
-// const fsp = require('fsPromises');
+const {getDownloadedIds} = require('./get-downloaded-ids');
 
 /**
  * Removes the folder matching the given id from the offline directoy
  */
-module.exports.deleteId = function deleteId(browserWindow, id) {
+module.exports = function deleteId(browserWindow, id) {
+  // check if id contains '/', '\', '..' or ':'
+  if (id.match(/:|\/|\\|\.\./)) {
+    throw new Error('deleteId: Invalid id');
+  }
+
   const downloadsPath = app.getPath('downloads');
   const pathToDelete = path.join(downloadsPath, id);
 
-  console.log('Deleting', pathToDelete);
-
-  if (
-    !fs.existsSync(path) ||
-    !fs.statSync(pathToDelete).isDirectory() ||
-    id.length < 5
-  ) {
-    throw new Error('Path to delete does not exist', pathToDelete);
+  if (!fs.statSync(pathToDelete).isDirectory() || id.length < 5) {
+    throw new Error('deleteId: Path to delete does not exist', pathToDelete);
   }
 
-  // fsp.rmdir(pathToDelete, {recursive: true}).then(() => {
-  //   browserWindow.webContents.send(
-  //     'offline-update',
-  //     JSON.stringify(getDownloadedIds())
-  //   );
-  // });
+  console.log('Deleting', pathToDelete);
+
+  fs.rmdir(pathToDelete, {recursive: true}, err => {
+    if (!err) {
+      browserWindow.webContents.send(
+        'offline-update',
+        JSON.stringify(getDownloadedIds())
+      );
+    }
+  });
 };

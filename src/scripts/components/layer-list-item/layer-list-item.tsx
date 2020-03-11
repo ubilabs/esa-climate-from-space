@@ -1,8 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {FormattedMessage} from 'react-intl';
 
-// @ts-ignore
-import {isElectron, downloadUrl} from 'electronHelpers'; // this is an webpack alias
+import {isElectron, downloadUrl, deleteId} from '../../libs/electron/index';
 import {replaceUrlPlaceholders} from '../../libs/replace-url-placeholders';
 import config from '../../config/main';
 
@@ -59,7 +58,15 @@ const LayerListItem: FunctionComponent<Props> = ({
         </button>
       )}
 
-      {isElectron() && isDownloaded && <button disabled>Ready</button>}
+      {isElectron() && isDownloaded && (
+        <button
+          onClick={event => {
+            event.stopPropagation();
+            deleteId(layer.id);
+          }}>
+          Delete
+        </button>
+      )}
     </div>
   );
 };

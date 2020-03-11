@@ -1,8 +1,10 @@
 import config from '../config/main';
 import {replaceUrlPlaceholders} from '../libs/replace-url-placeholders';
-
-// @ts-ignore
-import {isElectron, isOffline, getOfflineTilesUrl} from 'electronHelpers'; // this is an webpack alias
+import {
+  isElectron,
+  isOffline,
+  getOfflineTilesUrl
+} from '../libs/electron/index';
 
 import {Layer} from '../types/layer';
 

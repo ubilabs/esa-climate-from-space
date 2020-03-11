@@ -3,6 +3,9 @@ const path = require('path');
 const zip = require('cross-zip');
 const {app} = require('electron');
 
+const {getDownloadedIds} = require('./get-downloaded-ids');
+
+// keep track of all active downloads
 const activeDownloads = {};
 
 /**
@@ -65,23 +68,3 @@ module.exports.addDownloadHandler = function(browserWindow) {
     });
   });
 };
-
-/**
- * Get downloaded Ids from the downloads folder content
- */
-function getDownloadedIds() {
-  const dirContent = fs
-    .readdirSync(app.getPath('downloads'), {
-      withFileTypes: true
-    })
-    .filter(entry => entry.isDirectory())
-    .map(entry => entry.name);
-
-  const layers = dirContent.filter(name => !name.startsWith('story'));
-  const stories = dirContent.filter(name => name.startsWith('story'));
-
-  return {
-    layers,
-    stories
-  };
-}
