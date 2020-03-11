@@ -8,7 +8,7 @@ app.allowRendererProcessReuse = true;
 let windows = [];
 
 function createWindow() {
-  // cerate a new browser window
+  // create a new browser window
   const window = new BrowserWindow({
     width: 1400,
     height: 800,

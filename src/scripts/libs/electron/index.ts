@@ -1,4 +1,4 @@
-// Entend global window type with our cfs namedspace
+// Extend global window type with our cfs namespace
 declare global {
   interface Window {
     cfs?: {
