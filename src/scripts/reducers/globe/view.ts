@@ -5,7 +5,7 @@ import config from '../../config/main';
 import {GlobeView} from '../../types/globe-view';
 
 // get initial state from url or fallback to default state in config
-const globeState = parseUrl() || config.globe;
+const globeState = parseUrl()?.globeState || config.globe;
 const initialState = globeState.view;
 
 function globeViewReducer(

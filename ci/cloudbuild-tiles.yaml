@@ -1,4 +1,4 @@
-# manually run with "gcloud builds submit --config ./ci/cloudbuild-tiles.yaml --timeout=2000 --substitutions _LAYER_ID="fire.burned_area",_VARIABLE_ID="burned_area",_DATASET_ID="esacci.FIRE.mon.L4.BA.MODIS.Terra.MODIS_TERRA.v5-1.r1",_TIME_RANGE="2010-01-01.2011-01-01",_TILE_SIZE=256 ."
+# manually run with "gcloud builds submit --config ./ci/cloudbuild-tiles.yaml --timeout=2000 --substitutions _LAYER_ID="fire.burned_area",_VARIABLE_ID="burned_area",_DATASET_ID="esacci.FIRE.mon.L4.BA.MODIS.Terra.MODIS_TERRA.v5-1.r1",_TIME_RANGE="2010-01-01.2011-01-01",_TILE_SIZE=256,_VERSION=0.0.1 ."
 # or locally with "cloud-build-local --dryrun=false --config ./ci/cloudbuild-tiles.yaml --substitutions [copy-from-above] ."
 steps:
   # export zarr file with cate
@@ -39,5 +39,5 @@ steps:
       - "cp"
       - "-r"
       - "./upload/${_LAYER_ID}/*"
-      - "gs://esa-cfs-tiles/generated/${_LAYER_ID}/"
+      - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/"
 timeout: 2000s
