@@ -17,13 +17,13 @@ import GlobeNavigation from '../globe-navigation/globe-navigation';
 import {EsaLogo} from '../icons/esa-logo';
 import TimeSlider from '../time-slider/time-slider';
 import DataSetInfo from '../data-set-info/data-set-info';
+
 import Story from '../story/story';
 import StoriesSelector from '../stories-selector/stories-selector';
 import PresentationSelector from '../presentation-selector/presentation-selector';
 import ShowcaseSelector from '../showcase-selector/showcase-selector';
 import Globes from '../globes/globes';
-// @ts-ignore
-import {isElectron, connectToStore} from 'electronHelpers'; // this is an webpack alias
+import {isElectron, connectToStore} from '../../libs/electron/index';
 
 import translations from '../../i18n';
 
