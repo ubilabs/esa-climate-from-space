@@ -1,9 +1,14 @@
 @require '../../../variables.styl'
 
 .storyList
-  display: grid
-  padding: 20px
+  overflow-y: scroll
+  height: 100%
   background-color: $black
+
+.storyListGrid
+  display: grid
+  overflow-y: scroll
+  padding: emCalc(20px)
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
   grid-gap: 10px
 
