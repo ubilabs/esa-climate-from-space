@@ -14,7 +14,8 @@ import {layersSelector} from '../../selectors/layers/list';
 import styles from './layer-selector.styl';
 import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
 import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
-import {downloadedDataSelector} from '../../selectors/downloaded-data';
+import {downloadedDataSelector} from '../../selectors/offline/downloaded';
+import {downloadProgressSelector} from '../../selectors/offline/progress';
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const LayerSelector: FunctionComponent = () => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const showLayerSelector = useSelector(showLayerSelectorSelector);
   const downloadedData = useSelector(downloadedDataSelector);
+  const downloadProgress = useSelector(downloadProgressSelector);
   const selectedMainLayer = layers.find(
     layer => layer.id === selectedLayerIds.mainId
   );
@@ -66,6 +68,7 @@ const LayerSelector: FunctionComponent = () => {
               layers={layers}
               selectedLayerIds={selectedLayerIds}
               downloadedLayerIds={downloadedData.layers}
+              downloadProgress={downloadProgress}
               onSelect={(layerId, isMain) =>
                 dispatch(setSelectedLayerIdsAction(layerId, isMain))
               }

@@ -8,11 +8,15 @@ app.allowRendererProcessReuse = true;
 let windows = [];
 
 function createWindow() {
-  // cerate a new browser window
+  // create a new browser window
   const window = new BrowserWindow({
-    width: 1024,
-    height: 768,
-    webPreferences: {nodeIntegration: true}
+    width: 1400,
+    height: 800,
+    webPreferences: {
+      nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, 'preload.js')
+    }
   });
 
   // save window's reference
