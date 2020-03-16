@@ -1,5 +1,5 @@
 import React, {FunctionComponent} from 'react';
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, Middleware} from 'redux';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
@@ -23,16 +23,32 @@ import StoriesSelector from '../stories-selector/stories-selector';
 import PresentationSelector from '../presentation-selector/presentation-selector';
 import ShowcaseSelector from '../showcase-selector/showcase-selector';
 import Globes from '../globes/globes';
-import {isElectron, connectToStore} from '../../libs/electron/index';
+import {
+  isElectron,
+  connectToStore,
+  offlineSaveMiddleware,
+  offlineLoadMiddleware
+} from '../../libs/electron/index';
 
 import translations from '../../i18n';
 
 import styles from './app.styl';
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk, createLogger({collapsed: true}))
-);
+// create redux store
+// @ts-ignore - injected by webpack
+const isProduction = PRODUCTION; // eslint-disable-line no-undef
+const middlewares: Middleware[] = [thunk];
+
+if (isElectron()) {
+  middlewares.push(offlineSaveMiddleware);
+  middlewares.push(offlineLoadMiddleware);
+}
+
+if (!isProduction || isElectron()) {
+  middlewares.push(createLogger({collapsed: true}));
+}
+
+const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
 // connect electron messages to redux store
 if (isElectron()) {
