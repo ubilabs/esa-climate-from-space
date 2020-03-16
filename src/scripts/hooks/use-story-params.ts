@@ -1,6 +1,11 @@
 import {useRouteMatch, useParams} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+
+import {State} from '../reducers';
+import {selectedStorySelector} from '../selectors/story/selected';
 
 import {StoryMode} from '../types/story-mode';
+import {storyListSelector} from '../selectors/story/list';
 
 interface StoryParams {
   storyId: string;
@@ -43,9 +48,23 @@ export const useStoryParams = () => {
     mode = StoryMode.Showcase;
   }
 
-  if (!mode) {
-    return null;
-  }
+  const currentStoryId =
+    mode === StoryMode.Showcase ? storyIds[storyIndex || 0] : storyIds[0];
 
-  return {mode, storyIds, storyIndex, slideIndex};
+  const selectedStory = useSelector((state: State) =>
+    selectedStorySelector(state, currentStoryId)
+  );
+
+  const storyList = useSelector(storyListSelector);
+  const storyListItem = storyList.find(story => story.id === currentStoryId);
+
+  return {
+    mode,
+    storyIds,
+    storyIndex,
+    slideIndex,
+    currentStoryId,
+    storyListItem,
+    selectedStory
+  };
 };

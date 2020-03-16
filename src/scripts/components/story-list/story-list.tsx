@@ -23,29 +23,31 @@ const StoryList: FunctionComponent<Props> = ({
   const stories = useSelector(storyListSelector);
 
   const classes = cx(
-    styles.storyList,
+    styles.storyListGrid,
     mode === StoryMode.Present && styles.present
   );
 
   return (
-    <div className={classes}>
-      {stories.map(story => {
-        let selectedIndex = selectedIds?.indexOf(story.id);
+    <div className={styles.storyList}>
+      <div className={classes}>
+        {stories.map(story => {
+          let selectedIndex = selectedIds?.indexOf(story.id);
 
-        if (typeof selectedIndex !== 'number') {
-          selectedIndex = -1;
-        }
+          if (typeof selectedIndex !== 'number') {
+            selectedIndex = -1;
+          }
 
-        return (
-          <StoryListItem
-            key={story.id}
-            story={story}
-            mode={mode}
-            selectedIndex={selectedIndex}
-            onSelectStory={id => onSelectStory(id)}
-          />
-        );
-      })}
+          return (
+            <StoryListItem
+              key={story.id}
+              story={story}
+              mode={mode}
+              selectedIndex={selectedIndex}
+              onSelectStory={id => onSelectStory(id)}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
