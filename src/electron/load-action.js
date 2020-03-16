@@ -5,11 +5,12 @@ const {app} = require('electron');
 /**
  * Loads a persisted action from the filesystem
  */
-module.exports = function loadAction(actionType) {
+module.exports = function loadAction(actionType, pathToFile) {
   const type = actionType.toLowerCase();
   const downloadsPath = app.getPath('downloads');
-  const actionsPath = path.join(downloadsPath, 'actions');
-  const filePath = path.join(actionsPath, type);
+  const filePath = pathToFile
+    ? path.join(downloadsPath, pathToFile)
+    : path.join(downloadsPath, 'actions', type);
 
   let action = null;
 

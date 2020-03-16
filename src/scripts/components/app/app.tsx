@@ -1,12 +1,8 @@
 import React, {FunctionComponent} from 'react';
-import {createStore, applyMiddleware, Middleware} from 'redux';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
-import thunk from 'redux-thunk';
-import {createLogger} from 'redux-logger';
 import {IntlProvider} from 'react-intl';
 import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
-import rootReducer from '../../reducers/index';
 import {languageSelector} from '../../selectors/language';
 import UrlSync from '../url-sync/url-sync';
 import LayerLoader from '../layer-loader/layer-loader';
@@ -17,43 +13,20 @@ import GlobeNavigation from '../globe-navigation/globe-navigation';
 import {EsaLogo} from '../icons/esa-logo';
 import TimeSlider from '../time-slider/time-slider';
 import DataSetInfo from '../data-set-info/data-set-info';
+import {createReduxStore} from './create-redux-store';
 
 import Story from '../story/story';
 import StoriesSelector from '../stories-selector/stories-selector';
 import PresentationSelector from '../presentation-selector/presentation-selector';
 import ShowcaseSelector from '../showcase-selector/showcase-selector';
 import Globes from '../globes/globes';
-import {
-  isElectron,
-  connectToStore,
-  offlineSaveMiddleware,
-  offlineLoadMiddleware
-} from '../../libs/electron/index';
 
 import translations from '../../i18n';
 
 import styles from './app.styl';
 
 // create redux store
-// @ts-ignore - injected by webpack
-const isProduction = PRODUCTION; // eslint-disable-line no-undef
-const middlewares: Middleware[] = [thunk];
-
-if (isElectron()) {
-  middlewares.push(offlineSaveMiddleware);
-  middlewares.push(offlineLoadMiddleware);
-}
-
-if (!isProduction || isElectron()) {
-  middlewares.push(createLogger({collapsed: true}));
-}
-
-const store = createStore(rootReducer, applyMiddleware(...middlewares));
-
-// connect electron messages to redux store
-if (isElectron()) {
-  connectToStore(store.dispatch);
-}
+const store = createReduxStore();
 
 const App: FunctionComponent = () => (
   <StoreProvider store={store}>

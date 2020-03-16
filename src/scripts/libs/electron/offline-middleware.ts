@@ -13,6 +13,11 @@ import {
   FETCH_STORY_SUCCESS,
   FETCH_STORY_ERROR
 } from '../../actions/fetch-story';
+import {
+  FETCH_LAYER_SUCCESS,
+  FETCH_LAYER_ERROR,
+  fetchLayerSuccessAction
+} from '../../actions/fetch-layer';
 import {saveAction} from './save-action';
 import {loadAction} from './load-action';
 
@@ -36,8 +41,17 @@ const actionsToPersist: ActionToPersist[] = [
     success: FETCH_STORY_SUCCESS,
     error: FETCH_STORY_ERROR,
     save: false, // for this action we only want to load the file from the story's offline package
+    load: true
+  },
+  {
+    success: FETCH_LAYER_SUCCESS,
+    error: FETCH_LAYER_ERROR,
+    save: false, // for this action we only want to load the file from the layers's offline package
     load: true,
-    path: '/'
+    getFilePath: (errorAction: AnyAction) =>
+      `downloads/${errorAction.id}/metadata.json`, // the path relative to the app's offline folder
+    successActionCreator: (errorAction, content) =>
+      fetchLayerSuccessAction(errorAction.id, content)
   }
 ];
 
@@ -61,15 +75,25 @@ export const offlineSaveMiddleware: Middleware = () => (
 export const offlineLoadMiddleware: Middleware = () => (
   next: Dispatch<AnyAction>
 ) => (action: AnyAction) => {
-  const actionToSave = actionsToPersist.find(
+  const actionToLoad = actionsToPersist.find(
     ({error}) => error === action.type
   );
 
   // when the incoming action did fail and is one we probably saved before,
   // try to load it from the filesystem and return the success action instead
   // of the error action
-  if (actionToSave?.load) {
-    const loadedAction = loadAction(actionToSave.success);
+  if (actionToLoad?.load) {
+    const filePath = actionToLoad.getFilePath
+      ? actionToLoad.getFilePath(action)
+      : undefined; // eslint-disable-line no-undefined
+    const content = loadAction(actionToLoad.success, filePath);
+
+    // if we load the action directly the content is already the complete action
+    // if we load content from a downloaded package we have to create the action
+    // object first with the successActionCreator function
+    const loadedAction = action.successActionCreator
+      ? action.successActionCreator(action, content)
+      : content;
 
     if (loadedAction) {
       return next(loadedAction);

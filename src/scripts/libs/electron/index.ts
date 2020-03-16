@@ -9,7 +9,7 @@ declare global {
       downloadUrl: (url: string) => void;
       deleteId: (id: string) => void;
       saveAction: (action: Action) => void;
-      loadAction: (actionType: string) => Action | null;
+      loadAction: (actionType: string, filePath?: string) => Action | null;
       addIpcListener: (
         channel: string,
         callback: (event: {}, message: string) => void
