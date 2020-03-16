@@ -9,6 +9,7 @@ declare global {
       downloadUrl: (url: string) => void;
       deleteId: (id: string) => void;
       saveAction: (action: Action) => void;
+      loadAction: (actionType: string) => Action | null;
       addIpcListener: (
         channel: string,
         callback: (event: {}, message: string) => void
@@ -23,6 +24,5 @@ export {deleteId} from './delete-id';
 export {downloadUrl} from './download-url';
 export {connectToStore} from './connect-to-store';
 export {getOfflineTilesUrl} from './get-offline-tiles-url';
-export {saveAction} from './save-action';
-export {offlineReadMiddleware} from './offline-middleware';
 export {offlineSaveMiddleware} from './offline-middleware';
+export {offlineLoadMiddleware} from './offline-middleware';

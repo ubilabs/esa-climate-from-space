@@ -26,7 +26,8 @@ import Globes from '../globes/globes';
 import {
   isElectron,
   connectToStore,
-  offlineSaveMiddleware
+  offlineSaveMiddleware,
+  offlineLoadMiddleware
 } from '../../libs/electron/index';
 
 import translations from '../../i18n';
@@ -39,7 +40,8 @@ const isProduction = PRODUCTION; // eslint-disable-line no-undef
 const middlewares: Middleware[] = [thunk];
 
 if (isElectron()) {
-  middlewares.push(offlineMiddleware);
+  middlewares.push(offlineSaveMiddleware);
+  middlewares.push(offlineLoadMiddleware);
 }
 
 if (!isProduction || isElectron()) {
