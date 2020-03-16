@@ -14,7 +14,7 @@ module.exports = function deleteId(browserWindow, id) {
   }
 
   const downloadsPath = app.getPath('downloads');
-  const pathToDelete = path.join(downloadsPath, id);
+  const pathToDelete = path.join(downloadsPath, 'downloads', id);
 
   if (!fs.statSync(pathToDelete).isDirectory() || id.length < 5) {
     throw new Error('deleteId: Path to delete does not exist', pathToDelete);

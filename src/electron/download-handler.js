@@ -22,7 +22,8 @@ module.exports.addDownloadHandler = function(browserWindow) {
 
   browserWindow.webContents.session.on('will-download', (_, item) => {
     const downloadsPath = app.getPath('downloads');
-    const tmpFilePath = path.join(downloadsPath, `${Date.now()}.zip`);
+    const offlinePath = path.join(downloadsPath, 'downloads');
+    const tmpFilePath = path.join(offlinePath, `${Date.now()}.zip`);
     item.setSavePath(tmpFilePath);
 
     activeDownloads[item.getURL()] = 0;
@@ -50,7 +51,7 @@ module.exports.addDownloadHandler = function(browserWindow) {
     item.once('done', (event, state) => {
       if (state === 'completed') {
         console.log('Download successfully', item.savePath);
-        zip.unzipSync(item.savePath, downloadsPath);
+        zip.unzipSync(item.savePath, offlinePath);
         fs.unlinkSync(item.savePath);
         browserWindow.webContents.send(
           'offline-update',
