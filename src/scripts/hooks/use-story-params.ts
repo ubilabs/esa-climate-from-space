@@ -5,6 +5,7 @@ import {State} from '../reducers';
 import {selectedStorySelector} from '../selectors/story/selected';
 
 import {StoryMode} from '../types/story-mode';
+import {storyListSelector} from '../selectors/story/list';
 
 interface StoryParams {
   storyId: string;
@@ -54,12 +55,16 @@ export const useStoryParams = () => {
     selectedStorySelector(state, currentStoryId)
   );
 
+  const storyList = useSelector(storyListSelector);
+  const storyListItem = storyList.find(story => story.id === currentStoryId);
+
   return {
     mode,
     storyIds,
     storyIndex,
     slideIndex,
     currentStoryId,
+    storyListItem,
     selectedStory
   };
 };
