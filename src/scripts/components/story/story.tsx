@@ -45,7 +45,7 @@ const Story: FunctionComponent = () => {
       <StoryHeader mode={mode} storyIds={storyIds} />
       <main className={styles.main}>
         {/* Instead of rendering only the currect slide we map over all slides to
-        enforce a newly mounted component when the pageNumber changes */}
+          enforce a newly mounted component when the pageNumber changes */}
         {selectedStory?.slides.map(
           (currentSlide, index) =>
             index === slideIndex && (
@@ -55,7 +55,11 @@ const Story: FunctionComponent = () => {
         <Globes />
         {false && <StoryMedia />}
       </main>
-      <StoryFooter mode={mode} />
+      <StoryFooter
+        mode={mode}
+        slideIndex={slideIndex}
+        selectedStory={selectedStory}
+      />
     </div>
   );
 };
