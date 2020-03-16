@@ -1,22 +1,34 @@
 const fs = require('fs');
+const path = require('path');
 const {app} = require('electron');
 
 /**
  * Get downloaded Ids from the downloads folder content
  */
 module.exports.getDownloadedIds = function() {
-  const dirContent = fs
-    .readdirSync(app.getPath('downloads'), {
-      withFileTypes: true
-    })
-    .filter(entry => entry.isDirectory())
-    .map(entry => entry.name);
+  const downloadsPath = path.join(app.getPath('downloads'), 'downloads');
 
-  const layers = dirContent.filter(name => !name.startsWith('story'));
-  const stories = dirContent.filter(name => name.startsWith('story'));
+  try {
+    const dirContent = fs
+      .readdirSync(downloadsPath, {
+        withFileTypes: true
+      })
+      .filter(entry => entry.isDirectory())
+      .map(entry => entry.name);
+
+    const layers = dirContent.filter(name => !name.startsWith('story'));
+    const stories = dirContent.filter(name => name.startsWith('story'));
+
+    return {
+      layers,
+      stories
+    };
+  } catch (error) {
+    console.log('Could not read downlods folder at', downloadsPath);
+  }
 
   return {
-    layers,
-    stories
+    layers: [],
+    stories: []
   };
 };

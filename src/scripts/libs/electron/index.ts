@@ -1,3 +1,5 @@
+import {Action} from 'redux';
+
 // Extend global window type with our cfs namespace
 declare global {
   interface Window {
@@ -6,6 +8,7 @@ declare global {
       getDownloadsPath: (...parts: string[]) => string;
       downloadUrl: (url: string) => void;
       deleteId: (id: string) => void;
+      saveAction: (action: Action) => void;
       addIpcListener: (
         channel: string,
         callback: (event: {}, message: string) => void
@@ -20,3 +23,6 @@ export {deleteId} from './delete-id';
 export {downloadUrl} from './download-url';
 export {connectToStore} from './connect-to-store';
 export {getOfflineTilesUrl} from './get-offline-tiles-url';
+export {saveAction} from './save-action';
+export {offlineReadMiddleware} from './offline-middleware';
+export {offlineSaveMiddleware} from './offline-middleware';

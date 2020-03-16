@@ -20,6 +20,12 @@ function deleteId(id) {
   deleteRemoteFn(browserWindow, id);
 }
 
+// Saves a redux action in a local file for offline usage
+function saveAction(action) {
+  const saveActionRemoteFn = remote.require('./save-action');
+  saveActionRemoteFn(action);
+}
+
 // The context of the preload script and the browser windows context are both
 // isolated for security reasons (contextIsolation: true).
 // That's why we have to expose values and functions via the context bridge.
@@ -29,5 +35,6 @@ contextBridge.exposeInMainWorld('cfs', {
   getDownloadsPath,
   downloadUrl,
   deleteId,
+  saveAction,
   addIpcListener: (channel, callback) => ipcRenderer.on(channel, callback)
 });
