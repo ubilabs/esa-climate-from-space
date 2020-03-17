@@ -57,7 +57,11 @@ const Story: FunctionComponent = () => {
         <Globes />
         {false && <StoryMedia />}
       </main>
-      <StoryFooter mode={mode} />
+      <StoryFooter
+        mode={mode}
+        slideIndex={slideIndex}
+        selectedStory={selectedStory}
+      />
     </div>
   );
 };

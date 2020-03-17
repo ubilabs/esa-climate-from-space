@@ -1,17 +1,18 @@
 import {FunctionComponent} from 'react';
-import {useInterval} from '../../hooks/use-interval';
 import {useHistory} from 'react-router-dom';
 
+import {useInterval} from '../../hooks/use-interval';
+
 interface Props {
-  autoPlayLink: string | null;
+  autoPlayLink: string;
 }
 
 const Autoplay: FunctionComponent<Props> = ({autoPlayLink}) => {
   const history = useHistory();
 
   useInterval(() => {
-    history.replace(`${autoPlayLink}`);
-  }, 5000);
+    autoPlayLink && history.replace(autoPlayLink);
+  }, 3000);
 
   return null;
 };
