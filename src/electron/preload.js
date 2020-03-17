@@ -27,9 +27,9 @@ function saveAction(action) {
 }
 
 // Loads a redux action in a local file for offline usage
-function loadAction(actionType) {
+function loadAction(actionType, pathToFile) {
   const loadActionRemoteFn = remote.require('./load-action');
-  return loadActionRemoteFn(actionType);
+  return loadActionRemoteFn(actionType, pathToFile);
 }
 
 // The context of the preload script and the browser windows context are both
