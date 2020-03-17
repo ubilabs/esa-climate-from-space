@@ -15,12 +15,13 @@ export interface FetchLayerSuccessAction {
 
 interface FetchLayerErrorAction {
   type: typeof FETCH_LAYER_ERROR;
+  id: string;
   message: string;
 }
 
 export type FetchLayerActions = FetchLayerSuccessAction | FetchLayerErrorAction;
 
-function fetchLayerSuccessAction(id: string, layer: Layer) {
+export function fetchLayerSuccessAction(id: string, layer: Layer) {
   return {
     type: FETCH_LAYER_SUCCESS,
     id,
@@ -28,9 +29,10 @@ function fetchLayerSuccessAction(id: string, layer: Layer) {
   };
 }
 
-function fetchLayerErrorAction(message: string) {
+function fetchLayerErrorAction(id: string, message: string) {
   return {
     type: FETCH_LAYER_ERROR,
+    id,
     message
   };
 }
@@ -38,6 +40,6 @@ function fetchLayerErrorAction(message: string) {
 const fetchLayer = (id: string) => (dispatch: Dispatch) =>
   fetchLayerApi(id)
     .then(layer => dispatch(fetchLayerSuccessAction(id, layer)))
-    .catch(error => dispatch(fetchLayerErrorAction(error.message)));
+    .catch(error => dispatch(fetchLayerErrorAction(id, error.message)));
 
 export default fetchLayer;

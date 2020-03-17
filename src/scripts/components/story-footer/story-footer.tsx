@@ -1,12 +1,12 @@
 import React, {FunctionComponent} from 'react';
 
 import StoryPagination from '../story-pagination/story-pagination';
+import Autoplay from '../autoplay/autoplay';
 
 import {StoryMode} from '../../types/story-mode';
+import {Story} from '../../types/story';
 
 import styles from './story-footer.styl';
-import {Story} from '../../types/story';
-import Autoplay from '../autoplay/autoplay';
 
 interface Props {
   mode: StoryMode | null;

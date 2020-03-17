@@ -19,10 +19,10 @@ const Story: FunctionComponent = () => {
   const dispatch = useDispatch();
   const {
     mode,
-    storyIds,
     slideIndex,
     currentStoryId,
-    selectedStory
+    selectedStory,
+    storyListItem
   } = storyParams;
 
   const storyClasses = cx(
@@ -42,10 +42,12 @@ const Story: FunctionComponent = () => {
 
   return (
     <div className={storyClasses}>
-      <StoryHeader mode={mode} storyIds={storyIds} />
+      {storyListItem && (
+        <StoryHeader mode={mode} storyTitle={storyListItem.title} />
+      )}
       <main className={styles.main}>
         {/* Instead of rendering only the currect slide we map over all slides to
-          enforce a newly mounted component when the pageNumber changes */}
+        enforce a newly mounted component when the slideNumber changes */}
         {selectedStory?.slides.map(
           (currentSlide, index) =>
             index === slideIndex && (
