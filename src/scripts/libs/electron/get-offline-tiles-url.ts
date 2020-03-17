@@ -6,6 +6,7 @@ export function getOfflineTilesUrl(): string {
   }
 
   return window.cfs.getDownloadsPath(
+    'downloads',
     '{id}',
     'tiles',
     '{timeIndex}',

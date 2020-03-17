@@ -74,9 +74,9 @@ export const offlineSaveMiddleware: Middleware = () => (
 // dispatched
 export const offlineLoadMiddleware: Middleware = () => (
   next: Dispatch<AnyAction>
-) => (action: AnyAction) => {
+) => (dispatchedAction: AnyAction) => {
   const actionToLoad = actionsToPersist.find(
-    ({error}) => error === action.type
+    ({error}) => error === dispatchedAction.type
   );
 
   // when the incoming action did fail and is one we probably saved before,
@@ -84,15 +84,20 @@ export const offlineLoadMiddleware: Middleware = () => (
   // of the error action
   if (actionToLoad?.load) {
     const filePath = actionToLoad.getFilePath
-      ? actionToLoad.getFilePath(action)
+      ? actionToLoad.getFilePath(dispatchedAction)
       : undefined; // eslint-disable-line no-undefined
     const content = loadAction(actionToLoad.success, filePath);
+
+    // persisted data not found -> dispatch original error action
+    if (!content) {
+      return next(dispatchedAction);
+    }
 
     // if we load the action directly the content is already the complete action
     // if we load content from a downloaded package we have to create the action
     // object first with the successActionCreator function
-    const loadedAction = action.successActionCreator
-      ? action.successActionCreator(action, content)
+    const loadedAction = actionToLoad.successActionCreator
+      ? actionToLoad.successActionCreator(dispatchedAction, content)
       : content;
 
     if (loadedAction) {
@@ -101,5 +106,5 @@ export const offlineLoadMiddleware: Middleware = () => (
   }
 
   // return the original error action when not found
-  return next(action);
+  return next(dispatchedAction);
 };
