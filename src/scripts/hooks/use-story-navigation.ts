@@ -3,8 +3,13 @@ import {useStoryParams} from './use-story-params';
 import {StoryMode} from '../types/story-mode';
 
 export const useStoryNavigation = () => {
-  const storyParams = useStoryParams();
-  const {mode, storyIds, storyIndex, slideIndex, selectedStory} = storyParams;
+  const {
+    mode,
+    storyIds,
+    storyIndex,
+    slideIndex,
+    selectedStory
+  } = useStoryParams();
   const numberOfSlides = selectedStory?.slides.length;
 
   let autoPlayLink = null;
@@ -28,7 +33,6 @@ export const useStoryNavigation = () => {
   }
 
   if (storyIds && typeof storyIndex === 'number') {
-    console.log(storyIds);
     const showcaseStoryIds = storyIds.join('&');
     const nextStoryIndex = storyIndex + 1;
     // go through all slides of one story
@@ -36,7 +40,6 @@ export const useStoryNavigation = () => {
       autoPlayLink = `/showcase/${showcaseStoryIds}/${storyIndex}/${nextSlideIndex}`;
       // when no slides are left, go to first slide of next story
     } else if (nextStoryIndex < storyIds.length) {
-      console.log('>>>>>', nextStoryIndex);
       autoPlayLink = `/showcase/${showcaseStoryIds}/${nextStoryIndex}/0`;
       // after the last story, return to the beginning
     } else {

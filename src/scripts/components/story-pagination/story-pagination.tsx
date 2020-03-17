@@ -6,28 +6,28 @@ import cx from 'classnames';
 import {PreviousIcon} from '../icons/previous-icon';
 import {NextIcon} from '../icons/next-icon';
 import {CloseIcon} from '../icons/close-icon';
-import {useStoryNavigation} from '../../hooks/use-story-navigation';
 
 import {StoryMode} from '../../types/story-mode';
-import {Story} from '../../types/story';
 
 import styles from './story-pagination.styl';
 
 interface Props {
   mode: StoryMode | null;
   slideIndex: number;
-  selectedStory: Story | null;
+  storySlidesLength: number;
+  nextSlideLink: string | null;
+  previousSlideLink: string | null;
 }
 
 const StoryPagination: FunctionComponent<Props> = ({
   mode,
   slideIndex,
-  selectedStory
+  storySlidesLength,
+  nextSlideLink,
+  previousSlideLink
 }) => {
   const intl = useIntl();
   const history = useHistory();
-  const storyNavigation = useStoryNavigation();
-  const {nextSlideLink, previousSlideLink} = storyNavigation;
   const isShowcaseMode = mode === StoryMode.Showcase;
   const isPresenterMode = mode === StoryMode.Present;
 
@@ -63,7 +63,10 @@ const StoryPagination: FunctionComponent<Props> = ({
     };
   }, [onKeyDownHandler]);
 
-  const iconClasses = cx(styles.disabled, isShowcaseMode && styles.emptyIcon);
+  const disabledClasses = cx(
+    styles.disabled,
+    isShowcaseMode && styles.emptyIcon
+  );
 
   return (
     <div className={styles.pagination}>
@@ -73,13 +76,13 @@ const StoryPagination: FunctionComponent<Props> = ({
             <PreviousIcon />
           </Link>
         ) : (
-          <div className={iconClasses}>
+          <div className={disabledClasses}>
             <PreviousIcon />
           </div>
         )}
 
         <span className={styles.slides}>
-          {slideIndex + 1}/{selectedStory?.slides.length}
+          {slideIndex + 1}/{storySlidesLength}
         </span>
 
         {nextSlideLink ? (
@@ -87,7 +90,7 @@ const StoryPagination: FunctionComponent<Props> = ({
             <NextIcon />
           </Link>
         ) : (
-          <div className={iconClasses}>
+          <div className={disabledClasses}>
             <NextIcon />
           </div>
         )}

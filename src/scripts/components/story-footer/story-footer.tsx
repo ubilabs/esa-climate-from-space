@@ -12,22 +12,35 @@ interface Props {
   mode: StoryMode | null;
   slideIndex: number;
   selectedStory: Story | null;
+  nextSlideLink: string | null;
+  previousSlideLink: string | null;
+  autoPlayLink: string | null;
 }
 
 const StoryFooter: FunctionComponent<Props> = ({
   mode,
   slideIndex,
-  selectedStory
+  selectedStory,
+  nextSlideLink,
+  previousSlideLink,
+  autoPlayLink
 }) => {
   const isShowcaseMode = mode === StoryMode.Showcase;
+
   return (
     <div className={styles.storyFooter}>
-      <StoryPagination
-        mode={mode}
-        slideIndex={slideIndex}
-        selectedStory={selectedStory}
-      />
-      {isShowcaseMode && <Autoplay />}
+      {selectedStory && (
+        <StoryPagination
+          mode={mode}
+          slideIndex={slideIndex}
+          storySlidesLength={selectedStory.slides.length}
+          nextSlideLink={nextSlideLink}
+          previousSlideLink={previousSlideLink}
+        />
+      )}
+      {isShowcaseMode && autoPlayLink && (
+        <Autoplay autoPlayLink={autoPlayLink} />
+      )}
     </div>
   );
 };

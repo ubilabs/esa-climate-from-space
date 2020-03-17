@@ -13,6 +13,7 @@ import fetchStory from '../../actions/fetch-story';
 import {StoryMode} from '../../types/story-mode';
 
 import styles from './story.styl';
+import {useStoryNavigation} from '../../hooks/use-story-navigation';
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
@@ -30,6 +31,8 @@ const Story: FunctionComponent = () => {
     storyParams?.mode === StoryMode.Present && styles.presentStory,
     mode === StoryMode.Showcase && styles.showcaseStory
   );
+
+  const {nextSlideLink, previousSlideLink, autoPlayLink} = useStoryNavigation();
 
   // fetch story of active storyId
   useEffect(() => {
@@ -61,6 +64,9 @@ const Story: FunctionComponent = () => {
         mode={mode}
         slideIndex={slideIndex}
         selectedStory={selectedStory}
+        nextSlideLink={nextSlideLink}
+        previousSlideLink={previousSlideLink}
+        autoPlayLink={autoPlayLink}
       />
     </div>
   );
