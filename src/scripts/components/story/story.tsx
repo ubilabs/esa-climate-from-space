@@ -6,9 +6,9 @@ import Globes from '../globes/globes';
 import {useStoryParams} from '../../hooks/use-story-params';
 import StoryContent from '../story-content/story-content';
 import StoryMedia from '../story-media/story-media';
-import StoryHeader from '../story-header/story-header';
 import StoryFooter from '../story-footer/story-footer';
 import fetchStory from '../../actions/fetch-story';
+import Header from '../header/header';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -43,7 +43,11 @@ const Story: FunctionComponent = () => {
   return (
     <div className={storyClasses}>
       {storyListItem && (
-        <StoryHeader mode={mode} storyTitle={storyListItem.title} />
+        <Header
+          backLink={`/${mode.toString()}`}
+          backButtonId="backToStories"
+          title={storyListItem.title}
+        />
       )}
       <main className={styles.main}>
         {/* Instead of rendering only the currect slide we map over all slides to

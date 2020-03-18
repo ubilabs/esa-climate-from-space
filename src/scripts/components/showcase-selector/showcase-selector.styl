@@ -7,39 +7,13 @@
   background-color: $black
   pointer-events: auto
 
-.header
-  display: flex
-  justify-content: space-between
-  align-items: center
-  padding: 10px
-  background-color: $darkGrey1
-
-.title
-  display: flex
-  flex: 1
-  justify-content: center
-  align-items: center
-  color: $textWhite
-  text-align: center
-  text-transform: uppercase
-  font-size: 1.1em
-
-.backButton
-  display: flex
-  flex: 1
-  justify-content: flex-start
-  align-items: center
-  color: $textWhite
-  font-size: 1.1em
-
 .playButton
   display: flex
-  flex: 1
   justify-content: flex-end
   align-items: center
-  padding-right: 20px
+  padding-right: emCalc(25px)
   color: $textDefault
 
-  svg
-    padding-left: 10px
+  .button
+    padding-left: emCalc(15px)
     fill: $textWhite
