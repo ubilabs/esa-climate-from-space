@@ -4,15 +4,17 @@ import cx from 'classnames';
 
 import {StoryMode} from '../../types/story-mode';
 import {Slide} from '../../types/story';
+import {getStoryMediaUrl} from '../../libs/get-story-media-url';
 
 import styles from './story-content.styl';
 
 interface Props {
+  storyId: string;
   mode: StoryMode;
   slide: Slide;
 }
 
-const StoryContent: FunctionComponent<Props> = ({mode, slide}) => {
+const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
   const source = mode === StoryMode.Stories ? slide.text : slide.shortText;
 
   const contentClasses = cx(
@@ -20,10 +22,14 @@ const StoryContent: FunctionComponent<Props> = ({mode, slide}) => {
     mode !== StoryMode.Stories && styles.shortTextContent
   );
 
+  const transformImageUri = (originalSrc: string) =>
+    getStoryMediaUrl(storyId, originalSrc);
+
   return (
     <div className={contentClasses}>
       <ReactMarkdown
         source={source}
+        transformImageUri={transformImageUri}
         allowedTypes={[
           'heading',
           'text',

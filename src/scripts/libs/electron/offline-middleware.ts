@@ -11,7 +11,8 @@ import {
 } from '../../actions/fetch-stories';
 import {
   FETCH_STORY_SUCCESS,
-  FETCH_STORY_ERROR
+  FETCH_STORY_ERROR,
+  fetchStorySuccessAction
 } from '../../actions/fetch-story';
 import {
   FETCH_LAYER_SUCCESS,
@@ -40,8 +41,12 @@ const actionsToPersist: ActionToPersist[] = [
   {
     success: FETCH_STORY_SUCCESS,
     error: FETCH_STORY_ERROR,
-    save: false, // for this action we only want to load the file from the story's offline package
-    load: true
+    save: false, // for this action we only want to load the file from the storie's offline package
+    load: true,
+    getFilePath: (errorAction: AnyAction) =>
+      `downloads/story-${errorAction.id}/${errorAction.id}-${errorAction.language}.json`, // the path relative to the app's offline folder
+    successActionCreator: (errorAction, content) =>
+      fetchStorySuccessAction(errorAction.id, errorAction.language, content)
   },
   {
     success: FETCH_LAYER_SUCCESS,

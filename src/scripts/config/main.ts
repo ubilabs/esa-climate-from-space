@@ -30,6 +30,8 @@ export default {
     layer: `https://storage.googleapis.com/esa-cfs-tiles/${version}/{id}/metadata.json`,
     layerTiles: `https://storage.googleapis.com/esa-cfs-tiles/${version}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
     layerOfflinePackage: `https://storage.googleapis.com/esa-cfs-tiles/${version}/{id}/package.zip`,
+    storyOfflinePackage: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}/package.zip`,
+    storyMediaBase: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}`,
     stories: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/stories-{lang}.json`,
     story: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}/{id}-{lang}.json`
   },

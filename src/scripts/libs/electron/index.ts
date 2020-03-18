@@ -24,5 +24,6 @@ export {deleteId} from './delete-id';
 export {downloadUrl} from './download-url';
 export {connectToStore} from './connect-to-store';
 export {getOfflineTilesUrl} from './get-offline-tiles-url';
+export {getOfflineStoryMediaUrl} from './get-offline-story-media-url';
 export {offlineSaveMiddleware} from './offline-middleware';
 export {offlineLoadMiddleware} from './offline-middleware';

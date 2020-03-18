@@ -55,7 +55,12 @@ const Story: FunctionComponent = () => {
         {selectedStory?.slides.map(
           (currentSlide, index) =>
             index === slideIndex && (
-              <StoryContent mode={mode} slide={currentSlide} key={index} />
+              <StoryContent
+                storyId={selectedStory.id}
+                mode={mode}
+                slide={currentSlide}
+                key={index}
+              />
             )
         )}
         <Globes />
