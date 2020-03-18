@@ -1,19 +1,23 @@
 @require '../../../variables.styl'
 
 .content
+  overflow-y: scroll
   padding: emCalc(80px) emCalc(56px)
-  color: $textWhite
+  background-color: $black
+  color: $textDefault
+  line-height: emCalc(22px)
 
   h1
     color: $textColor
     font-weight: bold
     font-size: emCalc(36px)
     font-family: NotesEsa
+    line-height: emCalc(16px)
 
-  p
-    color: $textDefault
-    line-height: emCalc(22px)
+  img
+    width: 50%
 
 .shortTextContent
+  overflow-y: hidden
   padding-top: emCalc(30px)
   font-size: emCalc(32px)
