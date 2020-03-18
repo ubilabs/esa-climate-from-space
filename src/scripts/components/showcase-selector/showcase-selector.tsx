@@ -1,9 +1,11 @@
 import React, {FunctionComponent} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
-import {useIntl} from 'react-intl';
+import {useIntl, FormattedMessage} from 'react-intl';
 
 import StoryList from '../story-list/story-list';
 import Header from '../header/header';
+import {PlayIcon} from '../icons/play-icon';
+import Button from '../button/button';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -29,9 +31,20 @@ const ShowcaseSelector: FunctionComponent = () => {
       <Header
         backLink="/"
         backButtonId="backToDataMode"
-        title={intl.formatMessage({id: 'showcaseMode'})}
-        selectedIds={selectedIds}
-      />
+        title={intl.formatMessage({id: 'showcaseMode'})}>
+        <div className={styles.playButton}>
+          <FormattedMessage
+            id="storiesSelected"
+            values={{numberSelected: selectedIds.length}}
+          />
+          <Button
+            className={styles.button}
+            label={'play'}
+            link={`/showcase/${selectedIds.join('&')}/0/0`}
+            icon={PlayIcon}
+          />
+        </div>
+      </Header>
       <StoryList
         mode={StoryMode.Showcase}
         onSelectStory={id => onSelectStory(id)}
