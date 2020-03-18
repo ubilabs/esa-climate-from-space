@@ -55,16 +55,23 @@ const Story: FunctionComponent = () => {
         {selectedStory?.slides.map(
           (currentSlide, index) =>
             index === slideIndex && (
-              <StoryContent
-                storyId={selectedStory.id}
-                mode={mode}
-                slide={currentSlide}
-                key={index}
-              />
+              <React.Fragment key={index}>
+                <StoryContent
+                  mode={mode}
+                  storyId={selectedStory.id}
+                  slide={currentSlide}
+                />
+                {currentSlide.images ? (
+                  <StoryMedia
+                    images={currentSlide.images}
+                    storyId={selectedStory.id}
+                  />
+                ) : (
+                  <Globes />
+                )}
+              </React.Fragment>
             )
         )}
-        <Globes />
-        {false && <StoryMedia />}
       </main>
       <StoryFooter
         mode={mode}

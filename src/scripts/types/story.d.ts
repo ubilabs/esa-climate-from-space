@@ -9,7 +9,7 @@ export interface Story {
 export interface Slide {
   text: string;
   shortText?: string;
-  images?: [];
+  images?: string[];
   videoId?: string;
   layer?: StoryLayer;
   fullscreenGallery?: boolean;
