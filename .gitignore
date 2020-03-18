@@ -2,3 +2,4 @@ node_modules
 dist
 dist-electron
 .vscode
+storage/**/*.zip
