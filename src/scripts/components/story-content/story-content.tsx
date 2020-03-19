@@ -9,9 +9,9 @@ import {getStoryMediaUrl} from '../../libs/get-story-media-url';
 import config from '../../config/main';
 import setFlyToAction from '../../actions/set-fly-to';
 import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
+import setGlobeTimeAction from '../../actions/set-globe-time';
 
 import styles from './story-content.styl';
-import setGlobeTimeAction from '../../actions/set-globe-time';
 
 interface Props {
   storyId: string;
