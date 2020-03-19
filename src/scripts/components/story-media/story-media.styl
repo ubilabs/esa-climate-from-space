@@ -1,38 +1,20 @@
-.lightbox
-  position: fixed
-  top: 0
-  right: 0
-  bottom: 0
-  left: 0
-  z-index: 2
-  display: flex
-  justify-content: center
-  align-items: center
-  width: 100%
+@require '../../../variables.styl'
+
+.storyMedia
+  padding: emCalc(80px) emCalc(56px) 0 emCalc(28px)
   height: 100%
-  background-color: rgba(0, 0, 0, 0.95)
-
-.fullscreen
-  position: absolute
-  top: 0
-  right: 500px
-  bottom: 0
-  left: 0
-
-  .slider
-    max-height: 100%
-    height: 100%
 
 .storyGallery
   position: relative
   flex-shrink: 0
   overflow: hidden
-  width: 100%
-  height: 100%
 
 .lightboxGallery
-  width: 90%
-  height: 90%
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
 
   .slider
     max-height: 100%
@@ -45,11 +27,11 @@
   display: flex
   justify-content: space-between
   width: 100%
-  height: 34px
+  height: emCalc(34px)
   transform: translateY(-50%)
 
   .navIcon
-    margin: 0 5px
+    margin: 0 emCalc(5px)
     border-radius: 50%
     background: rgba(0, 0, 0, 0.5)
     cursor: pointer
@@ -63,13 +45,13 @@
   right: 0
   bottom: 0
   z-index: 1
-  padding: 5px
+  padding: emCalc(20px)
   cursor: pointer
   fill: #fff
 
 .slider
   display: flex
-  height: 350px
+  height: emCalc(450px)
 
 .transition
   transition: transform ease-out 0.5s
