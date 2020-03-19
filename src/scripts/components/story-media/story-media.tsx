@@ -15,13 +15,12 @@ interface Props {
 }
 
 const StoryMedia: FunctionComponent<Props> = ({images, storyId}) => {
-  const imagesLength = images.length;
-  const containerWidth = imagesLength * 100;
-  const imageWidth = 100 / imagesLength;
+  const containerWidth = images.length * 100;
+  const imageWidth = 100 / images.length;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showLightbox, setShowLightbox] = useState(false);
   const showPrevButton = currentIndex > 0;
-  const showNextButton = currentIndex < imagesLength - 1;
+  const showNextButton = currentIndex < images.length - 1;
 
   const onPrevClick = () => {
     if (currentIndex <= 0) {
@@ -31,7 +30,7 @@ const StoryMedia: FunctionComponent<Props> = ({images, storyId}) => {
   };
 
   const onNextClick = () => {
-    if (currentIndex >= imagesLength - 1) {
+    if (currentIndex >= images.length - 1) {
       return;
     }
     setCurrentIndex(currentIndex + 1);
