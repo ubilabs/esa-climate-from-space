@@ -6,6 +6,7 @@ import {downloadedDataSelector} from '../../selectors/offline/downloaded';
 import {downloadProgressSelector} from '../../selectors/offline/progress';
 import {DownloadIcon} from '../icons/download-icon';
 import {DownloadCompleteIcon} from '../icons/download-complete-icon';
+import {DeleteIcon} from '../icons/delete-icon';
 import Button from '../button/button';
 
 import styles from './download-button.styl';
@@ -44,15 +45,18 @@ export const DownloadButton: FunctionComponent<Props> = ({url, id}) => {
         />
       )}
       {isDownloaded && (
-        <Button
-          className={styles.complete}
-          icon={DownloadCompleteIcon}
-          onClick={event => {
-            event.stopPropagation();
-            event.preventDefault();
-            deleteId(id);
-          }}
-        />
+        <div className={styles.delete}>
+          <Button className={styles.complete} icon={DownloadCompleteIcon} />
+          <Button
+            className={styles.trash}
+            icon={DeleteIcon}
+            onClick={event => {
+              event.stopPropagation();
+              event.preventDefault();
+              deleteId(id);
+            }}
+          />
+        </div>
       )}
       {isDownloading && (
         <svg
