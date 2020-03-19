@@ -10,14 +10,17 @@ import StoryFooter from '../story-footer/story-footer';
 import fetchStory from '../../actions/fetch-story';
 import Header from '../header/header';
 import StoryVideo from '../story-video/story-video';
+import setGlobeProjectionAction from '../../actions/set-globe-projection';
 
 import {StoryMode} from '../../types/story-mode';
 import {Slide, Story as StoryType} from '../../types/story';
+import {GlobeProjection} from '../../types/globe-projection';
 
 import styles from './story.styl';
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
+  const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useDispatch();
   const {
     mode,
@@ -36,7 +39,8 @@ const Story: FunctionComponent = () => {
   // fetch story of active storyId
   useEffect(() => {
     currentStoryId && dispatch(fetchStory(currentStoryId));
-  }, [dispatch, currentStoryId]);
+    dispatch(setGlobeProjectionAction(sphereProjection, 0));
+  }, [dispatch, sphereProjection, currentStoryId]);
 
   if (!mode) {
     return null;
