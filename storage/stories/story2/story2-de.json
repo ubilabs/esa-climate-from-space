@@ -48,10 +48,7 @@
     {
       "text": "# Story title\n\n## Das ist ein subheader\n\nPraesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
       "shortText": "- Lorem ipsum",
-      "images": [
-        "https://storage.googleapis.com/esa-cfs-storage/stories/story2/assets/story1.jpeg"
-      ],
-      "fullscreenGallery": true
+      "videoId": "byBFY9iJke4"
     }
   ]
 }
