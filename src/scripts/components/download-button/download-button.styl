@@ -1,8 +1,8 @@
 @require '../../../variables.styl'
 
 .downloadButton
-  width: emCalc(22px)
-  height: emCalc(22px)
+  width: emCalc(20px)
+  height: emCalc(20px)
 
   button, svg
     width: 100%
@@ -16,13 +16,14 @@
 
 .circle
   color: red
-  transition: 0.2s all ease-out
   transform: rotate(-90deg)
   fill: none
   stroke-width: 4px
   stroke: $main
   stroke-dasharray: 100
-  stroke-dashoffset: 100
+
+  circle
+    transition: 0.5s all linear
 
 .delete
   .trash
