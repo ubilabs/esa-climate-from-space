@@ -3,9 +3,9 @@ import {FormattedMessage} from 'react-intl';
 
 import {replaceUrlPlaceholders} from '../../libs/replace-url-placeholders';
 import config from '../../config/main';
+import {DownloadButton} from '../download-button/download-button';
 
 import {LayerListItem as LayerListItemType} from '../../types/layer-list';
-import {DownloadButton} from '../download-button/download-button';
 
 import styles from './layer-list-item.styl';
 
