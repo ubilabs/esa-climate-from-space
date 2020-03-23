@@ -9,8 +9,10 @@ import StoryMedia from '../story-media/story-media';
 import StoryFooter from '../story-footer/story-footer';
 import fetchStory from '../../actions/fetch-story';
 import Header from '../header/header';
+import StoryVideo from '../story-video/story-video';
 
 import {StoryMode} from '../../types/story-mode';
+import {Slide, Story as StoryType} from '../../types/story';
 
 import styles from './story.styl';
 
@@ -40,6 +42,16 @@ const Story: FunctionComponent = () => {
     return null;
   }
 
+  const getRightSideComponent = (slide: Slide, story: StoryType) => {
+    if (slide.images) {
+      return <StoryMedia images={slide.images} storyId={story.id} />;
+    } else if (slide.videoId) {
+      return <StoryVideo videoId={slide.videoId} />;
+    }
+
+    return <Globes />;
+  };
+
   return (
     <div className={storyClasses}>
       {storyListItem && (
@@ -55,16 +67,16 @@ const Story: FunctionComponent = () => {
         {selectedStory?.slides.map(
           (currentSlide, index) =>
             index === slideIndex && (
-              <StoryContent
-                storyId={selectedStory.id}
-                mode={mode}
-                slide={currentSlide}
-                key={index}
-              />
+              <React.Fragment key={index}>
+                <StoryContent
+                  mode={mode}
+                  storyId={selectedStory.id}
+                  slide={currentSlide}
+                />
+                {getRightSideComponent(currentSlide, selectedStory)}
+              </React.Fragment>
             )
         )}
-        <Globes />
-        {false && <StoryMedia />}
       </main>
       <StoryFooter
         mode={mode}
