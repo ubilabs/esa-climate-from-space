@@ -9,7 +9,7 @@ interface Props {
   icon?: FunctionComponent;
   link?: string;
   className?: string;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Button: FunctionComponent<Props> = ({
@@ -23,12 +23,21 @@ const Button: FunctionComponent<Props> = ({
 
   return link ? (
     <Link className={classes} to={link}>
-      {Icon && <Icon />} {label && <FormattedMessage id={label} />}
+      {Icon && <Icon />}
+      {label && (
+        <span className={styles.label}>
+          <FormattedMessage id={label} />
+        </span>
+      )}
     </Link>
   ) : (
     <button className={classes} onClick={onClick}>
       {Icon && <Icon />}
-      {label && <FormattedMessage id={label} />}
+      {label && (
+        <span className={styles.label}>
+          <FormattedMessage id={label} />
+        </span>
+      )}
     </button>
   );
 };

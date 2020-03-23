@@ -7,6 +7,7 @@ import {Slide} from '../../types/story';
 import {getStoryMediaUrl} from '../../libs/get-story-media-url';
 
 import styles from './story-content.styl';
+import {useSlide} from '../../hooks/use-slide';
 
 interface Props {
   storyId: string;
@@ -15,7 +16,9 @@ interface Props {
 }
 
 const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
-  const source = mode === StoryMode.Stories ? slide.text : slide.shortText;
+  const storyText = mode === StoryMode.Stories ? slide.text : slide.shortText;
+
+  useSlide(slide);
 
   const contentClasses = cx(
     styles.content,
@@ -28,7 +31,7 @@ const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
   return (
     <div className={contentClasses}>
       <ReactMarkdown
-        source={source}
+        source={storyText}
         transformImageUri={transformImageUri}
         allowedTypes={[
           'heading',

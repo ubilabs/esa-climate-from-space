@@ -10,14 +10,19 @@ import StoryFooter from '../story-footer/story-footer';
 import fetchStory from '../../actions/fetch-story';
 import Header from '../header/header';
 import StoryVideo from '../story-video/story-video';
+import setGlobeProjectionAction from '../../actions/set-globe-projection';
+import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
+import setGlobeTimeAction from '../../actions/set-globe-time';
 
 import {StoryMode} from '../../types/story-mode';
 import {Slide, Story as StoryType} from '../../types/story';
+import {GlobeProjection} from '../../types/globe-projection';
 
 import styles from './story.styl';
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
+  const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useDispatch();
   const {
     mode,
@@ -37,6 +42,21 @@ const Story: FunctionComponent = () => {
   useEffect(() => {
     currentStoryId && dispatch(fetchStory(currentStoryId));
   }, [dispatch, currentStoryId]);
+
+  // set globe to sphere projection
+  useEffect(() => {
+    dispatch(setGlobeProjectionAction(sphereProjection, 0));
+  }, [dispatch, sphereProjection]);
+
+  // clean up story on unmount
+  useEffect(
+    () => () => {
+      dispatch(setSelectedLayerIdsAction(null, true));
+      dispatch(setSelectedLayerIdsAction(null, false));
+      dispatch(setGlobeTimeAction(0));
+    },
+    [dispatch]
+  );
 
   if (!mode) {
     return null;
