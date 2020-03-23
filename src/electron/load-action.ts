@@ -1,11 +1,11 @@
-const fs = require('fs');
-const path = require('path');
-const {app} = require('electron');
+import * as fs from 'fs';
+import * as path from 'path';
+import {app} from 'electron';
 
 /**
  * Loads a persisted action from the filesystem
  */
-module.exports = function loadAction(actionType, pathToFile) {
+module.exports = function loadAction(actionType: string, pathToFile: string) {
   const type = actionType.toLowerCase();
   const downloadsPath = app.getPath('downloads');
   const filePath = pathToFile

@@ -48,6 +48,14 @@
     "INFO_GIT_HASH": true,
     "INFO_VERSION": true
   },
+  "overrides": [
+    {
+      "files": ["src/electron/*"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ],
   "rules": {
     "comma-dangle": 2,
     "no-cond-assign": [2, "except-parens"],
