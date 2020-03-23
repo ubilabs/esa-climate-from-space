@@ -3,7 +3,7 @@
     "output": "dist-electron"
   },
   "appId": "com.ubilabs.esa.cfs",
-  "files": ["./src/electron/**/*", "./dist/**/*"],
+  "files": ["./dist-src-electron/*", "./dist/**/*"],
   "win": {
     "target": "portable"
   },

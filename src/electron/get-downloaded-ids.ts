@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const {app} = require('electron');
+import * as fs from 'fs';
+import * as path from 'path';
+import {app} from 'electron';
 
 /**
  * Get downloaded Ids from the downloads folder content

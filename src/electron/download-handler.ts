@@ -1,17 +1,18 @@
-const fs = require('fs');
-const path = require('path');
-const zip = require('cross-zip');
-const {app} = require('electron');
+import * as fs from 'fs';
+import * as path from 'path';
+// @ts-ignore no types available for cross-zip
+import {unzipSync} from 'cross-zip';
+import {app, BrowserWindow} from 'electron';
 
 const {getDownloadedIds} = require('./get-downloaded-ids');
 
-// keep track of all active downloads
-const activeDownloads = {};
+// keep track of all active downloads and their progress
+const activeDownloads: {[url: string]: number} = {};
 
 /**
  * Intercepts all browser downloads in the given window
  */
-module.exports.addDownloadHandler = function(browserWindow) {
+export function addDownloadHandler(browserWindow: BrowserWindow) {
   // update the downloaded data state once on load
   browserWindow.webContents.on('did-finish-load', () => {
     browserWindow.webContents.send(
@@ -51,7 +52,7 @@ module.exports.addDownloadHandler = function(browserWindow) {
     item.once('done', (event, state) => {
       if (state === 'completed') {
         console.log('Download successfully', item.savePath);
-        zip.unzipSync(item.savePath, offlinePath);
+        unzipSync(item.savePath, offlinePath);
         fs.unlinkSync(item.savePath);
         browserWindow.webContents.send(
           'offline-update',
@@ -68,4 +69,4 @@ module.exports.addDownloadHandler = function(browserWindow) {
       }
     });
   });
-};
+}

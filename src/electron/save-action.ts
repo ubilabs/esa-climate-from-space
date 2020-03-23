@@ -1,11 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-const {app} = require('electron');
+import * as fs from 'fs';
+import * as path from 'path';
+import {app} from 'electron';
+import {AnyAction} from 'redux';
 
 /**
  * Saves an action for offline usage
  */
-module.exports = function saveAction(action) {
+module.exports = function saveAction(action: AnyAction) {
   const type = action.type.toLowerCase();
   const downloadsPath = app.getPath('downloads');
   const actionsPath = path.join(downloadsPath, 'actions');

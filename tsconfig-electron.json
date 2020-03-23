@@ -1,0 +1,13 @@
+{
+  "include": ["src/electron/*"],
+  "compilerOptions": {
+    "outDir": "./dist-src-electron/",
+    "strict": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": false,
+    "moduleResolution": "node",
+    "target": "ES2019"
+  }
+}

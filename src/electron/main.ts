@@ -1,11 +1,11 @@
-const path = require('path');
-const {app, BrowserWindow} = require('electron');
-const {addDownloadHandler} = require('./download-handler.js');
+import * as path from 'path';
+import {app, BrowserWindow} from 'electron';
+import {addDownloadHandler} from './download-handler.js';
 
 // future proof for electron 9 and prevent annoying deprecation warning message
 app.allowRendererProcessReuse = true;
 
-let windows = [];
+let windows: BrowserWindow[] = [];
 
 function createWindow() {
   // create a new browser window
@@ -28,7 +28,7 @@ function createWindow() {
   addDownloadHandler(window);
 
   // load the index page in the window
-  const indexPath = `file://${__dirname}/../../dist/index.html`;
+  const indexPath = `file://${__dirname}/../dist/index.html`;
   window.loadURL(indexPath);
 
   window.webContents.openDevTools();
