@@ -11,6 +11,8 @@ import fetchStory from '../../actions/fetch-story';
 import Header from '../header/header';
 import StoryVideo from '../story-video/story-video';
 import setGlobeProjectionAction from '../../actions/set-globe-projection';
+import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
+import setGlobeTimeAction from '../../actions/set-globe-time';
 
 import {StoryMode} from '../../types/story-mode';
 import {Slide, Story as StoryType} from '../../types/story';
@@ -39,8 +41,22 @@ const Story: FunctionComponent = () => {
   // fetch story of active storyId
   useEffect(() => {
     currentStoryId && dispatch(fetchStory(currentStoryId));
+  }, [dispatch, currentStoryId]);
+
+  // set globe to sphere projection
+  useEffect(() => {
     dispatch(setGlobeProjectionAction(sphereProjection, 0));
-  }, [dispatch, sphereProjection, currentStoryId]);
+  }, [dispatch, sphereProjection]);
+
+  // clean up story on unmount
+  useEffect(
+    () => () => {
+      dispatch(setSelectedLayerIdsAction(null, true));
+      dispatch(setSelectedLayerIdsAction(null, false));
+      dispatch(setGlobeTimeAction(0));
+    },
+    [dispatch]
+  );
 
   if (!mode) {
     return null;
