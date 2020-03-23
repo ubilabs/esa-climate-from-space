@@ -1,34 +1,27 @@
 import React, {FunctionComponent} from 'react';
 import {FormattedMessage} from 'react-intl';
 
-import {isElectron, downloadUrl, deleteId} from '../../libs/electron/index';
 import {replaceUrlPlaceholders} from '../../libs/replace-url-placeholders';
 import config from '../../config/main';
+import {DownloadButton} from '../download-button/download-button';
 
 import {LayerListItem as LayerListItemType} from '../../types/layer-list';
-import {DownloadProgress} from '../../types/download-progress';
 
 import styles from './layer-list-item.styl';
 
 interface Props {
   layer: LayerListItemType;
   isMainSelected: boolean;
-  isDownloaded: boolean;
-  downloadProgress: DownloadProgress;
   onSelect: (id: string, isMain: boolean) => void;
 }
 
 const LayerListItem: FunctionComponent<Props> = ({
   layer,
   isMainSelected,
-  isDownloaded,
-  downloadProgress,
   onSelect
 }) => {
   const packageUrl = config.api.layerOfflinePackage;
   const offlineUrl = replaceUrlPlaceholders(packageUrl, {id: layer.id});
-  const onDownload = () => isElectron() && downloadUrl(offlineUrl);
-  const progress = downloadProgress[offlineUrl];
 
   return (
     <div className={styles.layerItem} onClick={() => onSelect(layer.id, true)}>
@@ -44,7 +37,8 @@ const LayerListItem: FunctionComponent<Props> = ({
         </button>
       )}
 
-      {isElectron() && typeof progress === 'number' && (
+      <DownloadButton url={offlineUrl} id={layer.id} />
+      {/* {isElectron() && typeof progress === 'number' && (
         <span>{Math.ceil(progress * 100)}</span>
       )}
 
@@ -66,7 +60,7 @@ const LayerListItem: FunctionComponent<Props> = ({
           }}>
           Delete
         </button>
-      )}
+      )} */}
     </div>
   );
 };

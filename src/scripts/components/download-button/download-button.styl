@@ -1,0 +1,25 @@
+@require '../../../variables.styl'
+
+.downloadButton
+  width: emCalc(22px)
+  height: emCalc(22px)
+
+  button, svg
+    width: 100%
+    height: 100%
+
+.complete svg
+  fill: $main
+
+.notDownloaded svg
+  fill: $textDefault
+
+.circle
+  color: red
+  transition: 0.2s all ease-out
+  transform: rotate(-90deg)
+  fill: none
+  stroke-width: 4px
+  stroke: $main
+  stroke-dasharray: 100
+  stroke-dashoffset: 100
