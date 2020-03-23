@@ -18,7 +18,7 @@ steps:
   - name: 'gcr.io/cloud-builders/curl'
     args: [
       '--data',
-      '{"text": "New deployment from outer space is ready -> <https://storage.googleapis.com/esa-cfs-versions/web/${BRANCH_NAME}/index.html> (commit: <https://github.com/ubilabs/esa-climate-from-space/commit/${COMMIT_SHA}>)"}',
+      '{"text": "New deployment to [${BRANCH_NAME}] is ready: \"${_HEAD_BRANCH}\" (${_PR_NUMBER})\n Visit: <https://storage.googleapis.com/esa-cfs-versions/web/${BRANCH_NAME}/index.html>\n Commit: <https://github.com/ubilabs/esa-climate-from-space/commit/${COMMIT_SHA}>"}',
       '${_SLACK_HOOK_URL}'
     ]
 
