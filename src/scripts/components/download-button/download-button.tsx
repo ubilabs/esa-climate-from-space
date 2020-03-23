@@ -6,6 +6,7 @@ import {downloadedDataSelector} from '../../selectors/offline/downloaded';
 import {downloadProgressSelector} from '../../selectors/offline/progress';
 import {DownloadIcon} from '../icons/download-icon';
 import {DownloadCompleteIcon} from '../icons/download-complete-icon';
+import {DeleteIcon} from '../icons/delete-icon';
 import Button from '../button/button';
 
 import styles from './download-button.styl';
@@ -44,23 +45,37 @@ export const DownloadButton: FunctionComponent<Props> = ({url, id}) => {
         />
       )}
       {isDownloaded && (
-        <Button
-          className={styles.complete}
-          icon={DownloadCompleteIcon}
-          onClick={event => {
-            event.stopPropagation();
-            event.preventDefault();
-            deleteId(id);
-          }}
-        />
+        <div className={styles.delete}>
+          <Button className={styles.complete} icon={DownloadCompleteIcon} />
+          <Button
+            className={styles.trash}
+            icon={DeleteIcon}
+            onClick={event => {
+              event.stopPropagation();
+              event.preventDefault();
+              deleteId(id);
+            }}
+          />
+        </div>
       )}
       {isDownloading && (
         <svg
           className={styles.circle}
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 40 40"
-          style={{strokeDashoffset: 100 - progress}}>
-          <circle cx="20" cy="20" r="16" />
+          viewBox="0 0 40 40">
+          <circle
+            style={{strokeDashoffset: 0}}
+            stroke="rgba(255, 255, 255, 0.1)"
+            cx="20"
+            cy="20"
+            r="16"
+          />
+          <circle
+            style={{strokeDashoffset: 100 - progress}}
+            cx="20"
+            cy="20"
+            r="16"
+          />
         </svg>
       )}
     </div>

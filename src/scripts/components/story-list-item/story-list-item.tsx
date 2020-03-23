@@ -46,7 +46,9 @@ const StoryListItemContent: FunctionComponent<Props> = ({
       <div className={styles.imageInfo}>
         <p className={styles.title}>{story.title}</p>
         <p className={styles.description}>{story.description}</p>
-        <DownloadButton url={downloadUrl} id={downloadId} />
+        <div className={styles.downloadButton}>
+          <DownloadButton url={downloadUrl} id={downloadId} />
+        </div>
       </div>
     </div>
   );
