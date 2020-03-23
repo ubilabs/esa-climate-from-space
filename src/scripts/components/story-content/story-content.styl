@@ -1,19 +1,24 @@
 @require '../../../variables.styl'
 
 .content
-  padding: emCalc(80px) emCalc(56px)
-  color: $textWhite
+  overflow-y: auto
+  padding: emCalc(80px) emCalc(28px) 0 emCalc(56px)
+  background-color: $black
+  color: $textDefault
+  line-height: emCalc(22px)
 
   h1
+    margin-top: 0
     color: $textColor
     font-weight: bold
     font-size: emCalc(36px)
     font-family: NotesEsa
+    line-height: emCalc(16px)
 
-  p
-    color: $textDefault
-    line-height: emCalc(22px)
+  img
+    width: 50%
 
 .shortTextContent
+  overflow-y: hidden
   padding-top: emCalc(30px)
   font-size: emCalc(32px)
