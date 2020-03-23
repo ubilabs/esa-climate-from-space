@@ -38,29 +38,6 @@ const LayerListItem: FunctionComponent<Props> = ({
       )}
 
       <DownloadButton url={offlineUrl} id={layer.id} />
-      {/* {isElectron() && typeof progress === 'number' && (
-        <span>{Math.ceil(progress * 100)}</span>
-      )}
-
-      {isElectron() && !isDownloaded && (
-        <button
-          onClick={event => {
-            event.stopPropagation();
-            onDownload();
-          }}>
-          Download
-        </button>
-      )}
-
-      {isElectron() && isDownloaded && (
-        <button
-          onClick={event => {
-            event.stopPropagation();
-            deleteId(layer.id);
-          }}>
-          Delete
-        </button>
-      )} */}
     </div>
   );
 };

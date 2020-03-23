@@ -4,29 +4,14 @@
     {
       "text": "# Story title\n\n## This is a subheader\n\nAnd this is a paragraph\n\nMarkdown test: Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in",
       "shortText": "- Lorem ipsum\n\n- Exercitationem\n\n- sapiente",
-      "images": [
-        "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story1.jpeg",
-        "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story2.jpeg"
-      ],
-      "flyTo": {
-        "position": {
-          "height": 1000000,
-          "latitude": 13.1,
-          "longitude": -86.4
-        },
-        "orientation": {
-          "heading": 0,
-          "pitch": -90,
-          "roll": 0
-        }
-      }
+      "layer": [
+        {"id": "soilmoisture.sm", "timestamp": "2010-06-26"},
+        {"id": "fire.burned_area", "timestamp": "2010-06-03"}
+      ]
     },
     {
       "text": "# Story title\n\n## This is a subheader\n\nExercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
       "shortText": "- Lorem ipsum",
-      "images": [
-        "https://storage.googleapis.com/esa-cfs-storage/stories/story1/assets/story1.jpeg"
-      ],
       "flyTo": {
         "position": {
           "height": 10000000,
@@ -38,7 +23,11 @@
           "pitch": -90,
           "roll": 0
         }
-      }
+      },
+      "layer": [
+        {"id": "soilmoisture.sm", "timestamp": "2010-06-26"},
+        {"id": "fire.burned_area", "timestamp": "2010-06-03"}
+      ]
     },
     {
       "text": "# Story title\n\n## This is a subheader\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
