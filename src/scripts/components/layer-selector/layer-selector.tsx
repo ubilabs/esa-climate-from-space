@@ -50,7 +50,10 @@ const LayerSelector: FunctionComponent = () => {
               />
             </div>
             {selectedMainLayer && (
-              <SelectedLayerListItem layer={selectedMainLayer} />
+              <SelectedLayerListItem
+                onRemove={() => dispatch(setSelectedLayerIdsAction(null, true))}
+                layer={selectedMainLayer}
+              />
             )}
             {selectedCompareLayer && (
               <SelectedLayerListItem
