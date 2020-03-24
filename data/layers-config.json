@@ -14,5 +14,13 @@
       "month": "long",
       "day": "2-digit"
     }
+  },
+  "sst.analysed_sst": {
+    "colorMap": "inferno",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
   }
 }

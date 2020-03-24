@@ -16,7 +16,15 @@ steps:
         'gs://esa-cfs-versions/web/${BRANCH_NAME}/*',
       ]
   - name: gcr.io/cloud-builders/git
-    args: ['clone', 'https://github.com/ubilabs/esa-climate-from-space', 'repo']
+    args:
+      [
+        'clone',
+        '--single-branch',
+        '--branch ${BRANCH_NAME}',
+        '--depth 5',
+        'https://github.com/ubilabs/esa-climate-from-space',
+        'repo'
+      ]
   - name: gcr.io/cloud-builders/git
     dir: 'repo'
     args: ['checkout', '${COMMIT_SHA}']
