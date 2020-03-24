@@ -15,10 +15,16 @@ steps:
         'cache-control:no-cache',
         'gs://esa-cfs-versions/web/${BRANCH_NAME}/*',
       ]
-  - name: 'gcr.io/cloud-builders/curl'
-    args: [
-      '--data',
-      '{"text": "New deployment to [${BRANCH_NAME}] is ready: \"${_HEAD_BRANCH}\" (${_PR_NUMBER})\n Visit: <https://storage.googleapis.com/esa-cfs-versions/web/${BRANCH_NAME}/index.html>\n Commit: <https://github.com/ubilabs/esa-climate-from-space/commit/${COMMIT_SHA}>"}',
-      '${_SLACK_HOOK_URL}'
-    ]
+  - name: gcr.io/cloud-builders/git
+    args: ['clone', 'https://github.com/ubilabs/esa-climate-from-space', 'repo']
+  - name: gcr.io/cloud-builders/git
+    dir: 'repo'
+    args: ['checkout', '${COMMIT_SHA}']
+  - name: 'node:12'
+    dir: 'repo'
+    env:
+    - 'SLACK_HOOK_URL=${_SLACK_HOOK_URL}'
+    - 'BRANCH_NAME=${BRANCH_NAME}'
+    entrypoint: 'node'
+    args: ["./scripts/slack-deployment-notification.js"]
 
