@@ -75,12 +75,12 @@ const StoryMedia: FunctionComponent<Props> = ({images, storyId}) => {
           {images.map((image, index) => {
             const imageUrl = getStoryMediaUrl(storyId, image);
             return (
-              <img
+              <div
                 className={styles.sliderImage}
-                src={imageUrl}
                 key={index}
-                style={{width: `${imageWidth}%`}}
-              />
+                style={{width: `${imageWidth}%`}}>
+                <img src={imageUrl} className={styles.image} />
+              </div>
             );
           })}
         </div>

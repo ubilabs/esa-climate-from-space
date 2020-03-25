@@ -3,6 +3,7 @@
 .content
   overflow-y: auto
   padding: emCalc(80px) emCalc(28px) 0 emCalc(56px)
+  max-width: emCalc(750px)
   background-color: $black
   color: $textDefault
   line-height: emCalc(22px)
@@ -15,10 +16,18 @@
     font-family: NotesEsa
     line-height: emCalc(16px)
 
-  img
-    width: 50%
+  img, em
+    display: block
+    margin: 0 auto
+    width: 75%
+    text-align: center
+    font-size: emCalc(11px)
+    font-family: NotesEsa
 
 .shortTextContent
   overflow-y: hidden
   padding-top: emCalc(30px)
-  font-size: emCalc(32px)
+  font-size: emCalc(24px)
+
+  p
+    margin: emCalc(10px)
