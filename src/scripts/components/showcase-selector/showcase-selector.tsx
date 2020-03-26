@@ -40,7 +40,7 @@ const ShowcaseSelector: FunctionComponent = () => {
           <Button
             className={styles.button}
             label={'play'}
-            link={`/showcase/${selectedIds.join('&')}/0/0`}
+            link={`/showcase/${selectedIds.join('&')}/0/title`}
             icon={PlayIcon}
           />
         </div>

@@ -20,6 +20,7 @@ import StoriesSelector from '../stories-selector/stories-selector';
 import PresentationSelector from '../presentation-selector/presentation-selector';
 import ShowcaseSelector from '../showcase-selector/showcase-selector';
 import Globes from '../globes/globes';
+import StoryTitle from '../story-title/story-title';
 
 import translations from '../../i18n';
 
@@ -40,14 +41,19 @@ const TranslatedApp: FunctionComponent = () => {
   return (
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
-        <Route
-          path={[
-            '/stories/:storyId/:slideIndex',
-            '/present/:storyId/:slideIndex',
-            '/showcase/:storyIds/:storyIndex/:slideIndex'
-          ]}>
-          <Story />
-        </Route>
+        <Switch>
+          <Route path={['/showcase/:storyIds/:storyIndex/title']}>
+            <StoryTitle />
+          </Route>
+          <Route
+            path={[
+              '/stories/:storyId/:slideIndex',
+              '/present/:storyId/:slideIndex',
+              '/showcase/:storyIds/:storyIndex/:slideIndex'
+            ]}>
+            <Story />
+          </Route>
+        </Switch>
         <Route
           path={['/present/:storyId', '/stories/:storyId']}
           render={props => <Redirect to={`${props.match.url}/0`} />}></Route>
@@ -66,10 +72,10 @@ const TranslatedApp: FunctionComponent = () => {
           <Route path="/stories" exact>
             <StoriesSelector />
           </Route>
-          <Route path="/present">
+          <Route path="/present" exact>
             <PresentationSelector />
           </Route>
-          <Route path={['/showcase/:storyIds', '/showcase']}>
+          <Route path={['/showcase/:storyIds', '/showcase']} exact>
             <ShowcaseSelector />
           </Route>
         </Switch>
