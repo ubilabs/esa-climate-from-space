@@ -25,7 +25,7 @@ const Header: FunctionComponent<Props> = ({
       link={backLink}
     />
     <h1 className={styles.title}>{title}</h1>
-    <div className={styles.controls}>{children}</div>
+    <div className={styles.rightContent}>{children}</div>
   </div>
 );
 
