@@ -25,8 +25,7 @@ const Header: FunctionComponent<Props> = ({
       link={backLink}
     />
     <h1 className={styles.title}>{title}</h1>
-    {!children && <div className={styles.empty}></div>}
-    {children}
+    <div className={styles.playButton}>{children}</div>
   </div>
 );
 
