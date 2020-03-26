@@ -32,18 +32,16 @@ const ShowcaseSelector: FunctionComponent = () => {
         backLink="/"
         backButtonId="backToDataMode"
         title={intl.formatMessage({id: 'showcaseMode'})}>
-        <React.Fragment>
-          <FormattedMessage
-            id="storiesSelected"
-            values={{numberSelected: selectedIds.length}}
-          />
-          <Button
-            className={styles.button}
-            label={'play'}
-            link={`/showcase/${selectedIds.join('&')}/0/title`}
-            icon={PlayIcon}
-          />
-        </React.Fragment>
+        <FormattedMessage
+          id="storiesSelected"
+          values={{numberSelected: selectedIds.length}}
+        />
+        <Button
+          className={styles.button}
+          label={'play'}
+          link={`/showcase/${selectedIds.join('&')}/0/title`}
+          icon={PlayIcon}
+        />
       </Header>
       <StoryList
         mode={StoryMode.Showcase}
