@@ -51,12 +51,9 @@ const StoryPagination: FunctionComponent<Props> = ({
         ) {
           nextSlideLink && history.push(nextSlideLink);
         }
-      }
-      if (isShowcaseMode) {
         // 27 - esc
-        if (event.keyCode === 27) {
-          history.push(`/${mode}`);
-        }
+      } else if (event.keyCode === 27) {
+        history.push(`/${mode}`);
       }
     },
     [isShowcaseMode, history, mode, previousSlideLink, nextSlideLink]
