@@ -8,7 +8,7 @@ import styles from './selected-layer-list-item.styl';
 
 interface Props {
   layer: LayerListItem;
-  onRemove?: () => void;
+  onRemove: () => void;
 }
 
 const SelectedLayerListItem: FunctionComponent<Props> = ({layer, onRemove}) => (
