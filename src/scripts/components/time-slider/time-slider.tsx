@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import debounce from 'lodash.debounce';
+import cx from 'classnames';
 
 import {languageSelector} from '../../selectors/language';
 import {timeSelector} from '../../selectors/globe/time';
@@ -88,6 +89,7 @@ const TimeSlider: FunctionComponent = () => {
       right: `${right}%`
     };
   };
+  const inputStyles = cx(styles.input, rangeCompare && styles.compareInput);
 
   return (
     <div className={styles.timeSlider}>
@@ -97,31 +99,33 @@ const TimeSlider: FunctionComponent = () => {
           <div>{format(time)}</div>
           <div className={styles.labelMax}>{format(combined.max)}</div>
         </div>
-
-        <input
-          className={styles.input}
-          type="range"
-          value={time}
-          onChange={({target}) => {
-            const newTime = parseInt(target.value, 10);
-            setTime(newTime);
-            debouncedSetGlobeTime(newTime);
-          }}
-          min={combined.min}
-          max={combined.max}
-          step={stepSize}
-        />
-
         <div className={styles.ranges}>
+          <input
+            className={inputStyles}
+            type="range"
+            value={time}
+            onChange={({target}) => {
+              const newTime = parseInt(target.value, 10);
+              setTime(newTime);
+              debouncedSetGlobeTime(newTime);
+            }}
+            min={combined.min}
+            max={combined.max}
+            step={stepSize}
+          />
           {rangeMain && (
-            <div
-              className={styles.rangeMain}
-              style={getRangeStyle(rangeMain.min, rangeMain.max)}></div>
+            <div className={styles.mainTrack}>
+              <div
+                className={styles.rangeMain}
+                style={getRangeStyle(rangeMain.min, rangeMain.max)}></div>
+            </div>
           )}
           {rangeCompare && (
-            <div
-              className={styles.rangeCompare}
-              style={getRangeStyle(rangeCompare.min, rangeCompare.max)}></div>
+            <div className={styles.compareTrack}>
+              <div
+                className={styles.rangeCompare}
+                style={getRangeStyle(rangeCompare.min, rangeCompare.max)}></div>
+            </div>
           )}
         </div>
       </div>
