@@ -35,13 +35,8 @@ compareThumb()
 
 .label
   display: flex
-  justify-content: space-between
-  align-items: flex-end
   color: white
   font-size: emCalc(18px)
-
-.labelMin, .labelMax
-  font-size: emCalc(10px)
 
 .ranges
   position: relative
@@ -114,3 +109,10 @@ compareThumb()
   height: emCalc(5px)
   border-radius: 50%
   background-color: rgba($darkGrey4, 0.5)
+
+.timeOutput
+  position: absolute
+  bottom: 15px
+  display: none
+  color: $textWhite
+  transform: translateX(-50%)

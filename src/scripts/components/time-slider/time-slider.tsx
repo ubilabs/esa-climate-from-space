@@ -3,7 +3,8 @@ import React, {
   useState,
   useMemo,
   useEffect,
-  useCallback
+  useCallback,
+  useRef
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import debounce from 'lodash.debounce';
@@ -28,6 +29,7 @@ const TimeSlider: FunctionComponent = () => {
   const dispatch = useDispatch();
   const language = useSelector(languageSelector);
   const globeTime = useSelector(timeSelector);
+  const timeOutput = useRef<HTMLDivElement>(null);
 
   const [time, setTime] = useState(globeTime);
   const stepSize = 1000 * 60 * 60 * 24; // one day
@@ -89,16 +91,23 @@ const TimeSlider: FunctionComponent = () => {
       right: `${right}%`
     };
   };
+
+  const setTimeOutput = (targetValue: string, min: number, max: number) => {
+    const currentTime = parseInt(targetValue, 10);
+    const newVal = Number(((currentTime - min) * 100) / (max - min));
+
+    if (timeOutput.current) {
+      timeOutput.current.style.left = `calc(${newVal}% + (${8 -
+        newVal * 0.15}px))`;
+      timeOutput.current.style.display = 'flex';
+    }
+  };
+
   const inputStyles = cx(styles.input, rangeCompare && styles.compareInput);
 
   return (
     <div className={styles.timeSlider}>
       <div className={styles.container}>
-        <div className={styles.label}>
-          <div className={styles.labelMin}>{format(combined.min)}</div>
-          <div>{format(time)}</div>
-          <div className={styles.labelMax}>{format(combined.max)}</div>
-        </div>
         <div className={styles.ranges}>
           <input
             className={inputStyles}
@@ -108,18 +117,22 @@ const TimeSlider: FunctionComponent = () => {
               const newTime = parseInt(target.value, 10);
               setTime(newTime);
               debouncedSetGlobeTime(newTime);
+              setTimeOutput(target.value, combined.min, combined.max);
             }}
             min={combined.min}
             max={combined.max}
             step={stepSize}
           />
+          <output ref={timeOutput} className={styles.timeOutput}>
+            {format(time)}
+          </output>
           {rangeMain && (
             <div className={styles.mainTrack}>
               <div
                 className={styles.rangeMain}
                 style={getRangeStyle(rangeMain.min, rangeMain.max)}>
-                {rangeMain.timestamps.map(stamp => (
-                  <div key={stamp} className={styles.ticks}></div>
+                {rangeMain.timestamps.map(timestamp => (
+                  <div key={timestamp} className={styles.ticks}></div>
                 ))}
               </div>
             </div>
@@ -129,8 +142,8 @@ const TimeSlider: FunctionComponent = () => {
               <div
                 className={styles.rangeCompare}
                 style={getRangeStyle(rangeCompare.min, rangeCompare.max)}>
-                {rangeCompare.timestamps.map(stamp => (
-                  <div key={stamp} className={styles.ticks}></div>
+                {rangeCompare.timestamps.map(timestamp => (
+                  <div key={timestamp} className={styles.ticks}></div>
                 ))}
               </div>
             </div>
