@@ -94,11 +94,11 @@ const TimeSlider: FunctionComponent = () => {
 
   const setTimeOutput = (targetValue: string, min: number, max: number) => {
     const currentTime = parseInt(targetValue, 10);
-    const newVal = Number(((currentTime - min) * 100) / (max - min));
+    const outputPosition = Number(((currentTime - min) * 100) / (max - min));
 
     if (timeOutput.current) {
-      timeOutput.current.style.left = `calc(${newVal}% + (${8 -
-        newVal * 0.15}px))`;
+      timeOutput.current.style.left = `calc(${outputPosition}% + (${8 -
+        outputPosition * 0.15}px))`;
       timeOutput.current.style.display = 'flex';
     }
   };
