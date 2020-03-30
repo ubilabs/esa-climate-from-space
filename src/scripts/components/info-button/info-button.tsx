@@ -22,9 +22,7 @@ const InfoButton: FunctionComponent<Props> = ({layer}) => {
         <Button
           icon={InfoIcon}
           className={styles.infoButton}
-          onClick={() => {
-            setShowMenu(true);
-          }}
+          onClick={() => setShowMenu(true)}
         />
 
         {showMenu && (

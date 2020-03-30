@@ -117,14 +117,22 @@ const TimeSlider: FunctionComponent = () => {
             <div className={styles.mainTrack}>
               <div
                 className={styles.rangeMain}
-                style={getRangeStyle(rangeMain.min, rangeMain.max)}></div>
+                style={getRangeStyle(rangeMain.min, rangeMain.max)}>
+                {rangeMain.timestamps.map(stamp => (
+                  <div key={stamp} className={styles.ticks}></div>
+                ))}
+              </div>
             </div>
           )}
           {rangeCompare && (
             <div className={styles.compareTrack}>
               <div
                 className={styles.rangeCompare}
-                style={getRangeStyle(rangeCompare.min, rangeCompare.max)}></div>
+                style={getRangeStyle(rangeCompare.min, rangeCompare.max)}>
+                {rangeCompare.timestamps.map(stamp => (
+                  <div key={stamp} className={styles.ticks}></div>
+                ))}
+              </div>
             </div>
           )}
         </div>
