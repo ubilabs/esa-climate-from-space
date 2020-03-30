@@ -103,7 +103,14 @@ const TimeSlider: FunctionComponent = () => {
     }
   };
 
-  const inputStyles = cx(styles.input, rangeCompare && styles.compareInput);
+  const inputStyles = cx(
+    styles.input,
+    rangeMain && rangeCompare && styles.compareInput
+  );
+  const compareStyles = cx(
+    styles.compareTrack,
+    rangeMain && rangeCompare && styles.compareBothTracks
+  );
 
   return (
     <div className={styles.timeSlider}>
@@ -138,7 +145,7 @@ const TimeSlider: FunctionComponent = () => {
             </div>
           )}
           {rangeCompare && (
-            <div className={styles.compareTrack}>
+            <div className={compareStyles}>
               <div
                 className={styles.rangeCompare}
                 style={getRangeStyle(rangeCompare.min, rangeCompare.max)}>
