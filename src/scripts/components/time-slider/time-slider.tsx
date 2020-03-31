@@ -17,6 +17,8 @@ import {getTimeRanges} from '../../libs/get-time-ranges';
 import {State} from '../../reducers';
 import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 
+import {TimeRange} from '../../types/time-range';
+
 import styles from './time-slider.styl';
 
 // debounce the time update
@@ -77,6 +79,10 @@ const TimeSlider: FunctionComponent = () => {
     return null;
   }
 
+  const outputPosition = Number(
+    ((time - combined.min) * 100) / (combined.max - combined.min)
+  );
+
   const getRangeStyle = (
     min: number,
     max: number
@@ -90,9 +96,15 @@ const TimeSlider: FunctionComponent = () => {
     };
   };
 
-  const outputPosition = Number(
-    ((time - combined.min) * 100) / (combined.max - combined.min)
-  );
+  const getTickStyle = (timestamp: string, range: TimeRange) => {
+    const tickPosition = Number(
+      ((Date.parse(timestamp) - range.min) / (range.max - range.min)) * 100
+    );
+    return {
+      left: `${tickPosition}%`
+    };
+  };
+
   const inputStyles = cx(
     styles.input,
     rangeMain && rangeCompare && styles.compareInput
@@ -131,19 +143,13 @@ const TimeSlider: FunctionComponent = () => {
               <div
                 className={styles.rangeMain}
                 style={getRangeStyle(rangeMain.min, rangeMain.max)}>
-                {rangeMain.timestamps.map(timestamp => {
-                  const tickPosition = Number(
-                    ((Date.parse(timestamp) - rangeMain.min) /
-                      (rangeMain.max - rangeMain.min)) *
-                      100
-                  );
-                  return (
-                    <div
-                      key={timestamp}
-                      className={styles.ticks}
-                      style={{left: `${tickPosition}%`}}></div>
-                  );
-                })}
+                {rangeMain.timestamps.map(timestamp => (
+                  <div
+                    key={timestamp}
+                    className={styles.ticks}
+                    style={getTickStyle(timestamp, rangeMain)}
+                  />
+                ))}
               </div>
             </div>
           )}
@@ -152,19 +158,13 @@ const TimeSlider: FunctionComponent = () => {
               <div
                 className={styles.rangeCompare}
                 style={getRangeStyle(rangeCompare.min, rangeCompare.max)}>
-                {rangeCompare.timestamps.map(timestamp => {
-                  const tickPosition = Number(
-                    ((Date.parse(timestamp) - rangeCompare.min) /
-                      (rangeCompare.max - rangeCompare.min)) *
-                      100
-                  );
-                  return (
-                    <div
-                      key={timestamp}
-                      className={styles.ticks}
-                      style={{left: `${tickPosition}%`}}></div>
-                  );
-                })}
+                {rangeCompare.timestamps.map(timestamp => (
+                  <div
+                    key={timestamp}
+                    className={styles.ticks}
+                    style={getTickStyle(timestamp, rangeCompare)}
+                  />
+                ))}
               </div>
             </div>
           )}
