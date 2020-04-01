@@ -3,6 +3,7 @@ import React, {FunctionComponent} from 'react';
 import StoryPagination from '../story-pagination/story-pagination';
 import Autoplay from '../autoplay/autoplay';
 import {useStoryNavigation} from '../../hooks/use-story-navigation';
+import cx from 'classnames';
 
 import {StoryMode} from '../../types/story-mode';
 import {Story} from '../../types/story';
@@ -21,10 +22,16 @@ const StoryFooter: FunctionComponent<Props> = ({
   selectedStory
 }) => {
   const isShowcaseMode = mode === StoryMode.Showcase;
+  const isStoriesMode = mode === StoryMode.Stories;
   const {nextSlideLink, previousSlideLink, autoPlayLink} = useStoryNavigation();
 
+  const footerClasses = cx(
+    styles.storyFooter,
+    !isStoriesMode && styles.fadeOutFooter
+  );
+
   return (
-    <div className={styles.storyFooter}>
+    <div className={footerClasses}>
       {selectedStory && (
         <StoryPagination
           mode={mode}
