@@ -9,6 +9,8 @@ import {StoryIcon} from '../icons/story-icon';
 import showLayerSelectorAction from '../../actions/show-layer-selector';
 
 import styles from './navigation.styl';
+import {MenuIcon} from '../icons/menu-icon';
+import {ShareIcon} from '../icons/share-icon';
 
 const Navigation: FunctionComponent = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -30,7 +32,12 @@ const Navigation: FunctionComponent = () => {
       />
       <Button
         className={styles.button}
-        label="more"
+        icon={ShareIcon}
+        onClick={() => console.log('placeholder')}
+      />
+      <Button
+        className={styles.button}
+        icon={MenuIcon}
         onClick={() => setShowMenu(true)}
       />
       {showMenu && (
