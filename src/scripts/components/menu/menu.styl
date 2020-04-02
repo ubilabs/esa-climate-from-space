@@ -1,28 +1,46 @@
 @require '../../../variables.styl'
 
 .menuContainer
-  padding: 10px
-  text-align-last: center
+  display: flex
+  flex-direction: column
+  align-items: center
+  height: 90%
   font-family: Arial, Helvetica, sans-serif
 
 .logo
-  padding-top: emCalc(20px)
+  position: absolute
+  bottom: emCalc(20px)
 
   svg
     fill: $main
 
-.menuList
+.menuList, .subMenuList
+  display: flex
   padding: 0
-  width: 100%
-  height: 100%
+  color: $textWhite
   list-style: none
 
+.menuItemTitle
+  font-weight: bold
+  pointer-events: none
+
+.menuList
+  flex-wrap: wrap
+  overflow-y: auto
+  margin: 0
+  padding: 0
+
+.subMenuList
+  flex-direction: column
+  padding: emCalc(20px) 0
+
 .menuListItem
-  display: flex
-  flex-flow: wrap
-  justify-content: center
-  align-items: center
-  margin: 7px
-  padding: 10px 15px
-  color: $textWhite
+  padding: emCalc(30px)
+  color: $textDefault
+
+.subMenuListItem
+  padding: emCalc(5px) emCalc(30px)
   cursor: pointer
+
+.menuButton
+  color: $textDefault

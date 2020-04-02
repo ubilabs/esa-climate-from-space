@@ -2,12 +2,13 @@ import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
 import cx from 'classnames';
 
+import {getStoryMediaUrl} from '../../libs/get-story-media-url';
+import {useSlide} from '../../hooks/use-slide';
+
 import {StoryMode} from '../../types/story-mode';
 import {Slide} from '../../types/story';
-import {getStoryMediaUrl} from '../../libs/get-story-media-url';
 
 import styles from './story-content.styl';
-import {useSlide} from '../../hooks/use-slide';
 
 interface Props {
   storyId: string;

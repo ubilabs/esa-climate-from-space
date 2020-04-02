@@ -6,6 +6,8 @@ import Button from '../button/button';
 
 import {Language} from '../../types/language';
 
+import styles from './language-selector.styl';
+
 const languages = Object.values(Language);
 
 const LanguageSelector: FunctionComponent = () => {
@@ -14,13 +16,16 @@ const LanguageSelector: FunctionComponent = () => {
     dispatch(setLanguageAction(language));
 
   return (
-    <ul>
+    <ul className={styles.language}>
       {languages.map(language => (
-        <Button
-          key={language}
-          onClick={() => setLanguage(language)}
-          label={`language.${language}`}
-        />
+        <li className={styles.languageItem} key={language}>
+          <Button
+            className={styles.button}
+            key={language}
+            onClick={() => setLanguage(language)}
+            label={`language.${language}`}
+          />
+        </li>
       ))}
     </ul>
   );

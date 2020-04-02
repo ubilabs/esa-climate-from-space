@@ -1,7 +1,6 @@
 import React, {FunctionComponent} from 'react';
 
 import {PresenterIcon} from '../icons/presenter-icon';
-import {ShowCaseIcon} from '../icons/show-case-icon';
 import {LanguageIcon} from '../icons/language-icon';
 import {ShareIcon} from '../icons/share-icon';
 import {InfoIcon} from '../icons/info-icon';
@@ -17,50 +16,107 @@ import styles from './menu.styl';
 const Menu: FunctionComponent = () => {
   const menuItems: MenuItem[] = [
     {
-      id: 'presenterMode',
-      link: '/present',
-      icon: PresenterIcon
-    },
-    {
-      id: 'showcaseMode',
-      link: '/showcase',
-      icon: ShowCaseIcon
+      id: 'modes',
+      icon: PresenterIcon,
+      subItems: [
+        {
+          id: 'presenterMode',
+          link: '/present'
+        },
+        {
+          id: 'showcaseMode',
+          link: '/showcase'
+        }
+      ]
     },
     {
       id: 'language',
       icon: LanguageIcon
     },
-    {id: 'share', icon: ShareIcon},
-    {id: 'export', icon: ExportIcon},
-    {id: 'info', icon: InfoIcon}
+    {
+      id: 'share',
+      icon: ShareIcon,
+      subItems: [
+        {
+          id: 'twitter'
+        },
+        {
+          id: 'facebook'
+        },
+        {
+          id: 'whatsApp'
+        },
+        {
+          id: 'copyLink'
+        }
+      ]
+    },
+    {
+      id: 'info',
+      icon: InfoIcon,
+      subItems: [
+        {
+          id: 'presenterMode',
+          link: '/present'
+        },
+        {
+          id: 'showcaseMode',
+          link: '/showcase'
+        }
+      ]
+    },
+    {
+      id: 'export',
+      icon: ExportIcon,
+      subItems: [
+        {
+          id: 'presenterMode',
+          link: '/present'
+        },
+        {
+          id: 'showcaseMode',
+          link: '/showcase'
+        }
+      ]
+    }
   ];
 
   return (
-    <div className={styles.menuContainer}>
+    <nav className={styles.menuContainer}>
       <ul className={styles.menuList}>
         {menuItems.map(menuItem => (
           <li className={styles.menuListItem} key={menuItem.id}>
-            {menuItem.link ? (
-              <Button
-                label={menuItem.id}
-                link={menuItem.link}
-                icon={menuItem.icon}
-              />
-            ) : (
-              <Button
-                label={menuItem.id}
-                icon={menuItem.icon}
-                onClick={() => console.log('placeholder')}
-              />
-            )}
-            {menuItem.id === 'language' && <LanguageSelector />}
+            <Button
+              className={styles.menuItemTitle}
+              label={menuItem.id}
+              icon={menuItem.icon}></Button>
+            <ul className={styles.subMenuList}>
+              {menuItem.subItems?.map(subItem => (
+                <li className={styles.subMenuListItem} key={subItem.id}>
+                  {subItem.link ? (
+                    <Button
+                      className={styles.menuButton}
+                      label={subItem.id}
+                      link={subItem.link}
+                    />
+                  ) : (
+                    <Button
+                      className={styles.menuButton}
+                      label={subItem.id}
+                      onClick={() => console.log('placeholder')}
+                    />
+                  )}
+                </li>
+              ))}
+              {menuItem.id === 'language' && <LanguageSelector />}
+            </ul>
           </li>
         ))}
       </ul>
       <div className={styles.logo}>
         <CCILogo />
       </div>
-    </div>
+    </nav>
   );
 };
 
