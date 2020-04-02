@@ -36,12 +36,19 @@ const ShowcaseSelector: FunctionComponent = () => {
           id="storiesSelected"
           values={{numberSelected: selectedIds.length}}
         />
-        <Button
-          className={styles.button}
-          label={'play'}
-          link={`/showcase/${selectedIds.join('&')}/0/title`}
-          icon={PlayIcon}
-        />
+        {selectedIds.length === 0 ? (
+          <Button
+            className={styles.disabledButton}
+            label={'play'}
+            icon={PlayIcon}
+          />
+        ) : (
+          <Button
+            label={'play'}
+            link={`/showcase/${selectedIds.join('&')}/0/title`}
+            icon={PlayIcon}
+          />
+        )}
       </Header>
       <StoryList
         mode={StoryMode.Showcase}
