@@ -25,6 +25,7 @@ const ShowcaseSelector: FunctionComponent = () => {
       : selectedIds.concat(id);
     history.replace(`/showcase/${newIds.join('&')}`);
   };
+  const isDisabled = selectedIds.length === 0;
 
   return (
     <div className={styles.showcaseSelector}>
@@ -36,19 +37,12 @@ const ShowcaseSelector: FunctionComponent = () => {
           id="storiesSelected"
           values={{numberSelected: selectedIds.length}}
         />
-        {selectedIds.length === 0 ? (
-          <Button
-            className={styles.disabledButton}
-            label={'play'}
-            icon={PlayIcon}
-          />
-        ) : (
-          <Button
-            label={'play'}
-            link={`/showcase/${selectedIds.join('&')}/0/title`}
-            icon={PlayIcon}
-          />
-        )}
+        <Button
+          disabled={isDisabled}
+          label={'play'}
+          link={`/showcase/${selectedIds.join('&')}/0/title`}
+          icon={PlayIcon}
+        />
       </Header>
       <StoryList
         mode={StoryMode.Showcase}
