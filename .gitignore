@@ -4,3 +4,6 @@ dist-electron
 dist-src-electron
 .vscode
 storage/**/*.zip
+download*
+gdal-output*
+netcdfs

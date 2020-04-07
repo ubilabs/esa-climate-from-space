@@ -1,13 +1,16 @@
 steps:
   - name: 'gcr.io/cloud-builders/npm'
+    id: 'ci'
     entrypoint: npm
     args: ['ci']
   - name: 'gcr.io/cloud-builders/npm'
+    id: 'build'
     entrypoint: npm
     args: ['run', 'build']
   - name: 'gcr.io/cloud-builders/gsutil'
     args: ['rsync', '-r', '-d', './dist', 'gs://esa-cfs-versions/web/${BRANCH_NAME}']
   - name: 'gcr.io/cloud-builders/gsutil'
+    id: 'setmeta'
     args:
       [
         'setmeta',

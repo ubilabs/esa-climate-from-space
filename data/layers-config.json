@@ -16,7 +16,7 @@
     }
   },
   "sst.analysed_sst": {
-    "colorMap": "inferno",
+    "colorMap": "jet",
     "timeFormat": {
       "year": "numeric",
       "month": "long",

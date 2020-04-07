@@ -1,0 +1,38 @@
+https://sandcastle.cesium.com/#c=nVJba9swFP4rIi9OoZOSso2SumGQh22QsUK6jYFfFOk0EtXFSMdO05D/XtnOMjtbGczG4HP5Lv7kmgeCNk7JLXGwJQuIurL0WzD3YEvDET5bvoGwuwu+1hLCeF840l1VMDOSKcRyxpjxghvlI86uJ9cTtn8+sP1TegLUECL8PNDSbbLLExi10W6zEgoszPrSH8FvAi+VFve9lfHFb6jVTtvKLhNzMjDpDfhTb/B2IAY/tEQ1I1fv3g/7n0BvFLaDrn+4uClcc9ddNFfDaJIr+MLLFYRai1fSScmQ16LJCjdQqDVsIQw1vre9cSbacuEdcu0gZA1OeBeRGL5rQR2aRgEOqO7MLJtZpFzKc3fNQXfaLZ5yUyqeWKY3o8tRHnFnYN6F8EHb0gdsvmRMKcPjzxDZuhKPgFTE2BDl7Bcol7omWt4WozPTxYgIw2NMk4fKmJV+hmI0z1naH8CM5zId99f0uyRzzYqazpddk1Kas1T+iULvzZonkaPvHPnawElRuwd/xx2Y00K3tPZyN2iEXtV15HxhtHgk3hFUcDwZInVMQewIehKRB0y+0maPiQ2o/k68ZZG8IdbXyWiFvkLiUtaKxfSq/oeQM3lGuIWIDHjEf9CxfhSpatJrAj4G/QI
+
+rm -r gdal-output && gdal2tiles.py -p raster -s EPSG:4326 ./tiles-rechuncked/analysed_sst/0/0/0/0.png gdal-output
+gdal2tiles.py -p geodetic -n -w none -r near --tilesize=480 -s EPSG:4326 ./tiles-rechuncked/analysed_sst/0/0/0/0.png gdal-output
+gdal2tiles.py -p geodetic --no-kml --webviewer=none -r near -s EPSG:4326 ./tiles-rechuncked/analysed_sst/0/0/0/0big.png gdal-output2
+
+0.1
+0
+0
+-0.1
+-180.05
+269.95
+
+
+
+var tms1 = new Cesium.UrlTemplateImageryProvider({
+       url: 'http://localhost:8080/{z}/{x}/{reverseY}.png',
+       tilingScheme: new Cesium.GeographicTilingScheme(),
+       minimumLevel: 0,
+       maximumLevel: 4,
+       tileWidth: 256,
+       tileHeight: 256
+    });
+
+
+var tms2 = new Cesium.TileMapServiceImageryProvider({
+   url : 'http://localhost:8080'
+});
+
+
+var viewer = new Cesium.Viewer('cesiumContainer');
+const layer = viewer.scene.imageryLayers.addImageryProvider(tms2);
+layer.minificationFilter = Cesium.TextureMinificationFilter.NEAREST;
+layer.magnificationFilter = Cesium.TextureMagnificationFilter.NEAREST;
+layer.alpha = 0.75;
+
+
+rm -rf ./dataset.zarr && cate ds del -y local.data && python data/write-zarr.py -i '/workspace/download/*.nc' -l sst.analysed_sst -v analysed_sst -o ./dataset.zarr
