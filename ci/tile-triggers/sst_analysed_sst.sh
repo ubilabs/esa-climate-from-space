@@ -11,4 +11,4 @@ if [ ! -f ./package.json ]; then
     exit 1
 fi
 
-gcloud builds submit --config ./ci/cloudbuild-dataset.yaml --timeout=$timeout --substitutions _LAYER_ID=$LAYER_ID,_VARIABLE_ID=$VARIABLE_ID,_VERSION=test .
+gcloud builds submit --config ./ci/cloudbuild-dataset.yaml --timeout=$timeout --substitutions _LAYER_ID=$LAYER_ID,_VARIABLE_ID=$VARIABLE_ID,_ZOOM_LEVELS=0-4,_VERSION=0.4.1 .

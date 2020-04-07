@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+zoom_levels=$1
+
 for file in $(find /data/images/* -name 0.png | sort -n); do
   echo $file
 
@@ -8,9 +10,10 @@ for file in $(find /data/images/* -name 0.png | sort -n); do
   # copy worldfile next to the image so that gdal recognizes it
   cp worldfile.wld $timestamp_dir/0/0/0.pgw
 
-  # create tiles into "{timestamp}/tiles" folder
+  # create tiles into timestamp folder
   gdal2tiles.py \
     --profile geodetic \
+    --zoom=$zoom_levels \
     --no-kml \
     --webviewer=none \
     --resampling near \
@@ -19,4 +22,3 @@ for file in $(find /data/images/* -name 0.png | sort -n); do
      --quiet \
     $file $timestamp_dir
 done
-

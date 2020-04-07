@@ -1,11 +1,10 @@
-# manually run with "gcloud builds submit --config ./ci/cloudbuild-tiles.yaml --timeout=2000 --substitutions _LAYER_ID="fire.burned_area",_DATASET_ID="esacci.FIRE.mon.L4.BA.MODIS.Terra.MODIS_TERRA.v5-1.r1",_VARIABLE_ID="burned_area",_VERSION=0.0.1 ."
 steps:
   - name: gcr.io/cloud-builders/gsutil
     id: 'download-netcdfs'
     entrypoint: '/bin/bash'
     args:
       - "-c"
-      - "mkdir /data/netcdfs && gsutil -m cp -r gs://esa-cfs-cate-data/${_LAYER_ID}/1981.nc /data/netcdfs/"
+      - "mkdir /data/netcdfs && gsutil -m cp -r gs://esa-cfs-cate-data/${_LAYER_ID}/200*.nc /data/netcdfs/"
 
   - name: gcr.io/esa-climate-from-space/cate:latest
     id: 'cate-export-data-cube'
@@ -21,7 +20,7 @@ steps:
       - "-c"
       - "conda run -n xcube xcube tile --verbose --config ./style.yaml --style cfs --output /data/images /data/dataset.zarr"
 
-  - name: v4tech/imagemagick
+  - name: dpokidov/imagemagick:latest-stretch
     id: 'imagemagick-resize'
     entrypoint: '/bin/bash'
     args:
@@ -32,6 +31,7 @@ steps:
     entrypoint: '/bin/bash'
     args:
        - "./data/gdal-tiles.sh"
+       - "${_ZOOM_LEVELS}"
 
   - name: gcr.io/esa-climate-from-space/tile-mover
     id: 'prepare-upload'
