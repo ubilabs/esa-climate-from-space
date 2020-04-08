@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
-TIMEOUT=12000
-LAYER_ID="sst.analysed_sst"
-VARIABLE_ID="analysed_sst"
+TIMEOUT=8000
+LAYER_ID="oc.chlor_a"
+VARIABLE_ID="chlor_a"
 VERSION="test"
 ZOOM_LEVELS="0-4"
-MACHINE_TYPE="N1_HIGHCPU_32"
+MACHINE_TYPE="N1_HIGHCPU_8"
+#MACHINE_TYPE=""
 
 if [ ! -f ./package.json ]; then
     echo "You have to be in the root folder of the project to run this script!"

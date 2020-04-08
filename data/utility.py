@@ -25,8 +25,8 @@ def write_style_file(layer_id, variable_id, min, max):
 
 
 def write_world_file(ds):
-  lon_res = ds.attrs['geospatial_lon_resolution']
-  lat_res = ds.attrs['geospatial_lat_resolution']
+  lon_res = float(ds.attrs['geospatial_lon_resolution'])
+  lat_res = float(ds.attrs['geospatial_lat_resolution'])
 
   content = """{a:.4f}\n{b:.4f}\n{c:.4f}\n{d:.4f}\n{e:.4f}\n{f:.4f}""".format(
     a=lon_res * 2,

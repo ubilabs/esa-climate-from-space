@@ -4,7 +4,6 @@ variable=$1
 layer=$2
 
 mkdir -p /data/upload/$layer/tiles
-mkdir /data/upload/$layer/full
 
 # delete unwanted gdal .kml files
 find /data/images/$variable -name '*.kml' -delete

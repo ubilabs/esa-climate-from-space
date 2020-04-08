@@ -22,5 +22,13 @@
       "month": "long",
       "day": "2-digit"
     }
+  },
+  "oc.chlor_a": {
+    "colorMap": "winter",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
   }
 }
