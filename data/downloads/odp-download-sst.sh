@@ -1,6 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/sst/data/CDR_v2/Analysis/L4/v2.1/"
 START_DATE=1981-09-01
+OUTPUT_FODLER=./download
 
 for i in {0..4}
 do
@@ -9,5 +11,5 @@ do
   FTP_URL=$BASE_URL$NEXT_DATE/$NEXT_DATE_SPACE"120000-ESACCI-L4_GHRSST-SSTdepth-OSTIA-GLOB_CDR2.1-v02.0-fv01.0.nc"
   echo $FTP_URL
 
-  curl --silent $FTP_URL > download/$NEXT_DATE_SPACE.nc
+  curl --silent $FTP_URL > $OUTPUT_FODLER/$NEXT_DATE_SPACE.nc
 done

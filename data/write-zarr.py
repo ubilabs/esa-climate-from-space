@@ -1,7 +1,7 @@
 import sys
 import time
-import utility
 import cate.ops
+import utility
 from cate.core.ds import DATA_STORE_REGISTRY
 from argparse import ArgumentParser
 
@@ -9,8 +9,11 @@ parser = ArgumentParser()
 parser.add_argument("-i", "--input", dest="input_files", default="/data/netcdfs/*.nc")
 parser.add_argument("-l", "--layer", dest="layer_id")
 parser.add_argument("-v", "--variable", dest="variable_id")
+parser.add_argument("-z", "--zoom-levels", dest="zoom_levels")
 parser.add_argument("-o", "--output", dest="output")
 args = parser.parse_args()
+
+zoom_levels = args.zoom_levels.split('-')
 
 # add local datastore from NetCDF files
 start_time = time.time()
@@ -46,7 +49,8 @@ print('Writing world file...')
 utility.write_world_file(ds)
 
 print('Writing metadata file...')
-utility.write_metadata_file(args.layer_id, args.variable_id, data_array.time, shape, min, max)
+total_zoom_levels = int(zoom_levels[1]) + 1
+utility.write_metadata_file(args.layer_id, args.variable_id, data_array.time, total_zoom_levels, min, max)
 
 
 
