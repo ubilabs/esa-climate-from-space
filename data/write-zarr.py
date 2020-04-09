@@ -10,6 +10,8 @@ parser.add_argument("-i", "--input", dest="input_files", default="/data/netcdfs/
 parser.add_argument("-l", "--layer", dest="layer_id")
 parser.add_argument("-v", "--variable", dest="variable_id")
 parser.add_argument("-z", "--zoom-levels", dest="zoom_levels")
+parser.add_argument("--min", dest="min", default="auto")
+parser.add_argument("--max", dest="max", default="auto")
 parser.add_argument("-o", "--output", dest="output")
 args = parser.parse_args()
 
@@ -29,8 +31,18 @@ data_array = ds[args.variable_id]
 print(f'Opened dataset in {time.time() - start_time}s')
 
 # get min and max values
-min = float(data_array.min(dim="time", skipna=True).min())
-max = float(data_array.max(dim="time", skipna=True).max())
+try:
+  min = float(args.min)
+except ValueError:
+  min = float(data_array.min(dim="time", skipna=True).min())
+
+try:
+  max = float(args.max)
+except ValueError:
+  max = float(data_array.max(dim="time", skipna=True).max())
+
+# clip values here so that we don't have to pass min/max to xcube
+data_array = data_array.clip(min, max)
 
 # re-chunk to full size chunks so that xcube automatically creates full size images
 shape = data_array.shape

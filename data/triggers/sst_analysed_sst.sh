@@ -5,6 +5,8 @@ LAYER_ID="sst.analysed_sst"
 VARIABLE_ID="analysed_sst"
 VERSION="test"
 ZOOM_LEVELS="0-4"
+MIN="auto"
+MAX="auto"
 MACHINE_TYPE="N1_HIGHCPU_32"
 
 if [ ! -f ./package.json ]; then
@@ -15,5 +17,5 @@ fi
 gcloud builds submit --config ./ci/cloudbuild-tiles.yaml \
   --machine-type=$MACHINE_TYPE \
   --timeout=$TIMEOUT \
-  --substitutions _LAYER_ID=$LAYER_ID,_VARIABLE_ID=$VARIABLE_ID,_ZOOM_LEVELS=$ZOOM_LEVELS,_VERSION=$VERSION \
+  --substitutions _LAYER_ID=$LAYER_ID,_VARIABLE_ID=$VARIABLE_ID,_ZOOM_LEVELS=$ZOOM_LEVELS,_VERSION=$VERSION,_MIN=$MIN,_MAX=$MAX \
   .

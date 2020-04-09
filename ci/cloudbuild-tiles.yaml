@@ -11,7 +11,7 @@ steps:
     entrypoint: '/bin/bash'
     args:
       - "-c"
-      - "conda run -n cate-env python data/write-zarr.py --layer ${_LAYER_ID} --variable ${_VARIABLE_ID} --zoom-levels ${_ZOOM_LEVELS} --output /data/dataset.zarr"
+      - "conda run -n cate-env python data/write-zarr.py --layer ${_LAYER_ID} --variable ${_VARIABLE_ID} --zoom-levels ${_ZOOM_LEVELS} --min ${_MIN} --max ${_MAX} --output /data/dataset.zarr"
 
   - name: gcr.io/esa-climate-from-space/xcube:latest
     id: 'xcube-generate-full-images'
