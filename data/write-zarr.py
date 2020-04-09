@@ -62,7 +62,7 @@ utility.write_world_file(ds)
 
 print('Writing metadata file...')
 total_zoom_levels = int(zoom_levels[1]) + 1
-utility.write_metadata_file(args.layer_id, args.variable_id, data_array.time, total_zoom_levels, min, max)
+utility.write_metadata_file(args.layer_id, args.variable_id, data_array, total_zoom_levels, min, max)
 
 
 

@@ -43,12 +43,12 @@ def write_world_file(ds):
   print(content)
 
 
-def write_metadata_file(layer_id, variable_id, timesteps, max_zoom, min, max):
+def write_metadata_file(layer_id, variable_id, data_array, max_zoom, min, max):
   with open('./data/layers-config.json') as f:
     layer_config = json.load(f)
 
   format_date = lambda t: np.datetime_as_string(t, timezone='UTC')
-  timestamps = [format_date(t) for t in timesteps.values]
+  timestamps = [format_date(t) for t in data_array.time.values]
 
   metadata = {
     'id': layer_id,
@@ -56,6 +56,7 @@ def write_metadata_file(layer_id, variable_id, timesteps, max_zoom, min, max):
     'timeFormat': layer_config[layer_id]['timeFormat'],
     'minValue': min,
     'maxValue': max,
+    'units': data_array.attrs['units']
     'zoomLevels': max_zoom,
     'timestamps': timestamps
   }
