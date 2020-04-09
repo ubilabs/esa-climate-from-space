@@ -23,18 +23,17 @@ def write_style_file(layer_id, variable_id, min, max):
 
   print(content)
 
+def write_world_file(shape):
+  lon_res = 360 / shape[2]
+  lat_res = 180 / shape[1]
 
-def write_world_file(ds):
-  lon_res = float(ds.attrs['geospatial_lon_resolution'])
-  lat_res = float(ds.attrs['geospatial_lat_resolution'])
-
-  content = """{a:.4f}\n{b:.4f}\n{c:.4f}\n{d:.4f}\n{e:.4f}\n{f:.4f}""".format(
-    a=lon_res * 2,
-    b=0,
-    c=0,
-    d=lat_res * -2,
-    e=-180 - lon_res,
-    f=270 - lat_res
+  content = """{a}\n{b}\n{c}\n{d}\n{e}\n{f}""".format(
+    a = lon_res * 2,
+    b = 0,
+    c = 0,
+    d = lat_res * -2,
+    e = -180 + lon_res,
+    f = 270 - lat_res
   )
 
   with open('./worldfile.wld', 'w') as f:
@@ -43,12 +42,12 @@ def write_world_file(ds):
   print(content)
 
 
-def write_metadata_file(layer_id, variable_id, data_array, max_zoom, min, max):
+def write_metadata_file(layer_id, variable_id, units, timesteps, max_zoom, min, max):
   with open('./data/layers-config.json') as f:
     layer_config = json.load(f)
 
   format_date = lambda t: np.datetime_as_string(t, timezone='UTC')
-  timestamps = [format_date(t) for t in data_array.time.values]
+  timestamps = [format_date(t) for t in timesteps.values]
 
   metadata = {
     'id': layer_id,
@@ -56,7 +55,7 @@ def write_metadata_file(layer_id, variable_id, data_array, max_zoom, min, max):
     'timeFormat': layer_config[layer_id]['timeFormat'],
     'minValue': min,
     'maxValue': max,
-    'units': data_array.attrs['units']
+    'units': units,
     'zoomLevels': max_zoom,
     'timestamps': timestamps
   }

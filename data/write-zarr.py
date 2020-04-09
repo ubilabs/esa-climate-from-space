@@ -28,6 +28,7 @@ local_store.add_pattern(ds_name, files)
 # open dataset
 ds = cate.ops.open_dataset(ds_local_name, var_names=args.variable_id)
 data_array = ds[args.variable_id]
+units = data_array.attrs['units']
 print(f'Opened dataset in {time.time() - start_time}s')
 
 # get min and max values
@@ -58,11 +59,19 @@ print('Writing style file...')
 utility.write_style_file(args.layer_id, args.variable_id, min, max)
 
 print('Writing world file...')
-utility.write_world_file(ds)
+utility.write_world_file(shape)
 
 print('Writing metadata file...')
 total_zoom_levels = int(zoom_levels[1]) + 1
-utility.write_metadata_file(args.layer_id, args.variable_id, data_array, total_zoom_levels, min, max)
+utility.write_metadata_file(
+  args.layer_id,
+  args.variable_id,
+  units,
+  data_array.time,
+  total_zoom_levels,
+  min,
+  max
+)
 
 
 
