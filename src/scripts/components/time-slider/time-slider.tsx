@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import debounce from 'lodash.debounce';
+import cx from 'classnames';
 
 import {languageSelector} from '../../selectors/language';
 import {timeSelector} from '../../selectors/globe/time';
@@ -15,6 +16,8 @@ import setGlobeTime from '../../actions/set-globe-time';
 import {getTimeRanges} from '../../libs/get-time-ranges';
 import {State} from '../../reducers';
 import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
+
+import {TimeRange} from '../../types/time-range';
 
 import styles from './time-slider.styl';
 
@@ -76,6 +79,10 @@ const TimeSlider: FunctionComponent = () => {
     return null;
   }
 
+  const outputPosition = Number(
+    ((time - combined.min) * 100) / (combined.max - combined.min)
+  );
+
   const getRangeStyle = (
     min: number,
     max: number
@@ -89,39 +96,77 @@ const TimeSlider: FunctionComponent = () => {
     };
   };
 
+  const getTickStyle = (timestamp: string, range: TimeRange) => {
+    const tickPosition = Number(
+      ((Date.parse(timestamp) - range.min) / (range.max - range.min)) * 100
+    );
+    return {
+      left: `${tickPosition}%`
+    };
+  };
+
+  const inputStyles = cx(
+    styles.input,
+    rangeMain && rangeCompare && styles.compareInput
+  );
+  const compareStyles = cx(
+    styles.compareTrack,
+    rangeMain && rangeCompare && styles.compareBothTracks
+  );
+
   return (
     <div className={styles.timeSlider}>
       <div className={styles.container}>
-        <div className={styles.label}>
-          <div className={styles.labelMin}>{format(combined.min)}</div>
-          <div>{format(time)}</div>
-          <div className={styles.labelMax}>{format(combined.max)}</div>
-        </div>
-
-        <input
-          className={styles.input}
-          type="range"
-          value={time}
-          onChange={({target}) => {
-            const newTime = parseInt(target.value, 10);
-            setTime(newTime);
-            debouncedSetGlobeTime(newTime);
-          }}
-          min={combined.min}
-          max={combined.max}
-          step={stepSize}
-        />
-
         <div className={styles.ranges}>
+          <input
+            className={inputStyles}
+            type="range"
+            value={time}
+            onChange={({target}) => {
+              const newTime = parseInt(target.value, 10);
+              setTime(newTime);
+              debouncedSetGlobeTime(newTime);
+            }}
+            min={combined.min}
+            max={combined.max}
+            step={stepSize}
+          />
+          <output
+            className={styles.timeOutput}
+            style={{
+              left: `${outputPosition}%`
+            }}>
+            {format(time)}
+          </output>
           {rangeMain && (
-            <div
-              className={styles.rangeMain}
-              style={getRangeStyle(rangeMain.min, rangeMain.max)}></div>
+            <div className={styles.mainTrack}>
+              <div
+                className={styles.rangeMain}
+                style={getRangeStyle(rangeMain.min, rangeMain.max)}>
+                {rangeMain.timestamps.map(timestamp => (
+                  <div
+                    key={timestamp}
+                    className={styles.ticks}
+                    style={getTickStyle(timestamp, rangeMain)}
+                  />
+                ))}
+              </div>
+            </div>
           )}
           {rangeCompare && (
-            <div
-              className={styles.rangeCompare}
-              style={getRangeStyle(rangeCompare.min, rangeCompare.max)}></div>
+            <div className={compareStyles}>
+              <div
+                className={styles.rangeCompare}
+                style={getRangeStyle(rangeCompare.min, rangeCompare.max)}>
+                {rangeCompare.timestamps.map(timestamp => (
+                  <div
+                    key={timestamp}
+                    className={styles.ticks}
+                    style={getTickStyle(timestamp, rangeCompare)}
+                  />
+                ))}
+              </div>
+            </div>
           )}
         </div>
       </div>

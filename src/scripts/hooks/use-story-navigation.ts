@@ -40,11 +40,12 @@ export const useStoryNavigation = () => {
       autoPlayLink = `/showcase/${showcaseStoryIds}/${storyIndex}/${nextSlideIndex}`;
       // when no slides are left, go to first slide of next story
     } else if (nextStoryIndex < storyIds.length) {
-      autoPlayLink = `/showcase/${showcaseStoryIds}/${nextStoryIndex}/0`;
+      autoPlayLink = `/showcase/${showcaseStoryIds}/${nextStoryIndex}/title`;
       // after the last story, return to the beginning
     } else {
-      autoPlayLink = `/showcase/${showcaseStoryIds}/0/0`;
+      autoPlayLink = `/showcase/${showcaseStoryIds}/0/title`;
     }
   }
+
   return {autoPlayLink, nextSlideLink, previousSlideLink};
 };

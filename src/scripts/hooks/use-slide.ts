@@ -18,15 +18,9 @@ export const useSlide = (slide: Slide) => {
     const [mainLayer, compareLayer] = slide.layer || [];
 
     dispatch(setFlyToAction(slide.flyTo || defaultView));
-
-    if (mainLayer) {
-      dispatch(setSelectedLayerIdsAction(mainLayer.id, true));
-      dispatch(setGlobeTimeAction(mainLayer.timestamp || 0));
-    }
-
-    if (compareLayer) {
-      dispatch(setSelectedLayerIdsAction(compareLayer.id, false));
-    }
+    dispatch(setSelectedLayerIdsAction(mainLayer?.id || null, true));
+    dispatch(setSelectedLayerIdsAction(compareLayer?.id || null, false));
+    dispatch(setGlobeTimeAction(mainLayer?.timestamp || 0));
   }, [dispatch, defaultView, slide]);
 
   return;
