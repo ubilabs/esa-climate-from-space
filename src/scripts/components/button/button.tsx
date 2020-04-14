@@ -18,13 +18,15 @@ const Button: FunctionComponent<Props> = ({
   label,
   link,
   icon: Icon,
-  disabled,
+  disabled = false,
   className = '',
   onClick
 }) => {
   const classes = cx(
-    `${styles.button} ${className}`,
-    disabled && `${styles.disabled} ${className}`
+    styles.button,
+    className,
+    disabled && styles.disabled,
+    disabled && className
   );
 
   return link ? (
