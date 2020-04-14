@@ -5,11 +5,16 @@ export const useMouseMove = () => {
 
   useEffect(() => {
     let timer = 0;
-    window.onmousemove = () => {
+    const handleMouseMove = () => {
       setMouseMove(true);
-      clearTimeout(timer);
       timer = window.setTimeout(() => setMouseMove(false), 5000);
     };
+    window.addEventListener('mousemove', handleMouseMove);
+    const cleanUp = () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      clearTimeout(timer);
+    };
+    return cleanUp;
   }, []);
   return mouseMove;
 };
