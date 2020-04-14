@@ -12,6 +12,18 @@
     "link": "http://..."
   },
   {
+    "id": "sst.analysed_sst",
+    "name": "SST (from Cate)",
+    "description": "This is the Sea Surface Temperature",
+    "link": "http://..."
+  },
+  {
+    "id": "oc.chlor_a",
+    "name": "Ocean Color (from Cate)",
+    "description": "This is the Ocean Color",
+    "link": "http://..."
+  },
+  {
     "id": "clouds",
     "name": "Cloud Concentration",
     "description": "This is the second SubLayer",
