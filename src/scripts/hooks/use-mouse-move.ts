@@ -10,11 +10,12 @@ export const useMouseMove = () => {
       timer = window.setTimeout(() => setMouseMove(false), 5000);
     };
     window.addEventListener('mousemove', handleMouseMove);
-    const cleanUp = () => {
+
+    return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       clearTimeout(timer);
     };
-    return cleanUp;
   }, []);
+
   return mouseMove;
 };
