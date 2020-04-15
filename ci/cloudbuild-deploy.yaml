@@ -23,7 +23,8 @@ steps:
       [
         'clone',
         '--single-branch',
-        '--branch ${BRANCH_NAME}',
+        '--branch',
+        '${BRANCH_NAME}',
         '--depth 5',
         'https://github.com/ubilabs/esa-climate-from-space',
         'repo'
