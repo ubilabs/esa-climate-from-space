@@ -3,7 +3,6 @@ import {FormattedMessage} from 'react-intl';
 
 import LanguageSelector from '../language-selector/language-selector';
 import Button from '../button/button';
-import {CCILogo} from '../icons/cci-logo';
 import {PresenterIcon} from '../icons/presenter-icon';
 import {LanguageIcon} from '../icons/language-icon';
 import {InfoIcon} from '../icons/info-icon';
