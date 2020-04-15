@@ -1,18 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 variable=$1
 layer=$2
 
-mkdir -p upload/$layer/tiles
-mkdir upload/$layer/full
+mkdir -p /data/upload/$layer/tiles
 
-rm tmp/tiles/$variable/metadata.json
-mv tmp/tiles/$variable/* upload/$layer/tiles/
-mv tmp/new-metadata.json upload/$layer/metadata.json
-mmv "tmp/full/$variable/*/0/0/0.png" "upload/$layer/full/#1.png"
+# delete unwanted gdal .kml files
+find /data/images/$variable -name '*.kml' -delete
+# delete unwanted gdal .aux.xml files
+find /data/images/$variable -name '*.aux.xml' -delete
+# delete unwanted xcube metadata files
+find /data/images/$variable -name '*.json' -delete
+# move tiles - source directory structure: /data/images/{variable}/{timestep}/tiles/{zoom}/{x}/{y}
+cp -r /data/images/$variable/* /data/upload/$layer/tiles/
+# copy layer metadata
+cp metadata.json /data/upload/$layer/metadata.json
 
-cd upload && zip -r ./$layer/package.zip ./*
+cd /data/upload && zip -r ./$layer/package.zip ./*
 
-# debug
-ls -la .
-ls -la $layer

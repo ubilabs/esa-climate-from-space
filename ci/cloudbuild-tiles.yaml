@@ -1,43 +1,57 @@
-# manually run with "gcloud builds submit --config ./ci/cloudbuild-tiles.yaml --timeout=2000 --substitutions _LAYER_ID="fire.burned_area",_VARIABLE_ID="burned_area",_DATASET_ID="esacci.FIRE.mon.L4.BA.MODIS.Terra.MODIS_TERRA.v5-1.r1",_TIME_RANGE="2010-01-01.2011-01-01",_TILE_SIZE=256,_VERSION=0.0.1 ."
-# or locally with "cloud-build-local --dryrun=false --config ./ci/cloudbuild-tiles.yaml --substitutions [copy-from-above] ."
 steps:
-  # export zarr file with cate
-  - name: gcr.io/esa-climate-from-space/cate:latest
-    args:
-      - "/bin/bash"
-      - "-c"
-      - "conda run -n cate-env python data/export.py -l ${_LAYER_ID} -d ${_DATASET_ID} -v ${_VARIABLE_ID} -t ${_TIME_RANGE} -o ./dataset.zarr"
-  # generate tiles from zarr
-  - name: gcr.io/esa-climate-from-space/xcube:latest
-    args:
-      - "/bin/bash"
-      - "-c"
-      - "conda run -n xcube xcube tile --verbose --tile-size ${_TILE_SIZE} --output ./tmp/tiles --config ./style.yaml --style cfs ./dataset.zarr"
-  # generate one big global image from zarr
-  - name: gcr.io/esa-climate-from-space/xcube:latest
-    args:
-      - "/bin/bash"
-      - "-c"
-      - "conda run -n xcube xcube tile --verbose --tile-size 2048,1024 --output ./tmp/full --config ./style.yaml --style cfs ./dataset.zarr"
-  # generate metadata file for layer
-  - name: node:12
-    entrypoint: 'node'
-    args:
-      - "./data/generate-metadata.js"
-      - "${_VARIABLE_ID}"
-      - "${_LAYER_ID}"
-  # prepare the upload folder
-  - name: gcr.io/esa-climate-from-space/tile-mover
-    args:
-      - "data/prepare-tile-upload.sh"
-      - "${_VARIABLE_ID}"
-      - "${_LAYER_ID}"
-  # upload tiles into bucket
   - name: gcr.io/cloud-builders/gsutil
+    id: 'download-netcdfs'
+    entrypoint: '/bin/bash'
+    args:
+      - "-c"
+      - "mkdir /data/netcdfs && gsutil -m cp -r gs://esa-cfs-cate-data/${_LAYER_ID}/*.nc /data/netcdfs/"
+
+  - name: gcr.io/esa-climate-from-space/cate:latest
+    id: 'cate-export-data-cube'
+    entrypoint: '/bin/bash'
+    args:
+      - "-c"
+      - "conda run -n cate-env python data/write-zarr.py --layer ${_LAYER_ID} --variable ${_VARIABLE_ID} --zoom-levels ${_ZOOM_LEVELS} --min ${_MIN} --max ${_MAX} --output /data/dataset.zarr"
+
+  - name: gcr.io/esa-climate-from-space/xcube:latest
+    id: 'xcube-generate-full-images'
+    entrypoint: '/bin/bash'
+    args:
+      - "-c"
+      - "conda run -n xcube xcube tile --verbose --config ./style.yaml --style cfs --output /data/images /data/dataset.zarr"
+
+  - name: dpokidov/imagemagick:latest-stretch
+    id: 'imagemagick-resize'
+    entrypoint: '/bin/bash'
+    args:
+      - "./data/resize-images.sh"
+
+  - name: geographica/gdal2:2.4.0
+    id: 'gdal-generate-tiles'
+    entrypoint: '/bin/bash'
+    args:
+       - "./data/gdal-tiles.sh"
+       - "${_ZOOM_LEVELS}"
+
+  - name: gcr.io/esa-climate-from-space/tile-mover
+    id: 'prepare-upload'
+    entrypoint: '/bin/bash'
+    args:
+      - "./data/prepare-tile-upload.sh"
+      - "${_VARIABLE_ID}"
+      - "${_LAYER_ID}"
+
+  - name: gcr.io/cloud-builders/gsutil
+    id: 'upload-to-storage'
     args:
       - "-m"
       - "cp"
       - "-r"
-      - "./upload/${_LAYER_ID}/*"
+      - "/data/upload/${_LAYER_ID}/*"
       - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/"
-timeout: 2000s
+
+options:
+  diskSizeGb: 50
+  volumes:
+  - name: 'vol1'
+    path: '/data'
