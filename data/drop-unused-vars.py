@@ -10,8 +10,8 @@ args = parser.parse_args()
 vars_to_keep = [args.variable, 'lat', 'lon', 'time']
 
 ds = xr.open_dataset(args.file)
-drop_vars = [v for v in ds.variables if v not in ['chlor_a', 'lat', 'lon', 'time']]
+drop_vars = [v for v in ds.variables if v not in vars_to_keep]
 ds_new = ds.drop_vars(drop_vars)
 
 os.remove(args.file)
-ds_new.to_netcdf(args.file, format=ds.attrs['netcdf_file_type'], mode='w')
+ds_new.to_netcdf(args.file, format='NETCDF4_CLASSIC', mode='w')

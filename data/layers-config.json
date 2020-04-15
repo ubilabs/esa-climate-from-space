@@ -30,5 +30,45 @@
       "month": "long",
       "day": "2-digit"
     }
+  },
+  "aerosol.AOD550_mean": {
+    "colorMap": "inferno",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
+  },
+  "cloud.cfc": {
+    "colorMap": "bone",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
+  },
+  "sea_level.local_msl_trend": {
+    "colorMap": "gist_rainbow",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
+  },
+  "sea_surface_salinity.sss": {
+    "colorMap": "inferno",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
+  },
+  "soil_moisture.sm": {
+    "colorMap": "inferno",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
   }
 }
