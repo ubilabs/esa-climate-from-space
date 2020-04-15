@@ -14,11 +14,24 @@
   opacity: 0.9
 
 .overlayContent
-  padding-top: 20%
+  display: flex
+  justify-content: center
+  align-items: center
   width: 60%
-  height: 80%
+  height: 70%
 
 .closeButton
   position: absolute
   top: emCalc(24px)
   right: emCalc(32px)
+
+.logo
+  position: absolute
+  bottom: 1.5em
+  display: flex
+  flex-direction: row
+  justify-content: center
+  width: 100%
+
+  svg
+    fill: $main

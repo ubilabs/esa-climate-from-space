@@ -1,121 +1,69 @@
 import React, {FunctionComponent} from 'react';
+import {FormattedMessage} from 'react-intl';
 
-import {PresenterIcon} from '../icons/presenter-icon';
-import {LanguageIcon} from '../icons/language-icon';
-import {ShareIcon} from '../icons/share-icon';
-import {InfoIcon} from '../icons/info-icon';
-import {ExportIcon} from '../icons/export-icon';
 import LanguageSelector from '../language-selector/language-selector';
 import Button from '../button/button';
 import {CCILogo} from '../icons/cci-logo';
-
-import {MenuItem} from '../../types/menu-item';
+import {PresenterIcon} from '../icons/presenter-icon';
+import {LanguageIcon} from '../icons/language-icon';
+import {InfoIcon} from '../icons/info-icon';
+import {DownloadIcon} from '../icons/download-icon';
 
 import styles from './menu.styl';
 
 const Menu: FunctionComponent = () => {
-  const menuItems: MenuItem[] = [
-    {
-      id: 'modes',
-      icon: PresenterIcon,
-      subItems: [
-        {
-          id: 'presenterMode',
-          link: '/present'
-        },
-        {
-          id: 'showcaseMode',
-          link: '/showcase'
-        }
-      ]
-    },
-    {
-      id: 'language',
-      icon: LanguageIcon
-    },
-    {
-      id: 'share',
-      icon: ShareIcon,
-      subItems: [
-        {
-          id: 'twitter'
-        },
-        {
-          id: 'facebook'
-        },
-        {
-          id: 'whatsApp'
-        },
-        {
-          id: 'copyLink'
-        }
-      ]
-    },
-    {
-      id: 'info',
-      icon: InfoIcon,
-      subItems: [
-        {
-          id: 'presenterMode',
-          link: '/present'
-        },
-        {
-          id: 'showcaseMode',
-          link: '/showcase'
-        }
-      ]
-    },
-    {
-      id: 'export',
-      icon: ExportIcon,
-      subItems: [
-        {
-          id: 'presenterMode',
-          link: '/present'
-        },
-        {
-          id: 'showcaseMode',
-          link: '/showcase'
-        }
-      ]
-    }
-  ];
-
   return (
     <nav className={styles.menuContainer}>
       <ul className={styles.menuList}>
-        {menuItems.map(menuItem => (
-          <li className={styles.menuListItem} key={menuItem.id}>
-            <Button
-              className={styles.menuItemTitle}
-              label={menuItem.id}
-              icon={menuItem.icon}></Button>
-            <ul className={styles.subMenuList}>
-              {menuItem.subItems?.map(subItem => (
-                <li className={styles.subMenuListItem} key={subItem.id}>
-                  {subItem.link ? (
-                    <Button
-                      className={styles.menuButton}
-                      label={subItem.id}
-                      link={subItem.link}
-                    />
-                  ) : (
-                    <Button
-                      className={styles.menuButton}
-                      label={subItem.id}
-                      onClick={() => console.log('placeholder')}
-                    />
-                  )}
-                </li>
-              ))}
-              {menuItem.id === 'language' && <LanguageSelector />}
-            </ul>
-          </li>
-        ))}
+        <li className={styles.menuItemTitle}>
+          <PresenterIcon /> <FormattedMessage id={'modes'} />
+        </li>
+        <li className={styles.menuListItem}>
+          <Button
+            className={styles.menuButton}
+            label={'presenterMode'}
+            link={'/present'}
+          />
+        </li>
+        <li className={styles.menuListItem}>
+          <Button
+            className={styles.menuButton}
+            label={'showcaseMode'}
+            link={'/showcase'}
+          />
+        </li>
+        <li className={styles.subMenuTitle}>
+          <DownloadIcon /> <FormattedMessage id={'offline'} />
+        </li>
+        <li className={styles.menuListItem}>
+          <Button className={styles.menuButton} label={'download'} />
+        </li>
       </ul>
-      <div className={styles.logo}>
-        <CCILogo />
-      </div>
+      <ul className={styles.menuList}>
+        <li className={styles.menuItemTitle}>
+          <LanguageIcon /> <FormattedMessage id={'language'} />
+        </li>
+        <li>
+          <LanguageSelector className={styles.menuListItem} />
+        </li>
+      </ul>
+      <ul className={styles.menuList}>
+        <li className={styles.menuItemTitle}>
+          <InfoIcon /> <FormattedMessage id={'info'} />
+        </li>
+        <li className={styles.menuListItem}>
+          <Button className={styles.menuButton} label={'about'} />
+        </li>
+        <li className={styles.menuListItem}>
+          <Button className={styles.menuButton} label={'EsaWebsite'} />
+        </li>
+        <li className={styles.menuListItem}>
+          <Button className={styles.menuButton} label={'CCIWebsite'} />
+        </li>
+        <li className={styles.menuListItem}>
+          <Button className={styles.menuButton} label={'github'} />
+        </li>
+      </ul>
     </nav>
   );
 };

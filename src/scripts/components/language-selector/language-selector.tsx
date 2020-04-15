@@ -10,7 +10,12 @@ import styles from './language-selector.styl';
 
 const languages = Object.values(Language);
 
-const LanguageSelector: FunctionComponent = () => {
+interface Props {
+  className?: string;
+}
+
+const LanguageSelector: FunctionComponent<Props> = ({className = ''}) => {
+  const classes = `${styles.languageItem} ${className}`;
   const dispatch = useDispatch();
   const setLanguage = (language: Language) =>
     dispatch(setLanguageAction(language));
@@ -18,7 +23,7 @@ const LanguageSelector: FunctionComponent = () => {
   return (
     <ul className={styles.language}>
       {languages.map(language => (
-        <li className={styles.languageItem} key={language}>
+        <li className={classes} key={language}>
           <Button
             className={styles.button}
             key={language}

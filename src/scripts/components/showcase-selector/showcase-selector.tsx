@@ -31,7 +31,7 @@ const ShowcaseSelector: FunctionComponent = () => {
       <Header
         backLink="/"
         backButtonId="backToDataMode"
-        title={intl.formatMessage({id: 'showcaseMode'})}>
+        title={intl.formatMessage({id: 'showcase'})}>
         <FormattedMessage
           id="storiesSelected"
           values={{numberSelected: selectedIds.length}}

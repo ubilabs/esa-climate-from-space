@@ -5,6 +5,7 @@ import Button from '../button/button';
 import {CloseIcon} from '../icons/close-icon';
 
 import styles from './overlay.styl';
+import {CCILogo} from '../icons/cci-logo';
 
 interface Props {
   onClose: () => void;
@@ -21,6 +22,9 @@ const Overlay: FunctionComponent<Props> = ({children, onClose}) => {
         onClick={() => onClose()}
       />
       <div className={styles.overlayContent}>{children}</div>
+      <div className={styles.logo}>
+        <CCILogo />
+      </div>
     </div>
   );
 

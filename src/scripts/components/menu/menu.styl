@@ -2,45 +2,38 @@
 
 .menuContainer
   display: flex
-  flex-direction: column
-  align-items: center
+  flex-direction: row
+  flex-wrap: wrap
+  align-items: flex-start
+  overflow-y: scroll
   height: 90%
   font-family: Arial, Helvetica, sans-serif
 
-.logo
-  position: absolute
-  bottom: emCalc(20px)
-
-  svg
-    fill: $main
-
-.menuList, .subMenuList
+.menuList
   display: flex
-  padding: 0
+  flex-direction: column
+  flex-wrap: wrap
+  overflow-y: auto
+  padding: emCalc(20px)
   color: $textWhite
   list-style: none
 
-.menuItemTitle
-  font-weight: bold
+.menuItemTitle, .subMenuTitle
+  display: flex
+  align-items: center
+  padding: emCalc(10px) 0
   pointer-events: none
 
-.menuList
-  flex-wrap: wrap
-  overflow-y: auto
-  margin: 0
-  padding: 0
+  svg
+    padding-right: emCalc(10px)
+    fill: $textWhite
 
-.subMenuList
-  flex-direction: column
-  padding: emCalc(20px) 0
+.subMenuTitle
+  padding-top: 30px
 
 .menuListItem
-  padding: emCalc(30px)
+  padding: emCalc(10px) 0 emCalc(10px) emCalc(35px)
   color: $textDefault
-
-.subMenuListItem
-  padding: emCalc(5px) emCalc(30px)
-  cursor: pointer
 
 .menuButton
   color: $textDefault
