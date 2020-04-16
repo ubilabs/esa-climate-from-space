@@ -18,7 +18,7 @@ const PresentationSelector: FunctionComponent = () => {
       <Header
         backLink="/"
         backButtonId="backToDataMode"
-        title={intl.formatMessage({id: 'presenterMode'})}>
+        title={intl.formatMessage({id: 'presenter'})}>
         <Button icon={ShareIcon} onClick={() => console.log('placeholder')} />
       </Header>
       <StoryList mode={StoryMode.Present} />
