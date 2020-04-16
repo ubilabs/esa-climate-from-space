@@ -3,6 +3,8 @@ import {useIntl} from 'react-intl';
 
 import StoryList from '../story-list/story-list';
 import Header from '../header/header';
+import {ShareIcon} from '../icons/share-icon';
+import Button from '../button/button';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -16,8 +18,9 @@ const PresentationSelector: FunctionComponent = () => {
       <Header
         backLink="/"
         backButtonId="backToDataMode"
-        title={intl.formatMessage({id: 'presenter'})}
-      />
+        title={intl.formatMessage({id: 'presenter'})}>
+        <Button icon={ShareIcon} onClick={() => console.log('placeholder')} />
+      </Header>
       <StoryList mode={StoryMode.Present} />
     </div>
   );

@@ -19,6 +19,8 @@ import {Slide, Story as StoryType} from '../../types/story';
 import {GlobeProjection} from '../../types/globe-projection';
 
 import styles from './story.styl';
+import Button from '../button/button';
+import {ShareIcon} from '../icons/share-icon';
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
@@ -78,8 +80,9 @@ const Story: FunctionComponent = () => {
         <Header
           backLink={`/${mode.toString()}`}
           backButtonId="backToStories"
-          title={storyListItem.title}
-        />
+          title={storyListItem.title}>
+          <Button icon={ShareIcon} onClick={() => console.log('placeholder')} />
+        </Header>
       )}
       <main className={styles.main}>
         {/* Instead of rendering only the currect slide we map over all slides to
