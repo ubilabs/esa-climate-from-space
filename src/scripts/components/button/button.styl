@@ -19,8 +19,15 @@
   svg + .label
     padding-left: emCalc(7px)
 
-  &:hover, &:focus
+  &:hover
     color: $main
 
     svg
       fill: $main
+
+.disabled
+  color: $textDefault
+  pointer-events: none
+
+  svg
+    fill: $textDefault
