@@ -2,14 +2,14 @@ import React, {FunctionComponent} from 'react';
 
 export const InfoIcon: FunctionComponent = () => (
   <svg
-    width="18"
-    height="18"
-    viewBox="0 0 18 18"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg">
     <path
       fillRule="evenodd"
       clipRule="evenodd"
-      d="M9 1.5C4.86 1.5 1.5 4.86 1.5 9C1.5 13.14 4.86 16.5 9 16.5C13.14 16.5 16.5 13.14 16.5 9C16.5 4.86 13.14 1.5 9 1.5ZM8.25 12.75V8.25H9.75V12.75H8.25ZM8.25 5.25V6.75H9.75V5.25H8.25Z"
+      d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM11 17V11H13V17H11ZM11 7V9H13V7H11Z"
     />
   </svg>
 );
