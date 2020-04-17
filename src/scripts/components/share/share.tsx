@@ -6,17 +6,25 @@ import {InstagramIcon} from '../icons/instagram-icon';
 import {FacebookIcon} from '../icons/facebook-icon';
 import {CopyIcon} from '../icons/copy-icon';
 import {ShareIcon} from '../icons/share-icon';
+import config from '../../config/main';
 
 import styles from './share.styl';
 import {FormattedMessage} from 'react-intl';
 import Button from '../button/button';
 import {CloseIcon} from '../icons/close-icon';
 import Overlay from '../overlay/overlay';
+import {replaceUrlPlaceholders} from '../../libs/replace-url-placeholders';
 
 const Share: FunctionComponent = () => {
   const [showShare, setShowShare] = useState(false);
   const currentUrl = window.location.href;
   const shareUrl = `ESA Climate From Space: ${window.location.href}`;
+  const facebookUrl = replaceUrlPlaceholders(config.api.facebook, {
+    currentUrl
+  });
+  const twitterUrl = replaceUrlPlaceholders(config.api.twitter, {
+    currentUrl
+  });
   const urlInput = document.querySelector('#urlInput') as HTMLInputElement;
   const copyUrl = () => {
     if (navigator.clipboard) {
@@ -48,17 +56,11 @@ const Share: FunctionComponent = () => {
                 <YoutubeIcon />
                 <span>Youtube</span>
               </a>
-              <a
-                href={`https://twitter.com/intent/tweet?url=${currentUrl}&text=test`}
-                target={'blank'}
-                className={styles.button}>
+              <a href={twitterUrl} target={'blank'} className={styles.button}>
                 <TwitterIcon />
                 <span>Twitter</span>
               </a>
-              <a
-                href={`https://www.facebook.com/sharer/sharer.php?url=${currentUrl}&text=test`}
-                target={'blank'}
-                className={styles.button}>
+              <a href={facebookUrl} target={'blank'} className={styles.button}>
                 <FacebookIcon />
                 <span>Facebook</span>
               </a>
