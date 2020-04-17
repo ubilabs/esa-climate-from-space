@@ -8,18 +8,25 @@ import styles from './overlay.styl';
 
 interface Props {
   onClose: () => void;
+  showCloseButton?: boolean;
 }
 
-const Overlay: FunctionComponent<Props> = ({children, onClose}) => {
+const Overlay: FunctionComponent<Props> = ({
+  children,
+  onClose,
+  showCloseButton = true
+}) => {
   const modalElement = document.getElementById('modal');
 
   const Content = (
-    <div className={styles.overlay} onClick={() => onClose()}>
-      <Button
-        icon={CloseIcon}
-        className={styles.closeButton}
-        onClick={() => onClose()}
-      />
+    <div className={styles.overlay}>
+      {showCloseButton && (
+        <Button
+          icon={CloseIcon}
+          className={styles.closeButton}
+          onClick={() => onClose()}
+        />
+      )}
       <div className={styles.overlayContent}>{children}</div>
     </div>
   );
@@ -27,6 +34,7 @@ const Overlay: FunctionComponent<Props> = ({children, onClose}) => {
   if (modalElement) {
     return createPortal(Content, modalElement);
   }
+
   return null;
 };
 
