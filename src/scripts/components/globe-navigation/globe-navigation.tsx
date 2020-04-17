@@ -8,6 +8,7 @@ import {DownloadIcon} from '../icons/download-icon';
 import setGlobeProjectionAction from '../../actions/set-globe-projection';
 import {projectionSelector} from '../../selectors/globe/projection';
 import setFlyToAction from '../../actions/set-fly-to';
+import {globeViewSelector} from '../../selectors/globe/view';
 
 import {GlobeProjection} from '../../types/globe-projection';
 
@@ -17,6 +18,7 @@ const GlobeNavigation: FunctionComponent = () => {
   const dispatch = useDispatch();
   const defaultView = config.globe.view;
   const projectionState = useSelector(projectionSelector);
+  const globecheck = useSelector(globeViewSelector);
   const label =
     projectionState.projection === GlobeProjection.Sphere ? '2D' : '3D';
 
@@ -32,11 +34,12 @@ const GlobeNavigation: FunctionComponent = () => {
   return (
     <div className={styles.globeNavigation}>
       <Button label={label} onClick={() => onProjectionHandler()} />
-      <Button
-        className={styles.compassIcon}
-        icon={CompassIcon}
+      <div
+        className={styles.compass}
         onClick={() => dispatch(setFlyToAction({...defaultView}))}
-      />
+        style={{transform: `rotate(${globecheck.position.longitude}deg)`}}>
+        <CompassIcon />
+      </div>
       <Button
         className={styles.downloadIcon}
         icon={DownloadIcon}
