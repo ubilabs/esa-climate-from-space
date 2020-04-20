@@ -18,6 +18,12 @@
     "link": "http://..."
   },
   {
+    "id": "aerosol.AOD550_mean",
+    "name": "Aerosol optical thickness 550 nm (from Cate)",
+    "description": "This is the Aerosol AOD550_mean",
+    "link": "http://..."
+  },
+  {
     "id": "oc.chlor_a",
     "name": "Ocean Color (from Cate)",
     "description": "This is the Ocean Color",

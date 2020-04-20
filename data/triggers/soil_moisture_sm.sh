@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-TIMEOUT=12000
-LAYER_ID="sst.analysed_sst"
-VARIABLE_ID="analysed_sst"
+TIMEOUT=8000
+LAYER_ID="soil_moisture.sm"
+VARIABLE_ID="sm"
 VERSION="test"
-ZOOM_LEVELS="0-4"
+ZOOM_LEVELS="0-3"
 MIN="auto"
 MAX="auto"
-MACHINE_TYPE="N1_HIGHCPU_32"
+MACHINE_TYPE="N1_HIGHCPU_8"
 
 if [ ! -f ./package.json ]; then
     echo "You have to be in the root folder of the project to run this script!"

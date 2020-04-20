@@ -70,5 +70,37 @@
       "month": "long",
       "day": "2-digit"
     }
+  },
+  "ozone.atmosphere_mole_content_of_ozone": {
+    "colorMap": "jet",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
+  },
+  "land_cover.lccs_class": {
+    "colorMap": "gist_rainbow",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
+  },
+  "sea_state.swh_mean": {
+    "colorMap": "inferno",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
+  },
+  "sea_ice.ice_conc": {
+    "colorMap": "bone",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
   }
 }

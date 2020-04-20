@@ -14,8 +14,8 @@ if [ ! -f ./package.json ]; then
     exit 1
 fi
 
+# --machine-type=$MACHINE_TYPE \
 gcloud builds submit --config ./ci/cloudbuild-tiles.yaml \
-  --machine-type=$MACHINE_TYPE \
   --timeout=$TIMEOUT \
   --substitutions _LAYER_ID=$LAYER_ID,_VARIABLE_ID=$VARIABLE_ID,_ZOOM_LEVELS=$ZOOM_LEVELS,_VERSION=$VERSION,_MIN=$MIN,_MAX=$MAX \
   .
