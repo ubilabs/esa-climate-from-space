@@ -7,10 +7,10 @@ import Menu from '../menu/menu';
 import {LayersIcon} from '../icons/layers-icon';
 import {StoryIcon} from '../icons/story-icon';
 import showLayerSelectorAction from '../../actions/show-layer-selector';
+import Share from '../share/share';
+import {MenuIcon} from '../icons/menu-icon';
 
 import styles from './navigation.styl';
-import {MenuIcon} from '../icons/menu-icon';
-import {ShareIcon} from '../icons/share-icon';
 
 const Navigation: FunctionComponent = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -30,11 +30,7 @@ const Navigation: FunctionComponent = () => {
         onClick={() => dispatch(showLayerSelectorAction(true))}
         icon={LayersIcon}
       />
-      <Button
-        className={styles.button}
-        icon={ShareIcon}
-        onClick={() => console.log('placeholder')}
-      />
+      <Share />
       <Button
         className={styles.button}
         icon={MenuIcon}

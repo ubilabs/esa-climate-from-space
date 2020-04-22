@@ -13,14 +13,13 @@ import StoryVideo from '../story-video/story-video';
 import setGlobeProjectionAction from '../../actions/set-globe-projection';
 import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
 import setGlobeTimeAction from '../../actions/set-globe-time';
+import Share from '../share/share';
 
 import {StoryMode} from '../../types/story-mode';
 import {Slide, Story as StoryType} from '../../types/story';
 import {GlobeProjection} from '../../types/globe-projection';
 
 import styles from './story.styl';
-import Button from '../button/button';
-import {ShareIcon} from '../icons/share-icon';
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
@@ -33,7 +32,7 @@ const Story: FunctionComponent = () => {
     selectedStory,
     storyListItem
   } = storyParams;
-
+  const storyMode = mode === StoryMode.Stories;
   const storyClasses = cx(
     styles.story,
     storyParams?.mode === StoryMode.Present && styles.presentStory,
@@ -81,7 +80,7 @@ const Story: FunctionComponent = () => {
           backLink={`/${mode.toString()}`}
           backButtonId="backToStories"
           title={storyListItem.title}>
-          <Button icon={ShareIcon} onClick={() => console.log('placeholder')} />
+          {storyMode && <Share />}
         </Header>
       )}
       <main className={styles.main}>
