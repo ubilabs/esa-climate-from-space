@@ -50,7 +50,9 @@ const Share: FunctionComponent = () => {
               className={styles.closeButton}
               onClick={() => setShowShare(false)}
             />
-            <h1 className={styles.title}>Share with the world</h1>
+            <h1 className={styles.title}>
+              <FormattedMessage id="share" />
+            </h1>
             <div className={styles.shareButtons}>
               <a
                 href={twitterUrl}
