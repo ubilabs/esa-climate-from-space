@@ -7,7 +7,7 @@ import {CloseIcon} from '../icons/close-icon';
 import styles from './overlay.styl';
 
 interface Props {
-  onClose: () => void;
+  onClose?: () => void;
   showCloseButton?: boolean;
 }
 
@@ -24,7 +24,7 @@ const Overlay: FunctionComponent<Props> = ({
         <Button
           icon={CloseIcon}
           className={styles.closeButton}
-          onClick={() => onClose()}
+          onClick={() => onClose && onClose()}
         />
       )}
       <div className={styles.overlayContent}>{children}</div>

@@ -1,4 +1,5 @@
 import {GlobeState} from '../reducers/globe/index';
+
 import {GlobeProjection} from '../types/globe-projection';
 
 const globeState: GlobeState = {
@@ -33,11 +34,13 @@ export default {
     storyOfflinePackage: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}/package.zip`,
     storyMediaBase: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}`,
     stories: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/stories-{lang}.json`,
-    story: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}/{id}-{lang}.json`,
+    story: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}/{id}-{lang}.json`
+  },
+  globe: globeState,
+  share: {
     facebook:
       'https://www.facebook.com/sharer/sharer.php?u={currentUrl}&text=ESAClimateFromSpace',
     twitter:
       'http://twitter.com/intent/tweet?status=ESA%20Climate%20From%20Space&url={currentUrl}'
-  },
-  globe: globeState
+  }
 };
