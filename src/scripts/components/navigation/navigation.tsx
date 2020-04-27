@@ -7,6 +7,8 @@ import Menu from '../menu/menu';
 import {LayersIcon} from '../icons/layers-icon';
 import {StoryIcon} from '../icons/story-icon';
 import showLayerSelectorAction from '../../actions/show-layer-selector';
+import Share from '../share/share';
+import {MenuIcon} from '../icons/menu-icon';
 
 import styles from './navigation.styl';
 
@@ -28,9 +30,10 @@ const Navigation: FunctionComponent = () => {
         onClick={() => dispatch(showLayerSelectorAction(true))}
         icon={LayersIcon}
       />
+      <Share />
       <Button
         className={styles.button}
-        label="more"
+        icon={MenuIcon}
         onClick={() => setShowMenu(true)}
       />
       {showMenu && (

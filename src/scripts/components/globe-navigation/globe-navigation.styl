@@ -7,9 +7,13 @@
   z-index: 1
   display: flex
 
-.compassIcon svg, .downloadIcon svg
-  fill: $textWhite
-
 .compassIcon
   padding-right: emCalc(16px)
   padding-left: emCalc(25px)
+
+.compassIcon svg, .downloadIcon svg
+  fill: $textWhite
+
+.compassIcon svg
+  &:hover
+    transform: rotate(-45deg)

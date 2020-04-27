@@ -25,7 +25,8 @@ steps:
         '--single-branch',
         '--branch',
         '${BRANCH_NAME}',
-        '--depth 5',
+        '--depth',
+        '5',
         'https://github.com/ubilabs/esa-climate-from-space',
         'repo'
       ]

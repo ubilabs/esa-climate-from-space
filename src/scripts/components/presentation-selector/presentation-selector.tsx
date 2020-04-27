@@ -3,6 +3,7 @@ import {useIntl} from 'react-intl';
 
 import StoryList from '../story-list/story-list';
 import Header from '../header/header';
+import Share from '../share/share';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -16,8 +17,9 @@ const PresentationSelector: FunctionComponent = () => {
       <Header
         backLink="/"
         backButtonId="backToDataMode"
-        title={intl.formatMessage({id: 'presenterMode'})}
-      />
+        title={intl.formatMessage({id: 'presenter'})}>
+        <Share />
+      </Header>
       <StoryList mode={StoryMode.Present} />
     </div>
   );

@@ -13,7 +13,6 @@ const LayerInfo: FunctionComponent<Props> = ({layer}) => (
     <span className={styles.layerType}>Layertype</span>
     <div className={styles.layerTitle}>
       <h1>{layer.name}</h1>
-      <div className={styles.icon}></div>
     </div>
     <p className={styles.description}>
       {layer.description} Placeholder: Lorem ipsum dolor sit amet consectetur

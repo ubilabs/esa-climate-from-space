@@ -3,6 +3,7 @@ import {useIntl} from 'react-intl';
 
 import StoryList from '../story-list/story-list';
 import Header from '../header/header';
+import Share from '../share/share';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -16,8 +17,9 @@ const StoriesSelector: FunctionComponent = () => {
       <Header
         backLink="/"
         backButtonId="backToDataMode"
-        title={intl.formatMessage({id: 'storyMode'})}
-      />
+        title={intl.formatMessage({id: 'storyMode'})}>
+        <Share />
+      </Header>
       <StoryList mode={StoryMode.Stories} />
     </div>
   );

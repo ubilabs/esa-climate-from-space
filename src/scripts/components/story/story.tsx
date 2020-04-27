@@ -13,6 +13,7 @@ import StoryVideo from '../story-video/story-video';
 import setGlobeProjectionAction from '../../actions/set-globe-projection';
 import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
 import setGlobeTimeAction from '../../actions/set-globe-time';
+import Share from '../share/share';
 
 import {StoryMode} from '../../types/story-mode';
 import {Slide, Story as StoryType} from '../../types/story';
@@ -31,7 +32,7 @@ const Story: FunctionComponent = () => {
     selectedStory,
     storyListItem
   } = storyParams;
-
+  const storyMode = mode === StoryMode.Stories;
   const storyClasses = cx(
     styles.story,
     storyParams?.mode === StoryMode.Present && styles.presentStory,
@@ -78,8 +79,9 @@ const Story: FunctionComponent = () => {
         <Header
           backLink={`/${mode.toString()}`}
           backButtonId="backToStories"
-          title={storyListItem.title}
-        />
+          title={storyListItem.title}>
+          {storyMode && <Share />}
+        </Header>
       )}
       <main className={styles.main}>
         {/* Instead of rendering only the currect slide we map over all slides to
