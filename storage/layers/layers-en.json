@@ -1,152 +1,86 @@
 [
   {
     "id": "fire.burned_area",
-    "name": "Burned Area (from Cate)",
-    "description": "This is the Burned Area",
+    "name": "Fire - Burned Area",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
     "id": "soilmoisture.sm",
-    "name": "Soil Moisture (from Cate)",
-    "description": "This is the Soil Moisture",
+    "name": "Soil Moisture - SM",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
     "id": "sst.analysed_sst",
-    "name": "SST (from Cate)",
-    "description": "This is the Sea Surface Temperature",
+    "name": "SST - Analysed SST",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
     "id": "oc.chlor_a",
-    "name": "Ocean Color (from Cate)",
-    "description": "This is the Ocean Color",
+    "name": "Ocean Color - Chlor_a",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
-    "id": "clouds",
-    "name": "Cloud Concentration",
-    "description": "This is the second SubLayer",
+    "id": "aerosol.AOD550_mean",
+    "name": "Aerosol AOD550_mean",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
-    "id": "aerosol",
-    "name": "Aerosol",
-    "description": "This is the Aerosol Layer",
+    "id": "cloud.cfc",
+    "name": "Clouds - CFC",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
-    "id": "ais",
-    "name": "Antarctic Ice Sheet",
-    "description": "This is the Antarctic Ice Sheet Layer",
+    "id": "sea_level.sla",
+    "name": "Sea Level - sla",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
-    "id": "biomass",
-    "name": "Biomass",
-    "description": "This is the dritte Layer",
+    "id": "ozone.atmosphere_mole_content_of_ozone",
+    "name": "Ozone - Atmosphere Mole",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
-    "id": "fire",
-    "name": "Fire",
-    "description": "This is the Fire Layer",
+    "id": "sea_state.swh_mean",
+    "name": "Sea State - swh mean",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
-    "id": "greenhouseGases",
-    "name": "Greenhouse Gases",
-    "description": "This is the Greenhouse Gases Layer",
+    "id": "sea_ice_sh.ice_conc",
+    "name": "Sea Ice SH - Ice Conc",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
-    "id": "gis",
-    "name": "Greenland Ice Sheet",
-    "description": "This is the Greenland Ice Sheet Layer",
+    "id": "sea_ice_nh.ice_conc",
+    "name": "Sea Ice NH - Ice Conc",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
-    "id": "hrl",
-    "name": "HR Landcover",
-    "description": "This is the Greenhouse Gases Layer",
+    "id": "greenland_ice.sec",
+    "name": "Greenland Ice Sheet - SEC",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
-    "id": "lakes",
-    "name": "Lakes",
-    "description": "This is the Lakes Layer",
+    "id": "permafrost.pfr",
+    "name": "Permafrost - PFR",
+    "description": "This is the ...",
     "link": "http://..."
   },
   {
-    "id": "landCover",
-    "name": "Land Cover",
-    "description": "This is the Land Cover Layer",
-    "link": "http://..."
-  },
-  {
-    "id": "lst",
-    "name": "Land Surface Temperature",
-    "description": "This is the Land Surface Temperature Layer",
-    "link": "http://..."
-  },
-  {
-    "id": "oceanColour",
-    "name": "Ocean Colour",
-    "description": "This is the Ocean Colour Layer",
-    "link": "http://..."
-  },
-  {
-    "id": "ozone",
-    "name": "Ozone",
-    "description": "This is the Ozone Layer",
-    "link": "http://..."
-  },
-  {
-    "id": "permafrost",
-    "name": "Permafrost",
-    "description": "This is the Permafrost Layer",
-    "link": "http://..."
-  },
-  {
-    "id": "seaIce",
-    "name": "Sea Ice",
-    "description": "This is the Sea Ice Layer",
-    "link": "http://..."
-  },
-  {
-    "id": "seaLevel",
-    "name": "Sea Level",
-    "description": "This is the Sea Level Layer",
-    "link": "http://..."
-  },
-  {
-    "id": "seaState",
-    "name": "Sea State",
-    "description": "This is the Sea State Layer",
-    "link": "http://..."
-  },
-  {
-    "id": "seaSurfaceSalinity",
-    "name": "Sea Surface Salinity",
-    "description": "This is the Sea Surface Salinity Layer",
-    "link": "http://..."
-  },
-  {
-    "id": "snow",
-    "name": "Snow",
-    "description": "This is the Snow Layer",
-    "link": "http://..."
-  },
-  {
-    "id": "soilMoisture",
-    "name": "Soil Moisture",
-    "description": "This is the Soil Moisture Layer",
-    "link": "http://..."
-  },
-  {
-    "id": "waterVapour",
-    "name": "Water Vapour",
-    "description": "This is the Water Vapour Layer",
+    "id": "land_cover.lccs_class",
+    "name": "Land Cover - lccs_class",
+    "description": "This is the ...",
     "link": "http://..."
   }
 ]

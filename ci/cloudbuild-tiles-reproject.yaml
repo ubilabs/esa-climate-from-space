@@ -1,0 +1,46 @@
+steps:
+  - name: gcr.io/cloud-builders/gsutil
+    id: 'download-netcdfs'
+    entrypoint: '/bin/bash'
+    args:
+      - "-c"
+      - "mkdir /data/netcdfs && gsutil -m cp -r gs://esa-cfs-cate-data/${_LAYER_ID}/*.nc /data/netcdfs/"
+
+  - name: gcr.io/esa-climate-from-space/cate:latest
+    id: 'cate-export-data-cube'
+    entrypoint: '/bin/bash'
+    args:
+      - "-c"
+      - "conda run -n cate-env python data/write-zarr.py --layer ${_LAYER_ID} --variable ${_VARIABLE_ID} --zoom-levels ${_ZOOM_LEVELS} --min ${_MIN} --max ${_MAX}"
+
+  - name: geographica/gdal2:2.4.0
+    id: 'gdal-generate-tiles'
+    entrypoint: '/bin/bash'
+    args:
+       - "./data/gdal-reproject.sh"
+       - "${_VARIABLE_ID}"
+       - "${_MIN_LON} ${_MIN_LAT} ${_MAX_LON} ${_MAX_LAT}"
+       - "${_ZOOM_LEVELS}"
+
+  - name: gcr.io/esa-climate-from-space/tile-mover
+    id: 'prepare-upload'
+    entrypoint: '/bin/bash'
+    args:
+      - "./data/prepare-tile-upload.sh"
+      - "${_VARIABLE_ID}"
+      - "${_LAYER_ID}"
+
+  - name: gcr.io/cloud-builders/gsutil
+    id: 'upload-to-storage'
+    args:
+      - "-m"
+      - "cp"
+      - "-r"
+      - "/data/upload/${_LAYER_ID}/*"
+      - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/"
+
+options:
+  diskSizeGb: 50
+  volumes:
+  - name: 'vol1'
+    path: '/data'
