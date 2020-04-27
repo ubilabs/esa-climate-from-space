@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 TIMEOUT=8000
-LAYER_ID="sea_ice.ice_conc"
-VARIABLE_ID="ice_conc"
-VERSION="test"
+LAYER_ID="sea_level.sla"
+VARIABLE_ID="sla"
+VERSION="0.4.1"
 ZOOM_LEVELS="0-3"
 MIN="auto"
 MAX="auto"
