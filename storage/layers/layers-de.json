@@ -82,5 +82,11 @@
     "name": "Land Cover - lccs_class",
     "description": "Das ist der ...",
     "link": "http://..."
+  },
+  {
+    "id": "sea_surface_salinity.sss",
+    "name": "Sea Surface Salinity - sss",
+    "description": "Das ist der ...",
+    "link": "http://..."
   }
 ]

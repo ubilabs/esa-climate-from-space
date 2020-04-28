@@ -4,7 +4,7 @@ BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/sea_surface_salinity/data/v01.8
 START_DATE=2010-01-01
 OUTPUT_FODLER=./download
 
-for i in {0..3}
+for i in {0..5}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_DATE=$(date +%Y%m%d -d "$START_DATE + $i month")
