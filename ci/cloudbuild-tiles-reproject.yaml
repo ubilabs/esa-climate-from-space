@@ -19,8 +19,10 @@ steps:
     args:
        - "./data/gdal-reproject.sh"
        - "${_VARIABLE_ID}"
-       - "${_MIN_LON} ${_MIN_LAT} ${_MAX_LON} ${_MAX_LAT}"
        - "${_ZOOM_LEVELS}"
+       - "${_MIN_LON} ${_MIN_LAT} ${_MAX_LON} ${_MAX_LAT}"
+       - "${_SOURCE_PROJECTION}"
+       - "${_SOURCE_MIN_X} ${_SOURCE_MAX_Y} ${_SOURCE_MAX_X} ${_SOURCE_MIN_Y}"
 
   - name: gcr.io/esa-climate-from-space/tile-mover
     id: 'prepare-upload'
@@ -40,6 +42,7 @@ steps:
       - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/"
 
 options:
+  substitution_option: 'ALLOW_LOOSE'
   diskSizeGb: 50
   volumes:
   - name: 'vol1'
