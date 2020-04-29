@@ -28,6 +28,7 @@ for file in $(find $FOLDER -name *.nc -type f | sort -n); do
   gdalwarp \
     -t_srs EPSG:4326 \
     -te $OUT_BOUNDS \
+    -r near \
     NETCDF:\"$file\":$VARIABLE \
     ./tmp.tif
 
