@@ -45,6 +45,7 @@ steps:
     id: 'upload-to-storage'
     args:
       - "-m"
+      - "-q"
       - "cp"
       - "-r"
       - "/data/upload/${_LAYER_ID}/*"

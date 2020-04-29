@@ -88,5 +88,11 @@
     "name": "Sea Surface Salinity - sss",
     "description": "Das ist der ...",
     "link": "http://..."
+  },
+  {
+    "id": "snow.swe",
+    "name": "Snow - swe",
+    "description": "Das ist der ...",
+    "link": "http://..."
   }
 ]

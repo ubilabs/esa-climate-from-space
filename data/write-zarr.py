@@ -61,7 +61,7 @@ if args.output != None:
   print(f'Written zarr in {time.time() - start_time}s')
 
   print('Writing world file...')
-  utility.write_world_file(shape)
+  utility.write_world_file(shape, ds.attrs)
 
   print('Writing style file...')
   utility.write_style_file(args.layer_id, args.variable_id, min, max)

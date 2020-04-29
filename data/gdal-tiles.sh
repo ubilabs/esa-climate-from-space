@@ -17,6 +17,7 @@ for file in $(find /data/images/* -name 0.png | sort -n); do
     --no-kml \
     --webviewer=none \
     --resampling near \
+    --tmscompatible \
     --s_srs EPSG:4326 \
     --processes=8 \
      --quiet \
