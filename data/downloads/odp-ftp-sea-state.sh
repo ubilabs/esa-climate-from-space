@@ -16,4 +16,5 @@ do
   curl --silent $FTP_URL > $FILENAME
 
   python ./data/drop-unused-vars.py --file $FILENAME --variable swh_mean
+  python ./data/mask-values.py --file $FILENAME --variable swh_mean --max 100
 done
