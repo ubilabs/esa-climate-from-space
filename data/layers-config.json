@@ -48,7 +48,7 @@
     }
   },
   "sea_surface_salinity.sss": {
-    "colorMap": "inferno",
+    "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -80,7 +80,7 @@
     }
   },
   "sea_state.swh_mean": {
-    "colorMap": "inferno",
+    "colorMap": "viridis",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -113,6 +113,14 @@
   },
   "permafrost.pfr": {
     "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
+  },
+  "snow.swe": {
+    "colorMap": "ocean",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
