@@ -23,17 +23,30 @@ def write_style_file(layer_id, variable_id, min, max):
 
   print(content)
 
-def write_world_file(shape):
-  lon_res = 360 / shape[2]
-  lat_res = 180 / shape[1]
+def write_world_file(shape, attributes):
+  lat_min = -90
+  lat_max = 90
+  lon_min = -180
+  lon_max = 180
+
+  try:
+    lat_min = attributes['geospatial_lat_min']
+    lat_max = attributes['geospatial_lat_max']
+    lon_min = attributes['geospatial_lon_min']
+    lon_max = attributes['geospatial_lon_max']
+  except KeyError:
+    print("Write Worldfile: Could not read geospatil info using defauls!")
+
+  lon_res = (abs(lon_min) + abs(lon_max)) / shape[2]
+  lat_res = (abs(lat_min) + abs(lat_max)) / shape[1]
 
   content = """{a}\n{b}\n{c}\n{d}\n{e}\n{f}""".format(
-    a = lon_res * 2,
+    a = lon_res,
     b = 0,
     c = 0,
-    d = lat_res * -2,
-    e = -180 + lon_res,
-    f = 270 - lat_res
+    d = lat_res * -1,
+    e = lon_min + (lon_res / 2),
+    f = lat_max - (lat_res / 2)
   )
 
   with open('./worldfile.wld', 'w') as f:

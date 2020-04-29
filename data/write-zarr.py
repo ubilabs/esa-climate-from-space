@@ -49,22 +49,24 @@ except ValueError:
 # clip values here so that we don't have to pass min/max to xcube
 data_array = data_array.clip(min, max)
 
-# re-chunk to full size chunks so that xcube automatically creates full size images
-shape = data_array.shape
-data_array = data_array.chunk({'lon': shape[2], 'lat': shape[1]})
+if args.output != None:
+  # re-chunk to full size chunks so that xcube automatically creates full size images
+  shape = data_array.shape
+  data_array = data_array.chunk({'lon': shape[2], 'lat': shape[1]})
 
-# write zarr file to disk
-start_time = time.time()
-print('Writing zarr file...')
-data_array.to_dataset().to_zarr(args.output)
-print(f'Written zarr in {time.time() - start_time}s')
+  # write zarr file to disk
+  start_time = time.time()
+  print('Writing zarr file...')
+  data_array.to_dataset().to_zarr(args.output)
+  print(f'Written zarr in {time.time() - start_time}s')
 
-print('Writing style file...')
-utility.write_style_file(args.layer_id, args.variable_id, min, max)
+  print('Writing world file...')
+  utility.write_world_file(shape, ds.attrs)
 
-print('Writing world file...')
-utility.write_world_file(shape)
+  print('Writing style file...')
+  utility.write_style_file(args.layer_id, args.variable_id, min, max)
 
+# always write metadata file
 print('Writing metadata file...')
 total_zoom_levels = int(zoom_levels[1]) + 1
 utility.write_metadata_file(
@@ -76,6 +78,3 @@ utility.write_metadata_file(
   min,
   max
 )
-
-
-

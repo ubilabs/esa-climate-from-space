@@ -11,27 +11,18 @@ steps:
     entrypoint: '/bin/bash'
     args:
       - "-c"
-      - "conda run -n cate-env python data/write-zarr.py --layer ${_LAYER_ID} --variable ${_VARIABLE_ID} --zoom-levels ${_ZOOM_LEVELS} --min ${_MIN} --max ${_MAX} --output /data/dataset.zarr"
-
-  - name: gcr.io/esa-climate-from-space/xcube:latest
-    id: 'xcube-generate-full-images'
-    entrypoint: '/bin/bash'
-    args:
-      - "-c"
-      - "conda run -n xcube xcube tile --verbose --config ./style.yaml --style cfs --output /data/images /data/dataset.zarr"
-
-  - name: dpokidov/imagemagick:latest-stretch
-    id: 'imagemagick-resize'
-    entrypoint: '/bin/bash'
-    args:
-      - "./data/resize-images.sh"
+      - "conda run -n cate-env python data/write-zarr.py --layer ${_LAYER_ID} --variable ${_VARIABLE_ID} --zoom-levels ${_ZOOM_LEVELS} --min ${_MIN} --max ${_MAX}"
 
   - name: geographica/gdal2:2.4.0
     id: 'gdal-generate-tiles'
     entrypoint: '/bin/bash'
     args:
-       - "./data/gdal-tiles.sh"
+       - "./data/gdal-reproject.sh"
+       - "${_VARIABLE_ID}"
        - "${_ZOOM_LEVELS}"
+       - "${_MIN_LON} ${_MIN_LAT} ${_MAX_LON} ${_MAX_LAT}"
+       - "${_SOURCE_PROJECTION}"
+       - "${_SOURCE_MIN_X} ${_SOURCE_MAX_Y} ${_SOURCE_MAX_X} ${_SOURCE_MIN_Y}"
 
   - name: gcr.io/esa-climate-from-space/tile-mover
     id: 'prepare-upload'
@@ -52,6 +43,7 @@ steps:
       - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/"
 
 options:
+  substitution_option: 'ALLOW_LOOSE'
   diskSizeGb: 50
   volumes:
   - name: 'vol1'
