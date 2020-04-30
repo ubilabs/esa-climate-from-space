@@ -18,7 +18,7 @@ const GlobeNavigation: FunctionComponent = () => {
   const dispatch = useDispatch();
   const defaultView = config.globe.view;
   const projectionState = useSelector(projectionSelector);
-  const globecheck = useSelector(globeViewSelector);
+  const globePosition = useSelector(globeViewSelector);
   const label =
     projectionState.projection === GlobeProjection.Sphere ? '2D' : '3D';
 
@@ -37,7 +37,7 @@ const GlobeNavigation: FunctionComponent = () => {
       <div
         className={styles.compass}
         onClick={() => dispatch(setFlyToAction({...defaultView}))}
-        style={{transform: `rotate(${globecheck.position.longitude}deg)`}}>
+        style={{transform: `rotate(${globePosition.position.latitude}deg)`}}>
         <CompassIcon />
       </div>
       <Button
