@@ -8,7 +8,6 @@ import {DownloadIcon} from '../icons/download-icon';
 import setGlobeProjectionAction from '../../actions/set-globe-projection';
 import {projectionSelector} from '../../selectors/globe/projection';
 import setFlyToAction from '../../actions/set-fly-to';
-import {globeViewSelector} from '../../selectors/globe/view';
 
 import {GlobeProjection} from '../../types/globe-projection';
 
