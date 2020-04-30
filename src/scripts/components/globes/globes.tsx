@@ -42,10 +42,15 @@ const Globes: FunctionComponent = () => {
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
   const flyTo = useSelector(flyToSelector);
-  const onChangeHandler = useCallback(
-    (view: GlobeView) => setCurrentView(view),
-    []
-  );
+  const onChangeHandler = useCallback((view: GlobeView) => {
+    setCurrentView(view);
+    // setting css variable for compass icon
+    document.documentElement.style.setProperty(
+      '--globe-latitude',
+      `${view.position.latitude}deg`
+    );
+  }, []);
+
   const onMoveEndHandler = useCallback(
     (view: GlobeView) => dispatch(setGlobeViewAction(view)),
     [dispatch]

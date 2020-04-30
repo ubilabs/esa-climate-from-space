@@ -32,11 +32,11 @@ const GlobeNavigation: FunctionComponent = () => {
   return (
     <div className={styles.globeNavigation}>
       <Button label={label} onClick={() => onProjectionHandler()} />
-      <Button
-        className={styles.compassIcon}
-        icon={CompassIcon}
-        onClick={() => dispatch(setFlyToAction({...defaultView}))}
-      />
+      <div
+        className={styles.compass}
+        onClick={() => dispatch(setFlyToAction({...defaultView}))}>
+        <CompassIcon />
+      </div>
       <Button
         className={styles.downloadIcon}
         icon={DownloadIcon}
