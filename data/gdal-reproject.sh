@@ -7,7 +7,7 @@ SOURCE_PROJECTION=$4
 SOURCE_BOUNDS=$5
 TRIMMED_SOURCE_BOUNDS=$(echo $SOURCE_BOUNDS | sed 's/ *$//g')
 FOLDER=/data/netcdfs/
-counter=0
+timestamp_counter=0
 
 for file in $(find $FOLDER -name *.nc -type f | sort -n); do
   echo "--------------"
@@ -29,6 +29,8 @@ for file in $(find $FOLDER -name *.nc -type f | sort -n); do
     -t_srs EPSG:4326 \
     -te $OUT_BOUNDS \
     -r near \
+    --config GDAL_CACHEMAX 90% \
+    -co compress=LZW \
     NETCDF:\"$file\":$VARIABLE \
     ./tmp.tif
 
@@ -36,6 +38,8 @@ for file in $(find $FOLDER -name *.nc -type f | sort -n); do
     color-relief \
     ./tmp.tif \
     ./data/gdal-colors/colors-$VARIABLE.txt \
+    --config GDAL_CACHEMAX 90% \
+    -co compress=LZW \
     -alpha ./colored.tif
 
   gdal2tiles.py \
@@ -46,12 +50,12 @@ for file in $(find $FOLDER -name *.nc -type f | sort -n); do
     --webviewer=none \
     --resampling near \
     --s_srs EPSG:4326 \
-    ./colored.tif /data/images/$VARIABLE/$counter
+    ./colored.tif /data/images/$VARIABLE/$timestamp_counter
 
   rm ./tmp.tif
   rm ./colored.tif
 
-  counter=$((counter+1))
+  timestamp_counter=$((timestamp_counter+1))
 done
 
 

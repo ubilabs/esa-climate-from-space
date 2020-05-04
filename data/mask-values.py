@@ -20,4 +20,4 @@ if args.max != None:
   ds[args.variable] = da.where(da < float(args.max))
 
 os.remove(args.file)
-ds.to_netcdf(args.file, format='NETCDF4_CLASSIC', mode='w')
+ds.to_netcdf(args.file, format='NETCDF4', mode='w')
