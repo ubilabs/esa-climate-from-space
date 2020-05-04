@@ -7,13 +7,16 @@
   z-index: 1
   display: flex
 
-.compassIcon
-  padding-right: emCalc(16px)
-  padding-left: emCalc(25px)
+.compass
+  margin: 0 emCalc(15px)
+  width: 24px
+  height: 24px
+  transition: all 0.5s ease-out
+  transform: rotate(var(--globe-latitude))
 
-.compassIcon svg, .downloadIcon svg
-  fill: $textWhite
-
-.compassIcon svg
+.compass svg
   &:hover
-    transform: rotate(-45deg)
+    fill: $main
+
+.downloadIcon svg
+  fill: $textWhite
