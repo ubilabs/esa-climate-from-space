@@ -24,7 +24,7 @@ export function getLayerTileUrl(
   const url =
     isElectron() && isOffline() ? getOfflineTilesUrl() : config.api.layerTiles;
 
-  const timeIndex = getLayerTime(time, layer.timestamps).toString();
+  const timeIndex = getLayerTimeIndex(time, layer.timestamps).toString();
   return replaceUrlPlaceholders(url, {
     id: layer.id,
     timeIndex
@@ -35,16 +35,27 @@ export function getLayerTileUrl(
  * Returns the best matching time of all layer timestamps
  * based on the current global time
  */
-function getLayerTime(sliderTime: number, timestamps: string[]): number {
+export function getLayerTimeIndex(
+  sliderTime: number,
+  timestamps: string[]
+): number {
+  let minDiff = Infinity;
   let index = timestamps.length - 1;
 
   for (let i = timestamps.length - 1; i >= 0; i--) {
-    const layerTime = Number(new Date(timestamps[i]));
+    const tickTime = Number(new Date(timestamps[i]));
+    const diff = Math.abs(sliderTime - tickTime);
 
-    if (sliderTime >= layerTime) {
+    if (diff < minDiff && tickTime <= sliderTime) {
+      minDiff = diff;
       index = i;
-      break;
     }
+  }
+
+  const firstTimestamp = Number(new Date(timestamps[0]));
+
+  if (sliderTime <= firstTimestamp) {
+    index = 0;
   }
 
   return index;

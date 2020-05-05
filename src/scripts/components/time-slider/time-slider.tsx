@@ -16,21 +16,21 @@ import setGlobeTime from '../../actions/set-globe-time';
 import {getTimeRanges} from '../../libs/get-time-ranges';
 import {State} from '../../reducers';
 import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
-
-import {TimeRange} from '../../types/time-range';
+import {getLayerTimeIndex} from '../../libs/get-layer-tile-url';
+import TimeSliderRange from '../time-slider-range/time-slider-range';
 
 import styles from './time-slider.styl';
 
 // debounce the time update
 const DELAY = 200;
 
+// eslint-disable-next-line complexity
 const TimeSlider: FunctionComponent = () => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const {mainId, compareId} = selectedLayerIds;
   const dispatch = useDispatch();
   const language = useSelector(languageSelector);
   const globeTime = useSelector(timeSelector);
-
   const [time, setTime] = useState(globeTime);
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const mainLayerDetails = useSelector((state: State) =>
@@ -52,8 +52,26 @@ const TimeSlider: FunctionComponent = () => {
     () => getTimeRanges(mainLayerDetails, compareLayerDetails),
     [mainLayerDetails, compareLayerDetails]
   );
-  const timestampsAvailable = combined.timestamps.length > 0;
-  const totalRange = combined.max - combined.min;
+  const timeIndexMain = useMemo(
+    () => getLayerTimeIndex(time, rangeMain?.timestamps || []),
+    [time, rangeMain]
+  );
+  const timeIndexCompare = useMemo(
+    () => getLayerTimeIndex(time, rangeCompare?.timestamps || []),
+    [time, rangeCompare]
+  );
+  const timeSelectedMain =
+    rangeMain && new Date(rangeMain.timestamps[timeIndexMain]);
+  const timeSelectedCompare =
+    rangeCompare && new Date(rangeCompare.timestamps[timeIndexCompare]);
+
+  // get the label time - the tick time which is closest to the slider's time
+  const timeDiffMain = Math.abs(Number(timeSelectedMain) - time);
+  const timeDiffCompare = Math.abs(Number(timeSelectedCompare) - time);
+  const labelTime =
+    typeof timeDiffCompare === 'number' && timeDiffCompare < timeDiffMain
+      ? timeSelectedCompare
+      : timeSelectedMain;
 
   // update app state
   const debouncedSetGlobeTime = useCallback(
@@ -75,43 +93,17 @@ const TimeSlider: FunctionComponent = () => {
   }, [time, combined.min, combined.max]);
 
   // return nothing when no timesteps available
-  if (!timestampsAvailable) {
+  if (combined.timestamps.length === 0) {
     return null;
   }
 
-  const outputPosition = Number(
+  const labelPosition = Number(
     ((time - combined.min) * 100) / (combined.max - combined.min)
   );
-
-  const getRangeStyle = (
-    min: number,
-    max: number
-  ): {left: string; right: string} => {
-    const left = Math.round(((min - combined.min) / totalRange) * 100);
-    const right = 100 - Math.round(((max - combined.min) / totalRange) * 100);
-
-    return {
-      left: `${left}%`,
-      right: `${right}%`
-    };
-  };
-
-  const getTickStyle = (timestamp: string, range: TimeRange) => {
-    const tickPosition = Number(
-      ((Date.parse(timestamp) - range.min) / (range.max - range.min)) * 100
-    );
-    return {
-      left: `${tickPosition}%`
-    };
-  };
 
   const inputStyles = cx(
     styles.input,
     rangeMain && rangeCompare && styles.compareInput
-  );
-  const compareStyles = cx(
-    styles.compareTrack,
-    rangeMain && rangeCompare && styles.compareBothTracks
   );
 
   return (
@@ -131,42 +123,29 @@ const TimeSlider: FunctionComponent = () => {
             max={combined.max}
             step={stepSize}
           />
+
           <output
             className={styles.timeOutput}
             style={{
-              left: `${outputPosition}%`
+              left: `${labelPosition}%`
             }}>
-            {format(time)}
+            {labelTime ? format(labelTime) : false}
           </output>
+
           {rangeMain && (
-            <div className={styles.mainTrack}>
-              <div
-                className={styles.rangeMain}
-                style={getRangeStyle(rangeMain.min, rangeMain.max)}>
-                {rangeMain.timestamps.map(timestamp => (
-                  <div
-                    key={timestamp}
-                    className={styles.ticks}
-                    style={getTickStyle(timestamp, rangeMain)}
-                  />
-                ))}
-              </div>
-            </div>
+            <TimeSliderRange
+              range={rangeMain}
+              combined={combined}
+              selectedTimeIndex={timeIndexMain}
+            />
           )}
+
           {rangeCompare && (
-            <div className={compareStyles}>
-              <div
-                className={styles.rangeCompare}
-                style={getRangeStyle(rangeCompare.min, rangeCompare.max)}>
-                {rangeCompare.timestamps.map(timestamp => (
-                  <div
-                    key={timestamp}
-                    className={styles.ticks}
-                    style={getTickStyle(timestamp, rangeCompare)}
-                  />
-                ))}
-              </div>
-            </div>
+            <TimeSliderRange
+              range={rangeCompare}
+              combined={combined}
+              selectedTimeIndex={timeIndexCompare}
+            />
           )}
         </div>
       </div>
