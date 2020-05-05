@@ -16,5 +16,5 @@ cp -r /data/images/$variable/* /data/upload/$layer/tiles/
 # copy layer metadata
 cp metadata.json /data/upload/$layer/metadata.json
 
-cd /data/upload && zip -r ./$layer/package.zip ./*
+cd /data/upload && zip -r -q ./$layer/package.zip ./*
 

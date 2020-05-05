@@ -14,4 +14,4 @@ new_time = pd.to_datetime([args.timestamp])
 ds = ds.expand_dims(dim={'time': new_time}, axis=0)
 
 os.remove(args.file)
-ds.to_netcdf(args.file, format='NETCDF4_CLASSIC', mode='w')
+ds.to_netcdf(args.file, format='NETCDF4', mode='w')

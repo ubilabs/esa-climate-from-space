@@ -94,5 +94,23 @@
     "name": "Snow - swe",
     "description": "This is the ...",
     "link": "http://..."
+  },
+  {
+    "id": "biomass.agb",
+    "name": "Biomass - agb",
+    "description": "This is the ...",
+    "link": "http://..."
+  },
+  {
+    "id": "greenhouse.xco2",
+    "name": "Greenhouse - xco2",
+    "description": "This is the ...",
+    "link": "http://..."
+  },
+  {
+    "id": "greenhouse.xch4",
+    "name": "Greenhouse - xch4",
+    "description": "This is the ...",
+    "link": "http://..."
   }
 ]

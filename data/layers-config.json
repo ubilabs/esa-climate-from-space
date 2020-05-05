@@ -126,5 +126,29 @@
       "month": "long",
       "day": "2-digit"
     }
+  },
+  "biomass.agb": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
+  },
+  "greenhouse.xco2": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
+  },
+  "greenhouse.xch4": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "2-digit"
+    }
   }
 }
