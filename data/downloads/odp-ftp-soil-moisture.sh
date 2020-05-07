@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-
-ftp://anon-ftp.ceda.ac.uk/neodc/esacci/soil_moisture/data/daily_files/COMBINED/v04.5/1988/ESACCI-SOILMOISTURE-L3S-SSMV-COMBINED-198802000000-fv04.5.nc
-
-
 BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/soil_moisture/data/daily_files/COMBINED/v04.5"
 START_DATE=1987-11-01
 OUTPUT_FODLER=./download
