@@ -43,38 +43,12 @@ compareThumb()
   width: 100%
   height: $range-height * 2
 
-  input
-    position: relative
-    z-index: 2
-    outline: 0
-
-.mainTrack, .compareTrack
-  position: absolute
-  top: $range-height
-  width: 100%
-  height: $range-height
-  border-radius: emCalc(2px)
-  background: $darkGrey4
-
-.compareTrack
-  top: $range-height
-
-.compareBothTracks
-  top: $range-height * 3
-
-.rangeMain, .rangeCompare
-  position: absolute
-  top: 0
-  z-index: 1
-  display: flex
-  overflow-x: hidden
-  height: $range-height
-  border-radius: emCalc(2px)
-  background: $main
-
 .input, .compareInput
+  position: relative
+  z-index: 2
   margin: 0
   width: 100%
+  outline: 0
   background: transparent
   -webkit-appearance: none
 
@@ -105,14 +79,6 @@ compareThumb()
 
 .compareInput::-ms-thumb
   compareThumb()
-
-.ticks
-  position: absolute
-  width: emCalc(5px)
-  height: emCalc(5px)
-  border-radius: 50%
-  background-color: rgba($darkGrey4, 0.5)
-  transform: translateX(-50%)
 
 .timeOutput
   position: absolute
