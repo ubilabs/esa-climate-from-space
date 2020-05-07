@@ -13,13 +13,22 @@ Notes:
   Datasets with this problem:
 
   - aerosol
+  - biomass
   - greenland-ice
   - land-cover
   - ozone
   - permafrost
-  - sea_level
+  - sea_level,
+  - greenhouse xch4
+  - greenhouse xco2
 
 - Some datasets have very large or small numbers instead of nan values. We mask them to get transparency for these values (https://github.com/ubilabs/esa-climate-from-space/blob/develop/data/mask-values.py)
+
+  Datasets with this problem:
+
+  - sea_state
+  - greenhouse xch4
+  - greenhouse xco2
 
 ## Cloud workflow with xcube and gdal
 
@@ -73,7 +82,10 @@ For some datasets (mostly those with different projections or very large ones) w
 
 Datasets which require this workflow for now:
 
+- biomass
 - greenland_ice
+- greenhouse xch4 (needed extra work)
+- greenhouse xco2 (needed extra work)
 - land_cocer
 - permafrost
 - sea_ice_nh
