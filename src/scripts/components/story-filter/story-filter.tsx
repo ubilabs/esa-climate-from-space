@@ -1,4 +1,5 @@
 import React, {FunctionComponent, useState, useEffect, useRef} from 'react';
+import {FormattedMessage} from 'react-intl';
 import {useSelector, useDispatch} from 'react-redux';
 import cx from 'classnames';
 import {ArrowLeftIcon} from '../icons/arrow-left-icon';
@@ -99,7 +100,7 @@ const StoryFilter: FunctionComponent = () => {
               onClick={() => toggleTag(tag)}
               key={tag}>
               {isSelected(tag) && <CheckIcon />}
-              {tag}
+              <FormattedMessage id={`tags.${tag}`} />
             </div>
           ))}
         </div>
@@ -114,7 +115,7 @@ const StoryFilter: FunctionComponent = () => {
         disabled={selectedTags.length === 0}
         className={styles.resetButton}
         onClick={resetTags}>
-        Reset Filters
+        <FormattedMessage id="resetFilters" />
       </button>
     </div>
   );
