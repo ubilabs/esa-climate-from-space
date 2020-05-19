@@ -4,20 +4,39 @@
     "title": "Planetary Heat Store",
     "description": "",
     "image": "assets/sst_large_18.jpg",
-    "tags": ["a", "b"]
+    "tags": ["nature", "biomass", "university", "co2", "globalwarming"]
   },
   {
     "id": "story2",
     "title": "Story 2",
     "description": "This is story 2",
     "image": "assets/story2.jpeg",
-    "tags": ["a", "c"]
+    "tags": [
+      "nature",
+      "biomass",
+      "school",
+      "ocean",
+      "water",
+      "weather",
+      "heating"
+    ]
   },
   {
     "id": "story3",
     "title": "Story 3",
     "description": "This is story 3",
-    "image": "assets/story3.jpeg"
+    "image": "assets/story3.jpeg",
+    "tags": [
+      "satellite",
+      "aerosol",
+      "landcover",
+      "temperature",
+      "seasurface",
+      "earth",
+      "planet",
+      "wind",
+      "heating"
+    ]
   },
   {
     "id": "story4",
