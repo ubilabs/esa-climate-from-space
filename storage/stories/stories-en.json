@@ -3,13 +3,15 @@
     "id": "story1",
     "title": "Planetary Heat Store",
     "description": "",
-    "image": "assets/sst_large_18.jpg"
+    "image": "assets/sst_large_18.jpg",
+    "tags": ["a", "b"]
   },
   {
     "id": "story2",
     "title": "Story 2",
     "description": "This is story 2",
-    "image": "assets/story2.jpeg"
+    "image": "assets/story2.jpeg",
+    "tags": ["a", "c"]
   },
   {
     "id": "story3",

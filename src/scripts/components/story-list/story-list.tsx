@@ -3,7 +3,9 @@ import {useSelector} from 'react-redux';
 import cx from 'classnames';
 
 import {storyListSelector} from '../../selectors/story/list';
+import {selectedTagsSelector} from '../../selectors/story/selected-tags';
 import StoryListItem from '../story-list-item/story-list-item';
+import {filterStories} from '../../libs/filter-stories';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -21,6 +23,8 @@ const StoryList: FunctionComponent<Props> = ({
   onSelectStory = () => {}
 }) => {
   const stories = useSelector(storyListSelector);
+  const selectedTags = useSelector(selectedTagsSelector);
+  const filteredStories = filterStories(stories, selectedTags);
 
   const classes = cx(
     styles.storyListGrid,
@@ -30,7 +34,7 @@ const StoryList: FunctionComponent<Props> = ({
   return (
     <div className={styles.storyList}>
       <div className={classes}>
-        {stories.map(story => {
+        {filteredStories.map(story => {
           let selectedIndex = selectedIds?.indexOf(story.id);
 
           if (typeof selectedIndex !== 'number') {
@@ -42,6 +46,7 @@ const StoryList: FunctionComponent<Props> = ({
               key={story.id}
               story={story}
               mode={mode}
+              selectedTags={selectedTags}
               selectedIndex={selectedIndex}
               onSelectStory={id => onSelectStory(id)}
             />
