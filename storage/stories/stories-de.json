@@ -3,13 +3,15 @@
     "id": "story1",
     "title": "Planetarer Wärmespeicher",
     "description": "",
-    "image": "assets/sst_large_18.jpg"
+    "image": "assets/sst_large_18.jpg",
+    "tags": ["a", "b"]
   },
   {
     "id": "story2",
     "title": "Geschichte 2",
     "description": "Das ist Geschichte 2",
-    "image": "assets/story2.jpeg"
+    "image": "assets/story2.jpeg",
+    "tags": ["a", "c"]
   },
   {
     "id": "story3",

@@ -4,6 +4,7 @@ export interface StoryListItem {
   description: string;
   link: string;
   image: string;
+  tags: string[];
 }
 
 export type StoryList = StoryListItem[];
