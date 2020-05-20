@@ -1,4 +1,5 @@
 import React, {FunctionComponent} from 'react';
+import {FormattedMessage} from 'react-intl';
 import {useDispatch} from 'react-redux';
 import cx from 'classnames';
 
@@ -34,7 +35,7 @@ const StoryTags: FunctionComponent<Props> = ({tags, selected}) => {
             event.stopPropagation();
             toggleTag(tag);
           }}>
-          {tag}
+          <FormattedMessage id={`tags.${tag}`} />
         </span>
       ))}
     </div>

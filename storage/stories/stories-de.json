@@ -4,20 +4,39 @@
     "title": "Planetarer Wärmespeicher",
     "description": "",
     "image": "assets/sst_large_18.jpg",
-    "tags": ["a", "b"]
+    "tags": ["nature", "biomass", "university", "co2", "globalwarming"]
   },
   {
     "id": "story2",
     "title": "Geschichte 2",
     "description": "Das ist Geschichte 2",
     "image": "assets/story2.jpeg",
-    "tags": ["a", "c"]
+    "tags": [
+      "nature",
+      "biomass",
+      "school",
+      "ocean",
+      "water",
+      "weather",
+      "heating"
+    ]
   },
   {
     "id": "story3",
     "title": "Geschichte 3",
     "description": "Das ist Geschichte 3",
-    "image": "assets/story3.jpeg"
+    "image": "assets/story3.jpeg",
+    "tags": [
+      "satellite",
+      "aerosol",
+      "landcover",
+      "temperature",
+      "seasurface",
+      "earth",
+      "planet",
+      "wind",
+      "heating"
+    ]
   },
   {
     "id": "story4",

@@ -2,6 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {useIntl} from 'react-intl';
 
 import StoryList from '../story-list/story-list';
+import StoryFilter from '../story-filter/story-filter';
 import Header from '../header/header';
 import Share from '../share/share';
 
@@ -20,6 +21,7 @@ const StoriesSelector: FunctionComponent = () => {
         title={intl.formatMessage({id: 'storyMode'})}>
         <Share />
       </Header>
+      <StoryFilter />
       <StoryList mode={StoryMode.Stories} />
     </div>
   );
