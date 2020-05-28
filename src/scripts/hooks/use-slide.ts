@@ -16,11 +16,14 @@ export const useSlide = (slide: Slide) => {
   // set layer given by story slide
   useEffect(() => {
     const [mainLayer, compareLayer] = slide.layer || [];
+    const slideTime = mainLayer?.timestamp
+      ? Number(new Date(mainLayer?.timestamp))
+      : 0;
 
     dispatch(setFlyToAction(slide.flyTo || defaultView));
     dispatch(setSelectedLayerIdsAction(mainLayer?.id || null, true));
     dispatch(setSelectedLayerIdsAction(compareLayer?.id || null, false));
-    dispatch(setGlobeTimeAction(mainLayer?.timestamp || 0));
+    dispatch(setGlobeTimeAction(slideTime));
   }, [dispatch, defaultView, slide]);
 
   return;
