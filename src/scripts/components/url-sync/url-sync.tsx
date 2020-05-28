@@ -16,16 +16,17 @@ const UrlSync: FunctionComponent = () => {
   const selectedTags = useSelector(selectedTagsSelector);
   const {mainId, compareId} = useSelector(selectedLayerIdsSelector);
 
+  const globeParamString = getGlobeParamString(globeState, mainId, compareId);
+  const tagsParamString = getTagsParamString(selectedTags);
+
   // set globe query params in url when globe state changes
   useEffect(() => {
-    const globeValue = getGlobeParamString(globeState, mainId, compareId);
-
-    if (!globeValue) {
+    if (!globeParamString) {
       return;
     }
 
     const params = new URLSearchParams(location.search);
-    params.set('globe', globeValue);
+    params.set('globe', globeParamString);
     history.replace({search: params.toString()});
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -33,19 +34,37 @@ const UrlSync: FunctionComponent = () => {
 
   // set story tag query params in url when tags state changes
   useEffect(() => {
-    const tagsValue = getTagsParamString(selectedTags);
     const params = new URLSearchParams(location.search);
 
-    if (!tagsValue) {
+    if (!tagsParamString) {
       params.delete('tags');
     } else {
-      params.set('tags', tagsValue);
+      params.set('tags', tagsParamString);
     }
 
     history.replace({search: params.toString()});
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTags, history]); // we don't want to check for location.search changes
+
+  // listen on history updates and re-add query parameters if missing
+  useEffect(() => {
+    const unlisten = history.listen(newLocation => {
+      const params = new URLSearchParams(newLocation.search);
+
+      if (tagsParamString && params.get('tags') !== tagsParamString) {
+        params.set('tags', tagsParamString);
+        history.replace({search: params.toString()});
+      }
+
+      if (globeParamString && !params.has('globe')) {
+        params.set('globe', globeParamString);
+        history.replace({search: params.toString()});
+      }
+    });
+
+    return unlisten;
+  }, [globeParamString, tagsParamString, history]);
 
   return null;
 };
