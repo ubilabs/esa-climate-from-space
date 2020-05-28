@@ -1,4 +1,4 @@
 export interface StoryLayer {
   id: string;
-  timestamp: number; // ISO 8601 timestamp
+  timestamp: string; // ISO 8601 timestamp
 }
