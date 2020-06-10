@@ -20,7 +20,7 @@ export function createReduxStore() {
     middlewares.push(offlineLoadMiddleware);
   }
 
-  if (!isProduction || isElectron()) {
+  if (!isProduction) {
     middlewares.push(createLogger({collapsed: true}));
   }
 
