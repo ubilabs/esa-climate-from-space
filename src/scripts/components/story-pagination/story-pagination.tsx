@@ -1,38 +1,38 @@
-import React, {FunctionComponent, useEffect, useCallback} from 'react';
+import React, {FunctionComponent, useCallback, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {useIntl} from 'react-intl';
 import cx from 'classnames';
 
 import {PreviousIcon} from '../icons/previous-icon';
 import {NextIcon} from '../icons/next-icon';
-import {RemoveIcon} from '../icons/remove-icon';
+import {CloseIcon} from '../icons/close-icon';
 
 import {StoryMode} from '../../types/story-mode';
 
 import styles from './story-pagination.styl';
 
 interface Props {
-  mode: StoryMode;
+  mode: StoryMode | null;
   slideIndex: number;
-  numberOfSlides: number;
-  previousSlideLink?: string | null;
-  nextSlideLink?: string | null;
+  storySlidesLength: number;
+  nextSlideLink: string | null;
+  previousSlideLink: string | null;
 }
 
 const StoryPagination: FunctionComponent<Props> = ({
   mode,
   slideIndex,
-  numberOfSlides,
-  previousSlideLink,
-  nextSlideLink
+  storySlidesLength,
+  nextSlideLink,
+  previousSlideLink
 }) => {
-  const history = useHistory();
   const intl = useIntl();
-  const isPresenterMode = mode === StoryMode.Present;
+  const history = useHistory();
   const isShowcaseMode = mode === StoryMode.Showcase;
-  const classes = cx(styles.pagination, isPresenterMode && styles.present);
+  const isPresenterMode = mode === StoryMode.Present;
 
   const onKeyDownHandler = useCallback(
+    // eslint-disable-next-line complexity
     event => {
       if (!isShowcaseMode) {
         // 37-arrow left, 33-page up, 38-arrow down
@@ -51,9 +51,12 @@ const StoryPagination: FunctionComponent<Props> = ({
         ) {
           nextSlideLink && history.push(nextSlideLink);
         }
+        // 27 - esc
+      } else if (event.keyCode === 27) {
+        history.push(`/${mode}`);
       }
     },
-    [isShowcaseMode, history, previousSlideLink, nextSlideLink]
+    [isShowcaseMode, history, mode, previousSlideLink, nextSlideLink]
   );
 
   // add and remove event listener for keyboard events
@@ -64,35 +67,44 @@ const StoryPagination: FunctionComponent<Props> = ({
     };
   }, [onKeyDownHandler]);
 
+  const disabledClasses = cx(
+    styles.disabled,
+    isShowcaseMode && styles.emptyIcon
+  );
+
   return (
-    <div className={classes}>
+    <div className={styles.pagination}>
       <div className={styles.controls}>
-        {previousSlideLink && !isShowcaseMode ? (
+        {previousSlideLink ? (
           <Link to={previousSlideLink} className={styles.icon}>
             <PreviousIcon />
           </Link>
         ) : (
-          <div className={styles.emptyIcon} />
+          <div className={disabledClasses}>
+            <PreviousIcon />
+          </div>
         )}
 
-        <span>
-          {slideIndex + 1}/{numberOfSlides}
+        <span className={styles.slides}>
+          {slideIndex + 1}/{storySlidesLength}
         </span>
 
-        {nextSlideLink && !isShowcaseMode ? (
+        {nextSlideLink ? (
           <Link to={nextSlideLink} className={styles.icon}>
             <NextIcon />
           </Link>
         ) : (
-          <div className={styles.emptyIcon} />
+          <div className={disabledClasses}>
+            <NextIcon />
+          </div>
         )}
 
         {isPresenterMode && (
-          <div className={styles.icons}>
+          <div className={styles.closeIcon}>
             <Link
               to={`/${mode}`}
               title={intl.formatMessage({id: 'closeStory'})}>
-              <RemoveIcon />
+              <CloseIcon />
             </Link>
           </div>
         )}

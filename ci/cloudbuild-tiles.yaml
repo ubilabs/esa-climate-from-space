@@ -1,0 +1,58 @@
+steps:
+  - name: gcr.io/cloud-builders/gsutil
+    id: 'download-netcdfs'
+    entrypoint: '/bin/bash'
+    args:
+      - "-c"
+      - "mkdir /data/netcdfs && gsutil -m cp -r gs://esa-cfs-cate-data/${_LAYER_ID}/*.nc /data/netcdfs/"
+
+  - name: gcr.io/esa-climate-from-space/cate:latest
+    id: 'cate-export-data-cube'
+    entrypoint: '/bin/bash'
+    args:
+      - "-c"
+      - "conda run -n cate-env python data/write-zarr.py --layer ${_LAYER_ID} --variable ${_VARIABLE_ID} --zoom-levels ${_ZOOM_LEVELS} --min ${_MIN} --max ${_MAX} --output /data/dataset.zarr"
+
+  - name: gcr.io/esa-climate-from-space/xcube:latest
+    id: 'xcube-generate-full-images'
+    entrypoint: '/bin/bash'
+    args:
+      - "-c"
+      - "conda run -n xcube xcube tile --verbose --config ./style.yaml --style cfs --output /data/images /data/dataset.zarr"
+
+  - name: dpokidov/imagemagick:latest-stretch
+    id: 'imagemagick-resize'
+    entrypoint: '/bin/bash'
+    args:
+      - "./data/resize-images.sh"
+
+  - name: geographica/gdal2:2.4.0
+    id: 'gdal-generate-tiles'
+    entrypoint: '/bin/bash'
+    args:
+       - "./data/gdal-tiles.sh"
+       - "${_ZOOM_LEVELS}"
+
+  - name: gcr.io/esa-climate-from-space/tile-mover
+    id: 'prepare-upload'
+    entrypoint: '/bin/bash'
+    args:
+      - "./data/prepare-tile-upload.sh"
+      - "${_VARIABLE_ID}"
+      - "${_LAYER_ID}"
+
+  - name: gcr.io/cloud-builders/gsutil
+    id: 'upload-to-storage'
+    args:
+      - "-m"
+      - "-q"
+      - "cp"
+      - "-r"
+      - "/data/upload/${_LAYER_ID}/*"
+      - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/"
+
+options:
+  diskSizeGb: 50
+  volumes:
+  - name: 'vol1'
+    path: '/data'

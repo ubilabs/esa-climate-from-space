@@ -9,23 +9,26 @@ import {
 import {GlobeView} from '../../types/globe-view';
 import {GlobeProjection} from '../../types/globe-projection';
 
-import 'cesium/Source/Widgets/widgets.css';
-import 'cesium/Build/Cesium/Cesium';
+import 'cesium/Build/Cesium/Widgets/widgets.css';
+import {
+  Viewer,
+  SceneMode,
+  Color,
+  GeographicTilingScheme,
+  TileMapServiceImageryProvider,
+  UrlTemplateImageryProvider,
+  TextureMinificationFilter,
+  TextureMagnificationFilter,
+  buildModuleUrl
+} from 'cesium';
 
 import {GlobeProjectionState} from '../../types/globe-projection-state';
 
 import styles from './globe.styl';
 
-const Cesium = window.Cesium;
-// set global base url
-Cesium.buildModuleUrl.setBaseUrl('./cesium/');
-// we do not use cesium ion tile server
-// @ts-ignore
-Cesium.Ion.defaultAccessToken = '';
 // create default imagery provider
-// @ts-ignore
-const tileUrl = window.Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII');
-const imageryProvider = window.Cesium.createTileMapServiceImageryProvider({
+const tileUrl = buildModuleUrl('Assets/Textures/NaturalEarthII');
+const imageryProvider = new TileMapServiceImageryProvider({
   url: tileUrl
 });
 
@@ -44,10 +47,10 @@ const cesiumOptions = {
 
 interface Props {
   active: boolean;
-  layerType?: string;
   view: GlobeView;
   projectionState: GlobeProjectionState;
-  imageUrl: string | null;
+  tilesUrl: string | null;
+  zoomLevels: number;
   flyTo: GlobeView | null;
   onMouseEnter: () => void;
   onChange: (view: GlobeView) => void;
@@ -57,15 +60,15 @@ interface Props {
 const Globe: FunctionComponent<Props> = ({
   view,
   projectionState,
-  imageUrl,
+  tilesUrl,
+  zoomLevels,
   active,
-  layerType,
   flyTo,
   onMouseEnter,
   onChange,
   onMoveEnd
 }) => {
-  const [viewer, setViewer] = useState<Cesium.Viewer | null>(null);
+  const [viewer, setViewer] = useState<Viewer | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   // make latest "active" value always accessible in camera change handler
@@ -81,15 +84,16 @@ const Globe: FunctionComponent<Props> = ({
     // set correct scene mode
     const sceneMode =
       projectionState.projection === GlobeProjection.Sphere
-        ? Cesium.SceneMode.SCENE3D
-        : Cesium.SceneMode.SCENE2D;
+        ? SceneMode.SCENE3D
+        : SceneMode.SCENE2D;
 
     const options = {...cesiumOptions, sceneMode};
 
     // create cesium viewer
-    const scopedViewer = new Cesium.Viewer(ref.current, options);
+    const scopedViewer = new Viewer(ref.current, options);
 
-    const color = new Cesium.Color(0.12, 0.12, 0.12, 1);
+    const color = Color.fromCssColorString('#10161A');
+
     scopedViewer.scene.backgroundColor = color;
 
     if (scopedViewer.scene.sun) {
@@ -173,32 +177,27 @@ const Globe: FunctionComponent<Props> = ({
       return;
     }
 
-    const url = imageUrl;
     const layers = viewer.scene.imageryLayers;
 
-    if (url) {
-      const imageProvider =
-        layerType === 'tiles'
-          ? new Cesium.UrlTemplateImageryProvider({
-              url,
-              tilingScheme: new Cesium.GeographicTilingScheme(),
-              minimumLevel: 0,
-              maximumLevel: 3,
-              tileWidth: 270,
-              tileHeight: 270
-            })
-          : new Cesium.SingleTileImageryProvider({url});
+    if (tilesUrl) {
+      const imageProvider = new UrlTemplateImageryProvider({
+        url: tilesUrl,
+        tilingScheme: new GeographicTilingScheme(),
+        minimumLevel: 0,
+        maximumLevel: zoomLevels - 1,
+        tileWidth: 256,
+        tileHeight: 256
+      });
 
       imageProvider.readyPromise.then(() => {
         const newLayer = viewer.scene.imageryLayers.addImageryProvider(
           imageProvider
         );
         // @ts-ignore
-        newLayer.minificationFilter = Cesium.TextureMinificationFilter.NEAREST;
+        newLayer.minificationFilter = TextureMinificationFilter.NEAREST;
         // @ts-ignore
-        newLayer.magnificationFilter =
-          // @ts-ignore
-          Cesium.TextureMagnificationFilter.NEAREST;
+        newLayer.magnificationFilter = TextureMagnificationFilter.NEAREST;
+        newLayer.alpha = 0.75;
 
         // remove and destroy old layers if they exist
         // we do not clean it up in the useEffect clean function because we want
@@ -219,7 +218,7 @@ const Globe: FunctionComponent<Props> = ({
         layers.remove(layer, true);
       }
     }
-  }, [layerType, viewer, imageUrl]);
+  }, [viewer, tilesUrl, zoomLevels]);
 
   // fly to location
   useEffect(() => {

@@ -13,7 +13,7 @@ module.exports = (env, {mode} = {}) => {
   const gitHash =
     (gitState.isGitSync(__dirname) && gitState.commitSync(__dirname)) || '-';
 
-  return {
+  const config = {
     entry: './src/scripts/index.tsx',
     devtool: isProduction ? undefined : 'inline-source-map', // eslint-disable-line no-undefined
     optimization: {
@@ -21,6 +21,17 @@ module.exports = (env, {mode} = {}) => {
         new TerserJSPlugin({extractComments: false}),
         new OptimizeCSSAssetsPlugin({})
       ]
+    },
+    target: 'web',
+    resolve: {
+      extensions: ['.tsx', '.ts', '.js', '.styl'],
+      alias: {
+        // use an empty mock module for web
+        electronHelpers: path.resolve(
+          __dirname,
+          './src/scripts/libs/electron-helpers-mock.ts'
+        )
+      }
     },
     module: {
       unknownContextCritical: false,
@@ -56,11 +67,28 @@ module.exports = (env, {mode} = {}) => {
             },
             {loader: 'stylus-loader'}
           ]
+        },
+        {
+          test: /\.(woff(2)?|ttf|otf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        },
+        {
+          test: /\.(svg)?$/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/'
+            }
+          }
         }
       ]
-    },
-    resolve: {
-      extensions: ['.tsx', '.ts', '.js', '.styl']
     },
     output: {
       filename: 'bundle.[hash].js',
@@ -74,7 +102,8 @@ module.exports = (env, {mode} = {}) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: 'src/index.html'
+        template: 'src/index.html',
+        favicon: 'assets/images/favicon.svg'
       }),
       new MiniCssExtractPlugin({
         filename: 'styles.[hash].css'
@@ -82,7 +111,9 @@ module.exports = (env, {mode} = {}) => {
       new webpack.DefinePlugin({
         INFO_BUILD_TIME: JSON.stringify(new Date().toISOString()),
         INFO_GIT_HASH: JSON.stringify(gitHash),
-        INFO_VERSION: JSON.stringify(packageJson.version)
+        INFO_VERSION: JSON.stringify(packageJson.version),
+        CESIUM_BASE_URL: JSON.stringify('./cesium/'),
+        PRODUCTION: JSON.stringify(isProduction)
       }),
       new CopyPlugin([
         {
@@ -104,4 +135,26 @@ module.exports = (env, {mode} = {}) => {
       ])
     ]
   };
+
+  // Remove debug code in Cesium - see https://github.com/CesiumGS/cesium-webpack-example
+  if (isProduction) {
+    config.module.rules.push({
+      test: /\.js$/,
+      enforce: 'pre',
+      include: path.resolve(__dirname, 'node_modules/cesium/Source'),
+      sideEffects: false,
+      use: [
+        {
+          loader: 'strip-pragma-loader',
+          options: {
+            pragmas: {
+              debug: false
+            }
+          }
+        }
+      ]
+    });
+  }
+
+  return config;
 };

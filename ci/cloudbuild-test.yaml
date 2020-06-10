@@ -7,4 +7,7 @@ steps:
     args: ['run', 'eslint']
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: npm
+    args: ['run', 'electron:compile']
+  - name: 'gcr.io/cloud-builders/npm'
+    entrypoint: npm
     args: ['run', 'build']

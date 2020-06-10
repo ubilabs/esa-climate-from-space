@@ -1,34 +1,9 @@
-.infoButton
-  display: flex
-  flex-direction: column
-  align-items: center
+@require '../../../variables.styl'
 
-.icon
-  z-index: 1
-  padding: 2px
-  outline: 0
-  border: none
-  border-radius: 50%
-  background-color: transparent
-  font-size: 1em
-  line-height: 50%
-  cursor: pointer
+.infoButton
+  padding-left: emCalc(5px)
 
   svg
-    fill: #fff
-
-.modal
-  padding: 5px 10px
-  min-width: 200px
-  width: fit-content
-  border-radius: 5px
-  background-color: #fff
-  text-align: left
-  line-height: 1.5em
-  cursor: pointer
-
-.description, .link
-  display: block
-
-.link
-  text-decoration: underline
+    width: 18px
+    height: 18px
+    fill: $textWhite

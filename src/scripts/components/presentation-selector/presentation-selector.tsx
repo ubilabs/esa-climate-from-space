@@ -1,23 +1,28 @@
 import React, {FunctionComponent} from 'react';
-import {Link} from 'react-router-dom';
-import {FormattedMessage} from 'react-intl';
+import {useIntl} from 'react-intl';
 
 import StoryList from '../story-list/story-list';
+import Header from '../header/header';
+import Share from '../share/share';
 
 import {StoryMode} from '../../types/story-mode';
 
 import styles from './presentation-selector.styl';
 
-const PresentationSelector: FunctionComponent = () => (
-  <div className={styles.presentationSelector}>
-    <Link to="/" className={styles.backButton}>
-      <FormattedMessage id="goBack" />
-    </Link>
-    <h1 className={styles.title}>
-      <FormattedMessage id="presenterMode" />
-    </h1>
-    <StoryList mode={StoryMode.Present} />
-  </div>
-);
+const PresentationSelector: FunctionComponent = () => {
+  const intl = useIntl();
+
+  return (
+    <div className={styles.presentationSelector}>
+      <Header
+        backLink="/"
+        backButtonId="backToDataMode"
+        title={intl.formatMessage({id: 'presenter'})}>
+        <Share />
+      </Header>
+      <StoryList mode={StoryMode.Present} />
+    </div>
+  );
+};
 
 export default PresentationSelector;

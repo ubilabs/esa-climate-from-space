@@ -1,0 +1,37 @@
+@require '../../../variables.styl'
+
+.header
+  display: flex
+  flex-shrink: 0
+  justify-content: space-between
+  align-items: center
+  height: $headerHeight
+  background-color: $darkGrey1
+  font-family: NotesEsa
+
+.backButton
+  flex-grow: 1
+  padding-left: emCalc(20px)
+  width: 50%
+  color: $textWhite
+  font-size: emCalc(18px)
+
+.title
+  flex-grow: 1
+  color: $textWhite
+  text-align: center
+  text-transform: uppercase
+  white-space: nowrap
+  font-size: emCalc(18px)
+
+.rightContent
+  display: flex
+  flex-grow: 1
+  justify-content: flex-end
+  align-items: center
+  padding-right: emCalc(25px)
+  width: 50%
+  color: $textDefault
+
+  svg
+    padding-left: emCalc(15px)

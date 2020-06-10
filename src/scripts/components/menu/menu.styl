@@ -1,43 +1,50 @@
-.menuContainer
-  position: relative
-  margin: 20px
+@require '../../../variables.styl'
 
-.menuButton
-  padding: 2px
-  outline: 0
-  border-radius: 50%
-  background-color: #ccc
-  font-size: 1em
-  line-height: 50%
-  cursor: pointer
+.menuContainer
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  align-items: flex-start
+  overflow-y: scroll
+  height: 90%
+  font-family: Arial, Helvetica, sans-serif
 
 .menuList
-  position: absolute
-  bottom: 20px
-  left: 0
-  padding: 0
-  min-width: 250px
-  border-radius: 5px
-  background-color: #fff
+  display: flex
+  flex-direction: column
+  flex-wrap: wrap
+  overflow-y: auto
+  padding: emCalc(10px) emCalc(40px)
+  color: $textWhite
   list-style: none
 
-.menuListItem
+.menuItemTitle, .subMenuTitle
   display: flex
-  flex-flow: wrap
   align-items: center
-  margin: 7px
-  padding: 10px 15px
-  cursor: pointer
+  padding: emCalc(10px) 0
+  pointer-events: none
 
   svg
-    padding-right: 15px
+    padding-right: emCalc(10px)
+    fill: $textWhite
 
-  a
-    display: flex
-    flex-flow: wrap
-    align-items: center
-    color: #000
-    text-decoration: none
+.subMenuTitle
+  padding-top: 30px
 
-  &:hover, &:focus
-    background-color: #e0f1ff
+.menuListItem
+  padding: emCalc(10px) 0 emCalc(10px) emCalc(35px)
+  color: $textDefault
+
+.menuButton
+  color: $textDefault
+
+.logo
+  position: absolute
+  bottom: 1.5em
+  display: flex
+  flex-direction: row
+  justify-content: center
+  width: 100%
+
+  svg
+    fill: $main

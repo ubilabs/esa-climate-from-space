@@ -1,9 +1,11 @@
 import React, {FunctionComponent} from 'react';
-import {Link, useHistory, useParams} from 'react-router-dom';
-import {FormattedMessage} from 'react-intl';
-import {PlayIcon} from '../icons/play-icon';
+import {useHistory, useParams} from 'react-router-dom';
+import {useIntl, FormattedMessage} from 'react-intl';
 
 import StoryList from '../story-list/story-list';
+import Header from '../header/header';
+import {PlayIcon} from '../icons/play-icon';
+import Button from '../button/button';
 
 import {StoryMode} from '../../types/story-mode';
 
@@ -12,6 +14,7 @@ import styles from './showcase-selector.styl';
 const ShowcaseSelector: FunctionComponent = () => {
   const params = useParams<{storyIds?: string}>();
   const history = useHistory();
+  const intl = useIntl();
   const storyIds = params.storyIds?.split('&');
   const selectedIds = storyIds || [];
 
@@ -22,26 +25,25 @@ const ShowcaseSelector: FunctionComponent = () => {
       : selectedIds.concat(id);
     history.replace(`/showcase/${newIds.join('&')}`);
   };
+  const isDisabled = selectedIds.length === 0;
 
   return (
     <div className={styles.showcaseSelector}>
-      <div className={styles.header}>
-        <Link to="/" className={styles.backButton}>
-          <FormattedMessage id="goBack" />
-        </Link>
-        <h1 className={styles.title}>
-          <FormattedMessage id="showcaseMode" />
-        </h1>
-        <div className={styles.playButton}>
-          <FormattedMessage
-            id="storiesSelected"
-            values={{numberSelected: selectedIds.length}}
-          />
-          <Link to={`/showcase/${selectedIds.join('&')}/0/0`}>
-            <PlayIcon />
-          </Link>
-        </div>
-      </div>
+      <Header
+        backLink="/"
+        backButtonId="backToDataMode"
+        title={intl.formatMessage({id: 'showcase'})}>
+        <FormattedMessage
+          id="storiesSelected"
+          values={{numberSelected: selectedIds.length}}
+        />
+        <Button
+          disabled={isDisabled}
+          label={'play'}
+          link={`/showcase/${selectedIds.join('&')}/0/title`}
+          icon={PlayIcon}
+        />
+      </Header>
       <StoryList
         mode={StoryMode.Showcase}
         onSelectStory={id => onSelectStory(id)}

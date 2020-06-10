@@ -38,8 +38,8 @@ function getTimeRange(timestamps: string[]): TimeRange {
     .sort((a: Date, b: Date) => Number(a) - Number(b));
 
   return {
-    min: Number(sorted[0]) || 0,
-    max: Number(sorted[sorted.length - 1]) || 0,
+    min: Number(sorted[0]) || -Infinity,
+    max: Number(sorted[sorted.length - 1]) || Infinity,
     timestamps: sorted.map(date => date.toISOString())
   };
 }

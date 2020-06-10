@@ -1,0 +1,22 @@
+@require '../../../variables.styl'
+
+.globeNavigation
+  position: absolute
+  right: emCalc(10px)
+  bottom: emCalc(22px)
+  z-index: 1
+  display: flex
+
+.compass
+  margin: 0 emCalc(15px)
+  width: 24px
+  height: 24px
+  transition: all 0.5s ease-out
+  transform: rotate(var(--globe-latitude))
+
+.compass svg
+  &:hover
+    fill: $main
+
+.downloadIcon svg
+  fill: $textWhite

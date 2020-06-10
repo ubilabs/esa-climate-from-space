@@ -1,3 +1,69 @@
+# [0.5.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.4.1...v0.5.0) (2020-06-10)
+
+
+### Bug Fixes
+
+* **deploy:** fix argument error ([#333](https://github.com/ubilabs/esa-climate-from-space/issues/333)) ([a54722b](https://github.com/ubilabs/esa-climate-from-space/commit/a54722b992f10d3335869adeea737aadd618daed))
+* **electron:** fix persisted actions path ([#295](https://github.com/ubilabs/esa-climate-from-space/issues/295)) ([5531985](https://github.com/ubilabs/esa-climate-from-space/commit/5531985bc6151e71f8775ee25809f2395d6adeb7))
+* **globe:** only show globes that are set by story slides ([#322](https://github.com/ubilabs/esa-climate-from-space/issues/322)) ([bab631a](https://github.com/ubilabs/esa-climate-from-space/commit/bab631a8611c90e2a06006c33bcf9078039d03a8))
+* **tags:** persist story tags ([#345](https://github.com/ubilabs/esa-climate-from-space/issues/345)) ([95da065](https://github.com/ubilabs/esa-climate-from-space/commit/95da06558fa98f7e82351452be56c0efa6035f52))
+
+
+### Features
+
+* **compass:** sync compass with globe ([#336](https://github.com/ubilabs/esa-climate-from-space/issues/336)) ([b9975e8](https://github.com/ubilabs/esa-climate-from-space/commit/b9975e8f35b6beacbd35ce4f088327423dd3c228))
+* **data-pipeline:** add sss dataset ([#338](https://github.com/ubilabs/esa-climate-from-space/issues/338)) ([01a759c](https://github.com/ubilabs/esa-climate-from-space/commit/01a759c0cf85ea06f278c4b3d6b5f8e92a3bc173))
+* **data-pipeline:** improve tiles ([#339](https://github.com/ubilabs/esa-climate-from-space/issues/339)) ([4c7c6f1](https://github.com/ubilabs/esa-climate-from-space/commit/4c7c6f16ace1a14a8891920796f4ebc7e2f619d6))
+* **data-pipeline:** improve tiles and add greenhouse ([#340](https://github.com/ubilabs/esa-climate-from-space/issues/340)) ([00e2283](https://github.com/ubilabs/esa-climate-from-space/commit/00e228370966ba965550b5b4d8b3912107b0a2d2))
+* **data-pipeline:** large datasets ([#329](https://github.com/ubilabs/esa-climate-from-space/issues/329)) ([edc482c](https://github.com/ubilabs/esa-climate-from-space/commit/edc482c0979593a68fa8bda756cb78821e741492))
+* **data-pipeline:** new datasets ([#337](https://github.com/ubilabs/esa-climate-from-space/issues/337)) ([12d33ab](https://github.com/ubilabs/esa-climate-from-space/commit/12d33abd176d5eafc0da6dd3a3a3a2ad2ad71324))
+* **download-button:** add delete button ([#304](https://github.com/ubilabs/esa-climate-from-space/issues/304)) ([7323a7c](https://github.com/ubilabs/esa-climate-from-space/commit/7323a7c1a4629ba272cd928fd6d2baa1154c2fec))
+* **download-button:** make component ([#302](https://github.com/ubilabs/esa-climate-from-space/issues/302)) ([e803f35](https://github.com/ubilabs/esa-climate-from-space/commit/e803f354d1c163108a2925506c667231571d9535))
+* **electron:** add offline action loading with custom paths ([#294](https://github.com/ubilabs/esa-climate-from-space/issues/294)) ([499429f](https://github.com/ubilabs/esa-climate-from-space/commit/499429f5a0f3f1576ce1b4e3600ec2a195499480))
+* **electron:** add offline middleware ([#292](https://github.com/ubilabs/esa-climate-from-space/issues/292)) ([0b90eef](https://github.com/ubilabs/esa-climate-from-space/commit/0b90eeff13c48d902dc8f454f2e1b6b859c3a450))
+* **electron:** add offline stories ([#299](https://github.com/ubilabs/esa-climate-from-space/issues/299)) ([a2f5a02](https://github.com/ubilabs/esa-climate-from-space/commit/a2f5a02a9122be57244a05e0137da1b134072e6d))
+* **electron:** new electron bridge ([#290](https://github.com/ubilabs/esa-climate-from-space/issues/290)) ([35b0cad](https://github.com/ubilabs/esa-climate-from-space/commit/35b0cadc8759b735f3f4bb4c697e78cf0716e2cd))
+* **electron:** use typescript for electron code too ([#306](https://github.com/ubilabs/esa-climate-from-space/issues/306)) ([bb44daa](https://github.com/ubilabs/esa-climate-from-space/commit/bb44daaa5210ea619abbe10b9f5499f9b87037b3))
+* **layer:** add sst and oc layer ([#330](https://github.com/ubilabs/esa-climate-from-space/issues/330)) ([5fd31e2](https://github.com/ubilabs/esa-climate-from-space/commit/5fd31e26d2b5aaee2458d1f6ededaa6884fd496a))
+* **share:** add share component ([#335](https://github.com/ubilabs/esa-climate-from-space/issues/335)) ([9fa16a9](https://github.com/ubilabs/esa-climate-from-space/commit/9fa16a9e0215416bcb3d5799e271613735c5ec4f))
+* **showcase-title:** add title slide in showcase mode ([#314](https://github.com/ubilabs/esa-climate-from-space/issues/314)) ([431778f](https://github.com/ubilabs/esa-climate-from-space/commit/431778fec3040c62250a9ae033d45360a6a516c6))
+* **storage:** update layers ([#301](https://github.com/ubilabs/esa-climate-from-space/issues/301)) ([c0baa15](https://github.com/ubilabs/esa-climate-from-space/commit/c0baa15d9ec0e7ca13bc3c25d9fec0502e0134a3))
+* **story-footer:** slide in story footer on mouse move ([#327](https://github.com/ubilabs/esa-climate-from-space/issues/327)) ([92f9602](https://github.com/ubilabs/esa-climate-from-space/commit/92f9602356a3c6cbd5f1f583d9a2b732020b2ed3))
+* **story-tags:** add story filter bar ([#344](https://github.com/ubilabs/esa-climate-from-space/issues/344)) ([0026709](https://github.com/ubilabs/esa-climate-from-space/commit/00267098a8dc2f22197edf12ff10bc6f9147e48a))
+* **story-tags:** add tags to story list items ([#343](https://github.com/ubilabs/esa-climate-from-space/issues/343)) ([b602a14](https://github.com/ubilabs/esa-climate-from-space/commit/b602a145dfd89206a6e6958c8cc128d06b0de2ef))
+* **time-slider:** highlight active ticks ([#341](https://github.com/ubilabs/esa-climate-from-space/issues/341)) ([f08b170](https://github.com/ubilabs/esa-climate-from-space/commit/f08b170512d8f9fa0cf705be897d663986e8434c))
+* **video:** add test video with subtitles ([#305](https://github.com/ubilabs/esa-climate-from-space/issues/305)) ([5d8bd27](https://github.com/ubilabs/esa-climate-from-space/commit/5d8bd27b5d30c68a49df0b6a9d5f700b55c11bd5))
+* **video:** set subtitle language ([#321](https://github.com/ubilabs/esa-climate-from-space/issues/321)) ([b4ecfde](https://github.com/ubilabs/esa-climate-from-space/commit/b4ecfdea9e6bdd8dfc81961f3151153eb1c95bc5))
+
+
+
+## [0.4.1](https://github.com/ubilabs/esa-climate-from-space/compare/v0.4.0...v0.4.1) (2020-03-10)
+
+
+### Bug Fixes
+
+* **config:** fix versioning in url paths ([f691dad](https://github.com/ubilabs/esa-climate-from-space/commit/f691dad46e83b5362cb42528cda3b930963517b2))
+
+
+### Features
+
+* **animation:** add framer motion to layer-selector ([#273](https://github.com/ubilabs/esa-climate-from-space/issues/273)) ([1890f70](https://github.com/ubilabs/esa-climate-from-space/commit/1890f70477f2490bf14946beb46c51d33b48585e))
+* **cesium:** update cesium to use es6 modules ([#258](https://github.com/ubilabs/esa-climate-from-space/issues/258)) ([71fa208](https://github.com/ubilabs/esa-climate-from-space/commit/71fa208747d90c7e58f54ef2963c4f8283a169d4))
+* **data:** add readme and scripts ([#257](https://github.com/ubilabs/esa-climate-from-space/issues/257)) ([5ea0948](https://github.com/ubilabs/esa-climate-from-space/commit/5ea094803b3246669d67c28b83bc4f159b047df4))
+* **data:** load remote data from versioned urls ([#287](https://github.com/ubilabs/esa-climate-from-space/issues/287)) ([b3a4b39](https://github.com/ubilabs/esa-climate-from-space/commit/b3a4b39161063b59df14f7de57a8499843376ef5))
+* **electron:** add basic download functionality ([#277](https://github.com/ubilabs/esa-climate-from-space/issues/277)) ([21bad70](https://github.com/ubilabs/esa-climate-from-space/commit/21bad707fb6b7035f374ec3de17851359fd85ff6))
+* **favicon:** add favicon ([#276](https://github.com/ubilabs/esa-climate-from-space/issues/276)) ([fb031c4](https://github.com/ubilabs/esa-climate-from-space/commit/fb031c4f15ea3364e175699fe09253e91eed2660))
+* **fonts:** add font ([#272](https://github.com/ubilabs/esa-climate-from-space/issues/272)) ([9721ddc](https://github.com/ubilabs/esa-climate-from-space/commit/9721ddcc0b61c0eeb5918c7ad238aeae438895ff))
+* **globe:** add reset globe position button ([#281](https://github.com/ubilabs/esa-climate-from-space/issues/281)) ([031a601](https://github.com/ubilabs/esa-climate-from-space/commit/031a6015c69fe890b7bf88ed16f504bdcde584d7))
+* **globe-navigation:** add projection switch and navigation icons ([#279](https://github.com/ubilabs/esa-climate-from-space/issues/279)) ([2b5da72](https://github.com/ubilabs/esa-climate-from-space/commit/2b5da72f71b5da3964b46dc19ccf402cc870df87))
+* **layer-selector:** add new layer selector ([#271](https://github.com/ubilabs/esa-climate-from-space/issues/271)) ([8f9d1e5](https://github.com/ubilabs/esa-climate-from-space/commit/8f9d1e5c7a854d012b183f6d3280d26a4af5b3d9))
+* **layers:** integrate new tiles ([#280](https://github.com/ubilabs/esa-climate-from-space/issues/280)) ([c2d7ead](https://github.com/ubilabs/esa-climate-from-space/commit/c2d7eada8ad38e51529b5bef33cf8efa6d64e222))
+* **menu:** use button component in menu ([#263](https://github.com/ubilabs/esa-climate-from-space/issues/263)) ([5e7bcd0](https://github.com/ubilabs/esa-climate-from-space/commit/5e7bcd058ba248f039d759a7c66ac9b2e3a78f59))
+* **offline-mode:** add downloaded data to store ([2831e00](https://github.com/ubilabs/esa-climate-from-space/commit/2831e00c13a4e338d5d15bf19eb5e40067ef4060))
+* **overlay:** add react portals and overlay component ([#262](https://github.com/ubilabs/esa-climate-from-space/issues/262)) ([ddd25e0](https://github.com/ubilabs/esa-climate-from-space/commit/ddd25e0622f230116418e80a65fcf0c92479aab0))
+
+
+
 # [0.4.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.3.0...v0.4.0) (2020-03-09)
 
 

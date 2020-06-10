@@ -1,16 +1,14 @@
-import 'cesium/Build/Cesium/Cesium';
+import {Viewer, Cartesian3} from 'cesium';
 
 import {radToDeg, degToRad} from './math-helpers';
 
 import {GlobeView} from '../types/globe-view';
 
-const Cesium = window.Cesium;
-
 // set the camera according to the given globe view (lng, lat in radians)
-export function setGlobeView(viewer: Cesium.Viewer, view: GlobeView): void {
+export function setGlobeView(viewer: Viewer, view: GlobeView): void {
   const {position, orientation} = view;
   const cesiumView = {
-    destination: Cesium.Cartesian3.fromDegrees(
+    destination: Cartesian3.fromDegrees(
       position.longitude,
       position.latitude,
       position.height
@@ -26,10 +24,10 @@ export function setGlobeView(viewer: Cesium.Viewer, view: GlobeView): void {
 }
 
 // set the camera according to the given globe view (lng, lat in degrees)
-export function flyToGlobeView(viewer: Cesium.Viewer, view: GlobeView): void {
+export function flyToGlobeView(viewer: Viewer, view: GlobeView): void {
   const {position, orientation} = view;
   const cesiumView = {
-    destination: Cesium.Cartesian3.fromDegrees(
+    destination: Cartesian3.fromDegrees(
       position.longitude,
       position.latitude,
       position.height
@@ -45,7 +43,7 @@ export function flyToGlobeView(viewer: Cesium.Viewer, view: GlobeView): void {
 }
 
 // get the globe view from the current cesium camera
-export function getGlobeView(viewer: Cesium.Viewer): GlobeView {
+export function getGlobeView(viewer: Viewer): GlobeView {
   const camera = viewer.scene.camera;
   const position = camera.positionCartographic;
 

@@ -1,135 +1,110 @@
 import React, {FunctionComponent, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {useParams, Redirect} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import cx from 'classnames';
 
-import StoryPagination from '../story-pagination/story-pagination';
+import Globes from '../globes/globes';
+import {useStoryParams} from '../../hooks/use-story-params';
+import StoryContent from '../story-content/story-content';
+import StoryMedia from '../story-media/story-media';
+import StoryFooter from '../story-footer/story-footer';
 import fetchStory from '../../actions/fetch-story';
-import {selectedStorySelector} from '../../selectors/story/selected';
-import {storyListSelector} from '../../selectors/story/list';
-import setFlyToAction from '../../actions/set-fly-to';
-import setStoryLayerAction from '../../actions/set-story-layer';
-import Slide from '../slide/slide';
-import {State} from '../../reducers';
-import config from '../../config/main';
-import StoryHeader from '../story-header/story-header';
-import {getNavigationData} from '../../libs/get-navigation-data';
-import Autoplay from '../autoplay/autoplay';
-import setGlobeTimeAction from '../../actions/set-globe-time';
+import Header from '../header/header';
+import StoryVideo from '../story-video/story-video';
 import setGlobeProjectionAction from '../../actions/set-globe-projection';
+import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
+import setGlobeTimeAction from '../../actions/set-globe-time';
+import Share from '../share/share';
 
 import {StoryMode} from '../../types/story-mode';
+import {Slide, Story as StoryType} from '../../types/story';
 import {GlobeProjection} from '../../types/globe-projection';
 
 import styles from './story.styl';
 
-interface Props {
-  mode: StoryMode;
-}
-
-interface Params {
-  storyId?: string;
-  storyIds?: string;
-  storyNumber?: string;
-  page?: string;
-}
-
-const getStoryId = (params: Params, mode: StoryMode) => {
-  if (mode === StoryMode.Showcase) {
-    const storyIds = params.storyIds?.split('&');
-    const storyIndex = parseInt(params.storyNumber || '0', 10);
-    return (storyIds && storyIds[storyIndex || 0]) || null;
-  }
-
-  return params.storyId || null;
-};
-
-const Story: FunctionComponent<Props> = ({mode}) => {
-  const params = useParams<Params>();
+const Story: FunctionComponent = () => {
+  const storyParams = useStoryParams();
   const sphereProjection = GlobeProjection.Sphere;
-  const storyId = getStoryId(params, mode);
-  const storyIds = params.storyIds;
-  const storyIndex = parseInt(params.storyNumber || '0', 10);
-  const isShowcaseMode = mode === StoryMode.Showcase;
-  const story = useSelector((state: State) =>
-    selectedStorySelector(state, storyId)
-  );
-  const stories = useSelector(storyListSelector);
   const dispatch = useDispatch();
-  const slideIndex = parseInt(params.page || '0', 10);
-  const slide = story?.slides[slideIndex];
-  const storyListItem = stories.find(storyItem => storyItem.id === storyId);
-  const defaultView = config.globe.view;
-  const {autoPlayLink, nextSlideLink, previousSlideLink} = getNavigationData({
+  const {
     mode,
-    storyId,
-    storyIndex,
     slideIndex,
-    storyIds,
-    numberOfSlides: story?.slides.length
-  });
+    currentStoryId,
+    selectedStory,
+    storyListItem
+  } = storyParams;
+  const storyMode = mode === StoryMode.Stories;
+  const storyClasses = cx(
+    styles.story,
+    storyParams?.mode === StoryMode.Present && styles.presentStory,
+    mode === StoryMode.Showcase && styles.showcaseStory
+  );
 
   // fetch story of active storyId
   useEffect(() => {
-    storyId && dispatch(fetchStory(storyId));
-    dispatch(setGlobeProjectionAction(sphereProjection, 0));
-  }, [dispatch, storyId, sphereProjection]);
+    currentStoryId && dispatch(fetchStory(currentStoryId));
+  }, [dispatch, currentStoryId]);
 
-  // fly to position given in a slide, if none given set to default
-  // set layer given by story slide
+  // set globe to sphere projection
   useEffect(() => {
-    if (slide) {
-      dispatch(setFlyToAction(slide.flyTo || defaultView));
-      dispatch(setStoryLayerAction(slide.layer?.id || null));
-      dispatch(setGlobeTimeAction(slide.layer?.timestamp || 0));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, slide]);
+    dispatch(setGlobeProjectionAction(sphereProjection, 0));
+  }, [dispatch, sphereProjection]);
 
-  // clean up story fly to on unmount
+  // clean up story on unmount
   useEffect(
     () => () => {
-      dispatch(setFlyToAction(null));
-      dispatch(setStoryLayerAction(null));
+      dispatch(setSelectedLayerIdsAction(null, true));
+      dispatch(setSelectedLayerIdsAction(null, false));
       dispatch(setGlobeTimeAction(0));
     },
     [dispatch]
   );
 
-  // redirect to first slide when current slide does not exist
-  if (story && !slide) {
-    return isShowcaseMode ? (
-      <Redirect to="/showcase" />
-    ) : (
-      <Redirect to={`/${mode}/${storyId}/0`} />
-    );
+  if (!mode) {
+    return null;
   }
 
+  const getRightSideComponent = (slide: Slide, story: StoryType) => {
+    if (slide.images) {
+      return <StoryMedia images={slide.images} storyId={story.id} />;
+    } else if (slide.videoId) {
+      return <StoryVideo videoId={slide.videoId} />;
+    }
+
+    return <Globes />;
+  };
+
   return (
-    <div className={styles.story}>
+    <div className={storyClasses}>
       {storyListItem && (
-        <StoryHeader story={storyListItem} mode={mode} storyIds={storyIds} />
+        <Header
+          backLink={`/${mode.toString()}`}
+          backButtonId="backToStories"
+          title={storyListItem.title}>
+          {storyMode && <Share />}
+        </Header>
       )}
-
-      {/* Instead of rendering only the currect slide we map over all slides to
-        enforce a newly mounted component when the pageNumber changes */}
-      {story?.slides.map(
-        (currentSlide, index) =>
-          index === slideIndex && (
-            <Slide mode={mode} slide={currentSlide} key={index} />
-          )
-      )}
-
-      {story && (
-        <StoryPagination
-          mode={mode}
-          slideIndex={slideIndex}
-          numberOfSlides={story.slides.length}
-          previousSlideLink={previousSlideLink}
-          nextSlideLink={nextSlideLink}
-        />
-      )}
-
-      {isShowcaseMode && <Autoplay autoPlayLink={autoPlayLink} />}
+      <main className={styles.main}>
+        {/* Instead of rendering only the currect slide we map over all slides to
+        enforce a newly mounted component when the slideNumber changes */}
+        {selectedStory?.slides.map(
+          (currentSlide, index) =>
+            index === slideIndex && (
+              <React.Fragment key={index}>
+                <StoryContent
+                  mode={mode}
+                  storyId={selectedStory.id}
+                  slide={currentSlide}
+                />
+                {getRightSideComponent(currentSlide, selectedStory)}
+              </React.Fragment>
+            )
+        )}
+      </main>
+      <StoryFooter
+        mode={mode}
+        slideIndex={slideIndex}
+        selectedStory={selectedStory}
+      />
     </div>
   );
 };

@@ -1,5 +1,10 @@
 import config from '../config/main';
 import {replaceUrlPlaceholders} from '../libs/replace-url-placeholders';
+import {
+  isElectron,
+  isOffline,
+  getOfflineTilesUrl
+} from '../libs/electron/index';
 
 import {Layer} from '../types/layer';
 
@@ -15,13 +20,12 @@ export function getLayerTileUrl(
     return null;
   }
 
-  const timeIndex = getLayerTime(time, layer.timestamps).toString();
-  const imageBaseUrl =
-    layer.type === 'tiles'
-      ? config.api.layerTiles
-      : config.api.layerSingleImage;
+  // decide between remote or local tiles
+  const url =
+    isElectron() && isOffline() ? getOfflineTilesUrl() : config.api.layerTiles;
 
-  return replaceUrlPlaceholders(imageBaseUrl, {
+  const timeIndex = getLayerTimeIndex(time, layer.timestamps).toString();
+  return replaceUrlPlaceholders(url, {
     id: layer.id,
     timeIndex
   });
@@ -31,16 +35,27 @@ export function getLayerTileUrl(
  * Returns the best matching time of all layer timestamps
  * based on the current global time
  */
-function getLayerTime(sliderTime: number, timestamps: string[]): number {
+export function getLayerTimeIndex(
+  sliderTime: number,
+  timestamps: string[]
+): number {
+  let minDiff = Infinity;
   let index = timestamps.length - 1;
 
-  for (let i = timestamps.length - 1; i > 0; i--) {
-    const layerTime = Number(new Date(timestamps[i]));
+  for (let i = timestamps.length - 1; i >= 0; i--) {
+    const tickTime = Number(new Date(timestamps[i]));
+    const diff = Math.abs(sliderTime - tickTime);
 
-    if (sliderTime > layerTime) {
+    if (diff < minDiff && tickTime <= sliderTime) {
+      minDiff = diff;
       index = i;
-      break;
     }
+  }
+
+  const firstTimestamp = Number(new Date(timestamps[0]));
+
+  if (sliderTime <= firstTimestamp) {
+    index = 0;
   }
 
   return index;

@@ -1,27 +1,8 @@
+@require '../../../variables.styl'
+
 .layerList
-  flex-grow: 1
-  overflow: scroll
+  overflow-y: scroll
   margin: 0
   padding: 0
-  height: calc(100vh - 80px)
-  background-color: #fff
+  height: 100%
   list-style: none
-
-.layerItem
-  padding: 15px
-  font-size: 1.1em
-  cursor: pointer
-
-.layerItem:hover, .layerItem:focus
-  background-color: #e0f1ff
-
-.layerItemSelected, .layerItemSelected:hover, .layerItemSelected:focus
-  background-color: #a8d7ff
-
-.subLayerItem
-  margin: 5px
-  padding: 15px
-  font-size: 1em
-
-.subLayerItemSelected
-  background-color: #a8d7ff

@@ -10,6 +10,7 @@
     "moduleResolution": "node",
     "target": "es5",
     "jsx": "react",
+    "downlevelIteration": true,
     "resolveJsonModule": true
   }
 }
