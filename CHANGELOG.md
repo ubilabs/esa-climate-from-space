@@ -1,3 +1,12 @@
+## [0.5.1](https://github.com/ubilabs/esa-climate-from-space/compare/v0.5.0...v0.5.1) (2020-06-10)
+
+
+### Features
+
+* **electron:** don’t show dev tools on load ([#350](https://github.com/ubilabs/esa-climate-from-space/issues/350)) ([d41423d](https://github.com/ubilabs/esa-climate-from-space/commit/d41423d463d40d62e345f5f2ee74289dd43157e7))
+
+
+
 # [0.5.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.4.1...v0.5.0) (2020-06-10)
 
 
