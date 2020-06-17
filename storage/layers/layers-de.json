@@ -2,8 +2,7 @@
   {
     "id": "fire.burned_area",
     "name": "Fire - Burned Area",
-    "description": "Das ist das verbrannte Gebiet",
-    "link": "http://..."
+    "description": "This is an important layer/n* Time Range: monthly 1987 - 2019/n* Temporal Resolution: monthly/n/n[Example Link 1](http://example.com)/n[Example Link 2](http://example.com)"
   },
   {
     "id": "soilmoisture.sm",

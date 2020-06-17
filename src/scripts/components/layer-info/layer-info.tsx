@@ -1,4 +1,5 @@
 import React, {FunctionComponent} from 'react';
+import ReactMarkdown from 'react-markdown';
 
 import {LayerListItem} from '../../types/layer-list';
 
@@ -14,19 +15,22 @@ const LayerInfo: FunctionComponent<Props> = ({layer}) => (
     <div className={styles.layerTitle}>
       <h1>{layer.name}</h1>
     </div>
-    <p className={styles.description}>
-      {layer.description} Placeholder: Lorem ipsum dolor sit amet consectetur
-      adipisicing elit.
-    </p>
-    <p className={styles.description}>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto unde
-      inventore debitis. Qui iusto laboriosam nam, consectetur veritatis,
-      repellendus cumque aliquid consequatur possimus doloremque quo,
-      perferendis corporis ratione quod quidem!
-    </p>
-    <a className={styles.link} href={layer.link}>
-      Link to further information
-    </a>
+    <div className={styles.description}>
+      <ReactMarkdown
+        source={layer.description}
+        allowedTypes={[
+          'heading',
+          'text',
+          'paragraph',
+          'break',
+          'strong',
+          'emphasis',
+          'list',
+          'listItem',
+          'link'
+        ]}
+      />
+    </div>
   </div>
 );
 
