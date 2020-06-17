@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/sea_state/data/v1.1_release/l4/v1.1"
-START_DATE=1993-01-01
-OUTPUT_FODLER=./download
+START_DATE=1991-08-01
+OUTPUT_FODLER=./download/sea-state
 
-for i in {0..10}
+mkdir -p $OUTPUT_FODLER
+
+for i in {0..328}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_MONTH=$(date +%Y%m -d "$START_DATE + $i month")

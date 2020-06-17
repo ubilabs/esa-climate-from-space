@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/soil_moisture/data/daily_files/COMBINED/v04.5"
-START_DATE=1987-11-01
-OUTPUT_FODLER=./download
+START_DATE=1978-11-01
+OUTPUT_FODLER=./download/soil
 
-for i in {0..5}
+mkdir -p $OUTPUT_FODLER
+
+for i in {0..481}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_MONTH=$(date +%Y%m%d -d "$START_DATE + $i month")

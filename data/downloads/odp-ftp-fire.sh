@@ -2,9 +2,11 @@
 
 BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/fire/data/burned_area/MODIS/grid/v5.1"
 START_DATE=2001-01-01
-OUTPUT_FOLDER=./download
+OUTPUT_FOLDER=./download/fire
 
-for i in {0..4}
+mkdir -p $OUTPUT_FODLER
+
+for i in {0..227}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_DATE_SPACE=$(date +%Y%m%d -d "$START_DATE + $i month")

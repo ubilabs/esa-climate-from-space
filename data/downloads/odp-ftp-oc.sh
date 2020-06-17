@@ -2,9 +2,11 @@
 
 BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/ocean_colour/data/v4.0-release/geographic/netcdf/chlor_a/monthly/v4.0/"
 START_DATE=1997-09-01
-OUTPUT_FODLER=./download
+OUTPUT_FODLER=./download/oc
 
-for i in {0..10}
+mkdir -p $OUTPUT_FODLER
+
+for i in {0..255}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_MONTH=$(date +%Y%m -d "$START_DATE + $i month")
