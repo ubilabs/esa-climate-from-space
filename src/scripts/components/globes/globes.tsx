@@ -75,6 +75,7 @@ const Globes: FunctionComponent = () => {
         zoomLevels={mainLayerDetails?.zoomLevels || 0}
         flyTo={flyTo}
         onMouseEnter={() => setIsMainActive(true)}
+        onTouchStart={() => setIsMainActive(true)}
         onChange={onChangeHandler}
         onMoveEnd={onMoveEndHandler}
       />
@@ -88,6 +89,7 @@ const Globes: FunctionComponent = () => {
           zoomLevels={compareLayerDetails?.zoomLevels || 0}
           flyTo={flyTo}
           onMouseEnter={() => setIsMainActive(false)}
+          onTouchStart={() => setIsMainActive(false)}
           onChange={onChangeHandler}
           onMoveEnd={onMoveEndHandler}
         />
