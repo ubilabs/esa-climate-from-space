@@ -53,6 +53,7 @@ interface Props {
   zoomLevels: number;
   flyTo: GlobeView | null;
   onMouseEnter: () => void;
+  onTouchStart: () => void;
   onChange: (view: GlobeView) => void;
   onMoveEnd: (view: GlobeView) => void;
 }
@@ -65,6 +66,7 @@ const Globe: FunctionComponent<Props> = ({
   active,
   flyTo,
   onMouseEnter,
+  onTouchStart,
   onChange,
   onMoveEnd
 }) => {
@@ -233,6 +235,7 @@ const Globe: FunctionComponent<Props> = ({
     <div
       className={styles.globe}
       onMouseEnter={() => onMouseEnter()}
+      onTouchStart={() => onTouchStart()}
       ref={ref}
     />
   );
