@@ -2,9 +2,11 @@
 
 BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/aerosol/data/AATSR_SU/L3/v4.21/MONTHLY/"
 START_DATE=2002-07-01
-OUTPUT_FODLER=./download
+OUTPUT_FODLER=./download/aerosol
 
-for i in {0..24}
+mkdir -p $OUTPUT_FODLER
+
+for i in {0..117}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_MONTH=$(date +%Y%m -d "$START_DATE + $i month")

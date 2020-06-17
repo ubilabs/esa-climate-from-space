@@ -2,9 +2,11 @@
 
 BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/sea_level/data/L4/MSLA/v2.0/"
 START_DATE=1994-01-15
-OUTPUT_FODLER=./download
+OUTPUT_FODLER=./download/sea-level
 
-for i in {0..10}
+mkdir -p $OUTPUT_FODLER
+
+for i in {0..263}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_MONTH=$(date +%Y%m%d -d "$START_DATE + $i month")
