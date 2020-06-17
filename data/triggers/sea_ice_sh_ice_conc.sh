@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-TIMEOUT=2000
+TIMEOUT=8000
 LAYER_ID="sea_ice_sh.ice_conc"
 VARIABLE_ID="ice_conc"
-VERSION="0.4.1"
+VERSION="0.5.1"
 ZOOM_LEVELS="0-3"
 MIN_LON="-180"
 MAX_LON="180"
 MIN_LAT="-90"
 MAX_LAT="-16.62393"
-MIN="auto"
-MAX="auto"
+MIN="0"
+MAX="100"
 MACHINE_TYPE="N1_HIGHCPU_8"
 
 if [ ! -f ./package.json ]; then

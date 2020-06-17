@@ -3,7 +3,7 @@
 TIMEOUT=8000
 LAYER_ID="snow.swe"
 VARIABLE_ID="swe"
-VERSION="0.4.1"
+VERSION="0.5.1"
 ZOOM_LEVELS="0-3"
 MIN="auto"
 MAX="auto"
