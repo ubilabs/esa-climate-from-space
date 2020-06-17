@@ -1,6 +1,6 @@
 {
   "fire.burned_area": {
-    "colorMap": "hot",
+    "colorMap": "afmhot",
     "timeFormat": {
       "year": "2-digit",
       "month": "numeric",
@@ -24,7 +24,7 @@
     }
   },
   "aerosol.AOD550_mean": {
-    "colorMap": "inferno",
+    "colorMap": "Oranges",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -32,7 +32,7 @@
     }
   },
   "cloud.cfc": {
-    "colorMap": "bone",
+    "colorMap": "gray",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -56,7 +56,7 @@
     }
   },
   "soil_moisture.sm": {
-    "colorMap": "inferno",
+    "colorMap": "BrBG",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -64,7 +64,7 @@
     }
   },
   "ozone.atmosphere_mole_content_of_ozone": {
-    "colorMap": "jet",
+    "colorMap": "viridis",
     "timeFormat": {
       "year": "numeric",
       "month": "long",

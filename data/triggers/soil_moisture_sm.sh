@@ -3,10 +3,10 @@
 TIMEOUT=8000
 LAYER_ID="soil_moisture.sm"
 VARIABLE_ID="sm"
-VERSION="test"
+VERSION="0.5.1"
 ZOOM_LEVELS="0-3"
-MIN="auto"
-MAX="auto"
+MIN="0"
+MAX="0.4"
 MACHINE_TYPE="N1_HIGHCPU_8"
 
 if [ ! -f ./package.json ]; then
