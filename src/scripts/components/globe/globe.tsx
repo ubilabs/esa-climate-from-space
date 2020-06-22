@@ -53,6 +53,7 @@ interface Props {
   zoomLevels: number;
   flyTo: GlobeView | null;
   onMouseEnter: () => void;
+  onTouchStart: () => void;
   onChange: (view: GlobeView) => void;
   onMoveEnd: (view: GlobeView) => void;
 }
@@ -65,6 +66,7 @@ const Globe: FunctionComponent<Props> = ({
   active,
   flyTo,
   onMouseEnter,
+  onTouchStart,
   onChange,
   onMoveEnd
 }) => {
@@ -197,19 +199,24 @@ const Globe: FunctionComponent<Props> = ({
         newLayer.minificationFilter = TextureMinificationFilter.NEAREST;
         // @ts-ignore
         newLayer.magnificationFilter = TextureMagnificationFilter.NEAREST;
-        newLayer.alpha = 0.75;
+        newLayer.alpha = 1;
 
         // remove and destroy old layers if they exist
         // we do not clean it up in the useEffect clean function because we want
         // to wait until the new layer is ready to prevent flickering
-        setTimeout(() => {
-          for (let i = 0; i < layers.length; i++) {
-            const layer = layers.get(i);
-            if (i !== 0 && layer !== newLayer) {
-              layers.remove(layer, true);
-            }
+        const layersToRemove: Cesium.ImageryLayer[] = [];
+
+        for (let i = 0; i < layers.length; i++) {
+          const layer = layers.get(i);
+          if (i !== 0 && layer !== newLayer) {
+            layersToRemove.push(layer);
           }
-        }, 100);
+        }
+
+        setTimeout(() => {
+          // eslint-disable-next-line max-nested-callbacks
+          layersToRemove.forEach(layer => layers.remove(layer, true));
+        }, 500);
       });
     } else if (layers.length > 1) {
       // remove old layers when no image should be shown anymore
@@ -233,6 +240,7 @@ const Globe: FunctionComponent<Props> = ({
     <div
       className={styles.globe}
       onMouseEnter={() => onMouseEnter()}
+      onTouchStart={() => onTouchStart()}
       ref={ref}
     />
   );
