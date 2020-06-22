@@ -36,6 +36,8 @@ export default {
     stories: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/stories-{lang}.json`,
     story: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}/{id}-{lang}.json`
   },
+  basemapTilesUrl:
+    'https://storage.googleapis.com/esa-cfs-tiles/0.5.1/basemap/',
   globe: globeState,
   share: {
     facebook:

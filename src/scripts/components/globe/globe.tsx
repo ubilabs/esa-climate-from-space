@@ -1,14 +1,4 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
-
-import {
-  getGlobeView,
-  setGlobeView,
-  flyToGlobeView
-} from '../../libs/get-globe-view';
-
-import {GlobeView} from '../../types/globe-view';
-import {GlobeProjection} from '../../types/globe-projection';
-
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 import {
   Viewer,
@@ -18,18 +8,28 @@ import {
   TileMapServiceImageryProvider,
   UrlTemplateImageryProvider,
   TextureMinificationFilter,
-  TextureMagnificationFilter,
-  buildModuleUrl
+  TextureMagnificationFilter
 } from 'cesium';
+
+import {
+  getGlobeView,
+  setGlobeView,
+  flyToGlobeView
+} from '../../libs/get-globe-view';
+
+import {GlobeView} from '../../types/globe-view';
+import {GlobeProjection} from '../../types/globe-projection';
+import config from '../../config/main';
 
 import {GlobeProjectionState} from '../../types/globe-projection-state';
 
 import styles from './globe.styl';
 
 // create default imagery provider
-const tileUrl = buildModuleUrl('Assets/Textures/NaturalEarthII');
 const imageryProvider = new TileMapServiceImageryProvider({
-  url: tileUrl
+  url: config.basemapTilesUrl,
+  fileExtension: 'png',
+  maximumLevel: 4
 });
 
 const cesiumOptions = {
