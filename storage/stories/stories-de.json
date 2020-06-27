@@ -4,7 +4,7 @@
     "title": "Die Wärmepumpe des Planeten",
     "description": "",
     "image": "assets/sst_large_18.jpg",
-    "tags": ["Sea-surface-temperature", "ocean-colour", "sea-surface-salinity", "water-vapour", "clouds"]
+    "tags": ["sea-surface-temperature", "ocean-colour", "sea-surface-salinity", "water-vapour", "clouds"]
   },
   {
     "id": "is-ozone-good-or-bad",
