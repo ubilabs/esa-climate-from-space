@@ -4,21 +4,21 @@
     "title": "Planetary Heat Pumps",
     "description": "",
     "image": "assets/sst_large_18.jpg",
-    "tags": ["SST", "Ocean colour", "Salinity", "Water vapour", "Cloud"]
+    "tags": ["sea-surface-temperature", "ocean-colour", "sea-surface-salinity", "water-vapour", "clouds"]
   },
   {
     "id": "is-ozone-good-or-bad",
     "title": "Is Ozone Good or Bad?",
     "description": "",
     "image": "assets/sst_large_18.jpg",
-    "tags": ["Ozone", "Aerosol"]
+    "tags": ["ozone", "aerosol"]
   },
   {
     "id": "breaking-the-ice",
     "title": "Breaking the Ice",
     "description": "",
     "image": "assets/seaice.jpg",
-    "tags": ["Sea ice", "SST", "Ocean salinity", "Permafrost"]
+    "tags": ["sea-ice", "sea-surface-temperature", "sea-surface-salinity", "permafrost"]
   },
   {
     "id": "story2",

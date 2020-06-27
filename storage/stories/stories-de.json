@@ -4,21 +4,21 @@
     "title": "Die Wärmepumpe des Planeten",
     "description": "",
     "image": "assets/sst_large_18.jpg",
-    "tags": ["nature", "biomass", "university", "co2", "globalwarming"]
+    "tags": ["Sea-surface-temperature", "ocean-colour", "sea-surface-salinity", "water-vapour", "clouds"]
   },
   {
     "id": "is-ozone-good-or-bad",
     "title": "Ist Ozon gut oder schlecht?",
     "description": "",
     "image": "assets/sst_large_18.jpg",
-    "tags": ["Ozone", "Aerosol"]
+    "tags": ["ozone", "aerosol"]
   },
   {
     "id": "breaking-the-ice",
     "title": "Das Eis bricht auf",
     "description": "",
     "image": "assets/seaice.jpg",
-    "tags": ["Sea ice", "SST", "Ocean salinity", "Permafrost"]
+    "tags": ["sea-ice", "sea-surface-temperature", "sea-surface-salinity", "permafrost"]
   },
   {
     "id": "story2",

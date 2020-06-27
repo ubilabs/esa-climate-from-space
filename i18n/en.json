@@ -51,5 +51,14 @@
   "tags.landcover": "Land cover",
   "tags.aerosol": "Aerosol",
   "tags.globalwarming": "Global Warming",
-  "tags.co2": "CO2"
+  "tags.co2": "CO2",
+  "tags.ozone": "Ozone",
+  "tags.aerosol": "Aerosols",
+  "tags.sea-ice": "Sea Ice",
+  "tags.sea-surface-temperature": "Sea Surface Temperature",
+  "tags.sea-surface-salinity": "Sea Surface Salinity",
+  "tags.permafrost": "Permafrost",
+  "ocean-colour": "Ocean Colour",
+  "water-vapour": "Water Vapour",
+  "clouds": "Clouds"
 }
