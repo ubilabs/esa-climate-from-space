@@ -1,116 +1,116 @@
 [
   {
     "id": "fire.burned_area",
-    "name": "Fire - Burned Area",
-    "description": "This is the ...",
+    "name": "Fire",
+    "description": "Throughout history, humans have used fire as an environmental management tool. Vegetation characteristics, mainly biomass loads and moisture, determine fire behaviour, but fire also modifies vegetation structure and evolution. Climate affects fire occurrence through the thermal and precipitation cycles, but it is also affected by fire, particularly by gaseous and PM emissions. This mutual influences among vegetation, climate and fire highlight the importance of having global long-term burned area (BA) information that serves as input for climate and vegetation modellers.\n\nCurrently, FireCCI51 BA product includes 19 years of global BA data. The product is offered at 250m resolution with date of detection, and at 0.25 degree cells with total BA and land cover. In both cases, uncertainty layers are also incorporated.\n\n**Variable Shown:** Total Burned Area in Square Meters  \n**Time Span:** 2001-01 – 2019-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:**  0.25 x 0.25 degree\n**Version:** 5.1\n\n[ESA CCI Fire ECV Project website](http://www.esa-fire-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/3628cb2fdba443588155e15dee8e5352)",
     "link": "http://..."
   },
   {
     "id": "soilmoisture.sm",
-    "name": "Soil Moisture - SM",
-    "description": "This is the ...",
+    "name": "Soil Moisture",
+    "description": "**Variable Shown:** Volumetric Soil Moisture in m3/m3  \n**Time Span:** 1978-11 – 2019-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:**  0.25 degrees  \n**Version:** 4.7  \n\n[ESA CCI Soil Moisture ECV Project website](https://www.esa-soilmoisture-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/2d4a50f390064820a9dcc2fcf7ac4b18)",
     "link": "http://..."
   },
   {
     "id": "sst.analysed_sst",
-    "name": "SST - Analysed SST",
-    "description": "This is the ...",
+    "name": "Sea Surface Temperature",
+    "description": "**Variable Shown:** Analysed Sea Surface Temperature in Kelvin  \n**Time Span:** 1981-08 – 2016-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:** 0.05 degrees  \n**Version:** 2.1  \n\n[ESA CCI Sea Surface Temperature ECV Project website](http://www.esa-sst-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/62c0f97b1eac4e0197a674870afe1ee6)",
     "link": "http://..."
   },
   {
     "id": "oc.chlor_a",
-    "name": "Ocean Color - Chlor_a",
-    "description": "This is the ...",
+    "name": "Ocean Color",
+    "description": "**Variable Shown:** Chlorophyll-a concentration in seawater in Milligram/m3\n**Time Span:** 1997-09 – 2018-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:** 4 km\n**Version:** 4.0  \n\n[ESA CCI Ocean Color ECV Project website](https://esa-oceancolour-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/eef36ac7c892491aa862097e79827f68)",
     "link": "http://..."
   },
   {
     "id": "aerosol.AOD550_mean",
-    "name": "Aerosol AOD550_mean",
-    "description": "This is the ...",
+    "name": "Aerosol",
+    "description": "Aerosol Optical Depth (AOD) quantifies the total aerosol extinction integrated over the entire vertical column of the atmosphere. Maps of AOD show the dominant global aerosol sources (e.g. Sahara desert, tropical biomass burning, Industrial emissions over for example China, the Po valley, North-Western Europe) as well as the large spatial and temporal variations due to the short particle lifetime in the atmosphere of a few days to a week.\n\nIn CCI a global record of AOD covering 1995 to 2012 has been processed together with further data records which contain additional aerosol parameters (e.g. Fine Mode AOD of small particles, Mineral Dust AOD, aerosol absorption, aerosol layer height). The animation in the App shows daily AOD maps from dual-view radiometers ATSR-2 / AATSR (Swansea algorithm, version 4.3).\n\n**Variable Shown:**  Aerosol Optical Thickness at 550 nm  \n**Time Span:** 2002-05 – 2012-04  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Version:** 4.21  \n\n[ESA CCI Aerosol ECV Project website](http://cci.esa.int/aerosol)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/5dd3881e89c8419bbdba4ab06aa91112)",
     "link": "http://..."
   },
   {
     "id": "cloud.cfc",
-    "name": "Clouds - CFC",
-    "description": "This is the ...",
+    "name": "Clouds",
+    "description": "**Variable Shown:**  Cloud Fraction  \n**Time Span:** 1982-01 – 2016-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Version:** 3.0  \n\n[ESA CCI Cloud ECV Project website](http://www.esa-cloud-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/004fd44ff5124174ad3c03dd2c67d548)",
     "link": "http://..."
   },
   {
     "id": "sea_level.sla",
-    "name": "Sea Level - sla",
-    "description": "This is the ...",
+    "name": "Sea Level",
+    "description": "Although the global trend indicates a rise in the mean level of the oceans, there are marked regional differences that vary between -10 and +10 mm/year. A map of these regional trends is one of the Sea Level CCI products, obtained after gridding the multi-mission SL_cci Fundamental Climate Data Records from radar altimetry from 1993 until 2015. This product enables the local slopes to be estimated with a resolution of 1/4 of a degree. Isolated variations in mean sea level are thus revealed, mainly in the major ocean currents. (Credits ESA/CLS/CNES/LEGOS).\n\n**Variable Shown:** Monthly Sea Level Anomalies in Meters  \n**Time Span:** 1993-01 – 2015-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatzial Resolution:** 0.25 degrees\n**Version:** 3.0  \n\n[ESA CCI Sea Level ECV Project website](http://www.esa-sealevel-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/142052b9dc754f6da47a631e35ec4609)",
     "link": "http://..."
   },
   {
     "id": "ozone.atmosphere_mole_content_of_ozone",
-    "name": "Ozone - Atmosphere Mole",
-    "description": "This is the ...",
+    "name": "Ozone",
+    "description": "Ozone is an important trace gas in the atmosphere and protects life on Earth by absorbing most of the biologically harmful ultraviolet sunlight. In the framework of ESA’s Climate Change Initiative a high-quality global total ozone data set has been generated from space-based observations that cover the period from 1995 to present. The data record can be used to investigate the long-term evolution of ozone in the atmosphere, which is intimately coupled to climate change. Of particular interest is the search for signs of recovery from the severe thinning and damage of the ozone layer, that was caused by human activities.\n\n\n**Variable Shown:** Mean Total Ozone Column in Dobson Units  \n**Time Span:** 1996-03 – 2011-06  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Version:** 1  \n\n[ESA CCI Ozone ECV Project website](http://cci.esa.int/ozone)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/0d2260ad4e2c42b6b14fe5b3308f5eaa)",
     "link": "http://..."
   },
   {
     "id": "sea_state.swh_mean",
-    "name": "Sea State - swh mean",
-    "description": "This is the ...",
+    "name": "Sea State",
+    "description": "Sea states are relevant for all activities at sea and on the coast, and their climatology is the main driver for the design and maintenance of marine structures. Sea states also modify air-sea exchanges of heat and momentum, and contribute to coastal sea level and sea ice properties. The Sea State CCI is processing altimeter and Synthetic Aperture Radar data from 2002 onward in order to consistently calibrate and validate these datasets and investigate the variability of sea states in our changing climate. One of the most noticeable change occurs in the Arctic region, where receding sea ice gives more open water over which wind generates waves. Extreme sea states also have a profound impact on the coasts, as they may increase substantially the water level and cause flooding in low lying lands, or severely erode sandy beaches.\n\n**Variable Shown:** Mean of Median Significant Wave Height Values in Meters  \n**Time Span:** 1991-07 – 2018-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:** 1 degree\n**Version:** 1.1  \n\n[ESA CCI Sea State ECV Project website](http://cci.esa.int/seastate)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/47140d618dcc40309e1edbca7e773478)",
     "link": "http://..."
   },
   {
     "id": "sea_ice_sh.ice_conc",
-    "name": "Sea Ice SH - Ice Conc",
-    "description": "This is the ...",
+    "name": "Sea Ice – Southern Hemisphere",
+    "description": "**Variable Shown:** Sea Ice Area Fraction in Percent  \n**Time Span:** 2002-05 – 2017-05  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**SPatial Resolution:** 25km  \n**Version:** 2.1  \n\n[ESA CCI Sea Ice ECV Project website](http://esa-cci.nersc.no/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/f17f146a31b14dfd960cde0874236ee5)",
     "link": "http://..."
   },
   {
     "id": "sea_ice_nh.ice_conc",
-    "name": "Sea Ice NH - Ice Conc",
-    "description": "This is the ...",
+    "name": "Sea Ice – Northern Hemisphere",
+    "description": "**Variable Shown:** Sea Ice Area Fraction in Percent  \n**Time Span:** 2002-05 – 2017-05  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:** 25km  \n**Version:** 2.1  \n\n[ESA CCI Sea Ice ECV Project website](http://esa-cci.nersc.no/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/f17f146a31b14dfd960cde0874236ee5)",
     "link": "http://..."
   },
   {
     "id": "greenland_ice.sec",
-    "name": "Greenland Ice Sheet - SEC",
-    "description": "This is the ...",
+    "name": "Greenland Ice Sheet",
+    "description": "The mass balance of the ice sheets are a key parameter for global climate change monitoring, since the ice sheet mass loss directly affect the global sea level rise. In the Greenland CCI project both ice sheet mass loss, elevation changes and ice velocities are monitored, all telling the same story: that the Greenland ice sheet is losing mass at accelerated pace since 2002, but only the GRACE and GRACE-FO missions give a direct quantification of the overall mass loss; the other ECV parameters confirm that the big mass changes occur close to the ice sheet margins, especially around the big outlet glaciers. The GRACE satellites have shown that the ice mass loss rate has surprising variations: After a record melt in 2012, the Greenland ice sheet melt acceleration stopped, and only resumed again after another record melt in 2019, mainly due to a number of cold summers in the 2012-2018 time frame. This highlights the dynamic nature and sensitivity to local climate of the Greenland ice sheet melt.\n\n**Variable Shown:** Surface elevation changes  \n**Time Span:** 1992-01 – 2014-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Extend:** 0.05 degree  \n**Version:** 1.2  \n\n[ESA CCI Greenland Ice Sheet ECV Project website](http://esa-icesheets-greenland-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/a7b87a912c494c03b4d2fa5ab8479d1c)",
     "link": "http://..."
   },
   {
     "id": "permafrost.pfr",
-    "name": "Permafrost - PFR",
-    "description": "This is the ...",
+    "name": "Permafrost",
+    "description": "Permafrost is an Essential Climate Variable (ECV) within the Global Climate Observing System (GCOS), which is characterized by subsurface temperatures and the depth of the seasonal thaw layer. Complementing ground-based monitoring networks, the Permafrost CCI project is establishing Earth Observation (EO) based products for the permafrost ECV spanning the last two decades. Since ground temperature and thaw depth cannot be directly observed from space-borne sensors, a variety of satellite and reanalysis data are combined in a ground thermal model. The algorithm uses remotely sensed data sets of Land Surface Temperature and landcover to drive the transient permafrost model CryoGrid CCI, which yields thaw depth and ground temperature at various depths, while ground temperature forms the basis for permafrost fraction.\n\n**Variable Shown:** Permafrost Fraction in Percent\n**Time Span:** 2003-01 – 2017-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** 90° N – 30° N\n**Spatial Resolution:**  \n**Version:** 1.0  \n\n[ESA CCI Permafrost ECV Project website](http://cci.esa.int/Permafrost)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/c7590fe40d8e44169d511c70a60ccbcc)",
     "link": "http://..."
   },
   {
     "id": "land_cover.lccs_class",
-    "name": "Land Cover - lccs_class",
-    "description": "This is the ...",
+    "name": "Land Cover",
+    "description": "**Variable Shown:** Land cover class defined in LCCS  \n**Time Span:** 1992-01 – 2015-12  \n**Temporal resolution:** yearly  \n**Geographic Extent:** global\n**Spatial Resolution:** 300m \n**Version:** 2.0.7  \n\n[ESA CCI Landcover ECV Project website](https://www.esa-landcover-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/b382ebe6679d44b8b0e68ea4ef4b701c)",
     "link": "http://..."
   },
   {
     "id": "sea_surface_salinity.sss",
-    "name": "Sea Surface Salinity - sss",
-    "description": "This is the ...",
+    "name": "Sea Surface Salinity",
+    "description": "**Variable Shown:** Unbiased Merged Sea Surface Salinity  \n**Time Span:** 2010-01 – 2018-11  \n**Temporal resolution:** yearly  \n**Geographic Extent:** global\n**Spatial Resolution:** 25km \n**Version:** 1.8  \n\n[ESA CCI Sea Surface Salinity ECV Project website](http://cci.esa.int/salinity)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/aea368301bff448bbbea7e90e66819e5)",
     "link": "http://..."
   },
   {
     "id": "snow.swe",
-    "name": "Snow - swe",
-    "description": "This is the ...",
+    "name": "Snow",
+    "description": "**Variable Shown:** Snow Water Equivalent (mm)  \n**Time Span:** 1979-01 – 2018-05  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global\n**Spatial Resolution:** 15km - 69km  \n**Version:** 1.0  \n\n[ESA CCI Snow ECV Project website](http://cci.esa.int/snow)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/fa20aaa2060e40cabf5fedce7a9716d0)",
     "link": "http://..."
   },
   {
     "id": "biomass.agb",
-    "name": "Biomass - agb",
-    "description": "This is the ...",
+    "name": "Biomass",
+    "description": "**Variable Shown:** Above-ground biomass in Mg/ha  \n**Time Span:** 2017  \n**Temporal resolution:** yearly  \n**Geographic Extent:** global\n**Spatial Resolution:**   \n**Version:** 1  \n\n[ESA CCI Biomass ECV Project website](http://cci.esa.int/biomass)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/bedc59f37c9545c981a839eb552e4084)",
     "link": "http://..."
   },
   {
     "id": "greenhouse.xco2",
-    "name": "Greenhouse - xco2",
-    "description": "This is the ...",
+    "name": "Greenhouse Gases – CO2",
+    "description": "**Variable Shown:** Column-Average Dry-Air Mole Fraction of Atmospheric Carbon Dioxide in Dry Air  \n**Time Span:** 2015-01 – 2018-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global\n**Version:** 8  \n\n[ESA CCI Greenhouse Gases ECV Project website](http://cci.esa.int/ghg)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/b06213c3f3934a689f89ab22aa50e471)",
     "link": "http://..."
   },
   {
     "id": "greenhouse.xch4",
-    "name": "Greenhouse - xch4",
-    "description": "This is the ...",
+    "name": "Greenhouse - CH4",
+    "description": "**Variable Shown:** Column-Averaged Dry Air Mole Fraction of Atmospheric Methane  \n**Time Span:** 2015-01 – 2018-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global\n**Version:** 1.2  \n\n[ESA CCI Greenhouse Gases ECV Project website](http://cci.esa.int/ghg)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/3534bbf43fa14e40bc61944eaf664511)",
     "link": "http://..."
   }
 ]

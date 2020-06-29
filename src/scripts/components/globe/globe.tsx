@@ -1,14 +1,4 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
-
-import {
-  getGlobeView,
-  setGlobeView,
-  flyToGlobeView
-} from '../../libs/get-globe-view';
-
-import {GlobeView} from '../../types/globe-view';
-import {GlobeProjection} from '../../types/globe-projection';
-
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 import {
   Viewer,
@@ -18,18 +8,28 @@ import {
   TileMapServiceImageryProvider,
   UrlTemplateImageryProvider,
   TextureMinificationFilter,
-  TextureMagnificationFilter,
-  buildModuleUrl
+  TextureMagnificationFilter
 } from 'cesium';
+
+import {
+  getGlobeView,
+  setGlobeView,
+  flyToGlobeView
+} from '../../libs/get-globe-view';
+
+import {GlobeView} from '../../types/globe-view';
+import {GlobeProjection} from '../../types/globe-projection';
+import config from '../../config/main';
 
 import {GlobeProjectionState} from '../../types/globe-projection-state';
 
 import styles from './globe.styl';
 
 // create default imagery provider
-const tileUrl = buildModuleUrl('Assets/Textures/NaturalEarthII');
 const imageryProvider = new TileMapServiceImageryProvider({
-  url: tileUrl
+  url: config.basemapTilesUrl,
+  fileExtension: 'png',
+  maximumLevel: 4
 });
 
 const cesiumOptions = {
@@ -53,6 +53,7 @@ interface Props {
   zoomLevels: number;
   flyTo: GlobeView | null;
   onMouseEnter: () => void;
+  onTouchStart: () => void;
   onChange: (view: GlobeView) => void;
   onMoveEnd: (view: GlobeView) => void;
 }
@@ -65,6 +66,7 @@ const Globe: FunctionComponent<Props> = ({
   active,
   flyTo,
   onMouseEnter,
+  onTouchStart,
   onChange,
   onMoveEnd
 }) => {
@@ -197,19 +199,24 @@ const Globe: FunctionComponent<Props> = ({
         newLayer.minificationFilter = TextureMinificationFilter.NEAREST;
         // @ts-ignore
         newLayer.magnificationFilter = TextureMagnificationFilter.NEAREST;
-        newLayer.alpha = 0.75;
+        newLayer.alpha = 1;
 
         // remove and destroy old layers if they exist
         // we do not clean it up in the useEffect clean function because we want
         // to wait until the new layer is ready to prevent flickering
-        setTimeout(() => {
-          for (let i = 0; i < layers.length; i++) {
-            const layer = layers.get(i);
-            if (i !== 0 && layer !== newLayer) {
-              layers.remove(layer, true);
-            }
+        const layersToRemove: Cesium.ImageryLayer[] = [];
+
+        for (let i = 0; i < layers.length; i++) {
+          const layer = layers.get(i);
+          if (i !== 0 && layer !== newLayer) {
+            layersToRemove.push(layer);
           }
-        }, 100);
+        }
+
+        setTimeout(() => {
+          // eslint-disable-next-line max-nested-callbacks
+          layersToRemove.forEach(layer => layers.remove(layer, true));
+        }, 500);
       });
     } else if (layers.length > 1) {
       // remove old layers when no image should be shown anymore
@@ -233,6 +240,7 @@ const Globe: FunctionComponent<Props> = ({
     <div
       className={styles.globe}
       onMouseEnter={() => onMouseEnter()}
+      onTouchStart={() => onTouchStart()}
       ref={ref}
     />
   );

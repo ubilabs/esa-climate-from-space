@@ -2,9 +2,11 @@
 
 BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/ozone/data/total_columns/l3/merged/v0100"
 START_DATE=2001-04-01
-OUTPUT_FODLER=./download
+OUTPUT_FODLER=./download/ozone
 
-for i in {0..10}
+mkdir -p $OUTPUT_FODLER
+
+for i in {0..122}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_MONTH=$(date +%Y%m%d -d "$START_DATE + $i month")

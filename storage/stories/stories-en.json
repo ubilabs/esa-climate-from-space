@@ -1,10 +1,24 @@
 [
   {
-    "id": "story1",
-    "title": "Planetary Heat Store",
+    "id": "planetary-heat-pumps",
+    "title": "Planetary Heat Pumps",
     "description": "",
     "image": "assets/sst_large_18.jpg",
-    "tags": ["nature", "biomass", "university", "co2", "globalwarming"]
+    "tags": ["sea-surface-temperature", "ocean-colour", "sea-surface-salinity", "water-vapour", "clouds"]
+  },
+  {
+    "id": "is-ozone-good-or-bad",
+    "title": "Is Ozone Good or Bad?",
+    "description": "",
+    "image": "assets/ozone.jpg",
+    "tags": ["ozone", "aerosol"]
+  },
+  {
+    "id": "breaking-the-ice",
+    "title": "Breaking the Ice",
+    "description": "",
+    "image": "assets/seaice.jpg",
+    "tags": ["sea-ice", "sea-surface-temperature", "sea-surface-salinity", "permafrost"]
   },
   {
     "id": "story2",

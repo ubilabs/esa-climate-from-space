@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-TIMEOUT=8000
+TIMEOUT=10000
 LAYER_ID="sea_level.sla"
 VARIABLE_ID="sla"
-VERSION="0.4.1"
+VERSION="0.5.1"
 ZOOM_LEVELS="0-3"
-MIN="auto"
-MAX="auto"
+MIN="-0.5"
+MAX="0.5"
 MACHINE_TYPE="N1_HIGHCPU_8"
 
 if [ ! -f ./package.json ]; then
@@ -14,8 +14,8 @@ if [ ! -f ./package.json ]; then
     exit 1
 fi
 
-# --machine-type=$MACHINE_TYPE \
 gcloud builds submit --config ./ci/cloudbuild-tiles.yaml \
+  --machine-type=$MACHINE_TYPE \
   --timeout=$TIMEOUT \
   --substitutions _LAYER_ID=$LAYER_ID,_VARIABLE_ID=$VARIABLE_ID,_ZOOM_LEVELS=$ZOOM_LEVELS,_VERSION=$VERSION,_MIN=$MIN,_MAX=$MAX \
   .

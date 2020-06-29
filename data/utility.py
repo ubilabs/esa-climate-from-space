@@ -30,10 +30,10 @@ def write_world_file(shape, attributes):
   lon_max = 180
 
   try:
-    lat_min = attributes['geospatial_lat_min']
-    lat_max = attributes['geospatial_lat_max']
-    lon_min = attributes['geospatial_lon_min']
-    lon_max = attributes['geospatial_lon_max']
+    lat_min = float(attributes['geospatial_lat_min'])
+    lat_max = float(attributes['geospatial_lat_max'])
+    lon_min = float(attributes['geospatial_lon_min'])
+    lon_max = float(attributes['geospatial_lon_max'])
   except KeyError:
     print("Write Worldfile: Could not read geospatil info using defauls!")
 

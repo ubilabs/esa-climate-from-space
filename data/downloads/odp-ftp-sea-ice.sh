@@ -3,12 +3,12 @@
 BASE_URL_SH="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/sea_ice/data/sea_ice_concentration/L4/amsr/25km/v2.1/SH"
 BASE_URL_NH="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/sea_ice/data/sea_ice_concentration/L4/amsr/25km/v2.1/NH"
 START_DATE=2002-06-01
-OUTPUT_FODLER=./download
+OUTPUT_FODLER=./download/sea-ice
 
-mkdir $OUTPUT_FODLER/NH
-mkdir $OUTPUT_FODLER/SH
+mkdir -p $OUTPUT_FODLER/NH
+mkdir -p $OUTPUT_FODLER/SH
 
-for i in {0..5}
+for i in {0..179}
 do
   NEXT_YEAR=$(date +%Y/%m -d "$START_DATE + $i month")
   NEXT_MONTH=$(date +%Y%m%d -d "$START_DATE + $i month")

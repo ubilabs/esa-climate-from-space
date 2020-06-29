@@ -3,10 +3,10 @@
 TIMEOUT=8000
 LAYER_ID="ozone.atmosphere_mole_content_of_ozone"
 VARIABLE_ID="atmosphere_mole_content_of_ozone"
-VERSION="test"
+VERSION="0.5.1"
 ZOOM_LEVELS="0-3"
-MIN="auto"
-MAX="auto"
+MIN="100"
+MAX="500"
 MACHINE_TYPE="N1_HIGHCPU_8"
 
 if [ ! -f ./package.json ]; then

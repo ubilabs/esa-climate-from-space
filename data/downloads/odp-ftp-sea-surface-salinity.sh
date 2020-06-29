@@ -2,9 +2,11 @@
 
 BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/sea_surface_salinity/data/v01.8/30days"
 START_DATE=2010-01-01
-OUTPUT_FODLER=./download
+OUTPUT_FODLER=./download/sss
 
-for i in {0..5}
+mkdir -p $OUTPUT_FODLER
+
+for i in {0..106}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_DATE=$(date +%Y%m%d -d "$START_DATE + $i month")

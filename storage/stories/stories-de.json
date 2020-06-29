@@ -1,10 +1,24 @@
 [
   {
-    "id": "story1",
-    "title": "Planetarer Wärmespeicher",
+    "id": "planetary-heat-pumps",
+    "title": "Die Wärmepumpe des Planeten",
     "description": "",
     "image": "assets/sst_large_18.jpg",
-    "tags": ["nature", "biomass", "university", "co2", "globalwarming"]
+    "tags": ["sea-surface-temperature", "ocean-colour", "sea-surface-salinity", "water-vapour", "clouds"]
+  },
+  {
+    "id": "is-ozone-good-or-bad",
+    "title": "Ist Ozon gut oder schlecht?",
+    "description": "",
+    "image": "assets/ozone.jpg",
+    "tags": ["ozone", "aerosol"]
+  },
+  {
+    "id": "breaking-the-ice",
+    "title": "Das Eis bricht auf",
+    "description": "",
+    "image": "assets/seaice.jpg",
+    "tags": ["sea-ice", "sea-surface-temperature", "sea-surface-salinity", "permafrost"]
   },
   {
     "id": "story2",

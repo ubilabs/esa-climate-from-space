@@ -3,10 +3,10 @@
 TIMEOUT=8000
 LAYER_ID="cloud.cfc"
 VARIABLE_ID="cfc"
-VERSION="test"
-ZOOM_LEVELS="0-4"
-MIN="auto"
-MAX="auto"
+VERSION="0.5.1"
+ZOOM_LEVELS="0-3"
+MIN="0"
+MAX="1"
 MACHINE_TYPE="N1_HIGHCPU_8"
 
 if [ ! -f ./package.json ]; then

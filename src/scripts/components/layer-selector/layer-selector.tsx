@@ -18,6 +18,7 @@ import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
   const layers = useSelector(layersSelector);
+  const sortedLayers = layers.sort((a, b) => a.name.localeCompare(b.name));
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const showLayerSelector = useSelector(showLayerSelectorSelector);
   const selectedMainLayer = layers.find(
@@ -64,7 +65,7 @@ const LayerSelector: FunctionComponent = () => {
               />
             )}
             <LayerList
-              layers={layers}
+              layers={sortedLayers}
               selectedLayerIds={selectedLayerIds}
               onSelect={(layerId, isMain) =>
                 dispatch(setSelectedLayerIdsAction(layerId, isMain))

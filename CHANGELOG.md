@@ -1,3 +1,31 @@
+# [0.6.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.5.1...v0.6.0) (2020-06-29)
+
+
+### Bug Fixes
+
+* **data:** download complete time ranges ([03923bc](https://github.com/ubilabs/esa-climate-from-space/commit/03923bc67c0357cb1dda92696daea3c5f336fec2))
+* **data:** update data triggers ([bd21777](https://github.com/ubilabs/esa-climate-from-space/commit/bd2177749a8bd3f5840b154dc79062359f379b24))
+* **globe:** fix problems with touch devices in compare mode ([#359](https://github.com/ubilabs/esa-climate-from-space/issues/359)) ([d34f18f](https://github.com/ubilabs/esa-climate-from-space/commit/d34f18f72892cd597b0f730287fee8487ade736d))
+* **globe:** make tile changes less “flickery” ([#360](https://github.com/ubilabs/esa-climate-from-space/issues/360)) ([5b26cf5](https://github.com/ubilabs/esa-climate-from-space/commit/5b26cf5bf5d0f5bfbc54017216b388efe691ddf5))
+* **globe:** use correct version in basemap url ([#365](https://github.com/ubilabs/esa-climate-from-space/issues/365)) ([6738a05](https://github.com/ubilabs/esa-climate-from-space/commit/6738a05f3c145716918be44f77914c6a6c53479d))
+
+
+### Features
+
+* **globe:** use new basemap tiles ([#364](https://github.com/ubilabs/esa-climate-from-space/issues/364)) ([bb5660a](https://github.com/ubilabs/esa-climate-from-space/commit/bb5660a5dff321ed127479446d83731a52fcf52d))
+* **layer-info:** use markdown for layer description ([b53528c](https://github.com/ubilabs/esa-climate-from-space/commit/b53528cb80ed6c9e72eb5e7fa61a9fc869ba7221))
+
+
+
+## [0.5.1](https://github.com/ubilabs/esa-climate-from-space/compare/v0.5.0...v0.5.1) (2020-06-10)
+
+
+### Features
+
+* **electron:** don’t show dev tools on load ([#350](https://github.com/ubilabs/esa-climate-from-space/issues/350)) ([d41423d](https://github.com/ubilabs/esa-climate-from-space/commit/d41423d463d40d62e345f5f2ee74289dd43157e7))
+
+
+
 # [0.5.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.4.1...v0.5.0) (2020-06-10)
 
 
