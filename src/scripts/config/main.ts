@@ -24,19 +24,21 @@ const globeState: GlobeState = {
 
 // @ts-ignore - injected via webpack's define plugin
 const version = INFO_VERSION;
+const baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
+const baseUrlTiles = `https://storage.googleapis.com/esa-cfs-tiles/${version}`;
 
 export default {
   api: {
-    layers: `https://storage.googleapis.com/esa-cfs-storage/${version}/layers/layers-{lang}.json`,
-    layer: `https://storage.googleapis.com/esa-cfs-tiles/${version}/{id}/metadata.json`,
-    layerTiles: `https://storage.googleapis.com/esa-cfs-tiles/${version}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
-    layerOfflinePackage: `https://storage.googleapis.com/esa-cfs-tiles/${version}/{id}/package.zip`,
-    storyOfflinePackage: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}/package.zip`,
-    storyMediaBase: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}`,
-    stories: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/stories-{lang}.json`,
-    story: `https://storage.googleapis.com/esa-cfs-storage/${version}/stories/{id}/{id}-{lang}.json`
+    layers: `${baseUrlStorage}/layers/layers-{lang}.json`,
+    layer: `${baseUrlTiles}/{id}/metadata.json`,
+    layerTiles: `${baseUrlTiles}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
+    layerOfflinePackage: `${baseUrlTiles}/{id}/package.zip`,
+    storyOfflinePackage: `${baseUrlStorage}/stories/{id}/package.zip`,
+    storyMediaBase: `${baseUrlStorage}/stories/{id}`,
+    stories: `${baseUrlStorage}/stories/stories-{lang}.json`,
+    story: `${baseUrlStorage}/stories/{id}/{id}-{lang}.json`
   },
-  basemapTilesUrl: `https://storage.googleapis.com/esa-cfs-tiles/${version}/basemap/`,
+  basemapTilesUrl: `${baseUrlTiles}/basemap/`,
   globe: globeState,
   share: {
     facebook:
