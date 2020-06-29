@@ -10,7 +10,7 @@ for storyId in */; do
   tmpDir=/tmp/story-$storyId
   mkdir $tmpDir
 
-  cp -r ./$storyId/* $tmpDir
+  cp -rf ./$storyId/* $tmpDir
   lastDir=(`pwd`)
 
   cd /tmp
