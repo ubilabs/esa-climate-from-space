@@ -1,6 +1,7 @@
 {
   "fire.burned_area": {
     "colorMap": "afmhot",
+    "basemap": "ocean",
     "timeFormat": {
       "year": "2-digit",
       "month": "numeric",
@@ -9,6 +10,7 @@
   },
   "sst.analysed_sst": {
     "colorMap": "jet",
+    "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -25,6 +27,7 @@
   },
   "aerosol.AOD550_mean": {
     "colorMap": "Oranges",
+    "basemap": "atmosphere",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -33,6 +36,7 @@
   },
   "cloud.cfc": {
     "colorMap": "gray",
+    "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
       "month": "long",

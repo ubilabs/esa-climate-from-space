@@ -72,6 +72,7 @@ const Globes: FunctionComponent = () => {
         view={currentView}
         projectionState={projectionState}
         tilesUrl={mainTilesUrl}
+        basemap={mainLayerDetails?.basemap || null}
         zoomLevels={mainLayerDetails?.zoomLevels || 0}
         flyTo={flyTo}
         onMouseEnter={() => setIsMainActive(true)}
@@ -86,6 +87,7 @@ const Globes: FunctionComponent = () => {
           view={currentView}
           projectionState={projectionState}
           tilesUrl={compareTilesUrl}
+          basemap={compareLayerDetails?.basemap || null}
           zoomLevels={compareLayerDetails?.zoomLevels || 0}
           flyTo={flyTo}
           onMouseEnter={() => setIsMainActive(false)}
