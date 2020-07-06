@@ -22,15 +22,9 @@ import {GlobeProjection} from '../../types/globe-projection';
 import config from '../../config/main';
 
 import {GlobeProjectionState} from '../../types/globe-projection-state';
+import {BasemapId} from '../../types/basemap';
 
 import styles from './globe.styl';
-
-// create default imagery provider
-const imageryProvider = new TileMapServiceImageryProvider({
-  url: config.basemapTilesUrl,
-  fileExtension: 'png',
-  maximumLevel: 4
-});
 
 const cesiumOptions = {
   homeButton: false,
@@ -41,8 +35,7 @@ const cesiumOptions = {
   navigationHelpButton: false,
   animation: false,
   timeline: false,
-  baseLayerPicker: false,
-  imageryProvider
+  baseLayerPicker: false
 };
 
 interface Props {
@@ -50,6 +43,7 @@ interface Props {
   view: GlobeView;
   projectionState: GlobeProjectionState;
   tilesUrl: string | null;
+  basemap: BasemapId | null;
   zoomLevels: number;
   flyTo: GlobeView | null;
   onMouseEnter: () => void;
@@ -58,10 +52,22 @@ interface Props {
   onMoveEnd: (view: GlobeView) => void;
 }
 
+// keep a reference to the current basemap layer
+let basemapLayer: Cesium.ImageryLayer | null = null;
+
+function getBasemapUrl(id: BasemapId | null) {
+  if (!id || !config.basemapUrls[id]) {
+    return config.basemapUrls[config.defaultBasemap];
+  }
+
+  return config.basemapUrls[id];
+}
+
 const Globe: FunctionComponent<Props> = ({
   view,
   projectionState,
   tilesUrl,
+  basemap,
   zoomLevels,
   active,
   flyTo,
@@ -89,10 +95,24 @@ const Globe: FunctionComponent<Props> = ({
         ? SceneMode.SCENE3D
         : SceneMode.SCENE2D;
 
-    const options = {...cesiumOptions, sceneMode};
+    // create default imagery provider
+    const defaultBasemapImageryProvider = new TileMapServiceImageryProvider({
+      url: getBasemapUrl(basemap),
+      fileExtension: 'png',
+      maximumLevel: 4
+    });
+
+    const options = {
+      ...cesiumOptions,
+      sceneMode,
+      imageryProvider: defaultBasemapImageryProvider
+    };
 
     // create cesium viewer
     const scopedViewer = new Viewer(ref.current, options);
+
+    // store the basemap imagery layer reference
+    basemapLayer = scopedViewer.scene.imageryLayers.get(0);
 
     const color = Color.fromCssColorString('#10161A');
 
@@ -226,6 +246,35 @@ const Globe: FunctionComponent<Props> = ({
       }
     }
   }, [viewer, tilesUrl, zoomLevels]);
+
+  // update basemap
+  useEffect(() => {
+    if (!viewer) {
+      return;
+    }
+
+    // create default imagery provider
+    const basemapProvider = new TileMapServiceImageryProvider({
+      url: getBasemapUrl(basemap),
+      fileExtension: 'png',
+      maximumLevel: 4
+    });
+
+    basemapProvider.readyPromise.then(() => {
+      const newBasemapLayer = viewer.scene.imageryLayers.addImageryProvider(
+        basemapProvider,
+        0
+      );
+
+      newBasemapLayer.alpha = 1;
+
+      if (basemapLayer) {
+        viewer.scene.imageryLayers.remove(basemapLayer, true);
+      }
+
+      basemapLayer = newBasemapLayer;
+    });
+  }, [viewer, basemap]);
 
   // fly to location
   useEffect(() => {

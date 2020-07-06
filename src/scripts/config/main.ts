@@ -27,6 +27,13 @@ const version = INFO_VERSION;
 const baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
 const baseUrlTiles = `https://storage.googleapis.com/esa-cfs-tiles/${version}`;
 
+const basemapUrls = {
+  land: `${baseUrlTiles}/basemaps/land`,
+  ocean: `${baseUrlTiles}/basemaps/ocean`,
+  atmosphere: `${baseUrlTiles}/basemaps/atmosphere`,
+  blue: `${baseUrlTiles}/basemaps/blue`
+};
+
 export default {
   api: {
     layers: `${baseUrlStorage}/layers/layers-{lang}.json`,
@@ -38,7 +45,8 @@ export default {
     stories: `${baseUrlStorage}/stories/stories-{lang}.json`,
     story: `${baseUrlStorage}/stories/{id}/{id}-{lang}.json`
   },
-  basemapTilesUrl: `${baseUrlTiles}/basemap/`,
+  defaultBasemap: 'land' as keyof typeof basemapUrls,
+  basemapUrls,
   globe: globeState,
   share: {
     facebook:
