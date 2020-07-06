@@ -1,3 +1,10 @@
+## [0.6.1](https://github.com/ubilabs/esa-climate-from-space/compare/v0.6.0...v0.6.1) (2020-07-06)
+
+### Features
+
+* **basemaps:** add tiling script ([#373](https://github.com/ubilabs/esa-climate-from-space/issues/373)) ([995ecac](https://github.com/ubilabs/esa-climate-from-space/commit/995ecacf6db390dfed806f247c411e92f376e217))
+
+
 # [0.6.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.5.1...v0.6.0) (2020-06-29)
 
 
