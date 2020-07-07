@@ -113,7 +113,8 @@ module.exports = (env, {mode} = {}) => {
         INFO_GIT_HASH: JSON.stringify(gitHash),
         INFO_VERSION: JSON.stringify(packageJson.version),
         CESIUM_BASE_URL: JSON.stringify('./cesium/'),
-        PRODUCTION: JSON.stringify(isProduction)
+        PRODUCTION: JSON.stringify(isProduction),
+        LOCAL_CONTENT: JSON.stringify(process.env.LOCAL_CONTENT)
       }),
       new CopyPlugin([
         {

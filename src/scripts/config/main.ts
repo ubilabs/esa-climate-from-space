@@ -22,9 +22,17 @@ const globeState: GlobeState = {
   }
 };
 
+
 // @ts-ignore - injected via webpack's define plugin
 const version = INFO_VERSION;
-const baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
+
+let baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
+// @ts-ignore - injected via webpack's define plugin
+// use content from local server
+if (LOCAL_CONTENT) {
+  baseUrlStorage = 'http://0.0.0.0:8081/storage'
+}
+
 const baseUrlTiles = `https://storage.googleapis.com/esa-cfs-tiles/${version}`;
 
 export default {

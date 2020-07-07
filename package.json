@@ -24,7 +24,8 @@
     "electron:build": "npm run electron:clean && npm run electron:install && npm run build && npm run electron:compile && electron-builder -mwl --x64 --config electron-builder.json",
     "story-packages": "./scripts/create-story-packages.sh",
     "clean:story-packages": "find ./storage -type f -name \"*.zip\" -delete",
-    "upload-storage": "npm run story-packages && gsutil rsync -r -x \".DS_Store\" ./storage gs://esa-cfs-storage/$npm_package_version && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/ && npm run clean:story-packages"
+    "upload-storage": "npm run story-packages && gsutil rsync -r -x \".DS_Store\" ./storage gs://esa-cfs-storage/$npm_package_version && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/ && npm run clean:story-packages",
+    "start:local-contents": "http-server -p 8081 --cors & env LOCAL_CONTENT=true npm start"
   },
   "repository": {
     "type": "git",
@@ -79,6 +80,7 @@
     "file-loader": "^4.3.0",
     "git-state": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.12.3",
     "license-checker": "^25.0.1",
     "mini-css-extract-plugin": "^0.8.2",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
