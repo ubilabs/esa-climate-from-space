@@ -2,6 +2,19 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     entrypoint: npm
     args: ['ci']
+
+  - name: 'stedolan/jq'
+    entrypoint: 'bash'
+    args: ['-c', 'jq -r <package.json ".version" > version.txt']
+
+  - name: 'gcr.io/esa-climate-from-space/electron-builder'
+    entrypoint: 'npm'
+    args: ['run', 'electron:prepare-build']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+    entrypoint: 'bash'
+    args: ['-c', 'gsutil -m cp -r gs://esa-cfs-tiles/$(cat version.txt)/basemaps ./dist']
+
   - name: 'gcr.io/esa-climate-from-space/electron-builder'
     env:
       - 'ELECTRON_CACHE=/root/.cache/electron'
