@@ -3,7 +3,7 @@
 TIMEOUT=12000
 LAYER_ID="land_cover.lccs_class"
 VARIABLE_ID="lccs_class"
-VERSION="0.5.1"
+VERSION="0.6.1"
 ZOOM_LEVELS="0-6"
 MIN_LON="-180"
 MAX_LON="180"

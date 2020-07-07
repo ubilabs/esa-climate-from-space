@@ -1,7 +1,7 @@
 {
   "fire.burned_area": {
     "colorMap": "afmhot",
-    "basemap": "ocean",
+    "basemap": "land",
     "timeFormat": {
       "year": "2-digit",
       "month": "numeric",
@@ -10,7 +10,7 @@
   },
   "sst.analysed_sst": {
     "colorMap": "jet",
-    "basemap": "blue",
+    "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -19,6 +19,7 @@
   },
   "oc.chlor_a": {
     "colorMap": "winter",
+    "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -45,6 +46,7 @@
   },
   "sea_level.sla": {
     "colorMap": "gist_rainbow",
+    "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -53,6 +55,7 @@
   },
   "sea_surface_salinity.sss": {
     "colorMap": "custom",
+    "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -61,6 +64,7 @@
   },
   "soil_moisture.sm": {
     "colorMap": "BrBG",
+    "basemap": "land",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -69,6 +73,7 @@
   },
   "ozone.atmosphere_mole_content_of_ozone": {
     "colorMap": "viridis",
+    "basemap": "atmosphere",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -77,6 +82,7 @@
   },
   "land_cover.lccs_class": {
     "colorMap": "gist_rainbow",
+    "basemap": "land",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -85,6 +91,7 @@
   },
   "sea_state.swh_mean": {
     "colorMap": "viridis",
+    "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -93,6 +100,7 @@
   },
   "sea_ice_sh.ice_conc": {
     "colorMap": "custom",
+    "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -101,6 +109,7 @@
   },
   "sea_ice_nh.ice_conc": {
     "colorMap": "custom",
+    "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
@@ -117,6 +126,7 @@
   },
   "permafrost.pfr": {
     "colorMap": "custom",
+    "basemap": "land",
     "timeFormat": {
       "year": "numeric",
       "month": "long",

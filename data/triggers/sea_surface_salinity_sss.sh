@@ -3,7 +3,7 @@
 TIMEOUT=8000
 LAYER_ID="sea_surface_salinity.sss"
 VARIABLE_ID="sss"
-VERSION="0.5.1"
+VERSION="0.6.1"
 ZOOM_LEVELS="0-3"
 MIN="auto"
 MAX="auto"
