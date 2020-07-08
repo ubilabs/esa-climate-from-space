@@ -16,6 +16,7 @@ import {
   setGlobeView,
   flyToGlobeView
 } from '../../libs/get-globe-view';
+import {isElectron} from '../../libs/electron/index';
 
 import {GlobeView} from '../../types/globe-view';
 import {GlobeProjection} from '../../types/globe-projection';
@@ -57,10 +58,12 @@ let basemapLayer: Cesium.ImageryLayer | null = null;
 
 function getBasemapUrl(id: BasemapId | null) {
   if (!id || !config.basemapUrls[id]) {
-    return config.basemapUrls[config.defaultBasemap];
+    return isElectron()
+      ? config.basemapUrlsOffline[config.defaultBasemap]
+      : config.basemapUrls[config.defaultBasemap];
   }
 
-  return config.basemapUrls[id];
+  return isElectron() ? config.basemapUrlsOffline[id] : config.basemapUrls[id];
 }
 
 const Globe: FunctionComponent<Props> = ({
