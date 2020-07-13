@@ -34,6 +34,13 @@ const basemapUrls = {
   blue: `${baseUrlTiles}/basemaps/blue`
 };
 
+const basemapUrlsOffline = {
+  land: 'basemaps/land',
+  ocean: 'basemaps/ocean',
+  atmosphere: 'basemaps/atmosphere',
+  blue: 'basemaps/blue'
+};
+
 export default {
   api: {
     layers: `${baseUrlStorage}/layers/layers-{lang}.json`,
@@ -47,6 +54,7 @@ export default {
   },
   defaultBasemap: 'land' as keyof typeof basemapUrls,
   basemapUrls,
+  basemapUrlsOffline,
   globe: globeState,
   share: {
     facebook:
