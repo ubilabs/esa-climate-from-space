@@ -3,10 +3,10 @@
 TIMEOUT=8000
 LAYER_ID="ozone.atmosphere_mole_content_of_ozone"
 VARIABLE_ID="atmosphere_mole_content_of_ozone"
-VERSION="0.5.1"
+VERSION="0.6.1"
 ZOOM_LEVELS="0-3"
-MIN_LON="0"
-MAX_LON="360"
+MIN_LON="-180"
+MAX_LON="180"
 MIN_LAT="-90"
 MAX_LAT="90"
 MIN="100"
