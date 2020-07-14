@@ -46,7 +46,8 @@
   "globals": {
     "INFO_BUILD_TIME": true,
     "INFO_GIT_HASH": true,
-    "INFO_VERSION": true
+    "INFO_VERSION": true,
+    "PRODUCTION": true
   },
   "overrides": [
     {

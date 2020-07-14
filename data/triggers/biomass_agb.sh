@@ -18,7 +18,7 @@ if [ ! -f ./package.json ]; then
     exit 1
 fi
 
-# Note! If process takes too long use "-ts 81000 x 31500 \" in gdalwarp command to
+# Note! If process takes too long use "-ts 81000 31500 \" in gdalwarp command to
 # output only a 1/5th-resolution image
 
 gcloud builds submit --config ./ci/cloudbuild-tiles-reproject.yaml \

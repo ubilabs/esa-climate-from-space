@@ -26,7 +26,7 @@
     "electron:download-basemaps": "gsutil -m cp -r gs://esa-cfs-tiles/${npm_package_version}/basemaps ./dist",
     "story-packages": "./scripts/create-story-packages.sh",
     "clean:story-packages": "find ./storage -type f -name \"*.zip\" -delete",
-    "upload-storage": "npm run story-packages && gsutil rsync -r -x \".DS_Store\" ./storage gs://esa-cfs-storage/$npm_package_version && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/ && npm run clean:story-packages"
+    "upload-storage": "npm run story-packages && gsutil -m rsync -r -x \".DS_Store\" ./storage gs://esa-cfs-storage/$npm_package_version && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/ && npm run clean:story-packages"
   },
   "repository": {
     "type": "git",
@@ -96,6 +96,6 @@
     "typescript": "^3.7.5",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.0"
   }
 }

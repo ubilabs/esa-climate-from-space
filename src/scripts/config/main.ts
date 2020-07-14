@@ -24,8 +24,14 @@ const globeState: GlobeState = {
 
 // @ts-ignore - injected via webpack's define plugin
 const version = INFO_VERSION;
-const baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
 const baseUrlTiles = `https://storage.googleapis.com/esa-cfs-tiles/${version}`;
+let baseUrlStorage = 'http://localhost:8080/storage';
+
+// use content from local server
+// @ts-ignore - injected via webpack's define plugin
+if (PRODUCTION) {
+  baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
+}
 
 const basemapUrls = {
   land: `${baseUrlTiles}/basemaps/land`,
