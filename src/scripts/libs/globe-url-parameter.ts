@@ -37,7 +37,7 @@ export function parseUrl(): UrlHashState | null {
   }
 
   // globe view values
-  const values = splitted.slice(1, 7).map(str => parseFloat(str));
+  const values = splitted.slice(1, 8).map(str => parseFloat(str));
 
   if (values.some(num => isNaN(num))) {
     return null;
