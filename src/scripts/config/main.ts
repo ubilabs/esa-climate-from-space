@@ -37,14 +37,16 @@ const basemapUrls = {
   land: `${baseUrlTiles}/basemaps/land`,
   ocean: `${baseUrlTiles}/basemaps/ocean`,
   atmosphere: `${baseUrlTiles}/basemaps/atmosphere`,
-  blue: `${baseUrlTiles}/basemaps/blue`
+  blue: `${baseUrlTiles}/basemaps/blue`,
+  dark: `${baseUrlTiles}/basemaps/dark`
 };
 
 const basemapUrlsOffline = {
   land: 'basemaps/land',
   ocean: 'basemaps/ocean',
   atmosphere: 'basemaps/atmosphere',
-  blue: 'basemaps/blue'
+  blue: 'basemaps/blue',
+  dark: 'basemaps/dark'
 };
 
 export default {
