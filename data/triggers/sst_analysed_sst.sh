@@ -3,7 +3,7 @@
 TIMEOUT=12000
 LAYER_ID="sst.analysed_sst"
 VARIABLE_ID="analysed_sst"
-VERSION="0.5.1"
+VERSION="0.6.1"
 ZOOM_LEVELS="0-4"
 MIN="-5"
 MAX="35"

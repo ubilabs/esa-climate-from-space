@@ -97,8 +97,10 @@ module.exports = (env, {mode} = {}) => {
       sourcePrefix: ''
     },
     devServer: {
-      contentBase: path.join(__dirname, 'dist'),
-      port: 8080
+      contentBase: [path.join(__dirname, 'dist'), path.join(__dirname, 'storage')],
+      contentBasePublicPath: ['/', '/storage'],
+      port: 8080,
+      watchContentBase: true
     },
     plugins: [
       new HtmlWebpackPlugin({

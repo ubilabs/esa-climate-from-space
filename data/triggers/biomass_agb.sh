@@ -3,7 +3,7 @@
 TIMEOUT=8000
 LAYER_ID="biomass.agb"
 VARIABLE_ID="agb"
-VERSION="0.5.1"
+VERSION="0.6.1"
 ZOOM_LEVELS="0-5"
 MIN_LON="-180"
 MAX_LON="180"
@@ -18,7 +18,7 @@ if [ ! -f ./package.json ]; then
     exit 1
 fi
 
-# Note! If process takes too long use "-ts 81000 x 31500 \" in gdalwarp command to
+# Note! If process takes too long use "-ts 81000 31500 \" in gdalwarp command to
 # output only a 1/5th-resolution image
 
 gcloud builds submit --config ./ci/cloudbuild-tiles-reproject.yaml \

@@ -19,4 +19,5 @@ do
 
   python ./data/drop-unused-vars.py --file $FILENAME --variable sla
   python ./data/add-time-coordinate.py --file $FILENAME --timestamp $NEXT_DATE
+  python ./data/wrap-longitude.py --file $FILENAME
 done
