@@ -38,4 +38,3 @@ do
     # delete files
     rm $metadataFileName
 done
-rm -r $workingDir
