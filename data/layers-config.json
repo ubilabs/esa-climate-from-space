@@ -1,11 +1,10 @@
 {
   "fire.burned_area": {
     "colorMap": "afmhot",
-    "basemap": "land",
+    "basemap": "dark",
     "timeFormat": {
       "year": "2-digit",
-      "month": "numeric",
-      "day": "numeric"
+      "month": "long"
     }
   },
   "sst.analysed_sst": {
@@ -13,8 +12,7 @@
     "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "oc.chlor_a": {
@@ -22,8 +20,7 @@
     "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "aerosol.AOD550_mean": {
@@ -31,8 +28,7 @@
     "basemap": "atmosphere",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "cloud.cfc": {
@@ -40,8 +36,7 @@
     "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "sea_level.sla": {
@@ -49,8 +44,7 @@
     "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "sea_surface_salinity.sss": {
@@ -58,8 +52,7 @@
     "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "soil_moisture.sm": {
@@ -67,8 +60,7 @@
     "basemap": "land",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "ozone.atmosphere_mole_content_of_ozone": {
@@ -76,8 +68,7 @@
     "basemap": "atmosphere",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "land_cover.lccs_class": {
@@ -85,8 +76,7 @@
     "basemap": "land",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "sea_state.swh_mean": {
@@ -94,8 +84,7 @@
     "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "sea_ice_sh.ice_conc": {
@@ -103,8 +92,7 @@
     "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "sea_ice_nh.ice_conc": {
@@ -112,16 +100,14 @@
     "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "greenland_ice.sec": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "permafrost.pfr": {
@@ -129,40 +115,35 @@
     "basemap": "land",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "snow.swe": {
     "colorMap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "biomass.agb": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "greenhouse.xco2": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   },
   "greenhouse.xch4": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
     }
   }
 }
