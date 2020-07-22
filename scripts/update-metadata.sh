@@ -30,7 +30,7 @@ do
     gsutil -q cp $path $metadataFileName
 
     # merge layer config into metdata file
-    jq -s ".[0] * .[1].\"$datasetId\"" $metadataFileName $layersConfigFile | gsutil -q cp - $path
+    jq -s ".[0] + .[1].\"$datasetId\"" $metadataFileName $layersConfigFile | gsutil -q cp - $path
 
     # set cachhing headers foir remote file
     gsutil -q setmeta -r -h "cache-control: no-cache" $path
