@@ -18,6 +18,10 @@ import {State} from '../../reducers';
 import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 import {getLayerTimeIndex} from '../../libs/get-layer-tile-url';
 import TimeSliderRange from '../time-slider-range/time-slider-range';
+import TimePlayback from '../time-playback/time-playback';
+import Button from '../button/button';
+import {PlayIcon} from '../icons/play-icon';
+import {PauseIcon} from '../icons/pause-icon';
 
 import styles from './time-slider.styl';
 
@@ -32,6 +36,7 @@ const TimeSlider: FunctionComponent = () => {
   const language = useSelector(languageSelector);
   const globeTime = useSelector(timeSelector);
   const [time, setTime] = useState(globeTime);
+  const [isPlaying, setIsPlaying] = useState(false);
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId)
@@ -81,16 +86,12 @@ const TimeSlider: FunctionComponent = () => {
     []
   );
 
-  // clamp time according to min/max
+  // sync local time
   useEffect(() => {
-    if (time < combined.min) {
-      setTime(combined.min);
+    if (time !== globeTime) {
+      setTime(globeTime);
     }
-
-    if (time > combined.max) {
-      setTime(combined.max);
-    }
-  }, [time, combined.min, combined.max]);
+  }, [time, globeTime]);
 
   // return nothing when no timesteps available
   if (combined.timestamps.length === 0) {
@@ -108,7 +109,16 @@ const TimeSlider: FunctionComponent = () => {
 
   return (
     <div className={styles.timeSlider}>
+      {isPlaying && (
+        <TimePlayback minTime={combined.min} maxTime={combined.max} />
+      )}
       <div className={styles.container}>
+        <Button
+          className={styles.playButton}
+          icon={isPlaying ? PauseIcon : PlayIcon}
+          onClick={() => setIsPlaying(!isPlaying)}>
+          {isPlaying ? 'playing' : 'pausing'}
+        </Button>
         <div className={styles.ranges}>
           <input
             className={inputStyles}
@@ -118,6 +128,7 @@ const TimeSlider: FunctionComponent = () => {
               const newTime = parseInt(target.value, 10);
               setTime(newTime);
               debouncedSetGlobeTime(newTime);
+              setIsPlaying(false);
             }}
             min={combined.min}
             max={combined.max}
