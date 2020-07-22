@@ -36,7 +36,12 @@ const cesiumOptions = {
   navigationHelpButton: false,
   animation: false,
   timeline: false,
-  baseLayerPicker: false
+  baseLayerPicker: false,
+  contextOptions: {
+    webgl: {
+      preserveDrawingBuffer: true
+    }
+  }
 };
 
 interface Props {

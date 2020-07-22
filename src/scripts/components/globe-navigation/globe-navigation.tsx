@@ -8,6 +8,7 @@ import {DownloadIcon} from '../icons/download-icon';
 import setGlobeProjectionAction from '../../actions/set-globe-projection';
 import {projectionSelector} from '../../selectors/globe/projection';
 import setFlyToAction from '../../actions/set-fly-to';
+import {downloadScreenshot} from '../../libs/download-screenshot';
 
 import {GlobeProjection} from '../../types/globe-projection';
 
@@ -40,7 +41,7 @@ const GlobeNavigation: FunctionComponent = () => {
       <Button
         className={styles.downloadIcon}
         icon={DownloadIcon}
-        onClick={() => console.log('placeholder')}
+        onClick={() => downloadScreenshot()}
       />
     </div>
   );
