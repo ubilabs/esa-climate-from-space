@@ -53,13 +53,7 @@ const StoryMedia: FunctionComponent<Props> = ({images, storyId}) => {
             {showNextButton ? <NextIcon /> : null}
           </div>
         </div>
-        {showLightbox ? (
-          <div
-            className={styles.fullscreenIcon}
-            onClick={() => setShowLightbox(false)}>
-            <FullscreenExitIcon />
-          </div>
-        ) : (
+        {!showLightbox && (
           <div
             className={styles.fullscreenIcon}
             onClick={() => setShowLightbox(true)}>
@@ -79,7 +73,19 @@ const StoryMedia: FunctionComponent<Props> = ({images, storyId}) => {
                 className={styles.sliderImage}
                 key={index}
                 style={{width: `${imageWidth}%`}}>
-                <img src={imageUrl} className={styles.image} />
+                <div className={styles.imageContainer}>
+                  <img className={styles.photo} src={imageUrl} />
+                  {showLightbox && (
+                    <div className={styles.imageInfo}>
+                      <p className={styles.description}>{'description text'}</p>
+                      <div
+                        className={styles.fullscreenExitIcon}
+                        onClick={() => setShowLightbox(false)}>
+                        <FullscreenExitIcon />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             );
           })}
