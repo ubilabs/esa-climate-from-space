@@ -1,11 +1,11 @@
 import React, {FunctionComponent} from 'react';
-
 import ReactMarkdown from 'react-markdown';
+
+import {getStoryMediaUrl} from '../../libs/get-story-media-url';
 
 import {Slide} from '../../types/story';
 
 import styles from './splash-screen.styl';
-import {getStoryMediaUrl} from '../../libs/get-story-media-url';
 
 interface Props {
   storyId: string;
@@ -19,8 +19,7 @@ const SplashScreen: FunctionComponent<Props> = ({storyId, slide}) => {
     <div
       className={styles.splashscreen}
       style={{
-        background: `center / cover no-repeat url(${imageUrl})
-`
+        background: `center / cover no-repeat url(${imageUrl}) rgba(0, 0, 0, 0.3)`
       }}>
       <div className={styles.title}>
         <ReactMarkdown
