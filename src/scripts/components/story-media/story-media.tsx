@@ -11,10 +11,15 @@ import styles from './story-media.styl';
 
 interface Props {
   images: string[];
+  imageCaptions?: string[];
   storyId: string;
 }
 
-const StoryMedia: FunctionComponent<Props> = ({images, storyId}) => {
+const StoryMedia: FunctionComponent<Props> = ({
+  images,
+  imageCaptions,
+  storyId
+}) => {
   const containerWidth = images.length * 100;
   const imageWidth = 100 / images.length;
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -67,7 +72,9 @@ const StoryMedia: FunctionComponent<Props> = ({images, storyId}) => {
             transform: `translateX(-${imageWidth * currentIndex}%)`
           }}>
           {images.map((image, index) => {
+            const imageCaption = imageCaptions?.find((_, i) => i === index);
             const imageUrl = getStoryMediaUrl(storyId, image);
+
             return (
               <div
                 className={styles.sliderImage}
@@ -77,7 +84,7 @@ const StoryMedia: FunctionComponent<Props> = ({images, storyId}) => {
                   <img className={styles.photo} src={imageUrl} />
                   {showLightbox && (
                     <div className={styles.imageInfo}>
-                      <p className={styles.description}>{'description text'}</p>
+                      <p className={styles.description}>{imageCaption}</p>
                       <div
                         className={styles.fullscreenExitIcon}
                         onClick={() => setShowLightbox(false)}>

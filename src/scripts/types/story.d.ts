@@ -12,6 +12,7 @@ export interface Slide {
   text: string;
   shortText?: string;
   images?: string[];
+  imageCaptions?: string[];
   videoId?: string;
   layer?: StoryLayer[];
   flyTo: GlobeView;
