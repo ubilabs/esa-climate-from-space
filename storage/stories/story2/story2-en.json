@@ -2,6 +2,11 @@
   "id": "story2",
   "slides": [
     {
+      "type": "splashscreen",
+      "text": "# Story title\n\n## This is a subheader\n\nAnd this is a paragraph\n\nMarkdown test: Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in"
+    },
+    {
+      "type": "globe",
       "text": "# Story title\n\n## This is a subheader\n\nAnd this is a paragraph\n\nMarkdown test: Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in",
       "shortText": "- Lorem ipsum\n\n- Exercitationem\n\n- sapiente",
       "layer": [
@@ -10,6 +15,7 @@
       ]
     },
     {
+      "type": "globe",
       "text": "# Story title\n\n## This is a subheader\n\nExercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
       "shortText": "- Lorem ipsum",
       "flyTo": {
@@ -30,11 +36,13 @@
       ]
     },
     {
+      "type": "video",
       "text": "# Story title\n\n## This is a subheader\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
       "shortText": "- Lorem ipsum",
       "videoId": "U1SMPkVCG3o"
     },
     {
+      "type": "video",
       "text": "# Story title\n\n## This is a subheader\n\nPraesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
       "shortText": "- Lorem ipsum",
       "videoId": "byBFY9iJke4"
