@@ -21,7 +21,7 @@ const SplashScreen: FunctionComponent<Props> = ({storyId, slide}) => {
       style={{
         background: `center / cover no-repeat url(${imageUrl}) rgba(0, 0, 0, 0.3)`
       }}>
-      <div className={styles.title}>
+      <div className={styles.content}>
         <ReactMarkdown
           source={slide.text}
           allowedTypes={[
