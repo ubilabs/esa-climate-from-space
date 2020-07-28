@@ -6,9 +6,9 @@ import config from '../../config/main';
 import {DownloadButton} from '../download-button/download-button';
 
 import {LayerListItem as LayerListItemType} from '../../types/layer-list';
+import {GlobeView} from '../../types/globe-view';
 
 import styles from './layer-list-item.styl';
-import {GlobeView} from '../../types/globe-view';
 
 interface Props {
   layer: LayerListItemType;
