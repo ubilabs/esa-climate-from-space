@@ -114,8 +114,7 @@
     "colorMap": "custom",
     "basemap": "land",
     "timeFormat": {
-      "year": "numeric",
-      "month": "long"
+      "year": "numeric"
     }
   },
   "snow.swe": {

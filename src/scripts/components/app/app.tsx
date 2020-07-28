@@ -20,7 +20,6 @@ import StoriesSelector from '../stories-selector/stories-selector';
 import PresentationSelector from '../presentation-selector/presentation-selector';
 import ShowcaseSelector from '../showcase-selector/showcase-selector';
 import Globes from '../globes/globes';
-import StoryTitle from '../story-title/story-title';
 
 import translations from '../../i18n';
 
@@ -42,9 +41,6 @@ const TranslatedApp: FunctionComponent = () => {
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
-          <Route path={['/showcase/:storyIds/:storyIndex/title']}>
-            <StoryTitle />
-          </Route>
           <Route
             path={[
               '/stories/:storyId/:slideIndex',
