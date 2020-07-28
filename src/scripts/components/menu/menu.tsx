@@ -10,11 +10,11 @@ import {DownloadIcon} from '../icons/download-icon';
 import {CCILogo} from '../icons/cci-logo';
 import AboutProject from '../about-project/about-project';
 import Overlay from '../overlay/overlay';
-
-import styles from './menu.styl';
 import {WindowsIcon} from '../icons/windows-icon';
 import {LinuxIcon} from '../icons/linux-icon';
 import {AppleIcon} from '../icons/apple-icon';
+
+import styles from './menu.styl';
 
 const Menu: FunctionComponent = () => {
   // @ts-ignore - injected via webpack's define plugin
