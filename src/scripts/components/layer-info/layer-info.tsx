@@ -12,13 +12,11 @@ interface Props {
 const LayerInfo: FunctionComponent<Props> = ({layer}) => (
   <div className={styles.layerInfo}>
     <span className={styles.layerType}>Layertype</span>
-    <div className={styles.layerTitle}>
-      <h1>{layer.name}</h1>
-    </div>
+    <h1 className={styles.layerTitle}>{layer.name}</h1>
     <div className={styles.description}>
       <ReactMarkdown
         source={layer.description}
-        linkTarget='_blank'
+        linkTarget="_blank"
         allowedTypes={[
           'heading',
           'text',
