@@ -1,6 +1,6 @@
 import {GlobeView} from './globe-view';
-import {Layer} from './layer';
 import {StoryLayer} from './story-layer';
+import {SlideType} from './slide-type';
 
 export interface Story {
   id: string;
@@ -8,6 +8,7 @@ export interface Story {
 }
 
 export interface Slide {
+  type: SlideType;
   text: string;
   shortText?: string;
   images?: string[];

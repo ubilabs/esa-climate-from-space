@@ -1,8 +1,10 @@
 import React, {FunctionComponent} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import cx from 'classnames';
 
 import setLanguageAction from '../../actions/set-language';
 import Button from '../button/button';
+import {languageSelector} from '../../selectors/language';
 
 import {Language} from '../../types/language';
 
@@ -16,22 +18,28 @@ interface Props {
 
 const LanguageSelector: FunctionComponent<Props> = ({className = ''}) => {
   const classes = `${styles.languageItem} ${className}`;
+  const selectedLanguage = useSelector(languageSelector);
   const dispatch = useDispatch();
-  const setLanguage = (language: Language) =>
-    dispatch(setLanguageAction(language));
 
   return (
     <ul className={styles.language}>
-      {languages.map(language => (
-        <li className={classes} key={language}>
-          <Button
-            className={styles.button}
-            key={language}
-            onClick={() => setLanguage(language)}
-            label={`language.${language}`}
-          />
-        </li>
-      ))}
+      {languages.map(language => {
+        const buttonClasses = cx(
+          styles.button,
+          language === selectedLanguage && styles.buttonActive
+        );
+
+        return (
+          <li className={classes} key={language}>
+            <Button
+              className={buttonClasses}
+              key={language}
+              onClick={() => dispatch(setLanguageAction(language))}
+              label={`language.${language}`}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 };

@@ -8,7 +8,7 @@
   font-family: NotesEsa
 
 .layerType
-  color: $textAzure
+  color: $textColor
   text-transform: uppercase
   font-weight: bold
   font-size: emCalc(11px)
@@ -16,7 +16,8 @@
 .layerTitle
   display: flex
   justify-content: space-between
-  color: $textWhite
+  margin-top: remCalc(10px)
+  color: $textDefault
 
 .description
   margin: emCalc(10px) 0
@@ -28,7 +29,11 @@
 
   a
     margin: 1em 0
-    color: $textAzure
+    color: $textColor
     text-decoration: none
     text-transform: uppercase
     font-size: emCalc(12px)
+
+  ul
+    padding: 0
+    list-style: none
