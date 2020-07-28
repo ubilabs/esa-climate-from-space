@@ -122,9 +122,11 @@ const Globe: FunctionComponent<Props> = ({
     // store the basemap imagery layer reference
     basemapLayer = scopedViewer.scene.imageryLayers.get(0);
 
-    const color = Color.fromCssColorString('#10161A');
+    const baseColor = Color.fromCssColorString('#999999');
+    scopedViewer.scene.globe.baseColor = baseColor;
 
-    scopedViewer.scene.backgroundColor = color;
+    const backgroundColor = Color.fromCssColorString('#10161A');
+    scopedViewer.scene.backgroundColor = backgroundColor;
 
     if (scopedViewer.scene.sun) {
       scopedViewer.scene.sun.show = false;

@@ -34,6 +34,7 @@ const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
       <ReactMarkdown
         source={storyText}
         transformImageUri={transformImageUri}
+        linkTarget='_blank'
         allowedTypes={[
           'heading',
           'text',
