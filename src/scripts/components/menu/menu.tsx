@@ -64,25 +64,31 @@ const Menu: FunctionComponent = () => {
             />
           </li>
           <li className={styles.menuListItem}>
-            <Button
-              className={styles.menuButton}
-              label={'EsaWebsite'}
-              link="https://www.esa.int/"
-            />
+            <a
+              href="https://www.esa.int/"
+              target={'_blank'}
+              rel="noopener noreferrer"
+              className={styles.menuButton}>
+              <FormattedMessage id={'EsaWebsite'} />
+            </a>
           </li>
           <li className={styles.menuListItem}>
-            <Button
-              className={styles.menuButton}
-              label={'CCIWebsite'}
-              link="https://climate.esa.int/"
-            />
+            <a
+              href="https://climate.esa.int/"
+              target={'_blank'}
+              rel="noopener noreferrer"
+              className={styles.menuButton}>
+              <FormattedMessage id={'CCIWebsite'} />
+            </a>
           </li>
           <li className={styles.menuListItem}>
-            <Button
-              className={styles.menuButton}
-              label={'github'}
-              link="https://github.com/ubilabs/esa-climate-from-space"
-            />
+            <a
+              href="https://github.com/ubilabs/esa-climate-from-space"
+              target={'_blank'}
+              rel="noopener noreferrer"
+              className={styles.menuButton}>
+              <FormattedMessage id={'github'} />
+            </a>
           </li>
         </ul>
       </nav>
