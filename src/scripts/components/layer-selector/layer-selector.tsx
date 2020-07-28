@@ -2,22 +2,25 @@ import React, {FunctionComponent} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {FormattedMessage} from 'react-intl';
 import {motion, AnimatePresence} from 'framer-motion';
-import {showLayerSelector as showLayerSelectorSelector} from '../../selectors/show-layer-selector';
 
+import {showLayerSelector as showLayerSelectorSelector} from '../../selectors/show-layer-selector';
+import config from '../../config/main';
 import Button from '../button/button';
 import {CloseIcon} from '../icons/close-icon';
 import showLayerSelectorAction from '../../actions/show-layer-selector';
 import LayerList from '../layer-list/layer-list';
 import SelectedLayerListItem from '../selected-layer-list-item/selected-layer-list-item';
 import {layersSelector} from '../../selectors/layers/list';
+import setFlyToAction from '../../actions/set-fly-to';
+import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
+import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
 
 import styles from './layer-selector.styl';
-import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
-import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
   const layers = useSelector(layersSelector);
+  const defaultView = config.globe.view;
   const sortedLayers = layers.sort((a, b) => a.name.localeCompare(b.name));
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const showLayerSelector = useSelector(showLayerSelectorSelector);
@@ -67,9 +70,10 @@ const LayerSelector: FunctionComponent = () => {
             <LayerList
               layers={sortedLayers}
               selectedLayerIds={selectedLayerIds}
-              onSelect={(layerId, isMain) =>
-                dispatch(setSelectedLayerIdsAction(layerId, isMain))
-              }
+              onSelect={(layerId, flyTo, isMain) => {
+                dispatch(setSelectedLayerIdsAction(layerId, isMain));
+                dispatch(setFlyToAction(flyTo || defaultView));
+              }}
             />
           </div>
         </motion.div>
