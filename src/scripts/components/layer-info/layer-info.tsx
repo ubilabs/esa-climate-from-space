@@ -18,6 +18,7 @@ const LayerInfo: FunctionComponent<Props> = ({layer}) => (
     <div className={styles.description}>
       <ReactMarkdown
         source={layer.description}
+        linkTarget='_blank'
         allowedTypes={[
           'heading',
           'text',
