@@ -2,12 +2,21 @@
   "id": "story4",
   "slides": [
     {
+      "type": "splashscreen",
       "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story4/assets/story4.jpeg"
       ]
     },
     {
+      "type": "image",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor option isi nobis quas ut.",
+      "images": [
+        "https://storage.googleapis.com/esa-cfs-storage/stories/story4/assets/story4.jpeg"
+      ]
+    },
+    {
+      "type": "image",
       "text": "Exercitationem, sapiente. Praesentium quidem mollitia explicabo voluptatem aperiam deleniti ut sunt atque eaque, voluptate commodi in.",
       "images": [
         "https://storage.googleapis.com/esa-cfs-storage/stories/story4/assets/story4.jpeg"
