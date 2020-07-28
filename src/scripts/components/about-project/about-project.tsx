@@ -1,6 +1,5 @@
 import React, {FunctionComponent} from 'react';
 import {FormattedMessage} from 'react-intl';
-// import ReactMarkdown from 'react-markdown';
 
 import styles from './about-project.styl';
 
@@ -12,22 +11,7 @@ const AboutProject: FunctionComponent = () => (
       </h1>
     </div>
     <div className={styles.description}>
-      Woher markdown?
-      {/* <ReactMarkdown
-        source={layer.description}
-        linkTarget="_blank"
-        allowedTypes={[
-          'heading',
-          'text',
-          'paragraph',
-          'break',
-          'strong',
-          'emphasis',
-          'list',
-          'listItem',
-          'link'
-        ]}
-      /> */}
+      <FormattedMessage id="projectDescription" />
     </div>
   </div>
 );
