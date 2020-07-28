@@ -12,8 +12,13 @@ import AboutProject from '../about-project/about-project';
 import Overlay from '../overlay/overlay';
 
 import styles from './menu.styl';
+import {WindowsIcon} from '../icons/windows-icon';
+import {LinuxIcon} from '../icons/linux-icon';
+import {AppleIcon} from '../icons/apple-icon';
 
 const Menu: FunctionComponent = () => {
+  // @ts-ignore - injected via webpack's define plugin
+  const version = INFO_VERSION;
   const [showOverlay, setShowOverlay] = useState(false);
 
   return (
@@ -41,7 +46,34 @@ const Menu: FunctionComponent = () => {
             <DownloadIcon /> <FormattedMessage id={'offline'} />
           </li>
           <li className={styles.menuListItem}>
-            <Button className={styles.menuButton} label={'download'} />
+            <a
+              href={`https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-win.exe`}
+              target={'_blank'}
+              rel="noopener noreferrer"
+              className={styles.menuButton}>
+              <WindowsIcon />
+              Windows
+            </a>
+          </li>
+          <li className={styles.menuListItem}>
+            <a
+              href={`https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-mac.zip`}
+              target={'_blank'}
+              rel="noopener noreferrer"
+              className={styles.menuButton}>
+              <AppleIcon />
+              macOS
+            </a>
+          </li>
+          <li className={styles.menuListItem}>
+            <a
+              href={`https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-linux.zip`}
+              target={'_blank'}
+              rel="noopener noreferrer"
+              className={styles.menuButton}>
+              <LinuxIcon />
+              Linux
+            </a>
           </li>
         </ul>
         <ul className={styles.menuList}>
