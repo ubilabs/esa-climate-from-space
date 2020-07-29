@@ -6,14 +6,12 @@ import {SelectedLayerIdsState} from '../../reducers/layers/selected-ids';
 
 import {LayerListItem as LayerListItemType} from '../../types/layer-list';
 
-import {GlobeView} from '../../types/globe-view';
-
 import styles from './layer-list.styl';
 
 interface Props {
   selectedLayerIds: SelectedLayerIdsState;
   layers: LayerListItemType[];
-  onSelect: (id: string, flyTo: GlobeView, isMain: boolean) => void;
+  onSelect: (id: string, isMain: boolean) => void;
 }
 
 const LayerList: FunctionComponent<Props> = ({
@@ -31,7 +29,7 @@ const LayerList: FunctionComponent<Props> = ({
         .map(layer => (
           <li key={layer.id}>
             <LayerListItem
-              onSelect={(id, flyTo, isMain) => onSelect(id, flyTo, isMain)}
+              onSelect={(id, isMain) => onSelect(id, isMain)}
               isMainSelected={isMainSelected}
               layer={layer}
             />

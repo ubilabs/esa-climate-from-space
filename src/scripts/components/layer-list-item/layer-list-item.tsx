@@ -6,14 +6,13 @@ import config from '../../config/main';
 import {DownloadButton} from '../download-button/download-button';
 
 import {LayerListItem as LayerListItemType} from '../../types/layer-list';
-import {GlobeView} from '../../types/globe-view';
 
 import styles from './layer-list-item.styl';
 
 interface Props {
   layer: LayerListItemType;
   isMainSelected: boolean;
-  onSelect: (id: string, flyTo: GlobeView, isMain: boolean) => void;
+  onSelect: (id: string, isMain: boolean) => void;
 }
 
 const LayerListItem: FunctionComponent<Props> = ({
@@ -25,15 +24,13 @@ const LayerListItem: FunctionComponent<Props> = ({
   const offlineUrl = replaceUrlPlaceholders(packageUrl, {id: layer.id});
 
   return (
-    <div
-      className={styles.layerItem}
-      onClick={() => onSelect(layer.id, layer.flyTo, true)}>
+    <div className={styles.layerItem} onClick={() => onSelect(layer.id, true)}>
       <span className={styles.layerTitle}>{layer.name}</span>
       {isMainSelected && (
         <button
           className={styles.compare}
           onClick={event => {
-            onSelect(layer.id, layer.flyTo, false);
+            onSelect(layer.id, false);
             event.stopPropagation();
           }}>
           <FormattedMessage id={'layerSelector.compare'} />
