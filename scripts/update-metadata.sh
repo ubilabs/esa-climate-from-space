@@ -6,10 +6,10 @@
 
 version=0.6.1
 workingDir="./download"
-layersConfigFile="../data/layers-config.json"
+layersConfigFile="./data/layers-config.json"
 
 # take optional layer ID from command line argument
-layerID=$1 
+layerID=$1
 
 # check if layer ID is set
 if [ -z $layerID ]
@@ -22,7 +22,7 @@ fi
 # for all key of the layer config
 for datasetId in ${keys}
 do
-    echo $datasetId 
+    echo $datasetId
 
     # download metadata file
     path=gs://esa-cfs-tiles/$version/$datasetId/metadata.json

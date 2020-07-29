@@ -5,6 +5,18 @@
     "timeFormat": {
       "year": "2-digit",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sst.analysed_sst": {
@@ -13,6 +25,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "oc.chlor_a": {
@@ -21,6 +45,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "aerosol.AOD550_mean": {
@@ -29,6 +65,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "cloud.cfc": {
@@ -37,6 +85,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sea_level.sla": {
@@ -45,6 +105,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sea_surface_salinity.sss": {
@@ -53,6 +125,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "soil_moisture.sm": {
@@ -61,6 +145,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "ozone.atmosphere_mole_content_of_ozone": {
@@ -69,6 +165,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "land_cover.lccs_class": {
@@ -77,6 +185,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sea_state.swh_mean": {
@@ -85,6 +205,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sea_ice_sh.ice_conc": {
@@ -93,6 +225,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sea_ice_nh.ice_conc": {
@@ -101,6 +245,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "greenland_ice.sec": {
@@ -108,6 +264,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "permafrost.pfr": {
@@ -115,6 +283,18 @@
     "basemap": "land",
     "timeFormat": {
       "year": "numeric"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "snow.swe": {
@@ -122,6 +302,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "biomass.agb": {
@@ -129,6 +321,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "greenhouse.xco2": {
@@ -136,6 +340,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "greenhouse.xch4": {
@@ -143,6 +359,18 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   }
 }
