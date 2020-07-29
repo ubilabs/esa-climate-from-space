@@ -69,5 +69,6 @@ export default {
       'https://www.facebook.com/sharer/sharer.php?u={currentUrl}&text=ESAClimateFromSpace',
     twitter:
       'http://twitter.com/intent/tweet?status=ESA%20Climate%20From%20Space&url={currentUrl}'
-  }
+  },
+  legendImage: `${baseUrlStorage}/legend-images/{variable}.png`
 };
