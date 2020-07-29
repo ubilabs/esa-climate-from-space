@@ -19,7 +19,8 @@ const SplashScreen: FunctionComponent<Props> = ({storyId, slide}) => {
     <div
       className={styles.splashscreen}
       style={{
-        background: `center / cover no-repeat url(${imageUrl}) rgba(0, 0, 0, 0.3)`
+        background: `center / cover no-repeat url(${imageUrl}) rgba(0, 0, 0, 0.3)`,
+        width: '100%'
       }}>
       <div className={styles.content}>
         <ReactMarkdown

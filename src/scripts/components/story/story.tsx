@@ -60,12 +60,16 @@ const Story: FunctionComponent = () => {
   }
 
   const getRightSideComponent = (slide: Slide, story: StoryType) => {
-    if (slide.type === SlideType.Image) {
+    if (slide.type === SlideType.Image && slide.images) {
       return (
-        slide.images && <StoryMedia images={slide.images} storyId={story.id} />
+        <StoryMedia
+          images={slide.images}
+          imageCaptions={slide.imageCaptions}
+          storyId={story.id}
+        />
       );
-    } else if (slide.type === SlideType.Video) {
-      return slide.videoId && <StoryVideo videoId={slide.videoId} />;
+    } else if (slide.type === SlideType.Video && slide.videoId) {
+      return <StoryVideo videoId={slide.videoId} />;
     }
 
     return <Globes />;

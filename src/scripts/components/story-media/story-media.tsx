@@ -11,10 +11,15 @@ import styles from './story-media.styl';
 
 interface Props {
   images: string[];
+  imageCaptions?: string[];
   storyId: string;
 }
 
-const StoryMedia: FunctionComponent<Props> = ({images, storyId}) => {
+const StoryMedia: FunctionComponent<Props> = ({
+  images,
+  imageCaptions,
+  storyId
+}) => {
   const containerWidth = images.length * 100;
   const imageWidth = 100 / images.length;
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -53,13 +58,7 @@ const StoryMedia: FunctionComponent<Props> = ({images, storyId}) => {
             {showNextButton ? <NextIcon /> : null}
           </div>
         </div>
-        {showLightbox ? (
-          <div
-            className={styles.fullscreenIcon}
-            onClick={() => setShowLightbox(false)}>
-            <FullscreenExitIcon />
-          </div>
-        ) : (
+        {!showLightbox && (
           <div
             className={styles.fullscreenIcon}
             onClick={() => setShowLightbox(true)}>
@@ -73,13 +72,27 @@ const StoryMedia: FunctionComponent<Props> = ({images, storyId}) => {
             transform: `translateX(-${imageWidth * currentIndex}%)`
           }}>
           {images.map((image, index) => {
+            const imageCaption = imageCaptions?.find((_, i) => i === index);
             const imageUrl = getStoryMediaUrl(storyId, image);
+
             return (
               <div
                 className={styles.sliderImage}
                 key={index}
                 style={{width: `${imageWidth}%`}}>
-                <img src={imageUrl} className={styles.image} />
+                <div className={styles.imageContainer}>
+                  <img className={styles.photo} src={imageUrl} />
+                  {showLightbox && (
+                    <div className={styles.imageInfo}>
+                      <p className={styles.description}>{imageCaption}</p>
+                      <div
+                        className={styles.fullscreenExitIcon}
+                        onClick={() => setShowLightbox(false)}>
+                        <FullscreenExitIcon />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             );
           })}

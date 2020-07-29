@@ -4,13 +4,15 @@
     {
       "type": "splashscreen",
       "text": "# Planetary Heat Store\n\n(placeholder)",
-      "images": ["assets/sst_large_18.jpg"]
+      "images": ["assets/sst_large_18.jpg"],
+      "imageCaptions": ["caption1"]
     },
     {
       "type": "image",
       "text": "# Planetary Heat Store\n\n Go for a swim in the sea on midsummers day and the water may be surprisingly chilly. Although the sun is at its highest point in the sky and there are more hours of sunlight than on any other day of the year, the sea does not reach its maximum temperature until three months later, in the autumn. This lag shows that the sea has a high heat capacity – it takes a lot of energy to change its temperature, so it is slow to heat up and slow to cool down.\n\nThis makes the sea incredibly good at storing heat. So good, that just the top three metres of the ocean contains as much heat as the entire atmosphere. The ocean’s capacity to accumulate, transport and slowly release the energy it receives from the Sun is one of the key regulators of weather and climate on our planet. The oceans are absorbing about 90% of the excess heat from global warming.",
       "shortText": "# Planetary Heat Store\n\nThe sea reaches its maximum temperature in the autumn.\n\nThe sea has a high heat capacity – it is: \n\n- slow to heat up, slow to cool down\n\n- very good at storing heat\n\nThe top 3 metres of the ocean contain as much heat as the entire atmosphere.\n\nThe oceans:\n\n- accumulate, transport and slowly release energy from the Sun\n\n- are one of the key regulators of weather and climate on our planet\n\n- absorb about 90% of the excess heat from global warming",
-      "images": ["assets/sst_large_01.jpg"]
+      "images": ["assets/sst_large_01.jpg"],
+      "imageCaptions": ["caption1"]
     },
     {
       "type": "globe",
@@ -49,7 +51,8 @@
       "type": "image",
       "text": "# Measuring Ocean Temperature\n\nNumerous satellite platforms have been launched over the last forty years, with different sensors, using different and evolving technologies. The longest-running SST record is from the Advanced Very High Resolution Radiometer (AVHRR), an instrument on the American series of polar orbiting weather satellites, and now also carried by Europe’s MetOp satellites. There are usually two polar orbiters in operation, and AVHRR has a wide field of view, allowing it to cover most of the world at least twice a day. It uses infrared measurements at two different wavelengths to measure SST.\n\n## Covering All Angles\n\nMore accurate SST measurements are available from the Along-Track Scanning Radiometer (ATSR) on ESA’s ERS and Envisat platforms. ATSR measures infrared emissions vertically beneath the satellite and by looking forward at an oblique angle to minimise atmospheric contributions to the signal. The instrument’s conical scanning limits the instrument’s coverage, however, so that daily SST maps from ATSR have gaps between each orbital path, with complete global coverage requiring three days of observations.",
       "shortText": "# Measuring Ocean Temperature \n\n16 satellites measuring SST over 40 years\n\nAdvanced Very High Resolution Radiometer\n\n- longest-running sensor\n\n- on US and European weather satellites\n\n- measurement at two infrared wavelengths\n\n- wide field of view\n\n- twice-daily coverage in most places\n\nAlong-Track Scanning Radiometer\n\n- more accurate SST measurement\n\n- on ESA’s ERS and Envisat\n\n- vertical and oblique viewing to reduce atmospheric contamination\n\n- narrow field of view\n\n- global coverage in 3 days",
-      "images": ["assets/sst_large_18.jpg", "assets/sealevel_large_07.jpg"]
+      "images": ["assets/sst_large_18.jpg", "assets/sealevel_large_07.jpg"],
+      "imageCaptions": ["caption1", "caption2"]
     },
     {
       "type": "video",
