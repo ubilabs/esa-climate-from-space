@@ -23,111 +23,115 @@ const Menu: FunctionComponent = () => {
   return (
     <React.Fragment>
       <nav className={styles.menuContainer}>
-        <ul className={styles.menuList}>
-          <li className={styles.menuItemTitle}>
-            <PresenterIcon /> <FormattedMessage id={'modes'} />
-          </li>
-          <li className={styles.menuListItem}>
-            <Button
-              className={styles.menuButton}
-              label={'presenterMode'}
-              link={'/present'}
-            />
-          </li>
-          <li className={styles.menuListItem}>
-            <Button
-              className={styles.menuButton}
-              label={'showcaseMode'}
-              link={'/showcase'}
-            />
-          </li>
-          <li className={styles.subMenuTitle}>
-            <DownloadIcon /> <FormattedMessage id={'offline'} />
-          </li>
-          <li className={styles.menuListItem}>
-            <a
-              href={config.downloadUrls.windows}
-              target={'_blank'}
-              rel="noopener noreferrer"
-              className={styles.menuButton}>
-              <WindowsIcon />
-              Windows
-            </a>
-          </li>
-          <li className={styles.menuListItem}>
-            <a
-              href={config.downloadUrls.macOS}
-              target={'_blank'}
-              rel="noopener noreferrer"
-              className={styles.menuButton}>
-              <AppleIcon />
-              macOS
-            </a>
-          </li>
-          <li className={styles.menuListItem}>
-            <a
-              href={config.downloadUrls.linux}
-              target={'_blank'}
-              rel="noopener noreferrer"
-              className={styles.menuButton}>
-              <LinuxIcon />
-              Linux
-            </a>
-          </li>
-        </ul>
-        <ul className={styles.menuList}>
-          <li className={styles.menuItemTitle}>
-            <LanguageIcon /> <FormattedMessage id={'language'} />
-          </li>
-          <li>
-            <LanguageSelector className={styles.menuListItem} />
-          </li>
-        </ul>
-        <ul className={styles.menuList}>
-          <li className={styles.menuItemTitle}>
-            <InfoIcon /> <FormattedMessage id={'info'} />
-          </li>
-          <li className={styles.menuListItem}>
-            <Button
-              className={styles.menuButton}
-              label={'about'}
-              onClick={() => setShowOverlay(true)}
-            />
-          </li>
-          <li className={styles.menuListItem}>
-            <a
-              href="https://www.esa.int/"
-              target={'_blank'}
-              rel="noopener noreferrer"
-              className={styles.menuButton}>
-              <FormattedMessage id={'EsaWebsite'} />
-            </a>
-          </li>
-          <li className={styles.menuListItem}>
-            <a
-              href="https://climate.esa.int/"
-              target={'_blank'}
-              rel="noopener noreferrer"
-              className={styles.menuButton}>
-              <FormattedMessage id={'CCIWebsite'} />
-            </a>
-          </li>
-          <li className={styles.menuListItem}>
-            <a
-              href="https://github.com/ubilabs/esa-climate-from-space"
-              target={'_blank'}
-              rel="noopener noreferrer"
-              className={styles.menuButton}>
-              <FormattedMessage id={'github'} />
-            </a>
-          </li>
-        </ul>
+        {showOverlay ? (
+          <Overlay onClose={() => setShowOverlay(false)}>
+            <AboutProject />
+          </Overlay>
+        ) : (
+          <React.Fragment>
+            <ul className={styles.menuList}>
+              <li className={styles.menuItemTitle}>
+                <PresenterIcon /> <FormattedMessage id={'modes'} />
+              </li>
+              <li className={styles.menuListItem}>
+                <Button
+                  className={styles.menuButton}
+                  label={'presenterMode'}
+                  link={'/present'}
+                />
+              </li>
+              <li className={styles.menuListItem}>
+                <Button
+                  className={styles.menuButton}
+                  label={'showcaseMode'}
+                  link={'/showcase'}
+                />
+              </li>
+              <li className={styles.subMenuTitle}>
+                <DownloadIcon /> <FormattedMessage id={'offline'} />
+              </li>
+              <li className={styles.menuListItem}>
+                <a
+                  href={config.downloadUrls.windows}
+                  target={'_blank'}
+                  rel="noopener noreferrer"
+                  className={styles.menuButton}>
+                  <WindowsIcon />
+                  Windows
+                </a>
+              </li>
+              <li className={styles.menuListItem}>
+                <a
+                  href={config.downloadUrls.macOS}
+                  target={'_blank'}
+                  rel="noopener noreferrer"
+                  className={styles.menuButton}>
+                  <AppleIcon />
+                  macOS
+                </a>
+              </li>
+              <li className={styles.menuListItem}>
+                <a
+                  href={config.downloadUrls.linux}
+                  target={'_blank'}
+                  rel="noopener noreferrer"
+                  className={styles.menuButton}>
+                  <LinuxIcon />
+                  Linux
+                </a>
+              </li>
+            </ul>
+
+            <ul className={styles.menuList}>
+              <li className={styles.menuItemTitle}>
+                <LanguageIcon /> <FormattedMessage id={'language'} />
+              </li>
+              <li>
+                <LanguageSelector className={styles.menuListItem} />
+              </li>
+            </ul>
+            <ul className={styles.menuList}>
+              <li className={styles.menuItemTitle}>
+                <InfoIcon /> <FormattedMessage id={'info'} />
+              </li>
+              <li className={styles.menuListItem}>
+                <Button
+                  className={styles.menuButton}
+                  label={'about'}
+                  onClick={() => setShowOverlay(true)}
+                />
+              </li>
+              <li className={styles.menuListItem}>
+                <a
+                  href="https://www.esa.int/"
+                  target={'_blank'}
+                  rel="noopener noreferrer"
+                  className={styles.menuButton}>
+                  <FormattedMessage id={'EsaWebsite'} />
+                </a>
+              </li>
+              <li className={styles.menuListItem}>
+                <a
+                  href="https://climate.esa.int/"
+                  target={'_blank'}
+                  rel="noopener noreferrer"
+                  className={styles.menuButton}>
+                  <FormattedMessage id={'CCIWebsite'} />
+                </a>
+              </li>
+              <li className={styles.menuListItem}>
+                <a
+                  href="https://github.com/ubilabs/esa-climate-from-space"
+                  target={'_blank'}
+                  rel="noopener noreferrer"
+                  className={styles.menuButton}>
+                  <FormattedMessage id={'github'} />
+                </a>
+              </li>
+            </ul>
+          </React.Fragment>
+        )}
       </nav>
-      {showOverlay && (
-        <Overlay onClose={() => setShowOverlay(false)}>
-          <AboutProject />
-        </Overlay>
-      )}
       <div className={styles.logo}>
         <CCILogo />
       </div>
