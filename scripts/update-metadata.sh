@@ -6,10 +6,10 @@
 
 version=0.6.1
 workingDir="./download"
-layersConfigFile="../data/layers-config.json"
+layersConfigFile="./data/layers-config.json"
 
 # take optional layer ID from command line argument
-layerID=$1 
+layerID=$1
 
 # check if layer ID is set
 if [ -z $layerID ]
@@ -22,7 +22,7 @@ fi
 # for all key of the layer config
 for datasetId in ${keys}
 do
-    echo $datasetId 
+    echo $datasetId
 
     # download metadata file
     path=gs://esa-cfs-tiles/$version/$datasetId/metadata.json
@@ -30,7 +30,7 @@ do
     gsutil -q cp $path $metadataFileName
 
     # merge layer config into metdata file
-    jq -s ".[0] * .[1].\"$datasetId\"" $metadataFileName $layersConfigFile | gsutil -q cp - $path
+    jq -s ".[0] + .[1].\"$datasetId\"" $metadataFileName $layersConfigFile | gsutil -q cp - $path
 
     # set cachhing headers foir remote file
     gsutil -q setmeta -r -h "cache-control: no-cache" $path

@@ -40,7 +40,7 @@ const ShowcaseSelector: FunctionComponent = () => {
         <Button
           disabled={isDisabled}
           label={'play'}
-          link={`/showcase/${selectedIds.join('&')}/0/title`}
+          link={`/showcase/${selectedIds.join('&')}/0/0`}
           icon={PlayIcon}
         />
       </Header>
