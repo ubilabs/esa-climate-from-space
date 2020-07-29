@@ -1,8 +1,7 @@
 @require '../../../variables.styl'
 
 .storyMedia
-  padding: emCalc(80px) emCalc(56px) 0 emCalc(28px)
-  height: 100%
+  padding: emCalc(80px) emCalc(56px)
 
 .storyGallery
   position: relative
@@ -58,6 +57,10 @@
     color: $textDefault
     font-size: emCalc(11px)
 
+  .buttonContainer
+    .navIcon
+      margin: 0 emCalc(50px)
+
 .buttonContainer
   position: absolute
   top: 50%
@@ -69,7 +72,7 @@
   transform: translateY(-50%)
 
   .navIcon
-    margin: 0 emCalc(50px)
+    margin: 0 emCalc(10px)
     border-radius: 50%
     background: $darkGrey4
     cursor: pointer
