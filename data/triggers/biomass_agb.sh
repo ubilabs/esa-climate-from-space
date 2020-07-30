@@ -10,7 +10,7 @@ MAX_LON="180"
 MIN_LAT="-60"
 MAX_LAT="80"
 MIN="0"
-MAX="100"
+MAX="350"
 MACHINE_TYPE="N1_HIGHCPU_32"
 
 if [ ! -f ./package.json ]; then
