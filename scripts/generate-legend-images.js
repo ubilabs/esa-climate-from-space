@@ -27,9 +27,10 @@ variables.forEach(variable => {
     colorRamp.forEach(colorStop => {
       const [value, r, g, b, a] = colorStop;
       const stop = 1 - (value - min) / range;
-      const hasAlpha = typeof a === 'number';
+      const alpha = Number(a) / 255;
+      const hasAlpha = !isNaN(a);
       const color = `rgb${hasAlpha ? 'a' : ''}(${r}, ${g}, ${b}${
-        hasAlpha ? `, ${a}` : ''
+        hasAlpha ? `, ${alpha}` : ''
       })`;
 
       gradient.addColorStop(stop, color);
