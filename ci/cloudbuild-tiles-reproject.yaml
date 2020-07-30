@@ -1,5 +1,5 @@
 steps:
-  - name: gcr.io/cloud-builders/gsutil
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: 'download-netcdfs'
     entrypoint: '/bin/bash'
     args:
@@ -32,8 +32,9 @@ steps:
       - "${_VARIABLE_ID}"
       - "${_LAYER_ID}"
 
-  - name: gcr.io/cloud-builders/gsutil
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: 'upload-to-storage'
+    entrypoint: 'gsutil'
     args:
       - "-m"
       - "-q"

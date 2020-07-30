@@ -66,6 +66,7 @@
       "year": "numeric",
       "month": "long"
     },
+    "units": "testunit",
     "flyTo": {
       "position": {
         "height": 15000000.06,
