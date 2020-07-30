@@ -76,5 +76,6 @@ export default {
     twitter:
       'http://twitter.com/intent/tweet?text=ESA%20Climate%20From%20Space&url={currentUrl}'
   },
+  legendImage: `${baseUrlStorage}/legend-images/{variable}.png`,
   downloadUrls
 };
