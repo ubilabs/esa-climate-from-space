@@ -49,6 +49,12 @@ const basemapUrlsOffline = {
   dark: 'basemaps/dark'
 };
 
+const downloadUrls = {
+  windows: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-win.exe`,
+  macOS: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-mac.zip`,
+  linux: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-linux.zip`
+};
+
 export default {
   api: {
     layers: `${baseUrlStorage}/layers/layers-{lang}.json`,
@@ -68,7 +74,8 @@ export default {
     facebook:
       'https://www.facebook.com/sharer/sharer.php?u={currentUrl}&text=ESAClimateFromSpace',
     twitter:
-      'http://twitter.com/intent/tweet?status=ESA%20Climate%20From%20Space&url={currentUrl}'
+      'http://twitter.com/intent/tweet?text=ESA%20Climate%20From%20Space&url={currentUrl}'
   },
-  legendImage: `${baseUrlStorage}/legend-images/{variable}.png`
+  legendImage: `${baseUrlStorage}/legend-images/{variable}.png`,
+  downloadUrls
 };
