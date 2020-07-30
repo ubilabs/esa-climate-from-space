@@ -268,9 +268,9 @@
     },
     "flyTo": {
       "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
+        "height": 5500000,
+        "latitude": -38.5,
+        "longitude": 72.29
       },
       "orientation": {
         "heading": 0,
