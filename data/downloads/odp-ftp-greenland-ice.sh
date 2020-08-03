@@ -23,6 +23,23 @@ curl --silent $BASE_URL"RT_XO_2005_2009.nc" > $OUTPUT_FODLER/2009-01-01.nc
 curl --silent $BASE_URL"RT_XO_2006_2010.nc" > $OUTPUT_FODLER/2010-01-01.nc
 curl --silent $BASE_URL"AT_XO_2007_2011.nc" > $OUTPUT_FODLER/2011-01-01.nc
 
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/1996-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/1997-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/1998-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/1999-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2000-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2001-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2002-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2003-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2004-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2005-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2006-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2007-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2008-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2009-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2010-01-01.nc --variable SEC
+python ./data/drop-unused-vars.py --file $OUTPUT_FODLER/2011-01-01.nc --variable SEC
+
 python ./data/add-time-coordinate.py --file $OUTPUT_FODLER/1996-01-01.nc --timestamp 1996-01-01
 python ./data/add-time-coordinate.py --file $OUTPUT_FODLER/1997-01-01.nc --timestamp 1997-01-01
 python ./data/add-time-coordinate.py --file $OUTPUT_FODLER/1998-01-01.nc --timestamp 1998-01-01
