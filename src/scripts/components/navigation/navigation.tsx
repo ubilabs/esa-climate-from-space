@@ -11,6 +11,7 @@ import Share from '../share/share';
 import {MenuIcon} from '../icons/menu-icon';
 
 import styles from './navigation.styl';
+import showMarkersAction from '../../actions/show-markers';
 
 const Navigation: FunctionComponent = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -27,7 +28,10 @@ const Navigation: FunctionComponent = () => {
       <Button
         className={styles.button}
         label="layers"
-        onClick={() => dispatch(showLayerSelectorAction(true))}
+        onClick={() => {
+          dispatch(showLayerSelectorAction(true));
+          dispatch(showMarkersAction(false));
+        }}
         icon={LayersIcon}
       />
       <Share />

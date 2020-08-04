@@ -9,6 +9,7 @@ import storyLayerReducer from './story-layer';
 import showLayerSelectorReducer from './show-layer-selector';
 import offlineReducer from './offline/index';
 import downloadedDataReducer from './downloaded-data';
+import showMarkersReducer from './show-markers';
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   storyLayerId: storyLayerReducer,
   showLayerSelector: showLayerSelectorReducer,
   offline: offlineReducer,
-  downloadedData: downloadedDataReducer
+  downloadedData: downloadedDataReducer,
+  showMarkers: showMarkersReducer
 });
 
 export default rootReducer;

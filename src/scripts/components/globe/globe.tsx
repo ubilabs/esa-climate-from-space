@@ -1,4 +1,5 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 import {
   Viewer,
@@ -21,6 +22,8 @@ import {isElectron} from '../../libs/electron/index';
 import {GlobeView} from '../../types/globe-view';
 import {GlobeProjection} from '../../types/globe-projection';
 import config from '../../config/main';
+import {useMarkers} from '../../hooks/use-markers';
+import {storyListSelector} from '../../selectors/story/list';
 
 import {GlobeProjectionState} from '../../types/globe-projection-state';
 import {BasemapId} from '../../types/basemap';
@@ -86,6 +89,7 @@ const Globe: FunctionComponent<Props> = ({
 }) => {
   const [viewer, setViewer] = useState<Viewer | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const stories = useSelector(storyListSelector);
 
   // make latest "active" value always accessible in camera change handler
   const isActiveRef = useRef<boolean>(active);
@@ -294,6 +298,8 @@ const Globe: FunctionComponent<Props> = ({
 
     flyToGlobeView(viewer, flyTo);
   }, [viewer, flyTo]);
+
+  useMarkers(viewer, stories);
 
   return (
     <div
