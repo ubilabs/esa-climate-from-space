@@ -65,13 +65,12 @@ def write_metadata_file(layer_id, variable_id, units, timesteps, max_zoom, min, 
 
   metadata = {
     'id': layer_id,
-    'colorMap': layer_data['colorMap'],
-    'timeFormat': layer_data['timeFormat'],
     'minValue': min,
     'maxValue': max,
-    'units': layer_data.get('units') or units,
     'zoomLevels': max_zoom,
-    'timestamps': timestamps
+    'timestamps': timestamps,
+    'units': units,
+    **layer_config[layer_id]
   }
 
   with open('./metadata.json', 'w') as f:
