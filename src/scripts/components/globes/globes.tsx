@@ -13,6 +13,7 @@ import {projectionSelector} from '../../selectors/globe/projection';
 import {flyToSelector} from '../../selectors/fly-to';
 import setGlobeViewAction from '../../actions/set-globe-view';
 import Globe from '../globe/globe';
+import LayerLegend from '../layer-legend/layer-legend';
 import {getLayerTileUrl} from '../../libs/get-layer-tile-url';
 import {State} from '../../reducers';
 import {layerDetailsSelector} from '../../selectors/layers/layer-details';
@@ -67,6 +68,21 @@ const Globes: FunctionComponent = () => {
 
   return (
     <div className={styles.globes}>
+      {mainLayerDetails && (
+        <LayerLegend
+          id={mainLayerDetails.id}
+          values={[mainLayerDetails.maxValue, mainLayerDetails.minValue]}
+          unit={mainLayerDetails.units}
+        />
+      )}
+      {compareLayerDetails && (
+        <LayerLegend
+          id={compareLayerDetails.id}
+          values={[compareLayerDetails.maxValue, compareLayerDetails.minValue]}
+          unit={compareLayerDetails.units}
+          isCompare={true}
+        />
+      )}
       <Globe
         active={isMainActive}
         view={currentView}

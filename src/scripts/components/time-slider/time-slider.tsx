@@ -6,6 +6,7 @@ import React, {
   useCallback
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {FormattedDate} from 'react-intl';
 import debounce from 'lodash.debounce';
 import cx from 'classnames';
 
@@ -158,6 +159,15 @@ const TimeSlider: FunctionComponent = () => {
               selectedTimeIndex={timeIndexCompare}
             />
           )}
+
+          <div className={styles.yearLabel}>
+            <div>
+              <FormattedDate value={combined.min} year="numeric" />
+            </div>
+            <div>
+              <FormattedDate value={combined.max} year="numeric" />
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -16,12 +16,14 @@ import styles from './share.styl';
 const Share: FunctionComponent = () => {
   const [showShare, setShowShare] = useState(false);
   const currentUrl = window.location.href;
+
   const facebookUrl = replaceUrlPlaceholders(config.share.facebook, {
-    currentUrl
+    currentUrl: encodeURIComponent(currentUrl)
   });
   const twitterUrl = replaceUrlPlaceholders(config.share.twitter, {
-    currentUrl
+    currentUrl: encodeURIComponent(currentUrl)
   });
+
   const ref = useRef<HTMLInputElement>(null);
   const copyUrl = () => {
     if (ref.current) {
