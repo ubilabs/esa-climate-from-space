@@ -9,13 +9,13 @@ import {StoryIcon} from '../icons/story-icon';
 import showLayerSelectorAction from '../../actions/show-layer-selector';
 import Share from '../share/share';
 import {MenuIcon} from '../icons/menu-icon';
-
-import styles from './navigation.styl';
 import showMarkersAction from '../../actions/show-markers';
 
+import styles from './navigation.styl';
+
 const Navigation: FunctionComponent = () => {
-  const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch();
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div className={styles.navigation}>

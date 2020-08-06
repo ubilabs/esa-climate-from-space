@@ -11,7 +11,7 @@
       "water-vapour",
       "clouds"
     ],
-    "position": [42.43, -85.04]
+    "position": [6.3281, -40.446947]
   },
   {
     "id": "is-ozone-good-or-bad",
@@ -32,7 +32,7 @@
       "sea-surface-salinity",
       "permafrost"
     ],
-    "position": [0, 0]
+    "position": [10.56, 20.76]
   },
   {
     "id": "story2",
