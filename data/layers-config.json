@@ -266,11 +266,12 @@
       "year": "numeric",
       "month": "long"
     },
+    "units": "m",
     "flyTo": {
       "position": {
         "height": 5500000,
-        "latitude": -38.5,
-        "longitude": 72.29
+        "latitude": 72.29,
+        "longitude": -38.5
       },
       "orientation": {
         "heading": 0,
