@@ -26,7 +26,7 @@ local_store.add_pattern(ds_name, files)
 # open dataset
 ds = cate.ops.open_dataset(ds_local_name, var_names=args.variable_id)
 data_array = ds[args.variable_id]
-units = data_array.get('units') or data_array.attrs['Units']
+units = data_array.attrs.get('units') or data_array.attrs.get('Units')
 
 # get min and max values
 try:
