@@ -1,6 +1,6 @@
 import {SHOW_MARKERS, ShowMarkersAction} from '../actions/show-markers';
 
-const initialState = true;
+const initialState = false;
 
 function showMarkersReducer(
   state: boolean = initialState,
