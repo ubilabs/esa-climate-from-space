@@ -9,7 +9,6 @@ import {StoryIcon} from '../icons/story-icon';
 import showLayerSelectorAction from '../../actions/show-layer-selector';
 import Share from '../share/share';
 import {MenuIcon} from '../icons/menu-icon';
-import showMarkersAction from '../../actions/show-markers';
 
 import styles from './navigation.styl';
 
@@ -28,10 +27,7 @@ const Navigation: FunctionComponent = () => {
       <Button
         className={styles.button}
         label="layers"
-        onClick={() => {
-          dispatch(showLayerSelectorAction(true));
-          dispatch(showMarkersAction(false));
-        }}
+        onClick={() => dispatch(showLayerSelectorAction(true))}
         icon={LayersIcon}
       />
       <Share />

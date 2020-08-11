@@ -17,7 +17,6 @@ import {State} from '../../reducers';
 import setFlyToAction from '../../actions/set-fly-to';
 
 import styles from './layer-selector.styl';
-import showMarkersAction from '../../actions/show-markers';
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -72,10 +71,7 @@ const LayerSelector: FunctionComponent = () => {
               <Button
                 className={styles.button}
                 icon={CloseIcon}
-                onClick={() => {
-                  dispatch(showLayerSelectorAction(false));
-                  dispatch(showMarkersAction(true));
-                }}
+                onClick={() => dispatch(showLayerSelectorAction(false))}
               />
             </div>
             {selectedMainLayer && (

@@ -1,5 +1,4 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
-import {useSelector} from 'react-redux';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 import {
   Viewer,
@@ -23,10 +22,10 @@ import {GlobeView} from '../../types/globe-view';
 import {GlobeProjection} from '../../types/globe-projection';
 import config from '../../config/main';
 import {useMarkers} from '../../hooks/use-markers';
-import {storyListSelector} from '../../selectors/story/list';
 
 import {GlobeProjectionState} from '../../types/globe-projection-state';
 import {BasemapId} from '../../types/basemap';
+import {Marker} from '../../types/marker-type';
 
 import styles from './globe.styl';
 
@@ -55,6 +54,7 @@ interface Props {
   basemap: BasemapId | null;
   zoomLevels: number;
   flyTo: GlobeView | null;
+  markers?: Marker[];
   onMouseEnter: () => void;
   onTouchStart: () => void;
   onChange: (view: GlobeView) => void;
@@ -82,6 +82,7 @@ const Globe: FunctionComponent<Props> = ({
   zoomLevels,
   active,
   flyTo,
+  markers = [],
   onMouseEnter,
   onTouchStart,
   onChange,
@@ -89,7 +90,6 @@ const Globe: FunctionComponent<Props> = ({
 }) => {
   const [viewer, setViewer] = useState<Viewer | null>(null);
   const ref = useRef<HTMLDivElement>(null);
-  const stories = useSelector(storyListSelector);
 
   // make latest "active" value always accessible in camera change handler
   const isActiveRef = useRef<boolean>(active);
@@ -299,7 +299,7 @@ const Globe: FunctionComponent<Props> = ({
     flyToGlobeView(viewer, flyTo);
   }, [viewer, flyTo]);
 
-  useMarkers(viewer, stories);
+  useMarkers(viewer, markers);
 
   return (
     <div

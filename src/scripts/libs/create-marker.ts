@@ -10,17 +10,19 @@ import {
 
 import NotesEsaBold from '../../../assets/fonts/NotesEsaBol.otf';
 
-import {StoryListItem} from '../types/story-list';
+import {Marker} from '../types/marker-type';
 
-export async function createMarker(story: StoryListItem) {
+export async function createMarker(marker: Marker): Promise<Entity> {
   const canvas = document.createElement('canvas');
   canvas.width = 700;
   canvas.height = 300;
 
+  const svgString = await getSvgString(
+    unescape(encodeURIComponent(marker.title))
+  );
+
   const image = new Image();
-  image.src = `data:image/svg+xml;base64,${window.btoa(
-    await getSvgString(unescape(encodeURIComponent(story.title)))
-  )}`;
+  image.src = `data:image/svg+xml;base64,${window.btoa(svgString)}`;
 
   return new Promise(resolve => {
     image.onload = function() {
@@ -29,10 +31,10 @@ export async function createMarker(story: StoryListItem) {
 
       resolve(
         new Entity({
-          id: `${story.id}`,
+          id: `${marker.id}`,
           position: Cartesian3.fromDegrees(
-            story.position[0],
-            story.position[1]
+            marker.position[0],
+            marker.position[1]
           ),
           billboard: new BillboardGraphics({
             image: new ConstantProperty(canvas),
@@ -45,6 +47,7 @@ export async function createMarker(story: StoryListItem) {
     };
   });
 }
+
 let fontPromise: Promise<string> | null = null;
 
 async function loadFont() {
@@ -61,6 +64,7 @@ async function loadFont() {
     };
     reader.readAsDataURL(blob);
   });
+
   return fontPromise;
 }
 

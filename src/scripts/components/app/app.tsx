@@ -1,5 +1,5 @@
 import React, {FunctionComponent} from 'react';
-import {Provider as StoreProvider, useSelector, useDispatch} from 'react-redux';
+import {Provider as StoreProvider, useSelector} from 'react-redux';
 import {IntlProvider} from 'react-intl';
 import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
@@ -26,7 +26,6 @@ import translations from '../../i18n';
 import styles from './app.styl';
 import {StoriesStateSelector} from '../../selectors/story/story-state';
 import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
-import showMarkersAction from '../../actions/show-markers';
 
 // create redux store
 const store = createReduxStore();
@@ -39,20 +38,19 @@ const App: FunctionComponent = () => (
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
-  const dispatch = useDispatch();
-
-  const selectedStory = useSelector(StoriesStateSelector);
   const selectedLayers = useSelector(selectedLayerIdsSelector);
-  console.log(selectedLayers);
+  const stories = useSelector(StoriesStateSelector).list;
+  const hideMarkers = Boolean(
+    selectedLayers.mainId || selectedLayers.compareId
+  );
 
-  if (
-    (!selectedLayers.mainId && !selectedLayers.compareId) ||
-    !selectedStory.selected
-  ) {
-    dispatch(showMarkersAction(true));
-  } else {
-    dispatch(showMarkersAction(false));
-  }
+  const storyMarkers = stories.map(story => ({
+    id: story.id,
+    title: story.title,
+    position: story.position
+  }));
+
+  const markers = hideMarkers ? [] : storyMarkers;
 
   return (
     <Router>
@@ -75,7 +73,7 @@ const TranslatedApp: FunctionComponent = () => {
             <div className={styles.logo}>
               <EsaLogo />
             </div>
-            <Globes />
+            <Globes markers={markers} />
             <Navigation />
             <GlobeNavigation />
             <TimeSlider />
