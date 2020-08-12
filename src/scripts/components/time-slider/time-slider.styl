@@ -16,23 +16,30 @@ thumb()
 
 compareThumb()
   width: 10px
-  height: 25px
-  border-radius: emCalc(4px)
-
-  boxShadow()
+  height: 60px
+  border-radius: 0
+  background-color: transparent
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 5 30' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' xmlns:serif='http://www.serif.com/' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cg transform='matrix(1,0,0,1,-5,-4)'%3E%3Cg transform='matrix(1,0,0,0.666667,0,1.33333)'%3E%3Cpath d='M5,5C5,4.448 5.448,4 6,4L9,4C9.552,4 10,4.448 10,5L10,8C10,9.105 9.105,10 8,10L8,43C9.105,43 10,43.895 10,45L10,48C10,48.552 9.552,49 9,49L6,49C5.448,49 5,48.552 5,48L5,45C5,43.895 5.895,43 7,43L7,10C5.895,10 5,9.105 5,8L5,5Z' style='fill:rgb(0,174,157);'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+  background-repeat: no-repeat
+  box-shadow: none
+  transform: translateY(-7px)
 
 .timeSlider
   position: absolute
-  bottom: emCalc(65px)
+  bottom: emCalc(80px)
   display: flex
   justify-content: center
   width: 100%
   font-size: emCalc(16px)
 
+.timeSliderCompare
+  bottom: emCalc(100px)
+
 .container
   position: relative
+  display: flex
   min-width: 400px
-  width: 30%
+  width: 40%
 
 .label
   display: flex
@@ -42,10 +49,10 @@ compareThumb()
 .ranges
   position: relative
   width: 100%
-  height: $range-height * 2
 
 .input, .compareInput
-  position: relative
+  position: absolute
+  top: 0
   z-index: 2
   margin: 0
   width: 100%
@@ -53,13 +60,10 @@ compareThumb()
   background: transparent
   -webkit-appearance: none
 
-.compareInput
-  top: $range-height
-
 .input::-webkit-slider-thumb
   thumb()
 
-  margin-top: 0
+  margin-top: -5px
   -webkit-appearance: none
 
 .input::-moz-range-thumb
@@ -71,7 +75,7 @@ compareThumb()
   thumb()
 
 .compareInput::-webkit-slider-thumb
-  margin-top: -5px
+  margin-top: -6px
 
   compareThumb()
 
@@ -83,16 +87,29 @@ compareThumb()
 
 .timeOutput
   position: absolute
-  bottom: 15px
+  top: -14px
+  padding: 0 4px
   color: $textWhite
-  transform: translateX(-50%)
+  font-size: 0.9em
+  transform: translate(-50%, -100%)
+
+.timeOutputMain
+  transform: translate(-100%, -100%)
+
+.timeOutputCompare
+  top: 50px
+  transform: translate(0, 0)
 
 .playButton
-  position: absolute
-  top: -4px
-  right: calc(100% + 1em)
+  margin-top: emCalc(-21px)
+  padding-right: 1em
+
+.playButtonCompare
+  margin-top: 0
 
 .yearLabel
   display: flex
   justify-content: space-between
+  padding: 4px 0
   color: $textWhite
+  font-size: 0.8em
