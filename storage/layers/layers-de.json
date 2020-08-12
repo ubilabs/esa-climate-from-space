@@ -2,113 +2,132 @@
   {
     "id": "fire.burned_area",
     "name": "Fire - Burned Area",
+    "shortName": "Fire - Burned Area",
     "description": "Das ist ein wichtiger Layer\n* Time Range: monthly 1987 - 2019\n* Temporal Resolution: monthly\n\n[Example Link 1](http://example.com)\n\n[Example Link 2](http://example.com)"
   },
   {
     "id": "soil_moisture.sm",
     "name": "Soil Moisture - SM",
+    "shortName": "Soil Moisture - SM",
     "description": "Das ist die Bodenfeuchtigkeit",
     "link": "http://..."
   },
   {
     "id": "sst.analysed_sst",
     "name": "SST - Analysed SST",
+    "shortName": "SST - Analysed SST",
     "description": "Das ist die Wasseroberflächentemperatur",
     "link": "http://..."
   },
   {
     "id": "oc.chlor_a",
     "name": "Ocean Color - Chlor_a",
+    "shortName": "Ocean Color - Chlor_a",
     "description": "Das ist die Ozean Farbe",
     "link": "http://..."
   },
   {
     "id": "aerosol.AOD550_mean",
     "name": "Aerosol AOD550_mean",
+    "shortName": "Aerosol AOD550_mean",
     "description": "Das ist die Aerosol AOD550_mean",
     "link": "http://..."
   },
   {
     "id": "cloud.cfc",
     "name": "Clouds - CFC",
+    "shortName": "Clouds - CFC",
     "description": "Das ist die Clouds cfc",
     "link": "http://..."
   },
   {
     "id": "sea_level.sla",
     "name": "Sea Level - sla",
+    "shortName": "Sea Level - sla",
     "description": "Das ist die ...",
     "link": "http://..."
   },
   {
     "id": "ozone.atmosphere_mole_content_of_ozone",
     "name": "Ozone - Atmosphere Mole",
+    "shortName": "Ozone - Atmosphere Mole",
     "description": "Das ist die ...",
     "link": "http://..."
   },
   {
     "id": "sea_state.swh_mean",
     "name": "Sea State - swh mean",
+    "shortName": "Sea State - swh mean",
     "description": "Das ist die ...",
     "link": "http://..."
   },
   {
     "id": "sea_ice_sh.ice_conc",
     "name": "Sea Ice SH - Ice Conc",
+    "shortName": "Sea Ice SH - Ice Conc",
     "description": "Das ist die Eis Konzentration",
     "link": "http://..."
   },
   {
     "id": "sea_ice_nh.ice_conc",
     "name": "Sea Ice NH - Ice Conc",
+    "shortName": "Sea Ice NH - Ice Conc",
     "description": "Das ist die Eis Konzentration (Norg)",
     "link": "http://..."
   },
   {
     "id": "greenland_ice.sec",
     "name": "Greenland Ice Sheet - SEC",
+    "shortName": "Greenland Ice Sheet - SEC",
     "description": "Das ist die Grönland Ice Decke",
     "link": "http://..."
   },
   {
     "id": "permafrost.pfr",
     "name": "Permafrost - PFR",
+    "shortName": "Permafrost - PFR",
     "description": "Das ist der Permafrost",
     "link": "http://..."
   },
   {
     "id": "land_cover.lccs_class",
     "name": "Land Cover - lccs_class",
+    "shortName": "Land Cover - lccs_class",
     "description": "Das ist der ...",
     "link": "http://..."
   },
   {
     "id": "sea_surface_salinity.sss",
     "name": "Sea Surface Salinity - sss",
+    "shortName": "Sea Surface Salinity - sss",
     "description": "Das ist der ...",
     "link": "http://..."
   },
   {
     "id": "snow.swe",
     "name": "Snow - swe",
+    "shortName": "Snow - swe",
     "description": "Das ist der ...",
     "link": "http://..."
   },
   {
     "id": "biomass.agb",
     "name": "Biomass - agb",
+    "shortName": "Biomass - agb",
     "description": "Das ist der ...",
     "link": "http://..."
   },
   {
     "id": "greenhouse.xco2",
     "name": "Greenhouse - xco2",
+    "shortName": "Greenhouse - xco2",
     "description": "Das ist der ...",
     "link": "http://..."
   },
   {
     "id": "greenhouse.xch4",
     "name": "Greenhouse - xch4",
+    "shortName": "Greenhouse - xch4",
     "description": "Das ist der ...",
     "link": "http://..."
   }
