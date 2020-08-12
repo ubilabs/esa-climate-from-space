@@ -24,8 +24,7 @@ import Globes from '../globes/globes';
 import translations from '../../i18n';
 
 import styles from './app.styl';
-import {StoriesStateSelector} from '../../selectors/story/story-state';
-import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
+import {useStoryMarkers} from '../../hooks/use-story-markers';
 
 // create redux store
 const store = createReduxStore();
@@ -38,19 +37,7 @@ const App: FunctionComponent = () => (
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
-  const selectedLayers = useSelector(selectedLayerIdsSelector);
-  const stories = useSelector(StoriesStateSelector).list;
-  const hideMarkers = Boolean(
-    selectedLayers.mainId || selectedLayers.compareId
-  );
-
-  const storyMarkers = stories.map(story => ({
-    id: story.id,
-    title: story.title,
-    position: story.position
-  }));
-
-  const markers = hideMarkers ? [] : storyMarkers;
+  const markers = useStoryMarkers();
 
   return (
     <Router>
