@@ -10,14 +10,16 @@
       "sea-surface-salinity",
       "water-vapour",
       "clouds"
-    ]
+    ],
+    "position": [6.3281, -40.446947]
   },
   {
     "id": "story-8",
     "title": "Ist Ozon gut oder schlecht? ",
     "description": "",
     "image": "assets/ozone.jpg",
-    "tags": ["ozone", "aerosol"]
+    "tags": ["ozone", "aerosol"],
+    "position": [230.2734, 59.26588]
   },
   {
     "id": "story-20",
@@ -29,7 +31,8 @@
       "sea-surface-temperature",
       "sea-surface-salinity",
       "permafrost"
-    ]
+    ],
+    "position": [10.56, 20.76]
   },
   {
     "id": "debug",
