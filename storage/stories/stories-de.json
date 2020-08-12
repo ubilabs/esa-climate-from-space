@@ -1,85 +1,41 @@
 [
   {
-    "id": "planetary-heat-pumps",
+    "id": "story-16",
     "title": "Die Wärmepumpe des Planeten",
     "description": "",
     "image": "assets/sst_large_18.jpg",
-    "tags": ["sea-surface-temperature", "ocean-colour", "sea-surface-salinity", "water-vapour", "clouds"]
+    "tags": [
+      "sea-surface-temperature",
+      "ocean-colour",
+      "sea-surface-salinity",
+      "water-vapour",
+      "clouds"
+    ]
   },
   {
-    "id": "is-ozone-good-or-bad",
+    "id": "story-8",
     "title": "Ist Ozon gut oder schlecht? ",
     "description": "",
     "image": "assets/ozone.jpg",
     "tags": ["ozone", "aerosol"]
   },
   {
-    "id": "breaking-the-ice",
+    "id": "story-20",
     "title": "Das Eis bricht auf",
     "description": "",
     "image": "assets/seaice.jpg",
-    "tags": ["sea-ice", "sea-surface-temperature", "sea-surface-salinity", "permafrost"]
-  },
-  {
-    "id": "story2",
-    "title": "Geschichte 2",
-    "description": "Das ist Geschichte 2",
-    "image": "assets/story2.jpeg",
     "tags": [
-      "nature",
-      "biomass",
-      "school",
-      "ocean",
-      "water",
-      "weather",
-      "heating"
+      "sea-ice",
+      "sea-surface-temperature",
+      "sea-surface-salinity",
+      "permafrost"
     ]
   },
   {
-    "id": "story3",
-    "title": "Geschichte 3",
-    "description": "Das ist Geschichte 3",
-    "image": "assets/story3.jpeg",
-    "tags": [
-      "satellite",
-      "aerosol",
-      "landcover",
-      "temperature",
-      "seasurface",
-      "earth",
-      "planet",
-      "wind",
-      "heating"
-    ]
-  },
-  {
-    "id": "story4",
-    "title": "Geschichte 4",
-    "description": "Das ist Geschichte 4",
-    "image": "assets/story4.jpeg"
-  },
-  {
-    "id": "story5",
-    "title": "Geschichte 5",
-    "description": "Das ist Geschichte 5",
-    "image": "assets/story5.jpeg"
-  },
-  {
-    "id": "story6",
-    "title": "Geschichte 6",
-    "description": "Das ist Geschichte 6",
-    "image": "assets/story6.jpeg"
-  },
-  {
-    "id": "story7",
-    "title": "Geschichte 7",
-    "description": "Das ist Geschichte 7",
-    "image": "assets/story7.jpeg"
-  },
-  {
-    "id": "story8",
-    "title": "Geschichte 8",
-    "description": "Das ist Geschichte 8",
-    "image": "assets/story8.jpeg"
+    "id": "debug",
+    "title": "Debug",
+    "description": "Test story",
+    "image": "assets/story.jpg",
+    "tags": ["development", "ubilabs", "test"]
   }
 ]
