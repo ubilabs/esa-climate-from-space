@@ -1,0 +1,115 @@
+{
+  "id": "planetary-heat-pumps",
+  "slides": [
+    {
+      "type": "splashscreen",
+      "text": "# Planetary Heat Pumps\r\n\r\nThe ocean and the atmosphere both redistribute heat energy around the planet, but the oceans have a much higher capacity to store heat, making them a more stable indicator of climate trends.",
+      "shortText": "# Planetary Heat Pumps\r\n\r\n(placeholder)",
+      "images": [
+        "assets/sst.jpg"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "## High Capacity \r\n\r\nGo for a swim in the sea on midsummers day and the water may be surprisingly chilly. Although the sun is at its highest point in the sky and there are more hours of sunlight than on any other day of the year, the sea does not reach its maximum temperature until two or three months later. This lag shows that the sea has a high heat capacity – it takes a lot of energy to change its temperature, so it is slow to heat up and slow to cool down.\r\n \r\nThis makes the sea incredibly good at storing heat. So good, that just the top three metres of the ocean contains as much heat as the entire atmosphere. The ocean’s capacity to accumulate, transport and slowly release the energy it receives from the Sun is one of the key regulators of weather and climate on our planet.",
+      "shortText": "# High Capacity\r\n\r\n(placeholder)",
+      "images": [
+        "assets/sst_large_01.jpg"
+      ],
+      "imageCaptions": [
+        "The top three metres of the sea contain as much heat as the entire atmosphere. (christianvizl.com)"
+      ]
+    },
+    {
+      "type": "globe",
+      "text": "## Earth’s Heat Pumps \r\n\r\nThe Equator receives much more energy from the Sun than the polar regions. This energy is then redistributed around the world by circulation patterns in the oceans and atmosphere. Ocean currents are driven by the rotation of the Earth, surface winds and differences in water density due to salinity and temperature variation. Warm currents such as the Gulf Stream bring heat from the Equator and the tropics to higher latitudes. This poleward transport of heat is responsible for the mild climate of western Europe.\r\n\r\nThe interactive globe on the left shows the Gulf Stream carrying warm water up the east coast of North America and across the Atlantic. In the Pacific, the Kuroshio Current warms the eastern shore of Japan, while a cold Equatorial current can usually be seen extending westwards from South America. Ocean circulation is generally clockwise in the northern hemisphere and anti-clockwise in the southern hemisphere.\r\n\r\n![SST map from climate model](assets/sst_large_18a.jpg) \r\n_Sea surface temperature map for the Atlantic coast of Europe and the western Mediterranean Sea for 28 June 2010, from a climate model that includes satellite observations. (GMES-MyOcean)_",
+      "shortText": "# Earth's Heat Pumps\r\n\r\n(placeholder)",
+      "flyTo": {
+        "position": {
+          "longitude": -41.64,
+          "latitude": 34.93,
+          "height": 25009995.54
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.82,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "sst.analysed_sst",
+          "timestamp": "2020-08-03T22:13:30.807Z"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "text": "## Ocean-Atmosphere Interactions\r\n\r\nThe oceans and the atmosphere transport about the same amount of heat towards the poles, but the atmospheric circulation is itself partly driven by the energy exchanged during the evaporation of ocean water and its precipitation as rain. This makes the sea an important regulator of the climate and the temperature of its surface a key measurement for climate scientists.\r\n\r\nHigher sea surface temperatures allow more evaporation, giving more atmospheric water vapour, with the potential for more clouds and more rain. In the western Mediterranean, warmer sea water is a key factor in the sudden rainstorms and flash floods that afflict the coasts of France, Italy and Spain in late summer.\r\n\r\nOn a larger scale, high water temperatures in tropical oceans power extreme weather events such as hurricanes. The energy exchange between ocean and atmosphere during these events is revealed by a dip in the sea surface temperature in the wake of large hurricanes. \r\n\r\n![Hurricane Dorian, September 2019](assets/story16-04.jpg) \r\n_Hurricane Dorian bearing down on the coast of Florida on 2 September 2019, after devastating the Bahamas the previous day. Dorian was a Category 5 hurricane and the most powerful storm ever recorded in the open Atlantic. (Copernicus Sentinel-3 data, processed by ESA)_\r\n\r\n## Climate Indicators\r\nWhile the atmosphere can quickly move energy around the planet in weather systems, the ocean’s much greater capacity to store heat makes it a more stable indicator of longer-term climate trends. The rise in global average air temperature slowed down in the first decade of this century, causing some to question global warming, but the slowdown has proved temporary, with air temperature rising quickly again since 2012. The temperature of the oceans continued to rise throughout.",
+      "shortText": "# Ocean-Atmosphere Interactions \r\n\r\n(placeholder)",
+      "videoId": "NQOHggR2Tcs"
+    },
+    {
+      "type": "globe",
+      "text": "## Fisherman’s Friend\r\n\r\nSatellites using infrared cameras can measure the ocean temperature to within a few tenths of a degree Celsius. Maps of sea surface temperature (SST) show not only warm and cold currents, but also where deep cold water is upwelling to the surface, bringing with it the nutrients that support the world’s largest fisheries. Modern fishing fleets use SST maps from satellites to help find and follow fish on a day-to-day basis.\r\n\r\nThe data viewer on the right shows a comparison between SST and ocean chlorophyll, a measure of the abundance of phytoplankton derived from the colour of the ocean. High chlorophyll concentrations are associated with areas of cold water upwelling off the coasts of Peru, Argentina and Namibia. Cold, deep water rises when the surface water is pushed offshore by prevailing winds, bringing with it nutrients on which the plankton thrive. \r\n\r\n![Ocean temperature variation with depth](assets/sst_large_08.png) \r\n_Cross-section through the North Atlantic showing ocean temperature variation across the surface and with depth. Satellites can only measure the skin temperature of the top layer, much less than a millimetre thick. (Planetary Visions)_\r\n\r\nThe same plankton that are the base of the oceanic food chain – phytoplankton – also play a key role in the climate by absorbing carbon dioxide by photosynthesis, just as plants do on land. So ocean colour is also a key climate variable.\r\n\r\nOf course, if water is welling up in some places, it must be sinking down in others…",
+      "shortText": "# Fisherman’s Friend \r\n\r\n(placeholder)",
+      "flyTo": {
+        "position": {
+          "longitude": -30.74,
+          "latitude": 23.32,
+          "height": 15145050.29
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.86,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "sst.analysed_sst",
+          "timestamp": "2002-05-12T00:00:00.000Z"
+        },
+        {
+          "id": "oc.chlor_a",
+          "timestamp": "2002-05-12T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "type": "globe",
+      "text": "## The Ocean’s Ups and Downs\r\n\r\nWhile upwelling is often driven by surface winds, the sinking of water into the deep ocean is largely driven by temperature and salinity, which control the density of the water. Where the North Atlantic meets cold Arctic air masses, the ocean is rapidly cooled and the formation of sea ice leaves an excess of salt behind in the water. Similar processes are at work in the Southern Ocean around Antarctica.\r\n\r\nThe interactive globe on the right shows the salinity of the ocean’s surface. Low salinity values can be seen where major rivers discharge freshwater into the ocean. The highest values show where salt is left behind in the ocean during evaporation – in the almost enclosed Mediterranean and Red Seas – or during sea ice formation, such as in the Greenland Sea.\r\n\r\n![Thermohaline circulation map](assets/story16-03.png) \r\n_The thermohaline circulation takes cold, dense water (blue) deep into the ocean and around the world. This ‘bottom water’ eventually loses its identity through mixing and warming, rising back to the surface in the Pacific and Indian Oceans and returning to the North Atlantic as warm surface water (red)._\r\n\r\nWhere sea ice forms the combination of low temperature and high salinity makes the surface water very dense, so it sinks, embarking on a thousand-year journey into the deep ocean and around the world as part of the ‘Great Ocean Conveyor Belt’, more formally known as the thermohaline circulation. The sinking of water off Norway and Greenland helps pull the North Atlantic Drift and Gulf Stream currents, with their warm tropical water, towards the pole. The thermohaline circulation is a key component of the global climate system. \r\n\r\n## Heat Sink\r\nThe connection between the ocean surface and the large mass of the deep ocean provided by the thermohaline circulation, together with the vertical motion of waves and tides, has helped the ocean absorb more than 90% of the excess heat built up over the last 50 years of global warming. This heat is penetrating deeper into the ocean, which has spared most of us from the full effects of our greenhouse gas emissions. But there is no guarantee that the ocean will continue to absorb heat at this rate. \r\n\r\n![Change in global energy inventory graph](assets/story16-01.png) \r\n_Change in global energy inventory. Plot of energy accumulation within distinct components of Earth’s climate system since 1971. The oceans are by far the biggest heat store. (IPCC AR5, 2013)_",
+      "shortText": "# The Ocean’s Ups and Downs\r\n\r\n(placeholder)",
+      "flyTo": {
+        "position": {
+          "longitude": -23.75,
+          "latitude": 20.83,
+          "height": 15088309.07
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.87,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "sea_surface_salinity.sss",
+          "timestamp": "2013-10-30T00:00:00.000Z"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "text": "## Climate Cycles\r\n\r\nThere are periodic variations in the energy exchange between the ocean and the atmosphere that change weather patterns around the world every few years. El Niño and La Niña  are the warm and cool phases of a recurring climate cycle across the tropical Pacific – the El Niño-Southern Oscillation, or ENSO. \r\n\r\n## El Niño\r\nDuring El Niño, the east-to-west trade winds across the Equatorial Pacific weaken, causing a build-up of warm water in the eastern Pacific, which supresses the upwelling of cold water. As the warm water builds up so does cloud cover, due to the increased evaporation of sea water. \r\n\r\n![Sea surface salinity in the Pacific](assets/story16-05.jpg) \r\n_El Niño alters the salinity of the Equatorial Pacific, as ocean currents, evaporation and rainfall patterns shift. In some years a tongue of relatively fresh water extends all the way across the Pacific. (ESA / Planetary Visions)_\r\n\r\n## La Niña\r\nWhen El Niño ends, the cold water sometimes returns stronger than ever, clearing a gap in the clouds as the local climate enters its cool phase – La Niña. These changes to ocean temperature and evaporation over the Pacific lead to changes in rainfall trends across the world. Certain areas can experience wetter or drier conditions than normal, which can lead to more flash floods, drought or wild fires.\r\n\r\nThere are periodic ocean-atmosphere disturbances elsewhere in the world, such as the Indian Ocean Dipole and the North Atlantic Oscillation.",
+      "shortText": "# Climate Cycles\r\n\r\n(placeholder)",
+      "videoId": "04NPZP9U-sc"
+    },
+    {
+      "type": "video",
+      "text": "## CCI Sea Surface Temperature\r\n\r\nIt is likely that the upper ocean has been warming since the middle of the nineteenth century, and scientists have been able to measure the warming of the ocean surface from space since the 1970s. Satellite observations provide more detailed and even coverage, and more frequent repeats, than is possible from ships and floating instruments.\r\n\r\nThe CCI SST team has harmonised four trillion measurements from fourteen satellites spanning four decades. Combining the highly accurate, stable and well-calibrated measurements from new European sensors with the longer coverage of an older American system gives a complete, daily, stable, low-bias SST data set spanning 37 years. \r\n\r\n![Wavelength diagram for SST measurement](assets/sst_large_10.png) \r\n_Sea surface temperature is measured using two wavelengths in the thermal infrared part of the electromagnetic spectrum. (Planetary Visions)_\r\n\r\nThe use of ESA’s ATSR and SLSTR sensors makes this dataset not only more accurate and stable than previous SST products, but also largely independent of in situ measurements from ships and buoys. If similar climate signals are detected from space and on the Earth, we can be confident they truly reflect what is happening in nature. \r\n\r\n![An Argo float being deployed from a research ship](assets/sealevel_large_07.jpg) \r\n_An automatic free-floating instrumented buoy being deployed from a research ship. Almost 4,000 such floats have been deployed across the world’s oceans. They cycle up and down the top 2,000 metres of the ocean continually measuring temperature, salinity and currents, providing context for satellite observations of the ocean surface.  (Argo Programme/IFREMER)_",
+      "shortText": "## CCI Sea Surface Temperature\r\n\r\n(placeholder)",
+      "videoId": "alu0x_bgFrE"
+    }
+  ]
+}
