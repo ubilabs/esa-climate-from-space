@@ -21,8 +21,8 @@ import {getLayerTimeIndex} from '../../libs/get-layer-tile-url';
 import TimeSliderRange from '../time-slider-range/time-slider-range';
 import TimePlayback from '../time-playback/time-playback';
 import Button from '../button/button';
-import {PlayIcon} from '../icons/play-icon';
-import {PauseIcon} from '../icons/pause-icon';
+import {PlayCircleIcon} from '../icons/play-circle-icon';
+import {PauseCircleIcon} from '../icons/pause-circle-icon';
 
 import styles from './time-slider.styl';
 
@@ -116,7 +116,7 @@ const TimeSlider: FunctionComponent = () => {
             styles.playButton,
             rangeCompare && styles.playButtonCompare
           )}
-          icon={isPlaying ? PauseIcon : PlayIcon}
+          icon={isPlaying ? PauseCircleIcon : PlayCircleIcon}
           onClick={() => setIsPlaying(!isPlaying)}>
           {isPlaying ? 'playing' : 'pausing'}
         </Button>
