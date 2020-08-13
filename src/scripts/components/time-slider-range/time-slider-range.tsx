@@ -29,8 +29,8 @@ const TimeSliderRange: FunctionComponent<Props> = ({
 
     return {
       left: `${tickPosition}%`,
-      backgroundColor: isSelected ? 'white' : undefined, // eslint-disable-line no-undefined
-      transform: isSelected ? 'translateX(-50%) scale(2)' : undefined // eslint-disable-line no-undefined
+      backgroundColor: isSelected ? '#00AE9D' : undefined, // eslint-disable-line no-undefined
+      transform: isSelected ? 'translate(-50%, 1px) scale(3)' : undefined // eslint-disable-line no-undefined
     };
   };
 

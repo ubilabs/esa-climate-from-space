@@ -1,5 +1,4 @@
 import sys
-import time
 import cate.ops
 import utility
 from cate.core.ds import DATA_STORE_REGISTRY
@@ -18,7 +17,6 @@ args = parser.parse_args()
 zoom_levels = args.zoom_levels.split('-')
 
 # add local datastore from NetCDF files
-start_time = time.time()
 local_store = DATA_STORE_REGISTRY.get_data_store('local')
 ds_name = 'data'
 ds_local_name = 'local.' + ds_name
@@ -28,12 +26,7 @@ local_store.add_pattern(ds_name, files)
 # open dataset
 ds = cate.ops.open_dataset(ds_local_name, var_names=args.variable_id)
 data_array = ds[args.variable_id]
-try:
-  units = data_array.attrs['units']
-except KeyError:
-  units = ''
-
-print(f'Opened dataset in {time.time() - start_time}s')
+units = data_array.attrs.get('units') or data_array.attrs.get('Units')
 
 # get min and max values
 try:
@@ -55,10 +48,8 @@ if args.output != None:
   data_array = data_array.chunk({'lon': shape[2], 'lat': shape[1]})
 
   # write zarr file to disk
-  start_time = time.time()
   print('Writing zarr file...')
   data_array.to_dataset().to_zarr(args.output)
-  print(f'Written zarr in {time.time() - start_time}s')
 
   print('Writing world file...')
   utility.write_world_file(shape, ds.attrs)

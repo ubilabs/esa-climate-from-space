@@ -61,16 +61,16 @@ def write_metadata_file(layer_id, variable_id, units, timesteps, max_zoom, min, 
 
   format_date = lambda t: np.datetime_as_string(t, timezone='UTC')
   timestamps = [format_date(t) for t in timesteps.values]
+  layer_data = layer_config[layer_id]
 
   metadata = {
     'id': layer_id,
-    'colorMap': layer_config[layer_id]['colorMap'],
-    'timeFormat': layer_config[layer_id]['timeFormat'],
     'minValue': min,
     'maxValue': max,
-    'units': units,
     'zoomLevels': max_zoom,
-    'timestamps': timestamps
+    'timestamps': timestamps,
+    'units': units,
+    **layer_config[layer_id]
   }
 
   with open('./metadata.json', 'w') as f:

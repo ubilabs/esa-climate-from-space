@@ -1,85 +1,44 @@
 [
   {
-    "id": "planetary-heat-pumps",
+    "id": "story-16",
     "title": "Planetary Heat Pumps",
     "description": "",
     "image": "assets/sst_large_18.jpg",
-    "tags": ["sea-surface-temperature", "ocean-colour", "sea-surface-salinity", "water-vapour", "clouds"]
+    "tags": [
+      "sea-surface-temperature",
+      "ocean-colour",
+      "sea-surface-salinity",
+      "water-vapour",
+      "clouds"
+    ],
+    "position": [6.3281, -40.446947]
   },
   {
-    "id": "is-ozone-good-or-bad",
+    "id": "story-8",
     "title": "Is Ozone Good or Bad?",
     "description": "",
     "image": "assets/ozone.jpg",
-    "tags": ["ozone", "aerosol"]
+    "tags": ["ozone", "aerosol"],
+    "position": [230.2734, 59.26588]
   },
   {
-    "id": "breaking-the-ice",
+    "id": "story-20",
     "title": "Breaking the Ice",
     "description": "",
     "image": "assets/seaice.jpg",
-    "tags": ["sea-ice", "sea-surface-temperature", "sea-surface-salinity", "permafrost"]
-  },
-  {
-    "id": "story2",
-    "title": "Story 2",
-    "description": "This is story 2",
-    "image": "assets/story2.jpeg",
     "tags": [
-      "nature",
-      "biomass",
-      "school",
-      "ocean",
-      "water",
-      "weather",
-      "heating"
-    ]
+      "sea-ice",
+      "sea-surface-temperature",
+      "sea-surface-salinity",
+      "permafrost"
+    ],
+    "position": [10.56, 20.76]
   },
   {
-    "id": "story3",
-    "title": "Story 3",
-    "description": "This is story 3",
-    "image": "assets/story3.jpeg",
-    "tags": [
-      "satellite",
-      "aerosol",
-      "landcover",
-      "temperature",
-      "seasurface",
-      "earth",
-      "planet",
-      "wind",
-      "heating"
-    ]
-  },
-  {
-    "id": "story4",
-    "title": "Story 4",
-    "description": "This is story 4",
-    "image": "assets/story4.jpeg"
-  },
-  {
-    "id": "story5",
-    "title": "Story 5",
-    "description": "This is story 5",
-    "image": "assets/story5.jpeg"
-  },
-  {
-    "id": "story6",
-    "title": "Story 6",
-    "description": "This is story 6",
-    "image": "assets/story6.jpeg"
-  },
-  {
-    "id": "story7",
-    "title": "Story 7",
-    "description": "This is story 7",
-    "image": "assets/story7.jpeg"
-  },
-  {
-    "id": "story8",
-    "title": "Story 8",
-    "description": "This is story 8",
-    "image": "assets/story8.jpeg"
+    "id": "debug",
+    "title": "Debug",
+    "description": "Test story",
+    "image": "assets/story.jpg",
+    "tags": ["development", "ubilabs", "test"]
   }
 ]

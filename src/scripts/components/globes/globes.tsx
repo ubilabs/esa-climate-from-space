@@ -13,6 +13,7 @@ import {projectionSelector} from '../../selectors/globe/projection';
 import {flyToSelector} from '../../selectors/fly-to';
 import setGlobeViewAction from '../../actions/set-globe-view';
 import Globe from '../globe/globe';
+import LayerLegend from '../layer-legend/layer-legend';
 import {getLayerTileUrl} from '../../libs/get-layer-tile-url';
 import {State} from '../../reducers';
 import {layerDetailsSelector} from '../../selectors/layers/layer-details';
@@ -21,8 +22,13 @@ import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 import {GlobeView} from '../../types/globe-view';
 
 import styles from './globes.styl';
+import {Marker} from '../../types/marker-type';
 
-const Globes: FunctionComponent = () => {
+interface Props {
+  markers?: Marker[];
+}
+
+const Globes: FunctionComponent<Props> = ({markers = []}) => {
   const dispatch = useDispatch();
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
@@ -67,11 +73,28 @@ const Globes: FunctionComponent = () => {
 
   return (
     <div className={styles.globes}>
+      {mainLayerDetails && (
+        <LayerLegend
+          id={mainLayerDetails.id}
+          values={[mainLayerDetails.maxValue, mainLayerDetails.minValue]}
+          unit={mainLayerDetails.units}
+        />
+      )}
+      {compareLayerDetails && (
+        <LayerLegend
+          id={compareLayerDetails.id}
+          values={[compareLayerDetails.maxValue, compareLayerDetails.minValue]}
+          unit={compareLayerDetails.units}
+          isCompare={true}
+        />
+      )}
       <Globe
+        markers={markers}
         active={isMainActive}
         view={currentView}
         projectionState={projectionState}
         tilesUrl={mainTilesUrl}
+        basemap={mainLayerDetails?.basemap || null}
         zoomLevels={mainLayerDetails?.zoomLevels || 0}
         flyTo={flyTo}
         onMouseEnter={() => setIsMainActive(true)}
@@ -86,6 +109,7 @@ const Globes: FunctionComponent = () => {
           view={currentView}
           projectionState={projectionState}
           tilesUrl={compareTilesUrl}
+          basemap={compareLayerDetails?.basemap || null}
           zoomLevels={compareLayerDetails?.zoomLevels || 0}
           flyTo={flyTo}
           onMouseEnter={() => setIsMainActive(false)}

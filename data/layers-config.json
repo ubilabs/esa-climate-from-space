@@ -1,154 +1,378 @@
 {
   "fire.burned_area": {
     "colorMap": "afmhot",
+    "basemap": "dark",
     "timeFormat": {
       "year": "2-digit",
-      "month": "numeric",
-      "day": "numeric"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sst.analysed_sst": {
     "colorMap": "jet",
+    "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "oc.chlor_a": {
     "colorMap": "winter",
+    "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "aerosol.AOD550_mean": {
     "colorMap": "Oranges",
+    "basemap": "atmosphere",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "units": "testunit",
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "cloud.cfc": {
     "colorMap": "gray",
+    "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sea_level.sla": {
     "colorMap": "gist_rainbow",
+    "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sea_surface_salinity.sss": {
     "colorMap": "custom",
+    "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "soil_moisture.sm": {
     "colorMap": "BrBG",
+    "basemap": "land",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "ozone.atmosphere_mole_content_of_ozone": {
     "colorMap": "viridis",
+    "basemap": "atmosphere",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "land_cover.lccs_class": {
     "colorMap": "gist_rainbow",
+    "basemap": "land",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sea_state.swh_mean": {
     "colorMap": "viridis",
+    "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sea_ice_sh.ice_conc": {
     "colorMap": "custom",
+    "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "sea_ice_nh.ice_conc": {
     "colorMap": "custom",
+    "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "greenland_ice.sec": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "units": "m",
+    "flyTo": {
+      "position": {
+        "height": 5500000,
+        "latitude": 72.29,
+        "longitude": -38.5
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "permafrost.pfr": {
     "colorMap": "custom",
+    "basemap": "land",
     "timeFormat": {
-      "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "year": "numeric"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "snow.swe": {
     "colorMap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "biomass.agb": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "greenhouse.xco2": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   },
   "greenhouse.xch4": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "2-digit"
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 0
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
     }
   }
 }

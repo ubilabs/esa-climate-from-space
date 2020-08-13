@@ -3,6 +3,9 @@
   "layerSelector.compare": "Vergleich",
   "language.en": "Englisch",
   "language.de": "Deutsch",
+  "language.fr": "Französisch",
+  "language.es": "Spanisch",
+  "language.nl": "Niederländisch",
   "stories": "Geschichten",
   "backToDataMode": "Zurück zum Datenmodus",
   "backToStories": "Zurück zu den Geschichten",
@@ -34,6 +37,7 @@
   "dataInfo": "Dateninformation",
   "storiesSelected": "{numberSelected, number} {numberSelected, plural, one {Geschichte} other {Geschichten}} ausgewählt",
   "resetFilters": "Filter löschen",
+  "projectDescription": "# Über das Projekt\n\nClimate from Space Anwendung für ESAs CCI+ Programm.\n\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis natus praesentium reprehenderit veritatis mollitia quisquam distinctio nihil voluptate rerum ut placeat sint tenetur, tempora facere, velit in sed. Ex, sapiente.",
   "tags.nature": "Natur",
   "tags.biomass": "Biomasse",
   "tags.university": "Universität",
@@ -53,7 +57,6 @@
   "tags.globalwarming": "Globale Erwärmung",
   "tags.co2": "CO2",
   "tags.ozone": "Ozon",
-  "tags.aerosol": "Aerosole",
   "tags.sea-ice": "Meereeis",
   "tags.sea-surface-temperature": "Meeresoberflächentemperatur",
   "tags.sea-surface-salinity": "Salzgehalt der Meere",
@@ -61,5 +64,4 @@
   "tags.ocean-colour": "Meeresfarbe",
   "tags.water-vapour": "Wasserdampf",
   "tags.clouds": "Wolken"
-
 }

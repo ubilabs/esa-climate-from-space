@@ -16,21 +16,18 @@ import {
   setGlobeView,
   flyToGlobeView
 } from '../../libs/get-globe-view';
+import {isElectron} from '../../libs/electron/index';
 
 import {GlobeView} from '../../types/globe-view';
 import {GlobeProjection} from '../../types/globe-projection';
 import config from '../../config/main';
+import {useMarkers} from '../../hooks/use-markers';
 
 import {GlobeProjectionState} from '../../types/globe-projection-state';
+import {BasemapId} from '../../types/basemap';
+import {Marker} from '../../types/marker-type';
 
 import styles from './globe.styl';
-
-// create default imagery provider
-const imageryProvider = new TileMapServiceImageryProvider({
-  url: config.basemapTilesUrl,
-  fileExtension: 'png',
-  maximumLevel: 4
-});
 
 const cesiumOptions = {
   homeButton: false,
@@ -42,7 +39,11 @@ const cesiumOptions = {
   animation: false,
   timeline: false,
   baseLayerPicker: false,
-  imageryProvider
+  contextOptions: {
+    webgl: {
+      preserveDrawingBuffer: true
+    }
+  }
 };
 
 interface Props {
@@ -50,21 +51,38 @@ interface Props {
   view: GlobeView;
   projectionState: GlobeProjectionState;
   tilesUrl: string | null;
+  basemap: BasemapId | null;
   zoomLevels: number;
   flyTo: GlobeView | null;
+  markers?: Marker[];
   onMouseEnter: () => void;
   onTouchStart: () => void;
   onChange: (view: GlobeView) => void;
   onMoveEnd: (view: GlobeView) => void;
 }
 
+// keep a reference to the current basemap layer
+let basemapLayer: Cesium.ImageryLayer | null = null;
+
+function getBasemapUrl(id: BasemapId | null) {
+  if (!id || !config.basemapUrls[id]) {
+    return isElectron()
+      ? config.basemapUrlsOffline[config.defaultBasemap]
+      : config.basemapUrls[config.defaultBasemap];
+  }
+
+  return isElectron() ? config.basemapUrlsOffline[id] : config.basemapUrls[id];
+}
+
 const Globe: FunctionComponent<Props> = ({
   view,
   projectionState,
   tilesUrl,
+  basemap,
   zoomLevels,
   active,
   flyTo,
+  markers = [],
   onMouseEnter,
   onTouchStart,
   onChange,
@@ -89,14 +107,30 @@ const Globe: FunctionComponent<Props> = ({
         ? SceneMode.SCENE3D
         : SceneMode.SCENE2D;
 
-    const options = {...cesiumOptions, sceneMode};
+    // create default imagery provider
+    const defaultBasemapImageryProvider = new TileMapServiceImageryProvider({
+      url: getBasemapUrl(basemap),
+      fileExtension: 'png',
+      maximumLevel: 4
+    });
+
+    const options = {
+      ...cesiumOptions,
+      sceneMode,
+      imageryProvider: defaultBasemapImageryProvider
+    };
 
     // create cesium viewer
     const scopedViewer = new Viewer(ref.current, options);
 
-    const color = Color.fromCssColorString('#10161A');
+    // store the basemap imagery layer reference
+    basemapLayer = scopedViewer.scene.imageryLayers.get(0);
 
-    scopedViewer.scene.backgroundColor = color;
+    const baseColor = Color.fromCssColorString('#999999');
+    scopedViewer.scene.globe.baseColor = baseColor;
+
+    const backgroundColor = Color.fromCssColorString('#10161A');
+    scopedViewer.scene.backgroundColor = backgroundColor;
 
     if (scopedViewer.scene.sun) {
       scopedViewer.scene.sun.show = false;
@@ -227,6 +261,35 @@ const Globe: FunctionComponent<Props> = ({
     }
   }, [viewer, tilesUrl, zoomLevels]);
 
+  // update basemap
+  useEffect(() => {
+    if (!viewer) {
+      return;
+    }
+
+    // create default imagery provider
+    const basemapProvider = new TileMapServiceImageryProvider({
+      url: getBasemapUrl(basemap),
+      fileExtension: 'png',
+      maximumLevel: 4
+    });
+
+    basemapProvider.readyPromise.then(() => {
+      const newBasemapLayer = viewer.scene.imageryLayers.addImageryProvider(
+        basemapProvider,
+        0
+      );
+
+      newBasemapLayer.alpha = 1;
+
+      if (basemapLayer) {
+        viewer.scene.imageryLayers.remove(basemapLayer, true);
+      }
+
+      basemapLayer = newBasemapLayer;
+    });
+  }, [viewer, basemap]);
+
   // fly to location
   useEffect(() => {
     if (!viewer || !flyTo) {
@@ -235,6 +298,8 @@ const Globe: FunctionComponent<Props> = ({
 
     flyToGlobeView(viewer, flyTo);
   }, [viewer, flyTo]);
+
+  useMarkers(viewer, markers);
 
   return (
     <div

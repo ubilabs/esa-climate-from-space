@@ -1,6 +1,5 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import cx from 'classnames';
 
 import Globes from '../globes/globes';
 import {useStoryParams} from '../../hooks/use-story-params';
@@ -14,10 +13,12 @@ import setGlobeProjectionAction from '../../actions/set-globe-projection';
 import setSelectedLayerIdsAction from '../../actions/set-selected-layer-id';
 import setGlobeTimeAction from '../../actions/set-globe-time';
 import Share from '../share/share';
+import SplashScreen from '../splash-screen/splash-screen';
 
 import {StoryMode} from '../../types/story-mode';
 import {Slide, Story as StoryType} from '../../types/story';
 import {GlobeProjection} from '../../types/globe-projection';
+import {SlideType} from '../../types/slide-type';
 
 import styles from './story.styl';
 
@@ -33,11 +34,6 @@ const Story: FunctionComponent = () => {
     storyListItem
   } = storyParams;
   const storyMode = mode === StoryMode.Stories;
-  const storyClasses = cx(
-    styles.story,
-    storyParams?.mode === StoryMode.Present && styles.presentStory,
-    mode === StoryMode.Showcase && styles.showcaseStory
-  );
 
   // fetch story of active storyId
   useEffect(() => {
@@ -64,9 +60,15 @@ const Story: FunctionComponent = () => {
   }
 
   const getRightSideComponent = (slide: Slide, story: StoryType) => {
-    if (slide.images) {
-      return <StoryMedia images={slide.images} storyId={story.id} />;
-    } else if (slide.videoId) {
+    if (slide.type === SlideType.Image && slide.images) {
+      return (
+        <StoryMedia
+          images={slide.images}
+          imageCaptions={slide.imageCaptions}
+          storyId={story.id}
+        />
+      );
+    } else if (slide.type === SlideType.Video && slide.videoId) {
       return <StoryVideo videoId={slide.videoId} />;
     }
 
@@ -74,7 +76,7 @@ const Story: FunctionComponent = () => {
   };
 
   return (
-    <div className={storyClasses}>
+    <div className={styles.story}>
       {storyListItem && (
         <Header
           backLink={`/${mode.toString()}`}
@@ -88,7 +90,14 @@ const Story: FunctionComponent = () => {
         enforce a newly mounted component when the slideNumber changes */}
         {selectedStory?.slides.map(
           (currentSlide, index) =>
-            index === slideIndex && (
+            index === slideIndex &&
+            (currentSlide.type === SlideType.Splashscreen ? (
+              <SplashScreen
+                key={index}
+                storyId={selectedStory.id}
+                slide={currentSlide}
+              />
+            ) : (
               <React.Fragment key={index}>
                 <StoryContent
                   mode={mode}
@@ -97,7 +106,7 @@ const Story: FunctionComponent = () => {
                 />
                 {getRightSideComponent(currentSlide, selectedStory)}
               </React.Fragment>
-            )
+            ))
         )}
       </main>
       <StoryFooter

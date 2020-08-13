@@ -1,13 +1,38 @@
 steps:
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: gcr.io/cloud-builders/npm
     entrypoint: npm
     args: ['ci']
-  - name: 'gcr.io/esa-climate-from-space/electron-builder'
+
+  - name: stedolan/jq
+    entrypoint: 'bash'
+    args: ['-c', 'jq -r <package.json ".version" > version.txt']
+
+  - name: gcr.io/esa-climate-from-space/electron-builder
+    entrypoint: 'npm'
+    args: ['run', 'electron:prepare-build']
+
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
+    entrypoint: 'bash'
+    args: ['-c', 'gsutil -m cp -r gs://esa-cfs-tiles/$(cat version.txt)/basemaps ./dist']
+
+  - name: gcr.io/esa-climate-from-space/electron-builder
     env:
       - 'ELECTRON_CACHE=/root/.cache/electron'
       - 'ELECTRON_BUILDER_CACHE=/root/.cache/electron-builder'
     entrypoint: 'npm'
     args: ['run', 'electron:build']
+
+  # fix bug in electron mac zip by re-zipping the app again
+  - name: gcr.io/esa-climate-from-space/zip
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      VERSION=$$(cat version.txt)
+      rm -r /workspace/dist-electron/esa-climate-from-space-*-mac.zip
+      cd /workspace/dist-electron/mac
+      zip -r /workspace/dist-electron/esa-climate-from-space-$$VERSION-mac.zip ./esa-climate-from-space.app
+
 artifacts:
   objects:
     location: 'gs://esa-cfs-versions/electron/${BRANCH_NAME}'
