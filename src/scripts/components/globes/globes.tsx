@@ -22,8 +22,13 @@ import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 import {GlobeView} from '../../types/globe-view';
 
 import styles from './globes.styl';
+import {Marker} from '../../types/marker-type';
 
-const Globes: FunctionComponent = () => {
+interface Props {
+  markers?: Marker[];
+}
+
+const Globes: FunctionComponent<Props> = ({markers = []}) => {
   const dispatch = useDispatch();
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
@@ -84,6 +89,7 @@ const Globes: FunctionComponent = () => {
         />
       )}
       <Globe
+        markers={markers}
         active={isMainActive}
         view={currentView}
         projectionState={projectionState}
