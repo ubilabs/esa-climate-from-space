@@ -1,6 +1,6 @@
 {
   "name": "esa-climate-from-space",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "dist-src-electron/main.js",
   "scripts": {
@@ -21,10 +21,14 @@
     "electron:start": "npm run electron:compile && electron .",
     "electron:install": "electron-builder install-app-deps",
     "electron:clean": "rm -rf ./dist-electron && rm -rf ./dist-src-electron",
-    "electron:build": "npm run electron:clean && npm run electron:install && npm run build && npm run electron:compile && electron-builder -mwl --x64 --config electron-builder.json",
+    "electron:prepare-build": "npm run electron:clean && npm run electron:install && npm run build && npm run electron:compile",
+    "electron:build": "electron-builder -mwl --x64 --config electron-builder.json",
+    "electron:download-basemaps": "gsutil -m cp -r gs://esa-cfs-tiles/${npm_package_version}/basemaps ./dist",
     "story-packages": "./scripts/create-story-packages.sh",
     "clean:story-packages": "find ./storage -type f -name \"*.zip\" -delete",
-    "upload-storage": "npm run story-packages && gsutil rsync -r -x \".DS_Store\" ./storage gs://esa-cfs-storage/$npm_package_version && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/ && npm run clean:story-packages"
+    "download-storage": "gsutil -m rsync -r gs://esa-cfs-storage/$npm_package_version ./storage && npm run clean:story-packages",
+    "upload-storage": "./scripts/confirm-storage-upload.sh && npm run story-packages && find ./storage -type f -name \".DS_Store\" -delete && gsutil -m rsync -r ./storage gs://esa-cfs-storage/$npm_package_version && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/ && npm run clean:story-packages",
+    "optimize-story-images": "./scripts/optimize-story-images.sh"
   },
   "repository": {
     "type": "git",
@@ -66,12 +70,13 @@
     "@types/redux-thunk": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
+    "canvas": "^2.6.1",
     "classnames": "^2.2.6",
     "conventional-changelog-cli": "^2.0.31",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
-    "electron": "^8.1.1",
-    "electron-builder": "^22.3.2",
+    "electron": "^9.1.1",
+    "electron-builder": "^22.7.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-react": "^7.18.3",
@@ -79,6 +84,7 @@
     "file-loader": "^4.3.0",
     "git-state": "^4.1.0",
     "html-webpack-plugin": "^3.2.0",
+    "imagemin-cli": "^6.0.0",
     "license-checker": "^25.0.1",
     "mini-css-extract-plugin": "^0.8.2",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
@@ -94,6 +100,6 @@
     "typescript": "^3.7.5",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.0"
   }
 }

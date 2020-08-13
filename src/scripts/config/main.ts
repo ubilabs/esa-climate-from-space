@@ -24,8 +24,36 @@ const globeState: GlobeState = {
 
 // @ts-ignore - injected via webpack's define plugin
 const version = INFO_VERSION;
-const baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
 const baseUrlTiles = `https://storage.googleapis.com/esa-cfs-tiles/${version}`;
+let baseUrlStorage = 'http://localhost:8080/storage';
+
+// use content from local server
+// @ts-ignore - injected via webpack's define plugin
+if (PRODUCTION) {
+  baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
+}
+
+const basemapUrls = {
+  land: `${baseUrlTiles}/basemaps/land`,
+  ocean: `${baseUrlTiles}/basemaps/ocean`,
+  atmosphere: `${baseUrlTiles}/basemaps/atmosphere`,
+  blue: `${baseUrlTiles}/basemaps/blue`,
+  dark: `${baseUrlTiles}/basemaps/dark`
+};
+
+const basemapUrlsOffline = {
+  land: 'basemaps/land',
+  ocean: 'basemaps/ocean',
+  atmosphere: 'basemaps/atmosphere',
+  blue: 'basemaps/blue',
+  dark: 'basemaps/dark'
+};
+
+const downloadUrls = {
+  windows: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-win.exe`,
+  macOS: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-mac.zip`,
+  linux: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-linux.zip`
+};
 
 export default {
   api: {
@@ -38,12 +66,16 @@ export default {
     stories: `${baseUrlStorage}/stories/stories-{lang}.json`,
     story: `${baseUrlStorage}/stories/{id}/{id}-{lang}.json`
   },
-  basemapTilesUrl: `${baseUrlTiles}/basemap/`,
+  defaultBasemap: 'land' as keyof typeof basemapUrls,
+  basemapUrls,
+  basemapUrlsOffline,
   globe: globeState,
   share: {
     facebook:
       'https://www.facebook.com/sharer/sharer.php?u={currentUrl}&text=ESAClimateFromSpace',
     twitter:
-      'http://twitter.com/intent/tweet?status=ESA%20Climate%20From%20Space&url={currentUrl}'
-  }
+      'http://twitter.com/intent/tweet?text=ESA%20Climate%20From%20Space&url={currentUrl}'
+  },
+  legendImage: `${baseUrlStorage}/legend-images/{variable}.png`,
+  downloadUrls
 };

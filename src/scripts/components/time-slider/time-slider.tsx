@@ -6,6 +6,7 @@ import React, {
   useCallback
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {FormattedDate} from 'react-intl';
 import debounce from 'lodash.debounce';
 import cx from 'classnames';
 
@@ -18,6 +19,10 @@ import {State} from '../../reducers';
 import {selectedLayerIdsSelector} from '../../selectors/layers/selected-ids';
 import {getLayerTimeIndex} from '../../libs/get-layer-tile-url';
 import TimeSliderRange from '../time-slider-range/time-slider-range';
+import TimePlayback from '../time-playback/time-playback';
+import Button from '../button/button';
+import {PlayCircleIcon} from '../icons/play-circle-icon';
+import {PauseCircleIcon} from '../icons/pause-circle-icon';
 
 import styles from './time-slider.styl';
 
@@ -32,6 +37,7 @@ const TimeSlider: FunctionComponent = () => {
   const language = useSelector(languageSelector);
   const globeTime = useSelector(timeSelector);
   const [time, setTime] = useState(globeTime);
+  const [isPlaying, setIsPlaying] = useState(false);
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId)
@@ -65,14 +71,6 @@ const TimeSlider: FunctionComponent = () => {
   const timeSelectedCompare =
     rangeCompare && new Date(rangeCompare.timestamps[timeIndexCompare]);
 
-  // get the label time - the tick time which is closest to the slider's time
-  const timeDiffMain = Math.abs(Number(timeSelectedMain) - time);
-  const timeDiffCompare = Math.abs(Number(timeSelectedCompare) - time);
-  const labelTime =
-    typeof timeDiffCompare === 'number' && timeDiffCompare < timeDiffMain
-      ? timeSelectedCompare
-      : timeSelectedMain;
-
   // update app state
   const debouncedSetGlobeTime = useCallback(
     debounce((newTime: number) => dispatch(setGlobeTime(newTime)), DELAY, {
@@ -81,16 +79,12 @@ const TimeSlider: FunctionComponent = () => {
     []
   );
 
-  // clamp time according to min/max
+  // sync local time
   useEffect(() => {
-    if (time < combined.min) {
-      setTime(combined.min);
+    if (time !== globeTime) {
+      setTime(globeTime);
     }
-
-    if (time > combined.max) {
-      setTime(combined.max);
-    }
-  }, [time, combined.min, combined.max]);
+  }, [time, globeTime]);
 
   // return nothing when no timesteps available
   if (combined.timestamps.length === 0) {
@@ -100,6 +94,7 @@ const TimeSlider: FunctionComponent = () => {
   const labelPosition = Number(
     ((time - combined.min) * 100) / (combined.max - combined.min)
   );
+  const clampedLabelPosition = Math.max(Math.min(labelPosition, 100), 0);
 
   const inputStyles = cx(
     styles.input,
@@ -107,8 +102,24 @@ const TimeSlider: FunctionComponent = () => {
   );
 
   return (
-    <div className={styles.timeSlider}>
+    <div
+      className={cx(
+        styles.timeSlider,
+        rangeCompare && styles.timeSliderCompare
+      )}>
+      {isPlaying && (
+        <TimePlayback minTime={combined.min} maxTime={combined.max} />
+      )}
       <div className={styles.container}>
+        <Button
+          className={cx(
+            styles.playButton,
+            rangeCompare && styles.playButtonCompare
+          )}
+          icon={isPlaying ? PauseCircleIcon : PlayCircleIcon}
+          onClick={() => setIsPlaying(!isPlaying)}>
+          {isPlaying ? 'playing' : 'pausing'}
+        </Button>
         <div className={styles.ranges}>
           <input
             className={inputStyles}
@@ -118,19 +129,35 @@ const TimeSlider: FunctionComponent = () => {
               const newTime = parseInt(target.value, 10);
               setTime(newTime);
               debouncedSetGlobeTime(newTime);
+              setIsPlaying(false);
             }}
             min={combined.min}
             max={combined.max}
             step={stepSize}
           />
 
-          <output
-            className={styles.timeOutput}
-            style={{
-              left: `${labelPosition}%`
-            }}>
-            {labelTime ? format(labelTime) : false}
-          </output>
+          {rangeMain && (
+            <output
+              className={cx(
+                styles.timeOutput,
+                rangeCompare && styles.timeOutputMain
+              )}
+              style={{
+                left: `${clampedLabelPosition}%`
+              }}>
+              {timeSelectedMain ? format(timeSelectedMain) : false}
+            </output>
+          )}
+
+          {rangeCompare && (
+            <output
+              className={cx(styles.timeOutput, styles.timeOutputCompare)}
+              style={{
+                left: `${clampedLabelPosition}%`
+              }}>
+              {timeSelectedCompare ? format(timeSelectedCompare) : false}
+            </output>
+          )}
 
           {rangeMain && (
             <TimeSliderRange
@@ -139,6 +166,15 @@ const TimeSlider: FunctionComponent = () => {
               selectedTimeIndex={timeIndexMain}
             />
           )}
+
+          <div className={styles.yearLabel}>
+            <div>
+              <FormattedDate value={combined.min} year="numeric" />
+            </div>
+            <div>
+              <FormattedDate value={combined.max} year="numeric" />
+            </div>
+          </div>
 
           {rangeCompare && (
             <TimeSliderRange

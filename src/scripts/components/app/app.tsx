@@ -20,11 +20,11 @@ import StoriesSelector from '../stories-selector/stories-selector';
 import PresentationSelector from '../presentation-selector/presentation-selector';
 import ShowcaseSelector from '../showcase-selector/showcase-selector';
 import Globes from '../globes/globes';
-import StoryTitle from '../story-title/story-title';
 
 import translations from '../../i18n';
 
 import styles from './app.styl';
+import {useStoryMarkers} from '../../hooks/use-story-markers';
 
 // create redux store
 const store = createReduxStore();
@@ -37,14 +37,12 @@ const App: FunctionComponent = () => (
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
+  const markers = useStoryMarkers();
 
   return (
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
-          <Route path={['/showcase/:storyIds/:storyIndex/title']}>
-            <StoryTitle />
-          </Route>
           <Route
             path={[
               '/stories/:storyId/:slideIndex',
@@ -62,7 +60,7 @@ const TranslatedApp: FunctionComponent = () => {
             <div className={styles.logo}>
               <EsaLogo />
             </div>
-            <Globes />
+            <Globes markers={markers} />
             <Navigation />
             <GlobeNavigation />
             <TimeSlider />

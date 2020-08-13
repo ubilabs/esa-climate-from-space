@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/sea_level/data/L4/MSLA/v2.0/"
-START_DATE=1994-01-15
+START_DATE=1993-01-15
 OUTPUT_FODLER=./download/sea-level
 
 mkdir -p $OUTPUT_FODLER
 
-for i in {0..263}
+for i in {0..275}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_MONTH=$(date +%Y%m%d -d "$START_DATE + $i month")
@@ -19,4 +19,5 @@ do
 
   python ./data/drop-unused-vars.py --file $FILENAME --variable sla
   python ./data/add-time-coordinate.py --file $FILENAME --timestamp $NEXT_DATE
+  python ./data/wrap-longitude.py --file $FILENAME
 done

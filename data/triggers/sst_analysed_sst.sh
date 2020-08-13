@@ -3,10 +3,10 @@
 TIMEOUT=12000
 LAYER_ID="sst.analysed_sst"
 VARIABLE_ID="analysed_sst"
-VERSION="0.5.1"
+VERSION="0.6.1"
 ZOOM_LEVELS="0-4"
-MIN="-5"
-MAX="35"
+MIN="270"
+MAX="310"
 MACHINE_TYPE="N1_HIGHCPU_32"
 
 if [ ! -f ./package.json ]; then
@@ -14,7 +14,7 @@ if [ ! -f ./package.json ]; then
     exit 1
 fi
 
-gcloud builds submit --config ./ci/cloudbuild-tiles.yaml \
+gcloud builds submit --config ./ci/cloudbuild-tiles-reproject.yaml \
   --machine-type=$MACHINE_TYPE \
   --timeout=$TIMEOUT \
   --substitutions _LAYER_ID=$LAYER_ID,_VARIABLE_ID=$VARIABLE_ID,_ZOOM_LEVELS=$ZOOM_LEVELS,_VERSION=$VERSION,_MIN=$MIN,_MAX=$MAX \

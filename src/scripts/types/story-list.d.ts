@@ -5,6 +5,7 @@ export interface StoryListItem {
   link: string;
   image: string;
   tags: string[];
+  position: number[];
 }
 
 export type StoryList = StoryListItem[];
