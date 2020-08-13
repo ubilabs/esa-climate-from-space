@@ -24,6 +24,7 @@ import Globes from '../globes/globes';
 import translations from '../../i18n';
 
 import styles from './app.styl';
+import {useStoryMarkers} from '../../hooks/use-story-markers';
 
 // create redux store
 const store = createReduxStore();
@@ -36,6 +37,7 @@ const App: FunctionComponent = () => (
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
+  const markers = useStoryMarkers();
 
   return (
     <Router>
@@ -58,7 +60,7 @@ const TranslatedApp: FunctionComponent = () => {
             <div className={styles.logo}>
               <EsaLogo />
             </div>
-            <Globes />
+            <Globes markers={markers} />
             <Navigation />
             <GlobeNavigation />
             <TimeSlider />

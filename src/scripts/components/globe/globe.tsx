@@ -21,9 +21,11 @@ import {isElectron} from '../../libs/electron/index';
 import {GlobeView} from '../../types/globe-view';
 import {GlobeProjection} from '../../types/globe-projection';
 import config from '../../config/main';
+import {useMarkers} from '../../hooks/use-markers';
 
 import {GlobeProjectionState} from '../../types/globe-projection-state';
 import {BasemapId} from '../../types/basemap';
+import {Marker} from '../../types/marker-type';
 
 import styles from './globe.styl';
 
@@ -52,6 +54,7 @@ interface Props {
   basemap: BasemapId | null;
   zoomLevels: number;
   flyTo: GlobeView | null;
+  markers?: Marker[];
   onMouseEnter: () => void;
   onTouchStart: () => void;
   onChange: (view: GlobeView) => void;
@@ -79,6 +82,7 @@ const Globe: FunctionComponent<Props> = ({
   zoomLevels,
   active,
   flyTo,
+  markers = [],
   onMouseEnter,
   onTouchStart,
   onChange,
@@ -294,6 +298,8 @@ const Globe: FunctionComponent<Props> = ({
 
     flyToGlobeView(viewer, flyTo);
   }, [viewer, flyTo]);
+
+  useMarkers(viewer, markers);
 
   return (
     <div

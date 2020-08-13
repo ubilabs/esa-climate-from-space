@@ -71,9 +71,7 @@ const LayerSelector: FunctionComponent = () => {
               <Button
                 className={styles.button}
                 icon={CloseIcon}
-                onClick={() => {
-                  dispatch(showLayerSelectorAction(false));
-                }}
+                onClick={() => dispatch(showLayerSelectorAction(false))}
               />
             </div>
             {selectedMainLayer && (
