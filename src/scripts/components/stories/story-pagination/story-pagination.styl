@@ -1,0 +1,36 @@
+@require '../../../../variables.styl'
+
+.controls
+  display: flex
+  align-items: center
+  padding-left: emCalc(20px)
+  color: $textWhite
+  font-family: NotesEsa
+
+.slides
+  padding: 0 emCalc(15px)
+
+.icon, .disabled
+  height: emCalc(24px)
+
+  svg
+    width: emCalc(24px)
+    height: emCalc(24px)
+    fill: $textWhite
+
+.disabled
+  svg
+    fill: $textDisabled
+
+.closeIcon
+  padding-left: emCalc(20px)
+  height: emCalc(20px)
+
+  svg
+    width: emCalc(20px)
+    height: emCalc(20px)
+    fill: $textDefault
+
+.emptyIcon
+  svg
+    display: none

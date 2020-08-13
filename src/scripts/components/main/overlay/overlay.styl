@@ -1,0 +1,25 @@
+@require '../../../../variables.styl'
+
+.overlay
+  position: absolute
+  top: 0
+  right: 0
+  z-index: 3
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 100%
+  background-color: rgba($black, 0.9)
+
+.overlayContent
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 70%
+
+.closeButton
+  position: absolute
+  top: emCalc(24px)
+  right: emCalc(32px)

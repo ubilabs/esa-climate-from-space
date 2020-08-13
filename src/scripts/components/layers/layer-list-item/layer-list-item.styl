@@ -1,0 +1,31 @@
+@require '../../../../variables.styl'
+
+.layerItem
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: emCalc(11px) emCalc(32px)
+  color: $textDefault
+
+  &:hover, &:focus
+    background-color: rgba($darkGrey4, 0.5)
+
+    .compare
+      display: block
+
+.compare
+  display: none
+  border: none
+  background: none
+  color: $textDefault
+  text-transform: uppercase
+  font-size: emCalc(11px)
+  cursor: pointer
+
+  &:hover, &:focus
+    color: $textColor
+
+.layerTitle
+  display: flex
+  align-items: center
+  cursor: pointer
