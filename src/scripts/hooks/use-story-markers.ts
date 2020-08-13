@@ -14,11 +14,13 @@ export const useStoryMarkers = () => {
     return [];
   }
 
-  const storyMarkers = stories.map(story => ({
-    id: story.id,
-    title: story.title,
-    position: story.position
-  }));
+  const storyMarkers = stories
+    .map(story => ({
+      id: story.id,
+      title: story.title,
+      position: story.position
+    }))
+    .filter(marker => marker.position);
 
   return storyMarkers;
 };
