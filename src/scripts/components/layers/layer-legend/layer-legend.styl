@@ -1,0 +1,35 @@
+@require '../../../../variables.styl'
+
+.layerLegend
+  position: absolute
+  top: 50%
+  left: emCalc(22px)
+  z-index: 1
+  display: flex
+  flex-direction: row
+  height: 40%
+  color: white
+  transform: translateY(-50%)
+
+.rightSided
+  right: emCalc(22px)
+  left: auto
+  flex-direction: row-reverse
+
+  .values
+    padding-right: emCalc(8px, 14)
+    padding-left: 0
+    text-align: right
+
+.image
+  width: 8px
+  height: 100%
+  border-radius: 5px
+
+.values
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  padding-left: emCalc(8px, 14)
+  font-size: 14px
+  font-family: 'NotesESA', 'Arial', sans-serif
