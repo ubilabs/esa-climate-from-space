@@ -1,6 +1,6 @@
 [
   {
-    "id": "planetary-heat-pumps",
+    "id": "story-16",
     "title": "Die Wärmepumpe des Planeten",
     "description": "",
     "image": "assets/sst_large_18.jpg",
@@ -14,7 +14,7 @@
     "position": [6.3281, -40.446947]
   },
   {
-    "id": "is-ozone-good-or-bad",
+    "id": "story-8",
     "title": "Ist Ozon gut oder schlecht? ",
     "description": "",
     "image": "assets/ozone.jpg",
@@ -22,7 +22,7 @@
     "position": [230.2734, 59.26588]
   },
   {
-    "id": "breaking-the-ice",
+    "id": "story-20",
     "title": "Das Eis bricht auf",
     "description": "",
     "image": "assets/seaice.jpg",
@@ -35,72 +35,10 @@
     "position": [10.56, 20.76]
   },
   {
-    "id": "story2",
-    "title": "Geschichte 2",
-    "description": "Das ist Geschichte 2",
-    "image": "assets/story2.jpeg",
-    "tags": [
-      "nature",
-      "biomass",
-      "school",
-      "ocean",
-      "water",
-      "weather",
-      "heating"
-    ],
-    "position": [32.39851580247402, 188.61328125]
-  },
-  {
-    "id": "story3",
-    "title": "Geschichte 3",
-    "description": "Das ist Geschichte 3",
-    "image": "assets/story3.jpeg",
-    "tags": [
-      "satellite",
-      "aerosol",
-      "landcover",
-      "temperature",
-      "seasurface",
-      "earth",
-      "planet",
-      "wind",
-      "heating"
-    ],
-    "position": [138.33984375, 15.79225]
-  },
-  {
-    "id": "story4",
-    "title": "Geschichte 4",
-    "description": "Das ist Geschichte 4",
-    "image": "assets/story4.jpeg",
-    "position": [-55.166493, 9.9060534]
-  },
-  {
-    "id": "story5",
-    "title": "Geschichte 5",
-    "description": "Das ist Geschichte 5",
-    "image": "assets/story5.jpeg",
-    "position": [120.166493, 29.9060534]
-  },
-  {
-    "id": "story6",
-    "title": "Geschichte 6",
-    "description": "Das ist Geschichte 6",
-    "image": "assets/story6.jpeg",
-    "position": [55.166493, 30.9060534]
-  },
-  {
-    "id": "story7",
-    "title": "Geschichte 7",
-    "description": "Das ist Geschichte 7",
-    "image": "assets/story7.jpeg",
-    "position": [25.166493, 39.9060534]
-  },
-  {
-    "id": "story8",
-    "title": "Geschichte 8",
-    "description": "Das ist Geschichte 8",
-    "image": "assets/story8.jpeg",
-    "position": [10.166493, 10.9060534]
+    "id": "debug",
+    "title": "Debug",
+    "description": "Test story",
+    "image": "assets/story.jpg",
+    "tags": ["development", "ubilabs", "test"]
   }
 ]

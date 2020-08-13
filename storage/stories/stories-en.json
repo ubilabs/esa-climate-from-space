@@ -1,6 +1,6 @@
 [
   {
-    "id": "planetary-heat-pumps",
+    "id": "stpry-16",
     "title": "Planetary Heat Pumps",
     "description": "",
     "image": "assets/sst_large_18.jpg",
@@ -14,7 +14,7 @@
     "position": [6.3281, -40.446947]
   },
   {
-    "id": "is-ozone-good-or-bad",
+    "id": "story-8",
     "title": "Is Ozone Good or Bad?",
     "description": "",
     "image": "assets/ozone.jpg",
@@ -22,7 +22,7 @@
     "position": [230.2734, 59.26588]
   },
   {
-    "id": "breaking-the-ice",
+    "id": "story-20",
     "title": "Breaking the Ice",
     "description": "",
     "image": "assets/seaice.jpg",
@@ -35,72 +35,10 @@
     "position": [10.56, 20.76]
   },
   {
-    "id": "story2",
-    "title": "Story 2",
-    "description": "This is story 2",
-    "image": "assets/story2.jpeg",
-    "tags": [
-      "nature",
-      "biomass",
-      "school",
-      "ocean",
-      "water",
-      "weather",
-      "heating"
-    ],
-    "position": [32.39851580247402, 188.61328125]
-  },
-  {
-    "id": "story3",
-    "title": "Story 3",
-    "description": "This is story 3",
-    "image": "assets/story3.jpeg",
-    "tags": [
-      "satellite",
-      "aerosol",
-      "landcover",
-      "temperature",
-      "seasurface",
-      "earth",
-      "planet",
-      "wind",
-      "heating"
-    ],
-    "position": [138.33984375, 15.79225]
-  },
-  {
-    "id": "story4",
-    "title": "Story 4",
-    "description": "This is story 4",
-    "image": "assets/story4.jpeg",
-    "position": [-55.166493, 9.9060534]
-  },
-  {
-    "id": "story5",
-    "title": "Story 5",
-    "description": "This is story 5",
-    "image": "assets/story5.jpeg",
-    "position": [120.166493, 29.9060534]
-  },
-  {
-    "id": "story6",
-    "title": "Story 6",
-    "description": "This is story 6",
-    "image": "assets/story6.jpeg",
-    "position": [55.166493, 30.9060534]
-  },
-  {
-    "id": "story7",
-    "title": "Story 7",
-    "description": "This is story 7",
-    "image": "assets/story7.jpeg",
-    "position": [25.166493, 39.9060534]
-  },
-  {
-    "id": "story8",
-    "title": "Story 8",
-    "description": "This is story 8",
-    "image": "assets/story8.jpeg",
-    "position": [10.166493, 10.9060534]
+    "id": "debug",
+    "title": "Debug",
+    "description": "Test story",
+    "image": "assets/story.jpg",
+    "tags": ["development", "ubilabs", "test"]
   }
 ]
