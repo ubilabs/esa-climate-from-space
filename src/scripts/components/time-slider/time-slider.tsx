@@ -21,8 +21,8 @@ import {getLayerTimeIndex} from '../../libs/get-layer-tile-url';
 import TimeSliderRange from '../time-slider-range/time-slider-range';
 import TimePlayback from '../time-playback/time-playback';
 import Button from '../button/button';
-import {PlayIcon} from '../icons/play-icon';
-import {PauseIcon} from '../icons/pause-icon';
+import {PlayCircleIcon} from '../icons/play-circle-icon';
+import {PauseCircleIcon} from '../icons/pause-circle-icon';
 
 import styles from './time-slider.styl';
 
@@ -71,14 +71,6 @@ const TimeSlider: FunctionComponent = () => {
   const timeSelectedCompare =
     rangeCompare && new Date(rangeCompare.timestamps[timeIndexCompare]);
 
-  // get the label time - the tick time which is closest to the slider's time
-  const timeDiffMain = Math.abs(Number(timeSelectedMain) - time);
-  const timeDiffCompare = Math.abs(Number(timeSelectedCompare) - time);
-  const labelTime =
-    typeof timeDiffCompare === 'number' && timeDiffCompare < timeDiffMain
-      ? timeSelectedCompare
-      : timeSelectedMain;
-
   // update app state
   const debouncedSetGlobeTime = useCallback(
     debounce((newTime: number) => dispatch(setGlobeTime(newTime)), DELAY, {
@@ -102,6 +94,7 @@ const TimeSlider: FunctionComponent = () => {
   const labelPosition = Number(
     ((time - combined.min) * 100) / (combined.max - combined.min)
   );
+  const clampedLabelPosition = Math.max(Math.min(labelPosition, 100), 0);
 
   const inputStyles = cx(
     styles.input,
@@ -109,14 +102,21 @@ const TimeSlider: FunctionComponent = () => {
   );
 
   return (
-    <div className={styles.timeSlider}>
+    <div
+      className={cx(
+        styles.timeSlider,
+        rangeCompare && styles.timeSliderCompare
+      )}>
       {isPlaying && (
         <TimePlayback minTime={combined.min} maxTime={combined.max} />
       )}
       <div className={styles.container}>
         <Button
-          className={styles.playButton}
-          icon={isPlaying ? PauseIcon : PlayIcon}
+          className={cx(
+            styles.playButton,
+            rangeCompare && styles.playButtonCompare
+          )}
+          icon={isPlaying ? PauseCircleIcon : PlayCircleIcon}
           onClick={() => setIsPlaying(!isPlaying)}>
           {isPlaying ? 'playing' : 'pausing'}
         </Button>
@@ -136,27 +136,34 @@ const TimeSlider: FunctionComponent = () => {
             step={stepSize}
           />
 
-          <output
-            className={styles.timeOutput}
-            style={{
-              left: `${labelPosition}%`
-            }}>
-            {labelTime ? format(labelTime) : false}
-          </output>
+          {rangeMain && (
+            <output
+              className={cx(
+                styles.timeOutput,
+                rangeCompare && styles.timeOutputMain
+              )}
+              style={{
+                left: `${clampedLabelPosition}%`
+              }}>
+              {timeSelectedMain ? format(timeSelectedMain) : false}
+            </output>
+          )}
+
+          {rangeCompare && (
+            <output
+              className={cx(styles.timeOutput, styles.timeOutputCompare)}
+              style={{
+                left: `${clampedLabelPosition}%`
+              }}>
+              {timeSelectedCompare ? format(timeSelectedCompare) : false}
+            </output>
+          )}
 
           {rangeMain && (
             <TimeSliderRange
               range={rangeMain}
               combined={combined}
               selectedTimeIndex={timeIndexMain}
-            />
-          )}
-
-          {rangeCompare && (
-            <TimeSliderRange
-              range={rangeCompare}
-              combined={combined}
-              selectedTimeIndex={timeIndexCompare}
             />
           )}
 
@@ -168,6 +175,14 @@ const TimeSlider: FunctionComponent = () => {
               <FormattedDate value={combined.max} year="numeric" />
             </div>
           </div>
+
+          {rangeCompare && (
+            <TimeSliderRange
+              range={rangeCompare}
+              combined={combined}
+              selectedTimeIndex={timeIndexCompare}
+            />
+          )}
         </div>
       </div>
     </div>
