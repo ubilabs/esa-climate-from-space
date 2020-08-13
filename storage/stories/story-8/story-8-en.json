@@ -1,13 +1,11 @@
 {
-  "id": "is-ozone-good-or-bad",
+  "id": "story-8",
   "slides": [
     {
       "type": "splashscreen",
       "text": "# Is Ozone Good or Bad?\r\n\r\nThe ozone layer protects life on Earth from ultraviolet solar radiation, but ozone is also a greenhouse gas and at ground level it is harmful to human health.",
       "shortText": "# Is Ozone Good or Bad?\r\n\r\n(placeholder)",
-      "images": [
-        "assets/ozone.jpg"
-      ]
+      "images": ["assets/ozone.jpg"]
     },
     {
       "type": "image",
@@ -57,9 +55,7 @@
       "type": "image",
       "text": "## Ozone from Space \r\n\r\nSatellite observations are essential to track ozone distribution across the globe and at different levels in the atmosphere. They allow us to monitor the recovery of the ozone layer and calculate a UV exposure index as part of our daily weather forecasts. They also deepen our knowledge of the long-term evolution of atmospheric ozone and our understanding of how it affects the climate, and how it might respond to climate change. \r\n\r\nDifferent observation techniques allow us to distinguish between the “good” ozone in the stratosphere and the “bad” ozone in the troposphere. Satellites looking straight down produce maps of *total ozone* – the total amount of ozone in a column going from the surface to the top of the atmosphere. Total ozone is a good measure of stratospheric ozone, which accounts for about 90% of the total ozone column.  \r\n\r\n![Ozone profile](assets/aerosol_large_10.jpg) \r\n_The SCIAMACHY sensor on Envisat has three modes of operation: (1) nadir mode looks vertically beneath the spacecraft; (2) limb mode looks through the atmosphere away from the Sun; (3) occultation mode looks through the atmosphere towards the Sun. (DLR-IMF)_\r\n\r\nBy looking sideways into the atmosphere, satellites can also measure the *ozone profile* – the vertical distribution of ozone from sea level up to about 50 km high. Further information is obtained by seeing how light is absorbed by different chemicals in the atmosphere when looking towards a light source – the Sun or the Moon.",
       "shortText": "# Ozone from Space \r\n\r\n(placeholder)",
-      "images": [
-        "assets/ozone_data_profile_large.jpg"
-      ],
+      "images": ["assets/ozone_data_profile_large.jpg"],
       "imageCaptions": [
         "Ozone profile showing a section through the atmosphere from sea level up to a height of 40km, centred on longitude 50°West, with the north pole on the left and the south pole on the right. (Satellite observations assimilated into the chemical transport model TM5.)"
       ]
