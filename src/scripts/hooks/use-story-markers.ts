@@ -10,15 +10,15 @@ export const useStoryMarkers = () => {
     selectedLayers.mainId || selectedLayers.compareId
   );
 
-  if (!hideMarkers) {
-    const storyMarkers = stories.map(story => ({
-      id: story.id,
-      title: story.title,
-      position: story.position
-    }));
-
-    return storyMarkers;
+  if (hideMarkers) {
+    return [];
   }
 
-  return [];
+  const storyMarkers = stories.map(story => ({
+    id: story.id,
+    title: story.title,
+    position: story.position
+  }));
+
+  return storyMarkers;
 };
