@@ -1,21 +1,17 @@
 {
-  "id": "planetary-heat-pumps",
+  "id": "story-16",
   "slides": [
     {
       "type": "splashscreen",
       "text": "# Planetary Heat Pumps\r\n\r\nThe ocean and the atmosphere both redistribute heat energy around the planet, but the oceans have a much higher capacity to store heat, making them a more stable indicator of climate trends.",
       "shortText": "# Planetary Heat Pumps\r\n\r\n(placeholder)",
-      "images": [
-        "assets/sst.jpg"
-      ]
+      "images": ["assets/sst.jpg"]
     },
     {
       "type": "image",
       "text": "## High Capacity \r\n\r\nGo for a swim in the sea on midsummers day and the water may be surprisingly chilly. Although the sun is at its highest point in the sky and there are more hours of sunlight than on any other day of the year, the sea does not reach its maximum temperature until two or three months later. This lag shows that the sea has a high heat capacity – it takes a lot of energy to change its temperature, so it is slow to heat up and slow to cool down.\r\n \r\nThis makes the sea incredibly good at storing heat. So good, that just the top three metres of the ocean contains as much heat as the entire atmosphere. The ocean’s capacity to accumulate, transport and slowly release the energy it receives from the Sun is one of the key regulators of weather and climate on our planet.",
       "shortText": "# High Capacity\r\n\r\n(placeholder)",
-      "images": [
-        "assets/sst_large_01.jpg"
-      ],
+      "images": ["assets/sst_large_01.jpg"],
       "imageCaptions": [
         "The top three metres of the sea contain as much heat as the entire atmosphere. (christianvizl.com)"
       ]

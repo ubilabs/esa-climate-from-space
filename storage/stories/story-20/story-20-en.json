@@ -1,13 +1,11 @@
 {
-  "id": "breaking-the-ice",
+  "id": "story-20",
   "slides": [
     {
       "type": "splashscreen",
       "text": "# Breaking the Ice\r\n\r\nThe polar regions are among the most sensitive to variations in global climate, with the Arctic in particular experiencing rapid change on both sea and land.",
       "shortText": "# Breaking the Ice\r\n\r\n(placeholder)",
-      "images": [
-        "assets/seaice.jpg"
-      ]
+      "images": ["assets/seaice.jpg"]
     },
     {
       "type": "image",
@@ -28,9 +26,7 @@
       "type": "image",
       "text": "## New Trade Routes \r\n\r\nThe loss of Arctic sea ice has been faster than was predicted, with the southern route of the Northwest Passage now navigable almost every year. The more direct, and commercially significant, northern route has opened during six of the last ten summers. In 2008, the first commercial ship passed through and in 2013 the first bulk carrier took cargo from Vancouver to Helsinki. \r\n\r\nThe shrinking icepack is also opening up to shipping the northern coast of Russia – the Northeast Passage. This route shaves more than one third off the sailing distance from Yokohama to Hamburg, compared with the current shortest route through the Suez Canal. There is even greater potential for savings in distance, time and fuel if the ice recedes enough for navigation across the centre of the Arctic Ocean – the Transpolar Sea Route.\r\n\r\n![Envisat ASAR mosaicl](assets/story15_02.jpg) \r\n_Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre). (ESA/Planetary Visions)_\r\n\r\nShorter shipping routes will mean less fuel is burned, and less carbon pumped into the atmosphere, but the Arctic will see a local increase in pollutants. Soot particles could darken the remaining ice, adding to the warming, but could also cause more clouds to condense, which might have a cooling effect.\r\n\r\nAlthough good news for the shipping and tourism industries, the retreat of the ice edge is a stark warning that the Earth’s climate is rapidly heading into uncharted waters.",
       "shortText": "# New Trade Routes\r\n\r\n(placeholder)",
-      "images": [
-        "assets/story15_03.jpg"
-      ],
+      "images": ["assets/story15_03.jpg"],
       "imageCaptions": [
         "Icebreaker escorting a cargo vessel through sea ice in the Arctic Ocean. (Aker Arctic)"
       ]
