@@ -4,8 +4,9 @@ import Button from '../../main/button/button';
 import {ArrowBackIcon} from '../../main/icons/arrow-back-icon';
 import {useStoryParams} from '../../../hooks/use-story-params';
 
-import styles from './header.styl';
 import {SlideType} from '../../../types/slide-type';
+
+import styles from './header.styl';
 
 interface Props {
   backLink: string;
