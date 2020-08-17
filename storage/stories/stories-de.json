@@ -39,6 +39,17 @@
     "title": "Debug",
     "description": "Test story",
     "image": "assets/story.jpg",
-    "tags": ["development", "ubilabs", "test"]
+    "tags": [
+      "development",
+      "ubilabs",
+      "test",
+      "sea-surface-temperature",
+      "ocean-colour",
+      "sea-surface-salinity",
+      "water-vapour",
+      "clouds",
+      "ozone",
+      "aerosol"
+    ]
   }
 ]

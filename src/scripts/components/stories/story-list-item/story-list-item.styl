@@ -4,8 +4,8 @@
   display: flex
   flex-direction: column
   justify-content: flex-end
-  margin: 5px
-  border: 2px solid $darkGrey1
+  width: 100%
+  height: 100%
   border-radius: 4px
   background-size: cover
 
@@ -30,11 +30,14 @@
   line-height: 30px
 
 .imageInfo
-  display: flex
-  flex-direction: column
-  margin-top: emCalc(130px)
-  padding: 16px
-  height: 40%
+  overflow-y: auto
+  box-sizing: border-box
+  padding: emCalc(16px)
+  min-height: 50%
+  width: 100%
+  height: fit-content
+  border-bottom-right-radius: 2px
+  border-bottom-left-radius: 2px
   background-color: $darkGrey1
   opacity: 0.95
 
@@ -42,11 +45,10 @@
   margin: 0
   margin-top: 5px
   color: $main
-  font-size: 1.125em
+  font-weight: bold
 
 .description
   color: $textDefault
-  font-size: 1.125em
 
 a
   color: $textDefault
