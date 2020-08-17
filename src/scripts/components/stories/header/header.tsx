@@ -5,6 +5,7 @@ import {ArrowBackIcon} from '../../main/icons/arrow-back-icon';
 import {useStoryParams} from '../../../hooks/use-story-params';
 
 import styles from './header.styl';
+import {SlideType} from '../../../types/slide-type';
 
 interface Props {
   backLink: string;
@@ -18,7 +19,10 @@ const Header: FunctionComponent<Props> = ({
   backButtonId,
   children
 }) => {
-  const {slideIndex} = useStoryParams();
+  const {selectedStory, slideIndex} = useStoryParams();
+
+  const isSplashScreen =
+    selectedStory?.slides[slideIndex].type === SlideType.Splashscreen;
 
   return (
     <div className={styles.header}>
@@ -28,7 +32,7 @@ const Header: FunctionComponent<Props> = ({
         label={backButtonId}
         link={backLink}
       />
-      {slideIndex > 0 && <h1 className={styles.title}>{title}</h1>}
+      {!isSplashScreen && <h1 className={styles.title}>{title}</h1>}
       <div className={styles.rightContent}>{children}</div>
     </div>
   );

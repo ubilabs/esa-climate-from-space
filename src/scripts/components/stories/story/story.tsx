@@ -75,7 +75,7 @@ const Story: FunctionComponent = () => {
 
     return (
       <div className={styles.globeContainer}>
-        <Globes mode={mode} />
+        <Globes backgroundColorString={'#000000'} />
         {slide.layerDescription && (
           <LayerDescription layerDescription={slide.layerDescription} />
         )}

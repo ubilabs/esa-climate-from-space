@@ -20,17 +20,19 @@ import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 
 import {GlobeView} from '../../../types/globe-view';
-import {StoryMode} from '../../../types/story-mode';
 import {Marker} from '../../../types/marker-type';
 
 import styles from './globes.styl';
 
 interface Props {
-  mode?: StoryMode;
+  backgroundColorString: string;
   markers?: Marker[];
 }
 
-const Globes: FunctionComponent<Props> = ({mode, markers = []}) => {
+const Globes: FunctionComponent<Props> = ({
+  backgroundColorString,
+  markers = []
+}) => {
   const dispatch = useDispatch();
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
@@ -92,7 +94,7 @@ const Globes: FunctionComponent<Props> = ({mode, markers = []}) => {
       )}
       <Globe
         markers={markers}
-        mode={mode}
+        backgroundColorString={backgroundColorString}
         active={isMainActive}
         view={currentView}
         projectionState={projectionState}
@@ -108,7 +110,7 @@ const Globes: FunctionComponent<Props> = ({mode, markers = []}) => {
 
       {compareLayer && (
         <Globe
-          mode={mode}
+          backgroundColorString={backgroundColorString}
           active={!isMainActive}
           view={currentView}
           projectionState={projectionState}

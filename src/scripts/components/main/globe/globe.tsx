@@ -26,7 +26,6 @@ import {useMarkers} from '../../../hooks/use-markers';
 import {GlobeProjectionState} from '../../../types/globe-projection-state';
 import {BasemapId} from '../../../types/basemap';
 import {Marker} from '../../../types/marker-type';
-import {StoryMode} from '../../../types/story-mode';
 
 import styles from './globe.styl';
 
@@ -56,7 +55,7 @@ interface Props {
   zoomLevels: number;
   flyTo: GlobeView | null;
   markers?: Marker[];
-  mode?: StoryMode;
+  backgroundColorString: string;
   onMouseEnter: () => void;
   onTouchStart: () => void;
   onChange: (view: GlobeView) => void;
@@ -85,7 +84,7 @@ const Globe: FunctionComponent<Props> = ({
   active,
   flyTo,
   markers = [],
-  mode,
+  backgroundColorString,
   onMouseEnter,
   onTouchStart,
   onChange,
@@ -93,7 +92,6 @@ const Globe: FunctionComponent<Props> = ({
 }) => {
   const [viewer, setViewer] = useState<Viewer | null>(null);
   const ref = useRef<HTMLDivElement>(null);
-  const isStoryMode = mode === StoryMode.Stories;
 
   // make latest "active" value always accessible in camera change handler
   const isActiveRef = useRef<boolean>(active);
@@ -133,9 +131,8 @@ const Globe: FunctionComponent<Props> = ({
     const baseColor = Color.fromCssColorString('#999999');
     scopedViewer.scene.globe.baseColor = baseColor;
 
-    const backgroundColor = isStoryMode
-      ? Color.fromCssColorString('#000000')
-      : Color.fromCssColorString('#10161A');
+    const backgroundColor = Color.fromCssColorString(backgroundColorString);
+
     scopedViewer.scene.backgroundColor = backgroundColor;
 
     if (scopedViewer.scene.sun) {
