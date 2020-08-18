@@ -27,12 +27,15 @@ const StoryTags: FunctionComponent<Props> = ({tags, selected}) => {
   const sortedTags = tags.sort((a, b) => {
     const isSelectedA = selected.includes(a);
     const isSelectedB = selected.includes(b);
+
     if (isSelectedA && !isSelectedB) {
       return -1;
     }
+
     if (isSelectedB && !isSelectedA) {
       return 1;
     }
+
     return 0;
   });
 
