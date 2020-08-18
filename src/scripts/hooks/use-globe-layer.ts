@@ -48,7 +48,7 @@ export function useGlobeLayer(
           }
         }
 
-        requestAnimationFrame(() => {
+        const cleanAndCache = () => {
           // eslint-disable-next-line max-nested-callbacks
           layersToRemove.forEach(layer => layers.remove(layer, true));
 
@@ -56,7 +56,13 @@ export function useGlobeLayer(
           if (imageLayer.type === GlobeLayerType.Image) {
             preloadNext(imageLayer.nextUrls);
           }
-        });
+        };
+
+        if (imageLayer.type === GlobeLayerType.Tiles) {
+          setTimeout(cleanAndCache, 500);
+        } else {
+          requestAnimationFrame(cleanAndCache);
+        }
       });
     } else if (layers.length > 1) {
       // remove old layers when no image should be shown anymore (except base map)
