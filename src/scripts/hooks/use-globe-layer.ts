@@ -48,11 +48,11 @@ export function useGlobeLayer(
           }
         }
 
-        // eslint-disable-next-line max-nested-callbacks
-
-        // preload next images
         requestAnimationFrame(() => {
+          // eslint-disable-next-line max-nested-callbacks
           layersToRemove.forEach(layer => layers.remove(layer, true));
+
+          // preload next images
           if (imageLayer.type === GlobeLayerType.Image) {
             preloadNext(imageLayer.nextUrls);
           }
