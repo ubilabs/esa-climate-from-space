@@ -60,6 +60,7 @@ export default {
     layers: `${baseUrlStorage}/layers/layers-{lang}.json`,
     layer: `${baseUrlTiles}/{id}/metadata.json`,
     layerTiles: `${baseUrlTiles}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
+    layerImage: `${baseUrlTiles}/{id}/tiles/{timeIndex}/full.png`,
     layerOfflinePackage: `${baseUrlTiles}/{id}/package.zip`,
     storyOfflinePackage: `${baseUrlStorage}/stories/{id}/package.zip`,
     storyMediaBase: `${baseUrlStorage}/stories/{id}`,
