@@ -11,6 +11,7 @@ interface Props {
   link?: string;
   disabled?: boolean;
   className?: string;
+  hideLabelOnMobile?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -20,13 +21,14 @@ const Button: FunctionComponent<Props> = ({
   icon: Icon,
   disabled = false,
   className = '',
+  hideLabelOnMobile,
   onClick
 }) => {
   const classes = cx(
     styles.button,
     className,
     disabled && styles.disabled,
-    disabled && className
+    hideLabelOnMobile && styles.hideLabel
   );
 
   return link ? (

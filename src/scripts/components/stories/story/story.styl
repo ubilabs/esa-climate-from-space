@@ -16,8 +16,24 @@
     flex-grow: 1
     width: 50%
 
+.rightSideComponent
+  height: 100%
+
 .globeContainer
   position: relative
   display: flex
   flex-direction: column
   height: 100%
+
+@media screen and (max-width: 480px)
+  .main
+    display: flex
+    flex-direction: column
+    overflow-y: auto
+
+    > :last-child
+      height: 300px
+
+    > *
+      padding: 25px
+      width: inherit
