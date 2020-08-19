@@ -17,7 +17,7 @@ import setGlobeTime from '../../../actions/set-globe-time';
 import {getTimeRanges} from '../../../libs/get-time-ranges';
 import {State} from '../../../reducers';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
-import {getLayerTimeIndex} from '../../../libs/get-layer-tile-url';
+import {getLayerTimeIndex} from '../../../libs/get-image-layer-data';
 import TimeSliderRange from '../time-slider-range/time-slider-range';
 import TimePlayback from '../time-playback/time-playback';
 import Button from '../../main/button/button';
