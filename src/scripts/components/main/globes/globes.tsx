@@ -21,15 +21,16 @@ import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 
 import {GlobeView} from '../../../types/globe-view';
-
-import styles from './globes.styl';
 import {Marker} from '../../../types/marker-type';
 
+import styles from './globes.styl';
+
 interface Props {
+  backgroundColor: string;
   markers?: Marker[];
 }
 
-const Globes: FunctionComponent<Props> = ({markers = []}) => {
+const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
   const dispatch = useDispatch();
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
@@ -97,6 +98,7 @@ const Globes: FunctionComponent<Props> = ({markers = []}) => {
       )}
       <Globe
         markers={markers}
+        backgroundColor={backgroundColor}
         active={isMainActive}
         view={currentView}
         projectionState={projectionState}
@@ -111,6 +113,7 @@ const Globes: FunctionComponent<Props> = ({markers = []}) => {
 
       {compareLayer && (
         <Globe
+          backgroundColor={backgroundColor}
           active={!isMainActive}
           view={currentView}
           projectionState={projectionState}
