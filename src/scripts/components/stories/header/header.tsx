@@ -23,7 +23,7 @@ const Header: FunctionComponent<Props> = ({
       icon={ArrowBackIcon}
       label={backButtonId}
       link={backLink}
-      hideLabelOnMobile={true}
+      hideLabelOnMobile
     />
     <h1 className={styles.title}>{title}</h1>
     <div className={styles.rightContent}>{children}</div>
