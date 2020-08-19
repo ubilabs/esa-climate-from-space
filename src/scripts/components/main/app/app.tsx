@@ -60,7 +60,7 @@ const TranslatedApp: FunctionComponent = () => {
             <div className={styles.logo}>
               <EsaLogo />
             </div>
-            <Globes markers={markers} />
+            <Globes markers={markers} backgroundColor={'#10161A'} />
             <Navigation />
             <GlobeNavigation />
             <TimeSlider />
