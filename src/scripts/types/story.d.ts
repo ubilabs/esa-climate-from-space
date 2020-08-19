@@ -15,5 +15,6 @@ export interface Slide {
   imageCaptions?: string[];
   videoId?: string;
   layer?: StoryLayer[];
+  layerDescription?: string;
   flyTo: GlobeView;
 }
