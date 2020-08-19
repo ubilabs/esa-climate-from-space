@@ -5,13 +5,16 @@
   flex-wrap: wrap
 
 .tag
+  overflow: hidden
   margin-top: 0.5em
   margin-right: 0.5em
-  padding: 0.2em 1em
+  padding: remCalc(5px) remCalc(8px)
   border: 1px solid $darkGrey4
   border-radius: 12px
   color: $textDefault
   text-transform: uppercase
+  text-overflow: ellipsis
+  white-space: nowrap
   font-size: 0.8em
   cursor: pointer
 

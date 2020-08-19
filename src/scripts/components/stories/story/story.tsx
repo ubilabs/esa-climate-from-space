@@ -14,6 +14,7 @@ import setSelectedLayerIdsAction from '../../../actions/set-selected-layer-id';
 import setGlobeTimeAction from '../../../actions/set-globe-time';
 import Share from '../../main/share/share';
 import SplashScreen from '../splash-screen/splash-screen';
+import LayerDescription from '../layer-description/layer-description';
 
 import {StoryMode} from '../../../types/story-mode';
 import {Slide, Story as StoryType} from '../../../types/story';
@@ -72,7 +73,14 @@ const Story: FunctionComponent = () => {
       return <StoryVideo videoId={slide.videoId} />;
     }
 
-    return <Globes />;
+    return (
+      <div className={styles.globeContainer}>
+        <Globes backgroundColor={'#000000'} />
+        {slide.layerDescription && (
+          <LayerDescription layerDescription={slide.layerDescription} />
+        )}
+      </div>
+    );
   };
 
   return (

@@ -47,6 +47,7 @@ interface Props {
   basemap: BasemapId | null;
   flyTo: GlobeView | null;
   markers?: Marker[];
+  backgroundColor: string;
   onMouseEnter: () => void;
   onTouchStart: () => void;
   onChange: (view: GlobeView) => void;
@@ -74,6 +75,7 @@ const Globe: FunctionComponent<Props> = ({
   active,
   flyTo,
   markers = [],
+  backgroundColor,
   onMouseEnter,
   onTouchStart,
   onChange,
@@ -120,8 +122,9 @@ const Globe: FunctionComponent<Props> = ({
     const baseColor = Color.fromCssColorString('#999999');
     scopedViewer.scene.globe.baseColor = baseColor;
 
-    const backgroundColor = Color.fromCssColorString('#10161A');
-    scopedViewer.scene.backgroundColor = backgroundColor;
+    scopedViewer.scene.backgroundColor = Color.fromCssColorString(
+      backgroundColor
+    );
 
     if (scopedViewer.scene.sun) {
       scopedViewer.scene.sun.show = false;

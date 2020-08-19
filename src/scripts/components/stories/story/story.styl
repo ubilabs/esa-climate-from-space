@@ -6,15 +6,23 @@
   height: 100%
 
 .main
+  position: relative
   display: flex
   flex-direction: row
   overflow: hidden
   height: 100%
 
   > *
+    flex-grow: 1
     width: 50%
 
 .rightSideComponent
+  height: 100%
+
+.globeContainer
+  position: relative
+  display: flex
+  flex-direction: column
   height: 100%
 
 @media screen and (max-width: 480px)
