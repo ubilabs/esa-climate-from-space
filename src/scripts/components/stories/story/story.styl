@@ -13,3 +13,19 @@
 
   > *
     width: 50%
+
+.rightSideComponent
+  height: 100%
+
+@media screen and (max-width: 480px)
+  .main
+    display: flex
+    flex-direction: column
+    overflow-y: auto
+
+    :last-child
+      height: 350px
+
+    > *
+      padding: 25px
+      width: inherit
