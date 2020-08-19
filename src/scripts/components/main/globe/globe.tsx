@@ -1,15 +1,6 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
-import {
-  Viewer,
-  SceneMode,
-  Color,
-  GeographicTilingScheme,
-  TileMapServiceImageryProvider,
-  UrlTemplateImageryProvider,
-  TextureMinificationFilter,
-  TextureMagnificationFilter
-} from 'cesium';
+import {Viewer, SceneMode, Color, TileMapServiceImageryProvider} from 'cesium';
 
 import {
   getGlobeView,
@@ -22,10 +13,12 @@ import {GlobeView} from '../../../types/globe-view';
 import {GlobeProjection} from '../../../types/globe-projection';
 import config from '../../../config/main';
 import {useMarkers} from '../../../hooks/use-markers';
+import {useGlobeLayer} from '../../../hooks/use-globe-layer';
 
 import {GlobeProjectionState} from '../../../types/globe-projection-state';
 import {BasemapId} from '../../../types/basemap';
 import {Marker} from '../../../types/marker-type';
+import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 
 import styles from './globe.styl';
 
@@ -50,11 +43,11 @@ interface Props {
   active: boolean;
   view: GlobeView;
   projectionState: GlobeProjectionState;
-  tilesUrl: string | null;
+  imageLayer: GlobeImageLayerData | null;
   basemap: BasemapId | null;
-  zoomLevels: number;
   flyTo: GlobeView | null;
   markers?: Marker[];
+  backgroundColor: string;
   onMouseEnter: () => void;
   onTouchStart: () => void;
   onChange: (view: GlobeView) => void;
@@ -77,12 +70,12 @@ function getBasemapUrl(id: BasemapId | null) {
 const Globe: FunctionComponent<Props> = ({
   view,
   projectionState,
-  tilesUrl,
+  imageLayer,
   basemap,
-  zoomLevels,
   active,
   flyTo,
   markers = [],
+  backgroundColor,
   onMouseEnter,
   onTouchStart,
   onChange,
@@ -129,8 +122,9 @@ const Globe: FunctionComponent<Props> = ({
     const baseColor = Color.fromCssColorString('#999999');
     scopedViewer.scene.globe.baseColor = baseColor;
 
-    const backgroundColor = Color.fromCssColorString('#10161A');
-    scopedViewer.scene.backgroundColor = backgroundColor;
+    scopedViewer.scene.backgroundColor = Color.fromCssColorString(
+      backgroundColor
+    );
 
     if (scopedViewer.scene.sun) {
       scopedViewer.scene.sun.show = false;
@@ -207,59 +201,7 @@ const Globe: FunctionComponent<Props> = ({
     setGlobeView(viewer, view);
   }, [viewer, view, active]);
 
-  // update layer image when url changes
-  useEffect(() => {
-    if (!viewer) {
-      return;
-    }
-
-    const layers = viewer.scene.imageryLayers;
-
-    if (tilesUrl) {
-      const imageProvider = new UrlTemplateImageryProvider({
-        url: tilesUrl,
-        tilingScheme: new GeographicTilingScheme(),
-        minimumLevel: 0,
-        maximumLevel: zoomLevels - 1,
-        tileWidth: 256,
-        tileHeight: 256
-      });
-
-      imageProvider.readyPromise.then(() => {
-        const newLayer = viewer.scene.imageryLayers.addImageryProvider(
-          imageProvider
-        );
-        // @ts-ignore
-        newLayer.minificationFilter = TextureMinificationFilter.NEAREST;
-        // @ts-ignore
-        newLayer.magnificationFilter = TextureMagnificationFilter.NEAREST;
-        newLayer.alpha = 1;
-
-        // remove and destroy old layers if they exist
-        // we do not clean it up in the useEffect clean function because we want
-        // to wait until the new layer is ready to prevent flickering
-        const layersToRemove: Cesium.ImageryLayer[] = [];
-
-        for (let i = 0; i < layers.length; i++) {
-          const layer = layers.get(i);
-          if (i !== 0 && layer !== newLayer) {
-            layersToRemove.push(layer);
-          }
-        }
-
-        setTimeout(() => {
-          // eslint-disable-next-line max-nested-callbacks
-          layersToRemove.forEach(layer => layers.remove(layer, true));
-        }, 500);
-      });
-    } else if (layers.length > 1) {
-      // remove old layers when no image should be shown anymore
-      for (let i = 1; i < layers.length; i++) {
-        const layer = layers.get(i);
-        layers.remove(layer, true);
-      }
-    }
-  }, [viewer, tilesUrl, zoomLevels]);
+  useGlobeLayer(viewer, imageLayer);
 
   // update basemap
   useEffect(() => {

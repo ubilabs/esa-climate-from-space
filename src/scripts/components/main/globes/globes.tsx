@@ -2,7 +2,8 @@ import React, {
   FunctionComponent,
   useState,
   useEffect,
-  useCallback
+  useCallback,
+  useMemo
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -14,21 +15,22 @@ import {flyToSelector} from '../../../selectors/fly-to';
 import setGlobeViewAction from '../../../actions/set-globe-view';
 import Globe from '../globe/globe';
 import LayerLegend from '../../layers/layer-legend/layer-legend';
-import {getLayerTileUrl} from '../../../libs/get-layer-tile-url';
+import {getImageLayerData} from '../../../libs/get-image-layer-data';
 import {State} from '../../../reducers';
 import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 
 import {GlobeView} from '../../../types/globe-view';
-
-import styles from './globes.styl';
 import {Marker} from '../../../types/marker-type';
 
+import styles from './globes.styl';
+
 interface Props {
+  backgroundColor: string;
   markers?: Marker[];
 }
 
-const Globes: FunctionComponent<Props> = ({markers = []}) => {
+const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
   const dispatch = useDispatch();
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
@@ -62,8 +64,14 @@ const Globes: FunctionComponent<Props> = ({markers = []}) => {
     [dispatch]
   );
 
-  const mainTilesUrl = getLayerTileUrl(mainLayerDetails, time);
-  const compareTilesUrl = getLayerTileUrl(compareLayerDetails, time);
+  const mainImageLayer = useMemo(
+    () => getImageLayerData(mainLayerDetails, time),
+    [mainLayerDetails, time]
+  );
+  const compareImageLayer = useMemo(
+    () => getImageLayerData(compareLayerDetails, time),
+    [compareLayerDetails, time]
+  );
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
@@ -90,12 +98,12 @@ const Globes: FunctionComponent<Props> = ({markers = []}) => {
       )}
       <Globe
         markers={markers}
+        backgroundColor={backgroundColor}
         active={isMainActive}
         view={currentView}
         projectionState={projectionState}
-        tilesUrl={mainTilesUrl}
+        imageLayer={mainImageLayer}
         basemap={mainLayerDetails?.basemap || null}
-        zoomLevels={mainLayerDetails?.zoomLevels || 0}
         flyTo={flyTo}
         onMouseEnter={() => setIsMainActive(true)}
         onTouchStart={() => setIsMainActive(true)}
@@ -105,12 +113,12 @@ const Globes: FunctionComponent<Props> = ({markers = []}) => {
 
       {compareLayer && (
         <Globe
+          backgroundColor={backgroundColor}
           active={!isMainActive}
           view={currentView}
           projectionState={projectionState}
-          tilesUrl={compareTilesUrl}
+          imageLayer={compareImageLayer}
           basemap={compareLayerDetails?.basemap || null}
-          zoomLevels={compareLayerDetails?.zoomLevels || 0}
           flyTo={flyTo}
           onMouseEnter={() => setIsMainActive(false)}
           onTouchStart={() => setIsMainActive(false)}

@@ -39,6 +39,6 @@
     "title": "Debug",
     "description": "Test story",
     "image": "assets/story.jpg",
-    "tags": ["development", "ubilabs", "test"]
+    "tags": []
   }
 ]
