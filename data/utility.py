@@ -55,7 +55,7 @@ def write_world_file(shape, attributes):
   print(content)
 
 
-def write_metadata_file(layer_id, variable_id, units, timesteps, max_zoom, min, max):
+def write_metadata_file(layer_id, variable_id, layer_type, units, timesteps, max_zoom, min, max):
   with open('./data/layers-config.json') as f:
     layer_config = json.load(f)
 
@@ -67,6 +67,7 @@ def write_metadata_file(layer_id, variable_id, units, timesteps, max_zoom, min, 
     'id': layer_id,
     'minValue': min,
     'maxValue': max,
+    'type': layer_type,
     'zoomLevels': max_zoom,
     'timestamps': timestamps,
     'units': units,
