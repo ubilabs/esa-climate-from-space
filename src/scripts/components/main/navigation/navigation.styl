@@ -13,3 +13,8 @@
 
   .button, &:not(:first-child)
     padding-left: emCalc(30px)
+
+@media screen and (max-width: 480px)
+  .button
+    &:not(:first-child)
+      padding-left: emCalc(15px)

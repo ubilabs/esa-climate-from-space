@@ -23,18 +23,21 @@ const Navigation: FunctionComponent = () => {
         label="stories"
         link="/stories"
         icon={StoryIcon}
+        hideLabelOnMobile
       />
       <Button
         className={styles.button}
         label="layers"
         onClick={() => dispatch(showLayerSelectorAction(true))}
         icon={LayersIcon}
+        hideLabelOnMobile
       />
       <Share />
       <Button
         className={styles.button}
         icon={MenuIcon}
         onClick={() => setShowMenu(true)}
+        hideLabelOnMobile
       />
       {showMenu && (
         <Overlay onClose={() => setShowMenu(false)}>

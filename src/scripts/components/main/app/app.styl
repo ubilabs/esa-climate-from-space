@@ -33,7 +33,12 @@
 
 .logo
   position: absolute
-  top: emCalc(22px)
+  top: emCalc(19px)
   left: emCalc(22px)
   z-index: 4
+  pointer-events: none
   fill: $textWhite
+
+@media screen and (max-width: 480px)
+  :global(path.hideText)
+    display: none
