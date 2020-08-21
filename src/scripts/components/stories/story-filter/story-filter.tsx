@@ -20,11 +20,9 @@ const StoryFilter: FunctionComponent = () => {
   const stories = useSelector(storyListSelector);
   const selectedTags = useSelector(selectedTagsSelector);
   const innerRef = useRef<HTMLDivElement>(null);
-  const getMaxScroll = () => {
+  const getMaxScroll = () =>
     // @ts-ignore
-    return innerRef.current.scrollWidth - innerRef.current?.clientWidth + 50;
-  };
-
+    innerRef.current.scrollWidth - innerRef.current?.clientWidth + 50;
   const allTags: string[] = stories
     .map(({tags}) => tags)
     .filter(Boolean)
