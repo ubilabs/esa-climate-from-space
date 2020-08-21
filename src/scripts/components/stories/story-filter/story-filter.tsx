@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState, useEffect, useRef} from 'react';
+import React, {FunctionComponent, useRef} from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useSelector, useDispatch} from 'react-redux';
 import cx from 'classnames';
@@ -13,17 +13,17 @@ import setSelectedStoryTags from '../../../actions/set-selected-story-tags';
 import styles from './story-filter.styl';
 
 let translateValue = 0;
-const scrollSpeed = 4; // pixels per frame
+const scrollSpeed = 50; // pixels per frame
 
 const StoryFilter: FunctionComponent = () => {
   const dispatch = useDispatch();
   const stories = useSelector(storyListSelector);
   const selectedTags = useSelector(selectedTagsSelector);
   const innerRef = useRef<HTMLDivElement>(null);
-  const [scrollLeft, setScrollLeft] = useState(false);
-  const [scrollRight, setScrollRight] = useState(false);
-  const maxScroll =
-    (innerRef.current?.scrollWidth || 0) - (innerRef.current?.offsetWidth || 0);
+  const getMaxScroll = () => {
+    // @ts-ignore
+    return innerRef.current.scrollWidth - innerRef.current?.clientWidth + 50;
+  };
 
   const allTags: string[] = stories
     .map(({tags}) => tags)
@@ -44,52 +44,28 @@ const StoryFilter: FunctionComponent = () => {
   };
   const resetTags = () => dispatch(setSelectedStoryTags([]));
 
-  // handle left side scrolling
-  useEffect(() => {
-    if (!scrollLeft) {
-      return () => {};
+  const leftClick = () => {
+    if (innerRef.current && translateValue < 0) {
+      translateValue += scrollSpeed;
+      innerRef.current.style.transform = `translateX(${translateValue +
+        scrollSpeed}px)`;
     }
+  };
 
-    const raf = {id: 0}; // keep reference to requestAniationFrame id
-    const loop = () => {
-      if (innerRef.current && translateValue < 0) {
-        translateValue += scrollSpeed;
-        innerRef.current.style.transform = `translateX(${translateValue}px)`;
-        raf.id = requestAnimationFrame(loop);
-      }
-    };
-
-    loop();
-
-    return () => cancelAnimationFrame(raf.id);
-  }, [scrollLeft]);
-
-  // handle right side scrolling
-  useEffect(() => {
-    if (!scrollRight) {
-      return () => {};
-    }
-
-    const raf = {id: 0}; // keep reference to requestAniationFrame id
-    const loop = () => {
-      if (innerRef.current && translateValue > maxScroll * -1) {
+  const rightClick = () => {
+    if (innerRef.current) {
+      const maxScroll = innerRef.current && getMaxScroll();
+      if (translateValue >= maxScroll * -1) {
         translateValue -= scrollSpeed;
-        innerRef.current.style.transform = `translateX(${translateValue}px)`;
-        raf.id = requestAnimationFrame(loop);
+        innerRef.current.style.transform = `translateX(${translateValue +
+          scrollSpeed}px)`;
       }
-    };
-
-    loop();
-
-    return () => cancelAnimationFrame(raf.id);
-  }, [scrollRight, maxScroll]);
+    }
+  };
 
   return (
     <div className={styles.storyFilter}>
-      <div
-        className={styles.arrowIcon}
-        onMouseEnter={() => setScrollLeft(true)}
-        onMouseLeave={() => setScrollLeft(false)}>
+      <div className={styles.arrowIcon} onClick={() => leftClick()}>
         <ArrowLeftIcon />
       </div>
       <div className={styles.tagScrollerOuter}>
@@ -105,10 +81,7 @@ const StoryFilter: FunctionComponent = () => {
           ))}
         </div>
       </div>
-      <div
-        className={styles.arrowIcon}
-        onMouseEnter={() => setScrollRight(true)}
-        onMouseLeave={() => setScrollRight(false)}>
+      <div className={styles.arrowIcon} onClick={() => rightClick()}>
         <ArrowRightIcon />
       </div>
       <button
