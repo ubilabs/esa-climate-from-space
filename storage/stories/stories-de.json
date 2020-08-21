@@ -35,6 +35,28 @@
     "position": [-105, 75]
   },
   {
+    "id": "story-30",
+    "title": "Ein Land in Gefahr",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [175, -2]
+  },
+  {
+    "id": "story-28",
+    "title": "Biodiversität und Verlust des Lebensraums",
+    "description": "",
+    "image": "",
+    "tags": []
+  },
+  {
+    "id": "story-26",
+    "title": "Den Puls des Planeten messen",
+    "description": "",
+    "image": "",
+    "tags": []
+  },
+  {
     "id": "debug",
     "title": "Debug",
     "description": "Test story",

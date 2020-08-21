@@ -35,6 +35,28 @@
     "position": [-105, 75]
   },
   {
+    "id": "story-30",
+    "title": "A Country Under Threat",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [175, -2]
+  },
+  {
+    "id": "story-28",
+    "title": "Biodiversity and Habitat Loss",
+    "description": "",
+    "image": "",
+    "tags": []
+  },
+  {
+    "id": "story-26",
+    "title": "Taking the Pulse of the Planet",
+    "description": "",
+    "image": "",
+    "tags": []
+  },
+  {
     "id": "debug",
     "title": "Debug",
     "description": "Test story",
