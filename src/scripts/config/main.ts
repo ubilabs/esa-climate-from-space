@@ -11,8 +11,8 @@ const globeState: GlobeState = {
   view: {
     position: {
       height: 25003000,
-      latitude: 0,
-      longitude: -0.32
+      latitude: 41.827147,
+      longitude: 12.672343 // ESA office in Italy ;)
     },
     orientation: {
       heading: 360,
