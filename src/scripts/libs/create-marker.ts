@@ -4,7 +4,8 @@ import {
   Entity,
   ConstantProperty,
   VerticalOrigin,
-  HorizontalOrigin
+  HorizontalOrigin,
+  Cartesian2
 } from 'cesium';
 
 import NotesEsaBold from '../../../assets/fonts/NotesEsaBol.otf';
@@ -13,8 +14,8 @@ import {Marker} from '../types/marker-type';
 
 export async function createMarker(marker: Marker): Promise<Entity> {
   const canvas = document.createElement('canvas');
-  canvas.width = 700;
-  canvas.height = 300;
+  canvas.width = 350;
+  canvas.height = 32;
 
   const svgString = await getSvgString(
     unescape(encodeURIComponent(marker.title))
@@ -25,8 +26,8 @@ export async function createMarker(marker: Marker): Promise<Entity> {
 
   return new Promise(resolve => {
     image.onload = function() {
-      // @ts-ignore
-      canvas.getContext('2d').drawImage(image, 0, 0);
+      const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+      context.drawImage(image, 0, 0);
 
       resolve(
         new Entity({
@@ -37,8 +38,9 @@ export async function createMarker(marker: Marker): Promise<Entity> {
           ),
           billboard: new BillboardGraphics({
             image: new ConstantProperty(canvas),
-            verticalOrigin: new ConstantProperty(VerticalOrigin.TOP),
-            horizontalOrigin: new ConstantProperty(HorizontalOrigin.LEFT)
+            verticalOrigin: new ConstantProperty(VerticalOrigin.CENTER),
+            horizontalOrigin: new ConstantProperty(HorizontalOrigin.LEFT),
+            pixelOffset: new ConstantProperty(new Cartesian2(-16, 0))
           })
         })
       );
