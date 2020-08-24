@@ -28,9 +28,14 @@ import styles from './globes.styl';
 interface Props {
   backgroundColor: string;
   markers?: Marker[];
+  markerLink?: boolean;
 }
 
-const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
+const Globes: FunctionComponent<Props> = ({
+  backgroundColor,
+  markers = [],
+  markerLink
+}) => {
   const dispatch = useDispatch();
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
@@ -98,6 +103,7 @@ const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
       )}
       <Globe
         markers={markers}
+        markerLink={markerLink}
         backgroundColor={backgroundColor}
         active={isMainActive}
         view={currentView}

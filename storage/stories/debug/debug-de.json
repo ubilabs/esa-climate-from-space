@@ -35,7 +35,10 @@
           "timestamp": "2020-07-14T06:37:39.657Z"
         }
       ],
-
+      "markers": [
+        {"id": "1", "position": [10, 50], "title": "some more content"},
+        {"id": "2", "position": [50, 10], "title": "debug"}
+      ],
       "layerDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat necessitatibus quibusdam labore eos consectetur fugiat beatae aperiam! Nulla similique corrupti perferendis, accusantium repellat ipsum voluptate illum reiciendis? Voluptatum, quidem est."
     },
     {

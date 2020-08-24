@@ -35,6 +35,7 @@
           "timestamp": "2012-09-04T00:00:00.000Z"
         }
       ],
+      "markers": [{"position": [10, 50]}, {"position": [50, 10]}],
       "layerDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat necessitatibus quibusdam labore eos consectetur fugiat beatae aperiam! Nulla similique corrupti perferendis, accusantium repellat ipsum voluptate illum reiciendis? Voluptatum, quidem est."
     },
     {
