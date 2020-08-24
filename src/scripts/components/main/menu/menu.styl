@@ -50,7 +50,7 @@
 
 .logo
   position: absolute
-  bottom: 1.5em
+  bottom: emCalc(24px)
   display: flex
   flex-direction: row
   justify-content: center
@@ -59,9 +59,20 @@
   svg
     fill: $main
 
+.version
+  position: absolute
+  right: emCalc(32px)
+  bottom: emCalc(24px)
+  color: $textDefault
+  font-size: 10px
+
 @media screen and (max-width: 480px)
   .menuContainer
     width: 100%
 
   .menuList:first-child
     display: none
+
+  .version
+    right: 50%
+    bottom: 10px
