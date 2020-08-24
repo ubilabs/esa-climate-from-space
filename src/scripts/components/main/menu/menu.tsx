@@ -19,6 +19,8 @@ import styles from './menu.styl';
 
 const Menu: FunctionComponent = () => {
   const [showOverlay, setShowOverlay] = useState(false);
+  // @ts-ignore - injected via webpack's define plugin
+  const version = INFO_VERSION;
 
   return (
     <React.Fragment>
@@ -135,6 +137,7 @@ const Menu: FunctionComponent = () => {
       <div className={styles.logo}>
         <CCILogo />
       </div>
+      <div className={styles.version}>{version}</div>
     </React.Fragment>
   );
 };
