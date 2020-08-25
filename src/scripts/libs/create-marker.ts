@@ -31,7 +31,7 @@ export async function createMarker(marker: Marker): Promise<Entity> {
 
       resolve(
         new Entity({
-          id: `${marker.id}`,
+          id: marker.id && `${marker.id}`,
           position: Cartesian3.fromDegrees(
             marker.position[0],
             marker.position[1]

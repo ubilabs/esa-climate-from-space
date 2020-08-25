@@ -1,5 +1,5 @@
 export interface Marker {
-  id: string;
+  id?: string;
   title: string;
   position: number[];
 }
