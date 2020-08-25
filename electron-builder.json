@@ -1,6 +1,7 @@
 {
   "directories": {
-    "output": "dist-electron"
+    "output": "dist-electron",
+    "buildResources": "electron-resources"
   },
   "appId": "com.ubilabs.esa.cfs",
   "files": ["./dist-src-electron/*", "./dist/**/*"],
