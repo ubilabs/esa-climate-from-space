@@ -1,5 +1,6 @@
 import * as path from 'path';
 import {app, BrowserWindow} from 'electron';
+const isDev = require('electron-is-dev');
 import {addDownloadHandler} from './download-handler.js';
 
 // future proof for electron 9 and prevent annoying deprecation warning message
@@ -32,7 +33,9 @@ function createWindow() {
   const indexPath = `file://${__dirname}/../dist/index.html`;
   window.loadURL(indexPath);
 
-  window.webContents.openDevTools();
+  if (isDev) {
+    window.webContents.openDevTools();
+  }
 
   // free window reference when closed
   window.on('closed', () => {

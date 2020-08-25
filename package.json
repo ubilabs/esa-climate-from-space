@@ -45,6 +45,7 @@
     "@types/redux-logger": "^3.0.7",
     "cesium": "^1.66.0",
     "cross-zip": "^3.0.0",
+    "electron-is-dev": "^1.2.0",
     "framer-motion": "^1.8.4",
     "lodash.debounce": "^4.0.8",
     "lodash.intersection": "^4.4.0",
