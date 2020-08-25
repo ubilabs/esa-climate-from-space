@@ -4,6 +4,7 @@
     "buildResources": "electron-resources"
   },
   "appId": "com.ubilabs.esa.cfs",
+  "productName": "ESA – Climate from Space",
   "files": ["./dist-src-electron/*", "./dist/**/*"],
   "win": {
     "target": "portable"

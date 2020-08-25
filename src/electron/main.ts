@@ -12,6 +12,7 @@ function createWindow() {
   const window = new BrowserWindow({
     width: 1400,
     height: 800,
+    title: 'ESA – Climate from Space',
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
