@@ -1,5 +1,5 @@
 import React, {FunctionComponent, useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import Button from '../button/button';
 import Overlay from '../overlay/overlay';
@@ -11,10 +11,20 @@ import Share from '../share/share';
 import {MenuIcon} from '../icons/menu-icon';
 
 import styles from './navigation.styl';
+import InfoBubble from '../info-bubble/info-bubble';
+import {languageSelector} from '../../../selectors/language';
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const [showInfoBubble, setshowInfoBubble] = useState(true);
+  const language = useSelector(languageSelector);
+  const savedLanguage = localStorage.getItem('language');
+
+  const onSaveLanguage = () => {
+    localStorage.setItem('language', language);
+    setshowInfoBubble(false);
+  };
 
   return (
     <div className={styles.navigation}>
@@ -39,6 +49,12 @@ const Navigation: FunctionComponent = () => {
         onClick={() => setShowMenu(true)}
         hideLabelOnMobile
       />
+      {showInfoBubble && !savedLanguage && (
+        <InfoBubble
+          onMenuOpen={() => setShowMenu(true)}
+          onClose={() => onSaveLanguage()}
+        />
+      )}
       {showMenu && (
         <Overlay onClose={() => setShowMenu(false)}>
           <Menu />

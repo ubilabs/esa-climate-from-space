@@ -25,6 +25,7 @@ import translations from '../../../i18n';
 
 import styles from './app.styl';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
+import {Language} from '../../../types/language';
 
 // create redux store
 const store = createReduxStore();
@@ -36,12 +37,21 @@ const App: FunctionComponent = () => (
 );
 
 const TranslatedApp: FunctionComponent = () => {
-  const language = useSelector(languageSelector);
   const markers = useStoryMarkers();
+  const language = useSelector(languageSelector);
+
+  const getLanguage = () => {
+    if (localStorage.getItem('language')) {
+      return localStorage.getItem('language') as Language;
+    }
+    return language;
+  };
 
   return (
     <Router>
-      <IntlProvider locale={language} messages={translations[language]}>
+      <IntlProvider
+        locale={getLanguage()}
+        messages={translations[getLanguage()]}>
         <Switch>
           <Route
             path={[
