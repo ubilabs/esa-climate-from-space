@@ -40,7 +40,7 @@
   "dataInfo": "Data Information",
   "storiesSelected": "{numberSelected, number} {numberSelected, plural, one {Story} other {Stories}} selected",
   "resetFilters": "Reset Filters",
-  "projectDescription": "Climate from Space application for ESAs CCI+ program.",
+  "projectDescription": "Climate from Space application for ESAs CCI program.",
   "tags.nature": "Nature",
   "tags.biomass": "Biomass",
   "tags.university": "University",

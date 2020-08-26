@@ -1,0 +1,66 @@
+[
+  {
+    "id": "story-16",
+    "title": "Planetary Heat Pumps",
+    "description": "",
+    "image": "assets/sst_large_18.jpg",
+    "tags": [
+      "sea-surface-temperature",
+      "ocean-colour",
+      "sea-surface-salinity",
+      "water-vapour",
+      "clouds"
+    ],
+    "position": [-50, 40]
+  },
+  {
+    "id": "story-8",
+    "title": "Is Ozone Good or Bad?",
+    "description": "",
+    "image": "assets/ozone.jpg",
+    "tags": ["ozone", "aerosol"],
+    "position": [-40, -65]
+  },
+  {
+    "id": "story-20",
+    "title": "Breaking the Ice",
+    "description": "",
+    "image": "assets/seaice.jpg",
+    "tags": [
+      "sea-ice",
+      "sea-surface-temperature",
+      "sea-surface-salinity",
+      "permafrost"
+    ],
+    "position": [-105, 75]
+  },
+  {
+    "id": "story-30",
+    "title": "A Country Under Threat",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [175, -2]
+  },
+  {
+    "id": "story-28",
+    "title": "Biodiversity and Habitat Loss",
+    "description": "",
+    "image": "",
+    "tags": []
+  },
+  {
+    "id": "story-26",
+    "title": "Taking the Pulse of the Planet",
+    "description": "",
+    "image": "",
+    "tags": []
+  },
+  {
+    "id": "debug",
+    "title": "Debug",
+    "description": "Test story",
+    "image": "assets/story.jpg",
+    "tags": []
+  }
+]
