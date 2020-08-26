@@ -52,7 +52,7 @@ for file in $(find $FOLDER -name *.nc -type f | sort -n); do
     --tmscompatible \
     --no-kml \
     --webviewer=none \
-    --resampling near \
+    --resampling average \
     --s_srs EPSG:4326 \
     ./colored.tif /data/images/$VARIABLE/$timestamp_counter
   else
