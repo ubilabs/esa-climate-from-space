@@ -9,11 +9,11 @@ import {StoryIcon} from '../icons/story-icon';
 import showLayerSelectorAction from '../../../actions/show-layer-selector';
 import Share from '../share/share';
 import {MenuIcon} from '../icons/menu-icon';
-
-import styles from './navigation.styl';
-import LanguageBubble from '../language-bubble/language-bubble';
 import setLanguageAction from '../../../actions/set-language';
 import {languageSelector} from '../../../selectors/language';
+import LanguageBubble from '../language-bubble/language-bubble';
+
+import styles from './navigation.styl';
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useDispatch();
