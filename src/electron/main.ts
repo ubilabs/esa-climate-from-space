@@ -1,5 +1,6 @@
 import * as path from 'path';
 import {app, BrowserWindow} from 'electron';
+const isDev = require('electron-is-dev');
 import {addDownloadHandler} from './download-handler.js';
 
 // future proof for electron 9 and prevent annoying deprecation warning message
@@ -12,10 +13,12 @@ function createWindow() {
   const window = new BrowserWindow({
     width: 1400,
     height: 800,
+    title: 'ESA – Climate from Space',
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      enableRemoteModule: true
     }
   });
 
@@ -31,7 +34,9 @@ function createWindow() {
   const indexPath = `file://${__dirname}/../dist/index.html`;
   window.loadURL(indexPath);
 
-  window.webContents.openDevTools();
+  if (isDev) {
+    window.webContents.openDevTools();
+  }
 
   // free window reference when closed
   window.on('closed', () => {
