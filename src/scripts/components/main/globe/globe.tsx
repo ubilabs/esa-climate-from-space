@@ -48,7 +48,6 @@ interface Props {
   basemap: BasemapId | null;
   flyTo: GlobeView | null;
   markers?: Marker[];
-  markerLink?: boolean;
   backgroundColor: string;
   onMouseEnter: () => void;
   onTouchStart: () => void;
@@ -77,7 +76,6 @@ const Globe: FunctionComponent<Props> = ({
   active,
   flyTo,
   markers = [],
-  markerLink,
   backgroundColor,
   onMouseEnter,
   onTouchStart,
@@ -243,7 +241,7 @@ const Globe: FunctionComponent<Props> = ({
     flyToGlobeView(viewer, flyTo);
   }, [viewer, flyTo]);
 
-  useMarkers(viewer, markers, markerLink);
+  useMarkers(viewer, markers);
 
   return (
     <div

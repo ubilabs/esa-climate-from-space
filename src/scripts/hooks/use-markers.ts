@@ -12,11 +12,7 @@ import {createMarker} from '../libs/create-marker';
 
 import {Marker} from '../types/marker-type';
 
-export const useMarkers = (
-  viewer: Viewer | null,
-  markers: Marker[],
-  markerLink?: boolean
-) => {
+export const useMarkers = (viewer: Viewer | null, markers: Marker[]) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -31,13 +27,13 @@ export const useMarkers = (
       scene.canvas as HTMLCanvasElement
     );
 
-    markerLink &&
-      handler.setInputAction(movement => {
-        const pickedObject = scene.pick(movement.position);
-        if (defined(pickedObject)) {
-          history.push(`/stories/${pickedObject.id._id}/0`);
-        }
-      }, ScreenSpaceEventType.LEFT_CLICK);
+    handler.setInputAction(movement => {
+      const pickedObject = scene.pick(movement.position);
+
+      if (defined(pickedObject) && pickedObject.id.markerLink) {
+        history.push(pickedObject.id.markerLink);
+      }
+    }, ScreenSpaceEventType.LEFT_CLICK);
 
     Promise.all(markers.map(marker => createMarker(marker))).then(entities => {
       viewer.entities.removeAll();
@@ -46,7 +42,7 @@ export const useMarkers = (
 
     // eslint-disable-next-line consistent-return
     return () => handler.destroy();
-  }, [dispatch, history, markers, markerLink, viewer]);
+  }, [dispatch, history, markers, viewer]);
 
   return;
 };

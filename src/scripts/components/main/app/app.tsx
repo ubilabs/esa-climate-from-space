@@ -22,9 +22,9 @@ import ShowcaseSelector from '../../stories/showcase-selector/showcase-selector'
 import Globes from '../globes/globes';
 
 import translations from '../../../i18n';
+import {useStoryMarkers} from '../../../hooks/use-story-markers';
 
 import styles from './app.styl';
-import {useStoryMarkers} from '../../../hooks/use-story-markers';
 
 // create redux store
 const store = createReduxStore();
@@ -60,7 +60,7 @@ const TranslatedApp: FunctionComponent = () => {
             <div className={styles.logo}>
               <EsaLogo />
             </div>
-            <Globes markers={markers} markerLink backgroundColor={'#10161A'} />
+            <Globes markers={markers} backgroundColor={'#10161A'} />
             <Navigation />
             <GlobeNavigation />
             <TimeSlider />
