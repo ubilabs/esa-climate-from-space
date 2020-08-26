@@ -13,12 +13,8 @@ import config from '../../config/main';
 import {parseUrl} from '../../libs/globe-url-parameter';
 
 // get initial state from url or fallback to default state in config
-console.log(parseUrl());
-
 const globeState = parseUrl()?.globeState || config.globe;
 const initialState = globeState.spinning;
-
-console.log(initialState);
 
 function spinningReducer(
   state: boolean = initialState,
