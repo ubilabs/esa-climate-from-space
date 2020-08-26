@@ -102,87 +102,89 @@ const TimeSlider: FunctionComponent = () => {
   );
 
   return (
-    <div
-      className={cx(
-        styles.timeSlider,
-        rangeCompare && styles.timeSliderCompare
-      )}>
-      {isPlaying && (
-        <TimePlayback minTime={combined.min} maxTime={combined.max} />
-      )}
-      <div className={styles.container}>
-        <Button
-          className={cx(
-            styles.playButton,
-            rangeCompare && styles.playButtonCompare
-          )}
-          icon={isPlaying ? PauseCircleIcon : PlayCircleIcon}
-          onClick={() => setIsPlaying(!isPlaying)}>
-          {isPlaying ? 'playing' : 'pausing'}
-        </Button>
-        <div className={styles.ranges}>
-          <input
-            className={inputStyles}
-            type="range"
-            value={time}
-            onChange={({target}) => {
-              const newTime = parseInt(target.value, 10);
-              setTime(newTime);
-              debouncedSetGlobeTime(newTime);
-              setIsPlaying(false);
-            }}
-            min={combined.min}
-            max={combined.max}
-            step={stepSize}
-          />
-
-          {rangeMain && (
-            <output
-              className={cx(
-                styles.timeOutput,
-                rangeCompare && styles.timeOutputMain
-              )}
-              style={{
-                left: `${clampedLabelPosition}%`
-              }}>
-              {timeSelectedMain ? format(timeSelectedMain) : false}
-            </output>
-          )}
-
-          {rangeCompare && (
-            <output
-              className={cx(styles.timeOutput, styles.timeOutputCompare)}
-              style={{
-                left: `${clampedLabelPosition}%`
-              }}>
-              {timeSelectedCompare ? format(timeSelectedCompare) : false}
-            </output>
-          )}
-
-          {rangeMain && (
-            <TimeSliderRange
-              range={rangeMain}
-              combined={combined}
-              selectedTimeIndex={timeIndexMain}
+    <div className={styles.sliderBackground}>
+      <div
+        className={cx(
+          styles.timeSlider,
+          rangeCompare && styles.timeSliderCompare
+        )}>
+        {isPlaying && (
+          <TimePlayback minTime={combined.min} maxTime={combined.max} />
+        )}
+        <div className={styles.container}>
+          <Button
+            className={cx(
+              styles.playButton,
+              rangeCompare && styles.playButtonCompare
+            )}
+            icon={isPlaying ? PauseCircleIcon : PlayCircleIcon}
+            onClick={() => setIsPlaying(!isPlaying)}>
+            {isPlaying ? 'playing' : 'pausing'}
+          </Button>
+          <div className={styles.ranges}>
+            <input
+              className={inputStyles}
+              type="range"
+              value={time}
+              onChange={({target}) => {
+                const newTime = parseInt(target.value, 10);
+                setTime(newTime);
+                debouncedSetGlobeTime(newTime);
+                setIsPlaying(false);
+              }}
+              min={combined.min}
+              max={combined.max}
+              step={stepSize}
             />
-          )}
 
-          <div className={styles.yearLabel}>
-            <div>
-              <FormattedDate value={combined.min} year="numeric" />
+            {rangeMain && (
+              <output
+                className={cx(
+                  styles.timeOutput,
+                  rangeCompare && styles.timeOutputMain
+                )}
+                style={{
+                  left: `${clampedLabelPosition}%`
+                }}>
+                {timeSelectedMain ? format(timeSelectedMain) : false}
+              </output>
+            )}
+
+            {rangeCompare && (
+              <output
+                className={cx(styles.timeOutput, styles.timeOutputCompare)}
+                style={{
+                  left: `${clampedLabelPosition}%`
+                }}>
+                {timeSelectedCompare ? format(timeSelectedCompare) : false}
+              </output>
+            )}
+
+            {rangeMain && (
+              <TimeSliderRange
+                range={rangeMain}
+                combined={combined}
+                selectedTimeIndex={timeIndexMain}
+              />
+            )}
+
+            <div className={styles.yearLabel}>
+              <div>
+                <FormattedDate value={combined.min} year="numeric" />
+              </div>
+              <div>
+                <FormattedDate value={combined.max} year="numeric" />
+              </div>
             </div>
-            <div>
-              <FormattedDate value={combined.max} year="numeric" />
-            </div>
+
+            {rangeCompare && (
+              <TimeSliderRange
+                range={rangeCompare}
+                combined={combined}
+                selectedTimeIndex={timeIndexCompare}
+              />
+            )}
           </div>
-
-          {rangeCompare && (
-            <TimeSliderRange
-              range={rangeCompare}
-              combined={combined}
-              selectedTimeIndex={timeIndexCompare}
-            />
-          )}
         </div>
       </div>
     </div>
