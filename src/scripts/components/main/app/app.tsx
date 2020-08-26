@@ -22,10 +22,9 @@ import ShowcaseSelector from '../../stories/showcase-selector/showcase-selector'
 import Globes from '../globes/globes';
 
 import translations from '../../../i18n';
+import {useStoryMarkers} from '../../../hooks/use-story-markers';
 
 import styles from './app.styl';
-import {useStoryMarkers} from '../../../hooks/use-story-markers';
-import {Language} from '../../../types/language';
 
 // create redux store
 const store = createReduxStore();
@@ -39,19 +38,11 @@ const App: FunctionComponent = () => (
 const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
-
-  const getLanguage = () => {
-    if (localStorage.getItem('language')) {
-      return localStorage.getItem('language') as Language;
-    }
-    return language;
-  };
+  localStorage.clear();
 
   return (
     <Router>
-      <IntlProvider
-        locale={getLanguage()}
-        messages={translations[getLanguage()]}>
+      <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
           <Route
             path={[

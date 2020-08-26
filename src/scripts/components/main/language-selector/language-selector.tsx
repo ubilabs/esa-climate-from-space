@@ -21,14 +21,6 @@ const LanguageSelector: FunctionComponent<Props> = ({className = ''}) => {
   const selectedLanguage = useSelector(languageSelector);
   const dispatch = useDispatch();
 
-  const setLanguage = (language: Language) => {
-    localStorage.setItem('language', language);
-
-    if (localStorage.getItem('language')) {
-      dispatch(setLanguageAction(language));
-    }
-  };
-
   return (
     <ul className={styles.language}>
       {languages.map(language => {
@@ -42,7 +34,7 @@ const LanguageSelector: FunctionComponent<Props> = ({className = ''}) => {
             <Button
               className={buttonClasses}
               key={language}
-              onClick={() => setLanguage(language)}
+              onClick={() => dispatch(setLanguageAction(language))}
               label={`language.${language}`}
             />
           </li>

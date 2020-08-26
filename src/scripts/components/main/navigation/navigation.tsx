@@ -11,20 +11,16 @@ import Share from '../share/share';
 import {MenuIcon} from '../icons/menu-icon';
 
 import styles from './navigation.styl';
-import InfoBubble from '../info-bubble/info-bubble';
+import LanguageBubble from '../language-bubble/language-bubble';
+import setLanguageAction from '../../../actions/set-language';
 import {languageSelector} from '../../../selectors/language';
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const [showInfoBubble, setshowInfoBubble] = useState(true);
-  const language = useSelector(languageSelector);
+  const selectedLanguage = useSelector(languageSelector);
   const savedLanguage = localStorage.getItem('language');
-
-  const onSaveLanguage = () => {
-    localStorage.setItem('language', language);
-    setshowInfoBubble(false);
-  };
+  const [showLanguageBubble, setShowLanguageBubble] = useState(!savedLanguage);
 
   return (
     <div className={styles.navigation}>
@@ -49,10 +45,13 @@ const Navigation: FunctionComponent = () => {
         onClick={() => setShowMenu(true)}
         hideLabelOnMobile
       />
-      {showInfoBubble && !savedLanguage && (
-        <InfoBubble
+      {showLanguageBubble && (
+        <LanguageBubble
           onMenuOpen={() => setShowMenu(true)}
-          onClose={() => onSaveLanguage()}
+          onClose={() => {
+            setShowLanguageBubble(false);
+            dispatch(setLanguageAction(selectedLanguage));
+          }}
         />
       )}
       {showMenu && (

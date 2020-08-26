@@ -3,15 +3,15 @@ import {FormattedMessage} from 'react-intl';
 
 import Button from '../button/button';
 
-import styles from './info-bubble.styl';
+import styles from './language-bubble.styl';
 
 interface Props {
   onClose: () => void;
   onMenuOpen: () => void;
 }
 
-const InfoBubble: FunctionComponent<Props> = ({onClose, onMenuOpen}) => (
-  <div className={styles.infoBubble}>
+const LanguageBubble: FunctionComponent<Props> = ({onClose, onMenuOpen}) => (
+  <div className={styles.languageBubble}>
     <p className={styles.language}>
       <FormattedMessage id={'detectedLanguage'} />
     </p>
@@ -30,4 +30,4 @@ const InfoBubble: FunctionComponent<Props> = ({onClose, onMenuOpen}) => (
   </div>
 );
 
-export default InfoBubble;
+export default LanguageBubble;
