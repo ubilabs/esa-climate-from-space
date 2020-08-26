@@ -36,8 +36,8 @@
         }
       ],
       "markers": [
-        {"id": "1", "position": [10, 50], "title": "some more content"},
-        {"id": "2", "position": [50, 10], "title": "debug"}
+        {"position": [10, 50], "title": "some more content"},
+        {"position": [50, 10], "title": "debug"}
       ],
       "layerDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat necessitatibus quibusdam labore eos consectetur fugiat beatae aperiam! Nulla similique corrupti perferendis, accusantium repellat ipsum voluptate illum reiciendis? Voluptatum, quidem est."
     },
