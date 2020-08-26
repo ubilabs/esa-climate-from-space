@@ -19,7 +19,8 @@ const globeState: GlobeState = {
       pitch: -90,
       roll: 0
     }
-  }
+  },
+  spinning: true
 };
 
 // @ts-ignore - injected via webpack's define plugin

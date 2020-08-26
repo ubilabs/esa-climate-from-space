@@ -1,6 +1,15 @@
 import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
-import {Viewer, SceneMode, Color, TileMapServiceImageryProvider} from 'cesium';
+import {
+  Cartesian3,
+  Color,
+  EventHelper,
+  SceneMode,
+  ScreenSpaceEventHandler,
+  ScreenSpaceEventType,
+  TileMapServiceImageryProvider,
+  Viewer
+} from 'cesium';
 
 import {
   getGlobeView,
@@ -45,6 +54,7 @@ interface Props {
   projectionState: GlobeProjectionState;
   imageLayer: GlobeImageLayerData | null;
   basemap: BasemapId | null;
+  spinning: boolean;
   flyTo: GlobeView | null;
   markers?: Marker[];
   backgroundColor: string;
@@ -52,6 +62,7 @@ interface Props {
   onTouchStart: () => void;
   onChange: (view: GlobeView) => void;
   onMoveEnd: (view: GlobeView) => void;
+  onMouseDown: () => void;
 }
 
 // keep a reference to the current basemap layer
@@ -67,11 +78,14 @@ function getBasemapUrl(id: BasemapId | null) {
   return isElectron() ? config.basemapUrlsOffline[id] : config.basemapUrls[id];
 }
 
+const spinningEventHelper = new EventHelper();
+
 const Globe: FunctionComponent<Props> = ({
   view,
   projectionState,
   imageLayer,
   basemap,
+  spinning,
   active,
   flyTo,
   markers = [],
@@ -79,7 +93,8 @@ const Globe: FunctionComponent<Props> = ({
   onMouseEnter,
   onTouchStart,
   onChange,
-  onMoveEnd
+  onMoveEnd,
+  onMouseDown
 }) => {
   const [viewer, setViewer] = useState<Viewer | null>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -176,6 +191,22 @@ const Globe: FunctionComponent<Props> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, onChange, onMoveEnd]);
 
+  // update mousedown handler
+  useEffect(() => {
+    if (!viewer) {
+      return;
+    }
+
+    const handler = new ScreenSpaceEventHandler(
+      viewer.scene.canvas as HTMLCanvasElement
+    );
+    handler.setInputAction(onMouseDown, ScreenSpaceEventType.LEFT_DOWN);
+
+    return () => {
+      handler.destroy();
+    };
+  }, [viewer, onMouseDown]);
+
   // switch projections
   useEffect(() => {
     if (!viewer) {
@@ -240,6 +271,31 @@ const Globe: FunctionComponent<Props> = ({
 
     flyToGlobeView(viewer, flyTo);
   }, [viewer, flyTo]);
+
+  // update spinning
+  useEffect(() => {
+    if (!viewer) {
+      return;
+    }
+
+    if (spinning) {
+      setTimeout(() => {
+        let lastNow = Date.now();
+
+        const spin = () => {
+          const now = Date.now();
+          const spinRate = 0.08;
+          const delta = (now - lastNow) / 1000;
+          lastNow = now;
+          viewer.scene.camera.rotate(Cartesian3.UNIT_Z, spinRate * delta);
+        };
+
+        spinningEventHelper.add(viewer.clock.onTick, spin);
+      }, projectionState.morphTime * 1000);
+    } else {
+      spinningEventHelper.removeAll();
+    }
+  }, [spinning, viewer]);
 
   useMarkers(viewer, markers);
 

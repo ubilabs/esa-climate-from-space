@@ -19,11 +19,13 @@ import {getImageLayerData} from '../../../libs/get-image-layer-data';
 import {State} from '../../../reducers';
 import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
+import {globeSpinningSelector} from '../../../selectors/globe/Spinning';
 
 import {GlobeView} from '../../../types/globe-view';
 import {Marker} from '../../../types/marker-type';
 
 import styles from './globes.styl';
+import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
 
 interface Props {
   backgroundColor: string;
@@ -35,6 +37,7 @@ const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
+  const globeSpinning = useSelector(globeSpinningSelector);
   const {mainId, compareId} = selectedLayerIds;
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId)
@@ -62,6 +65,11 @@ const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
   const onMoveEndHandler = useCallback(
     (view: GlobeView) => dispatch(setGlobeViewAction(view)),
     [dispatch]
+  );
+
+  const onMouseDownHandler = useCallback(
+    () => globeSpinning && dispatch(setGlobeSpinningAction(false)),
+    [dispatch, globeSpinning]
   );
 
   const mainImageLayer = useMemo(
@@ -104,11 +112,13 @@ const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
         projectionState={projectionState}
         imageLayer={mainImageLayer}
         basemap={mainLayerDetails?.basemap || null}
+        spinning={globeSpinning}
         flyTo={flyTo}
         onMouseEnter={() => setIsMainActive(true)}
         onTouchStart={() => setIsMainActive(true)}
         onChange={onChangeHandler}
         onMoveEnd={onMoveEndHandler}
+        onMouseDown={onMouseDownHandler}
       />
 
       {compareLayer && (
@@ -119,11 +129,13 @@ const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
           projectionState={projectionState}
           imageLayer={compareImageLayer}
           basemap={compareLayerDetails?.basemap || null}
+          spinning={globeSpinning}
           flyTo={flyTo}
           onMouseEnter={() => setIsMainActive(false)}
           onTouchStart={() => setIsMainActive(false)}
           onChange={onChangeHandler}
           onMoveEnd={onMoveEndHandler}
+          onMouseDown={onMouseDownHandler}
         />
       )}
     </div>
