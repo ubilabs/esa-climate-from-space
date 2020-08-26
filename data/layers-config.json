@@ -301,6 +301,7 @@
   },
   "snow.swe": {
     "colorMap": "ocean",
+    "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
       "month": "long"
