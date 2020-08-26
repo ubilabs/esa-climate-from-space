@@ -17,8 +17,8 @@ const StoryFilter: FunctionComponent = () => {
   const stories = useSelector(storyListSelector);
   const selectedTags = useSelector(selectedTagsSelector);
   const [translateValue, setTranslateValue] = useState(0);
-  const innerRef = useRef<HTMLDivElement>(null);
   const scrollSpeed = 50; // pixels per frame
+  const innerRef = useRef<HTMLDivElement>(null);
   const maxScroll =
     (innerRef.current &&
       innerRef.current?.scrollWidth - innerRef.current?.clientWidth) ||
@@ -43,20 +43,16 @@ const StoryFilter: FunctionComponent = () => {
   const resetTags = () => dispatch(setSelectedStoryTags([]));
 
   const leftClick = () => {
-    if (innerRef.current && translateValue < 0) {
+    if (translateValue < 0) {
       const newTranslateValue = translateValue + scrollSpeed;
       setTranslateValue(newTranslateValue);
-      innerRef.current.style.transform = `translateX(${translateValue}px)`;
     }
   };
 
   const rightClick = () => {
-    if (innerRef.current) {
-      if (translateValue >= maxScroll * -1) {
-        const newTranslateValue = translateValue - scrollSpeed;
-        setTranslateValue(newTranslateValue);
-        innerRef.current.style.transform = `translateX(${translateValue}px)`;
-      }
+    if (translateValue >= maxScroll * -1) {
+      const newTranslateValue = translateValue - scrollSpeed;
+      setTranslateValue(newTranslateValue);
     }
   };
 
@@ -66,7 +62,10 @@ const StoryFilter: FunctionComponent = () => {
         <ArrowLeftIcon />
       </div>
       <div className={styles.tagScrollerOuter}>
-        <div className={styles.tagScrollerInner} ref={innerRef}>
+        <div
+          className={styles.tagScrollerInner}
+          style={{transform: `translateX(${translateValue}px)`}}
+          ref={innerRef}>
           {uniqTags.map(tag => (
             <div
               className={getTagClasses(tag)}
