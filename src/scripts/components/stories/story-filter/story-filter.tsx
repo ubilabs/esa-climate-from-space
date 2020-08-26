@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useRef} from 'react';
+import React, {FunctionComponent, useRef, useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useSelector, useDispatch} from 'react-redux';
 import cx from 'classnames';
@@ -12,17 +12,17 @@ import setSelectedStoryTags from '../../../actions/set-selected-story-tags';
 
 import styles from './story-filter.styl';
 
-let translateValue = 0;
-const scrollSpeed = 50; // pixels per frame
-
 const StoryFilter: FunctionComponent = () => {
   const dispatch = useDispatch();
   const stories = useSelector(storyListSelector);
   const selectedTags = useSelector(selectedTagsSelector);
+  const [translateValue, setTranslateValue] = useState(0);
   const innerRef = useRef<HTMLDivElement>(null);
-  const getMaxScroll = () =>
-    // @ts-ignore
-    innerRef.current.scrollWidth - innerRef.current?.clientWidth + 50;
+  const scrollSpeed = 50; // pixels per frame
+  const maxScroll =
+    (innerRef.current &&
+      innerRef.current?.scrollWidth - innerRef.current?.clientWidth) ||
+    0;
   const allTags: string[] = stories
     .map(({tags}) => tags)
     .filter(Boolean)
@@ -44,19 +44,18 @@ const StoryFilter: FunctionComponent = () => {
 
   const leftClick = () => {
     if (innerRef.current && translateValue < 0) {
-      translateValue += scrollSpeed;
-      innerRef.current.style.transform = `translateX(${translateValue +
-        scrollSpeed}px)`;
+      const newTranslateValue = translateValue + scrollSpeed;
+      setTranslateValue(newTranslateValue);
+      innerRef.current.style.transform = `translateX(${translateValue}px)`;
     }
   };
 
   const rightClick = () => {
     if (innerRef.current) {
-      const maxScroll = innerRef.current && getMaxScroll();
       if (translateValue >= maxScroll * -1) {
-        translateValue -= scrollSpeed;
-        innerRef.current.style.transform = `translateX(${translateValue +
-          scrollSpeed}px)`;
+        const newTranslateValue = translateValue - scrollSpeed;
+        setTranslateValue(newTranslateValue);
+        innerRef.current.style.transform = `translateX(${translateValue}px)`;
       }
     }
   };
