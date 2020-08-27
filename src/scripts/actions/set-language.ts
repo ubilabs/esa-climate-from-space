@@ -22,7 +22,7 @@ const setLanguageAction = (language: Language) => (
   dispatch: ThunkDispatch<State, void, AllThunkActions>,
   getState: () => State
 ) => {
-  localStorage.setItem(config.localStorageLanguage, language);
+  localStorage.setItem(config.localStorageLanguageKey, language);
 
   dispatch({
     type: SET_LANGUAGE,

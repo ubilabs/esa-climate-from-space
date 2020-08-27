@@ -12,6 +12,7 @@ import {MenuIcon} from '../icons/menu-icon';
 import setLanguageAction from '../../../actions/set-language';
 import {languageSelector} from '../../../selectors/language';
 import LanguageBubble from '../language-bubble/language-bubble';
+import config from '../../../config/main';
 
 import styles from './navigation.styl';
 
@@ -19,7 +20,7 @@ const Navigation: FunctionComponent = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const selectedLanguage = useSelector(languageSelector);
-  const savedLanguage = localStorage.getItem('language');
+  const savedLanguage = localStorage.getItem(config.localStorageLanguageKey);
   const [showLanguageBubble, setShowLanguageBubble] = useState(!savedLanguage);
 
   return (

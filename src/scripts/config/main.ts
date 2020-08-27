@@ -79,5 +79,5 @@ export default {
   },
   legendImage: `${baseUrlStorage}/legend-images/{variable}.png`,
   downloadUrls,
-  localStorageLanguage: 'language'
+  localStorageLanguageKey: 'language'
 };

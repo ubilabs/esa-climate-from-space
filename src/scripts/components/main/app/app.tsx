@@ -38,7 +38,6 @@ const App: FunctionComponent = () => (
 const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
-  localStorage.clear();
 
   return (
     <Router>
