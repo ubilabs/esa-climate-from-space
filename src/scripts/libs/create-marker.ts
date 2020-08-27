@@ -29,21 +29,22 @@ export async function createMarker(marker: Marker): Promise<Entity> {
       const context = canvas.getContext('2d') as CanvasRenderingContext2D;
       context.drawImage(image, 0, 0);
 
-      resolve(
-        new Entity({
-          id: `${marker.id}`,
-          position: Cartesian3.fromDegrees(
-            marker.position[0],
-            marker.position[1]
-          ),
-          billboard: new BillboardGraphics({
-            image: new ConstantProperty(canvas),
-            verticalOrigin: new ConstantProperty(VerticalOrigin.CENTER),
-            horizontalOrigin: new ConstantProperty(HorizontalOrigin.LEFT),
-            pixelOffset: new ConstantProperty(new Cartesian2(-16, 0))
-          })
+      const entity = new Entity({
+        position: Cartesian3.fromDegrees(
+          marker.position[0],
+          marker.position[1]
+        ),
+        billboard: new BillboardGraphics({
+          image: new ConstantProperty(canvas),
+          verticalOrigin: new ConstantProperty(VerticalOrigin.CENTER),
+          horizontalOrigin: new ConstantProperty(HorizontalOrigin.LEFT),
+          pixelOffset: new ConstantProperty(new Cartesian2(-16, 0))
         })
-      );
+      });
+      entity.addProperty('markerLink');
+      // @ts-ignore
+      entity.markerLink = marker.link;
+      resolve(entity);
     };
   });
 }

@@ -16,9 +16,9 @@ export const useStoryMarkers = () => {
 
   const storyMarkers = stories
     .map(story => ({
-      id: story.id,
       title: story.title,
-      position: story.position
+      position: story.position,
+      link: `/stories/${story.id}/0`
     }))
     .filter(marker => marker.position);
 

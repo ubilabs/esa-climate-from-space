@@ -32,6 +32,7 @@ const cesiumOptions = {
   animation: false,
   timeline: false,
   baseLayerPicker: false,
+  selectionIndicator: false,
   contextOptions: {
     webgl: {
       preserveDrawingBuffer: true
@@ -147,7 +148,6 @@ const Globe: FunctionComponent<Props> = ({
       // @ts-ignore
       scopedViewer.scene.globe.showGroundAtmosphere = false;
     }
-
     // save viewer reference
     setViewer(scopedViewer);
 
