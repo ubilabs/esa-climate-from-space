@@ -295,7 +295,7 @@ const Globe: FunctionComponent<Props> = ({
     } else {
       spinningEventHelper.removeAll();
     }
-  }, [spinning, viewer]);
+  }, [spinning, viewer, projectionState.morphTime]);
 
   useMarkers(viewer, markers);
 

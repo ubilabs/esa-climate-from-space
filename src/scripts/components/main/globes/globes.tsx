@@ -19,7 +19,7 @@ import {getImageLayerData} from '../../../libs/get-image-layer-data';
 import {State} from '../../../reducers';
 import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
-import {globeSpinningSelector} from '../../../selectors/globe/Spinning';
+import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 
 import {GlobeView} from '../../../types/globe-view';
 import {Marker} from '../../../types/marker-type';
