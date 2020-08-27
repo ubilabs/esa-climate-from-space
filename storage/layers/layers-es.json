@@ -150,5 +150,19 @@
     "shortName": "Greenhouse - CH4",
     "description": "**Variable Shown:** Column-Averaged Dry Air Mole Fraction of Atmospheric Methane  \n**Time Span:** 2015-01 – 2018-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global\n**Version:** 1.2  \n\n[ESA CCI Greenhouse Gases ECV Project website](http://cci.esa.int/ghg)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/3534bbf43fa14e40bc61944eaf664511)",
     "link": "http://..."
+  },
+  {
+    "id": "lakes.lake_surface_water_temperature",
+    "name": "Lakes Water Temperature",
+    "shortName": "Lakes Temperature",
+    "description": "",
+    "link": "http://..."
+  },
+  {
+    "id": "lakes.lake_chla_mean",
+    "name": "Lakes Color",
+    "shortName": "Lakes Color",
+    "description": "",
+    "link": "http://..."
   }
 ]
