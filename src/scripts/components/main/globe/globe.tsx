@@ -1,9 +1,14 @@
-import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
+import React, {
+  FunctionComponent,
+  useRef,
+  useEffect,
+  useState,
+  useCallback
+} from 'react';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
 import {
   Cartesian3,
   Color,
-  EventHelper,
   SceneMode,
   ScreenSpaceEventHandler,
   ScreenSpaceEventType,
@@ -79,8 +84,6 @@ function getBasemapUrl(id: BasemapId | null) {
   return isElectron() ? config.basemapUrlsOffline[id] : config.basemapUrls[id];
 }
 
-const spinningEventHelper = new EventHelper();
-
 const Globe: FunctionComponent<Props> = ({
   view,
   projectionState,
@@ -99,10 +102,22 @@ const Globe: FunctionComponent<Props> = ({
 }) => {
   const [viewer, setViewer] = useState<Viewer | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const lastNowRef = useRef<number | null>(null);
 
   // make latest "active" value always accessible in camera change handler
   const isActiveRef = useRef<boolean>(active);
   isActiveRef.current = active;
+
+  const spin = useCallback(() => {
+    if (!viewer) {
+      return;
+    }
+    const now = Date.now();
+    const spinRate = 0.08;
+    const delta = (now - (lastNowRef?.current ?? 0)) / 1000;
+    lastNowRef.current = now;
+    viewer.scene.camera.rotate(Cartesian3.UNIT_Z, spinRate * delta);
+  }, [viewer]);
 
   // init cesium viewer
   useEffect(() => {
@@ -280,22 +295,14 @@ const Globe: FunctionComponent<Props> = ({
 
     if (spinning) {
       setTimeout(() => {
-        let lastNow = Date.now();
+        lastNowRef.current = Date.now();
 
-        const spin = () => {
-          const now = Date.now();
-          const spinRate = 0.08;
-          const delta = (now - lastNow) / 1000;
-          lastNow = now;
-          viewer.scene.camera.rotate(Cartesian3.UNIT_Z, spinRate * delta);
-        };
-
-        spinningEventHelper.add(viewer.clock.onTick, spin);
+        viewer.clock.onTick.addEventListener(spin);
       }, projectionState.morphTime * 1000);
     } else {
-      spinningEventHelper.removeAll();
+      viewer.clock.onTick.removeEventListener(spin);
     }
-  }, [spinning, viewer, projectionState.morphTime]);
+  }, [spinning, viewer, projectionState.morphTime, spin]);
 
   useMarkers(viewer, markers);
 
