@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
-TIMEOUT=24000
-LAYER_ID="land_cover.lccs_class"
-VARIABLE_ID="lccs_class"
+TIMEOUT=8000
+LAYER_ID="lakes.chla_mean"
+VARIABLE_ID="chla_mean"
 LAYER_TYPE="tiles"
 VERSION="0.7.1"
-LON_RES="64800"
-LAT_RES="32400"
-ZOOM_LEVELS="0-5"
+LON_RES="43200"
+LAT_RES="21600"
+ZOOM_LEVELS="0-3"
 MIN_LON="-180"
 MAX_LON="180"
 MIN_LAT="-90"
 MAX_LAT="90"
 MIN=0
-MAX=220
-MACHINE_TYPE="N1_HIGHCPU_32"
+MAX=2
+MACHINE_TYPE="N1_HIGHCPU_8"
 
 if [ ! -f ./package.json ]; then
     echo "You have to be in the root folder of the project to run this script!"
