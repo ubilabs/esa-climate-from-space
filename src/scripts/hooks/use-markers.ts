@@ -29,8 +29,9 @@ export const useMarkers = (viewer: Viewer | null, markers: Marker[]) => {
 
     handler.setInputAction(movement => {
       const pickedObject = scene.pick(movement.position);
-      if (defined(pickedObject)) {
-        history.push(`/stories/${pickedObject.id._id}/0`);
+
+      if (defined(pickedObject) && pickedObject.id.markerLink) {
+        history.push(pickedObject.id.markerLink);
       }
     }, ScreenSpaceEventType.LEFT_CLICK);
 
