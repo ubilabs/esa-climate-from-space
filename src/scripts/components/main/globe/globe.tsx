@@ -194,7 +194,7 @@ const Globe: FunctionComponent<Props> = ({
   // update mousedown handler
   useEffect(() => {
     if (!viewer) {
-      return;
+      return () => {};
     }
 
     const handler = new ScreenSpaceEventHandler(
