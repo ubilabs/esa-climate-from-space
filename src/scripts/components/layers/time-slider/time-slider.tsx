@@ -102,11 +102,7 @@ const TimeSlider: FunctionComponent = () => {
   );
 
   return (
-    <div
-      className={cx(
-        styles.timeSlider,
-        rangeCompare && styles.timeSliderCompare
-      )}>
+    <div className={styles.timeSlider}>
       {isPlaying && (
         <TimePlayback minTime={combined.min} maxTime={combined.max} />
       )}
