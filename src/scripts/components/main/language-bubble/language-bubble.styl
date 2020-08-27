@@ -1,0 +1,46 @@
+@require '../../../../variables.styl'
+
+.languageBubble
+  position: absolute
+  top: emCalc(50px)
+  right: emCalc(-16px)
+  display: flex
+  flex-direction: column
+  padding: emCalc(16px)
+  width: fit-content
+  height: fit-content
+  border-radius: 4px
+  background-color: $darkGrey4
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2)
+
+.infoBubble:before
+  position: absolute
+  right: emCalc(20px)
+  bottom: 100%
+  border-top-color: inherit
+  border-right: 8px solid transparent
+  border-bottom: 10px solid $darkGrey4
+  border-left: 8px solid transparent
+  content: ''
+
+.language
+  margin: 0
+  color: $textWhite
+  font-size: emCalc(16px)
+  font-family: Arial
+
+.buttons
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  padding-top: emCalc(16px)
+
+.keepLanguage, .changeLanguage
+  color: $textColor
+  text-align: left
+  text-transform: uppercase
+  font-size: emCalc(11px)
+  font-family: NotesEsaBold
+
+.changeLanguage
+  color: $textDefault

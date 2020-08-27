@@ -36,8 +36,8 @@ const App: FunctionComponent = () => (
 );
 
 const TranslatedApp: FunctionComponent = () => {
-  const language = useSelector(languageSelector);
   const markers = useStoryMarkers();
+  const language = useSelector(languageSelector);
 
   return (
     <Router>
