@@ -11,7 +11,7 @@ interface Props {
 
 const LayerInfo: FunctionComponent<Props> = ({layer}) => (
   <div className={styles.layerInfo}>
-    <span className={styles.layerType}>Layertype</span>
+    <span className={styles.layerType}>{layer.type}</span>
     <h1 className={styles.layerTitle}>{layer.name}</h1>
     <div className={styles.description}>
       <ReactMarkdown
