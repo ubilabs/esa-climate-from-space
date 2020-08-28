@@ -21,7 +21,9 @@ import styles from './layer-selector.styl';
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
   const layers = useSelector(layersSelector);
-  const sortedLayers = layers.sort((a, b) => a.name.localeCompare(b.name));
+  const sortedLayers = layers.sort((a, b) =>
+    a.shortName.localeCompare(b.shortName)
+  );
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const showLayerSelector = useSelector(showLayerSelectorSelector);
   const selectedMainLayer = layers.find(

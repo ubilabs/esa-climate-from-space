@@ -45,6 +45,17 @@ steps:
       - "/data/upload/${_LAYER_ID}/*"
       - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/"
 
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    id: 'set-no-cache-on-metadata'
+    entrypoint: 'gsutil'
+    args:
+      - "-m"
+      - "setmeta"
+      - "-r"
+      - "-h"
+      - "Cache-Control: no-cache"
+      - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/metadata.json"
+
 options:
   substitution_option: 'ALLOW_LOOSE'
   diskSizeGb: 50
