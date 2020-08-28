@@ -95,9 +95,11 @@ const DataViewer: FunctionComponent<Props> = ({
     setCurrentView(globalGlobeView);
   }, [globalGlobeView]);
 
-  const showGlobeNavigation = [mainLayerDetails, compareLayerDetails].some(
-    layer => layer && layer.type !== LayerType.Gallery
-  );
+  const showGlobeNavigation =
+    (!mainLayerDetails && !compareLayerDetails) ||
+    [mainLayerDetails, compareLayerDetails].some(
+      layer => layer && layer.type !== LayerType.Gallery
+    );
 
   const getDataWidget = ({
     imageLayer,
@@ -136,22 +138,17 @@ const DataViewer: FunctionComponent<Props> = ({
 
   return (
     <div className={styles.dataViewer}>
-      {mainLayerDetails && (
-        <LayerLegend
-          id={mainLayerDetails.id}
-          values={[mainLayerDetails.maxValue, mainLayerDetails.minValue]}
-          unit={mainLayerDetails.units}
-        />
-      )}
-
-      {compareLayerDetails && (
-        <LayerLegend
-          id={compareLayerDetails.id}
-          values={[compareLayerDetails.maxValue, compareLayerDetails.minValue]}
-          unit={compareLayerDetails.units}
-          isCompare={true}
-        />
-      )}
+      {[mainLayerDetails, compareLayerDetails]
+        .filter((layer): layer is Layer => Boolean(layer))
+        .map(({id, maxValue, minValue, units}, index) => (
+          <LayerLegend
+            key={id}
+            id={id}
+            values={[maxValue, minValue]}
+            unit={units}
+            isCompare={index > 0}
+          />
+        ))}
 
       {getDataWidget({
         imageLayer: mainImageLayer,
