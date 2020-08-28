@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 
-import Globes from '../../main/globes/globes';
+import DataViewer from '../../main/data-viewer/data-viewer';
 import {useStoryParams} from '../../../hooks/use-story-params';
 import StoryContent from '../story-content/story-content';
 import StoryMedia from '../story-media/story-media';
@@ -75,7 +75,7 @@ const Story: FunctionComponent = () => {
 
     return (
       <div className={styles.globeContainer}>
-        <Globes markers={slide.markers} backgroundColor={'#000000'} />
+        <DataViewer markers={slide.markers} backgroundColor={'#000000'} />
         {slide.layerDescription && (
           <LayerDescription layerDescription={slide.layerDescription} />
         )}

@@ -7,14 +7,12 @@ interface Props {
   imageLayer: GlobeImageLayerData | null;
 }
 
-const Gallery: FunctionComponent<Props> = ({imageLayer}) => {
-  return (
-    <div className={styles.gallery}>
-      <div className={styles.galleryItem}>
-        <img className={styles.galleryImage} src={imageLayer?.url} />
-      </div>
+const Gallery: FunctionComponent<Props> = ({imageLayer}) => (
+  <div className={styles.gallery}>
+    <div className={styles.galleryItem}>
+      <img className={styles.galleryImage} src={imageLayer?.url} />
     </div>
-  );
-};
+  </div>
+);
 
 export default Gallery;
