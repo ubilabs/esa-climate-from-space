@@ -10,6 +10,13 @@
   &:hover, &:focus
     background-color: rgba($darkGrey4, 0.5)
 
+    .layerTitle
+      display: block
+      overflow: hidden
+      width: 100%
+      text-overflow: ellipsis
+      white-space: nowrap
+
     .compare
       display: block
 
@@ -33,3 +40,10 @@
 @media screen and (max-width: 480px)
   .compare
     display: flex
+
+  .layerTitle
+    display: block
+    overflow: hidden
+    width: 100%
+    text-overflow: ellipsis
+    white-space: nowrap
