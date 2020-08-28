@@ -10,10 +10,15 @@ import styles from './selected-layer-list-item.styl';
 
 interface Props {
   layer: LayerListItem;
+  isCompareSelected?: boolean;
   onRemove: () => void;
 }
 
-const SelectedLayerListItem: FunctionComponent<Props> = ({layer, onRemove}) => {
+const SelectedLayerListItem: FunctionComponent<Props> = ({
+  layer,
+  isCompareSelected,
+  onRemove
+}) => {
   const layerId = layer.id;
   const layerIconUrl = replaceUrlPlaceholders(config.api.layerIcon, {layerId});
 
@@ -23,14 +28,8 @@ const SelectedLayerListItem: FunctionComponent<Props> = ({layer, onRemove}) => {
         <img src={layerIconUrl} className={styles.layerIcon} />
         <span className={styles.layerTitle}>{layer.shortName}</span>
       </div>
-      {onRemove && (
-        <button
-          className={styles.removeIcon}
-          onClick={() => {
-            if (typeof onRemove === 'function') {
-              onRemove();
-            }
-          }}>
+      {!isCompareSelected && (
+        <button className={styles.removeIcon} onClick={() => onRemove()}>
           <RemoveIcon />
         </button>
       )}
