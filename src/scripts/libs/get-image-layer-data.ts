@@ -4,7 +4,7 @@ import {isElectron, isOffline, getOfflineTilesUrl} from './electron/index';
 
 import {Layer} from '../types/layer';
 import {GlobeImageLayerData} from '../types/globe-image-layer-data';
-import {GlobeLayerType} from '../types/globe-layer-type';
+import {LayerType} from '../types/globe-layer-type';
 
 const NUM_PRELOAD_URLS = 5;
 
@@ -20,10 +20,11 @@ export function getImageLayerData(
     return null;
   }
 
-  let url =
-    layer.type === GlobeLayerType.Tiles
-      ? config.api.layerTiles
-      : config.api.layerImage;
+  let url = {
+    [LayerType.Tiles]: config.api.layerTiles,
+    [LayerType.Image]: config.api.layerImage,
+    [LayerType.Gallery]: config.api.layerGalleryImage
+  }[layer.type];
 
   // use local tiles when offline and in electron
   if (isElectron() && isOffline()) {

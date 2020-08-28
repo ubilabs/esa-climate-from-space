@@ -1,8 +1,8 @@
-import {GlobeLayerType} from './globe-layer-type';
+import {LayerType} from './globe-layer-type';
 
 export interface GlobeImageLayerData {
   id: string;
-  type: GlobeLayerType;
+  type: LayerType;
   url: string;
   nextUrls: string[];
   zoomLevels: number;

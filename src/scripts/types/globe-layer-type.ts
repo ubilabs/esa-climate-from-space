@@ -1,4 +1,5 @@
-export enum GlobeLayerType {
+export enum LayerType {
   Tiles = 'tiles',
-  Image = 'image'
+  Image = 'image',
+  Gallery = 'gallery'
 }
