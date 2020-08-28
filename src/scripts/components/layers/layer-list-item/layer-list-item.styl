@@ -1,5 +1,12 @@
 @require '../../../../variables.styl'
 
+ellipsis()
+  display: block
+  overflow: hidden
+  width: 100%
+  text-overflow: ellipsis
+  white-space: nowrap
+
 .layerItem
   display: flex
   justify-content: space-between
@@ -11,11 +18,7 @@
     background-color: rgba($darkGrey4, 0.5)
 
     .layerTitle
-      display: block
-      overflow: hidden
-      width: 100%
-      text-overflow: ellipsis
-      white-space: nowrap
+      ellipsis()
 
     .compare
       display: block
@@ -42,8 +45,4 @@
     display: flex
 
   .layerTitle
-    display: block
-    overflow: hidden
-    width: 100%
-    text-overflow: ellipsis
-    white-space: nowrap
+    ellipsis()
