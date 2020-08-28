@@ -13,7 +13,7 @@
   background-color: $darkGrey4
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2)
 
-.infoBubble:before
+.languageBubble:before
   position: absolute
   right: emCalc(20px)
   bottom: 100%
@@ -23,8 +23,16 @@
   border-left: 8px solid transparent
   content: ''
 
+.detectedLanguage
+  display: flex
+  align-items: center
+
+  svg
+    fill: $textWhite
+
 .language
   margin: 0
+  padding-left: emCalc(5px)
   color: $textWhite
   font-size: emCalc(16px)
   font-family: Arial
