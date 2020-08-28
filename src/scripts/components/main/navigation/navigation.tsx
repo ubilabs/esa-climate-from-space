@@ -21,7 +21,9 @@ const Navigation: FunctionComponent = () => {
   const [showMenu, setShowMenu] = useState(false);
   const selectedLanguage = useSelector(languageSelector);
   const savedLanguage = localStorage.getItem(config.localStorageLanguageKey);
-  const [showLanguageBubble, setShowLanguageBubble] = useState(!savedLanguage);
+  const [showLanguageBubble, setShowLanguageBubble] = useState<boolean>(
+    !savedLanguage
+  );
 
   return (
     <div className={styles.navigation}>
@@ -48,7 +50,10 @@ const Navigation: FunctionComponent = () => {
       />
       {showLanguageBubble && (
         <LanguageBubble
-          onMenuOpen={() => setShowMenu(true)}
+          onMenuOpen={() => {
+            setShowLanguageBubble(false);
+            setShowMenu(true);
+          }}
           onClose={() => {
             setShowLanguageBubble(false);
             dispatch(setLanguageAction(selectedLanguage));
