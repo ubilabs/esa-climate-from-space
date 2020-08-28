@@ -415,5 +415,13 @@
         "roll": 0
       }
     }
+  },
+  "ozone.ozone_profile": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "numeric"
+    }
   }
 }

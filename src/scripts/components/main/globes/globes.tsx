@@ -14,6 +14,7 @@ import {projectionSelector} from '../../../selectors/globe/projection';
 import {flyToSelector} from '../../../selectors/fly-to';
 import setGlobeViewAction from '../../../actions/set-globe-view';
 import Globe from '../globe/globe';
+import Gallery from '../gallery/gallery';
 import LayerLegend from '../../layers/layer-legend/layer-legend';
 import {getImageLayerData} from '../../../libs/get-image-layer-data';
 import {State} from '../../../reducers';
@@ -23,6 +24,7 @@ import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 
 import {GlobeView} from '../../../types/globe-view';
 import {Marker} from '../../../types/marker-type';
+import {LayerType} from '../../../types/globe-layer-type';
 
 import styles from './globes.styl';
 import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
@@ -104,22 +106,29 @@ const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
           isCompare={true}
         />
       )}
-      <Globe
-        markers={markers}
-        backgroundColor={backgroundColor}
-        active={isMainActive}
-        view={currentView}
-        projectionState={projectionState}
-        imageLayer={mainImageLayer}
-        basemap={mainLayerDetails?.basemap || null}
-        spinning={globeSpinning}
-        flyTo={flyTo}
-        onMouseEnter={() => setIsMainActive(true)}
-        onTouchStart={() => setIsMainActive(true)}
-        onChange={onChangeHandler}
-        onMoveEnd={onMoveEndHandler}
-        onMouseDown={onMouseDownHandler}
-      />
+
+      {mainLayerDetails?.type === LayerType.Gallery && (
+        <Gallery imageLayer={mainImageLayer} />
+      )}
+
+      {mainLayerDetails?.type !== LayerType.Gallery && (
+        <Globe
+          markers={markers}
+          backgroundColor={backgroundColor}
+          active={isMainActive}
+          view={currentView}
+          projectionState={projectionState}
+          imageLayer={mainImageLayer}
+          basemap={mainLayerDetails?.basemap || null}
+          spinning={globeSpinning}
+          flyTo={flyTo}
+          onMouseEnter={() => setIsMainActive(true)}
+          onTouchStart={() => setIsMainActive(true)}
+          onChange={onChangeHandler}
+          onMoveEnd={onMoveEndHandler}
+          onMouseDown={onMouseDownHandler}
+        />
+      )}
 
       {compareLayer && (
         <Globe
