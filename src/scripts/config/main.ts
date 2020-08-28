@@ -63,7 +63,7 @@ export default {
     layerTiles: `${baseUrlTiles}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
     layerImage: `${baseUrlTiles}/{id}/tiles/{timeIndex}/full.png`,
     layerOfflinePackage: `${baseUrlTiles}/{id}/package.zip`,
-    layericon: `${baseUrlStorage}/layers/icons/{layerId}.png`,
+    layerIcon: `${baseUrlStorage}/layers/icons/{layerId}.png`,
     storyOfflinePackage: `${baseUrlStorage}/stories/{id}/package.zip`,
     storyMediaBase: `${baseUrlStorage}/stories/{id}`,
     stories: `${baseUrlStorage}/stories/stories-{lang}.json`,

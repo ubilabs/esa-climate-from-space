@@ -15,7 +15,7 @@ interface Props {
 
 const SelectedLayerListItem: FunctionComponent<Props> = ({layer, onRemove}) => {
   const layerId = layer.id;
-  const layerIconUrl = replaceUrlPlaceholders(config.api.layericon, {layerId});
+  const layerIconUrl = replaceUrlPlaceholders(config.api.layerIcon, {layerId});
 
   return (
     <div className={styles.selectedLayerListItem}>
