@@ -22,7 +22,8 @@ const AboutProject: FunctionComponent = () => {
           'image',
           'imageReference',
           'list',
-          'listItem'
+          'listItem',
+          'link'
         ]}
       />
     </div>
