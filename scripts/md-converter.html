@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Mark Down Converter</title>
+        <style>
+            input, textarea {
+                width: 80%;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Prepare Mark Down for config files by stringifying multiline content</h1>
+        Markdown:<br>
+        <textarea id="rawInput" cols="100" rows="30"></textarea><br>
+        <br>
+        Stringified:<br>
+        <input id="processedContent"/><br>
+        (Clicking or giving focus will copy into clipboard.)
+        <script>
+            document.getElementById('rawInput').value = '# Hello\nworld!';
+            document.getElementById('rawInput').focus();
+            document.getElementById('rawInput').select();
+
+            function copyToClipboard(){
+                document.getElementById('processedContent').select();
+                document.execCommand('copy');
+                console.log('copied!');
+            }
+
+            document.getElementById('rawInput').addEventListener('keyup', ()=> {
+                const rawContent = document.getElementById('rawInput').value;
+                document.getElementById('processedContent').value = JSON.stringify(rawContent).slice(1, -1).trim();
+            });
+            document.getElementById('processedContent').addEventListener('click', copyToClipboard);
+            document.getElementById('processedContent').addEventListener('focus', copyToClipboard);
+        </script>
+    </body>
+</html>

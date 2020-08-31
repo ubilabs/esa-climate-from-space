@@ -1,5 +1,5 @@
 import React, {FunctionComponent} from 'react';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown/with-html';
 
 import {LayerListItem} from '../../../types/layer-list';
 
@@ -17,6 +17,7 @@ const LayerInfo: FunctionComponent<Props> = ({layer}) => (
       <ReactMarkdown
         source={layer.description}
         linkTarget="_blank"
+        escapeHtml={false}
         allowedTypes={[
           'heading',
           'text',
@@ -26,7 +27,8 @@ const LayerInfo: FunctionComponent<Props> = ({layer}) => (
           'emphasis',
           'list',
           'listItem',
-          'link'
+          'link',
+          'html'
         ]}
       />
     </div>

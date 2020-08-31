@@ -24,7 +24,8 @@
     "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long"
+      "month": "long",
+      "day": "numeric"
     },
     "flyTo": {
       "position": {
@@ -226,7 +227,8 @@
     "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
-      "month": "long"
+      "month": "long",
+      "day": "numeric"
     },
     "flyTo": {
       "position": {
@@ -246,7 +248,8 @@
     "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
-      "month": "long"
+      "month": "long",
+      "day": "numeric"
     },
     "flyTo": {
       "position": {
