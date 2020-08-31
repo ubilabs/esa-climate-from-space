@@ -12,25 +12,25 @@ import {globeViewSelector} from '../../../selectors/globe/view';
 import {timeSelector} from '../../../selectors/globe/time';
 import {projectionSelector} from '../../../selectors/globe/projection';
 import {flyToSelector} from '../../../selectors/fly-to';
-import setGlobeViewAction from '../../../actions/set-globe-view';
-import Globe from '../globe/globe';
-import Gallery from '../gallery/gallery';
-import LayerLegend from '../../layers/layer-legend/layer-legend';
-import {getImageLayerData} from '../../../libs/get-image-layer-data';
-import {State} from '../../../reducers';
 import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 import {globeSpinningSelector} from '../../../selectors/globe/spinning';
+import setGlobeViewAction from '../../../actions/set-globe-view';
+import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
+import {State} from '../../../reducers';
+import Globe from '../globe/globe';
+import Gallery from '../gallery/gallery';
+import GlobeNavigation from '../globe-navigation/globe-navigation';
+import LayerLegend from '../../layers/layer-legend/layer-legend';
+import {getImageLayerData} from '../../../libs/get-image-layer-data';
 
 import {GlobeView} from '../../../types/globe-view';
 import {Marker} from '../../../types/marker-type';
 import {LayerType} from '../../../types/globe-layer-type';
-
-import styles from './data-viewer.styl';
-import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
-import GlobeNavigation from '../globe-navigation/globe-navigation';
 import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 import {Layer} from '../../../types/layer';
+
+import styles from './data-viewer.styl';
 
 interface Props {
   backgroundColor: string;
@@ -95,6 +95,10 @@ const DataViewer: FunctionComponent<Props> = ({
     setCurrentView(globalGlobeView);
   }, [globalGlobeView]);
 
+  // Only show the globe navigation when a globe is shown.
+  // Either when no data layer is selected and only basemap is shown
+  // or when one of the selected layers is a globe. Do not show globe navigation
+  // when the only visible layer is of type "gallery"
   const showGlobeNavigation =
     (!mainLayerDetails && !compareLayerDetails) ||
     [mainLayerDetails, compareLayerDetails].some(
