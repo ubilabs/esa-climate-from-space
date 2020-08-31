@@ -32,6 +32,7 @@ interface Props {
   markers?: Marker[];
 }
 
+// eslint-disable-next-line complexity
 const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
   const dispatch = useDispatch();
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
@@ -87,19 +88,28 @@ const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
     setCurrentView(globalGlobeView);
   }, [globalGlobeView]);
 
+  const mainLegendValues = mainLayerDetails?.legendValues || [
+    mainLayerDetails?.maxValue || 0,
+    mainLayerDetails?.minValue || 0
+  ];
+  const compareLegendValues = compareLayerDetails?.legendValues || [
+    compareLayerDetails?.maxValue || 0,
+    compareLayerDetails?.minValue || 0
+  ];
+
   return (
     <div className={styles.globes}>
       {mainLayerDetails && (
         <LayerLegend
           id={mainLayerDetails.id}
-          values={[mainLayerDetails.maxValue, mainLayerDetails.minValue]}
+          values={mainLegendValues}
           unit={mainLayerDetails.units}
         />
       )}
       {compareLayerDetails && (
         <LayerLegend
           id={compareLayerDetails.id}
-          values={[compareLayerDetails.maxValue, compareLayerDetails.minValue]}
+          values={compareLegendValues}
           unit={compareLayerDetails.units}
           isCompare={true}
         />
