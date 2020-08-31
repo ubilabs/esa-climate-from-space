@@ -9,7 +9,7 @@ import styles from './layer-legend.styl';
 
 interface Props {
   id: string;
-  values: number[];
+  values: (number | string)[];
   unit: string;
   isCompare?: boolean;
 }
@@ -30,7 +30,13 @@ const LayerLegend: FunctionComponent<Props> = ({
     <div className={styles.values}>
       {values.map((value, index) => (
         <div className={styles.value} key={value}>
-          <FormattedNumber value={value} /> {index === 0 ? unit : ''}
+          {typeof value === 'string' ? (
+            value
+          ) : (
+            <span>
+              <FormattedNumber value={value} /> {index === 0 ? unit : ''}
+            </span>
+          )}
         </div>
       ))}
     </div>
