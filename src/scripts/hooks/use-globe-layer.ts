@@ -8,7 +8,7 @@ import {
 } from 'cesium';
 
 import {GlobeImageLayerData} from '../types/globe-image-layer-data';
-import {GlobeLayerType} from '../types/globe-layer-type';
+import {LayerType} from '../types/globe-layer-type';
 
 // update layer image when url changes
 export function useGlobeLayer(
@@ -53,12 +53,12 @@ export function useGlobeLayer(
           layersToRemove.forEach(layer => layers.remove(layer, true));
 
           // preload next images
-          if (imageLayer.type === GlobeLayerType.Image) {
+          if (imageLayer.type === LayerType.Image) {
             preloadNext(imageLayer.nextUrls);
           }
         };
 
-        if (imageLayer.type === GlobeLayerType.Tiles) {
+        if (imageLayer.type === LayerType.Tiles) {
           setTimeout(cleanAndCache, 500);
         } else {
           requestAnimationFrame(cleanAndCache);
@@ -72,7 +72,7 @@ export function useGlobeLayer(
 }
 
 function getImageProvider(imageLayer: GlobeImageLayerData) {
-  return imageLayer.type === GlobeLayerType.Tiles
+  return imageLayer.type === LayerType.Tiles
     ? new UrlTemplateImageryProvider({
         url: imageLayer.url,
         tilingScheme: new GeographicTilingScheme(),

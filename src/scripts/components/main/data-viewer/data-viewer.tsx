@@ -12,28 +12,35 @@ import {globeViewSelector} from '../../../selectors/globe/view';
 import {timeSelector} from '../../../selectors/globe/time';
 import {projectionSelector} from '../../../selectors/globe/projection';
 import {flyToSelector} from '../../../selectors/fly-to';
-import setGlobeViewAction from '../../../actions/set-globe-view';
-import Globe from '../globe/globe';
-import LayerLegend from '../../layers/layer-legend/layer-legend';
-import {getImageLayerData} from '../../../libs/get-image-layer-data';
-import {State} from '../../../reducers';
 import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 import {globeSpinningSelector} from '../../../selectors/globe/spinning';
+import setGlobeViewAction from '../../../actions/set-globe-view';
+import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
+import {State} from '../../../reducers';
+import Globe from '../globe/globe';
+import Gallery from '../gallery/gallery';
+import GlobeNavigation from '../globe-navigation/globe-navigation';
+import LayerLegend from '../../layers/layer-legend/layer-legend';
+import {getImageLayerData} from '../../../libs/get-image-layer-data';
 
 import {GlobeView} from '../../../types/globe-view';
 import {Marker} from '../../../types/marker-type';
+import {LayerType} from '../../../types/globe-layer-type';
+import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
+import {Layer} from '../../../types/layer';
 
-import styles from './globes.styl';
-import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
+import styles from './data-viewer.styl';
 
 interface Props {
   backgroundColor: string;
   markers?: Marker[];
 }
 
-// eslint-disable-next-line complexity
-const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
+const DataViewer: FunctionComponent<Props> = ({
+  backgroundColor,
+  markers = []
+}) => {
   const dispatch = useDispatch();
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
@@ -88,68 +95,83 @@ const Globes: FunctionComponent<Props> = ({backgroundColor, markers = []}) => {
     setCurrentView(globalGlobeView);
   }, [globalGlobeView]);
 
-  const mainLegendValues = mainLayerDetails?.legendValues || [
-    mainLayerDetails?.maxValue || 0,
-    mainLayerDetails?.minValue || 0
-  ];
-  const compareLegendValues = compareLayerDetails?.legendValues || [
-    compareLayerDetails?.maxValue || 0,
-    compareLayerDetails?.minValue || 0
-  ];
+  // Only show the globe navigation when a globe is shown.
+  // Either when no data layer is selected and only basemap is shown
+  // or when one of the selected layers is a globe. Do not show globe navigation
+  // when the only visible layer is of type "gallery"
+  const showGlobeNavigation =
+    (!mainLayerDetails && !compareLayerDetails) ||
+    [mainLayerDetails, compareLayerDetails].some(
+      layer => layer && layer.type !== LayerType.Gallery
+    );
 
-  return (
-    <div className={styles.globes}>
-      {mainLayerDetails && (
-        <LayerLegend
-          id={mainLayerDetails.id}
-          values={mainLegendValues}
-          unit={mainLayerDetails.units}
-        />
-      )}
-      {compareLayerDetails && (
-        <LayerLegend
-          id={compareLayerDetails.id}
-          values={compareLegendValues}
-          unit={compareLayerDetails.units}
-          isCompare={true}
-        />
-      )}
+  const getDataWidget = ({
+    imageLayer,
+    layerDetails,
+    active,
+    action
+  }: {
+    imageLayer: GlobeImageLayerData | null;
+    layerDetails: Layer | null;
+    active: boolean;
+    action: () => void;
+  }) => {
+    if (imageLayer?.type === LayerType.Gallery) {
+      return <Gallery imageLayer={imageLayer} />;
+    }
+
+    return (
       <Globe
         markers={markers}
         backgroundColor={backgroundColor}
-        active={isMainActive}
+        active={active}
         view={currentView}
         projectionState={projectionState}
-        imageLayer={mainImageLayer}
-        basemap={mainLayerDetails?.basemap || null}
+        imageLayer={imageLayer}
+        basemap={layerDetails?.basemap || null}
         spinning={globeSpinning}
         flyTo={flyTo}
-        onMouseEnter={() => setIsMainActive(true)}
-        onTouchStart={() => setIsMainActive(true)}
+        onMouseEnter={action}
+        onTouchStart={action}
         onChange={onChangeHandler}
         onMoveEnd={onMoveEndHandler}
         onMouseDown={onMouseDownHandler}
       />
+    );
+  };
 
-      {compareLayer && (
-        <Globe
-          backgroundColor={backgroundColor}
-          active={!isMainActive}
-          view={currentView}
-          projectionState={projectionState}
-          imageLayer={compareImageLayer}
-          basemap={compareLayerDetails?.basemap || null}
-          spinning={globeSpinning}
-          flyTo={flyTo}
-          onMouseEnter={() => setIsMainActive(false)}
-          onTouchStart={() => setIsMainActive(false)}
-          onChange={onChangeHandler}
-          onMoveEnd={onMoveEndHandler}
-          onMouseDown={onMouseDownHandler}
-        />
-      )}
+  return (
+    <div className={styles.dataViewer}>
+      {[mainLayerDetails, compareLayerDetails]
+        .filter((layer): layer is Layer => Boolean(layer))
+        .map(({id, maxValue, minValue, units, legendValues}, index) => (
+          <LayerLegend
+            key={id}
+            id={id}
+            values={legendValues || [maxValue || 0, minValue || 0]}
+            unit={units}
+            isCompare={index > 0}
+          />
+        ))}
+
+      {getDataWidget({
+        imageLayer: mainImageLayer,
+        layerDetails: mainLayerDetails,
+        active: isMainActive,
+        action: () => setIsMainActive(true)
+      })}
+
+      {compareLayer &&
+        getDataWidget({
+          imageLayer: compareImageLayer,
+          layerDetails: compareLayerDetails,
+          active: !isMainActive,
+          action: () => setIsMainActive(false)
+        })}
+
+      {showGlobeNavigation && <GlobeNavigation />}
     </div>
   );
 };
 
-export default Globes;
+export default DataViewer;
