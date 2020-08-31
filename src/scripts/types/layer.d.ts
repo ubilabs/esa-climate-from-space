@@ -20,4 +20,5 @@ export interface Layer {
   minValue: number;
   maxValue: number;
   units: string;
+  legendValues: string[];
 }
