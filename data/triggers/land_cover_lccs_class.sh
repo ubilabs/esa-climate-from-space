@@ -21,9 +21,6 @@ if [ ! -f ./package.json ]; then
     exit 1
 fi
 
-# Note! Using resolution of "-ts 64800 32400 \" in gdalwarp command to
-# save time
-
 gcloud builds submit --config ./ci/cloudbuild-tiles-reproject.yaml \
   --machine-type=$MACHINE_TYPE \
   --timeout=$TIMEOUT \

@@ -22,7 +22,7 @@ export function parseUrl(): UrlHashState | null {
 
   const splitted = globeParam.split(char);
 
-  if (splitted.length !== 10) {
+  if (splitted.length !== 11) {
     return null;
   }
 
@@ -37,14 +37,14 @@ export function parseUrl(): UrlHashState | null {
   }
 
   // globe view values
-  const values = splitted.slice(1, 8).map(str => parseFloat(str));
+  const values = splitted.slice(1, 9).map(str => parseFloat(str));
 
   if (values.some(num => isNaN(num))) {
     return null;
   }
 
   // selected main and compare layer ids
-  const layerIds = splitted.slice(8, 10).map(id => id || null);
+  const layerIds = splitted.slice(9, 11).map(id => id || null);
 
   return {
     globeState: {
@@ -64,7 +64,8 @@ export function parseUrl(): UrlHashState | null {
         projection: GlobeProjection.Sphere,
         morphTime: 2
       },
-      time: values[6]
+      time: values[6],
+      spinning: Boolean(Number(values[7]))
     },
     layerIds: {
       mainId: layerIds[0],
@@ -78,11 +79,20 @@ export function getParamString(
   mainId: string | null,
   compareId: string | null
 ): string | null {
-  const {view, projectionState, time} = globeState;
+  const {view, projectionState, time, spinning} = globeState;
   const {position, orientation} = view;
   const {longitude, latitude, height} = position;
   const {heading, pitch, roll} = orientation;
-  const values = [longitude, latitude, height, heading, pitch, roll, time];
+  const values = [
+    longitude,
+    latitude,
+    height,
+    heading,
+    pitch,
+    roll,
+    time,
+    spinning ? 1 : 0
+  ];
 
   if (values.some(num => isNaN(num))) {
     return null;

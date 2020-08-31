@@ -1,6 +1,20 @@
-import React, {FunctionComponent, useRef, useEffect, useState} from 'react';
+import React, {
+  FunctionComponent,
+  useRef,
+  useEffect,
+  useState,
+  useCallback
+} from 'react';
 import 'cesium/Build/Cesium/Widgets/widgets.css';
-import {Viewer, SceneMode, Color, TileMapServiceImageryProvider} from 'cesium';
+import {
+  Cartesian3,
+  Color,
+  SceneMode,
+  ScreenSpaceEventHandler,
+  ScreenSpaceEventType,
+  TileMapServiceImageryProvider,
+  Viewer
+} from 'cesium';
 
 import {
   getGlobeView,
@@ -32,6 +46,7 @@ const cesiumOptions = {
   animation: false,
   timeline: false,
   baseLayerPicker: false,
+  selectionIndicator: false,
   contextOptions: {
     webgl: {
       preserveDrawingBuffer: true
@@ -45,6 +60,7 @@ interface Props {
   projectionState: GlobeProjectionState;
   imageLayer: GlobeImageLayerData | null;
   basemap: BasemapId | null;
+  spinning: boolean;
   flyTo: GlobeView | null;
   markers?: Marker[];
   backgroundColor: string;
@@ -52,6 +68,7 @@ interface Props {
   onTouchStart: () => void;
   onChange: (view: GlobeView) => void;
   onMoveEnd: (view: GlobeView) => void;
+  onMouseDown: () => void;
 }
 
 // keep a reference to the current basemap layer
@@ -72,6 +89,7 @@ const Globe: FunctionComponent<Props> = ({
   projectionState,
   imageLayer,
   basemap,
+  spinning,
   active,
   flyTo,
   markers = [],
@@ -79,14 +97,27 @@ const Globe: FunctionComponent<Props> = ({
   onMouseEnter,
   onTouchStart,
   onChange,
-  onMoveEnd
+  onMoveEnd,
+  onMouseDown
 }) => {
   const [viewer, setViewer] = useState<Viewer | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+  const lastNowRef = useRef<number | null>(null);
 
   // make latest "active" value always accessible in camera change handler
   const isActiveRef = useRef<boolean>(active);
   isActiveRef.current = active;
+
+  const spin = useCallback(() => {
+    if (!viewer) {
+      return;
+    }
+    const now = Date.now();
+    const spinRate = 0.08;
+    const delta = (now - (lastNowRef?.current ?? 0)) / 1000;
+    lastNowRef.current = now;
+    viewer.scene.camera.rotate(Cartesian3.UNIT_Z, spinRate * delta);
+  }, [viewer]);
 
   // init cesium viewer
   useEffect(() => {
@@ -147,7 +178,6 @@ const Globe: FunctionComponent<Props> = ({
       // @ts-ignore
       scopedViewer.scene.globe.showGroundAtmosphere = false;
     }
-
     // save viewer reference
     setViewer(scopedViewer);
 
@@ -175,6 +205,22 @@ const Globe: FunctionComponent<Props> = ({
     // we use 'projection' and 'view' here only once on mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref, onChange, onMoveEnd]);
+
+  // update mousedown handler
+  useEffect(() => {
+    if (!viewer) {
+      return () => {};
+    }
+
+    const handler = new ScreenSpaceEventHandler(
+      viewer.scene.canvas as HTMLCanvasElement
+    );
+    handler.setInputAction(onMouseDown, ScreenSpaceEventType.LEFT_DOWN);
+
+    return () => {
+      handler.destroy();
+    };
+  }, [viewer, onMouseDown]);
 
   // switch projections
   useEffect(() => {
@@ -240,6 +286,23 @@ const Globe: FunctionComponent<Props> = ({
 
     flyToGlobeView(viewer, flyTo);
   }, [viewer, flyTo]);
+
+  // update spinning
+  useEffect(() => {
+    if (!viewer) {
+      return;
+    }
+
+    if (spinning) {
+      setTimeout(() => {
+        lastNowRef.current = Date.now();
+
+        viewer.clock.onTick.addEventListener(spin);
+      }, projectionState.morphTime * 1000);
+    } else {
+      viewer.clock.onTick.removeEventListener(spin);
+    }
+  }, [spinning, viewer, projectionState.morphTime, spin]);
 
   useMarkers(viewer, markers);
 
