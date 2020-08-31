@@ -27,6 +27,7 @@
       "month": "long",
       "day": "numeric"
     },
+    "legendValues": ["37 °C", "-3"],
     "flyTo": {
       "position": {
         "height": 15000000.06,
