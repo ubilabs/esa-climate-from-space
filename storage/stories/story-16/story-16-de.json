@@ -3,66 +3,109 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Deutsch Is Ozone Good or Bad?\r\n\r\nThe ozone layer protects life on Earth from ultraviolet solar radiation, but ozone is also a powerful greenhouse gas and at ground level is extremely hazardous to health.",
-      "shortText": "# Is Ozone Good or Bad?\r\n\r\n(placeholder)",
-      "images": ["assets/ozone.jpg"]
+      "text": "# Planetary Heat Pumps\r\n\r\nThe ocean and the atmosphere both redistribute heat energy around the planet, but the oceans have a much higher capacity to store heat, making them a more stable indicator of climate trends.",
+      "shortText": "# Planetary Heat Pumps\r\n\r\n(placeholder)",
+      "images": ["assets/sst.jpg"]
     },
     {
       "type": "image",
-      "text": "# How Low Can You Go? \r\n\r\nIn 1979, engineers received the first data from a new instrument on an American research satellite. The sensor measured so little ozone in the atmosphere over Antarctica that the readings were discounted as instrument error. But not long afterwards, a team of British researchers recorded similarly low amounts of ozone from their Antarctic research station. \r\n\r\nIt was only when the ground-based results were published in the scientific literature that the low values in the satellite data were taken seriously. They showed a wide area with very low amounts of ozone developing every spring over the South Pole. This ‘hole’ in Earth’s protective ozone layer quickly gained the attention of the media and policy-makers. And, with their data verified, scientists gained confidence in the emerging technology of Earth observation from space.\r\n\r\n## Protective Layer \r\n\r\nThe layer of ozone high up in the stratosphere is our main defence against the Sun’s ultraviolet (UV) radiation. Without it we’d suffer sunburn after a few minutes outdoors, followed by eye damage and skin cancer after prolonged exposure. Unfiltered, UV light would have a catastrophic effect on all life on Earth.    \r\n\r\n![The Sun in visible and UV light](assets/story8_02.png) \r\n_The Sun in visible (left) and ultraviolet light (right), as viewed by the SOHO satellite on February 3, 2002. (ESA/NASA)_\r\n\r\nOzone is also a powerful greenhouse gas. Change in the distribution of ozone is the second largest human impact on the climate, after the increase in carbon dioxide. But, while ozone _loss_ has been the concern in the stratosphere, ozone has been _increasing_ at ground level. Here, ozone associated with transport and industrial pollution is a hazard to human health. Whether ozone is good or bad for you depends on where you find it.",
-      "shortText": "# How Low Can You Go?\r\n\r\n(placeholder)",
-      "images": ["assets/ozone_large_11.jpg", "assets/ozone_large_14.jpg"]
+      "text": "## High Capacity \r\n\r\nGo for a swim in the sea on midsummers day and the water may be surprisingly chilly. Although the sun is at its highest point in the sky and there are more hours of sunlight than on any other day of the year, the sea does not reach its maximum temperature until two or three months later. This lag shows that the sea has a high heat capacity – it takes a lot of energy to change its temperature, so it is slow to heat up and slow to cool down.\r\n \r\nThis makes the sea incredibly good at storing heat. So good, that just the top three metres of the ocean contains as much heat as the entire atmosphere. The ocean’s capacity to accumulate, transport and slowly release the energy it receives from the Sun is one of the key regulators of weather and climate on our planet.",
+      "shortText": "# High Capacity\r\n\r\n(placeholder)",
+      "images": ["assets/sst_large_01.jpg"],
+      "imageCaptions": [
+        "The top three metres of the sea contain as much heat as the entire atmosphere. (christianvizl.com)"
+      ]
     },
     {
       "type": "globe",
-      "text": "# Ozone Depletion \r\n\r\nAtmospheric sampling from balloons and aircraft identified the causes of ozone depletion as man-made gases, particularly the chlorofluorocarbons (CFCs) used as a propellant in aerosol sprays, fire extinguishers and pesticides, and as a coolant in refrigerators and air conditioners. Most of these gases are harmless for human beings, but once they reach the stratosphere they are hit by solar radiation that changes their molecular structure, releasing atoms of chlorine. \r\n\r\n![Sources of stratospheric chlorine graph](assets/story8_01.png) \r\n_Sources of stratospheric chlorine._\r\n\r\nA single atom of chlorine can split apart a large number of ozone molecules. Although ozone depletion is a global process, atmospheric conditions including extremely low temperatures, stratospheric cloud formation and the polar vortex concentrate it in the springtime in the polar regions, particularly over Antarctica. \r\n\r\n![Chlorine in ozone depletion diagram](assets/ozone_large_03a.png) \r\n_The role of chlorine in ozone depletion._\r\n\r\nIn 1987 severe limits on CFC emissions were agreed at an intergovernmental conference in Montreal. The wide adoption of the Montreal Protocol and the identification of safer alternatives means that CFCs have largely been phased out of use, and the ozone layer is slowly recovering. It is a good example of international cooperation to address a threat to the global environment. But CFCs have a very long lifetime in the atmosphere, and stratospheric ozone is not expected to return to 1980 levels until 2030-2060.",
-      "shortText": "# Ozone Depletion \r\n\r\n(placeholder)",
+      "text": "## Earth’s Heat Pumps \r\n\r\nThe Equator receives much more energy from the Sun than the polar regions. This energy is then redistributed around the world by circulation patterns in the oceans and atmosphere. Ocean currents are driven by the rotation of the Earth, surface winds and differences in water density due to salinity and temperature variation. Warm currents such as the Gulf Stream bring heat from the Equator and the tropics to higher latitudes. This poleward transport of heat is responsible for the mild climate of western Europe.\r\n\r\nThe interactive globe on the left shows the Gulf Stream carrying warm water up the east coast of North America and across the Atlantic. In the Pacific, the Kuroshio Current warms the eastern shore of Japan, while a cold Equatorial current can usually be seen extending westwards from South America. Ocean circulation is generally clockwise in the northern hemisphere and anti-clockwise in the southern hemisphere.\r\n\r\n![SST map from climate model](assets/sst_large_18a.jpg) \r\n_Sea surface temperature map for the Atlantic coast of Europe and the western Mediterranean Sea for 28 June 2010, from a climate model that includes satellite observations. (GMES-MyOcean)_",
+      "shortText": "# Earth's Heat Pumps\r\n\r\n(placeholder)",
       "flyTo": {
         "position": {
-          "longitude": 4.63,
-          "latitude": 20.19,
-          "height": 25002676
+          "longitude": -41.64,
+          "latitude": 34.93,
+          "height": 25009995.54
         },
         "orientation": {
           "heading": 360,
-          "pitch": -89.99,
+          "pitch": -89.82,
           "roll": 0
         }
       },
       "layer": [
         {
-          "id": "cloud.cfc",
-          "timestamp": "2020-07-14T06:37:39.657Z"
+          "id": "sst.analysed_sst",
+          "timestamp": "2020-08-03T22:13:30.807Z"
         }
       ]
     },
     {
       "type": "video",
-      "text": "# Ozone and Climate \r\n\r\nOzone and the climate are closely connected since ozone is a powerful greenhouse gas. By absorbing ultraviolet radiation it warms the surrounding atmosphere, so ozone loss has cooled the stratosphere. This can influence atmospheric circulation patterns, such as shifting the position of the jet stream. Beneath the ozone hole, stronger winds blowing off Antarctica may be partly responsible for the observed increase in Southern Ocean sea ice. \r\n\r\nBut stratospheric ozone depletion lets more solar energy through to the troposphere below. Here, ground-level ozone and other greenhouse gases absorb that energy. So ozone changes are pulling the temperature in opposite directions in the stratosphere and the troposphere. The overall effect has been a warming of the atmosphere.",
-      "shortText": "# Ozone and Climate \r\n\r\n(placeholder)",
-      "videoId": "CRJycXv0zHo"
+      "text": "## Ocean-Atmosphere Interactions\r\n\r\nThe oceans and the atmosphere transport about the same amount of heat towards the poles, but the atmospheric circulation is itself partly driven by the energy exchanged during the evaporation of ocean water and its precipitation as rain. This makes the sea an important regulator of the climate and the temperature of its surface a key measurement for climate scientists.\r\n\r\nHigher sea surface temperatures allow more evaporation, giving more atmospheric water vapour, with the potential for more clouds and more rain. In the western Mediterranean, warmer sea water is a key factor in the sudden rainstorms and flash floods that afflict the coasts of France, Italy and Spain in late summer.\r\n\r\nOn a larger scale, high water temperatures in tropical oceans power extreme weather events such as hurricanes. The energy exchange between ocean and atmosphere during these events is revealed by a dip in the sea surface temperature in the wake of large hurricanes. \r\n\r\n![Hurricane Dorian, September 2019](assets/story16-04.jpg) \r\n_Hurricane Dorian bearing down on the coast of Florida on 2 September 2019, after devastating the Bahamas the previous day. Dorian was a Category 5 hurricane and the most powerful storm ever recorded in the open Atlantic. (Copernicus Sentinel-3 data, processed by ESA)_\r\n\r\n## Climate Indicators\r\nWhile the atmosphere can quickly move energy around the planet in weather systems, the ocean’s much greater capacity to store heat makes it a more stable indicator of longer-term climate trends. The rise in global average air temperature slowed down in the first decade of this century, causing some to question global warming, but the slowdown has proved temporary, with air temperature rising quickly again since 2012. The temperature of the oceans continued to rise throughout.",
+      "shortText": "# Ocean-Atmosphere Interactions \r\n\r\n(placeholder)",
+      "videoId": "NQOHggR2Tcs"
     },
     {
-      "type": "image",
-      "text": "# Ground-level Ozone \r\n\r\nAlthough most ozone is found in the stratosphere – above about 15km in altitude – some is present lower down in the troposphere. Here it is formed when light interacts with combustion by-products from cars and industry, mainly nitrogen oxides (NOx) and volatile organic compounds (VOCs). At ground level, ozone is harmful to human health, causing breathing difficulties that contribute to about half a million premature deaths every year. It also has a detrimental impact on vegetation growth, reducing its ability to absorb carbon dioxide, leading to crop losses valued at tens of billions of euros per year.\r\n\r\nAs with stratospheric ozone, regulations have been introduced to limit the damage. Newly-manufactured vehicles must meet internationally-agreed emission controls. The use of unleaded petrol and catalytic converters has removed a lot of the ozone-forming pollutants from car exhausts over recent decades. Similar technology is applied to factory and power station smokestacks, while simpler steps like planting trees in urban areas can also help soak up ground-level ozone.",
-      "shortText": "# Ground-level Ozone \r\n\r\n(placeholder)",
-      "images": ["assets/story8_03.jpg"],
-      "imageCaptions": [
-        "Nitrogen dioxide over Europe in January 2020 from the TROPOMI instrument on Sentinel-5P."
+      "type": "globe",
+      "text": "## Fisherman’s Friend\r\n\r\nSatellites using infrared cameras can measure the ocean temperature to within a few tenths of a degree Celsius. Maps of sea surface temperature (SST) show not only warm and cold currents, but also where deep cold water is upwelling to the surface, bringing with it the nutrients that support the world’s largest fisheries. Modern fishing fleets use SST maps from satellites to help find and follow fish on a day-to-day basis.\r\n\r\nThe data viewer on the right shows a comparison between SST and ocean chlorophyll, a measure of the abundance of phytoplankton derived from the colour of the ocean. High chlorophyll concentrations are associated with areas of cold water upwelling off the coasts of Peru, Argentina and Namibia. Cold, deep water rises when the surface water is pushed offshore by prevailing winds, bringing with it nutrients on which the plankton thrive. \r\n\r\n![Ocean temperature variation with depth](assets/sst_large_08.png) \r\n_Cross-section through the North Atlantic showing ocean temperature variation across the surface and with depth. Satellites can only measure the skin temperature of the top layer, much less than a millimetre thick. (Planetary Visions)_\r\n\r\nThe same plankton that are the base of the oceanic food chain – phytoplankton – also play a key role in the climate by absorbing carbon dioxide by photosynthesis, just as plants do on land. So ocean colour is also a key climate variable.\r\n\r\nOf course, if water is welling up in some places, it must be sinking down in others…",
+      "shortText": "# Fisherman’s Friend \r\n\r\n(placeholder)",
+      "flyTo": {
+        "position": {
+          "longitude": -30.74,
+          "latitude": 23.32,
+          "height": 15145050.29
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.86,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "sst.analysed_sst",
+          "timestamp": "2002-05-12T00:00:00.000Z"
+        },
+        {
+          "id": "oc.chlor_a",
+          "timestamp": "2002-05-12T00:00:00.000Z"
+        }
       ]
     },
     {
-      "type": "image",
-      "text": "# Ozone from Space \r\n\r\nSatellite observations are essential to track ozone distribution across the globe and at different levels in the atmosphere. They allow us to monitor the recovery of the ozone layer and calculate a UV exposure index as part of our daily weather forecasts. They also deepen our knowledge of the long-term evolution of atmospheric ozone and our understanding of how it affects the climate, and how it might respond to climate change. \r\n\r\nDifferent observation techniques allow us to distinguish between the “good” ozone in the stratosphere and the “bad” ozone in the troposphere. Satellites looking straight down produce maps of *total ozone* – the total amount of ozone in a column going from the surface to the top of the atmosphere. Total ozone is a good measure of stratospheric ozone, which accounts for about 90% of the total ozone column.  \r\n\r\n![Ozone profile](assets/ozone_large_15.jpg) \r\n_Ozone profiles show the vertical distribution of ozone through the atmosphere._\r\n\r\nBy looking sideways into the atmosphere, satellites can also measure the *ozone profile* – the vertical distribution of ozone from sea level up to about 50 km high. Further information is obtained by seeing how light is absorbed by different chemicals in the atmosphere when looking towards a light source – the Sun or the Moon.",
-      "shortText": "# Ozone from Space \r\n\r\n(placeholder)",
-      "images": ["assets/aerosol_large_10.jpg"],
-      "imageCaptions": ["Observing total ozone and ozone profile from space."]
+      "type": "globe",
+      "text": "## The Ocean’s Ups and Downs\r\n\r\nWhile upwelling is often driven by surface winds, the sinking of water into the deep ocean is largely driven by temperature and salinity, which control the density of the water. Where the North Atlantic meets cold Arctic air masses, the ocean is rapidly cooled and the formation of sea ice leaves an excess of salt behind in the water. Similar processes are at work in the Southern Ocean around Antarctica.\r\n\r\nThe interactive globe on the right shows the salinity of the ocean’s surface. Low salinity values can be seen where major rivers discharge freshwater into the ocean. The highest values show where salt is left behind in the ocean during evaporation – in the almost enclosed Mediterranean and Red Seas – or during sea ice formation, such as in the Greenland Sea.\r\n\r\n![Thermohaline circulation map](assets/story16-03.png) \r\n_The thermohaline circulation takes cold, dense water (blue) deep into the ocean and around the world. This ‘bottom water’ eventually loses its identity through mixing and warming, rising back to the surface in the Pacific and Indian Oceans and returning to the North Atlantic as warm surface water (red)._\r\n\r\nWhere sea ice forms the combination of low temperature and high salinity makes the surface water very dense, so it sinks, embarking on a thousand-year journey into the deep ocean and around the world as part of the ‘Great Ocean Conveyor Belt’, more formally known as the thermohaline circulation. The sinking of water off Norway and Greenland helps pull the North Atlantic Drift and Gulf Stream currents, with their warm tropical water, towards the pole. The thermohaline circulation is a key component of the global climate system. \r\n\r\n## Heat Sink\r\nThe connection between the ocean surface and the large mass of the deep ocean provided by the thermohaline circulation, together with the vertical motion of waves and tides, has helped the ocean absorb more than 90% of the excess heat built up over the last 50 years of global warming. This heat is penetrating deeper into the ocean, which has spared most of us from the full effects of our greenhouse gas emissions. But there is no guarantee that the ocean will continue to absorb heat at this rate. \r\n\r\n![Change in global energy inventory graph](assets/story16-01.png) \r\n_Change in global energy inventory. Plot of energy accumulation within distinct components of Earth’s climate system since 1971. The oceans are by far the biggest heat store. (IPCC AR5, 2013)_",
+      "shortText": "# The Ocean’s Ups and Downs\r\n\r\n(placeholder)",
+      "flyTo": {
+        "position": {
+          "longitude": -23.75,
+          "latitude": 20.83,
+          "height": 15088309.07
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.87,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "sea_surface_salinity.sss",
+          "timestamp": "2013-10-30T00:00:00.000Z"
+        }
+      ]
     },
     {
       "type": "video",
-      "text": "# Stacking up the Data\r\n\r\nThe CCI Ozone team has worked on data from European and third party missions covering more than two decades of continuous ozone observations since 1995. Each space-borne sensor has its own radiometric characteristics, spatial resolution and coverage, making the harmonisation and merging of the data a complex task. The resulting integrated datasets have the advantage of providing better spatial coverage than those from individual sensors, and allow time series to exceed the life of a single instrument, giving the long-term trends so crucial for climate studies. They have enabled a better understanding of natural and anthropogenic factors affecting the distribution of atmospheric ozone and improved our understanding of ozone processes in climate models.  \r\n\r\n![Ozone sensors](assets/ozone_large_09.png) \r\n_Satellites and sensors used by the CCI Ozone team. (update – extend time lines?)_\r\n\r\nJust as individuals can use daily UV and air quality warnings based on satellite data to protect their own health and that of their children, scientists are using the same observations from space to track the effect of ozone on the climate, so that political leaders have the information they need to make decisions and take action to protect us all. Emission controls will continue to reduce ozone destruction in the stratosphere and limit ozone creation in the troposphere, and provide successful examples of international cooperation to solve an environmental problem.",
-      "shortText": "# Stacking up the Data\r\n\r\n(placeholder)",
-      "videoId": "5s4rqA8D4fk"
+      "text": "## Climate Cycles\r\n\r\nThere are periodic variations in the energy exchange between the ocean and the atmosphere that change weather patterns around the world every few years. El Niño and La Niña  are the warm and cool phases of a recurring climate cycle across the tropical Pacific – the El Niño-Southern Oscillation, or ENSO. \r\n\r\n## El Niño\r\nDuring El Niño, the east-to-west trade winds across the Equatorial Pacific weaken, causing a build-up of warm water in the eastern Pacific, which supresses the upwelling of cold water. As the warm water builds up so does cloud cover, due to the increased evaporation of sea water. \r\n\r\n![Sea surface salinity in the Pacific](assets/story16-05.jpg) \r\n_El Niño alters the salinity of the Equatorial Pacific, as ocean currents, evaporation and rainfall patterns shift. In some years a tongue of relatively fresh water extends all the way across the Pacific. (ESA / Planetary Visions)_\r\n\r\n## La Niña\r\nWhen El Niño ends, the cold water sometimes returns stronger than ever, clearing a gap in the clouds as the local climate enters its cool phase – La Niña. These changes to ocean temperature and evaporation over the Pacific lead to changes in rainfall trends across the world. Certain areas can experience wetter or drier conditions than normal, which can lead to more flash floods, drought or wild fires.\r\n\r\nThere are periodic ocean-atmosphere disturbances elsewhere in the world, such as the Indian Ocean Dipole and the North Atlantic Oscillation.",
+      "shortText": "# Climate Cycles\r\n\r\n(placeholder)",
+      "videoId": "04NPZP9U-sc"
+    },
+    {
+      "type": "video",
+      "text": "## CCI Sea Surface Temperature\r\n\r\nIt is likely that the upper ocean has been warming since the middle of the nineteenth century, and scientists have been able to measure the warming of the ocean surface from space since the 1970s. Satellite observations provide more detailed and even coverage, and more frequent repeats, than is possible from ships and floating instruments.\r\n\r\nThe CCI SST team has harmonised four trillion measurements from fourteen satellites spanning four decades. Combining the highly accurate, stable and well-calibrated measurements from new European sensors with the longer coverage of an older American system gives a complete, daily, stable, low-bias SST data set spanning 37 years. \r\n\r\n![Wavelength diagram for SST measurement](assets/sst_large_10.png) \r\n_Sea surface temperature is measured using two wavelengths in the thermal infrared part of the electromagnetic spectrum. (Planetary Visions)_\r\n\r\nThe use of ESA’s ATSR and SLSTR sensors makes this dataset not only more accurate and stable than previous SST products, but also largely independent of in situ measurements from ships and buoys. If similar climate signals are detected from space and on the Earth, we can be confident they truly reflect what is happening in nature. \r\n\r\n![An Argo float being deployed from a research ship](assets/sealevel_large_07.jpg) \r\n_An automatic free-floating instrumented buoy being deployed from a research ship. Almost 4,000 such floats have been deployed across the world’s oceans. They cycle up and down the top 2,000 metres of the ocean continually measuring temperature, salinity and currents, providing context for satellite observations of the ocean surface.  (Argo Programme/IFREMER)_",
+      "shortText": "## CCI Sea Surface Temperature\r\n\r\n(placeholder)",
+      "videoId": "alu0x_bgFrE"
     }
   ]
 }
