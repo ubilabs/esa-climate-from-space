@@ -8,6 +8,7 @@ parser = ArgumentParser()
 parser.add_argument("-i", "--input", dest="input_files", default="/data/netcdfs/*.nc")
 parser.add_argument("-l", "--layer", dest="layer_id")
 parser.add_argument("-v", "--variable", dest="variable_id")
+parser.add_argument("-t", "--type", dest="layer_type")
 parser.add_argument("-z", "--zoom-levels", dest="zoom_levels")
 parser.add_argument("--min", dest="min", default="auto")
 parser.add_argument("--max", dest="max", default="auto")
@@ -26,7 +27,7 @@ local_store.add_pattern(ds_name, files)
 # open dataset
 ds = cate.ops.open_dataset(ds_local_name, var_names=args.variable_id)
 data_array = ds[args.variable_id]
-units = data_array.attrs.get('units') or data_array.attrs.get('Units')
+units = data_array.attrs.get('units') or data_array.attrs.get('Units', '')
 
 # get min and max values
 try:
@@ -63,6 +64,7 @@ total_zoom_levels = int(zoom_levels[1]) + 1
 utility.write_metadata_file(
   args.layer_id,
   args.variable_id,
+  args.layer_type,
   units,
   data_array.time,
   total_zoom_levels,

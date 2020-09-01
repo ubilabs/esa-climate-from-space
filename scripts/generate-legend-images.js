@@ -24,16 +24,25 @@ variables.forEach(variable => {
     const min = colorRamp[colorRamp.length - 1][0];
     const range = max - min;
 
+    let lastColor = null;
+
     colorRamp.forEach(colorStop => {
       const [value, r, g, b, a] = colorStop;
       const stop = 1 - (value - min) / range;
+
       const alpha = Number(a) / 255;
       const hasAlpha = !isNaN(a);
       const color = `rgb${hasAlpha ? 'a' : ''}(${r}, ${g}, ${b}${
         hasAlpha ? `, ${alpha}` : ''
       })`;
 
+      if (variable === 'lccs_class' && lastColor) {
+        gradient.addColorStop(stop - 0.001, lastColor);
+      }
+
       gradient.addColorStop(stop, color);
+
+      lastColor = color;
     });
 
     ctx.fillStyle = gradient;
@@ -41,7 +50,8 @@ variables.forEach(variable => {
 
     writeImage(variable, canvas);
   } catch (err) {
-    console.log(`No colors file found for ${variable}`);
+    // eslint-disable-next-line no-console
+    console.log(`No colors file found for ${variable}`, err);
     return;
   }
 });
@@ -63,5 +73,6 @@ function writeImage(variable, canvas) {
   const out = fs.createWriteStream(outPath);
   const stream = canvas.createPNGStream();
   stream.pipe(out);
+  // eslint-disable-next-line no-console
   out.on('finish', () => console.log(`${variable} was written to ${outPath}.`));
 }

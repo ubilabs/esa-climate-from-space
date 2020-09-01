@@ -11,15 +11,16 @@ const globeState: GlobeState = {
   view: {
     position: {
       height: 25003000,
-      latitude: 0,
-      longitude: -0.32
+      latitude: 41.827147,
+      longitude: 12.672343 // ESA office in Italy ;)
     },
     orientation: {
       heading: 360,
       pitch: -90,
       roll: 0
     }
-  }
+  },
+  spinning: true
 };
 
 // @ts-ignore - injected via webpack's define plugin
@@ -60,7 +61,10 @@ export default {
     layers: `${baseUrlStorage}/layers/layers-{lang}.json`,
     layer: `${baseUrlTiles}/{id}/metadata.json`,
     layerTiles: `${baseUrlTiles}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
+    layerImage: `${baseUrlTiles}/{id}/tiles/{timeIndex}/full.png`,
+    layerGalleryImage: `${baseUrlTiles}/{id}/tiles/{timeIndex}/full.jpg`,
     layerOfflinePackage: `${baseUrlTiles}/{id}/package.zip`,
+    layerIcon: `${baseUrlStorage}/layers/icons/{layerId}.png`,
     storyOfflinePackage: `${baseUrlStorage}/stories/{id}/package.zip`,
     storyMediaBase: `${baseUrlStorage}/stories/{id}`,
     stories: `${baseUrlStorage}/stories/stories-{lang}.json`,
@@ -77,5 +81,6 @@ export default {
       'http://twitter.com/intent/tweet?text=ESA%20Climate%20From%20Space&url={currentUrl}'
   },
   legendImage: `${baseUrlStorage}/legend-images/{variable}.png`,
-  downloadUrls
+  downloadUrls,
+  localStorageLanguageKey: 'language'
 };

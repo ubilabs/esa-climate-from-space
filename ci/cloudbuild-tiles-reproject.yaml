@@ -11,15 +11,17 @@ steps:
     entrypoint: '/bin/bash'
     args:
       - "-c"
-      - "conda run -n cate-env python data/write-zarr.py --layer ${_LAYER_ID} --variable ${_VARIABLE_ID} --zoom-levels ${_ZOOM_LEVELS} --min ${_MIN} --max ${_MAX}"
+      - "conda run -n cate-env python data/write-zarr.py --layer ${_LAYER_ID} --variable ${_VARIABLE_ID} --type ${_LAYER_TYPE} --zoom-levels ${_ZOOM_LEVELS} --min ${_MIN} --max ${_MAX}"
 
-  - name: geographica/gdal2:2.4.0
+  - name: osgeo/gdal:ubuntu-full-3.1.2
     id: 'gdal-generate-tiles'
     entrypoint: '/bin/bash'
     args:
        - "./data/gdal-reproject.sh"
        - "${_VARIABLE_ID}"
        - "${_ZOOM_LEVELS}"
+       - "${_LAYER_TYPE}"
+       - "${_LON_RES} ${_LAT_RES}"
        - "${_MIN_LON} ${_MIN_LAT} ${_MAX_LON} ${_MAX_LAT}"
        - "${_SOURCE_PROJECTION}"
        - "${_SOURCE_MIN_X} ${_SOURCE_MAX_Y} ${_SOURCE_MAX_X} ${_SOURCE_MIN_Y}"
@@ -42,6 +44,17 @@ steps:
       - "-r"
       - "/data/upload/${_LAYER_ID}/*"
       - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/"
+
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    id: 'set-no-cache-on-metadata'
+    entrypoint: 'gsutil'
+    args:
+      - "-m"
+      - "setmeta"
+      - "-r"
+      - "-h"
+      - "Cache-Control: no-cache"
+      - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/metadata.json"
 
 options:
   substitution_option: 'ALLOW_LOOSE'

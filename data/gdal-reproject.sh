@@ -2,9 +2,11 @@
 
 VARIABLE=$1
 ZOOM_LEVELS=$2
-OUT_BOUNDS=$3
-SOURCE_PROJECTION=$4
-SOURCE_BOUNDS=$5
+LAYER_TYPE=$3
+RESOLUTION=$4
+OUT_BOUNDS=$5
+SOURCE_PROJECTION=$6
+SOURCE_BOUNDS=$7
 TRIMMED_SOURCE_BOUNDS=$(echo $SOURCE_BOUNDS | sed 's/ *$//g')
 FOLDER=/data/netcdfs/
 timestamp_counter=0
@@ -28,6 +30,7 @@ for file in $(find $FOLDER -name *.nc -type f | sort -n); do
   gdalwarp \
     -t_srs EPSG:4326 \
     -te $OUT_BOUNDS \
+    -ts $RESOLUTION \
     -r near \
     --config GDAL_CACHEMAX 90% \
     -co compress=LZW \
@@ -42,15 +45,24 @@ for file in $(find $FOLDER -name *.nc -type f | sort -n); do
     -co compress=LZW \
     -alpha ./colored.tif
 
-  gdal2tiles.py \
+  if [ "$LAYER_TYPE" = "tiles" ]; then
+    gdal2tiles.py \
     --profile geodetic \
     --zoom=$ZOOM_LEVELS \
     --tmscompatible \
     --no-kml \
     --webviewer=none \
-    --resampling near \
+    --resampling average \
     --s_srs EPSG:4326 \
     ./colored.tif /data/images/$VARIABLE/$timestamp_counter
+  else
+    mkdir -p /data/images/$VARIABLE/$timestamp_counter
+
+    gdal_translate \
+      -of PNG \
+      ./colored.tif \
+      /data/images/$VARIABLE/$timestamp_counter/full.png
+  fi
 
   rm ./tmp.tif
   rm ./colored.tif

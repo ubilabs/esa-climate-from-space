@@ -3,7 +3,10 @@
 TIMEOUT=8000
 LAYER_ID="biomass.agb"
 VARIABLE_ID="agb"
-VERSION="0.6.1"
+LAYER_TYPE="tiles"
+VERSION="0.7.1"
+LON_RES="81000"
+LAT_RES="31500"
 ZOOM_LEVELS="0-5"
 MIN_LON="-180"
 MAX_LON="180"
@@ -18,11 +21,8 @@ if [ ! -f ./package.json ]; then
     exit 1
 fi
 
-# Note! If process takes too long use "-ts 81000 31500 \" in gdalwarp command to
-# output only a 1/5th-resolution image
-
 gcloud builds submit --config ./ci/cloudbuild-tiles-reproject.yaml \
   --machine-type=$MACHINE_TYPE \
   --timeout=$TIMEOUT \
-  --substitutions _LAYER_ID=$LAYER_ID,_VARIABLE_ID=$VARIABLE_ID,_ZOOM_LEVELS=$ZOOM_LEVELS,_VERSION=$VERSION,_MIN=$MIN,_MAX=$MAX,_MIN_LON=$MIN_LON,_MAX_LON=$MAX_LON,_MIN_LAT=$MIN_LAT,_MAX_LAT=$MAX_LAT \
+  --substitutions _LAYER_ID=$LAYER_ID,_VARIABLE_ID=$VARIABLE_ID,_ZOOM_LEVELS=$ZOOM_LEVELS,_LAYER_TYPE=$LAYER_TYPE,_LON_RES=$LON_RES,_LAT_RES=$LAT_RES,_VERSION=$VERSION,_MIN=$MIN,_MAX=$MAX,_MIN_LON=$MIN_LON,_MAX_LON=$MAX_LON,_MIN_LAT=$MIN_LAT,_MAX_LAT=$MAX_LAT \
   .

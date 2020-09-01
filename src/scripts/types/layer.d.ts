@@ -1,9 +1,10 @@
 import {BasemapId} from '../types/basemap';
 import {GlobeView} from './globe-view';
+import {LayerType} from './globe-layer-type';
 
 export interface Layer {
   id: string;
-  type: 'image' | 'tiles';
+  type: LayerType;
   zoomLevels: number;
   basemap: BasemapId | null;
   timestamps: string[]; // ISO 8601 timestamps
@@ -19,4 +20,5 @@ export interface Layer {
   minValue: number;
   maxValue: number;
   units: string;
+  legendValues: string[];
 }

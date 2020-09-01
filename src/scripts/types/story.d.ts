@@ -1,6 +1,7 @@
 import {GlobeView} from './globe-view';
 import {StoryLayer} from './story-layer';
 import {SlideType} from './slide-type';
+import {Marker} from './marker-type';
 
 export interface Story {
   id: string;
@@ -15,5 +16,7 @@ export interface Slide {
   imageCaptions?: string[];
   videoId?: string;
   layer?: StoryLayer[];
+  layerDescription?: string;
   flyTo: GlobeView;
+  markers: Marker[];
 }

@@ -1,6 +1,6 @@
 {
   "name": "esa-climate-from-space",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "dist-src-electron/main.js",
   "scripts": {
@@ -26,8 +26,9 @@
     "electron:download-basemaps": "gsutil -m cp -r gs://esa-cfs-tiles/${npm_package_version}/basemaps ./dist",
     "story-packages": "./scripts/create-story-packages.sh",
     "clean:story-packages": "find ./storage -type f -name \"*.zip\" -delete",
-    "download-storage": "gsutil -m rsync -r gs://esa-cfs-storage/$npm_package_version ./storage && npm run clean:story-packages",
-    "upload-storage": "./scripts/confirm-storage-upload.sh && npm run story-packages && find ./storage -type f -name \".DS_Store\" -delete && gsutil -m rsync -r ./storage gs://esa-cfs-storage/$npm_package_version && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/ && npm run clean:story-packages",
+    "download-stories": "gsutil -m cp -r gs://esa-cfs-storage/$npm_package_version/stories ./storage/ && npm run clean:story-packages",
+    "upload-stories": "./scripts/confirm-storage-upload.sh && npm run story-packages && find ./storage/stories -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/stories/* gs://esa-cfs-storage/$npm_package_version/stories/ && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/stories/ && npm run clean:story-packages",
+    "upload-layers": "find ./storage -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers && gsutil -m cp -r ./storage/legend-images/* gs://esa-cfs-storage/$npm_package_version/legend-images && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/",
     "optimize-story-images": "./scripts/optimize-story-images.sh"
   },
   "repository": {
@@ -45,6 +46,7 @@
     "@types/redux-logger": "^3.0.7",
     "cesium": "^1.66.0",
     "cross-zip": "^3.0.0",
+    "electron-is-dev": "^1.2.0",
     "framer-motion": "^1.8.4",
     "lodash.debounce": "^4.0.8",
     "lodash.intersection": "^4.4.0",
@@ -75,7 +77,7 @@
     "conventional-changelog-cli": "^2.0.31",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
-    "electron": "^9.1.1",
+    "electron": "^10.0.0",
     "electron-builder": "^22.7.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",

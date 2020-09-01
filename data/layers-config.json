@@ -24,8 +24,10 @@
     "basemap": "ocean",
     "timeFormat": {
       "year": "numeric",
-      "month": "long"
+      "month": "long",
+      "day": "numeric"
     },
+    "legendValues": ["37 °C", "-3"],
     "flyTo": {
       "position": {
         "height": 15000000.06,
@@ -66,7 +68,7 @@
       "year": "numeric",
       "month": "long"
     },
-    "units": "testunit",
+    "units": "AOD550",
     "flyTo": {
       "position": {
         "height": 15000000.06,
@@ -207,6 +209,7 @@
       "year": "numeric",
       "month": "long"
     },
+    "legendValues": ["> 6m", "0m"],
     "flyTo": {
       "position": {
         "height": 15000000.06,
@@ -225,7 +228,8 @@
     "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
-      "month": "long"
+      "month": "long",
+      "day": "numeric"
     },
     "flyTo": {
       "position": {
@@ -245,7 +249,8 @@
     "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
-      "month": "long"
+      "month": "long",
+      "day": "numeric"
     },
     "flyTo": {
       "position": {
@@ -301,6 +306,7 @@
   },
   "snow.swe": {
     "colorMap": "ocean",
+    "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
       "month": "long"
@@ -320,6 +326,7 @@
   },
   "biomass.agb": {
     "colorMap": "custom",
+    "units": "Mg/ha AGB",
     "timeFormat": {
       "year": "numeric",
       "month": "long"
@@ -373,6 +380,52 @@
         "pitch": -90,
         "roll": 0
       }
+    }
+  },
+  "lakes.lake_surface_water_temperature": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 90
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
+    }
+  },
+  "lakes.chla_mean": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long"
+    },
+    "flyTo": {
+      "position": {
+        "height": 15000000.06,
+        "latitude": 90,
+        "longitude": 90
+      },
+      "orientation": {
+        "heading": 0,
+        "pitch": -90,
+        "roll": 0
+      }
+    }
+  },
+  "ozone.ozone_profile": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "numeric"
     }
   }
 }

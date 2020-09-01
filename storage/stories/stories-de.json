@@ -11,15 +11,15 @@
       "water-vapour",
       "clouds"
     ],
-    "position": [6.3281, -40.446947]
+    "position": [-50, 40]
   },
   {
     "id": "story-8",
-    "title": "Ist Ozon gut oder schlecht? ",
+    "title": "Ist Ozon gut oder schlecht?",
     "description": "",
     "image": "assets/ozone.jpg",
     "tags": ["ozone", "aerosol"],
-    "position": [230.2734, 59.26588]
+    "position": [-40, -65]
   },
   {
     "id": "story-20",
@@ -32,13 +32,35 @@
       "sea-surface-salinity",
       "permafrost"
     ],
-    "position": [10.56, 20.76]
+    "position": [-105, 75]
+  },
+  {
+    "id": "story-30",
+    "title": "Ein Land in Gefahr",
+    "description": "",
+    "image": "assets/story30-image02.jpg",
+    "tags": [],
+    "position": [175, -2]
+  },
+  {
+    "id": "story-28",
+    "title": "Biodiversität und Verlust des Lebensraums",
+    "description": "",
+    "image": "assets/landcover_07.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-26",
+    "title": "Den Puls des Planeten messen",
+    "description": "",
+    "image": "assets/soilmoisture_large_14.jpg",
+    "tags": []
   },
   {
     "id": "debug",
     "title": "Debug",
     "description": "Test story",
     "image": "assets/story.jpg",
-    "tags": ["development", "ubilabs", "test"]
+    "tags": []
   }
 ]

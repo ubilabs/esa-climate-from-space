@@ -1,0 +1,37 @@
+@require '../../../../variables.styl'
+
+.dataSetInfo
+  position: absolute
+  bottom: emCalc(24px)
+  display: flex
+  flex-direction: row
+  width: 100%
+
+.dataSetContent
+  top: emCalc(5px)
+  display: flex
+  justify-content: center
+  align-items: center
+  width: 100%
+
+.title
+  margin: 0
+  color: $textWhite
+  font-weight: normal
+  font-size: 1em
+
+.buttons
+  display: flex
+  justify-content: center
+
+@media screen and (max-width: 480px)
+  .dataSetInfo
+    top: 10%
+
+  .dataSetContent
+    align-items: flex-start
+    padding: emCalc(10px)
+
+  .title
+    text-align: center
+    font-size: 0.8em

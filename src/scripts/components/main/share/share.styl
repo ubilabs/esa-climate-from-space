@@ -1,0 +1,67 @@
+@require '../../../../variables.styl'
+
+.share
+  display: flex
+
+.shareOverlay
+  position: relative
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: emCalc(40px)
+  max-width: emCalc(450px)
+  width: 50%
+  border-radius: emCalc(4px)
+  background-color: $darkGrey4
+
+.shareButton
+  padding-left: emCalc(30px)
+  font-size: emCalc(18px)
+  line-height: emCalc(22px)
+
+.closeButton
+  position: absolute
+  top: emCalc(10px)
+  right: emCalc(10px)
+
+.title
+  margin: 0
+  margin-bottom: emCalc(15px)
+  color: $textWhite
+  text-align: center
+  font-size: emCalc(36px)
+  font-family: NotesEsa
+
+.shareButtons
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  align-items: flex-end
+  width: 100%
+
+.button
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: emCalc(30px)
+  outline: 0
+  border: none
+  background: none
+  color: $textColor
+  text-transform: uppercase
+  font-size: emCalc(12px)
+  font-family: NotesEsa
+
+  svg
+    padding-bottom: emCalc(10px)
+    fill: $main
+
+  &:hover
+    color: $textWhite
+
+    svg
+      fill: $textWhite
+
+@media screen and (max-width: 480px)
+  .button
+    padding: emCalc(15px)
