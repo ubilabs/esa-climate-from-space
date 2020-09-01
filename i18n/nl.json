@@ -63,7 +63,7 @@
   "tags.sea-surface-temperature": "Water temperatuur",
   "tags.sea-surface-salinity": "Water saliniteit",
   "tags.permafrost": "Permafrost",
-  "ocean-colour": "Zee kleur",
-  "water-vapour": "Water damp",
-  "clouds": "Clouds"
+  "tags.ocean-colour": "Zee kleur",
+  "tags.water-vapour": "Water damp",
+  "tags.clouds": "Clouds"
 }
