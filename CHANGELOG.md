@@ -1,3 +1,13 @@
+## [0.8.1](https://github.com/ubilabs/esa-climate-from-space/compare/v0.8.0...v0.8.1) (2020-09-02)
+
+
+### Bug Fixes
+
+* **data-layers:** use new data for ocean color ([af35944](https://github.com/ubilabs/esa-climate-from-space/commit/af35944cb1c7e4bcf4da2c9e136d6eb4ef323ff1))
+* **electron:** use fix name for build artifacts ([31cfc08](https://github.com/ubilabs/esa-climate-from-space/commit/31cfc082a119ddc352cb07f8e6fd80a9210e9330))
+
+
+
 # [0.8.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.7.1...v0.8.0) (2020-09-01)
 
 
