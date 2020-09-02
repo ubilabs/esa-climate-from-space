@@ -87,10 +87,11 @@ const TimeSlider: FunctionComponent = () => {
     []
   );
 
-  // clamp globe time to min/max of the active layers when a layer changes
+  // clamp globe time to min/max of the active layers when a layer changes and stop playback
   useEffect(() => {
     dispatch(clampGlobeTimeAction());
-  }, [mainId, compareId, dispatch]);
+    setIsPlaying(false);
+  }, [mainLayerDetails, compareLayerDetails, dispatch]);
 
   // sync local time
   useEffect(() => {
