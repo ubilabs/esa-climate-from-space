@@ -1,3 +1,29 @@
+## [0.8.2](https://github.com/ubilabs/esa-climate-from-space/compare/v0.8.1...v0.8.2) (2020-09-02)
+
+
+### Bug Fixes
+
+* **mobile:** fix overlapping dataset info on mobile ([b37beda](https://github.com/ubilabs/esa-climate-from-space/commit/b37bedabbb743a627fb9bb516017288ce7eb3799))
+
+
+### Features
+
+* **data-layers:** add split time dim script for soil moisture ([8a89118](https://github.com/ubilabs/esa-climate-from-space/commit/8a89118aed782c388094f0b2d5a93fe001853128))
+* **data-layers:** use log values for oc.chlor_a ([7b1aa82](https://github.com/ubilabs/esa-climate-from-space/commit/7b1aa821cbe50162f1454bdc9e5c2c3662670f54))
+* **data-layers:** use new soil moisture data ([a9be1ff](https://github.com/ubilabs/esa-climate-from-space/commit/a9be1fff69a38c2244c5f4b867ea24f05a848724))
+
+
+
+## [0.8.1](https://github.com/ubilabs/esa-climate-from-space/compare/v0.8.0...v0.8.1) (2020-09-02)
+
+
+### Bug Fixes
+
+* **data-layers:** use new data for ocean color ([af35944](https://github.com/ubilabs/esa-climate-from-space/commit/af35944cb1c7e4bcf4da2c9e136d6eb4ef323ff1))
+* **electron:** use fix name for build artifacts ([31cfc08](https://github.com/ubilabs/esa-climate-from-space/commit/31cfc082a119ddc352cb07f8e6fd80a9210e9330))
+
+
+
 # [0.8.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.7.1...v0.8.0) (2020-09-01)
 
 

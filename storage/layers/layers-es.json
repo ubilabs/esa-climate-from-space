@@ -8,7 +8,7 @@
     "link": "http://..."
   },
   {
-    "id": "soil_moisture.sm",
+    "id": "soil_moisture.sm_mean",
     "type": "Layertype",
     "name": "Soil Moisture",
     "shortName": "Soil Moisture",
