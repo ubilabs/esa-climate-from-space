@@ -9,7 +9,6 @@ import LayerLoader from '../../layers/layer-loader/layer-loader';
 import Init from '../init/init';
 import LayerSelector from '../../layers/layer-selector/layer-selector';
 import Navigation from '../navigation/navigation';
-import GlobeNavigation from '../globe-navigation/globe-navigation';
 import {EsaLogo} from '../icons/esa-logo';
 import TimeSlider from '../../layers/time-slider/time-slider';
 import DataSetInfo from '../../layers/data-set-info/data-set-info';
@@ -19,7 +18,7 @@ import Story from '../../stories/story/story';
 import StoriesSelector from '../../stories/stories-selector/stories-selector';
 import PresentationSelector from '../../stories/presentation-selector/presentation-selector';
 import ShowcaseSelector from '../../stories/showcase-selector/showcase-selector';
-import Globes from '../globes/globes';
+import DataViewer from '../data-viewer/data-viewer';
 
 import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
@@ -60,9 +59,8 @@ const TranslatedApp: FunctionComponent = () => {
             <div className={styles.logo}>
               <EsaLogo />
             </div>
-            <Globes markers={markers} backgroundColor={'#10161A'} />
+            <DataViewer markers={markers} backgroundColor={'#10161A'} />
             <Navigation />
-            <GlobeNavigation />
             <TimeSlider />
             <DataSetInfo />
             <LayerSelector />

@@ -15,5 +15,5 @@
   "linux": {
     "target": "zip"
   },
-  "artifactName": "${productName}-${version}-${os}.${ext}"
+  "artifactName": "esa-climate-from-space-${version}-${os}.${ext}"
 }

@@ -64,7 +64,7 @@
   "tags.sea-surface-temperature": "Sea Surface Temperature",
   "tags.sea-surface-salinity": "Sea Surface Salinity",
   "tags.permafrost": "Permafrost",
-  "ocean-colour": "Ocean Colour",
-  "water-vapour": "Water Vapour",
-  "clouds": "Clouds"
+  "tags.ocean-colour": "Ocean Colour",
+  "tags.water-vapour": "Water Vapour",
+  "tags.clouds": "Clouds"
 }

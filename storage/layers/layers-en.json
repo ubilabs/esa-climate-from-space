@@ -8,7 +8,7 @@
     "link": "http://..."
   },
   {
-    "id": "soil_moisture.sm",
+    "id": "soil_moisture.sm_mean",
     "type": "Layertype",
     "name": "Soil Moisture",
     "shortName": "Soil Moisture",
@@ -68,7 +68,7 @@
     "type": "Layertype",
     "name": "Sea State – Mean Significant Wave Height",
     "shortName": "Sea State",
-    "description": "Sea states are relevant for all activities at sea and on the coast, and their climatology is the main driver for the design and maintenance of marine structures. Sea states also modify air-sea exchanges of heat and momentum, and contribute to coastal sea level and sea ice properties. The Sea State CCI is processing altimeter and Synthetic Aperture Radar data from 2002 onward in order to consistently calibrate and validate these datasets and investigate the variability of sea states in our changing climate. One of the most noticeable change occurs in the Arctic region, where receding sea ice gives more open water over which wind generates waves. Extreme sea states also have a profound impact on the coasts, as they may increase substantially the water level and cause flooding in low lying lands, or severely erode sandy beaches.\n\n**Variable Shown:** Mean of Median Significant Wave Height Values in Meters  \n**Time Span:** 1991-07 – 2018-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:** 1 degree\n**Version:** 1.1  \n\n[ESA CCI Sea State ECV Project website](http://cci.esa.int/seastate)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/47140d618dcc40309e1edbca7e773478)",
+    "description": "Sea states are relevant for all activities at sea and on the coast, and their climatology is the main driver for the design and maintenance of marine structures. Sea states also modify air-sea exchanges of heat and momentum, and contribute to coastal sea level and sea ice properties. The Sea State CCI is processing altimeter and Synthetic Aperture Radar data from 2002 onward in order to consistently calibrate and validate these datasets and investigate the variability of sea states in our changing climate. One of the most noticeable change occurs in the Arctic region, where receding sea ice gives more open water over which wind generates waves. Extreme sea states also have a profound impact on the coasts, as they may increase substantially the water level and cause flooding in low lying lands, or severely erode sandy beaches.\n\n**Variable Shown:** Mean of Median Significant Wave Height Values in Meters  \n**Time Span:** August 1991 – December 2018  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:** 1 degree  \n**Version:** 1.1  \n**DOI:** [10.5285/47140d618dcc40309e1edbca7e773478](http://dx.doi.org/10.5285/47140d618dcc40309e1edbca7e773478)  \n\n[ESA CCI Sea State ECV Project website](http://cci.esa.int/seastate)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/47140d618dcc40309e1edbca7e773478)",
     "link": "http://..."
   },
   {
@@ -164,5 +164,12 @@
     "shortName": "Lakes Color",
     "description": "",
     "link": "http://..."
+  },
+  {
+    "id": "ozone.ozone_profile",
+    "type": "Layertype",
+    "name": "Ozone Profile",
+    "shortName": "Ozone Profile",
+    "description": ""
   }
 ]

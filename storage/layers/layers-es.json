@@ -8,7 +8,7 @@
     "link": "http://..."
   },
   {
-    "id": "soil_moisture.sm",
+    "id": "soil_moisture.sm_mean",
     "type": "Layertype",
     "name": "Soil Moisture",
     "shortName": "Soil Moisture",
@@ -164,5 +164,12 @@
     "shortName": "Lakes Color",
     "description": "",
     "link": "http://..."
+  },
+  {
+    "id": "ozone.ozone_profile",
+    "type": "Layertype",
+    "name": "Ozone Profile",
+    "shortName": "Ozone Profile",
+    "description": ""
   }
 ]

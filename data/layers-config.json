@@ -27,6 +27,7 @@
       "month": "long",
       "day": "numeric"
     },
+    "legendValues": ["37 °C", "-3"],
     "flyTo": {
       "position": {
         "height": 15000000.06,
@@ -141,7 +142,7 @@
       }
     }
   },
-  "soil_moisture.sm": {
+  "soil_moisture.sm_mean": {
     "colorMap": "BrBG",
     "basemap": "land",
     "timeFormat": {
@@ -417,6 +418,14 @@
         "pitch": -90,
         "roll": 0
       }
+    }
+  },
+  "ozone.ozone_profile": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "numeric"
     }
   }
 }

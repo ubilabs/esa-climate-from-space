@@ -50,6 +50,7 @@ variables.forEach(variable => {
 
     writeImage(variable, canvas);
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.log(`No colors file found for ${variable}`, err);
     return;
   }
@@ -72,5 +73,6 @@ function writeImage(variable, canvas) {
   const out = fs.createWriteStream(outPath);
   const stream = canvas.createPNGStream();
   stream.pipe(out);
+  // eslint-disable-next-line no-console
   out.on('finish', () => console.log(`${variable} was written to ${outPath}.`));
 }

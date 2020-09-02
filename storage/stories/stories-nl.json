@@ -38,7 +38,7 @@
     "id": "story-30",
     "title": "A Country Under Threat",
     "description": "",
-    "image": "",
+    "image": "assets/story30-image02.jpg",
     "tags": [],
     "position": [175, -2]
   },
@@ -46,14 +46,14 @@
     "id": "story-28",
     "title": "Biodiversity and Habitat Loss",
     "description": "",
-    "image": "",
+    "image": "assets/landcover_07.jpg",
     "tags": []
   },
   {
     "id": "story-26",
     "title": "Taking the Pulse of the Planet",
     "description": "",
-    "image": "",
+    "image": "assets/soilmoisture_large_14.jpg",
     "tags": []
   },
   {

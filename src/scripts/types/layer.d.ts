@@ -1,10 +1,10 @@
 import {BasemapId} from '../types/basemap';
 import {GlobeView} from './globe-view';
-import {GlobeLayerType} from './globe-layer-type';
+import {LayerType} from './globe-layer-type';
 
 export interface Layer {
   id: string;
-  type: GlobeLayerType;
+  type: LayerType;
   zoomLevels: number;
   basemap: BasemapId | null;
   timestamps: string[]; // ISO 8601 timestamps
