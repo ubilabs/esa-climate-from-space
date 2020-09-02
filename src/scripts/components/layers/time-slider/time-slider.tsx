@@ -13,11 +13,14 @@ import cx from 'classnames';
 import {languageSelector} from '../../../selectors/language';
 import {timeSelector} from '../../../selectors/globe/time';
 import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
-import setGlobeTime from '../../../actions/set-globe-time';
+import setGlobeTime, {
+  clampGlobeTimeAction
+} from '../../../actions/set-globe-time';
 import {getTimeRanges} from '../../../libs/get-time-ranges';
 import {State} from '../../../reducers';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 import {getLayerTimeIndex} from '../../../libs/get-image-layer-data';
+import getPlaybackStep from '../../../libs/get-playback-step';
 import TimeSliderRange from '../time-slider-range/time-slider-range';
 import TimePlayback from '../time-playback/time-playback';
 import Button from '../../main/button/button';
@@ -44,6 +47,11 @@ const TimeSlider: FunctionComponent = () => {
   );
   const compareLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, compareId)
+  );
+
+  const playbackStep = useMemo(
+    () => Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails)),
+    [mainLayerDetails, compareLayerDetails]
   );
 
   // date format
@@ -79,6 +87,11 @@ const TimeSlider: FunctionComponent = () => {
     []
   );
 
+  // clamp globe time to min/max of the active layers when a layer changes
+  useEffect(() => {
+    dispatch(clampGlobeTimeAction());
+  }, [mainId, compareId, dispatch]);
+
   // sync local time
   useEffect(() => {
     if (time !== globeTime) {
@@ -104,7 +117,11 @@ const TimeSlider: FunctionComponent = () => {
   return (
     <div className={styles.timeSlider}>
       {isPlaying && (
-        <TimePlayback minTime={combined.min} maxTime={combined.max} />
+        <TimePlayback
+          minTime={combined.min}
+          maxTime={combined.max}
+          step={playbackStep}
+        />
       )}
       <div className={styles.container}>
         <Button
