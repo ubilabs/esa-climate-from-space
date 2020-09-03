@@ -247,7 +247,7 @@ const Globe: FunctionComponent<Props> = ({
     setGlobeView(viewer, view);
   }, [viewer, view, active]);
 
-  useGlobeLayer(viewer, imageLayer);
+  useGlobeLayer(viewer, JSON.stringify(imageLayer));
 
   // update basemap
   useEffect(() => {
