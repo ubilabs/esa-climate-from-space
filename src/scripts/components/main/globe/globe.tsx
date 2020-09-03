@@ -178,6 +178,11 @@ const Globe: FunctionComponent<Props> = ({
       // @ts-ignore
       scopedViewer.scene.globe.showGroundAtmosphere = false;
     }
+
+    // Distance is set in meters -> 2000km above ground.
+    // min/max is opposite of how we usually use it.
+    scopedViewer.scene.screenSpaceCameraController.minimumZoomDistance = 2000000;
+
     // save viewer reference
     setViewer(scopedViewer);
 
