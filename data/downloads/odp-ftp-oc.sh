@@ -16,5 +16,6 @@ do
 
   curl --silent $FTP_URL > $FILENAME
 
+  python ./data/log-values.py --file $FILENAME --variable chlor_a
   python ./data/drop-unused-vars.py --file $FILENAME --variable chlor_a
 done
