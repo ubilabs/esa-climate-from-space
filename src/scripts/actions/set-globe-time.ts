@@ -17,28 +17,4 @@ const setGlobeTimeAction = (time: number): SetGlobeTimeAction => ({
   time
 });
 
-export const clampGlobeTimeAction = () => (
-  dispatch: Dispatch,
-  getState: () => State
-) => {
-  const state = getState();
-  const {
-    layers: {
-      layerIds: {mainId, compareId}
-    },
-    globe: {time}
-  } = state;
-
-  const mainLayerDetails = layerDetailsSelector(state, mainId);
-  const compareLayerDetails = layerDetailsSelector(state, compareId);
-
-  const {
-    combined: {min, max}
-  } = getTimeRanges(mainLayerDetails, compareLayerDetails);
-
-  const clampedTime = clampToRange(time, min, max);
-
-  dispatch(setGlobeTimeAction(clampedTime));
-};
-
 export default setGlobeTimeAction;
