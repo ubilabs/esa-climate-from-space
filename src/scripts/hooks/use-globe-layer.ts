@@ -13,14 +13,13 @@ import {LayerType} from '../types/globe-layer-type';
 // update layer image when url changes
 export function useGlobeLayer(
   viewer: Cesium.Viewer | null,
-  imageLayerString: string
+  imageLayer: GlobeImageLayerData | null
 ) {
   useEffect(() => {
     if (!viewer) {
       return;
     }
 
-    const imageLayer: GlobeImageLayerData | null = JSON.parse(imageLayerString);
     const layers = viewer.scene.imageryLayers;
 
     if (imageLayer) {
@@ -69,7 +68,7 @@ export function useGlobeLayer(
       // remove old layers when no image should be shown anymore (except base map)
       removeAllLayers(layers);
     }
-  }, [viewer, imageLayerString]);
+  }, [viewer, imageLayer]);
 }
 
 function getImageProvider(imageLayer: GlobeImageLayerData) {
