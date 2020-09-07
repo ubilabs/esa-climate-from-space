@@ -14,7 +14,7 @@ const NUM_PRELOAD_URLS = 5;
  */
 export function getImageLayerData(
   layer: Layer | null,
-  time: number
+  timeIndex: number
 ): GlobeImageLayerData | null {
   if (!layer) {
     return null;
@@ -31,7 +31,6 @@ export function getImageLayerData(
     url = getOfflineTilesUrl(layer.type);
   }
 
-  const timeIndex = getLayerTimeIndex(time, layer.timestamps);
   const replacedUrl = replaceUrlPlaceholders(url, {
     id: layer.id,
     timeIndex: timeIndex.toString()

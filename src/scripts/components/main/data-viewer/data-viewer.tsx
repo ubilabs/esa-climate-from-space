@@ -2,8 +2,7 @@ import React, {
   FunctionComponent,
   useState,
   useEffect,
-  useCallback,
-  useMemo
+  useCallback
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -22,7 +21,7 @@ import Globe from '../globe/globe';
 import Gallery from '../gallery/gallery';
 import GlobeNavigation from '../globe-navigation/globe-navigation';
 import LayerLegend from '../../layers/layer-legend/layer-legend';
-import {getImageLayerData} from '../../../libs/get-image-layer-data';
+import {useImageLayerData} from '../../../hooks/use-image-layer-data';
 
 import {GlobeView} from '../../../types/globe-view';
 import {Marker} from '../../../types/marker-type';
@@ -80,14 +79,8 @@ const DataViewer: FunctionComponent<Props> = ({
     [dispatch, globeSpinning]
   );
 
-  const mainImageLayer = useMemo(
-    () => getImageLayerData(mainLayerDetails, time),
-    [mainLayerDetails, time]
-  );
-  const compareImageLayer = useMemo(
-    () => getImageLayerData(compareLayerDetails, time),
-    [compareLayerDetails, time]
-  );
+  const mainImageLayer = useImageLayerData(mainLayerDetails, time);
+  const compareImageLayer = useImageLayerData(compareLayerDetails, time);
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
