@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect} from 'react';
+import React, {FunctionComponent} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {FormattedMessage} from 'react-intl';
 import {motion, AnimatePresence} from 'framer-motion';
@@ -12,9 +12,6 @@ import SelectedLayerListItem from '../selected-layer-list-item/selected-layer-li
 import {layersSelector} from '../../../selectors/layers/list';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 import setSelectedLayerIdsAction from '../../../actions/set-selected-layer-id';
-import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
-import {State} from '../../../reducers';
-import setFlyToAction from '../../../actions/set-fly-to';
 
 import styles from './layer-selector.styl';
 
@@ -32,29 +29,6 @@ const LayerSelector: FunctionComponent = () => {
   const selectedCompareLayer = layers.find(
     layer => layer.id === selectedLayerIds.compareId
   );
-
-  const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, selectedLayerIds.mainId)
-  );
-  const compareLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, selectedLayerIds.compareId)
-  );
-  const mainFlyTo = mainLayerDetails?.flyTo;
-  const compareFlyTo = compareLayerDetails?.flyTo;
-
-  // set fly to for main layer
-  useEffect(() => {
-    if (mainFlyTo) {
-      dispatch(setFlyToAction(mainFlyTo));
-    }
-  }, [dispatch, mainFlyTo]);
-
-  // set fly to for compare layer
-  useEffect(() => {
-    if (compareFlyTo) {
-      dispatch(setFlyToAction(compareFlyTo));
-    }
-  }, [dispatch, compareFlyTo]);
 
   return (
     <AnimatePresence>
