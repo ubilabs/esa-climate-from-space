@@ -16,6 +16,7 @@ export interface Layer {
     minute?: 'numeric' | '2-digit';
     second?: 'numeric' | '2-digit';
   };
+  filter?: string;
   minValue: number;
   maxValue: number;
   units: string;
