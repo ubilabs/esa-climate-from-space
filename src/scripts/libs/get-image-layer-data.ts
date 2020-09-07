@@ -51,7 +51,8 @@ export function getImageLayerData(
     type: layer.type,
     url: replacedUrl,
     nextUrls,
-    zoomLevels: layer.zoomLevels || 0
+    zoomLevels: layer.zoomLevels || 0,
+    filter: layer.filter
   };
 }
 

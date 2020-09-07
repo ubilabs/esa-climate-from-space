@@ -30,10 +30,16 @@ export function useGlobeLayer(
           imageryProvider
         );
 
+        const filterLinear = imageLayer.filter === 'linear';
+
         // @ts-ignore
-        newLayer.minificationFilter = TextureMinificationFilter.NEAREST;
+        newLayer.minificationFilter = filterLinear
+          ? TextureMinificationFilter.LINEAR
+          : TextureMinificationFilter.NEAREST;
         // @ts-ignore
-        newLayer.magnificationFilter = TextureMagnificationFilter.NEAREST;
+        newLayer.magnificationFilter = filterLinear
+          ? TextureMagnificationFilter.LINEAR
+          : TextureMagnificationFilter.NEAREST;
         newLayer.alpha = 1;
 
         // remove and destroy old layers if they exist
