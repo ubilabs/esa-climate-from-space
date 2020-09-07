@@ -51,7 +51,7 @@ variables.forEach(variable => {
     writeImage(variable, canvas);
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.log(`No colors file found for ${variable}`, err);
+    console.log(`ERROR: No colors file found for ${variable}`, err);
     return;
   }
 });
