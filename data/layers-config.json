@@ -23,7 +23,8 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    }
+    },
+    "legendValues": ["30 mg/m³", "3", "0.3", "0.03"]
   },
   "aerosol.AOD550_mean": {
     "colorMap": "Oranges",
