@@ -19,7 +19,7 @@ const backgroundColorMapping: {[_: string]: string} = {
 
 const getBackgroundColor = (basemap: BasemapId | null) => {
   if (!basemap) {
-    return 'transparent';
+    return backgroundColorMapping[config.defaultBasemap];
   }
 
   return backgroundColorMapping[basemap];
