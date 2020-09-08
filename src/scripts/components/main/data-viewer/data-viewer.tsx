@@ -137,15 +137,18 @@ const DataViewer: FunctionComponent<Props> = ({
     <div className={styles.dataViewer}>
       {[mainLayerDetails, compareLayerDetails]
         .filter((layer): layer is Layer => Boolean(layer))
-        .map(({id, maxValue, minValue, units, legendValues}, index) => (
-          <LayerLegend
-            key={id}
-            id={id}
-            values={legendValues || [maxValue || 0, minValue || 0]}
-            unit={units}
-            isCompare={index > 0}
-          />
-        ))}
+        .map(
+          ({id, maxValue, minValue, units, basemap, legendValues}, index) => (
+            <LayerLegend
+              key={id}
+              id={id}
+              values={legendValues || [maxValue || 0, minValue || 0]}
+              unit={units}
+              basemap={basemap}
+              isCompare={index > 0}
+            />
+          )
+        )}
 
       {getDataWidget({
         imageLayer: mainImageLayer,
