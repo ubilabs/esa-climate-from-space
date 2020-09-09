@@ -16,8 +16,13 @@ const commitHash = execSync('git rev-parse HEAD', {
   encoding: 'utf8'
 }).trim();
 
+const visitUrl =
+  branchName === 'live'
+    ? 'https://cfs.climate.esa.int'
+    : `https://storage.googleapis.com/esa-cfs-versions/web/${branchName}/index.html`;
+
 const data = JSON.stringify({
-  text: `New deployment to *${branchName}* is ready: *${shortMessage}*\n Visit: <https://storage.googleapis.com/esa-cfs-versions/web/${branchName}/index.html>\n Commit: <https://github.com/ubilabs/esa-climate-from-space/commit/${commitHash}>`
+  text: `New deployment to *${branchName}* is ready: *${shortMessage}*\n Visit: <${visitUrl}>\n Commit: <https://github.com/ubilabs/esa-climate-from-space/commit/${commitHash}>`
 });
 
 // eslint-disable-next-line no-console
