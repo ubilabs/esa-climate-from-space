@@ -21,4 +21,5 @@ export interface Layer {
   maxValue: number;
   units: string;
   legendValues: string[];
+  legendBackgroundColor: string;
 }
