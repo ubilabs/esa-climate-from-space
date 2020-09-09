@@ -3,7 +3,7 @@
     "colorMap": "afmhot",
     "basemap": "dark",
     "timeFormat": {
-      "year": "2-digit",
+      "year": "numeric",
       "month": "long"
     },
     "legendValues": ["400 km²", "300", "200", "100", "0"]
