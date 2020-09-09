@@ -5,7 +5,8 @@
     "timeFormat": {
       "year": "2-digit",
       "month": "long"
-    }
+    },
+    "legendValues": ["400 km²", "300", "200", "100", "0"]
   },
   "sst.analysed_sst": {
     "colorMap": "jet",
