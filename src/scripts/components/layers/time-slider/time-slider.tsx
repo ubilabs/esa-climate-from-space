@@ -25,6 +25,8 @@ import TimePlayback from '../time-playback/time-playback';
 import Button from '../../main/button/button';
 import {PlayCircleIcon} from '../../main/icons/play-circle-icon';
 import {PauseCircleIcon} from '../../main/icons/pause-circle-icon';
+import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
+import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 
 import styles from './time-slider.styl';
 
@@ -47,6 +49,7 @@ const TimeSlider: FunctionComponent = () => {
   const compareLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, compareId)
   );
+  const globeSpinning = useSelector(globeSpinningSelector);
 
   const playbackStep = useMemo(
     () => Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails)),
@@ -106,6 +109,13 @@ const TimeSlider: FunctionComponent = () => {
       setTime(globeTime);
     }
   }, [time, globeTime]);
+
+  // stop globe spinning when playing
+  useEffect(() => {
+    if (isPlaying && globeSpinning) {
+      dispatch(setGlobeSpinningAction(false));
+    }
+  }, [dispatch, isPlaying, globeSpinning]);
 
   // return nothing when no timesteps available
   if (combined.timestamps.length === 0) {
