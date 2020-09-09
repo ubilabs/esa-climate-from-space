@@ -4,7 +4,7 @@
 # Usage: ./scripts/update-metadata.sh <layerId (optional)>
 
 
-version=0.7.1
+version=0.8.2
 workingDir="./download"
 layersConfigFile="../data/layers-config.json"
 

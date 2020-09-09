@@ -3,9 +3,10 @@
     "colorMap": "afmhot",
     "basemap": "dark",
     "timeFormat": {
-      "year": "2-digit",
+      "year": "numeric",
       "month": "long"
-    }
+    },
+    "legendValues": ["400 km²", "300", "200", "100", "0"]
   },
   "sst.analysed_sst": {
     "colorMap": "jet",
@@ -23,7 +24,8 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    }
+    },
+    "legendValues": ["30 mg/m³", "3", "0.3", "0.03"]
   },
   "aerosol.AOD550_mean": {
     "colorMap": "Oranges",
@@ -40,7 +42,8 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    }
+    },
+    "legendValues": ["100 %", "0"]
   },
   "sea_level.sla": {
     "colorMap": "gist_rainbow",
@@ -64,7 +67,8 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    }
+    },
+    "legendValues": ["0.4 m³/m³", "0"]
   },
   "ozone.atmosphere_mole_content_of_ozone": {
     "colorMap": "viridis",
@@ -92,7 +96,8 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    }
+    },
+    "filter": "nearest"
   },
   "sea_state.swh_mean": {
     "colorMap": "viridis",
@@ -134,7 +139,8 @@
     "basemap": "land",
     "timeFormat": {
       "year": "numeric"
-    }
+    },
+    "legendValues": ["100 %", "0"]
   },
   "snow.swe": {
     "colorMap": "ocean",
