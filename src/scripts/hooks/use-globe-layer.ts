@@ -4,7 +4,10 @@ import {
   UrlTemplateImageryProvider,
   TextureMinificationFilter,
   TextureMagnificationFilter,
-  SingleTileImageryProvider
+  SingleTileImageryProvider,
+  Viewer,
+  ImageryLayer,
+  ImageryLayerCollection
 } from 'cesium';
 
 import {GlobeImageLayerData} from '../types/globe-image-layer-data';
@@ -12,7 +15,7 @@ import {LayerType} from '../types/globe-layer-type';
 
 // update layer image when url changes
 export function useGlobeLayer(
-  viewer: Cesium.Viewer | null,
+  viewer: Viewer | null,
   imageLayer: GlobeImageLayerData | null
 ) {
   useEffect(() => {
@@ -45,7 +48,7 @@ export function useGlobeLayer(
         // remove and destroy old layers if they exist
         // we do not clean it up in the useEffect clean function because we want
         // to wait until the new layer is ready to prevent flickering
-        const layersToRemove: Cesium.ImageryLayer[] = [];
+        const layersToRemove: ImageryLayer[] = [];
 
         for (let i = 0; i < layers.length; i++) {
           const layer = layers.get(i);
@@ -90,7 +93,7 @@ function getImageProvider(imageLayer: GlobeImageLayerData) {
     : new SingleTileImageryProvider({url: imageLayer.url});
 }
 
-function removeAllLayers(layers: Cesium.ImageryLayerCollection) {
+function removeAllLayers(layers: ImageryLayerCollection) {
   for (let i = 1; i < layers.length; i++) {
     const layer = layers.get(i);
     layers.remove(layer, true);
