@@ -13,7 +13,8 @@ import {
   ScreenSpaceEventHandler,
   ScreenSpaceEventType,
   TileMapServiceImageryProvider,
-  Viewer
+  Viewer,
+  ImageryLayer
 } from 'cesium';
 
 import {
@@ -72,7 +73,7 @@ interface Props {
 }
 
 // keep a reference to the current basemap layer
-let basemapLayer: Cesium.ImageryLayer | null = null;
+let basemapLayer: ImageryLayer | null = null;
 
 function getBasemapUrl(id: BasemapId | null) {
   if (!id || !config.basemapUrls[id]) {
@@ -178,6 +179,12 @@ const Globe: FunctionComponent<Props> = ({
       // @ts-ignore
       scopedViewer.scene.globe.showGroundAtmosphere = false;
     }
+
+    // Zoom distances in meters -> min: 1500km above ground, max: 30.000km above ground.
+    // min/max is opposite of how we usually use it.
+    scopedViewer.scene.screenSpaceCameraController.minimumZoomDistance = 1000000;
+    scopedViewer.scene.screenSpaceCameraController.maximumZoomDistance = 30000000;
+
     // save viewer reference
     setViewer(scopedViewer);
 

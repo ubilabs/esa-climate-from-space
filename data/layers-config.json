@@ -3,21 +3,10 @@
     "colorMap": "afmhot",
     "basemap": "dark",
     "timeFormat": {
-      "year": "2-digit",
+      "year": "numeric",
       "month": "long"
     },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
-    }
+    "legendValues": ["400 km²", "300", "200", "100", "0"]
   },
   "sst.analysed_sst": {
     "colorMap": "jet",
@@ -27,19 +16,7 @@
       "month": "long",
       "day": "numeric"
     },
-    "legendValues": ["37 °C", "-3"],
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
-    }
+    "legendValues": ["37 °C", "-3"]
   },
   "oc.chlor_a": {
     "colorMap": "winter",
@@ -48,18 +25,7 @@
       "year": "numeric",
       "month": "long"
     },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
-    }
+    "legendValues": ["30 mg/m³", "3", "0.3", "0.03"]
   },
   "aerosol.AOD550_mean": {
     "colorMap": "Oranges",
@@ -68,19 +34,7 @@
       "year": "numeric",
       "month": "long"
     },
-    "units": "AOD550",
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
-    }
+    "units": "AOD550"
   },
   "cloud.cfc": {
     "colorMap": "gray",
@@ -89,18 +43,7 @@
       "year": "numeric",
       "month": "long"
     },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
-    }
+    "legendValues": ["100 %", "0"]
   },
   "sea_level.sla": {
     "colorMap": "gist_rainbow",
@@ -108,18 +51,6 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
     }
   },
   "sea_surface_salinity.sss": {
@@ -128,18 +59,6 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
     }
   },
   "soil_moisture.sm_mean": {
@@ -149,18 +68,7 @@
       "year": "numeric",
       "month": "long"
     },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
-    }
+    "legendValues": ["0.4 m³/m³", "0"]
   },
   "ozone.atmosphere_mole_content_of_ozone": {
     "colorMap": "viridis",
@@ -168,18 +76,6 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
     }
   },
   "land_cover.lccs_class": {
@@ -189,18 +85,8 @@
       "year": "numeric",
       "month": "long"
     },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
-    }
+    "filter": "nearest",
+    "legendValues": []
   },
   "sea_state.swh_mean": {
     "colorMap": "viridis",
@@ -209,19 +95,7 @@
       "year": "numeric",
       "month": "long"
     },
-    "legendValues": ["> 6m", "0m"],
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
-    }
+    "legendValues": ["> 6m", "0m"]
   },
   "sea_ice_sh.ice_conc": {
     "colorMap": "custom",
@@ -230,18 +104,6 @@
       "year": "numeric",
       "month": "long",
       "day": "numeric"
-    },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
     }
   },
   "sea_ice_nh.ice_conc": {
@@ -251,18 +113,6 @@
       "year": "numeric",
       "month": "long",
       "day": "numeric"
-    },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
     }
   },
   "greenland_ice.sec": {
@@ -271,19 +121,7 @@
       "year": "numeric",
       "month": "long"
     },
-    "units": "m",
-    "flyTo": {
-      "position": {
-        "height": 5500000,
-        "latitude": 72.29,
-        "longitude": -38.5
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
-    }
+    "units": "m"
   },
   "permafrost.pfr": {
     "colorMap": "custom",
@@ -291,18 +129,7 @@
     "timeFormat": {
       "year": "numeric"
     },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
-    }
+    "legendValues": ["100 %", "0"]
   },
   "snow.swe": {
     "colorMap": "ocean",
@@ -310,18 +137,6 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
     }
   },
   "biomass.agb": {
@@ -331,36 +146,13 @@
       "year": "numeric",
       "month": "long"
     },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
-    }
+    "filter": "linear"
   },
   "greenhouse.xco2": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
     }
   },
   "greenhouse.xch4": {
@@ -368,18 +160,6 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 0
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
     }
   },
   "lakes.lake_surface_water_temperature": {
@@ -387,18 +167,6 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 90
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
     }
   },
   "lakes.chla_mean": {
@@ -406,18 +174,6 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    },
-    "flyTo": {
-      "position": {
-        "height": 15000000.06,
-        "latitude": 90,
-        "longitude": 90
-      },
-      "orientation": {
-        "heading": 0,
-        "pitch": -90,
-        "roll": 0
-      }
     }
   },
   "ozone.ozone_profile": {
