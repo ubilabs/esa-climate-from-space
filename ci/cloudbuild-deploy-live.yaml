@@ -1,0 +1,34 @@
+steps:
+  - name: 'gcr.io/cloud-builders/npm'
+    id: 'ci'
+    entrypoint: npm
+    args: ['ci']
+  - name: 'gcr.io/cloud-builders/npm'
+    id: 'build'
+    entrypoint: npm
+    args: ['run', 'build']
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['rsync', '-r', '-d', './dist', 'gs://cfs.climate.esa.int']
+  - name: gcr.io/cloud-builders/git
+    args:
+      [
+        'clone',
+        '--single-branch',
+        '--branch',
+        '${BRANCH_NAME}',
+        '--depth',
+        '5',
+        'https://github.com/ubilabs/esa-climate-from-space',
+        'repo'
+      ]
+  - name: gcr.io/cloud-builders/git
+    dir: 'repo'
+    args: ['checkout', '${COMMIT_SHA}']
+  - name: 'node:12'
+    dir: 'repo'
+    env:
+    - 'SLACK_HOOK_URL=${_SLACK_HOOK_URL}'
+    - 'BRANCH_NAME=${BRANCH_NAME}'
+    entrypoint: 'node'
+    args: ["./scripts/slack-deployment-notification.js"]
+

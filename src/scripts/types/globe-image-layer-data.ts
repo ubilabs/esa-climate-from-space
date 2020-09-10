@@ -6,4 +6,5 @@ export interface GlobeImageLayerData {
   url: string;
   nextUrls: string[];
   zoomLevels: number;
+  filter?: string;
 }

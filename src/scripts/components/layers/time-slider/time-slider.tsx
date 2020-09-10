@@ -18,11 +18,15 @@ import {getTimeRanges} from '../../../libs/get-time-ranges';
 import {State} from '../../../reducers';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 import {getLayerTimeIndex} from '../../../libs/get-image-layer-data';
+import getPlaybackStep from '../../../libs/get-playback-step';
+import clampToRange from '../../../libs/clamp-to-range';
 import TimeSliderRange from '../time-slider-range/time-slider-range';
 import TimePlayback from '../time-playback/time-playback';
 import Button from '../../main/button/button';
 import {PlayCircleIcon} from '../../main/icons/play-circle-icon';
 import {PauseCircleIcon} from '../../main/icons/pause-circle-icon';
+import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
+import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 
 import styles from './time-slider.styl';
 
@@ -44,6 +48,12 @@ const TimeSlider: FunctionComponent = () => {
   );
   const compareLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, compareId)
+  );
+  const globeSpinning = useSelector(globeSpinningSelector);
+
+  const playbackStep = useMemo(
+    () => Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails)),
+    [mainLayerDetails, compareLayerDetails]
   );
 
   // date format
@@ -71,6 +81,8 @@ const TimeSlider: FunctionComponent = () => {
   const timeSelectedCompare =
     rangeCompare && new Date(rangeCompare.timestamps[timeIndexCompare]);
 
+  const clampedTime = clampToRange(time, combined.min, combined.max);
+
   // update app state
   const debouncedSetGlobeTime = useCallback(
     debounce((newTime: number) => dispatch(setGlobeTime(newTime)), DELAY, {
@@ -79,12 +91,31 @@ const TimeSlider: FunctionComponent = () => {
     []
   );
 
+  // clamp globe time to min/max of the active layers when a layer changes
+  useEffect(() => {
+    if (clampedTime !== time) {
+      dispatch(setGlobeTime(clampedTime));
+    }
+  }, [clampedTime, time, dispatch]);
+
+  // stop playback when layer changes
+  useEffect(() => {
+    setIsPlaying(false);
+  }, [mainLayerDetails, compareLayerDetails]);
+
   // sync local time
   useEffect(() => {
     if (time !== globeTime) {
       setTime(globeTime);
     }
   }, [time, globeTime]);
+
+  // stop globe spinning when playing
+  useEffect(() => {
+    if (isPlaying && globeSpinning) {
+      dispatch(setGlobeSpinningAction(false));
+    }
+  }, [dispatch, isPlaying, globeSpinning]);
 
   // return nothing when no timesteps available
   if (combined.timestamps.length === 0) {
@@ -104,7 +135,11 @@ const TimeSlider: FunctionComponent = () => {
   return (
     <div className={styles.timeSlider}>
       {isPlaying && (
-        <TimePlayback minTime={combined.min} maxTime={combined.max} />
+        <TimePlayback
+          minTime={combined.min}
+          maxTime={combined.max}
+          step={playbackStep}
+        />
       )}
       <div className={styles.container}>
         <Button

@@ -5,20 +5,25 @@
 const fs = require('fs');
 const path = require('path');
 const {createCanvas} = require('canvas');
-const layers = require(path.resolve(__dirname, '../data/layers-config.json'));
 
 const INTPUT_FOLDER = path.resolve(__dirname, '../data/gdal-colors/');
-const OUTPUT_FOLDER = path.resolve(__dirname, '../storage/legend-images/');
+const OUTPUT_FOLDER = path.resolve(__dirname, '../assets/legend-images/');
 const WIDTH = 1;
 const HEIGHT = 500;
 
-const variables = Object.keys(layers).map(id => id.split('.')[1]);
+const files = fs.readdirSync(INTPUT_FOLDER);
 
-variables.forEach(variable => {
+try {
+  fs.mkdirSync(OUTPUT_FOLDER);
+} catch (e) {
+  console.log('Folder already exists');
+}
+
+files.forEach(file => {
   try {
     const canvas = createCanvas(WIDTH, HEIGHT);
     const ctx = canvas.getContext('2d');
-    const colorRamp = readColorFile(variable);
+    const colorRamp = readColorFile(file);
     const gradient = ctx.createLinearGradient(0, 0, 0, HEIGHT);
     const max = colorRamp[0][0];
     const min = colorRamp[colorRamp.length - 1][0];
@@ -36,7 +41,7 @@ variables.forEach(variable => {
         hasAlpha ? `, ${alpha}` : ''
       })`;
 
-      if (variable === 'lccs_class' && lastColor) {
+      if (file.includes('lccs_class') && lastColor) {
         gradient.addColorStop(stop - 0.001, lastColor);
       }
 
@@ -48,18 +53,17 @@ variables.forEach(variable => {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-    writeImage(variable, canvas);
+    writeImage(file, canvas);
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.log(`No colors file found for ${variable}`, err);
+    console.log(`ERROR: No colors file found for ${file}`, err);
     return;
   }
 });
 
-// read file from /data/gdal-colors/color-{variable}.txt
-function readColorFile(variable) {
-  const file = path.resolve(INTPUT_FOLDER, `colors-${variable}.txt`);
-  const content = fs.readFileSync(file, 'utf8');
+function readColorFile(file) {
+  const filePath = path.join(INTPUT_FOLDER, file);
+  const content = fs.readFileSync(filePath, 'utf8');
   return content
     .split('\n')
     .filter(Boolean)
@@ -67,12 +71,12 @@ function readColorFile(variable) {
     .map(line => line.split(' '));
 }
 
-// write image to /storage/legend-images/{variable}.png
-function writeImage(variable, canvas) {
-  const outPath = path.resolve(OUTPUT_FOLDER, `${variable}.png`);
+function writeImage(file, canvas) {
+  const outFile = file.replace('colors-', '').replace('.txt', '.png');
+  const outPath = path.resolve(OUTPUT_FOLDER, outFile);
   const out = fs.createWriteStream(outPath);
   const stream = canvas.createPNGStream();
   stream.pipe(out);
   // eslint-disable-next-line no-console
-  out.on('finish', () => console.log(`${variable} was written to ${outPath}.`));
+  out.on('finish', () => console.log(`Image was written to ${outPath}`));
 }

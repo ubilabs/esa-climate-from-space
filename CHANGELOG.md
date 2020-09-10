@@ -1,3 +1,35 @@
+# [0.9.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.8.2...v0.9.0) (2020-09-10)
+
+
+### Bug Fixes
+
+* **content:** remove debug story ([#614](https://github.com/ubilabs/esa-climate-from-space/issues/614)) ([456d49f](https://github.com/ubilabs/esa-climate-from-space/commit/456d49f86a439c3abe60334d4f3da2a9bf20cf70))
+* **data-layers:** fix sss values ([a870935](https://github.com/ubilabs/esa-climate-from-space/commit/a8709351c700413ca536385f6eb23d4d564bd0f9))
+* **electron:** fix re-zipping of mac binary ([57b1f1f](https://github.com/ubilabs/esa-climate-from-space/commit/57b1f1f2df4edf4fd26e72407b8f7f4a5da84d93))
+* **i18n:** fix tag key ([74d2dd3](https://github.com/ubilabs/esa-climate-from-space/commit/74d2dd3bbf35cece0f10ca2bbdda3b48b6f21a69))
+* **layer-legend:** use default bg color if no basemap defined ([29eb9fa](https://github.com/ubilabs/esa-climate-from-space/commit/29eb9faf4740f6a8fbcd1e508c653a1cc1f4d92d))
+* **layer-selector:** remove layer flyto ([#591](https://github.com/ubilabs/esa-climate-from-space/issues/591)) ([4d1ea82](https://github.com/ubilabs/esa-climate-from-space/commit/4d1ea82b6df90152b22a75475a0ca88282406254))
+* **legend:** fix legend image url ([a4fbef6](https://github.com/ubilabs/esa-climate-from-space/commit/a4fbef6542f0e13094943aeee0c68e0ee3f9236d))
+* **ozone-profile:** add script to build ozone profile offline package ([3f96be4](https://github.com/ubilabs/esa-climate-from-space/commit/3f96be4b4e8d554c297ee29c413531d82277ffe2))
+
+
+### Features
+
+* **content:** update ([8513172](https://github.com/ubilabs/esa-climate-from-space/commit/8513172966790174f3b0e6dae13f009be59e0ff2))
+* **data-layer:** add filter property for client side filtering ([d357747](https://github.com/ubilabs/esa-climate-from-space/commit/d357747cc63db3dc0b92716384cd2a33ac2445fb))
+* **data-layers:** minor updates ([24844bf](https://github.com/ubilabs/esa-climate-from-space/commit/24844bfe090a10e0be159441473e4c952ba59f05))
+* **electron:** make legend and layer icon available in offline mode ([b6018d9](https://github.com/ubilabs/esa-climate-from-space/commit/b6018d9442fb33b677ffcf15b1a1485f65ef40be))
+* **globe:** change zoom limits ([1ff7401](https://github.com/ubilabs/esa-climate-from-space/commit/1ff7401b0b0c2e3318af98ad744801b89fa8dee9))
+* **globe:** limit zoom to 2000km above ground ([ceb3140](https://github.com/ubilabs/esa-climate-from-space/commit/ceb3140acfdee97295c143651be8118b1a87e644))
+* **globe:** stop spinning globe on play ([b637e5b](https://github.com/ubilabs/esa-climate-from-space/commit/b637e5b3d3ab668f0c3aefa461efb52d10a5645b))
+* **layer-legend:** use background color dependent of basemap ([a7cf236](https://github.com/ubilabs/esa-climate-from-space/commit/a7cf2361c9dcfb628354ee95a979672cc8b25417))
+* **layers:** content updates ([35ce4fb](https://github.com/ubilabs/esa-climate-from-space/commit/35ce4fb5efd0d48e3042dbf7a6a72be99361b74a)), closes [#442](https://github.com/ubilabs/esa-climate-from-space/issues/442)
+* **story 15:** corect story 20 to story 15 ([#580](https://github.com/ubilabs/esa-climate-from-space/issues/580)) ([b901aca](https://github.com/ubilabs/esa-climate-from-space/commit/b901aca5ce11a9a8c6904b33dee9e203187afbfe))
+* **story-selector:** restyle story images layout ([38a0ebd](https://github.com/ubilabs/esa-climate-from-space/commit/38a0ebd83b07932d98aad3c6ea12804b8c19e90e))
+* **timeslider:** improvements ([#576](https://github.com/ubilabs/esa-climate-from-space/issues/576)) ([f4ee43a](https://github.com/ubilabs/esa-climate-from-space/commit/f4ee43ab6e808879e94a1d1ccc109ede8c872789))
+
+
+
 ## [0.8.2](https://github.com/ubilabs/esa-climate-from-space/compare/v0.8.1...v0.8.2) (2020-09-02)
 
 

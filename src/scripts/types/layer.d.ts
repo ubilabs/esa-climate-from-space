@@ -8,7 +8,6 @@ export interface Layer {
   zoomLevels: number;
   basemap: BasemapId | null;
   timestamps: string[]; // ISO 8601 timestamps
-  flyTo: GlobeView;
   timeFormat: {
     year?: 'numeric' | '2-digit';
     month?: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long';
@@ -17,8 +16,10 @@ export interface Layer {
     minute?: 'numeric' | '2-digit';
     second?: 'numeric' | '2-digit';
   };
+  filter?: string;
   minValue: number;
   maxValue: number;
   units: string;
   legendValues: string[];
+  legendBackgroundColor: string;
 }
