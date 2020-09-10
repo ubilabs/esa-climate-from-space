@@ -20,8 +20,9 @@ const LayerListItem: FunctionComponent<Props> = ({
   isMainSelected,
   onSelect
 }) => {
-  const packageUrl = config.api.layerOfflinePackage;
-  const offlineUrl = replaceUrlPlaceholders(packageUrl, {id: layer.id});
+  const offlineUrl = replaceUrlPlaceholders(config.api.layerOfflinePackage, {
+    id: layer.id
+  });
 
   return (
     <div className={styles.layerItem} onClick={() => onSelect(layer.id, true)}>

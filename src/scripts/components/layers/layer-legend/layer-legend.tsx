@@ -4,6 +4,9 @@ import cx from 'classnames';
 
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
 import config from '../../../config/main';
+import {isElectron} from '../../../libs/electron/is-electron';
+import {isOffline} from '../../../libs/electron/is-offline';
+import {getOfflineLegendImageUrl} from '../../../libs/electron/get-offline-legend-image-url';
 
 import {BasemapId} from '../../../types/basemap';
 
@@ -39,29 +42,35 @@ const LayerLegend: FunctionComponent<Props> = ({
   unit,
   basemap,
   isCompare = false
-}) => (
-  <div className={cx(styles.layerLegend, isCompare && styles.rightSided)}>
-    <img
-      className={styles.image}
-      style={{backgroundColor: getBackgroundColor(basemap)}}
-      src={replaceUrlPlaceholders(config.legendImage, {
-        variable: id.split('.')[1]
-      })}
-    />
-    <div className={styles.values}>
-      {values.map((value, index) => (
-        <div className={styles.value} key={value}>
-          {typeof value === 'string' ? (
-            value
-          ) : (
-            <span>
-              <FormattedNumber value={value} /> {index === 0 ? unit : ''}
-            </span>
-          )}
-        </div>
-      ))}
+}) => {
+  const imageUrlTemplate =
+    isElectron() && isOffline()
+      ? getOfflineLegendImageUrl()
+      : config.legendImage;
+  const imageUrl = replaceUrlPlaceholders(imageUrlTemplate, {id});
+
+  return (
+    <div className={cx(styles.layerLegend, isCompare && styles.rightSided)}>
+      <img
+        className={styles.image}
+        style={{backgroundColor: getBackgroundColor(basemap)}}
+        src={imageUrl}
+      />
+      <div className={styles.values}>
+        {values.map((value, index) => (
+          <div className={styles.value} key={value}>
+            {typeof value === 'string' ? (
+              value
+            ) : (
+              <span>
+                <FormattedNumber value={value} /> {index === 0 ? unit : ''}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default LayerLegend;
