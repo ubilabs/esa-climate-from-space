@@ -2,8 +2,8 @@
   {
     "id": "fire.burned_area",
     "type": "Biosphere",
-    "name": "Fire Burned Area",
-    "shortName": "Fire",
+    "name": "Fire Burned Area*",
+    "shortName": "Fire*",
     "description": "Throughout history, humans have used fire as an environmental management tool. Vegetation characteristics, mainly biomass loads and moisture, determine fire behaviour, but fire also modifies vegetation structure and evolution. Climate affects fire occurrence through the thermal and precipitation cycles, but it is also affected by fire, particularly by gaseous and PM emissions. This mutual influences among vegetation, climate and fire highlight the importance of having global long-term burned area (BA) information that serves as input for climate and vegetation modellers.\nCurrently, the FireCCI51 BA product includes 19 years of global BA data. The product is offered at 250m resolution with date of detection and land cover burned, and at 0.25 degree cells with total BA per grid cell,  total BA per land cover, and observed area. In both cases, uncertainty layers are also incorporated.\n\n**Variable Shown:** Total Burned Area in Square Meters  \n**Time Span:** January 2001 – December 2019  \n**Temporal Resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:**  0.25 x 0.25 degree  \n**Version:** 5.1  \n**DOI:**  [10.5285/3628cb2fdba443588155e15dee8e5352](http://dx.doi.org/10.5285/3628cb2fdba443588155e15dee8e5352)  \n\n[ESA CCI Fire ECV Project website](http://www.esa-fire-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/3628cb2fdba443588155e15dee8e5352)"
   },
   {
@@ -37,8 +37,8 @@
   {
     "id": "cloud.cfc",
     "type": "Upper-air Atmosphere",
-    "name": "Cloud Fraction",
-    "shortName": "Clouds",
+    "name": "Cloud Fraction*",
+    "shortName": "Clouds*",
     "description": "**Variable Shown:**  Cloud Fraction  \n**Time Span:** 1982-01 – 2016-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Version:** 3.0  \n\n[ESA CCI Cloud ECV Project website](http://www.esa-cloud-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/004fd44ff5124174ad3c03dd2c67d548)"
   },
   {
@@ -51,8 +51,8 @@
   {
     "id": "ozone.atmosphere_mole_content_of_ozone",
     "type": "Atmospheric Composition",
-    "name": "Ozone",
-    "shortName": "Ozone",
+    "name": "Ozone*",
+    "shortName": "Ozone*",
     "description": "Ozone is an important trace gas in the atmosphere and protects life on Earth by absorbing most of the biologically harmful ultraviolet sunlight. In the framework of ESA’s Climate Change Initiative a high-quality global total ozone data set has been generated from space-based observations that cover the period from 1995 to present. The data record can be used to investigate the long-term evolution of ozone in the atmosphere, which is intimately coupled to climate change. Of particular interest is the search for signs of recovery from the severe thinning and damage of the ozone layer, that was caused by human activities.\n\n\n**Variable Shown:** Mean Total Ozone Column in Dobson  ts  \n**Time Span:** 1996-03 – 2011-06  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Version:** 1  \n\n[ESA CCI Ozone ECV Project website](http://cci.esa.int/ozone)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/0d2260ad4e2c42b6b14fe5b3308f5eaa)"
   },
   {
@@ -93,8 +93,8 @@
   {
     "id": "land_cover.lccs_class",
     "type": "Biosphere",
-    "name": "Land Cover",
-    "shortName": "Land Cover",
+    "name": "Land Cover*",
+    "shortName": "Land Cover*",
     "description": "**Variable Shown:** Land cover class defined in LCCS  \n**Time Span:** 1992-01 – 2015-12  \n**Temporal resolution:** yearly  \n**Geographic Extent:** global  \n**Spatial Resolution:** 300m  \n**Version:** 2.0.7  \n\n[ESA CCI Landcover ECV Project website](https://www.esa-landcover-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/b382ebe6679d44b8b0e68ea4ef4b701c)\n\n**Detailed Legend:**  \n<style>\n    .dot {\n        height: 10px;\n        width: 10px;\n        border-radius: 50%;\n        display: inline-block;\n        margin-right: 5px;\n        vertical-align: middle;\n    }\n</style>\n<div class=\"dot\" style=\"background: rgb(0, 0, 0);\"></div>No data<br>\n<div class=\"dot\" style=\"background: rgb(255, 255, 100);\"></div>Cropland, rainfed<br>\n<div class=\"dot\" style=\"background: rgb(255, 255, 100);\"></div>Herbaceous cover<br>\n<div class=\"dot\" style=\"background: rgb(255, 255, 0);\"></div>Tree or shrub cover<br>\n<div class=\"dot\" style=\"background: rgb(170, 240, 240);\"></div>Cropland, irrigated or post-flooding<br>\n<div class=\"dot\" style=\"background: rgb(220, 240, 100);\"></div>Mosaic cropland (&gt;50%) / natural vegetation (tree, shrub, herbaceous cover) (&lt;50%)<br>\n<div class=\"dot\" style=\"background: rgb(200, 200, 100);\"></div>Mosaic natural vegetation (tree, shrub, herbaceous cover) (&gt;50%) / cropland (&lt;50%) <br>\n<div class=\"dot\" style=\"background: rgb(0, 100, 0);\"></div>Tree cover, broadleaved, evergreen, closed to open (&gt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 160, 0);\"></div>Tree cover, broadleaved, deciduous, closed to open (&gt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 160, 0);\"></div>Tree cover, broadleaved, deciduous, closed (&gt;40%)<br>\n<div class=\"dot\" style=\"background: rgb(170, 200, 0);\"></div>Tree cover, broadleaved, deciduous, open (15-40%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 60, 0);\"></div>Tree cover, needleleaved, evergreen, closed to open (&gt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 60, 0);\"></div>Tree cover, needleleaved, evergreen, closed (&gt;40%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 80, 0);\"></div>Tree cover, needleleaved, evergreen, open (15-40%)<br>\n<div class=\"dot\" style=\"background: rgb(40, 80, 0);\"></div>Tree cover, needleleaved, deciduous, closed to open (&gt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(40, 80, 0);\"></div>Tree cover, needleleaved, deciduous, closed (&gt;40%)<br>\n<div class=\"dot\" style=\"background: rgb(40, 100, 0);\"></div>Tree cover, needleleaved, deciduous, open (15-40%)<br>\n<div class=\"dot\" style=\"background: rgb(120, 130, 0);\"></div>Tree cover, mixed leaf type (broadleaved and needleleaved)<br>\n<div class=\"dot\" style=\"background: rgb(140, 160, 0);\"></div>Mosaic tree and shrub (&gt;50%) / herbaceous cover (&lt;50%)<br>\n<div class=\"dot\" style=\"background: rgb(190, 150, 0);\"></div>Mosaic herbaceous cover (&gt;50%) / tree and shrub (&lt;50%)<br>\n<div class=\"dot\" style=\"background: rgb(150, 100, 0);\"></div>Shrubland<br>\n<div class=\"dot\" style=\"background: rgb(120, 75, 0);\"></div>Shrubland evergreen<br>\n<div class=\"dot\" style=\"background: rgb(150, 100, 0);\"></div>Shrubland deciduous<br>\n<div class=\"dot\" style=\"background: rgb(255, 180, 50);\"></div>Grassland<br>\n<div class=\"dot\" style=\"background: rgb(255, 220, 210);\"></div>Lichens and mosses<br>\n<div class=\"dot\" style=\"background: rgb(255, 235, 175);\"></div>Sparse vegetation (tree, shrub, herbaceous cover) (&lt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(255, 200, 100);\"></div>Sparse tree (&lt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(255, 210, 120);\"></div>Sparse shrub (&lt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(255, 235, 175);\"></div>Sparse herbaceous cover (&lt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 120, 90);\"></div>Tree cover, flooded, fresh or brakish water<br>\n<div class=\"dot\" style=\"background: rgb(0, 150, 120);\"></div>Tree cover, flooded, saline water<br>\n<div class=\"dot\" style=\"background: rgb(0, 220, 130);\"></div>Shrub or herbaceous cover, flooded, fresh/saline/brakish water<br>\n<div class=\"dot\" style=\"background: rgb(195, 20, 0);\"></div>Urban areas<br>\n<div class=\"dot\" style=\"background: rgb(255, 245, 215);\"></div>Bare areas<br>\n<div class=\"dot\" style=\"background: rgb(220, 220, 220);\"></div>Consolidated bare areas<br>\n<div class=\"dot\" style=\"background: rgb(255, 245, 215);\"></div>Unconsolidated bare areas<br>\n<div class=\"dot\" style=\"background: rgb(0, 70, 200);\"></div>Water bodies<br>\n<div class=\"dot\" style=\"background: rgb(255, 255, 255);\"></div>Permanent snow and ice<br>\n"
   },
   {
@@ -107,8 +107,8 @@
   {
     "id": "snow.swe",
     "type": "Cryosphere",
-    "name": "Snow",
-    "shortName": "Snow",
+    "name": "Snow*",
+    "shortName": "Snow*",
     "description": "**Variable Shown:** Snow Water Equivalent (mm)  \n**Time Span:** 1979-01 – 2018-05  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global\n**Spatial Resolution:** 15km - 69km  \n**Version:** 1.0  \n\n[ESA CCI Snow ECV Project website](http://cci.esa.int/snow)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/fa20aaa2060e40cabf5fedce7a9716d0)"
   },
   {
@@ -119,38 +119,10 @@
     "description": "Biomass is the weight of living material in vegetation, which for forests is mainly contained in the\nwoody parts of the trees. Only above-ground biomass (AGB) can be estimated from space (and in\npractice also for most on-ground estimates). Quantitative information on forest AGB is crucial\nfor understanding climate change, since loss of AGB caused by deforestation and forest degradation\nis second only to fossil fuel burning as a source of greenhouse gases, while CO&#8322; taken from the\natmosphere by forest growth and stored in woody biomass helps to slow climate warming.\n\nThe map shows estimated forest AGB in 2017 derived mainly from the combination of the ALOS\nPALSAR-2 L-band radar and the Sentinel-1 C-band radars, with support from a range of other sensors\nand environmental datasets.\n\n**Variable Shown:** Above-ground biomass in Mg/ha  \n**Time Span:** 2017  \n**Temporal resolution:** yearly  \n**Geographic Extent:** global  \n**Grid Spacing:** 100m  \n**Version:** 1  \n**DOI:** [doi:10.5285/bedc59f37c9545c981a839eb552e4084](http://dx.doi.org/10.5285/bedc59f37c9545c981a839eb552e4084)\n\n[ESA CCI Biomass ECV Project website](http://cci.esa.int/biomass)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/bedc59f37c9545c981a839eb552e4084)"
   },
   {
-    "id": "greenhouse.xco2",
-    "type": "Atmospheric Composition",
-    "name": "Greenhouse Gases – CO2",
-    "shortName": "Greenhouse Gases – CO2",
-    "description": "**Variable Shown:** Column-Average Dry-Air Mole Fraction of Atmospheric Carbon Dioxide in Dry Air  \n**Time Span:** 2015-01 – 2018-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global\n**Version:** 8  \n\n[ESA CCI Greenhouse Gases ECV Project website](http://cci.esa.int/ghg)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/b06213c3f3934a689f89ab22aa50e471)"
-  },
-  {
-    "id": "greenhouse.xch4",
-    "type": "Atmospheric Composition",
-    "name": "Greenhouse - CH4",
-    "shortName": "Greenhouse - CH4",
-    "description": "**Variable Shown:** Column-Averaged Dry Air Mole Fraction of Atmospheric Methane  \n**Time Span:** 2015-01 – 2018-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global\n**Version:** 1.2  \n\n[ESA CCI Greenhouse Gases ECV Project website](http://cci.esa.int/ghg)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/3534bbf43fa14e40bc61944eaf664511)"
-  },
-  {
-    "id": "lakes.lake_surface_water_temperature",
-    "type": "Hydrosphere",
-    "name": "Lakes Water Temperature",
-    "shortName": "Lakes Temperature",
-    "description": ""
-  },
-  {
-    "id": "lakes.lake_chla_mean",
-    "type": "Hydrosphere",
-    "name": "Lakes Color",
-    "shortName": "Lakes Color",
-    "description": ""
-  },
-  {
     "id": "ozone.ozone_profile",
     "type": "Atmospheric Composition",
-    "name": "Ozone Profile",
-    "shortName": "Ozone Profile",
+    "name": "Ozone Profile*",
+    "shortName": "Ozone Profile*",
     "description": ""
   }
 ]
