@@ -55,12 +55,5 @@
     "description": "",
     "image": "assets/soilmoisture_large_14.jpg",
     "tags": ["satellite-orbits", "sensors", "electromagnetic-spectrum", "climate-modelling"]
-  },
-  {
-    "id": "debug",
-    "title": "Debug",
-    "description": "Test story",
-    "image": "assets/story.jpg",
-    "tags": []
   }
 ]
