@@ -3,6 +3,9 @@ import React, {FunctionComponent} from 'react';
 import {RemoveIcon} from '../../main/icons/remove-icon';
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
 import config from '../../../config/main';
+import {isElectron} from '../../../libs/electron/is-electron';
+import {isOffline} from '../../../libs/electron/is-offline';
+import {getOfflineLayerIconUrl} from '../../../libs/electron/get-offline-layer-icon-url';
 
 import {LayerListItem} from '../../../types/layer-list';
 
@@ -19,8 +22,13 @@ const SelectedLayerListItem: FunctionComponent<Props> = ({
   isCompareSelected,
   onRemove
 }) => {
-  const layerId = layer.id;
-  const layerIconUrl = replaceUrlPlaceholders(config.api.layerIcon, {layerId});
+  const layerIconTemplate =
+    isElectron() && isOffline()
+      ? getOfflineLayerIconUrl()
+      : config.api.layerIcon;
+  const layerIconUrl = replaceUrlPlaceholders(layerIconTemplate, {
+    id: layer.id
+  });
 
   return (
     <div className={styles.selectedLayerListItem}>

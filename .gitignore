@@ -7,3 +7,4 @@ storage/**/*.zip
 download
 *.ipynb
 .DS_Store
+assets/legend-images/

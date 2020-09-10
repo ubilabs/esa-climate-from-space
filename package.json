@@ -28,7 +28,7 @@
     "clean:story-packages": "find ./storage -type f -name \"*.zip\" -delete",
     "download-stories": "gsutil -m cp -r gs://esa-cfs-storage/$npm_package_version/stories ./storage/ && npm run clean:story-packages",
     "upload-stories": "./scripts/confirm-storage-upload.sh && npm run story-packages && find ./storage/stories -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/stories/* gs://esa-cfs-storage/$npm_package_version/stories/ && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/stories/ && npm run clean:story-packages",
-    "upload-layers": "find ./storage -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers && gsutil -m cp -r ./storage/legend-images/* gs://esa-cfs-storage/$npm_package_version/legend-images && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/",
+    "upload-layers": "find ./storage -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers && && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/",
     "optimize-story-images": "./scripts/optimize-story-images.sh"
   },
   "repository": {
