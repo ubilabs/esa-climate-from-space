@@ -18,3 +18,12 @@ do
 
   python ./data/drop-unused-vars.py --file $FILENAME --variable burned_area
 done
+
+
+# use corrected calulcation files for three months in 2019
+curl --silent http://dap.ceda.ac.uk/neodc/esacci/fire/data/burned_area/MODIS/grid/v5.1/2019/new-corrected/20191001-ESACCI-L4_FIRE-BA-MODIS-fv5.1.nc > $OUTPUT_FOLDER/20191001.nc
+python ./data/drop-unused-vars.py --file $OUTPUT_FOLDER/20191001.nc --variable burned_area
+curl --silent http://dap.ceda.ac.uk/neodc/esacci/fire/data/burned_area/MODIS/grid/v5.1/2019/new-corrected/20191101-ESACCI-L4_FIRE-BA-MODIS-fv5.1.nc > $OUTPUT_FOLDER/20191101.nc
+python ./data/drop-unused-vars.py --file $OUTPUT_FOLDER/20191101.nc --variable burned_area
+curl --silent http://dap.ceda.ac.uk/neodc/esacci/fire/data/burned_area/MODIS/grid/v5.1/2019/new-corrected/20191201-ESACCI-L4_FIRE-BA-MODIS-fv5.1.nc > $OUTPUT_FOLDER/20191201.nc
+python ./data/drop-unused-vars.py --file $OUTPUT_FOLDER/20191201.nc --variable burned_area
