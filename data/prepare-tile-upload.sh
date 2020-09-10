@@ -15,6 +15,10 @@ find /data/images/$variable -name '*.json' -delete
 cp -r /data/images/$variable/* /data/upload/$layer/tiles/
 # copy layer metadata
 cp metadata.json /data/upload/$layer/metadata.json
+# copy layer icon
+cp /workspace/assets/layer-icons/$layer.png /data/upload/$layer/icon.png
+# copy legend image
+cp /workspace/assets/legend-images/$variable.png /data/upload/$layer/legend.png
 
 cd /data/upload && zip -r -q ./$layer/package.zip ./*
 

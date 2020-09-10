@@ -64,7 +64,7 @@ export default {
     layerImage: `${baseUrlTiles}/{id}/tiles/{timeIndex}/full.png`,
     layerGalleryImage: `${baseUrlTiles}/{id}/tiles/{timeIndex}/full.jpg`,
     layerOfflinePackage: `${baseUrlTiles}/{id}/package.zip`,
-    layerIcon: `${baseUrlStorage}/layers/icons/{layerId}.png`,
+    layerIcon: `${baseUrlTiles}/{id}/icon.png`,
     storyOfflinePackage: `${baseUrlStorage}/stories/{id}/package.zip`,
     storyMediaBase: `${baseUrlStorage}/stories/{id}`,
     stories: `${baseUrlStorage}/stories/stories-{lang}.json`,
@@ -80,7 +80,7 @@ export default {
     twitter:
       'http://twitter.com/intent/tweet?text=ESA%20Climate%20From%20Space&url={currentUrl}'
   },
-  legendImage: `${baseUrlStorage}/legend-images/{variable}.png`,
+  legendImage: `${baseUrlTiles}/{id}/legend.png`,
   downloadUrls,
   localStorageLanguageKey: 'language'
 };
