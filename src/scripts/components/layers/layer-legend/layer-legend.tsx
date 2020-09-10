@@ -46,7 +46,7 @@ const LayerLegend: FunctionComponent<Props> = ({
   const imageUrlTemplate =
     isElectron() && isOffline()
       ? getOfflineLegendImageUrl()
-      : config.api.layerIcon;
+      : config.legendImage;
   const imageUrl = replaceUrlPlaceholders(imageUrlTemplate, {id});
 
   return (
