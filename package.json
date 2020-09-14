@@ -1,6 +1,6 @@
 {
   "name": "esa-climate-from-space",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "dist-src-electron/main.js",
   "scripts": {
@@ -26,9 +26,9 @@
     "electron:download-basemaps": "gsutil -m cp -r gs://esa-cfs-tiles/${npm_package_version}/basemaps ./dist",
     "story-packages": "./scripts/create-story-packages.sh",
     "clean:story-packages": "find ./storage -type f -name \"*.zip\" -delete",
-    "download-stories": "gsutil -m cp -r gs://esa-cfs-storage/$npm_package_version/stories ./storage/ && npm run clean:story-packages",
+    "download-stories": "gsutil -m rsync -x \".*stories-.*\\.json$\" -r gs://esa-cfs-storage/$npm_package_version/stories ./storage/stories/ && npm run clean:story-packages",
     "upload-stories": "./scripts/confirm-storage-upload.sh && npm run story-packages && find ./storage/stories -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/stories/* gs://esa-cfs-storage/$npm_package_version/stories/ && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/stories/ && npm run clean:story-packages",
-    "upload-layers": "find ./storage -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers && && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/",
+    "upload-layers": "find ./storage -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers && gsutil -m setmeta -r -h \"Cache-Control: no-cache\" gs://esa-cfs-storage/$npm_package_version/",
     "optimize-story-images": "./scripts/optimize-story-images.sh"
   },
   "repository": {
