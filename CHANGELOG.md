@@ -1,3 +1,12 @@
+## [0.9.1](https://github.com/ubilabs/esa-climate-from-space/compare/v0.9.0...v0.9.1) (2020-09-14)
+
+
+### Features
+
+* **stories:** content update ([#618](https://github.com/ubilabs/esa-climate-from-space/issues/618)) ([7908efa](https://github.com/ubilabs/esa-climate-from-space/commit/7908efa8e3f2bb4b1182638f5995f379145d38dc))
+
+
+
 # [0.9.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.8.2...v0.9.0) (2020-09-10)
 
 
