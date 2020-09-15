@@ -16,9 +16,9 @@
   {
     "id": "soil_moisture.Anomaly",
     "type": "Hydrosphere",
-    "name": "Soil Moisture Anomaly",
-    "shortName": "Soil Moisture Anomaly",
-    "description": "**Variable Shown:** Volumetric Soil Moisture Anomaly in m3/m3  \n**Time Span:** 1978-11 – 2019-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:**  0.25 degrees  \n**Version:** 4.7  \n\n[ESA CCI Soil Moisture ECV Project website](https://www.esa-soilmoisture-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/2d4a50f390064820a9dcc2fcf7ac4b18)"
+    "name": "Soil Moisture – Anomalies*",
+    "shortName": "Soil Moisture – Anomalies*",
+    "description": "**Variable Shown:**  \n**Time Span:** November 1978 – December 2019  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:**  0.25 degrees  \n**Version:**   \n\n[ESA CCI Soil Moisture ECV Project website](https://climate.esa.int/projects/soil-moisture/)  \n[Data in the Open Data Portal](#)"
   },
   {
     "id": "sst.analysed_sst",
