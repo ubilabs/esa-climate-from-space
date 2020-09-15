@@ -145,14 +145,16 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    }
+    },
+    "legendValues": ["400 ppm", "395", "390", "385", "380", "375", "370", "365"]
   },
   "greenhouse.xch4": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    }
+    },
+    "legendValues": ["1825 ppm", "1800", "1775", "1750", "1725", "1700", "1675", "1650"]
   },
   "lakes.lake_surface_water_temperature": {
     "colorMap": "custom",
