@@ -70,14 +70,6 @@
     },
     "legendValues": ["0.4 m³/m³", "0"]
   },
-  "ozone.atmosphere_mole_content_of_ozone": {
-    "colorMap": "viridis",
-    "basemap": "atmosphere",
-    "timeFormat": {
-      "year": "numeric",
-      "month": "long"
-    }
-  },
   "land_cover.lccs_class": {
     "colorMap": "gist_rainbow",
     "basemap": "land",
@@ -182,6 +174,13 @@
       "year": "numeric",
       "month": "long",
       "day": "numeric"
+    }
+  },
+  "ozone.total_ozone_column": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long"
     }
   }
 }

@@ -12,6 +12,8 @@ VERSION=0.8.2
 # Download files
 gsutil -m cp gs://esa-cfs-tiles/$VERSION/$ID/metadata.json ./download/$ID/
 gsutil -m cp -r gs://esa-cfs-tiles/$VERSION/$ID/tiles ./download/$ID/
+cp ./assets/layer-icons/$ID.png ./download/$ID/icon.png
+cp ./assets/legend-images/ozone_profile.png ./download/$ID/legend.png
 
 # zip
 cd download/
