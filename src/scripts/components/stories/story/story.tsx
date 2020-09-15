@@ -1,5 +1,6 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
+// import cx from 'classnames';
 
 import DataViewer from '../../main/data-viewer/data-viewer';
 import {useStoryParams} from '../../../hooks/use-story-params';
@@ -20,6 +21,7 @@ import {StoryMode} from '../../../types/story-mode';
 import {Slide, Story as StoryType} from '../../../types/story';
 import {GlobeProjection} from '../../../types/globe-projection';
 import {SlideType} from '../../../types/slide-type';
+import TimeSlider from '../../layers/time-slider/time-slider';
 
 import styles from './story.styl';
 
@@ -72,13 +74,21 @@ const Story: FunctionComponent = () => {
     } else if (slide.type === SlideType.Video && slide.videoId) {
       return <StoryVideo videoId={slide.videoId} />;
     }
+    // const timesliderClasses = cx(slide.layerDescription && styles.spacedSlider);
 
     return (
       <div className={styles.globeContainer}>
-        <DataViewer markers={slide.markers} backgroundColor={'#000000'} />
-        {slide.layerDescription && (
-          <LayerDescription layerDescription={slide.layerDescription} />
-        )}
+        <DataViewer
+          hideNavigation
+          markers={slide.markers}
+          backgroundColor={'#000000'}
+        />
+        <div className={styles.layerDetails}>
+          <TimeSlider className={styles.storySlider} />
+          {slide.layerDescription && (
+            <LayerDescription layerDescription={slide.layerDescription} />
+          )}
+        </div>
       </div>
     );
   };
