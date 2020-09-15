@@ -184,6 +184,9 @@ const Globe: FunctionComponent<Props> = ({
     // min/max is opposite of how we usually use it.
     scopedViewer.scene.screenSpaceCameraController.minimumZoomDistance = 1000000;
     scopedViewer.scene.screenSpaceCameraController.maximumZoomDistance = 30000000;
+    // fix zoom in bug (https://github.com/CesiumGS/cesium/issues/3984)
+    // @ts-ignore
+    scopedViewer.scene.screenSpaceCameraController._minimumZoomRate = 10000;
 
     // save viewer reference
     setViewer(scopedViewer);
