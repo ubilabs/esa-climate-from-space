@@ -182,5 +182,13 @@
       "year": "numeric",
       "month": "long"
     }
+  },
+  "soil_moisture.Anomaly": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long"
+    },
+    "legendValues": ["> 0.1 litres/m³", "-0.1"]
   }
 }
