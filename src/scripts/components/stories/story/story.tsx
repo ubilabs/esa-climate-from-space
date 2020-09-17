@@ -1,6 +1,5 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-// import cx from 'classnames';
 
 import DataViewer from '../../main/data-viewer/data-viewer';
 import {useStoryParams} from '../../../hooks/use-story-params';
@@ -74,7 +73,6 @@ const Story: FunctionComponent = () => {
     } else if (slide.type === SlideType.Video && slide.videoId) {
       return <StoryVideo videoId={slide.videoId} />;
     }
-    // const timesliderClasses = cx(slide.layerDescription && styles.spacedSlider);
 
     return (
       <div className={styles.globeContainer}>

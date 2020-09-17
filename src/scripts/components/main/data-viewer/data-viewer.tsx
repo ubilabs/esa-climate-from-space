@@ -95,7 +95,6 @@ const DataViewer: FunctionComponent<Props> = ({
   // or when one of the selected layers is a globe. Do not show globe navigation
   // when the only visible layer is of type "gallery"
   const showGlobeNavigation =
-    !hideNavigation ||
     (!mainLayerDetails && !compareLayerDetails) ||
     [mainLayerDetails, compareLayerDetails].some(
       layer => layer && layer.type !== LayerType.Gallery
@@ -168,7 +167,7 @@ const DataViewer: FunctionComponent<Props> = ({
           action: () => setIsMainActive(false)
         })}
 
-      {hideNavigation ? showGlobeNavigation : <GlobeNavigation />}
+      {!hideNavigation && showGlobeNavigation && <GlobeNavigation />}
     </div>
   );
 };
