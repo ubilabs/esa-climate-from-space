@@ -72,9 +72,33 @@
   color: $textDefault
   font-size: 10px
 
+.credits
+  position: absolute
+  bottom: emCalc(20px)
+  left: emCalc(32px)
+  color: $textDefault
+  font-size: 10px
+
+  svg
+    height: emCalc(30px)
+    fill: $textDefault
+
+    &:hover
+      fill: $textColor
+
+.creditsText
+  margin: emCalc(5px)
+  font-size: 10px
+
 @media screen and (max-width: 480px)
   .menuContainer
     width: 100%
 
   .menuList:first-child
     display: none
+
+  .logo
+    bottom: emCalc(48px)
+
+  .credits
+    display: flex

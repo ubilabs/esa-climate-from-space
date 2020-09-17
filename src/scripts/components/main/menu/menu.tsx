@@ -14,6 +14,7 @@ import {WindowsIcon} from '../icons/windows-icon';
 import {LinuxIcon} from '../icons/linux-icon';
 import {AppleIcon} from '../icons/apple-icon';
 import config from '../../../config/main';
+import {Ubilabslogo} from '../icons/ubilabs-logo';
 
 import styles from './menu.styl';
 
@@ -134,6 +135,10 @@ const Menu: FunctionComponent = () => {
           </React.Fragment>
         )}
       </nav>
+      <div className={styles.credits}>
+        <p className={styles.creditsText}>Made by</p>
+        <Ubilabslogo />
+      </div>
       <div className={styles.logo}>
         <CCILogo />
       </div>
