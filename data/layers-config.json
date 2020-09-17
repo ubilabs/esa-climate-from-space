@@ -70,14 +70,6 @@
     },
     "legendValues": ["0.4 m³/m³", "0"]
   },
-  "ozone.atmosphere_mole_content_of_ozone": {
-    "colorMap": "viridis",
-    "basemap": "atmosphere",
-    "timeFormat": {
-      "year": "numeric",
-      "month": "long"
-    }
-  },
   "land_cover.lccs_class": {
     "colorMap": "gist_rainbow",
     "basemap": "land",
@@ -153,14 +145,16 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    }
+    },
+    "legendValues": ["400 ppm", "395", "390", "385", "380", "375", "370", "365"]
   },
   "greenhouse.xch4": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    }
+    },
+    "legendValues": ["1825 ppm", "1800", "1775", "1750", "1725", "1700", "1675", "1650"]
   },
   "lakes.lake_surface_water_temperature": {
     "colorMap": "custom",
@@ -183,5 +177,20 @@
       "month": "long",
       "day": "numeric"
     }
+  },
+  "ozone.total_ozone_column": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long"
+    }
+  },
+  "soil_moisture.Anomaly": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long"
+    },
+    "legendValues": ["> 0.1 litres/m³", "-0.1"]
   }
 }

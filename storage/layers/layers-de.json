@@ -14,6 +14,13 @@
     "description": "**Variable Shown:** Volumetric Soil Moisture in m3/m3  \n**Time Span:** 1978-11 – 2019-12  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:**  0.25 degrees  \n**Version:** 4.7  \n\n[ESA CCI Soil Moisture ECV Project website](https://www.esa-soilmoisture-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/2d4a50f390064820a9dcc2fcf7ac4b18)"
   },
   {
+    "id": "soil_moisture.Anomaly",
+    "type": "Hydrosphere",
+    "name": "Soil Moisture – Anomalies*",
+    "shortName": "Soil Moisture – Anomalies*",
+    "description": "**Variable Shown:**  \n**Time Span:** November 1978 – December 2019  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:**  0.25 degrees  \n**Version:**   \n\n[ESA CCI Soil Moisture ECV Project website](https://climate.esa.int/projects/soil-moisture/)  \n[Data in the Open Data Portal](#)"
+  },
+  {
     "id": "sst.analysed_sst",
     "type": "Surface Ocean Physics",
     "name": "Sea Surface Temperature",
@@ -47,13 +54,6 @@
     "name": "Sea Level",
     "shortName": "Sea Level",
     "description": "The global mean level of the oceans is an indicator of climate change. It incorporates the reactions from several different components of the climate system. Precise monitoring of changes in the mean level of the oceans is vitally important for understanding not just the climate but also the socioeconomic consequences of any rise in sea level. The ESA Sea Level Climate Change Initiative project has produced a stable and homogeneous sea level Essential Climate Variable (ECV) product. This is a multi-mission altimeter time series of monthly maps of sea level anomalies over the global ocean from 1993 to 2015.\n\n**Variable Shown:** Monthly Sea Level Anomalies in Meters  \n**Time Span:** January 1993 – December 2015  \n**Temporal Resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:** 0.25 degrees  \n**Version:** 2.0  \n**DOI:** [10.5194/os-11-67-2015](https://dx.doi.org/10.5194/os-11-67-2015)  \n\n[ESA CCI Sea Level ECV Project website](http://www.esa-sealevel-cci.org/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/142052b9dc754f6da47a631e35ec4609)"
-  },
-  {
-    "id": "ozone.atmosphere_mole_content_of_ozone",
-    "type": "Atmospheric Composition",
-    "name": "Ozone*",
-    "shortName": "Ozone*",
-    "description": "Ozone is an important trace gas in the atmosphere and protects life on Earth by absorbing most of the biologically harmful ultraviolet sunlight. In the framework of ESA’s Climate Change Initiative a high-quality global total ozone data set has been generated from space-based observations that cover the period from 1995 to present. The data record can be used to investigate the long-term evolution of ozone in the atmosphere, which is intimately coupled to climate change. Of particular interest is the search for signs of recovery from the severe thinning and damage of the ozone layer, that was caused by human activities.\n\n\n**Variable Shown:** Mean Total Ozone Column in Dobson  ts  \n**Time Span:** 1996-03 – 2011-06  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Version:** 1  \n\n[ESA CCI Ozone ECV Project website](http://cci.esa.int/ozone)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/0d2260ad4e2c42b6b14fe5b3308f5eaa)"
   },
   {
     "id": "sea_state.swh_mean",
@@ -124,5 +124,26 @@
     "name": "Ozone Profile*",
     "shortName": "Ozone Profile*",
     "description": ""
+  },
+  {
+    "id": "greenhouse.xco2",
+    "type": "Atmospheric Composition",
+    "name": "Carbon Dioxide (CO2)*",
+    "shortName": "Carbon Dioxide (CO2)*",
+    "description": "**Variable shown:** Column-Average Dry-Air Mole Fraction of Atmospheric Carbon Dioxide  \n**Time span:** January 2003 – December 2018  \n**Temporal resolution:** monthly  \n**Geographic extent:** global  \n**Geographic resolution:** 2° x 2°   \n**Version:** 4.1  \n**DOI:** [10.5194/amt-13-789-2020](https://doi.org/10.5194/amt-13-789-2020)  \n**Funding:** ESA CCI and EU via Copernicus Climate Change Service and H2020 project 4C (grant agreement no. 821003).  \n**Acknowledgement:**  \nReuter, M., Buchwitz, M., Schneising, O., Noel, S., Bovensmann, H., Burrows, J. P., Boesch, H., Di Noia, A., Anand, J., Parker, R. J., Somkuti, P., Wu, L., Hasekamp, O. P., Aben, I., Kuze, A., Suto, H., Shiomi, K., Yoshida, Y., Morino, I., Crisp, D., O'Dell, C. W., Notholt, J., Petri, C., Warneke, T., Velazco, V. A., Deutscher, N. M., Griffith, D. W. T., Kivi, R., Pollard, D. F., Hase, F., Sussmann, R., Te, Y. V., Strong, K., Roche, S., Sha, M. K., De Maziere, M., Feist, D. G., Iraci, L. T., Roehl, C. M., Retscher, C., and Schepers, D.: Ensemble-based satellite-derived carbon dioxide and methane column-averaged dry-air mole fraction data sets (2003-2018) for carbon and climate applications, Atmos. Meas. Tech., 13, 789-819, https://doi.org/10.5194/amt-13-789-2020, 2020.\n\n[ESA CCI Cloud ECV Project website](https://climate.esa.int/en/projects/ghgs/)  \n[CCI Greenhouse Gases Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/0508f3dd991144aa80346007a415fb07)  \n[Data in the Copernicus Climate Data Store](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-carbon-dioxide?tab=overview)"
+  },
+  {
+    "id": "greenhouse.xch4",
+    "type": "Atmospheric Composition",
+    "name": "Methane (CH4)*",
+    "shortName": "Methane (CH4)*",
+    "description": "**Variable shown:** Column-Average Dry-Air Mole Fraction of Atmospheric Methane  \n**Time span:** January 2003 – December 2018  \n**Temporal resolution:** monthly  \n**Geographic extent:** global  \n**Geographic resolution:** 2° x 2°   \n**Version:** 4.1  \n**DOI:** [10.5194/amt-13-789-2020](https://doi.org/10.5194/amt-13-789-2020)  \n**Funding:** ESA CCI and EU via Copernicus Climate Change Service and H2020 project 4C (grant agreement no. 821003).  \n**Acknowledgement:**  \nReuter, M., Buchwitz, M., Schneising, O., Noel, S., Bovensmann, H., Burrows, J. P., Boesch, H., Di Noia, A., Anand, J., Parker, R. J., Somkuti, P., Wu, L., Hasekamp, O. P., Aben, I., Kuze, A., Suto, H., Shiomi, K., Yoshida, Y., Morino, I., Crisp, D., O'Dell, C. W., Notholt, J., Petri, C., Warneke, T., Velazco, V. A., Deutscher, N. M., Griffith, D. W. T., Kivi, R., Pollard, D. F., Hase, F., Sussmann, R., Te, Y. V., Strong, K., Roche, S., Sha, M. K., De Maziere, M., Feist, D. G., Iraci, L. T., Roehl, C. M., Retscher, C., and Schepers, D.: Ensemble-based satellite-derived carbon dioxide and methane column-averaged dry-air mole fraction data sets (2003-2018) for carbon and climate applications, Atmos. Meas. Tech., 13, 789-819, https://doi.org/10.5194/amt-13-789-2020, 2020.\n\n[ESA CCI Cloud ECV Project website](https://climate.esa.int/en/projects/ghgs/)  \n[CCI Greenhouse Gases Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/0508f3dd991144aa80346007a415fb07)  \n[Data in the Copernicus Climate Data Store](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-methane)"
+  },
+  {
+    "id": "ozone.total_ozone_column",
+    "type": "Atmospheric Composition",
+    "name": "Ozone*",
+    "shortName": "Ozone*",
+    "description": "Ozone is an important trace gas in the atmosphere and protects life on Earth by absorbing most of the biologically harmful ultraviolet sunlight. In the framework of ESA’s Climate Change Initiative a high-quality global total ozone data set has been generated from space-based observations that cover the period from 1995 to present. The data record can be used to investigate the long-term evolution of ozone in the atmosphere, which is intimately coupled to climate change. Of particular interest is the search for signs of recovery from the severe thinning and damage of the ozone layer, that was caused by human activities.\n\n\n**Variable Shown:** Mean Total Ozone Column in Dobson  ts  \n**Time Span:** 1996-03 – 2011-06  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Version:** 1  \n\n[ESA CCI Ozone ECV Project website](http://cci.esa.int/ozone)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/0d2260ad4e2c42b6b14fe5b3308f5eaa)"
   }
 ]

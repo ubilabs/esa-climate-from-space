@@ -59,5 +59,6 @@
   "tags.satellite-orbits": "Satellitenorbit",
   "tags.sensors": "Sensoren",
   "tags.electromagnetic-spectrum": "Elektromagnetisches Spektrum",
-  "tags.climate-modelling": "Klimamodellierung"
+  "tags.climate-modelling": "Klimamodellierung",
+  "tags.geostationary-satellite": "Geostationäre Satelliten"
 }
