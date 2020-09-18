@@ -15,11 +15,13 @@ import {LinuxIcon} from '../icons/linux-icon';
 import {AppleIcon} from '../icons/apple-icon';
 import config from '../../../config/main';
 import {Ubilabslogo} from '../icons/ubilabs-logo';
+import Attributions from '../attributions/attributions';
 
 import styles from './menu.styl';
 
 const Menu: FunctionComponent = () => {
   const [showOverlay, setShowOverlay] = useState(false);
+  const [overlayContentType, setOverlayContentType] = useState('');
   // @ts-ignore - injected via webpack's define plugin
   const version = INFO_VERSION;
 
@@ -28,7 +30,11 @@ const Menu: FunctionComponent = () => {
       <nav className={styles.menuContainer}>
         {showOverlay ? (
           <Overlay onClose={() => setShowOverlay(false)}>
-            <AboutProject />
+            {overlayContentType === 'about' ? (
+              <AboutProject />
+            ) : (
+              <Attributions />
+            )}
           </Overlay>
         ) : (
           <React.Fragment>
@@ -101,7 +107,10 @@ const Menu: FunctionComponent = () => {
                 <Button
                   className={styles.menuButton}
                   label={'about'}
-                  onClick={() => setShowOverlay(true)}
+                  onClick={() => {
+                    setOverlayContentType('about');
+                    setShowOverlay(true);
+                  }}
                 />
               </li>
               <li className={styles.menuListItem}>
@@ -130,6 +139,16 @@ const Menu: FunctionComponent = () => {
                   className={styles.menuButton}>
                   <FormattedMessage id={'github'} />
                 </a>
+              </li>
+              <li className={styles.menuListItem}>
+                <Button
+                  className={styles.menuButton}
+                  label={'attributions'}
+                  onClick={() => {
+                    setOverlayContentType('attributions');
+                    setShowOverlay(true);
+                  }}
+                />
               </li>
             </ul>
           </React.Fragment>
