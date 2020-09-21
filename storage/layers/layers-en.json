@@ -18,7 +18,7 @@
     "type": "Hydrosphere",
     "name": "Soil Moisture – Anomalies*",
     "shortName": "Soil Moisture – Anomalies*",
-    "description": "**Variable Shown:**  \n**Time Span:** November 1978 – December 2019  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:**  0.25 degrees  \n**Version:**   \n\n[ESA CCI Soil Moisture ECV Project website](https://climate.esa.int/projects/soil-moisture/)  \n[Data in the Open Data Portal](#)"
+    "description": "**Variable Shown:** Anomaly  \n**Time Span:** November 1978 – December 2019  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:**  0.25 degrees  \n**Version:** 4.7   \n\n[ESA CCI Soil Moisture ECV Project website](https://climate.esa.int/projects/soil-moisture/)  \n[Soil Moisture Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/c256fcfeef24460ca6eb14bf0fe09572)"
   },
   {
     "id": "sst.analysed_sst",
