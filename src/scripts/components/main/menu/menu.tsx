@@ -20,7 +20,7 @@ import Attributions from '../attributions/attributions';
 import styles from './menu.styl';
 
 const Menu: FunctionComponent = () => {
-  const [overlayType, setOverlayType] = useState<string | null>('');
+  const [overlayType, setOverlayType] = useState<string | null>(null);
   // @ts-ignore - injected via webpack's define plugin
   const version = INFO_VERSION;
 
