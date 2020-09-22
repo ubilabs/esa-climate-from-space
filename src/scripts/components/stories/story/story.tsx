@@ -20,6 +20,7 @@ import {StoryMode} from '../../../types/story-mode';
 import {Slide, Story as StoryType} from '../../../types/story';
 import {GlobeProjection} from '../../../types/globe-projection';
 import {SlideType} from '../../../types/slide-type';
+import TimeSlider from '../../layers/time-slider/time-slider';
 
 import styles from './story.styl';
 
@@ -75,10 +76,17 @@ const Story: FunctionComponent = () => {
 
     return (
       <div className={styles.globeContainer}>
-        <DataViewer markers={slide.markers} backgroundColor={'#000000'} />
-        {slide.layerDescription && (
-          <LayerDescription layerDescription={slide.layerDescription} />
-        )}
+        <DataViewer
+          hideNavigation
+          markers={slide.markers}
+          backgroundColor={'#000000'}
+        />
+        <div className={styles.layerDetails}>
+          <TimeSlider className={styles.storySlider} />
+          {slide.layerDescription && (
+            <LayerDescription layerDescription={slide.layerDescription} />
+          )}
+        </div>
       </div>
     );
   };
