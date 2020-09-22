@@ -20,21 +20,16 @@ import Attributions from '../attributions/attributions';
 import styles from './menu.styl';
 
 const Menu: FunctionComponent = () => {
-  const [showOverlay, setShowOverlay] = useState(false);
-  const [overlayContentType, setOverlayContentType] = useState('');
+  const [overlayType, setOverlayType] = useState<string | null>('');
   // @ts-ignore - injected via webpack's define plugin
   const version = INFO_VERSION;
 
   return (
     <React.Fragment>
       <nav className={styles.menuContainer}>
-        {showOverlay ? (
-          <Overlay onClose={() => setShowOverlay(false)}>
-            {overlayContentType === 'about' ? (
-              <AboutProject />
-            ) : (
-              <Attributions />
-            )}
+        {overlayType ? (
+          <Overlay onClose={() => setOverlayType(null)}>
+            {overlayType === 'about' ? <AboutProject /> : <Attributions />}
           </Overlay>
         ) : (
           <React.Fragment>
@@ -107,10 +102,7 @@ const Menu: FunctionComponent = () => {
                 <Button
                   className={styles.menuButton}
                   label={'about'}
-                  onClick={() => {
-                    setOverlayContentType('about');
-                    setShowOverlay(true);
-                  }}
+                  onClick={() => setOverlayType('about')}
                 />
               </li>
               <li className={styles.menuListItem}>
@@ -144,10 +136,7 @@ const Menu: FunctionComponent = () => {
                 <Button
                   className={styles.menuButton}
                   label={'attributions'}
-                  onClick={() => {
-                    setOverlayContentType('attributions');
-                    setShowOverlay(true);
-                  }}
+                  onClick={() => setOverlayType('attributions')}
                 />
               </li>
             </ul>
