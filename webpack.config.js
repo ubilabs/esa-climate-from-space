@@ -97,7 +97,10 @@ module.exports = (env, {mode} = {}) => {
       sourcePrefix: ''
     },
     devServer: {
-      contentBase: [path.join(__dirname, 'dist'), path.join(__dirname, 'storage')],
+      contentBase: [
+        path.join(__dirname, 'dist'),
+        path.join(__dirname, 'storage')
+      ],
       contentBasePublicPath: ['/', '/storage'],
       port: 8080,
       watchContentBase: true
@@ -133,6 +136,10 @@ module.exports = (env, {mode} = {}) => {
         {
           from: './node_modules/cesium/Build/Cesium/Workers',
           to: './cesium/Workers'
+        },
+        {
+          from: './assets/images',
+          to: './assets/images'
         }
       ])
     ]
