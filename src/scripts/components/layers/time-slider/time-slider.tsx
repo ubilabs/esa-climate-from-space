@@ -30,11 +30,15 @@ import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 
 import styles from './time-slider.styl';
 
+interface Props {
+  className?: string;
+}
+
 // debounce the time update
 const DELAY = 200;
 
 // eslint-disable-next-line complexity
-const TimeSlider: FunctionComponent = () => {
+const TimeSlider: FunctionComponent<Props> = ({className = ''}) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const {mainId, compareId} = selectedLayerIds;
   const dispatch = useDispatch();
@@ -132,8 +136,10 @@ const TimeSlider: FunctionComponent = () => {
     rangeMain && rangeCompare && styles.compareInput
   );
 
+  const classes = cx(styles.timeSlider, className);
+
   return (
-    <div className={styles.timeSlider}>
+    <div className={classes}>
       {isPlaying && (
         <TimePlayback
           minTime={combined.min}

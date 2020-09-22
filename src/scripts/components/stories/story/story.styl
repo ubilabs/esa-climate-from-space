@@ -26,6 +26,26 @@
   height: 100%
   background-color: $plainBlack
 
+.layerDetails
+  position: absolute
+  right: 0
+  bottom: 0
+  left: 0
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  padding: inherit
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%)
+
+.storySlider
+  position: unset
+  padding: emCalc(40px) 0 emCalc(30px)
+  background: none
+
+  > div
+    min-width: 25%
+    width: 60%
+
 @media screen and (max-width: 480px)
   .main
     display: flex
@@ -33,8 +53,22 @@
     overflow-y: auto
 
     > :last-child
-      height: 300px
+      height: 350px
 
     > *
-      padding: 25px
+      padding: emCalc(10px) emCalc(25px) 0 emCalc(25px)
       width: inherit
+
+  .layerDetails
+    height: inherit
+    background: none
+    pointer-events: none
+
+    > *
+      pointer-events: all
+
+  .storySlider
+    position: absolute
+    right: 0
+    bottom: 0
+    padding: emCalc(40px) 0 emCalc(20px)
