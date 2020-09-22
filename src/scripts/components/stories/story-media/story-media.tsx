@@ -5,7 +5,7 @@ import {PreviousIcon} from '../../main/icons/previous-icon';
 import {NextIcon} from '../../main/icons/next-icon';
 import {FullscreenExitIcon} from '../../main/icons/fullscreen-exit-icon';
 import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
-import {getStoryMediaUrl} from '../../../libs/get-story-media-url';
+import {getStoryMediaUrl} from '../../../libs/get-story-urls';
 
 import styles from './story-media.styl';
 

@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
 import cx from 'classnames';
 
-import {getStoryMediaUrl} from '../../../libs/get-story-media-url';
+import {getStoryMediaUrl, getStoryLinkUrl} from '../../../libs/get-story-urls';
 import {useSlide} from '../../../hooks/use-slide';
 
 import {StoryMode} from '../../../types/story-mode';
@@ -29,11 +29,15 @@ const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
   const transformImageUri = (originalSrc: string) =>
     getStoryMediaUrl(storyId, originalSrc);
 
+  const transformLinkUri = (originalSrc: string) =>
+    getStoryLinkUrl(storyId, originalSrc);
+
   return (
     <div className={contentClasses}>
       <ReactMarkdown
         source={storyText}
         transformImageUri={transformImageUri}
+        transformLinkUri={transformLinkUri}
         linkTarget="_blank"
         allowedTypes={[
           'heading',
@@ -45,7 +49,8 @@ const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
           'image',
           'imageReference',
           'list',
-          'listItem'
+          'listItem',
+          'link'
         ]}
       />
     </div>

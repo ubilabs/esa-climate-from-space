@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import {getStoryMediaUrl} from '../../../libs/get-story-media-url';
+import {getStoryMediaUrl} from '../../../libs/get-story-urls';
 
 import {Slide} from '../../../types/story';
 

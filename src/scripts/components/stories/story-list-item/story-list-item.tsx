@@ -5,7 +5,7 @@ import cx from 'classnames';
 import StoryTags from '../story-tags/story-tags';
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
 import {DownloadButton} from '../../main/download-button/download-button';
-import {getStoryMediaUrl} from '../../../libs/get-story-media-url';
+import {getStoryMediaUrl} from '../../../libs/get-story-urls';
 import config from '../../../config/main';
 
 import {StoryListItem as StoryListItemType} from '../../../types/story-list';
