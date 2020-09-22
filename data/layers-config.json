@@ -176,7 +176,8 @@
       "year": "numeric",
       "month": "long",
       "day": "numeric"
-    }
+    },
+    "legendValues": ["3.0 ppm", "2.0", "1.0", "0.0"]
   },
   "ozone.total_ozone_column": {
     "colorMap": "custom",
