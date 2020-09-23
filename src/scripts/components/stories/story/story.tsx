@@ -65,6 +65,7 @@ const Story: FunctionComponent = () => {
     if (slide.type === SlideType.Image && slide.images) {
       return (
         <StoryMedia
+          mode={mode}
           images={slide.images}
           imageCaptions={slide.imageCaptions}
           storyId={story.id}
