@@ -48,8 +48,7 @@ const StoryFooter: FunctionComponent<Props> = ({
           previousSlideLink={previousSlideLink}
         />
       )}
-      {isShowcaseMode && autoPlayLink && (
-        // @ts-ignore
+      {isShowcaseMode && autoPlayLink && delay && (
         <Autoplay delay={delay} autoPlayLink={autoPlayLink} />
       )}
     </div>
