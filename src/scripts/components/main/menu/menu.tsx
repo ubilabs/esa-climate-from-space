@@ -144,7 +144,7 @@ const Menu: FunctionComponent = () => {
         )}
       </nav>
       <div className={styles.credits}>
-        <p className={styles.creditsText}>Made by</p>
+        <p className={styles.creditsText}>made by</p>
         <Ubilabslogo />
       </div>
       <div className={styles.logo}>
