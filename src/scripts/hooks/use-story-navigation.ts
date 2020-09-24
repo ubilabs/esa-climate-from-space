@@ -1,4 +1,5 @@
 import {useStoryParams} from './use-story-params';
+import config from '../config/main';
 
 import {StoryMode} from '../types/story-mode';
 import {SlideType} from '../types/slide-type';
@@ -17,7 +18,7 @@ export const useStoryNavigation = () => {
   let autoPlayLink = null;
   let nextSlideLink = null;
   let previousSlideLink = null;
-  let delay = 3000;
+  let delay = config.delay;
 
   if (!numberOfSlides) {
     return {autoPlayLink, nextSlideLink, previousSlideLink};
@@ -44,6 +45,7 @@ export const useStoryNavigation = () => {
     if (currentSlide?.images && currentSlide.type === SlideType.Image) {
       delay = delay * currentSlide.images.length;
     }
+
     if (slideIndex + 1 < numberOfSlides) {
       autoPlayLink = `/showcase/${showcaseStoryIds}/${storyIndex}/${nextSlideIndex}`;
       // when no slides are left, go to first slide of next story
