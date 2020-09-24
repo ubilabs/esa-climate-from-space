@@ -5,14 +5,15 @@ import {useInterval} from '../../../hooks/use-interval';
 
 interface Props {
   autoPlayLink: string;
+  delay: number;
 }
 
-const Autoplay: FunctionComponent<Props> = ({autoPlayLink}) => {
+const Autoplay: FunctionComponent<Props> = ({autoPlayLink, delay}) => {
   const history = useHistory();
 
   useInterval(() => {
     autoPlayLink && history.replace(autoPlayLink);
-  }, 3000);
+  }, delay);
 
   return null;
 };
