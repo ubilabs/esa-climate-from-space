@@ -37,6 +37,9 @@ const Story: FunctionComponent = () => {
   } = storyParams;
   const storyMode = mode === StoryMode.Stories;
 
+  const isSplashScreen =
+    selectedStory?.slides[slideIndex].type === SlideType.Splashscreen;
+
   // fetch story of active storyId
   useEffect(() => {
     currentStoryId && dispatch(fetchStory(currentStoryId));
@@ -98,7 +101,7 @@ const Story: FunctionComponent = () => {
         <Header
           backLink={`/${mode.toString()}`}
           backButtonId="backToStories"
-          title={storyListItem.title}>
+          title={isSplashScreen ? '' : storyListItem.title}>
           {storyMode && <Share />}
         </Header>
       )}

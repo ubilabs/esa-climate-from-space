@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
 import {IntlProvider} from 'react-intl';
-import {HashRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
+import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 
 import {languageSelector} from '../../../selectors/language';
 import UrlSync from '../url-sync/url-sync';
@@ -42,19 +42,6 @@ const TranslatedApp: FunctionComponent = () => {
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
-          <Route
-            path={[
-              '/stories/:storyId/:slideIndex',
-              '/present/:storyId/:slideIndex',
-              '/showcase/:storyIds/:storyIndex/:slideIndex'
-            ]}>
-            <Story />
-          </Route>
-        </Switch>
-        <Route
-          path={['/present/:storyId', '/stories/:storyId']}
-          render={props => <Redirect to={`${props.match.url}/0`} />}></Route>
-        <Switch>
           <Route path="/" exact>
             <div className={styles.logo}>
               <EsaLogo />
@@ -73,6 +60,15 @@ const TranslatedApp: FunctionComponent = () => {
           </Route>
           <Route path={['/showcase/:storyIds', '/showcase']} exact>
             <ShowcaseSelector />
+          </Route>
+          <Route
+            path={[
+              '/stories/:storyId/:slideIndex',
+              '/present/:storyId/:slideIndex',
+              '/showcase/:storyIds/:storyIndex/:slideIndex'
+            ]}
+            exact>
+            <Story />
           </Route>
         </Switch>
       </IntlProvider>
