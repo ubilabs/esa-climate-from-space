@@ -144,8 +144,15 @@ const Menu: FunctionComponent = () => {
         )}
       </nav>
       <div className={styles.credits}>
-        <p className={styles.creditsText}>made by</p>
-        <Ubilabslogo />
+        <a
+          href={'https://ubilabs.net'}
+          target={'_blank'}
+          rel="noopener noreferrer">
+          <p className={styles.creditsText}>
+            <FormattedMessage id={'madeby'} />
+          </p>
+          <Ubilabslogo />
+        </a>
       </div>
       <div className={styles.logo}>
         <CCILogo />
