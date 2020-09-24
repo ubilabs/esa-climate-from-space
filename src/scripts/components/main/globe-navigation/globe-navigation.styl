@@ -7,6 +7,12 @@
   z-index: 1
   display: flex
 
+.projection
+  text-shadow: 0px 0px 2px $black
+
+  &:hover
+    text-shadow: none
+
 .compass
   margin: 0 emCalc(15px)
   width: 24px
@@ -19,4 +25,8 @@
     fill: $main
 
 .downloadIcon svg
+  stroke: rgba(16, 22, 26, 0.3)
   fill: $textWhite
+
+  &:hover
+    stroke: none
