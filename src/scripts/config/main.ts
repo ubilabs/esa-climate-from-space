@@ -82,5 +82,6 @@ export default {
   },
   legendImage: `${baseUrlTiles}/{id}/legend.png`,
   downloadUrls,
-  localStorageLanguageKey: 'language'
+  localStorageLanguageKey: 'language',
+  delay: 5000
 };

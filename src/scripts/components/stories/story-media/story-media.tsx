@@ -6,6 +6,10 @@ import {NextIcon} from '../../main/icons/next-icon';
 import {FullscreenExitIcon} from '../../main/icons/fullscreen-exit-icon';
 import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
 import {getStoryMediaUrl} from '../../../libs/get-story-media-url';
+import {useInterval} from '../../../hooks/use-interval';
+import config from '../../../config/main';
+
+import {StoryMode} from '../../../types/story-mode';
 
 import styles from './story-media.styl';
 
@@ -13,12 +17,14 @@ interface Props {
   images: string[];
   imageCaptions?: string[];
   storyId: string;
+  mode: StoryMode | null;
 }
 
 const StoryMedia: FunctionComponent<Props> = ({
   images,
   imageCaptions,
-  storyId
+  storyId,
+  mode
 }) => {
   const containerWidth = images.length * 100;
   const imageWidth = 100 / images.length;
@@ -26,6 +32,17 @@ const StoryMedia: FunctionComponent<Props> = ({
   const [showLightbox, setShowLightbox] = useState(false);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < images.length - 1;
+
+  const delay = mode === StoryMode.Showcase ? config.delay : null;
+
+  useInterval(() => {
+    if (mode === StoryMode.Showcase) {
+      if (currentIndex >= images.length - 1) {
+        return;
+      }
+      setCurrentIndex(currentIndex + 1);
+    }
+  }, delay);
 
   const onPrevClick = () => {
     if (currentIndex <= 0) {
