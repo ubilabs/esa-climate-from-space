@@ -7,7 +7,7 @@ import {FullscreenExitIcon} from '../../main/icons/fullscreen-exit-icon';
 import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
 import {getStoryMediaUrl} from '../../../libs/get-story-media-url';
 
-import styles from './story-media.styl';
+import styles from './story-gallery.styl';
 
 interface Props {
   images: string[];
@@ -43,12 +43,12 @@ const StoryMedia: FunctionComponent<Props> = ({
 
   const imgClasses = cx(styles.slider, images.length > 1 && styles.transition);
   const galleryClasses = cx(
-    styles.storyGallery,
+    styles.gallery,
     showLightbox && styles.lightboxGallery
   );
 
   return (
-    <div className={styles.storyMedia}>
+    <div className={styles.storyGallery}>
       <div className={galleryClasses}>
         <div className={styles.buttonContainer}>
           <div onClick={onPrevClick} className={styles.navIcon}>

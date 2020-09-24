@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 import DataViewer from '../../main/data-viewer/data-viewer';
 import {useStoryParams} from '../../../hooks/use-story-params';
 import StoryContent from '../story-content/story-content';
-import StoryMedia from '../story-media/story-media';
+import StoryMedia from '../story-gallery/story-gallery';
 import StoryFooter from '../story-footer/story-footer';
 import fetchStory from '../../../actions/fetch-story';
 import Header from '../header/header';
@@ -15,12 +15,12 @@ import setGlobeTimeAction from '../../../actions/set-globe-time';
 import Share from '../../main/share/share';
 import SplashScreen from '../splash-screen/splash-screen';
 import LayerDescription from '../layer-description/layer-description';
+import TimeSlider from '../../layers/time-slider/time-slider';
 
 import {StoryMode} from '../../../types/story-mode';
 import {Slide, Story as StoryType} from '../../../types/story';
 import {GlobeProjection} from '../../../types/globe-projection';
 import {SlideType} from '../../../types/slide-type';
-import TimeSlider from '../../layers/time-slider/time-slider';
 
 import styles from './story.styl';
 
