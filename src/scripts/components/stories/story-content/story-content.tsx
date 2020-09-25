@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
 import cx from 'classnames';
 
-import {getStoryMediaUrl, getStoryLinkUrl} from '../../../libs/get-story-urls';
+import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {useSlide} from '../../../hooks/use-slide';
 
 import {StoryMode} from '../../../types/story-mode';
@@ -27,10 +27,10 @@ const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
   );
 
   const transformImageUri = (originalSrc: string) =>
-    getStoryMediaUrl(storyId, originalSrc);
+    getStoryAssetUrl(storyId, originalSrc);
 
   const transformLinkUri = (originalSrc: string) =>
-    getStoryLinkUrl(storyId, originalSrc);
+    getStoryAssetUrl(storyId, originalSrc);
 
   return (
     <div className={contentClasses}>

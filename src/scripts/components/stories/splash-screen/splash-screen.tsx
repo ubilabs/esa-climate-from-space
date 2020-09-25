@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import {getStoryMediaUrl} from '../../../libs/get-story-urls';
+import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 
 import {Slide} from '../../../types/story';
 
@@ -13,7 +13,7 @@ interface Props {
 }
 
 const SplashScreen: FunctionComponent<Props> = ({storyId, slide}) => {
-  const imageUrl = slide.images && getStoryMediaUrl(storyId, slide.images[0]);
+  const imageUrl = slide.images && getStoryAssetUrl(storyId, slide.images[0]);
 
   return (
     <div
