@@ -22,7 +22,7 @@
     },
     {
       "type": "globe",
-      "text": "## Earth’s Heat Pumps \r\n\r\nThe Equator receives much more energy from the Sun than the polar regions. This energy is then redistributed around the world by circulation patterns in the oceans and atmosphere. Ocean currents are driven by the rotation of the Earth, surface winds and differences in water density due to salinity and temperature variation. Warm currents such as the Gulf Stream bring heat from the Equator and the tropics to higher latitudes. This poleward transport of heat is responsible for the mild climate of western Europe.\r\n\r\nThe interactive globe on the left shows the Gulf Stream carrying warm water up the east coast of North America and across the Atlantic. In the Pacific, the Kuroshio Current warms the eastern shore of Japan, while a cold Equatorial current can usually be seen extending westwards from South America. Ocean circulation is generally clockwise in the northern hemisphere and anti-clockwise in the southern hemisphere.\r\n\r\n![SST map from climate model](assets/sst_large_18a.jpg) \r\n_Sea surface temperature map for the Atlantic coast of Europe and the western Mediterranean Sea for 28 June 2010, from a climate model that includes satellite observations. (GMES-MyOcean)_",
+      "text": "## Earth’s Heat Pumps \r\n\r\nThe Equator receives much more energy from the Sun than the polar regions. This energy is then redistributed around the world by circulation patterns in the oceans and atmosphere. Ocean currents are driven by the rotation of the Earth, surface winds and differences in water density due to salinity and temperature variation. Warm currents such as the Gulf Stream bring heat from the Equator and the tropics to higher latitudes. This poleward transport of heat is responsible for the mild climate of western Europe.\r\n\r\nThe interactive globe on the left shows the Gulf Stream carrying warm water up the east coast of North America and across the Atlantic. In the Pacific, the Kuroshio Current warms the eastern shore of Japan, while a cold Equatorial current can usually be seen extending westwards from South America. Ocean circulation is generally clockwise in the northern hemisphere and anti-clockwise in the southern hemisphere.\r\n\r\n![SST map from climate model](assets/sst_large_18a.jpg) \r\n_Sea surface temperature map for the Atlantic coast of Europe and the western Mediterranean Sea for 28 June 2010, from a climate model that includes satellite observations. (GMES-MyOcean)_\r\n\r\n### Download Sample Data\r\n- [SST timeseries for North Sea 2010](assets/sst-ts-2010-32303-56.0696.csv)",
       "shortText": "## Earth’s Heat Pumps \r\n\r\nOcean currents are driven by:\r\n\r\n- the rotation of the Earth\r\n- surface winds\r\n- differences in water density due to salinity and temperature variation \r\n\r\nWarm currents bring heat from the Equator to higher latitudes. \r\n\r\nThe Gulf Stream is responsible for the mild climate of western Europe.\r\n\r\nThe data viewer shows:\r\n\r\n- the warm Gulf Stream in the North Atlantic\r\n- the warm Kuroshio Current in the Pacific\r\n- a cold Equatorial current extending westwards from South America. \r\n- clockwise circulation in the northern hemisphere\r\n- anti-clockwise circulation in the south\r\n\r\n![SST map from climate model](assets/sst_large_18a.jpg) \r\n_Sea surface temperature map for the Atlantic coast of Europe and the western Mediterranean Sea for 28 June 2010, from a climate model that includes satellite observations. (GMES-MyOcean)_",
       "flyTo": {
         "position": {
@@ -40,6 +40,15 @@
         {
           "id": "sst.analysed_sst",
           "timestamp": "2020-08-03T22:13:30.807Z"
+        }
+      ],
+      "markers": [
+        {
+          "position": [
+            "3.2303",
+            " 56.0696"
+          ],
+          "title": "Northsea"
         }
       ]
     },
@@ -97,7 +106,8 @@
           "id": "sea_surface_salinity.sss",
           "timestamp": "2013-10-30T00:00:00.000Z"
         }
-      ]
+      ],
+      "layerDescription": "Sea Surface Salinity"
     },
     {
       "type": "video",
