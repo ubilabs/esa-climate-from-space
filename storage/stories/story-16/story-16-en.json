@@ -41,6 +41,15 @@
           "id": "sst.analysed_sst",
           "timestamp": "2020-08-03T22:13:30.807Z"
         }
+      ],
+      "markers": [
+        {
+          "position": [
+            "3.2303",
+            " 56.0696"
+          ],
+          "title": "Northsea"
+        }
       ]
     },
     {
@@ -97,7 +106,8 @@
           "id": "sea_surface_salinity.sss",
           "timestamp": "2013-10-30T00:00:00.000Z"
         }
-      ]
+      ],
+      "layerDescription": "Sea Surface Salinity"
     },
     {
       "type": "video",
