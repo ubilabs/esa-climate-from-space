@@ -15,20 +15,21 @@ import {LinuxIcon} from '../icons/linux-icon';
 import {AppleIcon} from '../icons/apple-icon';
 import config from '../../../config/main';
 import {Ubilabslogo} from '../icons/ubilabs-logo';
+import Attributions from '../attributions/attributions';
 
 import styles from './menu.styl';
 
 const Menu: FunctionComponent = () => {
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [overlayType, setOverlayType] = useState<string | null>(null);
   // @ts-ignore - injected via webpack's define plugin
   const version = INFO_VERSION;
 
   return (
     <React.Fragment>
       <nav className={styles.menuContainer}>
-        {showOverlay ? (
-          <Overlay onClose={() => setShowOverlay(false)}>
-            <AboutProject />
+        {overlayType ? (
+          <Overlay onClose={() => setOverlayType(null)}>
+            {overlayType === 'about' ? <AboutProject /> : <Attributions />}
           </Overlay>
         ) : (
           <React.Fragment>
@@ -101,7 +102,7 @@ const Menu: FunctionComponent = () => {
                 <Button
                   className={styles.menuButton}
                   label={'about'}
-                  onClick={() => setShowOverlay(true)}
+                  onClick={() => setOverlayType('about')}
                 />
               </li>
               <li className={styles.menuListItem}>
@@ -131,13 +132,27 @@ const Menu: FunctionComponent = () => {
                   <FormattedMessage id={'github'} />
                 </a>
               </li>
+              <li className={styles.menuListItem}>
+                <Button
+                  className={styles.menuButton}
+                  label={'attributions'}
+                  onClick={() => setOverlayType('attributions')}
+                />
+              </li>
             </ul>
           </React.Fragment>
         )}
       </nav>
       <div className={styles.credits}>
-        <p className={styles.creditsText}>Made by</p>
-        <Ubilabslogo />
+        <a
+          href={'https://ubilabs.net'}
+          target={'_blank'}
+          rel="noopener noreferrer">
+          <p className={styles.creditsText}>
+            <FormattedMessage id={'madeby'} />
+          </p>
+          <Ubilabslogo />
+        </a>
       </div>
       <div className={styles.logo}>
         <CCILogo />

@@ -71,7 +71,7 @@ const StoryListItem: FunctionComponent<Props> = ({
   const isShowcaseMode = mode === StoryMode.Showcase;
 
   return !isShowcaseMode ? (
-    <Link to={`/${mode}/${story.id}`}>
+    <Link to={`/${mode}/${story.id}/0`}>
       <StoryListItemContent
         selectedIndex={selectedIndex}
         selectedTags={selectedTags}

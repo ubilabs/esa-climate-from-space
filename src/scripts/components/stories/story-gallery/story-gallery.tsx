@@ -6,19 +6,25 @@ import {NextIcon} from '../../main/icons/next-icon';
 import {FullscreenExitIcon} from '../../main/icons/fullscreen-exit-icon';
 import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
+import {useInterval} from '../../../hooks/use-interval';
+import config from '../../../config/main';
 
-import styles from './story-media.styl';
+import {StoryMode} from '../../../types/story-mode';
+
+import styles from './story-gallery.styl';
 
 interface Props {
   images: string[];
   imageCaptions?: string[];
   storyId: string;
+  mode: StoryMode | null;
 }
 
 const StoryMedia: FunctionComponent<Props> = ({
   images,
   imageCaptions,
-  storyId
+  storyId,
+  mode
 }) => {
   const containerWidth = images.length * 100;
   const imageWidth = 100 / images.length;
@@ -26,6 +32,17 @@ const StoryMedia: FunctionComponent<Props> = ({
   const [showLightbox, setShowLightbox] = useState(false);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < images.length - 1;
+
+  const delay = mode === StoryMode.Showcase ? config.delay : null;
+
+  useInterval(() => {
+    if (mode === StoryMode.Showcase) {
+      if (currentIndex >= images.length - 1) {
+        return;
+      }
+      setCurrentIndex(currentIndex + 1);
+    }
+  }, delay);
 
   const onPrevClick = () => {
     if (currentIndex <= 0) {
@@ -43,12 +60,12 @@ const StoryMedia: FunctionComponent<Props> = ({
 
   const imgClasses = cx(styles.slider, images.length > 1 && styles.transition);
   const galleryClasses = cx(
-    styles.storyGallery,
+    styles.gallery,
     showLightbox && styles.lightboxGallery
   );
 
   return (
-    <div className={styles.storyMedia}>
+    <div className={styles.storyGallery}>
       <div className={galleryClasses}>
         <div className={styles.buttonContainer}>
           <div onClick={onPrevClick} className={styles.navIcon}>
