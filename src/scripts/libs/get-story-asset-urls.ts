@@ -2,14 +2,18 @@ import {
   isElectron,
   isOffline,
   getOfflineStoryMediaUrl
-} from '../libs/electron/index';
-import {replaceUrlPlaceholders} from '../libs/replace-url-placeholders';
+} from './electron/index';
+import {replaceUrlPlaceholders} from './replace-url-placeholders';
 import config from '../config/main';
 
-export function getStoryMediaUrl(
+export function getStoryAssetUrl(
   storyId: string,
-  relativePath: string
+  path: string
 ): string {
+  if (path.startsWith('http')) {
+    return path;
+  }
+
   let baseUrl = replaceUrlPlaceholders(config.api.storyMediaBase, {
     id: storyId
   });
@@ -18,5 +22,5 @@ export function getStoryMediaUrl(
     baseUrl = replaceUrlPlaceholders(getOfflineStoryMediaUrl(), {id: storyId});
   }
 
-  return `${baseUrl}/${relativePath}`;
+  return `${baseUrl}/${path}`;
 }

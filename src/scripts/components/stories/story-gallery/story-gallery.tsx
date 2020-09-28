@@ -5,7 +5,7 @@ import {PreviousIcon} from '../../main/icons/previous-icon';
 import {NextIcon} from '../../main/icons/next-icon';
 import {FullscreenExitIcon} from '../../main/icons/fullscreen-exit-icon';
 import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
-import {getStoryMediaUrl} from '../../../libs/get-story-media-url';
+import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {useInterval} from '../../../hooks/use-interval';
 import config from '../../../config/main';
 
@@ -90,7 +90,7 @@ const StoryMedia: FunctionComponent<Props> = ({
           }}>
           {images.map((image, index) => {
             const imageCaption = imageCaptions?.find((_, i) => i === index);
-            const imageUrl = getStoryMediaUrl(storyId, image);
+            const imageUrl = getStoryAssetUrl(storyId, image);
 
             return (
               <div
