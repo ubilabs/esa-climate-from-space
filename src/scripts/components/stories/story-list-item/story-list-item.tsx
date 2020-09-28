@@ -5,7 +5,7 @@ import cx from 'classnames';
 import StoryTags from '../story-tags/story-tags';
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
 import {DownloadButton} from '../../main/download-button/download-button';
-import {getStoryMediaUrl} from '../../../libs/get-story-media-url';
+import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import config from '../../../config/main';
 
 import {StoryListItem as StoryListItemType} from '../../../types/story-list';
@@ -37,7 +37,7 @@ const StoryListItemContent: FunctionComponent<Props> = ({
     id: story.id
   });
   const downloadId = `story-${story.id}`;
-  const imageUrl = getStoryMediaUrl(story.id, story.image);
+  const imageUrl = getStoryAssetUrl(story.id, story.image);
 
   return (
     <div
