@@ -113,6 +113,7 @@ const Story: FunctionComponent = () => {
             index === slideIndex &&
             (currentSlide.type === SlideType.Splashscreen ? (
               <SplashScreen
+                mode={mode}
                 key={index}
                 storyId={selectedStory.id}
                 slide={currentSlide}
