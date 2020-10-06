@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# Planetary Heat Pumps\r\n\r\nThe ocean and the atmosphere both redistribute heat energy around the planet, but the oceans have a much higher capacity to store heat, making them a more stable indicator of climate trends.",
       "shortText": "# Planetary Heat Pumps\r\n\r\nThe ocean and the atmosphere both redistribute heat energy around the planet, but the oceans have a much higher capacity to store heat, making them a more stable indicator of climate trends.",
-      "images": [
-        "assets/sst.jpg"
-      ]
+      "images": ["assets/sst.jpg"]
     },
     {
       "type": "image",
@@ -52,11 +50,8 @@
       ],
       "markers": [
         {
-          "position": [
-            "3.2303",
-            " 56.0696"
-          ],
-          "title": "Northsea"
+          "position": [3.2303, 56.0696],
+          "title": "North Sea"
         }
       ]
     },
