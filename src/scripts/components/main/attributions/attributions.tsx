@@ -9,23 +9,25 @@ const Attributions: FunctionComponent = () => {
 
   return (
     <div className={styles.attributions}>
-      <ReactMarkdown
-        source={intl.formatMessage({id: 'attributionDescription'})}
-        linkTarget="_blank"
-        allowedTypes={[
-          'heading',
-          'text',
-          'paragraph',
-          'break',
-          'strong',
-          'emphasis',
-          'image',
-          'imageReference',
-          'list',
-          'listItem',
-          'link'
-        ]}
-      />
+      <div className={styles.credits}>
+        <ReactMarkdown
+          source={intl.formatMessage({id: 'attributionDescription'})}
+          linkTarget="_blank"
+          allowedTypes={[
+            'heading',
+            'text',
+            'paragraph',
+            'break',
+            'strong',
+            'emphasis',
+            'image',
+            'imageReference',
+            'list',
+            'listItem',
+            'link'
+          ]}
+        />
+      </div>
     </div>
   );
 };
