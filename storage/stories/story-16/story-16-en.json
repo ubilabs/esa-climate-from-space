@@ -5,7 +5,9 @@
       "type": "splashscreen",
       "text": "# Planetary Heat Pumps\r\n\r\nThe ocean and the atmosphere both redistribute heat energy around the planet, but the oceans have a much higher capacity to store heat, making them a more stable indicator of climate trends.",
       "shortText": "# Planetary Heat Pumps\r\n\r\nThe ocean and the atmosphere both redistribute heat energy around the planet, but the oceans have a much higher capacity to store heat, making them a more stable indicator of climate trends.",
-      "images": ["assets/sst.jpg"]
+      "images": [
+        "assets/sst.jpg"
+      ]
     },
     {
       "type": "image",
@@ -50,8 +52,11 @@
       ],
       "markers": [
         {
-          "position": [3.2303, 56.0696],
-          "title": "North Sea"
+          "position": [
+            "3.2303",
+            " 56.0696"
+          ],
+          "title": "Northsea"
         }
       ]
     },
@@ -120,8 +125,8 @@
     },
     {
       "type": "video",
-      "text": "## CCI Sea Surface Temperature\r\n\r\nIt is likely that the upper ocean has been warming since the middle of the nineteenth century, and scientists have been able to measure the warming of the ocean surface from space since the 1970s. Satellite observations provide more detailed and even coverage, and more frequent repeats, than is possible from ships and floating instruments.\r\n\r\nThe CCI SST team has harmonised four trillion measurements from fourteen satellites spanning four decades. Combining the highly accurate, stable and well-calibrated measurements from new European sensors with the longer coverage of an older American system gives a complete, daily, stable, low-bias SST data set spanning 37 years. \r\n\r\n![Wavelength diagram for SST measurement](assets/sst_large_10.png) \r\n_Sea surface temperature is measured using two wavelengths in the thermal infrared part of the electromagnetic spectrum. (Planetary Visions)_\r\n\r\nThe use of ESA’s ATSR and SLSTR sensors makes this dataset not only more accurate and stable than previous SST products, but also largely independent of in situ measurements from ships and buoys. If similar climate signals are detected from space and on the Earth, we can be confident they truly reflect what is happening in nature. \r\n\r\n![An Argo float being deployed from a research ship](assets/sealevel_large_07.jpg) \r\n_An automatic free-floating instrumented buoy being deployed from a research ship. Almost 4,000 such floats have been deployed across the world’s oceans. They cycle up and down the top 2,000 metres of the ocean continually measuring temperature, salinity and currents, providing context for satellite observations of the ocean surface.  (Argo Programme/IFREMER)_",
-      "shortText": "## CCI Sea Surface Temperature\r\n\r\nThe upper ocean has been warming since the middle of the nineteenth century.\r\n\r\nSurface warming measured from space since the 1970s.\r\n\r\nSatellites provide more detailed and even coverage, and more frequent repeats, than is possible from ships and floating instruments.\r\n\r\nCCI SST team has combined:\r\n\r\n- data from 14 satellites over 4 decades\r\n- the latest, highly accurate sensor technology \r\n- greater coverage from longer-running weather satellites\r\n- to give four trillion SST measurements\r\n\r\nThis dataset is largely independent of in situ observations.\r\n\r\n![Wavelength diagram for SST measurement](assets/sst_large_10.png) \r\n_Sea surface temperature is measured using two wavelengths in the thermal infrared part of the electromagnetic spectrum. (Planetary Visions)_",
+      "text": "## CCI Sea Surface Temperature\r\n\r\nIt is likely that the upper ocean has been warming since the middle of the nineteenth century, and scientists have been able to measure the warming of the ocean surface from space since the 1970s. Satellite observations provide more detailed and even coverage, and more frequent repeats, than is possible from ships and floating instruments.\r\n\r\nThe CCI SST team has harmonised four trillion measurements from fourteen satellites spanning four decades. Combining the highly accurate, stable and well-calibrated measurements from new European sensors with the longer coverage of an older American system gives a complete, daily, stable, low-bias SST data set spanning 37 years. \r\n\r\n![Wavelength diagram for SST measurement](assets/sst_large_10.png) \r\n_Sea surface temperature is measured using two wavelengths in the thermal infrared part of the electromagnetic spectrum. (Planetary Visions)_\r\n\r\nThe use of ESA’s ATSR and SLSTR sensors makes this dataset not only more accurate and stable than previous SST products, but also largely independent of in situ measurements from ships and buoys. If similar climate signals are detected from space and on the Earth, we can be confident they truly reflect what is happening in nature.",
+      "shortText": "## CCI Sea Surface Temperature\r\n\r\nThe upper ocean has been warming since the middle of the nineteenth century.\r\n\r\nSurface warming measured from space since the 1970s.\r\n\r\nSatellites provide more detailed and even coverage, and more frequent repeats, than is possible from ships and floating instruments.\r\n\r\nCCI SST team has combined:\r\n\r\n- data from 14 satellites over 4 decades\r\n- the latest, highly accurate sensor technology \r\n- greater coverage from longer-running weather satellites\r\n- to give four trillion SST measurements\r\n\r\nThis dataset is largely independent of in situ observations.",
       "videoId": "uPxXMA1heIY"
     }
   ]
