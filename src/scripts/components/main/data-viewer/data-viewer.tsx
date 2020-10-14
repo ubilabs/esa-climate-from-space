@@ -90,6 +90,13 @@ const DataViewer: FunctionComponent<Props> = ({
     setCurrentView(globalGlobeView);
   }, [globalGlobeView]);
 
+  // stop globe spinning when layer is selected
+  useEffect(() => {
+    if ((mainId || compareId) && globeSpinning) {
+      dispatch(setGlobeSpinningAction(false));
+    }
+  }, [dispatch, mainId, compareId, globeSpinning]);
+
   // Only show the globe navigation when a globe is shown.
   // Either when no data layer is selected and only basemap is shown
   // or when one of the selected layers is a globe. Do not show globe navigation
