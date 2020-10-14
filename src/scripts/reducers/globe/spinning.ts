@@ -8,7 +8,6 @@ import {
 } from '../../actions/set-globe-projection';
 import {SET_FLY_TO, SetFlyToAction} from '../../actions/set-fly-to';
 
-import {GlobeProjection} from '../../types/globe-projection';
 import config from '../../config/main';
 import {parseUrl} from '../../libs/globe-url-parameter';
 
@@ -24,7 +23,7 @@ function spinningReducer(
     case SET_GLOBE_SPINNING:
       return action.spinning;
     case SET_GLOBE_PROJECTION:
-      return action.projection === GlobeProjection.Sphere;
+      return false;
     case SET_FLY_TO:
       return false;
     default:
