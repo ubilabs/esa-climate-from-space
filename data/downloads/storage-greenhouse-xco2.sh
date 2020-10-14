@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 
-gsutil -m cp gs://esa-cfs-cate-data/greenhouse.xco2/* ./download
+OUTPUT_FODLER=./download/xco2
+gsutil -m cp gs://esa-cfs-cate-data/greenhouse.xco2/* $OUTPUT_FOLDER
 
 START_DATE=2003-01-01
-OUTPUT_FODLER=./download
+
+pip install rasterio
 
 for i in {0..191}
 do
   NEXT_MONTH=$(date +%Y-%m -d "$START_DATE + $i month")
   NEXT_DATE=$(date +%Y%m%d -d "$START_DATE + $i month")
-  FILENAME=$OUTPUT_FODLER/xco2_$NEXT_MONTH.tif
-  NETCDF=$OUTPUT_FODLER/$NEXT_DATE.nc
+  FILENAME=$OUTPUT_FOLDER/xco2_$NEXT_MONTH.tif
+  NETCDF=$OUTPUT_FOLDER/$NEXT_DATE.nc
   echo $FILENAME
 
   python ./data/tif2netcdf.py --file $FILENAME --output $NETCDF --variable xco2

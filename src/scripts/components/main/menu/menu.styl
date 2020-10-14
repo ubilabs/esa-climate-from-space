@@ -44,6 +44,12 @@
   align-items: center
   color: $textDefault
 
+  &:hover
+    color: $textColor
+
+    svg
+      fill: $main
+
   svg
     padding-right: emCalc(10px)
     fill: $textDefault
@@ -54,7 +60,6 @@
   display: flex
   flex-direction: row
   justify-content: center
-  width: 100%
 
   svg
     fill: $main
@@ -66,9 +71,33 @@
   color: $textDefault
   font-size: 10px
 
+.credits
+  position: absolute
+  bottom: emCalc(20px)
+  left: emCalc(32px)
+  color: $textDefault
+
+  svg
+    height: emCalc(25px)
+    fill: $textWhite
+
+    &:hover
+      fill: $textColor
+
+.creditsText
+  margin: emCalc(5px)
+  margin-left: 0
+  font-size: 13px
+
 @media screen and (max-width: 480px)
   .menuContainer
     width: 100%
 
   .menuList:first-child
     display: none
+
+  .logo
+    bottom: emCalc(48px)
+
+  .credits
+    display: flex
