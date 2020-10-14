@@ -2,8 +2,8 @@
   {
     "id": "fire.burned_area",
     "type": "Biosphere",
-    "name": "Fire Burned Area*",
-    "shortName": "Fire*",
+    "name": "Fire Burned Area",
+    "shortName": "Fire",
     "description": "Throughout history, humans have used fire as an environmental management tool. Vegetation characteristics, mainly biomass loads and moisture, determine fire behaviour, but fire also modifies vegetation structure and evolution. Climate affects fire occurrence through the thermal and precipitation cycles, but it is also affected by fire, particularly by gaseous and PM emissions. This mutual influences among vegetation, climate and fire highlight the importance of having global long-term burned area (BA) information that serves as input for climate and vegetation modellers.\nCurrently, the FireCCI51 BA product includes 19 years of global BA data. The product is offered at 250m resolution with date of detection and land cover burned, and at 0.25 degree cells with total BA per grid cell,  total BA per land cover, and observed area. In both cases, uncertainty layers are also incorporated.\n\n**Variable Shown:** Total Burned Area in Square Meters  \n**Time Span:** January 2001 – December 2019  \n**Temporal Resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:**  0.25 x 0.25 degree  \n**Version:** 5.1  \n**DOI:**  [10.5285/3628cb2fdba443588155e15dee8e5352](http://dx.doi.org/10.5285/3628cb2fdba443588155e15dee8e5352)  \n\n[ESA CCI Fire ECV Project website](https://climate.esa.int/projects/fire/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/3628cb2fdba443588155e15dee8e5352)"
   },
   {
@@ -16,8 +16,8 @@
   {
     "id": "soil_moisture.Anomaly",
     "type": "Hydrosphere",
-    "name": "Soil Moisture – Anomalies*",
-    "shortName": "Soil Moisture – Anomalies*",
+    "name": "Soil Moisture – Anomalies",
+    "shortName": "Soil Moisture – Anomalies",
     "description": "Soil Moisture (SM) states are affected by long-term climatological patterns as well as by short-term, local events. SM anomalies separate recurring seasonal/climatological variations from varying regional conditions and represent these deviations from the average conditions at each point in time. Droughts are therefore represented as negative anomalies while positive anomalies indicate “wetter than normal” conditions.\n\nIn CCI SM anomalies are calculated as differences between absolute SM observations and the SM climatology from a 20 year baseline period (1991-2010). This period is selected with regard to the available data density and quality, which can affect the derived deviations from the average conditions. The animation in the App shows monthly SM anomalies from 1991-2019 in the COMBINED product of ESA CCI SM v04.7.\n\n**Variable Shown:** Anomaly  \n**Time Span:** November 1978 – December 2019  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global  \n**Spatial Resolution:**  0.25 degrees  \n**Version:** 4.7   \n\n[ESA CCI Soil Moisture ECV Project website](https://climate.esa.int/projects/soil-moisture/)  \n[Soil Moisture Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/c256fcfeef24460ca6eb14bf0fe09572)"
   },
   {
@@ -44,8 +44,8 @@
   {
     "id": "cloud.cfc",
     "type": "Upper-air Atmosphere",
-    "name": "Cloud Fraction*",
-    "shortName": "Clouds*",
+    "name": "Cloud Fraction",
+    "shortName": "Clouds",
     "description": "**Variable shown:**  Cloud Fraction  \n**Time span:** January 1982 – December 2016  \n**Temporal resolution:** monthly  \n**Geographic extent:** global  \n**Geographic resolution:** 1km x 1km   \n**Version:** 3.0  \n**DOI:** , [10.5676/DWD/ESA_Cloud_cci/AVHRR-PM/V003](https://dx.doi.org/10.5676/DWD/ESA_Cloud_cci/AVHRR-PM/V003)  \n\n[ESA CCI Cloud ECV Project website](https://climate.esa.int/projects/cloud/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/004fd44ff5124174ad3c03dd2c67d548)"
   },
   {
@@ -93,8 +93,8 @@
   {
     "id": "land_cover.lccs_class",
     "type": "Biosphere",
-    "name": "Land Cover*",
-    "shortName": "Land Cover*",
+    "name": "Land Cover",
+    "shortName": "Land Cover",
     "description": "**Variable Shown:** Land cover class defined in LCCS  \n**Time Span:** 1992-01 – 2015-12  \n**Temporal resolution:** yearly  \n**Geographic Extent:** global  \n**Spatial Resolution:** 300m  \n**Version:** 2.0.7  \n\n[ESA CCI Landcover ECV Project website](https://climate.esa.int/projects/land-cover/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/b382ebe6679d44b8b0e68ea4ef4b701c)\n\n**Detailed Legend:**  \n<style>\n    .dot {\n        height: 10px;\n        width: 10px;\n        border-radius: 50%;\n        display: inline-block;\n        margin-right: 5px;\n        vertical-align: middle;\n    }\n</style>\n<div class=\"dot\" style=\"background: rgb(0, 0, 0);\"></div>No data<br>\n<div class=\"dot\" style=\"background: rgb(255, 255, 100);\"></div>Cropland, rainfed<br>\n<div class=\"dot\" style=\"background: rgb(255, 255, 100);\"></div>Herbaceous cover<br>\n<div class=\"dot\" style=\"background: rgb(255, 255, 0);\"></div>Tree or shrub cover<br>\n<div class=\"dot\" style=\"background: rgb(170, 240, 240);\"></div>Cropland, irrigated or post-flooding<br>\n<div class=\"dot\" style=\"background: rgb(220, 240, 100);\"></div>Mosaic cropland (&gt;50%) / natural vegetation (tree, shrub, herbaceous cover) (&lt;50%)<br>\n<div class=\"dot\" style=\"background: rgb(200, 200, 100);\"></div>Mosaic natural vegetation (tree, shrub, herbaceous cover) (&gt;50%) / cropland (&lt;50%) <br>\n<div class=\"dot\" style=\"background: rgb(0, 100, 0);\"></div>Tree cover, broadleaved, evergreen, closed to open (&gt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 160, 0);\"></div>Tree cover, broadleaved, deciduous, closed to open (&gt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 160, 0);\"></div>Tree cover, broadleaved, deciduous, closed (&gt;40%)<br>\n<div class=\"dot\" style=\"background: rgb(170, 200, 0);\"></div>Tree cover, broadleaved, deciduous, open (15-40%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 60, 0);\"></div>Tree cover, needleleaved, evergreen, closed to open (&gt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 60, 0);\"></div>Tree cover, needleleaved, evergreen, closed (&gt;40%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 80, 0);\"></div>Tree cover, needleleaved, evergreen, open (15-40%)<br>\n<div class=\"dot\" style=\"background: rgb(40, 80, 0);\"></div>Tree cover, needleleaved, deciduous, closed to open (&gt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(40, 80, 0);\"></div>Tree cover, needleleaved, deciduous, closed (&gt;40%)<br>\n<div class=\"dot\" style=\"background: rgb(40, 100, 0);\"></div>Tree cover, needleleaved, deciduous, open (15-40%)<br>\n<div class=\"dot\" style=\"background: rgb(120, 130, 0);\"></div>Tree cover, mixed leaf type (broadleaved and needleleaved)<br>\n<div class=\"dot\" style=\"background: rgb(140, 160, 0);\"></div>Mosaic tree and shrub (&gt;50%) / herbaceous cover (&lt;50%)<br>\n<div class=\"dot\" style=\"background: rgb(190, 150, 0);\"></div>Mosaic herbaceous cover (&gt;50%) / tree and shrub (&lt;50%)<br>\n<div class=\"dot\" style=\"background: rgb(150, 100, 0);\"></div>Shrubland<br>\n<div class=\"dot\" style=\"background: rgb(120, 75, 0);\"></div>Shrubland evergreen<br>\n<div class=\"dot\" style=\"background: rgb(150, 100, 0);\"></div>Shrubland deciduous<br>\n<div class=\"dot\" style=\"background: rgb(255, 180, 50);\"></div>Grassland<br>\n<div class=\"dot\" style=\"background: rgb(255, 220, 210);\"></div>Lichens and mosses<br>\n<div class=\"dot\" style=\"background: rgb(255, 235, 175);\"></div>Sparse vegetation (tree, shrub, herbaceous cover) (&lt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(255, 200, 100);\"></div>Sparse tree (&lt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(255, 210, 120);\"></div>Sparse shrub (&lt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(255, 235, 175);\"></div>Sparse herbaceous cover (&lt;15%)<br>\n<div class=\"dot\" style=\"background: rgb(0, 120, 90);\"></div>Tree cover, flooded, fresh or brakish water<br>\n<div class=\"dot\" style=\"background: rgb(0, 150, 120);\"></div>Tree cover, flooded, saline water<br>\n<div class=\"dot\" style=\"background: rgb(0, 220, 130);\"></div>Shrub or herbaceous cover, flooded, fresh/saline/brakish water<br>\n<div class=\"dot\" style=\"background: rgb(195, 20, 0);\"></div>Urban areas<br>\n<div class=\"dot\" style=\"background: rgb(255, 245, 215);\"></div>Bare areas<br>\n<div class=\"dot\" style=\"background: rgb(220, 220, 220);\"></div>Consolidated bare areas<br>\n<div class=\"dot\" style=\"background: rgb(255, 245, 215);\"></div>Unconsolidated bare areas<br>\n<div class=\"dot\" style=\"background: rgb(0, 70, 200);\"></div>Water bodies<br>\n<div class=\"dot\" style=\"background: rgb(255, 255, 255);\"></div>Permanent snow and ice<br>"
   },
   {
@@ -107,8 +107,8 @@
   {
     "id": "snow.swe",
     "type": "Cryosphere",
-    "name": "Snow*",
-    "shortName": "Snow*",
+    "name": "Snow",
+    "shortName": "Snow",
     "description": "**Variable Shown:** Snow Water Equivalent (mm)  \n**Time Span:** January 1979 – May 2018  \n**Temporal resolution:** monthly  \n**Geographic Extent:** global\n**Spatial Resolution:** 15km - 69km  \n**Version:** 1.0  \n**DOI:** [10.5285/fa20aaa2060e40cabf5fedce7a9716d0](http://dx.doi.org/10.5285/fa20aaa2060e40cabf5fedce7a9716d0)  \n\n[ESA CCI Snow ECV Project website](https://climate.esa.int/projects/snow/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/fa20aaa2060e40cabf5fedce7a9716d0)"
   },
   {
@@ -121,22 +121,22 @@
   {
     "id": "ozone.ozone_profile",
     "type": "Atmospheric Composition",
-    "name": "Ozone Profile – at 50° West*",
-    "shortName": "Ozone Profile*",
+    "name": "Ozone Profile – at 50° West",
+    "shortName": "Ozone Profile",
     "description": ""
   },
   {
     "id": "greenhouse.xco2",
     "type": "Atmospheric Composition",
-    "name": "Carbon Dioxide (CO2)*",
-    "shortName": "Carbon Dioxide (CO2)*",
+    "name": "Carbon Dioxide (CO2)",
+    "shortName": "Carbon Dioxide (CO2)",
     "description": "**Variable shown:** Column-Average Dry-Air Mole Fraction of Atmospheric Carbon Dioxide  \n**Time span:** January 2003 – December 2018  \n**Temporal resolution:** monthly  \n**Geographic extent:** global  \n**Geographic resolution:** 2° x 2°   \n**Version:** 4.1  \n**DOI:** [10.5194/amt-13-789-2020](https://doi.org/10.5194/amt-13-789-2020)  \n**Funding:** ESA CCI and EU via Copernicus Climate Change Service and H2020 project 4C (grant agreement no. 821003).  \n**Acknowledgement:**  \nReuter, M., Buchwitz, M., Schneising, O., Noel, S., Bovensmann, H., Burrows, J. P., Boesch, H., Di Noia, A., Anand, J., Parker, R. J., Somkuti, P., Wu, L., Hasekamp, O. P., Aben, I., Kuze, A., Suto, H., Shiomi, K., Yoshida, Y., Morino, I., Crisp, D., O'Dell, C. W., Notholt, J., Petri, C., Warneke, T., Velazco, V. A., Deutscher, N. M., Griffith, D. W. T., Kivi, R., Pollard, D. F., Hase, F., Sussmann, R., Te, Y. V., Strong, K., Roche, S., Sha, M. K., De Maziere, M., Feist, D. G., Iraci, L. T., Roehl, C. M., Retscher, C., and Schepers, D.: Ensemble-based satellite-derived carbon dioxide and methane column-averaged dry-air mole fraction data sets (2003-2018) for carbon and climate applications, Atmos. Meas. Tech., 13, 789-819, https://doi.org/10.5194/amt-13-789-2020, 2020.\n\n[ESA CCI Cloud ECV Project website](https://climate.esa.int/en/projects/ghgs/)  \n[CCI Greenhouse Gases Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/0508f3dd991144aa80346007a415fb07)  \n[Data in the Copernicus Climate Data Store](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-carbon-dioxide?tab=overview)"
   },
   {
     "id": "greenhouse.xch4",
     "type": "Atmospheric Composition",
-    "name": "Methane (CH4)*",
-    "shortName": "Methane (CH4)*",
+    "name": "Methane (CH4)",
+    "shortName": "Methane (CH4)",
     "description": "**Variable shown:** Column-Average Dry-Air Mole Fraction of Atmospheric Methane  \n**Time span:** January 2003 – December 2018  \n**Temporal resolution:** monthly  \n**Geographic extent:** global  \n**Geographic resolution:** 2° x 2°   \n**Version:** 4.1  \n**DOI:** [10.5194/amt-13-789-2020](https://doi.org/10.5194/amt-13-789-2020)  \n**Funding:** ESA CCI and EU via Copernicus Climate Change Service and H2020 project 4C (grant agreement no. 821003).  \n**Acknowledgement:**  \nReuter, M., Buchwitz, M., Schneising, O., Noel, S., Bovensmann, H., Burrows, J. P., Boesch, H., Di Noia, A., Anand, J., Parker, R. J., Somkuti, P., Wu, L., Hasekamp, O. P., Aben, I., Kuze, A., Suto, H., Shiomi, K., Yoshida, Y., Morino, I., Crisp, D., O'Dell, C. W., Notholt, J., Petri, C., Warneke, T., Velazco, V. A., Deutscher, N. M., Griffith, D. W. T., Kivi, R., Pollard, D. F., Hase, F., Sussmann, R., Te, Y. V., Strong, K., Roche, S., Sha, M. K., De Maziere, M., Feist, D. G., Iraci, L. T., Roehl, C. M., Retscher, C., and Schepers, D.: Ensemble-based satellite-derived carbon dioxide and methane column-averaged dry-air mole fraction data sets (2003-2018) for carbon and climate applications, Atmos. Meas. Tech., 13, 789-819, https://doi.org/10.5194/amt-13-789-2020, 2020.\n\n[ESA CCI Cloud ECV Project website](https://climate.esa.int/en/projects/ghgs/)  \n[CCI Greenhouse Gases Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/0508f3dd991144aa80346007a415fb07)  \n[Data in the Copernicus Climate Data Store](https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-methane)"
   },
   {
