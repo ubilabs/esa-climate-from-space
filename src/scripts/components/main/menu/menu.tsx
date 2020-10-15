@@ -106,8 +106,15 @@ const Menu: FunctionComponent = () => {
                 />
               </li>
               <li className={styles.menuListItem}>
+                <Button
+                  className={styles.menuButton}
+                  label={'attributions'}
+                  onClick={() => setOverlayType('attributions')}
+                />
+              </li>
+              <li className={styles.menuListItem}>
                 <a
-                  href="https://www.esa.int/"
+                  href={config.esaWebsite}
                   target={'_blank'}
                   rel="noopener noreferrer"
                   className={styles.menuButton}>
@@ -116,7 +123,7 @@ const Menu: FunctionComponent = () => {
               </li>
               <li className={styles.menuListItem}>
                 <a
-                  href="https://climate.esa.int/"
+                  href={config.cciWebsite}
                   target={'_blank'}
                   rel="noopener noreferrer"
                   className={styles.menuButton}>
@@ -125,39 +132,45 @@ const Menu: FunctionComponent = () => {
               </li>
               <li className={styles.menuListItem}>
                 <a
-                  href="https://github.com/ubilabs/esa-climate-from-space"
+                  href={config.githubRepo}
                   target={'_blank'}
                   rel="noopener noreferrer"
                   className={styles.menuButton}>
                   <FormattedMessage id={'github'} />
                 </a>
               </li>
-              <li className={styles.menuListItem}>
-                <Button
-                  className={styles.menuButton}
-                  label={'attributions'}
-                  onClick={() => setOverlayType('attributions')}
-                />
-              </li>
             </ul>
           </React.Fragment>
         )}
       </nav>
       <div className={styles.credits}>
-        <a
-          href={'https://ubilabs.net'}
-          target={'_blank'}
-          rel="noopener noreferrer">
-          <p className={styles.creditsText}>
-            <FormattedMessage id={'madeby'} />
-          </p>
-          <Ubilabslogo />
-        </a>
+        <div className={styles.logo}>
+          <a
+            href={config.ubilabsWebsite}
+            target={'_blank'}
+            rel="noopener noreferrer">
+            <p className={styles.creditsText}>
+              <FormattedMessage id={'madeBy'} />
+            </p>
+            <Ubilabslogo />
+          </a>
+        </div>
+        <div className={styles.cciLogo}>
+          <CCILogo />
+          <div className={styles.version}>{version}</div>
+        </div>
+        <div className={styles.logo}>
+          <a
+            href={config.planetaryVisionsWebsite}
+            target={'_blank'}
+            rel="noopener noreferrer">
+            <p className={styles.creditsText}>
+              <FormattedMessage id={'contentBy'} />
+            </p>
+            <img src={config.planeratyVisionsLogo} />
+          </a>
+        </div>
       </div>
-      <div className={styles.logo}>
-        <CCILogo />
-      </div>
-      <div className={styles.version}>{version}</div>
     </React.Fragment>
   );
 };
