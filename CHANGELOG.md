@@ -1,3 +1,20 @@
+# [0.10.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.9.2...v0.10.0) (2020-10-15)
+
+
+### Bug Fixes
+
+* **spinning-globe:** stop spinning when layer is selected or projection changes ([#683](https://github.com/ubilabs/esa-climate-from-space/issues/683)) ([1c02875](https://github.com/ubilabs/esa-climate-from-space/commit/1c0287537959ff58d0310dc286f279c5035d54b5))
+* **text-select:** fix text select when moving globe ([#685](https://github.com/ubilabs/esa-climate-from-space/issues/685)) ([e587b28](https://github.com/ubilabs/esa-climate-from-space/commit/e587b2870e633b2a8623a938f792178b8e8a5745))
+* **timeslider:** show single slider when there is no main range ([#691](https://github.com/ubilabs/esa-climate-from-space/issues/691)) ([92ff0f7](https://github.com/ubilabs/esa-climate-from-space/commit/92ff0f7331a39d0d5483766ac343eb0ca1b11bc7))
+
+
+### Features
+
+* **tracking:** implement tracking and consent ([cc333ae](https://github.com/ubilabs/esa-climate-from-space/commit/cc333ae05965cde8e81155388d386c14e16810ac))
+* **tracking:** init matomo ([232eddf](https://github.com/ubilabs/esa-climate-from-space/commit/232eddf808c6731ed1bb061a92c606aa34350321))
+
+
+
 ## [0.9.2](https://github.com/ubilabs/esa-climate-from-space/compare/v0.9.1...v0.9.2) (2020-10-14)
 
 
