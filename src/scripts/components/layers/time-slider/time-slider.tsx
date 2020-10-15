@@ -133,9 +133,9 @@ const TimeSlider: FunctionComponent<Props> = ({className = ''}) => {
 
   const inputStyles = cx(
     styles.input,
-    rangeMain && rangeCompare && styles.compareInput
+    rangeMain && rangeCompare && styles.compareInput,
+    !rangeMain && rangeCompare && styles.singleInput
   );
-
   const classes = cx(styles.timeSlider, className);
 
   return (
@@ -188,7 +188,11 @@ const TimeSlider: FunctionComponent<Props> = ({className = ''}) => {
 
           {rangeCompare && (
             <output
-              className={cx(styles.timeOutput, styles.timeOutputCompare)}
+              className={cx(
+                styles.timeOutput,
+                styles.timeOutputCompare,
+                !rangeMain && rangeCompare && styles.singleOutput
+              )}
               style={{
                 left: `${clampedLabelPosition}%`
               }}>
