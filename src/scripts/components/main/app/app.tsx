@@ -2,6 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
 import {IntlProvider} from 'react-intl';
 import {HashRouter as Router, Switch, Route} from 'react-router-dom';
+import {MatomoProvider, createInstance} from '@datapunt/matomo-tracker-react';
 
 import {languageSelector} from '../../../selectors/language';
 import UrlSync from '../url-sync/url-sync';
@@ -19,6 +20,7 @@ import StoriesSelector from '../../stories/stories-selector/stories-selector';
 import PresentationSelector from '../../stories/presentation-selector/presentation-selector';
 import ShowcaseSelector from '../../stories/showcase-selector/showcase-selector';
 import DataViewer from '../data-viewer/data-viewer';
+import Tracking from '../tracking/tracking';
 
 import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
@@ -28,10 +30,20 @@ import styles from './app.styl';
 // create redux store
 const store = createReduxStore();
 
+// create matomo tracking instance
+const matomoInstance = createInstance({
+  urlBase: 'https://matomo-ext.esa.int/',
+  siteId: 6,
+  trackerUrl: 'https://matomo-ext.esa.int/matomo.php',
+  srcUrl: 'https://matomo-ext.esa.int/matomo.js'
+});
+
 const App: FunctionComponent = () => (
-  <StoreProvider store={store}>
-    <TranslatedApp />
-  </StoreProvider>
+  <MatomoProvider value={matomoInstance}>
+    <StoreProvider store={store}>
+      <TranslatedApp />
+    </StoreProvider>
+  </MatomoProvider>
 );
 
 const TranslatedApp: FunctionComponent = () => {
@@ -71,6 +83,7 @@ const TranslatedApp: FunctionComponent = () => {
             <Story />
           </Route>
         </Switch>
+        <Tracking />
       </IntlProvider>
       <UrlSync />
       <LayerLoader />

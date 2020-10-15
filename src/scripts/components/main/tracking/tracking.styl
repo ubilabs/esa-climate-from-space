@@ -1,0 +1,36 @@
+@require '../../../../variables.styl'
+
+.tracking
+  position: absolute
+  top: emCalc(50px)
+  left: 50%
+  display: flex
+  flex-direction: column
+  padding: emCalc(16px)
+  max-width: emCalc(300px)
+  border-radius: 4px
+  background-color: $darkGrey4
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2)
+  transform: translateX(-50%)
+
+.message
+  margin: 0
+  color: $textWhite
+  white-space: pre-line
+  font-size: emCalc(16px)
+
+.buttons
+  display: flex
+  justify-content: space-between
+  padding-top: emCalc(16px)
+
+.trackingYes,
+.trackingNo
+  color: $textColor
+  text-align: left
+  text-transform: uppercase
+  font-size: emCalc(11px)
+  font-family: NotesEsaBold
+
+.trackingNo
+  color: $textDefault
