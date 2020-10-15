@@ -166,6 +166,12 @@ const Menu: FunctionComponent = () => {
               <li className={styles.menuListItem}>
                 <TrackingToggle />
               </li>
+              <li className={styles.subMenuTitle}>
+                <AnalyticsIcon /> <FormattedMessage id={'analytics'} />
+              </li>
+              <li className={styles.menuListItem}>
+                <TrackingToggle />
+              </li>
             </ul>
           </React.Fragment>
         )}
