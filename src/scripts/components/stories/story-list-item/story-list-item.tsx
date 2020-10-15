@@ -31,8 +31,10 @@ const StoryListItemContent: FunctionComponent<Props> = ({
   const classes = cx(
     styles.storyListItem,
     mode === StoryMode.Present && styles.present,
+    mode === StoryMode.Showcase && styles.showcase,
     selectedIndex >= 0 && styles.selected
   );
+  const isStoriesMode = StoryMode.Stories === mode;
   const downloadUrl = replaceUrlPlaceholders(config.api.storyOfflinePackage, {
     id: story.id
   });
@@ -52,7 +54,9 @@ const StoryListItemContent: FunctionComponent<Props> = ({
       <div className={styles.info}>
         <p className={styles.title}>{story.title}</p>
         <p className={styles.description}>{story.description}</p>
-        {story.tags && <StoryTags tags={story.tags} selected={selectedTags} />}
+        {story.tags && isStoriesMode && (
+          <StoryTags tags={story.tags} selected={selectedTags} />
+        )}
         <div className={styles.downloadButton}>
           <DownloadButton url={downloadUrl} id={downloadId} />
         </div>
