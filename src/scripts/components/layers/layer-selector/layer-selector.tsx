@@ -14,9 +14,11 @@ import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 import setSelectedLayerIdsAction from '../../../actions/set-selected-layer-id';
 
 import styles from './layer-selector.styl';
+import {useMatomo} from '@datapunt/matomo-tracker-react';
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
+  const {trackEvent} = useMatomo();
   const layers = useSelector(layersSelector);
   const sortedLayers = layers.sort((a, b) =>
     a.shortName.localeCompare(b.shortName)
@@ -70,6 +72,14 @@ const LayerSelector: FunctionComponent = () => {
               selectedLayerIds={selectedLayerIds}
               onSelect={(layerId, isMain) => {
                 dispatch(setSelectedLayerIdsAction(layerId, isMain));
+
+                trackEvent({
+                  category: 'datasets',
+                  action: isMain ? 'select' : 'compare',
+                  name: isMain
+                    ? layerId
+                    : `${selectedMainLayer?.id} - ${layerId}`
+                });
               }}
             />
           </div>

@@ -12,9 +12,11 @@ import Overlay from '../overlay/overlay';
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
 
 import styles from './share.styl';
+import {useMatomo} from '@datapunt/matomo-tracker-react';
 
 const Share: FunctionComponent = () => {
   const [showShare, setShowShare] = useState(false);
+  const {trackEvent} = useMatomo();
   const currentUrl = window.location.href;
 
   const facebookUrl = replaceUrlPlaceholders(config.share.facebook, {
@@ -37,6 +39,16 @@ const Share: FunctionComponent = () => {
       }
     }
   };
+
+  const trackShareClick = (name: string) => {
+    trackEvent({
+      category: 'share',
+      action: 'click',
+      name,
+      href: currentUrl
+    });
+  };
+
   return (
     <div className={styles.share}>
       <Button
@@ -60,7 +72,8 @@ const Share: FunctionComponent = () => {
                 href={twitterUrl}
                 target={'_blank'}
                 rel="noopener noreferrer"
-                className={styles.button}>
+                className={styles.button}
+                onClick={() => trackShareClick('twitter')}>
                 <TwitterIcon />
                 <span>Twitter</span>
               </a>
@@ -68,11 +81,17 @@ const Share: FunctionComponent = () => {
                 href={facebookUrl}
                 target={'_blank'}
                 rel="noopener noreferrer"
-                className={styles.button}>
+                className={styles.button}
+                onClick={() => trackShareClick('facebook')}>
                 <FacebookIcon />
                 <span>Facebook</span>
               </a>
-              <div className={styles.button} onClick={() => copyUrl()}>
+              <div
+                className={styles.button}
+                onClick={() => {
+                  copyUrl();
+                  trackShareClick('link-copy');
+                }}>
                 <input ref={ref} type="hidden" contentEditable="true" />
                 <CopyIcon />
                 <span>
