@@ -1,7 +1,12 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useEffect} from 'react';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
 import {IntlProvider} from 'react-intl';
 import {HashRouter as Router, Switch, Route} from 'react-router-dom';
+import {
+  MatomoProvider,
+  createInstance,
+  useMatomo
+} from '@datapunt/matomo-tracker-react';
 
 import {languageSelector} from '../../../selectors/language';
 import UrlSync from '../url-sync/url-sync';
@@ -28,15 +33,45 @@ import styles from './app.styl';
 // create redux store
 const store = createReduxStore();
 
+const instance = createInstance({
+  urlBase: 'https://maltemodrow.matomo.cloud/',
+  siteId: 1, // optional, default value: `1`
+  // userId: 'UID76903202', // optional, default value: `undefined`.
+  trackerUrl: 'https://maltemodrow.matomo.cloud/matomo.php', // optional, default value: `${urlBase}matomo.php`
+  srcUrl: 'https://cdn.matomo.cloud/maltemodrow.matomo.cloud/matomo.js', // optional, default value: `${urlBase}matomo.js`
+  disabled: false, // optional, false by default. Makes all tracking calls no-ops if set to true.
+  linkTracking: false // optional, default value: true
+});
+
 const App: FunctionComponent = () => (
-  <StoreProvider store={store}>
-    <TranslatedApp />
-  </StoreProvider>
+  <MatomoProvider value={instance}>
+    <StoreProvider store={store}>
+      <TranslatedApp />
+    </StoreProvider>
+  </MatomoProvider>
 );
 
 const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
+  const {pushInstruction, trackPageView} = useMatomo();
+
+  useEffect(() => {
+    console.log('should track');
+
+    pushInstruction('requireConsent');
+    pushInstruction('requireCookieConsent');
+
+    // setTimeout(() => {
+    //   pushInstruction('rememberConsentGiven');
+    //   pushInstruction('rememberCookieConsentGiven');
+    // }, 10000);
+
+    trackPageView({
+      documentTitle: 'moin moin', // optional
+      href: 'https://LINK.TO.PAGE' // optional
+    });
+  }, []);
 
   return (
     <Router>
