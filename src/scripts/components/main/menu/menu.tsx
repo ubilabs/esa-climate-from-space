@@ -11,11 +11,13 @@ import {CCILogo} from '../icons/cci-logo';
 import AboutProject from '../about-project/about-project';
 import Overlay from '../overlay/overlay';
 import {WindowsIcon} from '../icons/windows-icon';
+import {AnalyticsIcon} from '../icons/analytics-icon';
 import {LinuxIcon} from '../icons/linux-icon';
 import {AppleIcon} from '../icons/apple-icon';
 import config from '../../../config/main';
 import {Ubilabslogo} from '../icons/ubilabs-logo';
 import Attributions from '../attributions/attributions';
+import TrackingToggle from '../tracking-toggle/tracking-toggle';
 
 import styles from './menu.styl';
 
@@ -138,6 +140,19 @@ const Menu: FunctionComponent = () => {
                   className={styles.menuButton}>
                   <FormattedMessage id={'github'} />
                 </a>
+              </li>
+              <li className={styles.menuListItem}>
+                <Button
+                  className={styles.menuButton}
+                  label={'attributions'}
+                  onClick={() => setOverlayType('attributions')}
+                />
+              </li>
+              <li className={styles.subMenuTitle}>
+                <AnalyticsIcon /> <FormattedMessage id={'analytics'} />
+              </li>
+              <li className={styles.menuListItem}>
+                <TrackingToggle />
               </li>
             </ul>
           </React.Fragment>
