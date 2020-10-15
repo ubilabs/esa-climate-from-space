@@ -54,27 +54,18 @@
     padding-right: emCalc(10px)
     fill: $textDefault
 
-.logo
-  position: absolute
-  bottom: emCalc(24px)
-  display: flex
-  flex-direction: row
-  justify-content: center
-
-  svg
-    fill: $main
-
 .version
-  position: absolute
-  right: emCalc(32px)
-  bottom: emCalc(24px)
-  color: $textDefault
+  align-self: center
+  color: #939597
   font-size: 10px
 
 .credits
   position: absolute
-  bottom: emCalc(20px)
-  left: emCalc(32px)
+  bottom: 0
+  display: flex
+  justify-content: space-between
+  margin: 0 emCalc(22px)
+  width: 100%
   color: $textDefault
 
   svg
@@ -83,6 +74,20 @@
 
     &:hover
       fill: $textColor
+
+.cciLogo
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+  svg
+    fill: $main
+
+.logo
+  padding: emCalc(10px) emCalc(22px)
+
+  img
+    width: emCalc(80px)
 
 .creditsText
   margin: emCalc(5px)
@@ -96,8 +101,12 @@
   .menuList:first-child
     display: none
 
-  .logo
-    bottom: emCalc(48px)
+  .cciLogo
+    justify-content: space-evenly
+    width: emCalc(80px)
 
   .credits
     display: flex
+
+  :global(path.hideText)
+    display: none
