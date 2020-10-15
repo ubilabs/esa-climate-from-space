@@ -22,16 +22,13 @@ const Tracking: FunctionComponent = () => {
   useEffect(() => {
     if (consentGiven) {
       pushInstruction('rememberConsentGiven');
-      pushInstruction('rememberCookieConsentGiven');
     } else if (!requireConsentPushed) {
       pushInstruction('requireConsent');
-      pushInstruction('requireCookieConsent');
       setRequireConsentPushed(true);
     }
 
     if (consentRejected && !forgetConsentPushed) {
       pushInstruction('forgetConsentGiven');
-      pushInstruction('forgetCookieConsentGiven');
       setForgetConsentPushed(true);
     }
   }, [

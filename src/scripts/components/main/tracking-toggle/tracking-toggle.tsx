@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent, useState} from 'react';
 
 import {useMatomo} from '@datapunt/matomo-tracker-react';
 
@@ -10,8 +10,6 @@ const TrackingToggle: FunctionComponent = () => {
     localStorage.getItem('matomoConsent') === 'yes'
   );
 
-  useEffect(() => {}, []);
-
   return (
     <input
       type="checkbox"
@@ -22,11 +20,9 @@ const TrackingToggle: FunctionComponent = () => {
         if (checked) {
           localStorage.setItem('matomoConsent', 'yes');
           pushInstruction('rememberConsentGiven');
-          pushInstruction('rememberCookieConsentGiven');
         } else {
           localStorage.setItem('matomoConsent', 'no');
           pushInstruction('forgetConsentGiven');
-          pushInstruction('forgetCookieConsentGiven');
         }
 
         setConsentGiven(checked);
