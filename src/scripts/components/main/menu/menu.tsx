@@ -141,13 +141,6 @@ const Menu: FunctionComponent = () => {
                   <FormattedMessage id={'github'} />
                 </a>
               </li>
-              <li className={styles.menuListItem}>
-                <Button
-                  className={styles.menuButton}
-                  label={'attributions'}
-                  onClick={() => setOverlayType('attributions')}
-                />
-              </li>
               <li className={styles.subMenuTitle}>
                 <AnalyticsIcon /> <FormattedMessage id={'analytics'} />
               </li>
