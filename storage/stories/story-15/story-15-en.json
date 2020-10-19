@@ -60,7 +60,8 @@
           "id": "sea_ice_nh.ice_conc",
           "timestamp": "2012-09-09T12:00:00.000Z"
         }
-      ]
+      ],
+      "layerDescription": "Sea Ice Concentration"
     },
     {
       "type": "image",
@@ -71,7 +72,7 @@
         "assets/seaice_large_13.jpg",
         "assets/story15_06.jpg",
         "assets/story15_07.jpg",
-        "assets/story15_05.jpg"
+        "assets/story15_05.png"
       ],
       "imageCaptions": [
         "Young Arctic sea ice viewed from an aircraft. Sea ice thinner than 50 cm is particularly important for weather and climate as it controls the exchange of heat and water between the ocean and atmosphere. (S Hendriks/AWI)",
@@ -88,11 +89,13 @@
       "images": [
         "assets/icesheet_large_16.jpg",
         "assets/icesheet_large_01.jpg",
-        "assets/story15_08.png"
+        "assets/story15_10.jpg",
+        "assets/story15_08.jpg"
       ],
       "imageCaptions": [
         "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
         "Surface meltwater runs across Leverett Glacier, about 50km from\r\n the western edge of the Greenland  ice sheet, on 19th August 2009.\r\n(Andrew Sole, University of Sheffield)",
+        "A new iceberg calves from the Greenland Ice Shelf into Disko Bay. (ESA)",
         "Northern hemisphere permafrost 2003-2017 (ESA-CCI)"
       ]
     },
