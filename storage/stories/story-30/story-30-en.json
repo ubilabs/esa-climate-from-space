@@ -21,9 +21,9 @@
         "assets/story30-image05.jpg"
       ],
       "imageCaptions": [
-        "Lagoon with palm trees on shore of island (placeholder) (Museon)",
-        "A seawall made of sandbags protects a Kiribati village from the Pacific Ocean (Museon)",
-        "South Tarawa Island from the air. (Govt of Kiribati)",
+        "Marakei Island, Kiribati (Diederik Veerman/Museon The Hague)",
+        "A seawall made of sandbags protects a village on Marakei Island from the Pacific Ocean (Diederik Veerman/Museon The Hague)",
+        "South Tarawa Island from the air (Govt of Kiribati)",
         "Tarawa Atoll is about 35 km long and home to more than half of Kiribati’s 115,000 citizens (Copernicus Sentinel data, 2020, processed by ESA)",
         "A map of regional sea level trends, derived from more than 20 years of satellite observations, shows where mean sea level is rising the most (red), dropping (blue), or remains unchanged (grey) (ESA-CCI)"
       ]
@@ -59,25 +59,26 @@
           "id": "sst.analysed_sst",
           "timestamp": "2015-12-15T00:00:00.000Z"
         }
-      ]
+      ],
+      "layerDescription": "Sea Level Anomaly compared with Sea Surface Temperature"
     },
     {
       "type": "image",
-      "text": "## Climate Refugees\r\n\r\nIn 2014, Kiribati’s president, Anote Tong, drew international attention to the critical situation of his and other low-lying island nations and the inevitability of climate migration. His motto was to “migrate with dignity rather than flee as refugees”. To be prepared, he purchased 20 sq km of land 2,000 km away on Fiji and urged his people to get ready for relocation. For Kiribati, climate change presents the likelihood of a whole nation being scattered around the globe and an ancient culture disappearing. \r\n\r\nAnd this is not only a distant problem. In the UK, the Welsh town of Fairbourne is to be abandoned because it cannot be defended from the expected rise in sea level. In the USA, an area of land the size of a football field is being lost from the Mississippi delta every hour. Land subsidence is amplifying the effects of sea level rise, causing maps to be redrawn and the first American refugees from the climate crisis, with the resettlement of the community living on the Isle de Jean Charles announced in 2016. \r\n\r\nSixty-five per cent of the world’s major cities are located within 100 km of the coast. 680 million people live in low-lying coastal zones, a number that is rising with an increasingly urban population and expected to reach one billion by 2050. Although an annual increase in sea level of 3.6 mm may seem small, it is amplified during high tides and storm surges. Every centimetre of sea level rise puts 6 million more people at risk of coastal flooding.\r\n\r\nSince climate change is increasing the intensity and frequency of storms, the risk of flooding events such as those that hit New Orleans in 2005 and New York in 2012 is growing. In some regions extreme sea level events previously seen only once a century are likely to occur every year by 2050.",
-      "shortText": "# Climate Refugees \r\n\r\n“We should migrate with dignity rather than flee as refugees” – _Anote Tong, President of Kiribati, 2014_\r\n\r\n- land purchased 2,000 km away on Fiji \r\n- population urged to prepare for relocation\r\n\r\nNot just a distant problem: \r\n\r\n- Fairbourne, Wales, UK, to be abandoned\r\n- also Isle de Jean Charles, Mississippi Delta, USA \r\n- New Orleans flooded in 2005, New York in 2012 \r\n- 65% of major cities are within 100 km of coast\r\n- 680 million people in coastal areas, 1 billion by 2050 \r\n- every cm of sea level rise puts 6 million more people at risk of flooding\r\n\r\nIn some places, extreme ‘once-a-century’ events are likely to occur every year by 2050.",
+      "text": "## Climate Refugees\r\n\r\nIn 2014, Kiribati’s president, Anote Tong, drew international attention to the critical situation of his and other low-lying island nations and the inevitability of climate migration. His motto was to “migrate with dignity\" rather than flee as refugees. To be prepared, he purchased 20 sq km of land 2,000 km away on Fiji and urged his people to get ready for relocation. For Kiribati, climate change presents the likelihood of a whole nation being scattered around the globe and an ancient culture disappearing. \r\n\r\nAnd this is not only a distant problem. In the UK, the Welsh town of Fairbourne is to be abandoned because it cannot be defended from the expected rise in sea level. In the USA, an area of land the size of a football field is being lost from the Mississippi delta every hour. Land subsidence is amplifying the effects of sea level rise, causing maps to be redrawn and the first American refugees from the climate crisis, with the resettlement of the community living on the Isle de Jean Charles announced in 2016. \r\n\r\nSixty-five per cent of the world’s major cities are located within 100 km of the coast. 680 million people live in low-lying coastal zones, a number that is rising with an increasingly urban population and expected to reach one billion by 2050. Although an annual increase in sea level of 3.6 mm may seem small, it is amplified during high tides and storm surges. Every centimetre of sea level rise puts 6 million more people at risk of coastal flooding.\r\n\r\nSince climate change is increasing the intensity and frequency of storms, the risk of flooding events such as those that hit New Orleans in 2005 and New York in 2012 is growing. In some regions extreme sea level events previously seen only once a century are likely to occur every year by 2050.",
+      "shortText": "# Climate Refugees \r\n\r\n“Migrate with dignity\" rather than flee as refugees – _Anote Tong, President of Kiribati, 2014_\r\n\r\n- land purchased 2,000 km away on Fiji \r\n- population urged to prepare for relocation\r\n\r\nNot just a distant problem: \r\n\r\n- Fairbourne, Wales, UK, to be abandoned\r\n- also Isle de Jean Charles, Mississippi Delta, USA \r\n- New Orleans flooded in 2005, New York in 2012 \r\n- 65% of major cities are within 100 km of coast\r\n- 680 million people in coastal areas, 1 billion by 2050 \r\n- every cm of sea level rise puts 6 million more people at risk of flooding\r\n\r\nIn some places, extreme ‘once-a-century’ events are likely to occur every year by 2050.",
       "images": [
         "assets/story30-image12.jpg",
         "assets/story30-image04.jpg",
         "assets/sealevel_large_01.jpg",
         "assets/sealevel_large_02.jpg",
-        "assets/sealevel_large_21.png"
+        "assets/sealevel_large_21.jpg"
       ],
       "imageCaptions": [
-        "Flooding in Kiribati (placeholder) (Museon)",
+        "High tide on Marakei Island, Kiribati (Diederik Veerman/Museon The Hague)",
         "The Mississippi Delta is losing land the size of a football field every hour to the sea. Proba-V satellite image from 10 February 2015. \r\n(ESA-BELSPO, produced by VITO)",
         "Blackout in New York after Hurricane Sandy, October 2012. The storm coincided with a “spring” high tide, resulting in a storm surge almost five metres above mean low water. Road tunnels, subways and electrical substations were flooded in lower Manhattan, and almost 2 million people were left without power across New York and New Jersey. (Iwan Baan/Getty Images)",
         "Flood defences such as the long Afsluitdijk protect low-lying land on the Dutch coast from the North Sea. Beyond the dyke, this SPOT-4 satellite image shows the ever-moving sandbanks of the shallow Wadden Sea. A World Heritage Site since 2009, this unique region, one of the largest wetlands in the world, is threatened by sea level rise.  (CNES/Spot Image)",
-        "Since the early 1990s, satellite altimeters have revolutionised our understanding of sea-level rise. Global mean sea level has not only risen over the last 25 years – by about 3 cm per decade – but the rate at which it is rising is accelerating. (ESA)"
+        "Since the early 1990s, satellite altimeters have revolutionised our understanding of sea-level rise. Global mean sea level has not only risen over the last 25 years – by about 3 cm per decade – but the rate at which it is rising is accelerating. ESA’s ERS and Envisat satellites carried radar altimeters, as do CryoSat and Sentinel-3. Sentinel-6 provides continuity with the US-French Jason and Topex-Poseidon satellites. (ESA)"
       ]
     },
     {

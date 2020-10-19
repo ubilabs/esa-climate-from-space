@@ -49,7 +49,8 @@
           "id": "ozone.atmosphere_mole_content_of_ozone",
           "timestamp": "2007-11-02T00:00:00.000Z"
         }
-      ]
+      ],
+      "layerDescription": "Ozone Concentration"
     },
     {
       "type": "video",
