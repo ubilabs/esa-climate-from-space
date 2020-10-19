@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 TIMEOUT=8000
-LAYER_ID="ozone.atmosphere_mole_content_of_ozone"
-VARIABLE_ID="atmosphere_mole_content_of_ozone"
+LAYER_ID="ozone.total_ozone_column"
+VARIABLE_ID="total_ozone_column"
 LAYER_TYPE="image"
-VERSION="0.8.2"
-LON_RES="360"
-LAT_RES="180"
+VERSION="0.9.1"
+LON_RES="720"
+LAT_RES="360"
 ZOOM_LEVELS="0-3"
 MIN_LON="-180"
 MAX_LON="180"

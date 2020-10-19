@@ -5,7 +5,7 @@ import cx from 'classnames';
 import StoryTags from '../story-tags/story-tags';
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
 import {DownloadButton} from '../../main/download-button/download-button';
-import {getStoryMediaUrl} from '../../../libs/get-story-media-url';
+import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import config from '../../../config/main';
 
 import {StoryListItem as StoryListItemType} from '../../../types/story-list';
@@ -31,13 +31,15 @@ const StoryListItemContent: FunctionComponent<Props> = ({
   const classes = cx(
     styles.storyListItem,
     mode === StoryMode.Present && styles.present,
+    mode === StoryMode.Showcase && styles.showcase,
     selectedIndex >= 0 && styles.selected
   );
+  const isStoriesMode = StoryMode.Stories === mode;
   const downloadUrl = replaceUrlPlaceholders(config.api.storyOfflinePackage, {
     id: story.id
   });
   const downloadId = `story-${story.id}`;
-  const imageUrl = getStoryMediaUrl(story.id, story.image);
+  const imageUrl = getStoryAssetUrl(story.id, story.image);
 
   return (
     <div
@@ -52,7 +54,9 @@ const StoryListItemContent: FunctionComponent<Props> = ({
       <div className={styles.info}>
         <p className={styles.title}>{story.title}</p>
         <p className={styles.description}>{story.description}</p>
-        {story.tags && <StoryTags tags={story.tags} selected={selectedTags} />}
+        {story.tags && isStoriesMode && (
+          <StoryTags tags={story.tags} selected={selectedTags} />
+        )}
         <div className={styles.downloadButton}>
           <DownloadButton url={downloadUrl} id={downloadId} />
         </div>
@@ -71,7 +75,7 @@ const StoryListItem: FunctionComponent<Props> = ({
   const isShowcaseMode = mode === StoryMode.Showcase;
 
   return !isShowcaseMode ? (
-    <Link to={`/${mode}/${story.id}`}>
+    <Link to={`/${mode}/${story.id}/0`}>
       <StoryListItemContent
         selectedIndex={selectedIndex}
         selectedTags={selectedTags}

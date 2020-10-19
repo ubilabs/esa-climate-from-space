@@ -33,11 +33,13 @@ import styles from './data-viewer.styl';
 
 interface Props {
   backgroundColor: string;
+  hideNavigation?: boolean;
   markers?: Marker[];
 }
 
 const DataViewer: FunctionComponent<Props> = ({
   backgroundColor,
+  hideNavigation,
   markers = []
 }) => {
   const dispatch = useDispatch();
@@ -87,6 +89,13 @@ const DataViewer: FunctionComponent<Props> = ({
   useEffect(() => {
     setCurrentView(globalGlobeView);
   }, [globalGlobeView]);
+
+  // stop globe spinning when layer is selected
+  useEffect(() => {
+    if ((mainId || compareId) && globeSpinning) {
+      dispatch(setGlobeSpinningAction(false));
+    }
+  }, [dispatch, mainId, compareId, globeSpinning]);
 
   // Only show the globe navigation when a globe is shown.
   // Either when no data layer is selected and only basemap is shown
@@ -165,7 +174,7 @@ const DataViewer: FunctionComponent<Props> = ({
           action: () => setIsMainActive(false)
         })}
 
-      {showGlobeNavigation && <GlobeNavigation />}
+      {!hideNavigation && showGlobeNavigation && <GlobeNavigation />}
     </div>
   );
 };

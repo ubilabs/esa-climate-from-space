@@ -1,19 +1,26 @@
 import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
+import cx from 'classnames';
 
-import {getStoryMediaUrl} from '../../../libs/get-story-media-url';
+import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 
 import {Slide} from '../../../types/story';
 
 import styles from './splash-screen.styl';
+import {StoryMode} from '../../../types/story-mode';
 
 interface Props {
   storyId: string;
+  mode: StoryMode;
   slide: Slide;
 }
 
-const SplashScreen: FunctionComponent<Props> = ({storyId, slide}) => {
-  const imageUrl = slide.images && getStoryMediaUrl(storyId, slide.images[0]);
+const SplashScreen: FunctionComponent<Props> = ({storyId, mode, slide}) => {
+  const imageUrl = slide.images && getStoryAssetUrl(storyId, slide.images[0]);
+  const contentClasses = cx(
+    styles.content,
+    mode !== StoryMode.Stories && styles.presentationContent
+  );
 
   return (
     <div
@@ -23,7 +30,7 @@ const SplashScreen: FunctionComponent<Props> = ({storyId, slide}) => {
         width: '100%',
         height: '100%'
       }}>
-      <div className={styles.content}>
+      <div className={contentClasses}>
         <ReactMarkdown
           source={slide.text}
           allowedTypes={[

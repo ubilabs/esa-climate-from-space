@@ -11,23 +11,27 @@ import {CCILogo} from '../icons/cci-logo';
 import AboutProject from '../about-project/about-project';
 import Overlay from '../overlay/overlay';
 import {WindowsIcon} from '../icons/windows-icon';
+import {AnalyticsIcon} from '../icons/analytics-icon';
 import {LinuxIcon} from '../icons/linux-icon';
 import {AppleIcon} from '../icons/apple-icon';
 import config from '../../../config/main';
+import {Ubilabslogo} from '../icons/ubilabs-logo';
+import Attributions from '../attributions/attributions';
+import TrackingToggle from '../tracking-toggle/tracking-toggle';
 
 import styles from './menu.styl';
 
 const Menu: FunctionComponent = () => {
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [overlayType, setOverlayType] = useState<string | null>(null);
   // @ts-ignore - injected via webpack's define plugin
   const version = INFO_VERSION;
 
   return (
     <React.Fragment>
       <nav className={styles.menuContainer}>
-        {showOverlay ? (
-          <Overlay onClose={() => setShowOverlay(false)}>
-            <AboutProject />
+        {overlayType ? (
+          <Overlay onClose={() => setOverlayType(null)}>
+            {overlayType === 'about' ? <AboutProject /> : <Attributions />}
           </Overlay>
         ) : (
           <React.Fragment>
@@ -100,12 +104,19 @@ const Menu: FunctionComponent = () => {
                 <Button
                   className={styles.menuButton}
                   label={'about'}
-                  onClick={() => setShowOverlay(true)}
+                  onClick={() => setOverlayType('about')}
+                />
+              </li>
+              <li className={styles.menuListItem}>
+                <Button
+                  className={styles.menuButton}
+                  label={'attributions'}
+                  onClick={() => setOverlayType('attributions')}
                 />
               </li>
               <li className={styles.menuListItem}>
                 <a
-                  href="https://www.esa.int/"
+                  href={config.esaWebsite}
                   target={'_blank'}
                   rel="noopener noreferrer"
                   className={styles.menuButton}>
@@ -114,7 +125,7 @@ const Menu: FunctionComponent = () => {
               </li>
               <li className={styles.menuListItem}>
                 <a
-                  href="https://climate.esa.int/"
+                  href={config.cciWebsite}
                   target={'_blank'}
                   rel="noopener noreferrer"
                   className={styles.menuButton}>
@@ -123,21 +134,51 @@ const Menu: FunctionComponent = () => {
               </li>
               <li className={styles.menuListItem}>
                 <a
-                  href="https://github.com/ubilabs/esa-climate-from-space"
+                  href={config.githubRepo}
                   target={'_blank'}
                   rel="noopener noreferrer"
                   className={styles.menuButton}>
                   <FormattedMessage id={'github'} />
                 </a>
               </li>
+              <li className={styles.subMenuTitle}>
+                <AnalyticsIcon /> <FormattedMessage id={'analytics'} />
+              </li>
+              <li className={styles.menuListItem}>
+                <TrackingToggle />
+              </li>
             </ul>
           </React.Fragment>
         )}
       </nav>
-      <div className={styles.logo}>
-        <CCILogo />
+      <div className={styles.credits}>
+        <div className={styles.logo}>
+          <a
+            href={config.ubilabsWebsite}
+            target={'_blank'}
+            rel="noopener noreferrer">
+            <p className={styles.creditsText}>
+              <FormattedMessage id={'madeBy'} />
+            </p>
+            <Ubilabslogo />
+          </a>
+        </div>
+        <div className={styles.cciLogo}>
+          <CCILogo />
+          <div className={styles.version}>{version}</div>
+        </div>
+        <div className={styles.logo}>
+          <a
+            href={config.planetaryVisionsWebsite}
+            target={'_blank'}
+            rel="noopener noreferrer">
+            <p className={styles.creditsText}>
+              <FormattedMessage id={'contentBy'} />
+            </p>
+            <img src={config.planeratyVisionsLogo} />
+          </a>
+        </div>
       </div>
-      <div className={styles.version}>{version}</div>
     </React.Fragment>
   );
 };

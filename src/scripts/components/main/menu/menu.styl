@@ -44,31 +44,69 @@
   align-items: center
   color: $textDefault
 
+  &:hover
+    color: $textColor
+
+    svg
+      fill: $main
+
   svg
     padding-right: emCalc(10px)
     fill: $textDefault
 
-.logo
+.version
+  align-self: center
+  color: #939597
+  font-size: 10px
+
+.credits
   position: absolute
-  bottom: emCalc(24px)
+  bottom: 0
   display: flex
-  flex-direction: row
-  justify-content: center
+  justify-content: space-between
+  margin: 0 emCalc(22px)
   width: 100%
+  color: $textDefault
+
+  svg
+    height: emCalc(25px)
+    fill: $textWhite
+
+    &:hover
+      fill: $textColor
+
+.cciLogo
+  display: flex
+  flex-direction: column
+  justify-content: center
 
   svg
     fill: $main
 
-.version
-  position: absolute
-  right: emCalc(32px)
-  bottom: emCalc(24px)
-  color: $textDefault
-  font-size: 10px
+.logo
+  padding: emCalc(10px) emCalc(22px)
+
+  img
+    width: emCalc(80px)
+
+.creditsText
+  margin: emCalc(5px)
+  margin-left: 0
+  font-size: 13px
 
 @media screen and (max-width: 480px)
   .menuContainer
     width: 100%
 
   .menuList:first-child
+    display: none
+
+  .cciLogo
+    justify-content: space-evenly
+    width: emCalc(80px)
+
+  .credits
+    display: flex
+
+  :global(path.hideText)
     display: none

@@ -30,10 +30,11 @@ compareThumb()
   left: 0
   display: flex
   justify-content: center
-  padding: emCalc(60px) 0 emCalc(100px) 0
+  padding: emCalc(50px) 0
   width: 100%
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%)
   font-size: emCalc(16px)
+  user-select: none
 
 .container
   position: relative
@@ -78,6 +79,9 @@ compareThumb()
 .input::-ms-thumb
   thumb()
 
+.singleInput
+  height: 50px
+
 .compareInput::-webkit-slider-thumb
   compareThumb()
 
@@ -102,6 +106,9 @@ compareThumb()
   top: 50px
   transform: translate(0, 0)
 
+.singleOutput
+  top: 40px
+
 .playButton
   margin-top: emCalc(-21px)
   padding-right: 1em
@@ -118,5 +125,8 @@ compareThumb()
   font-size: 0.8em
 
 @media screen and (max-width: 480px)
+  .timeSlider
+    padding-bottom: emCalc(100px)
+
   .container
     min-width: 300px
