@@ -304,11 +304,9 @@ const Globe: FunctionComponent<Props> = ({
     }
 
     if (spinning) {
-      setTimeout(() => {
-        lastNowRef.current = Date.now();
+      lastNowRef.current = Date.now();
 
-        viewer.clock.onTick.addEventListener(spin);
-      }, projectionState.morphTime * 1000);
+      viewer.clock.onTick.addEventListener(spin);
     } else {
       viewer.clock.onTick.removeEventListener(spin);
     }
