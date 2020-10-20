@@ -73,12 +73,12 @@ const LayerSelector: FunctionComponent = () => {
               onSelect={(layerId, isMain) => {
                 dispatch(setSelectedLayerIdsAction(layerId, isMain));
 
+                const name = layers.find(layer => layer.id === layerId)?.name;
+
                 trackEvent({
                   category: 'datasets',
                   action: isMain ? 'select' : 'compare',
-                  name: isMain
-                    ? layerId
-                    : `${selectedMainLayer?.id} - ${layerId}`
+                  name: isMain ? name : `${selectedMainLayer?.name} - ${name}`
                 });
               }}
             />
