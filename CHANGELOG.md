@@ -1,3 +1,19 @@
+## [0.10.2](https://github.com/ubilabs/esa-climate-from-space/compare/v0.10.1...v0.10.2) (2020-10-20)
+
+
+### Bug Fixes
+
+* **storyimage-path:** change from story8_03 to story8-03 ([71d585b](https://github.com/ubilabs/esa-climate-from-space/commit/71d585ba66c1433698d2ef36ff1a6f22b8df1307))
+
+
+### Features
+
+* **stories:** add missing assets [#706](https://github.com/ubilabs/esa-climate-from-space/issues/706) ([e884e9e](https://github.com/ubilabs/esa-climate-from-space/commit/e884e9e94cc0b0557c50cf150d64229e68c40c43))
+* **stories:** update assets for stories ([#707](https://github.com/ubilabs/esa-climate-from-space/issues/707)) ([9b4f573](https://github.com/ubilabs/esa-climate-from-space/commit/9b4f5732171cdffeca90402aa19b14d87f0df7b6))
+* **story-content:** update stories ([#709](https://github.com/ubilabs/esa-climate-from-space/issues/709)) ([c9fb15d](https://github.com/ubilabs/esa-climate-from-space/commit/c9fb15db7331a2c21bc3a383115bd6322ff0d575))
+
+
+
 ## [0.10.1](https://github.com/ubilabs/esa-climate-from-space/compare/v0.9.2...v0.10.1) (2020-10-19)
 
 
