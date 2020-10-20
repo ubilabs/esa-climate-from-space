@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# Is Ozone Good or Bad?\r\n\r\nThe ozone layer protects life on Earth from ultraviolet solar radiation, but ozone is also a greenhouse gas and at ground level it is harmful to human health.",
       "shortText": "# Is Ozone Good or Bad?\r\n\r\nThe ozone layer protects life on Earth from ultraviolet solar radiation, but ozone is also a greenhouse gas and at ground level it is harmful to human health.",
-      "images": [
-        "assets/ozone.jpg"
-      ]
+      "images": ["assets/ozone.jpg"]
     },
     {
       "type": "image",
@@ -64,7 +62,7 @@
       "shortText": "## Ozone from Space \r\n\r\nSatellites track ozone distribution across the globe and at different levels in the atmosphere: \r\n\r\n- to monitor the recovery of the ozone layer \r\n- to calculate a UV exposure index as part of daily weather forecasts. \r\n- to deepen our knowledge of how ozone affects the climate, and how it might respond to climate change.\r\n\r\nDifferent observation techniques distinguish between the “good” ozone in the stratosphere and the “bad” ozone in the troposphere:\r\n\r\n- Satellites look straight down to measure total ozone – a good measure of stratospheric ozone, which accounts for about 90% of the total ozone column. \r\n- By looking sideways into the atmosphere satellites measure the ozone profile – the vertical distribution of ozone from sea level up to about 50 km high.",
       "images": [
         "assets/ozone_data_profile_large.jpg",
-        "assets/story8_03.jpg",
+        "assets/story8-03.jpg",
         "assets/aerosol_large_10.jpg",
         "assets/ozone_large_09.png"
       ],
