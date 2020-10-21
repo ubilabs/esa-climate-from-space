@@ -31,12 +31,11 @@
     height: 100%
 
   .imageContainer
-    position: relative
     display: flex
     flex-direction: column
     justify-content: flex-end
-    max-width: 70%
-    max-height: 80%
+    max-width: 80%
+    max-height: 90%
     background: rgba($darkGrey4, 0.3)
 
   .fullscreenExitIcon
@@ -44,15 +43,20 @@
     cursor: pointer
     fill: #fff
 
+  .photo
+    display: flex
+    width: 100%
+    height: 90%
+    object-fit: contain
+
   .imageInfo
-    position: absolute
-    bottom: 0
     display: flex
     justify-content: space-between
     align-items: center
+    max-height: 60px
     width: 100%
-    height: fit-content
-    background-color: rgba($black, 0.7)
+    height: 100%
+    background-color: $black
 
   .description
     margin: emCalc(15px)
