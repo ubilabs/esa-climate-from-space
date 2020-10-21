@@ -47,13 +47,26 @@
     "title": "Biodiversity and Habitat Loss",
     "description": "",
     "image": "assets/landcover_07.jpg",
-    "tags": ["land-cover", "hr-land-cover", "land-surface-temperature", "soil-moisture", "permafrost", "fire"]
+    "tags": [
+      "land-cover",
+      "hr-land-cover",
+      "land-surface-temperature",
+      "soil-moisture",
+      "permafrost",
+      "fire"
+    ]
   },
   {
     "id": "story-26",
     "title": "Taking the Pulse of the Planet",
     "description": "",
     "image": "assets/soilmoisture_large_14.jpg",
-    "tags": ["satellite-orbits", "sensors", "electromagnetic-spectrum", "climate-modelling", "geostationary-satellite"]
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "climate-modelling",
+      "geostationary-satellite"
+    ]
   }
 ]
