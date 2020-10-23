@@ -28,7 +28,8 @@ const StoryList: FunctionComponent<Props> = ({
 
   const classes = cx(
     styles.storyListGrid,
-    mode === StoryMode.Present && styles.present
+    mode === StoryMode.Present && styles.present,
+    mode === StoryMode.Showcase && styles.showcase
   );
 
   return (
