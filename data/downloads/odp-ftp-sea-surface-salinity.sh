@@ -6,7 +6,7 @@ OUTPUT_FODLER=./download/sss
 
 mkdir -p $OUTPUT_FODLER
 
-for i in {0..106}
+for i in {0..119}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_DATE=$(date +%Y%m%d -d "$START_DATE + $i month")
