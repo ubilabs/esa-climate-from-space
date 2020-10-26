@@ -75,7 +75,7 @@ const Story: FunctionComponent = () => {
         />
       );
     } else if (slide.type === SlideType.Video && slide.videoId) {
-      return <StoryVideo videoId={slide.videoId} />;
+      return <StoryVideo mode={mode} videoId={slide.videoId} />;
     }
 
     return (

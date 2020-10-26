@@ -5,9 +5,9 @@ import cx from 'classnames';
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 
 import {Slide} from '../../../types/story';
+import {StoryMode} from '../../../types/story-mode';
 
 import styles from './splash-screen.styl';
-import {StoryMode} from '../../../types/story-mode';
 
 interface Props {
   storyId: string;
