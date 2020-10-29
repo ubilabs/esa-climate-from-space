@@ -3,8 +3,8 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# A Country Under Threat\r\n\r\nMean sea level is rising across the globe, threatening the very existence of low-lying nations such as Kiribati and the Maldives. Sea level acts as an index of climate change because it depends on several components of the climate system, including ocean temperature and the behaviour of glaciers and ice sheets.",
-      "shortText": "# A Country Under Threat\r\n\r\nMean sea level is rising across the globe, threatening the very existence of low-lying nations such as Kiribati and the Maldives. Sea level acts as an index of climate change because it depends on several components of the climate system, including ocean temperature and the behaviour of glaciers and ice sheets.",
+      "text": "# A Country Under Threat\r\n\r\nMean sea level is rising across the globe, threatening coastal communities everywhere and the very existence of low-lying nations such as Kiribati and the Maldives. Sea level acts as an index of climate change because it depends on several components of the climate system, including ocean temperature and the behaviour of glaciers and ice sheets.",
+      "shortText": "# A Country Under Threat\r\n\r\nMean sea level is rising across the globe, threatening coastal communities everywhere and the very existence of low-lying nations such as Kiribati and the Maldives. Sea level acts as an index of climate change because it depends on several components of the climate system, including ocean temperature and the behaviour of glaciers and ice sheets.",
       "images": [
         "assets/sealevel.jpg"
       ]
