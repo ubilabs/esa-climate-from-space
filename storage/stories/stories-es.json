@@ -3,7 +3,7 @@
     "id": "story-16",
     "title": "Planetary Heat Pumps",
     "description": "",
-    "image": "assets/sst_large_18.jpg",
+    "image": "assets/sst.jpg",
     "tags": [
       "sea-surface-temperature",
       "sea-ice",
@@ -36,9 +36,9 @@
   },
   {
     "id": "story-30",
-    "title": "A Country Under Threat",
+    "title": "Coasts Under Threat",
     "description": "",
-    "image": "assets/story30-image02.jpg",
+    "image": "assets/sealevel.jpg",
     "tags": ["sea-level", "sea-surface-temperature", "glaciers", "ice-sheets"],
     "position": [175, -2]
   },
@@ -46,7 +46,7 @@
     "id": "story-28",
     "title": "Biodiversity and Habitat Loss",
     "description": "",
-    "image": "assets/landcover_07.jpg",
+    "image": "assets/landcover.jpg",
     "tags": [
       "land-cover",
       "hr-land-cover",
@@ -61,7 +61,7 @@
     "id": "story-26",
     "title": "Taking the Pulse of the Planet",
     "description": "",
-    "image": "assets/soilmoisture_large_14.jpg",
+    "image": "assets/Sentinel-2.jpg",
     "tags": [
       "satellite-orbits",
       "sensors",
