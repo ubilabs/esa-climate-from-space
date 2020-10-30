@@ -86,7 +86,7 @@ const Story: FunctionComponent = () => {
           backgroundColor={'#000000'}
         />
         <div className={styles.layerDetails}>
-          <TimeSlider className={styles.storySlider} />
+          <TimeSlider noTimeClamp className={styles.storySlider} />
           {slide.layerDescription && (
             <LayerDescription layerDescription={slide.layerDescription} />
           )}
