@@ -32,13 +32,17 @@ import styles from './time-slider.styl';
 
 interface Props {
   className?: string;
+  noTimeClamp?: boolean;
 }
 
 // debounce the time update
 const DELAY = 200;
 
 // eslint-disable-next-line complexity
-const TimeSlider: FunctionComponent<Props> = ({className = ''}) => {
+const TimeSlider: FunctionComponent<Props> = ({
+  className = '',
+  noTimeClamp
+}) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const {mainId, compareId} = selectedLayerIds;
   const dispatch = useDispatch();
@@ -96,11 +100,12 @@ const TimeSlider: FunctionComponent<Props> = ({className = ''}) => {
   );
 
   // clamp globe time to min/max of the active layers when a layer changes
+  // dont clamp in story mode where time is set by slide
   useEffect(() => {
-    if (clampedTime !== time) {
+    if (!noTimeClamp && clampedTime !== time) {
       dispatch(setGlobeTime(clampedTime));
     }
-  }, [clampedTime, time, dispatch]);
+  }, [noTimeClamp, clampedTime, time, dispatch]);
 
   // stop playback when layer changes
   useEffect(() => {
