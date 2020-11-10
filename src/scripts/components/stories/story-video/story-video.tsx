@@ -1,19 +1,27 @@
 import React, {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
+import cx from 'classnames';
 
 import {languageSelector} from '../../../selectors/language';
+
+import {StoryMode} from '../../../types/story-mode';
 
 import styles from './story-video.styl';
 
 interface Props {
   videoId: string;
+  mode: StoryMode | null;
 }
 
-const StoryVideo: FunctionComponent<Props> = ({videoId}) => {
+const StoryVideo: FunctionComponent<Props> = ({mode, videoId}) => {
   const language = useSelector(languageSelector);
+  const classes = cx(
+    styles.storyVideo,
+    mode !== StoryMode.Stories && styles.presentationVideo
+  );
 
   return (
-    <div className={styles.storyVideo}>
+    <div className={classes}>
       <iframe
         width="100%"
         height="100%"

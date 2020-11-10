@@ -5,9 +5,9 @@ import cx from 'classnames';
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 
 import {Slide} from '../../../types/story';
+import {StoryMode} from '../../../types/story-mode';
 
 import styles from './splash-screen.styl';
-import {StoryMode} from '../../../types/story-mode';
 
 interface Props {
   storyId: string;
@@ -26,7 +26,7 @@ const SplashScreen: FunctionComponent<Props> = ({storyId, mode, slide}) => {
     <div
       className={styles.splashscreen}
       style={{
-        background: `center / cover no-repeat url(${imageUrl}) rgba(0, 0, 0, 0.3)`,
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)), url(${imageUrl})`,
         width: '100%',
         height: '100%'
       }}>

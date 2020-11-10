@@ -8,12 +8,17 @@
 .storyListGrid
   display: grid
   padding: emCalc(20px)
+  padding-top: 0
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))
   grid-auto-rows: 340px
   grid-gap: 16px
 
 .present
+  padding-top: emCalc(20px)
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+
+.showcase
+  padding-top: emCalc(20px)
 
 @media screen and (max-width: 480px)
   .storyListGrid

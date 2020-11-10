@@ -5,8 +5,16 @@
   flex-direction: column
   justify-content: center
   width: 50%
+  height: 100%
   color: $textDefault
   font-family: NotesEsa
+
+.content
+  overflow-y: scroll
+  margin: emCalc(10px) 0
+  height: 80%
+  color: $textDefault
+  font-family: Arial, Helvetica, sans-serif
 
   h1
     display: flex
@@ -16,3 +24,7 @@
   a
     color: $textColor
     text-decoration: none
+
+@media screen and (max-width: 480px)
+  .aboutProject
+    width: 80%
