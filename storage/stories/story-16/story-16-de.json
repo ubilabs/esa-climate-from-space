@@ -5,7 +5,9 @@
       "type": "splashscreen",
       "text": "# Planetary Heat Pumps\r\n\r\nThe ocean and the atmosphere both redistribute energy around the planet. While it is the atmosphere that brings us our weather, the oceans can store much more heat, making them a more stable indicator of climate trends.",
       "shortText": "# Planetary Heat Pumps\r\n\r\nThe ocean and the atmosphere both redistribute energy around the planet. While it is the atmosphere that brings us our weather, the oceans can store much more heat, making them a more stable indicator of climate trends.",
-      "images": ["assets/sst.jpg"]
+      "images": [
+        "assets/sst.jpg"
+      ]
     },
     {
       "type": "image",
@@ -62,24 +64,24 @@
       "shortText": "## Fisherman’s Friend\r\n\r\nMaps of SST show where deep cold water is upwelling, bringing nutrients to the surface.\r\n\r\nModern fishing fleets use SST maps from satellites to help find and follow fish. \r\n\r\nThe interactive globe shows:\r\n\r\n- a comparison between SST and ocean chlorophyll (in phytoplankton)\r\n- high chlorophyll concentrations associated with areas of cold water upwelling off the coasts of Peru, Argentina and Namibia. \r\n\r\nPhytoplankton are the base of the oceanic food chain, but also play a key role in the climate by absorbing carbon dioxide through photosynthesis.",
       "flyTo": {
         "position": {
-          "longitude": -30.74,
-          "latitude": 23.32,
-          "height": 15145050.29
+          "longitude": -60.11,
+          "latitude": -19.14,
+          "height": 10614832.84
         },
         "orientation": {
           "heading": 360,
-          "pitch": -89.86,
+          "pitch": -89.83,
           "roll": 0
         }
       },
       "layer": [
         {
           "id": "sst.analysed_sst",
-          "timestamp": "2002-05-12T00:00:00.000Z"
+          "timestamp": "2009-03-30T12:00:00.000Z"
         },
         {
           "id": "oc.chlor_a",
-          "timestamp": "2002-05-12T00:00:00.000Z"
+          "timestamp": "2009-03-30T12:00:00.000Z"
         }
       ],
       "layerDescription": "Sea Surface Temperature compared with Chlorophyll-a Concentration"
