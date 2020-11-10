@@ -22,6 +22,7 @@ const Tracking: FunctionComponent = () => {
   useEffect(() => {
     if (consentGiven) {
       pushInstruction('rememberConsentGiven');
+      pushInstruction('enableJSErrorTracking');
     } else if (!requireConsentPushed) {
       pushInstruction('requireConsent');
       setRequireConsentPushed(true);

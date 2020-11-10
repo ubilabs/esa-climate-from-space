@@ -3,13 +3,12 @@
     "id": "story-16",
     "title": "Die Wärmepumpe des Planeten",
     "description": "",
-    "image": "assets/sst_large_18.jpg",
+    "image": "assets/sst.jpg",
     "tags": [
       "sea-surface-temperature",
+      "sea-ice",
       "ocean-colour",
-      "sea-surface-salinity",
-      "water-vapour",
-      "clouds"
+      "sea-surface-salinity"
     ],
     "position": [-50, 40]
   },
@@ -30,15 +29,16 @@
       "sea-ice",
       "sea-surface-temperature",
       "sea-surface-salinity",
-      "permafrost"
+      "permafrost",
+      "ice-sheets"
     ],
     "position": [-105, 75]
   },
   {
     "id": "story-30",
-    "title": "Ein Land in Gefahr",
+    "title": "Bedrohte Küsten",
     "description": "",
-    "image": "assets/story30-image02.jpg",
+    "image": "assets/sealevel.jpg",
     "tags": ["sea-level", "sea-surface-temperature", "glaciers", "ice-sheets"],
     "position": [175, -2]
   },
@@ -46,14 +46,27 @@
     "id": "story-28",
     "title": "Biodiversität und Verlust des Lebensraums",
     "description": "",
-    "image": "assets/landcover_07.jpg",
-    "tags": ["land-cover", "hr-land-cover", "land-surface-temperature", "soil-moisture", "permafrost", "fire"]
+    "image": "assets/landcover.jpg",
+    "tags": [
+      "land-cover",
+      "hr-land-cover",
+      "land-surface-temperature",
+      "soil-moisture",
+      "permafrost",
+      "fire"
+    ]
   },
   {
     "id": "story-26",
     "title": "Den Puls des Planeten messen",
     "description": "",
-    "image": "assets/soilmoisture_large_14.jpg",
-    "tags": ["satellite-orbits", "sensors", "electromagnetic-spectrum", "climate-modelling", "geostationary-satellite"]
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "climate-modelling",
+      "geostationary-satellite"
+    ]
   }
 ]

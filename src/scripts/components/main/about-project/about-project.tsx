@@ -9,23 +9,25 @@ const AboutProject: FunctionComponent = () => {
 
   return (
     <div className={styles.aboutProject}>
-      <ReactMarkdown
-        source={intl.formatMessage({id: 'projectDescription'})}
-        linkTarget="_blank"
-        allowedTypes={[
-          'heading',
-          'text',
-          'paragraph',
-          'break',
-          'strong',
-          'emphasis',
-          'image',
-          'imageReference',
-          'list',
-          'listItem',
-          'link'
-        ]}
-      />
+      <div className={styles.content}>
+        <ReactMarkdown
+          source={intl.formatMessage({id: 'projectDescription'})}
+          linkTarget="_blank"
+          allowedTypes={[
+            'heading',
+            'text',
+            'paragraph',
+            'break',
+            'strong',
+            'emphasis',
+            'image',
+            'imageReference',
+            'list',
+            'listItem',
+            'link'
+          ]}
+        />
+      </div>
     </div>
   );
 };

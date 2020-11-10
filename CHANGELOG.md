@@ -1,3 +1,23 @@
+## [0.10.3](https://github.com/ubilabs/esa-climate-from-space/compare/v0.10.2...v0.10.3) (2020-11-10)
+
+
+### Bug Fixes
+
+* **about:** add scroll, adjust width on mobile ([#719](https://github.com/ubilabs/esa-climate-from-space/issues/719)) ([0915c56](https://github.com/ubilabs/esa-climate-from-space/commit/0915c5681c9b56704b1dd9b00efd2855ae15a088))
+* **data-layers:** update sea surface salinity description ([#726](https://github.com/ubilabs/esa-climate-from-space/issues/726)) ([15cfeb0](https://github.com/ubilabs/esa-climate-from-space/commit/15cfeb0960bc5f3e0c1056d11a2f8102ca0245cf))
+* **menu-width:** hide overflow ([#717](https://github.com/ubilabs/esa-climate-from-space/issues/717)) ([794c133](https://github.com/ubilabs/esa-climate-from-space/commit/794c133f65d2bf98aa69d47771c81a9188ce7638))
+* **story-tags:** remove tags from german story selector ([#716](https://github.com/ubilabs/esa-climate-from-space/issues/716)) ([b44aa5c](https://github.com/ubilabs/esa-climate-from-space/commit/b44aa5c7369543c8bd4fd207a26ab97baa1e4037))
+* **storyTimeSlider:** keep time set by the story slide ([#732](https://github.com/ubilabs/esa-climate-from-space/issues/732)) ([d6b86da](https://github.com/ubilabs/esa-climate-from-space/commit/d6b86dac9610d5c89653deb52fc17abc5f7c7128))
+
+
+### Features
+
+* **content:** update story 16 ([#736](https://github.com/ubilabs/esa-climate-from-space/issues/736)) ([dd42f94](https://github.com/ubilabs/esa-climate-from-space/commit/dd42f945a3077d179d9c63bd86fe55624833e52d))
+* **tracking:** add basic JS error tracking to matomo ([4cfeabf](https://github.com/ubilabs/esa-climate-from-space/commit/4cfeabf4f9190b44929b938fcc383913d57056bf))
+* **updateStories:** change title images and rename story 30 ([#730](https://github.com/ubilabs/esa-climate-from-space/issues/730)) ([98ed69d](https://github.com/ubilabs/esa-climate-from-space/commit/98ed69d911ea47955f194883e8410e4ecf4b8543))
+
+
+
 ## [0.10.2](https://github.com/ubilabs/esa-climate-from-space/compare/v0.10.1...v0.10.2) (2020-10-20)
 
 
