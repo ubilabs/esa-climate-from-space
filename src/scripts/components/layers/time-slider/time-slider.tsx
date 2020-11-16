@@ -66,10 +66,17 @@ const TimeSlider: FunctionComponent<Props> = ({
 
   // date format
   const mainDateFormat = mainLayerDetails?.timeFormat;
-  const {format} = useMemo(
+  const compareDateFormat = compareLayerDetails?.timeFormat;
+
+  const mainFormat = useMemo(
     () => new Intl.DateTimeFormat(language, mainDateFormat || {}),
     [language, mainDateFormat]
-  );
+  ).format;
+
+  const compareFormat = useMemo(
+    () => new Intl.DateTimeFormat(language, compareDateFormat || {}),
+    [language, compareDateFormat]
+  ).format;
 
   // ranges
   const {main: rangeMain, compare: rangeCompare, combined} = useMemo(
@@ -88,7 +95,6 @@ const TimeSlider: FunctionComponent<Props> = ({
     rangeMain && new Date(rangeMain.timestamps[timeIndexMain]);
   const timeSelectedCompare =
     rangeCompare && new Date(rangeCompare.timestamps[timeIndexCompare]);
-
   const clampedTime = clampToRange(time, combined.min, combined.max);
 
   // update app state
@@ -187,7 +193,7 @@ const TimeSlider: FunctionComponent<Props> = ({
               style={{
                 left: `${clampedLabelPosition}%`
               }}>
-              {timeSelectedMain ? format(timeSelectedMain) : false}
+              {timeSelectedMain ? mainFormat(timeSelectedMain) : false}
             </output>
           )}
 
@@ -201,7 +207,7 @@ const TimeSlider: FunctionComponent<Props> = ({
               style={{
                 left: `${clampedLabelPosition}%`
               }}>
-              {timeSelectedCompare ? format(timeSelectedCompare) : false}
+              {timeSelectedCompare ? compareFormat(timeSelectedCompare) : false}
             </output>
           )}
 
