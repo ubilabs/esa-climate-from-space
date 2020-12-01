@@ -1,5 +1,23 @@
 [
   {
+    "id": "story-12",
+    "title": "Der Kohlenstoffzyklus",
+    "description": "",
+    "image": "assets/seaice.jpg",
+    "tags": [
+    ],
+    "position": [-0.8167732794279218, 51.212132037574264]
+  },
+  {
+    "id": "story-27",
+    "title": "Städtische Wärme",
+    "description": "",
+    "image": "assets/seaice.jpg",
+    "tags": [
+    ],
+    "position": [-123.13376786455858, 49.27051731190145]
+  },
+  {
     "id": "story-16",
     "title": "Die Wärmepumpe des Planeten",
     "description": "",
