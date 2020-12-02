@@ -1,5 +1,23 @@
 [
   {
+    "id": "story-12",
+    "title": "The Carbon Cycle",
+    "description": "",
+    "image": "assets/seaice.jpg",
+    "tags": [
+    ],
+    "position": [-0.8167732794279218, 51.212132037574264]
+  },
+  {
+    "id": "story-27",
+    "title": "Urban Heat",
+    "description": "",
+    "image": "assets/seaice.jpg",
+    "tags": [
+    ],
+    "position": [-123.13376786455858, 49.27051731190145]
+  },
+  {
     "id": "story-16",
     "title": "Planetary Heat Pumps",
     "description": "",
@@ -54,7 +72,8 @@
       "soil-moisture",
       "permafrost",
       "fire"
-    ]
+    ],
+    "position": [150, -35]
   },
   {
     "id": "story-26",
@@ -67,6 +86,7 @@
       "electromagnetic-spectrum",
       "climate-modelling",
       "geostationary-satellite"
-    ]
+    ],
+    "position": [40, -25]
   }
 ]
