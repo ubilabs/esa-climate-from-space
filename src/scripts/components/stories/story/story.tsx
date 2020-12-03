@@ -12,12 +12,12 @@ import StoryVideo from '../story-video/story-video';
 import setGlobeProjectionAction from '../../../actions/set-globe-projection';
 import setSelectedLayerIdsAction from '../../../actions/set-selected-layer-id';
 import setGlobeTimeAction from '../../../actions/set-globe-time';
-import Share from '../../main/share/share';
+// import Share from '../../main/share/share';
 import SplashScreen from '../splash-screen/splash-screen';
 import LayerDescription from '../layer-description/layer-description';
 import TimeSlider from '../../layers/time-slider/time-slider';
 
-import {StoryMode} from '../../../types/story-mode';
+// import {StoryMode} from '../../../types/story-mode';
 import {Slide, Story as StoryType} from '../../../types/story';
 import {GlobeProjection} from '../../../types/globe-projection';
 import {SlideType} from '../../../types/slide-type';
@@ -37,7 +37,7 @@ const Story: FunctionComponent = () => {
     selectedStory,
     storyListItem
   } = storyParams;
-  const storyMode = mode === StoryMode.Stories;
+  // const storyMode = mode === StoryMode.Stories;
 
   const isSplashScreen =
     selectedStory?.slides[slideIndex].type === SlideType.Splashscreen;
@@ -116,7 +116,7 @@ const Story: FunctionComponent = () => {
           backLink={`/${mode.toString()}`}
           backButtonId="backToStories"
           title={isSplashScreen ? '' : storyListItem.title}>
-          {storyMode && <Share />}
+          {/* {storyMode && <Share />} */}
         </Header>
       )}
       <main className={styles.main}>

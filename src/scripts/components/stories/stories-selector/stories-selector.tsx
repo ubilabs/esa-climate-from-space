@@ -4,7 +4,7 @@ import {useIntl} from 'react-intl';
 import StoryList from '../story-list/story-list';
 import StoryFilter from '../story-filter/story-filter';
 import Header from '../header/header';
-import Share from '../../main/share/share';
+// import Share from '../../main/share/share';
 
 import {StoryMode} from '../../../types/story-mode';
 
@@ -19,7 +19,7 @@ const StoriesSelector: FunctionComponent = () => {
         backLink="/"
         backButtonId="backToDataMode"
         title={intl.formatMessage({id: 'storyMode'})}>
-        <Share />
+        {/* <Share /> */}
       </Header>
       <StoryFilter />
       <StoryList mode={StoryMode.Stories} />

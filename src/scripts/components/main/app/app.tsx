@@ -8,11 +8,11 @@ import {languageSelector} from '../../../selectors/language';
 import UrlSync from '../url-sync/url-sync';
 import LayerLoader from '../../layers/layer-loader/layer-loader';
 import Init from '../init/init';
-import LayerSelector from '../../layers/layer-selector/layer-selector';
 import Navigation from '../navigation/navigation';
 import {EsaLogo} from '../icons/esa-logo';
-import TimeSlider from '../../layers/time-slider/time-slider';
-import DataSetInfo from '../../layers/data-set-info/data-set-info';
+// import LayerSelector from '../../layers/layer-selector/layer-selector';
+// import TimeSlider from '../../layers/time-slider/time-slider';
+// import DataSetInfo from '../../layers/data-set-info/data-set-info';
 import {createReduxStore} from './create-redux-store';
 
 import Story from '../../stories/story/story';
@@ -67,9 +67,9 @@ const TranslatedApp: FunctionComponent = () => {
             {logo}
             <DataViewer markers={markers} backgroundColor={'#10161A'} />
             <Navigation />
-            <TimeSlider />
-            <DataSetInfo />
-            <LayerSelector />
+            {/* <TimeSlider /> */}
+            {/* <DataSetInfo /> */}
+            {/* <LayerSelector /> */}
           </Route>
           <Route path="/about" exact>
             {logo}
