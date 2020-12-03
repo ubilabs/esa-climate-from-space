@@ -19,7 +19,7 @@ import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
 import {State} from '../../../reducers';
 import Globe from '../globe/globe';
 import Gallery from '../gallery/gallery';
-import GlobeNavigation from '../globe-navigation/globe-navigation';
+// import GlobeNavigation from '../globe-navigation/globe-navigation';
 import LayerLegend from '../../layers/layer-legend/layer-legend';
 import {useImageLayerData} from '../../../hooks/use-image-layer-data';
 
@@ -39,7 +39,7 @@ interface Props {
 
 const DataViewer: FunctionComponent<Props> = ({
   backgroundColor,
-  hideNavigation,
+  // hideNavigation,
   markers = []
 }) => {
   const dispatch = useDispatch();
@@ -101,11 +101,11 @@ const DataViewer: FunctionComponent<Props> = ({
   // Either when no data layer is selected and only basemap is shown
   // or when one of the selected layers is a globe. Do not show globe navigation
   // when the only visible layer is of type "gallery"
-  const showGlobeNavigation =
-    (!mainLayerDetails && !compareLayerDetails) ||
-    [mainLayerDetails, compareLayerDetails].some(
-      layer => layer && layer.type !== LayerType.Gallery
-    );
+  // const showGlobeNavigation =
+  //   (!mainLayerDetails && !compareLayerDetails) ||
+  //   [mainLayerDetails, compareLayerDetails].some(
+  //     layer => layer && layer.type !== LayerType.Gallery
+  //   );
 
   const getDataWidget = ({
     imageLayer,
@@ -174,7 +174,7 @@ const DataViewer: FunctionComponent<Props> = ({
           action: () => setIsMainActive(false)
         })}
 
-      {!hideNavigation && showGlobeNavigation && <GlobeNavigation />}
+      {/* {!hideNavigation && showGlobeNavigation && <GlobeNavigation />} */}
     </div>
   );
 };
