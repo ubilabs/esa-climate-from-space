@@ -18,7 +18,7 @@
         "assets/story26-image10.jpg",
         "assets/story26-image17.jpg",
         "assets/story26-image15.jpg",
-        "assets/intro_09.jpg"
+        "assets/intro_large_09.jpg"
       ],
       "imageCaptions": [
         "Photograph of the Earth taken by the Apollo 17 crew in 1972 (NASA)",
@@ -71,18 +71,18 @@
       "text": "## Reality Check\r\n\r\nAlthough satellites allow a lot of ground to be covered in a short time, the observations taken by their sensors need to be calibrated with _in situ_ measurements taken with conventional instruments on or near the surface. Satellites in most cases can only measure the surface. In the case of the temperature of the ocean this means much less than the top millimetre, so sea-surface temperature from satellite needs to be combined with data from ship-tethered or free-floating underwater probes to form a complete picture of ocean temperature.\r\n\r\nEarth observation specialists work with subject specialists ‘in the field’. This fieldwork is often an important part of designing a new satellite instrument or testing a new way of using existing satellite data. Fieldwork might involve the deployment of fixed instruments on the ground, drifting or gliding instruments in the ocean, or aircraft or balloon flights in the atmosphere. Scientists may spend months isolated in remote research stations in Antarctica or on board a ship locked in the Arctic sea ice. Much of our knowledge of Earth’s past climate, which helps us understand how the climate might respond in the near future, comes from the analysis of ice cores extracted from the thick ice sheets of Greenland or Antarctica.",
       "shortText": "# Reality Check\r\n\r\nAlthough satellites allow a lot of ground to be covered in a short time, their observations need to be calibrated with _in situ_ measurements taken on or near the surface. \r\n\r\n- fieldwork often an important part of designing a new satellite instrument \r\n- Earth observation specialists work with subject specialists ‘in the field’\r\n- fixed instruments on the ground\r\n- drifting or gliding instruments in the ocean\r\n- aircraft or balloon flights in the atmosphere\r\n- scientists may spend weeks on board ships \r\n- or months at remote research stations in Antarctica \r\n\r\nMuch of our knowledge of Earth’s past climate comes from the analysis of ice cores extracted from the thick ice sheets of Greenland or Antarctica.",
       "images": [
-        "assets/icesheet_large_06.jpg",
+        "assets/sealevel_large_07.jpg",
         "assets/story26-image18.jpg",
         "assets/icesheet.jpg",
         "assets/story26-image19.jpg",
-        "assets/sealevel_07.jpg"
+        "assets/icesheet_large_06.jpg"
       ],
       "imageCaptions": [
-        "A wide-angle view from the joint French-Italian Concordia Research Station, located high on Dome C of the Antarctic Plateau, one of the coldest places on Earth (AP Salam)",
+        "A research ship deploying an Argo float. There are almost 4,000 of these automatic buoys floating across the world. They travel up and down the top 2,000 metres of the ocean continually recording temperature, salinity and current. Measurements from them are used to calibrate and validate satellite observations of the ocean surface.  (Argo Programme/IFREMER)",
         "Scientists taking sea ice cores in the Arctic winter. The German research vessel Polarstern was deliberately trapped for a year in the sea ice of the Arctic Ocean during 2019–20, as part of the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) (Esther Horvath / Alfred-Wegener-Institut)",
         "Aircraft provide a local remote sensing platform as well as transport in remote regions (A Hogg)",
         "Taking soil moisture measurements in Sweden to support the development of ESA's BIOMASS satellite (FOI)",
-        "A research ship deploying an Argo float. There are almost 4,000 of these automatic buoys floating across the world. They travel up and down the top 2,000 metres of the ocean continually recording temperature, salinity and current. Measurements from them are used to calibrate and validate satellite observations of the ocean surface.  (Argo Programme/IFREMER)"
+        "A wide-angle view from the joint French-Italian Concordia Research Station, located high on Dome C of the Antarctic Plateau, one of the coldest places on Earth (AP Salam)"
       ]
     },
     {
@@ -93,13 +93,15 @@
         "assets/cmug_large_14.jpg",
         "assets/cmug_large_10.jpg",
         "assets/cmug_large_15.jpg",
-        "assets/cmug_large_12.jpg"
+        "assets/cmug_large_12.jpg",
+        "assets/intro_large_04.jpg"
       ],
       "imageCaptions": [
         "Cray XC-40 supercomputer used for climate modelling at the UK Met Office (Crown Copyright)",
         "Components of the Earth's climate system (ESA)",
         "A climate model divides the Earth's surface into grid cells and its atmosphere into layers (Laurent Fairhead/UPMC)",
-        "A climate model might run with a grid spacing of 90km, rather than the 30km grid used for weather forecasting (Crown Copyright)"
+        "A climate model might run with a grid spacing of 90km, rather than the 30km grid used for weather forecasting (Crown Copyright)",
+        "Much of our knowledge of Earth’s past climate comes from the analysis of ice cores extracted from the thickest ice sheets (A Barbero, IPEV/PNRA)"
       ]
     },
     {
