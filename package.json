@@ -30,7 +30,7 @@
     "upload-stories": "./scripts/confirm-storage-upload.sh && npm run story-packages && find ./storage/stories -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/stories/* gs://esa-cfs-storage/$npm_package_version/stories/ && npm run clean:story-packages",
     "upload-layers": "find ./storage -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers",
     "optimize-story-images": "./scripts/optimize-story-images.sh",
-    "deploy:museon": "npm run build && gsutil rm -r gs://esa-cfs-versions/web/museon/* && gsutil cp -r dist/* gs://esa-cfs-versions/web/museon && gsutil -m setmeta -r -h 'Cache-Control: no-cache' gs://esa-cfs-versions/web/museon"
+    "deploy:museon": "npm run build && gsutil rm -r gs://esa-cfs-versions/web/museon/* && gsutil cp -r dist gs://esa-cfs-versions/web/museon && gsutil -m setmeta -r -h 'Cache-Control: no-cache' gs://esa-cfs-versions/web/museon"
   },
   "repository": {
     "type": "git",
