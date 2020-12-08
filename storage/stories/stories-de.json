@@ -1,7 +1,7 @@
 [
   {
     "id": "story-12",
-    "title": "The Carbon Cycle",
+    "title": "Der Kohlenstoffzyklus",
     "description": "",
     "image": "assets/seaice.jpg",
     "tags": [
@@ -10,7 +10,7 @@
   },
   {
     "id": "story-27",
-    "title": "Urban Heat",
+    "title": "Städtische Wärme",
     "description": "",
     "image": "assets/seaice.jpg",
     "tags": [
@@ -19,7 +19,7 @@
   },
   {
     "id": "story-16",
-    "title": "Planetary Heat Pumps",
+    "title": "Die Wärmepumpe des Planeten",
     "description": "",
     "image": "assets/sst.jpg",
     "tags": [
@@ -32,7 +32,7 @@
   },
   {
     "id": "story-8",
-    "title": "Is Ozone Good or Bad?",
+    "title": "Ist Ozon gut oder schlecht?",
     "description": "",
     "image": "assets/ozone.jpg",
     "tags": ["ozone", "aerosol"],
@@ -40,7 +40,7 @@
   },
   {
     "id": "story-15",
-    "title": "Breaking the Ice",
+    "title": "Das Eis bricht auf",
     "description": "",
     "image": "assets/seaice.jpg",
     "tags": [
@@ -54,7 +54,7 @@
   },
   {
     "id": "story-30",
-    "title": "Coasts Under Threat",
+    "title": "Bedrohte Küsten",
     "description": "",
     "image": "assets/sealevel.jpg",
     "tags": ["sea-level", "sea-surface-temperature", "glaciers", "ice-sheets"],
@@ -62,7 +62,7 @@
   },
   {
     "id": "story-28",
-    "title": "Biodiversity and Habitat Loss",
+    "title": "Biodiversität und Verlust des Lebensraums",
     "description": "",
     "image": "assets/landcover.jpg",
     "tags": [
@@ -72,12 +72,11 @@
       "soil-moisture",
       "permafrost",
       "fire"
-    ],
-    "position": [150, -35]
+    ]
   },
   {
     "id": "story-26",
-    "title": "Taking the Pulse of the Planet",
+    "title": "Den Puls des Planeten messen",
     "description": "",
     "image": "assets/Sentinel-2.jpg",
     "tags": [
@@ -86,12 +85,11 @@
       "electromagnetic-spectrum",
       "climate-modelling",
       "geostationary-satellite"
-    ],
-    "position": [40, -25]
+    ]
   },
   {
     "id": "story-31",
-    "title": "Reality Check",
+    "title": "Realitätsprüfung",
     "description": "",
     "image": "assets/Sentinel-2.jpg",
     "tags": [
