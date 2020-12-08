@@ -1,7 +1,7 @@
 [
   {
     "id": "story-12",
-    "title": "Der Kohlenstoffzyklus",
+    "title": "The Carbon Cycle",
     "description": "",
     "image": "assets/seaice.jpg",
     "tags": [
@@ -10,7 +10,7 @@
   },
   {
     "id": "story-27",
-    "title": "Städtische Wärme",
+    "title": "Urban Heat",
     "description": "",
     "image": "assets/seaice.jpg",
     "tags": [
@@ -19,7 +19,7 @@
   },
   {
     "id": "story-16",
-    "title": "Die Wärmepumpe des Planeten",
+    "title": "Planetary Heat Pumps",
     "description": "",
     "image": "assets/sst.jpg",
     "tags": [
@@ -32,7 +32,7 @@
   },
   {
     "id": "story-8",
-    "title": "Ist Ozon gut oder schlecht?",
+    "title": "Is Ozone Good or Bad?",
     "description": "",
     "image": "assets/ozone.jpg",
     "tags": ["ozone", "aerosol"],
@@ -40,7 +40,7 @@
   },
   {
     "id": "story-15",
-    "title": "Das Eis bricht auf",
+    "title": "Breaking the Ice",
     "description": "",
     "image": "assets/seaice.jpg",
     "tags": [
@@ -54,7 +54,7 @@
   },
   {
     "id": "story-30",
-    "title": "Bedrohte Küsten",
+    "title": "Coasts Under Threat",
     "description": "",
     "image": "assets/sealevel.jpg",
     "tags": ["sea-level", "sea-surface-temperature", "glaciers", "ice-sheets"],
@@ -62,7 +62,7 @@
   },
   {
     "id": "story-28",
-    "title": "Biodiversität und Verlust des Lebensraums",
+    "title": "Biodiversity and Habitat Loss",
     "description": "",
     "image": "assets/landcover.jpg",
     "tags": [
@@ -72,11 +72,12 @@
       "soil-moisture",
       "permafrost",
       "fire"
-    ]
+    ],
+    "position": [150, -35]
   },
   {
     "id": "story-26",
-    "title": "Den Puls des Planeten messen",
+    "title": "Taking the Pulse of the Planet",
     "description": "",
     "image": "assets/Sentinel-2.jpg",
     "tags": [
@@ -85,6 +86,21 @@
       "electromagnetic-spectrum",
       "climate-modelling",
       "geostationary-satellite"
-    ]
+    ],
+    "position": [40, -25]
+  },
+  {
+    "id": "story-31",
+    "title": "Reality Check",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "climate-modelling",
+      "geostationary-satellite"
+    ],
+    "position": [64, 11]
   }
 ]
