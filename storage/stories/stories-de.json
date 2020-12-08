@@ -86,5 +86,19 @@
       "climate-modelling",
       "geostationary-satellite"
     ]
+  },
+  {
+    "id": "story-31",
+    "title": "Realitätsprüfung",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "climate-modelling",
+      "geostationary-satellite"
+    ],
+    "position": [64, 11]
   }
 ]
