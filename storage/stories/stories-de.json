@@ -18,6 +18,27 @@
     "position": [-123.13376786455858, 49.27051731190145]
   },
   {
+    "id": "story-31",
+    "title": "Realitätsprüfung",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "climate-modelling",
+      "geostationary-satellite"
+    ],
+    "position": [64, 11]
+  },
+  {
+    "id": "story-32",
+    "title": "Einführung",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [],
+    "position": [13, 38]
+  },{
     "id": "story-16",
     "title": "Die Wärmepumpe des Planeten",
     "description": "",
@@ -86,19 +107,5 @@
       "climate-modelling",
       "geostationary-satellite"
     ]
-  },
-  {
-    "id": "story-31",
-    "title": "Realitätsprüfung",
-    "description": "",
-    "image": "assets/Sentinel-2.jpg",
-    "tags": [
-      "satellite-orbits",
-      "sensors",
-      "electromagnetic-spectrum",
-      "climate-modelling",
-      "geostationary-satellite"
-    ],
-    "position": [64, 11]
   }
 ]
