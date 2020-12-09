@@ -18,6 +18,28 @@
     "position": [-123.13376786455858, 49.27051731190145]
   },
   {
+    "id": "story-31",
+    "title": "Climate Modelling",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "climate-modelling",
+      "geostationary-satellite"
+    ],
+    "position": [64, 11]
+  },
+  {
+    "id": "story-32",
+    "title": "Introduction",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [],
+    "position": [13, 38]
+  },
+  {
     "id": "story-16",
     "title": "Planetary Heat Pumps",
     "description": "",
@@ -88,19 +110,5 @@
       "geostationary-satellite"
     ],
     "position": [40, -25]
-  },
-  {
-    "id": "story-31",
-    "title": "Reality Check",
-    "description": "",
-    "image": "assets/Sentinel-2.jpg",
-    "tags": [
-      "satellite-orbits",
-      "sensors",
-      "electromagnetic-spectrum",
-      "climate-modelling",
-      "geostationary-satellite"
-    ],
-    "position": [64, 11]
   }
 ]
