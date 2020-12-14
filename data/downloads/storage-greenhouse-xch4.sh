@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-OUTPUT_FODLER=./download/xch4
+OUTPUT_FOLDER=./download/xch4
 gsutil -m cp gs://esa-cfs-cate-data/greenhouse.xch4/*  $OUTPUT_FOLDER
 
 START_DATE=2003-01-01
