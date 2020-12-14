@@ -11,7 +11,7 @@ const globeState: GlobeState = {
   view: {
     position: {
       height: 27000000,
-      latitude: 15,
+      latitude: 25,
       longitude: 0
     },
     orientation: {
