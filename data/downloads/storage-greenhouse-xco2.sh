@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-OUTPUT_FODLER=./download/xco2
+OUTPUT_FOLDER=./download/xco2
 gsutil -m cp gs://esa-cfs-cate-data/greenhouse.xco2/* $OUTPUT_FOLDER
 
 START_DATE=2003-01-01
