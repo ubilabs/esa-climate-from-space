@@ -14,8 +14,8 @@
       "text": "## A Vital Element \r\n\r\nCarbon is the basic building block for life on Earth. It can form stable chemical bonds with many elements, allowing large and complex molecules to be built, including the organic compounds essential to life. Carbon’s bonds to other elements are stable, but not so strong that they prevent chemical reaction. \r\n\r\nAs it reacts with other elements, carbon cycles through the atmosphere, the oceans, plants and animals, soil and rocks. There are exchanges between these carbon reservoirs through a variety of processes. When carbon bonds are broken, energy is released, making some carbon compounds – hydrocarbons – convenient fuel sources. \r\n \r\n## Greenhouse Gases \r\n\r\nBut the same bonds that make carbon molecules so essential to life and modern living have a downside. They are also good at absorbing long-wavelength infrared radiation, allowing the molecules to vibrate and warm up, trapping heat in the atmosphere, contributing to the greenhouse effect. \r\n\r\nCarbon compounds such as carbon dioxide and methane are not the only greenhouse gases, nor the most powerful, but our increased burning of fossil fuels – coal, oil and natural gas – has caused an accumulation of carbon dioxide in the atmosphere, disrupting the carbon cycle, and warming the Earth’s climate.",
       "shortText": "## A Vital Element \r\n\r\nPlaceholder text",
       "images": [
-        "assets /story12-image01.jpg",
-        "assets /ghg_large_16.png",
+        "assets/story12-image01.jpg",
+        "assets/ghg_large_16.png",
         "assets/story12-image03.jpg",
         "assets/ghg_large_11.png"
       ],
@@ -67,7 +67,7 @@
       "images": [
         "assets/intro_large_13.jpg",
         "assets/ghg_large_18.jpg",
-        "assets/intro_large_15.jpg"
+        "assets/intro_large_15.png"
       ],
       "imageCaptions": [
         "On a clear night light shines out from urban areas across western Europe, painting a portrait of an energy-hungry society.  Photograph taken by ESA astronaut Alexander Gerst from the International Space Station on July 26 2014. (ESA/NASA)",
