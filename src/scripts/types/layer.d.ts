@@ -20,6 +20,6 @@ export interface Layer {
   maxValue: number;
   units: string;
   legendValues: string[];
-  hoverLegend?: LegendValueColor[];
+  hoverLegendValues?: LegendValueColor[];
   legendBackgroundColor: string;
 }

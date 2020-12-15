@@ -20,7 +20,7 @@ function detailsReducer(
           ...state,
           [action.id]: {
             ...action.layer,
-            hoverLegend: config.landCoverLegendValues
+            hoverLegendValues: config.landCoverLegendValues
           }
         };
       }

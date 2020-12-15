@@ -33,7 +33,7 @@ interface Props {
   values: (number | string)[];
   unit: string;
   basemap: BasemapId | null;
-  hoverLegend?: LegendValueColor[];
+  hoverLegendValues?: LegendValueColor[];
   isCompare?: boolean;
 }
 
@@ -42,7 +42,7 @@ const LayerLegend: FunctionComponent<Props> = ({
   values,
   unit,
   basemap,
-  hoverLegend,
+  hoverLegendValues,
   isCompare = false
 }) => {
   const imageUrlTemplate =
@@ -55,9 +55,9 @@ const LayerLegend: FunctionComponent<Props> = ({
 
   return (
     <div className={cx(styles.layerLegend, isCompare && styles.rightSided)}>
-      {hoverLegend ? (
+      {hoverLegendValues ? (
         <div className={styles.hoverLegend}>
-          {hoverLegend.map((legendItem, index) => (
+          {hoverLegendValues.map((legendItem, index) => (
             <div className={styles.legendItem} key={index}>
               <div
                 className={styles.color}
