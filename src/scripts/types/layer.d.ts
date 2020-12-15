@@ -1,5 +1,4 @@
 import {BasemapId} from '../types/basemap';
-import {GlobeView} from './globe-view';
 import {LayerType} from './globe-layer-type';
 
 export interface Layer {
@@ -21,5 +20,6 @@ export interface Layer {
   maxValue: number;
   units: string;
   legendValues: string[];
+  hoverLegend?: LegendValueColor[];
   legendBackgroundColor: string;
 }

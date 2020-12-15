@@ -21,6 +21,7 @@ import Globe from '../globe/globe';
 import Gallery from '../gallery/gallery';
 import GlobeNavigation from '../globe-navigation/globe-navigation';
 import LayerLegend from '../../layers/layer-legend/layer-legend';
+import HoverLegend from '../../layers/hover-legend/hover-legend';
 import {useImageLayerData} from '../../../hooks/use-image-layer-data';
 
 import {GlobeView} from '../../../types/globe-view';
@@ -147,11 +148,15 @@ const DataViewer: FunctionComponent<Props> = ({
       {[mainLayerDetails, compareLayerDetails]
         .filter((layer): layer is Layer => Boolean(layer))
         .map(
-          ({id, maxValue, minValue, units, basemap, legendValues}, index) => (
+          (
+            {id, maxValue, minValue, units, basemap, legendValues, hoverLegend},
+            index
+          ) => (
             <LayerLegend
               key={id}
               id={id}
               values={legendValues || [maxValue || 0, minValue || 0]}
+              hoverLegend={hoverLegend}
               unit={units}
               basemap={basemap}
               isCompare={index > 0}

@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useState} from 'react';
 import {FormattedNumber} from 'react-intl';
 import cx from 'classnames';
 
@@ -33,6 +33,7 @@ interface Props {
   values: (number | string)[];
   unit: string;
   basemap: BasemapId | null;
+  hoverLegend?: LegendValueColor[];
   isCompare?: boolean;
 }
 
@@ -41,6 +42,7 @@ const LayerLegend: FunctionComponent<Props> = ({
   values,
   unit,
   basemap,
+  hoverLegend,
   isCompare = false
 }) => {
   const imageUrlTemplate =
@@ -49,13 +51,34 @@ const LayerLegend: FunctionComponent<Props> = ({
       : config.legendImage;
   const imageUrl = replaceUrlPlaceholders(imageUrlTemplate, {id});
 
+  const [legendValue, setLegendValue] = useState('');
+
   return (
     <div className={cx(styles.layerLegend, isCompare && styles.rightSided)}>
-      <img
-        className={styles.image}
-        style={{backgroundColor: getBackgroundColor(basemap)}}
-        src={imageUrl}
-      />
+      {hoverLegend ? (
+        <div className={styles.hoverLegend}>
+          {hoverLegend.map((legendItem, index) => (
+            <div className={styles.legendItem} key={index}>
+              <div
+                className={styles.color}
+                style={{backgroundColor: legendItem.color}}
+                onMouseOver={() => setLegendValue(legendItem.value)}
+                onMouseLeave={() => setLegendValue('')}></div>
+              {legendValue === legendItem.value ? (
+                <span className={styles.hoverValue}>{legendValue}</span>
+              ) : (
+                ''
+              )}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <img
+          className={styles.image}
+          style={{backgroundColor: getBackgroundColor(basemap)}}
+          src={imageUrl}
+        />
+      )}
       <div className={styles.values}>
         {values.map((value, index) => (
           <div className={styles.value} key={value}>

@@ -10,6 +10,7 @@ export const FETCH_LAYER_ERROR = 'FETCH_LAYER_ERROR';
 export interface FetchLayerSuccessAction {
   type: typeof FETCH_LAYER_SUCCESS;
   id: string;
+  legendValues: string[];
   layer: Layer;
 }
 

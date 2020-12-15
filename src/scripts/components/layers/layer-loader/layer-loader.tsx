@@ -20,7 +20,6 @@ const LayerLoader: FunctionComponent = () => {
   const compareLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, compareId)
   );
-
   // load layer list on mount
   useEffect(() => {
     dispatch(fetchLayers());
