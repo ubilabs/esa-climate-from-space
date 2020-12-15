@@ -3,122 +3,83 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Breaking the Ice\r\n\r\nThe polar regions are among the most sensitive to variations in global climate, with the Arctic in particular experiencing rapid change on both sea and land.",
-      "shortText": "# Breaking the Ice\r\n\r\nThe polar regions are among the most sensitive to variations in global climate, with the Arctic in particular experiencing rapid change on both sea and land.",
+      "text": "# The Carbon Cycle\r\n\r\nCarbon is one of the most abundant elements in the universe and the basis of all life on Earth. It passes through the atmosphere, the oceans, plants and rocks, but this natural cycle has been disrupted by human activity, with profound implications for Earth’s climate.",
+      "shortText": "# The Carbon Cycle\r\n\r\nCarbon is one of the most abundant elements in the universe and the basis of all life on Earth. It passes through the atmosphere, the oceans, plants and rocks, but this natural cycle has been disrupted by human activity, with profound implications for Earth’s climate.",
       "images": [
-        "assets/seaice.jpg"
+        "assets/story12-image02.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## A Passage Opens \r\n\r\nFor centuries, the Northwest Passage between mainland Canada and its Arctic islands has held promise as a shorter sea route between Europe and Asia. But for most of this time it has proved an impenetrable barrier, locked fast in the grip of a frozen sea.\r\n \r\nThe pack ice defeated the Royal Navy in 1845 when Sir John Franklin’s expedition was lost. Eighteen search parties over the next thirty years failed to find any trace of him and his 130 crewmen. It wasn’t until 1906 that Roald Amundsen became the first to complete a route through the Northwest Passage, after a journey lasting three years.\r\n\r\nA century later, still only a handful of voyages had picked their way through the icy waters, some with the aid of icebreakers. Then in the summer of 2007, satellite images showed, for the first time on record, the entire Passage to be largely ice-free. This surprised climate scientists, whose models predicted it would remain ice-bound for some decades to come. Today, you can book a cruise through the Northwest Passage on a liner with more than a thousand other passengers.\r\n\r\nFranklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance.",
-      "shortText": "## A Passage Opens\r\n\r\nFor centuries, sea ice has blocked the Northwest Passage between mainland Canada and its Arctic islands:\r\n \r\n- it defeated the Royal Navy when Sir John Franklin’s expedition was lost in 1845\r\n- 18 searches over 30 years failed to find any trace\r\n- Roald Amundsen first to complete the Passage, in 1906\r\n- A century later, only a handful of voyages had followed\r\n\r\nSummer 2007: satellite images show, for the first time, the entire Passage largely ice-free. \r\n\r\nToday: you can sail through the Northwest Passage on a cruise liner with 1,000 other passengers.\r\n\r\nFranklin’s sunken ships were finally found by seafloor surveys in 2014 and 2016.",
+      "text": "## A Vital Element \r\n\r\nCarbon is the basic building block for life on Earth. It can form stable chemical bonds with many elements, allowing large and complex molecules to be built, including the organic compounds essential to life. Carbon’s bonds to other elements are stable, but not so strong that they prevent chemical reaction. \r\n\r\nAs it reacts with other elements, carbon cycles through the atmosphere, the oceans, plants and animals, soil and rocks. There are exchanges between these carbon reservoirs through a variety of processes. When carbon bonds are broken, energy is released, making some carbon compounds – hydrocarbons – convenient fuel sources. \r\n \r\n## Greenhouse Gases \r\n\r\nBut the same bonds that make carbon molecules so essential to life and modern living have a downside. They are also good at absorbing long-wavelength infrared radiation, allowing the molecules to vibrate and warm up, trapping heat in the atmosphere, contributing to the greenhouse effect. \r\n\r\nCarbon compounds such as carbon dioxide and methane are not the only greenhouse gases, nor the most powerful, but our increased burning of fossil fuels – coal, oil and natural gas – has caused an accumulation of carbon dioxide in the atmosphere, disrupting the carbon cycle, and warming the Earth’s climate.",
+      "shortText": "## A Vital Element \r\n\r\nPlaceholder text",
       "images": [
-        "assets/story15_01.jpg",
-        "assets/seaice_large_01.jpg",
-        "assets/seaice_large_12a.jpg"
+        "assets /story12-image01.jpg",
+        "assets /ghg_large_16.png",
+        "assets/story12-image03.jpg",
+        "assets/ghg_large_11.png"
       ],
       "imageCaptions": [
-        "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
-        "Summer sea ice in the Canadian Arctic. The narrow channel between mainland Canada and its Arctic islands\r\nis usually blocked by sea ice. In this Envisat MERIS image from 2nd July 2007\r\nLancaster Sound (lower centre) is ice-free, but to the west ice still blocks\r\nParry Channel. (ESA)",
-        "Sea ice is shown in blue in this Envisat ASAR mosaic of the Arctic Ocean from August 2008. The southerly branch of the Northwest Passage is ice-free. (ESA)"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## New Trade Routes \r\n\r\nThe loss of Arctic sea ice has been faster than was predicted, with the southern route of the Northwest Passage now navigable almost every year. The more direct, and commercially significant, northern route has opened during six of the last ten summers. In 2008, the first commercial ship passed through and in 2013 the first bulk carrier took cargo from Vancouver to Helsinki. \r\n\r\nThe shrinking icepack is also opening up to shipping the northern coast of Russia – the Northeast Passage. This route shaves more than one third off the sailing distance from Yokohama to Hamburg, compared with the current shortest route through the Suez Canal. There is even greater potential for savings in distance, time and fuel if the ice recedes enough for navigation across the centre of the Arctic Ocean – the Transpolar Sea Route.\r\n\r\nShorter shipping routes will mean less fuel is burned, and less carbon pumped into the atmosphere, but the Arctic will see a local increase in pollutants. Soot particles could darken the remaining ice, adding to the warming, but could also cause more clouds to condense, which might have a cooling effect.\r\n\r\nAlthough good news for the shipping and tourism industries, the retreat of the ice edge is a stark warning that the Earth’s climate is rapidly heading into uncharted waters.",
-      "shortText": "## New Trade Routes \r\n\r\n- Northwest Passage now open almost every year\r\n- 2008: first commercial ship passed through\r\n- 2013: bulk carrier took cargo  Vancouver to Helsinki\r\n- Northeast Passage (Russian coast) also opening up\r\n- Yokohama to Hamburg via Suez Canal: 11,430 nm\r\n- via NW Passage: 8,000 nm, via NE Passage: 7,200 nm\r\n- via Transpolar Sea Route: 6,600 nm\r\n\r\nShorter routes → less fuel burned → less carbon released, but local pollution:\r\n \r\n- soot could darken ice, adding to the warming,\r\n- but could also cause more clouds to condense, which might have a cooling effect\r\n\r\nGood news for shipping and tourism industries, but the rapid retreat of the ice edge is a stark warning that the Earth’s climate is heading into uncharted waters.",
-      "images": [
-        "assets/story15_02.jpg",
-        "assets/story15_03.jpg",
-        "assets/story15_04.png"
-      ],
-      "imageCaptions": [
-        "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
-        "Icebreaker escorting a cargo vessel through sea ice in the Arctic Ocean (Aker Arctic)",
-        "Arctic sea ice extent in August 1979-2019. The trend is down 72,000 sq km per year, or 9.1% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)"
+        "Spare natural gas being burned off on an oil production platform in the North Sea. Carbon dioxide and water vapour are the main combustion products. Extracting and burning hydrocarbons pumps carbon from a rock reservoir into the atmosphere. (Varodrig)",
+        "Atmospheric carbon dioxide concentration over the last 300 years, based on air samples from ice cores and, since 1958, direct measurements from Mauna Loa Observatory, Hawaii. Carbon dioxide has been accumulating in the atmosphere since the Industrial Revolution, its concentration increasing rapidly in the second half of the twentieth century. (source: Scripps Institute of Oceanography)",
+        "The molecular structure of carbon dioxide and methane molecules allows them to absorb infrared radiation. Heat is absorbed by a molecule if the atoms inside can vibrate at the frequency of infrared radiation. More complex molecules have more vibrational modes, so more opportunities to absorb heat, making them more powerful greenhouse gases. A methane molecule, with one carbon atom (grey) bound to four hydrogen atoms (red), can absorb more heat than a carbon dioxide molecule, with one carbon atom bound to two oxygen atoms (blue). A chlorofluorocarbon like CFC-113 (green and yellow) has even more bonds, making it a very powerful greenhouse gas. (Planetary Visions)",
+        "Atmospheric carbon dioxide as a function of time and latitude, derived from the SCIAMACHY sensor on Envisat. The data surface shows the natural annual cycle of CO<sub>2</sub> uptake and release, which is particularly strong in the northern hemisphere, as well as a gradual increase over the years resulting from human activity. (ESA-CCI)"
       ]
     },
     {
       "type": "globe",
-      "text": "## Seasonal Cycle\r\n\r\nThe Arctic Ocean is characterised by the sea ice cover and its seasonal fluctuations. During winter, the ice pack grows to an area between 14 and 16 million square kilometres, reducing to four to five million square kilometres by the end of summer. That’s an area equivalent to the entire surface of Europe appearing and disappearing through the year. \r\n\r\nYou can see the annual expansion and contraction of the frozen sea surface by scrubbing through the timeline of the interactive globe on the right. Compare the annual minimum ice extents in mid-September for the first year and the final year of the sequence. Spin the globe round to Antarctica to see the sea ice in the Southern Ocean.\r\n\r\nThe core of the ice cover is formed of layers of frozen seawater that have survived the summer thaw. This multi-year ice reaches a thickness of two to four metres in the Arctic, whereas first-year sea ice typically reaches only 1 – 1.5 metres.\r\n\r\n## Long-term trend\r\n\r\nSatellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2019. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.",
-      "shortText": "## Seasonal Cycle\r\n\r\nArctic Ocean sea ice cover seasonal fluctuations:\r\n\r\n- winter ice pack area 14–16 million sq km \r\n- shrinks to 4–5 million sq km by end of summer \r\n- area the size of Europe appears/disappears over the year \r\n\r\nThe core of the ice cover is layers of frozen seawater that have survived the summer thaw:\r\n \r\n- multi-year ice 2 to 4 metres thick in the Arctic\r\n- first-year ice typically reaches only 1 to 1.5 metres\r\n\r\nSatellite observations show a significant loss of Arctic sea ice in recent decades:\r\n\r\n- lowest extents observed in 2012, 2007 and 2019 \r\n- since 1978, Arctic summer ice extent is down almost 40%",
+      "text": "## The Fast Carbon Cycle\r\n\r\nPlants take up carbon dioxide from the atmosphere by photosynthesis as they grow in spring and summer, and return some of it when their leaves die back in autumn and winter. Carbon is also returned to the atmosphere by animals eating plants and breathing out carbon dioxide. The cycling of carbon through living things is known as the fast carbon cycle.\r\n\r\nThis seasonal growth cycle can be seen in the atmospheric carbon dioxide levels shown on the interactive globe: a peak is reached at the end of the northern winter, before rapidly-growing plants start absorbing carbon dioxide again in the spring. Atmospheric carbon varies most in the northern hemisphere because it has more land, and therefore more plants, than the southern hemisphere. On top of the seasonal cycle there is a clear increase in atmospheric carbon dioxide from year to year – a sign that the carbon cycle is out of balance, mainly due to the burning of fossil fuels.\r\n \r\n## Carbon and the Land \r\n\r\nChanges in land use and land cover are also altering the carbon cycle. The clearing of tropical forests for agriculture has the double effect of adding large amounts of carbon dioxide to the atmosphere from fires, while also removing the trees that absorb and store carbon while they are alive. \r\n\r\nAround the Arctic, elevated air temperatures are thawing out large areas of permafrost.  This exposes carbon in the soil to decomposition and could potentially release into the atmosphere vast amounts of methane. As northern latitudes thaw and dry out, vast areas of forest, bush and peat are newly exposed to the risk of wildfires. Fire is a key component of the carbon cycle, taking carbon from the biosphere into the atmosphere.",
+      "shortText": "## The Fast Carbon Cycle \r\n\r\nPlaceholder text",
       "flyTo": {
         "position": {
-          "longitude": -3.42,
-          "latitude": 89.99,
-          "height": 24925805.95
+          "longitude": 37.88,
+          "latitude": 15.08,
+          "height": 12754110.44
         },
         "orientation": {
-          "heading": 360,
-          "pitch": -90,
+          "heading": 0,
+          "pitch": -89.95,
           "roll": 0
         }
       },
       "layer": [
         {
-          "id": "sea_ice_nh.ice_conc",
-          "timestamp": "2012-09-09T12:00:00.000Z"
+          "id": "greenhouse.xco2",
+          "timestamp": "2010-07-08T00:00:00.000Z"
+        },
+        {
+          "id": "greenhouse.xch4",
+          "timestamp": "2010-07-08T00:00:00.000Z"
         }
       ],
-      "layerDescription": "Sea Ice Concentration"
+      "layerDescription": "Atmospheric carbon dioxide compared with methane"
+    },
+    {
+      "type": "video",
+      "text": "## The Slow Carbon Cycle\r\n\r\nCarbon dioxide is absorbed by water at the sea surface, allowing the exchange of carbon between the atmosphere and the ocean. Organic carbon is a key element of the marine food chain. The chlorophyll in phytoplankton plays the same role in absorbing carbon in these single-celled ocean plants as it does in plants on the land. Some carbon dioxide is quickly released back to the atmosphere, so the oceans play a part in the fast carbon cycle, but some is mixed into the deep ocean, where it stays for centuries as part of the slow carbon cycle. \r\n\r\nOceanic organisms from phytoplankton to coral and crustaceans absorb carbon as they grow and take some of it to the sea floor when they die. Here, carbon is locked up in sedimentary rock, Earth’s largest carbon store. Under certain conditions layers of organic carbon can build up into fossil fuel deposits – coal, oil or natural gas. \r\n\r\nThe slow cycle eventually returns carbon to the atmosphere through geological processes. Carbon dioxide is expelled from rocks under extreme heat and pressure and vented to the atmosphere in volcanic eruptions. From the atmosphere, carbon can return to the surface dissolved in rainwater as weak carbonic acid, where it plays a role in the chemical weathering of rocks and the delivery of minerals and salts to the sea.",
+      "shortText": "## The Slow Carbon Cycle\r\n\r\nPlaceholder text",
+      "videoId": "FpIdbDBIL6U"
     },
     {
       "type": "image",
-      "text": "## Caught in the Middle\r\n\r\nThe ocean and the atmosphere are the climate’s two great heat pumps, and sea ice forms where they meet. It has a complex influence on the energy exchanges between them. Sea ice insulates the sea, reducing heat loss to the atmosphere and providing a barrier to the exchange of gases and motion. But bright ice also reflects sunlight that would be absorbed by dark ocean water, keeping the sea cooler than it would otherwise be. So, in a warming climate sea ice is subject to a positive feedback: melting ice exposes darker ocean water, which warms up, leading to further melting. \r\n\r\nThis is part of a process called the Arctic amplification. More heat is also being transported to the poles by both the atmosphere and the ocean as they warm up. This makes the Arctic one of the most sensitive regions to variations in global climate, and the place where most climate models predict the greatest warming.  Observed temperature rise in the Arctic has been 2-3 times the global average. \r\n\r\n## Climate Regulator\r\nSea ice has an important influence on the global ocean circulation. When seawater freezes in the winter, it leaves salt behind, increasing the salinity and therefore the density of the surrounding water, causing it to sink. This process is one of the main drivers behind the ocean’s global vertical circulation (the thermohaline circulation), which helps distribute energy around the planet. \r\n\r\nWhen the sea ice melts in the summer, it produces an influx of fresh water, adding to that from large rivers running in from Siberia and North America. This makes the Arctic Ocean much fresher than the salty Atlantic and Pacific. Ocean circulation is partly driven by temperature and salinity differences in the water, so changes to the cycle of sea ice freezing and melting can affect ocean currents and weather systems far from the Arctic.",
-      "shortText": "## Caught in the Middle\r\n\r\nForming where ocean and atmosphere meet, sea ice: \r\n\r\n- insulates the sea, reducing heat loss to the atmosphere\r\n- impedes the exchange of gases and motion\r\n- reflects sunlight that dark ocean water would absorb, keeping the sea cooler than it would otherwise be \r\n\r\nSea ice is subject to a positive feedback: \r\n\r\n- melting ice exposes dark ocean water, which warms up, leading to further melting \r\n- more heat is also transported to the poles by both the atmosphere and the ocean as they warm\r\n- the Arctic is especially sensitive to climate change\r\n- temperature rise in the Arctic 2–3x global average \r\n\r\nSea ice has an important influence on the global ocean circulation, affecting ocean currents and weather systems far from the Arctic.",
+      "text": "## Human Intervention\r\n\r\nSatellites using infrared cameras can measure the ocean temperature to within a few tenths of a degree Celsius. Maps of sea surface temperature (SST) show not only warm and cold currents, but also where cold water from the deep ocean is upwelling to the surface, bringing with it the nutrients that support the world’s largest fisheries. Other cameras can record the colour of the ocean, revealing the chlorophyll present in tiny floating plants called phytoplankton. \r\n\r\nThe interactive globes allow you to compare SST and ocean chlorophyll. There are high chlorophyll concentrations off the coasts of Peru, Argentina and Namibia. In these areas, prevailing winds push the surface water offshore and cold, deep water rises to replace it, bringing to the surface the nutrients on which the plankton thrive. \r\n\r\nSince phytoplankton are at the base of many oceanic food chains, there are generally many fish and other sea creatures in areas rich in plankton. Modern fishing fleets, therefore, use SST maps from satellites to help find and follow fish on a day-to-day basis.\r\n\r\nPhytoplankton also play a key role in the climate, since they use chlorophyll to absorb carbon dioxide by photosynthesis, just as plants do on land. So ocean colour is also a key climate variable.",
+      "shortText": "## Human Intervention\r\n\r\nPlaceholder text",
       "images": [
-        "assets/seaice_large_05.jpg",
-        "assets/seaice_large_13.jpg",
-        "assets/story15_06.jpg",
-        "assets/story15_07.jpg",
-        "assets/story15_05.png"
+        "assets/intro_large_13.jpg",
+        "assets/ghg_large_18.jpg",
+        "assets/intro_large_15.jpg"
       ],
       "imageCaptions": [
-        "Young Arctic sea ice viewed from an aircraft. Sea ice thinner than 50 cm is particularly important for weather and climate as it controls the exchange of heat and water between the ocean and atmosphere. (S Hendriks/AWI)",
-        "Pressure ridge in thick Arctic sea ice, formed as two ice floes converge. (Seymour Laxon/CPOM/UCL)",
-        "Sea ice in Resolute Bay, Canada, from Sentinel-2. (Modified Copernicus Sentinel data (2019), processed by Pierre Markuse)",
-        "Melting sea ice swirls off the east coast of Greenland \r\nin this Sentinel-2 image taken on 20 April, 2020. (ESA)",
-        "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%."
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Life on the Front Line\r\n\r\nThe inhabitants of the Arctic region are living on the climate change front line. As traditional ways of hunting and travel are being disrupted, they have to adjust their lifestyles to the rapid warming. The sea ice that was such a barrier to European explorers provides a vital link for Greenlanders, both to food sources and between coastal communities. Waters that are becoming easier for a cruise ship to navigate are becoming more difficult for dogsled and snowmobile.\r\n\r\nFrom Alaska to Siberia, modern infrastructure such as roads, buildings and oil pipelines are undermined as the frozen ground – permafrost – on which they are built thaws out. This also releases carbon dioxide and the more powerful greenhouse gas methane from the previously-frozen soil. Vast quantities of methane also lie trapped as frozen methane hydrates on the Arctic Ocean’s broad continental shelf, parts of which could also thaw as the temperature rises.\r\n\r\nMelt-water from the Greenland Ice Sheet has contributed 11mm to sea level rise since 1992 and is tracking the worst-case climate warming predictions. Being fresh water, it is a further disruption to the salinity balance in the Arctic Ocean and surrounding seas. The flow of glaciers has also increased on islands such as Severnaya Zemlya as the surrounding ocean has warmed. Ice sheets, glaciers, permafrost and ocean salinity are, like sea ice, considered to be ‘essential climate variables’ that we need to monitor in order to understand how the climate is changing.",
-      "shortText": "## Life on the Front Line\r\n\r\nWaters becoming easier for a cruise ship are becoming more difficult for dogsled and snowmobile:\r\n\r\n- traditional ways of hunting and travelling disrupted\r\n- links to food sources and between communities broken\r\n\r\nFrom Alaska to Siberia, as permafrost thaws out:\r\n\r\n- buildings, roads and pipelines undermined\r\n- carbon dioxide and methane released from the soil\r\n- methane hydrates on the sea floor could also thaw \r\n\r\nMelt-water from the Greenland Ice Sheet:\r\n- has contributed 11mm to sea level rise since 1992\r\n- is tracking the worst-case climate warming predictions \r\n- disrupts the salinity balance of surrounding seas\r\n\r\nIce sheets, glaciers, permafrost, ocean salinity and sea ice are all ‘essential climate variables’.",
-      "images": [
-        "assets/icesheet_large_16.jpg",
-        "assets/icesheet_large_01.jpg",
-        "assets/story15_10.jpg",
-        "assets/story15_08.jpg"
-      ],
-      "imageCaptions": [
-        "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
-        "Surface meltwater runs across Leverett Glacier, about 50km from\r\n the western edge of the Greenland  ice sheet, on 19th August 2009.\r\n(Andrew Sole, University of Sheffield)",
-        "A new iceberg calves from the Greenland Ice Shelf into Disko Bay. (ESA)",
-        "Northern hemisphere permafrost 2003-2017 (ESA-CCI)"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Seeing in the Dark\r\n\r\nSatellites give us a unique overview of the polar regions, providing measurements that were previously impossible to acquire in the hostile environment of these vast and remote areas. But conventional cameras using visible light can only work during the daytime and in the absence of clouds, which is a problem in polar regions prone to bad weather and long periods of winter darkness. Here, microwaves, which can pass through clouds and don’t need the Sun as a source, are more useful. \r\n\r\nMicrowaves are emitted from the surface of the Earth and can be detected by passive sensors on satellites. They can also be generated by a satellite radar and sent out to illuminate the Earth’s surface. The European Space Agency has invested in a series of radar satellites that allow surface properties to be measured by analysing the reflected beam of microwaves.\r\n\r\nOne of the world’s longest satellite data archives, going back to 1978, is of passive microwave observations of sea ice. The CCI Sea Ice team is working with this data, in collaboration with Europe’s weather satellite organisation, EUMETSAT, to produce daily maps of sea ice concentration at both poles, as well as investigating more modern instruments to carry the data series forward. But ice extent is only half the story – climate modellers also want to know the volume of ice present.",
-      "shortText": "## Seeing in the Dark\r\n\r\n- Polar regions prone to bad weather \r\n- long periods of winter darkness\r\n- here microwaves more useful than visible light\r\n- they pass through clouds and don’t need the Sun\r\n- microwaves emitted from Earth surface detected by passive sensors \r\n- can also illuminate the surface with satellite radar \r\n- ESA has invested in a series of radar satellites \r\n\r\nESA’s CCI Sea Ice team is working with:\r\n\r\n- passive microwave observations going back to 1978\r\n- one of the world’s longest satellite data archives\r\n- in collaboration with Europe’s weather satellite organisation, EUMETSAT\r\n- to produce daily maps of sea ice concentration at both poles",
-      "images": [
-        "assets/seaice_large_04.jpg",
-        "assets/seaice_large_14.jpg",
-        "assets/icesheet_large_17.jpg"
-      ],
-      "imageCaptions": [
-        "The edge of the ice pack viewed by the Enhanced Thematic Mapper on Landsat 7, with thinner, younger ice in the lower part of the image. (USGS/ESA)",
-        "Microwave brightness of the Arctic Ocean on March 1 2003, measured at a frequency of 89 GHz by the AMSR-E instrument on NASA's Aqua satellite. (A Ivanoff, NASA-GSFC)",
-        "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)"
+        "On a clear night light shines out from urban areas across western Europe, painting a portrait of an energy-hungry society.  Photograph taken by ESA astronaut Alexander Gerst from the International Space Station on July 26 2014. (ESA/NASA)",
+        "Deforestation in the state of Rondônia in western Brazil, as imaged by ESA’s Proba-V minisatellite. The brown colours indicate deforested areas – note the distinctive ‘fishbone’ pattern as main roads are cut through an area, followed by secondary roads for further clearing. Agricultural activities including deforestation are the second-largest source of greenhouse gases, after fossil fuels. (ESA/VITO)",
+        "Atmospheric carbon dioxide history for the last 800,000 years, based on air samples from ice cores at Vostok Station, Antarctica, and since 1958, direct measurements from Mauna Loa Observatory, Hawaii. The present concentration of over 400 parts per million is thought to be higher than it has been for many millions of years. (data source: Scripps Institute of Oceanography)"
       ]
     },
     {
       "type": "video",
-      "text": "## The Third Dimension\r\n\r\nTo measure the volume of sea ice, its thickness is also required. Radar altimeters are used to measure very precisely the height of the ice above the sea surface, from which its thickness can be derived. The CCI Sea Ice team has developed monthly sea ice thickness maps using radar altimeter data from ESA’s Envisat mission from 2002 to 2012, and from CryoSat, launched in 2010. The CCI Ice Sheet team also uses these satellite altimeters to measure the thickness of the Greenland and Antarctic Ice Sheets.\r\n \r\nThe retrieval of sea ice thickness from altimetry works well only in the winter months, and only for relatively thick ice. The team is also looking at the novel use of data from ESA’s Soil Moisture and Ocean Salinity satellite (SMOS) to measure the thickness of thin ice, and at the new capabilities offered by future ESA satellites such as CRISTAL and CIMR. \r\n\r\nThe observed Arctic sea ice loss has been found to directly follow humanity’s cumulative carbon dioxide emissions: 3 m2 of ice are lost in September for every tonne of carbon dioxide we add to the atmosphere. That’s about the emission per passenger on a single trans-Atlantic flight. Climate models using the CCI data as an input show that, at current emission rates, it is likely that the Arctic Ocean will be largely ice-free in the summer before 2050.",
-      "shortText": "## The Third Dimension\r\n\r\nTo measure sea ice volume, thickness is also required:\r\n\r\n- radar altimeters measure ice height above sea surface \r\n- monthly ice thickness maps from Envisat and CryoSat \r\n- also used to measure thickness of continental ice sheets on Greenland and Antarctica\r\n\r\nArctic sea ice loss is directly following cumulative CO2 emissions:\r\n \r\n- 3 sq metres of ice lost in September for every tonne of CO2 added to the atmosphere\r\n- about the emission due to one passenger on a trans-Atlantic flight \r\n\r\nAt current emission rates, Arctic Ocean will be largely ice-free in summer before 2050.",
-      "videoId": "9einyMSOmHE"
+      "text": "## Tracking Carbon from Space\r\n\r\nData collected by satellites allow us to see how greenhouse gases are varying across the globe. The European Space Agency’s Envisat, launched in 2002, carried one of the first sensors that measure concentrations of carbon dioxide and methane near the surface. The Japanese satellite GOSAT followed in 2009. Future satellite sensors will allow us to detect smaller sources of greenhouse gases.\r\n\r\nESA’s Climate Change Initiative is also tracking carbon through its cycle on land and in the ocean. Land cover and biomass maps allow us to determine the amount of carbon stored in plants on land; ocean colour measurements show phytoplankton, giving an idea of how much carbon is being taken up by these ocean plants.\r\n\r\nClimate scientists are using this information to improve our understanding of the carbon cycle and its representation in their climate models. Improved climate projections will help decision-makers work out how we can manage our carbon emissions and restore balance to the carbon cycle.\r\n\r\n(Placeholder video, with intro)",
+      "shortText": "## Tracking Carbon from Space\r\n\r\nPlaceholder text\r\n\r\n(Placeholder video, with intro)",
+      "videoId": "rWtIwPvIH5M"
     }
   ]
 }
