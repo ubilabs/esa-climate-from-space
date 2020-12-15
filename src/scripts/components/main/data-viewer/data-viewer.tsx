@@ -21,7 +21,6 @@ import Globe from '../globe/globe';
 import Gallery from '../gallery/gallery';
 import GlobeNavigation from '../globe-navigation/globe-navigation';
 import LayerLegend from '../../layers/layer-legend/layer-legend';
-import HoverLegend from '../../layers/hover-legend/hover-legend';
 import {useImageLayerData} from '../../../hooks/use-image-layer-data';
 
 import {GlobeView} from '../../../types/globe-view';

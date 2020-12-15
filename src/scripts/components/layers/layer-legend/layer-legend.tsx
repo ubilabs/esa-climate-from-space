@@ -64,10 +64,8 @@ const LayerLegend: FunctionComponent<Props> = ({
                 style={{backgroundColor: legendItem.color}}
                 onMouseOver={() => setLegendValue(legendItem.value)}
                 onMouseLeave={() => setLegendValue('')}></div>
-              {legendValue === legendItem.value ? (
+              {legendValue === legendItem.value && (
                 <span className={styles.hoverValue}>{legendValue}</span>
-              ) : (
-                ''
               )}
             </div>
           ))}
