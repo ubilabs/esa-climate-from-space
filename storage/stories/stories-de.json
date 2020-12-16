@@ -13,9 +13,9 @@
     "description": "",
     "image": "assets/story12-image02.jpg",
     "tags": [
-      "greenhouse gases",
-      "land cover",
-      "ocean colour",
+      "greenhouse-gases",
+      "land-cover",
+      "ocean-colour",
       "fire"
     ],
     "position": [-0.8167732794279218, 51.212132037574264]
@@ -26,9 +26,9 @@
     "description": "",
     "image": "assets/story27-image03.jpg",
     "tags": [
-      "land surface temperature",
-      "soil moisture",
-      "land cover"
+      "land-surface-temperature",
+      "soil-moisture",
+      "land-cover"
     ],
     "position": [-123.13376786455858, 49.27051731190145]
   },
