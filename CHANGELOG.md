@@ -1,3 +1,30 @@
+# [0.11.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.10.4...v0.11.0) (2020-12-16)
+
+
+### Bug Fixes
+
+* **dependencies:** fix npm audit vulnerabilities ([#803](https://github.com/ubilabs/esa-climate-from-space/issues/803)) ([adc7db6](https://github.com/ubilabs/esa-climate-from-space/commit/adc7db600b8a47c946a99eac7952d97bd47d6dd0))
+* **deployment:** deactivate cache for index on live bucket ([#802](https://github.com/ubilabs/esa-climate-from-space/issues/802)) ([41ff6fc](https://github.com/ubilabs/esa-climate-from-space/commit/41ff6fcead5033d2284d6ae0f4bcfa893cea0128))
+
+
+### Features
+
+* **content:** add story 32 ([#795](https://github.com/ubilabs/esa-climate-from-space/issues/795)) ([0fc2281](https://github.com/ubilabs/esa-climate-from-space/commit/0fc2281e7ab4100ca4b977fef6a441ab32bf7e78))
+* **content:** adding new stories ([08c9aa1](https://github.com/ubilabs/esa-climate-from-space/commit/08c9aa158f633211e0752f8fcaa1f0b345145df4))
+* **content:** update story 26 ([6714298](https://github.com/ubilabs/esa-climate-from-space/commit/6714298934569a309159f5913c1bb86d46e31cc7))
+* **content:** update story 30 ([6995287](https://github.com/ubilabs/esa-climate-from-space/commit/6995287fff10eaa1698b1dedd9fb0d053a7ce160))
+* **content:** update story 32 ([#808](https://github.com/ubilabs/esa-climate-from-space/issues/808)) ([d7857b8](https://github.com/ubilabs/esa-climate-from-space/commit/d7857b8ebb6e8b401829cf85d37c62bc112149cf))
+* **content:** update story tile ([#806](https://github.com/ubilabs/esa-climate-from-space/issues/806)) ([f20aac4](https://github.com/ubilabs/esa-climate-from-space/commit/f20aac40b2de4694892667518b75100dea1b8576))
+* **content:** update story-12 ([6dfa410](https://github.com/ubilabs/esa-climate-from-space/commit/6dfa4108721ff06009328bb4da40cc3f11f529bc))
+* **content:** update story-31 ([#810](https://github.com/ubilabs/esa-climate-from-space/issues/810)) ([148ddad](https://github.com/ubilabs/esa-climate-from-space/commit/148ddadab90a34dc703eff2c6a735f7fb92c99a8))
+* **dataset:** update aerosol to v4.3 ([#800](https://github.com/ubilabs/esa-climate-from-space/issues/800)) ([961e0aa](https://github.com/ubilabs/esa-climate-from-space/commit/961e0aa456de51ff41fa4a1e3271b3252bede5bd))
+* **dataset:** update greenhouse gases ([#801](https://github.com/ubilabs/esa-climate-from-space/issues/801)) ([a7506a5](https://github.com/ubilabs/esa-climate-from-space/commit/a7506a5a6d674595d88a9a7439f064f28a94cd1c))
+* **favicon:** update favicon ([#749](https://github.com/ubilabs/esa-climate-from-space/issues/749)) ([e705e0d](https://github.com/ubilabs/esa-climate-from-space/commit/e705e0d32a01c0ec4fa8d07a9b3af46d6d8040f4))
+* **logo:** replace esa logos ([#753](https://github.com/ubilabs/esa-climate-from-space/issues/753)) ([8059508](https://github.com/ubilabs/esa-climate-from-space/commit/8059508fb702ddaf0b9ca7a7d39f670d7bed44b6))
+* **permafrost:** updat espatial resolution ([de33139](https://github.com/ubilabs/esa-climate-from-space/commit/de33139427de3fd91e403c9ca16afbc171b5e305))
+
+
+
 ## [0.10.4](https://github.com/ubilabs/esa-climate-from-space/compare/v0.10.3...v0.10.4) (2020-11-10)
 
 
