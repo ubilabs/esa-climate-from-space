@@ -1,10 +1,22 @@
 [
   {
+    "id": "story-32",
+    "title": "Einführung",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [],
+    "position": [13, 38]
+  },
+  {
     "id": "story-12",
     "title": "Der Kohlenstoffzyklus",
     "description": "",
     "image": "assets/seaice.jpg",
     "tags": [
+      "greenhouse gases",
+      "land cover",
+      "ocean colour",
+      "fire"
     ],
     "position": [-0.8167732794279218, 51.212132037574264]
   },
@@ -14,6 +26,9 @@
     "description": "",
     "image": "assets/seaice.jpg",
     "tags": [
+      "land surface temperature",
+      "soil moisture",
+      "land cover"
     ],
     "position": [-123.13376786455858, 49.27051731190145]
   },
@@ -32,13 +47,6 @@
     "position": [64, 11]
   },
   {
-    "id": "story-32",
-    "title": "Einführung",
-    "description": "",
-    "image": "assets/Sentinel-2.jpg",
-    "tags": [],
-    "position": [13, 38]
-  },{
     "id": "story-16",
     "title": "Die Wärmepumpe des Planeten",
     "description": "",
@@ -104,7 +112,6 @@
       "satellite-orbits",
       "sensors",
       "electromagnetic-spectrum",
-      "climate-modelling",
       "geostationary-satellite"
     ]
   }
