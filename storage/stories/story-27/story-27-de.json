@@ -3,122 +3,84 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Breaking the Ice\r\n\r\nThe polar regions are among the most sensitive to variations in global climate, with the Arctic in particular experiencing rapid change on both sea and land.",
-      "shortText": "# Breaking the Ice\r\n\r\nThe polar regions are among the most sensitive to variations in global climate, with the Arctic in particular experiencing rapid change on both sea and land.",
+      "text": "# Urban Heat\r\n\r\nCities are increasingly our home, but they amplify some of the worst affects of climate change, trapping heat and threatening health. As heatwaves become more extreme and more frequent, the inhabitants of the largest cities are most at risk.",
+      "shortText": "# Urban Heat\r\n\r\nCities are increasingly our home, but they amplify some of the worst affects of climate change, trapping heat and threatening health. As heatwaves become more extreme and more frequent, the inhabitants of the largest cities are most at risk.",
       "images": [
-        "assets/seaice.jpg"
+        "assets/story27-image03.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## A Passage Opens \r\n\r\nFor centuries, the Northwest Passage between mainland Canada and its Arctic islands has held promise as a shorter sea route between Europe and Asia. But for most of this time it has proved an impenetrable barrier, locked fast in the grip of a frozen sea.\r\n \r\nThe pack ice defeated the Royal Navy in 1845 when Sir John Franklin’s expedition was lost. Eighteen search parties over the next thirty years failed to find any trace of him and his 130 crewmen. It wasn’t until 1906 that Roald Amundsen became the first to complete a route through the Northwest Passage, after a journey lasting three years.\r\n\r\nA century later, still only a handful of voyages had picked their way through the icy waters, some with the aid of icebreakers. Then in the summer of 2007, satellite images showed, for the first time on record, the entire Passage to be largely ice-free. This surprised climate scientists, whose models predicted it would remain ice-bound for some decades to come. Today, you can book a cruise through the Northwest Passage on a liner with more than a thousand other passengers.\r\n\r\nFranklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance.",
-      "shortText": "## A Passage Opens\r\n\r\nFor centuries, sea ice has blocked the Northwest Passage between mainland Canada and its Arctic islands:\r\n \r\n- it defeated the Royal Navy when Sir John Franklin’s expedition was lost in 1845\r\n- 18 searches over 30 years failed to find any trace\r\n- Roald Amundsen first to complete the Passage, in 1906\r\n- A century later, only a handful of voyages had followed\r\n\r\nSummer 2007: satellite images show, for the first time, the entire Passage largely ice-free. \r\n\r\nToday: you can sail through the Northwest Passage on a cruise liner with 1,000 other passengers.\r\n\r\nFranklin’s sunken ships were finally found by seafloor surveys in 2014 and 2016.",
+      "text": "## Winter Heatwave\r\n\r\nFor the 2020 New Year celebrations in Moscow, they had to make artificial snow. The Russian capital, famous for its cold, hard winters, had reached 5.4°C – its highest December temperature since records began in 1879. A planned snow-boarding event went ahead only with the help of “snow” scraped from the surface of a nearby ice rink. Children were playing football in courtyards that usually host ice hockey games.\r\n\r\nRussia is warming 2.5 times faster than the global average, and many of the effects of climate change are amplified in large cities like Moscow. The expanding “urban area” land cover type, in which an increasing number of us live, absorbs and retains heat better than most natural cover types. \r\n\r\n## Extremes Amplified\r\n\r\nHeatwaves killed 70,000 people across Europe in 2003 and 55,000 in Russia alone in 2010. Cities are exposed to the most extreme temperatures in a heatwave, which can induce dehydration or heat stroke and increase the risk from stroke, heart and breathing conditions. While much is made of the rise in global mean temperature – about 0.2°C per decade – the single-day temperature extremes experienced in heatwaves are rising faster. In cities with over 5 million people, the hottest day of the year is rising on average 0.33°C per decade and in Moscow, Paris and Houston, over 0.9°C per decade. The increased threat to life from one-day extremes is thought to be comparable to that from prolonged heat events.",
+      "shortText": "## Winter Heatwave\r\n\r\nPlaceholder text",
       "images": [
-        "assets/story15_01.jpg",
-        "assets/seaice_large_01.jpg",
-        "assets/seaice_large_12a.jpg"
+        "assets/story27-image01.jpg",
+        "assets/story27-image02.jpg",
+        "assets/story27-image10.jpg"
       ],
       "imageCaptions": [
-        "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
-        "Summer sea ice in the Canadian Arctic. The narrow channel between mainland Canada and its Arctic islands\r\nis usually blocked by sea ice. In this Envisat MERIS image from 2nd July 2007\r\nLancaster Sound (lower centre) is ice-free, but to the west ice still blocks\r\nParry Channel. (ESA)",
-        "Sea ice is shown in blue in this Envisat ASAR mosaic of the Arctic Ocean from August 2008. The southerly branch of the Northwest Passage is ice-free. (ESA)"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## New Trade Routes \r\n\r\nThe loss of Arctic sea ice has been faster than was predicted, with the southern route of the Northwest Passage now navigable almost every year. The more direct, and commercially significant, northern route has opened during six of the last ten summers. In 2008, the first commercial ship passed through and in 2013 the first bulk carrier took cargo from Vancouver to Helsinki. \r\n\r\nThe shrinking icepack is also opening up to shipping the northern coast of Russia – the Northeast Passage. This route shaves more than one third off the sailing distance from Yokohama to Hamburg, compared with the current shortest route through the Suez Canal. There is even greater potential for savings in distance, time and fuel if the ice recedes enough for navigation across the centre of the Arctic Ocean – the Transpolar Sea Route.\r\n\r\nShorter shipping routes will mean less fuel is burned, and less carbon pumped into the atmosphere, but the Arctic will see a local increase in pollutants. Soot particles could darken the remaining ice, adding to the warming, but could also cause more clouds to condense, which might have a cooling effect.\r\n\r\nAlthough good news for the shipping and tourism industries, the retreat of the ice edge is a stark warning that the Earth’s climate is rapidly heading into uncharted waters.",
-      "shortText": "## New Trade Routes \r\n\r\n- Northwest Passage now open almost every year\r\n- 2008: first commercial ship passed through\r\n- 2013: bulk carrier took cargo  Vancouver to Helsinki\r\n- Northeast Passage (Russian coast) also opening up\r\n- Yokohama to Hamburg via Suez Canal: 11,430 nm\r\n- via NW Passage: 8,000 nm, via NE Passage: 7,200 nm\r\n- via Transpolar Sea Route: 6,600 nm\r\n\r\nShorter routes → less fuel burned → less carbon released, but local pollution:\r\n \r\n- soot could darken ice, adding to the warming,\r\n- but could also cause more clouds to condense, which might have a cooling effect\r\n\r\nGood news for shipping and tourism industries, but the rapid retreat of the ice edge is a stark warning that the Earth’s climate is heading into uncharted waters.",
-      "images": [
-        "assets/story15_02.jpg",
-        "assets/story15_03.jpg",
-        "assets/story15_04.png"
-      ],
-      "imageCaptions": [
-        "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
-        "Icebreaker escorting a cargo vessel through sea ice in the Arctic Ocean (Aker Arctic)",
-        "Arctic sea ice extent in August 1979-2019. The trend is down 72,000 sq km per year, or 9.1% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)"
+        "Trucks delivering manufactured snow to a Moscow street during a heatwave in December 2019 (Twitter)",
+        "Summer heatwaves can damage infrastructure such as railway tracks and road surfaces, as well as putting excessive loads on water and electricity supplies (US Dept of Transportation)",
+        "Mean night-time air temperature in Paris at 10pm during the heatwave of summer 2003, which led to thousands of heat-related deaths. (VITO/Planetek)"
       ]
     },
     {
       "type": "globe",
-      "text": "## Seasonal Cycle\r\n\r\nThe Arctic Ocean is characterised by the sea ice cover and its seasonal fluctuations. During winter, the ice pack grows to an area between 14 and 16 million square kilometres, reducing to four to five million square kilometres by the end of summer. That’s an area equivalent to the entire surface of Europe appearing and disappearing through the year. \r\n\r\nYou can see the annual expansion and contraction of the frozen sea surface by scrubbing through the timeline of the interactive globe on the right. Compare the annual minimum ice extents in mid-September for the first year and the final year of the sequence. Spin the globe round to Antarctica to see the sea ice in the Southern Ocean.\r\n\r\nThe core of the ice cover is formed of layers of frozen seawater that have survived the summer thaw. This multi-year ice reaches a thickness of two to four metres in the Arctic, whereas first-year sea ice typically reaches only 1 – 1.5 metres.\r\n\r\n## Long-term trend\r\n\r\nSatellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2019. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.",
-      "shortText": "## Seasonal Cycle\r\n\r\nArctic Ocean sea ice cover seasonal fluctuations:\r\n\r\n- winter ice pack area 14–16 million sq km \r\n- shrinks to 4–5 million sq km by end of summer \r\n- area the size of Europe appears/disappears over the year \r\n\r\nThe core of the ice cover is layers of frozen seawater that have survived the summer thaw:\r\n \r\n- multi-year ice 2 to 4 metres thick in the Arctic\r\n- first-year ice typically reaches only 1 to 1.5 metres\r\n\r\nSatellite observations show a significant loss of Arctic sea ice in recent decades:\r\n\r\n- lowest extents observed in 2012, 2007 and 2019 \r\n- since 1978, Arctic summer ice extent is down almost 40%",
+      "text": "## Urban Heat Islands\r\n\r\nThe interactive globe shows the extent of different types of land cover, including urban areas as well as natural cover types like forest and desert. The large old cities of Europe can be seen as well as the explosive growth of cities like Shanghai in Asia since the start of the data record in the 1990s. Land cover is one of the variables measured by the European Space Agency’s Climate Change Initiative. Other climate variables measured from space are the temperature of the land surface and the amount of moisture in the soil. These and other variables can be used to get an objective view on the interaction between humans and nature, and how climate change might affect that interaction.   \r\n\r\n![urban and rural temperature profiles graph ](assets/story27-image04.png) \r\n_Comparison of monthly temperature profiles for urban  and rural weather stations in the UK (Heathrow and Waddington respectively) (Placeholder – KNMI)_    \r\n\r\nAs more and more people move into a city, large areas of vegetation are replaced by roads, parking areas and buildings. The materials used to construct these features have a much higher capacity to store heat than plants and soil.  They gain heat from solar illumination during the day and not all of it is lost at night. The energy consumed within factories, offices and homes also contributes to raising the temperature of the urban environment. Cities can be up to 7 degrees Celsius warmer than the surrounding countryside. Places where temperatures are elevated in this way are known as urban heat islands.",
+      "shortText": "## Urban Heat Islands\r\n\r\nPlaceholder text\r\n\r\n![urban and rural temperature profiles graph ](assets/story27-image04.png) \r\n_Comparison of monthly temperature profiles for urban  and rural weather stations in the UK (Heathrow and Waddington respectively) (Placeholder – KNMI)_",
       "flyTo": {
         "position": {
-          "longitude": -3.42,
-          "latitude": 89.99,
-          "height": 24925805.95
+          "longitude": 119.04,
+          "latitude": 34.86,
+          "height": 1792878.69
         },
         "orientation": {
           "heading": 360,
-          "pitch": -90,
+          "pitch": -89.99,
           "roll": 0
         }
       },
       "layer": [
         {
-          "id": "sea_ice_nh.ice_conc",
-          "timestamp": "2012-09-09T12:00:00.000Z"
+          "id": "land_cover.lccs_class",
+          "timestamp": "2015-01-01T00:00:00.000Z"
         }
       ],
-      "layerDescription": "Sea Ice Concentration"
+      "layerDescription": "Land Cover Type for eastern China: urban areas are shown in red"
     },
     {
       "type": "image",
-      "text": "## Caught in the Middle\r\n\r\nThe ocean and the atmosphere are the climate’s two great heat pumps, and sea ice forms where they meet. It has a complex influence on the energy exchanges between them. Sea ice insulates the sea, reducing heat loss to the atmosphere and providing a barrier to the exchange of gases and motion. But bright ice also reflects sunlight that would be absorbed by dark ocean water, keeping the sea cooler than it would otherwise be. So, in a warming climate sea ice is subject to a positive feedback: melting ice exposes darker ocean water, which warms up, leading to further melting. \r\n\r\nThis is part of a process called the Arctic amplification. More heat is also being transported to the poles by both the atmosphere and the ocean as they warm up. This makes the Arctic one of the most sensitive regions to variations in global climate, and the place where most climate models predict the greatest warming.  Observed temperature rise in the Arctic has been 2-3 times the global average. \r\n\r\n## Climate Regulator\r\nSea ice has an important influence on the global ocean circulation. When seawater freezes in the winter, it leaves salt behind, increasing the salinity and therefore the density of the surrounding water, causing it to sink. This process is one of the main drivers behind the ocean’s global vertical circulation (the thermohaline circulation), which helps distribute energy around the planet. \r\n\r\nWhen the sea ice melts in the summer, it produces an influx of fresh water, adding to that from large rivers running in from Siberia and North America. This makes the Arctic Ocean much fresher than the salty Atlantic and Pacific. Ocean circulation is partly driven by temperature and salinity differences in the water, so changes to the cycle of sea ice freezing and melting can affect ocean currents and weather systems far from the Arctic.",
-      "shortText": "## Caught in the Middle\r\n\r\nForming where ocean and atmosphere meet, sea ice: \r\n\r\n- insulates the sea, reducing heat loss to the atmosphere\r\n- impedes the exchange of gases and motion\r\n- reflects sunlight that dark ocean water would absorb, keeping the sea cooler than it would otherwise be \r\n\r\nSea ice is subject to a positive feedback: \r\n\r\n- melting ice exposes dark ocean water, which warms up, leading to further melting \r\n- more heat is also transported to the poles by both the atmosphere and the ocean as they warm\r\n- the Arctic is especially sensitive to climate change\r\n- temperature rise in the Arctic 2–3x global average \r\n\r\nSea ice has an important influence on the global ocean circulation, affecting ocean currents and weather systems far from the Arctic.",
+      "text": "## Heat Surveys  from Space \r\n\r\nHow much an urban area is affected by its heat island depends on factors such as the number, type and arrangement of buildings and roads, and what they are made from. Ground-level infrared cameras are used to show where heat is being lost from buildings, so they can be made more energy-efficient. In the same way, infrared sensors on satellites can be used to show where heat is building up within a city. \r\n\r\nMeasurements of land surface temperature (LST) from space can be compared with historical data from weather stations to identify the areas of a city that are most vulnerable during heatwaves. This information can help urban planners improve the design of cities by deciding where to locate green areas, which materials to use, and how to orient buildings to maximise shade and cooling.\r\n\r\nLST data can also be linked with more detailed data from the ground or from airborne surveys, and updated in near-real time using high quality sensors such as the Copernicus Sentinel satellites to provide support to decision makers during heatwave events. LST from space can show how heatwaves affect temperature at the level of a district or even an individual city block. Understanding these events would allow steps to be taken which could potentially reduce the effect of heat-related health hazards. \r\n\r\nThe most accurate climate data for LST is from the European Space Agency’s Climate Change Initiative. Although of moderate spatial resolution, it is detailed enough to see key features of a large city like London, and its temperature measurements are extremely accurate. They provide a spatial snapshot of the surface temperature as well as a multi-decade temporal progression of temperature for a whole city, region, country or continent to improve the performance of climate models.",
+      "shortText": "## Heat Surveys  from Spaces\r\n\r\nPlaceholder text",
       "images": [
-        "assets/seaice_large_05.jpg",
-        "assets/seaice_large_13.jpg",
-        "assets/story15_06.jpg",
-        "assets/story15_07.jpg",
-        "assets/story15_05.png"
+        "assets/iStock_000021056451Small.jpg",
+        "assets/story27-image06.jpg",
+        "assets/story27-image11.jpg",
+        "assets/story27-image08.jpg",
+        "assets/story27-image09.jpg"
       ],
       "imageCaptions": [
-        "Young Arctic sea ice viewed from an aircraft. Sea ice thinner than 50 cm is particularly important for weather and climate as it controls the exchange of heat and water between the ocean and atmosphere. (S Hendriks/AWI)",
-        "Pressure ridge in thick Arctic sea ice, formed as two ice floes converge. (Seymour Laxon/CPOM/UCL)",
-        "Sea ice in Resolute Bay, Canada, from Sentinel-2. (Modified Copernicus Sentinel data (2019), processed by Pierre Markuse)",
-        "Melting sea ice swirls off the east coast of Greenland \r\nin this Sentinel-2 image taken on 20 April, 2020. (ESA)",
-        "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%."
+        "Handheld infrared cameras are used to conduct thermographic surveys of buildings. Infrared cameras on satellites can survey a whole city quickly and repeatedly.  (Placeholder - iStock)",
+        "Airborne thermal infrared image of Madrid at midnight on 1 July 2008 (University of Valencia)",
+        "Land surface temperature derived from the SLSTR instrument on the Copernicus Sentinel-3 satellite, for 26 June (left) and 25 July (right) 2019. That summer saw an extreme heatwave in Europe with record-breaking temperatures in the Netherlands, Belgium, Germany and Paris. (ESA)",
+        "Average land surface temperature for September 2006, derived from Envisat AATSR (University of Leicester)",
+        "Global land surface temperature anomaly for September 2006 from Envisat AATSR, showing a heatwave over central and northern Europe (University of Liecester)"
       ]
     },
     {
       "type": "image",
-      "text": "## Life on the Front Line\r\n\r\nThe inhabitants of the Arctic region are living on the climate change front line. As traditional ways of hunting and travel are being disrupted, they have to adjust their lifestyles to the rapid warming. The sea ice that was such a barrier to European explorers provides a vital link for Greenlanders, both to food sources and between coastal communities. Waters that are becoming easier for a cruise ship to navigate are becoming more difficult for dogsled and snowmobile.\r\n\r\nFrom Alaska to Siberia, modern infrastructure such as roads, buildings and oil pipelines are undermined as the frozen ground – permafrost – on which they are built thaws out. This also releases carbon dioxide and the more powerful greenhouse gas methane from the previously-frozen soil. Vast quantities of methane also lie trapped as frozen methane hydrates on the Arctic Ocean’s broad continental shelf, parts of which could also thaw as the temperature rises.\r\n\r\nMelt-water from the Greenland Ice Sheet has contributed 11mm to sea level rise since 1992 and is tracking the worst-case climate warming predictions. Being fresh water, it is a further disruption to the salinity balance in the Arctic Ocean and surrounding seas. The flow of glaciers has also increased on islands such as Severnaya Zemlya as the surrounding ocean has warmed. Ice sheets, glaciers, permafrost and ocean salinity are, like sea ice, considered to be ‘essential climate variables’ that we need to monitor in order to understand how the climate is changing.",
-      "shortText": "## Life on the Front Line\r\n\r\nWaters becoming easier for a cruise ship are becoming more difficult for dogsled and snowmobile:\r\n\r\n- traditional ways of hunting and travelling disrupted\r\n- links to food sources and between communities broken\r\n\r\nFrom Alaska to Siberia, as permafrost thaws out:\r\n\r\n- buildings, roads and pipelines undermined\r\n- carbon dioxide and methane released from the soil\r\n- methane hydrates on the sea floor could also thaw \r\n\r\nMelt-water from the Greenland Ice Sheet:\r\n- has contributed 11mm to sea level rise since 1992\r\n- is tracking the worst-case climate warming predictions \r\n- disrupts the salinity balance of surrounding seas\r\n\r\nIce sheets, glaciers, permafrost, ocean salinity and sea ice are all ‘essential climate variables’.",
+      "text": "## Keeping a Lid on it\r\n\r\nUrban heat islands have an impact on many people today and, as urbanisation continues, many more will feel the effects in the future. Cities currently occupy approximately 2 percent of the Earth's surface and are home to more than half the world's people. By 2050, it is expected that 75 percent of a global population of 9.5 billion will live in cities. \r\n\r\nThere are ways to reduce the heat island effect. These include positioning buildings in a way that improves airflow, using new building materials that trap less heat than conventional materials and reintroducing nature into cities. Trees provide shade, remove air pollution and soak up water, helping to prevent floods. \r\n\r\nUrban trees are also an effective sink for carbon dioxide, which they absorb very close to its sources in transport and industry, limiting the spread of this greenhouse gas into the atmosphere. In London, there are more trees than people and it is estimated that they store 380 tonnes of carbon per hectare in some parts of the city – comparable to some temperate and tropical rainforests.\r\n\r\nIn the Netherlands, the city of Arnhem has decided to replace 10% of its road surface with grass, increase the area of shade by planting trees, and to ensure that 90 percent of its rainwater is absorbed into the soil rather than running into the sewer. Water raises the heat capacity of soil, so wet soil emits less heat than dry soil. But will such measures be enough to cool our overheating cities? Measuring land surface temperature, soil moisture and land cover type from space will help us answer that question.",
+      "shortText": "# Keeping a Lid on it\r\n\r\nPlaceholder text",
       "images": [
-        "assets/icesheet_large_16.jpg",
-        "assets/icesheet_large_01.jpg",
-        "assets/story15_10.jpg",
-        "assets/story15_08.jpg"
+        "assets/story27-image07.jpg",
+        "assets/story27-image05.jpg",
+        "assets/3dtrees-black.jpg"
       ],
       "imageCaptions": [
-        "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
-        "Surface meltwater runs across Leverett Glacier, about 50km from\r\n the western edge of the Greenland  ice sheet, on 19th August 2009.\r\n(Andrew Sole, University of Sheffield)",
-        "A new iceberg calves from the Greenland Ice Shelf into Disko Bay. (ESA)",
-        "Northern hemisphere permafrost 2003-2017 (ESA-CCI)"
+        "Street lights trace out London’s urban area in this photograph taken by ESA astronaut Tim Peake from the International Space Station in 2016. Dark areas show the locations of the city’s green lungs – it’s many large parks. (ESA/NASA)",
+        "Air temperature for Madrid on 25 June 2008 at 22:18 UTC (right), compared with a map of sealed soil surface area (left), highlighting the city’s artificial surfaces. (VITO/Indra/Planetek/European Environment Agency)",
+        "The mass of carbon stored by trees can be estimated using 3D tree models based on laser scanning (lidar – light detection and ranging) (Placeholder – UCL or similar from CCI-Biomass or JRC)"
       ]
-    },
-    {
-      "type": "image",
-      "text": "## Seeing in the Dark\r\n\r\nSatellites give us a unique overview of the polar regions, providing measurements that were previously impossible to acquire in the hostile environment of these vast and remote areas. But conventional cameras using visible light can only work during the daytime and in the absence of clouds, which is a problem in polar regions prone to bad weather and long periods of winter darkness. Here, microwaves, which can pass through clouds and don’t need the Sun as a source, are more useful. \r\n\r\nMicrowaves are emitted from the surface of the Earth and can be detected by passive sensors on satellites. They can also be generated by a satellite radar and sent out to illuminate the Earth’s surface. The European Space Agency has invested in a series of radar satellites that allow surface properties to be measured by analysing the reflected beam of microwaves.\r\n\r\nOne of the world’s longest satellite data archives, going back to 1978, is of passive microwave observations of sea ice. The CCI Sea Ice team is working with this data, in collaboration with Europe’s weather satellite organisation, EUMETSAT, to produce daily maps of sea ice concentration at both poles, as well as investigating more modern instruments to carry the data series forward. But ice extent is only half the story – climate modellers also want to know the volume of ice present.",
-      "shortText": "## Seeing in the Dark\r\n\r\n- Polar regions prone to bad weather \r\n- long periods of winter darkness\r\n- here microwaves more useful than visible light\r\n- they pass through clouds and don’t need the Sun\r\n- microwaves emitted from Earth surface detected by passive sensors \r\n- can also illuminate the surface with satellite radar \r\n- ESA has invested in a series of radar satellites \r\n\r\nESA’s CCI Sea Ice team is working with:\r\n\r\n- passive microwave observations going back to 1978\r\n- one of the world’s longest satellite data archives\r\n- in collaboration with Europe’s weather satellite organisation, EUMETSAT\r\n- to produce daily maps of sea ice concentration at both poles",
-      "images": [
-        "assets/seaice_large_04.jpg",
-        "assets/seaice_large_14.jpg",
-        "assets/icesheet_large_17.jpg"
-      ],
-      "imageCaptions": [
-        "The edge of the ice pack viewed by the Enhanced Thematic Mapper on Landsat 7, with thinner, younger ice in the lower part of the image. (USGS/ESA)",
-        "Microwave brightness of the Arctic Ocean on March 1 2003, measured at a frequency of 89 GHz by the AMSR-E instrument on NASA's Aqua satellite. (A Ivanoff, NASA-GSFC)",
-        "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)"
-      ]
-    },
-    {
-      "type": "video",
-      "text": "## The Third Dimension\r\n\r\nTo measure the volume of sea ice, its thickness is also required. Radar altimeters are used to measure very precisely the height of the ice above the sea surface, from which its thickness can be derived. The CCI Sea Ice team has developed monthly sea ice thickness maps using radar altimeter data from ESA’s Envisat mission from 2002 to 2012, and from CryoSat, launched in 2010. The CCI Ice Sheet team also uses these satellite altimeters to measure the thickness of the Greenland and Antarctic Ice Sheets.\r\n \r\nThe retrieval of sea ice thickness from altimetry works well only in the winter months, and only for relatively thick ice. The team is also looking at the novel use of data from ESA’s Soil Moisture and Ocean Salinity satellite (SMOS) to measure the thickness of thin ice, and at the new capabilities offered by future ESA satellites such as CRISTAL and CIMR. \r\n\r\nThe observed Arctic sea ice loss has been found to directly follow humanity’s cumulative carbon dioxide emissions: 3 m2 of ice are lost in September for every tonne of carbon dioxide we add to the atmosphere. That’s about the emission per passenger on a single trans-Atlantic flight. Climate models using the CCI data as an input show that, at current emission rates, it is likely that the Arctic Ocean will be largely ice-free in the summer before 2050.",
-      "shortText": "## The Third Dimension\r\n\r\nTo measure sea ice volume, thickness is also required:\r\n\r\n- radar altimeters measure ice height above sea surface \r\n- monthly ice thickness maps from Envisat and CryoSat \r\n- also used to measure thickness of continental ice sheets on Greenland and Antarctica\r\n\r\nArctic sea ice loss is directly following cumulative CO2 emissions:\r\n \r\n- 3 sq metres of ice lost in September for every tonne of CO2 added to the atmosphere\r\n- about the emission due to one passenger on a trans-Atlantic flight \r\n\r\nAt current emission rates, Arctic Ocean will be largely ice-free in summer before 2050.",
-      "videoId": "9einyMSOmHE"
     }
   ]
 }
