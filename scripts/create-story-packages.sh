@@ -17,5 +17,5 @@ for storyId in */; do
   zip -r $lastDir/$storyId/package.zip ./story-$storyId
   cd $lastDir
 
-  rm -r $tmpDir
+  rm -rf $tmpDir
 done

@@ -9,6 +9,16 @@ steps:
     args: ['run', 'build']
   - name: 'gcr.io/cloud-builders/gsutil'
     args: ['rsync', '-r', '-d', './dist', 'gs://cfs.climate.esa.int']
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    id: 'set-no-cache-on-index-html'
+    entrypoint: 'gsutil'
+    args:
+      - "-m"
+      - "setmeta"
+      - "-r"
+      - "-h"
+      - "Cache-Control: no-cache"
+      - "gs://cfs.climate.esa.int/index.html"
   - name: gcr.io/cloud-builders/git
     args:
       [

@@ -108,7 +108,7 @@ module.exports = (env, {mode} = {}) => {
     plugins: [
       new HtmlWebpackPlugin({
         template: 'src/index.html',
-        favicon: 'assets/images/favicon.svg'
+        favicon: 'assets/images/favicon.ico'
       }),
       new MiniCssExtractPlugin({
         filename: 'styles.[hash].css'
