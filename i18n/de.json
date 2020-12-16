@@ -64,6 +64,7 @@
   "tags.land-surface-temperature": "Bodenoberflächentemperatur",
   "tags.soil-moisture": "Bodenfeuchtigkeit",
   "tags.fire": "Feuer",
+  "tags.greenhouse-gases": "Treibhausgase",
   "tags.satellite-orbits": "Satellitenorbit",
   "tags.sensors": "Sensoren",
   "tags.electromagnetic-spectrum": "Elektromagnetisches Spektrum",
