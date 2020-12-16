@@ -3,7 +3,7 @@
     "id": "story-32",
     "title": "Introduction",
     "description": "",
-    "image": "assets/Sentinel-2.jpg",
+    "image": "assets/atmospheric-ecvs.jpg",
     "tags": [],
     "position": [13, 38]
   },
@@ -11,7 +11,7 @@
     "id": "story-12",
     "title": "The Carbon Cycle",
     "description": "",
-    "image": "assets/seaice.jpg",
+    "image": "assets/story12-image02.jpg",
     "tags": [
       "greenhouse gases",
       "land cover",
@@ -24,7 +24,7 @@
     "id": "story-27",
     "title": "Urban Heat",
     "description": "",
-    "image": "assets/seaice.jpg",
+    "image": "assets/story27-image03.jpg",
     "tags": [
       "land surface temperature",
       "soil moisture",
