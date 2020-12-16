@@ -5,7 +5,7 @@
     "description": "",
     "image": "assets/atmospheric-ecvs.jpg",
     "tags": [],
-    "position": [13, 38]
+    "position": [-60, -3]
   },
   {
     "id": "story-12",
@@ -18,7 +18,7 @@
       "ocean-colour",
       "fire"
     ],
-    "position": [-0.8167732794279218, 51.212132037574264]
+    "position": [3, 57]
   },
   {
     "id": "story-27",
@@ -30,7 +30,7 @@
       "soil-moisture",
       "land-cover"
     ],
-    "position": [-123.13376786455858, 49.27051731190145]
+    "position": [37, 55]
   },
   {
     "id": "story-31",
@@ -44,7 +44,7 @@
       "climate-modelling",
       "geostationary-satellite"
     ],
-    "position": [64, 11]
+    "position": [18, 59]
   },
   {
     "id": "story-16",
