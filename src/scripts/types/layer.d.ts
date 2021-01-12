@@ -1,6 +1,6 @@
 import {BasemapId} from '../types/basemap';
-import {GlobeView} from './globe-view';
 import {LayerType} from './globe-layer-type';
+import {LegendValueColor} from './legend-value-color';
 
 export interface Layer {
   id: string;
@@ -20,6 +20,6 @@ export interface Layer {
   minValue: number;
   maxValue: number;
   units: string;
-  legendValues: string[];
+  legendValues: string[] | LegendValueColor[];
   legendBackgroundColor: string;
 }
