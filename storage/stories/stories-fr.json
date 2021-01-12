@@ -1,21 +1,36 @@
 [
   {
+    "id": "story-32",
+    "title": "Climate from Space",
+    "description": "",
+    "image": "assets/atmospheric-ecvs.jpg",
+    "tags": [],
+    "position": [-60, -3]
+  },
+  {
     "id": "story-12",
     "title": "The Carbon Cycle",
     "description": "",
-    "image": "assets/seaice.jpg",
+    "image": "assets/story12-image02.jpg",
     "tags": [
+      "greenhouse-gases",
+      "land-cover",
+      "ocean-colour",
+      "fire"
     ],
-    "position": [-0.8167732794279218, 51.212132037574264]
+    "position": [3, 57]
   },
   {
     "id": "story-27",
     "title": "Urban Heat",
     "description": "",
-    "image": "assets/seaice.jpg",
+    "image": "assets/story27-image03.jpg",
     "tags": [
+      "land-surface-temperature",
+      "soil-moisture",
+      "land-cover"
     ],
-    "position": [-123.13376786455858, 49.27051731190145]
+    "position": [37, 55]
   },
   {
     "id": "story-31",
@@ -23,21 +38,10 @@
     "description": "",
     "image": "assets/cmug_large_14.jpg",
     "tags": [
-      "satellite-orbits",
-      "sensors",
-      "electromagnetic-spectrum",
       "climate-modelling",
-      "geostationary-satellite"
+      "ocean-colour"
     ],
-    "position": [64, 11]
-  },
-  {
-    "id": "story-32",
-    "title": "Introduction",
-    "description": "",
-    "image": "assets/Sentinel-2.jpg",
-    "tags": [],
-    "position": [13, 38]
+    "position": [2, 41]
   },
   {
     "id": "story-16",
@@ -106,7 +110,6 @@
       "satellite-orbits",
       "sensors",
       "electromagnetic-spectrum",
-      "climate-modelling",
       "geostationary-satellite"
     ],
     "position": [40, -25]
