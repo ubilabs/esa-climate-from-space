@@ -4,9 +4,9 @@
 # Usage: ./scripts/update-metadata.sh <layerId (optional)>
 
 
-version=0.9.1
+version=0.11.1
 workingDir="./download"
-layersConfigFile="../data/layers-config.json"
+layersConfigFile="./data/layers-config.json"
 
 # take optional layer ID from command line argument
 layerID=$1
