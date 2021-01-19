@@ -21,6 +21,22 @@
   .button, &:not(:first-child)
     padding-left: emCalc(30px)
 
+.tagsButton
+  padding-left: emCalc(8px)
+
+  svg
+    filter: drop-shadow(3px 2px 2px rgba(16, 22, 26, 0.2))
+
+.badge
+  position: relative
+  top: 2px
+  left: -4px
+  width: 8px
+  height: 8px
+  border-radius: 50%
+  background: $main
+  color: $textWhite
+
 @media screen and (max-width: 480px)
   .button
     &:not(:first-child)
