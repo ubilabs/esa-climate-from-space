@@ -2,8 +2,8 @@ import React, {FunctionComponent} from 'react';
 
 export const FilterIcon: FunctionComponent = () => (
   <svg
-    width="16"
-    height="12"
+    width="20"
+    height="20"
     viewBox="0 0 16 12"
     xmlns="http://www.w3.org/2000/svg">
     <path
