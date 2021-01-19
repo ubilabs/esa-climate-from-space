@@ -73,14 +73,14 @@
       "shortText": "# Keeping a Lid on it\r\n\r\nPlaceholder text",
       "images": [
         "assets/story27-image07.jpg",
-        "assets/story27-image05.jpg",
         "assets/story27-image12.jpg",
+        "assets/story27-image05.jpg",
         "assets/story27-image15.jpg"
       ],
       "imageCaptions": [
         "Street lights trace out London’s urban area in this photograph taken by ESA astronaut Tim Peake from the International Space Station in 2016. Dark areas show the locations of the city’s green lungs – it’s many large parks. (ESA/NASA)",
-        "Air temperature for Madrid on 25 June 2008 at 22:18 UTC (right), compared with a map of sealed soil surface area (left), highlighting the city’s artificial surfaces. (VITO/Indra/Planetek/European Environment Agency)",
         "Land surface temperature (left) and a measure of the urban heat island relative to surrounding rural areas (right) for London, based on Landsat thermal infrared observations for 7th July 2020. The elevation of land surface temperature in cities is even higher than it is for air temperature. (University of Liecester)",
+        "Air temperature for Madrid on 25 June 2008 at 22:18 UTC (right), compared with a map of sealed soil surface area (left), highlighting the city’s artificial surfaces. (VITO/Indra/Planetek/European Environment Agency)",
         "A pair of oak trees on Hampstead Heath in London, rendered as a point cloud from laser distance measurements. \r\nThe mass of carbon stored by trees can be estimated using 3D tree models based on laser scanning \r\n(lidar – light detection and ranging). (M Disney/P Wilkes/UCL)"
       ]
     }
