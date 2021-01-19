@@ -56,14 +56,14 @@
         "assets/iStock_000021056451Small.jpg",
         "assets/story27-image06.jpg",
         "assets/story27-image11.jpg",
-        "assets/story27-image08.jpg",
+        "assets/story27-image13.gif",
         "assets/story27-image09.jpg"
       ],
       "imageCaptions": [
         "Handheld infrared cameras are used to conduct thermographic surveys of buildings. Infrared cameras on satellites can survey a whole city quickly and repeatedly.  (Placeholder - iStock)",
         "Airborne thermal infrared image of Madrid at midnight on 1 July 2008 (University of Valencia)",
         "Land surface temperature derived from the SLSTR instrument on the Copernicus Sentinel-3 satellite, for 26 June (left) and 25 July (right) 2019. That summer saw an extreme heatwave in Europe with record-breaking temperatures in the Netherlands, Belgium, Germany and Paris. (ESA)",
-        "Average land surface temperature for September 2006, derived from Envisat AATSR (University of Leicester)",
+        "Information from Sentinel-3A’s radiometer, which measures radiation emitted from Earth’s surface, reveal how the temperature of Earth’s land changes between July and November 2016. Land surface temperature in Kelvin.\r\n(Contains modified Copernicus Sentinel data (2016), processed by UK NCEO/University of Leicester)",
         "Global land surface temperature anomaly for September 2006 from Envisat AATSR, showing a heatwave over central and northern Europe (University of Liecester)"
       ]
     },
@@ -74,12 +74,14 @@
       "images": [
         "assets/story27-image07.jpg",
         "assets/story27-image05.jpg",
-        "assets/3dtrees-black.jpg"
+        "assets/story27-image12.jpg",
+        "assets/story27-image15.jpg"
       ],
       "imageCaptions": [
         "Street lights trace out London’s urban area in this photograph taken by ESA astronaut Tim Peake from the International Space Station in 2016. Dark areas show the locations of the city’s green lungs – it’s many large parks. (ESA/NASA)",
         "Air temperature for Madrid on 25 June 2008 at 22:18 UTC (right), compared with a map of sealed soil surface area (left), highlighting the city’s artificial surfaces. (VITO/Indra/Planetek/European Environment Agency)",
-        "The mass of carbon stored by trees can be estimated using 3D tree models based on laser scanning (lidar – light detection and ranging) (Placeholder – UCL or similar from CCI-Biomass or JRC)"
+        "Land surface temperature (left) and a measure of the urban heat island relative to surrounding rural areas (right) for London, based on Landsat thermal infrared observations for 7th July 2020. The elevation of land surface temperature in cities is even higher than it is for air temperature. (University of Liecester)",
+        "A pair of oak trees on Hampstead Heath in London, rendered as a point cloud from laser distance measurements. \r\nThe mass of carbon stored by trees can be estimated using 3D tree models based on laser scanning \r\n(lidar – light detection and ranging). (M Disney/P Wilkes/UCL)"
       ]
     }
   ]
