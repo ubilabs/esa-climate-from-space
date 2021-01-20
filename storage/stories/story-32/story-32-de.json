@@ -4,7 +4,7 @@
     {
       "type": "splashscreen",
       "text": "# Welcome to Climate from Space\r\n\r\nExplore climate change through the eyes of Earth observation satellites.",
-      "shortText": "# Welcome to Climate from Space\r\n\r\nExplore climate change through the eyes of Earth observation satellites.",
+      "shortText": "# Welcome to \r\n# Climate from Space\r\n\r\nExplore climate change through the eyes of Earth observation satellites.",
       "images": [
         "assets/atmospheric-ecvs.jpg"
       ]
