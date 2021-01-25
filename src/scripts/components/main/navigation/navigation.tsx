@@ -13,7 +13,7 @@ import {FilterIcon} from '../icons/filter-icon';
 import setLanguageAction from '../../../actions/set-language';
 import {languageSelector} from '../../../selectors/language';
 import LanguageBubble from '../language-bubble/language-bubble';
-import TagsBubble from '../../stories/tags-bubble/tags-bubble';
+import SelectedTags from '../../stories/selected-tags/selected-tags';
 import {selectedTagsSelector} from '../../../selectors/story/selected-tags';
 import config from '../../../config/main';
 
@@ -29,7 +29,6 @@ const Navigation: FunctionComponent = () => {
     !savedLanguage
   );
   const selectedTags = useSelector(selectedTagsSelector);
-  const isFilterActive = selectedTags.length > 0;
 
   return (
     <div className={styles.navigation}>
@@ -40,7 +39,7 @@ const Navigation: FunctionComponent = () => {
         icon={StoryIcon}
         hideLabelOnMobile
       />
-      {isFilterActive && (
+      {selectedTags.length > 0 && (
         <React.Fragment>
           <Button
             className={styles.tagsButton}
@@ -81,7 +80,9 @@ const Navigation: FunctionComponent = () => {
           <Menu />
         </Overlay>
       )}
-      {isFilterActive && showTags && <TagsBubble selectedTags={selectedTags} />}
+      {selectedTags.length > 0 && showTags && (
+        <SelectedTags selectedTags={selectedTags} />
+      )}
     </div>
   );
 };

@@ -5,17 +5,17 @@ import {useDispatch} from 'react-redux';
 import setSelectedStoryTagsAction from '../../../actions/set-selected-story-tags';
 import {CheckIcon} from '../../main/icons/check-icon';
 
-import styles from './tags-bubble.styl';
+import styles from './selected-tags.styl';
 
 interface Props {
   selectedTags: string[];
 }
 
-const TagsBubble: FunctionComponent<Props> = ({selectedTags}) => {
+const SelectedTags: FunctionComponent<Props> = ({selectedTags}) => {
   const dispatch = useDispatch();
 
   return (
-    <div className={styles.tagsBubble}>
+    <div className={styles.selectedTags}>
       {selectedTags.map(tag => (
         <div key={tag} className={styles.tag}>
           <CheckIcon />
@@ -31,4 +31,4 @@ const TagsBubble: FunctionComponent<Props> = ({selectedTags}) => {
   );
 };
 
-export default TagsBubble;
+export default SelectedTags;
