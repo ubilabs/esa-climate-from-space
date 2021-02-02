@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {Link} from 'react-router-dom';
 import cx from 'classnames';
 
-import StoryTags from '../story-tags/story-tags';
+// import StoryTags from '../story-tags/story-tags';
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
 import {DownloadButton} from '../../main/download-button/download-button';
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
@@ -25,7 +25,7 @@ const StoryListItemContent: FunctionComponent<Props> = ({
   mode,
   story,
   selectedIndex,
-  selectedTags,
+  // selectedTags,
   onSelectStory
 }) => {
   const classes = cx(
@@ -34,7 +34,7 @@ const StoryListItemContent: FunctionComponent<Props> = ({
     mode === StoryMode.Showcase && styles.showcase,
     selectedIndex >= 0 && styles.selected
   );
-  const isStoriesMode = StoryMode.Stories === mode;
+  // const isStoriesMode = StoryMode.Stories === mode;
   const downloadUrl = replaceUrlPlaceholders(config.api.storyOfflinePackage, {
     id: story.id
   });
