@@ -1,5 +1,51 @@
 [
   {
+    "id": "story-32",
+    "title": "Climate from Space",
+    "description": "",
+    "image": "assets/atmospheric-ecvs.jpg",
+    "tags": [],
+    "position": [-60, -3]
+  },
+  {
+    "id": "story-12",
+    "title": "Der Kohlenstoffzyklus",
+    "description": "",
+    "image": "assets/story12-image02.jpg",
+    "tags": [
+      "greenhouse-gases",
+      "land-cover",
+      "ocean-colour",
+      "fire"
+    ],
+    "position": [3, 57]
+  },
+  {
+    "id": "story-27",
+    "title": "Städtische Wärme",
+    "description": "",
+    "image": "assets/story27-image03.jpg",
+    "tags": [
+      "climate-modelling",
+      "ocean-colour"
+    ],
+    "position": [37, 55]
+  },
+  {
+    "id": "story-31",
+    "title": "Klimamodellierung",
+    "description": "",
+    "image": "assets/cmug_large_14.jpg",
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "climate-modelling",
+      "geostationary-satellite"
+    ],
+    "position": [2, 41]
+  },
+  {
     "id": "story-16",
     "title": "Die Wärmepumpe des Planeten",
     "description": "",
@@ -65,7 +111,6 @@
       "satellite-orbits",
       "sensors",
       "electromagnetic-spectrum",
-      "climate-modelling",
       "geostationary-satellite"
     ]
   }

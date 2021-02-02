@@ -5,7 +5,9 @@
       "type": "splashscreen",
       "text": "# Biodiversity and Habitat Loss\r\n\r\nThe ecosystems that make up Earth’s biosphere are home to a huge variety of life and are undergoing rapid change. These changes have an impact on the natural cycles that control the Earth’s climate, as well as more immediate effects on human activities.",
       "shortText": "# Biodiversity and Habitat Loss\r\n\r\nThe ecosystems that make up Earth’s biosphere are home to a huge variety of life and are undergoing rapid change. These changes have an impact on the natural cycles that control the Earth’s climate, as well as more immediate effects on human activities.",
-      "images": ["assets/landcover.jpg"]
+      "images": [
+        "assets/landcover.jpg"
+      ]
     },
     {
       "type": "image",

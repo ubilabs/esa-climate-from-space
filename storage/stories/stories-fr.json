@@ -1,5 +1,49 @@
 [
   {
+    "id": "story-32",
+    "title": "Climate from Space",
+    "description": "",
+    "image": "assets/atmospheric-ecvs.jpg",
+    "tags": [],
+    "position": [-60, -3]
+  },
+  {
+    "id": "story-12",
+    "title": "The Carbon Cycle",
+    "description": "",
+    "image": "assets/story12-image02.jpg",
+    "tags": [
+      "greenhouse-gases",
+      "land-cover",
+      "ocean-colour",
+      "fire"
+    ],
+    "position": [3, 57]
+  },
+  {
+    "id": "story-27",
+    "title": "Urban Heat",
+    "description": "",
+    "image": "assets/story27-image03.jpg",
+    "tags": [
+      "land-surface-temperature",
+      "soil-moisture",
+      "land-cover"
+    ],
+    "position": [37, 55]
+  },
+  {
+    "id": "story-31",
+    "title": "Climate Modelling",
+    "description": "",
+    "image": "assets/cmug_large_14.jpg",
+    "tags": [
+      "climate-modelling",
+      "ocean-colour"
+    ],
+    "position": [2, 41]
+  },
+  {
     "id": "story-16",
     "title": "Planetary Heat Pumps",
     "description": "",
@@ -54,7 +98,8 @@
       "soil-moisture",
       "permafrost",
       "fire"
-    ]
+    ],
+    "position": [150, -35]
   },
   {
     "id": "story-26",
@@ -65,8 +110,8 @@
       "satellite-orbits",
       "sensors",
       "electromagnetic-spectrum",
-      "climate-modelling",
       "geostationary-satellite"
-    ]
+    ],
+    "position": [40, -25]
   }
 ]
