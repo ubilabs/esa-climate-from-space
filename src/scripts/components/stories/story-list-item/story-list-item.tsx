@@ -54,9 +54,9 @@ const StoryListItemContent: FunctionComponent<Props> = ({
       <div className={styles.info}>
         <p className={styles.title}>{story.title}</p>
         <p className={styles.description}>{story.description}</p>
-        {story.tags && isStoriesMode && (
+        {/* {story.tags && isStoriesMode && (
           <StoryTags tags={story.tags} selected={selectedTags} />
-        )}
+        )} */}
         <div className={styles.downloadButton}>
           <DownloadButton url={downloadUrl} id={downloadId} />
         </div>
