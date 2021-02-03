@@ -9,9 +9,12 @@ import {StoryIcon} from '../icons/story-icon';
 import showLayerSelectorAction from '../../../actions/show-layer-selector';
 import Share from '../share/share';
 import {MenuIcon} from '../icons/menu-icon';
+import {FilterIcon} from '../icons/filter-icon';
 import setLanguageAction from '../../../actions/set-language';
 import {languageSelector} from '../../../selectors/language';
 import LanguageBubble from '../language-bubble/language-bubble';
+import SelectedTags from '../../stories/selected-tags/selected-tags';
+import {selectedTagsSelector} from '../../../selectors/story/selected-tags';
 import config from '../../../config/main';
 
 import styles from './navigation.styl';
@@ -19,11 +22,13 @@ import styles from './navigation.styl';
 const Navigation: FunctionComponent = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const [showTags, setShowTags] = useState(false);
   const selectedLanguage = useSelector(languageSelector);
   const savedLanguage = localStorage.getItem(config.localStorageLanguageKey);
   const [showLanguageBubble, setShowLanguageBubble] = useState<boolean>(
     !savedLanguage
   );
+  const selectedTags = useSelector(selectedTagsSelector);
 
   return (
     <div className={styles.navigation}>
@@ -34,6 +39,16 @@ const Navigation: FunctionComponent = () => {
         icon={StoryIcon}
         hideLabelOnMobile
       />
+      {selectedTags.length > 0 && (
+        <React.Fragment>
+          <Button
+            className={styles.tagsButton}
+            icon={FilterIcon}
+            onClick={() => setShowTags(!showTags)}
+          />
+          <div className={styles.badge} />
+        </React.Fragment>
+      )}
       <Button
         className={styles.button}
         label="layers"
@@ -64,6 +79,9 @@ const Navigation: FunctionComponent = () => {
         <Overlay onClose={() => setShowMenu(false)}>
           <Menu />
         </Overlay>
+      )}
+      {selectedTags.length > 0 && showTags && (
+        <SelectedTags selectedTags={selectedTags} />
       )}
     </div>
   );
