@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, {FunctionComponent} from 'react';
 // import {useDispatch, useSelector} from 'react-redux';
 
 import Button from '../button/button';
@@ -18,7 +18,7 @@ import styles from './navigation.styl';
 
 const Navigation: FunctionComponent = () => {
   // const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
+  // const [showMenu, setShowMenu] = useState(false);
   // const selectedLanguage = useSelector(languageSelector);
   // const savedLanguage = localStorage.getItem(config.localStorageLanguageKey);
   // const [showLanguageBubble, setShowLanguageBubble] = useState<boolean>(
