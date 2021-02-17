@@ -303,6 +303,6 @@
       "year": "numeric",
       "month": "long"
     },
-    "legendValues": ["> 0.1 litres/m³", "-0.1"]
+    "legendValues": ["> 100 litres/m³", "-100"]
   }
 }
