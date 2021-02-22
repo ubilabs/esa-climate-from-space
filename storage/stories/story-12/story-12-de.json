@@ -45,10 +45,10 @@
       "layer": [
         {
           "id": "greenhouse.xco2",
-          "timestamp": "2011-02-03T00:00:00.000Z"
+          "timestamp": "2007-12-06T00:00:00.000Z"
         }
       ],
-      "layerDescription": "Atmospheric carbon dioxide compared with methane"
+      "layerDescription": "Atmospheric carbon dioxide concentration"
     },
     {
       "type": "video",
