@@ -43,24 +43,6 @@
       "type": "globe",
       "text": "## Seasonal Cycle\r\n\r\nThe Arctic Ocean is characterised by the sea ice cover and its seasonal fluctuations. During winter, the ice pack grows to an area between 14 and 16 million square kilometres, reducing to four to five million square kilometres by the end of summer. That’s an area equivalent to the entire surface of Europe appearing and disappearing through the year. \r\n\r\nYou can see the annual expansion and contraction of the frozen sea surface by scrubbing through the timeline of the interactive globe on the right. Compare the annual minimum ice extents in mid-September for the first year and the final year of the sequence. Spin the globe round to Antarctica to see the sea ice in the Southern Ocean.\r\n\r\nThe core of the ice cover is formed of layers of frozen seawater that have survived the summer thaw. This multi-year ice reaches a thickness of two to four metres in the Arctic, whereas first-year sea ice typically reaches only 1 – 1.5 metres.\r\n\r\n## Long-term trend\r\n\r\nSatellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2019. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.",
       "shortText": "## Seasonal Cycle\r\n\r\nArctic Ocean sea ice cover seasonal fluctuations:\r\n\r\n- winter ice pack area 14–16 million sq km \r\n- shrinks to 4–5 million sq km by end of summer \r\n- area the size of Europe appears/disappears over the year \r\n\r\nThe core of the ice cover is layers of frozen seawater that have survived the summer thaw:\r\n \r\n- multi-year ice 2 to 4 metres thick in the Arctic\r\n- first-year ice typically reaches only 1 to 1.5 metres\r\n\r\nSatellite observations show a significant loss of Arctic sea ice in recent decades:\r\n\r\n- lowest extents observed in 2012, 2007 and 2019 \r\n- since 1978, Arctic summer ice extent is down almost 40%",
-      "flyTo": {
-        "position": {
-          "longitude": -3.42,
-          "latitude": 89.99,
-          "height": 24925805.95
-        },
-        "orientation": {
-          "heading": 360,
-          "pitch": -90,
-          "roll": 0
-        }
-      },
-      "layer": [
-        {
-          "id": "sea_ice_nh.ice_conc",
-          "timestamp": "2011-09-22T12:00:00.000Z"
-        }
-      ],
       "layerDescription": "Sea Ice Concentration"
     },
     {
