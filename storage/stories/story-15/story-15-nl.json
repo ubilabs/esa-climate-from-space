@@ -45,20 +45,20 @@
       "shortText": "## Seasonal Cycle\r\n\r\nArctic Ocean sea ice cover seasonal fluctuations:\r\n\r\n- winter ice pack area 14–16 million sq km \r\n- shrinks to 4–5 million sq km by end of summer \r\n- area the size of Europe appears/disappears over the year \r\n\r\nThe core of the ice cover is layers of frozen seawater that have survived the summer thaw:\r\n \r\n- multi-year ice 2 to 4 metres thick in the Arctic\r\n- first-year ice typically reaches only 1 to 1.5 metres\r\n\r\nSatellite observations show a significant loss of Arctic sea ice in recent decades:\r\n\r\n- lowest extents observed in 2012, 2007 and 2019 \r\n- since 1978, Arctic summer ice extent is down almost 40%",
       "flyTo": {
         "position": {
-          "longitude": 2.82,
-          "latitude": 89.55,
-          "height": 16175124.27
+          "longitude": -3.42,
+          "latitude": 89.99,
+          "height": 24925805.95
         },
         "orientation": {
           "heading": 360,
-          "pitch": -89.86,
+          "pitch": -90,
           "roll": 0
         }
       },
       "layer": [
         {
           "id": "sea_ice_nh.ice_conc",
-          "timestamp": "2002-06-01T12:00:00.000Z"
+          "timestamp": "2011-09-22T12:00:00.000Z"
         }
       ],
       "layerDescription": "Sea Ice Concentration"
