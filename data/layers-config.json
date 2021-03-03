@@ -59,7 +59,8 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    }
+    },
+    "units": "PSU"
   },
   "soil_moisture.sm_mean": {
     "colorMap": "BrBG",
@@ -68,7 +69,7 @@
       "year": "numeric",
       "month": "long"
     },
-    "legendValues": ["0.4 m³/m³", "0"]
+    "legendValues": ["400 l/m³", "0"]
   },
   "land_cover.lccs_class": {
     "colorMap": "gist_rainbow",
