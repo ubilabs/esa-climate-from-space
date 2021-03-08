@@ -37,4 +37,4 @@ artifacts:
   objects:
     location: 'gs://esa-cfs-versions/electron/${BRANCH_NAME}'
     paths: ['./dist-electron/esa-climate*']
-timeout: 1500s
+timeout: 2500s
