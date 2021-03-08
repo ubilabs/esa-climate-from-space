@@ -1,3 +1,12 @@
+## [0.11.3](https://github.com/ubilabs/esa-climate-from-space/compare/v0.11.2...v0.11.3) (2021-03-08)
+
+
+### Bug Fixes
+
+* **electron:** increase build timeout for electron ([#849](https://github.com/ubilabs/esa-climate-from-space/issues/849)) ([8c48726](https://github.com/ubilabs/esa-climate-from-space/commit/8c48726060e0ae9f99e4f4f84dcb9e6df5823467))
+
+
+
 ## [0.11.2](https://github.com/ubilabs/esa-climate-from-space/compare/v0.11.1...v0.11.2) (2021-03-08)
 
 
