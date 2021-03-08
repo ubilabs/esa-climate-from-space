@@ -1,7 +1,7 @@
 [
   {
     "id": "story-32",
-    "title": "Einführung",
+    "title": "Climate from Space",
     "description": "",
     "image": "assets/atmospheric-ecvs.jpg",
     "tags": [],
@@ -26,9 +26,8 @@
     "description": "",
     "image": "assets/story27-image03.jpg",
     "tags": [
-      "land-surface-temperature",
-      "soil-moisture",
-      "land-cover"
+      "climate-modelling",
+      "ocean-colour"
     ],
     "position": [37, 55]
   },
@@ -44,7 +43,7 @@
       "climate-modelling",
       "geostationary-satellite"
     ],
-    "position": [18, 59]
+    "position": [2, 41]
   },
   {
     "id": "story-16",
