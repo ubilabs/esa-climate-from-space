@@ -99,16 +99,16 @@ const StoryMedia: FunctionComponent<Props> = ({
                 style={{width: `${imageWidth}%`}}>
                 <div className={styles.imageContainer}>
                   <img className={styles.photo} src={imageUrl} />
-                  {showLightbox && (
-                    <div className={styles.imageInfo}>
-                      <p className={styles.description}>{imageCaption}</p>
+                  <div className={styles.imageInfo}>
+                    <p className={styles.description}>{imageCaption}</p>
+                    {showLightbox && (
                       <div
                         className={styles.fullscreenExitIcon}
                         onClick={() => setShowLightbox(false)}>
                         <FullscreenExitIcon />
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
               </div>
             );
