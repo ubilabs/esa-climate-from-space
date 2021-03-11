@@ -130,7 +130,8 @@
 
 .progressContainer
   position: absolute
-  top: 5px
+  top: 15px
+  left: 0
   z-index: 1
   width: 100%
 
@@ -138,7 +139,7 @@
   display: flex
   flex-direction: row
   justify-content: center
-  height: 20px
+  height: emCalc(20px)
 
 .progressItem
   margin: 0 remCalc(5px)
@@ -147,6 +148,12 @@
   border: 1px solid rgba(252, 252, 252, 0.22)
   border-radius: 50%
   background: rgba($textWhite, 0.31)
+
+.lightboxProgress
+  position: fixed
+  top: 40px
+  left: 0
+  z-index: 2
 
 .currentProgress
   margin: 0 remCalc(5px)

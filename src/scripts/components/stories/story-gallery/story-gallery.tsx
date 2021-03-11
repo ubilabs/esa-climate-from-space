@@ -63,6 +63,10 @@ const StoryMedia: FunctionComponent<Props> = ({
     styles.gallery,
     showLightbox && styles.lightboxGallery
   );
+  const progressClasses = cx(
+    styles.progressContainer,
+    showLightbox && styles.lightboxProgress
+  );
   const prevIconClasses = cx(
     styles.navIcon,
     !showPrevButton && styles.disabledNavIcon
@@ -74,7 +78,7 @@ const StoryMedia: FunctionComponent<Props> = ({
 
   return (
     <div className={styles.storyGallery}>
-      <div className={styles.progressContainer}>
+      <div className={progressClasses}>
         <div className={styles.progress}>
           {images.map((_, idx) => (
             <div
