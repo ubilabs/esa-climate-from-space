@@ -1,6 +1,7 @@
 @require '../../../../variables.styl'
 
 .storyGallery
+  position: relative
   background-color: $plainBlack
 
 .gallery
@@ -119,12 +120,41 @@
   object-fit: cover
 
 .imageInfo
+  position: relative
   display: flex
   justify-content: space-between
   align-items: center
   max-height: 130px
   width: 100%
   background-color: $black
+
+.progressContainer
+  position: absolute
+  top: 5px
+  z-index: 1
+  width: 100%
+
+.progress
+  display: flex
+  flex-direction: row
+  justify-content: center
+  height: 20px
+
+.progressItem
+  margin: 0 remCalc(5px)
+  width: 10px
+  height: 10px
+  border: 1px solid rgba(252, 252, 252, 0.22)
+  border-radius: 50%
+  background: rgba($textWhite, 0.31)
+
+.currentProgress
+  margin: 0 remCalc(5px)
+  width: 10px
+  height: 10px
+  border: 1px solid rgba(252, 252, 252, 0.22)
+  border-radius: 50%
+  background: $textWhite
 
 .description
   margin: emCalc(20px)

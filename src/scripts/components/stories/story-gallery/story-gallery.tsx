@@ -74,6 +74,18 @@ const StoryMedia: FunctionComponent<Props> = ({
 
   return (
     <div className={styles.storyGallery}>
+      <div className={styles.progressContainer}>
+        <div className={styles.progress}>
+          {images.map((_, idx) => (
+            <div
+              key={idx}
+              className={cx(
+                styles.progressItem,
+                currentIndex === idx && styles.currentProgress
+              )}></div>
+          ))}
+        </div>
+      </div>
       <div className={galleryClasses}>
         <div className={styles.buttonContainer}>
           <div onClick={onPrevClick} className={prevIconClasses}>
