@@ -63,16 +63,24 @@ const StoryMedia: FunctionComponent<Props> = ({
     styles.gallery,
     showLightbox && styles.lightboxGallery
   );
+  const prevIconClasses = cx(
+    styles.navIcon,
+    !showPrevButton && styles.disabledNavIcon
+  );
+  const nextIconClasses = cx(
+    styles.navIcon,
+    !showNextButton && styles.disabledNavIcon
+  );
 
   return (
     <div className={styles.storyGallery}>
       <div className={galleryClasses}>
         <div className={styles.buttonContainer}>
-          <div onClick={onPrevClick} className={styles.navIcon}>
-            {showPrevButton ? <PreviousIcon /> : null}
+          <div onClick={onPrevClick} className={prevIconClasses}>
+            <PreviousIcon />
           </div>
-          <div onClick={onNextClick} className={styles.navIcon}>
-            {showNextButton ? <NextIcon /> : null}
+          <div onClick={onNextClick} className={nextIconClasses}>
+            <NextIcon />
           </div>
         </div>
         {!showLightbox && (
