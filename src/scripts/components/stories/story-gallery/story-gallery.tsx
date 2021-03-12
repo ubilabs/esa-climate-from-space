@@ -3,7 +3,6 @@ import cx from 'classnames';
 
 import {PreviousIcon} from '../../main/icons/previous-icon';
 import {NextIcon} from '../../main/icons/next-icon';
-import {FullscreenExitIcon} from '../../main/icons/fullscreen-exit-icon';
 import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {useInterval} from '../../../hooks/use-interval';
@@ -13,6 +12,7 @@ import Description from '../description/description';
 import {StoryMode} from '../../../types/story-mode';
 
 import styles from './story-gallery.styl';
+import {CloseIcon} from '../../main/icons/close-icon';
 
 interface Props {
   images: string[];
@@ -100,13 +100,20 @@ const StoryMedia: FunctionComponent<Props> = ({
             <NextIcon />
           </div>
         </div>
-        {!showLightbox && (
+        {!showLightbox ? (
           <div
             className={styles.fullscreenIcon}
             onClick={() => setShowLightbox(true)}>
             <FullscreenIcon />
           </div>
+        ) : (
+          <div
+            className={styles.fullscreenExitIcon}
+            onClick={() => setShowLightbox(false)}>
+            <CloseIcon />
+          </div>
         )}
+
         <div
           className={imgClasses}
           style={{
@@ -132,13 +139,6 @@ const StoryMedia: FunctionComponent<Props> = ({
                       )}
                       description={imageCaption}
                     />
-                  )}
-                  {showLightbox && (
-                    <div
-                      className={styles.fullscreenExitIcon}
-                      onClick={() => setShowLightbox(false)}>
-                      <FullscreenExitIcon />
-                    </div>
                   )}
                 </div>
               </div>
