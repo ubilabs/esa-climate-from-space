@@ -8,6 +8,7 @@ import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {useInterval} from '../../../hooks/use-interval';
 import config from '../../../config/main';
+import Description from '../description/description';
 
 import {StoryMode} from '../../../types/story-mode';
 
@@ -123,16 +124,22 @@ const StoryMedia: FunctionComponent<Props> = ({
                 style={{width: `${imageWidth}%`}}>
                 <div className={styles.imageContainer}>
                   <img className={styles.photo} src={imageUrl} />
-                  <div className={styles.imageInfo}>
-                    <p className={styles.description}>{imageCaption}</p>
-                    {showLightbox && (
-                      <div
-                        className={styles.fullscreenExitIcon}
-                        onClick={() => setShowLightbox(false)}>
-                        <FullscreenExitIcon />
-                      </div>
-                    )}
-                  </div>
+                  {imageCaption && (
+                    <Description
+                      className={cx(
+                        styles.description,
+                        showLightbox && styles.lightboxDescription
+                      )}
+                      description={imageCaption}
+                    />
+                  )}
+                  {showLightbox && (
+                    <div
+                      className={styles.fullscreenExitIcon}
+                      onClick={() => setShowLightbox(false)}>
+                      <FullscreenExitIcon />
+                    </div>
+                  )}
                 </div>
               </div>
             );

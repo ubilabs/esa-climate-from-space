@@ -31,9 +31,6 @@
   right: 0
   bottom: 0
   left: 0
-  display: flex
-  flex-direction: column
-  justify-content: flex-end
   padding: inherit
 
 .storySlider
@@ -44,6 +41,11 @@
   > div
     min-width: 25%
     width: 60%
+
+.layerDescription
+  position: unset
+  padding-right: 0
+  min-height: $storyDescriptionHeight
 
 @media screen and (max-width: 480px)
   .main
@@ -64,6 +66,8 @@
     pointer-events: none
 
     > *
+      position: relative
+      z-index: 1
       pointer-events: all
 
   .storySlider
