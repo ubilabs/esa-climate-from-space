@@ -8,11 +8,11 @@ import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {useInterval} from '../../../hooks/use-interval';
 import config from '../../../config/main';
 import Description from '../description/description';
+import {CloseIcon} from '../../main/icons/close-icon';
 
 import {StoryMode} from '../../../types/story-mode';
 
 import styles from './story-gallery.styl';
-import {CloseIcon} from '../../main/icons/close-icon';
 
 interface Props {
   images: string[];
