@@ -12,12 +12,7 @@
     "title": "The Carbon Cycle",
     "description": "",
     "image": "assets/story12-image02.jpg",
-    "tags": [
-      "greenhouse-gases",
-      "land-cover",
-      "ocean-colour",
-      "fire"
-    ],
+    "tags": ["greenhouse-gases", "land-cover", "ocean-colour", "fire"],
     "position": [3, 57]
   },
   {
@@ -25,11 +20,7 @@
     "title": "Urban Heat",
     "description": "",
     "image": "assets/story27-image03.jpg",
-    "tags": [
-      "land-surface-temperature",
-      "soil-moisture",
-      "land-cover"
-    ],
+    "tags": ["land-surface-temperature", "soil-moisture", "land-cover"],
     "position": [37, 55]
   },
   {
@@ -37,10 +28,7 @@
     "title": "Climate Modelling",
     "description": "",
     "image": "assets/cmug_large_14.jpg",
-    "tags": [
-      "climate-modelling",
-      "ocean-colour"
-    ],
+    "tags": ["climate-modelling", "ocean-colour"],
     "position": [2, 41]
   },
   {
@@ -113,5 +101,14 @@
       "geostationary-satellite"
     ],
     "position": [40, -25]
+  },
+  ,
+  {
+    "id": "story-21",
+    "title": "The Water Cycle",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [10, 15]
   }
 ]
