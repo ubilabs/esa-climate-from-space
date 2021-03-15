@@ -67,11 +67,13 @@
     left: 0
     z-index: 2
 
-.description.lightboxDescription
+.lightboxDescription
   position: inherit
+  overflow: hidden
   padding: emCalc(15px)
   height: emCalc(170px, 16)
   background: none
+  pointer-events: none
 
   > div
     overflow-y: auto
@@ -84,7 +86,6 @@
 .buttonContainer
   position: absolute
   top: 50%
-  z-index: 1
   display: flex
   justify-content: space-between
   width: 100%
@@ -198,6 +199,10 @@
         .navIcon
           margin: 0 emCalc(5px)
 
-  .description.lightboxDescription
+  .lightboxDescription
+    pointer-events: none
+
     > div
+      overflow: hidden
+      padding: 0
       width: 100%

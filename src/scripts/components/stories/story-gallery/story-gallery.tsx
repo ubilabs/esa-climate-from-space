@@ -88,14 +88,6 @@ const StoryMedia: FunctionComponent<Props> = ({
         </div>
       </div>
       <div className={styles.gallery}>
-        <div className={styles.buttonContainer}>
-          <div onClick={onPrevClick} className={prevIconClasses}>
-            <PreviousIcon />
-          </div>
-          <div onClick={onNextClick} className={nextIconClasses}>
-            <NextIcon />
-          </div>
-        </div>
         {!showLightbox ? (
           <div
             className={styles.fullscreenIcon}
@@ -140,6 +132,14 @@ const StoryMedia: FunctionComponent<Props> = ({
               </div>
             );
           })}
+        </div>
+        <div className={styles.buttonContainer}>
+          <div onClick={onPrevClick} className={prevIconClasses}>
+            <PreviousIcon />
+          </div>
+          <div onClick={onNextClick} className={nextIconClasses}>
+            <NextIcon />
+          </div>
         </div>
       </div>
     </div>

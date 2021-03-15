@@ -1,8 +1,8 @@
 import React, {FunctionComponent} from 'react';
+import ReactMarkdown from 'react-markdown';
 import cx from 'classnames';
 
 import styles from './description.styl';
-import ReactMarkdown from 'react-markdown';
 
 interface Props {
   description: string;
