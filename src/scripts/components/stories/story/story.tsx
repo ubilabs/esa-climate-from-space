@@ -14,7 +14,7 @@ import setSelectedLayerIdsAction from '../../../actions/set-selected-layer-id';
 import setGlobeTimeAction from '../../../actions/set-globe-time';
 import Share from '../../main/share/share';
 import SplashScreen from '../splash-screen/splash-screen';
-import Description from '../description/description';
+import Caption from '../caption/caption';
 import TimeSlider from '../../layers/time-slider/time-slider';
 
 import {StoryMode} from '../../../types/story-mode';
@@ -88,9 +88,9 @@ const Story: FunctionComponent = () => {
         <div className={styles.layerDetails}>
           <TimeSlider noTimeClamp className={styles.storySlider} />
           {slide.layerDescription && (
-            <Description
+            <Caption
               className={styles.layerDescription}
-              description={slide.layerDescription}
+              content={slide.layerDescription}
             />
           )}
         </div>

@@ -1,12 +1,12 @@
 @require '../../../../variables.styl'
 
-.description
+.caption
   position: absolute
   bottom: 0
   box-sizing: border-box
   padding-right: emCalc(55px, 16)
   padding-bottom: emCalc(10px, 16)
-  min-height: $storyDescriptionHeight
+  min-height: $storyCaptionHeight
   width: 100%
   background: rgba($black, 0.6)
 
@@ -23,9 +23,9 @@
   > *
     font-size: 11px
 
-.description:hover
+.caption:hover
   .content
     overflow-y: auto
-    min-height: $storyDescriptionHeight
+    min-height: $storyCaptionHeight
     max-height: emCalc(100px, 16)
     -webkit-line-clamp: initial

@@ -63,7 +63,7 @@
 
   .progressContainer
     position: fixed
-    bottom: $storyDescriptionHeight + 8em
+    bottom: $storyCaptionHeight + 8em
     left: 0
     z-index: 2
 
@@ -78,8 +78,9 @@
   > div
     overflow-y: auto
     margin: 0 auto
+    max-width: 50%
     max-height: 100%
-    width: 50%
+    width: fit-content
     height: 100%
     -webkit-line-clamp: initial
 
@@ -155,7 +156,7 @@
 
 .progressContainer
   position: absolute
-  bottom: $storyDescriptionHeight
+  bottom: $storyCaptionHeight
   left: 0
   z-index: 1
   width: 100%
@@ -205,4 +206,4 @@
     > div
       overflow: hidden
       padding: 0
-      width: 100%
+      max-width: 100%

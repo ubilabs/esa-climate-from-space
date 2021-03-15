@@ -2,24 +2,21 @@ import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
 import cx from 'classnames';
 
-import styles from './description.styl';
+import styles from './caption.styl';
 
 interface Props {
-  description: string;
+  content: string;
   className?: string;
 }
 
-const Description: FunctionComponent<Props> = ({
-  description,
-  className = ''
-}) => {
-  const classes = cx(styles.description, className);
+const Caption: FunctionComponent<Props> = ({content, className = ''}) => {
+  const classes = cx(styles.caption, className);
 
   return (
     <div className={classes}>
       <div className={styles.content}>
         <ReactMarkdown
-          source={description}
+          source={content}
           allowedTypes={[
             'heading',
             'text',
@@ -34,4 +31,4 @@ const Description: FunctionComponent<Props> = ({
   );
 };
 
-export default Description;
+export default Caption;

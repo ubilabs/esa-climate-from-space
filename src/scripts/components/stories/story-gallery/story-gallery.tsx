@@ -7,7 +7,7 @@ import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {useInterval} from '../../../hooks/use-interval';
 import config from '../../../config/main';
-import Description from '../description/description';
+import Caption from '../caption/caption';
 import {CloseIcon} from '../../main/icons/close-icon';
 
 import {StoryMode} from '../../../types/story-mode';
@@ -120,12 +120,12 @@ const StoryMedia: FunctionComponent<Props> = ({
                 <div className={styles.imageContainer}>
                   <img className={styles.photo} src={imageUrl} />
                   {imageCaption && (
-                    <Description
+                    <Caption
                       className={cx(
                         styles.description,
                         showLightbox && styles.lightboxDescription
                       )}
-                      description={imageCaption}
+                      content={imageCaption}
                     />
                   )}
                 </div>
