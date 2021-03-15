@@ -60,13 +60,9 @@ const StoryMedia: FunctionComponent<Props> = ({
   };
 
   const imgClasses = cx(styles.slider, images.length > 1 && styles.transition);
-  const galleryClasses = cx(
-    styles.gallery,
-    showLightbox && styles.lightboxGallery
-  );
-  const progressClasses = cx(
-    styles.progressContainer,
-    showLightbox && styles.lightboxProgress
+  const storyGalleryClasses = cx(
+    styles.storyGallery,
+    showLightbox && styles.lightboxStoryGallery
   );
   const prevIconClasses = cx(
     styles.navIcon,
@@ -78,20 +74,20 @@ const StoryMedia: FunctionComponent<Props> = ({
   );
 
   return (
-    <div className={styles.storyGallery}>
-      <div className={progressClasses}>
+    <div className={storyGalleryClasses}>
+      <div className={styles.progressContainer}>
         <div className={styles.progress}>
-          {images.map((_, idx) => (
+          {images.map((_, index) => (
             <div
-              key={idx}
+              key={index}
               className={cx(
                 styles.progressItem,
-                currentIndex === idx && styles.currentProgress
+                currentIndex === index && styles.currentProgress
               )}></div>
           ))}
         </div>
       </div>
-      <div className={galleryClasses}>
+      <div className={styles.gallery}>
         <div className={styles.buttonContainer}>
           <div onClick={onPrevClick} className={prevIconClasses}>
             <PreviousIcon />
