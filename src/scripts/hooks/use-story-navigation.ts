@@ -5,7 +5,7 @@ import {StoryMode} from '../types/story-mode';
 import {SlideType} from '../types/slide-type';
 
 /* eslint-disable complexity */
-export const useStoryNavigation = () => {
+export const useStoryNavigation = (videoDuration: number) => {
   const {
     mode,
     storyIds,
@@ -44,6 +44,10 @@ export const useStoryNavigation = () => {
 
     if (currentSlide?.images && currentSlide.type === SlideType.Image) {
       delay = delay * currentSlide.images.length;
+    }
+
+    if (currentSlide?.videoId && currentSlide.type === SlideType.Video) {
+      delay = delay + videoDuration;
     }
 
     if (slideIndex + 1 < numberOfSlides) {

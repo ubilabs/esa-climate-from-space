@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect} from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
 import DataViewer from '../../main/data-viewer/data-viewer';
@@ -28,6 +28,7 @@ const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useDispatch();
+  const [videoDuration, setVideoDuration] = useState<number>(0);
   const {
     mode,
     slideIndex,
@@ -64,6 +65,11 @@ const Story: FunctionComponent = () => {
     return null;
   }
 
+  const getVideoDuration = (event: any) => {
+    const duration = event.target.getDuration();
+    setVideoDuration(duration * 1000);
+  };
+
   const getRightSideComponent = (slide: Slide, story: StoryType) => {
     if (slide.type === SlideType.Image && slide.images) {
       return (
@@ -75,7 +81,13 @@ const Story: FunctionComponent = () => {
         />
       );
     } else if (slide.type === SlideType.Video && slide.videoId) {
-      return <StoryVideo mode={mode} videoId={slide.videoId} />;
+      return (
+        <StoryVideo
+          mode={mode}
+          videoId={slide.videoId}
+          onPlay={(event: any) => getVideoDuration(event)}
+        />
+      );
     }
 
     return (
@@ -131,6 +143,7 @@ const Story: FunctionComponent = () => {
         )}
       </main>
       <StoryFooter
+        videoDuration={videoDuration}
         mode={mode}
         slideIndex={slideIndex}
         selectedStory={selectedStory}
