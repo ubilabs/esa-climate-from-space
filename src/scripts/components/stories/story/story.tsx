@@ -21,6 +21,7 @@ import {StoryMode} from '../../../types/story-mode';
 import {Slide, Story as StoryType} from '../../../types/story';
 import {GlobeProjection} from '../../../types/globe-projection';
 import {SlideType} from '../../../types/slide-type';
+import {YouTubePlayer} from 'youtube-player/dist/types';
 
 import styles from './story.styl';
 
@@ -65,8 +66,8 @@ const Story: FunctionComponent = () => {
     return null;
   }
 
-  const getVideoDuration = (event: any) => {
-    const duration = event.target.getDuration();
+  const getVideoDuration = (player: YouTubePlayer) => {
+    const duration = player.getDuration();
     setVideoDuration(duration * 1000);
   };
 
@@ -85,7 +86,7 @@ const Story: FunctionComponent = () => {
         <StoryVideo
           mode={mode}
           videoId={slide.videoId}
-          onPlay={(event: any) => getVideoDuration(event)}
+          onPlay={(player: YouTubePlayer) => getVideoDuration(player)}
         />
       );
     }

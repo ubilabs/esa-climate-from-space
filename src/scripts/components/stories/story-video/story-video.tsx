@@ -8,13 +8,14 @@ import YouTube, {Options} from 'react-youtube';
 import {languageSelector} from '../../../selectors/language';
 
 import {StoryMode} from '../../../types/story-mode';
+import {YouTubePlayer} from 'youtube-player/dist/types';
 
 import styles from './story-video.styl';
 
 interface Props {
   videoId: string;
   mode: StoryMode | null;
-  onPlay: (event: any) => void;
+  onPlay: (player: YouTubePlayer) => void;
 }
 
 const StoryVideo: FunctionComponent<Props> = ({mode, videoId, onPlay}) => {
@@ -51,7 +52,7 @@ const StoryVideo: FunctionComponent<Props> = ({mode, videoId, onPlay}) => {
         videoId={videoId}
         opts={opts}
         onReady={event => !isStoryMode && event.target.playVideo()}
-        onPlay={event => onPlay(event)}
+        onPlay={event => onPlay(event.target)}
       />
     </div>
   );
