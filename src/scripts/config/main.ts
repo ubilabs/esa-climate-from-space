@@ -88,5 +88,6 @@ export default {
   legendImage: `${baseUrlTiles}/{id}/legend.png`,
   downloadUrls,
   localStorageLanguageKey: 'language',
-  delay: 5000
+  delay: 5000,
+  feedbackUrl: 'https://climate.esa.int/en/helpdesk/'
 };
