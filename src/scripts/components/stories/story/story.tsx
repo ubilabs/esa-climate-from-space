@@ -70,6 +70,7 @@ const Story: FunctionComponent = () => {
         <StoryMedia
           mode={mode}
           images={slide.images}
+          imageTypes={slide.imageTypes}
           imageCaptions={slide.imageCaptions}
           storyId={story.id}
         />

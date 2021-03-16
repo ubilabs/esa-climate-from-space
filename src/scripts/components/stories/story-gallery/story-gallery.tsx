@@ -11,12 +11,14 @@ import Caption from '../caption/caption';
 import {CloseIcon} from '../../main/icons/close-icon';
 
 import {StoryMode} from '../../../types/story-mode';
+import {ImageType} from '../../../types/image-type';
 
 import styles from './story-gallery.styl';
 
 interface Props {
   images: string[];
   imageCaptions?: string[];
+  imageTypes?: ImageType[];
   storyId: string;
   mode: StoryMode | null;
 }
@@ -25,7 +27,8 @@ const StoryMedia: FunctionComponent<Props> = ({
   images,
   imageCaptions,
   storyId,
-  mode
+  mode,
+  imageTypes
 }) => {
   const containerWidth = images.length * 100;
   const imageWidth = 100 / images.length;
@@ -110,6 +113,7 @@ const StoryMedia: FunctionComponent<Props> = ({
           }}>
           {images.map((image, index) => {
             const imageCaption = imageCaptions?.find((_, i) => i === index);
+            const imageType = imageTypes?.find((_, i) => i === index);
             const imageUrl = getStoryAssetUrl(storyId, image);
 
             return (
@@ -118,7 +122,14 @@ const StoryMedia: FunctionComponent<Props> = ({
                 key={index}
                 style={{width: `${imageWidth}%`}}>
                 <div className={styles.imageContainer}>
-                  <img className={styles.photo} src={imageUrl} />
+                  <img
+                    className={styles.photo}
+                    style={{
+                      objectFit:
+                        imageType === ImageType.Chart ? 'contain' : 'cover'
+                    }}
+                    src={imageUrl}
+                  />
                   {imageCaption && (
                     <Caption
                       className={cx(
