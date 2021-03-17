@@ -1,5 +1,4 @@
 import {GlobeState} from '../reducers/globe/index';
-
 import {GlobeProjection} from '../types/globe-projection';
 
 const globeState: GlobeState = {
