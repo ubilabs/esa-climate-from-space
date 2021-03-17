@@ -22,8 +22,8 @@
         "Cattle passing road construction equipment in Mowo, Lagos State, Nigeria\r\n(mtcurado/iStock)"
       ],
       "imageFits": [
-        "cover",
-        "cover",
+        "contain",
+        "contain",
         "cover",
         "cover",
         "cover"
@@ -82,7 +82,7 @@
     },
     {
       "type": "image",
-      "text": "## Maximising Returns \r\n\r\nEach of the relatively small number of crops that most humans depend on for food will only grow well in a particular climate: the wrong amount of water, temperatures that are too high or too low, too little light, and yields drop. In many places, our answer to this is to manage the water supply (through irrigation, for example), or the light level (using artificial lighting, or intercropping low-level crops with useful trees) or/and the temperature (using greenhouses, polytunnels and mulches). \r\n\r\nAdding nutrients in the form of natural or artificial fertilisers may help improve yields where plants would otherwise struggle to thrive, and some commercial tomato growers even pump extra carbon dioxide into their greenhouses. But most of these solutions cannot be used sustainably over large areas and many cause problems of their own, such as toxic algae blooms when excess fertiliser runs off into nearby water bodies.",
+      "text": "## Maximising Returns \r\n\r\nEach of the relatively small number of crops that most humans depend on for food will only grow well in a particular climate: the wrong amount of water, temperatures that are too high or too low, too little light, and yields drop. In many places, our answer to this is to manage the water supply (through irrigation, for example),  the light level (using artificial lighting, or intercropping low-level crops with useful trees) or the temperature (using greenhouses, polytunnels and mulches). \r\n\r\nAdding nutrients in the form of natural or artificial fertilisers may help improve yields where plants would otherwise struggle to thrive, and some commercial tomato growers even pump extra carbon dioxide into their greenhouses. But most of these solutions cannot be used sustainably over large areas and many cause problems of their own, such as toxic algae blooms when excess fertiliser runs off into nearby water bodies.",
       "shortText": "## Maximising Returns \r\n\r\nPlaceholder text",
       "images": [
         "assets/landcover_large_06.jpg",
@@ -120,9 +120,9 @@
       ],
       "imageFits": [
         "contain",
-        "cover",
-        "cover",
-        "cover",
+        "contain",
+        "contain",
+        "contain",
         "cover"
       ]
     },
