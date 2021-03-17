@@ -42,7 +42,7 @@ const StoryGalleryImage: FunctionComponent<Props> = ({
       }}>
       {images.map((image, index) => {
         const imageCaption = imageCaptions?.find((_, i) => i === index);
-        const imageType = imageFits?.find((_, i) => i === index);
+        const imageFit = imageFits?.find((_, i) => i === index);
         const imageUrl = getStoryAssetUrl(storyId, image);
 
         return (
@@ -54,8 +54,7 @@ const StoryGalleryImage: FunctionComponent<Props> = ({
               <img
                 className={styles.photo}
                 style={{
-                  objectFit:
-                    imageType === ImageFit.Contain ? 'contain' : 'cover'
+                  objectFit: imageFit === ImageFit.Contain ? 'contain' : 'cover'
                 }}
                 src={imageUrl}
               />
