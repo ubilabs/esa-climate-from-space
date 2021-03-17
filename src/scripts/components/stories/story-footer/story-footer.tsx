@@ -15,12 +15,14 @@ interface Props {
   mode: StoryMode | null;
   slideIndex: number;
   selectedStory: Story | null;
+  videoDuration: number;
 }
 
 const StoryFooter: FunctionComponent<Props> = ({
   mode,
   slideIndex,
-  selectedStory
+  selectedStory,
+  videoDuration
 }) => {
   const isShowcaseMode = mode === StoryMode.Showcase;
   const isStoriesMode = mode === StoryMode.Stories;
@@ -29,7 +31,7 @@ const StoryFooter: FunctionComponent<Props> = ({
     previousSlideLink,
     autoPlayLink,
     delay
-  } = useStoryNavigation();
+  } = useStoryNavigation(videoDuration);
   const mouseMove = useMouseMove();
 
   const footerClasses = cx(
