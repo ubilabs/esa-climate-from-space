@@ -1,7 +1,7 @@
 [
   {
     "id": "story-32",
-    "title": "Climate from Space",
+    "title": "Welcome to Climate from Space",
     "description": "",
     "image": "assets/atmospheric-ecvs.jpg",
     "tags": [],
@@ -115,5 +115,13 @@
     "image": "",
     "tags": [],
     "position": [10, 15]
+  },
+  {
+    "id": "story-29",
+    "title": "Feeding a Growing World",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [5, 10]
   }
 ]
