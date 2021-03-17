@@ -2,7 +2,7 @@ import {GlobeView} from './globe-view';
 import {StoryLayer} from './story-layer';
 import {SlideType} from './slide-type';
 import {Marker} from './marker-type';
-import {ImageType} from './image-type';
+import {ImageFit} from './image-fit';
 
 export interface Story {
   id: string;
@@ -15,7 +15,7 @@ export interface Slide {
   shortText?: string;
   images?: string[];
   imageCaptions?: string[];
-  imageTypes?: ImageType[];
+  imageFits?: ImageFit[];
   videoId?: string;
   layer?: StoryLayer[];
   layerDescription?: string;

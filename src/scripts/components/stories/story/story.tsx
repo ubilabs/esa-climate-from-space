@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 import DataViewer from '../../main/data-viewer/data-viewer';
 import {useStoryParams} from '../../../hooks/use-story-params';
 import StoryContent from '../story-content/story-content';
-import StoryMedia from '../story-gallery/story-gallery';
+import StoryGallery from '../story-gallery/story-gallery';
 import StoryFooter from '../story-footer/story-footer';
 import fetchStory from '../../../actions/fetch-story';
 import Header from '../header/header';
@@ -67,10 +67,10 @@ const Story: FunctionComponent = () => {
   const getRightSideComponent = (slide: Slide, story: StoryType) => {
     if (slide.type === SlideType.Image && slide.images) {
       return (
-        <StoryMedia
+        <StoryGallery
           mode={mode}
           images={slide.images}
-          imageTypes={slide.imageTypes}
+          imageFits={slide.imageFits}
           imageCaptions={slide.imageCaptions}
           storyId={story.id}
         />

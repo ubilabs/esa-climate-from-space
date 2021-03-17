@@ -4,34 +4,31 @@ import cx from 'classnames';
 import {PreviousIcon} from '../../main/icons/previous-icon';
 import {NextIcon} from '../../main/icons/next-icon';
 import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
-import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {useInterval} from '../../../hooks/use-interval';
 import config from '../../../config/main';
-import Caption from '../caption/caption';
 import {CloseIcon} from '../../main/icons/close-icon';
+import StoryGalleryImage from '../story-gallery-image/story-gallery-image';
 
 import {StoryMode} from '../../../types/story-mode';
-import {ImageType} from '../../../types/image-type';
+import {ImageFit} from '../../../types/image-fit';
 
 import styles from './story-gallery.styl';
 
 interface Props {
   images: string[];
   imageCaptions?: string[];
-  imageTypes?: ImageType[];
+  imageFits?: ImageFit[];
   storyId: string;
   mode: StoryMode | null;
 }
 
-const StoryMedia: FunctionComponent<Props> = ({
+const StoryGallery: FunctionComponent<Props> = ({
   images,
   imageCaptions,
   storyId,
-  mode,
-  imageTypes
+  imageFits,
+  mode
 }) => {
-  const containerWidth = images.length * 100;
-  const imageWidth = 100 / images.length;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showLightbox, setShowLightbox] = useState(false);
   const showPrevButton = currentIndex > 0;
@@ -62,7 +59,6 @@ const StoryMedia: FunctionComponent<Props> = ({
     setCurrentIndex(currentIndex + 1);
   };
 
-  const imgClasses = cx(styles.slider, images.length > 1 && styles.transition);
   const storyGalleryClasses = cx(
     styles.storyGallery,
     showLightbox && styles.lightboxStoryGallery
@@ -104,46 +100,14 @@ const StoryMedia: FunctionComponent<Props> = ({
             <CloseIcon />
           </div>
         )}
-
-        <div
-          className={imgClasses}
-          style={{
-            width: `${containerWidth}%`,
-            transform: `translateX(-${imageWidth * currentIndex}%)`
-          }}>
-          {images.map((image, index) => {
-            const imageCaption = imageCaptions?.find((_, i) => i === index);
-            const imageType = imageTypes?.find((_, i) => i === index);
-            const imageUrl = getStoryAssetUrl(storyId, image);
-
-            return (
-              <div
-                className={styles.sliderImage}
-                key={index}
-                style={{width: `${imageWidth}%`}}>
-                <div className={styles.imageContainer}>
-                  <img
-                    className={styles.photo}
-                    style={{
-                      objectFit:
-                        imageType === ImageType.Chart ? 'contain' : 'cover'
-                    }}
-                    src={imageUrl}
-                  />
-                  {imageCaption && (
-                    <Caption
-                      className={cx(
-                        styles.description,
-                        showLightbox && styles.lightboxDescription
-                      )}
-                      content={imageCaption}
-                    />
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <StoryGalleryImage
+          images={images}
+          imageCaptions={imageCaptions}
+          storyId={storyId}
+          imageFits={imageFits}
+          currentIndex={currentIndex}
+          showLightbox={showLightbox}
+        />
         <div className={styles.buttonContainer}>
           <div onClick={onPrevClick} className={prevIconClasses}>
             <PreviousIcon />
@@ -157,4 +121,4 @@ const StoryMedia: FunctionComponent<Props> = ({
   );
 };
 
-export default StoryMedia;
+export default StoryGallery;
