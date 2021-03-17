@@ -3,81 +3,127 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Is Ozone Good or Bad?\r\n\r\nThe ozone layer protects life on Earth from ultraviolet solar radiation, but ozone is also a greenhouse gas and at ground level it is harmful to human health.",
-      "shortText": "# Is Ozone Good or Bad?\r\n\r\nThe ozone layer protects life on Earth from ultraviolet solar radiation, but ozone is also a greenhouse gas and at ground level it is harmful to human health.",
-      "images": ["assets/ozone.jpg"]
-    },
-    {
-      "type": "image",
-      "text": "## How Low Can You Go? \r\n\r\nIn the early 1980s, engineers received data from a new instrument on an American research satellite. The sensor measured so little ozone in the atmosphere over Antarctica that the readings were flagged as possible errors. But not long afterwards, British and Japanese researchers recorded similarly low amounts of ozone from their Antarctic research stations.\r\n \r\nIt was only when the ground-based results were published in the scientific literature that the low values in the satellite data were explained. They showed a wide area with very low amounts of ozone developing every spring over the South Pole. This ‘hole’ in Earth’s protective ozone layer quickly gained the attention of the media and policy-makers. And, with their data verified, scientists gained confidence in the emerging technology of Earth observation from space.\r\n\r\n## Protective Layer \r\n\r\nThe layer of ozone high up in the stratosphere is our main defence against the Sun’s ultraviolet (UV) radiation. Without it we’d suffer sunburn after a few minutes outdoors, followed by eye damage and skin cancer after prolonged exposure. Unfiltered, ultraviolet light would have prevented the development of life on Earth.  \r\n\r\nBecause it also absorbs solar radiation at infrared wavelengths, ozone is also a powerful greenhouse gas. Change in the distribution of ozone is the second largest human impact on the climate, after the increase in carbon dioxide. But, while ozone *loss* has been the concern in the stratosphere, ozone has been *increasing* at ground level. Here, ozone associated with transport and industrial pollution is a hazard to human health. Whether ozone is good or bad for you depends on where you find it.",
-      "shortText": "## How Low Can You Go? \r\n\r\nEarly 1980s: unexpectedly low amounts of ozone measured over Antarctica.\r\n \r\nOzone ‘hole’ develops every spring over the South Pole.\r\n\r\nStratospheric ozone layer is our main defence against the Sun’s ultraviolet radiation. \r\n\r\nOzone also absorbs infrared solar radiation, so is a powerful greenhouse gas. \r\n\r\nChange in ozone is the second-largest human climate impact: \r\n- ozone loss in the stratosphere\r\n- ozone increasing at ground level\r\n\r\nGround level ozone associated with transport and industrial pollution is a hazard to human health. \r\n\r\nIs ozone good or bad? – Depends on where you find it.",
+      "text": "# The Water Cycle\r\n\r\nWater is essential for life. The water cycle links many of the components of Earth’s climate system, playing a major role in the transport of heat around the planet.",
+      "shortText": "# The Water Cycle\r\n\r\nWater is essential for life. The water cycle links many of the components of Earth’s climate system, playing a major role in the transport of heat around the planet.",
       "images": [
-        "assets/ozone_large_11.jpg",
-        "assets/story8_02.png",
-        "assets/ozone_large_03a.png",
-        "assets/ozone_large_14.jpg",
-        "assets/story8_04.png"
-      ],
-      "imageCaptions": [
-        "Scientists launch a high-altitude balloon carrying ozone-measuring equipment from Amundsen-Scott South Pole Station in September 2013 (Kelli-Ann Bliss/NOAA)",
-        "The Sun in visible (left) and ultraviolet light (right), as viewed by the SOHO satellite on February 3, 2002 (ESA/NASA)",
-        "Chlorine acts as a catalyst for ozone destruction (Planetary Visions)",
-        "One day of ozone observations from ERS-2 GOME. (ESA)",
-        "Total ozone values over Antarctica recorded at the Halley research station, and by three satellite sensors, TOMS, OMI and OMPS (NASA-GSFC)"
+        "assets/story21-image02.jpg"
       ]
     },
     {
+      "type": "image",
+      "text": "## The Water Cycle\r\n\r\nIn 2010, Queensland, Australia, experienced its wettest December on record, during a prolonged period of extensive flooding. The increased cloud cover and rainfall in northeast Australia was a consequence of a disruption of temperature and evaporation patterns in the central Pacific Ocean known as La Niña. So much water accumulated on the land that there was an 18-month drop recorded in mean global sea level. \r\n\r\nThe Queensland floods of 2010-11 show how different parts of the Earth system – ocean, atmosphere and land – and locations separated by thousands of kilometres, are linked by the water cycle.\r\n\r\n## A Precious Resource\r\n\r\nWater is the world’s most precious resource. Without it there would be no life. Water has sculpted Earths’s landscape, we use it to grow crops and raise livestock, to generate electricity, in industrial processes, for transport and recreation. Lack of water puts life at risk in times of drought or wildfire. But water can also be a hazard, carrying disease and pollutants, and too much water can cause damage and loss of life during times of flood or storm. The 2010-22 Queensland floods affected 200,000 people and 35 died.",
+      "shortText": "## The Water Cycle\r\n\r\nPlaceholder text",
+      "images": [
+        "assets/story21-image01.jpg",
+        "assets/sealevel_large_09.jpg"
+      ],
+      "imageCaptions": [
+        "A woman is trapped on her car roof during a  flash flood in Toowoomba, Queensland, Australia, 10 January 2011 (T Swinson)",
+        "Global sea level rise measured by satellites, showing a drop in 2011 corresponding to excess water on land (ESA CCI)"
+      ],
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ]
+    },
+    {
+      "type": "video",
+      "text": "## Water Planet\r\n\r\nThe vast majority of Earth’s water – 97 per cent – is in the oceans that cover 70% of the planet’s surface. Earth’s water in all its forms comprise the planet’s hydrosphere. Its progress between liquid, gas and solid, and through different parts of the Earth system is known as the water cycle. Water’s high heat capacity means it plays a major role in the transport of heat around the planet as it converts between its different physical states.\r\n\r\nAs water moves between each of its reservoirs, from sea to atmosphere to land and back, there are energy exchanges with the environment: water absorbs heat on evaporation and releases heat when it condenses. The same processes are used by air conditioners and heat pumps to cool or heat our homes. These energy exchanges contribute to the circulation patterns in the ocean and atmosphere that move heat around the planet.\r\n\r\nThe oceans have a large capacity to store heat, and it is estimated they have absorbed 93 per cent of the excess heat from human activities since the 1970s. While this may have delayed some of the consequences of climate change, water expands as it warms up, adding sea level rise to the risks facing many people today.",
+      "shortText": "## Water Planet\r\n\r\nPlaceholder text",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "fAXauk1yYzI"
+    },
+    {
+      "type": "video",
+      "text": "## Water in the Atmosphere \r\n\r\nWater evaporated from the ocean’s surface when it is warmed by sunlight moves into the atmosphere as water vapour. Only 1 litre out of every 1,000 litres of Earth’s water is in the atmosphere, but here it has a huge effect on the climate, being the most abundant of the greenhouse gases that ensure the surface temperature is warm enough for life to thrive. \r\n\r\nAs a gas, water vapour is easily transported vast distances through the atmosphere by winds. Water vapour can be channelled into relatively narrow bands responsible for most of the atmospheric water transport outside the tropics. These ‘atmospheric rivers’ can carry many times more than the average flow of liquid water through the Amazon River.\r\n\r\n## What’s Left Behind\r\n\r\nWhen water evaporates from the ocean, or when it freezes to form sea ice in the polar regions, it leaves behind its dissolved salts, changing the density of the sea water. This is one of the key drivers of ocean currents and of the vertical transport of water and heat to and from the ocean depths. Ocean salinity is also changed in areas of high precipitation such as the inter-tropical convergence zone and during climatic events such as El Niño, when a relatively fresh pool of surface water can extend across the Pacific.",
+      "shortText": "## Water in the Atmosphere\r\n\r\nPlaceholder text",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "1AMhjd94r6U"
+    },
+    {
       "type": "globe",
-      "text": "## Ozone Depletion  \r\n\r\nThe CCI Ozone team create monthly maps of total ozone. The interactive globe in the right shows the development of the ozone hole over Antarctica in the southern spring. Spin the globe to see \r\nhow atmospheric ozone varies with latitude and time of year. There are data gaps at the poles in the winter when there is insufficient light for the instruments to work.\r\n\r\nAtmospheric sampling from balloons and aircraft identified the causes of ozone depletion as man-made gases, particularly the chlorofluorocarbons (CFCs) used as a propellant in aerosol sprays, fire extinguishers and pesticides, and as a coolant in refrigerators and air conditioners. Most of these gases are harmless for human beings, but once they reach the stratosphere they are hit by solar radiation that changes their molecular structure, releasing atoms of chlorine. \r\n\r\nA single atom of chlorine can split apart a large number of ozone molecules. Although ozone depletion is a global process, atmospheric conditions including wind patterns, extremely low temperatures and stratospheric ice clouds concentrate it in the springtime in the polar regions, particularly over Antarctica.\r\n\r\nIn 1987 severe limits on CFC emissions were agreed at an intergovernmental conference in Montreal. The wide adoption of the Montreal Protocol and the identification of safer alternatives means that CFCs have largely been phased out of use, and the ozone layer is slowly recovering. It is a good example of international cooperation to address a threat to the global environment. But CFCs have a very long lifetime in the atmosphere, and stratospheric ozone is not expected to return to 1980 levels until 2030-2060.",
-      "shortText": "## Ozone Depletion \r\n\r\nOzone is destroyed by man-made gases, particularly chlorofluorocarbons (CFCs):\r\n\r\n- propellants in aerosol sprays, fire extinguishers, pesticides\r\n- coolants in fridges and air conditioners\r\n- they are harmless for human beings, but…\r\n- solar radiation changes their molecular structure, releasing chlorine atoms\r\n- a single atom of chlorine can split apart many ozone molecules \r\n\r\nOzone depletion is global, but atmospheric conditions concentrate it in the polar regions, in the spring. \r\n \r\n1987: Montreal Protocol severely limits CFC emissions. \r\n\r\n- CFCs now hardly used, but they are very long-lived\r\n- Stratospheric ozone won’t return to 1980 levels until 2030-2060",
+      "text": "## Clouds and Rain \r\n\r\nIf the air becomes saturated with water vapour (when its humidity reaches 100 per cent), the water condenses around aerosols, such as sand, salt, volcanic ash and soot, to form clouds of liquid water droplets suspended in the air. Water droplets are tiny, relatively buoyant, and can easily evaporate in less humid air, so not all clouds bring rain.  \r\n\r\nWater droplets can grow by colliding and coalescing with their neighbours as they are blown around by wind and updrafts. More droplets form if the moisture supply is maintained, or if the air cools, allowing it to carry less moisture. Air cools as it rises to pass over high ground, or if it moves over a cold ocean current or land mass. If enough droplets get together – a million or so – they become a raindrop, too heavy to remain suspended in the air.",
+      "shortText": "## Clouds and Rain \r\n\r\nPlaceholder text",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
       "flyTo": {
         "position": {
-          "longitude": -16.19,
-          "latitude": -71.56,
-          "height": 22978874.22
+          "longitude": -1.84,
+          "latitude": 32.38,
+          "height": 18523626.33
         },
         "orientation": {
-          "heading": 360,
-          "pitch": -89.86,
+          "heading": 0,
+          "pitch": -89.85,
           "roll": 0
         }
       },
       "layer": [
         {
-          "id": "ozone.total_ozone_column",
-          "timestamp": "2007-11-02T00:00:00.000Z"
+          "id": "cloud.cfc",
+          "timestamp": "2016-12-01T00:00:00.000Z"
         }
       ],
-      "layerDescription": "Ozone Concentration"
+      "layerDescription": "Cloud Fraction"
     },
     {
       "type": "video",
-      "text": "## Ozone and Climate \r\n\r\nOzone and the climate are closely connected. By absorbing ultraviolet radiation ozone warms the surrounding air, so ozone loss has cooled the stratosphere. This can influence atmospheric circulation patterns, such as shifting the position of the jet stream. Beneath the ozone hole, stronger winds blowing off Antarctica may be partly responsible for the observed increase in Southern Ocean sea ice.\r\n\r\nBut stratospheric ozone depletion lets more solar energy through to the troposphere below. Here, ground-level ozone and other greenhouse gases absorb that energy. So ozone changes are pulling the temperature in opposite directions in the stratosphere and the troposphere. The overall effect has been a warming of the atmosphere.\r\n\r\n## Ground-level Ozone \r\n\r\nAlthough most ozone is found in the stratosphere – above about 15km in altitude – some is present lower down in the troposphere. Here it is formed when light interacts with combustion by-products from cars and industry, mainly nitrogen oxides (NOx) and volatile organic compounds (VOCs). At ground level, ozone is harmful to human health, causing breathing difficulties that contribute to about half a million premature deaths every year. It also has a detrimental impact on vegetation growth, reducing its ability to absorb carbon dioxide, leading to crop losses valued at tens of billions of euros per year.\r\n\r\nAs with stratospheric ozone, regulations have been introduced to limit the damage. Newly-manufactured vehicles must meet internationally-agreed emission controls. The use of unleaded petrol and catalytic converters has removed a lot of the ozone-forming pollutants from car exhausts over recent decades. Similar technology is applied to factory and power station smokestacks, while simpler steps like planting trees in urban areas can also help soak up ground-level ozone.",
-      "shortText": "## Ozone and Climate \r\n\r\nOzone absorbs radiation, warming the air, so ozone loss: \r\n\r\n- cools the stratosphere \r\n- influences atmospheric circulation \r\n- lets more solar energy through to the troposphere \r\n- to be absorbed by ground-level ozone and other GHGs\r\n\r\nOzone changes are pulling temperature in opposite directions in stratosphere and troposphere. Overall effect is to warm the atmosphere.\r\n\r\nGround-level ozone forms when light interacts with pollution, mainly nitrogen oxides (NOx) and volatile organic compounds (VOCs). \r\n\r\nAt ground level, ozone is harmful to health:\r\n\r\n- breathing difficulties → 500,000 deaths per year. \r\n- reduced plant growth → less plant absorption of CO2\r\n- crop losses valued at € 10s bn per year",
-      "videoId": "ovDhWNB6-0A"
+      "text": "## Water on the Land\r\n\r\nRain falling to the ground is absorbed into the soil and runs over the surface as streams and rivers. Water is stored on land as soil moisture and groundwater, in lakes and when we build dams to form artificial reservoirs. Some water is extracted for drinking water and for use in industry and agriculture. Water is lost from the land by evaporation, by transpiration through plants, or by flowing through rivers back into the ocean. \r\n\r\nSoil moisture plays an important role in the development of heatwaves: as soil moisture levels decrease under warm conditions, a positive feedback occurs, where there is less evaporative cooling, which leads to a rise in air temperatures and the cycle of warming continues.\r\n\r\n## Water and Carbon\r\n\r\nWater extracted from the ground by a plant supplies it with dissolved nutrients and is combined with carbon dioxide in the presence of sunlight to produce sugars that add to the plant’s body, allowing it to grow. The same process happens in ocean plants (phytoplankton), which take up carbon dioxide dissolved in seawater. In both cases oxygen is released as a by-product. This process of photosynthesis is one of several links between the water cycle and the carbon cycle.",
+      "shortText": "## Water on the Land\r\n\r\nPlaceholder text",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "LXyHZHaFjk4"
+    },
+    {
+      "type": "video",
+      "text": "## The Cryosphere\r\n\r\nIf the air is cold enough, ice crystals may form instead of water droplets in a cloud. They too can group together and fall to the ground, this time as hailstones or snowflakes. If the ground is cold enough, fallen snow can survive the summer without melting and accumulate into permanent areas of ice – glaciers in high mountain areas across the world and the thick, extensive ice sheets that cover most of Greenland and Antarctica. \r\n\r\n68 per cent of Earth’s fresh water is locked up in ice sheets, ice shelves and glaciers. Another 1.2 per cent is in the form of sea ice, lake ice, permafrost and snow. Together these different types of frozen water form Earth’s cryosphere.  Existing close to water’s melting point, they are sensitive to even small climatic fluctuations, making them key indicators of climate change.\r\n\r\n## Melting Ice\r\n\r\nGravity causes glaciers and ice sheets to flow downhill, either to melt in the warmer air at lower levels, or to discharge as icebergs into the sea. This water has been in a frozen state for millions of years, but as Earth warms, melting increases and the process of release has begun. Most glaciers across the world are retreating. Ice sheets are currently the largest contributor to sea level rise and, although ten times smaller than Antarctica, it is the Greenland Ice Sheet that is the biggest source of meltwater entering the world’s oceans. This influx of fresh water is changing the salinity and therefore the density of adjacent seas, which may affect ocean circulation far from the poles. A recent study estimated a trillion tonnes of ice is being lost each year.",
+      "shortText": "## The Cryosphere\r\n\r\nPlaceholder text",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "Eahj21_RM1M"
     },
     {
       "type": "image",
-      "text": "## Ozone from Space \r\n\r\nSatellite observations are essential to track ozone distribution across the globe and at different levels in the atmosphere. They allow us to monitor the recovery of the ozone layer and calculate a UV exposure index as part of our daily weather forecasts. They also deepen our knowledge of the long-term evolution of atmospheric ozone and our understanding of how it affects the climate, and how it might respond to climate change. \r\n\r\nDifferent observation techniques allow us to distinguish between the “good” ozone in the stratosphere and the “bad” ozone in the troposphere. Satellites looking straight down produce maps of *total ozone* – the total amount of ozone in a column going from the surface to the top of the atmosphere. Total ozone is a good measure of stratospheric ozone, which accounts for about 90% of the total ozone column.  \r\n\r\nBy looking sideways into the atmosphere, satellites can also measure the *ozone profile* – the vertical distribution of ozone from sea level up to about 50 km high. Further information is obtained by seeing how light is absorbed by different chemicals in the atmosphere when looking towards a light source – the Sun or the Moon.",
-      "shortText": "## Ozone from Space \r\n\r\nSatellites track ozone distribution across the globe and at different levels in the atmosphere: \r\n\r\n- to monitor the recovery of the ozone layer \r\n- to calculate a UV exposure index as part of daily weather forecasts. \r\n- to deepen our knowledge of how ozone affects the climate, and how it might respond to climate change.\r\n\r\nDifferent observation techniques distinguish between the “good” ozone in the stratosphere and the “bad” ozone in the troposphere:\r\n\r\n- Satellites look straight down to measure total ozone – a good measure of stratospheric ozone, which accounts for about 90% of the total ozone column. \r\n- By looking sideways into the atmosphere satellites measure the ozone profile – the vertical distribution of ozone from sea level up to about 50 km high.",
+      "text": "## Tracking Water\r\n\r\nMoving easily between different physical states and locations, water is difficult to track all the way through its cycle. Satellite observations help greatly, but scientists need a wide range of technologies operating across the electromagnetic spectrum to monitor water from space. Optical cameras use visible light to chart rivers, lake shorelines, glacier outlines and motion; thermal sensors measure surface water temperature; mid-infrared wavelengths show atmospheric water vapour; microwaves show the presence of water in the soil and the extent and height of ice on the land and sea surface and its motion.\r\n\r\n## Water-related Climate Variables\r\n\r\nThe European Space Agency has deployed all these technologies across its fleet of Earth observation satellites. ESA’s Climate Change Initiative is exploiting the satellite data archive to characterise some of the most important climate variables. More than half of those selected involve the water cycle: sea surface temperature and salinity, sea level, sea state, ocean colour, water vapour, cloud, snow, soil moisture, lakes, glaciers, ice sheets, permafrost and sea ice. \r\n\r\nPutting these pieces of the jigsaw together helps us to understand how the water cycle works, how it affects the climate, and how changes to the climate might affect the water cycle.",
+      "shortText": "## Tracking Water\r\n\r\nPlaceholder text",
       "images": [
-        "assets/ozone_data_profile_large.jpg",
-        "assets/story8-03.jpg",
-        "assets/aerosol_large_10.jpg",
-        "assets/ozone_large_09.png"
+        "assets/story21-image03.jpg",
+        "assets/soilmoisture_large_12.jpg"
       ],
       "imageCaptions": [
-        "Ozone profile showing a section through the atmosphere from sea level up to a height of 40km, centred on longitude 50°West, with the north pole on the left and the south pole on the right. (Satellite observations assimilated into the chemical transport model TM5.) (Planetary Visions/ESA-CCI)",
-        "Nitrogen dioxide, an ozone precursor, over Europe in January 2020 from the TROPOMI instrument on ESA’s Sentinel-5P satellite (contains modified Copernicus Sentinel data (2020), processed by ESA)",
-        "The SCIAMACHY sensor on Envisat has three modes of operation: (1) nadir mode looks vertically beneath the spacecraft; (2) limb mode looks through the atmosphere away from the Sun; (3) occultation mode looks through the atmosphere towards the Sun. (DLR-IMF)",
-        "Satellites and sensors used by the CCI Ozone team to produce merged total ozone maps"
+        "A trillion tonnes of ice melts without being replaced each year, depicted here as a 10km-high ice cube at the same scale as New York City (Planetary Visions / ESA / NASA)",
+        "Satellites used to track soil moisture over forty years (Planetary Visions)"
       ]
-    },
-    {
-      "type": "video",
-      "text": "## Stacking Up the Data\r\n\r\nThe CCI Ozone team has worked on data from satellite missions covering more than two decades of continuous ozone observations since 1995. Each space-borne sensor has its own radiometric characteristics, spatial resolution and coverage, making the calibration and merging of the data a complex task. The resulting integrated datasets have the advantage of providing better spatial coverage than those from individual sensors, and allow time series to exceed the life of a single instrument, giving the long-term trends so crucial for climate studies. They have enabled a better understanding of natural and human factors affecting the distribution of atmospheric ozone and improved our understanding of ozone processes in climate models. \r\n\r\nJust as individuals can use daily UV and air quality warnings based on satellite data to protect their own health and that of their children, scientists are using the same observations from space to track the effect of ozone on the climate, so that political leaders have the information they need to make decisions and take action to protect us all. Emission controls will continue to reduce ozone destruction in the stratosphere and limit ozone creation in the troposphere, and provide successful examples of international cooperation to solve an environmental problem.",
-      "shortText": "## Stacking Up the Data\r\n\r\nThe CCI Ozone team has worked on:\r\n\r\n- data from four satellite missions\r\n- continuous ozone observations since 1995\r\n- more complete coverage than from individual sensors\r\n- long-term trends so crucial for climate studies\r\n- better understanding of the factors affecting ozone distribution \r\n- and of ozone processes in climate models\r\n\r\nSatellite-derived UV and air quality warnings used to protect individuals’ health. \r\n\r\nSame observations from space track ozone’s effect on the world’s climate. \r\n\r\nEmission controls show successful international cooperation to solve an environmental problem.",
-      "videoId": "uZcU9-0kmlI"
     }
   ]
 }
