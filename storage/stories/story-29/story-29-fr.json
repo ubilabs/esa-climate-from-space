@@ -59,7 +59,26 @@
         "cover",
         "cover",
         "cover"
-      ]
+      ],
+      "flyTo": {
+        "position": {
+          "longitude": 30.76,
+          "latitude": 22.79,
+          "height": 16498866.4
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.78,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "biomass.agb",
+          "timestamp": "2021-03-17T22:37:13.621Z"
+        }
+      ],
+      "layerDescription": "Above ground biomass"
     },
     {
       "type": "image",
