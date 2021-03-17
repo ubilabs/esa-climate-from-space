@@ -23,7 +23,7 @@
       ],
       "imageFits": [
         "cover",
-        "cover",
+        "contain",
         "cover",
         "cover",
         "cover"
@@ -123,6 +123,10 @@
       "imageCaptions": [
         "A trillion tonnes of ice melts without being replaced each year, depicted here as a 10km-high ice cube at the same scale as New York City (Planetary Visions / ESA / NASA)",
         "Satellites used to track soil moisture over forty years (Planetary Visions)"
+      ],
+      "imageFits": [
+        "cover",
+        "contain"
       ]
     }
   ]
