@@ -3,9 +3,9 @@ import {useSelector} from 'react-redux';
 
 import {State} from '../reducers';
 import {selectedStorySelector} from '../selectors/story/selected';
+import {storyListSelector} from '../selectors/story/list';
 
 import {StoryMode} from '../types/story-mode';
-import {storyListSelector} from '../selectors/story/list';
 
 interface StoryParams {
   storyId: string;

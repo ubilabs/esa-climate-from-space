@@ -72,10 +72,23 @@ The final output will be in a folder called `dist-electron` in the project's roo
 Run the following command to create a new tagged release.
 
 ```sh
-npm version <major|minor|patch|prerelease --preid=rc>
+npm version <major|minor|patch>
 ```
 
-A new git branch `chore/release-${VERSION}` will be pushed.
+A new git branch `chore/release-${VERSION}` will be pushed. Create PR and merge into `develop` branch (merge not squash to keep the tag).
+
+Cloud Build will build and upload a new develop version once merged (https://storage.googleapis.com/esa-cfs-versions/web/develop/index.html)
+
+Merge `develop` into `master`. Once merged Cloud Build will build and upload new master version (https://storage.googleapis.com/esa-cfs-versions/web/master/index.html).
+
+Copy the master web application files into a separate version folder
+`gsutil cp -r gs://esa-cfs-versions/web/master/* gs://esa-cfs-versions/web/{VERSION}/`
+
+Trigger the electron build task on Cloud build for the master branch (https://console.cloud.google.com/cloud-build/triggers?project=esa-climate-from-space)
+
+Copy the master electron application files into a separate version folder
+`gsutil cp -r gs://esa-cfs-versions/electron/master/* gs://esa-cfs-versions/electron/{VERSION}/`
+
 In addition all remote files on cloud storage have to be updated to the new version folder. Run the follwing command with the correct version numbers:
 
 ```sh

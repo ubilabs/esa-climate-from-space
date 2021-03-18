@@ -1,3 +1,31 @@
+# [1.0.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.11.3...v1.0.0) (2021-03-18)
+
+
+### Bug Fixes
+
+* **index:** update social meta tags ([#855](https://github.com/ubilabs/esa-climate-from-space/issues/855)) ([af29336](https://github.com/ubilabs/esa-climate-from-space/commit/af2933632cd79bf0360673a94b01128e142db8a3))
+
+
+### Features
+
+* **dataset:** change biomass colors ([#860](https://github.com/ubilabs/esa-climate-from-space/issues/860)) ([ccf0a07](https://github.com/ubilabs/esa-climate-from-space/commit/ccf0a07bc4ba0b969ac7f480768d4603500a35de))
+* **dataset:** update fire colors ([#857](https://github.com/ubilabs/esa-climate-from-space/issues/857)) ([29048ac](https://github.com/ubilabs/esa-climate-from-space/commit/29048ac0034add71b9d037df35e2201ec4047290))
+* **imageType:** set image types to change object fit ([#862](https://github.com/ubilabs/esa-climate-from-space/issues/862)) ([37e91eb](https://github.com/ubilabs/esa-climate-from-space/commit/37e91ebc91ee2379a242b40ea5be1fa3b693783c))
+* **menu:** add feedback link ([#858](https://github.com/ubilabs/esa-climate-from-space/issues/858)) ([507e9fc](https://github.com/ubilabs/esa-climate-from-space/commit/507e9fcabcf99cd1ff7d21e71553fecbd03c4f8b))
+* **story21:** prepare files for upcoming story ([#859](https://github.com/ubilabs/esa-climate-from-space/issues/859)) ([762c329](https://github.com/ubilabs/esa-climate-from-space/commit/762c3291c03fc7e231eec4e4cc3bd83530b2e292))
+* **story29:** prepare story 29 ([#863](https://github.com/ubilabs/esa-climate-from-space/issues/863)) ([b60527a](https://github.com/ubilabs/esa-climate-from-space/commit/b60527a1323af964b4a80b2115505ce2f530b452))
+
+
+
+## [0.11.3](https://github.com/ubilabs/esa-climate-from-space/compare/v0.11.2...v0.11.3) (2021-03-08)
+
+
+### Bug Fixes
+
+* **electron:** increase build timeout for electron ([#849](https://github.com/ubilabs/esa-climate-from-space/issues/849)) ([8c48726](https://github.com/ubilabs/esa-climate-from-space/commit/8c48726060e0ae9f99e4f4f84dcb9e6df5823467))
+
+
+
 ## [0.11.2](https://github.com/ubilabs/esa-climate-from-space/compare/v0.11.1...v0.11.2) (2021-03-08)
 
 

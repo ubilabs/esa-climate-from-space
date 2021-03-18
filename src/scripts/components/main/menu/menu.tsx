@@ -18,6 +18,7 @@ import config from '../../../config/main';
 import {Ubilabslogo} from '../icons/ubilabs-logo';
 import Attributions from '../attributions/attributions';
 import TrackingToggle from '../tracking-toggle/tracking-toggle';
+import {FeedbackIcon} from '../icons/feedback-icon';
 
 import styles from './menu.styl';
 
@@ -94,6 +95,18 @@ const Menu: FunctionComponent = () => {
               </li>
               <li>
                 <LanguageSelector className={styles.menuListItem} />
+              </li>
+              <li className={styles.subMenuTitle}>
+                <FeedbackIcon /> <FormattedMessage id={'feedback'} />
+              </li>
+              <li className={styles.menuListItem}>
+                <a
+                  href={config.feedbackUrl}
+                  target={'_blank'}
+                  rel="noopener noreferrer"
+                  className={styles.menuButton}>
+                  <FormattedMessage id={'provideFeedback'} />
+                </a>
               </li>
             </ul>
             <ul className={styles.menuList}>

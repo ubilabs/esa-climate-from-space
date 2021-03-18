@@ -1,6 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 import cx from 'classnames';
+import {FormattedMessage} from 'react-intl';
 
 import {storyListSelector} from '../../../selectors/story/list';
 import {selectedTagsSelector} from '../../../selectors/story/selected-tags';
@@ -34,26 +35,32 @@ const StoryList: FunctionComponent<Props> = ({
 
   return (
     <div className={styles.storyList}>
-      <div className={classes}>
-        {filteredStories.map(story => {
-          let selectedIndex = selectedIds?.indexOf(story.id);
+      {filteredStories.length ? (
+        <div className={classes}>
+          {filteredStories.map(story => {
+            let selectedIndex = selectedIds?.indexOf(story.id);
 
-          if (typeof selectedIndex !== 'number') {
-            selectedIndex = -1;
-          }
+            if (typeof selectedIndex !== 'number') {
+              selectedIndex = -1;
+            }
 
-          return (
-            <StoryListItem
-              key={story.id}
-              story={story}
-              mode={mode}
-              selectedTags={selectedTags}
-              selectedIndex={selectedIndex}
-              onSelectStory={id => onSelectStory(id)}
-            />
-          );
-        })}
-      </div>
+            return (
+              <StoryListItem
+                key={story.id}
+                story={story}
+                mode={mode}
+                selectedTags={selectedTags}
+                selectedIndex={selectedIndex}
+                onSelectStory={id => onSelectStory(id)}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <div className={styles.noMatchingStories}>
+          <FormattedMessage id={'noStoriesMatch'} />
+        </div>
+      )}
     </div>
   );
 };

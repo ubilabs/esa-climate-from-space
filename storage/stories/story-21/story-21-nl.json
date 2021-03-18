@@ -1,0 +1,133 @@
+{
+  "id": "story-21",
+  "slides": [
+    {
+      "type": "splashscreen",
+      "text": "# The Water Cycle\r\n\r\nWater is essential for life. The water cycle links many of the components of Earth’s climate system, playing a major role in the transport of heat around the planet.",
+      "shortText": "# The Water Cycle\r\n\r\nWater is essential for life. The water cycle links many of the components of Earth’s climate system, playing a major role in the transport of heat around the planet.",
+      "images": [
+        "assets/story21-image02.jpg"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "## The Water Cycle\r\n\r\nIn 2010, Queensland, Australia, experienced its wettest December on record, during a prolonged period of extensive flooding. The increased cloud cover and rainfall in northeast Australia was a consequence of a disruption of temperature and evaporation patterns in the central Pacific Ocean known as La Niña. So much water accumulated on the land that there was an 18-month drop recorded in mean global sea level. \r\n\r\nThe Queensland floods of 2010-11 show how different parts of the Earth system – ocean, atmosphere and land – and locations separated by thousands of kilometres, are linked by the water cycle.\r\n\r\n## A Precious Resource\r\n\r\nWater is the world’s most precious resource. Without it there would be no life. Water has sculpted Earths’s landscape, we use it to grow crops and raise livestock, to generate electricity, in industrial processes, for transport and recreation. Lack of water puts life at risk in times of drought or wildfire. But water can also be a hazard, carrying disease and pollutants, and too much water can cause damage and loss of life during times of flood or storm. The 2010-22 Queensland floods affected 200,000 people and 35 died.",
+      "shortText": "## The Water Cycle\r\n\r\nPlaceholder text",
+      "images": [
+        "assets/story21-image01.jpg",
+        "assets/sealevel_large_09.jpg"
+      ],
+      "imageCaptions": [
+        "A woman is trapped on her car roof during a  flash flood in Toowoomba, Queensland, Australia, 10 January 2011 (T Swinson)",
+        "Global sea level rise measured by satellites, showing a drop in 2011 corresponding to excess water on land (ESA CCI)"
+      ],
+      "imageFits": [
+        "cover",
+        "contain",
+        "cover",
+        "cover",
+        "cover"
+      ]
+    },
+    {
+      "type": "video",
+      "text": "## Water Planet\r\n\r\nThe vast majority of Earth’s water – 97 per cent – is in the oceans that cover 70 per cent of the planet’s surface. Earth’s water in all its forms comprise the planet’s hydrosphere. Its progress between liquid, gas and solid, and through different parts of the Earth system is known as the water cycle. Water’s high heat capacity means it plays a major role in the transport of heat around the planet as it converts between its different physical states.\r\n\r\nAs water moves between each of its reservoirs, from sea to atmosphere to land and back, there are energy exchanges with the environment: water absorbs heat on evaporation and releases heat when it condenses. The same processes are used by air conditioners and heat pumps to cool or heat our homes. These energy exchanges contribute to the circulation patterns in the ocean and atmosphere that move heat around the planet.\r\n\r\nThe oceans have a large capacity to store heat, and it is estimated they have absorbed 93 per cent of the excess heat from human activities since the 1970s. While this may have delayed some of the consequences of climate change, water expands as it warms up, adding sea level rise to the risks facing many people today.",
+      "shortText": "## Water Planet\r\n\r\nPlaceholder text",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "fAXauk1yYzI"
+    },
+    {
+      "type": "video",
+      "text": "## Water in the Atmosphere \r\n\r\nWater evaporated from the ocean’s surface when it is warmed by sunlight moves into the atmosphere as water vapour. Only 1 litre out of every 1,000 litres of Earth’s water is in the atmosphere, but here it has a huge effect on the climate, being the most abundant of the greenhouse gases that ensure the surface temperature is warm enough for life to thrive. \r\n\r\nAs a gas, water vapour is easily transported vast distances through the atmosphere by winds. Water vapour can be channelled into relatively narrow bands responsible for most of the atmospheric water transport outside the tropics. These ‘atmospheric rivers’ can carry many times more than the average flow of liquid water through the Amazon River.\r\n\r\n## What’s Left Behind\r\n\r\nWhen water evaporates from the ocean, or when it freezes to form sea ice in the polar regions, it leaves behind its dissolved salts, changing the density of the sea water. This is one of the key drivers of ocean currents and of the vertical transport of water and heat to and from the ocean depths. Ocean salinity is also changed in areas of high precipitation such as the inter-tropical convergence zone and during climatic events such as El Niño, when a relatively fresh pool of surface water can extend across the Pacific.",
+      "shortText": "## Water in the Atmosphere\r\n\r\nPlaceholder text",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "1AMhjd94r6U"
+    },
+    {
+      "type": "globe",
+      "text": "## Clouds and Rain \r\n\r\nIf the air becomes saturated with water vapour (when its humidity reaches 100 per cent), the water condenses around aerosols, such as sand, salt, volcanic ash and soot, to form clouds of liquid water droplets suspended in the air. Water droplets are tiny, relatively buoyant, and can easily evaporate in less humid air, so not all clouds bring rain.  \r\n\r\nWater droplets can grow by colliding and coalescing with their neighbours as they are blown around by wind and updrafts. More droplets form if the moisture supply is maintained, or if the air cools, allowing it to carry less moisture. Air cools as it rises to pass over high ground, or if it moves over a cold ocean current or land mass. If enough droplets get together – a million or so – they become a raindrop, too heavy to remain suspended in the air.",
+      "shortText": "## Clouds and Rain \r\n\r\nPlaceholder text",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "flyTo": {
+        "position": {
+          "longitude": -1.84,
+          "latitude": 32.38,
+          "height": 18523626.33
+        },
+        "orientation": {
+          "heading": 0,
+          "pitch": -89.85,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "cloud.cfc",
+          "timestamp": "2016-12-01T00:00:00.000Z"
+        }
+      ],
+      "layerDescription": "Cloud Fraction"
+    },
+    {
+      "type": "video",
+      "text": "## Water on the Land\r\n\r\nRain falling to the ground is absorbed into the soil and runs over the surface as streams and rivers. Water is stored on land as soil moisture and groundwater, in lakes and when we build dams to form artificial reservoirs. Some water is extracted for drinking water and for use in industry and agriculture. Water is lost from the land by evaporation, by transpiration through plants, or by flowing through rivers back into the ocean. \r\n\r\nSoil moisture plays an important role in the development of heatwaves: as soil moisture levels decrease under warm conditions, a positive feedback occurs, where there is less evaporative cooling, which leads to a rise in air temperatures and the cycle of warming continues.\r\n\r\n## Water and Carbon\r\n\r\nWater extracted from the ground by a plant supplies it with dissolved nutrients and is combined with carbon dioxide in the presence of sunlight to produce sugars that add to the plant’s body, allowing it to grow. The same process happens in ocean plants (phytoplankton), which take up carbon dioxide dissolved in seawater. In both cases oxygen is released as a by-product. This process of photosynthesis is one of several links between the water cycle and the carbon cycle.",
+      "shortText": "## Water on the Land\r\n\r\nPlaceholder text",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "LXyHZHaFjk4"
+    },
+    {
+      "type": "video",
+      "text": "## The Cryosphere\r\n\r\nIf the air is cold enough, ice crystals may form instead of water droplets in a cloud. They too can group together and fall to the ground, this time as hailstones or snowflakes. If the ground is cold enough, fallen snow can survive the summer without melting and accumulate into permanent areas of ice – glaciers in high mountain areas across the world and the thick, extensive ice sheets that cover most of Greenland and Antarctica. \r\n\r\n68 per cent of Earth’s fresh water is locked up in ice sheets, ice shelves and glaciers. Another 1.2 per cent is in the form of sea ice, lake ice, permafrost and snow. Together these different types of frozen water form Earth’s cryosphere.  Existing close to water’s melting point, they are sensitive to even small climatic fluctuations, making them key indicators of climate change.\r\n\r\n## Melting Ice\r\n\r\nGravity causes glaciers and ice sheets to flow downhill, either to melt in the warmer air at lower levels, or to discharge as icebergs into the sea. This water has been in a frozen state for millions of years, but as Earth warms, melting increases and the process of release has begun. Most glaciers across the world are retreating. Ice sheets are currently the largest contributor to sea level rise and, although ten times smaller than Antarctica, it is the Greenland Ice Sheet that is the biggest source of meltwater entering the world’s oceans. This influx of fresh water is changing the salinity and therefore the density of adjacent seas, which may affect ocean circulation far from the poles. A recent study estimated a trillion tonnes of ice is being lost each year.",
+      "shortText": "## The Cryosphere\r\n\r\nPlaceholder text",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "Eahj21_RM1M"
+    },
+    {
+      "type": "image",
+      "text": "## Tracking Water\r\n\r\nMoving easily between different physical states and locations, water is difficult to track all the way through its cycle. Satellite observations help greatly, but scientists need a wide range of technologies operating across the electromagnetic spectrum to monitor water from space. Optical cameras use visible light to chart rivers, lake shorelines, glacier outlines and motion; thermal sensors measure surface water temperature; mid-infrared wavelengths show atmospheric water vapour; microwaves show the presence of water in the soil and the extent and height of ice on the land and sea surface and its motion.\r\n\r\n## Water-related Climate Variables\r\n\r\nThe European Space Agency has deployed all these technologies across its fleet of Earth observation satellites. ESA’s Climate Change Initiative is exploiting the satellite data archive to characterise some of the most important climate variables. More than half of those selected involve the water cycle: sea surface temperature and salinity, sea level, sea state, ocean colour, water vapour, cloud, snow, soil moisture, lakes, glaciers, ice sheets, permafrost and sea ice. \r\n\r\nPutting these pieces of the jigsaw together helps us to understand how the water cycle works, how it affects the climate, and how changes to the climate might affect the water cycle.",
+      "shortText": "## Tracking Water\r\n\r\nPlaceholder text",
+      "images": [
+        "assets/story21-image03.jpg",
+        "assets/soilmoisture_large_12.jpg"
+      ],
+      "imageCaptions": [
+        "A trillion tonnes of ice melts without being replaced each year, depicted here as a 10km-high ice cube at the same scale as New York City (Planetary Visions / ESA / NASA)",
+        "Satellites used to track soil moisture over forty years (Planetary Visions)"
+      ],
+      "imageFits": [
+        "cover",
+        "contain"
+      ]
+    }
+  ]
+}
