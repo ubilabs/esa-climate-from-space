@@ -72,5 +72,10 @@
   "tags.sensors": "Sensoren",
   "tags.electromagnetic-spectrum": "Elektromagnetisches Spektrum",
   "tags.climate-modelling": "Klimamodellierung",
-  "tags.geostationary-satellite": "Geostationäre Satelliten"
+  "tags.geostationary-satellite": "Geostationäre Satelliten",
+  "tags.water-vapour": "Wasserdampf",
+  "tags.cloud": "Wolke",
+  "tags.snow": "Schnee",
+  "tags.lakes": "Seen",
+  "tags.biomass": "Biomasse"
 }
