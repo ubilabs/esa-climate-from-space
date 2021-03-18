@@ -103,10 +103,6 @@ const Story: FunctionComponent = () => {
           <TimeSlider noTimeClamp className={styles.storySlider} />
           {slide.layerDescription && (
             <LayerDescription layerDescription={slide.layerDescription} />
-            // <Caption
-            //   className={styles.layerDescription}
-            //   content={slide.layerDescription}
-            // />
           )}
         </div>
       </div>
