@@ -1,0 +1,18 @@
+@require '../../../../variables.styl'
+
+.layerDescription
+  overflow-y: auto
+  margin: remCalc(15px) remCalc(25px)
+  max-height: 50px
+  color: $textWhite
+  text-align: center
+  text-shadow: 0px 0px 2px #1d282f
+  font-size: emCalc(12px)
+  font-family: NotesEsaBold
+
+@media screen and (max-width: 480px)
+  .layerDescription
+    position: absolute
+    top: 0
+    left: 0
+    height: 40px

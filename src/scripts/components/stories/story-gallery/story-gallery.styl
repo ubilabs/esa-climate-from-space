@@ -19,6 +19,7 @@
     width: 100%
     height: 100%
     background-color: rgba($plainBlack, 0.8)
+    backdrop-filter: blur(2px)
 
   .fullscreenExitIcon
     position: absolute
@@ -39,9 +40,12 @@
 
   .progressContainer
     position: fixed
-    bottom: $storyCaptionHeight + 8em
+    bottom: $storyCaptionHeight + 6.5em
     left: 0
     z-index: 2
+
+    .progress
+      justify-content: center
 
 .buttonContainer
   position: absolute
@@ -100,7 +104,8 @@
 .progress
   display: flex
   flex-direction: row
-  justify-content: center
+  justify-content: flex-end
+  padding: 0 emCalc(10px)
   height: emCalc(20px)
 
 .progressItem
