@@ -8,6 +8,42 @@
     "position": [-60, -3]
   },
   {
+    "id": "story-21",
+    "title": "Der Wasserzyklus",
+    "description": "",
+    "image": "assets/story21-image02.jpg",
+    "tags": [
+      "SST",
+      "sea-surface-salinity",
+      "sea-level",
+      "water-vapour",
+      "aerosol",
+      "cloud",
+      "snow",
+      "soil-moisture",
+      "lakes",
+      "glaciers",
+      "ice-sheets",
+      "permafrost",
+      "sea-ice"
+    ],
+    "position": [148, 20]
+  },
+  {
+    "id": "story-29",
+    "title": "Eine wachsende Welt versorgen",
+    "description": "",
+    "image": "assets/soilmoisture_full_02.jpg",
+    "tags": [
+      "land-cover",
+      "soil-moisture",
+      "land-surface-temperature",
+      "biomass",
+      "ocean-colour"
+    ],
+    "position": [30, 1]
+  },
+  {
     "id": "story-12",
     "title": "Der Kohlenstoffzyklus",
     "description": "",
@@ -105,21 +141,5 @@
       "electromagnetic-spectrum",
       "geostationary-satellite"
     ]
-  },
-  {
-    "id": "story-21",
-    "title": "Der Wasserzyklus",
-    "description": "",
-    "image": "",
-    "tags": [],
-    "position": [10, 15]
-  },
-  {
-    "id": "story-29",
-    "title": "Eine wachsende Welt versorgen",
-    "description": "",
-    "image": "",
-    "tags": [],
-    "position": [5, 10]
   }
 ]
