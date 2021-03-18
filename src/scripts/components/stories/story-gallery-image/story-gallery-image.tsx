@@ -54,7 +54,7 @@ const StoryGalleryImage: FunctionComponent<Props> = ({
               <img
                 className={styles.photo}
                 style={{
-                  objectFit: imageFit === ImageFit.Contain ? 'contain' : 'cover'
+                  objectFit: imageFit === ImageFit.Cover ? 'cover' : 'contain'
                 }}
                 src={imageUrl}
               />
