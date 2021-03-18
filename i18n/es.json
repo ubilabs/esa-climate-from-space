@@ -72,5 +72,10 @@
   "tags.sensors": "Sensores",
   "tags.electromagnetic-spectrum": "Espectro electromagnético",
   "tags.climate-modelling": "Modelos climáticos",
-  "tags.geostationary-satellite": "Satélite geoestacionario"
+  "tags.geostationary-satellite": "Satélite geoestacionario",
+  "tags.water-vapour": "Vapor de agua",
+  "tags.cloud": "Nube",
+  "tags.snow": "Nieve",
+  "tags.lakes": "Lagos",
+  "tags.biomass": "Biomasa"
 }
