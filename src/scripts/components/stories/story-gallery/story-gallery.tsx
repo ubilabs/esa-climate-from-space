@@ -39,7 +39,6 @@ const StoryGallery: FunctionComponent<Props> = ({
   const [showLightbox, setShowLightbox] = useState(false);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < images.length - 1;
-
   const delay = mode === StoryMode.Showcase ? config.delay : null;
 
   useInterval(() => {

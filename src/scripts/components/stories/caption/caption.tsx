@@ -20,10 +20,10 @@ const Caption: FunctionComponent<Props> = ({
 
   return (
     <div
+      className={classes}
       style={{
         position: imageFit === ImageFit.Cover ? 'absolute' : 'static'
-      }}
-      className={classes}>
+      }}>
       <div className={styles.content}>
         <ReactMarkdown
           source={content}
