@@ -3,17 +3,27 @@ import ReactMarkdown from 'react-markdown';
 import cx from 'classnames';
 
 import styles from './caption.styl';
+import {ImageFit} from '../../../types/image-fit';
 
 interface Props {
   content: string;
-  className?: string;
+  showLightbox: boolean;
+  imageFit?: ImageFit;
 }
 
-const Caption: FunctionComponent<Props> = ({content, className = ''}) => {
-  const classes = cx(styles.caption, className);
+const Caption: FunctionComponent<Props> = ({
+  content,
+  showLightbox,
+  imageFit
+}) => {
+  const classes = cx(styles.caption, showLightbox && styles.lightboxCaption);
 
   return (
-    <div className={classes}>
+    <div
+      style={{
+        position: imageFit === ImageFit.Cover ? 'absolute' : 'static'
+      }}
+      className={classes}>
       <div className={styles.content}>
         <ReactMarkdown
           source={content}

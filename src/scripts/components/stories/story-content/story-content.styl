@@ -19,6 +19,21 @@
     font-family: NotesEsaBold
     line-height: emCalc(16px)
 
+  h2
+    margin-top: 0
+    font-size: emCalc(19px)
+
+  p + h2
+    margin-top: emCalc(30px)
+    font-family: NotesEsaBold
+
+  p + h3, h4, h5, h6
+    margin-top: emCalc(30px)
+    font-family: NotesEsaBold
+
+  p
+    margin: emCalc(10px) 0
+
   img, img + em
     display: block
     width: 100%
@@ -37,15 +52,8 @@
   padding: emCalc(40px)
   font-size: 2.3vh
 
-h2
-  font-size: emCalc(18px)
-  font-family: NotesEsaBold
-
-h3, h4, h5, h6
-  font-family: NotesEsaBold
-
-p
-  margin: emCalc(10px) 0
+  ul + h2
+    margin-top: emCalc(30px)
 
 @media screen and (max-width: 480px)
   .content

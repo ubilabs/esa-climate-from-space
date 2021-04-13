@@ -1,4 +1,9 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
 import cx from 'classnames';
 
 import {PreviousIcon} from '../../main/icons/previous-icon';
@@ -58,6 +63,27 @@ const StoryGallery: FunctionComponent<Props> = ({
     }
     setCurrentIndex(currentIndex + 1);
   };
+
+  // close fullscreen gallery on esc
+  const onKeyDownHandler = useCallback(
+    event => {
+      if (showLightbox) {
+        // 27 - esc
+        if (event.keyCode === 27) {
+          setShowLightbox(false);
+        }
+      }
+    },
+    [showLightbox]
+  );
+
+  // add and remove event listener for keyboard events
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyDownHandler);
+    return () => {
+      window.removeEventListener('keydown', onKeyDownHandler);
+    };
+  }, [onKeyDownHandler]);
 
   const storyGalleryClasses = cx(
     styles.storyGallery,

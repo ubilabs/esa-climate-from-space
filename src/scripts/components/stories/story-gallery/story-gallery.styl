@@ -18,8 +18,7 @@
     z-index: 1
     width: 100%
     height: 100%
-    background-color: rgba($plainBlack, 0.8)
-    backdrop-filter: blur(2px)
+    background-color: $plainBlack
 
   .fullscreenExitIcon
     position: absolute
@@ -40,7 +39,7 @@
 
   .progressContainer
     position: fixed
-    bottom: $storyCaptionHeight + 8em
+    bottom: $storyCaptionHeight + 4.5em
     left: 0
     z-index: 2
 
@@ -128,6 +127,9 @@
   .storyMedia
     order: 1
     padding: 0
+
+  .progress
+    padding: 0 emCalc(25px)
 
   .lightboxStoryGallery
     .buttonContainer
