@@ -21,7 +21,7 @@ import PresentationSelector from '../../stories/presentation-selector/presentati
 import ShowcaseSelector from '../../stories/showcase-selector/showcase-selector';
 import DataViewer from '../data-viewer/data-viewer';
 import Tracking from '../tracking/tracking';
-import AboutProjectStandalone from '../about-project-standalone/about-project';
+import AboutProjectOverlay from '../about-project-overlay/about-project-overlay';
 
 import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
@@ -73,7 +73,7 @@ const TranslatedApp: FunctionComponent = () => {
           </Route>
           <Route path="/about" exact>
             {logo}
-            <AboutProjectStandalone />
+            <AboutProjectOverlay />
           </Route>
           <Route path="/stories" exact>
             <StoriesSelector />

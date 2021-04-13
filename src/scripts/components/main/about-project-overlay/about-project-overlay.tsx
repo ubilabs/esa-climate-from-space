@@ -3,7 +3,7 @@ import {useHistory} from 'react-router-dom';
 import AboutProject from '../about-project/about-project';
 import Overlay from '../overlay/overlay';
 
-const AboutProjectStandalone: FunctionComponent = () => {
+const AboutProjectOverlay: FunctionComponent = () => {
   const history = useHistory();
 
   return (
@@ -11,4 +11,4 @@ const AboutProjectStandalone: FunctionComponent = () => {
   );
 };
 
-export default AboutProjectStandalone;
+export default AboutProjectOverlay;
