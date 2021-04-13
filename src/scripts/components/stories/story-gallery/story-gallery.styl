@@ -37,15 +37,6 @@
     .navIcon
       margin: 0 emCalc(50px)
 
-  .progressContainer
-    position: fixed
-    bottom: $storyCaptionHeight + 4.5em
-    left: 0
-    z-index: 2
-
-    .progress
-      justify-content: center
-
 .buttonContainer
   position: absolute
   top: 50%
@@ -94,42 +85,10 @@
   width: 100%
   background-color: $black
 
-.progressContainer
-  position: absolute
-  bottom: $storyCaptionHeight
-  left: 0
-  z-index: 1
-  width: 100%
-
-.progress
-  display: flex
-  flex-direction: row
-  justify-content: flex-end
-  padding: 0 emCalc(10px)
-  height: emCalc(20px)
-
-.progressItem
-  margin: 0 remCalc(5px)
-  width: 10px
-  height: 10px
-  border: 1px solid $textDefault
-  border-radius: 50%
-  background: rgba($textDefault, 0.31)
-
-.currentProgress
-  margin: 0 remCalc(5px)
-  width: 10px
-  height: 10px
-  border-radius: 50%
-  background: rgba($textWhite, 0.7)
-
 @media screen and (max-width: 480px)
   .storyMedia
     order: 1
     padding: 0
-
-  .progress
-    padding: 0 emCalc(25px)
 
   .lightboxStoryGallery
     .buttonContainer

@@ -13,6 +13,7 @@ import {useInterval} from '../../../hooks/use-interval';
 import config from '../../../config/main';
 import {CloseIcon} from '../../main/icons/close-icon';
 import StoryGalleryImage from '../story-gallery-image/story-gallery-image';
+import StoryProgress from '../story-progress/story-progress';
 
 import {StoryMode} from '../../../types/story-mode';
 import {ImageFit} from '../../../types/image-fit';
@@ -100,18 +101,11 @@ const StoryGallery: FunctionComponent<Props> = ({
 
   return (
     <div className={storyGalleryClasses}>
-      <div className={styles.progressContainer}>
-        <div className={styles.progress}>
-          {images.map((_, index) => (
-            <div
-              key={index}
-              className={cx(
-                styles.progressItem,
-                currentIndex === index && styles.currentProgress
-              )}></div>
-          ))}
-        </div>
-      </div>
+      <StoryProgress
+        images={images}
+        currentIndex={currentIndex}
+        showLightbox={showLightbox}
+      />
       <div className={styles.gallery}>
         {!showLightbox ? (
           <div
