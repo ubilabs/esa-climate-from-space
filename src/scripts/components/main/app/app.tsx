@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
 import {IntlProvider} from 'react-intl';
-import {HashRouter as Router, Switch, Route} from 'react-router-dom';
+import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import {MatomoProvider, createInstance} from '@datapunt/matomo-tracker-react';
 
 import {languageSelector} from '../../../selectors/language';
@@ -21,6 +21,7 @@ import PresentationSelector from '../../stories/presentation-selector/presentati
 import ShowcaseSelector from '../../stories/showcase-selector/showcase-selector';
 import DataViewer from '../data-viewer/data-viewer';
 import Tracking from '../tracking/tracking';
+import AboutProjectStandalone from '../about-project-standalone/about-project';
 
 import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
@@ -50,19 +51,29 @@ const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
 
+  const logo = (
+    <Link to="/about">
+      <div className={styles.logo}>
+        <EsaLogo />
+      </div>
+    </Link>
+  );
+
   return (
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
           <Route path="/" exact>
-            <div className={styles.logo}>
-              <EsaLogo />
-            </div>
+            {logo}
             <DataViewer markers={markers} backgroundColor={'#10161A'} />
             <Navigation />
             <TimeSlider />
             <DataSetInfo />
             <LayerSelector />
+          </Route>
+          <Route path="/about" exact>
+            {logo}
+            <AboutProjectStandalone />
           </Route>
           <Route path="/stories" exact>
             <StoriesSelector />
