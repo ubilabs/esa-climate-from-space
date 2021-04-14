@@ -18,8 +18,7 @@
     z-index: 1
     width: 100%
     height: 100%
-    background-color: rgba($plainBlack, 0.8)
-    backdrop-filter: blur(2px)
+    background-color: $plainBlack
 
   .fullscreenExitIcon
     position: absolute
@@ -37,15 +36,6 @@
   .buttonContainer
     .navIcon
       margin: 0 emCalc(50px)
-
-  .progressContainer
-    position: fixed
-    bottom: $storyCaptionHeight + 8em
-    left: 0
-    z-index: 2
-
-    .progress
-      justify-content: center
 
 .buttonContainer
   position: absolute
@@ -94,35 +84,6 @@
   max-height: 130px
   width: 100%
   background-color: $black
-
-.progressContainer
-  position: absolute
-  bottom: $storyCaptionHeight
-  left: 0
-  z-index: 1
-  width: 100%
-
-.progress
-  display: flex
-  flex-direction: row
-  justify-content: flex-end
-  padding: 0 emCalc(10px)
-  height: emCalc(20px)
-
-.progressItem
-  margin: 0 remCalc(5px)
-  width: 10px
-  height: 10px
-  border: 1px solid $textDefault
-  border-radius: 50%
-  background: rgba($textDefault, 0.31)
-
-.currentProgress
-  margin: 0 remCalc(5px)
-  width: 10px
-  height: 10px
-  border-radius: 50%
-  background: rgba($textWhite, 0.7)
 
 @media screen and (max-width: 480px)
   .storyMedia

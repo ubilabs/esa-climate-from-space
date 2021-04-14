@@ -60,10 +60,8 @@ const StoryGalleryImage: FunctionComponent<Props> = ({
               />
               {imageCaption && (
                 <Caption
-                  className={cx(
-                    styles.description,
-                    showLightbox && styles.lightboxDescription
-                  )}
+                  showLightbox={showLightbox}
+                  imageFit={imageFit}
                   content={imageCaption}
                 />
               )}
