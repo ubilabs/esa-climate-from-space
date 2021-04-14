@@ -23,9 +23,33 @@
   > *
     font-size: 11px
 
+.lightboxCaption
+  overflow: hidden
+  padding: emCalc(15px)
+  height: emCalc(120px, 16)
+  pointer-events: none
+
+  .content
+    overflow-y: auto
+    margin: 0 auto
+    max-width: 60%
+    max-height: 100%
+    width: fit-content
+    height: 100%
+    -webkit-line-clamp: initial
+
 .caption:hover
   .content
     overflow-y: auto
     min-height: $storyCaptionHeight
     max-height: emCalc(100px, 16)
     -webkit-line-clamp: initial
+
+@media screen and (max-width: 480px)
+  .lightboxCaption
+    pointer-events: none
+
+    .content
+      overflow: hidden
+      padding: 0
+      max-width: 100%

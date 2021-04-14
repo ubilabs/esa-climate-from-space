@@ -1,4 +1,9 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
 import cx from 'classnames';
 
 import {PreviousIcon} from '../../main/icons/previous-icon';
@@ -8,6 +13,7 @@ import {useInterval} from '../../../hooks/use-interval';
 import config from '../../../config/main';
 import {CloseIcon} from '../../main/icons/close-icon';
 import StoryGalleryImage from '../story-gallery-image/story-gallery-image';
+import StoryProgress from '../story-progress/story-progress';
 
 import {StoryMode} from '../../../types/story-mode';
 import {ImageFit} from '../../../types/image-fit';
@@ -33,7 +39,6 @@ const StoryGallery: FunctionComponent<Props> = ({
   const [showLightbox, setShowLightbox] = useState(false);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < images.length - 1;
-
   const delay = mode === StoryMode.Showcase ? config.delay : null;
 
   useInterval(() => {
@@ -59,6 +64,27 @@ const StoryGallery: FunctionComponent<Props> = ({
     setCurrentIndex(currentIndex + 1);
   };
 
+  // close fullscreen gallery on esc
+  const onKeyDownHandler = useCallback(
+    event => {
+      if (showLightbox) {
+        // 27 - esc
+        if (event.keyCode === 27) {
+          setShowLightbox(false);
+        }
+      }
+    },
+    [showLightbox]
+  );
+
+  // add and remove event listener for keyboard events
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyDownHandler);
+    return () => {
+      window.removeEventListener('keydown', onKeyDownHandler);
+    };
+  }, [onKeyDownHandler]);
+
   const storyGalleryClasses = cx(
     styles.storyGallery,
     showLightbox && styles.lightboxStoryGallery
@@ -74,18 +100,11 @@ const StoryGallery: FunctionComponent<Props> = ({
 
   return (
     <div className={storyGalleryClasses}>
-      <div className={styles.progressContainer}>
-        <div className={styles.progress}>
-          {images.map((_, index) => (
-            <div
-              key={index}
-              className={cx(
-                styles.progressItem,
-                currentIndex === index && styles.currentProgress
-              )}></div>
-          ))}
-        </div>
-      </div>
+      <StoryProgress
+        images={images}
+        currentIndex={currentIndex}
+        showLightbox={showLightbox}
+      />
       <div className={styles.gallery}>
         {!showLightbox ? (
           <div
