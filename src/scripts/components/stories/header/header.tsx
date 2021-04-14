@@ -2,6 +2,7 @@ import React, {FunctionComponent} from 'react';
 
 import Button from '../../main/button/button';
 import {ArrowBackIcon} from '../../main/icons/arrow-back-icon';
+import {EsaLogoShort} from '../../main/icons/esa-logo-short';
 
 import styles from './header.styl';
 
@@ -18,6 +19,9 @@ const Header: FunctionComponent<Props> = ({
   children
 }) => (
   <div className={styles.header}>
+    <div className={styles.logo}>
+      <EsaLogoShort />
+    </div>
     <Button
       className={styles.backButton}
       icon={ArrowBackIcon}
