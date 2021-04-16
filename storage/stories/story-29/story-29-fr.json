@@ -22,8 +22,8 @@
         "Cattle passing road construction equipment in Mowo, Lagos State, Nigeria\r\n(mtcurado/iStock)"
       ],
       "imageFits": [
-        "cover",
-        "cover",
+        "contain",
+        "contain",
         "cover",
         "cover",
         "cover"
@@ -121,7 +121,7 @@
       "imageFits": [
         "contain",
         "cover",
-        "cover",
+        "contain",
         "cover",
         "cover"
       ]
