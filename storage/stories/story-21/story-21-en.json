@@ -120,17 +120,18 @@
         "assets/story21-image03.jpg",
         "assets/story21-image07.jpg",
         "assets/story21-image04.png",
-        "Heat energy accumulated in different components of Earth’s climate system since 1971, measured in zettajoules (1 ZJ is 10^21 J, or a thousand billion billion J). Water in the world’s oceans stores far more heat than the atmosphere and the land. \r\n(UN IPCC, 2013)"
+        "assets/story21-image05.png"
       ],
       "imageCaptions": [
         "The trillion tonnes of ice lost each year is enough to form \r\na 10-kilometre-tall ice cube, shown here next to Manhattan for scale.\r\nIce lost from glaciers and ice sheets on land contributes to sea level rise, \r\nbut sea ice and floating ice shelves do not. (Planetary Visions / ESA / NASA)",
         "More than nine trillion tonnes of glacier ice has been lost in the last half century (ESA, adapted from Zemp et al (2019) Nature, and data courtesy World Glacier Monitoring Service)",
-        "Global water cycle fluxes, measured in thousand cubic kilometres per year (TU Wien/W Dorigo)"
+        "Global water cycle fluxes, measured in thousand cubic kilometres per year (TU Wien/W Dorigo)",
+        "Heat energy accumulated in different components of Earth’s climate system since 1971, measured in zettajoules (1 ZJ is 10^21 J, or a thousand billion billion J). Water in the world’s oceans stores far more heat than the atmosphere and the land. \r\n(UN IPCC, 2013)"
       ],
       "imageFits": [
         "contain",
         "contain",
-        "assets/story21-image05.png"
+        "contain"
       ]
     }
   ]
