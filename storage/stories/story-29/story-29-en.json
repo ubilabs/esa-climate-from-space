@@ -120,9 +120,9 @@
       ],
       "imageFits": [
         "contain",
-        "contain",
-        "contain",
-        "contain",
+        "cover",
+        "cover",
+        "cover",
         "cover"
       ]
     },
