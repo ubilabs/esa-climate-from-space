@@ -84,7 +84,7 @@
           "timestamp": "2016-12-01T00:00:00.000Z"
         }
       ],
-      "layerDescription": "# CCI Cloud Fraction\r\n\r\nthe proportion of a month that an area is covered by cloud"
+      "layerDescription": "# CCI Cloud Fraction\r\n\r\n– proportion of a month that an area is covered by cloud"
     },
     {
       "type": "video",
