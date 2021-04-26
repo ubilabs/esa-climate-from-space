@@ -25,7 +25,7 @@
       ],
       "imageFits": [
         "contain",
-        "contain",
+        "cover",
         "contain",
         "contain",
         "contain"
@@ -81,7 +81,7 @@
         "Global land surface temperature anomaly for September 2006 from Envisat AATSR, showing a heatwave over central and northern Europe (University of Liecester)"
       ],
       "imageFits": [
-        "contain",
+        "cover",
         "contain",
         "contain",
         "contain",
@@ -105,7 +105,7 @@
         "A pair of oak trees on Hampstead Heath in London, rendered as a point cloud from laser distance measurements. \r\nThe mass of carbon stored by trees can be estimated using 3D tree models based on laser scanning \r\n(lidar – light detection and ranging). (M Disney/P Wilkes/UCL)"
       ],
       "imageFits": [
-        "contain",
+        "cover",
         "contain",
         "contain",
         "contain",
