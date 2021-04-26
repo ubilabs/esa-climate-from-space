@@ -25,8 +25,8 @@
       ],
       "imageFits": [
         "contain",
-        "contain",
-        "contain",
+        "cover",
+        "cover",
         "contain",
         "contain"
       ]
@@ -47,7 +47,7 @@
       ],
       "imageFits": [
         "contain",
-        "contain",
+        "cover",
         "contain",
         "contain",
         "contain"
@@ -103,10 +103,10 @@
         "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%."
       ],
       "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
+        "cover",
+        "cover",
+        "cover",
+        "cover",
         "contain"
       ]
     },
@@ -127,9 +127,9 @@
         "Northern hemisphere permafrost 2003-2017 (ESA-CCI)"
       ],
       "imageFits": [
-        "contain",
-        "contain",
-        "contain",
+        "cover",
+        "cover",
+        "cover",
         "contain",
         "contain"
       ]
@@ -149,7 +149,7 @@
         "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)"
       ],
       "imageFits": [
-        "contain",
+        "cover",
         "contain",
         "contain",
         "contain",
