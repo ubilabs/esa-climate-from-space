@@ -28,11 +28,11 @@
         "The Eastern Scheldt Storm Surge Barrier (Oosterscheldekering) is part of the extensive Delta Works project, which protects the southern Dutch coast from the sea (Rijkswaterstaat-Rens Jacobs)"
       ],
       "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
       ]
     },
     {
@@ -102,9 +102,9 @@
         "A map of regional sea level trends, derived from more than 20 years of satellite observations, shows where mean sea level is rising the most (red), dropping (blue), or remains unchanged (grey) (ESA-CCI)"
       ],
       "imageFits": [
+        "cover",
         "contain",
-        "contain",
-        "contain",
+        "cover",
         "contain",
         "contain"
       ]
