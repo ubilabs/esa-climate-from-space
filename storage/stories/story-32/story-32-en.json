@@ -26,7 +26,7 @@
         "Temperature difference between 2020 and 1981-2010. Air temperature at a height of two metres for 2020, shown relative to its 1981-2010 average. The temperature rise at a particular location can be significantly larger than the global average. Data source: ERA5 (Copernicus Climate Change Service / ECMWF)"
       ],
       "imageFits": [
-        "contain",
+        "cover",
         "contain",
         "contain",
         "contain",
