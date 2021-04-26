@@ -28,10 +28,10 @@
         "Above-ground biomass from ESA’s Climate Change Initiative (ESA-CCI)"
       ],
       "imageFits": [
+        "cover",
         "contain",
-        "contain",
-        "contain",
-        "contain",
+        "cover",
+        "cover",
         "contain"
       ]
     },
@@ -99,10 +99,10 @@
       ],
       "imageFits": [
         "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+        "cover",
+        "cover",
+        "cover",
+        "cover"
       ]
     },
     {
