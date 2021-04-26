@@ -28,7 +28,7 @@
         "Total ozone values over Antarctica recorded at the Halley research station, and by three satellite sensors, TOMS, OMI and OMPS (NASA-GSFC)"
       ],
       "imageFits": [
-        "contain",
+        "cover",
         "contain",
         "contain",
         "contain",
