@@ -3,25 +3,27 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Urban Heat\r\n\r\nCities are increasingly our home, but they amplify some of the worst affects of climate change, trapping heat and threatening health. As heatwaves become more extreme and more frequent, the inhabitants of the largest cities are most at risk.",
-      "shortText": "# Urban Heat\r\n\r\nCities are increasingly our home, but they amplify some of the worst affects of climate change, trapping heat and threatening health. As heatwaves become more extreme and more frequent, the inhabitants of the largest cities are most at risk.",
+      "text": "# The Carbon Cycle\r\n\r\nCarbon is one of the most abundant elements in the universe and the basis of all life on Earth. It passes through the atmosphere, the oceans, plants and rocks, but this natural cycle has been disrupted by human activity, with profound implications for Earth’s climate.",
+      "shortText": "# The Carbon Cycle\r\n\r\nCarbon is one of the most abundant elements in the universe and the basis of all life on Earth. It passes through the atmosphere, the oceans, plants and rocks, but this natural cycle has been disrupted by human activity, with profound implications for Earth’s climate.",
       "images": [
-        "assets/story27-image03.jpg"
+        "assets/story12-image02.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## Winter Heatwave\r\n\r\nFor the 2020 New Year celebrations in Moscow, they had to make artificial snow. The Russian capital, famous for its cold, hard winters, had reached 5.4 degrees Celsius – its highest December temperature since records began in 1879. A planned snow-boarding event went ahead only with the help of “snow” scraped from the surface of a nearby ice rink. Children were playing football in courtyards that usually host ice hockey games.\r\n\r\nRussia is warming 2.5 times faster than the global average, and many of the effects of climate change are amplified in large cities like Moscow. The expanding urban areas, in which an increasing number of us live, absorb and retain heat better than most natural cover types. \r\n\r\n## Extremes Amplified\r\n\r\nHeatwaves killed 70,000 people across Europe in 2003 and 55,000 in Russia alone in 2010. Cities are exposed to the most extreme temperatures in a heatwave, which can induce dehydration or heat stroke and increase the risk from stroke, heart and breathing conditions. While much is made of the rise in global mean temperature – about 0.2 degrees Celsius per decade – the single-day temperature extremes experienced in heatwaves are rising faster. In cities with over 5 million people, the hottest day of the year is rising on average 0.33 degrees Celsius per decade and in Moscow, Paris and Houston, over 0.9 degrees Celsius per decade. The increased threat to life from one-day extremes is thought to be comparable to that from prolonged heat events.",
-      "shortText": "s",
+      "text": "## A Vital Element \r\n\r\nCarbon is the basic building block for life on Earth. It can form stable chemical bonds with many elements, allowing large and complex molecules to be built, including the organic compounds essential to life. Carbon’s bonds to other elements are stable, but not so strong that they prevent chemical reaction. \r\n\r\nAs it reacts with other elements, carbon cycles through the atmosphere, the oceans, plants and animals, soil and rocks. There are exchanges between these carbon reservoirs through a variety of processes. When carbon bonds are broken, energy is released, making some carbon compounds – hydrocarbons – convenient fuel sources. \r\n \r\n## Greenhouse Gases \r\n\r\nBut the same bonds that make carbon molecules so essential to life and modern living have a downside. They are also good at absorbing long-wavelength infrared radiation, allowing the molecules to vibrate and warm up, trapping heat in the atmosphere, contributing to the greenhouse effect. \r\n\r\nCarbon compounds such as carbon dioxide and methane are not the only greenhouse gases, nor the most powerful, but our increased burning of fossil fuels – coal, oil and natural gas – has caused an accumulation of carbon dioxide in the atmosphere, disrupting the carbon cycle, and warming the Earth’s climate.",
+      "shortText": "## A Vital Element \r\n\r\n- Carbon is the basic building block for life on Earth.\r\n- Forms stable bonds with many elements.\r\n- Allows large and complex molecules to be built, including organic compounds essential for life.\r\n- Bonds are stable, but not so strong that they prevent chemical reaction. \r\n- Reactions drive carbon through the atmosphere, the oceans, plants and animals, soil and rocks. \r\n- When carbon bonds are broken, energy is released.\r\n- So some carbon compounds – hydrocarbons – are convenient fuel sources. \r\n\r\n## Greenhouse Gases \r\n\r\n- Carbon bonds also good at absorbing infrared radiation, allowing molecules to vibrate and warm up.\r\n- Traps heat in the atmosphere, contributing to the greenhouse effect. \r\n\r\nIncreased burning of fossil fuels has caused an accumulation of CO2 in the atmosphere, disrupting the carbon cycle, and warming the climate.",
       "images": [
-        "assets/story27-image01.jpg",
-        "assets/story27-image02.jpg",
-        "assets/story27-image10.jpg"
+        "assets/story12-image01.jpg",
+        "assets/ghg_large_16.png",
+        "assets/story12-image03.jpg",
+        "assets/ghg_large_11.png"
       ],
       "imageCaptions": [
-        "Trucks delivering manufactured snow to a Moscow street during a heatwave in December 2019 (Twitter)",
-        "Summer heatwaves can damage infrastructure such as railway tracks and road surfaces, as well as putting excessive loads on water and electricity supplies (US Dept of Transportation)",
-        "Mean night-time air temperature in Paris at 10pm during the heatwave of summer 2003, which led to thousands of heat-related deaths. (VITO/Planetek)"
+        "Spare natural gas being burned off on an oil production platform in the North Sea. Carbon dioxide and water vapour are the main combustion products. Extracting and burning hydrocarbons pumps carbon from a rock reservoir into the atmosphere. (Varodrig)",
+        "Atmospheric carbon dioxide concentration over the last 300 years, based on air samples from ice cores and, since 1958, direct measurements from Mauna Loa Observatory, Hawaii. Carbon dioxide has been accumulating in the atmosphere since the Industrial Revolution, its concentration increasing rapidly in the second half of the twentieth century. (source: Scripps Institute of Oceanography)",
+        "The molecular structure of carbon dioxide and methane molecules allows them to absorb infrared radiation. Heat is absorbed by a molecule if the atoms inside can vibrate at the frequency of infrared radiation. More complex molecules have more vibrational modes, so more opportunities to absorb heat, making them more powerful greenhouse gases. A methane molecule, with one carbon atom (grey) bound to four hydrogen atoms (red), can absorb more heat than a carbon dioxide molecule, with one carbon atom bound to two oxygen atoms (blue). A chlorofluorocarbon like CFC-113 (green and yellow) has even more bonds, making it a very powerful greenhouse gas. (Planetary Visions)",
+        "Atmospheric carbon dioxide as a function of time and latitude, derived from the SCIAMACHY sensor on Envisat. The data surface shows the natural annual cycle of carbon dioxide uptake and release, which is particularly strong in the northern hemisphere, as well as a gradual increase over the years resulting from human activity. (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
@@ -33,8 +35,8 @@
     },
     {
       "type": "globe",
-      "text": "## Urban Heat Islands\r\n\r\nThe interactive globe shows the extent of different types of land cover, including urban areas as well as natural cover types like forest and desert. Check out the explosive growth of cities like Shanghai in China since the start of the data record in the 1990s. Consistent maps of land cover are derived from satellite observations by the European Space Agency’s Climate Change Initiative. Other climate variables measured from space are the amount of moisture in the soil and the temperature of the land surface, providing a bird’s eye view of the planet’s hotspots.\r\n\r\n![urban and rural temperature profiles graph ](assets/story27-image04.png) \r\n_Comparison of monthly average temperature for urban  and rural weather stations in the UK (Heathrow and Waddington respectively) (KNMI)_    \r\n\r\nAs more and more people move into a city, large areas of vegetation are replaced by roads, parking areas and buildings. Construction materials have a much higher capacity to absorb and store heat from the Sun than plants and soil, whilst densely-packed buildings prevent air from circulating so less heat can escape. Heat generated within factories, offices and homes also raises air temperatures. Cities can be up to 7 degrees Celsius warmer than the surrounding countryside. Places where temperatures are elevated in this way are known as urban heat islands.",
-      "shortText": "## Urban Heat Islands\r\n\r\nThe interactive globe shows the explosive growth of cities like Shanghai in China since the start of the data record in the 1990s. \r\n\r\n- Land cover, land surface temperature and soil moisture are useful climate variables for cities.\r\n- As cities expand, vegetation is replaced by buildings, roads and parking. \r\n- Building materials have a much higher heat capacity than plants and soil.  \r\n- Heat generated within factories, offices and homes also contributes to rising air termperatures.\r\n- Cities can be up to 7°C warmer than the surrounding countryside. \r\n\r\n![urban and rural temperature profiles graph ](assets/story27-image04.png) \r\n_Comparison of monthly average temperature for urban  and rural weather stations in the UK (Heathrow and Waddington respectively) (KNMI)_",
+      "text": "## The Fast Carbon Cycle\r\n\r\nPlants take up carbon dioxide from the atmosphere by photosynthesis as they grow in spring and summer, and return some of it when their leaves die back in autumn and winter. Carbon is also returned to the atmosphere by animals eating plants and breathing out carbon dioxide. The cycling of carbon through living things is known as the fast carbon cycle.\r\n\r\nThis seasonal growth cycle can be seen in the atmospheric carbon dioxide levels shown on the interactive globe: a peak is reached at the end of the northern winter, before rapidly-growing plants start absorbing carbon dioxide again in the spring. Atmospheric carbon varies most in the northern hemisphere because it has more land, and therefore more plants, than the southern hemisphere. On top of the seasonal cycle there is a clear increase in atmospheric carbon dioxide from year to year – a sign that the carbon cycle is out of balance, mainly due to the burning of fossil fuels.\r\n \r\n## Carbon and the Land \r\n\r\nChanges in land use and land cover are also altering the carbon cycle. The clearing of tropical forests for agriculture has the double effect of adding large amounts of carbon dioxide to the atmosphere from fires, while also removing the trees that absorb and store carbon while they are alive. \r\n\r\nAround the Arctic, elevated air temperatures are thawing out large areas of permafrost.  This exposes carbon in the soil to decomposition and could potentially release into the atmosphere vast amounts of methane. As northern latitudes thaw and dry out, vast areas of forest, bush and peat are newly exposed to the risk of wildfires. Fire is a key component of the carbon cycle, taking carbon from the biosphere into the atmosphere.",
+      "shortText": "## The Fast Carbon Cycle \r\n\r\nCycling of carbon through living things is known as the fast carbon cycle.\r\n\r\n- Plants take up CO2 from the atmosphere by photosynthesis as they grow in spring and summer.\r\n- Some returned when leaves die and by animals eating plants and breathing out carbon dioxide. \r\n- Atmospheric CO2 peaks at the end of the northern winter.\r\n- Rapidly-growing plants start absorbing CO2 in the spring. \r\n- Atmospheric carbon varies most in the northern hemisphere (more land, therefore more plants).\r\n- Year-to-year increase in CO2 shows the carbon cycle is out of balance (mainly from fossil fuel burning).\r\n\r\n## Carbon and the Land\r\n\r\n- Changes in land use and land cover also alter the carbon cycle. \r\n- Tropical forest clearance releases large amounts of CO2 by fire and removes trees that absorb and store carbon. \r\n- Thawing permafrost releases soil carbon by decomposition and potentially vast amounts of methane. \r\n- Warming and drying of northern lands exposes vast areas of forest, bush and peat to the risk of wildfires. \r\n- Fire is a key component of the carbon cycle, taking carbon from the biosphere into the atmosphere.",
       "imageFits": [
         "contain",
         "contain",
@@ -44,73 +46,71 @@
       ],
       "flyTo": {
         "position": {
-          "longitude": 119.04,
-          "latitude": 34.86,
-          "height": 1792878.69
+          "longitude": 54.03,
+          "latitude": 26.9,
+          "height": 24997871.88
         },
         "orientation": {
           "heading": 360,
-          "pitch": -89.99,
+          "pitch": -89.96,
           "roll": 0
         }
       },
       "layer": [
         {
-          "id": "land_cover.lccs_class",
-          "timestamp": "2015-01-01T00:00:00.000Z"
+          "id": "greenhouse.xco2",
+          "timestamp": "2007-12-06T00:00:00.000Z"
         }
       ],
-      "layerDescription": "# CCI Land Cover Type\r\n\r\nUrban areas are shown in red."
+      "layerDescription": "# CCI Atmospheric Carbon Dioxide Concentration"
     },
     {
-      "type": "image",
-      "text": "## Heat Surveys  from Space \r\n\r\nHow much an urban area is affected by its heat island depends on factors such as the number, type and arrangement of buildings and roads, and what they are made from. Ground-level infrared cameras are used to show where heat is being lost from buildings, so they can be made more energy-efficient. In the same way, infrared sensors on satellites can be used to show where heat is building up within a city. \r\n\r\nMeasurements of land surface temperature (LST) from space can be compared with historical data from weather stations to identify the areas of a city that are most vulnerable during heatwaves. This information can help urban planners improve the design of cities by deciding where to locate green areas, which materials to use, and how to orient buildings to maximise shade and cooling.\r\n\r\nLST data can also be linked with more detailed data from the ground or from airborne surveys, and updated in near-real time using high quality sensors such as the Copernicus Sentinel satellites to provide support to decision makers during heatwave events. LST from space can show how heatwaves affect temperature at the level of a district or even an individual city block. Understanding these events would allow steps to be taken which could potentially reduce the effect of heat-related health hazards. \r\n\r\nThe most accurate climate data for LST is from the European Space Agency’s Climate Change Initiative. Although of moderate spatial resolution, it is detailed enough to see key features of a large city like London, and its temperature measurements are extremely accurate. They provide a spatial snapshot of the surface temperature as well as a multi-decade temporal progression of temperature for a whole city, region, country or continent to improve the performance of climate models.",
-      "shortText": "## Heat Surveys  from Space\r\n\r\n- Infrared cameras show where heat is lost from buildings.\r\n- In the same way, IR sensors on satellites show where heat builds up within a city. \r\n\r\nLand surface temperature (LST) from space can be: \r\n\r\n- Compared with historical data from weather stations.\r\n- Linked to more detailed data from the ground or from airborne surveys.\r\n- Updated in near-real time using high quality sensors such as the Copernicus Sentinel satellites.\r\n\r\nThis information can help urban planners improve the design of cities: \r\n\r\n- Where to put green areas, which building materials to use.\r\n- How to orient buildings to maximise shade and cooling.\r\n- Potentially reduce the effect of heat-related health hazards. \r\n\r\nThe most accurate climate data for LST is from ESA’s Climate Change Initiative:\r\n \r\n- Moderate spatial resolution.\r\n- Extremely accurate temperature measurements. \r\n- Multi-decade temporal span for a whole city, region, country or continent.",
-      "images": [
-        "assets/iStock_000021056451Small.jpg",
-        "assets/story27-image06.jpg",
-        "assets/story27-image11.jpg",
-        "assets/story27-image08.jpg",
-        "assets/story27-image09.jpg"
-      ],
-      "imageCaptions": [
-        "Handheld infrared cameras are used to conduct thermographic surveys of buildings. Infrared cameras on satellites can survey a whole city quickly and repeatedly.  (iStock)",
-        "Airborne thermal infrared image of Madrid at midnight on 1 July 2008 (University of Valencia)",
-        "Land surface temperature derived from the SLSTR instrument on the Copernicus Sentinel-3 satellite, for 26 June (left) and 25 July (right) 2019. That summer saw an extreme heatwave in Europe with record-breaking temperatures in the Netherlands, Belgium, Germany and Paris. (ESA)",
-        "Average land surface temperature for September 2006, derived from Envisat AATSR (University of Leicester)",
-        "Global land surface temperature anomaly for September 2006 from Envisat AATSR, showing a heatwave over central and northern Europe (University of Liecester)"
-      ],
+      "type": "video",
+      "text": "## The Slow Carbon Cycle\r\n\r\nCarbon is exchanged between the atmosphere and the ocean at the sea surface. Carbon dioxide is dissolved in sea water but also absorbed by ocean plants – phytoplankton – which use chlorophyll to perform photosynthesis in the same way as plants on land. Some carbon dioxide is quickly released back to the atmosphere, so the oceans play a part in the fast carbon cycle, but some is mixed into the deep ocean, where it stays for centuries as part of the slow carbon cycle. \r\n\r\nOceanic lifeforms from phytoplankton to coral, crustaceans and whales absorb carbon as they grow and take some of it to the sea floor when they die. Here, carbon is locked up in sedimentary rock, Earth’s largest carbon store. Under certain conditions layers of organic carbon can build up into fossil fuel deposits – coal, oil or natural gas. \r\n\r\nThe slow cycle eventually returns carbon to the atmosphere through geological processes. Carbon dioxide is expelled from rocks under extreme heat and pressure and vented to the atmosphere in volcanic eruptions. From the atmosphere, carbon can return to the surface dissolved in rainwater as weak carbonic acid, where it plays a role in the chemical weathering of rocks and the delivery of minerals and salts to the sea.",
+      "shortText": "## The Slow Carbon Cycle\r\n\r\n- CO2 is dissolved in sea water but also absorbed by ocean plants – phytoplankton.\r\n- Some is mixed into the deep ocean, where it stays for centuries as part of the slow carbon cycle.\r\n\r\n- Oceanic lifeforms absorb carbon as they grow and take some of it to the sea floor when they die.\r\n- Here, carbon is locked up in sedimentary rock, Earth’s largest carbon store.\r\n- Layers of organic carbon can build up into fossil fuel deposits – coal, oil or natural gas.\r\n\r\n- The slow cycle eventually returns carbon to the atmosphere through geological processes.\r\n- CO2 is expelled from rocks and vented into the atmosphere during volcanic eruptions.\r\n- Carbon returns to the surface dissolved in rainwater as weak carbonic acid.\r\n- It then plays a role in the chemical weathering of rocks and the delivery of minerals and salts to the sea.",
       "imageFits": [
         "contain",
         "contain",
         "contain",
         "contain",
         "contain"
-      ]
+      ],
+      "videoId": "evPBTu_a27I"
     },
     {
       "type": "image",
-      "text": "## Keeping a Lid on it\r\n\r\nUrban heat islands have an impact on many people today and, as urbanisation and climate change continue, many more will feel their effects in the future. Cities currently occupy approximately two percent of the Earth's surface and are home to more than half the world's people. By 2050, it is expected that 75 percent of a global population of 9.5 billion will live in cities. \r\n\r\nThere are ways to reduce the urban heat island effect. These include positioning buildings in a way that improves airflow, using new building materials that trap less heat than conventional materials and reintroducing nature into cities and buildings. Plants and trees provide shade, remove air pollution and soak up water, helping to prevent floods. They also cool the air by releasing water to the atmosphere.\r\n\r\nUrban trees are also an effective sink for carbon dioxide, which they absorb very close to its sources in transport and industry, limiting the spread of this greenhouse gas into the atmosphere. In London, there are more trees than people and it is estimated that they store 380 tonnes of carbon per hectare in some parts of the city – comparable to some temperate and tropical rainforests.\r\n\r\nIn the Netherlands, the city of Arnhem has decided to replace 10% of its road surface with grass, increase the area of shade by planting trees, and to ensure that 90 percent of its rainwater is absorbed into the soil rather than running into the sewer. Water raises the heat capacity of soil, so wet soil emits less heat than dry soil. But will such measures be enough to cool our overheating cities? Measuring land surface temperature, soil moisture and land cover type from space will help us answer that question.",
-      "shortText": "# Keeping a Lid on it\r\n\r\n2% of Earth's surface is urban; Home to half the world's people; 75% by 2050. There are ways to reduce the urban heat island effect:\r\n\r\n- Positioning buildings to improve airflow.\r\n- Using new building materials that trap less heat.\r\n- Reintroducing nature into cities and buildings. \r\n- Trees provide shade and soak up water, helping to prevent floods and cooling the air when they release the water. \r\n- Urban trees absorb CO2 and other air pollutants. \r\n- London (UK) has more trees than people; they store up to 380 tonnes of carbon per hectare – comparable to some rainforests.\r\n- Arnhem (Netherlands) is replacing 10% of its road surface with grass, increasing shade by planting trees, and routing 90% of its rainwater into the soil, which has a cooling effect.\r\n\r\nWill such measures be enough to cool our overheating cities? Measuring land surface temperature, soil moisture and land cover type from space will help us answer that question.",
+      "text": "## Human Intervention\r\n\r\nHuman activity, primarily the burning of fossil fuels, has increased the amount of carbon in the atmosphere above its natural level. As we extract and burn coal, oil and natural gas, we are effectively short-circuiting the slow carbon cycle, and hugely accelerating the delivery of carbon into the atmosphere. Each year, humans emit 100-300 times more carbon dioxide from burning fossil fuels than the slow carbon cycle emits from volcanoes.\r\n\r\nThe land and the ocean have absorbed some of this excess carbon dioxide, but atmospheric carbon dioxide has still increased by 30% in the last 150 years – enough to significantly enhance the greenhouse effect and change the climate. Since 1970, our carbon dioxide emissions have increased by 90%. Global daily average atmospheric carbon dioxide reached 400 parts per million in 2013 and has remained above this level since 2016. There is more carbon dioxide in the atmosphere now than at any time in the last 2.6 million years. The resulting boost to the greenhouse effect has increased global average land temperature by about one degree Celsius over the last century, and climate models predict it will rise 2 to 4 degrees Celsius above pre-industrial levels by the end of this century.",
+      "shortText": "## Human Intervention\r\n\r\nHuman activity, primarily the burning of fossil fuels, has increased the amount of carbon in the atmosphere above its natural level. \r\n\r\n- Extracting and burning coal, oil and natural gas, short-circuits the slow carbon cycle, hugely accelerating the delivery of carbon into the atmosphere. \r\n- Each year, 100-300 times more CO2 from burning fossil fuels than from volcanoes.\r\n- Land and ocean absorb some of the excess CO2.\r\n- But still 30% increase in atmospheric CO2 in the last 150 years.\r\n- 90% increase in CO2 emissions since 1970.\r\n- Atmospheric CO2 has been above 400 parts per million since 2016. \r\n- Higher now than at any time in the last 2.6 million years. \r\n- 1 °C increase in average land temperature over the last century.\r\n- 2 to 4 °C above pre-industrial levels forecast by 2100.",
       "images": [
-        "assets/story27-image07.jpg",
-        "assets/story27-image12.jpg",
-        "assets/story27-image05.jpg",
-        "assets/story27-image15.jpg"
+        "assets/intro_large_13.jpg",
+        "assets/ghg_large_18.jpg",
+        "assets/intro_large_15.png"
       ],
       "imageCaptions": [
-        "Street lights trace out London’s urban area in this photograph taken by ESA astronaut Tim Peake from the International Space Station in 2016. Dark areas show the locations of the city’s green lungs – its many large parks. (ESA/NASA)",
-        "Land surface temperature (left) and a measure of the urban heat island relative to surrounding rural areas (right) for London, based on Landsat thermal infrared observations for 7th July 2020. The elevation of land surface temperature in cities is even higher than it is for air temperature. (University of Liecester)",
-        "Air temperature for Madrid on 25 June 2008 at 22:18 UTC (right), compared with a map of sealed soil surface area (left), highlighting the city’s artificial surfaces. (VITO/Indra/Planetek/European Environment Agency)",
-        "A pair of oak trees on Hampstead Heath in London, rendered as a point cloud from laser distance measurements. \r\nThe mass of carbon stored by trees can be estimated using 3D tree models based on laser scanning \r\n(lidar – light detection and ranging). (M Disney/P Wilkes/UCL)"
+        "On a clear night light shines out from urban areas across western Europe, painting a portrait of an energy-hungry society.  Photograph taken by ESA astronaut Alexander Gerst from the International Space Station on July 26 2014. (ESA/NASA)",
+        "Deforestation in the state of Rondônia in western Brazil, as imaged by ESA’s Proba-V minisatellite. The brown colours indicate deforested areas – note the distinctive ‘fishbone’ pattern as main roads are cut through an area, followed by secondary roads for further clearing. Agricultural activities including deforestation are the second-largest source of greenhouse gases, after fossil fuels. (ESA/VITO)",
+        "Atmospheric carbon dioxide history for the last 800,000 years, based on air samples from ice cores at Vostok Station, Antarctica, and since 1958, direct measurements from Mauna Loa Observatory, Hawaii. The present concentration of over 400 parts per million is thought to be higher than it has been for many millions of years. (data source: Scripps Institute of Oceanography)"
       ],
       "imageFits": [
+        "contain",
         "cover",
         "contain",
         "contain",
-        "contain",
         "contain"
       ]
+    },
+    {
+      "type": "video",
+      "text": "## Tracking Carbon from Space\r\n\r\nData collected by satellites allow us to see how greenhouse gases are varying across the globe. The European Space Agency’s Envisat, launched in 2002, carried one of the first sensors that measure concentrations of carbon dioxide and methane near the surface. The Japanese satellite GOSAT followed in 2009. Future satellite sensors will allow us to detect smaller sources of greenhouse gases.\r\n\r\nESA’s Climate Change Initiative is also tracking carbon through its cycle on land and in the ocean. Land cover and biomass maps allow us to determine the amount of carbon stored in plants on land; ocean colour measurements show phytoplankton, giving an idea of how much carbon is being taken up by these ocean plants.\r\n\r\nClimate scientists are using this information to improve our understanding of the carbon cycle and its representation in their climate models. Improved climate projections will help decision-makers work out how we can manage our carbon emissions and restore balance to the carbon cycle.",
+      "shortText": "## Tracking Carbon from Space\r\n\r\nData collected by satellites allow us to see how greenhouse gases are varying across the globe. \r\n\r\n- 2002: ESA’s Envisat carried one of the first sensors to measure CO2 and methane near the surface. \r\n- 2009: Japanese satellite GOSAT followed. \r\n- Future satellites will allow us to detect smaller sources of greenhouse gases.\r\n- ESA’s Climate Change Initiative is also tracking carbon through its cycle on land and in the ocean. \r\n- Land cover and biomass maps give the amount of carbon stored in plants on land.\r\n- Ocean colour maps show phytoplankton, giving the carbon taken up by ocean plants.\r\n- This improves understanding of the carbon cycle and its representation in climate models. \r\n\r\nImproved climate projections will help decision-makers work out how we can manage our carbon emissions and restore balance to the carbon cycle.",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "videoId": "-QyzY8waNoY"
     }
   ]
 }
