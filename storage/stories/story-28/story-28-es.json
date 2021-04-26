@@ -26,12 +26,26 @@
         "Elk in the Bitterroot River, Montana, during a forest fire in 2000 (John McColgan, Alaska Fire Service)",
         "Wildfire in western Greenland, August 2017\r\n(Copernicus Sentinel data, 2017, processed by Pierre Markuse)",
         "Above-ground biomass from ESA’s Climate Change Initiative (ESA-CCI)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
       "type": "globe",
       "text": "## Earth's Land Cover\r\n\r\nRegions that have similar climate and are home to similar communities of plants and animals are called biomes. They are often characterised by a dominant type of land cover, as shown on the interactive globe. Spin the globe and take a closer look at how the extent of some types of land cover has changed over recent years. You could start by exploring the loss of tropical forest in Mato Grosso, Brazil, between 1996 and 2015.\r\n\r\nMost animals and plants have evolved characteristics related to the climate of their habitat and the other organisms in the ecosystem they are part of. However, the flora and fauna of a region also affect the climate: for example, the plants of the Amazon rainforest cycle enough water from the ground to the atmosphere that they create their own weather.\r\n\r\nThe climate within a biome may also vary – the northern side of a hill may be cooler or get less rainfall than the southern side, a lake may cool the temperature of the adjacent land and provide moisture for it. Tiny areas with their own microclimate can be home to unique species unable to survive in places only a hundred metres away. With global warming, wildfires, deforestation and other human activities, even larger habitats are now changing very quickly and becoming fragmented. \r\n\r\n![Land Cover map key](assets/landcover-key.png) \r\n_Land Cover Type Key_\r\n\r\nThe Land Cover globe shows the dominant type of land use in areas that are 300 metres across. Scientists working with ESA’s Climate Office are using data from the Copernicus Sentinel satellites to create new maps showing land cover in areas only 10–30 m on each side which will help us monitor how habitats are changing in more detail.",
       "shortText": "## Earth's Land Cover\r\n\r\nSpin the globe to see how some types of land cover have changed over recent years – eg, loss of tropical forest in Mato Grosso, Brazil, between 1996 and 2015.\r\n\r\n- animals and plants evolve characteristics related to the climate of their habitat\r\n- but they also affect the climate of their region\r\n- Amazon rainforest plants cycle enough water from ground to atmosphere that they create their own weather\r\n- topography and water bodies also create microclimates\r\n\r\nWith global warming, wildfires, deforestation and other human activities, even larger habitats are now changing very quickly and becoming fragmented. \r\n\r\n![Land Cover map key](assets/landcover-key.png) \r\n_ESA CCI Land Cover Types_",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "flyTo": {
         "position": {
           "longitude": -8.23,
@@ -50,12 +64,19 @@
           "timestamp": "2020-08-25T03:52:30.971Z"
         }
       ],
-      "layerDescription": "Land Cover Type"
+      "layerDescription": "# CCI Land Cover Type"
     },
     {
       "type": "video",
       "text": "## Responding to Change\r\n\r\nWhen a habitat changes, animals and plants may find that their adaptations are not helpful – or even actively disadvantage them – in the new environment and be forced to move elsewhere in order to survive. Pigeons, foxes and, of course, humans are among the species that have adapted to survive in cities. But individual populations of other species that were more specialised, or have been driven into areas where they face greater competition, have become extinct as a result of increased urbanisation or the extension of agriculture into previously wild areas.\r\n\r\nConversely, changing climate is increasing the range of some species, allowing them to thrive in places that were previously inhospitable to them, or changing their habitats in ways that allow the population to boom. This is not always good news for everyone. For example, several years of drought and mild winters in the 2000s allowed the mountain pine beetle to extend its range from Western North America east across the Rocky Mountains, resulting in extensive damage to commercial and natural forests that had previously been free from this pest.\r\n\r\n## Protected Areas\r\n\r\nAn ecosystem with a high level of biodiversity is likely to be more resilient and be able to survive sudden changes. But if all the animals in a food web are ultimately dependent on a single type of plant, then the entire ecosystem may collapse if that plant is affected by disease or extreme weather.\r\n\r\nNational parks and other conservation areas protect a range of habitats from further development or exploitation while, in some of the best cases, continuing to support local people.  Where habitats are becoming fragmented, through, for example, deforestation or damming rivers, wildlife corridors can provide a safe route between areas for wider ranging or slower moving species, such as plants.",
       "shortText": "## Responding to Change\r\n\r\nHabitat changes, including climatic changes, can limit the range of some species or extend it for others.\r\n\r\n- several years of drought and mild winters in the 2000s in Western North America\r\n- allowed the mountain pine beetle to spread east across the Rocky Mountains\r\n- resulting in extensive damage to forests that had previously been free from this pest.\r\n\r\nAn ecosystem with a high level of biodiversity is likely to be more resilient.\r\n\r\nNational parks and other conservation areas protect a range of habitats from further development or exploitation while, in the best cases, continuing to support local people.",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "videoId": "8wwQaK_SJtw"
     },
     {
@@ -75,12 +96,26 @@
         "Field patterns in a part of Bolivia where tropical forest has been cleared for agriculture (Copernicus Sentinel data, 2019/ESA)",
         "Coral reef near Enderbury Island in the Phoenix Isands Protected Area, a UNESCO World Heritage Site in the South Pacific (Dr Randi Rotjan, New England Aquarium)",
         "Smoke obscures almost all of the US west coast as nearly 100 wildfires burn during a heatwave in September 2020 \r\n(Copernicus Sentinel data, 2020, processed by ESA)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
       "type": "video",
       "text": "## Charting Habitat Change\r\n\r\nEssential climate variables (ECVs) describe key aspects of the Earth’s climate and features that have a strong influence on it. Understanding climate gives us an insight into one of the drivers of ecosystem change and so how we might preserve vulnerable biomes and biodiversity. Land cover and biomass are directly related to the population of a habitat, and are both ECVs that can be monitored from space using satellites. \r\n\r\nOther ECVs also determine whether a certain habitat can thrive. On land, these include land surface temperature and soil moisture. Sea surface temperature and ocean colour are useful measures for monitoring the oceans. ESA’s Climate Change Initiative has used satellite observations to produce records of ECVs that cover the whole world and stretch back more than thirty years. Having a reliable record of these factors, and an accurate understanding of how they are currently changing, helps us make responsible decisions, taking account of the impact they will have on the planet – and all its inhabitants – in the future.",
       "shortText": "## Charting Habitat Change\r\n\r\nUnderstanding climate gives us an insight into one of the drivers of ecosystem change.\r\n\r\nLand cover and biomass are essential climate variables (ECVs) directly related to the population of a habitat.\r\n\r\nOther relevant ECVs on land are land surface temperature and soil moisture. \r\n\r\nSea surface temperature and ocean colour are useful measures for monitoring the oceans. \r\n\r\nESA’s Climate Change Initiative has used satellite observations to produce records of ECVs that cover the whole world and stretch back more than thirty years. \r\n\r\nHaving a reliable record of these factors, and how they are changing, helps us make responsible decisions, taking account of the impact they will have on the planet – and all its inhabitants – in the future.",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "videoId": "LdA3Yy-Xjf4"
     }
   ]
