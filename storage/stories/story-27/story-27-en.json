@@ -25,7 +25,7 @@
       ],
       "imageFits": [
         "contain",
-        "cover",
+        "contain",
         "contain",
         "contain",
         "contain"
@@ -81,7 +81,7 @@
         "Global land surface temperature anomaly for September 2006 from Envisat AATSR, showing a heatwave over central and northern Europe (University of Liecester)"
       ],
       "imageFits": [
-        "cover",
+        "contain",
         "contain",
         "contain",
         "contain",
