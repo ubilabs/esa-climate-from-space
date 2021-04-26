@@ -62,7 +62,7 @@
           "timestamp": "2007-12-06T00:00:00.000Z"
         }
       ],
-      "layerDescription": "# Atmospheric Carbon Dioxide Concentration"
+      "layerDescription": "# CCI Atmospheric Carbon Dioxide Concentration"
     },
     {
       "type": "video",
