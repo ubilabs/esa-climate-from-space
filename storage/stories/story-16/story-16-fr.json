@@ -30,7 +30,7 @@
       "imageFits": [
         "contain",
         "contain",
-        "contain",
+        "cover",
         "contain",
         "contain"
       ]
