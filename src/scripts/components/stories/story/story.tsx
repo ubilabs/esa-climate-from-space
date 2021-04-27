@@ -1,10 +1,10 @@
-import React, {FunctionComponent, useEffect} from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 
 import DataViewer from '../../main/data-viewer/data-viewer';
 import {useStoryParams} from '../../../hooks/use-story-params';
 import StoryContent from '../story-content/story-content';
-import StoryMedia from '../story-gallery/story-gallery';
+import StoryGallery from '../story-gallery/story-gallery';
 import StoryFooter from '../story-footer/story-footer';
 import fetchStory from '../../../actions/fetch-story';
 import Header from '../header/header';
@@ -21,6 +21,7 @@ import {StoryMode} from '../../../types/story-mode';
 import {Slide, Story as StoryType} from '../../../types/story';
 import {GlobeProjection} from '../../../types/globe-projection';
 import {SlideType} from '../../../types/slide-type';
+import {YouTubePlayer} from 'youtube-player/dist/types';
 
 import styles from './story.styl';
 
@@ -28,6 +29,7 @@ const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useDispatch();
+  const [videoDuration, setVideoDuration] = useState<number>(0);
   const {
     mode,
     slideIndex,
@@ -64,18 +66,30 @@ const Story: FunctionComponent = () => {
     return null;
   }
 
+  const getVideoDuration = (player: YouTubePlayer) => {
+    const duration = player.getDuration();
+    setVideoDuration(duration * 1000);
+  };
+
   const getRightSideComponent = (slide: Slide, story: StoryType) => {
     if (slide.type === SlideType.Image && slide.images) {
       return (
-        <StoryMedia
+        <StoryGallery
           mode={mode}
           images={slide.images}
+          imageFits={slide.imageFits}
           imageCaptions={slide.imageCaptions}
           storyId={story.id}
         />
       );
     } else if (slide.type === SlideType.Video && slide.videoId) {
-      return <StoryVideo mode={mode} videoId={slide.videoId} />;
+      return (
+        <StoryVideo
+          mode={mode}
+          videoId={slide.videoId}
+          onPlay={(player: YouTubePlayer) => getVideoDuration(player)}
+        />
+      );
     }
 
     return (
@@ -131,6 +145,7 @@ const Story: FunctionComponent = () => {
         )}
       </main>
       <StoryFooter
+        videoDuration={videoDuration}
         mode={mode}
         slideIndex={slideIndex}
         selectedStory={selectedStory}

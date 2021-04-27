@@ -1,5 +1,4 @@
 import {GlobeState} from '../reducers/globe/index';
-
 import {GlobeProjection} from '../types/globe-projection';
 
 const globeState: GlobeState = {
@@ -10,9 +9,9 @@ const globeState: GlobeState = {
   },
   view: {
     position: {
-      height: 25003000,
-      latitude: 41.827147,
-      longitude: 12.672343 // ESA office in Italy ;)
+      height: 42430000,
+      latitude: 25,
+      longitude: 0
     },
     orientation: {
       heading: 360,
@@ -89,5 +88,6 @@ export default {
   legendImage: `${baseUrlTiles}/{id}/legend.png`,
   downloadUrls,
   localStorageLanguageKey: 'language',
-  delay: 5000
+  delay: 5000,
+  feedbackUrl: 'https://climate.esa.int/en/helpdesk/'
 };

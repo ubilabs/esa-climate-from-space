@@ -1,5 +1,73 @@
 [
   {
+    "id": "story-32",
+    "title": "Welcome to Climate from Space",
+    "description": "",
+    "image": "assets/atmospheric-ecvs.jpg",
+    "tags": [],
+    "position": [-60, -3]
+  },
+  {
+    "id": "story-21",
+    "title": "The Water Cycle",
+    "description": "",
+    "image": "assets/story21-image02.jpg",
+    "tags": [
+      "sea-surface-temperature",
+      "sea-surface-salinity",
+      "sea-level",
+      "water-vapour",
+      "aerosol",
+      "cloud",
+      "snow",
+      "soil-moisture",
+      "lakes",
+      "glaciers",
+      "ice-sheets",
+      "permafrost",
+      "sea-ice"
+    ],
+    "position": [148, -20]
+  },
+  {
+    "id": "story-29",
+    "title": "Feeding a Growing World",
+    "description": "",
+    "image": "assets/soilmoisture_full_02.jpg",
+    "tags": [
+      "land-cover",
+      "soil-moisture",
+      "land-surface-temperature",
+      "biomass",
+      "ocean-colour"
+    ],
+    "position": [30, 1]
+  },
+  {
+    "id": "story-12",
+    "title": "The Carbon Cycle",
+    "description": "",
+    "image": "assets/story12-image02.jpg",
+    "tags": ["greenhouse-gases", "land-cover", "ocean-colour", "fire"],
+    "position": [3, 57]
+  },
+  {
+    "id": "story-27",
+    "title": "Urban Heat",
+    "description": "",
+    "image": "assets/story27-image03.jpg",
+    "tags": ["land-surface-temperature", "soil-moisture", "land-cover"],
+    "position": [37, 55]
+  },
+  {
+    "id": "story-31",
+    "title": "Climate Modelling",
+    "description": "",
+    "image": "assets/cmug_large_14.jpg",
+    "tags": ["climate-modelling", "ocean-colour"],
+    "position": [2, 41]
+  },
+  {
     "id": "story-16",
     "title": "Planetary Heat Pumps",
     "description": "",
@@ -54,7 +122,8 @@
       "soil-moisture",
       "permafrost",
       "fire"
-    ]
+    ],
+    "position": [150, -35]
   },
   {
     "id": "story-26",
@@ -65,8 +134,8 @@
       "satellite-orbits",
       "sensors",
       "electromagnetic-spectrum",
-      "climate-modelling",
       "geostationary-satellite"
-    ]
+    ],
+    "position": [40, -25]
   }
 ]

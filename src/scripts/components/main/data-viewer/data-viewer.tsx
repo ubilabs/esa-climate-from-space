@@ -22,12 +22,14 @@ import Gallery from '../gallery/gallery';
 import GlobeNavigation from '../globe-navigation/globe-navigation';
 import LayerLegend from '../../layers/layer-legend/layer-legend';
 import {useImageLayerData} from '../../../hooks/use-image-layer-data';
+import HoverLegend from '../../layers/hover-legend/hover-legend';
 
 import {GlobeView} from '../../../types/globe-view';
 import {Marker} from '../../../types/marker-type';
 import {LayerType} from '../../../types/globe-layer-type';
 import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 import {Layer} from '../../../types/layer';
+import {LegendValueColor} from '../../../types/legend-value-color';
 
 import styles from './data-viewer.styl';
 
@@ -146,12 +148,20 @@ const DataViewer: FunctionComponent<Props> = ({
     <div className={styles.dataViewer}>
       {[mainLayerDetails, compareLayerDetails]
         .filter((layer): layer is Layer => Boolean(layer))
-        .map(
-          ({id, maxValue, minValue, units, basemap, legendValues}, index) => (
+        .map(({id, maxValue, minValue, units, basemap, legendValues}, index) =>
+          id === 'land_cover.lccs_class' ? (
+            <HoverLegend
+              key={id}
+              values={legendValues as LegendValueColor[]}
+              isCompare={index > 0}
+            />
+          ) : (
             <LayerLegend
               key={id}
               id={id}
-              values={legendValues || [maxValue || 0, minValue || 0]}
+              values={
+                (legendValues as string[]) || [maxValue || 0, minValue || 0]
+              }
               unit={units}
               basemap={basemap}
               isCompare={index > 0}
