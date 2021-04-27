@@ -2,7 +2,7 @@
 
 .content
   overflow-y: scroll
-  padding: emCalc(80px) emCalc(28px) emCalc(80px) emCalc(56px)
+  padding: emCalc(48px) emCalc(28px) emCalc(48px) emCalc(56px)
   max-width: emCalc(750px)
   background-color: $plainBlack
   color: $textDefault
@@ -16,8 +16,23 @@
     margin-top: 0
     font-weight: bold
     font-size: emCalc(36px)
-    font-family: NotesEsa
+    font-family: NotesEsaBold
     line-height: emCalc(16px)
+
+  h2
+    margin-top: 0
+    font-size: emCalc(19px)
+
+  p + h2
+    margin-top: emCalc(30px)
+    font-family: NotesEsaBold
+
+  p + h3, h4, h5, h6
+    margin-top: emCalc(30px)
+    font-family: NotesEsaBold
+
+  p
+    margin: emCalc(10px) 0
 
   img, img + em
     display: block
@@ -37,11 +52,8 @@
   padding: emCalc(40px)
   font-size: 2.3vh
 
-h2
-  margin-top: 0
-
-p
-  margin: emCalc(10px) 0
+  ul + h2
+    margin-top: emCalc(30px)
 
 @media screen and (max-width: 480px)
   .content

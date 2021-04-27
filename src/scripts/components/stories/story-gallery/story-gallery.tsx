@@ -1,38 +1,44 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
 import cx from 'classnames';
 
 import {PreviousIcon} from '../../main/icons/previous-icon';
 import {NextIcon} from '../../main/icons/next-icon';
-import {FullscreenExitIcon} from '../../main/icons/fullscreen-exit-icon';
 import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
-import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {useInterval} from '../../../hooks/use-interval';
 import config from '../../../config/main';
+import {CloseIcon} from '../../main/icons/close-icon';
+import StoryGalleryImage from '../story-gallery-image/story-gallery-image';
+import StoryProgress from '../story-progress/story-progress';
 
 import {StoryMode} from '../../../types/story-mode';
+import {ImageFit} from '../../../types/image-fit';
 
 import styles from './story-gallery.styl';
 
 interface Props {
   images: string[];
   imageCaptions?: string[];
+  imageFits?: ImageFit[];
   storyId: string;
   mode: StoryMode | null;
 }
 
-const StoryMedia: FunctionComponent<Props> = ({
+const StoryGallery: FunctionComponent<Props> = ({
   images,
   imageCaptions,
   storyId,
+  imageFits,
   mode
 }) => {
-  const containerWidth = images.length * 100;
-  const imageWidth = 100 / images.length;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showLightbox, setShowLightbox] = useState(false);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < images.length - 1;
-
   const delay = mode === StoryMode.Showcase ? config.delay : null;
 
   useInterval(() => {
@@ -58,65 +64,80 @@ const StoryMedia: FunctionComponent<Props> = ({
     setCurrentIndex(currentIndex + 1);
   };
 
-  const imgClasses = cx(styles.slider, images.length > 1 && styles.transition);
-  const galleryClasses = cx(
-    styles.gallery,
-    showLightbox && styles.lightboxGallery
+  // close fullscreen gallery on esc
+  const onKeyDownHandler = useCallback(
+    event => {
+      if (showLightbox) {
+        // 27 - esc
+        if (event.keyCode === 27) {
+          setShowLightbox(false);
+        }
+      }
+    },
+    [showLightbox]
+  );
+
+  // add and remove event listener for keyboard events
+  useEffect(() => {
+    window.addEventListener('keydown', onKeyDownHandler);
+    return () => {
+      window.removeEventListener('keydown', onKeyDownHandler);
+    };
+  }, [onKeyDownHandler]);
+
+  const storyGalleryClasses = cx(
+    styles.storyGallery,
+    showLightbox && styles.lightboxStoryGallery
+  );
+  const prevIconClasses = cx(
+    styles.navIcon,
+    !showPrevButton && styles.disabledNavIcon
+  );
+  const nextIconClasses = cx(
+    styles.navIcon,
+    !showNextButton && styles.disabledNavIcon
   );
 
   return (
-    <div className={styles.storyGallery}>
-      <div className={galleryClasses}>
-        <div className={styles.buttonContainer}>
-          <div onClick={onPrevClick} className={styles.navIcon}>
-            {showPrevButton ? <PreviousIcon /> : null}
-          </div>
-          <div onClick={onNextClick} className={styles.navIcon}>
-            {showNextButton ? <NextIcon /> : null}
-          </div>
-        </div>
-        {!showLightbox && (
+    <div className={storyGalleryClasses}>
+      <StoryProgress
+        images={images}
+        currentIndex={currentIndex}
+        showLightbox={showLightbox}
+      />
+      <div className={styles.gallery}>
+        {!showLightbox ? (
           <div
             className={styles.fullscreenIcon}
             onClick={() => setShowLightbox(true)}>
             <FullscreenIcon />
           </div>
+        ) : (
+          <div
+            className={styles.fullscreenExitIcon}
+            onClick={() => setShowLightbox(false)}>
+            <CloseIcon />
+          </div>
         )}
-        <div
-          className={imgClasses}
-          style={{
-            width: `${containerWidth}%`,
-            transform: `translateX(-${imageWidth * currentIndex}%)`
-          }}>
-          {images.map((image, index) => {
-            const imageCaption = imageCaptions?.find((_, i) => i === index);
-            const imageUrl = getStoryAssetUrl(storyId, image);
-
-            return (
-              <div
-                className={styles.sliderImage}
-                key={index}
-                style={{width: `${imageWidth}%`}}>
-                <div className={styles.imageContainer}>
-                  <img className={styles.photo} src={imageUrl} />
-                  {showLightbox && (
-                    <div className={styles.imageInfo}>
-                      <p className={styles.description}>{imageCaption}</p>
-                      <div
-                        className={styles.fullscreenExitIcon}
-                        onClick={() => setShowLightbox(false)}>
-                        <FullscreenExitIcon />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+        <StoryGalleryImage
+          images={images}
+          imageCaptions={imageCaptions}
+          storyId={storyId}
+          imageFits={imageFits}
+          currentIndex={currentIndex}
+          showLightbox={showLightbox}
+        />
+        <div className={styles.buttonContainer}>
+          <div onClick={onPrevClick} className={prevIconClasses}>
+            <PreviousIcon />
+          </div>
+          <div onClick={onNextClick} className={nextIconClasses}>
+            <NextIcon />
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default StoryMedia;
+export default StoryGallery;
