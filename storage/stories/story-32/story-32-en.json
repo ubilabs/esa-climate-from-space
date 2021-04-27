@@ -24,6 +24,13 @@
         "Atmospheric carbon dioxide history for the last 800,000 years, based on air samples from ice cores at Vostok Station, Antarctica, and since 1958, direct measurements from Mauna Loa Observatory, Hawaii. The present concentration of over 400 parts per million is thought to be higher than it has been for many millions of years. (data source: Scripps Institute of Oceanography)",
         "Global average surface temperature change over the industrial era. The world’s leading climate research centres are in broad agreement that Earth’s temperature has risen by more than one degree Celsius over the last century. Data sources: ERA5 (ECMWF), GISTEMPv4 (NASA), HadCRUT5 (UK Met Office), NOAAGlobalTempv5 (NOAA), JRA-55 (Japan Meteorological Agency), Berkeley Earth (Copernicus Climate Change Service / ECMWF)",
         "Temperature difference between 2020 and 1981-2010. Air temperature at a height of two metres for 2020, shown relative to its 1981-2010 average. The temperature rise at a particular location can be significantly larger than the global average. Data source: ERA5 (Copernicus Climate Change Service / ECMWF)"
+      ],
+      "imageFits": [
+        "cover",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
@@ -37,6 +44,13 @@
       "imageCaptions": [
         "ESA's Envisat Earth observation satellite operated from 2002 to 2012 (ESA)",
         "Envisat has been followed by a fleet of European Earth observation satellites, including experimental Earth science satellites, operational Copernicus Sentinel satellites financed by the European Union, and weather satellites operated by EUMETSAT. (ESA)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
@@ -52,12 +66,26 @@
         "9 July 2015: The opening of ESA's European Centre for Space Applications and Telecommunications (ECSAT) in Harwell, UK, home to ESA's Climate Office (ESA)",
         "The UN’s Global Climate Observing System has identified 54 ‘essential climate variables’. \r\nESA’s Climate Change Initiative is developing satellite-derived data sequences for 22 of these ECVs. (GCOS/Planetary Visions)",
         "Timespans of the CCI ECVs. Some cover more than forty years of satellite observations. (ESA)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
       "type": "globe",
       "text": "## Using the App\r\n\r\nIn this web app you will find out about the work of a unique community of scientists. The texts in the Stories Mode tell you about different parts of the Earth’s climate system, how we can track changes to those key climate variables, and how they affect human life. The stories explain how satellites and their sensor technologies are used, and some of the project’s scientists describe their work in their own words.\r\n\r\nFor exhibition or classroom use, Presenter Mode offers bullet point summaries of the stories in a larger font. You can switch to Presenter Mode on the preferences screen, found by selecting the three dots at top right of the opening screen.\r\n\r\n## Exploring the Data\r\n\r\nThroughout the stories there are links to the interactive data viewer, enabling you to play, pause, rewind and step through the climate data, to observe weekly, seasonal and long-term changes. Go to the Data Mode to access data layers from all of the projects.\r\n\r\nYou can compare, side by side, some of the most accurate, consistent and long-running observations of our planet from space. You now have forty years of global climate measurements at your fingertips…",
       "shortText": "# Using the App\r\n\r\nIn this web app you will find out about the work of a unique community of scientists. \r\n\r\n- The texts in the Stories Mode tell you about different parts of the Earth’s climate system, how we can track changes to those key climate variables, and how they affect human life. \r\n- The stories explain how satellites and their sensor technologies are used, and some of the project’s scientists describe their work in their own words.\r\n- To read the full story texts, leave Presenter Mode by going back to Data Mode and re-enter Story Mode.\r\n\r\n## Exploring the Data\r\n- Throughout the stories there are links to the climate data, enabling you to play, pause, rewind and step through weekly, seasonal and long-term changes. \r\n- Go to the Data Mode to access data from all of the projects.\r\n- You can compare, side by side, some of the most accurate, consistent and long-running observations of our planet from space. \r\n\r\nYou now have forty years of global climate measurements at your fingertips…",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "flyTo": {
         "position": {
           "longitude": -26.89,
@@ -76,7 +104,7 @@
           "timestamp": "2016-12-01T12:00:00.000Z"
         }
       ],
-      "layerDescription": "Planet Earth at your fingertips: The interactive globe allows you to explore data from ESA’s Climate Change Initiative."
+      "layerDescription": "# CCI Sea Surface Temperature \r\n\r\nPlanet Earth at your fingertips: the interactive globe allows you to explore data from ESA’s Climate Change Initiative."
     }
   ]
 }
