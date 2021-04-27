@@ -5,9 +5,13 @@
   flex-shrink: 0
   justify-content: space-between
   align-items: center
+  padding-left: emCalc(20px)
   height: $headerHeight
   background-color: $darkGrey1
   font-family: NotesEsa
+
+.logo
+  width: fit-content
 
 .backButton
   flex-grow: 1
@@ -41,3 +45,7 @@
 
   svg
     padding-left: emCalc(15px)
+
+@media screen and (max-width: 480px)
+  .logo
+    width: emCalc(12px)

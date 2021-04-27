@@ -27,7 +27,7 @@
       "permafrost",
       "sea-ice"
     ],
-    "position": [148, 20]
+    "position": [148, -20]
   },
   {
     "id": "story-29",
@@ -56,7 +56,7 @@
     "title": "Urban Heat",
     "description": "",
     "image": "assets/story27-image03.jpg",
-    "tags": ["climate-modelling", "ocean-colour"],
+    "tags": ["land-surface-temperature", "soil-moisture", "land-cover"],
     "position": [37, 55]
   },
   {

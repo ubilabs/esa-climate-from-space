@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.0.1...v1.1.0) (2021-04-27)
+
+
+### Features
+
+* **about:** add route for about component ([3422e5a](https://github.com/ubilabs/esa-climate-from-space/commit/3422e5abc4b2cb2aaad6709409b74886dc46ba7b))
+* **stories:** add esa logo to stories ([#891](https://github.com/ubilabs/esa-climate-from-space/issues/891)) ([a00b8bd](https://github.com/ubilabs/esa-climate-from-space/commit/a00b8bd31994e76253443ee70b0963b65a9e1691))
+* **storyLinks:** add links to other stories ([#895](https://github.com/ubilabs/esa-climate-from-space/issues/895)) ([42ba188](https://github.com/ubilabs/esa-climate-from-space/commit/42ba188b71d22dedaf8eb5fd0deec4a5a4adb4f9))
+
+
+
+## [1.0.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.0.0...v1.0.1) (2021-03-18)
+
+
+
 # [1.0.0](https://github.com/ubilabs/esa-climate-from-space/compare/v0.11.3...v1.0.0) (2021-03-18)
 
 

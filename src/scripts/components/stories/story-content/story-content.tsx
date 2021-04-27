@@ -32,13 +32,21 @@ const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
   const transformLinkUri = (originalSrc: string) =>
     getStoryAssetUrl(storyId, originalSrc);
 
+  const getLinkTarget = (originalSrc: string) => {
+    if (originalSrc.startsWith('stories')) {
+      return '_self';
+    }
+
+    return '_blank';
+  };
+
   return (
     <div className={contentClasses}>
       <ReactMarkdown
         source={storyText}
         transformImageUri={transformImageUri}
         transformLinkUri={transformLinkUri}
-        linkTarget="_blank"
+        linkTarget={getLinkTarget}
         allowedTypes={[
           'heading',
           'text',
