@@ -12,7 +12,7 @@
     {
       "type": "image",
       "text": "## Winter Heatwave\r\n\r\nFor the 2020 New Year celebrations in Moscow, they had to make artificial snow. The Russian capital, famous for its cold, hard winters, had reached 5.4 degrees Celsius – its highest December temperature since records began in 1879. A planned snow-boarding event went ahead only with the help of “snow” scraped from the surface of a nearby ice rink. Children were playing football in courtyards that usually host ice hockey games.\r\n\r\nRussia is warming 2.5 times faster than the global average, and many of the effects of climate change are amplified in large cities like Moscow. The expanding urban areas, in which an increasing number of us live, absorb and retain heat better than most natural cover types. \r\n\r\n## Extremes Amplified\r\n\r\nHeatwaves killed 70,000 people across Europe in 2003 and 55,000 in Russia alone in 2010. Cities are exposed to the most extreme temperatures in a heatwave, which can induce dehydration or heat stroke and increase the risk from stroke, heart and breathing conditions. While much is made of the rise in global mean temperature – about 0.2 degrees Celsius per decade – the single-day temperature extremes experienced in heatwaves are rising faster. In cities with over 5 million people, the hottest day of the year is rising on average 0.33 degrees Celsius per decade and in Moscow, Paris and Houston, over 0.9 degrees Celsius per decade. The increased threat to life from one-day extremes is thought to be comparable to that from prolonged heat events.",
-      "shortText": "## Winter Heatwave\r\n\r\nFor the 2020 New Year celebrations in Moscow, Russia’s notoriously cold capital, they had to make artificial snow. \r\n\r\n- Air temperature reached 5.4°C – the highest for December since records began in 1879. \r\n- Russia is warming 2.5 times faster than the global average.\r\n- Effects of climate change are amplified in large cities like Moscow. \r\n- Urban areas absorb and retain heat better than most natural land cover. \r\n\r\n## Extremes Amplified \r\n\r\n- Heatwaves killed 70,000  in Europe in 2003; 55,000 in Russia in 2010. \r\n- Dehydration, increased risk of stroke, heart and breathing conditions.\r\n- Cities are exposed to the most extreme temperatures in a heatwave.\r\n- Global mean temperature rising 0.2°C per decade but single-day extremes rising faster. \r\n- Hottest day of the year rising 0.33°C per decade in cities with over 5 million people.\r\n- Over 0.9°C per decade in Moscow, Paris and Houston.",
+      "shortText": "s",
       "images": [
         "assets/story27-image01.jpg",
         "assets/story27-image02.jpg",
@@ -22,12 +22,26 @@
         "Trucks delivering manufactured snow to a Moscow street during a heatwave in December 2019 (Twitter)",
         "Summer heatwaves can damage infrastructure such as railway tracks and road surfaces, as well as putting excessive loads on water and electricity supplies (US Dept of Transportation)",
         "Mean night-time air temperature in Paris at 10pm during the heatwave of summer 2003, which led to thousands of heat-related deaths. (VITO/Planetek)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
       "type": "globe",
       "text": "## Urban Heat Islands\r\n\r\nThe interactive globe shows the extent of different types of land cover, including urban areas as well as natural cover types like forest and desert. Check out the explosive growth of cities like Shanghai in China since the start of the data record in the 1990s. Consistent maps of land cover are derived from satellite observations by the European Space Agency’s Climate Change Initiative. Other climate variables measured from space are the amount of moisture in the soil and the temperature of the land surface, providing a bird’s eye view of the planet’s hotspots.\r\n\r\n![urban and rural temperature profiles graph ](assets/story27-image04.png) \r\n_Comparison of monthly average temperature for urban  and rural weather stations in the UK (Heathrow and Waddington respectively) (KNMI)_    \r\n\r\nAs more and more people move into a city, large areas of vegetation are replaced by roads, parking areas and buildings. Construction materials have a much higher capacity to absorb and store heat from the Sun than plants and soil, whilst densely-packed buildings prevent air from circulating so less heat can escape. Heat generated within factories, offices and homes also raises air temperatures. Cities can be up to 7 degrees Celsius warmer than the surrounding countryside. Places where temperatures are elevated in this way are known as urban heat islands.",
       "shortText": "## Urban Heat Islands\r\n\r\nThe interactive globe shows the explosive growth of cities like Shanghai in China since the start of the data record in the 1990s. \r\n\r\n- Land cover, land surface temperature and soil moisture are useful climate variables for cities.\r\n- As cities expand, vegetation is replaced by buildings, roads and parking. \r\n- Building materials have a much higher heat capacity than plants and soil.  \r\n- Heat generated within factories, offices and homes also contributes to rising air termperatures.\r\n- Cities can be up to 7°C warmer than the surrounding countryside. \r\n\r\n![urban and rural temperature profiles graph ](assets/story27-image04.png) \r\n_Comparison of monthly average temperature for urban  and rural weather stations in the UK (Heathrow and Waddington respectively) (KNMI)_",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "flyTo": {
         "position": {
           "longitude": 119.04,
@@ -46,7 +60,7 @@
           "timestamp": "2015-01-01T00:00:00.000Z"
         }
       ],
-      "layerDescription": "Land Cover Type for eastern China: urban areas are shown in red"
+      "layerDescription": "# CCI Land Cover Type\r\n\r\nUrban areas are shown in red."
     },
     {
       "type": "image",
@@ -65,6 +79,13 @@
         "Land surface temperature derived from the SLSTR instrument on the Copernicus Sentinel-3 satellite, for 26 June (left) and 25 July (right) 2019. That summer saw an extreme heatwave in Europe with record-breaking temperatures in the Netherlands, Belgium, Germany and Paris. (ESA)",
         "Average land surface temperature for September 2006, derived from Envisat AATSR (University of Leicester)",
         "Global land surface temperature anomaly for September 2006 from Envisat AATSR, showing a heatwave over central and northern Europe (University of Liecester)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
@@ -82,6 +103,13 @@
         "Land surface temperature (left) and a measure of the urban heat island relative to surrounding rural areas (right) for London, based on Landsat thermal infrared observations for 7th July 2020. The elevation of land surface temperature in cities is even higher than it is for air temperature. (University of Liecester)",
         "Air temperature for Madrid on 25 June 2008 at 22:18 UTC (right), compared with a map of sealed soil surface area (left), highlighting the city’s artificial surfaces. (VITO/Indra/Planetek/European Environment Agency)",
         "A pair of oak trees on Hampstead Heath in London, rendered as a point cloud from laser distance measurements. \r\nThe mass of carbon stored by trees can be estimated using 3D tree models based on laser scanning \r\n(lidar – light detection and ranging). (M Disney/P Wilkes/UCL)"
+      ],
+      "imageFits": [
+        "cover",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     }
   ]
