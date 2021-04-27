@@ -1,3 +1,12 @@
+## [1.1.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.1.0...v1.1.1) (2021-04-27)
+
+
+### Bug Fixes
+
+* **tracking:** remove duplicate toggle ([0881780](https://github.com/ubilabs/esa-climate-from-space/commit/0881780f8d94bf07231b1bc192e4240074dc0616))
+
+
+
 # [1.1.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.0.1...v1.1.0) (2021-04-27)
 
 
