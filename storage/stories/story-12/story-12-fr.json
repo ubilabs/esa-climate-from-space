@@ -21,9 +21,9 @@
       ],
       "imageCaptions": [
         "Spare natural gas being burned off on an oil production platform in the North Sea. Carbon dioxide and water vapour are the main combustion products. Extracting and burning hydrocarbons pumps carbon from a rock reservoir into the atmosphere. (Varodrig)",
-        "Atmospheric carbon dioxide concentration over the last 300 years, based on air samples from ice cores and, since 1958, direct measurements from Mauna Loa Observatory, Hawaii. Carbon dioxide has been accumulating in the atmosphere since the Industrial Revolution, its concentration increasing rapidly in the second half of the twentieth century. (source: Scripps Institute of Oceanography)",
+        "# Atmospheric Carbon Dioxide Concentration\r\nAtmospheric carbon dioxide concentration over the last 300 years, based on air samples from ice cores and, since 1958, direct measurements from Mauna Loa Observatory, Hawaii. Carbon dioxide has been accumulating in the atmosphere since the Industrial Revolution, its concentration increasing rapidly in the second half of the twentieth century. (source: Scripps Institute of Oceanography)",
         "The molecular structure of carbon dioxide and methane molecules allows them to absorb infrared radiation. Heat is absorbed by a molecule if the atoms inside can vibrate at the frequency of infrared radiation. More complex molecules have more vibrational modes, so more opportunities to absorb heat, making them more powerful greenhouse gases. A methane molecule, with one carbon atom (grey) bound to four hydrogen atoms (red), can absorb more heat than a carbon dioxide molecule, with one carbon atom bound to two oxygen atoms (blue). A chlorofluorocarbon like CFC-113 (green and yellow) has even more bonds, making it a very powerful greenhouse gas. (Planetary Visions)",
-        "Atmospheric carbon dioxide as a function of time and latitude, derived from the SCIAMACHY sensor on Envisat. The data surface shows the natural annual cycle of carbon dioxide uptake and release, which is particularly strong in the northern hemisphere, as well as a gradual increase over the years resulting from human activity. (ESA-CCI)"
+        "# Atmospheric Carbon Dioxide through Time and Latitude\r\nThe data surface shows the natural annual cycle of carbon dioxide uptake and release, which is particularly strong in the northern hemisphere, as well as a gradual increase over the years resulting from human activity. Data derived from the SCIAMACHY sensor on Envisat. (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
@@ -89,7 +89,7 @@
       "imageCaptions": [
         "On a clear night light shines out from urban areas across western Europe, painting a portrait of an energy-hungry society.  Photograph taken by ESA astronaut Alexander Gerst from the International Space Station on July 26 2014. (ESA/NASA)",
         "Deforestation in the state of Rondônia in western Brazil, as imaged by ESA’s Proba-V minisatellite. The brown colours indicate deforested areas – note the distinctive ‘fishbone’ pattern as main roads are cut through an area, followed by secondary roads for further clearing. Agricultural activities including deforestation are the second-largest source of greenhouse gases, after fossil fuels. (ESA/VITO)",
-        "Atmospheric carbon dioxide history for the last 800,000 years, based on air samples from ice cores at Vostok Station, Antarctica, and since 1958, direct measurements from Mauna Loa Observatory, Hawaii. The present concentration of over 400 parts per million is thought to be higher than it has been for many millions of years. (data source: Scripps Institute of Oceanography)"
+        "# Atmospheric Carbon Dioxide for the Last 800,000 Years\r\nCarbon dioxide concentration based on air samples from ice cores at Vostok Station, Antarctica, and since 1958, direct measurements from Mauna Loa Observatory, Hawaii. The present concentration of over 400 parts per million is thought to be higher than it has been for many millions of years. (data source: Scripps Institute of Oceanography)"
       ],
       "imageFits": [
         "contain",
