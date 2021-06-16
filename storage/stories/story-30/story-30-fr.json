@@ -98,8 +98,8 @@
         "High tide on Marakei Island, Kiribati (Diederik Veerman/Museon The Hague)",
         "The Mississippi Delta is losing land the size of a football field every hour to the sea. Proba-V satellite image from 10 February 2015. \r\n(ESA-BELSPO, produced by VITO)",
         "Copernicus Sentinel-2 Image of the 9km-long Eastern Scheldt Storm Surge Barrier (Oosterscheldekering) in the Netherlands.  \r\nCoastal defences like this will be severely challenged in a future world with higher sea level.\r\n(Modified Copernicus Sentinel data (2020), processed by ESA)",
-        "Since the early 1990s, satellite altimeters have revolutionised our understanding of sea-level rise. Global mean sea level has not only risen over the last 25 years – by about 3 cm per decade – but the rate at which it is rising is accelerating. ESA’s ERS and Envisat satellites carried radar altimeters, as do CryoSat and Copernicus Sentinel-3. Copernicus Sentinel-6 provides continuity with the US-French Jason and Topex-Poseidon satellites. (ESA)",
-        "A map of regional sea level trends, derived from more than 20 years of satellite observations, shows where mean sea level is rising the most (red), dropping (blue), or remains unchanged (grey) (ESA-CCI)"
+        "# Sea Level Rise Measured by Satellites\r\n\r\nSince the early 1990s, satellite altimeters have revolutionised our understanding of sea-level rise. Global mean sea level has not only risen over the last 25 years – by about 3 cm per decade – but the rate at which it is rising is accelerating. ESA’s ERS and Envisat satellites carried radar altimeters, as do CryoSat and Copernicus Sentinel-3. Copernicus Sentinel-6 provides continuity with the US-French Jason and Topex-Poseidon satellites. (ESA)",
+        "# Regional Sea Level Trend 1993-2015\r\n\r\nA map of regional sea level trends, derived from more than 20 years of satellite observations, shows where mean sea level is rising the most (red), dropping (blue), or remains unchanged (grey) (ESA-CCI)"
       ],
       "imageFits": [
         "cover",
