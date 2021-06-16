@@ -25,7 +25,7 @@
         "The Sun in visible (left) and ultraviolet light (right), as viewed by the SOHO satellite on February 3, 2002 (ESA/NASA)",
         "Chlorine acts as a catalyst for ozone destruction (Planetary Visions)",
         "One day of ozone observations from ERS-2 GOME. (ESA)",
-        "Total ozone values over Antarctica recorded at the Halley research station, and by three satellite sensors, TOMS, OMI and OMPS (NASA-GSFC)"
+        "# Total Ozone Over Antarctica\r\nTotal ozone values over Antarctica recorded at the Halley research station, and by three satellite sensors, TOMS, OMI and OMPS (NASA-GSFC)"
       ],
       "imageFits": [
         "cover",
@@ -90,7 +90,7 @@
         "assets/ozone_large_09.png"
       ],
       "imageCaptions": [
-        "Ozone profile showing a section through the atmosphere from sea level up to a height of 40km, centred on longitude 50°West, with the north pole on the left and the south pole on the right. (Satellite observations assimilated into the chemical transport model TM5.) (Planetary Visions/ESA-CCI)",
+        "# Ozone Profile at Longitude 50° West\r\nOzone profile showing a section through the atmosphere from sea level up to a height of 40km, centred on longitude 50°West, with the north pole on the left and the south pole on the right. (Satellite observations assimilated into the chemical transport model TM5.) (Planetary Visions/ESA-CCI)",
         "Nitrogen dioxide, an ozone precursor, over Europe in January 2020 from the TROPOMI instrument on ESA’s Sentinel-5P satellite (contains modified Copernicus Sentinel data (2020), processed by ESA)",
         "The SCIAMACHY sensor on Envisat has three modes of operation: (1) nadir mode looks vertically beneath the spacecraft; (2) limb mode looks through the atmosphere away from the Sun; (3) occultation mode looks through the atmosphere towards the Sun. (DLR-IMF)",
         "Satellites and sensors used by the CCI Ozone team to produce merged total ozone maps"
