@@ -21,9 +21,9 @@
       ],
       "imageCaptions": [
         "The atmosphere over the Amazon Basin is thick with thunderstorms in this photo, taken from the International Space Station on 6 October 2009 (NASA)",
-        "Atmospheric carbon dioxide history for the last 800,000 years, based on air samples from ice cores at Vostok Station, Antarctica, and since 1958, direct measurements from Mauna Loa Observatory, Hawaii. The present concentration of over 400 parts per million is thought to be higher than it has been for many millions of years. (data source: Scripps Institute of Oceanography)",
-        "Global average surface temperature change over the industrial era. The world’s leading climate research centres are in broad agreement that Earth’s temperature has risen by more than one degree Celsius over the last century. Data sources: ERA5 (ECMWF), GISTEMPv4 (NASA), HadCRUT5 (UK Met Office), NOAAGlobalTempv5 (NOAA), JRA-55 (Japan Meteorological Agency), Berkeley Earth (Copernicus Climate Change Service / ECMWF)",
-        "Temperature difference between 2020 and 1981-2010. Air temperature at a height of two metres for 2020, shown relative to its 1981-2010 average. The temperature rise at a particular location can be significantly larger than the global average. Data source: ERA5 (Copernicus Climate Change Service / ECMWF)"
+        "#  Atmospheric Carbon Dioxide for the Last 800,000 Years\r\nAtmospheric carbon dioxide history for the last 800,000 years, based on air samples from ice cores at Vostok Station, Antarctica, and since 1958, direct measurements from Mauna Loa Observatory, Hawaii. The present concentration of over 400 parts per million is thought to be higher than it has been for many millions of years. (data source: Scripps Institute of Oceanography)",
+        "# Global Average Surface Temperature Change Over the Industrial Era\r\nThe world’s leading climate research centres are in broad agreement that Earth’s temperature has risen by more than one degree Celsius over the last century. Data sources: ERA5 (ECMWF), GISTEMPv4 (NASA), HadCRUT5 (UK Met Office), NOAAGlobalTempv5 (NOAA), JRA-55 (Japan Meteorological Agency), Berkeley Earth (Copernicus Climate Change Service / ECMWF)",
+        "# Temperature Change Between 2020 and 1981-2010. Air temperature at a height of two metres for 2020, shown relative to its 1981-2010 average. The temperature rise at a particular location can be significantly larger than the global average. Data source: ERA5 (Copernicus Climate Change Service / ECMWF)"
       ],
       "imageFits": [
         "cover",
@@ -43,7 +43,7 @@
       ],
       "imageCaptions": [
         "ESA's Envisat Earth observation satellite operated from 2002 to 2012 (ESA)",
-        "Envisat has been followed by a fleet of European Earth observation satellites, including experimental Earth science satellites, operational Copernicus Sentinel satellites financed by the European Union, and weather satellites operated by EUMETSAT. (ESA)"
+        "# ESA-Developed Earth Observation Missions\r\nEnvisat has been followed by a fleet of European Earth observation satellites, including experimental Earth science satellites, operational Copernicus Sentinel satellites financed by the European Union, and weather satellites operated by EUMETSAT. (ESA)"
       ],
       "imageFits": [
         "contain",
@@ -64,8 +64,8 @@
       ],
       "imageCaptions": [
         "9 July 2015: The opening of ESA's European Centre for Space Applications and Telecommunications (ECSAT) in Harwell, UK, home to ESA's Climate Office (ESA)",
-        "The UN’s Global Climate Observing System has identified 54 ‘essential climate variables’. \r\nESA’s Climate Change Initiative is developing satellite-derived data sequences for 22 of these ECVs. (GCOS/Planetary Visions)",
-        "Timespans of the CCI ECVs. Some cover more than forty years of satellite observations. (ESA)"
+        "# UN-GCOS Essential Climate Variables\r\nThe UN’s Global Climate Observing System has identified 54 ‘essential climate variables’. \r\nESA’s Climate Change Initiative is developing satellite-derived data sequences for 22 of these ECVs. (GCOS/Planetary Visions)",
+        "# ESA-CCI Essential Climate Variables\r\nTimespans of the CCI ECVs. Some cover more than forty years of satellite observations. (ESA)"
       ],
       "imageFits": [
         "contain",
