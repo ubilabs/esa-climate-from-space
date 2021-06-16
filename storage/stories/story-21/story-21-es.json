@@ -19,7 +19,7 @@
       ],
       "imageCaptions": [
         "A woman is trapped on her car roof during a  flash flood in Toowoomba, Queensland, Australia, 10 January 2011 (T Swinson)",
-        "Global sea level observed by satellites shows a rising trend, but a drop in 2011 due to the large amount of excess water on land.  (ESA-CCI/Copernicus Marine Environment Monitoring Service)"
+        "# Global Sea Level Rise\r\nGlobal sea level observed by satellites shows a rising trend, but a drop in 2011 due to the large amount of excess water on land.  (ESA-CCI/Copernicus Marine Environment Monitoring Service)"
       ],
       "imageFits": [
         "cover",
@@ -124,9 +124,9 @@
       ],
       "imageCaptions": [
         "The trillion tonnes of ice lost each year is enough to form \r\na 10-kilometre-tall ice cube, shown here next to Manhattan for scale.\r\nIce lost from glaciers and ice sheets on land contributes to sea level rise, \r\nbut sea ice and floating ice shelves do not. (Planetary Visions / ESA / NASA)",
-        "More than nine trillion tonnes of glacier ice has been lost in the last half century (ESA, adapted from Zemp et al (2019) Nature, and data courtesy World Glacier Monitoring Service)",
-        "Global water cycle fluxes, measured in thousand cubic kilometres per year (TU Wien/W Dorigo)",
-        "Heat energy accumulated in different components of Earth’s climate system since 1971, measured in zettajoules (1 ZJ is 10^21 J, or a thousand billion billion J). Water in the world’s oceans stores far more heat than the atmosphere and the land. \r\n(UN IPCC, 2013)"
+        "# Cummulative Change in Glacial Ice Mass 1961-2016\r\nMore than nine trillion tonnes of glacier ice has been lost in the last half century (ESA, adapted from Zemp et al (2019) Nature, and data courtesy World Glacier Monitoring Service)",
+        "# Global Water Cycle Fluxes\r\nGlobal water cycle fluxes, measured in thousand cubic kilometres per year (TU Wien/W Dorigo)",
+        "# Energy Stored in Climate System Components\r\nHeat energy accumulated in different components of Earth’s climate system since 1971, measured in zettajoules (1 ZJ is 10^21 J, or a thousand billion billion J). Water in the world’s oceans stores far more heat than the atmosphere and the land. \r\n(UN IPCC, 2013)"
       ],
       "imageFits": [
         "contain",
