@@ -6,7 +6,7 @@
       "year": "numeric",
       "month": "long"
     },
-    "legendValues": ["400 km²", "300", "200", "100", "0"]
+    "legendValues": ["300 km²", "200", "100", "0"]
   },
   "sst.analysed_sst": {
     "colorMap": "jet",
