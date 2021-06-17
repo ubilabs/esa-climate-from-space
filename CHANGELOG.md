@@ -1,3 +1,14 @@
+# [1.2.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.1.1...v1.2.0) (2021-06-17)
+
+
+### Bug Fixes
+
+* **dataset:** fix legend image colors for fire layer ([#916](https://github.com/ubilabs/esa-climate-from-space/issues/916)) ([fe01088](https://github.com/ubilabs/esa-climate-from-space/commit/fe01088be1eb9bfc70f8856841634e6da2b681cc))
+* **dataset:** use correct fire legend values ([#917](https://github.com/ubilabs/esa-climate-from-space/issues/917)) ([9efb7f0](https://github.com/ubilabs/esa-climate-from-space/commit/9efb7f02237fe17e45803550b470239fe8004ba4))
+* **mobile:** hide overflow, move layer selector to top ([a13d6a6](https://github.com/ubilabs/esa-climate-from-space/commit/a13d6a65529583a1aeddc4b0c5b7aa96f465325d))
+
+
+
 ## [1.1.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.1.0...v1.1.1) (2021-04-27)
 
 # [1.1.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.0.1...v1.1.0) (2021-04-27)
