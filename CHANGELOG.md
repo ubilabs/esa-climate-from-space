@@ -1,3 +1,26 @@
+# [1.2.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.1.1...v1.2.0) (2021-06-17)
+
+### Bug Fixes
+
+- **dataset:** fix legend image colors for fire layer ([#916](https://github.com/ubilabs/esa-climate-from-space/issues/916)) ([fe01088](https://github.com/ubilabs/esa-climate-from-space/commit/fe01088be1eb9bfc70f8856841634e6da2b681cc))
+- **dataset:** use correct fire legend values ([#917](https://github.com/ubilabs/esa-climate-from-space/issues/917)) ([9efb7f0](https://github.com/ubilabs/esa-climate-from-space/commit/9efb7f02237fe17e45803550b470239fe8004ba4))
+- **mobile:** hide overflow, move layer selector to top ([a13d6a6](https://github.com/ubilabs/esa-climate-from-space/commit/a13d6a65529583a1aeddc4b0c5b7aa96f465325d))
+
+### Features
+
+- **content:** update story 26 ([920](https://github.com/ubilabs/esa-climate-from-space/pull/920))
+- **content:** update story 29 ([921](https://github.com/ubilabs/esa-climate-from-space/pull/921))
+- **content:** update story 12 ([922](https://github.com/ubilabs/esa-climate-from-space/pull/922))
+- **content:** update story 8 ([923](https://github.com/ubilabs/esa-climate-from-space/pull/923))
+- **content:** update story 15 ([924](https://github.com/ubilabs/esa-climate-from-space/pull/924))
+- **content:** update story 16 ([925](https://github.com/ubilabs/esa-climate-from-space/pull/925))
+- **content:** update story 21 ([926](https://github.com/ubilabs/esa-climate-from-space/pull/926))
+- **content:** update story 32 ([927](https://github.com/ubilabs/esa-climate-from-space/pull/927))
+- **content:** update story 31 ([928](https://github.com/ubilabs/esa-climate-from-space/pull/928))
+- **content:** update story 27 ([929](https://github.com/ubilabs/esa-climate-from-space/pull/929))
+- **content:** update story 28 ([930](https://github.com/ubilabs/esa-climate-from-space/pull/930))
+- **content:** update story 30 ([931](https://github.com/ubilabs/esa-climate-from-space/pull/931))
+
 ## [1.1.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.1.0...v1.1.1) (2021-04-27)
 
 # [1.1.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.0.1...v1.1.0) (2021-04-27)
