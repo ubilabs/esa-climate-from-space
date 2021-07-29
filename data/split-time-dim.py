@@ -6,6 +6,7 @@ from argparse import ArgumentParser
 
 parser = ArgumentParser()
 parser.add_argument("-f", "--file", dest="file")
+parser.add_argument("-o", "--folder", dest="folder")
 parser.add_argument("-v", "--variable", dest="variable")
 args = parser.parse_args()
 
@@ -15,6 +16,6 @@ da = ds[args.variable]
 for n in range(len(da.time)):
   da_slice = da.isel(time=n)
   date = pd.to_datetime(str(da_slice.time.values))
-  filename = date.strftime('./download/soil_moisture/%Y%m%d.nc')
+  filename = date.strftime('%s/%%Y%%m%%d.nc' % (args.folder))
   print(filename)
   da_slice.to_dataset().to_netcdf(filename, format='NETCDF4', mode='w')
