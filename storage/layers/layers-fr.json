@@ -1,146 +1,146 @@
 [
   {
-    "layerId": "fire.burned_area",
+    "id": "fire.burned_area",
     "type": "Biosphere",
     "name": "Fire Burned Area",
     "shortName": "Fire",
     "description": "a\n\nb"
   },
   {
-    "layerId": "soil_moisture.sm_mean",
+    "id": "soil_moisture.sm_mean",
     "type": "Hydrosphere",
     "name": "Soil Moisture",
     "shortName": "Soil Moisture",
     "description": "a\n\nb"
   },
   {
-    "layerId": "soil_moisture.Anomaly",
+    "id": "soil_moisture.Anomaly",
     "type": "Hydrosphere",
     "name": "Soil Moisture – Anomalies",
     "shortName": "Soil Moisture – Anomalies",
     "description": "a\n\nb"
   },
   {
-    "layerId": "sst.analysed_sst",
+    "id": "sst.analysed_sst",
     "type": "Surface Ocean Physics",
     "name": "Sea Surface Temperature",
     "shortName": "Sea Surface Temperature",
     "description": "a\n\nb"
   },
   {
-    "layerId": "oc.chlor_a",
+    "id": "oc.chlor_a",
     "type": "Ocean Biogeochemistry",
     "name": "Ocean Colour – Chlorophyll-a Concentration",
     "shortName": "Ocean Colour",
     "description": "a\n\nb"
   },
   {
-    "layerId": "aerosol.AOD550_mean",
+    "id": "aerosol.AOD550_mean",
     "type": "Atmospheric Composition",
     "name": "Aerosol Optical Depth",
     "shortName": "Aerosols",
     "description": "a\n\nb"
   },
   {
-    "layerId": "cloud.cfc",
+    "id": "cloud.cfc",
     "type": "Upper-air Atmosphere",
     "name": "Cloud Fraction",
     "shortName": "Clouds",
     "description": "a\n\nb"
   },
   {
-    "layerId": "sea_level.sla",
+    "id": "sea_level.sla",
     "type": "Surface Ocean Physics",
     "name": "Sea Level Anomalies",
     "shortName": "Sea Level Anomalies",
     "description": "a\n\nb"
   },
   {
-    "layerId": "sea_state.swh_mean",
+    "id": "sea_state.swh_mean",
     "type": "Surface Ocean Physics",
     "name": "Sea State – Mean Significant Wave Height",
     "shortName": "Sea State",
     "description": "a\n\nb"
   },
   {
-    "layerId": "sea_ice_sh.ice_conc",
+    "id": "sea_ice_sh.ice_conc",
     "type": "Surface Ocean Physics",
     "name": "Sea Ice – Southern Hemisphere",
     "shortName": "Sea Ice – Southern Hemisphere",
     "description": "a\n\nb"
   },
   {
-    "layerId": "sea_ice_nh.ice_conc",
+    "id": "sea_ice_nh.ice_conc",
     "type": "Surface Ocean Physics",
     "name": "Sea Ice – Northern Hemisphere",
     "shortName": "Sea Ice – Northern Hemisphere",
     "description": "a\n\nb"
   },
   {
-    "layerId": "greenland_ice.sec",
+    "id": "greenland_ice.sec",
     "type": "Cryosphere",
     "name": "Greenland Ice Sheet – Surface Elevation Change",
     "shortName": "Greenland Ice Sheet – SEC",
     "description": "a\n\nb"
   },
   {
-    "layerId": "permafrost.pfr",
+    "id": "permafrost.pfr",
     "type": "Cryosphere",
     "name": "Permafrost",
     "shortName": "Permafrost",
     "description": "a\n\nb"
   },
   {
-    "layerId": "land_cover.lccs_class",
+    "id": "land_cover.lccs_class",
     "type": "Biosphere",
     "name": "Land Cover",
     "shortName": "Land Cover",
     "description": "a\n\nb"
   },
   {
-    "layerId": "sea_surface_salinity.sss",
+    "id": "sea_surface_salinity.sss",
     "type": "Surface Ocean Physics",
     "name": "Sea Surface Salinity",
     "shortName": "Sea Surface Salinity",
     "description": "a\n\nb"
   },
   {
-    "layerId": "snow.swe",
+    "id": "snow.swe",
     "type": "Cryosphere",
     "name": "Snow",
     "shortName": "Snow",
     "description": "a\n\nb"
   },
   {
-    "layerId": "biomass.agb",
+    "id": "biomass.agb",
     "type": "Biosphere",
     "name": "Above Ground Biomass",
     "shortName": "Biomass",
     "description": "a\n\nb"
   },
   {
-    "layerId": "ozone.ozone_profile",
+    "id": "ozone.ozone_profile",
     "type": "Atmospheric Composition",
     "name": "Ozone Profile – at 50° West",
     "shortName": "Ozone Profile",
     "description": "a\n\nb"
   },
   {
-    "layerId": "greenhouse.xco2",
+    "id": "greenhouse.xco2",
     "type": "Atmospheric Composition",
     "name": "Carbon Dioxide (CO2)",
     "shortName": "Carbon Dioxide (CO2)",
     "description": "a\n\nb"
   },
   {
-    "layerId": "greenhouse.xch4",
+    "id": "greenhouse.xch4",
     "type": "Atmospheric Composition",
     "name": "Methane (CH4)",
     "shortName": "Methane (CH4)",
     "description": "a\n\nb"
   },
   {
-    "layerId": "ozone.total_ozone_column",
+    "id": "ozone.total_ozone_column",
     "type": "Atmospheric Composition",
     "name": "Ozone",
     "shortName": "Ozone",
