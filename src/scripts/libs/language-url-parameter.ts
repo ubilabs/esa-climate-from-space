@@ -11,9 +11,12 @@ export function parseUrl(): Language | null {
   const urlParams = new URLSearchParams(queryString);
   const languageParam = urlParams.get('lng') as Language;
 
-  if (!languageParam) {
-    return null;
+  if (
+    (languageParam && Object.values(Language).includes(languageParam)) ||
+    !languageParam
+  ) {
+    return languageParam;
   }
 
-  return languageParam;
+  return null;
 }
