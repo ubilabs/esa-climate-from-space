@@ -1,0 +1,16 @@
+{
+  "id": "glaciers.ice",
+  "minValue": 0.0,
+  "maxValue": 1.0,
+  "type": "image",
+  "zoomLevels": 5,
+  "timestamps": ["2021-01-01T00:00:00.000000000Z"],
+  "units": "",
+  "colorMap": "gray",
+  "basemap": "land",
+  "timeFormat": {
+    "year": "numeric",
+    "month": "long"
+  },
+  "hideLegend": true
+}
