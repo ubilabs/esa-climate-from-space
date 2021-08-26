@@ -152,5 +152,12 @@
     "name": "Randolph Glacier Inventory",
     "shortName": "Glaciers",
     "description": "A glacier is a persistent body of dense ice…\n\n**Variable Shown:** Randolph Glacier Inventory  \r\n\n**Time Span:**  \r\n\n**Temporal Resolution:**  \r\n\n**Geographic Extent:** global \r\n\n**Temporal resolution:**  \r\n\n**Geographic Extent:**  \r\n\n**Version:** Randolph Glacier Inventory\r\n\r\n[ESA CCI Glaciers ECV Project website](https://climate.esa.int/de/projekte/glaciers/) \r\n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/b05d478170e14356bbe2c3cce3f7bf67)"
+  },
+  {
+    "id": "lakes.lswt",
+    "type": "Lakes",
+    "name": "Lakes",
+    "shortName": "Lakes",
+    "description": "..."
   }
 ]

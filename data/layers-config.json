@@ -310,5 +310,12 @@
       "month": "long"
     },
     "legendValues": ["> 100 litres/m³", "-100"]
+  },
+  "lakes.lswt": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long"
+    }
   }
 }
