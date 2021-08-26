@@ -1,13 +1,19 @@
 #!/usr/bin/env bash
 
-URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/biomass/data/agb/maps/2017/v1.0/netcdf/ESACCI-BIOMASS-L4-AGB-MERGED-100m-2017-fv1.0.nc"
-START_DATE=2017-01-01
+DATA_VERSION="v2.0"
+YEARS="2010 2017 2018"
 OUTPUT_FODLER=./download
 
-FILENAME=$OUTPUT_FODLER/$(date +%Y%m%d -d "$START_DATE + $i month").nc
-echo $FTP_URL
 
-curl --silent $FTP_URL > $FILENAME
+for YEAR in $YEARS
+do
+    FTP_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/biomass/data/agb/maps/$DATA_VERSION/netcdf/$YEAR/ESACCI-BIOMASS-L4-AGB-MERGED-100m-$YEAR-f$DATA_VERSION.nc"
+    FILENAME="$OUTPUT_FODLER/$YEAR".nc
 
-python ./data/drop-unused-vars.py --file $FILENAME --variable AOD550_mean
-python ./data/add-time-coordinate.py --file $FILENAME --timestamp $NEXT_DATE
+    echo $FTP_URL
+
+    curl --silent $FTP_URL > $FILENAME
+
+    # TODO - for now timestamps are overwritten by 'layers-config.json' enrty
+    # python ./data/add-time-coordinate.py --file $FILENAME --timestamp $(date +%Y-%m-%d -d "$YEAR-01-01")
+done
