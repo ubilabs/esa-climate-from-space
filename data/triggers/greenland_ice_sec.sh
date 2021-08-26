@@ -4,14 +4,14 @@ TIMEOUT=2000
 LAYER_ID="greenland_ice.sec"
 VARIABLE_ID="SEC"
 LAYER_TYPE="tiles"
-VERSION="1.1.1"
+VERSION="1.2.1"
 ZOOM_LEVELS="0-3"
 MIN_LON="-90"
 MAX_LON="7.594643368591434"
 MIN_LAT="58.854580820213855"
 MAX_LAT="84.00492144822202"
-MIN="-5"
-MAX="5"
+MIN="1"
+MAX="-1"
 
 if [ ! -f ./package.json ]; then
     echo "You have to be in the root folder of the project to run this script!"
