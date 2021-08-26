@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-TIMEOUT=10000
+TIMEOUT=20000
 LAYER_ID="biomass.agb"
 VARIABLE_ID="agb"
 LAYER_TYPE="tiles"
-VERSION="1.1.1"
+VERSION="1.2.1"
 LON_RES="81000"
 LAT_RES="31500"
 ZOOM_LEVELS="0-7"
