@@ -20,6 +20,13 @@
       "imageCaptions": [
         "Swedish scientist Svente Arrhenius, photographed in 1909, four years after he was awarded the Nobel Prize in Chemistry. (Photogravure Meisenbach Riffarth & Co / Armin Kübelbeck).",
         "Arrhenius calculated the change in surface temperature at different latitudes for given changes in atmospheric carbon dioxide. Today, much more detailed tables of results are presented as colour-coded maps. (Table VII Variation of Temperature caused by a given variation of carbonic acid, from Arrhenius’ 1896 paper On the Influence of Carbonic Acid in the Air upon the Temperature of the Ground. ‘Carbonic acid’ was the term commonly used for carbon dioxide at the time.)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
@@ -39,12 +46,26 @@
         "Components of the Earth's climate system. . As well as the atmospheric circulation, \r\nclimate models also take into account processes from the other components of the Earth system:\r\nthe hydrosphere, the cryosphere the biosphere, and even the geosphere. \r\n (ESA)",
         "A climate model divides the Earth's surface into grid cells and its atmosphere into layers (Laurent Fairhead/UPMC)",
         "A climate model might run with a grid spacing of 90km, rather than the 30km grid used for weather forecasting (Crown Copyright)"
+      ],
+      "imageFits": [
+        "cover",
+        "cover",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
       "type": "video",
       "text": "##  Ocean Colour to Carbon Flux\r\n\r\nOne example of how satellite data have been used to improve climate models is provided by the CCI Ocean Colour team’s measurements of chlorophyll concentration. Variations in the colour of the ocean allow us to map the distribution of phytoplankton around the world. These tiny marine organisms contain chlorophyll, just like plants on land, and are linked to key climate processes including the removal of carbon dioxide from the atmosphere and the release of natural aerosols that influence cloud cover into the atmosphere.\r\n\r\nWhen the UK Met Office incorporated satellite-observed chlorophyll concentration in their ocean-biogeochemical model, it led to marked improvements in the how the model represented seasonal variations of phytoplankton and its distribution in the deeper parts of the ocean. The team also used the data to better model the exchange of carbon dioxide between the atmosphere and ocean. Comparing the outputs with a set of independent observations of sea surface carbon dioxide not only showed the model provided a better representation of the [carbon cycle](stories/story-12/0) in some areas but also highlighted where the model needs to be improved.\r\n \r\nIt is important to get this right because it helps us understand how the way the ocean absorbs and releases carbon might change as a result of different amounts and patterns of warming. At the moment, the ocean is a sink for carbon emissions from human activities, so it is important to know how it may respond in the future.",
       "shortText": "##  Ocean Colour to Carbon Flux\r\n\r\nCCI Ocean Colour team has measured ocean chlorophyll concentration:\r\n\r\n- variations in ocean colour show the distribution of phytoplankton around the world\r\n- tiny marine organisms containing chlorophyll\r\n- linked to removal of CO2 from the atmosphere \r\n- and release of aerosols that influence cloud cover\r\n\r\nIncorporated into UK Met Office ocean-biogeochemical model:\r\n\r\n- improved representation of phytoplankton seasonal variation \r\n- and distribution in deeper parts of the ocean \r\n- better modelling of CO2 exchange between atmosphere and ocean\r\n- also showed where the model needs to be improved\r\n\r\nImportant to get this right, since the ocean is a large sink for carbon emissions from human activities.",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "videoId": "JFfLijv-lsA"
     }
   ]
