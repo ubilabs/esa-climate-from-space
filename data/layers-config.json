@@ -316,6 +316,7 @@
     "timeFormat": {
       "year": "numeric",
       "month": "long"
-    }
+    },
+    "legendValues": ["35 °C", "-5"]
   }
 }
