@@ -53,6 +53,9 @@ const DataViewer: FunctionComponent<Props> = ({
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId)
   );
+  const mainLayer = useSelector((state: State) =>
+    layerListItemSelector(state, mainId)
+  );
   const compareLayer = useSelector((state: State) =>
     layerListItemSelector(state, compareId)
   );
@@ -193,7 +196,12 @@ const DataViewer: FunctionComponent<Props> = ({
           action: () => setIsMainActive(false)
         })}
 
-      {!hideNavigation && showGlobeNavigation && <GlobeNavigation />}
+      {!hideNavigation && showGlobeNavigation && (
+        <GlobeNavigation
+          mainLayerName={mainLayer?.name}
+          compareLayerName={compareLayer?.name}
+        />
+      )}
     </div>
   );
 };

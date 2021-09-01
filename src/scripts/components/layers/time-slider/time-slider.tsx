@@ -10,14 +10,11 @@ import {FormattedDate} from 'react-intl';
 import debounce from 'lodash.debounce';
 import cx from 'classnames';
 
-import {languageSelector} from '../../../selectors/language';
 import {timeSelector} from '../../../selectors/globe/time';
 import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
 import setGlobeTime from '../../../actions/set-globe-time';
-import {getTimeRanges} from '../../../libs/get-time-ranges';
 import {State} from '../../../reducers';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
-import {getLayerTimeIndex} from '../../../libs/get-image-layer-data';
 import getPlaybackStep from '../../../libs/get-playback-step';
 import clampToRange from '../../../libs/clamp-to-range';
 import TimeSliderRange from '../time-slider-range/time-slider-range';
@@ -27,6 +24,7 @@ import {PlayCircleIcon} from '../../main/icons/play-circle-icon';
 import {PauseCircleIcon} from '../../main/icons/pause-circle-icon';
 import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
 import {globeSpinningSelector} from '../../../selectors/globe/spinning';
+import {useLayerTimes} from '../../../hooks/use-formatted-time';
 
 import styles from './time-slider.styl';
 
@@ -46,7 +44,6 @@ const TimeSlider: FunctionComponent<Props> = ({
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const {mainId, compareId} = selectedLayerIds;
   const dispatch = useDispatch();
-  const language = useSelector(languageSelector);
   const globeTime = useSelector(timeSelector);
   const [time, setTime] = useState(globeTime);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -63,38 +60,16 @@ const TimeSlider: FunctionComponent<Props> = ({
     () => Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails)),
     [mainLayerDetails, compareLayerDetails]
   );
+  const {
+    mainTimeFormat,
+    compareTimeFormat,
+    rangeMain,
+    rangeCompare,
+    combined,
+    timeIndexMain,
+    timeIndexCompare
+  } = useLayerTimes();
 
-  // date format
-  const mainDateFormat = mainLayerDetails?.timeFormat;
-  const compareDateFormat = compareLayerDetails?.timeFormat;
-
-  const mainFormat = useMemo(
-    () => new Intl.DateTimeFormat(language, mainDateFormat || {}),
-    [language, mainDateFormat]
-  ).format;
-
-  const compareFormat = useMemo(
-    () => new Intl.DateTimeFormat(language, compareDateFormat || {}),
-    [language, compareDateFormat]
-  ).format;
-
-  // ranges
-  const {main: rangeMain, compare: rangeCompare, combined} = useMemo(
-    () => getTimeRanges(mainLayerDetails, compareLayerDetails),
-    [mainLayerDetails, compareLayerDetails]
-  );
-  const timeIndexMain = useMemo(
-    () => getLayerTimeIndex(time, rangeMain?.timestamps || []),
-    [time, rangeMain]
-  );
-  const timeIndexCompare = useMemo(
-    () => getLayerTimeIndex(time, rangeCompare?.timestamps || []),
-    [time, rangeCompare]
-  );
-  const timeSelectedMain =
-    rangeMain && new Date(rangeMain.timestamps[timeIndexMain]);
-  const timeSelectedCompare =
-    rangeCompare && new Date(rangeCompare.timestamps[timeIndexCompare]);
   const clampedTime = clampToRange(time, combined.min, combined.max);
 
   // update app state
@@ -193,7 +168,7 @@ const TimeSlider: FunctionComponent<Props> = ({
               style={{
                 left: `${clampedLabelPosition}%`
               }}>
-              {timeSelectedMain ? mainFormat(timeSelectedMain) : false}
+              {mainTimeFormat}
             </output>
           )}
 
@@ -207,7 +182,7 @@ const TimeSlider: FunctionComponent<Props> = ({
               style={{
                 left: `${clampedLabelPosition}%`
               }}>
-              {timeSelectedCompare ? compareFormat(timeSelectedCompare) : false}
+              {compareTimeFormat}
             </output>
           )}
 

@@ -13,13 +13,23 @@ import {downloadScreenshot} from '../../../libs/download-screenshot';
 import {GlobeProjection} from '../../../types/globe-projection';
 
 import styles from './globe-navigation.styl';
+import {useLayerTimes} from '../../../hooks/use-formatted-time';
 
-const GlobeNavigation: FunctionComponent = () => {
+interface Props {
+  mainLayerName?: string;
+  compareLayerName?: string;
+}
+
+const GlobeNavigation: FunctionComponent<Props> = ({
+  mainLayerName,
+  compareLayerName
+}) => {
   const dispatch = useDispatch();
   const defaultView = config.globe.view;
   const projectionState = useSelector(projectionSelector);
   const label =
     projectionState.projection === GlobeProjection.Sphere ? '2D' : '3D';
+  const {mainTimeFormat, compareTimeFormat} = useLayerTimes();
 
   const onProjectionHandler = () => {
     const newProjection =
@@ -45,7 +55,14 @@ const GlobeNavigation: FunctionComponent = () => {
       <Button
         className={styles.downloadIcon}
         icon={DownloadIcon}
-        onClick={() => downloadScreenshot()}
+        onClick={() =>
+          downloadScreenshot(
+            mainTimeFormat,
+            compareTimeFormat,
+            mainLayerName,
+            compareLayerName
+          )
+        }
       />
     </div>
   );
