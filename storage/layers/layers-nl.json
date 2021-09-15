@@ -159,5 +159,19 @@
     "name": "Oppervlaktewatertemperatuur van het meer",
     "shortName": "Meren",
     "description": "De temperatuur van het oppervlaktewater van het meer (LSWT) is de temperatuur van het oppervlaktewater van het meer zoals gezien vanuit de ruimte in infrarode golflengtes. LSWT kan worden afgeleid wanneer het oppervlaktewater van het meer niet aan het zicht wordt onttrokken door ijsbedekking of wolken. Meren beslaan minder dan 1% van het landoppervlak van de aarde, maar meren en hun oevers dragen onevenredig veel bij tot de biodiversiteit en de menselijke welvaart. Duidelijke kenmerken van het LSWT zijn de grote jaarlijkse temperatuurcyclus op hogere breedtegraden en de belangrijke patronen van temperatuurcontrasten tussen afzonderlijke meren, vooral grote meren. Meren en de ecosystemen die zij ondersteunen gaan een gevoelige wisselwerking aan met het klimaat, en de LSWT geeft inzicht in welke meren kwetsbaar zijn voor gedragsveranderingen die hun biodiversiteit of belevingswaarde zouden kunnen ondermijnen.\r\n\r\nIn het kader van het CCI-project zijn tijdreeksen van LSWT gemaakt vanaf 1995, op een regelmatig raster van lengte- en breedtegraden. Daartoe zijn waarnemingen van vier satellietmissies gecombineerd en zijn 250 meren onderzocht. Toekomstige versies van de dataset zullen de dichtheid van de beschikbare waarnemingen verhogen door meer satellietmissies in te voeren, en zullen gericht zijn op duizenden meren.\n\n**Variabele:** Temperatuur oppervlaktewater meer\r\n\n**Tijdspanne:** juni 1995 - december 2019\r\n\n**Temporele Resolutie:** maandelijks\r\n\n**Geografische omvang:** wereldwijd\r\n\n**Versie:** v1.0\r\n\r\n[ESA CCI Lakes ECV Project website](https://climate.esa.int/de/projekte/lakes/)\r\n[Gegevens in het Open Data Portaal](https://catalogue.ceda.ac.uk/uuid/3c324bb4ee394d0d876fe2e1db217378)"
+  },
+  {
+    "id": "ogvi.ogvi",
+    "type": "OGVI",
+    "name": "OGVI",
+    "shortName": "OGVI",
+    "description": "..."
+  },
+  {
+    "id": "ice_sheets_antarctica.dm",
+    "type": "Ice Sheets Antarctica",
+    "name": "Ice Sheets Antarctica",
+    "shortName": "Ice Sheets Antarctica",
+    "description": "..."
   }
 ]
