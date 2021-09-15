@@ -159,5 +159,19 @@
     "name": "Temperatura del agua superficial del lago",
     "shortName": "Lagos",
     "description": "La temperatura del agua superficial del lago (LSWT) es la temperatura de las aguas superficiales del lago vistas desde el espacio en longitudes de onda infrarrojas. La LSWT puede obtenerse cuando el agua de la superficie del lago no está oculta por una capa de hielo o por las nubes. Los lagos cubren menos del 1% de la superficie terrestre, pero los lagos y sus orillas contribuyen de forma desproporcionada a la biodiversidad y al florecimiento humano. Los rasgos más evidentes del LSWT son el gran ciclo anual de temperatura en las latitudes más altas y los importantes patrones de contraste de temperatura entre los distintos lagos, especialmente los grandes. Los lagos y los ecosistemas que sustentan interactúan de forma sensible con el clima, y la LSWT permite saber qué lagos son vulnerables a cambios de comportamiento que podrían socavar su biodiversidad o su atractivo.\r\n\r\nEl proyecto CCI ha creado series temporales de LSWT a partir de 1995, en una cuadrícula regular de latitud-longitud. Para ello se han combinado las observaciones de cuatro misiones por satélite y se han seleccionado 250 lagos. Las futuras versiones del conjunto de datos aumentarán la densidad de las observaciones disponibles mediante la incorporación de más misiones de satélite, y se centrarán en miles de lagos.\n\n**Variable mostrada:** Temperatura del agua superficial del lago\r\n\n**Periodo de tiempo:** junio de 1995 - diciembre de 2019\r\n\n**Resolución temporal:** mensual\r\n\n**Amplitud geográfica:** global\r\n\n**Versión:** v1.0\r\n\r\n[Sitio web del proyecto CCI Lakes ECV de la ESA](https://climate.esa.int/de/projekte/lakes/)\r\n[Datos en el Portal de Datos Abiertos](https://catalogue.ceda.ac.uk/uuid/3c324bb4ee394d0d876fe2e1db217378)"
+  },
+  {
+    "id": "ogvi.ogvi",
+    "type": "OGVI",
+    "name": "OGVI",
+    "shortName": "OGVI",
+    "description": "..."
+  },
+  {
+    "id": "ice_sheets_antarctica.dm",
+    "type": "Ice Sheets Antarctica",
+    "name": "Ice Sheets Antarctica",
+    "shortName": "Ice Sheets Antarctica",
+    "description": "..."
   }
 ]
