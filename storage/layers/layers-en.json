@@ -149,15 +149,29 @@
   {
     "id": "glaciers.ice",
     "type": "Cryosphere",
-    "name": "Randolph Glacier Inventory",
+    "name": "Glacier Areas",
     "shortName": "Glaciers",
-    "description": "A glacier is a persistent body of dense ice…\n\n**Variable Shown:** Randolph Glacier Inventory  \r\n\n**Time Span:**  \r\n\n**Temporal Resolution:**  \r\n\n**Geographic Extent:** global \r\n\n**Temporal resolution:**  \r\n\n**Geographic Extent:**  \r\n\n**Version:** Randolph Glacier Inventory\r\n\r\n[ESA CCI Glaciers ECV Project website](https://climate.esa.int/de/projekte/glaciers/) \r\n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/b05d478170e14356bbe2c3cce3f7bf67)"
+    "description": "A glacier is a persistent body of dense ice…\n\n**Variable Shown:** Glacier Areas   \r\n\n**Time Span:**  \r\n\n**Temporal Resolution:**  \r\n\n**Geographic Extent:** global \r\n\n**Version:** Randolph Glacier Inventory \r\n\r\n[ESA CCI Glaciers ECV Project website](https://climate.esa.int/de/projekte/glaciers/) \r\n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/b05d478170e14356bbe2c3cce3f7bf67)"
   },
   {
     "id": "lakes.lswt",
-    "type": "Lakes",
-    "name": "Lakes",
+    "type": "Hydrosphere",
+    "name": "Lake Surface Water Temperature",
     "shortName": "Lakes",
+    "description": "Lake surface water temperature (LSWT) is the temperature of the surface lake waters as seen from space in infrared wavelengths. LSWT can be derived when the lake surface water is not obscured by ice cover or clouds. Lakes cover less than 1% of Earth’s land area, but lakes and their shores contribute disproportionately to biodiversity and human flourishing. Obvious features in the LSWT are the large annual cycle in temperature in higher latitudes, and the important patterns of temperature contrast across individual lakes, especially large ones. Lakes and the ecosystems they support interact sensitively with climate, and LSWT gives insight into which lakes are vulnerable to shifts of behaviour that could undermine their biodiversity or amenity.\r\n\r\nThe CCI project has created timeseries of LSWT from 1995 onwards, on a regular grid of latitude-longitude. This has involved combining observations from four satellite missions and 250 lakes were targeted. Future versions of the dataset will increase the density of available observations by bringing in more satellite missions, and will target thousands of lakes.\n\n**Variable Shown:** Lake Surface Water Temperature  \r\n\n**Time Span:**  June 1995 – December 2019\r\n\n**Temporal Resolution:**  monthly\r\n\n**Geographic Extent:** global \r\n\n**Version:** v1.0\r\n\r\n[ESA CCI Lakes ECV Project website](https://climate.esa.int/de/projekte/lakes/) \r\n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/3c324bb4ee394d0d876fe2e1db217378)"
+  },
+  {
+    "id": "ogvi.ogvi",
+    "type": "OGVI",
+    "name": "OGVI",
+    "shortName": "OGVI",
+    "description": "..."
+  },
+  {
+    "id": "ice_sheets_antarctica.dm",
+    "type": "Ice Sheets Antarctica",
+    "name": "Ice Sheets Antarctica",
+    "shortName": "Ice Sheets Antarctica",
     "description": "..."
   }
 ]
