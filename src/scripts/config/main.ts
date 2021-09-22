@@ -80,7 +80,7 @@ export default {
       'http://twitter.com/intent/tweet?text=ESA%20Climate%20From%20Space&url={currentUrl}'
   },
   planeratyVisionsLogo: 'assets/images/planetary-visions.png',
-  ubilabsWebsite: 'https://ubilabs.net',
+  ubilabsWebsite: 'https://ubilabs.com',
   planetaryVisionsWebsite: 'http://planetaryvisions.com/',
   githubRepo: 'https://github.com/ubilabs/esa-climate-from-space',
   cciWebsite: 'https://climate.esa.int/',

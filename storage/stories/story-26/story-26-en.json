@@ -26,6 +26,13 @@
         "Europe's first weather satellite, Meteosat-1, was launched in November 1977 (ESA)",
         "The first image from the the European Remote Sensing satellite (ERS-1) showed the Flevoland polder and the Ijsselmeer in the Netherlands on 27 July 1991 (ESA)",
         "Data from three generations of radar satellites shows the retreat of two large glaciers in southeast Greenland over 36 years (ESA)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
@@ -45,6 +52,13 @@
         "The Soil Moisture and Ocean Salinity satellite (SMOS), one of ESA’s Earth Explorer science satellites (ESA)",
         "The European Data Relay System (EDRS) provides a geostationary communications relay \r\nbetween satellites in low Earth orbit and receiving stations on the ground (ESA)",
         "European Space Agency satellite ground station in Frascati, Italy (ESA)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
@@ -64,6 +78,13 @@
         "Atmospheric water vapour revealed at mid-infrared wavelengths by the Meteosat weather satellite (ESA/Eumetsat/DLR)",
         "Thermal infrared wavelengths show the temperature of the Earth’s surface and cloud tops (ESA-CCI Cloud)",
         "Microwave emissions are used to track soil moisture, sea ice, snow and atmospheric water. Brightness temperature at 89 GHz and 23.8 GHz from AMSR-E. (National Space Development Agency of Japan)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
@@ -83,6 +104,13 @@
         "Aircraft provide a local remote sensing platform as well as transport in remote regions (A Hogg)",
         "Taking soil moisture measurements in Sweden to support the development of ESA's BIOMASS satellite (FOI)",
         "A wide-angle view from the joint French-Italian Concordia Research Station, located high on Dome C of the Antarctic Plateau, one of the coldest places on Earth (AP Salam)"
+      ],
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "contain",
+        "cover"
       ]
     }
   ]

@@ -72,6 +72,7 @@ const LayerSelector: FunctionComponent = () => {
               selectedLayerIds={selectedLayerIds}
               onSelect={(layerId, isMain) => {
                 dispatch(setSelectedLayerIdsAction(layerId, isMain));
+                dispatch(showLayerSelectorAction(false));
 
                 const name = layers.find(layer => layer.id === layerId)?.name;
 

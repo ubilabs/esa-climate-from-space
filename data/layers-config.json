@@ -241,7 +241,12 @@
       "year": "numeric",
       "month": "long"
     },
-    "filter": "linear"
+    "filter": "linear",
+    "timestamps": [
+      "2010-01-01T00:00:00.000000000Z",
+      "2017-01-01T00:00:00.000000000Z",
+      "2018-01-01T00:00:00.000000000Z"
+    ]
   },
   "greenhouse.xco2": {
     "colorMap": "custom",
@@ -305,5 +310,28 @@
       "month": "long"
     },
     "legendValues": ["> 100 litres/m³", "-100"]
+  },
+  "lakes.lswt": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long"
+    },
+    "legendValues": ["35 °C", "-5"]
+  },
+  "ice_sheets_antarctica.dm": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long"
+    }
+  },
+  "ogvi.ogvi": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "numeric"
+    }
   }
 }
