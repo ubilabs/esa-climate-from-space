@@ -22,4 +22,5 @@ export interface Layer {
   units: string;
   legendValues: string[] | LegendValueColor[];
   legendBackgroundColor: string;
+  hideLegend?: boolean;
 }
