@@ -31,7 +31,7 @@
   },
   {
     "id": "story-29",
-    "title": "Feeding a Growing World",
+    "title": "Een groeiende wereld voeden",
     "description": "",
     "image": "assets/soilmoisture_full_02.jpg",
     "tags": [
@@ -69,7 +69,7 @@
   },
   {
     "id": "story-16",
-    "title": "Planetary Heat Pumps",
+    "title": "Planetaire Warmtepompen",
     "description": "",
     "image": "assets/sst.jpg",
     "tags": [
@@ -82,7 +82,7 @@
   },
   {
     "id": "story-8",
-    "title": "Is Ozone Good or Bad?",
+    "title": "Is Ozon Goed of Slecht?",
     "description": "",
     "image": "assets/ozone.jpg",
     "tags": ["ozone", "aerosol"],
@@ -104,7 +104,7 @@
   },
   {
     "id": "story-30",
-    "title": "Coasts Under Threat",
+    "title": "Kusten bedreigd",
     "description": "",
     "image": "assets/sealevel.jpg",
     "tags": ["sea-level", "sea-surface-temperature", "glaciers", "ice-sheets"],
@@ -112,7 +112,7 @@
   },
   {
     "id": "story-28",
-    "title": "Biodiversity and Habitat Loss",
+    "title": "Biodiversiteit en verlies van habitats",
     "description": "",
     "image": "assets/landcover.jpg",
     "tags": [
@@ -127,7 +127,7 @@
   },
   {
     "id": "story-26",
-    "title": "Taking the Pulse of the Planet",
+    "title": "De hartslag van de planeet meten",
     "description": "",
     "image": "assets/Sentinel-2.jpg",
     "tags": [

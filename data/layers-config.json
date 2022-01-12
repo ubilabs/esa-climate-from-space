@@ -321,6 +321,7 @@
   },
   "ice_sheets_antarctica.dm": {
     "colorMap": "custom",
+    "units": "kg/m²",
     "timeFormat": {
       "year": "numeric",
       "month": "long"

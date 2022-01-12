@@ -1,3 +1,22 @@
+# [1.4.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.3.1...v1.4.0) (2022-01-12)
+
+
+### Bug Fixes
+
+* **electron:** bump electron version from 10.0.0 to 11.5.0 ([7556391](https://github.com/ubilabs/esa-climate-from-space/commit/7556391c558f1daade5d9ebcbcee32e63f6e83af))
+
+
+### Features
+
+* **ice_sheets:** improve dataset tiles ([#1011](https://github.com/ubilabs/esa-climate-from-space/issues/1011)) ([40a964a](https://github.com/ubilabs/esa-climate-from-space/commit/40a964a5661e28e23d7b7681bf305a2a4645a580))
+* **storyList:** add title translations ([23ed654](https://github.com/ubilabs/esa-climate-from-space/commit/23ed654fed4abc61d1812ed00f8e094e6ba0b88a))
+
+
+
+## [1.3.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.3.0...v1.3.1) (2021-09-22)
+
+
+
 # [1.3.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.2.1...v1.3.0) (2021-09-22)
 
 
