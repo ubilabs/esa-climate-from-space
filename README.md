@@ -81,22 +81,23 @@ Cloud Build will build and upload a new develop version once merged (https://sto
 
 Merge `develop` into `master`. Once merged Cloud Build will build and upload new master version (https://storage.googleapis.com/esa-cfs-versions/web/master/index.html).
 
+In addition all remote files on cloud storage have to be updated to the new version folder. Run the follwing command with the correct version numbers:
+
+```sh
+./scripts/increase-storage-version <old_version> <new_version> # e.g. increase-storage-version 0.9.3 1.0.0
+```
+
 Copy the master web application files into a separate version folder
 `gsutil cp -r gs://esa-cfs-versions/web/master/* gs://esa-cfs-versions/web/{VERSION}/`
-
-Trigger the electron build task on Cloud build for the master branch (https://console.cloud.google.com/cloud-build/triggers?project=esa-climate-from-space)
 
 Copy the master electron application files into a separate version folder
 `gsutil cp -r gs://esa-cfs-versions/electron/master/*{VERSION}* gs://esa-cfs-versions/electron/{VERSION}/`
 
-In addition all remote files on cloud storage have to be updated to the new version folder. Run the follwing command with the correct version numbers:
-
-```sh
-./increase-storage-version <old_version> <new_version> # e.g. increase-storage-version 0.9.3 1.0.0
-```
+Trigger the electron build task on Cloud build for the master branch (https://console.cloud.google.com/cloud-build/triggers?project=esa-climate-from-space)
 
 ## Contact
 
 - PM Ubilabs: Patrick Mast <mast@ubilabs.net>
 - Dev Ubilabs: Philipp Wambach <wambach@ubilabs.net>
 - Dev Ubilabs: Katherina Marcenko <marcenko@ubilabs.net>
+- Dev Ubilabs: Malte Modrow <modrow@ubilabs.net>
