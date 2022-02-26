@@ -3,29 +3,82 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Tomando el pulso al planeta\r\n\r\nLos satélites ofrecen una perspectiva global única sobre el clima de la Tierra. Gracias a ellos, disponemos de más de tres décadas de observaciones que describen algunas de las variables climáticas más importantes. Esta información es un recurso útil tanto para establecer modelos climáticos como para comprobar su exactitud.",
-      "shortText": "# Tomando el pulso al planeta\r\n\r\nLos satélites ofrecen una perspectiva global única sobre el clima de la Tierra. Gracias a ellos, disponemos de más de tres décadas de observaciones que describen algunas de las variables climáticas más importantes. Esta información es un recurso útil tanto para establecer modelos climáticos como para comprobar su exactitud.",
+      "text": "# Calor Urbano\r\n\r\nLas ciudades son cada vez más nuestro hogar, pero amplifican algunos de los peores efectos del cambio climático, atrapando el calor y amenazando la salud. A medida que las olas de calor se vuelven más extremas y frecuentes, los habitantes de las ciudades más grandes son los que más riesgo corren.",
+      "shortText": "# Calor Urbano\r\n\r\nLas ciudades son cada vez más nuestro hogar, pero amplifican algunos de los peores efectos del cambio climático, atrapando el calor y amenazando la salud. A medida que las olas de calor se vuelven más extremas y frecuentes, los habitantes de las ciudades más grandes son los que más riesgo corren.",
       "images": [
-        "assets/Sentinel-2.jpg"
+        "assets/story27-image03.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## Una Canica Azul\r\n\r\nCuando la tripulación del Apolo 17 miró a su planeta natal en 1972, fotografió por primera vez una Tierra completamente iluminada por el sol.  También fue la última vez que los humanos se alejaron lo suficiente de su hogar como para ver el planeta entero por sí mismos. Esa vista de una \"canica azul\" colgada en el espacio se ha convertido en una imagen familiar y es posiblemente la foto más reproducida de la historia.\r\n\r\nEl agua azul de los mares y océanos domina la imagen. Pero si nos fijamos más de cerca, podemos distinguir muchos más colores. Por ejemplo, podemos ver la arena amarilla del desierto del Sahara, el verde oscuro de las selvas tropicales y el blanco de las nubes sobre los océanos y el hielo y la nieve que cubren la Antártida.\r\n\r\nHoy en día, los satélites de observación de la Tierra toman diariamente imágenes de la canica azul que revelan una gran cantidad de detalles sobre nuestro cambiante planeta. Se han convertido en una herramienta esencial para vigilar el clima tanto a escala local como global. Son especialmente útiles para vigilar zonas inaccesibles, como los océanos, las selvas tropicales y las regiones polares, que se encuentran entre las zonas más vulnerables al cambio climático y más amenazadas.\r\n \r\nEstos \"sensores remotos\" pueden ver [el hielo que se expande y se contrae](stories/story-15/3) en los polos, vigilar [los glaciares](stories/story-21/6) y [los incendios](stories/story-28/1), rastrear las nubes y los aerosoles que se desplazan por la [atmósfera](stories/story-21/4) y medir cómo cambian [los nutrientes y las temperaturas](stories/story-16/4) en los océanos. Las primeras misiones operativas de teledetección se llevaron a cabo a finales de la década de 1970, por lo que, en el caso de muchos componentes del sistema climático, disponemos ahora de observaciones que abarcan más de treinta años, tiempo suficiente para ver lo que el calentamiento global está haciendo en nuestro planeta.",
-      "shortText": "## A Blue Marble\r\n\r\nPrimera foto de la Tierra totalmente iluminada por el sol - _Apollo 17, 1972_\r\n\r\n- 1960: primer satélite meteorológico - TIROS-1\r\n- 1972: Satélite de tecnología de los recursos de la Tierra - Landsat-1\r\n- 1991: satélite europeo de teledetección - ERS-1\r\n- hoy en día: imágenes diarias de la \"canica azul\" de una flota de satélites\r\n- visión única de regiones inaccesibles: océanos, selvas tropicales, regiones polares\r\n- observaciones de la Tierra durante más de 30 años\r\n- tiempo suficiente para ver lo que el calentamiento global está haciendo a nuestro planeta",
+      "text": "## Ola de calor invernal\r\n\r\nPara las celebraciones del Año Nuevo 2020 en Moscú, tuvieron que fabricar nieve artificial. La capital rusa, famosa por sus fríos y duros inviernos, había alcanzado los 5,4 grados centígrados, su temperatura más alta en diciembre desde que se iniciaron los registros en 1879. Un evento de snowboard planeado se llevó a cabo sólo con la ayuda de \"nieve\" raspada de la superficie de una pista de hielo cercana. Los niños jugaban al fútbol en los patios que suelen albergar partidos de hockey sobre hielo.\r\n\r\nRusia se está calentando 2,5 veces más rápido que la media mundial, y muchos de los efectos del cambio climático se amplifican en grandes ciudades como Moscú. Las zonas urbanas en expansión, en las que vivimos cada vez más personas, absorben y retienen el calor mejor que la mayoría de los tipos de cubierta natural.\r\n\r\n## Amplificación de los extremos\r\n\r\nLas olas de calor mataron a 70.000 personas en toda Europa en 2003 y a 55.000 sólo en Rusia en 2010. Las ciudades están expuestas a las temperaturas más extremas en una ola de calor, lo que puede inducir a la deshidratación o a la insolación y aumentar el riesgo de infarto, enfermedades cardíacas y respiratorias. Aunque se habla mucho del aumento de la temperatura media mundial -unos 0,2 grados centígrados por década-, las temperaturas extremas de un solo día que se experimentan en las olas de calor están aumentando más rápidamente. En las ciudades con más de 5 millones de habitantes, el día más caluroso del año aumenta una media de 0,33 grados centígrados por década, y en Moscú, París y Houston, más de 0,9 grados centígrados por década. Se cree que el aumento de la amenaza para la vida que suponen los extremos de un día es comparable al de los eventos de calor prolongados.",
+      "shortText": "## Ola de calor invernal\r\n\r\nPara las celebraciones del Año Nuevo 2020 en Moscú, la notoriamente fría capital rusa, tuvieron que fabricar nieve artificial.\r\n\r\n- La temperatura del aire alcanzó los 5,4°C, la más alta para un mes de diciembre desde que se iniciaron los registros en 1879.\r\n- Rusia se está calentando 2,5 veces más rápido que la media mundial.\r\n- Los efectos del cambio climático se amplifican en las grandes ciudades como Moscú.\r\n- Las zonas urbanas absorben y retienen el calor mejor que la mayoría de los terrenos naturales.\r\n\r\nLos extremos se amplifican\r\n\r\n- Las olas de calor mataron a 70.000 personas en Europa en 2003; 55.000 en Rusia en 2010.\r\n- Deshidratación, mayor riesgo de infarto, afecciones cardíacas y respiratorias.\r\n- Las ciudades están expuestas a las temperaturas más extremas en una ola de calor.\r\n- La temperatura media mundial aumenta 0,2°C por década, pero las temperaturas extremas de un solo día aumentan más rápidamente.\r\n- El día más caluroso del año aumenta 0,33°C por década en las ciudades con más de 5 millones de habitantes.\r\n- Más de 0,9°C por década en Moscú, París y Houston.",
       "images": [
-        "assets/cloud_large_01.jpg",
-        "assets/story26-image10.jpg",
-        "assets/story26-image17.jpg",
-        "assets/story26-image15.jpg",
-        "assets/intro_large_09.jpg"
+        "assets/story27-image01.jpg",
+        "assets/story27-image02.jpg",
+        "assets/story27-image10.jpg"
       ],
       "imageCaptions": [
-        "Fotografía de la Tierra tomada por la tripulación del Apolo 17 en 1972 (NASA)",
-        "La primera imagen tomada por el satélite meteorológico experimental TIROS-1 en abril de 1960 (NASA)",
-        "El primer satélite meteorológico europeo, Meteosat-1, fue lanzado en noviembre de 1977 (ESA)",
-        "La primera imagen del satélite europeo de teledetección (ERS-1) mostraba el pólder de Flevoland y el Ijsselmeer en los Países Bajos el 27 de julio de 1991 (ESA)",
-        "Los datos de tres generaciones de satélites de radar muestran el retroceso de dos grandes glaciares en el sureste de Groenlandia durante 36 años (ESA)"
+        "Camiones repartiendo nieve fabricada en una calle de Moscú durante una ola de calor en diciembre de 2019 (Twitter)",
+        "Las olas de calor del verano pueden dañar infraestructuras como las vías férreas y el pavimento de las carreteras, además de suponer una carga excesiva para el suministro de agua y electricidad (US Dept of Transportation)",
+        "Temperatura media del aire nocturno en París a las 22:00 horas durante la ola de calor del verano de 2003, que provocó miles de muertes relacionadas con el calor. (VITO/Planetek)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ]
+    },
+    {
+      "type": "globe",
+      "text": "## Islas de calor urbanas\r\n\r\nEl globo terráqueo interactivo muestra la extensión de los distintos tipos de cubierta terrestre, incluidas las zonas urbanas y los tipos de cubierta natural, como los bosques y los desiertos. Compruebe el crecimiento explosivo de ciudades como Shangai, en China, desde el inicio del registro de datos en la década de 1990. Los mapas consistentes de la cubierta terrestre se derivan de las observaciones por satélite de la [Iniciativa sobre el Cambio Climático] de la Agencia Espacial Europea (stories/story-32/3). Otras variables climáticas que se miden desde el espacio son la cantidad de [humedad en el suelo](stories/story-21/5) y la temperatura de la superficie terrestre, lo que proporciona una vista de pájaro de los puntos calientes del planeta.\r\n\r\n![Gráfico de perfiles de temperatura urbana y rural ](assets/story27-image04.png)\r\n_Comparación de la temperatura media mensual de las estaciones meteorológicas urbanas y rurales del Reino Unido (Heathrow y Waddington, respectivamente) (KNMI)_.\r\n\r\nA medida que aumenta el número de personas que se trasladan a una ciudad, grandes áreas de vegetación son sustituidas por carreteras, zonas de aparcamiento y edificios. Los materiales de construcción tienen una capacidad mucho mayor de absorber y almacenar el calor del Sol que las plantas y el suelo, mientras que los edificios densamente apiñados impiden que el aire circule, por lo que se escapa menos calor. El calor generado dentro de las fábricas, las oficinas y los hogares también eleva la temperatura del aire. Las ciudades pueden estar hasta 7 grados centígrados más calientes que el campo que las rodea. Los lugares en los que las temperaturas se elevan de esta manera se conocen como islas de calor urbanas.",
+      "shortText": "## Islas de calor urbanas\r\n\r\nEl globo interactivo muestra el crecimiento explosivo de ciudades como Shanghái, en China, desde el inicio del registro de datos en la década de 1990.\r\n\r\n- La cubierta vegetal, la temperatura de la superficie del terreno y la humedad del suelo son variables climáticas útiles para las ciudades.\r\n- A medida que las ciudades se expanden, la vegetación es sustituida por edificios, carreteras y aparcamientos.\r\n- Los materiales de construcción tienen una capacidad térmica mucho mayor que las plantas y el suelo.  \r\n- El calor generado dentro de las fábricas, las oficinas y los hogares también contribuye al aumento de las temperaturas del aire.\r\n- Las ciudades pueden ser hasta 7°C más cálidas que el campo circundante.\r\n\r\nGráfico de perfiles de temperatura urbana y rural ](assets/story27-image04.png)\r\nComparación de la temperatura media mensual de las estaciones meteorológicas urbanas y rurales del Reino Unido (Heathrow y Waddington, respectivamente) (KNMI)_.",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "flyTo": {
+        "position": {
+          "longitude": 119.04,
+          "latitude": 34.86,
+          "height": 1792878.69
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.99,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "land_cover.lccs_class",
+          "timestamp": "2015-01-01T00:00:00.000Z"
+        }
+      ],
+      "layerDescription": "# CCI Tipo de cobertura del suelo\r\n\r\nLas zonas urbanas se muestran en rojo."
+    },
+    {
+      "type": "image",
+      "text": "## Estudios de calor desde el espacio\r\n\r\nEl grado de afectación de una zona urbana por su isla de calor depende de factores como el número, el tipo y la disposición de los edificios y las carreteras, y de qué están hechos. Las cámaras de infrarrojos a nivel del suelo se utilizan para mostrar dónde se pierde el calor de los edificios, de modo que puedan ser más eficientes energéticamente. Del mismo modo, los sensores infrarrojos de los satélites pueden utilizarse para mostrar dónde se acumula el calor dentro de una ciudad.\r\n\r\nLas mediciones de la temperatura de la superficie terrestre (LST) desde el espacio pueden compararse con los datos históricos de las estaciones meteorológicas para identificar las zonas de una ciudad más vulnerables durante las olas de calor. Esta información puede ayudar a los urbanistas a mejorar el diseño de las ciudades decidiendo dónde ubicar las zonas verdes, qué materiales utilizar y cómo orientar los edificios para maximizar la sombra y la refrigeración.\r\n\r\nLos datos de LST también pueden vincularse con datos más detallados procedentes del suelo o de campañas aéreas, y actualizarse casi en tiempo real mediante sensores de alta calidad, como los satélites Copernicus Sentinel, para ayudar a los responsables de la toma de decisiones durante las olas de calor. La LST desde el espacio puede mostrar cómo las olas de calor afectan a la temperatura a escala de distrito o incluso de una manzana individual. La comprensión de estos eventos permitiría tomar medidas que podrían reducir el efecto de los peligros para la salud relacionados con el calor.\r\n\r\nLos datos climáticos más precisos para la LST proceden de la Iniciativa sobre el Cambio Climático de la Agencia Espacial Europea. Aunque su resolución espacial es moderada, es lo suficientemente detallada como para ver las características clave de una gran ciudad como Londres, y sus mediciones de temperatura son extremadamente precisas. Proporcionan una instantánea espacial de la temperatura de la superficie, así como una progresión temporal de varias décadas de la temperatura de toda una ciudad, región, país o continente para mejorar el resultado de [los modelos climáticos](stories/story-31/0).",
+      "shortText": "## Estudios de calor desde el espacio\r\n\r\n- Las cámaras de infrarrojos muestran dónde se pierde el calor de los edificios.\r\n- Del mismo modo, los sensores IR de los satélites muestran dónde se acumula el calor dentro de una ciudad.\r\n\r\nLa temperatura de la superficie terrestre (LST) desde el espacio puede:\r\n\r\n- Compararse con los datos históricos de las estaciones meteorológicas.\r\n- Vincularla a datos más detallados procedentes de la tierra o de campañas aéreas.\r\n- Actualizarse en tiempo casi real mediante sensores de alta calidad, como los satélites Copernicus Sentinel.\r\n\r\nEsta información puede ayudar a los planificadores urbanos a mejorar el diseño de las ciudades:\r\n\r\n- Dónde colocar las zonas verdes, qué materiales de construcción utilizar.\r\n- Cómo orientar los edificios para maximizar la sombra y la refrigeración.\r\n- Reducir potencialmente el efecto de los peligros para la salud relacionados con el calor.\r\n\r\nLos datos climáticos más precisos para LST proceden de la Iniciativa sobre el Cambio Climático de la ESA:\r\n \r\n- Resolución espacial moderada.\r\n- Mediciones de temperatura extremadamente precisas.\r\n- Periodo temporal de varias décadas para toda una ciudad, región, país o continente.",
+      "images": [
+        "assets/iStock_000021056451Small.jpg",
+        "assets/story27-image06.jpg",
+        "assets/story27-image11.jpg",
+        "assets/story27-image08.jpg",
+        "assets/story27-image09.jpg"
+      ],
+      "imageCaptions": [
+        "Las cámaras infrarrojas portátiles se utilizan para realizar estudios termográficos de los edificios. Las cámaras infrarrojas de los satélites pueden inspeccionar toda una ciudad de forma rápida y repetidamente.  (iStock)",
+        "Imagen aérea de infrarrojos térmicos de Madrid en la medianoche del 1 de julio de 2008 (Universidad de Valencia)",
+        "Temperatura de la superficie terrestre derivada del instrumento SLSTR en el satélite Copernicus Sentinel-3, para el 26 de junio (izquierda) y el 25 de julio (derecha) de 2019. Ese verano se produjo una ola de calor extrema en Europa, con temperaturas récord en los Países Bajos, Bélgica, Alemania y París. (ESA)",
+        "Temperatura media de la superficie terrestre en septiembre de 2006, derivada de Envisat AATSR (Universidad de Leicester)",
+        "Anomalía global de la temperatura de la superficie terrestre en septiembre de 2006, procedente de Envisat AATSR, que muestra una ola de calor en el centro y norte de Europa (Universidad de Liecester)"
       ],
       "imageFits": [
         "contain",
@@ -37,80 +90,26 @@
     },
     {
       "type": "image",
-      "text": "## Órbitas de los satélites\r\n\r\nLa tecnología de los satélites forma parte de nuestra vida cotidiana: es la espina dorsal de los sistemas de navegación de nuestros coches, transmite señales de teléfono y televisión y es la piedra angular de la previsión meteorológica diaria que vemos en la televisión. Estas aplicaciones aprovechan las diferentes órbitas posibles para las naves espaciales que giran alrededor de la Tierra. Un sistema de teledetección necesita un _sensor_ (la cámara) y una _plataforma_ (en este caso, el satélite). Se pueden combinar diferentes tipos de cámaras con satélites en diferentes órbitas de varias maneras, dependiendo de lo que queramos averiguar.\r\n\r\n## Órbita geoestacionaria\r\n\r\nLa mayoría de las imágenes de previsión meteorológica se toman con una cámara en un satélite que vuela en órbita a 36.000 km sobre la Tierra. Los satélites de este tipo se denominan satélites geoestacionarios. Se mueven alrededor de la Tierra al mismo ritmo que el planeta gira, por lo que siempre están por encima del mismo punto; siempre ven el mismo lado de la Tierra. Esta trayectoria, denominada órbita ecuatorial geoestacionaria (GEO), permite a la cámara tomar muchas imágenes del mismo lugar cada día para que los meteorólogos puedan seguir la evolución de los sistemas meteorológicos. Las órbitas geoestacionarias también son utilizadas por la mayoría de los satélites de telecomunicaciones y de televisión.\r\n\r\n[Órbitas geoestacionarias y polares](assets/story26-image01.jpg)\r\n_El Meteosat está en una órbita geoestacionaria y el Sentinel-5P en una órbita polar (Planetary Visions)_.\r\n\r\n## Órbita polar\r\n\r\nNo todos los satélites son geoestacionarios. Otros pueden observar todo el planeta viajando de polo a polo. Estos satélites de órbita polar se encuentran en una órbita terrestre baja (LEO) a una altura de unos 700 km. Los satélites de órbita polar suelen tardar unos cien minutos en dar la vuelta al mundo y su trayectoria cruza el ecuador unas catorce veces al día. La mayoría de los satélites de órbita polar siguen una trayectoria muy específica denominada órbita sincrónica solar. Su órbita no pasa justo por encima de los polos, sino que está ligeramente inclinada. Por ello, pasan sobre un punto concreto del ecuador aproximadamente a la misma hora local cada día.\r\n\r\nLas cámaras de los satélites de órbita polar sincrónica al Sol sólo pueden tomar una imagen al día de la mayoría de los lugares de la Tierra. Sin embargo, las imágenes son más detalladas que las tomadas desde los satélites geoestacionarios porque la cámara está mucho más cerca de la Tierra. Otra ventaja de utilizar una órbita sincrónica al Sol es que, como todas las imágenes de un determinado lugar se toman a la misma hora del día, las imágenes no se ven afectadas por los cambios de intensidad y dirección de la luz que se producen de forma natural a lo largo de un día. Esto permite ver con precisión otros cambios, algo esencial para observar el clima y medir las cantidades conocidas como variables climáticas esenciales (VCE). Las VCE dan una indicación de la salud de nuestro planeta, del mismo modo que tomar el pulso puede informar a un médico sobre su salud.",
-      "shortText": "## Órbitas de los satélites\r\n\r\nLa tecnología de los satélites forma parte de la vida cotidiana: navegación por satélite, comunicaciones, previsiones meteorológicas. Los sensores, las plataformas y las órbitas pueden combinarse de diversas maneras.\r\n\r\nÓrbita Ecuatorial Geoestacionaria (GEO)\r\n\r\n- 36.000 km sobre la superficie, órbita de 24 horas\r\n- Órbita ecuatorial, geosincrónica\r\n- vista fija de un hemisferio\r\n- baja resolución, vista de repetición rápida\r\n\r\nÓrbita terrestre baja (LEO)\r\n\r\n- 700-800 km sobre la superficie, órbita de 100 minutos\r\n- de polo a polo, órbita sincrónica al Sol\r\n- cubre todo el mundo, a la misma hora local del día\r\n- alta resolución, vista repetida diaria (o menos)\r\n\r\nÓrbitas geoestacionarias y polares ](assets/story26-image01.jpg)\r\nÓrbitas geoestacionarias y polares (Planetary Visions)_",
+      "text": "## Mantener la tapa puesta\r\n\r\nLas islas de calor urbanas afectan a muchas personas en la actualidad y, a medida que continúen la urbanización y el cambio climático, muchas más sentirán sus efectos en el futuro. En la actualidad, las ciudades ocupan aproximadamente el dos por ciento de la superficie de la Tierra y albergan a más de la mitad de la población mundial. Para 2050, se prevé que el 75% de una población mundial de 9.500 millones de personas vivirá en ciudades.\r\n\r\nHay formas de reducir el efecto isla de calor urbano. Entre ellas está la de colocar los edificios de forma que mejore la circulación del aire, utilizar nuevos materiales de construcción que atrapen menos calor que los convencionales y reintroducir la naturaleza en las ciudades y los edificios. Las plantas y los árboles dan sombra, eliminan la contaminación del aire y absorben el agua, ayudando a prevenir las inundaciones. También enfrían el aire al liberar agua a la atmósfera.\r\n\r\nLos árboles urbanos son también un eficaz [sumidero de dióxido de carbono](stories/story-12/2), que absorben muy cerca de sus fuentes en el transporte y la industria, limitando la propagación de este gas de efecto invernadero a la atmósfera. En Londres hay más árboles que personas y se calcula que almacenan 380 toneladas de carbono por hectárea en algunas partes de la ciudad, lo que es comparable a algunos bosques tropicales y templados.\r\n\r\nEn los Países Bajos, la ciudad de Arnhem ha decidido sustituir el 10% de la superficie de sus carreteras por césped, aumentar la superficie de sombra plantando árboles y conseguir que el 90% de su agua de lluvia sea absorbida por el suelo en lugar de ir a parar al alcantarillado. El agua aumenta la capacidad térmica del suelo, por lo que el suelo húmedo emite menos calor que el seco. Pero, ¿bastarán estas medidas para enfriar nuestras ciudades sobrecalentadas? La medición de la temperatura de la superficie terrestre, la humedad del suelo y el tipo de cubierta vegetal desde el espacio nos ayudará a responder a esta pregunta.",
+      "shortText": "# Mantener la tapa puesta\r\n\r\nEl 2% de la superficie de la Tierra es urbana; hogar de la mitad de los habitantes del mundo; el 75% para 2050. Hay formas de reducir el efecto isla de calor urbano:\r\n\r\n- Colocar los edificios para mejorar la circulación del aire.\r\n- Utilizar nuevos materiales de construcción que atrapen menos calor.\r\n- Reintroducir la naturaleza en las ciudades y los edificios.\r\n- Los árboles dan sombra y absorben el agua, ayudando a prevenir las inundaciones y refrescando el aire cuando liberan el agua.\r\n- Los árboles urbanos absorben el CO2 y otros contaminantes del aire.\r\n- Londres (Reino Unido) tiene más árboles que personas; almacenan hasta 380 toneladas de carbono por hectárea, comparable a algunos bosques tropicales.\r\n- Arnhem (Países Bajos) está sustituyendo el 10% de la superficie de sus carreteras por césped, aumentando la sombra mediante la plantación de árboles y dirigiendo el 90% de su agua de lluvia hacia el suelo, lo que tiene un efecto refrigerante.\r\n\r\n¿Serán suficientes estas medidas para enfriar nuestras ciudades sobrecalentadas? La medición de la temperatura de la superficie terrestre, la humedad del suelo y el tipo de cobertura del suelo desde el espacio nos ayudará a responder a esa pregunta.",
       "images": [
-        "assets/story26-image02.jpg",
-        "assets/story26-image03.jpg",
-        "assets/soilmoisture_large_14.jpg",
-        "assets/story26-image04.jpg",
-        "assets/intro_large_11.jpg"
+        "assets/story27-image07.jpg",
+        "assets/story27-image12.jpg",
+        "assets/story27-image05.jpg",
+        "assets/story27-image15.jpg"
       ],
       "imageCaptions": [
-        "Meteosat - un satélite meteorológico geoestacionario (Planetary Visions/ESA)",
-        "Copernicus Sentinel 3 - un satélite de observación de la Tierra en órbita polar (ESA)",
-        "El satélite de humedad del suelo y salinidad del océano (SMOS), uno de los satélites científicos Earth Explorer de la ESA",
-        "El Sistema Europeo de Retransmisión de Datos (EDRS) proporciona una retransmisión de comunicaciones geoestacionarias\r\nentre satélites en órbita terrestre baja y estaciones receptoras en tierra (ESA)",
-        "Estación terrestre de la Agencia Espacial Europea en Frascati, Italia (ESA)"
+        "Las luces de las calles trazan la zona urbana de Londres en esta fotografía tomada por el astronauta de la ESA Tim Peake desde la Estación Espacial Internacional en 2016. Las zonas oscuras muestran la ubicación de los pulmones verdes de la ciudad: sus numerosos y grandes parques. (ESA/NASA)",
+        "Temperatura de la superficie terrestre (izquierda) y una medida de la isla de calor urbana en relación con las zonas rurales circundantes (derecha) para Londres, basada en las observaciones del infrarrojo térmico del Landsat para el 7 de julio de 2020. La elevación de la temperatura de la superficie terrestre en las ciudades es aún mayor que la de la temperatura del aire. (Universidad de Liecester)",
+        "Temperatura del aire en Madrid el 25 de junio de 2008 a las 22:18 UTC (derecha), comparada con un mapa de la superficie del suelo sellado (izquierda), que destaca las superficies artificiales de la ciudad. (VITO/Indra/Planetek/Agencia Europea de Medio Ambiente)",
+        "Un par de robles en Hampstead Heath (Londres), representados como una nube de puntos a partir de mediciones de distancia por láser.\r\nLa masa de carbono almacenada por los árboles puede estimarse utilizando modelos de árboles en 3D basados en el escaneo láser\r\n(lidar - light detection and ranging). (M Disney/P Wilkes/UCL)"
       ],
       "imageFits": [
-        "contain",
+        "cover",
         "contain",
         "contain",
         "contain",
         "contain"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Mirando a la Tierra a través de una lente diferente\r\n\r\nLa foto de la canica azul muestra la Tierra como la vemos a simple vista. Al detectar la luz roja, verde y azul, el ojo humano -y el sensor de una cámara digital estándar- \"ve\" una gama completa de colores. Las cámaras de los satélites pueden obtener mucha más información sobre nuestro planeta mirando más allá de las longitudes de onda visibles, en otras partes del espectro electromagnético, y cada región revela aspectos diferentes del carácter de la Tierra.\r\n\r\nAl atravesar el espectro electromagnético, el aspecto del globo cambia a medida que se ven las diferentes partes del sistema terrestre. En las longitudes de onda visibles (400-700 nanómetros), los sensores ópticos registran el contorno de las costas de los lagos y los océanos, los glaciares, las zonas urbanas y los cambios de color debidos al fitoplancton en el océano, un importante sumidero de carbono. Haz clic en la galería de imágenes para ver cómo los satélites ven la Tierra en otras longitudes de onda.\r\n\r\n## Longitudes de onda más cortas\r\nLas longitudes de onda ultravioleta son absorbidas por el ozono en la atmósfera. Los sensores que detectan esta gama de longitudes de onda desempeñaron un papel importante en el descubrimiento del [agujero de ozono](stories/story-8/1) sobre la Antártida, y todavía se utilizan para seguir su evolución. Los rayos X y los rayos gamma tienen longitudes de onda mucho más cortas que la luz visible (menos de 10 nanómetros). Se utilizan en astronomía (y en medicina), pero no en los satélites de observación de la Tierra.\r\n\r\n## Longitudes de onda más largas\r\n\r\nLas longitudes de onda del infrarrojo cercano (alrededor de 1 micrómetro) se utilizan para medir el [vigor del crecimiento de las plantas](stories/story-29/3) en la tierra, lo que ayuda a hacer un seguimiento de la productividad agrícola y del impacto de tensiones como la sequía. El infrarrojo medio muestra el [vapor de agua en la atmósfera](stories/story-21/3). Utilizando los mismos principios que las cámaras térmicas de mano que se utilizan para el control de la temperatura en algunos aeropuertos, el infrarrojo térmico (con una longitud de onda de unos 10 micrómetros) permite medir la temperatura de la tierra y de la [superficie del mar](stories/story-16/2) y de la parte superior de las nubes. El infrarrojo lejano revela información sobre la energía radiada por la Tierra y los intercambios de energía en la atmósfera.\r\n\r\nA longitudes de onda aún más largas, las microondas (alrededor de 1 centímetro) pueden revelar la presencia de agua en todas sus formas: como líquido en el suelo, congelada como nieve y hielo, y como vapor y gotas de agua en la atmósfera. Las microondas pueden penetrar las nubes, por lo que los sensores de microondas son capaces de proporcionar datos en la mayoría de las condiciones meteorológicas e incluso en la prolongada oscuridad del invierno polar. Las microondas emitidas por la Tierra nos permiten controlar la nieve y la [extensión del hielo marino](stories/story-15/3) y la [humedad del suelo](stories/story-21/5).\r\n\r\nLos sensores activos de microondas, incluido el radar, generan sus propias microondas, de forma parecida a como una linterna genera luz. La detección de la energía de microondas reflejada nos permite seguir el movimiento del hielo y, con los altímetros de radar, podemos medir el [espesor del hielo marino](stories/story-15/7) y las capas de hielo, así como la altura de las olas del océano.",
-      "shortText": "## Mirando a la Tierra a través de una lente diferente\r\n\r\nLos satélites recopilan información sobre la Tierra mirando más allá de las longitudes de onda visibles en otras partes del espectro electromagnético:\r\n\r\n- ultravioleta (100-400 nm): ozono en la atmósfera\r\n- visible (400-700 nm): costas, glaciares, zonas urbanas, nubes, fitoplancton oceánico\r\n- infrarrojo cercano (~ 1 µm): crecimiento de las plantas en la tierra\r\n- infrarrojo medio: vapor de agua en la atmósfera\r\n- infrarrojo térmico (~ 10 µm): temperatura de la tierra, el mar, las nubes\r\n- infrarrojo lejano: energía radiada por la Tierra e intercambios de energía en la atmósfera\r\n- microondas (~ 1 cm): agua - en el suelo, congelada como nieve y hielo, como vapor y gotas de agua en la atmósfera\r\n- sensores activos de microondas, incluido el radar: movimiento del hielo, espesor del hielo marino y de las capas de hielo, altura de las olas del océano",
-      "images": [
-        "assets/story26-image05.jpg",
-        "assets/story26-image07.jpg",
-        "assets/story26-image08.jpg",
-        "assets/story26-image09.jpg",
-        "assets/story26-image12.jpg"
-      ],
-      "imageCaptions": [
-        "La luz ultravioleta revela la concentración de ozono atmosférico (ESA-CCI Ozone)",
-        "La reflectancia multiespectral de la superficie en longitudes de onda visibles e infrarrojas cercanas\r\nmuestra el vigor de la vida vegetal en la tierra (ESA-CCI Land Cover)",
-        "Vapor de agua atmosférico revelado en longitudes de onda del infrarrojo medio por el satélite meteorológico Meteosat (ESA/Eumetsat/DLR)",
-        "Las longitudes de onda del infrarrojo térmico muestran la temperatura de la superficie de la Tierra y de las cimas de las nubes (ESA-CCI Cloud)",
-        "Las emisiones de microondas se utilizan para rastrear la humedad del suelo, el hielo marino, la nieve y el agua atmosférica. Temperatura de brillo a 89 GHz y 23,8 GHz de AMSR-E. (Agencia Nacional de Desarrollo Espacial de Japón)"
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Enfrentando la realidad\r\n\r\nAunque los satélites permiten cubrir mucho terreno en poco tiempo, las observaciones realizadas por sus sensores deben calibrarse con mediciones _in situ_ realizadas con instrumentos convencionales en la superficie o cerca de ella. En la mayoría de los casos, los satélites sólo pueden medir la superficie. En el caso de la temperatura del océano, esto significa mucho menos que el milímetro superior, por lo que la temperatura de la superficie del mar obtenida por satélite debe combinarse con los datos de las sondas submarinas fijas o flotantes para obtener una imagen completa de la temperatura del océano.\r\n\r\nLos especialistas en observación de la Tierra trabajan con especialistas en la materia \"sobre el terreno\". Este trabajo de campo suele ser una parte importante del diseño de un nuevo instrumento satelital o de la prueba de una nueva forma de utilizar los datos satelitales existentes. El trabajo de campo puede consistir en el despliegue de instrumentos fijos en tierra, instrumentos a la deriva o planeando en el océano, así como vuelos en avión o globo en la atmósfera. Los científicos pueden pasar meses aislados en estaciones de investigación remotas en la Antártida o a bordo de un barco encerrado en el hielo marino del Ártico. Este trabajo en tierra es una parte esencial de la calibración y validación de las observaciones climáticas desde el espacio.",
-      "shortText": "# Reality Check\r\n\r\nAunque los satélites permiten cubrir mucho terreno en poco tiempo, sus observaciones deben calibrarse con mediciones _in situ_ realizadas en la superficie o cerca de ella.\r\n\r\n- El trabajo de campo suele ser una parte importante del diseño de un nuevo instrumento satelital\r\n- Los especialistas en observación de la Tierra trabajan con especialistas en la materia \"sobre el terreno\".\r\n- instrumentos fijos en el suelo\r\n- instrumentos a la deriva o deslizantes en el océano\r\n- vuelos de aviones o globos en la atmósfera\r\n- los científicos pueden pasar semanas a bordo de barcos\r\n- o meses en estaciones de investigación remotas en la Antártida\r\n\r\nGran parte de nuestros conocimientos sobre el clima de la Tierra en el pasado proceden del análisis de núcleos de hielo extraídos de las gruesas capas de hielo de Groenlandia o la Antártida.",
-      "images": [
-        "assets/sealevel_large_07.jpg",
-        "assets/story26-image18.jpg",
-        "assets/icesheet.jpg",
-        "assets/story26-image19.jpg",
-        "assets/icesheet_large_06.jpg"
-      ],
-      "imageCaptions": [
-        "Un barco de investigación despliega una boya Argo. Hay casi 4.000 de estas boyas automáticas flotando por todo el mundo. Suben y bajan los 2.000 metros superiores del océano registrando continuamente la temperatura, la salinidad y la corriente. Sus mediciones se utilizan para calibrar y validar las observaciones de la superficie del océano realizadas por satélite.  (Programa Argo/IFREMER)",
-        "Científicos tomando núcleos de hielo marino en el invierno ártico. El buque de investigación alemán Polarstern fue atrapado deliberadamente durante un año en el hielo marino del Océano Ártico durante 2019-20, como parte del Observatorio Multidisciplinario a la deriva para el Estudio del Clima Ártico (MOSAiC) (Esther Horvath / Alfred-Wegener-Institut)",
-        "Los aviones proporcionan una plataforma de teledetección local, así como el transporte en regiones remotas (A Hogg)",
-        "Medición de la humedad del suelo en Suecia para apoyar el desarrollo del satélite BIOMASS de la ESA (FOI)",
-        "Una vista de gran angular desde la estación de investigación conjunta franco-italiana Concordia, situada en lo alto del domo C de la meseta antártica, uno de los lugares más fríos de la Tierra (AP Salam)"
-      ],
-      "imageFits": [
-        "cover",
-        "cover",
-        "cover",
-        "contain",
-        "cover"
       ]
     }
   ]

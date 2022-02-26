@@ -3,29 +3,82 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Den Puls des Planeten messen\r\n\r\nSatelliten bieten eine einzigartige globale Perspektive auf das Klima der Erde. Sie liefern uns nun mehr als drei Jahrzehnte an Beobachtungen, die einige der wichtigsten Klimavariablen beschreiben. Diese Informationen sind eine nützliche Ressource sowohl für die Erstellung von Klimamodellen als auch für die Überprüfung ihrer Genauigkeit.",
-      "shortText": "# Taking the Pulse of the Planet\r\n\r\nSatelliten bieten eine einzigartige globale Perspektive auf das Klima der Erde. Sie liefern uns nun mehr als drei Jahrzehnte an Beobachtungen, die einige der wichtigsten Klimavariablen beschreiben. Diese Informationen sind eine nützliche Ressource sowohl für die Erstellung von Klimamodellen als auch für die Überprüfung ihrer Genauigkeit.",
+      "text": "# Urbane Wärme\r\n\r\nStädte sind zunehmend unser Zuhause, aber sie verstärken einige der schlimmsten Auswirkungen des Klimawandels, indem sie die Hitze einschließen und die Gesundheit gefährden. Da Hitzewellen immer extremer und häufiger werden, sind die Bewohner der größten Städte am meisten gefährdet.",
+      "shortText": "# Urban Wärme\r\n\r\nStädte sind zunehmend unser Zuhause, aber sie verstärken einige der schlimmsten Auswirkungen des Klimawandels, indem sie die Hitze einschließen und die Gesundheit gefährden. Da Hitzewellen immer extremer und häufiger werden, sind die Bewohner der größten Städte am meisten gefährdet.",
       "images": [
-        "assets/Sentinel-2.jpg"
+        "assets/story27-image03.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## Eine blaue Murmel\r\n\r\nAls die Besatzung von Apollo 17 1972 auf ihren Heimatplaneten zurückblickte, fotografierten sie zum ersten Mal eine völlig sonnenbeschienene Erde.  Es war auch das letzte Mal, dass Menschen weit genug von ihrer Heimat entfernt waren, um den ganzen Planeten mit eigenen Augen zu sehen. Dieser Anblick einer \"blauen Murmel\", die im Weltraum hängt, ist zu einem vertrauten Anblick geworden und ist möglicherweise das am häufigsten reproduzierte Foto der Geschichte.\r\n\r\nDas blaue Wasser der Meere und Ozeane dominiert das Bild. Aber wenn wir genauer hinsehen, können wir viele weitere Farben erkennen. Wir sehen zum Beispiel den gelben Sand der Sahara-Wüste, das dunkle Grün der tropischen Regenwälder, das Weiß der Wolken über den Ozeanen und das Eis und den Schnee, die die Antarktis bedecken.\r\n\r\nHeute nehmen Erdbeobachtungssatelliten täglich Bilder von der blauen Murmel auf, die eine Fülle von Details über unseren sich verändernden Planeten offenbaren. Sie sind zu einem unverzichtbaren Instrument für die Überwachung des Klimas sowohl auf lokaler als auch auf globaler Ebene geworden. Sie sind besonders nützlich für die Überwachung unzugänglicher Gebiete wie der Ozeane, der tropischen Regenwälder und der Polarregionen, die zu den Gebieten gehören, die am stärksten vom Klimawandel betroffen und bedroht sind.\r\n \r\nDiese \"Fernsensoren\" können [Eis, das sich ausdehnt und schrumpft](stories/story-15/3) an den Polen sehen, [Gletscher](stories/story-21/6) und [Brände](stories/story-28/1) überwachen, Wolken und Aerosole verfolgen, die sich durch die [Atmosphäre](stories/story-21/4) bewegen, und messen, wie sich [Nährstoffe und Temperaturen](stories/story-16/4) in den Ozeanen verändern. Die ersten operationellen Fernerkundungsmissionen fanden Ende der 1970er Jahre statt, so dass wir heute für viele Komponenten des Klimasystems Beobachtungen über einen Zeitraum von mehr als dreißig Jahren haben - lange genug, um zu sehen, wie sich die globale Erwärmung auf unseren Planeten auswirkt.",
-      "shortText": "## Eine blaue Murmel\r\n\r\nErstes vollständig von der Sonne beschienenes Foto der Erde - _Apollo 17, 1972_\r\n\r\n- 1960: Erster Wettersatellit - TIROS-1\r\n- 1972: Erdressourcen-Technologie-Satellit - Landsat-1\r\n- 1991: Europäischer Fernerkundungssatellit - ERS-1\r\n- heute: tägliche \"Blue Marble\"-Bilder von einer Flotte von Satelliten\r\n- einzigartiger Überblick über unzugängliche Regionen - Ozeane, Regenwälder, Polarregionen\r\n- Erdbeobachtungen über einen Zeitraum von mehr als 30 Jahren\r\n- lange genug, um zu sehen, was die globale Erwärmung mit unserem Planeten macht",
+      "text": "## Hitzewelle im Winter\r\n\r\nFür die Neujahrsfeierlichkeiten 2020 in Moskau musste künstlicher Schnee erzeugt werden. Die russische Hauptstadt, die für ihre kalten, harten Winter bekannt ist, hatte mit 5,4 Grad Celsius die höchste Dezembertemperatur seit Beginn der Aufzeichnungen im Jahr 1879 erreicht. Eine geplante Snowboard-Veranstaltung konnte nur mit Hilfe von \"Schnee\" stattfinden, der von der Oberfläche einer nahe gelegenen Eisbahn abgekratzt wurde. Kinder spielten Fußball in Höfen, in denen normalerweise Eishockeyspiele stattfinden.\r\n\r\nRussland erwärmt sich 2,5 Mal schneller als der globale Durchschnitt, und viele der Auswirkungen des Klimawandels werden in großen Städten wie Moskau noch verstärkt. Die expandierenden städtischen Gebiete, in denen immer mehr von uns leben, absorbieren und speichern die Wärme besser als die meisten natürlichen Bedeckungen.\r\n\r\n## Extreme verstärkt\r\n\r\nHitzewellen kosteten im Jahr 2003 europaweit 70.000 Menschen das Leben, 2010 allein in Russland 55.000. Städte sind während einer Hitzewelle den extremsten Temperaturen ausgesetzt, die zu Dehydrierung oder Hitzschlag führen können und das Risiko von Schlaganfällen, Herz- und Atemwegserkrankungen erhöhen. Während der Anstieg der globalen Durchschnittstemperatur - etwa 0,2 Grad Celsius pro Jahrzehnt - viel beachtet wird, steigen die eintägigen Temperaturextreme, die bei Hitzewellen auftreten, schneller an. In Städten mit mehr als 5 Millionen Einwohnern steigt der heißeste Tag des Jahres im Durchschnitt um 0,33 Grad Celsius pro Jahrzehnt und in Moskau, Paris und Houston um über 0,9 Grad Celsius pro Jahrzehnt. Man geht davon aus, dass die erhöhte Lebensgefahr durch eintägige Extreme mit der durch lang anhaltende Hitzeereignisse vergleichbar ist.",
+      "shortText": "## Hitzewelle im Winter\r\n\r\nFür die Neujahrsfeierlichkeiten 2020 in Moskau, der notorisch kalten Hauptstadt Russlands, musste künstlicher Schnee erzeugt werden.\r\n\r\n- Die Lufttemperatur erreichte 5,4 °C - der höchste Wert für einen Dezember seit Beginn der Aufzeichnungen im Jahr 1879.\r\n- Russland erwärmt sich 2,5 Mal schneller als der globale Durchschnitt.\r\n- Die Auswirkungen des Klimawandels werden in Großstädten wie Moskau noch verstärkt.\r\n- Städtische Gebiete absorbieren und speichern die Wärme besser als die meisten natürlichen Landflächen.\r\n\r\nExtreme verschärft\r\n\r\n- Hitzewellen forderten 2003 in Europa 70.000 Todesopfer, 2010 in Russland 55.000.\r\n- Dehydrierung, erhöhtes Risiko für Schlaganfall, Herz- und Atemwegserkrankungen.\r\n- Städte sind bei einer Hitzewelle den extremsten Temperaturen ausgesetzt.\r\n- Die globale Durchschnittstemperatur steigt um 0,2 °C pro Jahrzehnt, aber die Extremwerte an einzelnen Tagen steigen schneller.\r\n- Der heißeste Tag des Jahres steigt in Städten mit mehr als 5 Millionen Einwohnern um 0,33 °C pro Jahrzehnt.\r\n- Über 0,9°C pro Jahrzehnt in Moskau, Paris und Houston.",
       "images": [
-        "assets/cloud_large_01.jpg",
-        "assets/story26-image10.jpg",
-        "assets/story26-image17.jpg",
-        "assets/story26-image15.jpg",
-        "assets/intro_large_09.jpg"
+        "assets/story27-image01.jpg",
+        "assets/story27-image02.jpg",
+        "assets/story27-image10.jpg"
       ],
       "imageCaptions": [
-        "Foto der Erde, aufgenommen von der Apollo-17-Besatzung im Jahr 1972 (NASA)",
-        "Das erste Bild, das der experimentelle Wettersatellit TIROS-1 im April 1960 aufnahm (NASA)",
-        "Der erste europäische Wettersatellit, Meteosat-1, wurde im November 1977 gestartet (ESA)",
-        "Das erste Bild des europäischen Fernerkundungssatelliten (ERS-1) zeigt den Polder Flevoland und das Ijsselmeer in den Niederlanden am 27. Juli 1991 (ESA)",
-        "Daten von drei Generationen von Radarsatelliten zeigen den Rückgang von zwei großen Gletschern in Südostgrönland über 36 Jahre (ESA)"
+        "Lastwagen, die während einer Hitzewelle im Dezember 2019 Schnee auf eine Moskauer Straße bringen (Twitter)",
+        "Sommerliche Hitzewellen können Infrastrukturen wie Eisenbahnschienen und Straßen beschädigen und die Wasser- und Stromversorgung übermäßig belasten (US Dept of Transportation)",
+        "Mittlere nächtliche Lufttemperatur in Paris um 22 Uhr während der Hitzewelle im Sommer 2003, die zu Tausenden von hitzebedingten Todesfällen führte. (VITO/Planetek)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ]
+    },
+    {
+      "type": "globe",
+      "text": "## Städtische Wärmeinseln\r\n\r\nDer interaktive Globus zeigt die Ausdehnung der verschiedenen Arten von Landbedeckung, einschließlich städtischer Gebiete sowie natürlicher Bedeckungsarten wie Wald und Wüste. Sehen Sie sich das explosive Wachstum von Städten wie Shanghai in China seit Beginn der Datenaufzeichnung in den 1990er Jahren an. Konsistente Karten der Landbedeckung werden aus Satellitenbeobachtungen der [Initiative Klimawandel] der Europäischen Weltraumorganisation abgeleitet (stories/story-32/3). Andere Klimavariablen, die aus dem Weltraum gemessen werden, sind die [Bodenfeuchte](stories/story-21/5) und die Temperatur der Landoberfläche, die einen Überblick über die Hotspots des Planeten aus der Vogelperspektive bieten.\r\n\r\n![Diagramm der städtischen und ländlichen Temperaturprofile](assets/story27-image04.png)\r\n_Vergleich der monatlichen Durchschnittstemperaturen für städtische und ländliche Wetterstationen im Vereinigten Königreich (Heathrow bzw. Waddington) (KNMI)_\r\n\r\nWenn immer mehr Menschen in eine Stadt ziehen, werden große Teile der Vegetation durch Straßen, Parkplätze und Gebäude ersetzt. Baumaterialien haben eine viel höhere Kapazität, Sonnenwärme zu absorbieren und zu speichern als Pflanzen und Erde, während dicht gedrängte Gebäude die Luftzirkulation verhindern, so dass weniger Wärme entweichen kann. Auch die in Fabriken, Büros und Wohnungen erzeugte Wärme erhöht die Lufttemperatur. In Städten kann es bis zu 7 Grad Celsius wärmer sein als im Umland. Orte, an denen die Temperaturen auf diese Weise erhöht sind, werden als städtische Wärmeinseln bezeichnet.",
+      "shortText": "## Städtische Wärmeinseln\r\n\r\nDer interaktive Globus zeigt das explosive Wachstum von Städten wie Shanghai in China seit Beginn der Datenaufzeichnung in den 1990er Jahren.\r\n\r\n- Bodenbedeckung, Oberflächentemperatur und Bodenfeuchte sind wertvolle Klimavariablen für Städte.\r\n- Wenn Städte wachsen, wird die Vegetation durch Gebäude, Straßen und Parkplätze ersetzt.\r\n- Baumaterialien haben eine viel höhere Wärmekapazität als Pflanzen und Böden.  \r\n- Die in Fabriken, Büros und Wohnungen erzeugte Wärme trägt ebenfalls zum Anstieg der Lufttemperaturen bei.\r\n- In Städten kann es bis zu 7 °C wärmer sein als im Umland.\r\n\r\n![Diagramm der städtischen und ländlichen Temperaturprofile ](assets/story27-image04.png)\r\n_Vergleich der monatlichen Durchschnittstemperatur für städtische und ländliche Wetterstationen im Vereinigten Königreich (Heathrow bzw. Waddington) (KNMI)_",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "flyTo": {
+        "position": {
+          "longitude": 119.04,
+          "latitude": 34.86,
+          "height": 1792878.69
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.99,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "land_cover.lccs_class",
+          "timestamp": "2015-01-01T00:00:00.000Z"
+        }
+      ],
+      "layerDescription": "# CCI Bodenbedeckungsart\r\n\r\nStädtische Gebiete sind in rot dargestellt."
+    },
+    {
+      "type": "image",
+      "text": "## Erfassung der Temperatur aus dem Weltraum\r\n\r\nWie stark ein städtisches Gebiet zu einer Wärmeinsel wird, hängt von Faktoren wie der Anzahl, der Art und der Anordnung von Gebäuden und Straßen sowie von deren Material ab. Bodennahe Infrarotkameras zeigen, wo Wärme von Gebäuden verloren geht, damit diese energieeffizienter gestaltet werden können. Auf die gleiche Weise können Infrarotsensoren auf Satelliten genutzt werden, um zu zeigen, wo sich die Wärme in einer Stadt staut.\r\n\r\nMessungen der Landoberflächentemperatur (LST) aus dem Weltraum können mit historischen Daten von Wetterstationen verglichen werden, um die Bereiche einer Stadt zu ermitteln, die während Hitzewellen am anfälligsten sind. Diese Informationen können Stadtplanern helfen, die Gestaltung von Städten zu verbessern, indem sie entscheiden, wo Grünflächen angelegt, welche Materialien verwendet und wie Gebäude ausgerichtet werden sollen, um Schatten und Kühlung zu maximieren.\r\n\r\nLST-Daten können auch mit detaillierteren Daten vom Boden oder aus der Luft verknüpft und mit Hilfe hochwertiger Sensoren wie den Copernicus-Sentinel-Satelliten nahezu in Echtzeit aktualisiert werden, um Entscheidungsträger bei Hitzewellen zu unterstützen. LST aus dem Weltraum kann zeigen, wie Hitzewellen die Temperatur auf der Ebene eines Bezirks oder sogar eines einzelnen Stadtblocks beeinflussen. Das Verständnis dieser Ereignisse würde es ermöglichen, Maßnahmen zu ergreifen, die die Auswirkungen von hitzebedingten Gesundheitsgefahren verringern könnten.\r\n\r\nDie genauesten Klimadaten für die LST stammen von der Klimawandelinitiative der Europäischen Weltraumorganisation. Obwohl sie nur eine moderate räumliche Auflösung haben, sind sie detailliert genug, um die wichtigsten Merkmale einer Großstadt wie London zu erkennen, und ihre Temperaturmessungen sind äußerst genau. Sie liefern eine räumliche Momentaufnahme der Oberflächentemperatur sowie einen mehrere Jahrzehnte umfassenden zeitlichen Verlauf der Temperatur für eine ganze Stadt, eine Region, ein Land oder einen Kontinent, um die Leistung von [Klimamodellen](stories/story-31/0) zu verbessern.",
+      "shortText": "## Wärmeerfassung aus dem Weltraum\r\n\r\n- Infrarotkameras zeigen, wo die Wärme von Gebäuden verloren geht.\r\n- Genauso zeigen IR-Sensoren auf Satelliten, wo sich die Wärme in einer Stadt staut.\r\n\r\nDie Landoberflächentemperatur (LST) aus dem Weltraum kann sein:\r\n\r\n- mit historischen Daten von Wetterstationen verglichen werden.\r\n- mit detaillierteren Daten vom Boden oder aus luftgestützten Messungen verknüpft werden.\r\n- mit hochwertigen Sensoren wie den Copernicus-Sentinel-Satelliten nahezu in Echtzeit aktualisiert werden.\r\n\r\nDiese Informationen können Stadtplanern helfen, die Gestaltung von Städten zu verbessern:\r\n\r\n- Wo sollen Grünflächen angelegt werden, welche Baumaterialien sind zu verwenden?\r\n- Wie man Gebäude ausrichtet, um Schatten und Kühlung zu maximieren.\r\n- Potenziell die Auswirkungen hitzebedingter Gesundheitsgefahren verringern.\r\n\r\nDie genauesten Klimadaten für LST stammen von der ESA Climate Change Initiative:\r\n \r\n- Mäßige räumliche Auflösung.\r\n- Äußerst genaue Temperaturmessungen.\r\n- Zeitspanne von mehreren Jahrzehnten für eine ganze Stadt, Region, ein Land oder einen Kontinent.",
+      "images": [
+        "assets/iStock_000021056451Small.jpg",
+        "assets/story27-image06.jpg",
+        "assets/story27-image11.jpg",
+        "assets/story27-image08.jpg",
+        "assets/story27-image09.jpg"
+      ],
+      "imageCaptions": [
+        "Handgehaltene Infrarotkameras werden für thermografische Untersuchungen von Gebäuden eingesetzt. Infrarotkameras auf Satelliten können schnell und wiederholt eine ganze Stadt erfassen.  (iStock)",
+        "Thermisches Infrarotbild aus der Luft von Madrid um Mitternacht am 1. Juli 2008 (Universität Valencia)",
+        "Vom SLSTR-Instrument auf dem Copernicus-Satelliten Sentinel-3 abgeleitete Landoberflächentemperaturen für den 26. Juni (links) und 25. Juli (rechts) 2019. In diesem Sommer kam es in Europa zu einer extremen Hitzewelle mit rekordverdächtigen Temperaturen in den Niederlanden, Belgien, Deutschland und Paris. (ESA)",
+        "Durchschnittliche Landoberflächentemperatur für September 2006, abgeleitet aus Envisat AATSR (Universität Leicester)",
+        "Globale Anomalie der Landoberflächentemperatur für September 2006 von Envisat AATSR, die eine Hitzewelle über Mittel- und Nordeuropa zeigt (Universität Liecester)"
       ],
       "imageFits": [
         "contain",
@@ -37,80 +90,26 @@
     },
     {
       "type": "image",
-      "text": "## Satellitenumlaufbahnen\r\n\r\nDie Satellitentechnologie ist Teil unseres Alltags: Sie ist das Rückgrat der Navigationssysteme in unseren Autos, sie überträgt Telefon- und Fernsehsignale und ist ein Grundpfeiler der täglichen Wettervorhersage, die wir im Fernsehen verfolgen. Diese Anwendungen machen sich die verschiedenen Umlaufbahnen zunutze, die für Raumfahrzeuge um die Erde möglich sind. Ein Fernerkundungssystem benötigt einen _Sensor_ (die Kamera) und eine _Plattform_ (in diesem Fall den Satelliten). Verschiedene Arten von Kameras können auf unterschiedliche Weise mit Satelliten in verschiedenen Umlaufbahnen kombiniert werden, je nachdem, was wir herausfinden wollen.\r\n\r\n## Geostationäre Umlaufbahn\r\n\r\nDie meisten Wettervorhersagebilder werden von einer Kamera auf einem Satelliten aufgenommen, der in einer Umlaufbahn in 36.000 km Höhe über der Erde fliegt. Satelliten wie diese werden als geostationäre Satelliten bezeichnet. Sie bewegen sich im gleichen Rhythmus um die Erde, wie sich der Planet dreht, so dass sie sich immer über demselben Punkt befinden und immer dieselbe Seite der Erde sehen. Auf diesem Weg, der als geostationäre äquatoriale Umlaufbahn (\"geostationary equatorial orbit\" oder \"GEO\") bezeichnet wird, kann die Kamera jeden Tag viele Bilder vom selben Ort aufnehmen, so dass Meteorologen die Entwicklung der Wettersysteme verfolgen können. Geostationäre Umlaufbahnen werden auch von den meisten Telekommunikations- und Fernsehsatelliten genutzt.\r\n\r\n![Geostationäre und polare Umlaufbahnen ](assets/story26-image01.jpg)\r\n_Meteosat befindet sich in einer geostationären Umlaufbahn und Sentinel-5P in einer polaren Umlaufbahn (Planetary Visions)_\r\n\r\n## Polare Umlaufbahn\r\n\r\nNicht alle Satelliten sind geostationär. Andere können den gesamten Globus überblicken, indem sie sich von Pol zu Pol bewegen. Diese polumlaufenden Satelliten befinden sich in einer niedrigen Erdumlaufbahn (\"low earth orbit\" oder \"LEO\") in einer Höhe von etwa 700 km. Polumlaufende Satelliten brauchen in der Regel etwa hundert Minuten, um die Erde zu umrunden, und überqueren den Äquator etwa vierzehn Mal am Tag. Die meisten polumlaufenden Satelliten folgen einer ganz bestimmten Bahn, die als sonnensynchrone Umlaufbahn bezeichnet wird. Ihre Umlaufbahn führt nicht direkt über die Pole, sondern ist leicht geneigt. Das hat zur Folge, dass sie jeden Tag zur ungefähr gleichen Ortszeit einen bestimmten Punkt auf dem Äquator überfliegen.\r\n\r\nDie Kameras der sonnensynchronen polumlaufenden Satelliten können von den meisten Orten auf der Erde nur ein Bild pro Tag aufnehmen. Die Bilder sind jedoch detaillierter als die von geostationären Satelliten aufgenommenen, da sich die Kamera viel näher an der Erde befindet. Ein weiterer Vorteil der sonnensynchronen Umlaufbahn besteht darin, dass alle Bilder eines bestimmten Ortes zur gleichen Tageszeit aufgenommen werden und somit nicht durch die im Laufe eines Tages auftretenden Änderungen der Lichtintensität und -richtung beeinflusst werden. Dies ermöglicht es, andere Veränderungen genau zu erkennen, was für die Beobachtung des Klimas und die Messung von Größen, die als wesentliche Klimavariablen (\"essential climate variable\" oder \"ECV\") bezeichnet werden, unerlässlich ist. Die ECVs geben Aufschluss über den Gesundheitszustand unseres Planeten, so wie ein Arzt durch das Messen des Pulses etwas über die Gesundheit erfahren kann.",
-      "shortText": "## Satellitenumlaufbahnen\r\n\r\nSatellitentechnologie ist Teil des täglichen Lebens: Satellitennavigation, Kommunikation, Wettervorhersage. Sensoren, Plattformen und Umlaufbahnen können auf verschiedene Weise kombiniert werden.\r\n\r\nGeostationäre äquatoriale Umlaufbahn (GEO)\r\n\r\n- 36.000 km über der Erde, 24-Stunden-Umlaufbahn\r\n- Äquatoriale, geosynchrone Umlaufbahn\r\n- fester Blick auf eine Hemisphäre\r\n- geringe Auflösung, schnelle Wiederholung der Ansicht\r\n\r\nNiedrige Erdumlaufbahn (LEO)\r\n\r\n- 700-800 km über der Oberfläche, 100-minütige Umlaufbahn\r\n- Pol-zu-Pol, sonnensynchrone Umlaufbahn\r\n- deckt die ganze Welt ab, zur gleichen lokalen Tageszeit\r\n- hohe Auflösung, täglich (oder weniger) wiederholte Ansicht\r\n\r\n![Geostationäre und polare Umlaufbahnen ](assets/story26-image01.jpg)\r\n_Geostationäre und polare Umlaufbahnen (Planetary Visions)_",
+      "text": "## Keeping a Lid on it\r\n\r\nStädtische Hitzeinseln haben heute Auswirkungen auf viele Menschen, und mit der fortschreitenden Verstädterung und dem Klimawandel werden in Zukunft noch viel mehr Menschen ihre Folgen spüren. Städte nehmen derzeit etwa zwei Prozent der Erdoberfläche ein und beherbergen mehr als die Hälfte der Weltbevölkerung. Bis zum Jahr 2050 werden voraussichtlich 75 Prozent einer Weltbevölkerung von 9,5 Milliarden Menschen in Städten leben.\r\n\r\nEs gibt Möglichkeiten, den städtischen Wärmeinseleffekt zu verringern. Dazu gehört, dass Gebäude so angeordnet werden, dass die Luftzirkulation verbessert wird, dass neue Baumaterialien verwendet werden, die weniger Wärme speichern als herkömmliche Materialien, und dass die Natur wieder Einzug in Städte und Gebäude hält. Pflanzen und Bäume spenden Schatten, beseitigen die Luftverschmutzung und saugen Wasser auf, um Überschwemmungen zu verhindern. Außerdem kühlen sie die Luft, indem sie Wasser an die Atmosphäre abgeben.\r\n\r\nStadtbäume sind auch eine wirksame [Senke für Kohlendioxid](stories/story-12/2), das sie ganz in der Nähe seiner Quellen im Verkehr und in der Industrie absorbieren und so die Ausbreitung dieses Treibhausgases in der Atmosphäre begrenzen. In London gibt es mehr Bäume als Menschen, und es wird geschätzt, dass sie in einigen Teilen der Stadt 380 Tonnen Kohlenstoff pro Hektar speichern - vergleichbar mit einigen gemäßigten und tropischen Regenwäldern.\r\n\r\nIn den Niederlanden hat die Stadt Arnheim beschlossen, 10 % ihres Straßenbelags durch Gras zu ersetzen, die Schattenfläche durch das Pflanzen von Bäumen zu vergrößern und dafür zu sorgen, dass 90 % des Regenwassers vom Boden aufgenommen wird, anstatt in die Kanalisation zu fließen. Wasser erhöht die Wärmekapazität des Bodens, so dass feuchter Boden weniger Wärme abgibt als trockener Boden. Aber werden diese Maßnahmen ausreichen, um unsere überhitzten Städte zu kühlen? Die Messung der Oberflächentemperatur, der Bodenfeuchtigkeit und der Art der Bodenbedeckung aus dem Weltraum wird uns helfen, diese Frage zu beantworten.",
+      "shortText": "# ♪ Keeping a Lid on it\r\n\r\n2 % der Erdoberfläche sind städtisch; hier lebt die Hälfte der Weltbevölkerung; 75 % bis 2050. Es gibt Möglichkeiten, den städtischen Wärmeinseleffekt zu verringern:\r\n\r\n- Positionierung von Gebäuden zur Verbesserung der Luftzirkulation.\r\n- Verwendung neuer Baumaterialien, die weniger Wärme speichern.\r\n- Renaturierung in Städten und Nutzen von natürlichen Baumaterialien für Gebäude.\r\n- Bäume spenden Schatten und saugen Wasser auf. Sie helfen, Überschwemmungen zu verhindern und kühlen die Luft ab, wenn sie das Wasser abgeben.\r\n- Stadtbäume absorbieren CO2 und andere Luftschadstoffe.\r\n- In London (UK) gibt es mehr Bäume als Menschen; sie speichern bis zu 380 Tonnen Kohlenstoff pro Hektar - vergleichbar mit einigen Regenwäldern.\r\n- Arnheim (Niederlande) ersetzt 10 % der Straßenoberfläche durch Gras, spendet durch das Pflanzen von Bäumen mehr Schatten und leitet 90 % des Regenwassers in den Boden, was eine kühlende Wirkung hat.\r\n\r\nWerden solche Maßnahmen ausreichen, um unsere überhitzten Städte zu kühlen? Die Messung der Oberflächentemperatur, der Bodenfeuchtigkeit und der Art der Bodenbedeckung aus dem Weltraum wird uns helfen, diese Frage zu beantworten.",
       "images": [
-        "assets/story26-image02.jpg",
-        "assets/story26-image03.jpg",
-        "assets/soilmoisture_large_14.jpg",
-        "assets/story26-image04.jpg",
-        "assets/intro_large_11.jpg"
+        "assets/story27-image07.jpg",
+        "assets/story27-image12.jpg",
+        "assets/story27-image05.jpg",
+        "assets/story27-image15.jpg"
       ],
       "imageCaptions": [
-        "Meteosat - ein geostationärer Wettersatellit (Planetary Visions/ESA)",
-        "Copernicus Sentinel 3 - ein polarumlaufender Erdbeobachtungssatellit (ESA)",
-        "Der Satellit SMOS (Soil Moisture and Ocean Salinity), einer der ESA-Wissenschaftssatelliten Earth Explorer (ESA)",
-        "Das Europäische Datenrelaissystem (EDRS) ist ein geostationäres Kommunikationsrelais\r\nzwischen Satelliten in niedriger Erdumlaufbahn und Empfangsstationen am Boden (ESA)",
-        "Satellitenbodenstation der Europäischen Weltraumorganisation (ESA) in Frascati, Italien"
+        "Auf diesem Foto, das der ESA-Astronaut Tim Peake 2016 von der Internationalen Raumstation aus aufgenommen hat, zeichnen Straßenlaternen das Stadtgebiet von London nach. Dunkle Bereiche zeigen die Standorte der grünen Lungen der Stadt - die vielen großen Parks. (ESA/NASA)",
+        "Landoberflächentemperatur (links) und ein Maß für die städtische Wärmeinsel im Verhältnis zu den umliegenden ländlichen Gebieten (rechts) für London, basierend auf Landsat-Thermo-Infrarot-Beobachtungen vom 7. Juli 2020. Der Anstieg der Landoberflächentemperatur in Städten ist sogar noch höher als bei der Lufttemperatur. (Universität Liecester)",
+        "Lufttemperatur für Madrid am 25. Juni 2008 um 22:18 UTC (rechts), verglichen mit einer Karte der versiegelten Bodenfläche (links), die die künstlichen Flächen der Stadt hervorhebt. (VITO/Indra/Planetek/Europäische Umweltagentur)",
+        "Ein Eichenpaar in Hampstead Heath in London, gerendert als Punktwolke aus Laserentfernungsmessungen.\r\nDie Masse des von den Bäumen gespeicherten Kohlenstoffs kann anhand von 3D-Baummodellen auf der Grundlage von Laserscans geschätzt werden\r\n(Lidar - light detection and ranging). (M Disney/P Wilkes/UCL)"
       ],
       "imageFits": [
-        "contain",
+        "cover",
         "contain",
         "contain",
         "contain",
         "contain"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Die Erde durch eine andere Linse betrachten\r\n\r\nDas Foto der Blauen Murmel zeigt die Erde, wie wir sie mit bloßem Auge sehen. Durch die Erkennung von rotem, grünem und blauem Licht \"sieht\" das menschliche Auge - und der Sensor in einer Standard-Digitalkamera - die gesamte Palette der Farben. Satellitenkameras können viel mehr Informationen über unseren Planeten sammeln, indem sie über die sichtbaren Wellenlängen hinaus in andere Bereiche des elektromagnetischen Spektrums blicken, und jeder Bereich offenbart andere Aspekte des Charakters der Erde.\r\n\r\nBeim Durchqueren des elektromagnetischen Spektrums verändert sich das Aussehen der Erde, da verschiedene Teile des Erdsystems sichtbar werden. Im sichtbaren Wellenlängenbereich (400-700 Nanometer) erfassen optische Sensoren die Umrisse von See- und Meeresküsten, Gletschern, städtischen Gebieten und die Farbveränderungen durch das Phytoplankton im Meer, einer wichtigen Kohlenstoffsenke. Klicke durch die Bildergalerie, um zu sehen, wie die Satelliten die Erde bei anderen Wellenlängen sehen.\r\n\r\n## Kürzere Wellenlängen\r\nUltraviolette Wellenlängen werden von Ozon in der Atmosphäre absorbiert. Sensoren, die diesen Wellenlängenbereich aufspüren, spielten eine wichtige Rolle bei der Entdeckung des [Ozonlochs](stories/story-8/1) über der Antarktis und werden auch heute noch eingesetzt, um dessen Entwicklung zu verfolgen. Röntgen- und Gammastrahlen haben viel kürzere Wellenlängen als sichtbares Licht (weniger als 10 Nanometer). Sie werden in der Astronomie (und in der Medizin) verwendet, aber nicht von Erdbeobachtungssatelliten.\r\n\r\n## Längere Wellenlängen\r\n\r\nWellenlängen im nahen Infrarot (ca. 1 Mikrometer) werden zur Messung der [Stärke des Pflanzenwachstums](stories/story-29/3) auf dem Land verwendet und helfen dabei, die landwirtschaftliche Produktivität und die Auswirkungen von Stressfaktoren wie Dürre zu überwachen. Das mittlere Infrarot zeigt [Wasserdampf in der Atmosphäre](stories/story-21/3) an. Nach dem gleichen Prinzip wie die tragbaren Wärmebildkameras, die an einigen Flughäfen zur Temperaturkontrolle eingesetzt werden, können wir mit dem thermischen Infrarot (Wellenlänge etwa 10 Mikrometer) die Temperatur des Landes und der [Meeresoberfläche](stories/story-16/2) sowie der Wolkenoberseiten messen. Das Ferninfrarot gibt Aufschluss über die von der Erde abgestrahlte Energie und den Energieaustausch in der Atmosphäre.\r\n\r\nBei noch größeren Wellenlängen können Mikrowellen (etwa 1 Zentimeter) das Vorhandensein von Wasser in all seinen Formen aufzeigen: als Flüssigkeit im Boden, gefroren als Schnee und Eis und als Dampf und Wassertröpfchen in der Atmosphäre. Mikrowellen können Wolken durchdringen, so dass Mikrowellensensoren unter den meisten Wetterbedingungen und sogar in der anhaltenden Dunkelheit des polaren Winters Daten liefern können. Mit den von der Erde ausgesandten Mikrowellen können wir Schnee und [Meereisausdehnung](stories/story-15/3) und [Bodenfeuchtigkeit](stories/story-21/5) überwachen.\r\n\r\nAktive Mikrowellensensoren, einschließlich Radar, erzeugen ihre eigenen Mikrowellen, ähnlich wie eine Taschenlampe Licht erzeugt. Die Erkennung der reflektierten Mikrowellenenergie ermöglicht es uns, die Bewegung des Eises zu verfolgen, und mit Radar-Höhenmessern können wir die [Dicke des Meereises](stories/story-15/7) und der Eisschilde sowie die Höhe der Meereswellen messen.",
-      "shortText": "## Die Erde durch eine andere Linse betrachten\r\n\r\nSatelliten sammeln Informationen über die Erde, indem sie über die sichtbaren Wellenlängen hinaus in andere Bereiche des elektromagnetischen Spektrums blicken:\r\n\r\n- Ultraviolett (100-400 nm): Ozon in der Atmosphäre\r\n- sichtbar (400-700 nm): Küstenlinien, Gletscher, städtische Gebiete, Wolken, Phytoplankton im Meer\r\n- Nahinfrarot (~ 1 µm): Pflanzenwachstum an Land\r\n- Mittleres Infrarot: Wasserdampf in der Atmosphäre\r\n- Thermisches Infrarot (~ 10 µm): Temperatur von Land, Meer, Wolken\r\n- Ferninfrarot: von der Erde abgestrahlte Energie und Energieaustausch in der Atmosphäre\r\n- Mikrowellen (~ 1 cm): Wasser - im Boden, gefroren als Schnee und Eis, als Wasserdampf und Wassertröpfchen in der Atmosphäre\r\n- aktive Mikrowellensensoren, einschließlich Radar: Bewegung von Eis, Dicke von Meereis und Eisschilden, Höhe von Meereswellen",
-      "images": [
-        "assets/story26-image05.jpg",
-        "assets/story26-image07.jpg",
-        "assets/story26-image08.jpg",
-        "assets/story26-image09.jpg",
-        "assets/story26-image12.jpg"
-      ],
-      "imageCaptions": [
-        "Ultraviolettes Licht zeigt die Konzentration des atmosphärischen Ozons (ESA-CCI Ozone)",
-        "Multispektrale Oberflächenreflexion im sichtbaren und nahen Infrarotbereich\r\nzeigt die Vitalität der Pflanzenwelt auf dem Boden (ESA-CCI CCI Land Cover)",
-        "Atmosphärischer Wasserdampf im mittleren Infrarotbereich, aufgenommen vom Wettersatelliten Meteosat (ESA/Eumetsat/DLR)",
-        "Thermische Infrarot-Wellenlängen zeigen die Temperatur der Erdoberfläche und der Wolkenoberteile (ESA-CCI Cloud)",
-        "Mikrowellenemissionen werden zur Erfassung von Bodenfeuchtigkeit, Meereis, Schnee und atmosphärischem Wasser verwendet. Helligkeitstemperatur bei 89 GHz und 23,8 GHz von AMSR-E. (Nationale Raumfahrtentwicklungsbehörde von Japan)"
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Realitätscheck\r\n\r\nObwohl Satelliten es ermöglichen, in kurzer Zeit eine große Fläche zu erfassen, müssen die von ihren Sensoren gemachten Beobachtungen mit _in situ_ Messungen abgeglichen werden, die mit herkömmlichen Instrumenten auf oder nahe der Oberfläche vorgenommen werden. Satelliten können in den meisten Fällen nur die Oberfläche messen. Im Falle der Temperatur des Ozeans bedeutet dies viel weniger als den obersten Millimeter, so dass die Satellitentemperatur der Meeresoberfläche mit Daten von schiffsgebundenen oder frei schwimmenden Unterwassersonden kombiniert werden muss, um ein vollständiges Bild der Ozeantemperatur zu erhalten.\r\n\r\nSpezialisten für Erdbeobachtung arbeiten mit Fachleuten \"vor Ort\" zusammen. Diese Feldarbeit ist oft ein wichtiger Bestandteil der Entwicklung eines neuen Satelliteninstruments oder der Erprobung einer neuen Art der Nutzung vorhandener Satellitendaten. Die Feldarbeit kann den Einsatz fester Instrumente am Boden, treibende oder gleitende Instrumente im Ozean oder Flugzeug- oder Ballonflüge in der Atmosphäre umfassen. Wissenschaftler können Monate isoliert in abgelegenen Forschungsstationen in der Antarktis oder an Bord eines Schiffes im arktischen Meereis verbringen. Diese Arbeit am Boden ist ein wesentlicher Bestandteil der Kalibrierung und Validierung von Klimabeobachtungen aus dem Weltraum.",
-      "shortText": "# Reality Check\r\n\r\nObwohl Satelliten in kurzer Zeit eine große Fläche abdecken können, müssen ihre Beobachtungen mit _in situ_ Messungen an oder nahe der Oberfläche abgeglichen werden.\r\n\r\n- Feldarbeit ist oft ein wichtiger Bestandteil der Entwicklung eines neuen Satelliteninstruments\r\n- Erdbeobachtungsspezialisten arbeiten mit Fachleuten \"vor Ort\" zusammen\r\n- feste Instrumente am Boden\r\n- driftende oder gleitende Instrumente im Ozean\r\n- Flugzeug- oder Ballonflüge in der Atmosphäre\r\n- Wissenschaftler können Wochen an Bord von Schiffen verbringen\r\n- oder Monate auf abgelegenen Forschungsstationen in der Antarktis\r\n\r\nEin Großteil unseres Wissens über das vergangene Klima der Erde stammt aus der Analyse von Eiskernen, die aus den dicken Eisschilden Grönlands oder der Antarktis gewonnen wurden.",
-      "images": [
-        "assets/sealevel_large_07.jpg",
-        "assets/story26-image18.jpg",
-        "assets/icesheet.jpg",
-        "assets/story26-image19.jpg",
-        "assets/icesheet_large_06.jpg"
-      ],
-      "imageCaptions": [
-        "Ein Forschungsschiff setzt eine Argo-Boje aus. Es gibt fast 4.000 dieser automatischen Bojen, die auf der ganzen Welt schwimmen. Sie steigen in den obersten 2.000 Metern des Ozeans auf und ab und zeichnen kontinuierlich Temperatur, Salzgehalt und Strömung auf. Ihre Messungen werden zur Kalibrierung und Validierung von Satellitenbeobachtungen der Meeresoberfläche verwendet.  (Argo-Programm/IFREMER)",
-        "Wissenschaftler nehmen im arktischen Winter Meereiskerne. Das deutsche Forschungsschiff Polarstern wurde im Rahmen des Multidisziplinären driftenden Observatoriums zur Erforschung des arktischen Klimas (MOSAiC) 2019-20 absichtlich für ein Jahr im Meereis des Arktischen Ozeans eingeschlossen (Esther Horvath / Alfred-Wegener-Institut).",
-        "Flugzeuge bieten eine lokale Fernerkundungsplattform und ermöglichen den Transport in entlegene Regionen (A Hogg)",
-        "Bodenfeuchtemessungen in Schweden zur Unterstützung der Entwicklung des BIOMASS-Satelliten der ESA (FOI)",
-        "Ein Weitwinkel-Blick von der gemeinsamen französisch-italienischen Concordia-Forschungsstation, die hoch auf dem Dome C des antarktischen Plateaus liegt, einem der kältesten Orte der Erde (AP Salam)"
-      ],
-      "imageFits": [
-        "cover",
-        "cover",
-        "cover",
-        "contain",
-        "cover"
       ]
     }
   ]

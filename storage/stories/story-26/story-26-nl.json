@@ -3,29 +3,82 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# De hartslag van de planeet meten\r\n\r\nSatellieten bieden een unieke blik op de aard. Ze verzamelen al meer dan drie decennia informatie over de staat van ons klimaat. Op basis van deze informatie worden klimaatmodellen ontwikkeld en wordt de nauwkeurigheid van de modellen gecontroleerd.",
-      "shortText": "# De hartslag van de planeet meten\r\n\r\nSatellieten bieden een uniek wereldwijd perspectief op het klimaat van de aarde. Dankzij deze satellieten beschikken we nu over meer dan drie decennia aan waarnemingen die een aantal van de belangrijkste klimaatvariabelen beschrijven. Deze informatie is een nuttige bron voor zowel het opstellen van klimaatmodellen als het controleren van de nauwkeurigheid ervan.",
+      "text": "# Stedelijke Warmte\r\n\r\nSteden zijn steeds meer ons thuis, maar ze versterken een aantal van de ergste gevolgen van de klimaatverandering, houden warmte vast en bedreigen de gezondheid. Naarmate hittegolven extremer worden en vaker voorkomen, lopen de inwoners van de grootste steden het grootste risico.",
+      "shortText": "# Stedelijke Warmte\r\n\r\nSteden zijn steeds meer ons thuis, maar ze versterken een aantal van de ergste gevolgen van de klimaatverandering, houden warmte vast en bedreigen de gezondheid. Naarmate hittegolven extremer worden en vaker voorkomen, lopen de inwoners van de grootste steden het grootste risico.",
       "images": [
-        "assets/Sentinel-2.jpg"
+        "assets/story27-image03.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## De ‘Blue Marble’\r\n\r\nIn 1972 maakte de bemanning van Apollo 17 voor het eerst een foto van een volledig door de zon verlichte aarde. Het was gelijk ook de laatste keer dat mensen zo ver van de aarde waren dat ze de hele planeet konden overzien. De ‘Blue Marble’ (letterlijk: de blauwe knikker) hangend in de ruimte is een bekend beeld geworden. Het is misschien wel de meest gereproduceerde foto in de geschiedenis.\r\n \r\nHet blauwe water van de zeeën en oceanen domineert de foto. Maar als je beter kijkt, kun je veel meer kleuren onderscheiden. Je ziet bijvoorbeeld het gele zand van de Sahara, het donkergroen van tropische regenwouden en het wit van wolken boven de oceanen en van het ijs en de sneeuw die Antarctica bedekken.\r\n\r\nTegenwoordig maken satellieten dagelijks Blue Marble-achtige foto’s, die een schat aan informatie over onze veranderende planeet onthullen. Ze zijn een essentieel instrument geworden om het klimaat op lokale én mondiale schaal in kaart te brengen. Ze zijn vooral nuttig voor het monitoren van ontoegankelijke gebieden, zoals de oceanen, het tropisch regenwoud en de poolgebieden. Gebieden die tegelijk het kwetsbaarst zijn voor klimaatverandering en het meest worden bedreigd.\r\n\r\nDe _remote sensors_ (‘sensoren op afstand’) op satellieten kunnen volgen hoe [zee-ijs groeit en weer smelt](stories/story-15/3), [gletsjers](stories/story-21/6) en [natuurbranden](stories/story-28/1) in de gaten houden, wolken en aërosolen volgen die door de [atmosfeer](stories/story-21/4) bewegen en meten hoe [voedingsstoffen in en de watertemperatuur](stories/story-16/4) van de oceanen veranderen. De eerste remote sensing-missies werden al eind jaren zeventig uitgevoerd, dus voor veel aspecten van het klimaatsysteem hebben we nu waarnemingen die meer dan dertig jaar bestrijken. Lang genoeg om te zien wat de gevolgen van de opwarming van de aarde zijn.",
-      "shortText": "## De ‘Blue Marble’\r\n\r\nEerste volledig zonverlichte foto van de Aarde - _Apollo 17, 1972_\r\n\r\n- 1960: eerste weersatelliet - TIROS-1\r\n- 1972: Aardse Hulpbronnen Technologie Satelliet - Landsat-1\r\n- 1991: Europese teledetectiesatelliet - ERS-1\r\n- vandaag: dagelijkse \"blauwe knikker\"-beelden van een vloot satellieten\r\n- uniek overzicht van ontoegankelijke gebieden - oceanen, regenwouden, poolgebieden\r\n- Waarnemingen van de aarde over een periode van meer dan 30 jaar\r\n- lang genoeg om te zien wat de opwarming van de aarde met onze planeet doet",
+      "text": "## Hittegolf in de Winter\r\n\r\nVoor de nieuwjaarsviering van 2020 in Moskou moest kunstsneeuw worden gemaakt. In de Russische hoofdstad, die bekend staat om zijn koude, strenge winters, was het 5,4 graden Celsius - de hoogste decembertemperatuur sinds het begin van de metingen in 1879. Een gepland snowboardevenement kon alleen doorgaan met behulp van \"sneeuw\" die van het oppervlak van een nabijgelegen ijsbaan was geschraapt. Kinderen speelden voetbal op binnenplaatsen waar gewoonlijk ijshockeywedstrijden worden gespeeld.\r\n\r\nRusland warmt 2,5 keer sneller op dan het wereldgemiddelde, en veel van de gevolgen van de klimaatverandering worden versterkt in grote steden als Moskou. De uitdijende stedelijke gebieden, waar steeds meer mensen wonen, absorberen de warmte beter en houden die beter vast dan de meeste natuurlijke afdekkingsvormen.\r\n\r\n## Extremen versterkt\r\n\r\nHittegolven doodden 70.000 mensen in heel Europa in 2003 en 55.000 in Rusland alleen al in 2010. Steden worden tijdens een hittegolf blootgesteld aan de meest extreme temperaturen, die uitdroging of een hitteberoerte kunnen veroorzaken en het risico op beroertes, hart- en ademhalingsaandoeningen kunnen verhogen. Hoewel veel wordt gesproken over de stijging van de gemiddelde temperatuur wereldwijd - ongeveer 0,2 graden Celsius per decennium - stijgen de temperatuurextremen die tijdens hittegolven op één dag worden ervaren, sneller. In steden met meer dan 5 miljoen inwoners stijgt de warmste dag van het jaar gemiddeld met 0,33 graden Celsius per decennium en in Moskou, Parijs en Houston met meer dan 0,9 graden Celsius per decennium. De verhoogde levensbedreiging die uitgaat van eendaagse extremen wordt vergelijkbaar geacht met die van langdurige hittegolven.",
+      "shortText": "## Hittegolf in de Winter\r\n\r\nVoor de nieuwjaarsviering van 2020 in Moskou, de beruchte koude hoofdstad van Rusland, moest kunstsneeuw worden gemaakt.\r\n\r\n- De luchttemperatuur bereikte 5,4°C - de hoogste voor december sinds het begin van de metingen in 1879.\r\n- Rusland warmt 2,5 keer sneller op dan het wereldgemiddelde.\r\n- In grote steden zoals Moskou worden de gevolgen van de klimaatverandering nog versterkt.\r\n- Stedelijke gebieden absorberen warmte en houden die beter vast dan de meeste natuurlijke landbedekkingen.\r\n\r\nExtremen versterkt\r\n\r\n- Hittegolven doodden 70.000 mensen in Europa in 2003; 55.000 in Rusland in 2010.\r\n- Uitdroging, verhoogd risico op beroertes, hart- en ademhalingsaandoeningen.\r\n- Steden worden blootgesteld aan de meest extreme temperaturen tijdens een hittegolf.\r\n- Wereldwijd stijgt de gemiddelde temperatuur met 0,2°C per decennium, maar de dagextremen stijgen sneller.\r\n- Warmste dag van het jaar stijgt met 0,33°C per decennium in steden met meer dan 5 miljoen inwoners.\r\n- Meer dan 0,9°C per decennium in Moskou, Parijs en Houston.",
       "images": [
-        "assets/cloud_large_01.jpg",
-        "assets/story26-image10.jpg",
-        "assets/story26-image17.jpg",
-        "assets/story26-image15.jpg",
-        "assets/intro_large_09.jpg"
+        "assets/story27-image01.jpg",
+        "assets/story27-image02.jpg",
+        "assets/story27-image10.jpg"
       ],
       "imageCaptions": [
-        "Foto van de aarde genomen in 1972 door de Apollo 17 bemanning (NASA)",
-        "De eerste foto genomen  door de experimentele weersatelliet TIROS-1 in april 1960 (NASA)",
-        "Europa's eerste weersatelliet, Meteosat-1, werd in november 1977 gelanceerd (ESA)",
-        "De eerste foto van de _European Remote Sensing_ satelliet (ERS-1) toonde Flevoland en het IJsselmeer in Nederland op 27 juli 1991 (ESA)",
-        "Data van drie generaties radarsatellieten tonen het smelten van twee grote gletsjers in zuidoost Groenland gedurende 36 jaar (ESA)"
+        "Vrachtwagens die gefabriceerde sneeuw afleveren in een straat in Moskou tijdens een hittegolf in december 2019 (Twitter)",
+        "Hittegolven in de zomer kunnen schade toebrengen aan de infrastructuur, zoals spoorrails en wegdek, en kunnen de water- en elektriciteitsvoorziening overbelasten (US Dept of Transportation)",
+        "Gemiddelde nachttemperatuur in Parijs om 22.00 uur tijdens de hittegolf van de zomer van 2003, die tot duizenden sterfgevallen door hitte heeft geleid. (VITO/Planetek)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ]
+    },
+    {
+      "type": "globe",
+      "text": "## stedelijke hitte-eilanden\r\n\r\nDe interactieve wereldbol toont de omvang van verschillende soorten landbedekking, waaronder stedelijke gebieden en natuurlijke bedekkingstypen zoals bos en woestijn. Bekijk de explosieve groei van steden als Shanghai in China sinds het begin van de gegevensbestanden in de jaren negentig. Consistente kaarten van landbedekking worden afgeleid van satellietwaarnemingen door het [Climate Change Initiative] van het Europees Ruimteagentschap(stories/story-32/3). Andere klimaatvariabelen die vanuit de ruimte worden gemeten zijn de hoeveelheid [vocht in de bodem](verhalen/story-21/5) en de temperatuur van het landoppervlak, waardoor in vogelvlucht een overzicht wordt verkregen van de hotspots van de planeet.\r\n\r\n[stedelijke en landelijke temperatuurprofielen grafiek](assets/story27-image04.png)\r\nVergelijking van de maandelijkse gemiddelde temperatuur voor weerstations in de stad en op het platteland in het Verenigd Koninkrijk (respectievelijk Heathrow en Waddington) (KNMI)_\r\n\r\nNaarmate meer mensen naar een stad trekken, worden grote stukken vegetatie vervangen door wegen, parkeerterreinen en gebouwen. Bouwmaterialen hebben een veel grotere capaciteit om warmte van de zon te absorberen en op te slaan dan planten en grond, terwijl dicht opeengepakte gebouwen de circulatie van lucht verhinderen zodat minder warmte kan ontsnappen. De warmte die in fabrieken, kantoren en woningen wordt opgewekt, doet ook de luchttemperatuur stijgen. Steden kunnen tot 7 graden Celsius warmer zijn dan het omringende platteland. Plaatsen waar de temperatuur op deze manier wordt verhoogd, staan bekend als stedelijke hitte-eilanden.",
+      "shortText": "## stedelijke hitte-eilanden\r\n\r\nDe interactieve wereldbol toont de explosieve groei van steden als Shanghai in China sinds het begin van de gegevensregistratie in de jaren negentig.\r\n\r\n- Bodembedekking, landoppervlaktetemperatuur en bodemvochtigheid zijn nuttige klimaatvariabelen voor steden.\r\n- Naarmate steden zich uitbreiden, wordt vegetatie vervangen door gebouwen, wegen en parkeerterreinen.\r\n- Bouwmaterialen hebben een veel grotere warmtecapaciteit dan planten en grond.  \r\n- Ook de warmte die in fabrieken, kantoren en woningen wordt opgewekt, draagt bij tot de stijging van de luchttemperatuur.\r\n- Steden kunnen tot 7°C warmer zijn dan het omringende platteland.\r\n\r\nGrafiek van temperatuurprofielen in steden en op het platteland ](assets/story27-image04.png)\r\nVergelijking van de maandelijkse gemiddelde temperatuur voor weerstations in de stad en op het platteland in het Verenigd Koninkrijk (respectievelijk Heathrow en Waddington) (KNMI)_",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "flyTo": {
+        "position": {
+          "longitude": 119.04,
+          "latitude": 34.86,
+          "height": 1792878.69
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.99,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "land_cover.lccs_class",
+          "timestamp": "2015-01-01T00:00:00.000Z"
+        }
+      ],
+      "layerDescription": "# CCI Type landbedekking\r\n\r\nStedelijke gebieden zijn in rood aangegeven."
+    },
+    {
+      "type": "image",
+      "text": "## Warmtemetingen uit de Ruimte\r\n\r\nHoeveel invloed een stedelijk gebied heeft op zijn hitte-eiland hangt af van factoren zoals het aantal, het type en de plaatsing van gebouwen en wegen, en waar ze van gemaakt zijn. Infraroodcamera's op grondniveau worden gebruikt om aan te tonen waar warmte uit gebouwen verloren gaat, zodat deze energie-efficiënter kunnen worden gemaakt. Op dezelfde manier kunnen infraroodsensoren op satellieten worden gebruikt om aan te tonen waar zich in een stad warmte ophoopt.\r\n\r\nMetingen van de temperatuur van het landoppervlak (Land Surface Temperature: LST) vanuit de ruimte kunnen worden vergeleken met historische gegevens van weerstations om te bepalen welke delen van een stad het kwetsbaarst zijn tijdens hittegolven. Deze informatie kan stadsplanners helpen het ontwerp van steden te verbeteren door te beslissen waar groene zones moeten komen, welke materialen moeten worden gebruikt en hoe gebouwen moeten worden georiënteerd om zoveel mogelijk schaduw en koeling te krijgen.\r\n\r\nLST-gegevens kunnen ook worden gekoppeld aan meer gedetailleerde gegevens van de grond of uit luchtverkenningen, en in bijna-realtime worden bijgewerkt met behulp van hoogwaardige sensoren zoals de Copernicus Sentinel-satellieten, ter ondersteuning van de beleidsmakers tijdens hittegolven. LST vanuit de ruimte kan aantonen hoe hittegolven de temperatuur beïnvloeden op het niveau van een wijk of zelfs een individueel stadsblok. Inzicht in deze gebeurtenissen zou het mogelijk maken stappen te ondernemen die het effect van hittegerelateerde gezondheidsrisico's zouden kunnen verminderen.\r\n\r\nDe meest nauwkeurige klimaatgegevens voor LST zijn afkomstig van het Climate Change Initiative van het Europees Ruimteagentschap. Hoewel de ruimtelijke resolutie matig is, is deze gedetailleerd genoeg om de belangrijkste kenmerken van een grote stad als Londen te zien, en de temperatuurmetingen zijn uiterst nauwkeurig. Zij leveren een ruimtelijke momentopname van de oppervlaktetemperatuur en een temporele progressie van de temperatuur over meerdere decennia voor een hele stad, regio, land of continent om de prestaties van [klimaatmodellen] te verbeteren(stories/story-31/0).",
+      "shortText": "## Warmtemetingen uit de Ruimte\r\n\r\n- Infraroodcamera's laten zien waar warmte uit gebouwen verloren gaat.\r\n- Op dezelfde manier laten IR-sensoren op satellieten zien waar zich warmte ophoopt in een stad.\r\n\r\nDe temperatuur van het landoppervlak (LST) vanuit de ruimte kan worden:\r\n\r\n- Vergeleken met historische gegevens van weerstations.\r\n- Gekoppeld aan meer gedetailleerde gegevens van de grond of uit luchtonderzoeken.\r\n- In bijna-realtime worden bijgewerkt met behulp van hoogwaardige sensoren zoals de Copernicus Sentinel-satellieten.\r\n\r\nDeze informatie kan stadsplanners helpen het ontwerp van steden te verbeteren:\r\n\r\n- Waar moeten groene zones komen, welke bouwmaterialen moeten worden gebruikt.\r\n- Hoe gebouwen te oriënteren om schaduw en koeling te maximaliseren.\r\n- Potentieel het effect van hittegerelateerde gezondheidsrisico's verminderen.\r\n\r\nDe meest nauwkeurige klimaatgegevens voor LST zijn afkomstig van ESA's Climate Change Initiative:\r\n \r\n- Matige ruimtelijke resolutie.\r\n- Uiterst nauwkeurige temperatuurmetingen.\r\n- Tijdsspanne van meerdere decennia voor een hele stad, regio, land of continent.",
+      "images": [
+        "assets/iStock_000021056451Small.jpg",
+        "assets/story27-image06.jpg",
+        "assets/story27-image11.jpg",
+        "assets/story27-image08.jpg",
+        "assets/story27-image09.jpg"
+      ],
+      "imageCaptions": [
+        "Handheld infraroodcamera's worden gebruikt om thermografische onderzoeken van gebouwen uit te voeren. Infraroodcamera's op satellieten kunnen snel en herhaaldelijk een hele stad in kaart brengen.  (iStock)",
+        "Thermisch infraroodbeeld vanuit de lucht van Madrid om middernacht op 1 juli 2008 (Universiteit van Valencia)",
+        "Landoppervlaktetemperatuur afgeleid van het SLSTR-instrument op de Copernicus Sentinel-3 satelliet, voor 26 juni (links) en 25 juli (rechts) 2019. Die zomer kende een extreme hittegolf in Europa met recordbrekende temperaturen in Nederland, België, Duitsland en Parijs. (ESA)",
+        "Gemiddelde landoppervlaktetemperatuur voor september 2006, afgeleid van Envisat AATSR (Universiteit van Leicester)",
+        "Wereldwijde anomalie van de landoppervlaktetemperatuur voor september 2006 van Envisat AATSR, die een hittegolf boven Centraal- en Noord-Europa toont (Universiteit van Liecester)"
       ],
       "imageFits": [
         "contain",
@@ -37,80 +90,26 @@
     },
     {
       "type": "image",
-      "text": "## Satellietbanen\r\n\r\nSatelliettechnologie maakt deel uit van ons dagelijks leven. Zonder satellieten werken de navigatiesystemen in onze auto’s niet. Satellieten verzenden telefoon- en televisiesignalen en zijn onmisbaar  voor de dagelijkse weersvoorspelling  op tv. Deze toepassingen maken allemaal gebruik van _remote sensing_-technologie. Een _remote sensing_-systeem heeft een _sensor_ (de camera) en een _platform_ (in dit geval de satelliet) nodig. Afhankelijk van wat we willen weten en meten, kunnen verschillende soorten camera’s op allerlei manieren worden gecombineerd op een satelliet en kan een satelliet in een bepaalde baan rond de aarde worden gebracht.\r\n\r\n## Geostationaire baan\r\n\r\nBeelden die we gebruiken voor weersvoorspellingen komen voornamelijk van satellieten die in een baan op 36.000 km boven de aarde vliegen. Ze bewegen met dezelfde snelheid rond de aarde als de planeet draait. Ze bevinden zich daardoor altijd boven hetzelfde punt en zien altijd dezelfde kant van de aarde. Ze heten daarom geostationaire satellieten. Ze kunnen elke dag veel foto's van dezelfde locatie maken, zodat meteorologen de ontwikkeling van weersystemen kunnen volgen. Deze z.g. geostationaire equatoriale baan (GEO) wordt ook gebruikt voor de meeste telecommunicatie- en tv-satellieten. \r\n\r\n![Geostationary and polar orbits ](assets/story26-image01.jpg) \r\n_Meteosat vliegt in een geostationaire baan en Sentinel-5P in een polaire baan (Planetary Visions)_\r\n\r\n## Polaire baan\r\n\r\nEr zijn ook satellieten die de hele wereld bestrijken door van pool naar pool te vliegen. Deze satellieten draaien op een hoogte van ongeveer 700 km in een polaire baan om de aarde (_Low Earth Orbit_, LEO). Deze polaire satellieten doen er doorgaans ongeveer honderd minuten over om rond de wereld te reizen. Hun pad kruist de evenaar veertien keer per dag. De meeste polaire satellieten volgen een nog specifieker pad, dat een zonsynchrone baan wordt genoemd. Hun baan gaat niet recht over de polen, maar is licht gekanteld. Het resultaat is dat ze elke dag op ongeveer hetzelfde tijdstip een bepaald punt op de evenaar passeren.\r\n\r\nDe camera's van zonsynchrone polaire satellieten maken van de meeste plaatsen op aarde maar één foto per dag. De beelden zijn echter gedetailleerder dan die van geostationaire satellieten, doordat de camera veel dichter bij de aarde staat. Doordat ze altijd op hetzelfde tijdstip dezelfde plek op aarde in beeld brengen, worden de foto’s bovendien niet beïnvloed door veranderingen in lichtintensiteit en invalsrichting, die van nature over de loop van een dag plaatsvinden. Dit maakt het mogelijk om andere veranderingen in het beeld nauwkeurig te observeren, wat essentieel is voor het monitoren van het klimaat. Zo kunnen parameters, die bekend staan als essentiële klimaatvariabelen (_essential climate variables_, ECV's), worden gemeten. ECV's geven een indicatie van de gezondheid van onze planeet, net zoals het meten van je pols een arts iets vertelt over je gezondheid.",
-      "shortText": "## Satelliet Banen\r\n\r\nSatelliettechnologie maakt deel uit van het dagelijks leven: satellietnavigatie, communicatie, weersvoorspellingen. Sensoren, platforms en banen kunnen op verschillende manieren worden gecombineerd.\r\n\r\nGeostationaire Equatoriale Omloopbaan (GEO)\r\n\r\n- 36.000 km boven het aardoppervlak, 24-uurs omloopbaan\r\n- Equatoriale, geosynchrone baan\r\n- vast beeld van één halfrond\r\n- lage resolutie, snel herhalend zicht\r\n\r\nLaag aardoppervlak (LEO)\r\n\r\n- 700-800 km boven het aardoppervlak, baan van 100 minuten\r\n- pool-tot-pool, zon-synchrone baan\r\n- bestrijkt de hele wereld, op hetzelfde lokale tijdstip van de dag\r\n- hoge resolutie, dagelijks (of minder) herhaalde weergave\r\n\r\nGeostationaire en polaire banen ](assets/story26-image01.jpg)\r\nGeostationaire en polaire banen (Planetary Visions)_",
+      "text": "## Een Halt Toeroepen\r\n\r\nVeel mensen hebben nu al last van stedelijke hitte-eilanden en naarmate de verstedelijking en de klimaatverandering voortschrijden, zullen nog veel meer mensen er in de toekomst last van krijgen. Steden bedekken momenteel ongeveer twee procent van het aardoppervlak en huisvesten meer dan de helft van de wereldbevolking. Tegen 2050 zal naar verwachting 75 procent van de wereldbevolking van 9,5 miljard in steden wonen.\r\n\r\nEr zijn manieren om het stedelijk hitte-eilandeffect te verminderen. Deze omvatten het plaatsen van gebouwen op een manier die de luchtstroom verbetert, het gebruik van nieuwe bouwmaterialen die minder warmte vasthouden dan conventionele materialen en het opnieuw introduceren van de natuur in steden en gebouwen. Planten en bomen zorgen voor schaduw, verwijderen luchtvervuiling en nemen water op, waardoor overstromingen worden voorkomen. Ze koelen ook de lucht door water af te geven aan de atmosfeer.\r\n\r\nStadsbomen zijn ook een effectieve [put voor kooldioxide](stories/story-12/2), die ze zeer dicht bij de bronnen in het vervoer en de industrie absorberen, waardoor de verspreiding van dit broeikasgas in de atmosfeer wordt beperkt. In Londen zijn er meer bomen dan mensen en naar schatting slaan ze in sommige delen van de stad 380 ton koolstof per hectare op - vergelijkbaar met sommige gematigde en tropische regenwouden.\r\n\r\nIn Nederland heeft de stad Arnhem besloten 10% van het wegdek te vervangen door gras, het schaduwoppervlak te vergroten door bomen te planten en ervoor te zorgen dat 90% van het regenwater in de bodem wordt opgenomen in plaats van in het riool terecht te komen. Water verhoogt de warmtecapaciteit van de bodem, zodat natte grond minder warmte afgeeft dan droge grond. Maar zullen dergelijke maatregelen volstaan om onze oververhitte steden af te koelen? Door vanuit de ruimte de temperatuur van het landoppervlak, de bodemvochtigheid en het type bodembedekking te meten, kunnen we die vraag beantwoorden.",
+      "shortText": "# Een Halt Toeroepen\r\n\r\n2% van het aardoppervlak is stedelijk; de helft van de wereldbevolking woont er; 75% in 2050. Er zijn manieren om het stedelijk hitte-eilandeffect te verminderen:\r\n\r\n- Het plaatsen van gebouwen om de luchtstroom te verbeteren.\r\n- Nieuwe bouwmaterialen gebruiken die minder warmte vasthouden.\r\n- De natuur terugbrengen in steden en gebouwen.\r\n- Bomen zorgen voor schaduw en nemen water op, helpen overstromingen te voorkomen en koelen de lucht wanneer ze het water afgeven.\r\n- Stadsbomen absorberen CO2 en andere luchtverontreinigende stoffen.\r\n- Londen (VK) heeft meer bomen dan mensen; zij slaan tot 380 ton koolstof per hectare op - vergelijkbaar met sommige regenwouden.\r\n- Arnhem (Nederland) vervangt 10% van het wegdek door gras, vergroot de schaduw door bomen te planten en leidt 90% van het regenwater naar de bodem, wat een verkoelend effect heeft.\r\n\r\nZullen dergelijke maatregelen volstaan om onze oververhitte steden af te koelen? Door vanuit de ruimte de temperatuur van het landoppervlak, de bodemvochtigheid en het type bodembedekking te meten, kunnen we die vraag beantwoorden.",
       "images": [
-        "assets/story26-image02.jpg",
-        "assets/story26-image03.jpg",
-        "assets/soilmoisture_large_14.jpg",
-        "assets/story26-image04.jpg",
-        "assets/intro_large_11.jpg"
+        "assets/story27-image07.jpg",
+        "assets/story27-image12.jpg",
+        "assets/story27-image05.jpg",
+        "assets/story27-image15.jpg"
       ],
       "imageCaptions": [
-        "Meteosat  – een geostationaire weersatelliet (Planetary Visions/ESA)",
-        "Copernicus Sentinel 3 – een polaire aardobservatie satelliet (ESA)",
-        "De _Soil Moisture and Ocean Salinity_ satelliet (SMOS), één van ESA’s _Earth Explorer_ wetenschappelijke satellieten (ESA)",
-        "Het _European Data Relay System_  (EDRS) biedt een geostationair communicatie-relais\r\ntussen satellieten in een lage baan om de aarde en ontvangststations op de grond (ESA)",
-        "European Space Agency satelliet ontvangststation in Frascati, Italië (ESA)"
+        "Straatverlichting tekent het stedelijk gebied van Londen af op deze foto die ESA-astronaut Tim Peake in 2016 maakte vanuit het internationale ruimtestation. Donkere gebieden tonen de locaties van de groene longen van de stad - de vele grote parken. (ESA/NASA)",
+        "Landoppervlaktetemperatuur (links) en een maat voor het stedelijk hitte-eiland ten opzichte van de omliggende landelijke gebieden (rechts) voor Londen, gebaseerd op Landsat thermisch infrarood waarnemingen voor 7 juli 2020. De stijging van de landoppervlaktetemperatuur in steden is nog groter dan die van de luchttemperatuur. (Universiteit van Liecester)",
+        "Luchttemperatuur voor Madrid op 25 juni 2008 om 22:18 UTC (rechts), vergeleken met een kaart van het verzegelde grondoppervlak (links), waarop de kunstmatige oppervlakken van de stad zijn aangegeven. (VITO/Indra/Planetek/Europees Milieuagentschap)",
+        "Een paar eikenbomen op Hampstead Heath in Londen, weergegeven als een puntenwolk op basis van laserafstandsmetingen.\r\nDe massa koolstof die door bomen is opgeslagen, kan worden geschat met behulp van 3D-modellen van bomen op basis van laserscanning\r\n(lidar - light detection and ranging). (M Disney/P Wilkes/UCL)"
       ],
       "imageFits": [
-        "contain",
+        "cover",
         "contain",
         "contain",
         "contain",
         "contain"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Door een andere lens naar de aarde kijken\r\n\r\nDe Blue Marble-foto toont de aarde zoals we die met het blote oog zien. Door rood, groen en blauw licht te detecteren 'ziet' het menselijk oog een volledig kleurenspectrum, net als de sensor in een standaard digitale camera. Satellietcamera's kunnen echter veel meer informatie over onze planeet verzamelen door ook naar andere delen van het elektromagnetische spectrum te kijken, voorbij de zichtbare golflengten. Ieder deel van het spectrum onthult weer andere eigenschappen van het aardoppervlak.\r\n\r\nAls we het elektromagnetische spectrum doorkruisen, komen verschillende delen van het systeem aarde in zicht. Op zichtbare golflengten (400-700 nanometer) registreren optische sensoren de oevers van meren en oceanen, gletsjers, stedelijke gebieden en kleurveranderingen als gevolg van planktongroei in de oceaan (belangrijk voor de opslag van koolstof). Klik door de fotogalerij hiernaast om te zien hoe satellieten de aarde op verschillende golflengten zien.\r\n\r\n\r\n## Kortere golflengten\r\n\r\nUltraviolette golflengten worden geabsorbeerd door de ozon in de atmosfeer. Sensoren die dit golflengtebereik detecteren speelden een belangrijke rol in de ontdekking van het ozongat boven Antarctica. Ze worden nog steeds gebruikt om te volgen hoe de omvang van dit gat verandert. Röntgen- en gammastralen hebben veel kortere golflengten dan zichtbaar licht (minder dan 10 nanometer). Ze worden gebruikt in de astronomie (en in de geneeskunde), maar niet in de aardobservatie door satellieten.\r\n\r\n## Langere golflengten\r\n\r\nNabij-infrarode golflengten (ongeveer 1 micrometer) worden gebruikt om de [groeikracht van planten](stories/story-29/3) te meten. Hiermee kunnen bijvoorbeeld de landbouwproductiviteit en de gevolgen van droogte worden gevolgd. Het middel-infrarode deel van het spectrum toont [waterdamp in de atmosfeer](stories/story-21/3) en het thermische infrarood (golflengte van ongeveer 10 micrometer) stelt ons in staat om de temperatuur van het land- en [zeeoppervlak](stories/story-16/2) en de toppen van wolken te meten. Dit is gebaseerd op dezelfde principes als de draagbare warmtecamera's die worden gebruikt voor temperatuurscreening op sommige luchthavens. Het ver-infrarood onthult informatie over de energie die de aarde uitstraalt en over energie-uitwisseling in de atmosfeer.\r\n\r\nBij nog langere golflengten (ongeveer 1 cm) kunnen microgolven de aanwezigheid van water in al zijn vormen onthullen: als vloeistof in de bodem, bevroren als sneeuw en ijs en als damp en waterdruppels in de atmosfeer. Microgolven kunnen door wolken heen dringen, dus microgolfsensoren kunnen gegevens verzamelen onder de meeste weersomstandigheden en zelfs in het langdurige donker van de poolwinter. Microgolven die door de aarde worden uitgezonden, stellen ons ook in staat om oppervlaktes van sneeuw en [zee-ijs](stories/story-15/3) en [bodemvochtigheid](stories/story-21/5) te volgen.\r\n\r\nActieve microgolfsensoren, waaronder radar, genereren hun eigen microgolven, net zoals een zaklamp licht genereert. Door de gereflecteerde energie te detecteren, kunnen we de beweging van ijs volgen en met radarhoogtemeters de [dikte van zee-ijs](stories/story-15/7) en ijskappen en de hoogte van oceaangolven meten.",
-      "shortText": "## Door een andere lens naar de aarde kijken\r\n\r\nSatellieten verzamelen informatie over de aarde door voorbij de zichtbare golflengten te kijken in andere delen van het elektromagnetische spectrum:\r\n\r\n- ultraviolet (100-400 nm): ozon in de atmosfeer\r\n- zichtbaar (400-700 nm): kustlijnen, gletsjers, stedelijke gebieden, wolken, fytoplankton in de oceaan\r\n- nabij-infrarood (~ 1 µm): plantengroei op het land\r\n- midden-infrarood: waterdamp in de atmosfeer\r\n- thermisch infrarood (~ 10 µm): temperatuur van land, zee, wolken\r\n- ver infrarood: energie uitgestraald door de aarde en energie-uitwisselingen in de atmosfeer\r\n- microgolven (~ 1 cm): water - in de bodem, bevroren als sneeuw en ijs, als damp en waterdruppels in de atmosfeer\r\n- actieve microgolfsensoren, waaronder radar: beweging van ijs, dikte van zee-ijs en ijskappen, hoogte van oceaangolven",
-      "images": [
-        "assets/story26-image05.jpg",
-        "assets/story26-image07.jpg",
-        "assets/story26-image08.jpg",
-        "assets/story26-image09.jpg",
-        "assets/story26-image12.jpg"
-      ],
-      "imageCaptions": [
-        "Ultraviolet licht onthult de atmosferische ozonconcentratie  (ESA-CCI Ozone)",
-        "Multispectrale\r\noppervlaktereflecties van zichtbare en nabij-infrarode golflengten\r\ntonen de groeikracht van het plantenleven op land \r\n (ESA-CCI CCI Land Cover)",
-        "Atmosferische waterdamp onthuld door mid-infrarode golflengten door de Meteosat weersatelliet (ESA/Eumetsat/DLR)",
-        "Thermisch infrarode golflengten tonen de temperatuur van het aardoppervlak en de toppen van wolken (ESA-CCI Cloud)",
-        "Microgolfemissies worden gebruikt om bodemvocht, zee-ijs, sneeuw en atmosferisch water te volgen. Helderheidstemperatuur op 89 GHz en 23,8 GHz van AMSR-E (National Space Development Agency of Japan)"
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## De satellietgegevens toetsen \r\n\r\nSatellieten kunnen in korte tijd dus veel van het aardoppervlak in beeld brengen, maar de waarnemingen van hun sensoren moeten wel worden getoetst (gekalibreerd). Dit gebeurt met _in-situ_ metingen (metingen ter plekke), die met conventionele instrumenten op of nabij het aardoppervlak worden uitgevoerd. Satellieten meten in de meeste gevallen alleen het aardoppervlak zélf. Voor oceaantemperatuur betekent dit bijvoorbeeld een meting van veel minder dan de bovenste millimeter van het water. Deze temperatuurmeting door een satelliet wordt vervolgens gecombineerd met gegevens van meetapparatuur aan boord van een schip of een drijvende sonde om een volledig beeld van de oceaantemperatuur te krijgen.\r\n\r\nSpecialisten op het gebied van satellietdata werken daarom samen met vakgenoten ‘in het veld’. Het veldwerk is vaak een belangrijk onderdeel van het ontwerpen van een nieuw satellietinstrument of het testen van een nieuwe manier om bestaande satellietdata te gebruiken. Metingen in het veld kunnen worden uitgevoerd door vaste instrumenten op de grond, drijvende of glijdende instrumenten in de oceaan of vliegtuigen of ballonvluchten in de atmosfeer. Wetenschappers brengen soms maanden geïsoleerd door in afgelegen onderzoeksstations op Antarctica of aan boord van een schip, vastgevroren in het Arctische zee-ijs. Dit veldwerk is een essentieel onderdeel van de kalibratie en validatie van klimaatwaarnemingen vanuit de ruimte.",
-      "shortText": "## De satellietgegevens toetsen\r\n\r\nHoewel met satellieten in korte tijd veel grond kan worden bestreken, moeten hun waarnemingen worden gekalibreerd met _in situ_ metingen die aan of nabij het oppervlak worden verricht.\r\n\r\n- Veldwerk is vaak een belangrijk onderdeel van het ontwerp van een nieuw satellietinstrument\r\n- specialisten op het gebied van aardobservatie werken samen met vakspecialisten \"in het veld\r\n- vaste instrumenten op de grond\r\n- drijvende of zwevende instrumenten in de oceaan\r\n- vliegtuig- of ballonvluchten in de atmosfeer\r\n- wetenschappers kunnen weken aan boord van schepen doorbrengen\r\n- of maanden in afgelegen onderzoeksstations op Antarctica\r\n\r\nVeel van onze kennis over het klimaat op aarde is afkomstig van de analyse van ijskernen die uit de dikke ijskappen van Groenland of Antarctica worden gehaald.",
-      "images": [
-        "assets/sealevel_large_07.jpg",
-        "assets/story26-image18.jpg",
-        "assets/icesheet.jpg",
-        "assets/story26-image19.jpg",
-        "assets/icesheet_large_06.jpg"
-      ],
-      "imageCaptions": [
-        "Een onderzoeksschip zet een Argo-drijver uit. Er drijven bijna 4,000 van deze automatische boeien over de hele wereld. Ze bewegen op en neer door de bovenste 2,000 meter van de oceaan en registreren voortdurend de temperatuur, het zoutgehalte en de stroming. Deze metingen worden gebruikt om satellietwaarnemingen van het oceaanoppervlak te kalibreren en te valideren. (Argo Programme/IFREMER)",
-        "Wetenschappers nemen boorkernen van het zee-ijs in de Arctische winter. Het Duitse onderzoeksschip Polarstern zat in de periode 2019-20 opzettelijk een jaar vast in het zee-ijs van de Noordelijke IJszee, als onderdeel van het _Multidisciplinary drifting Observatory for the Study of Arctic Climate_ (MOSAiC) (Esther Horvath / Alfred-Wegener-Institut)",
-        "Vliegtuigen bieden een lokaal _remote sensing_ -platform en transport in afgelegen gebieden (A Hogg)",
-        "Bodemvochtmetingen in Zweden ter ondersteuning van de ontwikkeling van ESA's BIOMASS satelliet (FOI)",
-        "Een groothoekbeeld vanaf het gezamenlijke Frans-Italiaanse Concordia-onderzoeksstation, hoog gelegen op Dome C van het Antarctische plateau, een van de koudste plekken op aarde (AP Salam)"
-      ],
-      "imageFits": [
-        "cover",
-        "cover",
-        "cover",
-        "contain",
-        "cover"
       ]
     }
   ]
