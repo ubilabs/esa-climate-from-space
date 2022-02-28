@@ -5,6 +5,7 @@ interface LayerListItem {
   shortName: string;
   description: string;
   link: string;
+  usageInfo: string;
   subLayers: LayerListItem[];
 }
 
