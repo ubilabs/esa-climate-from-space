@@ -31,6 +31,7 @@ const LayerInfo: FunctionComponent<Props> = ({layer}) => (
           'html'
         ]}
       />
+      {layer.usageInfo && <p>{layer.usageInfo}</p>}
     </div>
   </div>
 );
