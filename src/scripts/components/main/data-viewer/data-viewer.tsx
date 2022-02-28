@@ -195,12 +195,8 @@ const DataViewer: FunctionComponent<Props> = ({
           active: !isMainActive,
           action: () => setIsMainActive(false)
         })}
-
       {!hideNavigation && showGlobeNavigation && (
-        <GlobeNavigation
-          mainLayerName={mainLayer?.name}
-          compareLayerName={compareLayer?.name}
-        />
+        <GlobeNavigation mainLayer={mainLayer} compareLayer={compareLayer} />
       )}
     </div>
   );
