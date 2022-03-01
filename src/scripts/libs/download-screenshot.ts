@@ -25,12 +25,9 @@ export function downloadScreenshot(
   const ctx = finalCanvas.getContext('2d');
   const esaLogo = new Image();
   const padding = 10;
+  const usageInfos = [mainLayer?.usageInfo, compareLayer?.usageInfo];
   // avoid showing the same usage info twice
-  const compareLayerUsageInfo =
-    compareLayer?.usageInfo && compareLayer.usageInfo !== mainLayer?.usageInfo
-      ? compareLayer.usageInfo
-      : '';
-  const usageInfo = `${mainLayer?.usageInfo ?? ''} ${compareLayerUsageInfo}`;
+  const usageInfo = [...new Set(usageInfos)].filter(Boolean).join(' ');
 
   esaLogo.onload = function() {
     if (ctx !== null) {
