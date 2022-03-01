@@ -15,7 +15,6 @@ do
   echo $FTP_URL
 
   curl $FTP_URL > $FILENAME
-  #python ./data/drop-unused-vars.py --file $FILENAME --variable tcwv
 done
 
 START_DATE=2011-01-01
@@ -28,7 +27,6 @@ do
   echo $FTP_URL
 
   curl $FTP_URL > $FILENAME
-  #python ./data/drop-unused-vars.py --file $FILENAME --variable tcwv
 done
 
 
@@ -42,7 +40,6 @@ do
   echo $FTP_URL
 
   curl $FTP_URL > $FILENAME
-  #python ./data/drop-unused-vars.py --file $FILENAME --variable tcwv
 done
 
 START_DATE=2016-04-01
@@ -55,7 +52,6 @@ do
   echo $FTP_URL
 
   curl $FTP_URL > $FILENAME
-  #python ./data/drop-unused-vars.py --file $FILENAME --variable tcwv
 done
 
 
@@ -70,6 +66,5 @@ do
   echo $FTP_URL
 
   curl $FTP_URL > $FILENAME
-  #python ./data/drop-unused-vars.py --file $FILENAME --variable tcwv
 done
 
