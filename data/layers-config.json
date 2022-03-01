@@ -334,5 +334,13 @@
       "month": "long",
       "day": "numeric"
     }
+  },
+  "water_vapour.tcwv": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "numeric"
+    }
   }
 }
