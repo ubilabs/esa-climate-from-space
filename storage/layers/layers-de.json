@@ -173,5 +173,19 @@
     "name": "OGVI - OLCI Globaler Vegetationsindex",
     "shortName": "OGVI",
     "description": "A Vegetation Index (VI) is a spectral transformation of two or more bands designed to enhance the contribution of vegetation properties and allow reliable spatial and temporal inter-comparisons of terrestrial photosynthetic activity and canopy structural variations. (Source: [Wikipedia](https://en.wikipedia.org/wiki/Vegetation_Index))"
+  },
+  {
+    "id": "water_vapour.tcwv",
+    "type": "Biosphere",
+    "name": "Water Vapour – Total Column Water Vapour",
+    "shortName": "Water Vapour",
+    "description": ""
+  },
+  {
+    "id": "land_surface_temperature.lst",
+    "type": "Biosphere",
+    "name": "Land Surface Temperature",
+    "shortName": "Land Surface Temperature",
+    "description": ""
   }
 ]
