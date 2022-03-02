@@ -337,6 +337,7 @@
   },
   "water_vapour.tcwv": {
     "colorMap": "custom",
+    "basemap": "blue",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
