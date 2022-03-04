@@ -1,5 +1,5 @@
 import React, {FunctionComponent, useState} from 'react';
-import {Provider as StoreProvider, useSelector} from 'react-redux';
+import {Provider as StoreProvider, useDispatch, useSelector} from 'react-redux';
 import {IntlProvider} from 'react-intl';
 import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import {MatomoProvider, createInstance} from '@datapunt/matomo-tracker-react';
@@ -31,6 +31,7 @@ import {useStoryMarkers} from '../../../hooks/use-story-markers';
 import styles from './app.styl';
 import {welcomeScreenSelector} from '../../../selectors/welcome-screen';
 import Onboarding from '../onboarding/onboarding';
+import setLanguageAction from '../../../actions/set-language';
 
 // create redux store
 const store = createReduxStore();
@@ -52,6 +53,7 @@ const App: FunctionComponent = () => (
 );
 
 const TranslatedApp: FunctionComponent = () => {
+  const dispatch = useDispatch();
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
   const showWelcomeScreen = useSelector(welcomeScreenSelector);
@@ -76,7 +78,10 @@ const TranslatedApp: FunctionComponent = () => {
                 className={styles.welcomeOverlay}
                 showCloseButton={false}>
                 <WelcomeScreen
-                  onStartOnboarding={() => setOnboardingCount(1)}
+                  onStartOnboarding={() => {
+                    dispatch(setLanguageAction(language));
+                    setOnboardingCount(1);
+                  }}
                 />
               </Overlay>
             ) : (

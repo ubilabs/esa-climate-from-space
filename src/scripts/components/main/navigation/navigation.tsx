@@ -26,9 +26,6 @@ const Navigation: FunctionComponent = () => {
   const [showTags, setShowTags] = useState(false);
   const selectedLanguage = useSelector(languageSelector);
   const savedLanguage = localStorage.getItem(config.localStorageLanguageKey);
-  const [showLanguageTooltip, setShowLanguageTooltip] = useState<boolean>(
-    !savedLanguage
-  );
   const selectedTags = useSelector(selectedTagsSelector);
 
   return (
@@ -70,16 +67,10 @@ const Navigation: FunctionComponent = () => {
         />
       </div>
 
-      {showLanguageTooltip && (
+      {!savedLanguage && (
         <LanguageTooltip
-          onMenuOpen={() => {
-            setShowLanguageTooltip(false);
-            setShowMenu(true);
-          }}
-          onClose={() => {
-            setShowLanguageTooltip(false);
-            dispatch(setLanguageAction(selectedLanguage));
-          }}
+          onMenuOpen={() => setShowMenu(true)}
+          onClose={() => dispatch(setLanguageAction(selectedLanguage))}
         />
       )}
       {showMenu && (
