@@ -38,7 +38,8 @@ const basemapUrls = {
   ocean: `${baseUrlTiles}/basemaps/ocean`,
   atmosphere: `${baseUrlTiles}/basemaps/atmosphere`,
   blue: `${baseUrlTiles}/basemaps/blue`,
-  dark: `${baseUrlTiles}/basemaps/dark`
+  dark: `${baseUrlTiles}/basemaps/dark`,
+  colored: `${baseUrlTiles}/basemaps/colored`
 };
 
 const basemapUrlsOffline = {
@@ -46,7 +47,8 @@ const basemapUrlsOffline = {
   ocean: 'basemaps/ocean',
   atmosphere: 'basemaps/atmosphere',
   blue: 'basemaps/blue',
-  dark: 'basemaps/dark'
+  dark: 'basemaps/dark',
+  colored: 'basemaps/colored'
 };
 
 const downloadUrls = {
@@ -69,7 +71,7 @@ export default {
     stories: `${baseUrlStorage}/stories/stories-{lang}.json`,
     story: `${baseUrlStorage}/stories/{id}/{id}-{lang}.json`
   },
-  defaultBasemap: 'land' as keyof typeof basemapUrls,
+  defaultBasemap: 'colored' as keyof typeof basemapUrls,
   basemapUrls,
   basemapUrlsOffline,
   globe: globeState,
