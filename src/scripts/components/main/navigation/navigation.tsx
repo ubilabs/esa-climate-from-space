@@ -12,7 +12,7 @@ import {MenuIcon} from '../icons/menu-icon';
 import {FilterIcon} from '../icons/filter-icon';
 import setLanguageAction from '../../../actions/set-language';
 import {languageSelector} from '../../../selectors/language';
-import LanguageBubble from '../language-bubble/language-bubble';
+import LanguageTooltip from '../language-tooltip/language-tooltip';
 import SelectedTags from '../../stories/selected-tags/selected-tags';
 import {selectedTagsSelector} from '../../../selectors/story/selected-tags';
 import setWelcomeScreenAction from '../../../actions/set-welcome-screen';
@@ -26,55 +26,58 @@ const Navigation: FunctionComponent = () => {
   const [showTags, setShowTags] = useState(false);
   const selectedLanguage = useSelector(languageSelector);
   const savedLanguage = localStorage.getItem(config.localStorageLanguageKey);
-  const [showLanguageBubble, setShowLanguageBubble] = useState<boolean>(
+  const [showLanguageTooltip, setShowLanguageTooltip] = useState<boolean>(
     !savedLanguage
   );
   const selectedTags = useSelector(selectedTagsSelector);
 
   return (
-    <div className={styles.navigation}>
-      <Button
-        className={styles.button}
-        id="stories"
-        label="stories"
-        link="/stories"
-        icon={StoryIcon}
-        hideLabelOnMobile
-      />
-      {selectedTags.length > 0 && (
-        <React.Fragment>
-          <Button
-            className={styles.tagsButton}
-            icon={FilterIcon}
-            onClick={() => setShowTags(!showTags)}
-          />
-          <div className={styles.badge} />
-        </React.Fragment>
-      )}
-      <Button
-        className={styles.button}
-        id="layers"
-        label="layers"
-        onClick={() => dispatch(showLayerSelectorAction(true))}
-        icon={LayersIcon}
-        hideLabelOnMobile
-      />
-      <Share />
-      <Button
-        className={styles.button}
-        id="menu"
-        icon={MenuIcon}
-        onClick={() => setShowMenu(true)}
-        hideLabelOnMobile
-      />
-      {showLanguageBubble && (
-        <LanguageBubble
+    <React.Fragment>
+      <div className={styles.navigation}>
+        <Button
+          className={styles.button}
+          id="stories"
+          label="stories"
+          link="/stories"
+          icon={StoryIcon}
+          hideLabelOnMobile
+        />
+        {selectedTags.length > 0 && (
+          <React.Fragment>
+            <Button
+              className={styles.tagsButton}
+              icon={FilterIcon}
+              onClick={() => setShowTags(!showTags)}
+            />
+            <div className={styles.badge} />
+          </React.Fragment>
+        )}
+        <Button
+          className={styles.button}
+          id="layers"
+          label="layers"
+          onClick={() => dispatch(showLayerSelectorAction(true))}
+          icon={LayersIcon}
+          hideLabelOnMobile
+        />
+        <Share />
+        <Button
+          className={styles.button}
+          id="menu"
+          icon={MenuIcon}
+          onClick={() => setShowMenu(true)}
+          hideLabelOnMobile
+        />
+      </div>
+
+      {showLanguageTooltip && (
+        <LanguageTooltip
           onMenuOpen={() => {
-            setShowLanguageBubble(false);
+            setShowLanguageTooltip(false);
             setShowMenu(true);
           }}
           onClose={() => {
-            setShowLanguageBubble(false);
+            setShowLanguageTooltip(false);
             dispatch(setLanguageAction(selectedLanguage));
           }}
         />
@@ -92,7 +95,7 @@ const Navigation: FunctionComponent = () => {
       {selectedTags.length > 0 && showTags && (
         <SelectedTags selectedTags={selectedTags} />
       )}
-    </div>
+    </React.Fragment>
   );
 };
 
