@@ -9,7 +9,7 @@ import styles from './onboarding.styl';
 
 interface Props {
   id: number;
-  onPageChange: (id: number | null) => void;
+  onPageChange: (id: number) => void;
   onClose: () => void;
 }
 
@@ -105,7 +105,7 @@ const Onboarding: FunctionComponent<Props> = ({id, onPageChange, onClose}) => {
     if (id <= onboardingContent.length - 1) {
       onPageChange(id + 1);
     } else {
-      onPageChange(null);
+      onClose();
     }
   };
 

@@ -24,13 +24,13 @@ import Tracking from '../tracking/tracking';
 import AboutProjectOverlay from '../about-project-overlay/about-project-overlay';
 import WelcomeScreen from '../welcome-screen/welcome-screen';
 import Overlay from '../overlay/overlay';
+import Onboarding from '../onboarding/onboarding';
+import {welcomeScreenSelector} from '../../../selectors/welcome-screen';
 
 import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
 
 import styles from './app.styl';
-import {welcomeScreenSelector} from '../../../selectors/welcome-screen';
-import Onboarding from '../onboarding/onboarding';
 
 // create redux store
 const store = createReduxStore();
@@ -86,7 +86,7 @@ const TranslatedApp: FunctionComponent = () => {
                   showCloseButton={false}>
                   <Onboarding
                     id={onboardingCount}
-                    onPageChange={id => setOnboardingCount(id)}
+                    onPageChange={(id: number) => setOnboardingCount(id)}
                     onClose={() => setOnboardingCount(null)}
                   />
                 </Overlay>
