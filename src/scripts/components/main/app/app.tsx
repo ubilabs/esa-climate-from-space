@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useState} from 'react';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
 import {IntlProvider} from 'react-intl';
 import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
@@ -22,11 +22,15 @@ import ShowcaseSelector from '../../stories/showcase-selector/showcase-selector'
 import DataViewer from '../data-viewer/data-viewer';
 import Tracking from '../tracking/tracking';
 import AboutProjectOverlay from '../about-project-overlay/about-project-overlay';
+import WelcomeScreen from '../welcome-screen/welcome-screen';
+import Overlay from '../overlay/overlay';
 
 import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
 
 import styles from './app.styl';
+import {welcomeScreenSelector} from '../../../selectors/welcome-screen';
+import Onboarding from '../onboarding/onboarding';
 
 // create redux store
 const store = createReduxStore();
@@ -50,6 +54,8 @@ const App: FunctionComponent = () => (
 const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
+  const showWelcomeScreen = useSelector(welcomeScreenSelector);
+  const [onboardingCount, setOnboardingCount] = useState<number | null>(null);
 
   const logo = (
     <Link to="/about">
@@ -65,6 +71,27 @@ const TranslatedApp: FunctionComponent = () => {
         <Switch>
           <Route path="/" exact>
             {logo}
+            {showWelcomeScreen ? (
+              <Overlay
+                className={styles.welcomeOverlay}
+                showCloseButton={false}>
+                <WelcomeScreen
+                  onStartOnboarding={() => setOnboardingCount(1)}
+                />
+              </Overlay>
+            ) : (
+              onboardingCount && (
+                <Overlay
+                  className={styles.onboardingOverlay}
+                  showCloseButton={false}>
+                  <Onboarding
+                    id={onboardingCount}
+                    onPageChange={id => setOnboardingCount(id)}
+                    onClose={() => setOnboardingCount(null)}
+                  />
+                </Overlay>
+              )
+            )}
             <DataViewer markers={markers} backgroundColor={'#10161A'} />
             <Navigation />
             <TimeSlider />

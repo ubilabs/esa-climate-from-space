@@ -14,15 +14,19 @@ import {WindowsIcon} from '../icons/windows-icon';
 import {AnalyticsIcon} from '../icons/analytics-icon';
 import {LinuxIcon} from '../icons/linux-icon';
 import {AppleIcon} from '../icons/apple-icon';
-import config from '../../../config/main';
 import {Ubilabslogo} from '../icons/ubilabs-logo';
 import Attributions from '../attributions/attributions';
 import TrackingToggle from '../tracking-toggle/tracking-toggle';
 import {FeedbackIcon} from '../icons/feedback-icon';
+import config from '../../../config/main';
 
 import styles from './menu.styl';
 
-const Menu: FunctionComponent = () => {
+interface Props {
+  onRestartOnboarding: () => void;
+}
+
+const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
   const [overlayType, setOverlayType] = useState<string | null>(null);
   // @ts-ignore - injected via webpack's define plugin
   const version = INFO_VERSION;
@@ -118,6 +122,13 @@ const Menu: FunctionComponent = () => {
                   className={styles.menuButton}
                   label={'about'}
                   onClick={() => setOverlayType('about')}
+                />
+              </li>
+              <li className={styles.menuListItem}>
+                <Button
+                  className={styles.menuButton}
+                  label={'restartOnboarding'}
+                  onClick={() => onRestartOnboarding()}
                 />
               </li>
               <li className={styles.menuListItem}>
