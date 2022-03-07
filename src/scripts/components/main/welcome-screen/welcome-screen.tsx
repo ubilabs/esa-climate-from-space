@@ -5,6 +5,7 @@ import {useDispatch} from 'react-redux';
 
 import setWelcomeScreenAction from '../../../actions/set-welcome-screen';
 import Button from '../button/button';
+import config from '../../../config/main';
 
 import styles from './welcome-screen.styl';
 
@@ -15,6 +16,11 @@ interface Props {
 const WelcomeScreen: FunctionComponent<Props> = ({onStartOnboarding}) => {
   const intl = useIntl();
   const dispatch = useDispatch();
+
+  const storeHideWelcomeScreen = (welcomePage: string) => {
+    localStorage.setItem(config.localStorageWelcomePageKey, welcomePage);
+    dispatch(setWelcomeScreenAction('hideWelcome'));
+  };
 
   return (
     <div className={styles.welcomeScreen}>
@@ -40,13 +46,13 @@ const WelcomeScreen: FunctionComponent<Props> = ({onStartOnboarding}) => {
           <Button
             className={styles.secondaryTourButton}
             label="cancelTour"
-            onClick={() => dispatch(setWelcomeScreenAction(false))}
+            onClick={() => storeHideWelcomeScreen('hideWelcome')}
           />
           <Button
             className={styles.primaryTourButton}
             label="startTour"
             onClick={() => {
-              dispatch(setWelcomeScreenAction(false));
+              storeHideWelcomeScreen('hideWelcome');
               onStartOnboarding();
             }}
           />

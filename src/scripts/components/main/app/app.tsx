@@ -54,7 +54,7 @@ const App: FunctionComponent = () => (
 const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
-  const showWelcomeScreen = useSelector(welcomeScreenSelector);
+  const hideWelcomeScreen = useSelector(welcomeScreenSelector);
   const [onboardingCount, setOnboardingCount] = useState<number | null>(null);
 
   const logo = (
@@ -71,7 +71,7 @@ const TranslatedApp: FunctionComponent = () => {
         <Switch>
           <Route path="/" exact>
             {logo}
-            {showWelcomeScreen ? (
+            {!hideWelcomeScreen ? (
               <Overlay
                 className={styles.welcomeOverlay}
                 showCloseButton={false}>
