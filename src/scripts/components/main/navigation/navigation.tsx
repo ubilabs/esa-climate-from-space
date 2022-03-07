@@ -15,6 +15,7 @@ import {languageSelector} from '../../../selectors/language';
 import LanguageBubble from '../language-bubble/language-bubble';
 import SelectedTags from '../../stories/selected-tags/selected-tags';
 import {selectedTagsSelector} from '../../../selectors/story/selected-tags';
+import setWelcomeScreenAction from '../../../actions/set-welcome-screen';
 import config from '../../../config/main';
 
 import styles from './navigation.styl';
@@ -34,6 +35,7 @@ const Navigation: FunctionComponent = () => {
     <div className={styles.navigation}>
       <Button
         className={styles.button}
+        id="ui-stories"
         label="stories"
         link="/stories"
         icon={StoryIcon}
@@ -51,6 +53,7 @@ const Navigation: FunctionComponent = () => {
       )}
       <Button
         className={styles.button}
+        id="ui-layers"
         label="layers"
         onClick={() => dispatch(showLayerSelectorAction(true))}
         icon={LayersIcon}
@@ -59,6 +62,7 @@ const Navigation: FunctionComponent = () => {
       <Share />
       <Button
         className={styles.button}
+        id="ui-menu"
         icon={MenuIcon}
         onClick={() => setShowMenu(true)}
         hideLabelOnMobile
@@ -77,7 +81,12 @@ const Navigation: FunctionComponent = () => {
       )}
       {showMenu && (
         <Overlay onClose={() => setShowMenu(false)}>
-          <Menu />
+          <Menu
+            onRestartOnboarding={() => {
+              setShowMenu(false);
+              dispatch(setWelcomeScreenAction(true));
+            }}
+          />
         </Overlay>
       )}
       {selectedTags.length > 0 && showTags && (

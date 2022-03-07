@@ -22,7 +22,7 @@ import ShowcaseSelector from '../../stories/showcase-selector/showcase-selector'
 import DataViewer from '../data-viewer/data-viewer';
 import Tracking from '../tracking/tracking';
 import AboutProjectOverlay from '../about-project-overlay/about-project-overlay';
-
+import Onboarding from '../welcome/welcome';
 import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
 
@@ -65,6 +65,7 @@ const TranslatedApp: FunctionComponent = () => {
         <Switch>
           <Route path="/" exact>
             {logo}
+            <Onboarding />
             <DataViewer markers={markers} backgroundColor={'#10161A'} />
             <Navigation />
             <TimeSlider />
