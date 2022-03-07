@@ -8,79 +8,72 @@ import {CloseIcon} from '../icons/close-icon';
 import styles from './onboarding.styl';
 
 interface Props {
-  id: number;
-  onPageChange: (id: number) => void;
+  step: number;
+  onPageChange: (step: number) => void;
   onClose: () => void;
 }
 
-const Onboarding: FunctionComponent<Props> = ({id, onPageChange, onClose}) => {
+const Onboarding: FunctionComponent<Props> = ({
+  step,
+  onPageChange,
+  onClose
+}) => {
   const intl = useIntl();
 
   const onboardingContent = [
     {
-      id: 1,
       content: intl.formatMessage({id: 'tooltip-stories'}),
-      elementId: 'stories'
+      elementId: 'ui-stories'
     },
     {
-      id: 2,
       content: intl.formatMessage({id: 'tooltip-layers'}),
-      elementId: 'layers'
+      elementId: 'ui-layers'
     },
     {
-      id: 3,
       content: intl.formatMessage({id: 'tooltip-share'}),
-
-      elementId: 'share'
+      elementId: 'ui-share'
     },
     {
-      id: 4,
       content: intl.formatMessage({id: 'tooltip-menu'}),
-      elementId: 'menu'
+      elementId: 'ui-menu'
     },
     {
-      id: 5,
       content: intl.formatMessage({id: 'tooltip-projection'}),
-      elementId: 'projection'
+      elementId: 'ui-projection'
     },
     {
-      id: 6,
       content: intl.formatMessage({id: 'tooltip-compass'}),
-      elementId: 'compass'
+      elementId: 'ui-compass'
     },
     {
-      id: 7,
       content: intl.formatMessage({id: 'tooltip-download'}),
-      elementId: 'download'
+      elementId: 'ui-download'
     }
   ];
-  const currentOnboarding = onboardingContent.find(
-    content => content.id === id
-  );
 
-  const referenceElement = document.querySelector(
-    `#${currentOnboarding?.elementId}`
-  );
+  const currentStep = onboardingContent[step - 1];
+  const referenceElement = document.querySelector(`#${currentStep.elementId}`);
 
   const [referencePosition, setReferencePosition] = useState<DOMRect | null>(
     null
   );
 
-  // set position of onboarding tooltip
+  // set tooltip position, reposition when window size changes
   useEffect(() => {
     if (!referenceElement) {
-      return;
+      return () => {};
     }
-    setReferencePosition(referenceElement.getBoundingClientRect());
-  }, [referenceElement]);
 
-  // set new position when window size changes
-  window.addEventListener(
-    'resize',
-    () =>
-      referenceElement &&
-      setReferencePosition(referenceElement.getBoundingClientRect())
-  );
+    const setPosition = () => {
+      setReferencePosition(referenceElement.getBoundingClientRect());
+    };
+
+    window.addEventListener('resize', setPosition);
+
+    setReferencePosition(referenceElement.getBoundingClientRect());
+
+    return () => window.removeEventListener('resize', setPosition);
+  }, [referenceElement]);
 
   if (!referencePosition) {
     return null;
@@ -94,16 +87,16 @@ const Onboarding: FunctionComponent<Props> = ({id, onPageChange, onClose}) => {
   );
 
   const onBackClick = () => {
-    if (id > 1) {
-      onPageChange(id - 1);
+    if (step > 1) {
+      onPageChange(step - 1);
     } else {
       return;
     }
   };
 
   const onNextClick = () => {
-    if (id <= onboardingContent.length - 1) {
-      onPageChange(id + 1);
+    if (step <= onboardingContent.length - 1) {
+      onPageChange(step + 1);
     } else {
       onClose();
     }
@@ -118,21 +111,21 @@ const Onboarding: FunctionComponent<Props> = ({id, onPageChange, onClose}) => {
       }}
       className={onboardingClasses}>
       <div className={styles.content}>
-        <span>{currentOnboarding?.content}</span>
+        <span>{currentStep.content}</span>
         <Button
           icon={CloseIcon}
           className={styles.closeButton}
           onClick={() => onClose()}
         />
       </div>
-      {currentOnboarding && (
+      {currentStep && (
         <div className={styles.navigation}>
           <Button
             label="back"
             className={styles.navigationButton}
             onClick={() => onBackClick()}
           />
-          <span>{`${id} / ${onboardingContent.length}`}</span>
+          <span>{`${step} / ${onboardingContent.length}`}</span>
           <Button
             label="next"
             className={styles.navigationButton}

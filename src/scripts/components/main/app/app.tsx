@@ -55,7 +55,7 @@ const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
   const showWelcomeScreen = useSelector(welcomeScreenSelector);
-  const [onboardingCount, setOnboardingCount] = useState<number | null>(null);
+  const [onboardingStep, setOnboardingStep] = useState<number | null>(null);
 
   const logo = (
     <Link to="/about">
@@ -75,19 +75,17 @@ const TranslatedApp: FunctionComponent = () => {
               <Overlay
                 className={styles.welcomeOverlay}
                 showCloseButton={false}>
-                <WelcomeScreen
-                  onStartOnboarding={() => setOnboardingCount(1)}
-                />
+                <WelcomeScreen onStartOnboarding={() => setOnboardingStep(1)} />
               </Overlay>
             ) : (
-              onboardingCount && (
+              onboardingStep && (
                 <Overlay
                   className={styles.onboardingOverlay}
                   showCloseButton={false}>
                   <Onboarding
-                    id={onboardingCount}
-                    onPageChange={(id: number) => setOnboardingCount(id)}
-                    onClose={() => setOnboardingCount(null)}
+                    step={onboardingStep}
+                    onPageChange={(step: number) => setOnboardingStep(step)}
+                    onClose={() => setOnboardingStep(null)}
                   />
                 </Overlay>
               )

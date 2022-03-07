@@ -53,7 +53,7 @@ const Share: FunctionComponent = () => {
     <div className={styles.share}>
       <Button
         className={styles.shareButton}
-        id="share"
+        id="ui-share"
         icon={ShareIcon}
         onClick={() => setShowShare(true)}
       />

@@ -35,7 +35,7 @@ const Navigation: FunctionComponent = () => {
     <div className={styles.navigation}>
       <Button
         className={styles.button}
-        id="stories"
+        id="ui-stories"
         label="stories"
         link="/stories"
         icon={StoryIcon}
@@ -53,7 +53,7 @@ const Navigation: FunctionComponent = () => {
       )}
       <Button
         className={styles.button}
-        id="layers"
+        id="ui-layers"
         label="layers"
         onClick={() => dispatch(showLayerSelectorAction(true))}
         icon={LayersIcon}
@@ -62,7 +62,7 @@ const Navigation: FunctionComponent = () => {
       <Share />
       <Button
         className={styles.button}
-        id="menu"
+        id="ui-menu"
         icon={MenuIcon}
         onClick={() => setShowMenu(true)}
         hideLabelOnMobile
