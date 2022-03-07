@@ -4,15 +4,15 @@ import {FormattedMessage} from 'react-intl';
 import Button from '../button/button';
 import {ChangeLanguageIcon} from '../icons/change-language-icon';
 
-import styles from './language-bubble.styl';
+import styles from './language-tooltip.styl';
 
 interface Props {
   onClose: () => void;
   onMenuOpen: () => void;
 }
 
-const LanguageBubble: FunctionComponent<Props> = ({onClose, onMenuOpen}) => (
-  <div className={styles.languageBubble}>
+const LanguageTooltip: FunctionComponent<Props> = ({onClose, onMenuOpen}) => (
+  <div className={styles.languageTooltip}>
     <div className={styles.detectedLanguage}>
       <ChangeLanguageIcon />
       <p className={styles.language}>
@@ -34,4 +34,4 @@ const LanguageBubble: FunctionComponent<Props> = ({onClose, onMenuOpen}) => (
   </div>
 );
 
-export default LanguageBubble;
+export default LanguageTooltip;

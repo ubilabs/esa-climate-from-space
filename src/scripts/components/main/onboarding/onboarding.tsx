@@ -1,18 +1,27 @@
 import React, {FunctionComponent, useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {welcomeScreenSelector} from '../../../selectors/welcome-screen';
 import WelcomeScreen from '../welcome-screen/welcome-screen';
 import OnboardingTooltip from '../onboarding-tooltip/onboarding-tooltip';
+import setLanguageAction from '../../../actions/set-language';
+import {languageSelector} from '../../../selectors/language';
 
 const Onboarding: FunctionComponent = () => {
+  const dispatch = useDispatch();
   const [onboardingStep, setOnboardingStep] = useState<number | null>(null);
+  const language = useSelector(languageSelector);
   const showWelcomeScreen = useSelector(welcomeScreenSelector);
 
   return (
     <React.Fragment>
       {showWelcomeScreen && (
-        <WelcomeScreen onStartOnboarding={() => setOnboardingStep(1)} />
+        <WelcomeScreen
+          onStartOnboarding={() => {
+            dispatch(setLanguageAction(language));
+            setOnboardingStep(1);
+          }}
+        />
       )}
 
       {onboardingStep && (
