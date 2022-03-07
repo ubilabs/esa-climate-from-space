@@ -1,146 +1,37 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
-import {useIntl} from 'react-intl';
-import cx from 'classnames';
+import React, {FunctionComponent, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
-import Button from '../button/button';
-import {CloseIcon} from '../icons/close-icon';
+import {welcomeScreenSelector} from '../../../selectors/welcome-screen';
+import WelcomeScreen from '../welcome-screen/welcome-screen';
+import OnboardingTooltip from '../onboarding-tooltip/onboarding-tooltip';
+import setLanguageAction from '../../../actions/set-language';
+import {languageSelector} from '../../../selectors/language';
 
-import styles from './onboarding.styl';
-
-interface Props {
-  id: number;
-  onPageChange: (id: number | null) => void;
-  onClose: () => void;
-}
-
-const Onboarding: FunctionComponent<Props> = ({id, onPageChange, onClose}) => {
-  const intl = useIntl();
-
-  const onboardingContent = [
-    {
-      id: 1,
-      content: intl.formatMessage({id: 'tooltip-stories'}),
-      elementId: 'stories'
-    },
-    {
-      id: 2,
-      content: intl.formatMessage({id: 'tooltip-layers'}),
-      elementId: 'layers'
-    },
-    {
-      id: 3,
-      content: intl.formatMessage({id: 'tooltip-share'}),
-
-      elementId: 'share'
-    },
-    {
-      id: 4,
-      content: intl.formatMessage({id: 'tooltip-menu'}),
-      elementId: 'menu'
-    },
-    {
-      id: 5,
-      content: intl.formatMessage({id: 'tooltip-projection'}),
-      elementId: 'projection'
-    },
-    {
-      id: 6,
-      content: intl.formatMessage({id: 'tooltip-compass'}),
-      elementId: 'compass'
-    },
-    {
-      id: 7,
-      content: intl.formatMessage({id: 'tooltip-download'}),
-      elementId: 'download'
-    }
-  ];
-  const currentOnboarding = onboardingContent.find(
-    content => content.id === id
-  );
-
-  const referenceElement = document.querySelector(
-    `#${currentOnboarding?.elementId}`
-  );
-
-  const [referencePosition, setReferencePosition] = useState<DOMRect | null>(
-    null
-  );
-
-  // set position of onboarding tooltip
-  useEffect(() => {
-    if (!referenceElement) {
-      return;
-    }
-    setReferencePosition(referenceElement.getBoundingClientRect());
-  }, [referenceElement]);
-
-  // set new position when window size changes
-  window.addEventListener(
-    'resize',
-    () =>
-      referenceElement &&
-      setReferencePosition(referenceElement.getBoundingClientRect())
-  );
-
-  if (!referencePosition) {
-    return null;
-  }
-
-  const isBottomTooltip = referencePosition.top > window.innerHeight / 2;
-
-  const onboardingClasses = cx(
-    styles.onboarding,
-    isBottomTooltip && styles.bottomTooltip
-  );
-
-  const onBackClick = () => {
-    if (id > 1) {
-      onPageChange(id - 1);
-    } else {
-      return;
-    }
-  };
-
-  const onNextClick = () => {
-    if (id <= onboardingContent.length - 1) {
-      onPageChange(id + 1);
-    } else {
-      onPageChange(null);
-    }
-  };
+const Onboarding: FunctionComponent = () => {
+  const dispatch = useDispatch();
+  const [onboardingStep, setOnboardingStep] = useState<number | null>(null);
+  const language = useSelector(languageSelector);
+  const showWelcomeScreen = useSelector(welcomeScreenSelector);
 
   return (
-    <div
-      id="onboarding"
-      style={{
-        top: `${referencePosition.y}px`,
-        left: `${referencePosition.x}px`
-      }}
-      className={onboardingClasses}>
-      <div className={styles.content}>
-        <span>{currentOnboarding?.content}</span>
-        <Button
-          icon={CloseIcon}
-          className={styles.closeButton}
-          onClick={() => onClose()}
+    <React.Fragment>
+      {showWelcomeScreen && (
+        <WelcomeScreen
+          onStartOnboarding={() => {
+            dispatch(setLanguageAction(language));
+            setOnboardingStep(1);
+          }}
         />
-      </div>
-      {currentOnboarding && (
-        <div className={styles.navigation}>
-          <Button
-            label="back"
-            className={styles.navigationButton}
-            onClick={() => onBackClick()}
-          />
-          <span>{`${id} / ${onboardingContent.length}`}</span>
-          <Button
-            label="next"
-            className={styles.navigationButton}
-            onClick={() => onNextClick()}
-          />
-        </div>
       )}
-    </div>
+
+      {onboardingStep && (
+        <OnboardingTooltip
+          step={onboardingStep}
+          onPageChange={(step: number) => setOnboardingStep(step)}
+          onClose={() => setOnboardingStep(null)}
+        />
+      )}
+    </React.Fragment>
   );
 };
 
