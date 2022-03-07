@@ -4,8 +4,9 @@ import cx from 'classnames';
 
 import Button from '../button/button';
 import {CloseIcon} from '../icons/close-icon';
+import Overlay from '../overlay/overlay';
 
-import styles from './onboarding.styl';
+import styles from './onboarding-tooltip.styl';
 
 interface Props {
   step: number;
@@ -13,7 +14,7 @@ interface Props {
   onClose: () => void;
 }
 
-const Onboarding: FunctionComponent<Props> = ({
+const OnboardingTooltip: FunctionComponent<Props> = ({
   step,
   onPageChange,
   onClose
@@ -103,38 +104,40 @@ const Onboarding: FunctionComponent<Props> = ({
   };
 
   return (
-    <div
-      id="onboarding"
-      style={{
-        top: `${referencePosition.y}px`,
-        left: `${referencePosition.x}px`
-      }}
-      className={onboardingClasses}>
-      <div className={styles.content}>
-        <span>{currentStep.content}</span>
-        <Button
-          icon={CloseIcon}
-          className={styles.closeButton}
-          onClick={() => onClose()}
-        />
-      </div>
-      {currentStep && (
-        <div className={styles.navigation}>
+    <Overlay className={styles.onboardingOverlay} showCloseButton={false}>
+      <div
+        id="onboarding"
+        style={{
+          top: `${referencePosition.y}px`,
+          left: `${referencePosition.x}px`
+        }}
+        className={onboardingClasses}>
+        <div className={styles.content}>
+          <span>{currentStep.content}</span>
           <Button
-            label="back"
-            className={styles.navigationButton}
-            onClick={() => onBackClick()}
-          />
-          <span>{`${step} / ${onboardingContent.length}`}</span>
-          <Button
-            label="next"
-            className={styles.navigationButton}
-            onClick={() => onNextClick()}
+            icon={CloseIcon}
+            className={styles.closeButton}
+            onClick={() => onClose()}
           />
         </div>
-      )}
-    </div>
+        {currentStep && (
+          <div className={styles.navigation}>
+            <Button
+              label="back"
+              className={styles.navigationButton}
+              onClick={() => onBackClick()}
+            />
+            <span>{`${step} / ${onboardingContent.length}`}</span>
+            <Button
+              label="next"
+              className={styles.navigationButton}
+              onClick={() => onNextClick()}
+            />
+          </div>
+        )}
+      </div>
+    </Overlay>
   );
 };
 
-export default Onboarding;
+export default OnboardingTooltip;
