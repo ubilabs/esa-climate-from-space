@@ -129,7 +129,7 @@ const OnboardingTooltip: FunctionComponent<Props> = ({
             />
             <span>{`${step} / ${onboardingContent.length}`}</span>
             <Button
-              label="next"
+              label={step === onboardingContent.length ? 'letsGo' : 'next'}
               className={styles.navigationButton}
               onClick={() => onNextClick()}
             />
