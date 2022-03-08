@@ -1,5 +1,11 @@
 import config from '../config/main';
 
-export default function getLocalStorageWelcomePage(): string | null {
-  return localStorage.getItem(config.localStorageWelcomePageKey);
+export default function getLocalStorageWelcomePage(): boolean {
+  const welcomeScreenChecked = localStorage.getItem(
+    config.localStorageWelcomeScreenKey
+  );
+
+  const welcomeScreenBoolean = welcomeScreenChecked === 'true' ? true : false;
+
+  return welcomeScreenBoolean;
 }

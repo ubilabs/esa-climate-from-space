@@ -18,9 +18,12 @@ const WelcomeScreen: FunctionComponent<Props> = ({onStartOnboarding}) => {
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  const storeHideWelcomeScreen = (welcomePage: string) => {
-    localStorage.setItem(config.localStorageWelcomePageKey, welcomePage);
-    dispatch(setWelcomeScreenAction('hideWelcome'));
+  const storeHideWelcomeScreen = (hideWelcomeScreen: boolean) => {
+    localStorage.setItem(
+      config.localStorageWelcomeScreenKey,
+      hideWelcomeScreen.toString()
+    );
+    dispatch(setWelcomeScreenAction(true));
   };
 
   return (
@@ -48,13 +51,13 @@ const WelcomeScreen: FunctionComponent<Props> = ({onStartOnboarding}) => {
             <Button
               className={styles.secondaryTourButton}
               label="cancelTour"
-              onClick={() => storeHideWelcomeScreen('hideWelcome')}
+              onClick={() => storeHideWelcomeScreen(true)}
             />
             <Button
               className={styles.primaryTourButton}
               label="startTour"
               onClick={() => {
-                storeHideWelcomeScreen('hideWelcome');
+                storeHideWelcomeScreen(true);
                 onStartOnboarding();
               }}
             />

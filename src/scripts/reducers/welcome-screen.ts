@@ -4,10 +4,10 @@ import {
 } from '../actions/set-welcome-screen';
 import getLocalStorageWelcomePage from '../libs/get-local-storage-welcome';
 
-const initialState = getLocalStorageWelcomePage() || null;
+const initialState = getLocalStorageWelcomePage() || false;
 
 function welcomeScreenReducer(
-  state: string | null = initialState,
+  state: boolean = initialState,
   action: SetWelcomeScreenAction
 ) {
   switch (action.type) {
