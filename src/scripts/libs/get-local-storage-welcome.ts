@@ -5,7 +5,7 @@ export default function getLocalStorageWelcomePage(): boolean {
     config.localStorageWelcomeScreenKey
   );
 
-  const welcomeScreenBoolean = welcomeScreenChecked === 'true' ? true : false;
+  const welcomeScreenBoolean = welcomeScreenChecked === 'true';
 
   return welcomeScreenBoolean;
 }
