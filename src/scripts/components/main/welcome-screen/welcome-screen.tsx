@@ -5,6 +5,7 @@ import {useDispatch} from 'react-redux';
 
 import setWelcomeScreenAction from '../../../actions/set-welcome-screen';
 import Button from '../button/button';
+import config from '../../../config/main';
 import Overlay from '../overlay/overlay';
 
 import styles from './welcome-screen.styl';
@@ -16,6 +17,14 @@ interface Props {
 const WelcomeScreen: FunctionComponent<Props> = ({onStartOnboarding}) => {
   const intl = useIntl();
   const dispatch = useDispatch();
+
+  const storeHideWelcomeScreen = (hideWelcomeScreen: boolean) => {
+    localStorage.setItem(
+      config.localStorageWelcomeScreenKey,
+      hideWelcomeScreen.toString()
+    );
+    dispatch(setWelcomeScreenAction(true));
+  };
 
   return (
     <Overlay className={styles.welcomeOverlay} showCloseButton={false}>
@@ -42,13 +51,13 @@ const WelcomeScreen: FunctionComponent<Props> = ({onStartOnboarding}) => {
             <Button
               className={styles.secondaryTourButton}
               label="cancelTour"
-              onClick={() => dispatch(setWelcomeScreenAction(false))}
+              onClick={() => storeHideWelcomeScreen(true)}
             />
             <Button
               className={styles.primaryTourButton}
               label="startTour"
               onClick={() => {
-                dispatch(setWelcomeScreenAction(false));
+                storeHideWelcomeScreen(true);
                 onStartOnboarding();
               }}
             />
