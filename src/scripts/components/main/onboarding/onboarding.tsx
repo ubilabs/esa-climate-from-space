@@ -11,11 +11,11 @@ const Onboarding: FunctionComponent = () => {
   const dispatch = useDispatch();
   const [onboardingStep, setOnboardingStep] = useState<number | null>(null);
   const language = useSelector(languageSelector);
-  const showWelcomeScreen = useSelector(welcomeScreenSelector);
+  const welcomeScreenChecked = useSelector(welcomeScreenSelector);
 
   return (
     <React.Fragment>
-      {showWelcomeScreen && (
+      {!welcomeScreenChecked && (
         <WelcomeScreen
           onStartOnboarding={() => {
             dispatch(setLanguageAction(language));

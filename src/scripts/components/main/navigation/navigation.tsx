@@ -78,7 +78,7 @@ const Navigation: FunctionComponent = () => {
           <Menu
             onRestartOnboarding={() => {
               setShowMenu(false);
-              dispatch(setWelcomeScreenAction(true));
+              dispatch(setWelcomeScreenAction(false));
             }}
           />
         </Overlay>
