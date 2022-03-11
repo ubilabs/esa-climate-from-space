@@ -1,5 +1,13 @@
 [
   {
+    "id": "debug",
+    "title": "Willkommen zu Climate from Space",
+    "description": "",
+    "image": "assets/atmospheric-ecvs.jpg",
+    "tags": [],
+    "position": [-60, -3]
+  },
+  {
     "id": "story-32",
     "title": "Willkommen zu Climate from Space",
     "description": "",
