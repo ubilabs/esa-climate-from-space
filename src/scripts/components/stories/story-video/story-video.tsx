@@ -3,6 +3,7 @@
 import React, {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 import cx from 'classnames';
+import {VideoJsPlayer} from 'video.js';
 
 import {languageSelector} from '../../../selectors/language';
 import {StoryMode} from '../../../types/story-mode';
@@ -18,7 +19,7 @@ interface Props {
   mode: StoryMode | null;
   storyId: string;
   slide: Slide;
-  onPlay: (player: YouTubePlayer) => void;
+  onPlay: (player: YouTubePlayer | VideoJsPlayer) => void;
 }
 
 const StoryVideo: FunctionComponent<Props> = ({
@@ -44,6 +45,7 @@ const StoryVideo: FunctionComponent<Props> = ({
           language={language}
           isStoryMode={isStoryMode}
           videoCaptions={videoCaptions}
+          onPlay={onPlay}
         />
       ) : (
         <YoutubePlayer

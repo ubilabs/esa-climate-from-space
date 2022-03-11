@@ -1,5 +1,5 @@
 import React, {FunctionComponent, useEffect, useRef} from 'react';
-import videojs, {VideoJsPlayerOptions} from 'video.js';
+import videojs, {VideoJsPlayer, VideoJsPlayerOptions} from 'video.js';
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 
 import {Language} from '../../../types/language';
@@ -12,6 +12,7 @@ interface Props {
   language: Language;
   isStoryMode: boolean;
   videoCaptions?: string;
+  onPlay: (player: VideoJsPlayer) => void;
 }
 
 const VideoJS: FunctionComponent<Props> = ({
@@ -19,10 +20,11 @@ const VideoJS: FunctionComponent<Props> = ({
   videoSrc,
   language,
   isStoryMode,
-  videoCaptions
+  videoCaptions,
+  onPlay
 }) => {
   const videoRef = useRef(null);
-  const playerRef = useRef<videojs.Player | null>();
+  const playerRef = useRef<VideoJsPlayer | null>();
   const videoUrl = videoSrc && getStoryAssetUrl(storyId, videoSrc);
   const captions = videoCaptions && getStoryAssetUrl(storyId, videoCaptions);
 
@@ -48,7 +50,7 @@ const VideoJS: FunctionComponent<Props> = ({
     ]
   };
 
-  const handlePlayerReady = (player: videojs.Player) => {
+  const handlePlayerReady = (player: VideoJsPlayer) => {
     playerRef.current = player;
   };
 
@@ -60,7 +62,7 @@ const VideoJS: FunctionComponent<Props> = ({
         return;
       }
 
-      const player: videojs.Player = (playerRef.current = videojs(
+      const player: VideoJsPlayer = (playerRef.current = videojs(
         videoElement,
         videoJsOptions,
         () => handlePlayerReady(player)
@@ -86,6 +88,8 @@ const VideoJS: FunctionComponent<Props> = ({
         ref={videoRef}
         className="video-js vjs-big-play-centered"
         style={{height: '100%'}}
+        // @ts-ignore
+        onPlay={event => onPlay(event.target)}
       />
     </div>
   );
