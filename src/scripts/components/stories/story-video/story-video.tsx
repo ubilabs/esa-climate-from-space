@@ -27,7 +27,7 @@ const StoryVideo: FunctionComponent<Props> = ({
   slide,
   onPlay
 }) => {
-  const {videoSrc, videoId, videoCaptions} = slide;
+  const {videoSrc, videoId, videoCaptions, videoPoster} = slide;
   const language = useSelector(languageSelector);
   const isStoryMode = mode === StoryMode.Stories;
   const classes = cx(
@@ -44,6 +44,7 @@ const StoryVideo: FunctionComponent<Props> = ({
           language={language}
           isStoryMode={isStoryMode}
           videoCaptions={videoCaptions}
+          videoPoster={videoPoster}
         />
       ) : (
         <YoutubePlayer

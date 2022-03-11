@@ -12,6 +12,7 @@ interface Props {
   language: Language;
   isStoryMode: boolean;
   videoCaptions?: string;
+  videoPoster?: string;
 }
 
 const VideoJS: FunctionComponent<Props> = ({
@@ -19,12 +20,14 @@ const VideoJS: FunctionComponent<Props> = ({
   videoSrc,
   language,
   isStoryMode,
-  videoCaptions
+  videoCaptions,
+  videoPoster
 }) => {
   const videoRef = useRef(null);
   const playerRef = useRef<videojs.Player | null>();
   const videoUrl = videoSrc && getStoryAssetUrl(storyId, videoSrc);
-  const captions = videoCaptions && getStoryAssetUrl(storyId, videoCaptions);
+  const captionsUrl = videoCaptions && getStoryAssetUrl(storyId, videoCaptions);
+  const posterUrl = videoPoster && getStoryAssetUrl(storyId, videoPoster);
 
   const videoJsOptions: VideoJsPlayerOptions = {
     autoplay: isStoryMode ? false : true,
@@ -32,6 +35,7 @@ const VideoJS: FunctionComponent<Props> = ({
     responsive: true,
     fluid: true,
     aspectRatio: '4:3',
+    poster: posterUrl,
     sources: [
       {
         src: videoUrl,
@@ -42,7 +46,7 @@ const VideoJS: FunctionComponent<Props> = ({
       {
         srclang: language,
         kind: 'captions',
-        src: captions,
+        src: captionsUrl,
         default: true
       }
     ]
