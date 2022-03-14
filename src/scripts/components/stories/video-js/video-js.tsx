@@ -3,9 +3,9 @@ import videojs, {VideoJsPlayerOptions} from 'video.js';
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 
 import {Language} from '../../../types/language';
+import {VideoResolution} from '../../../types/video-resolution-type';
 
 import 'video.js/dist/video-js.css';
-import {VideoResolution} from '../../../types/video-resolution-type';
 
 interface Props {
   storyId: string;
