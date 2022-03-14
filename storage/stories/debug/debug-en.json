@@ -17,7 +17,7 @@
         "assets/elnino-HD720.mp4",
         "assets/elnino-HD1080.mp4"
       ],
-      "videoCaptions": "assets/elnino-de.vtt",
+      "videoCaptions": "assets/elnino-en.vtt",
       "videoPoster": "assets/elnino.jpg"
     },
     {
@@ -54,7 +54,7 @@
       "shortText": "# Ozone and Climate \n\n(placeholder)",
       "videoId": "evPBTu_a27I",
       "videoSrc": ["assets/elnino-web.mp4"],
-      "videoCaptions": "assets/elnino-de.vtt",
+      "videoCaptions": "assets/elnino-en.vtt",
       "videoPoster": "assets/elnino.jpg"
     },
     {
