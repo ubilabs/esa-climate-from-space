@@ -33,7 +33,6 @@ const StoryFooter: FunctionComponent<Props> = ({
     delay
   } = useStoryNavigation(videoDuration);
   const mouseMove = useMouseMove();
-
   const footerClasses = cx(
     styles.storyFooter,
     !isStoriesMode && !mouseMove && styles.slideOutFooter
