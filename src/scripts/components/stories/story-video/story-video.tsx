@@ -3,22 +3,31 @@
 import React, {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 import cx from 'classnames';
-import YouTube, {Options} from 'react-youtube';
 
 import {languageSelector} from '../../../selectors/language';
-
 import {StoryMode} from '../../../types/story-mode';
 import {YouTubePlayer} from 'youtube-player/dist/types';
+import VideoJS from '../video-js/video-js';
+import YoutubePlayer from '../youtube-player/youtube-player';
+
+import {Slide} from '../../../types/story';
 
 import styles from './story-video.styl';
 
 interface Props {
-  videoId: string;
   mode: StoryMode | null;
+  storyId: string;
+  slide: Slide;
   onPlay: (player: YouTubePlayer) => void;
 }
 
-const StoryVideo: FunctionComponent<Props> = ({mode, videoId, onPlay}) => {
+const StoryVideo: FunctionComponent<Props> = ({
+  mode,
+  storyId,
+  slide,
+  onPlay
+}) => {
+  const {videoSrc, videoId, videoCaptions, videoPoster} = slide;
   const language = useSelector(languageSelector);
   const isStoryMode = mode === StoryMode.Stories;
   const classes = cx(
@@ -26,34 +35,25 @@ const StoryVideo: FunctionComponent<Props> = ({mode, videoId, onPlay}) => {
     !isStoryMode && styles.presentationVideo
   );
 
-  const opts: Options = {
-    height: '100%',
-    width: '100%',
-    playerVars: {
-      rel: 0,
-      cc_load_policy: 1,
-      hl: language,
-      // @ts-ignore
-      cc_lang_pref: language,
-      color: 'red',
-      controls: 2,
-      iv_load_policy: 3,
-      modestbranding: 1,
-      showinfo: 0,
-      allow:
-        'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-    }
-  };
-
   return (
     <div className={classes}>
-      <YouTube
-        containerClassName={styles.youtubePlayer}
-        videoId={videoId}
-        opts={opts}
-        onReady={event => !isStoryMode && event.target.playVideo()}
-        onPlay={event => onPlay(event.target)}
-      />
+      {videoSrc ? (
+        <VideoJS
+          storyId={storyId}
+          videoSrc={videoSrc}
+          language={language}
+          isStoryMode={isStoryMode}
+          videoCaptions={videoCaptions}
+          videoPoster={videoPoster}
+        />
+      ) : (
+        <YoutubePlayer
+          videoId={videoId}
+          language={language}
+          isStoryMode={isStoryMode}
+          onPlay={onPlay}
+        />
+      )}
     </div>
   );
 };
