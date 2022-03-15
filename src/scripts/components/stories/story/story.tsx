@@ -68,8 +68,7 @@ const Story: FunctionComponent = () => {
   }
 
   const getVideoDuration = (player: YouTubePlayer | VideoJsPlayer) => {
-    // @ts-ignore
-    if (player.getDuration) {
+    if ((player as YouTubePlayer).getDuration) {
       const duration = (player as YouTubePlayer).getDuration();
       setVideoDuration(duration * 1000);
     } else {

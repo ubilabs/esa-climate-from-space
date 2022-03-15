@@ -92,8 +92,7 @@ const VideoJS: FunctionComponent<Props> = ({
         ref={videoRef}
         className="video-js vjs-big-play-centered"
         style={{height: '100%'}}
-        // @ts-ignore
-        onPlay={event => onPlay(event.target)}
+        onPlay={event => onPlay((event.target as unknown) as VideoJsPlayer)}
       />
     </div>
   );
