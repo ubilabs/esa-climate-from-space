@@ -72,6 +72,7 @@ export default {
     story: `${baseUrlStorage}/stories/{id}/{id}-{lang}.json`
   },
   defaultBasemap: 'colored' as keyof typeof basemapUrls,
+  defaultLayerBasemap: 'land' as keyof typeof basemapUrls,
   basemapUrls,
   basemapUrlsOffline,
   globe: globeState,
