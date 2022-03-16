@@ -1,8 +1,5 @@
 @require '../../../../variables.styl'
 
-.onboardingOverlay
-  background: transparent
-
 .onboarding
   position: absolute
   display: flex
@@ -41,10 +38,12 @@
   display: flex
   justify-content: space-between
   align-items: start
+  margin-top: emCalc(8px)
 
 .closeButton
-  align-self: end
-  margin-left: emCalc(10px)
+  position: absolute
+  top: emCalc(8px)
+  right: emCalc(8px)
   width: emCalc(16px)
   height: emCalc(16px)
 

@@ -53,7 +53,9 @@ const OnboardingTooltip: FunctionComponent<Props> = ({
   ];
 
   const currentStep = onboardingContent[step - 1];
-  const referenceElement = document.querySelector(`#${currentStep.elementId}`);
+  const referenceElement: HTMLElement | null = document.querySelector(
+    `#${currentStep.elementId}`
+  );
 
   const [referencePosition, setReferencePosition] = useState<DOMRect | null>(
     null
@@ -68,12 +70,20 @@ const OnboardingTooltip: FunctionComponent<Props> = ({
     const setPosition = () => {
       setReferencePosition(referenceElement.getBoundingClientRect());
     };
-
     window.addEventListener('resize', setPosition);
-
     setReferencePosition(referenceElement.getBoundingClientRect());
 
-    return () => window.removeEventListener('resize', setPosition);
+    // hightlight current ui reference: move element in front of the overlay
+    referenceElement.style.zIndex = '4';
+    referenceElement.style.pointerEvents = 'none';
+
+    return () => {
+      // remove highlight
+      referenceElement.style.zIndex = 'initial';
+      referenceElement.style.pointerEvents = 'initial';
+
+      window.removeEventListener('resize', setPosition);
+    };
   }, [referenceElement]);
 
   if (!referencePosition) {
