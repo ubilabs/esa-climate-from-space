@@ -337,7 +337,8 @@
   },
   "water_vapour.tcwv": {
     "colorMap": "custom",
-    "basemap": "blue",
+    "basemap": "land",
+    "units": "kg/m²",
     "timeFormat": {
       "year": "numeric",
       "month": "long",
