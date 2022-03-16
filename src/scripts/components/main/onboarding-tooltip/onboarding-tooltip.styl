@@ -9,6 +9,7 @@
   flex-direction: column
   justify-content: space-between
   padding: emCalc(16px)
+  min-width: emCalc(150px)
   min-height: emCalc(50px)
   max-width: emCalc(170px)
   width: fit-content
@@ -42,6 +43,7 @@
   align-items: start
 
 .closeButton
+  align-self: end
   margin-left: emCalc(10px)
   width: emCalc(16px)
   height: emCalc(16px)
@@ -59,3 +61,6 @@
   text-transform: uppercase
   font-size: emCalc(14px, 16)
   font-family: NotesEsaBold
+
+.navigationButton[class*='disabled']
+  color: $textDefault
