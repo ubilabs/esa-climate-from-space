@@ -9,7 +9,7 @@ const globeState: GlobeState = {
   },
   view: {
     position: {
-      height: 42430000,
+      height: 23840000,
       latitude: 25,
       longitude: 0
     },
@@ -72,6 +72,7 @@ export default {
     story: `${baseUrlStorage}/stories/{id}/{id}-{lang}.json`
   },
   defaultBasemap: 'colored' as keyof typeof basemapUrls,
+  defaultLayerBasemap: 'land' as keyof typeof basemapUrls,
   basemapUrls,
   basemapUrlsOffline,
   globe: globeState,
