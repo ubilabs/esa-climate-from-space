@@ -112,19 +112,20 @@ const OnboardingTooltip: FunctionComponent<Props> = ({
           left: `${referencePosition.x}px`
         }}
         className={onboardingClasses}>
+        <Button
+          icon={CloseIcon}
+          className={styles.closeButton}
+          onClick={() => onClose()}
+        />
         <div className={styles.content}>
           <span>{currentStep.content}</span>
-          <Button
-            icon={CloseIcon}
-            className={styles.closeButton}
-            onClick={() => onClose()}
-          />
         </div>
         {currentStep && (
           <div className={styles.navigation}>
             <Button
-              label="back"
               className={styles.navigationButton}
+              disabled={step === 1 ? true : false}
+              label="back"
               onClick={() => onBackClick()}
             />
             <span>{`${step} / ${onboardingContent.length}`}</span>
