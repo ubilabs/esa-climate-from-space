@@ -5,15 +5,20 @@
       "type": "splashscreen",
       "text": "# Deutsch Is Ozone Good or Bad?\n\nThe ozone layer protects life on Earth from ultraviolet solar radiation, but ozone is also a powerful greenhouse gas and at ground level is extremely hazardous to health.",
       "shortText": "# Is Ozone Good or Bad?\n\n(placeholder)",
-      "images": ["assets/ozone.jpg"]
+      "images": ["assets/elnino.jpg"]
     },
     {
       "type": "video",
       "text": "# VIDEO How Low Can You Go? \n\nIn 1979, engineers received the first data from a new instrument on an American research satellite. The sensor measured so little ozone in the atmosphere over Antarctica that the readings were discounted as instrument error. But not long afterwards, a team of British researchers recorded similarly low amounts of ozone from their Antarctic research station. \n\nIt was only when the ground-based results were published in the scientific literature that the low values in the satellite data were taken seriously. They showed a wide area with very low amounts of ozone developing every spring over the South Pole. This ‘hole’ in Earth’s protective ozone layer quickly gained the attention of the media and policy-makers. And, with their data verified, scientists gained confidence in the emerging technology of Earth observation from space.\n\n## Protective Layer \n\nThe layer of ozone high up in the stratosphere is our main defence against the Sun’s ultraviolet (UV) radiation. Without it we’d suffer sunburn after a few minutes outdoors, followed by eye damage and skin cancer after prolonged exposure. Unfiltered, UV light would have a catastrophic effect on all life on Earth.    \n\n![The Sun in visible and UV light](assets/story8_02.png) \n_The Sun in visible (left) and ultraviolet light (right), as viewed by the SOHO satellite on February 3, 2002. (ESA/NASA)_\n\nOzone is also a powerful greenhouse gas. Change in the distribution of ozone is the second largest human impact on the climate, after the increase in carbon dioxide. But, while ozone _loss_ has been the concern in the stratosphere, ozone has been _increasing_ at ground level. Here, ozone associated with transport and industrial pollution is a hazard to human health. Whether ozone is good or bad for you depends on where you find it.",
       "shortText": "# How Low Can You Go?\n\n(placeholder)",
-      "videoSrc": "assets/carbon_cycle.mp4",
-      "videoCaptions": "assets/carbon_cycle-de.vtt",
-      "videoPoster": "assets/ozone.jpg"
+      "videoSrc": [
+        "assets/elnino-web.mp4",
+        "assets/elnino-SD576.mp4",
+        "assets/elnino-HD720.mp4",
+        "assets/elnino-HD1080.mp4"
+      ],
+      "videoCaptions": "assets/elnino-de.vtt",
+      "videoPoster": "assets/elnino.jpg"
     },
     {
       "type": "video",
@@ -54,14 +59,15 @@
       "text": "# VIDEO/YOUTUBE Ozone and Climate \n\nOzone and the climate are closely connected since ozone is a powerful greenhouse gas. By absorbing ultraviolet radiation it warms the surrounding atmosphere, so ozone loss has cooled the stratosphere. This can influence atmospheric circulation patterns, such as shifting the position of the jet stream. Beneath the ozone hole, stronger winds blowing off Antarctica may be partly responsible for the observed increase in Southern Ocean sea ice. \n\nBut stratospheric ozone depletion lets more solar energy through to the troposphere below. Here, ground-level ozone and other greenhouse gases absorb that energy. So ozone changes are pulling the temperature in opposite directions in the stratosphere and the troposphere. The overall effect has been a warming of the atmosphere.",
       "shortText": "# Ozone and Climate \n\n(placeholder)",
       "videoId": "evPBTu_a27I",
-      "videoSrc": "assets/carbon_cycle.mp4",
-      "videoCaptions": "assets/carbon_cycle-de.vtt"
+      "videoSrc": ["assets/elnino-web.mp4"],
+      "videoCaptions": "assets/elnino-de.vtt",
+      "videoPoster": "assets/elnino.jpg"
     },
     {
       "type": "image",
       "text": "# Ground-level Ozone \n\nAlthough most ozone is found in the stratosphere – above about 15km in altitude – some is present lower down in the troposphere. Here it is formed when light interacts with combustion by-products from cars and industry, mainly nitrogen oxides (NOx) and volatile organic compounds (VOCs). At ground level, ozone is harmful to human health, causing breathing difficulties that contribute to about half a million premature deaths every year. It also has a detrimental impact on vegetation growth, reducing its ability to absorb carbon dioxide, leading to crop losses valued at tens of billions of euros per year.\n\nAs with stratospheric ozone, regulations have been introduced to limit the damage. Newly-manufactured vehicles must meet internationally-agreed emission controls. The use of unleaded petrol and catalytic converters has removed a lot of the ozone-forming pollutants from car exhausts over recent decades. Similar technology is applied to factory and power station smokestacks, while simpler steps like planting trees in urban areas can also help soak up ground-level ozone.",
       "shortText": "# Ground-level Ozone \n\n(placeholder)",
-      "images": ["assets/ozone.jpg"],
+      "images": ["assets/elnino.jpg"],
       "imageCaptions": [
         "Nitrogen dioxide over Europe in January 2020 from the TROPOMI instrument on Sentinel-5P."
       ]
@@ -70,7 +76,7 @@
       "type": "image",
       "text": "# IMG Ozone from Space \n\nSatellite observations are essential to track ozone distribution across the globe and at different levels in the atmosphere. They allow us to monitor the recovery of the ozone layer and calculate a UV exposure index as part of our daily weather forecasts. They also deepen our knowledge of the long-term evolution of atmospheric ozone and our understanding of how it affects the climate, and how it might respond to climate change. \n\nDifferent observation techniques allow us to distinguish between the “good” ozone in the stratosphere and the “bad” ozone in the troposphere. Satellites looking straight down produce maps of *total ozone* – the total amount of ozone in a column going from the surface to the top of the atmosphere. Total ozone is a good measure of stratospheric ozone, which accounts for about 90% of the total ozone column.  \n\n![Ozone profile](assets/ozone_large_15.jpg) \n_Ozone profiles show the vertical distribution of ozone through the atmosphere._\n\nBy looking sideways into the atmosphere, satellites can also measure the *ozone profile* – the vertical distribution of ozone from sea level up to about 50 km high. Further information is obtained by seeing how light is absorbed by different chemicals in the atmosphere when looking towards a light source – the Sun or the Moon.",
       "shortText": "# Ozone from Space \n\n(placeholder)",
-      "images": ["assets/ozone.jpg"],
+      "images": ["assets/elnino.jpg"],
       "imageCaptions": ["Observing total ozone and ozone profile from space."]
     },
     {
