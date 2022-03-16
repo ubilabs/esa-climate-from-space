@@ -73,14 +73,12 @@ const OnboardingTooltip: FunctionComponent<Props> = ({
     window.addEventListener('resize', setPosition);
     setReferencePosition(referenceElement.getBoundingClientRect());
 
-    // hightlight current ui reference: move element in front of the overlay
-    referenceElement.style.zIndex = '4';
-    referenceElement.style.pointerEvents = 'none';
+    // hightlight current ui element
+    referenceElement.classList.add(styles.highlighted);
 
     return () => {
       // remove highlight
-      referenceElement.style.zIndex = 'initial';
-      referenceElement.style.pointerEvents = 'initial';
+      referenceElement.classList.remove(styles.highlighted);
 
       window.removeEventListener('resize', setPosition);
     };
