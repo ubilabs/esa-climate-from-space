@@ -31,7 +31,7 @@ import {useMarkers} from '../../../hooks/use-markers';
 import {useGlobeLayer} from '../../../hooks/use-globe-layer';
 
 import {GlobeProjectionState} from '../../../types/globe-projection-state';
-import {BasemapId} from '../../../types/basemap';
+import {Layer} from '../../../types/layer';
 import {Marker} from '../../../types/marker-type';
 import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 
@@ -60,7 +60,7 @@ interface Props {
   view: GlobeView;
   projectionState: GlobeProjectionState;
   imageLayer: GlobeImageLayerData | null;
-  basemap: BasemapId | null;
+  layerDetails: Layer | null;
   spinning: boolean;
   flyTo: GlobeView | null;
   markers?: Marker[];
@@ -75,21 +75,31 @@ interface Props {
 // keep a reference to the current basemap layer
 let basemapLayer: ImageryLayer | null = null;
 
-function getBasemapUrl(id: BasemapId | null) {
-  if (!id || !config.basemapUrls[id]) {
+function getBasemapUrl(layerDetails: Layer | null) {
+  // set defaultBasemap when no layer is selected and defaultLayerBasemap if layer has no own basemap
+  if (!layerDetails) {
     return isElectron()
       ? config.basemapUrlsOffline[config.defaultBasemap]
       : config.basemapUrls[config.defaultBasemap];
+  } else if (
+    !layerDetails.basemap ||
+    !config.basemapUrls[layerDetails.basemap]
+  ) {
+    return isElectron()
+      ? config.basemapUrlsOffline[config.defaultLayerBasemap]
+      : config.basemapUrls[config.defaultLayerBasemap];
   }
 
-  return isElectron() ? config.basemapUrlsOffline[id] : config.basemapUrls[id];
+  return isElectron()
+    ? config.basemapUrlsOffline[layerDetails.basemap]
+    : config.basemapUrls[layerDetails.basemap];
 }
 
 const Globe: FunctionComponent<Props> = ({
   view,
   projectionState,
   imageLayer,
-  basemap,
+  layerDetails,
   spinning,
   active,
   flyTo,
@@ -134,7 +144,7 @@ const Globe: FunctionComponent<Props> = ({
 
     // create default imagery provider
     const defaultBasemapImageryProvider = new TileMapServiceImageryProvider({
-      url: getBasemapUrl(basemap),
+      url: getBasemapUrl(layerDetails),
       fileExtension: 'png',
       maximumLevel: 4
     });
@@ -267,7 +277,7 @@ const Globe: FunctionComponent<Props> = ({
 
     // create default imagery provider
     const basemapProvider = new TileMapServiceImageryProvider({
-      url: getBasemapUrl(basemap),
+      url: getBasemapUrl(layerDetails),
       fileExtension: 'png',
       maximumLevel: 4
     });
@@ -286,7 +296,7 @@ const Globe: FunctionComponent<Props> = ({
 
       basemapLayer = newBasemapLayer;
     });
-  }, [viewer, basemap]);
+  }, [viewer, layerDetails]);
 
   // fly to location
   useEffect(() => {
