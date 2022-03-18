@@ -1,5 +1,6 @@
 import React, {FunctionComponent, useState, useRef} from 'react';
 import {FormattedMessage} from 'react-intl';
+import {useMatomo} from '@datapunt/matomo-tracker-react';
 
 import {TwitterIcon} from '../icons/twitter-icon';
 import {FacebookIcon} from '../icons/facebook-icon';
@@ -12,7 +13,6 @@ import Overlay from '../overlay/overlay';
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
 
 import styles from './share.styl';
-import {useMatomo} from '@datapunt/matomo-tracker-react';
 
 const Share: FunctionComponent = () => {
   const [showShare, setShowShare] = useState(false);
@@ -53,6 +53,7 @@ const Share: FunctionComponent = () => {
     <div className={styles.share}>
       <Button
         className={styles.shareButton}
+        id="ui-share"
         icon={ShareIcon}
         onClick={() => setShowShare(true)}
       />

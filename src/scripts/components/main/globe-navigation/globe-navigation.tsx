@@ -45,16 +45,19 @@ const GlobeNavigation: FunctionComponent<Props> = ({
     <div className={styles.globeNavigation}>
       <Button
         className={styles.projection}
+        id="ui-projection"
         label={label}
         onClick={() => onProjectionHandler()}
       />
       <div
         className={styles.compass}
+        id="ui-compass"
         onClick={() => dispatch(setFlyToAction({...defaultView}))}>
         <CompassIcon />
       </div>
       <Button
         className={styles.downloadIcon}
+        id="ui-download"
         icon={DownloadIcon}
         onClick={() =>
           downloadScreenshot(

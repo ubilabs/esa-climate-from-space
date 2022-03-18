@@ -46,7 +46,10 @@ export const useStoryNavigation = (videoDuration: number) => {
       delay = delay * currentSlide.images.length;
     }
 
-    if (currentSlide?.videoId && currentSlide.type === SlideType.Video) {
+    if (
+      (currentSlide?.videoId || currentSlide?.videoSrc) &&
+      currentSlide.type === SlideType.Video
+    ) {
       delay = delay + videoDuration;
     }
 

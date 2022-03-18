@@ -22,7 +22,7 @@ const backgroundColorMapping: {[_: string]: string} = {
 
 const getBackgroundColor = (basemap: BasemapId | null) => {
   if (!basemap) {
-    return backgroundColorMapping[config.defaultBasemap];
+    return backgroundColorMapping[config.defaultLayerBasemap];
   }
 
   return backgroundColorMapping[basemap];
