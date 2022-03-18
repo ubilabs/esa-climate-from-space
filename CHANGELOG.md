@@ -1,3 +1,20 @@
+# [1.5.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.4.0...v1.5.0) (2022-03-18)
+
+
+### Features
+
+* **basemap:** add new coloured baseman ([#1057](https://github.com/ubilabs/esa-climate-from-space/issues/1057)) ([6613ddf](https://github.com/ubilabs/esa-climate-from-space/commit/6613ddf9db34a831ebe42ccdfa03814c0391a863))
+* **dataset:** add land surface temperature ([#1056](https://github.com/ubilabs/esa-climate-from-space/issues/1056)) ([2a00be7](https://github.com/ubilabs/esa-climate-from-space/commit/2a00be730fe5560c0717d663beae11cd0243b7ea))
+* **dataset:** add water vapour ([#1054](https://github.com/ubilabs/esa-climate-from-space/issues/1054)) ([6ffd06e](https://github.com/ubilabs/esa-climate-from-space/commit/6ffd06edeb98085733435e8f25d41bf416a73dd4))
+* **layers:** update layers.json ([#1053](https://github.com/ubilabs/esa-climate-from-space/issues/1053)) ([bb0ea58](https://github.com/ubilabs/esa-climate-from-space/commit/bb0ea5842de773a1f12239bd415cc09df61c835c))
+* **layers:** update layers.json ([#1055](https://github.com/ubilabs/esa-climate-from-space/issues/1055)) ([243a6dd](https://github.com/ubilabs/esa-climate-from-space/commit/243a6dd5c56f5f1733927d47383fe814caa194e6))
+* **layers:** update layers.json ([#1084](https://github.com/ubilabs/esa-climate-from-space/issues/1084)) ([e1e497c](https://github.com/ubilabs/esa-climate-from-space/commit/e1e497c60f50b0914c7e2f3b1121840182dbb7cf))
+* **onboarding:** add welcome screen and onboarding tooltips ([#1058](https://github.com/ubilabs/esa-climate-from-space/issues/1058)) ([8b3d44b](https://github.com/ubilabs/esa-climate-from-space/commit/8b3d44b3d9a3d5693b088ffb2aefb59aabf8cba3))
+* **stories:** update story: story-26 ([#1042](https://github.com/ubilabs/esa-climate-from-space/issues/1042)) ([599678f](https://github.com/ubilabs/esa-climate-from-space/commit/599678f8665f20c543c224deed88bcf743b1eab6))
+* **videoJs:** implement videoJs to story video ([#1068](https://github.com/ubilabs/esa-climate-from-space/issues/1068)) ([9f60e2f](https://github.com/ubilabs/esa-climate-from-space/commit/9f60e2f2b49c1f94d15976f8f5846f69274c1bc4))
+
+
+
 ## [1.4.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.4.0...v1.4.1) (2022-01-12)
 
 
