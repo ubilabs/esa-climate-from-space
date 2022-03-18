@@ -4,8 +4,10 @@
   position: absolute
   right: emCalc(22px)
   bottom: emCalc(22px)
-  z-index: 1
   display: flex
+
+.globeNavigation > *
+  z-index: 1
 
 .projection
   text-shadow: 0px 0px 2px $black
@@ -17,10 +19,11 @@
   margin: 0 emCalc(15px)
   width: 24px
   height: 24px
+
+.compass svg
   transition: all 0.5s ease-out
   transform: rotate(var(--globe-latitude))
 
-.compass svg
   &:hover
     fill: $main
 

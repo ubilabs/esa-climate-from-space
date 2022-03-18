@@ -72,6 +72,7 @@
     "@types/react-dom": "^16.9.5",
     "@types/react-redux": "^7.1.7",
     "@types/redux-thunk": "^2.1.0",
+    "@types/video.js": "^7.3.31",
     "@types/youtube-player": "^5.5.3",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
@@ -103,6 +104,7 @@
     "terser-webpack-plugin": "^2.3.5",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
+    "video.js": "^7.17.0",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"

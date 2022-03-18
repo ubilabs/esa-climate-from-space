@@ -335,6 +335,15 @@
       "day": "numeric"
     }
   },
+  "land_surface_temperature.lst": {
+    "colorMap": "custom",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long",
+      "day": "numeric"
+    },
+    "legendValues": ["50 °C", "-30"]
+  },
   "water_vapour.tcwv": {
     "colorMap": "custom",
     "basemap": "land",

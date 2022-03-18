@@ -1,5 +1,7 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
+import {YouTubePlayer} from 'youtube-player/dist/types';
+import {VideoJsPlayer} from 'video.js';
 
 import DataViewer from '../../main/data-viewer/data-viewer';
 import {useStoryParams} from '../../../hooks/use-story-params';
@@ -17,11 +19,10 @@ import SplashScreen from '../splash-screen/splash-screen';
 import LayerDescription from '../layer-description/layer-description';
 import TimeSlider from '../../layers/time-slider/time-slider';
 
+import {SlideType} from '../../../types/slide-type';
+import {GlobeProjection} from '../../../types/globe-projection';
 import {StoryMode} from '../../../types/story-mode';
 import {Slide, Story as StoryType} from '../../../types/story';
-import {GlobeProjection} from '../../../types/globe-projection';
-import {SlideType} from '../../../types/slide-type';
-import {YouTubePlayer} from 'youtube-player/dist/types';
 
 import styles from './story.styl';
 
@@ -66,9 +67,14 @@ const Story: FunctionComponent = () => {
     return null;
   }
 
-  const getVideoDuration = (player: YouTubePlayer) => {
-    const duration = player.getDuration();
-    setVideoDuration(duration * 1000);
+  const getVideoDuration = (player: YouTubePlayer | VideoJsPlayer) => {
+    if ((player as YouTubePlayer).getDuration) {
+      const duration = (player as YouTubePlayer).getDuration();
+      setVideoDuration(duration * 1000);
+    } else {
+      const duration = (player as VideoJsPlayer).duration;
+      setVideoDuration(Number(duration) * 1000);
+    }
   };
 
   const getRightSideComponent = (slide: Slide, story: StoryType) => {
@@ -82,12 +88,18 @@ const Story: FunctionComponent = () => {
           storyId={story.id}
         />
       );
-    } else if (slide.type === SlideType.Video && slide.videoId) {
+    } else if (
+      slide.type === SlideType.Video &&
+      (slide.videoSrc || slide.videoId)
+    ) {
       return (
         <StoryVideo
           mode={mode}
-          videoId={slide.videoId}
-          onPlay={(player: YouTubePlayer) => getVideoDuration(player)}
+          storyId={story.id}
+          slide={slide}
+          onPlay={(player: YouTubePlayer | VideoJsPlayer) =>
+            getVideoDuration(player)
+          }
         />
       );
     }
