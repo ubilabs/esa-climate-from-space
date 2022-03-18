@@ -1,9 +1,12 @@
+import config from '../config/main';
+import {LayerListItem} from '../types/layer-list';
+
 // Downloads one or both Cesium canvases as an image file
 export function downloadScreenshot(
   mainTimeFormat: string | boolean,
   compareTimeFormat: string | boolean,
-  mainLayerName?: string,
-  compareLayerName?: string
+  mainLayer: LayerListItem | null,
+  compareLayer: LayerListItem | null
 ) {
   const canvases = Array.from(
     document.querySelectorAll('.cesium-viewer canvas') as NodeListOf<
@@ -14,19 +17,42 @@ export function downloadScreenshot(
   const fileName = createFileName(
     mainTimeFormat,
     compareTimeFormat,
-    mainLayerName,
-    compareLayerName
+    mainLayer?.name,
+    compareLayer?.name
   );
 
   const finalCanvas = combineCanvases(canvases);
-  download(finalCanvas.toDataURL(), fileName);
+  const ctx = finalCanvas.getContext('2d');
+  const esaLogo = new Image();
+  const padding = 10;
+  const usageInfos = [mainLayer?.usageInfo, compareLayer?.usageInfo];
+  // avoid showing the same usage info twice
+  const usageInfo = [...new Set(usageInfos)].filter(Boolean).join(' ');
+
+  esaLogo.onload = function() {
+    if (ctx !== null) {
+      ctx.font = '10px Arial';
+      ctx.fillStyle = 'white';
+      ctx.strokeStyle = 'white';
+      ctx.fillText(usageInfo, 10, finalCanvas.height - padding);
+
+      ctx.drawImage(
+        esaLogo,
+        window.innerWidth - esaLogo.width - padding,
+        window.innerHeight - esaLogo.height - padding,
+        esaLogo.width,
+        esaLogo.height
+      );
+    }
+
+    download(finalCanvas.toDataURL(), fileName);
+  };
+
+  esaLogo.setAttribute('crossOrigin', 'anonymous');
+  esaLogo.src = config.esaLogo;
 }
 
 function combineCanvases(canvases: HTMLCanvasElement[]) {
-  if (canvases.length < 2) {
-    return canvases[0];
-  }
-
   const canvas = document.createElement('canvas');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;

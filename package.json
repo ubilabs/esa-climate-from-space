@@ -1,6 +1,6 @@
 {
   "name": "esa-climate-from-space",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "dist-src-electron/main.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "download-stories": "gsutil -m rsync -x \".*stories-.*\\.json$\" -r gs://esa-cfs-storage/$npm_package_version/stories ./storage/stories/ && npm run clean:story-packages",
     "upload-stories": "./scripts/confirm-storage-upload.sh && npm run story-packages && find ./storage/stories -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/stories/* gs://esa-cfs-storage/$npm_package_version/stories/ && npm run clean:story-packages",
     "upload-layers": "find ./storage -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers",
+    "download-layers": "gsutil -m cp gs://esa-cfs-storage/$npm_package_version/layers/layers-*.json ./storage/layers/",
     "optimize-story-images": "./scripts/optimize-story-images.sh"
   },
   "repository": {
@@ -71,6 +72,7 @@
     "@types/react-dom": "^16.9.5",
     "@types/react-redux": "^7.1.7",
     "@types/redux-thunk": "^2.1.0",
+    "@types/video.js": "^7.3.31",
     "@types/youtube-player": "^5.5.3",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
@@ -102,6 +104,7 @@
     "terser-webpack-plugin": "^2.3.5",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
+    "video.js": "^7.17.0",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"

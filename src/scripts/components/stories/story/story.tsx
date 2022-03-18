@@ -82,11 +82,15 @@ const Story: FunctionComponent = () => {
           storyId={story.id}
         />
       );
-    } else if (slide.type === SlideType.Video && slide.videoId) {
+    } else if (
+      slide.type === SlideType.Video &&
+      (slide.videoSrc || slide.videoId)
+    ) {
       return (
         <StoryVideo
           mode={mode}
-          videoId={slide.videoId}
+          storyId={story.id}
+          slide={slide}
           onPlay={(player: YouTubePlayer) => getVideoDuration(player)}
         />
       );

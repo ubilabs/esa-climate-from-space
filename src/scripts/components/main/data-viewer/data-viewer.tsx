@@ -135,7 +135,7 @@ const DataViewer: FunctionComponent<Props> = ({
         view={currentView}
         projectionState={projectionState}
         imageLayer={imageLayer}
-        basemap={layerDetails?.basemap || null}
+        layerDetails={layerDetails || null}
         spinning={globeSpinning}
         flyTo={flyTo}
         onMouseEnter={action}
@@ -195,12 +195,8 @@ const DataViewer: FunctionComponent<Props> = ({
           active: !isMainActive,
           action: () => setIsMainActive(false)
         })}
-
       {!hideNavigation && showGlobeNavigation && (
-        <GlobeNavigation
-          mainLayerName={mainLayer?.name}
-          compareLayerName={compareLayer?.name}
-        />
+        <GlobeNavigation mainLayer={mainLayer} compareLayer={compareLayer} />
       )}
     </div>
   );

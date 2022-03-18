@@ -9,7 +9,7 @@ const globeState: GlobeState = {
   },
   view: {
     position: {
-      height: 42430000,
+      height: 23840000,
       latitude: 25,
       longitude: 0
     },
@@ -38,7 +38,8 @@ const basemapUrls = {
   ocean: `${baseUrlTiles}/basemaps/ocean`,
   atmosphere: `${baseUrlTiles}/basemaps/atmosphere`,
   blue: `${baseUrlTiles}/basemaps/blue`,
-  dark: `${baseUrlTiles}/basemaps/dark`
+  dark: `${baseUrlTiles}/basemaps/dark`,
+  colored: `${baseUrlTiles}/basemaps/colored`
 };
 
 const basemapUrlsOffline = {
@@ -46,7 +47,8 @@ const basemapUrlsOffline = {
   ocean: 'basemaps/ocean',
   atmosphere: 'basemaps/atmosphere',
   blue: 'basemaps/blue',
-  dark: 'basemaps/dark'
+  dark: 'basemaps/dark',
+  colored: 'basemaps/colored'
 };
 
 const downloadUrls = {
@@ -69,7 +71,8 @@ export default {
     stories: `${baseUrlStorage}/stories/stories-{lang}.json`,
     story: `${baseUrlStorage}/stories/{id}/{id}-{lang}.json`
   },
-  defaultBasemap: 'land' as keyof typeof basemapUrls,
+  defaultBasemap: 'colored' as keyof typeof basemapUrls,
+  defaultLayerBasemap: 'land' as keyof typeof basemapUrls,
   basemapUrls,
   basemapUrlsOffline,
   globe: globeState,
@@ -80,6 +83,7 @@ export default {
       'http://twitter.com/intent/tweet?text=ESA%20Climate%20From%20Space&url={currentUrl}'
   },
   planeratyVisionsLogo: 'assets/images/planetary-visions.png',
+  esaLogo: 'assets/images/esa-logo.png',
   ubilabsWebsite: 'https://ubilabs.com',
   planetaryVisionsWebsite: 'http://planetaryvisions.com/',
   githubRepo: 'https://github.com/ubilabs/esa-climate-from-space',
