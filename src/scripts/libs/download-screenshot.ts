@@ -68,7 +68,7 @@ function combineCanvases(canvases: HTMLCanvasElement[]) {
 function download(url: string, fileName?: string) {
   const link = document.createElement('a');
   link.setAttribute('href', url);
-  link.setAttribute('download', `${fileName}.png` ?? 'globe.png');
+  link.setAttribute('download', fileName ?? 'globe.png');
   link.style.display = 'none';
 
   document.body.appendChild(link);
@@ -99,5 +99,5 @@ function createFileName(
     ? `${mainName} & ${compareName}`
     : mainName;
 
-  return finalName;
+  return `${finalName}.png`;
 }
