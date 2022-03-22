@@ -44,7 +44,7 @@ export function downloadScreenshot(
         esaLogo.height
       );
     }
-
+    console.log(fileName);
     download(finalCanvas.toDataURL(), fileName);
   };
 
@@ -68,7 +68,7 @@ function combineCanvases(canvases: HTMLCanvasElement[]) {
 function download(url: string, fileName?: string) {
   const link = document.createElement('a');
   link.setAttribute('href', url);
-  link.setAttribute('download', fileName ?? 'globe.png');
+  link.setAttribute('download', `${fileName}.png` ?? 'globe.png');
   link.style.display = 'none';
 
   document.body.appendChild(link);
