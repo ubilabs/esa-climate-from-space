@@ -44,7 +44,7 @@ export function downloadScreenshot(
         esaLogo.height
       );
     }
-    console.log(fileName);
+
     download(finalCanvas.toDataURL(), fileName);
   };
 
