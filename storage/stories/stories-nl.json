@@ -137,5 +137,40 @@
       "geostationary-satellite"
     ],
     "position": [40, -25]
+  },
+  {
+    "id": "story-33",
+    "title": "Stedelijke wildgroei",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-34",
+    "title": "Verlies van bossen in het Amazonegebied",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-35",
+    "title": "Een racende gletsjer",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-36",
+    "title": "Zinkende Stad",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-37",
+    "title": "Satellites for Peat's Sake",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
   }
 ]
