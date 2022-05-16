@@ -143,59 +143,34 @@
     "title": "Stedelijke wildgroei",
     "description": "",
     "image": "assets/Sentinel-2.jpg",
-    "tags": [
-      "satellite-orbits",
-      "sensors",
-      "electromagnetic-spectrum",
-      "geostationary-satellite"
-    ]
+    "tags": []
   },
   {
     "id": "story-34",
     "title": "Verlies van bossen in het Amazonegebied",
     "description": "",
     "image": "assets/Sentinel-2.jpg",
-    "tags": [
-      "satellite-orbits",
-      "sensors",
-      "electromagnetic-spectrum",
-      "geostationary-satellite"
-    ]
+    "tags": []
   },
   {
     "id": "story-35",
     "title": "Een racende gletsjer",
     "description": "",
     "image": "assets/Sentinel-2.jpg",
-    "tags": [
-      "satellite-orbits",
-      "sensors",
-      "electromagnetic-spectrum",
-      "geostationary-satellite"
-    ]
+    "tags": []
   },
   {
     "id": "story-36",
     "title": "Zinkende Stad",
     "description": "",
     "image": "assets/Sentinel-2.jpg",
-    "tags": [
-      "satellite-orbits",
-      "sensors",
-      "electromagnetic-spectrum",
-      "geostationary-satellite"
-    ]
+    "tags": []
   },
   {
     "id": "story-37",
     "title": "Satellites for Peat's Sake",
     "description": "",
     "image": "assets/Sentinel-2.jpg",
-    "tags": [
-      "satellite-orbits",
-      "sensors",
-      "electromagnetic-spectrum",
-      "geostationary-satellite"
-    ]
+    "tags": []
   }
 ]
