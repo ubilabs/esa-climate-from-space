@@ -143,5 +143,65 @@
       "geostationary-satellite"
     ],
     "position": [40, -25]
+  },
+  {
+    "id": "story-33",
+    "title": "La expansión urbana",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "geostationary-satellite"
+    ]
+  },
+  {
+    "id": "story-34",
+    "title": "Pérdida de bosques en el Amazonas",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "geostationary-satellite"
+    ]
+  },
+  {
+    "id": "story-35",
+    "title": "Un glaciar de carreras",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "geostationary-satellite"
+    ]
+  },
+  {
+    "id": "story-36",
+    "title": "Ciudad del Hundimiento",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "geostationary-satellite"
+    ]
+  },
+  {
+    "id": "story-37",
+    "title": "Satellites for Peat's Sake",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "geostationary-satellite"
+    ]
   }
 ]
