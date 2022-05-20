@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 TIMEOUT=8000
-LAYER_ID="soil_moisture.sm_mean"
-VARIABLE_ID="sm_mean"
+LAYER_ID="soil_moisture.sm"
+VARIABLE_ID="sm"
 LAYER_TYPE="image"
 VERSION="1.5.1"
 LON_RES="1440"
