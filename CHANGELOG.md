@@ -1,3 +1,18 @@
+## [1.6.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.6.0...v1.6.1) (2022-05-20)
+
+
+
+# [1.5.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.4.0...v1.5.0) (2022-03-18)
+
+
+### Features
+
+* **dataset:** add water vapour ([#1054](https://github.com/ubilabs/esa-climate-from-space/issues/1054)) ([481bbf9](https://github.com/ubilabs/esa-climate-from-space/commit/481bbf901fdd9de4e85d35f87baaa77e54600116))
+* **layers:** update layers.json ([#1084](https://github.com/ubilabs/esa-climate-from-space/issues/1084)) ([31eb224](https://github.com/ubilabs/esa-climate-from-space/commit/31eb2245530b7b60445bc5caed3f1287ef6c862a))
+* **videoJs:** implement videoJs to story video ([#1068](https://github.com/ubilabs/esa-climate-from-space/issues/1068)) ([d698404](https://github.com/ubilabs/esa-climate-from-space/commit/d698404198a54510a0446accd547d17283aff4b3))
+
+
+
 # [1.6.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.5.1...v1.6.0) (2022-05-20)
 
 
