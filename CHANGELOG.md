@@ -1,14 +1,46 @@
+# [1.6.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.5.1...v1.6.0) (2022-05-20)
+
+
+### Features
+
+* add New Years to fire dataset ([ce50b56](https://github.com/ubilabs/esa-climate-from-space/commit/ce50b56d5ad693ff14416c78bb863668ac3277a4))
+* update sea surface salinity dataset to v3.21 ([8c4d0af](https://github.com/ubilabs/esa-climate-from-space/commit/8c4d0af958187f6575fa71532662922a9c72d751))
+* **dataset:** adjust water vapour colors ([#1092](https://github.com/ubilabs/esa-climate-from-space/issues/1092)) ([b08e1f9](https://github.com/ubilabs/esa-climate-from-space/commit/b08e1f9e7bd72309468e9ab3946efbf9f5984387))
+* **stories:** add new story placeholders ([0afe2bc](https://github.com/ubilabs/esa-climate-from-space/commit/0afe2bce1ef827484abea9a03eb30618d4f8e2b5))
+
+
+
+## [1.5.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.4.0...v1.5.1) (2022-03-18)
+
+
+### Features
+
+* **basemap:** add new coloured baseman ([#1057](https://github.com/ubilabs/esa-climate-from-space/issues/1057)) ([6613ddf](https://github.com/ubilabs/esa-climate-from-space/commit/6613ddf9db34a831ebe42ccdfa03814c0391a863))
+* **dataset:** add land surface temperature ([#1056](https://github.com/ubilabs/esa-climate-from-space/issues/1056)) ([2a00be7](https://github.com/ubilabs/esa-climate-from-space/commit/2a00be730fe5560c0717d663beae11cd0243b7ea))
+* **dataset:** add water vapour ([#1054](https://github.com/ubilabs/esa-climate-from-space/issues/1054)) ([6ffd06e](https://github.com/ubilabs/esa-climate-from-space/commit/6ffd06edeb98085733435e8f25d41bf416a73dd4))
+* **layers:** update layers.json ([#1053](https://github.com/ubilabs/esa-climate-from-space/issues/1053)) ([bb0ea58](https://github.com/ubilabs/esa-climate-from-space/commit/bb0ea5842de773a1f12239bd415cc09df61c835c))
+* **layers:** update layers.json ([#1055](https://github.com/ubilabs/esa-climate-from-space/issues/1055)) ([243a6dd](https://github.com/ubilabs/esa-climate-from-space/commit/243a6dd5c56f5f1733927d47383fe814caa194e6))
+* **layers:** update layers.json ([#1084](https://github.com/ubilabs/esa-climate-from-space/issues/1084)) ([e1e497c](https://github.com/ubilabs/esa-climate-from-space/commit/e1e497c60f50b0914c7e2f3b1121840182dbb7cf))
+* **onboarding:** add welcome screen and onboarding tooltips ([#1058](https://github.com/ubilabs/esa-climate-from-space/issues/1058)) ([8b3d44b](https://github.com/ubilabs/esa-climate-from-space/commit/8b3d44b3d9a3d5693b088ffb2aefb59aabf8cba3))
+* **stories:** update story: story-26 ([#1042](https://github.com/ubilabs/esa-climate-from-space/issues/1042)) ([599678f](https://github.com/ubilabs/esa-climate-from-space/commit/599678f8665f20c543c224deed88bcf743b1eab6))
+* **videoJs:** implement videoJs to story video ([#1068](https://github.com/ubilabs/esa-climate-from-space/issues/1068)) ([9f60e2f](https://github.com/ubilabs/esa-climate-from-space/commit/9f60e2f2b49c1f94d15976f8f5846f69274c1bc4))
+
+
+
 # [1.5.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.4.0...v1.5.0) (2022-03-18)
 
 
 ### Features
 
 * **basemap:** add new coloured baseman ([#1057](https://github.com/ubilabs/esa-climate-from-space/issues/1057)) ([6613ddf](https://github.com/ubilabs/esa-climate-from-space/commit/6613ddf9db34a831ebe42ccdfa03814c0391a863))
-* **dataset:** add water vapour ([#1054](https://github.com/ubilabs/esa-climate-from-space/issues/1054)) ([481bbf9](https://github.com/ubilabs/esa-climate-from-space/commit/481bbf901fdd9de4e85d35f87baaa77e54600116))
+* **dataset:** add land surface temperature ([#1056](https://github.com/ubilabs/esa-climate-from-space/issues/1056)) ([2a00be7](https://github.com/ubilabs/esa-climate-from-space/commit/2a00be730fe5560c0717d663beae11cd0243b7ea))
+* **dataset:** add water vapour ([#1054](https://github.com/ubilabs/esa-climate-from-space/issues/1054)) ([6ffd06e](https://github.com/ubilabs/esa-climate-from-space/commit/6ffd06edeb98085733435e8f25d41bf416a73dd4))
 * **layers:** update layers.json ([#1053](https://github.com/ubilabs/esa-climate-from-space/issues/1053)) ([bb0ea58](https://github.com/ubilabs/esa-climate-from-space/commit/bb0ea5842de773a1f12239bd415cc09df61c835c))
-* **layers:** update layers.json ([#1084](https://github.com/ubilabs/esa-climate-from-space/issues/1084)) ([31eb224](https://github.com/ubilabs/esa-climate-from-space/commit/31eb2245530b7b60445bc5caed3f1287ef6c862a))
+* **layers:** update layers.json ([#1055](https://github.com/ubilabs/esa-climate-from-space/issues/1055)) ([243a6dd](https://github.com/ubilabs/esa-climate-from-space/commit/243a6dd5c56f5f1733927d47383fe814caa194e6))
+* **layers:** update layers.json ([#1084](https://github.com/ubilabs/esa-climate-from-space/issues/1084)) ([e1e497c](https://github.com/ubilabs/esa-climate-from-space/commit/e1e497c60f50b0914c7e2f3b1121840182dbb7cf))
+* **onboarding:** add welcome screen and onboarding tooltips ([#1058](https://github.com/ubilabs/esa-climate-from-space/issues/1058)) ([8b3d44b](https://github.com/ubilabs/esa-climate-from-space/commit/8b3d44b3d9a3d5693b088ffb2aefb59aabf8cba3))
 * **stories:** update story: story-26 ([#1042](https://github.com/ubilabs/esa-climate-from-space/issues/1042)) ([599678f](https://github.com/ubilabs/esa-climate-from-space/commit/599678f8665f20c543c224deed88bcf743b1eab6))
-* **videoJs:** implement videoJs to story video ([#1068](https://github.com/ubilabs/esa-climate-from-space/issues/1068)) ([d698404](https://github.com/ubilabs/esa-climate-from-space/commit/d698404198a54510a0446accd547d17283aff4b3))
+* **videoJs:** implement videoJs to story video ([#1068](https://github.com/ubilabs/esa-climate-from-space/issues/1068)) ([9f60e2f](https://github.com/ubilabs/esa-climate-from-space/commit/9f60e2f2b49c1f94d15976f8f5846f69274c1bc4))
 
 
 

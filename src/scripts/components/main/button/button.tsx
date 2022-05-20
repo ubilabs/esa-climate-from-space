@@ -11,6 +11,7 @@ interface Props {
   link?: string;
   disabled?: boolean;
   className?: string;
+  id?: string;
   hideLabelOnMobile?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
@@ -21,6 +22,7 @@ const Button: FunctionComponent<Props> = ({
   icon: Icon,
   disabled = false,
   className = '',
+  id,
   hideLabelOnMobile,
   onClick
 }) => {
@@ -34,6 +36,7 @@ const Button: FunctionComponent<Props> = ({
   return link ? (
     <Link
       onClick={event => disabled && event.preventDefault()}
+      id={id}
       className={classes}
       to={link}>
       {Icon && <Icon />}
@@ -44,7 +47,7 @@ const Button: FunctionComponent<Props> = ({
       )}
     </Link>
   ) : (
-    <button disabled={disabled} className={classes} onClick={onClick}>
+    <button disabled={disabled} className={classes} id={id} onClick={onClick}>
       {Icon && <Icon />}
       {label && (
         <span className={styles.label}>

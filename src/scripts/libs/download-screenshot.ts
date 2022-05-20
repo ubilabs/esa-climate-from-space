@@ -99,5 +99,5 @@ function createFileName(
     ? `${mainName} & ${compareName}`
     : mainName;
 
-  return finalName;
+  return `${finalName}.png`;
 }

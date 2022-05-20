@@ -14,6 +14,7 @@ interface Props {
   isStoryMode: boolean;
   videoCaptions?: string;
   videoPoster?: string;
+  onPlay: (player: VideoJsPlayer) => void;
 }
 
 const VideoJS: FunctionComponent<Props> = ({
@@ -22,7 +23,8 @@ const VideoJS: FunctionComponent<Props> = ({
   language,
   isStoryMode,
   videoCaptions,
-  videoPoster
+  videoPoster,
+  onPlay
 }) => {
   const videoRef = useRef(null);
   const playerRef = useRef<VideoJsPlayer | null>();
@@ -114,6 +116,7 @@ const VideoJS: FunctionComponent<Props> = ({
         ref={videoRef}
         className="video-js vjs-big-play-centered"
         style={{height: '100%'}}
+        onPlay={event => onPlay((event.target as unknown) as VideoJsPlayer)}
       />
     </div>
   );
