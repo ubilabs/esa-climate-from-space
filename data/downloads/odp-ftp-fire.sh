@@ -4,9 +4,9 @@ BASE_URL="ftp://anon-ftp.ceda.ac.uk/neodc/esacci/fire/data/burned_area/MODIS/gri
 START_DATE=2001-01-01
 OUTPUT_FOLDER=./download/fire
 
-mkdir -p $OUTPUT_FODLER
+mkdir -p $OUTPUT_FOLDER
 
-for i in {0..227}
+for i in {0..239}
 do
   NEXT_YEAR=$(date +%Y -d "$START_DATE + $i month")
   NEXT_DATE_SPACE=$(date +%Y%m%d -d "$START_DATE + $i month")
@@ -21,9 +21,9 @@ done
 
 
 # use corrected calulcation files for three months in 2019
-curl --silent http://dap.ceda.ac.uk/neodc/esacci/fire/data/burned_area/MODIS/grid/v5.1/2019/new-corrected/20191001-ESACCI-L4_FIRE-BA-MODIS-fv5.1.nc > $OUTPUT_FOLDER/20191001.nc
+curl --silent https://dap.ceda.ac.uk/neodc/esacci/fire/data/burned_area/MODIS/grid/v5.1/2019/new-corrected/20191001-ESACCI-L4_FIRE-BA-MODIS-fv5.1.nc > $OUTPUT_FOLDER/20191001.nc
 python ./data/drop-unused-vars.py --file $OUTPUT_FOLDER/20191001.nc --variable burned_area
-curl --silent http://dap.ceda.ac.uk/neodc/esacci/fire/data/burned_area/MODIS/grid/v5.1/2019/new-corrected/20191101-ESACCI-L4_FIRE-BA-MODIS-fv5.1.nc > $OUTPUT_FOLDER/20191101.nc
+curl --silent https://dap.ceda.ac.uk/neodc/esacci/fire/data/burned_area/MODIS/grid/v5.1/2019/new-corrected/20191101-ESACCI-L4_FIRE-BA-MODIS-fv5.1.nc > $OUTPUT_FOLDER/20191101.nc
 python ./data/drop-unused-vars.py --file $OUTPUT_FOLDER/20191101.nc --variable burned_area
-curl --silent http://dap.ceda.ac.uk/neodc/esacci/fire/data/burned_area/MODIS/grid/v5.1/2019/new-corrected/20191201-ESACCI-L4_FIRE-BA-MODIS-fv5.1.nc > $OUTPUT_FOLDER/20191201.nc
+curl --silent https://dap.ceda.ac.uk/neodc/esacci/fire/data/burned_area/MODIS/grid/v5.1/2019/new-corrected/20191201-ESACCI-L4_FIRE-BA-MODIS-fv5.1.nc > $OUTPUT_FOLDER/20191201.nc
 python ./data/drop-unused-vars.py --file $OUTPUT_FOLDER/20191201.nc --variable burned_area
