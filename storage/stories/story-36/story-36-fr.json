@@ -3,8 +3,8 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Sinking City",
-      "shortText": "# Sinking City",
+      "text": "# Sinking City\r\n\r\nJakarta, Indonesia",
+      "shortText": "# Sinking City\r\n\r\nJakarta, Indonesia",
       "images": [
         "assets/story36-image03.jpg"
       ]
