@@ -3,89 +3,31 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Taking the Pulse of the Planet\r\n\r\nSatellites offer a unique global perspective on the Earth’s climate. From them, we now have over three decades of observations describing some of the most important climate variables. This information is a useful resource for both setting up climate models and checking their accuracy.",
-      "shortText": "# Taking the Pulse of the Planet\r\n\r\nSatellites offer a unique global perspective on the Earth’s climate. From them, we now have over three decades of observations describing some of the most important climate variables. This information is a useful resource for both setting up climate models and checking their accuracy.",
-      "images": ["assets/Sentinel-2.jpg"]
+      "text": "# Urban Sprawl",
+      "shortText": "# Urban Sprawl",
+      "images": [
+        "assets/story33-image04.jpg"
+      ]
     },
     {
       "type": "image",
-      "text": "## A Blue Marble\r\n\r\nWhen the crew of Apollo 17 looked back at their home planet in 1972, they photographed an entirely sunlit Earth for the first time.  It was also the last time that humans were far enough away from home  to see the whole planet for themselves. That view of a ‘blue marble’ hanging in space has become a familiar sight and is possibly the most reproduced photo in history.\r\n\r\nThe blue water of the seas and oceans dominates the picture. But if we take a closer look, we can distinguish many more colours. For instance, we can see the yellow sand of the Sahara Desert, the dark green of tropical rainforests, and the white of clouds over the oceans and ice and snow covering Antarctica.\r\n\r\nToday, Earth observation satellites take daily blue marble images that reveal a wealth of detail about our changing planet. They have become an essential tool to monitor climate at both local and global scales. They are particularly useful for monitoring inaccessible areas, such as the oceans, tropical rainforests and the polar regions, which are among the areas that are most vulnerable to climate change and most under threat.\r\n \r\nThese ‘remote sensors’ can see [ice expanding and contracting](stories/story-15/3) at the poles, monitor [glaciers](stories/story-21/6) and [fires](stories/story-28/1), track clouds and aerosols moving through the [atmosphere](stories/story-21/4), and measure how [nutrients and temperatures](stories/story-16/4) are changing across the oceans. The first operational remote sensing missions were in the late 1970s so, for many components of the climate system, we now have observations spanning more than thirty years – long enough to see what global warming is doing to our planet.",
-      "shortText": "## A Blue Marble\r\n\r\nFirst fully-sunlit photo of Earth – _Apollo 17, 1972_\r\n\r\n- 1960: first weather satellite– TIROS-1\r\n- 1972: Earth Resources Technology Satellite – Landsat-1 \r\n- 1991: European Remote Sensing satellite – ERS-1\r\n- today: daily ‘blue marble’ images from a fleet of satellites\r\n- unique overview of inaccessible regions – oceans, rainforests, polar regions\r\n- Earth observations spanning more than 30 years\r\n- long enough to see what global warming is doing to our planet",
+      "text": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
+      "shortText": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
       "images": [
-        "assets/cloud_large_01.jpg",
-        "assets/story26-image10.jpg",
-        "assets/story26-image17.jpg",
-        "assets/story26-image15.jpg",
-        "assets/intro_large_09.jpg"
+        "assets/story33-image01.jpg",
+        "assets/story33-image02.jpg",
+        "assets/story33-image03.jpg"
       ],
       "imageCaptions": [
-        "Photograph of the Earth taken by the Apollo 17 crew in 1972 (NASA)",
-        "The first image taken by the experimental weather satellite TIROS-1 in April 1960 (NASA)",
-        "Europe's first weather satellite, Meteosat-1, was launched in November 1977 (ESA)",
-        "The first image from the the European Remote Sensing satellite (ERS-1) showed the Flevoland polder and the Ijsselmeer in the Netherlands on 27 July 1991 (ESA)",
-        "Data from three generations of radar satellites shows the retreat of two large glaciers in southeast Greenland over 36 years (ESA)"
+        "This image was acquired on 14 August 1988 and shows the city of Cairo and its surroundings more than 30 years ago",
+        "This image was acquired on 2 August 2018 and shows the city of Cairo and its surroundings",
+        "This image was acquired on 31 August 2021 and shows the city of Cairo and its surroundings"
       ],
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
-    },
-    {
-      "type": "image",
-      "text": "## Satellite Orbits\r\n\r\nSatellite technology is part of our everyday life: it is the backbone of the navigation systems in our cars, it delivers telephone and television signals and is a keystone of the daily weather forecast we watch on TV. These applications take advantage of the different orbits that are possible for spacecraft circling the Earth. A remote sensing system needs a _sensor_ (the camera) and a _platform_ (in this case, the satellite). Different sorts of cameras can be combined with satellites in different orbits in various ways, depending on what we want to find out. \r\n\r\n## Geostationary Orbit\r\n\r\nMost weather forecast images are taken by a camera on a satellite flying in orbit 36,000 km above the Earth. Satellites like these are referred to as geostationary satellites. They move around the Earth at the same rate as the planet rotates so they are always above the same point; they always see the same side of the Earth. This path, called a geostationary equatorial orbit (GEO), allows the camera to take many pictures of the same location every day so meteorologists can track how weather systems develop. Geostationary orbits are also used by most telecommunications and TV broadcast satellites. \r\n\r\n![Geostationary and polar orbits ](assets/story26-image01.jpg) \r\n_Meteosat is in a geostationary orbit and Sentinel-5P in a polar orbit (Planetary Visions)_\r\n\r\n## Polar Orbit\r\n\r\nNot all satellites are geostationary. Others can look at the entire globe by travelling from pole to pole. These polar-orbiting satellites are in a low Earth orbit (LEO) at an altitude of about 700 km. Polar-orbiting satellites typically take about a hundred minutes to go around the globe and their path crosses the equator about fourteen times a day. Most polar-orbiting satellites follow a very specific path called a sun-synchronous orbit. Their orbit doesn’t go right over the poles but is slightly tilted. As a result, they pass over a particular point on the equator at approximately the same local time each day. \r\n\r\nThe cameras on Sun-synchronous polar-orbiting satellites can take only one picture per day of most places on Earth. However, the images are more detailed than those taken from geostationary satellites because the camera is much closer to the Earth. Another advantage of using a Sun-synchronous orbit is that, because all the images of a certain place are taken at the same time of day, the pictures are not affected by the changes in light intensity and direction that happen naturally over the course of a day. This makes it possible to see other changes accurately, something that is essential for observing climate and measuring quantities known as essential climate variables (ECVs). ECVs give an indication of the health of our planet, in the same way that taking your pulse can tell a doctor about your health.",
-      "shortText": "## Satellite Orbits\r\n\r\nSatellite technology is part of everyday life: satnav, communications, weather forecasts. Sensors, platforms and orbits can be combined in various ways.\r\n\r\nGeostationary Equatorial Orbit (GEO)\r\n\r\n- 36,000 km above surface, 24 hour orbit\r\n- Equatorial, geosynchronous orbit\r\n- fixed view of one hemisphere\r\n- low resolution, rapid repeat view\r\n\r\nLow Earth Obit (LEO)\r\n\r\n- 700-800 km above surface, 100 minute orbit\r\n- pole-to-pole, Sun-synchronous orbit\r\n- covers whole world, at same local time of day\r\n- high resolution, daily (or less) repeat view\r\n\r\n![Geostationary and polar orbits ](assets/story26-image01.jpg) \r\n_Geostationary and polar orbits  (Planetary Visions)_",
-      "images": [
-        "assets/story26-image02.jpg",
-        "assets/story26-image03.jpg",
-        "assets/soilmoisture_large_14.jpg",
-        "assets/story26-image04.jpg",
-        "assets/intro_large_11.jpg"
-      ],
-      "imageCaptions": [
-        "Meteosat  – a geostationary weather satellite (Planetary Visions/ESA)",
-        "Copernicus Sentinel 3 – a polar-orbiting Earth observation satellite (ESA)",
-        "The Soil Moisture and Ocean Salinity satellite (SMOS), one of ESA’s Earth Explorer science satellites (ESA)",
-        "The European Data Relay System (EDRS) provides a geostationary communications relay \r\nbetween satellites in low Earth orbit and receiving stations on the ground (ESA)",
-        "European Space Agency satellite ground station in Frascati, Italy (ESA)"
-      ],
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
-    },
-    {
-      "type": "image",
-      "text": "## Looking at Earth Through a Different Lens\r\n\r\nThe Blue Marble photo shows Earth as we see it with the naked eye. By detecting red, green and blue light, the human eye – and the sensor in a standard digital camera – ‘see’ a full range of colours. Satellite cameras can gather much more information about our planet by looking beyond the visible wavelengths into other parts of the electromagnetic spectrum, and each region reveals different aspects of Earth’s character.\r\n\r\nAs we traverse the electromagnetic spectrum, the globe’s appearance changes as different parts of the Earth system come into view. At visible wavelengths (400–700 nanometres), optical sensors record the outline of lake and ocean shorelines, glaciers, urban areas and the colour changes due to phytoplankton in the ocean, an important carbon sink. Click through the image gallery to see how satellites see Earth at other wavelengths.\r\n\r\n## Shorter Wavelengths\r\nUltraviolet wavelengths are absorbed by ozone in the atmosphere. Sensors detecting this range of wavelengths played an important part in the discovery of the [ozone hole](stories/story-8/1) above Antarctica, and are still used to track how it is changing. X-rays and gamma rays have much shorter wavelengths than visible light (less than 10 nanometres). They are used in astronomy (and in medicine), but not by Earth observation satellites.\r\n\r\n## Longer Wavelengths\r\n\r\nNear-infrared wavelengths (about 1 micrometre) are used to measure the [vigour of plant growth](stories/story-29/3) on land, helping to keep track of agricultural productivity and the impact of stresses such as drought. The mid-infrared shows [water vapour in the atmosphere](stories/story-21/3). Using the same principles as the handheld thermal cameras used for temperature screening at some airports, the thermal infrared (wavelength about 10 micrometre) allows us to measure the temperature of the land and [sea surface](stories/story-16/2)  and the tops of clouds. The far infrared reveals information about the energy radiated by the Earth and energy exchanges in the atmosphere. \r\n\r\nAt even longer wavelengths, microwaves (about 1 centimetre) can reveal the presence of  water in all its forms: as liquid in the soil, frozen as snow and ice, and as vapour and water droplets in the atmosphere. Microwaves can penetrate clouds, so microwave sensors are able to provide data under most weather conditions and even in the prolonged dark of the polar winter. Microwaves emitted by the Earth allow us to monitor snow and [sea ice extent](stories/story-15/3) and [soil moisture](stories/story-21/5). \r\n\r\nActive microwave sensors, including radar, generate their own microwaves, much as a torch generates light. Detecting the reflected microwave energy allows us to track the motion of ice and, with radar altimeters, we can measure the [thickness of sea ice](stories/story-15/7) and ice sheets, and the height of ocean waves.",
-      "shortText": "## Looking at Earth Through a Different Lens\r\n\r\nSatellites gather information about Earth by looking beyond the visible wavelengths into other parts of the electromagnetic spectrum:\r\n\r\n- ultraviolet (100–400 nm): ozone in the atmosphere \r\n- visible (400–700 nm): shorelines, glaciers, urban areas, clouds, ocean phytoplankton \r\n- near-infrared (~ 1 µm): plant growth on land\r\n- mid-infrared: water vapour in the atmosphere\r\n- thermal infrared (~ 10 µm): temperature of land, sea, clouds \r\n- far infrared: energy radiated by the Earth and energy exchanges in the atmosphere \r\n- microwaves (~ 1 cm): water – in the soil, frozen as snow and ice, as vapour and water droplets in the atmosphere\r\n- active microwave sensors, including radar: motion of ice, thickness of sea ice and ice sheets, height of ocean waves",
-      "images": [
-        "assets/story26-image05.jpg",
-        "assets/story26-image07.jpg",
-        "assets/story26-image08.jpg",
-        "assets/story26-image09.jpg",
-        "assets/story26-image12.jpg"
-      ],
-      "imageCaptions": [
-        "Ultraviolet light reveals the concentration of atmospheric ozone (ESA-CCI Ozone)",
-        "Multispectral surface reflectance at visible and near-infrared wavelengths\r\nshows the vigour of plant life on land (ESA-CCI CCI Land Cover)",
-        "Atmospheric water vapour revealed at mid-infrared wavelengths by the Meteosat weather satellite (ESA/Eumetsat/DLR)",
-        "Thermal infrared wavelengths show the temperature of the Earth’s surface and cloud tops (ESA-CCI Cloud)",
-        "Microwave emissions are used to track soil moisture, sea ice, snow and atmospheric water. Brightness temperature at 89 GHz and 23.8 GHz from AMSR-E. (National Space Development Agency of Japan)"
-      ],
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
-    },
-    {
-      "type": "image",
-      "text": "## Reality Check\r\n\r\nAlthough satellites allow a lot of ground to be covered in a short time, the observations taken by their sensors need to be calibrated with _in situ_ measurements taken with conventional instruments on or near the surface. Satellites in most cases can only measure the surface. In the case of the temperature of the ocean this means much less than the top millimetre, so sea-surface temperature from satellite needs to be combined with data from ship-tethered or free-floating underwater probes to form a complete picture of ocean temperature.\r\n\r\nEarth observation specialists work with subject specialists ‘in the field’. This fieldwork is often an important part of designing a new satellite instrument or testing a new way of using existing satellite data. Fieldwork might involve the deployment of fixed instruments on the ground, drifting or gliding instruments in the ocean, or aircraft or balloon flights in the atmosphere. Scientists may spend months isolated in remote research stations in Antarctica or on board a ship locked in the Arctic sea ice. This ground-level work is an essential part of the calibration and validation of climate observations from space.",
-      "shortText": "# Reality Check\r\n\r\nAlthough satellites allow a lot of ground to be covered in a short time, their observations need to be calibrated with _in situ_ measurements taken on or near the surface. \r\n\r\n- fieldwork often an important part of designing a new satellite instrument \r\n- Earth observation specialists work with subject specialists ‘in the field’\r\n- fixed instruments on the ground\r\n- drifting or gliding instruments in the ocean\r\n- aircraft or balloon flights in the atmosphere\r\n- scientists may spend weeks on board ships \r\n- or months at remote research stations in Antarctica \r\n\r\nMuch of our knowledge of Earth’s past climate comes from the analysis of ice cores extracted from the thick ice sheets of Greenland or Antarctica.",
-      "images": [
-        "assets/sealevel_large_07.jpg",
-        "assets/story26-image18.jpg",
-        "assets/icesheet.jpg",
-        "assets/story26-image19.jpg",
-        "assets/icesheet_large_06.jpg"
-      ],
-      "imageCaptions": [
-        "A research ship deploying an Argo float. There are almost 4,000 of these automatic buoys floating across the world. They travel up and down the top 2,000 metres of the ocean continually recording temperature, salinity and current. Measurements from them are used to calibrate and validate satellite observations of the ocean surface.  (Argo Programme/IFREMER)",
-        "Scientists taking sea ice cores in the Arctic winter. The German research vessel Polarstern was deliberately trapped for a year in the sea ice of the Arctic Ocean during 2019–20, as part of the Multidisciplinary drifting Observatory for the Study of Arctic Climate (MOSAiC) (Esther Horvath / Alfred-Wegener-Institut)",
-        "Aircraft provide a local remote sensing platform as well as transport in remote regions (A Hogg)",
-        "Taking soil moisture measurements in Sweden to support the development of ESA's BIOMASS satellite (FOI)",
-        "A wide-angle view from the joint French-Italian Concordia Research Station, located high on Dome C of the Antarctic Plateau, one of the coldest places on Earth (AP Salam)"
-      ],
-      "imageFits": ["cover", "cover", "cover", "contain", "cover"]
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain"
+      ]
     }
   ]
 }
