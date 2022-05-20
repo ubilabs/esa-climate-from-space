@@ -28,8 +28,8 @@
         "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red."
       ],
       "imageFits": [
-        "cover",
-        "cover",
+        "contain",
+        "contain",
         "cover",
         "cover",
         "cover"
