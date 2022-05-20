@@ -3,89 +3,118 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Tomando el pulso al planeta\r\n\r\nLos satélites ofrecen una perspectiva global única sobre el clima de la Tierra. Gracias a ellos, disponemos de más de tres décadas de observaciones que describen algunas de las variables climáticas más importantes. Esta información es un recurso útil tanto para establecer modelos climáticos como para comprobar su exactitud.",
-      "shortText": "# Tomando el pulso al planeta\r\n\r\nLos satélites ofrecen una perspectiva global única sobre el clima de la Tierra. Gracias a ellos, disponemos de más de tres décadas de observaciones que describen algunas de las variables climáticas más importantes. Esta información es un recurso útil tanto para establecer modelos climáticos como para comprobar su exactitud.",
-      "images": ["assets/Sentinel-2.jpg"]
+      "text": "# Is Ozone Good or Bad?\n\nThe ozone layer protects life on Earth from ultraviolet solar radiation, but ozone is also a powerful greenhouse gas and at ground level is extremely hazardous to health.",
+      "shortText": "# Is Ozone Good or Bad?\n\n(placeholder)",
+      "images": [
+        "assets/ozone.jpg"
+      ]
     },
     {
       "type": "image",
-      "text": "## Una Canica Azul\r\n\r\nCuando la tripulación del Apolo 17 miró a su planeta natal en 1972, fotografió por primera vez una Tierra completamente iluminada por el sol.  También fue la última vez que los humanos se alejaron lo suficiente de su hogar como para ver el planeta entero por sí mismos. Esa vista de una \"canica azul\" colgada en el espacio se ha convertido en una imagen familiar y es posiblemente la foto más reproducida de la historia.\r\n\r\nEl agua azul de los mares y océanos domina la imagen. Pero si nos fijamos más de cerca, podemos distinguir muchos más colores. Por ejemplo, podemos ver la arena amarilla del desierto del Sahara, el verde oscuro de las selvas tropicales y el blanco de las nubes sobre los océanos y el hielo y la nieve que cubren la Antártida.\r\n\r\nHoy en día, los satélites de observación de la Tierra toman diariamente imágenes de la canica azul que revelan una gran cantidad de detalles sobre nuestro cambiante planeta. Se han convertido en una herramienta esencial para vigilar el clima tanto a escala local como global. Son especialmente útiles para vigilar zonas inaccesibles, como los océanos, las selvas tropicales y las regiones polares, que se encuentran entre las zonas más vulnerables al cambio climático y más amenazadas.\r\n \r\nEstos \"sensores remotos\" pueden ver [el hielo que se expande y se contrae](stories/story-15/3) en los polos, vigilar [los glaciares](stories/story-21/6) y [los incendios](stories/story-28/1), rastrear las nubes y los aerosoles que se desplazan por la [atmósfera](stories/story-21/4) y medir cómo cambian [los nutrientes y las temperaturas](stories/story-16/4) en los océanos. Las primeras misiones operativas de teledetección se llevaron a cabo a finales de la década de 1970, por lo que, en el caso de muchos componentes del sistema climático, disponemos ahora de observaciones que abarcan más de treinta años, tiempo suficiente para ver lo que el calentamiento global está haciendo en nuestro planeta.",
-      "shortText": "## A Blue Marble\r\n\r\nPrimera foto de la Tierra totalmente iluminada por el sol - _Apollo 17, 1972_\r\n\r\n- 1960: primer satélite meteorológico - TIROS-1\r\n- 1972: Satélite de tecnología de los recursos de la Tierra - Landsat-1\r\n- 1991: satélite europeo de teledetección - ERS-1\r\n- hoy en día: imágenes diarias de la \"canica azul\" de una flota de satélites\r\n- visión única de regiones inaccesibles: océanos, selvas tropicales, regiones polares\r\n- observaciones de la Tierra durante más de 30 años\r\n- tiempo suficiente para ver lo que el calentamiento global está haciendo a nuestro planeta",
+      "text": "# How Low Can You Go? \n\nIn 1979, engineers received the first data from a new instrument on an American research satellite. The sensor measured so little ozone in the atmosphere over Antarctica that the readings were discounted as instrument error. But not long afterwards, a team of British researchers recorded similarly low amounts of ozone from their Antarctic research station. \n\nIt was only when the ground-based results were published in the scientific literature that the low values in the satellite data were taken seriously. They showed a wide area with very low amounts of ozone developing every spring over the South Pole. This ‘hole’ in Earth’s protective ozone layer quickly gained the attention of the media and policy-makers. And, with their data verified, scientists gained confidence in the emerging technology of Earth observation from space.\n\n## Protective Layer \n\nThe layer of ozone high up in the stratosphere is our main defence against the Sun’s ultraviolet (UV) radiation. Without it we’d suffer sunburn after a few minutes outdoors, followed by eye damage and skin cancer after prolonged exposure. Unfiltered, UV light would have a catastrophic effect on all life on Earth.    \n\n![The Sun in visible and UV light](assets/story8_02.png) \n_The Sun in visible (left) and ultraviolet light (right), as viewed by the SOHO satellite on February 3, 2002. (ESA/NASA)_\n\nOzone is also a powerful greenhouse gas. Change in the distribution of ozone is the second largest human impact on the climate, after the increase in carbon dioxide. But, while ozone _loss_ has been the concern in the stratosphere, ozone has been _increasing_ at ground level. Here, ozone associated with transport and industrial pollution is a hazard to human health. Whether ozone is good or bad for you depends on where you find it.",
+      "shortText": "# How Low Can You Go?\n\n(placeholder)",
       "images": [
-        "assets/cloud_large_01.jpg",
-        "assets/story26-image10.jpg",
-        "assets/story26-image17.jpg",
-        "assets/story26-image15.jpg",
-        "assets/intro_large_09.jpg"
+        "assets/ozone_large_11.jpg",
+        "assets/ozone_large_14.jpg"
       ],
-      "imageCaptions": [
-        "Fotografía de la Tierra tomada por la tripulación del Apolo 17 en 1972 (NASA)",
-        "La primera imagen tomada por el satélite meteorológico experimental TIROS-1 en abril de 1960 (NASA)",
-        "El primer satélite meteorológico europeo, Meteosat-1, fue lanzado en noviembre de 1977 (ESA)",
-        "La primera imagen del satélite europeo de teledetección (ERS-1) mostraba el pólder de Flevoland y el Ijsselmeer en los Países Bajos el 27 de julio de 1991 (ESA)",
-        "Los datos de tres generaciones de satélites de radar muestran el retroceso de dos grandes glaciares en el sureste de Groenlandia durante 36 años (ESA)"
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ]
+    },
+    {
+      "type": "globe",
+      "text": "# Ozone Depletion \n\nAtmospheric sampling from balloons and aircraft identified the causes of ozone depletion as man-made gases, particularly the chlorofluorocarbons (CFCs) used as a propellant in aerosol sprays, fire extinguishers and pesticides, and as a coolant in refrigerators and air conditioners. Most of these gases are harmless for human beings, but once they reach the stratosphere they are hit by solar radiation that changes their molecular structure, releasing atoms of chlorine. \n\n![Sources of stratospheric chlorine graph](assets/story8_01.png) \n_Sources of stratospheric chlorine._\n\nA single atom of chlorine can split apart a large number of ozone molecules. Although ozone depletion is a global process, atmospheric conditions including extremely low temperatures, stratospheric cloud formation and the polar vortex concentrate it in the springtime in the polar regions, particularly over Antarctica. \n\n![Chlorine in ozone depletion diagram](assets/ozone_large_03a.png) \n_The role of chlorine in ozone depletion._\n\nIn 1987 severe limits on CFC emissions were agreed at an intergovernmental conference in Montreal. The wide adoption of the Montreal Protocol and the identification of safer alternatives means that CFCs have largely been phased out of use, and the ozone layer is slowly recovering. It is a good example of international cooperation to address a threat to the global environment. But CFCs have a very long lifetime in the atmosphere, and stratospheric ozone is not expected to return to 1980 levels until 2030-2060.",
+      "shortText": "# Ozone Depletion \n\n(placeholder)",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
       ],
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
+      "layerDescription": "layer description",
+      "markers": [
+        {
+          "position": [
+            "50",
+            "20"
+          ],
+          "title": "Marker title 1"
+        },
+        {
+          "position": [
+            "76",
+            " 45"
+          ],
+          "title": "Marker title 2"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "text": "# Ozone and Climate \n\nOzone and the climate are closely connected since ozone is a powerful greenhouse gas. By absorbing ultraviolet radiation it warms the surrounding atmosphere, so ozone loss has cooled the stratosphere. This can influence atmospheric circulation patterns, such as shifting the position of the jet stream. Beneath the ozone hole, stronger winds blowing off Antarctica may be partly responsible for the observed increase in Southern Ocean sea ice. \n\nBut stratospheric ozone depletion lets more solar energy through to the troposphere below. Here, ground-level ozone and other greenhouse gases absorb that energy. So ozone changes are pulling the temperature in opposite directions in the stratosphere and the troposphere. The overall effect has been a warming of the atmosphere.",
+      "shortText": "# Ozone and Climate \n\n(placeholder)",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "CRJycXv0zHo"
     },
     {
       "type": "image",
-      "text": "## Órbitas de los satélites\r\n\r\nLa tecnología de los satélites forma parte de nuestra vida cotidiana: es la espina dorsal de los sistemas de navegación de nuestros coches, transmite señales de teléfono y televisión y es la piedra angular de la previsión meteorológica diaria que vemos en la televisión. Estas aplicaciones aprovechan las diferentes órbitas posibles para las naves espaciales que giran alrededor de la Tierra. Un sistema de teledetección necesita un _sensor_ (la cámara) y una _plataforma_ (en este caso, el satélite). Se pueden combinar diferentes tipos de cámaras con satélites en diferentes órbitas de varias maneras, dependiendo de lo que queramos averiguar.\r\n\r\n## Órbita geoestacionaria\r\n\r\nLa mayoría de las imágenes de previsión meteorológica se toman con una cámara en un satélite que vuela en órbita a 36.000 km sobre la Tierra. Los satélites de este tipo se denominan satélites geoestacionarios. Se mueven alrededor de la Tierra al mismo ritmo que el planeta gira, por lo que siempre están por encima del mismo punto; siempre ven el mismo lado de la Tierra. Esta trayectoria, denominada órbita ecuatorial geoestacionaria (GEO), permite a la cámara tomar muchas imágenes del mismo lugar cada día para que los meteorólogos puedan seguir la evolución de los sistemas meteorológicos. Las órbitas geoestacionarias también son utilizadas por la mayoría de los satélites de telecomunicaciones y de televisión.\r\n\r\n[Órbitas geoestacionarias y polares](assets/story26-image01.jpg)\r\n_El Meteosat está en una órbita geoestacionaria y el Sentinel-5P en una órbita polar (Planetary Visions)_.\r\n\r\n## Órbita polar\r\n\r\nNo todos los satélites son geoestacionarios. Otros pueden observar todo el planeta viajando de polo a polo. Estos satélites de órbita polar se encuentran en una órbita terrestre baja (LEO) a una altura de unos 700 km. Los satélites de órbita polar suelen tardar unos cien minutos en dar la vuelta al mundo y su trayectoria cruza el ecuador unas catorce veces al día. La mayoría de los satélites de órbita polar siguen una trayectoria muy específica denominada órbita sincrónica solar. Su órbita no pasa justo por encima de los polos, sino que está ligeramente inclinada. Por ello, pasan sobre un punto concreto del ecuador aproximadamente a la misma hora local cada día.\r\n\r\nLas cámaras de los satélites de órbita polar sincrónica al Sol sólo pueden tomar una imagen al día de la mayoría de los lugares de la Tierra. Sin embargo, las imágenes son más detalladas que las tomadas desde los satélites geoestacionarios porque la cámara está mucho más cerca de la Tierra. Otra ventaja de utilizar una órbita sincrónica al Sol es que, como todas las imágenes de un determinado lugar se toman a la misma hora del día, las imágenes no se ven afectadas por los cambios de intensidad y dirección de la luz que se producen de forma natural a lo largo de un día. Esto permite ver con precisión otros cambios, algo esencial para observar el clima y medir las cantidades conocidas como variables climáticas esenciales (VCE). Las VCE dan una indicación de la salud de nuestro planeta, del mismo modo que tomar el pulso puede informar a un médico sobre su salud.",
-      "shortText": "## Órbitas de los satélites\r\n\r\nLa tecnología de los satélites forma parte de la vida cotidiana: navegación por satélite, comunicaciones, previsiones meteorológicas. Los sensores, las plataformas y las órbitas pueden combinarse de diversas maneras.\r\n\r\nÓrbita Ecuatorial Geoestacionaria (GEO)\r\n\r\n- 36.000 km sobre la superficie, órbita de 24 horas\r\n- Órbita ecuatorial, geosincrónica\r\n- vista fija de un hemisferio\r\n- baja resolución, vista de repetición rápida\r\n\r\nÓrbita terrestre baja (LEO)\r\n\r\n- 700-800 km sobre la superficie, órbita de 100 minutos\r\n- de polo a polo, órbita sincrónica al Sol\r\n- cubre todo el mundo, a la misma hora local del día\r\n- alta resolución, vista repetida diaria (o menos)\r\n\r\nÓrbitas geoestacionarias y polares ](assets/story26-image01.jpg)\r\nÓrbitas geoestacionarias y polares (Planetary Visions)_",
+      "text": "# Ground-level Ozone \n\nAlthough most ozone is found in the stratosphere – above about 15km in altitude – some is present lower down in the troposphere. Here it is formed when light interacts with combustion by-products from cars and industry, mainly nitrogen oxides (NOx) and volatile organic compounds (VOCs). At ground level, ozone is harmful to human health, causing breathing difficulties that contribute to about half a million premature deaths every year. It also has a detrimental impact on vegetation growth, reducing its ability to absorb carbon dioxide, leading to crop losses valued at tens of billions of euros per year.\n\nAs with stratospheric ozone, regulations have been introduced to limit the damage. Newly-manufactured vehicles must meet internationally-agreed emission controls. The use of unleaded petrol and catalytic converters has removed a lot of the ozone-forming pollutants from car exhausts over recent decades. Similar technology is applied to factory and power station smokestacks, while simpler steps like planting trees in urban areas can also help soak up ground-level ozone.",
+      "shortText": "# Ground-level Ozone \n\n(placeholder)",
       "images": [
-        "assets/story26-image02.jpg",
-        "assets/story26-image03.jpg",
-        "assets/soilmoisture_large_14.jpg",
-        "assets/story26-image04.jpg",
-        "assets/intro_large_11.jpg"
+        "assets/story8_03.jpg"
       ],
       "imageCaptions": [
-        "Meteosat - un satélite meteorológico geoestacionario (Planetary Visions/ESA)",
-        "Copernicus Sentinel 3 - un satélite de observación de la Tierra en órbita polar (ESA)",
-        "El satélite de humedad del suelo y salinidad del océano (SMOS), uno de los satélites científicos Earth Explorer de la ESA",
-        "El Sistema Europeo de Retransmisión de Datos (EDRS) proporciona una retransmisión de comunicaciones geoestacionarias\r\nentre satélites en órbita terrestre baja y estaciones receptoras en tierra (ESA)",
-        "Estación terrestre de la Agencia Espacial Europea en Frascati, Italia (ESA)"
+        "Nitrogen dioxide over Europe in January 2020 from the TROPOMI instrument on Sentinel-5P."
       ],
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ]
     },
     {
       "type": "image",
-      "text": "## Mirando a la Tierra a través de una lente diferente\r\n\r\nLa foto de la canica azul muestra la Tierra como la vemos a simple vista. Al detectar la luz roja, verde y azul, el ojo humano -y el sensor de una cámara digital estándar- \"ve\" una gama completa de colores. Las cámaras de los satélites pueden obtener mucha más información sobre nuestro planeta mirando más allá de las longitudes de onda visibles, en otras partes del espectro electromagnético, y cada región revela aspectos diferentes del carácter de la Tierra.\r\n\r\nAl atravesar el espectro electromagnético, el aspecto del globo cambia a medida que se ven las diferentes partes del sistema terrestre. En las longitudes de onda visibles (400-700 nanómetros), los sensores ópticos registran el contorno de las costas de los lagos y los océanos, los glaciares, las zonas urbanas y los cambios de color debidos al fitoplancton en el océano, un importante sumidero de carbono. Haz clic en la galería de imágenes para ver cómo los satélites ven la Tierra en otras longitudes de onda.\r\n\r\n## Longitudes de onda más cortas\r\nLas longitudes de onda ultravioleta son absorbidas por el ozono en la atmósfera. Los sensores que detectan esta gama de longitudes de onda desempeñaron un papel importante en el descubrimiento del [agujero de ozono](stories/story-8/1) sobre la Antártida, y todavía se utilizan para seguir su evolución. Los rayos X y los rayos gamma tienen longitudes de onda mucho más cortas que la luz visible (menos de 10 nanómetros). Se utilizan en astronomía (y en medicina), pero no en los satélites de observación de la Tierra.\r\n\r\n## Longitudes de onda más largas\r\n\r\nLas longitudes de onda del infrarrojo cercano (alrededor de 1 micrómetro) se utilizan para medir el [vigor del crecimiento de las plantas](stories/story-29/3) en la tierra, lo que ayuda a hacer un seguimiento de la productividad agrícola y del impacto de tensiones como la sequía. El infrarrojo medio muestra el [vapor de agua en la atmósfera](stories/story-21/3). Utilizando los mismos principios que las cámaras térmicas de mano que se utilizan para el control de la temperatura en algunos aeropuertos, el infrarrojo térmico (con una longitud de onda de unos 10 micrómetros) permite medir la temperatura de la tierra y de la [superficie del mar](stories/story-16/2) y de la parte superior de las nubes. El infrarrojo lejano revela información sobre la energía radiada por la Tierra y los intercambios de energía en la atmósfera.\r\n\r\nA longitudes de onda aún más largas, las microondas (alrededor de 1 centímetro) pueden revelar la presencia de agua en todas sus formas: como líquido en el suelo, congelada como nieve y hielo, y como vapor y gotas de agua en la atmósfera. Las microondas pueden penetrar las nubes, por lo que los sensores de microondas son capaces de proporcionar datos en la mayoría de las condiciones meteorológicas e incluso en la prolongada oscuridad del invierno polar. Las microondas emitidas por la Tierra nos permiten controlar la nieve y la [extensión del hielo marino](stories/story-15/3) y la [humedad del suelo](stories/story-21/5).\r\n\r\nLos sensores activos de microondas, incluido el radar, generan sus propias microondas, de forma parecida a como una linterna genera luz. La detección de la energía de microondas reflejada nos permite seguir el movimiento del hielo y, con los altímetros de radar, podemos medir el [espesor del hielo marino](stories/story-15/7) y las capas de hielo, así como la altura de las olas del océano.",
-      "shortText": "## Mirando a la Tierra a través de una lente diferente\r\n\r\nLos satélites recopilan información sobre la Tierra mirando más allá de las longitudes de onda visibles en otras partes del espectro electromagnético:\r\n\r\n- ultravioleta (100-400 nm): ozono en la atmósfera\r\n- visible (400-700 nm): costas, glaciares, zonas urbanas, nubes, fitoplancton oceánico\r\n- infrarrojo cercano (~ 1 µm): crecimiento de las plantas en la tierra\r\n- infrarrojo medio: vapor de agua en la atmósfera\r\n- infrarrojo térmico (~ 10 µm): temperatura de la tierra, el mar, las nubes\r\n- infrarrojo lejano: energía radiada por la Tierra e intercambios de energía en la atmósfera\r\n- microondas (~ 1 cm): agua - en el suelo, congelada como nieve y hielo, como vapor y gotas de agua en la atmósfera\r\n- sensores activos de microondas, incluido el radar: movimiento del hielo, espesor del hielo marino y de las capas de hielo, altura de las olas del océano",
+      "text": "# Ozone from Space \n\nSatellite observations are essential to track ozone distribution across the globe and at different levels in the atmosphere. They allow us to monitor the recovery of the ozone layer and calculate a UV exposure index as part of our daily weather forecasts. They also deepen our knowledge of the long-term evolution of atmospheric ozone and our understanding of how it affects the climate, and how it might respond to climate change. \n\nDifferent observation techniques allow us to distinguish between the “good” ozone in the stratosphere and the “bad” ozone in the troposphere. Satellites looking straight down produce maps of *total ozone* – the total amount of ozone in a column going from the surface to the top of the atmosphere. Total ozone is a good measure of stratospheric ozone, which accounts for about 90% of the total ozone column.  \n\n![Ozone profile](assets/ozone_large_15.jpg) \n_Ozone profiles show the vertical distribution of ozone through the atmosphere._\n\nBy looking sideways into the atmosphere, satellites can also measure the *ozone profile* – the vertical distribution of ozone from sea level up to about 50 km high. Further information is obtained by seeing how light is absorbed by different chemicals in the atmosphere when looking towards a light source – the Sun or the Moon.",
+      "shortText": "# Ozone from Space \n\n(placeholder)",
       "images": [
-        "assets/story26-image05.jpg",
-        "assets/story26-image07.jpg",
-        "assets/story26-image08.jpg",
-        "assets/story26-image09.jpg",
-        "assets/story26-image12.jpg"
+        "assets/aerosol_large_10.jpg"
       ],
       "imageCaptions": [
-        "La luz ultravioleta revela la concentración de ozono atmosférico (ESA-CCI Ozone)",
-        "La reflectancia multiespectral de la superficie en longitudes de onda visibles e infrarrojas cercanas\r\nmuestra el vigor de la vida vegetal en la tierra (ESA-CCI Land Cover)",
-        "Vapor de agua atmosférico revelado en longitudes de onda del infrarrojo medio por el satélite meteorológico Meteosat (ESA/Eumetsat/DLR)",
-        "Las longitudes de onda del infrarrojo térmico muestran la temperatura de la superficie de la Tierra y de las cimas de las nubes (ESA-CCI Cloud)",
-        "Las emisiones de microondas se utilizan para rastrear la humedad del suelo, el hielo marino, la nieve y el agua atmosférica. Temperatura de brillo a 89 GHz y 23,8 GHz de AMSR-E. (Agencia Nacional de Desarrollo Espacial de Japón)"
+        "Observing total ozone and ozone profile from space."
       ],
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ]
     },
     {
-      "type": "image",
-      "text": "## Enfrentando la realidad\r\n\r\nAunque los satélites permiten cubrir mucho terreno en poco tiempo, las observaciones realizadas por sus sensores deben calibrarse con mediciones _in situ_ realizadas con instrumentos convencionales en la superficie o cerca de ella. En la mayoría de los casos, los satélites sólo pueden medir la superficie. En el caso de la temperatura del océano, esto significa mucho menos que el milímetro superior, por lo que la temperatura de la superficie del mar obtenida por satélite debe combinarse con los datos de las sondas submarinas fijas o flotantes para obtener una imagen completa de la temperatura del océano.\r\n\r\nLos especialistas en observación de la Tierra trabajan con especialistas en la materia \"sobre el terreno\". Este trabajo de campo suele ser una parte importante del diseño de un nuevo instrumento satelital o de la prueba de una nueva forma de utilizar los datos satelitales existentes. El trabajo de campo puede consistir en el despliegue de instrumentos fijos en tierra, instrumentos a la deriva o planeando en el océano, así como vuelos en avión o globo en la atmósfera. Los científicos pueden pasar meses aislados en estaciones de investigación remotas en la Antártida o a bordo de un barco encerrado en el hielo marino del Ártico. Este trabajo en tierra es una parte esencial de la calibración y validación de las observaciones climáticas desde el espacio.",
-      "shortText": "# Reality Check\r\n\r\nAunque los satélites permiten cubrir mucho terreno en poco tiempo, sus observaciones deben calibrarse con mediciones _in situ_ realizadas en la superficie o cerca de ella.\r\n\r\n- El trabajo de campo suele ser una parte importante del diseño de un nuevo instrumento satelital\r\n- Los especialistas en observación de la Tierra trabajan con especialistas en la materia \"sobre el terreno\".\r\n- instrumentos fijos en el suelo\r\n- instrumentos a la deriva o deslizantes en el océano\r\n- vuelos de aviones o globos en la atmósfera\r\n- los científicos pueden pasar semanas a bordo de barcos\r\n- o meses en estaciones de investigación remotas en la Antártida\r\n\r\nGran parte de nuestros conocimientos sobre el clima de la Tierra en el pasado proceden del análisis de núcleos de hielo extraídos de las gruesas capas de hielo de Groenlandia o la Antártida.",
-      "images": [
-        "assets/sealevel_large_07.jpg",
-        "assets/story26-image18.jpg",
-        "assets/icesheet.jpg",
-        "assets/story26-image19.jpg",
-        "assets/icesheet_large_06.jpg"
+      "type": "video",
+      "text": "# Stacking up the Data\n\nThe CCI Ozone team has worked on data from European and third party missions covering more than two decades of continuous ozone observations since 1995. Each space-borne sensor has its own radiometric characteristics, spatial resolution and coverage, making the harmonisation and merging of the data a complex task. The resulting integrated datasets have the advantage of providing better spatial coverage than those from individual sensors, and allow time series to exceed the life of a single instrument, giving the long-term trends so crucial for climate studies. They have enabled a better understanding of natural and anthropogenic factors affecting the distribution of atmospheric ozone and improved our understanding of ozone processes in climate models.  \n\n![Ozone sensors](assets/ozone_large_09.png) \n_Satellites and sensors used by the CCI Ozone team. (update – extend time lines?)_\n\nJust as individuals can use daily UV and air quality warnings based on satellite data to protect their own health and that of their children, scientists are using the same observations from space to track the effect of ozone on the climate, so that political leaders have the information they need to make decisions and take action to protect us all. Emission controls will continue to reduce ozone destruction in the stratosphere and limit ozone creation in the troposphere, and provide successful examples of international cooperation to solve an environmental problem.",
+      "shortText": "# Stacking up the Data\n\n(placeholder)",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
       ],
-      "imageCaptions": [
-        "Un barco de investigación despliega una boya Argo. Hay casi 4.000 de estas boyas automáticas flotando por todo el mundo. Suben y bajan los 2.000 metros superiores del océano registrando continuamente la temperatura, la salinidad y la corriente. Sus mediciones se utilizan para calibrar y validar las observaciones de la superficie del océano realizadas por satélite.  (Programa Argo/IFREMER)",
-        "Científicos tomando núcleos de hielo marino en el invierno ártico. El buque de investigación alemán Polarstern fue atrapado deliberadamente durante un año en el hielo marino del Océano Ártico durante 2019-20, como parte del Observatorio Multidisciplinario a la deriva para el Estudio del Clima Ártico (MOSAiC) (Esther Horvath / Alfred-Wegener-Institut)",
-        "Los aviones proporcionan una plataforma de teledetección local, así como el transporte en regiones remotas (A Hogg)",
-        "Medición de la humedad del suelo en Suecia para apoyar el desarrollo del satélite BIOMASS de la ESA (FOI)",
-        "Una vista de gran angular desde la estación de investigación conjunta franco-italiana Concordia, situada en lo alto del domo C de la meseta antártica, uno de los lugares más fríos de la Tierra (AP Salam)"
-      ],
-      "imageFits": ["cover", "cover", "cover", "contain", "cover"]
+      "videoId": "5s4rqA8D4fk"
     }
   ]
 }
