@@ -3,8 +3,8 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Satellites for Peat's Sake",
-      "shortText": "# Satellites for Peat's Sake",
+      "text": "# Satellites for Peat's Sake \r\n\r\nFlow Country, Scotland",
+      "shortText": "# Satellites for Peat's Sake\r\n\r\nFlow Country, Scotland",
       "images": [
         "assets/story37-image07.jpg"
       ]
@@ -28,11 +28,11 @@
         "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red."
       ],
       "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+        "cover",
+        "cover",
+        "ccover",
+        "cover",
+        "cover"
       ]
     }
   ]
