@@ -137,5 +137,40 @@
       "geostationary-satellite"
     ],
     "position": [40, -25]
+  },
+  {
+    "id": "story-33",
+    "title": "L'étalement urbain",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-34",
+    "title": "Perte de la forêt en Amazonie",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-35",
+    "title": "Un glacier en course",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-36",
+    "title": "La ville qui coule",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-37",
+    "title": "Satellites for Peat's Sake",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
   }
 ]

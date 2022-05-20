@@ -141,5 +141,40 @@
       "electromagnetic-spectrum",
       "geostationary-satellite"
     ]
+  },
+  {
+    "id": "story-33",
+    "title": "Zersiedelung der Landschaft",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-34",
+    "title": "Waldverlust im Amazonasgebiet",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-35",
+    "title": "Ein rasender Gletscher",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-36",
+    "title": "Versinkende Stadt",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-37",
+    "title": "Satellites for Peat's Sake",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
   }
 ]

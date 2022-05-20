@@ -143,5 +143,40 @@
       "geostationary-satellite"
     ],
     "position": [40, -25]
+  },
+  {
+    "id": "story-33",
+    "title": "Urban Sprawl",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-34",
+    "title": "Forest Loss in the Amazon",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-35",
+    "title": "A Racing Glacier",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-36",
+    "title": "Sinking City",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-37",
+    "title": "Satellites for Peat's Sake",
+    "description": "",
+    "image": "assets/Sentinel-2.jpg",
+    "tags": []
   }
 ]
