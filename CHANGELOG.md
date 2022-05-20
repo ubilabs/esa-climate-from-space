@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.5.1...v1.6.0) (2022-05-20)
+
+
+### Features
+
+* add New Years to fire dataset ([ce50b56](https://github.com/ubilabs/esa-climate-from-space/commit/ce50b56d5ad693ff14416c78bb863668ac3277a4))
+* update sea surface salinity dataset to v3.21 ([8c4d0af](https://github.com/ubilabs/esa-climate-from-space/commit/8c4d0af958187f6575fa71532662922a9c72d751))
+* **dataset:** adjust water vapour colors ([#1092](https://github.com/ubilabs/esa-climate-from-space/issues/1092)) ([b08e1f9](https://github.com/ubilabs/esa-climate-from-space/commit/b08e1f9e7bd72309468e9ab3946efbf9f5984387))
+* **stories:** add new story placeholders ([0afe2bc](https://github.com/ubilabs/esa-climate-from-space/commit/0afe2bce1ef827484abea9a03eb30618d4f8e2b5))
+
+
+
 ## [1.5.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.4.0...v1.5.1) (2022-03-18)
 
 
