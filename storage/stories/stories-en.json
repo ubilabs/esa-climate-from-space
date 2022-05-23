@@ -149,34 +149,34 @@
     "title": "Urban Sprawl",
     "description": "",
     "image": "assets/story33-image04.jpg",
-    "tags": []
+    "tags": ["Land Cover"]
   },
   {
     "id": "story-34",
     "title": "Forest Loss in the Amazon",
     "description": "",
     "image": "assets/story34-image05.jpg",
-    "tags": []
+    "tags": ["Land Cover", "Biomass"]
   },
   {
     "id": "story-35",
     "title": "A Racing Glacier",
     "description": "",
     "image": "assets/story35-image05.jpg",
-    "tags": []
+    "tags": ["Glaciers", "Ice Sheets"]
   },
   {
     "id": "story-36",
     "title": "Sinking City",
     "description": "",
     "image": "assets/story36-image03.jpg",
-    "tags": []
+    "tags": ["Soil Moisture"]
   },
   {
     "id": "story-37",
     "title": "Satellites for Peat's Sake",
     "description": "",
     "image": "assets/story37-image07.jpg",
-    "tags": []
+    "tags": ["Land Cover", "Fire", "Soil Moisture", "GHG"]
   }
 ]
