@@ -3,8 +3,8 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Satellites for Peat's Sake",
-      "shortText": "# Satellites for Peat's Sake",
+      "text": "# Satellites for Peat's Sake \r\n\r\nFlow Country, Scotland",
+      "shortText": "# Satellites for Peat's Sake\r\n\r\nFlow Country, Scotland",
       "images": [
         "assets/story37-image07.jpg"
       ]
@@ -30,9 +30,9 @@
       "imageFits": [
         "contain",
         "contain",
-        "contain",
-        "contain",
-        "contain"
+        "cover",
+        "cover",
+        "cover"
       ]
     }
   ]
