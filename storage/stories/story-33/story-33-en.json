@@ -3,8 +3,8 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Urban Sprawl",
-      "shortText": "# Urban Sprawl",
+      "text": "# Urban Sprawl\r\n\r\nCairo, Egypt",
+      "shortText": "# Urban Sprawl\r\n\r\nCairo, Egypt",
       "images": [
         "assets/story33-image04.jpg"
       ]
@@ -24,9 +24,9 @@
         "This image was acquired on 31 August 2021 and shows the city of Cairo and its surroundings"
       ],
       "imageFits": [
-        "contain",
-        "contain",
-        "contain"
+        "cover",
+        "cover",
+        "cover"
       ]
     }
   ]
