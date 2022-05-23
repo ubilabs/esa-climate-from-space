@@ -149,34 +149,34 @@
     "title": "La expansión urbana",
     "description": "",
     "image": "assets/story33-image04.jpg",
-    "tags": []
+    "tags": ["land-cover"]
   },
   {
     "id": "story-34",
     "title": "Pérdida de bosques en el Amazonas",
     "description": "",
     "image": "assets/story34-image05.jpg",
-    "tags": []
+    "tags": ["land-cover", "biomass"]
   },
   {
     "id": "story-35",
     "title": "Un glaciar de carreras",
     "description": "",
     "image": "assets/story35-image05.jpg",
-    "tags": []
+    "tags": ["glaciers", "ice-sheets"]
   },
   {
     "id": "story-36",
     "title": "Ciudad del Hundimiento",
     "description": "",
     "image": "assets/story36-image03.jpg",
-    "tags": []
+    "tags": ["soil-moisture"]
   },
   {
     "id": "story-37",
     "title": "Satellites for Peat's Sake",
     "description": "",
     "image": "assets/story37-image07.jpg",
-    "tags": []
+    "tags": ["land-cover", "fire", "soil-moisture", "ghg"]
   }
 ]

@@ -3,9 +3,11 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# A Racing Glacier",
-      "shortText": "# A Racing Glacier",
-      "images": ["assets/story35-image05.jpg"]
+      "text": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
+      "shortText": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
+      "images": [
+        "assets/story35-image05.jpg"
+      ]
     },
     {
       "type": "image",
@@ -23,7 +25,12 @@
         "Jakobshavn: A racing glacier. Satellites are also used to map elevation and thickness of the ice cap, and monitor its changes over time.",
         "Jakobshavn: A racing glacier. Ice velocity can be measured thanks to multiple radar acquisitions. It allows scientists to montior each glacier on a regular basis to unerstand both long- and short-term dynamics."
       ],
-      "imageFits": ["contain", "contain", "contain", "contain"]
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ]
     }
   ]
 }
