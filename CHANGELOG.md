@@ -14,6 +14,8 @@
 
 ## [1.6.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.6.0...v1.6.1) (2022-05-20)
 
+- **dataset:** update dataset fire ([#1103](https://github.com/ubilabs/esa-climate-from-space/issues/1093)) ([ce50b56](https://github.com/ubilabs/esa-climate-from-space/commit/343aecd308454ef04a8db1062321bda0a93b58a7))
+- **dataset:** update dataset sea surface salinity to v3.21 ([#1104](https://github.com/ubilabs/esa-climate-from-space/issues/1094)) ([be36166](https://github.com/ubilabs/esa-climate-from-space/commit/be36166372f1d09f3847c8a31c6bd753f89d61e1))
 
 
 # [1.5.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.4.0...v1.5.0) (2022-03-18)
