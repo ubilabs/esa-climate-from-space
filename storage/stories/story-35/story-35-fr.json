@@ -3,8 +3,8 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# A Racing Glacier",
-      "shortText": "# A Racing Glacier",
+      "text": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
+      "shortText": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
       "images": [
         "assets/story35-image05.jpg"
       ]
