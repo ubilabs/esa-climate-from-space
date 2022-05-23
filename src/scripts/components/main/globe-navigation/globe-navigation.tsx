@@ -9,20 +9,21 @@ import setGlobeProjectionAction from '../../../actions/set-globe-projection';
 import {projectionSelector} from '../../../selectors/globe/projection';
 import setFlyToAction from '../../../actions/set-fly-to';
 import {downloadScreenshot} from '../../../libs/download-screenshot';
-
-import {GlobeProjection} from '../../../types/globe-projection';
-
-import styles from './globe-navigation.styl';
 import {useLayerTimes} from '../../../hooks/use-formatted-time';
 
+import {GlobeProjection} from '../../../types/globe-projection';
+import {LayerListItem} from '../../../types/layer-list';
+
+import styles from './globe-navigation.styl';
+
 interface Props {
-  mainLayerName?: string;
-  compareLayerName?: string;
+  mainLayer: LayerListItem | null;
+  compareLayer: LayerListItem | null;
 }
 
 const GlobeNavigation: FunctionComponent<Props> = ({
-  mainLayerName,
-  compareLayerName
+  mainLayer,
+  compareLayer
 }) => {
   const dispatch = useDispatch();
   const defaultView = config.globe.view;
@@ -44,23 +45,26 @@ const GlobeNavigation: FunctionComponent<Props> = ({
     <div className={styles.globeNavigation}>
       <Button
         className={styles.projection}
+        id="ui-projection"
         label={label}
         onClick={() => onProjectionHandler()}
       />
       <div
         className={styles.compass}
+        id="ui-compass"
         onClick={() => dispatch(setFlyToAction({...defaultView}))}>
         <CompassIcon />
       </div>
       <Button
         className={styles.downloadIcon}
+        id="ui-download"
         icon={DownloadIcon}
         onClick={() =>
           downloadScreenshot(
             mainTimeFormat,
             compareTimeFormat,
-            mainLayerName,
-            compareLayerName
+            mainLayer,
+            compareLayer
           )
         }
       />

@@ -1,7 +1,7 @@
 [
   {
     "id": "story-32",
-    "title": "Welcome to Climate from Space",
+    "title": "Bienvenue sur le site Climate from Space",
     "description": "",
     "image": "assets/atmospheric-ecvs.jpg",
     "tags": [],
@@ -9,7 +9,7 @@
   },
   {
     "id": "story-21",
-    "title": "The Water Cycle",
+    "title": "Le cycle de l'eau",
     "description": "",
     "image": "assets/story21-image02.jpg",
     "tags": [
@@ -31,7 +31,7 @@
   },
   {
     "id": "story-29",
-    "title": "Feeding a Growing World",
+    "title": "Nourrir un monde en pleine croissance",
     "description": "",
     "image": "assets/soilmoisture_full_02.jpg",
     "tags": [
@@ -45,7 +45,7 @@
   },
   {
     "id": "story-12",
-    "title": "The Carbon Cycle",
+    "title": "Le cycle du carbone",
     "description": "",
     "image": "assets/story12-image02.jpg",
     "tags": ["greenhouse-gases", "land-cover", "ocean-colour", "fire"],
@@ -53,7 +53,7 @@
   },
   {
     "id": "story-27",
-    "title": "Urban Heat",
+    "title": "Chaleur urbaine",
     "description": "",
     "image": "assets/story27-image03.jpg",
     "tags": ["land-surface-temperature", "soil-moisture", "land-cover"],
@@ -61,7 +61,7 @@
   },
   {
     "id": "story-31",
-    "title": "Climate Modelling",
+    "title": "Modélisation du climat",
     "description": "",
     "image": "assets/cmug_large_14.jpg",
     "tags": ["climate-modelling", "ocean-colour"],
@@ -69,7 +69,7 @@
   },
   {
     "id": "story-16",
-    "title": "Planetary Heat Pumps",
+    "title": "Pompes à chaleur planétaires",
     "description": "",
     "image": "assets/sst.jpg",
     "tags": [
@@ -82,7 +82,7 @@
   },
   {
     "id": "story-8",
-    "title": "Is Ozone Good or Bad?",
+    "title": "L'ozone est-il bon ou mauvais ?",
     "description": "",
     "image": "assets/ozone.jpg",
     "tags": ["ozone", "aerosol"],
@@ -90,7 +90,7 @@
   },
   {
     "id": "story-15",
-    "title": "Breaking the Ice",
+    "title": "Briser la glace",
     "description": "",
     "image": "assets/seaice.jpg",
     "tags": [
@@ -104,7 +104,7 @@
   },
   {
     "id": "story-30",
-    "title": "Coasts Under Threat",
+    "title": "Les côtes menacées",
     "description": "",
     "image": "assets/sealevel.jpg",
     "tags": ["sea-level", "sea-surface-temperature", "glaciers", "ice-sheets"],
@@ -112,7 +112,7 @@
   },
   {
     "id": "story-28",
-    "title": "Biodiversity and Habitat Loss",
+    "title": "Biodiversité et perte d'habitat",
     "description": "",
     "image": "assets/landcover.jpg",
     "tags": [
@@ -127,7 +127,7 @@
   },
   {
     "id": "story-26",
-    "title": "Taking the Pulse of the Planet",
+    "title": "Prendre le pouls de la planète",
     "description": "",
     "image": "assets/Sentinel-2.jpg",
     "tags": [
@@ -137,5 +137,40 @@
       "geostationary-satellite"
     ],
     "position": [40, -25]
+  },
+  {
+    "id": "story-33",
+    "title": "L'étalement urbain",
+    "description": "",
+    "image": "assets/story33-image04.jpg",
+    "tags": ["land-cover"]
+  },
+  {
+    "id": "story-34",
+    "title": "Perte de la forêt en Amazonie",
+    "description": "",
+    "image": "assets/story34-image05.jpg",
+    "tags": ["land-cover", "biomass"]
+  },
+  {
+    "id": "story-35",
+    "title": "Un glacier en course",
+    "description": "",
+    "image": "assets/story35-image05.jpg",
+    "tags": ["glaciers", "ice-sheets"]
+  },
+  {
+    "id": "story-36",
+    "title": "La ville qui coule",
+    "description": "",
+    "image": "assets/story36-image03.jpg",
+    "tags": ["soil-moisture"]
+  },
+  {
+    "id": "story-37",
+    "title": "Satellites for Peat's Sake",
+    "description": "",
+    "image": "assets/story37-image07.jpg",
+    "tags": ["land-cover", "fire", "soil-moisture", "ghg"]
   }
 ]

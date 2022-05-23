@@ -1,0 +1,62 @@
+@require '../../../../variables.styl'
+
+.welcomeOverlay
+  background: linear-gradient(90deg, rgba(16, 22, 26, 0.85) 0%, rgba(16, 22, 26, 0.81) 48%, rgba(16, 22, 26, 0.79) 50%, rgba(16, 22, 26, 0.75) 52%, rgba(16, 22, 26, 0.2) 60%, rgba(16, 22, 26, 0.1) 70%, rgba(16, 22, 26, 0) 100%)
+
+.welcomeScreen
+  display: flex
+  flex-direction: row
+  margin-right: auto
+  padding-left: 30px
+  width: 40%
+  color: $textDefault
+  font-family: NotesEsa
+
+.content
+  overflow-y: scroll
+  margin: emCalc(10px) 0
+  height: 80%
+  color: $textDefault
+
+  h1
+    display: flex
+    justify-content: space-between
+    color: $textWhite
+
+  h2
+    color: $textWhite
+    font-family: NotesEsa
+
+  a
+    color: $textColor
+    text-decoration: none
+
+.tourButtons
+  display: flex
+  flex-direction: row
+  margin: emCalc(20px) 0
+
+.primaryTourButton, .secondaryTourButton
+  padding: emCalc(6px) emCalc(14px)
+  border-radius: 40px
+  text-transform: uppercase
+  font-size: emCalc(12px)
+  font-family: NotesEsaBold
+
+.primaryTourButton
+  background: $main
+
+  &:hover
+    color: $darkGrey1
+
+.secondaryTourButton
+  margin-right: emCalc(20px)
+  background: rgba($main, 0.2)
+
+@media screen and (max-width: 480px)
+  .welcomeOverlay
+    background: linear-gradient(rgba(16, 22, 26, 0.85) 0%, rgba(16, 22, 26, 0.81) 48%, rgba(16, 22, 26, 0.79) 50%, rgba(16, 22, 26, 0.75) 52%, rgba(16, 22, 26, 0.2) 60%, rgba(16, 22, 26, 0.1) 70%, rgba(16, 22, 26, 0) 100%)
+
+  .welcomeScreen
+    width: 100%
+    height: 100%
