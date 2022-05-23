@@ -1,3 +1,17 @@
+## [1.6.2](https://github.com/ubilabs/esa-climate-from-space/compare/v1.6.1...v1.6.2) (2022-05-23)
+
+
+### Features
+
+* **stories:** update story tag translations ([#1125](https://github.com/ubilabs/esa-climate-from-space/issues/1125)) ([78568c1](https://github.com/ubilabs/esa-climate-from-space/commit/78568c10a68843b37eef47e127189e5bd1123c8c))
+* **stories:** update story tags ([#1124](https://github.com/ubilabs/esa-climate-from-space/issues/1124)) ([bcfa905](https://github.com/ubilabs/esa-climate-from-space/commit/bcfa90568b5868452add6d6111045129abb9eff7))
+* **stories:** update story: story-34 ([#1119](https://github.com/ubilabs/esa-climate-from-space/issues/1119)) ([2a62750](https://github.com/ubilabs/esa-climate-from-space/commit/2a62750e72b6eb8f3c8fa6b4fd28229c245b03e0))
+* **stories:** update story: story-35 ([#1120](https://github.com/ubilabs/esa-climate-from-space/issues/1120)) ([0f1c096](https://github.com/ubilabs/esa-climate-from-space/commit/0f1c09686dfc1ec1ea74d11d0bbac182256c65c6))
+* **stories:** update story: story-36 ([#1121](https://github.com/ubilabs/esa-climate-from-space/issues/1121)) ([8c0381f](https://github.com/ubilabs/esa-climate-from-space/commit/8c0381fd98f11e769f59dfe32e4a431b95c158dd))
+* **stories:** update story: story-37 ([#1122](https://github.com/ubilabs/esa-climate-from-space/issues/1122)) ([c347d17](https://github.com/ubilabs/esa-climate-from-space/commit/c347d17b3f4053d99aba4606aa65576a9fd0dbba))
+
+
+
 ## [1.6.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.6.0...v1.6.1) (2022-05-20)
 
 
