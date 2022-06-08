@@ -8,7 +8,7 @@
     "description": "Throughout history, humans have used fire as an environmental management tool. Vegetation characteristics, mainly biomass loads and moisture, determine fire behaviour, but fire also modifies vegetation structure and evolution. Climate affects fire occurrence through the thermal and precipitation cycles, but it is also affected by fire, particularly by gaseous and PM emissions. This mutual influences among vegetation, climate and fire highlight the importance of having global long-term burned area (BA) information that serves as input for climate and vegetation modellers.\r\nCurrently, the FireCCI51 BA product includes 19 years of global BA data. The product is offered at 250m resolution with date of detection and land cover burned, and at 0.25 degree cells with total BA per grid cell,  total BA per land cover, and observed area. In both cases, uncertainty layers are also incorporated.\n\n**Variable Shown:** Total Burned Area in Square Meters  \r\n\n**Time Span:** January 2001 – December 2020  \r\n\n**Temporal Resolution:** monthly  \r\n\n**Geographic Extent:** global  \r\n\n**Spatial Resolution:**  0.25 x 0.25 degree  \r\n\n**Version:** 5.1  \r\n\n**DOI:**  [10.5285/3628cb2fdba443588155e15dee8e5352](http://dx.doi.org/10.5285/3628cb2fdba443588155e15dee8e5352)  \r\n\r\n[ESA CCI Fire ECV Project website](https://climate.esa.int/projects/fire/)  \r\n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/3628cb2fdba443588155e15dee8e5352)"
   },
   {
-    "id": "soil_moisture.sm_mean",
+    "id": "soil_moisture.sm",
     "type": "Hydrosphere",
     "name": "Soil Moisture",
     "shortName": "Soil Moisture",

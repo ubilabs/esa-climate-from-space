@@ -8,7 +8,7 @@
     "description": "Door de eeuwen heen heeft de mens vuur gebruikt als een instrument voor milieubeheer. Vegetatiekenmerken, hoofdzakelijk biomassa en vochtigheid, bepalen het brandgedrag, maar brand wijzigt ook de vegetatiestructuur en -evolutie. Het klimaat beïnvloedt het ontstaan van brand via de thermische cyclus en de neerslagcyclus, maar het wordt ook beïnvloed door vuur, met name door de uitstoot van gassen en deeltjes. Deze wederzijdse invloeden tussen vegetatie, klimaat en brand onderstrepen het belang van mondiale langetermijninformatie over verbrande oppervlakten (BA) die als input kan dienen voor klimaat- en vegetatiemodelleerders.\r\nMomenteel bevat het FireCCI51 BA-product 19 jaar aan mondiale BA-gegevens. Het product wordt aangeboden met een resolutie van 250 m met datum van ontdekking en verbrande landbedekking, en met cellen van 0,25 graad met totale BA per gridcel, totale BA per landbedekking, en waargenomen oppervlakte. In beide gevallen zijn ook onzekerheidslagen opgenomen.\n\n**Variabele:** Totaal verbrande oppervlakte in vierkante meters\r\n\n**Tijdspanne:** januari 2001 - december 2020\r\n\n**Temporele resolutie:** maandelijks\r\n\n**Geografische omvang:** wereldwijd\r\n\n**Ruimtelijke Resolutie:** 0.25 x 0.25 graad\r\n\n**Versie:** 5.1\r\n\n**DOI:** [10.5285/3628cb2fdba443588155e15dee8e5352](http://dx.doi.org/10.5285/3628cb2fdba443588155e15dee8e5352)\r\n\r\n[ESA CCI Fire ECV Project website](https://climate.esa.int/projects/fire/)  \r\n[Gegevens in het Open Data Portaal](https://catalogue.ceda.ac.uk/uuid/3628cb2fdba443588155e15dee8e5352)"
   },
   {
-    "id": "soil_moisture.sm_mean",
+    "id": "soil_moisture.sm",
     "type": "Hydrosphere",
     "name": "Bodemvochtigheid",
     "shortName": "Bodemvochtigheid",
