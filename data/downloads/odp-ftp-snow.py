@@ -4,10 +4,10 @@ from ftplib import FTP
 ftp = FTP('anon-ftp.ceda.ac.uk')
 ftp.login()
 
-BASE_PATH = '/neodc/esacci/snow/data/swe/MERGED/v1.0'
+BASE_PATH = '/neodc/esacci/snow/data/swe/MERGED/v2.0'
 OUTPUT_PATH = f"{os.getcwd()}/download/snow"
 
-years = range(1979, 2018)
+years = range(1979, 2021)
 
 for year in years:
   months = ftp.nlst(f'{BASE_PATH}/{year}/')
