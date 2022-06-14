@@ -91,5 +91,6 @@
   "tags.cloud": "Cloud",
   "tags.snow": "Snow",
   "tags.lakes": "Lakes",
-  "tags.biomass": "Biomass"
+  "tags.biomass": "Biomass",
+  "tags.ghg": "GHG"
 }

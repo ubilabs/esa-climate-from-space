@@ -3,7 +3,7 @@
 TIMEOUT=24000
 LAYER_ID="water_vapour.tcwv"
 VARIABLE_ID="tcwv"
-VERSION="1.5.1"
+VERSION="1.6.5"
 LAYER_TYPE="image"
 LON_RES="2048"
 LAT_RES="1024"

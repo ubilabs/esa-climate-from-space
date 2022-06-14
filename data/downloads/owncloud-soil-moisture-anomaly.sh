@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BASE_URL="https://owncloud.tuwien.ac.at/index.php/s/bY8j2kBgZlkqFYC/download?path=%2F&files=ESACCI-SOILMOISTURE-L3S-SSMV-MONTHLY_MEAN-COMBINED-19781101-20191231-fv05.2.nc"
+BASE_URL="https://owncloud.tuwien.ac.at/index.php/s/bY8j2kBgZlkqFYC/download?path=%2F&files=ESA_CCI_SM_v06.2_COMBINED_Anomalies.nc"
 OUTPUT_FOLDER=./download/soil_moisture_anomaly
 
 mkdir -p $OUTPUT_FOLDER

@@ -12,7 +12,13 @@ import NotesEsaBold from '../../../assets/fonts/NotesEsaBol.otf';
 
 import {Marker} from '../types/marker-type';
 
+const cache: Record<string, Entity> = {};
+
 export async function createMarker(marker: Marker): Promise<Entity> {
+  if (cache[marker.title]) {
+    return Promise.resolve(cache[marker.title]);
+  }
+
   const canvas = document.createElement('canvas');
   canvas.width = 350;
   canvas.height = 32;
@@ -44,6 +50,8 @@ export async function createMarker(marker: Marker): Promise<Entity> {
       entity.addProperty('markerLink');
       // @ts-ignore
       entity.markerLink = marker.link;
+
+      cache[marker.title] = entity;
       resolve(entity);
     };
   });

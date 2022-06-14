@@ -3,89 +3,31 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Den Puls des Planeten messen\r\n\r\nSatelliten bieten eine einzigartige globale Perspektive auf das Klima der Erde. Sie liefern uns nun mehr als drei Jahrzehnte an Beobachtungen, die einige der wichtigsten Klimavariablen beschreiben. Diese Informationen sind eine nützliche Ressource sowohl für die Erstellung von Klimamodellen als auch für die Überprüfung ihrer Genauigkeit.",
-      "shortText": "# Taking the Pulse of the Planet\r\n\r\nSatelliten bieten eine einzigartige globale Perspektive auf das Klima der Erde. Sie liefern uns nun mehr als drei Jahrzehnte an Beobachtungen, die einige der wichtigsten Klimavariablen beschreiben. Diese Informationen sind eine nützliche Ressource sowohl für die Erstellung von Klimamodellen als auch für die Überprüfung ihrer Genauigkeit.",
-      "images": ["assets/Sentinel-2.jpg"]
+      "text": "# Urban Sprawl\r\n\r\nCairo, Egypt",
+      "shortText": "# Urban Sprawl\r\n\r\nCairo, Egypt",
+      "images": [
+        "assets/story33-image04.jpg"
+      ]
     },
     {
       "type": "image",
-      "text": "## Eine blaue Murmel\r\n\r\nAls die Besatzung von Apollo 17 1972 auf ihren Heimatplaneten zurückblickte, fotografierten sie zum ersten Mal eine völlig sonnenbeschienene Erde.  Es war auch das letzte Mal, dass Menschen weit genug von ihrer Heimat entfernt waren, um den ganzen Planeten mit eigenen Augen zu sehen. Dieser Anblick einer \"blauen Murmel\", die im Weltraum hängt, ist zu einem vertrauten Anblick geworden und ist möglicherweise das am häufigsten reproduzierte Foto der Geschichte.\r\n\r\nDas blaue Wasser der Meere und Ozeane dominiert das Bild. Aber wenn wir genauer hinsehen, können wir viele weitere Farben erkennen. Wir sehen zum Beispiel den gelben Sand der Sahara-Wüste, das dunkle Grün der tropischen Regenwälder, das Weiß der Wolken über den Ozeanen und das Eis und den Schnee, die die Antarktis bedecken.\r\n\r\nHeute nehmen Erdbeobachtungssatelliten täglich Bilder von der blauen Murmel auf, die eine Fülle von Details über unseren sich verändernden Planeten offenbaren. Sie sind zu einem unverzichtbaren Instrument für die Überwachung des Klimas sowohl auf lokaler als auch auf globaler Ebene geworden. Sie sind besonders nützlich für die Überwachung unzugänglicher Gebiete wie der Ozeane, der tropischen Regenwälder und der Polarregionen, die zu den Gebieten gehören, die am stärksten vom Klimawandel betroffen und bedroht sind.\r\n \r\nDiese \"Fernsensoren\" können [Eis, das sich ausdehnt und schrumpft](stories/story-15/3) an den Polen sehen, [Gletscher](stories/story-21/6) und [Brände](stories/story-28/1) überwachen, Wolken und Aerosole verfolgen, die sich durch die [Atmosphäre](stories/story-21/4) bewegen, und messen, wie sich [Nährstoffe und Temperaturen](stories/story-16/4) in den Ozeanen verändern. Die ersten operationellen Fernerkundungsmissionen fanden Ende der 1970er Jahre statt, so dass wir heute für viele Komponenten des Klimasystems Beobachtungen über einen Zeitraum von mehr als dreißig Jahren haben - lange genug, um zu sehen, wie sich die globale Erwärmung auf unseren Planeten auswirkt.",
-      "shortText": "## Eine blaue Murmel\r\n\r\nErstes vollständig von der Sonne beschienenes Foto der Erde - _Apollo 17, 1972_\r\n\r\n- 1960: Erster Wettersatellit - TIROS-1\r\n- 1972: Erdressourcen-Technologie-Satellit - Landsat-1\r\n- 1991: Europäischer Fernerkundungssatellit - ERS-1\r\n- heute: tägliche \"Blue Marble\"-Bilder von einer Flotte von Satelliten\r\n- einzigartiger Überblick über unzugängliche Regionen - Ozeane, Regenwälder, Polarregionen\r\n- Erdbeobachtungen über einen Zeitraum von mehr als 30 Jahren\r\n- lange genug, um zu sehen, was die globale Erwärmung mit unserem Planeten macht",
+      "text": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
+      "shortText": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
       "images": [
-        "assets/cloud_large_01.jpg",
-        "assets/story26-image10.jpg",
-        "assets/story26-image17.jpg",
-        "assets/story26-image15.jpg",
-        "assets/intro_large_09.jpg"
+        "assets/story33-image01.jpg",
+        "assets/story33-image02.jpg",
+        "assets/story33-image03.jpg"
       ],
       "imageCaptions": [
-        "Foto der Erde, aufgenommen von der Apollo-17-Besatzung im Jahr 1972 (NASA)",
-        "Das erste Bild, das der experimentelle Wettersatellit TIROS-1 im April 1960 aufnahm (NASA)",
-        "Der erste europäische Wettersatellit, Meteosat-1, wurde im November 1977 gestartet (ESA)",
-        "Das erste Bild des europäischen Fernerkundungssatelliten (ERS-1) zeigt den Polder Flevoland und das Ijsselmeer in den Niederlanden am 27. Juli 1991 (ESA)",
-        "Daten von drei Generationen von Radarsatelliten zeigen den Rückgang von zwei großen Gletschern in Südostgrönland über 36 Jahre (ESA)"
+        "This image was acquired on 14 August 1988 and shows the city of Cairo and its surroundings more than 30 years ago",
+        "This image was acquired on 2 August 2018 and shows the city of Cairo and its surroundings",
+        "This image was acquired on 31 August 2021 and shows the city of Cairo and its surroundings"
       ],
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
-    },
-    {
-      "type": "image",
-      "text": "## Satellitenumlaufbahnen\r\n\r\nDie Satellitentechnologie ist Teil unseres Alltags: Sie ist das Rückgrat der Navigationssysteme in unseren Autos, sie überträgt Telefon- und Fernsehsignale und ist ein Grundpfeiler der täglichen Wettervorhersage, die wir im Fernsehen verfolgen. Diese Anwendungen machen sich die verschiedenen Umlaufbahnen zunutze, die für Raumfahrzeuge um die Erde möglich sind. Ein Fernerkundungssystem benötigt einen _Sensor_ (die Kamera) und eine _Plattform_ (in diesem Fall den Satelliten). Verschiedene Arten von Kameras können auf unterschiedliche Weise mit Satelliten in verschiedenen Umlaufbahnen kombiniert werden, je nachdem, was wir herausfinden wollen.\r\n\r\n## Geostationäre Umlaufbahn\r\n\r\nDie meisten Wettervorhersagebilder werden von einer Kamera auf einem Satelliten aufgenommen, der in einer Umlaufbahn in 36.000 km Höhe über der Erde fliegt. Satelliten wie diese werden als geostationäre Satelliten bezeichnet. Sie bewegen sich im gleichen Rhythmus um die Erde, wie sich der Planet dreht, so dass sie sich immer über demselben Punkt befinden und immer dieselbe Seite der Erde sehen. Auf diesem Weg, der als geostationäre äquatoriale Umlaufbahn (\"geostationary equatorial orbit\" oder \"GEO\") bezeichnet wird, kann die Kamera jeden Tag viele Bilder vom selben Ort aufnehmen, so dass Meteorologen die Entwicklung der Wettersysteme verfolgen können. Geostationäre Umlaufbahnen werden auch von den meisten Telekommunikations- und Fernsehsatelliten genutzt.\r\n\r\n![Geostationäre und polare Umlaufbahnen ](assets/story26-image01.jpg)\r\n_Meteosat befindet sich in einer geostationären Umlaufbahn und Sentinel-5P in einer polaren Umlaufbahn (Planetary Visions)_\r\n\r\n## Polare Umlaufbahn\r\n\r\nNicht alle Satelliten sind geostationär. Andere können den gesamten Globus überblicken, indem sie sich von Pol zu Pol bewegen. Diese polumlaufenden Satelliten befinden sich in einer niedrigen Erdumlaufbahn (\"low earth orbit\" oder \"LEO\") in einer Höhe von etwa 700 km. Polumlaufende Satelliten brauchen in der Regel etwa hundert Minuten, um die Erde zu umrunden, und überqueren den Äquator etwa vierzehn Mal am Tag. Die meisten polumlaufenden Satelliten folgen einer ganz bestimmten Bahn, die als sonnensynchrone Umlaufbahn bezeichnet wird. Ihre Umlaufbahn führt nicht direkt über die Pole, sondern ist leicht geneigt. Das hat zur Folge, dass sie jeden Tag zur ungefähr gleichen Ortszeit einen bestimmten Punkt auf dem Äquator überfliegen.\r\n\r\nDie Kameras der sonnensynchronen polumlaufenden Satelliten können von den meisten Orten auf der Erde nur ein Bild pro Tag aufnehmen. Die Bilder sind jedoch detaillierter als die von geostationären Satelliten aufgenommenen, da sich die Kamera viel näher an der Erde befindet. Ein weiterer Vorteil der sonnensynchronen Umlaufbahn besteht darin, dass alle Bilder eines bestimmten Ortes zur gleichen Tageszeit aufgenommen werden und somit nicht durch die im Laufe eines Tages auftretenden Änderungen der Lichtintensität und -richtung beeinflusst werden. Dies ermöglicht es, andere Veränderungen genau zu erkennen, was für die Beobachtung des Klimas und die Messung von Größen, die als wesentliche Klimavariablen (\"essential climate variable\" oder \"ECV\") bezeichnet werden, unerlässlich ist. Die ECVs geben Aufschluss über den Gesundheitszustand unseres Planeten, so wie ein Arzt durch das Messen des Pulses etwas über die Gesundheit erfahren kann.",
-      "shortText": "## Satellitenumlaufbahnen\r\n\r\nSatellitentechnologie ist Teil des täglichen Lebens: Satellitennavigation, Kommunikation, Wettervorhersage. Sensoren, Plattformen und Umlaufbahnen können auf verschiedene Weise kombiniert werden.\r\n\r\nGeostationäre äquatoriale Umlaufbahn (GEO)\r\n\r\n- 36.000 km über der Erde, 24-Stunden-Umlaufbahn\r\n- Äquatoriale, geosynchrone Umlaufbahn\r\n- fester Blick auf eine Hemisphäre\r\n- geringe Auflösung, schnelle Wiederholung der Ansicht\r\n\r\nNiedrige Erdumlaufbahn (LEO)\r\n\r\n- 700-800 km über der Oberfläche, 100-minütige Umlaufbahn\r\n- Pol-zu-Pol, sonnensynchrone Umlaufbahn\r\n- deckt die ganze Welt ab, zur gleichen lokalen Tageszeit\r\n- hohe Auflösung, täglich (oder weniger) wiederholte Ansicht\r\n\r\n![Geostationäre und polare Umlaufbahnen ](assets/story26-image01.jpg)\r\n_Geostationäre und polare Umlaufbahnen (Planetary Visions)_",
-      "images": [
-        "assets/story26-image02.jpg",
-        "assets/story26-image03.jpg",
-        "assets/soilmoisture_large_14.jpg",
-        "assets/story26-image04.jpg",
-        "assets/intro_large_11.jpg"
-      ],
-      "imageCaptions": [
-        "Meteosat - ein geostationärer Wettersatellit (Planetary Visions/ESA)",
-        "Copernicus Sentinel 3 - ein polarumlaufender Erdbeobachtungssatellit (ESA)",
-        "Der Satellit SMOS (Soil Moisture and Ocean Salinity), einer der ESA-Wissenschaftssatelliten Earth Explorer (ESA)",
-        "Das Europäische Datenrelaissystem (EDRS) ist ein geostationäres Kommunikationsrelais\r\nzwischen Satelliten in niedriger Erdumlaufbahn und Empfangsstationen am Boden (ESA)",
-        "Satellitenbodenstation der Europäischen Weltraumorganisation (ESA) in Frascati, Italien"
-      ],
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
-    },
-    {
-      "type": "image",
-      "text": "## Die Erde durch eine andere Linse betrachten\r\n\r\nDas Foto der Blauen Murmel zeigt die Erde, wie wir sie mit bloßem Auge sehen. Durch die Erkennung von rotem, grünem und blauem Licht \"sieht\" das menschliche Auge - und der Sensor in einer Standard-Digitalkamera - die gesamte Palette der Farben. Satellitenkameras können viel mehr Informationen über unseren Planeten sammeln, indem sie über die sichtbaren Wellenlängen hinaus in andere Bereiche des elektromagnetischen Spektrums blicken, und jeder Bereich offenbart andere Aspekte des Charakters der Erde.\r\n\r\nBeim Durchqueren des elektromagnetischen Spektrums verändert sich das Aussehen der Erde, da verschiedene Teile des Erdsystems sichtbar werden. Im sichtbaren Wellenlängenbereich (400-700 Nanometer) erfassen optische Sensoren die Umrisse von See- und Meeresküsten, Gletschern, städtischen Gebieten und die Farbveränderungen durch das Phytoplankton im Meer, einer wichtigen Kohlenstoffsenke. Klicke durch die Bildergalerie, um zu sehen, wie die Satelliten die Erde bei anderen Wellenlängen sehen.\r\n\r\n## Kürzere Wellenlängen\r\nUltraviolette Wellenlängen werden von Ozon in der Atmosphäre absorbiert. Sensoren, die diesen Wellenlängenbereich aufspüren, spielten eine wichtige Rolle bei der Entdeckung des [Ozonlochs](stories/story-8/1) über der Antarktis und werden auch heute noch eingesetzt, um dessen Entwicklung zu verfolgen. Röntgen- und Gammastrahlen haben viel kürzere Wellenlängen als sichtbares Licht (weniger als 10 Nanometer). Sie werden in der Astronomie (und in der Medizin) verwendet, aber nicht von Erdbeobachtungssatelliten.\r\n\r\n## Längere Wellenlängen\r\n\r\nWellenlängen im nahen Infrarot (ca. 1 Mikrometer) werden zur Messung der [Stärke des Pflanzenwachstums](stories/story-29/3) auf dem Land verwendet und helfen dabei, die landwirtschaftliche Produktivität und die Auswirkungen von Stressfaktoren wie Dürre zu überwachen. Das mittlere Infrarot zeigt [Wasserdampf in der Atmosphäre](stories/story-21/3) an. Nach dem gleichen Prinzip wie die tragbaren Wärmebildkameras, die an einigen Flughäfen zur Temperaturkontrolle eingesetzt werden, können wir mit dem thermischen Infrarot (Wellenlänge etwa 10 Mikrometer) die Temperatur des Landes und der [Meeresoberfläche](stories/story-16/2) sowie der Wolkenoberseiten messen. Das Ferninfrarot gibt Aufschluss über die von der Erde abgestrahlte Energie und den Energieaustausch in der Atmosphäre.\r\n\r\nBei noch größeren Wellenlängen können Mikrowellen (etwa 1 Zentimeter) das Vorhandensein von Wasser in all seinen Formen aufzeigen: als Flüssigkeit im Boden, gefroren als Schnee und Eis und als Dampf und Wassertröpfchen in der Atmosphäre. Mikrowellen können Wolken durchdringen, so dass Mikrowellensensoren unter den meisten Wetterbedingungen und sogar in der anhaltenden Dunkelheit des polaren Winters Daten liefern können. Mit den von der Erde ausgesandten Mikrowellen können wir Schnee und [Meereisausdehnung](stories/story-15/3) und [Bodenfeuchtigkeit](stories/story-21/5) überwachen.\r\n\r\nAktive Mikrowellensensoren, einschließlich Radar, erzeugen ihre eigenen Mikrowellen, ähnlich wie eine Taschenlampe Licht erzeugt. Die Erkennung der reflektierten Mikrowellenenergie ermöglicht es uns, die Bewegung des Eises zu verfolgen, und mit Radar-Höhenmessern können wir die [Dicke des Meereises](stories/story-15/7) und der Eisschilde sowie die Höhe der Meereswellen messen.",
-      "shortText": "## Die Erde durch eine andere Linse betrachten\r\n\r\nSatelliten sammeln Informationen über die Erde, indem sie über die sichtbaren Wellenlängen hinaus in andere Bereiche des elektromagnetischen Spektrums blicken:\r\n\r\n- Ultraviolett (100-400 nm): Ozon in der Atmosphäre\r\n- sichtbar (400-700 nm): Küstenlinien, Gletscher, städtische Gebiete, Wolken, Phytoplankton im Meer\r\n- Nahinfrarot (~ 1 µm): Pflanzenwachstum an Land\r\n- Mittleres Infrarot: Wasserdampf in der Atmosphäre\r\n- Thermisches Infrarot (~ 10 µm): Temperatur von Land, Meer, Wolken\r\n- Ferninfrarot: von der Erde abgestrahlte Energie und Energieaustausch in der Atmosphäre\r\n- Mikrowellen (~ 1 cm): Wasser - im Boden, gefroren als Schnee und Eis, als Wasserdampf und Wassertröpfchen in der Atmosphäre\r\n- aktive Mikrowellensensoren, einschließlich Radar: Bewegung von Eis, Dicke von Meereis und Eisschilden, Höhe von Meereswellen",
-      "images": [
-        "assets/story26-image05.jpg",
-        "assets/story26-image07.jpg",
-        "assets/story26-image08.jpg",
-        "assets/story26-image09.jpg",
-        "assets/story26-image12.jpg"
-      ],
-      "imageCaptions": [
-        "Ultraviolettes Licht zeigt die Konzentration des atmosphärischen Ozons (ESA-CCI Ozone)",
-        "Multispektrale Oberflächenreflexion im sichtbaren und nahen Infrarotbereich\r\nzeigt die Vitalität der Pflanzenwelt auf dem Boden (ESA-CCI CCI Land Cover)",
-        "Atmosphärischer Wasserdampf im mittleren Infrarotbereich, aufgenommen vom Wettersatelliten Meteosat (ESA/Eumetsat/DLR)",
-        "Thermische Infrarot-Wellenlängen zeigen die Temperatur der Erdoberfläche und der Wolkenoberteile (ESA-CCI Cloud)",
-        "Mikrowellenemissionen werden zur Erfassung von Bodenfeuchtigkeit, Meereis, Schnee und atmosphärischem Wasser verwendet. Helligkeitstemperatur bei 89 GHz und 23,8 GHz von AMSR-E. (Nationale Raumfahrtentwicklungsbehörde von Japan)"
-      ],
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
-    },
-    {
-      "type": "image",
-      "text": "## Realitätscheck\r\n\r\nObwohl Satelliten es ermöglichen, in kurzer Zeit eine große Fläche zu erfassen, müssen die von ihren Sensoren gemachten Beobachtungen mit _in situ_ Messungen abgeglichen werden, die mit herkömmlichen Instrumenten auf oder nahe der Oberfläche vorgenommen werden. Satelliten können in den meisten Fällen nur die Oberfläche messen. Im Falle der Temperatur des Ozeans bedeutet dies viel weniger als den obersten Millimeter, so dass die Satellitentemperatur der Meeresoberfläche mit Daten von schiffsgebundenen oder frei schwimmenden Unterwassersonden kombiniert werden muss, um ein vollständiges Bild der Ozeantemperatur zu erhalten.\r\n\r\nSpezialisten für Erdbeobachtung arbeiten mit Fachleuten \"vor Ort\" zusammen. Diese Feldarbeit ist oft ein wichtiger Bestandteil der Entwicklung eines neuen Satelliteninstruments oder der Erprobung einer neuen Art der Nutzung vorhandener Satellitendaten. Die Feldarbeit kann den Einsatz fester Instrumente am Boden, treibende oder gleitende Instrumente im Ozean oder Flugzeug- oder Ballonflüge in der Atmosphäre umfassen. Wissenschaftler können Monate isoliert in abgelegenen Forschungsstationen in der Antarktis oder an Bord eines Schiffes im arktischen Meereis verbringen. Diese Arbeit am Boden ist ein wesentlicher Bestandteil der Kalibrierung und Validierung von Klimabeobachtungen aus dem Weltraum.",
-      "shortText": "# Reality Check\r\n\r\nObwohl Satelliten in kurzer Zeit eine große Fläche abdecken können, müssen ihre Beobachtungen mit _in situ_ Messungen an oder nahe der Oberfläche abgeglichen werden.\r\n\r\n- Feldarbeit ist oft ein wichtiger Bestandteil der Entwicklung eines neuen Satelliteninstruments\r\n- Erdbeobachtungsspezialisten arbeiten mit Fachleuten \"vor Ort\" zusammen\r\n- feste Instrumente am Boden\r\n- driftende oder gleitende Instrumente im Ozean\r\n- Flugzeug- oder Ballonflüge in der Atmosphäre\r\n- Wissenschaftler können Wochen an Bord von Schiffen verbringen\r\n- oder Monate auf abgelegenen Forschungsstationen in der Antarktis\r\n\r\nEin Großteil unseres Wissens über das vergangene Klima der Erde stammt aus der Analyse von Eiskernen, die aus den dicken Eisschilden Grönlands oder der Antarktis gewonnen wurden.",
-      "images": [
-        "assets/sealevel_large_07.jpg",
-        "assets/story26-image18.jpg",
-        "assets/icesheet.jpg",
-        "assets/story26-image19.jpg",
-        "assets/icesheet_large_06.jpg"
-      ],
-      "imageCaptions": [
-        "Ein Forschungsschiff setzt eine Argo-Boje aus. Es gibt fast 4.000 dieser automatischen Bojen, die auf der ganzen Welt schwimmen. Sie steigen in den obersten 2.000 Metern des Ozeans auf und ab und zeichnen kontinuierlich Temperatur, Salzgehalt und Strömung auf. Ihre Messungen werden zur Kalibrierung und Validierung von Satellitenbeobachtungen der Meeresoberfläche verwendet.  (Argo-Programm/IFREMER)",
-        "Wissenschaftler nehmen im arktischen Winter Meereiskerne. Das deutsche Forschungsschiff Polarstern wurde im Rahmen des Multidisziplinären driftenden Observatoriums zur Erforschung des arktischen Klimas (MOSAiC) 2019-20 absichtlich für ein Jahr im Meereis des Arktischen Ozeans eingeschlossen (Esther Horvath / Alfred-Wegener-Institut).",
-        "Flugzeuge bieten eine lokale Fernerkundungsplattform und ermöglichen den Transport in entlegene Regionen (A Hogg)",
-        "Bodenfeuchtemessungen in Schweden zur Unterstützung der Entwicklung des BIOMASS-Satelliten der ESA (FOI)",
-        "Ein Weitwinkel-Blick von der gemeinsamen französisch-italienischen Concordia-Forschungsstation, die hoch auf dem Dome C des antarktischen Plateaus liegt, einem der kältesten Orte der Erde (AP Salam)"
-      ],
-      "imageFits": ["cover", "cover", "cover", "contain", "cover"]
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover"
+      ]
     }
   ]
 }

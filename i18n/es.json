@@ -91,5 +91,6 @@
   "tags.cloud": "Nube",
   "tags.snow": "Nieve",
   "tags.lakes": "Lagos",
-  "tags.biomass": "Biomasa"
+  "tags.biomass": "Biomasa",
+  "tags.ghg": "GHG"
 }
