@@ -195,7 +195,7 @@
     "id": "ogvi.ogvi",
     "type": "Biosphere",
     "name": "Vegetation Index",
-    "shortName": "OGVI",
+    "shortName": "Vegetation Index",
     "usageInfo": "© ESA",
     "description": "The OLCI Global Vegetation Index (OGVI) is derived from the Ocean and Land Colour Instrument (OLCI) on the Copernicus Sentinel-3 satellite. The OGVI has been optimised to assess the presence on the ground of healthy, live, green vegetation. The optimisation procedure has been constrained to provide an estimate of the Fraction of Absorbed Photosynthetically Active Radiation (FAPAR) in the plant canopy.\r\n\r\nInformation from the blue channel (443 nm) is combined with information from the red  and near-infrared channels traditionally used to monitor vegetation (681 and 865 nm), to generate \"rectified channels\" at the latter two wavelengths. The \"rectification\" is performed in such a way as to minimise the difference between those rectified channels and the spectral reflectance that would be measured at the top of the canopy under a standard geometry of illumination and observation. The final spectral index (OGVI) is then computed as a ratio of the rectified channels."
   },
