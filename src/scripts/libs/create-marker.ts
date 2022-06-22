@@ -8,7 +8,7 @@ import {
   Cartesian2
 } from 'cesium';
 
-import NotesEsaBold from '../../../assets/fonts/NotesEsaBol.otf';
+import NotesEsaBold from '../../../assets/fonts/NotesEsaReg.otf';
 
 import {Marker} from '../types/marker-type';
 
@@ -86,7 +86,7 @@ async function getSvgString(storyTitle: string) {
     ) {
       return 'sans-serif';
     }
-    return 'NotesEsa';
+    return 'NotesEsa, sans-serif';
   };
 
   return `<svg xmlns="http://www.w3.org/2000/svg" height="200" width="700">
