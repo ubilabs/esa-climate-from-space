@@ -1,3 +1,7 @@
+## [1.7.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.7.0...v1.7.1) (2022-06-22)
+
+
+
 # [1.7.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.6.5...v1.7.0) (2022-06-22)
 
 ### Bug Fixes
