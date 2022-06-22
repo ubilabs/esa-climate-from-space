@@ -1,7 +1,7 @@
 [
   {
     "id": "story-32",
-    "title": "Welcome to Climate from Space",
+    "title": "Welkom op Climate from Space",
     "description": "",
     "image": "assets/atmospheric-ecvs.jpg",
     "tags": [],
@@ -9,7 +9,7 @@
   },
   {
     "id": "story-21",
-    "title": "The Water Cycle",
+    "title": "De Waterkringloop",
     "description": "",
     "image": "assets/story21-image02.jpg",
     "tags": [
@@ -31,7 +31,7 @@
   },
   {
     "id": "story-29",
-    "title": "Een groeiende wereld voeden",
+    "title": "Een Groeiende Wereld Voeden",
     "description": "",
     "image": "assets/soilmoisture_full_02.jpg",
     "tags": [
@@ -45,7 +45,7 @@
   },
   {
     "id": "story-12",
-    "title": "The Carbon Cycle",
+    "title": "De Koolstofcyclus",
     "description": "",
     "image": "assets/story12-image02.jpg",
     "tags": ["greenhouse-gases", "land-cover", "ocean-colour", "fire"],
@@ -53,7 +53,7 @@
   },
   {
     "id": "story-27",
-    "title": "Urban Heat",
+    "title": "Stedelijke Warmte",
     "description": "",
     "image": "assets/story27-image03.jpg",
     "tags": ["land-surface-temperature", "soil-moisture", "land-cover"],
@@ -61,7 +61,7 @@
   },
   {
     "id": "story-31",
-    "title": "Climate Modelling",
+    "title": "Klimaatmodellering",
     "description": "",
     "image": "assets/cmug_large_14.jpg",
     "tags": ["climate-modelling", "ocean-colour"],
@@ -90,7 +90,7 @@
   },
   {
     "id": "story-15",
-    "title": "Breaking the Ice",
+    "title": "Het IJs breken",
     "description": "",
     "image": "assets/seaice.jpg",
     "tags": [
@@ -104,7 +104,7 @@
   },
   {
     "id": "story-30",
-    "title": "Kusten bedreigd",
+    "title": "Bedreigde Kusten",
     "description": "",
     "image": "assets/sealevel.jpg",
     "tags": ["sea-level", "sea-surface-temperature", "glaciers", "ice-sheets"],
@@ -112,7 +112,7 @@
   },
   {
     "id": "story-28",
-    "title": "Biodiversiteit en verlies van habitats",
+    "title": "Biodiversiteit en Verlies van Habitats",
     "description": "",
     "image": "assets/landcover.jpg",
     "tags": [
@@ -127,7 +127,7 @@
   },
   {
     "id": "story-26",
-    "title": "De hartslag van de planeet meten",
+    "title": "De Hartslag van de Planeet meten",
     "description": "",
     "image": "assets/Sentinel-2.jpg",
     "tags": [
@@ -140,21 +140,21 @@
   },
   {
     "id": "story-33",
-    "title": "Stedelijke wildgroei",
+    "title": "Stedelijke Wildgroei",
     "description": "",
     "image": "assets/story33-image04.jpg",
     "tags": ["land-cover"]
   },
   {
     "id": "story-34",
-    "title": "Verlies van bossen in het Amazonegebied",
+    "title": "Verlies van Bossen in het Amazonegebied",
     "description": "",
     "image": "assets/story34-image05.jpg",
     "tags": ["land-cover", "biomass"]
   },
   {
     "id": "story-35",
-    "title": "Een racende gletsjer",
+    "title": "Een racende Gletsjer",
     "description": "",
     "image": "assets/story35-image05.jpg",
     "tags": ["glaciers", "ice-sheets"]

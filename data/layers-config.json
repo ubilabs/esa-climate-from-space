@@ -71,6 +71,15 @@
     },
     "legendValues": ["400 l/m³", "0"]
   },
+  "soil_moisture.sm": {
+    "colorMap": "BrBG",
+    "basemap": "land",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long"
+    },
+    "legendValues": ["400 l/m³", "0"]
+  },
   "land_cover.lccs_class": {
     "colorMap": "gist_rainbow",
     "basemap": "land",

@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {
@@ -12,13 +12,18 @@ import {createMarker} from '../libs/create-marker';
 
 import {Marker} from '../types/marker-type';
 
-export const useMarkers = (viewer: Viewer | null, markers: Marker[]) => {
+export const useMarkers = (
+  viewer: Viewer | null,
+  markers: Marker[],
+  firstTilesLoaded: boolean
+) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const [ready, setReady] = useState(false);
 
   // create marker for each story
   useEffect(() => {
-    if (!viewer) {
+    if (!viewer || !firstTilesLoaded) {
       return;
     }
 
@@ -38,11 +43,12 @@ export const useMarkers = (viewer: Viewer | null, markers: Marker[]) => {
     Promise.all(markers.map(marker => createMarker(marker))).then(entities => {
       viewer.entities.removeAll();
       entities.forEach(entity => viewer.entities.add(entity));
+      setReady(true);
     });
 
     // eslint-disable-next-line consistent-return
     return () => handler.destroy();
-  }, [dispatch, history, markers, viewer]);
+  }, [dispatch, history, markers, viewer, firstTilesLoaded]);
 
-  return;
+  return ready;
 };
