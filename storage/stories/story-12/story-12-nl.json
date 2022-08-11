@@ -3,114 +3,136 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# De Koolstofcyclus\r\n\r\nKoolstof is een van de meest overvloedige elementen in het universum en de basis van al het leven op aarde. Het stroomt door de atmosfeer, de oceanen, planten en rotsen, maar deze natuurlijke cyclus is verstoord door menselijke activiteit, met ingrijpende gevolgen voor het klimaat op aarde.",
-      "shortText": "# De Koolstofcyclus\r\n\r\nKoolstof is een van de meest overvloedige elementen in het universum en de basis van al het leven op aarde. Het stroomt door de atmosfeer, de oceanen, planten en rotsen, maar deze natuurlijke cyclus is verstoord door menselijke activiteit, met ingrijpende gevolgen voor het klimaat op aarde.",
+      "text": "# The Water Cycle\r\n\r\nWater is essentieel voor het leven. De watercyclus verbindt veel van de componenten van het klimaatsysteem van de aarde en speelt een belangrijke rol in het transport van warmte over de planeet.",
+      "shortText": "# The Water Cycle\r\n\r\nWater is essentieel voor het leven. De watercyclus verbindt veel van de componenten van het klimaatsysteem van de aarde en speelt een belangrijke rol in het transport van warmte over de planeet.",
       "images": [
-        "assets/story12-image02.jpg"
+        "assets/story21-image10.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## Een Essentieel Element\r\n\r\nKoolstof is de basisbouwsteen voor het leven op aarde. Het kan stabiele chemische bindingen vormen met veel elementen, waardoor grote en complexe moleculen kunnen worden gemaakt, waaronder de organische verbindingen die essentieel zijn voor het leven. De bindingen van koolstof met andere elementen zijn stabiel, maar niet zo sterk dat ze een chemische reactie verhinderen.\r\n\r\nDoor zijn reactie met andere elementen kringelt koolstof door de atmosfeer, de oceanen, planten en dieren, de bodem en het gesteente. Er vindt uitwisseling plaats tussen deze koolstofreservoirs via een verscheidenheid aan processen. Wanneer koolstofverbindingen worden verbroken, komt er energie vrij, waardoor sommige koolstofverbindingen - koolwaterstoffen - handige brandstofbronnen worden.\r\n \r\n## Broeikasgassen\r\n\r\nMaar dezelfde bindingen die koolstofmoleculen zo essentieel maken voor het bestaan en het moderne leven, hebben een keerzijde. Ze zijn ook goed in het absorberen van infrarode straling met een lange golflengte, wat er voor zorgdt dat de moleculen kunnen vibreren en opwarmen, waardoor ze warmte vasthouden in de atmosfeer en bijdragen aan het broeikaseffect.\r\n\r\nKoolstofverbindingen zoals kooldioxide en methaan zijn niet de enige broeikasgassen, noch de krachtigste, maar onze toegenomen verbranding van fossiele brandstoffen - steenkool, aardolie en aardgas - heeft geleid tot een opeenhoping van koolstofdioxide in de atmosfeer, waardoor de koolstofkringloop is verstoord en het klimaat op aarde is opgewarmd.",
-      "shortText": "## Een Essentieel Element\r\n\r\n- Koolstof is de basisbouwsteen voor het leven op aarde.\r\n- Vormt stabiele bindingen met vele elementen.\r\n- Maakt de bouw van grote en complexe moleculen mogelijk, waaronder organische verbindingen die essentieel zijn voor het leven.\r\n- Bindingen zijn stabiel, maar niet zo sterk dat ze chemische reacties verhinderen.\r\n- Reacties stuwen koolstof door de atmosfeer, de oceanen, planten en dieren, bodem en rotsen.\r\n- Wanneer koolstofverbindingen worden verbroken, komt er energie vrij.\r\n- Sommige koolstofverbindingen - koolwaterstoffen - zijn dus handige brandstofbronnen.\r\n\r\n## Broeikasgassen\r\n\r\n- Koolstofverbindingen zijn ook goed in het absorberen van infrarode straling, waardoor moleculen kunnen vibreren en opwarmen.\r\n- Het houdt warmte vast in de atmosfeer en draagt zo bij tot het broeikaseffect.\r\n\r\nDe toegenomen verbranding van fossiele brandstoffen heeft geleid tot een ophoping van CO2 in de atmosfeer, waardoor de koolstofcyclus is verstoord en het klimaat is opgewarmd.",
+      "text": "## Queensland, 2010\r\n\r\nIn 2010 beleefde Queensland de natste decembermaand ooit, wat leidde tot een langdurige periode van grote overstromingen. De toegenomen bewolking en regenval in het noordoosten van Australië waren het gevolg van een verstoring van de temperatuur- en verdampingspatronen in het centrale deel van de Stille Oceaan, bekend als [La Niña](stories/story-16/6). Zoveel water accumuleerde op het land dat een daling van 18 maanden werd geregistreerd van het gemiddelde wereldwijde zeeniveau.\r\n\r\nDeze gebeurtenis toont aan hoe verschillende delen van het aardsysteem - oceaan, atmosfeer en land - en locaties die duizenden kilometers van elkaar verwijderd zijn, met elkaar verbonden zijn door de watercyclus. Het is een essentieel onderdeel van het klimaat op aarde.\r\n\r\n## A Precious Resource\r\n\r\nWater is 's werelds kostbaarste hulpbron. Zonder water zou er geen leven zijn. Water heeft het landschap van de aarde gevormd; we gebruiken het om gewassen te telen en vee te houden, om elektriciteit op te wekken, in industriële processen, voor transport en recreatie. Gebrek aan water brengt het leven in gevaar in tijden van droogte of natuurbranden. Maar water zelf kan ook een gevaar zijn. Het kan ziekten en verontreinigende stoffen met zich meedragen, en te veel water kan bij overstromingen of stormen schade en verlies aan mensenlevens veroorzaken. De overstromingen van 2010-11 in Queensland hebben 200.000 mensen getroffen en 35 mensen gedood. Verwacht wordt dat dergelijke extreme gebeurtenissen zich vaker zullen voordoen naarmate het klimaat opwarmt.",
+      "shortText": "## Queensland, 2010\r\n\r\n- De natste december ooit in Queensland.\r\n- Overstromingen troffen 200.000 mensen en doodden 35 in het noordoosten van Australië 2010-11.\r\n- Als gevolg van een sterke La Niña klimaatgebeurtenis in de centrale Stille Oceaan.\r\n- Zoveel water verzamelde zich op het land dat het wereldgemiddelde zeeniveau met 5 mm daalde.\r\n- Toont aan hoe oceaan, atmosfeer en land verbonden zijn door de watercyclus.\r\n- Het is een essentieel onderdeel van het klimaat op aarde.",
       "images": [
-        "assets/story12-image01.jpg",
-        "assets/ghg_large_16.png",
-        "assets/story12-image03.jpg",
-        "assets/ghg_large_11.png"
+        "assets/story21-image01.jpg",
+        "assets/story21-image06.png"
       ],
       "imageCaptions": [
-        "Aardgas dat wordt afgefakkeld op een olieproductieplatform in de Noordzee. Koolstofdioxide en waterdamp zijn de belangrijkste verbrandingsproducten. Bij de winning en verbranding van koolwaterstoffen komt koolstof uit een rotsreservoir in de atmosfeer terecht. (Varodrig)",
-        "# Atmosferische kooldioxideconcentratie\r\nKooldioxideconcentratie in de atmosfeer over de afgelopen 300 jaar, gebaseerd op luchtmonsters uit ijskernen en, sinds 1958, directe metingen van het Mauna Loa Observatorium, Hawaii. Koolstofdioxide heeft zich sinds de industriële revolutie in de atmosfeer opgehoopt, waarbij de concentratie in de tweede helft van de twintigste eeuw snel toenam. (bron: Scripps Institute of Oceanography)",
-        "De moleculaire structuur van koolstofdioxide- en methaanmoleculen maakt het mogelijk infrarode straling te absorberen. Warmte wordt door een molecuul geabsorbeerd als de atomen binnenin kunnen vibreren op de frequentie van infrarode straling. Complexere moleculen hebben meer trillingswijzen en dus meer mogelijkheden om warmte te absorberen, waardoor ze sterkere broeikasgassen zijn. Een methaanmolecuul, met één koolstofatoom (grijs) gebonden aan vier waterstofatomen (rood), kan meer warmte absorberen dan een koolstofdioxidemolecuul, met één koolstofatoom gebonden aan twee zuurstofatomen (blauw). Een chloorfluorkoolstof zoals CFK-113 (groen en geel) heeft nog meer bindingen, waardoor het een zeer krachtig broeikasgas is. (Planetaire Visies)",
-        "# Atmosferische kooldioxide als functie van tijd en breedtegraad\r\nHet gegevensoppervlak toont de natuurlijke jaarlijkse cyclus van koolstofdioxide-opname en -afgifte, die bijzonder sterk is op het noordelijk halfrond, evenals een geleidelijke toename in de loop der jaren als gevolg van menselijke activiteit. Gegevens afkomstig van de SCIAMACHY-sensor op Envisat. (ESA-CCI)"
+        "Een vrouw zit vast op het dak van haar auto tijdens een overstroming in Toowoomba, Queensland, Australië, 10 januari 2011 (T Swinson)",
+        "# Wereldwijde gemiddelde zeespiegel\r\nDe wereldwijde zeespiegel, geobserveerd door satellieten, vertoont een stijgende trend van 3,3 mm per jaar, maar een daling in 2011 als gevolg van de grote hoeveelheid overtollig water op het land.  (ESA-CCI/Copernicus Marine Environment Monitoring Service)"
       ],
       "imageFits": [
+        "cover",
         "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+        "cover",
+        "cover",
+        "cover"
       ]
     },
     {
-      "type": "globe",
-      "text": "## De Snelle Koolstofkringloop\r\n\r\nPlanten nemen koolstofdioxide op uit de atmosfeer door fotosynthese als ze groeien in de lente en de zomer, en geven een deel weer terug als hun bladeren afsterven in de herfst en de winter. Koolstof wordt ook teruggevoerd in de atmosfeer door dieren die planten eten en koolstofdioxide uitademen. De kringloop van koolstof door levende wezens staat bekend als de snelle koolstofcyclus.\r\n\r\nDeze seizoensgebonden groeicyclus is te zien aan de kooldioxideconcentraties in de atmosfeer op de interactieve wereldbol: aan het eind van de noordelijke winter wordt een piek bereikt, voordat snelgroeiende planten in het voorjaar weer koolstofdioxide beginnen te absorberen. De koolstofconcentratie in de atmosfeer varieert het sterkst op het noordelijk halfrond, omdat daar meer land en dus meer planten voorkomen dan op het zuidelijk halfrond. Bovenop de seizoensgebonden cyclus is er van jaar tot jaar een duidelijke stijging van het koolstofdioxidegehalte in de atmosfeer - een teken dat de koolstofcyclus uit balans is, voornamelijk als gevolg van de verbranding van fossiele brandstoffen.\r\n \r\n## Koolstof en het land\r\n\r\n[Veranderingen in landgebruik en bodembedekking](stories/story-28/3) veranderen ook de koolstofcyclus. Het kappen van tropische bossen voor landbouw heeft een dubbel negatief effect doordat de bomen die normaal juist koolstof absorberen en opslaan worden verwijderd, maar daarnaast tijdens de verbranding van de bomen zelf ook grote hoeveelheden koolstofdioxide aan de atmosfeer vrijgeven. \r\n\r\nRond de Noordpool ontdooien door de hoge luchttemperaturen grote gebieden [permafrost](stories/story-15/5).  Hierdoor wordt koolstof in de bodem blootgesteld aan ontbinding en kunnen enorme hoeveelheden methaan vrijkomen in de atmosfeer. Naarmate de noordelijke breedtegraden ontdooien en uitdrogen, worden uitgestrekte gebieden met bos, struikgewas en veen blootgesteld aan het risico van [natuurbranden](verhalen/story-28/1). Vuur is een belangrijk onderdeel van de koolstofcyclus, die koolstof uit de biosfeer in de atmosfeer brengt.",
-      "shortText": "## De Snelle Koolstofkringloop\r\n\r\nDe cyclus van koolstof door levende wezens staat bekend als de snelle koolstofcyclus.\r\n\r\n- Planten nemen CO2 op uit de atmosfeer door fotosynthese als ze groeien in de lente en de zomer.\r\n- Een deel komt terug als bladeren afsterven en door dieren die planten eten en kooldioxide uitademen.\r\n- Atmosferische CO2 piekt aan het eind van de noordelijke winter.\r\n- Snelgroeiende planten beginnen in het voorjaar CO2 te absorberen.\r\n- Atmosferische koolstof varieert het meest op het noordelijk halfrond (meer land, dus meer planten).\r\n- De jaarlijkse toename van CO2 toont aan dat de koolstofcyclus uit balans is (voornamelijk door de verbranding van fossiele brandstoffen).\r\n\r\n## Koolstof en het land\r\n\r\n- Veranderingen in landgebruik en bodembedekking veranderen ook de koolstofcyclus.\r\n- Bij het kappen van tropische bossen komen grote hoeveelheden CO2 vrij door brand en worden bomen verwijderd die koolstof absorberen en opslaan.\r\n- Bij het ontdooien van permafrost komt door ontbinding koolstof in de bodem vrij en mogelijk ook grote hoeveelheden methaan.\r\n- Door de opwarming en uitdroging van de noordelijke gebieden worden uitgestrekte bos-, struik- en veengebieden blootgesteld aan het risico van bosbranden.\r\n- Vuur is een belangrijk onderdeel van de koolstofcyclus, waarbij koolstof uit de biosfeer in de atmosfeer terechtkomt.",
+      "type": "video",
+      "text": "## Water Planet\r\n\r\nHet water op aarde, in al zijn vormen, vormt een systeem dat de hydrosfeer wordt genoemd. Bijna al dit water - 97% - bevindt zich in de oceanen die 70% van het aardoppervlak bedekken. Het wisselt tussen vloeibaar, gasvormig en vast water en doorkruist verschillende delen van het aardsysteem in de watercyclus.\r\n\r\nTerwijl het water zich verplaatst van zee naar atmosfeer naar land en terug, wordt energie uitgewisseld met de omgeving: water absorbeert warmte wanneer het verdampt en geeft warmte af wanneer het condenseert. Dezelfde processen worden gebruikt door airconditioners en warmtepompen om onze huizen te koelen of te verwarmen. Deze energie-uitwisselingen dragen bij tot de circulatiepatronen in de oceaan en de atmosfeer die [warmte over de planeet verplaatsen](stories/story-16/2).\r\n\r\n## De oceanen\r\n\r\nDe oceanen hebben een grote capaciteit om warmte op te slaan, en naar schatting hebben ze 93 procent van de overtollige warmte geabsorbeerd die sinds de jaren zeventig door menselijke activiteiten is gegenereerd. Hoewel dit sommige gevolgen van de klimaatverandering kan hebben vertraagd, zet water uit als het opwarmt, wat bijdraagt aan [zeespiegelstijging](stories/story-30/1). Dit risico wordt nog vergroot door stormvloeden, en de warmere oceanen wakkeren grotere, krachtigere tropische cyclonen aan - orkanen in de Atlantische Oceaan en tyfonen in de Stille Oceaan.",
+      "shortText": "## Water Planet\r\n\r\nHet water op aarde, in al zijn vormen, vormt een systeem dat de hydrosfeer wordt genoemd.\r\n\r\n- Water wisselt tussen vloeibaar, gas en vast in de watercyclus.\r\n- Water absorbeert warmte als het verdampt en geeft warmte af als het condenseert.\r\n- Dezelfde processen worden gebruikt door airconditioners en warmtepompen.\r\n- De watercyclus helpt de warmte over de planeet te verplaatsen.\r\n\r\n## De oceanen\r\n\r\n- De oceanen hebben 93% van de overtollige warmte sinds de jaren '70 geabsorbeerd.\r\n- Water zet uit als het opwarmt, wat bijdraagt aan de zeespiegelstijging.\r\n- Versterkt door stormvloeden, en de warmere oceanen wakkeren grotere stormen aan.",
       "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "fAXauk1yYzI"
+    },
+    {
+      "type": "video",
+      "text": "## Water in de Atmosfeer\r\n\r\nWater dat van het oceaanoppervlak verdampt wanneer het door zonlicht wordt opgewarmd, komt in de atmosfeer terecht als waterdamp. Slechts één liter van elke duizend liter water op aarde bevindt zich in de atmosfeer, maar hier heeft het een enorm effect op het klimaat: waterdamp is het meest voorkomende broeikasgas dat ervoor zorgt dat het oppervlak van onze planeet warm genoeg is om leven te laten gedijen.\r\n\r\nAls gas wordt waterdamp gemakkelijk over grote afstanden door de atmosfeer getransporteerd, zoals blijkt uit de reeks weersatellieten. De wind kanaliseert de atmosferische waterdamp in betrekkelijk smalle stroken - \"atmosferische rivieren\" - die veel meer water kunnen vervoeren dan de Amazonerivier.\r\n\r\n## What's Left Behind\r\n\r\nWanneer water uit de oceaan verdampt, of wanneer het bevriest om zee-ijs te vormen in de poolgebieden, blijven de zouten achter die erin opgelost waren, waardoor de dichtheid van het resterende zeewater toeneemt. [Saliniteit](verhalen/story-16/5) is een van de drijvende krachten achter oceaanstromingen en van het verticale transport van water en warmte van en naar de oceaandiepten. Het zoutgehalte van de oceaan neemt af in gebieden met veel neerslag, zoals de intertropische convergentiezone, en tijdens klimaatgebeurtenissen zoals [El Niño](verhalen/story-16/6), wanneer een relatief zoete poel van oppervlaktewater zich over de Stille Oceaan kan uitstrekken.",
+      "shortText": "## Water in de Atmosfeer\r\n\r\n- Oceaanoppervlaktewater verdampt in de atmosfeer als waterdamp.\r\n- Waterdamp is het meest voorkomende broeikasgas, dat ervoor zorgt dat de planeet warm genoeg is voor leven.\r\n- Het wordt gemakkelijk over grote afstanden door de atmosfeer getransporteerd, zoals blijkt uit de circulatiepatronen die te zien zijn op de weersatellietsequenties.\r\n\r\n## What's Left Behind\r\n\r\n- Wanneer zeewater verdampt (of bevriest), blijven er zouten achter, waardoor de dichtheid van het resterende zeewater toeneemt.\r\n- Het zoutgehalte helpt de oceaanstromingen en het verticale transport van water en warmte te sturen.\r\n- Het zoutgehalte van de oceaan neemt af in gebieden en tijden waar veel neerslag valt.",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "1AMhjd94r6U"
+    },
+    {
+      "type": "globe",
+      "text": "## Clouds and Rain\r\n\r\nVochtigheid is de hoeveelheid waterdamp in de lucht. Wanneer de luchtvochtigheid 100 procent bereikt, is de lucht verzadigd en condenseert water rond kleine deeltjes zand, zout, vulkanische as en roet (samen aerosolen genoemd) om wolken van vloeibare waterdruppels te vormen. Deze waterdruppeltjes zijn klein, hebben een relatief groot drijfvermogen en kunnen gemakkelijk verdampen in minder vochtige lucht, zodat niet alle wolken regen brengen.\r\n\r\nDe kenmerken van een wolk hangen af van het aantal en het soort aërosoldeeltjes: meer deeltjes produceren bijvoorbeeld meer en kleinere druppeltjes, die de wolk helderder maken. Er worden meer druppeltjes gevormd als de toevoer van water op peil blijft, of als de lucht afkoelt, waardoor deze minder vocht met zich mee kan dragen. Lucht koelt af als het opstijgt om over hoge grond te gaan, of als het over een koude oceaanstroom of landmassa beweegt.\r\n\r\n## Wolkendistributie\r\n\r\nDe gegevensbol toont gebieden met zware bewolking, zoals de aanhoudende band van stijgende warme, vochtige lucht boven de evenaar. Boven bergketens zoals de Andes vormen zich regelmatig wolken, omdat de lucht naar boven wordt gestuwd en afkoelt. Koude lucht daalt neer op midden-latitudes rond 30 graden noord en zuid, waardoor wolkenloze woestijnen ontstaan.\r\n\r\nWolkendruppels botsen en smelten samen met hun buren wanneer ze worden rondgeblazen door de wind en opwaartse stromingen. Als er genoeg druppels bij elkaar komen - een miljoen of zo - worden ze een regendruppel, te zwaar om in de lucht te blijven hangen.",
+      "shortText": "## Clouds and Rain\r\n\r\n- Warme lucht kan meer waterdamp dragen dan koude lucht.\r\n- Wolken ontstaan wanneer de lucht verzadigd is met waterdamp en er deeltjes zijn waarop druppels kunnen condenseren.\r\n- Lucht kan verzadigd raken wanneer het afkoelt om over bergen te stijgen of wanneer het over een koude oceaanstroom gaat.\r\n- Waterdamp kan condenseren op aërosolen - kleine deeltjes van zand, zout, vulkanische as en roet.\r\n\r\n## Wolkendistributie\r\n\r\nDe gegevensbol toont gebieden met frequente bewolking, zoals:\r\n- De aanhoudende band van stijgende warme, vochtige lucht boven de evenaar\r\n- Boven bergketens zoals de Andes, als lucht omhoog wordt gestuwd en afkoelt\r\n- Koude lucht daalt neer op midden-latitudes rond 30 graden noord en zuid, waardoor wolkenloze woestijnen ontstaan",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
       ],
       "flyTo": {
         "position": {
-          "longitude": 54.03,
-          "latitude": 26.9,
-          "height": 24997871.88
+          "longitude": -1.84,
+          "latitude": 32.38,
+          "height": 18523626.33
         },
         "orientation": {
-          "heading": 360,
-          "pitch": -89.96,
+          "heading": 0,
+          "pitch": -89.85,
           "roll": 0
         }
       },
       "layer": [
         {
-          "id": "greenhouse.xco2",
-          "timestamp": "2007-12-06T00:00:00.000Z"
+          "id": "cloud.cfc",
+          "timestamp": "2016-12-01T00:00:00.000Z"
         }
       ],
-      "layerDescription": "# CCI Atmosferische Kooldioxide Concentratie"
+      "layerDescription": "# CCI wolkenfractie\r\n\r\nHet deel van de maand dat een gebied door bewolking wordt bedekt"
     },
     {
       "type": "video",
-      "text": "## De Langzame Koolstofkringloop\r\n\r\nKoolstof wordt aan het zeeoppervlak uitgewisseld tussen de atmosfeer en de oceaan. Koolstofdioxide wordt opgelost in zeewater, maar ook [geabsorbeerd door oceaanplanten](verhalen/verhaal-31/3) - fytoplankton - die chlorofyl gebruiken om fotosynthese uit te voeren op dezelfde manier als planten op het land. Een deel van de kooldioxide wordt snel weer afgegeven aan de atmosfeer, zodat de oceanen ook een rol speelt in de snelle koolstofcyclus, maar een deel wordt gemengd in de diepe oceaan, waar het eeuwenlang blijft als onderdeel van de langzame koolstofcyclus.\r\n\r\nOceaanorganismen, van fytoplankton tot koraal, schaaldieren en walvissen, nemen koolstof op wanneer ze groeien en nemen een deel ervan mee naar de zeebodem wanneer ze sterven. Hier wordt koolstof opgesloten in sedimentair gesteente, de grootste koolstofopslagplaats op aarde. Onder bepaalde omstandigheden kunnen lagen van organische koolstof zich ophopen tot afzettingen van fossiele brandstoffen - steenkool, olie of aardgas.\r\n\r\nDe langzame cyclus brengt uiteindelijk koolstof terug in de atmosfeer via geologische processen. Koolstofdioxide wordt onder extreme hitte en druk uit rotsen gedreven en bij vulkaanuitbarstingen in de atmosfeer gebracht. Vanuit de atmosfeer kan koolstof als zwak koolzuur opgelost in regenwater terugkeren naar de oppervlakte, waar het een rol speelt bij de chemische verwering van rotsen en de afvoer van mineralen en zouten naar de zee.",
-      "shortText": "## De Langzame Koolstofkringloop\r\n\r\n- CO2 wordt opgelost in zeewater, maar ook geabsorbeerd door oceaanplanten - fytoplankton.\r\n- Een deel wordt in de diepe oceaan gemengd, waar het eeuwenlang blijft als onderdeel van de langzame koolstofcyclus.\r\n\r\n- Oceaanorganismen nemen koolstof op wanneer ze groeien en nemen een deel ervan mee naar de zeebodem wanneer ze sterven.\r\n- Hier wordt koolstof opgesloten in sedimentair gesteente, de grootste koolstofopslagplaats op aarde.\r\n- Lagen van organische koolstof kunnen zich ophopen tot afzettingen van fossiele brandstoffen - steenkool, olie of aardgas.\r\n\r\n- De langzame cyclus brengt uiteindelijk koolstof terug in de atmosfeer via geologische processen.\r\n- Bij vulkaanuitbarstingen wordt CO2 uit rotsen verdreven en in de atmosfeer gebracht.\r\n- Koolstof keert terug naar de oppervlakte, opgelost in regenwater als zwak koolzuur.\r\n- Het speelt dan een rol bij de chemische verwering van rotsen en de afgifte van mineralen en zouten aan de zee.",
+      "text": "## Water on the Land\r\n\r\nRegen die op de grond valt, wordt in de bodem geabsorbeerd en stroomt over het oppervlak als beken en rivieren. Water wordt op het land opgeslagen als bodemvocht en grondwater, in meren en wanneer we dammen bouwen om kunstmatige reservoirs te vormen. Een deel van dit water wordt onttrokken om te drinken en voor gebruik in de industrie en de landbouw. Water gaat van het land verloren door verdamping, door transpiratie door planten, of door rivieren die terugstromen naar de oceaan.\r\n\r\nBodemvocht speelt een belangrijke rol bij de ontwikkeling van [hittegolven](verhalen/verhaal-27/1). Als de bodemvochtigheid afneemt in warme omstandigheden, treedt positieve terugkoppeling op: er is minder verdampingsafkoeling, wat leidt tot een stijging van de luchttemperatuur en de cyclus van opwarming gaat door. De animatie toont bodemvochtanomalieën - afwijkingen van de gemiddelde omstandigheden voor elke locatie en tijd van het jaar.\r\n\r\n## Water en koolstof\r\n\r\nEr zijn verschillende verbanden tussen de watercyclus en de [koolstofcyclus](stories/story-12/2). Wanneer planten water uit de grond halen bevat het opgeloste voedingsstoffen. Water en voedingsstoffen worden in aanwezigheid van zonlicht gecombineerd met kooldioxide om suikers te produceren die aan de plant worden toegevoegd, waardoor deze kan groeien. Dit proces - fotosynthese - vindt ook plaats in oceaanplanten, fytoplankton genaamd, die in zeewater opgeloste kooldioxide opnemen in plaats van deze uit de lucht te halen.",
+      "shortText": "## Water on the Land\r\n\r\nRegen die op het land valt wordt:\r\n- geabsorbeerd in de grond als bodemvocht en grondwater\r\n- opgeslagen in meren en reservoirs\r\n- onttrokken om te drinken en voor gebruik in industrie en landbouw\r\n- verloren van het land door verdamping, door transpiratie door planten, of door rivieren die terugvloeien in de oceaan\r\n\r\n## Water en koolstof\r\n\r\n- Er zijn verschillende verbanden tussen de watercyclus en de koolstofcyclus.\r\n- Water is nodig voor planten om koolstofdioxide uit de atmosfeer te halen - fotosynthese.\r\n- Dit gebeurt ook in oceaanplanten (fytoplankton) die in het zeewater opgeloste kooldioxide opnemen.",
       "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
       ],
-      "videoId": "evPBTu_a27I"
+      "videoId": "LXyHZHaFjk4"
+    },
+    {
+      "type": "video",
+      "text": "## The Cryosphere\r\n\r\nAls de lucht koud genoeg is, kunnen wolken zich vormen uit ijskristallen in plaats van waterdruppels. IJskristallen groeperen zich en vallen op de grond als hagelstenen of sneeuwvlokken. Tijdens de noordelijke winter bedekt sneeuw tot 47 miljoen vierkante kilometer - ongeveer de helft van het landoppervlak van het noordelijk halfrond. In de lente en de zomer komt de sneeuw vrij in de vorm van enorme hoeveelheden smeltwater.\r\n\r\nIn koude streken kan gevallen sneeuw de zomerdooi overleven en zich ophopen tot permanente ijsgebieden - gletsjers in hoge berggebieden over de hele wereld, en de dikke [ijskappen](stories/story-15/5) die het grootste deel van Groenland en Antarctica bedekken. Het grootste deel van het zoetwater op aarde - 68 procent - zit opgesloten in ijskappen, ijsplaten en gletsjers. Nog eens 1,2 procent bevindt zich in de vorm van zee-ijs, meerijs, permafrost en sneeuw. Samen vormen deze verschillende soorten bevroren water de cryosfeer van de aarde. Ze zijn gevoelig voor zelfs kleine temperatuurschommelingen, waardoor ze belangrijke indicatoren zijn van klimaatverandering. IJs komt over het algemeen voor in afgelegen en ontoegankelijke gebieden, en kan dus het best vanuit de ruimte worden gevolgd.\r\n\r\n## Smeltend ijs\r\n\r\nDe zwaartekracht zorgt ervoor dat gletsjers en ijskappen bergafwaarts stromen, om te smelten in de warmere lucht op lagere hoogte, of af te breken in de zee als ijsbergen. Het grootste deel van dit water is miljoenen jaren in bevroren toestand geweest, maar naarmate de aarde opwarmt, neemt het smeltproces toe en is het proces van vrijkomen begonnen. De ijskappen leveren momenteel de grootste bijdrage aan [de stijging van de zeespiegel](stories/story-30/5) en hoewel tien keer kleiner dan Antarctica, is het de Groenlandse ijskap die de grootste bron is van smeltwater dat in de oceanen van de wereld terechtkomt. Deze toevloed van zoet water verandert het zoutgehalte, en daardoor de dichtheid, van de aangrenzende zeeën en dit kan de oceaancirculatie tot ver van de polen beïnvloeden. De meeste gletsjers over de hele wereld trekken zich ook terug. In een recente studie wordt geschat dat elk jaar een triljoen ton ijs verloren gaat.",
+      "shortText": "## The Cryosphere\r\n\r\n- Als de lucht koud genoeg is, kunnen zich wolken vormen uit ijskristallen die als sneeuw op de grond vallen.\r\n- De helft van het landoppervlak van het noordelijk halfrond is bedekt met sneeuw tijdens de noordelijke winter.\r\n- 68% van al het zoete water op aarde zit opgesloten in ijskappen, ijsplateaus en gletsjers.\r\n\r\n## Smeltend IJs\r\n\r\n- Smeltende ijskappen (voornamelijk Groenland) dragen momenteel het meest bij aan de stijging van de zeespiegel.\r\n- Door de instroom van zoet water verandert het zoutgehalte (dus de dichtheid) in de oceaan, waardoor de oceaancirculatie wordt beïnvloed.\r\n- De meeste gletsjers over de hele wereld trekken zich ook terug.\r\n- Elk jaar gaat er een triljoen ton ijs verloren.",
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "cover"
+      ],
+      "videoId": "Eahj21_RM1M"
     },
     {
       "type": "image",
-      "text": "## Menselijk ingrijpen\r\n\r\nMenselijke activiteit, voornamelijk het verbranden van fossiele brandstoffen, heeft de hoeveelheid koolstof in de atmosfeer verhoogd tot boven het natuurlijke niveau. Door het winnen en verbranden van steenkool, olie en aardgas kortsluiten we de langzame koolstofcyclus en versnellen we de opname van koolstof in de atmosfeer. Elk jaar stoten mensen 100-300 keer meer koolstofdioxide uit door het verbranden van fossiele brandstoffen dan de langzame koolstofcyclus door vulkanen uitstoot.\r\n\r\nHet land en de oceaan hebben een deel van deze overtollige koolstofdioxide geabsorbeerd, maar de atmosferische koolstofdioxide is in de afgelopen 150 jaar nog steeds met 30% toegenomen - genoeg om het broeikaseffect aanzienlijk te versterken en het klimaat te veranderen. Sinds 1970 is onze uitstoot van kooldioxide met 90% toegenomen. Het mondiale daggemiddelde van de kooldioxide in de atmosfeer bereikte in 2013 400 delen per miljoen en is sinds 2016 boven dit niveau gebleven. Er is nu meer kooldioxide in de atmosfeer dan op enig ander moment in de afgelopen 2,6 miljoen jaar. De resulterende versterking van het broeikaseffect heeft de wereldwijde gemiddelde [landtemperatuur](verhalen/verhaal-27/1) in de afgelopen eeuw met ongeveer één graad Celsius doen stijgen, en [klimaatmodellen](verhalen/verhaal-31/0) voorspellen dat deze tegen het einde van deze eeuw 2 tot 4 graden Celsius boven het pre-industriële niveau zal liggen.",
-      "shortText": "## Menselijk ingrijpen\r\n\r\nMenselijke activiteit, voornamelijk de verbranding van fossiele brandstoffen, heeft de hoeveelheid koolstof in de atmosfeer tot boven het natuurlijke niveau doen stijgen.\r\n\r\n- Het winnen en verbranden van steenkool, olie en aardgas zorgt voor een kortsluiting in de trage koolstofcyclus, waardoor de koolstof veel sneller in de atmosfeer terechtkomt.\r\n- Elk jaar komt er 100-300 keer meer CO2 vrij door het verbranden van fossiele brandstoffen dan door vulkanen.\r\n- Land en oceanen absorberen een deel van de overtollige CO2.\r\n- Maar nog steeds 30% stijging van atmosferische CO2 in de laatste 150 jaar.\r\n- 90% toename van CO2-uitstoot sinds 1970.\r\n- Atmosferische CO2 is sinds 2016 boven de 400 delen per miljoen.\r\n- Hoger dan op enig moment in de laatste 2,6 miljoen jaar.\r\n- 1 °C stijging van de gemiddelde landtemperatuur in de afgelopen eeuw.\r\n- 2 tot 4 °C boven pre-industriële niveaus voorspeld tegen 2100.",
+      "text": "## Tracking Water\r\n\r\nWater is moeilijk te volgen gedurende zijn hele cyclus omdat het zich zo gemakkelijk verplaatst tussen verschillende fysieke toestanden en locaties. Satellieten bieden een globaal overzicht en wetenschappers gebruiken een breed scala aan teledetectietechnologieën om water vanuit de ruimte te volgen. Het [Climate Change Initiative](stories/story-32/3) van het Europees Ruimteagentschap maakt gebruik van dit satellietgegevensarchief om een aantal van de belangrijkste klimaatvariabelen te analyseren. Meer dan de helft van de variabelen die vanuit de ruimte kunnen worden gemeten, hebben betrekking op of beïnvloeden de watercyclus: temperatuur en zoutgehalte van het zeeoppervlak, zeeniveau, toestand van de zee, kleur van de oceaan, waterdamp, wolken, aërosolen, sneeuw, bodemvochtigheid, meren, gletsjers, ijskappen, permafrost en zee-ijs.\r\n\r\nDoor deze puzzelstukjes in elkaar te passen, kunnen we begrijpen hoe de watercyclus werkt, hoe deze het klimaat beïnvloedt en hoe veranderingen in het klimaat de watercyclus kunnen beïnvloeden. Een warmer klimaat betekent meer verdamping, en meer neerslag in de vorm van regen in plaats van sneeuw. We zien nu al grote veranderingen in de verdeling van water over de verschillende reservoirs van de hydrosfeer. Sommige van deze herverdelingen zijn tijdelijk, zoals de verschuiving van zee naar land in de nasleep van de La Niña van 2010, maar andere zijn permanent, zoals de verschuiving van land en zeeijs naar oceaanwater. Hoewel de warmte van de zon de drijvende kracht is, zijn er tekenen dat de watercyclus door de opwarming van het klimaat een extra impuls krijgt.",
+      "shortText": "## Tracking Water\r\n\r\nWater beweegt zich gemakkelijk tussen verschillende fysieke toestanden en locaties, en is daarom moeilijk te volgen. Wetenschappers gebruiken een brede waaier van teledetectietechnologieën om water vanuit de ruimte te volgen.\r\n \r\nMeer dan de helft van ESA's CCI-klimaatvariabelen hebben betrekking op of beïnvloeden de watercyclus:\r\n- temperatuur van het zeeoppervlak, zoutgehalte, zeeniveau, toestand van de zee, kleur van de oceaan\r\n- waterdamp, wolken, aërosolen\r\n- sneeuw, bodemvocht, meren, gletsjers, ijskappen, permafrost, zee-ijs\r\n\r\nEen warmer klimaat betekent meer verdamping, meer neerslag in de vorm van regen in plaats van sneeuw, en meer smelting.\r\n- We zien nu al grote verschuivingen tussen de verschillende reservoirs van de watercyclus.\r\n- Sommige tijdelijk, zoals de verschuiving van zee naar land na de La Niña van 2010.\r\n- Sommige permanent, zoals de verschuiving van land en zeeijs naar oceaanwater.\r\n- Er zijn tekenen die erop wijzen dat de watercyclus door de opwarming van het klimaat een extra impuls krijgt.",
       "images": [
-        "assets/intro_large_13.jpg",
-        "assets/ghg_large_18.jpg",
-        "assets/intro_large_15.png"
+        "assets/story21-image03.jpg",
+        "assets/story21-image07.jpg",
+        "assets/story21-image04.png",
+        "assets/story21-image05.png"
       ],
       "imageCaptions": [
-        "Op een heldere nacht schijnt licht uit stedelijke gebieden in heel West-Europa, en schetst een portret van een energieverslindende samenleving.  Foto genomen door ESA-astronaut Alexander Gerst vanuit het Internationaal ruimtestation op 26 juli 2014. (ESA/NASA)",
-        "Ontbossing in de deelstaat Rondônia in het westen van Brazilië, in beeld gebracht door de Proba-V minisatelliet van ESA. De bruine kleuren geven ontboste gebieden aan - let op het kenmerkende 'visgraat'-patroon wanneer hoofdwegen door een gebied worden aangelegd, gevolgd door secundaire wegen voor verdere ontbossing. Landbouwactiviteiten, waaronder ontbossing, zijn na fossiele brandstoffen de grootste bron van broeikasgassen. (ESA/VITO)",
-        "# Atmosferische koolstofdioxide gedurende de laatste 800.000 jaar\r\nKoolstofdioxideconcentratie gebaseerd op luchtmonsters uit ijskernen in Vostok Station, Antarctica, en sinds 1958, directe metingen van Mauna Loa Observatory, Hawaii. De huidige concentratie van meer dan 400 deeltjes per miljoen wordt geacht hoger te zijn dan zij in vele miljoenen jaren is geweest. (gegevensbron: Scripps Institute of Oceanography)"
+        "De triljoen ton ijs die elk jaar verloren gaat is genoeg om\r\neen 10 kilometer hoog ijsblok te vormen, hier naast Manhattan voor de schaal.\r\nIJs dat verloren gaat van gletsjers en ijskappen op het land draagt bij aan de zeespiegelstijging,\r\nmaar zee-ijs en drijvende ijsplaten doen dat niet. (Planetary Visions / ESA / NASA)",
+        "# Cummulatieve verandering in gletsjerijsmassa 1961-2016\r\nMeer dan negen biljoen ton gletsjerijs is verloren gegaan in de afgelopen halve eeuw (ESA, aangepast van Zemp et al (2019) Nature, en gegevens courtesy World Glacier Monitoring Service)",
+        "# Wereldwijde watercyclusfluxen\r\nFluxen in de mondiale watercyclus, gemeten in duizend kubieke kilometer per jaar (TU Wien/W Dorigo)",
+        "# Opgeslagen energie in componenten van het klimaatsysteem\r\nWarmte-energie geaccumuleerd in verschillende componenten van het klimaatsysteem van de aarde sinds 1971, gemeten in zettajoule (1 ZJ is 10^21 J, of duizend miljard miljard J). Het water in de oceanen van de wereld slaat veel meer warmte op dan de atmosfeer en het land.\r\n(UN IPCC, 2013)"
       ],
       "imageFits": [
-        "contain",
-        "cover",
         "contain",
         "contain",
         "contain"
       ]
-    },
-    {
-      "type": "video",
-      "text": "## Koolstof volgen vanuit de ruimte\r\n\r\nAan de hand van gegevens die door satellieten zijn verzameld, kunnen we zien hoe de hoeveelheid broeikasgassen over de hele wereld variëren. Envisat van het Europees Ruimteagentschap, gelanceerd in 2002, droeg een van de eerste sensoren die de concentraties van koolstofdioxide en methaan aan het oppervlak meten. De Japanse satelliet GOSAT volgde in 2009. Toekomstige satellietsensoren zullen ons in staat stellen kleinere bronnen van broeikasgassen op te sporen.\r\n\r\nESA's [Climate Change Initiative](stories/story-32/3) volgt ook koolstof gedurende zijn hele cyclus op het land en in de oceaan. Met kaarten van landbedekking en biomassa kunnen we de hoeveelheid koolstof bepalen die is opgeslagen in planten op het land; kleurmetingen van de oceaan tonen fytoplankton, wat een idee geeft van de hoeveelheid koolstof die door deze oceaanplanten wordt opgenomen.\r\n\r\nKlimaatwetenschappers gebruiken deze informatie om ons begrip van de koolstofcyclus en de weergave daarvan in hun klimaatmodellen te verbeteren. Verbeterde klimaatprognoses zullen beleidsmakers helpen uit te werken hoe we onze koolstofuitstoot kunnen beheren en het evenwicht in de koolstofcyclus kunnen herstellen.",
-      "shortText": "## Koolstof volgen vanuit de ruimte\r\n\r\nAan de hand van door satellieten verzamelde gegevens kunnen we zien hoe de broeikasgassen zich over de hele wereld ontwikkelen.\r\n\r\n- 2002: ESA's Envisat droeg een van de eerste sensoren om CO2 en methaan aan het oppervlak te meten.\r\n- 2009: De Japanse satelliet GOSAT volgde.\r\n- Toekomstige satellieten zullen ons in staat stellen kleinere bronnen van broeikasgassen op te sporen.\r\n- Het ESA Climate Change Initiative volgt ook de koolstofcyclus op het land en in de oceaan.\r\n- Landbedekking en biomassakaarten geven de hoeveelheid koolstof aan die is opgeslagen in planten op het land.\r\n- Kaarten van de kleur van de oceaan tonen het fytoplankton, wat aangeeft hoeveel koolstof door oceaanplanten wordt opgenomen.\r\n- Dit verbetert het begrip van de koolstofcyclus en de weergave daarvan in klimaatmodellen.\r\n\r\nBetere klimaatprognoses zullen beleidsmakers helpen uit te werken hoe we onze koolstofuitstoot kunnen beheren en het evenwicht in de koolstofcyclus kunnen herstellen.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
-      "videoId": "-QyzY8waNoY"
     }
   ]
 }
