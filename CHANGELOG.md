@@ -7,7 +7,7 @@
 - **stories:** update story content ([#1170](https://github.com/ubilabs/esa-climate-from-space/issues/1170)) ([f1d4830](https://github.com/ubilabs/esa-climate-from-space/commit/f1d48308c21e482293a0e7a137129698a9a84418))
 - **stories:** update story content (story-12) ([#1168](https://github.com/ubilabs/esa-climate-from-space/issues/1168)) ([c92b91e](https://github.com/ubilabs/esa-climate-from-space/commit/c92b91ef0ca996e719fcf5eb4298df1d4a636aa1))
 - **stories:** update story content (story-21) ([#1169](https://github.com/ubilabs/esa-climate-from-space/issues/1169)) ([64c8aaa](https://github.com/ubilabs/esa-climate-from-space/commit/64c8aaaec16df7c1f223b7c55404aa91a684ef93))
-- **dataset:** update Lakes Datalayer
+- **dataset:** Update Lakes Datalayer
 
 ## [1.7.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.7.0...v1.7.1) (2022-06-22)
 
