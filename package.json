@@ -1,6 +1,6 @@
 {
   "name": "esa-climate-from-space",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "dist-src-electron/main.js",
   "scripts": {
@@ -76,7 +76,7 @@
     "@types/youtube-player": "^5.5.3",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
-    "canvas": "^2.6.1",
+    "canvas": "^2.9.1",
     "classnames": "^2.2.6",
     "conventional-changelog-cli": "^2.0.31",
     "copy-webpack-plugin": "^5.1.1",

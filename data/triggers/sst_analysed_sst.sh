@@ -3,7 +3,7 @@
 TIMEOUT=24000
 LAYER_ID="sst.analysed_sst"
 VARIABLE_ID="analysed_sst"
-VERSION="1.6.5"
+VERSION="1.7.1"
 LAYER_TYPE="image"
 LON_RES="2048"
 LAT_RES="1024"
