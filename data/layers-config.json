@@ -321,6 +321,7 @@
   },
   "lakes.lswt": {
     "colorMap": "custom",
+    "basemap": "dark",
     "timeFormat": {
       "year": "numeric",
       "month": "long"
