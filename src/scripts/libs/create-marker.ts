@@ -8,11 +8,17 @@ import {
   Cartesian2
 } from 'cesium';
 
-import NotesEsaBold from '../../../assets/fonts/NotesEsaBol.otf';
+import NotesEsaBold from '../../../assets/fonts/NotesEsaReg.otf';
 
 import {Marker} from '../types/marker-type';
 
+const cache: Record<string, Entity> = {};
+
 export async function createMarker(marker: Marker): Promise<Entity> {
+  if (cache[marker.title]) {
+    return Promise.resolve(cache[marker.title]);
+  }
+
   const canvas = document.createElement('canvas');
   canvas.width = 350;
   canvas.height = 32;
@@ -44,6 +50,8 @@ export async function createMarker(marker: Marker): Promise<Entity> {
       entity.addProperty('markerLink');
       // @ts-ignore
       entity.markerLink = marker.link;
+
+      cache[marker.title] = entity;
       resolve(entity);
     };
   });
@@ -71,46 +79,57 @@ async function loadFont() {
 
 async function getSvgString(storyTitle: string) {
   const base64font = await loadFont();
+  const getFontFamily = () => {
+    if (
+      navigator.userAgent.indexOf('Safari') !== -1 &&
+      navigator.userAgent.indexOf('Chrome') === -1
+    ) {
+      return 'sans-serif';
+    }
+    return 'NotesEsa, sans-serif';
+  };
 
   return `<svg xmlns="http://www.w3.org/2000/svg" height="200" width="700">
-  <style>
-  @font-face {
-    font-style: normal;
-    font-family: NotesEsa;
-    src: url(${base64font});
-  }
-  </style>
   <foreignObject width="100%" height="100%">
+    <style>
+
+    @font-face {
+      font-style: normal;
+      font-family: NotesEsa;
+      src: url(${base64font});
+    }
+    </style>
+
     <div
       xmlns="http://www.w3.org/1999/xhtml">
       <div style="position: relative; display: flex; flex-direction: row;">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g filter="url(#filter0_ddd)">
-      <circle cx="12" cy="11" r="9" fill="#00AE9D"/>
-      </g>
-      <circle cx="12" cy="11" r="3.75" fill="white"/>
-      <defs>
-      <filter id="filter0_ddd" x="0" y="0" width="24" height="24" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-      <feOffset dy="1"/>
-      <feGaussianBlur stdDeviation="1.5"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
-      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-      <feOffset dy="2"/>
-      <feGaussianBlur stdDeviation="1"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"/>
-      <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow"/>
-      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-      <feOffset/>
-      <feGaussianBlur stdDeviation="1"/>
-      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"/>
-      <feBlend mode="normal" in2="effect2_dropShadow" result="effect3_dropShadow"/>
-      <feBlend mode="normal" in="SourceGraphic" in2="effect3_dropShadow" result="shape"/>
-      </filter>
-      </defs>
-      </svg>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#filter0_ddd)">
+            <circle cx="12" cy="11" r="9" fill="#00AE9D"/>
+          </g>
+          <circle cx="12" cy="11" r="3.75" fill="white"/>
+          <defs>
+            <filter id="filter0_ddd" x="0" y="0" width="24" height="24" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+              <feOffset dy="1"/>
+              <feGaussianBlur stdDeviation="1.5"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+              <feOffset dy="2"/>
+              <feGaussianBlur stdDeviation="1"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"/>
+              <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow"/>
+              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+              <feOffset/>
+              <feGaussianBlur stdDeviation="1"/>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"/>
+              <feBlend mode="normal" in2="effect2_dropShadow" result="effect3_dropShadow"/>
+              <feBlend mode="normal" in="SourceGraphic" in2="effect3_dropShadow" result="shape"/>
+            </filter>
+          </defs>
+        </svg>
 
 
         <div style="display: flex; margin-top: 3px;">
@@ -136,7 +155,7 @@ async function getSvgString(storyTitle: string) {
               height: 24px;
               color: white;
               padding: 6px 16px;
-              font-family: NotesEsa;
+              font-family: ${getFontFamily()};
               font-size: 11px;
               letter-spacing: 0.6px;
               text-transform: uppercase;

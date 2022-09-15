@@ -3,7 +3,7 @@
 TIMEOUT=24000
 LAYER_ID="land_surface_temperature.lst"
 VARIABLE_ID="lst"
-VERSION="1.6.3"
+VERSION="1.7.1"
 LAYER_TYPE="image"
 LON_RES="1440"
 LAT_RES="720"

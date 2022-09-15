@@ -71,6 +71,15 @@
     },
     "legendValues": ["400 l/m³", "0"]
   },
+  "soil_moisture.sm": {
+    "colorMap": "BrBG",
+    "basemap": "land",
+    "timeFormat": {
+      "year": "numeric",
+      "month": "long"
+    },
+    "legendValues": ["400 l/m³", "0"]
+  },
   "land_cover.lccs_class": {
     "colorMap": "gist_rainbow",
     "basemap": "land",
@@ -238,8 +247,7 @@
     "colorMap": "custom",
     "units": "Mg/ha AGB",
     "timeFormat": {
-      "year": "numeric",
-      "month": "long"
+      "year": "numeric"
     },
     "filter": "linear",
     "timestamps": [
@@ -331,16 +339,14 @@
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "numeric"
+      "month": "long"
     }
   },
   "land_surface_temperature.lst": {
     "colorMap": "custom",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "numeric"
+      "month": "long"
     },
     "legendValues": ["50 °C", "-30"]
   },
@@ -350,8 +356,7 @@
     "units": "kg/m²",
     "timeFormat": {
       "year": "numeric",
-      "month": "long",
-      "day": "numeric"
+      "month": "long"
     }
   }
 }

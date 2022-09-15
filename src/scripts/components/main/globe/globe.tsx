@@ -16,6 +16,7 @@ import {
   Viewer,
   ImageryLayer
 } from 'cesium';
+import cx from 'classnames';
 
 import {
   getGlobeView,
@@ -112,6 +113,7 @@ const Globe: FunctionComponent<Props> = ({
   onMouseDown
 }) => {
   const [viewer, setViewer] = useState<Viewer | null>(null);
+  const [firstTilesLoaded, setFirstTilesLoaded] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const lastNowRef = useRef<number | null>(null);
 
@@ -322,11 +324,37 @@ const Globe: FunctionComponent<Props> = ({
     }
   }, [spinning, viewer, projectionState.morphTime, spin]);
 
-  useMarkers(viewer, markers);
+  // check that all visible tiles have been loaded
+  useEffect(() => {
+    const handler = (tiles: number) => {
+      if (tiles < 1) {
+        setFirstTilesLoaded(true);
+        // eslint-disable-next-line no-unused-expressions
+        viewer?.scene.globe.tileLoadProgressEvent.removeEventListener(handler);
+      }
+    };
+
+    // eslint-disable-next-line no-unused-expressions
+    viewer?.scene.globe.tileLoadProgressEvent.addEventListener(handler);
+  }, [viewer]);
+
+  const markersReady = useMarkers(viewer, markers, firstTilesLoaded);
+
+  let fadeClass = null;
+
+  // slow fade in when we have markers and everything is ready to render
+  if (firstTilesLoaded && markersReady && markers.length) {
+    fadeClass = styles.fadeIn;
+  }
+
+  // fast fade in when no markers and everything is ready to render
+  if (firstTilesLoaded && markersReady && markers.length === 0) {
+    fadeClass = styles.fastFadeIn;
+  }
 
   return (
     <div
-      className={styles.globe}
+      className={cx(styles.globe, fadeClass)}
       onMouseEnter={() => onMouseEnter()}
       onTouchStart={() => onTouchStart()}
       ref={ref}
