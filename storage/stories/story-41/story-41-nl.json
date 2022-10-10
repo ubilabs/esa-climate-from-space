@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# Change in the Atmosphere",
       "shortText": "# Change in the Atmosphere",
-      "images": [
-        "assets/story41-image01.jpg"
-      ]
+      "images": ["assets/story41-image01.jpg"]
     },
     {
       "type": "video",
