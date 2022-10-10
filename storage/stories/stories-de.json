@@ -176,5 +176,34 @@
     "description": "",
     "image": "assets/story37-image07.jpg",
     "tags": ["land-cover", "fire", "soil-moisture", "ghg"]
+  },
+  {
+    "id": "story-38",
+    "title": "Kohlenstoffdioxid zählen",
+    "description": "",
+    "image": "assets/story37-image07.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-39",
+    "title": "Die Meere und das Klima",
+    "description": "",
+    "image": "assets/story37-image07.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-40",
+    "title": "Veränderungen in der Arktis",
+    "description": "",
+    "image": "assets/story37-image07.jpg",
+    "tags": []
+  },
+  {
+    "id": "story-41",
+    "title": "Veränderungen der Atmosphäre",
+    "description": "",
+    "image": "assets/story37-image07.jpg",
+    "tags": []
   }
+
 ]
