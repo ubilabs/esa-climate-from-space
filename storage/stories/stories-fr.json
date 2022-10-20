@@ -139,66 +139,75 @@
     "position": [40, -25]
   },
   {
-    "id": "story-33",
-    "title": "L'étalement urbain",
-    "description": "",
-    "image": "assets/story33-image04.jpg",
-    "tags": ["land-cover"]
-  },
-  {
-    "id": "story-34",
-    "title": "Perte de la forêt en Amazonie",
-    "description": "",
-    "image": "assets/story34-image05.jpg",
-    "tags": ["land-cover", "biomass"]
-  },
-  {
-    "id": "story-35",
-    "title": "Un glacier en course",
-    "description": "",
-    "image": "assets/story35-image05.jpg",
-    "tags": ["glaciers", "ice-sheets"]
-  },
-  {
-    "id": "story-36",
-    "title": "La ville qui coule",
-    "description": "",
-    "image": "assets/story36-image03.jpg",
-    "tags": ["soil-moisture"]
-  },
-  {
-    "id": "story-37",
-    "title": "Satellites for Peat's Sake",
-    "description": "",
-    "image": "assets/story37-image07.jpg",
-    "tags": ["land-cover", "fire", "soil-moisture", "ghg"]
-  },
-  {
     "id": "story-38",
     "title": "Compter le carbone",
     "description": "",
     "image": "assets/story38-image01.jpg",
-    "tags": []
+    "tags": ["land-cover", "biomass", "fire", "ocean-colour"],
+    "position": [77.2, 28.5]
   },
   {
     "id": "story-39",
     "title": "Océans et climat",
     "description": "",
     "image": "assets/story39-image01.jpg",
-    "tags": []
+    "tags": ["sea-surface-temperature", "ocean-colour", "sea-surface-salinity"],
+    "position": [80, -20]
   },
   {
     "id": "story-40",
     "title": "Changement en Arctique",
     "description": "",
     "image": "assets/story40-image01.jpg",
-    "tags": []
+    "tags": ["glaciers", "ice-sheets", "snow", "permafrost", "sea-ice"],
+    "position": [105, 75]
   },
   {
     "id": "story-41",
     "title": "Changement dans l'atmosphère",
     "description": "",
     "image": "assets/story41-image01.jpg",
-    "tags": []
+    "tags": ["fire", "ghg", "ozone", "cloud", "aerosol"],
+    "position": [138, 35.5]
+  },
+  {
+    "id": "story-33",
+    "title": "L'étalement urbain",
+    "description": "",
+    "image": "assets/story33-image04.jpg",
+    "tags": ["land-cover"],
+    "position": [31.2, 30]
+  },
+  {
+    "id": "story-34",
+    "title": "Perte de la forêt en Amazonie",
+    "description": "",
+    "image": "assets/story34-image05.jpg",
+    "tags": ["land-cover", "biomass"],
+    "position": [-62.75, -10.9]
+  },
+  {
+    "id": "story-35",
+    "title": "Un glacier en course",
+    "description": "",
+    "image": "assets/story35-image05.jpg",
+    "tags": ["glaciers", "ice-sheets"],
+    "position": [-49.9, 69.1]
+  },
+  {
+    "id": "story-36",
+    "title": "La ville qui coule",
+    "description": "",
+    "image": "assets/story36-image03.jpg",
+    "tags": ["soil-moisture"],
+    "position": [106.8, -6.1]
+  },
+  {
+    "id": "story-37",
+    "title": "Satellites for Peat's Sake",
+    "description": "",
+    "image": "assets/story37-image07.jpg",
+    "tags": ["land-cover", "fire", "soil-moisture", "ghg"],
+    "position": [-4, 58.3]
   }
 ]
