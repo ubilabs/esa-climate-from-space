@@ -9,3 +9,7 @@
 *.ipynb
 .DS_Store
 assets/legend-images/
+
+pipeline/logs
+pipeline/*/__pycache__
+service-account.json
