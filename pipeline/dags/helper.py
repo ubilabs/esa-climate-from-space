@@ -12,10 +12,14 @@ def change_filename(filepath: str, appendix: str = '', suffix: str = '', remove_
     name = p.name.replace(p.suffix, '').split('_')[0]
     new_suffix = suffix or p.suffix if not remove_suffix else ''
 
-    return p.with_name(name + appendix + new_suffix)
+    return str(p.with_name(name + appendix + new_suffix))
 
 def filename_to_date(filename: str):
     date_string = filename.split('/')[-1].replace('.nc', '')
     return datetime.strptime(date_string, "%Y%m%d").isoformat() + 'Z'
+
+def date_to_filename(date_string: str):
+    return datetime.fromisoformat(date_string.replace('Z', '')).strftime('%Y%m%d')
+
 
 

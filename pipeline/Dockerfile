@@ -13,4 +13,8 @@ RUN sudo npm install -g canvas
 
 USER airflow
 
+# xarray
+RUN pip install xarray netcdf4 h5netcdf
+
+
 
