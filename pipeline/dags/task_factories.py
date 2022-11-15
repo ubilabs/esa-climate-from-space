@@ -87,7 +87,7 @@ def legend_image(bucket_name: str, layer_id: str, layer_variable: str, layer_ver
 # generate timestamps array from filenames and write metadata to json file then upload to gcs
 
 
-def metadata(bucket_name: str, layer_id: str, layer_variable: str, layer_version: str, workdir: str, metadata: dict):
+def metadata(workdir: str, metadata: dict):
     @task(task_id='metadata')
     def fn(files):
         timestamps = list(map(helper.filename_to_date, files))
