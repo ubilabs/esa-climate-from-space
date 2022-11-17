@@ -33,8 +33,8 @@ def gcs_list_files(bucket_name: str, layer_id: str, layer_variable: str):
     return fn
 
 
-def gcs_download_file(bucket_name: str, dir: str, appendix: str = '', dry_run=False):
-    @task(task_id='gcs_download_file' if not dry_run else 'gcs_download_file_dry_run')
+def gcs_download_file(bucket_name: str, dir: str, appendix: str = '', dry_run=False, task_id="gcs_download_file"):
+    @task(task_id=task_id if not dry_run else 'gcs_download_file_dry_run')
     def fn(filename: str):
         hook = GCSHook('google')
         local_filename = dir + '/' + \
@@ -77,7 +77,7 @@ def gdal_info():
     )
 
 
-def legend_image(bucket_name: str, layer_id: str, layer_variable: str, layer_version: str, workdir: str, color_file: str):
+def legend_image(workdir: str, color_file: str):
     return BashOperator(
         task_id='legend_image',
         bash_command=f'rm -f $FILEPATH_OUT && node /opt/airflow/plugins/generate-legend-image.js && echo $FILEPATH_OUT',
@@ -103,6 +103,7 @@ def metadata(workdir: str, metadata: dict):
             "units": extended_metadata['units'],
             "legendValues": extended_metadata['legend_values'],
             "timeFormat": extended_metadata['time_format'],
+            "basemap": extended_metadata['basemap']
         }
         filepath = str(Path(workdir).joinpath('metadata.json'))
 
@@ -232,17 +233,17 @@ def prepare_upload(workdir: str, upload_dir: str, layer_type: str):
     return fn
 
 
-def clamp_netcdf(layer_variable: str, min_value: float, max_value: float):
-    @task(task_id='clamp_netcdf')
-    def fn(filename):
-        import xarray as xr
-        print(filename)
-        ds = xr.open_dataset(filename)
-        ds[layer_variable] = ds[layer_variable].clip(min_value, max_value)
-        new_filename = helper.change_filename(filename, appendix='clamped')
-        encoding = {var: {"zlib": True, "complevel": 9} for var in ds.data_vars}
-        ds.to_netcdf(new_filename, engine='netcdf4', encoding=encoding)
-        ds.close()
-        return new_filename
+# def clamp_netcdf(layer_variable: str, min_value: float, max_value: float):
+#     @task(task_id='clamp_netcdf')
+#     def fn(filename):
+#         import xarray as xr
+#         print(filename)
+#         ds = xr.open_dataset(filename)
+#         ds[layer_variable] = ds[layer_variable].clip(min_value, max_value)
+#         new_filename = helper.change_filename(filename, appendix='clamped')
+#         encoding = {var: {"zlib": True, "complevel": 9} for var in ds.data_vars}
+#         ds.to_netcdf(new_filename, engine='netcdf4', encoding=encoding)
+#         ds.close()
+#         return new_filename
 
-    return fn
+#     return fn
