@@ -36,7 +36,7 @@ import {Layer} from '../../../types/layer';
 import {Marker} from '../../../types/marker-type';
 import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 
-import styles from './globe.styl';
+import styles from './globe.module.styl';
 
 const cesiumOptions = {
   homeButton: false,

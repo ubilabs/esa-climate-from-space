@@ -10,6 +10,7 @@ interface Props {
   backLink: string;
   backButtonId: string;
   title: string;
+  children?: React.ReactElement | React.ReactElement[];
 }
 
 const Header: FunctionComponent<Props> = ({

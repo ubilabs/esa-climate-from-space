@@ -12,7 +12,7 @@ declare global {
       loadAction: (actionType: string, filePath?: string) => Action | null;
       addIpcListener: (
         channel: string,
-        callback: (event: {}, message: string) => void
+        callback: (event: Record<string, unknown>, message: string) => void
       ) => void;
     };
   }

@@ -33,7 +33,7 @@ const StoryPagination: FunctionComponent<Props> = ({
 
   const onKeyDownHandler = useCallback(
     // eslint-disable-next-line complexity
-    event => {
+    (event: KeyboardEvent) => {
       if (!isShowcaseMode) {
         // 37-arrow left, 33-page up, 38-arrow down
         if (

@@ -1,4 +1,4 @@
-import {createStore, applyMiddleware, Middleware} from 'redux';
+import {Middleware} from 'redux';
 import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
 
@@ -10,26 +10,53 @@ import {
   offlineLoadMiddleware
 } from '../../../libs/electron/index';
 
-export function createReduxStore() {
-  // @ts-ignore - injected by webpack
-  const isProduction = PRODUCTION; // eslint-disable-line no-undef
-  const middlewares: Middleware[] = [thunk];
+// export function createReduxStore() {
+//   // @ts-ignore - injected by webpack
+//   const isProduction = PRODUCTION; // eslint-disable-line no-undef
+//   const middlewares: Middleware[] = [thunk];
 
-  if (isElectron()) {
-    middlewares.push(offlineSaveMiddleware);
-    middlewares.push(offlineLoadMiddleware);
-  }
+//   if (isElectron()) {
+//     middlewares.push(offlineSaveMiddleware);
+//     middlewares.push(offlineLoadMiddleware);
+//   }
 
-  if (!isProduction) {
-    middlewares.push(createLogger({collapsed: true}));
-  }
+//   if (!isProduction) {
+//     middlewares.push(createLogger({collapsed: true}));
+//   }
 
-  const store = createStore(rootReducer, applyMiddleware(...middlewares));
+//   const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
-  // connect electron messages to redux store
-  if (isElectron()) {
-    connectToStore(store.dispatch);
-  }
+//   // connect electron messages to redux store
+//   if (isElectron()) {
+//     connectToStore(store.dispatch);
+//   }
 
-  return store;
+//   return store;
+// }
+
+import {configureStore} from '@reduxjs/toolkit';
+
+// @ts-ignore - injected by webpack
+const isProduction = import.meta.env.PROD; // eslint-disable-line no-undef
+const middlewares: Middleware[] = [thunk];
+
+if (isElectron()) {
+  middlewares.push(offlineSaveMiddleware);
+  middlewares.push(offlineLoadMiddleware);
 }
+
+if (!isProduction) {
+  middlewares.push(createLogger({collapsed: true}));
+}
+
+export const store = configureStore({
+  reducer: rootReducer
+});
+
+// connect electron messages to redux store
+if (isElectron()) {
+  connectToStore(store.dispatch);
+}
+
+export type RootState = ReturnType<typeof store.getState>;
+export type ThunkDispatch = typeof store.dispatch;

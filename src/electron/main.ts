@@ -4,6 +4,7 @@ const isDev = require('electron-is-dev');
 import {addDownloadHandler} from './download-handler.js';
 
 // future proof for electron 9 and prevent annoying deprecation warning message
+// @ts-ignore
 app.allowRendererProcessReuse = true;
 
 let windows: BrowserWindow[] = [];
@@ -18,6 +19,7 @@ function createWindow() {
       nodeIntegration: false,
       contextIsolation: true,
       preload: path.join(__dirname, 'preload.js'),
+      // @ts-ignore
       enableRemoteModule: true
     }
   });

@@ -5,7 +5,7 @@ import {useMatomo} from '@datapunt/matomo-tracker-react';
 
 import Button from '../button/button';
 
-import styles from './tracking.styl';
+import styles from './tracking.module.styl';
 
 const Tracking: FunctionComponent = () => {
   const location = useLocation();

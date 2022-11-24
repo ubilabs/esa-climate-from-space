@@ -66,7 +66,7 @@ const StoryGallery: FunctionComponent<Props> = ({
 
   // close fullscreen gallery on esc
   const onKeyDownHandler = useCallback(
-    event => {
+    (event: KeyboardEvent) => {
       if (showLightbox) {
         // 27 - esc
         if (event.keyCode === 27) {

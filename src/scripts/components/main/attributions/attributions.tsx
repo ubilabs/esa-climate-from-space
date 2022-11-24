@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import {useIntl} from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 
-import styles from './attributions.styl';
+import styles from './attributions.module.styl';
 
 const Attributions: FunctionComponent = () => {
   const intl = useIntl();
@@ -11,9 +11,9 @@ const Attributions: FunctionComponent = () => {
     <div className={styles.attributions}>
       <div className={styles.credits}>
         <ReactMarkdown
-          source={intl.formatMessage({id: 'attributionDescription'})}
+          children={intl.formatMessage({id: 'attributionDescription'})}
           linkTarget="_blank"
-          allowedTypes={[
+          allowedElements={[
             'heading',
             'text',
             'paragraph',

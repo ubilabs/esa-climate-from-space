@@ -26,8 +26,8 @@ const Caption: FunctionComponent<Props> = ({
       }}>
       <div className={styles.content}>
         <ReactMarkdown
-          source={content}
-          allowedTypes={[
+          children={content}
+          allowedElements={[
             'heading',
             'text',
             'paragraph',

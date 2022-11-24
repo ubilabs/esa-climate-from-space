@@ -22,14 +22,14 @@ const globeState: GlobeState = {
   spinning: true
 };
 
-// @ts-ignore - injected via webpack's define plugin
+// @ts-ignore - injected via vite
 const version = INFO_VERSION;
 const baseUrlTiles = `https://storage.googleapis.com/esa-cfs-tiles/${version}`;
-let baseUrlStorage = 'http://localhost:8080/storage';
+let baseUrlStorage = '/storage';
 
 // use content from local server
-// @ts-ignore - injected via webpack's define plugin
-if (PRODUCTION) {
+// @ts-ignore - injected via vite
+if (import.meta.env.PROD) {
   baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
 }
 

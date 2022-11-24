@@ -10,9 +10,9 @@ interface Props {
 const LayerDescription: FunctionComponent<Props> = ({layerDescription}) => (
   <div className={styles.layerDescription}>
     <ReactMarkdown
-      source={layerDescription}
+      children={layerDescription}
       linkTarget="_blank"
-      allowedTypes={[
+      allowedElements={[
         'heading',
         'text',
         'paragraph',

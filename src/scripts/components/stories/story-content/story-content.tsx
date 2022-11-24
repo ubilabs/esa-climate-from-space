@@ -43,11 +43,11 @@ const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
   return (
     <div className={contentClasses}>
       <ReactMarkdown
-        source={storyText}
+        children={storyText || ''}
         transformImageUri={transformImageUri}
         transformLinkUri={transformLinkUri}
         linkTarget={getLinkTarget}
-        allowedTypes={[
+        allowedElements={[
           'heading',
           'text',
           'paragraph',

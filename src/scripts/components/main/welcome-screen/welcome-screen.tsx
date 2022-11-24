@@ -8,7 +8,7 @@ import Button from '../button/button';
 import config from '../../../config/main';
 import Overlay from '../overlay/overlay';
 
-import styles from './welcome-screen.styl';
+import styles from './welcome-screen.module.styl';
 
 interface Props {
   onStartOnboarding: () => void;
@@ -31,9 +31,9 @@ const WelcomeScreen: FunctionComponent<Props> = ({onStartOnboarding}) => {
       <div className={styles.welcomeScreen}>
         <div className={styles.content}>
           <ReactMarkdown
-            source={intl.formatMessage({id: 'welcomeContent'})}
+            children={intl.formatMessage({id: 'welcomeContent'})}
             linkTarget="_blank"
-            allowedTypes={[
+            allowedElements={[
               'heading',
               'text',
               'paragraph',

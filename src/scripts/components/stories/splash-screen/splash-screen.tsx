@@ -32,8 +32,8 @@ const SplashScreen: FunctionComponent<Props> = ({storyId, mode, slide}) => {
       }}>
       <div className={contentClasses}>
         <ReactMarkdown
-          source={slide.text}
-          allowedTypes={[
+          children={slide.text}
+          allowedElements={[
             'heading',
             'text',
             'paragraph',

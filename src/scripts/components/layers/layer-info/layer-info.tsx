@@ -1,5 +1,6 @@
 import React, {FunctionComponent} from 'react';
-import ReactMarkdown from 'react-markdown/with-html';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 import {LayerListItem} from '../../../types/layer-list';
 
@@ -15,10 +16,10 @@ const LayerInfo: FunctionComponent<Props> = ({layer}) => (
     <h1 className={styles.layerTitle}>{layer.name}</h1>
     <div className={styles.description}>
       <ReactMarkdown
-        source={layer.description}
+        children={layer.description}
         linkTarget="_blank"
-        escapeHtml={false}
-        allowedTypes={[
+        rehypePlugins={[rehypeRaw]}
+        disallowedElements={[
           'heading',
           'text',
           'paragraph',
