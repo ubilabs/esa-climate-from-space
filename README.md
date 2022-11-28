@@ -84,16 +84,16 @@ Merge `develop` into `master`. Once merged Cloud Build will build and upload new
 In addition all remote files on cloud storage have to be updated to the new version folder. Run the follwing command with the correct version numbers:
 
 ```sh
-./scripts/increase-storage-version <old_version> <new_version> # e.g. increase-storage-version 0.9.3 1.0.0
+./scripts/increase-storage-version.sh <old_version> <new_version> # e.g. increase-storage-version 0.9.3 1.0.0
 ```
 
 Copy the master web application files into a separate version folder
 `gsutil cp -r gs://esa-cfs-versions/web/master/* gs://esa-cfs-versions/web/{VERSION}/`
 
+Trigger the electron build task on Cloud build for the master branch (https://console.cloud.google.com/cloud-build/triggers?project=esa-climate-from-space)
+
 Copy the master electron application files into a separate version folder
 `gsutil cp -r gs://esa-cfs-versions/electron/master/*{VERSION}* gs://esa-cfs-versions/electron/{VERSION}/`
-
-Trigger the electron build task on Cloud build for the master branch (https://console.cloud.google.com/cloud-build/triggers?project=esa-climate-from-space)
 
 ## Contact
 

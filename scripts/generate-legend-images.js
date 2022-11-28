@@ -64,11 +64,18 @@ files.forEach(file => {
 function readColorFile(file) {
   const filePath = path.join(INTPUT_FOLDER, file);
   const content = fs.readFileSync(filePath, 'utf8');
-  return content
+  const stops = content
     .split('\n')
     .filter(Boolean)
     .filter(line => !line.startsWith('nv'))
     .map(line => line.split(' '));
+
+  if (file.includes('lswt')) {
+    // do not include the "ice" color
+    return stops.filter(([v]) => v > -1000);
+  }
+
+  return stops;
 }
 
 function writeImage(file, canvas) {
