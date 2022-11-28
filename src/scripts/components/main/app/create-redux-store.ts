@@ -10,47 +10,24 @@ import {
   offlineLoadMiddleware
 } from '../../../libs/electron/index';
 
-// export function createReduxStore() {
-//   // @ts-ignore - injected by webpack
-//   const isProduction = PRODUCTION; // eslint-disable-line no-undef
-//   const middlewares: Middleware[] = [thunk];
-
-//   if (isElectron()) {
-//     middlewares.push(offlineSaveMiddleware);
-//     middlewares.push(offlineLoadMiddleware);
-//   }
-
-//   if (!isProduction) {
-//     middlewares.push(createLogger({collapsed: true}));
-//   }
-
-//   const store = createStore(rootReducer, applyMiddleware(...middlewares));
-
-//   // connect electron messages to redux store
-//   if (isElectron()) {
-//     connectToStore(store.dispatch);
-//   }
-
-//   return store;
-// }
-
 import {configureStore} from '@reduxjs/toolkit';
 
 // @ts-ignore - injected by webpack
 const isProduction = import.meta.env.PROD; // eslint-disable-line no-undef
-const middlewares: Middleware[] = [thunk];
+const middleware: Middleware[] = [thunk];
 
 if (isElectron()) {
-  middlewares.push(offlineSaveMiddleware);
-  middlewares.push(offlineLoadMiddleware);
+  middleware.push(offlineSaveMiddleware);
+  middleware.push(offlineLoadMiddleware);
 }
 
 if (!isProduction) {
-  middlewares.push(createLogger({collapsed: true}));
+  middleware.push(createLogger({collapsed: true}));
 }
 
 export const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
+  middleware
 });
 
 // connect electron messages to redux store

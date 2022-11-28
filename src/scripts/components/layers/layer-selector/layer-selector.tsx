@@ -39,7 +39,7 @@ const LayerSelector: FunctionComponent = () => {
           className={styles.layerSelector}
           initial={{x: '100%'}}
           animate={{x: 0}}
-          transition={{type: 'spring', damping: 300, stiffness: 100}}
+          transition={{type: 'spring', damping: 100, stiffness: 1400}}
           exit={{x: '100%'}}>
           <div className={styles.content}>
             <div className={styles.header}>
