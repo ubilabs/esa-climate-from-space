@@ -7,14 +7,26 @@ const gitHash =
   (gitState.isGitSync(__dirname) && gitState.commitSync(__dirname)) || '-';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  root: './src',
-  plugins: [react()],
-  define: {
+export default defineConfig(({command}) => {
+  const DEFINES = {
     INFO_VERSION: JSON.stringify(version),
     INFO_BUILD_TIME: JSON.stringify(new Date().toISOString()),
-    INFO_GIT_HASH: JSON.stringify(gitHash),
-    CESIUM_BASE_URL: JSON.stringify('./cesium/')
-  },
-  publicDir: '../public'
+    INFO_GIT_HASH: JSON.stringify(gitHash)
+  };
+
+  if (command === 'serve') {
+    DEFINES['CESIUM_BASE_URL'] = JSON.stringify('./cesium/');
+  }
+
+  return {
+    root: './src',
+    build: {
+      outDir: '../dist',
+      emptyOutDir: true,
+      copyPublicDir: command === 'serve'
+    },
+    plugins: [react()],
+    define: DEFINES,
+    publicDir: '../storage'
+  };
 });

@@ -1,6 +1,8 @@
 import {Middleware} from 'redux';
 import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
+import {ThunkDispatch as ThunkDispatchInternal} from 'redux-thunk';
+import {AnyAction} from 'redux';
 
 import rootReducer from '../../../reducers/index';
 import {
@@ -36,4 +38,4 @@ if (isElectron()) {
 }
 
 export type RootState = ReturnType<typeof store.getState>;
-export type ThunkDispatch = typeof store.dispatch;
+export type ThunkDispatch = ThunkDispatchInternal<RootState, void, AnyAction>;

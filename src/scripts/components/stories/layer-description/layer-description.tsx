@@ -1,6 +1,8 @@
 import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
 
+import config from '../../../config/main';
+
 import styles from './layer-description.module.styl';
 
 interface Props {
@@ -12,14 +14,7 @@ const LayerDescription: FunctionComponent<Props> = ({layerDescription}) => (
     <ReactMarkdown
       children={layerDescription}
       linkTarget="_blank"
-      allowedElements={[
-        'heading',
-        'text',
-        'paragraph',
-        'break',
-        'strong',
-        'emphasis'
-      ]}
+      allowedElements={config.markdownAllowedElements}
     />
   </div>
 );

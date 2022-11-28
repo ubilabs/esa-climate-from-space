@@ -25,12 +25,12 @@ const globeState: GlobeState = {
 // @ts-ignore - injected via vite
 const version = INFO_VERSION;
 const baseUrlTiles = `https://storage.googleapis.com/esa-cfs-tiles/${version}`;
-let baseUrlStorage = '/storage';
+let baseUrlStorage = '/';
 
 // use content from local server
 // @ts-ignore - injected via vite
 if (import.meta.env.PROD) {
-  baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
+  baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}/`;
 }
 
 const basemapUrls = {
@@ -59,17 +59,17 @@ const downloadUrls = {
 
 export default {
   api: {
-    layers: `${baseUrlStorage}/layers/layers-{lang}.json`,
+    layers: `${baseUrlStorage}layers/layers-{lang}.json`,
     layer: `${baseUrlTiles}/{id}/metadata.json`,
     layerTiles: `${baseUrlTiles}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
     layerImage: `${baseUrlTiles}/{id}/tiles/{timeIndex}/full.png`,
     layerGalleryImage: `${baseUrlTiles}/{id}/tiles/{timeIndex}/full.jpg`,
     layerOfflinePackage: `${baseUrlTiles}/{id}/package.zip`,
     layerIcon: `${baseUrlTiles}/{id}/icon.png`,
-    storyOfflinePackage: `${baseUrlStorage}/stories/{id}/package.zip`,
-    storyMediaBase: `${baseUrlStorage}/stories/{id}`,
-    stories: `${baseUrlStorage}/stories/stories-{lang}.json`,
-    story: `${baseUrlStorage}/stories/{id}/{id}-{lang}.json`
+    storyOfflinePackage: `${baseUrlStorage}stories/{id}/package.zip`,
+    storyMediaBase: `${baseUrlStorage}stories/{id}`,
+    stories: `${baseUrlStorage}stories/stories-{lang}.json`,
+    story: `${baseUrlStorage}stories/{id}/{id}-{lang}.json`
   },
   defaultBasemap: 'colored' as keyof typeof basemapUrls,
   defaultLayerBasemap: 'land' as keyof typeof basemapUrls,
@@ -94,5 +94,21 @@ export default {
   localStorageLanguageKey: 'language',
   localStorageWelcomeScreenKey: 'welcomeScreenChecked',
   delay: 5000,
-  feedbackUrl: 'https://climate.esa.int/en/helpdesk/'
+  feedbackUrl: 'https://climate.esa.int/en/helpdesk/',
+  markdownAllowedElements: [
+    'p',
+    'h1',
+    'h2',
+    'h3',
+    'a',
+    'br',
+    'b',
+    'em',
+    'img',
+    'fig',
+    'figcaption',
+    'li',
+    'ul',
+    'ol'
+  ]
 };

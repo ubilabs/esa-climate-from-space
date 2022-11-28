@@ -2,6 +2,8 @@ import React, {FunctionComponent} from 'react';
 import {useIntl} from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 
+import config from '../../../config/main';
+
 import styles from './attributions.module.styl';
 
 const Attributions: FunctionComponent = () => {
@@ -13,19 +15,7 @@ const Attributions: FunctionComponent = () => {
         <ReactMarkdown
           children={intl.formatMessage({id: 'attributionDescription'})}
           linkTarget="_blank"
-          allowedElements={[
-            'heading',
-            'text',
-            'paragraph',
-            'break',
-            'strong',
-            'emphasis',
-            'image',
-            'imageReference',
-            'list',
-            'listItem',
-            'link'
-          ]}
+          allowedElements={config.markdownAllowedElements}
         />
       </div>
     </div>

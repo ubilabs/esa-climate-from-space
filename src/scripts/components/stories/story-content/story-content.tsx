@@ -4,6 +4,7 @@ import cx from 'classnames';
 
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {useSlide} from '../../../hooks/use-slide';
+import config from '../../../config/main';
 
 import {StoryMode} from '../../../types/story-mode';
 import {Slide} from '../../../types/story';
@@ -47,19 +48,7 @@ const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
         transformImageUri={transformImageUri}
         transformLinkUri={transformLinkUri}
         linkTarget={getLinkTarget}
-        allowedElements={[
-          'heading',
-          'text',
-          'paragraph',
-          'break',
-          'strong',
-          'emphasis',
-          'image',
-          'imageReference',
-          'list',
-          'listItem',
-          'link'
-        ]}
+        allowedElements={config.markdownAllowedElements}
       />
     </div>
   );

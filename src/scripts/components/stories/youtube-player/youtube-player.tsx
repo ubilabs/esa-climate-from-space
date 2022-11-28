@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React, {FunctionComponent} from 'react';
-import YouTube, {YouTubeProps} from 'react-youtube';
+import YouTube, {Options} from 'react-youtube';
 import {YouTubePlayer} from 'youtube-player/dist/types';
 
 import {Language} from '../../../types/language';
@@ -20,7 +20,7 @@ const YoutubePlayer: FunctionComponent<Props> = ({
   isStoryMode,
   onPlay
 }) => {
-  const options: YouTubeProps['opts'] = {
+  const options: Options = {
     height: '100%',
     width: '100%',
     playerVars: {
@@ -30,24 +30,56 @@ const YoutubePlayer: FunctionComponent<Props> = ({
       // @ts-ignore
       cc_lang_pref: language,
       color: 'red',
-      controls: 1,
+      controls: 2,
       iv_load_policy: 3,
       modestbranding: 1,
-      autoplay: 1
-      // allow:
-      //   'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+      showinfo: 0,
+      allow:
+        'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
     }
   };
 
   return (
     <YouTube
-      className={styles.videoPlayer}
-      id={videoId}
+      containerClassName={styles.videoPlayer}
+      videoId={videoId}
       opts={options}
       onReady={event => !isStoryMode && event.target.playVideo()}
       onPlay={event => onPlay(event.target)}
     />
   );
+
+  // const options: YouTubeProps['opts'] = {
+  //   height: '100%',
+  //   width: '100%',
+  //   playerVars: {
+  //     rel: 0,
+  //     cc_load_policy: 1,
+  //     hl: language,
+  //     // @ts-ignore
+  //     cc_lang_pref: language,
+  //     color: 'red',
+  //     controls: 1,
+  //     iv_load_policy: 3,
+  //     modestbranding: 1,
+  //     autoplay: 1
+  //   }
+  // };
+
+  // return (
+  //   <YouTube
+  //     className={styles.videoPlayer}
+  //     id={videoId}
+  //     opts={options}
+  //     onReady={async event => {
+  //       const iframe = (await event.target.getIframe()) as HTMLIFrameElement;
+  //       const allow = iframe.getAttribute('allow');
+  //       iframe.setAttribute('allow', `${allow} allow-presentation`);
+  //       !isStoryMode && event.target.playVideo();
+  //     }}
+  //     onPlay={event => onPlay(event.target)}
+  //   />
+  // );
 };
 
 export default YoutubePlayer;

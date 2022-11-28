@@ -33,19 +33,7 @@ const WelcomeScreen: FunctionComponent<Props> = ({onStartOnboarding}) => {
           <ReactMarkdown
             children={intl.formatMessage({id: 'welcomeContent'})}
             linkTarget="_blank"
-            allowedElements={[
-              'heading',
-              'text',
-              'paragraph',
-              'break',
-              'strong',
-              'emphasis',
-              'image',
-              'imageReference',
-              'list',
-              'listItem',
-              'link'
-            ]}
+            allowedElements={config.markdownAllowedElements}
           />
           <div className={styles.tourButtons}>
             <Button
