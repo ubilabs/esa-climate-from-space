@@ -16,5 +16,5 @@ export default defineConfig({
     INFO_GIT_HASH: JSON.stringify(gitHash),
     CESIUM_BASE_URL: JSON.stringify('./cesium/')
   },
-  publicDir: './public'
+  publicDir: '../public'
 });

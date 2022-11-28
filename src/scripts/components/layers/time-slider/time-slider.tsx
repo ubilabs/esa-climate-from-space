@@ -26,7 +26,7 @@ import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
 import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 import {useLayerTimes} from '../../../hooks/use-formatted-time';
 
-import styles from './time-slider.styl';
+import styles from './time-slider.module.styl';
 
 interface Props {
   className?: string;

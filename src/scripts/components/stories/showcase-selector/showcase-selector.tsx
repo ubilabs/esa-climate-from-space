@@ -9,7 +9,7 @@ import Button from '../../main/button/button';
 
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './showcase-selector.styl';
+import styles from './showcase-selector.module.styl';
 
 const ShowcaseSelector: FunctionComponent = () => {
   const params = useParams<{storyIds?: string}>();

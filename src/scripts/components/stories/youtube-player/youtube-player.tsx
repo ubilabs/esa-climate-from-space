@@ -5,7 +5,7 @@ import {YouTubePlayer} from 'youtube-player/dist/types';
 
 import {Language} from '../../../types/language';
 
-import styles from './youtube-player.styl';
+import styles from './youtube-player.module.styl';
 
 interface Props {
   videoId?: string;

@@ -4,7 +4,7 @@ import {FormattedMessage} from 'react-intl';
 
 import {StoryIcon} from '../../main/icons/story-icon';
 
-import styles from './stories-button.styl';
+import styles from './stories-button.module.styl';
 
 const StoriesButton: FunctionComponent = () => (
   <Link to={'/stories'} className={styles.storiesButton}>

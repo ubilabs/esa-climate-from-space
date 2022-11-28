@@ -13,7 +13,7 @@ import {layersSelector} from '../../../selectors/layers/list';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 import setSelectedLayerIdsAction from '../../../actions/set-selected-layer-id';
 
-import styles from './layer-selector.styl';
+import styles from './layer-selector.module.styl';
 import {useMatomo} from '@datapunt/matomo-tracker-react';
 
 const LayerSelector: FunctionComponent = () => {

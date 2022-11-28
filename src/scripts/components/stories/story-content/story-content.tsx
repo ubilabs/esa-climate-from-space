@@ -8,7 +8,7 @@ import {useSlide} from '../../../hooks/use-slide';
 import {StoryMode} from '../../../types/story-mode';
 import {Slide} from '../../../types/story';
 
-import styles from './story-content.styl';
+import styles from './story-content.module.styl';
 
 interface Props {
   storyId: string;

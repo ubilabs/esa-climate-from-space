@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
 import cx from 'classnames';
 
-import styles from './caption.styl';
+import styles from './caption.module.styl';
 import {ImageFit} from '../../../types/image-fit';
 
 interface Props {

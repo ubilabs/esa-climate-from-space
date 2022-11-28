@@ -4,7 +4,7 @@ import Button from '../../main/button/button';
 import {ArrowBackIcon} from '../../main/icons/arrow-back-icon';
 import {EsaLogoShort} from '../../main/icons/esa-logo-short';
 
-import styles from './header.styl';
+import styles from './header.module.styl';
 
 interface Props {
   backLink: string;

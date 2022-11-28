@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import styles from './layer-description.styl';
+import styles from './layer-description.module.styl';
 
 interface Props {
   layerDescription: string;

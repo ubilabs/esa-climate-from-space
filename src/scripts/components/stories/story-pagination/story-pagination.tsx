@@ -9,7 +9,7 @@ import {CloseIcon} from '../../main/icons/close-icon';
 
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './story-pagination.styl';
+import styles from './story-pagination.module.styl';
 
 interface Props {
   mode: StoryMode | null;

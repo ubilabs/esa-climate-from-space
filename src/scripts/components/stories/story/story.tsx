@@ -24,7 +24,7 @@ import {StoryMode} from '../../../types/story-mode';
 import {Slide, Story as StoryType} from '../../../types/story';
 import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 
-import styles from './story.styl';
+import styles from './story.module.styl';
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
