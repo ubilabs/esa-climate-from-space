@@ -1,0 +1,77 @@
+@require '../../../../variables.styl'
+
+.storyFilter
+  display: flex
+  flex-direction: row
+  align-items: center
+  padding: emCalc(24px) emCalc(26px)
+
+.arrowIcon
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 0 0.25em
+  width: emCalc(48px)
+  color: $textDefault
+  cursor: pointer
+  user-select: none
+
+  &:hover
+    svg
+      color: white
+
+.tagScrollerOuter
+  position: relative
+  flex-grow: 1
+  overflow-x: hidden
+
+  &:after
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: linear-gradient(to right, $black 0%, transparent 1%, transparent 99%, $black 100%)
+    content: ''
+    pointer-events: none
+
+.tagScrollerInner
+  display: flex
+  flex-direction: row
+
+.tag
+  display: flex
+  flex-direction: row
+  align-items: center
+  margin-right: emCalc(24px)
+  min-height: emCalc(24px)
+  color: $textDefault
+  text-transform: uppercase
+  white-space: nowrap
+  font-size: 0.9em
+  cursor: pointer
+
+  svg
+    margin-right: emCalc(4px)
+    width: emCalc(24px)
+    height: emCalc(24px)
+    transform: translateY(-1px)
+    fill: $main
+
+.selected
+  color: $textColor
+
+.resetButton
+  flex-grow: 0
+  padding-top: emCalc(2px)
+  outline: none
+  border: none
+  background: transparent
+  color: $textColor
+  white-space: nowrap
+  font-size: 1rem
+  cursor: pointer
+
+  &[disabled]
+    color: $darkGrey4
+    cursor: default

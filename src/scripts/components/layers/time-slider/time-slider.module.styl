@@ -1,0 +1,139 @@
+@require '../../../../variables.styl'
+
+$range-height = 5px
+
+boxShadow()
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.14)
+
+thumb()
+  boxShadow()
+
+  width: 16px
+  height: 16px
+  border-radius: 50%
+  background: $main
+  cursor: pointer
+
+compareThumb()
+  width: 10px
+  height: 60px
+  border: none
+  border-radius: 0
+  background-color: transparent
+  background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' viewBox='0 0 5 30' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xml:space='preserve' xmlns:serif='http://www.serif.com/' style='fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cg transform='matrix(1,0,0,1,-5,-4)'%3E%3Cg transform='matrix(1,0,0,0.666667,0,1.33333)'%3E%3Cpath d='M5,5C5,4.448 5.448,4 6,4L9,4C9.552,4 10,4.448 10,5L10,8C10,9.105 9.105,10 8,10L8,43C9.105,43 10,43.895 10,45L10,48C10,48.552 9.552,49 9,49L6,49C5.448,49 5,48.552 5,48L5,45C5,43.895 5.895,43 7,43L7,10C5.895,10 5,9.105 5,8L5,5Z' style='fill:rgb(0,174,157);'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+  background-repeat: no-repeat
+  box-shadow: none
+
+.timeSlider
+  position: absolute
+  bottom: 0
+  left: 0
+  display: flex
+  justify-content: center
+  overflow: hidden
+  padding: emCalc(50px) 0
+  width: 100%
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%)
+  font-size: emCalc(16px)
+  user-select: none
+
+.container
+  position: relative
+  display: flex
+  min-width: 400px
+  width: 40%
+
+.label
+  display: flex
+  color: white
+  font-size: emCalc(18px)
+
+.ranges
+  position: relative
+  width: 100%
+
+.input
+  position: absolute
+  top: 0
+  z-index: 2
+  margin: 0
+  width: 100%
+  height: $range-height
+  outline: 0
+  background: transparent
+  -webkit-appearance: none
+
+.compareInput
+  height: 100%
+  composes: input
+
+.input::-webkit-slider-thumb
+  thumb()
+
+  -webkit-appearance: none
+
+.input::-moz-range-thumb
+  thumb()
+
+  border: 1px solid $main
+
+.input::-ms-thumb
+  thumb()
+
+.singleInput
+  height: 50px
+
+.compareInput::-webkit-slider-thumb
+  compareThumb()
+
+.compareInput::-moz-range-thumb
+  compareThumb()
+
+.compareInput::-ms-thumb
+  compareThumb()
+
+.timeOutput
+  position: absolute
+  top: -14px
+  padding: 0 4px
+  color: $textWhite
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.33)
+  white-space: nowrap
+  font-size: 0.9em
+  transform: translate(-50%, -100%)
+
+.timeOutputMain
+  transform: translate(-100%, -100%)
+
+.timeOutputCompare
+  top: 50px
+  transform: translate(0, 0)
+
+.singleOutput
+  top: 40px
+
+.playButton
+  margin-top: emCalc(-21px)
+  padding-right: 1em
+  transform: scale(1.2)
+
+  svg
+    filter: drop-shadow(3px 2px 2px rgba(16, 22, 26, 0.2))
+
+.playButtonCompare
+  margin-top: 0
+
+.yearLabel
+  display: flex
+  justify-content: space-between
+  padding: 4px 0
+  color: $textWhite
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.33)
+  font-size: 0.8em
+
+@media screen and (max-width: 480px)
+  .timeSlider
+    padding-bottom: emCalc(100px)
+
+  .container
+    min-width: 300px

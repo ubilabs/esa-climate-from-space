@@ -1,0 +1,30 @@
+@require '../../../../variables.styl'
+
+.storyList
+  overflow-y: auto
+  height: 100%
+  background-color: $black
+
+.storyListGrid
+  display: grid
+  padding: emCalc(20px)
+  padding-top: 0
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr))
+  grid-auto-rows: 340px
+  grid-gap: 16px
+
+.present
+  padding-top: emCalc(20px)
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+
+.showcase
+  padding-top: emCalc(20px)
+
+.noMatchingStories
+  margin-top: emCalc(50px)
+  color: $textDefault
+  text-align: center
+
+@media screen and (max-width: 480px)
+  .storyListGrid
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
