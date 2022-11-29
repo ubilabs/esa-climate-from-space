@@ -31,13 +31,8 @@ const Story: FunctionComponent = () => {
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const {
-    mode,
-    slideIndex,
-    currentStoryId,
-    selectedStory,
-    storyListItem
-  } = storyParams;
+  const {mode, slideIndex, currentStoryId, selectedStory, storyListItem} =
+    storyParams;
   const storyMode = mode === StoryMode.Stories;
 
   const isSplashScreen =
@@ -128,6 +123,7 @@ const Story: FunctionComponent = () => {
           backLink={`/${mode.toString()}`}
           backButtonId="backToStories"
           title={isSplashScreen ? '' : storyListItem.title}>
+          {/* eslint-disable-next-line */}
           {storyMode ? <Share /> : undefined}
         </Header>
       )}

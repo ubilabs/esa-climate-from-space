@@ -15,6 +15,7 @@ const LayerInfo: FunctionComponent<Props> = ({layer}) => (
     <span className={styles.layerType}>{layer.type}</span>
     <h1 className={styles.layerTitle}>{layer.name}</h1>
     <div className={styles.description}>
+      {/* eslint-disable-next-line react/no-children-prop */}
       <ReactMarkdown
         children={layer.description}
         linkTarget="_blank"

@@ -10,7 +10,7 @@
     "copy:assets": "cp assets/images/favicon.ico dist/ && mkdir dist/assets && cp assets/images/* dist/assets/ && npm run copy:cesium-assets",
     "copy:cesium-assets": "mkdir -p dist/cesium/Workers && cp -r ./node_modules/cesium/Build/Cesium/Workers/* dist/cesium/Workers && mkdir -p dist/cesium/Assets && cp -r ./node_modules/cesium/Build/Cesium/Assets/* dist/cesium/Assets",
     "test": "npm run stylint && npm run eslint && npm run license-check",
-    "eslint": "eslint . --ext .ts,.tsx,.js",
+    "eslint": "eslint ./src --ext .ts,.tsx,.js",
     "stylint": "stylint",
     "format:js": "prettier 'src/scripts/**/*.{ts,tsx}'",
     "format:stylus": "stylus-supremacy format --replace --options .stylintrc 'src/**/*.styl'",
