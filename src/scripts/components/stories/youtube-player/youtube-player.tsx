@@ -48,38 +48,6 @@ const YoutubePlayer: FunctionComponent<Props> = ({
       onPlay={event => onPlay(event.target)}
     />
   );
-
-  // const options: YouTubeProps['opts'] = {
-  //   height: '100%',
-  //   width: '100%',
-  //   playerVars: {
-  //     rel: 0,
-  //     cc_load_policy: 1,
-  //     hl: language,
-  //     // @ts-ignore
-  //     cc_lang_pref: language,
-  //     color: 'red',
-  //     controls: 1,
-  //     iv_load_policy: 3,
-  //     modestbranding: 1,
-  //     autoplay: 1
-  //   }
-  // };
-
-  // return (
-  //   <YouTube
-  //     className={styles.videoPlayer}
-  //     id={videoId}
-  //     opts={options}
-  //     onReady={async event => {
-  //       const iframe = (await event.target.getIframe()) as HTMLIFrameElement;
-  //       const allow = iframe.getAttribute('allow');
-  //       iframe.setAttribute('allow', `${allow} allow-presentation`);
-  //       !isStoryMode && event.target.playVideo();
-  //     }}
-  //     onPlay={event => onPlay(event.target)}
-  //   />
-  // );
 };
 
 export default YoutubePlayer;

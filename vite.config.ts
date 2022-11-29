@@ -20,10 +20,12 @@ export default defineConfig(({command}) => {
 
   return {
     root: './src',
+    base: './',
     build: {
       outDir: '../dist',
       emptyOutDir: true,
-      copyPublicDir: command === 'serve'
+      copyPublicDir: command === 'serve',
+      assetsDir: ''
     },
     plugins: [react()],
     define: DEFINES,

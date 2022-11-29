@@ -1,15 +1,15 @@
 import * as path from 'path';
-import {app, BrowserWindow} from 'electron';
+import {app, BrowserWindow, ipcMain} from 'electron';
 const isDev = require('electron-is-dev');
 import {addDownloadHandler} from './download-handler.js';
-
-// future proof for electron 9 and prevent annoying deprecation warning message
-// @ts-ignore
-app.allowRendererProcessReuse = true;
+const loadAction = require('./load-action');
+const saveAction = require('./save-action');
+const downloadDelete = require('./download-delete');
 
 let windows: BrowserWindow[] = [];
 
 function createWindow() {
+  console.log(path.join(__dirname, 'preload.js'));
   // create a new browser window
   const window = new BrowserWindow({
     width: 1400,
@@ -19,8 +19,7 @@ function createWindow() {
       nodeIntegration: false,
       contextIsolation: true,
       preload: path.join(__dirname, 'preload.js'),
-      // @ts-ignore
-      enableRemoteModule: true
+      sandbox: false
     }
   });
 
@@ -44,6 +43,21 @@ function createWindow() {
   window.on('closed', () => {
     windows = windows.filter(w => w !== window);
   });
+
+  // ipc handler
+  ipcMain.handle('loadAction', (event, {actionType, pathToFile}) =>
+    loadAction(actionType, pathToFile)
+  );
+
+  ipcMain.on('saveAction', (event, action) => saveAction(action));
+
+  ipcMain.on('downloadUrl', (event, url) =>
+    window.webContents.downloadURL(url)
+  );
+
+  ipcMain.on('downloadDelete', (event, id) => downloadDelete(window, id));
+
+  ipcMain.handle('downloadsPath', () => app.getPath('downloads'));
 }
 
 app.on('ready', createWindow);
