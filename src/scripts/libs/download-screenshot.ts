@@ -39,8 +39,8 @@ export function downloadScreenshot(
 
       ctx.drawImage(
         esaLogo,
-        window.innerWidth - esaLogo.width - padding,
-        window.innerHeight - esaLogo.height - padding,
+        ctx.canvas.width - esaLogo.width,
+        0,
         esaLogo.width,
         esaLogo.height
       );
