@@ -143,38 +143,75 @@
     ]
   },
   {
+    "id": "story-38",
+    "title": "Kohlenstoffdioxid zählen",
+    "description": "",
+    "image": "assets/story38-image01.jpg",
+    "tags": ["land-cover", "biomass", "fire", "ocean-colour"],
+    "position": [77.2, 28.5]
+  },
+  {
+    "id": "story-39",
+    "title": "Die Meere und das Klima",
+    "description": "",
+    "image": "assets/story39-image01.jpg",
+    "tags": ["sea-surface-temperature", "ocean-colour", "sea-surface-salinity"],
+    "position": [80, -20]
+  },
+  {
+    "id": "story-40",
+    "title": "Veränderungen in der Arktis",
+    "description": "",
+    "image": "assets/story40-image01.jpg",
+    "tags": ["glaciers", "ice-sheets", "snow", "permafrost", "sea-ice"],
+    "position": [105, 75]
+  },
+  {
+    "id": "story-41",
+    "title": "Veränderungen der Atmosphäre",
+    "description": "",
+    "image": "assets/story41-image01.jpg",
+    "tags": ["fire", "ghg", "ozone", "cloud", "aerosol"],
+    "position": [138, 35.5]
+  },
+  {
     "id": "story-33",
     "title": "Zersiedelung der Landschaft",
     "description": "",
     "image": "assets/story33-image04.jpg",
-    "tags": ["land-cover"]
+    "tags": ["land-cover"],
+    "position": [31.2, 30]
   },
   {
     "id": "story-34",
     "title": "Waldverlust im Amazonasgebiet",
     "description": "",
     "image": "assets/story34-image05.jpg",
-    "tags": ["land-cover", "biomass"]
+    "tags": ["land-cover", "biomass"],
+    "position": [-62.75, -10.9]
   },
   {
     "id": "story-35",
     "title": "Ein rasender Gletscher",
     "description": "",
     "image": "assets/story35-image05.jpg",
-    "tags": ["glaciers", "ice-sheets"]
+    "tags": ["glaciers", "ice-sheets"],
+    "position": [-49.9, 69.1]
   },
   {
     "id": "story-36",
     "title": "Versinkende Stadt",
     "description": "",
     "image": "assets/story36-image03.jpg",
-    "tags": ["soil-moisture"]
+    "tags": ["soil-moisture"],
+    "position": [106.8, -6.1]
   },
   {
     "id": "story-37",
     "title": "Satellites for Peat's Sake",
     "description": "",
     "image": "assets/story37-image07.jpg",
-    "tags": ["land-cover", "fire", "soil-moisture", "ghg"]
+    "tags": ["land-cover", "fire", "soil-moisture", "ghg"],
+    "position": [-4, 58.3]
   }
 ]

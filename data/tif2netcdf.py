@@ -1,6 +1,8 @@
+# pip install rioxarray
+
 from datetime import time
 import xarray as xr
-import rasterio
+import rioxarray
 import pandas as pd
 import re
 from argparse import ArgumentParser
@@ -11,7 +13,7 @@ parser.add_argument("-o", "--output", dest="output")
 parser.add_argument("-v", "--variable", dest="variable")
 args = parser.parse_args()
 
-da = xr.open_rasterio(args.file)
+da = rioxarray.open_rasterio(args.file)
 ds = da.to_dataset(name=args.variable)
 
 timestamp = re.search("(\d+).tif$", args.file).group(0)
