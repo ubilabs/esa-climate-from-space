@@ -37,6 +37,11 @@ import {Marker} from '../../../types/marker-type';
 import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 
 import styles from './globe.styl';
+import setGlobeViewAction from '../../../actions/set-globe-view';
+import {useDispatch} from 'react-redux';
+import Rectangle from 'cesium/Source/Core/Rectangle';
+import {setTimeout} from 'timers';
+import Math from 'cesium/Source/Core/Math';
 
 const cesiumOptions = {
   homeButton: false,
@@ -112,6 +117,7 @@ const Globe: FunctionComponent<Props> = ({
   onMoveEnd,
   onMouseDown
 }) => {
+  const dispatch = useDispatch();
   const [viewer, setViewer] = useState<Viewer | null>(null);
   const [firstTilesLoaded, setFirstTilesLoaded] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -196,9 +202,6 @@ const Globe: FunctionComponent<Props> = ({
     // min/max is opposite of how we usually use it.
     scopedViewer.scene.screenSpaceCameraController.minimumZoomDistance = 1000000;
     scopedViewer.scene.screenSpaceCameraController.maximumZoomDistance = 30000000;
-    // fix zoom in bug (https://github.com/CesiumGS/cesium/issues/3984)
-    // @ts-ignore
-    scopedViewer.scene.screenSpaceCameraController._minimumZoomRate = 10000;
 
     // save viewer reference
     setViewer(scopedViewer);
@@ -206,7 +209,7 @@ const Globe: FunctionComponent<Props> = ({
     // set initial camera view
     setGlobeView(scopedViewer, view);
 
-    // make camera change listener more sensitiv
+    // make camera change listener more sensitive
     scopedViewer.camera.percentageChanged = 0.001;
 
     // add camera change listener
@@ -247,12 +250,43 @@ const Globe: FunctionComponent<Props> = ({
   // switch projections
   useEffect(() => {
     if (!viewer) {
-      return;
+      return () => {};
     }
 
-    projectionState.projection === GlobeProjection.Sphere
-      ? viewer.scene.morphTo3D(projectionState.morphTime)
-      : viewer.scene.morphTo2D(projectionState.morphTime);
+    const setNewView = (newMode: number) => {
+      if (newMode === 2) {
+        const newView = {
+          position: {
+            height: 40000000,
+            latitude: 0,
+            longitude: 0
+          },
+          orientation: {
+            heading: 0,
+            pitch: 0,
+            roll: 0
+          }
+        };
+        setGlobeView(viewer, newView);
+      }
+    };
+
+    if (projectionState.projection === GlobeProjection.PlateCaree) {
+      viewer.scene.screenSpaceCameraController.maximumZoomDistance = 90000000;
+      viewer.scene.morphTo2D(projectionState.morphTime);
+
+      // fixes projection being cut off after morphing to 2D
+      viewer.scene.morphComplete.addEventListener(
+        (ignore, previousMode, newMode) => setNewView(newMode)
+      );
+    } else {
+      viewer.scene.screenSpaceCameraController.maximumZoomDistance = 30000000;
+      viewer.scene.morphTo3D(projectionState.morphTime);
+    }
+
+    return () => {
+      viewer.scene.morphComplete.removeEventListener(setNewView);
+    };
   }, [viewer, projectionState]);
 
   // update position and distance when view changes
