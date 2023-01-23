@@ -37,11 +37,6 @@ import {Marker} from '../../../types/marker-type';
 import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 
 import styles from './globe.styl';
-import setGlobeViewAction from '../../../actions/set-globe-view';
-import {useDispatch} from 'react-redux';
-import Rectangle from 'cesium/Source/Core/Rectangle';
-import {setTimeout} from 'timers';
-import Math from 'cesium/Source/Core/Math';
 
 const cesiumOptions = {
   homeButton: false,
@@ -117,7 +112,6 @@ const Globe: FunctionComponent<Props> = ({
   onMoveEnd,
   onMouseDown
 }) => {
-  const dispatch = useDispatch();
   const [viewer, setViewer] = useState<Viewer | null>(null);
   const [firstTilesLoaded, setFirstTilesLoaded] = useState(false);
   const ref = useRef<HTMLDivElement>(null);

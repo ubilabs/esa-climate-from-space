@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect} from 'react';
+import React, {FunctionComponent} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import config from '../../../config/main';
@@ -15,8 +15,6 @@ import {GlobeProjection} from '../../../types/globe-projection';
 import {LayerListItem} from '../../../types/layer-list';
 
 import styles from './globe-navigation.styl';
-import {setGlobeView} from '../../../libs/get-globe-view';
-import setGlobeViewAction from '../../../actions/set-globe-view';
 
 interface Props {
   mainLayer: LayerListItem | null;
