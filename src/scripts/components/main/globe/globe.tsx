@@ -247,8 +247,8 @@ const Globe: FunctionComponent<Props> = ({
       return () => {};
     }
 
-    const setNewView = (newMode: number) => {
-      if (newMode === 2) {
+    const setNewView = (previousMode: number) => {
+      if (previousMode === 3) {
         const newView = {
           position: {
             height: 40000000,
@@ -270,8 +270,8 @@ const Globe: FunctionComponent<Props> = ({
       viewer.scene.morphTo2D(projectionState.morphTime);
 
       // fixes projection being cut off after morphing to 2D
-      viewer.scene.morphComplete.addEventListener(
-        (ignore, previousMode, newMode) => setNewView(newMode)
+      viewer.scene.morphComplete.addEventListener(event =>
+        setNewView(event._previousMode)
       );
     } else {
       viewer.scene.screenSpaceCameraController.maximumZoomDistance = 30000000;
@@ -279,7 +279,9 @@ const Globe: FunctionComponent<Props> = ({
     }
 
     return () => {
-      viewer.scene.morphComplete.removeEventListener(setNewView);
+      if (viewer.cesiumWidget) {
+        viewer.scene.morphComplete.removeEventListener(setNewView);
+      }
     };
   }, [viewer, projectionState]);
 
