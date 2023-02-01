@@ -57,7 +57,8 @@ const VideoJS: FunctionComponent<Props> = ({
   };
 
   const getVideoResolution = (player: VideoJsPlayer, videoRes: string) => {
-    const currentResVideo = videoSrc.find(src => src.includes(videoRes));
+    const webVideo = video.split('web');
+    const currentResVideo = webVideo[0] + videoRes + webVideo[1];
 
     if (currentResVideo) {
       const mobileVideoUrl = getStoryAssetUrl(storyId, currentResVideo);
