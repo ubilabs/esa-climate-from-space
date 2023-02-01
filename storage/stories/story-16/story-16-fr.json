@@ -157,10 +157,10 @@
         "contain"
       ],
       "videoId": "09OdaAnI8B0",
-      "videoCaptions": "assets/elnino-fr.vtt",
+      "videoCaptions": "assets/elnino.vtt",
       "videoPoster": "assets/elnino.jpg",
       "videoSrc": [
-        "assets/elnino-web.mp4"
+        "assets/elnino.mp4"
       ]
     },
     {
