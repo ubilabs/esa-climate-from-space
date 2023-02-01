@@ -30,8 +30,16 @@ const VideoJS: FunctionComponent<Props> = ({
   const playerRef = useRef<VideoJsPlayer | null>();
   const video = videoSrc[0];
   const videoUrl = videoSrc && getStoryAssetUrl(storyId, video);
-  const captionsUrl = videoCaptions && getStoryAssetUrl(storyId, videoCaptions);
   const posterUrl = videoPoster && getStoryAssetUrl(storyId, videoPoster);
+
+  const getCaptionUrl = () => {
+    const captions = videoCaptions?.split('.');
+    const captionLanguagePath =
+      captions && `${captions[0]}-${language}.${captions[1]}`;
+    return (
+      captionLanguagePath && getStoryAssetUrl(storyId, captionLanguagePath)
+    );
+  };
 
   const videoJsOptions: VideoJsPlayerOptions = {
     autoplay: isStoryMode ? false : true,
@@ -50,7 +58,7 @@ const VideoJS: FunctionComponent<Props> = ({
       {
         srclang: language,
         kind: 'captions',
-        src: captionsUrl,
+        src: getCaptionUrl(),
         default: true
       }
     ]
@@ -66,6 +74,8 @@ const VideoJS: FunctionComponent<Props> = ({
     }
   };
 
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source#attr-media
+  // takes the provided video file name and selects a resolution based on media queries
   const handlePlayerReady = (player: VideoJsPlayer) => {
     playerRef.current = player;
 
@@ -79,6 +89,8 @@ const VideoJS: FunctionComponent<Props> = ({
       getVideoResolution(player, VideoResolution.HD720);
     } else if (screen4k.matches) {
       getVideoResolution(player, VideoResolution.HD1080);
+    } else {
+      getVideoResolution(player, VideoResolution.web);
     }
   };
 
