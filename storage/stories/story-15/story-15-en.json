@@ -26,7 +26,7 @@
         "The southern route through the Northwest Passage was nearly ice-free in August 2016, as shown by this image from the Suomi NPP weather satellite (NASA)"
       ],
       "imageFits": [
-        "contain",
+        "cover",
         "cover",
         "cover",
         "cover",
@@ -127,7 +127,7 @@
       ],
       "imageCaptions": [
         "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
-        "Air temperature for Greenland in August 2019-2021 compared to the average for the preceding 30 years. The heatwave of 2021 brought the first recorded rainfall to the high centre of Greenland, where usually there would be snowfall. (ERA5 data from Copernicus Climate Change Service/ECMWF/ESA)",
+        "# Greenland Air Temperature Anomaly 2019-2021 \r\nAir temperature for Greenland in August 2019-2021 compared to the average for the preceding 30 years. The heatwave of 2021 brought the first recorded rainfall to the high centre of Greenland, where usually there would be snowfall. (ERA5 data from Copernicus Climate Change Service/ECMWF/ESA)",
         "The Greenland heatwave of 2021 led to rapid melting of snow and ice, creating extensive flows of meltwater and deeper, darker lakes on the ice sheet surface. Sentinel-2 image from 20 August 2021 (contains modified Copernicus Sentinel data (2021), processed by ESA)",
         "Surface meltwater runs across Leverett Glacier, about 50km from\r\n the western edge of the Greenland  ice sheet, on 19th August 2009.\r\n(Andrew Sole, University of Sheffield)",
         "# CCI Permafrost Extent\r\n \r\nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)"
