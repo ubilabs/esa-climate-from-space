@@ -1,11 +1,12 @@
 import React, {FunctionComponent, useEffect, useRef} from 'react';
 import videojs, {VideoJsPlayer, VideoJsPlayerOptions} from 'video.js';
-import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 
+import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {Language} from '../../../types/language';
 import {VideoResolution} from '../../../types/video-resolution-type';
 
 import 'video.js/dist/video-js.css';
+import styles from './video-js.styl';
 
 interface Props {
   storyId: string;
@@ -45,7 +46,6 @@ const VideoJS: FunctionComponent<Props> = ({
     autoplay: isStoryMode ? false : true,
     controls: true,
     responsive: true,
-    fluid: true,
     aspectRatio: '4:3',
     poster: posterUrl,
     sources: [
@@ -124,7 +124,7 @@ const VideoJS: FunctionComponent<Props> = ({
   }, [playerRef]);
 
   return (
-    <div data-vjs-player>
+    <div data-vjs-player className={styles.vjsContainer}>
       <video
         ref={videoRef}
         className="video-js vjs-big-play-centered"
