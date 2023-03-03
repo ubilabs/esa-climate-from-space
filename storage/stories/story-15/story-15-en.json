@@ -11,39 +11,43 @@
     },
     {
       "type": "image",
-      "text": "## A Passage Opens \r\n\r\nFor centuries, the Northwest Passage between mainland Canada and its Arctic islands has held promise as a shorter sea route between Europe and Asia. But for most of this time it has proved an impenetrable barrier, locked fast in the grip of a frozen sea.\r\n \r\nThe pack ice defeated the Royal Navy in 1845 when Sir John Franklin’s expedition was lost. Eighteen search parties over the next thirty years failed to find any trace of him and his 130 crewmen. It wasn’t until 1906 that Roald Amundsen became the first to complete a route through the Northwest Passage, after a journey lasting three years.\r\n\r\nA century later, still only a handful of voyages had picked their way through the icy waters, some with the aid of icebreakers. Then in the summer of 2007, satellite images showed, for the first time on record, the entire Passage to be largely ice-free. This surprised climate scientists, whose models predicted it would remain ice-bound for some decades to come. Today, you can book a cruise through the Northwest Passage on a liner with more than a thousand other passengers.\r\n\r\nFranklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance.",
-      "shortText": "## A Passage Opens\r\n\r\nFor centuries, sea ice has blocked the Northwest Passage between mainland Canada and its Arctic islands:\r\n \r\n- it defeated the Royal Navy when Sir John Franklin’s expedition was lost in 1845\r\n- 18 searches over 30 years failed to find any trace\r\n- Roald Amundsen first to complete the Passage, in 1906\r\n- A century later, only a handful of voyages had followed\r\n\r\nSummer 2007: satellite images show, for the first time, the entire Passage largely ice-free. \r\n\r\nToday: you can sail through the Northwest Passage on a cruise liner with 1,000 other passengers.\r\n\r\nFranklin’s sunken ships were finally found by seafloor surveys in 2014 and 2016.",
+      "text": "## A Passage Opens \r\n\r\nFor centuries, the Northwest Passage between mainland Canada and its Arctic islands has held promise as a shorter sea route between Europe and Asia. But for most of this time it has proved an impenetrable barrier, locked fast in the grip of a frozen sea.\r\n \r\nThe pack ice defeated the Royal Navy in 1845 when Sir John Franklin’s expedition was lost. Eighteen search parties over the next thirty years failed to find any trace of him and his 130 crewmen. It wasn’t until 1906 that Roald Amundsen became the first to complete a route through the Northwest Passage, after a journey lasting three years.\r\n\r\nA century later, still only a handful of voyages had picked their way through the icy waters, some with the aid of icebreakers. Then in the summer of 2007, satellite images showed, for the first time on record, the entire Passage to be largely ice-free. This surprised climate scientists, whose models predicted it would remain ice-bound for some decades to come. Today, you can book a cruise through the Northwest Passage on a liner with hundreds of other  passengers.\r\n\r\nFranklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance.",
+      "shortText": "## A Passage Opens\r\n\r\nFor centuries, sea ice has blocked the Northwest Passage between mainland Canada and its Arctic islands:\r\n \r\n- it defeated the Royal Navy when Sir John Franklin’s expedition was lost in 1845\r\n- 18 searches over 30 years failed to find any trace\r\n- Roald Amundsen first to complete the Passage, in 1906\r\n- A century later, only a handful of voyages had followed\r\n\r\nSummer 2007: satellite images show, for the first time, the entire Passage largely ice-free. \r\n\r\nToday: you can sail through the Northwest Passage on a cruise liner with hundreds of other  passengers.\r\n\r\nFranklin’s sunken ships were finally found by seafloor surveys in 2014 and 2016.",
       "images": [
         "assets/story15_01.jpg",
         "assets/seaice_large_01.jpg",
-        "assets/seaice_large_12a.jpg"
+        "assets/seaice_large_12a.jpg",
+        "assets/story15_11.jpg"
       ],
       "imageCaptions": [
         "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
         "Summer sea ice in the Canadian Arctic. The narrow channel between mainland Canada and its Arctic islands\r\nis usually blocked by sea ice. In this Envisat MERIS image from 2nd July 2007\r\nLancaster Sound (lower centre) is ice-free, but to the west ice still blocks\r\nParry Channel. (ESA)",
-        "Sea ice is shown in blue in this Envisat ASAR mosaic of the Arctic Ocean from August 2008. The southerly branch of the Northwest Passage is ice-free. (ESA)"
+        "Sea ice is shown in blue in this Envisat ASAR mosaic of the Arctic Ocean from August 2008. The southerly branch of the Northwest Passage is ice-free. (ESA)",
+        "The southern route through the Northwest Passage was nearly ice-free in August 2016, as shown by this image from the Suomi NPP weather satellite (NASA)"
       ],
       "imageFits": [
-        "contain",
         "cover",
         "cover",
-        "contain",
+        "cover",
+        "cover",
         "contain"
       ]
     },
     {
       "type": "image",
-      "text": "## New Trade Routes \r\n\r\nThe loss of Arctic sea ice has been faster than was predicted, with the southern route of the Northwest Passage now navigable almost every year. The more direct, and commercially significant, northern route has opened during six of the last ten summers. In 2008, the first commercial ship passed through and in 2013 the first bulk carrier took cargo from Vancouver to Helsinki. \r\n\r\nThe shrinking icepack is also opening up to shipping the northern coast of Russia – the Northeast Passage. This route shaves more than one third off the sailing distance from Yokohama to Hamburg, compared with the current shortest route through the Suez Canal. There is even greater potential for savings in distance, time and fuel if the ice recedes enough for navigation across the centre of the Arctic Ocean – the Transpolar Sea Route.\r\n\r\nShorter shipping routes will mean less fuel is burned, and less carbon pumped into the atmosphere, but the Arctic will see a local increase in pollutants. Soot particles could darken the remaining ice, adding to the warming, but could also cause more clouds to condense, which might have a cooling effect.\r\n\r\nAlthough good news for the shipping and tourism industries, the retreat of the ice edge is a stark warning that the Earth’s climate is rapidly heading into uncharted waters.",
-      "shortText": "## New Trade Routes \r\n\r\n- Northwest Passage now open almost every year\r\n- 2008: first commercial ship passed through\r\n- 2013: bulk carrier took cargo  Vancouver to Helsinki\r\n- Northeast Passage (Russian coast) also opening up\r\n- Yokohama to Hamburg via Suez Canal: 11,430 nm\r\n- via NW Passage: 8,000 nm, via NE Passage: 7,200 nm\r\n- via Transpolar Sea Route: 6,600 nm\r\n\r\nShorter routes → less fuel burned → less carbon released, but local pollution:\r\n \r\n- soot could darken ice, adding to the warming,\r\n- but could also cause more clouds to condense, which might have a cooling effect\r\n\r\nGood news for shipping and tourism industries, but the rapid retreat of the ice edge is a stark warning that the Earth’s climate is heading into uncharted waters.",
+      "text": "## New Trade Routes \r\n\r\nThe loss of Arctic sea ice has been faster than was predicted, with the southern route of the Northwest Passage now navigable almost every year. In 2008, the first commercial ship passed through and in 2013 the first bulk carrier took cargo from Vancouver to Finland. 86 cargo ships passed through the Northwest Passage in 2019.\r\n\r\nThe shrinking icepack is also opening up to shipping the northern coast of Russia – the Northeast Passage. This route shaves more than one third off the sailing distance from Yokohama to Hamburg, compared with the current shortest route through the Suez Canal. There is even greater potential for savings in distance, time and fuel if the ice recedes enough for navigation across the centre of the Arctic Ocean – the Transpolar Sea Route.\r\n\r\nShorter shipping routes will mean less fuel is burned, and less carbon pumped into the atmosphere, but the Arctic will see a local increase in pollutants. Soot particles could darken the remaining ice, adding to the warming, but could also cause more clouds to condense, which might have a cooling effect.\r\n\r\nAlthough good news for the shipping and tourism industries, the retreat of the ice edge is a stark warning that the Earth’s climate is rapidly heading into uncharted waters.",
+      "shortText": "## New Trade Routes \r\n\r\n- Northwest Passage now open almost every year\r\n- 2008: first commercial ship passed through\r\n- 2013: bulk carrier took cargo  Vancouver to Finland\r\n- 2019: 86 cargo ships through the Northwest Passage\r\n- Northeast Passage (Russian coast) also opening up\r\n- Yokohama to Hamburg via Suez Canal: 11,430 nm\r\n- via NW Passage: 8,000 nm, via NE Passage: 7,200 nm\r\n- via Transpolar Sea Route: 6,600 nm\r\n\r\nShorter routes → less fuel burned → less carbon released, but local pollution:\r\n \r\n- soot could darken ice, adding to the warming,\r\n- but could also cause more clouds to condense, which might have a cooling effect\r\n\r\nGood news for shipping and tourism industries, but the rapid retreat of the ice edge is a stark warning that the Earth’s climate is heading into uncharted waters.",
       "images": [
         "assets/story15_02.jpg",
         "assets/story15_03.jpg",
-        "assets/story15_04.png"
+        "assets/story15_04.png",
+        "assets/story15_12.jpg"
       ],
       "imageCaptions": [
         "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
         "Icebreaker escorting a cargo vessel through sea ice in the Arctic Ocean (Aker Arctic)",
-        "# Arctic Sea Ice Extent in August 1979-2019 \r\nSummer ice extent in the Arctic is down 72,000 sq km per year, or 9.1% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)"
+        "# Arctic Sea Ice Extent in August 1979-2019 \r\nSummer ice extent in the Arctic is down 72,000 sq km per year, or 9.1% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)",
+        "Ship tracks in the eastern part of the Northwest Passage in 2013 (green) and 2019 (orange). Traffic increased from 112 to 160 ships between these years. (Arctic Council)"
       ],
       "imageFits": [
         "contain",
@@ -55,8 +59,8 @@
     },
     {
       "type": "globe",
-      "text": "## Seasonal Cycle\r\n\r\nThe Arctic Ocean is characterised by the sea ice cover and its seasonal fluctuations. During winter, the ice pack grows to an area between 14 and 16 million square kilometres, reducing to four to five million square kilometres by the end of summer. That’s an area equivalent to the entire surface of Europe appearing and disappearing through the year. \r\n\r\nYou can see the annual expansion and contraction of the frozen sea surface by scrubbing through the timeline of the interactive globe on the right. Compare the annual minimum ice extents in mid-September for the first year and the final year of the sequence. Spin the globe round to Antarctica to see the sea ice in the Southern Ocean.\r\n\r\nThe core of the ice cover is formed of layers of frozen seawater that have survived the summer thaw. This multi-year ice reaches a thickness of two to four metres in the Arctic, whereas first-year sea ice typically reaches only 1 – 1.5 metres.\r\n\r\n## Long-term trend\r\n\r\nSatellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2019. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.",
-      "shortText": "## Seasonal Cycle\r\n\r\nArctic Ocean sea ice cover seasonal fluctuations:\r\n\r\n- winter ice pack area 14–16 million sq km \r\n- shrinks to 4–5 million sq km by end of summer \r\n- area the size of Europe appears/disappears over the year \r\n\r\nThe core of the ice cover is layers of frozen seawater that have survived the summer thaw:\r\n \r\n- multi-year ice 2 to 4 metres thick in the Arctic\r\n- first-year ice typically reaches only 1 to 1.5 metres\r\n\r\nSatellite observations show a significant loss of Arctic sea ice in recent decades:\r\n\r\n- lowest extents observed in 2012, 2007 and 2019 \r\n- since 1978, Arctic summer ice extent is down almost 40%",
+      "text": "## Seasonal Cycle\r\n\r\nThe Arctic Ocean is characterised by the sea ice cover and its seasonal fluctuations. During winter, the ice pack grows to an area between 14 and 16 million square kilometres, reducing to four to five million square kilometres by the end of summer. That’s an area equivalent to the entire surface of Europe appearing and disappearing through the year. \r\n\r\nYou can see the annual expansion and contraction of the frozen sea surface by scrubbing through the timeline of the interactive globe on the right. Compare the annual minimum ice extents in mid-September for the first year and the final year of the sequence. Spin the globe round to Antarctica to see the sea ice in the Southern Ocean.\r\n\r\nThe core of the ice cover is formed of layers of frozen seawater that have survived the summer thaw. This multi-year ice reaches a thickness of two to four metres in the Arctic, whereas first-year sea ice typically reaches only 1 – 1.5 metres.\r\n\r\n## Long-term trend\r\n\r\nSatellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2020. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.",
+      "shortText": "## Seasonal Cycle\r\n\r\nArctic Ocean sea ice cover seasonal fluctuations:\r\n\r\n- winter ice pack area 14–16 million sq km \r\n- shrinks to 4–5 million sq km by end of summer \r\n- area the size of Europe appears/disappears over the year \r\n\r\nThe core of the ice cover is layers of frozen seawater that have survived the summer thaw:\r\n \r\n- multi-year ice 2 to 4 metres thick in the Arctic\r\n- first-year ice typically reaches only 1 to 1.5 metres\r\n\r\nSatellite observations show a significant loss of Arctic sea ice in recent decades:\r\n\r\n- lowest extents observed in 2012, 2007 and 2020 \r\n- since 1978, Arctic summer ice extent is down almost 40%",
       "imageFits": [
         "contain",
         "contain",
@@ -116,21 +120,23 @@
       "shortText": "## Life on the Front Line\r\n\r\nWaters becoming easier for a cruise ship are becoming more difficult for dogsled and snowmobile:\r\n\r\n- traditional ways of hunting and travelling disrupted\r\n- links to food sources and between communities broken\r\n\r\nFrom Alaska to Siberia, as permafrost thaws out:\r\n\r\n- buildings, roads and pipelines undermined\r\n- carbon dioxide and methane released from the soil\r\n- methane hydrates on the sea floor could also thaw \r\n\r\nMelt-water from the Greenland Ice Sheet:\r\n- has contributed 11mm to sea level rise since 1992\r\n- is tracking the worst-case climate warming predictions \r\n- disrupts the salinity balance of surrounding seas\r\n\r\nIce sheets, glaciers, permafrost, ocean salinity and sea ice are all ‘essential climate variables’.",
       "images": [
         "assets/icesheet_large_16.jpg",
+        "assets/story15_13.jpg",
+        "assets/story15_14.jpg",
         "assets/icesheet_large_01.jpg",
-        "assets/story15_10.jpg",
         "assets/story15_08.jpg"
       ],
       "imageCaptions": [
         "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
+        "# Greenland Air Temperature Anomaly 2019-2021 \r\nAir temperature for Greenland in August 2019-2021 compared to the average for the preceding 30 years. The heatwave of 2021 brought the first recorded rainfall to the high centre of Greenland, where usually there would be snowfall. (ERA5 data from Copernicus Climate Change Service/ECMWF/ESA)",
+        "The Greenland heatwave of 2021 led to rapid melting of snow and ice, creating extensive flows of meltwater and deeper, darker lakes on the ice sheet surface. Sentinel-2 image from 20 August 2021 (contains modified Copernicus Sentinel data (2021), processed by ESA)",
         "Surface meltwater runs across Leverett Glacier, about 50km from\r\n the western edge of the Greenland  ice sheet, on 19th August 2009.\r\n(Andrew Sole, University of Sheffield)",
-        "A new iceberg calves from the Greenland Ice Shelf into Disko Bay. (ESA)",
         "# CCI Permafrost Extent\r\n \r\nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)"
       ],
       "imageFits": [
         "cover",
-        "cover",
-        "cover",
         "contain",
+        "cover",
+        "cover",
         "contain"
       ]
     },
