@@ -1,3 +1,13 @@
+# [1.10.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.9.1...v1.10.0) (2023-03-03)
+
+
+### Bug Fixes
+
+* **2D-mode:** prevent projection being cut off after morph ([a13e424](https://github.com/ubilabs/esa-climate-from-space/commit/a13e424a4acbb9551f0b6be5db45e8c611f0bd3b))
+* **globe:** check for cesium widget ([6618fc7](https://github.com/ubilabs/esa-climate-from-space/commit/6618fc7e52471f65de701b1d9ef5e848d1454e22))
+
+
+
 ## [1.9.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.9.0...v1.9.1) (2022-11-28)
 
 
