@@ -16,9 +16,9 @@
       "images": [
         "assets/story21-image01.jpg",
         "assets/story21-image06.png",
-        "assets/story21-image13.jpg",
+        "assets/story21-image12.jpg",
         "assets/story21-image11.jpg",
-        "assets/story21-image12.jpg"
+        "assets/story21-image13.jpg"
       ],
       "imageCaptions": [
         "A woman is trapped on her car roof during a  flash flood in Toowoomba, Queensland, Australia, 10 January 2011 (T Swinson)",
@@ -126,15 +126,15 @@
         "assets/story21-image04.png",
         "assets/story21-image14.jpg",
         "assets/story21-image07.jpg",
-        "assets/story21-image05.png",
-        "assets/story21-image03.jpg"
+        "assets/story21-image03.jpg",
+        "assets/story21-image05.png"
       ],
       "imageCaptions": [
         "# Global Water Cycle Fluxes\r\nGlobal water cycle fluxes, measured in thousand cubic kilometres per year (TU Wien/W Dorigo)",
         "The aftermath of two large glacier avalanches is recorded in this satellite image of the eastern Himalayas from 2018. Sudden collapses of glaciers have also occurred in the Caucasus, Andes and Alps in recent years. A warming climate, permafrost thawing and meltwater infiltration are among the causes of such events.\r\n(Contains modified Copernicus Sentinel-2 data (2017–18), processed by CCI Glacier team and ESA)",
         "# Cummulative Change in Glacial Ice Mass 1961-2016\r\nMore than nine trillion tonnes of glacier ice has been lost in the last half century (ESA, adapted from Zemp et al (2019) Nature, and data courtesy World Glacier Monitoring Service)",
-        "# Energy Stored in Climate System Components\r\nHeat energy accumulated in different components of Earth’s climate system since 1971, measured in zettajoules (1 ZJ is 10^21 J, or a thousand billion billion J). Water in the world’s oceans stores far more heat than the atmosphere and the land. \r\n(UN IPCC, 2013)",
-        "The trillion tonnes of ice lost each year is enough to form a 10-kilometre-tall ice cube, shown here next to Manhattan for scale.\r\nIce lost from glaciers and ice sheets on land is a major contibutor to sea level rise, but the loss of sea ice and floating ice shelves contributes very little. (Planetary Visions / ESA / NASA)"
+        "The trillion tonnes of ice lost each year is enough to form a 10-kilometre-tall ice cube, shown here next to Manhattan for scale.\r\nIce lost from glaciers and ice sheets on land is a major contibutor to sea level rise, but the loss of sea ice and floating ice shelves contributes very little. (Planetary Visions / ESA / NASA)",
+        "# Energy Stored in Climate System Components\r\nHeat energy accumulated in different components of Earth’s climate system since 1971, measured in zettajoules (1 ZJ is 10^21 J, or a thousand billion billion J). Water in the world’s oceans stores far more heat than the atmosphere and the land. \r\n(UN IPCC, 2013)"
       ],
       "imageFits": [
         "contain",
