@@ -36,7 +36,7 @@
       "images": [
         "assets/story29-image01.jpg",
         "assets/story29-image04.jpg",
-        "assets/story29-image13.jpg",
+        "assets/story29-image17.jpg",
         "assets/story29-image14.jpg",
         "assets/story29-image15.jpg"
       ],
@@ -151,7 +151,7 @@
         "Prototype agricultural rover developed using technology  from ESA’s Mars rover programme. (ESA/Earth Rover)"
       ],
       "imageFits": [
-        "cover",
+        "contain",
         "cover",
         "cover",
         "cover",
