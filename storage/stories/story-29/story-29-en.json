@@ -35,11 +35,17 @@
       "shortText": "## Feeding the World\r\n\r\n- When humans first evolved, we took our place in the local food chain. \r\n- Growing populations required us to find ways of producing more – and more nutritious – food. \r\n- For 10,000 years, food production has shaped the landscape, changed the evolutionary paths of many species, and even influenced Earth’s climate.\r\n- Global population is now over 8 billion people, and expected to approach 10 billion by 2050.\r\n- ‘Zero Hunger’ is the second of the UN's Sustainable Development Goals.\r\n- How we can produce enough food, in a secure and sustainable way, is among the most important questions facing humanity.",
       "images": [
         "assets/story29-image01.jpg",
-        "assets/story29-image04.jpg"
+        "assets/story29-image04.jpg",
+        "assets/story29-image13.jpg",
+        "assets/story29-image14.jpg",
+        "assets/story29-image15.jpg"
       ],
       "imageCaptions": [
         "Field patterns on the reclaimed land of the Noordoostpolder, Netherlands, \r\nobserved by Copernicus Sentinel-2, 30 June 2018 (Copernicus Sentinel data 2018)",
-        "Rice fields in Vietnam. Radar data from the Copernicus Sentinel-1 satellite shows changes over three months in late 2019. The October image is shown in red, November in green and December in blue. (Contains modified Copernicus Sentinel data, 2019, processed by ESA)"
+        "Rice fields in Vietnam. Radar data from the Copernicus Sentinel-1 satellite shows changes over three months in late 2019. The October image is shown in red, November in green and December in blue. (Contains modified Copernicus Sentinel data, 2019, processed by ESA)",
+        "Western Australia’s Wheatbelt region is a major producer of wheat, barley and wool. This multitemporal infrared image from the Copernicus Sentinel-2 satellite combines data from May 2019 (red), September 2019 (green) and January 2020 (blue). (Contains modified Copernicus Sentinel data (2019-20), processed by ESA)",
+        "Palm oil is a highly productive crop used in a vast range of products from food to cosmetics to biofuel. This satellite image shows large areas of tropical rainforest in Borneo cleared for palm oil production. The brown areas are recently cleared land and the bright green areas are well-established plantations. (Contains modified Copernicus Sentinel data (2019), processed by ESA)",
+        "Cultivated fields appear dark green north of Antananarivo, the capital city of Madagascar, in this satellite image taken by Copernicus Sentinel-2 on 28 September 2017. (Contains modified Copernicus Sentinel data (2017), processed by ESA)"
       ],
       "imageFits": [
         "cover",
@@ -131,14 +137,14 @@
       "text": "## Precision Agriculture \r\n\r\nHumans currently use about 70 per cent of our planet’s ice-free land surface. The good news is that this land could potentially be three or four times more productive: if we use the land more efficiently we can significantly increase the amount of food grown. Space technology, including the satellites we use to monitor the climate and forecast the weather, can help.\r\n\r\nSatellite instruments using infrared wavelengths can monitor the health of plants throughout the year. Combining this information with weather forecasts and measurements of, for example, [soil moisture](stories/story-21/5), land surface temperature and atmospheric composition can show us which fields need to be irrigated or fertilised, by what amount, and when. Satellite observations can help quantify crop loss after extreme events, easing access to insurance payments for small farmers. Precise satellite navigation can also guide ploughing, sowing, weeding, pest control and harvesting. \r\n\r\nThis ‘precision agriculture’ can help farmers to optimise yields while reducing the chance of using up supplies of freshwater or polluting rivers, lakes and the oceans. With mobile phone networks and smartphones, services like this are becoming available even to smallholders in remote areas. Farmers across the world have scope to grow more while using less, making agriculture not only more sustainable but also more resilient to extreme events. \r\n\r\nChanges such as these can help us achieve the sustainable development goal of zero hunger, including food security, improved nutrition and sustainable agriculture, so that everyone in our growing world has enough to eat.",
       "shortText": "## Precision Agriculture \r\n\r\n- The land we use for agriculture could be three or four times more productive. \r\n- The satellites we use to monitor the climate and forecast the weather can help.\r\n- They monitor plant health, soil moisture, land surface temperature to show us which fields need to be irrigated or fertilised, by what amount, and when. \r\n- Precise satellite navigation can guide ploughing, sowing, weeding, pest control and harvesting. \r\n- Satellites can help quantify crop loss after extreme events, easing access to insurance payments for small farmers. \r\n- Mobile phone networks and smartphones can bring services like this to smallholders even in remote areas.",
       "images": [
-        "assets/story29-image11.jpg",
+        "assets/story29-image16.jpg",
         "assets/story29-image13.jpg",
         "assets/story29-image06.jpg",
         "assets/story29-image07.jpg",
         "assets/story29-image12.jpg"
       ],
       "imageCaptions": [
-        "Due to launch in 2025, the Copernicus Land Surface Temperature Mission \r\naims to meet the needs of farmers by providing detailed measurements of \r\nplant stress due to drought, helping them manage water use more effectively. (Airbus)",
+        "Satellite data can be used to measure the vigour of vegetation through the growing season, to help forecast yields and schedule harvesting. Left: visible-wavelength satellite image of fields in Belgium from Copernicus Sentinel-2. Right: leaf area index derived from the satellite’s visible and infrared channels. (Contains modified Copernicus Sentinel data (2016), processed by ESA)",
         "Automatic processing of satellite images can be used to map field boundaries (ESA/Spacenus)",
         "A farmer using a satellite navigation system in northern France.  (ESA)",
         "Precision agriculture uses information from several sources, including sensors on the ground, on the tractor, in the air and in space, to guide crop management. \r\n(Livingimages/iStock)",
