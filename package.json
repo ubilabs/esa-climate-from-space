@@ -82,7 +82,7 @@
     "@types/video.js": "^7.3.31",
     "@types/youtube-player": "^5.5.3",
     "@typescript-eslint/eslint-plugin": "^5.44.0",
-    "@vitejs/plugin-react": "^2.2.0",
+    "@vitejs/plugin-react": "^4.0.0",
     "conventional-changelog-cli": "^2.0.31",
     "electron": "^21.3.0",
     "electron-builder": "^23.6.0",
@@ -98,6 +98,6 @@
     "stylus": "^0.59.0",
     "stylus-supremacy": "^2.14.0",
     "typescript": "^4.9.3",
-    "vite": "^3.2.4"
+    "vite": "^4.3.5"
   }
 }
