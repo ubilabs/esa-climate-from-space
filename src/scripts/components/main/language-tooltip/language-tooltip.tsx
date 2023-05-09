@@ -4,7 +4,7 @@ import {FormattedMessage} from 'react-intl';
 import Button from '../button/button';
 import {ChangeLanguageIcon} from '../icons/change-language-icon';
 
-import styles from './language-tooltip.styl';
+import styles from './language-tooltip.module.styl';
 
 interface Props {
   onClose: () => void;

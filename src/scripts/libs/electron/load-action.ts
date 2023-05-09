@@ -4,10 +4,10 @@ import {Action} from 'redux';
 export function loadAction(
   actionType: string,
   filePath?: string
-): Action | null {
+): Promise<Action | null> {
   if (!window.cfs) {
     console.error('Calling electron function from a non-electron environment');
-    return null;
+    return Promise.resolve(null);
   }
 
   return window.cfs.loadAction(actionType, filePath);
