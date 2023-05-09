@@ -72,7 +72,7 @@
     "@types/git-state": "^4.1.0",
     "@types/lodash.debounce": "^4.0.6",
     "@types/lodash.intersection": "^4.4.6",
-    "@types/node": "^18.11.9",
+    "@types/node": "^20.1.1",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-redux": "^7.1.7",
