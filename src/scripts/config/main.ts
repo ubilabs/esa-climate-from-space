@@ -33,29 +33,40 @@ if (import.meta.env.PROD) {
   baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}/`;
 }
 
-const basemapUrls = {
+type BasemapId = 'atmosphere' | 'blue' | 'colored' | 'dark' | 'land' | 'ocean';
+
+const basemapMaxZoom: {[id in BasemapId]: number} = {
+  atmosphere: 4,
+  blue: 4,
+  colored: 5,
+  dark: 4,
+  land: 4,
+  ocean: 4
+} as const;
+
+const basemapUrls: {[id in BasemapId]: string} = {
   land: `${baseUrlTiles}/basemaps/land`,
   ocean: `${baseUrlTiles}/basemaps/ocean`,
   atmosphere: `${baseUrlTiles}/basemaps/atmosphere`,
   blue: `${baseUrlTiles}/basemaps/blue`,
   dark: `${baseUrlTiles}/basemaps/dark`,
   colored: `${baseUrlTiles}/basemaps/colored`
-};
+} as const;
 
-const basemapUrlsOffline = {
+const basemapUrlsOffline: {[id in BasemapId]: string} = {
   land: 'basemaps/land',
   ocean: 'basemaps/ocean',
   atmosphere: 'basemaps/atmosphere',
   blue: 'basemaps/blue',
   dark: 'basemaps/dark',
   colored: 'basemaps/colored'
-};
+} as const;
 
 const downloadUrls = {
   windows: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-win.exe`,
   macOS: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-mac.zip`,
   linux: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-linux.zip`
-};
+} as const;
 
 export default {
   api: {
@@ -71,10 +82,11 @@ export default {
     stories: `${baseUrlStorage}stories/stories-{lang}.json`,
     story: `${baseUrlStorage}stories/{id}/{id}-{lang}.json`
   },
-  defaultBasemap: 'colored' as keyof typeof basemapUrls,
-  defaultLayerBasemap: 'land' as keyof typeof basemapUrls,
+  defaultBasemap: 'colored' as BasemapId,
+  defaultLayerBasemap: 'land' as BasemapId,
   basemapUrls,
   basemapUrlsOffline,
+  basemapMaxZoom,
   globe: globeState,
   share: {
     facebook:
