@@ -7,7 +7,12 @@ import React, {
 
 import cx from 'classnames';
 
-import {LayerProps, MarkerProps, WebGlGlobe} from '@ubilabs/esa-webgl-globe';
+import {
+  LayerProps,
+  MarkerProps,
+  WebGlGlobe,
+  WebGlGlobeEventMap
+} from '@ubilabs/esa-webgl-globe';
 import GLOBE_WORKER_URL from '@ubilabs/esa-webgl-globe/worker?url';
 
 import {GlobeView} from '../../../types/globe-view';
@@ -25,6 +30,8 @@ import {useHistory} from 'react-router-dom';
 import config from '../../../config/main';
 
 import styles from './globe.module.styl';
+
+type LayerLoadingStateChangedEvent = WebGlGlobeEventMap['layerLoadingStateChanged'];
 
 WebGlGlobe.setTileSelectorWorkerUrl(GLOBE_WORKER_URL);
 
@@ -52,83 +59,99 @@ const Globe: FunctionComponent<Props> = props => {
     // spinning,
     // active,
     // flyTo,
-    // markers = [],
     // backgroundColor,
     onMouseEnter,
-    onTouchStart
+    onTouchStart,
+    layerDetails,
+    imageLayer,
+    markers
     // onChange,
     // onMoveEnd,
     // onMouseDown
   } = props;
 
-  const [containerRef] = useWebGlGlobe(props);
+  const [containerRef, globe] = useWebGlGlobe();
+  const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
+
+  useGlobeLayers(globe, layerDetails, imageLayer);
+  useGlobeMarkers(globe, markers);
 
   return (
     <div
       ref={containerRef}
-      className={cx(styles.globe, styles.fadeIn)}
+      className={cx(styles.globe, initialTilesLoaded && styles.fadeIn)}
       onMouseEnter={() => onMouseEnter()}
       onTouchStart={() => onTouchStart()}></div>
   );
 };
 
+/**
+ * Use a state-variable and callback as a ref so the element can be used
+ * as dependency in other effects.
+ */
 function useCallbackRef() {
-  const [containerEl, setContainerEl] = useState<HTMLElement | null>(null);
-  const containerRef = useCallback(
-    (node: HTMLElement | null) => setContainerEl(node),
-    []
-  );
+  const [element, setElement] = useState<HTMLElement | null>(null);
+  const ref = useCallback((node: HTMLElement | null) => setElement(node), []);
 
-  return [containerRef, containerEl] as const;
+  return [ref, element] as const;
 }
 
-function useWebGlGlobe(props: Props) {
+/**
+ * Creates the WebGlGlobe instance once the container element becomes available.
+ */
+function useWebGlGlobe() {
   const [containerRef, containerEl] = useCallbackRef();
   const [globe, setGlobe] = useState<WebGlGlobe | null>(null);
 
-  console.log('useWebGlGlobe()', globe, props);
-
-  // ----
-  // create WebGlGlobe instance once container is available
   useEffect(() => {
     if (!containerEl) {
       return () => {};
     }
 
-    console.log('useWebGlGlobe(): create globe instance');
-    const _globe = new WebGlGlobe(containerEl);
+    const newGlobe = new WebGlGlobe(containerEl);
 
-    setGlobe(_globe);
+    setGlobe(newGlobe);
 
-    return () => _globe.destroy();
+    return () => newGlobe.destroy();
   }, [containerEl]);
 
-  // ----
-  // update layers
+  return [containerRef, globe] as const;
+}
+
+/**
+ * Updates the globe layers as soon as available.
+ */
+function useGlobeLayers(
+  globe: WebGlGlobe | null,
+  layerDetails: Layer | null,
+  imageLayer: GlobeImageLayerData | null
+) {
   useEffect(() => {
     if (!globe) {
       return () => {};
     }
-    const layers = getLayers(props.imageLayer, props.layerDetails);
 
-    console.log('setLayers', layers);
-    globe.setProps({layers});
+    globe.setProps({layers: getLayers(imageLayer, layerDetails)});
 
+    // we don't reset the layers in the cleanup-function as this would lead
+    // to animations not working.
     return () => {};
-    // return () => globe.setProps({layers: []});
-  }, [globe, props.layerDetails, props.imageLayer]);
+  }, [globe, layerDetails, imageLayer]);
+}
 
-  // ----
-  // add and remove markers
+/**
+ * Updates the markers on the globe when they become available.
+ */
+function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
   const history = useHistory();
 
   useEffect(() => {
-    if (!globe || !props.markers) {
+    if (!globe || !markers) {
       return () => {};
     }
 
     globe.setProps({
-      markers: getMarkers(props.markers, (marker: Marker) => {
+      markers: getMarkers(markers, (marker: Marker) => {
         if (!marker.link) {
           return;
         }
@@ -140,9 +163,45 @@ function useWebGlGlobe(props: Props) {
     return () => {
       globe.setProps({markers: []});
     };
-  }, [history, globe, props.markers]);
+  }, [history, globe, markers]);
+}
 
-  return [containerRef, globe] as const;
+/**
+ * Manages a single state-variable indicating wether the first tiles of the
+ * basemaps have been loaded.
+ */
+function useInitialBasemapTilesLoaded(globe: WebGlGlobe | null) {
+  const [initalTilesLoaded, setInitialTilesLoaded] = useState(false);
+
+  const handleLoadingStateChange = useCallback(
+    (ev: LayerLoadingStateChangedEvent) => {
+      const {layer, state} = ev.detail;
+      if (layer.id === 'basemap' && state === 'ready') {
+        setInitialTilesLoaded(true);
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    if (!globe) {
+      return () => {};
+    }
+
+    globe.addEventListener(
+      'layerLoadingStateChanged',
+      handleLoadingStateChange
+    );
+
+    return () => {
+      globe.removeEventListener(
+        'layerLoadingStateChanged',
+        handleLoadingStateChange
+      );
+    };
+  }, [globe, handleLoadingStateChange]);
+
+  return initalTilesLoaded;
 }
 
 function getLayers(
