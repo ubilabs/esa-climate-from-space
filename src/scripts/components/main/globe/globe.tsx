@@ -10,6 +10,7 @@ import cx from 'classnames';
 import {
   LayerProps,
   MarkerProps,
+  RenderMode,
   WebGlGlobe,
   WebGlGlobeEventMap
 } from '@ubilabs/esa-webgl-globe';
@@ -30,6 +31,7 @@ import {useHistory} from 'react-router-dom';
 import config from '../../../config/main';
 
 import styles from './globe.module.styl';
+import {GlobeProjection} from '../../../types/globe-projection';
 
 type LayerLoadingStateChangedEvent = WebGlGlobeEventMap['layerLoadingStateChanged'];
 
@@ -52,13 +54,15 @@ interface Props {
   onMouseDown: () => void;
 }
 
+const EMPTY_FUNCTION = () => {};
+
 const Globe: FunctionComponent<Props> = props => {
   const {
-    // view,
-    // projectionState,
+    view,
+    projectionState,
     // spinning,
-    // active,
-    // flyTo,
+    active,
+    flyTo,
     // backgroundColor,
     onMouseEnter,
     onTouchStart,
@@ -75,6 +79,9 @@ const Globe: FunctionComponent<Props> = props => {
 
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
+
+  useProjectionSwitch(globe, projectionState.projection);
+  useExternalGlobeViewControl(globe, active, view, flyTo);
 
   return (
     <div
@@ -105,7 +112,7 @@ function useWebGlGlobe() {
 
   useEffect(() => {
     if (!containerEl) {
-      return () => {};
+      return EMPTY_FUNCTION;
     }
 
     const newGlobe = new WebGlGlobe(containerEl);
@@ -128,14 +135,14 @@ function useGlobeLayers(
 ) {
   useEffect(() => {
     if (!globe) {
-      return () => {};
+      return EMPTY_FUNCTION;
     }
 
     globe.setProps({layers: getLayers(imageLayer, layerDetails)});
 
     // we don't reset the layers in the cleanup-function as this would lead
     // to animations not working.
-    return () => {};
+    return EMPTY_FUNCTION;
   }, [globe, layerDetails, imageLayer]);
 }
 
@@ -147,7 +154,7 @@ function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
 
   useEffect(() => {
     if (!globe || !markers) {
-      return () => {};
+      return EMPTY_FUNCTION;
     }
 
     globe.setProps({
@@ -185,7 +192,7 @@ function useInitialBasemapTilesLoaded(globe: WebGlGlobe | null) {
 
   useEffect(() => {
     if (!globe) {
-      return () => {};
+      return EMPTY_FUNCTION;
     }
 
     globe.addEventListener(
@@ -204,6 +211,41 @@ function useInitialBasemapTilesLoaded(globe: WebGlGlobe | null) {
   return initalTilesLoaded;
 }
 
+function useProjectionSwitch(
+  globe: WebGlGlobe | null,
+  projection: GlobeProjection
+) {
+  useEffect(() => {
+    if (!globe) {
+      return;
+    }
+
+    const renderMode: RenderMode = (projection === GlobeProjection.Sphere
+      ? 'globe'
+      : 'map') as RenderMode;
+
+    globe.setProps({renderMode});
+  }, [globe, projection]);
+}
+
+function useExternalGlobeViewControl(
+  globe: WebGlGlobe | null,
+  active: boolean,
+  view: GlobeView,
+  flyTo: GlobeView | null
+) {
+  useEffect(() => {
+    console.log('--- view changed: ', view);
+  }, [view]);
+  useEffect(() => {
+    console.log('--- flyTo changed: ', flyTo);
+  }, [flyTo]);
+  useEffect(() => console.log('--- active changed', active), [active]);
+}
+
+// ----
+// utility functions
+// ----
 function getLayers(
   imageLayer: GlobeImageLayerData | null,
   layerDetails: Layer | null
@@ -267,7 +309,6 @@ function getMarkers(
       lng,
       html,
       id: marker.link,
-      offset: [-16, -16],
       onClick: () => onClick(marker)
     });
   }
