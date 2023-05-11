@@ -8,6 +8,7 @@ import React, {
 import cx from 'classnames';
 
 import {
+  CameraView,
   LayerProps,
   MarkerProps,
   RenderMode,
@@ -15,8 +16,6 @@ import {
   WebGlGlobeEventMap
 } from '@ubilabs/esa-webgl-globe';
 import GLOBE_WORKER_URL from '@ubilabs/esa-webgl-globe/worker?url';
-
-import {GlobeView} from '../../../types/globe-view';
 
 import {GlobeProjectionState} from '../../../types/globe-projection-state';
 import {Layer} from '../../../types/layer';
@@ -39,18 +38,18 @@ WebGlGlobe.setTileSelectorWorkerUrl(GLOBE_WORKER_URL);
 
 interface Props {
   active: boolean;
-  view: GlobeView;
+  view: CameraView;
   projectionState: GlobeProjectionState;
   imageLayer: GlobeImageLayerData | null;
   layerDetails: Layer | null;
   spinning: boolean;
-  flyTo: GlobeView | null;
+  flyTo: CameraView | null;
   markers?: Marker[];
   backgroundColor: string;
   onMouseEnter: () => void;
   onTouchStart: () => void;
-  onChange: (view: GlobeView) => void;
-  onMoveEnd: (view: GlobeView) => void;
+  onChange: (view: CameraView) => void;
+  onMoveEnd: (view: CameraView) => void;
   onMouseDown: () => void;
 }
 
@@ -81,7 +80,7 @@ const Globe: FunctionComponent<Props> = props => {
   useGlobeMarkers(globe, markers);
 
   useProjectionSwitch(globe, projectionState.projection);
-  useExternalGlobeViewControl(globe, active, view, flyTo);
+  useExternalGlobSynchronization(globe, active, view, flyTo);
 
   return (
     <div
@@ -228,11 +227,11 @@ function useProjectionSwitch(
   }, [globe, projection]);
 }
 
-function useExternalGlobeViewControl(
+function useExternalGlobSynchronization(
   globe: WebGlGlobe | null,
   active: boolean,
-  view: GlobeView,
-  flyTo: GlobeView | null
+  view: CameraView,
+  flyTo: CameraView | null
 ) {
   useEffect(() => {
     console.log('--- view changed: ', view);
