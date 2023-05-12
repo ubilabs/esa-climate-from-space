@@ -1,5 +1,6 @@
 import {GlobeState} from '../reducers/globe/index';
 import {GlobeProjection} from '../types/globe-projection';
+import {RenderMode} from '@ubilabs/esa-webgl-globe';
 
 const globeState: GlobeState = {
   time: Date.now(),
@@ -8,16 +9,11 @@ const globeState: GlobeState = {
     morphTime: 2
   },
   view: {
-    position: {
-      height: 23840000,
-      latitude: 25,
-      longitude: 0
-    },
-    orientation: {
-      heading: 360,
-      pitch: -90,
-      roll: 0
-    }
+    renderMode: 'globe' as RenderMode,
+    lat: 25,
+    lng: 0,
+    altitude: 23840000,
+    zoom: 0
   },
   spinning: true
 };

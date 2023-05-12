@@ -2,6 +2,7 @@ import {GlobeState} from '../reducers/globe/index';
 import {UrlHashState} from '../types/url-hash-state';
 
 import {GlobeProjection} from '../types/globe-projection';
+import {RenderMode} from '@ubilabs/esa-webgl-globe';
 
 const char = 'I';
 
@@ -49,23 +50,20 @@ export function parseUrl(): UrlHashState | null {
   return {
     globeState: {
       view: {
-        position: {
-          longitude: values[0],
-          latitude: values[1],
-          height: values[2]
-        },
-        orientation: {
-          heading: values[3],
-          pitch: values[4],
-          roll: values[5]
-        }
+        renderMode: (projection === GlobeProjection.Sphere
+          ? 'globe'
+          : 'map') as RenderMode,
+        lng: values[0],
+        lat: values[1],
+        altitude: values[2],
+        zoom: values[3]
       },
       projectionState: {
         projection: GlobeProjection.Sphere,
         morphTime: 2
       },
-      time: values[6],
-      spinning: Boolean(Number(values[7]))
+      time: values[4],
+      spinning: Boolean(Number(values[5]))
     },
     layerIds: {
       mainId: layerIds[0],
@@ -80,19 +78,8 @@ export function getParamString(
   compareId: string | null
 ): string | null {
   const {view, projectionState, time, spinning} = globeState;
-  const {position, orientation} = view;
-  const {longitude, latitude, height} = position;
-  const {heading, pitch, roll} = orientation;
-  const values = [
-    longitude,
-    latitude,
-    height,
-    heading,
-    pitch,
-    roll,
-    time,
-    spinning ? 1 : 0
-  ];
+  const {lat, lng, altitude, zoom} = view;
+  const values = [lng, lat, altitude, zoom, time, spinning ? 1 : 0];
 
   if (values.some(num => isNaN(num))) {
     return null;
