@@ -57,20 +57,12 @@ const EMPTY_FUNCTION = () => {};
 
 const Globe: FunctionComponent<Props> = props => {
   const {
-    view,
     projectionState,
-    // spinning,
-    active,
-    flyTo,
-    // backgroundColor,
     onMouseEnter,
     onTouchStart,
     layerDetails,
     imageLayer,
     markers
-    // onChange,
-    // onMoveEnd,
-    // onMouseDown
   } = props;
 
   const [containerRef, globe] = useWebGlGlobe();
@@ -80,7 +72,14 @@ const Globe: FunctionComponent<Props> = props => {
   useGlobeMarkers(globe, markers);
 
   useProjectionSwitch(globe, projectionState.projection);
-  useExternalGlobSynchronization(globe, active, view, flyTo);
+  useMultiGlobeSynchronization(globe, props);
+
+  // fixme: right now @ubilabs/esa-webgl-globe doesn't support the
+  //  move-start/move-end events required in the data-viewer component.
+  //  These could be implemented using timers and the viewStateChange
+  //  events.
+
+  // fixme: add auto-rotate functionality
 
   return (
     <div
@@ -219,7 +218,7 @@ function useProjectionSwitch(
       return;
     }
 
-    const renderMode: RenderMode = (projection === GlobeProjection.Sphere
+    const renderMode = (projection === GlobeProjection.Sphere
       ? 'globe'
       : 'map') as RenderMode;
 
@@ -227,19 +226,53 @@ function useProjectionSwitch(
   }, [globe, projection]);
 }
 
-function useExternalGlobSynchronization(
-  globe: WebGlGlobe | null,
-  active: boolean,
-  view: CameraView,
-  flyTo: CameraView | null
-) {
+/**
+ * Integrate the globe with the external view-state events and props
+ * (view / flyTo / onChange).
+ */
+function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
+  const {view, active, flyTo} = props;
+
+  // forward camera changes from the active view to the parent component
+  useCameraChangeEvents(globe, props);
+
+  // set camera-view unless it's the active globe
   useEffect(() => {
-    console.log('--- view changed: ', view);
-  }, [view]);
+    if (globe && !active) {
+      globe.setProps({cameraView: view});
+    }
+  }, [globe, view, active]);
+
+  // incoming flyTo cameraViews are always applied
   useEffect(() => {
-    console.log('--- flyTo changed: ', flyTo);
-  }, [flyTo]);
-  useEffect(() => console.log('--- active changed', active), [active]);
+    if (globe && flyTo) {
+      globe.setProps({cameraView: flyTo});
+    }
+  }, [globe, flyTo]);
+}
+
+/**
+ * Call the onChange callback from the props from an active globe.
+ * @param globe
+ * @param props
+ */
+function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
+  const {active, onChange} = props;
+
+  const handleViewChanged = useCallback(
+    (ev: CustomEvent<CameraView>) => onChange(ev.detail),
+    [onChange]
+  );
+
+  useEffect(() => {
+    if (!globe || !active) {
+      return EMPTY_FUNCTION;
+    }
+
+    globe.addEventListener('cameraViewChanged', handleViewChanged);
+    return () =>
+      globe.removeEventListener('cameraViewChanged', handleViewChanged);
+  }, [globe, active, handleViewChanged]);
 }
 
 // ----
