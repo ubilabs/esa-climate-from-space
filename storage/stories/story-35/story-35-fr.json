@@ -3,16 +3,16 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
-      "shortText": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
+      "text": "# Un glacier en course\r\n\r\nJakobshavn, Groenland",
+      "shortText": "# Un glacier en course\r\n\r\nJakobshavn, Groenland",
       "images": [
         "assets/story35-image05.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## A Racing Glacier, Jakobshavn, Greenland\r\n\r\nGreenland loses more ice through the Jakobshavn Glacier than from anywhere else on this huge ice sheet. Jakobshavn – one of the fastest moving glaciers in the world – travels up to 40 metres per day. Satellites show that recently it has been flowing more slowly and getting thicker, although it is still losing more ice than it gains. Observations from space are key to monitoring dynamic features such as this. \r\n\r\nCredits: ESA CCI; Polar Geospatial Center; contains modified Copernicus Sentinel data (2019), processed by ESA.",
-      "shortText": "## A Racing Glacier, Jakobshavn, Greenland\r\n\r\nGreenland loses more ice through the Jakobshavn Glacier than from anywhere else on this huge ice sheet. Jakobshavn – one of the fastest moving glaciers in the world – travels up to 40 metres per day. Satellites show that recently it has been flowing more slowly and getting thicker, although it is still losing more ice than it gains. Observations from space are key to monitoring dynamic features such as this. \r\n\r\nCredits: ESA CCI; Polar Geospatial Center; contains modified Copernicus Sentinel data (2019), processed by ESA.",
+      "text": "## Un glacier en pleine course, Jakobshavn, Groenland\r\n\r\nLe Groenland perd plus de glace par le glacier Jakobshavn que par n'importe quel autre glacier de cette immense calotte glaciaire. Jakobshavn, l'un des glaciers qui se déplacent le plus rapidement au monde, parcourt jusqu'à 40 mètres par jour. Les satellites montrent qu'il s'écoule plus lentement et qu'il s'épaissit, bien qu'il perde toujours plus de glace qu'il n'en gagne. Les observations depuis l'espace sont essentielles pour surveiller des phénomènes dynamiques tels que celui-ci. \r\n\r\nCrédits : ESA CCI ; Polar Geospatial Center ; contient des données Copernicus Sentinel modifiées (2019), traitées par l'ESA.",
+      "shortText": "## Un glacier en pleine course, Jakobshavn, Groenland\r\n\r\nLe Groenland perd plus de glace par le glacier Jakobshavn que par n'importe quel autre glacier de cette immense calotte glaciaire. Jakobshavn, l'un des glaciers qui se déplacent le plus rapidement au monde, parcourt jusqu'à 40 mètres par jour. Les satellites montrent qu'il s'écoule plus lentement et qu'il s'épaissit, bien qu'il perde toujours plus de glace qu'il n'en gagne. Les observations depuis l'espace sont essentielles pour surveiller des phénomènes dynamiques tels que celui-ci. \r\n\r\nCrédits : ESA CCI ; Polar Geospatial Center ; contient des données Copernicus Sentinel modifiées (2019), traitées par l'ESA.",
       "images": [
         "assets/story35-image01.jpg",
         "assets/story35-image02.jpg",
@@ -20,10 +20,10 @@
         "assets/story35-image04.jpg"
       ],
       "imageCaptions": [
-        "Jakobshavn: A racing glacier. This satellite image acquired on 11 June 2019 shows the Jakobshavn Glacier, one of the fastest moving lgaciers in the world.",
-        "Jakobshavn: A racing glacier. Archives satellite images are useful to detect long term trends in glacier monitoring.",
-        "Jakobshavn: A racing glacier. Satellites are also used to map elevation and thickness of the ice cap, and monitor its changes over time.",
-        "Jakobshavn: A racing glacier. Ice velocity can be measured thanks to multiple radar acquisitions. It allows scientists to montior each glacier on a regular basis to unerstand both long- and short-term dynamics."
+        "Jakobshavn : un glacier en pleine course. Cette image satellite acquise le 11 juin 2019 montre le glacier Jakobshavn, l'un des glaciers qui se déplacent le plus rapidement au monde.",
+        "Jakobshavn : un glacier en pleine course. Les images satellites d'archives sont utiles pour détecter les tendances à long terme dans la surveillance des glaciers.",
+        "Jakobshavn : un glacier en pleine course. Les satellites sont également utilisés pour cartographier l'altitude et l'épaisseur de la calotte glaciaire et suivre son évolution dans le temps.",
+        "Jakobshavn : un glacier en pleine course. La vitesse de la glace peut être mesurée grâce à de multiples acquisitions radar. Cela permet aux scientifiques de surveiller régulièrement chaque glacier afin de comprendre les dynamiques à court et à long terme."
       ],
       "imageFits": [
         "contain",
