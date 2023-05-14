@@ -16,18 +16,20 @@
       "images": [
         "assets/story15_01.jpg",
         "assets/seaice_large_01.jpg",
-        "assets/seaice_large_12a.jpg"
+        "assets/seaice_large_12a.jpg",
+        "assets/story15_11.jpg"
       ],
       "imageCaptions": [
         "HMS Terror vom Eis aufgeworfen in der gefrorenen Meerenge. Kupferstich nach einer Zeichnung von Kapitän George Back. (Nationalarchiv von Kanada)",
         "Sommerliches Meereis in der kanadischen Arktis. Der schmale Kanal zwischen dem kanadischen Festland und seinen arktischen Inseln\r\nist normalerweise durch Meereis blockiert. In diesem Envisat MERIS Bild vom 2. Juli 2007\r\nist der Lancaster Sound (unten in der Mitte) eisfrei, aber im Westen blockiert das Eis immer noch den\r\nParry-Kanal. (ESA)",
-        "Das Meereis ist in diesem Envisat ASAR-Mosaik des Arktischen Ozeans vom August 2008 blau dargestellt. Der südliche Arm der Nordwestpassage ist eisfrei. (ESA)"
+        "Das Meereis ist in diesem Envisat ASAR-Mosaik des Arktischen Ozeans vom August 2008 blau dargestellt. Der südliche Arm der Nordwestpassage ist eisfrei. (ESA)",
+        "Die südliche Route durch die Nordwestpassage war im August 2016 nahezu eisfrei, wie dieses Bild des Wettersatelliten Suomi NPP zeigt (NASA)"
       ],
       "imageFits": [
         "contain",
         "cover",
         "cover",
-        "contain",
+        "cover",
         "contain"
       ]
     },
@@ -38,12 +40,14 @@
       "images": [
         "assets/story15_02.jpg",
         "assets/story15_03.jpg",
-        "assets/story15_04.png"
+        "assets/story15_04.png",
+        "assets/story15_12.jpg"
       ],
       "imageCaptions": [
         "Das Envisat ASAR-Radarmosaik zeigtmögliche Schifffahrtsrouten durch die Nordwestpassage (gelb, links), die Nordostpassage (blau, rechts) und die Transpolarmeerroute (grün, Mitte) (ESA/Planetary Visions)",
         "Eisbrecher, der ein Frachtschiff durch das Meereis im Arktischen Ozean eskortiert (Aker Arctic)",
-        "# Arktische Meereisausdehnung im August 1979-2019\r\nDie Sommereisausdehnung in der Arktis nimmt jährlich um 72 000 km² bzw. 9,1 % pro Jahrzehnt ab (EUMETSAT OSISAF-Daten, mit F&E-Input von ESA CCI)"
+        "# Arktische Meereisausdehnung im August 1979-2019\r\nDie Sommereisausdehnung in der Arktis nimmt jährlich um 72 000 km² bzw. 9,1 % pro Jahrzehnt ab (EUMETSAT OSISAF-Daten, mit F&E-Input von ESA CCI)",
+        "Schiffsspuren im östlichen Teil der Nordwestpassage in den Jahren 2013 (grün) und 2019 (orange). Der Verkehr stieg zwischen diesen Jahren von 112 auf 160 Schiffe. (Arctic Council)"
       ],
       "imageFits": [
         "contain",
@@ -116,21 +120,23 @@
       "shortText": "## Leben an der Front\r\n\r\nWas für Kreuzfahrtschiffe einfacher ist, wird für Schlittenhunde und Schneemobile schwieriger:\r\n\r\n- Traditionelle Jagd- und Reisewege werden unterbrochen\r\n- Verbindungen zu Nahrungsquellen und zwischen Gemeinschaften werden unterbrochen\r\n\r\nVon Alaska bis Sibirien taut der Permafrostboden auf:\r\n\r\n- Gebäude, Straßen und Pipelines werden instabil\r\n- Kohlendioxid und Methan werden aus dem Boden freigesetzt\r\n- Methanhydrate auf dem Meeresboden könnten ebenfalls auftauen\r\n\r\nSchmelzwasser vom grönländischen Eisschild:\r\n- hat seit 1992 11 mm zum Anstieg des Meeresspiegels beigetragen\r\n- folgt den schlimmsten Vorhersagen der Klimaerwärmung\r\n- stört den Salzhaushalt der umliegenden Meere\r\n\r\nEisschilde, Gletscher, Permafrostböden, Salzgehalt der Ozeane und Meereis sind allesamt \"wesentliche Klimavariablen\".",
       "images": [
         "assets/icesheet_large_16.jpg",
+        "assets/story15_13.jpg",
+        "assets/story15_14.jpg",
         "assets/icesheet_large_01.jpg",
-        "assets/story15_10.jpg",
         "assets/story15_08.jpg"
       ],
       "imageCaptions": [
         "Nuuk, die Hauptstadt von Grönland. Die Grönländer müssen sich an die Klimaerwärmung anpassen. Das schmelzende Meereis verkürzt nicht nur die Jagdsaison, sondern erschwert auch das Erreichen benachbarter Gemeinden mit Hundeschlitten oder Schneemobilen. (Oliver Schauf)",
+        "# Grönland Lufttemperatur-Anomalie 2019-2021 \r\nLufttemperatur für Grönland im August 2019-2021 im Vergleich zum Durchschnitt der vorangegangenen 30 Jahre. Die Hitzewelle von 2021 brachte die ersten aufgezeichneten Niederschläge im hohen Zentrum Grönlands, wo normalerweise Schneefall herrscht. (ERA5-Daten von Copernicus Climate Change Service/ECMWF/ESA)",
+        "Die Hitzewelle in Grönland im Jahr 2021 führte zu einem raschen Schmelzen von Schnee und Eis, wodurch ausgedehnte Schmelzwasserströme und tiefere, dunklere Seen auf der Oberfläche des Eisschildes entstanden. Sentinel-2-Bild vom 20. August 2021 (enthält modifizierte Copernicus-Sentinel-Daten (2021), verarbeitet von der ESA)",
         "Oberflächenschmelzwasser läuft über den Leverett Gletscher, etwa 50 km vom\r\n vom westlichen Rand des grönländischen Eisschildes, am 19. August 2009.\r\n(Andrew Sole, Universität von Sheffield)",
-        "Ein neuer Eisberg kalbt vom grönländischen Schelfeis in die Diskobucht. (ESA)",
         "# CCI Permafrost Ausmaß\r\n \r\nPermafrost der nördlichen Hemisphäre 2003-2017 (ESA-CCI)"
       ],
       "imageFits": [
         "cover",
-        "cover",
-        "cover",
         "contain",
+        "cover",
+        "cover",
         "contain"
       ]
     },

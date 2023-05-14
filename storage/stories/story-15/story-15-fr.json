@@ -16,18 +16,20 @@
       "images": [
         "assets/story15_01.jpg",
         "assets/seaice_large_01.jpg",
-        "assets/seaice_large_12a.jpg"
+        "assets/seaice_large_12a.jpg",
+        "assets/story15_11.jpg"
       ],
       "imageCaptions": [
         "Le HMS Terror projeté par la glace dans le détroit de Frozen. Gravure d'après un dessin du capitaine George Back. (Archives nationales du Canada)",
         "Glace de mer d'été dans l'Arctique canadien. L'étroit canal entre le Canada continental et ses îles arctiques\r\nest généralement bloqué par la glace de mer. Sur cette image MERIS d'Envisat du 2 juillet 2007\r\nle détroit de Lancaster (en bas au centre) est libre de glace, mais à l'ouest, la glace bloque toujours le canal de Parry. (ESA)",
-        "La glace de mer est représentée en bleu sur cette mosaïque ASAR d'Envisat de l'océan Arctique d'août 2008. La branche sud du passage du Nord-Ouest est libre de glace. (ESA)"
+        "La glace de mer est représentée en bleu sur cette mosaïque ASAR d'Envisat de l'océan Arctique d'août 2008. La branche sud du passage du Nord-Ouest est libre de glace. (ESA)",
+        "La route sud du passage du Nord-Ouest était presque libre de glace en août 2016, comme le montre cette image du satellite météorologique Suomi NPP (NASA)."
       ],
       "imageFits": [
         "contain",
         "cover",
         "cover",
-        "contain",
+        "cover",
         "contain"
       ]
     },
@@ -38,12 +40,14 @@
       "images": [
         "assets/story15_02.jpg",
         "assets/story15_03.jpg",
-        "assets/story15_04.png"
+        "assets/story15_04.png",
+        "assets/story15_12.jpg"
       ],
       "imageCaptions": [
         "Mosaïque radar ASAR d'Envisat montrant les routes de navigation potentielles à travers le passage du Nord-Ouest (jaune, à gauche), le passage du Nord-Est (bleu, à droite) et la route de la mer transpolaire (vert, au centre) (ESA/Planetary Visions).",
         "Brise-glace escortant un cargo à travers la glace de mer dans l'océan Arctique (Aker Arctic)",
-        "# Étendue de la glace de mer dans l'Arctique en août 1979-2019\r\nL'étendue de la glace d'été dans l'Arctique a diminué de 72 000 km2 par an, soit 9,1 % par décennie (données OSISAF d'EUMETSAT, avec l'apport de la R&D de l'ESA CCI)"
+        "# Étendue de la glace de mer dans l'Arctique en août 1979-2019\r\nL'étendue de la glace d'été dans l'Arctique a diminué de 72 000 km2 par an, soit 9,1 % par décennie (données OSISAF d'EUMETSAT, avec l'apport de la R&D de l'ESA CCI)",
+        "Trajectoire des navires dans la partie orientale du passage du Nord-Ouest en 2013 (vert) et 2019 (orange). Le trafic est passé de 112 à 160 navires entre ces deux années. (Conseil de l'Arctique)"
       ],
       "imageFits": [
         "contain",
@@ -116,21 +120,23 @@
       "shortText": "## La vie sur la ligne de front\r\n\r\nLes eaux qui deviennent plus faciles pour un bateau de croisière deviennent plus difficiles pour les chiens de traîneau et les motoneiges :\r\n\r\n- les modes traditionnels de chasse et de déplacement sont perturbés\r\n- liens avec les sources de nourriture et entre les communautés rompus\r\n\r\nDe l'Alaska à la Sibérie, avec le dégel du permafrost :\r\n\r\n- bâtiments, routes et pipelines sapés\r\n- dioxyde de carbone et méthane libérés du sol\r\n- les hydrates de méthane au fond des mers pourraient aussi dégeler\r\n\r\nL'eau de fonte de la calotte glaciaire du Groenland :\r\n- a contribué à l'élévation du niveau de la mer de 11 mm depuis 1992\r\n- suit les prévisions les plus pessimistes en matière de réchauffement climatique\r\n- perturbe l'équilibre de la salinité des mers environnantes.\r\n\r\nLes calottes glaciaires, les glaciers, le permafrost, la salinité des océans et la glace de mer sont tous des \"variables climatiques essentielles\".",
       "images": [
         "assets/icesheet_large_16.jpg",
+        "assets/story15_13.jpg",
+        "assets/story15_14.jpg",
         "assets/icesheet_large_01.jpg",
-        "assets/story15_10.jpg",
         "assets/story15_08.jpg"
       ],
       "imageCaptions": [
         "Nuuk, la capitale du Groenland. Les Groenlandais doivent s'adapter au réchauffement climatique. La fonte de la glace de mer raccourcit non seulement la saison de chasse, mais rend également plus difficile l'accès aux communautés voisines en traîneau à chiens ou en motoneige. (Oliver Schauf)",
+        "# Anomalie de température de l'air au Groenland 2019-2021 \r\nTempérature de l'air au Groenland en août 2019-2021 comparée à la moyenne des 30 années précédentes. La vague de chaleur de 2021 a apporté les premières précipitations enregistrées dans le centre supérieur du Groenland, où il y a habituellement des chutes de neige. (Données ERA5 de Copernicus Climate Change Service/ECMWF/ESA)",
+        "La vague de chaleur de 2021 au Groenland a entraîné une fonte rapide de la neige et de la glace, créant de vastes coulées d'eau de fonte et des lacs plus profonds et plus sombres à la surface de la calotte glaciaire. Image Sentinel-2 du 20 août 2021 (contient des données Copernicus Sentinel modifiées (2021), traitées par l'ESA).",
         "L'eau de fonte de surface s'écoule à travers le glacier Leverett, à environ 50km du\r\n du bord ouest de la couche de glace du Groenland, le 19 août 2009.\r\n(Andrew Sole, Université de Sheffield)",
-        "Un nouvel iceberg vêle de la plate-forme de glace du Groenland dans la baie de Disko. (ESA)",
         "# Étendue du pergélisol de l'ICC\r\n \r\nPergélisol de l'hémisphère nord 2003-2017 (ESA-CCI)"
       ],
       "imageFits": [
         "cover",
-        "cover",
-        "cover",
         "contain",
+        "cover",
+        "cover",
         "contain"
       ]
     },
