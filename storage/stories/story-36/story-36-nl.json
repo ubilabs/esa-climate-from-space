@@ -3,23 +3,23 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Sinking City\r\n\r\nJakarta, Indonesia",
-      "shortText": "# Sinking City\r\n\r\nJakarta, Indonesia",
+      "text": "# Sinking City\r\n\r\nJakarta, Indonesië",
+      "shortText": "# Sinking City\r\n\r\nJakarta, Indonesië",
       "images": [
         "assets/story36-image03.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## Sinking City, Jakarta, Indonesia\r\n\r\nThe Indonesian capital of Jakarta is home to 10 million people and is also one of the fastest-sinking cities in the world due to extensive ground water extraction and the heavier  weight of the buildings. Researchers suggest that parts of the megacity could be entirely submerged by 2050. This map shows the mean ground displacement rates based on Sentinel-1 radar data. Local sinking patterns reach about 12 cm per year. \r\n\r\nCredits: ESA GEP & CNR-IREA",
-      "shortText": "## Sinking City, Jakarta, Indonesia\r\n\r\nThe Indonesian capital of Jakarta is home to 10 million people and is also one of the fastest-sinking cities in the world due to extensive ground water extraction and the heavier  weight of the buildings. Researchers suggest that parts of the megacity could be entirely submerged by 2050. This map shows the mean ground displacement rates based on Sentinel-1 radar data. Local sinking patterns reach about 12 cm per year. \r\n\r\nCredits: ESA GEP & CNR-IREA",
+      "text": "## Zinkstad, Jakarta, Indonesië\r\n\r\nDe Indonesische hoofdstad Jakarta, waar 10 miljoen mensen wonen, is ook een van de snelst zinkende steden ter wereld door de omvangrijke grondwateronttrekking en het zwaardere gewicht van de gebouwen. Volgens onderzoekers kunnen delen van de megastad tegen 2050 volledig onder water staan. Deze kaart toont de gemiddelde verplaatsing van de grond op basis van Sentinel-1 radargegevens. Lokale verzakkingspatronen bereiken ongeveer 12 cm per jaar. \r\n\r\nCredits: ESA GEP & CNR-IREA",
+      "shortText": "## Zinkstad, Jakarta, Indonesië\r\n\r\nDe Indonesische hoofdstad Jakarta, waar 10 miljoen mensen wonen, is ook een van de snelst zinkende steden ter wereld door de omvangrijke grondwateronttrekking en het zwaardere gewicht van de gebouwen. Volgens onderzoekers kunnen delen van de megastad tegen 2050 volledig onder water staan. Deze kaart toont de gemiddelde verplaatsing van de grond op basis van Sentinel-1 radargegevens. Lokale verzakkingspatronen bereiken ongeveer 12 cm per jaar. \r\n\r\nCredits: ESA GEP & CNR-IREA",
       "images": [
         "assets/story36-image01.jpg",
         "assets/story36-image02.jpg"
       ],
       "imageCaptions": [
-        "Jakarta, Indonesia: the sinking city. By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence.",
-        "Jakarta, Indonesia: the sinking city. By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence. In this image, changes in surface levels from 2017-2018 have been overlaid."
+        "Jakarta, Indonesië: de zinkende stad. Door gebruik te maken van een groot aantal radarsatellietbeelden over een periode van twee jaar kan de bodemdaling nauwkeurig worden berekend.",
+        "Jakarta, Indonesië: de zinkende stad. Door gebruik te maken van een groot aantal radarsatellietbeelden over een periode van twee jaar is het mogelijk om de bodemdaling nauwkeurig te berekenen. In dit beeld zijn veranderingen in het maaiveld van 2017-2018 over elkaar heen gelegd."
       ],
       "imageFits": [
         "contain",
