@@ -16,12 +16,16 @@
       "images": [
         "assets/story27-image01.jpg",
         "assets/story27-image02.jpg",
-        "assets/story27-image10.jpg"
+        "assets/story27-image10.jpg",
+        "assets/story27-image16.jpg",
+        "assets/story27-image17.jpg"
       ],
       "imageCaptions": [
         "Vrachtwagens die gefabriceerde sneeuw afleveren in een straat in Moskou tijdens een hittegolf in december 2019 (Twitter)",
         "Hittegolven in de zomer kunnen schade toebrengen aan de infrastructuur, zoals spoorrails en wegdek, en kunnen de water- en elektriciteitsvoorziening overbelasten (US Dept of Transportation)",
-        "Gemiddelde nachttemperatuur in Parijs om 22.00 uur tijdens de hittegolf van de zomer van 2003, die tot duizenden sterfgevallen door hitte heeft geleid. (VITO/Planetek)"
+        "Gemiddelde nachttemperatuur in Parijs om 22.00 uur tijdens de hittegolf van de zomer van 2003, die tot duizenden sterfgevallen door hitte heeft geleid. (VITO/Planetek)",
+        "In sommige delen van Europa steeg de luchttemperatuur in de zomer van 2022 meer dan 10°C boven het gemiddelde voor de tijd van het jaar. Dit beeld toont de oppervlaktetemperatuur over Parijs op 18 juni 2022, gemeten door het experimentele ECOSTRESS-instrument op het internationale ruimtestation. (NASA/JPL-Caltech)",
+        "In de zomer van 2022 werd het groene land van Engeland en Noord-Frankrijk bruin na maanden van hoge temperaturen en weinig neerslag. Dit beeld is op 12 augustus 2022 gemaakt door de Copernicus Sentinel-3 satelliet van ESA. Gedurende die maand registreerde de infraroodsensor van de satelliet landoppervlaktetemperaturen van meer dan 45°C in het Verenigd Koninkrijk, 50°C in Frankrijk en 60°C in Spanje. (Bevat gewijzigde Copernicus Sentinel-gegevens (2022), verwerkt door ESA)"
       ],
       "imageFits": [
         "contain",
@@ -64,21 +68,21 @@
     },
     {
       "type": "image",
-      "text": "## Warmtemetingen uit de Ruimte\r\n\r\nHoeveel invloed een stedelijk gebied heeft op zijn hitte-eiland hangt af van factoren zoals het aantal, het type en de plaatsing van gebouwen en wegen, en waar ze van gemaakt zijn. Infraroodcamera's op grondniveau worden gebruikt om aan te tonen waar warmte uit gebouwen verloren gaat, zodat deze energie-efficiënter kunnen worden gemaakt. Op dezelfde manier kunnen infraroodsensoren op satellieten worden gebruikt om aan te tonen waar zich in een stad warmte ophoopt.\r\n\r\nMetingen van de temperatuur van het landoppervlak (Land Surface Temperature: LST) vanuit de ruimte kunnen worden vergeleken met historische gegevens van weerstations om te bepalen welke delen van een stad het kwetsbaarst zijn tijdens hittegolven. Deze informatie kan stadsplanners helpen het ontwerp van steden te verbeteren door te beslissen waar groene zones moeten komen, welke materialen moeten worden gebruikt en hoe gebouwen moeten worden georiënteerd om zoveel mogelijk schaduw en koeling te krijgen.\r\n\r\nLST-gegevens kunnen ook worden gekoppeld aan meer gedetailleerde gegevens van de grond of uit luchtverkenningen, en in bijna-realtime worden bijgewerkt met behulp van hoogwaardige sensoren zoals de Copernicus Sentinel-satellieten, ter ondersteuning van de beleidsmakers tijdens hittegolven. LST vanuit de ruimte kan aantonen hoe hittegolven de temperatuur beïnvloeden op het niveau van een wijk of zelfs een individueel stadsblok. Inzicht in deze gebeurtenissen zou het mogelijk maken stappen te ondernemen die het effect van hittegerelateerde gezondheidsrisico's zouden kunnen verminderen.\r\n\r\nDe meest nauwkeurige klimaatgegevens voor LST zijn afkomstig van het Climate Change Initiative van het Europees Ruimteagentschap. Hoewel de ruimtelijke resolutie matig is, is deze gedetailleerd genoeg om de belangrijkste kenmerken van een grote stad als Londen te zien, en de temperatuurmetingen zijn uiterst nauwkeurig. Zij leveren een ruimtelijke momentopname van de oppervlaktetemperatuur en een temporele progressie van de temperatuur over meerdere decennia voor een hele stad, regio, land of continent om de prestaties van [klimaatmodellen] te verbeteren(stories/story-31/0).",
-      "shortText": "## Warmtemetingen uit de Ruimte\r\n\r\n- Infraroodcamera's laten zien waar warmte uit gebouwen verloren gaat.\r\n- Op dezelfde manier laten IR-sensoren op satellieten zien waar zich warmte ophoopt in een stad.\r\n\r\nDe temperatuur van het landoppervlak (LST) vanuit de ruimte kan worden:\r\n\r\n- Vergeleken met historische gegevens van weerstations.\r\n- Gekoppeld aan meer gedetailleerde gegevens van de grond of uit luchtonderzoeken.\r\n- In bijna-realtime worden bijgewerkt met behulp van hoogwaardige sensoren zoals de Copernicus Sentinel-satellieten.\r\n\r\nDeze informatie kan stadsplanners helpen het ontwerp van steden te verbeteren:\r\n\r\n- Waar moeten groene zones komen, welke bouwmaterialen moeten worden gebruikt.\r\n- Hoe gebouwen te oriënteren om schaduw en koeling te maximaliseren.\r\n- Potentieel het effect van hittegerelateerde gezondheidsrisico's verminderen.\r\n\r\nDe meest nauwkeurige klimaatgegevens voor LST zijn afkomstig van ESA's Climate Change Initiative:\r\n \r\n- Matige ruimtelijke resolutie.\r\n- Uiterst nauwkeurige temperatuurmetingen.\r\n- Tijdsspanne van meerdere decennia voor een hele stad, regio, land of continent.",
+      "text": "## Warmtemetingen uit de Ruimte\r\n\r\nHoeveel invloed een stedelijk gebied heeft op zijn hitte-eiland hangt af van factoren zoals het aantal, het type en de plaatsing van gebouwen en wegen, en waar ze van gemaakt zijn. Infraroodcamera's op grondniveau worden gebruikt om aan te tonen waar warmte uit gebouwen verloren gaat, zodat deze energie-efficiënter kunnen worden gemaakt. Op dezelfde manier kunnen infraroodsensoren op satellieten worden gebruikt om aan te tonen waar zich in een stad warmte ophoopt.\r\n\r\nMetingen van de temperatuur van het landoppervlak (Land Surface Temperature: LST) vanuit de ruimte kunnen worden vergeleken met historische gegevens van weerstations om te bepalen welke delen van een stad het kwetsbaarst zijn tijdens hittegolven. Deze informatie kan stadsplanners helpen het ontwerp van steden te verbeteren door te beslissen waar groene zones moeten komen, welke materialen moeten worden gebruikt en hoe gebouwen moeten worden georiënteerd om zoveel mogelijk schaduw en koeling te krijgen.\r\n\r\nLST-gegevens kunnen ook worden gekoppeld aan meer gedetailleerde gegevens van de grond of uit luchtverkenningen, en in bijna-realtime worden bijgewerkt met behulp van hoogwaardige sensoren zoals de Copernicus Sentinel-satellieten, ter ondersteuning van de beleidsmakers tijdens hittegolven. LST vanuit de ruimte kan aantonen hoe hittegolven de temperatuur beïnvloeden op het niveau van een wijk of zelfs een individueel stadsblok. Inzicht in deze gebeurtenissen zou het mogelijk maken stappen te ondernemen die het effect van hittegerelateerde gezondheidsrisico's zouden kunnen verminderen.",
+      "shortText": "## Warmtemetingen uit de Ruimte\r\n\r\n- Infraroodcamera's laten zien waar warmte uit gebouwen verloren gaat.\r\n- Op dezelfde manier laten IR-sensoren op satellieten zien waar zich warmte ophoopt in een stad.\r\n\r\nDe temperatuur van het landoppervlak (LST) vanuit de ruimte kan worden:\r\n\r\n- Vergeleken met historische gegevens van weerstations.\r\n- Gekoppeld aan meer gedetailleerde gegevens van de grond of uit luchtonderzoeken.\r\n- In bijna-realtime worden bijgewerkt met behulp van hoogwaardige sensoren zoals de Copernicus Sentinel-satellieten.\r\n\r\nDeze informatie kan stadsplanners helpen het ontwerp van steden te verbeteren:\r\n\r\n- Waar moeten groene zones komen, welke bouwmaterialen moeten worden gebruikt.\r\n- Hoe gebouwen te oriënteren om schaduw en koeling te maximaliseren.\r\n- Potentieel het effect van hittegerelateerde gezondheidsrisico's verminderen.",
       "images": [
         "assets/iStock_000021056451Small.jpg",
         "assets/story27-image06.jpg",
         "assets/story27-image11.jpg",
-        "assets/story27-image08.jpg",
-        "assets/story27-image09.jpg"
+        "assets/story27-image18.jpg",
+        "assets/story27-image19.jpg"
       ],
       "imageCaptions": [
         "Handheld infraroodcamera's worden gebruikt om thermografische onderzoeken van gebouwen uit te voeren. Infraroodcamera's op satellieten kunnen snel en herhaaldelijk een hele stad in kaart brengen.  (iStock)",
         "Thermisch infraroodbeeld vanuit de lucht van Madrid om middernacht op 1 juli 2008 (Universiteit van Valencia)",
         "Landoppervlaktetemperatuur afgeleid van het SLSTR-instrument op de Copernicus Sentinel-3 satelliet, voor 26 juni (links) en 25 juli (rechts) 2019. Die zomer kende een extreme hittegolf in Europa met recordbrekende temperaturen in Nederland, België, Duitsland en Parijs. (ESA)",
-        "Gemiddelde landoppervlaktetemperatuur voor september 2006, afgeleid van Envisat AATSR (Universiteit van Leicester)",
-        "Wereldwijde anomalie van de landoppervlaktetemperatuur voor september 2006 van Envisat AATSR, die een hittegolf boven Centraal- en Noord-Europa toont (Universiteit van Liecester)"
+        "De temperatuur van het landoppervlak in Praag, gemeten op 18 juni 2022 door NASA's ECOSTRESS-instrument, toont het verkoelende effect van parken en waterwegen. ESA gebruikt dit instrument, dat op het internationale ruimtestation is gemonteerd, om te helpen bij de ontwikkeling van een nieuwe Copernicus Sentinel satelliet, de Land Surface Temperature Monitoring (LSTM) missie.  (NASA/JPL-Caltech)",
+        "De Copernicus Sentinel Land Surface Temperature Monitoring (LSTM)-missie zal een thermische infraroodsensor met hoge resolutie aan boord hebben om de temperatuur van het landoppervlak te meten. Hiermee kunnen extreme hittegebeurtenissen in steden worden opgespoord en kan informatie worden verstrekt aan landbouwgebruikers tot op de schaal van individuele velden. (Airbus)"
       ],
       "imageFits": [
         "contain",
@@ -87,6 +91,30 @@
         "contain",
         "contain"
       ]
+    },
+    {
+      "type": "globe",
+      "text": "## Het wereldbeeld \r\n\r\nDe nauwkeurigste klimaatgegevens voor de temperatuur aan het aardoppervlak zijn afkomstig van het Climate Change Initiative van het Europees Ruimteagentschap. Hoewel de ruimtelijke resolutie bescheiden is, zijn de gegevens gedetailleerd genoeg om de belangrijkste kenmerken van een grote stad als Londen te zien. Ze bieden een ruimtelijke momentopname van de oppervlaktetemperatuur en een temporele progressie van de temperatuur over meerdere decennia voor een hele stad, regio, land of continent om de prestaties van [klimaatmodellen] te verbeteren (stories/story-31/0). \r\n\r\nDe gegevensbol laat zien hoe de temperatuur van het landoppervlak varieert met de breedtegraad, de hoogte en de tijd van het jaar. De koudste temperaturen worden aangetroffen hoog op de ijskappen van Antarctica en Groenland. De warmste in de woestijnen van het noordelijk halfrond. Speel de gegevensreeks af om de seizoensgebonden temperatuurverandering te zien, en zoek naar de zomerhittegolven die Europa troffen in 2003, 2010 en 2019.",
+      "shortText": "## De globale kijk\r\n\r\nDe meest nauwkeurige klimaatgegevens voor LST zijn afkomstig van ESA's Climate Change Initiative:\r\n \r\n- Matige ruimtelijke resolutie.\r\n- Uiterst nauwkeurige temperatuurmetingen. \r\n- Tijdsspanne van meerdere decennia voor een hele stad, regio, land of continent.\r\n\r\nDe gegevensbol laat zien:\r\n\r\n- LST varieert met breedtegraad, hoogte en tijd van het jaar.\r\n- Het koudst op de ijskappen van Antarctica en Groenland.\r\n- Het warmst in woestijnen op het noordelijk halfrond.\r\n- Kijk voor zomerhittegolven in Europa in 2003, 2010 en 2019.",
+      "flyTo": {
+        "position": {
+          "longitude": 13.68,
+          "latitude": 44.92,
+          "height": 10914276.48
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.95,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "land_surface_temperature.lst",
+          "timestamp": "2019-07-17T00:00:00.000Z"
+        }
+      ],
+      "layerDescription": "# CCI Temperatuur van het landoppervlak"
     },
     {
       "type": "image",
