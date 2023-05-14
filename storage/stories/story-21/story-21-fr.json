@@ -15,18 +15,24 @@
       "shortText": "## Queensland, 2010\r\n\r\n- Le mois de décembre le plus humide jamais enregistré dans le Queensland.\r\n- Les inondations ont touché 200 000 personnes et tué 35 personnes dans le nord-est de l'Australie en 2010-2011.\r\n- En raison d'un fort épisode climatique La Niña dans l'océan Pacifique central.\r\n- Tant d'eau s'est accumulée sur les terres que le niveau moyen mondial des mers a baissé de 5 mm.\r\n- Montre comment l'océan, l'atmosphère et la terre sont liés par le cycle de l'eau.\r\n- Il s'agit d'un élément clé du climat de la Terre.",
       "images": [
         "assets/story21-image01.jpg",
-        "assets/story21-image06.png"
+        "assets/story21-image06.png",
+        "assets/story21-image12.jpg",
+        "assets/story21-image11.jpg",
+        "assets/story21-image13.jpg"
       ],
       "imageCaptions": [
         "Une femme est coincée sur le toit de sa voiture pendant une crue soudaine à Toowoomba, Queensland, Australie, le 10 janvier 2011 (T Swinson).",
-        "# Niveau moyen mondial des mers\r\nLe niveau mondial des mers observé par les satellites montre une tendance à l'augmentation de 3,3 mm par an, mais une baisse en 2011 en raison de la grande quantité d'eau excédentaire sur les terres.  (ESA-CCI/Copernicus Marine Environment Monitoring Service)"
+        "# Niveau moyen mondial des mers\r\nLe niveau mondial des mers observé par les satellites montre une tendance à l'augmentation de 3,3 mm par an, mais une baisse en 2011 en raison de la grande quantité d'eau excédentaire sur les terres.  (ESA-CCI/Copernicus Marine Environment Monitoring Service)",
+        "L'imagerie radar Copernicus Sentinel-1 de la Nouvelle-Galles du Sud, Australie, des 7 et 19 mars 2021 montre de vastes zones de terres inondées en bleu. Les zones brûlées par des incendies de forêt l'année précédente sont représentées en marron. (Contient des données Copernicus Sentinel modifiées (2021), traitées par ESA / NASA MODIS)",
+        "Le Pakistan a été frappé par les pires inondations de son histoire en août 2022, après que des pluies de mousson extrêmement abondantes, alimentées par l'océan Indien qui se réchauffe rapidement, ont coïncidé avec la fonte estivale des glaciers de l'Himalaya. Environ un tiers du pays a été inondé, causant la mort de plus de 1 100 personnes et affectant 33 millions d'habitants. Cette image radar Copernicus Sentinel-1 du centre-sud du Pakistan montre les zones inondées en bleu et en noir. (Contient des données Copernicus Sentinel modifiées (2022), traitées par l'ESA)",
+        "Le niveau des eaux du fleuve Pô en Italie a atteint un plancher record en 2022, après des mois de températures élevées et de faibles précipitations. La sécheresse dans le nord de l'Italie a affecté la production agricole de la région, qui dépend souvent de l'irrigation. Cette séquence d'images satellite de Copernicus Sentinel-2 montre le Pô comme un large fleuve chargé de sédiments en 2020, mais une grande partie de son lit a été exposée sous forme de bancs de sable brillant en 2022.  (Contient des données Copernicus Sentinel modifiées (2020-22), traitées par l'ESA)"
       ],
       "imageFits": [
         "cover",
         "contain",
-        "cover",
-        "cover",
-        "cover"
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
@@ -117,18 +123,22 @@
       "text": "## Suivre l'eau\r\n\r\nIl est difficile de suivre l'eau tout au long de son cycle, car elle passe très facilement d'un état physique à un autre et d'un endroit à un autre. La vue globale offerte par les satellites est utile, et les scientifiques utilisent un large éventail de technologies de télédétection pour surveiller l'eau depuis l'espace. L'[Initiative sur le changement climatique] (stories/story-32/3) de l'Agence spatiale européenne exploite ces archives de données satellitaires pour analyser certaines des variables climatiques les plus importantes. Plus de la moitié de celles qui peuvent être mesurées depuis l'espace impliquent ou influencent le cycle de l'eau : température et salinité de la surface de la mer, niveau de la mer, état de la mer, couleur de l'océan, vapeur d'eau, nuages, aérosols, neige, humidité du sol, lacs, glaciers, calottes glaciaires, pergélisol et glace de mer.\r\n\r\nL'assemblage de ces pièces du puzzle nous aide à comprendre comment le cycle de l'eau fonctionne, comment il affecte le climat et comment les changements climatiques peuvent affecter le cycle de l'eau. Un climat plus chaud signifie plus d'évaporation et plus de précipitations sous forme de pluie plutôt que de neige. Nous pouvons déjà observer de grands changements dans la répartition de l'eau entre les différents réservoirs de l'hydrosphère. Certaines de ces redistributions sont temporaires, comme le passage de la mer à la terre dans le sillage de La Niña 2010, mais certaines sont permanentes, comme le passage de la terre et de la glace de mer à l'eau de l'océan. Bien qu'il soit largement alimenté par la chaleur du soleil, certains signes indiquent que le cycle de l'eau est suralimenté par le réchauffement climatique.",
       "shortText": "## Suivre l'eau\r\n\r\nL'eau passe facilement d'un état physique à un autre et d'un endroit à un autre, ce qui la rend difficile à suivre. Les scientifiques utilisent un large éventail de technologies de télédétection pour surveiller l'eau depuis l'espace.\r\n \r\nPlus de la moitié des variables climatiques de la CCI de l'ESA impliquent ou influencent le cycle de l'eau :\r\n- température de surface de la mer, salinité, niveau de la mer, état de la mer, couleur de l'océan\r\n- vapeur d'eau, nuages, aérosols\r\n- neige, humidité du sol, lacs, glaciers, calottes glaciaires, permafrost, glace de mer...\r\n\r\nUn climat plus chaud signifie plus d'évaporation, plus de précipitations sous forme de pluie au lieu de neige, et plus de fonte.\r\n- Nous pouvons déjà observer de grands changements entre les différents réservoirs du cycle de l'eau.\r\n- Certains sont temporaires, comme le passage de la mer à la terre après le phénomène La Niña de 2010.\r\n- D'autres sont permanents, comme le passage de la terre et de la glace de mer à l'eau de l'océan.\r\n- Certains signes indiquent que le cycle de l'eau est suralimenté par le réchauffement climatique.",
       "images": [
-        "assets/story21-image03.jpg",
-        "assets/story21-image07.jpg",
         "assets/story21-image04.png",
+        "assets/story21-image14.jpg",
+        "assets/story21-image07.jpg",
+        "assets/story21-image03.jpg",
         "assets/story21-image05.png"
       ],
       "imageCaptions": [
-        "Les billions de tonnes de glace perdues chaque année sont suffisantes pour former\r\nun cube de glace de 10 km de haut, représenté ici à côté de Manhattan pour l'échelle.\r\nLa glace perdue des glaciers et des couches de glace sur terre contribue à l'élévation du niveau de la mer,\r\nmais pas la glace de mer ni les plateaux de glace flottants. (Planetary Visions / ESA / NASA)",
-        "# Changement cumulatif de la masse de glace glaciaire 1961-2016.\r\nPlus de neuf mille milliards de tonnes de glace de glacier ont été perdues au cours du dernier demi-siècle (ESA, adapté de Zemp et al (2019) Nature, et données fournies par le World Glacier Monitoring Service).",
         "# Flux du cycle global de l'eau\r\nFlux du cycle global de l'eau, mesurés en milliers de kilomètres cubes par an (TU Wien/W Dorigo)",
+        "Cette image satellite de l'est de l'Himalaya datant de 2018 montre les conséquences de deux grandes avalanches de glaciers. Des effondrements soudains de glaciers se sont également produits dans le Caucase, les Andes et les Alpes ces dernières années. Le réchauffement climatique, le dégel du pergélisol et l'infiltration des eaux de fonte sont parmi les causes de ces événements.\r\n(Contient des données Copernicus Sentinel-2 modifiées (2017-18), traitées par l'équipe Glaciers de l'ICC et l'ESA).",
+        "# Changement cumulatif de la masse de glace glaciaire 1961-2016.\r\nPlus de neuf mille milliards de tonnes de glace de glacier ont été perdues au cours du dernier demi-siècle (ESA, adapté de Zemp et al (2019) Nature, et données fournies par le World Glacier Monitoring Service).",
+        "Les billions de tonnes de glace perdues chaque année sont suffisantes pour former\r\nun cube de glace de 10 km de haut, représenté ici à côté de Manhattan pour l'échelle.\r\nLa glace perdue des glaciers et des couches de glace sur terre contribue à l'élévation du niveau de la mer,\r\nmais pas la glace de mer ni les plateaux de glace flottants. (Planetary Visions / ESA / NASA)",
         "# Énergie stockée dans les composants du système climatique\r\nÉnergie thermique accumulée dans différents composants du système climatique de la Terre depuis 1971, mesurée en zettajoules (1 ZJ correspond à 10^21 J, soit mille milliards de milliards de J). L'eau des océans du monde stocke beaucoup plus de chaleur que l'atmosphère et les terres.\r\n(ONU IPCC, 2013)"
       ],
       "imageFits": [
+        "contain",
+        "contain",
         "contain",
         "contain",
         "contain"
