@@ -16,14 +16,14 @@
       "images": [
         "assets/ozone_large_11.jpg",
         "assets/story8_02.png",
-        "assets/ozone_large_03a.png",
+        "assets/ozone_large_03b.jpg",
         "assets/ozone_large_14.jpg",
         "assets/story8_04.png"
       ],
       "imageCaptions": [
         "Wissenschaftler starten im September 2013 einen Höhenballon mit Ozonmessgeräten von der Amundsen-Scott-Südpolstation (Kelli-Ann Bliss/NOAA)",
         "Die Sonne im sichtbaren (links) und ultravioletten Licht (rechts), aufgenommen vom Satelliten SOHO am 3. Februar 2002 (ESA/NASA)",
-        "Chlor wirkt als Katalysator für die Zerstörung von Ozon (Planetary Visions)",
+        "# Der katalytische Kreislauf des Chlors\r\nChlor wirkt als Katalysator für die Zerstörung von Ozon: (1) Chlormonoxid reagiert mit einem Sauerstoffatom, wobei ein Sauerstoffmolekül und ein hochreaktives Chloratom entstehen. (2) Das Chloratom reagiert mit Ozon und erzeugt Sauerstoff und Chlormonoxid. (Planetary Visions)",
         "Ein Tag Ozonbeobachtungen von ERS-2 GOME. (ESA)",
         "# Gesamt-Ozon über der Antarktis\r\nGesamt-Ozonwerte über der Antarktis, aufgezeichnet von der Halley-Forschungsstation und von drei Satellitensensoren, TOMS, OMI und OMPS (NASA-GSFC)"
       ],
@@ -86,12 +86,14 @@
       "images": [
         "assets/ozone_data_profile_large.jpg",
         "assets/story8-03.jpg",
+        "assets/story8_05.jpg",
         "assets/aerosol_large_10.jpg",
         "assets/ozone_large_09.png"
       ],
       "imageCaptions": [
         "# Ozonprofil auf dem Längengrad 50° West\r\nOzonprofil, das einen Schnitt durch die Atmosphäre vom Meeresspiegel bis zu einer Höhe von 40 km zeigt, zentriert auf dem Längengrad 50° West, mit dem Nordpol auf der linken und dem Südpol auf der rechten Seite. (Satellitenbeobachtungen, assimiliert in das chemische Transportmodell TM5) (Planetary Visions/ESA-CCI)",
         "Stickstoffdioxid, ein Ozonvorläufer, über Europa im Januar 2020 vom TROPOMI-Instrument auf dem Sentinel-5P-Satelliten der ESA (enthält modifizierte Copernicus Sentinel-Daten (2020), verarbeitet von der ESA)",
+        "# Stickstoffdioxid über China 2019-21\r\nDer Monatsdurchschnitt des troposphärischen Stickstoffdioxids über China für Februar 2019-21, gemessen vom Copernicus-Satelliten Sentinel-5P, zeigt einen Rückgang der Luftverschmutzung während der landesweiten Abriegelungen, die 2020 verhängt wurden, um die Ausbreitung des COVID-19-Virus zu verhindern. Ein Jahr später waren die Stickstoffdioxidwerte wieder auf dem Niveau von vor der Pandemie. (enthält modifizierte Copernicus-Sentinel-Daten (2019-21), verarbeitet von der ESA)",
         "Der SCIAMACHY-Sensor auf Envisat hat drei Betriebsmodi: (1) Nadir-Modus blickt vertikal unter die Raumsonde; (2) Limb-Modus blickt durch die Atmosphäre von der Sonne weg; (3) Okkultations-Modus blickt durch die Atmosphäre zur Sonne hin. (DLR-IMF)",
         "Satelliten und Sensoren, die vom CCI-Ozonteam zur Erstellung von Gesamt-Ozonkarten verwendet werden"
       ],

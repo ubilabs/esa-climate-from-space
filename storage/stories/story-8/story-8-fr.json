@@ -16,14 +16,14 @@
       "images": [
         "assets/ozone_large_11.jpg",
         "assets/story8_02.png",
-        "assets/ozone_large_03a.png",
+        "assets/ozone_large_03b.jpg",
         "assets/ozone_large_14.jpg",
         "assets/story8_04.png"
       ],
       "imageCaptions": [
         "Des scientifiques lancent un ballon de haute altitude transportant du matériel de mesure de l'ozone depuis la station du pôle Sud d'Amundsen-Scott en septembre 2013 (Kelli-Ann Bliss/NOAA).",
         "Le Soleil en lumière visible (à gauche) et ultraviolette (à droite), tel que vu par le satellite SOHO le 3 février 2002 (ESA/NASA)",
-        "Le chlore agit comme un catalyseur de la destruction de l'ozone (Planetary Visions)",
+        "# Le cycle catalytique du chlore\r\nLe chlore agit comme un catalyseur pour la destruction de l'ozone : (1) Le monoxyde de chlore réagit avec un atome d'oxygène, produisant une molécule d'oxygène et un atome de chlore hautement réactif. (2) L'atome de chlore réagit avec l'ozone pour produire de l'oxygène et du monoxyde de chlore. (Planetary Visions)",
         "Une journée d'observations de l'ozone par ERS-2 GOME. (ESA)",
         "# Ozone total au-dessus de l'Antarctique\r\nValeurs de l'ozone total au-dessus de l'Antarctique enregistrées à la station de recherche de Halley et par trois capteurs satellites, TOMS, OMI et OMPS (NASA-GSFC)."
       ],
@@ -86,12 +86,14 @@
       "images": [
         "assets/ozone_data_profile_large.jpg",
         "assets/story8-03.jpg",
+        "assets/story8_05.jpg",
         "assets/aerosol_large_10.jpg",
         "assets/ozone_large_09.png"
       ],
       "imageCaptions": [
         "# Profil d'ozone à la longitude 50° Ouest\r\nProfil d'ozone montrant une section de l'atmosphère depuis le niveau de la mer jusqu'à une hauteur de 40 km, centrée sur la longitude 50° Ouest, avec le pôle nord à gauche et le pôle sud à droite. (Observations satellitaires assimilées dans le modèle de transport chimique TM5.) (Planetary Visions/ESA-CCI)",
         "Dioxyde d'azote, un précurseur de l'ozone, au-dessus de l'Europe en janvier 2020 d'après l'instrument TROPOMI du satellite Sentinel-5P de l'ESA (contient des données Copernicus Sentinel modifiées (2020), traitées par l'ESA)",
+        "# Dioxyde d'azote sur la Chine 2019-21\r\nLa moyenne mensuelle du dioxyde d'azote troposphérique au-dessus de la Chine pour février 2019-21, mesurée par le satellite Copernicus Sentinel-5P, montre une baisse de la pollution de l'air pendant les bouclages nationaux imposés en 2020 pour arrêter la propagation du virus COVID-19. Un an plus tard, les niveaux de dioxyde d'azote étaient revenus à leur niveau d'avant la pandémie. (contient des données Copernicus Sentinel modifiées (2019-21), traitées par l'ESA)",
         "Le capteur SCIAMACHY d'Envisat a trois modes de fonctionnement : (1) le mode nadir permet de regarder verticalement sous le vaisseau spatial ; (2) le mode limbe permet de regarder à travers l'atmosphère en s'éloignant du Soleil ; (3) le mode occultation permet de regarder à travers l'atmosphère en direction du Soleil. (DLR-IMF)",
         "Satellites et capteurs utilisés par l'équipe ozone de l'ICC pour produire des cartes fusionnées de l'ozone total"
       ],
