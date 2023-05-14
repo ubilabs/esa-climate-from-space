@@ -17,12 +17,14 @@
         "assets/story12-image01.jpg",
         "assets/ghg_large_16.png",
         "assets/story12-image03.jpg",
+        "assets/story12-04.png",
         "assets/ghg_large_11.png"
       ],
       "imageCaptions": [
         "Verbrennung von überschüssigem Erdgas auf einer Ölförderplattform in der Nordsee. Kohlendioxid und Wasserdampf sind die wichtigsten Verbrennungsprodukte. Durch die Gewinnung und Verbrennung von Kohlenwasserstoffen wird Kohlenstoff aus einer Gesteinslagerstätte in die Atmosphäre gepumpt. (Varodrig)",
         "# Atmosphärische Kohlendioxid-Konzentration\r\nAtmosphärische Kohlendioxidkonzentration in den letzten 300 Jahren, basierend auf Luftproben aus Eisbohrkernen und seit 1958 auf direkten Messungen des Mauna Loa Observatory, Hawaii. Kohlendioxid sammelt sich seit der industriellen Revolution in der Atmosphäre an, wobei seine Konzentration in der zweiten Hälfte des zwanzigsten Jahrhunderts rasch anstieg. (Quelle: Scripps Institute of Oceanography)",
         "Die Molekularstruktur von Kohlendioxid- und Methanmolekülen ermöglicht es, Infrarotstrahlung zu absorbieren. Wärme wird von einem Molekül absorbiert, wenn die Atome im Inneren mit der Frequenz der Infrarotstrahlung schwingen können. Komplexere Moleküle haben mehr Schwingungsformen und damit mehr Möglichkeiten, Wärme zu absorbieren, was sie zu stärkeren Treibhausgasen macht. Ein Methanmolekül, in dem ein Kohlenstoffatom (grau) an vier Wasserstoffatome (rot) gebunden ist, kann mehr Wärme absorbieren als ein Kohlendioxidmolekül, in dem ein Kohlenstoffatom an zwei Sauerstoffatome (blau) gebunden ist. Ein Fluorchlorkohlenwasserstoff wie FCKW-113 (grün und gelb) hat sogar noch mehr Bindungen, was es zu einem sehr starken Treibhausgas macht. (Planetary Vision)",
+        "# Kolonnengemitteltes Methan für 2020\r\nDurchschnittliche atmosphärische Methankonzentration für das Jahr 2020, unter Verwendung von Daten des Copernicus-Satelliten Sentinel-5P. Die atmosphärischen Methanwerte sind in der nördlichen Hemisphäre höher, wo sich der größte Teil der Landfläche der Welt befindet. \r\n(CCI-Treibhausgasprojekt/enthält modifizierte Copernicus-Sentinel-Daten für 2020)",
         "# Atmosphärisches Kohlendioxid als Funktion der Zeit und des Breitengrades\r\nDie Daten zeigen den natürlichen Jahreszyklus von Kohlendioxidaufnahme und -abgabe, der auf der Nordhalbkugel besonders ausgeprägt ist, sowie einen allmählichen Anstieg im Laufe der Jahre, der auf menschliche Aktivitäten zurückzuführen ist. Die Daten stammen von dem SCIAMACHY-Sensor auf Envisat. (ESA-CCI)"
       ],
       "imageFits": [
@@ -84,12 +86,16 @@
       "images": [
         "assets/intro_large_13.jpg",
         "assets/ghg_large_18.jpg",
-        "assets/intro_large_15.png"
+        "assets/intro_large_15.png",
+        "assets/story12-05.png",
+        "assets/story12-06.jpg"
       ],
       "imageCaptions": [
         "In einer klaren Nacht leuchtet das Licht aus den Städten Westeuropas und zeichnet das Bild einer energiehungrigen Gesellschaft.  Aufnahme des ESA-Astronauten Alexander Gerst von der Internationalen Raumstation aus am 26. Juli 2014. (ESA/NASA)",
         "Abholzung im Bundesstaat Rondônia im Westen Brasiliens, aufgenommen von ESAs Minisatellit Proba-V. Die braunen Farben zeigen abgeholzte Gebiete an - man beachte das charakteristische \"Fischgrätenmuster\", wenn Hauptstraßen durch ein Gebiet führen, gefolgt von Nebenstraßen für weitere Abholzungen. Landwirtschaftliche Aktivitäten, einschließlich der Abholzung von Wäldern, sind nach fossilen Brennstoffen die zweitgrößte Quelle von Treibhausgasen. (ESA/VITO)",
-        "# Atmosphärisches Kohlendioxid während der letzten 800.000 Jahre\r\nKohlendioxidkonzentration auf der Grundlage von Luftproben aus Eisbohrkernen der Wostok-Station in der Antarktis und seit 1958 aus direkten Messungen des Mauna Loa Observatoriums auf Hawaii. Man geht davon aus, dass die derzeitige Konzentration von über 400 Teilen pro Million so hoch ist wie seit vielen Millionen Jahren nicht mehr. (Datenquelle: Scripps Institute of Oceanography)"
+        "# Atmosphärisches Kohlendioxid während der letzten 800.000 Jahre\r\nKohlendioxidkonzentration auf der Grundlage von Luftproben aus Eisbohrkernen der Wostok-Station in der Antarktis und seit 1958 aus direkten Messungen des Mauna Loa Observatoriums auf Hawaii. Man geht davon aus, dass die derzeitige Konzentration von über 400 Teilen pro Million so hoch ist wie seit vielen Millionen Jahren nicht mehr. (Datenquelle: Scripps Institute of Oceanography)",
+        "Entdeckung eines Methanlecks im Öl- und Gasfeld des Permian Basin durch Kombination von Daten des Copernicus-Satelliten Sentinel-5P mit Messungen der Sentinel-2-Infrarotkanäle.\r\n(Enthält modifizierte Copernicus-Daten (2020), verarbeitet von Kayrros)",
+        "Kohlenmonoxidkonzentration über Südostaustralien nach den verheerenden Buschbränden von 2019/20 anhand von Daten des Copernicus-Satelliten Sentinel-5P. Auf der Grundlage dieser Messungen wird geschätzt, dass die Brände in nur drei Monaten 715 Millionen Tonnen Kohlendioxid in die Atmosphäre freigesetzt haben - 80 % mehr als die normalen jährlichen Emissionen Australiens.\r\n(Enthält modifizierte Copernicus-Sentinel-Daten (2019-20), verarbeitet von der ESA)"
       ],
       "imageFits": [
         "contain",
