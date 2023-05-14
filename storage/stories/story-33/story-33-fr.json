@@ -3,25 +3,25 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Urban Sprawl\r\n\r\nCairo, Egypt",
-      "shortText": "# Urban Sprawl\r\n\r\nCairo, Egypt",
+      "text": "# L'étalement urbain\r\n\r\nLe Caire, Égypte",
+      "shortText": "# L'étalement urbain\r\n\r\nLe Caire, Égypte",
       "images": [
         "assets/story33-image04.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
-      "shortText": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
+      "text": "## Le Caire, L'étalement urbain\r\n\r\n30 ans de Caire : La capitale tentaculaire de l'Égypte. La première image a été prise par le satellite américain Landsat-5 en 1988, la deuxième en 2018 et la troisième en 2021, toutes deux issues de la mission Copernicus Sentinel-2. Les images satellitaires sont utiles pour surveiller le développement urbain à grande échelle. \r\n\r\nCrédits : contient des données Copernicus Sentinel modifiées (2018), traitées par l'ESA. USGS/ESA",
+      "shortText": "## Le Caire, L'étalement urbain\r\n\r\n30 ans de Caire : La capitale tentaculaire de l'Égypte. La première image a été prise par le satellite américain Landsat-5 en 1988, la deuxième en 2018 et la troisième en 2021, toutes deux issues de la mission Copernicus Sentinel-2. Les images satellitaires sont utiles pour surveiller le développement urbain à grande échelle. \r\n\r\nCrédits : contient des données Copernicus Sentinel modifiées (2018), traitées par l'ESA. USGS/ESA",
       "images": [
         "assets/story33-image01.jpg",
         "assets/story33-image02.jpg",
         "assets/story33-image03.jpg"
       ],
       "imageCaptions": [
-        "This image was acquired on 14 August 1988 and shows the city of Cairo and its surroundings more than 30 years ago",
-        "This image was acquired on 2 August 2018 and shows the city of Cairo and its surroundings",
-        "This image was acquired on 31 August 2021 and shows the city of Cairo and its surroundings"
+        "Cette image a été acquise le 14 août 1988 et montre la ville du Caire et ses environs il y a plus de 30 ans.",
+        "Cette image a été acquise le 2 août 2018 et montre la ville du Caire et ses environs",
+        "Cette image a été acquise le 31 août 2021 et montre la ville du Caire et ses environs."
       ],
       "imageFits": [
         "cover",
