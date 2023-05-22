@@ -10,7 +10,7 @@ export function getMarkerHtml(title: string): string {
           <g filter="url(#filter0_ddd)">
             <circle cx="12" cy="11" r="9" fill="#00AE9D" />
           </g>
-          <circle cx="12" cy="11" r="3.75" fill="white" />
+          <circle class="${styles.markerCircle}" cx="12" cy="11" r="3.75" />
           <defs>
             <filter id="filter0_ddd" x="0" y="0" width="24" height="24" filterUnits="userSpaceOnUse"
                     color-interpolation-filters="sRGB">
