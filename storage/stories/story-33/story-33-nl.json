@@ -3,16 +3,16 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Urban Sprawl\r\n\r\nCaïro, Egypte",
-      "shortText": "# Urban Sprawl\r\n\r\nCaïro, Egypte",
+      "text": "# Stedelijke Wildgroei\r\n\r\nCaïro, Egypte",
+      "shortText": "# Stedelijke Wildgroei\r\n\r\nCaïro, Egypte",
       "images": [
         "assets/story33-image04.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## Cairo, Urban Sprawl\r\n\r\n30 jaar Cairo: De uitdijende hoofdstad van Egypte. Het eerste beeld werd vastgelegd door de US Landsat-5 in 1988, het tweede in 2018 en het derde in 2021, beide van de Copernicus Sentinel-2 missie. Satellietbeelden zijn nuttig bij het monitoren van grootschalige stedelijke ontwikkeling. \r\n\r\nCredits: bevat gewijzigde Copernicus Sentinel-gegevens (2018), verwerkt door ESA. USGS/ESA",
-      "shortText": "## Cairo, Urban Sprawl\r\n\r\n30 jaar Cairo: De uitdijende hoofdstad van Egypte. Het eerste beeld werd vastgelegd door de US Landsat-5 in 1988, het tweede in 2018 en het derde in 2021, beide van de Copernicus Sentinel-2 missie. Satellietbeelden zijn nuttig bij het monitoren van grootschalige stedelijke ontwikkeling. \r\n\r\nCredits: bevat gewijzigde Copernicus Sentinel-gegevens (2018), verwerkt door ESA. USGS/ESA",
+      "text": "## Caïro, Stedelijke Wildgroei\r\n\r\n30 jaar Caïro: De uitdijende hoofdstad van Egypte. Het eerste beeld werd vastgelegd door de US Landsat-5 in 1988, het tweede in 2018 en het derde in 2021, beide van de Copernicus Sentinel-2 missie. Satellietbeelden zijn nuttig bij het monitoren van grootschalige stedelijke ontwikkeling. \r\n\r\nCredits: bevat gewijzigde Copernicus Sentinel-gegevens (2018), verwerkt door ESA. USGS/ESA",
+      "shortText": "## Caïro, Stedelijke Wildgroei\r\n\r\n30 jaar Caïro: De uitdijende hoofdstad van Egypte. Het eerste beeld werd vastgelegd door de US Landsat-5 in 1988, het tweede in 2018 en het derde in 2021, beide van de Copernicus Sentinel-2 missie. Satellietbeelden zijn nuttig bij het monitoren van grootschalige stedelijke ontwikkeling. \r\n\r\nCredits: bevat gewijzigde Copernicus Sentinel-gegevens (2018), verwerkt door ESA. USGS/ESA",
       "images": [
         "assets/story33-image01.jpg",
         "assets/story33-image02.jpg",
