@@ -112,10 +112,6 @@ const DataViewer: FunctionComponent<Props> = ({
       layer => layer && layer.type !== LayerType.Gallery
     );
 
-  useEffect(() => {
-    window.dispatchEvent(new Event('resize'));
-  }, [compareLayer]);
-
   const getDataWidget = ({
     imageLayer,
     layerDetails,
