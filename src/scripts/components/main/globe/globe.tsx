@@ -59,6 +59,7 @@ const EMPTY_FUNCTION = () => {};
 
 const Globe: FunctionComponent<Props> = props => {
   const {
+    view,
     projectionState,
     onMouseEnter,
     onTouchStart,
@@ -67,7 +68,7 @@ const Globe: FunctionComponent<Props> = props => {
     markers
   } = props;
 
-  const [containerRef, globe] = useWebGlGlobe();
+  const [containerRef, globe] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
 
   useGlobeLayers(globe, layerDetails, imageLayer);
@@ -101,7 +102,7 @@ function useCallbackRef() {
 /**
  * Creates the WebGlGlobe instance once the container element becomes available.
  */
-function useWebGlGlobe() {
+function useWebGlGlobe(view: CameraView) {
   const [containerRef, containerEl] = useCallbackRef();
   const [globe, setGlobe] = useState<WebGlGlobe | null>(null);
 
@@ -110,7 +111,7 @@ function useWebGlGlobe() {
       return EMPTY_FUNCTION;
     }
 
-    const newGlobe = new WebGlGlobe(containerEl);
+    const newGlobe = new WebGlGlobe(containerEl, {cameraView: view});
 
     setGlobe(newGlobe);
 
