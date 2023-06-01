@@ -106,17 +106,23 @@ function useWebGlGlobe(view: CameraView) {
   const [containerRef, containerEl] = useCallbackRef();
   const [globe, setGlobe] = useState<WebGlGlobe | null>(null);
 
-  useEffect(() => {
-    if (!containerEl) {
-      return EMPTY_FUNCTION;
-    }
+  useEffect(
+    () => {
+      if (!containerEl) {
+        return EMPTY_FUNCTION;
+      }
 
-    const newGlobe = new WebGlGlobe(containerEl, {cameraView: view});
+      const newGlobe = new WebGlGlobe(containerEl, {cameraView: view});
 
-    setGlobe(newGlobe);
+      setGlobe(newGlobe);
 
-    return () => newGlobe.destroy();
-  }, [containerEl]);
+      return () => newGlobe.destroy();
+    },
+    // we absolutely don't want to react to all view-changes here, so `view`
+    // is left out of dependencies.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [containerEl]
+  );
 
   return [containerRef, globe] as const;
 }
@@ -133,8 +139,9 @@ function useGlobeLayers(
     if (!globe) {
       return EMPTY_FUNCTION;
     }
+    const layers = getLayerProps(imageLayer, layerDetails);
 
-    globe.setProps({layers: getLayers(imageLayer, layerDetails)});
+    globe.setProps({layers});
 
     // we don't reset the layers in the cleanup-function as this would lead
     // to animations not working.
@@ -154,7 +161,7 @@ function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
     }
 
     globe.setProps({
-      markers: getMarkers(markers, (marker: Marker) => {
+      markers: getMarkerProps(markers, (marker: Marker) => {
         if (!marker.link) {
           return;
         }
@@ -303,7 +310,7 @@ function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
 // ----
 // utility functions
 // ----
-function getLayers(
+function getLayerProps(
   imageLayer: GlobeImageLayerData | null,
   layerDetails: Layer | null
 ) {
@@ -346,7 +353,7 @@ function getLayers(
   return layers;
 }
 
-function getMarkers(
+function getMarkerProps(
   markers: Marker[],
   onClick: (marker: Marker) => void
 ): MarkerProps[] {
