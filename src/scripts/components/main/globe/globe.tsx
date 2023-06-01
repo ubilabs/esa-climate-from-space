@@ -2,6 +2,7 @@ import React, {
   FunctionComponent,
   useCallback,
   useEffect,
+  useRef,
   useState
 } from 'react';
 
@@ -32,7 +33,8 @@ import config from '../../../config/main';
 import styles from './globe.module.styl';
 import {GlobeProjection} from '../../../types/globe-projection';
 
-type LayerLoadingStateChangedEvent = WebGlGlobeEventMap['layerLoadingStateChanged'];
+type LayerLoadingStateChangedEvent =
+  WebGlGlobeEventMap['layerLoadingStateChanged'];
 
 WebGlGlobe.setTileSelectorWorkerUrl(GLOBE_WORKER_URL);
 
@@ -49,8 +51,8 @@ interface Props {
   onMouseEnter: () => void;
   onTouchStart: () => void;
   onChange: (view: CameraView) => void;
+  onMoveStart: () => void;
   onMoveEnd: (view: CameraView) => void;
-  onMouseDown: () => void;
 }
 
 const EMPTY_FUNCTION = () => {};
@@ -73,11 +75,6 @@ const Globe: FunctionComponent<Props> = props => {
 
   useProjectionSwitch(globe, projectionState.projection);
   useMultiGlobeSynchronization(globe, props);
-
-  // fixme: right now @ubilabs/esa-webgl-globe doesn't support the
-  //  move-start/move-end events required in the data-viewer component.
-  //  These could be implemented using timers and the viewStateChange
-  //  events.
 
   // fixme: add auto-rotate functionality
 
@@ -218,9 +215,9 @@ function useProjectionSwitch(
       return;
     }
 
-    const renderMode = (projection === GlobeProjection.Sphere
-      ? 'globe'
-      : 'map') as RenderMode;
+    const renderMode = (
+      projection === GlobeProjection.Sphere ? 'globe' : 'map'
+    ) as RenderMode;
 
     globe.setProps({renderMode});
   }, [globe, projection]);
@@ -257,11 +254,33 @@ function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
  * @param props
  */
 function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
-  const {active, onChange} = props;
+  const {active, onMoveStart, onChange, onMoveEnd} = props;
+
+  const ref = useRef({
+    timerId: 0,
+    isMoving: false,
+    lastCameraView: null as CameraView | null
+  });
 
   const handleViewChanged = useCallback(
-    (ev: CustomEvent<CameraView>) => onChange(ev.detail),
-    [onChange]
+    (ev: CustomEvent<CameraView>) => {
+      ref.current.lastCameraView = ev.detail;
+
+      if (!ref.current.isMoving) {
+        ref.current.isMoving = true;
+
+        onMoveStart();
+      }
+
+      window.clearTimeout(ref.current.timerId);
+      ref.current.timerId = window.setTimeout(() => {
+        ref.current.isMoving = false;
+        onMoveEnd(ref.current.lastCameraView as CameraView);
+      }, 400);
+
+      onChange(ev.detail);
+    },
+    [onMoveStart, onChange, onMoveEnd]
   );
 
   useEffect(() => {
@@ -270,8 +289,13 @@ function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
     }
 
     globe.addEventListener('cameraViewChanged', handleViewChanged);
-    return () =>
+
+    return () => {
+      // there could be a leftover timer running
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      window.clearTimeout(ref.current.timerId);
       globe.removeEventListener('cameraViewChanged', handleViewChanged);
+    };
   }, [globe, active, handleViewChanged]);
 }
 

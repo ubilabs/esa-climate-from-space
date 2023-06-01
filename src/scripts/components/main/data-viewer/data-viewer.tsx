@@ -2,7 +2,8 @@ import React, {
   FunctionComponent,
   useState,
   useEffect,
-  useCallback
+  useCallback,
+  useLayoutEffect
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -76,14 +77,14 @@ const DataViewer: FunctionComponent<Props> = ({
     );
   }, []);
 
+  const onMoveStartHandler = useCallback(
+    () => globeSpinning && dispatch(setGlobeSpinningAction(false)),
+    [dispatch, globeSpinning]
+  );
+
   const onMoveEndHandler = useCallback(
     (view: CameraView) => dispatch(setGlobeViewAction(view)),
     [dispatch]
-  );
-
-  const onMouseDownHandler = useCallback(
-    () => globeSpinning && dispatch(setGlobeSpinningAction(false)),
-    [dispatch, globeSpinning]
   );
 
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
@@ -91,7 +92,7 @@ const DataViewer: FunctionComponent<Props> = ({
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
-  useEffect(() => {
+  useLayoutEffect(() => {
     setCurrentView(globalGlobeView);
   }, [globalGlobeView]);
 
@@ -141,8 +142,8 @@ const DataViewer: FunctionComponent<Props> = ({
         onMouseEnter={action}
         onTouchStart={action}
         onChange={onChangeHandler}
+        onMoveStart={onMoveStartHandler}
         onMoveEnd={onMoveEndHandler}
-        onMouseDown={onMouseDownHandler}
       />
     );
   };
