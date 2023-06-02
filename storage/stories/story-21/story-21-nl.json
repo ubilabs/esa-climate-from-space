@@ -15,18 +15,24 @@
       "shortText": "## Queensland, 2010\r\n\r\n- De natste december ooit in Queensland.\r\n- Overstromingen troffen 200.000 mensen en doodden 35 in het noordoosten van Australië in 2010-11.\r\n- Als gevolg van een sterke La Niña klimaatgebeurtenis in de centrale Stille Oceaan.\r\n- Zoveel water verzamelde zich op het land dat de globale zeespiegel met 5 mm daalde.\r\n- Toont aan hoe oceaan, atmosfeer en land verbonden zijn door de watercyclus.\r\n- Water is een essentieel onderdeel van het klimaat op aarde.",
       "images": [
         "assets/story21-image01.jpg",
-        "assets/story21-image06.png"
+        "assets/story21-image06.png",
+        "assets/story21-image12.jpg",
+        "assets/story21-image11.jpg",
+        "assets/story21-image13.jpg"
       ],
       "imageCaptions": [
         "Een vrouw zit vast op het dak van haar auto tijdens een overstroming in Toowoomba, Queensland, Australië, 10 januari 2011 (T Swinson)",
-        "# Wereldwijde gemiddelde zeespiegel\r\nDe wereldwijde zeespiegel, geobserveerd door satellieten, vertoont een stijgende trend van 3,3 mm per jaar, maar een daling in 2011 als gevolg van de grote hoeveelheid overtollig water op het land.  (ESA-CCI/Copernicus Marine Environment Monitoring Service)"
+        "# Wereldwijde gemiddelde zeespiegel\r\nDe wereldwijde zeespiegel, geobserveerd door satellieten, vertoont een stijgende trend van 3,3 mm per jaar, maar een daling in 2011 als gevolg van de grote hoeveelheid overtollig water op het land.  (ESA-CCI/Copernicus Marine Environment Monitoring Service)",
+        "Copernicus Sentinel-1 radarbeelden van New South Wales, Australië, van 7 en 19 maart 2021 tonen uitgestrekte gebieden van overstroomd land in blauw. Gebieden die in het voorgaande jaar door bosbranden zijn verbrand, zijn bruin gekleurd. (Bevat gewijzigde Copernicus Sentinel-gegevens (2021), verwerkt door ESA / NASA MODIS).",
+        "Pakistan werd in augustus 2022 getroffen door de ergste overstromingen ooit, nadat extreem zware moessonregens, aangedreven door de snel opwarmende Indische Oceaan, samenvielen met het smelten van de gletsjers in de Himalaya. Ongeveer een derde van het land werd overstroomd, waarbij meer dan 1100 mensen om het leven kwamen en 33 miljoen mensen werden getroffen. Dit Copernicus Sentinel-1 radarbeeld van zuid-centraal Pakistan, toont gebieden onder water in blauw en zwart. (Bevat gewijzigde Copernicus Sentinel-gegevens (2022), verwerkt door ESA)",
+        "Het waterpeil in de Po in Italië heeft in 2022 een laagterecord bereikt na maanden van hoge temperaturen en weinig neerslag. De droogte in Noord-Italië trof de landbouwproductie van de regio, die vaak afhankelijk is van irrigatie. Deze reeks satellietbeelden van Copernicus Sentinel-2 toont de Po als een brede, met sediment geladen rivier in 2020, maar een groot deel van de rivierbedding werd zichtbaar als heldere zandbanken in 2022.  (Bevat gewijzigde Copernicus Sentinel-gegevens (2020-22), verwerkt door ESA)"
       ],
       "imageFits": [
         "cover",
         "contain",
-        "cover",
-        "cover",
-        "cover"
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
@@ -117,18 +123,22 @@
       "text": "## Het water volgen\r\n\r\nWater is moeilijk te volgen gedurende zijn hele cyclus omdat het zich zo gemakkelijk verplaatst en van de ene fase in de andere verandert. Satellieten bieden een globaal overzicht en wetenschappers gebruiken een breed scala aan technologieën om water vanuit de ruimte te volgen. Het [Climate Change Initiative](stories/story-32/3) van het European Space Agency maakt gebruik van dit satellietgegevensarchief om een aantal van de belangrijkste klimaatvariabelen te analyseren. Meer dan de helft van de variabelen die vanuit de ruimte kunnen worden gemeten hebben betrekking op of beïnvloeden de watercyclus: temperatuur en zoutgehalte van het zeeoppervlak, zeeniveau, toestand van de zee, kleur van de oceaan, waterdamp, wolken, aërosolen, sneeuw, bodemvochtigheid, meren, gletsjers, ijskappen, permafrost en zee-ijs.\r\n\r\nDoor deze puzzelstukjes in elkaar te passen kunnen we begrijpen hoe de watercyclus werkt, hoe deze het klimaat beïnvloedt en hoe veranderingen in het klimaat de watercyclus wederom beïnvloeden. Een warmer klimaat betekent meer verdamping, en meer neerslag in de vorm van regen in plaats van sneeuw. We zien nu al grote veranderingen in de verdeling van water over de verschillende reservoirs van de hydrosfeer. Sommige van deze herverdelingen zijn tijdelijk, zoals de verschuiving van zee naar land in de nasleep van de La Niña van 2010, maar andere zijn permanent, zoals de verschuiving van land- en zee-ijs naar oceaanwater. Hoewel de warmte van de zon de drijvende kracht is, zijn er tekenen dat de watercyclus door de opwarming van het klimaat een extra impuls krijgt.",
       "shortText": "## Het water volgen\r\n\r\nWater verplaatst zich gemakkelijk en verandert snel van de ene fase in de andere en is daarom moeilijk te volgen. Wetenschappers gebruiken een breed scala aan technologieën om water vanuit de ruimte te volgen.\r\n \r\nMeer dan de helft van ESA's CCI-klimaatvariabelen hebben betrekking op of beïnvloeden de watercyclus:\r\n- temperatuur van het zeeoppervlak, zoutgehalte, zeeniveau, toestand van de zee, kleur van de oceaan\r\n- waterdamp, wolken, aërosolen\r\n- sneeuw, bodemvocht, meren, gletsjers, ijskappen, permafrost, zee-ijs\r\n\r\nEen warmer klimaat betekent meer verdamping, meer neerslag in de vorm van regen in plaats van sneeuw, en meer smelten.\r\n- We zien nu al grote verschuivingen tussen de verschillende reservoirs van de watercyclus.\r\n- Sommige tijdelijk, zoals de verschuiving van zee naar land na de La Niña van 2010.\r\n- Sommige permanent, zoals de verschuiving van land- en zee-ijs naar oceaanwater.\r\n- Er zijn tekenen die erop wijzen dat de watercyclus door de opwarming van het klimaat een extra impuls krijgt.",
       "images": [
-        "assets/story21-image03.jpg",
-        "assets/story21-image07.jpg",
         "assets/story21-image04.png",
+        "assets/story21-image14.jpg",
+        "assets/story21-image07.jpg",
+        "assets/story21-image03.jpg",
         "assets/story21-image05.png"
       ],
       "imageCaptions": [
-        "De triljoen ton ijs die elk jaar verloren gaat is genoeg om\r\neen 10 kilometer hoog ijsblok te vormen, hier naast Manhattan voor de schaal.\r\nIJs dat verloren gaat van gletsjers en ijskappen op het land draagt bij aan de zeespiegelstijging,\r\nmaar zee-ijs en drijvende ijsplaten doen dat niet. (Planetary Visions / ESA / NASA)",
-        "# Cummulatieve verandering in ijsmassa in gletsjers 1961-2016\r\nMeer dan negen biljoen ton gletsjerijs is verloren gegaan in de afgelopen halve eeuw (ESA, aangepast van Zemp et al (2019) Nature, en gegevens courtesy World Glacier Monitoring Service)",
         "# Wereldwijde waterfluxen\r\nFluxen in de mondiale watercyclus, gemeten in duizend kubieke kilometer per jaar (TU Wien/W Dorigo)",
+        "De nasleep van twee grote gletsjerlawines is vastgelegd in dit satellietbeeld van de oostelijke Himalaya uit 2018. Plotselinge instortingen van gletsjers hebben zich de afgelopen jaren ook voorgedaan in de Kaukasus, de Andes en de Alpen. Een opwarmend klimaat, dooi van permafrost en infiltratie van smeltwater behoren tot de oorzaken van dergelijke gebeurtenissen.\r\n(Bevat aangepaste Copernicus Sentinel-2 gegevens (2017-18), verwerkt door CCI Glacier team en ESA)",
+        "# Cummulatieve verandering in ijsmassa in gletsjers 1961-2016\r\nMeer dan negen biljoen ton gletsjerijs is verloren gegaan in de afgelopen halve eeuw (ESA, aangepast van Zemp et al (2019) Nature, en gegevens courtesy World Glacier Monitoring Service)",
+        "De triljoen ton ijs die elk jaar verloren gaat is genoeg om\r\neen 10 kilometer hoog ijsblok te vormen, hier naast Manhattan voor de schaal.\r\nIJs dat verloren gaat van gletsjers en ijskappen op het land draagt bij aan de zeespiegelstijging,\r\nmaar zee-ijs en drijvende ijsplaten doen dat niet. (Planetary Visions / ESA / NASA)",
         "# Opgeslagen energie in componenten van het klimaatsysteem\r\nWarmte-energie geaccumuleerd in verschillende componenten van het klimaatsysteem van de aarde sinds 1971, gemeten in zetajoule (1 ZJ is 10^21 joule, of duizend miljard miljard joule). Het water in de oceanen van de wereld slaat veel meer warmte op dan de atmosfeer en het land.\r\n(UN IPCC, 2013)"
       ],
       "imageFits": [
+        "contain",
+        "contain",
         "contain",
         "contain",
         "contain"
