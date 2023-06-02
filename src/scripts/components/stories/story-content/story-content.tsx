@@ -4,11 +4,12 @@ import cx from 'classnames';
 
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {useSlide} from '../../../hooks/use-slide';
+import config from '../../../config/main';
 
 import {StoryMode} from '../../../types/story-mode';
 import {Slide} from '../../../types/story';
 
-import styles from './story-content.styl';
+import styles from './story-content.module.styl';
 
 interface Props {
   storyId: string;
@@ -43,23 +44,11 @@ const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
   return (
     <div className={contentClasses}>
       <ReactMarkdown
-        source={storyText}
+        children={storyText || ''}
         transformImageUri={transformImageUri}
         transformLinkUri={transformLinkUri}
         linkTarget={getLinkTarget}
-        allowedTypes={[
-          'heading',
-          'text',
-          'paragraph',
-          'break',
-          'strong',
-          'emphasis',
-          'image',
-          'imageReference',
-          'list',
-          'listItem',
-          'link'
-        ]}
+        allowedElements={config.markdownAllowedElements}
       />
     </div>
   );

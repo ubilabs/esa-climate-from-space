@@ -31,7 +31,7 @@ import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 import {Layer} from '../../../types/layer';
 import {LegendValueColor} from '../../../types/legend-value-color';
 
-import styles from './data-viewer.styl';
+import styles from './data-viewer.module.styl';
 
 interface Props {
   backgroundColor: string;

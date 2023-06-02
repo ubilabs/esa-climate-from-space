@@ -1,6 +1,6 @@
-import {createStore, applyMiddleware, Middleware} from 'redux';
-import thunk from 'redux-thunk';
+import {Middleware, AnyAction} from 'redux';
 import {createLogger} from 'redux-logger';
+import thunk, {ThunkDispatch as ThunkDispatchInternal} from 'redux-thunk';
 
 import rootReducer from '../../../reducers/index';
 import {
@@ -10,26 +10,30 @@ import {
   offlineLoadMiddleware
 } from '../../../libs/electron/index';
 
-export function createReduxStore() {
-  // @ts-ignore - injected by webpack
-  const isProduction = PRODUCTION; // eslint-disable-line no-undef
-  const middlewares: Middleware[] = [thunk];
+import {configureStore} from '@reduxjs/toolkit';
 
-  if (isElectron()) {
-    middlewares.push(offlineSaveMiddleware);
-    middlewares.push(offlineLoadMiddleware);
-  }
+// @ts-ignore - injected by webpack
+const isProduction = import.meta.env.PROD; // eslint-disable-line no-undef
+const middleware: Middleware[] = [thunk];
 
-  if (!isProduction) {
-    middlewares.push(createLogger({collapsed: true}));
-  }
-
-  const store = createStore(rootReducer, applyMiddleware(...middlewares));
-
-  // connect electron messages to redux store
-  if (isElectron()) {
-    connectToStore(store.dispatch);
-  }
-
-  return store;
+if (isElectron()) {
+  middleware.push(offlineSaveMiddleware);
+  middleware.push(offlineLoadMiddleware);
 }
+
+if (!isProduction) {
+  middleware.push(createLogger({collapsed: true}));
+}
+
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware
+});
+
+// connect electron messages to redux store
+if (isElectron()) {
+  connectToStore(store.dispatch);
+}
+
+export type RootState = ReturnType<typeof store.getState>;
+export type ThunkDispatch = ThunkDispatchInternal<RootState, void, AnyAction>;

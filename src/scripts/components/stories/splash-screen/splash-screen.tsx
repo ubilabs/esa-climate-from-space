@@ -7,7 +7,7 @@ import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {Slide} from '../../../types/story';
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './splash-screen.styl';
+import styles from './splash-screen.module.styl';
 
 interface Props {
   storyId: string;
@@ -32,15 +32,8 @@ const SplashScreen: FunctionComponent<Props> = ({storyId, mode, slide}) => {
       }}>
       <div className={contentClasses}>
         <ReactMarkdown
-          source={slide.text}
-          allowedTypes={[
-            'heading',
-            'text',
-            'paragraph',
-            'break',
-            'strong',
-            'emphasis'
-          ]}
+          children={slide.text}
+          allowedElements={['h1', 'h2', 'h3', 'p', 'br', 'em', 'b']}
         />
       </div>
     </div>

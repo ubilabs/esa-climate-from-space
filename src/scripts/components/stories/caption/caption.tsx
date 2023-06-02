@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
 import cx from 'classnames';
 
-import styles from './caption.styl';
+import styles from './caption.module.styl';
 import {ImageFit} from '../../../types/image-fit';
 
 interface Props {
@@ -26,15 +26,8 @@ const Caption: FunctionComponent<Props> = ({
       }}>
       <div className={styles.content}>
         <ReactMarkdown
-          source={content}
-          allowedTypes={[
-            'heading',
-            'text',
-            'paragraph',
-            'break',
-            'strong',
-            'emphasis'
-          ]}
+          children={content}
+          allowedElements={['h1', 'h2', 'h3', 'p', 'span', 'br', 'b', 'em']}
         />
       </div>
     </div>
