@@ -13,7 +13,7 @@ import Navigation from '../navigation/navigation';
 import {EsaLogo} from '../icons/esa-logo';
 import TimeSlider from '../../layers/time-slider/time-slider';
 import DataSetInfo from '../../layers/data-set-info/data-set-info';
-import {createReduxStore} from './create-redux-store';
+import {store} from './create-redux-store';
 
 import Story from '../../stories/story/story';
 import StoriesSelector from '../../stories/stories-selector/stories-selector';
@@ -25,10 +25,7 @@ import AboutProjectOverlay from '../about-project-overlay/about-project-overlay'
 import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
 
-import styles from './app.styl';
-
-// create redux store
-const store = createReduxStore();
+import styles from './app.module.styl';
 
 // create matomo tracking instance
 const matomoInstance = createInstance({
@@ -37,14 +34,6 @@ const matomoInstance = createInstance({
   trackerUrl: 'https://matomo-ext.esa.int/matomo.php',
   srcUrl: 'https://matomo-ext.esa.int/matomo.js'
 });
-
-const App: FunctionComponent = () => (
-  <MatomoProvider value={matomoInstance}>
-    <StoreProvider store={store}>
-      <TranslatedApp />
-    </StoreProvider>
-  </MatomoProvider>
-);
 
 const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
@@ -101,5 +90,14 @@ const TranslatedApp: FunctionComponent = () => {
     </Router>
   );
 };
+
+const App: FunctionComponent = () => (
+  // @ts-ignore - MatomoProvider does not include children in props since react 18
+  <MatomoProvider value={matomoInstance}>
+    <StoreProvider store={store}>
+      <TranslatedApp />
+    </StoreProvider>
+  </MatomoProvider>
+);
 
 export default App;

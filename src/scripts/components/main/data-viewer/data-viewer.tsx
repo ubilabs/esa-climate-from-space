@@ -2,7 +2,8 @@ import React, {
   FunctionComponent,
   useState,
   useEffect,
-  useCallback
+  useCallback,
+  useLayoutEffect
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -24,14 +25,14 @@ import LayerLegend from '../../layers/layer-legend/layer-legend';
 import {useImageLayerData} from '../../../hooks/use-image-layer-data';
 import HoverLegend from '../../layers/hover-legend/hover-legend';
 
-import {GlobeView} from '../../../types/globe-view';
 import {Marker} from '../../../types/marker-type';
 import {LayerType} from '../../../types/globe-layer-type';
 import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 import {Layer} from '../../../types/layer';
 import {LegendValueColor} from '../../../types/legend-value-color';
 
-import styles from './data-viewer.styl';
+import styles from './data-viewer.module.styl';
+import {CameraView} from '@ubilabs/esa-webgl-globe';
 
 interface Props {
   backgroundColor: string;
@@ -67,23 +68,23 @@ const DataViewer: FunctionComponent<Props> = ({
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
   const flyTo = useSelector(flyToSelector);
-  const onChangeHandler = useCallback((view: GlobeView) => {
+  const onChangeHandler = useCallback((view: CameraView) => {
     setCurrentView(view);
     // setting css variable for compass icon
     document.documentElement.style.setProperty(
       '--globe-latitude',
-      `${view.position.latitude}deg`
+      `${view.lat}deg`
     );
   }, []);
 
-  const onMoveEndHandler = useCallback(
-    (view: GlobeView) => dispatch(setGlobeViewAction(view)),
-    [dispatch]
-  );
-
-  const onMouseDownHandler = useCallback(
+  const onMoveStartHandler = useCallback(
     () => globeSpinning && dispatch(setGlobeSpinningAction(false)),
     [dispatch, globeSpinning]
+  );
+
+  const onMoveEndHandler = useCallback(
+    (view: CameraView) => dispatch(setGlobeViewAction(view)),
+    [dispatch]
   );
 
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
@@ -91,7 +92,7 @@ const DataViewer: FunctionComponent<Props> = ({
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
-  useEffect(() => {
+  useLayoutEffect(() => {
     setCurrentView(globalGlobeView);
   }, [globalGlobeView]);
 
@@ -141,8 +142,8 @@ const DataViewer: FunctionComponent<Props> = ({
         onMouseEnter={action}
         onTouchStart={action}
         onChange={onChangeHandler}
+        onMoveStart={onMoveStartHandler}
         onMoveEnd={onMoveEndHandler}
-        onMouseDown={onMouseDownHandler}
       />
     );
   };

@@ -17,12 +17,14 @@
         "assets/story12-image01.jpg",
         "assets/ghg_large_16.png",
         "assets/story12-image03.jpg",
+        "assets/story12-04.png",
         "assets/ghg_large_11.png"
       ],
       "imageCaptions": [
         "Aardgas dat wordt afgefakkeld op een olieproductieplatform in de Noordzee. Koolstofdioxide en waterdamp zijn de belangrijkste verbrandingsproducten. Bij de winning en verbranding van koolwaterstoffen komt koolstof uit een rotsreservoir in de atmosfeer terecht. (Varodrig)",
         "# Atmosferische kooldioxideconcentratie\r\nKooldioxideconcentratie in de atmosfeer over de afgelopen 300 jaar, gebaseerd op luchtmonsters uit ijskernen en, sinds 1958, directe metingen van het Mauna Loa Observatorium, Hawaii. Koolstofdioxide heeft zich sinds de industriële revolutie in de atmosfeer opgehoopt, waarbij de concentratie in de tweede helft van de twintigste eeuw snel toenam. (bron: Scripps Institute of Oceanography)",
         "De moleculaire structuur van koolstofdioxide- en methaanmoleculen maakt het mogelijk infrarode straling te absorberen. Warmte wordt door een molecuul geabsorbeerd als de atomen binnenin kunnen vibreren op de frequentie van infrarode straling. Complexere moleculen hebben meer trillingswijzen en dus meer mogelijkheden om warmte te absorberen, waardoor ze sterkere broeikasgassen zijn. Een methaanmolecuul, met één koolstofatoom (grijs) gebonden aan vier waterstofatomen (rood), kan meer warmte absorberen dan een koolstofdioxidemolecuul, met één koolstofatoom gebonden aan twee zuurstofatomen (blauw). Een chloorfluorkoolstof zoals CFK-113 (groen en geel) heeft nog meer bindingen, waardoor het een zeer krachtig broeikasgas is. (Planetaire Visies)",
+        "# Gemiddelde methaan concentratie in de atmosfeer in 2020\r\nGemiddelde atmosferische methaan concentratie in 2020, op basis van gegevens van de Copernicus Sentinel-5P satelliet. Het methaangehalte in de atmosfeer is hoger op het noordelijk halfrond, waar zich het grootste deel van het land van de wereld bevindt. \r\n(CCI-project broeikasgassen/bevat gewijzigde Copernicus Sentinel-gegevens 2020)",
         "# Atmosferische kooldioxide als functie van tijd en breedtegraad\r\nHet gegevensoppervlak toont de natuurlijke jaarlijkse cyclus van koolstofdioxide-opname en -afgifte, die bijzonder sterk is op het noordelijk halfrond, evenals een geleidelijke toename in de loop der jaren als gevolg van menselijke activiteit. Gegevens afkomstig van de SCIAMACHY-sensor op Envisat. (ESA-CCI)"
       ],
       "imageFits": [
@@ -75,7 +77,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "evPBTu_a27I"
+      "videoId": "evPBTu_a27I",
+      "videoPoster": "assets/carbon_cycle.jpg",
+      "videoSrc": [
+        "assets/carbon_cycle-web.mp4"
+      ]
     },
     {
       "type": "image",
@@ -84,12 +90,16 @@
       "images": [
         "assets/intro_large_13.jpg",
         "assets/ghg_large_18.jpg",
-        "assets/intro_large_15.png"
+        "assets/intro_large_15.png",
+        "assets/story12-05.png",
+        "assets/story12-06.jpg"
       ],
       "imageCaptions": [
         "Op een heldere nacht schijnt licht uit stedelijke gebieden in heel West-Europa, en schetst een portret van een energieverslindende samenleving.  Foto genomen door ESA-astronaut Alexander Gerst vanuit het Internationaal ruimtestation op 26 juli 2014. (ESA/NASA)",
         "Ontbossing in de deelstaat Rondônia in het westen van Brazilië, in beeld gebracht door de Proba-V minisatelliet van ESA. De bruine kleuren geven ontboste gebieden aan - let op het kenmerkende 'visgraat'-patroon wanneer hoofdwegen door een gebied worden aangelegd, gevolgd door secundaire wegen voor verdere ontbossing. Landbouwactiviteiten, waaronder ontbossing, zijn na fossiele brandstoffen de grootste bron van broeikasgassen. (ESA/VITO)",
-        "# Atmosferische koolstofdioxide gedurende de laatste 800.000 jaar\r\nKoolstofdioxideconcentratie gebaseerd op luchtmonsters uit ijskernen in Vostok Station, Antarctica, en sinds 1958, directe metingen van Mauna Loa Observatory, Hawaii. De huidige concentratie van meer dan 400 deeltjes per miljoen wordt geacht hoger te zijn dan zij in vele miljoenen jaren is geweest. (gegevensbron: Scripps Institute of Oceanography)"
+        "# Atmosferische koolstofdioxide gedurende de laatste 800.000 jaar\r\nKoolstofdioxideconcentratie gebaseerd op luchtmonsters uit ijskernen in Vostok Station, Antarctica, en sinds 1958, directe metingen van Mauna Loa Observatory, Hawaii. De huidige concentratie van meer dan 400 deeltjes per miljoen wordt geacht hoger te zijn dan zij in vele miljoenen jaren is geweest. (gegevensbron: Scripps Institute of Oceanography)",
+        "Methaanlek gedetecteerd in het Permian Basin olie- en gasveld door gegevens van de Copernicus Sentinel-5P satelliet te combineren met metingen van de Sentinel-2 infrarood kanalen.\r\n(Bevat gewijzigde Copernicus-gegevens (2020), verwerkt door Kayrros)",
+        "Koolstofmonoxide concentratie boven het zuidoosten van Australië, na de verwoestende bosbranden van 2019/20, met behulp van informatie van de Copernicus Sentinel-5P-satelliet. Op basis van deze metingen wordt geschat dat de branden in slechts drie maanden tijd 715 miljoen ton kooldioxide in de atmosfeer hebben gebracht - 80% meer dan de normale jaarlijkse uitstoot van Australië.\r\n(Bevat gewijzigde Copernicus Sentinel-gegevens (2019-20), verwerkt door ESA)"
       ],
       "imageFits": [
         "contain",
@@ -110,7 +120,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "-QyzY8waNoY"
+      "videoId": "-QyzY8waNoY",
+      "videoPoster": "assets/ghg-interview-wide.jpg",
+      "videoSrc": [
+        "assets/ghg-interview-wide-web.mp4"
+      ]
     }
   ]
 }

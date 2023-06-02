@@ -17,12 +17,14 @@
         "assets/story12-image01.jpg",
         "assets/ghg_large_16.png",
         "assets/story12-image03.jpg",
+        "assets/story12-04.png",
         "assets/ghg_large_11.png"
       ],
       "imageCaptions": [
         "Combustion de gaz naturel excédentaire sur une plate-forme de production pétrolière en mer du Nord. Le dioxyde de carbone et la vapeur d'eau sont les principaux produits de combustion. L'extraction et la combustion des hydrocarbures pompent le carbone d'un réservoir rocheux dans l'atmosphère. (Varodrig)",
         "# Concentration de dioxyde de carbone atmosphérique\r\nConcentration de dioxyde de carbone dans l'atmosphère au cours des 300 dernières années, sur la base d'échantillons d'air provenant de carottes de glace et, depuis 1958, de mesures directes effectuées par l'observatoire de Mauna Loa, à Hawaï. Le dioxyde de carbone s'est accumulé dans l'atmosphère depuis la révolution industrielle, sa concentration augmentant rapidement dans la seconde moitié du XXe siècle. (source : Institut océanographique Scripps)",
         "La structure moléculaire du dioxyde de carbone et du méthane leur permet d'absorber le rayonnement infrarouge. La chaleur est absorbée par une molécule si les atomes qui la composent peuvent vibrer à la fréquence du rayonnement infrarouge. Les molécules plus complexes ont plus de modes de vibration, donc plus de possibilités d'absorber la chaleur, ce qui en fait des gaz à effet de serre plus puissants. Une molécule de méthane, avec un atome de carbone (gris) lié à quatre atomes d'hydrogène (rouge), peut absorber plus de chaleur qu'une molécule de dioxyde de carbone, avec un atome de carbone lié à deux atomes d'oxygène (bleu). Un chlorofluorocarbone comme le CFC-113 (vert et jaune) possède encore plus de liaisons, ce qui en fait un gaz à effet de serre très puissant. (Planetary Visions)",
+        "# Méthane moyen de la colonne pour 2020\r\nConcentration moyenne de méthane dans l'atmosphère pour 2020, d'après les données du satellite Copernicus Sentinel-5P. Les niveaux de méthane atmosphérique sont plus élevés dans l'hémisphère nord, où se trouve la majeure partie des terres émergées. \r\n(Projet de l'ICC sur les gaz à effet de serre/contient des données modifiées de Copernicus Sentinel pour 2020)",
         "# Dioxyde de carbone atmosphérique en fonction du temps et de la latitude\r\nLa surface des données montre le cycle annuel naturel d'absorption et de libération du dioxyde de carbone, qui est particulièrement fort dans l'hémisphère nord, ainsi qu'une augmentation progressive au fil des ans résultant de l'activité humaine. Données dérivées du capteur SCIAMACHY sur Envisat. (ESA-CCI)"
       ],
       "imageFits": [
@@ -75,7 +77,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "evPBTu_a27I"
+      "videoId": "evPBTu_a27I",
+      "videoPoster": "assets/carbon_cycle.jpg",
+      "videoSrc": [
+        "assets/carbon_cycle-web.mp4"
+      ]
     },
     {
       "type": "image",
@@ -84,12 +90,16 @@
       "images": [
         "assets/intro_large_13.jpg",
         "assets/ghg_large_18.jpg",
-        "assets/intro_large_15.png"
+        "assets/intro_large_15.png",
+        "assets/story12-05.png",
+        "assets/story12-06.jpg"
       ],
       "imageCaptions": [
         "Par une nuit claire, la lumière brille dans les zones urbaines de l'Europe occidentale, dressant le portrait d'une société gourmande en énergie.  Photo prise par l'astronaute de l'ESA Alexander Gerst depuis la station spatiale internationale le 26 juillet 2014. (ESA/NASA)",
         "Déforestation dans l'état de Rondônia dans l'ouest du Brésil, telle qu'imagée par le minisatellite Proba-V de l'ESA. Les couleurs brunes indiquent les zones déboisées - notez le motif caractéristique en \"arête de poisson\" lorsque des routes principales sont coupées à travers une zone, suivies de routes secondaires pour d'autres défrichements. Les activités agricoles, y compris la déforestation, sont la deuxième source de gaz à effet de serre, après les combustibles fossiles. (ESA/VITO)",
-        "Déforestation dans l'état de Rondônia dans l'ouest du Brésil, telle qu'imagée par le minisatellite Proba-V de l'ESA. Les couleurs brunes indiquent les zones déboisées - notez le motif caractéristique en \"arête de poisson\" lorsque des routes principales sont coupées à travers une zone, suivies de routes secondaires pour d'autres défrichements. Les activités agricoles, y compris la déforestation, sont la deuxième source de gaz à effet de serre, après les combustibles fossiles. (ESA/VITO)"
+        "# Dioxyde de carbone atmosphérique au cours des 800 000 dernières années\r\nConcentration de dioxyde de carbone basée sur des échantillons d'air prélevés dans les carottes de glace de la station Vostok, en Antarctique, et, depuis 1958, sur des mesures directes de l'observatoire de Mauna Loa, à Hawaï. La concentration actuelle de plus de 400 parties par million est considérée comme plus élevée qu'elle ne l'a jamais été depuis des millions d'années. (source de données : Scripps Institute of Oceanography)",
+        "Fuite de méthane détectée dans le champ pétrolier et gazier du bassin Permien en combinant les données du satellite Copernicus Sentinel-5P et les mesures des canaux infrarouges de Sentinel-2.\r\n(Contient des données Copernicus modifiées (2020), traitées par Kayrros)",
+        "Concentration de monoxyde de carbone dans le sud-est de l'Australie, après les feux de brousse dévastateurs de 2019/20, d'après les informations fournies par le satellite Copernicus Sentinel-5P. Sur la base de ces mesures, on estime que les incendies ont libéré 715 millions de tonnes de dioxyde de carbone dans l'atmosphère - soit 80 % de plus que les émissions annuelles normales de l'Australie - en seulement trois mois.\r\n(Contient des données Copernicus Sentinel modifiées (2019-20), traitées par l'ESA)"
       ],
       "imageFits": [
         "contain",
@@ -110,7 +120,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "-QyzY8waNoY"
+      "videoId": "-QyzY8waNoY",
+      "videoPoster": "assets/ghg-interview-wide.jpg",
+      "videoSrc": [
+        "assets/ghg-interview-wide-web.mp4"
+      ]
     }
   ]
 }

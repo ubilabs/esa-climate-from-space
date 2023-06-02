@@ -17,12 +17,14 @@
         "assets/story12-image01.jpg",
         "assets/ghg_large_16.png",
         "assets/story12-image03.jpg",
+        "assets/story12-04.png",
         "assets/ghg_large_11.png"
       ],
       "imageCaptions": [
         "Quema de gas natural sobrante en una plataforma de producción de petróleo en el Mar del Norte. El dióxido de carbono y el vapor de agua son los principales productos de la combustión. La extracción y quema de hidrocarburos bombea el carbono de un depósito de roca a la atmósfera. (Varodrig)",
         "# Concentración de dióxido de carbono en la atmósfera\r\nConcentración atmosférica de dióxido de carbono en los últimos 300 años, basada en muestras de aire de núcleos de hielo y, desde 1958, en mediciones directas del Observatorio de Mauna Loa, en Hawai. El dióxido de carbono se ha ido acumulando en la atmósfera desde la Revolución Industrial, y su concentración aumentó rápidamente en la segunda mitad del siglo XX. (Fuente: Instituto Scripps de Oceanografía)",
         "La estructura de las moléculas de dióxido de carbono y metano les permite absorber la radiación infrarroja. El calor es absorbido por una molécula si los átomos de su interior pueden vibrar a la frecuencia de la radiación infrarroja. Las moléculas más complejas tienen más modos de vibración y, por tanto, más posibilidades de absorber calor, lo que las convierte en gases de efecto invernadero más potentes. Una molécula de metano, con un átomo de carbono (gris) unido a cuatro átomos de hidrógeno (rojo), puede absorber más calor que una molécula de dióxido de carbono, con un átomo de carbono unido a dos átomos de oxígeno (azul). Un clorofluorocarbono como el CFC-113 (verde y amarillo) tiene aún más enlaces, lo que lo convierte en un gas de efecto invernadero muy potente. (Planetary Visions)",
+        "# Promedio de metano atmosférico para 2020\r\nConcentración media de metano atmosférico para 2020, utilizando datos del satélite Sentinel-5P de Copernicus. Los niveles de metano atmosférico son más elevados en el hemisferio norte, donde se encuentra la mayor parte de la superficie terrestre del planeta. \r\n(Proyecto Gases de Efecto Invernadero del CCI/con datos modificados de Copernicus Sentinel 2020)",
         "# Dióxido de carbono atmosférico en función del tiempo y la latitud\r\nLa superficie de datos muestra el ciclo anual natural de captación y liberación de dióxido de carbono, que es especialmente intenso en el hemisferio norte, así como un aumento gradual a lo largo de los años derivado de la actividad humana. Datos derivados del sensor SCIAMACHY en Envisat. (ESA-CCI)"
       ],
       "imageFits": [
@@ -75,7 +77,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "evPBTu_a27I"
+      "videoId": "evPBTu_a27I",
+      "videoPoster": "assets/carbon_cycle.jpg",
+      "videoSrc": [
+        "assets/carbon_cycle-web.mp4"
+      ]
     },
     {
       "type": "image",
@@ -84,12 +90,16 @@
       "images": [
         "assets/intro_large_13.jpg",
         "assets/ghg_large_18.jpg",
-        "assets/intro_large_15.png"
+        "assets/intro_large_15.png",
+        "assets/story12-05.png",
+        "assets/story12-06.jpg"
       ],
       "imageCaptions": [
         "En una noche clara, la luz brilla en las zonas urbanas de Europa occidental, pintando un retrato de una sociedad hambrienta de energía.  Fotografía tomada por el astronauta de la ESA Alexander Gerst desde la Estación Espacial Internacional el 26 de julio de 2014. (ESA/NASA)",
         "Deforestación en el estado de Rondônia, en el oeste de Brasil, según las imágenes del minisatélite Proba-V de la ESA. Los colores marrones indican las áreas deforestadas - nótese el distintivo patrón de \"espina de pescado\" cuando se cortan caminos principales a través de un área, seguidos por caminos secundarios para una mayor tala. Las actividades agrícolas, incluida la deforestación, son la segunda fuente de gases de efecto invernadero, después de los combustibles fósiles. (ESA/VITO)",
-        "# Dióxido de carbono atmosférico en los últimos 800.000 años\r\nConcentración de dióxido de carbono basada en muestras de aire de los núcleos de hielo de la Estación Vostok, en la Antártida, y desde 1958, en mediciones directas del Observatorio Mauna Loa, en Hawai. Se cree que la concentración actual, de más de 400 partes por millón, es más alta de lo que ha sido durante muchos millones de años. (fuente de datos: Instituto Scripps de Oceanografía)"
+        "# Dióxido de carbono atmosférico en los últimos 800.000 años\r\nConcentración de dióxido de carbono basada en muestras de aire de los núcleos de hielo de la Estación Vostok, en la Antártida, y desde 1958, en mediciones directas del Observatorio Mauna Loa, en Hawai. Se cree que la concentración actual, de más de 400 partes por millón, es más alta de lo que ha sido durante muchos millones de años. (fuente de datos: Instituto Scripps de Oceanografía)",
+        "Fuga de metano detectada en el yacimiento de petróleo y gas de Permian Basin mediante la combinación de datos del satélite Sentinel-5P de Copernicus con mediciones de los canales infrarrojos de Sentinel-2.\r\n(Contiene datos Copernicus modificados (2020), procesados por Kayrros).",
+        "Concentración de monóxido de carbono sobre el sureste de Australia, tras los devastadores incendios forestales de 2019/20, utilizando información del satélite Sentinel-5P de Copernicus. A partir de estas mediciones, se estima que los incendios liberaron 715 millones de toneladas de dióxido de carbono a la atmósfera -un 80% por encima de las emisiones anuales normales de Australia- en solo tres meses.\r\n(Contiene datos modificados de Copernicus Sentinel (2019-20), procesados por la ESA)"
       ],
       "imageFits": [
         "contain",
@@ -110,7 +120,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "-QyzY8waNoY"
+      "videoId": "-QyzY8waNoY",
+      "videoPoster": "assets/ghg-interview-wide.jpg",
+      "videoSrc": [
+        "assets/ghg-interview-wide-web.mp4"
+      ]
     }
   ]
 }

@@ -1,5 +1,4 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
 import {YouTubePlayer} from 'youtube-player/dist/types';
 import {VideoJsPlayer} from 'video.js';
 
@@ -23,21 +22,17 @@ import {SlideType} from '../../../types/slide-type';
 import {GlobeProjection} from '../../../types/globe-projection';
 import {StoryMode} from '../../../types/story-mode';
 import {Slide, Story as StoryType} from '../../../types/story';
+import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 
-import styles from './story.styl';
+import styles from './story.module.styl';
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
   const sphereProjection = GlobeProjection.Sphere;
-  const dispatch = useDispatch();
+  const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const {
-    mode,
-    slideIndex,
-    currentStoryId,
-    selectedStory,
-    storyListItem
-  } = storyParams;
+  const {mode, slideIndex, currentStoryId, selectedStory, storyListItem} =
+    storyParams;
   const storyMode = mode === StoryMode.Stories;
 
   const isSplashScreen =
@@ -67,9 +62,9 @@ const Story: FunctionComponent = () => {
     return null;
   }
 
-  const getVideoDuration = (player: YouTubePlayer | VideoJsPlayer) => {
+  const getVideoDuration = async (player: YouTubePlayer | VideoJsPlayer) => {
     if ((player as YouTubePlayer).getDuration) {
-      const duration = (player as YouTubePlayer).getDuration();
+      const duration = await (player as YouTubePlayer).getDuration();
       setVideoDuration(duration * 1000);
     } else {
       const duration = (player as VideoJsPlayer).duration;
@@ -128,7 +123,8 @@ const Story: FunctionComponent = () => {
           backLink={`/${mode.toString()}`}
           backButtonId="backToStories"
           title={isSplashScreen ? '' : storyListItem.title}>
-          {storyMode && <Share />}
+          {/* eslint-disable-next-line */}
+          {storyMode ? <Share /> : undefined}
         </Header>
       )}
       <main className={styles.main}>

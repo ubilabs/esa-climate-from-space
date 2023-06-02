@@ -46,7 +46,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "EE5EJpUkMkw"
+      "videoId": "EE5EJpUkMkw",
+      "videoPoster": "assets/sealevels.jpg",
+      "videoSrc": [
+        "assets/sealevels-web.mp4"
+      ]
     },
     {
       "type": "globe",
@@ -120,7 +124,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "K7JmzmDoo4w"
+      "videoId": "K7JmzmDoo4w",
+      "videoPoster": "assets/sealevel-interview-wide.jpg",
+      "videoSrc": [
+        "assets/sealevel-interview-wide-web.mp4"
+      ]
     }
   ]
 }
