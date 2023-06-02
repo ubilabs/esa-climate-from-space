@@ -16,14 +16,14 @@
       "images": [
         "assets/ozone_large_11.jpg",
         "assets/story8_02.png",
-        "assets/ozone_large_03a.png",
+        "assets/ozone_large_03b.jpg",
         "assets/ozone_large_14.jpg",
         "assets/story8_04.png"
       ],
       "imageCaptions": [
         "Scientists launch a high-altitude balloon carrying ozone-measuring equipment from Amundsen-Scott South Pole Station in September 2013 (Kelli-Ann Bliss/NOAA)",
         "The Sun in visible (left) and ultraviolet light (right), as viewed by the SOHO satellite on February 3, 2002 (ESA/NASA)",
-        "Chlorine acts as a catalyst for ozone destruction (Planetary Visions)",
+        "# The chlorine catalytic cycle\r\nChlorine acts as a catalyst for ozone destruction: (1) Chlorine monoxide reacts with an oxygen atom, producing an oxygen molecule and a highly-reactive chlorine atom. (2) The chlorine atom reacts with ozone to produce oxygen and chlorine monoxide. (Planetary Visions)",
         "One day of ozone observations from ERS-2 GOME. (ESA)",
         "# Total Ozone Over Antarctica\r\nTotal ozone values over Antarctica recorded at the Halley research station, and by three satellite sensors, TOMS, OMI and OMPS (NASA-GSFC)"
       ],
@@ -86,12 +86,14 @@
       "images": [
         "assets/ozone_data_profile_large.jpg",
         "assets/story8-03.jpg",
+        "assets/story8_05.jpg",
         "assets/aerosol_large_10.jpg",
         "assets/ozone_large_09.png"
       ],
       "imageCaptions": [
         "# Ozone Profile at Longitude 50° West\r\nOzone profile showing a section through the atmosphere from sea level up to a height of 40km, centred on longitude 50°West, with the north pole on the left and the south pole on the right. (Satellite observations assimilated into the chemical transport model TM5.) (Planetary Visions/ESA-CCI)",
         "Nitrogen dioxide, an ozone precursor, over Europe in January 2020 from the TROPOMI instrument on ESA’s Sentinel-5P satellite (contains modified Copernicus Sentinel data (2020), processed by ESA)",
+        "# Nitrogen dioxide over China 2019-21\r\nMonthly average tropospheric nitrogen dioxide over China for February 2019-21, as measured by the Copernicus Sentinel-5P satellite, shows a decline in air pollution during the nationwide lockdowns imposed in 2020 to stop the spread of the COVID-19 virus. A year later nitrogen dioxide levels had returned to pre-pandemic levels. (contains modified Copernicus Sentinel data (2019-21), processed by ESA)",
         "The SCIAMACHY sensor on Envisat has three modes of operation: (1) nadir mode looks vertically beneath the spacecraft; (2) limb mode looks through the atmosphere away from the Sun; (3) occultation mode looks through the atmosphere towards the Sun. (DLR-IMF)",
         "Satellites and sensors used by the CCI Ozone team to produce merged total ozone maps"
       ],

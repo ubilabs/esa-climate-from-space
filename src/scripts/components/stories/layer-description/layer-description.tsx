@@ -1,7 +1,9 @@
 import React, {FunctionComponent} from 'react';
 import ReactMarkdown from 'react-markdown';
 
-import styles from './layer-description.styl';
+import config from '../../../config/main';
+
+import styles from './layer-description.module.styl';
 
 interface Props {
   layerDescription: string;
@@ -10,16 +12,9 @@ interface Props {
 const LayerDescription: FunctionComponent<Props> = ({layerDescription}) => (
   <div className={styles.layerDescription}>
     <ReactMarkdown
-      source={layerDescription}
+      children={layerDescription}
       linkTarget="_blank"
-      allowedTypes={[
-        'heading',
-        'text',
-        'paragraph',
-        'break',
-        'strong',
-        'emphasis'
-      ]}
+      allowedElements={config.markdownAllowedElements}
     />
   </div>
 );

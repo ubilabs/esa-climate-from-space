@@ -1,9 +1,9 @@
 import {FunctionComponent, useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 import fetchStories from '../../../actions/fetch-stories';
 
 const Init: FunctionComponent = () => {
-  const dispatch = useDispatch();
+  const dispatch = useThunkDispatch();
 
   useEffect(() => {
     dispatch(fetchStories());

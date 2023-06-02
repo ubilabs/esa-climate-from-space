@@ -8,7 +8,7 @@ import Share from '../../main/share/share';
 
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './stories-selector.styl';
+import styles from './stories-selector.module.styl';
 
 const StoriesSelector: FunctionComponent = () => {
   const intl = useIntl();
