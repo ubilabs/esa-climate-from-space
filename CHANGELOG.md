@@ -1,3 +1,15 @@
+# [1.11.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.10.1...v1.11.0) (2023-06-02)
+
+
+### Features
+
+* **global:** update dependencies and use new bundler ([#1198](https://github.com/ubilabs/esa-climate-from-space/issues/1198)) ([e32c7d6](https://github.com/ubilabs/esa-climate-from-space/commit/e32c7d6d3f1f8a76e8491498ac5146e8ba4e4b93))
+* **globe:** migrate to custom globe implementation ([#1236](https://github.com/ubilabs/esa-climate-from-space/issues/1236)) ([10cccac](https://github.com/ubilabs/esa-climate-from-space/commit/10cccacbe9522e53f9e86e1baa7df881518b7fce))
+* **location:** implement locate me button ([0159715](https://github.com/ubilabs/esa-climate-from-space/commit/01597151bcdac78eb6f5cdb4a86941f5396cde34))
+* **stories:** update story: story-21 ([#1251](https://github.com/ubilabs/esa-climate-from-space/issues/1251)) ([cad7d02](https://github.com/ubilabs/esa-climate-from-space/commit/cad7d02462d1372569d1c5a523dddb0f36008b89))
+
+
+
 ## [1.10.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.10.0...v1.10.1) (2023-03-03)
 
 
