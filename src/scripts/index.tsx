@@ -3,8 +3,7 @@ import {createRoot} from 'react-dom/client';
 
 import App from './components/main/app/app';
 
-const root = createRoot(document.getElementById('app')!);
-root.render(<App />);
+createRoot(document.getElementById('app') as HTMLElement).render(<App />);
 
 // Build information
 // @ts-ignore

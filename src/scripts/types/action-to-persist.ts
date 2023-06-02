@@ -6,5 +6,8 @@ export interface ActionToPersist {
   save: boolean;
   load: boolean;
   getFilePath?: (errorAction: AnyAction) => string;
-  successActionCreator?: (errorAction: AnyAction, content: any) => AnyAction;
+  successActionCreator?: (
+    errorAction: AnyAction,
+    content: unknown
+  ) => AnyAction;
 }
