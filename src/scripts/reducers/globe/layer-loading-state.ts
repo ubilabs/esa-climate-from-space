@@ -4,7 +4,7 @@ import {
   UpdateLayerLoadingStateAction
 } from '../../actions/update-layer-loading-state';
 
-type LoadingStateByLayer = {[layerId: string]: LayerLoadingState};
+export type LoadingStateByLayer = {[layerId: string]: LayerLoadingState};
 
 function layerLoadingStateReducer(
   state: LoadingStateByLayer = {},
