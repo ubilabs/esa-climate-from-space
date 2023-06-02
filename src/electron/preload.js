@@ -1,35 +1,36 @@
 const path = require('path');
-const {contextBridge, remote, ipcRenderer} = require('electron');
-const app = remote.app;
+const {contextBridge, ipcRenderer} = require('electron');
+
+// retrieve and save the downloads path for later
+let downloadsPath = '';
+ipcRenderer.invoke('downloadsPath').then(p => {
+  downloadsPath = p;
+});
 
 // Returns the currently set "Downloads" folder joined with the given path parts
 function getDownloadsPath(...parts) {
-  return path.join(app.getPath('downloads'), ...parts);
+  return path.join(downloadsPath, ...parts);
 }
 
 // Downloads the content at the given URL
 // the download will be handled by the electron 'will-download' handler)
 function downloadUrl(url) {
-  remote.getCurrentWebContents().downloadURL(url);
+  ipcRenderer.send('downloadUrl', url);
 }
 
 // Delete the offline folder of the given layer or story id
 function deleteId(id) {
-  const deleteRemoteFn = remote.require('./download-delete');
-  const browserWindow = remote.BrowserWindow.getFocusedWindow();
-  deleteRemoteFn(browserWindow, id);
+  ipcRenderer.send('downloadDelete', id);
 }
 
 // Saves a redux action in a local file for offline usage
 function saveAction(action) {
-  const saveActionRemoteFn = remote.require('./save-action');
-  saveActionRemoteFn(action);
+  ipcRenderer.send('saveAction', action);
 }
 
 // Loads a redux action in a local file for offline usage
 function loadAction(actionType, pathToFile) {
-  const loadActionRemoteFn = remote.require('./load-action');
-  return loadActionRemoteFn(actionType, pathToFile);
+  return ipcRenderer.invoke('loadAction', {actionType, pathToFile});
 }
 
 // The context of the preload script and the browser windows context are both

@@ -32,13 +32,16 @@ export const useMarkers = (
       scene.canvas as HTMLCanvasElement
     );
 
-    handler.setInputAction(movement => {
-      const pickedObject = scene.pick(movement.position);
+    handler.setInputAction(
+      (movement: ScreenSpaceEventHandler.PositionedEvent) => {
+        const pickedObject = scene.pick(movement.position);
 
-      if (defined(pickedObject) && pickedObject.id.markerLink) {
-        history.push(pickedObject.id.markerLink);
-      }
-    }, ScreenSpaceEventType.LEFT_CLICK);
+        if (defined(pickedObject) && pickedObject.id.markerLink) {
+          history.push(pickedObject.id.markerLink);
+        }
+      },
+      ScreenSpaceEventType.LEFT_CLICK
+    );
 
     Promise.all(markers.map(marker => createMarker(marker))).then(entities => {
       viewer.entities.removeAll();

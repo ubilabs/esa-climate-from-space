@@ -9,7 +9,7 @@ import {useMouseMove} from '../../../hooks/use-mouse-move';
 import {StoryMode} from '../../../types/story-mode';
 import {Story} from '../../../types/story';
 
-import styles from './story-footer.styl';
+import styles from './story-footer.module.styl';
 
 interface Props {
   mode: StoryMode | null;

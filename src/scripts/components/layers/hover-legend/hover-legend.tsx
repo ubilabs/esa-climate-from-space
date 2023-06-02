@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import {LegendValueColor} from '../../../types/legend-value-color';
 
-import styles from './hover-legend.styl';
+import styles from './hover-legend.module.styl';
 
 interface Props {
   values: LegendValueColor[];

@@ -1,9 +1,10 @@
 import React, {FunctionComponent} from 'react';
-import ReactMarkdown from 'react-markdown/with-html';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 import {LayerListItem} from '../../../types/layer-list';
 
-import styles from './layer-info.styl';
+import styles from './layer-info.module.styl';
 
 interface Props {
   layer: LayerListItem;
@@ -14,11 +15,12 @@ const LayerInfo: FunctionComponent<Props> = ({layer}) => (
     <span className={styles.layerType}>{layer.type}</span>
     <h1 className={styles.layerTitle}>{layer.name}</h1>
     <div className={styles.description}>
+      {/* eslint-disable-next-line react/no-children-prop */}
       <ReactMarkdown
-        source={layer.description}
+        children={layer.description}
         linkTarget="_blank"
-        escapeHtml={false}
-        allowedTypes={[
+        rehypePlugins={[rehypeRaw]}
+        disallowedElements={[
           'heading',
           'text',
           'paragraph',
