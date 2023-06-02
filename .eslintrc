@@ -1,12 +1,19 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "react-hooks"],
+  "plugins": ["@typescript-eslint", "react", "react-hooks"],
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "prettier"
   ],
-  "settings": {},
+  "settings": {
+    "react":{
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "fragment": "Fragment",
+      "version": "detect"
+    }
+  },
   "env": {
     "browser": true,
     "es6": true,
