@@ -1,13 +1,13 @@
-import {GlobeView} from '../types/globe-view';
+import {CameraView} from '@ubilabs/esa-webgl-globe';
 
 export const SET_FLY_TO = 'SET_FLY_TO';
 
 export interface SetFlyToAction {
   type: typeof SET_FLY_TO;
-  view: GlobeView | null;
+  view: CameraView | null;
 }
 
-const setFlyToAction = (view: GlobeView | null): SetFlyToAction => ({
+const setFlyToAction = (view: CameraView | null): SetFlyToAction => ({
   type: SET_FLY_TO,
   view
 });

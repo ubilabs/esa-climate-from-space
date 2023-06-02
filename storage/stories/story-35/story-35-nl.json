@@ -3,16 +3,16 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
-      "shortText": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
+      "text": "# Een Snelle Gletsjer\r\n\r\nJakobshavn, Groenland",
+      "shortText": "# Een Snelle Gletsjer\r\n\r\nJakobshavn, Groenland",
       "images": [
         "assets/story35-image05.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## A Racing Glacier, Jakobshavn, Greenland\r\n\r\nGreenland loses more ice through the Jakobshavn Glacier than from anywhere else on this huge ice sheet. Jakobshavn – one of the fastest moving glaciers in the world – travels up to 40 metres per day. Satellites show that recently it has been flowing more slowly and getting thicker, although it is still losing more ice than it gains. Observations from space are key to monitoring dynamic features such as this. \r\n\r\nCredits: ESA CCI; Polar Geospatial Center; contains modified Copernicus Sentinel data (2019), processed by ESA.",
-      "shortText": "## A Racing Glacier, Jakobshavn, Greenland\r\n\r\nGreenland loses more ice through the Jakobshavn Glacier than from anywhere else on this huge ice sheet. Jakobshavn – one of the fastest moving glaciers in the world – travels up to 40 metres per day. Satellites show that recently it has been flowing more slowly and getting thicker, although it is still losing more ice than it gains. Observations from space are key to monitoring dynamic features such as this. \r\n\r\nCredits: ESA CCI; Polar Geospatial Center; contains modified Copernicus Sentinel data (2019), processed by ESA.",
+      "text": "## Een snelle gletsjer, Jakobshavn, Groenland\r\n\r\nGroenland verliest meer ijs via de Jakobshavngletsjer dan waar dan ook op deze enorme ijskap. Jakobshavn - een van de snelst stromende gletsjers ter wereld - legt tot 40 meter per dag af. Satellieten laten zien dat hij de laatste tijd langzamer stroomt en dikker wordt, hoewel hij nog steeds meer ijs verliest dan dat hij aangroeit. Waarnemingen vanuit de ruimte zijn essentieel om dynamische kenmerken als deze in de gaten te houden. \r\n\r\nCredits: ESA CCI; Polar Geospatial Center; bevat aangepaste Copernicus Sentinel-gegevens (2019), verwerkt door ESA.",
+      "shortText": "## Een snelle gletsjer, Jakobshavn, Groenland\r\n\r\nGroenland verliest meer ijs via de Jakobshavngletsjer dan waar dan ook op deze enorme ijskap. Jakobshavn - een van de snelst stromende gletsjers ter wereld - legt tot 40 meter per dag af. Satellieten laten zien dat hij de laatste tijd langzamer stroomt en dikker wordt, hoewel hij nog steeds meer ijs verliest dan dat hij aangroeit. Waarnemingen vanuit de ruimte zijn essentieel om dynamische kenmerken als deze in de gaten te houden. \r\n\r\nCredits: ESA CCI; Polar Geospatial Center; bevat aangepaste Copernicus Sentinel-gegevens (2019), verwerkt door ESA.",
       "images": [
         "assets/story35-image01.jpg",
         "assets/story35-image02.jpg",
@@ -20,10 +20,10 @@
         "assets/story35-image04.jpg"
       ],
       "imageCaptions": [
-        "Jakobshavn: A racing glacier. This satellite image acquired on 11 June 2019 shows the Jakobshavn Glacier, one of the fastest moving lgaciers in the world.",
-        "Jakobshavn: A racing glacier. Archives satellite images are useful to detect long term trends in glacier monitoring.",
-        "Jakobshavn: A racing glacier. Satellites are also used to map elevation and thickness of the ice cap, and monitor its changes over time.",
-        "Jakobshavn: A racing glacier. Ice velocity can be measured thanks to multiple radar acquisitions. It allows scientists to montior each glacier on a regular basis to unerstand both long- and short-term dynamics."
+        "Jakobshavn: een snelle gletsjer. Dit satellietbeeld, verkregen op 11 juni 2019, toont de Jakobshavngletsjer, een van de snelst stromende gletsjers ter wereld.",
+        "Jakobshavn: een snelle gletsjer. Archief satellietbeelden zijn nuttig om lange termijn trends op te sporen bij het monitoren van gletsjers.",
+        "Jakobshavn: een snelle gletsjer. Satellieten worden ook gebruikt om de hoogte en dikte van de ijskap in kaart te brengen en de veranderingen in de tijd te volgen.",
+        "Jakobshavn: een snelle gletsjer. De snelheid van het ijs kan worden gemeten dankzij meerdere radaropnames. Hierdoor kunnen wetenschappers elke gletsjer regelmatig monitoren om de dynamiek op lange en korte termijn te begrijpen."
       ],
       "imageFits": [
         "contain",
