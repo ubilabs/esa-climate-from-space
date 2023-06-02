@@ -8,6 +8,7 @@ export interface ActionToPersist {
   getFilePath?: (errorAction: AnyAction) => string;
   successActionCreator?: (
     errorAction: AnyAction,
-    content: unknown
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    content: any
   ) => AnyAction;
 }
