@@ -46,7 +46,11 @@
         "cover",
         "cover"
       ],
-      "videoId": "EkQhz7uYtcM"
+      "videoId": "EkQhz7uYtcM",
+      "videoPoster": "assets/watercycle.jpg",
+      "videoSrc": [
+        "assets/watercycle-web.mp4"
+      ]
     },
     {
       "type": "video",
