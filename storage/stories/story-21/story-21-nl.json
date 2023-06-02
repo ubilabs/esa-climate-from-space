@@ -46,7 +46,11 @@
         "cover",
         "cover"
       ],
-      "videoId": "EkQhz7uYtcM"
+      "videoId": "EkQhz7uYtcM",
+      "videoPoster": "assets/watercycle.jpg",
+      "videoSrc": [
+        "assets/watercycle-web.mp4"
+      ]
     },
     {
       "type": "video",
@@ -59,7 +63,11 @@
         "cover",
         "cover"
       ],
-      "videoId": "1AMhjd94r6U"
+      "videoId": "1AMhjd94r6U",
+      "videoPoster": "assets/watervapour.jpg",
+      "videoSrc": [
+        "assets/watervapour-web.mp4"
+      ]
     },
     {
       "type": "globe",
@@ -90,7 +98,11 @@
           "timestamp": "2016-12-01T00:00:00.000Z"
         }
       ],
-      "layerDescription": "# CCI wolkenfractie\r\n\r\nHet deel van de maand dat een gebied door bewolking wordt bedekt"
+      "layerDescription": "# CCI wolkenfractie\r\n\r\nHet deel van de maand dat een gebied door bewolking wordt bedekt",
+      "videoPoster": "assets/soilmoisture.jpg",
+      "videoSrc": [
+        "assets/soilmoisture-web.mp4"
+      ]
     },
     {
       "type": "video",
@@ -116,7 +128,11 @@
         "cover",
         "cover"
       ],
-      "videoId": "Eahj21_RM1M"
+      "videoId": "Eahj21_RM1M",
+      "videoPoster": "assets/glaciers.jpg",
+      "videoSrc": [
+        "assets/glaciers-web.mp4"
+      ]
     },
     {
       "type": "image",
