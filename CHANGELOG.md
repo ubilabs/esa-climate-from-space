@@ -1,3 +1,7 @@
+## [1.11.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.11.0...v1.11.1) (2023-06-02)
+
+
+
 # [1.11.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.10.1...v1.11.0) (2023-06-02)
 
 
