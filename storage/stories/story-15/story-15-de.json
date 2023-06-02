@@ -173,7 +173,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "9einyMSOmHE"
+      "videoId": "9einyMSOmHE",
+      "videoPoster": "assets/seaicethickness.jpg",
+      "videoSrc": [
+        "assets/seaicethickness-web.mp4"
+      ]
     }
   ]
 }
