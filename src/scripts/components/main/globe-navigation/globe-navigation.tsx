@@ -14,7 +14,7 @@ import {useLayerTimes} from '../../../hooks/use-formatted-time';
 import {GlobeProjection} from '../../../types/globe-projection';
 import {LayerListItem} from '../../../types/layer-list';
 
-import styles from './globe-navigation.styl';
+import styles from './globe-navigation.module.styl';
 
 interface Props {
   mainLayer: LayerListItem | null;

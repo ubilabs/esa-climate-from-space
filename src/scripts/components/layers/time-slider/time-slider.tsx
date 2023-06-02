@@ -26,7 +26,7 @@ import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
 import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 import {useLayerTimes} from '../../../hooks/use-formatted-time';
 
-import styles from './time-slider.styl';
+import styles from './time-slider.module.styl';
 
 interface Props {
   className?: string;
@@ -140,9 +140,8 @@ const TimeSlider: FunctionComponent<Props> = ({
             rangeCompare && styles.playButtonCompare
           )}
           icon={isPlaying ? PauseCircleIcon : PlayCircleIcon}
-          onClick={() => setIsPlaying(!isPlaying)}>
-          {isPlaying ? 'playing' : 'pausing'}
-        </Button>
+          onClick={() => setIsPlaying(!isPlaying)}
+        />
         <div className={styles.ranges}>
           <input
             className={inputStyles}

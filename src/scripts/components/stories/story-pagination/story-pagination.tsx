@@ -9,7 +9,7 @@ import {CloseIcon} from '../../main/icons/close-icon';
 
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './story-pagination.styl';
+import styles from './story-pagination.module.styl';
 
 interface Props {
   mode: StoryMode | null;
@@ -33,7 +33,7 @@ const StoryPagination: FunctionComponent<Props> = ({
 
   const onKeyDownHandler = useCallback(
     // eslint-disable-next-line complexity
-    event => {
+    (event: KeyboardEvent) => {
       if (!isShowcaseMode) {
         // 37-arrow left, 33-page up, 38-arrow down
         if (

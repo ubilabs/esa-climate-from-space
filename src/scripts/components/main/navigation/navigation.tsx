@@ -1,5 +1,5 @@
 import React, {FunctionComponent, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import Button from '../button/button';
 import Overlay from '../overlay/overlay';
@@ -16,12 +16,13 @@ import LanguageTooltip from '../language-tooltip/language-tooltip';
 import SelectedTags from '../../stories/selected-tags/selected-tags';
 import {selectedTagsSelector} from '../../../selectors/story/selected-tags';
 import setWelcomeScreenAction from '../../../actions/set-welcome-screen';
+import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 import config from '../../../config/main';
 
-import styles from './navigation.styl';
+import styles from './navigation.module.styl';
 
 const Navigation: FunctionComponent = () => {
-  const dispatch = useDispatch();
+  const dispatch = useThunkDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [showTags, setShowTags] = useState(false);
   const selectedLanguage = useSelector(languageSelector);
