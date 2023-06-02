@@ -18,7 +18,7 @@ import StoryProgress from '../story-progress/story-progress';
 import {StoryMode} from '../../../types/story-mode';
 import {ImageFit} from '../../../types/image-fit';
 
-import styles from './story-gallery.styl';
+import styles from './story-gallery.module.styl';
 
 interface Props {
   images: string[];
@@ -66,7 +66,7 @@ const StoryGallery: FunctionComponent<Props> = ({
 
   // close fullscreen gallery on esc
   const onKeyDownHandler = useCallback(
-    event => {
+    (event: KeyboardEvent) => {
       if (showLightbox) {
         // 27 - esc
         if (event.keyCode === 27) {

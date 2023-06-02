@@ -16,14 +16,14 @@
       "images": [
         "assets/ozone_large_11.jpg",
         "assets/story8_02.png",
-        "assets/ozone_large_03a.png",
+        "assets/ozone_large_03b.jpg",
         "assets/ozone_large_14.jpg",
         "assets/story8_04.png"
       ],
       "imageCaptions": [
         "Wetenschappers lanceren een ballon op grote hoogte met apparatuur om de ozonlaag te meten vanaf het Amundsen-Scott Zuidpoolstation in september 2013 (Kelli-Ann Bliss/NOAA)",
         "De Zon in zichtbaar (links) en ultraviolet licht (rechts), zoals gezien door de SOHO-satelliet op 3 februari 2002 (ESA/NASA)",
-        "Chloor werkt als een katalysator voor de vernietiging van ozon (Planetary Visions)",
+        "# De katalytische cyclus van chloor\r\nChloor werkt als een katalysator voor de vernietiging van ozon: (1) Chloormonoxide reageert met een zuurstofatoom, waardoor een zuurstofmolecuul en een zeer reactief chlooratoom ontstaan. (2) Het chlooratoom reageert met ozon om zuurstof en chloormonoxide te produceren. (Planetary Visions)",
         "Eén dag ozonwaarnemingen van ERS-2 GOME. (ESA)",
         "# Totale ozon boven Antarctica\r\nTotale ozonwaarden boven Antarctica, gemeten in het Halley-onderzoeksstation en door drie satellietsensoren, TOMS, OMI en OMPS (NASA-GSFC)"
       ],
@@ -86,12 +86,14 @@
       "images": [
         "assets/ozone_data_profile_large.jpg",
         "assets/story8-03.jpg",
+        "assets/story8_05.jpg",
         "assets/aerosol_large_10.jpg",
         "assets/ozone_large_09.png"
       ],
       "imageCaptions": [
         "# Ozonprofiel op 50° westerlengte\r\nOzonprofiel met een doorsnede van de atmosfeer vanaf zeeniveau tot een hoogte van 40 km, gecentreerd op 50° westerlengte, met de noordpool links en de zuidpool rechts. (Satellietwaarnemingen verwerkt in het chemisch transportmodel TM5.) (Planetary Visions/ESA-CCI)",
         "Stikstofdioxide, een ozonprecursor, boven Europa in januari 2020, afkomstig van het TROPOMI-instrument op de Sentinel-5P-satelliet van ESA (bevat gewijzigde Copernicus Sentinel-gegevens (2020), verwerkt door ESA)",
+        "# Stikstofdioxide boven China 2019-21\r\nMaandelijks gemiddelde troposferische stikstofdioxide boven China voor februari 2019-21, zoals gemeten door de Copernicus Sentinel-5P satelliet, toont een daling van de luchtvervuiling tijdens de landelijke lockdowns die in 2020 werden opgelegd om de verspreiding van het COVID-19 virus te stoppen. Een jaar later waren de stikstofdioxideniveaus terug op het niveau van vóór de pandemie. (bevat gewijzigde Copernicus Sentinel-gegevens (2019-21), verwerkt door ESA)",
         "De SCIAMACHY-sensor op Envisat heeft drie werkingsmodi: (1) nadir modus kijkt verticaal onder het ruimtevaartuig; (2) limb modus kijkt door de atmosfeer weg van de Zon; (3) occultatie modus kijkt door de atmosfeer naar de Zon. (DLR-IMF)",
         "Satellieten en sensoren die door het CCI-ozonneteam zijn gebruikt om samengevoegde totale ozonkaarten te produceren"
       ],

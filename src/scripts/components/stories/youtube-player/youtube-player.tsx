@@ -1,12 +1,11 @@
 /* eslint-disable camelcase */
-/* eslint-disable @typescript-eslint/camelcase */
 import React, {FunctionComponent} from 'react';
 import YouTube, {Options} from 'react-youtube';
 import {YouTubePlayer} from 'youtube-player/dist/types';
 
 import {Language} from '../../../types/language';
 
-import styles from './youtube-player.styl';
+import styles from './youtube-player.module.styl';
 
 interface Props {
   videoId?: string;

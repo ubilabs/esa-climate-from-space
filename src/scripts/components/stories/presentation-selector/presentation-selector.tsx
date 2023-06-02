@@ -7,7 +7,7 @@ import Share from '../../main/share/share';
 
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './presentation-selector.styl';
+import styles from './presentation-selector.module.styl';
 
 const PresentationSelector: FunctionComponent = () => {
   const intl = useIntl();

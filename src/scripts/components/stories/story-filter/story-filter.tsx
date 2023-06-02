@@ -10,7 +10,7 @@ import {storyListSelector} from '../../../selectors/story/list';
 import {selectedTagsSelector} from '../../../selectors/story/selected-tags';
 import setSelectedStoryTags from '../../../actions/set-selected-story-tags';
 
-import styles from './story-filter.styl';
+import styles from './story-filter.module.styl';
 
 const StoryFilter: FunctionComponent = () => {
   const dispatch = useDispatch();

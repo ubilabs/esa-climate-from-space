@@ -1,16 +1,23 @@
 {
   "compilerOptions": {
     "strict": true,
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "sourceMap": true,
-    "module": "commonjs",
-    "esModuleInterop": true,
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
-    "target": "es5",
-    "jsx": "react",
-    "downlevelIteration": true,
-    "resolveJsonModule": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "outDir": "./dist/",
+    "noImplicitAny": true
+  },
+  "include": ["src"],
+  "references": [{"path": "./tsconfig.node.json"}]
 }

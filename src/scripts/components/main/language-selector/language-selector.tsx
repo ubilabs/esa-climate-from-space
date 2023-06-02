@@ -1,14 +1,15 @@
 import React, {FunctionComponent} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import cx from 'classnames';
 
 import setLanguageAction from '../../../actions/set-language';
 import Button from '../button/button';
 import {languageSelector} from '../../../selectors/language';
+import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 
 import {Language} from '../../../types/language';
 
-import styles from './language-selector.styl';
+import styles from './language-selector.module.styl';
 
 const languages = Object.values(Language);
 
@@ -19,7 +20,7 @@ interface Props {
 const LanguageSelector: FunctionComponent<Props> = ({className = ''}) => {
   const classes = `${styles.languageItem} ${className}`;
   const selectedLanguage = useSelector(languageSelector);
-  const dispatch = useDispatch();
+  const dispatch = useThunkDispatch();
 
   return (
     <ul className={styles.language}>
