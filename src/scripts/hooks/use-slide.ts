@@ -30,7 +30,7 @@ export const useSlide = (slide: Slide) => {
     const slideTime = mainLayer?.timestamp
       ? Number(new Date(mainLayer?.timestamp))
       : 0;
-
+    // eslint-disable-next-line no-warning-comments
     // FIXME: the stories are the last place where the old flyTo syntax is being used.
     const cameraView: CameraView =
       slide.flyTo && flyToToCameraView(slide.flyTo);
