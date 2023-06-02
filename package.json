@@ -97,6 +97,7 @@
     "stylint": "^2.0.0",
     "stylus": "^0.59.0",
     "stylus-supremacy": "^2.14.0",
+    "svg-loaders-react": "^2.2.1",
     "typescript": "^5.0.4",
     "vite": "^4.3.5"
   }
