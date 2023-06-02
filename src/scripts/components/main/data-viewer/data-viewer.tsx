@@ -6,7 +6,7 @@ import React, {
   useLayoutEffect
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {CameraView} from '@ubilabs/esa-webgl-globe';
+import {CameraView, LayerLoadingState} from '@ubilabs/esa-webgl-globe';
 
 import {layerListItemSelector} from '../../../selectors/layers/list-item';
 import {globeViewSelector} from '../../../selectors/globe/view';
@@ -18,6 +18,7 @@ import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 import setGlobeViewAction from '../../../actions/set-globe-view';
 import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
+import updateLayerLoadingStateAction from '../../../actions/update-layer-loading-state';
 import {State} from '../../../reducers';
 import Globe from '../globe/globe';
 import Gallery from '../gallery/gallery';
@@ -90,6 +91,12 @@ const DataViewer: FunctionComponent<Props> = ({
     [dispatch]
   );
 
+  const onLayerLoadingStateChangeHandler = useCallback(
+    (layerId: string, loadingState: LayerLoadingState) =>
+      dispatch(updateLayerLoadingStateAction(layerId, loadingState)),
+    [dispatch]
+  );
+
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
   const compareImageLayer = useImageLayerData(compareLayerDetails, time);
 
@@ -147,6 +154,7 @@ const DataViewer: FunctionComponent<Props> = ({
         onChange={onChangeHandler}
         onMoveStart={onMoveStartHandler}
         onMoveEnd={onMoveEndHandler}
+        onLayerLoadingStateChange={onLayerLoadingStateChangeHandler}
       />
     );
   };
