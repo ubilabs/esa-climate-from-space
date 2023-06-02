@@ -1,6 +1,7 @@
 import React, {FunctionComponent, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Oval} from 'svg-loaders-react';
+import {RenderMode} from '@ubilabs/esa-webgl-globe';
 
 import config from '../../../config/main';
 import Button from '../button/button';
@@ -17,7 +18,6 @@ import {GlobeProjection} from '../../../types/globe-projection';
 import {LayerListItem} from '../../../types/layer-list';
 
 import styles from './globe-navigation.module.styl';
-import {RenderMode} from '@ubilabs/esa-webgl-globe';
 
 interface Props {
   mainLayer: LayerListItem | null;
@@ -48,24 +48,26 @@ const GlobeNavigation: FunctionComponent<Props> = ({
   const onLocateMeHandler = () => {
     setLocationLoading(true);
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          const newView = {
-            renderMode: 'globe' as RenderMode.GLOBE,
-            lng: position.coords.longitude,
-            lat: position.coords.latitude,
-            altitude: 0,
-            zoom: 0
-          };
-          dispatch(setFlyToAction(newView));
-          setLocationLoading(false);
-        },
-        error => {
-          console.error(`Error Code = ${error.code} - ${error.message}`);
-        }
-      );
+    if (!navigator.geolocation) {
+      return;
     }
+
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const newView = {
+          renderMode: 'globe' as RenderMode.GLOBE,
+          lng: position.coords.longitude,
+          lat: position.coords.latitude,
+          altitude: 0,
+          zoom: 0
+        };
+        dispatch(setFlyToAction(newView));
+        setLocationLoading(false);
+      },
+      error => {
+        console.error(`Error Code = ${error.code} - ${error.message}`);
+      }
+    );
   };
 
   return (
@@ -77,14 +79,14 @@ const GlobeNavigation: FunctionComponent<Props> = ({
           icon={LocationIcon}
           className={styles.locateMe}
           id="locate-me"
-          onClick={() => onLocateMeHandler()}
+          onClick={onLocateMeHandler}
         />
       )}
       <Button
         className={styles.projection}
         id="ui-projection"
         label={label}
-        onClick={() => onProjectionHandler()}
+        onClick={onProjectionHandler}
       />
       <div
         className={styles.compass}
