@@ -12,7 +12,7 @@ import {CloseIcon} from '../icons/close-icon';
 import Overlay from '../overlay/overlay';
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
 
-import styles from './share.styl';
+import styles from './share.module.styl';
 
 const Share: FunctionComponent = () => {
   const [showShare, setShowShare] = useState(false);

@@ -8,7 +8,7 @@ import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 
 import {LayerListItem} from '../../../types/layer-list';
 
-import styles from './data-set-info.styl';
+import styles from './data-set-info.module.styl';
 
 interface Props {
   layer: LayerListItem | null;

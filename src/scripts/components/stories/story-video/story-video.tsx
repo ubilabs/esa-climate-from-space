@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-/* eslint-disable @typescript-eslint/camelcase */
 import React, {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 import cx from 'classnames';
@@ -13,7 +12,7 @@ import YoutubePlayer from '../youtube-player/youtube-player';
 
 import {Slide} from '../../../types/story';
 
-import styles from './story-video.styl';
+import styles from './story-video.module.styl';
 
 interface Props {
   mode: StoryMode | null;

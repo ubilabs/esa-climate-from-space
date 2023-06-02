@@ -9,6 +9,7 @@ export function downloadScreenshot(
   compareLayer: LayerListItem | null
 ) {
   const canvases = Array.from(
+    // eslint-disable-next-line no-undef
     document.querySelectorAll('.cesium-viewer canvas') as NodeListOf<
       HTMLCanvasElement
     >
