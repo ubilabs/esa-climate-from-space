@@ -3,21 +3,27 @@ import {useDispatch, useSelector} from 'react-redux';
 import {FormattedMessage} from 'react-intl';
 import {motion, AnimatePresence} from 'framer-motion';
 
-import {showLayerSelector as showLayerSelectorSelector} from '../../../selectors/show-layer-selector';
 import Button from '../../main/button/button';
 import {CloseIcon} from '../../main/icons/close-icon';
-import showLayerSelectorAction from '../../../actions/show-layer-selector';
 import LayerList from '../layer-list/layer-list';
 import SelectedLayerListItem from '../selected-layer-list-item/selected-layer-list-item';
+
 import {layersSelector} from '../../../selectors/layers/list';
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
+import {showLayerSelector as showLayerSelectorSelector} from '../../../selectors/show-layer-selector';
+
+import showLayerSelectorAction from '../../../actions/show-layer-selector';
 import setSelectedLayerIdsAction from '../../../actions/set-selected-layer-id';
+import fetchLayerAction from '../../../actions/fetch-layer';
 
 import styles from './layer-selector.module.styl';
 import {useMatomo} from '@datapunt/matomo-tracker-react';
+import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
+  const thunkDispatch = useThunkDispatch();
+
   const {trackEvent} = useMatomo();
   const layers = useSelector(layersSelector);
   const sortedLayers = layers.sort((a, b) =>
@@ -71,15 +77,17 @@ const LayerSelector: FunctionComponent = () => {
               layers={sortedLayers}
               selectedLayerIds={selectedLayerIds}
               onSelect={(layerId, isMain) => {
-                dispatch(setSelectedLayerIdsAction(layerId, isMain));
                 dispatch(showLayerSelectorAction(false));
 
-                const name = layers.find(layer => layer.id === layerId)?.name;
+                thunkDispatch(fetchLayerAction(layerId)).then(() => {
+                  dispatch(setSelectedLayerIdsAction(layerId, isMain));
 
-                trackEvent({
-                  category: 'datasets',
-                  action: isMain ? 'select' : 'compare',
-                  name: isMain ? name : `${selectedMainLayer?.name} - ${name}`
+                  const name = layers.find(layer => layer.id === layerId)?.name;
+                  trackEvent({
+                    category: 'datasets',
+                    action: isMain ? 'select' : 'compare',
+                    name: isMain ? name : `${selectedMainLayer?.name} - ${name}`
+                  });
                 });
               }}
             />
