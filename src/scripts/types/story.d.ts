@@ -1,4 +1,3 @@
-import {GlobeView} from './globe-view';
 import {StoryLayer} from './story-layer';
 import {SlideType} from './slide-type';
 import {Marker} from './marker-type';
@@ -22,6 +21,17 @@ export interface Slide {
   videoPoster?: string;
   layer?: StoryLayer[];
   layerDescription?: string;
-  flyTo: GlobeView;
+  flyTo: {
+    position: {
+      longitude: number;
+      latitude: number;
+      height: number;
+    };
+    orientation: {
+      heading: number;
+      pitch: number;
+      roll: number;
+    };
+  };
   markers: Marker[];
 }
