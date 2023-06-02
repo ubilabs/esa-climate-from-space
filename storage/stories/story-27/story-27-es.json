@@ -16,12 +16,16 @@
       "images": [
         "assets/story27-image01.jpg",
         "assets/story27-image02.jpg",
-        "assets/story27-image10.jpg"
+        "assets/story27-image10.jpg",
+        "assets/story27-image16.jpg",
+        "assets/story27-image17.jpg"
       ],
       "imageCaptions": [
         "Camiones repartiendo nieve fabricada en una calle de Moscú durante una ola de calor en diciembre de 2019 (Twitter)",
         "Las olas de calor del verano pueden dañar infraestructuras como las vías férreas y el pavimento de las carreteras, además de suponer una carga excesiva para el suministro de agua y electricidad (US Dept of Transportation)",
-        "Temperatura media del aire nocturno en París a las 22:00 horas durante la ola de calor del verano de 2003, que provocó miles de muertes relacionadas con el calor. (VITO/Planetek)"
+        "Temperatura media del aire nocturno en París a las 22:00 horas durante la ola de calor del verano de 2003, que provocó miles de muertes relacionadas con el calor. (VITO/Planetek)",
+        "En algunas partes de Europa, en el verano de 2022, la temperatura del aire subió más de 10 °C por encima de la media de la época del año. Esta imagen muestra la temperatura de la superficie de París el 18 de junio de 2022, medida por el instrumento experimental ECOSTRESS de la Estación Espacial Internacional. (NASA/JPL-Caltech)",
+        "El verano de 2022 vio cómo la tierra verde de Inglaterra y el norte de Francia se volvía marrón tras meses de altas temperaturas y escasas precipitaciones. Esta imagen fue tomada por el satélite Copernicus Sentinel-3 de la ESA el 12 de agosto de 2022. Durante ese mes, el sensor infrarrojo del satélite registró temperaturas en la superficie terrestre superiores a 45°C en el Reino Unido, 50°C en Francia y 60°C en España. (Contiene datos modificados de Copernicus Sentinel (2022), procesados por la ESA)"
       ],
       "imageFits": [
         "contain",
@@ -64,21 +68,21 @@
     },
     {
       "type": "image",
-      "text": "## Estudios de calor desde el espacio\r\n\r\nEl grado de afectación de una zona urbana por su isla de calor depende de factores como el número, el tipo y la disposición de los edificios y las carreteras, y de qué están hechos. Las cámaras de infrarrojos a nivel del suelo se utilizan para mostrar dónde se pierde el calor de los edificios, de modo que puedan ser más eficientes energéticamente. Del mismo modo, los sensores infrarrojos de los satélites pueden utilizarse para mostrar dónde se acumula el calor dentro de una ciudad.\r\n\r\nLas mediciones de la temperatura de la superficie terrestre (LST) desde el espacio pueden compararse con los datos históricos de las estaciones meteorológicas para identificar las zonas de una ciudad más vulnerables durante las olas de calor. Esta información puede ayudar a los urbanistas a mejorar el diseño de las ciudades decidiendo dónde ubicar las zonas verdes, qué materiales utilizar y cómo orientar los edificios para maximizar la sombra y la refrigeración.\r\n\r\nLos datos de LST también pueden vincularse con datos más detallados procedentes del suelo o de campañas aéreas, y actualizarse casi en tiempo real mediante sensores de alta calidad, como los satélites Copernicus Sentinel, para ayudar a los responsables de la toma de decisiones durante las olas de calor. La LST desde el espacio puede mostrar cómo las olas de calor afectan a la temperatura a escala de distrito o incluso de una manzana individual. La comprensión de estos eventos permitiría tomar medidas que podrían reducir el efecto de los peligros para la salud relacionados con el calor.\r\n\r\nLos datos climáticos más precisos para la LST proceden de la Iniciativa sobre el Cambio Climático de la Agencia Espacial Europea. Aunque su resolución espacial es moderada, es lo suficientemente detallada como para ver las características clave de una gran ciudad como Londres, y sus mediciones de temperatura son extremadamente precisas. Proporcionan una instantánea espacial de la temperatura de la superficie, así como una progresión temporal de varias décadas de la temperatura de toda una ciudad, región, país o continente para mejorar el resultado de [los modelos climáticos](stories/story-31/0).",
-      "shortText": "## Estudios de calor desde el espacio\r\n\r\n- Las cámaras de infrarrojos muestran dónde se pierde el calor de los edificios.\r\n- Del mismo modo, los sensores IR de los satélites muestran dónde se acumula el calor dentro de una ciudad.\r\n\r\nLa temperatura de la superficie terrestre (LST) desde el espacio puede:\r\n\r\n- Compararse con los datos históricos de las estaciones meteorológicas.\r\n- Vincularla a datos más detallados procedentes de la tierra o de campañas aéreas.\r\n- Actualizarse en tiempo casi real mediante sensores de alta calidad, como los satélites Copernicus Sentinel.\r\n\r\nEsta información puede ayudar a los planificadores urbanos a mejorar el diseño de las ciudades:\r\n\r\n- Dónde colocar las zonas verdes, qué materiales de construcción utilizar.\r\n- Cómo orientar los edificios para maximizar la sombra y la refrigeración.\r\n- Reducir potencialmente el efecto de los peligros para la salud relacionados con el calor.\r\n\r\nLos datos climáticos más precisos para LST proceden de la Iniciativa sobre el Cambio Climático de la ESA:\r\n \r\n- Resolución espacial moderada.\r\n- Mediciones de temperatura extremadamente precisas.\r\n- Periodo temporal de varias décadas para toda una ciudad, región, país o continente.",
+      "text": "## Estudios de calor desde el espacio\r\n\r\nEl grado de afectación de una zona urbana por su isla de calor depende de factores como el número, el tipo y la disposición de los edificios y las carreteras, y de qué están hechos. Las cámaras de infrarrojos a nivel del suelo se utilizan para mostrar dónde se pierde el calor de los edificios, de modo que puedan ser más eficientes energéticamente. Del mismo modo, los sensores infrarrojos de los satélites pueden utilizarse para mostrar dónde se acumula el calor dentro de una ciudad.\r\n\r\nLas mediciones de la temperatura de la superficie terrestre (LST) desde el espacio pueden compararse con los datos históricos de las estaciones meteorológicas para identificar las zonas de una ciudad más vulnerables durante las olas de calor. Esta información puede ayudar a los urbanistas a mejorar el diseño de las ciudades decidiendo dónde ubicar las zonas verdes, qué materiales utilizar y cómo orientar los edificios para maximizar la sombra y la refrigeración.\r\n\r\nLos datos de LST también pueden vincularse con datos más detallados procedentes del suelo o de campañas aéreas, y actualizarse casi en tiempo real mediante sensores de alta calidad, como los satélites Copernicus Sentinel, para ayudar a los responsables de la toma de decisiones durante las olas de calor. La LST desde el espacio puede mostrar cómo las olas de calor afectan a la temperatura a escala de distrito o incluso de una manzana individual. La comprensión de estos eventos permitiría tomar medidas que podrían reducir el efecto de los peligros para la salud relacionados con el calor.",
+      "shortText": "## Estudios de calor desde el espacio\r\n\r\n- Las cámaras de infrarrojos muestran dónde se pierde el calor de los edificios.\r\n- Del mismo modo, los sensores IR de los satélites muestran dónde se acumula el calor dentro de una ciudad.\r\n\r\nLa temperatura de la superficie terrestre (LST) desde el espacio puede:\r\n\r\n- Compararse con los datos históricos de las estaciones meteorológicas.\r\n- Vincularla a datos más detallados procedentes de la tierra o de campañas aéreas.\r\n- Actualizarse en tiempo casi real mediante sensores de alta calidad, como los satélites Copernicus Sentinel.\r\n\r\nEsta información puede ayudar a los planificadores urbanos a mejorar el diseño de las ciudades:\r\n\r\n- Dónde colocar las zonas verdes, qué materiales de construcción utilizar.\r\n- Cómo orientar los edificios para maximizar la sombra y la refrigeración.\r\n- Reducir potencialmente el efecto de los peligros para la salud relacionados con el calor.",
       "images": [
         "assets/iStock_000021056451Small.jpg",
         "assets/story27-image06.jpg",
         "assets/story27-image11.jpg",
-        "assets/story27-image08.jpg",
-        "assets/story27-image09.jpg"
+        "assets/story27-image18.jpg",
+        "assets/story27-image19.jpg"
       ],
       "imageCaptions": [
         "Las cámaras infrarrojas portátiles se utilizan para realizar estudios termográficos de los edificios. Las cámaras infrarrojas de los satélites pueden inspeccionar toda una ciudad de forma rápida y repetidamente.  (iStock)",
         "Imagen aérea de infrarrojos térmicos de Madrid en la medianoche del 1 de julio de 2008 (Universidad de Valencia)",
         "Temperatura de la superficie terrestre derivada del instrumento SLSTR en el satélite Copernicus Sentinel-3, para el 26 de junio (izquierda) y el 25 de julio (derecha) de 2019. Ese verano se produjo una ola de calor extrema en Europa, con temperaturas récord en los Países Bajos, Bélgica, Alemania y París. (ESA)",
-        "Temperatura media de la superficie terrestre en septiembre de 2006, derivada de Envisat AATSR (Universidad de Leicester)",
-        "Anomalía global de la temperatura de la superficie terrestre en septiembre de 2006, procedente de Envisat AATSR, que muestra una ola de calor en el centro y norte de Europa (Universidad de Liecester)"
+        "En algunas partes de Europa, en el verano de 2022, la temperatura del aire subió más de 10 °C por encima de la media de la época del año. Esta imagen muestra la temperatura de la superficie de París el 18 de junio de 2022, medida por el instrumento experimental ECOSTRESS de la Estación Espacial Internacional. (NASA/JPL-Caltech)",
+        "El verano de 2022 vio cómo la verde tierra de Inglaterra y el norte de Francia se volvía marrón tras meses de altas temperaturas y escasas precipitaciones. Esta imagen fue tomada por el satélite Copernicus Sentinel-3 de la ESA el 12 de agosto de 2022. Durante ese mes, el sensor infrarrojo del satélite registró temperaturas en la superficie terrestre superiores a 45°C en el Reino Unido, 50°C en Francia y 60°C en España. (Contiene datos modificados de Copernicus Sentinel (2022), procesados por la ESA)"
       ],
       "imageFits": [
         "contain",
@@ -87,6 +91,30 @@
         "contain",
         "contain"
       ]
+    },
+    {
+      "type": "globe",
+      "text": "## La visión global \r\n\r\nLos datos climáticos más precisos sobre la temperatura de la superficie terrestre proceden de la Iniciativa sobre el Cambio Climático de la Agencia Espacial Europea. Aunque de resolución espacial moderada, es lo suficientemente detallada como para ver las características clave de una gran ciudad como Londres, y sus mediciones de temperatura son extremadamente precisas. Proporcionan una instantánea espacial de la temperatura de la superficie, así como una progresión temporal de varias décadas de la temperatura de toda una ciudad, región, país o continente para mejorar el rendimiento de [los modelos climáticos](stories/story-31/0). \r\n\r\nEl globo de datos muestra cómo varía la temperatura de la superficie terrestre en función de la latitud, la altitud y la época del año. Las temperaturas más frías se encuentran en las capas de hielo de la Antártida y Groenlandia. Las más cálidas, en los desiertos del hemisferio norte. Reproduce la secuencia de datos para ver el cambio de temperatura estacional, y busca las olas de calor estivales que azotaron Europa en 2003, 2010 y 2019.",
+      "shortText": "## La visión global\r\n\r\nLos datos climáticos más precisos para LST proceden de la Iniciativa sobre el Cambio Climático de la ESA:\r\n \r\n- Resolución espacial moderada.\r\n- Mediciones de temperatura extremadamente precisas. \r\n- Lapso temporal de varias décadas para toda una ciudad, región, país o continente.\r\n\r\nEl globo de datos muestra:\r\n\r\n- La LST varía con la latitud, la altitud y la época del año.\r\n- Más fría en las capas de hielo de la Antártida y Groenlandia.\r\n- Más caliente en los desiertos del hemisferio norte.\r\n- Busca las olas de calor estivales en Europa en 2003, 2010 y 2019.",
+      "flyTo": {
+        "position": {
+          "longitude": 13.68,
+          "latitude": 44.92,
+          "height": 10914276.48
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.95,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "land_surface_temperature.lst",
+          "timestamp": "2019-07-17T00:00:00.000Z"
+        }
+      ],
+      "layerDescription": "# CCI Temperatura de la superficie terrestre"
     },
     {
       "type": "image",
