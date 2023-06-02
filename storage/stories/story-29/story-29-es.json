@@ -35,11 +35,17 @@
       "shortText": "## Alimentar al mundo\r\n\r\n- Cuando los humanos evolucionaron, ocupamos nuestro lugar en la cadena alimentaria local.\r\n- El crecimiento de la población nos obligó a encontrar formas de producir más alimentos -y más nutritivos-.\r\n- Durante 10.000 años, la producción de alimentos ha dado forma al paisaje, ha cambiado la trayectoria evolutiva de muchas especies e incluso ha influido en el clima de la Tierra.\r\n- La población mundial supera ya los 8.000 millones de personas, y se espera que se acerque a los 10.000 millones en 2050.\r\n- El \"hambre cero\" es el segundo de los Objetivos de Desarrollo Sostenible de la ONU.\r\n- Cómo podemos producir suficientes alimentos, de forma segura y sostenible, es una de las cuestiones más importantes a las que se enfrenta la humanidad.",
       "images": [
         "assets/story29-image01.jpg",
-        "assets/story29-image04.jpg"
+        "assets/story29-image04.jpg",
+        "assets/story29-image17.jpg",
+        "assets/story29-image14.jpg",
+        "assets/story29-image15.jpg"
       ],
       "imageCaptions": [
         "Patrones de cultivos en el terreno recuperado del Noordoostpolder, Países Bajos,\r\nobservados por Copernicus Sentinel-2, 30 de junio de 2018 (datos de Copernicus Sentinel 2018)",
-        "Campos de arroz en Vietnam. Los datos de radar del satélite Copernicus Sentinel-1 muestran los cambios durante tres meses a finales de 2019. La imagen de octubre se muestra en rojo, la de noviembre en verde y la de diciembre en azul. (Contiene datos modificados de Copernicus Sentinel, 2019, procesados por la ESA)"
+        "Campos de arroz en Vietnam. Los datos de radar del satélite Copernicus Sentinel-1 muestran los cambios durante tres meses a finales de 2019. La imagen de octubre se muestra en rojo, la de noviembre en verde y la de diciembre en azul. (Contiene datos modificados de Copernicus Sentinel, 2019, procesados por la ESA)",
+        "La región de Wheatbelt de Australia Occidental es una importante productora de trigo, cebada y lana. Esta imagen infrarroja multitemporal del satélite Copernicus Sentinel-2 combina datos de mayo de 2019 (rojo), septiembre de 2019 (verde) y enero de 2020 (azul). (Contiene datos modificados de Copernicus Sentinel (2019-20), procesados por la ESA).",
+        "El aceite de palma es un cultivo muy productivo que se utiliza en una amplia gama de productos, desde alimentos hasta cosméticos y biocombustibles. Esta imagen de satélite muestra grandes extensiones de selva tropical en Borneo taladas para la producción de aceite de palma. Las zonas marrones son tierras desbrozadas recientemente y las de color verde brillante son plantaciones bien establecidas. (Contiene datos modificados de Copernicus Sentinel (2019), procesados por la ESA)",
+        "Los campos cultivados aparecen de color verde oscuro al norte de Antananarivo, la capital de Madagascar, en esta imagen de satélite tomada por Copernicus Sentinel-2 el 28 de septiembre de 2017. (Contiene datos modificados de Copernicus Sentinel (2017), procesados por la ESA)."
       ],
       "imageFits": [
         "cover",
@@ -131,21 +137,21 @@
       "text": "## Agricultura de precisión\r\n\r\nEn la actualidad, los seres humanos utilizan alrededor del 70% de la superficie terrestre libre de hielo de nuestro planeta. La buena noticia es que esta tierra podría ser potencialmente tres o cuatro veces más productiva: si utilizamos la tierra de forma más eficiente podemos aumentar significativamente la cantidad de alimentos cultivados. La tecnología espacial, incluidos los satélites que utilizamos para vigilar el clima y predecir el tiempo, puede ayudar.\r\n\r\nLos instrumentos satelitales que utilizan longitudes de onda infrarrojas pueden controlar la salud de las plantas durante todo el año. Combinando esta información con las previsiones meteorológicas y las mediciones de, por ejemplo, [la humedad del suelo](stories/story-21/5), la temperatura de la superficie terrestre y la composición atmosférica, podemos saber qué campos necesitan ser regados o fertilizados, en qué cantidad y cuándo. Las observaciones por satélite pueden ayudar a cuantificar las pérdidas de cosechas tras fenómenos extremos, facilitando el acceso de los pequeños agricultores a los seguros. La navegación precisa por satélite también puede orientar el arado, la siembra, la escarda, el control de plagas y la cosecha.\r\n\r\nEsta \"agricultura de precisión\" puede ayudar a los agricultores a optimizar los rendimientos, reduciendo al mismo tiempo la posibilidad de agotar las reservas de agua dulce o de contaminar ríos, lagos y océanos. Gracias a las redes de telefonía móvil y a los teléfonos inteligentes, este tipo de servicios está al alcance incluso de los pequeños agricultores de zonas remotas. Los agricultores de todo el mundo tienen la posibilidad de cultivar más utilizando menos, haciendo que la agricultura no sólo sea más sostenible, sino también más resistente a los fenómenos extremos.\r\n\r\nCambios como estos pueden ayudarnos a alcanzar el objetivo de desarrollo sostenible de hambre cero, incluyendo la seguridad alimentaria, la mejora de la nutrición y la agricultura sostenible, para que todos los habitantes de nuestro creciente mundo tengan suficiente para comer.",
       "shortText": "## Agricultura de precisión\r\n\r\n- La tierra que utilizamos para la agricultura podría ser tres o cuatro veces más productiva.\r\n- Los satélites que utilizamos para vigilar el clima y predecir el tiempo pueden ayudar.\r\n- Controlan la salud de las plantas, la humedad del suelo y la temperatura de la superficie de la tierra para mostrarnos qué campos necesitan ser regados o fertilizados, en qué cantidad y cuándo.\r\n- La precisión de la navegación por satélite puede guiar el arado, la siembra, la escarda, el control de plagas y la cosecha.\r\n- Los satélites pueden ayudar a cuantificar las pérdidas de las cosechas tras los fenómenos extremos, facilitando el acceso de los pequeños agricultores a los seguros.\r\n- Las redes de telefonía móvil y los teléfonos inteligentes pueden llevar este tipo de servicios a los pequeños agricultores incluso en zonas remotas.",
       "images": [
-        "assets/story29-image11.jpg",
+        "assets/story29-image16.jpg",
         "assets/story29-image13.jpg",
         "assets/story29-image06.jpg",
         "assets/story29-image07.jpg",
         "assets/story29-image12.jpg"
       ],
       "imageCaptions": [
-        "El satélite Land Surface Temperature Mission de Copernicus, cuyo lanzamiento está previsto para 2025, tiene como objetivo\r\nsatisfacer las necesidades de los agricultores proporcionando mediciones detalladas del\r\nde las plantas debido a la sequía, ayudándoles a gestionar el uso del agua de forma más eficaz. (Airbus)",
+        "Los datos de satélite pueden utilizarse para medir el vigor de la vegetación durante el periodo vegetativo, ayudar a prever el rendimiento y programar la cosecha. Izquierda: imagen de satélite de longitud de onda visible de campos belgas obtenida por el Sentinel-2 de Copernicus. Derecha: índice de superficie foliar obtenido a partir de los canales visible e infrarrojo del satélite. (Contiene datos modificados de Copernicus Sentinel (2016), procesados por la ESA).",
         "El procesamiento automático de imágenes de satélite puede utilizarse para cartografiar los límites de los campos (ESA/Spacenus)",
         "Un agricultor utilizando un sistema de navegación por satélite en el norte de Francia.  (ESA)",
         "La agricultura de precisión utiliza información procedente de varias fuentes, como sensores en el suelo, en el tractor, en el aire y en el espacio, para orientar la gestión de los cultivos.\r\n(Livingimages/iStock)",
         "Prototipo de rover agrícola desarrollado con tecnología del programa de rover de Marte de la ESA. (ESA/Earth Rover)"
       ],
       "imageFits": [
-        "cover",
+        "contain",
         "cover",
         "cover",
         "cover",

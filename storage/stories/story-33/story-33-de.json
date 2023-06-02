@@ -3,25 +3,25 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Urban Sprawl\r\n\r\nCairo, Egypt",
-      "shortText": "# Urban Sprawl\r\n\r\nCairo, Egypt",
+      "text": "# Urban Sprawl\r\n\r\nKairo, Ägypten",
+      "shortText": "# Urban Sprawl\r\n\r\nKairo, Ägypten",
       "images": [
         "assets/story33-image04.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
-      "shortText": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
+      "text": "## Kairo, Zersiedelung\r\n\r\n30 Jahre Kairo: Ägyptens sich ausbreitende Hauptstadt. Das erste Bild wurde 1988 vom US-Satelliten Landsat-5 aufgenommen, das zweite 2018 und das dritte 2021, beide von der Copernicus-Sentinel-2-Mission. Satellitengestützte Bilder sind für die Überwachung großflächiger städtischer Entwicklungen nützlich. \r\n\r\nCredits: enthält modifizierte Copernicus-Sentinel-Daten (2018), verarbeitet von der ESA. USGS/ESA",
+      "shortText": "## Kairo, Zersiedelung\r\n\r\n30 Jahre Kairo: Ägyptens sich ausbreitende Hauptstadt. Das erste Bild wurde 1988 vom US-Satelliten Landsat-5 aufgenommen, das zweite 2018 und das dritte 2021, beide von der Copernicus-Sentinel-2-Mission. Satellitengestützte Bilder sind für die Überwachung großflächiger städtischer Entwicklungen nützlich. \r\n\r\nCredits: enthält modifizierte Copernicus-Sentinel-Daten (2018), verarbeitet von der ESA. USGS/ESA",
       "images": [
         "assets/story33-image01.jpg",
         "assets/story33-image02.jpg",
         "assets/story33-image03.jpg"
       ],
       "imageCaptions": [
-        "This image was acquired on 14 August 1988 and shows the city of Cairo and its surroundings more than 30 years ago",
-        "This image was acquired on 2 August 2018 and shows the city of Cairo and its surroundings",
-        "This image was acquired on 31 August 2021 and shows the city of Cairo and its surroundings"
+        "Dieses Bild wurde am 14. August 1988 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung vor mehr als 30 Jahren",
+        "Dieses Bild wurde am 2. August 2018 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung",
+        "Dieses Bild wurde am 31. August 2021 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung"
       ],
       "imageFits": [
         "cover",
