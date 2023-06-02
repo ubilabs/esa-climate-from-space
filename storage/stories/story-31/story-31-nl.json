@@ -66,7 +66,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "JFfLijv-lsA"
+      "videoId": "JFfLijv-lsA",
+      "videoPoster": "assets/cmug.jpg",
+      "videoSrc": [
+        "assets/cmug-web.mp4"
+      ]
     }
   ]
 }
