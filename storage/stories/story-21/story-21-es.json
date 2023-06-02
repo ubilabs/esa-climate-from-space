@@ -98,11 +98,7 @@
           "timestamp": "2016-12-01T00:00:00.000Z"
         }
       ],
-      "layerDescription": "# CCI Fracción de la nube\r\n\r\nLa proporción de un mes en que una zona está cubierta por nubes",
-      "videoPoster": "assets/soilmoisture.jpg",
-      "videoSrc": [
-        "assets/soilmoisture-web.mp4"
-      ]
+      "layerDescription": "# CCI Fracción de la nube\r\n\r\nLa proporción de un mes en que una zona está cubierta por nubes"
     },
     {
       "type": "video",
@@ -115,7 +111,11 @@
         "cover",
         "cover"
       ],
-      "videoId": "LXyHZHaFjk4"
+      "videoId": "LXyHZHaFjk4",
+      "videoPoster": "assets/soilmoisture.jpg",
+      "videoSrc": [
+        "assets/soilmoisture-web.mp4"
+      ]
     },
     {
       "type": "video",

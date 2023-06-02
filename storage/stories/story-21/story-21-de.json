@@ -98,11 +98,7 @@
           "timestamp": "2016-12-01T00:00:00.000Z"
         }
       ],
-      "layerDescription": "# CCI Wolkenfraktion\r\n\r\nDer Anteil eines Monats, in dem ein Gebiet von Wolken bedeckt ist",
-      "videoPoster": "assets/soilmoisture.jpg",
-      "videoSrc": [
-        "assets/soilmoisture-web.mp4"
-      ]
+      "layerDescription": "# CCI Wolkenfraktion\r\n\r\nDer Anteil eines Monats, in dem ein Gebiet von Wolken bedeckt ist"
     },
     {
       "type": "video",
@@ -115,7 +111,11 @@
         "cover",
         "cover"
       ],
-      "videoId": "LXyHZHaFjk4"
+      "videoId": "LXyHZHaFjk4",
+      "videoPoster": "assets/soilmoisture.jpg",
+      "videoSrc": [
+        "assets/soilmoisture-web.mp4"
+      ]
     },
     {
       "type": "video",

@@ -98,11 +98,7 @@
           "timestamp": "2016-12-01T00:00:00.000Z"
         }
       ],
-      "layerDescription": "# CCI Cloud Fraction\r\n\r\nThe proportion of a month that an area is covered by cloud",
-      "videoPoster": "assets/soilmoisture.jpg",
-      "videoSrc": [
-        "assets/soilmoisture-web.mp4"
-      ]
+      "layerDescription": "# CCI Cloud Fraction\r\n\r\nThe proportion of a month that an area is covered by cloud"
     },
     {
       "type": "video",
@@ -115,7 +111,11 @@
         "cover",
         "cover"
       ],
-      "videoId": "LXyHZHaFjk4"
+      "videoId": "LXyHZHaFjk4",
+      "videoPoster": "assets/soilmoisture.jpg",
+      "videoSrc": [
+        "assets/soilmoisture-web.mp4"
+      ]
     },
     {
       "type": "video",

@@ -98,11 +98,7 @@
           "timestamp": "2016-12-01T00:00:00.000Z"
         }
       ],
-      "layerDescription": "# CCI Fraction de nuage\r\n\r\nProportion d'un mois pendant laquelle une zone est couverte de nuages.",
-      "videoPoster": "assets/soilmoisture.jpg",
-      "videoSrc": [
-        "assets/soilmoisture-web.mp4"
-      ]
+      "layerDescription": "# CCI Fraction de nuage\r\n\r\nProportion d'un mois pendant laquelle une zone est couverte de nuages."
     },
     {
       "type": "video",
@@ -115,7 +111,11 @@
         "cover",
         "cover"
       ],
-      "videoId": "LXyHZHaFjk4"
+      "videoId": "LXyHZHaFjk4",
+      "videoPoster": "assets/soilmoisture.jpg",
+      "videoSrc": [
+        "assets/soilmoisture-web.mp4"
+      ]
     },
     {
       "type": "video",
