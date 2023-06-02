@@ -76,7 +76,7 @@ const Globe: FunctionComponent<Props> = props => {
 
   useProjectionSwitch(globe, projectionState.projection);
   useMultiGlobeSynchronization(globe, props);
-
+  // eslint-disable-next-line no-warning-comments
   // fixme: add auto-rotate functionality
 
   return (
