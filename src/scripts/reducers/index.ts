@@ -10,6 +10,7 @@ import showLayerSelectorReducer from './show-layer-selector';
 import offlineReducer from './offline/index';
 import downloadedDataReducer from './downloaded-data';
 import welcomeScreenReducer from './welcome-screen';
+import embedReducer from './embed';
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   showLayerSelector: showLayerSelectorReducer,
   offline: offlineReducer,
   downloadedData: downloadedDataReducer,
-  welcomeScreen: welcomeScreenReducer
+  welcomeScreen: welcomeScreenReducer,
+  embed: embedReducer
 });
 
 export default rootReducer;

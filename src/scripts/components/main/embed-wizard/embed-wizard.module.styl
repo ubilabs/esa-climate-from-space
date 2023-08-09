@@ -1,0 +1,17 @@
+@require '../../../../variables.styl'
+
+.embedWizard
+  display: grid
+  align-items: start
+  width: 60%
+  color: $textWhite
+  column-gap: emCalc(50px)
+  grid-template-columns: repeat(2, auto)
+  grid-template-rows: repeat(3, auto)
+  row-gap: emCalc(20px)
+
+.header
+  grid-area: 1 / 1 / 2 / 3
+
+.settings
+  display: grid

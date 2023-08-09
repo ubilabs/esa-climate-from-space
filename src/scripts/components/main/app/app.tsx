@@ -26,6 +26,7 @@ import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
 
 import styles from './app.module.styl';
+import {appElementsSelector} from '../../../selectors/embed/app-elements-embed';
 
 // create matomo tracking instance
 const matomoInstance = createInstance({
@@ -38,6 +39,7 @@ const matomoInstance = createInstance({
 const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
+  const {appElements} = useSelector(appElementsSelector);
 
   const logo = (
     <Link to="/about">
@@ -52,8 +54,12 @@ const TranslatedApp: FunctionComponent = () => {
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
           <Route path="/" exact>
-            {logo}
-            <DataViewer markers={markers} backgroundColor={'#10161A'} />
+            {appElements.logo !== false && logo}
+            <DataViewer
+              hideNavigation={appElements.globe_navigation === false}
+              markers={markers}
+              backgroundColor={'#10161A'}
+            />
             <Navigation />
             <TimeSlider />
             <DataSetInfo />
