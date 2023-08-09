@@ -36,7 +36,7 @@ const Navigation: FunctionComponent = () => {
   return (
     <React.Fragment>
       <div className={styles.navigation}>
-        {stories_menu !== false && (
+        {stories_menu && (
           <Button
             className={styles.button}
             id="ui-stories"
@@ -56,7 +56,7 @@ const Navigation: FunctionComponent = () => {
             <div className={styles.badge} />
           </React.Fragment>
         )}
-        {layers_menu !== false && (
+        {layers_menu && (
           <Button
             className={styles.button}
             id="ui-layers"
@@ -66,9 +66,9 @@ const Navigation: FunctionComponent = () => {
             hideLabelOnMobile
           />
         )}
-        {share_button !== false && <Share />}
+        {share_button && <Share />}
 
-        {app_menu !== false && (
+        {app_menu && (
           <Button
             className={styles.button}
             id="ui-menu"

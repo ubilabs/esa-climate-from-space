@@ -1,7 +1,8 @@
 import React, {FunctionComponent} from 'react';
 
-import styles from './embed-checkbox-list.module.styl';
 import {ElementOptions} from '../../../types/embed-elements';
+
+import styles from './embed-checkbox-list.module.styl';
 
 interface Props {
   elementsChecked: ElementOptions;

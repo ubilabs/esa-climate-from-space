@@ -24,9 +24,9 @@ import Tracking from '../tracking/tracking';
 import AboutProjectOverlay from '../about-project-overlay/about-project-overlay';
 import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
+import {appElementsSelector} from '../../../selectors/embed/app-elements-embed';
 
 import styles from './app.module.styl';
-import {appElementsSelector} from '../../../selectors/embed/app-elements-embed';
 
 // create matomo tracking instance
 const matomoInstance = createInstance({
@@ -54,9 +54,9 @@ const TranslatedApp: FunctionComponent = () => {
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
           <Route path="/" exact>
-            {appElements.logo !== false && logo}
+            {appElements.logo && logo}
             <DataViewer
-              hideNavigation={appElements.globe_navigation === false}
+              hideNavigation={!appElements.globe_navigation}
               markers={markers}
               backgroundColor={'#10161A'}
             />
