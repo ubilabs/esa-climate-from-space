@@ -1,7 +1,9 @@
+import {RenderMode} from '@ubilabs/esa-webgl-globe';
+
 import {GlobeState} from '../reducers/globe/index';
+import {UiEmbedElement} from '../types/embed-elements';
 
 import {GlobeProjection} from '../types/globe-projection';
-import {RenderMode} from '@ubilabs/esa-webgl-globe';
 
 const globeState: GlobeState = {
   time: Date.now(),
@@ -18,6 +20,22 @@ const globeState: GlobeState = {
   },
   spinning: true
 };
+
+export const uiEmbedElements: UiEmbedElement[] = [
+  {
+    title: 'app',
+    elements: [
+      'logo',
+      'stories_menu',
+      'layers_menu',
+      'share_button',
+      'app_menu',
+      'globe_navigation',
+      'markers'
+    ]
+  },
+  {title: 'layers', elements: ['time_slider', 'legend']}
+];
 
 // @ts-ignore - injected via vite
 const version = INFO_VERSION;

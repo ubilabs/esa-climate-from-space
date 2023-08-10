@@ -62,7 +62,9 @@ const Share: FunctionComponent = () => {
       />
 
       {showEmbedWizard ? (
-        <Overlay onClose={() => setShowEmbedWizard(false)}>
+        <Overlay
+          className={styles.embedOverlay}
+          onClose={() => setShowEmbedWizard(false)}>
           <EmbedWizard />
         </Overlay>
       ) : (

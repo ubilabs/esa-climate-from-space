@@ -74,6 +74,8 @@
   "embedLink": "Einbettungslink",
   "copyEmbedCode": "Einbettungscode kopieren",
   "copyEmbedLink": "Einbettungslink kopieren",
+  "preview": "Vorschau",
+  "previewTitle": "Link kopieren, damit jeder eine Vorschau sehen kann",
   "tags.sea-surface-temperature": "Meeresoberflächentemperatur",
   "tags.sea-ice": "Meereis",
   "tags.ocean-colour": "Ozean Farbe",
