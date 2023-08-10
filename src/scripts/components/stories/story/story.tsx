@@ -39,7 +39,7 @@ const Story: FunctionComponent = () => {
   const storyMode = mode === StoryMode.Stories;
   const isSplashScreen =
     selectedStory?.slides[slideIndex].type === SlideType.Splashscreen;
-  const {story_header} = useSelector(embedElementsSelector);
+  const {story_header, time_slider} = useSelector(embedElementsSelector);
 
   // fetch story of active storyId
   useEffect(() => {
@@ -109,12 +109,14 @@ const Story: FunctionComponent = () => {
           markers={slide.markers}
           backgroundColor={'#000000'}
         />
-        <div className={styles.layerDetails}>
-          <TimeSlider noTimeClamp className={styles.storySlider} />
-          {slide.layerDescription && (
-            <LayerDescription layerDescription={slide.layerDescription} />
-          )}
-        </div>
+        {time_slider && (
+          <div className={styles.layerDetails}>
+            <TimeSlider noTimeClamp className={styles.storySlider} />
+            {slide.layerDescription && (
+              <LayerDescription layerDescription={slide.layerDescription} />
+            )}
+          </div>
+        )}
       </div>
     );
   };
