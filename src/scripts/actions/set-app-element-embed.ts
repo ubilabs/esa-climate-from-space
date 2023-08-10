@@ -1,18 +1,18 @@
-import {AppElementsState} from '../types/embed-elements';
+import {EmbedElementsState} from '../types/embed-elements';
 
-export const TOGGLE_APP_ELEMENTS = 'TOGGLE_APP_ELEMENTS';
+export const TOGGLE_EMBED_ELEMENTS = 'TOGGLE_EMBED_ELEMENTS';
 
-export interface SetAppElementsAction {
-  type: typeof TOGGLE_APP_ELEMENTS;
-  appElements: AppElementsState;
+export interface SetEmbedElementsAction {
+  type: typeof TOGGLE_EMBED_ELEMENTS;
+  embedElements: EmbedElementsState;
 }
 
 export function setAppElementsAction(
-  appElements: AppElementsState
-): SetAppElementsAction {
+  embedElements: EmbedElementsState
+): SetEmbedElementsAction {
   return {
-    type: TOGGLE_APP_ELEMENTS,
-    appElements
+    type: TOGGLE_EMBED_ELEMENTS,
+    embedElements
   };
 }
 

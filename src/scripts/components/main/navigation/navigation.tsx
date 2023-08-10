@@ -19,7 +19,7 @@ import {selectedTagsSelector} from '../../../selectors/story/selected-tags';
 import setWelcomeScreenAction from '../../../actions/set-welcome-screen';
 import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 import config from '../../../config/main';
-import {appElementsSelector} from '../../../selectors/embed/app-elements-embed';
+import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
 import styles from './navigation.module.styl';
 
@@ -30,8 +30,9 @@ const Navigation: FunctionComponent = () => {
   const selectedLanguage = useSelector(languageSelector);
   const savedLanguage = localStorage.getItem(config.localStorageLanguageKey);
   const selectedTags = useSelector(selectedTagsSelector);
-  const {appElements} = useSelector(appElementsSelector);
-  const {stories_menu, layers_menu, share_button, app_menu} = appElements;
+  const {stories_menu, layers_menu, share_button, app_menu} = useSelector(
+    embedElementsSelector
+  );
 
   return (
     <React.Fragment>

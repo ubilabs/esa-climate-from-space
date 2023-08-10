@@ -1,4 +1,4 @@
-export interface AppElementsState {
+export interface EmbedElementsState {
   logo?: boolean;
   stories_menu?: boolean;
   layers_menu?: boolean;

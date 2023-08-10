@@ -2,7 +2,7 @@ import React, {FunctionComponent, useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useSelector} from 'react-redux';
 
-import {appElementsSelector} from '../../../selectors/embed/app-elements-embed';
+import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 import {ElementOptions} from '../../../types/embed-elements';
 import EmbedCheckboxList from '../embed-checkbox-list/embed-checkbox-list';
 import EmbedResult from '../embed-result/embed-result';
@@ -10,9 +10,9 @@ import EmbedResult from '../embed-result/embed-result';
 import styles from './embed-wizard.module.styl';
 
 const EmbedWizard: FunctionComponent = () => {
-  const {appElements} = useSelector(appElementsSelector);
+  const embedElements = useSelector(embedElementsSelector);
   const [appElementsChecked, setAppElementsChecked] = useState(
-    appElements as ElementOptions
+    embedElements as ElementOptions
   );
 
   const disabledParamsString = Object.entries(appElementsChecked)
