@@ -6,6 +6,7 @@ import {embedElementsSelector} from '../../../selectors/embed-elements-selector'
 import {ElementOptions} from '../../../types/embed-elements';
 import EmbedResult from '../embed-result/embed-result';
 import EmbedSettings from '../embed-settings/embed-settings';
+import {createEmbedUrl} from '../../../libs/create-embed-url';
 
 import styles from './embed-wizard.module.styl';
 
@@ -23,17 +24,6 @@ const EmbedWizard: FunctionComponent = () => {
     )
     .map(key => `${key[0]}=${key[1]}`)
     .join('&');
-
-  const currentUrl = window.location.href;
-
-  const createEmbedUrl = () => {
-    if (disabledParamsString.length) {
-      return currentUrl.includes('?')
-        ? `${currentUrl}&${disabledParamsString}`
-        : `${currentUrl}?${disabledParamsString}`;
-    }
-    return '';
-  };
 
   return (
     <div className={styles.embedWizard}>
@@ -60,14 +50,14 @@ const EmbedWizard: FunctionComponent = () => {
           <div className={styles.resultLink}>
             <textarea
               className={styles.embedPreviewArea}
-              value={createEmbedUrl()}
+              value={createEmbedUrl(disabledParamsString)}
               wrap="off"
               readOnly
             />
 
             <a
               className={styles.previewButton}
-              href={createEmbedUrl()}
+              href={createEmbedUrl(disabledParamsString)}
               target={'_blank'}
               rel="noopener noreferrer">
               <button>
