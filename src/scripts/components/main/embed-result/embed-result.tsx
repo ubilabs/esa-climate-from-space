@@ -45,7 +45,7 @@ const EmbedResult: FunctionComponent<Props> = ({paramsString}) => {
   return (
     <div className={styles.result}>
       <div className={styles.resultItem}>
-        <h2>
+        <h2 className={styles.resultTitle}>
           <FormattedMessage id={'embedCode'} />
         </h2>
         <textarea
@@ -63,7 +63,7 @@ const EmbedResult: FunctionComponent<Props> = ({paramsString}) => {
       </div>
 
       <div className={styles.resultItem}>
-        <h2>
+        <h2 className={styles.resultTitle}>
           <FormattedMessage id={'embedLink'} />
         </h2>
         <textarea
