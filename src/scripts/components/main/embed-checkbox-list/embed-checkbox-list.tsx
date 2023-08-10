@@ -4,6 +4,7 @@ import {useLocation} from 'react-router-dom';
 import cx from 'classnames';
 
 import {ElementOptions, UiEmbedElement} from '../../../types/embed-elements';
+import {convertToTitleCase} from '../../../libs/convert-to-title-case';
 
 import styles from './embed-checkbox-list.module.styl';
 
@@ -31,16 +32,9 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
 
   const checkboxListClasses = cx(
     styles.checkboxList,
-    disabledEmbed ? styles.disabledEmbed : null,
+    disabledEmbed && styles.disabledEmbed,
     styles[elementList.title]
   );
-
-  const convertToTitleCase = (inputString: string) =>
-    inputString
-      .split('_')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ')
-      .replace(/Story/g, '');
 
   return (
     <div className={checkboxListClasses}>
