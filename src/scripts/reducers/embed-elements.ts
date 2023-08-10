@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import {
-  SetAppElementsAction as SetEmbedElementsAction,
+  SetEmbedElementsAction as SetEmbedElementsAction,
   TOGGLE_EMBED_ELEMENTS
 } from '../actions/set-app-element-embed';
 import {parseUrl} from '../libs/app-elements-url-parameter';
