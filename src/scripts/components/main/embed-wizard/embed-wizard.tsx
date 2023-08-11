@@ -6,6 +6,7 @@ import {embedElementsSelector} from '../../../selectors/embed-elements-selector'
 import {ElementOptions} from '../../../types/embed-elements';
 import EmbedResult from '../embed-result/embed-result';
 import EmbedSettings from '../embed-settings/embed-settings';
+import {embedParamsString} from '../../../libs/get-embed-params-string';
 
 import styles from './embed-wizard.module.styl';
 
@@ -14,23 +15,14 @@ const EmbedWizard: FunctionComponent = () => {
   const [uiElementsChecked, setUiElementsChecked] = useState(
     embedElements as ElementOptions
   );
-
-  const disabledParamsString = Object.entries(uiElementsChecked)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    .filter(
-      ([key, value]) =>
-        value === false || (key === 'lng' && value !== 'autoLng')
-    )
-    .map(key => `${key[0]}=${key[1]}`)
-    .join('&');
-
+  const urlParams = embedParamsString(uiElementsChecked);
   const currentUrl = window.location.href;
 
   const createEmbedUrl = () => {
-    if (disabledParamsString.length) {
+    if (urlParams.length) {
       return currentUrl.includes('?')
-        ? `${currentUrl}&${disabledParamsString}`
-        : `${currentUrl}?${disabledParamsString}`;
+        ? `${currentUrl}&${urlParams}`
+        : `${currentUrl}?${urlParams}`;
     }
     return '';
   };
@@ -47,7 +39,7 @@ const EmbedWizard: FunctionComponent = () => {
           </p>
         </div>
 
-        <EmbedResult paramsString={disabledParamsString} />
+        <EmbedResult elementsChecked={uiElementsChecked} />
         <EmbedSettings
           elementsChecked={uiElementsChecked}
           handleChange={elements => setUiElementsChecked(elements)}

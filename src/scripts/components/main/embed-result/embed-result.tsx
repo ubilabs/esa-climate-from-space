@@ -3,31 +3,34 @@ import {FormattedMessage} from 'react-intl';
 
 import Button from '../button/button';
 import {CopyTextIcon} from '../icons/copy-text-icon';
+import {ElementOptions} from '../../../types/embed-elements';
+import {embedParamsString} from '../../../libs/get-embed-params-string';
 
 import styles from './embed-result.module.styl';
 
 interface Props {
-  paramsString: string;
+  elementsChecked: ElementOptions;
 }
-const EmbedResult: FunctionComponent<Props> = ({paramsString}) => {
+const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
+  const urlParams = embedParamsString(elementsChecked);
   const iFrameRef = useRef<HTMLTextAreaElement>(null);
   const linkRef = useRef<HTMLTextAreaElement>(null);
   const currentUrl = window.location.href;
 
   const createEmbedUrl = () => {
-    if (paramsString.length) {
+    if (urlParams.length) {
       return currentUrl.includes('?')
-        ? `${currentUrl}&${paramsString}`
-        : `${currentUrl}?${paramsString}`;
+        ? `${currentUrl}&${urlParams}`
+        : `${currentUrl}?${urlParams}`;
     }
     return '';
   };
 
   const createiFrameCode = () => {
-    if (paramsString.length) {
+    if (urlParams.length) {
       const embedUrl = currentUrl.includes('?')
-        ? `${currentUrl}&${paramsString}`
-        : `${currentUrl}?${paramsString}`;
+        ? `${currentUrl}&${urlParams}`
+        : `${currentUrl}?${urlParams}`;
 
       return `<iframe width="100%" height="100%" src="${embedUrl}" title="Climate from Space"></iframe>`;
     }
