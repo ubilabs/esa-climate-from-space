@@ -4,7 +4,6 @@ import {useLocation} from 'react-router-dom';
 import cx from 'classnames';
 
 import {ElementOptions, UiEmbedElement} from '../../../types/embed-elements';
-import {convertToTitleCase} from '../../../libs/convert-to-title-case';
 
 import styles from './embed-checkbox-list.module.styl';
 
@@ -56,7 +55,9 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
               });
             }}
           />
-          <label htmlFor={element}>{convertToTitleCase(element)}</label>
+          <label htmlFor={element}>
+            <FormattedMessage id={element} />
+          </label>
         </div>
       ))}
     </div>
