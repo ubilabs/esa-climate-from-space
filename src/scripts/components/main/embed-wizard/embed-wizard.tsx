@@ -15,12 +15,6 @@ const EmbedWizard: FunctionComponent = () => {
     embedElements as ElementOptions
   );
 
-  const disabledParamsString = Object.entries(appElementsChecked)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    .filter(([_, value]) => value === false)
-    .map(key => `${key[0]}=${key[1]}`)
-    .join('&');
-
   return (
     <div className={styles.embedWizard}>
       <div className={styles.header}>
@@ -32,7 +26,7 @@ const EmbedWizard: FunctionComponent = () => {
         </p>
       </div>
 
-      <EmbedResult paramsString={disabledParamsString} />
+      <EmbedResult elementsChecked={appElementsChecked} />
 
       <div className={styles.settings}>
         <h2>
