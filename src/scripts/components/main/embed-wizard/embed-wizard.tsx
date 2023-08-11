@@ -7,9 +7,9 @@ import {ElementOptions} from '../../../types/embed-elements';
 import EmbedResult from '../embed-result/embed-result';
 import EmbedSettings from '../embed-settings/embed-settings';
 import {createEmbedUrl} from '../../../libs/create-embed-url';
+import {getDisabledParams} from '../../../libs/get-disabled-params';
 
 import styles from './embed-wizard.module.styl';
-import {getDisabledParams} from '../../../libs/get-disabled-params';
 
 const EmbedWizard: FunctionComponent = () => {
   const embedElements = useSelector(embedElementsSelector);
