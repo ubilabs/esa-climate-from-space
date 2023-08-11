@@ -29,7 +29,7 @@ const EmbedResult: FunctionComponent<Props> = ({paramsString}) => {
         ? `${currentUrl}&${paramsString}`
         : `${currentUrl}?${paramsString}`;
 
-      return `<iframe width="560" height="315" src="${embedUrl}" title="Climate from Space"></iframe>`;
+      return `<iframe width="100%" height="100%" src="${embedUrl}" title="Climate from Space"></iframe>`;
     }
     return '';
   };
