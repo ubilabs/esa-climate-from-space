@@ -151,48 +151,42 @@ const DataViewer: FunctionComponent<Props> = ({
     );
   };
 
+  const getLegends = () =>
+    [mainLayerDetails, compareLayerDetails]
+      .filter((layer): layer is Layer => Boolean(layer))
+      .map(
+        (
+          {id, maxValue, minValue, units, basemap, legendValues, hideLegend},
+          index
+        ) => {
+          if (hideLegend) {
+            return null;
+          }
+
+          return id === 'land_cover.lccs_class' ? (
+            <HoverLegend
+              key={id}
+              values={legendValues as LegendValueColor[]}
+              isCompare={index > 0}
+            />
+          ) : (
+            <LayerLegend
+              key={id}
+              id={id}
+              values={
+                (legendValues as string[]) || [maxValue || 0, minValue || 0]
+              }
+              unit={units}
+              basemap={basemap}
+              isCompare={index > 0}
+            />
+          );
+        }
+      );
+
   return (
     <div className={styles.dataViewer}>
-      {legend &&
-        [mainLayerDetails, compareLayerDetails]
-          .filter((layer): layer is Layer => Boolean(layer))
-          .map(
-            (
-              {
-                id,
-                maxValue,
-                minValue,
-                units,
-                basemap,
-                legendValues,
-                hideLegend
-              },
-              index
-            ) => {
-              if (hideLegend) {
-                return null;
-              }
-
-              return id === 'land_cover.lccs_class' ? (
-                <HoverLegend
-                  key={id}
-                  values={legendValues as LegendValueColor[]}
-                  isCompare={index > 0}
-                />
-              ) : (
-                <LayerLegend
-                  key={id}
-                  id={id}
-                  values={
-                    (legendValues as string[]) || [maxValue || 0, minValue || 0]
-                  }
-                  unit={units}
-                  basemap={basemap}
-                  isCompare={index > 0}
-                />
-              );
-            }
-          )}
+      {legend && getLegends()}
 
       {getDataWidget({
         imageLayer: mainImageLayer,
