@@ -45,7 +45,7 @@ const EmbedSettings: FunctionComponent<Props> = ({
         <option value="autoLng">Detect automatically</option>
         {Object.values(Language).map(lng => (
           <option key={lng} value={lng as Language}>
-            {lng}
+            <FormattedMessage id={`language.${lng}`} />
           </option>
         ))}
       </select>

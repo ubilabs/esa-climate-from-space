@@ -7,7 +7,7 @@ import {ElementOptions} from '../../../types/embed-elements';
 import EmbedResult from '../embed-result/embed-result';
 import EmbedSettings from '../embed-settings/embed-settings';
 import {createEmbedUrl} from '../../../libs/create-embed-url';
-import {getDisabledParams} from '../../../libs/get-disabled-params';
+import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
 
 import styles from './embed-wizard.module.styl';
 
@@ -16,7 +16,7 @@ const EmbedWizard: FunctionComponent = () => {
   const [uiElementsChecked, setUiElementsChecked] = useState(
     embedElements as ElementOptions
   );
-  const disabledParamsString = getDisabledParams(uiElementsChecked);
+  const urlParams = getEmbedParamsString(uiElementsChecked);
 
   return (
     <div className={styles.embedWizard}>
@@ -30,7 +30,7 @@ const EmbedWizard: FunctionComponent = () => {
           </p>
         </div>
 
-        <EmbedResult paramsString={disabledParamsString} />
+        <EmbedResult elementsChecked={uiElementsChecked} />
         <EmbedSettings
           elementsChecked={uiElementsChecked}
           handleChange={elements => setUiElementsChecked(elements)}
@@ -43,14 +43,14 @@ const EmbedWizard: FunctionComponent = () => {
           <div className={styles.resultLink}>
             <textarea
               className={styles.embedPreviewArea}
-              value={createEmbedUrl(disabledParamsString)}
+              value={createEmbedUrl(urlParams)}
               wrap="off"
               readOnly
             />
 
             <a
               className={styles.previewButton}
-              href={createEmbedUrl(disabledParamsString)}
+              href={createEmbedUrl(urlParams)}
               target={'_blank'}
               rel="noopener noreferrer">
               <button>

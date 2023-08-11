@@ -4,20 +4,23 @@ import {FormattedMessage} from 'react-intl';
 import Button from '../button/button';
 import {CopyTextIcon} from '../icons/copy-text-icon';
 import {createEmbedUrl} from '../../../libs/create-embed-url';
+import {ElementOptions} from '../../../types/embed-elements';
+import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
 
 import styles from './embed-result.module.styl';
 
 interface Props {
-  paramsString: string;
+  elementsChecked: ElementOptions;
 }
-const EmbedResult: FunctionComponent<Props> = ({paramsString}) => {
+const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
+  const urlParams = getEmbedParamsString(elementsChecked);
   const iFrameRef = useRef<HTMLTextAreaElement>(null);
   const linkRef = useRef<HTMLTextAreaElement>(null);
 
   const createiFrameCode = () => {
-    const embedUrl = createEmbedUrl(paramsString);
+    const embedUrl = createEmbedUrl(urlParams);
 
-    return `<iframe width="560" height="315" src="${embedUrl}" title="Climate from Space"></iframe>`;
+    return `<iframe width="100%" height="100%" src="${embedUrl}" title="Climate from Space"></iframe>`;
   };
 
   const copyUrl = (copyValue: string) => {
@@ -55,7 +58,7 @@ const EmbedResult: FunctionComponent<Props> = ({paramsString}) => {
         <textarea
           ref={linkRef}
           className={styles.embedLinkTextArea}
-          value={createEmbedUrl(paramsString)}
+          value={createEmbedUrl(urlParams)}
           wrap="off"
           readOnly
         />

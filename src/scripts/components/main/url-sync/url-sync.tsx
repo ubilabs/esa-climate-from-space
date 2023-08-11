@@ -9,7 +9,7 @@ import {getParamString as getTagsParamString} from '../../../libs/tags-url-param
 import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 import {uiEmbedElements} from '../../../config/main';
-import {getDisabledParams} from '../../../libs/get-disabled-params';
+import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
 
 // syncs the query parameters of the url when values change in store
 const UrlSync: FunctionComponent = () => {
@@ -22,7 +22,7 @@ const UrlSync: FunctionComponent = () => {
 
   const globeParamString = getGlobeParamString(globeState, mainId, compareId);
   const tagsParamString = getTagsParamString(selectedTags);
-  const embedParamString = getDisabledParams(embedElements);
+  const embedParamString = getEmbedParamsString(embedElements);
   const embedParamOptions: string[] = uiEmbedElements.reduce<string[]>(
     (accumulator, currentValue) => accumulator.concat(currentValue.elements),
     []
