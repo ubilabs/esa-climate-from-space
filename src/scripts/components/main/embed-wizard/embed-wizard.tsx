@@ -9,21 +9,14 @@ import EmbedSettings from '../embed-settings/embed-settings';
 import {createEmbedUrl} from '../../../libs/create-embed-url';
 
 import styles from './embed-wizard.module.styl';
+import {getDisabledParams} from '../../../libs/get-disabled-params';
 
 const EmbedWizard: FunctionComponent = () => {
   const embedElements = useSelector(embedElementsSelector);
   const [uiElementsChecked, setUiElementsChecked] = useState(
     embedElements as ElementOptions
   );
-
-  const disabledParamsString = Object.entries(uiElementsChecked)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    .filter(
-      ([key, value]) =>
-        value === false || (key === 'lng' && value !== 'autoLng')
-    )
-    .map(key => `${key[0]}=${key[1]}`)
-    .join('&');
+  const disabledParamsString = getDisabledParams(uiElementsChecked);
 
   return (
     <div className={styles.embedWizard}>
