@@ -12,7 +12,10 @@ const initialState: EmbedElementsState = {
   layers_menu: parseUrl('layers_menu') ?? true,
   share_button: parseUrl('share_button') ?? true,
   app_menu: parseUrl('app_menu') ?? true,
-  globe_navigation: parseUrl('globe_navigation') ?? true
+  globe_navigation: parseUrl('globe_navigation') ?? true,
+  markers: parseUrl('markers') ?? true,
+  time_slider: parseUrl('time_slider') ?? true,
+  legend: parseUrl('legend') ?? true
 };
 
 function embedElementsReducer(

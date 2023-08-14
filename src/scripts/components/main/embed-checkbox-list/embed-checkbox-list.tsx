@@ -1,18 +1,26 @@
 import React, {FunctionComponent} from 'react';
+import {FormattedMessage} from 'react-intl';
+import cx from 'classnames';
 
-import {ElementOptions} from '../../../types/embed-elements';
+import {ElementOptions, UiEmbedElement} from '../../../types/embed-elements';
 
 import styles from './embed-checkbox-list.module.styl';
 
 interface Props {
+  elementList: UiEmbedElement;
   elementsChecked: ElementOptions;
   handleChange: (elements: ElementOptions) => void;
 }
 
 const EmbedCheckboxList: FunctionComponent<Props> = ({
+  elementList,
   elementsChecked,
   handleChange
 }) => {
+  const checkboxListClasses = cx(
+    styles.checkboxList,
+    styles[elementList.title]
+  );
   const convertToTitleCase = (inputString: string) =>
     inputString
       .split('_')
@@ -20,8 +28,11 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
       .join(' ');
 
   return (
-    <div className={styles.checkboxList}>
-      {Object.keys(elementsChecked).map(element => (
+    <div className={checkboxListClasses}>
+      <h2 className={styles.listTitle}>
+        <FormattedMessage id={elementList.title} />
+      </h2>
+      {elementList.elements.map(element => (
         <div className={styles.checkboxListItem} key={element}>
           <input
             type="checkbox"

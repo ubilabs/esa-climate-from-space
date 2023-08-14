@@ -74,6 +74,8 @@
   "embedLink": "Embedding Link",
   "copyEmbedCode": "Copy embed code",
   "copyEmbedLink": "Copy embed link",
+  "preview": "Preview",
+  "previewTitle": "Copy link to allow anyone to preview",
   "tags.sea-surface-temperature": "Sea Surface Temperature",
   "tags.sea-ice": "Sea Ice",
   "tags.ocean-colour": "Ocean Colour",

@@ -1,44 +1,74 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, {Fragment, FunctionComponent, useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useSelector} from 'react-redux';
 
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 import {ElementOptions} from '../../../types/embed-elements';
-import EmbedCheckboxList from '../embed-checkbox-list/embed-checkbox-list';
 import EmbedResult from '../embed-result/embed-result';
+import EmbedSettings from '../embed-settings/embed-settings';
+import {embedParamsString} from '../../../libs/get-embed-params-string';
 
 import styles from './embed-wizard.module.styl';
 
 const EmbedWizard: FunctionComponent = () => {
   const embedElements = useSelector(embedElementsSelector);
-  const [appElementsChecked, setAppElementsChecked] = useState(
+  const [uiElementsChecked, setUiElementsChecked] = useState(
     embedElements as ElementOptions
   );
+  const urlParams = embedParamsString(uiElementsChecked);
+  const currentUrl = window.location.href;
+
+  const createEmbedUrl = () => {
+    if (urlParams.length) {
+      return currentUrl.includes('?')
+        ? `${currentUrl}&${urlParams}`
+        : `${currentUrl}?${urlParams}`;
+    }
+    return '';
+  };
 
   return (
     <div className={styles.embedWizard}>
-      <div className={styles.header}>
-        <h1>
-          <FormattedMessage id={'embedWizard'} />
-        </h1>
-        <p>
-          <FormattedMessage id={'embedDescription'} />
-        </p>
-      </div>
+      <div className={styles.contentContainer}>
+        <div className={styles.header}>
+          <h1>
+            <FormattedMessage id={'embedWizard'} />
+          </h1>
+          <p>
+            <FormattedMessage id={'embedDescription'} />
+          </p>
+        </div>
 
-      <EmbedResult elementsChecked={appElementsChecked} />
-
-      <div className={styles.settings}>
-        <h2>
-          <FormattedMessage id={'app'} />
-        </h2>
-        <EmbedCheckboxList
-          elementsChecked={appElementsChecked}
-          handleChange={elements => setAppElementsChecked(elements)}
+        <EmbedResult elementsChecked={uiElementsChecked} />
+        <EmbedSettings
+          elementsChecked={uiElementsChecked}
+          handleChange={elements => setUiElementsChecked(elements)}
         />
-      </div>
+        <div className={styles.divider}></div>
+        <Fragment>
+          <h2 className={styles.previewTitle}>
+            <FormattedMessage id={'previewTitle'} />
+          </h2>
+          <div className={styles.resultLink}>
+            <textarea
+              className={styles.embedPreviewArea}
+              value={createEmbedUrl()}
+              wrap="off"
+              readOnly
+            />
 
-      <div className={styles.preview}></div>
+            <a
+              className={styles.previewButton}
+              href={createEmbedUrl()}
+              target={'_blank'}
+              rel="noopener noreferrer">
+              <button>
+                <FormattedMessage id={'preview'} />
+              </button>
+            </a>
+          </div>
+        </Fragment>
+      </div>
     </div>
   );
 };

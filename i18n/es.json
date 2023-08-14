@@ -74,6 +74,8 @@
   "embedLink": "Enlace de incrustación",
   "copyEmbedCode": "Copiar código de incrustación",
   "copyEmbedLink": "Copiar enlace embed",
+  "preview": "previsualizar",
+  "previewTitle": "Copiar enlace para que cualquiera pueda previsualizar",
   "tags.sea-surface-temperature": "Temperatura de la superficie del mar",
   "tags.sea-ice": "Hielo marino",
   "tags.ocean-colour": "Color del océano",

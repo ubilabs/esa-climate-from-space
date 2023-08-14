@@ -5,6 +5,17 @@
   flex-direction: column
   gap: emCalc(16px)
 
+.checkboxList.app
+  grid-area: 1 / 1 / 3 / 2
+
+.listTitle
+  margin: 0
+  font-weight: 700
+  font-style: normal
+  font-size: emCalc(16px)
+  font-family: Arial
+  line-height: emCalc(22px)
+
 .checkboxListItem
   display: flex
   align-items: center
@@ -12,8 +23,8 @@
 
   input[type='checkbox']
     margin-left: 0
-    width: remCalc(20px)
-    height: remCalc(20px)
+    min-width: remCalc(20px)
+    min-height: remCalc(20px)
     accent-color: $textWhite
 
   label

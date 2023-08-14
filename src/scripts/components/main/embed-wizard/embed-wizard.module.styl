@@ -1,17 +1,104 @@
 @require '../../../../variables.styl'
 
 .embedWizard
+  display: flex
+  justify-content: center
+  align-items: center
+  overflow: hidden
+  width: 50%
+  height: 100%
+
+.contentContainer
   display: grid
   align-items: start
-  width: 60%
+  overflow-y: auto
+  padding: 0 emCalc(16px)
+  width: 100%
+  height: 100%
   color: $textWhite
   column-gap: emCalc(50px)
   grid-template-columns: repeat(2, auto)
-  grid-template-rows: repeat(3, auto)
+  grid-template-rows: repeat(2, auto) 1px auto
   row-gap: emCalc(20px)
 
 .header
   grid-area: 1 / 1 / 2 / 3
 
-.settings
-  display: grid
+  h1
+    font-weight: 700
+    font-style: normal
+    font-size: 36px
+    font-family: NotesEsa
+    line-height: 36px
+
+.divider
+  width: 100%
+  height: 1px
+  background: rgba(255, 255, 255, 0.6)
+  grid-area: 3 / 1 / 3 / 3
+
+.previewTitle
+  margin: emCalc(10px) 0 0
+  font-weight: 700
+  font-style: normal
+  font-size: emCalc(16px)
+  font-family: Arial
+
+.resultLink
+  display: flex
+
+.embedPreviewArea
+  overflow-y: hidden
+  padding: emCalc(8px) emCalc(16px)
+  width: 100%
+  height: emCalc(26px)
+  border-radius: 4px 0px 0px 4px
+  background: $black
+  color: $textDefault
+  font-weight: 400
+  font-style: normal
+  font-size: emCalc(16px)
+  font-family: Arial
+  line-height: emCalc(22px)
+  resize: none
+
+.previewButton
+  display: flex
+  align-items: center
+  padding: 7px 18px
+  border-radius: 0px 4px 4px 0px
+  background: $main
+  color: $textWhite
+
+  button
+    border: none
+    background: none
+    color: $textWhite
+    font-weight: 700
+    font-style: normal
+    font-size: emCalc(16px)
+    font-family: Arial
+    line-height: 22px
+    cursor: pointer
+
+@media screen and (max-width: 850px)
+  .embedWizard
+    width: 80%
+
+  .header
+    grid-area: 1
+
+  .contentContainer
+    column-gap: 0
+    grid-template-columns: 1fr
+    grid-template-rows: auto
+
+  .divider
+    grid-area: unset
+
+  .preview
+    grid-row-start: 4
+    grid-template-columns: auto
+
+  .preview > h2
+    margin-bottom: emCalc(16px)

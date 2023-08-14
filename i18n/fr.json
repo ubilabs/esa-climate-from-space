@@ -74,6 +74,8 @@
   "embedLink": "Lien d'intégration",
   "copyEmbedCode": "Copier le code d'intégration",
   "copyEmbedLink": "Copier le lien d'intégration",
+  "preview": "aperçu",
+  "previewTitle": "Copier le lien pour permettre à n'importe qui de prévisualiser",
   "tags.sea-surface-temperature": "Température de surface de la mer",
   "tags.sea-ice": "Glace de mer",
   "tags.ocean-colour": "Couleur des océans",

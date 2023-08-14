@@ -40,9 +40,13 @@ const matomoInstance = createInstance({
 const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
-  const {logo: embedLogo, globe_navigation} = useSelector(
-    embedElementsSelector
-  );
+  const {
+    logo: embedLogo,
+    globe_navigation,
+    markers: embedMarkers,
+    time_slider,
+    legend
+  } = useSelector(embedElementsSelector);
 
   const logo = (
     <Link to="/about">
@@ -60,12 +64,12 @@ const TranslatedApp: FunctionComponent = () => {
             {embedLogo && logo}
             <DataViewer
               hideNavigation={!globe_navigation}
-              markers={markers}
+              markers={embedMarkers ? markers : []}
               backgroundColor={'#10161A'}
             />
             <Navigation />
-            <TimeSlider />
-            <DataSetInfo />
+            {time_slider && <TimeSlider />}
+            {legend && <DataSetInfo />}
             <LayerSelector />
           </Route>
           <Route path="/about" exact>
