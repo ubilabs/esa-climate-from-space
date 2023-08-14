@@ -25,8 +25,15 @@ const Header: FunctionComponent<Props> = ({
 }) => {
   const {pathname} = useLocation();
   const {back_link, story_back_link} = useSelector(embedElementsSelector);
-  const isStoriesPath = pathname === '/stories';
-  const isStoryPath = pathname.startsWith('/stories/story-');
+  const isStoriesPath =
+    pathname === '/stories' ||
+    pathname === '/showcase' ||
+    pathname === '/present';
+  const isStoryPath =
+    pathname.startsWith('/stories/story-') ||
+    pathname.startsWith('/showcase/story-') ||
+    pathname.startsWith('/present/story-');
+  console.log(pathname, isStoryPath);
   const disabledEmbedLink =
     (isStoriesPath && back_link) || (isStoryPath && story_back_link);
 

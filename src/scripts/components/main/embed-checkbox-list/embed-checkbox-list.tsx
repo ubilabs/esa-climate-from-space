@@ -24,10 +24,12 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
   const isStoryPath = pathname.startsWith('/stories/story-');
   const isStoriesList = elementList.title === 'stories';
   const isStory = elementList.title === 'story';
+  const isApp = elementList.title === 'app';
+
   const disabledEmbed =
     (isDataPath && (isStoriesList || isStory)) ||
-    (isStoriesPath && !isStoriesList) ||
-    (isStoryPath && !isStory);
+    (isStoriesPath && (isStory || isApp)) ||
+    (isStoryPath && (isStoriesList || isApp));
 
   const checkboxListClasses = cx(
     styles.checkboxList,

@@ -3,7 +3,8 @@
 .selectedTags
   position: absolute
   top: emCalc(40px)
-  left: 0
+  left: emCalc(-18%)
+  z-index: 1
   display: flex
   flex-direction: column
   padding: emCalc(13px)
@@ -16,11 +17,22 @@
   letter-spacing: emCalc(0.6px)
   font-family: NotesEsaBold
 
+.selectedTags:before
+  position: absolute
+  bottom: 100%
+  left: emCalc(20px)
+  border-top-color: inherit
+  border-right: 8px solid transparent
+  border-bottom: 10px solid $darkGrey4
+  border-left: 8px solid transparent
+  content: ''
+
 .tag
   display: flex
   align-items: center
   padding: emCalc(2px) 0
   color: $textWhite
+  white-space: nowrap
   font-size: emCalc(12px)
 
   svg
@@ -35,6 +47,7 @@
   color: $textColor
   text-align: right
   text-transform: uppercase
+  text-wrap: nowrap
   font-size: emCalc(12px)
   font-family: NotesEsaBold
   cursor: pointer

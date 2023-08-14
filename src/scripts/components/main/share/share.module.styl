@@ -4,6 +4,7 @@
   display: flex
 
 .embedOverlay > div
+  margin-top: emCalc(30px)
   height: 80%
 
 .shareOverlay
@@ -18,7 +19,6 @@
   background-color: $darkGrey4
 
 .shareButton
-  padding-right: emCalc(30px)
   font-size: emCalc(18px)
   line-height: emCalc(22px)
 
@@ -72,3 +72,7 @@
 @media screen and (max-width: 480px)
   .button
     padding: emCalc(15px)
+
+  .shareOverlay
+    padding: 2.5em 1em
+    width: 60%
