@@ -1,0 +1,20 @@
+@require '../../../../variables.styl'
+
+.checkboxList
+  display: flex
+  flex-direction: column
+  gap: emCalc(16px)
+
+.checkboxListItem
+  display: flex
+  align-items: center
+  gap: emCalc(8px)
+
+  input[type='checkbox']
+    margin-left: 0
+    width: remCalc(20px)
+    height: remCalc(20px)
+    accent-color: $textWhite
+
+  label
+    color: $textDefault

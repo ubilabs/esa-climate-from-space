@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, {FunctionComponent} from 'react';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
 import {IntlProvider} from 'react-intl';
@@ -24,6 +25,7 @@ import Tracking from '../tracking/tracking';
 import AboutProjectOverlay from '../about-project-overlay/about-project-overlay';
 import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
+import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
 import styles from './app.module.styl';
 
@@ -38,6 +40,9 @@ const matomoInstance = createInstance({
 const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
+  const {logo: embedLogo, globe_navigation} = useSelector(
+    embedElementsSelector
+  );
 
   const logo = (
     <Link to="/about">
@@ -52,8 +57,12 @@ const TranslatedApp: FunctionComponent = () => {
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
           <Route path="/" exact>
-            {logo}
-            <DataViewer markers={markers} backgroundColor={'#10161A'} />
+            {embedLogo && logo}
+            <DataViewer
+              hideNavigation={!globe_navigation}
+              markers={markers}
+              backgroundColor={'#10161A'}
+            />
             <Navigation />
             <TimeSlider />
             <DataSetInfo />

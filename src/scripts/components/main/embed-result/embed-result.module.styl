@@ -1,0 +1,40 @@
+@require '../../../../variables.styl'
+
+.result
+  grid-area: 2 / 1 / 3 / 2
+
+.resultItem
+  display: flex
+  flex-direction: column
+
+.embedTextArea, .embedLinkTextArea
+  padding: emCalc(16px)
+  height: emCalc(171px)
+  border-radius: 4px
+  background: $black
+  color: $textDefault
+  font-weight: 400
+  font-style: normal
+  font-size: emCalc(16px)
+  font-family: Arial
+  line-height: emCalc(22px)
+  resize: none
+
+.embedLinkTextArea
+  overflow-y: hidden
+  height: emCalc(20px)
+
+.copyButton
+  flex-direction: row-reverse
+  align-self: flex-start
+  margin: emCalc(16px)
+  color: $main
+
+  > svg
+    fill: $main
+
+.copyButton:hover
+  color: $textWhite
+
+  > svg
+    fill: $textWhite
