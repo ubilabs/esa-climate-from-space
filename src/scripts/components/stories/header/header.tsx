@@ -1,8 +1,12 @@
+/* eslint-disable camelcase */
 import React, {FunctionComponent} from 'react';
+import {useSelector} from 'react-redux';
+import {useLocation} from 'react-router-dom';
 
 import Button from '../../main/button/button';
 import {ArrowBackIcon} from '../../main/icons/arrow-back-icon';
 import {EsaLogoShort} from '../../main/icons/esa-logo-short';
+import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
 import styles from './header.module.styl';
 
@@ -18,21 +22,32 @@ const Header: FunctionComponent<Props> = ({
   title,
   backButtonId,
   children
-}) => (
-  <div className={styles.header}>
-    <div className={styles.logo}>
-      <EsaLogoShort />
+}) => {
+  const {pathname} = useLocation();
+  const {back_link, story_back_link} = useSelector(embedElementsSelector);
+  const isStoriesPath = pathname === '/stories';
+  const isStoryPath = pathname.startsWith('/stories/story-');
+  const disabledEmbedLink =
+    (isStoriesPath && back_link) || (isStoryPath && story_back_link);
+
+  return (
+    <div className={styles.header}>
+      <div className={styles.logo}>
+        <EsaLogoShort />
+      </div>
+      {disabledEmbedLink && (
+        <Button
+          className={styles.backButton}
+          icon={ArrowBackIcon}
+          label={backButtonId}
+          link={backLink}
+          hideLabelOnMobile
+        />
+      )}
+      {title && <h1 className={styles.title}>{title}</h1>}
+      <div className={styles.rightContent}>{children}</div>
     </div>
-    <Button
-      className={styles.backButton}
-      icon={ArrowBackIcon}
-      label={backButtonId}
-      link={backLink}
-      hideLabelOnMobile
-    />
-    {title && <h1 className={styles.title}>{title}</h1>}
-    <div className={styles.rightContent}>{children}</div>
-  </div>
-);
+  );
+};
 
 export default Header;

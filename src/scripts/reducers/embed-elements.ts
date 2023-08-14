@@ -15,7 +15,12 @@ const initialState: EmbedElementsState = {
   globe_navigation: parseUrl('globe_navigation') ?? true,
   markers: parseUrl('markers') ?? true,
   time_slider: parseUrl('time_slider') ?? true,
-  legend: parseUrl('legend') ?? true
+  legend: parseUrl('legend') ?? true,
+  header: parseUrl('header') ?? true,
+  back_link: parseUrl('back_link') ?? true,
+  filter_tags: parseUrl('filter_tags') ?? true,
+  story_header: parseUrl('story_header') ?? true,
+  story_back_link: parseUrl('story_back_link') ?? true
 };
 
 function embedElementsReducer(

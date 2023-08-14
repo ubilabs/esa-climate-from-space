@@ -1,5 +1,6 @@
 import React, {FunctionComponent} from 'react';
 import {FormattedMessage} from 'react-intl';
+import {useLocation} from 'react-router-dom';
 import cx from 'classnames';
 
 import {ElementOptions, UiEmbedElement} from '../../../types/embed-elements';
@@ -17,15 +18,22 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
   elementsChecked,
   handleChange
 }) => {
+  const {pathname} = useLocation();
+  const isDataPath = pathname === '/';
+  const isStoriesPath = pathname === '/stories';
+  const isStoryPath = pathname.startsWith('/stories/story-');
+  const isStoriesList = elementList.title === 'stories';
+  const isStory = elementList.title === 'story';
+  const disabledEmbed =
+    (isDataPath && (isStoriesList || isStory)) ||
+    (isStoriesPath && !isStoriesList) ||
+    (isStoryPath && !isStory);
+
   const checkboxListClasses = cx(
     styles.checkboxList,
+    disabledEmbed && styles.disabledEmbed,
     styles[elementList.title]
   );
-  const convertToTitleCase = (inputString: string) =>
-    inputString
-      .split('_')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
 
   return (
     <div className={checkboxListClasses}>
@@ -47,7 +55,9 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
               });
             }}
           />
-          <label htmlFor={element}>{convertToTitleCase(element)}</label>
+          <label htmlFor={element}>
+            <FormattedMessage id={element} />
+          </label>
         </div>
       ))}
     </div>

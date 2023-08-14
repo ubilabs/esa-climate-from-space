@@ -34,7 +34,15 @@ export const uiEmbedElements: UiEmbedElement[] = [
       'markers'
     ]
   },
-  {title: 'layers', elements: ['time_slider', 'legend']}
+  {title: 'layers', elements: ['time_slider', 'legend']},
+  {
+    title: 'stories',
+    elements: ['header', 'back_link', 'filter_tags']
+  },
+  {
+    title: 'story',
+    elements: ['story_header', 'story_back_link']
+  }
 ];
 
 // @ts-ignore - injected via vite

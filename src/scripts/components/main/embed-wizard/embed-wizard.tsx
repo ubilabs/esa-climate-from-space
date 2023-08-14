@@ -6,6 +6,7 @@ import {embedElementsSelector} from '../../../selectors/embed-elements-selector'
 import {ElementOptions} from '../../../types/embed-elements';
 import EmbedResult from '../embed-result/embed-result';
 import EmbedSettings from '../embed-settings/embed-settings';
+import {createEmbedUrl} from '../../../libs/create-embed-url';
 import {embedParamsString} from '../../../libs/get-embed-params-string';
 
 import styles from './embed-wizard.module.styl';
@@ -16,16 +17,6 @@ const EmbedWizard: FunctionComponent = () => {
     embedElements as ElementOptions
   );
   const urlParams = embedParamsString(uiElementsChecked);
-  const currentUrl = window.location.href;
-
-  const createEmbedUrl = () => {
-    if (urlParams.length) {
-      return currentUrl.includes('?')
-        ? `${currentUrl}&${urlParams}`
-        : `${currentUrl}?${urlParams}`;
-    }
-    return '';
-  };
 
   return (
     <div className={styles.embedWizard}>
@@ -52,14 +43,14 @@ const EmbedWizard: FunctionComponent = () => {
           <div className={styles.resultLink}>
             <textarea
               className={styles.embedPreviewArea}
-              value={createEmbedUrl()}
+              value={createEmbedUrl(urlParams)}
               wrap="off"
               readOnly
             />
 
             <a
               className={styles.previewButton}
-              href={createEmbedUrl()}
+              href={createEmbedUrl(urlParams)}
               target={'_blank'}
               rel="noopener noreferrer">
               <button>
