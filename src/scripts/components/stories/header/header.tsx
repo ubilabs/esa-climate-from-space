@@ -1,12 +1,13 @@
 /* eslint-disable camelcase */
 import React, {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
-import {useLocation} from 'react-router-dom';
 
 import Button from '../../main/button/button';
 import {ArrowBackIcon} from '../../main/icons/arrow-back-icon';
 import {EsaLogoShort} from '../../main/icons/esa-logo-short';
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
+import useIsStoriesPath from '../../../hooks/use-is-stories-path';
+import {useStoryParams} from '../../../hooks/use-story-params';
 
 import styles from './header.module.styl';
 
@@ -23,19 +24,12 @@ const Header: FunctionComponent<Props> = ({
   backButtonId,
   children
 }) => {
-  const {pathname} = useLocation();
+  const {currentStoryId} = useStoryParams();
+  const isStoriesPath = useIsStoriesPath();
   const {back_link, story_back_link} = useSelector(embedElementsSelector);
-  const isStoriesPath =
-    pathname === '/stories' ||
-    pathname === '/showcase' ||
-    pathname === '/present';
-  const isStoryPath =
-    pathname.startsWith('/stories/story-') ||
-    pathname.startsWith('/showcase/story-') ||
-    pathname.startsWith('/present/story-');
-  console.log(pathname, isStoryPath);
+
   const disabledEmbedLink =
-    (isStoriesPath && back_link) || (isStoryPath && story_back_link);
+    (isStoriesPath && back_link) || (currentStoryId && story_back_link);
 
   return (
     <div className={styles.header}>

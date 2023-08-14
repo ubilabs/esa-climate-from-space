@@ -4,6 +4,8 @@ import {useLocation} from 'react-router-dom';
 import cx from 'classnames';
 
 import {ElementOptions, UiEmbedElement} from '../../../types/embed-elements';
+import {useStoryParams} from '../../../hooks/use-story-params';
+import useIsStoriesPath from '../../../hooks/use-is-stories-path';
 
 import styles from './embed-checkbox-list.module.styl';
 
@@ -19,9 +21,9 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
   handleChange
 }) => {
   const {pathname} = useLocation();
+  const {currentStoryId} = useStoryParams();
+  const isStoriesPath = useIsStoriesPath();
   const isDataPath = pathname === '/';
-  const isStoriesPath = pathname === '/stories';
-  const isStoryPath = pathname.startsWith('/stories/story-');
   const isStoriesList = elementList.title === 'stories';
   const isStory = elementList.title === 'story';
   const isApp = elementList.title === 'app';
@@ -29,7 +31,7 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
   const disabledEmbed =
     (isDataPath && (isStoriesList || isStory)) ||
     (isStoriesPath && (isStory || isApp)) ||
-    (isStoryPath && (isStoriesList || isApp));
+    (currentStoryId && (isStoriesList || isApp));
 
   const checkboxListClasses = cx(
     styles.checkboxList,
