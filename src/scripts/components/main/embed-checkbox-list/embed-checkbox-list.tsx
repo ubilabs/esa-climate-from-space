@@ -34,7 +34,7 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
     (currentStoryId && (isStoriesList || isApp));
 
   const checkboxListClasses = cx(
-    styles.checkboxList,
+    styles.checkboxListContainer,
     disabledEmbed && styles.disabledEmbed,
     styles[elementList.title]
   );
@@ -44,26 +44,28 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
       <h2 className={styles.listTitle}>
         <FormattedMessage id={elementList.title} />
       </h2>
-      {elementList.elements.map(element => (
-        <div className={styles.checkboxListItem} key={element}>
-          <input
-            type="checkbox"
-            name={element}
-            checked={elementsChecked[element] === true}
-            onChange={event => {
-              const checked = event.target.checked;
+      <div className={styles.checkBoxList}>
+        {elementList.elements.map(element => (
+          <div className={styles.checkboxListItem} key={element}>
+            <input
+              type="checkbox"
+              name={element}
+              checked={elementsChecked[element] === true}
+              onChange={event => {
+                const checked = event.target.checked;
 
-              handleChange({
-                ...elementsChecked,
-                [element]: checked
-              });
-            }}
-          />
-          <label htmlFor={element}>
-            <FormattedMessage id={element} />
-          </label>
-        </div>
-      ))}
+                handleChange({
+                  ...elementsChecked,
+                  [element]: checked
+                });
+              }}
+            />
+            <label htmlFor={element}>
+              <FormattedMessage id={element} />
+            </label>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

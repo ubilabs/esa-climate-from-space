@@ -91,6 +91,8 @@
   "story_header": "Cabecera de la historia",
   "story_back_link": "Botón atrás",
   "stories_menu": "Menú de historias",
+  "embedLanguage": "Idioma",
+  "detectLanguage": "Detectar automáticamente",
   "tags.sea-surface-temperature": "Temperatura de la superficie del mar",
   "tags.sea-ice": "Hielo marino",
   "tags.ocean-colour": "Color del océano",

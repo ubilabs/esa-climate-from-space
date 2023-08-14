@@ -91,6 +91,8 @@
   "story_header": "Story Header",
   "story_back_link": "Back Link",
   "stories_menu": "Stories Menu",
+  "embedLanguage": "Language",
+  "detectLanguage": "Detect automatically",
   "tags.sea-surface-temperature": "Sea Surface Temperature",
   "tags.sea-ice": "Sea Ice",
   "tags.ocean-colour": "Ocean Colour",

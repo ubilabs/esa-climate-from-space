@@ -1,16 +1,19 @@
 @require '../../../../variables.styl'
 
-.checkboxList
+.checkboxListContainer, .checkBoxList
   display: flex
   flex-direction: column
-  gap: emCalc(16px)
+  gap: emCalc(8px)
 
-.checkboxList.app
+.checkboxListContainer.app
   grid-area: 1 / 1 / 4 / 2
 
-.checkboxList.disabledEmbed
+.checkboxListContainer.disabledEmbed
   opacity: 0.5
   pointer-events: none
+
+.checkBoxList
+  gap: emCalc(16px)
 
 .listTitle
   margin: 0

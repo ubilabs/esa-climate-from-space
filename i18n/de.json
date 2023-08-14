@@ -87,6 +87,8 @@
   "legend": "Legende",
   "header": "Kopfzeile",
   "back_link": "Zurück Link",
+  "embedLanguage": "Sprache",
+  "detectLanguage": "Automatisch erkennen",
   "filter_tags": "Filter Tags",
   "story_header": "Kopfzeile",
   "story_back_link": "Zurück Link",
