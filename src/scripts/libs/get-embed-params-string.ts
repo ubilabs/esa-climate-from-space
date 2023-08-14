@@ -1,6 +1,6 @@
-import {ElementOptions} from '../types/embed-elements';
+import {EmbedElementsState} from '../types/embed-elements';
 
-export const embedParamsString = (uiElementsChecked: ElementOptions) => {
+export const getEmbedParamsString = (uiElementsChecked: EmbedElementsState) => {
   const disabledParams = Object.fromEntries(
     Object.entries(uiElementsChecked)
       .filter(

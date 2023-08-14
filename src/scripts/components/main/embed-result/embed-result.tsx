@@ -5,7 +5,7 @@ import Button from '../button/button';
 import {CopyTextIcon} from '../icons/copy-text-icon';
 import {createEmbedUrl} from '../../../libs/create-embed-url';
 import {ElementOptions} from '../../../types/embed-elements';
-import {embedParamsString} from '../../../libs/get-embed-params-string';
+import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
 
 import styles from './embed-result.module.styl';
 
@@ -13,7 +13,7 @@ interface Props {
   elementsChecked: ElementOptions;
 }
 const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
-  const urlParams = embedParamsString(elementsChecked);
+  const urlParams = getEmbedParamsString(elementsChecked);
   const iFrameRef = useRef<HTMLTextAreaElement>(null);
   const linkRef = useRef<HTMLTextAreaElement>(null);
 

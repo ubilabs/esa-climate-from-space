@@ -7,7 +7,7 @@ import {ElementOptions} from '../../../types/embed-elements';
 import EmbedResult from '../embed-result/embed-result';
 import EmbedSettings from '../embed-settings/embed-settings';
 import {createEmbedUrl} from '../../../libs/create-embed-url';
-import {embedParamsString} from '../../../libs/get-embed-params-string';
+import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
 
 import styles from './embed-wizard.module.styl';
 
@@ -16,7 +16,7 @@ const EmbedWizard: FunctionComponent = () => {
   const [uiElementsChecked, setUiElementsChecked] = useState(
     embedElements as ElementOptions
   );
-  const urlParams = embedParamsString(uiElementsChecked);
+  const urlParams = getEmbedParamsString(uiElementsChecked);
 
   return (
     <div className={styles.embedWizard}>
