@@ -4,6 +4,7 @@
   display: flex
 
 .embedOverlay > div
+  margin-top: emCalc(30px)
   height: 80%
 
 .shareOverlay
@@ -12,13 +13,12 @@
   flex-direction: column
   align-items: center
   padding: emCalc(40px)
-  max-width: emCalc(450px)
+  max-width: emCalc(350px)
   width: 50%
   border-radius: emCalc(4px)
   background-color: $darkGrey4
 
 .shareButton
-  padding-right: emCalc(30px)
   font-size: emCalc(18px)
   line-height: emCalc(22px)
 
@@ -44,12 +44,12 @@
   justify-content: center
   align-items: flex-end
   width: 100%
+  gap: emCalc(30px)
 
 .button
   display: flex
   flex-direction: column
   align-items: center
-  padding: emCalc(30px)
   outline: 0
   border: none
   background: none
@@ -68,6 +68,11 @@
 
     svg
       fill: $textWhite
+
+@media screen and (max-width: 850px)
+  .shareOverlay
+    padding: 2em 1em
+    width: 60%
 
 @media screen and (max-width: 480px)
   .button

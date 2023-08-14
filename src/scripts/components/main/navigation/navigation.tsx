@@ -38,25 +38,31 @@ const Navigation: FunctionComponent = () => {
     <React.Fragment>
       <div className={styles.navigation}>
         {stories_menu && (
-          <Button
-            className={styles.button}
-            id="ui-stories"
-            label="stories"
-            link="/stories"
-            icon={StoryIcon}
-            hideLabelOnMobile
-          />
-        )}
-        {selectedTags.length > 0 && (
-          <React.Fragment>
+          <div className={styles.storiesContainer}>
             <Button
-              className={styles.tagsButton}
-              icon={FilterIcon}
-              onClick={() => setShowTags(!showTags)}
+              className={styles.button}
+              id="ui-stories"
+              label="stories"
+              link="/stories"
+              icon={StoryIcon}
+              hideLabelOnMobile
             />
-            <div className={styles.badge} />
-          </React.Fragment>
+            {selectedTags.length > 0 && (
+              <div className={styles.tagsContainer}>
+                <Button
+                  className={styles.tagsButton}
+                  icon={FilterIcon}
+                  onClick={() => setShowTags(!showTags)}
+                />
+                <div className={styles.badge} />
+                {selectedTags.length > 0 && showTags && (
+                  <SelectedTags selectedTags={selectedTags} />
+                )}
+              </div>
+            )}
+          </div>
         )}
+
         {layers_menu && (
           <Button
             className={styles.button}
@@ -95,9 +101,6 @@ const Navigation: FunctionComponent = () => {
             }}
           />
         </Overlay>
-      )}
-      {selectedTags.length > 0 && showTags && (
-        <SelectedTags selectedTags={selectedTags} />
       )}
     </React.Fragment>
   );

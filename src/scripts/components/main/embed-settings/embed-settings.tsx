@@ -28,7 +28,7 @@ const EmbedSettings: FunctionComponent<Props> = ({
     ))}
     <div className={styles.languageSelect}>
       <label htmlFor="language" className={styles.title}>
-        <FormattedMessage id="language" />
+        <FormattedMessage id="embedLanguage" />
       </label>
       <select
         name="language"
@@ -42,7 +42,9 @@ const EmbedSettings: FunctionComponent<Props> = ({
             lng: selectedLng
           });
         }}>
-        <option value="autoLng">Detect automatically</option>
+        <option value="autoLng">
+          <FormattedMessage id="detectLanguage" />
+        </option>
         {Object.values(Language).map(lng => (
           <option key={lng} value={lng as Language}>
             <FormattedMessage id={`language.${lng}`} />

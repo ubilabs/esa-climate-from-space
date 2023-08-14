@@ -91,6 +91,8 @@
   "story_header": "Koptekst verhaal",
   "story_back_link": "Terugknop",
   "stories_menu": "Verhalenmenu",
+  "embedLanguage": "Taal",
+  "detectLanguage": "Automatisch detecteren",
   "tags.sea-surface-temperature": "Zeewateroppervlaktetemperatuur",
   "tags.sea-ice": "Zee-ijs",
   "tags.ocean-colour": "Oceaankleur",
