@@ -1,11 +1,10 @@
 import React, {FunctionComponent, useRef} from 'react';
 import {FormattedMessage} from 'react-intl';
 
-import Button from '../button/button';
-import {CopyTextIcon} from '../icons/copy-text-icon';
 import {createEmbedUrl} from '../../../libs/create-embed-url';
 import {ElementOptions} from '../../../types/embed-elements';
 import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
+import CopyToClipboardButton from '../copy-to-clipboard-button/copy-to-clipboard-button';
 
 import styles from './embed-result.module.styl';
 
@@ -43,11 +42,12 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
           value={createiFrameCode()}
           readOnly
         />
-        <Button
-          className={styles.copyButton}
-          icon={CopyTextIcon}
+
+        <CopyToClipboardButton
           label="copyEmbedCode"
-          onClick={() => iFrameRef.current && copyUrl(iFrameRef.current.value)}
+          handleCopy={() =>
+            iFrameRef.current && copyUrl(iFrameRef.current.value)
+          }
         />
       </div>
 
@@ -62,11 +62,10 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
           wrap="off"
           readOnly
         />
-        <Button
-          className={styles.copyButton}
-          icon={CopyTextIcon}
+
+        <CopyToClipboardButton
           label="copyEmbedLink"
-          onClick={() => linkRef.current && copyUrl(linkRef.current.value)}
+          handleCopy={() => linkRef.current && copyUrl(linkRef.current.value)}
         />
       </div>
     </div>
