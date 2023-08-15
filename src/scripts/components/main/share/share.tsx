@@ -32,13 +32,15 @@ const Share: FunctionComponent = () => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (copied) {
-        setCopied(false);
-      }
-    }, 1000);
+    let timer = -1;
 
-    return () => clearTimeout(timeout);
+    if (copied) {
+      timer = window.setTimeout(() => {
+        setCopied(false);
+      }, 1000);
+    }
+
+    return () => clearTimeout(timer);
   }, [copied]);
 
   const ref = useRef<HTMLInputElement>(null);

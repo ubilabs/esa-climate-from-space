@@ -45,9 +45,7 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
 
         <CopyToClipboardButton
           label="copyEmbedCode"
-          handleCopy={() =>
-            iFrameRef.current && copyUrl(iFrameRef.current.value)
-          }
+          onCopy={() => iFrameRef.current && copyUrl(iFrameRef.current.value)}
         />
       </div>
 
@@ -65,7 +63,7 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
 
         <CopyToClipboardButton
           label="copyEmbedLink"
-          handleCopy={() => linkRef.current && copyUrl(linkRef.current.value)}
+          onCopy={() => linkRef.current && copyUrl(linkRef.current.value)}
         />
       </div>
     </div>
