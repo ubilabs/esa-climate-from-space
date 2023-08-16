@@ -10,6 +10,7 @@ import {createEmbedUrl} from '../../../libs/create-embed-url';
 import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
 
 import styles from './embed-wizard.module.styl';
+import EmbedTextarea from '../embed-textarea/embed-textarea';
 
 const EmbedWizard: FunctionComponent = () => {
   const embedElements = useSelector(embedElementsSelector);
@@ -41,11 +42,9 @@ const EmbedWizard: FunctionComponent = () => {
             <FormattedMessage id={'previewTitle'} />
           </h2>
           <div className={styles.resultLink}>
-            <textarea
-              className={styles.embedPreviewArea}
-              value={createEmbedUrl(urlParams)}
-              wrap="off"
-              readOnly
+            <EmbedTextarea
+              className={styles.previewTextArea}
+              embedUrl={createEmbedUrl(urlParams)}
             />
 
             <a
