@@ -6,9 +6,9 @@ import {CopyTextIcon} from '../icons/copy-text-icon';
 import {createEmbedUrl} from '../../../libs/create-embed-url';
 import {ElementOptions} from '../../../types/embed-elements';
 import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
+import EmbedLinkPreview from '../embed-link-preview/embed-link-preview';
 
 import styles from './embed-result.module.styl';
-import EmbedTextarea from '../embed-textarea/embed-textarea';
 
 interface Props {
   elementsChecked: ElementOptions;
@@ -58,7 +58,7 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
         <h2 className={styles.resultTitle}>
           <FormattedMessage id={'embedLink'} />
         </h2>
-        <EmbedTextarea ref={linkRef} embedUrl={createEmbedUrl(urlParams)} />
+        <EmbedLinkPreview ref={linkRef} embedUrl={createEmbedUrl(urlParams)} />
 
         <Button
           className={styles.copyButton}

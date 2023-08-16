@@ -1,19 +1,19 @@
 import React, {FunctionComponent, LegacyRef} from 'react';
 import cx from 'classnames';
 
-import styles from './embed-textarea.module.styl';
+import styles from './embed-link-preview.module.styl';
 
 interface Props {
   embedUrl: string;
   ref?: LegacyRef<HTMLInputElement>;
   className?: string;
 }
-const EmbedTextarea: FunctionComponent<Props> = ({
+const EmbedLinkPreview: FunctionComponent<Props> = ({
   embedUrl,
   ref,
   className = ''
 }) => {
-  const classes = cx(className, styles.embedPreviewArea);
+  const classes = cx(className, styles.embedLinkPreview);
 
   return (
     <div className={classes}>
@@ -25,4 +25,4 @@ const EmbedTextarea: FunctionComponent<Props> = ({
   );
 };
 
-export default EmbedTextarea;
+export default EmbedLinkPreview;
