@@ -1,4 +1,5 @@
-import config from '../config/main';
+import esaLogoSrc from '~/assets/images/esa-logo.png';
+
 import {LayerListItem} from '../types/layer-list';
 
 // Downloads one or both Cesium canvases as an image file
@@ -10,9 +11,7 @@ export function downloadScreenshot(
 ) {
   const canvases = Array.from(
     // eslint-disable-next-line no-undef
-    document.querySelectorAll('.cesium-viewer canvas') as NodeListOf<
-      HTMLCanvasElement
-    >
+    document.querySelectorAll('.globe canvas') as NodeListOf<HTMLCanvasElement>
   );
 
   const fileName = createFileName(
@@ -50,7 +49,7 @@ export function downloadScreenshot(
   };
 
   esaLogo.setAttribute('crossOrigin', 'anonymous');
-  esaLogo.src = config.esaLogo;
+  esaLogo.src = esaLogoSrc;
 }
 
 function combineCanvases(canvases: HTMLCanvasElement[]) {

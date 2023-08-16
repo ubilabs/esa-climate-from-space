@@ -1,6 +1,8 @@
 import React, {FunctionComponent, useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 
+import planeratyVisionsLogo from '~/assets/images/planetary-visions.png';
+
 import LanguageSelector from '../language-selector/language-selector';
 import Button from '../button/button';
 import {PresenterIcon} from '../icons/presenter-icon';
@@ -199,7 +201,7 @@ const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
             <p className={styles.creditsText}>
               <FormattedMessage id={'contentBy'} />
             </p>
-            <img src={config.planeratyVisionsLogo} />
+            <img src={planeratyVisionsLogo} />
           </a>
         </div>
       </div>

@@ -21,6 +21,11 @@ export default defineConfig(({command}) => {
   return {
     root: './src',
     base: './',
+    resolve: {
+      alias: {
+        '~': __dirname
+      }
+    },
     build: {
       outDir: '../dist',
       emptyOutDir: true,
