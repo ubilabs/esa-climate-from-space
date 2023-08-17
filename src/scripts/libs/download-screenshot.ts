@@ -9,9 +9,8 @@ export function downloadScreenshot(
   mainLayer: LayerListItem | null,
   compareLayer: LayerListItem | null
 ) {
-  const canvases = Array.from(
-    // eslint-disable-next-line no-undef
-    document.querySelectorAll('.globe canvas') as NodeListOf<HTMLCanvasElement>
+  const canvases: HTMLCanvasElement[] = Array.from(
+    document.querySelectorAll('canvas')
   );
 
   const fileName = createFileName(
@@ -29,21 +28,23 @@ export function downloadScreenshot(
   // avoid showing the same usage info twice
   const usageInfo = [...new Set(usageInfos)].filter(Boolean).join(' ');
 
-  esaLogo.onload = function() {
-    if (ctx !== null) {
-      ctx.font = '10px Arial';
-      ctx.fillStyle = 'white';
-      ctx.strokeStyle = 'white';
-      ctx.fillText(usageInfo, 10, finalCanvas.height - padding);
-
-      ctx.drawImage(
-        esaLogo,
-        ctx.canvas.width - esaLogo.width,
-        0,
-        esaLogo.width,
-        esaLogo.height
-      );
+  esaLogo.onload = () => {
+    if (!ctx) {
+      return;
     }
+
+    ctx.font = '10px Arial';
+    ctx.fillStyle = 'white';
+    ctx.strokeStyle = 'white';
+    ctx.fillText(usageInfo, 10, finalCanvas.height - padding);
+
+    ctx.drawImage(
+      esaLogo,
+      ctx.canvas.width - esaLogo.width,
+      0,
+      esaLogo.width,
+      esaLogo.height
+    );
 
     download(finalCanvas.toDataURL(), fileName);
   };
@@ -54,13 +55,26 @@ export function downloadScreenshot(
 
 function combineCanvases(canvases: HTMLCanvasElement[]) {
   const canvas = document.createElement('canvas');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const ctx = canvas.getContext('2d');
 
-  canvases.forEach((tmpCanvas, index) =>
-    ctx?.drawImage(tmpCanvas, (window.innerWidth / 2) * index, 0)
-  );
+  const width = canvases.reduce((w, c) => w + c.width, 0);
+  const height = canvases[0].height;
+
+  canvas.width = width;
+  canvas.height = height;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) {
+    throw new Error('failed to create 2d context');
+  }
+
+  ctx.fillStyle = '#10161a';
+  ctx.fillRect(0, 0, width, height);
+
+  let xOffset = 0;
+  for (const c of canvases) {
+    ctx.drawImage(c, xOffset, 0);
+    xOffset += c.width;
+  }
 
   return canvas;
 }
