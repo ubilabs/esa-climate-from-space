@@ -15,6 +15,7 @@ interface Props {
   handleChange: (elements: ElementOptions) => void;
 }
 
+// eslint-disable-next-line complexity
 const EmbedCheckboxList: FunctionComponent<Props> = ({
   elementList,
   elementsChecked,
@@ -44,7 +45,9 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
       <h2 className={styles.listTitle}>
         <FormattedMessage id={elementList.title} />
       </h2>
-      <div className={styles.checkBoxList}>
+      <div
+        className={styles.checkBoxList}
+        title={disabledEmbed ? 'Disabled for this layer' : ''}>
         {elementList.elements.map(element => (
           <div className={styles.checkboxListItem} key={element}>
             <input
