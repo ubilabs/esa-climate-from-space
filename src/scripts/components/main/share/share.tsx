@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState, useRef} from 'react';
+import React, {FunctionComponent, useState, useRef, useEffect} from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useMatomo} from '@datapunt/matomo-tracker-react';
 
@@ -10,6 +10,7 @@ import config from '../../../config/main';
 import Button from '../button/button';
 import {CloseIcon} from '../icons/close-icon';
 import {EmbedIcon} from '../icons/embed-icon';
+import {CheckIcon} from '../icons/check-icon';
 import Overlay from '../overlay/overlay';
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
 import EmbedWizard from '../embed-wizard/embed-wizard';
@@ -28,6 +29,19 @@ const Share: FunctionComponent = () => {
   const twitterUrl = replaceUrlPlaceholders(config.share.twitter, {
     currentUrl: encodeURIComponent(currentUrl)
   });
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    let timer = -1;
+
+    if (copied) {
+      timer = window.setTimeout(() => {
+        setCopied(false);
+      }, 1000);
+    }
+
+    return () => clearTimeout(timer);
+  }, [copied]);
 
   const ref = useRef<HTMLInputElement>(null);
   const copyUrl = () => {
@@ -107,11 +121,12 @@ const Share: FunctionComponent = () => {
                 <div
                   className={styles.button}
                   onClick={() => {
+                    setCopied(true);
                     copyUrl();
                     trackShareClick('link-copy');
                   }}>
                   <input ref={ref} type="hidden" contentEditable="true" />
-                  <CopyIcon />
+                  {copied ? <CheckIcon /> : <CopyIcon />}
                   <span>
                     <FormattedMessage id={'copyLink'} />
                   </span>
