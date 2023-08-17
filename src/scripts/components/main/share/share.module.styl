@@ -3,6 +3,9 @@
 .share
   display: flex
 
+.embedOverlay
+  background: linear-gradient(0deg, rgba(16, 22, 26, 1) 0%, rgba(16, 22, 26, 1) 80%, rgba(16, 22, 26, 0.9738489145658263) 90%, rgba(16, 22, 26, 0.9206276260504201) 100%)
+
 .embedOverlay > div
   margin-top: emCalc(30px)
   height: 80%
@@ -61,6 +64,8 @@
   gap: emCalc(10px)
 
   svg
+    width: 27px
+    height: 27px
     fill: $main
 
   &:hover

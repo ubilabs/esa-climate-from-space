@@ -1,12 +1,11 @@
 import React, {FunctionComponent, useRef} from 'react';
 import {FormattedMessage} from 'react-intl';
 
-import Button from '../button/button';
-import {CopyTextIcon} from '../icons/copy-text-icon';
 import {createEmbedUrl} from '../../../libs/create-embed-url';
 import {ElementOptions} from '../../../types/embed-elements';
 import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
 import EmbedLinkPreview from '../embed-link-preview/embed-link-preview';
+import CopyToClipboardButton from '../copy-to-clipboard-button/copy-to-clipboard-button';
 
 import styles from './embed-result.module.styl';
 
@@ -16,7 +15,6 @@ interface Props {
 const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
   const urlParams = getEmbedParamsString(elementsChecked);
   const iFrameRef = useRef<HTMLTextAreaElement>(null);
-  const linkRef = useRef<HTMLInputElement>(null);
 
   const createiFrameCode = () => {
     const embedUrl = createEmbedUrl(urlParams);
@@ -46,11 +44,10 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
           value={createiFrameCode()}
           readOnly
         />
-        <Button
-          className={styles.copyButton}
-          icon={CopyTextIcon}
+
+        <CopyToClipboardButton
           label="copyEmbedCode"
-          onClick={() => iFrameRef.current && copyUrl(iFrameRef.current.value)}
+          onCopy={() => iFrameRef.current && copyUrl(iFrameRef.current.value)}
         />
       </div>
 
@@ -58,14 +55,9 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
         <h2 className={styles.resultTitle}>
           <FormattedMessage id={'embedLink'} />
         </h2>
-        <EmbedLinkPreview ref={linkRef} embedUrl={createEmbedUrl(urlParams)} />
+        <EmbedLinkPreview embedUrl={createEmbedUrl(urlParams)} />
 
-        <Button
-          className={styles.copyButton}
-          icon={CopyTextIcon}
-          label="copyEmbedLink"
-          onClick={() => copyUrl()}
-        />
+        <CopyToClipboardButton label="copyEmbedLink" onCopy={() => copyUrl()} />
       </div>
     </div>
   );
