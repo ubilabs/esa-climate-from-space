@@ -18,7 +18,8 @@ const globeState: GlobeState = {
     altitude: 23840000,
     zoom: 0
   },
-  spinning: true
+  spinning: true,
+  layerLoadingState: {}
 };
 
 export const uiEmbedElements: UiEmbedElement[] = [

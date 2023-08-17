@@ -132,6 +132,8 @@ const TimeSlider: FunctionComponent<Props> = ({
           minTime={combined.min}
           maxTime={combined.max}
           step={playbackStep}
+          mainLayerId={mainId}
+          compareLayerId={compareId}
         />
       )}
       <div className={styles.container}>
