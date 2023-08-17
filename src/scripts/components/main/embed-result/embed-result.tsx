@@ -4,6 +4,7 @@ import {FormattedMessage} from 'react-intl';
 import {createEmbedUrl} from '../../../libs/create-embed-url';
 import {ElementOptions} from '../../../types/embed-elements';
 import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
+import EmbedLinkPreview from '../embed-link-preview/embed-link-preview';
 import CopyToClipboardButton from '../copy-to-clipboard-button/copy-to-clipboard-button';
 
 import styles from './embed-result.module.styl';
@@ -14,7 +15,6 @@ interface Props {
 const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
   const urlParams = getEmbedParamsString(elementsChecked);
   const iFrameRef = useRef<HTMLTextAreaElement>(null);
-  const linkRef = useRef<HTMLTextAreaElement>(null);
 
   const createiFrameCode = () => {
     const embedUrl = createEmbedUrl(urlParams);
@@ -22,7 +22,9 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
     return `<iframe width="100%" height="100%" src="${embedUrl}" title="Climate from Space"></iframe>`;
   };
 
-  const copyUrl = (copyValue: string) => {
+  const copyUrl = (value?: string) => {
+    const copyValue = value ?? createEmbedUrl(urlParams);
+
     if (navigator.clipboard) {
       navigator.clipboard.writeText(copyValue);
     } else {
@@ -53,18 +55,9 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
         <h2 className={styles.resultTitle}>
           <FormattedMessage id={'embedLink'} />
         </h2>
-        <textarea
-          ref={linkRef}
-          className={styles.embedLinkTextArea}
-          value={createEmbedUrl(urlParams)}
-          wrap="off"
-          readOnly
-        />
+        <EmbedLinkPreview embedUrl={createEmbedUrl(urlParams)} />
 
-        <CopyToClipboardButton
-          label="copyEmbedLink"
-          onCopy={() => linkRef.current && copyUrl(linkRef.current.value)}
-        />
+        <CopyToClipboardButton label="copyEmbedLink" onCopy={() => copyUrl()} />
       </div>
     </div>
   );

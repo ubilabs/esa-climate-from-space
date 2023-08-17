@@ -8,6 +8,7 @@ import EmbedResult from '../embed-result/embed-result';
 import EmbedSettings from '../embed-settings/embed-settings';
 import {createEmbedUrl} from '../../../libs/create-embed-url';
 import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
+import EmbedLinkPreview from '../embed-link-preview/embed-link-preview';
 
 import styles from './embed-wizard.module.styl';
 
@@ -41,11 +42,9 @@ const EmbedWizard: FunctionComponent = () => {
             <FormattedMessage id={'previewTitle'} />
           </h2>
           <div className={styles.resultLink}>
-            <textarea
-              className={styles.embedPreviewArea}
-              value={createEmbedUrl(urlParams)}
-              wrap="off"
-              readOnly
+            <EmbedLinkPreview
+              className={styles.previewTextArea}
+              embedUrl={createEmbedUrl(urlParams)}
             />
 
             <a

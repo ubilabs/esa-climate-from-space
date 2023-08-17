@@ -18,7 +18,7 @@
   height: 100%
   color: $textWhite
   column-gap: emCalc(50px)
-  grid-template-columns: repeat(2, auto)
+  grid-template-columns: repeat(2, minmax(0, 1fr))
   grid-template-rows: repeat(2, auto) 1px auto
   row-gap: emCalc(20px)
 
@@ -48,20 +48,9 @@
 .resultLink
   display: flex
 
-.embedPreviewArea
-  overflow-y: hidden
-  padding: emCalc(8px) emCalc(16px)
-  width: 100%
-  height: emCalc(26px)
-  border-radius: 4px 0px 0px 4px
-  background: $black
-  color: $textDefault
-  font-weight: 400
-  font-style: normal
-  font-size: emCalc(16px)
-  font-family: Arial
-  line-height: emCalc(22px)
-  resize: none
+.previewTextArea
+  border-top-right-radius: 0
+  border-bottom-right-radius: 0
 
 .previewButton
   display: flex
@@ -91,7 +80,7 @@
 
   .contentContainer
     column-gap: 0
-    grid-template-columns: 1fr
+    grid-template-columns: minmax(0, 1fr)
     grid-template-rows: auto
 
   .divider
