@@ -58,6 +58,7 @@ export function parseUrl(): UrlHashState | null {
         projection,
         morphTime: 2
       },
+      layerLoadingState: {},
       time,
       spinning
     },
