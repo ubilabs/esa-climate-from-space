@@ -6,6 +6,7 @@ import React, {
   useLayoutEffect
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {CameraView, LayerLoadingState} from '@ubilabs/esa-webgl-globe';
 
 import {layerListItemSelector} from '../../../selectors/layers/list-item';
 import {globeViewSelector} from '../../../selectors/globe/view';
@@ -17,6 +18,7 @@ import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 import setGlobeViewAction from '../../../actions/set-globe-view';
 import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
+import updateLayerLoadingStateAction from '../../../actions/update-layer-loading-state';
 import {State} from '../../../reducers';
 import Globe from '../globe/globe';
 import Gallery from '../gallery/gallery';
@@ -30,9 +32,9 @@ import {LayerType} from '../../../types/globe-layer-type';
 import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 import {Layer} from '../../../types/layer';
 import {LegendValueColor} from '../../../types/legend-value-color';
+import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
 import styles from './data-viewer.module.styl';
-import {CameraView} from '@ubilabs/esa-webgl-globe';
 
 interface Props {
   backgroundColor: string;
@@ -46,6 +48,8 @@ const DataViewer: FunctionComponent<Props> = ({
   markers = []
 }) => {
   const dispatch = useDispatch();
+  const {legend} = useSelector(embedElementsSelector);
+
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
@@ -84,6 +88,12 @@ const DataViewer: FunctionComponent<Props> = ({
 
   const onMoveEndHandler = useCallback(
     (view: CameraView) => dispatch(setGlobeViewAction(view)),
+    [dispatch]
+  );
+
+  const onLayerLoadingStateChangeHandler = useCallback(
+    (layerId: string, loadingState: LayerLoadingState) =>
+      dispatch(updateLayerLoadingStateAction(layerId, loadingState)),
     [dispatch]
   );
 
@@ -144,43 +154,47 @@ const DataViewer: FunctionComponent<Props> = ({
         onChange={onChangeHandler}
         onMoveStart={onMoveStartHandler}
         onMoveEnd={onMoveEndHandler}
+        onLayerLoadingStateChange={onLayerLoadingStateChangeHandler}
       />
     );
   };
 
+  const getLegends = () =>
+    [mainLayerDetails, compareLayerDetails]
+      .filter((layer): layer is Layer => Boolean(layer))
+      .map(
+        (
+          {id, maxValue, minValue, units, basemap, legendValues, hideLegend},
+          index
+        ) => {
+          if (hideLegend) {
+            return null;
+          }
+
+          return id === 'land_cover.lccs_class' ? (
+            <HoverLegend
+              key={id}
+              values={legendValues as LegendValueColor[]}
+              isCompare={index > 0}
+            />
+          ) : (
+            <LayerLegend
+              key={id}
+              id={id}
+              values={
+                (legendValues as string[]) || [maxValue || 0, minValue || 0]
+              }
+              unit={units}
+              basemap={basemap}
+              isCompare={index > 0}
+            />
+          );
+        }
+      );
+
   return (
     <div className={styles.dataViewer}>
-      {[mainLayerDetails, compareLayerDetails]
-        .filter((layer): layer is Layer => Boolean(layer))
-        .map(
-          (
-            {id, maxValue, minValue, units, basemap, legendValues, hideLegend},
-            index
-          ) => {
-            if (hideLegend) {
-              return null;
-            }
-
-            return id === 'land_cover.lccs_class' ? (
-              <HoverLegend
-                key={id}
-                values={legendValues as LegendValueColor[]}
-                isCompare={index > 0}
-              />
-            ) : (
-              <LayerLegend
-                key={id}
-                id={id}
-                values={
-                  (legendValues as string[]) || [maxValue || 0, minValue || 0]
-                }
-                unit={units}
-                basemap={basemap}
-                isCompare={index > 0}
-              />
-            );
-          }
-        )}
+      {legend && getLegends()}
 
       {getDataWidget({
         imageLayer: mainImageLayer,

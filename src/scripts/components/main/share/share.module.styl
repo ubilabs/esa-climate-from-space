@@ -3,19 +3,25 @@
 .share
   display: flex
 
+.embedOverlay
+  background: linear-gradient(0deg, rgba(16, 22, 26, 1) 0%, rgba(16, 22, 26, 1) 80%, rgba(16, 22, 26, 0.9738489145658263) 90%, rgba(16, 22, 26, 0.9206276260504201) 100%)
+
+.embedOverlay > div
+  margin-top: emCalc(30px)
+  height: 80%
+
 .shareOverlay
   position: relative
   display: flex
   flex-direction: column
   align-items: center
   padding: emCalc(40px)
-  max-width: emCalc(450px)
+  max-width: emCalc(350px)
   width: 50%
   border-radius: emCalc(4px)
   background-color: $darkGrey4
 
 .shareButton
-  padding-right: emCalc(30px)
   font-size: emCalc(18px)
   line-height: emCalc(22px)
 
@@ -41,12 +47,12 @@
   justify-content: center
   align-items: flex-end
   width: 100%
+  gap: emCalc(30px)
 
 .button
   display: flex
   flex-direction: column
   align-items: center
-  padding: emCalc(30px)
   outline: 0
   border: none
   background: none
@@ -54,9 +60,12 @@
   text-transform: uppercase
   font-size: emCalc(12px)
   font-family: NotesEsa
+  cursor: pointer
+  gap: emCalc(10px)
 
   svg
-    padding-bottom: emCalc(10px)
+    width: 27px
+    height: 27px
     fill: $main
 
   &:hover
@@ -64,6 +73,11 @@
 
     svg
       fill: $textWhite
+
+@media screen and (max-width: 850px)
+  .shareOverlay
+    padding: 2em 1em
+    width: 60%
 
 @media screen and (max-width: 480px)
   .button

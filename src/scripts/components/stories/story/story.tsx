@@ -1,6 +1,8 @@
+/* eslint-disable camelcase */
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {YouTubePlayer} from 'youtube-player/dist/types';
 import {VideoJsPlayer} from 'video.js';
+import {useSelector} from 'react-redux';
 
 import DataViewer from '../../main/data-viewer/data-viewer';
 import {useStoryParams} from '../../../hooks/use-story-params';
@@ -17,6 +19,7 @@ import Share from '../../main/share/share';
 import SplashScreen from '../splash-screen/splash-screen';
 import LayerDescription from '../layer-description/layer-description';
 import TimeSlider from '../../layers/time-slider/time-slider';
+import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
 import {SlideType} from '../../../types/slide-type';
 import {GlobeProjection} from '../../../types/globe-projection';
@@ -34,9 +37,9 @@ const Story: FunctionComponent = () => {
   const {mode, slideIndex, currentStoryId, selectedStory, storyListItem} =
     storyParams;
   const storyMode = mode === StoryMode.Stories;
-
   const isSplashScreen =
     selectedStory?.slides[slideIndex].type === SlideType.Splashscreen;
+  const {story_header, time_slider} = useSelector(embedElementsSelector);
 
   // fetch story of active storyId
   useEffect(() => {
@@ -106,19 +109,21 @@ const Story: FunctionComponent = () => {
           markers={slide.markers}
           backgroundColor={'#000000'}
         />
-        <div className={styles.layerDetails}>
-          <TimeSlider noTimeClamp className={styles.storySlider} />
-          {slide.layerDescription && (
-            <LayerDescription layerDescription={slide.layerDescription} />
-          )}
-        </div>
+        {time_slider && (
+          <div className={styles.layerDetails}>
+            <TimeSlider noTimeClamp className={styles.storySlider} />
+            {slide.layerDescription && (
+              <LayerDescription layerDescription={slide.layerDescription} />
+            )}
+          </div>
+        )}
       </div>
     );
   };
 
   return (
     <div className={styles.story}>
-      {storyListItem && (
+      {storyListItem && story_header && (
         <Header
           backLink={`/${mode.toString()}`}
           backButtonId="backToStories"

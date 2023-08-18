@@ -1,0 +1,46 @@
+@require '../../../../variables.styl'
+
+.result
+  display: flex
+  flex-direction: column
+  width: 100%
+  gap: emCalc(24px)
+
+.resultItem
+  width: 100%
+
+.resultTitle
+  margin: 0 0 emCalc(8px)
+  font-weight: 700
+  font-size: emCalc(16px)
+  font-family: Arial
+
+.embedTextArea
+  box-sizing: border-box
+  padding: emCalc(16px)
+  width: 100%
+  height: emCalc(171px)
+  border-radius: 4px
+  background: $black
+  color: $textDefault
+  font-weight: 400
+  font-style: normal
+  font-size: emCalc(16px)
+  font-family: Arial
+  line-height: emCalc(22px)
+  resize: none
+
+.copyButton
+  flex-direction: row-reverse
+  align-self: flex-start
+  margin: emCalc(8px) emCalc(16px)
+  color: $main
+
+  > svg
+    fill: $main
+
+.copyButton:hover
+  color: $textWhite
+
+  > svg
+    fill: $textWhite

@@ -73,6 +73,7 @@ const TimeSlider: FunctionComponent<Props> = ({
   const clampedTime = clampToRange(time, combined.min, combined.max);
 
   // update app state
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSetGlobeTime = useCallback(
     debounce((newTime: number) => dispatch(setGlobeTime(newTime)), DELAY, {
       maxWait: DELAY
@@ -131,6 +132,8 @@ const TimeSlider: FunctionComponent<Props> = ({
           minTime={combined.min}
           maxTime={combined.max}
           step={playbackStep}
+          mainLayerId={mainId}
+          compareLayerId={compareId}
         />
       )}
       <div className={styles.container}>

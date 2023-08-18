@@ -58,6 +58,7 @@ export function parseUrl(): UrlHashState | null {
         projection,
         morphTime: 2
       },
+      layerLoadingState: {},
       time,
       spinning
     },
@@ -75,7 +76,7 @@ export function getParamString(
 ): string | null {
   const {view, projectionState, time, spinning} = globeState;
   const {lat, lng, altitude, zoom} = view;
-
+  // eslint-disable-next-line no-warning-comments
   // fixme: previously this returned null if any numeric value was NaN,
   //  is that actually an issue anywhere?
   return serialize({

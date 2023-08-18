@@ -12,12 +12,10 @@
   font-size: 1rem
   cursor: pointer
   fill: $textWhite
+  gap: emCalc(7px)
 
   svg
     fill: $textWhite
-
-  svg + .label
-    padding-left: emCalc(7px)
 
   &:hover
     color: $main
@@ -32,7 +30,7 @@
   svg
     fill: $textDefault
 
-@media screen and (max-width: 480px)
+@media screen and (max-width: 768px)
   .hideLabel
     span
       display: none
