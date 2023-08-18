@@ -78,6 +78,7 @@
         "contain"
       ],
       "videoId": "IxgaH7mzG-o",
+      "videoCaptions": "assets/ocean-atmosphere.vtt",
       "videoPoster": "assets/ocean_atmosphere.jpg",
       "videoSrc": [
         "assets/ocean_atmosphere-web.mp4"
@@ -179,6 +180,7 @@
         "contain"
       ],
       "videoId": "uPxXMA1heIY",
+      "videoCaptions": "assets/sst-interview.vtt",
       "videoPoster": "assets/sst-interview-wide.jpg",
       "videoSrc": [
         "assets/sst-interview-wide-web.mp4"
