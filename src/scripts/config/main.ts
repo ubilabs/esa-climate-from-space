@@ -144,6 +144,7 @@ export default {
     'figcaption',
     'li',
     'ul',
-    'ol'
+    'ol',
+    'strong'
   ]
 };
