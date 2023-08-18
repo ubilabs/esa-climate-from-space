@@ -47,6 +47,7 @@
         "contain"
       ],
       "videoId": "EE5EJpUkMkw",
+      "videoCaptions": "assets/sealevel.vtt",
       "videoPoster": "assets/sealevels.jpg",
       "videoSrc": [
         "assets/sealevels-web.mp4"
@@ -125,6 +126,7 @@
         "contain"
       ],
       "videoId": "K7JmzmDoo4w",
+      "videoCaptions": "assets/sealevel-interview.vtt",
       "videoPoster": "assets/sealevel-interview-wide.jpg",
       "videoSrc": [
         "assets/sealevel-interview-wide-web.mp4"
