@@ -78,6 +78,7 @@
         "contain"
       ],
       "videoId": "8wwQaK_SJtw",
+      "videoCaptions": "assets/landcover.vtt",
       "videoPoster": "assets/landcover-poster.jpg",
       "videoSrc": [
         "assets/landcover-web.mp4"
@@ -121,6 +122,7 @@
         "contain"
       ],
       "videoId": "LdA3Yy-Xjf4",
+      "videoCaptions": "assets/landcover-interview.vtt",
       "videoPoster": "assets/landcover-interview-wide.jpg",
       "videoSrc": [
         "assets/landcover-interview-wide-web.mp4"
