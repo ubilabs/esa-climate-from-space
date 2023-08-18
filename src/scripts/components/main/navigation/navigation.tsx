@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, {FunctionComponent, useState} from 'react';
 import {useSelector} from 'react-redux';
 
@@ -18,6 +19,7 @@ import {selectedTagsSelector} from '../../../selectors/story/selected-tags';
 import setWelcomeScreenAction from '../../../actions/set-welcome-screen';
 import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 import config from '../../../config/main';
+import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
 import styles from './navigation.module.styl';
 
@@ -28,44 +30,60 @@ const Navigation: FunctionComponent = () => {
   const selectedLanguage = useSelector(languageSelector);
   const savedLanguage = localStorage.getItem(config.localStorageLanguageKey);
   const selectedTags = useSelector(selectedTagsSelector);
+  const {stories_menu, layers_menu, share_button, app_menu} = useSelector(
+    embedElementsSelector
+  );
 
   return (
     <React.Fragment>
       <div className={styles.navigation}>
-        <Button
-          className={styles.button}
-          id="ui-stories"
-          label="stories"
-          link="/stories"
-          icon={StoryIcon}
-          hideLabelOnMobile
-        />
-        {selectedTags.length > 0 && (
-          <React.Fragment>
+        {stories_menu && (
+          <div className={styles.storiesContainer}>
             <Button
-              className={styles.tagsButton}
-              icon={FilterIcon}
-              onClick={() => setShowTags(!showTags)}
+              className={styles.button}
+              id="ui-stories"
+              label="stories"
+              link="/stories"
+              icon={StoryIcon}
+              hideLabelOnMobile
             />
-            <div className={styles.badge} />
-          </React.Fragment>
+            {selectedTags.length > 0 && (
+              <div className={styles.tagsContainer}>
+                <Button
+                  className={styles.tagsButton}
+                  icon={FilterIcon}
+                  onClick={() => setShowTags(!showTags)}
+                />
+                <div className={styles.badge} />
+                {selectedTags.length > 0 && showTags && (
+                  <SelectedTags selectedTags={selectedTags} />
+                )}
+              </div>
+            )}
+          </div>
         )}
-        <Button
-          className={styles.button}
-          id="ui-layers"
-          label="layers"
-          onClick={() => dispatch(showLayerSelectorAction(true))}
-          icon={LayersIcon}
-          hideLabelOnMobile
-        />
-        <Share />
-        <Button
-          className={styles.button}
-          id="ui-menu"
-          icon={MenuIcon}
-          onClick={() => setShowMenu(true)}
-          hideLabelOnMobile
-        />
+
+        {layers_menu && (
+          <Button
+            className={styles.button}
+            id="ui-layers"
+            label="layers"
+            onClick={() => dispatch(showLayerSelectorAction(true))}
+            icon={LayersIcon}
+            hideLabelOnMobile
+          />
+        )}
+        {share_button && <Share />}
+
+        {app_menu && (
+          <Button
+            className={styles.button}
+            id="ui-menu"
+            icon={MenuIcon}
+            onClick={() => setShowMenu(true)}
+            hideLabelOnMobile
+          />
+        )}
       </div>
 
       {!savedLanguage && (
@@ -83,9 +101,6 @@ const Navigation: FunctionComponent = () => {
             }}
           />
         </Overlay>
-      )}
-      {selectedTags.length > 0 && showTags && (
-        <SelectedTags selectedTags={selectedTags} />
       )}
     </React.Fragment>
   );

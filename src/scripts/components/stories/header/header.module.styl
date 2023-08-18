@@ -1,6 +1,7 @@
 @require '../../../../variables.styl'
 
 .header
+  position: relative
   display: flex
   flex-shrink: 0
   justify-content: space-between
@@ -21,19 +22,15 @@
   font-size: emCalc(18px)
 
 .title
-  flex-grow: 1
+  position: absolute
+  left: 50%
   margin-bottom: 0
   color: $textWhite
   text-align: center
   text-transform: uppercase
   white-space: nowrap
   font-size: emCalc(18px)
-
-@media screen and (max-width: 480px)
-  .title
-    flex-basis: 400px
-    overflow: hidden
-    text-overflow: ellipsis
+  transform: translateX(-50%)
 
 .rightContent
   display: flex
@@ -44,8 +41,11 @@
   width: 50%
   color: $textDefault
 
-  svg
-    padding-left: emCalc(15px)
+@media screen and (max-width: 480px)
+  .title
+    flex-basis: 400px
+    overflow: hidden
+    text-overflow: ellipsis
 
 @media screen and (max-width: 480px)
   .logo

@@ -10,6 +10,7 @@ import cx from 'classnames';
 
 import {
   CameraView,
+  LayerLoadingState,
   LayerProps,
   MarkerProps,
   RenderMode,
@@ -53,6 +54,10 @@ interface Props {
   onChange: (view: CameraView) => void;
   onMoveStart: () => void;
   onMoveEnd: (view: CameraView) => void;
+  onLayerLoadingStateChange: (
+    layerId: string,
+    state: LayerLoadingState
+  ) => void;
 }
 
 const EMPTY_FUNCTION = () => {};
@@ -76,6 +81,8 @@ const Globe: FunctionComponent<Props> = props => {
 
   useProjectionSwitch(globe, projectionState.projection);
   useMultiGlobeSynchronization(globe, props);
+
+  useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
   // fixme: add auto-rotate functionality
 
@@ -186,8 +193,11 @@ function useInitialBasemapTilesLoaded(globe: WebGlGlobe | null) {
   const handleLoadingStateChange = useCallback(
     (ev: LayerLoadingStateChangedEvent) => {
       const {layer, state} = ev.detail;
-      if (layer.id === 'basemap' && state === 'ready') {
-        setInitialTilesLoaded(true);
+
+      if (layer.id === 'basemap') {
+        if (state === 'ready' || state === 'idle') {
+          setInitialTilesLoaded(true);
+        }
       }
     },
     []
@@ -214,6 +224,9 @@ function useInitialBasemapTilesLoaded(globe: WebGlGlobe | null) {
   return initalTilesLoaded;
 }
 
+/**
+ * Switch the projection mode used by the globe.
+ */
 function useProjectionSwitch(
   globe: WebGlGlobe | null,
   projection: GlobeProjection
@@ -258,8 +271,6 @@ function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
 
 /**
  * Call the onChange callback from the props from an active globe.
- * @param globe
- * @param props
  */
 function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
   const {active, onMoveStart, onChange, onMoveEnd} = props;
@@ -305,6 +316,31 @@ function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
       globe.removeEventListener('cameraViewChanged', handleViewChanged);
     };
   }, [globe, active, handleViewChanged]);
+}
+
+/**
+ * Dispatch layerLoadingStates from the globe to the parent component.
+ */
+function useLayerLoadingStateUpdater(
+  globe: WebGlGlobe | null,
+  callback: (layerId: string, state: LayerLoadingState) => void
+) {
+  const handler = useCallback(
+    (ev: LayerLoadingStateChangedEvent) => {
+      callback(ev.detail.layer.id, ev.detail.state);
+    },
+    [callback]
+  );
+
+  useEffect(() => {
+    if (!globe) {
+      return EMPTY_FUNCTION;
+    }
+
+    globe.addEventListener('layerLoadingStateChanged', handler);
+
+    return () => globe.removeEventListener('layerLoadingStateChanged', handler);
+  }, [globe, handler]);
 }
 
 // ----

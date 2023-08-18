@@ -1,11 +1,13 @@
 import React, {FunctionComponent} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import {useIntl, FormattedMessage} from 'react-intl';
+import {useSelector} from 'react-redux';
 
 import StoryList from '../story-list/story-list';
 import Header from '../header/header';
 import {PlayIcon} from '../../main/icons/play-icon';
 import Button from '../../main/button/button';
+import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
 import {StoryMode} from '../../../types/story-mode';
 
@@ -17,6 +19,7 @@ const ShowcaseSelector: FunctionComponent = () => {
   const intl = useIntl();
   const storyIds = params.storyIds?.split('&');
   const selectedIds = storyIds || [];
+  const {header} = useSelector(embedElementsSelector);
 
   const onSelectStory = (id: string) => {
     const isInList = selectedIds.includes(id);
@@ -29,21 +32,23 @@ const ShowcaseSelector: FunctionComponent = () => {
 
   return (
     <div className={styles.showcaseSelector}>
-      <Header
-        backLink="/"
-        backButtonId="backToDataMode"
-        title={intl.formatMessage({id: 'showcase'})}>
-        <FormattedMessage
-          id="storiesSelected"
-          values={{numberSelected: selectedIds.length}}
-        />
-        <Button
-          disabled={isDisabled}
-          label={'play'}
-          link={`/showcase/${selectedIds.join('&')}/0/0`}
-          icon={PlayIcon}
-        />
-      </Header>
+      {header && (
+        <Header
+          backLink="/"
+          backButtonId="backToDataMode"
+          title={intl.formatMessage({id: 'showcase'})}>
+          <FormattedMessage
+            id="storiesSelected"
+            values={{numberSelected: selectedIds.length}}
+          />
+          <Button
+            disabled={isDisabled}
+            label={'play'}
+            link={`/showcase/${selectedIds.join('&')}/0/0`}
+            icon={PlayIcon}
+          />
+        </Header>
+      )}
       <StoryList
         mode={StoryMode.Showcase}
         onSelectStory={id => onSelectStory(id)}

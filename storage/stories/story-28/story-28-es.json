@@ -77,7 +77,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "8wwQaK_SJtw"
+      "videoId": "8wwQaK_SJtw",
+      "videoPoster": "assets/landcover-poster.jpg",
+      "videoSrc": [
+        "assets/landcover-web.mp4"
+      ]
     },
     {
       "type": "image",
@@ -116,7 +120,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "LdA3Yy-Xjf4"
+      "videoId": "LdA3Yy-Xjf4",
+      "videoPoster": "assets/landcover-interview-wide.jpg",
+      "videoSrc": [
+        "assets/landcover-interview-wide-web.mp4"
+      ]
     }
   ]
 }

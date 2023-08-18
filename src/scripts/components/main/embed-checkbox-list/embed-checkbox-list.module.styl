@@ -1,0 +1,57 @@
+@require '../../../../variables.styl'
+
+.checkboxListContainer, .checkBoxList
+  display: flex
+  flex-direction: column
+  gap: emCalc(8px)
+
+.checkboxListContainer.app
+  grid-area: 1 / 1 / 4 / 2
+
+.checkboxListContainer.disabledEmbed
+  opacity: 0.5
+
+.checkboxListContainer.disabledEmbed .checkboxListItem input[type='checkbox']
+  display: grid
+  margin-left: 0
+  min-width: remCalc(20px)
+  min-height: remCalc(20px)
+  border: 2.8px solid $textDisabled
+  border-radius: 2px
+  background: transparent
+  pointer-events: none
+  appearance: none
+  place-content: center
+
+.checkboxListContainer.disabledEmbed .checkboxListItem input[type='checkbox']:before
+  width: 8px
+  height: 2px
+  box-shadow: inset 10px 16px $textDisabled
+  content: ''
+  transition: 120ms transform ease-in-out
+  transform: scale(1)
+
+.checkBoxList
+  gap: emCalc(16px)
+
+.listTitle
+  margin: 0
+  font-weight: 700
+  font-style: normal
+  font-size: emCalc(16px)
+  font-family: Arial
+  line-height: emCalc(22px)
+
+.checkboxListItem
+  display: flex
+  align-items: center
+  gap: emCalc(8px)
+
+  input[type='checkbox']
+    margin-left: 0
+    min-width: remCalc(20px)
+    min-height: remCalc(20px)
+    accent-color: $textWhite
+
+  label
+    color: $textDefault

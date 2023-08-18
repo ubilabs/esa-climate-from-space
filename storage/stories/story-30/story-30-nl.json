@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# Kusten bedreigd\r\n\r\nOveral ter wereld stijgt de gemiddelde zeespiegel, wat een bedreiging vormt voor kustgemeenschappen overal ter wereld en voor het voortbestaan van laaggelegen naties zoals Kiribati en de Maldiven. Het zeeniveau fungeert als een index van klimaatverandering omdat het afhankelijk is van verschillende componenten van het klimaatsysteem, waaronder de temperatuur van de oceanen en het gedrag van gletsjers en ijskappen.",
       "shortText": "# Kusten bedreigd\r\n\r\nOveral ter wereld stijgt de gemiddelde zeespiegel, wat een bedreiging vormt voor kustgemeenschappen overal ter wereld en voor het voortbestaan van laaggelegen naties zoals Kiribati en de Maldiven. Het zeeniveau fungeert als een index van klimaatverandering omdat het afhankelijk is van verschillende componenten van het klimaatsysteem, waaronder de temperatuur van de oceanen en het gedrag van gletsjers en ijskappen.",
-      "images": [
-        "assets/sealevel.jpg"
-      ]
+      "images": ["assets/sealevel.jpg"]
     },
     {
       "type": "image",
@@ -27,43 +25,23 @@
         "Stroomuitval in New York na orkaan Sandy, in oktober 2012. De storm viel samen met springtij, wat resulteerde in een stormvloed van bijna vijf meter boven het gemiddelde waterpeil. Verkeerstunnels, metro's en elektrische substations in Manhattan stonden onder water, en bijna 2 miljoen mensen in New York en New Jersey zaten zonder stroom. (Iwan Baan/Getty Images)",
         "De Stormvloedkering Oosterschelde (Oosterscheldekering) is onderdeel van het omvangrijke project Deltawerken, dat de Zuid-Nederlandse kust tegen de zee beschermt (Rijkswaterstaat-Rens Jacobs)"
       ],
-      "imageFits": [
-        "cover",
-        "cover",
-        "cover",
-        "cover",
-        "cover"
-      ]
+      "imageFits": ["cover", "cover", "cover", "cover", "cover"]
     },
     {
       "type": "video",
       "text": "## Smeltend IJs\r\n\r\nDoor de opwarming van de aarde smelten [polaire ijskappen en gletsjers](verhalen/story-21/6), waardoor er meer water in de oceanen komt. [Opwarmend water](verhalen/story-16/7) zet ook uit, waardoor de hoogte van het waterpeil stijgt. De gemiddelde zeespiegel is in de vorige eeuw met ongeveer 15 centimeter gestegen en stijgt momenteel meer dan twee keer zo snel - met 4,8 cm per decennium - de snelste stijging in 3000 jaar. Het tempo neemt toe en de verwachting is dat de gemiddelde zeespiegel tegen 2100 met 60–200 cm gestegen zal zijn - voldoende om grote delen van laaggelegen landen zoals Kiribati te overspoelen.\r\n\r\nTijdens stormen en springtij lopen delen van de eilanden nu al regelmatig onder water en de mensen zijn eraan gewend om af en toe met natte voeten te leven. De combinatie van hoge getijden, stijging van de zeespiegel, stormvloeden en golven leidt tot ernstige kusterosie. Hierdoor komt de toch al krappe leefruimte van de eilanden onder druk te staan. Sommige onbewoonde eilanden zijn al verloren gegaan, en elders zijn verschillende dorpen al landinwaarts verplaatst.\r\n\r\n## Koraalcrisis\r\n\r\nMaar dat is niet de enige zorg voor de bevolking van Kiribati: het stijgende koolstofdioxidegehalte in de atmosfeer leidt tot verzuring van de oceanen, wat samen met (afval)vervuiling een bedreiging vormt voor het koraalrif en de visstanden. Naarmate de zeespiegel stijgt, verontreinigt zoutwater zoetwater acquifers en beschadigt zo indirect ook gewassen, waardoor de beschikbare voedsel- en watervoorraden onder grote druk komen te staan.\r\n\r\nKusterosie wordt op korte termijn tegengegaan door zeeweringen van zandzakken, autobanden en olievaten, en het herstellen van mangrovebossen versterkt de natuurlijke kustverdediging. Op langere termijn zou het mogelijk kunnen zijn het landoppervlak op te hogen met zand dat uit de lagunes wordt gebaggerd. Het is echter onduidelijk of het levende koraal waarop de atollen steunen, snel genoeg kan groeien om de stijgende zeespiegel bij te houden. De riffen zijn momenteel verre van gezond en de groeisnelheid neemt al af door de druk van verhoogde watertemperaturen, verzuring van de oceaan, verbleking van het koraal en vervuiling.",
       "shortText": "# Smeltend IJs\r\n\r\nOorzaken van de stijgende zeespiegel:\r\n\r\n- Ijskappen, smeltende gletsjers, thermische uitzetting van de oceanen\r\n- 15 cm zeespiegelstijging vorige eeuw\r\n- stijgt nu twee keer zo snel → 4,8 cm per decennium\r\n- snelste stijging sinds 3000 jaar → 60-200 cm hoger tegen 2100\r\n- versterkt tijdens stormen en hoge getijden\r\n- verontreiniging van zoetwater aquifers met zout water\r\n\r\nZeeweringen in Kiribati:\r\n\r\n- korte termijn - zandzakken, olievaten\r\n- langere termijn - dorpen landinwaarts verplaatsen, mangroves planten\r\n- landaanwinning met zand dat uit de lagune wordt gebaggerd?\r\n\r\nKoraalriffen en visbestanden ook bedreigd door hogere watertemperatuur, verbleken van koraal, verzuring van de oceaan.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "videoId": "EE5EJpUkMkw",
       "videoCaptions": "assets/sealevel.vtt",
       "videoPoster": "assets/sealevels.jpg",
-      "videoSrc": [
-        "assets/sealevels-web.mp4"
-      ]
+      "videoSrc": ["assets/sealevels-web.mp4"]
     },
     {
       "type": "globe",
       "text": "## Hoog en Laag Water\r\n\r\nMet behulp van een radar kunnen aardobservatiesatellieten de hoogte van het zeeoppervlak nauwkeurig meten, zodat we kunnen onderzoeken hoe dit varieert over de tijd en over de hele wereld. In sommige gebieden kan de zeespiegelstijging vijf keer zo hoog zijn als het wereldgemiddelde. Dit komt voornamelijk door variaties in de hoeveelheid opgeslagen warmte in het water, wat kan leiden tot ongelijke thermische uitzetting. Dit, in combinatie met andere factoren, zorgt ervoor dat de stijging van de zeespiegel in tropische gebieden versterkt wordt, bijvoorbeeld in het centrale deel van de Stille Oceaan. Verschillen in zoutgehalte en plaatselijke zwaartekracht spelen ook een rol.\r\n\r\nAbsolute metingen van het zeeniveau laten de trends over jaren en decennia zien. Maandelijkse veranderingen komen helder aan het licht als we de anomalieën van het zeeniveau bekijken, door het verschil tussen het maandelijkse niveau en een referentieniveau te berekenen. Op de interactieve wereldbol is dit referentieniveau de gemiddelde hoogte van het zeeoppervlak op elk punt over de periode 1993 tot 2009. Doorloop de tijdlijn om te zien waar het zeeniveau ongewoon hoog of laag is in vergelijking met het gemiddelde zeeniveau voor een bepaalde maand.  \r\n\r\nDe meest extreme schommelingen van het zeeniveau doen zich meestal voor rond sterke oceaanstromen, zoals de Golfstroom in het noordelijke deel van de Atlantische Oceaan en de Kuroshio-stroom in het noordelijke deel van de Stille Oceaan, waar de beweging van de stroom op de draaiende aarde een helling van het zeeoppervlak veroorzaakt. Deze stromingen zijn ook duidelijk zichtbaar in de gegevens over de temperatuur van het zeeoppervlak, die op de andere wereldbol te zien zijn.\r\n\r\nEr is een seizoensgebonden cyclus die het gevolg is van thermische uitzetting: de zeespiegel is hoger in de zomer wanneer de temperatuur van het zeeoppervlak stijgt. Het zeeniveau is dus een goede manier om de [beweging van warmte rond de oceanen](stories/story-16/0) te volgen, evenals de beweging van het water zelf. In tegenstelling tot metingen van de temperatuur van het zeeoppervlak, kun je met metingen van het zeeniveau ook veranderingen in de diepere lagen van de oceanen observeren.\r\n\r\nDe globes tonen ook variatie tussen jaren, zoals veranderingen veroorzaakt door de opwarming van het oppervlak van de Stille Oceaan tijdens [El Niño-gebeurtenissen](stories/story-16/6). Kijk naar de El Niño-jaren 1997, 2003, 2010 en 2015 om te zien hoeveel de zeespiegel rond Kiribati in het centrale deel van de Stille Oceaan stijgt.",
       "shortText": "# Hoog en Laag Water\r\n\r\nSatellieten gebruiken radars om de hoogte van het zeeoppervlak nauwkeurig in kaart te brengen:\r\n\r\n- in sommige gebieden stijgt de zeespiegel 5x het wereldgemiddelde\r\n- dit is meestal te wijten aan ongelijke thermische uitzetting\r\n- ook verschillen in zoutgehalte en plaatselijke zwaartekracht kunnen bijdragen\r\n- dit effect wordt versterkt in tropische gebieden zoals het centraal Pacifisch gebied\r\n\r\nDe anomalie van het zeeniveau geeft aan waar het niveau ongewoon hoog of laag is in vergelijking met het gemiddelde van het zeeniveau voor een bepaalde maand:\r\n\r\n- meest extreme variaties rond sterke oceaanstromingen, bv. Golfstroom, Kuroshio-stroming\r\n- seizoensgebonden cyclus als gevolg van thermische uitzetting - zeespiegel hoger in de zomer\r\n- klimaatcycli van jaar tot jaar, bv. El Niño (1997, 2003, 2010, 2015)",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "flyTo": {
         "position": {
           "longitude": 174.75,
@@ -106,31 +84,17 @@
         "# Zeespiegelstijging gemeten door satellieten\r\n\r\nSinds het begin van de jaren negentig hebben satelliethoogtemeters onze kennis over de stijging van de zeespiegel radicaal veranderd. Het wereldgemiddelde van de zeespiegel is de afgelopen 25 jaar niet alleen gestegen - met ongeveer 3 cm per decennium - maar de snelheid waarmee dit gebeurt, neemt ook nog eens toe. De ESA-satellieten ERS en Envisat waren uitgerust met radarhoogtemeters, net als CryoSat en Copernicus Sentinel-3. Copernicus Sentinel-6 zorgt voor continuïteit met de Amerikaans-Franse Jason- en Topex-Poseidon-satellieten. (ESA)",
         "# Regionaal zeeniveau trend 1993-2015\r\n\r\nEen kaart met regionale trends van het zeeniveau, afkomstig van meer dan 20 jaar satellietwaarnemingen, toont waar de gemiddelde zeespiegel het meest stijgt (rood), daalt (blauw), of ongewijzigd blijft (grijs) (ESA-CCI)"
       ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "cover",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["cover", "contain", "cover", "contain", "contain"]
     },
     {
       "type": "video",
       "text": "## Het Zeespiegel Budget\r\n\r\nOm de zeespiegelstijging nauwkeurig te meten, de oorzaken ervan te bepalen en de mogelijke gevolgen te analyseren, hebben we consistente gegevens nodig van waarnemingen over de hele wereld. Om de afzonderlijke factoren die bijdragen aan de zeespiegelstijging te kunnen identificeren, moeten we water in al zijn vormen - vast, vloeibaar en gas - volgen terwijl het zich over de wereld verplaatst. ESA's [Climate Change Initiative](stories/story-32/3) heeft satellietgegevens onderzocht die sinds de jaren negentig zijn verzameld en betrekking hebben op de zeespiegel, de temperatuur van het zeeoppervlak en de dikte van de ijskappen op de polen, alsmede informatie over de gletsjers die teruggaat tot de jaren zestig.\r\n\r\nGeschat wordt dat in het decennium 2003-2013 36% van de zeespiegelstijging het gevolg was van smeltwater van de [Groenlandse en Antarctische ijskappen](verhalen/story-15/5); 30% was het gevolg van [thermische expansie](verhalen/story-16/0); 20% van [smeltende gletsjers](verhalen/story-21/6); en 10% was het gevolg van [grondwater onttrokken aan waterhoudende grondlagen](verhalen/story-21/5) voor huishoudelijk, industrieel en landbouwkundig gebruik dat uiteindelijk in de oceanen werd geloosd. Hoewel al deze bijdragen een opwaartse trend vertonen, variëren ze in de tijd en is de som van de data niet altijd gelijk aan de waargenomen totale zeespiegelstijging. Het dichten van dit gat in onze berekeningen staat bekend als het dichten van het zeespiegelbudget, en is een belangrijk aandachtspunt voor klimaatwetenschappers.\r\n\r\nDe integratie van nieuwe gegevens van ESA-satellieten zoals CryoSat en Copernicus Sentinels-3 en -6 zal onze kennis van deze belangrijke klimaatvariabele verbeteren. Consistente en continue informatie uit verschillende bronnen zal ons helpen de verandering van de zeespiegel en de gevolgen daarvan beter te kunnen begrijpen en de aanpassingsmogelijkheden voor de kustbevolking van de wereld, waaronder de inwoners van Kiribati, te evalueren.",
       "shortText": "# Het Zeespiegel Budget\r\n\r\nESA's Climate Change Initiative gebruikt satellietgegevens om de individuele bijdrage aan de zeespiegelstijging te onderzoeken:\r\n\r\n- zeespiegel en ijskapdikte sinds de jaren 1990\r\n- oceaantemperatuur sinds 1980\r\n- gletsjergegevens sinds de jaren 1960\r\n\r\nIn het decennium 2003-2013 was de zeespiegelstijging:\r\n\r\n- 36% door smeltwater van Groenlandse en Antarctische ijskappen\r\n- 30% door thermische uitzetting\r\n- 20% door smeltende gletsjers\r\n- 10% als gevolg van het onttrekken van grondwater\r\n\r\nContinue informatie uit satelliet- en andere bronnen zal ons helpen de veranderingen van de zeespiegel beter te begrijpen en de aanpassingsmogelijkheden voor de inwoners van Kiribati en de andere kustbevolkingen van de wereld te evalueren.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "videoId": "K7JmzmDoo4w",
       "videoCaptions": "assets/sealevel-interview.vtt",
       "videoPoster": "assets/sealevel-interview-wide.jpg",
-      "videoSrc": [
-        "assets/sealevel-interview-wide-web.mp4"
-      ]
+      "videoSrc": ["assets/sealevel-interview-wide-web.mp4"]
     }
   ]
 }
