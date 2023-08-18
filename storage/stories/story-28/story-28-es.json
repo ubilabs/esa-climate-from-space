@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# Biodiversidad y pérdida de hábitat\r\n\r\nLos ecosistemas que componen la biosfera de la Tierra albergan una enorme variedad de vida y están experimentando rápidos cambios. Estos cambios tienen un impacto en los ciclos naturales que controlan el clima de la Tierra, así como efectos más inmediatos en las actividades humanas.",
       "shortText": "# Biodiversidad y pérdida de hábitat\r\n\r\nLos ecosistemas que componen la biosfera de la Tierra albergan una enorme variedad de vida y están experimentando rápidos cambios. Estos cambios tienen un impacto en los ciclos naturales que controlan el clima de la Tierra, así como efectos más inmediatos en las actividades humanas.",
-      "images": [
-        "assets/landcover.jpg"
-      ]
+      "images": ["assets/landcover.jpg"]
     },
     {
       "type": "image",
@@ -27,25 +25,13 @@
         "Incendio forestal en el oeste de Groenlandia, agosto de 2017.\r\n(Datos de Copernicus Sentinel, 2017, procesados por Pierre Markuse)",
         "Biomasa sobre el suelo de la Iniciativa sobre el Cambio Climático de la ESA (ESA-CCI)"
       ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "cover",
-        "cover",
-        "contain"
-      ]
+      "imageFits": ["cover", "contain", "cover", "cover", "contain"]
     },
     {
       "type": "globe",
       "text": "## La cubierta terrestre de la Tierra\r\n\r\nLas regiones que tienen un clima similar y albergan comunidades de plantas y animales similares se denominan biomas. A menudo se caracterizan por un tipo de cubierta terrestre dominante, como se muestra en el globo interactivo. Gira el globo terráqueo y analiza cómo ha cambiado la extensión de algunos tipos de cubierta terrestre en los últimos años. Podrías empezar explorando la pérdida de bosque tropical en Mato Grosso, Brasil, entre 1996 y 2015.\r\n\r\nLa mayoría de los animales y plantas han desarrollado características relacionadas con el clima de su hábitat y con los demás organismos del ecosistema del que forman parte. Sin embargo, la flora y la fauna de una región también afectan al clima: por ejemplo, las plantas de la selva amazónica [ciclan suficiente agua del suelo](stories/story-21/2) a la atmósfera, que crean su propio clima.\r\n\r\nEl clima dentro de un bioma también puede variar: la cara norte de una colina puede ser más fría o recibir menos lluvias que la cara sur, un lago puede enfriar la temperatura de la tierra adyacente y proporcionarle humedad. Pequeñas zonas con su propio microclima pueden albergar especies únicas incapaces de sobrevivir en lugares situados a sólo cien metros de distancia. Con el calentamiento global, los incendios forestales, la deforestación y otras actividades humanas, incluso los hábitats más grandes están cambiando muy rápidamente y se están fragmentando.\r\n\r\n![Clave del mapa de cobertura del suelo](assets/landcover-key.png)\r\n_Clave del tipo de cobertura del suelo_\r\n\r\nEl globo de Land Cover muestra el tipo de uso del suelo dominante en áreas de 300 metros de ancho. Los científicos que trabajan con la Oficina del Clima de la ESA están utilizando los datos de los satélites Copernicus Sentinel para crear nuevos mapas que muestren la cobertura del suelo en áreas de sólo 10-30 m de lado, lo que nos ayudará a controlar cómo están cambiando los hábitats con más detalle.",
       "shortText": "## La cubierta terrestre de la Tierra\r\n\r\nGira el globo para ver cómo han cambiado algunos tipos de cobertura del suelo en los últimos años - por ejemplo, la pérdida de bosque tropical en Mato Grosso, Brasil, entre 1996 y 2015.\r\n\r\n- los animales y las plantas desarrollan características relacionadas con el clima de su hábitat\r\n- pero también afectan al clima de su región\r\n- las plantas de la selva amazónica ciclan suficiente agua del suelo a la atmósfera como para crear su propio clima\r\n- la topografía y las masas de agua también crean microclimas\r\n\r\nCon el calentamiento global, los incendios forestales, la deforestación y otras actividades humanas, incluso los hábitats más grandes están cambiando muy rápidamente y se están fragmentando.\r\n\r\nMapa de la cubierta terrestre](assets/landcover-key.png)\r\nTipos de cobertura del suelo de la CCI de la ESA",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "flyTo": {
         "position": {
           "longitude": -8.23,
@@ -70,18 +56,11 @@
       "type": "video",
       "text": "## Responder al cambio\r\n\r\nCuando un hábitat cambia, los animales y las plantas pueden descubrir que sus adaptaciones no son útiles -o incluso les perjudican activamente- en el nuevo entorno y verse obligados a trasladarse a otro lugar para sobrevivir. Las palomas, los zorros y, por supuesto, los seres humanos son algunas de las especies que se han adaptado para sobrevivir en las ciudades. Pero poblaciones individuales de otras especies más especializadas, o que se han visto obligadas a desplazarse a zonas donde se enfrentan a una mayor competencia, se han extinguido como consecuencia del aumento de la urbanización o de la extensión de la agricultura a zonas que antes eran salvajes.\r\n\r\nPor el contrario, el cambio climático está aumentando el área de distribución de algunas especies, permitiéndoles prosperar en lugares que antes eran inhóspitos para ellas, o cambiando sus hábitats de forma que permiten el auge de la población. Esto no siempre es una buena noticia para todos. Por ejemplo, varios años de sequía e inviernos suaves en la década de 2000 permitieron al escarabajo del pino de montaña ampliar su área de distribución desde el oeste de Norteamérica hacia el este, a través de las Montañas Rocosas, lo que provocó grandes daños en bosques comerciales y naturales que antes estaban libres de esta plaga.\r\n\r\n## Áreas protegidas\r\n\r\nUn ecosistema con un alto nivel de biodiversidad probablemente sea más resistente y pueda sobrevivir a los cambios repentinos. Pero si todos los animales de una red alimentaria dependen en última instancia de un solo tipo de planta, todo el ecosistema puede colapsar si esa planta se ve afectada por una enfermedad o por un clima extremo.\r\n\r\nLos parques nacionales y otras áreas de conservación protegen una serie de hábitats de un mayor desarrollo o explotación, mientras que, en algunos de los mejores casos, siguen manteniendo a la población local.  Cuando los hábitats se fragmentan, por ejemplo debido a la deforestación o a la construcción de presas en los ríos, los corredores de vida silvestre pueden proporcionar una ruta segura entre las áreas para las especies de mayor alcance o de movimiento más lento, como las plantas.",
       "shortText": "## Responder al cambio\r\n\r\nLos cambios de hábitat, incluidos los cambios climáticos, pueden limitar el área de distribución de algunas especies o ampliarla para otras.\r\n\r\n- Varios años de sequía e inviernos suaves en la década de 2000 en el oeste de Norteamérica\r\n- permitieron al escarabajo del pino de montaña extenderse hacia el este a través de las Montañas Rocosas\r\n- lo que provocó grandes daños en los bosques que antes estaban libres de esta plaga.\r\n\r\nUn ecosistema con un alto nivel de biodiversidad es probablemente más resistente.\r\n\r\nLos parques nacionales y otras áreas de conservación protegen una serie de hábitats de un mayor desarrollo o explotación mientras que, en los mejores casos, siguen apoyando a la población local.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "videoId": "8wwQaK_SJtw",
+      "videoCaptions": "assets/landcover.vtt",
       "videoPoster": "assets/landcover-poster.jpg",
-      "videoSrc": [
-        "assets/landcover-web.mp4"
-      ]
+      "videoSrc": ["assets/landcover-web.mp4"]
     },
     {
       "type": "image",
@@ -101,30 +80,17 @@
         "Arrecife de coral cerca de la isla de Enderbury, en la zona protegida de Phoenix Isands, un lugar declarado Patrimonio de la Humanidad por la UNESCO en el Pacífico Sur (Dr. Randi Rotjan, New England Aquarium)",
         "El humo oscurece casi toda la costa oeste de Estados Unidos mientras arden casi 100 incendios forestales durante una ola de calor en septiembre de 2020\r\n(Datos de Copernicus Sentinel, 2020, procesados por la ESA)"
       ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "cover",
-        "cover",
-        "contain"
-      ]
+      "imageFits": ["contain", "contain", "cover", "cover", "contain"]
     },
     {
       "type": "video",
       "text": "## Siguiendo el rastro al cambio de hábitat\r\n\r\nLas variables climáticas esenciales (VCE) describen los aspectos clave del clima de la Tierra y las características que tienen una gran influencia en él. Entender el clima nos permite comprender uno de los factores que impulsan el cambio de los ecosistemas y, por tanto, cómo podríamos preservar los biomas vulnerables y la biodiversidad. La cobertura del suelo y la biomasa están directamente relacionadas con la población de un hábitat, y ambas son VCE que pueden vigilarse desde el espacio mediante satélites.\r\n\r\nOtros VCE también determinan si un determinado hábitat puede prosperar. En la tierra, son la temperatura de la superficie terrestre y la humedad del suelo. [La temperatura de la superficie del mar y el color del océano](stories/story-16/4) son medidas útiles para vigilar los océanos. La Iniciativa sobre el Cambio Climático de la ESA ha utilizado las observaciones por satélite para producir registros de VCE que cubren todo el mundo y se remontan a más de cuarenta años. Disponer de un registro fiable de estos factores, y de una comprensión precisa de cómo están cambiando actualmente, nos ayuda a tomar decisiones responsables, teniendo en cuenta el impacto que tendrán en el planeta -y en todos sus habitantes- en el futuro.",
       "shortText": "## Trazar el cambio de hábitat\r\n\r\nEntender el clima nos da una idea de uno de los motores del cambio de los ecosistemas.\r\n\r\nLa cubierta vegetal y la biomasa son variables climáticas esenciales (VCE) directamente relacionadas con la población de un hábitat.\r\n\r\nOtras VCE relevantes en la tierra son la temperatura de la superficie terrestre y la humedad del suelo.\r\n\r\nLa temperatura de la superficie del mar y el color del océano son medidas útiles para el seguimiento de los océanos.\r\n\r\nLa Iniciativa sobre el Cambio Climático de la ESA ha utilizado las observaciones por satélite para producir registros de VCE que cubren todo el mundo y se remontan a más de cuarenta años.\r\n\r\nDisponer de un registro fiable de estos factores, y de cómo están cambiando, nos ayuda a tomar decisiones responsables, teniendo en cuenta el impacto que tendrán en el planeta -y en todos sus habitantes- en el futuro.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "videoId": "LdA3Yy-Xjf4",
+      "videoCaptions": "assets/landcover-interview.vtt",
       "videoPoster": "assets/landcover-interview-wide.jpg",
-      "videoSrc": [
-        "assets/landcover-interview-wide-web.mp4"
-      ]
+      "videoSrc": ["assets/landcover-interview-wide-web.mp4"]
     }
   ]
 }
