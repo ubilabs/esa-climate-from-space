@@ -1,13 +1,13 @@
 {
   "name": "esa-climate-from-space",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "dist-src-electron/main.js",
   "scripts": {
     "start": "vite --port 8080",
     "clean": "rm -rf ./dist",
     "build": "npm run clean && tsc && vite build && npm run copy:assets",
-    "copy:assets": "cp assets/images/favicon.ico dist/ && mkdir dist/assets && cp assets/images/* dist/assets/",
+    "copy:assets": "cp assets/images/favicon.ico dist/ && cp assets/images/share.png dist/",
     "test": "npm run stylint && npm run eslint && npm run license-check",
     "eslint": "eslint ./src --ext .ts,.tsx,.js",
     "stylint": "stylint",
@@ -47,7 +47,7 @@
   "dependencies": {
     "@datapunt/matomo-tracker-react": "^0.5.1",
     "@reduxjs/toolkit": "^1.9.0",
-    "@ubilabs/esa-webgl-globe": "^1.0.0",
+    "@ubilabs/esa-webgl-globe": "^1.0.14",
     "classnames": "^2.2.6",
     "cross-zip": "^4.0.0",
     "electron-is-dev": "^2.0.0",

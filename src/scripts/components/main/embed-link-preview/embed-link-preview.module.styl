@@ -1,0 +1,30 @@
+
+@require '../../../../variables.styl'
+
+.embedLinkPreview
+  position: relative
+  overflow-y: hidden
+  padding-right: emCalc(10px)
+  height: emCalc(44px)
+  border: 1px solid $textDefault
+  border-radius: 4px
+  background: $black
+
+.embedLinkPreview:after
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  width: 50px
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), $darkGrey1 85%)
+  content: ''
+  pointer-events: none
+
+.previewContent
+  display: flex
+  align-items: self-end
+  overflow-x: scroll
+  padding: 0 emCalc(40px) 0 emCalc(16px)
+  height: 100%
+  color: $textDefault
+  white-space: nowrap

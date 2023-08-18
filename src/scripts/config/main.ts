@@ -1,6 +1,9 @@
-import {GlobeState} from '../reducers/globe/index';
-import {GlobeProjection} from '../types/globe-projection';
 import {RenderMode} from '@ubilabs/esa-webgl-globe';
+
+import {GlobeState} from '../reducers/globe/index';
+import {UiEmbedElement} from '../types/embed-elements';
+
+import {GlobeProjection} from '../types/globe-projection';
 
 const globeState: GlobeState = {
   time: Date.now(),
@@ -15,8 +18,33 @@ const globeState: GlobeState = {
     altitude: 23840000,
     zoom: 0
   },
-  spinning: true
+  spinning: true,
+  layerLoadingState: {}
 };
+
+export const uiEmbedElements: UiEmbedElement[] = [
+  {
+    title: 'app',
+    elements: [
+      'logo',
+      'stories_menu',
+      'layers_menu',
+      'share_button',
+      'app_menu',
+      'globe_navigation',
+      'markers'
+    ]
+  },
+  {title: 'layers', elements: ['time_slider', 'legend']},
+  {
+    title: 'stories',
+    elements: ['header', 'back_link', 'filter_tags']
+  },
+  {
+    title: 'story',
+    elements: ['story_header', 'story_back_link']
+  }
+];
 
 // @ts-ignore - injected via vite
 const version = INFO_VERSION;
@@ -90,8 +118,7 @@ export default {
     twitter:
       'http://twitter.com/intent/tweet?text=ESA%20Climate%20From%20Space&url={currentUrl}'
   },
-  planeratyVisionsLogo: 'assets/images/planetary-visions.png',
-  esaLogo: 'assets/images/esa-logo.png',
+
   ubilabsWebsite: 'https://ubilabs.com',
   planetaryVisionsWebsite: 'http://planetaryvisions.com/',
   githubRepo: 'https://github.com/ubilabs/esa-climate-from-space',
@@ -117,6 +144,7 @@ export default {
     'figcaption',
     'li',
     'ul',
-    'ol'
+    'ol',
+    'strong'
   ]
 };

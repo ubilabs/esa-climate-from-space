@@ -1,3 +1,27 @@
+# [1.12.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.11.1...v1.12.0) (2023-08-18)
+
+
+### Bug Fixes
+
+* add favicon ([3f2ea3f](https://github.com/ubilabs/esa-climate-from-space/commit/3f2ea3feea96ee9ea53c59be8089cef6d8982baf))
+* **assets:** import assets directly ([144117b](https://github.com/ubilabs/esa-climate-from-space/commit/144117bf586e1306b8e7dc16c5fafdeec1301b8a))
+* **layer-info:** set allowed types on markdown ([#1286](https://github.com/ubilabs/esa-climate-from-space/issues/1286)) ([c359b19](https://github.com/ubilabs/esa-climate-from-space/commit/c359b191bd09ef6e97b2db8bab1110224dc3e53c))
+
+
+### Features
+
+* **embed-wizard:** implement wizard menu ([ba920c5](https://github.com/ubilabs/esa-climate-from-space/commit/ba920c5f6a6552d66dee3f6b9350bb6c47a9f815))
+* **globe:** fix image download functionality ([075677e](https://github.com/ubilabs/esa-climate-from-space/commit/075677e29facbb61ea7a9253cd86f163f598b341))
+* **globe:** wait for layer to load before advancing timestep ([#1268](https://github.com/ubilabs/esa-climate-from-space/issues/1268)) ([6807f57](https://github.com/ubilabs/esa-climate-from-space/commit/6807f571c28c397cba5a92bde44adb6e0929c1a6))
+* **wizard:** implement previews and data layers ([1b4a4ed](https://github.com/ubilabs/esa-climate-from-space/commit/1b4a4edb064f6b565a523c1ff678189afa9c1e88))
+* **wizard:** implement story embed, disable option based on page ([626363f](https://github.com/ubilabs/esa-climate-from-space/commit/626363f3f0ec3c9c98e40328c6e1431a2648c5bb))
+
+
+
+## [1.11.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.11.0...v1.11.1) (2023-06-02)
+
+
+
 # [1.11.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.10.1...v1.11.0) (2023-06-02)
 
 

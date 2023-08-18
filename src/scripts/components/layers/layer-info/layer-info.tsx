@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
 import {LayerListItem} from '../../../types/layer-list';
+import config from '../../../config/main';
 
 import styles from './layer-info.module.styl';
 
@@ -15,23 +16,11 @@ const LayerInfo: FunctionComponent<Props> = ({layer}) => (
     <span className={styles.layerType}>{layer.type}</span>
     <h1 className={styles.layerTitle}>{layer.name}</h1>
     <div className={styles.description}>
-      {/* eslint-disable-next-line react/no-children-prop */}
       <ReactMarkdown
         children={layer.description}
         linkTarget="_blank"
         rehypePlugins={[rehypeRaw]}
-        disallowedElements={[
-          'heading',
-          'text',
-          'paragraph',
-          'break',
-          'strong',
-          'emphasis',
-          'list',
-          'listItem',
-          'link',
-          'html'
-        ]}
+        allowedElements={config.markdownAllowedElements}
       />
       {layer.usageInfo && <p>{layer.usageInfo}</p>}
     </div>
