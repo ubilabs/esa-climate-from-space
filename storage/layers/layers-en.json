@@ -49,7 +49,7 @@
   },
   {
     "id": "cloud.cfc",
-    "type": "Upper-air Atmosphere",
+    "type": "Atmospheric Composition",
     "name": "Cloud Fraction",
     "shortName": "Clouds",
     "usageInfo": "© ESA",
@@ -185,11 +185,11 @@
   },
   {
     "id": "water_vapour.tcwv",
-    "type": "Biosphere",
+    "type": "Atmospheric Composition",
     "name": "Water Vapour – Total Column Water Vapour",
     "shortName": "Water Vapour",
     "usageInfo": "© ESA",
-    "description": "Water vapour in the atmosphere is a key component of the Earth’s hydrological cycle, critical in shaping the global environment and supporting life on Earth. Various physical processes redistribute water from the oceans to the land, including the formation of clouds, precipitation, and extreme weather events. Water vapour also has a key role in constraining the Earth’s energy balance. It is the single most important natural greenhouse gas and constitutes a strong positive feedback to anthropogenic climate forcing from carbon dioxide.\n\nThe CCI Water Vapour team is deriving daily total column water vapour from near-infrared  observations from the MERIS, MODIS, and OLCI instruments, spanning the time period 2002 to 2017. These are combined with ocean observations from microwave imager measurements (eg, SSM/I and SSMIS) from EUMETSAT to give a global product.\n\n**Variable Shown:** Total Column of Water (TCWV)  \n\n**Time Span:** July 2002 - December 2012  \n\n**Temporal Resolution:** monthly  \n\n**Geographic Extent:** global  \n\n**Spatial Resolution:** 0.05 degrees  \n\n**Version:** v3.2  \n\n**DOI:** [10.5285/4a85c0ef880e4f668cd4ec8e846855ef](http://dx.doi.org/10.5285/4a85c0ef880e4f668cd4ec8e846855ef)  \n  \n[ESA CCI Water Vapour ECV Project website](https://climate.esa.int/projects/water-vapour/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/80ad33b237084a8dbfb81ec5414e68dd)"
+    "description": "Water vapour in the atmosphere is a key component of the Earth’s hydrological cycle, critical in shaping the global environment and supporting life on Earth. Various physical processes redistribute water from the oceans to the land, including the formation of clouds, precipitation, and extreme weather events. Water vapour also has a key role in constraining the Earth’s energy balance. It is the single most important natural greenhouse gas and constitutes a strong positive feedback to anthropogenic climate forcing from carbon dioxide.\r\n\r\nThe CCI Water Vapour team is deriving daily total column water vapour from near-infrared  observations from the MERIS, MODIS, and OLCI instruments, spanning the time period 2002 to 2017. These are combined with ocean observations from microwave imager measurements (eg, SSM/I and SSMIS) from EUMETSAT to give a global product.\n\n**Variable Shown:** Total Column of Water (TCWV)  \r\n\n**Time Span:** July 2002 - December 2012  \r\n\n**Temporal Resolution:** monthly  \r\n\n**Geographic Extent:** global  \r\n\n**Spatial Resolution:** 0.05 degrees  \r\n\n**Version:** v3.2  \r\n\n**DOI:** [10.5285/4a85c0ef880e4f668cd4ec8e846855ef](http://dx.doi.org/10.5285/4a85c0ef880e4f668cd4ec8e846855ef)  \r\n  \r\n[ESA CCI Water Vapour ECV Project website](https://climate.esa.int/projects/water-vapour/)  \r\n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/80ad33b237084a8dbfb81ec5414e68dd)"
   },
   {
     "id": "land_surface_temperature.lst",
