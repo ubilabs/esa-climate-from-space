@@ -78,6 +78,7 @@
         "contain"
       ],
       "videoId": "evPBTu_a27I",
+      "videoCaptions": "assets/carboncycle.vtt",
       "videoPoster": "assets/carbon_cycle.jpg",
       "videoSrc": [
         "assets/carbon_cycle-web.mp4"
@@ -121,6 +122,7 @@
         "contain"
       ],
       "videoId": "-QyzY8waNoY",
+      "videoCaptions": "assets/ghg-interview.vtt",
       "videoPoster": "assets/ghg-interview-wide.jpg",
       "videoSrc": [
         "assets/ghg-interview-wide-web.mp4"

@@ -23,13 +23,13 @@
   appearance: none
   place-content: center
 
-.checkboxListContainer.disabledEmbed .checkboxListItem input[type='checkbox']:before
-  width: 8px
-  height: 2px
-  box-shadow: inset 10px 16px $textDisabled
-  content: ''
-  transition: 120ms transform ease-in-out
-  transform: scale(1)
+  &:before
+    width: 8px
+    height: 2px
+    box-shadow: inset 10px 16px $textDisabled
+    content: ''
+    transition: 120ms transform ease-in-out
+    transform: scale(1)
 
 .checkBoxList
   gap: emCalc(16px)
@@ -47,11 +47,11 @@
   align-items: center
   gap: emCalc(8px)
 
-  input[type='checkbox']
+  > input[type='checkbox']
     margin-left: 0
     min-width: remCalc(20px)
     min-height: remCalc(20px)
-    accent-color: $textWhite
+    accent-color: #fff
 
-  label
+  > label
     color: $textDefault

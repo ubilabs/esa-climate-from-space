@@ -78,6 +78,7 @@
         "contain"
       ],
       "videoId": "ovDhWNB6-0A",
+      "videoCaptions": "assets/ozone.vtt",
       "videoPoster": "assets/ozone-poster.jpg",
       "videoSrc": [
         "assets/ozone-web.mp4"
@@ -121,6 +122,7 @@
         "contain"
       ],
       "videoId": "uZcU9-0kmlI",
+      "videoCaptions": "assets/ozone-interview.vtt",
       "videoPoster": "assets/ozone-interview-wide.jpg",
       "videoSrc": [
         "assets/ozone-interview-wide-web.mp4"
