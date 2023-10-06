@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import cx from 'classnames';
 
-import styles from './story-progress.styl';
+import styles from './story-progress.module.styl';
 
 interface Props {
   images: string[];

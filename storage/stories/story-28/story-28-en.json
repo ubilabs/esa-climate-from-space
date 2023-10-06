@@ -77,7 +77,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "8wwQaK_SJtw"
+      "videoId": "8wwQaK_SJtw",
+      "videoPoster": "assets/landcover-poster.jpg",
+      "videoSrc": [
+        "assets/landcover-web.mp4"
+      ]
     },
     {
       "type": "image",
@@ -107,8 +111,8 @@
     },
     {
       "type": "video",
-      "text": "## Charting Habitat Change\r\n\r\nEssential climate variables (ECVs) describe key aspects of the Earth’s climate and features that have a strong influence on it. Understanding climate gives us an insight into one of the drivers of ecosystem change and so how we might preserve vulnerable biomes and biodiversity. Land cover and biomass are directly related to the population of a habitat, and are both ECVs that can be monitored from space using satellites. \r\n\r\nOther ECVs also determine whether a certain habitat can thrive. On land, these include land surface temperature and soil moisture. [Sea surface temperature and ocean colour](stories/story-16/4) are useful measures for monitoring the oceans. ESA’s Climate Change Initiative has used satellite observations to produce records of ECVs that cover the whole world and stretch back more than thirty years. Having a reliable record of these factors, and an accurate understanding of how they are currently changing, helps us make responsible decisions, taking account of the impact they will have on the planet – and all its inhabitants – in the future.",
-      "shortText": "## Charting Habitat Change\r\n\r\nUnderstanding climate gives us an insight into one of the drivers of ecosystem change.\r\n\r\nLand cover and biomass are essential climate variables (ECVs) directly related to the population of a habitat.\r\n\r\nOther relevant ECVs on land are land surface temperature and soil moisture. \r\n\r\nSea surface temperature and ocean colour are useful measures for monitoring the oceans. \r\n\r\nESA’s Climate Change Initiative has used satellite observations to produce records of ECVs that cover the whole world and stretch back more than thirty years. \r\n\r\nHaving a reliable record of these factors, and how they are changing, helps us make responsible decisions, taking account of the impact they will have on the planet – and all its inhabitants – in the future.",
+      "text": "## Charting Habitat Change\r\n\r\nEssential climate variables (ECVs) describe key aspects of the Earth’s climate and features that have a strong influence on it. Understanding climate gives us an insight into one of the drivers of ecosystem change and so how we might preserve vulnerable biomes and biodiversity. Land cover and biomass are directly related to the population of a habitat, and are both ECVs that can be monitored from space using satellites. \r\n\r\nOther ECVs also determine whether a certain habitat can thrive. On land, these include land surface temperature and soil moisture. [Sea surface temperature and ocean colour](stories/story-16/4) are useful measures for monitoring the oceans. ESA’s Climate Change Initiative has used satellite observations to produce records of ECVs that cover the whole world and stretch back more than forty years. Having a reliable record of these factors, and an accurate understanding of how they are currently changing, helps us make responsible decisions, taking account of the impact they will have on the planet – and all its inhabitants – in the future.",
+      "shortText": "## Charting Habitat Change\r\n\r\nUnderstanding climate gives us an insight into one of the drivers of ecosystem change.\r\n\r\nLand cover and biomass are essential climate variables (ECVs) directly related to the population of a habitat.\r\n\r\nOther relevant ECVs on land are land surface temperature and soil moisture. \r\n\r\nSea surface temperature and ocean colour are useful measures for monitoring the oceans. \r\n\r\nESA’s Climate Change Initiative has used satellite observations to produce records of ECVs that cover the whole world and stretch back more than forty years. \r\n\r\nHaving a reliable record of these factors, and how they are changing, helps us make responsible decisions, taking account of the impact they will have on the planet – and all its inhabitants – in the future.",
       "imageFits": [
         "contain",
         "contain",
@@ -116,7 +120,11 @@
         "contain",
         "contain"
       ],
-      "videoId": "LdA3Yy-Xjf4"
+      "videoId": "LdA3Yy-Xjf4",
+      "videoPoster": "assets/landcover-interview-wide.jpg",
+      "videoSrc": [
+        "assets/landcover-interview-wide-web.mp4"
+      ]
     }
   ]
 }

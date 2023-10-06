@@ -11,39 +11,43 @@
     },
     {
       "type": "image",
-      "text": "## Se abre un pasaje\r\n\r\nDurante siglos, el Paso del Noroeste, entre el Canadá continental y sus islas árticas, ha prometido ser una ruta marítima más corta entre Europa y Asia. Pero durante la mayor parte de este tiempo ha resultado ser una barrera impenetrable, encerrada en las garras de un mar helado.\r\n \r\nEl hielo venció a la Royal Navy en 1845, cuando se perdió la expedición de Sir John Franklin. Dieciocho grupos de búsqueda durante los siguientes treinta años no lograron encontrar ningún rastro de él y sus 130 tripulantes. No fue hasta 1906 cuando Roald Amundsen se convirtió en el primero en completar una ruta a través del Paso del Noroeste, tras un viaje de tres años.\r\n\r\nUn siglo más tarde, sólo un puñado de viajes habían atravesado las aguas heladas, algunos con la ayuda de rompehielos. Luego, en el verano de 2007, las imágenes de satélite mostraron, por primera vez en los registros, que todo el Pasaje estaba prácticamente libre de hielo. Esto sorprendió a los científicos del clima, cuyos modelos preveían que seguiría cubierto de hielo durante algunas décadas. Hoy se puede reservar un crucero por el Paso del Noroeste en un transatlántico con más de mil pasajeros.\r\n\r\nLos barcos de Franklin, el HMS Erebus y el HMS Terror, fueron encontrados por estudios del fondo marino canadiense en 2014 y 2016, resolviendo al menos parte del misterio de 170 años que rodea la desaparición de la expedición.",
-      "shortText": "## Se abre un pasaje\r\n\r\nDurante siglos, el hielo marino ha bloqueado el Paso del Noroeste entre Canadá continental y sus islas árticas:\r\n \r\n- derrotó a la Royal Navy cuando la expedición de Sir John Franklin se perdió en 1845\r\n- 18 búsquedas a lo largo de 30 años no lograron encontrar ningún rastro\r\n- Roald Amundsen fue el primero en completar el Paso, en 1906\r\n- Un siglo más tarde, sólo un puñado de viajes había seguido\r\n\r\nVerano de 2007: las imágenes por satélite muestran, por primera vez, todo el Pasaje libre de hielo.\r\n\r\nHoy: se puede navegar por el Paso del Noroeste en un crucero con otros 1.000 pasajeros.\r\n\r\nLos barcos hundidos de Franklin fueron finalmente encontrados por estudios del fondo marino en 2014 y 2016.",
+      "text": "## Se abre un pasaje\r\n\r\nDurante siglos, el Paso del Noroeste, entre el Canadá continental y sus islas árticas, ha prometido ser una ruta marítima más corta entre Europa y Asia. Pero durante la mayor parte de este tiempo ha resultado ser una barrera impenetrable, encerrada en las garras de un mar helado.\r\n \r\nEl hielo venció a la Royal Navy en 1845, cuando se perdió la expedición de Sir John Franklin. Dieciocho grupos de búsqueda durante los siguientes treinta años no lograron encontrar ningún rastro de él y sus 130 tripulantes. No fue hasta 1906 cuando Roald Amundsen se convirtió en el primero en completar una ruta a través del Paso del Noroeste, tras un viaje de tres años.\r\n\r\nUn siglo más tarde, sólo un puñado de viajes habían atravesado las aguas heladas, algunos con la ayuda de rompehielos. Luego, en el verano de 2007, las imágenes de satélite mostraron, por primera vez en los registros, que todo el Pasaje estaba prácticamente libre de hielo. Esto sorprendió a los científicos del clima, cuyos modelos preveían que seguiría cubierto de hielo durante algunas décadas. Hoy se puede reservar un crucero por el Paso del Noroeste en un transatlántico con cientos de pasajeros.\r\n\r\nLos barcos de Franklin, el HMS Erebus y el HMS Terror, fueron encontrados por estudios del fondo marino canadiense en 2014 y 2016, resolviendo al menos parte del misterio de 170 años que rodea la desaparición de la expedición.",
+      "shortText": "## Se abre un pasaje\r\n\r\nDurante siglos, el hielo marino ha bloqueado el Paso del Noroeste entre Canadá continental y sus islas árticas:\r\n \r\n- derrotó a la Royal Navy cuando la expedición de Sir John Franklin se perdió en 1845\r\n- 18 búsquedas a lo largo de 30 años no lograron encontrar ningún rastro\r\n- Roald Amundsen fue el primero en completar el Paso, en 1906\r\n- Un siglo más tarde, sólo un puñado de viajes había seguido\r\n\r\nVerano de 2007: las imágenes por satélite muestran, por primera vez, todo el Pasaje libre de hielo.\r\n\r\nHoy: se puede navegar por el Paso del Noroeste en un crucero con cientos de pasajeros.\r\n\r\nLos barcos hundidos de Franklin fueron finalmente encontrados por estudios del fondo marino en 2014 y 2016.",
       "images": [
         "assets/story15_01.jpg",
         "assets/seaice_large_01.jpg",
-        "assets/seaice_large_12a.jpg"
+        "assets/seaice_large_12a.jpg",
+        "assets/story15_11.jpg"
       ],
       "imageCaptions": [
         "El HMS Terror arrojado por el hielo en el Estrecho Congelado. Grabado a partir de un dibujo del capitán George Back. (Archivos Nacionales de Canadá)",
         "Hielo marino de verano en el Ártico canadiense. El estrecho canal entre Canadá continental y sus islas árticas\r\nsuele estar bloqueado por el hielo marino. En esta imagen Envisat MERIS del 2 de julio de 2007\r\nLancaster Sound (centro inferior) está libre de hielo, pero al oeste el hielo sigue bloqueando\r\nel Canal Parry. (ESA)",
-        "El hielo marino se muestra en azul en este mosaico Envisat ASAR del Océano Ártico de agosto de 2008. El brazo sur del Paso del Noroeste está libre de hielo. (ESA)"
+        "El hielo marino se muestra en azul en este mosaico Envisat ASAR del Océano Ártico de agosto de 2008. El brazo sur del Paso del Noroeste está libre de hielo. (ESA)",
+        "La ruta sur a través del Paso del Noroeste estaba casi libre de hielo en agosto de 2016, como muestra esta imagen del satélite meteorológico Suomi NPP (NASA)"
       ],
       "imageFits": [
         "contain",
         "cover",
         "cover",
-        "contain",
+        "cover",
         "contain"
       ]
     },
     {
       "type": "image",
-      "text": "## Nuevas rutas comerciales\r\n\r\nLa pérdida de hielo marino en el Ártico ha sido más rápida de lo previsto, y la ruta sur del Paso del Noroeste es ahora navegable casi todos los años. La ruta norte, más directa y comercialmente significativa, se ha abierto durante seis de los últimos diez veranos. En 2008 pasó el primer barco comercial y en 2013 el primer granelero llevó carga de Vancouver a Helsinki.\r\n\r\nLa disminución de la capa de hielo también está abriendo a la navegación la costa norte de Rusia: el Paso del Noreste. Esta ruta ahorra más de un tercio de la distancia de navegación desde Yokohama a Hamburgo, en comparación con la actual ruta más corta a través del Canal de Suez. El potencial de ahorro en distancia, tiempo y combustible es aún mayor si el hielo retrocede lo suficiente como para navegar por el centro del Océano Ártico: la Ruta Marítima Transpolar.\r\n\r\nLas rutas marítimas más cortas supondrán una menor quema de combustible y un menor bombeo de carbono a la atmósfera, pero el Ártico sufrirá un aumento local de contaminantes. Las partículas de hollín podrían oscurecer el hielo restante, aumentando el calentamiento, pero también podrían hacer que se condensaran más nubes, lo que podría tener un efecto refrigerante.\r\n\r\nAunque es una buena noticia para las industrias del transporte marítimo y del turismo, el retroceso del borde del hielo es una cruda advertencia de que el clima de la Tierra se dirige rápidamente hacia aguas desconocidas.",
-      "shortText": "## Nuevas rutas comerciales\r\n\r\n- El Paso del Noroeste ya está abierto casi todos los años\r\n- 2008: el primer barco comercial pasó por allí\r\n- 2013: un granelero llevó la carga de Vancouver a Helsinki\r\n- El Paso del Noreste (costa rusa) también se está abriendo\r\n- Yokohama a Hamburgo por el Canal de Suez: 11.430 mn\r\n- a través del Paso del Noroeste 8.000 mn, por el Paso del Noreste 7.200 mn\r\n- por la Ruta Marítima Transpolar: 6.600 mn\r\n\r\nRutas más cortas → menos combustible quemado → menos carbono liberado, pero contaminación local:\r\n \r\n- el hollín podría oscurecer el hielo, añadiendo al calentamiento,\r\n- pero también podría provocar la condensación de más nubes, lo que podría tener un efecto refrigerante\r\n\r\nUna buena noticia para las industrias del transporte marítimo y del turismo, pero el rápido retroceso del borde del hielo es una cruda advertencia de que el clima de la Tierra se dirige hacia aguas desconocidas.",
+      "text": "## Nuevas rutas comerciales\r\n\r\nLa pérdida de hielo marino en el Ártico ha sido más rápida de lo previsto, y la ruta sur del Paso del Noroeste es ahora navegable casi todos los años. En 2008 pasó el primer barco comercial y en 2013 el primer granelero llevó carga de Vancouver a Finlandia. 86 buques de carga pasaron por el Paso del Noroeste en 2019.\r\n\r\nLa disminución de la capa de hielo también está abriendo a la navegación la costa norte de Rusia: el Paso del Noreste. Esta ruta ahorra más de un tercio de la distancia de navegación desde Yokohama a Hamburgo, en comparación con la actual ruta más corta a través del Canal de Suez. El potencial de ahorro en distancia, tiempo y combustible es aún mayor si el hielo retrocede lo suficiente como para navegar por el centro del Océano Ártico: la Ruta Marítima Transpolar.\r\n\r\nLas rutas marítimas más cortas supondrán una menor quema de combustible y un menor bombeo de carbono a la atmósfera, pero el Ártico sufrirá un aumento local de contaminantes. Las partículas de hollín podrían oscurecer el hielo restante, aumentando el calentamiento, pero también podrían hacer que se condensaran más nubes, lo que podría tener un efecto refrigerante.\r\n\r\nAunque es una buena noticia para las industrias del transporte marítimo y del turismo, el retroceso del borde del hielo es una cruda advertencia de que el clima de la Tierra se dirige rápidamente hacia aguas desconocidas.",
+      "shortText": "## Nuevas rutas comerciales\r\n\r\n- El Paso del Noroeste ya está abierto casi todos los años\r\n- 2008: el primer barco comercial pasó por allí\r\n- 2013: un granelero llevó la carga de Vancouver a Finlandia\r\n- 2013: 86 cargueros atravesaron el Paso del Noroeste\r\n- El Paso del Noreste (costa rusa) también se está abriendo\r\n- Yokohama a Hamburgo por el Canal de Suez: 11.430 mn\r\n- a través del Paso del Noroeste 8.000 mn, por el Paso del Noreste 7.200 mn\r\n- por la Ruta Marítima Transpolar: 6.600 mn\r\n\r\nRutas más cortas → menos combustible quemado → menos carbono liberado, pero contaminación local:\r\n \r\n- el hollín podría oscurecer el hielo, añadiendo al calentamiento,\r\n- pero también podría provocar la condensación de más nubes, lo que podría tener un efecto refrigerante\r\n\r\nUna buena noticia para las industrias del transporte marítimo y del turismo, pero el rápido retroceso del borde del hielo es una cruda advertencia de que el clima de la Tierra se dirige hacia aguas desconocidas.",
       "images": [
         "assets/story15_02.jpg",
         "assets/story15_03.jpg",
-        "assets/story15_04.png"
+        "assets/story15_04.png",
+        "assets/story15_12.jpg"
       ],
       "imageCaptions": [
         "Mosaico del radar Envisat ASAR que muestra las posibles rutas de navegación a través del Paso del Noroeste (amarillo, izquierda), el Paso del Noreste (azul, derecha) y la Ruta del Mar Transpolar (verde, centro) (ESA/Planetary Visions)",
         "Rompehielos escoltando un buque de carga a través del hielo marino en el Océano Ártico (Aker Arctic)",
-        "# Extensión del hielo marino del Ártico en agosto de 1979 a 2019\r\nLa extensión del hielo en verano en el Ártico ha disminuido en 72.000 km2 al año, o un 9,1% por década (datos OSISAF de EUMETSAT, con aportaciones de I+D de la CCI de la ESA)"
+        "# Extensión del hielo marino del Ártico en agosto de 1979 a 2019\r\nLa extensión del hielo en verano en el Ártico ha disminuido en 72.000 km2 al año, o un 9,1% por década (datos OSISAF de EUMETSAT, con aportaciones de I+D de la CCI de la ESA)",
+        "Trayectorias de los buques en la parte oriental del Paso del Noroeste en 2013 (verde) y 2019 (naranja). El tráfico aumentó de 112 a 160 buques entre estos años. (Consejo Ártico)"
       ],
       "imageFits": [
         "contain",
@@ -55,8 +59,8 @@
     },
     {
       "type": "globe",
-      "text": "## Ciclo estacional\r\n\r\nEl océano Ártico se caracteriza por la capa de hielo marino y sus fluctuaciones estacionales. Durante el invierno, la capa de hielo alcanza una superficie de entre 14 y 16 millones de kilómetros cuadrados, que se reduce a entre cuatro y cinco millones de kilómetros cuadrados al final del verano. Es un área equivalente a toda la superficie de Europa que aparece y desaparece a lo largo del año.\r\n\r\nPuedes ver la expansión y contracción anual de la superficie del mar helado recorriendo la línea de tiempo del globo interactivo de la derecha. Compara las extensiones mínimas anuales de hielo a mediados de septiembre para el primer año y el último de la secuencia. Gira el globo hasta la Antártida para ver el hielo marino en el Océano Antártico.\r\n\r\nEl núcleo de la capa de hielo está formado por capas de agua marina congelada que han sobrevivido al deshielo del verano. Este hielo plurianual alcanza un grosor de entre dos y cuatro metros en el Ártico, mientras que el hielo marino del primer año suele alcanzar sólo entre 1 y 1,5 metros.\r\n\r\n## Tendencia a largo plazo\r\n\r\nLas observaciones por satélite muestran una importante pérdida de hielo marino en el Ártico en las últimas décadas, con las extensiones más bajas observadas en 2012, seguidas de 2007 y 2019. Desde la aparición de las mediciones regulares del hielo marino por satélite en 1978, la extensión del hielo marino del Océano Ártico en verano se ha reducido en casi un 40%. En el Océano Austral, la extensión media del hielo alrededor de la Antártida aumentó entre un 4 y un 6% durante la mayor parte de este período, pero ha descendido tres veces más rápido que en el Ártico a partir de 2014. A nivel mundial, la tendencia es a la baja y la pérdida se está acelerando.",
-      "shortText": "## Ciclo estacional\r\n\r\nFluctuaciones estacionales de la cubierta de hielo marino del Océano Ártico:\r\n\r\n- el área de la capa de hielo en invierno es de 14-16 millones de km2\r\n- se reduce a 4-5 millones de km2 al final del verano\r\n- una superficie del tamaño de Europa aparece/desaparece a lo largo del año\r\n\r\nEl núcleo de la capa de hielo son capas de agua de mar congelada que han sobrevivido al deshielo del verano:\r\n \r\n- el hielo de varios años tiene un grosor de 2 a 4 metros en el Ártico\r\n- el hielo del primer año suele alcanzar sólo de 1 a 1,5 metros\r\n\r\nLas observaciones por satélite muestran una importante pérdida de hielo marino en el Ártico en las últimas décadas:\r\n\r\n- las extensiones más bajas observadas en 2012, 2007 y 2019\r\n- desde 1978, la extensión del hielo del Ártico en verano ha disminuido casi un 40%",
+      "text": "## Ciclo estacional\r\n\r\nEl océano Ártico se caracteriza por la capa de hielo marino y sus fluctuaciones estacionales. Durante el invierno, la capa de hielo alcanza una superficie de entre 14 y 16 millones de kilómetros cuadrados, que se reduce a entre cuatro y cinco millones de kilómetros cuadrados al final del verano. Es un área equivalente a toda la superficie de Europa que aparece y desaparece a lo largo del año.\r\n\r\nPuedes ver la expansión y contracción anual de la superficie del mar helado recorriendo la línea de tiempo del globo interactivo de la derecha. Compara las extensiones mínimas anuales de hielo a mediados de septiembre para el primer año y el último de la secuencia. Gira el globo hasta la Antártida para ver el hielo marino en el Océano Antártico.\r\n\r\nEl núcleo de la capa de hielo está formado por capas de agua marina congelada que han sobrevivido al deshielo del verano. Este hielo plurianual alcanza un grosor de entre dos y cuatro metros en el Ártico, mientras que el hielo marino del primer año suele alcanzar sólo entre 1 y 1,5 metros.\r\n\r\n## Tendencia a largo plazo\r\n\r\nLas observaciones por satélite muestran una importante pérdida de hielo marino en el Ártico en las últimas décadas, con las extensiones más bajas observadas en 2012, seguidas de 2007 y 2020. Desde la aparición de las mediciones regulares del hielo marino por satélite en 1978, la extensión del hielo marino del Océano Ártico en verano se ha reducido en casi un 40%. En el Océano Austral, la extensión media del hielo alrededor de la Antártida aumentó entre un 4 y un 6% durante la mayor parte de este período, pero ha descendido tres veces más rápido que en el Ártico a partir de 2014. A nivel mundial, la tendencia es a la baja y la pérdida se está acelerando.",
+      "shortText": "## Ciclo estacional\r\n\r\nFluctuaciones estacionales de la cubierta de hielo marino del Océano Ártico:\r\n\r\n- el área de la capa de hielo en invierno es de 14-16 millones de km2\r\n- se reduce a 4-5 millones de km2 al final del verano\r\n- una superficie del tamaño de Europa aparece/desaparece a lo largo del año\r\n\r\nEl núcleo de la capa de hielo son capas de agua de mar congelada que han sobrevivido al deshielo del verano:\r\n \r\n- el hielo de varios años tiene un grosor de 2 a 4 metros en el Ártico\r\n- el hielo del primer año suele alcanzar sólo de 1 a 1,5 metros\r\n\r\nLas observaciones por satélite muestran una importante pérdida de hielo marino en el Ártico en las últimas décadas:\r\n\r\n- las extensiones más bajas observadas en 2012, 2007 y 2020\r\n- desde 1978, la extensión del hielo del Ártico en verano ha disminuido casi un 40%",
       "imageFits": [
         "contain",
         "contain",
@@ -116,21 +120,23 @@
       "shortText": "## La vida en primera línea\r\n\r\nLas aguas que se vuelven más fáciles para un crucero se vuelven más difíciles para los trineos de perros y las motos de nieve:\r\n\r\n- las formas tradicionales de cazar y viajar se interrumpen\r\n- se rompen los vínculos con las fuentes de alimentos y entre las comunidades\r\n\r\nDe Alaska a Siberia, a medida que se descongela el permafrost:\r\n\r\n- edificios, carreteras y oleoductos socavados\r\n- el dióxido de carbono y el metano se liberan del suelo\r\n- los hidratos de metano del fondo marino también podrían descongelarse\r\n\r\nEl agua de deshielo de la capa de hielo de Groenlandia\r\n- ha contribuido a la subida del nivel del mar en 11 mm desde 1992\r\n- está siguiendo las peores predicciones de calentamiento climático\r\n- altera el equilibrio de salinidad de los mares circundantes\r\n\r\nLas capas de hielo, los glaciares, el permafrost, la salinidad de los océanos y el hielo marino son \"variables climáticas esenciales\".",
       "images": [
         "assets/icesheet_large_16.jpg",
+        "assets/story15_13.jpg",
+        "assets/story15_14.jpg",
         "assets/icesheet_large_01.jpg",
-        "assets/story15_10.jpg",
         "assets/story15_08.jpg"
       ],
       "imageCaptions": [
         "Nuuk, la capital de Groenlandia. Los groenlandeses tienen que adaptarse al calentamiento del clima. El deshielo del mar no sólo acorta la temporada de caza, sino que también dificulta el acceso a las comunidades vecinas en trineo de perros o en moto de nieve. (Oliver Schauf)",
+        "# Anomalía de la temperatura del aire en Groenlandia 2019-2021 \r\nTemperatura del aire en Groenlandia en agosto de 2019-2021 comparada con la media de los 30 años anteriores. La ola de calor de 2021 trajo las primeras precipitaciones registradas en el centro alto de Groenlandia, donde normalmente habría nevadas. (Datos ERA5 de Copernicus Climate Change Service/ECMWF/ESA)",
+        "La ola de calor de Groenlandia de 2021 provocó un rápido derretimiento de la nieve y el hielo, creando extensos flujos de agua de deshielo y lagos más profundos y oscuros en la superficie de la capa de hielo. Imagen de Sentinel-2 del 20 de agosto de 2021 (contiene datos modificados de Copernicus Sentinel (2021), procesados por la ESA).",
         "El agua de deshielo superficial atraviesa el glaciar Leverett, a unos 50 km del\r\n del borde occidental de la capa de hielo de Groenlandia, el 19 de agosto de 2009.\r\n(Andrew Sole, Universidad de Sheffield)",
-        "Un nuevo iceberg se desprende de la plataforma de hielo de Groenlandia hacia la bahía de Disko. (ESA)",
         "# CCI Extensión del permafrost\r\n \r\nPermafrost del hemisferio norte 2003-2017 (ESA-CCI)"
       ],
       "imageFits": [
         "cover",
-        "cover",
-        "cover",
         "contain",
+        "cover",
+        "cover",
         "contain"
       ]
     },
@@ -167,7 +173,12 @@
         "contain",
         "contain"
       ],
-      "videoId": "9einyMSOmHE"
+      "videoId": "9einyMSOmHE",
+      "videoCaptions": "assets/seaicethickness.vtt",
+      "videoPoster": "assets/seaicethickness.jpg",
+      "videoSrc": [
+        "assets/seaicethickness-web.mp4"
+      ]
     }
   ]
 }

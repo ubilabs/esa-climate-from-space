@@ -2,9 +2,11 @@ import React, {
   FunctionComponent,
   useState,
   useEffect,
-  useCallback
+  useCallback,
+  useLayoutEffect
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {CameraView, LayerLoadingState} from '@ubilabs/esa-webgl-globe';
 
 import {layerListItemSelector} from '../../../selectors/layers/list-item';
 import {globeViewSelector} from '../../../selectors/globe/view';
@@ -16,6 +18,7 @@ import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 import setGlobeViewAction from '../../../actions/set-globe-view';
 import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
+import updateLayerLoadingStateAction from '../../../actions/update-layer-loading-state';
 import {State} from '../../../reducers';
 import Globe from '../globe/globe';
 import Gallery from '../gallery/gallery';
@@ -24,14 +27,14 @@ import LayerLegend from '../../layers/layer-legend/layer-legend';
 import {useImageLayerData} from '../../../hooks/use-image-layer-data';
 import HoverLegend from '../../layers/hover-legend/hover-legend';
 
-import {GlobeView} from '../../../types/globe-view';
 import {Marker} from '../../../types/marker-type';
 import {LayerType} from '../../../types/globe-layer-type';
 import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 import {Layer} from '../../../types/layer';
 import {LegendValueColor} from '../../../types/legend-value-color';
+import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
-import styles from './data-viewer.styl';
+import styles from './data-viewer.module.styl';
 
 interface Props {
   backgroundColor: string;
@@ -45,6 +48,8 @@ const DataViewer: FunctionComponent<Props> = ({
   markers = []
 }) => {
   const dispatch = useDispatch();
+  const {legend} = useSelector(embedElementsSelector);
+
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
@@ -67,23 +72,29 @@ const DataViewer: FunctionComponent<Props> = ({
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
   const flyTo = useSelector(flyToSelector);
-  const onChangeHandler = useCallback((view: GlobeView) => {
+  const onChangeHandler = useCallback((view: CameraView) => {
     setCurrentView(view);
     // setting css variable for compass icon
     document.documentElement.style.setProperty(
       '--globe-latitude',
-      `${view.position.latitude}deg`
+      `${view.lat}deg`
     );
   }, []);
 
+  const onMoveStartHandler = useCallback(
+    () => globeSpinning && dispatch(setGlobeSpinningAction(false)),
+    [dispatch, globeSpinning]
+  );
+
   const onMoveEndHandler = useCallback(
-    (view: GlobeView) => dispatch(setGlobeViewAction(view)),
+    (view: CameraView) => dispatch(setGlobeViewAction(view)),
     [dispatch]
   );
 
-  const onMouseDownHandler = useCallback(
-    () => globeSpinning && dispatch(setGlobeSpinningAction(false)),
-    [dispatch, globeSpinning]
+  const onLayerLoadingStateChangeHandler = useCallback(
+    (layerId: string, loadingState: LayerLoadingState) =>
+      dispatch(updateLayerLoadingStateAction(layerId, loadingState)),
+    [dispatch]
   );
 
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
@@ -91,7 +102,7 @@ const DataViewer: FunctionComponent<Props> = ({
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
-  useEffect(() => {
+  useLayoutEffect(() => {
     setCurrentView(globalGlobeView);
   }, [globalGlobeView]);
 
@@ -141,45 +152,49 @@ const DataViewer: FunctionComponent<Props> = ({
         onMouseEnter={action}
         onTouchStart={action}
         onChange={onChangeHandler}
+        onMoveStart={onMoveStartHandler}
         onMoveEnd={onMoveEndHandler}
-        onMouseDown={onMouseDownHandler}
+        onLayerLoadingStateChange={onLayerLoadingStateChangeHandler}
       />
     );
   };
 
+  const getLegends = () =>
+    [mainLayerDetails, compareLayerDetails]
+      .filter((layer): layer is Layer => Boolean(layer))
+      .map(
+        (
+          {id, maxValue, minValue, units, basemap, legendValues, hideLegend},
+          index
+        ) => {
+          if (hideLegend) {
+            return null;
+          }
+
+          return id === 'land_cover.lccs_class' ? (
+            <HoverLegend
+              key={id}
+              values={legendValues as LegendValueColor[]}
+              isCompare={index > 0}
+            />
+          ) : (
+            <LayerLegend
+              key={id}
+              id={id}
+              values={
+                (legendValues as string[]) || [maxValue || 0, minValue || 0]
+              }
+              unit={units}
+              basemap={basemap}
+              isCompare={index > 0}
+            />
+          );
+        }
+      );
+
   return (
     <div className={styles.dataViewer}>
-      {[mainLayerDetails, compareLayerDetails]
-        .filter((layer): layer is Layer => Boolean(layer))
-        .map(
-          (
-            {id, maxValue, minValue, units, basemap, legendValues, hideLegend},
-            index
-          ) => {
-            if (hideLegend) {
-              return null;
-            }
-
-            return id === 'land_cover.lccs_class' ? (
-              <HoverLegend
-                key={id}
-                values={legendValues as LegendValueColor[]}
-                isCompare={index > 0}
-              />
-            ) : (
-              <LayerLegend
-                key={id}
-                id={id}
-                values={
-                  (legendValues as string[]) || [maxValue || 0, minValue || 0]
-                }
-                unit={units}
-                basemap={basemap}
-                isCompare={index > 0}
-              />
-            );
-          }
-        )}
+      {legend && getLegends()}
 
       {getDataWidget({
         imageLayer: mainImageLayer,

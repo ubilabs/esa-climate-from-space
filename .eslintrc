@@ -1,13 +1,19 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "react-hooks"],
+  "plugins": ["@typescript-eslint", "react", "react-hooks"],
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
-    "prettier",
-    "prettier/@typescript-eslint"
+    "prettier"
   ],
-  "settings": {},
+  "settings": {
+    "react":{
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "fragment": "Fragment",
+      "version": "detect"
+    }
+  },
   "env": {
     "browser": true,
     "es6": true,
@@ -168,7 +174,7 @@
     "no-catch-shadow": 2,
     "no-delete-var": 2,
     "no-label-var": 2,
-    "no-shadow": 2,
+    "no-shadow": 0,
     "no-shadow-restricted-names": 2,
     "no-undef": 2,
     "no-undef-init": 2,
@@ -341,11 +347,13 @@
     "@typescript-eslint/no-use-before-define": [2, "nofunc"],
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/ban-ts-ignore": 0,
+    "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/no-unused-vars": 2,
     "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/no-shadow": 0,
     "react/prop-types": 0,
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "react/no-children-prop": 0
   }
 }

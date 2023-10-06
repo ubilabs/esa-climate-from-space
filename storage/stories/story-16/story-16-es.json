@@ -77,7 +77,12 @@
         "contain",
         "contain"
       ],
-      "videoId": "IxgaH7mzG-o"
+      "videoId": "IxgaH7mzG-o",
+      "videoCaptions": "assets/ocean-atmosphere.vtt",
+      "videoPoster": "assets/ocean_atmosphere.jpg",
+      "videoSrc": [
+        "assets/ocean_atmosphere-web.mp4"
+      ]
     },
     {
       "type": "globe",
@@ -156,7 +161,12 @@
         "contain",
         "contain"
       ],
-      "videoId": "09OdaAnI8B0"
+      "videoId": "09OdaAnI8B0",
+      "videoCaptions": "assets/elnino.vtt",
+      "videoPoster": "assets/elnino.jpg",
+      "videoSrc": [
+        "assets/elnino-web.mp4"
+      ]
     },
     {
       "type": "video",
@@ -169,7 +179,12 @@
         "contain",
         "contain"
       ],
-      "videoId": "uPxXMA1heIY"
+      "videoId": "uPxXMA1heIY",
+      "videoCaptions": "assets/sst-interview.vtt",
+      "videoPoster": "assets/sst-interview-wide.jpg",
+      "videoSrc": [
+        "assets/sst-interview-wide-web.mp4"
+      ]
     }
   ]
 }

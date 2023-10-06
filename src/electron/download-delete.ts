@@ -22,7 +22,7 @@ module.exports = function deleteId(browserWindow: BrowserWindow, id: string) {
 
   console.log('Deleting', pathToDelete);
 
-  fs.rmdir(pathToDelete, {recursive: true}, (err: Error | null) => {
+  fs.rm(pathToDelete, {recursive: true}, (err: Error | null) => {
     if (!err) {
       browserWindow.webContents.send(
         'offline-update',

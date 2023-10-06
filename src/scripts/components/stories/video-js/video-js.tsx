@@ -1,11 +1,12 @@
 import React, {FunctionComponent, useEffect, useRef} from 'react';
 import videojs, {VideoJsPlayer, VideoJsPlayerOptions} from 'video.js';
-import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 
+import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {Language} from '../../../types/language';
 import {VideoResolution} from '../../../types/video-resolution-type';
 
 import 'video.js/dist/video-js.css';
+import styles from './video-js.module.styl';
 
 interface Props {
   storyId: string;
@@ -30,14 +31,21 @@ const VideoJS: FunctionComponent<Props> = ({
   const playerRef = useRef<VideoJsPlayer | null>();
   const video = videoSrc[0];
   const videoUrl = videoSrc && getStoryAssetUrl(storyId, video);
-  const captionsUrl = videoCaptions && getStoryAssetUrl(storyId, videoCaptions);
   const posterUrl = videoPoster && getStoryAssetUrl(storyId, videoPoster);
+
+  const getCaptionUrl = () => {
+    const captions = videoCaptions?.split('.');
+    const captionLanguagePath =
+      captions && `${captions[0]}-${language}.${captions[1]}`;
+    return (
+      captionLanguagePath && getStoryAssetUrl(storyId, captionLanguagePath)
+    );
+  };
 
   const videoJsOptions: VideoJsPlayerOptions = {
     autoplay: isStoryMode ? false : true,
     controls: true,
     responsive: true,
-    fluid: true,
     aspectRatio: '4:3',
     poster: posterUrl,
     sources: [
@@ -50,14 +58,15 @@ const VideoJS: FunctionComponent<Props> = ({
       {
         srclang: language,
         kind: 'captions',
-        src: captionsUrl,
+        src: getCaptionUrl(),
         default: true
       }
     ]
   };
 
   const getVideoResolution = (player: VideoJsPlayer, videoRes: string) => {
-    const currentResVideo = videoSrc.find(src => src.includes(videoRes));
+    const webVideo = video.split('web');
+    const currentResVideo = webVideo[0] + videoRes + webVideo[1];
 
     if (currentResVideo) {
       const mobileVideoUrl = getStoryAssetUrl(storyId, currentResVideo);
@@ -65,6 +74,8 @@ const VideoJS: FunctionComponent<Props> = ({
     }
   };
 
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source#attr-media
+  // takes the provided video file name and selects a resolution based on media queries
   const handlePlayerReady = (player: VideoJsPlayer) => {
     playerRef.current = player;
 
@@ -78,6 +89,8 @@ const VideoJS: FunctionComponent<Props> = ({
       getVideoResolution(player, VideoResolution.HD720);
     } else if (screen4k.matches) {
       getVideoResolution(player, VideoResolution.HD1080);
+    } else {
+      getVideoResolution(player, VideoResolution.web);
     }
   };
 
@@ -111,7 +124,7 @@ const VideoJS: FunctionComponent<Props> = ({
   }, [playerRef]);
 
   return (
-    <div data-vjs-player>
+    <div data-vjs-player className={styles.vjsContainer}>
       <video
         ref={videoRef}
         className="video-js vjs-big-play-centered"
