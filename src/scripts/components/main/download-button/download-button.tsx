@@ -9,7 +9,7 @@ import {DownloadCompleteIcon} from '../icons/download-complete-icon';
 import {DeleteIcon} from '../icons/delete-icon';
 import Button from '../button/button';
 
-import styles from './download-button.styl';
+import styles from './download-button.module.styl';
 
 interface Props {
   id: string;

@@ -7,7 +7,7 @@ import Button from '../../main/button/button';
 
 import {LayerListItem} from '../../../types/layer-list';
 
-import styles from './info-button.styl';
+import styles from './info-button.module.styl';
 
 interface Props {
   layer: LayerListItem | null;

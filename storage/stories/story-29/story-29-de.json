@@ -35,11 +35,17 @@
       "shortText": "## Die Welt ernähren\r\n\r\n- Als sich der Mensch entwickelte, nahmen wir unseren Platz in der lokalen Nahrungskette ein.\r\n- Wachsende Bevölkerungen erforderten, dass wir Wege fanden, mehr - und nahrhaftere - Nahrung zu produzieren.\r\n- Seit 10.000 Jahren prägt die Nahrungsmittelproduktion die Landschaft, verändert die Evolutionswege vieler Arten und beeinflusst sogar das Klima der Erde.\r\n- Die Weltbevölkerung liegt heute bei über 8 Milliarden Menschen und wird bis 2050 voraussichtlich auf 10 Milliarden anwachsen.\r\n- \"Null Hunger\" ist das zweite der nachhaltigen Entwicklungsziele der UN.\r\n- Wie wir sicher und nachhaltig genug Nahrung produzieren können, ist eine der wichtigsten Fragen der Menschheit.",
       "images": [
         "assets/story29-image01.jpg",
-        "assets/story29-image04.jpg"
+        "assets/story29-image04.jpg",
+        "assets/story29-image17.jpg",
+        "assets/story29-image14.jpg",
+        "assets/story29-image15.jpg"
       ],
       "imageCaptions": [
         "Feldmuster auf dem zurückgewonnenen Land des Noordoostpolders, Niederlande,\r\nbeobachtet von Copernicus Sentinel-2, 30. Juni 2018 (Copernicus Sentinel Daten 2018)",
-        "Reisfelder in Vietnam. Radardaten des Satelliten Copernicus Sentinel-1 zeigen Veränderungen über drei Monate Ende 2019. Das Oktoberbild ist in rot, der November in grün und der Dezember in blau dargestellt. (Enthält modifizierte Copernicus Sentinel-Daten, 2019, verarbeitet von der ESA)"
+        "Reisfelder in Vietnam. Radardaten des Satelliten Copernicus Sentinel-1 zeigen Veränderungen über drei Monate Ende 2019. Das Oktoberbild ist in rot, der November in grün und der Dezember in blau dargestellt. (Enthält modifizierte Copernicus Sentinel-Daten, 2019, verarbeitet von der ESA)",
+        "Die Region Wheatbelt in Westaustralien ist ein wichtiger Produzent von Weizen, Gerste und Wolle. Dieses multitemporale Infrarotbild des Copernicus Sentinel-2-Satelliten kombiniert Daten von Mai 2019 (rot), September 2019 (grün) und Januar 2020 (blau). (Enthält modifizierte Copernicus-Sentinel-Daten (2019-20), verarbeitet von der ESA)",
+        "Palmöl ist eine hochproduktive Nutzpflanze, die für eine breite Palette von Produkten von Lebensmitteln über Kosmetika bis hin zu Biokraftstoff verwendet wird. Dieses Satellitenbild zeigt große Gebiete des tropischen Regenwaldes auf Borneo, die für die Palmölproduktion gerodet wurden. Bei den braunen Flächen handelt es sich um kürzlich gerodetes Land, bei den hellgrünen Flächen um etablierte Plantagen. (Enthält modifizierte Copernicus-Sentinel-Daten (2019), verarbeitet von der ESA)",
+        "Nördlich von Antananarivo, der Hauptstadt von Madagaskar, erscheinen bewirtschaftete Felder dunkelgrün in diesem Satellitenbild, das von Copernicus Sentinel-2 am 28. September 2017 aufgenommen wurde. (Enthält modifizierte Copernicus Sentinel-Daten (2017), verarbeitet von der ESA)"
       ],
       "imageFits": [
         "cover",
@@ -131,21 +137,21 @@
       "text": "## Präzisionslandwirtschaft\r\n\r\nDer Mensch nutzt derzeit etwa 70 Prozent der eisfreien Landfläche unseres Planeten. Die gute Nachricht ist, dass dieses Land potenziell drei- bis viermal produktiver sein könnte: Wenn wir das Land effizienter nutzen, können wir die Menge der angebauten Nahrungsmittel deutlich erhöhen. Die Weltraumtechnologie, einschließlich der Satelliten, die wir zur Überwachung des Klimas und zur Wettervorhersage nutzen, kann dabei helfen.\r\n\r\nSatelliteninstrumente, die Infrarot-Wellenlängen verwenden, können die Gesundheit von Pflanzen das ganze Jahr über überwachen. Kombiniert man diese Informationen mit Wettervorhersagen und Messungen von z.B. [Bodenfeuchtigkeit](stories/story-21/5), Temperatur der Landoberfläche und Zusammensetzung der Atmosphäre, kann man erkennen, welche Felder wann und in welcher Menge bewässert oder gedüngt werden müssen. Satellitenbeobachtungen können helfen, Ernteverluste nach Extremereignissen zu quantifizieren, was Kleinbauern den Zugang zu Versicherungsleistungen erleichtert. Präzise Satellitennavigation kann auch das Pflügen, Säen, Jäten, die Schädlingsbekämpfung und die Ernte steuern.\r\n\r\nDiese \"Präzisionslandwirtschaft\" kann den Landwirten helfen, ihre Erträge zu optimieren und gleichzeitig die Gefahr zu verringern, dass Süßwasservorräte verbraucht oder Flüsse, Seen und Meere verschmutzt werden. Mit Mobilfunknetzen und Smartphones werden solche Dienste auch für Kleinbauern in abgelegenen Gebieten verfügbar. Landwirte auf der ganzen Welt haben die Möglichkeit, mehr anzubauen und dabei weniger zu verbrauchen, was die Landwirtschaft nicht nur nachhaltiger, sondern auch widerstandsfähiger gegen extreme Ereignisse macht.\r\n\r\nVeränderungen wie diese können uns dabei helfen, das nachhaltige Entwicklungsziel \"Null Hunger\" zu erreichen, einschließlich Ernährungssicherheit, verbesserter Ernährung und nachhaltiger Landwirtschaft, damit jeder in unserer wachsenden Welt genug zu essen hat.",
       "shortText": "## Präzisionslandwirtschaft\r\n\r\n- Das Land, das wir für die Landwirtschaft nutzen, könnte drei- oder viermal so produktiv sein.\r\n- Die Satelliten, mit denen wir das Klima überwachen und das Wetter vorhersagen, können dabei helfen.\r\n- Sie überwachen die Gesundheit der Pflanzen, die Bodenfeuchtigkeit und die Temperatur der Landoberfläche und zeigen uns, welche Felder wann und in welcher Menge bewässert oder gedüngt werden müssen.\r\n- Präzise Satellitennavigation kann das Pflügen, Säen, Jäten, die Schädlingsbekämpfung und die Ernte steuern.\r\n- Satelliten können helfen, Ernteverluste nach Extremereignissen zu quantifizieren, was Kleinbauern den Zugang zu Versicherungsleistungen erleichtert.\r\n- Mobilfunknetze und Smartphones können Kleinbauern solche Dienste auch in abgelegenen Gebieten zugänglich machen.",
       "images": [
-        "assets/story29-image11.jpg",
+        "assets/story29-image16.jpg",
         "assets/story29-image13.jpg",
         "assets/story29-image06.jpg",
         "assets/story29-image07.jpg",
         "assets/story29-image12.jpg"
       ],
       "imageCaptions": [
-        "Die Copernicus-Landoberflächentemperatur-Mission soll 2025 starten und\r\nzielt darauf ab, die Bedürfnisse der Landwirte zu erfüllen, indem sie detaillierte Messungen von\r\nPflanzenstress aufgrund von Trockenheit liefern und ihnen helfen, den Wasserverbrauch effektiver zu steuern. (Airbus)",
+        "Mit Hilfe von Satellitendaten kann die Vitalität der Vegetation während der Vegetationsperiode gemessen werden, um Erträge vorherzusagen und die Ernte zu planen. Links: Satellitenbild im sichtbaren Wellenlängenbereich von Feldern in Belgien von Copernicus Sentinel-2. Rechts: Blattflächenindex, abgeleitet aus den sichtbaren und infraroten Kanälen des Satelliten. (Enthält modifizierte Copernicus-Sentinel-Daten (2016), verarbeitet von der ESA)",
         "Automatische Verarbeitung von Satellitenbildern kann zur Kartierung von Feldgrenzen genutzt werden (ESA/Spacenus)",
         "Ein Landwirt benutzt ein Satellitennavigationssystem in Nordfrankreich.  (ESA)",
         "Die Präzisionslandwirtschaft nutzt Informationen aus verschiedenen Quellen, darunter Sensoren am Boden, am Traktor, in der Luft und im Weltraum, um das Pflanzenmanagement zu steuern.\r\n(Livingimages/iStock)",
         "Prototyp eines landwirtschaftlichen Rovers, der mit Technologie aus dem Mars-Rover-Programm der ESA entwickelt wurde. (ESA/Earth Rover)"
       ],
       "imageFits": [
-        "cover",
+        "contain",
         "cover",
         "cover",
         "cover",

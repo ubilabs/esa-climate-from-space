@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# Les côtes menacées\r\n\r\nLe niveau moyen de la mer s'élève partout dans le monde, menaçant les communautés côtières et l'existence même de pays de faible altitude comme les Kiribati et les Maldives. Le niveau de la mer est un indice du changement climatique car il dépend de plusieurs composantes du système climatique, notamment la température des océans et le comportement des glaciers et des calottes glaciaires.",
       "shortText": "# Les côtes menacées\r\n\r\nLe niveau moyen de la mer s'élève partout dans le monde, menaçant les communautés côtières et l'existence même de pays de faible altitude comme les Kiribati et les Maldives. Le niveau de la mer est un indice du changement climatique car il dépend de plusieurs composantes du système climatique, notamment la température des océans et le comportement des glaciers et des calottes glaciaires.",
-      "images": [
-        "assets/sealevel.jpg"
-      ]
+      "images": ["assets/sealevel.jpg"]
     },
     {
       "type": "image",
@@ -27,38 +25,23 @@
         "Panne d'électricité à New York après l'ouragan Sandy, en octobre 2012. La tempête a coïncidé avec une marée haute \"de printemps\", entraînant une onde de tempête de près de cinq mètres au-dessus de la basse mer moyenne. Des tunnels routiers, des métros et des sous-stations électriques ont été inondés dans le sud de Manhattan, et près de 2 millions de personnes ont été privées d'électricité à travers New York et le New Jersey. (Iwan Baan/Getty Images)",
         "Le barrage anti-tempête de l'Escaut oriental (Oosterscheldekering) fait partie du vaste projet Delta Works, qui protège de la mer la côte sud des Pays-Bas (Rijkswaterstaat-Rens Jacobs)."
       ],
-      "imageFits": [
-        "cover",
-        "cover",
-        "cover",
-        "cover",
-        "cover"
-      ]
+      "imageFits": ["cover", "cover", "cover", "cover", "cover"]
     },
     {
       "type": "video",
       "text": "## La glace fondante\r\n\r\nLe réchauffement de la planète entraîne la fonte des [calottes glaciaires et des glaciers polaires](histoires/story-21/6), ce qui ajoute de l'eau dans les océans. [L'eau qui se réchauffe](stories/story-16/7) se dilate également, ce qui fait monter la hauteur de la surface de la mer. Le niveau moyen des mers s'est élevé d'environ 15 centimètres au cours du siècle dernier et augmente actuellement deux fois plus vite, à raison de 4,8 cm par décennie, soit le taux le plus élevé depuis 3 000 ans. Le rythme s'accélère et l'on s'attend à ce que le niveau moyen de la mer augmente de 60 à 200 cm d'ici 2100, ce qui serait suffisant pour submerger de grandes parties de pays de faible altitude comme les Kiribati.\r\n\r\nLors des tempêtes et des marées de printemps, certaines parties des îles sont déjà régulièrement inondées et les habitants sont habitués à vivre avec les pieds mouillés de temps en temps. La combinaison des marées hautes, de l'élévation du niveau de la mer, des ondes de tempête et des vagues entraîne également une forte érosion côtière. Ces phénomènes mettent à rude épreuve l'espace vital déjà restreint des îles. Certaines îles inhabitées ont déjà disparu et plusieurs villages ont été déplacés vers l'intérieur des terres.\r\n\r\n## Crise du corail\r\n\r\nMais ce n'est pas la seule préoccupation des habitants de Kiribati : l'augmentation des niveaux de dioxyde de carbone dans l'atmosphère entraîne une acidification des océans qui, avec la pollution, constitue une menace pour les récifs coralliens et les stocks de poissons. Avec l'élévation du niveau de la mer, l'eau salée contamine les aquifères d'eau douce et endommage les cultures, ce qui exerce une forte pression sur les réserves de nourriture et d'eau disponibles.\r\n\r\nL'érosion côtière est atténuée à court terme par des digues fabriquées à partir de sacs de sable, de pneus de voiture et de barils de pétrole, et la restauration des forêts de mangrove renforce les défenses côtières naturelles. À plus long terme, il pourrait être possible de rehausser la surface de la terre avec du sable dragué dans les lagons. Toutefois, il n'est pas certain que le corail vivant sur lequel reposent les atolls puisse se développer assez rapidement pour suivre l'augmentation du niveau de la mer. Les récifs sont actuellement loin d'être en bonne santé, et les taux de croissance sont déjà en baisse en raison des pressions exercées par l'augmentation de la température de l'eau, l'acidification des océans, le blanchiment des coraux et la pollution.",
       "shortText": "# La glace fondante\r\n\r\nCauses de l'élévation du niveau de la mer :\r\n\r\n- La fonte des calottes glaciaires et des glaciers, l'expansion thermique des océans.\r\n- 15 cm d'élévation du niveau de la mer au siècle dernier\r\n- augmentation deux fois plus rapide → 4,8 cm par décennie\r\n- la plus rapide depuis 3 000 ans → 60 à 200 cm de plus d'ici 2100\r\n- amplifiée pendant les tempêtes et les marées hautes\r\n- contamination des aquifères d'eau douce par l'eau salée\r\n\r\nDéfenses maritimes à Kiribati :\r\n\r\n- à court terme - sacs de sable, barils de pétrole\r\n- à plus long terme - déplacement des villages vers l'intérieur des terres, plantation de mangroves\r\n- récupération des terres en utilisant du sable dragué dans le lagon ?\r\n\r\nLes récifs coralliens et les stocks de poissons sont également menacés par la hausse de la température de l'eau, le blanchiment des coraux et l'acidification des océans.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
-      "videoId": "EE5EJpUkMkw"
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "videoId": "EE5EJpUkMkw",
+      "videoCaptions": "assets/sealevel.vtt",
+      "videoPoster": "assets/sealevels.jpg",
+      "videoSrc": ["assets/sealevels-web.mp4"]
     },
     {
       "type": "globe",
       "text": "## Les hauts et les bas\r\n\r\nLes satellites d'observation de la Terre peuvent utiliser le radar pour mesurer avec précision la hauteur de la surface de la mer, ce qui nous permet d'étudier comment elle varie dans le temps et à travers le monde. Dans certaines régions, l'élévation du niveau de la mer peut être cinq fois supérieure à la moyenne mondiale. Cela s'explique principalement par le fait que les variations de la quantité de chaleur stockée entraînent une expansion thermique inégale. Ce facteur, ainsi que d'autres, tendent à amplifier l'élévation du niveau de la mer dans les régions tropicales telles que le Pacifique central. Les différences de salinité et de gravité locale jouent également un rôle.\r\n\r\nLes mesures absolues du niveau de la mer montrent la tendance sur des années et des décennies. Les changements d'un mois à l'autre apparaissent plus clairement si l'on calcule les anomalies du niveau de la mer en calculant la différence entre le niveau de chaque mois et un niveau de référence. Sur le globe interactif, ce niveau de référence est la hauteur moyenne de la surface de la mer en chaque point de la période 1993-2009. Parcourez la chronologie pour voir où la mer est inhabituellement haute ou basse par rapport au niveau moyen de la mer pour un mois donné.  \r\n\r\nLes variations les plus extrêmes du niveau de la mer se situent généralement autour de forts courants océaniques, tels que le Gulf Stream dans l'Atlantique Nord et le courant de Kuroshio dans le Pacifique Nord, où le mouvement du courant sur la Terre en rotation provoque une pente à la surface de la mer. Ces courants sont également clairement visibles dans les données de température de surface de la mer, présentées sur l'autre globe.\r\n\r\nIl existe un cycle saisonnier dû à la dilatation thermique : le niveau de la mer est plus élevé en été lorsque la température de surface de la mer augmente. Le niveau de la mer est donc un bon moyen de suivre le [mouvement de la chaleur autour des océans](stories/story-16/0) ainsi que le mouvement de l'eau elle-même. Contrairement aux mesures de la température de la surface de la mer, les mesures du niveau de la mer sont sensibles aux changements intégrés dans la profondeur de l'océan.\r\n\r\nLes globes montrent également des variations d'une année sur l'autre, comme les changements causés par le réchauffement de la surface de l'océan Pacifique pendant les [événements El Niño] (histoires/story-16/6). Consultez les années El Niño de 1997, 2003, 2010 et 2015 pour voir à quel point le niveau de la mer augmente autour de Kiribati, dans le Pacifique central.",
       "shortText": "# Les hauts et les bas\r\n\r\nLes satellites utilisent un radar pour cartographier avec précision la hauteur de la surface de la mer :\r\n\r\n- Dans certaines régions, l'élévation du niveau de la mer est 5 fois supérieure à la moyenne mondiale.\r\n- principalement due à une expansion thermique inégale\r\n- également des différences de salinité et de gravité locale\r\n- amplifiée dans les régions tropicales telles que le Pacifique central\r\n\r\nL'anomalie du niveau de la mer indique l'endroit où le niveau est inhabituellement élevé ou bas par rapport au niveau moyen à long terme de la mer pour un mois donné :\r\n\r\n- variations les plus extrêmes autour des courants océaniques forts, par exemple le Gulf Stream, le courant de Kuroshio.\r\n- cycle saisonnier dû à l'expansion thermique - niveau de la mer plus élevé en été\r\n- cycles climatiques annuels, par exemple El Niño (1997, 2003, 2010, 2015).",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "flyTo": {
         "position": {
           "longitude": 174.75,
@@ -101,26 +84,17 @@
         "# L'élévation du niveau de la mer mesurée par les satellites\r\n\r\nDepuis le début des années 1990, les altimètres satellitaires ont révolutionné notre compréhension de l'élévation du niveau des mers. Non seulement le niveau moyen mondial de la mer a augmenté au cours des 25 dernières années - d'environ 3 cm par décennie - mais le rythme de cette élévation s'accélère. Les satellites ERS et Envisat de l'ESA étaient équipés d'altimètres radar, tout comme CryoSat et Copernicus Sentinel-3. Copernicus Sentinel-6 assure la continuité avec les satellites franco-américains Jason et Topex-Poseidon. (ESA)",
         "# Tendance régionale du niveau de la mer 1993-2015\r\n\r\nUne carte des tendances régionales du niveau de la mer, dérivée de plus de 20 ans d'observations par satellite, montre où le niveau moyen de la mer augmente le plus (rouge), baisse (bleu) ou reste inchangé (gris) (ESA-CCI)."
       ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "cover",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["cover", "contain", "cover", "contain", "contain"]
     },
     {
       "type": "video",
       "text": "## Le budget du niveau de la mer\r\n\r\nPour mesurer avec précision l'élévation du niveau de la mer, en déterminer les causes et analyser les impacts potentiels, nous avons besoin de données cohérentes provenant d'observations effectuées dans le monde entier. Pour identifier les différents facteurs qui contribuent à l'élévation du niveau de la mer, il faut suivre l'eau dans tous ses états (solide, liquide et gazeux), ce qui en fait l'un des défis les plus complexes de la science du climat. [L'initiative sur le changement climatique de l'ESA](stories/story-32/3) a examiné les données satellitaires recueillies depuis les années 1990 sur le niveau de la mer, la température de la surface de la mer et l'épaisseur des calottes polaires, ainsi que des informations sur les glaciers du monde entier remontant aux années 1960.\r\n\r\nOn estime qu'au cours de la décennie 2003-2013, 36 % de l'élévation du niveau de la mer était due à l'eau de fonte des [calottes glaciaires du Groenland et de l'Antarctique](stories/story-15/5) ; 30 % était due à [l'expansion thermique](stories/story-16/0) ; 20 % à [la fonte des glaciers](stories/story-21/6) ; et 10 % était due à [l'eau souterraine extraite des aquifères](stories/story-21/5) à des fins domestiques, industrielles et agricoles qui est finalement déversée dans les océans. Bien que ces contributions suivent toutes une tendance à la hausse, elles varient dans le temps et ne s'additionnent pas toujours pour donner l'élévation totale du niveau de la mer observée. Combler cette lacune dans nos connaissances est connu sous le nom de \"fermeture du budget du niveau de la mer\", et constitue un objectif important pour les climatologues.\r\n\r\nL'intégration de nouvelles données provenant de satellites de l'ESA tels que CryoSat et Copernicus Sentinels-3 et -6 améliorera notre connaissance de cette variable climatique essentielle. Des informations cohérentes et continues provenant de sources multiples nous aideront à mieux comprendre le changement du niveau de la mer et ses impacts, et à évaluer les options d'adaptation pour les populations côtières du monde, y compris les habitants de Kiribati.",
       "shortText": "# Le budget du niveau de la mer\r\n\r\nL'initiative de l'ESA sur le changement climatique utilise des données satellitaires pour étudier les facteurs individuels contribuant à l'élévation du niveau de la mer :\r\n\r\n- le niveau de la mer et l'épaisseur de la calotte glaciaire depuis les années 1990\r\n- la température des océans depuis les années 1980\r\n- informations sur les glaciers depuis les années 1960\r\n\r\nAu cours de la décennie 2003-2013, l'élévation du niveau de la mer a été de :\r\n\r\n- 36 % due à la fonte des calottes glaciaires du Groenland et de l'Antarctique\r\n- 30 % due à la dilatation thermique\r\n- 20 % dus à la fonte des glaciers\r\n- 10 % due à l'extraction des eaux souterraines\r\n\r\nDes informations continues provenant de satellites et d'autres sources nous aideront à mieux comprendre le changement du niveau de la mer et à évaluer les options d'adaptation pour les habitants de Kiribati et les autres populations côtières du monde.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
-      "videoId": "K7JmzmDoo4w"
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "videoId": "K7JmzmDoo4w",
+      "videoCaptions": "assets/sealevel-interview.vtt",
+      "videoPoster": "assets/sealevel-interview-wide.jpg",
+      "videoSrc": ["assets/sealevel-interview-wide-web.mp4"]
     }
   ]
 }

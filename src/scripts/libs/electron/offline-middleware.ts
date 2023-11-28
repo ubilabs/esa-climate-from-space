@@ -61,55 +61,53 @@ const actionsToPersist: ActionToPersist[] = [
 ];
 
 // Saves the specified success actions as a json file on the file system
-export const offlineSaveMiddleware: Middleware = () => (
-  next: Dispatch<AnyAction>
-) => (action: AnyAction) => {
-  const actionToSave = actionsToPersist.find(
-    ({success}) => success === action.type
-  );
+export const offlineSaveMiddleware: Middleware =
+  () => (next: Dispatch<AnyAction>) => (action: AnyAction) => {
+    const actionToSave = actionsToPersist.find(
+      ({success}) => success === action.type
+    );
 
-  if (actionToSave?.save) {
-    saveAction(action);
-  }
+    if (actionToSave?.save) {
+      saveAction(action);
+    }
 
-  return next(action);
-};
+    return next(action);
+  };
 
 // Tries to load persisted success actions in case their error counterpart was
 // dispatched
-export const offlineLoadMiddleware: Middleware = () => (
-  next: Dispatch<AnyAction>
-) => (dispatchedAction: AnyAction) => {
-  const actionToLoad = actionsToPersist.find(
-    ({error}) => error === dispatchedAction.type
-  );
+export const offlineLoadMiddleware: Middleware =
+  () => (next: Dispatch<AnyAction>) => async (dispatchedAction: AnyAction) => {
+    const actionToLoad = actionsToPersist.find(
+      ({error}) => error === dispatchedAction.type
+    );
 
-  // when the incoming action did fail and is one we probably saved before,
-  // try to load it from the filesystem and return the success action instead
-  // of the error action
-  if (actionToLoad?.load) {
-    const filePath = actionToLoad.getFilePath
-      ? actionToLoad.getFilePath(dispatchedAction)
-      : undefined; // eslint-disable-line no-undefined
-    const content = loadAction(actionToLoad.success, filePath);
+    // when the incoming action did fail and is one we probably saved before,
+    // try to load it from the filesystem and return the success action instead
+    // of the error action
+    if (actionToLoad?.load) {
+      const filePath = actionToLoad.getFilePath
+        ? actionToLoad.getFilePath(dispatchedAction)
+        : undefined; // eslint-disable-line no-undefined
+      const content = await loadAction(actionToLoad.success, filePath);
 
-    // persisted data not found -> dispatch original error action
-    if (!content) {
-      return next(dispatchedAction);
+      // persisted data not found -> dispatch original error action
+      if (!content) {
+        return next(dispatchedAction);
+      }
+
+      // if we load the action directly the content is already the complete action
+      // if we load content from a downloaded package we have to create the action
+      // object first with the successActionCreator function
+      const loadedAction = actionToLoad.successActionCreator
+        ? actionToLoad.successActionCreator(dispatchedAction, content)
+        : content;
+
+      if (loadedAction) {
+        return next(loadedAction);
+      }
     }
 
-    // if we load the action directly the content is already the complete action
-    // if we load content from a downloaded package we have to create the action
-    // object first with the successActionCreator function
-    const loadedAction = actionToLoad.successActionCreator
-      ? actionToLoad.successActionCreator(dispatchedAction, content)
-      : content;
-
-    if (loadedAction) {
-      return next(loadedAction);
-    }
-  }
-
-  // return the original error action when not found
-  return next(dispatchedAction);
-};
+    // return the original error action when not found
+    return next(dispatchedAction);
+  };

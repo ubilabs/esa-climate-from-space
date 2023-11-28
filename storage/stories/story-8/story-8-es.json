@@ -16,14 +16,14 @@
       "images": [
         "assets/ozone_large_11.jpg",
         "assets/story8_02.png",
-        "assets/ozone_large_03a.png",
+        "assets/ozone_large_03b.jpg",
         "assets/ozone_large_14.jpg",
         "assets/story8_04.png"
       ],
       "imageCaptions": [
         "Científicos lanzan un globo de gran altura que lleva un equipo de medición de ozono desde la estación Amundsen-Scott del Polo Sur en septiembre de 2013 (Kelli-Ann Bliss/NOAA)",
         "El Sol en luz visible (izquierda) y ultravioleta (derecha), visto por el satélite SOHO el 3 de febrero de 2002 (ESA/NASA)",
-        "El cloro actúa como catalizador de la destrucción del ozono (Planetary Visions)",
+        "# El ciclo catalítico del cloro\r\nEl cloro actúa como catalizador para la destrucción del ozono: (1) El monóxido de cloro reacciona con un átomo de oxígeno, produciendo una molécula de oxígeno y un átomo de cloro altamente reactivo. (2) El átomo de cloro reacciona con el ozono para producir oxígeno y monóxido de cloro. (Planetary Visions)",
         "Un día de observaciones de ozono del ERS-2 GOME. (ESA)",
         "# Ozono total sobre la Antártida\r\nValores totales de ozono sobre la Antártida registrados en la estación de investigación Halley, y por tres sensores de satélite, TOMS, OMI y OMPS (NASA-GSFC)"
       ],
@@ -77,7 +77,12 @@
         "contain",
         "contain"
       ],
-      "videoId": "ovDhWNB6-0A"
+      "videoId": "ovDhWNB6-0A",
+      "videoCaptions": "assets/ozone.vtt",
+      "videoPoster": "assets/ozone-poster.jpg",
+      "videoSrc": [
+        "assets/ozone-web.mp4"
+      ]
     },
     {
       "type": "image",
@@ -86,12 +91,14 @@
       "images": [
         "assets/ozone_data_profile_large.jpg",
         "assets/story8-03.jpg",
+        "assets/story8_05.jpg",
         "assets/aerosol_large_10.jpg",
         "assets/ozone_large_09.png"
       ],
       "imageCaptions": [
         "# Perfil de ozono en la longitud 50° Oeste\r\nPerfil de ozono que muestra una sección a través de la atmósfera desde el nivel del mar hasta una altura de 40 km, centrado en la longitud 50°Oeste, con el polo norte a la izquierda y el polo sur a la derecha. (Observaciones por satélite asimiladas en el modelo de transporte químico TM5.) (Planetary Visions/ESA-CCI)",
         "Dióxido de nitrógeno, un precursor del ozono, sobre Europa en enero de 2020 desde el instrumento TROPOMI en el satélite Sentinel-5P de la ESA (contiene datos modificados de Copernicus Sentinel (2020), procesados por la ESA)",
+        "# Dióxido de nitrógeno sobre China 2019-21\r\nEl promedio mensual de dióxido de nitrógeno troposférico sobre China para febrero de 2019-21, medido por el satélite Copernicus Sentinel-5P, muestra una disminución de la contaminación del aire durante los cierres a nivel nacional impuestos en 2020 para detener la propagación del virus COVID-19. Un año después, los niveles de dióxido de nitrógeno habían vuelto a los niveles previos a la pandemia. (contiene datos modificados de Copernicus Sentinel (2019-21), procesados por la ESA)",
         "El sensor SCIAMACHY de Envisat tiene tres modos de funcionamiento: (1) el modo nadir mira verticalmente por debajo de la nave espacial; (2) el modo limbo mira a través de la atmósfera alejándose del Sol; (3) el modo ocultación mira a través de la atmósfera hacia el Sol. (DLR-IMF)",
         "Satélites y sensores utilizados por el equipo de CCI Ozone para producir mapas combinados de ozono total"
       ],
@@ -114,7 +121,12 @@
         "contain",
         "contain"
       ],
-      "videoId": "uZcU9-0kmlI"
+      "videoId": "uZcU9-0kmlI",
+      "videoCaptions": "assets/ozone-interview.vtt",
+      "videoPoster": "assets/ozone-interview-wide.jpg",
+      "videoSrc": [
+        "assets/ozone-interview-wide-web.mp4"
+      ]
     }
   ]
 }

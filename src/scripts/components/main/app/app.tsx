@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, {FunctionComponent} from 'react';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
 import {IntlProvider} from 'react-intl';
@@ -13,7 +14,7 @@ import Navigation from '../navigation/navigation';
 import {EsaLogo} from '../icons/esa-logo';
 import TimeSlider from '../../layers/time-slider/time-slider';
 import DataSetInfo from '../../layers/data-set-info/data-set-info';
-import {createReduxStore} from './create-redux-store';
+import {store} from './create-redux-store';
 
 import Story from '../../stories/story/story';
 import StoriesSelector from '../../stories/stories-selector/stories-selector';
@@ -24,11 +25,9 @@ import Tracking from '../tracking/tracking';
 import AboutProjectOverlay from '../about-project-overlay/about-project-overlay';
 import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
+import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
-import styles from './app.styl';
-
-// create redux store
-const store = createReduxStore();
+import styles from './app.module.styl';
 
 // create matomo tracking instance
 const matomoInstance = createInstance({
@@ -38,17 +37,16 @@ const matomoInstance = createInstance({
   srcUrl: 'https://matomo-ext.esa.int/matomo.js'
 });
 
-const App: FunctionComponent = () => (
-  <MatomoProvider value={matomoInstance}>
-    <StoreProvider store={store}>
-      <TranslatedApp />
-    </StoreProvider>
-  </MatomoProvider>
-);
-
 const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
+  const {
+    logo: embedLogo,
+    globe_navigation,
+    markers: embedMarkers,
+    time_slider,
+    legend
+  } = useSelector(embedElementsSelector);
 
   const logo = (
     <Link to="/about">
@@ -63,11 +61,15 @@ const TranslatedApp: FunctionComponent = () => {
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
           <Route path="/" exact>
-            {logo}
-            <DataViewer markers={markers} backgroundColor={'#10161A'} />
+            {embedLogo && logo}
+            <DataViewer
+              hideNavigation={!globe_navigation}
+              markers={embedMarkers ? markers : []}
+              backgroundColor={'#10161A'}
+            />
             <Navigation />
-            <TimeSlider />
-            <DataSetInfo />
+            {time_slider && <TimeSlider />}
+            {legend && <DataSetInfo />}
             <LayerSelector />
           </Route>
           <Route path="/about" exact>
@@ -101,5 +103,14 @@ const TranslatedApp: FunctionComponent = () => {
     </Router>
   );
 };
+
+const App: FunctionComponent = () => (
+  // @ts-ignore - MatomoProvider does not include children in props since react 18
+  <MatomoProvider value={matomoInstance}>
+    <StoreProvider store={store}>
+      <TranslatedApp />
+    </StoreProvider>
+  </MatomoProvider>
+);
 
 export default App;

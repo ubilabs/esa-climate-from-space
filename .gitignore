@@ -1,10 +1,11 @@
-node_modules
-dist
-dist-electron
-dist-src-electron
+/node_modules
+/dist
+/dist-electron
+/dist-src-electron
 .vscode
-storage/**/*.zip
-download
+/storage/**/*.zip
+/storage/basemaps
+/download
 *.ipynb
 .DS_Store
 assets/legend-images/

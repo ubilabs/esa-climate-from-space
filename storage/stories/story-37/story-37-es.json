@@ -3,16 +3,16 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Satellites for Peat's Sake \r\n\r\nFlow Country, Scotland",
-      "shortText": "# Satellites for Peat's Sake\r\n\r\nFlow Country, Scotland",
+      "text": "# Satélites para la turba \r\n\r\nFlow Country, Escocia",
+      "shortText": "# Satélites para la turba \r\n\r\nFlow Country, Escocia",
       "images": [
         "assets/story37-image07.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## Flow Country, Scotland \r\n\r\nPeatlands make up just 3% of land globally but capture twice as much carbon dioxide as all forests combined. In healthy bogs, peat moss does not fully decay, and instead slowly builds up to form layers of carbon-rich peat. However, if the bog dries out, or is damaged by fire, the carbon is released – adding to the effects of climate change. The Flow Country is the largest remaining expanse of blanket bog in Europe, and it is estimated that the carbon stored equals 100 years’ worth of Scotland’s fossil fuel emissions. Satellite imagery can be used to create maps of peatlands, measure soil moisture, and detect disturbances such as fires, making it cheaper and easier to monitor and preserve these valuable landscapes. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018, 2019), processed by ESA, CC BY-SA 3.0 IGO",
-      "shortText": "## Flow Country, Scotland \r\n\r\nPeatlands make up just 3% of land globally but capture twice as much carbon dioxide as all forests combined. In healthy bogs, peat moss does not fully decay, and instead slowly builds up to form layers of carbon-rich peat. However, if the bog dries out, or is damaged by fire, the carbon is released – adding to the effects of climate change. The Flow Country is the largest remaining expanse of blanket bog in Europe, and it is estimated that the carbon stored equals 100 years’ worth of Scotland’s fossil fuel emissions. Satellite imagery can be used to create maps of peatlands, measure soil moisture, and detect disturbances such as fires, making it cheaper and easier to monitor and preserve these valuable landscapes. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018, 2019), processed by ESA, CC BY-SA 3.0 IGO",
+      "text": "## Flow Country, Escocia \r\n\r\nLas turberas sólo representan el 3% de la superficie terrestre mundial, pero capturan el doble de dióxido de carbono que todos los bosques juntos. En las turberas sanas, el musgo de turba no se descompone del todo, sino que se acumula lentamente formando capas de turba rica en carbono. Sin embargo, si la turbera se seca o resulta dañada por un incendio, el carbono se libera, lo que agrava los efectos del cambio climático. El Flow Country es la mayor extensión de turberas de manto que queda en Europa, y se calcula que el carbono almacenado equivale a 100 años de emisiones de combustibles fósiles en Escocia. Las imágenes por satélite pueden utilizarse para crear mapas de las turberas, medir la humedad del suelo y detectar perturbaciones como incendios, lo que abaratará y facilitará la vigilancia y conservación de estos valiosos paisajes. \r\n\r\nCréditos: contiene datos modificados de Copernicus Sentinel (2018, 2019), procesados por la ESA, CC BY-SA 3.0 IGO",
+      "shortText": "## Flow Country, Escocia \r\n\r\nLas turberas sólo representan el 3% de la superficie terrestre mundial, pero capturan el doble de dióxido de carbono que todos los bosques juntos. En las turberas sanas, el musgo de turba no se descompone del todo, sino que se acumula lentamente formando capas de turba rica en carbono. Sin embargo, si la turbera se seca o resulta dañada por un incendio, el carbono se libera, lo que agrava los efectos del cambio climático. El Flow Country es la mayor extensión de turberas de manto que queda en Europa, y se calcula que el carbono almacenado equivale a 100 años de emisiones de combustibles fósiles en Escocia. Las imágenes por satélite pueden utilizarse para crear mapas de las turberas, medir la humedad del suelo y detectar perturbaciones como incendios, lo que abaratará y facilitará la vigilancia y conservación de estos valiosos paisajes. \r\n\r\nCréditos: contiene datos modificados de Copernicus Sentinel (2018, 2019), procesados por la ESA, CC BY-SA 3.0 IGO",
       "images": [
         "assets/story37-image01.jpg",
         "assets/story37-image02.jpg",
@@ -21,11 +21,11 @@
         "assets/story37-image06.jpg"
       ],
       "imageCaptions": [
-        "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-        "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-        "Satellites for peat's sake. A massive fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May.",
-        "Satellites for peat's sake. False colour image including the near-infrared channel hihglights healthy vegetation in red and shows the burn scar in dark brown.",
-        "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red."
+        "Satélites para la turba. Este mosaico, adquirido el 28 de mayo de 2018, ofrece una rara vista sin nubes sobre las vastas extensiones del Flow Country escocés.",
+        "Satélites para la turba. Este mapa de alta resolución de la cubierta terrestre derivado de los datos de Copernicus Sentinel-2 muestra la extensión de las turberas en púrpura.",
+        "Satélites para la turba. Un incendio masivo quemó 5.700 hectáreas de turbera en 2019. Esta imagen se tomó el 16 de mayo.",
+        "Satélites para la turba. Imagen en falso color que incluye el canal del infrarrojo cercano que ilumina la vegetación sana en rojo y muestra la cicatriz de la quemadura en marrón oscuro.",
+        "Satélites para la turba. La imagen en falso color que incluye los canales infrarrojos de onda corta destaca el frente de fuego activo en rojo brillante."
       ],
       "imageFits": [
         "contain",
