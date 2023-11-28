@@ -1,0 +1,18 @@
+@require '../../../../variables.styl'
+
+.copyButton
+  flex-direction: row-reverse
+  align-self: flex-start
+  margin: emCalc(8px) emCalc(16px)
+  color: $main
+
+  > svg
+    width: 24px
+    height: 24px
+    fill: $main
+
+.copyButton:hover
+  color: $textWhite
+
+  > svg
+    fill: $textWhite

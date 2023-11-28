@@ -3,16 +3,16 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
-      "shortText": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
+      "text": "# Un glaciar de carreras\r\n\r\nJakobshavn, Groenlandia",
+      "shortText": "# Un glaciar de carreras\r\n\r\nJakobshavn, Groenlandia",
       "images": [
         "assets/story35-image05.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## A Racing Glacier, Jakobshavn, Greenland\r\n\r\nGreenland loses more ice through the Jakobshavn Glacier than from anywhere else on this huge ice sheet. Jakobshavn – one of the fastest moving glaciers in the world – travels up to 40 metres per day. Satellites show that recently it has been flowing more slowly and getting thicker, although it is still losing more ice than it gains. Observations from space are key to monitoring dynamic features such as this. \r\n\r\nCredits: ESA CCI; Polar Geospatial Center; contains modified Copernicus Sentinel data (2019), processed by ESA.",
-      "shortText": "## A Racing Glacier, Jakobshavn, Greenland\r\n\r\nGreenland loses more ice through the Jakobshavn Glacier than from anywhere else on this huge ice sheet. Jakobshavn – one of the fastest moving glaciers in the world – travels up to 40 metres per day. Satellites show that recently it has been flowing more slowly and getting thicker, although it is still losing more ice than it gains. Observations from space are key to monitoring dynamic features such as this. \r\n\r\nCredits: ESA CCI; Polar Geospatial Center; contains modified Copernicus Sentinel data (2019), processed by ESA.",
+      "text": "## Un glaciar de carreras, Jakobshavn, Groenlandia\r\n\r\nGroenlandia pierde más hielo a través del glaciar Jakobshavn que de cualquier otro lugar de esta enorme capa de hielo. Jakobshavn, uno de los glaciares más rápidos del mundo, recorre hasta 40 metros al día. Los satélites muestran que últimamente fluye más despacio y se hace más grueso, aunque sigue perdiendo más hielo del que gana. Las observaciones desde el espacio son fundamentales para vigilar fenómenos dinámicos como éste. \r\n\r\nCréditos: ESA CCI; Polar Geospatial Center; contiene datos modificados de Copernicus Sentinel (2019), procesados por la ESA.",
+      "shortText": "## Un glaciar de carreras, Jakobshavn, Groenlandia\r\n\r\nGroenlandia pierde más hielo a través del glaciar Jakobshavn que de cualquier otro lugar de esta enorme capa de hielo. Jakobshavn, uno de los glaciares más rápidos del mundo, recorre hasta 40 metros al día. Los satélites muestran que últimamente fluye más despacio y se hace más grueso, aunque sigue perdiendo más hielo del que gana. Las observaciones desde el espacio son fundamentales para vigilar fenómenos dinámicos como éste. \r\n\r\nCréditos: ESA CCI; Polar Geospatial Center; contiene datos modificados de Copernicus Sentinel (2019), procesados por la ESA.",
       "images": [
         "assets/story35-image01.jpg",
         "assets/story35-image02.jpg",
@@ -20,10 +20,10 @@
         "assets/story35-image04.jpg"
       ],
       "imageCaptions": [
-        "Jakobshavn: A racing glacier. This satellite image acquired on 11 June 2019 shows the Jakobshavn Glacier, one of the fastest moving lgaciers in the world.",
-        "Jakobshavn: A racing glacier. Archives satellite images are useful to detect long term trends in glacier monitoring.",
-        "Jakobshavn: A racing glacier. Satellites are also used to map elevation and thickness of the ice cap, and monitor its changes over time.",
-        "Jakobshavn: A racing glacier. Ice velocity can be measured thanks to multiple radar acquisitions. It allows scientists to montior each glacier on a regular basis to unerstand both long- and short-term dynamics."
+        "Jakobshavn: un glaciar de carreras. Esta imagen de satélite adquirida el 11 de junio de 2019 muestra el glaciar Jakobshavn, uno de los lgaciares de movimiento más rápido del mundo.",
+        "Jakobshavn: un glaciar de carreras. Las imágenes de satélite de archivo son útiles para detectar tendencias a largo plazo en la vigilancia de glaciares.",
+        "Jakobshavn: un glaciar a toda velocidad. Los satélites también se utilizan para cartografiar la elevación y el grosor de la capa de hielo, y controlar sus cambios a lo largo del tiempo.",
+        "Jakobshavn: Un glaciar de carreras. La velocidad del hielo puede medirse gracias a múltiples adquisiciones de radar. Esto permite a los científicos controlar cada glaciar con regularidad para comprender la dinámica a corto y largo plazo."
       ],
       "imageFits": [
         "contain",

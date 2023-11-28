@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 
 import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 
-import styles from './gallery.styl';
+import styles from './gallery.module.styl';
 
 interface Props {
   imageLayer: GlobeImageLayerData | null;

@@ -1,0 +1,78 @@
+@require '../../../../variables.styl'
+
+.story
+  display: flex
+  flex-direction: column
+  height: 100%
+
+.main
+  position: relative
+  display: flex
+  flex-direction: row
+  overflow: hidden
+  height: 100%
+
+  > *
+    flex-grow: 1
+    width: 50%
+
+.rightSideComponent
+  height: 100%
+
+.globeContainer
+  position: relative
+  display: flex
+  flex-direction: column
+  height: 100%
+  background-color: $plainBlack
+
+.layerDetails
+  position: absolute
+  right: 0
+  bottom: 0
+  left: 0
+  padding: inherit
+
+.storySlider
+  position: unset
+  padding: emCalc(40px) 0
+  background: none
+
+  > div
+    min-width: 25%
+    width: 60%
+
+.layerDescription
+  position: unset
+  padding-right: 0
+  min-height: $storyCaptionHeight
+
+@media screen and (max-width: 1025px)
+  .layerDetails
+    height: inherit
+    background: none
+    pointer-events: none
+
+    > *
+      position: relative
+      z-index: 1
+      pointer-events: all
+
+  .storySlider
+    position: absolute
+    right: 0
+    bottom: 0
+    padding: emCalc(40px) 0 emCalc(20px)
+
+@media screen and (max-width: 480px)
+  .main
+    display: flex
+    flex-direction: column
+    overflow-y: auto
+
+    > :last-child
+      height: 350px
+
+    > *
+      padding: emCalc(10px) emCalc(25px) 0 emCalc(25px)
+      width: inherit

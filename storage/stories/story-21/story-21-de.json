@@ -15,18 +15,24 @@
       "shortText": "## Queensland, 2010\r\n\r\n- Queensland hatte den nassesten Dezember seit Beginn der Aufzeichnungen.\r\n- Überschwemmungen im Nordosten Australiens 2010-11, von denen 200.000 Menschen betroffen waren und 35 starben.\r\n- Ursache war ein starkes La-Niña-Klimaereignis im zentralen Pazifik.\r\n- Es sammelte sich so viel Wasser an Land an, dass der mittlere globale Meeresspiegel um 5 mm sank.\r\n- Dies zeigt, wie Ozean, Atmosphäre und Land durch den Wasserkreislauf miteinander verbunden sind.\r\n- Er ist eine Schlüsselkomponente des Klimas der Erde.",
       "images": [
         "assets/story21-image01.jpg",
-        "assets/story21-image06.png"
+        "assets/story21-image06.png",
+        "assets/story21-image12.jpg",
+        "assets/story21-image11.jpg",
+        "assets/story21-image13.jpg"
       ],
       "imageCaptions": [
         "Eine Frau ist während einer Sturzflut in Toowoomba, Queensland, Australien, am 10. Januar 2011, eingeklemmt auf dem Dach ihres Autos  (T Swinson)",
-        "# Globaler mittlerer Meeresspiegel\r\nDer von Satelliten beobachtete globale Meeresspiegel zeigt eine steigende Tendenz von 3,3 mm pro Jahr, aber einen Rückgang im Jahr 2011 aufgrund der großen Menge an überschüssigem Wasser an Land.  (ESA-CCI/Copernicus Dienst zur Überwachung der Meeresumwelt)"
+        "# Globaler mittlerer Meeresspiegel\r\nDer von Satelliten beobachtete globale Meeresspiegel zeigt eine steigende Tendenz von 3,3 mm pro Jahr, aber einen Rückgang im Jahr 2011 aufgrund der großen Menge an überschüssigem Wasser an Land.  (ESA-CCI/Copernicus Dienst zur Überwachung der Meeresumwelt)",
+        "Copernicus Sentinel-1 Radaraufnahmen von New South Wales, Australien, vom 7. und 19. März 2021 zeigen ausgedehnte überschwemmte Gebiete in Blau. Gebiete, die im Vorjahr durch Waldbrände verbrannt wurden, sind in Braun dargestellt. (Enthält modifizierte Copernicus-Sentinel-Daten (2021), verarbeitet von ESA / NASA MODIS)",
+        "Pakistan wurde im August 2022 von den schlimmsten Überschwemmungen aller Zeiten heimgesucht, nachdem extrem starke Monsunregenfälle, die durch den sich rasch erwärmenden Indischen Ozean ausgelöst wurden, mit dem sommerlichen Abschmelzen der Gletscher im Himalaya zusammenfielen. Etwa ein Drittel des Landes wurde überschwemmt, was mehr als 1100 Menschen das Leben kostete und 33 Millionen Menschen in Mitleidenschaft zog. Dieses Copernicus Sentinel-1-Radarbild von Süd- und Zentralpakistan zeigt die unter Wasser stehenden Gebiete in Blau und Schwarz. (Enthält modifizierte Copernicus-Sentinel-Daten (2022), verarbeitet von der ESA)",
+        "Nach Monaten mit hohen Temperaturen und geringen Niederschlägen erreichte der Wasserstand des italienischen Flusses Po im Jahr 2022 einen Rekordtiefstand. Die Dürre in Norditalien beeinträchtigte die landwirtschaftliche Produktion der Region, die häufig auf Bewässerung angewiesen ist. Diese Sequenz von Satellitenbildern von Copernicus Sentinel-2 zeigt, dass der Po im Jahr 2020 ein breiter, sedimentreicher Fluss war. Im Jahr 2022 hingegen war ein Großteil seines Flussbett als helle Sandbänke sichtbar.  (Enthält modifizierte Copernicus-Sentinel-Daten (2020-22), verarbeitet von der ESA)"
       ],
       "imageFits": [
         "cover",
         "contain",
-        "cover",
-        "cover",
-        "cover"
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
@@ -40,7 +46,12 @@
         "cover",
         "cover"
       ],
-      "videoId": "EkQhz7uYtcM"
+      "videoId": "EkQhz7uYtcM",
+      "videoCaptions": "assets/WaterCycle.vtt",
+      "videoPoster": "assets/watercycle.jpg",
+      "videoSrc": [
+        "assets/watercycle-web.mp4"
+      ]
     },
     {
       "type": "video",
@@ -53,7 +64,11 @@
         "cover",
         "cover"
       ],
-      "videoId": "1AMhjd94r6U"
+      "videoId": "1AMhjd94r6U",
+      "videoPoster": "assets/watervapour.jpg",
+      "videoSrc": [
+        "assets/watervapour-web.mp4"
+      ]
     },
     {
       "type": "globe",
@@ -97,7 +112,12 @@
         "cover",
         "cover"
       ],
-      "videoId": "LXyHZHaFjk4"
+      "videoId": "LXyHZHaFjk4",
+      "videoCaptions": "assets/soilmoisture.vtt",
+      "videoPoster": "assets/soilmoisture.jpg",
+      "videoSrc": [
+        "assets/soilmoisture-web.mp4"
+      ]
     },
     {
       "type": "video",
@@ -110,25 +130,34 @@
         "cover",
         "cover"
       ],
-      "videoId": "Eahj21_RM1M"
+      "videoId": "Eahj21_RM1M",
+      "videoCaptions": "assets/glaciers.vtt",
+      "videoPoster": "assets/glaciers.jpg",
+      "videoSrc": [
+        "assets/glaciers-web.mp4"
+      ]
     },
     {
       "type": "image",
       "text": "## Der Weg des Wassers\r\n\r\nEs ist schwierig, den gesamten Wasserkreislauf zu verfolgen, da Wasser so leicht zwischen verschiedenen Zuständen und Orten wechselt. Die globale Sicht, die Satelliten bieten, hilft dabei, und Wissenschaftler nutzen eine breite Palette von Fernerkundungstechnologien, um Wasser aus dem Weltraum zu überwachen. Die [Initiative Klimawandel](stories/story-32/3) der Europäischen Weltraumorganisation nutzt dieses Satellitendatenarchiv, um einige der wichtigsten Klimavariablen zu analysieren. Mehr als die Hälfte der Variablen, die vom Weltraum aus gemessen werden können, haben mit dem Wasserkreislauf zu tun oder beeinflussen ihn: Temperatur und Salzgehalt der Meeresoberfläche, Meeresspiegel, Seegang, Farbe der Ozeane, Wasserdampf, Wolken, Aerosole, Schnee, Bodenfeuchte, Seen, Gletscher, Eisschilde, Permafrost und Meereis.\r\n\r\nDas Zusammensetzen dieser Puzzleteile hilft uns zu verstehen, wie der Wasserkreislauf funktioniert, wie er sich auf das Klima auswirkt und wie sich Veränderungen des Klimas auf den Wasserkreislauf auswirken könnten. Ein wärmeres Klima bedeutet mehr Verdunstung und mehr Niederschlag in Form von Regen anstelle von Schnee. Wir können bereits große Veränderungen in der Verteilung des Wassers zwischen den verschiedenen Reservoirs der Hydrosphäre feststellen. Einige dieser Umverteilungen sind vorübergehend, wie die Verlagerung von Meer- zu Landwasser im Gefolge der La Niña 2010, andere sind dauerhaft, wie die Verlagerung von Land- und Meereis zu Meerwasser. Obwohl der Wasserkreislauf größtenteils durch die Sonnenwärme angetrieben wird, gibt es Anzeichen dafür, dass er durch die Erwärmung des Klimas beschleunigt wird.",
       "shortText": "##  Der Weg des Wassers\r\n\r\nWasser wechselt leicht zwischen verschiedenen Aggregatzuständen und Orten und ist daher schwer zu verfolgen. Wissenschaftler nutzen eine breite Palette von Fernerkundungstechnologien, um Wasser vom Weltraum aus zu überwachen.\r\n \r\nMehr als die Hälfte der CCI-Klimavariablen der ESA betreffen oder beeinflussen den Wasserkreislauf:\r\n- Temperatur der Meeresoberfläche, Salzgehalt, Meeresspiegel, Seegang, Farbe des Ozeans\r\n- Wasserdampf, Wolken, Aerosole\r\n- Schnee, Bodenfeuchte, Seen, Gletscher, Eisschilde, Permafrost, Meereis\r\n\r\nEin wärmeres Klima bedeutet mehr Verdunstung, mehr Niederschläge als Regen statt als Schnee und mehr Schmelzen.\r\n- Wir können bereits große Verschiebungen zwischen den verschiedenen Reservoirs des Wasserkreislaufs feststellen.\r\n- Einige davon sind vorübergehend, wie die Verlagerung vom Meer zum Land nach der La-Niña-Krise 2010.\r\n- Andere sind dauerhaft, wie die Verlagerung vom Land und Meereis zum Meerwasser.\r\n- Es gibt Anzeichen dafür, dass der Wasserkreislauf durch die Erwärmung des Klimas überlastet wird.",
       "images": [
-        "assets/story21-image03.jpg",
-        "assets/story21-image07.jpg",
         "assets/story21-image04.png",
+        "assets/story21-image14.jpg",
+        "assets/story21-image07.jpg",
+        "assets/story21-image03.jpg",
         "assets/story21-image05.png"
       ],
       "imageCaptions": [
-        "Die Billionen Tonnen Eis, die jedes Jahr verloren gehen, reichen aus, um einen\r\n 10 Kilometer großen Eiswürfel zu bilden, der hier in der Nähe von Manhattan zu sehen ist.\r\nDer Eisverlust von Gletschern und Eisschilden an Land trägt zum Anstieg des Meeresspiegels bei,\r\nMeereis und schwimmendes Schelfeis hingegen nicht. (Planetary Visions / ESA / NASA)",
-        "# Kummulative Veränderung der Gletschereismasse 1961-2016\r\nMehr als neun Billionen Tonnen Gletschereis sind im letzten halben Jahrhundert verloren gegangen (ESA, angepasst von Zemp et al. (2019) Nature, und Daten mit freundlicher Genehmigung des World Glacier Monitoring Service)",
         "# Globale Wasserkreislaufflüsse\r\nGlobale Wasserkreislaufflüsse, gemessen in tausend Kubikkilometern pro Jahr (TU Wien/W Dorigo)",
+        "Auf diesem Satellitenbild des östlichen Himalaya aus dem Jahr 2018 sind die Folgen von zwei großen Gletscherlawinen zu sehen. Auch im Kaukasus, in den Anden und in den Alpen ist es in den letzten Jahren zu plötzlichen Gletscherabbrüchen gekommen. Die Erwärmung des Klimas, das Auftauen von Permafrostböden und das Eindringen von Schmelzwasser gehören zu den Ursachen für solche Ereignisse.\r\n(Enthält modifizierte Copernicus Sentinel-2-Daten (2017-18), verarbeitet vom CCI Glacier Team und der ESA)",
+        "# Kummulative Veränderung der Gletschereismasse 1961-2016\r\nMehr als neun Billionen Tonnen Gletschereis sind im letzten halben Jahrhundert verloren gegangen (ESA, angepasst von Zemp et al. (2019) Nature, und Daten mit freundlicher Genehmigung des World Glacier Monitoring Service)",
+        "Die Billionen Tonnen Eis, die jedes Jahr verloren gehen, reichen aus, um einen\r\n 10 Kilometer großen Eiswürfel zu bilden, der hier in der Nähe von Manhattan zu sehen ist.\r\nDer Eisverlust von Gletschern und Eisschilden an Land trägt zum Anstieg des Meeresspiegels bei,\r\nMeereis und schwimmendes Schelfeis hingegen nicht. (Planetary Visions / ESA / NASA)",
         "# In den Komponenten des Klimasystems gespeicherte Energie\r\nDie seit 1971 in verschiedenen Komponenten des Klimasystems der Erde gespeicherte Wärmeenergie, gemessen in Zettajoule (1 ZJ ist 10^21 J oder eine Milliarde Milliarden J). Das Wasser in den Weltmeeren speichert weit mehr Wärme als die Atmosphäre und das Land.\r\n(UN IPCC, 2013)"
       ],
       "imageFits": [
+        "contain",
+        "contain",
         "contain",
         "contain",
         "contain"

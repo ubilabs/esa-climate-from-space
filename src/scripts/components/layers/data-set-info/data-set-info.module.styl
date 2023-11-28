@@ -1,0 +1,47 @@
+@require '../../../../variables.styl'
+
+.dataSetInfo
+  position: absolute
+  bottom: emCalc(140px)
+  display: flex
+  flex-direction: row
+  width: 100%
+  pointer-events: none
+
+  > :first-child
+    justify-content: flex-start
+
+.dataSetContent
+  top: emCalc(5px)
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  padding: emCalc(22px)
+  width: 100%
+
+.title
+  margin: 0
+  color: $textWhite
+  text-shadow: 0px 0px 2px $black
+  font-weight: normal
+  font-size: 1em
+  user-select: none
+
+.buttons
+  display: flex
+  justify-content: center
+  pointer-events: all
+
+@media screen and (max-width: 768px)
+  .dataSetInfo
+    top: 10%
+    bottom: initial
+
+@media screen and (max-width: 480px)
+  .dataSetContent
+    align-items: flex-start
+    padding: emCalc(10px)
+
+  .title
+    text-align: center
+    font-size: 0.8em
