@@ -11,7 +11,7 @@ import config from '../../../config/main';
 import {StoryListItem as StoryListItemType} from '../../../types/story-list';
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './story-list-item.styl';
+import styles from './story-list-item.module.styl';
 
 interface Props {
   story: StoryListItemType;

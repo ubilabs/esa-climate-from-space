@@ -3,25 +3,25 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Urban Sprawl\r\n\r\nCairo, Egypt",
-      "shortText": "# Urban Sprawl\r\n\r\nCairo, Egypt",
+      "text": "# La expansión urbana\r\n\r\nEl Cairo, Egipto",
+      "shortText": "# La expansión urbana\r\n\r\nEl Cairo, Egipto",
       "images": [
         "assets/story33-image04.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
-      "shortText": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
+      "text": "## El Cairo, expansión urbana\r\n\r\n30 años de El Cairo: La capital egipcia en expansión. La primera imagen fue captada por el satélite estadounidense Landsat-5 en 1988, la segunda en 2018 y la tercera en 2021, ambas de la misión Sentinel-2 de Copernicus. Las imágenes por satélite son útiles para vigilar el desarrollo urbano a gran escala. \r\n\r\nCréditos: contiene datos modificados de Copernicus Sentinel (2018), procesados por la ESA. USGS/ESA",
+      "shortText": "## El Cairo, expansión urbana\r\n\r\n30 años de El Cairo: La capital egipcia en expansión. La primera imagen fue captada por el satélite estadounidense Landsat-5 en 1988, la segunda en 2018 y la tercera en 2021, ambas de la misión Sentinel-2 de Copernicus. Las imágenes por satélite son útiles para vigilar el desarrollo urbano a gran escala. \r\n\r\nCréditos: contiene datos modificados de Copernicus Sentinel (2018), procesados por la ESA. USGS/ESA",
       "images": [
         "assets/story33-image01.jpg",
         "assets/story33-image02.jpg",
         "assets/story33-image03.jpg"
       ],
       "imageCaptions": [
-        "This image was acquired on 14 August 1988 and shows the city of Cairo and its surroundings more than 30 years ago",
-        "This image was acquired on 2 August 2018 and shows the city of Cairo and its surroundings",
-        "This image was acquired on 31 August 2021 and shows the city of Cairo and its surroundings"
+        "Esta imagen fue tomada el 14 de agosto de 1988 y muestra la ciudad de El Cairo y sus alrededores hace más de 30 años.",
+        "Esta imagen fue adquirida el 2 de agosto de 2018 y muestra la ciudad de El Cairo y sus alrededores",
+        "Esta imagen fue tomada el 31 de agosto de 2021 y muestra la ciudad de El Cairo y sus alrededores"
       ],
       "imageFits": [
         "cover",

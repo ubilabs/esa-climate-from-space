@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {FormattedMessage} from 'react-intl';
 import cx from 'classnames';
 
-import styles from './button.styl';
+import styles from './button.module.styl';
 
 interface Props {
   label?: string;

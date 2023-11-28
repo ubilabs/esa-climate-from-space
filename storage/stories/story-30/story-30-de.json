@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# Bedrohte Küsten\r\n\r\nDer mittlere Meeresspiegel steigt weltweit und bedroht Küstengebiete auf der ganzen Welt und ganz konkret die Existenz von tief gelegenen Ländern wie Kiribati und den Malediven. Der Meeresspiegel ist ein Indikator für den Klimawandel, da er von mehreren Komponenten des Klimasystems abhängt, wie der Meerestemperatur oder von Gletschern und Eisschilden.",
       "shortText": "# Bedrohte Küsten\r\n\r\nDer mittlere Meeresspiegel steigt weltweit und bedroht Küstengebiete auf der ganzen Welt und ganz konkret die Existenz von tief gelegenen Ländern wie Kiribati und den Malediven. Der Meeresspiegel ist ein Indikator für den Klimawandel, da er von mehreren Komponenten des Klimasystems abhängt, wie der Meerestemperatur oder von Gletschern und Eisschilden.",
-      "images": [
-        "assets/sealevel.jpg"
-      ]
+      "images": ["assets/sealevel.jpg"]
     },
     {
       "type": "image",
@@ -27,38 +25,23 @@
         "Stromausfall in New York nach dem Wirbelsturm Sandy, Oktober 2012. Der Sturm fiel mit einer Springflut zusammen, was zu einer Sturmflut von fast fünf Metern über dem mittleren Niedrigwasser führte. Straßentunnel, U-Bahnen und Umspannwerke wurden in Lower Manhattan überflutet, und fast 2 Millionen Menschen waren in New York und New Jersey ohne Strom. (Iwan Baan/Getty Images)",
         "Das Sturmflutwehr Oosterscheldekering ist Teil des umfassenden Projekts Delta Works, das die südliche niederländische Küste vor dem Meer schützt (Rijkswaterstaat-Rens Jacobs)"
       ],
-      "imageFits": [
-        "cover",
-        "cover",
-        "cover",
-        "cover",
-        "cover"
-      ]
+      "imageFits": ["cover", "cover", "cover", "cover", "cover"]
     },
     {
       "type": "video",
       "text": "## Schmelzendes Eis\r\n\r\nDie globale Erwärmung führt dazu, dass [polare Eisschilde und Gletscher](stories/story-21/6) schmelzen und den Ozeanen mehr Wasser zuführen. [Das sich erwärmende Wasser](stories/story-16/7) dehnt sich auch aus, wodurch der Meeresspiegel ansteigt. Der mittlere Meeresspiegel ist im letzten Jahrhundert um etwa 15 Zentimeter gestiegen und steigt derzeit mehr als doppelt so schnell - mit 4,8 cm pro Jahrzehnt - so schnell wie seit 3.000 Jahren nicht mehr. Die Geschwindigkeit nimmt weiter zu, und es wird erwartet, dass der mittlere Meeresspiegel bis zum Jahr 2100 um 60 bis 200 cm ansteigen wird. Das ist ausreichend, um große Teile tief liegender Länder wie Kiribati zu überfluten.\r\n\r\nBei Stürmen und Springfluten werden Teile der Inseln bereits regelmäßig überschwemmt. Die Menschen sind es gewohnt, von Zeit zu Zeit mit nassen Füßen zu leben. Die Kombination aus hohen Gezeiten, dem Anstieg des Meeresspiegels, Sturmfluten und Wellen führt außerdem zu starker Küstenerosion. Dadurch wird der ohnehin schon knappe Lebensraum auf den Inseln noch weiter eingeschränkt. Einige unbewohnte Inseln sind bereits verloren gegangen, und mehrere Dörfer wurden ins Landesinnere verlegt.\r\n\r\n## Korallenkrise\r\n\r\nDoch das ist nicht die einzige Sorge der Menschen in Kiribati: Der steigende Kohlendioxidgehalt in der Atmosphäre führt zu einer Versauerung der Ozeane, die zusammen mit der Verschmutzung eine Bedrohung für die Korallenriffe und die Fischbestände darstellt. Mit dem Anstieg des Meeresspiegels verunreinigt das Salzwasser die Süßwasserquellen und schädigt die Ernten, was die verfügbaren Lebensmittel- und Wasservorräte stark belastet.\r\n\r\nKurzfristig wird die Küstenerosion durch Dämme aus Sandsäcken, Autoreifen und Ölfässern gemildert, und die Wiederherstellung der Mangrovenwälder stärkt den natürlichen Küstenschutz. Längerfristig könnte es möglich sein, die Landoberfläche mit aus den Lagunen gebaggertem Sand anzuheben. Es ist jedoch unklar, ob die lebenden Korallen, die den Atollen zugrunde liegen, schnell genug wachsen können, um mit dem steigenden Meeresspiegel Schritt zu halten. Die Riffe sind derzeit alles andere als gesund, und die Wachstumsraten gehen bereits aufgrund der Belastungen durch erhöhte Wassertemperaturen, Ozeanversauerung, Korallenbleiche und Verschmutzung zurück.",
       "shortText": "# Schmelzendes Eis\r\n\r\nUrsachen für den Anstieg des Meeresspiegels:\r\n\r\n- Abschmelzende Eisschilde und Gletscher, thermische Ausdehnung der Ozeane\r\n- 15 cm Meeresspiegelanstieg im letzten Jahrhundert\r\n- Anstieg jetzt doppelt so schnell → 4,8 cm pro Jahrzehnt\r\n- der schnellste Anstieg seit 3.000 Jahren → 60-200 cm höher bis 2100\r\n- Verstärkt bei Stürmen und Flutkatastrophen\r\n- Salzwasserkontamination von Süßwasser-Quellen\r\n\r\nSeeverteidigungsanlagen in Kiribati:\r\n\r\n- Kurzfristig - Sandsäcke, Ölfässer\r\n- längerfristig - Verlegung von Dörfern ins Landesinnere, Anpflanzung von Mangroven\r\n- Landgewinnung mit aus der Lagune gebaggertem Sand?\r\n\r\nKorallenriffe und Fischbestände sind auch durch höhere Wassertemperaturen, Korallenbleiche und Ozeanversauerung bedroht.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
-      "videoId": "EE5EJpUkMkw"
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "videoId": "EE5EJpUkMkw",
+      "videoCaptions": "assets/sealevel.vtt",
+      "videoPoster": "assets/sealevels.jpg",
+      "videoSrc": ["assets/sealevels-web.mp4"]
     },
     {
       "type": "globe",
       "text": "## Hochs und Tiefs\r\n\r\nErdbeobachtungssatelliten können mit Hilfe von Radar die Höhe des Meeresspiegels genau messen. So können wir weltweit die Veränderung im Laufe erforschen. In einigen Gebieten kann der Anstieg des Meeresspiegels das Fünffache des globalen Durchschnitts betragen. Das liegt vor allem daran, dass Schwankungen in der gespeicherten Wärmemenge zu einer ungleichmäßigen thermischen Ausdehnung führen. Dieser und andere Effekte verstärken den Anstieg des Meeresspiegels in tropischen Regionen wie dem Zentralpazifik. Unterschiede im Salzgehalt und in der lokalen Schwerkraft spielen ebenfalls eine Rolle.\r\n\r\nAbsolute Messungen des Meeresspiegels zeigen den Trend über Jahre und Jahrzehnte. Veränderungen von Monat zu Monat werden deutlicher, wenn wir Anomalien berechnen. Anomalien ergeben sich aus der Differenz zwischen dem Pegel des jeweiligen Monats und einem Referenzpegel. Auf dem interaktiven Globus ist die Referenzgröße die durchschnittliche Höhe der Meeresoberfläche im Zeitraum von 1993 bis 2009. Gehen Sie die Zeitachse durch, um zu sehen, wo der Meeresspiegel im Vergleich zum mittleren Meeresspiegel für einen bestimmten Monat ungewöhnlich hoch oder niedrig ist.  \r\n\r\nDie extremsten Schwankungen des Meeresspiegels treten in der Regel in der Nähe starker Meeresströmungen auf, wie z. B. des Golfstroms im Nordatlantik und des Kuroshio-Stroms im Nordpazifik. Hier verursacht die Bewegung der Strömung auf der sich drehenden Erde ein Gefälle an der Meeresoberfläche. Diese Strömungen sind auch deutlich in den Daten zur Meeresoberflächentemperatur zu erkennen, die auf der anderen Weltkugel dargestellt sind.\r\n\r\nAufgrund der thermischen Ausdehnung gibt es einen jahreszeitlichen Zyklus: Der Meeresspiegel ist im Sommer höher, wenn die Temperatur der Meeresoberfläche steigt. Der Meeresspiegel ist daher eine gute Möglichkeit, die [Wärmebewegung in den Ozeanen](stories/story-16/0) sowie die Bewegung des Wassers selbst zu verfolgen. Im Gegensatz zu Messungen der Temperatur der Meeresoberfläche reagieren Messungen des Meeresspiegels empfindlich auf Veränderungen, die sich über die ganze Tiefe des Ozeans erstrecken.\r\n\r\nDie Weltkugeln zeigen auch Schwankungen zwischen den Jahren, wie z. B. Veränderungen, die durch die Erwärmung der Oberfläche des Pazifischen Ozeans während [El-Niño-Ereignissen](stories/story-16/6) verursacht werden. Schauen Sie sich die El-Niño-Jahre 1997, 2003, 2010 und 2015 an, um zu sehen, wie stark der Meeresspiegel um Kiribati im Zentralpazifik ansteigt.",
       "shortText": "# Hochs und Tiefs\r\n\r\nSatelliten nutzen Radar, um die Höhe der Meeresoberfläche genau zu kartieren:\r\n\r\n- in einigen Gebieten Anstieg des Meeresspiegels auf das 5-fache des globalen Durchschnitts\r\n- hauptsächlich aufgrund ungleichmäßiger thermischer Ausdehnung\r\n- auch Unterschiede im Salzgehalt und der lokalen Schwerkraft\r\n- Verstärkung in tropischen Regionen wie dem Zentralpazifik\r\n\r\nDie Anomalie des Meeresspiegels zeigt an, wo der Pegel im Vergleich zum langfristigen Mittelwert des Meeresspiegels für einen bestimmten Monat ungewöhnlich hoch oder niedrig ist:\r\n\r\n- extremste Schwankungen um starke Meeresströmungen, z. B. Golfstrom, Kuroshio-Strom\r\n- Saisonaler Zyklus aufgrund thermischer Ausdehnung - höherer Meeresspiegel im Sommer\r\n- Klimazyklen von Jahr zu Jahr, z. B. El Niño (1997, 2003, 2010, 2015)",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "flyTo": {
         "position": {
           "longitude": 174.75,
@@ -101,26 +84,17 @@
         "# Der Meeresspiegelanstieg wird von Satelliten gemessen\r\n\r\nSeit den frühen 1990er Jahren haben Satellitenhöhenmesser unser Verständnis des Meeresspiegelanstiegs revolutioniert. Der mittlere globale Meeresspiegel ist in den letzten 25 Jahren nicht nur gestiegen - um etwa 3 cm pro Jahrzehnt -, sondern er steigt auch immer schneller an. Die ESA-Satelliten ERS und Envisat waren mit Radaraltimetern ausgestattet, ebenso wie CryoSat und Copernicus Sentinel-3. Copernicus Sentinel-6 sorgt für Kontinuität mit den US-amerikanisch-französischen Satelliten Jason und Topex-Poseidon. (ESA)",
         "# Regionaler Meeresspiegel-Trend 1993-2015\r\n\r\nEine Karte der regionalen Trends des Meeresspiegels, abgeleitet aus mehr als 20 Jahren Satellitenbeobachtungen, zeigt, wo der mittlere Meeresspiegel am stärksten steigt (rot), fällt (blau) oder unverändert bleibt (grau) (ESA-CCI)"
       ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "cover",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["cover", "contain", "cover", "contain", "contain"]
     },
     {
       "type": "video",
       "text": "## Das Meeresspiegel-Budget\r\n\r\nUm den Anstieg des Meeresspiegels genau zu messen, seine Ursachen zu benennen und die möglichen Auswirkungen zu analysieren, benötigen wir konsistente Daten aus Beobachtungen auf der ganzen Welt. Die Identifizierung der einzelnen Faktoren, die zum Anstieg des Meeresspiegels beitragen, erfordert die Verfolgung des Wassers in all seinen Zuständen - fest, flüssig und gasförmig - auf der ganzen Welt. Das ist eine der kompliziertesten Herausforderungen der Klimawissenschaft. Die [Klimawandel-Initiative](stories/story-32/3) der ESA hat Aufzeichnungen von Satellitendaten untersucht, die seit den 1990er Jahren über den Meeresspiegel, die Temperatur der Meeresoberfläche und die Dicke der polaren Eisschilde gesammelt wurden; sowie Informationen über die Gletscher der Welt, die bis in die 1960er Jahre zurückreichen.\r\n\r\nSchätzungsweise 36 % des Anstiegs des Meeresspiegels im Zeitraum 2003-2013 sind auf das Schmelzwasser der [grönländischen und antarktischen Eisschilde](stories/story-15/5) zurückzuführen, 30 % auf [thermische Ausdehnung](stories/story-16/0), 20 % auf [schmelzende Gletscher](stories/story-21/6). 10 % sind auf für den häuslichen, industriellen und landwirtschaftlichen Gebrauch [aus Grundwasserschichten entnommenem Grundwasser](stories/story-21/5) zurückzuführen, das letztlich in die Ozeane abgeleitet wird. Obwohl die Beiträge alle einem Aufwärtstrend folgen, variieren sie im Laufe der Zeit und summieren sich nicht immer zum beobachteten Gesamtanstieg des Meeresspiegels. Die Überbrückung dieser Wissenslücke wird als Schließung des Meeresspiegelbudgets bezeichnet und ist ein wichtiger Schwerpunkt für Klimaforscher.\r\n\r\nDie Integration neuer Daten von ESA-Satelliten wie CryoSat und Copernicus Sentinels-3 und -6 wird unser Wissen über diese wichtige Klimavariable verbessern. Konsistente und kontinuierliche Informationen aus verschiedenen Quellen werden uns helfen, den Anstieg des Meeresspiegels und seine Auswirkungen besser zu verstehen und die Anpassungsmöglichkeiten für die Küstenbevölkerung der Welt, einschließlich der Einwohner Kiribatis, zu bewerten.",
       "shortText": "# Das Meeresspiegel-Budget\r\n\r\nDie ESA-Initiative zum Klimawandel nutzt Satellitendaten, um die einzelnen Faktoren zu untersuchen, die zum Anstieg des Meeresspiegels beitragen:\r\n\r\n- Meeresspiegel und Eisschilddicke seit den 1990er Jahren\r\n- Meerestemperatur seit den 1980er Jahren\r\n- Gletscherdaten seit den 1960er Jahren\r\n\r\nIn der Dekade 2003-2013 betrug der Anstieg des Meeresspiegels:\r\n\r\n- 36 % durch das Schmelzwasser der grönländischen und antarktischen Eisschilde\r\n- 30% aufgrund der thermischen Ausdehnung\r\n- 20% durch das Schmelzen der Gletscher\r\n- 10% aufgrund der Grundwasserentnahme\r\n\r\nKontinuierliche Informationen aus Satelliten- und anderen Quellen werden uns helfen, die Veränderungen des Meeresspiegels besser zu verstehen und die Anpassungsmöglichkeiten für die Einwohner Kiribatis und die anderen Küstenbewohner der Welt zu bewerten.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
-      "videoId": "K7JmzmDoo4w"
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "videoId": "K7JmzmDoo4w",
+      "videoCaptions": "assets/sealevel-interview.vtt",
+      "videoPoster": "assets/sealevel-interview-wide.jpg",
+      "videoSrc": ["assets/sealevel-interview-wide-web.mp4"]
     }
   ]
 }

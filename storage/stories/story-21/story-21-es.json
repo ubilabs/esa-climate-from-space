@@ -15,18 +15,24 @@
       "shortText": "## Queensland, 2010\r\n\r\n- El diciembre más lluvioso de Queensland.\r\n- Las inundaciones afectaron a 200.000 personas y mataron a 35 en el noreste de Australia en 2010-11.\r\n- Debido a un fuerte evento climático de La Niña en el Océano Pacífico central.\r\n- Se acumuló tanta agua en la tierra que el nivel medio global del mar descendió 5 mm.\r\n- Muestra cómo el océano, la atmósfera y la tierra están vinculados por el ciclo del agua.\r\n- Es un componente clave del clima de la Tierra.",
       "images": [
         "assets/story21-image01.jpg",
-        "assets/story21-image06.png"
+        "assets/story21-image06.png",
+        "assets/story21-image12.jpg",
+        "assets/story21-image11.jpg",
+        "assets/story21-image13.jpg"
       ],
       "imageCaptions": [
         "Una mujer queda atrapada en el techo de su coche durante una inundación repentina en Toowoomba, Queensland, Australia, el 10 de enero de 2011 (T Swinson)",
-        "# Nivel medio global del mar\r\nEl nivel global del mar observado por los satélites muestra una tendencia al alza de 3,3 mm al año, pero un descenso en 2011 debido a la gran cantidad de agua acumulada en tierra.  (ESA-CCI/Copernicus Marine Environment Monitoring Service)"
+        "# Nivel medio global del mar\r\nEl nivel global del mar observado por los satélites muestra una tendencia al alza de 3,3 mm al año, pero un descenso en 2011 debido a la gran cantidad de agua acumulada en tierra.  (ESA-CCI/Copernicus Marine Environment Monitoring Service)",
+        "Las imágenes de radar de Copernicus Sentinel-1 de Nueva Gales del Sur (Australia) del 7 y el 19 de marzo de 2021 muestran extensas zonas inundadas en azul. Las zonas quemadas por incendios forestales el año anterior se muestran en marrón. (Contiene datos modificados de Copernicus Sentinel (2021), procesados por ESA / NASA MODIS)",
+        "Pakistán sufrió las peores inundaciones de su historia en agosto de 2022, después de que unas lluvias monzónicas extremadamente intensas impulsadas por el rápido calentamiento del océano Índico coincidieran con el deshielo estival de los glaciares del Himalaya. Alrededor de un tercio del país quedó inundado, cobrándose la vida de más de 1100 personas y afectando a 33 millones. Esta imagen de radar de Copernicus Sentinel-1 del centro-sur de Pakistán, muestra las zonas bajo el agua en azul y negro. (Contiene datos modificados de Copernicus Sentinel (2022), procesados por la ESA)",
+        "Los niveles de agua del río Po en Italia alcanzaron un mínimo histórico en 2022 tras meses de altas temperaturas y escasas precipitaciones. La sequía en el norte de Italia afectó a la producción agrícola de la región, que a menudo depende del regadío. Esta secuencia de imágenes de satélite de Copernicus Sentinel-2 muestra el Po como un río ancho y cargado de sedimentos en 2020, pero gran parte de su cauce quedó expuesto como bancos de arena brillante en 2022.  (Contiene datos modificados de Copernicus Sentinel (2020-22), procesados por la ESA)"
       ],
       "imageFits": [
         "cover",
         "contain",
-        "cover",
-        "cover",
-        "cover"
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
@@ -40,7 +46,12 @@
         "cover",
         "cover"
       ],
-      "videoId": "EkQhz7uYtcM"
+      "videoId": "EkQhz7uYtcM",
+      "videoCaptions": "assets/WaterCycle.vtt",
+      "videoPoster": "assets/watercycle.jpg",
+      "videoSrc": [
+        "assets/watercycle-web.mp4"
+      ]
     },
     {
       "type": "video",
@@ -53,7 +64,11 @@
         "cover",
         "cover"
       ],
-      "videoId": "1AMhjd94r6U"
+      "videoId": "1AMhjd94r6U",
+      "videoPoster": "assets/watervapour.jpg",
+      "videoSrc": [
+        "assets/watervapour-web.mp4"
+      ]
     },
     {
       "type": "globe",
@@ -97,7 +112,12 @@
         "cover",
         "cover"
       ],
-      "videoId": "LXyHZHaFjk4"
+      "videoId": "LXyHZHaFjk4",
+      "videoCaptions": "assets/soilmoisture.vtt",
+      "videoPoster": "assets/soilmoisture.jpg",
+      "videoSrc": [
+        "assets/soilmoisture-web.mp4"
+      ]
     },
     {
       "type": "video",
@@ -110,25 +130,34 @@
         "cover",
         "cover"
       ],
-      "videoId": "Eahj21_RM1M"
+      "videoId": "Eahj21_RM1M",
+      "videoCaptions": "assets/glaciers.vtt",
+      "videoPoster": "assets/glaciers.jpg",
+      "videoSrc": [
+        "assets/glaciers-web.mp4"
+      ]
     },
     {
       "type": "image",
       "text": "## Seguimiento del agua\r\n\r\nEl agua es difícil de seguir a lo largo de todo su ciclo porque se desplaza fácilmente entre diferentes estados físicos y lugares. La visión global que ofrecen los satélites ayuda, y los científicos utilizan una amplia gama de tecnologías de teledetección para controlar el agua desde el espacio. La [Iniciativa sobre el Cambio Climático](stories/story-32/3) de la Agencia Espacial Europea aprovecha este archivo de datos satelitales para analizar algunas de las variables climáticas más importantes. Más de la mitad de las variables que pueden medirse desde el espacio tienen que ver con el ciclo del agua o influyen en él: la temperatura y la salinidad de la superficie del mar, el nivel del mar, su estado, el color del océano, el vapor de agua, las nubes, los aerosoles, la nieve, la humedad del suelo, los lagos, los glaciares, las capas de hielo, el permafrost y el hielo marino.\r\n\r\nUnir estas piezas del rompecabezas nos ayuda a entender cómo funciona el ciclo del agua, cómo afecta al clima y cómo los cambios en el clima pueden afectar al ciclo del agua. Un clima más cálido significa más evaporación y más precipitaciones en forma de lluvia en lugar de nieve. Ya podemos ver grandes cambios en la distribución del agua entre los diferentes depósitos de la hidrosfera. Algunas de estas redistribuciones son temporales, como el paso del mar a la tierra tras La Niña de 2010, pero otras son permanentes, como el paso del hielo terrestre y marino al agua oceánica. Aunque está impulsado en gran medida por el calor del Sol, hay indicios de que el ciclo del agua está siendo sobrealimentado por el calentamiento del clima.",
       "shortText": "## Seguimiento del agua\r\n\r\nEl agua se desplaza con facilidad entre diferentes estados físicos y lugares, por lo que es difícil de seguir. Los científicos utilizan una amplia gama de tecnologías de teledetección para controlar el agua desde el espacio.\r\n \r\nMás de la mitad de las variables climáticas de la CCI de la ESA influyen en el ciclo del agua:\r\n- temperatura de la superficie del mar, salinidad, nivel del mar, estado del mar, color del océano\r\n- vapor de agua, nubes, aerosoles\r\n- nieve, humedad del suelo, lagos, glaciares, capas de hielo, permafrost, hielo marino\r\n\r\nUn clima más cálido significa más evaporación, más precipitaciones en forma de lluvia en lugar de nieve y más deshielo.\r\n- Ya podemos ver grandes cambios entre los diferentes depósitos del ciclo del agua.\r\n- Algunos temporales, como el desplazamiento del mar a la tierra tras La Niña de 2010.\r\n- Algunos permanentes, como el cambio de la tierra y el hielo marino al agua del océano.\r\n- Hay indicios de que el ciclo del agua está siendo sobrealimentado por el calentamiento del clima.",
       "images": [
-        "assets/story21-image03.jpg",
-        "assets/story21-image07.jpg",
         "assets/story21-image04.png",
+        "assets/story21-image14.jpg",
+        "assets/story21-image07.jpg",
+        "assets/story21-image03.jpg",
         "assets/story21-image05.png"
       ],
       "imageCaptions": [
-        "El billón de toneladas de hielo que se pierde cada año es suficiente para formar\r\nun cubo de hielo de 10 kilómetros de altura, que se muestra aquí a escala  junto a Manhattan.\r\nEl hielo que se pierde de los glaciares y las capas de hielo en tierra contribuye al aumento del nivel del mar,\r\npero el hielo marino y las plataformas de hielo flotantes no lo hacen. (Planetary Visions / ESA / NASA)",
-        "# Cambio acumulado en la masa de hielo glaciar 1961-2016\r\nEn el último medio siglo se han perdido más de nueve billones de toneladas de hielo glaciar (ESA, adaptado de Zemp et al (2019) Nature, y datos por cortesía del Servicio Mundial de Vigilancia de Glaciares)",
         "# Flujos del ciclo global del agua\r\nFlujos mundiales del ciclo del agua, medidos en miles de kilómetros cúbicos por año (TU Wien/W Dorigo)",
+        "Las secuelas de dos grandes avalanchas de glaciares quedan registradas en esta imagen de satélite del Himalaya oriental de 2018. En los últimos años también se han producido derrumbes repentinos de glaciares en el Cáucaso, los Andes y los Alpes. El calentamiento del clima, el deshielo del permafrost y la infiltración de agua de deshielo son algunas de las causas de estos sucesos.\r\n(Contiene datos modificados de Copernicus Sentinel-2 (2017-18), procesados por el equipo CCI Glacier y la ESA)",
+        "# Cambio acumulado en la masa de hielo glaciar 1961-2016\r\nEn el último medio siglo se han perdido más de nueve billones de toneladas de hielo glaciar (ESA, adaptado de Zemp et al (2019) Nature, y datos por cortesía del Servicio Mundial de Vigilancia de Glaciares)",
+        "El billón de toneladas de hielo que se pierde cada año es suficiente para formar\r\nun cubo de hielo de 10 kilómetros de altura, que se muestra aquí a escala  junto a Manhattan.\r\nEl hielo que se pierde de los glaciares y las capas de hielo en tierra contribuye al aumento del nivel del mar,\r\npero el hielo marino y las plataformas de hielo flotantes no lo hacen. (Planetary Visions / ESA / NASA)",
         "# Energía almacenada en los componentes del sistema climático\r\nEnergía térmica acumulada en diferentes componentes del sistema climático de la Tierra desde 1971, medida en zettajoules (1 ZJ es 10^21 J, o un billón de billones de J). El agua de los océanos del mundo almacena mucho más calor que la atmósfera y la tierra.\r\n(IPCC DE LAS NACIONES UNIDAS, 2013)"
       ],
       "imageFits": [
+        "contain",
+        "contain",
         "contain",
         "contain",
         "contain"
