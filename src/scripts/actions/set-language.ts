@@ -1,7 +1,7 @@
-import {ThunkDispatch} from 'redux-thunk';
+import {useThunkDispatch} from '../hooks/use-thunk-dispatch';
 
 import {unsafeSelectedStorySelector} from '../selectors/story/selected';
-import fetchLayers, {FetchLayersActions} from './fetch-layers';
+import fetchLayers from './fetch-layers';
 import fetchStories from './fetch-stories';
 import fetchStory from './fetch-story';
 import {State} from '../reducers/index';
@@ -16,10 +16,8 @@ export interface SetLanguageAction {
   language: Language;
 }
 
-type AllThunkActions = SetLanguageAction | FetchLayersActions;
-
 const setLanguageAction = (language: Language) => (
-  dispatch: ThunkDispatch<State, void, AllThunkActions>,
+  dispatch: ReturnType<typeof useThunkDispatch>,
   getState: () => State
 ) => {
   localStorage.setItem(config.localStorageLanguageKey, language);

@@ -2,7 +2,7 @@ import React, {FunctionComponent, useState} from 'react';
 
 import {useMatomo} from '@datapunt/matomo-tracker-react';
 
-import styles from './tracking-toggle.styl';
+import styles from './tracking-toggle.module.styl';
 
 const TrackingToggle: FunctionComponent = () => {
   const {pushInstruction} = useMatomo();

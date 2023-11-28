@@ -1,5 +1,4 @@
-import {Dispatch} from 'redux';
-
+import {ThunkDispatch} from '../components/main/app/create-redux-store';
 import fetchStoriesApi from '../api/fetch-stories';
 import {languageSelector} from '../selectors/language';
 
@@ -23,21 +22,23 @@ export type FetchStoriesActions =
   | FetchStoriesSuccessAction
   | FetchStoriesErrorAction;
 
-function fetchStoriesSuccessAction(stories: StoryList) {
+function fetchStoriesSuccessAction(
+  stories: StoryList
+): FetchStoriesSuccessAction {
   return {
     type: FETCH_STORIES_SUCCESS,
     stories
   };
 }
 
-function fetchStoriesErrorAction(message: string) {
+function fetchStoriesErrorAction(message: string): FetchStoriesErrorAction {
   return {
     type: FETCH_STORIES_ERROR,
     message
   };
 }
 
-const fetchStories = () => (dispatch: Dispatch, getState: () => State) => {
+const fetchStories = () => (dispatch: ThunkDispatch, getState: () => State) => {
   const language = languageSelector(getState());
 
   return fetchStoriesApi(language)

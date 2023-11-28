@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import setSelectedStoryTagsAction from '../../../actions/set-selected-story-tags';
 import {CheckIcon} from '../../main/icons/check-icon';
 
-import styles from './selected-tags.styl';
+import styles from './selected-tags.module.styl';
 
 interface Props {
   selectedTags: string[];

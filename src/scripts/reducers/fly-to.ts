@@ -1,13 +1,13 @@
 import {SET_FLY_TO, SetFlyToAction} from '../actions/set-fly-to';
 
-import {GlobeView} from '../types/globe-view';
+import {CameraView} from '@ubilabs/esa-webgl-globe';
 
 const initialState = null;
 
 function flyToReducer(
-  state: GlobeView | null = initialState,
+  state: CameraView | null = initialState,
   action: SetFlyToAction
-): GlobeView | null {
+): CameraView | null {
   switch (action.type) {
     case SET_FLY_TO:
       return action.view;

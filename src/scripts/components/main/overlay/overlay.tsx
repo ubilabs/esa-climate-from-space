@@ -5,12 +5,13 @@ import cx from 'classnames';
 import Button from '../button/button';
 import {CloseIcon} from '../icons/close-icon';
 
-import styles from './overlay.styl';
+import styles from './overlay.module.styl';
 
 interface Props {
   className?: string;
   onClose?: () => void;
   showCloseButton?: boolean;
+  children: React.ReactElement;
 }
 
 const Overlay: FunctionComponent<Props> = ({
