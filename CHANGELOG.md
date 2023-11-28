@@ -1,3 +1,16 @@
+## [1.13.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.13.0...v1.13.1) (2023-10-06)
+
+
+
+# [1.13.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.12.1...v1.13.0) (2023-10-06)
+
+
+### Features
+
+* **layers:** update layers.json ([38b72a9](https://github.com/ubilabs/esa-climate-from-space/commit/38b72a9487000d0a65521c4446928f5d6de2bd89))
+
+
+
 ## [1.12.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.12.0...v1.12.1) (2023-08-18)
 
 
