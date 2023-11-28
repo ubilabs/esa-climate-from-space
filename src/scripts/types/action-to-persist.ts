@@ -6,5 +6,9 @@ export interface ActionToPersist {
   save: boolean;
   load: boolean;
   getFilePath?: (errorAction: AnyAction) => string;
-  successActionCreator?: (errorAction: AnyAction, content: any) => AnyAction;
+  successActionCreator?: (
+    errorAction: AnyAction,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    content: any
+  ) => AnyAction;
 }

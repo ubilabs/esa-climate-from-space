@@ -1,4 +1,4 @@
-import {Dispatch} from 'redux';
+import {ThunkDispatch} from '../components/main/app/create-redux-store';
 
 import fetchLayerApi from '../api/fetch-layer';
 
@@ -21,7 +21,10 @@ interface FetchLayerErrorAction {
 
 export type FetchLayerActions = FetchLayerSuccessAction | FetchLayerErrorAction;
 
-export function fetchLayerSuccessAction(id: string, layer: Layer) {
+export function fetchLayerSuccessAction(
+  id: string,
+  layer: Layer
+): FetchLayerSuccessAction {
   return {
     type: FETCH_LAYER_SUCCESS,
     id,
@@ -29,7 +32,10 @@ export function fetchLayerSuccessAction(id: string, layer: Layer) {
   };
 }
 
-function fetchLayerErrorAction(id: string, message: string) {
+function fetchLayerErrorAction(
+  id: string,
+  message: string
+): FetchLayerErrorAction {
   return {
     type: FETCH_LAYER_ERROR,
     id,
@@ -37,7 +43,7 @@ function fetchLayerErrorAction(id: string, message: string) {
   };
 }
 
-const fetchLayer = (id: string) => (dispatch: Dispatch) =>
+const fetchLayer = (id: string) => (dispatch: ThunkDispatch) =>
   fetchLayerApi(id)
     .then(layer => dispatch(fetchLayerSuccessAction(id, layer)))
     .catch(error => dispatch(fetchLayerErrorAction(id, error.message)));

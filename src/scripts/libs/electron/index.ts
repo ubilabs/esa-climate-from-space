@@ -9,10 +9,13 @@ declare global {
       downloadUrl: (url: string) => void;
       deleteId: (id: string) => void;
       saveAction: (action: Action) => void;
-      loadAction: (actionType: string, filePath?: string) => Action | null;
+      loadAction: (
+        actionType: string,
+        filePath?: string
+      ) => Promise<Action | null>;
       addIpcListener: (
         channel: string,
-        callback: (event: {}, message: string) => void
+        callback: (event: Record<string, unknown>, message: string) => void
       ) => void;
     };
   }

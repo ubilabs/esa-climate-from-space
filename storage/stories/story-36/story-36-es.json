@@ -3,23 +3,23 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Sinking City\r\n\r\nJakarta, Indonesia",
-      "shortText": "# Sinking City\r\n\r\nJakarta, Indonesia",
+      "text": "# Sinking City\r\n\r\nYakarta, Indonesia",
+      "shortText": "# Sinking City\r\n\r\nYakarta, Indonesia",
       "images": [
         "assets/story36-image03.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "## Sinking City, Jakarta, Indonesia\r\n\r\nThe Indonesian capital of Jakarta is home to 10 million people and is also one of the fastest-sinking cities in the world due to extensive ground water extraction and the heavier  weight of the buildings. Researchers suggest that parts of the megacity could be entirely submerged by 2050. This map shows the mean ground displacement rates based on Sentinel-1 radar data. Local sinking patterns reach about 12 cm per year. \r\n\r\nCredits: ESA GEP & CNR-IREA",
-      "shortText": "## Sinking City, Jakarta, Indonesia\r\n\r\nThe Indonesian capital of Jakarta is home to 10 million people and is also one of the fastest-sinking cities in the world due to extensive ground water extraction and the heavier  weight of the buildings. Researchers suggest that parts of the megacity could be entirely submerged by 2050. This map shows the mean ground displacement rates based on Sentinel-1 radar data. Local sinking patterns reach about 12 cm per year. \r\n\r\nCredits: ESA GEP & CNR-IREA",
+      "text": "## Ciudad que se hunde, Yakarta, Indonesia\r\n\r\nLa capital indonesia de Yakarta, donde viven 10 millones de personas, es también una de las ciudades del mundo que más rápido se hunde debido a la gran extracción de aguas subterráneas y al mayor peso de los edificios. Los investigadores sugieren que partes de la megaciudad podrían quedar totalmente sumergidas en 2050. Este mapa muestra las tasas medias de desplazamiento del suelo basadas en los datos del radar Sentinel-1. Los patrones locales de hundimiento alcanzan unos 12 cm al año. \r\n\r\nCréditos: ESA GEP & CNR-IREA",
+      "shortText": "## Ciudad que se hunde, Yakarta, Indonesia\r\n\r\nLa capital indonesia de Yakarta, donde viven 10 millones de personas, es también una de las ciudades del mundo que más rápido se hunde debido a la gran extracción de aguas subterráneas y al mayor peso de los edificios. Los investigadores sugieren que partes de la megaciudad podrían quedar totalmente sumergidas en 2050. Este mapa muestra las tasas medias de desplazamiento del suelo basadas en los datos del radar Sentinel-1. Los patrones locales de hundimiento alcanzan unos 12 cm al año. \r\n\r\nCréditos: ESA GEP & CNR-IREA",
       "images": [
         "assets/story36-image01.jpg",
         "assets/story36-image02.jpg"
       ],
       "imageCaptions": [
-        "Jakarta, Indonesia: the sinking city. By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence.",
-        "Jakarta, Indonesia: the sinking city. By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence. In this image, changes in surface levels from 2017-2018 have been overlaid."
+        "Yakarta, Indonesia: la ciudad que se hunde. El uso de un gran número de imágenes de radar por satélite durante un periodo de dos años permite calcular con precisión el hundimiento del suelo.",
+        "Yakarta, Indonesia: la ciudad que se hunde. Utilizando un gran número de imágenes de radar por satélite a lo largo de un periodo de dos años, es posible calcular con precisión el hundimiento del suelo. En esta imagen se han superpuesto los cambios en el nivel de la superficie entre 2017 y 2018."
       ],
       "imageFits": [
         "contain",

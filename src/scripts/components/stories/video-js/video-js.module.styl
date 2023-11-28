@@ -1,0 +1,27 @@
+
+.vjsContainer
+  width: 100%
+  height: 100%
+
+:global(.vjs_video_3-dimensions.vjs-fluid)
+  padding-top: 0
+
+:global(.vjs-text-track-cue)
+  display: flex
+  justify-content: center
+  align-items: flex-end
+
+:global(.vjs-text-track-cue > div)
+  font-weight: 700
+  font-style: normal
+  font-size: 18px
+  font-family: Arial
+  line-height: 22px
+
+@media screen and (max-width: 480px)
+  :global(.vjs-text-track-cue > div)
+    font-weight: 700
+    font-style: normal
+    font-size: 12px
+    font-family: Arial
+    line-height: 22px

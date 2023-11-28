@@ -16,18 +16,20 @@
       "images": [
         "assets/story15_01.jpg",
         "assets/seaice_large_01.jpg",
-        "assets/seaice_large_12a.jpg"
+        "assets/seaice_large_12a.jpg",
+        "assets/story15_11.jpg"
       ],
       "imageCaptions": [
         "El HMS Terror arrojado por el hielo en el Estrecho Congelado. Grabado a partir de un dibujo del capitán George Back. (Archivos Nacionales de Canadá)",
         "Hielo marino de verano en el Ártico canadiense. El estrecho canal entre Canadá continental y sus islas árticas\r\nsuele estar bloqueado por el hielo marino. En esta imagen Envisat MERIS del 2 de julio de 2007\r\nLancaster Sound (centro inferior) está libre de hielo, pero al oeste el hielo sigue bloqueando\r\nel Canal Parry. (ESA)",
-        "El hielo marino se muestra en azul en este mosaico Envisat ASAR del Océano Ártico de agosto de 2008. El brazo sur del Paso del Noroeste está libre de hielo. (ESA)"
+        "El hielo marino se muestra en azul en este mosaico Envisat ASAR del Océano Ártico de agosto de 2008. El brazo sur del Paso del Noroeste está libre de hielo. (ESA)",
+        "La ruta sur a través del Paso del Noroeste estaba casi libre de hielo en agosto de 2016, como muestra esta imagen del satélite meteorológico Suomi NPP (NASA)"
       ],
       "imageFits": [
         "contain",
         "cover",
         "cover",
-        "contain",
+        "cover",
         "contain"
       ]
     },
@@ -38,12 +40,14 @@
       "images": [
         "assets/story15_02.jpg",
         "assets/story15_03.jpg",
-        "assets/story15_04.png"
+        "assets/story15_04.png",
+        "assets/story15_12.jpg"
       ],
       "imageCaptions": [
         "Mosaico del radar Envisat ASAR que muestra las posibles rutas de navegación a través del Paso del Noroeste (amarillo, izquierda), el Paso del Noreste (azul, derecha) y la Ruta del Mar Transpolar (verde, centro) (ESA/Planetary Visions)",
         "Rompehielos escoltando un buque de carga a través del hielo marino en el Océano Ártico (Aker Arctic)",
-        "# Extensión del hielo marino del Ártico en agosto de 1979 a 2019\r\nLa extensión del hielo en verano en el Ártico ha disminuido en 72.000 km2 al año, o un 9,1% por década (datos OSISAF de EUMETSAT, con aportaciones de I+D de la CCI de la ESA)"
+        "# Extensión del hielo marino del Ártico en agosto de 1979 a 2019\r\nLa extensión del hielo en verano en el Ártico ha disminuido en 72.000 km2 al año, o un 9,1% por década (datos OSISAF de EUMETSAT, con aportaciones de I+D de la CCI de la ESA)",
+        "Trayectorias de los buques en la parte oriental del Paso del Noroeste en 2013 (verde) y 2019 (naranja). El tráfico aumentó de 112 a 160 buques entre estos años. (Consejo Ártico)"
       ],
       "imageFits": [
         "contain",
@@ -116,21 +120,23 @@
       "shortText": "## La vida en primera línea\r\n\r\nLas aguas que se vuelven más fáciles para un crucero se vuelven más difíciles para los trineos de perros y las motos de nieve:\r\n\r\n- las formas tradicionales de cazar y viajar se interrumpen\r\n- se rompen los vínculos con las fuentes de alimentos y entre las comunidades\r\n\r\nDe Alaska a Siberia, a medida que se descongela el permafrost:\r\n\r\n- edificios, carreteras y oleoductos socavados\r\n- el dióxido de carbono y el metano se liberan del suelo\r\n- los hidratos de metano del fondo marino también podrían descongelarse\r\n\r\nEl agua de deshielo de la capa de hielo de Groenlandia\r\n- ha contribuido a la subida del nivel del mar en 11 mm desde 1992\r\n- está siguiendo las peores predicciones de calentamiento climático\r\n- altera el equilibrio de salinidad de los mares circundantes\r\n\r\nLas capas de hielo, los glaciares, el permafrost, la salinidad de los océanos y el hielo marino son \"variables climáticas esenciales\".",
       "images": [
         "assets/icesheet_large_16.jpg",
+        "assets/story15_13.jpg",
+        "assets/story15_14.jpg",
         "assets/icesheet_large_01.jpg",
-        "assets/story15_10.jpg",
         "assets/story15_08.jpg"
       ],
       "imageCaptions": [
         "Nuuk, la capital de Groenlandia. Los groenlandeses tienen que adaptarse al calentamiento del clima. El deshielo del mar no sólo acorta la temporada de caza, sino que también dificulta el acceso a las comunidades vecinas en trineo de perros o en moto de nieve. (Oliver Schauf)",
+        "# Anomalía de la temperatura del aire en Groenlandia 2019-2021 \r\nTemperatura del aire en Groenlandia en agosto de 2019-2021 comparada con la media de los 30 años anteriores. La ola de calor de 2021 trajo las primeras precipitaciones registradas en el centro alto de Groenlandia, donde normalmente habría nevadas. (Datos ERA5 de Copernicus Climate Change Service/ECMWF/ESA)",
+        "La ola de calor de Groenlandia de 2021 provocó un rápido derretimiento de la nieve y el hielo, creando extensos flujos de agua de deshielo y lagos más profundos y oscuros en la superficie de la capa de hielo. Imagen de Sentinel-2 del 20 de agosto de 2021 (contiene datos modificados de Copernicus Sentinel (2021), procesados por la ESA).",
         "El agua de deshielo superficial atraviesa el glaciar Leverett, a unos 50 km del\r\n del borde occidental de la capa de hielo de Groenlandia, el 19 de agosto de 2009.\r\n(Andrew Sole, Universidad de Sheffield)",
-        "Un nuevo iceberg se desprende de la plataforma de hielo de Groenlandia hacia la bahía de Disko. (ESA)",
         "# CCI Extensión del permafrost\r\n \r\nPermafrost del hemisferio norte 2003-2017 (ESA-CCI)"
       ],
       "imageFits": [
         "cover",
-        "cover",
-        "cover",
         "contain",
+        "cover",
+        "cover",
         "contain"
       ]
     },
@@ -167,7 +173,12 @@
         "contain",
         "contain"
       ],
-      "videoId": "9einyMSOmHE"
+      "videoId": "9einyMSOmHE",
+      "videoCaptions": "assets/seaicethickness.vtt",
+      "videoPoster": "assets/seaicethickness.jpg",
+      "videoSrc": [
+        "assets/seaicethickness-web.mp4"
+      ]
     }
   ]
 }

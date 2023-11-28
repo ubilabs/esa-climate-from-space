@@ -6,7 +6,7 @@ import Caption from '../caption/caption';
 
 import {ImageFit} from '../../../types/image-fit';
 
-import styles from './story-gallery-image.styl';
+import styles from './story-gallery-image.module.styl';
 
 interface Props {
   images: string[];
