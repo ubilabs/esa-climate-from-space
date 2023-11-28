@@ -1,6 +1,8 @@
 import React, {FunctionComponent, useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 
+import planeratyVisionsLogo from '~/assets/images/planetary-visions.png';
+
 import LanguageSelector from '../language-selector/language-selector';
 import Button from '../button/button';
 import {PresenterIcon} from '../icons/presenter-icon';
@@ -20,7 +22,7 @@ import TrackingToggle from '../tracking-toggle/tracking-toggle';
 import {FeedbackIcon} from '../icons/feedback-icon';
 import config from '../../../config/main';
 
-import styles from './menu.styl';
+import styles from './menu.module.styl';
 
 interface Props {
   onRestartOnboarding: () => void;
@@ -199,7 +201,7 @@ const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
             <p className={styles.creditsText}>
               <FormattedMessage id={'contentBy'} />
             </p>
-            <img src={config.planeratyVisionsLogo} />
+            <img src={planeratyVisionsLogo} />
           </a>
         </div>
       </div>

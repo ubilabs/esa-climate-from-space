@@ -1,5 +1,6 @@
 import {FunctionComponent, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
+import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 
 import fetchLayers from '../../../actions/fetch-layers';
 import fetchLayerAction from '../../../actions/fetch-layer';
@@ -11,7 +12,7 @@ import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
  * Handles loading of layer list and layer details data
  */
 const LayerLoader: FunctionComponent = () => {
-  const dispatch = useDispatch();
+  const dispatch = useThunkDispatch();
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const {mainId, compareId} = selectedLayerIds;
   const mainLayerDetails = useSelector((state: State) =>

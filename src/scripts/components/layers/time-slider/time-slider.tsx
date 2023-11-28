@@ -26,7 +26,7 @@ import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
 import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 import {useLayerTimes} from '../../../hooks/use-formatted-time';
 
-import styles from './time-slider.styl';
+import styles from './time-slider.module.styl';
 
 interface Props {
   className?: string;
@@ -73,6 +73,7 @@ const TimeSlider: FunctionComponent<Props> = ({
   const clampedTime = clampToRange(time, combined.min, combined.max);
 
   // update app state
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSetGlobeTime = useCallback(
     debounce((newTime: number) => dispatch(setGlobeTime(newTime)), DELAY, {
       maxWait: DELAY
@@ -131,6 +132,8 @@ const TimeSlider: FunctionComponent<Props> = ({
           minTime={combined.min}
           maxTime={combined.max}
           step={playbackStep}
+          mainLayerId={mainId}
+          compareLayerId={compareId}
         />
       )}
       <div className={styles.container}>
@@ -140,9 +143,8 @@ const TimeSlider: FunctionComponent<Props> = ({
             rangeCompare && styles.playButtonCompare
           )}
           icon={isPlaying ? PauseCircleIcon : PlayCircleIcon}
-          onClick={() => setIsPlaying(!isPlaying)}>
-          {isPlaying ? 'playing' : 'pausing'}
-        </Button>
+          onClick={() => setIsPlaying(!isPlaying)}
+        />
         <div className={styles.ranges}>
           <input
             className={inputStyles}
