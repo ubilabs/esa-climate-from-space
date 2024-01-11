@@ -2,17 +2,12 @@ import {useStoryParams} from './use-story-params';
 import config from '../config/main';
 
 import {StoryMode} from '../types/story-mode';
-import {SlideType} from '../types/slide-type';
+import {GalleryItemType} from '../types/gallery-item';
 
 /* eslint-disable complexity */
 export const useStoryNavigation = (videoDuration: number) => {
-  const {
-    mode,
-    storyIds,
-    storyIndex,
-    slideIndex,
-    selectedStory
-  } = useStoryParams();
+  const {mode, storyIds, storyIndex, slideIndex, selectedStory} =
+    useStoryParams();
   const numberOfSlides = selectedStory?.slides.length;
 
   let autoPlayLink = null;
@@ -42,15 +37,16 @@ export const useStoryNavigation = (videoDuration: number) => {
     const currentSlide = selectedStory?.slides[slideIndex];
     // go through all slides of one story
 
-    if (currentSlide?.images && currentSlide.type === SlideType.Image) {
-      delay = delay * currentSlide.images.length;
-    }
-
-    if (
-      (currentSlide?.videoId || currentSlide?.videoSrc) &&
-      currentSlide.type === SlideType.Video
-    ) {
-      delay = delay + videoDuration;
+    if (currentSlide?.galleryItems.length) {
+      delay = currentSlide.galleryItems?.reduce((totalDelay, item) => {
+        if (
+          item.type === GalleryItemType.Video &&
+          (item?.videoId || item?.videoSrc)
+        ) {
+          return totalDelay + config.delay + videoDuration;
+        }
+        return totalDelay + config.delay;
+      }, 0);
     }
 
     if (slideIndex + 1 < numberOfSlides) {
