@@ -14,8 +14,9 @@ const StoryGalleryItem: FunctionComponent<Props> = ({
   currentIndex,
   showLightbox
 }) => {
-  const containerWidth = children.length * 100;
-  const itemWidth = 100 / children.length;
+  const containerWidthPercent = children.length * 100;
+  // Width in percent of each gallery item
+  const itemWidthPercent = 100 / children.length;
   const imgClasses = cx(
     styles.slider,
     showLightbox && styles.lightboxStoryGallery,
@@ -26,14 +27,14 @@ const StoryGalleryItem: FunctionComponent<Props> = ({
     <div
       className={imgClasses}
       style={{
-        width: `${containerWidth}%`,
-        transform: `translateX(-${itemWidth * currentIndex}%)`
+        width: `${containerWidthPercent}%`,
+        transform: `translateX(-${itemWidthPercent * currentIndex}%)`
       }}>
       {children.map((child, index) => (
         <div
           className={styles.sliderItem}
           key={index}
-          style={{width: `${itemWidth}%`}}>
+          style={{width: `${itemWidthPercent}%`}}>
           <div className={styles.itemContainer}>{child}</div>
         </div>
       ))}
