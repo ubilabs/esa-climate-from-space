@@ -103,6 +103,12 @@ const Story: FunctionComponent = () => {
                     src={item.embeddedSrc}></iframe>
                 );
               default:
+                console.warn(
+                  // eslint-disable-next-line dot-notation
+                  `Unknown gallery item type ${item['type']} on slide ${
+                    slideIndex + 1
+                  } in story ${story.id}`
+                );
                 return <></>;
             }
           })}
