@@ -92,11 +92,9 @@ const StoryGallery: FunctionComponent<Props> = ({mode, children}) => {
   return (
     <div className={storyGalleryClasses}>
       {children.length > 1 && (
-        <StoryProgress
-          children={children}
-          currentIndex={currentIndex}
-          showLightbox={showLightbox}
-        />
+        <StoryProgress currentIndex={currentIndex} showLightbox={showLightbox}>
+          {children}
+        </StoryProgress>
       )}
       <div className={styles.gallery}>
         {!showLightbox ? (
@@ -113,10 +111,10 @@ const StoryGallery: FunctionComponent<Props> = ({mode, children}) => {
           </div>
         )}
         <StoryGalleryItem
-          children={children}
           currentIndex={currentIndex}
-          showLightbox={showLightbox}
-        />
+          showLightbox={showLightbox}>
+          {children}
+        </StoryGalleryItem>
         {children.length > 1 && (
           <div className={styles.buttonContainer}>
             <div onClick={onPrevClick} className={prevIconClasses}>

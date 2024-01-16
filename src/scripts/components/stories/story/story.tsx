@@ -76,9 +76,8 @@ const Story: FunctionComponent = () => {
   const getRightSideComponent = (slide: Slide, story: StoryType) => {
     if (slide.galleryItems) {
       return (
-        <StoryGallery
-          mode={mode}
-          children={slide.galleryItems.map(item => {
+        <StoryGallery mode={mode} storyId={story.id}>
+          {slide.galleryItems.map(item => {
             switch (item.type) {
               case GalleryItemType.Image:
                 return <StoryImage storyId={story.id} imageItem={item} />;
@@ -107,8 +106,7 @@ const Story: FunctionComponent = () => {
                 return <></>;
             }
           })}
-          storyId={story.id}
-        />
+        </StoryGallery>
       );
     }
     return null;
