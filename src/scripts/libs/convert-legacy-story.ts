@@ -9,7 +9,9 @@ import {LegacySlide, LegacyStory} from '../types/legacy-story';
 import {SlideType} from '../types/slide-type';
 import {Story} from '../types/story';
 
-const getGalleryItems = (slide: LegacySlide) => {
+const getGalleryItems = (
+  slide: LegacySlide
+): VideoItem[] | ImageItem[] | GlobeItem[] | EmbeddedItem[] => {
   if (slide.type === SlideType.Video) {
     return [
       {
@@ -19,7 +21,7 @@ const getGalleryItems = (slide: LegacySlide) => {
         videoCaptions: slide.videoCaptions,
         videoPoster: slide.videoPoster
       }
-    ] as VideoItem[];
+    ];
   }
 
   if (slide.type === SlideType.Image && slide.images) {
@@ -32,7 +34,7 @@ const getGalleryItems = (slide: LegacySlide) => {
       image,
       // eslint-disable-next-line no-undefined
       imageFit: slide.imageFits ? slide.imageFits[index] : undefined
-    })) as ImageItem[];
+    }));
   }
 
   if (slide.type === SlideType.Globe) {
@@ -44,7 +46,7 @@ const getGalleryItems = (slide: LegacySlide) => {
         layer: slide.layer,
         layerDescription: slide.layerDescription
       }
-    ] as GlobeItem[];
+    ];
   }
 
   if (slide.type === SlideType.Embedded) {
@@ -53,9 +55,10 @@ const getGalleryItems = (slide: LegacySlide) => {
         type: GalleryItemType.Embedded,
         embeddedSrc: slide.embeddedSrc
       }
-    ] as EmbeddedItem[];
+    ];
   }
 
+  console.warn(`Unknown slide type: ${slide.type}`);
   return [];
 };
 
