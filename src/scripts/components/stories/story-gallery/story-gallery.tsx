@@ -12,38 +12,29 @@ import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
 import {useInterval} from '../../../hooks/use-interval';
 import config from '../../../config/main';
 import {CloseIcon} from '../../main/icons/close-icon';
-import StoryGalleryImage from '../story-gallery-image/story-gallery-image';
+import StoryGalleryItem from '../story-gallery-item/story-gallery-item';
 import StoryProgress from '../story-progress/story-progress';
 
 import {StoryMode} from '../../../types/story-mode';
-import {ImageFit} from '../../../types/image-fit';
 
 import styles from './story-gallery.module.styl';
 
 interface Props {
-  images: string[];
-  imageCaptions?: string[];
-  imageFits?: ImageFit[];
   storyId: string;
   mode: StoryMode | null;
+  children: React.ReactElement[];
 }
 
-const StoryGallery: FunctionComponent<Props> = ({
-  images,
-  imageCaptions,
-  storyId,
-  imageFits,
-  mode
-}) => {
+const StoryGallery: FunctionComponent<Props> = ({mode, children}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showLightbox, setShowLightbox] = useState(false);
   const showPrevButton = currentIndex > 0;
-  const showNextButton = currentIndex < images.length - 1;
+  const showNextButton = currentIndex < children.length - 1;
   const delay = mode === StoryMode.Showcase ? config.delay : null;
 
   useInterval(() => {
     if (mode === StoryMode.Showcase) {
-      if (currentIndex >= images.length - 1) {
+      if (currentIndex >= children.length - 1) {
         return;
       }
       setCurrentIndex(currentIndex + 1);
@@ -58,7 +49,7 @@ const StoryGallery: FunctionComponent<Props> = ({
   };
 
   const onNextClick = () => {
-    if (currentIndex >= images.length - 1) {
+    if (currentIndex >= children.length - 1) {
       return;
     }
     setCurrentIndex(currentIndex + 1);
@@ -100,11 +91,11 @@ const StoryGallery: FunctionComponent<Props> = ({
 
   return (
     <div className={storyGalleryClasses}>
-      <StoryProgress
-        images={images}
-        currentIndex={currentIndex}
-        showLightbox={showLightbox}
-      />
+      {children.length > 1 && (
+        <StoryProgress currentIndex={currentIndex} showLightbox={showLightbox}>
+          {children}
+        </StoryProgress>
+      )}
       <div className={styles.gallery}>
         {!showLightbox ? (
           <div
@@ -119,22 +110,21 @@ const StoryGallery: FunctionComponent<Props> = ({
             <CloseIcon />
           </div>
         )}
-        <StoryGalleryImage
-          images={images}
-          imageCaptions={imageCaptions}
-          storyId={storyId}
-          imageFits={imageFits}
+        <StoryGalleryItem
           currentIndex={currentIndex}
-          showLightbox={showLightbox}
-        />
-        <div className={styles.buttonContainer}>
-          <div onClick={onPrevClick} className={prevIconClasses}>
-            <PreviousIcon />
+          showLightbox={showLightbox}>
+          {children}
+        </StoryGalleryItem>
+        {children.length > 1 && (
+          <div className={styles.buttonContainer}>
+            <div onClick={onPrevClick} className={prevIconClasses}>
+              <PreviousIcon />
+            </div>
+            <div onClick={onNextClick} className={nextIconClasses}>
+              <NextIcon />
+            </div>
           </div>
-          <div onClick={onNextClick} className={nextIconClasses}>
-            <NextIcon />
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

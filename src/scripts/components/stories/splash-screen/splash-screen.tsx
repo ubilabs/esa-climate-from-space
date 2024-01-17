@@ -16,7 +16,8 @@ interface Props {
 }
 
 const SplashScreen: FunctionComponent<Props> = ({storyId, mode, slide}) => {
-  const imageUrl = slide.images && getStoryAssetUrl(storyId, slide.images[0]);
+  const imageUrl =
+    slide.splashImage && getStoryAssetUrl(storyId, slide.splashImage);
   const contentClasses = cx(
     styles.content,
     mode !== StoryMode.Stories && styles.presentationContent

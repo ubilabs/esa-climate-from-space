@@ -1,0 +1,41 @@
+.globeContainer
+  position: relative
+  display: flex
+  flex-direction: column
+  height: 100%
+  padding: 0 emCalc(50px)
+  background-color: $plainBlack
+
+.layerDetails
+  position: absolute
+  right: 0
+  bottom: 0
+  left: 0
+  padding: inherit
+
+.storySlider
+  position: unset
+  padding: emCalc(40px) 0
+  background: none
+
+  > div
+    min-width: 25%
+    width: 60%
+
+@media screen and (max-width: 1025px)
+  .layerDetails
+    height: inherit
+    background: none
+    pointer-events: none
+
+  > *
+    position: relative
+    z-index: 1
+    pointer-events: all
+
+  .storySlider
+    position: absolute
+    right: 0
+    bottom: 0
+    padding: emCalc(40px) 0 emCalc(20px)
+

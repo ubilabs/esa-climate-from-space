@@ -4,8 +4,9 @@ import {YouTubePlayer} from 'youtube-player/dist/types';
 import {VideoJsPlayer} from 'video.js';
 import {useSelector} from 'react-redux';
 
-import DataViewer from '../../main/data-viewer/data-viewer';
 import {useStoryParams} from '../../../hooks/use-story-params';
+import StoryImage from '../story-image/story-image';
+import StoryGlobe from '../story-globe/story-globe';
 import StoryContent from '../story-content/story-content';
 import StoryGallery from '../story-gallery/story-gallery';
 import StoryFooter from '../story-footer/story-footer';
@@ -17,14 +18,12 @@ import setSelectedLayerIdsAction from '../../../actions/set-selected-layer-id';
 import setGlobeTimeAction from '../../../actions/set-globe-time';
 import Share from '../../main/share/share';
 import SplashScreen from '../splash-screen/splash-screen';
-import LayerDescription from '../layer-description/layer-description';
-import TimeSlider from '../../layers/time-slider/time-slider';
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
-import {SlideType} from '../../../types/slide-type';
 import {GlobeProjection} from '../../../types/globe-projection';
 import {StoryMode} from '../../../types/story-mode';
 import {Slide, Story as StoryType} from '../../../types/story';
+import {GalleryItemType} from '../../../types/gallery-item';
 import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 
 import styles from './story.module.styl';
@@ -37,9 +36,8 @@ const Story: FunctionComponent = () => {
   const {mode, slideIndex, currentStoryId, selectedStory, storyListItem} =
     storyParams;
   const storyMode = mode === StoryMode.Stories;
-  const isSplashScreen =
-    selectedStory?.slides[slideIndex].type === SlideType.Splashscreen;
-  const {story_header, time_slider} = useSelector(embedElementsSelector);
+  const isSplashScreen = Boolean(selectedStory?.slides[slideIndex].splashImage);
+  const {story_header} = useSelector(embedElementsSelector);
 
   // fetch story of active storyId
   useEffect(() => {
@@ -76,49 +74,48 @@ const Story: FunctionComponent = () => {
   };
 
   const getRightSideComponent = (slide: Slide, story: StoryType) => {
-    if (slide.type === SlideType.Image && slide.images) {
+    if (slide.galleryItems) {
       return (
-        <StoryGallery
-          mode={mode}
-          images={slide.images}
-          imageFits={slide.imageFits}
-          imageCaptions={slide.imageCaptions}
-          storyId={story.id}
-        />
-      );
-    } else if (
-      slide.type === SlideType.Video &&
-      (slide.videoSrc || slide.videoId)
-    ) {
-      return (
-        <StoryVideo
-          mode={mode}
-          storyId={story.id}
-          slide={slide}
-          onPlay={(player: YouTubePlayer | VideoJsPlayer) =>
-            getVideoDuration(player)
-          }
-        />
+        <StoryGallery mode={mode} storyId={story.id}>
+          {slide.galleryItems.map(item => {
+            switch (item.type) {
+              case GalleryItemType.Image:
+                return <StoryImage storyId={story.id} imageItem={item} />;
+              case GalleryItemType.Video:
+                return item.videoSrc || item.videoId ? (
+                  <StoryVideo
+                    mode={mode}
+                    storyId={story.id}
+                    videoItem={item}
+                    onPlay={(player: YouTubePlayer | VideoJsPlayer) =>
+                      getVideoDuration(player)
+                    }
+                  />
+                ) : (
+                  <></>
+                );
+              case GalleryItemType.Globe:
+                return <StoryGlobe globeItem={item} />;
+              case GalleryItemType.Embedded:
+                return (
+                  <iframe
+                    className={styles.embeddedContent}
+                    src={item.embeddedSrc}></iframe>
+                );
+              default:
+                console.warn(
+                  // eslint-disable-next-line dot-notation
+                  `Unknown gallery item type ${item['type']} on slide ${
+                    slideIndex + 1
+                  } in story ${story.id}`
+                );
+                return <></>;
+            }
+          })}
+        </StoryGallery>
       );
     }
-
-    return (
-      <div className={styles.globeContainer}>
-        <DataViewer
-          hideNavigation
-          markers={slide.markers}
-          backgroundColor={'#000000'}
-        />
-        {time_slider && (
-          <div className={styles.layerDetails}>
-            <TimeSlider noTimeClamp className={styles.storySlider} />
-            {slide.layerDescription && (
-              <LayerDescription layerDescription={slide.layerDescription} />
-            )}
-          </div>
-        )}
-      </div>
-    );
+    return null;
   };
 
   return (
@@ -138,7 +135,7 @@ const Story: FunctionComponent = () => {
         {selectedStory?.slides.map(
           (currentSlide, index) =>
             index === slideIndex &&
-            (currentSlide.type === SlideType.Splashscreen ? (
+            (currentSlide.splashImage ? (
               <SplashScreen
                 mode={mode}
                 key={index}

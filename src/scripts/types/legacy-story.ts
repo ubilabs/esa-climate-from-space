@@ -3,12 +3,7 @@ import {SlideType} from './slide-type';
 import {Marker} from './marker-type';
 import {ImageFit} from './image-fit';
 
-export interface Story {
-  id: string;
-  slides: Slide[];
-}
-
-export interface Slide {
+export interface LegacySlide {
   type: SlideType;
   text: string;
   shortText?: string;
@@ -19,6 +14,7 @@ export interface Slide {
   videoSrc?: string[];
   videoCaptions?: string;
   videoPoster?: string;
+  embeddedSrc?: string;
   layer?: StoryLayer[];
   layerDescription?: string;
   flyTo: {
@@ -34,4 +30,9 @@ export interface Slide {
     };
   };
   markers: Marker[];
+}
+
+export interface LegacyStory {
+  id: string;
+  slides: LegacySlide[];
 }

@@ -3,7 +3,6 @@ import ReactMarkdown from 'react-markdown';
 import cx from 'classnames';
 
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
-import {useSlide} from '../../../hooks/use-slide';
 import config from '../../../config/main';
 
 import {StoryMode} from '../../../types/story-mode';
@@ -19,8 +18,6 @@ interface Props {
 
 const StoryContent: FunctionComponent<Props> = ({mode, slide, storyId}) => {
   const storyText = mode === StoryMode.Stories ? slide.text : slide.shortText;
-
-  useSlide(slide);
 
   const contentClasses = cx(
     styles.content,
