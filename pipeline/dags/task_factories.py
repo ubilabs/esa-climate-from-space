@@ -24,11 +24,13 @@ def gcs_list_files(bucket_name: str, layer_id: str, layer_variable: str, task_id
         max_files = context["params"]["max_files"]
         hook = GCSHook('google')
         filenames = hook.list(
-            bucket_name, prefix=f'{layer_id}.{layer_variable}', delimiter='.nc')
+            bucket_name, match_glob=f'{layer_id}.{layer_variable}/*.nc')
         filenames = [f for f in filenames if f.endswith('.nc')]
         filenames.sort()
+
         if (max_files > 0):
             filenames = filenames[:max_files]
+
         return filenames
     return fn
 
@@ -61,7 +63,7 @@ def gcloud_upload_dir(bucket_name: str, layer_id: str, layer_variable: str, laye
         bash_command='gcloud auth activate-service-account --key-file $KEY_FILE && gsutil -q -m cp -r $UPLOAD_DIR/* $BUCKET',
         env={
             "UPLOAD_DIR": directory,
-            "BUCKET": f'gs://{bucket_name}/{layer_id}.{layer_variable}/{layer_version}/',
+            "BUCKET": f'gs://{bucket_name}/{layer_version}/{layer_id}.{layer_variable}/',
             "KEY_FILE": '/opt/airflow/plugins/service-account.json',
             "CLOUDSDK_PYTHON": '/usr/local/bin/python'
         }
