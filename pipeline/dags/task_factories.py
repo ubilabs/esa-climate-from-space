@@ -25,10 +25,11 @@ def gcs_list_files(bucket_name: str, layer_id: str, layer_variable: str, task_id
         hook = GCSHook('google')
         filenames = hook.list(
             bucket_name, match_glob=f'{layer_id}.{layer_variable}/*.nc')
+
         filenames = [f for f in filenames if f.endswith('.nc')]
         filenames.sort()
 
-        if (max_files > 0):
+        if (max_files is not None and max_files > 0):
             filenames = filenames[:max_files]
 
         return filenames
