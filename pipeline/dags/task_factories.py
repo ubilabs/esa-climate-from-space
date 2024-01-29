@@ -95,6 +95,8 @@ def metadata(workdir: str, metadata: dict):
     def fn(files):
         timestamps = list(map(helper.filename_to_date, files))
         extended_metadata = dict(metadata, **{"timestamps": timestamps})
+        zoom_levels = extended_metadata['zoom_levels'].split('-')
+        total_zoom_levels = int(zoom_levels[1]) + 1
         formatted_metadata = {
             "id": extended_metadata["id"],
             "version": extended_metadata["version"],
@@ -102,7 +104,7 @@ def metadata(workdir: str, metadata: dict):
             "minValue": extended_metadata['min_value'],
             "maxValue": extended_metadata['max_value'],
             "type": extended_metadata['type'],
-            "zoomLevels": extended_metadata['zoom_levels'],
+            "zoomLevels": total_zoom_levels,
             "units": extended_metadata['units'],
             "legendValues": extended_metadata['legend_values'],
             "timeFormat": extended_metadata['time_format'],
