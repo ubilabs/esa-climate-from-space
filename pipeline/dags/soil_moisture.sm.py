@@ -28,13 +28,13 @@ METADATA = {
 # dev
 BUCKET_ORIGIN = 'esa-cfs-cate-data'
 BUCKET_TMP = 'esa-cfs-pipeline-tmp'
-BUCKET_OUTPUT = 'esa-cfs-pipeline-output'
 WORKDIR = '/workdir/files'
 COLOR_FILE = f'/opt/airflow/plugins/colors/{LAYER_ID}.{LAYER_VARIABLE}.txt'
 DEBUG = False
 
 dag_params = {
-    "max_files": Param(2, type=["null", "integer"], minimum=0,)
+    "max_files": Param(2, type=["null", "integer"], minimum=0,),
+    "output_bucket": Param("esa-cfs-pipeline-output", type=["string"])
 }
 
 with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, catchup=False, params=dag_params) as dag:
@@ -52,7 +52,7 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
     gdal_transforms = task_factories.gdal_transforms(
         layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'], gdal_ts=RESOLUTION)
     upload = task_factories.upload(
-        BUCKET_OUTPUT, WORKDIR, LAYER_ID, LAYER_VARIABLE, LAYER_VERSION, METADATA['type'])
+        WORKDIR, LAYER_ID, LAYER_VARIABLE, LAYER_VERSION, METADATA['type'])
 
     # connect tasks
     files = list_files()

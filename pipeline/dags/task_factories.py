@@ -58,13 +58,13 @@ def gcs_upload_file(bucket_name: str, layer_id: str, layer_variable: str, layer_
     return fn
 
 
-def gcloud_upload_dir(bucket_name: str, layer_id: str, layer_variable: str, layer_version: str, directory: str):
+def gcloud_upload_dir(layer_id: str, layer_variable: str, layer_version: str, directory: str):
     return BashOperator(
         task_id='gcloud_upload',
         bash_command='gcloud auth activate-service-account --key-file $KEY_FILE && gsutil -q -m cp -r $UPLOAD_DIR/* $BUCKET',
         env={
             "UPLOAD_DIR": directory,
-            "BUCKET": f'gs://{bucket_name}/{layer_version}/{layer_id}.{layer_variable}/',
+            "BUCKET": 'gs://{{ dag_run.conf["output_bucket"] }}/' + f'{layer_version}/{layer_id}.{layer_variable}/',
             "KEY_FILE": '/opt/airflow/plugins/service-account.json',
             "CLOUDSDK_PYTHON": '/usr/local/bin/python'
         }
@@ -186,7 +186,7 @@ def gdal_transforms(layer_variable: str, color_file: str, layer_type: str, zoom_
     return fn
 
 
-def upload(bucket_name: str, workdir: str, layer_id: str, layer_variable: str, layer_version: str, layer_type: str):
+def upload(workdir: str, layer_id: str, layer_variable: str, layer_version: str, layer_type: str):
     @task_group(group_id='upload')
     def fn():
         upload_dir = f'{workdir}/upload'
@@ -194,7 +194,7 @@ def upload(bucket_name: str, workdir: str, layer_id: str, layer_variable: str, l
             task_id='clean_upload_dir', dir=upload_dir)
         prepare_upload_task = prepare_upload(workdir, upload_dir, layer_type)
         upload_task = gcloud_upload_dir(
-            bucket_name, layer_id, layer_variable, layer_version, directory=upload_dir)
+            layer_id, layer_variable, layer_version, directory=upload_dir)
         clean_upload_dir >> prepare_upload_task() >> upload_task
     return fn
 
