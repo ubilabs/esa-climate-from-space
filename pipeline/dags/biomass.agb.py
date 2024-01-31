@@ -4,25 +4,25 @@ from airflow import DAG
 from airflow.models.param import Param
 
 # layer
-LAYER_ID = 'oc'
-LAYER_VARIABLE = 'chlor_a'
+LAYER_ID = 'biomass'
+LAYER_VARIABLE = 'agb'
 LAYER_VERSION = '1.14.1'
-RESOLUTION = '2048 1024'
+RESOLUTION = '81000 31500'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "version": LAYER_VERSION,
     "timestamps": [],  # will be injected
     "min_value": 0,
-    "max_value": 0,
-    "type": "image",  # 'tiles' or 'image'
-    "zoom_levels": '0-2',
-    "units": 'mg/m³',
-    "basemap": 'ocean',
-    "legend_values": ["30 mg/m\u00b3", "3", "0.3", "0.03"],
+    "max_value": 350,
+    "type": "tiles",  # 'tiles' or 'image'
+    "zoom_levels": '0-7',
+    "units": 'Mg/ha AGB',
+    "basemap": 'land',
     "time_format": {
         "year": "numeric",
         "month": "long"
-    }
+    },
+    "filter": "linear"
 }
 
 # dev
@@ -41,7 +41,7 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
 
     # create tasks
     clean_workdir = task_factories.clean_dir(
-        task_id='clean_workdir', dir=WORKDIR)
+        task_id='clean_workdir', dir=WORKDIR, dry_run=False)
     list_files = task_factories.gcs_list_files(
         bucket_name=BUCKET_ORIGIN, layer_id=LAYER_ID, layer_variable=LAYER_VARIABLE)
     download = task_factories.gcs_download_file(
@@ -50,7 +50,7 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
         workdir=WORKDIR, color_file=COLOR_FILE)
     metadata = task_factories.metadata(workdir=WORKDIR, metadata=METADATA)
     gdal_transforms = task_factories.gdal_transforms(
-        layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'], gdal_ts=RESOLUTION)
+        layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'], gdal_ts=RESOLUTION, gdal_te='-180 -60 180 80', max_tis_warp=1, max_tis_dem=1, max_tis_translate=1)
     upload = task_factories.upload(
         WORKDIR, LAYER_ID, LAYER_VARIABLE, LAYER_VERSION, METADATA['type'])
 

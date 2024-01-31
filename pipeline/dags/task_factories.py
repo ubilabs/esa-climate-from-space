@@ -106,10 +106,16 @@ def metadata(workdir: str, metadata: dict):
             "type": extended_metadata['type'],
             "zoomLevels": total_zoom_levels,
             "units": extended_metadata['units'],
-            "legendValues": extended_metadata['legend_values'],
             "timeFormat": extended_metadata['time_format'],
             "basemap": extended_metadata['basemap']
         }
+
+        if hasattr(extended_metadata, 'filter'):
+            formatted_metadata['filter'] = extended_metadata['filter']
+
+        if hasattr(extended_metadata, 'legend_values'):
+            formatted_metadata['legendValues'] = extended_metadata['legend_values']
+
         filepath = str(Path(workdir).joinpath('metadata.json'))
 
         with open(filepath, "w") as f:
