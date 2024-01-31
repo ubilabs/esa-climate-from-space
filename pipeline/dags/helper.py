@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import datetime
+import requests
 
 def only_filename(filepath: str):
     return Path(filepath).name
@@ -21,5 +22,10 @@ def filename_to_date(filename: str):
 def date_to_filename(date_string: str):
     return datetime.fromisoformat(date_string.replace('Z', '')).strftime('%Y%m%d')
 
+# fetch the latest version number from develop branch on github
+def get_default_layer_version():
+    req = requests.get('https://raw.githubusercontent.com/ubilabs/esa-climate-from-space/develop/package.json')
+    package_json = (req.json())
+    return package_json['version']
 
 

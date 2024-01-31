@@ -6,17 +6,42 @@ import shutil
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.bash import BashOperator
 from airflow.decorators import task, task_group
+from airflow.operators.python_operator import BranchPythonOperator
 from airflow.providers.google.cloud.hooks.gcs import GCSHook
 
 
-def clean_dir(task_id: str, dir: str, dry_run=False):
-    if dry_run:
-        return EmptyOperator(task_id=task_id + '_dry_run')
+
+def clean_dir(task_id: str, dir: str):
     return BashOperator(
         task_id=task_id,
         bash_command=f'rm -rf {dir}/* && mkdir -p {dir}'
     )
 
+
+def clean_dir_skippable(task_id: str, dir: str):
+    group_id = 'clean_dir_skippable'
+
+    @task_group(group_id=group_id)
+    def fn():
+        def select_task(**context):
+            return group_id + '.' + (task_id + '_skip' if context["params"]["skip_downloads"] else task_id+'_delete')
+
+        skip_task  = EmptyOperator(task_id=f'{task_id}_skip')
+        delete_task =  BashOperator(
+            task_id=f'{task_id}_delete',
+            bash_command=f'rm -rf {dir}/* && mkdir -p {dir}'
+        )
+        branch_task = BranchPythonOperator(
+            task_id=f'{task_id}_branch_task',
+            python_callable=select_task
+        )
+        end_task = EmptyOperator(task_id=f'{task_id}_merge_branches', trigger_rule="one_success")
+
+        # connect tasks
+        branch_task >> [skip_task, delete_task]
+        [skip_task, delete_task] >> end_task
+
+    return fn
 
 def gcs_list_files(bucket_name: str, layer_id: str, layer_variable: str, task_id: str = 'gcs_list_files'):
     @task(task_id=task_id)
@@ -36,14 +61,17 @@ def gcs_list_files(bucket_name: str, layer_id: str, layer_variable: str, task_id
     return fn
 
 
-def gcs_download_file(bucket_name: str, dir: str, appendix: str = '', dry_run=False, task_id="gcs_download_file"):
-    @task(task_id=task_id if not dry_run else 'gcs_download_file_dry_run')
-    def fn(filename: str):
+def gcs_download_file(bucket_name: str, dir: str, appendix: str = '', task_id="gcs_download_file"):
+    @task(task_id=task_id)
+    def fn(filename: str, **context):
         hook = GCSHook('google')
         local_filename = dir + '/' + \
             helper.only_filename(helper.change_filename(filename, appendix))
-        if not dry_run:
+        if not context['params']['skip_downloads']:
+            print(f'Downloading file: {filename}')
             hook.download(bucket_name, filename, local_filename)
+        else:
+            print('Skipping download!')
         return local_filename
     return fn
 
@@ -58,13 +86,13 @@ def gcs_upload_file(bucket_name: str, layer_id: str, layer_variable: str, layer_
     return fn
 
 
-def gcloud_upload_dir(layer_id: str, layer_variable: str, layer_version: str, directory: str):
+def gcloud_upload_dir(layer_id: str, layer_variable: str, directory: str):
     return BashOperator(
         task_id='gcloud_upload',
         bash_command='gcloud auth activate-service-account --key-file $KEY_FILE && gsutil -q -m cp -r $UPLOAD_DIR/* $BUCKET',
         env={
             "UPLOAD_DIR": directory,
-            "BUCKET": 'gs://{{ dag_run.conf["output_bucket"] }}/' + f'{layer_version}/{layer_id}.{layer_variable}/',
+            "BUCKET": 'gs://{{ dag_run.conf["output_bucket"] }}/{{ dag_run.conf["layer_version"] }}/' + f'{layer_id}.{layer_variable}/',
             "KEY_FILE": '/opt/airflow/plugins/service-account.json',
             "CLOUDSDK_PYTHON": '/usr/local/bin/python'
         }
@@ -92,14 +120,14 @@ def legend_image(workdir: str, color_file: str):
 
 def metadata(workdir: str, metadata: dict):
     @task(task_id='metadata')
-    def fn(files):
+    def fn(files, **context):
         timestamps = list(map(helper.filename_to_date, files))
         extended_metadata = dict(metadata, **{"timestamps": timestamps})
         zoom_levels = extended_metadata['zoom_levels'].split('-')
         total_zoom_levels = int(zoom_levels[1]) + 1
         formatted_metadata = {
             "id": extended_metadata["id"],
-            "version": extended_metadata["version"],
+            "version": context["params"]["layer_version"],
             "timestamps": extended_metadata['timestamps'],
             "minValue": extended_metadata['min_value'],
             "maxValue": extended_metadata['max_value'],
@@ -192,15 +220,15 @@ def gdal_transforms(layer_variable: str, color_file: str, layer_type: str, zoom_
     return fn
 
 
-def upload(workdir: str, layer_id: str, layer_variable: str, layer_version: str, layer_type: str):
+def upload(workdir: str, layer_id: str, layer_variable: str, layer_type: str):
     @task_group(group_id='upload')
-    def fn():
+    def fn(**context):
         upload_dir = f'{workdir}/upload'
         clean_upload_dir = clean_dir(
             task_id='clean_upload_dir', dir=upload_dir)
         prepare_upload_task = prepare_upload(workdir, upload_dir, layer_type)
         upload_task = gcloud_upload_dir(
-            layer_id, layer_variable, layer_version, directory=upload_dir)
+            layer_id, layer_variable, directory=upload_dir)
         clean_upload_dir >> prepare_upload_task() >> upload_task
     return fn
 
@@ -242,19 +270,3 @@ def prepare_upload(workdir: str, upload_dir: str, layer_type: str):
         shutil.copyfile(f'{zip_file}.zip', f'{upload_dir}/package.zip')
 
     return fn
-
-
-# def clamp_netcdf(layer_variable: str, min_value: float, max_value: float):
-#     @task(task_id='clamp_netcdf')
-#     def fn(filename):
-#         import xarray as xr
-#         print(filename)
-#         ds = xr.open_dataset(filename)
-#         ds[layer_variable] = ds[layer_variable].clip(min_value, max_value)
-#         new_filename = helper.change_filename(filename, appendix='clamped')
-#         encoding = {var: {"zlib": True, "complevel": 9} for var in ds.data_vars}
-#         ds.to_netcdf(new_filename, engine='netcdf4', encoding=encoding)
-#         ds.close()
-#         return new_filename
-
-#     return fn

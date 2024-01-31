@@ -11,11 +11,9 @@ from airflow.decorators import task
 # layer
 LAYER_ID = 'sea_ice'
 LAYER_VARIABLE = 'ice_conc'
-LAYER_VERSION = '1.2.3'
 RESOLUTION = '2444 496'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
-    "version": LAYER_VERSION,
     "timestamps": [],  # will be injected
     "min_value": 0,
     "max_value": 100,
@@ -37,9 +35,12 @@ WORKDIR = '/workdir/files'
 COLOR_FILE = f'/opt/airflow/plugins/colors/{LAYER_ID}.{LAYER_VARIABLE}.txt'
 DEBUG = False
 
+default_layer_version = helper.get_default_layer_version()
 dag_params = {
     "max_files": Param(2, type=["null", "integer"], minimum=0,),
-    "output_bucket": Param("esa-cfs-pipeline-output", type=["string"])
+    "output_bucket": Param("esa-cfs-pipeline-output", type=["string"], enum=['esa-cfs-pipeline-output', 'esa-cfs-tiles']),
+    "skip_downloads": Param(False, type="boolean"),
+    "layer_version": Param(default_layer_version, type="string")
 }
 
 
@@ -48,18 +49,18 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
     dry_run = False
 
     # create tasks
-    clean_workdir = task_factories.clean_dir(
-        task_id='clean_workdir', dir=WORKDIR, dry_run=dry_run)
+    clean_workdir = task_factories.clean_dir_skippable(
+        task_id='clean_workdir', dir=WORKDIR)()
 
     list_files_nh = task_factories.gcs_list_files(
         bucket_name=BUCKET_ORIGIN, layer_id=LAYER_ID + '_nh', layer_variable=LAYER_VARIABLE, task_id='list_files_nh')
     download_nh = task_factories.gcs_download_file(
-        bucket_name=BUCKET_ORIGIN, dir=WORKDIR, appendix='_nh_downloaded', task_id='download_file_nh', dry_run=dry_run)
+        bucket_name=BUCKET_ORIGIN, dir=WORKDIR, appendix='_nh_downloaded', task_id='download_file_nh')
 
     list_files_sh = task_factories.gcs_list_files(
         bucket_name=BUCKET_ORIGIN, layer_id=LAYER_ID + '_sh', layer_variable=LAYER_VARIABLE, task_id='list_files_sh')
     download_sh = task_factories.gcs_download_file(
-        bucket_name=BUCKET_ORIGIN, dir=WORKDIR, appendix='_sh_downloaded', task_id='download_file_sh', dry_run=dry_run)
+        bucket_name=BUCKET_ORIGIN, dir=WORKDIR, appendix='_sh_downloaded', task_id='download_file_sh')
 
     legend_image = task_factories.legend_image(
         workdir=WORKDIR, color_file=COLOR_FILE)
@@ -85,7 +86,7 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
     )
 
     upload = task_factories.upload(
-        WORKDIR, LAYER_ID, LAYER_VARIABLE, LAYER_VERSION, METADATA['type'])
+        WORKDIR, LAYER_ID, LAYER_VARIABLE, METADATA['type'])
 
     gdal_dem = BashOperator.partial(
         task_id='gdal_dem',
