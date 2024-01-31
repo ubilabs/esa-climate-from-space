@@ -28,6 +28,7 @@ for n in range(len(da.time)):
   print(filename)
   new_ds = da_slice.to_dataset()
   new_ds = new_ds.assign_attrs(ds.attrs)
-  new_ds = new_ds.assign(crs=ds.crs)
-  new_ds = new_ds.assign(spatial_ref=ds.crs)
+  if "crs" in ds:
+    new_ds = new_ds.assign(crs=ds.crs)
+    new_ds = new_ds.assign(spatial_ref=ds.crs)
   new_ds.to_netcdf(filename, format='NETCDF4', mode='w')
