@@ -45,7 +45,7 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
     list_files = task_factories.gcs_list_files(
         bucket_name=BUCKET_ORIGIN, layer_id=LAYER_ID, layer_variable=LAYER_VARIABLE)
     download = task_factories.gcs_download_file(
-        bucket_name=BUCKET_ORIGIN, dir=WORKDIR, appendix='_downloaded', dry_run=False)
+        bucket_name=BUCKET_ORIGIN, dir=WORKDIR, appendix='_downloaded')
     legend_image = task_factories.legend_image(
         workdir=WORKDIR, color_file=COLOR_FILE)
     metadata = task_factories.metadata(workdir=WORKDIR, metadata=METADATA)
