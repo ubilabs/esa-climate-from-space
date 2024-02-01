@@ -265,7 +265,7 @@ def prepare_upload(workdir: str, upload_dir: str, layer_type: str, layer_id: str
         # copy legend image
         shutil.copyfile(f'{workdir}/legend.png', f'{upload_dir}/legend.png')
         # copy layer icon
-        shutil.copyfile(f'/opt/airflow/plugins/layer-icons/{layer_id}.{layer_variable}.png', f'{upload_dir}/{layer_id}.{layer_variable}.png')
+        shutil.copyfile(f'/opt/airflow/plugins/layer-icons/{layer_id}.{layer_variable}.png', f'{upload_dir}/icon.png')
         # make zip archive for offline usage
         zip_file = f'{workdir}/package'
         shutil.make_archive(zip_file, 'zip', root_dir=upload_dir)
