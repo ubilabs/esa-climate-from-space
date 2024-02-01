@@ -2,6 +2,7 @@ from datetime import datetime
 import task_factories
 from airflow import DAG
 from airflow.models.param import Param
+from helper import get_default_layer_version
 
 # layer
 LAYER_ID = 'soil_moisture'
@@ -32,9 +33,12 @@ WORKDIR = '/workdir/files'
 COLOR_FILE = f'/opt/airflow/plugins/colors/{LAYER_ID}.{LAYER_VARIABLE}.txt'
 DEBUG = False
 
+default_layer_version = get_default_layer_version()
 dag_params = {
     "max_files": Param(2, type=["null", "integer"], minimum=0,),
-    "output_bucket": Param("esa-cfs-pipeline-output", type=["string"])
+    "output_bucket": Param("esa-cfs-pipeline-output", type=["string"]),
+    "skip_downloads": Param(False, type="boolean"),
+    "layer_version": Param(default_layer_version, type="string")
 }
 
 with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, catchup=False, params=dag_params) as dag:
