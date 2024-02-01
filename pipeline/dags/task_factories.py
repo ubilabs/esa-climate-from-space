@@ -138,10 +138,10 @@ def metadata(workdir: str, metadata: dict):
             "basemap": extended_metadata['basemap']
         }
 
-        if hasattr(extended_metadata, 'filter'):
+        if 'filter' in extended_metadata:
             formatted_metadata['filter'] = extended_metadata['filter']
 
-        if hasattr(extended_metadata, 'legend_values'):
+        if 'legend_values' in extended_metadata:
             formatted_metadata['legendValues'] = extended_metadata['legend_values']
 
         filepath = str(Path(workdir).joinpath('metadata.json'))
