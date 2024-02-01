@@ -17,7 +17,7 @@ METADATA = {
     "zoom_levels": '0-3',
     "units": 'kelvin',
     "basemap": None,
-    "legend_values": [ "50 °", "-30" ],
+    "legend_values": [ "50 °C", "-30" ],
     "time_format": {
         "year": "numeric",
         "month": "long"
