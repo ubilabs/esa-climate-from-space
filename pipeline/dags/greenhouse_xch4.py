@@ -17,7 +17,7 @@ METADATA = {
     "zoom_levels": '0-2',
     "units": '',
     "basemap": None,
-    "legendValues": [
+    "legend_values": [
       "1825 ppm",
       "1800",
       "1775",
