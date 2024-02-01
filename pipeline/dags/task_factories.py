@@ -226,14 +226,14 @@ def upload(workdir: str, layer_id: str, layer_variable: str, layer_type: str):
         upload_dir = f'{workdir}/upload'
         clean_upload_dir = clean_dir(
             task_id='clean_upload_dir', dir=upload_dir)
-        prepare_upload_task = prepare_upload(workdir, upload_dir, layer_type)
+        prepare_upload_task = prepare_upload(workdir, upload_dir, layer_type, layer_id, layer_variable)
         upload_task = gcloud_upload_dir(
             layer_id, layer_variable, directory=upload_dir)
         clean_upload_dir >> prepare_upload_task() >> upload_task
     return fn
 
 
-def prepare_upload(workdir: str, upload_dir: str, layer_type: str):
+def prepare_upload(workdir: str, upload_dir: str, layer_type: str, layer_id: str, layer_variable: str):
     @task(task_id='prepare_upload')
     def fn():
         metadata_filepath = str(Path(workdir).joinpath('metadata.json'))
@@ -264,6 +264,8 @@ def prepare_upload(workdir: str, upload_dir: str, layer_type: str):
         shutil.copyfile(metadata_filepath, f'{upload_dir}/metadata.json')
         # copy legend image
         shutil.copyfile(f'{workdir}/legend.png', f'{upload_dir}/legend.png')
+        # copy layer icon
+        shutil.copyfile(f'/opt/airflow/assets/layer-icons/{layer_id}.{layer_variable}.png', f'{upload_dir}/{layer_id}.{layer_variable}.png')
         # make zip archive for offline usage
         zip_file = f'{workdir}/package'
         shutil.make_archive(zip_file, 'zip', root_dir=upload_dir)
