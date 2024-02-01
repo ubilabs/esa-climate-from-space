@@ -52,7 +52,7 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
     gdal_transforms = task_factories.gdal_transforms(
         layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'], gdal_ts=RESOLUTION)
     upload = task_factories.upload(
-        WORKDIR, LAYER_ID, LAYER_VARIABLE, LAYER_VERSION, METADATA['type'])
+        WORKDIR, LAYER_ID, LAYER_VARIABLE, METADATA['type'])
 
     # connect tasks
     files = list_files()
