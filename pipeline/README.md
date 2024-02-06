@@ -42,4 +42,6 @@ Now you can start a DAG by selecting a dataset variable under the `DAGs` menu an
 
 Some datasets have very large files and need lots of processing power and RAM. If your local machine or internet connection is not capable of handling a dataset you can process it on a Compute Engine in the Google Cloud. Therefore just start up a VM from the prepared [snapshot](https://console.cloud.google.com/compute/snapshotsDetail/projects/esa-climate-from-space/global/snapshots/airflow-2024-01?project=esa-climate-from-space).
 
-Once started you can reach the UI of the VM at `http://{EXTERNAL_IP}:8081`. Please note that the machine is not secure and should only be running it while processing the data. You can safely delete the machine after the final image tiles have been uploaded. If you SSH into the machine you can find the checked out git repo at `/opt/esa/`. To update the DAG files pull from origin and the UI will update a few seconds later.
+Once started you can reach the UI of the VM at `http://{EXTERNAL_IP}:8081`. To log into the UI use the username and password from the docker-compose file..
+
+Please note that the machine is not secure and should only be running it while processing the data. You can safely delete the machine after the final image tiles have been uploaded. If you SSH into the machine you can find the checked out git repo at `/opt/esa/`. To update the DAG files pull from origin and the UI will update a few seconds later.
