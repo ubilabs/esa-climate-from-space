@@ -17,10 +17,9 @@ Each dataset has it's own DAG (directed acyclic graph) file. This python file us
 Example DAG:
 <img width="100%" alt="dag" src="https://github.com/ubilabs/esa-climate-from-space/assets/1611635/93a501e5-cdbf-4784-a987-147e0f32e031">
 
-
 ## DAGs and data flow
 
-For now the Airflow pipelines start with downloading the (preprocessed) files from our GCS bucket `gs://esa-cfs-cate-data`. Note that the scripts to download these files from the data hub and upload to GCS are the same as for the old pipeline and can be found in `/data/downloads`. In the future these download tasks will probably also be implemented as Airflow DAGs.
+For now the Airflow pipelines start with downloading the (preprocessed) files from our GCS bucket `gs://esa-cfs-cate-data`. Note that the scripts to download these files from the data hub and upload to GCS are the same as for the old pipeline and can be found in `/data/downloads`. In the future these download tasks will probably also be implemented as Airflow DAGs. For now you can use the following command to run the download tasks in a Docker container suitable for this purpose: `docker run -it --rm --name cate -v $PWD/data:/data gcr.io/esa-climate-from-space/cate:latest bash`.
 
 As just mentioned each dataset DAG downloads the NetCDF files onto it's local HDD and creates image files. In the end, not only the final colored tiles but also a metadata file, legend image, zip file and an icon image will be uploaded to the specified bucket. We use `gs://esa-cfs-tiles` as the live bucket and `gs://esa-cfs-pipeline-output` as a test/debug bucket. The final files are versioned by including the version string in the destination path, e.g. `gs://esa-cfs-tiles/1.14.1/lakes.lswt`. The output bucket and version can be adjusted when starting a DAG in the UI.
 
