@@ -14,6 +14,10 @@ The new (2023) Apache Airflow based pipeline is the successor of the previous Cl
 
 Each dataset has it's own DAG (directed acyclic graph) file. This python file uses the Airflow API to build up a graph structure which describes each processing step. Steps can be processed sequentielly or in parallel. The DAG files can be found in `/pipeline/dags`. Many common tasks for this like download/upload of files from Google Cloud Storage or GDAL transforms have been moved into a library file which can be found at `/pipeline/dags/task_factories.py`.
 
+Example DAG:
+<img width="100%" alt="dag" src="https://github.com/ubilabs/esa-climate-from-space/assets/1611635/93a501e5-cdbf-4784-a987-147e0f32e031">
+
+
 ## DAGs and data flow
 
 For now the Airflow pipelines start with downloading the (preprocessed) files from our GCS bucket `gs://esa-cfs-cate-data`. Note that the scripts to download these files from the data hub and upload to GCS are the same as for the old pipeline and can be found in `/data/downloads`. In the future these download tasks will probably also be implemented as Airflow DAGs.
