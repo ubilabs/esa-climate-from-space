@@ -35,4 +35,5 @@ export interface LegacySlide {
 export interface LegacyStory {
   id: string;
   slides: LegacySlide[];
+  isCurrentStory?: boolean;
 }
