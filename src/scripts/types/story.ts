@@ -8,7 +8,6 @@ export interface Slide {
 }
 
 export interface Story {
-  isCurrentStory?: boolean;
   id: string;
   slides: Slide[];
 }
