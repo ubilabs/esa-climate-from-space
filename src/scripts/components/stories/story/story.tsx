@@ -76,7 +76,7 @@ const Story: FunctionComponent = () => {
   const getRightSideComponent = (slide: Slide, story: StoryType) => {
     if (slide.galleryItems) {
       return (
-        <StoryGallery mode={mode} storyId={story.id}>
+        <StoryGallery mode={mode} storyId={story.id} key={story.id}>
           {slide.galleryItems.map(item => {
             switch (item.type) {
               case GalleryItemType.Image:
