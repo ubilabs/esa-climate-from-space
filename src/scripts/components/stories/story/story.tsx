@@ -27,6 +27,7 @@ import {GalleryItemType} from '../../../types/gallery-item';
 import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 
 import styles from './story.module.styl';
+import StoryEmbedded from '../story-embedded/story-embedded';
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
@@ -97,11 +98,7 @@ const Story: FunctionComponent = () => {
               case GalleryItemType.Globe:
                 return <StoryGlobe globeItem={item} />;
               case GalleryItemType.Embedded:
-                return (
-                  <iframe
-                    className={styles.embeddedContent}
-                    src={item.embeddedSrc}></iframe>
-                );
+                return <StoryEmbedded embeddedItem={item} />;
               default:
                 console.warn(
                   // eslint-disable-next-line dot-notation

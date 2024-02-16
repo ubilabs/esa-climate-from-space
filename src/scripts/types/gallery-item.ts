@@ -26,6 +26,7 @@ export interface VideoItem {
 
 export interface EmbeddedItem {
   type: GalleryItemType.Embedded;
+  text?: string;
   embeddedSrc?: string;
 }
 
