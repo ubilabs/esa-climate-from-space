@@ -20,7 +20,7 @@
         {
           "type": "embedded",
           "embeddedSrc": "https://datawrapper.dwcdn.net/27Ww5/6/",
-          "text": "# Concentration de dioxyde de carbone atmosphérique\r\nConcentration de dioxyde de carbone dans l'atmosphère au cours des 300 dernières années, sur la base d'échantillons d'air provenant de carottes de glace et, depuis 1958, de mesures directes effectuées par l'observatoire de Mauna Loa, à Hawaï. Le dioxyde de carbone s'est accumulé dans l'atmosphère depuis la révolution industrielle, sa concentration augmentant rapidement dans la seconde moitié du XXe siècle. (source : Institut océanographique Scripps)"
+          "description": "# Concentration de dioxyde de carbone atmosphérique\r\nConcentration de dioxyde de carbone dans l'atmosphère au cours des 300 dernières années, sur la base d'échantillons d'air provenant de carottes de glace et, depuis 1958, de mesures directes effectuées par l'observatoire de Mauna Loa, à Hawaï. Le dioxyde de carbone s'est accumulé dans l'atmosphère depuis la révolution industrielle, sa concentration augmentant rapidement dans la seconde moitié du XXe siècle. (source : Institut océanographique Scripps)"
         },
         {
           "type": "image",

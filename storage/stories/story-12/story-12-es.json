@@ -19,7 +19,7 @@
         },
         {
           "type": "embedded",
-          "text": "# Concentración de dióxido de carbono en la atmósfera\r\nConcentración atmosférica de dióxido de carbono en los últimos 300 años, basada en muestras de aire de núcleos de hielo y, desde 1958, en mediciones directas del Observatorio de Mauna Loa, en Hawai. El dióxido de carbono se ha ido acumulando en la atmósfera desde la Revolución Industrial, y su concentración aumentó rápidamente en la segunda mitad del siglo XX. (Fuente: Instituto Scripps de Oceanografía)",
+          "description": "# Concentración de dióxido de carbono en la atmósfera\r\nConcentración atmosférica de dióxido de carbono en los últimos 300 años, basada en muestras de aire de núcleos de hielo y, desde 1958, en mediciones directas del Observatorio de Mauna Loa, en Hawai. El dióxido de carbono se ha ido acumulando en la atmósfera desde la Revolución Industrial, y su concentración aumentó rápidamente en la segunda mitad del siglo XX. (Fuente: Instituto Scripps de Oceanografía)",
           "embeddedSrc": "https://datawrapper.dwcdn.net/27Ww5/6/"
         },
         {

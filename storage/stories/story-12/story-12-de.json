@@ -19,7 +19,7 @@
         },
         {
           "type": "embedded",
-          "text": "# Atmosphärische Kohlendioxid-Konzentration\r\nAtmosphärische Kohlendioxidkonzentration in den letzten 300 Jahren, basierend auf Luftproben aus Eisbohrkernen und seit 1958 auf direkten Messungen des Mauna Loa Observatory, Hawaii. Kohlendioxid sammelt sich seit der industriellen Revolution in der Atmosphäre an, wobei seine Konzentration in der zweiten Hälfte des zwanzigsten Jahrhunderts rasch anstieg. (Quelle: Scripps Institute of Oceanography)",
+          "description": "# Atmosphärische Kohlendioxid-Konzentration\r\nAtmosphärische Kohlendioxidkonzentration in den letzten 300 Jahren, basierend auf Luftproben aus Eisbohrkernen und seit 1958 auf direkten Messungen des Mauna Loa Observatory, Hawaii. Kohlendioxid sammelt sich seit der industriellen Revolution in der Atmosphäre an, wobei seine Konzentration in der zweiten Hälfte des zwanzigsten Jahrhunderts rasch anstieg. (Quelle: Scripps Institute of Oceanography)",
           "embeddedSrc": "https://datawrapper.dwcdn.net/27Ww5/6/"
         },
         {

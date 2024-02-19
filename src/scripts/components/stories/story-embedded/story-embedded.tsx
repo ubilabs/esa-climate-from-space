@@ -10,15 +10,15 @@ interface Props {
 }
 
 const StoryEmbedded: FunctionComponent<Props> = ({embeddedItem}) => {
-  const {text} = embeddedItem;
+  const {description} = embeddedItem;
   return (
     <div className={styles.embeddedContent}>
       <iframe src={embeddedItem.embeddedSrc}></iframe>
-      {text && (
+      {description && (
         <Caption
           showLightbox={false}
           imageFit={ImageFit.Cover}
-          content={text}
+          content={description}
         />
       )}
     </div>

@@ -19,7 +19,7 @@
         },
         {
           "type": "embedded",
-          "text": "# Atmosferische kooldioxideconcentratie\r\nKooldioxideconcentratie in de atmosfeer over de afgelopen 300 jaar, gebaseerd op luchtmonsters uit ijskernen en, sinds 1958, directe metingen van het Mauna Loa Observatorium, Hawaii. Koolstofdioxide heeft zich sinds de industriële revolutie in de atmosfeer opgehoopt, waarbij de concentratie in de tweede helft van de twintigste eeuw snel toenam. (bron: Scripps Institute of Oceanography)",
+          "description": "# Atmosferische kooldioxideconcentratie\r\nKooldioxideconcentratie in de atmosfeer over de afgelopen 300 jaar, gebaseerd op luchtmonsters uit ijskernen en, sinds 1958, directe metingen van het Mauna Loa Observatorium, Hawaii. Koolstofdioxide heeft zich sinds de industriële revolutie in de atmosfeer opgehoopt, waarbij de concentratie in de tweede helft van de twintigste eeuw snel toenam. (bron: Scripps Institute of Oceanography)",
           "embeddedSrc": "https://datawrapper.dwcdn.net/27Ww5/6/"
         },
         {

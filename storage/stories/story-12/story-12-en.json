@@ -19,7 +19,7 @@
         },
         {
           "type": "embedded",
-          "text": "##   Atmospheric Carbon Dioxide Concentration\r\nAtmospheric carbon dioxide concentration over the last 300 years, based on air samples from ice cores and, since 1958, direct measurements from Mauna Loa Observatory, Hawaii. Carbon dioxide has been accumulating in the atmosphere since the Industrial Revolution, its concentration increasing rapidly in the second half of the twentieth century. (source: Scripps Institute of Oceanography)",
+          "description": "##   Atmospheric Carbon Dioxide Concentration\r\nAtmospheric carbon dioxide concentration over the last 300 years, based on air samples from ice cores and, since 1958, direct measurements from Mauna Loa Observatory, Hawaii. Carbon dioxide has been accumulating in the atmosphere since the Industrial Revolution, its concentration increasing rapidly in the second half of the twentieth century. (source: Scripps Institute of Oceanography)",
           "embeddedSrc": "https://datawrapper.dwcdn.net/27Ww5/6/"
         },
         {
