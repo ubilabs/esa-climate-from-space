@@ -206,5 +206,13 @@
     "shortName": "Glace de mer",
     "usageInfo": "© ESA",
     "description": "La couverture de glace de mer sur l'océan modifie l'albédo de surface, isole l'océan de la perte de chaleur et constitue une barrière à l'échange d'énergie et de gaz entre l'océan et l'atmosphère. Le sel éjecté par la glace de mer croissante altère la structure de la densité et modifie la circulation de l'océan. Les changements climatiques régionaux affectent les caractéristiques de la glace de mer et ces changements peuvent se répercuter sur le système climatique, tant au niveau régional que mondial. La glace de mer est également une composante majeure des écosystèmes polaires ; les plantes et les animaux de tous les niveaux trophiques trouvent un habitat dans la glace de mer ou y sont associés.\n\nL'initiative sur le changement climatique de l'ESA a compilé des cartes quotidiennes de la concentration de glace de mer depuis 1978, basées sur des observations de micro-ondes passives de SMMR, SSM/I et AMSR-E/2, en collaboration avec l'OSI-SAF d'EUMETSAT. La concentration de glace de mer est définie comme la surface de glace de mer par rapport à la surface totale en un point donné de l'océan. L'épaisseur de la glace de mer peut également être mesurée par des altimètres embarqués sur satellite et est utilisée avec la concentration de glace pour évaluer le volume et la masse de glace.\n\n**Variable affichée:** Fraction de la surface de glace de mer en pourcentage\n\n**Période : ** juin 2002 - mai 2017 (avec un écart d'octobre 2011 - juillet 2012)\n\n**Résolution temporelle:** mensuelle\n\n**Étendue géographique : ** Arctique & Antarctique\n\n**Résolution spatiale : ** 25km\n\n**Version : ** 2.1\n\n**DOI:** [10.5285/f17f146a31b14dfd960cde0874236ee5](http://dx.doi.org/10.5285/f17f146a31b14dfd960cde0874236ee5)\n\n[Site Web du projet ECV de l'ESA CCI sur la glace de mer] (https://climate.esa.int/projects/sea-ice/)  \n[Données dans le portail de données ouvertes](https://catalogue.ceda.ac.uk/uuid/f17f146a31b14dfd960cde0874236ee5)"
+  },
+  {
+    "id": "vegetation.LAI",
+    "type": "Biosphere",
+    "name": "Vegetation Parameters",
+    "shortName": "Vegetation Params",
+    "usageInfo": "© ESA",
+    "description": ""
   }
 ]

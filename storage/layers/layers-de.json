@@ -206,5 +206,13 @@
     "shortName": "Meereis",
     "usageInfo": "© ESA",
     "description": "Die Meereisbedeckung auf dem Ozean verändert die Albedo der Oberfläche, isoliert den Ozean gegen Wärmeverluste und stellt eine Barriere für den Austausch von Impuls und Gasen zwischen dem Ozean und der Atmosphäre dar. Das vom wachsenden Meereis freigesetzte Salz verändert die Dichtestruktur und die Ozeanzirkulation. Regionale Klimaveränderungen wirken sich auf die Eigenschaften des Meereises aus, und diese Veränderungen können auf das Klimasystem regional und global zurückwirken. Meereis ist auch ein wichtiger Bestandteil der polaren Ökosysteme; Pflanzen und Tiere aller trophischen Ebenen finden im Meereis einen Lebensraum oder sind mit ihm verbunden.\n\nDie ESA Climate Change Initiative hat in Zusammenarbeit mit EUMETSAT OSI-SAF tägliche Karten der Meereiskonzentration bis zurück ins Jahr 1978 erstellt, die auf passiven Mikrowellenbeobachtungen von SMMR, SSM/I und AMSR-E/2 basieren. Die Meereiskonzentration ist definiert als die Fläche des Meereises im Verhältnis zur Gesamtfläche an einem bestimmten Punkt im Ozean. Die Meereisdicke kann auch mit satellitengestützten Altimetern gemessen werden und wird zusammen mit der Eiskonzentration verwendet, um das Volumen und die Masse des Eises zu bestimmen.\n\n**Variable:** Meereisflächenanteil in Prozent\n\n**Zeitspanne:** Juni 2002 - Mai 2017 (mit einer Lücke von Oktober 2011 - Juli 2012)\n\n**Temporale Auflösung:** monatlich\n\n**Räumliche Ausdehnung:** Arktis & Antarktis\n\n**Räumliche Auflösung:** 25km\n\n**Version:** 2.1\n\n**DOI:** [10.5285/f17f146a31b14dfd960cde0874236ee5](http://dx.doi.org/10.5285/f17f146a31b14dfd960cde0874236ee5)\n\n[ESA CCI Meereis ECV Projekt Webseite](https://climate.esa.int/projects/sea-ice/)  \n[Daten im Open Data Portal](https://catalogue.ceda.ac.uk/uuid/f17f146a31b14dfd960cde0874236ee5)"
+  },
+  {
+    "id": "vegetation.LAI",
+    "type": "Biosphere",
+    "name": "Vegetation Parameters",
+    "shortName": "Vegetation Params",
+    "usageInfo": "© ESA",
+    "description": ""
   }
 ]

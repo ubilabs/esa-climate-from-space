@@ -206,5 +206,13 @@
     "shortName": "Hielo marino - Hemisferio Norte",
     "usageInfo": "© ESA",
     "description": "La capa de hielo marino sobre el océano modifica el albedo de la superficie, aísla el océano de la pérdida de calor y constituye una barrera para el intercambio de impulso y gases entre el océano y la atmósfera. La sal expulsada por el hielo marino en crecimiento altera la estructura de la densidad y modifica la circulación del océano. Los cambios climáticos regionales afectan a las características del hielo marino y esos cambios pueden retroalimentar el sistema climático, tanto a escala regional como mundial. El hielo marino es también un componente importante de los ecosistemas polares; plantas y animales de todos los niveles tróficos encuentran un hábitat en él, o están asociados a él.\n\nLa Iniciativa de Cambio Climático de la ESA ha recopilado mapas diarios de concentración de hielo marino desde 1978, basados en observaciones pasivas por microondas de SMMR, SSM/I y AMSR-E/2, en colaboración con EUMETSAT OSI-SAF. La concentración de hielo marino se define como la superficie de hielo marino en relación con la superficie total en un punto determinado del océano. El espesor del hielo marino también puede medirse mediante altímetros instalados en satélites y se utiliza con la concentración de hielo para evaluar el volumen y la masa de hielo.\n\n**Variable:** Fracción de área de hielo marino en porcentaje.\n\n**Periodo de tiempo:** junio de 2002 - mayo de 2017 (con un hueco de octubre de 2011 a julio de 2012)\n\n**Resolución temporal:** mensual\n\n**Extensión geográfica:** Ártico & Antártica\n\n**Resolución espacial:** 25km\n\n**Versión:** 2.1\n\n**DOI:** [10.5285/f17f146a31b14dfd960cde0874236ee5](http://dx.doi.org/10.5285/f17f146a31b14dfd960cde0874236ee5)\n\n[Sitio web del proyecto ECV del hielo marino de la ESA](https://climate.esa.int/projects/sea-ice/)  \n[Datos en el portal de datos abiertos](https://catalogue.ceda.ac.uk/uuid/f17f146a31b14dfd960cde0874236ee5)"
+  },
+  {
+    "id": "vegetation.LAI",
+    "type": "Biosphere",
+    "name": "Vegetation Parameters",
+    "shortName": "Vegetation Params",
+    "usageInfo": "© ESA",
+    "description": ""
   }
 ]

@@ -206,5 +206,13 @@
     "shortName": "Zee-ijs",
     "usageInfo": "© ESA",
     "description": "De bedekking van de oceaan met zee-ijs verandert het albedo van het oppervlak, isoleert de oceaan tegen warmteverlies en vormt een barrière voor de uitwisseling van momentum en gassen tussen de oceaan en de atmosfeer. Zout dat wordt uitgestoten door groeiend zee-ijs verandert de dichtheidsstructuur en verandert de circulatie van de oceaan. Regionale klimaatveranderingen beïnvloeden de kenmerken van het zee-ijs en deze veranderingen kunnen het klimaatsysteem beïnvloeden, zowel regionaal als wereldwijd. Zee-ijs is ook een belangrijke component van polaire ecosystemen; planten en dieren op alle trofische niveaus vinden een habitat in, of zijn geassocieerd met, zee-ijs.\n\nHet Climate Change Initiative van ESA heeft in samenwerking met EUMETSAT OSI-SAF dagelijkse zee-ijs concentratie kaarten samengesteld die teruggaan tot 1978, gebaseerd op passieve-microgolf waarnemingen van SMMR, SSM/I en AMSR-E/2. Concentratie van zee-ijs wordt gedefinieerd als de oppervlakte van zee-ijs ten opzichte van de totale oppervlakte op een bepaald punt in de oceaan. De dikte van het zee-ijs kan ook worden gemeten door hoogtemeters op satellieten en wordt samen met de ijsconcentratie gebruikt om het volume en de massa van het ijs te evalueren.\n\n**Variabele:** Oppervlaktefractie van zee-ijs in procenten\n\n**Tijdspanne:** juni 2002 - mei 2017 (met een hiaat van oktober 2011 - juli 2012)\n\n**Tijdsresolutie:** maandelijks\n\n**Geografische omvang:** Noordpool- & Zuidpoolgebied\n\n**Ruimtelijke resolutie:** 25 km\n\n**Versie:** 2.1\n\n**DOI:** [10.5285/f17f146a31b14dfd960cde0874236ee5](http://dx.doi.org/10.5285/f17f146a31b14dfd960cde0874236ee5)\n\n[ESA CCI Sea Ice ECV Project website](https://climate.esa.int/projects/sea-ice/)  \n[Gegevens in het Open Data Portaal](https://catalogue.ceda.ac.uk/uuid/f17f146a31b14dfd960cde0874236ee5)"
+  },
+  {
+    "id": "vegetation.LAI",
+    "type": "Biosphere",
+    "name": "Vegetation Parameters",
+    "shortName": "Vegetation Params",
+    "usageInfo": "© ESA",
+    "description": ""
   }
 ]
