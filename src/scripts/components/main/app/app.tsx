@@ -49,11 +49,11 @@ const TranslatedApp: FunctionComponent = () => {
   } = useSelector(embedElementsSelector);
 
   const logo = (
-    <Link to="/about">
+    <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
       <div className={styles.logo}>
         <EsaLogo />
       </div>
-    </Link>
+    </a>
   );
 
   return (
