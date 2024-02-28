@@ -89,10 +89,10 @@ def gcs_upload_file(bucket_name: str, layer_id: str, layer_variable: str, layer_
 def gcloud_upload_dir(layer_id: str, layer_variable: str, directory: str):
     return BashOperator(
         task_id='gcloud_upload',
-        bash_command='gcloud auth activate-service-account --key-file $KEY_FILE && gsutil -q -m cp -r $UPLOAD_DIR/* $BUCKET',
+        bash_command='gcloud auth activate-service-account --key-file $KEY_FILE && gsutil -m -h "Cache-Control:no-cache" rsync -d -r $UPLOAD_DIR $BUCKET',
         env={
             "UPLOAD_DIR": directory,
-            "BUCKET": 'gs://{{ dag_run.conf["output_bucket"] }}/{{ dag_run.conf["layer_version"] }}/' + f'{layer_id}.{layer_variable}/',
+            "BUCKET": 'gs://{{ dag_run.conf["output_bucket"] }}/{{ dag_run.conf["layer_version"] }}/' + f'{layer_id}.{layer_variable}',
             "KEY_FILE": '/opt/airflow/plugins/service-account.json',
             "CLOUDSDK_PYTHON": '/usr/local/bin/python'
         }
@@ -155,7 +155,7 @@ def metadata(workdir: str, metadata: dict):
     return fn
 
 
-def gdal_transforms(layer_variable: str, color_file: str, layer_type: str, zoom_levels: str, gdal_te: str = '-180 -90 180 90', gdal_ts: str = '1024 512', warp_cmd: str = None, max_tis_warp: int = 4,  max_tis_dem: int = 4, max_tis_translate: int = 4):
+def gdal_transforms(color_file: str, layer_type: str, zoom_levels: str, gdal_te: str = '-180 -90 180 90', gdal_ts: str = '1024 512', layer_variable: str = '', warp_cmd: str = None, max_tis_warp: int = 4,  max_tis_dem: int = 4, max_tis_translate: int = 4):
     def get_transform_task():
         if layer_type == 'image':
             return BashOperator.partial(
@@ -178,7 +178,8 @@ def gdal_transforms(layer_variable: str, color_file: str, layer_type: str, zoom_
 
     @task_group(group_id='gdal_transforms_group')
     def fn(downloads):
-        warp_command = f'gdalwarp -t_srs EPSG:4326 -te {gdal_te} -ts {gdal_ts} -r near --config GDAL_CACHEMAX 90% -co compress=LZW NETCDF:"$FILEPATH_IN":$DATA_VARIABLE $FILEPATH_OUT' if not warp_cmd else warp_cmd
+        file_path_in = 'NETCDF:"$FILEPATH_IN":$DATA_VARIABLE' if layer_variable else '$FILEPATH_IN'
+        warp_command = f'gdalwarp -t_srs EPSG:4326 -te {gdal_te} -ts {gdal_ts} -r near --config GDAL_CACHEMAX 90% -co compress=LZW {file_path_in} $FILEPATH_OUT' if not warp_cmd else warp_cmd
         gdal_warp = BashOperator.partial(
             task_id='reproject_and_to_tiff',
             bash_command=f'rm -f $FILEPATH_OUT && {warp_command} && echo $FILEPATH_OUT',
