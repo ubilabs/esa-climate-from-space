@@ -17,7 +17,7 @@ METADATA = {
     "zoom_levels": '0-12',
     "units": '',
     "basemap": 'blue',
-    "legend_values": ["100 %", "0"],
+    "legend_values": [],
     "time_format": {
         "year": "numeric",
     }
