@@ -28,7 +28,6 @@ RUN bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 RUN rm -rf ~/miniconda3/miniconda.sh
 
 
-#RUN source /root/.bashrc && ~/miniconda3/bin/conda create -y --name ect --channel conda-forge esa-climate-toolbox
 
 # CCI Toolbox
 
