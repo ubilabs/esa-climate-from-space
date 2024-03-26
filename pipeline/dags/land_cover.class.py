@@ -14,10 +14,83 @@ METADATA = {
     "min_value": 0,
     "max_value": 150,
     "type": "tiles",  # 'tiles' or 'image'
-    "zoom_levels": '0-12',
+    "zoom_levels": '11-12',
     "units": '',
     "basemap": 'blue',
-    "legend_values": [],
+    "legend_values": [
+        {
+        "value": "No data",
+        "color": "rgb(0, 0, 0)"
+        },
+        {
+        "value": "Tree cover evergreen broadleaf",
+        "color": "rgb(0, 100, 0)"
+        },
+        {
+        "value": "Tree cover evergreen needleleaf",
+        "color": "rgb(0, 60, 0)"
+        },
+        {
+        "value": "Tree cover deciduous broadleaf",
+        "color": "rgb(0, 160, 0)"
+        },
+        {
+        "value": "Tree cover deciduous needleleaf",
+        "color": "rgb(40, 80, 0)"
+        },
+        {
+        "value": "Shrub cover evergreen",
+        "color": "rgb(150, 100, 0)"
+        },
+        {
+        "value": "Shrub cover deciduous",
+        "color": "rgb(170, 115, 0)"
+        },
+        {
+        "value": "Grasslands",
+        "color": "rgb(255, 180, 50)"
+        },
+        {
+        "value": "Croplands",
+        "color": "rgb(255, 255, 100)"
+        },
+        {
+        "value": " Woody vegetation acquatic or regularly flooded",
+        "color": "rgb(27, 203, 174)"
+        },
+        {
+        "value": "Grassland vegetation acquatic or regularly flooded",
+        "color": "rgb(0, 220, 130)"
+        },
+        {
+        "value": "Lichens and mosses",
+        "color": "rgb(255, 220, 210)"
+        },
+        {
+        "value": "Bare areas",
+        "color": "rgb(255, 245, 215)"
+        },
+        {
+        "value": "Built-up",
+        "color": "rgb(195, 20, 0)"
+        },
+        {
+        "value": "Open water",
+        "color": "rgb(0, 70, 200)"
+        },
+        {
+        "value": "Open water seasonal",
+        "color": "rgb(91, 149, 255)"
+        },
+        {
+        "value": "Open water permanent",
+        "color": "rgb(0, 70, 200)"
+        },
+        {
+        "value": "Permanent snow and/or ice",
+        "color": "rgb(255, 255, 255)"
+        }
+    ],
     "time_format": {
         "year": "numeric",
     }
