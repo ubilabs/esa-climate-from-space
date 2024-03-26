@@ -1,3 +1,13 @@
+## [1.14.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.14.0...v1.14.1) (2024-03-26)
+
+
+### Bug Fixes
+
+* **data-viewer:** change z-index of globe and legend ([be8ab13](https://github.com/ubilabs/esa-climate-from-space/commit/be8ab13cd8212e69b71c30ab43ffca31edc4ca21))
+* **navigation:** add z-index to navigation module ([a28be7c](https://github.com/ubilabs/esa-climate-from-space/commit/a28be7cb379af8e8d92989f77a16a872b17bf0e5))
+
+
+
 # [1.14.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.13.1...v1.14.0) (2023-11-29)
 
 
