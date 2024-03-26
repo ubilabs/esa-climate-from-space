@@ -23,4 +23,5 @@ export interface Layer {
   legendValues: string[] | LegendValueColor[];
   legendBackgroundColor: string;
   hideLegend?: boolean;
+  stepSize?: number; // time in ms
 }

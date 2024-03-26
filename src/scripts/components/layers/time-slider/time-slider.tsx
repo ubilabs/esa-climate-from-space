@@ -54,12 +54,17 @@ const TimeSlider: FunctionComponent<Props> = ({
   const compareLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, compareId)
   );
+
   const globeSpinning = useSelector(globeSpinningSelector);
 
   const playbackStep = useMemo(
-    () => Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails)),
+    () => {
+      const layerStepSize = mainLayerDetails?.stepSize || compareLayerDetails?.stepSize;
+      return layerStepSize || Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails));
+    },
     [mainLayerDetails, compareLayerDetails]
   );
+
   const {
     mainTimeFormat,
     compareTimeFormat,
