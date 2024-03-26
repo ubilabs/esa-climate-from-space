@@ -14,7 +14,7 @@ METADATA = {
     "min_value": 0,
     "max_value": 150,
     "type": "tiles",  # 'tiles' or 'image'
-    "zoom_levels": '11-12',
+    "zoom_levels": '0-12',
     "units": '',
     "basemap": 'blue',
     "legend_values": [
