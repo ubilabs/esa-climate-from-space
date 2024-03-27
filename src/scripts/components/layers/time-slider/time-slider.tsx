@@ -56,10 +56,22 @@ const TimeSlider: FunctionComponent<Props> = ({
   );
   const globeSpinning = useSelector(globeSpinningSelector);
 
-  const playbackStep = useMemo(
-    () => Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails)),
+  const playbackSteps = useMemo(
+    () => {
+      if (mainLayerDetails && mainLayerDetails.useTimestampsForPlayback) {
+        return mainLayerDetails.timestamps.map(
+          timestamp => new Date(timestamp).getTime()
+        );
+      } else if (compareLayerDetails && compareLayerDetails.useTimestampsForPlayback) {
+          return compareLayerDetails.timestamps.map(
+            timestamp => new Date(timestamp).getTime()
+          );
+      }
+      return [Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails))];
+    },
     [mainLayerDetails, compareLayerDetails]
   );
+
   const {
     mainTimeFormat,
     compareTimeFormat,
@@ -131,7 +143,7 @@ const TimeSlider: FunctionComponent<Props> = ({
         <TimePlayback
           minTime={combined.min}
           maxTime={combined.max}
-          step={playbackStep}
+          steps={playbackSteps}
           mainLayerId={mainId}
           compareLayerId={compareId}
         />
