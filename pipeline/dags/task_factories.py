@@ -167,7 +167,7 @@ def gdal_transforms(color_file: str, layer_type: str, zoom_levels: str, gdal_te:
 
         return BashOperator.partial(
             task_id='gdal_translate_tiles',
-            bash_command=f'rm -rf $FILEPATH_OUT && gdal2tiles.py --profile geodetic --zoom={zoom_levels} --tmscompatible --exclude --no-kml --webviewer=none --resampling average --processes=6 --s_srs EPSG:4326 $FILEPATH_IN $FILEPATH_OUT && echo $FILEPATH_OUT',
+            bash_command=f'rm -rf $FILEPATH_OUT && gdal2tiles.py --profile geodetic --zoom={zoom_levels} --tmscompatible --exclude --no-kml --webviewer=none --resampling average --processes=16 --s_srs EPSG:4326 $FILEPATH_IN $FILEPATH_OUT && echo $FILEPATH_OUT',
             max_active_tis_per_dag=max_tis_translate
         )
 
