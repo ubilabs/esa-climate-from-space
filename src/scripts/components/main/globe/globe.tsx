@@ -121,6 +121,12 @@ function useWebGlGlobe(view: CameraView) {
 
       const newGlobe = new WebGlGlobe(containerEl, {cameraView: view});
 
+      if ('renderer' in newGlobe) {
+        // @TODO: Remove this setting after globe controls have been refactored.
+        // @ts-ignore Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
+        newGlobe.renderer.globeControls.zoomSpeed = 1.5;
+      }
+
       setGlobe(newGlobe);
 
       return () => newGlobe.destroy();
