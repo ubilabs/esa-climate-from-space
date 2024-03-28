@@ -1,0 +1,18 @@
+0 0 0 0 0 No data
+10 0 100 0 255 Tree cover evergreen broadleaf
+20 0 60 0 255 Tree cover evergreen needleleaf
+30 0 160 0 255 Tree cover deciduous broadleaf
+40 40 80 0 255 Tree cover deciduous needleleaf
+50 150 100 0 255 Shrub cover evergreen
+60 170 115 0 255 Shrub cover deciduous
+70 255 180 50 255 Grasslands
+80 255 255 100 255 Croplands
+90 27 203 174 255 Woody vegetation acquatic or regularly flooded
+100 0 220 130 255 Grassland vegetation acquatic or regularly flooded
+110 255 220 210 255 Lichens and mosses
+120 255 245 215 255 Bare areas
+130 195 20 0 255 Built-up
+140 0 70 200 255 Open water
+141 91 149 255 255 Open water seasonal
+142 0 70 200 255 Open water permanent
+150 255 255 255 255 Permanent snow and/or ice
