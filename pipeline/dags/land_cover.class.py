@@ -7,14 +7,14 @@ from helper import get_default_layer_version
 # layer
 LAYER_ID = 'land_cover'
 LAYER_VARIABLE = 'class'
-RESOLUTION = '68896 51031'
+RESOLUTION = '1440000 720000'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [],  # will be injected
     "min_value": 0,
     "max_value": 150,
     "type": "tiles",  # 'tiles' or 'image'
-    "zoom_levels": '0-12',
+    "zoom_levels": '0-11',
     "units": '',
     "basemap": 'blue',
     "legend_values": [
