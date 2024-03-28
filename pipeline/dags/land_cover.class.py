@@ -93,7 +93,8 @@ METADATA = {
     ],
     "time_format": {
         "year": "numeric",
-    }
+    },
+    "useTimestampsForPlayback": "true"
 }
 
 # dev
