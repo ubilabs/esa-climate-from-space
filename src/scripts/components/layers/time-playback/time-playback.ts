@@ -15,7 +15,7 @@ interface Props {
   minTime: number;
   maxTime: number;
   speed?: number;
-  step?: number;
+  steps?: number[];
   mainLayerId?: string | null;
   compareLayerId?: string | null;
 }
@@ -24,7 +24,7 @@ const TimePlayback: FunctionComponent<Props> = ({
   minTime,
   maxTime,
   speed = PLAYBACK_SPEED,
-  step = PLAYBACK_STEP,
+  steps = [PLAYBACK_STEP],
   mainLayerId,
   compareLayerId
 }) => {
@@ -32,12 +32,28 @@ const TimePlayback: FunctionComponent<Props> = ({
   const time = useSelector(timeSelector);
 
   const [nextTime, setNextTime] = useState(time);
+  const [stepIndex, setStepIndex] = useState(0);
 
   useInterval(() => {
-    let newTime = time + step;
+    let newTime = 0;
 
-    if (newTime > maxTime) {
-      newTime = minTime;
+    // if multiple steps are defined, use them to increase playback.
+    if (steps.length > 1) {
+      newTime = steps[stepIndex];
+
+      if (stepIndex < steps.length) {
+        setStepIndex(prev => prev + 1);
+      } else {
+        setStepIndex(0);
+        newTime = minTime;
+      }
+    // if not, reuse single step for an evenly increasing playback.
+    } else {
+      newTime = time + steps[0];
+
+      if (newTime > maxTime) {
+        newTime = minTime;
+      }
     }
 
     // don't immediately set the new time, since we might have to wait
