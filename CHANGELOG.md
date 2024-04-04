@@ -62,7 +62,22 @@
 
 
 
-## [1.14.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.14.0...v1.14.1) (2023-11-29)
+## [1.14.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.14.0...v1.14.1) (2024-04-02)
+
+
+### Bug Fixes
+
+* **data-viewer:** change z-index of globe and legend ([be8ab13](https://github.com/ubilabs/esa-climate-from-space/commit/be8ab13cd8212e69b71c30ab43ffca31edc4ca21))
+* **navigation:** add z-index to navigation module ([a28be7c](https://github.com/ubilabs/esa-climate-from-space/commit/a28be7cb379af8e8d92989f77a16a872b17bf0e5))
+
+
+### Features
+
+* **data-viewer:** show hover legend for lc hr layer ([8c354b4](https://github.com/ubilabs/esa-climate-from-space/commit/8c354b45c03d8e05d51bf32755ca76f7ad503376))
+* **globe:** update esa-webgl-globe to 1.2.0 ([6eec037](https://github.com/ubilabs/esa-climate-from-space/commit/6eec037ba9001418a8e57d374a6dcff359967cd8))
+* **layers:** add land cover high resolution ([d5446f4](https://github.com/ubilabs/esa-climate-from-space/commit/d5446f4b8851e248914a4e4812b863317441ca45))
+* **layers:** update land cover high resolution ([a00b759](https://github.com/ubilabs/esa-climate-from-space/commit/a00b7597e0ca73486342628af503404c6473f303))
+* **time-slider:** optionally use timestamps for playback ([0bb36ad](https://github.com/ubilabs/esa-climate-from-space/commit/0bb36addb07008af7cabfe6c2ff1566a494fd59a))
 
 
 
