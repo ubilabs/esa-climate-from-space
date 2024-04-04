@@ -48,8 +48,9 @@ def gcs_list_files(bucket_name: str, layer_id: str, layer_variable: str, task_id
     def fn(**context):
         max_files = context["params"]["max_files"]
         hook = GCSHook('google')
+        subdir_path = f'{context["params"]["input_bucket_subdir"]}/' if context["params"]["input_bucket_subdir"] else ''
         filenames = hook.list(
-            bucket_name, match_glob=f'{layer_id}.{layer_variable}/*.nc')
+            bucket_name, match_glob=f'{layer_id}.{layer_variable}/{subdir_path}*.nc')
 
         filenames = [f for f in filenames if f.endswith('.nc')]
         filenames.sort()
@@ -89,10 +90,10 @@ def gcs_upload_file(bucket_name: str, layer_id: str, layer_variable: str, layer_
 def gcloud_upload_dir(layer_id: str, layer_variable: str, directory: str):
     return BashOperator(
         task_id='gcloud_upload',
-        bash_command='gcloud auth activate-service-account --key-file $KEY_FILE && gsutil -m rsync -d -r $UPLOAD_DIR $BUCKET',
+        bash_command='gcloud auth activate-service-account --key-file $KEY_FILE && gsutil -q -m cp -r $UPLOAD_DIR/* $BUCKET',
         env={
             "UPLOAD_DIR": directory,
-            "BUCKET": 'gs://{{ dag_run.conf["output_bucket"] }}/{{ dag_run.conf["layer_version"] }}/' + f'{layer_id}.{layer_variable}',
+            "BUCKET": 'gs://{{ dag_run.conf["output_bucket"] }}/{{ dag_run.conf["layer_version"] }}/' + f'{layer_id}.{layer_variable}/',
             "KEY_FILE": '/opt/airflow/plugins/service-account.json',
             "CLOUDSDK_PYTHON": '/usr/local/bin/python'
         }
@@ -166,7 +167,7 @@ def gdal_transforms(color_file: str, layer_type: str, zoom_levels: str, gdal_te:
 
         return BashOperator.partial(
             task_id='gdal_translate_tiles',
-            bash_command=f'rm -rf $FILEPATH_OUT && gdal2tiles.py --profile geodetic --zoom={zoom_levels} --tmscompatible --no-kml --webviewer=none --resampling average --s_srs EPSG:4326 $FILEPATH_IN $FILEPATH_OUT && echo $FILEPATH_OUT',
+            bash_command=f'rm -rf $FILEPATH_OUT && gdal2tiles.py --profile geodetic --zoom={zoom_levels} --tmscompatible --exclude --no-kml --webviewer=none --resampling average --processes=16 --s_srs EPSG:4326 $FILEPATH_IN $FILEPATH_OUT && echo $FILEPATH_OUT',
             max_active_tis_per_dag=max_tis_translate
         )
 
