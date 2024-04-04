@@ -8,6 +8,7 @@ from helper import get_default_layer_version
 LAYER_ID = 'land_cover'
 LAYER_VARIABLE = 'lccs_class'
 RESOLUTION = '64800 32400'
+EXTEND = '-180 -90 180 90'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [], # will be injected
@@ -49,7 +50,7 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
     download = task_factories.gcs_download_file(bucket_name=BUCKET_ORIGIN, dir=WORKDIR, appendix='_downloaded')
     legend_image = task_factories.legend_image(workdir=WORKDIR, color_file=COLOR_FILE)
     metadata = task_factories.metadata(workdir=WORKDIR, metadata=METADATA)
-    gdal_transforms = task_factories.gdal_transforms(layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'], gdal_ts=RESOLUTION, max_tis_warp=1, max_tis_dem=1, max_tis_translate=1)
+    gdal_transforms = task_factories.gdal_transforms(layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'], gdal_ts=RESOLUTION, gdal_te=EXTEND, max_tis_warp=1, max_tis_dem=1, max_tis_translate=1)
     upload = task_factories.upload(WORKDIR, LAYER_ID, LAYER_VARIABLE, METADATA['type'])
 
     # connect tasks
