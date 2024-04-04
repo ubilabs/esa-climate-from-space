@@ -156,7 +156,7 @@ def metadata(workdir: str, metadata: dict):
     return fn
 
 
-def gdal_transforms(color_file: str, layer_type: str, zoom_levels: str, gdal_te: str = '-180 -90 180 90', gdal_ts: str = '1024 512', layer_variable: str = '', warp_cmd: str = None, max_tis_warp: int = 4,  max_tis_dem: int = 4, max_tis_translate: int = 4):
+def gdal_transforms(color_file: str, layer_type: str, zoom_levels: str, gdal_te: str = None, gdal_ts: str = None, layer_variable: str = '', warp_cmd: str = None, max_tis_warp: int = 4,  max_tis_dem: int = 4, max_tis_translate: int = 4):
     def get_transform_task():
         if layer_type == 'image':
             return BashOperator.partial(
@@ -180,7 +180,9 @@ def gdal_transforms(color_file: str, layer_type: str, zoom_levels: str, gdal_te:
     @task_group(group_id='gdal_transforms_group')
     def fn(downloads):
         file_path_in = 'NETCDF:"$FILEPATH_IN":$DATA_VARIABLE' if layer_variable else '$FILEPATH_IN'
-        warp_command = f'gdalwarp -t_srs EPSG:4326 -te {gdal_te} -ts {gdal_ts} -r near --config GDAL_CACHEMAX 90% -co compress=LZW {file_path_in} $FILEPATH_OUT' if not warp_cmd else warp_cmd
+        gdal_te_flag = '-te ' + gdal_te if gdal_te else ''
+        gdal_ts_flag = '-ts ' + gdal_ts if gdal_ts else ''
+        warp_command = f'gdalwarp -t_srs EPSG:4326 {gdal_te_flag} {gdal_ts_flag} -r near --config GDAL_CACHEMAX 90% -co compress=LZW {file_path_in} $FILEPATH_OUT' if not warp_cmd else warp_cmd
         gdal_warp = BashOperator.partial(
             task_id='reproject_and_to_tiff',
             bash_command=f'rm -f $FILEPATH_OUT && {warp_command} && echo $FILEPATH_OUT',
