@@ -378,7 +378,7 @@ function getLayerProps(
       id,
       zIndex: 1,
       minZoom: 1,
-      maxZoom: layerDetails.zoomLevels,
+      maxZoom: layerDetails.zoomLevels - 1,
       type: type === LayerType.Image ? 'image' : 'tile',
       urlParameters: {},
       getUrl:
