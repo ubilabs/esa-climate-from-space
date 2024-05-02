@@ -1,0 +1,40 @@
+@require '../../../../../../variables.styl'
+
+.button
+  display: flex
+  padding: emCalc(12px) emCalc(24px)
+  justify-content: center
+  align-items: center
+  gap: 10px
+  border-radius: 40px
+  border: none
+  box-shadow: 0px 0px 12px 0px rgba(0, 51, 73, 0.25)
+  font-family: NotesEsa
+  font-size: 16px
+  font-style: normal
+  font-weight: 700
+  line-height: normal
+  letter-spacing: 0.32px
+  text-transform: uppercase
+  width: fit-content
+  cursor: pointer
+  background: $darkTeal
+  color: $textWhite
+
+  svg
+    fill: $textWhite
+
+  &:hover
+    text-decoration: underline
+
+.backButton
+  padding: emCalc(8px) emCalc(12px) emCalc(8px) emCalc(8px)
+  border: 2px solid $darkTeal
+  background: rgba(0, 125, 138, 0.2)
+  gap: 4px
+
+  svg
+    fill: $textWhite
+
+  &:hover
+    text-decoration: underline

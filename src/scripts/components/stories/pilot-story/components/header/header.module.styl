@@ -1,6 +1,10 @@
 @require '../../../../../../variables.styl'
 
 .header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
   display: flex
   flex-shrink: 0
   justify-content: space-between
@@ -9,6 +13,7 @@
   height: $headerHeight
   background-color: $deepSpace
   font-family: NotesEsa
+  border-bottom: 2px solid $teal
   z-index: 2
 
 .logo

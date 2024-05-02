@@ -1,15 +1,52 @@
 import React, {FunctionComponent} from 'react';
-import {ParallaxLayer} from '@react-spring/parallax';
+import {Parallax} from 'react-scroll-parallax';
+import cx from 'classnames';
 
-import Button from '../../../../main/button/button';
+import {GlobeIcon} from '../../../../main/icons/globe-icon';
+import ScrollHint from '../scroll-hint/scroll-hint';
+import Button from '../button/button';
+
 import styles from './intro.module.styl';
 
-const Intro: FunctionComponent = () => (
-  <ParallaxLayer offset={0} speed={1} className={styles.intro}>
-    <div className={styles.linkContainer}>
-      <Button link="/stories" label="Back"></Button>
+interface Props {
+  storyStarted: boolean;
+  onStoryStart: () => void;
+}
+
+const Intro: FunctionComponent<Props> = ({storyStarted, onStoryStart}) => (
+  <section className={styles.intro}>
+    <div className={cx(styles.backContainer, storyStarted && styles.hidden)}>
+      <Button
+        link={'/stories'}
+        icon={GlobeIcon}
+        label="Back to Stories"
+        isBackButton
+      />
     </div>
-  </ParallaxLayer>
+
+    <Parallax opacity={[2, 0]}>
+      <>
+        <h1 className={styles.storyTitle}>
+          Inside the world of Super Emitters
+        </h1>
+        <p className={styles.storyDescription}>
+          Explore the world of methane super emitters – key players in climate
+          change.
+        </p>
+      </>
+    </Parallax>
+
+    {storyStarted ? (
+      <Parallax opacity={[1, 0]} className={styles.scrollinfoContainer}>
+        <ScrollHint />
+      </Parallax>
+    ) : (
+      <div className={styles.buttonContainer}>
+        <Button label="Story" onClick={onStoryStart} id={styles.whiteButton} />
+        <Button link={'/'} label="Datasets" />
+      </div>
+    )}
+  </section>
 );
 
 export default Intro;

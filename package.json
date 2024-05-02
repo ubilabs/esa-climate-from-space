@@ -46,8 +46,6 @@
   "homepage": "https://github.com/ubilabs/esa-climate-from-space#readme",
   "dependencies": {
     "@datapunt/matomo-tracker-react": "^0.5.1",
-    "@react-spring/parallax": "^9.7.3",
-    "@react-spring/web": "^9.7.3",
     "@reduxjs/toolkit": "^1.9.0",
     "@ubilabs/esa-webgl-globe": "^1.2.0",
     "classnames": "^2.2.6",
@@ -62,6 +60,7 @@
     "react-markdown": "^8.0.3",
     "react-redux": "^8.0.5",
     "react-router-dom": "^5.1.2",
+    "react-scroll-parallax": "^3.4.5",
     "react-youtube": "^7.13.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
