@@ -28,6 +28,7 @@ import {useStoryMarkers} from '../../../hooks/use-story-markers';
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
 import styles from './app.module.styl';
+import PilotStory from '../../stories/pilot-story/pilot-story';
 
 // create matomo tracking instance
 const matomoInstance = createInstance({
@@ -84,6 +85,9 @@ const TranslatedApp: FunctionComponent = () => {
           </Route>
           <Route path={['/showcase/:storyIds', '/showcase']} exact>
             <ShowcaseSelector />
+          </Route>
+          <Route path={['/stories/pilot/:slideIndex']} exact>
+            <PilotStory />
           </Route>
           <Route
             path={[

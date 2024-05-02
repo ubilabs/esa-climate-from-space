@@ -1,0 +1,29 @@
+@require '../../../../../../variables.styl'
+
+.header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  display: flex
+  flex-shrink: 0
+  justify-content: space-between
+  align-items: center
+  padding-left: emCalc(20px)
+  height: $headerHeight
+  background-color: $deepSpace
+  font-family: NotesEsa
+  border-bottom: 2px solid $teal
+  z-index: 2
+
+.logo
+  width: fit-content
+
+.rightContent
+  display: flex
+  flex-grow: 1
+  justify-content: flex-end
+  align-items: center
+  padding-right: emCalc(25px)
+  width: 50%
+  color: $textDefault

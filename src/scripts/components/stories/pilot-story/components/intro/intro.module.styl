@@ -1,0 +1,51 @@
+@require '../../../../../../variables.styl'
+
+.intro
+  height: 100vh
+  padding: 0 emCalc(29px)
+  display: flex
+  flex-direction: column
+  justify-content: space-evenly
+
+.backContainer
+  margin: 75px 0 50px
+
+.hidden
+  opacity: 0
+  transition: opacity 0.3s ease-out
+
+.introContent
+  align-items: center
+  justify-content: center
+  flex: 1
+
+.storyTitle
+  color: $textWhite
+  font-family: NotesEsa
+  font-size: 48px
+  font-style: normal
+  font-weight: 700
+  line-height: 50px
+
+.storyDescription
+  color: #fff
+  font-family: NotesEsa
+  font-size: 20px
+  font-style: normal
+  font-weight: 700
+  line-height: 24px
+
+.buttonContainer
+  margin-top: emCalc(40px)
+  display: flex
+  gap: 8px
+
+.scrollinfoContainer
+  margin-top: emCalc(40px)
+  display: flex
+  justify-content: center
+  gap: 8px
+
+#whiteButton
+  background: $textWhite
+  color: $deepSpace
