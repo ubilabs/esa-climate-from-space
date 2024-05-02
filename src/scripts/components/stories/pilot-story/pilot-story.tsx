@@ -20,20 +20,23 @@ const PilotStory: FunctionComponent = () => {
       </Header>
 
       <ParallaxProvider>
-        <Globe progress={progress} isSpinning={true} />
+        <Globe
+          progress={progress}
+          isSpinning={true}
+          viewTotal={5}
+          globeMovement={[
+            {viewFrom: 0, viewTo: 3, direction: 'right'},
+            {viewFrom: 3, viewTo: 5, direction: 'out'}
+          ]}
+        />
         <div className={styles.chapterContainer}>
           <StoryIntro
             storyStarted={storyStarted}
             onStoryStart={() => setStoryStarted(true)}
           />
-
           {storyStarted && (
             <>
-              <Parallax
-                onProgressChange={progress =>
-                  // convert progress to percentage
-                  setProgress(Math.round(progress * 100 * 2))
-                }>
+              <Parallax onProgressChange={setProgress}>
                 <ChapterOne />
               </Parallax>
             </>

@@ -28,6 +28,18 @@ const ChapterOne: FunctionComponent = () => {
           <ChapterText />
         </Parallax>
       </section>
+      {/* TODO: Remove duplicated chapter */}
+      <section className={styles.sectionContainer}>
+        <Parallax
+          onEnter={() => setEntered(true)}
+          onExit={() => setEntered(false)}>
+          <ChapterIntro
+            subTitle="Chapter 1: What is methane"
+            title="The invisible threat"
+          />
+          <ChapterText />
+        </Parallax>
+      </section>
     </>
   );
 };
