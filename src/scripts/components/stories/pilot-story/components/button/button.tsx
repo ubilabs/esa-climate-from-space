@@ -1,6 +1,5 @@
 import React, {FunctionComponent} from 'react';
 import {Link} from 'react-router-dom';
-import {FormattedMessage} from 'react-intl';
 import cx from 'classnames';
 
 import styles from './button.module.styl';
