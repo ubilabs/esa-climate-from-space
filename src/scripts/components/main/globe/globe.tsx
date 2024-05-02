@@ -91,6 +91,7 @@ const Globe: FunctionComponent<Props> = props => {
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
+  // eslint-disable-next-line no-warning-comments
   // fixme: add auto-rotate functionality
 
   return (
