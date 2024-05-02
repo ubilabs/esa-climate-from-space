@@ -1,0 +1,36 @@
+import React, {FunctionComponent} from 'react';
+import {Parallax} from 'react-scroll-parallax';
+
+import {GlobeIcon} from '../../../../main/icons/globe-icon';
+import ScrollHint from '../scroll-hint/scroll-hint';
+import Button from '../button/button';
+
+import styles from './chapter-intro.module.styl';
+
+interface Props {
+  title: string;
+  subTitle: string;
+}
+
+const ChapterIntro: FunctionComponent<Props> = ({title, subTitle}) => (
+  <Parallax className={styles.intro} opacity={[0, 2]} speed={-10}>
+    <Button
+      link={'/stories'}
+      icon={GlobeIcon}
+      label="Back to Stories"
+      className={styles.backToStories}
+      isBackButton
+    />
+
+    <div className={styles.introContent}>
+      <h2 className={styles.subTitle}>{subTitle}</h2>
+      <p className={styles.title}>{title}</p>
+    </div>
+
+    <Parallax opacity={[1, 0]}>
+      <ScrollHint />
+    </Parallax>
+  </Parallax>
+);
+
+export default ChapterIntro;

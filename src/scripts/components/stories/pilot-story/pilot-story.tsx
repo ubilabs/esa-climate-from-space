@@ -3,7 +3,8 @@ import {Parallax, ParallaxProvider} from 'react-scroll-parallax';
 
 import Share from '../../main/share/share';
 import Header from './components/header/header';
-import Intro from './components/intro/intro';
+import StoryIntro from './components/story-intro/story-intro';
+import ChapterOne from './components/01-chapter/01-chapter';
 import Globe from './components/globe/globe';
 
 import styles from './pilot-story.module.styl';
@@ -20,31 +21,22 @@ const PilotStory: FunctionComponent = () => {
 
       <ParallaxProvider>
         <Globe progress={progress} isSpinning={true} />
-        <div>
-          <Intro
+        <div className={styles.chapterContainer}>
+          <StoryIntro
             storyStarted={storyStarted}
             onStoryStart={() => setStoryStarted(true)}
           />
-          {/* to be replaced */}
+
           {storyStarted && (
-            <section
-              className={styles.sectionContainer}
-              style={{
-                height: '100vh',
-                backgroundColor: '#dcdcdc',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}>
+            <>
               <Parallax
                 onProgressChange={progress =>
                   // convert progress to percentage
                   setProgress(Math.round(progress * 100 * 2))
-                }
-                rotate={[0, 720]}>
-                <h1>Space for more</h1>
+                }>
+                <ChapterOne />
               </Parallax>
-            </section>
+            </>
           )}
         </div>
       </ParallaxProvider>
