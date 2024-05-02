@@ -33,20 +33,12 @@ const Button: FunctionComponent<Props> = ({
   return link ? (
     <Link id={id} className={classes} to={link}>
       {Icon && <Icon />}
-      {label && (
-        <span className={styles.label}>
-          <FormattedMessage id={label} />
-        </span>
-      )}
+      {label && <span className={styles.label}>{label}</span>}
     </Link>
   ) : (
     <button className={classes} id={id} onClick={onClick}>
       {Icon && <Icon />}
-      {label && (
-        <span className={styles.label}>
-          <FormattedMessage id={label} />
-        </span>
-      )}
+      {label && <span className={styles.label}>{label}</span>}
     </button>
   );
 };
