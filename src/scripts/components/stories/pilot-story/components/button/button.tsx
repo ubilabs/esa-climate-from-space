@@ -10,6 +10,7 @@ interface Props {
   icon?: FunctionComponent;
   link?: string;
   isBackButton?: boolean;
+  className?: string;
   id?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
@@ -19,10 +20,15 @@ const Button: FunctionComponent<Props> = ({
   link,
   icon: Icon,
   isBackButton = false,
+  className = '',
   id,
   onClick
 }) => {
-  const classes = cx(styles.button, isBackButton && styles.backButton);
+  const classes = cx(
+    styles.button,
+    className,
+    isBackButton && styles.backButton
+  );
 
   return link ? (
     <Link id={id} className={classes} to={link}>

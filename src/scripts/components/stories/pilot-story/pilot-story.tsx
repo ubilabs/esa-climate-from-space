@@ -1,9 +1,10 @@
 import React, {FunctionComponent, useState} from 'react';
-import {Parallax, ParallaxProvider} from 'react-scroll-parallax';
+import {ParallaxProvider} from 'react-scroll-parallax';
 
 import Share from '../../main/share/share';
 import Header from './components/header/header';
-import Intro from './components/intro/intro';
+import StoryIntro from './components/story-intro/story-intro';
+import ChapterOne from './components/01-chapter/01-chapter';
 
 import styles from './pilot-story.module.styl';
 
@@ -17,27 +18,13 @@ const PilotStory: FunctionComponent = () => {
       </Header>
 
       <ParallaxProvider>
-        <div>
-          <Intro
+        <div className={styles.chapterContainer}>
+          <StoryIntro
             storyStarted={storyStarted}
             onStoryStart={() => setStoryStarted(true)}
           />
-          {/* to be replaced */}
-          {storyStarted && (
-            <section
-              className={styles.sectionContainer}
-              style={{
-                height: '100vh',
-                backgroundColor: '#dcdcdc',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}>
-              <Parallax rotate={[0, 720]}>
-                <h1>Space for more</h1>
-              </Parallax>
-            </section>
-          )}
+
+          {storyStarted && <ChapterOne />}
         </div>
       </ParallaxProvider>
     </div>

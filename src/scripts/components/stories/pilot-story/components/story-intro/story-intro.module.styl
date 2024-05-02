@@ -2,22 +2,27 @@
 
 .intro
   height: 100vh
-  padding: 0 emCalc(29px)
+  padding: $headerHeight emCalc(29px)
   display: flex
   flex-direction: column
-  justify-content: space-evenly
+  justify-content: center
+  box-sizing: border-box
 
-.backContainer
-  margin: 75px 0 50px
+.backToStories
+  margin-top: emCalc(29px)
+  align-self: flex-start
+
+.introContent
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: flex-start
+  gap: emCalc(40px)
+  flex: 1
 
 .hidden
   opacity: 0
-  transition: opacity 0.3s ease-out
-
-.introContent
-  align-items: center
-  justify-content: center
-  flex: 1
+  transition: opacity 1s ease-out
 
 .storyTitle
   color: $textWhite
@@ -26,6 +31,8 @@
   font-style: normal
   font-weight: 700
   line-height: 50px
+  width: 100%
+  margin-top: emCalc(30px)
 
 .storyDescription
   color: #fff
@@ -36,14 +43,9 @@
   line-height: 24px
 
 .buttonContainer
-  margin-top: emCalc(40px)
+  width: 100%
+  min-height: emCalc(43px)
   display: flex
-  gap: 8px
-
-.scrollinfoContainer
-  margin-top: emCalc(40px)
-  display: flex
-  justify-content: center
   gap: 8px
 
 #whiteButton
