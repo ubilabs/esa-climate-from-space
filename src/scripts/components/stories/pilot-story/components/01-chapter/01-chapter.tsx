@@ -25,19 +25,8 @@ const ChapterOne: FunctionComponent = () => {
             subTitle="Chapter 1: What is methane"
             title="The invisible threat"
           />
-          <ChapterText />
-        </Parallax>
-      </section>
-      {/* TODO: Remove duplicated chapter */}
-      <section className={styles.sectionContainer}>
-        <Parallax
-          onEnter={() => setEntered(true)}
-          onExit={() => setEntered(false)}>
-          <ChapterIntro
-            subTitle="Chapter 1: What is methane"
-            title="The invisible threat"
-          />
-          <ChapterText />
+          <ChapterText text="Methane is a potent greenhouse gas, far more effective than carbon dioxide at trapping heat in the atmosphere over a 20-year period." />
+          <ChapterText text="" />
         </Parallax>
       </section>
     </>
