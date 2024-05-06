@@ -27,6 +27,7 @@ const ChapterOne: FunctionComponent = () => {
           />
           <ChapterText text="Methane is a potent greenhouse gas, far more effective than carbon dioxide at trapping heat in the atmosphere over a 20-year period." />
           <ChapterText text="" />
+          <ChapterText text="" />
         </Parallax>
       </section>
     </>

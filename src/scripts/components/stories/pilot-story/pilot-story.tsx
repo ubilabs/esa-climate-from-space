@@ -24,12 +24,25 @@ const PilotStory: FunctionComponent = () => {
       <ParallaxProvider>
         <Globe
           progress={progress}
+          relativePosition={{top: 0, left: -100, right: 0, bottom: 0}}
           isSpinning={true}
           isVisible={true}
-          viewTotal={4}
+          viewTotal={5}
           globeMovement={[
-            {viewFrom: 1, viewTo: 2, direction: GlobeMovementDirection.RIGHT},
-            {viewFrom: 3, viewTo: 4, direction: GlobeMovementDirection.OUT}
+            {
+              viewFrom: 1,
+              viewTo: 2,
+              directions: [GlobeMovementDirection.RIGHT]
+            },
+            {viewFrom: 3, viewTo: 4, directions: [GlobeMovementDirection.OUT]},
+            {
+              viewFrom: 4,
+              viewTo: 5,
+              directions: [
+                GlobeMovementDirection.DOWN,
+                GlobeMovementDirection.IN
+              ]
+            }
           ]}
         />
         <div className={styles.chapterContainer}>

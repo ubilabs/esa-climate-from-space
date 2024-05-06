@@ -1,11 +1,12 @@
 export enum GlobeMovementDirection {
   RIGHT,
   DOWN,
-  OUT
+  OUT,
+  IN
 }
 
 export type GlobeMovement = {
   viewFrom: number;
   viewTo: number;
-  direction: GlobeMovementDirection;
+  directions: GlobeMovementDirection[];
 };
