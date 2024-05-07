@@ -10,19 +10,19 @@ const INITIAL_DISTANCE = 30_000_000;
 
 interface Props {
   progress: number;
-  relativePosition: {top: number; left: number; right: number; bottom: number};
+  relativePosition: {x: number; y: number};
   isSpinning: boolean;
   isVisible: boolean;
-  viewTotal: number;
+  pagesTotal: number;
   globeMovement: GlobeMovement[];
 }
 
 const Globe: FunctionComponent<Props> = ({
   progress,
-  relativePosition: initialPosition,
+  relativePosition,
   isSpinning,
   isVisible,
-  viewTotal,
+  pagesTotal,
   globeMovement
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -67,13 +67,9 @@ const Globe: FunctionComponent<Props> = ({
 
   useEffect(() => {
     if (containerRef.current) {
-      containerRef.current.style.top = `${initialPosition.top}%`;
-      containerRef.current.style.left = `${initialPosition.left}%`;
-      containerRef.current.style.right = `${initialPosition.right}%`;
-      containerRef.current.style.bottom = `${initialPosition.bottom}%`;
+      containerRef.current.style.transform = `translate(${relativePosition.x}%, ${relativePosition.y}%)`;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [JSON.stringify(initialPosition)]);
+  }, [relativePosition.x, relativePosition.y]);
 
   useEffect(() => {
     containerRef.current?.style.setProperty(
@@ -103,12 +99,12 @@ const Globe: FunctionComponent<Props> = ({
     }
     const globeContainer = containerRef.current;
 
-    globeMovement.forEach(({viewFrom, viewTo, directions}) => {
-      const viewCount = viewTo - (viewFrom - 1);
+    globeMovement.forEach(({pageFrom, pageTo, relativeExtend, direction}) => {
+      const viewCount = pageTo - (pageFrom - 1);
 
       // Calcutate the progress of the current movement
       let progressPercent =
-        progress * 100 * (viewTotal / (viewCount - 1)) - (viewFrom - 1) * 100;
+        progress * 100 * (pagesTotal / (viewCount - 1)) - (pageFrom - 1) * 100;
 
       progressPercent = Math.min(100, Math.max(0, progressPercent));
 
@@ -120,34 +116,43 @@ const Globe: FunctionComponent<Props> = ({
         globeContainer.style.transform.match(/(-?[0-9\.]+)/g) || [0, 0]
       ).map(Number);
 
-      directions.forEach(direction => {
-        switch (direction) {
-          case GlobeMovementDirection.RIGHT:
-            globeContainer.style.transform = `translate(${
-              progressPercent / 4
-            }%, ${transform[1]}%)`;
+      switch (direction) {
+        case GlobeMovementDirection.RIGHT:
+          globeContainer.style.transform = `translate(${
+            relativePosition.x + progressPercent / (100 / relativeExtend)
+          }%, ${transform[1]}%)`;
+          break;
+        case GlobeMovementDirection.DOWN:
+          globeContainer.style.transform = `translate(${transform[0]}%, ${
+            relativePosition.y + progressPercent / (100 / relativeExtend)
+          }%)`;
+          break;
+        case GlobeMovementDirection.OUT:
+          distanceRef.current =
+            INITIAL_DISTANCE +
+            (INITIAL_DISTANCE * progressPercent * (relativeExtend / 50)) / 100;
+          break;
+        case GlobeMovementDirection.IN:
+          if (!progressPercent) {
             break;
-          case GlobeMovementDirection.DOWN:
-            globeContainer.style.transform = `translate(${transform[0]}%, ${
-              progressPercent / 2
-            }%)`;
-            break;
-          case GlobeMovementDirection.OUT:
-            distanceRef.current =
-              INITIAL_DISTANCE + (INITIAL_DISTANCE * progressPercent) / 100;
-            break;
-          case GlobeMovementDirection.IN:
-            if (!progressPercent) {
-              break;
-            }
-            distanceRef.current =
-              INITIAL_DISTANCE +
-              (INITIAL_DISTANCE * (100 - progressPercent)) / 100;
-            break;
-        }
-      });
+          }
+          distanceRef.current =
+            INITIAL_DISTANCE +
+            (INITIAL_DISTANCE *
+              ((100 - progressPercent) * (relativeExtend / 50))) /
+              100;
+          break;
+      }
     });
-  }, [progress, globe, containerRef, globeMovement, viewTotal]);
+  }, [
+    progress,
+    globe,
+    containerRef,
+    globeMovement,
+    pagesTotal,
+    relativePosition.x,
+    relativePosition.y
+  ]);
 
   return <div className={styles.globe} ref={containerRef} />;
 };

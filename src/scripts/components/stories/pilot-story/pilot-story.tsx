@@ -24,24 +24,34 @@ const PilotStory: FunctionComponent = () => {
       <ParallaxProvider>
         <Globe
           progress={progress}
-          relativePosition={{top: 0, left: -100, right: 0, bottom: 0}}
+          relativePosition={{x: -30, y: 0}}
           isSpinning={true}
           isVisible={true}
-          viewTotal={5}
+          pagesTotal={5}
           globeMovement={[
             {
-              viewFrom: 1,
-              viewTo: 2,
-              directions: [GlobeMovementDirection.RIGHT]
+              pageFrom: 1,
+              pageTo: 2,
+              relativeExtend: 30,
+              direction: GlobeMovementDirection.RIGHT
             },
-            {viewFrom: 3, viewTo: 4, directions: [GlobeMovementDirection.OUT]},
             {
-              viewFrom: 4,
-              viewTo: 5,
-              directions: [
-                GlobeMovementDirection.DOWN,
-                GlobeMovementDirection.IN
-              ]
+              pageFrom: 3,
+              pageTo: 4,
+              relativeExtend: 50,
+              direction: GlobeMovementDirection.OUT
+            },
+            {
+              pageFrom: 4,
+              pageTo: 5,
+              relativeExtend: 60,
+              direction: GlobeMovementDirection.DOWN
+            },
+            {
+              pageFrom: 4,
+              pageTo: 5,
+              relativeExtend: 50,
+              direction: GlobeMovementDirection.IN
             }
           ]}
         />
