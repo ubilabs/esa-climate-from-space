@@ -1,0 +1,32 @@
+.progressIndication
+    position: relative
+    height: 100%
+    display: flex
+    flex-direction: column
+    --gap: 24px
+    gap: var(--gap)
+
+    span
+      width: 24px
+      height: 24px
+      position: relative
+
+      &:before
+        content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='8.5'    stroke='white'/></svg>")
+
+      &[data-is-selected='true']:before
+        content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='5.5' fill='white' stroke='white'/><circle cx='12' cy='12' r='8.5' stroke='white'/></svg>")
+
+
+      &:not(:last-child):after
+        position: absolute
+        content: ''
+        z-index -1
+        width: 0
+        top: 20px
+        height:calc(var(--gap) + 8px)
+        left: 50%
+        transform: translate(-50%)
+        border-right: 1px solid white
+        position: absolute
+        background-color: white
