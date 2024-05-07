@@ -10,7 +10,9 @@ import cx from 'classnames';
 
 import {Drawer} from 'vaul';
 
-import {getInitialSnapPoint} from '../utils/nav-drawer';
+import {useScreenSize} from '../../../../../hooks/use-screen-size';
+
+import {getSnapPoint} from '../utils/nav-drawer';
 import DrawerToggleIcon from '../icons/drawer-toggle-icon/drawer-toggle-icons';
 
 import styles from './nav-drawer.module.styl';
@@ -31,6 +33,8 @@ interface Props extends PropsWithChildren {
 const NavDrawer: FunctionComponent<Props> = ({children, handle}) => {
   const [ref, setRef] = useState<HTMLDivElement | null>(null);
 
+  const {isMobile} = useScreenSize();
+
   // Snap points of the drawer refer to the positions where the drawer can be placed at.
   // Can either be a fraction between 0 and 1 or a string in px. (e.g. '50px')
   // When using px however, the height of the device is not taken into account. See https://github.com/emilkowalski/vaul
@@ -39,7 +43,7 @@ const NavDrawer: FunctionComponent<Props> = ({children, handle}) => {
   const {Root, Portal, Content, Title} = Drawer;
 
   // Get the initial snap point for the drawer based on the height of the handle element and the window height.
-  const initialSnapPoint = useMemo(() => getInitialSnapPoint(ref), [ref]);
+  const initialSnapPoint = useMemo(() => getSnapPoint(ref), [ref]);
 
   // Set the snap point once to initialSnapPoint is calculated.
   useEffect(() => {
@@ -54,7 +58,9 @@ const NavDrawer: FunctionComponent<Props> = ({children, handle}) => {
   const modalTarget = document.getElementById('drawer');
 
   // Refers to how far the drawer can be extended, where 1 would be fully extended to the top of the page
-  const maxSnapPoint = 0.6;
+  const maxSnapPoint = isMobile ? 0.62 : 0.7;
+
+  const isCollapsed = snap === initialSnapPoint;
 
   return (
     <Root
@@ -84,10 +90,8 @@ const NavDrawer: FunctionComponent<Props> = ({children, handle}) => {
               onClick={() =>
                 setSnap(snap === maxSnapPoint ? initialSnapPoint : maxSnapPoint)
               }>
-              {titleChildren}
-              <DrawerToggleIcon
-                isCollapsed={!snap || snap === initialSnapPoint}
-              />
+              {isCollapsed ? titleChildren : 'Story Postion'}
+              <DrawerToggleIcon isCollapsed={!snap || isCollapsed} />
             </Title>
             {children}
           </Content>

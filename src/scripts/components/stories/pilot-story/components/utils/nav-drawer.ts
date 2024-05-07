@@ -3,7 +3,7 @@
  * @param handlerRef - The reference to the handler element.
  * @returns The initial snap point value.
  */
-export function getInitialSnapPoint(handlerRef: HTMLDivElement | null) {
+export function getSnapPoint(handlerRef: HTMLDivElement | null) {
   if (!window.innerHeight || !handlerRef) {
     return 0.1;
   }

@@ -7,12 +7,20 @@ import ChapterText from '../chapter-text/chapter-text';
 
 import styles from './01-chapter.module.styl';
 
-const ChapterOne: FunctionComponent = () => {
+interface Props {
+  onChapterSelect: () => void;
+}
+
+const ChapterOne: FunctionComponent<Props> = ({
+  onChapterSelect: setSelectedChapterIndex
+}) => {
   const history = useHistory();
   const [entered, setEntered] = useState(false);
 
   useEffect(() => {
     entered && history.replace('/stories/pilot/1');
+    setSelectedChapterIndex();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entered, history]);
 
   return (
