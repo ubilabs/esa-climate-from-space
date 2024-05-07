@@ -6,7 +6,9 @@ export enum GlobeMovementDirection {
 }
 
 export type GlobeMovement = {
-  viewFrom: number;
-  viewTo: number;
-  directions: GlobeMovementDirection[];
+  pageFrom: number;
+  pageTo: number;
+  // Extend in percentage
+  relativeExtend: number;
+  direction: GlobeMovementDirection;
 };
