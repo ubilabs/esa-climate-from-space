@@ -12,7 +12,7 @@ import NavDrawer from './components/nav-drawer/nav-drawer';
 import StoryIntro from './components/story-intro/story-intro';
 
 import {useScreenSize} from '../../../hooks/use-screen-size';
-import {GlobeExploreIcon} from '../../main/icons/globe-explore-icon';
+import {GlobeExploreIcon} from './components/icons/globe-explore-icon';
 import {GlobeIcon} from '../../main/icons/globe-icon';
 import Button from './components/button/button';
 import ChapterProgressIndication from './components/chapter-progress-indication/chapter-progress-indication';
