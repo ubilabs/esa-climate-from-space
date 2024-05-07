@@ -10,6 +10,7 @@ const INITIAL_DISTANCE = 30_000_000;
 
 interface Props {
   progress: number;
+  relativePosition: {top: number; left: number; right: number; bottom: number};
   isSpinning: boolean;
   isVisible: boolean;
   viewTotal: number;
@@ -18,6 +19,7 @@ interface Props {
 
 const Globe: FunctionComponent<Props> = ({
   progress,
+  relativePosition: initialPosition,
   isSpinning,
   isVisible,
   viewTotal,
@@ -64,6 +66,16 @@ const Globe: FunctionComponent<Props> = ({
   }, [containerRef, globe]);
 
   useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.style.top = `${initialPosition.top}%`;
+      containerRef.current.style.left = `${initialPosition.left}%`;
+      containerRef.current.style.right = `${initialPosition.right}%`;
+      containerRef.current.style.bottom = `${initialPosition.bottom}%`;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(initialPosition)]);
+
+  useEffect(() => {
     containerRef.current?.style.setProperty(
       'visibility',
       isVisible ? 'visible' : 'hidden'
@@ -91,33 +103,49 @@ const Globe: FunctionComponent<Props> = ({
     }
     const globeContainer = containerRef.current;
 
-    globeMovement.forEach(({viewFrom, viewTo, direction}) => {
+    globeMovement.forEach(({viewFrom, viewTo, directions}) => {
       const viewCount = viewTo - (viewFrom - 1);
 
       // Calcutate the progress of the current movement
-      const progressPercent = Math.round(
-        progress * 100 * (viewTotal / (viewCount - 1)) - (viewFrom - 1) * 100
-      );
+      let progressPercent =
+        progress * 100 * (viewTotal / (viewCount - 1)) - (viewFrom - 1) * 100;
 
-      if (progressPercent >= 0 && progressPercent <= 100) {
-        if (direction === GlobeMovementDirection.RIGHT) {
-          globeContainer.style.left = `${(100 - progressPercent / 2) * -1}%`;
-          if (progress && globeContainer.style.right !== 'initial') {
-            globeContainer.style.right = 'initial';
-          }
-        }
-        if (direction === GlobeMovementDirection.OUT) {
-          distanceRef.current =
-            INITIAL_DISTANCE + (INITIAL_DISTANCE * progressPercent) / 100;
-          globe.setProps({
-            cameraView: {
-              // @ts-ignore Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
-              ...globe.renderer.cameraView,
-              altitude: distanceRef.current
-            }
-          });
-        }
+      progressPercent = Math.min(100, Math.max(0, progressPercent));
+
+      if (progressPercent === 0) {
+        return;
       }
+
+      const transform = (
+        globeContainer.style.transform.match(/(-?[0-9\.]+)/g) || [0, 0]
+      ).map(Number);
+
+      directions.forEach(direction => {
+        switch (direction) {
+          case GlobeMovementDirection.RIGHT:
+            globeContainer.style.transform = `translate(${
+              progressPercent / 4
+            }%, ${transform[1]}%)`;
+            break;
+          case GlobeMovementDirection.DOWN:
+            globeContainer.style.transform = `translate(${transform[0]}%, ${
+              progressPercent / 2
+            }%)`;
+            break;
+          case GlobeMovementDirection.OUT:
+            distanceRef.current =
+              INITIAL_DISTANCE + (INITIAL_DISTANCE * progressPercent) / 100;
+            break;
+          case GlobeMovementDirection.IN:
+            if (!progressPercent) {
+              break;
+            }
+            distanceRef.current =
+              INITIAL_DISTANCE +
+              (INITIAL_DISTANCE * (100 - progressPercent)) / 100;
+            break;
+        }
+      });
     });
   }, [progress, globe, containerRef, globeMovement, viewTotal]);
 
