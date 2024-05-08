@@ -22,10 +22,13 @@ const ChapterIntro: FunctionComponent<Props> = ({title, subTitle}) => (
       isBackButton
     />
 
-    <div className={styles.introContent}>
+    <Parallax
+      className={styles.introContent}
+      translateX={[-100, 100, 'easeInOutQuad']}
+      opacity={[2, 0]}>
       <h2 className={styles.subTitle}>{subTitle}</h2>
       <p className={styles.title}>{title}</p>
-    </div>
+    </Parallax>
 
     <Parallax opacity={[1, 0]}>
       <ScrollHint />
