@@ -24,13 +24,13 @@ const ChapterIntro: FunctionComponent<Props> = ({title, subTitle}) => (
 
     <Parallax
       className={styles.introContent}
-      translateX={[-100, 100, 'easeInOutQuad']}
+      translateX={[-110, 100, 'easeInOutQuad']}
       opacity={[2, 0]}>
       <h2 className={styles.subTitle}>{subTitle}</h2>
       <p className={styles.title}>{title}</p>
     </Parallax>
 
-    <Parallax opacity={[1, 0]}>
+    <Parallax opacity={[1, 0]} style={{marginBottom: '50px'}}>
       <ScrollHint />
     </Parallax>
   </Parallax>
