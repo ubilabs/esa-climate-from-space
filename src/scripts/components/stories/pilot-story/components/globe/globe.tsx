@@ -68,7 +68,10 @@ const Globe: FunctionComponent<Props> = ({
 
   useEffect(() => {
     if (containerRef.current) {
-      containerRef.current.style.transform = `translate(${relativePosition.x}%, ${relativePosition.y}%)`;
+      containerRef.current.style.transform = `translate(${
+        // x-value has to be divided by 2 because globe left/right margin is -50%
+        relativePosition.x / 2
+      }%, ${relativePosition.y}%)`;
 
       distanceRef.current =
         INITIAL_DISTANCE +
