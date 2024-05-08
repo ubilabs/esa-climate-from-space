@@ -1,17 +1,17 @@
 import React, {FunctionComponent, useState} from 'react';
 import cx from 'classnames';
 
-import {CarouselOption} from '../01-chapter/01-chapter';
+import {CarouselOption as RadialInfoOption} from '../01-chapter/01-chapter';
 
-import styles from './carousel.module.styl';
+import styles from './radial-info.module.styl';
 
 interface Props {
-  options: CarouselOption[];
+  options: RadialInfoOption[];
   title: string;
 }
 
-const Carousel: FunctionComponent<Props> = ({options, title}) => {
-  const [selectedOption, setSelectedOption] = useState<CarouselOption>(
+const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
+  const [selectedOption, setSelectedOption] = useState<RadialInfoOption>(
     options[options.length - 1]
   );
 
@@ -26,7 +26,7 @@ const Carousel: FunctionComponent<Props> = ({options, title}) => {
   };
 
   return (
-    <div className={styles.carouselContainer}>
+    <div className={styles.radialInfoContainer}>
       <h2>{title}</h2>
 
       <div className={styles.elements}>
@@ -50,4 +50,4 @@ const Carousel: FunctionComponent<Props> = ({options, title}) => {
   );
 };
 
-export default Carousel;
+export default RadialInfo;
