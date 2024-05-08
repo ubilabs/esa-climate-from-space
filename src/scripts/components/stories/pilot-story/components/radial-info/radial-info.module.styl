@@ -1,0 +1,73 @@
+@require '../../../../../../variables.styl'
+
+.radialInfoContainer
+  height: 100vh
+  box-sizing: border-box
+  color: $textWhite
+  padding: $headerHeight emCalc(29px)
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: emCalc(50px)
+
+.radialInfoContainer > h2
+  text-align: center
+  font-size: remCalc(20px)
+  font-style: normal
+  font-weight: 700
+  line-height: 26px
+  justify-content: space-evenly
+
+.elements
+  width: 260px
+  height: 260px
+  border: 1px solid #007D8A
+  border-radius: 50%
+  padding: 6px
+  display: flex
+  justify-content: center
+  align-items: center
+
+.selectedInner, .optionInner
+  background-color: $deepSpace
+  border-radius: 50%
+  height: 100%
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+  box-sizing: border-box
+
+.selectedInner
+  padding: emCalc(8px)
+  text-align: center
+  font-size: emCalc(20px)
+  font-style: normal
+  font-weight: 700
+  line-height: 22px
+
+.option
+  width: 64px
+  height: 64px
+  padding: emCalc(4px)
+  box-sizing: border-box
+  border: 1px solid $darkTeal
+  border-radius: 50%
+  position: absolute
+  display: flex
+  justify-content: center
+  align-items: center
+  color: white
+  font-weight: bold
+  transition: all 0.2s ease-in-out
+
+.optionInner
+  background-color: $deepSpace2
+
+.option.selected
+  cursor: pointer
+  width: 74px
+  height: 74px
+
+  .optionInner
+    background-color: $darkTeal
