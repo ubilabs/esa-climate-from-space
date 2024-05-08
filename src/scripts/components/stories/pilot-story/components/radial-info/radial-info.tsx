@@ -19,7 +19,7 @@ const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
   );
 
   useEffect(() => {
-    setShowInfo(progress > 0.54 ? true : false);
+    setShowInfo(progress >= 0.5 ? true : false);
   }, [progress]);
 
   const positionElements = (index: number) => {
@@ -36,7 +36,8 @@ const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
     <Parallax
       opacity={[0, 2]}
       speed={-5}
-      onProgressChange={progress => setProgress(progress)}>
+      onProgressChange={progress => setProgress(progress)}
+      style={{height: '100vh'}}>
       <div className={styles.radialInfoContainer}>
         <h2>{title}</h2>
         <div className={styles.elements}>
@@ -54,7 +55,7 @@ const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
               )}
               key={option.id}
               style={positionElements(index)}>
-              <div className={styles.optionInner}> {option.icon}</div>
+              <div className={styles.optionInner}>{option.icon}</div>
             </div>
           ))}
         </div>

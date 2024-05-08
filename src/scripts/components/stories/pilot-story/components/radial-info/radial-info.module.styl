@@ -8,19 +8,21 @@
   display: flex
   flex-direction: column
   align-items: center
-  gap: emCalc(50px)
+  gap: 25%
+  scroll-snap-align: center
 
 .radialInfoContainer > h2
   text-align: center
-  font-size: remCalc(20px)
+  font-size: emCalc(20px)
   font-style: normal
   font-weight: 700
   line-height: 26px
   justify-content: space-evenly
 
 .elements
-  width: 260px
-  height: 260px
+  position: relative
+  width: 270px
+  height: 270px
   border: 1px solid #007D8A
   border-radius: 50%
   padding: 6px
@@ -37,6 +39,7 @@
   border: 1px dashed $deepSpace2
   border-color: transparent transparent $deepSpace2 transparent
   border-radius: 50% / 0 0 80px 80px
+  transform: translateY(50%)
 
 .selectedInner, .optionInner
   background-color: $deepSpace
