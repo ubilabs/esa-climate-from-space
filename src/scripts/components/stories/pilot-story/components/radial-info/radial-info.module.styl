@@ -1,7 +1,7 @@
 @require '../../../../../../variables.styl'
 
 .radialInfoContainer
-  height: 100vh
+  height: 100%
   box-sizing: border-box
   color: $textWhite
   padding: $headerHeight emCalc(29px)
@@ -28,6 +28,16 @@
   justify-content: center
   align-items: center
 
+.elements:before
+  content: ''
+  position: absolute
+  bottom: 0
+  width: inherit
+  height: 50%
+  border: 1px dashed $deepSpace2
+  border-color: transparent transparent $deepSpace2 transparent
+  border-radius: 50% / 0 0 80px 80px
+
 .selectedInner, .optionInner
   background-color: $deepSpace
   border-radius: 50%
@@ -45,6 +55,7 @@
   font-style: normal
   font-weight: 700
   line-height: 22px
+  transition: opacity 0.7s ease-in
 
 .option
   width: 64px
