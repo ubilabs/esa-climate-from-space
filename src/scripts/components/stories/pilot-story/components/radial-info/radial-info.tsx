@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useState} from 'react';
 import cx from 'classnames';
 
-import {CarouselOption as RadialInfoOption} from '../01-chapter/01-chapter';
+import {RadialInfoOption} from '../01-chapter/01-chapter';
 
 import styles from './radial-info.module.styl';
 
