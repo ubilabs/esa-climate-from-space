@@ -96,7 +96,7 @@ const PilotStory: FunctionComponent = () => {
             {
               pageFrom: 2,
               pageTo: 3,
-              moveBy: {x: 0, y: 0, z: 50}
+              moveBy: {x: 0, y: 0, z: 30}
             },
             {
               pageFrom: 3,
