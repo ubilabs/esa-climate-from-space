@@ -1,8 +1,6 @@
 import React, {FunctionComponent, useState} from 'react';
 import {Parallax, ParallaxProvider} from 'react-scroll-parallax';
 
-import {GlobeMovementDirection} from './types/globe';
-
 import Share from '../../main/share/share';
 import Header from './components/header/header';
 import StoryIntro from './components/story-intro/story-intro';
@@ -24,34 +22,25 @@ const PilotStory: FunctionComponent = () => {
       <ParallaxProvider>
         <Globe
           progress={progress}
-          relativePosition={{x: -30, y: 0}}
+          relativePosition={{x: -30, y: 0, z: 0}}
           isSpinning={true}
           isVisible={true}
           pagesTotal={5}
-          globeMovement={[
+          globeMovements={[
             {
               pageFrom: 1,
               pageTo: 2,
-              relativeExtend: 30,
-              direction: GlobeMovementDirection.RIGHT
+              moveBy: {x: 30, y: 0, z: 0}
             },
             {
               pageFrom: 3,
               pageTo: 4,
-              relativeExtend: 50,
-              direction: GlobeMovementDirection.OUT
+              moveBy: {x: 0, y: 0, z: 50}
             },
             {
               pageFrom: 4,
               pageTo: 5,
-              relativeExtend: 60,
-              direction: GlobeMovementDirection.DOWN
-            },
-            {
-              pageFrom: 4,
-              pageTo: 5,
-              relativeExtend: 50,
-              direction: GlobeMovementDirection.IN
+              moveBy: {x: 0, y: 80, z: -70}
             }
           ]}
         />
