@@ -1,0 +1,36 @@
+@require '../../../../../../variables.styl'
+
+.chapter
+  height: 100vh
+  overflow: hidden
+
+.carousel
+  color: white
+  display: flex
+  width: 100vw
+  display: flex
+  justify-content: space-around
+  box-sizing: border-box
+  z-index: 1
+  color: white
+  position: relative
+  height: 10%
+
+  @media screen and (min-width: 768px)
+    height: 45%
+
+
+.explanation
+  max-width: 16rem
+  margin-inline: auto
+  margin-top: 2rem
+  margin-bottom: 6rem
+
+
+.curveLine
+  z-index: -1
+  position: absolute
+  top: 0
+  right: 0
+  left: 0
+  pointer-events: none

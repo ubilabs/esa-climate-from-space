@@ -16,6 +16,7 @@ import Button from './components/button/button';
 import ChapterProgressIndication from './components/chapter-progress-indication/chapter-progress-indication';
 
 import styles from './pilot-story.module.styl';
+import ChapterTwo from './components/02-chapter/02-chapter';
 
 const chapters = [
   {title: 'The invisible threat', subtitle: 'Subtitle for chapter 1'},
@@ -128,6 +129,9 @@ const PilotStory: FunctionComponent = () => {
             <>
               <Parallax onProgressChange={setProgress}>
                 <ChapterOne
+                  onChapterSelect={() => setSelectedChapterIndex(0)}
+                />
+                <ChapterTwo
                   onChapterSelect={() => setSelectedChapterIndex(0)}
                 />
               </Parallax>

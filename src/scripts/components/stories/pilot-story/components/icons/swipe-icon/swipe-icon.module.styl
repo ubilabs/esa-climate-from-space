@@ -1,0 +1,29 @@
+.swipeIcon
+    position: absolute
+    bottom: -50%
+    display: flex
+    justify-content: center
+    align-items: center
+    filter: drop-shadow(0px 0px 12px #003349);
+
+    > .outerSvgCircle
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+
+    > .innerSvgHand
+        animation: wave-animation 1s infinite;
+        transform-origin: center
+
+    @keyframes wave-animation {
+    0%, 100% {
+        transform: rotate(-10deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+}
