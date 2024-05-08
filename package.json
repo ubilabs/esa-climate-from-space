@@ -1,6 +1,6 @@
 {
   "name": "esa-climate-from-space",
-  "version": "1.15.1",
+  "version": "pilot-story",
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "dist-src-electron/main.js",
   "scripts": {
@@ -32,7 +32,8 @@
     "upload-stories": "./scripts/confirm-storage-upload.sh && npm run story-packages && find ./storage/stories -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/stories/* gs://esa-cfs-storage/$npm_package_version/stories/ && npm run clean:story-packages",
     "upload-layers": "find ./storage -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers",
     "download-layers": "gsutil -m cp gs://esa-cfs-storage/$npm_package_version/layers/layers-*.json ./storage/layers/",
-    "optimize-story-images": "./scripts/optimize-story-images.sh"
+    "optimize-story-images": "./scripts/optimize-story-images.sh",
+    "deploy:pilot-story": "npm run build && gsutil rm -r gs://esa-cfs-versions/web/pilot-story/* && gsutil cp -r dist gs://esa-cfs-versions/web/pilot-story && gsutil -m setmeta -r -h 'Cache-Control: no-cache' gs://esa-cfs-versions/web/pilot-story"
   },
   "repository": {
     "type": "git",
