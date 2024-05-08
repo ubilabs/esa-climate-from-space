@@ -66,6 +66,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "rehype-raw": "^6.1.1",
+    "vaul": "^0.9.0",
     "video.js": "^7.17.0"
   },
   "devDependencies": {

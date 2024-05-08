@@ -4,12 +4,12 @@ import {Parallax} from 'react-scroll-parallax';
 import styles from './chapter-text.module.styl';
 
 interface Props {
-  content: string;
+  text: string;
 }
 
-const ChapterText: FunctionComponent<Props> = ({content}) => (
+const ChapterText: FunctionComponent<Props> = ({text}) => (
   <Parallax speed={10} className={styles.chapterText} opacity={[0, 2]}>
-    {content}
+    {text}
   </Parallax>
 );
 

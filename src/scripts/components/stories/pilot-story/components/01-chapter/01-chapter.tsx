@@ -43,12 +43,20 @@ const options: CarouselOption[] = [
   }
 ];
 
-const ChapterOne: FunctionComponent = () => {
+interface Props {
+  onChapterSelect: () => void;
+}
+
+const ChapterOne: FunctionComponent<Props> = ({
+  onChapterSelect: setSelectedChapterIndex
+}) => {
   const history = useHistory();
   const [entered, setEntered] = useState(false);
 
   useEffect(() => {
     entered && history.replace('/stories/pilot/1');
+    setSelectedChapterIndex();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entered, history]);
 
   return (
@@ -62,13 +70,16 @@ const ChapterOne: FunctionComponent = () => {
             title="The invisible threat"
           />
           <ChapterText
-            content="Methane is a potent greenhouse gas, far more effective than carbon dioxide
+            text="Methane is a potent greenhouse gas, far more effective than carbon dioxide
           at trapping heat in the atmosphere over a 20-year period."
           />
           <Carousel
             options={options}
             title="Find out more about the greenhouse gas Methane."
           />
+          <ChapterText text="Methane is a potent greenhouse gas, far more effective than carbon dioxide at trapping heat in the atmosphere over a 20-year period." />
+          <ChapterText text="" />
+          <ChapterText text="" />
         </Parallax>
       </section>
     </>
