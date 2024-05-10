@@ -1,0 +1,43 @@
+@require '../../../../../../variables.styl'
+
+.carousel
+  --curve-width: 25vw
+  position: relative
+  width: 100vw
+  touch-action: none
+  scroll-snap-align: center
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  flex-wrap: wrap
+
+.info
+  text-align: center
+  margin: 0 auto
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  padding: 0 20px;
+  line-height: 22px; /* 110% */
+
+
+.curveLine
+  width: var(--curve-width)
+  z-index: -1
+  pointer-events: none
+  overflow: hidden
+
+.satellitesContainer
+  display: flex
+  justify-content: space-between
+  gap: 52px
+
+  .satellites
+    display: flex
+    gap: 36px
+    justify-content: center
+    align-items: center
+    flex-direction: column
+
+    
+ 

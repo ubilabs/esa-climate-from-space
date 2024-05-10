@@ -63,3 +63,27 @@ export const methaneSources = {
     type: MethaneSourceType.ANTHROPHOGENIC
   }
 } as const;
+
+export enum SatelliteNames {
+  'SENTINEL-1' = 'SENTINEL-1',
+  'SENTINEL-2' = 'SENTINEL-2',
+  'SENTINEL-3' = 'SENTINEL-3'
+}
+
+export const satellitesByName = {
+  [SatelliteNames['SENTINEL-1']]: {
+    label: 'Sentinel-1',
+    explanation:
+      'Sentinel-1 is a satellite that provides radar images of Earth. It is used to monitor the environment, including methane emissions.'
+  },
+  [SatelliteNames['SENTINEL-2']]: {
+    label: 'Sentinel-2',
+    explanation:
+      'Sentinel-2 is a satellite that provides optical images of Earth. It is used to monitor the environment, including methane emissions.'
+  },
+  [SatelliteNames['SENTINEL-3']]: {
+    label: 'Sentinel-3',
+    explanation:
+      'Sentinel-3 is a satellite that provides images of Earth’s oceans and land. It is used to monitor the environment, including methane emissions.'
+  }
+} as const;
