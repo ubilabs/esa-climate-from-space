@@ -1,14 +1,33 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 import {Parallax} from 'react-scroll-parallax';
 import {useSwipeable} from 'react-swipeable';
 
-import {satellitesByName} from '../../types/globe';
 import SatelliteElement from '../satellite-element/satellite-element';
 
 import {useScreenSize} from '../../../../../hooks/use-screen-size';
 
+import {SatelliteNames} from '../../types/globe';
+
 import styles from './satellite-carousel.module.styl';
+
+const satellitesByName = {
+  [SatelliteNames['SENTINEL-1']]: {
+    label: 'Sentinel-1',
+    explanation:
+      'Sentinel-1 is a satellite that provides radar images of Earth. It is used to monitor the environment, including methane emissions.'
+  },
+  [SatelliteNames['SENTINEL-2']]: {
+    label: 'Sentinel-2',
+    explanation:
+      'Sentinel-2 is a satellite that provides optical images of Earth. It is used to monitor the environment, including methane emissions.'
+  },
+  [SatelliteNames['SENTINEL-3']]: {
+    label: 'Sentinel-3',
+    explanation:
+      'Sentinel-3 is a satellite that provides images of Earth’s oceans and land. It is used to monitor the environment, including methane emissions.'
+  }
+} as const;
 
 const SatelliteCarousel = () => {
   const [selectedIconIndex, setSelectedSourceIndex] = useState(0);
@@ -22,9 +41,9 @@ const SatelliteCarousel = () => {
 
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
-  const diameter = windowHeight * 0.8;
+  const diameter = useMemo(() => windowHeight * 0.8, [windowHeight]);
 
-  const radius = diameter / 2;
+  const radius = useMemo(() => diameter / 2, [diameter]);
 
   useEffect(() => {
     const handleResize = () => setWindowHeight(window.innerHeight);
