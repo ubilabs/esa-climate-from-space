@@ -88,7 +88,7 @@ const PilotStory: FunctionComponent = () => {
           relativePosition={{x: -30, y: 0, z: 0}}
           isSpinning={true}
           isVisible={true}
-          pagesTotal={6}
+          pagesTotal={11}
           globeMovements={[
             {
               pageFrom: 1,
@@ -108,12 +108,32 @@ const PilotStory: FunctionComponent = () => {
             {
               pageFrom: 4,
               pageTo: 5,
-              moveBy: {x: 0, y: 50, z: -100}
+              moveBy: {x: 0, y: 40, z: -100}
             },
             {
               pageFrom: 5,
               pageTo: 6,
-              moveBy: {x: 0, y: 20, z: 0}
+              moveBy: {x: 0, y: 10, z: 0}
+            },
+            {
+              pageFrom: 6,
+              pageTo: 7,
+              moveBy: {x: 0, y: 10, z: 0}
+            },
+            {
+              pageFrom: 7,
+              pageTo: 8,
+              moveBy: {x: 0, y: 10, z: 0}
+            },
+            {
+              pageFrom: 8,
+              pageTo: 9,
+              moveBy: {x: 0, y: -85, z: 100}
+            },
+            {
+              pageFrom: 9,
+              pageTo: 10,
+              moveBy: {x: 0, y: 50, z: -100}
             }
           ]}
         />
