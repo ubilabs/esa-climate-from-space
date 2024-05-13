@@ -18,6 +18,19 @@ interface Props {
   globeMovements: GlobeMovement[];
 }
 
+function extractTranslateValues(str: string): [number, number] {
+  // Regular expression to match floating point numbers
+  const regex = /[-+]?\d*\.\d+%?/g;
+  const matches: RegExpMatchArray | null = str.match(regex);
+  if (matches && matches.length >= 2) {
+    // Extracted numbers from the string
+    const num1: number = parseFloat(matches[0]);
+    const num2: number = parseFloat(matches[1]);
+    return [num1, num2];
+  }
+  return [0, 0];
+}
+
 const Globe: FunctionComponent<Props> = ({
   progress,
   relativePosition,
@@ -132,9 +145,7 @@ const Globe: FunctionComponent<Props> = ({
       );
 
       // get the current globe position [x, y]
-      const transform = (
-        globeContainer.style.transform.match(/(-?[0-9\.]+)/g) || [0, 0]
-      ).map(Number);
+      const translate = extractTranslateValues(globeContainer.style.transform);
 
       // Change globe x/y-position
       const moveToX =
@@ -148,8 +159,9 @@ const Globe: FunctionComponent<Props> = ({
         progressPercent / (100 / moveBy.y);
 
       globeContainer.style.transform = `translate(${
-        moveBy.x ? moveToX : transform[0]
-      }%, ${moveBy.y ? moveToY : transform[1]}%)`;
+        // x-value has to be divided by 2 because globe left/right margin is -50%
+        moveBy.x ? moveToX / 2 : translate[0]
+      }%, ${moveBy.y ? moveToY : translate[1]}%)`;
 
       // Change globe z-position
       const formerMovementsDistance =
