@@ -77,8 +77,6 @@ const ChapterOne: FunctionComponent<Props> = ({
             options={options}
             title="Find out more about the greenhouse gas Methane."
           />
-          <ChapterText text="" />
-          <ChapterText text="" />
         </Parallax>
       </section>
     </>

@@ -34,12 +34,6 @@ const ChapterTwo: FunctionComponent<Props> = ({
             subTitle="Chapter 2: What is methane"
             title="The invisible threat"
           />
-          <h1>Some of the primary sources include:</h1>
-          <legend>
-            <span>Anthrophogenic</span>
-            <span>Natural</span>
-            <span>Anthrophogenic and Natural</span>
-          </legend>
           <PilotCarousel />
         </Parallax>
       </section>

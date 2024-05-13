@@ -56,6 +56,13 @@ const PilotCarousel = () => {
 
   return (
     <div className={styles.carouselWrapper}>
+      <h1>Some of the primary sources include:</h1>
+      <legend>
+        <span>Anthrophogenic</span>
+        <span>Natural</span>
+        <span>Anthrophogenic and Natural</span>
+      </legend>
+
       <div className={styles.explanation}>
         {orderedSources[selectedIconIndex].value.explanation}
       </div>
