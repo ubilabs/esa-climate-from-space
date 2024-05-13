@@ -32,7 +32,7 @@ const ChapterTwo: FunctionComponent<Props> = ({
           onExit={() => setEntered(false)}>
           <ChapterIntro
             subTitle="Chapter 2: What is methane"
-            title="The invisible threat"
+            title="Where does methane come from?"
           />
           <PilotCarousel />
         </Parallax>
