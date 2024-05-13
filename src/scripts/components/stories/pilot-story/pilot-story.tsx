@@ -3,6 +3,7 @@ import {Parallax, ParallaxProvider} from 'react-scroll-parallax';
 
 import Share from '../../main/share/share';
 import ChapterOne from './components/01-chapter/01-chapter';
+import ChapterTwo from './components/02-chapter/02-chapter';
 import Globe from './components/globe/globe';
 import Header from './components/header/header';
 import NavChapterOverview from './components/nav-chapter-overview/nav-chapter-overview';
@@ -16,7 +17,6 @@ import Button from './components/button/button';
 import ChapterProgressIndication from './components/chapter-progress-indication/chapter-progress-indication';
 
 import styles from './pilot-story.module.styl';
-import ChapterTwo from './components/02-chapter/02-chapter';
 
 const chapters = [
   {title: 'The invisible threat', subtitle: 'Subtitle for chapter 1'},
