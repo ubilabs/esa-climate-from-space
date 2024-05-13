@@ -1,8 +1,11 @@
 @require '../../../../../../variables.styl'
 
 .carouselWrapper
-  height: 120vh
-  overflow: hidden
+  height: 100vh
+  display: flex
+  flex-direction: column
+  justify-content: center
+  scroll-snap-align: center
 
 .carousel
   color: white
@@ -19,13 +22,11 @@
   @media screen and (min-width: 768px)
     height: 45%
 
-
 .explanation
   max-width: 16rem
   margin-inline: auto
   margin-top: 2rem
   margin-bottom: 6rem
-
 
 .curveLine
   z-index: -1

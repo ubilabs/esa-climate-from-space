@@ -3,25 +3,23 @@
 .sectionContainer
   --methane-src-ant-color: rgba(232, 119, 34, 1)
   --methane-src-natural-color: rgba(0, 179, 152, 1)
-  --methane-src-mixed: linear-gradient(45deg, var(--methane-src-natural-color) 25%,var(--methane-src-ant-color) 25%,var(--methane-src-ant-color) 50%, var( --methane-src-natural-color) 50%, var( --methane-src-natural-color) 75%,var(--methane-src-ant-color) 75%)
+  --methane-src-mixed: linear-gradient(45deg, var(--methane-src-natural-color) 25%, var(--methane-src-ant-color) 25%, var(--methane-src-ant-color) 50%, var(--methane-src-natural-color) 50%, var(--methane-src-natural-color) 75%, var(--methane-src-ant-color) 75%)
   display: flex
   justify-content: center
   align-items: center
   color: $textWhite
   text-align: center
-  scroll-snap-align: center 
 
 legend > *
   position: relative
   margin-left: 36px
 
-legend 
-
+legend
   > *:before
     display: inline-block
     content: ''
-    width: 19px;
-    height: 6px;
+    width: 19px
+    height: 6px
     position: absolute
     left: -24px
     top: 50%
@@ -35,5 +33,3 @@ legend
 
   > *:last-child:before
     background-image: var(--methane-src-mixed)
-
-
