@@ -9,7 +9,7 @@ import {useScreenSize} from '../../../../../hooks/use-screen-size';
 import SwipeIcon from '../icons/swipe-icon/swipe-icon';
 
 const PilotCarousel = () => {
-  const orderedSources = Object.entries(methaneSources).map(([key, value]) => ({
+  const sources = Object.entries(methaneSources).map(([key, value]) => ({
     key,
     value
   }));
@@ -64,16 +64,17 @@ const PilotCarousel = () => {
       </legend>
 
       <div className={styles.explanation}>
-        {orderedSources[selectedIconIndex].value.explanation}
+        {sources[selectedIconIndex].value.explanation}
       </div>
       <div {...handlers} className={styles.carousel}>
-        {orderedSources.map((_, i) => {
+        {sources.map((_, i) => {
           const iconIndex =
             (selectedIconIndex -
               Math.floor(sourcesLength / 2) +
               i +
               sourcesLength) %
             sourcesLength;
+
           const diff = Math.abs(i - Math.floor(sourcesLength / 2));
 
           const x = (windowWidth / sourcesLength) * diff; // the given x-coordinate
@@ -92,11 +93,9 @@ const PilotCarousel = () => {
               onClick={() => setSelectedSourceIndex(iconIndex)}
               yValue={yValue}
               key={iconIndex}
-              source={orderedSources[iconIndex].key as MethaneSources}
-              percentage={
-                orderedSources[iconIndex].value.percentageOfTotalEmission
-              }
-              sourceType={orderedSources[iconIndex].value.type}
+              source={sources[iconIndex].key as MethaneSources}
+              percentage={sources[iconIndex].value.percentageOfTotalEmission}
+              sourceType={sources[iconIndex].value.type}
               isSelected={isSelected}
             />
           );

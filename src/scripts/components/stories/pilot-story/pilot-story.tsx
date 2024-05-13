@@ -4,6 +4,7 @@ import {Parallax, ParallaxProvider} from 'react-scroll-parallax';
 import Share from '../../main/share/share';
 import ChapterOne from './components/01-chapter/01-chapter';
 import ChapterTwo from './components/02-chapter/02-chapter';
+import ChapterThree from './components/03-chapter/03-chapter';
 import Globe from './components/globe/globe';
 import Header from './components/header/header';
 import NavChapterOverview from './components/nav-chapter-overview/nav-chapter-overview';
@@ -137,6 +138,9 @@ const PilotStory: FunctionComponent = () => {
                   onChapterSelect={() => setSelectedChapterIndex(0)}
                 />
                 <ChapterTwo
+                  onChapterSelect={() => setSelectedChapterIndex(0)}
+                />
+                <ChapterThree
                   onChapterSelect={() => setSelectedChapterIndex(0)}
                 />
               </Parallax>

@@ -1,0 +1,57 @@
+.label
+    text-align: left;
+    text-align: start
+    margin-bottom: 1rem
+    font-size: 20px;
+    color: rgba(0, 179, 152, 1)
+
+  .satellite
+    position: relative
+    display: flex;
+    flex-direction: column;
+
+.dialog[open]
+  display: flex;
+  padding: 24px;
+  max-width: fit-content
+  flex-direction: column;
+  background: rgba(0, 51, 73, 0.90);
+  font-size: 16px;
+  color: white
+  border: none
+
+  &::backdrop
+    background: rgba(0, 0, 0, 0.50);
+
+  .top
+    display: flex
+    justify-content: space-between
+
+  .closeButton
+    --background-img: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><path d='M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z' fill='%23D5D6D2'/></svg>")
+    position: relative
+    background: transparent
+    width: 24px
+    height: 24px
+    border: none
+    padding: 0
+    cursor: pointer
+    
+    &:before
+      content: var(--background-img)
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+  .mainContent
+    display: flex
+    gap: 24px
+    text-align: start
+    font-weight: 700
+
+    > p
+      max-width: 200px
+
+
+  

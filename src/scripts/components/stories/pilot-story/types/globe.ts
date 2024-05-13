@@ -63,3 +63,9 @@ export const methaneSources = {
     type: MethaneSourceType.ANTHROPHOGENIC
   }
 } as const;
+
+export enum SatelliteNames {
+  'SENTINEL-1' = 'SENTINEL-1',
+  'SENTINEL-2' = 'SENTINEL-2',
+  'SENTINEL-3' = 'SENTINEL-3'
+}
