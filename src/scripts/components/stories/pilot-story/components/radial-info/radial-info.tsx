@@ -3,6 +3,7 @@ import {Parallax} from 'react-scroll-parallax';
 import cx from 'classnames';
 
 import {RadialInfoOption} from '../01-chapter/01-chapter';
+import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
 import styles from './radial-info.module.styl';
 
@@ -33,34 +34,36 @@ const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
   };
 
   return (
-    <Parallax
-      opacity={[0, 2]}
-      speed={-5}
-      onProgressChange={progress => setProgress(progress)}
-      style={{height: '100vh'}}>
-      <div className={styles.radialInfoContainer}>
-        <h2>{title}</h2>
-        <div className={styles.elements}>
-          <div
-            className={styles.selectedInner}
-            style={{opacity: `${showInfo ? 1 : 0}`}}>
-            <p>{selectedOption.content}</p>
-          </div>
-          {options.map((option, index) => (
+    <SnapWrapper>
+      <Parallax
+        opacity={[0, 2]}
+        speed={-5}
+        onProgressChange={progress => setProgress(progress)}
+        style={{height: '100%'}}>
+        <div className={styles.radialInfoContainer}>
+          <h2>{title}</h2>
+          <div className={styles.elements}>
             <div
-              onMouseOver={() => setSelectedOption(option)}
-              className={cx(
-                styles.option,
-                selectedOption === option && styles.selected
-              )}
-              key={option.id}
-              style={positionElements(index)}>
-              <div className={styles.optionInner}>{option.icon}</div>
+              className={styles.selectedInner}
+              style={{opacity: `${showInfo ? 1 : 0}`}}>
+              <p>{selectedOption.content}</p>
             </div>
-          ))}
+            {options.map((option, index) => (
+              <div
+                onMouseOver={() => setSelectedOption(option)}
+                className={cx(
+                  styles.option,
+                  selectedOption === option && styles.selected
+                )}
+                key={option.id}
+                style={positionElements(index)}>
+                <div className={styles.optionInner}>{option.icon}</div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </Parallax>
+      </Parallax>
+    </SnapWrapper>
   );
 };
 
