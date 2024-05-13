@@ -55,7 +55,7 @@ const PilotCarousel = () => {
   const clipHeight = ((isMobile ? 10 : 20) / 100) * diameter;
 
   return (
-    <div className={styles.chapter}>
+    <div className={styles.carouselWrapper}>
       <div className={styles.explanation}>
         {orderedSources[selectedIconIndex].value.explanation}
       </div>
