@@ -7,7 +7,6 @@ from helper import get_default_layer_version
 # layer
 LAYER_ID = 'greenhouse'
 LAYER_VARIABLE = 'xch4'
-RESOLUTION = '512 512'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [],  # will be injected

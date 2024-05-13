@@ -171,7 +171,7 @@ const DataViewer: FunctionComponent<Props> = ({
             return null;
           }
 
-          return id === 'land_cover.lccs_class' ? (
+          return (id === 'land_cover.lccs_class' || id === 'land_cover.class') ? (
             <HoverLegend
               key={id}
               values={legendValues as LegendValueColor[]}
