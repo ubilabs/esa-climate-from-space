@@ -1,0 +1,15 @@
+.methaneSourcesIcon
+    --y-offset: 0
+    filter: drop-shadow(0px 0px 80px rgba(0, 125, 138, 0.31))
+    height: fit-content
+    transform: translateY(calc(var(--y-offset) - 50%))
+
+.sourceSymbolWrapper
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.sourceSymbolWrapper.isSelected > svg
+    scale: 2
+
