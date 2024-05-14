@@ -171,6 +171,22 @@
     "position": [138, 35.5]
   },
   {
+    "id": "story-42",
+    "title": "Coastal Sea Level",
+    "description": "",
+    "image": "assets/story42-image01.jpg",
+    "tags": ["sea-level"],
+    "position": [-80, 26]
+  },
+  {
+    "id": "story-43",
+    "title": "El Niño 2023",
+    "description": "",
+    "image": "assets/story43-image01.jpg",
+    "tags": ["sea-surface-temperature", "sea-surface-salinity", "cloud"],
+    "position": [-128, 5]
+  },
+  {
     "id": "story-33",
     "title": "L'étalement urbain",
     "description": "",

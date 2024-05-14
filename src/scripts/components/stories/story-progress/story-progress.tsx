@@ -4,13 +4,13 @@ import cx from 'classnames';
 import styles from './story-progress.module.styl';
 
 interface Props {
-  images: string[];
+  children: React.ReactElement[];
   currentIndex: number;
   showLightbox: boolean;
 }
 
 const StoryProgress: FunctionComponent<Props> = ({
-  images,
+  children,
   currentIndex,
   showLightbox
 }) => {
@@ -22,7 +22,7 @@ const StoryProgress: FunctionComponent<Props> = ({
   return (
     <div className={classes}>
       <div className={styles.progress}>
-        {images.map((_, index) => (
+        {children.map((_, index) => (
           <div
             key={index}
             className={cx(

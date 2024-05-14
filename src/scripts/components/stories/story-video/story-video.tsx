@@ -10,24 +10,24 @@ import {YouTubePlayer} from 'youtube-player/dist/types';
 import VideoJS from '../video-js/video-js';
 import YoutubePlayer from '../youtube-player/youtube-player';
 
-import {Slide} from '../../../types/story';
+import {VideoItem} from '../../../types/gallery-item';
 
 import styles from './story-video.module.styl';
 
 interface Props {
   mode: StoryMode | null;
   storyId: string;
-  slide: Slide;
+  videoItem: VideoItem;
   onPlay: (player: YouTubePlayer | VideoJsPlayer) => void;
 }
 
 const StoryVideo: FunctionComponent<Props> = ({
   mode,
   storyId,
-  slide,
+  videoItem,
   onPlay
 }) => {
-  const {videoSrc, videoId, videoCaptions, videoPoster} = slide;
+  const {videoSrc, videoId, videoCaptions, videoPoster} = videoItem;
   const language = useSelector(languageSelector);
   const isStoryMode = mode === StoryMode.Stories;
   const classes = cx(

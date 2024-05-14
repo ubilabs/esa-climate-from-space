@@ -2,7 +2,7 @@
 import React, {FunctionComponent} from 'react';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
 import {IntlProvider} from 'react-intl';
-import {HashRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 import {MatomoProvider, createInstance} from '@datapunt/matomo-tracker-react';
 
 import {languageSelector} from '../../../selectors/language';
@@ -49,11 +49,11 @@ const TranslatedApp: FunctionComponent = () => {
   } = useSelector(embedElementsSelector);
 
   const logo = (
-    <Link to="/about">
+    <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
       <div className={styles.logo}>
         <EsaLogo />
       </div>
-    </Link>
+    </a>
   );
 
   return (
