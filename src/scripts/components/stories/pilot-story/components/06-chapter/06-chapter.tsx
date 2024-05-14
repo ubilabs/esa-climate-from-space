@@ -16,19 +16,13 @@ const textSections: TextPageContent[] = [
     title: 'Incident Introduction',
     text: 'The Karaturun East Blowout of 2023 was a significant methane leak incident that occurred in a gas field located in Turkmenistan.',
     speed: 50,
-    translate: [500, 10]
+    translate: [100, 10]
   },
   {
     title: 'Methane Release',
     text: 'It resulted from a blowout during gas extraction operations, leading to a substantial release of methane into the atmosphere.',
     speed: 100,
-    translate: [300, 10]
-  },
-  {
-    title: 'Invisible for human eyes, but visible for infrared cam',
-    text: 'This video show metane gase leaking during extraction operation',
-    speed: 100,
-    translate: [300, 10]
+    translate: [100, 10]
   }
 ];
 
