@@ -10,6 +10,7 @@ import imgSrc1 from '../../assets/01_sentinel.png';
 import imgSrc2 from '../../assets/02_sentinel.png';
 import imgSrc3 from '../../assets/03_sentinel.png';
 import SatelliteIcon from '../icons/satellite-icon/satellite-icon';
+import ChapterIntro from '../chapter-intro/chapter-intro';
 
 interface Props {
   onChapterSelect: () => void;
@@ -61,6 +62,10 @@ const ChapterFour: FunctionComponent<Props> = ({
     <>
       <section className={styles.sectionContainer}>
         <Parallax onEnter={() => setEntered(true)}>
+          <ChapterIntro
+            subTitle="Chapter 4: Mapping the Methane Giants"
+            title="Resolution Matters"
+          />
           <RadialInfo
             options={options}
             title="The resolution is high enough to find individual sources of methane."
