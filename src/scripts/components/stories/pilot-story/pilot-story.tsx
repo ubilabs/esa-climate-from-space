@@ -5,6 +5,7 @@ import Share from '../../main/share/share';
 import ChapterOne from './components/01-chapter/01-chapter';
 import ChapterTwo from './components/02-chapter/02-chapter';
 import ChapterThree from './components/03-chapter/03-chapter';
+import ChapterFour from './components/04-chapter/04-chapter';
 import Globe from './components/globe/globe';
 import Header from './components/header/header';
 import NavChapterOverview from './components/nav-chapter-overview/nav-chapter-overview';
@@ -207,6 +208,9 @@ const PilotStory: FunctionComponent = () => {
                 />
                 <ChapterThree
                   onChapterSelect={() => setSelectedChapterIndex(2)}
+                />
+                <ChapterFour
+                  onChapterSelect={() => setSelectedChapterIndex(4)}
                 />
               </Parallax>
             </>

@@ -17,6 +17,10 @@ export interface RadialInfoOption {
   id: string;
   icon: ReactElement;
   content: string;
+  img?: {
+    src: string;
+    alt: string;
+  };
 }
 
 const options: RadialInfoOption[] = [
