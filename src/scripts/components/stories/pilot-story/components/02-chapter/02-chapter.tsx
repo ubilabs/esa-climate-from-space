@@ -21,8 +21,10 @@ const ChapterTwo: FunctionComponent<Props> = ({
   const [entered, setEntered] = useState(false);
 
   useEffect(() => {
-    entered && history.replace('/stories/pilot/2');
-    setSelectedChapterIndex();
+    if (entered) {
+      history.replace('/stories/pilot/2');
+      setSelectedChapterIndex();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entered, history]);
 

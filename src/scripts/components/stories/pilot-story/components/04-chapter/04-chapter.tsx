@@ -2,7 +2,6 @@ import React, {FunctionComponent, useEffect, useState} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Parallax} from 'react-scroll-parallax';
 
-import styles from './04-chapter.module.styl';
 import RadialInfo from '../radial-info/radial-info';
 import {RadialInfoOption} from '../01-chapter/01-chapter';
 
@@ -11,6 +10,9 @@ import imgSrc2 from '../../assets/02_sentinel.png';
 import imgSrc3 from '../../assets/03_sentinel.png';
 import SatelliteIcon from '../icons/satellite-icon/satellite-icon';
 import ChapterIntro from '../chapter-intro/chapter-intro';
+import ChapterText from '../chapter-text/chapter-text';
+
+import styles from './04-chapter.module.styl';
 
 interface Props {
   onChapterSelect: () => void;
@@ -23,8 +25,10 @@ const ChapterFour: FunctionComponent<Props> = ({
   const [entered, setEntered] = useState(false);
 
   useEffect(() => {
-    entered && history.replace('/stories/pilot/2');
-    setSelectedChapterIndex();
+    if (entered) {
+      history.replace('/stories/pilot/4');
+      setSelectedChapterIndex();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entered, history]);
 
@@ -66,10 +70,12 @@ const ChapterFour: FunctionComponent<Props> = ({
             subTitle="Chapter 4: Mapping the Methane Giants"
             title="Resolution Matters"
           />
+          <ChapterText text="What's special about the Sentinel Satellites is that they provide consistent high resolution data over time." />
           <RadialInfo
             options={options}
             title="The resolution is high enough to find individual sources of methane."
           />
+          <ChapterText text="" />
         </Parallax>
       </section>
     </>

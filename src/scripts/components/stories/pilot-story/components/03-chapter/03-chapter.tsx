@@ -18,8 +18,10 @@ const ChapterThree: FunctionComponent<Props> = ({
   const [entered, setEntered] = useState(false);
 
   useEffect(() => {
-    entered && history.replace('/stories/pilot/3');
-    setSelectedChapterIndex();
+    if (entered) {
+      history.replace('/stories/pilot/3');
+      setSelectedChapterIndex();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [entered, history]);
 
@@ -37,10 +39,7 @@ const ChapterThree: FunctionComponent<Props> = ({
           <ChapterText text="Equipped with advanced spectrometry instruments, these satellites scan the Earth's surface to detect the unique spectral signature of methane. " />
           <ChapterText text="This allows scientists to gather data on methane concentrations globally and understand its sources and impact on climate change." />
           <SatelliteCarousel />
-          <ChapterText
-            speed={-10}
-            text="This high-resolution detection enables scientists to monitor emissions over time, providing critical data that helps nations assess and adjust their environmental policies in real-time."
-          />
+          <ChapterText text="This high-resolution detection enables scientists to monitor emissions over time, providing critical data that helps nations assess and adjust their environmental policies in real-time." />
           <ChapterText text="" />
         </Parallax>
       </section>
