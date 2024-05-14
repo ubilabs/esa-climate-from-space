@@ -38,6 +38,97 @@ const chapters = [
   }
 ];
 
+const globeMovements = [
+  // chapter 1
+  {
+    pageFrom: 1,
+    pageTo: 2,
+    moveBy: {x: 30, y: 0, z: 0}
+  },
+  {
+    pageFrom: 2,
+    pageTo: 3,
+    moveBy: {x: 0, y: 0, z: 30}
+  },
+  {
+    pageFrom: 3,
+    pageTo: 4,
+    moveBy: {x: 0, y: 0, z: 10}
+  },
+  // chapter 2
+  {
+    pageFrom: 4,
+    pageTo: 5,
+    moveBy: {x: 0, y: 40, z: -50}
+  },
+  {
+    pageFrom: 5,
+    pageTo: 6,
+    moveBy: {x: 0, y: 5, z: 0}
+  },
+  {
+    pageFrom: 6,
+    pageTo: 7,
+    moveBy: {x: 0, y: 5, z: 0}
+  },
+  {
+    pageFrom: 7,
+    pageTo: 8,
+    moveBy: {x: 0, y: 5, z: 0}
+  },
+  {
+    pageFrom: 8,
+    pageTo: 9,
+    moveBy: {x: 0, y: 5, z: 0}
+  },
+  {
+    pageFrom: 9,
+    pageTo: 10,
+    moveBy: {x: 0, y: -62, z: 50}
+  },
+  {
+    pageFrom: 10,
+    pageTo: 11,
+    moveBy: {x: 0, y: 0, z: -40}
+  },
+  // chapter 3
+  {
+    pageFrom: 11,
+    pageTo: 12,
+    moveBy: {x: 80, y: 0, z: -15}
+  },
+  {
+    pageFrom: 12,
+    pageTo: 13,
+    moveBy: {x: 5, y: 0, z: 0}
+  },
+  {
+    pageFrom: 13,
+    pageTo: 14,
+    moveBy: {x: 5, y: 0, z: 0}
+  },
+  {
+    pageFrom: 14,
+    pageTo: 15,
+    moveBy: {x: 5, y: 0, z: 0}
+  },
+  {
+    pageFrom: 15,
+    pageTo: 16,
+    moveBy: {x: 30, y: 0, z: -7}
+  },
+  {
+    pageFrom: 16,
+    pageTo: 17,
+    moveBy: {x: -10, y: 0, z: 1}
+  },
+  {
+    pageFrom: 17,
+    pageTo: 18,
+    moveBy: {x: -40, y: 0, z: 5}
+  }
+];
+
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -88,54 +179,8 @@ const PilotStory: FunctionComponent = () => {
           relativePosition={{x: -30, y: 0, z: 0}}
           isSpinning={true}
           isVisible={true}
-          pagesTotal={11}
-          globeMovements={[
-            {
-              pageFrom: 1,
-              pageTo: 2,
-              moveBy: {x: 30, y: 0, z: 0}
-            },
-            {
-              pageFrom: 2,
-              pageTo: 3,
-              moveBy: {x: 0, y: 0, z: 30}
-            },
-            {
-              pageFrom: 3,
-              pageTo: 4,
-              moveBy: {x: 0, y: 0, z: 50}
-            },
-            {
-              pageFrom: 4,
-              pageTo: 5,
-              moveBy: {x: 0, y: 40, z: -100}
-            },
-            {
-              pageFrom: 5,
-              pageTo: 6,
-              moveBy: {x: 0, y: 10, z: 0}
-            },
-            {
-              pageFrom: 6,
-              pageTo: 7,
-              moveBy: {x: 0, y: 10, z: 0}
-            },
-            {
-              pageFrom: 7,
-              pageTo: 8,
-              moveBy: {x: 0, y: 10, z: 0}
-            },
-            {
-              pageFrom: 8,
-              pageTo: 9,
-              moveBy: {x: 0, y: -85, z: 100}
-            },
-            {
-              pageFrom: 9,
-              pageTo: 10,
-              moveBy: {x: 0, y: 50, z: -100}
-            }
-          ]}
+          pagesTotal={18}
+          globeMovements={globeMovements}
         />
         {isDesktop && storyStarted && (
           <ChapterProgressIndication
@@ -158,10 +203,10 @@ const PilotStory: FunctionComponent = () => {
                   onChapterSelect={() => setSelectedChapterIndex(0)}
                 />
                 <ChapterTwo
-                  onChapterSelect={() => setSelectedChapterIndex(0)}
+                  onChapterSelect={() => setSelectedChapterIndex(1)}
                 />
                 <ChapterThree
-                  onChapterSelect={() => setSelectedChapterIndex(0)}
+                  onChapterSelect={() => setSelectedChapterIndex(2)}
                 />
               </Parallax>
             </>
