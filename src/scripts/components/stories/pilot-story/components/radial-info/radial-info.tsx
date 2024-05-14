@@ -33,6 +33,9 @@ const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
     return {transform: `translate(${x}px, ${y}px)`};
   };
 
+  const isSelectedImg =
+    selectedOption?.img && Boolean('src' in selectedOption?.img);
+
   return (
     <SnapWrapper>
       <Parallax
@@ -46,7 +49,21 @@ const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
             <div
               className={styles.selectedInner}
               style={{opacity: `${showInfo ? 1 : 0}`}}>
-              <p>{selectedOption.content}</p>
+              {isSelectedImg ? (
+                <>
+                  <img
+                    src={selectedOption.img?.src}
+                    alt={selectedOption.img?.alt}
+                    className={styles.img}
+                  />
+                  <div>
+                    <span>{selectedOption.id}</span>
+                    <span>{selectedOption.content}</span>
+                  </div>
+                </>
+              ) : (
+                <p>{selectedOption.content}</p>
+              )}
             </div>
             {options.map((option, index) => (
               <div

@@ -1,5 +1,5 @@
 import React, {FunctionComponent} from 'react';
-import SatelliteIcon from '../icons/satellite-icon/satellite-icon';
+import SatelliteGraphicIcon from '../icons/satellite-graphic-icon/satellite-graphic-icon';
 import SatelliteInfoIcon from '../icons/satellite-info-icon/satellite-info-icon';
 
 import styles from './satellite-element.module.styl';
@@ -42,7 +42,7 @@ const SatelliteElement: FunctionComponent<Props> = ({
           <dialog ref={dialogRef} className={styles.dialog}>
             <div className={styles.top}>{isMobile && closingContent}</div>
             <div className={styles.mainContent}>
-              {isDesktop && <SatelliteIcon />}
+              {isDesktop && <SatelliteGraphicIcon />}
 
               <div>
                 {isDesktop && (
@@ -55,7 +55,7 @@ const SatelliteElement: FunctionComponent<Props> = ({
         </>
       )}
 
-      <SatelliteIcon
+      <SatelliteGraphicIcon
         onClick={() => onClick(iconIndex)}
         isSelected={isSelected}
       />
