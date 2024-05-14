@@ -1,6 +1,5 @@
-import React, {FunctionComponent, useState} from 'react';
-import {ParallaxProvider} from 'react-scroll-parallax';
-
+import React, {FunctionComponent, useEffect, useState} from 'react';
+import {Parallax, ParallaxProvider} from 'react-scroll-parallax';
 import Share from '../../main/share/share';
 import ChapterOne from './components/01-chapter/01-chapter';
 import ChapterTwo from './components/02-chapter/02-chapter';
@@ -10,7 +9,9 @@ import ChapterFive from './components/05-chapter/05-chapter';
 import ChapterSix from './components/06-chapter/06-chapter';
 import Globe from './components/globe/globe';
 import Header from './components/header/header';
-import NavChapterOverview from './components/nav-chapter-overview/nav-chapter-overview';
+import NavChapterOverview, {
+  scrollToChapter as scrollToChapterIndex
+} from './components/nav-chapter-overview/nav-chapter-overview';
 import NavDrawer from './components/nav-drawer/nav-drawer';
 import StoryIntro from './components/story-intro/story-intro';
 
@@ -25,6 +26,14 @@ import styles from './pilot-story.module.styl';
 
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);
+
+  // Automatically scroll to the first chapter when the story starts
+  useEffect(() => {
+    storyStarted &&
+      setTimeout(() => {
+        scrollToChapterIndex(0);
+      }, 600);
+  }, [storyStarted]);
 
   const {isDesktop} = useScreenSize();
 
@@ -76,7 +85,7 @@ const PilotStory: FunctionComponent = () => {
           />
         )}
 
-        <div className={styles.chapterContainer}>
+        <div className={styles.storyContainer}>
           <StoryIntro
             storyStarted={storyStarted}
             onStoryStart={() => setStoryStarted(true)}
@@ -99,7 +108,7 @@ const PilotStory: FunctionComponent = () => {
                   onChapterSelect={() => setSelectedChapterIndex(2)}
                 />
                 <ChapterFour
-                  onChapterSelect={() => setSelectedChapterIndex(4)}
+                  onChapterSelect={() => setSelectedChapterIndex(3)}
                 />
                 <ChapterFive
                   onChapterSelect={() => setSelectedChapterIndex(5)}

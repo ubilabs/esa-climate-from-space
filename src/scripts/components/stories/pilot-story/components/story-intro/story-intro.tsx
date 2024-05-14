@@ -1,5 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import React, {FunctionComponent} from 'react';
 import {Parallax} from 'react-scroll-parallax';
 import cx from 'classnames';
 
@@ -14,57 +13,45 @@ interface Props {
   onStoryStart: () => void;
 }
 
-const StoryIntro: FunctionComponent<Props> = ({storyStarted, onStoryStart}) => {
-  const history = useHistory();
-  const [entered, setEntered] = useState(false);
+const StoryIntro: FunctionComponent<Props> = ({storyStarted, onStoryStart}) => (
+  <section className={styles.intro}>
+    <Button
+      link={'/stories'}
+      icon={GlobeIcon}
+      label="Back to Stories"
+      className={cx(styles.backToStories, storyStarted && styles.hidden)}
+      isBackButton
+    />
 
-  useEffect(() => {
-    entered && history.replace('/stories/pilot/0');
-  }, [entered, history]);
+    <Parallax className={styles.introContent}>
+      <div className={cx(storyStarted && styles.hidden)}>
+        <h1 className={styles.storyTitle}>
+          Inside the world of Super Emitters
+        </h1>
+        <p className={styles.storyDescription}>
+          Explore the world of methane super emitters – key players in climate
+          change.
+        </p>
+      </div>
 
-  return (
-    <section className={styles.intro}>
-      <Button
-        link={'/stories'}
-        icon={GlobeIcon}
-        label="Back to Stories"
-        className={cx(styles.backToStories, storyStarted && styles.hidden)}
-        isBackButton
-      />
-
-      <Parallax
-        className={styles.introContent}
-        onEnter={() => setEntered(true)}
-        onExit={() => setEntered(false)}>
-        <div className={cx(storyStarted && styles.hidden)}>
-          <h1 className={styles.storyTitle}>
-            Inside the world of Super Emitters
-          </h1>
-          <p className={styles.storyDescription}>
-            Explore the world of methane super emitters – key players in climate
-            change.
-          </p>
-        </div>
-
-        <div className={styles.buttonContainer}>
-          {storyStarted ? (
-            <Parallax style={{width: '100%'}} opacity={[1, 0]} speed={2}>
-              <ScrollHint />
-            </Parallax>
-          ) : (
-            <>
-              <Button
-                label="Story"
-                onClick={onStoryStart}
-                id={styles.whiteButton}
-              />
-              <Button link={'/'} label="Datasets" />
-            </>
-          )}
-        </div>
-      </Parallax>
-    </section>
-  );
-};
+      <div className={styles.buttonContainer}>
+        {storyStarted ? (
+          <Parallax style={{width: '100%'}} opacity={[1, 0]} speed={2}>
+            <ScrollHint />
+          </Parallax>
+        ) : (
+          <>
+            <Button
+              label="Story"
+              onClick={onStoryStart}
+              id={styles.whiteButton}
+            />
+            <Button link={'/'} label="Datasets" />
+          </>
+        )}
+      </div>
+    </Parallax>
+  </section>
+);
 
 export default StoryIntro;

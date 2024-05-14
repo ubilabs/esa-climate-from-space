@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Parallax} from 'react-scroll-parallax';
 
@@ -18,22 +18,16 @@ const ChapterTwo: FunctionComponent<Props> = ({
   onChapterSelect: setSelectedChapterIndex
 }) => {
   const history = useHistory();
-  const [entered, setEntered] = useState(false);
 
-  useEffect(() => {
-    if (entered) {
-      history.replace('/stories/pilot/2');
-      setSelectedChapterIndex();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [entered, history]);
+  const onHandleEnter = () => {
+    history.replace('/stories/pilot/2');
+    setSelectedChapterIndex();
+  };
 
   return (
     <>
-      <section className={styles.sectionContainer}>
-        <Parallax
-          onEnter={() => setEntered(true)}
-          onExit={() => setEntered(false)}>
+      <section className={styles.sectionContainer} data-scroll-index-1>
+        <Parallax onEnter={onHandleEnter}>
           <ChapterIntro
             subTitle="Chapter 2: Methane Sources"
             title="Where does methane come from?"

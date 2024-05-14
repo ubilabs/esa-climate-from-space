@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Parallax} from 'react-scroll-parallax';
 
@@ -15,22 +15,16 @@ const ChapterThree: FunctionComponent<Props> = ({
   onChapterSelect: setSelectedChapterIndex
 }) => {
   const history = useHistory();
-  const [entered, setEntered] = useState(false);
 
-  useEffect(() => {
-    if (entered) {
-      history.replace('/stories/pilot/3');
-      setSelectedChapterIndex();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [entered, history]);
+  const onHandleEnter = () => {
+    history.replace('/stories/pilot/3');
+    setSelectedChapterIndex();
+  };
 
   return (
     <>
-      <section className={styles.sectionContainer}>
-        <Parallax
-          onEnter={() => setEntered(true)}
-          onExit={() => setEntered(false)}>
+      <section className={styles.sectionContainer} data-scroll-index-2>
+        <Parallax onEnter={onHandleEnter}>
           <ChapterIntro
             subTitle="Chapter 3: ESA's Eyes in the Sky"
             title="ESA's Watchful Eyes Over Earth"
