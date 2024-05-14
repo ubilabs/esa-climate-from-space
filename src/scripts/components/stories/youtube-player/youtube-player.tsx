@@ -11,7 +11,7 @@ interface Props {
   videoId?: string;
   language: Language;
   isStoryMode: boolean;
-  onPlay: (player: YouTubePlayer) => void;
+  onPlay?: (player: YouTubePlayer) => void;
 }
 
 const YoutubePlayer: FunctionComponent<Props> = ({
@@ -45,7 +45,7 @@ const YoutubePlayer: FunctionComponent<Props> = ({
       videoId={videoId}
       opts={options}
       onReady={event => !isStoryMode && event.target.playVideo()}
-      onPlay={event => onPlay(event.target)}
+      onPlay={event => onPlay && onPlay(event.target)}
     />
   );
 };
