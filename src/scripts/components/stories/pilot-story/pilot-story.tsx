@@ -158,10 +158,10 @@ const PilotStory: FunctionComponent = () => {
                   onChapterSelect={() => setSelectedChapterIndex(0)}
                 />
                 <ChapterTwo
-                  onChapterSelect={() => setSelectedChapterIndex(0)}
+                  onChapterSelect={() => setSelectedChapterIndex(1)}
                 />
                 <ChapterThree
-                  onChapterSelect={() => setSelectedChapterIndex(0)}
+                  onChapterSelect={() => setSelectedChapterIndex(2)}
                 />
               </Parallax>
             </>

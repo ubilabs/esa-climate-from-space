@@ -6,11 +6,12 @@ import styles from './chapter-text.module.styl';
 
 interface Props {
   text: string;
+  speed?: number;
 }
 
-const ChapterText: FunctionComponent<Props> = ({text}) => (
+const ChapterText: FunctionComponent<Props> = ({text, speed = 1}) => (
   <SnapWrapper>
-    <Parallax speed={10} className={styles.chapterText} opacity={[0, 2]}>
+    <Parallax speed={speed} className={styles.chapterText} opacity={[0, 2]}>
       {text}
     </Parallax>
   </SnapWrapper>
