@@ -85,7 +85,7 @@ const PilotStory: FunctionComponent = () => {
             relativePosition={{x: -30, y: 0, z: 0}}
             isSpinning={true}
             isVisible={true}
-            pagesTotal={18}
+            pagesTotal={globeMovements.length + 1}
             globeMovements={globeMovements}>
             {storyStarted && (
               <>
