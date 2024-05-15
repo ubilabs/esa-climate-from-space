@@ -1,6 +1,7 @@
 import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
-import {Parallax} from 'react-scroll-parallax';
+
+import {ChapterSelectionHandler} from '../../types/globe';
 
 import Chapter from '../chapter/chapter';
 import ChapterIntro from '../chapter-intro/chapter-intro';
@@ -11,7 +12,7 @@ import ChapterConclusion from '../chapter-conclusion/chapter-conclusion';
 import {giantsStory} from '../../config/06-config';
 
 interface Props {
-  onChapterSelect: () => void;
+  onChapterSelect: ChapterSelectionHandler;
 }
 
 export interface GiantContent {
@@ -35,9 +36,7 @@ export interface GiantContent {
   conclusion: string;
 }
 
-const ChapterSix: FunctionComponent<Props> = ({
-  onChapterSelect: setSelectedChapterIndex
-}) => {
+const ChapterSix: FunctionComponent<Props> = ({onChapterSelect}) => {
   const history = useHistory();
   const location = useLocation();
   const storyRef = useRef<HTMLDivElement>(null);
@@ -53,11 +52,6 @@ const ChapterSix: FunctionComponent<Props> = ({
     );
     selectedGiant && setSelectedGiantContent(selectedGiant);
   }, [location.search]);
-
-  const onHandleEnter = () => {
-    history.replace('/stories/pilot/6');
-    setSelectedChapterIndex();
-  };
 
   const handleSubStoryChange = () => {
     if (!selectedGiantContent) {
@@ -117,17 +111,15 @@ const ChapterSix: FunctionComponent<Props> = ({
   };
 
   return (
-    <Chapter scrollIndex={5}>
-      <Parallax onEnter={onHandleEnter}>
-        <div ref={storyRef}>
-          <ChapterIntro
-            subTitle="Chapter 6: Mapping the Methane Giants"
-            title="10 largest methane leaks on record"
-          />
-        </div>
-        <ChapterText text="Space for Globe with markers" />
-        {selectedGiantContent && renderSubstory()}
-      </Parallax>
+    <Chapter scrollIndex={5} parallaxProps={onChapterSelect}>
+      <div ref={storyRef}>
+        <ChapterIntro
+          subTitle="Chapter 6: Mapping the Methane Giants"
+          title="10 largest methane leaks on record"
+        />
+      </div>
+      <ChapterText text="Space for Globe with markers" />
+      {selectedGiantContent && renderSubstory()}
     </Chapter>
   );
 };
