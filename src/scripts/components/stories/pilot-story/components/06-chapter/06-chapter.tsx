@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from 'react';
-import {useHistory} from 'react-router-dom';
-import {Parallax} from 'react-scroll-parallax';
+
+import {ChapterSelectionHandler} from '../../types/globe';
 
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText, {TextPageContent} from '../chapter-text/chapter-text';
@@ -8,7 +8,7 @@ import ChapterVideo from '../chapter-video/chapter-video';
 import Chapter from '../chapter/chapter';
 
 interface Props {
-  onChapterSelect: () => void;
+  onChapterSelect: ChapterSelectionHandler;
 }
 
 const textSections: TextPageContent[] = [
@@ -26,33 +26,20 @@ const textSections: TextPageContent[] = [
   }
 ];
 
-const ChapterSix: FunctionComponent<Props> = ({
-  onChapterSelect: setSelectedChapterIndex
-}) => {
-  const history = useHistory();
-
-  const onHandleEnter = () => {
-    history.replace('/stories/pilot/5');
-    setSelectedChapterIndex();
-  };
-
-  return (
-    <Chapter scrollIndex={5}>
-      <Parallax onEnter={onHandleEnter}>
-        <ChapterIntro
-          subTitle="Chapter 6: Mapping the Methane Giants"
-          title="10 largest methane leaks on record"
-        />
-        <ChapterText text="Space for Globe with markers" />
-        <ChapterIntro
-          subTitle="Methane Giant 01"
-          title="Karaturun East Blowout 2023"
-        />
-        <ChapterText text={textSections} snapPosition="start" />
-        <ChapterVideo videoId="TDsbPkms6P4" />
-      </Parallax>
-    </Chapter>
-  );
-};
+const ChapterSix: FunctionComponent<Props> = ({onChapterSelect}) => (
+  <Chapter scrollIndex={5} parallaxProps={onChapterSelect}>
+    <ChapterIntro
+      subTitle="Chapter 6: Mapping the Methane Giants"
+      title="10 largest methane leaks on record"
+    />
+    <ChapterText text="Space for Globe with markers" />
+    <ChapterIntro
+      subTitle="Methane Giant 01"
+      title="Karaturun East Blowout 2023"
+    />
+    <ChapterText text={textSections} snapPosition="start" />
+    <ChapterVideo videoId="TDsbPkms6P4" />
+  </Chapter>
+);
 
 export default ChapterSix;

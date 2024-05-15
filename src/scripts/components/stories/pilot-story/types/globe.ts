@@ -69,3 +69,8 @@ export enum SatelliteNames {
   'SENTINEL-2' = 'SENTINEL-2',
   'SENTINEL-3' = 'SENTINEL-3'
 }
+
+export type ChapterSelectionHandler = {
+  onEnter: () => void;
+  onExit: () => void;
+};
