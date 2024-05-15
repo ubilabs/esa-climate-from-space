@@ -41,6 +41,22 @@ const PilotStory: FunctionComponent = () => {
 
   const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
 
+  const prevChapter = useRef(selectedChapterIndex);
+  const history = useHistory();
+
+  const handleChapterSelection = (index: number) => ({
+    onEnter: () => {
+      prevChapter.current = index;
+    },
+    onExit: () => {
+      // Only update the selected chapter index if the user has scrolled past the chapter
+      if (selectedChapterIndex === index) {
+        history.replace(`/stories/pilot/${index + 1}`);
+        setSelectedChapterIndex(prevChapter.current);
+      }
+    }
+  });
+
   // Title is visible in the Nav Drawer when it is not open, basically the handle
   const title = (
     <h2 className={styles.header}>{chapters[selectedChapterIndex].subtitle}</h2>
