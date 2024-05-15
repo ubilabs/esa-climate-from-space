@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {ParallaxProvider} from 'react-scroll-parallax';
 import Share from '../../main/share/share';
 import ChapterOne from './components/01-chapter/01-chapter';
@@ -16,11 +16,13 @@ import NavChapterOverview, {
 import NavDrawer from './components/nav-drawer/nav-drawer';
 import StoryIntro from './components/story-intro/story-intro';
 
+import {useHistory} from 'react-router-dom';
 import {useScreenSize} from '../../../hooks/use-screen-size';
-import {GlobeExploreIcon} from './components/icons/globe-explore-icon';
+
 import {GlobeIcon} from '../../main/icons/globe-icon';
 import Button from './components/button/button';
 import ChapterProgressIndication from './components/chapter-progress-indication/chapter-progress-indication';
+import {GlobeExploreIcon} from './components/icons/globe-explore-icon';
 import {chapters, globeMovements} from './config/main';
 
 import styles from './pilot-story.module.styl';
@@ -40,6 +42,25 @@ const PilotStory: FunctionComponent = () => {
   const {isDesktop} = useScreenSize();
 
   const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
+
+  const tempChapter = useRef(selectedChapterIndex);
+  const history = useHistory();
+
+  const handleChapterSelection = (index: number) => ({
+    onEnter: () => {
+      tempChapter.current = index;
+    },
+    onExit: () => {
+      if (selectedChapterIndex !== index) {
+        return;
+      }
+
+      // If the user scrolls to the next chapter, update the selected chapter index
+      // and update the URL to reflect the current chapter
+      history.replace(`/stories/pilot/${tempChapter.current + 1}`);
+      setSelectedChapterIndex(tempChapter.current);
+    }
+  });
 
   // Title is visible in the Nav Drawer when it is not open, basically the handle
   const title = (
@@ -100,27 +121,13 @@ const PilotStory: FunctionComponent = () => {
             globeMovements={globeMovements}>
             {storyStarted && (
               <div className={styles.chaptersContainer}>
-                <ChapterOne
-                  onChapterSelect={() => setSelectedChapterIndex(0)}
-                />
-                <ChapterTwo
-                  onChapterSelect={() => setSelectedChapterIndex(1)}
-                />
-                <ChapterThree
-                  onChapterSelect={() => setSelectedChapterIndex(2)}
-                />
-                <ChapterFour
-                  onChapterSelect={() => setSelectedChapterIndex(3)}
-                />
-                <ChapterFive
-                  onChapterSelect={() => setSelectedChapterIndex(4)}
-                />
-                <ChapterSix
-                  onChapterSelect={() => setSelectedChapterIndex(5)}
-                />
-                <ChapterSeven
-                  onChapterSelect={() => setSelectedChapterIndex(6)}
-                />
+                <ChapterOne onChapterSelect={handleChapterSelection(0)} />
+                <ChapterTwo onChapterSelect={handleChapterSelection(1)} />
+                <ChapterThree onChapterSelect={handleChapterSelection(2)} />
+                <ChapterFour onChapterSelect={handleChapterSelection(3)} />
+                <ChapterFive onChapterSelect={handleChapterSelection(4)} />
+                <ChapterSix onChapterSelect={handleChapterSelection(5)} />
+                <ChapterSeven onChapterSelect={handleChapterSelection(6)} />
               </div>
             )}
           </Globe>
