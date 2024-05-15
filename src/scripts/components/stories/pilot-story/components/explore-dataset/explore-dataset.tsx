@@ -10,23 +10,25 @@ import Button from '../button/button';
 
 import styles from './explore-dataset.module.styl';
 
-const ExploreDataset: FunctionComponent = () => {
+interface Props {
+  title: string;
+  dataLayerId: string;
+}
+
+const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
   const history = useHistory();
   const dispatch = useThunkDispatch();
 
   return (
     <section className={styles.explore}>
       <Parallax className={styles.exploreContent}>
-        <h1>
-          Explore the world of methane super emitters – key players in climate
-          change.
-        </h1>
+        <h1>{title}</h1>
 
         <div className={styles.buttonContainer}>
           <Button
             label="Explore Dataset"
             onClick={() => {
-              dispatch(setSelectedLayerIdsAction('greenhouse.xch4', true));
+              dispatch(setSelectedLayerIdsAction(dataLayerId, true));
               history.push('/');
             }}
           />

@@ -35,13 +35,13 @@ export const globeMovements = [
   {
     pageFrom: 3,
     pageTo: 4,
-    moveBy: {x: 0, y: 0, z: 10}
+    moveBy: {x: 0, y: 0, z: 20}
   },
   // chapter 2
   {
     pageFrom: 4,
     pageTo: 5,
-    moveBy: {x: 0, y: 40, z: -50}
+    moveBy: {x: 0, y: 40, z: -60}
   },
   {
     pageFrom: 5,
@@ -66,7 +66,7 @@ export const globeMovements = [
   {
     pageFrom: 9,
     pageTo: 10,
-    moveBy: {x: 0, y: -62, z: 50}
+    moveBy: {x: 0, y: -70, z: 50}
   },
   {
     pageFrom: 10,
@@ -123,12 +123,12 @@ export const globeMovements = [
   {
     pageFrom: 20,
     pageTo: 21,
-    moveBy: {x: 0, y: 0, z: 100}
+    moveBy: {x: 0, y: 0, z: 50}
   },
   {
     pageFrom: 21,
     pageTo: 22,
-    moveBy: {x: 20, y: 0, z: -100}
+    moveBy: {x: 20, y: 0, z: -70}
   },
   // chapter 5
   {
@@ -154,27 +154,32 @@ export const globeMovements = [
   {
     pageFrom: 26,
     pageTo: 27,
-    moveBy: {x: -65, y: 0, z: 40}
+    moveBy: {x: 0, y: 0, z: 85}
   },
-  // chapter 6
   {
     pageFrom: 27,
     pageTo: 28,
-    moveBy: {x: 0, y: 0, z: -40}
+    moveBy: {x: 0, y: 0, z: -50}
   },
+  // chapter 6
   {
     pageFrom: 28,
     pageTo: 29,
-    moveBy: {x: 0, y: -10, z: -15}
+    moveBy: {x: 0, y: 0, z: -50}
   },
   {
     pageFrom: 29,
     pageTo: 30,
-    moveBy: {x: 0, y: 15, z: -10}
+    moveBy: {x: 0, y: -10, z: 20}
   },
   {
     pageFrom: 30,
     pageTo: 31,
+    moveBy: {x: 0, y: 40, z: -5}
+  },
+  {
+    pageFrom: 31,
+    pageTo: 32,
     moveBy: {x: 0, y: -5, z: -5}
   },
   {
