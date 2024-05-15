@@ -1,5 +1,5 @@
 import React, {FunctionComponent, useState} from 'react';
-import {Parallax, ParallaxProvider} from 'react-scroll-parallax';
+import {ParallaxProvider} from 'react-scroll-parallax';
 
 import Share from '../../main/share/share';
 import ChapterOne from './components/01-chapter/01-chapter';
@@ -25,7 +25,6 @@ import styles from './pilot-story.module.styl';
 
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);
-  const [progress, setProgress] = useState(0);
 
   const {isDesktop} = useScreenSize();
 
@@ -68,14 +67,6 @@ const PilotStory: FunctionComponent = () => {
       </Header>
 
       <ParallaxProvider>
-        <Globe
-          progress={progress}
-          relativePosition={{x: -30, y: 0, z: 0}}
-          isSpinning={true}
-          isVisible={true}
-          pagesTotal={globeMovements.length + 1}
-          globeMovements={globeMovements}
-        />
         {isDesktop && storyStarted && (
           <ChapterProgressIndication
             chapters={chapters}
@@ -90,9 +81,14 @@ const PilotStory: FunctionComponent = () => {
             storyStarted={storyStarted}
             onStoryStart={() => setStoryStarted(true)}
           />
-          {storyStarted && (
-            <>
-              <Parallax onProgressChange={setProgress}>
+          <Globe
+            relativePosition={{x: -30, y: 0, z: 0}}
+            isSpinning={true}
+            isVisible={true}
+            pagesTotal={globeMovements.length + 1}
+            globeMovements={globeMovements}>
+            {storyStarted && (
+              <>
                 <ChapterOne
                   onChapterSelect={() => setSelectedChapterIndex(0)}
                 />
@@ -111,9 +107,9 @@ const PilotStory: FunctionComponent = () => {
                 <ChapterSix
                   onChapterSelect={() => setSelectedChapterIndex(6)}
                 />
-              </Parallax>
-            </>
-          )}
+              </>
+            )}
+          </Globe>
         </div>
       </ParallaxProvider>
       {storyStarted && <NavDrawer handle={title} children={content} />}
