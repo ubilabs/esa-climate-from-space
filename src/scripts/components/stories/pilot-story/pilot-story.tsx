@@ -53,7 +53,7 @@ const PilotStory: FunctionComponent = () => {
     onExit: () => {
       // Only update the selected chapter index if the user has scrolled past the chapter
       if (selectedChapterIndex === index) {
-        history.replace(`/stories/pilot/${index + 1}`);
+        history.replace(`/stories/pilot/${prevChapter.current + 1}`);
         setSelectedChapterIndex(prevChapter.current);
       }
     }
