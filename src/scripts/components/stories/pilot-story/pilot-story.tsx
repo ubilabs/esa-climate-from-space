@@ -7,6 +7,7 @@ import ChapterThree from './components/03-chapter/03-chapter';
 import ChapterFour from './components/04-chapter/04-chapter';
 import ChapterFive from './components/05-chapter/05-chapter';
 import ChapterSix from './components/06-chapter/06-chapter';
+import ChapterSeven from './components/07-chapter/07-chapter';
 import Globe from './components/globe/globe';
 import Header from './components/header/header';
 import NavChapterOverview, {
