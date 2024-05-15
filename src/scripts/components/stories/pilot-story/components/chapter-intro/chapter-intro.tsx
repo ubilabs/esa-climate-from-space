@@ -15,7 +15,7 @@ interface Props {
 
 const ChapterIntro: FunctionComponent<Props> = ({title, subTitle}) => (
   <SnapWrapper>
-    <Parallax className={styles.intro} opacity={[0, 2]} speed={-10}>
+    <Parallax className={styles.intro} opacity={[0, 2]}>
       <Button
         link={'/stories'}
         icon={GlobeIcon}

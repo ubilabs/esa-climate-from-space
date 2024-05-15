@@ -14,6 +14,12 @@ interface Props {
   gap?: number;
 }
 
+export const scrollToChapter = (index: number) => {
+  const scrollEl = document.querySelector(`[data-scroll-index-${index}]`);
+
+  scrollEl?.scrollIntoView({behavior: 'smooth', block: 'start'});
+};
+
 /**
  * Renders the navigation chapter overview component.
  *
@@ -41,7 +47,12 @@ const NavChapterOverview: FunctionComponent<Props> = ({
     {!isCollapsed && (
       <ul>
         {chapters.map((chap, index) => (
-          <li key={index} onClick={() => setSelectedChapterIndex(index)}>
+          <li
+            key={index}
+            onClick={() => {
+              setSelectedChapterIndex(index);
+              scrollToChapter(index);
+            }}>
             {chap.title}
           </li>
         ))}

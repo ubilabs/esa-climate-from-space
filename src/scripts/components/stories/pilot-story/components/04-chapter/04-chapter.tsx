@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Parallax} from 'react-scroll-parallax';
 
@@ -22,16 +22,6 @@ const ChapterFour: FunctionComponent<Props> = ({
   onChapterSelect: setSelectedChapterIndex
 }) => {
   const history = useHistory();
-  const [entered, setEntered] = useState(false);
-
-  useEffect(() => {
-    if (entered) {
-      history.replace('/stories/pilot/4');
-      setSelectedChapterIndex();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [entered, history]);
-
   const options: RadialInfoOption[] = [
     {
       id: 'Sentinel-2',
@@ -62,10 +52,15 @@ const ChapterFour: FunctionComponent<Props> = ({
     }
   ];
 
+  const onHandleEnter = () => {
+    history.replace('/stories/pilot/4');
+    setSelectedChapterIndex();
+  };
+
   return (
     <>
-      <section className={styles.sectionContainer}>
-        <Parallax onEnter={() => setEntered(true)}>
+      <section className={styles.sectionContainer} data-scroll-index-3>
+        <Parallax onEnter={onHandleEnter}>
           <ChapterIntro
             subTitle="Chapter 4: Mapping the Methane Giants"
             title="Resolution Matters"

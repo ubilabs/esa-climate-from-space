@@ -1,6 +1,5 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 import {ParallaxProvider} from 'react-scroll-parallax';
-
 import Share from '../../main/share/share';
 import ChapterOne from './components/01-chapter/01-chapter';
 import ChapterTwo from './components/02-chapter/02-chapter';
@@ -8,9 +7,12 @@ import ChapterThree from './components/03-chapter/03-chapter';
 import ChapterFour from './components/04-chapter/04-chapter';
 import ChapterFive from './components/05-chapter/05-chapter';
 import ChapterSix from './components/06-chapter/06-chapter';
+import ChapterSeven from './components/07-chapter/07-chapter';
 import Globe from './components/globe/globe';
 import Header from './components/header/header';
-import NavChapterOverview from './components/nav-chapter-overview/nav-chapter-overview';
+import NavChapterOverview, {
+  scrollToChapter as scrollToChapterIndex
+} from './components/nav-chapter-overview/nav-chapter-overview';
 import NavDrawer from './components/nav-drawer/nav-drawer';
 import StoryIntro from './components/story-intro/story-intro';
 
@@ -25,6 +27,15 @@ import styles from './pilot-story.module.styl';
 
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);
+
+  // Automatically scroll to the first chapter when the story starts
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      scrollToChapterIndex(0);
+    }, 600);
+
+    return () => clearTimeout(timeout);
+  }, [storyStarted]);
 
   const {isDesktop} = useScreenSize();
 
@@ -76,7 +87,7 @@ const PilotStory: FunctionComponent = () => {
           />
         )}
 
-        <div className={styles.chapterContainer}>
+        <div className={styles.storyContainer}>
           <StoryIntro
             storyStarted={storyStarted}
             onStoryStart={() => setStoryStarted(true)}
@@ -88,7 +99,7 @@ const PilotStory: FunctionComponent = () => {
             pagesTotal={globeMovements.length + 1}
             globeMovements={globeMovements}>
             {storyStarted && (
-              <>
+              <div className={styles.chaptersContainer}>
                 <ChapterOne
                   onChapterSelect={() => setSelectedChapterIndex(0)}
                 />
@@ -99,15 +110,18 @@ const PilotStory: FunctionComponent = () => {
                   onChapterSelect={() => setSelectedChapterIndex(2)}
                 />
                 <ChapterFour
-                  onChapterSelect={() => setSelectedChapterIndex(4)}
+                  onChapterSelect={() => setSelectedChapterIndex(3)}
                 />
                 <ChapterFive
-                  onChapterSelect={() => setSelectedChapterIndex(5)}
+                  onChapterSelect={() => setSelectedChapterIndex(4)}
                 />
                 <ChapterSix
+                  onChapterSelect={() => setSelectedChapterIndex(5)}
+                />
+                <ChapterSeven
                   onChapterSelect={() => setSelectedChapterIndex(6)}
                 />
-              </>
+              </div>
             )}
           </Globe>
         </div>
