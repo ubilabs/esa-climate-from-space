@@ -14,8 +14,8 @@ interface Props {
   gap?: number;
 }
 
-export const scrollToChapter = (index: number) => {
-  const scrollEl = document.querySelector(`[data-scroll-index-${index}]`);
+export const scrollToChapterIndex = (index: number) => {
+  const scrollEl = document.querySelector(`[data-scroll-index="${index}"]`);
 
   scrollEl?.scrollIntoView({behavior: 'smooth', block: 'start'});
 };
@@ -51,7 +51,7 @@ const NavChapterOverview: FunctionComponent<Props> = ({
             key={index}
             onClick={() => {
               setSelectedChapterIndex(index);
-              scrollToChapter(index);
+              scrollToChapterIndex(index);
             }}>
             {chap.title}
           </li>

@@ -2,14 +2,13 @@ import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
 import {Parallax} from 'react-scroll-parallax';
 
+import Chapter from '../chapter/chapter';
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText, {TextPageContent} from '../chapter-text/chapter-text';
 import ChapterVideo from '../chapter-video/chapter-video';
 import ChapterGraph from '../chapter-graph/chapter-graph';
 import ChapterConclusion from '../chapter-conclusion/chapter-conclusion';
 import {giantsStory} from '../../config/06-config';
-
-import styles from './06-chapter.module.styl';
 
 interface Props {
   onChapterSelect: () => void;
@@ -118,20 +117,18 @@ const ChapterSix: FunctionComponent<Props> = ({
   };
 
   return (
-    <>
-      <section className={styles.sectionContainer} data-scroll-index-5>
-        <Parallax onEnter={onHandleEnter}>
-          <div ref={storyRef}>
-            <ChapterIntro
-              subTitle="Chapter 6: Mapping the Methane Giants"
-              title="10 largest methane leaks on record"
-            />
-          </div>
-          <ChapterText text="Space for Globe with markers" />
-          {selectedGiantContent && renderSubstory()}
-        </Parallax>
-      </section>
-    </>
+    <Chapter scrollIndex={5}>
+      <Parallax onEnter={onHandleEnter}>
+        <div ref={storyRef}>
+          <ChapterIntro
+            subTitle="Chapter 6: Mapping the Methane Giants"
+            title="10 largest methane leaks on record"
+          />
+        </div>
+        <ChapterText text="Space for Globe with markers" />
+        {selectedGiantContent && renderSubstory()}
+      </Parallax>
+    </Chapter>
   );
 };
 
