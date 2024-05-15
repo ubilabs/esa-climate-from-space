@@ -8,17 +8,23 @@ import {languageSelector} from '../../../../../selectors/language';
 import styles from './chapter-video.module.styl';
 
 interface Props {
-  videoId: string;
+  video: {
+    title: string;
+    text: string;
+    videoId: string;
+    caption: string;
+  };
 }
 
-const ChapterVideo: FunctionComponent<Props> = ({videoId}) => {
+const ChapterVideo: FunctionComponent<Props> = ({video}) => {
   const language = useSelector(languageSelector);
+  const {title, text, videoId, caption} = video;
 
   return (
     <div className={styles.chapterVideo}>
       <Parallax speed={20} className={styles.videoText} easing="easeInQuad">
-        <h3>Invisible for human eyes, but visible for infrared cam</h3>
-        <p>This video show metane gase leaking during extraction operation</p>
+        <h3>{title}</h3>
+        <p>{text}</p>
       </Parallax>
       <div className={styles.videoContainer}>
         <YoutubePlayer
@@ -26,12 +32,7 @@ const ChapterVideo: FunctionComponent<Props> = ({videoId}) => {
           language={language}
           isStoryMode={true}
         />
-        <p className={styles.videoCaption}>
-          Quantification of methane emissions and fire intensity from the
-          Karaturun East 2023 blowout. Time series of methane emission rates
-          <span> (in metric tonnes per hour, t/h)</span> derived from the
-          satellite observations which passed the quality screening.
-        </p>
+        <p className={styles.videoCaption}>{caption}</p>
       </div>
     </div>
   );

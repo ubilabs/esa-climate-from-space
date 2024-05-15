@@ -1,18 +1,19 @@
 @require '../../../../../../variables.styl'
 
-.chapterVideo
-  height: 150vh
+.chapterGraph
+  height: 100vh
   box-sizing: border-box
-  padding: $headerHeight 0
+  padding: emCalc(100px) 0
   overflow-x: hidden
   background: linear-gradient(250deg, #003349 19.74%, rgba(0, 51, 73, 0) 106.06%), #000
   display: flex
   flex-direction: column
   justify-content: center
-  gap: 10em
+  gap: 3em
   scroll-snap-align: center
 
-.videoContainer
+.graphContainer
+  width: 100vw
   color: $textWhite
   text-align: left
   font-style: normal
@@ -22,10 +23,10 @@
   justify-content: center
   flex: 1
 
-.videoText
+.graphText
   text-align: left
   color: #fff
-  padding: emCalc(90px) emCalc(29px)
+  padding: emCalc(75px) emCalc(29px) 0
 
   h3
     font-size: emCalc(30px)
@@ -36,7 +37,7 @@
     line-height: 22px
     margin: emCalc(20px) 0
 
-.videoCaption
+.graphCaption
   width: 80%
   font-size: emCalc(12px)
   font-style: normal
@@ -48,8 +49,8 @@
     color: $teal
 
 @media screen and (min-width: 768px)
-  .chapterVideo
+  .chapterGraph
     padding: emCalc(100px) emCalc(50px)
 
-  .videoContainer
-    width: 80%
+  .graphContainer
+    width: 50%
