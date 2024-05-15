@@ -7,7 +7,6 @@ import ChapterText from '../chapter-text/chapter-text';
 import Chapter from '../chapter/chapter';
 import ExploreDataset from '../explore-dataset/explore-dataset';
 
-import styles from './05-chapter.module.styl';
 
 interface Props {
   onChapterSelect: () => void;
