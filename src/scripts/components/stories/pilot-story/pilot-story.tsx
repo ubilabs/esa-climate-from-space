@@ -99,7 +99,7 @@ const PilotStory: FunctionComponent = () => {
             pagesTotal={globeMovements.length + 1}
             globeMovements={globeMovements}>
             {storyStarted && (
-              <>
+              <div className={styles.chaptersContainer}>
                 <ChapterOne
                   onChapterSelect={() => setSelectedChapterIndex(0)}
                 />
@@ -121,7 +121,7 @@ const PilotStory: FunctionComponent = () => {
                 <ChapterSeven
                   onChapterSelect={() => setSelectedChapterIndex(6)}
                 />
-              </>
+              </div>
             )}
           </Globe>
         </div>

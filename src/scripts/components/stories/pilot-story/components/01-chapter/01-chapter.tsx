@@ -63,8 +63,8 @@ const ChapterOne: FunctionComponent<Props> = ({
 
   return (
     <>
-      <section className={styles.sectionContainer}>
-        <Parallax onEnter={onHandleEnter} data-scroll-index-0>
+      <section className={styles.sectionContainer} data-scroll-index-0>
+        <Parallax onEnter={onHandleEnter}>
           <ChapterIntro
             subTitle="Chapter 1: What is methane"
             title="The invisible threat"
