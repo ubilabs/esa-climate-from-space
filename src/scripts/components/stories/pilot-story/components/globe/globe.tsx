@@ -47,7 +47,7 @@ const Globe: FunctionComponent<Props> = ({
   useEffect(() => {
     if (containerRef.current && !globe) {
       // Latest timestamp: December 2021
-      const timeIndex = 227;
+      const timeIndex = 71;
       // @ts-ignore - injected via webpack's define plugin
       const version = INFO_VERSION;
 
@@ -65,11 +65,11 @@ const Globe: FunctionComponent<Props> = ({
           {
             id: 'greenhouse.xch4',
             zIndex: 1,
-            type: 'image',
-            maxZoom: 3,
+            type: 'tile',
+            maxZoom: 5,
             urlParameters: {},
-            getUrl: () =>
-              `https://storage.googleapis.com/esa-cfs-tiles/${version}/greenhouse.xch4/tiles/${timeIndex}/full.png`
+            getUrl: ({x, y, zoom}) =>
+              `https://storage.googleapis.com/esa-cfs-tiles/${version}/greenhouse.xch4/tiles/${timeIndex}/${zoom}/${x}/${y}.png`
           } as LayerProps
         ],
         cameraView: {lng: 0, lat: 0, altitude: distanceRef.current}
