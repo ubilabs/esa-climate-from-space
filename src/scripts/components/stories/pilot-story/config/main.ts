@@ -176,5 +176,10 @@ export const globeMovements = [
     pageFrom: 30,
     pageTo: 31,
     moveBy: {x: 0, y: -5, z: -5}
+  },
+  {
+    pageFrom: 31,
+    pageTo: 32,
+    moveBy: {x: 0, y: 0, z: 0}
   }
 ];

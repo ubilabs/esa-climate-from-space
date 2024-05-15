@@ -4,6 +4,7 @@ import {Parallax} from 'react-scroll-parallax';
 
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText, {TextPageContent} from '../chapter-text/chapter-text';
+import ChapterVideo from '../chapter-video/chapter-video';
 
 import styles from './06-chapter.module.styl';
 
@@ -56,6 +57,7 @@ const ChapterSix: FunctionComponent<Props> = ({
             title="Karaturun East Blowout 2023"
           />
           <ChapterText text={textSections} snapPosition="start" />
+          <ChapterVideo />
         </Parallax>
       </section>
     </>
