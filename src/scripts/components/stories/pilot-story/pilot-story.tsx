@@ -23,6 +23,7 @@ import ChapterProgressIndication from './components/chapter-progress-indication/
 import {chapters, globeMovements} from './config/main';
 
 import styles from './pilot-story.module.styl';
+import ChapterSeven from './components/07-chapter/07-chapter';
 
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);
@@ -111,9 +112,12 @@ const PilotStory: FunctionComponent = () => {
                   onChapterSelect={() => setSelectedChapterIndex(3)}
                 />
                 <ChapterFive
-                  onChapterSelect={() => setSelectedChapterIndex(5)}
+                  onChapterSelect={() => setSelectedChapterIndex(4)}
                 />
                 <ChapterSix
+                  onChapterSelect={() => setSelectedChapterIndex(5)}
+                />
+                <ChapterSeven
                   onChapterSelect={() => setSelectedChapterIndex(6)}
                 />
               </>
