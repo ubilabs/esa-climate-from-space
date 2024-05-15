@@ -7,7 +7,11 @@ import {languageSelector} from '../../../../../selectors/language';
 
 import styles from './chapter-video.module.styl';
 
-const ChapterVideo: FunctionComponent = () => {
+interface Props {
+  videoId: string;
+}
+
+const ChapterVideo: FunctionComponent<Props> = ({videoId}) => {
   const language = useSelector(languageSelector);
 
   return (
@@ -18,8 +22,7 @@ const ChapterVideo: FunctionComponent = () => {
       </Parallax>
       <div className={styles.videoContainer}>
         <YoutubePlayer
-          // placeholder video
-          videoId="A24SkPh-uhQ"
+          videoId={videoId}
           language={language}
           isStoryMode={true}
         />

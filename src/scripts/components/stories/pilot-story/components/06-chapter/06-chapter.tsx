@@ -57,7 +57,7 @@ const ChapterSix: FunctionComponent<Props> = ({
             title="Karaturun East Blowout 2023"
           />
           <ChapterText text={textSections} snapPosition="start" />
-          <ChapterVideo />
+          <ChapterVideo videoId="TDsbPkms6P4" />
         </Parallax>
       </section>
     </>
