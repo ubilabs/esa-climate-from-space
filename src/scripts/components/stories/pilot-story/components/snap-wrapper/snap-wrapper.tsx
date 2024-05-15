@@ -3,11 +3,14 @@ import React, {FunctionComponent} from 'react';
 import styles from './snap-wrapper.module.styl';
 
 interface Props {
+  snapPosition?: string;
   children?: React.ReactElement | React.ReactElement[];
 }
 
-const SnapWrapper: FunctionComponent<Props> = ({children}) => (
-  <div className={styles.snapWrapper}> {children}</div>
+const SnapWrapper: FunctionComponent<Props> = ({snapPosition, children}) => (
+  <div className={styles.snapWrapper} style={{scrollSnapAlign: snapPosition}}>
+    {children}
+  </div>
 );
 
 export default SnapWrapper;

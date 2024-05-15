@@ -1,0 +1,46 @@
+@require '../../../../../../variables.styl'
+
+.chapterVideo
+  height: 150vh
+  box-sizing: border-box
+  padding: $headerHeight 0
+  overflow-x: hidden
+  background: linear-gradient(250deg, #003349 19.74%, rgba(0, 51, 73, 0) 106.06%), #000
+  display: flex
+  flex-direction: column
+  justify-content: center
+  gap: 10em
+  scroll-snap-align: center
+
+.videoContainer
+  color: $textWhite
+  text-align: left
+  font-style: normal
+  display: flex
+  flex-direction: column
+  justify-content: center
+  flex: 1
+
+.videoText
+  text-align: left
+  padding: emCalc(90px) emCalc(29px)
+
+  h3
+    font-size: emCalc(30px)
+    margin: 0
+
+  p
+    font-size: emCalc(20px)
+    line-height: 22px
+    margin: emCalc(20px) 0
+
+.videoCaption
+  width: 80%
+  font-size: emCalc(12px)
+  font-style: normal
+  font-weight: 400
+  line-height: 18px
+  padding: emCalc(24px)
+
+  span
+    color: $teal
