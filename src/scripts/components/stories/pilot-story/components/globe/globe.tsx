@@ -1,6 +1,8 @@
-import React, {FunctionComponent, useEffect, useRef} from 'react';
+import React, {FunctionComponent, LegacyRef, useEffect, useRef} from 'react';
 
 import {LayerProps, WebGlGlobe} from '@ubilabs/esa-webgl-globe';
+
+import {useParallax} from 'react-scroll-parallax';
 
 import {GlobeMovement} from '../../types/globe';
 
@@ -10,12 +12,12 @@ const INITIAL_DISTANCE = 30_000_000;
 const DISTANCE_INCREASEMENT_FACTOR = 0.02;
 
 interface Props {
-  progress: number;
   relativePosition: {x: number; y: number; z: number};
   isSpinning: boolean;
   isVisible: boolean;
   pagesTotal: number;
   globeMovements: GlobeMovement[];
+  children: React.ReactNode;
 }
 
 function extractTranslateValues(str: string): [number, number] {
@@ -31,17 +33,60 @@ function extractTranslateValues(str: string): [number, number] {
   return [0, 0];
 }
 
+function moveGlobe(
+  progressPercent: number,
+  moveBy: {x: number; y: number; z: number},
+  formerMovements: {x: number; y: number; z: number},
+  relativePosition: {x: number; y: number; z: number},
+  globeContainer: HTMLDivElement,
+  distanceRef: React.MutableRefObject<number>
+) {
+  // get the current globe position [x, y]
+  const translate = extractTranslateValues(globeContainer.style.transform);
+
+  // Change globe x/y-position
+  const moveToX =
+    relativePosition.x + formerMovements.x + progressPercent / (100 / moveBy.x);
+
+  const moveToY =
+    relativePosition.y + formerMovements.y + progressPercent / (100 / moveBy.y);
+
+  globeContainer.style.transform = `translate(${
+    // x-value has to be divided by 2 because globe left/right margin is -50%
+    moveBy.x ? moveToX / 2 : translate[0]
+  }%, ${moveBy.y ? moveToY : translate[1]}%)`;
+
+  // Change globe z-position
+  const formerMovementsDistance =
+    INITIAL_DISTANCE * formerMovements.z * DISTANCE_INCREASEMENT_FACTOR;
+
+  const positionDistance =
+    INITIAL_DISTANCE * relativePosition.z * DISTANCE_INCREASEMENT_FACTOR;
+
+  distanceRef.current =
+    INITIAL_DISTANCE +
+    positionDistance +
+    formerMovementsDistance +
+    (INITIAL_DISTANCE *
+      progressPercent *
+      moveBy.z *
+      DISTANCE_INCREASEMENT_FACTOR) /
+      100;
+}
+
 const Globe: FunctionComponent<Props> = ({
-  progress,
   relativePosition,
   isSpinning,
   isVisible,
   pagesTotal,
-  globeMovements
+  globeMovements,
+  children
 }) => {
+  const parallax = useParallax({});
   const containerRef = useRef<HTMLDivElement | null>(null);
   const rotationRef = useRef<number>(180);
   const distanceRef = useRef<number>(INITIAL_DISTANCE);
+  const progressRef = useRef<number>(0);
   const [globe, setGlobe] = React.useState<WebGlGlobe | null>(null);
 
   useEffect(() => {
@@ -115,83 +160,76 @@ const Globe: FunctionComponent<Props> = ({
   }, [isSpinning, globe]);
 
   useEffect(() => {
-    if (!globe || !containerRef.current) {
-      return;
-    }
-    const globeContainer = containerRef.current;
+    (function move() {
+      const progress = parallax.element?.progress;
 
-    globeMovements.forEach(({pageFrom, pageTo, moveBy}, index) => {
-      const viewCount = pageTo - (pageFrom - 1);
-
-      // Calcutate the progress of the current movement
-      let progressPercent =
-        progress * 100 * (pagesTotal / (viewCount - 1)) - (pageFrom - 1) * 100;
-
-      progressPercent = Math.min(100, Math.max(0, progressPercent));
-
-      if (progressPercent === 0) {
+      if (
+        !globe ||
+        !containerRef.current ||
+        // eslint-disable-next-line no-undefined
+        progress === undefined ||
+        progressRef.current === progress
+      ) {
+        requestAnimationFrame(move);
         return;
       }
 
-      // Calculate the former movement of the globe to add them to the current movement
-      const formerMovements = globeMovements.slice(0, index).reduce(
-        (allMoveBy, {moveBy}) => {
-          allMoveBy.x += moveBy.x;
-          allMoveBy.y += moveBy.y;
-          allMoveBy.z += moveBy.z;
-          return allMoveBy;
-        },
-        {x: 0, y: 0, z: 0}
-      );
+      progressRef.current = progress;
+      const globeContainer = containerRef.current;
 
-      // get the current globe position [x, y]
-      const translate = extractTranslateValues(globeContainer.style.transform);
+      globeMovements.forEach(({pageFrom, pageTo, moveBy}, index) => {
+        const viewCount = pageTo - (pageFrom - 1);
 
-      // Change globe x/y-position
-      const moveToX =
-        relativePosition.x +
-        formerMovements.x +
-        progressPercent / (100 / moveBy.x);
+        // Calcutate the progress of the current movement
+        let progressPercent =
+          progress * 100 * (pagesTotal / (viewCount - 1)) -
+          (pageFrom - 1) * 100;
 
-      const moveToY =
-        relativePosition.y +
-        formerMovements.y +
-        progressPercent / (100 / moveBy.y);
+        progressPercent = Math.min(100, Math.max(0, progressPercent));
 
-      globeContainer.style.transform = `translate(${
-        // x-value has to be divided by 2 because globe left/right margin is -50%
-        moveBy.x ? moveToX / 2 : translate[0]
-      }%, ${moveBy.y ? moveToY : translate[1]}%)`;
+        if (progressPercent === 0) {
+          return;
+        }
 
-      // Change globe z-position
-      const formerMovementsDistance =
-        INITIAL_DISTANCE * formerMovements.z * DISTANCE_INCREASEMENT_FACTOR;
+        // Calculate the former movement of the globe to add them to the current movement
+        const formerMovements = globeMovements.slice(0, index).reduce(
+          // eslint-disable-next-line max-nested-callbacks
+          (allMoveBy, {moveBy}) => {
+            allMoveBy.x += moveBy.x;
+            allMoveBy.y += moveBy.y;
+            allMoveBy.z += moveBy.z;
+            return allMoveBy;
+          },
+          {x: 0, y: 0, z: 0}
+        );
 
-      const positionDistance =
-        INITIAL_DISTANCE * relativePosition.z * DISTANCE_INCREASEMENT_FACTOR;
+        moveGlobe(
+          progressPercent,
+          moveBy,
+          formerMovements,
+          relativePosition,
+          globeContainer,
+          distanceRef
+        );
+      });
 
-      distanceRef.current =
-        INITIAL_DISTANCE +
-        positionDistance +
-        formerMovementsDistance +
-        (INITIAL_DISTANCE *
-          progressPercent *
-          moveBy.z *
-          DISTANCE_INCREASEMENT_FACTOR) /
-          100;
-    });
+      requestAnimationFrame(move);
+    })();
   }, [
-    progress,
+    parallax,
     globe,
     containerRef,
     globeMovements,
     pagesTotal,
-    relativePosition.x,
-    relativePosition.y,
-    relativePosition.z
+    relativePosition
   ]);
 
-  return <div className={styles.globe} ref={containerRef} />;
+  return (
+    <>
+      <div ref={containerRef} className={styles.globe} />
+      <div ref={parallax.ref as LegacyRef<HTMLDivElement>}>{children}</div>
+    </>
+  );
 };
 
 export default Globe;
