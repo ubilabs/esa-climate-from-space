@@ -25,7 +25,6 @@ const ChapterFive: FunctionComponent<Props> = ({onChapterSelect}) => (
       // TODO: Add data layer id wehen layer exists
       dataLayerId=""
     />
-    <ChapterText text="Space for globe" />
   </Chapter>
 );
 
