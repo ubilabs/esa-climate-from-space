@@ -11,7 +11,7 @@ import ChapterSeven from './components/07-chapter/07-chapter';
 import Globe from './components/globe/globe';
 import Header from './components/header/header';
 import NavChapterOverview, {
-  scrollToChapter as scrollToChapterIndex
+  scrollToChapterIndex
 } from './components/nav-chapter-overview/nav-chapter-overview';
 import NavDrawer from './components/nav-drawer/nav-drawer';
 import StoryIntro from './components/story-intro/story-intro';

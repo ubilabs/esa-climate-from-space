@@ -4,8 +4,7 @@ import {Parallax} from 'react-scroll-parallax';
 
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText from '../chapter-text/chapter-text';
-
-import styles from './05-chapter.module.styl';
+import Chapter from '../chapter/chapter';
 
 interface Props {
   onChapterSelect: () => void;
@@ -22,21 +21,19 @@ const ChapterFive: FunctionComponent<Props> = ({
   };
 
   return (
-    <>
-      <section className={styles.sectionContainer} data-scroll-index-4>
-        <Parallax onEnter={onHandleEnter}>
-          <ChapterIntro
-            subTitle="Chapter 5: Mapping the Methane Giants"
-            title="Unveiling Methane Super Emitters"
-          />
-          <ChapterText text="The data is used to pinpoint individual regions and facilities emitting unusually high levels of methane, dubbed 'super emitters'." />
-          <ChapterText text="Mapping these emissions not only helps enforce regulatory measures..." />
-          <ChapterText text="but also guides companies and governments in prioritizing interventions to address methane emissions and mitigate their impact on the environment." />
-          {/* explore dataset */}
-          <ChapterText text="Space for globe" />
-        </Parallax>
-      </section>
-    </>
+    <Chapter scrollIndex={4}>
+      <Parallax onEnter={onHandleEnter}>
+        <ChapterIntro
+          subTitle="Chapter 5: Mapping the Methane Giants"
+          title="Unveiling Methane Super Emitters"
+        />
+        <ChapterText text="The data is used to pinpoint individual regions and facilities emitting unusually high levels of methane, dubbed 'super emitters'." />
+        <ChapterText text="Mapping these emissions not only helps enforce regulatory measures..." />
+        <ChapterText text="but also guides companies and governments in prioritizing interventions to address methane emissions and mitigate their impact on the environment." />
+        {/* explore dataset */}
+        <ChapterText text="Space for globe" />
+      </Parallax>
+    </Chapter>
   );
 };
 

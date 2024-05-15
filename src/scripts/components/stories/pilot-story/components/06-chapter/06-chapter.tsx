@@ -5,8 +5,7 @@ import {Parallax} from 'react-scroll-parallax';
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText, {TextPageContent} from '../chapter-text/chapter-text';
 import ChapterVideo from '../chapter-video/chapter-video';
-
-import styles from './06-chapter.module.styl';
+import Chapter from '../chapter/chapter';
 
 interface Props {
   onChapterSelect: () => void;
@@ -38,23 +37,21 @@ const ChapterSix: FunctionComponent<Props> = ({
   };
 
   return (
-    <>
-      <section className={styles.sectionContainer} data-scroll-index-5>
-        <Parallax onEnter={onHandleEnter}>
-          <ChapterIntro
-            subTitle="Chapter 6: Mapping the Methane Giants"
-            title="10 largest methane leaks on record"
-          />
-          <ChapterText text="Space for Globe with markers" />
-          <ChapterIntro
-            subTitle="Methane Giant 01"
-            title="Karaturun East Blowout 2023"
-          />
-          <ChapterText text={textSections} snapPosition="start" />
-          <ChapterVideo videoId="TDsbPkms6P4" />
-        </Parallax>
-      </section>
-    </>
+    <Chapter scrollIndex={5}>
+      <Parallax onEnter={onHandleEnter}>
+        <ChapterIntro
+          subTitle="Chapter 6: Mapping the Methane Giants"
+          title="10 largest methane leaks on record"
+        />
+        <ChapterText text="Space for Globe with markers" />
+        <ChapterIntro
+          subTitle="Methane Giant 01"
+          title="Karaturun East Blowout 2023"
+        />
+        <ChapterText text={textSections} snapPosition="start" />
+        <ChapterVideo videoId="TDsbPkms6P4" />
+      </Parallax>
+    </Chapter>
   );
 };
 
