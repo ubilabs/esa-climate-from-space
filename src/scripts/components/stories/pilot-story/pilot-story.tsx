@@ -43,19 +43,22 @@ const PilotStory: FunctionComponent = () => {
 
   const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
 
-  const prevChapter = useRef(selectedChapterIndex);
+  const tempChapter = useRef(selectedChapterIndex);
   const history = useHistory();
 
   const handleChapterSelection = (index: number) => ({
     onEnter: () => {
-      prevChapter.current = index;
+      tempChapter.current = index;
     },
     onExit: () => {
-      // Only update the selected chapter index if the user has scrolled past the chapter
-      if (selectedChapterIndex === index) {
-        history.replace(`/stories/pilot/${prevChapter.current + 1}`);
-        setSelectedChapterIndex(prevChapter.current);
+      if (selectedChapterIndex !== index) {
+        return;
       }
+
+      // If the user scrolls to the next chapter, update the selected chapter index
+      // and update the URL to reflect the current chapter
+      history.replace(`/stories/pilot/${tempChapter.current + 1}`);
+      setSelectedChapterIndex(tempChapter.current);
     }
   });
 
