@@ -63,15 +63,17 @@ function moveGlobe(
   const positionDistance =
     INITIAL_DISTANCE * relativePosition.z * DISTANCE_INCREASEMENT_FACTOR;
 
+  const movementDistance =
+    INITIAL_DISTANCE *
+    (progressPercent / 100) *
+    moveBy.z *
+    DISTANCE_INCREASEMENT_FACTOR;
+
   distanceRef.current =
     INITIAL_DISTANCE +
     positionDistance +
     formerMovementsDistance +
-    (INITIAL_DISTANCE *
-      progressPercent *
-      moveBy.z *
-      DISTANCE_INCREASEMENT_FACTOR) /
-      100;
+    movementDistance;
 }
 
 const Globe: FunctionComponent<Props> = ({

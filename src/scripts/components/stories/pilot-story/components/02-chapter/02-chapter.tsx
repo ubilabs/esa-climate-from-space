@@ -28,7 +28,10 @@ const ChapterTwo: FunctionComponent<Props> = ({onChapterSelect}) => (
     <ChapterText text="These sources contribute to the complex dynamics of methane concentrations in the atmosphere, playing a significant role in global climate change." />
     <ChapterText text="Understanding where methane comes from is essential for creating effective ways to reduce its harm to the environment and human health." />
     <PilotCarousel />
-    <ExploreDataset />
+    <ExploreDataset
+      title="Explore the world of methane super emitters – key players in climate change."
+      dataLayerId="greenhouse.xch4"
+    />
     <ChapterText text="" />
   </Chapter>
 );

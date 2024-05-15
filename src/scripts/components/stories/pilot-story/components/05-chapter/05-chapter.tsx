@@ -5,6 +5,7 @@ import {ChapterSelectionHandler} from '../../types/globe';
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText from '../chapter-text/chapter-text';
 import Chapter from '../chapter/chapter';
+import ExploreDataset from '../explore-dataset/explore-dataset';
 
 interface Props {
   onChapterSelect: ChapterSelectionHandler;
@@ -19,7 +20,11 @@ const ChapterFive: FunctionComponent<Props> = ({onChapterSelect}) => (
     <ChapterText text="The data is used to pinpoint individual regions and facilities emitting unusually high levels of methane, dubbed 'super emitters'." />
     <ChapterText text="Mapping these emissions not only helps enforce regulatory measures..." />
     <ChapterText text="but also guides companies and governments in prioritizing interventions to address methane emissions and mitigate their impact on the environment." />
-    {/* explore dataset */}
+    <ExploreDataset
+      title="Find out where Methane Super Emitters are located."
+      // TODO: Add data layer id wehen layer exists
+      dataLayerId=""
+    />
     <ChapterText text="Space for globe" />
   </Chapter>
 );
