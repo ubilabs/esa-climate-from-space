@@ -1,16 +1,17 @@
 import React, {FunctionComponent} from 'react';
 import {ReactElement} from 'react-markdown/lib/react-markdown';
-import {useHistory} from 'react-router-dom';
-import {Parallax} from 'react-scroll-parallax';
+
+import {BarrelIcon} from '../../../../main/icons/barrel-icon';
+import {EyeIcon} from '../../../../main/icons/eye-icon';
+import {NoseIcon} from '../../../../main/icons/nose-icon';
+import {TreeIcon} from '../../../../main/icons/tree-icon';
+
+import {ChapterSelectionHandler} from '../../types/globe';
 
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText from '../chapter-text/chapter-text';
 import Chapter from '../chapter/chapter';
 import RadialInfo from '../radial-info/radial-info';
-import {EyeIcon} from '../../../../main/icons/eye-icon';
-import {NoseIcon} from '../../../../main/icons/nose-icon';
-import {TreeIcon} from '../../../../main/icons/tree-icon';
-import {BarrelIcon} from '../../../../main/icons/barrel-icon';
 
 export interface RadialInfoOption {
   id: string;
@@ -47,37 +48,24 @@ const options: RadialInfoOption[] = [
 ];
 
 interface Props {
-  onChapterSelect: () => void;
+  onChapterSelect: ChapterSelectionHandler;
 }
 
-const ChapterOne: FunctionComponent<Props> = ({
-  onChapterSelect: setSelectedChapterIndex
-}) => {
-  const history = useHistory();
-
-  const onHandleEnter = () => {
-    history.replace('/stories/pilot/1');
-    setSelectedChapterIndex();
-  };
-
-  return (
-    <Chapter scrollIndex={0}>
-      <Parallax onEnter={onHandleEnter}>
-        <ChapterIntro
-          subTitle="Chapter 1: What is methane"
-          title="The invisible threat"
-        />
-        <ChapterText
-          text="Methane is a potent greenhouse gas, far more effective than carbon dioxide
+const ChapterOne: FunctionComponent<Props> = ({onChapterSelect}) => (
+  <Chapter scrollIndex={0} parallaxProps={onChapterSelect}>
+    <ChapterIntro
+      subTitle="Chapter 1: What is methane"
+      title="The invisible threat"
+    />
+    <ChapterText
+      text="Methane is a potent greenhouse gas, far more effective than carbon dioxide
           at trapping heat in the atmosphere over a 20-year period."
-        />
-        <RadialInfo
-          options={options}
-          title="Find out more about the greenhouse gas Methane."
-        />
-      </Parallax>
-    </Chapter>
-  );
-};
+    />
+    <RadialInfo
+      options={options}
+      title="Find out more about the greenhouse gas Methane."
+    />
+  </Chapter>
+);
 
 export default ChapterOne;
