@@ -1,5 +1,5 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
-import {Parallax, ParallaxProvider} from 'react-scroll-parallax';
+import {ParallaxProvider} from 'react-scroll-parallax';
 import Share from '../../main/share/share';
 import ChapterOne from './components/01-chapter/01-chapter';
 import ChapterTwo from './components/02-chapter/02-chapter';
@@ -24,17 +24,17 @@ import ChapterProgressIndication from './components/chapter-progress-indication/
 import {chapters, globeMovements} from './config/main';
 
 import styles from './pilot-story.module.styl';
-import ChapterSeven from './components/07-chapter/07-chapter';
 
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);
 
   // Automatically scroll to the first chapter when the story starts
   useEffect(() => {
-    storyStarted &&
-      setTimeout(() => {
-        scrollToChapterIndex(0);
-      }, 600);
+    const timeout = setTimeout(() => {
+      scrollToChapterIndex(0);
+    }, 600);
+
+    return () => clearTimeout(timeout);
   }, [storyStarted]);
 
   const {isDesktop} = useScreenSize();
