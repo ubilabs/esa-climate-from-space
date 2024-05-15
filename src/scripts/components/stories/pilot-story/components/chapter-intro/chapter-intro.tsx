@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useRef} from 'react';
+import React, {FunctionComponent} from 'react';
 import {Parallax} from 'react-scroll-parallax';
 
 import {GlobeIcon} from '../../../../main/icons/globe-icon';
@@ -13,40 +13,30 @@ interface Props {
   subTitle: string;
 }
 
-const ChapterIntro: FunctionComponent<Props> = ({title, subTitle}) => {
-  const myRef = useRef<HTMLHeadingElement>(null);
+const ChapterIntro: FunctionComponent<Props> = ({title, subTitle}) => (
+  <SnapWrapper>
+    <Parallax className={styles.intro} opacity={[0, 2]} speed={-10}>
+      <Button
+        link={'/stories'}
+        icon={GlobeIcon}
+        label="Back to Stories"
+        className={styles.backToStories}
+        isBackButton
+      />
 
-  const scrollToRef = () => {
-    myRef.current?.scrollIntoView({behavior: 'smooth'});
-  };
-
-  useEffect(scrollToRef, []);
-
-  return (
-    <SnapWrapper>
-      <Parallax className={styles.intro} opacity={[0, 2]} speed={-10}>
-        <Button
-          link={'/stories'}
-          icon={GlobeIcon}
-          label="Back to Stories"
-          className={styles.backToStories}
-          isBackButton
-        />
-
-        <Parallax
-          className={styles.introContent}
-          translateX={[-110, 100, 'easeInOutQuad']}
-          opacity={[2, 0]}>
-          <h2 className={styles.subTitle}>{subTitle}</h2>
-          <p className={styles.title}>{title}</p>
-        </Parallax>
-
-        <Parallax opacity={[1, 0]} style={{marginBottom: '50px'}}>
-          <ScrollHint />
-        </Parallax>
+      <Parallax
+        className={styles.introContent}
+        translateX={[-110, 100, 'easeInOutQuad']}
+        opacity={[2, 0]}>
+        <h2 className={styles.subTitle}>{subTitle}</h2>
+        <p className={styles.title}>{title}</p>
       </Parallax>
-    </SnapWrapper>
-  );
-};
+
+      <Parallax opacity={[1, 0]} style={{marginBottom: '50px'}}>
+        <ScrollHint />
+      </Parallax>
+    </Parallax>
+  </SnapWrapper>
+);
 
 export default ChapterIntro;
