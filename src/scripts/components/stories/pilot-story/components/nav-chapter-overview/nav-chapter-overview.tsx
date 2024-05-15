@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const scrollToChapter = (index: number) => {
-  const scrollEl = document.querySelector(`[data-scroll-index-${index}]`);
+  const scrollEl = document.querySelector(`[data-scroll-index="${index}"]`);
 
   scrollEl?.scrollIntoView({behavior: 'smooth', block: 'start'});
 };
