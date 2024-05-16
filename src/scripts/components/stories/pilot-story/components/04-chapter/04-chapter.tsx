@@ -59,7 +59,6 @@ const ChapterFour: FunctionComponent<Props> = ({onChapterSelect}) => (
       options={options}
       title="The resolution is high enough to find individual sources of methane."
     />
-    <ChapterText text="" />
   </Chapter>
 );
 
