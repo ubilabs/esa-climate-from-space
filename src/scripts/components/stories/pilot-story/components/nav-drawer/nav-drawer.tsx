@@ -90,7 +90,7 @@ const NavDrawer: FunctionComponent<Props> = ({children, handle}) => {
               onClick={() =>
                 setSnap(snap === maxSnapPoint ? initialSnapPoint : maxSnapPoint)
               }>
-              {isCollapsed ? titleChildren : 'Story Postion'}
+              {isCollapsed ? titleChildren : 'Story Position'}
               <DrawerToggleIcon isCollapsed={!snap || isCollapsed} />
             </Title>
             {children}
