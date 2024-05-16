@@ -35,7 +35,9 @@ const Chapter: FunctionComponent<Props> = ({
     // If not provided, the navigation will not work correctly
     data-scroll-index={scrollIndex}
     {...rest}>
-    <Parallax {...parallaxProps}>{children}</Parallax>
+    <Parallax {...parallaxProps} id="chapter">
+      {children}
+    </Parallax>
   </section>
 );
 
