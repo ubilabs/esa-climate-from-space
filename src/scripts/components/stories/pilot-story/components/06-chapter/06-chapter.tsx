@@ -9,24 +9,25 @@ import ChapterText, {TextPageContent} from '../chapter-text/chapter-text';
 import ChapterVideo from '../chapter-video/chapter-video';
 import ChapterGraph from '../chapter-graph/chapter-graph';
 import ChapterConclusion from '../chapter-conclusion/chapter-conclusion';
-import {giantsStory} from '../../config/06-config';
+import {subStory} from '../../config/06-config';
 
 interface Props {
   onChapterSelect: ChapterSelectionHandler;
 }
 
-export interface GiantContent {
+export interface SubStoryContent {
   id: string;
   subTitle: string;
   title: string;
-  textSections: TextPageContent[];
+  textPage1: TextPageContent;
+  textPage2: TextPageContent;
   videoPage: {
     title: string;
     text: string;
     videoId: string;
     caption: string;
   };
-  textSectionShort: TextPageContent[];
+  textPage3: TextPageContent;
   graphPage: {
     title: string;
     src: string;
@@ -42,14 +43,12 @@ const ChapterSix: FunctionComponent<Props> = ({onChapterSelect}) => {
   const storyRef = useRef<HTMLDivElement>(null);
   const subIntroRef = useRef<HTMLDivElement>(null);
   const [selectedGiantContent, setSelectedGiantContent] =
-    useState<GiantContent | null>(null);
+    useState<SubStoryContent | null>(subStory[0]);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const currentGiantId = params.get('giant');
-    const selectedGiant = giantsStory.find(
-      giant => giant.id === currentGiantId
-    );
+    const selectedGiant = subStory.find(giant => giant.id === currentGiantId);
     selectedGiant && setSelectedGiantContent(selectedGiant);
   }, [location.search]);
 
@@ -57,24 +56,23 @@ const ChapterSix: FunctionComponent<Props> = ({onChapterSelect}) => {
     if (!selectedGiantContent) {
       return;
     }
-    const currentIndex = giantsStory.indexOf(selectedGiantContent);
-    const nextStory = giantsStory[currentIndex + 1];
 
-    if (nextStory) {
-      const params = new URLSearchParams(location.search);
-      params.set('giant', nextStory.id);
-      history.push({
-        pathname: '/stories/pilot/6',
-        search: params.toString()
-      });
+    const currentIndex = subStory.indexOf(selectedGiantContent);
+    const nextIndex = (currentIndex + 1) % subStory.length;
+    const nextStoryIndex = subStory[nextIndex];
 
-      subIntroRef.current?.scrollIntoView({behavior: 'smooth'});
-    }
+    const params = new URLSearchParams(location.search);
+    params.set('giant', nextStoryIndex.id);
+    history.push({
+      pathname: '/stories/pilot/6',
+      search: params.toString()
+    });
+
+    subIntroRef.current?.scrollIntoView({behavior: 'instant'});
   };
 
   const handleBackToStory = () => {
-    setSelectedGiantContent(null);
-    storyRef.current?.scrollIntoView({behavior: 'smooth'});
+    storyRef.current?.scrollIntoView({behavior: 'instant'});
   };
 
   const renderSubstory = () => {
@@ -87,8 +85,9 @@ const ChapterSix: FunctionComponent<Props> = ({onChapterSelect}) => {
       title,
       videoPage,
       graphPage,
-      textSections,
-      textSectionShort,
+      textPage1,
+      textPage2,
+      textPage3,
       conclusion
     } = selectedGiantContent;
 
@@ -97,9 +96,10 @@ const ChapterSix: FunctionComponent<Props> = ({onChapterSelect}) => {
         <div ref={subIntroRef}>
           <ChapterIntro subTitle={subTitle} title={title} />
         </div>
-        <ChapterText text={textSections} snapPosition="start" />
+        <ChapterText text={textPage1.text} title={textPage1.title} />
+        <ChapterText text={textPage2.text} title={textPage2.title} />
         <ChapterVideo video={videoPage} />
-        <ChapterText text={textSectionShort} snapPosition="start" />
+        <ChapterText text={textPage3.text} title={textPage3.title} />
         <ChapterGraph graph={graphPage} />
         <ChapterConclusion
           text={conclusion}

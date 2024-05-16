@@ -1,43 +1,19 @@
 import giant01Graph from '../assets/giant01-graph.png';
-import {GiantContent} from '../components/06-chapter/06-chapter';
-import {TextPageContent} from '../components/chapter-text/chapter-text';
+import {SubStoryContent} from '../components/06-chapter/06-chapter';
 
-const giant01TextSections: TextPageContent[] = [
-  {
-    title: 'Incident Introduction',
-    text: 'The Karaturun East Blowout of 2023 was a significant methane leak incident that occurred in a gas field located in Turkmenistan.',
-    speed: 50,
-    translate: [100, 10]
-  },
-  {
-    title: 'Methane Release',
-    text: 'It resulted from a blowout during gas extraction operations, leading to a substantial release of methane into the atmosphere.',
-    speed: 100,
-    translate: [100, 10]
-  }
-];
-// placeholder
-const giant02TextSections: TextPageContent[] = [
-  {
-    title: 'Lorem Ipsum',
-    text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, aliquid cum, vero non est minima rerum accusantium placeat quisquam eum quas vel, consequatur facilis alias blanditiis facere! Vel, fugit earum.',
-    speed: 50,
-    translate: [100, 10]
-  },
-  {
-    title: 'Lorem Ipsum',
-    text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, aliquid cum, vero non est minima rerum accusantium placeat quisquam eum quas vel, consequatur facilis alias blanditiis facere! Vel, fugit earum.',
-    speed: 100,
-    translate: [100, 10]
-  }
-];
-
-export const giantsStory: GiantContent[] = [
+export const subStory: SubStoryContent[] = [
   {
     id: '01',
     subTitle: 'Methane Giant 01',
     title: 'Karaturun East Blowout 2023',
-    textSections: giant01TextSections,
+    textPage1: {
+      title: 'Incident Introduction',
+      text: 'The Karaturun East Blowout of 2023 was a significant methane leak incident that occurred in a gas field located in Turkmenistan.'
+    },
+    textPage2: {
+      title: 'Methane Release',
+      text: 'It resulted from a blowout during gas extraction operations, leading to a substantial release of methane into the atmosphere.'
+    },
     videoPage: {
       title: 'Invisible for human eyes, but visible for infrared cam',
       text: 'This video show metane gase leaking during extraction operation',
@@ -45,12 +21,10 @@ export const giantsStory: GiantContent[] = [
       caption:
         'Quantification of methane emissions and fire intensity from the Karaturun East 2023 blowout. Time series of methane emission rates (in metric tonnes per hour, t/h) derived from the satellite observations which passed the quality screening.'
     },
-    textSectionShort: [
-      {
-        title: 'Detection Methods',
-        text: 'Satellite surveillance and ground-based monitoring were employed to detect the blowout and quantify methane emissions.'
-      }
-    ],
+    textPage3: {
+      title: 'Detection Methods',
+      text: 'Satellite surveillance and ground-based monitoring were employed to detect the blowout and quantify methane emissions.'
+    },
     graphPage: {
       title:
         'Quantification and Time Series Analysis of Methane Emissions with satelites data',
@@ -67,7 +41,14 @@ export const giantsStory: GiantContent[] = [
     id: '02',
     subTitle: 'Methane Giant 02',
     title: 'Lorem Ipsum',
-    textSections: giant02TextSections,
+    textPage1: {
+      title: 'Lorem Ipsum',
+      text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, aliquid cum, vero non est minima rerum accusantium placeat quisquam eum quas vel, consequatur facilis alias blanditiis facere! Vel, fugit earum.'
+    },
+    textPage2: {
+      title: 'Lorem Ipsum',
+      text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, aliquid cum, vero non est minima rerum accusantium placeat quisquam eum quas vel, consequatur facilis alias blanditiis facere! Vel, fugit earum.'
+    },
     videoPage: {
       title: 'Lorem Ipsum',
       text: 'Lorem Ipsum',
@@ -75,12 +56,10 @@ export const giantsStory: GiantContent[] = [
       caption:
         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, aliquid cum, vero non est minima rerum accusantium placeat quisquam eum quas vel, consequatur facilis alias blanditiis facere! Vel, fugit earum.'
     },
-    textSectionShort: [
-      {
-        title: 'Lorem Ipsum',
-        text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, aliquid cum, vero non est minima rerum accusantium placeat quisquam eum quas vel, consequatur facilis alias blanditiis facere! Vel, fugit earum.'
-      }
-    ],
+    textPage3: {
+      title: 'Lorem Ipsum',
+      text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, aliquid cum, vero non est minima rerum accusantium placeat quisquam eum quas vel, consequatur facilis alias blanditiis facere! Vel, fugit earum.'
+    },
     graphPage: {
       title: 'Lorem Ipsum',
       src: giant01Graph,
