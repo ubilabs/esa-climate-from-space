@@ -11,19 +11,6 @@ import styles from './globe.module.styl';
 const INITIAL_DISTANCE = 30_000_000;
 const DISTANCE_INCREASEMENT_FACTOR = 0.02;
 
-function extractTranslateValues(str: string): [number, number] {
-  // Regular expression to match floating point numbers
-  const regex = /[-+]?\d*\.\d+%?/g;
-  const matches: RegExpMatchArray | null = str.match(regex);
-  if (matches && matches.length >= 2) {
-    // Extracted numbers from the string
-    const num1: number = parseFloat(matches[0]);
-    const num2: number = parseFloat(matches[1]);
-    return [num1, num2];
-  }
-  return [0, 0];
-}
-
 function moveGlobe(
   progressPercent: number,
   moveBy: {x: number; y: number; z: number},
@@ -32,9 +19,6 @@ function moveGlobe(
   globeContainer: HTMLDivElement,
   distanceRef: React.MutableRefObject<number>
 ) {
-  // get the current globe position [x, y]
-  const translate = extractTranslateValues(globeContainer.style.transform);
-
   // Change globe x/y-position
   const moveToX =
     relativePosition.x + formerMovements.x + progressPercent / (100 / moveBy.x);
@@ -43,9 +27,9 @@ function moveGlobe(
     relativePosition.y + formerMovements.y + progressPercent / (100 / moveBy.y);
 
   globeContainer.style.transform = `translate(${
-    // x-value has to be divided by 2 because globe left/right margin is -50%
-    moveBy.x ? moveToX / 2 : translate[0]
-  }%, ${moveBy.y ? moveToY : translate[1]}%)`;
+    // x-value has to be divided by 3 because globe left/right margin is -100%
+    moveToX / 3
+  }%, ${moveToY}%)`;
 
   // Change globe z-position
   const formerMovementsDistance =
@@ -127,8 +111,8 @@ const Globe: FunctionComponent<Props> = ({
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.style.transform = `translate(${
-        // x-value has to be divided by 2 because globe left/right margin is -50%
-        relativePosition.x / 2
+        // x-value has to be divided by 3 because globe left/right margin is -100%
+        relativePosition.x / 3
       }%, ${relativePosition.y}%)`;
 
       distanceRef.current =
@@ -198,12 +182,13 @@ const Globe: FunctionComponent<Props> = ({
       progressRef.current = progress;
       const globeContainer = containerRef.current;
 
-      globeMovements[chapterNumber].forEach(({x, y, z}, index) => {
-        // Chapter pages are children of current chapter element
-        const pagesInChapter = chapterElement.el.children.length + 1;
+      // Chapter pages are children of current chapter element
+      const pagesInChapter = chapterElement.el.children.length;
 
+      globeMovements[chapterNumber].forEach(({x, y, z}, index) => {
         // Calcutate the progress of the current movement
-        let progressPercent = progress * 100 * pagesInChapter - index * 100;
+        let progressPercent =
+          progress * 100 * (pagesInChapter + 1) - index * 100;
 
         progressPercent = Math.min(100, Math.max(0, progressPercent));
 
@@ -212,18 +197,24 @@ const Globe: FunctionComponent<Props> = ({
         }
 
         // Calculate the former movement of the globe to add them to the current movement
-        const formerMovements = globeMovements[chapterNumber]
-          .slice(0, index)
-          .reduce(
+        const formerMovements = [
+          ...Object.keys(globeMovements)
             // eslint-disable-next-line max-nested-callbacks
-            (allMoveBy, {x, y, z}) => {
-              allMoveBy.x += x;
-              allMoveBy.y += y;
-              allMoveBy.z += z;
-              return allMoveBy;
-            },
-            {x: 0, y: 0, z: 0}
-          );
+            .filter(chapter => Number(chapter) < chapterNumber)
+            // eslint-disable-next-line max-nested-callbacks
+            .map(chapter => globeMovements[Number(chapter)])
+            .flat(),
+          ...globeMovements[chapterNumber].slice(0, index)
+        ].reduce(
+          // eslint-disable-next-line max-nested-callbacks
+          (allMoveBy, {x, y, z}) => {
+            allMoveBy.x += x;
+            allMoveBy.y += y;
+            allMoveBy.z += z;
+            return allMoveBy;
+          },
+          {x: 0, y: 0, z: 0}
+        );
 
         moveGlobe(
           progressPercent,
