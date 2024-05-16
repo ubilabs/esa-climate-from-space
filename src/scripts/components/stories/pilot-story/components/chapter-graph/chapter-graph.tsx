@@ -18,7 +18,9 @@ const ChapterGraph: FunctionComponent<Props> = ({graph}) => (
       <h3>{graph.title}</h3>
     </Parallax>
     <div className={styles.graphContainer}>
-      <img src={graph.src} alt={graph.alt}></img>
+      <div className={styles.scrollContainer}>
+        <img src={graph.src} alt={graph.alt}></img>
+      </div>
       <p className={styles.graphCaption}>{graph.caption}</p>
     </div>
   </Parallax>

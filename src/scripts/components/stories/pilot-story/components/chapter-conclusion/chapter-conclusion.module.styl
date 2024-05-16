@@ -1,9 +1,25 @@
 @require '../../../../../../variables.styl'
 
 .conclusion
+  height: 100vh
+  box-sizing: border-box
+  padding: $headerHeight emCalc(29px)
+  overflow-x: hidden
+  display: flex
+  flex-direction: column
   justify-content: space-between
   padding: emCalc(100px) emCalc(29px)
-  background: linear-gradient(270deg, rgba(0, 32, 46, 0.8) 8.28%, rgba(2, 30, 42, 0) 100%)
+  background: linear-gradient(180deg, rgba(0, 32, 46, 0.8) 8.28%, rgba(2, 30, 42, 0) 100%)
+  scroll-snap-align: center
+
+.conclusion
+  button
+    opacity: 0
+    transition: opacity 0.2s ease-in
+
+.conclusion.visible
+  button
+    opacity: 1
 
 .chapterText
   color: $textWhite

@@ -14,13 +14,13 @@ interface Props {
 
 const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
   const [progress, setProgress] = useState(0);
-  const [showInfo, setShowInfo] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState<RadialInfoOption>(
     options[options.length - 1]
   );
 
   useEffect(() => {
-    setShowInfo(progress >= 0.5 ? true : false);
+    setVisible(progress >= 0.4 && progress <= 0.5);
   }, [progress]);
 
   const positionElements = (index: number) => {
@@ -40,44 +40,44 @@ const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
     <SnapWrapper>
       <Parallax
         opacity={[0, 2]}
-        speed={-5}
+        speed={15}
         onProgressChange={progress => setProgress(progress)}
         style={{height: '100%'}}>
         <div className={styles.radialInfoContainer}>
           <h2>{title}</h2>
-          <div className={styles.elements}>
-            <div
-              className={styles.selectedInner}
-              style={{opacity: `${showInfo ? 1 : 0}`}}>
-              {isSelectedImg ? (
-                <>
-                  <img
-                    src={selectedOption.img?.src}
-                    alt={selectedOption.img?.alt}
-                    className={styles.img}
-                  />
-                  <div>
-                    <span>{selectedOption.id}</span>
-                    <span>{selectedOption.content}</span>
-                  </div>
-                </>
-              ) : (
-                <p>{selectedOption.content}</p>
-              )}
-            </div>
-            {options.map((option, index) => (
-              <div
-                onMouseOver={() => setSelectedOption(option)}
-                className={cx(
-                  styles.option,
-                  selectedOption === option && styles.selected
+          <Parallax speed={-100}>
+            <div className={cx(styles.elements, visible && styles.visible)}>
+              <div className={styles.selectedInner}>
+                {isSelectedImg ? (
+                  <>
+                    <img
+                      src={selectedOption.img?.src}
+                      alt={selectedOption.img?.alt}
+                      className={styles.img}
+                    />
+                    <div>
+                      <span>{selectedOption.id}</span>
+                      <span>{selectedOption.content}</span>
+                    </div>
+                  </>
+                ) : (
+                  <p>{selectedOption.content}</p>
                 )}
-                key={option.id}
-                style={positionElements(index)}>
-                <div className={styles.optionInner}>{option.icon}</div>
               </div>
-            ))}
-          </div>
+              {options.map((option, index) => (
+                <div
+                  onMouseOver={() => setSelectedOption(option)}
+                  className={cx(
+                    styles.option,
+                    selectedOption === option && styles.selected
+                  )}
+                  key={option.id}
+                  style={positionElements(index)}>
+                  <div className={styles.optionInner}>{option.icon}</div>
+                </div>
+              ))}
+            </div>
+          </Parallax>
         </div>
       </Parallax>
     </SnapWrapper>

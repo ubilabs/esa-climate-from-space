@@ -1,5 +1,6 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Parallax} from 'react-scroll-parallax';
+import cx from 'classnames';
 
 import {GlobeIcon} from '../../../../main/icons/globe-icon';
 import ScrollHint from '../scroll-hint/scroll-hint';
@@ -13,30 +14,39 @@ interface Props {
   subTitle: string;
 }
 
-const ChapterIntro: FunctionComponent<Props> = ({title, subTitle}) => (
-  <SnapWrapper>
-    <Parallax className={styles.intro} opacity={[0, 2]}>
-      <Button
-        link={'/stories'}
-        icon={GlobeIcon}
-        label="Back to Stories"
-        className={styles.backToStories}
-        isBackButton
-      />
+const ChapterIntro: FunctionComponent<Props> = ({title, subTitle}) => {
+  const [progress, setProgress] = useState(0);
+  const [visible, setVisible] = useState(false);
 
+  useEffect(() => {
+    setVisible(progress >= 0.49 && progress <= 0.51);
+  }, [progress]);
+
+  return (
+    <SnapWrapper>
       <Parallax
-        className={styles.introContent}
-        translateX={[-110, 100, 'easeInOutQuad']}
-        opacity={[2, 0]}>
-        <h2 className={styles.subTitle}>{subTitle}</h2>
-        <p className={styles.title}>{title}</p>
-      </Parallax>
+        className={cx(styles.intro, visible && styles.visible)}
+        onProgressChange={progress => setProgress(progress)}
+        speed={-100}>
+        <Button
+          link={'/stories'}
+          icon={GlobeIcon}
+          label="Back to Stories"
+          className={styles.backToStories}
+          isBackButton
+        />
 
-      <Parallax opacity={[1, 0]} style={{marginBottom: '50px'}}>
-        <ScrollHint />
+        <div className={styles.introContent}>
+          <h2 className={styles.subTitle}>{subTitle}</h2>
+          <p className={styles.title}>{title}</p>
+        </div>
+
+        <div style={{marginBottom: '50px'}}>
+          <ScrollHint />
+        </div>
       </Parallax>
-    </Parallax>
-  </SnapWrapper>
-);
+    </SnapWrapper>
+  );
+};
 
 export default ChapterIntro;

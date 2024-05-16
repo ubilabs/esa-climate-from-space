@@ -93,12 +93,12 @@ const PilotStory: FunctionComponent = () => {
   );
 
   return (
-    <div className={styles.pilotStory}>
-      <Header>
-        <Share />
-      </Header>
+    <ParallaxProvider>
+      <div className={styles.pilotStory}>
+        <Header>
+          <Share />
+        </Header>
 
-      <ParallaxProvider>
         {isDesktop && storyStarted && (
           <ChapterProgressIndication
             chapters={chapters}
@@ -131,12 +131,12 @@ const PilotStory: FunctionComponent = () => {
             )}
           </Globe>
         </div>
-      </ParallaxProvider>
-      {storyStarted && <NavDrawer handle={title} children={content} />}
+        {storyStarted && <NavDrawer handle={title} children={content} />}
 
-      {/* Nav Drawer DOM element - this is where the <NavDrawer/> will be rendered with React.usePortal */}
-      <div id="drawer" className={styles.drawer}></div>
-    </div>
+        {/* Nav Drawer DOM element - this is where the <NavDrawer/> will be rendered with React.usePortal */}
+        <div id="drawer" className={styles.drawer}></div>
+      </div>
+    </ParallaxProvider>
   );
 };
 

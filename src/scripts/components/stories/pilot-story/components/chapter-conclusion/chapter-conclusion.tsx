@@ -1,5 +1,6 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Parallax} from 'react-scroll-parallax';
+import cx from 'classnames';
 
 import SnapWrapper from '../snap-wrapper/snap-wrapper';
 import Button from '../button/button';
@@ -17,25 +18,36 @@ const ChapterConclusion: FunctionComponent<Props> = ({
   text,
   onBackToStory,
   onNextStory
-}) => (
-  <SnapWrapper className={styles.conclusion}>
-    <Button
-      isBackButton
-      label="Back To Story"
-      icon={ArrowBackIcon}
-      onClick={onBackToStory}
-    />
-    <Parallax className={styles.chapterText} opacity={[0, 2]}>
-      <p>{text}</p>
+}) => {
+  const [progress, setProgress] = useState(0);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(progress >= 0.45 && progress <= 0.51);
+  }, [progress]);
+
+  return (
+    <Parallax
+      className={cx(styles.conclusion, visible && styles.visible)}
+      onProgressChange={progress => setProgress(progress)}>
+      <Button
+        isBackButton
+        label="Back To Story"
+        icon={ArrowBackIcon}
+        onClick={onBackToStory}
+      />
+      <Parallax className={styles.chapterText} opacity={[0, 2]}>
+        <p>{text}</p>
+      </Parallax>
+      <Button
+        isBackButton
+        label="Next Giant"
+        icon={ArrowBackIcon}
+        id={styles.substoryButton}
+        onClick={onNextStory}
+      />
     </Parallax>
-    <Button
-      isBackButton
-      label="Next Giant"
-      icon={ArrowBackIcon}
-      id={styles.substoryButton}
-      onClick={onNextStory}
-    />
-  </SnapWrapper>
-);
+  );
+};
 
 export default ChapterConclusion;
