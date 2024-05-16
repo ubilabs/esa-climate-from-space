@@ -23,7 +23,7 @@ import {GlobeIcon} from '../../main/icons/globe-icon';
 import Button from './components/button/button';
 import ChapterProgressIndication from './components/chapter-progress-indication/chapter-progress-indication';
 import {GlobeExploreIcon} from './components/icons/globe-explore-icon';
-import {chapters, globeMovementsPerChapter} from './config/main';
+import {chapters, globeMovements} from './config/main';
 
 import styles from './pilot-story.module.styl';
 
@@ -117,7 +117,8 @@ const PilotStory: FunctionComponent = () => {
             relativePosition={{x: -30, y: 0, z: 0}}
             isSpinning={true}
             isVisible={true}
-            globeMovements={globeMovementsPerChapter}>
+            pagesTotal={globeMovements.length + 1}
+            globeMovements={globeMovements}>
             {storyStarted && (
               <div className={styles.chaptersContainer}>
                 <ChapterOne onChapterSelect={handleChapterSelection(0)} />

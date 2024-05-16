@@ -23,9 +23,7 @@ const Chapter: FunctionComponent<Props> = ({
     className={cx(styles.sectionContainer, className)}
     data-scroll-index={scrollIndex}
     {...rest}>
-    <Parallax {...parallaxProps} id="chapter">
-      {children}
-    </Parallax>
+    <Parallax {...parallaxProps}>{children}</Parallax>
   </section>
 );
 

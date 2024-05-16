@@ -32,6 +32,7 @@ const ChapterTwo: FunctionComponent<Props> = ({onChapterSelect}) => (
       title="Explore the world of methane super emitters – key players in climate change."
       dataLayerId="greenhouse.xch4"
     />
+    <ChapterText text="" />
   </Chapter>
 );
 

@@ -4,12 +4,21 @@ import {LayerProps, WebGlGlobe} from '@ubilabs/esa-webgl-globe';
 
 import {useParallax} from 'react-scroll-parallax';
 
-import {GlobeMovementsPerChapter} from '../../types/globe';
+import {GlobeMovement} from '../../types/globe';
 
 import styles from './globe.module.styl';
 
 const INITIAL_DISTANCE = 30_000_000;
 const DISTANCE_INCREASEMENT_FACTOR = 0.02;
+
+interface Props {
+  relativePosition: {x: number; y: number; z: number};
+  isSpinning: boolean;
+  isVisible: boolean;
+  pagesTotal: number;
+  globeMovements: GlobeMovement[];
+  children: React.ReactNode;
+}
 
 function extractTranslateValues(str: string): [number, number] {
   // Regular expression to match floating point numbers
@@ -67,18 +76,11 @@ function moveGlobe(
     movementDistance;
 }
 
-interface Props {
-  relativePosition: {x: number; y: number; z: number};
-  isSpinning: boolean;
-  isVisible: boolean;
-  globeMovements: GlobeMovementsPerChapter;
-  children: React.ReactNode;
-}
-
 const Globe: FunctionComponent<Props> = ({
   relativePosition,
   isSpinning,
   isVisible,
+  pagesTotal,
   globeMovements,
   children
 }) => {
@@ -161,27 +163,11 @@ const Globe: FunctionComponent<Props> = ({
 
   useEffect(() => {
     (function move() {
-      const storyElements = parallax.controller?.elements.filter(
-        ({el}) => el.id === 'chapter'
-      );
-
-      const chapterElement = storyElements?.filter(({isInView}) => isInView)[0];
-
-      // eslint-disable-next-line no-undefined
-      if (!chapterElement) {
-        requestAnimationFrame(move);
-        return;
-      }
-
-      const chapterId = storyElements?.indexOf(chapterElement) + 1;
-
-      const progress = chapterElement.progress;
+      const progress = parallax.element?.progress;
 
       if (
-        !chapterId ||
         !globe ||
         !containerRef.current ||
-        !globeMovements[chapterId] ||
         // eslint-disable-next-line no-undefined
         progress === undefined ||
         progressRef.current === progress
@@ -193,35 +179,35 @@ const Globe: FunctionComponent<Props> = ({
       progressRef.current = progress;
       const globeContainer = containerRef.current;
 
-      globeMovements[chapterId].forEach(({x, y, z}, index) => {
-        const pagesInChapter = chapterElement.el.children.length + 1;
+      globeMovements.forEach(({pageFrom, pageTo, moveBy}, index) => {
+        const viewCount = pageTo - (pageFrom - 1);
 
         // Calcutate the progress of the current movement
-        let progressPercent = progress * 100 * pagesInChapter - index * 100;
+        let progressPercent =
+          progress * 100 * (pagesTotal / (viewCount - 1)) -
+          (pageFrom - 1) * 100;
 
         progressPercent = Math.min(100, Math.max(0, progressPercent));
 
-        if (progressPercent <= 0) {
+        if (progressPercent === 0) {
           return;
         }
 
         // Calculate the former movement of the globe to add them to the current movement
-        const formerMovements = globeMovements[chapterId]
-          .slice(0, index)
-          .reduce(
-            // eslint-disable-next-line max-nested-callbacks
-            (allMoveBy, {x, y, z}) => {
-              allMoveBy.x += x;
-              allMoveBy.y += y;
-              allMoveBy.z += z;
-              return allMoveBy;
-            },
-            {x: 0, y: 0, z: 0}
-          );
+        const formerMovements = globeMovements.slice(0, index).reduce(
+          // eslint-disable-next-line max-nested-callbacks
+          (allMoveBy, {moveBy}) => {
+            allMoveBy.x += moveBy.x;
+            allMoveBy.y += moveBy.y;
+            allMoveBy.z += moveBy.z;
+            return allMoveBy;
+          },
+          {x: 0, y: 0, z: 0}
+        );
 
         moveGlobe(
           progressPercent,
-          {x, y, z},
+          moveBy,
           formerMovements,
           relativePosition,
           globeContainer,
@@ -231,7 +217,14 @@ const Globe: FunctionComponent<Props> = ({
 
       requestAnimationFrame(move);
     })();
-  }, [parallax, globe, containerRef, globeMovements, relativePosition]);
+  }, [
+    parallax,
+    globe,
+    containerRef,
+    globeMovements,
+    pagesTotal,
+    relativePosition
+  ]);
 
   return (
     <>
