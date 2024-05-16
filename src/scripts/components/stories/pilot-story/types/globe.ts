@@ -1,8 +1,12 @@
 export type GlobeMovement = {
-  pageFrom: number;
-  pageTo: number;
-  moveBy: {x: number; y: number; z: number};
+  x: number;
+  y: number;
+  z: number;
 };
+
+export type ChapterNumber = number;
+
+export type GlobeMovementsPerChapter = Record<ChapterNumber, GlobeMovement[]>;
 
 export enum MethaneSources {
   LIVESTOCK = 'livestock',
