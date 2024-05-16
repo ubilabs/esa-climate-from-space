@@ -13,7 +13,7 @@ interface Props {
 }
 
 const ChapterGraph: FunctionComponent<Props> = ({graph}) => (
-  <Parallax className={styles.chapterGraph} opacity={[2, 0]}>
+  <Parallax className={styles.chapterGraph} opacity={[0, 2]}>
     <Parallax speed={20} className={styles.graphText} easing="easeInQuad">
       <h3>{graph.title}</h3>
     </Parallax>
