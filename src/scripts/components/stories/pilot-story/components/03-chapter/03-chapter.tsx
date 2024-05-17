@@ -6,6 +6,7 @@ import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText from '../chapter-text/chapter-text';
 import Chapter from '../chapter/chapter';
 import SatelliteCarousel from '../satellite-carousel/satellite-carousel';
+
 interface Props {
   onChapterSelect: ChapterSelectionHandler;
 }
@@ -21,7 +22,6 @@ const ChapterThree: FunctionComponent<Props> = ({onChapterSelect}) => (
     <ChapterText text="This allows scientists to gather data on methane concentrations globally and understand its sources and impact on climate change." />
     <SatelliteCarousel />
     <ChapterText text="This high-resolution detection enables scientists to monitor emissions over time, providing critical data that helps nations assess and adjust their environmental policies in real-time." />
-    <ChapterText text="" />
   </Chapter>
 );
 
