@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  PropsWithChildren,
-  useEffect,
-  useMemo,
-  useState
-} from 'react';
+import React, {FunctionComponent, useEffect, useMemo, useState} from 'react';
 
 import cx from 'classnames';
 
@@ -16,10 +10,16 @@ import {getSnapPoint} from '../utils/nav-drawer';
 import DrawerToggleIcon from '../icons/drawer-toggle-icon/drawer-toggle-icons';
 
 import styles from './nav-drawer.module.styl';
+import {GlobeIcon} from '../../../../main/icons/globe-icon';
+import {chapters} from '../../config/main';
+import Button from '../button/button';
+import {GlobeExploreIcon} from '../icons/globe-explore-icon';
+import NavChapterOverview from '../nav-chapter-overview/nav-chapter-overview';
+import {useChapter} from '../../hooks/use-chapter';
 
-interface Props extends PropsWithChildren {
-  handle: React.JSX.Element;
-}
+// interface Props extends PropsWithChildren {
+//   handle: React.JSX.Element;
+// }
 
 /**
  * NavDrawer component.
@@ -30,7 +30,34 @@ interface Props extends PropsWithChildren {
  * @param {ReactElement} props.handle - The handle element.
  * @returns {ReactElement} The rendered NavDrawer component.
  */
-const NavDrawer: FunctionComponent<Props> = ({children, handle}) => {
+const NavDrawer: FunctionComponent = () => {
+  const {selectedChapterIndex} = useChapter();
+  console.log('🚀 ~ selectedChapterIndex:', selectedChapterIndex);
+  // Title is visible in the Nav Drawer when it is not open, basically the handle
+  const handle = <h2 className={styles.header}>{chapters[0].subtitle}</h2>;
+
+  // Content is visible in the Nav Drawer when it is open
+  const children = (
+    <div className={styles.navContainer}>
+      <NavChapterOverview
+        chapters={chapters}
+        // setSelectedChapterIndex={(index: number) => console.log(index)}
+        // selectedChapterIndex={selectedChapterIndex}
+      />
+      <Button
+        link={'/stories'}
+        icon={GlobeIcon}
+        label="Back to Stories"
+        className={styles.navLinks}
+      />
+      <Button
+        link={'/'}
+        className={styles.navLinks}
+        icon={GlobeExploreIcon}
+        label="explore the story datasets"
+      />
+    </div>
+  );
   const [ref, setRef] = useState<HTMLDivElement | null>(null);
 
   const {isMobile} = useScreenSize();

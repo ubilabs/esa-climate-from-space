@@ -1,7 +1,5 @@
 import React, {FunctionComponent} from 'react';
 
-import {ChapterSelectionHandler} from '../../types/globe';
-
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import Chapter from '../chapter/chapter';
 import ChapterText from '../chapter-text/chapter-text';
@@ -10,12 +8,13 @@ import ExploreStories from '../explore-stories/explore-stories';
 import {graphContent} from '../../config/main';
 
 interface Props {
-  onChapterSelect: ChapterSelectionHandler;
+  chapterIndex: number;
 }
 
-const ChapterSeven: FunctionComponent<Props> = ({onChapterSelect}) => (
-  <Chapter scrollIndex={6} parallaxProps={onChapterSelect}>
+const ChapterSeven: FunctionComponent<Props> = ({chapterIndex}) => (
+  <Chapter scrollIndex={chapterIndex}>
     <ChapterIntro
+      scrollIndex={chapterIndex}
       subTitle="Chapter 07: Methane Reduction Urgency"
       title="Strategic choices for our future"
     />

@@ -233,7 +233,9 @@ const Globe: FunctionComponent<Props> = ({
   return (
     <>
       <div ref={containerRef} className={styles.globe} />
-      <div ref={parallax.ref as LegacyRef<HTMLDivElement>}>{children}</div>
+      <div ref={parallax.ref as LegacyRef<HTMLDivElement>} id="story">
+        {children}
+      </div>
     </>
   );
 };

@@ -1,19 +1,18 @@
 import React, {FunctionComponent} from 'react';
 
-import {ChapterSelectionHandler} from '../../types/globe';
-
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText from '../chapter-text/chapter-text';
 import Chapter from '../chapter/chapter';
 import ExploreDataset from '../explore-dataset/explore-dataset';
 
 interface Props {
-  onChapterSelect: ChapterSelectionHandler;
+  chapterIndex: number;
 }
 
-const ChapterFive: FunctionComponent<Props> = ({onChapterSelect}) => (
-  <Chapter scrollIndex={4} parallaxProps={onChapterSelect}>
+const ChapterFive: FunctionComponent<Props> = ({chapterIndex}) => (
+  <Chapter scrollIndex={chapterIndex}>
     <ChapterIntro
+      scrollIndex={chapterIndex}
       subTitle="Chapter 5: Mapping the Methane Giants"
       title="Unveiling Methane Super Emitters"
     />

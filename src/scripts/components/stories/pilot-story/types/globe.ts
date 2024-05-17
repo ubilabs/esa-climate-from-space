@@ -1,3 +1,5 @@
+import {ParallaxProps} from 'react-scroll-parallax';
+
 export type GlobeMovement = {
   x: number;
   y: number;
@@ -74,7 +76,4 @@ export enum SatelliteNames {
   'SENTINEL-3' = 'SENTINEL-3'
 }
 
-export type ChapterSelectionHandler = {
-  onEnter: () => void;
-  onExit: () => void;
-};
+export type ChapterSelectionHandler = ParallaxProps;

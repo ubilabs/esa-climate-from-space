@@ -6,8 +6,6 @@ import {EyeIcon} from '../../../../main/icons/eye-icon';
 import {NoseIcon} from '../../../../main/icons/nose-icon';
 import {TreeIcon} from '../../../../main/icons/tree-icon';
 
-import {ChapterSelectionHandler} from '../../types/globe';
-
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText from '../chapter-text/chapter-text';
 import Chapter from '../chapter/chapter';
@@ -48,12 +46,13 @@ const options: RadialInfoOption[] = [
 ];
 
 interface Props {
-  onChapterSelect: ChapterSelectionHandler;
+  chapterIndex: number;
 }
 
-const ChapterOne: FunctionComponent<Props> = ({onChapterSelect}) => (
-  <Chapter scrollIndex={0} parallaxProps={onChapterSelect}>
+const ChapterOne: FunctionComponent<Props> = ({chapterIndex}) => (
+  <Chapter scrollIndex={chapterIndex}>
     <ChapterIntro
+      scrollIndex={chapterIndex}
       subTitle="Chapter 1: What is methane"
       title="The invisible threat"
     />
