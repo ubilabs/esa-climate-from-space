@@ -2,26 +2,37 @@
 
 .chapterGraph
   height: 100vh
+  width: 100vw
   box-sizing: border-box
   padding: emCalc(100px) 0
-  overflow-x: hidden
+  overflow: hidden
   background: linear-gradient(250deg, #003349 19.74%, rgba(0, 51, 73, 0) 106.06%), #000
   display: flex
   flex-direction: column
   justify-content: center
-  gap: 3em
+  gap: 2em
   scroll-snap-align: center
 
 .graphContainer
-  width: 100vw
+  width: 100%
   color: $textWhite
   text-align: left
   font-style: normal
-  align-self: center
-  display: flex
-  flex-direction: column
-  justify-content: center
-  flex: 1
+  align-self: start
+  padding: 0 18px
+
+.scrollContainer
+  overflow-x: auto
+  white-space: nowrap
+  padding: 0 emCalc(16px)
+  -ms-overflow-style: none
+  scrollbar-width: none
+
+  ::-webkit-scrollbar
+    display: none
+
+  img
+    height: 35vh
 
 .graphText
   text-align: left

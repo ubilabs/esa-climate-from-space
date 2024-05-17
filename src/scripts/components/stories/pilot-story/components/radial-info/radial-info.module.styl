@@ -29,9 +29,14 @@
   display: flex
   justify-content: center
   align-items: center
+  opacity: 0
 
   .img
     border-radius: 50%
+
+.elements.visible
+  opacity: 1
+  transition: opacity 0.15s ease-in
 
 .elements:before
   content: ''
@@ -61,36 +66,36 @@
   font-style: normal
   font-weight: 700
   line-height: 22px
-  transition: opacity 0.7s ease-in
+  opacity: 0
 
+.elements.visible .selectedInner
+  opacity: 1
+  transition: opacity 0.4s ease-in 0.2s
 
 // Renders a backdrop with a 75% inset if the content is an image
 .selectedInner:has(img)
   --inset: 75%
-  
+
   > div
-    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.45);
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.45)
     z-index: 1
     position: absolute
     top: var(--inset)
     display: flex
     flex-direction: column
     gap: 4px
-    
-  
+
   &:after
     content: ''
     position: absolute
-    bottom: 0 
+    bottom: 0
     width: inherit
     height: inherit
-    background-color: rgba(1,1,1, 0.5)
+    background-color: rgba(1, 1, 1, 0.5)
     overflow: hidden
     border-radius: 0 0 50% 50%
     padding-bottom: 20%
-    clip-path: inset(var(--inset) 0 0 0);
-
-
+    clip-path: inset(var(--inset) 0 0 0)
 
 .option
   width: 64px

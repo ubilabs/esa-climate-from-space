@@ -36,7 +36,7 @@ const StoryIntro: FunctionComponent<Props> = ({storyStarted, onStoryStart}) => (
 
       <div className={styles.buttonContainer}>
         {storyStarted ? (
-          <Parallax style={{width: '100%'}} opacity={[1, 0]} speed={2}>
+          <Parallax style={{width: '100%'}} speed={2}>
             <ScrollHint />
           </Parallax>
         ) : (

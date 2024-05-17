@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useSwipeable} from 'react-swipeable';
+import cx from 'classnames';
 
 import styles from './pilot-carousel.module.styl';
 
@@ -7,8 +8,16 @@ import {MethaneSources, methaneSources} from '../../types/globe';
 import {MethaneSourcesIcon} from '../icons/methane-sources-icon/methane-source-icon';
 import {useScreenSize} from '../../../../../hooks/use-screen-size';
 import SwipeIcon from '../icons/swipe-icon/swipe-icon';
+import {Parallax} from 'react-scroll-parallax';
 
 const PilotCarousel = () => {
+  const [progress, setProgress] = useState(0);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    setVisible(progress >= 0.5 && progress <= 0.51);
+  }, [progress]);
+
   const sources = Object.entries(methaneSources).map(([key, value]) => ({
     key,
     value
@@ -55,18 +64,24 @@ const PilotCarousel = () => {
   const clipHeight = ((isMobile ? 10 : 20) / 100) * diameter;
 
   return (
-    <div className={styles.carouselWrapper}>
-      <h1>Some of the primary sources include:</h1>
-      <legend>
-        <span>Anthrophogenic</span>
-        <span>Natural</span>
-        <span>Anthrophogenic and Natural</span>
-      </legend>
+    <Parallax
+      onProgressChange={progress => setProgress(progress)}
+      className={styles.carouselWrapper}>
+      <Parallax speed={15}>
+        <h1>Some of the primary sources include:</h1>
+        <legend>
+          <span>Anthrophogenic</span>
+          <span>Natural</span>
+          <span>Anthrophogenic and Natural</span>
+        </legend>
+      </Parallax>
 
       <div className={styles.explanation}>
         {sources[selectedIconIndex].value.explanation}
       </div>
-      <div {...handlers} className={styles.carousel}>
+      <div
+        {...handlers}
+        className={cx(styles.carousel, visible && styles.visible)}>
         {sources.map((_, i) => {
           const iconIndex =
             (selectedIconIndex -
@@ -122,7 +137,7 @@ const PilotCarousel = () => {
         </svg>
         {isMobile && <SwipeIcon />}
       </div>
-    </div>
+    </Parallax>
   );
 };
 

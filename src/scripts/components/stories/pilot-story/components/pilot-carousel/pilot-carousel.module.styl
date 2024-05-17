@@ -18,9 +18,14 @@
   color: white
   position: relative
   height: 10%
+  opacity: 0
+  transition: opacity 0.2s ease-in
 
   @media screen and (min-width: 768px)
     height: 45%
+
+.carousel.visible
+  opacity: 1
 
 .explanation
   max-width: 16rem
