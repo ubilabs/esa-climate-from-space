@@ -2,7 +2,6 @@ import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Parallax} from 'react-scroll-parallax';
 import cx from 'classnames';
 
-import SnapWrapper from '../snap-wrapper/snap-wrapper';
 import Button from '../button/button';
 import {ArrowBackIcon} from '../../../../main/icons/arrow-back-icon';
 
