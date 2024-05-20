@@ -32,10 +32,9 @@ const ChapterIntro: FunctionComponent<Props> = ({
   return (
     <SnapWrapper>
       <Parallax
-        className={cx(styles.intro, visible && styles.visible, introChapterId)}
+        className={cx(styles.intro, visible && styles.visible)}
         onProgressChange={progress => setProgress(progress)}
-        speed={-100}
-        data-scroll-index={scrollIndex}>
+        speed={-100}>
         <Button
           link={'/stories'}
           icon={GlobeIcon}
@@ -44,10 +43,14 @@ const ChapterIntro: FunctionComponent<Props> = ({
           isBackButton
         />
 
-        <div className={styles.introContent}>
-          <h2 className={styles.subTitle}>{subTitle}</h2>
+        <Parallax className={cx(styles.introContent)}>
+          <h2
+            className={cx(styles.subTitle, introChapterId)}
+            data-scroll-index={scrollIndex}>
+            {subTitle}
+          </h2>
           <p className={styles.title}>{title}</p>
-        </div>
+        </Parallax>
 
         <div style={{marginBottom: '50px'}}>
           <ScrollHint />

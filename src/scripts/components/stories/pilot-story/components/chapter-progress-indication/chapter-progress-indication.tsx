@@ -28,7 +28,7 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
       className={cx(styles.progressIndication, className)}
       style={style}
       id="progress-indication">
-      {Array.from({length: chapters.length}).map((_, index) => (
+      {Array.from({length: chapters.length + 1}).map((_, index) => (
         <span key={index} data-is-selected={index === selectedChapterIndex} />
       ))}
     </div>

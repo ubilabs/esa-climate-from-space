@@ -44,14 +44,14 @@ const NavChapterOverview: FunctionComponent<Props> = ({
       <ChapterProgressIndication chapters={chapters} />
       {!isCollapsed && (
         <ul>
-          {chapters.map((chap, index) => (
+          {chapters.map((chapter, index) => (
             <li
               key={index}
               onClick={() => {
                 setSelectedChapterIndex(index);
                 scrollToChapterIndex(index);
               }}>
-              {chap.title}
+              {chapter.title}
             </li>
           ))}
         </ul>

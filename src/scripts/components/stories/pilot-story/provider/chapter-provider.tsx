@@ -36,51 +36,70 @@ function useChapterContext() {
   const progressIndicatorHeight = progressIndication?.offsetHeight;
 
   useEffect(() => {
-    const chapterElements = parallaxController?.elements.filter(
-      ({el}) => el.id === 'chapter'
-    );
-
-    // Get current chapter by retrieving first chapter element in view
-    const currentChapter = chapterElements?.filter(({isInView}) => isInView)[0];
-
-    const chapterIntros = parallaxController?.elements.filter(({el}) =>
-      el.classList.contains(introChapterId)
-    );
-
-    const currentIntro = chapterIntros?.filter(({isInView}) => isInView)[0];
-
-    const currentIntroIndex = Number(
-      currentIntro?.el.getAttribute('data-scroll-index')
-    );
-
-    const currentChapterIndex = Number(
-      currentChapter?.el.getAttribute('data-scroll-index')
-    );
-    const isTitleInView = chapterIntros?.some(({isInView}) => isInView);
-
-    if (currentIntroIndex) {
-      setSelectedChapterIndex(currentIntroIndex);
-    } else if (currentChapterIndex) {
-      setSelectedChapterIndex(currentChapterIndex);
-    }
-
-    if (isTitleInView && selectedChapterIndex === currentIntroIndex) {
-      progressIndication?.setAttribute('data-is-title-in-view', 'true');
-    } else if (!isTitleInView && selectedChapterIndex === currentChapterIndex) {
-      progressIndication?.setAttribute('data-is-title-in-view', 'false');
-
-      if (progressIndicatorHeight && chaptersLength) {
-        const indicatorYOffsetInPx =
-          ((progressIndicatorHeight * 1.25) / (chaptersLength + 1)) *
-            selectedChapterIndex +
-          (progressIndicatorHeight / (chaptersLength + 1)) * progress;
-
-        progressIndication?.style.setProperty(
-          '--indicator-y-offset',
-          `${indicatorYOffsetInPx}px`
+    let currentIntroIndex = 0;
+    // const isTitleInView = chapterIntros?.some(({isInView}) => isInView);
+    const navigationObserver = new IntersectionObserver(
+      entries => {
+        let isInView = false;
+        // console.log('isTitleInView', isNewTitleInView);
+        const chapterElements = parallaxController?.elements.filter(
+          ({el}) => el.id === 'chapter'
         );
+
+        const currentChapter = chapterElements?.filter(
+          ({isInView}) => isInView
+        )[0];
+        const currentChapterIndex = Number(
+          currentChapter?.el.getAttribute('data-scroll-index')
+        );
+
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            currentIntroIndex = Number(
+              entry.target.getAttribute('data-scroll-index')
+            );
+            isInView = true;
+          }
+        });
+
+        if (!isInView) {
+          setSelectedChapterIndex(currentChapterIndex);
+          progressIndication?.setAttribute('data-is-title-in-view', 'false');
+
+          if (progressIndicatorHeight && chaptersLength) {
+            const indicatorYOffsetInPx =
+              (progressIndicatorHeight / (chaptersLength + 1)) *
+                currentChapterIndex +
+              currentChapterIndex * 6 +
+              (progressIndicatorHeight / (chaptersLength + 1)) * progress;
+
+            progressIndication?.style.setProperty(
+              '--indicator-y-offset',
+              `${indicatorYOffsetInPx}px`
+            );
+          }
+        } else if (isInView) {
+          setSelectedChapterIndex(currentIntroIndex);
+
+          progressIndication?.setAttribute('data-is-title-in-view', 'true');
+        }
+      },
+      {
+        threshold: 1
       }
-    }
+    );
+
+    const elements = document.querySelectorAll(`.${introChapterId}`);
+
+    elements.forEach(element => {
+      navigationObserver.observe(element);
+    });
+
+    return () => {
+      elements.forEach(element => {
+        navigationObserver.unobserve(element);
+      });
+    };
   }, [
     progress,
     selectedChapterIndex,
