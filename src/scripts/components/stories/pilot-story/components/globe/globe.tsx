@@ -6,6 +6,8 @@ import {useParallax} from 'react-scroll-parallax';
 
 import {GlobeMovementsPerChapter} from '../../types/globe';
 
+import {chapterMainElement} from '../../config/main';
+
 import styles from './globe.module.styl';
 
 const INITIAL_DISTANCE = 30_000_000;
@@ -145,9 +147,9 @@ const Globe: FunctionComponent<Props> = ({
 
   useEffect(() => {
     (function move() {
-      // chapter elements are tagged with the id 'chapter'
+      // chapter elements are tagged with the id 'chapter-main
       const chapterElements = parallax.controller?.elements.filter(
-        ({el}) => el.id === 'chapter'
+        ({el}) => el.id === chapterMainElement
       );
 
       // Get current chapter by retrieving first chapter element in view

@@ -347,4 +347,10 @@ export const globeMovements = [
 ];
 
 // Used to determine if the chapter-intro is in view
-export const introChapterId = 'chapter-intro';
+export const chapterIntroElement = 'chapter-intro';
+
+export const chapterMainElement = 'chapter-main';
+
+export const progressIndicationElement = 'progress-indication';
+
+export const dataIsTitleInView = 'data-is-title-in-view';

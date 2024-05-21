@@ -4,7 +4,7 @@
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "dist-src-electron/main.js",
   "scripts": {
-    "start": "vite --port 8080",
+    "start": "vite --port 8080 --host",
     "clean": "rm -rf ./dist",
     "build": "npm run clean && tsc && vite build && npm run copy:assets",
     "copy:assets": "cp assets/images/favicon.ico dist/ && cp assets/images/share.png dist/",

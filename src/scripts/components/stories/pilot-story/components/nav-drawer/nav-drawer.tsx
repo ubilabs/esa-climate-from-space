@@ -15,11 +15,6 @@ import {chapters} from '../../config/main';
 import Button from '../button/button';
 import {GlobeExploreIcon} from '../icons/globe-explore-icon';
 import NavChapterOverview from '../nav-chapter-overview/nav-chapter-overview';
-import {useChapter} from '../../hooks/use-chapter';
-
-// interface Props extends PropsWithChildren {
-//   handle: React.JSX.Element;
-// }
 
 /**
  * NavDrawer component.
@@ -31,19 +26,13 @@ import {useChapter} from '../../hooks/use-chapter';
  * @returns {ReactElement} The rendered NavDrawer component.
  */
 const NavDrawer: FunctionComponent = () => {
-  const {selectedChapterIndex} = useChapter();
-  console.log('🚀 ~ selectedChapterIndex:', selectedChapterIndex);
   // Title is visible in the Nav Drawer when it is not open, basically the handle
   const handle = <h2 className={styles.header}>{chapters[0].subtitle}</h2>;
 
   // Content is visible in the Nav Drawer when it is open
   const children = (
     <div className={styles.navContainer}>
-      <NavChapterOverview
-        chapters={chapters}
-        // setSelectedChapterIndex={(index: number) => console.log(index)}
-        // selectedChapterIndex={selectedChapterIndex}
-      />
+      <NavChapterOverview chapters={chapters} />
       <Button
         link={'/stories'}
         icon={GlobeIcon}

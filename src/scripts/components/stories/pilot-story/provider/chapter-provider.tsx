@@ -7,22 +7,29 @@ import React, {
 } from 'react';
 import {useHistory} from 'react-router-dom';
 import {useParallaxController} from 'react-scroll-parallax';
-import {introChapterId} from '../config/main';
+import useIntersectChapters from '../hooks/use-chapter-observer';
+import {chapterMainElement} from '../config/main';
 
 function useChapterContext() {
-  const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
+  // Progress of the current chapter
+  const [progress, setProgress] = useState(0);
 
   const history = useHistory();
 
-  const [progress, setProgress] = useState(0);
-
   const parallaxController = useParallaxController();
 
-  const chaptersLength = 7;
+  // Hook to handle the selected chapter index based on the current chapter in view
+  // and the progress indication of the current chapter
+  const {selectedChapterIndex, setSelectedChapterIndex, chapterType} =
+    useIntersectChapters(progress);
 
+  /**
+   * Sets the progress based on the current chapter element in view.
+   * Is called when the progress of the chapter changes.
+   */
   const onSetProgress = () => {
     const chapterElements = parallaxController?.elements.filter(
-      ({el}) => el.id === 'chapter'
+      ({el}) => el.id === chapterMainElement
     );
 
     // Get current chapter by retrieving first chapter element in view
@@ -31,89 +38,17 @@ function useChapterContext() {
     currentChapter?.progress && setProgress(currentChapter?.progress);
   };
 
-  const progressIndication = document.getElementById('progress-indication');
-
-  const progressIndicatorHeight = progressIndication?.offsetHeight;
-
-  useEffect(() => {
-    let currentIntroIndex = 0;
-    // const isTitleInView = chapterIntros?.some(({isInView}) => isInView);
-    const navigationObserver = new IntersectionObserver(
-      entries => {
-        let isInView = false;
-        // console.log('isTitleInView', isNewTitleInView);
-        const chapterElements = parallaxController?.elements.filter(
-          ({el}) => el.id === 'chapter'
-        );
-
-        const currentChapter = chapterElements?.filter(
-          ({isInView}) => isInView
-        )[0];
-        const currentChapterIndex = Number(
-          currentChapter?.el.getAttribute('data-scroll-index')
-        );
-
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            currentIntroIndex = Number(
-              entry.target.getAttribute('data-scroll-index')
-            );
-            isInView = true;
-          }
-        });
-
-        if (!isInView) {
-          setSelectedChapterIndex(currentChapterIndex);
-          progressIndication?.setAttribute('data-is-title-in-view', 'false');
-
-          if (progressIndicatorHeight && chaptersLength) {
-            const indicatorYOffsetInPx =
-              (progressIndicatorHeight / (chaptersLength + 1)) *
-                currentChapterIndex +
-              currentChapterIndex * 6 +
-              (progressIndicatorHeight / (chaptersLength + 1)) * progress;
-
-            progressIndication?.style.setProperty(
-              '--indicator-y-offset',
-              `${indicatorYOffsetInPx}px`
-            );
-          }
-        } else if (isInView) {
-          setSelectedChapterIndex(currentIntroIndex);
-
-          progressIndication?.setAttribute('data-is-title-in-view', 'true');
-        }
-      },
-      {
-        threshold: 1
-      }
-    );
-
-    const elements = document.querySelectorAll(`.${introChapterId}`);
-
-    elements.forEach(element => {
-      navigationObserver.observe(element);
-    });
-
-    return () => {
-      elements.forEach(element => {
-        navigationObserver.unobserve(element);
-      });
-    };
-  }, [
-    progress,
-    selectedChapterIndex,
-    chaptersLength,
-    progressIndicatorHeight,
-    progressIndication,
-    parallaxController
-  ]);
-
   useEffect(() => {
     history.replace(`/stories/pilot/${selectedChapterIndex + 1}`);
   }, [selectedChapterIndex, history]);
 
-  return {selectedChapterIndex, setSelectedChapterIndex, onSetProgress};
+  return {
+    selectedChapterIndex,
+    setSelectedChapterIndex,
+    onSetProgress,
+    chapterType,
+    progress
+  };
 }
 
 export const ChapterContext = createContext(

@@ -77,3 +77,9 @@ export enum SatelliteNames {
 }
 
 export type ChapterSelectionHandler = ParallaxProps;
+
+export enum ChapterType {
+  INTRO = 'intro',
+  CONTENT = 'content',
+  SUB = 'sub'
+}

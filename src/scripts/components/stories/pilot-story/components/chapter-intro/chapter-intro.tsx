@@ -6,7 +6,7 @@ import ScrollHint from '../scroll-hint/scroll-hint';
 import Button from '../button/button';
 import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
-import {introChapterId} from '../../config/main';
+import {chapterIntroElement} from '../../config/main';
 
 import cx from 'classnames';
 import styles from './chapter-intro.module.styl';
@@ -43,14 +43,14 @@ const ChapterIntro: FunctionComponent<Props> = ({
           isBackButton
         />
 
-        <Parallax className={cx(styles.introContent)}>
+        <div className={cx(styles.introContent)}>
           <h2
-            className={cx(styles.subTitle, introChapterId)}
+            className={cx(styles.subTitle, chapterIntroElement)}
             data-scroll-index={scrollIndex}>
             {subTitle}
           </h2>
           <p className={styles.title}>{title}</p>
-        </Parallax>
+        </div>
 
         <div style={{marginBottom: '50px'}}>
           <ScrollHint />

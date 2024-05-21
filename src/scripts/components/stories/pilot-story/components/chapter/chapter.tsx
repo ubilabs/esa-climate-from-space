@@ -3,11 +3,10 @@ import {Parallax, ParallaxProps} from 'react-scroll-parallax';
 
 import cx from 'classnames';
 
-import styles from './chapter.module.styl';
 import {useChapter} from '../../hooks/use-chapter';
-// import useProgressIndication from '../../hooks/use-progress-indication';
-// import useProgressIndication from '../../hooks/use-progress-indication';
 
+import styles from './chapter.module.styl';
+import {chapterMainElement} from '../../config/main';
 interface Props
   extends PropsWithChildren<React.JSX.IntrinsicElements['section']> {
   scrollIndex: number;
@@ -42,7 +41,7 @@ const Chapter: FunctionComponent<Props> = ({
       {...rest}>
       <Parallax
         {...parallaxProps}
-        id="chapter"
+        id={chapterMainElement}
         data-scroll-index={scrollIndex}
         onProgressChange={() => onSetProgress()}>
         {children}
