@@ -21,7 +21,7 @@
       "imageCaptions": [
         "A Samburu herdsman with his goats in Isiolo County, Kenya (pilesasmiles/iStock)",
         "Cattle passing road construction equipment in Mowo, Lagos State, Nigeria\r\n(mtcurado/iStock)",
-        "This Copernicus Sentinel-2 satellite image of El Oued, Algeria, shows vegetation in red. Close to the town, date palms are grown using traditional methods in irregular, funnel-shaped fields that require little irrigation. Further out into the desert, centre-pivot irrigation is increasingly used to grow crops such as potatoes, onions and tomatoes in circular fields with a well at the centre. (Contains modified Copernicus Sentinel data (2021), processed by ESA)"
+        "This Copernicus Sentinel-2 satellite image of El Oued, Algeria, combines visible and infrared wavelengths to show vegetation in red. Close to the town, date palms are grown using traditional methods in irregular, funnel-shaped fields that require little irrigation. Further out into the desert, centre-pivot irrigation is increasingly used to grow crops such as potatoes, onions and tomatoes in circular fields with a well at the centre. (Contains modified Copernicus Sentinel data (2021), processed by ESA)"
       ],
       "imageFits": [
         "contain",
@@ -104,7 +104,7 @@
         "This series of Copernicus Sentinel-2 images shows part of the Al Wahat al Dakhla Desert in Egypt, spanning from 29 November 2022 to 18 April 2023. The circular shapes in the image are an example of centre-pivot irrigation systems, where equipment rotates around a central pivot and crops are watered with sprinklers. (Contains modified Copernicus Sentinel data (2022-23), processed by ESA)",
         "Greenhouses covering huge amounts of land glint in the sunlight near Almeria, southern Spain (European Union, Copernicus Sentinel-2 imagery)",
         "Algal bloom in the Baltic Sea, observed by Copernicus Sentinel-2 on 20 July 2019 (Contains modified Copernicus Sentinel data, 2019, processed by ESA)",
-        "Fishing vessels detected in the Mediterranean Sea using Copernicus Sentinel-1 satellite data processed using artificial intelligence (AI) techniques. Fishing currently provides 17% of the world’s meat consumption. (ESA – data source: Paolo et al, 2024/Global Fishing Watch)"
+        "Fishing vessels detected in the Mediterranean Sea using Copernicus Sentinel-1 satellite radar data processed using artificial intelligence (AI) techniques. Fishing currently provides 17% of the world’s meat consumption. (ESA – data source: Paolo et al, 2024/Global Fishing Watch)"
       ],
       "imageFits": [
         "cover",
