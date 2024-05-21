@@ -8,6 +8,7 @@ import {ChapterType} from '../../types/globe';
 import cx from 'classnames';
 
 import styles from './chapter-progress-indication.module.styl';
+
 interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
   gap?: number;

@@ -6,16 +6,17 @@ import {Drawer} from 'vaul';
 
 import {useScreenSize} from '../../../../../hooks/use-screen-size';
 
-import {getSnapPoint} from '../utils/nav-drawer';
 import DrawerToggleIcon from '../icons/drawer-toggle-icon/drawer-toggle-icons';
+import {getSnapPoint} from '../utils/nav-drawer';
 
-import styles from './nav-drawer.module.styl';
 import {GlobeIcon} from '../../../../main/icons/globe-icon';
 import {chapters} from '../../config/main';
+import {useChapter} from '../../hooks/use-chapter';
 import Button from '../button/button';
 import {GlobeExploreIcon} from '../icons/globe-explore-icon';
 import NavChapterOverview from '../nav-chapter-overview/nav-chapter-overview';
-import {useChapter} from '../../hooks/use-chapter';
+
+import styles from './nav-drawer.module.styl';
 
 /**
  * NavDrawer component.
