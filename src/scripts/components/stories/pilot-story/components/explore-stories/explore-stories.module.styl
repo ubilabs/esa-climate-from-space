@@ -1,0 +1,39 @@
+@require '../../../../../../variables.styl'
+
+.exploreStories
+  height: 100%
+  background: linear-gradient(250deg, #003349 19.74%, rgba(0, 51, 73, 0) 106.06%), #000
+  color: #fff
+  display: flex
+  gap: emCalc(18px)
+  scroll-snap-align: start
+
+  h1
+    margin: 0
+
+.storiesContainer
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  text-align: center
+
+  .storyItem
+    padding: emCalc(48px) emCalc(24px)
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    img
+      margin: emCalc(24px) 0
+      width: 90%
+
+  .storyItem:not(:last-child)
+    border-bottom: 1px solid $deepSpace2
+
+.exploreButton
+  background: none
+  border: none
+  box-shadow: none
+  display: flex
+  flex-direction: row-reverse

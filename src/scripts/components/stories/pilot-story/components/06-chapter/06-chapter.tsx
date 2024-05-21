@@ -9,7 +9,7 @@ import ChapterText, {TextPageContent} from '../chapter-text/chapter-text';
 import ChapterVideo from '../chapter-video/chapter-video';
 import ChapterGraph from '../chapter-graph/chapter-graph';
 import ChapterConclusion from '../chapter-conclusion/chapter-conclusion';
-import {subStory} from '../../config/06-config';
+import {subStory} from '../../config/main';
 
 interface Props {
   onChapterSelect: ChapterSelectionHandler;

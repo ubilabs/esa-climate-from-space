@@ -4,6 +4,7 @@ import cx from 'classnames';
 
 import Button from '../button/button';
 import {ArrowBackIcon} from '../../../../main/icons/arrow-back-icon';
+import {ArrowForwardIcon} from '../../../../main/icons/arrow-forward-icon';
 
 import styles from './chapter-conclusion.module.styl';
 
@@ -41,7 +42,7 @@ const ChapterConclusion: FunctionComponent<Props> = ({
       <Button
         isBackButton
         label="Next Giant"
-        icon={ArrowBackIcon}
+        icon={ArrowForwardIcon}
         id={styles.substoryButton}
         onClick={onNextStory}
       />

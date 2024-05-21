@@ -2,13 +2,24 @@ import React, {useEffect, useState} from 'react';
 import {useSwipeable} from 'react-swipeable';
 import cx from 'classnames';
 
-import styles from './pilot-carousel.module.styl';
-
 import {MethaneSources, methaneSources} from '../../types/globe';
 import {MethaneSourcesIcon} from '../icons/methane-sources-icon/methane-source-icon';
 import {useScreenSize} from '../../../../../hooks/use-screen-size';
 import SwipeIcon from '../icons/swipe-icon/swipe-icon';
 import {Parallax} from 'react-scroll-parallax';
+import Legend, {LegendItems} from '../legend/legend';
+
+import styles from './pilot-carousel.module.styl';
+
+const legendItems: LegendItems[] = [
+  {name: 'Anthrophogenic', color: 'rgba(232, 119, 34, 1)'},
+  {name: 'Natural', color: 'rgba(0, 179, 152, 1)'},
+  {
+    name: 'Anthrophogenic and Natural',
+    color:
+      'linear-gradient(45deg, rgba(0, 179, 152, 1) 25%, rgba(232, 119, 34, 1) 25%, rgba(232, 119, 34, 1) 50%, rgba(0, 179, 152, 1) 50%, rgba(0, 179, 152, 1) 75%, rgba(232, 119, 34, 1) 75%)'
+  }
+];
 
 const PilotCarousel = () => {
   const [progress, setProgress] = useState(0);
@@ -68,12 +79,10 @@ const PilotCarousel = () => {
       onProgressChange={progress => setProgress(progress)}
       className={styles.carouselWrapper}>
       <Parallax speed={15}>
-        <h1>Some of the primary sources include:</h1>
-        <legend>
-          <span>Anthrophogenic</span>
-          <span>Natural</span>
-          <span>Anthrophogenic and Natural</span>
-        </legend>
+        <Legend
+          title="Some of the primary sources include:"
+          legendItems={legendItems}
+        />
       </Parallax>
 
       <div className={styles.explanation}>
