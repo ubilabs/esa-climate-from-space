@@ -15,6 +15,7 @@ import {chapters} from '../../config/main';
 import Button from '../button/button';
 import {GlobeExploreIcon} from '../icons/globe-explore-icon';
 import NavChapterOverview from '../nav-chapter-overview/nav-chapter-overview';
+import {useChapter} from '../../hooks/use-chapter';
 
 /**
  * NavDrawer component.
@@ -26,8 +27,11 @@ import NavChapterOverview from '../nav-chapter-overview/nav-chapter-overview';
  * @returns {ReactElement} The rendered NavDrawer component.
  */
 const NavDrawer: FunctionComponent = () => {
+  const {selectedChapterIndex} = useChapter();
   // Title is visible in the Nav Drawer when it is not open, basically the handle
-  const handle = <h2 className={styles.header}>{chapters[0].subtitle}</h2>;
+  const handle = (
+    <h2 className={styles.header}>{chapters[selectedChapterIndex].subtitle}</h2>
+  );
 
   // Content is visible in the Nav Drawer when it is open
   const children = (
