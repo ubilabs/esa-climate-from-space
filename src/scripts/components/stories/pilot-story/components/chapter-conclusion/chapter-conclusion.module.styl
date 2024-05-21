@@ -14,6 +14,8 @@
 
 .conclusion
   button
+    position: initial
+    margin: 0
     opacity: 0
     transition: opacity 0.2s ease-in
 
@@ -36,3 +38,17 @@
   flex-direction: row-reverse
   padding-right: emCalc(8px)
   padding-left: emCalc(12px)
+
+@media screen and (min-width: 768px)
+  .conclusion
+    padding: emCalc(90px)
+
+  .chapterText
+    display: flex
+    justify-content: center
+
+    p
+      max-width: 50%
+      align-self: center
+      font-size: 62px
+      line-height: 68px

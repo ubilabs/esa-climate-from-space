@@ -1,7 +1,7 @@
 @require '../../../../../../variables.styl'
 
 .chapterText
-  height: 100%
+  height: fit-content
   color: $textWhite
   text-align: center
   font-style: normal
@@ -26,3 +26,22 @@
     font-size: emCalc(20px)
     line-height: 22px
     margin-top: emCalc(20px)
+
+@media screen and (min-width: 768px)
+  .chapterText
+    padding: emCalc(20px)
+    max-width: 80%
+    align-self: center
+
+    h3
+      font-size: emCalc(42px)
+      margin: 0
+
+    p
+      font-size: emCalc(62px)
+      line-height: 68px
+
+  .chapterText.textSections
+    p
+      font-size: emCalc(28px)
+      line-height: 32px

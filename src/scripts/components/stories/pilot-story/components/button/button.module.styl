@@ -28,6 +28,10 @@
     text-decoration: underline
 
 .backButton
+  position: absolute
+  top: $headerHeight
+  left: 0
+  margin: emCalc(24px)
   padding: emCalc(8px) emCalc(12px) emCalc(8px) emCalc(8px)
   border: 2px solid $darkTeal
   background: rgba(0, 125, 138, 0.2)
@@ -39,3 +43,7 @@
 
   &:hover
     text-decoration: underline
+
+@media screen and (min-width: 768px)
+  .backButton
+    margin: emCalc(24px)

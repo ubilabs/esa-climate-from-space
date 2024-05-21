@@ -12,7 +12,9 @@ import styles from './explore-stories.module.styl';
 const ExploreStories: FunctionComponent = () => (
   <SnapWrapper className={styles.exploreStories}>
     <Parallax speed={-5}>
-      <h1>Read other stories that are similar to this story.</h1>
+      <h1 className={styles.exploreText}>
+        Read other stories that are similar to this story.
+      </h1>
     </Parallax>
     <div className={styles.storiesContainer}>
       <div className={styles.storyItem}>
