@@ -1,6 +1,13 @@
-import React, {FunctionComponent, LegacyRef, useEffect, useRef} from 'react';
+import React, {
+  FunctionComponent,
+  LegacyRef,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
+import {useGlobe, useGlobeLayers, useGlobeMarkers} from '../../hooks/use-globe';
 
-import {LayerProps, WebGlGlobe} from '@ubilabs/esa-webgl-globe';
+import {WebGlGlobe} from '@ubilabs/esa-webgl-globe';
 
 import {useParallax} from 'react-scroll-parallax';
 
@@ -55,60 +62,51 @@ function moveGlobe(
 
 interface Props {
   relativePosition: {x: number; y: number; z: number};
-  isSpinning: boolean;
-  isVisible: boolean;
   globeMovements: GlobeMovementsPerChapter;
   children: React.ReactNode;
 }
 
 const Globe: FunctionComponent<Props> = ({
   relativePosition,
-  isSpinning,
-  isVisible,
   globeMovements,
   children
 }) => {
   const parallax = useParallax({});
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [globe, setGlobe] = useState<WebGlGlobe | null>(null);
   const rotationRef = useRef<number>(180);
   const distanceRef = useRef<number>(INITIAL_DISTANCE);
   const progressRef = useRef<number>(0);
-  const [globe, setGlobe] = React.useState<WebGlGlobe | null>(null);
+
+  const {markers} = useGlobeMarkers();
+  const {layers} = useGlobeLayers();
+  const {isSpinning, isTouchable} = useGlobe();
 
   useEffect(() => {
     if (containerRef.current && !globe) {
-      // Latest timestamp: December 2021
-      const timeIndex = 71;
-      // @ts-ignore - injected via webpack's define plugin
-      const version = INFO_VERSION;
-
       const newGlobe = new WebGlGlobe(containerRef.current, {
-        layers: [
-          {
-            id: 'basemap',
-            zIndex: 0,
-            type: 'tile',
-            maxZoom: 5,
-            urlParameters: {},
-            getUrl: ({x, y, zoom}) =>
-              `https://storage.googleapis.com/esa-cfs-tiles/${version}/basemaps/land/${zoom}/${x}/${y}.png`
-          } as LayerProps,
-          {
-            id: 'greenhouse.xch4',
-            zIndex: 1,
-            type: 'tile',
-            maxZoom: 5,
-            urlParameters: {},
-            getUrl: ({x, y, zoom}) =>
-              `https://storage.googleapis.com/esa-cfs-tiles/${version}/greenhouse.xch4/tiles/${timeIndex}/${zoom}/${x}/${y}.png`
-          } as LayerProps
-        ],
+        layers,
+        markers,
         cameraView: {lng: 0, lat: 0, altitude: distanceRef.current}
       });
 
       setGlobe(newGlobe);
     }
-  }, [containerRef, globe]);
+  }, [containerRef, globe, layers, markers]);
+
+  useEffect(() => {
+    globe?.setProps({layers, markers});
+  }, [globe, layers, markers]);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.style.pointerEvents = isTouchable.current
+        ? 'initial'
+        : 'none';
+      containerRef.current.style.zIndex = isTouchable.current ? '1' : '0';
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTouchable.current, containerRef]);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -124,13 +122,6 @@ const Globe: FunctionComponent<Props> = ({
   }, [relativePosition.x, relativePosition.y, relativePosition.z]);
 
   useEffect(() => {
-    containerRef.current?.style.setProperty(
-      'visibility',
-      isVisible ? 'visible' : 'hidden'
-    );
-  }, [isVisible]);
-
-  useEffect(() => {
     (function spin() {
       rotationRef.current += 0.1;
       const lng = (rotationRef.current % 360) - 180;
@@ -139,11 +130,12 @@ const Globe: FunctionComponent<Props> = ({
           cameraView: {lng, lat: 10, altitude: distanceRef.current}
         });
 
-      if (isSpinning) {
+      if (isSpinning.current) {
         requestAnimationFrame(spin);
       }
     })();
-  }, [isSpinning, globe]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [globe, isSpinning.current]);
 
   useEffect(() => {
     (function move() {

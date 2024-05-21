@@ -1,5 +1,8 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {ParallaxProvider} from 'react-scroll-parallax';
+
+import {GlobeContextProvider} from './provider/globe-provider';
+
 import Share from '../../main/share/share';
 import ChapterOne from './components/01-chapter/01-chapter';
 import ChapterTwo from './components/02-chapter/02-chapter';
@@ -56,23 +59,23 @@ const PilotStory: FunctionComponent = () => {
               storyStarted={storyStarted}
               onStoryStart={() => setStoryStarted(true)}
             />
-            <Globe
-              relativePosition={{x: -30, y: 0, z: 0}}
-              isSpinning={true}
-              isVisible={true}
-              globeMovements={globeMovementsPerChapter}>
-              {storyStarted && (
-                <div className={styles.chaptersContainer}>
-                  <ChapterOne chapterIndex={0} />
-                  <ChapterTwo chapterIndex={1} />
-                  <ChapterThree chapterIndex={2} />
-                  <ChapterFour chapterIndex={3} />
-                  <ChapterFive chapterIndex={4} />
-                  <ChapterSix chapterIndex={5} />
-                  <ChapterSeven chapterIndex={6} />
-                </div>
-              )}
-            </Globe>
+            <GlobeContextProvider>
+              <Globe
+                relativePosition={{x: -30, y: 0, z: 0}}
+                globeMovements={globeMovementsPerChapter}>
+                {storyStarted && (
+                  <div className={styles.chaptersContainer}>
+                    <ChapterOne chapterIndex={0} />
+                    <ChapterTwo chapterIndex={1} />
+                    <ChapterThree chapterIndex={2} />
+                    <ChapterFour chapterIndex={3} />
+                    <ChapterFive chapterIndex={4} />
+                    <ChapterSix chapterIndex={5} />
+                    <ChapterSeven chapterIndex={6} />
+                  </div>
+                )}
+              </Globe>
+            </GlobeContextProvider>
           </div>
 
           {storyStarted && <NavDrawer />}
