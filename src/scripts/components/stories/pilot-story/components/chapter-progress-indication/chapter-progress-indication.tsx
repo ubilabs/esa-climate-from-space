@@ -1,29 +1,82 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useRef} from 'react';
+
+import {useChapter} from '../../hooks/use-chapter';
+
+import {dataIsTitleInView, progressIndicationElement} from '../../config/main';
+import {ChapterType} from '../../types/globe';
 
 import cx from 'classnames';
+
 import styles from './chapter-progress-indication.module.styl';
 
 interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
-  selectedChapterIndex: number;
   gap?: number;
   className?: string;
 }
 
+/**
+ * Displays the progress indication for the chapters in a story.
+ * In conjunction with the useChapterObserver hook, it displays the current position of the story.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Array} props.chapters - The array of chapters.
+ * @param {string} [props.className] - The additional CSS class name.
+ * @param {number} [props.gap=24] - The gap between the chapter symbols in pixels.
+ * @returns {JSX.Element} The chapter progress indication component.
+ */
 const ChapterProgressIndication: FunctionComponent<Props> = ({
   chapters,
-  selectedChapterIndex,
   className,
   gap = 24
 }) => {
   // The gap between the chapter symbols
-  // Can be set to any value in px
+  // Can be set to any value in px (defaults to 24px)
   const style = {
     '--gap': `${gap}px`
   } as React.CSSProperties;
 
+  const {selectedChapterIndex, chapterType, progress} = useChapter();
+
+  const indicationRef = useRef<HTMLDivElement>(null);
+
+  if (indicationRef.current) {
+    if (chapterType === ChapterType.CONTENT) {
+      indicationRef.current.setAttribute(dataIsTitleInView, 'false');
+
+      const progressIndicatorHeight = indicationRef.current.clientHeight;
+      const chaptersLength = chapters.length;
+
+      if (progressIndicatorHeight && chaptersLength) {
+        const indicatorYOffsetInPx =
+          (progressIndicatorHeight / chaptersLength + 1) *
+            selectedChapterIndex +
+          (progressIndicatorHeight / chaptersLength + 1) * progress;
+
+        const indicatorYOffsetInPercent = `${
+          (indicatorYOffsetInPx / progressIndicatorHeight) * 100
+        }%`;
+
+        indicationRef.current.style.setProperty(
+          '--indicator-y-offset',
+          indicatorYOffsetInPercent
+        );
+      }
+    } else if (chapterType === ChapterType.INTRO) {
+      indicationRef.current.setAttribute(dataIsTitleInView, 'true');
+    }
+  }
+
   return (
-    <div className={cx(styles.progressIndication, className)} style={style}>
+    <div
+      ref={indicationRef}
+      className={cx(
+        styles.progressIndication,
+        className,
+        progressIndicationElement
+      )}
+      style={style}>
       {Array.from({length: chapters.length}).map((_, index) => (
         <span key={index} data-is-selected={index === selectedChapterIndex} />
       ))}
