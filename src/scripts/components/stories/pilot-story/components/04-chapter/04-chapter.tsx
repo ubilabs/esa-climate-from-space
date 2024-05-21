@@ -7,15 +7,13 @@ import imgSrc1 from '../../assets/01_sentinel.png';
 import imgSrc2 from '../../assets/02_sentinel.png';
 import imgSrc3 from '../../assets/03_sentinel.png';
 
-import {ChapterSelectionHandler} from '../../types/globe';
-
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText from '../chapter-text/chapter-text';
 import Chapter from '../chapter/chapter';
 import SatelliteIcon from '../icons/satellite-icon/satellite-icon';
 
 interface Props {
-  onChapterSelect: ChapterSelectionHandler;
+  chapterIndex: number;
 }
 
 const options: RadialInfoOption[] = [
@@ -48,9 +46,10 @@ const options: RadialInfoOption[] = [
   }
 ];
 
-const ChapterFour: FunctionComponent<Props> = ({onChapterSelect}) => (
-  <Chapter scrollIndex={3} parallaxProps={onChapterSelect}>
+const ChapterFour: FunctionComponent<Props> = ({chapterIndex}) => (
+  <Chapter scrollIndex={chapterIndex}>
     <ChapterIntro
+      scrollIndex={chapterIndex}
       subTitle="Chapter 4: Mapping the Methane Giants"
       title="Resolution Matters"
     />

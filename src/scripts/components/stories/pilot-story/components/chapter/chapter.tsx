@@ -3,8 +3,10 @@ import {Parallax, ParallaxProps} from 'react-scroll-parallax';
 
 import cx from 'classnames';
 
-import styles from './chapter.module.styl';
+import {useChapter} from '../../hooks/use-chapter';
 
+import styles from './chapter.module.styl';
+import {chapterMainElement} from '../../config/main';
 interface Props
   extends PropsWithChildren<React.JSX.IntrinsicElements['section']> {
   scrollIndex: number;
@@ -28,17 +30,24 @@ const Chapter: FunctionComponent<Props> = ({
   className,
   parallaxProps,
   ...rest
-}) => (
-  <section
-    className={cx(styles.sectionContainer, className)}
-    // the data-scroll-index attribute is used to determine the scroll index of the chapter
-    // If not provided, the navigation will not work correctly
-    data-scroll-index={scrollIndex}
-    {...rest}>
-    <Parallax {...parallaxProps} id="chapter">
-      {children}
-    </Parallax>
-  </section>
-);
+}) => {
+  const {onSetProgress} = useChapter();
+  return (
+    <section
+      className={cx(styles.sectionContainer, className)}
+      // the data-scroll-index attribute is used to determine the scroll index of the chapter
+      // If not provided, the navigation will not work correctly
+      data-scroll-index={scrollIndex}
+      {...rest}>
+      <Parallax
+        {...parallaxProps}
+        id={chapterMainElement}
+        data-scroll-index={scrollIndex}
+        onProgressChange={() => onSetProgress()}>
+        {children}
+      </Parallax>
+    </section>
+  );
+};
 
 export default Chapter;

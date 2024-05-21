@@ -7,20 +7,16 @@ import Chapter from '../chapter/chapter';
 import PilotCarousel from '../pilot-carousel/pilot-carousel';
 import ExploreDataset from '../explore-dataset/explore-dataset';
 
-import {ChapterSelectionHandler} from '../../types/globe';
-
 import styles from './02-chapter.module.styl';
 
 interface Props {
-  onChapterSelect: ChapterSelectionHandler;
+  chapterIndex: number;
 }
 
-const ChapterTwo: FunctionComponent<Props> = ({onChapterSelect}) => (
-  <Chapter
-    scrollIndex={1}
-    className={styles.sectionContainer}
-    parallaxProps={onChapterSelect}>
+const ChapterTwo: FunctionComponent<Props> = ({chapterIndex}) => (
+  <Chapter scrollIndex={chapterIndex} className={styles.sectionContainer}>
     <ChapterIntro
+      scrollIndex={chapterIndex}
       subTitle="Chapter 2: Methane Sources"
       title="Where does methane come from?"
     />

@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  PropsWithChildren,
-  useEffect,
-  useMemo,
-  useState
-} from 'react';
+import React, {FunctionComponent, useEffect, useMemo, useState} from 'react';
 
 import cx from 'classnames';
 
@@ -12,14 +6,17 @@ import {Drawer} from 'vaul';
 
 import {useScreenSize} from '../../../../../hooks/use-screen-size';
 
-import {getSnapPoint} from '../utils/nav-drawer';
 import DrawerToggleIcon from '../icons/drawer-toggle-icon/drawer-toggle-icons';
+import {getSnapPoint} from '../utils/nav-drawer';
+
+import {GlobeIcon} from '../../../../main/icons/globe-icon';
+import {chapters} from '../../config/main';
+import {useChapter} from '../../hooks/use-chapter';
+import Button from '../button/button';
+import {GlobeExploreIcon} from '../icons/globe-explore-icon';
+import NavChapterOverview from '../nav-chapter-overview/nav-chapter-overview';
 
 import styles from './nav-drawer.module.styl';
-
-interface Props extends PropsWithChildren {
-  handle: React.JSX.Element;
-}
 
 /**
  * NavDrawer component.
@@ -30,7 +27,31 @@ interface Props extends PropsWithChildren {
  * @param {ReactElement} props.handle - The handle element.
  * @returns {ReactElement} The rendered NavDrawer component.
  */
-const NavDrawer: FunctionComponent<Props> = ({children, handle}) => {
+const NavDrawer: FunctionComponent = () => {
+  const {selectedChapterIndex} = useChapter();
+  // Title is visible in the Nav Drawer when it is not open, basically the handle
+  const handle = (
+    <h2 className={styles.header}>{chapters[selectedChapterIndex].subtitle}</h2>
+  );
+
+  // Content is visible in the Nav Drawer when it is open
+  const children = (
+    <div className={styles.navContainer}>
+      <NavChapterOverview chapters={chapters} />
+      <Button
+        link={'/stories'}
+        icon={GlobeIcon}
+        label="Back to Stories"
+        className={styles.navLinks}
+      />
+      <Button
+        link={'/'}
+        className={styles.navLinks}
+        icon={GlobeExploreIcon}
+        label="explore the story datasets"
+      />
+    </div>
+  );
   const [ref, setRef] = useState<HTMLDivElement | null>(null);
 
   const {isMobile} = useScreenSize();

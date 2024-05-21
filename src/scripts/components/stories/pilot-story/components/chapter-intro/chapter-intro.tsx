@@ -1,20 +1,27 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Parallax} from 'react-scroll-parallax';
-import cx from 'classnames';
 
 import {GlobeIcon} from '../../../../main/icons/globe-icon';
 import ScrollHint from '../scroll-hint/scroll-hint';
 import Button from '../button/button';
 import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
+import {chapterIntroElement} from '../../config/main';
+
+import cx from 'classnames';
 import styles from './chapter-intro.module.styl';
 
 interface Props {
   title: string;
   subTitle: string;
+  scrollIndex: number;
 }
 
-const ChapterIntro: FunctionComponent<Props> = ({title, subTitle}) => {
+const ChapterIntro: FunctionComponent<Props> = ({
+  title,
+  subTitle,
+  scrollIndex
+}) => {
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(false);
 
@@ -36,8 +43,12 @@ const ChapterIntro: FunctionComponent<Props> = ({title, subTitle}) => {
           isBackButton
         />
 
-        <div className={styles.introContent}>
-          <h2 className={styles.subTitle}>{subTitle}</h2>
+        <div className={cx(styles.introContent)}>
+          <h2
+            className={cx(styles.subTitle, chapterIntroElement)}
+            data-scroll-index={scrollIndex}>
+            {subTitle}
+          </h2>
           <p className={styles.title}>{title}</p>
         </div>
 

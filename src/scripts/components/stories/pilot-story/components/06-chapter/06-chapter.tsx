@@ -1,8 +1,6 @@
 import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
 
-import {ChapterSelectionHandler} from '../../types/globe';
-
 import Chapter from '../chapter/chapter';
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText, {TextPageContent} from '../chapter-text/chapter-text';
@@ -14,7 +12,7 @@ import ChapterMarkers from '../chapter-markers/chapter-markers';
 import {getMarkerHtml} from '../../../../main/globe/get-marker-html';
 
 interface Props {
-  onChapterSelect: ChapterSelectionHandler;
+  chapterIndex: number;
 }
 
 export interface SubStoryContent {
@@ -40,7 +38,7 @@ export interface SubStoryContent {
   conclusion: string;
 }
 
-const ChapterSix: FunctionComponent<Props> = ({onChapterSelect}) => {
+const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
   const history = useHistory();
   const location = useLocation();
   const storyRef = useRef<HTMLDivElement>(null);
@@ -103,7 +101,7 @@ const ChapterSix: FunctionComponent<Props> = ({onChapterSelect}) => {
     return (
       <>
         <div ref={subIntroRef}>
-          <ChapterIntro subTitle={subTitle} title={title} />
+          <ChapterIntro subTitle={subTitle} title={title} scrollIndex={6} />
         </div>
         <ChapterText text={textPage1.text} title={textPage1.title} />
         <ChapterText text={textPage2.text} title={textPage2.title} />
@@ -120,9 +118,10 @@ const ChapterSix: FunctionComponent<Props> = ({onChapterSelect}) => {
   };
 
   return (
-    <Chapter scrollIndex={5} parallaxProps={onChapterSelect}>
+    <Chapter scrollIndex={chapterIndex}>
       <div ref={storyRef}>
         <ChapterIntro
+          scrollIndex={chapterIndex}
           subTitle="Chapter 6: Mapping the Methane Giants"
           title="10 largest methane leaks on record"
         />
