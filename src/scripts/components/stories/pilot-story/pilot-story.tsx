@@ -115,8 +115,6 @@ const PilotStory: FunctionComponent = () => {
           />
           <Globe
             relativePosition={{x: -30, y: 0, z: 0}}
-            isSpinning={true}
-            isVisible={true}
             globeMovements={globeMovementsPerChapter}>
             {storyStarted && (
               <div className={styles.chaptersContainer}>

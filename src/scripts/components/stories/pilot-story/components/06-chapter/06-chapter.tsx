@@ -10,6 +10,8 @@ import ChapterVideo from '../chapter-video/chapter-video';
 import ChapterGraph from '../chapter-graph/chapter-graph';
 import ChapterConclusion from '../chapter-conclusion/chapter-conclusion';
 import {subStory} from '../../config/main';
+import ChapterMarkers from '../chapter-markers/chapter-markers';
+import {getMarkerHtml} from '../../../../main/globe/get-marker-html';
 
 interface Props {
   onChapterSelect: ChapterSelectionHandler;
@@ -19,6 +21,7 @@ export interface SubStoryContent {
   id: string;
   subTitle: string;
   title: string;
+  location: {lat: number; lng: number};
   textPage1: TextPageContent;
   textPage2: TextPageContent;
   videoPage: {
@@ -52,17 +55,23 @@ const ChapterSix: FunctionComponent<Props> = ({onChapterSelect}) => {
     selectedGiant && setSelectedGiantContent(selectedGiant);
   }, [location.search]);
 
-  const handleSubStoryChange = () => {
+  const handleSubStoryChange = (subStoryId?: string) => {
     if (!selectedGiantContent) {
       return;
     }
 
-    const currentIndex = subStory.indexOf(selectedGiantContent);
-    const nextIndex = (currentIndex + 1) % subStory.length;
-    const nextStoryIndex = subStory[nextIndex];
-
     const params = new URLSearchParams(location.search);
-    params.set('giant', nextStoryIndex.id);
+
+    if (!subStoryId) {
+      const currentIndex = subStory.indexOf(selectedGiantContent);
+      const nextIndex = (currentIndex + 1) % subStory.length;
+      const nextStoryIndex = subStory[nextIndex];
+
+      params.set('giant', nextStoryIndex.id);
+    } else {
+      params.set('giant', subStoryId);
+    }
+
     history.push({
       pathname: '/stories/pilot/6',
       search: params.toString()
@@ -118,7 +127,17 @@ const ChapterSix: FunctionComponent<Props> = ({onChapterSelect}) => {
           title="10 largest methane leaks on record"
         />
       </div>
-      <ChapterText text="Space for Globe with markers" />
+      <ChapterMarkers
+        markers={subStory.map(({id, title, location: latLng}) => ({
+          id,
+          html: getMarkerHtml(title),
+          onClick: () => {
+            handleSubStoryChange(id);
+          },
+          offset: [0, 0],
+          ...latLng
+        }))}
+      />
       {selectedGiantContent && renderSubstory()}
     </Chapter>
   );

@@ -39,6 +39,7 @@ export const subStory: SubStoryContent[] = [
     id: '01',
     subTitle: 'Methane Giant 01',
     title: 'Karaturun East Blowout 2023',
+    location: {lat: 43.6992455, lng: 51.2108465},
     textPage1: {
       title: 'Incident Introduction',
       text: 'The Karaturun East Blowout of 2023 was a significant methane leak incident that occurred in a gas field located in Turkmenistan.'
@@ -74,6 +75,7 @@ export const subStory: SubStoryContent[] = [
     id: '02',
     subTitle: 'Methane Giant 02',
     title: 'Lorem Ipsum',
+    location: {lat: 62.3537376, lng: 37.3014177},
     textPage1: {
       title: 'Lorem Ipsum',
       text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit, aliquid cum, vero non est minima rerum accusantium placeat quisquam eum quas vel, consequatur facilis alias blanditiis facere! Vel, fugit earum.'
