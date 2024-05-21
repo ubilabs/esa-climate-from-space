@@ -1,5 +1,8 @@
 import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {ParallaxProvider} from 'react-scroll-parallax';
+
+import {GlobeContextProvider} from './provider/globe-provider';
+
 import Share from '../../main/share/share';
 import ChapterOne from './components/01-chapter/01-chapter';
 import ChapterTwo from './components/02-chapter/02-chapter';
@@ -113,21 +116,23 @@ const PilotStory: FunctionComponent = () => {
             storyStarted={storyStarted}
             onStoryStart={() => setStoryStarted(true)}
           />
-          <Globe
-            relativePosition={{x: -30, y: 0, z: 0}}
-            globeMovements={globeMovementsPerChapter}>
-            {storyStarted && (
-              <div className={styles.chaptersContainer}>
-                <ChapterOne onChapterSelect={handleChapterSelection(0)} />
-                <ChapterTwo onChapterSelect={handleChapterSelection(1)} />
-                <ChapterThree onChapterSelect={handleChapterSelection(2)} />
-                <ChapterFour onChapterSelect={handleChapterSelection(3)} />
-                <ChapterFive onChapterSelect={handleChapterSelection(4)} />
-                <ChapterSix onChapterSelect={handleChapterSelection(5)} />
-                <ChapterSeven onChapterSelect={handleChapterSelection(6)} />
-              </div>
-            )}
-          </Globe>
+          <GlobeContextProvider>
+            <Globe
+              relativePosition={{x: -30, y: 0, z: 0}}
+              globeMovements={globeMovementsPerChapter}>
+              {storyStarted && (
+                <div className={styles.chaptersContainer}>
+                  <ChapterOne onChapterSelect={handleChapterSelection(0)} />
+                  <ChapterTwo onChapterSelect={handleChapterSelection(1)} />
+                  <ChapterThree onChapterSelect={handleChapterSelection(2)} />
+                  <ChapterFour onChapterSelect={handleChapterSelection(3)} />
+                  <ChapterFive onChapterSelect={handleChapterSelection(4)} />
+                  <ChapterSix onChapterSelect={handleChapterSelection(5)} />
+                  <ChapterSeven onChapterSelect={handleChapterSelection(6)} />
+                </div>
+              )}
+            </Globe>
+          </GlobeContextProvider>
         </div>
         {storyStarted && <NavDrawer handle={title} children={content} />}
 

@@ -1,6 +1,6 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Parallax} from 'react-scroll-parallax';
-import {useGlobe, useGlobeMarkers} from '../globe/globe';
+import {useGlobe, useGlobeMarkers} from '../../hooks/use-globe';
 
 import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
@@ -25,7 +25,8 @@ const ChapterMarkers: FunctionComponent<MarkersPageContent> = ({markers}) => {
       setIsSpinning(true);
       setIsTouchable(false);
     }
-  }, [isInView, setMarkers, markers, setIsSpinning, setIsTouchable]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInView, setMarkers, markers]);
 
   return (
     <SnapWrapper>
