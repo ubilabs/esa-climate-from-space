@@ -21,10 +21,6 @@ import styles from './nav-drawer.module.styl';
 /**
  * NavDrawer component.
  *
- * @component
- * @param {Props} props - The component props.
- * @param {ReactNode} props.children - The children elements.
- * @param {ReactElement} props.handle - The handle element.
  * @returns {ReactElement} The rendered NavDrawer component.
  */
 const NavDrawer: FunctionComponent = () => {

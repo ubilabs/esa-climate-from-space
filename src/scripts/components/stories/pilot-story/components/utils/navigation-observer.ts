@@ -25,6 +25,9 @@ export class NavigationObserver {
       threshold: 1
     });
     this.handleSetChapter = (index: number, type: ChapterType) => {
+      if (Number.isNaN(index)) {
+        return;
+      }
       this.setSelectedChapterIndex(index);
       this.setChapterType(type);
     };

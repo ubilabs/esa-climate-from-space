@@ -8,8 +8,6 @@ import {useChapter} from '../../hooks/use-chapter';
 
 interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
-  // setSelectedChapterIndex: (index: number) => void;
-  // selectedChapterIndex: number;
   isCollapsed?: boolean;
   className?: string;
   gap?: number;
