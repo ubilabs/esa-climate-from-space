@@ -7,6 +7,7 @@ import ScrollHint from '../scroll-hint/scroll-hint';
 import Button from '../button/button';
 
 import styles from './story-intro.module.styl';
+import {scrollToChapterIndex} from '../nav-chapter-overview/nav-chapter-overview';
 
 interface Props {
   storyStarted: boolean;
@@ -39,7 +40,15 @@ const StoryIntro: FunctionComponent<Props> = ({storyStarted, onStoryStart}) => (
           <>
             <Button
               label="Story"
-              onClick={onStoryStart}
+              onClick={() => {
+                onStoryStart();
+                // Automatically scroll to the first chapter when the story starts
+                const timeout = setTimeout(() => {
+                  scrollToChapterIndex(0);
+                }, 1000);
+
+                return () => clearTimeout(timeout);
+              }}
               id={styles.whiteButton}
             />
             <Button link={'/'} label="Datasets" />
