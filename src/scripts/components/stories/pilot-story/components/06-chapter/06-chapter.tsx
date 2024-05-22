@@ -1,15 +1,20 @@
 import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
 
+import {useChapter} from '../../hooks/use-chapter';
+
+import {getMarkerHtml} from '../../../../main/globe/get-marker-html';
+import {scrollToChapterIndex} from '../nav-chapter-overview/nav-chapter-overview';
+
+import {subStory} from '../../config/main';
+
 import Chapter from '../chapter/chapter';
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText, {TextPageContent} from '../chapter-text/chapter-text';
 import ChapterVideo from '../chapter-video/chapter-video';
 import ChapterGraph from '../chapter-graph/chapter-graph';
 import ChapterConclusion from '../chapter-conclusion/chapter-conclusion';
-import {subStory} from '../../config/main';
 import ChapterMarkers from '../chapter-markers/chapter-markers';
-import {getMarkerHtml} from '../../../../main/globe/get-marker-html';
 
 interface Props {
   chapterIndex: number;
@@ -41,6 +46,7 @@ export interface SubStoryContent {
 const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
   const history = useHistory();
   const location = useLocation();
+  const {setSelectedChapterIndex} = useChapter();
   const storyRef = useRef<HTMLDivElement>(null);
   const subIntroRef = useRef<HTMLDivElement>(null);
   const [selectedGiantContent, setSelectedGiantContent] =
@@ -80,6 +86,11 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
 
   const handleBackToStory = () => {
     storyRef.current?.scrollIntoView({behavior: 'instant'});
+  };
+
+  const handleChapterChange = () => {
+    setSelectedChapterIndex(6);
+    scrollToChapterIndex(6);
   };
 
   const renderSubstory = () => {
@@ -136,6 +147,7 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
           offset: [0, 0],
           ...latLng
         }))}
+        onNextChapter={() => handleChapterChange()}
       />
       {selectedGiantContent && renderSubstory()}
     </Chapter>

@@ -78,6 +78,8 @@ const PilotStory: FunctionComponent = () => {
               </Globe>
             </GlobeContextProvider>
           </div>
+          {/* Container for buttons floating above globe in touch mode */}
+          <div id="floating-button-container" />
 
           {storyStarted && <NavDrawer />}
         </div>

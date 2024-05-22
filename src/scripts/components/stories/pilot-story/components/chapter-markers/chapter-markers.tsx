@@ -1,19 +1,31 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Parallax} from 'react-scroll-parallax';
-import {useGlobe, useGlobeMarkers} from '../../hooks/use-globe';
+import {createPortal} from 'react-dom';
 
-import SnapWrapper from '../snap-wrapper/snap-wrapper';
+import {useGlobe, useGlobeMarkers} from '../../hooks/use-globe';
+import {useScreenSize} from '../../../../../hooks/use-screen-size';
 
 import {MarkerProps} from '@ubilabs/esa-webgl-globe';
 
-export interface MarkersPageContent {
+import SnapWrapper from '../snap-wrapper/snap-wrapper';
+import Button from '../button/button';
+
+import styles from './chapter-marker.module.styl';
+
+interface Props {
   markers: MarkerProps[];
+  onNextChapter: () => void;
 }
 
-const ChapterMarkers: FunctionComponent<MarkersPageContent> = ({markers}) => {
+const ChapterMarkers: FunctionComponent<Props> = ({markers, onNextChapter}) => {
   const [isInView, setIsInView] = useState(false);
   const {setMarkers} = useGlobeMarkers();
   const {setIsSpinning, setIsTouchable} = useGlobe();
+  const {isMobile} = useScreenSize();
+
+  const floatingButtonContainer = document.getElementById(
+    'floating-button-container'
+  );
 
   useEffect(() => {
     if (isInView) {
@@ -32,7 +44,17 @@ const ChapterMarkers: FunctionComponent<MarkersPageContent> = ({markers}) => {
     <SnapWrapper>
       <Parallax
         onEnter={() => setIsInView(true)}
-        onExit={() => setIsInView(false)}></Parallax>
+        onExit={() => setIsInView(false)}>
+        {isMobile &&
+          isInView &&
+          floatingButtonContainer &&
+          createPortal(
+            <div className={styles.buttonContainer}>
+              <Button label="Next Chapter" onClick={onNextChapter} />
+            </div>,
+            floatingButtonContainer
+          )}
+      </Parallax>
     </SnapWrapper>
   );
 };
