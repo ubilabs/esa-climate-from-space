@@ -20,16 +20,14 @@ const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
   const [selectedOption, setSelectedOption] = useState<RadialInfoOption>(
     options[options.length - 1]
   );
-
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const radius = Math.max(130, Math.min(windowWidth / 4, 220));
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  const radius = Math.min(windowWidth / 4, 250);
 
   useEffect(() => {
     setVisible(progress >= 0.4 && progress <= 0.51);

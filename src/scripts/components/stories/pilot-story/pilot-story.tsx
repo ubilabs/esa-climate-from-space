@@ -19,7 +19,11 @@ import StoryIntro from './components/story-intro/story-intro';
 import {useScreenSize} from '../../../hooks/use-screen-size';
 
 import ChapterProgressIndication from './components/chapter-progress-indication/chapter-progress-indication';
-import {chapters, globeMovementsPerChapter} from './config/main';
+import {
+  chapters,
+  globeMovementsPerChapter,
+  globeMovementsPerChapterDesktop
+} from './config/main';
 
 import styles from './pilot-story.module.styl';
 import {ChapterContextProvider} from './provider/chapter-provider';
@@ -52,7 +56,11 @@ const PilotStory: FunctionComponent = () => {
             <GlobeContextProvider>
               <Globe
                 relativePosition={{x: -30, y: 0, z: 0}}
-                globeMovements={globeMovementsPerChapter}>
+                globeMovements={
+                  isDesktop
+                    ? globeMovementsPerChapterDesktop
+                    : globeMovementsPerChapter
+                }>
                 {storyStarted && (
                   <div className={styles.chaptersContainer}>
                     <ChapterOne chapterIndex={0} />
