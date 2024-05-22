@@ -20,7 +20,7 @@ function useChapterContext() {
 
   // Hook to handle the selected chapter index based on the current chapter in view
   // and the progress indication of the current chapter
-  const {selectedChapterIndex, setSelectedChapterIndex, chapterType} =
+  const {selectedChapterIndex, setSelectedChapterIndex, chapterPosition} =
     useIntersectChapters();
 
   /**
@@ -46,7 +46,7 @@ function useChapterContext() {
     selectedChapterIndex,
     setSelectedChapterIndex,
     onSetProgress,
-    chapterType,
+    chapterPosition,
     progress
   };
 }

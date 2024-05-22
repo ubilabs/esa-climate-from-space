@@ -1,12 +1,12 @@
 import {chapterMainElement} from '../../config/main';
-import {ChapterType} from '../../types/globe';
+import {ChapterPosition} from '../../types/globe';
 
 /**
  * Represents a class that observes the navigation and handles intersection events.
  */
 export class NavigationObserver {
   private observer: IntersectionObserver;
-  private handleSetChapter: (index: number, type: ChapterType) => void;
+  private handleSetChapter: (index: number, type: ChapterPosition) => void;
 
   /**
    * Constructs a new instance of the NavigationObserver class.
@@ -19,12 +19,12 @@ export class NavigationObserver {
       elements: {el: HTMLElement; isInView: boolean | null}[];
     } | null,
     private setSelectedChapterIndex: (index: number) => void,
-    private setChapterType: (type: ChapterType) => void
+    private setChapterType: (type: ChapterPosition) => void
   ) {
     this.observer = new IntersectionObserver(this.handleIntersect, {
       threshold: 1
     });
-    this.handleSetChapter = (index: number, type: ChapterType) => {
+    this.handleSetChapter = (index: number, type: ChapterPosition) => {
       // There seems to be in issue on iOs where the index is NaN. Investigate further?
       if (Number.isNaN(index)) {
         return;
@@ -59,9 +59,9 @@ export class NavigationObserver {
     });
 
     if (isTitleInView) {
-      this.handleSetChapter(currentIntroIndex, ChapterType.INTRO);
+      this.handleSetChapter(currentIntroIndex, ChapterPosition.INTRO);
     } else {
-      this.handleSetChapter(currentChapterIndex, ChapterType.CONTENT);
+      this.handleSetChapter(currentChapterIndex, ChapterPosition.CONTENT);
     }
   };
 
