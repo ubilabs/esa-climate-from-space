@@ -25,6 +25,7 @@ export class NavigationObserver {
       threshold: 1
     });
     this.handleSetChapter = (index: number, type: ChapterType) => {
+      // There seems to be in issue on iOs where the index is NaN. Investigate further?
       if (Number.isNaN(index)) {
         return;
       }
@@ -44,13 +45,13 @@ export class NavigationObserver {
     const currentChapter = chapterElements?.filter(({isInView}) => isInView)[0];
 
     const currentChapterIndex = Number(
-      currentChapter?.el.getAttribute('data-scroll-index')
+      currentChapter?.el.getAttribute('data-scroll-index-chapter')
     );
 
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         currentIntroIndex = Number(
-          entry.target.getAttribute('data-scroll-index')
+          entry.target.getAttribute('data-scroll-index-intro')
         );
 
         isTitleInView = true;

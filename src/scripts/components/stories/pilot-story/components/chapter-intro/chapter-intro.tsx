@@ -45,7 +45,7 @@ const ChapterIntro: FunctionComponent<Props> = ({
         <div className={cx(styles.introContent)}>
           <h2
             className={cx(styles.subTitle, chapterIntroElement)}
-            data-scroll-index={scrollIndex}>
+            data-scroll-index-intro={scrollIndex}>
             {subTitle}
           </h2>
           <p className={styles.title}>{title}</p>
