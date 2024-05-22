@@ -22,7 +22,11 @@ const ChapterVideo: FunctionComponent<Props> = ({video}) => {
 
   return (
     <Parallax opacity={[0, 2]} className={styles.chapterVideo}>
-      <Parallax speed={20} className={styles.videoText} easing="easeInQuad">
+      <Parallax
+        speed={-30}
+        translateY={[0, 90]}
+        className={styles.videoText}
+        easing="easeInQuad">
         <h3>{title}</h3>
         <p>{text}</p>
       </Parallax>

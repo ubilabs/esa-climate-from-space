@@ -26,7 +26,7 @@ const ChapterGraph: FunctionComponent<Props> = ({graph}) => {
           legendItems={legendItems}
         />
       ) : (
-        <Parallax speed={20} className={styles.graphText} easing="easeInQuad">
+        <Parallax speed={-10} className={styles.graphText} easing="easeInQuad">
           <h3>{title}</h3>
         </Parallax>
       )}
