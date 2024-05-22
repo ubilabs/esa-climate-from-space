@@ -37,3 +37,32 @@
   box-shadow: none
   display: flex
   flex-direction: row-reverse
+
+@media screen and (min-width: 768px)
+  .exploreStories
+    height: 100vh
+
+  .exploreStories, .storiesContainer
+    flex-direction: row
+    align-items: center
+
+    .storyItem:not(:last-child)
+      border-bottom: none
+
+    .storyItem
+      width: 30%
+      height: 100%
+      align-self: flex-start
+
+      img
+        width: 100%
+
+  .storiesContainer
+    justify-content: flex-end
+    gap: emCalc(50px)
+
+  .exploreStories
+    gap: emCalc(50px)
+
+  .exploreText
+    font-size: emCalc(42px)

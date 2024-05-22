@@ -14,13 +14,14 @@
     z-index: 1
 
 .hidden
-  opacity: 0
-  transition: opacity 0.5s ease-out
+  .storyTitle, .storyDescription, .backToStories
+    opacity: 0
+    transition: opacity 0.5s ease-out
 
 .storyTitle
   color: $textWhite
   font-family: NotesEsa
-  font-size: 48px
+  font-size: emCalc(48px)
   font-style: normal
   font-weight: 700
   line-height: 50px
@@ -30,7 +31,7 @@
 .storyDescription
   color: #fff
   font-family: NotesEsa
-  font-size: 20px
+  font-size: emCalc(20px)
   font-style: normal
   font-weight: 700
   line-height: 24px
@@ -44,3 +45,26 @@
 #whiteButton
   background: $textWhite
   color: $deepSpace
+
+@media screen and (min-width: 768px)
+  .intro
+    padding: $headerHeight emCalc(90px)
+    margin-left: auto
+    max-width: 55%
+
+  .intro.hidden
+    max-width: 100%
+    margin: 0
+
+    .storyTitle, .storyDescription, .backToStories
+      transition: none
+
+  .storyTitle
+    font-size: emCalc(78px)
+    line-height: 80px
+    margin: remCalc(32px) 0
+
+  .introContent
+    display: flex
+    flex-direction: column
+    gap: remCalc(32px)

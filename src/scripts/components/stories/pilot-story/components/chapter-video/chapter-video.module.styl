@@ -49,7 +49,23 @@
 
 @media screen and (min-width: 768px)
   .chapterVideo
-    padding: emCalc(100px) emCalc(50px)
+    height: 100vh
+    padding: $headerHeight emCalc(80px)
+    flex-direction: row
+    gap: 5em
 
   .videoContainer
-    width: 80%
+    width: 100%
+    height: 60vh
+
+  .videoText
+    height: fit-content
+    width: 33%
+    padding: emCalc(90px) emCalc(29px)
+
+    h3
+      font-size: emCalc(42px)
+
+    p
+      font-size: emCalc(28px)
+      line-height: 32px

@@ -21,8 +21,7 @@ const ChapterText: FunctionComponent<Props> = ({text, title, snapPosition}) => (
   <SnapWrapper snapPosition={snapPosition}>
     <Parallax
       className={cx(styles.chapterText, title && styles.textSections)}
-      opacity={[1.5, 0]}
-      easing="easeInQuad">
+      opacity={[0, 2]}>
       {title && <h3>{title}</h3>}
       <p>{text}</p>
     </Parallax>

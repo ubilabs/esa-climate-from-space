@@ -14,25 +14,21 @@ interface Props {
 }
 
 const StoryIntro: FunctionComponent<Props> = ({storyStarted, onStoryStart}) => (
-  <section className={styles.intro}>
+  <section className={cx(styles.intro, storyStarted && styles.hidden)}>
     <Button
       link={'/stories'}
       icon={GlobeIcon}
       label="Back to Stories"
-      className={cx(styles.backToStories, storyStarted && styles.hidden)}
+      className={styles.backToStories}
       isBackButton
     />
 
-    <Parallax className={styles.introContent}>
-      <div className={cx(storyStarted && styles.hidden)}>
-        <h1 className={styles.storyTitle}>
-          Inside the world of Super Emitters
-        </h1>
-        <p className={styles.storyDescription}>
-          Explore the world of methane super emitters – key players in climate
-          change.
-        </p>
-      </div>
+    <Parallax>
+      <h1 className={styles.storyTitle}>Inside the world of Super Emitters</h1>
+      <p className={styles.storyDescription}>
+        Explore the world of methane super emitters – key players in climate
+        change.
+      </p>
 
       <div className={styles.buttonContainer}>
         {storyStarted ? (

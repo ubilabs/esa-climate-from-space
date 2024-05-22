@@ -2,19 +2,24 @@
 
 .intro
   height: 100%
+  width: 100%
   text-align: left
   display: flex
   flex-direction: column
   justify-content: center
+
+  a
+    top: 0
+    margin-left: 0
+
+.introContent, .introBackButton
   opacity: 0
-  transition: opacity 0.2s ease-in
+  transition: opacity 0.03s ease-in
 
 .intro.visible
-  opacity: 1
-
-.backToStories
-  margin-top: emCalc(29px)
-  align-self: flex-start
+  .introContent, .introBackButton
+    opacity: 1
+    transition-duration: 0.2s
 
 .introContent
   display: flex
@@ -40,8 +45,18 @@
 
 .title
   color: $textWhite
-  font-size: 48px
+  font-size: emCalc(48px)
   font-style: normal
   font-weight: 700
   line-height: 50px
   margin: 0
+
+@media screen and (min-width: 768px)
+  .introContent
+    align-self: flex-end
+    max-width: 40vw
+    padding: emCalc(24px)
+
+  .title
+    font-size: emCalc(78px)
+    line-height: 80px

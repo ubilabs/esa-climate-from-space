@@ -61,7 +61,24 @@
 
 @media screen and (min-width: 768px)
   .chapterGraph
-    padding: emCalc(100px) emCalc(50px)
+    padding: $headerHeight emCalc(80px)
+    flex-direction: row
 
   .graphContainer
-    width: 50%
+    width: 60%
+    align-self: center
+
+  .scrollContainer
+    img
+      height: 50vh
+
+  .graphText
+    width: 60%
+    padding: emCalc(90px) emCalc(29px)
+
+    h3
+      font-size: emCalc(42px)
+
+    p
+      font-size: emCalc(28px)
+      line-height: 32px

@@ -26,20 +26,19 @@ const ChapterIntro: FunctionComponent<Props> = ({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setVisible(progress >= 0.49 && progress <= 0.51);
+    setVisible(progress >= 0.5 && progress <= 0.55);
   }, [progress]);
 
   return (
     <SnapWrapper>
       <Parallax
         className={cx(styles.intro, visible && styles.visible)}
-        onProgressChange={progress => setProgress(progress)}
-        speed={-100}>
+        onProgressChange={progress => setProgress(progress)}>
         <Button
           link={'/stories'}
           icon={GlobeIcon}
           label="Back to Stories"
-          className={styles.backToStories}
+          className={cx(styles.introBackButton, visible && styles.visible)}
           isBackButton
         />
 
@@ -51,10 +50,9 @@ const ChapterIntro: FunctionComponent<Props> = ({
           </h2>
           <p className={styles.title}>{title}</p>
         </div>
-
-        <div style={{marginBottom: '50px'}}>
-          <ScrollHint />
-        </div>
+      </Parallax>
+      <Parallax speed={-50} translateY={[-100, 100]} easing="easeOutQuad">
+        <ScrollHint />
       </Parallax>
     </SnapWrapper>
   );

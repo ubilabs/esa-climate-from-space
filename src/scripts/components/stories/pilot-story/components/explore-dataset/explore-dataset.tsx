@@ -1,8 +1,9 @@
 import React, {FunctionComponent} from 'react';
 import {useHistory} from 'react-router-dom';
 import {Parallax} from 'react-scroll-parallax';
-import {useThunkDispatch} from '../../../../../hooks/use-thunk-dispatch';
 
+import {useScreenSize} from '../../../../../hooks/use-screen-size';
+import {useThunkDispatch} from '../../../../../hooks/use-thunk-dispatch';
 import setSelectedLayerIdsAction from '../../../../../actions/set-selected-layer-id';
 
 import ScrollHint from '../scroll-hint/scroll-hint';
@@ -16,6 +17,7 @@ interface Props {
 }
 
 const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
+  const {isMobile} = useScreenSize();
   const history = useHistory();
   const dispatch = useThunkDispatch();
 
@@ -32,7 +34,7 @@ const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
               history.push('/');
             }}
           />
-          <ScrollHint />
+          {isMobile && <ScrollHint />}
         </div>
       </Parallax>
     </section>

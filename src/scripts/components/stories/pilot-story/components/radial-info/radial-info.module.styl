@@ -21,8 +21,6 @@
 
 .elements
   position: relative
-  width: 270px
-  height: 270px
   border: 1px solid #007D8A
   border-radius: 50%
   padding: 6px
@@ -33,6 +31,7 @@
 
   .img
     border-radius: 50%
+    width: 100%
 
 .elements.visible
   opacity: 1
@@ -42,11 +41,12 @@
   content: ''
   position: absolute
   bottom: 0
-  width: inherit
-  height: 50%
+  height: 150px
+  left: -20px
+  right: -20px
   border: 1px dashed $deepSpace2
   border-color: transparent transparent $deepSpace2 transparent
-  border-radius: 50% / 0 0 80px 80px
+  border-radius: 50% / 0 0 160px 160px
   transform: translateY(50%)
 
 .selectedInner, .optionInner
@@ -122,3 +122,30 @@
 
   .optionInner
     background-color: $darkTeal
+
+@media screen and (min-width: 768px)
+  .radialInfoContainer
+    display: flex
+    flex-direction: row-reverse
+    justify-content: space-between
+    align-items: center
+    padding: 0 emCalc(60px)
+    gap: emCalc(200px)
+
+    h2
+      position: initial
+      font-size: emCalc(62px)
+      line-height: 68px
+      text-align: start
+
+  .elements:before
+    transform: rotate(-90deg)
+    border-radius: 50% / 0 0 300px 300px
+    width: 120%
+    height: 100%
+    left: 40px
+
+  .selectedInner
+    p
+      font-size: 42px
+      line-height: 46px

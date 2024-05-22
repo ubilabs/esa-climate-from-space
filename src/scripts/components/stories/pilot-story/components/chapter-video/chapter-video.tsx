@@ -21,20 +21,18 @@ const ChapterVideo: FunctionComponent<Props> = ({video}) => {
   const {title, text, videoId, caption} = video;
 
   return (
-    <Parallax opacity={[0, 2]}>
-      <div className={styles.chapterVideo}>
-        <Parallax speed={20} className={styles.videoText} easing="easeInQuad">
-          <h3>{title}</h3>
-          <p>{text}</p>
-        </Parallax>
-        <div className={styles.videoContainer}>
-          <YoutubePlayer
-            videoId={videoId}
-            language={language}
-            isStoryMode={true}
-          />
-          <p className={styles.videoCaption}>{caption}</p>
-        </div>
+    <Parallax opacity={[0, 2]} className={styles.chapterVideo}>
+      <Parallax speed={20} className={styles.videoText} easing="easeInQuad">
+        <h3>{title}</h3>
+        <p>{text}</p>
+      </Parallax>
+      <div className={styles.videoContainer}>
+        <YoutubePlayer
+          videoId={videoId}
+          language={language}
+          isStoryMode={true}
+        />
+        <p className={styles.videoCaption}>{caption}</p>
       </div>
     </Parallax>
   );

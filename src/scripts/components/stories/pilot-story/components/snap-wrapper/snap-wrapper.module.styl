@@ -2,6 +2,7 @@
 
 .snapWrapper
   height: 100vh
+  width: 100vw
   box-sizing: border-box
   padding: $headerHeight emCalc(29px)
   overflow-x: hidden
@@ -9,3 +10,7 @@
   flex-direction: column
   justify-content: center
   scroll-snap-align: center
+
+@media screen and (min-width: 768px)
+  .snapWrapper
+    padding: $headerHeight emCalc(80px)
