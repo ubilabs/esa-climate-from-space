@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent, useState} from 'react';
 import {ParallaxProvider} from 'react-scroll-parallax';
 
 import {GlobeContextProvider} from './provider/globe-provider';
@@ -13,7 +13,6 @@ import ChapterSix from './components/06-chapter/06-chapter';
 import ChapterSeven from './components/07-chapter/07-chapter';
 import Globe from './components/globe/globe';
 import Header from './components/header/header';
-import {scrollToChapterIndex} from './components/nav-chapter-overview/nav-chapter-overview';
 import NavDrawer from './components/nav-drawer/nav-drawer';
 import StoryIntro from './components/story-intro/story-intro';
 
@@ -27,15 +26,6 @@ import {ChapterContextProvider} from './provider/chapter-provider';
 
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);
-
-  // Automatically scroll to the first chapter when the story starts
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      scrollToChapterIndex(0);
-    }, 600);
-
-    return () => clearTimeout(timeout);
-  }, [storyStarted]);
 
   const {isDesktop} = useScreenSize();
 

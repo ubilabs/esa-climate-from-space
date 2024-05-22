@@ -79,12 +79,11 @@ const Chapter: FunctionComponent<Props> = ({
       className={cx(styles.sectionContainer, className)}
       // the data-scroll-index attribute is used to determine the scroll index of the chapter
       // If not provided, the navigation will not work correctly
-      data-scroll-index={scrollIndex}
       {...rest}>
       <Parallax
         {...parallaxProps}
         id={chapterMainElement}
-        data-scroll-index={scrollIndex}
+        data-scroll-index-chapter={scrollIndex}
         onProgressChange={() => onSetProgress()}>
         {children}
       </Parallax>

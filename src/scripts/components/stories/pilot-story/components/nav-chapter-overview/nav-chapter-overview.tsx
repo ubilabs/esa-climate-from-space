@@ -8,15 +8,15 @@ import {useChapter} from '../../hooks/use-chapter';
 
 interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
-  // setSelectedChapterIndex: (index: number) => void;
-  // selectedChapterIndex: number;
   isCollapsed?: boolean;
   className?: string;
   gap?: number;
 }
 
 export const scrollToChapterIndex = (index: number) => {
-  const scrollEl = document.querySelector(`[data-scroll-index="${index}"]`);
+  const scrollEl = document.querySelector(
+    `[data-scroll-index-intro="${index}"]`
+  );
 
   scrollEl?.scrollIntoView({behavior: 'smooth', block: 'start'});
 };
