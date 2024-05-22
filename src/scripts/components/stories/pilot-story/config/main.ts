@@ -2,6 +2,7 @@ import giant01Graph from '../assets/06-giant01-graph.png';
 import {SubStoryContent} from '../components/06-chapter/06-chapter';
 import emmisionsGraph from '../assets/07-emissions-graph.png';
 import {LegendItems} from '../components/legend/legend';
+import {LayerProps} from '@ubilabs/esa-webgl-globe';
 
 // chapter 2
 
@@ -347,6 +348,53 @@ export const globeMovements = [
     moveBy: {x: 0, y: 0, z: 0}
   }
 ];
+
+// globe data layers
+
+// Latest timestamp: December 2021
+const timeIndex = 71;
+// @ts-ignore - injected via webpack's define plugin
+const version = INFO_VERSION;
+
+export const GREY_BASE_MAP = {
+  id: 'basemap',
+  zIndex: 0,
+  type: 'tile',
+  maxZoom: 5,
+  urlParameters: {},
+  getUrl: ({x, y, zoom}) =>
+    `https://storage.googleapis.com/esa-cfs-tiles/${version}/basemaps/land/${zoom}/${x}/${y}.png`
+} as LayerProps;
+
+export const BLUE_BASE_MAP = {
+  id: 'basemap',
+  zIndex: 0,
+  type: 'tile',
+  maxZoom: 5,
+  urlParameters: {},
+  getUrl: ({x, y, zoom}) =>
+    `https://storage.googleapis.com/esa-cfs-tiles/${version}/basemaps/blue/${zoom}/${x}/${y}.png`
+} as LayerProps;
+
+export const GREENHOUSE_XCH4 = {
+  id: 'greenhouse.xch4',
+  zIndex: 1,
+  type: 'tile',
+  maxZoom: 5,
+  urlParameters: {},
+  getUrl: ({x, y, zoom}) =>
+    `https://storage.googleapis.com/esa-cfs-tiles/${version}/greenhouse.xch4/tiles/${timeIndex}/${zoom}/${x}/${y}.png`
+} as LayerProps;
+
+export const SUPER_EMITTERS = {
+  id: 'superemitters',
+  zIndex: 1,
+  type: 'image',
+  maxZoom: 0,
+  urlParameters: {},
+  getUrl: () =>
+    `https://storage.googleapis.com/esa-cfs-tiles/${version}/super_emitters/tiles/0/full.png`
+} as LayerProps;
 
 // Used to determine if the chapter-intro is in view
 export const chapterIntroElement = 'chapter-intro';

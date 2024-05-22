@@ -90,6 +90,12 @@ const Globe: FunctionComponent<Props> = ({
         cameraView: {lng: 0, lat: 0, altitude: distanceRef.current}
       });
 
+      if ('renderer' in newGlobe) {
+        // @TODO: Remove this setting after globe controls have been refactored.
+        // @ts-ignore Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
+        newGlobe.renderer.globeControls.zoomSpeed = 1.5;
+      }
+
       setGlobe(newGlobe);
     }
   }, [containerRef, globe, layers, markers]);

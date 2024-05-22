@@ -2,6 +2,8 @@ import React, {createContext, FunctionComponent, useRef, useState} from 'react';
 
 import {LayerProps, MarkerProps} from '@ubilabs/esa-webgl-globe';
 
+import {GREY_BASE_MAP, GREENHOUSE_XCH4} from '../config/main';
+
 interface GlobeContextValue {
   markers: {
     markers: MarkerProps[];
@@ -39,30 +41,9 @@ export const GlobeContextProvider: FunctionComponent<Props> = ({children}) => {
   const isTouchable = useRef<boolean>(false);
   const [markers, setMarkers] = useState<MarkerProps[]>([]);
 
-  // Latest timestamp: December 2021
-  const timeIndex = 71;
-  // @ts-ignore - injected via webpack's define plugin
-  const version = INFO_VERSION;
-
   const [layers, setLayers] = React.useState<LayerProps[]>([
-    {
-      id: 'basemap',
-      zIndex: 0,
-      type: 'tile',
-      maxZoom: 5,
-      urlParameters: {},
-      getUrl: ({x, y, zoom}) =>
-        `https://storage.googleapis.com/esa-cfs-tiles/${version}/basemaps/land/${zoom}/${x}/${y}.png`
-    } as LayerProps,
-    {
-      id: 'greenhouse.xch4',
-      zIndex: 1,
-      type: 'tile',
-      maxZoom: 5,
-      urlParameters: {},
-      getUrl: ({x, y, zoom}) =>
-        `https://storage.googleapis.com/esa-cfs-tiles/${version}/greenhouse.xch4/tiles/${timeIndex}/${zoom}/${x}/${y}.png`
-    } as LayerProps
+    GREY_BASE_MAP,
+    GREENHOUSE_XCH4
   ]);
 
   return (
