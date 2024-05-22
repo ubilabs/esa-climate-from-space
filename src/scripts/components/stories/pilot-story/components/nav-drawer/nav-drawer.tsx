@@ -14,6 +14,7 @@ import {chapters} from '../../config/main';
 import {useChapter} from '../../hooks/use-chapter';
 import Button from '../button/button';
 import {GlobeExploreIcon} from '../icons/globe-explore-icon';
+import NavPositionIcon from '../icons/nav-position-icon/nav-position-icon';
 import NavChapterOverview from '../nav-chapter-overview/nav-chapter-overview';
 
 import styles from './nav-drawer.module.styl';
@@ -24,10 +25,20 @@ import styles from './nav-drawer.module.styl';
  * @returns {ReactElement} The rendered NavDrawer component.
  */
 const NavDrawer: FunctionComponent = () => {
-  const {selectedChapterIndex} = useChapter();
+  const {selectedChapterIndex, chapterPosition} = useChapter();
+
+  const {isMobile} = useScreenSize();
   // Title is visible in the Nav Drawer when it is not open, basically the handle
   const handle = (
-    <h2 className={styles.header}>{chapters[selectedChapterIndex].subtitle}</h2>
+    <h2 className={styles.header}>
+      {isMobile && (
+        <NavPositionIcon
+          position={chapterPosition}
+          isFirst={selectedChapterIndex === 0}
+        />
+      )}
+      {chapters[selectedChapterIndex].subtitle}
+    </h2>
   );
 
   // Content is visible in the Nav Drawer when it is open
@@ -49,8 +60,6 @@ const NavDrawer: FunctionComponent = () => {
     </div>
   );
   const [ref, setRef] = useState<HTMLDivElement | null>(null);
-
-  const {isMobile} = useScreenSize();
 
   // Snap points of the drawer refer to the positions where the drawer can be placed at.
   // Can either be a fraction between 0 and 1 or a string in px. (e.g. '50px')

@@ -3,7 +3,7 @@ import React, {FunctionComponent, useRef} from 'react';
 import {useChapter} from '../../hooks/use-chapter';
 
 import {dataIsTitleInView, progressIndicationElement} from '../../config/main';
-import {ChapterType} from '../../types/globe';
+import {ChapterPosition} from '../../types/globe';
 
 import cx from 'classnames';
 
@@ -37,12 +37,12 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
     '--gap': `${gap}px`
   } as React.CSSProperties;
 
-  const {selectedChapterIndex, chapterType, progress} = useChapter();
+  const {selectedChapterIndex, chapterPosition, progress} = useChapter();
 
   const indicationRef = useRef<HTMLDivElement>(null);
 
   if (indicationRef.current) {
-    if (chapterType === ChapterType.CONTENT) {
+    if (chapterPosition === ChapterPosition.CONTENT) {
       indicationRef.current.setAttribute(dataIsTitleInView, 'false');
 
       const progressIndicatorHeight = indicationRef.current.clientHeight;
@@ -63,7 +63,7 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
           indicatorYOffsetInPercent
         );
       }
-    } else if (chapterType === ChapterType.INTRO) {
+    } else if (chapterPosition === ChapterPosition.INTRO) {
       indicationRef.current.setAttribute(dataIsTitleInView, 'true');
     }
   }

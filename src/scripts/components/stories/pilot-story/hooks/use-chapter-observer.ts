@@ -2,12 +2,12 @@ import {useState} from 'react';
 import {chapterIntroElement} from '../config/main';
 import {useParallaxController} from 'react-scroll-parallax';
 import {NavigationObserver} from '../components/utils/navigation-observer';
-import {ChapterType} from '../types/globe';
+import {ChapterPosition} from '../types/globe';
 
 const useChapterObserver = () => {
   const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
-  const [chapterType, setChapterType] = useState<ChapterType>(
-    ChapterType.INTRO
+  const [chapterPosition, setChapterPosition] = useState<ChapterPosition>(
+    ChapterPosition.INTRO
   );
 
   const parallaxController = useParallaxController();
@@ -15,7 +15,7 @@ const useChapterObserver = () => {
   const navigationObserver = new NavigationObserver(
     parallaxController,
     setSelectedChapterIndex,
-    setChapterType
+    setChapterPosition
   );
   const elements = document.querySelectorAll(`.${chapterIntroElement}`);
 
@@ -27,7 +27,11 @@ const useChapterObserver = () => {
     };
   });
 
-  return {selectedChapterIndex, setSelectedChapterIndex, chapterType};
+  return {
+    selectedChapterIndex,
+    setSelectedChapterIndex,
+    chapterPosition
+  };
 };
 
 export default useChapterObserver;
