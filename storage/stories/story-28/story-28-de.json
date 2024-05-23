@@ -5,7 +5,9 @@
       "type": "splashscreen",
       "text": "# Artenvielfalt und Lebensraumverlust\r\n\r\nDie Ökosysteme, aus denen die Biosphäre der Erde besteht, beherbergen eine große Vielfalt an Lebewesen und unterliegen einem raschen Wandel. Diese Veränderungen wirken sich auf die natürlichen Zyklen aus, die das Klima der Erde steuern, und haben auch unmittelbare Auswirkungen auf menschliche Aktivitäten.",
       "shortText": "# Artenvielfalt und Lebensraumverlust\r\n\r\nDie Ökosysteme, aus denen die Biosphäre der Erde besteht, beherbergen eine große Vielfalt an Lebewesen und unterliegen einem raschen Wandel. Diese Veränderungen wirken sich auf die natürlichen Zyklen aus, die das Klima der Erde steuern, und haben auch unmittelbare Auswirkungen auf menschliche Aktivitäten.",
-      "images": ["assets/landcover.jpg"]
+      "images": [
+        "assets/landcover.jpg"
+      ]
     },
     {
       "type": "image",
@@ -25,13 +27,25 @@
         "Waldbrand in Westgrönland, August 2017\r\n(Copernicus Sentinel Daten, 2017, bearbeitet von Pierre Markuse)",
         "Oberirdische Biomasse aus der ESA-Klimawandelinitiative (ESA-CCI)"
       ],
-      "imageFits": ["cover", "contain", "cover", "cover", "contain"]
+      "imageFits": [
+        "cover",
+        "contain",
+        "cover",
+        "cover",
+        "contain"
+      ]
     },
     {
       "type": "globe",
       "text": "## Landbedeckung der Erde\r\n\r\nRegionen mit ähnlichem Klima und ähnlichen Pflanzen- und Tiergemeinschaften werden als Biome bezeichnet. Sie zeichnen sich oft durch eine dominante Art der Landbedeckung aus, wie auf dem interaktiven Globus zu sehen ist. Drehe den Globus und sieh dir genauer an, wie sich das Ausmaß einiger Arten der Bodenbedeckung in den letzten Jahren verändert hat. Du könntest damit beginnen, den Verlust des Tropenwaldes in Mato Grosso, Brasilien, zwischen 1996 und 2015 zu untersuchen.\r\n\r\nDie meisten Tiere und Pflanzen haben Eigenschaften entwickelt, die mit dem Klima ihres Lebensraums und den anderen Organismen in dem Ökosystem, zu dem sie gehören, zusammenhängen. Aber auch die Flora und Fauna einer Region beeinflusst das Klima: Die Pflanzen des Amazonas-Regenwaldes zum Beispiel leiten so viel Wasser aus dem Boden in die Atmosphäre, dass sie ihr eigenes Wetter erzeugen.\r\n\r\nDas Klima innerhalb eines Bioms kann ebenfalls variieren - die Nordseite eines Hügels kann kühler sein oder weniger Niederschlag erhalten als die Südseite, ein See kann die Temperatur des angrenzenden Landes abkühlen und es mit Feuchtigkeit versorgen. Winzige Gebiete mit ihrem eigenen Mikroklima können einzigartige Arten beherbergen, die an Orten, die nur hundert Meter entfernt sind, nicht überleben können. Durch die globale Erwärmung, Waldbrände, Abholzung und andere menschliche Aktivitäten verändern sich auch größere Lebensräume sehr schnell und werden fragmentiert.\r\n\r\n![Schlüssel zur Landbedeckung](assets/landcover-key.png)\r\n_Landbedeckungsart-Schlüssel_\r\n\r\nDer Land Cover Globus zeigt die vorherrschende Art der Landnutzung in Gebieten mit einer Auflösung von 300 Metern. Wissenschaftler, die mit dem Klimabüro der ESA zusammenarbeiten, nutzen die Daten der Copernicus-Sentinel-Satelliten, um neue Karten zu erstellen, die die Bodenbedeckung in Gebieten mit einer Auflösung von nur 10-30 m auf jeder Seite zeigen und uns dabei helfen, die Veränderungen der Lebensräume genauer zu beobachten.",
       "shortText": "## Landbedeckung der Erde\r\n\r\nDrehen Sie den Globus, um zu sehen, wie sich einige Arten der Bodenbedeckung in den letzten Jahren verändert haben - z. B. der Verlust des Tropenwaldes in Mato Grosso, Brasilien, zwischen 1996 und 2015.\r\n\r\n- Tiere und Pflanzen entwickeln Merkmale, die mit dem Klima ihres Lebensraums zusammenhängen.\r\n- aber sie beeinflussen auch das Klima in ihrer Region\r\n- Die Pflanzen des Amazonas-Regenwaldes bringen so viel Wasser vom Boden in die Atmosphäre, dass sie ihr eigenes Wetter schaffen.\r\n- Topografie und Gewässer schaffen ebenfalls Mikroklimata\r\n\r\nDurch die globale Erwärmung, Waldbrände, Abholzung und andere menschliche Aktivitäten verändern sich auch größere Lebensräume sehr schnell und werden fragmentiert.\r\n\r\nKarte der Bodenbedeckung](assets/landcover-key.png)\r\n_ESA CCI Landbedeckungstypen_",
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "flyTo": {
         "position": {
           "longitude": -8.23,
@@ -56,11 +70,19 @@
       "type": "video",
       "text": "## Reagieren auf den Wandel\r\n\r\nWenn sich ein Lebensraum verändert, kann es vorkommen, dass Tiere und Pflanzen feststellen, dass ihre Anpassungen in der neuen Umgebung nicht hilfreich sind - oder sie sogar aktiv benachteiligen - und gezwungen sind umzusiedeln, um zu überleben. Tauben, Füchse und natürlich auch der Mensch gehören zu den Arten, die sich an das Überleben in Städten angepasst haben. Einzelne Populationen anderer Arten, die sich stärker spezialisiert haben oder in Gebiete gedrängt wurden, in denen sie einer stärkeren Konkurrenz ausgesetzt sind, sind jedoch infolge der zunehmenden Verstädterung oder der Ausdehnung der Landwirtschaft ausgestorben.\r\n\r\nUmgekehrt vergrößert sich durch den Klimawandel das Verbreitungsgebiet einiger Arten, so dass sie an Orten gedeihen können, die früher für sie unwirtlich waren, oder ihre Lebensräume verändern sich so, dass die Populationen wachsen. Dies ist nicht immer eine gute Nachricht für alle. So haben beispielsweise mehrere Jahre Trockenheit und milde Winter in den 2000er Jahren dazu geführt, dass der Bergkiefernkäfer sein Verbreitungsgebiet vom Westen Nordamerikas nach Osten über die Rocky Mountains ausdehnen konnte, was zu erheblichen Schäden in Wirtschafts- und Naturwäldern führte, die zuvor von diesem Schädling verschont geblieben waren.\r\n\r\n## Geschützte Gebiete\r\n\r\nEin Ökosystem mit größerer biologischer Vielfalt ist wahrscheinlich widerstandsfähiger und besser in der Lage, plötzliche Veränderungen zu überstehen. Wenn jedoch alle Tiere in einem Nahrungsnetz letztlich von einer einzigen Pflanzenart abhängig sind, kann das gesamte Ökosystem zusammenbrechen, wenn diese Pflanze von einer Krankheit oder extremen Wetterbedingungen betroffen ist.\r\n\r\nNationalparks und andere Schutzgebiete schützen eine Reihe von Lebensräumen vor weiterer Erschließung oder Ausbeutung, während sie im Idealfall auch die lokale Bevölkerung unterstützen.  Wo Lebensräume fragmentiert werden, z. B. durch Abholzung oder Aufstauung von Flüssen, können Wildtierkorridore einen sicheren Weg zwischen Gebieten für weiter verbreitete oder sich langsamer bewegende Arten, wie z. B. Pflanzen, bieten.",
       "shortText": "## Reagieren auf den Wandel\r\n\r\nLebensraumveränderungen, einschließlich klimatischer Veränderungen, können das Verbreitungsgebiet einiger Arten einschränken oder für andere erweitern.\r\n\r\n- Mehrere Jahre der Trockenheit und milde Winter in den 2000er Jahren im Westen Nordamerikas\r\n- ermöglichten es dem Bergkiefernkäfer, sich östlich über die Rocky Mountains auszubreiten\r\n- Dies führte zu erheblichen Schäden in Wäldern, die zuvor von diesem Schädling verschont geblieben waren.\r\n\r\nEin Ökosystem mit einem hohen Maß an Biodiversität ist wahrscheinlich widerstandsfähiger.\r\n\r\nNationalparks und andere Schutzgebiete schützen eine Reihe von Lebensräumen vor weiterer Erschließung oder Ausbeutung und unterstützen im besten Fall weiterhin die lokale Bevölkerung.",
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "videoId": "8wwQaK_SJtw",
       "videoCaptions": "assets/landcover.vtt",
       "videoPoster": "assets/landcover-poster.jpg",
-      "videoSrc": ["assets/landcover-web.mp4"]
+      "videoSrc": [
+        "assets/landcover-web.mp4"
+      ]
     },
     {
       "type": "image",
@@ -80,17 +102,31 @@
         "Korallenriff bei Enderbury Island im Schutzgebiet Phoenix Isands, einem UNESCO-Weltnaturerbe im Südpazifik (Dr. Randi Rotjan, New England Aquarium)",
         "Rauch verdunkelt fast die gesamte Westküste der USA, da fast 100 Waldbrände während einer Hitzewelle im September 2020 brennen\r\n(Copernicus-Sentinel-Daten, 2020, verarbeitet von der ESA)"
       ],
-      "imageFits": ["contain", "contain", "cover", "cover", "contain"]
+      "imageFits": [
+        "contain",
+        "contain",
+        "cover",
+        "cover",
+        "contain"
+      ]
     },
     {
       "type": "video",
       "text": "## Kartierung der Lebensraumveränderung\r\n\r\nDas Verständnis des Klimas gibt uns Einblick in eine der Triebkräfte des Ökosystemwandels.\r\n\r\nBodenbedeckung und Biomasse sind wesentliche Klimavariablen (ECVs), die direkt mit der Population eines Lebensraums zusammenhängen.\r\n\r\nWeitere relevante Klimavariablen auf dem Land sind die Temperatur der Landoberfläche und die Bodenfeuchtigkeit.\r\n\r\nDie Temperatur der Meeresoberfläche und die Farbe des Ozeans sind nützliche Messgrößen für die Überwachung der Ozeane.\r\n\r\nDie ESA-Initiative zum Klimawandel hat mit Hilfe von Satellitenbeobachtungen Aufzeichnungen von ECVs erstellt, die die ganze Welt abdecken und mehr als vierßig Jahre zurückreichen.\r\n\r\nEine zuverlässige Aufzeichnung dieser Faktoren und ihrer Veränderungen hilft uns, verantwortungsvolle Entscheidungen zu treffen und dabei die Auswirkungen zu berücksichtigen, die sie in Zukunft auf den Planeten - und alle seine Bewohner - haben werden.",
       "shortText": "## Kartierung der Lebensraumveränderung\r\n\r\nDas Verständnis des Klimas gibt uns Einblick in eine der Triebkräfte des Ökosystemwandels.\r\n\r\nBodenbedeckung und Biomasse sind wesentliche Klimavariablen (ECVs), die direkt mit der Population eines Lebensraums zusammenhängen.\r\n\r\nWeitere relevante Klimavariablen auf dem Land sind die Temperatur der Landoberfläche und die Bodenfeuchtigkeit.\r\n\r\nDie Temperatur der Meeresoberfläche und die Farbe des Ozeans sind nützliche Messgrößen für die Überwachung der Ozeane.\r\n\r\nDie ESA-Initiative zum Klimawandel hat mit Hilfe von Satellitenbeobachtungen Aufzeichnungen von ECVs erstellt, die die ganze Welt abdecken und mehr als vierßig Jahre zurückreichen.\r\n\r\nEine zuverlässige Aufzeichnung dieser Faktoren und ihrer Veränderungen hilft uns, verantwortungsvolle Entscheidungen zu treffen und dabei die Auswirkungen zu berücksichtigen, die sie in Zukunft auf den Planeten - und alle seine Bewohner - haben werden.",
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "videoId": "LdA3Yy-Xjf4",
       "videoCaptions": "assets/landcover-interview.vtt",
       "videoPoster": "assets/landcover-interview-wide.jpg",
-      "videoSrc": ["assets/landcover-interview-wide-web.mp4"]
+      "videoSrc": [
+        "assets/landcover-interview-wide-web.mp4"
+      ]
     }
   ]
 }
