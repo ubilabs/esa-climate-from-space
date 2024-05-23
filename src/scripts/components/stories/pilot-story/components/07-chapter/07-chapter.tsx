@@ -14,6 +14,7 @@ interface Props {
 const ChapterSeven: FunctionComponent<Props> = ({chapterIndex}) => (
   <Chapter scrollIndex={chapterIndex}>
     <ChapterIntro
+      flexPosition="flex-start"
       scrollIndex={chapterIndex}
       subTitle="Chapter 07: Methane Reduction Urgency"
       title="Strategic choices for our future"

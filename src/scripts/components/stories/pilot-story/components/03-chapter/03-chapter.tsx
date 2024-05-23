@@ -12,6 +12,7 @@ interface Props {
 const ChapterThree: FunctionComponent<Props> = ({chapterIndex}) => (
   <Chapter scrollIndex={chapterIndex}>
     <ChapterIntro
+      flexPosition="flex-start"
       scrollIndex={chapterIndex}
       subTitle="Chapter 3: ESA's Eyes in the Sky"
       title="ESA's Watchful Eyes Over Earth"
