@@ -21,8 +21,7 @@ const ChapterFive: FunctionComponent<Props> = ({chapterIndex}) => (
     <ChapterText text="but also guides companies and governments in prioritizing interventions to address methane emissions and mitigate their impact on the environment." />
     <ExploreDataset
       title="Find out where Methane Super Emitters are located."
-      // TODO: Add data layer id wehen layer exists
-      dataLayerId=""
+      dataLayerId="super_emitters"
     />
   </Chapter>
 );

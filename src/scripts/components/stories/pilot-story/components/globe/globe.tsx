@@ -17,7 +17,7 @@ import {chapterMainElement} from '../../config/main';
 
 import styles from './globe.module.styl';
 
-const INITIAL_DISTANCE = 30_000_000;
+export const INITIAL_DISTANCE = 30_000_000;
 const DISTANCE_INCREASEMENT_FACTOR = 0.02;
 
 function moveGlobe(
