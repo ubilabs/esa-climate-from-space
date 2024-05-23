@@ -15,11 +15,13 @@
       "shortText": "## Old Ways and New\r\n\r\n- In central Kenya, the Samburu people are struggling to maintain their lifestyle and culture. \r\n- They are semi-nomadic, travelling around with their livestock in search of the best pasture. \r\n- Their home, the savannah, is slowly changing as droughts become more frequent and intense. \r\n- As it gets harder to make a living, more young people move to towns and cities in search of work. \r\n- As cities and commercial farms expand, less land and water is left for nomadic herders. \r\n- A similar story is playing out in many places across the world as farmers and herders try to provide enough food for a growing population.",
       "images": [
         "assets/story29-image10.jpg",
-        "assets/story29-image08.jpg"
+        "assets/story29-image08.jpg",
+        "assets/story29-image18.jpg"
       ],
       "imageCaptions": [
         "A Samburu herdsman with his goats in Isiolo County, Kenya (pilesasmiles/iStock)",
-        "Cattle passing road construction equipment in Mowo, Lagos State, Nigeria\r\n(mtcurado/iStock)"
+        "Cattle passing road construction equipment in Mowo, Lagos State, Nigeria\r\n(mtcurado/iStock)",
+        "This Copernicus Sentinel-2 satellite image of El Oued, Algeria, combines visible and infrared wavelengths to show vegetation in red. Close to the town, date palms are grown using traditional methods in irregular, funnel-shaped fields that require little irrigation. Further out into the desert, centre-pivot irrigation is increasingly used to grow crops such as potatoes, onions and tomatoes in circular fields with a well at the centre. (Contains modified Copernicus Sentinel data (2021), processed by ESA)"
       ],
       "imageFits": [
         "contain",
@@ -92,20 +94,24 @@
       "shortText": "## Maximising Returns \r\n\r\n- Humans rely on a small number of crops that grow well only in a particular climate.\r\n- Yields drop with the wrong amount of water, extremes of temperature or too little light. \r\n- As the planet warms we can expect some areas to become more productive, while others will struggle with more frequent droughts and become unsuitable for agriculture. \r\n- Productivity can be increased by using irrigation, artificial light or greenhouses. \r\n- Fertilisers may help improve yields but large scale use can cause problems such as toxic algal blooms in nearby water bodies.",
       "images": [
         "assets/landcover_large_06.jpg",
+        "assets/story29-image20.gif",
         "assets/story29-image02.jpg",
-        "assets/story29-image03.jpg"
+        "assets/story29-image03.jpg",
+        "assets/story29-image19.jpg"
       ],
       "imageCaptions": [
         "Irrigation has turned desert into farmland in Saudi Arabia. This false-colour infrared image from the Copernicus Sentinel-2A satellite shows agricultural structures near Tubarjal, Saudi Arabia. The circles come from centre-pivot irrigation systems, where a long water pipe rotates around a well at the centre. (Contains modified Copernicus Sentinel data, 2015, processed by ESA)",
+        "This series of Copernicus Sentinel-2 images shows part of the Al Wahat al Dakhla Desert in Egypt, spanning from 29 November 2022 to 18 April 2023. The circular shapes in the image are an example of centre-pivot irrigation systems, where equipment rotates around a central pivot and crops are watered with sprinklers. (Contains modified Copernicus Sentinel data (2022-23), processed by ESA)",
         "Greenhouses covering huge amounts of land glint in the sunlight near Almeria, southern Spain (European Union, Copernicus Sentinel-2 imagery)",
-        "Algal bloom in the Baltic Sea, observed by Copernicus Sentinel-2 on 20 July 2019 (Contains modified Copernicus Sentinel data, 2019, processed by ESA)"
+        "Algal bloom in the Baltic Sea, observed by Copernicus Sentinel-2 on 20 July 2019 (Contains modified Copernicus Sentinel data, 2019, processed by ESA)",
+        "Fishing vessels detected in the Mediterranean Sea using Copernicus Sentinel-1 satellite radar data processed using artificial intelligence (AI) techniques. Fishing currently provides 17% of the world’s meat consumption. (ESA – data source: Paolo et al, 2024/Global Fishing Watch)"
       ],
       "imageFits": [
         "cover",
+        "contain",
         "cover",
         "cover",
-        "cover",
-        "cover"
+        "contain"
       ]
     },
     {
