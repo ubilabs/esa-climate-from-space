@@ -105,14 +105,12 @@ const NavDrawer: FunctionComponent = () => {
       open={true}
       // Setting modal to false allows the user to still interact with the content behind the drawer.
       modal={false}
-      onDrag={e => e.preventDefault()}
+      onDrag={e => e.stopPropagation()}
       closeThreshold={0}>
       <Portal container={modalTarget}>
         {
           <Content
-            onDrag={e => e.preventDefault()}
-            onTouchStart={e => e.stopPropagation()}
-            onTouchMove={e => e.stopPropagation()}
+            onDragEnter={e => e.stopPropagation()}
             className={cx(
               styles.content,
               snap === maxSnapPoint && styles.open

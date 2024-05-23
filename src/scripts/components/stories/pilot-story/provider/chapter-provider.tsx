@@ -2,10 +2,8 @@ import React, {
   FunctionComponent,
   PropsWithChildren,
   createContext,
-  useEffect,
   useState
 } from 'react';
-import {useHistory} from 'react-router-dom';
 import {useParallaxController} from 'react-scroll-parallax';
 import useIntersectChapters from '../hooks/use-chapter-observer';
 import {chapterMainElement} from '../config/main';
@@ -13,8 +11,6 @@ import {chapterMainElement} from '../config/main';
 function useChapterContext() {
   // Progress of the current chapter
   const [progress, setProgress] = useState(0);
-
-  const history = useHistory();
 
   const parallaxController = useParallaxController();
 
@@ -37,10 +33,6 @@ function useChapterContext() {
 
     currentChapter?.progress && setProgress(currentChapter?.progress);
   };
-
-  useEffect(() => {
-    history.replace(`/stories/pilot/${selectedChapterIndex + 1}`);
-  }, [selectedChapterIndex, history]);
 
   return {
     selectedChapterIndex,

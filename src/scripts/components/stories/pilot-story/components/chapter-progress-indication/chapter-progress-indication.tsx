@@ -5,11 +5,10 @@ import {useChapter} from '../../hooks/use-chapter';
 import {dataIsTitleInView, progressIndicationElement} from '../../config/main';
 import {ChapterPosition} from '../../types/globe';
 
-import {scrollToChapterIndex} from '../nav-chapter-overview/nav-chapter-overview';
-
 import cx from 'classnames';
 
 import styles from './chapter-progress-indication.module.styl';
+import {useHistory} from 'react-router-dom';
 
 interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
@@ -42,6 +41,8 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
   const {selectedChapterIndex, chapterPosition, progress} = useChapter();
 
   const indicationRef = useRef<HTMLDivElement>(null);
+
+  const history = useHistory();
 
   if (indicationRef.current) {
     if (chapterPosition === ChapterPosition.CONTENT) {
@@ -83,7 +84,7 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
         <span
           key={index}
           data-is-selected={index === selectedChapterIndex}
-          onClick={() => scrollToChapterIndex(index)}
+          onClick={() => history.push(`/stories/pilot/${index}`)}
         />
       ))}
     </div>
