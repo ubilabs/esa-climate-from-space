@@ -13,7 +13,6 @@ import StoryGlobe from '../../../story-globe/story-globe';
 import {ArrowBackIcon} from '../../../../main/icons/arrow-back-icon';
 
 import styles from './explore-dataset.module.styl';
-import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
 interface Props {
   title: string;
