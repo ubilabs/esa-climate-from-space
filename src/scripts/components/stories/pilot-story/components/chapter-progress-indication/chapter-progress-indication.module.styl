@@ -1,6 +1,7 @@
 .progressIndication
     --gap: 24px
     --indicator-y-offset: 0
+    --circle-radius: 12px
     position: relative
     height: fit-content
     display: flex
@@ -25,9 +26,10 @@
 
 
     span
-      width: 24px
-      height: 24px
+      width: calc(var(--circle-radius) * 2)
+      height: calc(var(--circle-radius) * 2)
       position: relative
+      cursor: pointer
 
       &:before
         content: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'><circle cx='12' cy='12' r='8.5'    stroke='white'/></svg>")

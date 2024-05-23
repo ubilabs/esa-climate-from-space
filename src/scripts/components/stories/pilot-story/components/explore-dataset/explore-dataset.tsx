@@ -1,13 +1,16 @@
-import React, {FunctionComponent} from 'react';
-import {useHistory} from 'react-router-dom';
+import React, {FunctionComponent, useMemo, useState} from 'react';
 import {Parallax} from 'react-scroll-parallax';
 
 import {useScreenSize} from '../../../../../hooks/use-screen-size';
-import {useThunkDispatch} from '../../../../../hooks/use-thunk-dispatch';
-import setSelectedLayerIdsAction from '../../../../../actions/set-selected-layer-id';
+
+import {GlobeItem} from '../../../../../types/gallery-item';
+
+import {INITIAL_DISTANCE} from '../globe/globe';
 
 import ScrollHint from '../scroll-hint/scroll-hint';
 import Button from '../button/button';
+import StoryGlobe from '../../../story-globe/story-globe';
+import {ArrowBackIcon} from '../../../../main/icons/arrow-back-icon';
 
 import styles from './explore-dataset.module.styl';
 import SnapWrapper from '../snap-wrapper/snap-wrapper';
@@ -19,26 +22,56 @@ interface Props {
 
 const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
   const {isMobile} = useScreenSize();
-  const history = useHistory();
-  const dispatch = useThunkDispatch();
+  const [showExplorableGlobe, setShowLayerDetails] = useState(false);
+
+  const globeItem = useMemo(
+    () =>
+      ({
+        flyTo: {
+          position: {
+            longitude: 0,
+            latitude: 0,
+            height: INITIAL_DISTANCE
+          }
+        },
+        layer: [
+          {
+            id: dataLayerId
+          }
+        ]
+      } as GlobeItem),
+    [dataLayerId]
+  );
 
   return (
-    <SnapWrapper>
-      <Parallax className={styles.exploreContent}>
-        <h1>{title}</h1>
-
-        <div className={styles.buttonContainer}>
+    <div className={styles.explore}>
+      {showExplorableGlobe ? (
+        <div className={styles.globeContainer}>
           <Button
-            label="Explore Dataset"
+            className={styles.backButton}
+            icon={ArrowBackIcon}
+            label="Back to Story"
             onClick={() => {
-              dispatch(setSelectedLayerIdsAction(dataLayerId, true));
-              history.push('/');
+              setShowLayerDetails(false);
             }}
+            isBackButton
           />
-          {isMobile && <ScrollHint />}
+          <StoryGlobe globeItem={globeItem} />
         </div>
-      </Parallax>
-    </SnapWrapper>
+      ) : (
+        <Parallax className={styles.exploreContent}>
+          <h1>{title}</h1>
+
+          <div className={styles.buttonContainer}>
+            <Button
+              label="Explore Dataset"
+              onClick={() => setShowLayerDetails(true)}
+            />
+            {isMobile && <ScrollHint />}
+          </div>
+        </Parallax>
+      )}
+    </div>
   );
 };
 

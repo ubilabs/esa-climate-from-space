@@ -288,7 +288,7 @@ export const GREENHOUSE_XCH4 = {
 } as LayerProps;
 
 export const SUPER_EMITTERS = {
-  id: 'superemitters',
+  id: 'super_emitters',
   zIndex: 1,
   type: 'image',
   maxZoom: 0,

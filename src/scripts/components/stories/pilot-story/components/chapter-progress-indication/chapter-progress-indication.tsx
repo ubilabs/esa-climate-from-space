@@ -5,11 +5,10 @@ import {useChapter} from '../../hooks/use-chapter';
 import {dataIsTitleInView, progressIndicationElement} from '../../config/main';
 import {ChapterPosition} from '../../types/globe';
 
-import {scrollToChapterIndex} from '../nav-chapter-overview/nav-chapter-overview';
-
 import cx from 'classnames';
 
 import styles from './chapter-progress-indication.module.styl';
+import {useHistory} from 'react-router-dom';
 
 interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
@@ -43,6 +42,8 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
 
   const indicationRef = useRef<HTMLDivElement>(null);
 
+  const history = useHistory();
+
   if (indicationRef.current) {
     if (chapterPosition === ChapterPosition.CONTENT) {
       indicationRef.current.setAttribute(dataIsTitleInView, 'false');
@@ -50,11 +51,22 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
       const progressIndicatorHeight = indicationRef.current.clientHeight;
       const chaptersLength = chapters.length;
 
+      // Get the circle radius from the CSS custom property
+      // This is used to calculate the offset of the indicator
+      // We want the indicator to start below the circle indication for the selected chapter intro
+      const circleRadius = Number(
+        window
+          .getComputedStyle(indicationRef.current)
+          .getPropertyValue('--circle-radius')
+          .replace('px', '')
+      );
+
       if (progressIndicatorHeight && chaptersLength) {
         const indicatorYOffsetInPx =
           (progressIndicatorHeight / chaptersLength + 1) *
             selectedChapterIndex +
-          (progressIndicatorHeight / chaptersLength + 1) * progress;
+          (progressIndicatorHeight / chaptersLength) * progress +
+          (selectedChapterIndex * gap) / circleRadius;
 
         const indicatorYOffsetInPercent = `${
           (indicatorYOffsetInPx / progressIndicatorHeight) * 100
@@ -83,7 +95,7 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
         <span
           key={index}
           data-is-selected={index === selectedChapterIndex}
-          onClick={() => scrollToChapterIndex(index)}
+          onClick={() => history.push(`/stories/pilot/${index}`)}
         />
       ))}
     </div>
