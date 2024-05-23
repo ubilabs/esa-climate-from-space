@@ -93,6 +93,8 @@ const PilotStory: FunctionComponent = () => {
                   </div>
                 </Globe>
               </GlobeContextProvider>
+              {/* Container for buttons floating above globe in touch mode */}
+              <div id="floating-button-container" />
               <NavDrawer />
               {/* Nav Drawer DOM element - this is where the <NavDrawer/> will be rendered with React.usePortal */}
               <div

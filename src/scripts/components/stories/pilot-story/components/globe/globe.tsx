@@ -91,9 +91,9 @@ const Globe: FunctionComponent<Props> = ({
       });
 
       if ('renderer' in newGlobe) {
-        // @TODO: Remove this setting after globe controls have been refactored.
+        // Zoom is disabled for pilot story
         // @ts-ignore Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
-        newGlobe.renderer.globeControls.zoomSpeed = 1.5;
+        newGlobe.renderer.globeControls.enableZoom = false;
       }
 
       setGlobe(newGlobe);

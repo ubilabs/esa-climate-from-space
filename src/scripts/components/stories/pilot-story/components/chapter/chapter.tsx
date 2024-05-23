@@ -7,7 +7,7 @@ import {useChapter} from '../../hooks/use-chapter';
 import {useGlobeLayers} from '../../hooks/use-globe';
 
 import {
-  BLUE_BASE_MAP,
+  COLORED_BASE_MAP,
   GREENHOUSE_XCH4,
   GREY_BASE_MAP,
   SUPER_EMITTERS,
@@ -52,22 +52,22 @@ const Chapter: FunctionComponent<Props> = ({
         setLayers([GREY_BASE_MAP, GREENHOUSE_XCH4]);
         break;
       case 2:
-        setLayers([GREY_BASE_MAP]);
+        setLayers([COLORED_BASE_MAP]);
         break;
       case 3:
-        setLayers([BLUE_BASE_MAP]);
+        setLayers([COLORED_BASE_MAP]);
         break;
       case 4:
-        setLayers([BLUE_BASE_MAP]);
-        break;
-      case 5:
         setLayers([GREY_BASE_MAP, SUPER_EMITTERS]);
         break;
+      case 5:
+        setLayers([COLORED_BASE_MAP]);
+        break;
       case 6:
-        setLayers([BLUE_BASE_MAP]);
+        setLayers([COLORED_BASE_MAP]);
         break;
       case 7:
-        setLayers([BLUE_BASE_MAP]);
+        setLayers([COLORED_BASE_MAP]);
         break;
       default:
         break;

@@ -1,15 +1,17 @@
 import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
 
+import {getMarkerHtml} from '../../../../main/globe/get-marker-html';
+
+import {subStory} from '../../config/main';
+
 import Chapter from '../chapter/chapter';
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText, {TextPageContent} from '../chapter-text/chapter-text';
 import ChapterVideo from '../chapter-video/chapter-video';
 import ChapterGraph from '../chapter-graph/chapter-graph';
 import ChapterConclusion from '../chapter-conclusion/chapter-conclusion';
-import {subStory} from '../../config/main';
 import ChapterMarkers from '../chapter-markers/chapter-markers';
-import {getMarkerHtml} from '../../../../main/globe/get-marker-html';
 
 interface Props {
   chapterIndex: number;
@@ -101,7 +103,12 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
     return (
       <>
         <div ref={subIntroRef}>
-          <ChapterIntro subTitle={subTitle} title={title} scrollIndex={6} />
+          <ChapterIntro
+            subTitle={subTitle}
+            title={title}
+            scrollIndex={6}
+            onBackToStory={handleBackToStory}
+          />
         </div>
         <ChapterText text={textPage1.text} title={textPage1.title} />
         <ChapterText text={textPage2.text} title={textPage2.title} />
@@ -136,6 +143,7 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
           offset: [0, 0],
           ...latLng
         }))}
+        onBackToStory={() => handleBackToStory()}
       />
       {selectedGiantContent && renderSubstory()}
     </Chapter>
