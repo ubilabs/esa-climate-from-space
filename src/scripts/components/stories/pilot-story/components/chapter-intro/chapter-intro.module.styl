@@ -13,7 +13,12 @@
     margin-left: 0
 
 .introBackButton
-  margin: 0
+  left: 0
+  top: $headerHeight
+  position: absolute
+  opacity: 0
+  transition: opacity 0.2s ease-in
+  z-index: 1
 
 .introContent, .introBackButton
   opacity: 0
