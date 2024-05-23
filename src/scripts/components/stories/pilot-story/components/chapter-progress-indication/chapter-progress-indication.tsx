@@ -51,11 +51,22 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
       const progressIndicatorHeight = indicationRef.current.clientHeight;
       const chaptersLength = chapters.length;
 
+      // Get the circle radius from the CSS custom property
+      // This is used to calculate the offset of the indicator
+      // We want the indicator to start below the circle indication for the selected chapter intro
+      const circleRadius = Number(
+        window
+          .getComputedStyle(indicationRef.current)
+          .getPropertyValue('--circle-radius')
+          .replace('px', '')
+      );
+
       if (progressIndicatorHeight && chaptersLength) {
         const indicatorYOffsetInPx =
           (progressIndicatorHeight / chaptersLength + 1) *
             selectedChapterIndex +
-          (progressIndicatorHeight / chaptersLength + 1) * progress;
+          (progressIndicatorHeight / chaptersLength) * progress +
+          (selectedChapterIndex * gap) / circleRadius;
 
         const indicatorYOffsetInPercent = `${
           (indicatorYOffsetInPx / progressIndicatorHeight) * 100
