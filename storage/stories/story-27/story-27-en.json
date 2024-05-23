@@ -16,19 +16,18 @@
       "images": [
         "assets/story27-image01.jpg",
         "assets/story27-image02.jpg",
-        "assets/story27-image10.jpg",
         "assets/story27-image16.jpg",
-        "assets/story27-image17.jpg"
+        "assets/story27-image17.jpg",
+        "assets/story27-image21.jpg"
       ],
       "imageCaptions": [
         "Trucks delivering manufactured snow to a Moscow street during a heatwave in December 2019 (Twitter)",
         "Summer heatwaves can damage infrastructure such as railway tracks and road surfaces, as well as putting excessive loads on water and electricity supplies (US Dept of Transportation)",
-        "Mean night-time air temperature in Paris at 10pm during the heatwave of summer 2003, which led to thousands of heat-related deaths. (VITO/Planetek)",
         "In some parts of Europe in the summer of 2022, air temperature rose more than 10°C above the average for the time of year. This image shows the surface temperature across Paris on 18 June 2022, measured by the experimental ECOSTRESS instrument on the International Space Station. (NASA/JPL-Caltech)",
-        "The summer of 2022 saw the green land of England and northern France turned brown after months of high temperature and low rainfall. This image was taken by ESA’s Copernicus Sentinel-3 satellite on 12 August 2022. During that month the satellite’s infrared sensor recorded land surface temperatures over 45°C in the United Kingdom, 50°C in France and 60°C in Spain. (Contains modified Copernicus Sentinel data (2022), processed by ESA)"
+        "The summer of 2022 saw the green land of England and northern France turned brown after months of high temperature and low rainfall. This image was taken by ESA’s Copernicus Sentinel-3 satellite on 12 August 2022. During that month the satellite’s infrared sensor recorded land surface temperatures over 45°C in the United Kingdom, 50°C in France and 60°C in Spain. (Contains modified Copernicus Sentinel data (2022), processed by ESA)",
+        "Land surface temperature during the southern European heatwave of summer 2023. This image uses data from the Copernicus Sentinel-3 satellite’s radiometer to show the land surface temperature on the morning of 17 July 2023. As climate change takes grip, heatwaves such as this are likely to be more frequent and more severe. (Contains modified Copernicus Sentinel data (2023), processed by ESA)"
       ],
       "imageFits": [
-        "contain",
         "contain",
         "contain",
         "contain",
@@ -124,12 +123,14 @@
         "assets/story27-image07.jpg",
         "assets/story27-image12.jpg",
         "assets/story27-image05.jpg",
+        "assets/story27-image20.jpg",
         "assets/story27-image15.jpg"
       ],
       "imageCaptions": [
         "Street lights trace out London’s urban area in this photograph taken by ESA astronaut Tim Peake from the International Space Station in 2016. Dark areas show the locations of the city’s green lungs – its many large parks. (ESA/NASA)",
         "Land surface temperature (left) and a measure of the urban heat island relative to surrounding rural areas (right) for London, based on Landsat thermal infrared observations for 7th July 2020. The elevation of land surface temperature in cities is even higher than it is for air temperature. (University of Liecester)",
         "Air temperature for Madrid on 25 June 2008 at 22:18 UTC (right), compared with a map of sealed soil surface area (left), highlighting the city’s artificial surfaces. (VITO/Indra/Planetek/European Environment Agency)",
+        "Land surface temperatures around Rome, Italy, measured from space at 22:23 CEST on 17 July 2023. The surface temperature reached 35°C in some parts of the city, but the cooling effect of vegetation can be seen, for example, in the Appian Way Park. The temperatures were recorded by NASA's Ecostress instrument on the International Space Station, which is helping in the development of a new Copernicus Sentinel  Expansion satellite – the Land Surface Temperature Monitoring (LSTM) mission. (NASA/JPL)",
         "A pair of oak trees on Hampstead Heath in London, rendered as a point cloud from laser distance measurements. \r\nThe mass of carbon stored by trees can be estimated using 3D tree models based on laser scanning \r\n(lidar – light detection and ranging). (M Disney/P Wilkes/UCL)"
       ],
       "imageFits": [

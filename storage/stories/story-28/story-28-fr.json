@@ -5,7 +5,9 @@
       "type": "splashscreen",
       "text": "# Biodiversité et perte d'habitat\r\n\r\nLes écosystèmes qui composent la biosphère de la Terre abritent une grande variété de vie et connaissent des changements rapides. Ces changements ont un impact sur les cycles naturels qui contrôlent le climat de la Terre, ainsi que des effets plus immédiats sur les activités humaines.",
       "shortText": "# Biodiversité et perte d'habitat\r\n\r\nLes écosystèmes qui composent la biosphère de la Terre abritent une grande variété de vie et connaissent des changements rapides. Ces changements ont un impact sur les cycles naturels qui contrôlent le climat de la Terre, ainsi que des effets plus immédiats sur les activités humaines.",
-      "images": ["assets/landcover.jpg"]
+      "images": [
+        "assets/landcover.jpg"
+      ]
     },
     {
       "type": "image",
@@ -25,13 +27,25 @@
         "Feu de forêt dans l'ouest du Groenland, août 2017.\r\n(Données Copernicus Sentinel, 2017, traitées par Pierre Markuse)",
         "Biomasse aérienne de l'initiative de l'ESA sur le changement climatique (ESA-CCI)"
       ],
-      "imageFits": ["cover", "contain", "cover", "cover", "contain"]
+      "imageFits": [
+        "cover",
+        "contain",
+        "cover",
+        "cover",
+        "contain"
+      ]
     },
     {
       "type": "globe",
       "text": "## Couverture terrestre de la Terre\r\n\r\nLes régions qui ont un climat similaire et abritent des communautés similaires de plantes et d'animaux sont appelées biomes. Ils sont souvent caractérisés par un type dominant de couverture terrestre, comme le montre le globe interactif. Faites tourner le globe et regardez de plus près comment l'étendue de certains types de couverture terrestre a changé au cours des dernières années. Vous pouvez commencer par étudier la perte de la forêt tropicale dans le Mato Grosso, au Brésil, entre 1996 et 2015.\r\n\r\nLa plupart des animaux et des plantes ont développé des caractéristiques liées au climat de leur habitat et aux autres organismes de l'écosystème dont ils font partie. Cependant, la flore et la faune d'une région influencent également le climat : par exemple, les plantes de la forêt amazonienne [font circuler suffisamment d'eau du sol](histoires/story-21/2) vers l'atmosphère pour créer leur propre météo.\r\n\r\nLe climat au sein d'un biome peut également varier : le côté nord d'une colline peut être plus frais ou recevoir moins de précipitations que le côté sud, un lac peut refroidir la température des terres adjacentes et leur fournir de l'humidité. De minuscules zones dotées de leur propre microclimat peuvent abriter des espèces uniques, incapables de survivre dans des endroits situés à seulement cent mètres. Avec le réchauffement climatique, les incendies de forêt, la déforestation et d'autres activités humaines, même les habitats les plus vastes évoluent très rapidement et se fragmentent.\r\n\r\n![Clé de la carte de la couverture terrestre](assets/landcover-key.png)\r\n_Types de couverture terrestre de l'ESA ICC_\r\n\r\nLe globe Land Cover montre le type dominant d'utilisation des terres dans des zones de 300 mètres de diamètre. Des scientifiques travaillant avec le Bureau climatique de l'ESA utilisent les données des satellites Copernicus Sentinel pour créer de nouvelles cartes montrant l'occupation des sols dans des zones de seulement 10 à 30 mètres de côté, ce qui nous aidera à suivre plus en détail l'évolution des habitats.",
       "shortText": "## Couverture terrestre de la Terre\r\n\r\nFaites tourner le globe pour voir comment certains types de couverture terrestre ont changé au cours des dernières années - par exemple, la perte de la forêt tropicale dans le Mato Grosso, au Brésil, entre 1996 et 2015.\r\n\r\n- Les animaux et les plantes développent des caractéristiques liées au climat de leur habitat.\r\n- mais ils affectent également le climat de leur région\r\n- Les plantes de la forêt amazonienne font circuler suffisamment d'eau du sol vers l'atmosphère pour créer leur propre climat.\r\n- la topographie et les plans d'eau créent également des microclimats.\r\n\r\nAvec le réchauffement climatique, les incendies de forêt, la déforestation et d'autres activités humaines, même les habitats les plus vastes évoluent désormais très rapidement et se fragmentent.\r\n\r\n![Clé de la carte de la couverture terrestre](assets/landcover-key.png)\r\n_Types de couverture terrestre de l'AES CCI_",
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "flyTo": {
         "position": {
           "longitude": -8.23,
@@ -56,11 +70,19 @@
       "type": "video",
       "text": "## Réagir au changement\r\n\r\nLorsqu'un habitat change, les animaux et les plantes peuvent constater que leurs adaptations ne sont pas utiles - ou même les désavantagent activement - dans le nouvel environnement et être contraints de se déplacer ailleurs pour survivre. Les pigeons, les renards et, bien sûr, les humains font partie des espèces qui se sont adaptées pour survivre dans les villes. Mais des populations individuelles d'autres espèces qui étaient plus spécialisées, ou qui ont été poussées dans des zones où elles sont confrontées à une plus grande concurrence, se sont éteintes à la suite d'une urbanisation accrue ou de l'extension de l'agriculture dans des zones auparavant sauvages.\r\n\r\nÀ l'inverse, l'évolution du climat accroît l'aire de répartition de certaines espèces, leur permettant de prospérer dans des endroits qui leur étaient auparavant inhospitaliers ou modifiant leurs habitats de manière à favoriser l'essor de leur population. Ce n'est pas toujours une bonne nouvelle pour tout le monde. Par exemple, plusieurs années de sécheresse et d'hivers doux dans les années 2000 ont permis au dendroctone du pin ponderosa d'étendre son aire de répartition de l'ouest de l'Amérique du Nord vers l'est, à travers les montagnes Rocheuses, ce qui a entraîné des dégâts considérables dans des forêts commerciales et naturelles qui étaient auparavant exemptes de ce parasite.\r\n\r\n## Zones protégées\r\n\r\nUn écosystème présentant un niveau élevé de biodiversité est probablement plus résilient et capable de survivre à des changements soudains. Mais si tous les animaux d'un réseau alimentaire dépendent d'un seul type de plante, l'ensemble de l'écosystème peut s'effondrer si cette plante est touchée par une maladie ou des conditions météorologiques extrêmes.\r\n\r\nLes parcs nationaux et autres zones de conservation protègent toute une série d'habitats de tout développement ou exploitation ultérieurs, tout en continuant, dans certains des meilleurs cas, à faire vivre les populations locales.  Lorsque les habitats se fragmentent, par exemple à cause de la déforestation ou de la construction de barrages sur les rivières, les corridors de vie sauvage peuvent fournir une voie sûre entre les zones pour les espèces à plus grande portée ou à déplacement plus lent, comme les plantes.",
       "shortText": "## Réagir au changement\r\n\r\nLes changements d'habitat, y compris les changements climatiques, peuvent limiter l'aire de répartition de certaines espèces ou l'étendre pour d'autres.\r\n\r\n- plusieurs années de sécheresse et d'hivers doux dans les années 2000 dans l'ouest de l'Amérique du Nord\r\n- ont permis au dendroctone du pin ponderosa de se propager vers l'est à travers les montagnes Rocheuses.\r\n- ce qui a entraîné d'importants dégâts dans des forêts qui étaient auparavant exemptes de ce ravageur.\r\n\r\nUn écosystème présentant un niveau élevé de biodiversité est susceptible d'être plus résilient.\r\n\r\nLes parcs nationaux et autres zones de conservation protègent toute une série d'habitats contre tout développement ou exploitation ultérieurs tout en continuant, dans le meilleur des cas, à faire vivre les populations locales.",
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "videoId": "8wwQaK_SJtw",
       "videoCaptions": "assets/landcover.vtt",
       "videoPoster": "assets/landcover-poster.jpg",
-      "videoSrc": ["assets/landcover-web.mp4"]
+      "videoSrc": [
+        "assets/landcover-web.mp4"
+      ]
     },
     {
       "type": "image",
@@ -80,17 +102,31 @@
         "Récif corallien près de l'île Enderbury dans la zone protégée des îles Phoenix, un site du patrimoine mondial de l'UNESCO dans le Pacifique Sud (Dr Randi Rotjan, New England Aquarium).",
         "La fumée obscurcit la quasi-totalité de la côte ouest des États-Unis alors que près de 100 feux de friches brûlent pendant une vague de chaleur en septembre 2020.\r\n(Données Copernicus Sentinel, 2020, traitées par l'ESA)"
       ],
-      "imageFits": ["contain", "contain", "cover", "cover", "contain"]
+      "imageFits": [
+        "contain",
+        "contain",
+        "cover",
+        "cover",
+        "contain"
+      ]
     },
     {
       "type": "video",
       "text": "## Suivre l'Évolution des Habitats\r\n\r\nLes variables climatiques essentielles (VCE) décrivent les aspects clés du climat de la Terre et les caractéristiques qui ont une forte influence sur celui-ci. La compréhension du climat nous donne un aperçu de l'un des moteurs du changement des écosystèmes et donc de la manière dont nous pouvons préserver les biomes vulnérables et la biodiversité. La couverture terrestre et la biomasse sont directement liées à la population d'un habitat, et sont toutes deux des VCE qui peuvent être surveillées depuis l'espace à l'aide de satellites.\r\n\r\nD'autres VCE déterminent également si un certain habitat peut prospérer. Sur terre, il s'agit notamment de la température de la surface terrestre et de l'humidité du sol. [La température de surface de la mer et la couleur des océans](stories/story-16/4) sont des mesures utiles pour la surveillance des océans. L'initiative de l'ESA sur le changement climatique a utilisé des observations par satellite pour produire des enregistrements des VCE qui couvrent le monde entier et remontent à plus de quarante ans. Disposer d'un enregistrement fiable de ces facteurs et d'une compréhension précise de leur évolution actuelle nous aide à prendre des décisions responsables, en tenant compte de l'impact qu'ils auront sur la planète - et tous ses habitants - dans le futur.",
       "shortText": "## Suivre l'Évolution des Habitats\r\n\r\nLa compréhension du climat nous donne un aperçu de l'un des moteurs de l'évolution des écosystèmes.\r\n\r\nLa couverture terrestre et la biomasse sont des variables climatiques essentielles (VCE) directement liées à la population d'un habitat.\r\n\r\nD'autres VCE pertinentes sur terre sont la température de la surface terrestre et l'humidité du sol.\r\n\r\nLa température de surface de la mer et la couleur de l'océan sont des mesures utiles pour la surveillance des océans.\r\n\r\nL'initiative sur le changement climatique de l'ESA a utilisé des observations par satellite pour produire des enregistrements de VCE qui couvrent le monde entier et remontent à plus de quarante ans.\r\n\r\nDisposer d'un registre fiable de ces facteurs, et de leur évolution, nous aide à prendre des décisions responsables, en tenant compte de l'impact qu'ils auront sur la planète - et tous ses habitants - dans le futur.",
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "videoId": "LdA3Yy-Xjf4",
       "videoCaptions": "assets/landcover-interview.vtt",
       "videoPoster": "assets/landcover-interview-wide.jpg",
-      "videoSrc": ["assets/landcover-interview-wide-web.mp4"]
+      "videoSrc": [
+        "assets/landcover-interview-wide-web.mp4"
+      ]
     }
   ]
 }
