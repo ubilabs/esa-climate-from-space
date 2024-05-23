@@ -31,7 +31,7 @@ const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
   }, []);
 
   useEffect(() => {
-    setVisible(progress >= 0.5 && progress <= 0.54);
+    setVisible(progress >= 0.4 && progress <= 0.6);
   }, [progress]);
 
   const positionElements = (index: number) => {
