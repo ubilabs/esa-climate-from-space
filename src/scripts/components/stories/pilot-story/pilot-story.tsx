@@ -94,7 +94,6 @@ const PilotStory: FunctionComponent = () => {
                 </Globe>
               </GlobeContextProvider>
               <NavDrawer />
-
               {/* Nav Drawer DOM element - this is where the <NavDrawer/> will be rendered with React.usePortal */}
               <div
                 id="drawer"
