@@ -3,7 +3,7 @@
 .chapterVideo
   height: 150vh
   box-sizing: border-box
-  padding: $headerHeight 0
+  padding: $headerHeight 0 emCalc(100px)
   overflow-x: hidden
   background: linear-gradient(250deg, #003349 19.74%, rgba(0, 51, 73, 0) 106.06%), #000
   display: flex
@@ -49,7 +49,8 @@
 
 @media screen and (min-width: 768px)
   .chapterVideo
-    height: 100vh
+    --topPadding: 75px
+    height: calc(100svh - var(--topPadding))
     padding: $headerHeight emCalc(80px)
     flex-direction: row
     gap: 5em

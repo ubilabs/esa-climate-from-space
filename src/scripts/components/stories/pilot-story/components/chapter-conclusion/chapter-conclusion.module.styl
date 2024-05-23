@@ -1,14 +1,14 @@
 @require '../../../../../../variables.styl'
 
 .conclusion
-  height: 100vh
+  --topPadding: 75px
+  height: calc(100svh - var(--topPadding))
   box-sizing: border-box
-  padding: $headerHeight emCalc(29px)
   overflow-x: hidden
   display: flex
   flex-direction: column
   justify-content: space-between
-  padding: emCalc(100px) emCalc(29px)
+  padding: emCalc(20px) emCalc(29px) emCalc(100px)
   background: linear-gradient(180deg, rgba(0, 32, 46, 0.8) 8.28%, rgba(2, 30, 42, 0) 100%)
   scroll-snap-align: center
 
@@ -41,7 +41,7 @@
 
 @media screen and (min-width: 768px)
   .conclusion
-    padding: emCalc(90px)
+    padding: emCalc(20px)
 
   .chapterText
     display: flex

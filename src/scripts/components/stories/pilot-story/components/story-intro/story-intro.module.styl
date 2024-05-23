@@ -1,8 +1,9 @@
 @require '../../../../../../variables.styl'
 
 .intro
-  height: 100vh
-  padding: $headerHeight emCalc(29px)
+  --topPadding: 75px
+  height: calc(100svh - var(--topPadding))
+  padding: 0 emCalc(29px)
   display: flex
   flex-direction: column
   justify-content: center
@@ -26,7 +27,7 @@
   font-weight: 700
   line-height: 50px
   width: 100%
-  margin-top: emCalc(30px)
+  margin-top: emCalc(22px)
 
 .storyDescription
   color: #fff

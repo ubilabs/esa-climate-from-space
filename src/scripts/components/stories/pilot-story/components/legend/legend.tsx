@@ -10,11 +10,12 @@ export interface LegendItems {
 
 interface Props {
   title: string;
+  speed?: number;
   legendItems?: LegendItems[];
 }
 
-const Legend: FunctionComponent<Props> = ({title, legendItems}) => (
-  <Parallax className={styles.legend} speed={10} easing="easeInQuad">
+const Legend: FunctionComponent<Props> = ({title, speed = 10, legendItems}) => (
+  <Parallax className={styles.legend} speed={speed} easing="easeInQuad">
     <h1>{title}</h1>
     <legend>
       {legendItems &&

@@ -8,6 +8,7 @@ import {useScreenSize} from '../../../../../hooks/use-screen-size';
 import SwipeIcon from '../icons/swipe-icon/swipe-icon';
 import {Parallax} from 'react-scroll-parallax';
 import Legend, {LegendItems} from '../legend/legend';
+import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
 import styles from './pilot-carousel.module.styl';
 
@@ -75,76 +76,76 @@ const PilotCarousel = () => {
   const clipHeight = ((isMobile ? 10 : 20) / 100) * diameter;
 
   return (
-    <Parallax
-      onProgressChange={progress => setProgress(progress)}
-      className={styles.carouselWrapper}>
-      <Legend
-        title="Some of the primary sources include:"
-        legendItems={legendItems}
-      />
+    <SnapWrapper className={styles.carouselWrapper}>
+      <Parallax onProgressChange={progress => setProgress(progress)}>
+        <Legend
+          title="Some of the primary sources include:"
+          legendItems={legendItems}
+        />
 
-      <div className={styles.explanation}>
-        {sources[selectedIconIndex].value.explanation}
-      </div>
-      <div
-        {...handlers}
-        className={cx(styles.carousel, visible && styles.visible)}>
-        {sources.map((_, i) => {
-          const iconIndex =
-            (selectedIconIndex -
-              Math.floor(sourcesLength / 2) +
-              i +
-              sourcesLength) %
-            sourcesLength;
+        <div className={styles.explanation}>
+          {sources[selectedIconIndex].value.explanation}
+        </div>
+        <div
+          {...handlers}
+          className={cx(styles.carousel, visible && styles.visible)}>
+          {sources.map((_, i) => {
+            const iconIndex =
+              (selectedIconIndex -
+                Math.floor(sourcesLength / 2) +
+                i +
+                sourcesLength) %
+              sourcesLength;
 
-          const diff = Math.abs(i - Math.floor(sourcesLength / 2));
+            const diff = Math.abs(i - Math.floor(sourcesLength / 2));
 
-          const x = (windowWidth / sourcesLength) * diff; // the given x-coordinate
-          const yValues = findY(radius, x);
+            const x = (windowWidth / sourcesLength) * diff; // the given x-coordinate
+            const yValues = findY(radius, x);
 
-          const yValue = (yValues && yValues + radius) || 0;
+            const yValue = (yValues && yValues + radius) || 0;
 
-          const isSelected = iconIndex === selectedIconIndex;
+            const isSelected = iconIndex === selectedIconIndex;
 
-          if ((isMobile && diff > 1) || (isDesktop && diff > 2)) {
-            return null;
-          }
+            if ((isMobile && diff > 1) || (isDesktop && diff > 2)) {
+              return null;
+            }
 
-          return (
-            <MethaneSourcesIcon
-              onClick={() => setSelectedSourceIndex(iconIndex)}
-              yValue={yValue}
-              key={iconIndex}
-              source={sources[iconIndex].key as MethaneSources}
-              percentage={sources[iconIndex].value.percentageOfTotalEmission}
-              sourceType={sources[iconIndex].value.type}
-              isSelected={isSelected}
-            />
-          );
-        })}
-        <svg
-          className={styles.curveLine}
-          viewBox={`0 0 ${diameter} ${diameter}`}>
-          <defs>
-            <clipPath id="halfClip">
-              <rect x="0" y="0" width={diameter} height={clipHeight} />
-            </clipPath>
-          </defs>
-          <circle
-            opacity="0.4"
-            cx={radius}
-            cy={radius}
-            r={radius}
-            stroke="rgba(63, 108, 125, 1)"
-            fill="none"
-            strokeWidth="2"
-            vectorEffect="non-scaling-stroke"
-            strokeDasharray="5.5"
-            clipPath="url(#halfClip)"></circle>
-        </svg>
-        {isMobile && <SwipeIcon />}
-      </div>
-    </Parallax>
+            return (
+              <MethaneSourcesIcon
+                onClick={() => setSelectedSourceIndex(iconIndex)}
+                yValue={yValue}
+                key={iconIndex}
+                source={sources[iconIndex].key as MethaneSources}
+                percentage={sources[iconIndex].value.percentageOfTotalEmission}
+                sourceType={sources[iconIndex].value.type}
+                isSelected={isSelected}
+              />
+            );
+          })}
+          <svg
+            className={styles.curveLine}
+            viewBox={`0 0 ${diameter} ${diameter}`}>
+            <defs>
+              <clipPath id="halfClip">
+                <rect x="0" y="0" width={diameter} height={clipHeight} />
+              </clipPath>
+            </defs>
+            <circle
+              opacity="0.4"
+              cx={radius}
+              cy={radius}
+              r={radius}
+              stroke="rgba(63, 108, 125, 1)"
+              fill="none"
+              strokeWidth="2"
+              vectorEffect="non-scaling-stroke"
+              strokeDasharray="5.5"
+              clipPath="url(#halfClip)"></circle>
+          </svg>
+          {isMobile && <SwipeIcon />}
+        </div>
+      </Parallax>
+    </SnapWrapper>
   );
 };
 

@@ -1,17 +1,17 @@
 @require '../../../../../../variables.styl'
 
 .chapterGraph
-  height: 100vh
+  height: 150svh
   width: 100vw
   box-sizing: border-box
-  padding: emCalc(100px) 0
-  overflow: hidden
+  padding: $headerHeight 0 emCalc(100px)
+  overflow-x: hidden
   background: linear-gradient(250deg, #003349 19.74%, rgba(0, 51, 73, 0) 106.06%), #000
   display: flex
   flex-direction: column
   justify-content: center
-  gap: 2em
-  scroll-snap-align: center
+  gap: 10em
+  scroll-snap-align: start
 
 .graphContainer
   width: 100%
@@ -61,11 +61,12 @@
 
 @media screen and (min-width: 768px)
   .chapterGraph
+    height: 100vh
     padding: $headerHeight emCalc(80px)
     flex-direction: row
 
   .graphContainer
-    width: 60%
+    width: 50%
     align-self: center
 
   .scrollContainer
