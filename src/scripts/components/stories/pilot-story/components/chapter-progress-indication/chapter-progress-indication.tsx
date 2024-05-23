@@ -82,6 +82,8 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
     }
   }
 
+  const indicatorLength = chapters.length;
+
   return (
     <div
       ref={indicationRef}
@@ -91,7 +93,7 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
         progressIndicationElement
       )}
       style={style}>
-      {Array.from({length: chapters.length}).map((_, index) => (
+      {Array.from({length: indicatorLength}).map((_, index) => (
         <span
           key={index}
           data-is-selected={index === selectedChapterIndex}

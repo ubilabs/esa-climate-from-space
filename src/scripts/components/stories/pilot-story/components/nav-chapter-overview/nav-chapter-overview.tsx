@@ -14,12 +14,16 @@ interface Props {
   gap?: number;
 }
 
-export const scrollToChapterIndex = (index: number) => {
+export const scrollToChapterIndex = (
+  index: number,
+  // eslint-disable-next-line no-undef
+  behavior: ScrollBehavior = 'smooth'
+) => {
   const scrollEl = document.querySelector(
     `[data-scroll-index-intro="${index}"]`
   );
 
-  scrollEl?.scrollIntoView({behavior: 'smooth', block: 'start'});
+  scrollEl?.scrollIntoView({behavior, block: 'start'});
 };
 
 /**

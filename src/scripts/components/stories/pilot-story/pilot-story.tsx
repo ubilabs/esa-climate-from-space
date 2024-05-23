@@ -16,7 +16,7 @@ import Header from './components/header/header';
 import NavDrawer from './components/nav-drawer/nav-drawer';
 import StoryIntro from './components/story-intro/story-intro';
 
-import {useHistory} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import {scrollToChapterIndex} from './components/nav-chapter-overview/nav-chapter-overview';
 import {useScreenSize} from '../../../hooks/use-screen-size';
 
@@ -29,32 +29,24 @@ import {
 } from './config/main';
 
 import styles from './pilot-story.module.styl';
+import {getChapterIndexFromUrl} from './components/utils/get-chapter-index-from-url';
 
 const PilotStory: FunctionComponent = () => {
-  const [storyStarted, setStoryStarted] = useState(false);
+  const {pathname} = useLocation();
+
+  // Get the chapter index from the URL path
+  // We also need to check if the story has started
+  // If the chapter index is 0, the story has not started
+  // Setting the chapterIndex in use-chapter-observer prevents a jumping effect
+  const chapter = getChapterIndexFromUrl(pathname);
+  const [storyStarted, setStoryStarted] = useState(Boolean(chapter));
+
+  useEffect(() => {
+    scrollToChapterIndex(getChapterIndexFromUrl(pathname), 'instant');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const {isDesktop} = useScreenSize();
-
-  const history = useHistory();
-
-  /**
-   * Listens to changes in the browser history and scrolls to the corresponding chapter index.
-   * The chapter selection based on the URL path. The rest is handled by the useChapterObserver hook.
-   * @param {History} history - The browser history object.
-   * @returns {Function} - The function to stop listening to history changes.
-   */
-  useEffect(() => {
-    const unlisten = history.listen(location => {
-      const chapterIndex = Number(location.pathname.split('/').pop()) ?? 0;
-
-      scrollToChapterIndex(chapterIndex);
-    });
-
-    // Clean up the listener when the component is unmounted
-    return () => {
-      unlisten();
-    };
-  }, [history]);
 
   return (
     <ParallaxProvider>
