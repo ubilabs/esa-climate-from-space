@@ -23,7 +23,7 @@ const ChapterConclusion: FunctionComponent<Props> = ({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setVisible(progress >= 0.5 && progress <= 0.53);
+    setVisible(progress >= 0.4 && progress <= 0.6);
   }, [progress]);
 
   return (
