@@ -2,9 +2,10 @@
 
 .explore
   height: 100vh
-  padding: $headerHeight emCalc(29px)
   display: flex
+  padding: $headerHeight 0
   flex-direction: column
+  align-items: center
   justify-content: center
   box-sizing: border-box
   z-index: 1
@@ -31,3 +32,18 @@
   .exploreContent
     h1
       font-size: emCalc(40px)
+
+.globeContainer
+  position: relative
+  width: 100%
+  height: 100%
+
+  @media screen and (min-width: 768px)
+    width: calc(100% - 10rem)
+    height: calc(100% - 5rem)
+
+.backButton
+  position: absolute
+  top: 0
+  left: 0
+  z-index: 1
