@@ -10,6 +10,7 @@ import ScrollHint from '../scroll-hint/scroll-hint';
 import Button from '../button/button';
 
 import styles from './explore-dataset.module.styl';
+import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
 interface Props {
   title: string;
@@ -22,7 +23,7 @@ const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
   const dispatch = useThunkDispatch();
 
   return (
-    <section className={styles.explore}>
+    <SnapWrapper>
       <Parallax className={styles.exploreContent}>
         <h1>{title}</h1>
 
@@ -37,7 +38,7 @@ const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
           {isMobile && <ScrollHint />}
         </div>
       </Parallax>
-    </section>
+    </SnapWrapper>
   );
 };
 

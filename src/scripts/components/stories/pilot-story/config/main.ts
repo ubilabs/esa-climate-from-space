@@ -30,7 +30,8 @@ export const graphContent = {
   title: 'Methane is a major contributor to global warming after CO2.',
   src: emmisionsGraph,
   alt: 'Contributions to global warming',
-  legendItems: legendItems06
+  legendItems: legendItems06,
+  speed: -15
 };
 
 // chapter 7

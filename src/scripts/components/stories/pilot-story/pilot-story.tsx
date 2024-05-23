@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {ParallaxProvider} from 'react-scroll-parallax';
 
 import {GlobeContextProvider} from './provider/globe-provider';
@@ -30,59 +30,68 @@ import {ChapterContextProvider} from './provider/chapter-provider';
 
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);
-
   const {isDesktop} = useScreenSize();
+  const [scrollEl, setScrollElement] = useState<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+    setScrollElement(ref.current);
+  }, []);
 
   return (
-    <ParallaxProvider>
-      <ChapterContextProvider>
-        <div className={styles.pilotStory}>
-          <Header>
-            <Share />
-          </Header>
-          {isDesktop && storyStarted && (
-            <ChapterProgressIndication
-              chapters={chapters}
-              className={styles.chapterProgressIndication}
-              gap={48}
-            />
-          )}
+    <div className={styles.pilotStory}>
+      <Header>
+        <Share />
+      </Header>
 
-          <div className={styles.storyContainer}>
-            <StoryIntro
-              storyStarted={storyStarted}
-              onStoryStart={() => setStoryStarted(true)}
-            />
-            <GlobeContextProvider>
-              <Globe
-                relativePosition={{x: -30, y: 0, z: 0}}
-                globeMovements={
-                  isDesktop
-                    ? globeMovementsPerChapterDesktop
-                    : globeMovementsPerChapter
-                }>
-                {storyStarted && (
-                  <div className={styles.chaptersContainer}>
-                    <ChapterOne chapterIndex={0} />
-                    <ChapterTwo chapterIndex={1} />
-                    <ChapterThree chapterIndex={2} />
-                    <ChapterFour chapterIndex={3} />
-                    <ChapterFive chapterIndex={4} />
-                    <ChapterSix chapterIndex={5} />
-                    <ChapterSeven chapterIndex={6} />
-                  </div>
-                )}
-              </Globe>
-            </GlobeContextProvider>
-          </div>
+      <div className={styles.storyContainer} ref={ref}>
+        {scrollEl && (
+          <ParallaxProvider scrollContainer={scrollEl}>
+            <ChapterContextProvider>
+              {isDesktop && storyStarted && (
+                <ChapterProgressIndication
+                  chapters={chapters}
+                  className={styles.chapterProgressIndication}
+                  gap={48}
+                />
+              )}
+              <StoryIntro
+                storyStarted={storyStarted}
+                onStoryStart={() => setStoryStarted(true)}
+              />
+              <GlobeContextProvider>
+                <Globe
+                  relativePosition={{x: -30, y: 0, z: 0}}
+                  globeMovements={
+                    isDesktop
+                      ? globeMovementsPerChapterDesktop
+                      : globeMovementsPerChapter
+                  }>
+                  {storyStarted && (
+                    <div className={styles.chaptersContainer}>
+                      <ChapterOne chapterIndex={0} />
+                      <ChapterTwo chapterIndex={1} />
+                      <ChapterThree chapterIndex={2} />
+                      <ChapterFour chapterIndex={3} />
+                      <ChapterFive chapterIndex={4} />
+                      <ChapterSix chapterIndex={5} />
+                      <ChapterSeven chapterIndex={6} />
+                    </div>
+                  )}
+                </Globe>
+              </GlobeContextProvider>
+              {storyStarted && <NavDrawer />}
 
-          {storyStarted && <NavDrawer />}
-
-          {/* Nav Drawer DOM element - this is where the <NavDrawer/> will be rendered with React.usePortal */}
-          <div id="drawer" className={styles.drawer}></div>
-        </div>
-      </ChapterContextProvider>
-    </ParallaxProvider>
+              {/* Nav Drawer DOM element - this is where the <NavDrawer/> will be rendered with React.usePortal */}
+              <div id="drawer" className={styles.drawer}></div>
+            </ChapterContextProvider>
+          </ParallaxProvider>
+        )}
+      </div>
+    </div>
   );
 };
 

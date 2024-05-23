@@ -4,15 +4,17 @@
   --curve-width: 25vw
   position: relative
   width: 100vw
-  height: 100vh
-  padding: emCalc(100px) 0
+  height: calc(100svh - 75px)
+  padding: emCalc(29px) emCalc(29px) emCalc(90px)
   box-sizing: border-box
   color: #fff
-  scroll-snap-align: center
   display: flex
+  flex-direction: column
   justify-content: flex-end
   align-items: center
   flex-wrap: wrap
+  overflow: hidden
+  scroll-snap-align: center
 
 .info
   text-align: center
@@ -44,6 +46,7 @@
 @media screen and (min-width: 768px)
   .carousel
     flex-wrap: nowrap
+    flex-direction: row
 
   .info
     font-size: emCalc(62px)

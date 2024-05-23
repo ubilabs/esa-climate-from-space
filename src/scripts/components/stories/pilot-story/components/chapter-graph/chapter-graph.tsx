@@ -12,11 +12,12 @@ interface Props {
     alt: string;
     caption?: string;
     legendItems?: LegendItems[];
+    speed?: number;
   };
 }
 
 const ChapterGraph: FunctionComponent<Props> = ({graph}) => {
-  const {title, src, alt, caption, legendItems} = graph;
+  const {title, src, alt, caption, legendItems, speed} = graph;
 
   return (
     <Parallax className={styles.chapterGraph} opacity={[0, 2]}>
@@ -24,9 +25,10 @@ const ChapterGraph: FunctionComponent<Props> = ({graph}) => {
         <Legend
           title="Some of the primary sources include:"
           legendItems={legendItems}
+          speed={speed}
         />
       ) : (
-        <Parallax speed={-10} className={styles.graphText} easing="easeInQuad">
+        <Parallax speed={10} className={styles.graphText} easing="easeInQuad">
           <h3>{title}</h3>
         </Parallax>
       )}

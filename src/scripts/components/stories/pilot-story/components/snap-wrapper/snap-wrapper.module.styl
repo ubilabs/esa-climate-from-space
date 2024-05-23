@@ -1,10 +1,10 @@
 @require '../../../../../../variables.styl'
 
 .snapWrapper
-  height: 100vh
+  height: calc(100svh - 75px)
   width: 100vw
   box-sizing: border-box
-  padding: emCalc(110px) emCalc(29px)
+  padding: emCalc(29px) emCalc(29px) emCalc(90px)
   overflow-x: hidden
   display: flex
   flex-direction: column
@@ -13,4 +13,4 @@
 
 @media screen and (min-width: 768px)
   .snapWrapper
-    padding: $headerHeight emCalc(80px)
+    padding: emCalc(25px) emCalc(80px) emCalc(80px)

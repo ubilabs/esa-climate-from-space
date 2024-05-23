@@ -65,8 +65,8 @@ const SatelliteCarousel = () => {
   return (
     <div {...handlers} className={styles.carousel}>
       <Parallax
-        speed={15}
-        style={{marginBottom: isMobile ? '-240px' : ''}}
+        speed={20}
+        style={{marginBottom: isMobile ? '-220px' : ''}}
         className={styles.info}>
         3 most important satellites used by European Space Agency
       </Parallax>

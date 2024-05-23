@@ -1,11 +1,9 @@
 @require '../../../../../../variables.styl'
 
 .carouselWrapper
-  height: 100vh
-  display: flex
-  flex-direction: column
-  justify-content: center
-  scroll-snap-align: center
+  padding-left: 0
+  padding-right: 0
+  overflow: hidden
 
 .carousel
   color: white
@@ -17,7 +15,7 @@
   z-index: 1
   color: white
   position: relative
-  height: 10%
+  height: 15%
   opacity: 0
   transition: opacity 0.2s ease-in
 
@@ -40,3 +38,7 @@
   right: 0
   left: 0
   pointer-events: none
+
+@media screen and (min-width: 768px)
+  .carouselWrapper
+    padding-bottom: emCalc(200px)
