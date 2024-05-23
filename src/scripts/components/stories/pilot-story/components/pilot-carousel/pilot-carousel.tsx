@@ -8,9 +8,9 @@ import {useScreenSize} from '../../../../../hooks/use-screen-size';
 import SwipeIcon from '../icons/swipe-icon/swipe-icon';
 import {Parallax} from 'react-scroll-parallax';
 import Legend, {LegendItems} from '../legend/legend';
+import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
 import styles from './pilot-carousel.module.styl';
-import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
 const legendItems: LegendItems[] = [
   {name: 'Anthrophogenic', color: 'rgba(232, 119, 34, 1)'},

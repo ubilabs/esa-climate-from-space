@@ -5,9 +5,9 @@ import cx from 'classnames';
 import {GlobeIcon} from '../../../../main/icons/globe-icon';
 import ScrollHint from '../scroll-hint/scroll-hint';
 import Button from '../button/button';
+import {scrollToChapterIndex} from '../nav-chapter-overview/nav-chapter-overview';
 
 import styles from './story-intro.module.styl';
-import {scrollToChapterIndex} from '../nav-chapter-overview/nav-chapter-overview';
 
 interface Props {
   storyStarted: boolean;

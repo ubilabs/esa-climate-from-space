@@ -1,8 +1,9 @@
 @require '../../../../../../variables.styl'
 
 .intro
-  height: calc(100svh - 75px)
-  padding: $headerHeight emCalc(29px)
+  --topPadding: 75px
+  height: calc(100svh - var(--topPadding))
+  padding: 0 emCalc(29px)
   display: flex
   flex-direction: column
   justify-content: center

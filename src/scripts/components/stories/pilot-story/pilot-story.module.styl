@@ -15,7 +15,7 @@
 .storyContainer
   background: linear-gradient(270deg, rgba(0, 32, 46, 0.7) 8.28%, rgba(2, 30, 42, 0) 100%)
   height: 100%
-  overflow: scroll
+  overflow: auto
   scroll-snap-type: y mandatory
 
 .chaptersContainer
@@ -26,8 +26,15 @@
   gap: 1em
 
 .drawer
+  visibility: hidden
+  opacity: 0
   display: flex
   justify-content: center
+
+.drawer.navVisible
+  visibility: visible
+  opacity: 1
+  transition: opacity 0.3s ease-in
 
 .chapterProgressIndication
   position: fixed !important

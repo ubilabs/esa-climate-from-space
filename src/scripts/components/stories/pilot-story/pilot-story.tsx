@@ -1,5 +1,11 @@
-import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
+import React, {
+  FunctionComponent,
+  useLayoutEffect,
+  useRef,
+  useState
+} from 'react';
 import {ParallaxProvider} from 'react-scroll-parallax';
+import cx from 'classnames';
 
 import {GlobeContextProvider} from './provider/globe-provider';
 
@@ -19,6 +25,7 @@ import StoryIntro from './components/story-intro/story-intro';
 import {useScreenSize} from '../../../hooks/use-screen-size';
 
 import ChapterProgressIndication from './components/chapter-progress-indication/chapter-progress-indication';
+import {ChapterContextProvider} from './provider/chapter-provider';
 import {
   chapters,
   globeMovementsPerChapter,
@@ -26,7 +33,6 @@ import {
 } from './config/main';
 
 import styles from './pilot-story.module.styl';
-import {ChapterContextProvider} from './provider/chapter-provider';
 
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);
@@ -34,7 +40,8 @@ const PilotStory: FunctionComponent = () => {
   const [scrollEl, setScrollElement] = useState<HTMLDivElement | null>(null);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
+  // sets scroll container for parallax
+  useLayoutEffect(() => {
     if (!ref.current) {
       return;
     }
@@ -58,10 +65,7 @@ const PilotStory: FunctionComponent = () => {
                   gap={48}
                 />
               )}
-              <StoryIntro
-                storyStarted={storyStarted}
-                onStoryStart={() => setStoryStarted(true)}
-              />
+
               <GlobeContextProvider>
                 <Globe
                   relativePosition={{x: -30, y: 0, z: 0}}
@@ -70,23 +74,34 @@ const PilotStory: FunctionComponent = () => {
                       ? globeMovementsPerChapterDesktop
                       : globeMovementsPerChapter
                   }>
-                  {storyStarted && (
-                    <div className={styles.chaptersContainer}>
-                      <ChapterOne chapterIndex={0} />
-                      <ChapterTwo chapterIndex={1} />
-                      <ChapterThree chapterIndex={2} />
-                      <ChapterFour chapterIndex={3} />
-                      <ChapterFive chapterIndex={4} />
-                      <ChapterSix chapterIndex={5} />
-                      <ChapterSeven chapterIndex={6} />
-                    </div>
-                  )}
+                  <div className={styles.chaptersContainer}>
+                    <StoryIntro
+                      storyStarted={storyStarted}
+                      onStoryStart={() => setStoryStarted(true)}
+                    />
+                    {storyStarted && (
+                      <>
+                        <ChapterOne chapterIndex={0} />
+                        <ChapterTwo chapterIndex={1} />
+                        <ChapterThree chapterIndex={2} />
+                        <ChapterFour chapterIndex={3} />
+                        <ChapterFive chapterIndex={4} />
+                        <ChapterSix chapterIndex={5} />
+                        <ChapterSeven chapterIndex={6} />
+                      </>
+                    )}
+                  </div>
                 </Globe>
               </GlobeContextProvider>
-              {storyStarted && <NavDrawer />}
+              <NavDrawer />
 
               {/* Nav Drawer DOM element - this is where the <NavDrawer/> will be rendered with React.usePortal */}
-              <div id="drawer" className={styles.drawer}></div>
+              <div
+                id="drawer"
+                className={cx(
+                  styles.drawer,
+                  storyStarted && styles.navVisible
+                )}></div>
             </ChapterContextProvider>
           </ParallaxProvider>
         )}
