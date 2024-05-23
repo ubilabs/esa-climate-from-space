@@ -1,10 +1,7 @@
 import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {useHistory, useLocation} from 'react-router-dom';
 
-import {useChapter} from '../../hooks/use-chapter';
-
 import {getMarkerHtml} from '../../../../main/globe/get-marker-html';
-import {scrollToChapterIndex} from '../nav-chapter-overview/nav-chapter-overview';
 
 import {subStory} from '../../config/main';
 
@@ -46,7 +43,6 @@ export interface SubStoryContent {
 const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
   const history = useHistory();
   const location = useLocation();
-  const {setSelectedChapterIndex} = useChapter();
   const storyRef = useRef<HTMLDivElement>(null);
   const subIntroRef = useRef<HTMLDivElement>(null);
   const [selectedGiantContent, setSelectedGiantContent] =
@@ -88,11 +84,6 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
     storyRef.current?.scrollIntoView({behavior: 'instant'});
   };
 
-  const handleChapterChange = () => {
-    setSelectedChapterIndex(6);
-    scrollToChapterIndex(6);
-  };
-
   const renderSubstory = () => {
     if (!selectedGiantContent) {
       return null;
@@ -112,7 +103,12 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
     return (
       <>
         <div ref={subIntroRef}>
-          <ChapterIntro subTitle={subTitle} title={title} scrollIndex={6} />
+          <ChapterIntro
+            subTitle={subTitle}
+            title={title}
+            scrollIndex={6}
+            onBackToStory={handleBackToStory}
+          />
         </div>
         <ChapterText text={textPage1.text} title={textPage1.title} />
         <ChapterText text={textPage2.text} title={textPage2.title} />
@@ -147,7 +143,7 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
           offset: [0, 0],
           ...latLng
         }))}
-        onNextChapter={() => handleChapterChange()}
+        onBackToStory={() => handleBackToStory()}
       />
       {selectedGiantContent && renderSubstory()}
     </Chapter>

@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Parallax} from 'react-scroll-parallax';
 
-import {GlobeIcon} from '../../../../main/icons/globe-icon';
+import {ArrowBackIcon} from '../../../../main/icons/arrow-back-icon';
 import ScrollHint from '../scroll-hint/scroll-hint';
 import Button from '../button/button';
 import SnapWrapper from '../snap-wrapper/snap-wrapper';
@@ -15,12 +15,14 @@ interface Props {
   title: string;
   subTitle: string;
   scrollIndex: number;
+  onBackToStory?: () => void;
 }
 
 const ChapterIntro: FunctionComponent<Props> = ({
   title,
   subTitle,
-  scrollIndex
+  scrollIndex,
+  onBackToStory
 }) => {
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(false);
@@ -31,29 +33,32 @@ const ChapterIntro: FunctionComponent<Props> = ({
 
   return (
     <SnapWrapper>
-      <Parallax
-        className={cx(styles.intro, visible && styles.visible)}
-        onProgressChange={progress => setProgress(progress)}>
-        <Button
-          link={'/stories'}
-          icon={GlobeIcon}
-          label="Back to Stories"
-          className={cx(styles.introBackButton, visible && styles.visible)}
-          isBackButton
-        />
-
-        <div className={cx(styles.introContent)}>
-          <h2
-            className={cx(styles.subTitle, chapterIntroElement)}
-            data-scroll-index-intro={scrollIndex}>
-            {subTitle}
-          </h2>
-          <p className={styles.title}>{title}</p>
-        </div>
-      </Parallax>
-      <Parallax speed={-50} translateY={[-100, 100]} easing="easeOutQuad">
-        <ScrollHint />
-      </Parallax>
+      <>
+        {onBackToStory && (
+          <Button
+            onClick={onBackToStory}
+            icon={ArrowBackIcon}
+            label="Back to Main Story"
+            className={cx(styles.introBackButton, visible && styles.visible)}
+            isBackButton
+          />
+        )}
+        <Parallax
+          className={cx(styles.intro, visible && styles.visible)}
+          onProgressChange={progress => setProgress(progress)}>
+          <div className={cx(styles.introContent)}>
+            <h2
+              className={cx(styles.subTitle, chapterIntroElement)}
+              data-scroll-index-intro={scrollIndex}>
+              {subTitle}
+            </h2>
+            <p className={styles.title}>{title}</p>
+          </div>
+        </Parallax>
+        <Parallax speed={-50} translateY={[-100, 100]} easing="easeOutQuad">
+          <ScrollHint />
+        </Parallax>
+      </>
     </SnapWrapper>
   );
 };
