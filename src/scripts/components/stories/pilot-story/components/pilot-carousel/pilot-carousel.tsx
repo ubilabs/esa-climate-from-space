@@ -26,7 +26,7 @@ const PilotCarousel = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setVisible(progress >= 0.5 && progress <= 0.51);
+    setVisible(progress >= 0.5 && progress <= 0.53);
   }, [progress]);
 
   const sources = Object.entries(methaneSources).map(([key, value]) => ({
@@ -78,12 +78,10 @@ const PilotCarousel = () => {
     <Parallax
       onProgressChange={progress => setProgress(progress)}
       className={styles.carouselWrapper}>
-      <Parallax speed={15}>
-        <Legend
-          title="Some of the primary sources include:"
-          legendItems={legendItems}
-        />
-      </Parallax>
+      <Legend
+        title="Some of the primary sources include:"
+        legendItems={legendItems}
+      />
 
       <div className={styles.explanation}>
         {sources[selectedIconIndex].value.explanation}
