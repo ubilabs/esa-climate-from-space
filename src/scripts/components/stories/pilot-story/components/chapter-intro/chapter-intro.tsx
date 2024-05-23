@@ -15,6 +15,7 @@ interface Props {
   title: string;
   subTitle: string;
   scrollIndex: number;
+  flexPosition?: 'flex-start' | 'flex-end';
   onBackToStory?: () => void;
 }
 
@@ -22,6 +23,7 @@ const ChapterIntro: FunctionComponent<Props> = ({
   title,
   subTitle,
   scrollIndex,
+  flexPosition,
   onBackToStory
 }) => {
   const [progress, setProgress] = useState(0);
@@ -46,7 +48,9 @@ const ChapterIntro: FunctionComponent<Props> = ({
         <Parallax
           className={cx(styles.intro, visible && styles.visible)}
           onProgressChange={progress => setProgress(progress)}>
-          <div className={cx(styles.introContent)}>
+          <div
+            className={cx(styles.introContent)}
+            style={{alignSelf: flexPosition}}>
             <h2
               className={cx(styles.subTitle, chapterIntroElement)}
               data-scroll-index-intro={scrollIndex}>
