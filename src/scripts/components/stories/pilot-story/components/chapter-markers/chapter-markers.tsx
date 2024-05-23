@@ -3,7 +3,6 @@ import {Parallax} from 'react-scroll-parallax';
 import {createPortal} from 'react-dom';
 
 import {useGlobe, useGlobeMarkers} from '../../hooks/use-globe';
-import {useScreenSize} from '../../../../../hooks/use-screen-size';
 
 import {MarkerProps} from '@ubilabs/esa-webgl-globe';
 
@@ -11,17 +10,20 @@ import SnapWrapper from '../snap-wrapper/snap-wrapper';
 import Button from '../button/button';
 
 import styles from './chapter-marker.module.styl';
+import {ArrowBackIcon} from '../../../../main/icons/arrow-back-icon';
 
 interface Props {
   markers: MarkerProps[];
-  onNextChapter: () => void;
+  onBackToStory: () => void;
 }
 
-const ChapterMarkers: FunctionComponent<Props> = ({markers, onNextChapter}) => {
+const ChapterMarkers: FunctionComponent<Props> = ({
+  markers,
+  onBackToStory: onBackToStory
+}) => {
   const [isInView, setIsInView] = useState(false);
   const {setMarkers} = useGlobeMarkers();
   const {setIsSpinning, setIsTouchable} = useGlobe();
-  const {isMobile} = useScreenSize();
 
   const floatingButtonContainer = document.getElementById(
     'floating-button-container'
@@ -45,13 +47,18 @@ const ChapterMarkers: FunctionComponent<Props> = ({markers, onNextChapter}) => {
       <Parallax
         onEnter={() => setIsInView(true)}
         onExit={() => setIsInView(false)}>
-        {isMobile &&
-          isInView &&
+        {isInView &&
           floatingButtonContainer &&
           createPortal(
-            <div className={styles.buttonContainer}>
-              <Button label="Next Chapter" onClick={onNextChapter} />
-            </div>,
+            <Button
+              className={styles.button}
+              icon={ArrowBackIcon}
+              label="Back to Main Story"
+              onClick={() => {
+                onBackToStory();
+              }}
+              isBackButton
+            />,
             floatingButtonContainer
           )}
       </Parallax>

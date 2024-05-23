@@ -32,7 +32,7 @@ const ChapterConclusion: FunctionComponent<Props> = ({
       onProgressChange={progress => setProgress(progress)}>
       <Button
         isBackButton
-        label="Back To Story"
+        label="Back to Main Story"
         icon={ArrowBackIcon}
         onClick={onBackToStory}
       />
