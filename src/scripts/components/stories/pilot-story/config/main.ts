@@ -111,23 +111,23 @@ export const subStory: SubStoryContent[] = [
 // all chapters
 
 export const chapters = [
-  {title: 'The invisible threat', subtitle: '01: What is methane'},
-  {title: 'Where does methane come from?', subtitle: '02: Methane sources'},
+  {title: '01: The invisible threat', subtitle: '01: What is methane'},
+  {title: '02: Where does methane come from?', subtitle: '02: Methane sources'},
   {
-    title: 'ESA`s Watchful EyesOver Earth',
+    title: '03: ESA`s Watchful EyesOver Earth',
     subtitle: "03: ESA's Eyes in the Sky"
   },
-  {title: 'Resolution Matters', subtitle: '04: Mapping the Methane Giants'},
+  {title: '04: Resolution Matters', subtitle: '04: Mapping the Methane Giants'},
   {
-    title: 'Unveiling Methane Super Emitters',
+    title: '05: Unveiling Methane Super Emitters',
     subtitle: '05: Mapping the Methane Giants'
   },
   {
-    title: '10 largest methane leaks on record',
+    title: '06: 10 largest methane leaks on record',
     subtitle: '06: Mapping the Methane Giants'
   },
   {
-    title: 'Strategic choices for our future',
+    title: '07: Strategic choices for our future',
     subtitle: '07: Methane Reduction Urgency'
   }
 ];
