@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 import {ParallaxProvider} from 'react-scroll-parallax';
 
 import {GlobeContextProvider} from './provider/globe-provider';
@@ -16,8 +16,11 @@ import Header from './components/header/header';
 import NavDrawer from './components/nav-drawer/nav-drawer';
 import StoryIntro from './components/story-intro/story-intro';
 
+import {useHistory} from 'react-router-dom';
+import {scrollToChapterIndex} from './components/nav-chapter-overview/nav-chapter-overview';
 import {useScreenSize} from '../../../hooks/use-screen-size';
 
+import {ChapterContextProvider} from './provider/chapter-provider';
 import ChapterProgressIndication from './components/chapter-progress-indication/chapter-progress-indication';
 import {
   chapters,
@@ -26,12 +29,32 @@ import {
 } from './config/main';
 
 import styles from './pilot-story.module.styl';
-import {ChapterContextProvider} from './provider/chapter-provider';
 
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);
 
   const {isDesktop} = useScreenSize();
+
+  const history = useHistory();
+
+  /**
+   * Listens to changes in the browser history and scrolls to the corresponding chapter index.
+   * The chapter selection based on the URL path. The rest is handled by the useChapterObserver hook.
+   * @param {History} history - The browser history object.
+   * @returns {Function} - The function to stop listening to history changes.
+   */
+  useEffect(() => {
+    const unlisten = history.listen(location => {
+      const chapterIndex = Number(location.pathname.split('/').pop()) ?? 0;
+
+      scrollToChapterIndex(chapterIndex);
+    });
+
+    // Clean up the listener when the component is unmounted
+    return () => {
+      unlisten();
+    };
+  }, [history]);
 
   return (
     <ParallaxProvider>
