@@ -41,9 +41,14 @@ const NavDrawer: FunctionComponent = () => {
     </h2>
   );
 
+  const [titleRef, setTitleRef] = useState<HTMLDivElement | null>(null);
+  const [contentRef, setContentRef] = useState<HTMLDivElement | null>(null);
+
   // Content is visible in the Nav Drawer when it is open
   const children = (
-    <div className={styles.navContainer}>
+    <div
+      className={styles.navContainer}
+      ref={contentRef => setContentRef(contentRef)}>
       <NavChapterOverview chapters={chapters} />
       <Button
         link={'/stories'}
@@ -59,7 +64,6 @@ const NavDrawer: FunctionComponent = () => {
       />
     </div>
   );
-  const [ref, setRef] = useState<HTMLDivElement | null>(null);
 
   // Snap points of the drawer refer to the positions where the drawer can be placed at.
   // Can either be a fraction between 0 and 1 or a string in px. (e.g. '50px')
@@ -69,7 +73,11 @@ const NavDrawer: FunctionComponent = () => {
   const {Root, Portal, Content, Title} = Drawer;
 
   // Get the initial snap point for the drawer based on the height of the handle element and the window height.
-  const initialSnapPoint = useMemo(() => getSnapPoint(ref), [ref]);
+  const initialSnapPoint = useMemo(() => getSnapPoint(titleRef), [titleRef]);
+  const maxSnapPoint = useMemo(
+    () => (isMobile ? getSnapPoint(contentRef) : 0.7),
+    [contentRef, isMobile]
+  );
 
   // Set the snap point once to initialSnapPoint is calculated.
   useEffect(() => {
@@ -82,9 +90,6 @@ const NavDrawer: FunctionComponent = () => {
   const {children: titleChildren, className} = handle.props;
 
   const modalTarget = document.getElementById('drawer');
-
-  // Refers to how far the drawer can be extended, where 1 would be fully extended to the top of the page
-  const maxSnapPoint = isMobile ? 0.62 : 0.7;
 
   const isCollapsed = snap === initialSnapPoint;
 
@@ -100,17 +105,21 @@ const NavDrawer: FunctionComponent = () => {
       open={true}
       // Setting modal to false allows the user to still interact with the content behind the drawer.
       modal={false}
+      onDrag={e => e.preventDefault()}
       closeThreshold={0}>
       <Portal container={modalTarget}>
         {
           <Content
+            onDrag={e => e.preventDefault()}
+            onTouchStart={e => e.stopPropagation()}
+            onTouchMove={e => e.stopPropagation()}
             className={cx(
               styles.content,
               snap === maxSnapPoint && styles.open
             )}>
             <Title
               // Set the reference to the handle element to calculate the initial snap point.
-              ref={elementRef => setRef(elementRef)}
+              ref={titleRef => setTitleRef(titleRef)}
               className={cx(className, styles.title)}
               // Toggle the snap point between the initial snap point and 1 when the handle is clicked.
               onClick={() =>

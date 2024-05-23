@@ -36,6 +36,9 @@ const PilotStory: FunctionComponent = () => {
   return (
     <ParallaxProvider>
       <ChapterContextProvider>
+        {/* Nav Drawer DOM element - this is where the <NavDrawer/> will be rendered with React.usePortal */}
+        <div id="drawer" className={styles.drawer}></div>
+
         <div className={styles.pilotStory}>
           <Header>
             <Share />
@@ -77,9 +80,6 @@ const PilotStory: FunctionComponent = () => {
           </div>
 
           {storyStarted && <NavDrawer />}
-
-          {/* Nav Drawer DOM element - this is where the <NavDrawer/> will be rendered with React.usePortal */}
-          <div id="drawer" className={styles.drawer}></div>
         </div>
       </ChapterContextProvider>
     </ParallaxProvider>

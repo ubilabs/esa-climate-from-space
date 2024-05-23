@@ -5,6 +5,7 @@ import ChapterProgressIndication from '../chapter-progress-indication/chapter-pr
 import cx from 'classnames';
 
 import styles from './nav-chapter-overview.module.styl';
+import {useScreenSize} from '../../../../../hooks/use-screen-size';
 interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
   isCollapsed?: boolean;
@@ -36,23 +37,26 @@ const NavChapterOverview: FunctionComponent<Props> = ({
   chapters,
   isCollapsed,
   className
-}) => (
-  <div className={cx(styles.navChapterContainer, className)}>
-    <ChapterProgressIndication chapters={chapters} />
-    {!isCollapsed && (
-      <ul>
-        {chapters.map((chapter, index) => (
-          <li
-            key={index}
-            onClick={() => {
-              scrollToChapterIndex(index);
-            }}>
-            {chapter.title}
-          </li>
-        ))}
-      </ul>
-    )}
-  </div>
-);
+}) => {
+  const {isMobile} = useScreenSize();
+  return (
+    <div className={cx(styles.navChapterContainer, className)}>
+      <ChapterProgressIndication chapters={chapters} gap={isMobile ? 42 : 24} />
+      {!isCollapsed && (
+        <ul>
+          {chapters.map((chapter, index) => (
+            <li
+              key={index}
+              onClick={() => {
+                scrollToChapterIndex(index);
+              }}>
+              {chapter.title}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
 
 export default NavChapterOverview;

@@ -1,19 +1,32 @@
 .navChapterContainer 
   position: relative
-  display: flex
+  display: grid
   justify-content: start
   font-weight: 700
   text-transform: uppercase
   margin-bottom: 2rem
+  align-items: center
+  grid-template-columns: auto 1fr
+  grid-template-rows: 1fr
 
   ul
     list-style-type: none
     display: flex
     flex-direction: column
     flex-wrap: wrap
-    align-content: space-around
+    align-content: space-between
     justify-content: space-between
     margin: 0
     height: 100%
     gap: 24px
     line-height: 1.5
+
+    > li
+      display: flex
+      align-items: center
+      justify-content: start
+
+@media screen and (max-width: 768px)
+  ul
+   > li
+      min-height: 32px
