@@ -266,14 +266,14 @@ export const GREY_BASE_MAP = {
     `https://storage.googleapis.com/esa-cfs-tiles/${version}/basemaps/land/${zoom}/${x}/${y}.png`
 } as LayerProps;
 
-export const BLUE_BASE_MAP = {
+export const COLORED_BASE_MAP = {
   id: 'basemap',
   zIndex: 0,
   type: 'tile',
   maxZoom: 5,
   urlParameters: {},
   getUrl: ({x, y, zoom}) =>
-    `https://storage.googleapis.com/esa-cfs-tiles/${version}/basemaps/blue/${zoom}/${x}/${y}.png`
+    `https://storage.googleapis.com/esa-cfs-tiles/${version}/basemaps/colored/${zoom}/${x}/${y}.png`
 } as LayerProps;
 
 export const GREENHOUSE_XCH4 = {
