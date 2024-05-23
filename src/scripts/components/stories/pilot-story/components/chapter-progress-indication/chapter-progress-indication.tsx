@@ -5,6 +5,8 @@ import {useChapter} from '../../hooks/use-chapter';
 import {dataIsTitleInView, progressIndicationElement} from '../../config/main';
 import {ChapterPosition} from '../../types/globe';
 
+import {scrollToChapterIndex} from '../nav-chapter-overview/nav-chapter-overview';
+
 import cx from 'classnames';
 
 import styles from './chapter-progress-indication.module.styl';
@@ -78,7 +80,11 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
       )}
       style={style}>
       {Array.from({length: chapters.length}).map((_, index) => (
-        <span key={index} data-is-selected={index === selectedChapterIndex} />
+        <span
+          key={index}
+          data-is-selected={index === selectedChapterIndex}
+          onClick={() => scrollToChapterIndex(index)}
+        />
       ))}
     </div>
   );
