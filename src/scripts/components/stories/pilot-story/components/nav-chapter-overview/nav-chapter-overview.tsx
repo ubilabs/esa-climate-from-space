@@ -1,11 +1,10 @@
 import React, {FunctionComponent} from 'react';
 
-import styles from './nav-chapter-overview.module.styl';
+import ChapterProgressIndication from '../chapter-progress-indication/chapter-progress-indication';
 
 import cx from 'classnames';
-import ChapterProgressIndication from '../chapter-progress-indication/chapter-progress-indication';
-import {useChapter} from '../../hooks/use-chapter';
 
+import styles from './nav-chapter-overview.module.styl';
 interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
   isCollapsed?: boolean;
@@ -37,27 +36,23 @@ const NavChapterOverview: FunctionComponent<Props> = ({
   chapters,
   isCollapsed,
   className
-}) => {
-  const {setSelectedChapterIndex} = useChapter();
-  return (
-    <div className={cx(styles.navChapterContainer, className)}>
-      <ChapterProgressIndication chapters={chapters} />
-      {!isCollapsed && (
-        <ul>
-          {chapters.map((chapter, index) => (
-            <li
-              key={index}
-              onClick={() => {
-                setSelectedChapterIndex(index);
-                scrollToChapterIndex(index);
-              }}>
-              {chapter.title}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
+}) => (
+  <div className={cx(styles.navChapterContainer, className)}>
+    <ChapterProgressIndication chapters={chapters} />
+    {!isCollapsed && (
+      <ul>
+        {chapters.map((chapter, index) => (
+          <li
+            key={index}
+            onClick={() => {
+              scrollToChapterIndex(index);
+            }}>
+            {chapter.title}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+);
 
 export default NavChapterOverview;
