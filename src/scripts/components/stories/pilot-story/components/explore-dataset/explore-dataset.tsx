@@ -11,6 +11,7 @@ import ScrollHint from '../scroll-hint/scroll-hint';
 import Button from '../button/button';
 import StoryGlobe from '../../../story-globe/story-globe';
 import {ArrowBackIcon} from '../../../../main/icons/arrow-back-icon';
+import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
 import styles from './explore-dataset.module.styl';
 
@@ -43,7 +44,7 @@ const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
   );
 
   return (
-    <div className={styles.explore}>
+    <SnapWrapper className={styles.explore}>
       {showExplorableGlobe ? (
         <div className={styles.globeContainer}>
           <Button
@@ -70,7 +71,7 @@ const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
           </div>
         </Parallax>
       )}
-    </div>
+    </SnapWrapper>
   );
 };
 
