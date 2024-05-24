@@ -33,6 +33,7 @@ import {
 } from './config/main';
 
 import styles from './pilot-story.module.styl';
+import ExploreStories from './components/explore-stories/explore-stories';
 
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);
@@ -88,6 +89,7 @@ const PilotStory: FunctionComponent = () => {
                         <ChapterFive chapterIndex={4} />
                         <ChapterSix chapterIndex={5} />
                         <ChapterSeven chapterIndex={6} />
+                        <ExploreStories chapterIndex={7} />
                       </>
                     )}
                   </div>

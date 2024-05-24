@@ -40,6 +40,7 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
   } as React.CSSProperties;
 
   const {selectedChapterIndex, chapterPosition, progress} = useChapter();
+  console.log('🚀 ~ progress:', progress);
 
   const indicationRef = useRef<HTMLDivElement>(null);
 
@@ -62,8 +63,7 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
 
       if (progressIndicatorHeight && chaptersLength) {
         const indicatorYOffsetInPx =
-          (progressIndicatorHeight / chaptersLength + 1) *
-            selectedChapterIndex +
+          (progressIndicatorHeight / chaptersLength) * selectedChapterIndex +
           (progressIndicatorHeight / chaptersLength) * progress +
           (selectedChapterIndex * gap) / circleRadius;
 

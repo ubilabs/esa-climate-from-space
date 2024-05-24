@@ -3,16 +3,24 @@ import {Parallax} from 'react-scroll-parallax';
 
 import countingCarbon from '../../assets/07-counting-carbon.png';
 import carbonCycle from '../../assets/07-carbon-cycle.png';
-import SnapWrapper from '../snap-wrapper/snap-wrapper';
 import Button from '../button/button';
 import {ArrowForwardIcon} from '../../../../main/icons/arrow-forward-icon';
 
 import styles from './explore-stories.module.styl';
 
-const ExploreStories: FunctionComponent = () => (
-  <SnapWrapper className={styles.exploreStories}>
+import cx from 'classnames';
+import Chapter from '../chapter/chapter';
+
+interface Props {
+  chapterIndex: number;
+}
+
+const ExploreStories: FunctionComponent<Props> = ({chapterIndex}) => (
+  <Chapter className={styles.exploreStories} scrollIndex={chapterIndex}>
     <Parallax speed={-5}>
-      <h1 className={styles.exploreText}>
+      <h1
+        className={cx(styles.exploreText, 'chapter-intro')}
+        data-scroll-index-intro={chapterIndex}>
         Read other stories that are similar to this story.
       </h1>
     </Parallax>
@@ -48,7 +56,7 @@ const ExploreStories: FunctionComponent = () => (
         />
       </div>
     </div>
-  </SnapWrapper>
+  </Chapter>
 );
 
 export default ExploreStories;

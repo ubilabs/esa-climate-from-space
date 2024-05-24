@@ -129,6 +129,10 @@ export const chapters = [
   {
     title: '07: Strategic choices for our future',
     subtitle: '07: Methane Reduction Urgency'
+  },
+  {
+    title: 'The end',
+    subtitle: 'Read more stories'
   }
 ];
 
