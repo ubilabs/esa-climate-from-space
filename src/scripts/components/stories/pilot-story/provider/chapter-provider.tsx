@@ -24,7 +24,6 @@ function useChapterContext() {
     useIntersectChapters();
 
   useEffect(() => {
-    console.log(selectedChapterIndex, 'test');
     if (selectedChapterIndex !== null) {
       history.replace(`/stories/pilot/${selectedChapterIndex}`);
     }

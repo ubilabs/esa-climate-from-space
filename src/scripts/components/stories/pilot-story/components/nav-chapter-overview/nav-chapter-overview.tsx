@@ -41,13 +41,13 @@ const NavChapterOverview: FunctionComponent<Props> = ({
       <ChapterProgressIndication chapters={chapters} gap={isMobile ? 42 : 24} />
       {!isCollapsed && (
         <ul>
-          {chapters.map((chapter, index) => (
+          {chapters.map(({title}, index) => (
             <li
               key={index}
               onClick={() => {
                 scrollToChapterIndex(index);
               }}>
-              {chapter.title}
+              {title}
             </li>
           ))}
         </ul>

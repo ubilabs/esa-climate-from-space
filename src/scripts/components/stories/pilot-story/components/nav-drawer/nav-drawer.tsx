@@ -27,43 +27,8 @@ import styles from './nav-drawer.module.styl';
 const NavDrawer: FunctionComponent = () => {
   const {selectedChapterIndex, chapterPosition} = useChapter();
 
-  const {isMobile} = useScreenSize();
-  // Title is visible in the Nav Drawer when it is not open, basically the handle
-  const handle = (
-    <h2 className={styles.header}>
-      {isMobile && (
-        <NavPositionIcon
-          position={chapterPosition}
-          isFirst={selectedChapterIndex === 0}
-        />
-      )}
-      {chapters[selectedChapterIndex].subtitle}
-    </h2>
-  );
-
   const [titleRef, setTitleRef] = useState<HTMLDivElement | null>(null);
   const [contentRef, setContentRef] = useState<HTMLDivElement | null>(null);
-
-  // Content is visible in the Nav Drawer when it is open
-  const children = (
-    <div
-      className={styles.navContainer}
-      ref={contentRef => setContentRef(contentRef)}>
-      <NavChapterOverview chapters={chapters} />
-      <Button
-        link={'/stories'}
-        icon={GlobeIcon}
-        label="Back to Stories"
-        className={styles.navLinks}
-      />
-      <Button
-        link={'/'}
-        className={styles.navLinks}
-        icon={GlobeExploreIcon}
-        label="explore the story datasets"
-      />
-    </div>
-  );
 
   // Snap points of the drawer refer to the positions where the drawer can be placed at.
   // Can either be a fraction between 0 and 1 or a string in px. (e.g. '50px')
@@ -71,6 +36,8 @@ const NavDrawer: FunctionComponent = () => {
   const [snap, setSnap] = useState<number | string | null>(null);
 
   const {Root, Portal, Content, Title} = Drawer;
+
+  const {isMobile} = useScreenSize();
 
   // Get the initial snap point for the drawer based on the height of the handle element and the window height.
   const initialSnapPoint = useMemo(() => getSnapPoint(titleRef), [titleRef]);
@@ -85,9 +52,6 @@ const NavDrawer: FunctionComponent = () => {
       setSnap(initialSnapPoint);
     }
   }, [initialSnapPoint]);
-
-  // Get the children and class name from the handle element to pass them to the title element of the drawer.
-  const {children: titleChildren, className} = handle.props;
 
   const modalTarget = document.getElementById('drawer');
 
@@ -118,15 +82,43 @@ const NavDrawer: FunctionComponent = () => {
             <Title
               // Set the reference to the handle element to calculate the initial snap point.
               ref={titleRef => setTitleRef(titleRef)}
-              className={cx(className, styles.title)}
+              className={cx(styles.title)}
               // Toggle the snap point between the initial snap point and 1 when the handle is clicked.
               onClick={() =>
                 setSnap(snap === maxSnapPoint ? initialSnapPoint : maxSnapPoint)
               }>
-              {isCollapsed ? titleChildren : 'Story Position'}
+              {isCollapsed ? (
+                <h2 className={styles.header}>
+                  {isMobile && (
+                    <NavPositionIcon
+                      position={chapterPosition}
+                      isFirst={selectedChapterIndex === 0}
+                    />
+                  )}
+                  {chapters[selectedChapterIndex].subtitle}
+                </h2>
+              ) : (
+                'Story Position'
+              )}
               <DrawerToggleIcon isCollapsed={!snap || isCollapsed} />
             </Title>
-            {children}
+            <div
+              className={styles.navContainer}
+              ref={contentRef => setContentRef(contentRef)}>
+              <NavChapterOverview chapters={chapters} />
+              <Button
+                link={'/stories'}
+                icon={GlobeIcon}
+                label="Back to Stories"
+                className={styles.navLinks}
+              />
+              <Button
+                link={'/'}
+                className={styles.navLinks}
+                icon={GlobeExploreIcon}
+                label="explore the story datasets"
+              />
+            </div>
           </Content>
         }
       </Portal>
