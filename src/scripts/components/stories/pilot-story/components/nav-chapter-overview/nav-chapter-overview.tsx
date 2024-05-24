@@ -6,7 +6,6 @@ import cx from 'classnames';
 
 import styles from './nav-chapter-overview.module.styl';
 import {useScreenSize} from '../../../../../hooks/use-screen-size';
-import {useHistory} from 'react-router-dom';
 interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
   isCollapsed?: boolean;
@@ -37,17 +36,18 @@ const NavChapterOverview: FunctionComponent<Props> = ({
   className
 }) => {
   const {isMobile} = useScreenSize();
-  const history = useHistory();
   return (
     <div className={cx(styles.navChapterContainer, className)}>
       <ChapterProgressIndication chapters={chapters} gap={isMobile ? 42 : 24} />
       {!isCollapsed && (
         <ul>
-          {chapters.map((chapter, index) => (
+          {chapters.map(({title}, index) => (
             <li
               key={index}
-              onClick={() => history.push(`/stories/pilot/${index}`)}>
-              {chapter.title}
+              onClick={() => {
+                scrollToChapterIndex(index);
+              }}>
+              {title}
             </li>
           ))}
         </ul>

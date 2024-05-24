@@ -32,16 +32,22 @@
 .navContainer
   overflow: auto
   padding: 1.5rem
+  visibility: visible
+  padding: 1.5rem
+  height: auto
 
-.header
+.title
   display: flex
   position: relative
   justify-content: start
   align-items: center
-  padding: 1.5rem
+  padding: 1.5rem 1rem
   text-transform: uppercase
   margin: 0
   gap: 0.5rem
+
+  > h2
+    margin: 0
 
   > svg
     min-width: 24px
@@ -68,8 +74,11 @@
     &:before
       border-radius: 24px
 
+// We use visilibity hidden instead of display none to keep the transition effect so the --indicator-y-offset can be animated
   .content:not(.open) > div
-    display: none
+    visibility: hidden;
+    height: 0;
+    padding: 0;
 
   div.content.open:after,
   div.content:not(.open):after
