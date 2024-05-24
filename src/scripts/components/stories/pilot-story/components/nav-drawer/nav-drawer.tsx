@@ -105,7 +105,14 @@ const NavDrawer: FunctionComponent = () => {
             <div
               className={styles.navContainer}
               ref={contentRef => setContentRef(contentRef)}>
-              <NavChapterOverview chapters={chapters} />
+              <NavChapterOverview
+                chapters={chapters}
+                callback={() =>
+                  setSnap(
+                    snap === maxSnapPoint ? initialSnapPoint : maxSnapPoint
+                  )
+                }
+              />
               <Button
                 link={'/stories'}
                 icon={GlobeIcon}

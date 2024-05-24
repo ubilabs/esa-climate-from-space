@@ -9,7 +9,7 @@ interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
   isCollapsed?: boolean;
   className?: string;
-  gap?: number;
+  callback?: () => void;
 }
 
 export const scrollToChapterIndex = (index: number) => {
@@ -32,7 +32,8 @@ export const scrollToChapterIndex = (index: number) => {
 const NavChapterOverview: FunctionComponent<Props> = ({
   chapters,
   isCollapsed,
-  className
+  className,
+  callback
 }) => (
   <div className={cx(styles.navChapterContainer, className)}>
     <ChapterProgressIndication chapters={chapters} />
@@ -43,6 +44,7 @@ const NavChapterOverview: FunctionComponent<Props> = ({
             key={index}
             onClick={() => {
               scrollToChapterIndex(index);
+              callback && callback();
             }}>
             {title}
           </li>
