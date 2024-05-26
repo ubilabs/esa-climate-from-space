@@ -40,8 +40,6 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
   } as React.CSSProperties;
 
   const {selectedChapterIndex, chapterPosition, progress} = useChapter();
-  console.log('🚀 ~ progress:', progress);
-
   const indicationRef = useRef<HTMLDivElement>(null);
 
   if (indicationRef.current) {
