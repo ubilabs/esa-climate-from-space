@@ -21,6 +21,7 @@ import Globe from './components/globe/globe';
 import Header from './components/header/header';
 import NavDrawer from './components/nav-drawer/nav-drawer';
 import StoryIntro from './components/story-intro/story-intro';
+import ExploreStories from './components/explore-stories/explore-stories';
 
 import {useScreenSize} from '../../../hooks/use-screen-size';
 
@@ -33,7 +34,6 @@ import {
 } from './config/main';
 
 import styles from './pilot-story.module.styl';
-import ExploreStories from './components/explore-stories/explore-stories';
 
 const PilotStory: FunctionComponent = () => {
   const [storyStarted, setStoryStarted] = useState(false);

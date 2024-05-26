@@ -7,22 +7,44 @@
   display: flex
   gap: emCalc(18px)
 
+.outro
+  color: $textWhite
+  height: fit-content
+  width: 100vw
+  box-sizing: border-box
+  padding: $headerHeight 0 emCalc(100px)
+  overflow-x: hidden
+  background: linear-gradient(250deg, #003349 19.74%, rgba(0, 51, 73, 0) 106.06%), #000
+  flex-direction: column
+  justify-content: center
+  gap: 2em
+  scroll-snap-align: start
+  
+.outro h2
+  text-align: center
+  font-size: emCalc(30px)
+  font-style: normal
+  font-weight: 700
+  line-height: 46px;
+  text-wrap: balance
+
+
 .storiesContainer
   display: flex
   flex-direction: column
   justify-content: center
   align-items: center
   text-align: center
+  scroll-snap-align: center
 
   .storyItem
-    padding: emCalc(48px) emCalc(24px)
+    padding: emCalc(32px) emCalc(24px)
     display: flex
     flex-direction: column
     align-items: center
-
+    
     img
       margin: emCalc(24px) 0
-      width: 90%
 
   .storyItem:not(:last-child)
     border-bottom: 1px solid $deepSpace2

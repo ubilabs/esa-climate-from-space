@@ -1,4 +1,4 @@
-import {chapterMainElement} from '../../config/main';
+import {chapterMainElement, chapters} from '../../config/main';
 import {ChapterPosition} from '../../types/globe';
 
 /**
@@ -30,7 +30,12 @@ export class NavigationObserver {
         return;
       }
       this.setSelectedChapterIndex(index);
-      this.setChapterType(type);
+
+      // Set the chapter type to intro if the current chapter is the last one
+      //  We do this to avoid the intro chapter being set as content and the progress indication leaking out of the container
+      this.setChapterType(
+        index === chapters.length - 1 ? ChapterPosition.INTRO : type
+      );
     };
   }
 
