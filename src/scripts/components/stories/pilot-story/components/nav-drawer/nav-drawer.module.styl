@@ -1,6 +1,7 @@
 @require '../../../../../../variables.styl'
 
 .content
+  --title-height: 4rem
   box-sizing: border-box
   position: fixed
   z-index: 100
@@ -33,7 +34,6 @@
   overflow: auto
   padding: 1.5rem
   visibility: visible
-  padding: 1.5rem
   height: auto
 
 .title
@@ -88,3 +88,15 @@
   div.content.open:after,
   div.content:not(.open):after
     height: 0
+
+// The height of the extend drawer is calculated by the height of the navContainer
+// In order to fit the handle, we need to add the height of the handle to the height of the navContainer
+
+@media screen and (max-width: 768px)
+
+  ul
+    padding-left: 1rem
+
+  .navContainer
+    padding-top: var(--title-height)
+    margin-top: calc(var(--title-height) * -1)

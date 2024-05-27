@@ -5,12 +5,11 @@ import ChapterProgressIndication from '../chapter-progress-indication/chapter-pr
 import cx from 'classnames';
 
 import styles from './nav-chapter-overview.module.styl';
-import {useScreenSize} from '../../../../../hooks/use-screen-size';
 interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
   isCollapsed?: boolean;
   className?: string;
-  gap?: number;
+  callback?: () => void;
 }
 
 export const scrollToChapterIndex = (index: number) => {
@@ -33,27 +32,26 @@ export const scrollToChapterIndex = (index: number) => {
 const NavChapterOverview: FunctionComponent<Props> = ({
   chapters,
   isCollapsed,
-  className
-}) => {
-  const {isMobile} = useScreenSize();
-  return (
-    <div className={cx(styles.navChapterContainer, className)}>
-      <ChapterProgressIndication chapters={chapters} gap={isMobile ? 42 : 24} />
-      {!isCollapsed && (
-        <ul>
-          {chapters.map(({title}, index) => (
-            <li
-              key={index}
-              onClick={() => {
-                scrollToChapterIndex(index);
-              }}>
-              {title}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
+  className,
+  callback
+}) => (
+  <div className={cx(styles.navChapterContainer, className)}>
+    <ChapterProgressIndication chapters={chapters} />
+    {!isCollapsed && (
+      <ul>
+        {chapters.map(({title}, index) => (
+          <li
+            key={index}
+            onClick={() => {
+              scrollToChapterIndex(index);
+              callback && callback();
+            }}>
+            {title}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+);
 
 export default NavChapterOverview;
