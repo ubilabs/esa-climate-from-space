@@ -50,7 +50,7 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const currentGiantId = params.get('giant');
+    const currentGiantId = params.get('subStoryId');
     const selectedGiant = subStory.find(giant => giant.id === currentGiantId);
     selectedGiant && setSelectedGiantContent(selectedGiant);
   }, [location.search]);
@@ -67,9 +67,9 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
       const nextIndex = (currentIndex + 1) % subStory.length;
       const nextStoryIndex = subStory[nextIndex];
 
-      params.set('giant', nextStoryIndex.id);
+      params.set('subStoryId', nextStoryIndex.id);
     } else {
-      params.set('giant', subStoryId);
+      params.set('subStoryId', subStoryId);
     }
 
     history.push({
@@ -106,7 +106,7 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
           <ChapterIntro
             subTitle={subTitle}
             title={title}
-            scrollIndex={6}
+            scrollIndex={5}
             onBackToStory={handleBackToStory}
           />
         </div>

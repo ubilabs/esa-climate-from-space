@@ -17,6 +17,7 @@ interface Props {
   scrollIndex: number;
   flexPosition?: 'flex-start' | 'flex-end';
   onBackToStory?: () => void;
+  isSubChapter?: boolean;
 }
 
 const ChapterIntro: FunctionComponent<Props> = ({
@@ -24,7 +25,8 @@ const ChapterIntro: FunctionComponent<Props> = ({
   subTitle,
   scrollIndex,
   flexPosition,
-  onBackToStory
+  onBackToStory,
+  isSubChapter
 }) => {
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(false);
@@ -53,7 +55,8 @@ const ChapterIntro: FunctionComponent<Props> = ({
             style={{alignSelf: flexPosition}}>
             <h2
               className={cx(styles.subTitle, chapterIntroElement)}
-              data-scroll-index-intro={scrollIndex}>
+              data-scroll-index-intro={scrollIndex}
+              data-is-subchapter={isSubChapter}>
               {subTitle}
             </h2>
             <p className={styles.title}>{title}</p>

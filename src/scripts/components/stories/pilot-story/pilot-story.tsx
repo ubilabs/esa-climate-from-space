@@ -21,6 +21,7 @@ import Globe from './components/globe/globe';
 import Header from './components/header/header';
 import NavDrawer from './components/nav-drawer/nav-drawer';
 import StoryIntro from './components/story-intro/story-intro';
+import ExploreStories from './components/explore-stories/explore-stories';
 
 import {useScreenSize} from '../../../hooks/use-screen-size';
 
@@ -88,6 +89,7 @@ const PilotStory: FunctionComponent = () => {
                         <ChapterFive chapterIndex={4} />
                         <ChapterSix chapterIndex={5} />
                         <ChapterSeven chapterIndex={6} />
+                        <ExploreStories chapterIndex={7} />
                       </>
                     )}
                   </div>
