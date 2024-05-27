@@ -1,7 +1,12 @@
 import React, {FunctionComponent} from 'react';
 
-export const ExpandIcon: FunctionComponent = () => (
+interface Props {
+  className?: string;
+}
+
+export const ExpandIcon: FunctionComponent<Props> = ({className = ''}) => (
   <svg
+    className={className}
     width="16"
     height="16"
     viewBox="0 0 16 16"
