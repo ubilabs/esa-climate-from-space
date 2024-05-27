@@ -15,21 +15,21 @@
       "shortText": "## World on Fire\r\n\r\nWildfires in southeast Australia, 2019-20, hit places that had not seen major wildfires before:\r\n\r\n- coastal forests rather than interior grass/shrubland \r\n- a billion animals perished – showing the biodiversity \r\n- 80% of all land animals and plants found in forests\r\n- fires further north – Alaska, Sweden, Greenland\r\n- lightning more frequent as climate warms\r\n- 5x increase in wildfires Aug 2019 – Aug 2018 \r\n\r\nRapid reduction of tropical forests over the last 50 years impacting many more species and a far greater amount of vegetation (biomass) than ever before.\r\n\r\n- land use released 180 Gt of carbon since 1750\r\n- contributes 23% of our annual GHG emissions\r\n- the land absorbs twice as much CO2 as it emits\r\n- picture less clear for other GHGs from agriculture, such as methane and nitrous oxide",
       "images": [
         "assets/story28-02.jpg",
-        "assets/story28-08.jpg",
+        "assets/story28-13.jpg",
         "assets/story28-06.jpg",
         "assets/story28-03.jpg",
         "assets/biomass-map.jpg"
       ],
       "imageCaptions": [
         "Wildfires in southeast Australia, January 2020 (Copernicus Sentinel data, 2020, processed by ESA)",
-        "Bushfires burning in southeast Australia on 14th January 2020 (yellow) and the areas burned since 1st September 2019 (red). Computer graphic based on data from the Suomi satellite. (Planetary Visions/NOAA/NASA)",
+        "A spate of wildfires broke out across Greece in July 2023. A state of emergency was declared on the tourist island of Rhodes and thousands of people were evacuated as flames spread from the mountainous interior towards the coast. Infrared sensors on the Copernicus Sentinel-2 satellite pick out flames through the smoke in this image acquired on 23 July 2023. (Contains modified Copernicus Sentinel data (2023), processed by ESA)",
         "Elk in the Bitterroot River, Montana, during a forest fire in 2000 (John McColgan, Alaska Fire Service)",
         "Wildfire in western Greenland, August 2017\r\n(Copernicus Sentinel data, 2017, processed by Pierre Markuse)",
         "Above-ground biomass from ESA’s Climate Change Initiative (ESA-CCI)"
       ],
       "imageFits": [
         "cover",
-        "contain",
+        "cover",
         "cover",
         "cover",
         "contain"
@@ -90,14 +90,14 @@
       "images": [
         "assets/protectedareas.png",
         "assets/landcover_large_07.jpg",
-        "assets/story28-05.jpg",
+        "assets/story28-12.jpg",
         "assets/story28-07.jpg",
         "assets/story28-11.jpg"
       ],
       "imageCaptions": [
         "# Protected Areas of the World\r\nMap of the world’s protected areas on land and in the oceans (IUCN/UNEP-WCMC)",
         "Egmont National Park, New Zealand, as viewed by the Kompsat-2 satellite. The boundary between protected and non-protected areas is often very clear in satellite images – as we see here between the green, densely forested flanks of Mount Egmont and the surrounding agricultural landscape. (KARI/ESA)",
-        "Field patterns in a part of Bolivia where tropical forest has been cleared for agriculture (Copernicus Sentinel data, 2019/ESA)",
+        "This Copernicus Sentinel-2 image from 25 July 2023 shows human encroachment into the tropical forest along a highway in the Brazilian state of Para. (Contains modified Copernicus Sentinel data (2023), processed by ESA)",
         "Coral reef near Enderbury Island in the Phoenix Isands Protected Area, a UNESCO World Heritage Site in the South Pacific (Dr Randi Rotjan, New England Aquarium)",
         "Smoke obscures almost all of the US west coast as nearly 100 wildfires burn during a heatwave in September 2020 \r\n(Copernicus Sentinel data, 2020, processed by ESA)"
       ],
