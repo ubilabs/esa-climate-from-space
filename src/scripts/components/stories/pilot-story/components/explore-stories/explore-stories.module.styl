@@ -19,14 +19,19 @@
   justify-content: center
   gap: 2em
   scroll-snap-align: start
+  text-wrap: balance
+
+
   
-.outro h2
+.outro .exploreText
   text-align: center
-  font-size: emCalc(30px)
+  font-size: emCalc(24px)
   font-style: normal
   font-weight: 700
-  line-height: 46px;
+  line-height: 1
   text-wrap: balance
+  scroll-margin-top: emCalc(52px)
+  margin: 0
 
 
 .storiesContainer
@@ -38,13 +43,13 @@
   scroll-snap-align: center
 
   .storyItem
-    padding: emCalc(32px) emCalc(24px)
     display: flex
     flex-direction: column
     align-items: center
     
     img
-      margin: emCalc(24px) 0
+      margin-bottom: emCalc(24px)
+      max-height: 200px
 
   .storyItem:not(:last-child)
     border-bottom: 1px solid $deepSpace2
@@ -55,6 +60,7 @@
   box-shadow: none
   display: flex
   flex-direction: row-reverse
+
 
 @media screen and (min-width: 768px)
   .exploreStories
@@ -74,6 +80,7 @@
 
       img
         width: 100%
+        max-height: 100%
 
   .storiesContainer
     gap: emCalc(50px)
@@ -81,6 +88,9 @@
   .exploreStories
     gap: emCalc(50px)
 
-  .exploreText
-    margin: 0 auto
+  .outro .exploreText
+    margin: 2rem auto
+    font-size: emCalc(30px)
     text-align: center
+
+  
