@@ -14,18 +14,16 @@
 
 .introBackButton
   left: 0
-  top: $headerHeight
+  top: 0
   position: absolute
-  opacity: 0
-  transition: opacity 0.2s ease-in
   z-index: 1
 
-.introContent, .introBackButton
+.introContent
   opacity: 0
   transition: opacity 0.03s ease-in
 
 .intro.visible
-  .introContent
+  .introBackButton, .introContent
     opacity: 1
     transition-duration: 0.2s
 
