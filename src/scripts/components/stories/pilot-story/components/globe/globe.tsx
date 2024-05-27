@@ -80,7 +80,7 @@ const Globe: FunctionComponent<Props> = ({
 
   const {markers} = useGlobeMarkers();
   const {layers} = useGlobeLayers();
-  const {isSpinning, isTouchable} = useGlobe();
+  const {isSpinning, isTouchable, isVisible} = useGlobe();
 
   useEffect(() => {
     if (containerRef.current && !globe) {
@@ -142,6 +142,13 @@ const Globe: FunctionComponent<Props> = ({
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globe, isSpinning.current]);
+
+  useEffect(() => {
+    if (containerRef?.current) {
+      containerRef.current.style.visibility = isVisible ? 'visible' : 'hidden';
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isVisible]);
 
   useEffect(() => {
     (function move() {

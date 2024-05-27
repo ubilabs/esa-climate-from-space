@@ -2,7 +2,7 @@
 
 .explore
   display: flex
-  padding: $headerHeight 0
+  padding: $headerHeight
   flex-direction: column
   align-items: center
   justify-content: center
@@ -11,6 +11,10 @@
   scroll-snap-align: center
   color: $textWhite
   text-align: center
+
+.exploreGlobe
+  padding: 0
+  padding-bottom: $headerHeight
 
 .exploreContent
   display: flex
@@ -26,6 +30,7 @@
   flex-direction: column
   justify-content: space-between
   height: 7rem
+  padding-bottom: 2rem
 
 @media screen and (min-width: 768px)
   .exploreContent

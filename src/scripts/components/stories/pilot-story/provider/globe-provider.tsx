@@ -18,6 +18,8 @@ interface GlobeContextValue {
     setIsSpinning: (isSpinning: boolean) => void;
     isTouchable: React.MutableRefObject<boolean>;
     setIsTouchable: (isTouchable: boolean) => void;
+    isVisible: boolean;
+    setIsVisible: (isVisible: boolean) => void;
   };
 }
 
@@ -28,7 +30,9 @@ export const GlobeContext = createContext<GlobeContextValue>({
     isSpinning: {current: true},
     setIsSpinning: () => {},
     isTouchable: {current: false},
-    setIsTouchable: () => {}
+    setIsTouchable: () => {},
+    isVisible: false,
+    setIsVisible: () => {}
   }
 });
 
@@ -39,6 +43,7 @@ interface Props {
 export const GlobeContextProvider: FunctionComponent<Props> = ({children}) => {
   const isSpinning = useRef<boolean>(true);
   const isTouchable = useRef<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
   const [markers, setMarkers] = useState<MarkerProps[]>([]);
 
   const [layers, setLayers] = React.useState<LayerProps[]>([
@@ -59,7 +64,9 @@ export const GlobeContextProvider: FunctionComponent<Props> = ({children}) => {
           isTouchable,
           setIsTouchable: touchable => {
             isTouchable.current = touchable;
-          }
+          },
+          isVisible,
+          setIsVisible
         }
       }}>
       {children}

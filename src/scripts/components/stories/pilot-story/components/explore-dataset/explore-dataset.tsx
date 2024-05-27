@@ -1,7 +1,9 @@
 import React, {FunctionComponent, useMemo, useState} from 'react';
+import cx from 'classnames';
 import {Parallax} from 'react-scroll-parallax';
 
 import {useScreenSize} from '../../../../../hooks/use-screen-size';
+import {useGlobe} from '../../hooks/use-globe';
 
 import {GlobeItem} from '../../../../../types/gallery-item';
 
@@ -22,7 +24,8 @@ interface Props {
 
 const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
   const {isMobile} = useScreenSize();
-  const [showExplorableGlobe, setShowLayerDetails] = useState(false);
+  const {setIsVisible} = useGlobe();
+  const [showExplorableGlobe, setShowExplorableGlobe] = useState(false);
 
   const globeItem = useMemo(
     () =>
@@ -44,7 +47,11 @@ const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
   );
 
   return (
-    <SnapWrapper className={styles.explore}>
+    <SnapWrapper
+      className={cx(
+        styles.explore,
+        showExplorableGlobe && styles.exploreGlobe
+      )}>
       {showExplorableGlobe ? (
         <div className={styles.globeContainer}>
           <Button
@@ -52,11 +59,12 @@ const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
             icon={ArrowBackIcon}
             label="Back to Story"
             onClick={() => {
-              setShowLayerDetails(false);
+              setShowExplorableGlobe(false);
+              setIsVisible(true);
             }}
             isBackButton
           />
-          <StoryGlobe globeItem={globeItem} />
+          <StoryGlobe globeItem={globeItem} backgroundColor="#FFFFFF" />
         </div>
       ) : (
         <Parallax className={styles.exploreContent}>
@@ -65,7 +73,10 @@ const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
           <div className={styles.buttonContainer}>
             <Button
               label="Explore Dataset"
-              onClick={() => setShowLayerDetails(true)}
+              onClick={() => {
+                setShowExplorableGlobe(true);
+                setIsVisible(false);
+              }}
             />
             {isMobile && <ScrollHint />}
           </div>

@@ -14,9 +14,13 @@ import styles from './story-globe.module.styl';
 
 interface Props {
   globeItem: GlobeItem;
+  backgroundColor?: string;
 }
 
-const StoryGlobe: FunctionComponent<Props> = ({globeItem}) => {
+const StoryGlobe: FunctionComponent<Props> = ({
+  globeItem,
+  backgroundColor = '#000000'
+}) => {
   // eslint-disable-next-line camelcase
   const {time_slider} = useSelector(embedElementsSelector);
 
@@ -27,7 +31,7 @@ const StoryGlobe: FunctionComponent<Props> = ({globeItem}) => {
       <DataViewer
         hideNavigation
         markers={globeItem.markers}
-        backgroundColor={'#000000'}
+        backgroundColor={backgroundColor}
       />
       {/* eslint-disable-next-line camelcase */}
       {time_slider && (
