@@ -71,7 +71,7 @@ export const methaneSources = {
 } as const;
 
 export enum SatelliteNames {
-  'SENTINEL-1' = 'SENTINEL-1',
+  'SENTINEL-5P' = 'SENTINEL-5P',
   'SENTINEL-2' = 'SENTINEL-2',
   'SENTINEL-3' = 'SENTINEL-3'
 }
