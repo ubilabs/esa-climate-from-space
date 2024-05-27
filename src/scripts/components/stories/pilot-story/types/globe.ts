@@ -80,6 +80,5 @@ export type ChapterSelectionHandler = ParallaxProps;
 
 export enum ChapterPosition {
   INTRO = 'intro',
-  CONTENT = 'content',
-  SUB = 'sub'
+  CONTENT = 'content'
 }

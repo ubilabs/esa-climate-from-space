@@ -101,12 +101,12 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
     } = selectedGiantContent;
 
     return (
-      <>
+      <Chapter scrollIndex={0} isSubChapter>
         <div ref={subIntroRef}>
           <ChapterIntro
             subTitle={subTitle}
             title={title}
-            scrollIndex={5}
+            scrollIndex={0}
             onBackToStory={handleBackToStory}
           />
         </div>
@@ -120,7 +120,7 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
           onBackToStory={() => handleBackToStory()}
           onNextStory={() => handleSubStoryChange()}
         />
-      </>
+      </Chapter>
     );
   };
 

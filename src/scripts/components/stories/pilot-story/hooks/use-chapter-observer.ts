@@ -9,17 +9,19 @@ const useChapterObserver = () => {
   const [chapterPosition, setChapterPosition] = useState<ChapterPosition>(
     ChapterPosition.INTRO
   );
+  const [isSubChapter, setIsSubChapter] = useState(false);
 
   const parallaxController = useParallaxController();
 
   const navigationObserver = new NavigationObserver(
     parallaxController,
     setSelectedChapterIndex,
-    setChapterPosition
+    setChapterPosition,
+    setIsSubChapter
   );
-  const elements = document.querySelectorAll(`.${chapterIntroElement}`);
+  const introElements = document.querySelectorAll(`.${chapterIntroElement}`);
 
-  elements.forEach(element => {
+  introElements.forEach(element => {
     navigationObserver.observe(element);
 
     return () => {
@@ -30,7 +32,8 @@ const useChapterObserver = () => {
   return {
     selectedChapterIndex,
     setSelectedChapterIndex,
-    chapterPosition
+    chapterPosition,
+    isSubChapter
   };
 };
 

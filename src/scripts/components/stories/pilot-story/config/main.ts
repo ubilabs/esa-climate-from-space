@@ -34,7 +34,7 @@ export const graphContent = {
   speed: -15
 };
 
-// chapter 7
+// chapter 6
 
 export const subStory: SubStoryContent[] = [
   {

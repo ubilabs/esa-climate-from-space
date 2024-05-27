@@ -18,7 +18,8 @@ import styles from './chapter.module.styl';
 
 interface Props
   extends PropsWithChildren<React.JSX.IntrinsicElements['section']> {
-  scrollIndex: number;
+  isSubChapter?: boolean;
+  scrollIndex?: number;
   parallaxProps?: ParallaxProps;
 }
 
@@ -34,6 +35,7 @@ interface Props
  * @returns {JSX.Element} The chapter component.
  */
 const Chapter: FunctionComponent<Props> = ({
+  isSubChapter,
   scrollIndex,
   children,
   className,
@@ -83,7 +85,9 @@ const Chapter: FunctionComponent<Props> = ({
       <Parallax
         {...parallaxProps}
         id={chapterMainElement}
-        data-scroll-index-chapter={scrollIndex}
+        {...(isSubChapter
+          ? {'data-scroll-index-subchapter': scrollIndex}
+          : {'data-scroll-index-chapter': scrollIndex})}
         onProgressChange={() => onSetProgress()}>
         {children}
       </Parallax>
