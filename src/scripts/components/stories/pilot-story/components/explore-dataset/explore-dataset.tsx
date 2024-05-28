@@ -1,9 +1,16 @@
-import React, {FunctionComponent, useMemo, useState} from 'react';
+import React, {
+  FunctionComponent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import cx from 'classnames';
 import {Parallax} from 'react-scroll-parallax';
 
 import {useScreenSize} from '../../../../../hooks/use-screen-size';
 import {useGlobe} from '../../hooks/use-globe';
+import useIsInViewport from '../../hooks/use-is-in-viewport';
 
 import {GlobeItem} from '../../../../../types/gallery-item';
 
@@ -25,6 +32,8 @@ interface Props {
 const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
   const {isMobile} = useScreenSize();
   const {setIsVisible} = useGlobe();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useIsInViewport(containerRef);
   const [showExplorableGlobe, setShowExplorableGlobe] = useState(false);
 
   const globeItem = useMemo(
@@ -46,43 +55,56 @@ const ExploreDataset: FunctionComponent<Props> = ({title, dataLayerId}) => {
     [dataLayerId]
   );
 
-  return (
-    <SnapWrapper
-      className={cx(
-        styles.explore,
-        showExplorableGlobe && styles.exploreGlobe
-      )}>
-      {showExplorableGlobe ? (
-        <div className={styles.globeContainer}>
-          <Button
-            className={styles.backButton}
-            icon={ArrowBackIcon}
-            label="Back to Story"
-            onClick={() => {
-              setShowExplorableGlobe(false);
-              setIsVisible(true);
-            }}
-            isBackButton
-          />
-          <StoryGlobe globeItem={globeItem} backgroundColor="#FFFFFF" />
-        </div>
-      ) : (
-        <Parallax className={styles.exploreContent}>
-          <h1>{title}</h1>
+  const handleHideExplorableGlobe = () => {
+    setShowExplorableGlobe(false);
+    setIsVisible(true);
+  };
 
-          <div className={styles.buttonContainer}>
+  const handleShowExplorableGlobe = () => {
+    setShowExplorableGlobe(true);
+    setIsVisible(false);
+  };
+
+  useEffect(() => {
+    if (!isInView) {
+      handleHideExplorableGlobe();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInView]);
+
+  return (
+    <div ref={containerRef}>
+      <SnapWrapper
+        className={cx(
+          styles.explore,
+          showExplorableGlobe && styles.exploreGlobe
+        )}>
+        {showExplorableGlobe ? (
+          <div className={styles.globeContainer}>
             <Button
-              label="Explore Dataset"
-              onClick={() => {
-                setShowExplorableGlobe(true);
-                setIsVisible(false);
-              }}
+              className={styles.backButton}
+              icon={ArrowBackIcon}
+              label="Back to Story"
+              onClick={handleHideExplorableGlobe}
+              isBackButton
             />
-            {isMobile && <ScrollHint />}
+            <StoryGlobe globeItem={globeItem} backgroundColor="#FFFFFF" />
           </div>
-        </Parallax>
-      )}
-    </SnapWrapper>
+        ) : (
+          <Parallax className={styles.exploreContent}>
+            <h1>{title}</h1>
+
+            <div className={styles.buttonContainer}>
+              <Button
+                label="Explore Dataset"
+                onClick={handleShowExplorableGlobe}
+              />
+              {isMobile && <ScrollHint />}
+            </div>
+          </Parallax>
+        )}
+      </SnapWrapper>
+    </div>
   );
 };
 
