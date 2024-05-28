@@ -15,21 +15,21 @@
       "shortText": "## Mundo en Llamas\r\n\r\nLos incendios forestales en el sureste de Australia, 2019-20, afectan a lugares que no habían visto grandes incendios forestales antes:\r\n\r\n- bosques costeros en lugar de pastizales y matorrales interiores\r\n- mil millones de animales perecieron - mostrando la biodiversidad\r\n- El 80% de todos los animales y plantas terrestres se encuentran en los bosques\r\n- incendios más al norte: Alaska, Suecia, Groenlandia\r\n- los rayos son más frecuentes a medida que el clima se calienta\r\n- 5 veces más de incendios forestales entre agosto de 2019 y agosto de 2018\r\n\r\nRápida reducción de los bosques tropicales en los últimos 50 años impactando en muchas más especies y en una cantidad de vegetación (biomasa) mucho mayor que antes.\r\n\r\n- el uso de la tierra ha liberado 180 Gt de carbono desde 1750\r\n- contribuye al 23% de nuestras emisiones anuales de GEI\r\n- la tierra absorbe el doble de CO2 del que emite\r\n- el panorama es menos claro para otros GEI procedentes de la agricultura, como el metano y el óxido nitroso",
       "images": [
         "assets/story28-02.jpg",
-        "assets/story28-08.jpg",
+        "assets/story28-13.jpg",
         "assets/story28-06.jpg",
         "assets/story28-03.jpg",
         "assets/biomass-map.jpg"
       ],
       "imageCaptions": [
         "Incendios forestales en el sureste de Australia, enero de 2020 (datos de Copernicus Sentinel, 2020, procesados por la ESA)",
-        "Incendios forestales que arden en el sureste de Australia el 14 de enero de 2020 (amarillo) y las zonas quemadas desde el 1 de septiembre de 2019 (rojo). Infografía basada en datos del satélite Suomi. (Planetary Visions/NOAA/NASA)",
+        "En julio de 2023 se declaró una oleada de incendios forestales en Grecia. Se declaró el estado de emergencia en la turística isla de Rodas y miles de personas fueron evacuadas al propagarse las llamas desde el interior montañoso hacia la costa. Los sensores infrarrojos del satélite Copernicus Sentinel-2 detectan las llamas a través del humo en esta imagen adquirida el 23 de julio de 2023. (Contiene datos modificados de Copernicus Sentinel (2023), procesados por la ESA)",
         "Alce en el río Bitterroot, Montana, durante un incendio forestal en 2000 (John McColgan, Alaska Fire Service)",
         "Incendio forestal en el oeste de Groenlandia, agosto de 2017.\r\n(Datos de Copernicus Sentinel, 2017, procesados por Pierre Markuse)",
         "Biomasa sobre el suelo de la Iniciativa sobre el Cambio Climático de la ESA (ESA-CCI)"
       ],
       "imageFits": [
         "cover",
-        "contain",
+        "cover",
         "cover",
         "cover",
         "contain"
@@ -91,14 +91,14 @@
       "images": [
         "assets/protectedareas.png",
         "assets/landcover_large_07.jpg",
-        "assets/story28-05.jpg",
+        "assets/story28-12.jpg",
         "assets/story28-07.jpg",
         "assets/story28-11.jpg"
       ],
       "imageCaptions": [
         "# Áreas protegidas del mundo\r\nMapa de las áreas protegidas del mundo en tierra y en los océanos (UICN/PNUMA-WCMC)",
         "El Parque Nacional de Egmont, Nueva Zelanda, visto por el satélite Kompsat-2. El límite entre las zonas protegidas y las no protegidas suele ser muy claro en las imágenes de satélite, como vemos aquí entre los flancos verdes y densamente arbolados del monte Egmont y el paisaje agrícola circundante. (KARI/ESA)",
-        "Patrones de campo en una parte de Bolivia donde el bosque tropical ha sido despejado para la agricultura (datos de Copernicus Sentinel, 2019/ESA)",
+        "Esta imagen de Copernicus Sentinel-2 del 25 de julio de 2023 muestra la invasión humana de la selva tropical a lo largo de una carretera en el estado brasileño de Pará. (Contiene datos modificados de Copernicus Sentinel (2023), procesados por la ESA)",
         "Arrecife de coral cerca de la isla de Enderbury, en la zona protegida de Phoenix Isands, un lugar declarado Patrimonio de la Humanidad por la UNESCO en el Pacífico Sur (Dr. Randi Rotjan, New England Aquarium)",
         "El humo oscurece casi toda la costa oeste de Estados Unidos mientras arden casi 100 incendios forestales durante una ola de calor en septiembre de 2020\r\n(Datos de Copernicus Sentinel, 2020, procesados por la ESA)"
       ],
