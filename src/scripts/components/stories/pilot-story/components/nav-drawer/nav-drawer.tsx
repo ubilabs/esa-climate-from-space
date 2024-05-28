@@ -1,4 +1,5 @@
 import React, {FunctionComponent, useEffect, useMemo, useState} from 'react';
+import {useDispatch} from 'react-redux';
 
 import cx from 'classnames';
 
@@ -8,6 +9,11 @@ import {useScreenSize} from '../../../../../hooks/use-screen-size';
 
 import DrawerToggleIcon from '../icons/drawer-toggle-icon/drawer-toggle-icons';
 import {getSnapPoint} from '../utils/nav-drawer';
+
+import {useThunkDispatch} from '../../../../../hooks/use-thunk-dispatch';
+
+import fetchLayerAction from '../../../../../actions/fetch-layer';
+import setSelectedLayerIdsAction from '../../../../../actions/set-selected-layer-id';
 
 import {GlobeIcon} from '../../../../main/icons/globe-icon';
 import {chapters, subStory} from '../../config/main';
@@ -26,6 +32,9 @@ import styles from './nav-drawer.module.styl';
  */
 const NavDrawer: FunctionComponent = () => {
   const {selectedChapterIndex, chapterPosition, isSubChapter} = useChapter();
+
+  const thunkDispatch = useThunkDispatch();
+  const dispatch = useDispatch();
 
   const [titleRef, setTitleRef] = useState<HTMLDivElement | null>(null);
   const [contentRef, setContentRef] = useState<HTMLDivElement | null>(null);
@@ -133,7 +142,14 @@ const NavDrawer: FunctionComponent = () => {
                 className={styles.navLinks}
               />
               <Button
-                link={'/'}
+                link="/"
+                onClick={() => {
+                  const layerId = 'greenhouse.xch4';
+                  const isMain = true;
+                  thunkDispatch(fetchLayerAction(layerId)).then(() => {
+                    dispatch(setSelectedLayerIdsAction(layerId, isMain));
+                  });
+                }}
                 className={styles.navLinks}
                 icon={GlobeExploreIcon}
                 label="explore the story datasets"
