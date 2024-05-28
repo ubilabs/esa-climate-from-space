@@ -1,6 +1,13 @@
 import React, {FunctionComponent} from 'react';
+import {useDispatch} from 'react-redux';
+
 import {Parallax} from 'react-scroll-parallax';
 import cx from 'classnames';
+
+import {useThunkDispatch} from '../../../../../hooks/use-thunk-dispatch';
+
+import fetchLayerAction from '../../../../../actions/fetch-layer';
+import setSelectedLayerIdsAction from '../../../../../actions/set-selected-layer-id';
 
 import {GlobeIcon} from '../../../../main/icons/globe-icon';
 import ScrollHint from '../scroll-hint/scroll-hint';
@@ -14,49 +21,66 @@ interface Props {
   onStoryStart: () => void;
 }
 
-const StoryIntro: FunctionComponent<Props> = ({storyStarted, onStoryStart}) => (
-  <section className={cx(styles.intro, storyStarted && styles.hidden)}>
-    <Button
-      link={'/stories'}
-      icon={GlobeIcon}
-      label="Back to Stories"
-      className={styles.backToStories}
-      isBackButton
-    />
+const StoryIntro: FunctionComponent<Props> = ({storyStarted, onStoryStart}) => {
+  const thunkDispatch = useThunkDispatch();
+  const dispatch = useDispatch();
 
-    <Parallax>
-      <h1 className={styles.storyTitle}>Inside the world of Super Emitters</h1>
-      <p className={styles.storyDescription}>
-        Explore the world of methane super emitters – key players in climate
-        change.
-      </p>
+  return (
+    <section className={cx(styles.intro, storyStarted && styles.hidden)}>
+      <Button
+        link={'/stories'}
+        icon={GlobeIcon}
+        label="Back to Stories"
+        className={styles.backToStories}
+        isBackButton
+      />
 
-      <div className={styles.buttonContainer}>
-        {storyStarted ? (
-          <Parallax style={{width: '100%'}} speed={2}>
-            <ScrollHint />
-          </Parallax>
-        ) : (
-          <>
-            <Button
-              label="Story"
-              onClick={() => {
-                onStoryStart();
-                // Automatically scroll to the first chapter when the story starts
-                const timeout = setTimeout(() => {
-                  scrollToChapterIndex(0);
-                }, 1000);
+      <Parallax>
+        <h1 className={styles.storyTitle}>
+          Inside the world of Super Emitters
+        </h1>
+        <p className={styles.storyDescription}>
+          Explore the world of methane super emitters – key players in climate
+          change.
+        </p>
 
-                return () => clearTimeout(timeout);
-              }}
-              id={styles.whiteButton}
-            />
-            <Button link={'/'} label="Datasets" />
-          </>
-        )}
-      </div>
-    </Parallax>
-  </section>
-);
+        <div className={styles.buttonContainer}>
+          {storyStarted ? (
+            <Parallax style={{width: '100%'}} speed={2}>
+              <ScrollHint />
+            </Parallax>
+          ) : (
+            <>
+              <Button
+                label="Story"
+                onClick={() => {
+                  onStoryStart();
+                  // Automatically scroll to the first chapter when the story starts
+                  const timeout = setTimeout(() => {
+                    scrollToChapterIndex(0);
+                  }, 1000);
+
+                  return () => clearTimeout(timeout);
+                }}
+                id={styles.whiteButton}
+              />
+              <Button
+                link={'/'}
+                label="Datasets"
+                onClick={() => {
+                  const layerId = 'greenhouse.xch4';
+                  const isMain = true;
+                  thunkDispatch(fetchLayerAction(layerId)).then(() => {
+                    dispatch(setSelectedLayerIdsAction(layerId, isMain));
+                  });
+                }}
+              />
+            </>
+          )}
+        </div>
+      </Parallax>
+    </section>
+  );
+};
 
 export default StoryIntro;
