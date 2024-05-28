@@ -6,11 +6,12 @@ import ScrollHint from '../scroll-hint/scroll-hint';
 import Button from '../button/button';
 import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
+import {useScreenSize} from '../../../../../hooks/use-screen-size';
+
 import {chapterIntroElement} from '../../config/main';
 
 import cx from 'classnames';
 import styles from './chapter-intro.module.styl';
-import {useScreenSize} from '../../../../../hooks/use-screen-size';
 
 interface Props {
   title: string;
