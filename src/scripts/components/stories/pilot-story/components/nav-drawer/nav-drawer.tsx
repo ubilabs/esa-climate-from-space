@@ -105,7 +105,7 @@ const NavDrawer: FunctionComponent = () => {
                 setSnap(snap === maxSnapPoint ? initialSnapPoint : maxSnapPoint)
               }>
               {isCollapsed ? (
-                <span className={styles.header}>
+                <span>
                   {isMobile && (
                     <NavPositionIcon
                       position={chapterPosition}
@@ -117,7 +117,7 @@ const NavDrawer: FunctionComponent = () => {
                     navChapters[selectedChapterIndex].subtitle}
                 </span>
               ) : (
-                'Story Position'
+                <span>Story Position</span>
               )}
               <DrawerToggleIcon isCollapsed={!snap || isCollapsed} />
             </Title>

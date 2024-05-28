@@ -1,7 +1,7 @@
 @require '../../../../../../variables.styl'
 
 .content
-  --title-height: 4rem
+  --title-height: 2.5rem
   box-sizing: border-box
   position: fixed
   z-index: 100
@@ -52,6 +52,9 @@
     align-items: center
     gap: 0.5rem
     justify-content: start
+    white-space: nowrap
+    overflow: hidden
+
 
   svg
     min-width: 24px
@@ -93,6 +96,9 @@
 // In order to fit the handle, we need to add the height of the handle to the height of the navContainer
 
 @media screen and (max-width: 768px)
+  .title
+    span
+      font-size: 4.2vw
 
   ul
     padding-left: 1rem
