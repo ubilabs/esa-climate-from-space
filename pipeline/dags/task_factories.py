@@ -48,7 +48,7 @@ def gcs_list_files(bucket_name: str, layer_id: str, layer_variable: str, task_id
     def fn(**context):
         max_files = context["params"]["max_files"]
         hook = GCSHook('google')
-        subdir_path = f'{context["params"]["input_bucket_subdir"]}/' if context["params"]["input_bucket_subdir"] else ''
+        subdir_path = f'{context["params"]["input_bucket_subdir"]}/' if "input_bucket_subdir" in context["params"] else ''
         filenames = hook.list(
             bucket_name, match_glob=f'{layer_id}.{layer_variable}/{subdir_path}*.nc')
 
