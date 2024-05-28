@@ -22,7 +22,7 @@ interface Props {
 const ExploreStories: FunctionComponent<Props> = ({chapterIndex}) => (
   <Chapter scrollIndex={chapterIndex}>
     <SnapWrapper className={styles.outro}>
-      <Parallax speed={5}>
+      <Parallax speed={2}>
         <h2
           className={cx(styles.exploreText, chapterIntroElement)}
           data-scroll-index-intro={chapterIndex}>
@@ -35,10 +35,8 @@ const ExploreStories: FunctionComponent<Props> = ({chapterIndex}) => (
           <img src={carbonCycle} alt="Carbon Cycle Story" />
           <h1>The Carbon Cycle</h1>
           <p>
-            Carbon is one of the most abundant elements in the universe and the
-            basis of all life on Earth. It passes through the atmosphere, the
-            oceans, plants and rocks, but this natural cycle has been disrupted
-            by human activity, with profound implications for Earth’s climate.
+            Carbon, abundant and vital for life, cycles through nature. However,
+            human activity disrupts this, impacting Earth`s climate.
           </p>
           <Button
             className={styles.exploreButton}
