@@ -9,6 +9,7 @@ import {
 } from '../../config/main';
 import {ChapterPosition} from '../../types/globe';
 
+import {updateIndicatorPosition} from '../utils/nav-drawer';
 import {scrollToChapterIndex} from '../nav-chapter-overview/nav-chapter-overview';
 
 import cx from 'classnames';
@@ -62,71 +63,19 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
   } as React.CSSProperties;
 
   // Todo: Refactor
-  if (indicationRef.current) {
-    if (isSubChapter) {
-      indicationRef.current.setAttribute(dataIsTitleInView, 'false');
-
-      const progressIndicatorHeight = indicationRef.current.clientHeight;
-
-      // Get the circle radius from the CSS custom property
-      // This is used to calculate the offset of the indicator
-      // We want the indicator to start below the circle indication for the selected chapter intro
-      const circleRadius = Number(
-        window
-          .getComputedStyle(indicationRef.current)
-          .getPropertyValue('--circle-radius')
-          .replace('px', '')
-      );
-
-      if (progressIndicatorHeight && length) {
-        const indicatorYOffsetInPx =
-          (progressIndicatorHeight / length) * selectedChapterIndex +
-          (progressIndicatorHeight / length) * progress +
-          (selectedChapterIndex * gap) / circleRadius;
-
-        const indicatorYOffsetInPercent = `${
-          (indicatorYOffsetInPx / progressIndicatorHeight) * 100
-        }%`;
-
-        indicationRef.current.style.setProperty(
-          '--indicator-y-offset',
-          indicatorYOffsetInPercent
-        );
-      }
-    }
-    if (chapterPosition === ChapterPosition.CONTENT) {
-      indicationRef.current.setAttribute(dataIsTitleInView, 'false');
-
-      const progressIndicatorHeight = indicationRef.current.clientHeight;
-
-      // Get the circle radius from the CSS custom property
-      // This is used to calculate the offset of the indicator
-      // We want the indicator to start below the circle indication for the selected chapter intro
-      const circleRadius = Number(
-        window
-          .getComputedStyle(indicationRef.current)
-          .getPropertyValue('--circle-radius')
-          .replace('px', '')
-      );
-
-      if (progressIndicatorHeight && length) {
-        const indicatorYOffsetInPx =
-          (progressIndicatorHeight / length) * selectedChapterIndex +
-          (progressIndicatorHeight / length) * progress +
-          (selectedChapterIndex * gap) / circleRadius;
-
-        const indicatorYOffsetInPercent = `${
-          (indicatorYOffsetInPx / progressIndicatorHeight) * 100
-        }%`;
-
-        indicationRef.current.style.setProperty(
-          '--indicator-y-offset',
-          indicatorYOffsetInPercent
-        );
-      }
-    } else if (chapterPosition === ChapterPosition.INTRO) {
-      indicationRef.current.setAttribute(dataIsTitleInView, 'true');
-    }
+  if (
+    (indicationRef.current && chapterPosition === ChapterPosition.CONTENT) ||
+    isSubChapter
+  ) {
+    updateIndicatorPosition(
+      indicationRef,
+      length,
+      selectedChapterIndex,
+      progress,
+      gap
+    );
+  } else if (chapterPosition === ChapterPosition.INTRO) {
+    indicationRef.current?.setAttribute(dataIsTitleInView, 'true');
   }
 
   return (
