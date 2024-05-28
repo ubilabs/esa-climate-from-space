@@ -46,7 +46,7 @@ const ChapterIntro: FunctionComponent<Props> = ({
   }, [progress]);
 
   return (
-    <SnapWrapper>
+    <SnapWrapper className={styles.overlay}>
       <>
         {onBackToStory && (
           <Button
