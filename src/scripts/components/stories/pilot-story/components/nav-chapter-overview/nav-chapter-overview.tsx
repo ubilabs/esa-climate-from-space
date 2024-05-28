@@ -10,6 +10,8 @@ interface Props {
   isCollapsed?: boolean;
   className?: string;
   callback?: () => void;
+  gap?: number;
+  isSubchapter?: boolean;
 }
 
 export const scrollToChapterIndex = (index: number) => {
@@ -33,17 +35,26 @@ const NavChapterOverview: FunctionComponent<Props> = ({
   chapters,
   isCollapsed,
   className,
-  callback
+  callback,
+  gap,
+  isSubchapter
 }) => (
   <div className={cx(styles.navChapterContainer, className)}>
-    <ChapterProgressIndication chapters={chapters} />
+    <ChapterProgressIndication chapters={chapters} gap={gap} />
     {!isCollapsed && (
       <ul>
         {chapters.map(({title}, index) => (
           <li
             key={index}
             onClick={() => {
-              scrollToChapterIndex(index);
+              // Todo: Refactor
+              // 1.  Get rid of nested turning
+              // 2. Only works because there is currently just one subchapter
+              // 3. Code is duplicated in chapter-progress-indication.tsx
+              scrollToChapterIndex(
+                // eslint-disable-next-line no-nested-ternary
+                isSubchapter ? (index === 0 ? 5 : 6) : index
+              );
               callback && callback();
             }}>
             {title}

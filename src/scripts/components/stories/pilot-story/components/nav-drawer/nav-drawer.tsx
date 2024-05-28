@@ -10,7 +10,7 @@ import DrawerToggleIcon from '../icons/drawer-toggle-icon/drawer-toggle-icons';
 import {getSnapPoint} from '../utils/nav-drawer';
 
 import {GlobeIcon} from '../../../../main/icons/globe-icon';
-import {chapters} from '../../config/main';
+import {chapters, subStory} from '../../config/main';
 import {useChapter} from '../../hooks/use-chapter';
 import Button from '../button/button';
 import {GlobeExploreIcon} from '../icons/globe-explore-icon';
@@ -25,7 +25,7 @@ import styles from './nav-drawer.module.styl';
  * @returns {ReactElement} The rendered NavDrawer component.
  */
 const NavDrawer: FunctionComponent = () => {
-  const {selectedChapterIndex, chapterPosition} = useChapter();
+  const {selectedChapterIndex, chapterPosition, isSubChapter} = useChapter();
 
   const [titleRef, setTitleRef] = useState<HTMLDivElement | null>(null);
   const [contentRef, setContentRef] = useState<HTMLDivElement | null>(null);
@@ -56,6 +56,14 @@ const NavDrawer: FunctionComponent = () => {
   const modalTarget = document.getElementById('drawer');
 
   const isCollapsed = snap === initialSnapPoint;
+
+  // Todo: Refactor to use the same data structure for chapters and subStory
+  const navChapters = isSubChapter
+    ? [
+        {title: subStory[0].title, subtitle: subStory[0].subTitle},
+        {title: 'Next Chapter', subtitle: ''}
+      ]
+    : chapters;
 
   return (
     <Root
@@ -93,9 +101,11 @@ const NavDrawer: FunctionComponent = () => {
                     <NavPositionIcon
                       position={chapterPosition}
                       isFirst={selectedChapterIndex === 0}
+                      isSubChapter={isSubChapter}
                     />
                   )}
-                  {chapters[selectedChapterIndex].subtitle}
+                  {navChapters[selectedChapterIndex] &&
+                    navChapters[selectedChapterIndex].subtitle}
                 </span>
               ) : (
                 'Story Position'
@@ -106,12 +116,15 @@ const NavDrawer: FunctionComponent = () => {
               className={styles.navContainer}
               ref={contentRef => setContentRef(contentRef)}>
               <NavChapterOverview
-                chapters={chapters}
+                chapters={navChapters}
                 callback={() =>
                   setSnap(
                     snap === maxSnapPoint ? initialSnapPoint : maxSnapPoint
                   )
                 }
+                // eslint-disable-next-line no-undefined
+                gap={isSubChapter ? 84 : undefined}
+                isSubchapter={isSubChapter}
               />
               <Button
                 link={'/stories'}

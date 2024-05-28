@@ -2,9 +2,14 @@ import React, {FunctionComponent, useRef} from 'react';
 
 import {useChapter} from '../../hooks/use-chapter';
 
-import {dataIsTitleInView, progressIndicationElement} from '../../config/main';
+import {
+  chapters,
+  dataIsTitleInView,
+  progressIndicationElement
+} from '../../config/main';
 import {ChapterPosition} from '../../types/globe';
 
+import {updateIndicatorPosition} from '../utils/nav-drawer';
 import {scrollToChapterIndex} from '../nav-chapter-overview/nav-chapter-overview';
 
 import cx from 'classnames';
@@ -15,6 +20,7 @@ interface Props {
   chapters: Record<'title' | 'subtitle', string>[];
   gap?: number;
   className?: string;
+  isDesktop?: boolean;
 }
 
 /**
@@ -28,55 +34,48 @@ interface Props {
  * @param {number} [props.gap=24] - The gap between the chapter symbols in pixels.
  * @returns {JSX.Element} The chapter progress indication component.
  */
+// eslint-disable-next-line complexity
 const ChapterProgressIndication: FunctionComponent<Props> = ({
-  chapters,
+  chapters: navChapters,
   className,
-  gap = 24
+  gap = 24,
+  isDesktop
 }) => {
+  const {selectedChapterIndex, chapterPosition, progress, isSubChapter} =
+    useChapter();
+
+  gap =
+    isDesktop && isSubChapter
+      ? gap * chapters.length + chapters.length * 12
+      : gap;
+
+  const indicationRef = useRef<HTMLDivElement>(null);
+
+  const length = isSubChapter ? 1 : navChapters.length;
+  // gap = isSubChapter ? gap * chapters.length + chapters.length * 12 : gap;
   // The gap between the chapter symbols
   // Can be set to any value in px (defaults to 24px)
   const style = {
-    '--gap': `${gap}px`
+    '--gap': `${gap}px`,
+    // The radius of the circle / rect indication
+    // Todo: Ask designer for equal size of circle and rect
+    '--circle-radius': `${isSubChapter ? 8 : 12}px`
   } as React.CSSProperties;
 
-  const {selectedChapterIndex, chapterPosition, progress} = useChapter();
-  const indicationRef = useRef<HTMLDivElement>(null);
-
-  if (indicationRef.current) {
-    if (chapterPosition === ChapterPosition.CONTENT) {
-      indicationRef.current.setAttribute(dataIsTitleInView, 'false');
-
-      const progressIndicatorHeight = indicationRef.current.clientHeight;
-      const chaptersLength = chapters.length;
-
-      // Get the circle radius from the CSS custom property
-      // This is used to calculate the offset of the indicator
-      // We want the indicator to start below the circle indication for the selected chapter intro
-      const circleRadius = Number(
-        window
-          .getComputedStyle(indicationRef.current)
-          .getPropertyValue('--circle-radius')
-          .replace('px', '')
-      );
-
-      if (progressIndicatorHeight && chaptersLength) {
-        const indicatorYOffsetInPx =
-          (progressIndicatorHeight / chaptersLength) * selectedChapterIndex +
-          (progressIndicatorHeight / chaptersLength) * progress +
-          (selectedChapterIndex * gap) / circleRadius;
-
-        const indicatorYOffsetInPercent = `${
-          (indicatorYOffsetInPx / progressIndicatorHeight) * 100
-        }%`;
-
-        indicationRef.current.style.setProperty(
-          '--indicator-y-offset',
-          indicatorYOffsetInPercent
-        );
-      }
-    } else if (chapterPosition === ChapterPosition.INTRO) {
-      indicationRef.current.setAttribute(dataIsTitleInView, 'true');
-    }
+  // Todo: Refactor
+  if (
+    (indicationRef.current && chapterPosition === ChapterPosition.CONTENT) ||
+    isSubChapter
+  ) {
+    updateIndicatorPosition(
+      indicationRef,
+      length,
+      selectedChapterIndex,
+      progress,
+      gap
+    );
+  } else if (chapterPosition === ChapterPosition.INTRO) {
+    indicationRef.current?.setAttribute(dataIsTitleInView, 'true');
   }
 
   return (
@@ -87,12 +86,20 @@ const ChapterProgressIndication: FunctionComponent<Props> = ({
         className,
         progressIndicationElement
       )}
+      data-is-subchapter={isSubChapter}
       style={style}>
-      {Array.from({length: chapters.length}).map((_, index) => (
+      {Array.from({length: length > 1 ? length : 2}).map((_, index) => (
         <span
           key={index}
           data-is-selected={index === selectedChapterIndex}
-          onClick={() => scrollToChapterIndex(index)}
+          onClick={() =>
+            // Todo: Refactor
+            // 1. Get rid of nested turning
+            // 2. Only works because there is currently just one subchapter
+            // 3. Code is duplicated from nav-chapter-overview.ts
+            // eslint-disable-next-line no-nested-ternary
+            scrollToChapterIndex(isSubChapter ? (index === 0 ? 5 : 6) : index)
+          }
         />
       ))}
     </div>

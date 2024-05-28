@@ -19,7 +19,8 @@ export class NavigationObserver {
       elements: {el: HTMLElement; isInView: boolean | null}[];
     } | null,
     private setSelectedChapterIndex: (index: number) => void,
-    private setChapterType: (type: ChapterPosition) => void
+    private setChapterType: (type: ChapterPosition) => void,
+    private setSubChapter: (isSubChapter: boolean) => void
   ) {
     this.observer = new IntersectionObserver(this.handleIntersect, {
       threshold: 1
@@ -47,10 +48,29 @@ export class NavigationObserver {
       ({el}: {el: HTMLElement}) => el.id === chapterMainElement
     );
 
-    const currentChapter = chapterElements?.filter(({isInView}) => isInView)[0];
+    let currentChapter = null;
+    const visibleChapters =
+      chapterElements?.filter(({isInView}) => isInView) ?? [];
+
+    if (visibleChapters.length === 1) {
+      currentChapter = visibleChapters[0];
+    } else if (visibleChapters.length > 1) {
+      // Check if one has the data-scroll-index-subchapter attribute
+      currentChapter =
+        visibleChapters.find(({el}) =>
+          el.getAttribute('data-scroll-index-subchapter')
+        ) ?? visibleChapters[0];
+    }
+
+    const isSubChapter =
+      // eslint-disable-next-line no-undefined
+      Boolean(currentChapter?.el.getAttribute('data-scroll-index-subchapter'));
+
+    this.setSubChapter(isSubChapter);
 
     const currentChapterIndex = Number(
-      currentChapter?.el.getAttribute('data-scroll-index-chapter')
+      currentChapter?.el.getAttribute('data-scroll-index-subchapter') ??
+        Number(currentChapter?.el.getAttribute('data-scroll-index-chapter'))
     );
 
     entries.forEach(entry => {

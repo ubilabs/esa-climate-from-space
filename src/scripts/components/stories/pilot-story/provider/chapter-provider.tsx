@@ -20,8 +20,12 @@ function useChapterContext() {
 
   // Hook to handle the selected chapter index based on the current chapter in view
   // and the progress indication of the current chapter
-  const {selectedChapterIndex, setSelectedChapterIndex, chapterPosition} =
-    useIntersectChapters();
+  const {
+    selectedChapterIndex,
+    setSelectedChapterIndex,
+    chapterPosition,
+    isSubChapter
+  } = useIntersectChapters();
 
   useEffect(() => {
     if (selectedChapterIndex !== null) {
@@ -49,7 +53,8 @@ function useChapterContext() {
     setSelectedChapterIndex,
     onSetProgress,
     chapterPosition,
-    progress
+    progress,
+    isSubChapter
   };
 }
 

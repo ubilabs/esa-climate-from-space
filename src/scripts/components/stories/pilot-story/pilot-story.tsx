@@ -64,6 +64,7 @@ const PilotStory: FunctionComponent = () => {
                   chapters={chapters}
                   className={styles.chapterProgressIndication}
                   gap={48}
+                  isDesktop={isDesktop}
                 />
               )}
 

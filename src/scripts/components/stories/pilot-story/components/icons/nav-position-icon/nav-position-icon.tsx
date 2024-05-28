@@ -2,7 +2,56 @@ import React, {FunctionComponent} from 'react';
 
 import {ChapterPosition} from '../../../types/globe';
 
-const getIcon = (position: ChapterPosition, isFirst: boolean) => {
+const getIcon = (
+  position: ChapterPosition,
+  isFirst: boolean,
+  isSub: boolean
+) => {
+  if (isSub) {
+    return (
+      <svg
+        width="8"
+        height="18"
+        viewBox="0 0 8 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <g id="position-marker-mid">
+          <path
+            id="Vector 40"
+            d="M4 13L4 17.5"
+            stroke="white"
+            strokeLinecap="round"
+          />
+          <path
+            id="Vector 41"
+            d="M4 0.5L4 5.5"
+            stroke="white"
+            strokeLinecap="round"
+          />
+          <rect
+            id="Rectangle 137"
+            x="0.5"
+            y="12.5"
+            width="7"
+            height="7"
+            transform="rotate(-90 0.5 12.5)"
+            fill="white"
+            stroke="white"
+          />
+          <rect
+            id="Rectangle 136"
+            x="3"
+            y="10"
+            width="2"
+            height="2"
+            transform="rotate(-90 3 10)"
+            fill="white"
+            stroke="white"
+          />
+        </g>
+      </svg>
+    );
+  }
   switch (position) {
     case ChapterPosition.CONTENT:
       return (
@@ -105,50 +154,6 @@ const getIcon = (position: ChapterPosition, isFirst: boolean) => {
           </g>
         </svg>
       );
-    case ChapterPosition.SUB:
-      return (
-        <svg
-          width="8"
-          height="18"
-          viewBox="0 0 8 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg">
-          <g id="position-marker-mid">
-            <path
-              id="Vector 40"
-              d="M4 13L4 17.5"
-              stroke="white"
-              strokeLinecap="round"
-            />
-            <path
-              id="Vector 41"
-              d="M4 0.5L4 5.5"
-              stroke="white"
-              strokeLinecap="round"
-            />
-            <rect
-              id="Rectangle 137"
-              x="0.5"
-              y="12.5"
-              width="7"
-              height="7"
-              transform="rotate(-90 0.5 12.5)"
-              fill="white"
-              stroke="white"
-            />
-            <rect
-              id="Rectangle 136"
-              x="3"
-              y="10"
-              width="2"
-              height="2"
-              transform="rotate(-90 3 10)"
-              fill="white"
-              stroke="white"
-            />
-          </g>
-        </svg>
-      );
     default:
       return null;
   }
@@ -157,13 +162,15 @@ const getIcon = (position: ChapterPosition, isFirst: boolean) => {
 interface Props {
   position: ChapterPosition;
   isFirst?: boolean;
+  isSubChapter?: boolean;
 }
 
 const NavPositionIcon: FunctionComponent<Props> = ({
   position,
-  isFirst = false
+  isFirst = false,
+  isSubChapter = false
 }) => {
-  const icon = getIcon(position, isFirst);
+  const icon = getIcon(position, isFirst, isSubChapter);
 
   return icon;
 };
