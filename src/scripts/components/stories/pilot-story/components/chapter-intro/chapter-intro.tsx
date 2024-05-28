@@ -6,6 +6,8 @@ import ScrollHint from '../scroll-hint/scroll-hint';
 import Button from '../button/button';
 import SnapWrapper from '../snap-wrapper/snap-wrapper';
 
+import {useScreenSize} from '../../../../../hooks/use-screen-size';
+
 import {chapterIntroElement} from '../../config/main';
 
 import cx from 'classnames';
@@ -30,6 +32,14 @@ const ChapterIntro: FunctionComponent<Props> = ({
 }) => {
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(false);
+
+  const {isDesktop, isMobile} = useScreenSize();
+
+  const hint = (
+    <Parallax speed={-50} translateY={[-100, 100]} easing="easeOutQuad">
+      <ScrollHint />
+    </Parallax>
+  );
 
   useEffect(() => {
     setVisible(progress >= 0.4 && progress <= 0.6);
@@ -59,12 +69,12 @@ const ChapterIntro: FunctionComponent<Props> = ({
               data-is-subchapter={isSubChapter}>
               {subTitle}
             </h2>
+
             <p className={styles.title}>{title}</p>
+            {isDesktop && hint}
           </div>
         </Parallax>
-        <Parallax speed={-50} translateY={[-100, 100]} easing="easeOutQuad">
-          <ScrollHint />
-        </Parallax>
+        {isMobile && hint}
       </>
     </SnapWrapper>
   );
