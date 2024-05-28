@@ -12,6 +12,7 @@ import ChapterVideo from '../chapter-video/chapter-video';
 import ChapterGraph from '../chapter-graph/chapter-graph';
 import ChapterConclusion from '../chapter-conclusion/chapter-conclusion';
 import ChapterMarkers from '../chapter-markers/chapter-markers';
+import useIsInViewport from '../../hooks/use-is-in-viewport';
 
 interface Props {
   chapterIndex: number;
@@ -45,50 +46,59 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
   const location = useLocation();
   const storyRef = useRef<HTMLDivElement>(null);
   const subIntroRef = useRef<HTMLDivElement>(null);
+
+  // This ref is used to check if the user has scrolled to the top overview section
+  // If so, the selected giant content will be reset
+  const inViewRef = useRef<HTMLDivElement>(null);
   const [selectedGiantContent, setSelectedGiantContent] =
-    useState<SubStoryContent | null>(subStory[0]);
+    useState<SubStoryContent | null>(null);
+
+  const inView = useIsInViewport(inViewRef, 0.1);
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const currentGiantId = params.get('subStoryId');
-    const selectedGiant = subStory.find(giant => giant.id === currentGiantId);
-    selectedGiant && setSelectedGiantContent(selectedGiant);
-  }, [location.search]);
+    if (inView) {
+      setSelectedGiantContent(null);
+    }
+  }, [inView]);
 
   const handleSubStoryChange = (subStoryId?: string) => {
+    if (!subStoryId) {
+      const currentIndex =
+        (selectedGiantContent && subStory.indexOf(selectedGiantContent)) || 0;
+
+      const nextIndex = (currentIndex + 1) % subStory.length;
+
+      setSelectedGiantContent(subStory[nextIndex]);
+    } else {
+      const selectedGiant = subStory.find(giant => giant.id === subStoryId);
+
+      if (selectedGiant) {
+        const params = new URLSearchParams(location.search);
+
+        params.set('subStoryId', subStoryId);
+        history.push({
+          pathname: '/stories/pilot/6',
+          search: params.toString()
+        });
+
+        setSelectedGiantContent(selectedGiant);
+      }
+    }
+  };
+
+  useEffect(() => {
     if (!selectedGiantContent) {
       return;
     }
 
-    const params = new URLSearchParams(location.search);
-
-    if (!subStoryId) {
-      const currentIndex = subStory.indexOf(selectedGiantContent);
-      const nextIndex = (currentIndex + 1) % subStory.length;
-      const nextStoryIndex = subStory[nextIndex];
-
-      params.set('subStoryId', nextStoryIndex.id);
-    } else {
-      params.set('subStoryId', subStoryId);
-    }
-
-    history.push({
-      pathname: '/stories/pilot/6',
-      search: params.toString()
-    });
-
     subIntroRef.current?.scrollIntoView({behavior: 'instant'});
-  };
+  }, [selectedGiantContent]);
 
   const handleBackToStory = () => {
     storyRef.current?.scrollIntoView({behavior: 'instant'});
   };
 
-  const renderSubstory = () => {
-    if (!selectedGiantContent) {
-      return null;
-    }
-
+  const renderSubstory = (giant: SubStoryContent) => {
     const {
       subTitle,
       title,
@@ -98,7 +108,7 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
       textPage2,
       textPage3,
       conclusion
-    } = selectedGiantContent;
+    } = giant;
 
     return (
       <Chapter scrollIndex={0} isSubChapter>
@@ -133,6 +143,7 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
           title="10 largest methane leaks on record"
         />
       </div>
+      <div ref={inViewRef} aria-hidden="true"></div>
       <ChapterMarkers
         markers={subStory.map(({id, title, location: latLng}) => ({
           id,
@@ -145,7 +156,7 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
         }))}
         onBackToStory={() => handleBackToStory()}
       />
-      {selectedGiantContent && renderSubstory()}
+      {selectedGiantContent && renderSubstory(selectedGiantContent)}
     </Chapter>
   );
 };

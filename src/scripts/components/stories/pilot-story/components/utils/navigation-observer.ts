@@ -48,7 +48,19 @@ export class NavigationObserver {
       ({el}: {el: HTMLElement}) => el.id === chapterMainElement
     );
 
-    const currentChapter = chapterElements?.filter(({isInView}) => isInView)[0];
+    let currentChapter = null;
+    const visibleChapters =
+      chapterElements?.filter(({isInView}) => isInView) ?? [];
+
+    if (visibleChapters.length === 1) {
+      currentChapter = visibleChapters[0];
+    } else if (visibleChapters.length > 1) {
+      // Check if one has the data-scroll-index-subchapter attribute
+      currentChapter =
+        visibleChapters.find(({el}) =>
+          el.getAttribute('data-scroll-index-subchapter')
+        ) ?? visibleChapters[0];
+    }
 
     const isSubChapter =
       // eslint-disable-next-line no-undefined
@@ -57,8 +69,8 @@ export class NavigationObserver {
     this.setSubChapter(isSubChapter);
 
     const currentChapterIndex = Number(
-      currentChapter?.el.getAttribute('data-scroll-index-chapter') ??
-        Number(currentChapter?.el.getAttribute('data-scroll-index-subchapter'))
+      currentChapter?.el.getAttribute('data-scroll-index-subchapter') ??
+        Number(currentChapter?.el.getAttribute('data-scroll-index-chapter'))
     );
 
     entries.forEach(entry => {
