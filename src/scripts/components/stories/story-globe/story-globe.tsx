@@ -29,6 +29,7 @@ const StoryGlobe: FunctionComponent<Props> = ({
   return (
     <div className={styles.globeContainer}>
       <DataViewer
+        isLegendMinimized
         hideNavigation
         markers={globeItem.markers}
         backgroundColor={backgroundColor}
