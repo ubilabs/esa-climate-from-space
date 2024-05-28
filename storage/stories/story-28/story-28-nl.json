@@ -15,21 +15,21 @@
       "shortText": "## De Wereld in Brand\r\n\r\nDe bosbranden in het zuidoosten van Australië, 2019-20, troffen plaatsen die nog niet eerder grote bosbranden hadden gezien:\r\n\r\n- kustbossen in plaats van gras/ struikgewas in het binnenland.\r\n- een miljard dieren kwamen om \r\n- de biodiversiteit in het hoogste in bossen (waar 80% van alle landdieren en planten worden gevonden)\r\n- Branden verder naar het noorden - Alaska, Zweden, Groenland\r\n- vaker bliksem wanneer het klimaat opwarmt\r\n- 5x toename van bosbranden aug 2019 - aug 2018\r\n\r\nSnelle afname van tropische bossen in de afgelopen 50 jaar met gevolgen voor veel meer soorten en een veel grotere hoeveelheid vegetatie (biomassa) dan ooit tevoren.\r\n\r\n- Door landgebruik is sinds 1750 180 Gt koolstof vrijgekomen.\r\n- draagt 23% bij aan onze jaarlijkse uitstoot van broeikasgassen\r\n- het land absorbeert tweemaal zoveel CO2 als het uitstoot\r\n- het beeld is minder duidelijk voor andere broeikasgassen uit de landbouw, zoals methaan en distikstofoxide",
       "images": [
         "assets/story28-02.jpg",
-        "assets/story28-08.jpg",
+        "assets/story28-13.jpg",
         "assets/story28-06.jpg",
         "assets/story28-03.jpg",
         "assets/biomass-map.jpg"
       ],
       "imageCaptions": [
         "Bosbranden in Zuidoost-Australië, januari 2020 (Copernicus Sentinel-gegevens, 2020, verwerkt door ESA)",
-        "Bosbranden die in het zuidoosten van Australië branden op 14 januari 2020 (geel) en de verbrande gebieden sinds 1 september 2019 (rood). Computergrafiek gebaseerd op gegevens van de Suomi satelliet. (Planetary Visions/NOAA/NASA)",
+        "In juli 2023 braken er grote bosbranden uit in heel Griekenland. Op het toeristische eiland Rhodos werd de noodtoestand uitgeroepen en duizenden mensen werden geëvacueerd toen de vlammen zich vanuit het bergachtige binnenland naar de kust verspreidden. Infraroodsensoren op de Copernicus Sentinel-2 satelliet zien vlammen door de rook in dit beeld dat op 23 juli 2023 is gemaakt. (Bevat gewijzigde Copernicus Sentinel-gegevens (2023), bewerkt door ESA)",
         "Elanden in de Bitterroot-rivier, Montana, tijdens een bosbrand in 2000 (John McColgan, Alaska Fire Service)",
         "Wildvuur in westelijk Groenland, augustus 2017\r\n(Copernicus Sentinel gegevens, 2017, bewerkt door Pierre Markuse)",
         "Bovengrondse biomassa van ESA's klimaatveranderingsinitiatief (ESA-CCI)"
       ],
       "imageFits": [
         "cover",
-        "contain",
+        "cover",
         "cover",
         "cover",
         "contain"
@@ -91,14 +91,14 @@
       "images": [
         "assets/protectedareas.png",
         "assets/landcover_large_07.jpg",
-        "assets/story28-05.jpg",
+        "assets/story28-12.jpg",
         "assets/story28-07.jpg",
         "assets/story28-11.jpg"
       ],
       "imageCaptions": [
         "# Beschermde gebieden van de wereld\r\nKaart van beschermde gebieden in de wereld op het land en in de oceanen (IUCN/UNEP-WCMC)",
         "Egmont National Park, Nieuw-Zeeland, gezien door de Kompsat-2 satelliet. De grens tussen beschermde en niet-beschermde gebieden is vaak zeer duidelijk op satellietbeelden - zoals we hier zien tussen de groene, dichtbeboste flanken van Mount Egmont en het omringende landbouwlandschap. (KARI/ESA)",
-        "Veldpatronen in een deel van Bolivia waar tropisch woud is gekapt voor landbouw (Copernicus Sentinel data, 2019/ESA)",
+        "Dit Copernicus Sentinel-2 beeld van 25 juli 2023 toont menselijke invasie in het tropisch woud langs een snelweg in de Braziliaanse staat Para. (Bevat gewijzigde Copernicus Sentinel gegevens (2023), verwerkt door ESA)",
         "Koraalrif bij Enderbury Island in het beschermde gebied Phoenix Isands, een UNESCO Werelderfgoed in de Stille Zuidzee (Dr Randi Rotjan, New England Aquarium)",
         "Rook verduistert bijna de hele Amerikaanse westkust als bijna 100 bosbranden branden tijdens een hittegolf in september 2020\r\n(Copernicus Sentinel gegevens, 2020, verwerkt door ESA)"
       ],

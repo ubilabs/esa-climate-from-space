@@ -15,21 +15,21 @@
       "shortText": "## Die Welt steht in Flammen\r\nDie Waldbrände in Südostaustralien im Zeitraum 2019-20 trafen Orte, an denen es zuvor keine größeren Waldbrände gegeben hatte:\r\n\r\n- Wälder an der Küste statt Gras- und Buschland im Landesinneren\r\n- Eine Milliarde Tiere sind umgekommen - das zeigt die Artenvielfalt\r\n- 80% aller Landtiere und -pflanzen kommen in Wäldern vor\r\n- Brände weiter nördlich - Alaska, Schweden, Grönland\r\n- Blitze werden mit der Klimaerwärmung häufiger\r\n- 5-fache Zunahme der Waldbrände Aug 2019 - Aug 2018\r\n\r\nRascher Rückgang der Tropenwälder in den letzten 50 Jahren mit Auswirkungen auf viel mehr Arten und eine weitaus größere Menge an Vegetation (Biomasse) als je zuvor.\r\n\r\n- Landnutzung hat seit 1750 180 Gt Kohlenstoff freigesetzt\r\n- trägt 23 % zu unseren jährlichen Treibhausgasemissionen bei\r\n- der Boden absorbiert doppelt so viel CO2 wie er emittiert\r\n- bei anderen Treibhausgasen aus der Landwirtschaft, wie Methan und Lachgas, ist das Bild weniger eindeutig",
       "images": [
         "assets/story28-02.jpg",
-        "assets/story28-08.jpg",
+        "assets/story28-13.jpg",
         "assets/story28-06.jpg",
         "assets/story28-03.jpg",
         "assets/biomass-map.jpg"
       ],
       "imageCaptions": [
         "Waldbrände im Südosten Australiens, Januar 2020 (Copernicus Sentinel Daten, 2020, verarbeitet von der ESA)",
-        "Buschbrände im Südosten Australiens am 14. Januar 2020 (gelb) und die seit dem 1. September 2019 verbrannten Flächen (rot). Computergrafik basierend auf Daten des Suomi-Satelliten. (Planetary Visions/NOAA/NASA)",
+        "Im Juli 2023 brach in Griechenland eine Flut von Waldbränden aus. Auf der Touristeninsel Rhodos wurde der Notstand ausgerufen und Tausende von Menschen wurden evakuiert, als sich die Flammen vom bergigen Landesinneren in Richtung Küste ausbreiteten. Die Infrarotsensoren des Copernicus-Satelliten Sentinel-2 erkennen in diesem am 23. Juli 2023 aufgenommenen Bild die Flammen durch den Rauch. (Enthält modifizierte Copernicus-Sentinel-Daten (2023), verarbeitet von der ESA)",
         "Elche im Bitterroot River, Montana, während eines Waldbrandes im Jahr 2000 (John McColgan, Alaska Fire Service)",
         "Waldbrand in Westgrönland, August 2017\r\n(Copernicus Sentinel Daten, 2017, bearbeitet von Pierre Markuse)",
         "Oberirdische Biomasse aus der ESA-Klimawandelinitiative (ESA-CCI)"
       ],
       "imageFits": [
         "cover",
-        "contain",
+        "cover",
         "cover",
         "cover",
         "contain"
@@ -91,14 +91,14 @@
       "images": [
         "assets/protectedareas.png",
         "assets/landcover_large_07.jpg",
-        "assets/story28-05.jpg",
+        "assets/story28-12.jpg",
         "assets/story28-07.jpg",
         "assets/story28-11.jpg"
       ],
       "imageCaptions": [
         "# Schutzgebiete der Welt\r\nKarte der weltweiten Schutzgebiete an Land und in den Ozeanen (IUCN/UNEP-WCMC)",
         "Egmont-Nationalpark, Neuseeland, aus der Sicht des Satelliten Kompsat-2. Die Grenze zwischen geschützten und nicht geschützten Gebieten ist auf Satellitenbildern oft sehr deutlich zu erkennen - wie hier zwischen den grünen, dicht bewaldeten Flanken des Mount Egmont und der umliegenden Agrarlandschaft. (KARI/ESA)",
-        "Feldmuster in einem Teil Boliviens, in dem Tropenwald für die Landwirtschaft gerodet wurde (Copernicus Sentinel Daten, 2019/ESA)",
+        "Dieses Copernicus-Sentinel-2-Bild vom 25. Juli 2023 zeigt das Eindringen des Menschen in den Tropenwald entlang einer Autobahn im brasilianischen Bundesstaat Para (enthält modifizierte Copernicus-Sentinel-Daten (2023), verarbeitet von der ESA)",
         "Korallenriff bei Enderbury Island im Schutzgebiet Phoenix Isands, einem UNESCO-Weltnaturerbe im Südpazifik (Dr. Randi Rotjan, New England Aquarium)",
         "Rauch verdunkelt fast die gesamte Westküste der USA, da fast 100 Waldbrände während einer Hitzewelle im September 2020 brennen\r\n(Copernicus-Sentinel-Daten, 2020, verarbeitet von der ESA)"
       ],
