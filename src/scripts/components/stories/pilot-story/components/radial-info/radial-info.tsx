@@ -32,7 +32,11 @@ const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
 
   useEffect(() => {
     setVisible(progress >= 0.4 && progress <= 0.6);
-  }, [progress]);
+
+    if (progress === 0 || progress === 1) {
+      setSelectedOption(options[options.length - 1]);
+    }
+  }, [options, progress]);
 
   const positionElements = (index: number) => {
     const angleMultiplier = isDesktop ? 1.75 : 2.25;
