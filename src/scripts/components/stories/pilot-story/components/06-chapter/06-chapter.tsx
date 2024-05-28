@@ -3,7 +3,7 @@ import {useHistory, useLocation} from 'react-router-dom';
 
 import {getMarkerHtml} from '../../../../main/globe/get-marker-html';
 
-import {subStory} from '../../config/main';
+import {globeElement, subStory} from '../../config/main';
 
 import Chapter from '../chapter/chapter';
 import ChapterIntro from '../chapter-intro/chapter-intro';
@@ -56,9 +56,22 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
   const inView = useIsInViewport(inViewRef, 0.1);
 
   useEffect(() => {
+    const globe = document.getElementById(globeElement);
     if (inView) {
       setSelectedGiantContent(null);
+
+      // Set globe opacity to 1
+      if (globe) {
+        globe.style.opacity = '1';
+      }
     }
+
+    return () => {
+      // Reset globe opacity to 0.8
+      if (globe) {
+        globe.style.opacity = '0.8';
+      }
+    };
   }, [inView]);
 
   const handleSubStoryChange = (subStoryId?: string) => {

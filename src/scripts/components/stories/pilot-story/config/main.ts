@@ -309,3 +309,5 @@ export const chapterMainElement = 'chapter-main';
 export const progressIndicationElement = 'progress-indication';
 
 export const dataIsTitleInView = 'data-is-title-in-view';
+
+export const globeElement = 'globe';
