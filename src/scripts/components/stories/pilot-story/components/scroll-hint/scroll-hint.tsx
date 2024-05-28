@@ -7,7 +7,7 @@ import styles from './scroll-hint.module.styl';
 import {useScreenSize} from '../../../../../hooks/use-screen-size';
 
 const ScrollHint: FunctionComponent = () => {
-  const isDesktop = useScreenSize();
+  const {isDesktop} = useScreenSize();
   return (
     <div className={styles.scrollHint}>
       {isDesktop ? <ScrollIcon /> : <ExpandIcon className={styles.animated} />}
