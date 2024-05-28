@@ -7,6 +7,8 @@ import imgSrc1 from '../../assets/01_sentinel.png';
 import imgSrc2 from '../../assets/02_sentinel.png';
 import imgSrc3 from '../../assets/03_sentinel.png';
 
+import {SatelliteNames} from '../../types/globe';
+
 import ChapterIntro from '../chapter-intro/chapter-intro';
 import ChapterText from '../chapter-text/chapter-text';
 import Chapter from '../chapter/chapter';
@@ -18,7 +20,7 @@ interface Props {
 
 const options: RadialInfoOption[] = [
   {
-    id: 'Sentinel-2',
+    id: SatelliteNames['SENTINEL-5P'],
     icon: <SatelliteIcon />,
     content: '200m',
     img: {
@@ -27,21 +29,21 @@ const options: RadialInfoOption[] = [
     }
   },
   {
-    id: 'Sentinel-3',
+    id: SatelliteNames['SENTINEL-2'],
     icon: <SatelliteIcon />,
     content: '2km',
     img: {
       src: imgSrc2,
-      alt: 'Sentinel-5p satellite image of methane emissions in the atmosphere'
+      alt: 'Sentinel-2 satellite image of methane emissions in the atmosphere'
     }
   },
   {
-    id: 'Sentinel-5p',
+    id: SatelliteNames['SENTINEL-3'],
     icon: <SatelliteIcon />,
     content: '25km',
     img: {
       src: imgSrc1,
-      alt: 'Sentinel-5p satellite image of methane emissions in the atmosphere'
+      alt: 'Sentinel-3 satellite image of methane emissions in the atmosphere'
     }
   }
 ];

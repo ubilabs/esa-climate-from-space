@@ -12,10 +12,10 @@ import {SatelliteNames} from '../../types/globe';
 import styles from './satellite-carousel.module.styl';
 
 const satellitesByName = {
-  [SatelliteNames['SENTINEL-1']]: {
-    label: 'Sentinel-1',
+  [SatelliteNames['SENTINEL-5P']]: {
+    label: 'Sentinel-5p',
     explanation:
-      'Sentinel-1 is a satellite that provides radar images of Earth. It is used to monitor the environment, including methane emissions.'
+      'Sentinel-5p is a satellite that provides radar images of Earth. It is used to monitor the environment, including methane emissions.'
   },
   [SatelliteNames['SENTINEL-2']]: {
     label: 'Sentinel-2',
