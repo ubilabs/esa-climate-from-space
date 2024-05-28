@@ -13,7 +13,7 @@ import {useParallax} from 'react-scroll-parallax';
 
 import {GlobeMovementsPerChapter} from '../../types/globe';
 
-import {chapterMainElement} from '../../config/main';
+import {chapterMainElement, globeElement} from '../../config/main';
 
 import styles from './globe.module.styl';
 
@@ -239,7 +239,7 @@ const Globe: FunctionComponent<Props> = ({
 
   return (
     <>
-      <div ref={containerRef} className={styles.globe} />
+      <div ref={containerRef} className={styles.globe} id={globeElement} />
       <div ref={parallax.ref as LegacyRef<HTMLDivElement>} id="story">
         {children}
       </div>
