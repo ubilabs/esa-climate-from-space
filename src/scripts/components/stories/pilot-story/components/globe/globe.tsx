@@ -8,6 +8,9 @@ import React, {
 import {useGlobe, useGlobeLayers, useGlobeMarkers} from '../../hooks/use-globe';
 
 import {WebGlGlobe} from '@ubilabs/esa-webgl-globe';
+import GLOBE_WORKER_URL from '@ubilabs/esa-webgl-globe/worker?url';
+import ATMOSPHERE_TEXTURE_URL from '@ubilabs/esa-webgl-globe/textures/atmosphere.png?url';
+import SHADING_TEXTURE_URL from '@ubilabs/esa-webgl-globe/textures/shading.png?url';
 
 import {useParallax} from 'react-scroll-parallax';
 
@@ -16,6 +19,12 @@ import {GlobeMovementsPerChapter} from '../../types/globe';
 import {chapterMainElement, globeElement} from '../../config/main';
 
 import styles from './globe.module.styl';
+
+WebGlGlobe.setTileSelectorWorkerUrl(GLOBE_WORKER_URL);
+WebGlGlobe.setTextureUrls({
+  atmosphere: ATMOSPHERE_TEXTURE_URL,
+  shading: SHADING_TEXTURE_URL
+});
 
 export const INITIAL_DISTANCE = 30_000_000;
 const DISTANCE_INCREASEMENT_FACTOR = 0.02;
@@ -87,7 +96,13 @@ const Globe: FunctionComponent<Props> = ({
       const newGlobe = new WebGlGlobe(containerRef.current, {
         layers,
         markers,
-        cameraView: {lng: 0, lat: 0, altitude: distanceRef.current}
+        cameraView: {lng: 0, lat: 0, altitude: distanceRef.current},
+        renderOptions: {
+          atmosphereEnabled: true,
+          shadingEnabled: true,
+          atmosphereStrength: 0.8,
+          atmosphereColor: [0.58, 0.79, 1] // {r: 148, g: 201, b: 255}
+        }
       });
 
       if ('renderer' in newGlobe) {
@@ -129,7 +144,7 @@ const Globe: FunctionComponent<Props> = ({
 
   useEffect(() => {
     (function spin() {
-      rotationRef.current += 0.1;
+      rotationRef.current += 0.05;
       const lng = (rotationRef.current % 360) - 180;
       globe &&
         globe.setProps({
