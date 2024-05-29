@@ -16,16 +16,16 @@
       "images": [
         "assets/story27-image01.jpg",
         "assets/story27-image02.jpg",
-        "assets/story27-image10.jpg",
         "assets/story27-image16.jpg",
-        "assets/story27-image17.jpg"
+        "assets/story27-image17.jpg",
+        "assets/story27-image21.jpg"
       ],
       "imageCaptions": [
         "Des camions livrant de la neige manufacturée dans une rue de Moscou pendant une vague de chaleur en décembre 2019 (Twitter).",
         "Les vagues de chaleur estivales peuvent endommager les infrastructures telles que les voies ferrées et les revêtements routiers, et imposer des charges excessives aux systèmes d'approvisionnement en eau et en électricité (US Dept of Transportation).",
-        "Température nocturne moyenne de l'air à Paris à 22 heures pendant la canicule de l'été 2003, qui a entraîné des milliers de décès liés à la chaleur. (VITO/Planetek)",
         "Dans certaines régions d'Europe, au cours de l'été 2022, la température de l'air a dépassé de plus de 10°C la moyenne pour cette période de l'année. Cette image montre la température de surface à Paris le 18 juin 2022, mesurée par l'instrument expérimental ECOSTRESS à bord de la Station spatiale internationale. (NASA/JPL-Caltech)",
-        "Au cours de l'été 2022, les terres vertes de l'Angleterre et du nord de la France sont devenues brunes après des mois de températures élevées et de faibles précipitations. Cette image a été prise par le satellite Copernicus Sentinel-3 de l'ESA le 12 août 2022. Au cours de ce mois, le capteur infrarouge du satellite a enregistré des températures de surface supérieures à 45°C au Royaume-Uni, 50°C en France et 60°C en Espagne. (Contient des données Copernicus Sentinel modifiées (2022), traitées par l'ESA)"
+        "Au cours de l'été 2022, les terres vertes de l'Angleterre et du nord de la France sont devenues brunes après des mois de températures élevées et de faibles précipitations. Cette image a été prise par le satellite Copernicus Sentinel-3 de l'ESA le 12 août 2022. Au cours de ce mois, le capteur infrarouge du satellite a enregistré des températures de surface supérieures à 45°C au Royaume-Uni, 50°C en France et 60°C en Espagne. (Contient des données Copernicus Sentinel modifiées (2022), traitées par l'ESA)",
+        "Température à la surface du sol pendant la vague de chaleur de l'été 2023 dans le sud de l'Europe. Cette image utilise les données du radiomètre du satellite Copernicus Sentinel-3 pour montrer la température de la surface terrestre le matin du 17 juillet 2023. Avec le changement climatique, les vagues de chaleur comme celle-ci risquent d'être plus fréquentes et plus sévères. (Contient des données modifiées de Copernicus Sentinel (2023), traitées par l'ESA)"
       ],
       "imageFits": [
         "contain",
@@ -124,12 +124,14 @@
         "assets/story27-image07.jpg",
         "assets/story27-image12.jpg",
         "assets/story27-image05.jpg",
+        "assets/story27-image20.jpg",
         "assets/story27-image15.jpg"
       ],
       "imageCaptions": [
         "Les lampadaires tracent la zone urbaine de Londres sur cette photographie prise par l'astronaute de l'ESA Tim Peake depuis la Station spatiale internationale en 2016. Les zones sombres indiquent l'emplacement des poumons verts de la ville - ses nombreux grands parcs. (ESA/NASA)",
         "Température de la surface terrestre (à gauche) et mesure de l'îlot de chaleur urbain par rapport aux zones rurales environnantes (à droite) pour Londres, d'après les observations infrarouges thermiques Landsat du 7 juillet 2020. L'élévation de la température de la surface terrestre dans les villes est encore plus élevée que pour la température de l'air. (Université de Liecester)",
         "Température de l'air à Madrid le 25 juin 2008 à 22:18 UTC (à droite), comparée à une carte de la surface des sols imperméabilisés (à gauche), mettant en évidence les surfaces artificielles de la ville. (VITO/Indra/Planetek/Agence européenne pour l'environnement)",
+        "Températures à la surface du sol autour de Rome, Italie, mesurées depuis l'espace à 22:23 CEST le 17 juillet 2023. La température de surface a atteint 35°C dans certaines parties de la ville, mais l'effet rafraîchissant de la végétation est visible, par exemple, dans le parc de la Voie Appienne. Les températures ont été enregistrées par l'instrument Ecostress de la NASA à bord de la Station spatiale internationale, qui contribue au développement d'un nouveau satellite Copernicus Sentinel Expansion - la mission Land Surface Temperature Monitoring (LSTM). (NASA/JPL)",
         "Une paire de chênes sur Hampstead Heath à Londres, rendue sous forme de nuage de points à partir de mesures de distance par laser.\r\nLa masse de carbone stockée par les arbres peut être estimée à l'aide de modèles d'arbres en 3D basés sur le balayage laser\r\n(lidar - détection et télémétrie par la lumière). (M Disney/P Wilkes/UCL)"
       ],
       "imageFits": [
