@@ -34,6 +34,7 @@ interface Props {
   unit: string;
   basemap: BasemapId | null;
   isCompare?: boolean;
+  isMinimized?: boolean;
 }
 
 const LayerLegend: FunctionComponent<Props> = ({
@@ -41,13 +42,19 @@ const LayerLegend: FunctionComponent<Props> = ({
   values,
   unit,
   basemap,
-  isCompare = false
+  isCompare = false,
+  isMinimized = false
 }) => {
   const imageUrlTemplate =
     isElectron() && isOffline()
       ? getOfflineLegendImageUrl()
       : config.legendImage;
   const imageUrl = replaceUrlPlaceholders(imageUrlTemplate, {id});
+
+  const updatedValues =
+    isMinimized && values.length > 1
+      ? [values[0], values[values.length - 1]]
+      : [...values];
 
   return (
     <div className={cx(styles.layerLegend, isCompare && styles.rightSided)}>
@@ -58,7 +65,7 @@ const LayerLegend: FunctionComponent<Props> = ({
       />
 
       <div className={styles.values}>
-        {values.map((value, index) => (
+        {updatedValues.map((value, index) => (
           <div className={styles.value} key={value}>
             {typeof value === 'string' ? (
               value

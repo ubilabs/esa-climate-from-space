@@ -39,12 +39,14 @@ import styles from './data-viewer.module.styl';
 interface Props {
   backgroundColor: string;
   hideNavigation?: boolean;
+  isLegendMinimized?: boolean; // Show only first and last legend value
   markers?: Marker[];
 }
 
 const DataViewer: FunctionComponent<Props> = ({
   backgroundColor,
   hideNavigation,
+  isLegendMinimized = false,
   markers = []
 }) => {
   const dispatch = useDispatch();
@@ -171,7 +173,7 @@ const DataViewer: FunctionComponent<Props> = ({
             return null;
           }
 
-          return (id === 'land_cover.lccs_class' || id === 'land_cover.class') ? (
+          return id === 'land_cover.lccs_class' || id === 'land_cover.class' ? (
             <HoverLegend
               key={id}
               values={legendValues as LegendValueColor[]}
@@ -187,6 +189,7 @@ const DataViewer: FunctionComponent<Props> = ({
               unit={units}
               basemap={basemap}
               isCompare={index > 0}
+              isMinimized={isLegendMinimized}
             />
           );
         }
