@@ -16,16 +16,16 @@
       "images": [
         "assets/story27-image01.jpg",
         "assets/story27-image02.jpg",
-        "assets/story27-image10.jpg",
         "assets/story27-image16.jpg",
-        "assets/story27-image17.jpg"
+        "assets/story27-image17.jpg",
+        "assets/story27-image21.jpg"
       ],
       "imageCaptions": [
         "Camiones repartiendo nieve fabricada en una calle de Moscú durante una ola de calor en diciembre de 2019 (Twitter)",
         "Las olas de calor del verano pueden dañar infraestructuras como las vías férreas y el pavimento de las carreteras, además de suponer una carga excesiva para el suministro de agua y electricidad (US Dept of Transportation)",
-        "Temperatura media del aire nocturno en París a las 22:00 horas durante la ola de calor del verano de 2003, que provocó miles de muertes relacionadas con el calor. (VITO/Planetek)",
         "En algunas partes de Europa, en el verano de 2022, la temperatura del aire subió más de 10 °C por encima de la media de la época del año. Esta imagen muestra la temperatura de la superficie de París el 18 de junio de 2022, medida por el instrumento experimental ECOSTRESS de la Estación Espacial Internacional. (NASA/JPL-Caltech)",
-        "El verano de 2022 vio cómo la tierra verde de Inglaterra y el norte de Francia se volvía marrón tras meses de altas temperaturas y escasas precipitaciones. Esta imagen fue tomada por el satélite Copernicus Sentinel-3 de la ESA el 12 de agosto de 2022. Durante ese mes, el sensor infrarrojo del satélite registró temperaturas en la superficie terrestre superiores a 45°C en el Reino Unido, 50°C en Francia y 60°C en España. (Contiene datos modificados de Copernicus Sentinel (2022), procesados por la ESA)"
+        "El verano de 2022 vio cómo la tierra verde de Inglaterra y el norte de Francia se volvía marrón tras meses de altas temperaturas y escasas precipitaciones. Esta imagen fue tomada por el satélite Copernicus Sentinel-3 de la ESA el 12 de agosto de 2022. Durante ese mes, el sensor infrarrojo del satélite registró temperaturas en la superficie terrestre superiores a 45°C en el Reino Unido, 50°C en Francia y 60°C en España. (Contiene datos modificados de Copernicus Sentinel (2022), procesados por la ESA)",
+        "Temperatura de la superficie terrestre durante la ola de calor del sur de Europa del verano de 2023. Esta imagen utiliza datos del radiómetro del satélite Copernicus Sentinel-3 para mostrar la temperatura de la superficie terrestre en la mañana del 17 de julio de 2023. A medida que se afiance el cambio climático, es probable que olas de calor como ésta sean más frecuentes y más graves. (Contiene datos modificados de Copernicus Sentinel (2023), procesados por la ESA)"
       ],
       "imageFits": [
         "contain",
@@ -124,12 +124,14 @@
         "assets/story27-image07.jpg",
         "assets/story27-image12.jpg",
         "assets/story27-image05.jpg",
+        "assets/story27-image20.jpg",
         "assets/story27-image15.jpg"
       ],
       "imageCaptions": [
         "Las luces de las calles trazan la zona urbana de Londres en esta fotografía tomada por el astronauta de la ESA Tim Peake desde la Estación Espacial Internacional en 2016. Las zonas oscuras muestran la ubicación de los pulmones verdes de la ciudad: sus numerosos y grandes parques. (ESA/NASA)",
         "Temperatura de la superficie terrestre (izquierda) y una medida de la isla de calor urbana en relación con las zonas rurales circundantes (derecha) para Londres, basada en las observaciones del infrarrojo térmico del Landsat para el 7 de julio de 2020. La elevación de la temperatura de la superficie terrestre en las ciudades es aún mayor que la de la temperatura del aire. (Universidad de Liecester)",
         "Temperatura del aire en Madrid el 25 de junio de 2008 a las 22:18 UTC (derecha), comparada con un mapa de la superficie del suelo sellado (izquierda), que destaca las superficies artificiales de la ciudad. (VITO/Indra/Planetek/Agencia Europea de Medio Ambiente)",
+        "Temperaturas de la superficie terrestre alrededor de Roma, Italia, medidas desde el espacio a las 22:23 CEST del 17 de julio de 2023. La temperatura de la superficie alcanzó los 35 °C en algunas partes de la ciudad, pero el efecto refrigerante de la vegetación puede apreciarse, por ejemplo, en el parque de la Vía Apia. Las temperaturas fueron registradas por el instrumento Ecostress de la NASA en la Estación Espacial Internacional, que está ayudando en el desarrollo de un nuevo satélite Copernicus Sentinel Expansion: la misión Land Surface Temperature Monitoring (LSTM). (NASA/JPL)",
         "Un par de robles en Hampstead Heath (Londres), representados como una nube de puntos a partir de mediciones de distancia por láser.\r\nLa masa de carbono almacenada por los árboles puede estimarse utilizando modelos de árboles en 3D basados en el escaneo láser\r\n(lidar - light detection and ranging). (M Disney/P Wilkes/UCL)"
       ],
       "imageFits": [
