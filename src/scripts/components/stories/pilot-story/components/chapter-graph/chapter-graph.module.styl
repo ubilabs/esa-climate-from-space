@@ -1,16 +1,15 @@
 @require '../../../../../../variables.styl'
 
 .chapterGraph
-  height: 150svh
+  height: 100svh
   width: 100vw
   box-sizing: border-box
-  padding: $headerHeight 0 emCalc(100px)
   overflow-x: hidden
   background: linear-gradient(250deg, #003349 19.74%, rgba(0, 51, 73, 0) 106.06%), #000
   display: flex
   flex-direction: column
   justify-content: center
-  gap: 10em
+  gap: 1em
   scroll-snap-align: start
 
 .graphContainer
@@ -37,8 +36,7 @@
 .graphText
   text-align: left
   color: #fff
-  padding: emCalc(75px) emCalc(29px) 0
-
+  padding-inline: emCalc(30px)
   h3
     font-size: emCalc(30px)
     margin: 0
