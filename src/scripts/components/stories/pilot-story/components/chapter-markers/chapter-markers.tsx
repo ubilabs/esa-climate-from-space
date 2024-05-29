@@ -8,9 +8,10 @@ import {MarkerProps} from '@ubilabs/esa-webgl-globe';
 
 import SnapWrapper from '../snap-wrapper/snap-wrapper';
 import Button from '../button/button';
+import {ArrowBackIcon} from '../../../../main/icons/arrow-back-icon';
+import ScrollHint from '../scroll-hint/scroll-hint';
 
 import styles from './chapter-marker.module.styl';
-import {ArrowBackIcon} from '../../../../main/icons/arrow-back-icon';
 
 interface Props {
   markers: MarkerProps[];
@@ -50,15 +51,19 @@ const ChapterMarkers: FunctionComponent<Props> = ({
         {isInView &&
           floatingButtonContainer &&
           createPortal(
-            <Button
-              className={styles.button}
-              icon={ArrowBackIcon}
-              label="Back to Main Story"
-              onClick={() => {
-                onBackToStory();
-              }}
-              isBackButton
-            />,
+            <>
+              <Button
+                className={styles.button}
+                icon={ArrowBackIcon}
+                label="Back to Main Story"
+                onClick={() => {
+                  onBackToStory();
+                }}
+                isBackButton
+              />
+              <ScrollHint isSelectHint />
+              {/* <TouchIcon /> */}
+            </>,
             floatingButtonContainer
           )}
       </Parallax>

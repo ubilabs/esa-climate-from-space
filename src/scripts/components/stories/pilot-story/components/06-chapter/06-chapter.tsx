@@ -13,6 +13,7 @@ import ChapterGraph from '../chapter-graph/chapter-graph';
 import ChapterConclusion from '../chapter-conclusion/chapter-conclusion';
 import ChapterMarkers from '../chapter-markers/chapter-markers';
 import useIsInViewport from '../../hooks/use-is-in-viewport';
+import ScrollHint from '../scroll-hint/scroll-hint';
 
 interface Props {
   chapterIndex: number;
@@ -169,6 +170,7 @@ const ChapterSix: FunctionComponent<Props> = ({chapterIndex}) => {
         }))}
         onBackToStory={() => handleBackToStory()}
       />
+      <ScrollHint />
       {selectedGiantContent && renderSubstory(selectedGiantContent)}
     </Chapter>
   );
