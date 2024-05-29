@@ -51,9 +51,10 @@ const LayerLegend: FunctionComponent<Props> = ({
       : config.legendImage;
   const imageUrl = replaceUrlPlaceholders(imageUrlTemplate, {id});
 
-  const updatedValues = isMinimized
-    ? [values[0], values[values.length - 1]]
-    : [...values];
+  const updatedValues =
+    isMinimized && values.length > 1
+      ? [values[0], values[values.length - 1]]
+      : [...values];
 
   return (
     <div className={cx(styles.layerLegend, isCompare && styles.rightSided)}>

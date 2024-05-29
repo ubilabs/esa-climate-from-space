@@ -11,6 +11,7 @@ import LayerDescription from '../layer-description/layer-description';
 import {GlobeItem} from '../../../types/gallery-item';
 
 import styles from './story-globe.module.styl';
+import {useScreenSize} from '../../../hooks/use-screen-size';
 
 interface Props {
   globeItem: GlobeItem;
@@ -26,10 +27,12 @@ const StoryGlobe: FunctionComponent<Props> = ({
 
   useStoryGlobe(globeItem);
 
+  const {isMobile} = useScreenSize();
+
   return (
     <div className={styles.globeContainer}>
       <DataViewer
-        isLegendMinimized
+        isLegendMinimized={isMobile}
         hideNavigation
         markers={globeItem.markers}
         backgroundColor={backgroundColor}
