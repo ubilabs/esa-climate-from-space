@@ -63,7 +63,7 @@ const RadialInfo: FunctionComponent<Props> = ({options, title}) => {
         style={{height: '100%'}}
         className={styles.radialInfoContainer}>
         <h2>{title}</h2>
-        <Parallax>
+        <Parallax className={styles.elementsContainer}>
           <div
             className={cx(styles.elements, visible && styles.visible)}
             style={{width: radius * 2, height: radius * 2}}>

@@ -197,8 +197,8 @@ export const globeMovementsPerChapterDesktop = {
   1: [
     {x: -10, y: 0, z: -30},
     {x: 40, y: 0, z: -5},
-    {x: -25, y: 0, z: 100},
-    {x: -15, y: 5, z: -95}
+    {x: -25, y: 0, z: 90},
+    {x: -15, y: 5, z: -85}
   ],
   2: [
     {x: 0, y: 0, z: 0},
@@ -221,8 +221,8 @@ export const globeMovementsPerChapterDesktop = {
   4: [
     {x: 0, y: 0, z: 0},
     {x: 20, y: 0, z: 10},
-    {x: 10, y: 0, z: 100},
-    {x: 5, y: 0, z: -70}
+    {x: 15, y: 0, z: 80},
+    {x: 0, y: 0, z: -50}
   ],
   5: [
     {x: 0, y: 0, z: 0},
