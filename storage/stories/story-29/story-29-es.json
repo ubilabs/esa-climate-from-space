@@ -15,11 +15,13 @@
       "shortText": "## Viejas maneras y nuevas\r\n\r\n- En el centro de Kenia, los samburu luchan por mantener su estilo de vida y su cultura.\r\n- Son seminómadas y viajan con su ganado en busca de los mejores pastos.\r\n- Su hogar, la sabana, está cambiando lentamente a medida que las sequías se hacen más frecuentes e intensas.\r\n- A medida que se hace más difícil ganarse la vida, más jóvenes se trasladan a las ciudades en busca de trabajo.\r\n- A medida que las ciudades y las granjas comerciales se expanden, queda menos tierra y agua para los pastores nómadas.\r\n- En muchos lugares del mundo se está produciendo una historia similar, ya que los agricultores y los pastores intentan proporcionar suficientes alimentos a una población cada vez más numerosa.",
       "images": [
         "assets/story29-image10.jpg",
-        "assets/story29-image08.jpg"
+        "assets/story29-image08.jpg",
+        "assets/story29-image18.jpg"
       ],
       "imageCaptions": [
         "Un pastor samburu con sus cabras en el condado de Isiolo, Kenia (pilesasmiles/iStock)",
-        "Ganado pasando por delante de equipos de construcción de carreteras en Mowo, estado de Lagos, Nigeria\r\n(mtcurado/iStock)"
+        "Ganado pasando por delante de equipos de construcción de carreteras en Mowo, estado de Lagos, Nigeria\r\n(mtcurado/iStock)",
+        "Esta imagen del satélite Sentinel-2 de Copernicus de El Oued (Argelia) combina longitudes de onda visibles e infrarrojas para mostrar la vegetación en rojo. Cerca de la ciudad, las palmeras datileras se cultivan con métodos tradicionales en campos irregulares en forma de embudo que requieren poco riego. Más lejos, en el desierto, se utiliza cada vez más el riego por pivote central para cultivos como patatas, cebollas y tomates en campos circulares con un pozo en el centro. (Contiene datos modificados de Copernicus Sentinel (2021), procesados por la ESA)"
       ],
       "imageFits": [
         "contain",
@@ -43,7 +45,6 @@
       "imageCaptions": [
         "Patrones de cultivos en el terreno recuperado del Noordoostpolder, Países Bajos,\r\nobservados por Copernicus Sentinel-2, 30 de junio de 2018 (datos de Copernicus Sentinel 2018)",
         "Campos de arroz en Vietnam. Los datos de radar del satélite Copernicus Sentinel-1 muestran los cambios durante tres meses a finales de 2019. La imagen de octubre se muestra en rojo, la de noviembre en verde y la de diciembre en azul. (Contiene datos modificados de Copernicus Sentinel, 2019, procesados por la ESA)",
-        "La región de Wheatbelt de Australia Occidental es una importante productora de trigo, cebada y lana. Esta imagen infrarroja multitemporal del satélite Copernicus Sentinel-2 combina datos de mayo de 2019 (rojo), septiembre de 2019 (verde) y enero de 2020 (azul). (Contiene datos modificados de Copernicus Sentinel (2019-20), procesados por la ESA).",
         "El aceite de palma es un cultivo muy productivo que se utiliza en una amplia gama de productos, desde alimentos hasta cosméticos y biocombustibles. Esta imagen de satélite muestra grandes extensiones de selva tropical en Borneo taladas para la producción de aceite de palma. Las zonas marrones son tierras desbrozadas recientemente y las de color verde brillante son plantaciones bien establecidas. (Contiene datos modificados de Copernicus Sentinel (2019), procesados por la ESA)",
         "Los campos cultivados aparecen de color verde oscuro al norte de Antananarivo, la capital de Madagascar, en esta imagen de satélite tomada por Copernicus Sentinel-2 el 28 de septiembre de 2017. (Contiene datos modificados de Copernicus Sentinel (2017), procesados por la ESA)."
       ],
@@ -59,6 +60,9 @@
       "type": "globe",
       "text": "## Agricultura y clima\r\n\r\nLas plantas sustentan toda la vida animal de nuestro planeta, y se han adaptado a vivir en casi todas sus partes: en la tierra, en los lagos y ríos, y en los océanos. Desde el punto de vista del espacio podemos ver que las plantas de algunas regiones son mucho más productivas que otras. Al ver cómo cambia la productividad a lo largo de la estación de crecimiento, podemos identificar y cartografiar los distintos tipos de cubierta vegetal. La comparación interanual nos permite seguir los cambios en todo el mundo.\r\n\r\nEl cambio en el uso de la tierra no sólo afecta a las plantas que crecen en ella, sino también al [movimiento del carbono](stories/story-12/2), los nutrientes y el agua. Se calcula que el 70% del [agua dulce que utilizamos](stories/story-21/5) se destina a la agricultura.\r\n\r\nPero el cambio en el uso de la tierra también afecta al clima. La tala de bosques tropicales para la agricultura libera el carbono almacenado en la madera y el suelo, además de debilitar uno de los principales sumideros de carbono del mundo. Aproximadamente una cuarta parte de las emisiones humanas de gases de efecto invernadero proceden directamente de la agricultura y la silvicultura, y esta cifra aumenta hasta un tercio cuando se incluye toda la cadena de suministro de alimentos.",
       "shortText": "## Agricultura y clima\r\n\r\n- Las plantas sustentan toda la vida animal de nuestro planeta\r\n- Desde el espacio podemos ver cómo cambia la productividad de las plantas a lo largo de la estación de crecimiento, cartografiar los diferentes tipos de cobertura del suelo y seguir los cambios en todo el mundo.\r\n- El uso que hacemos de la tierra afecta al movimiento del carbono, los nutrientes y el agua.\r\n- El 70% del agua dulce que utilizamos se destina a la agricultura.\r\n- El uso de la tierra también afecta al clima.\r\n- La tala de bosques para la agricultura libera el carbono almacenado en la madera y el suelo, además de debilitar un importante sumidero de carbono.\r\n- El 34% de las emisiones de GEI proceden de la agricultura, la silvicultura y el suministro de alimentos.",
+      "imageCaptions": [
+        "Traducción realizada con la versión gratuita del traductor DeepL.com"
+      ],
       "imageFits": [
         "cover",
         "cover",
@@ -92,20 +96,24 @@
       "shortText": "## Maximización de los rendimientos\r\n\r\n- Los seres humanos dependen de un pequeño número de cultivos que sólo crecen bien en un clima determinado.\r\n- El rendimiento disminuye con una cantidad de agua inadecuada, temperaturas extremas o poca luz.\r\n- A medida que el planeta se calienta, cabe esperar que algunas zonas sean más productivas, mientras que otras sufrirán sequías más frecuentes y dejarán de ser aptas para la agricultura.\r\n- La productividad puede aumentarse mediante el uso de la irrigación, la luz artificial o los invernaderos.\r\n- Los fertilizantes pueden ayudar a mejorar el rendimiento, pero su uso a gran escala puede causar problemas como la proliferación de algas tóxicas en las masas de agua cercanas.",
       "images": [
         "assets/landcover_large_06.jpg",
+        "assets/story29-image20.gif",
         "assets/story29-image02.jpg",
-        "assets/story29-image03.jpg"
+        "assets/story29-image03.jpg",
+        "assets/story29-image19.jpg"
       ],
       "imageCaptions": [
         "El riego ha convertido el desierto en tierras de cultivo en Arabia Saudí. Esta imagen infrarroja en falso color del satélite Sentinel-2A de Copernicus muestra estructuras agrícolas cerca de Tubarjal (Arabia Saudí). Los círculos proceden de sistemas de riego de pivote central, en los que una larga tubería de agua gira alrededor de un pozo en el centro. (Contiene datos modificados de Copernicus Sentinel, 2015, procesados por la ESA)",
+        "Esta serie de imágenes de Copernicus Sentinel-2 muestra parte del desierto egipcio de Al Wahat al Dakhla, entre el 29 de noviembre de 2022 y el 18 de abril de 2023. Las formas circulares de la imagen son un ejemplo de los sistemas de riego de pivote central, en los que el equipo gira alrededor de un pivote central y los cultivos se riegan con aspersores. (Contiene datos modificados de Copernicus Sentinel (2022-23), procesados por la ESA)",
         "Los invernaderos que cubren grandes extensiones de tierra brillan bajo la luz del sol cerca de Almería, en el sur de España (Unión Europea, imágenes de Copernicus Sentinel-2)",
-        "Afloramiento de algas en el Mar Báltico, observada por Copernicus Sentinel-2 el 20 de julio de 2019 (Contiene datos modificados de Copernicus Sentinel, 2019, procesados por la ESA)"
+        "Afloramiento de algas en el Mar Báltico, observada por Copernicus Sentinel-2 el 20 de julio de 2019 (Contiene datos modificados de Copernicus Sentinel, 2019, procesados por la ESA)",
+        "Buques pesqueros detectados en el Mar Mediterráneo gracias a los datos del radar por satélite Copernicus Sentinel-1 procesados mediante técnicas de inteligencia artificial (IA). La pesca proporciona actualmente el 17% del consumo mundial de carne. (ESA - fuente de los datos: Paolo et al, 2024/Global Fishing Watch)"
       ],
       "imageFits": [
         "cover",
+        "contain",
         "cover",
         "cover",
-        "cover",
-        "cover"
+        "contain"
       ]
     },
     {
