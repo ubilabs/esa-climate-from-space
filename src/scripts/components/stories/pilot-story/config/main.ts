@@ -151,8 +151,8 @@ export const globeMovementsPerChapter = {
     {x: 0, y: 5, z: 0},
     {x: 0, y: 5, z: 0},
     {x: 0, y: 5, z: 0},
-    {x: 0, y: -60, z: 30},
-    {x: 100, y: 0, z: -45}
+    {x: 0, y: -60, z: 35},
+    {x: 100, y: 0, z: -50}
   ],
   3: [
     {x: 0, y: 0, z: 0},
