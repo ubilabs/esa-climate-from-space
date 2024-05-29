@@ -15,21 +15,21 @@
       "shortText": "## Un Monde en Feu\r\n\r\nLes incendies de forêt dans le sud-est de l'Australie, en 2019-20, ont touché des endroits qui n'avaient pas connu d'incendies de forêt majeurs auparavant :\r\n\r\n- des forêts côtières plutôt que des prairies/arbustes intérieurs.\r\n- Un milliard d'animaux ont péri - preuve de la biodiversité\r\n- 80 % de tous les animaux et plantes terrestres se trouvent dans les forêts.\r\n- incendies plus au nord - Alaska, Suède, Groenland\r\n- les éclairs sont plus fréquents avec le réchauffement climatique\r\n- Augmentation de 5 fois du nombre d'incendies de forêt entre août 2019 et août 2018.\r\n\r\nRéduction rapide des forêts tropicales au cours des 50 dernières années impactant beaucoup plus d'espèces et une quantité de végétation (biomasse) bien plus importante que jamais.\r\n\r\n- l'utilisation des terres a libéré 180 Gt de carbone depuis 1750\r\n- contribue à 23 % de nos émissions annuelles de GES\r\n- La terre absorbe deux fois plus de CO2 qu'elle n'en émet.\r\n- le tableau est moins clair pour les autres GES provenant de l'agriculture, comme le méthane et l'oxyde nitreux.",
       "images": [
         "assets/story28-02.jpg",
-        "assets/story28-08.jpg",
+        "assets/story28-13.jpg",
         "assets/story28-06.jpg",
         "assets/story28-03.jpg",
         "assets/biomass-map.jpg"
       ],
       "imageCaptions": [
         "Feux de forêt dans le sud-est de l'Australie, janvier 2020 (données Copernicus Sentinel, 2020, traitées par l'ESA)",
-        "Feux de brousse brûlant dans le sud-est de l'Australie le 14 janvier 2020 (jaune) et les zones brûlées depuis le 1er septembre 2019 (rouge). Infographie basée sur les données du satellite Suomi. (Planetary Visions/NOAA/NASA)",
+        "Une vague d'incendies de forêt a éclaté en Grèce en juillet 2023. L'état d'urgence a été déclaré sur l'île touristique de Rhodes et des milliers de personnes ont été évacuées alors que les flammes se propageaient de l'intérieur des montagnes vers la côte. Les capteurs infrarouges du satellite Copernicus Sentinel-2 distinguent les flammes à travers la fumée sur cette image acquise le 23 juillet 2023. (Contient des données Copernicus Sentinel modifiées (2023), traitées par l'ESA)",
         "Elan dans la rivière Bitterroot, Montana, pendant un feu de forêt en 2000 (John McColgan, Alaska Fire Service)",
         "Feu de forêt dans l'ouest du Groenland, août 2017.\r\n(Données Copernicus Sentinel, 2017, traitées par Pierre Markuse)",
         "Biomasse aérienne de l'initiative de l'ESA sur le changement climatique (ESA-CCI)"
       ],
       "imageFits": [
         "cover",
-        "contain",
+        "cover",
         "cover",
         "cover",
         "contain"
@@ -91,14 +91,14 @@
       "images": [
         "assets/protectedareas.png",
         "assets/landcover_large_07.jpg",
-        "assets/story28-05.jpg",
+        "assets/story28-12.jpg",
         "assets/story28-07.jpg",
         "assets/story28-11.jpg"
       ],
       "imageCaptions": [
         "# Aires protégées du monde\r\nCarte des aires protégées du monde sur terre et dans les océans (UICN/PNUE-WCMC)",
         "Le parc national d'Egmont, en Nouvelle-Zélande, vu par le satellite Kompsat-2. La frontière entre les zones protégées et les zones non protégées est souvent très claire sur les images satellite - comme nous le voyons ici entre les flancs verts et densément boisés du Mont Egmont et le paysage agricole environnant. (KARI/ESA)",
-        "Schémas de terrain dans une partie de la Bolivie où la forêt tropicale a été défrichée pour l'agriculture (données Copernicus Sentinel, 2019/ESA).",
+        "Cette image Copernicus Sentinel-2 du 25 juillet 2023 montre l'empiètement de l'homme sur la forêt tropicale le long d'une autoroute dans l'État brésilien de Para (contient des données Copernicus Sentinel modifiées (2023), traitées par l'ESA).",
         "Récif corallien près de l'île Enderbury dans la zone protégée des îles Phoenix, un site du patrimoine mondial de l'UNESCO dans le Pacifique Sud (Dr Randi Rotjan, New England Aquarium).",
         "La fumée obscurcit la quasi-totalité de la côte ouest des États-Unis alors que près de 100 feux de friches brûlent pendant une vague de chaleur en septembre 2020.\r\n(Données Copernicus Sentinel, 2020, traitées par l'ESA)"
       ],

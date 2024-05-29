@@ -15,11 +15,13 @@
       "shortText": "## Alte und neue Wege\r\n\r\n- In Zentralkenia kämpft das Volk der Samburu darum, seinen Lebensstil und seine Kultur zu erhalten.\r\n- Sie sind Halbnomaden, die mit ihrem Vieh auf der Suche nach dem besten Weideland umherziehen.\r\n- Ihre Heimat, die Savanne, verändert sich langsam, da die Dürren immer häufiger und intensiver werden.\r\n- Da es immer schwieriger wird, seinen Lebensunterhalt zu verdienen, ziehen immer mehr junge Menschen auf der Suche nach Arbeit in die Städte.\r\n- Mit der Ausdehnung von Städten und kommerziellen Farmen bleibt weniger Land und Wasser für die nomadischen Hirten übrig.\r\n- Eine ähnliche Geschichte spielt sich an vielen Orten auf der Welt ab, wo Bauern und Hirten versuchen, genügend Nahrung für eine wachsende Bevölkerung bereitzustellen.",
       "images": [
         "assets/story29-image10.jpg",
-        "assets/story29-image08.jpg"
+        "assets/story29-image08.jpg",
+        "assets/story29-image18.jpg"
       ],
       "imageCaptions": [
         "Ein Samburu-Hirte mit seinen Ziegen in Isiolo County, Kenia (pilesasmiles/iStock)",
-        "Rinder, die an Straßenbaumaschinen in Mowo, Lagos State, Nigeria, vorbeilaufen\r\n(mtcurado/iStock)"
+        "Rinder, die an Straßenbaumaschinen in Mowo, Lagos State, Nigeria, vorbeilaufen\r\n(mtcurado/iStock)",
+        "Dieses Copernicus Sentinel-2-Satellitenbild von El Oued, Algerien, kombiniert sichtbare und infrarote Wellenlängen, um die Vegetation in Rot darzustellen. In der Nähe der Stadt werden Dattelpalmen mit traditionellen Methoden auf unregelmäßigen, trichterförmigen Feldern angebaut, die wenig Bewässerung benötigen. Weiter draußen in der Wüste wird zunehmend die zentrale Bewässerung eingesetzt, um Kulturen wie Kartoffeln, Zwiebeln und Tomaten auf kreisförmigen Feldern mit einem Brunnen in der Mitte anzubauen. (Enthält modifizierte Copernicus-Sentinel-Daten (2021), verarbeitet von der ESA)"
       ],
       "imageFits": [
         "contain",
@@ -92,20 +94,24 @@
       "shortText": "## Maximierung der Erträge\r\n\r\n- Der Mensch ist auf eine kleine Anzahl von Pflanzen angewiesen, die nur in einem bestimmten Klima gut wachsen.\r\n- Die Erträge sinken bei der falschen Wassermenge, extremen Temperaturen oder zu wenig Licht.\r\n- Mit der Erwärmung des Planeten ist zu erwarten, dass einige Gebiete produktiver werden, während andere mit häufigeren Dürreperioden zu kämpfen haben und für die Landwirtschaft ungeeignet werden.\r\n- Die Produktivität kann durch den Einsatz von Bewässerung, künstlichem Licht oder Gewächshäusern gesteigert werden.\r\n- Düngemittel können helfen, die Erträge zu verbessern, aber der großflächige Einsatz kann Probleme wie giftige Algenblüten in nahe gelegenen Gewässern verursachen.",
       "images": [
         "assets/landcover_large_06.jpg",
+        "assets/story29-image20.gif",
         "assets/story29-image02.jpg",
-        "assets/story29-image03.jpg"
+        "assets/story29-image03.jpg",
+        "assets/story29-image19.jpg"
       ],
       "imageCaptions": [
         "Die Bewässerung hat in Saudi-Arabien Wüste in Ackerland verwandelt. Dieses Falschfarben-Infrarotbild des Copernicus-Satelliten Sentinel-2A zeigt landwirtschaftliche Strukturen in der Nähe von Tubarjal, Saudi-Arabien. Die Kreise stammen von Zentrumsbewässerungssystemen, bei denen eine lange Wasserleitung um einen Brunnen in der Mitte rotiert. (Enthält modifizierte Copernicus Sentinel-Daten, 2015, bearbeitet von der ESA)",
+        "Diese Serie von Copernicus Sentinel-2-Bildern zeigt einen Teil der Wüste Al Wahat al Dakhla in Ägypten im Zeitraum vom 29. November 2022 bis zum 18. April 2023. Die kreisförmigen Formen auf dem Bild sind ein Beispiel für Bewässerungssysteme mit zentralem Drehpunkt, bei denen die Geräte um einen zentralen Drehpunkt rotieren und die Pflanzen mit Sprinklern bewässert werden. (Enthält modifizierte Copernicus-Sentinel-Daten (2022-23), verarbeitet von der ESA)",
         "Gewächshäuser, die riesige Landflächen bedecken, glitzern im Sonnenlicht in der Nähe von Almeria, Südspanien (Europäische Union, Copernicus Sentinel-2-Bilder)",
-        "Algenblüte in der Ostsee, beobachtet von Copernicus Sentinel-2 am 20. Juli 2019 (Enthält modifizierte Copernicus Sentinel Daten, 2019, verarbeitet von ESA)"
+        "Algenblüte in der Ostsee, beobachtet von Copernicus Sentinel-2 am 20. Juli 2019 (Enthält modifizierte Copernicus Sentinel Daten, 2019, verarbeitet von ESA)",
+        "Erkennung von Fischereifahrzeugen im Mittelmeer anhand von Radardaten des Copernicus-Satelliten Sentinel-1, die mit Hilfe von Techniken der künstlichen Intelligenz (KI) verarbeitet wurden. Die Fischerei deckt derzeit 17 % des weltweiten Fleischverbrauchs. (ESA - Datenquelle: Paolo et al, 2024/Global Fishing Watch)"
       ],
       "imageFits": [
         "cover",
+        "contain",
         "cover",
         "cover",
-        "cover",
-        "cover"
+        "contain"
       ]
     },
     {
