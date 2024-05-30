@@ -2,134 +2,130 @@
   "id": "story-12",
   "slides": [
     {
+      "type": "splashscreen",
       "text": "# De Koolstofcyclus\r\n\r\nKoolstof is een van de meest overvloedige elementen in het universum en de basis van al het leven op aarde. Het stroomt door de atmosfeer, de oceanen, planten en rotsen, maar deze natuurlijke cyclus is verstoord door menselijke activiteit, met ingrijpende gevolgen voor het klimaat op aarde.",
       "shortText": "# De Koolstofcyclus\r\n\r\nKoolstof is een van de meest overvloedige elementen in het universum en de basis van al het leven op aarde. Het stroomt door de atmosfeer, de oceanen, planten en rotsen, maar deze natuurlijke cyclus is verstoord door menselijke activiteit, met ingrijpende gevolgen voor het klimaat op aarde.",
-      "galleryItems": [],
-      "splashImage": "assets/story12-image02.jpg"
+      "images": [
+        "assets/story12-image02.jpg"
+      ]
     },
     {
+      "type": "image",
       "text": "## Een Essentieel Element\r\n\r\nKoolstof is de basisbouwsteen voor het leven op aarde. Het kan stabiele chemische bindingen vormen met veel elementen, waardoor grote en complexe moleculen kunnen worden gemaakt, waaronder de organische verbindingen die essentieel zijn voor het leven. De bindingen van koolstof met andere elementen zijn stabiel, maar niet zo sterk dat ze een chemische reactie verhinderen.\r\n\r\nDoor zijn reactie met andere elementen kringelt koolstof door de atmosfeer, de oceanen, planten en dieren, de bodem en het gesteente. Er vindt uitwisseling plaats tussen deze koolstofreservoirs via een verscheidenheid aan processen. Wanneer koolstofverbindingen worden verbroken, komt er energie vrij, waardoor sommige koolstofverbindingen - koolwaterstoffen - handige brandstofbronnen worden.\r\n \r\n## Broeikasgassen\r\n\r\nMaar dezelfde bindingen die koolstofmoleculen zo essentieel maken voor het bestaan en het moderne leven, hebben een keerzijde. Ze zijn ook goed in het absorberen van infrarode straling met een lange golflengte, wat er voor zorgdt dat de moleculen kunnen vibreren en opwarmen, waardoor ze warmte vasthouden in de atmosfeer en bijdragen aan het broeikaseffect.\r\n\r\nKoolstofverbindingen zoals kooldioxide en methaan zijn niet de enige broeikasgassen, noch de krachtigste, maar onze toegenomen verbranding van fossiele brandstoffen - steenkool, aardolie en aardgas - heeft geleid tot een opeenhoping van koolstofdioxide in de atmosfeer, waardoor de koolstofkringloop is verstoord en het klimaat op aarde is opgewarmd.",
       "shortText": "## Een Essentieel Element\r\n\r\n- Koolstof is de basisbouwsteen voor het leven op aarde.\r\n- Vormt stabiele bindingen met vele elementen.\r\n- Maakt de bouw van grote en complexe moleculen mogelijk, waaronder organische verbindingen die essentieel zijn voor het leven.\r\n- Bindingen zijn stabiel, maar niet zo sterk dat ze chemische reacties verhinderen.\r\n- Reacties stuwen koolstof door de atmosfeer, de oceanen, planten en dieren, bodem en rotsen.\r\n- Wanneer koolstofverbindingen worden verbroken, komt er energie vrij.\r\n- Sommige koolstofverbindingen - koolwaterstoffen - zijn dus handige brandstofbronnen.\r\n\r\n## Broeikasgassen\r\n\r\n- Koolstofverbindingen zijn ook goed in het absorberen van infrarode straling, waardoor moleculen kunnen vibreren en opwarmen.\r\n- Het houdt warmte vast in de atmosfeer en draagt zo bij tot het broeikaseffect.\r\n\r\nDe toegenomen verbranding van fossiele brandstoffen heeft geleid tot een ophoping van CO2 in de atmosfeer, waardoor de koolstofcyclus is verstoord en het klimaat is opgewarmd.",
-      "galleryItems": [
-        {
-          "type": "image",
-          "imageCaption": "Aardgas dat wordt afgefakkeld op een olieproductieplatform in de Noordzee. Koolstofdioxide en waterdamp zijn de belangrijkste verbrandingsproducten. Bij de winning en verbranding van koolwaterstoffen komt koolstof uit een rotsreservoir in de atmosfeer terecht. (Varodrig)",
-          "image": "assets/story12-image01.jpg",
-          "imageFit": "contain"
-        },
-        {
-          "type": "embedded",
-          "description": "# Atmosferische kooldioxideconcentratie\r\nKooldioxideconcentratie in de atmosfeer over de afgelopen 300 jaar, gebaseerd op luchtmonsters uit ijskernen en, sinds 1958, directe metingen van het Mauna Loa Observatorium, Hawaii. Koolstofdioxide heeft zich sinds de industriële revolutie in de atmosfeer opgehoopt, waarbij de concentratie in de tweede helft van de twintigste eeuw snel toenam. (bron: Scripps Institute of Oceanography)",
-          "embeddedSrc": "https://datawrapper.dwcdn.net/27Ww5/6/"
-        },
-        {
-          "type": "image",
-          "imageCaption": "De moleculaire structuur van koolstofdioxide- en methaanmoleculen maakt het mogelijk infrarode straling te absorberen. Warmte wordt door een molecuul geabsorbeerd als de atomen binnenin kunnen vibreren op de frequentie van infrarode straling. Complexere moleculen hebben meer trillingswijzen en dus meer mogelijkheden om warmte te absorberen, waardoor ze sterkere broeikasgassen zijn. Een methaanmolecuul, met één koolstofatoom (grijs) gebonden aan vier waterstofatomen (rood), kan meer warmte absorberen dan een koolstofdioxidemolecuul, met één koolstofatoom gebonden aan twee zuurstofatomen (blauw). Een chloorfluorkoolstof zoals CFK-113 (groen en geel) heeft nog meer bindingen, waardoor het een zeer krachtig broeikasgas is. (Planetaire Visies)",
-          "image": "assets/story12-image03.jpg",
-          "imageFit": "contain"
-        },
-        {
-          "type": "image",
-          "imageCaption": "# Gemiddelde methaan concentratie in de atmosfeer in 2020\r\nGemiddelde atmosferische methaan concentratie in 2020, op basis van gegevens van de Copernicus Sentinel-5P satelliet. Het methaangehalte in de atmosfeer is hoger op het noordelijk halfrond, waar zich het grootste deel van het land van de wereld bevindt. \r\n(CCI-project broeikasgassen/bevat gewijzigde Copernicus Sentinel-gegevens 2020)",
-          "image": "assets/story12-04.png",
-          "imageFit": "contain"
-        },
-        {
-          "type": "image",
-          "imageCaption": "# Atmosferische kooldioxide als functie van tijd en breedtegraad\r\nHet gegevensoppervlak toont de natuurlijke jaarlijkse cyclus van koolstofdioxide-opname en -afgifte, die bijzonder sterk is op het noordelijk halfrond, evenals een geleidelijke toename in de loop der jaren als gevolg van menselijke activiteit. Gegevens afkomstig van de SCIAMACHY-sensor op Envisat. (ESA-CCI)",
-          "image": "assets/ghg_large_11.png",
-          "imageFit": "contain"
-        }
+      "images": [
+        "assets/story12-image01.jpg",
+        "assets/ghg_large_16.png",
+        "assets/story12-image03.jpg",
+        "assets/story12-04.png",
+        "assets/ghg_large_11.png"
+      ],
+      "imageCaptions": [
+        "Aardgas dat wordt afgefakkeld op een olieproductieplatform in de Noordzee. Koolstofdioxide en waterdamp zijn de belangrijkste verbrandingsproducten. Bij de winning en verbranding van koolwaterstoffen komt koolstof uit een rotsreservoir in de atmosfeer terecht. (Varodrig)",
+        "# Atmosferische kooldioxideconcentratie\r\nKooldioxideconcentratie in de atmosfeer over de afgelopen 300 jaar, gebaseerd op luchtmonsters uit ijskernen en, sinds 1958, directe metingen van het Mauna Loa Observatorium, Hawaii. Koolstofdioxide heeft zich sinds de industriële revolutie in de atmosfeer opgehoopt, waarbij de concentratie in de tweede helft van de twintigste eeuw snel toenam. (bron: Scripps Institute of Oceanography)",
+        "De moleculaire structuur van koolstofdioxide- en methaanmoleculen maakt het mogelijk infrarode straling te absorberen. Warmte wordt door een molecuul geabsorbeerd als de atomen binnenin kunnen vibreren op de frequentie van infrarode straling. Complexere moleculen hebben meer trillingswijzen en dus meer mogelijkheden om warmte te absorberen, waardoor ze sterkere broeikasgassen zijn. Een methaanmolecuul, met één koolstofatoom (grijs) gebonden aan vier waterstofatomen (rood), kan meer warmte absorberen dan een koolstofdioxidemolecuul, met één koolstofatoom gebonden aan twee zuurstofatomen (blauw). Een chloorfluorkoolstof zoals CFK-113 (groen en geel) heeft nog meer bindingen, waardoor het een zeer krachtig broeikasgas is. (Planetaire Visies)",
+        "# Gemiddelde methaan concentratie in de atmosfeer in 2020\r\nGemiddelde atmosferische methaan concentratie in 2020, op basis van gegevens van de Copernicus Sentinel-5P satelliet. Het methaangehalte in de atmosfeer is hoger op het noordelijk halfrond, waar zich het grootste deel van het land van de wereld bevindt. \r\n(CCI-project broeikasgassen/bevat gewijzigde Copernicus Sentinel-gegevens 2020)",
+        "# Atmosferische kooldioxide als functie van tijd en breedtegraad\r\nHet gegevensoppervlak toont de natuurlijke jaarlijkse cyclus van koolstofdioxide-opname en -afgifte, die bijzonder sterk is op het noordelijk halfrond, evenals een geleidelijke toename in de loop der jaren als gevolg van menselijke activiteit. Gegevens afkomstig van de SCIAMACHY-sensor op Envisat. (ESA-CCI)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
+      "type": "globe",
       "text": "## De Snelle Koolstofkringloop\r\n\r\nPlanten nemen koolstofdioxide op uit de atmosfeer door fotosynthese als ze groeien in de lente en de zomer, en geven een deel weer terug als hun bladeren afsterven in de herfst en de winter. Koolstof wordt ook teruggevoerd in de atmosfeer door dieren die planten eten en koolstofdioxide uitademen. De kringloop van koolstof door levende wezens staat bekend als de snelle koolstofcyclus.\r\n\r\nDeze seizoensgebonden groeicyclus is te zien aan de kooldioxideconcentraties in de atmosfeer op de interactieve wereldbol: aan het eind van de noordelijke winter wordt een piek bereikt, voordat snelgroeiende planten in het voorjaar weer koolstofdioxide beginnen te absorberen. De koolstofconcentratie in de atmosfeer varieert het sterkst op het noordelijk halfrond, omdat daar meer land en dus meer planten voorkomen dan op het zuidelijk halfrond. Bovenop de seizoensgebonden cyclus is er van jaar tot jaar een duidelijke stijging van het koolstofdioxidegehalte in de atmosfeer - een teken dat de koolstofcyclus uit balans is, voornamelijk als gevolg van de verbranding van fossiele brandstoffen.\r\n \r\n## Koolstof en het land\r\n\r\n[Veranderingen in landgebruik en bodembedekking](stories/story-28/3) veranderen ook de koolstofcyclus. Het kappen van tropische bossen voor landbouw heeft een dubbel negatief effect doordat de bomen die normaal juist koolstof absorberen en opslaan worden verwijderd, maar daarnaast tijdens de verbranding van de bomen zelf ook grote hoeveelheden koolstofdioxide aan de atmosfeer vrijgeven. \r\n\r\nRond de Noordpool ontdooien door de hoge luchttemperaturen grote gebieden [permafrost](stories/story-15/5).  Hierdoor wordt koolstof in de bodem blootgesteld aan ontbinding en kunnen enorme hoeveelheden methaan vrijkomen in de atmosfeer. Naarmate de noordelijke breedtegraden ontdooien en uitdrogen, worden uitgestrekte gebieden met bos, struikgewas en veen blootgesteld aan het risico van [natuurbranden](verhalen/story-28/1). Vuur is een belangrijk onderdeel van de koolstofcyclus, die koolstof uit de biosfeer in de atmosfeer brengt.",
       "shortText": "## De Snelle Koolstofkringloop\r\n\r\nDe cyclus van koolstof door levende wezens staat bekend als de snelle koolstofcyclus.\r\n\r\n- Planten nemen CO2 op uit de atmosfeer door fotosynthese als ze groeien in de lente en de zomer.\r\n- Een deel komt terug als bladeren afsterven en door dieren die planten eten en kooldioxide uitademen.\r\n- Atmosferische CO2 piekt aan het eind van de noordelijke winter.\r\n- Snelgroeiende planten beginnen in het voorjaar CO2 te absorberen.\r\n- Atmosferische koolstof varieert het meest op het noordelijk halfrond (meer land, dus meer planten).\r\n- De jaarlijkse toename van CO2 toont aan dat de koolstofcyclus uit balans is (voornamelijk door de verbranding van fossiele brandstoffen).\r\n\r\n## Koolstof en het land\r\n\r\n- Veranderingen in landgebruik en bodembedekking veranderen ook de koolstofcyclus.\r\n- Bij het kappen van tropische bossen komen grote hoeveelheden CO2 vrij door brand en worden bomen verwijderd die koolstof absorberen en opslaan.\r\n- Bij het ontdooien van permafrost komt door ontbinding koolstof in de bodem vrij en mogelijk ook grote hoeveelheden methaan.\r\n- Door de opwarming en uitdroging van de noordelijke gebieden worden uitgestrekte bos-, struik- en veengebieden blootgesteld aan het risico van bosbranden.\r\n- Vuur is een belangrijk onderdeel van de koolstofcyclus, waarbij koolstof uit de biosfeer in de atmosfeer terechtkomt.",
-      "galleryItems": [
-        {
-          "type": "globe",
-          "flyTo": {
-            "position": {
-              "longitude": 54.03,
-              "latitude": 26.9,
-              "height": 24997871.88
-            },
-            "orientation": {
-              "heading": 360,
-              "pitch": -89.96,
-              "roll": 0
-            }
-          },
-          "layer": [
-            {
-              "id": "greenhouse.xco2",
-              "timestamp": "2007-12-06T00:00:00.000Z"
-            }
-          ],
-          "layerDescription": "# CCI Atmosferische Kooldioxide Concentratie"
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "flyTo": {
+        "position": {
+          "longitude": 54.03,
+          "latitude": 26.9,
+          "height": 24997871.88
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.96,
+          "roll": 0
         }
-      ]
+      },
+      "layer": [
+        {
+          "id": "greenhouse.xco2",
+          "timestamp": "2007-12-06T00:00:00.000Z"
+        }
+      ],
+      "layerDescription": "# CCI Atmosferische Kooldioxide Concentratie"
     },
     {
+      "type": "video",
       "text": "## De Langzame Koolstofkringloop\r\n\r\nKoolstof wordt aan het zeeoppervlak uitgewisseld tussen de atmosfeer en de oceaan. Koolstofdioxide wordt opgelost in zeewater, maar ook [geabsorbeerd door oceaanplanten](verhalen/verhaal-31/3) - fytoplankton - die chlorofyl gebruiken om fotosynthese uit te voeren op dezelfde manier als planten op het land. Een deel van de kooldioxide wordt snel weer afgegeven aan de atmosfeer, zodat de oceanen ook een rol speelt in de snelle koolstofcyclus, maar een deel wordt gemengd in de diepe oceaan, waar het eeuwenlang blijft als onderdeel van de langzame koolstofcyclus.\r\n\r\nOceaanorganismen, van fytoplankton tot koraal, schaaldieren en walvissen, nemen koolstof op wanneer ze groeien en nemen een deel ervan mee naar de zeebodem wanneer ze sterven. Hier wordt koolstof opgesloten in sedimentair gesteente, de grootste koolstofopslagplaats op aarde. Onder bepaalde omstandigheden kunnen lagen van organische koolstof zich ophopen tot afzettingen van fossiele brandstoffen - steenkool, olie of aardgas.\r\n\r\nDe langzame cyclus brengt uiteindelijk koolstof terug in de atmosfeer via geologische processen. Koolstofdioxide wordt onder extreme hitte en druk uit rotsen gedreven en bij vulkaanuitbarstingen in de atmosfeer gebracht. Vanuit de atmosfeer kan koolstof als zwak koolzuur opgelost in regenwater terugkeren naar de oppervlakte, waar het een rol speelt bij de chemische verwering van rotsen en de afvoer van mineralen en zouten naar de zee.",
       "shortText": "## De Langzame Koolstofkringloop\r\n\r\n- CO2 wordt opgelost in zeewater, maar ook geabsorbeerd door oceaanplanten - fytoplankton.\r\n- Een deel wordt in de diepe oceaan gemengd, waar het eeuwenlang blijft als onderdeel van de langzame koolstofcyclus.\r\n\r\n- Oceaanorganismen nemen koolstof op wanneer ze groeien en nemen een deel ervan mee naar de zeebodem wanneer ze sterven.\r\n- Hier wordt koolstof opgesloten in sedimentair gesteente, de grootste koolstofopslagplaats op aarde.\r\n- Lagen van organische koolstof kunnen zich ophopen tot afzettingen van fossiele brandstoffen - steenkool, olie of aardgas.\r\n\r\n- De langzame cyclus brengt uiteindelijk koolstof terug in de atmosfeer via geologische processen.\r\n- Bij vulkaanuitbarstingen wordt CO2 uit rotsen verdreven en in de atmosfeer gebracht.\r\n- Koolstof keert terug naar de oppervlakte, opgelost in regenwater als zwak koolzuur.\r\n- Het speelt dan een rol bij de chemische verwering van rotsen en de afgifte van mineralen en zouten aan de zee.",
-      "galleryItems": [
-        {
-          "type": "video",
-          "videoId": "evPBTu_a27I",
-          "videoSrc": ["assets/carbon_cycle-web.mp4"],
-          "videoCaptions": "assets/carboncycle.vtt",
-          "videoPoster": "assets/carbon_cycle.jpg"
-        }
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "videoId": "evPBTu_a27I",
+      "videoCaptions": "assets/carboncycle.vtt",
+      "videoPoster": "assets/carbon_cycle.jpg",
+      "videoSrc": [
+        "assets/carbon_cycle-web.mp4"
       ]
     },
     {
+      "type": "image",
       "text": "## Menselijk ingrijpen\r\n\r\nMenselijke activiteit, voornamelijk het verbranden van fossiele brandstoffen, heeft de hoeveelheid koolstof in de atmosfeer verhoogd tot boven het natuurlijke niveau. Door het winnen en verbranden van steenkool, olie en aardgas kortsluiten we de langzame koolstofcyclus en versnellen we de opname van koolstof in de atmosfeer. Elk jaar stoten mensen 100-300 keer meer koolstofdioxide uit door het verbranden van fossiele brandstoffen dan de langzame koolstofcyclus door vulkanen uitstoot.\r\n\r\nHet land en de oceaan hebben een deel van deze overtollige koolstofdioxide geabsorbeerd, maar de atmosferische koolstofdioxide is in de afgelopen 150 jaar nog steeds met 30% toegenomen - genoeg om het broeikaseffect aanzienlijk te versterken en het klimaat te veranderen. Sinds 1970 is onze uitstoot van kooldioxide met 90% toegenomen. Het mondiale daggemiddelde van de kooldioxide in de atmosfeer bereikte in 2013 400 delen per miljoen en is sinds 2016 boven dit niveau gebleven. Er is nu meer kooldioxide in de atmosfeer dan op enig ander moment in de afgelopen 2,6 miljoen jaar. De resulterende versterking van het broeikaseffect heeft de wereldwijde gemiddelde [landtemperatuur](verhalen/verhaal-27/1) in de afgelopen eeuw met meer dan één graad Celsius doen stijgen, en [klimaatmodellen](verhalen/verhaal-31/0) voorspellen dat deze tegen het einde van deze eeuw 2 tot 4 graden Celsius boven het pre-industriële niveau zal liggen.",
       "shortText": "## Menselijk ingrijpen\r\n\r\nMenselijke activiteit, voornamelijk de verbranding van fossiele brandstoffen, heeft de hoeveelheid koolstof in de atmosfeer tot boven het natuurlijke niveau doen stijgen.\r\n\r\n- Het winnen en verbranden van steenkool, olie en aardgas zorgt voor een kortsluiting in de trage koolstofcyclus, waardoor de koolstof veel sneller in de atmosfeer terechtkomt.\r\n- Elk jaar komt er 100-300 keer meer CO2 vrij door het verbranden van fossiele brandstoffen dan door vulkanen.\r\n- Land en oceanen absorberen een deel van de overtollige CO2.\r\n- Maar nog steeds 30% stijging van atmosferische CO2 in de laatste 150 jaar.\r\n- 90% toename van CO2-uitstoot sinds 1970.\r\n- Atmosferische CO2 is sinds 2016 boven de 400 delen per miljoen.\r\n- Hoger dan op enig moment in de laatste 2,6 miljoen jaar.\r\n- 1.2 °C stijging van de gemiddelde landtemperatuur in de afgelopen eeuw.\r\n- 2 tot 4 °C boven pre-industriële niveaus voorspeld tegen 2100.",
-      "galleryItems": [
-        {
-          "type": "image",
-          "imageCaption": "Op een heldere nacht schijnt licht uit stedelijke gebieden in heel West-Europa, en schetst een portret van een energieverslindende samenleving.  Foto genomen door ESA-astronaut Alexander Gerst vanuit het Internationaal ruimtestation op 26 juli 2014. (ESA/NASA)",
-          "image": "assets/intro_large_13.jpg",
-          "imageFit": "contain"
-        },
-        {
-          "type": "image",
-          "imageCaption": "Ontbossing in de deelstaat Rondônia in het westen van Brazilië, in beeld gebracht door de Proba-V minisatelliet van ESA. De bruine kleuren geven ontboste gebieden aan - let op het kenmerkende 'visgraat'-patroon wanneer hoofdwegen door een gebied worden aangelegd, gevolgd door secundaire wegen voor verdere ontbossing. Landbouwactiviteiten, waaronder ontbossing, zijn na fossiele brandstoffen de grootste bron van broeikasgassen. (ESA/VITO)",
-          "image": "assets/ghg_large_18.jpg",
-          "imageFit": "cover"
-        },
-        {
-          "type": "image",
-          "imageCaption": "# Atmosferische koolstofdioxide gedurende de laatste 800.000 jaar\r\nKoolstofdioxideconcentratie gebaseerd op luchtmonsters uit ijskernen in Vostok Station, Antarctica, en sinds 1958, directe metingen van Mauna Loa Observatory, Hawaii. De huidige concentratie van meer dan 400 deeltjes per miljoen wordt geacht hoger te zijn dan zij in vele miljoenen jaren is geweest. (gegevensbron: Scripps Institute of Oceanography)",
-          "image": "assets/intro_large_15.png",
-          "imageFit": "contain"
-        },
-        {
-          "type": "image",
-          "imageCaption": "Methaanlek gedetecteerd in het Permian Basin olie- en gasveld door gegevens van de Copernicus Sentinel-5P satelliet te combineren met metingen van de Sentinel-2 infrarood kanalen.\r\n(Bevat gewijzigde Copernicus-gegevens (2020), verwerkt door Kayrros)",
-          "image": "assets/story12-05.png",
-          "imageFit": "contain"
-        },
-        {
-          "type": "image",
-          "imageCaption": "Koolstofmonoxide concentratie boven het zuidoosten van Australië, na de verwoestende bosbranden van 2019/20, met behulp van informatie van de Copernicus Sentinel-5P-satelliet. Op basis van deze metingen wordt geschat dat de branden in slechts drie maanden tijd 715 miljoen ton kooldioxide in de atmosfeer hebben gebracht - 80% meer dan de normale jaarlijkse uitstoot van Australië.\r\n(Bevat gewijzigde Copernicus Sentinel-gegevens (2019-20), verwerkt door ESA)",
-          "image": "assets/story12-06.jpg",
-          "imageFit": "contain"
-        }
+      "images": [
+        "assets/intro_large_13.jpg",
+        "assets/ghg_large_18.jpg",
+        "assets/intro_large_15.png",
+        "assets/story12-07.jpg",
+        "assets/story12-06.jpg"
+      ],
+      "imageCaptions": [
+        "Op een heldere nacht schijnt licht uit stedelijke gebieden in heel West-Europa, en schetst een portret van een energieverslindende samenleving.  Foto genomen door ESA-astronaut Alexander Gerst vanuit het Internationaal ruimtestation op 26 juli 2014. (ESA/NASA)",
+        "Ontbossing in de deelstaat Rondônia in het westen van Brazilië, in beeld gebracht door de Proba-V minisatelliet van ESA. De bruine kleuren geven ontboste gebieden aan - let op het kenmerkende 'visgraat'-patroon wanneer hoofdwegen door een gebied worden aangelegd, gevolgd door secundaire wegen voor verdere ontbossing. Landbouwactiviteiten, waaronder ontbossing, zijn na fossiele brandstoffen de grootste bron van broeikasgassen. (ESA/VITO)",
+        "# Atmosferische koolstofdioxide gedurende de laatste 800.000 jaar\r\nKoolstofdioxideconcentratie gebaseerd op luchtmonsters uit ijskernen in Vostok Station, Antarctica, en sinds 1958, directe metingen van Mauna Loa Observatory, Hawaii. De huidige concentratie van meer dan 400 deeltjes per miljoen wordt geacht hoger te zijn dan zij in vele miljoenen jaren is geweest. (gegevensbron: Scripps Institute of Oceanography)",
+        "Multischaal satellietwaarnemingen van een methaanlek in Algerije op 4 januari 2020. De methaanpluim, gedetecteerd door Copernicus Sentinel-5P, strekte zich uit over meer dan 200 km (links). Sentinel-2-beelden met hoge resolutie werden gebruikt om in te zoomen op de oorsprong van de pluim bij een olie-/gasbron (rechts), en Sentinel-3 toonde aan dat het lek zes dagen lang bleef bestaan (midden). (SRON / JPL / Bevat aangepaste Copernicus Sentinel-gegevens (2020), verwerkt door ESA)",
+        "Koolstofmonoxide concentratie boven het zuidoosten van Australië, na de verwoestende bosbranden van 2019/20, met behulp van informatie van de Copernicus Sentinel-5P-satelliet. Op basis van deze metingen wordt geschat dat de branden in slechts drie maanden tijd 715 miljoen ton kooldioxide in de atmosfeer hebben gebracht - 80% meer dan de normale jaarlijkse uitstoot van Australië.\r\n(Bevat gewijzigde Copernicus Sentinel-gegevens (2019-20), verwerkt door ESA)"
+      ],
+      "imageFits": [
+        "contain",
+        "cover",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
-      "text": "## Koolstof volgen vanuit de ruimte\r\n\r\nAan de hand van gegevens die door satellieten zijn verzameld, kunnen we zien hoe de hoeveelheid broeikasgassen over de hele wereld variëren. Envisat van het Europees Ruimteagentschap, gelanceerd in 2002, droeg een van de eerste sensoren die de concentraties van koolstofdioxide en methaan aan het oppervlak meten. De Japanse satelliet GOSAT volgde in 2009. Met de nieuwste satellieten kunnen we puntbronnen van broeikasgassen opsporen.\r\n\r\nESA's [Climate Change Initiative](stories/story-32/3) volgt ook koolstof gedurende zijn hele cyclus op het land en in de oceaan. Met kaarten van landbedekking en biomassa kunnen we de hoeveelheid koolstof bepalen die is opgeslagen in planten op het land; kleurmetingen van de oceaan tonen fytoplankton, wat een idee geeft van de hoeveelheid koolstof die door deze oceaanplanten wordt opgenomen.\r\n\r\nKlimaatwetenschappers gebruiken deze informatie om ons begrip van de koolstofcyclus en de weergave daarvan in hun klimaatmodellen te verbeteren. Verbeterde klimaatprognoses zullen beleidsmakers helpen uit te werken hoe we onze koolstofuitstoot kunnen beheren en het evenwicht in de koolstofcyclus kunnen herstellen.",
+      "type": "video",
+      "text": "## Koolstof volgen vanuit de ruimte\r\n\r\nAan de hand van gegevens die door satellieten zijn verzameld, kunnen we zien hoe de hoeveelheid broeikasgassen over de hele wereld variëren. Envisat van het Europees Ruimteagentschap, gelanceerd in 2002, droeg een van de eerste sensoren die de concentraties van koolstofdioxide en methaan aan het oppervlak meten. De Japanse satelliet GOSAT volgde in 2009.  Met de nieuwste satellieten kunnen we puntbronnen van broeikasgassen detecteren, waaronder methaanemissies van kolenmijnen, olie- en gaswinning en stortplaatsen.\r\n\r\nDeze satellietwaarnemingen maken deel uit van een geïntegreerd bewakingssysteem voor broeikasgassen ter ondersteuning van snelle mitigatie in reactie op het UNFCCC-akkoord van Parijs. De Copernicus-missie voor het monitoren van antropogene kooldioxide (CO2M) zal antropogene kooldioxide met een ongekende resolutie volgen, wat een unieke en onafhankelijke manier is om de effectiviteit van beleidsmaatregelen gericht op het koolstofarm maken van Europa te beoordelen. \r\n\r\nESA's [Climate Change Initiative](stories/story-32/3) volgt ook koolstof gedurende zijn hele cyclus op het land en in de oceaan. Met kaarten van landbedekking en biomassa kunnen we de hoeveelheid koolstof bepalen die is opgeslagen in planten op het land; kleurmetingen van de oceaan tonen fytoplankton, wat een idee geeft van de hoeveelheid koolstof die door deze oceaanplanten wordt opgenomen.\r\n\r\nKlimaatwetenschappers gebruiken deze informatie om ons begrip van de koolstofcyclus en de weergave daarvan in hun klimaatmodellen te verbeteren. Verbeterde klimaatprognoses zullen beleidsmakers helpen uit te werken hoe we onze koolstofuitstoot kunnen beheren en het evenwicht in de koolstofcyclus kunnen herstellen.",
       "shortText": "## Koolstof volgen vanuit de ruimte\r\n\r\nAan de hand van door satellieten verzamelde gegevens kunnen we zien hoe de broeikasgassen zich over de hele wereld ontwikkelen.\r\n\r\n- 2002: ESA's Envisat droeg een van de eerste sensoren om CO2 en methaan aan het oppervlak te meten.\r\n- 2009: De Japanse satelliet GOSAT volgde.\r\n- Met de nieuwste satellieten kunnen we puntbronnen van broeikasgassen opsporen.\r\n- Het ESA Climate Change Initiative volgt ook de koolstofcyclus op het land en in de oceaan.\r\n- Landbedekking en biomassakaarten geven de hoeveelheid koolstof aan die is opgeslagen in planten op het land.\r\n- Kaarten van de kleur van de oceaan tonen het fytoplankton, wat aangeeft hoeveel koolstof door oceaanplanten wordt opgenomen.\r\n- Dit verbetert het begrip van de koolstofcyclus en de weergave daarvan in klimaatmodellen.\r\n\r\nBetere klimaatprognoses zullen beleidsmakers helpen uit te werken hoe we onze koolstofuitstoot kunnen beheren en het evenwicht in de koolstofcyclus kunnen herstellen.",
-      "galleryItems": [
-        {
-          "type": "video",
-          "videoId": "-QyzY8waNoY",
-          "videoSrc": ["assets/ghg-interview-wide-web.mp4"],
-          "videoCaptions": "assets/ghg-interview.vtt",
-          "videoPoster": "assets/ghg-interview-wide.jpg"
-        }
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "videoId": "-QyzY8waNoY",
+      "videoCaptions": "assets/ghg-interview.vtt",
+      "videoPoster": "assets/ghg-interview-wide.jpg",
+      "videoSrc": [
+        "assets/ghg-interview-wide-web.mp4"
       ]
     }
   ]

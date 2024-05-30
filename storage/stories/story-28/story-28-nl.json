@@ -5,7 +5,9 @@
       "type": "splashscreen",
       "text": "# Biodiversiteit en verlies van habitats\r\n\r\nDe ecosystemen die samen de biosfeer van de aarde vormen, bevatten een enorme verscheidenheid aan leven en zijn aan snelle veranderingen overgeleverd. Deze veranderingen hebben niet alleen gevolgen voor de natuurlijke cycli die het klimaat van de aarde beheersen, maar ook meer directe gevolgen voor menselijke activiteiten.",
       "shortText": "# Biodiversiteit en verlies van habitats\r\n\r\nDe ecosystemen die samen de biosfeer van de aarde vormen, bevatten een enorme verscheidenheid aan leven en zijn aan snelle veranderingen overgeleverd. Deze veranderingen hebben niet alleen gevolgen voor de natuurlijke cycli die het klimaat van de aarde beheersen, maar ook meer directe gevolgen voor menselijke activiteiten.",
-      "images": ["assets/landcover.jpg"]
+      "images": [
+        "assets/landcover.jpg"
+      ]
     },
     {
       "type": "image",
@@ -13,25 +15,37 @@
       "shortText": "## De Wereld in Brand\r\n\r\nDe bosbranden in het zuidoosten van Australië, 2019-20, troffen plaatsen die nog niet eerder grote bosbranden hadden gezien:\r\n\r\n- kustbossen in plaats van gras/ struikgewas in het binnenland.\r\n- een miljard dieren kwamen om \r\n- de biodiversiteit in het hoogste in bossen (waar 80% van alle landdieren en planten worden gevonden)\r\n- Branden verder naar het noorden - Alaska, Zweden, Groenland\r\n- vaker bliksem wanneer het klimaat opwarmt\r\n- 5x toename van bosbranden aug 2019 - aug 2018\r\n\r\nSnelle afname van tropische bossen in de afgelopen 50 jaar met gevolgen voor veel meer soorten en een veel grotere hoeveelheid vegetatie (biomassa) dan ooit tevoren.\r\n\r\n- Door landgebruik is sinds 1750 180 Gt koolstof vrijgekomen.\r\n- draagt 23% bij aan onze jaarlijkse uitstoot van broeikasgassen\r\n- het land absorbeert tweemaal zoveel CO2 als het uitstoot\r\n- het beeld is minder duidelijk voor andere broeikasgassen uit de landbouw, zoals methaan en distikstofoxide",
       "images": [
         "assets/story28-02.jpg",
-        "assets/story28-08.jpg",
+        "assets/story28-13.jpg",
         "assets/story28-06.jpg",
         "assets/story28-03.jpg",
         "assets/biomass-map.jpg"
       ],
       "imageCaptions": [
         "Bosbranden in Zuidoost-Australië, januari 2020 (Copernicus Sentinel-gegevens, 2020, verwerkt door ESA)",
-        "Bosbranden die in het zuidoosten van Australië branden op 14 januari 2020 (geel) en de verbrande gebieden sinds 1 september 2019 (rood). Computergrafiek gebaseerd op gegevens van de Suomi satelliet. (Planetary Visions/NOAA/NASA)",
+        "In juli 2023 braken er grote bosbranden uit in heel Griekenland. Op het toeristische eiland Rhodos werd de noodtoestand uitgeroepen en duizenden mensen werden geëvacueerd toen de vlammen zich vanuit het bergachtige binnenland naar de kust verspreidden. Infraroodsensoren op de Copernicus Sentinel-2 satelliet zien vlammen door de rook in dit beeld dat op 23 juli 2023 is gemaakt. (Bevat gewijzigde Copernicus Sentinel-gegevens (2023), bewerkt door ESA)",
         "Elanden in de Bitterroot-rivier, Montana, tijdens een bosbrand in 2000 (John McColgan, Alaska Fire Service)",
         "Wildvuur in westelijk Groenland, augustus 2017\r\n(Copernicus Sentinel gegevens, 2017, bewerkt door Pierre Markuse)",
         "Bovengrondse biomassa van ESA's klimaatveranderingsinitiatief (ESA-CCI)"
       ],
-      "imageFits": ["cover", "contain", "cover", "cover", "contain"]
+      "imageFits": [
+        "cover",
+        "cover",
+        "cover",
+        "cover",
+        "contain"
+      ]
     },
     {
       "type": "globe",
       "text": "## Bodembedekking\r\n\r\nRegio's met een gelijkaardig klimaat en waar gelijkaardige planten- en dierengemeenschappen leven, worden biomen genoemd. Ze worden vaak gekenmerkt door een dominant type bodembedekking, zoals te zien is op de interactieve wereldbol. Draai aan de wereldbol en bekijk van dichtbij hoe de omvang van sommige types bodembedekking de afgelopen jaren is veranderd. Je zou kunnen beginnen met het verlies van tropisch woud in Mato Grosso, Brazilië, tussen 1996 en 2015.\r\n\r\nDe meeste dieren en planten hebben kenmerken ontwikkeld die verband houden met het klimaat van hun habitat en de andere organismen in het ecosysteem waar ze deel van uitmaken. De flora en fauna van een regio hebben echter ook invloed op het klimaat: de planten van het Amazonewoud bijvoorbeeld, evaporeren genoeg [water uit de grond](stories/story-21/2) naar de atmosfeer dat ze hun eigen weer creëren.\r\n\r\nHet klimaat binnen een biome kan ook variëren - de noordkant van een heuvel kan koeler zijn of minder neerslag krijgen dan de zuidkant, een meer kan de temperatuur van het aangrenzende land afkoelen en het van vocht voorzien. Kleine gebieden met hun eigen microklimaat kunnen de thuisbasis zijn van unieke soorten die niet kunnen overleven op plaatsen die slechts honderd meter verderop liggen. Door de opwarming van de aarde, natuurbranden, ontbossing en andere menselijke activiteiten veranderen zelfs grotere habitats nu zeer snel en raken zij versnipperd.\r\n\r\n![Land Cover map key](assets/landcover-key.png)\r\n_ESA CCI Type landbedekking_\r\n\r\nDe wereldbol van de bodembedekking toont het dominante type landgebruik in gebieden met een doorsnede van 300 meter. Wetenschappers die samenwerken met het klimaatbureau van ESA gebruiken gegevens van de Copernicus Sentinel-satellieten om nieuwe kaarten te maken waarop de bodembedekking wordt getoond in gebieden met een doorsnede van slechts 10-30 m. Aan de hand van deze kaarten kan de verandering van habitats gedetailleerder worden gevolgd.",
       "shortText": "## Bodembedekking\r\n\r\nDraai de wereldbol om te zien hoe sommige soorten bodembedekking de afgelopen jaren zijn veranderd - bijvoorbeeld het verlies van tropisch woud in Mato Grosso, Brazilië, tussen 1996 en 2015.\r\n\r\n- Dieren en planten ontwikkelen kenmerken die verband houden met het klimaat van hun habitat.\r\n- maar ze beïnvloeden ook het klimaat van hun regio\r\n- De planten van het Amazone regenwoud circuleren genoeg water van de grond naar de atmosfeer dat zij hun eigen weer creëren\r\n- topografie en watermassa's creëren ook microklimaten\r\n\r\nDoor de opwarming van de aarde, natuurbranden, ontbossing en andere menselijke activiteiten veranderen zelfs grotere habitats nu zeer snel en raken zij gefragmenteerd.\r\n\r\n![Land Cover map key](assets/landcover-key.png)\r\n_ESA CCI Type landbedekking_",
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "flyTo": {
         "position": {
           "longitude": -8.23,
@@ -56,11 +70,19 @@
       "type": "video",
       "text": "## Aanpassen aan Veranderingen\r\n\r\nWanneer een habitat verandert, kunnen dieren en planten tot de ontdekking komen dat hun aanpassingen in de nieuwe omgeving niet nuttig zijn - of hen zelfs actief benadelen - en gedwongen worden om elders te gaan wonen om te overleven. Duiven, vossen en natuurlijk de mens behoren tot de soorten die zich hebben aangepast om in steden te overleven. Maar individuele populaties van andere soorten die meer gespecialiseerd waren, of naar gebieden zijn gedreven waar zij meer concurrentie ondervinden, zijn uitgestorven als gevolg van de toegenomen verstedelijking of de uitbreiding van de landbouw naar gebieden die vroeger wild waren.\r\n\r\nOmgekeerd vergroot het veranderende klimaat het verspreidingsgebied van sommige soorten, waardoor zij kunnen gedijen op plaatsen die voorheen onherbergzaam voor hen waren, of hun habitats zodanig veranderen dat de populatie een hoge vlucht kan nemen. Dit is niet altijd goed nieuws voor iedereen. Zo hebben enkele jaren van droogte en zachte winters in de jaren 2000 de pijnboomkever de kans gegeven zijn verspreidingsgebied uit te breiden van het westen van Noord-Amerika naar het oosten over de Rocky Mountains, wat heeft geleid tot grote schade aan commerciële en natuurlijke bossen die tot dan toe gevrijwaard waren van deze plaag.\r\n\r\n## Beschermde gebieden\r\n\r\nEen ecosysteem met een grote biodiversiteit is waarschijnlijk veerkrachtiger en in staat om plotselinge veranderingen te overleven. Maar als alle dieren in een voedselweb uiteindelijk afhankelijk zijn van één soort plant, dan kan het hele ecosysteem instorten als die plant wordt aangetast door ziekte of extreme weersomstandigheden.\r\n\r\nNationale parken en andere beschermde gebieden beschermen een reeks habitats tegen verdere ontwikkeling of exploitatie en blijven in sommige van de beste gevallen de plaatselijke bevolking ondersteunen.  Waar habitats versnipperd raken, bijvoorbeeld door ontbossing of het afdammen van rivieren, kunnen wildcorridors een veilige route bieden tussen gebieden voor soorten met een groter verspreidingsgebied of soorten die zich langzamer verplaatsen, zoals planten.",
       "shortText": "## Aanpassen aan Veranderingen\r\n\r\nVeranderingen in de habitat, met inbegrip van klimaatveranderingen, kunnen het verspreidingsgebied van sommige soorten beperken of dat van andere uitbreiden.\r\n\r\n- Verschillende jaren van droogte en zachte winters in de jaren 2000 in Westelijk Noord-Amerika\r\n- kon de pijnboomkever zich oostwaarts over de Rocky Mountains verspreiden.\r\n- Dit heeft geleid tot grote schade aan bossen die voorheen vrij waren van deze plaag.\r\n\r\nEen ecosysteem met een hoog niveau van biodiversiteit is waarschijnlijk veerkrachtiger.\r\n\r\nNationale parken en andere beschermde gebieden beschermen een reeks habitats tegen verdere ontwikkeling of exploitatie en blijven in de beste gevallen de plaatselijke bevolking ondersteunen.",
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "videoId": "8wwQaK_SJtw",
       "videoCaptions": "assets/landcover.vtt",
       "videoPoster": "assets/landcover-poster.jpg",
-      "videoSrc": ["assets/landcover-web.mp4"]
+      "videoSrc": [
+        "assets/landcover-web.mp4"
+      ]
     },
     {
       "type": "image",
@@ -69,28 +91,42 @@
       "images": [
         "assets/protectedareas.png",
         "assets/landcover_large_07.jpg",
-        "assets/story28-05.jpg",
+        "assets/story28-12.jpg",
         "assets/story28-07.jpg",
         "assets/story28-11.jpg"
       ],
       "imageCaptions": [
         "# Beschermde gebieden van de wereld\r\nKaart van beschermde gebieden in de wereld op het land en in de oceanen (IUCN/UNEP-WCMC)",
         "Egmont National Park, Nieuw-Zeeland, gezien door de Kompsat-2 satelliet. De grens tussen beschermde en niet-beschermde gebieden is vaak zeer duidelijk op satellietbeelden - zoals we hier zien tussen de groene, dichtbeboste flanken van Mount Egmont en het omringende landbouwlandschap. (KARI/ESA)",
-        "Veldpatronen in een deel van Bolivia waar tropisch woud is gekapt voor landbouw (Copernicus Sentinel data, 2019/ESA)",
+        "Dit Copernicus Sentinel-2 beeld van 25 juli 2023 toont menselijke invasie in het tropisch woud langs een snelweg in de Braziliaanse staat Para. (Bevat gewijzigde Copernicus Sentinel gegevens (2023), verwerkt door ESA)",
         "Koraalrif bij Enderbury Island in het beschermde gebied Phoenix Isands, een UNESCO Werelderfgoed in de Stille Zuidzee (Dr Randi Rotjan, New England Aquarium)",
         "Rook verduistert bijna de hele Amerikaanse westkust als bijna 100 bosbranden branden tijdens een hittegolf in september 2020\r\n(Copernicus Sentinel gegevens, 2020, verwerkt door ESA)"
       ],
-      "imageFits": ["contain", "contain", "cover", "cover", "contain"]
+      "imageFits": [
+        "contain",
+        "contain",
+        "cover",
+        "cover",
+        "contain"
+      ]
     },
     {
       "type": "video",
       "text": "## Habitat verandering in kaart brengen\r\n\r\nEssentiële klimaatvariabelen (ECV's) beschrijven belangrijke aspecten van het klimaat op aarde en kenmerken die daar een sterke invloed op hebben. Inzicht in het klimaat geeft ons inzicht in een van de drijvende krachten achter ecosysteemverandering en dus hoe we kwetsbare biomen en biodiversiteit kunnen behouden. Bodembedekking en biomassa houden rechtstreeks verband met de populatie van een habitat en zijn beide ECV's die met behulp van satellieten vanuit de ruimte kunnen worden gevolgd.\r\n\r\nOok andere ECV's bepalen of een bepaalde habitat kan gedijen. Op het land zijn dat onder meer de landoppervlaktetemperatuur en de bodemvochtigheid. [De temperatuur van het zeeoppervlak en de kleur van de oceaan](stories/story-16/4) zijn nuttige maatstaven voor het monitoren van de oceanen. ESA's Climate Change Initiative heeft satellietwaarnemingen gebruikt om ECV's vast te leggen die de hele wereld bestrijken en meer dan veertig jaar teruggaan. Een betrouwbare registratie van deze factoren en een accuraat begrip van hoe ze momenteel veranderen, helpt ons verantwoorde beslissingen te nemen, rekening houdend met de gevolgen die ze in de toekomst voor de planeet - en al haar bewoners - zullen hebben.",
       "shortText": "## Habitat verandering in kaart brengen\r\n\r\nInzicht in het klimaat geeft ons inzicht in een van de aanjagers van ecosysteemverandering.\r\n\r\nBodembedekking en biomassa zijn essentiële klimaatvariabelen (ECV's) die rechtstreeks verband houden met de populatie van een habitat.\r\n\r\nAndere relevante ECV's op het land zijn de landoppervlaktetemperatuur en de bodemvochtigheid.\r\n\r\nDe temperatuur van het zeeoppervlak en de kleur van de oceaan zijn nuttige maatstaven voor het monitoren van de oceanen.\r\n\r\nHet klimaatveranderingsinitiatief van het ESA heeft satellietwaarnemingen gebruikt om ECV's te registreren die de hele wereld bestrijken en meer dan veertig jaar teruggaan.\r\n\r\nBetrouwbare gegevens over deze factoren en hun veranderingen helpen ons om verantwoorde beslissingen te nemen, rekening houdend met de gevolgen die deze factoren in de toekomst zullen hebben voor onze planeet en al haar bewoners.",
-      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
       "videoId": "LdA3Yy-Xjf4",
       "videoCaptions": "assets/landcover-interview.vtt",
       "videoPoster": "assets/landcover-interview-wide.jpg",
-      "videoSrc": ["assets/landcover-interview-wide-web.mp4"]
+      "videoSrc": [
+        "assets/landcover-interview-wide-web.mp4"
+      ]
     }
   ]
 }
