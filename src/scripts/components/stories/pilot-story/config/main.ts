@@ -1,4 +1,5 @@
 import giant01Graph from '../assets/06-giant01-graph.png';
+import giant01Legend from '../assets/06-giant01-legend.png';
 import {SubStoryContent} from '../components/06-chapter/06-chapter';
 import emmisionsGraph from '../assets/07-emissions-graph.png';
 import {LegendItems} from '../components/legend/legend';
@@ -66,6 +67,8 @@ export const subStory: SubStoryContent[] = [
         'Quantification and Time Series Analysis of Methane Emissions with satelites data',
       src: giant01Graph,
       alt: 'Giant 01 graph',
+      legendSrc: giant01Legend,
+      legendAlt: 'Giant 01 legend',
       caption:
         'The black line and the shaded area represent the polynomial fit that has been integrated for the calculation of the total amount of methane released during the event. The black bars depict all satellite observations from which a plume could be detected, including those that could not be quantified.'
     },

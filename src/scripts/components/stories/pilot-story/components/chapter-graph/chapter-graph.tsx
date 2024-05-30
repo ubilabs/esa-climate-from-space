@@ -10,6 +10,8 @@ interface Props {
     title: string;
     src: string;
     alt: string;
+    legendSrc?: string;
+    legendAlt?: string;
     caption?: string;
     legendItems?: LegendItems[];
     speed?: number;
@@ -17,7 +19,8 @@ interface Props {
 }
 
 const ChapterGraph: FunctionComponent<Props> = ({graph}) => {
-  const {title, src, alt, caption, legendItems, speed} = graph;
+  const {title, src, alt, caption, legendItems, speed, legendSrc, legendAlt} =
+    graph;
 
   return (
     <Parallax className={styles.chapterGraph} opacity={[0, 2]}>
@@ -37,6 +40,11 @@ const ChapterGraph: FunctionComponent<Props> = ({graph}) => {
         <div className={styles.scrollContainer}>
           <img src={src} alt={alt}></img>
         </div>
+        {legendSrc && (
+          <div className={styles.legendContainer}>
+            <img src={legendSrc} alt={legendAlt}></img>
+          </div>
+        )}
         {caption && <p className={styles.graphCaption}>{caption}</p>}
       </div>
     </Parallax>
