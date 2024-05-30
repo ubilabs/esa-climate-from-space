@@ -40,6 +40,18 @@
 * **pipeline:** use gsutil cp instead of rsync ([ee4e576](https://github.com/ubilabs/esa-climate-from-space/commit/ee4e57647b7ca2956c6794d67213f4bb701c549f))
 * **time-slider:** optionally use timestamps for playback ([392e03f](https://github.com/ubilabs/esa-climate-from-space/commit/392e03fb4659bbf01c61caff1783059cc581b47a))
 * **toolbox:** add toolbox to airflow Dockerfile ([1c5493b](https://github.com/ubilabs/esa-climate-from-space/commit/1c5493bb6392bc28cb57b083dbcc27be1223768a))
+* **stories:** update story: story-43 ([70c68be](https://github.com/ubilabs/esa-climate-from-space/commit/70c68becd92d2ae33dbdeb1d0afc3d1bb028dbed))
+* **stories:** update story: story-42 ([5061bc3](https://github.com/ubilabs/esa-climate-from-space/commit/5061bc35a95c3b6f1811d01e3209ba0bde70b2fc))
+* **stories:** update story: story-32 ([268c53c](https://github.com/ubilabs/esa-climate-from-space/commit/268c53cc37db6faa7bfc3af02323f954d0838914))
+* **stories:** update story: story-29 ([dd456c3](https://github.com/ubilabs/esa-climate-from-space/commit/dd456c3902fd018fd91653229b9b2b24823053f0))
+* **stories:** update story: story-12 ([ece77d0](https://github.com/ubilabs/esa-climate-from-space/commit/ece77d062b42ffafcdb37f35e829fe197ed3c38e))
+* **stories:** update story: story-27 ([d977279](https://github.com/ubilabs/esa-climate-from-space/commit/d977279c44db63d84be99b32857b6de0f6e5ab65))
+* **stories:** update story: story-8 ([758731f](https://github.com/ubilabs/esa-climate-from-space/commit/758731f8b1645a20be8f9ac03973b909dfd276ff))
+* **stories:** update story: story-15 ([d307654](https://github.com/ubilabs/esa-climate-from-space/commit/d3076544e4439643c4492293d656c6b859257043))
+* **stories:** update story: story-28 ([369a7af](https://github.com/ubilabs/esa-climate-from-space/commit/369a7af5089b1e421e3de28bb1c526e6173c1611))
+* **stories:** update story: story-31 ([3945cfa](https://github.com/ubilabs/esa-climate-from-space/commit/3945cfa427350840b638d25965cca13d75e33031))
+* **stories:** update story: story-21 ([65d1a27](https://github.com/ubilabs/esa-climate-from-space/commit/65d1a272db06674151405732d4e4c0c6a68467a1))
+* **layers:** update layers ([a4396c9](https://github.com/ubilabs/esa-climate-from-space/commit/a4396c96ad747e9505cc3ca460ab88f3189823b9))
 
 
 
