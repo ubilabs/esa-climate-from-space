@@ -37,6 +37,8 @@ export interface SubStoryContent {
     title: string;
     src: string;
     alt: string;
+    legendSrc?: string;
+    legendAlt?: string;
     caption: string;
   };
   conclusion: string;
