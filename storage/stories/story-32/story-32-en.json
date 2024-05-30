@@ -17,13 +17,15 @@
         "assets/intro_large_14.jpg",
         "assets/intro_large_15.png",
         "assets/story32-image03.png",
-        "assets/story32-image02.png"
+        "assets/story32-image02.png",
+        "assets/intro_large_08.jpg"
       ],
       "imageCaptions": [
         "The atmosphere over the Amazon Basin is thick with thunderstorms in this photo, taken from the International Space Station on 6 October 2009 (NASA)",
         "#  Atmospheric Carbon Dioxide for the Last 800,000 Years\r\nAtmospheric carbon dioxide history for the last 800,000 years, based on air samples from ice cores at Vostok Station, Antarctica, and since 1958, direct measurements from Mauna Loa Observatory, Hawaii. The present concentration of over 400 parts per million is thought to be higher than it has been for many millions of years. (data source: Scripps Institute of Oceanography)",
         "# Temperature Change by Decade\r\n\r\nGlobal average surface temperature change over the industrial era. The world’s leading climate research centres are in broad agreement that Earth’s temperature has risen by more than one degree Celsius over the last century. Data sources: ERA5 (ECMWF), GISTEMPv4 (NASA), HadCRUT5 (UK Met Office), NOAAGlobalTempv5 (NOAA), JRA-55 (Japan Meteorological Agency), Berkeley Earth (Copernicus Climate Change Service / ECMWF)",
-        "# Temperature Change Between 2020 and 1981-2010\r\n\r\nAir temperature at a height of two metres for 2020, shown relative to its 1981-2010 average. The temperature rise at a particular location can be significantly larger than the global average. Data source: ERA5 (Copernicus Climate Change Service / ECMWF)"
+        "# Temperature Change Between 2020 and 1981-2010\r\n\r\nAir temperature at a height of two metres for 2020, shown relative to its 1981-2010 average. The temperature rise at a particular location can be significantly larger than the global average. Data source: ERA5 (Copernicus Climate Change Service / ECMWF)",
+        "ESA's Envisat Earth observation satellite operated from 2002 to 2012 (ESA)"
       ],
       "imageFits": [
         "cover",
@@ -34,41 +36,37 @@
       ]
     },
     {
-      "type": "image",
+      "type": "video",
       "text": "## Tracking Climate Change from Space\r\n\r\nOver the past few decades, Earth observation satellites have given us an unprecedented view of our world and have become an essential tool for monitoring the changing climate. They are particularly useful for monitoring inaccessible areas such as the polar regions, where some of the changes to the climate are at their most extreme.\r\n \r\nThese ‘remote sensors’ measure sea ice expanding and contracting, the slow melt of glaciers and the burn of wildfires, track clouds and aerosols as they move through the atmosphere, and nutrient and temperature patterns swirling through the oceans.\r\n\r\nThe first operational remote sensing missions were in the late 1970s: this means we now have the opportunity to look back through forty years of observations for many climate components, which is long enough to start investigating climate change. However, compiling long time series of satellite data that are useful for climate scientists is a major challenge.\r\n\r\n## Changing Technology\r\n\r\nSatellites typically have a lifespan less than ten years. Other satellites then replace them, built with the latest technology. If they are to achieve consistent and reliable measurements, scientists must take into account differences between instruments, different measurement techniques, and gaps in coverage. \r\n\r\nThe work of these scientists and the climate data records they have produced is the focus of this web app. It includes an [interactive data viewer](https://cfs.climate.esa.int) where you can explore the climate data on 3D globes and 2D world maps.",
       "shortText": "## Tracking Climate Change from Space\r\n\r\nOver the past few decades, Earth observation satellites have given us an unprecedented view of our world and have become an essential tool for monitoring the changing climate. \r\n\r\n- They measure the extent of sea ice, glaciers and wildfires, track clouds and aerosols through the atmosphere, nutrient and temperature patterns in the oceans.\r\n- First operational remote sensing missions in the late 1970s.\r\n- We now have forty years of observations for many climate components.\r\n- Long enough to start investigating climate change. \r\n\r\n\r\n## Changing Technology\r\n\r\n- Satellites typically last less than ten years before other satellites and technologies replace them. \r\n- Scientists must take into account differences between instruments, different measurement techniques, and gaps in coverage. \r\n\r\nThe work of these scientists and the climate data records they have produced is the focus of this web app. It includes an interactive data viewer where you can explore the climate data on 3D globes and 2D world maps.",
-      "images": [
-        "assets/intro_large_08.jpg",
-        "assets/story32-image01.jpg"
-      ],
-      "imageCaptions": [
-        "ESA's Envisat Earth observation satellite operated from 2002 to 2012 (ESA)",
-        "# ESA-Developed Earth Observation Missions\r\nEnvisat has been followed by a fleet of European Earth observation satellites, including experimental Earth science satellites, operational Copernicus Sentinel satellites financed by the European Union, and weather satellites operated by EUMETSAT. (ESA)"
-      ],
       "imageFits": [
         "contain",
         "contain",
-        "contain",
-        "contain",
         "contain"
+      ],
+      "videoCaptions": "assets/parisagreement.vtt",
+      "videoPoster": "assets/parisagreement.jpg",
+      "videoSrc": [
+        "assets/parisagreement-web.mp4"
       ]
     },
     {
       "type": "image",
-      "text": "## ESA's Climate Change Initiative\r\n\r\nThe European Space Agency’s Climate Change Initiative (CCI) was established to take up the challenge of using Earth observation satellite data to track changes to the climate by bringing remote sensing experts together with climate modelling experts.\r\n    \r\nClimate scientists have identified more than fifty ‘essential climate variables’ (ECVs) as the key components of the Earth’s climate. The CCI focuses on twenty-two of these variables, where European expertise in remote sensing can make a significant contribution, leveraging the multi-decade archives of data from the satellite missions of ESA and other space agencies.\r\n\r\nThe CCI science teams have merged observations from different missions and sensors into continuous series of data, providing stable, long-term data products to improve the information available to climate modellers and researchers. The programme brings together more than 450 experts in a range of scientific, technical and development specialisations from across the European Earth observation community to offer lasting and transparent access to global climate data.",
-      "shortText": "## ESA's Climate Change Initiative\r\n\r\nThe European Space Agency’s Climate Change Initiative (CCI) was established to take up the challenge of using Earth observation satellite data to track changes to the climate.\r\n    \r\n- More than 50 ‘essential climate variables’ (ECVs) identified as the key components of the Earth’s climate. \r\n- CCI focuses on 22 of these, where European expertise and technology can make a significant contribution. \r\n- Using the multi-decade archives of data from the satellite missions of ESA and other space agencies.\r\n- Producing stable, long-term data products to improve the information available to climate modellers and researchers. \r\n- More than 450 experts in a range of scientific, technical and development specialisations from across the European Earth observation community.\r\n- Offering lasting and transparent access to global climate data.",
+      "text": "## ESA's Climate Change Initiative\r\n\r\nThe European Space Agency’s Climate Change Initiative (CCI) was established to take up the challenge of using Earth observation satellite data to track changes to the climate by bringing remote sensing experts together with climate modelling experts.\r\n    \r\nClimate scientists have identified 55 ‘essential climate variables’ (ECVs) as the key components of the Earth’s climate. The CCI focuses on 27 of these variables, where European expertise in remote sensing can make a significant contribution, leveraging the multi-decade archives of data from the satellite missions of ESA and other space agencies.\r\n\r\nThe CCI science teams have merged observations from different missions and sensors into continuous series of data, providing stable, long-term data products to improve the information available to climate modellers and researchers. The programme brings together close to 700 experts in a range of scientific, technical and development specialisations from across the European Earth observation community to offer lasting and transparent access to global climate data.",
+      "shortText": "## ESA's Climate Change Initiative\r\n\r\nThe European Space Agency’s Climate Change Initiative (CCI) was established to take up the challenge of using Earth observation satellite data to track changes to the climate.\r\n    \r\n- 55 ‘essential climate variables’ (ECVs) identified as the key components of the Earth’s climate. \r\n- CCI focuses on 27 of these, where European expertise and technology can make a significant contribution. \r\n- Using the multi-decade archives of data from the satellite missions of ESA and other space agencies.\r\n- Producing stable, long-term data products to improve the information available to climate modellers and researchers. \r\n- Close to 700 experts in a range of scientific, technical and development specialisations from across the European Earth observation community.\r\n- Offering lasting and transparent access to global climate data.",
       "images": [
         "assets/intro_large_10.jpg",
+        "assets/story32-image01.jpg",
         "assets/story32-image05.jpg",
         "assets/story32-image04.jpg"
       ],
       "imageCaptions": [
         "9 July 2015: The opening of ESA's European Centre for Space Applications and Telecommunications (ECSAT) in Harwell, UK, home to ESA's Climate Office (ESA)",
-        "# UN-GCOS Essential Climate Variables\r\nThe UN’s Global Climate Observing System has identified 54 ‘essential climate variables’. \r\nESA’s Climate Change Initiative is developing satellite-derived data sequences for 22 of these ECVs. (GCOS/Planetary Visions)",
-        "# ESA-CCI Essential Climate Variables\r\nTimespans of the CCI ECVs. Some cover more than forty years of satellite observations. (ESA)"
+        "# ESA-Developed Earth Observation Missions\r\nEnvisat has been followed by a fleet of European Earth observation satellites, including experimental Earth science satellites, operational Copernicus Sentinel satellites financed by the European Union, and weather satellites operated by EUMETSAT. (ESA)",
+        "# UN-GCOS Essential Climate Variables\r\nThe UN’s Global Climate Observing System has identified 55 ‘essential climate variables’. Around two-thirds can be observed from space. ESA’s Climate Change Initiative is developing satellite-derived data sequences for 27 of these ECVs. (ESA)",
+        "# ESA-CCI Essential Climate Variables\r\nSatellite-derived ECV data records generated by the Climate Change Initiative stretch over five decades (ESA)"
       ],
       "imageFits": [
-        "contain",
         "contain",
         "contain",
         "contain",

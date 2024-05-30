@@ -17,13 +17,15 @@
         "assets/intro_large_14.jpg",
         "assets/intro_large_15.png",
         "assets/story32-image03.png",
-        "assets/story32-image02.png"
+        "assets/story32-image02.png",
+        "assets/intro_large_08.jpg"
       ],
       "imageCaptions": [
         "L'atmosphère au-dessus du bassin de l'Amazone est couverte d'orages sur cette photo prise depuis la station spatiale internationale le 6 octobre 2009 (NASA).",
         "# Dioxyde de carbone atmosphérique au cours des 800 000 dernières années\r\nHistoire du dioxyde de carbone atmosphérique au cours des 800 000 dernières années, basée sur des échantillons d'air provenant de carottes de glace de la station Vostok, en Antarctique, et depuis 1958, sur des mesures directes de l'observatoire Mauna Loa, à Hawaï. On pense que la concentration actuelle de plus de 400 parties par million est plus élevée qu'elle ne l'a été pendant des millions d'années. (source des données : Institut océanographique Scripps)",
         "# Changement de température par décennie\r\n\r\nÉvolution de la température moyenne à la surface du globe au cours de l'ère industrielle. Les principaux centres mondiaux de recherche sur le climat s'accordent à dire que la température de la Terre a augmenté de plus d'un degré Celsius au cours du siècle dernier. Sources des données : ERA5 (ECMWF), GISTEMPv4 (NASA), HadCRUT5 (UK Met Office), NOAAGlobalTempv5 (NOAA), JRA-55 (Japan Meteorological Agency), Berkeley Earth (Copernicus Climate Change Service / ECMWF)",
-        "# Changement de température entre 2020 et 1981-2010\r\n\r\nTempérature de l'air à une hauteur de deux mètres pour 2020, indiquée par rapport à sa moyenne de 1981-2010. L'augmentation de la température à un endroit particulier peut être nettement supérieure à la moyenne mondiale. Source des données : ERA5 (Copernicus Climate Change Service / ECMWF)"
+        "# Changement de température entre 2020 et 1981-2010\r\n\r\nTempérature de l'air à une hauteur de deux mètres pour 2020, indiquée par rapport à sa moyenne de 1981-2010. L'augmentation de la température à un endroit particulier peut être nettement supérieure à la moyenne mondiale. Source des données : ERA5 (Copernicus Climate Change Service / ECMWF)",
+        "Le satellite d'observation de la Terre Envisat de l'ESA exploité de 2002 à 2012 (ESA)"
       ],
       "imageFits": [
         "cover",
@@ -34,38 +36,35 @@
       ]
     },
     {
-      "type": "image",
+      "type": "video",
       "text": "## Suivre le changement climatique depuis l'espace\r\n\r\nAu cours des dernières décennies, les satellites d'observation de la Terre nous ont offert une vue sans précédent de notre monde et sont devenus un outil essentiel pour surveiller l'évolution du climat. Ils sont particulièrement utiles pour surveiller les zones inaccessibles telles que les régions polaires, où certains des changements climatiques sont les plus extrêmes.\r\n \r\nCes \"capteurs à distance\" mesurent l'expansion et la contraction de la glace de mer, la lente fonte des glaciers et la combustion des feux de forêt, suivent les nuages et les aérosols qui se déplacent dans l'atmosphère, ainsi que les modèles de nutriments et de température qui tourbillonnent dans les océans.\r\n\r\nLes premières missions opérationnelles de télédétection ont eu lieu à la fin des années 1970 : cela signifie que nous avons maintenant la possibilité de revenir sur quarante ans d'observations pour de nombreuses composantes du climat, ce qui est suffisamment long pour commencer à étudier le changement climatique. Cependant, la compilation de longues séries chronologiques de données satellitaires utiles aux climatologues constitue un défi majeur.\r\n\r\n## Changement de technologie\r\n\r\nLes satellites ont généralement une durée de vie inférieure à dix ans. D'autres satellites les remplacent ensuite, construits avec les dernières technologies. S'ils veulent obtenir des mesures cohérentes et fiables, les scientifiques doivent tenir compte des différences entre les instruments, des différentes techniques de mesure et des lacunes dans la couverture.\r\n\r\nLe travail de ces scientifiques et les données climatiques qu'ils ont produites sont au cœur de cette application web. Elle comprend un [visualiseur de données interactif] (https://cfs.climate.esa.int) qui vous permet d'explorer les données climatiques sur des globes en 3D et des cartes du monde en 2D.",
       "shortText": "## Suivre le changement climatique depuis l'espace\r\n\r\nAu cours des dernières décennies, les satellites d'observation de la Terre nous ont offert une vue sans précédent de notre monde et sont devenus un outil essentiel pour surveiller l'évolution du climat.\r\n\r\n- Ils mesurent l'étendue de la glace de mer, des glaciers et des incendies de forêt, suivent les nuages et les aérosols dans l'atmosphère, les nutriments et la température des océans.\r\n- Les premières missions opérationnelles de télédétection ont eu lieu à la fin des années 1970.\r\n- Nous disposons maintenant de quarante ans d'observations pour de nombreuses composantes du climat.\r\n- Assez longtemps pour commencer à étudier le changement climatique.\r\n\r\n\r\n## Changement de technologie\r\n\r\n- Les satellites durent généralement moins de dix ans avant que d'autres satellites et technologies ne les remplacent.\r\n- Les scientifiques doivent tenir compte des différences entre les instruments, des différentes techniques de mesure et des lacunes dans la couverture.\r\n\r\nLe travail de ces scientifiques et les données climatiques qu'ils ont produites sont au cœur de cette application Web. Elle comprend une visionneuse de données interactive qui vous permet d'explorer les données climatiques sur des globes en 3D et des cartes du monde en 2D.",
-      "images": [
-        "assets/intro_large_08.jpg",
-        "assets/story32-image01.jpg"
-      ],
-      "imageCaptions": [
-        "Le satellite d'observation de la Terre Envisat de l'ESA exploité de 2002 à 2012 (ESA)",
-        "# Missions d'observation de la Terre développées par l'ESA\r\nEnvisat a été suivi par une flotte de satellites européens d'observation de la Terre, dont des satellites expérimentaux en sciences de la Terre, des satellites opérationnels Copernicus Sentinel financés par l'Union européenne et des satellites météorologiques exploités par EUMETSAT. (ESA)"
-      ],
       "imageFits": [
         "contain",
         "contain",
-        "contain",
-        "contain",
         "contain"
+      ],
+      "videoCaptions": "assets/parisagreement.vtt",
+      "videoPoster": "assets/parisagreement.jpg",
+      "videoSrc": [
+        "assets/parisagreement-web.mp4"
       ]
     },
     {
       "type": "image",
-      "text": "## Initiative de l'ESA sur le changement climatique\r\n\r\nL'Initiative sur le changement climatique (ICC) de l'Agence spatiale européenne a été créée pour relever le défi de l'utilisation des données des satellites d'observation de la Terre pour suivre les changements climatiques en réunissant des experts en télédétection et des experts en modélisation climatique.\r\n    \r\nLes climatologues ont identifié plus de cinquante \"variables climatiques essentielles\" (VCE) comme étant les composants clés du climat de la Terre. L'ICC se concentre sur vingt-deux de ces variables, pour lesquelles l'expertise européenne en matière de télédétection peut apporter une contribution significative, en exploitant les archives de plusieurs décennies de données provenant des missions satellitaires de l'ESA et d'autres agences spatiales.\r\n\r\nLes équipes scientifiques de l'ICC ont fusionné les observations de différentes missions et capteurs en séries de données continues, fournissant des produits de données stables et à long terme pour améliorer les informations disponibles pour les modélisateurs climatiques et les chercheurs. Le programme rassemble plus de 450 experts dans un éventail de spécialisations scientifiques, techniques et de développement, issus de la communauté européenne d'observation de la Terre, afin d'offrir un accès durable et transparent aux données climatiques mondiales.",
-      "shortText": "## Initiative de l'ESA sur le changement climatique\r\n\r\nL'Initiative sur le changement climatique (ICC) de l'Agence spatiale européenne a été créée pour relever le défi d'utiliser les données des satellites d'observation de la Terre pour suivre les changements climatiques.\r\n    \r\n- Plus de 50 \"variables climatiques essentielles\" (VCE) ont été identifiées comme les composantes clés du climat de la Terre.\r\n- L'ICC se concentre sur 22 d'entre elles, pour lesquelles l'expertise et la technologie européennes peuvent apporter une contribution significative.\r\n- L'utilisation des archives pluridécennales de données provenant des missions satellitaires de l'ESA et d'autres agences spatiales.\r\n- La production de produits de données stables et à long terme pour améliorer les informations disponibles pour les modélisateurs du climat et les chercheurs.\r\n- Plus de 450 experts dans un éventail de spécialisations scientifiques, techniques et de développement, issus de la communauté européenne d'observation de la Terre.\r\n- Offrir un accès durable et transparent aux données climatiques mondiales.",
+      "text": "## Initiative de l'ESA sur le changement climatique\r\n\r\nL'Initiative sur le changement climatique (ICC) de l'Agence spatiale européenne a été créée pour relever le défi de l'utilisation des données des satellites d'observation de la Terre pour suivre les changements climatiques en réunissant des experts en télédétection et des experts en modélisation climatique.\r\n    \r\nLes climatologues ont identifié 55 \"variables climatiques essentielles\" (VCE) comme étant les composants clés du climat de la Terre. L'ICC se concentre sur 27 de ces variables, pour lesquelles l'expertise européenne en matière de télédétection peut apporter une contribution significative, en exploitant les archives de plusieurs décennies de données provenant des missions satellitaires de l'ESA et d'autres agences spatiales.\r\n\r\nLes équipes scientifiques de l'ICC ont fusionné les observations de différentes missions et capteurs en séries de données continues, fournissant des produits de données stables et à long terme pour améliorer les informations disponibles pour les modélisateurs climatiques et les chercheurs. Le programme rassemble près de 700 experts dans un éventail de spécialisations scientifiques, techniques et de développement, issus de la communauté européenne d'observation de la Terre, afin d'offrir un accès durable et transparent aux données climatiques mondiales.",
+      "shortText": "## Initiative de l'ESA sur le changement climatique\r\n\r\nL'Initiative sur le changement climatique (ICC) de l'Agence spatiale européenne a été créée pour relever le défi d'utiliser les données des satellites d'observation de la Terre pour suivre les changements climatiques.\r\n    \r\n- 55 \"variables climatiques essentielles\" (VCE) ont été identifiées comme les composantes clés du climat de la Terre.\r\n- L'ICC se concentre sur 27 d'entre elles, pour lesquelles l'expertise et la technologie européennes peuvent apporter une contribution significative.\r\n- L'utilisation des archives pluridécennales de données provenant des missions satellitaires de l'ESA et d'autres agences spatiales.\r\n- La production de produits de données stables et à long terme pour améliorer les informations disponibles pour les modélisateurs du climat et les chercheurs.\r\n- Près de 700 experts dans un éventail de spécialisations scientifiques, techniques et de développement, issus de la communauté européenne d'observation de la Terre.\r\n- Offrir un accès durable et transparent aux données climatiques mondiales.",
       "images": [
         "assets/intro_large_10.jpg",
+        "assets/story32-image01.jpg",
         "assets/story32-image05.jpg",
         "assets/story32-image04.jpg"
       ],
       "imageCaptions": [
         "9 juillet 2015 : L'ouverture du Centre européen pour les applications spatiales et les télécommunications (ECSAT) de l'ESA à Harwell, au Royaume-Uni, qui abrite le bureau du climat de l'ESA (ESA).",
-        "# Variables climatiques essentielles de l'UN-GCOS\r\nLe Système mondial d'observation du climat de l'ONU a identifié 54 \"variables climatiques essentielles\".\r\nL'initiative sur le changement climatique de l'ESA développe des séquences de données dérivées de satellites pour 22 de ces VCE. (GCOS/Planetary Visions)",
-        "# Variables climatiques essentielles de l'ESA-CCI\r\nPériodes de temps des VCE de l'ESA-CCI. Certaines couvrent plus de quarante ans d'observations par satellite. (ESA)"
+        "# Missions d'observation de la Terre développées par l'ESA\r\nEnvisat a été suivi par une flotte de satellites européens d'observation de la Terre, dont des satellites expérimentaux en sciences de la Terre, des satellites opérationnels Copernicus Sentinel financés par l'Union européenne et des satellites météorologiques exploités par EUMETSAT. (ESA)",
+        "# Variables climatiques essentielles de l'UN-GCOS\r\nLe Système mondial d'observation du climat de l'ONU a identifié 55 \"variables climatiques essentielles\". Environ deux tiers peuvent être observés depuis l'espace. L'initiative sur le changement climatique de l'ESA développe des séquences de données dérivées de satellites pour 22 de ces VCE.  (ESA)",
+        "# Variables climatiques essentielles de l'ESA-CCI\r\nLes données ECV dérivées des satellites et générées par l'initiative sur le changement climatique s'étendent sur cinq décennies (ESA)"
       ],
       "imageFits": [
         "contain",

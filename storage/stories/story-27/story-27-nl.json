@@ -16,16 +16,16 @@
       "images": [
         "assets/story27-image01.jpg",
         "assets/story27-image02.jpg",
-        "assets/story27-image10.jpg",
         "assets/story27-image16.jpg",
-        "assets/story27-image17.jpg"
+        "assets/story27-image17.jpg",
+        "assets/story27-image21.jpg"
       ],
       "imageCaptions": [
         "Vrachtwagens die gefabriceerde sneeuw afleveren in een straat in Moskou tijdens een hittegolf in december 2019 (Twitter)",
         "Hittegolven in de zomer kunnen schade toebrengen aan de infrastructuur, zoals spoorrails en wegdek, en kunnen de water- en elektriciteitsvoorziening overbelasten (US Dept of Transportation)",
-        "Gemiddelde nachttemperatuur in Parijs om 22.00 uur tijdens de hittegolf van de zomer van 2003, die tot duizenden sterfgevallen door hitte heeft geleid. (VITO/Planetek)",
         "In sommige delen van Europa steeg de luchttemperatuur in de zomer van 2022 meer dan 10°C boven het gemiddelde voor de tijd van het jaar. Dit beeld toont de oppervlaktetemperatuur over Parijs op 18 juni 2022, gemeten door het experimentele ECOSTRESS-instrument op het internationale ruimtestation. (NASA/JPL-Caltech)",
-        "In de zomer van 2022 werd het groene land van Engeland en Noord-Frankrijk bruin na maanden van hoge temperaturen en weinig neerslag. Dit beeld is op 12 augustus 2022 gemaakt door de Copernicus Sentinel-3 satelliet van ESA. Gedurende die maand registreerde de infraroodsensor van de satelliet landoppervlaktetemperaturen van meer dan 45°C in het Verenigd Koninkrijk, 50°C in Frankrijk en 60°C in Spanje. (Bevat gewijzigde Copernicus Sentinel-gegevens (2022), verwerkt door ESA)"
+        "In de zomer van 2022 werd het groene land van Engeland en Noord-Frankrijk bruin na maanden van hoge temperaturen en weinig neerslag. Dit beeld is op 12 augustus 2022 gemaakt door de Copernicus Sentinel-3 satelliet van ESA. Gedurende die maand registreerde de infraroodsensor van de satelliet landoppervlaktetemperaturen van meer dan 45°C in het Verenigd Koninkrijk, 50°C in Frankrijk en 60°C in Spanje. (Bevat gewijzigde Copernicus Sentinel-gegevens (2022), verwerkt door ESA)",
+        "Temperatuur van het landoppervlak tijdens de Zuid-Europese hittegolf van zomer 2023. Deze afbeelding maakt gebruik van gegevens van de radiometer van de Copernicus Sentinel-3 satelliet om de temperatuur van het landoppervlak te tonen in de ochtend van 17 juli 2023. Door de klimaatverandering zullen hittegolven zoals deze waarschijnlijk vaker voorkomen en heviger zijn. (Bevat gewijzigde Copernicus Sentinel-gegevens (2023), bewerkt door ESA)"
       ],
       "imageFits": [
         "contain",
@@ -124,12 +124,14 @@
         "assets/story27-image07.jpg",
         "assets/story27-image12.jpg",
         "assets/story27-image05.jpg",
+        "assets/story27-image20.jpg",
         "assets/story27-image15.jpg"
       ],
       "imageCaptions": [
         "Straatverlichting tekent het stedelijk gebied van Londen af op deze foto die ESA-astronaut Tim Peake in 2016 maakte vanuit het internationale ruimtestation. Donkere gebieden tonen de locaties van de groene longen van de stad - de vele grote parken. (ESA/NASA)",
         "Landoppervlaktetemperatuur (links) en een maat voor het stedelijk hitte-eiland ten opzichte van de omliggende landelijke gebieden (rechts) voor Londen, gebaseerd op Landsat thermisch infrarood waarnemingen voor 7 juli 2020. De stijging van de landoppervlaktetemperatuur in steden is nog groter dan die van de luchttemperatuur. (Universiteit van Liecester)",
         "Luchttemperatuur voor Madrid op 25 juni 2008 om 22:18 UTC (rechts), vergeleken met een kaart van het verzegelde grondoppervlak (links), waarop de kunstmatige oppervlakken van de stad zijn aangegeven. (VITO/Indra/Planetek/Europees Milieuagentschap)",
+        "Oppervlakte temperaturen rond Rome, Italië, gemeten vanuit de ruimte om 22:23 CEST op 17 juli 2023. De oppervlaktetemperatuur bereikte 35°C in sommige delen van de stad, maar het verkoelende effect van vegetatie is bijvoorbeeld te zien in het Appian Way Park. De temperaturen werden geregistreerd door het Ecostress-instrument van NASA op het internationale ruimtestation, dat helpt bij de ontwikkeling van een nieuwe Copernicus Sentinel Expansion-satelliet - de Land Surface Temperature Monitoring (LSTM) missie. (NASA/JPL)",
         "Een paar eikenbomen op Hampstead Heath in Londen, weergegeven als een puntenwolk op basis van laserafstandsmetingen.\r\nDe massa koolstof die door bomen is opgeslagen, kan worden geschat met behulp van 3D-modellen van bomen op basis van laserscanning\r\n(lidar - light detection and ranging). (M Disney/P Wilkes/UCL)"
       ],
       "imageFits": [

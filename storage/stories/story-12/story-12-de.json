@@ -2,134 +2,130 @@
   "id": "story-12",
   "slides": [
     {
+      "type": "splashscreen",
       "text": "# Der Kohlenstoffkreislauf\r\n\r\nKohlenstoff ist eines der am häufigsten vorkommenden Elemente im Universum und Grundlage allen Lebens auf der Erde. Er findet sich in der Atmosphäre, im Ozean, in Pflanzen und Gesteinen, aber sein natürlicher Kreislauf wird durch menschliche Aktivitäten gestört , was tiefgreifende Auswirkungen auf das Klima der Erde hat.",
       "shortText": "# Der Kohlenstoffkreislauf\r\n\r\nKohlenstoff ist eines der am häufigsten vorkommenden Elemente im Universum und Grundlage allen Lebens auf der Erde. Er findet sich in der Atmosphäre, im Ozean, in Pflanzen und Gesteinen, aber sein natürlicher Kreislauf wird durch menschliche Aktivitäten gestört , was tiefgreifende Auswirkungen auf das Klima der Erde hat.",
-      "galleryItems": [],
-      "splashImage": "assets/story12-image02.jpg"
+      "images": [
+        "assets/story12-image02.jpg"
+      ]
     },
     {
+      "type": "image",
       "text": "## Ein lebenswichtiges Element\r\n\r\nKohlenstoff ist ein Grundbaustein für das Leben auf der Erde. Er kann mit vielen Elementen stabile chemische Bindungen eingehen und ermöglicht so den Aufbau großer und komplexer Moleküle, einschließlich der für das Leben wichtigen organischen Verbindungen. Die Bindungen von Kohlenstoff zu anderen Elementen sind stabil, aber nicht so stark, dass sie eine chemische Reaktion verhindern.\r\n\r\nDurch die Reaktion mit anderen Elementen durchläuft der Kohlenstoff Atmosphäre, Ozeane, Pflanzen und Tiere, Böden und Gesteine. Zwischen diesen Kohlenstoffreservoirs findet ein Austausch durch eine Vielzahl von Prozessen statt. Wenn Kohlenstoffbindungen aufgebrochen werden, wird Energie freigesetzt, was einige Kohlenstoffverbindungen - Kohlenwasserstoffe - zu geeigneten Brennstoffquellen macht.\r\n \r\n## Treibhausgase\r\n\r\nAber die gleichen Bindungen, die Kohlenstoffmoleküle so wichtig für das Leben machen, haben auch eine Kehrseite. Sie absorbieren langwellige Infrarotstrahlung, so dass die Moleküle anfangen zu schwingen und sich erwärmen können, wodurch Wärme in der Atmosphäre gespeichert wird. Dies trägt zum Treibhauseffekt bei.\r\n\r\nKohlenstoffverbindungen wie Kohlendioxid und Methan sind weder die einzigen noch die stärksten Treibhausgase, aber unsere zunehmende Verbrennung von fossilen Brennstoffen - Kohle, Erdöl und Erdgas - hat zu einer Anhäufung von Kohlendioxid in der Atmosphäre geführt, wodurch der Kohlenstoffkreislauf gestört wird und sich das Klima der Erde erwärmt.",
       "shortText": "## Ein lebenswichtiges Element\r\n\r\n- Kohlenstoff ist ein Grundbaustein für das Leben auf der Erde.\r\n- Bildet stabile Bindungen mit vielen Elementen.\r\n- Ermöglicht den Aufbau großer und komplexer Moleküle, einschließlich der für das Leben wichtigen organischen Verbindungen.\r\n- Die Bindungen sind stabil, aber nicht so stark, dass sie eine chemische Reaktion verhindern.\r\n- Reaktionen treiben Kohlenstoff durch die Atmosphäre, die Ozeane, Pflanzen und Tiere, den Boden und das Gestein.\r\n- Wenn Kohlenstoffbindungen gebrochen werden, wird Energie freigesetzt.\r\n- Daher eignen sich einige Kohlenstoffverbindungen - Kohlenwasserstoffe - als Brennstoff.\r\n\r\n## Treibhausgase\r\n\r\n- Kohlenstoffverbindungen absorbieren auch gut Infrarotstrahlung, so dass die Moleküle vibrieren und sich erwärmen.\r\n- Sie halten die Wärme in der Atmosphäre zurück und tragen so zum Treibhauseffekt bei.\r\n\r\nDie zunehmende Verbrennung fossiler Brennstoffe hat zu einer Anhäufung von CO2 in der Atmosphäre geführt, wodurch der Kohlenstoffkreislauf gestört wird und sich das Klima erwärmt.",
-      "galleryItems": [
-        {
-          "type": "image",
-          "imageCaption": "Verbrennung von überschüssigem Erdgas auf einer Ölförderplattform in der Nordsee. Kohlendioxid und Wasserdampf sind die wichtigsten Verbrennungsprodukte. Durch die Gewinnung und Verbrennung von Kohlenwasserstoffen wird Kohlenstoff aus einer Gesteinslagerstätte in die Atmosphäre gepumpt. (Varodrig)",
-          "image": "assets/story12-image01.jpg",
-          "imageFit": "contain"
-        },
-        {
-          "type": "embedded",
-          "description": "# Atmosphärische Kohlendioxid-Konzentration\r\nAtmosphärische Kohlendioxidkonzentration in den letzten 300 Jahren, basierend auf Luftproben aus Eisbohrkernen und seit 1958 auf direkten Messungen des Mauna Loa Observatory, Hawaii. Kohlendioxid sammelt sich seit der industriellen Revolution in der Atmosphäre an, wobei seine Konzentration in der zweiten Hälfte des zwanzigsten Jahrhunderts rasch anstieg. (Quelle: Scripps Institute of Oceanography)",
-          "embeddedSrc": "https://datawrapper.dwcdn.net/27Ww5/6/"
-        },
-        {
-          "type": "image",
-          "imageCaption": "Die Molekularstruktur von Kohlendioxid- und Methanmolekülen ermöglicht es, Infrarotstrahlung zu absorbieren. Wärme wird von einem Molekül absorbiert, wenn die Atome im Inneren mit der Frequenz der Infrarotstrahlung schwingen können. Komplexere Moleküle haben mehr Schwingungsformen und damit mehr Möglichkeiten, Wärme zu absorbieren, was sie zu stärkeren Treibhausgasen macht. Ein Methanmolekül, in dem ein Kohlenstoffatom (grau) an vier Wasserstoffatome (rot) gebunden ist, kann mehr Wärme absorbieren als ein Kohlendioxidmolekül, in dem ein Kohlenstoffatom an zwei Sauerstoffatome (blau) gebunden ist. Ein Fluorchlorkohlenwasserstoff wie FCKW-113 (grün und gelb) hat sogar noch mehr Bindungen, was es zu einem sehr starken Treibhausgas macht. (Planetary Vision)",
-          "image": "assets/story12-image03.jpg",
-          "imageFit": "contain"
-        },
-        {
-          "type": "image",
-          "imageCaption": "# Mittelwert über die Luftsäule von Methan für 2020\r\nDurchschnittliche atmosphärische Methankonzentration für das Jahr 2020, unter Verwendung von Daten des Copernicus-Satelliten Sentinel-5P. Die atmosphärischen Methanwerte sind in der nördlichen Hemisphäre höher, wo sich der größte Teil der Landfläche der Welt befindet. \r\n(CCI-Treibhausgasprojekt/enthält modifizierte Copernicus-Sentinel-Daten für 2020)",
-          "image": "assets/story12-04.png",
-          "imageFit": "contain"
-        },
-        {
-          "type": "image",
-          "imageCaption": "# Atmosphärisches Kohlendioxid als Funktion der Zeit und des Breitengrades\r\nDie Daten zeigen den natürlichen Jahreszyklus von Kohlendioxidaufnahme und -abgabe, der auf der Nordhalbkugel besonders ausgeprägt ist, sowie einen allmählichen Anstieg im Laufe der Jahre, der auf menschliche Aktivitäten zurückzuführen ist. Die Daten stammen von dem SCIAMACHY-Sensor auf Envisat. (ESA-CCI)",
-          "image": "assets/ghg_large_11.png",
-          "imageFit": "contain"
-        }
+      "images": [
+        "assets/story12-image01.jpg",
+        "assets/ghg_large_16.png",
+        "assets/story12-image03.jpg",
+        "assets/story12-04.png",
+        "assets/ghg_large_11.png"
+      ],
+      "imageCaptions": [
+        "Verbrennung von überschüssigem Erdgas auf einer Ölförderplattform in der Nordsee. Kohlendioxid und Wasserdampf sind die wichtigsten Verbrennungsprodukte. Durch die Gewinnung und Verbrennung von Kohlenwasserstoffen wird Kohlenstoff aus einer Gesteinslagerstätte in die Atmosphäre gepumpt. (Varodrig)",
+        "# Atmosphärische Kohlendioxid-Konzentration\r\nAtmosphärische Kohlendioxidkonzentration in den letzten 300 Jahren, basierend auf Luftproben aus Eisbohrkernen und seit 1958 auf direkten Messungen des Mauna Loa Observatory, Hawaii. Kohlendioxid sammelt sich seit der industriellen Revolution in der Atmosphäre an, wobei seine Konzentration in der zweiten Hälfte des zwanzigsten Jahrhunderts rasch anstieg. (Quelle: Scripps Institute of Oceanography)",
+        "Die Molekularstruktur von Kohlendioxid- und Methanmolekülen ermöglicht es, Infrarotstrahlung zu absorbieren. Wärme wird von einem Molekül absorbiert, wenn die Atome im Inneren mit der Frequenz der Infrarotstrahlung schwingen können. Komplexere Moleküle haben mehr Schwingungsformen und damit mehr Möglichkeiten, Wärme zu absorbieren, was sie zu stärkeren Treibhausgasen macht. Ein Methanmolekül, in dem ein Kohlenstoffatom (grau) an vier Wasserstoffatome (rot) gebunden ist, kann mehr Wärme absorbieren als ein Kohlendioxidmolekül, in dem ein Kohlenstoffatom an zwei Sauerstoffatome (blau) gebunden ist. Ein Fluorchlorkohlenwasserstoff wie FCKW-113 (grün und gelb) hat sogar noch mehr Bindungen, was es zu einem sehr starken Treibhausgas macht. (Planetary Vision)",
+        "# Mittelwert über die Luftsäule von Methan für 2020\r\nDurchschnittliche atmosphärische Methankonzentration für das Jahr 2020, unter Verwendung von Daten des Copernicus-Satelliten Sentinel-5P. Die atmosphärischen Methanwerte sind in der nördlichen Hemisphäre höher, wo sich der größte Teil der Landfläche der Welt befindet. \r\n(CCI-Treibhausgasprojekt/enthält modifizierte Copernicus-Sentinel-Daten für 2020)",
+        "# Atmosphärisches Kohlendioxid als Funktion der Zeit und des Breitengrades\r\nDie Daten zeigen den natürlichen Jahreszyklus von Kohlendioxidaufnahme und -abgabe, der auf der Nordhalbkugel besonders ausgeprägt ist, sowie einen allmählichen Anstieg im Laufe der Jahre, der auf menschliche Aktivitäten zurückzuführen ist. Die Daten stammen von dem SCIAMACHY-Sensor auf Envisat. (ESA-CCI)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
+      "type": "globe",
       "text": "## Der schnelle Kohlenstoffkreislauf\r\n\r\nPflanzen nehmen durch Photosynthese Kohlendioxid aus der Atmosphäre auf, wenn sie im Frühjahr und Sommer wachsen, und geben einen Teil davon wieder ab, wenn ihre Blätter im Herbst und Winter absterben. Auch Tiere, die Pflanzen fressen und Kohlendioxid ausatmen, geben Kohlenstoff an die Atmosphäre ab. Dieser Kreislauf des Kohlenstoffs durch Lebewesen wird als schneller Kohlenstoffkreislauf bezeichnet.\r\n\r\nDer jahreszeitliche Wachstumszyklus lässt sich an den Kohlendioxidwerten in der Atmosphäre ablesen, die auf dem interaktiven Globus dargestellt sind: Am Ende des nördlichen Winters wird ein Höchststand erreicht, bevor die schnell wachsenden Pflanzen im Frühjahr wieder Kohlendioxid aufnehmen. Der atmosphärische Kohlendioxidgehalt schwankt auf der Nordhalbkugel am stärksten, weil es dort mehr Land und damit mehr Pflanzen gibt als auf der Südhalbkugel. Zusätzlich zum jahreszeitlichen Zyklus ist ein deutlicher Anstieg des atmosphärischen Kohlendioxids von Jahr zu Jahr zu beobachten - ein Zeichen dafür, dass der Kohlenstoffkreislauf aus dem Gleichgewicht geraten ist, was hauptsächlich auf die Verbrennung fossiler Brennstoffe zurückzuführen ist.\r\n \r\n## Kohlenstoff und die Landoberfläche\r\n\r\n[Veränderungen in der Landnutzung und Landbedeckung](stories/story-28/3) verändern ebenfalls den Kohlenstoffkreislauf. Die Abholzung tropischer Wälder für landwirtschaftliche Nutzung hat einen doppelten Effekt. Einerseits gelangen große Mengen an Kohlendioxid durch Brände in die Atmosphäre, während gleichzeitig die Bäume entfernt werden, die Kohlenstoff absorbieren und speichern, solange sie noch leben.\r\n\r\nIn der Arktis tauen große Flächen [Permafrost](stories/story-15/5) aufgrund durch der erhöhten Lufttemperaturen auf.  Dadurch wird der Kohlenstoff im Boden der Zersetzung ausgesetzt und es können potentiell große Mengen an Methan in die Atmosphäre freigesetzt werden. Wenn Böden in den nördlichen Breitengrade auftauen und austrocknen, werden riesige Wald-, Busch- und Torfgebiete der Gefahr von [Waldbränden](stories/story-28/1) ausgesetzt. Feuer ist eine Schlüsselkomponente des Kohlenstoffkreislaufs, da Kohlenstoff aus der Biosphäre in die Atmosphäre transportiert wird.",
       "shortText": "## Der schnelle Kohlenstoffkreislauf\r\n\r\nDer Kreislauf des Kohlenstoffs durch Lebewesen ist als schneller Kohlenstoffkreislauf bekannt.\r\n\r\n- Pflanzen nehmen durch Photosynthese CO2 aus der Atmosphäre auf, wenn sie im Frühjahr und Sommer wachsen.\r\n- Ein Teil wird durch das Absterben von Blättern und durch Tiere, die Pflanzen fressen und Kohlendioxid ausatmen, wieder abgegeben.\r\n- Der CO2-Gehalt in der Atmosphäre erreicht am Ende des nördlichen Winters seinen Höhepunkt.\r\n- Schnell wachsende Pflanzen beginnen im Frühjahr mit der Aufnahme von CO2.\r\n- Der atmosphärische Kohlenstoffgehalt variiert am stärksten auf der nördlichen Hemisphäre (mehr Land, daher mehr Pflanzen).\r\n- Ein jährlicher Anstieg des CO2 zeigt, dass der Kohlenstoffkreislauf aus dem Gleichgewicht geraten ist (hauptsächlich durch die Verbrennung fossiler Brennstoffe).\r\n\r\n## Kohlenstoff und die Landoberfläche\r\n\r\n- Auch Veränderungen in der Landnutzung und der Bodenbedeckung verändern den Kohlenstoffkreislauf.\r\n- Bei der Abholzung von Tropenwäldern werden durch Brände große Mengen an CO2 freigesetzt und Bäume entfernt, die Kohlenstoff aufnehmen und speichern.\r\n- Auftauender Permafrost ermöglicht Zersetzung des Bodenkohlenstoffs und setzt zudem potenziell große Mengen Methan frei.\r\n- Die Erwärmung und Austrocknung der nördlichen Länder setzt große Wald-, Busch- und Torfgebiete der Gefahr von Waldbränden aus.\r\n- Feuer ist eine Schlüsselkomponente des Kohlenstoffkreislaufs, die Kohlenstoff aus der Biosphäre in die Atmosphäre transportiert.",
-      "galleryItems": [
-        {
-          "type": "globe",
-          "flyTo": {
-            "position": {
-              "longitude": 54.03,
-              "latitude": 26.9,
-              "height": 24997871.88
-            },
-            "orientation": {
-              "heading": 360,
-              "pitch": -89.96,
-              "roll": 0
-            }
-          },
-          "layer": [
-            {
-              "id": "greenhouse.xco2",
-              "timestamp": "2007-12-06T00:00:00.000Z"
-            }
-          ],
-          "layerDescription": "# CCI Atmosphärische Kohlendioxid-Konzentration"
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "flyTo": {
+        "position": {
+          "longitude": 54.03,
+          "latitude": 26.9,
+          "height": 24997871.88
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.96,
+          "roll": 0
         }
-      ]
+      },
+      "layer": [
+        {
+          "id": "greenhouse.xco2",
+          "timestamp": "2007-12-06T00:00:00.000Z"
+        }
+      ],
+      "layerDescription": "# CCI Atmosphärische Kohlendioxid-Konzentration"
     },
     {
+      "type": "video",
       "text": "## Der langsame Kohlenstoffkreislauf\r\n\r\nDer Kohlenstoffaustausch zwischen der Atmosphäre und dem Ozean findet an der Meeresoberfläche statt. Kohlendioxid ist im Meerwasser gelöst, wird aber auch [von Meerespflanzen](stories/story-31/3) - dem Phytoplankton - aufgenommen, die mit Hilfe von Chlorophyll Photosynthese betreiben, genau wie Pflanzen an Land. Ein Teil des Kohlendioxids wird schnell wieder in die Atmosphäre freigesetzt, so dass die Ozeane eine Rolle im schnellen Kohlenstoffkreislauf spielen, aber ein anderer Teil wird in die Tiefsee gemischt, wo er jahrhundertelang als Teil des langsamen Kohlenstoffkreislaufs verbleibt.\r\n\r\nOzeanische Lebensformen, vom Phytoplankton bis zu Korallen, Krustentieren und Walen, nehmen während ihres Wachstums Kohlenstoff auf und nehmen einen Teil davon mit auf den Meeresboden, wenn sie sterben. Dort wird der Kohlenstoff in Sedimentgestein, dem größten Kohlenstoffspeicher der Erde, gebunden. Unter bestimmten Bedingungen können sich Schichten aus organischem Kohlenstoff zu Lagerstätten fossiler Brennstoffe - Kohle, Öl oder Erdgas - aufbauen.\r\n\r\nDer langsame Kreislauf führt den Kohlenstoff schließlich durch geologische Prozesse wieder in die Atmosphäre zurück. Kohlendioxid wird unter extremer Hitze und hohem Druck aus dem Gestein ausgestoßen und bei Vulkanausbrüchen in die Atmosphäre entlassen. Aus der Atmosphäre kann der Kohlenstoff in Form von schwacher Kohlensäure im Regenwasser gelöst an die Oberfläche zurückkehren, wo er bei der chemischen Verwitterung von Gestein und der Abgabe von Mineralien und Salzen an das Meer eine Rolle spielt.",
       "shortText": "## Der langsame Kohlenstoffkreislauf\r\n\r\n- CO2 ist im Meerwasser gelöst, wird aber auch von Meerespflanzen - dem Phytoplankton - absorbiert.\r\n- Ein Teil gelangt in die Tiefsee, wo es als Teil des langsamen Kohlenstoffkreislaufs jahrhundertelang verbleibt.\r\n\r\n- Ozeanische Lebensformen nehmen während ihres Wachstums Kohlenstoff auf und geben einen Teil davon nach ihrem Tod an den Meeresboden ab.\r\n- Dort wird der Kohlenstoff in Sedimentgestein, dem größten Kohlenstoffspeicher der Erde, gebunden.\r\n- Schichten von organischem Kohlenstoff können sich zu Lagerstätten fossiler Brennstoffe - Kohle, Erdöl oder Erdgas - aufbauen.\r\n\r\n- Der langsame Kreislauf führt den Kohlenstoff schließlich durch geologische Prozesse wieder in die Atmosphäre zurück.\r\n- Bei Vulkanausbrüchen wird CO2 aus dem Gestein ausgestoßen und in die Atmosphäre entlassen.\r\n- Der Kohlenstoff kehrt in Form von schwacher Kohlensäure, die im Regenwasser gelöst ist, an die Oberfläche zurück.\r\n- Er spielt dann eine Rolle bei der chemischen Verwitterung von Gesteinen und bei der Abgabe von Mineralien und Salzen an das Meer.",
-      "galleryItems": [
-        {
-          "type": "video",
-          "videoId": "evPBTu_a27I",
-          "videoSrc": ["assets/carbon_cycle-web.mp4"],
-          "videoCaptions": "assets/carboncycle.vtt",
-          "videoPoster": "assets/carbon_cycle.jpg"
-        }
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "videoId": "evPBTu_a27I",
+      "videoCaptions": "assets/carboncycle.vtt",
+      "videoPoster": "assets/carbon_cycle.jpg",
+      "videoSrc": [
+        "assets/carbon_cycle-web.mp4"
       ]
     },
     {
+      "type": "image",
       "text": "## Menschliche Intervention\r\n\r\nMenschliche Aktivitäten, vor allem die Verbrennung fossiler Brennstoffe, haben die Kohlenstoffmenge in der Atmosphäre über ihr natürliches Maß hinaus erhöht. Durch die Förderung und Verbrennung von Kohle, Erdöl und Erdgas schließen wir den langsamen Kohlenstoffkreislauf kurz und beschleunigen die Freisetzung von Kohlenstoff in die Atmosphäre gewaltig. Jedes Jahr stößt der Mensch durch die Verbrennung fossiler Brennstoffe 100-300 Mal mehr Kohlendioxid aus, als der langsame Kohlenstoffkreislauf durch Vulkane freisetzt.\r\n\r\nLand und Ozeane haben einen Teil dieses überschüssigen Kohlendioxids absorbiert, aber das atmosphärische Kohlendioxid ist in den letzten 150 Jahren immer noch um 30 % gestiegen - genug, um den Treibhauseffekt erheblich zu verstärken und das Klima zu verändern. Seit 1970 haben unsere Kohlendioxidemissionen um 90 % zugenommen. Der globale Tagesdurchschnitt des atmosphärischen Kohlendioxids erreichte 2013 einen Wert von 400 Teilen pro Million und liegt seit 2016 über diesem Niveau. Heute befindet sich mehr Kohlendioxid in der Atmosphäre als jemals zuvor in den letzten 2,6 Millionen Jahren. Die daraus resultierende Verstärkung des Treibhauseffekts hat die globale durchschnittliche [Landtemperatur](stories/story-27/1) im letzten Jahrhundert um mehr als ein Grad Celsius erhöht, und [Klimamodelle](stories/story-31/0) sagen voraus, dass sie bis zum Ende dieses Jahrhunderts um 2 bis 4 Grad Celsius über das vorindustrielle Niveau steigen wird.",
       "shortText": "## Menschliche Intervention\r\n\r\nMenschliche Aktivitäten, vor allem die Verbrennung fossiler Brennstoffe, haben die Kohlenstoffmenge in der Atmosphäre über ihr natürliches Niveau hinaus erhöht.\r\n\r\n- Die Gewinnung und Verbrennung von Kohle, Erdöl und Erdgas schließt den langsamen Kohlenstoffkreislauf kurz und beschleunigt den Eintrag von Kohlenstoff in die Atmosphäre enorm.\r\n- Jedes Jahr wird durch die Verbrennung fossiler Brennstoffe 100-300 mal mehr CO2 freigesetzt als durch Vulkane.\r\n- Land und Ozean absorbieren einen Teil des überschüssigen CO2.\r\n- Dennoch ist der CO2-Ausstoß in der Atmosphäre in den letzten 150 Jahren um 30 % gestiegen.\r\n- 90%iger Anstieg der CO2-Emissionen seit 1970.\r\n- Der CO2-Gehalt in der Atmosphäre liegt seit 2016 über 400 Teile pro Million.\r\n- Dies ist höher als zu jedem anderen Zeitpunkt in den letzten 2,6 Millionen Jahren.\r\n- 1.2 °C Anstieg der durchschnittlichen Landtemperatur im letzten Jahrhundert.\r\n- 2 bis 4 °C über dem vorindustriellen Niveau bis 2100 prognostiziert.",
-      "galleryItems": [
-        {
-          "type": "image",
-          "imageCaption": "In einer klaren Nacht leuchtet das Licht aus den Städten Westeuropas und zeichnet das Bild einer energiehungrigen Gesellschaft.  Aufnahme des ESA-Astronauten Alexander Gerst von der Internationalen Raumstation aus am 26. Juli 2014. (ESA/NASA)",
-          "image": "assets/intro_large_13.jpg",
-          "imageFit": "contain"
-        },
-        {
-          "type": "image",
-          "imageCaption": "Abholzung im Bundesstaat Rondônia im Westen Brasiliens, aufgenommen von ESAs Minisatellit Proba-V. Die braunen Farben zeigen abgeholzte Gebiete an - man beachte das charakteristische \"Fischgrätenmuster\", wenn Hauptstraßen durch ein Gebiet führen, gefolgt von Nebenstraßen für weitere Abholzungen. Landwirtschaftliche Aktivitäten, einschließlich der Abholzung von Wäldern, sind nach fossilen Brennstoffen die zweitgrößte Quelle von Treibhausgasen. (ESA/VITO)",
-          "image": "assets/ghg_large_18.jpg",
-          "imageFit": "cover"
-        },
-        {
-          "type": "image",
-          "imageCaption": "# Atmosphärisches Kohlendioxid während der letzten 800.000 Jahre\r\nKohlendioxidkonzentration auf der Grundlage von Luftproben aus Eisbohrkernen der Wostok-Station in der Antarktis und seit 1958 aus direkten Messungen des Mauna Loa Observatoriums auf Hawaii. Man geht davon aus, dass die derzeitige Konzentration von über 400 Teilen pro Million so hoch ist wie seit vielen Millionen Jahren nicht mehr. (Datenquelle: Scripps Institute of Oceanography)",
-          "image": "assets/intro_large_15.png",
-          "imageFit": "contain"
-        },
-        {
-          "type": "image",
-          "imageCaption": "Entdeckung eines Methanlecks im Öl- und Gasfeld des Permian Basin durch Kombination von Daten des Copernicus-Satelliten Sentinel-5P mit Messungen der Sentinel-2-Infrarotkanäle.\r\n(Enthält modifizierte Copernicus-Daten (2020), verarbeitet von Kayrros)",
-          "image": "assets/story12-05.png",
-          "imageFit": "contain"
-        },
-        {
-          "type": "image",
-          "imageCaption": "Kohlenmonoxidkonzentration über Südostaustralien nach den verheerenden Buschbränden von 2019/20 anhand von Daten des Copernicus-Satelliten Sentinel-5P. Auf der Grundlage dieser Messungen wird geschätzt, dass die Brände in nur drei Monaten 715 Millionen Tonnen Kohlendioxid in die Atmosphäre freigesetzt haben - 80 % mehr als die normalen jährlichen Emissionen Australiens.\r\n(Enthält modifizierte Copernicus-Sentinel-Daten (2019-20), verarbeitet von der ESA)",
-          "image": "assets/story12-06.jpg",
-          "imageFit": "contain"
-        }
+      "images": [
+        "assets/intro_large_13.jpg",
+        "assets/ghg_large_18.jpg",
+        "assets/intro_large_15.png",
+        "assets/story12-07.jpg",
+        "assets/story12-06.jpg"
+      ],
+      "imageCaptions": [
+        "In einer klaren Nacht leuchtet das Licht aus den Städten Westeuropas und zeichnet das Bild einer energiehungrigen Gesellschaft.  Aufnahme des ESA-Astronauten Alexander Gerst von der Internationalen Raumstation aus am 26. Juli 2014. (ESA/NASA)",
+        "Abholzung im Bundesstaat Rondônia im Westen Brasiliens, aufgenommen von ESAs Minisatellit Proba-V. Die braunen Farben zeigen abgeholzte Gebiete an - man beachte das charakteristische \"Fischgrätenmuster\", wenn Hauptstraßen durch ein Gebiet führen, gefolgt von Nebenstraßen für weitere Abholzungen. Landwirtschaftliche Aktivitäten, einschließlich der Abholzung von Wäldern, sind nach fossilen Brennstoffen die zweitgrößte Quelle von Treibhausgasen. (ESA/VITO)",
+        "# Atmosphärisches Kohlendioxid während der letzten 800.000 Jahre\r\nKohlendioxidkonzentration auf der Grundlage von Luftproben aus Eisbohrkernen der Wostok-Station in der Antarktis und seit 1958 aus direkten Messungen des Mauna Loa Observatoriums auf Hawaii. Man geht davon aus, dass die derzeitige Konzentration von über 400 Teilen pro Million so hoch ist wie seit vielen Millionen Jahren nicht mehr. (Datenquelle: Scripps Institute of Oceanography)",
+        "Multiskalige Satellitenbeobachtungen eines Methanaustritts in Algerien am 4. Januar 2020. Die Methanfahne, die von Copernicus Sentinel-5P entdeckt wurde, erstreckte sich über mehr als 200 km (links). Hochauflösende Sentinel-2-Bilder wurden verwendet, um den Ursprung der Methanfahne an einer Öl-/Gasquelle heranzuzoomen (rechts), und Sentinel-3 zeigte, dass das Leck sechs Tage lang anhielt (Mitte). (SRON / JPL / Enthält modifizierte Copernicus-Sentinel-Daten (2020), verarbeitet von der ESA)",
+        "Kohlenmonoxidkonzentration über Südostaustralien nach den verheerenden Buschbränden von 2019/20 anhand von Daten des Copernicus-Satelliten Sentinel-5P. Auf der Grundlage dieser Messungen wird geschätzt, dass die Brände in nur drei Monaten 715 Millionen Tonnen Kohlendioxid in die Atmosphäre freigesetzt haben - 80 % mehr als die normalen jährlichen Emissionen Australiens.\r\n(Enthält modifizierte Copernicus-Sentinel-Daten (2019-20), verarbeitet von der ESA)"
+      ],
+      "imageFits": [
+        "contain",
+        "cover",
+        "contain",
+        "contain",
+        "contain"
       ]
     },
     {
-      "text": "## Kohlenstoff aus dem Weltraum aufspüren\r\n\r\nDie von Satelliten gesammelten Daten geben Aufschluss darüber, wie sich die Treibhausgase auf der ganzen Welt verändern. Der 2002 gestartete Erdbeoachtungssatellit der Europäischen Weltraumorganisation \"Envisat\" trug einen der ersten Sensoren zur Messung der Kohlendioxid- und Methankonzentration in Oberflächennähe. Der japanische Satellit GOSAT folgte im Jahr 2009. Mit den neuesten Satelliten können nun auch punktuelle Quellen von Treibhausgasen aufgespürt werden.\r\n\r\nDie [Initiative zum Klimawandel](stories/story-32/3) der ESA verfolgt auch den Kohlenstoffkreislauf an Land und im Meer. Anhand von Karten der Bodenbedeckung und der Biomasse lässt sich die Menge des in den Pflanzen an Land gespeicherten Kohlenstoffs bestimmen; Messungen der Meeresfarbe zeigen das Phytoplankton und geben Aufschluss darüber, wie viel Kohlenstoff von diesen Meerespflanzen aufgenommen wird.\r\n\r\nKlimawissenschaftler nutzen diese Informationen, um unser Verständnis des Kohlenstoffkreislaufs und dessen Darstellung in ihren Klimamodellen auf ein neues Qualitätsniveau zu heben. Derart verbesserte Klimaprojektionen werden Entscheidungsträgern dabei helfen, herauszufinden, wie wir unsere Kohlenstoffemissionen steuern und das Gleichgewicht des Kohlenstoffkreislaufs wiederherstellen können.",
+      "type": "video",
+      "text": "## Kohlenstoff aus dem Weltraum aufspüren\r\n\r\nDie von Satelliten gesammelten Daten geben Aufschluss darüber, wie sich die Treibhausgase auf der ganzen Welt verändern. Der 2002 gestartete Erdbeoachtungssatellit der Europäischen Weltraumorganisation \"Envisat\" trug einen der ersten Sensoren zur Messung der Kohlendioxid- und Methankonzentration in Oberflächennähe. Der japanische Satellit GOSAT folgte im Jahr 2009. Mit den neuesten Satelliten können wir punktuelle Quellen von Treibhausgasen aufspüren, darunter Methanemissionen aus dem Kohlebergbau, der Öl- und Gasförderung und aus Mülldeponien.\r\n\r\nDiese Satellitenbeobachtungen sind Teil eines integrierten Systems zur Überwachung von Treibhausgasen, das als Reaktion auf das Pariser UNFCCC-Abkommen rasche Abhilfemaßnahmen unterstützen soll. Die Copernicus-Mission zur Überwachung des anthropogenen Kohlendioxids (CO2M) wird das anthropogene Kohlendioxid in noch nie dagewesener Auflösung verfolgen und damit ein einzigartiges und unabhängiges Mittel zur Bewertung der Wirksamkeit politischer Maßnahmen zur Dekarbonisierung Europas bieten. \r\n\r\nDie [Initiative zum Klimawandel](stories/story-32/3) der ESA verfolgt auch den Kohlenstoffkreislauf an Land und im Meer. Anhand von Karten der Bodenbedeckung und der Biomasse lässt sich die Menge des in den Pflanzen an Land gespeicherten Kohlenstoffs bestimmen; Messungen der Meeresfarbe zeigen das Phytoplankton und geben Aufschluss darüber, wie viel Kohlenstoff von diesen Meerespflanzen aufgenommen wird.\r\n\r\nKlimawissenschaftler nutzen diese Informationen, um unser Verständnis des Kohlenstoffkreislaufs und dessen Darstellung in ihren Klimamodellen auf ein neues Qualitätsniveau zu heben. Derart verbesserte Klimaprojektionen werden Entscheidungsträgern dabei helfen, herauszufinden, wie wir unsere Kohlenstoffemissionen steuern und das Gleichgewicht des Kohlenstoffkreislaufs wiederherstellen können.",
       "shortText": "## Kohlenstoff aus dem Weltraum aufspüren\r\n\r\nDie von Satelliten gesammelten Daten ermöglichen es uns, die Entwicklung der Treibhausgase auf der ganzen Welt zu verfolgen.\r\n\r\n- 2002: Der Envisat-Satellit der ESA trug einen der ersten Sensoren zur Messung von CO2 und Methan in Oberflächennähe.\r\n- 2009: Der japanische Satellit GOSAT folgte.\r\n- Mit den neuesten Satelliten können punktuelle Quellen von Treibhausgasen aufgespürt werden.\r\n- Die ESA-Initiative zum Klimawandel verfolgt auch den Kohlenstoffkreislauf an Land und im Meer.\r\n- Karten der Bodenbedeckung und der Biomasse geben Aufschluss über die Menge des in Pflanzen an Land gespeicherten Kohlenstoffs.\r\n- Die Farbkarten der Ozeane zeigen das Phytoplankton, das den von den Meerespflanzen aufgenommenen Kohlenstoff darstellt.\r\n- Dies verbessert das Verständnis des Kohlenstoffkreislaufs und seiner Darstellung in Klimamodellen.\r\n\r\nVerbesserte Klimaprojektionen werden Entscheidungsträgern dabei helfen, herauszufinden, wie wir unsere Kohlenstoffemissionen steuern und das Gleichgewicht des Kohlenstoffkreislaufs wiederherstellen können.",
-      "galleryItems": [
-        {
-          "type": "video",
-          "videoId": "-QyzY8waNoY",
-          "videoSrc": ["assets/ghg-interview-wide-web.mp4"],
-          "videoCaptions": "assets/ghg-interview.vtt",
-          "videoPoster": "assets/ghg-interview-wide.jpg"
-        }
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "videoId": "-QyzY8waNoY",
+      "videoCaptions": "assets/ghg-interview.vtt",
+      "videoPoster": "assets/ghg-interview-wide.jpg",
+      "videoSrc": [
+        "assets/ghg-interview-wide-web.mp4"
       ]
     }
   ]
