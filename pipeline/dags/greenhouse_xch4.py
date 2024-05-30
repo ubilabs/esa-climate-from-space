@@ -7,19 +7,30 @@ from helper import get_default_layer_version
 # layer
 LAYER_ID = 'greenhouse'
 LAYER_VARIABLE = 'xch4'
-RESOLUTION = '180 90'
-EXTEND = '-180 -90 180 90'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [],  # will be injected
-    "min_value": 1.5692969554947922e-06,
-    "max_value": 2.029300731010153e-06,
-    "type": "image",  # 'tiles' or 'image'
-    "zoom_levels": '0-2',
+    "min_value": 1600,
+    "max_value": 2200,
+    "type": "tiles",  # 'tiles' or 'image'
+    "zoom_levels": '0-5',
     "units": '',
     "basemap": None,
     "legend_values": [
-      "1825 ppm",
+      "2200 ppb",
+      "2175",
+      "2150",
+      "2125",
+      "2100",
+      "2075",
+      "2050",
+      "2025",
+      "2000",
+      "1950",
+      "1925",
+      "1900",
+      "1850",
+      "1825",
       "1800",
       "1775",
       "1750",
@@ -27,7 +38,7 @@ METADATA = {
       "1700",
       "1675",
       "1650"
-    ],
+     ],
     "time_format": {
         "year": "numeric",
         "month": "long"
@@ -62,7 +73,7 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
         workdir=WORKDIR, color_file=COLOR_FILE)
     metadata = task_factories.metadata(workdir=WORKDIR, metadata=METADATA)
     gdal_transforms = task_factories.gdal_transforms(
-        layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'], gdal_ts=RESOLUTION, gdal_te=EXTEND)
+        layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'])
     upload = task_factories.upload(
         WORKDIR, LAYER_ID, LAYER_VARIABLE, METADATA['type'])
 

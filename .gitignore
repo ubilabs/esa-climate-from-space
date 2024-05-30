@@ -6,7 +6,7 @@
 /storage/**/*.zip
 /storage/basemaps
 /download
-*.ipynb
+.ipynb*
 .DS_Store
 assets/legend-images/
 
