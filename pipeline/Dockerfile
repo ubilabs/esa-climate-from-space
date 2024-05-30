@@ -21,22 +21,23 @@ RUN apt update && apt install -y nodejs
 RUN apt update && apt install -y build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 RUN npm install -g canvas
 
+# CCI Toolbox
+
+ADD initialize-conda.sh /home/airflow/initialize-conda.sh
+RUN ls -l ~
+RUN chmod +x /home/airflow/initialize-conda.sh
+
+USER airflow
+
 # conda
 RUN mkdir -p ~/miniconda3
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh -O ~/miniconda3/miniconda.sh
 RUN bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 RUN rm -rf ~/miniconda3/miniconda.sh
 
+ENV PATH="${PATH}:~/miniconda3/bin"
 
-
-# CCI Toolbox
-
-ADD initialize-conda.sh /root/initialize-conda.sh
-RUN ls -l ~
-RUN chmod +x ~/initialize-conda.sh
 RUN bash ~/initialize-conda.sh
-
-USER airflow
 
 # xarray
 RUN pip install xarray netcdf4 h5netcdf
