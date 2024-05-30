@@ -17,13 +17,15 @@
         "assets/intro_large_14.jpg",
         "assets/intro_large_15.png",
         "assets/story32-image03.png",
-        "assets/story32-image02.png"
+        "assets/story32-image02.png",
+        "assets/intro_large_08.jpg"
       ],
       "imageCaptions": [
         "Die Atmosphäre über dem Amazonasbecken ist auf diesem Foto, das am 6. Oktober 2009 von der Internationalen Raumstation aus aufgenommen wurde, von Gewittern geprägt (NASA)",
         "# Atmosphärisches Kohlendioxid für die letzten 800.000 Jahre\r\nDie Geschichte des atmosphärischen Kohlendioxids in den letzten 800.000 Jahren, basierend auf Luftproben aus Eisbohrkernen der Wostok-Station in der Antarktis und seit 1958 auf direkten Messungen des Mauna Loa Observatoriums auf Hawaii. Man geht davon aus, dass die derzeitige Konzentration von über 400 Teilen pro Million so hoch ist wie seit vielen Millionen Jahren nicht mehr. (Datenquelle: Scripps Institute of Oceanography)",
         "# Temperaturveränderung nach Dekaden\r\n\r\nVeränderung der globalen durchschnittlichen Oberflächentemperatur während des Industriezeitalters. Die führenden Klimaforschungszentren der Welt sind sich weitgehend einig, dass die Temperatur der Erde im letzten Jahrhundert um mehr als ein Grad Celsius gestiegen ist. Datenquellen: ERA5 (ECMWF), GISTEMPv4 (NASA), HadCRUT5 (UK Met Office), NOAAGlobalTempv5 (NOAA), JRA-55 (Japan Meteorological Agency), Berkeley Earth (Copernicus Climate Change Service / ECMWF)",
-        "# Temperaturveränderung zwischen 2020 und 1981-2010\r\n\r\nLufttemperatur in zwei Metern Höhe im Jahr 2020 im Vergleich zum Durchschnitt 1981-2010. Der Temperaturanstieg an einem bestimmten Ort kann deutlich größer sein als der globale Durchschnitt. Datenquelle: ERA5 (Copernicus Climate Change Service / ECMWF)"
+        "# Temperaturveränderung zwischen 2020 und 1981-2010\r\n\r\nLufttemperatur in zwei Metern Höhe im Jahr 2020 im Vergleich zum Durchschnitt 1981-2010. Der Temperaturanstieg an einem bestimmten Ort kann deutlich größer sein als der globale Durchschnitt. Datenquelle: ERA5 (Copernicus Climate Change Service / ECMWF)",
+        "Der Erdbeobachtungssatellit Envisat der ESA war von 2002 bis 2012 in Betrieb (ESA)"
       ],
       "imageFits": [
         "cover",
@@ -34,38 +36,35 @@
       ]
     },
     {
-      "type": "image",
+      "type": "video",
       "text": "## Verfolgung des Klimawandels aus dem Weltraum\r\n\r\nIn den letzten Jahrzehnten haben uns Erdbeobachtungssatelliten einen noch nie dagewesenen Blick auf unsere Welt ermöglicht und sind zu einem unverzichtbaren Instrument für die Überwachung des Klimawandels geworden. Sie sind besonders für die Überwachung unzugänglicher Gebiete wie der Polarregionen nützlich, wo einige der Klimaveränderungen extreme sind.\r\n \r\nDiese \"Fernsensoren\" messen das sich ausdehnende und schrumpfende Meereis, das langsame Abschmelzen von Gletschern und das Abbrennen von Wäldern, sie verfolgen die Bewegung von Wolken und Aerosolen in der Atmosphäre sowie die Nährstoff- und Temperaturmuster in den Ozeanen.\r\n\r\nDie ersten operativen Fernerkundungsmissionen fanden in den späten 1970er Jahren statt: Das bedeutet, dass wir jetzt die Möglichkeit haben, für viele Klimakomponenten auf vierzig Jahre Beobachtungen zurückzublicken, was lange genug ist, um mit der Untersuchung des Klimawandels zu beginnen. Die Zusammenstellung langer Zeitreihen von Satellitendaten, die für Klimaforscher von Nutzen sind, stellt jedoch eine große Herausforderung dar.\r\n\r\n## Technologie im Wandel\r\n\r\nSatelliten haben in der Regel eine Lebensdauer von weniger als zehn Jahren. Danach werden sie von anderen Satelliten abgelöst, die mit der neuesten Technologie ausgestattet sind. Um konsistente und zuverlässige Messungen zu erzielen, müssen die Wissenschaftler die Unterschiede zwischen den Instrumenten, die verschiedenen Messverfahren und die Lücken in der Abdeckung berücksichtigen.\r\n\r\nDie Arbeit dieser Wissenschaftler und die von ihnen erstellten Klimadatensätze stehen im Mittelpunkt dieser Web-App. Sie enthält einen [interaktiven Datenbetrachter] (https://cfs.climate.esa.int), mit dem Sie die Klimadaten auf 3D-Globen und 2D-Weltkarten erkunden können.",
       "shortText": "## Verfolgung des Klimawandels aus dem Weltraum\r\n\r\nIn den letzten Jahrzehnten haben uns Erdbeobachtungssatelliten einen noch nie dagewesenen Blick auf unsere Welt ermöglicht und sind zu einem wichtigen Instrument für die Überwachung des Klimawandels geworden.\r\n\r\n- Sie messen die Ausdehnung von Meereis, Gletschern und Waldbränden, verfolgen Wolken und Aerosole in der Atmosphäre sowie Nährstoff- und Temperaturmuster in den Ozeanen.\r\n- Die ersten operativen Fernerkundungsmissionen fanden in den späten 1970er Jahren statt.\r\n- Für viele Klimakomponenten liegen uns nun vierzig Jahre an Beobachtungen vor.\r\n- Lange genug, um mit der Erforschung des Klimawandels zu beginnen.\r\n\r\n\r\n## Technologie im Wandel\r\n\r\n- Satelliten halten in der Regel weniger als zehn Jahre, bevor sie durch andere Satelliten und Technologien ersetzt werden.\r\n- Die Wissenschaftler müssen die Unterschiede zwischen den Instrumenten, die verschiedenen Messverfahren und die Lücken in der Abdeckung berücksichtigen.\r\n\r\nDie Arbeit dieser Wissenschaftler und die von ihnen erstellten Klimadatensätze stehen im Mittelpunkt dieser Webanwendung. Sie enthält einen interaktiven Datenviewer, mit dem Sie die Klimadaten auf 3D-Globen und 2D-Weltkarten erkunden können.",
-      "images": [
-        "assets/intro_large_08.jpg",
-        "assets/story32-image01.jpg"
-      ],
-      "imageCaptions": [
-        "Der Erdbeobachtungssatellit Envisat der ESA war von 2002 bis 2012 in Betrieb (ESA)",
-        "# Von der ESA entwickelte Erdbeobachtungsmissionen\r\nAuf Envisat folgte eine Flotte europäischer Erdbeobachtungssatelliten, darunter experimentelle geowissenschaftliche Satelliten, von der Europäischen Union finanzierte Copernicus-Sentinel-Satelliten und von EUMETSAT betriebene Wettersatelliten. (ESA)"
-      ],
       "imageFits": [
         "contain",
         "contain",
-        "contain",
-        "contain",
         "contain"
+      ],
+      "videoCaptions": "assets/parisagreement.vtt",
+      "videoPoster": "assets/parisagreement.jpg",
+      "videoSrc": [
+        "assets/parisagreement-web.mp4"
       ]
     },
     {
       "type": "image",
-      "text": "## ESAs \"Climate Change Initiative\"\r\n\r\nDie Initiative der Europäischen Weltraumorganisation (ESA) zum Klimawandel (CCI) wurde gegründet, um die Herausforderung anzunehmen, Erdbeobachtungssatellitendaten zur Verfolgung von Klimaveränderungen zu nutzen, indem Experten für Fernerkundung mit Experten für Klimamodellierung zusammengebracht werden.\r\n    \r\nKlimawissenschaftler haben mehr als fünfzig \"wesentliche Klimavariablen\" (Essential Climate Variables, ECVs) als Schlüsselkomponenten des Erdklimas identifiziert. Die CCI konzentriert sich auf zweiundzwanzig dieser Variablen, bei denen das europäische Fachwissen im Bereich der Fernerkundung einen wichtigen Beitrag leisten kann, indem es die mehrere Jahrzehnte umfassenden Datenarchive der Satellitenmissionen der ESA und anderer Weltraumorganisationen nutzt.\r\n\r\nDie CCI-Wissenschaftsteams haben Beobachtungen von verschiedenen Missionen und Sensoren zu kontinuierlichen Datenreihen zusammengeführt, die stabile, langfristige Datenprodukte liefern, um die für Klimamodellierer und Forscher verfügbaren Informationen zu verbessern. Das Programm bringt mehr als 450 Experten aus verschiedenen wissenschaftlichen, technischen und Entwicklungsbereichen aus der gesamten europäischen Erdbeobachtungsgemeinschaft zusammen, um einen dauerhaften und transparenten Zugang zu globalen Klimadaten zu bieten.",
-      "shortText": "##  ESAs \"Climate Change Initiative\"\r\n\r\nDie Initiative der Europäischen Weltraumorganisation (ESA) zum Klimawandel (CCI) wurde gegründet, um die Herausforderung anzunehmen, Erdbeobachtungssatellitendaten zur Verfolgung von Klimaveränderungen zu nutzen.\r\n    \r\n- Mehr als 50 \"wesentliche Klimavariablen\" (\"Essential Climate Variables\", ECVs) wurden als Schlüsselkomponenten des Erdklimas identifiziert.\r\n- Die CCI konzentriert sich auf 22 dieser Variablen, bei denen europäisches Fachwissen und europäische Technologie einen wichtigen Beitrag leisten können.\r\n- Nutzung der mehrere Jahrzehnte umfassenden Datenarchive der Satellitenmissionen der ESA und anderer Weltraumorganisationen.\r\n- Erstellung stabiler, langfristiger Datenprodukte zur Verbesserung der Informationen, die Klimamodellierern und Forschern zur Verfügung stehen.\r\n- Mehr als 450 Experten aus der gesamten europäischen Erdbeobachtungsgemeinschaft mit einer Reihe von wissenschaftlichen, technischen und entwicklungsbezogenen Spezialisierungen.\r\n- Dauerhaften und transparenten Zugang zu globalen Klimadaten.",
+      "text": "## ESAs \"Climate Change Initiative\"\r\n\r\nDie Initiative der Europäischen Weltraumorganisation (ESA) zum Klimawandel (CCI) wurde gegründet, um die Herausforderung anzunehmen, Erdbeobachtungssatellitendaten zur Verfolgung von Klimaveränderungen zu nutzen, indem Experten für Fernerkundung mit Experten für Klimamodellierung zusammengebracht werden.\r\n    \r\nKlimawissenschaftler haben 55 \"wesentliche Klimavariablen\" (Essential Climate Variables, ECVs) als Schlüsselkomponenten des Erdklimas identifiziert. Die CCI konzentriert sich auf 27 dieser Variablen, bei denen das europäische Fachwissen im Bereich der Fernerkundung einen wichtigen Beitrag leisten kann, indem es die mehrere Jahrzehnte umfassenden Datenarchive der Satellitenmissionen der ESA und anderer Weltraumorganisationen nutzt.\r\n\r\nDie CCI-Wissenschaftsteams haben Beobachtungen von verschiedenen Missionen und Sensoren zu kontinuierlichen Datenreihen zusammengeführt, die stabile, langfristige Datenprodukte liefern, um die für Klimamodellierer und Forscher verfügbaren Informationen zu verbessern. Das Programm bringt fast 700 Experten aus verschiedenen wissenschaftlichen, technischen und Entwicklungsbereichen aus der gesamten europäischen Erdbeobachtungsgemeinschaft zusammen, um einen dauerhaften und transparenten Zugang zu globalen Klimadaten zu bieten.",
+      "shortText": "##  ESAs \"Climate Change Initiative\"\r\n\r\nDie Initiative der Europäischen Weltraumorganisation (ESA) zum Klimawandel (CCI) wurde gegründet, um die Herausforderung anzunehmen, Erdbeobachtungssatellitendaten zur Verfolgung von Klimaveränderungen zu nutzen.\r\n    \r\n- 55 \"wesentliche Klimavariablen\" (\"Essential Climate Variables\", ECVs) wurden als Schlüsselkomponenten des Erdklimas identifiziert.\r\n- Die CCI konzentriert sich auf 27 dieser Variablen, bei denen europäisches Fachwissen und europäische Technologie einen wichtigen Beitrag leisten können.\r\n- Nutzung der mehrere Jahrzehnte umfassenden Datenarchive der Satellitenmissionen der ESA und anderer Weltraumorganisationen.\r\n- Erstellung stabiler, langfristiger Datenprodukte zur Verbesserung der Informationen, die Klimamodellierern und Forschern zur Verfügung stehen.\r\n- Fast 700 Experten aus der gesamten europäischen Erdbeobachtungsgemeinschaft mit einer Reihe von wissenschaftlichen, technischen und entwicklungsbezogenen Spezialisierungen.\r\n- Dauerhaften und transparenten Zugang zu globalen Klimadaten.",
       "images": [
         "assets/intro_large_10.jpg",
+        "assets/story32-image01.jpg",
         "assets/story32-image05.jpg",
         "assets/story32-image04.jpg"
       ],
       "imageCaptions": [
         "9. Juli 2015: Eröffnung des Europäischen Zentrums für Weltraumanwendungen und Telekommunikation (ECSAT) der ESA in Harwell, Großbritannien, das das Klimabüro der ESA beherbergt (ESA)",
-        "# UN-GCOS Wesentliche Klimavariablen\r\nDas Globale Klimabeobachtungssystem der Vereinten Nationen hat 54 \"wesentliche Klimavariablen\" (Essential Climate Variables, ECVs) identifiziert.\r\nDie ESA-Initiative zum Klimawandel entwickelt satellitengestützte Datenreihen für 22 dieser ECVs. (GCOS/Planetare Visionen)",
-        "# ESA-CCI Wesentliche Klimavariablen\r\nZeitspannen der CCI ECVs. Einige decken mehr als vierzig Jahre an Satellitenbeobachtungen ab. (ESA)"
+        "# Von der ESA entwickelte Erdbeobachtungsmissionen\r\nAuf Envisat folgte eine Flotte europäischer Erdbeobachtungssatelliten, darunter experimentelle geowissenschaftliche Satelliten, von der Europäischen Union finanzierte Copernicus-Sentinel-Satelliten und von EUMETSAT betriebene Wettersatelliten. (ESA)",
+        "# UN-GCOS Wesentliche Klimavariablen\r\nDas Globale Klimabeobachtungssystem der Vereinten Nationen hat 55 \"wesentliche Klimavariablen\" (Essential Climate Variables, ECVs) identifiziert. Etwa zwei Drittel davon können vom Weltraum aus beobachtet werden.\r\nDie ESA-Initiative zum Klimawandel entwickelt satellitengestützte Datenreihen für 22 dieser ECVs. (ESA)",
+        "# ESA-CCI Wesentliche Klimavariablen\r\nVon Satelliten abgeleitete ECV-Datensätze, die im Rahmen der Initiative zum Klimawandel erstellt wurden, erstrecken sich über fünf Jahrzehnte (ESA)"
       ],
       "imageFits": [
         "contain",

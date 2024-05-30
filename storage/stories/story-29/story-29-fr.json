@@ -15,11 +15,13 @@
       "shortText": "## Anciennes et nouvelles méthodes\r\n\r\n- Dans le centre du Kenya, le peuple Samburu lutte pour maintenir son mode de vie et sa culture.\r\n- Ils sont semi-nomades, se déplaçant avec leur bétail à la recherche des meilleurs pâturages.\r\n- Leur habitat, la savane, se transforme lentement à mesure que les sécheresses deviennent plus fréquentes et plus intenses.\r\n- Comme il est de plus en plus difficile de gagner sa vie, de plus en plus de jeunes gens partent vers les villes à la recherche d'un emploi.\r\n- À mesure que les villes et les exploitations commerciales s'étendent, il reste moins de terres et d'eau pour les éleveurs nomades.\r\n- Une histoire similaire se déroule dans de nombreux endroits du monde où les agriculteurs et les éleveurs tentent de fournir suffisamment de nourriture à une population croissante.",
       "images": [
         "assets/story29-image10.jpg",
-        "assets/story29-image08.jpg"
+        "assets/story29-image08.jpg",
+        "assets/story29-image18.jpg"
       ],
       "imageCaptions": [
         "Un gardien de troupeau Samburu avec ses chèvres dans le comté d'Isiolo, au Kenya (pilesasmiles/iStock).",
-        "Bétail passant devant des équipements de construction routière à Mowo, dans l'État de Lagos, au Nigeria.\r\n(mtcurado/iStock)"
+        "Bétail passant devant des équipements de construction routière à Mowo, dans l'État de Lagos, au Nigeria.\r\n(mtcurado/iStock)",
+        "Cette image satellite Copernicus Sentinel-2 d'El Oued, en Algérie, combine les longueurs d'onde visibles et infrarouges pour montrer la végétation en rouge. Près de la ville, les palmiers-dattiers sont cultivés selon des méthodes traditionnelles dans des champs irréguliers en forme d'entonnoir qui nécessitent peu d'irrigation. Plus loin dans le désert, l'irrigation par pivot central est de plus en plus utilisée pour cultiver des pommes de terre, des oignons et des tomates dans des champs circulaires avec un puits au centre. (Contient des données Copernicus Sentinel modifiées (2021), traitées par l'ESA)"
       ],
       "imageFits": [
         "contain",
@@ -43,7 +45,6 @@
       "imageCaptions": [
         "Motifs de champ sur les terres récupérées du Noordoostpolder, Pays-Bas,\r\nobservés par Copernicus Sentinel-2, le 30 juin 2018 (données Copernicus Sentinel 2018).",
         "Rizières au Vietnam. Les données radar du satellite Copernicus Sentinel-1 montrent les changements sur trois mois à la fin de 2019. L'image d'octobre est représentée en rouge, celle de novembre en vert et celle de décembre en bleu. (Contient des données Copernicus Sentinel modifiées, 2019, traitées par l'ESA)",
-        "La région de la Wheatbelt en Australie occidentale est un important producteur de blé, d'orge et de laine. Cette image infrarouge multitemporelle du satellite Copernicus Sentinel-2 combine des données de mai 2019 (rouge), septembre 2019 (vert) et janvier 2020 (bleu). (Contient des données Copernicus Sentinel modifiées (2019-20), traitées par l'ESA).",
         "L'huile de palme est une culture très productive utilisée dans une vaste gamme de produits, de l'alimentation aux cosmétiques en passant par les biocarburants. Cette image satellite montre de vastes zones de forêt tropicale humide à Bornéo défrichées pour la production d'huile de palme. Les zones brunes sont des terres récemment défrichées et les zones vertes vives sont des plantations bien établies. (Contient des données Copernicus Sentinel modifiées (2019), traitées par l'ESA)",
         "Les champs cultivés apparaissent en vert foncé au nord d'Antananarivo, la capitale de Madagascar, sur cette image satellite prise par Copernicus Sentinel-2 le 28 septembre 2017. (Contient des données Copernicus Sentinel modifiées (2017), traitées par l'ESA)"
       ],
@@ -59,6 +60,9 @@
       "type": "globe",
       "text": "## Agriculture et climat\r\n\r\nLes plantes entretiennent toute la vie animale sur notre planète et se sont adaptées pour vivre dans presque toutes ses parties - sur terre, dans les lacs et les rivières, et dans les océans. Du point de vue de l'espace, nous pouvons constater que les plantes de certaines régions sont beaucoup plus productives que d'autres. En observant l'évolution de la productivité au cours de la saison de croissance, nous pouvons identifier et cartographier les différents types de couverture terrestre. La comparaison d'une année sur l'autre nous permet de suivre les changements à travers le globe.\r\n\r\nLa modification de la façon dont nous utilisons la terre n'affecte pas seulement les plantes qui y poussent, mais aussi le [mouvement du carbone](histoires/story-12/2), les nutriments et l'eau. On estime que 70 % de [l'eau douce que nous utilisons](histoires/story-21/5) sert à soutenir l'agriculture.\r\n\r\nMais le fait de changer la façon dont nous utilisons la terre a également une incidence sur le climat. Le défrichage des forêts tropicales pour l'agriculture libère le carbone stocké dans le bois et le sol, et affaiblit l'un des principaux puits de carbone de la planète. Environ un quart des émissions humaines de gaz à effet de serre proviennent directement de l'agriculture et de la sylviculture, et ce chiffre atteint un tiers si l'on tient compte de l'ensemble de la chaîne alimentaire.",
       "shortText": "## L'agriculture et le climat\r\n\r\n- Les plantes entretiennent toute la vie animale sur notre planète\r\n- Depuis l'espace, nous pouvons observer l'évolution de la productivité des plantes au cours de la saison de croissance, cartographier les différents types de couverture terrestre et suivre les changements survenus dans le monde.\r\n- La façon dont nous utilisons la terre affecte le mouvement du carbone, des nutriments et de l'eau.\r\n- 70 % de l'eau douce que nous utilisons sert à l'agriculture.\r\n- La façon dont nous utilisons les terres affecte également le climat.\r\n- Le défrichement des forêts pour l'agriculture libère le carbone stocké dans le bois et le sol, et affaiblit un important puits de carbone.\r\n- 34 % des émissions de gaz à effet de serre proviennent de l'agriculture, de la sylviculture et de l'approvisionnement alimentaire.",
+      "imageCaptions": [
+        "Traduit avec DeepL.com (version gratuite)"
+      ],
       "imageFits": [
         "cover",
         "cover",
@@ -92,20 +96,24 @@
       "shortText": "## Maximiser les rendements\r\n\r\n- L'homme dépend d'un petit nombre de cultures qui ne poussent bien que dans un climat particulier.\r\n- Les rendements chutent avec une quantité d'eau inadéquate, des températures extrêmes ou un manque de lumière.\r\n- Avec le réchauffement de la planète, on peut s'attendre à ce que certaines régions deviennent plus productives, tandis que d'autres seront confrontées à des sécheresses plus fréquentes et deviendront impropres à l'agriculture.\r\n- La productivité peut être augmentée en utilisant l'irrigation, la lumière artificielle ou les serres.\r\n- Les engrais peuvent contribuer à améliorer les rendements, mais leur utilisation à grande échelle peut entraîner des problèmes tels que la prolifération d'algues toxiques dans les masses d'eau voisines.",
       "images": [
         "assets/landcover_large_06.jpg",
+        "assets/story29-image20.gif",
         "assets/story29-image02.jpg",
-        "assets/story29-image03.jpg"
+        "assets/story29-image03.jpg",
+        "assets/story29-image19.jpg"
       ],
       "imageCaptions": [
         "L'irrigation a transformé le désert en terres agricoles en Arabie saoudite. Cette image infrarouge en fausses couleurs prise par le satellite Copernicus Sentinel-2A montre des structures agricoles près de Tubarjal, en Arabie saoudite. Les cercles proviennent de systèmes d'irrigation à pivot central, où un long tuyau d'eau tourne autour d'un puits situé au centre. (Contient des données Copernicus Sentinel modifiées, 2015, traitées par l'ESA)",
+        "Cette série d'images de Copernicus Sentinel-2 montre une partie du désert d'Al Wahat al Dakhla en Égypte, du 29 novembre 2022 au 18 avril 2023. Les formes circulaires sur l'image sont un exemple de systèmes d'irrigation à pivot central, où l'équipement tourne autour d'un pivot central et où les cultures sont arrosées par des asperseurs. (Contient des données Copernicus Sentinel modifiées (2022-23), traitées par l'ESA)",
         "Des serres couvrant d'immenses surfaces scintillent au soleil près d'Almeria, dans le sud de l'Espagne (Union européenne, images Copernicus Sentinel-2).",
-        "Efflorescence algale en mer Baltique, observée par Copernicus Sentinel-2 le 20 juillet 2019 (contient des données Copernicus Sentinel modifiées, 2019, traitées par l'ESA)."
+        "Efflorescence algale en mer Baltique, observée par Copernicus Sentinel-2 le 20 juillet 2019 (contient des données Copernicus Sentinel modifiées, 2019, traitées par l'ESA).",
+        "Navires de pêche détectés en mer Méditerranée grâce aux données radar du satellite Copernicus Sentinel-1 traitées à l'aide de techniques d'intelligence artificielle (IA). La pêche fournit actuellement 17 % de la consommation mondiale de viande. (ESA - source de données : Paolo et al, 2024/Global Fishing Watch)"
       ],
       "imageFits": [
         "cover",
+        "contain",
         "cover",
         "cover",
-        "cover",
-        "cover"
+        "contain"
       ]
     },
     {
