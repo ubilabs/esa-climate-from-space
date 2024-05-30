@@ -43,9 +43,17 @@ const Chapter: FunctionComponent<Props> = ({
   ...rest
 }) => {
   const {setLayers} = useGlobeLayers();
-  const {onSetProgress, selectedChapterIndex} = useChapter();
+  const {
+    onSetProgress,
+    selectedChapterIndex,
+    isSubChapter: isSubChapterView
+  } = useChapter();
 
   useEffect(() => {
+    if (isSubChapterView) {
+      setLayers([COLORED_BASE_MAP]);
+      return;
+    }
     switch (selectedChapterIndex) {
       case 0:
         setLayers([GREY_BASE_MAP, GREENHOUSE_XCH4]);
@@ -66,15 +74,12 @@ const Chapter: FunctionComponent<Props> = ({
         setLayers([COLORED_BASE_MAP]);
         break;
       case 6:
-        setLayers([COLORED_BASE_MAP]);
-        break;
-      case 7:
-        setLayers([COLORED_BASE_MAP]);
+        setLayers([GREY_BASE_MAP, GREENHOUSE_XCH4]);
         break;
       default:
         break;
     }
-  }, [selectedChapterIndex, setLayers]);
+  }, [selectedChapterIndex, setLayers, isSubChapterView]);
 
   return (
     <section
