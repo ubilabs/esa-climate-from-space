@@ -44,7 +44,6 @@
         "contain",
         "contain"
       ],
-      "videoCaptions": "assets/parisagreement.vtt",
       "videoPoster": "assets/parisagreement.jpg",
       "videoSrc": [
         "assets/parisagreement-web.mp4"
