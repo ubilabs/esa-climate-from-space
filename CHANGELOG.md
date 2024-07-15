@@ -1,3 +1,13 @@
+## [1.16.2](https://github.com/ubilabs/esa-climate-from-space/compare/v1.16.1...v1.16.2) (2024-07-15)
+
+
+### Bug Fixes
+
+* **video-js:** add captions after player is ready ([a9b0802](https://github.com/ubilabs/esa-climate-from-space/commit/a9b08029d46cb65c650706bc17428d62480b1223))
+* **video-js:** no top padding on mobile ([3ac93a4](https://github.com/ubilabs/esa-climate-from-space/commit/3ac93a456263bf77271ff9a4e281d223e32d222b))
+
+
+
 ## [1.16.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.16.0...v1.16.1) (2024-06-18)
 
 
