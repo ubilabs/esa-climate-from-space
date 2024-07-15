@@ -85,7 +85,7 @@
     "@vitejs/plugin-react": "^4.0.0",
     "conventional-changelog-cli": "^2.0.31",
     "electron": "^24.8.5",
-    "electron-builder": "^23.6.0",
+    "electron-builder": "^24.13.3",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.18.3",
