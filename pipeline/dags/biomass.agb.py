@@ -8,6 +8,7 @@ from helper import get_default_layer_version
 LAYER_ID = 'biomass'
 LAYER_VARIABLE = 'agb'
 RESOLUTION = '81000 31500'
+EXTEND = '-180 -60 180 80'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [],  # will be injected
@@ -52,7 +53,7 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
         workdir=WORKDIR, color_file=COLOR_FILE)
     metadata = task_factories.metadata(workdir=WORKDIR, metadata=METADATA)
     gdal_transforms = task_factories.gdal_transforms(
-        layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'], gdal_ts=RESOLUTION, gdal_te='-180 -60 180 80', max_tis_warp=1, max_tis_dem=1, max_tis_translate=1)
+        layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'], gdal_ts=RESOLUTION, gdal_te=EXTEND, max_tis_warp=1, max_tis_dem=1, max_tis_translate=1)
     upload = task_factories.upload(
         WORKDIR, LAYER_ID, LAYER_VARIABLE, METADATA['type'])
 

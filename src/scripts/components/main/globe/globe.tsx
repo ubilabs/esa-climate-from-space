@@ -17,7 +17,10 @@ import {
   WebGlGlobe,
   WebGlGlobeEventMap
 } from '@ubilabs/esa-webgl-globe';
+
 import GLOBE_WORKER_URL from '@ubilabs/esa-webgl-globe/worker?url';
+import ATMOSPHERE_TEXTURE_URL from '@ubilabs/esa-webgl-globe/textures/atmosphere.png?url';
+import SHADING_TEXTURE_URL from '@ubilabs/esa-webgl-globe/textures/shading.png?url';
 
 import {GlobeProjectionState} from '../../../types/globe-projection-state';
 import {Layer} from '../../../types/layer';
@@ -38,6 +41,10 @@ type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap['layerLoadingStateChanged'];
 
 WebGlGlobe.setTileSelectorWorkerUrl(GLOBE_WORKER_URL);
+WebGlGlobe.setTextureUrls({
+  atmosphere: ATMOSPHERE_TEXTURE_URL,
+  shading: SHADING_TEXTURE_URL
+});
 
 interface Props {
   active: boolean;
@@ -84,6 +91,7 @@ const Globe: FunctionComponent<Props> = props => {
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
+  // eslint-disable-next-line no-warning-comments
   // fixme: add auto-rotate functionality
 
   return (
@@ -119,7 +127,21 @@ function useWebGlGlobe(view: CameraView) {
         return EMPTY_FUNCTION;
       }
 
-      const newGlobe = new WebGlGlobe(containerEl, {cameraView: view});
+      const newGlobe = new WebGlGlobe(containerEl, {
+        cameraView: view,
+        renderOptions: {
+          atmosphereEnabled: true,
+          shadingEnabled: true,
+          atmosphereStrength: 0.8,
+          atmosphereColor: [0.58, 0.79, 1] // {r: 148, g: 201, b: 255}
+        }
+      });
+
+      if ('renderer' in newGlobe) {
+        // @TODO: Remove this setting after globe controls have been refactored.
+        // @ts-ignore Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
+        newGlobe.renderer.globeControls.zoomSpeed = 1.5;
+      }
 
       if ('renderer' in newGlobe) {
         // @TODO: Remove this setting after globe controls have been refactored.
@@ -378,7 +400,7 @@ function getLayerProps(
       id,
       zIndex: 1,
       minZoom: 1,
-      maxZoom: layerDetails.zoomLevels,
+      maxZoom: layerDetails.zoomLevels - 1,
       type: type === LayerType.Image ? 'image' : 'tile',
       urlParameters: {},
       getUrl:
