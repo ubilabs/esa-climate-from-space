@@ -3,8 +3,9 @@
   width: 100%
   height: 100%
 
-:global(.vjs_video_3-dimensions.vjs-fluid)
-  padding-top: 0
+@media screen and (min-width: 480px)
+  :global(.vjs_video_3-dimensions.vjs-fluid)
+    padding-top: 0 !important
 
 :global(.vjs-text-track-cue)
   display: flex

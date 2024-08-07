@@ -91,6 +91,7 @@ const Globe: FunctionComponent<Props> = props => {
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
+  // eslint-disable-next-line no-warning-comments
   // fixme: add auto-rotate functionality
 
   return (
@@ -135,6 +136,12 @@ function useWebGlGlobe(view: CameraView) {
           atmosphereColor: [0.58, 0.79, 1] // {r: 148, g: 201, b: 255}
         }
       });
+
+      if ('renderer' in newGlobe) {
+        // @TODO: Remove this setting after globe controls have been refactored.
+        // @ts-ignore Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
+        newGlobe.renderer.globeControls.zoomSpeed = 1.5;
+      }
 
       if ('renderer' in newGlobe) {
         // @TODO: Remove this setting after globe controls have been refactored.

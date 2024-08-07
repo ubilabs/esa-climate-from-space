@@ -5,43 +5,22 @@ from airflow.models.param import Param
 from helper import get_default_layer_version
 
 # layer
-LAYER_ID = 'greenhouse'
-LAYER_VARIABLE = 'xch4'
+LAYER_ID = 'sea_surface_salinity'
+LAYER_VARIABLE = 'sss'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [],  # will be injected
-    "min_value": 1600,
-    "max_value": 2200,
-    "type": "tiles",  # 'tiles' or 'image'
-    "zoom_levels": '0-5',
-    "units": '',
-    "basemap": None,
-    "legend_values": [
-      "2200 ppb",
-      "2175",
-      "2150",
-      "2125",
-      "2100",
-      "2075",
-      "2050",
-      "2025",
-      "2000",
-      "1950",
-      "1925",
-      "1900",
-      "1850",
-      "1825",
-      "1800",
-      "1775",
-      "1750",
-      "1725",
-      "1700",
-      "1675",
-      "1650"
-     ],
+    "min_value": 30,
+    "max_value": 40,
+    "type": "image",  # 'tiles' or 'image'
+    "zoom_levels": '0-3',
+    "units": "PSU",
+    "colorMap": "custom",
+    "basemap": "ocean",
     "time_format": {
         "year": "numeric",
-        "month": "long"
+        "month": "long",
+        "day": "numeric"
     }
 }
 
