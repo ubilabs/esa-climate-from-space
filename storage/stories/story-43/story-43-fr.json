@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# El Niño 2023",
       "shortText": "# El Niño 2023",
-      "images": [
-        "assets/story43-image01.jpg"
-      ]
+      "images": ["assets/story43-image01.jpg"]
     },
     {
       "type": "video",
@@ -15,9 +13,7 @@
       "shortText": "## El Niño 2023\r\n\r\nEl Niño est une perturbation climatique périodique dans l'océan Pacifique dont les conséquences se font sentir dans le monde entier. Certaines régions sont inondées, d'autres souffrent de sécheresse, de mauvaises récoltes, d'incendies de forêt ou d'épidémies.\r\n\r\nToutes les quelques années, de l'eau chaude s'accumule dans l'est de l'océan Pacifique. L'eau chaude s'évapore plus facilement, ce qui augmente la couverture nuageuse et les précipitations. La pluie tombe sous forme d'eau douce, réduisant ainsi la salinité de la surface de la mer.\r\n\r\nLes observations par satellite et les capteurs flottants montrent qu'une réserve d'eau douce s'étend dans le Pacifique lors d'un épisode El Niño. Il semble également que les variations de la salinité de l'océan dans le Pacifique occidental puissent contribuer à indiquer le début d'El Niño. \r\n\r\nLes observations satellitaires de la température de la surface de la mer sont depuis longtemps intégrées dans les modèles climatiques. L'ajout de la salinité améliore la capacité d'un modèle à prévoir l'occurrence, la durée et la gravité des événements El Niño, comme celui qui se profile à l'horizon 2023.\r\n\r\n(Données provenant des équipes de l'ICC chargées de la température de surface de la mer, des nuages et de la salinité de surface de la mer, de l'IFREMER, de LOCEAN, d'OceanScope et de Copernicus Sentinel-2. Animation par Planetary Visions)",
       "videoCaptions": "assets/elnino2023.vtt",
       "videoPoster": "assets/elnino2023.jpg",
-      "videoSrc": [
-        "assets/elnino2023-web.mp4"
-      ]
+      "videoSrc": ["assets/elnino2023-web.mp4"]
     }
   ]
 }
