@@ -1,9 +1,13 @@
+import os
 import pandas as pd
 import xarray as xr
 import geopandas as gpd
 from io import StringIO
 
-# 1. Read the data into a pandas DataFrame
+# Directory containing the CSV files
+data_dir = "/data/downloads/download/xco2"
+
+# Function to read the data into a pandas DataFrame
 def read_altimetry_data(filename):
     """Reads the custom CSV file, cleaning up header and separator."""
     with open(filename, 'r') as f:
@@ -13,10 +17,21 @@ def read_altimetry_data(filename):
     df = pd.read_csv(StringIO('\n'.join(data_lines)), sep=' ', header=None)
     return df
 
-df = read_altimetry_data("./download/xco2/R_AMAZON_AMAZONA_KMXXXX_mergedjason3-0228_S0234 copy.csv")
+# List to hold all dataframes
+dfs = []
 
-# 2. Rename columns based on metadata
-df.columns = [
+# Read all CSV files in the directory
+for filename in os.listdir(data_dir):
+    if filename.endswith(".csv"):
+        file_path = os.path.join(data_dir, filename)
+        df = read_altimetry_data(file_path)
+        dfs.append(df)
+
+# Concatenate all dataframes into a single dataframe
+combined_df = pd.concat(dfs, ignore_index=True)
+
+# Rename columns based on metadata
+combined_df.columns = [
     "DATE",
     "TIME",
     "Water_Level_Orthometric",
@@ -35,29 +50,29 @@ df.columns = [
     "GDR_Version"
 ]
 
-# 3. Combine date and time into a datetime object
-df['Datetime'] = pd.to_datetime(df['DATE'] + ' ' + df['TIME'])
-df = df.set_index('Datetime')
+# Combine date and time into a datetime object
+combined_df['Datetime'] = pd.to_datetime(combined_df['DATE'] + ' ' + combined_df['TIME'])
+combined_df = combined_df.set_index('Datetime')
 
-# 4. Create an xarray Dataset
-ds = xr.Dataset.from_dataframe(df)
+# Create an xarray Dataset
+ds = xr.Dataset.from_dataframe(combined_df)
 
-# 5. Add metadata from the file header
+# Add metadata from the file header
 # (Extract relevant metadata from the header and add it to the dataset)
 ds.attrs['Basin'] = 'AMAZON'
 ds.attrs['River'] = 'SOLIMOES'
 ds.attrs['Reference_Longitude'] = -61.6976
 ds.attrs['Reference_Latitude'] = -3.8308
 
-# 6. Save to NetCDF
+# Save to NetCDF
 ds.to_netcdf("R_AMAZON_SOLIMOES_mergedjason3-0076_S0376.nc")
 
-df = df.reset_index()
-df.head()
+combined_df = combined_df.reset_index()
+combined_df.head()
 
 gdf = gpd.GeoDataFrame(
-    df,
-    geometry=gpd.points_from_xy(df.Longitude, df.Latitude),
+    combined_df,
+    geometry=gpd.points_from_xy(combined_df.Longitude, combined_df.Latitude),
     crs="EPSG:4326"  # Assuming your coordinates are in WGS84
 )
 
