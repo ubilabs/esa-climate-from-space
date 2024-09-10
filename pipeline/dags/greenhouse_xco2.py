@@ -7,13 +7,12 @@ from helper import get_default_layer_version
 # layer
 LAYER_ID = 'greenhouse'
 LAYER_VARIABLE = 'xco2'
-EXTEND = '-180 -90 180 90'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [],  # will be injected
     "min_value": 0.0003599192132242024,
     "max_value": 0.0004179562965873629,
-    "type": "image",  # 'tiles' or 'image'
+    "type": "tiles",  # 'tiles' or 'image'
     "zoom_levels": '0-2',
     "units": '',
     "basemap": None,
@@ -61,7 +60,7 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
         workdir=WORKDIR, color_file=COLOR_FILE)
     metadata = task_factories.metadata(workdir=WORKDIR, metadata=METADATA)
     gdal_transforms = task_factories.gdal_transforms(
-        layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'], gdal_te=EXTEND)
+        layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'])
     upload = task_factories.upload(
         WORKDIR, LAYER_ID, LAYER_VARIABLE, METADATA['type'])
 
