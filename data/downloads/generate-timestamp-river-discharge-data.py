@@ -57,10 +57,22 @@ for filename in os.listdir(data_dir):
         ]
 
         # Combine date and time into a datetime object
-        df['Datetime'] = pd.to_datetime(df['DATE'] + ' ' + df['TIME'])
+        df['Datetime'] = pd.to_datetime(df['DATE'] + ' ' + df['TIME'], errors='coerce')
 
-        # Create a feature for each timestamp
-        for _, row in df.iterrows():
+        # Filter out rows with NaT values in 'Datetime'
+        df = df.dropna(subset=['Datetime'])
+
+        # Group by month and calculate the average value
+        df['Month'] = df['Datetime'].dt.to_period('M')
+        monthly_avg = df.groupby('Month')['Water_Level_Orthometric'].mean().reset_index()
+
+        # Ensure no NaT values in 'Month'
+        monthly_avg = monthly_avg.dropna(subset=['Month'])
+        # Ensure no NaN values in 'Water_Level_Orthometric'
+        monthly_avg = monthly_avg.dropna(subset=['Water_Level_Orthometric'])
+
+        # Create a feature for each month
+        for _, row in monthly_avg.iterrows():
             feature = {
                 "type": "Feature",
                 "geometry": {
@@ -68,9 +80,9 @@ for filename in os.listdir(data_dir):
                     "coordinates": [float(metadata['REFERENCE LONGITUDE']), float(metadata['REFERENCE LATITUDE'])]
                 },
                 "properties": {
-                    "timestamp": row['Datetime'].isoformat(),
-                    "value": row['Water_Level_Orthometric'],
-                    "metadata": metadata
+                    "timestamp": row['Month'].to_timestamp().isoformat(),
+                    "metadata": metadata,
+                    "average_value": row['Water_Level_Orthometric'],
                 }
             }
             features.append(feature)
@@ -82,7 +94,7 @@ geojson = {
 }
 
 # Save to GeoJSON file
-output_file = "R_AMAZON_SOLIMOES_mergedjason3-0076_S0376.geojson"
+output_file = "monthly_R_AMAZON_SOLIMOES_mergedjason3-0076_S0376.geojson"
 with open(output_file, 'w') as f:
     json.dump(geojson, f, indent=2)
 
