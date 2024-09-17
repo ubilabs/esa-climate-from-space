@@ -6,7 +6,7 @@ ftp_url = "anon-ftp.ceda.ac.uk"
 base_path = "/neodc/esacci/river_discharge/data/WL/v1.1/CSV/merged_timeseries/"
 
 # Directory to save the downloaded files
-download_dir = "download/xco2"
+download_dir = "download/river_discharge"
 
 # Boolean flag to track if any failures occurred
 had_failures = False
