@@ -4,6 +4,12 @@ import geopandas as gpd
 from io import StringIO
 import json
 
+# Here, we import CSV files and parse them to extract metadata and data.
+# We then calculate the average water level for each month and create a GeoJSON file with the results.
+# The GeoJSON file contains a feature for each month, with the average water level, anomaly, and metadata.
+# We drop measurements with missing or invalid values and ensure the output is valid GeoJSON.
+
+
 # Directory containing the CSV files
 data_dir = "/data/downloads/download/river_discharge"
 
@@ -71,8 +77,13 @@ for filename in os.listdir(data_dir):
         # Ensure no NaN values in 'Water_Level_Orthometric'
         monthly_avg = monthly_avg.dropna(subset=['Water_Level_Orthometric'])
 
+
         # Create a feature for each month
         for _, row in monthly_avg.iterrows():
+        # Return if metadata['MEAN ALTITUDE(M.mm)'] is not a number
+            if not metadata['MEAN ALTITUDE(M.mm)'].replace('.', '', 1).isdigit():
+                continue
+
             feature = {
                 "type": "Feature",
                 "geometry": {
