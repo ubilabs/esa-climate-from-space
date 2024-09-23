@@ -218,8 +218,8 @@
   {
     "id": "river_discharge.water_level_anomaly",
     "type": "Biosphere",
-    "name": "River Discharge",
-    "shortName": "River Discharge",
+    "name": "River Discharge Anomalies",
+    "shortName": "River Discharge Anomalies",
     "usageInfo": "© ESA",
     "description": "River discharge corresponds to the volume of water passing through a river cross section per unit of time. Around 40% of precipitations on the continents goes to the oceans through river networks. It is therefore an important flux of water on the continents and it is affected both by climate change and direct human activities. It is at the heart of the hydrological cycle and it is an important variable to calibrate and validate hydrodynamic models. It also plays a role in the carbon cycle.\r\nThe ESA river discharge CCI project is a precursor study, aiming at deriving long term (at least over 20-years) river discharge time series at selected locations in the river network of some river basins. It uses satellite remote sensing observations (altimetry and multispectral images) and ancillary data to derive these products.\r\n\r\nBiancamaria, S.; Boussaroque, M.; Gal, L.; Kitambo, B.; Lefebve, J.; Papa, F.; Paris, A.; Vayre, M.; Zakharova, E. (2024): ESA River Discharge Climate Change Initiative (RD_cci): Nadir radar altimeters Water Level product, v1.1. NERC EDS Centre for Environmental Data Analysis, 15 March 2024. doi:10.5285/c5f0aa806ec444b4a4209b49efc4bb65. https://dx.doi.org/10.5285/c5f0aa806ec444b4a4209b49efc4bb65\n\n**Variable Shown:** Water surface elevation anomalies\r\n\n**Time Span:** January 2010 – December 2023\r\n\n**Temporal resolution:** monthly\r\n\n**Geographic Extent:** Selected Sites\r\n\n**Spatial Resolution:** -\r\n\n**Version:** 1.1\r\n\r\n[ESA River Discharge Climate Change Initiative Project website](https://climate.esa.int/en/projects/river-discharge/)\r\n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/c5f0aa806ec444b4a4209b49efc4bb65/)"
   }
