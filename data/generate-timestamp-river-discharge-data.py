@@ -95,7 +95,7 @@ geojson = {
 }
 
 # Save to GeoJSON file
-output_file = "monthly_R_AMAZON_SOLIMOES_mergedjason3-0076_S0376.geojson"
+output_file = "anomalies_monthly_R_AMAZON_SOLIMOES_mergedjason3-0076_S0376.geojson"
 with open(output_file, 'w') as f:
     json.dump(geojson, f, indent=2)
 
