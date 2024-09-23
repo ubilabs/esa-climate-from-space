@@ -82,7 +82,8 @@ for filename in os.listdir(data_dir):
                 "properties": {
                     "timestamp": row['Month'].to_timestamp().isoformat(),
                     "metadata": metadata,
-                    "average_value": row['Water_Level_Orthometric'],
+                    "average_elevation": round(row['Water_Level_Orthometric'], 2),
+                    "average_anomaly": round(row['Water_Level_Orthometric'] - float(metadata['MEAN ALTITUDE(M.mm)']), 2),
                 }
             }
             features.append(feature)
