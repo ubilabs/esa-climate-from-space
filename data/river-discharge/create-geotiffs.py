@@ -31,7 +31,7 @@ for layer in layers:
 
     # Rasterize the geometries with average_value encoded
     raster = rasterize(
-        [(geom, value) for geom, value in zip(gdf.geometry, gdf['average_value'])],
+        [(geom, value) for geom, value in zip(gdf.geometry, gdf['average_anomaly'])],
         out_shape=(height, width),
         transform=transform,
         fill=0,  # Background value

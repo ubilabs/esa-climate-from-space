@@ -9,13 +9,26 @@ gdf = gpd.read_file('rivers.geojson')
 # Convert timestamps and calculate buffer sizes
 gdf['timestamp'] = pd.to_datetime(gdf['timestamp'], format='%Y-%m-%d')
 
-bufferSize = np.where(gdf['average_value'].abs() > 2000, 
-                         1000000, 
-                         gdf['average_value'].abs() * 500)
+bufferSize = 50000 + (gdf['average_anomaly'].abs() * 50000)
 
 gdf['buffer_size'] = bufferSize
 gdf = gdf.to_crs(epsg=32633)  # Adjust CRS to one that uses meters for buffer calculations
-gdf['geometry'] = gdf.geometry.buffer(gdf['buffer_size'])
+
+# Create the outer buffer
+gdf['outer_buffer'] = gdf.geometry.buffer(gdf['buffer_size'])
+
+# Create the inner buffer (the size of the hole)
+fixed_inner_buffer_size = 25000  # Fixed hole size in meters (e.g., 25000 meters = 25 km)
+gdf['inner_buffer'] = gdf.geometry.buffer(fixed_inner_buffer_size)
+
+# Apply the difference operation element-wise to create a ring (outer buffer minus inner buffer)
+gdf['geometry'] = gdf.apply(lambda row: row['outer_buffer'].difference(row['inner_buffer']), axis=1)
+
+# Ensure valid geometries (optional but recommended to clean any invalid geometries)
+gdf['geometry'] = gdf['geometry'].buffer(0)
+
+# Drop the temporary buffer columns
+gdf = gdf.drop(columns=['outer_buffer', 'inner_buffer'])
 
 # Filter data by month and store each month's data in a separate layer in a GeoPackage
 start_date = datetime(2010, 1, 1)

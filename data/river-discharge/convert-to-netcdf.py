@@ -24,9 +24,9 @@ for file in os.listdir(folder_path):
         # Set the coordinate names to longitude and latitude for clarity
         ds = ds.rename({"x": "longitude", "y": "latitude"})
 
-        ds = ds.isel(band=0).rename("water_level")
+        ds = ds.isel(band=0).rename("water_level_anomaly")
 
-        parts = file.split('_')
+        parts = file.replace('.tiff', '').split('_')
 
         # Extract the year and month
         year = parts[1]  # "2012"

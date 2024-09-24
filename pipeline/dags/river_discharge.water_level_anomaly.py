@@ -6,27 +6,29 @@ from helper import get_default_layer_version
 
 # layer
 LAYER_ID = 'river_discharge'
-LAYER_VARIABLE = 'water_level'
+LAYER_VARIABLE = 'water_level_anomaly'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [],  # will be injected
-    "min_value": -47,
-    "max_value": 3510,
+    "min_value": -9.95,
+    "max_value": 17.59,
     "type": "image",  # 'tiles' or 'image'
     "zoom_levels": '0-3',
     "units": 'm',
     "basemap": 'ocean',
     "legend_values": [
-        3500,
-        3000,
-        2500,
-        1500,
-        1000,
-        500,
-        250,
-        25,
+        17.5,
+        15,
+        12.5,
+        10,
+        7.5,
+        5,
+        2.5,
         0,
-        -25
+        -2.5,
+        -5,
+        -7.5,
+        -10,
     ],
     "time_format": {
         "year": "numeric",
