@@ -5,31 +5,35 @@ from airflow.models.param import Param
 from helper import get_default_layer_version
 
 # layer
-LAYER_ID = 'greenhouse'
-LAYER_VARIABLE = 'xco2'
+LAYER_ID = 'river_discharge'
+LAYER_VARIABLE = 'water_level_anomaly'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [],  # will be injected
-    "min_value": 0.0003599192132242024,
-    "max_value": 0.0004179562965873629,
-    "type": "tiles",  # 'tiles' or 'image'
-    "zoom_levels": '0-2',
-    "units": '',
-    "basemap": None,
+    "min_value": -9.95,
+    "max_value": 17.59,
+    "type": "image",  # 'tiles' or 'image'
+    "zoom_levels": '0-3',
+    "units": 'm',
+    "basemap": 'ocean',
     "legend_values": [
-      "420 ppm",
-      "415",
-      "410",
-      "405",
-      "400",
-      "395",
-      "390",
-      "385"
+        17.5,
+        15,
+        12.5,
+        10,
+        7.5,
+        5,
+        2.5,
+        0,
+        -2.5,
+        -5,
+        -7.5,
+        -10,
     ],
     "time_format": {
         "year": "numeric",
         "month": "long"
-    }
+    },
 }
 
 # dev
@@ -60,7 +64,7 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
         workdir=WORKDIR, color_file=COLOR_FILE)
     metadata = task_factories.metadata(workdir=WORKDIR, metadata=METADATA)
     gdal_transforms = task_factories.gdal_transforms(
-        layer_variable=LAYER_VARIABLE, color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'])
+        color_file=COLOR_FILE, layer_type=METADATA['type'], zoom_levels=METADATA['zoom_levels'])
     upload = task_factories.upload(
         WORKDIR, LAYER_ID, LAYER_VARIABLE, METADATA['type'])
 
