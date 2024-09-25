@@ -5,7 +5,7 @@ from io import StringIO
 import json
 
 # Directory containing the CSV files
-data_dir = "/data/downloads/download/xco2"
+data_dir = "/data/downloads/download/river_discharge"
 
 # Function to read the data into a pandas DataFrame and extract metadata
 def read_altimetry_data(filename):
