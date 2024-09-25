@@ -22,7 +22,7 @@ for layer in layers:
 
     # Define global bounds for the raster [-180, -90, 180, 90] (minx, miny, maxx, maxy)
     global_bounds = (-180, -90, 180, 90)
-    width = 10000  # Set width to 5000 pixels for the whole globe
+    width = 8192  # Set width to 8192 pixels for the whole globe
     pixel_size = (global_bounds[2] - global_bounds[0]) / width  # Calculate pixel size based on the width
     height = int((global_bounds[3] - global_bounds[1]) / pixel_size)  # Calculate height based on pixel size
 
