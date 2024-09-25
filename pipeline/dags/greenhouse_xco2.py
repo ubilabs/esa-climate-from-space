@@ -17,14 +17,14 @@ METADATA = {
     "units": '',
     "basemap": None,
     "legend_values": [
-      "400 ppm",
+      "420 ppm",
+      "415",
+      "410",
+      "405",
+      "400",
       "395",
       "390",
-      "385",
-      "380",
-      "375",
-      "370",
-      "365"
+      "385"
     ],
     "time_format": {
         "year": "numeric",
