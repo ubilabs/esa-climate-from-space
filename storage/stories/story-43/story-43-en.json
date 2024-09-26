@@ -5,15 +5,18 @@
       "type": "splashscreen",
       "text": "# El Niño 2023",
       "shortText": "# El Niño 2023",
-      "images": ["assets/story43-image01.jpg"]
+      "images": [
+        "assets/story43-image01.jpg"
+      ]
     },
     {
       "type": "video",
       "text": "## El Niño 2023\r\n\r\nEl Niño is a periodic climate disturbance in the Pacific Ocean with consequences felt around the world. Some regions see flooding; others see drought, crop failures, wildfires or disease outbreaks.\r\n\r\nEvery few years, warm water builds up in the eastern Pacific Ocean.\r\nWarmer water evaporates more easily, increasing cloud cover and rainfall.\r\nThe rain falls as freshwater, reducing the salinity of the sea surface.\r\n\r\nSatellite observations and floating sensors show a pool of freshwater expands across the Pacific during an El Niño event. It also seems that changes to ocean salinity in the western Pacific may help indicate the onset of El Niño. \r\n\r\nSatellite observations of sea-surface temperature have long been included in climate models. Adding salinity improves a model’s ability to forecast the occurrence, duration and severity of El Niño events, such as the one building during 2023.\r\n\r\n(Data from CCI Sea-Surface Temperature, Cloud and Sea-Surface Salinity teams, IFREMER, LOCEAN, OceanScope, Copernicus Sentinel-2. Animation by Planetary Visions)",
       "shortText": "## El Niño 2023\r\n\r\nEl Niño is a periodic climate disturbance in the Pacific Ocean with consequences felt around the world. Some regions see flooding; others see drought, crop failures, wildfires or disease outbreaks.\r\n\r\nEvery few years, warm water builds up in the eastern Pacific Ocean. Warmer water evaporates more easily, increasing cloud cover and rainfall. The rain falls as freshwater, reducing the salinity of the sea surface.\r\n\r\nSatellite observations and floating sensors show a pool of freshwater expands across the Pacific during an El Niño event. It also seems that changes to ocean salinity in the western Pacific may help indicate the onset of El Niño. \r\n\r\nSatellite observations of sea-surface temperature have long been included in climate models. Adding salinity improves a model’s ability to forecast the occurrence, duration and severity of El Niño events, such as the one building during 2023.\r\n\r\n(Data from CCI Sea-Surface Temperature, Cloud and Sea-Surface Salinity teams,\r\nIFREMER, LOCEAN, OceanScope, Copernicus Sentinel-2. Animation by Planetary Visions)",
-      "videoCaptions": "assets/elnino2023.vtt",
       "videoPoster": "assets/elnino2023.jpg",
-      "videoSrc": ["assets/elnino2023-web.mp4"]
+      "videoSrc": [
+        "assets/elnino2023-web.mp4"
+      ]
     }
   ]
 }
