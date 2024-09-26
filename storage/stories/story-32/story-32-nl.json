@@ -56,14 +56,14 @@
       "shortText": "## ESA's Climate Change Initiative\r\n\r\nHet Climate Change Initiative (CCI) van het European Space Agency is opgericht om de uitdaging van het gebruik van aardobservatiesatellietgegevens om veranderingen van het klimaat te volgen aan te gaan.\r\n    \r\n- Er zijn 55 \"essentiële klimaatvariabelen\" (ECV's) geïdentificeerd als de belangrijkste componenten van het klimaat op aarde.\r\n- CCI concentreert zich op 27 daarvan, waar Europese deskundigheid en technologie een belangrijke bijdrage kunnen leveren.\r\n- Gebruik maken van de decennialange archieven van gegevens van de satellietmissies van het ESA en andere ruimteagentschappen.\r\n- De productie van stabiele meetreeksen van langetermijngegevens om de informatie voor klimaatmodelleurs en onderzoekers te verbeteren.\r\n- Bijna 700 deskundigen met uiteenlopende wetenschappelijke, technische en ontwikkelingsspecialisaties uit de hele Europese aardobservatiegemeenschap.\r\n- Het bieden van duurzame en transparante toegang tot wereldwijde klimaatgegevens.",
       "images": [
         "assets/intro_large_10.jpg",
-        "assets/story32-image05.jpg",
         "assets/story32-image01.jpg",
+        "assets/story32-image05.jpg",
         "assets/story32-image04.jpg"
       ],
       "imageCaptions": [
         "9 juli 2015: De opening van ESA's European Centre for Space Applications and Telecommunication (ECSAT) in Harwell, Verenigd Koninkrijk, de thuisbasis van ESA's Klimaatbureau (ESA)",
-        "# UN-GCOS essential climate variables\r\nHet Global Climate Observing System van de VN heeft 54 'essentiële klimaatvariabelen' geïdentificeerd. Ongeveer tweederde kan vanuit de ruimte worden waargenomen. ESA's Climate Change Initiative ontwikkelt meetreeksen van satellietgegevens voor 22 van deze ECV's.  (ESA)",
         "# Door ESA ontwikkelde aardobservatiemissies\r\nEnvisat werd opgevolgd door een vloot van Europese satellieten, waaronder experimentele aardwetenschapssatellieten, operationele Copernicus Sentinel-satellieten die door de Europese Unie worden gefinancierd, en weersatellieten die door EUMETSAT worden geëxploiteerd. (ESA)",
+        "# UN-GCOS essential climate variables\r\nHet Global Climate Observing System van de VN heeft 54 'essentiële klimaatvariabelen' geïdentificeerd. Ongeveer tweederde kan vanuit de ruimte worden waargenomen. ESA's Climate Change Initiative ontwikkelt meetreeksen van satellietgegevens voor 22 van deze ECV's.  (ESA)",
         "# ESA-CCI essentiële klimaatvariabelen\r\nVan satellieten afgeleide ECV-gegevens, gegenereerd door het Climate Change Initiative, beslaan meer dan vijf decennia (ESA)"
       ],
       "imageFits": [

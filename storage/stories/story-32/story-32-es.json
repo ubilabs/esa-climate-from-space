@@ -56,14 +56,14 @@
       "shortText": "## Iniciativa de la ESA sobre el cambio climático\r\n\r\nLa Iniciativa sobre el Cambio Climático (CCI) de la Agencia Espacial Europea se creó para afrontar el reto de utilizar los datos de los satélites de observación de la Tierra para seguir los cambios en el clima.\r\n    \r\n- Se han identificado 55 \"variables climáticas esenciales\" (ECV) como componentes clave del clima de la Tierra.\r\n- La CCI se centra en 27 de ellas, en las que la experiencia y la tecnología europeas pueden aportar una contribución significativa.\r\n- Utilizar los archivos de datos de varias décadas de las misiones de satélites de la ESA y otras agencias espaciales.\r\n- Elaborar productos de datos estables y a largo plazo para mejorar la información disponible para los modelizadores e investigadores del clima.\r\n- A cerca de 700 expertos en diversas especialidades científicas, técnicas y de desarrollo de toda la comunidad europea de observación de la Tierra.\r\n- Ofrecer un acceso duradero y transparente a los datos climáticos mundiales.",
       "images": [
         "assets/intro_large_10.jpg",
-        "assets/story32-image05.jpg",
         "assets/story32-image01.jpg",
+        "assets/story32-image05.jpg",
         "assets/story32-image04.jpg"
       ],
       "imageCaptions": [
         "9 de julio de 2015: La inauguración del Centro Europeo de Aplicaciones Espaciales y Telecomunicaciones (ECSAT) de la ESA en Harwell (Reino Unido), sede de la Oficina del Clima de la ESA (ESA).",
-        "# Variables climáticas esenciales del SMOC de la ONU\r\nEl Sistema Mundial de Observación del Clima de la ONU ha identificado 55 \"variables climáticas esenciales\". Alrededor de dos tercios pueden observarse desde el espacio. La Iniciativa sobre el Cambio Climático de la ESA está desarrollando secuencias de datos derivados de satélites para 22 de estas VCE.  (ESA)",
         "# Misiones de observación de la Tierra desarrolladas por la ESA\r\nA Envisat le ha seguido una flota de satélites europeos de observación de la Tierra que incluye satélites experimentales de ciencias de la Tierra, satélites operativos Copernicus Sentinel financiados por la Unión Europea y satélites meteorológicos operados por EUMETSAT. (ESA)",
+        "# Variables climáticas esenciales del SMOC de la ONU\r\nEl Sistema Mundial de Observación del Clima de la ONU ha identificado 55 \"variables climáticas esenciales\". Alrededor de dos tercios pueden observarse desde el espacio. La Iniciativa sobre el Cambio Climático de la ESA está desarrollando secuencias de datos derivados de satélites para 22 de estas VCE.  (ESA)",
         "# Variables climáticas esenciales de la CCI\r\nLos registros de datos ECV obtenidos por satélite y generados por la Iniciativa sobre el Cambio Climático abarcan más de cinco décadas (ESA)"
       ],
       "imageFits": [
