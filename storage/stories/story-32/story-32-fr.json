@@ -56,14 +56,14 @@
       "shortText": "## Initiative de l'ESA sur le changement climatique\r\n\r\nL'Initiative sur le changement climatique (ICC) de l'Agence spatiale européenne a été créée pour relever le défi d'utiliser les données des satellites d'observation de la Terre pour suivre les changements climatiques.\r\n    \r\n- 55 \"variables climatiques essentielles\" (VCE) ont été identifiées comme les composantes clés du climat de la Terre.\r\n- L'ICC se concentre sur 27 d'entre elles, pour lesquelles l'expertise et la technologie européennes peuvent apporter une contribution significative.\r\n- L'utilisation des archives pluridécennales de données provenant des missions satellitaires de l'ESA et d'autres agences spatiales.\r\n- La production de produits de données stables et à long terme pour améliorer les informations disponibles pour les modélisateurs du climat et les chercheurs.\r\n- Près de 700 experts dans un éventail de spécialisations scientifiques, techniques et de développement, issus de la communauté européenne d'observation de la Terre.\r\n- Offrir un accès durable et transparent aux données climatiques mondiales.",
       "images": [
         "assets/intro_large_10.jpg",
-        "assets/story32-image01.jpg",
         "assets/story32-image05.jpg",
+        "assets/story32-image01.jpg",
         "assets/story32-image04.jpg"
       ],
       "imageCaptions": [
         "9 juillet 2015 : L'ouverture du Centre européen pour les applications spatiales et les télécommunications (ECSAT) de l'ESA à Harwell, au Royaume-Uni, qui abrite le bureau du climat de l'ESA (ESA).",
-        "# Missions d'observation de la Terre développées par l'ESA\r\nEnvisat a été suivi par une flotte de satellites européens d'observation de la Terre, dont des satellites expérimentaux en sciences de la Terre, des satellites opérationnels Copernicus Sentinel financés par l'Union européenne et des satellites météorologiques exploités par EUMETSAT. (ESA)",
         "# Variables climatiques essentielles de l'UN-GCOS\r\nLe Système mondial d'observation du climat de l'ONU a identifié 55 \"variables climatiques essentielles\". Environ deux tiers peuvent être observés depuis l'espace. L'initiative sur le changement climatique de l'ESA développe des séquences de données dérivées de satellites pour 22 de ces VCE.  (ESA)",
+        "# Missions d'observation de la Terre développées par l'ESA\r\nEnvisat a été suivi par une flotte de satellites européens d'observation de la Terre, dont des satellites expérimentaux en sciences de la Terre, des satellites opérationnels Copernicus Sentinel financés par l'Union européenne et des satellites météorologiques exploités par EUMETSAT. (ESA)",
         "# Variables climatiques essentielles de l'ESA-CCI\r\nLes données ECV dérivées des satellites et générées par l'initiative sur le changement climatique s'étendent sur cinq décennies (ESA)"
       ],
       "imageFits": [
