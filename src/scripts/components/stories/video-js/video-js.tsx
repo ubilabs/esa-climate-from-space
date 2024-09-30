@@ -45,6 +45,10 @@ const VideoJS: FunctionComponent<Props> = ({
   const videoJsOptions: VideoJsPlayerOptions = {
     autoplay: isStoryMode ? false : true,
     controls: true,
+    // Make sure subtitles are handled by video.js and displayed consistently across browsers
+    html5: {
+      nativeTextTracks: false
+    },
     responsive: true,
     aspectRatio: '4:3',
     poster: posterUrl,
