@@ -53,14 +53,6 @@ const VideoJS: FunctionComponent<Props> = ({
         src: videoUrl,
         type: 'video/mp4'
       }
-    ],
-    tracks: [
-      {
-        srclang: language,
-        kind: 'captions',
-        src: getCaptionUrl(),
-        default: true
-      }
     ]
   };
 
@@ -77,6 +69,22 @@ const VideoJS: FunctionComponent<Props> = ({
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source#attr-media
   // takes the provided video file name and selects a resolution based on media queries
   const handlePlayerReady = (player: VideoJsPlayer) => {
+    // Caption needs to be added after player is ready
+    const textTrack = player?.addRemoteTextTrack(
+      {
+        kind: 'captions',
+        src: getCaptionUrl(),
+        srclang: language,
+        label: language
+      },
+      true
+    );
+
+    // Show subtitles by default but only if the language is not English
+    if (textTrack && textTrack.track && language !== 'en') {
+      textTrack.track.mode = 'showing';
+    }
+
     playerRef.current = player;
 
     const mobile = window.matchMedia('(max-width: 480px)');
@@ -129,7 +137,7 @@ const VideoJS: FunctionComponent<Props> = ({
         ref={videoRef}
         className="video-js vjs-big-play-centered"
         style={{height: '100%'}}
-        onPlay={event => onPlay((event.target as unknown) as VideoJsPlayer)}
+        onPlay={event => onPlay(event.target as unknown as VideoJsPlayer)}
       />
     </div>
   );
