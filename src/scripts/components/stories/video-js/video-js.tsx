@@ -45,6 +45,10 @@ const VideoJS: FunctionComponent<Props> = ({
   const videoJsOptions: VideoJsPlayerOptions = {
     autoplay: isStoryMode ? false : true,
     controls: true,
+    // Make sure subtitles are handled by video.js and displayed consistently across browsers
+    html5: {
+      nativeTextTracks: false
+    },
     responsive: true,
     aspectRatio: '4:3',
     poster: posterUrl,
@@ -70,7 +74,7 @@ const VideoJS: FunctionComponent<Props> = ({
   // takes the provided video file name and selects a resolution based on media queries
   const handlePlayerReady = (player: VideoJsPlayer) => {
     // Caption needs to be added after player is ready
-    player?.addRemoteTextTrack(
+    const textTrack = player?.addRemoteTextTrack(
       {
         kind: 'captions',
         src: getCaptionUrl(),
@@ -79,6 +83,11 @@ const VideoJS: FunctionComponent<Props> = ({
       },
       true
     );
+
+    // Show subtitles by default but only if the language is not English
+    if (textTrack && textTrack.track && language !== 'en') {
+      textTrack.track.mode = 'showing';
+    }
 
     playerRef.current = player;
 
