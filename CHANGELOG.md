@@ -1,3 +1,42 @@
+## [1.17.1](https://github.com/ubilabs/esa-climate-from-space/compare/v1.17.0...v1.17.1) (2024-10-01)
+
+
+
+# [1.17.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.16.3...v1.17.0) (2024-09-25)
+
+
+### Bug Fixes
+
+* **data:** resize glaciers full size tile ([4c21da3](https://github.com/ubilabs/esa-climate-from-space/commit/4c21da3a632920c1b9be04a2cabd6baeda5f3e84))
+* update output file name for anomalies in GeoJSON export ([a72203e](https://github.com/ubilabs/esa-climate-from-space/commit/a72203e8aaf26abd670e364a21ee1af6fc997674))
+
+
+### Features
+
+* Add consistent font size for subtitles in VideoJS component ([ad938d0](https://github.com/ubilabs/esa-climate-from-space/commit/ad938d0589a592e95dc7ec9fd63e7a86c7bd8a9c))
+* Add default subtitle display for non-English languages in VideoJS component ([c03417f](https://github.com/ubilabs/esa-climate-from-space/commit/c03417fe353ef11a9d239366719edb0fa84e54c4))
+* **parse-river-data:** merge river data into single geojson ([258522d](https://github.com/ubilabs/esa-climate-from-space/commit/258522d8a86fd96857e79a7a5df3f456c3c149f6))
+* **parse-river-data:** update dir ([dd1f441](https://github.com/ubilabs/esa-climate-from-space/commit/dd1f441d0462b504bd3278a600faff39c41599ab))
+* **pipeline:** adjust tile size for river discharge ([7198423](https://github.com/ubilabs/esa-climate-from-space/commit/7198423f0ad836a15f8f23ef47d0314b46f1cc6a))
+* **pipeline:** river discharge preprocessing and dag ([e0f8b8a](https://github.com/ubilabs/esa-climate-from-space/commit/e0f8b8a0c249abf12ac3c6812ba7aa20e06ec9ac))
+* **pipeline:** update color scale of xco2 layer ([f967da0](https://github.com/ubilabs/esa-climate-from-space/commit/f967da0b561d137ed4b14696303581e535c3fd00))
+* **pipeline:** update river discharge colors ([bcd200b](https://github.com/ubilabs/esa-climate-from-space/commit/bcd200bd2ab2f16c625822e2c4d788603aec1a01))
+* **pipeline:** update river discharge variable and script names ([398c34e](https://github.com/ubilabs/esa-climate-from-space/commit/398c34ec7556a7c2b949f42ae225a27bcc7ec9b1))
+* **river-discharge:** calculate monthly average water levels and update GeoJSON output ([9455cf0](https://github.com/ubilabs/esa-climate-from-space/commit/9455cf012bec4fb606767e3e3e8c0ec6baaa4714))
+* **river-discharge:** enhance data processing by adding metadata validation and improving GeoJSON output ([438101d](https://github.com/ubilabs/esa-climate-from-space/commit/438101d095647229cafc39c1fece4cb6ca46edc0))
+* **river-discharge:** update average water level calculations and add anomaly metric ([2c16453](https://github.com/ubilabs/esa-climate-from-space/commit/2c16453d68d0906a7573c11a8645b899ec051fa5))
+
+
+### Reverts
+
+* Revert "chore: update layer description for c02" ([62d803b](https://github.com/ubilabs/esa-climate-from-space/commit/62d803bc58eef5c4a28762aa1380adfe87a4af14))
+
+
+
+## [1.16.3](https://github.com/ubilabs/esa-climate-from-space/compare/v1.16.2...v1.16.3) (2024-07-15)
+
+
+
 ## [1.16.2](https://github.com/ubilabs/esa-climate-from-space/compare/v1.16.1...v1.16.2) (2024-07-15)
 
 
