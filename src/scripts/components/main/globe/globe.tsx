@@ -98,7 +98,13 @@ const Globe: FunctionComponent<Props> = props => {
     <div
       ref={containerRef}
       className={cx(styles.globe, initialTilesLoaded && styles.fadeIn)}
-      onMouseEnter={() => onMouseEnter()}
+      //   style={{
+      //     gridColumnStart: '1',
+      //     gridColumnEnd: '6',
+      //     gridRowStart: '2',
+      //     gridRowEnd: '-2'
+      //   }}
+      onMouseEnter={onMouseEnter}
       onTouchStart={() => onTouchStart()}></div>
   );
 };
@@ -128,14 +134,18 @@ function useWebGlGlobe(view: CameraView) {
       }
 
       const newGlobe = new WebGlGlobe(containerEl, {
-        cameraView: view,
+        // cameraView: view,
+
         renderOptions: {
           atmosphereEnabled: true,
           shadingEnabled: true,
           atmosphereStrength: 0.8,
-          atmosphereColor: [0.58, 0.79, 1] // {r: 148, g: 201, b: 255}
+          atmosphereColor: [0.58, 0.79, 1]
         }
       });
+
+      //   console.log('🚀 ~ useWebGlGlobe ~ containerRef:', containerRef);
+      //   console.log('🚀 ~ useWebGlGlobe ~ containerEl:', containerEl);
 
       if ('renderer' in newGlobe) {
         // @TODO: Remove this setting after globe controls have been refactored.
