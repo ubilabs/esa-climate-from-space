@@ -1,7 +1,7 @@
 .dataViewer {
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, [col-start] minmax(0.1em, auto));
+  grid-template-columns: repeat(auto-fill, [col-start] minmax(1em, auto));
   grid-template-rows: repeat(auto-fill, [row-start] minmax(1em, auto));
 }
 
@@ -9,12 +9,12 @@
   transition: all 0.5s ease;
   grid-column-start: col-start;
   grid-column-end: -1;
-  grid-row-start: 12;
-  grid-row-end: -12;
-  transform: translateX(-55%);
-  outline: 1px solid white;
+  grid-row-start: 14;
+  grid-row-end: -14;
+  transform: translateX(-60%);
+  /* outline: 1px solid white;
   outline-offset: -35px;
-  border-radius: 50%;
+  border-radius: 50%; */
   /* scale: 0.5; */
 }
 

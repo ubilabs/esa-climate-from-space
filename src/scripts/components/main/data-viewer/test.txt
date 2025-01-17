@@ -16,5 +16,3 @@ index -> position
 const middlePosition = Math.floor(itemCount / 2);
 
 const position = Math.abs(middlePosition -index )
-
-*/

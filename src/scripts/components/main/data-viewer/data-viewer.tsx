@@ -48,6 +48,25 @@ const DataViewer: FunctionComponent<Props> = ({
   hideNavigation,
   markers = []
 }) => {
+  const [dimensions, setDimensions] = useState({
+    rowCount: Math.floor(window.innerHeight / 16),
+    columnCount: Math.floor(window.innerWidth / 16)
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        rowCount: Math.floor(window.innerHeight / 16),
+        columnCount: Math.floor(window.innerWidth / 16)
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const {rowCount, columnCount} = dimensions;
+  console.log('🚀 ~ rowCount:', rowCount);
   const dispatch = useDispatch();
   const {legend} = useSelector(embedElementsSelector);
 
@@ -245,31 +264,19 @@ const DataViewer: FunctionComponent<Props> = ({
     'Sea Surface Chlorophyll',
     'Sea Surface Oxygen',
     'Sea Surface Phosphate',
-    'Sea Surface Middle Element Waves',
-    'Sea Surface Phosphate',
+    'Sea Surface Waves',
+    'Sea Surface Middle Element Phosphate',
     'Sea Surface Oxygen',
-    'Sea Surface Chlorophyll'
-    // 'Sea Surface Wind'
-    // 'Sea Surface Nitrate',
-    // 'Sea Surface Silicate'
-    // 'Sea Surface Ice',
-    // 'Sea Surface Temperature',
-    // 'Sea Surface Salinity',
-    // 'Sea Surface Currents',
-    // 'Sea Surface Waves',
-    // 'Sea Surface Middle Element Wind',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Oxygen',
-    // 'Sea Surface Phosphate',
-    // 'Sea Surface Nitrate',
-    // 'Sea Surface Silicate'
+    'Sea Surface Chlorophyll',
+    'Sea Surface Wind'
+    // 'Sea Surface Nitrate'
   ];
 
   return (
     <div className={styles.dataViewer}>
       {/* {legend && getLegends()} */}
 
-      {/* <div
+      <div
         id="globeWrapper"
         className={styles.globeWrapper}
         data-x="0"
@@ -280,71 +287,49 @@ const DataViewer: FunctionComponent<Props> = ({
           active: isMainActive,
           action: () => setIsMainActive(true)
         })}
-      </div> */}
+      </div>
       <ol className={styles.contentNav}>
         {seaSurfaceItems.map((item, index) => {
-          // There should be 0 offset at postion 12
-          // at position 11 and 13, offset should be 10px
-
-          // Row Count equals the window.with divided by the the font size
-          // const ROW_COUNT = Math.floor();
-
-          // We would need a resize event listener to update the ROW_COUNT
-          const ROW_COUNT = Math.floor(window.innerHeight / 16);
-          //   console.log('🚀 ~ ROW_COUNT:', ROW_COUNT);
-          const COLUMN_COUNT = Math.floor(window.innerWidth / 16 / 0.1);
-
           const itemCount = Math.min(11, seaSurfaceItems.length);
-          // The amount shown is always restricted to max. 11
-          // where the middle element is always at position 6
-          // If the amount of items is a odd number, the middle element is at position 6
-          // If the amount of items is a even number, the middle element is at position 5
-          const isEven = itemCount % 2 === 0;
 
-          const gridRowStart =
-            (ROW_COUNT - (itemCount - (isEven ? 0 : 1)) * 2) / 2 + index * 2;
+          //   Any point on the circle can be calculated using
 
-          //   const gridColumnStart = Math.ceil(
-          //     ROW_COUNT / 2 - Math.abs(gridRowStart - ROW_COUNT / 2)
-          //   );
+          //   x = r * cos(θ)
+          //   y = r * sin(θ)
 
-          //   const gridRowStart =
-          //     ROW_COUNT / 2 - Math.floor(itemCount / 2) + index;
+          //  The right half of a circle spans from -90° to 90°, or
+          // -π/2 to π/2
 
-          // The middle item will be the furtherst away from the center
+          const middleIndex = Math.floor(itemCount / 2);
+          const radius = 10;
 
-          const middlePosition = Math.floor(itemCount / 2);
+          // The purpose of this code is to calculate the angle for each item
+          // in a list such that the items are distributed along a curve (specifically, a half-circle) with the middle item at the center. The angle is used to position the items in a visually appealing way, creating a curved layout.
+          // This variable is a normalized value that ranges from -1 to 1. It represents the relative position of the current item
+          // with respect to the middle item.
 
-          const angle = (index / itemCount) * 2 * Math.PI; // Calculate angle for each item
-          const radius = 9;
-          const x = Math.round(radius * Math.cos(angle));
+          //  This approach ensures that the items are evenly distributed along the curve,
+          // with the middle item being at the center and the other items spreading out symmetrically on either side.
+          const normalizedPosition = (index - middleIndex) / middleIndex;
+          const angle = normalizedPosition * (Math.PI / 2); // Reduced spread to tighten spacing
+          //   const angle = (index / itemCount) * Math.PI; // Calculate angle for each item (half-circle)
 
-          //   const gridColumnStart = Math.abs(
-          //     (Math.abs(middlePosition - index) - middlePosition) * x
-          //   );
+          const startX = 0; // Center X of the grid
+          const startY = rowCount / 2; // Center Y of the grid
 
-          //   const gridColumnStart = Math.round(COLUMN_COUNT / 2 + -x);
-          const gridColumnStart = Math.round(COLUMN_COUNT / 2 + -x);
+          // Calculate position along the right half-circle
+          const gridColumnStart = Math.max(
+            1,
+            Math.round(startX + radius * Math.cos(angle))
+          );
 
-          //   console.log('🚀 ~ gridColumnStart:', gridColumnStart);
-          //   const gridColumnStart = Math.abs(index - Math.floor(itemCount / 2));
-          //   console.log(
-          //     '🚀 ~ {seaSurfaceItems.map ~ gridColumnStart:',
-          //     gridColumnStart
-          //   );
-
-          //   console.log('🚀 ~ gridColumnStart:', gridColumnStart);
+          const gridRowStart = Math.round(startY + radius * Math.sin(angle));
 
           const ROTATION_DEGREE = 12;
           const rotation =
             (index - Math.floor(itemCount / 2)) * ROTATION_DEGREE;
-          //   const rotation = 0;
 
-          const opacity =
-            1 - Math.abs(index - Math.floor(itemCount / 2)) / middlePosition;
-          //   const opacity = 1;
-
-          //   console.log('🚀 ~ {seaSurfaceItems.map ~ opacity:', opacity);
+          const opacity = 1 - Math.abs(index - Math.floor(itemCount / 2)) / 5;
           return (
             <li
               key={index}
@@ -362,29 +347,29 @@ const DataViewer: FunctionComponent<Props> = ({
       <div className={styles.horizontalLine}></div>
       <div className={styles.verticalLine}></div>
       {/*
-      <button onClick={moveGlobe} data-direction="up" style={{zIndex: 1}}>
-        ↑
-      </button>
-      <button onClick={moveGlobe} data-direction="down" style={{zIndex: 1}}>
-        ↓
-      </button>
-      <button onClick={moveGlobe} data-direction="right" style={{zIndex: 1}}>
-        →
-      </button>
-      <button onClick={moveGlobe} data-direction="left" style={{zIndex: 1}}>
-        ←
-      </button> */}
+        <button onClick={moveGlobe} data-direction="up" style={{zIndex: 1}}>
+          ↑
+        </button>
+        <button onClick={moveGlobe} data-direction="down" style={{zIndex: 1}}>
+          ↓
+        </button>
+        <button onClick={moveGlobe} data-direction="right" style={{zIndex: 1}}>
+          →
+        </button>
+        <button onClick={moveGlobe} data-direction="left" style={{zIndex: 1}}>
+          ←
+        </button> */}
 
       {/* {compareLayer &&
-          getDataWidget({
-            imageLayer: compareImageLayer,
-            layerDetails: compareLayerDetails,
-            active: !isMainActive,
-            action: () => setIsMainActive(false)
-          })}
-        {!hideNavigation && showGlobeNavigation && (
-          <GlobeNavigation mainLayer={mainLayer} compareLayer={compareLayer} />
-        )} */}
+            getDataWidget({
+              imageLayer: compareImageLayer,
+              layerDetails: compareLayerDetails,
+              active: !isMainActive,
+              action: () => setIsMainActive(false)
+            })}
+          {!hideNavigation && showGlobeNavigation && (
+            <GlobeNavigation mainLayer={mainLayer} compareLayer={compareLayer} />
+          )} */}
     </div>
   );
 };
