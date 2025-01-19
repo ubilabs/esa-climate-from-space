@@ -260,17 +260,24 @@ const DataViewer: FunctionComponent<Props> = ({
   }
 
   const seaSurfaceItems = [
-    'Sea Surface Wind',
     'Sea Surface Chlorophyll',
-    'Sea Surface Oxygen',
-    'Sea Surface Phosphate',
-    'Sea Surface Waves',
-    'Sea Surface Middle Element Phosphate',
-    'Sea Surface Oxygen',
+    'Sea Surface Wind 1',
+    'Sea Surface Wind 2',
     'Sea Surface Chlorophyll',
-    'Sea Surface Wind'
-    // 'Sea Surface Nitrate'
+    'Sea Surface Wind 1',
+    'Sea Surface Wind 2',
+    'Sea Surface Chlorophyll'
   ];
+
+  // We need the SPREAD_FACTOR to be 1 when there are the max number of items (11) in the list.
+  // For fewer items, the spread factor should be less than 1 to reduce the spread.
+  // for just two items, the spread factor should be 0.25
+  const SPREAD_FACTOR =
+    seaSurfaceItems.length <= 3
+      ? 0.2
+      : Math.min(1, 0.25 + (seaSurfaceItems.length - 2) / 9);
+
+  console.log('🚀 ~ {seaSurfaceItems.map ~ SPREAD_FACTOR:', SPREAD_FACTOR);
 
   return (
     <div className={styles.dataViewer}>
@@ -310,7 +317,16 @@ const DataViewer: FunctionComponent<Props> = ({
 
           //  This approach ensures that the items are evenly distributed along the curve,
           // with the middle item being at the center and the other items spreading out symmetrically on either side.
-          const normalizedPosition = (index - middleIndex) / middleIndex;
+          //   const normalizedPosition = (index - middleIndex) / middleIndex;
+          const normalizedPosition =
+            middleIndex === 0
+              ? 0
+              : ((index - middleIndex) / middleIndex) * SPREAD_FACTOR; // Multiply by 0.25 to reduce spread
+
+          //   console.log(
+          //     '🚀 ~ {seaSurfaceItems.map ~ normalizedPosition:',
+          //     normalizedPosition
+          //   );
           const angle = normalizedPosition * (Math.PI / 2); // Reduced spread to tighten spacing
           //   const angle = (index / itemCount) * Math.PI; // Calculate angle for each item (half-circle)
 
@@ -323,7 +339,10 @@ const DataViewer: FunctionComponent<Props> = ({
             Math.round(startX + radius * Math.cos(angle))
           );
 
-          const gridRowStart = Math.round(startY + radius * Math.sin(angle));
+          const gridRowStart = Math.max(
+            1,
+            Math.round(startY + radius * Math.sin(angle))
+          );
 
           const ROTATION_DEGREE = 12;
           const rotation =
