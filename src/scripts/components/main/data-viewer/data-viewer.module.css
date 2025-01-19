@@ -1,17 +1,17 @@
 .dataViewer {
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, [col-start] minmax(1em, auto));
-  grid-template-rows: repeat(auto-fill, [row-start] minmax(1em, auto));
+  grid-template-columns: repeat(auto-fill, [col-start] minmax(0.5em, auto));
+  grid-template-rows: repeat(auto-fill, [row-start] minmax(0.5em, auto));
 }
 
 .globeWrapper {
   transition: all 0.5s ease;
   grid-column-start: col-start;
   grid-column-end: -1;
-  grid-row-start: 14;
-  grid-row-end: -14;
-  transform: translateX(-60%);
+  grid-row-start: 18;
+  grid-row-end: -18;
+  transform: translateX(-66%);
   /* outline: 1px solid white;
   outline-offset: -35px;
   border-radius: 50%; */
@@ -49,7 +49,7 @@
 
 .contentNav li {
   /* grid-row-start: attr(data-grid-row); Each item spans exactly one row */
-  grid-row-end: span 2;
+  grid-row-end: span 4;
   grid-column-end: -1;
   /* grid-column: 1 / -1; */
   display: flex;

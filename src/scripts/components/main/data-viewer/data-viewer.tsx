@@ -49,8 +49,8 @@ const DataViewer: FunctionComponent<Props> = ({
   markers = []
 }) => {
   const [dimensions, setDimensions] = useState({
-    rowCount: Math.floor(window.innerHeight / 16),
-    columnCount: Math.floor(window.innerWidth / 16)
+    rowCount: Math.floor(window.innerHeight / 8),
+    columnCount: Math.floor(window.innerWidth / 8)
   });
 
   useEffect(() => {
@@ -271,10 +271,10 @@ const DataViewer: FunctionComponent<Props> = ({
     'Sea Surface Wind 1',
     'Sea Surface Wind 2',
     'Sea Surface Chlorophyll',
-    'Sea Surface Wind 2',
-    'Sea Surface Chlorophyll',
-    'Sea Surface Chlorophyll',
-    'Sea Surface Chlorophyll'
+    'Sea Surface Wind 2'
+    // 'Sea Surface Chlorophyll'
+    // 'Sea Surface Chlorophyll'
+    // 'Sea Surface Chlorophyll'
   ];
 
   // We need the SPREAD_FACTOR to be 1 when there are the max number of items (11) in the list.
@@ -319,7 +319,7 @@ const DataViewer: FunctionComponent<Props> = ({
           //     '🚀 ~ {seaSurfaceItems.map ~ middleIndex: log',
           //     middleIndex
           //   );
-          const radius = 14;
+          const radius = 26;
 
           // The purpose of this code is to calculate the angle for each item
           // in a list such that the items are distributed along a curve (specifically, a half-circle) with the middle item at the center. The angle is used to position the items in a visually appealing way, creating a curved layout.
@@ -346,7 +346,7 @@ const DataViewer: FunctionComponent<Props> = ({
           //   const angle = (index / itemCount) * Math.PI; // Calculate angle for each item (half-circle)
 
           const startX = -4; // Center X of the grid
-          const startY = rowCount / 2; // Center Y of the grid
+          const startY = rowCount / 2 - 1; // Center Y of the grid
 
           // Calculate position along the right half-circle
           const gridColumnStart = Math.max(
@@ -356,14 +356,14 @@ const DataViewer: FunctionComponent<Props> = ({
 
           const gridRowStart = Math.max(
             1,
-            Math.round(startY + radius * Math.sin(angle))
+            Math.ceil(startY + radius * Math.sin(angle))
           );
 
           const ROTATION_DEGREE = 12;
           const rotation =
             (index - Math.floor(itemCount / 2)) * ROTATION_DEGREE;
 
-          const opacity = 1 - Math.abs(index - Math.floor(itemCount / 2)) / 100;
+          const opacity = 1 - Math.abs(index - Math.floor(itemCount / 2)) / 5;
           return (
             <li
               key={index}
@@ -378,8 +378,8 @@ const DataViewer: FunctionComponent<Props> = ({
           );
         })}
       </ol>
-      <div className={styles.horizontalLine}></div>
-      <div className={styles.verticalLine}></div>
+      {/* <div className={styles.horizontalLine}></div>
+      <div className={styles.verticalLine}></div> */}
       {/*
         <button onClick={moveGlobe} data-direction="up" style={{zIndex: 1}}>
           ↑
