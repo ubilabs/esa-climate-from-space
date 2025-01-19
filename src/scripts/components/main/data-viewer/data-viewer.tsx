@@ -259,6 +259,10 @@ const DataViewer: FunctionComponent<Props> = ({
     }
   }
 
+  function moveList(e: React.TouchEvent<HTMLUListElement>) {
+    console.log('🚀 ~ moveList ~ moveList', e);
+  }
+
   const seaSurfaceItems = [
     'Sea Surface Chlorophyll',
     'Sea Surface Wind 1',
@@ -266,18 +270,22 @@ const DataViewer: FunctionComponent<Props> = ({
     'Sea Surface Chlorophyll',
     'Sea Surface Wind 1',
     'Sea Surface Wind 2',
+    'Sea Surface Chlorophyll',
+    'Sea Surface Wind 2',
+    'Sea Surface Chlorophyll',
+    'Sea Surface Chlorophyll',
     'Sea Surface Chlorophyll'
   ];
 
   // We need the SPREAD_FACTOR to be 1 when there are the max number of items (11) in the list.
   // For fewer items, the spread factor should be less than 1 to reduce the spread.
   // for just two items, the spread factor should be 0.25
-  const SPREAD_FACTOR =
-    seaSurfaceItems.length <= 3
-      ? 0.2
-      : Math.min(1, 0.25 + (seaSurfaceItems.length - 2) / 9);
+  //   const SPREAD_FACTOR =
+  //     seaSurfaceItems.length <= 3
+  //       ? 0.2
+  //       : Math.min(1, 0.25 + (seaSurfaceItems.length - 2) / 9);
 
-  console.log('🚀 ~ {seaSurfaceItems.map ~ SPREAD_FACTOR:', SPREAD_FACTOR);
+  //   console.log('🚀 ~ {seaSurfaceItems.map ~ SPREAD_FACTOR:', SPREAD_FACTOR);
 
   return (
     <div className={styles.dataViewer}>
@@ -295,7 +303,7 @@ const DataViewer: FunctionComponent<Props> = ({
           action: () => setIsMainActive(true)
         })}
       </div>
-      <ol className={styles.contentNav}>
+      <ol className={styles.contentNav} onTouchMove={e => moveList(e)}>
         {seaSurfaceItems.map((item, index) => {
           const itemCount = Math.min(11, seaSurfaceItems.length);
 
@@ -307,8 +315,11 @@ const DataViewer: FunctionComponent<Props> = ({
           //  The right half of a circle spans from -90° to 90°, or
           // -π/2 to π/2
 
-          const middleIndex = Math.floor(itemCount / 2);
-          const radius = 10;
+          //   console.log(
+          //     '🚀 ~ {seaSurfaceItems.map ~ middleIndex: log',
+          //     middleIndex
+          //   );
+          const radius = 14;
 
           // The purpose of this code is to calculate the angle for each item
           // in a list such that the items are distributed along a curve (specifically, a half-circle) with the middle item at the center. The angle is used to position the items in a visually appealing way, creating a curved layout.
@@ -318,19 +329,23 @@ const DataViewer: FunctionComponent<Props> = ({
           //  This approach ensures that the items are evenly distributed along the curve,
           // with the middle item being at the center and the other items spreading out symmetrically on either side.
           //   const normalizedPosition = (index - middleIndex) / middleIndex;
-          const normalizedPosition =
-            middleIndex === 0
-              ? 0
-              : ((index - middleIndex) / middleIndex) * SPREAD_FACTOR; // Multiply by 0.25 to reduce spread
+
+          //   console.log('🚀 ~ spreadFactor: log', spreadFactor);
+
+          const normalizedPosition = (index - Math.floor(itemCount / 2)) * 0.1;
 
           //   console.log(
-          //     '🚀 ~ {seaSurfaceItems.map ~ normalizedPosition:',
-          //     normalizedPosition
+          //     '🚀 ~ normalizedPosition: log',
+          //     Math.abs(index - Math.floor(itemCount / 2)) * 0.1
+          //   );
+
+          //   console.log(
+          //     '🚀 ~ {seaSurfaceItems.map ~ 1 - Math.abs(index - Math.floor(itemCount / 2)): log'
           //   );
           const angle = normalizedPosition * (Math.PI / 2); // Reduced spread to tighten spacing
           //   const angle = (index / itemCount) * Math.PI; // Calculate angle for each item (half-circle)
 
-          const startX = 0; // Center X of the grid
+          const startX = -4; // Center X of the grid
           const startY = rowCount / 2; // Center Y of the grid
 
           // Calculate position along the right half-circle
@@ -348,7 +363,7 @@ const DataViewer: FunctionComponent<Props> = ({
           const rotation =
             (index - Math.floor(itemCount / 2)) * ROTATION_DEGREE;
 
-          const opacity = 1 - Math.abs(index - Math.floor(itemCount / 2)) / 5;
+          const opacity = 1 - Math.abs(index - Math.floor(itemCount / 2)) / 100;
           return (
             <li
               key={index}

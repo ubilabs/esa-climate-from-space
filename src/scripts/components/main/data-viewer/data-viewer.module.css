@@ -34,7 +34,17 @@
   grid-template-rows: subgrid;
   /* transform: translateX(50%); */
 
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+  transition: transform 0.3s ease-out;
+
   /* list-style-position: outside; */
+}
+
+.contentNav:active {
+  cursor: grabbing;
 }
 
 .contentNav li {
