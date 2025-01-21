@@ -3,7 +3,8 @@ import React, {
   useState,
   useEffect,
   useCallback,
-  useLayoutEffect
+  useLayoutEffect,
+  useMemo
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {CameraView, LayerLoadingState} from '@ubilabs/esa-webgl-globe';
@@ -49,15 +50,15 @@ const DataViewer: FunctionComponent<Props> = ({
   markers = []
 }) => {
   const [dimensions, setDimensions] = useState({
-    rowCount: Math.floor(window.innerHeight / 8),
-    columnCount: Math.floor(window.innerWidth / 8)
+    rowCount: Math.floor(window.innerHeight),
+    columnCount: Math.floor(window.innerWidth)
   });
 
   useEffect(() => {
     const handleResize = () => {
       setDimensions({
-        rowCount: Math.floor(window.innerHeight / 16),
-        columnCount: Math.floor(window.innerWidth / 16)
+        rowCount: Math.floor(window.innerHeight),
+        columnCount: Math.floor(window.innerWidth)
       });
     };
 
@@ -66,7 +67,8 @@ const DataViewer: FunctionComponent<Props> = ({
   }, []);
 
   const {rowCount, columnCount} = dimensions;
-  console.log('🚀 ~ rowCount:', rowCount);
+  console.log('🚀 ~ columnCount:', columnCount);
+  //   console.log('🚀 ~ rowCount:', rowCount);
   const dispatch = useDispatch();
   const {legend} = useSelector(embedElementsSelector);
 
@@ -259,36 +261,139 @@ const DataViewer: FunctionComponent<Props> = ({
     }
   }
 
-  function moveList(e: React.TouchEvent<HTMLUListElement>) {
-    console.log('🚀 ~ moveList ~ moveList', e);
-  }
-
   const seaSurfaceItems = [
-    'Sea Surface Chlorophyll',
     'Sea Surface Wind 1',
     'Sea Surface Wind 2',
-    'Sea Surface Chlorophyll',
+    'Sea Surface ',
     'Sea Surface Wind 1',
+    'Sea Surface ',
     'Sea Surface Wind 2',
-    'Sea Surface Chlorophyll',
-    'Sea Surface Wind 2'
+    'Sea Surface ',
+    'Sea Surface ',
+    'Sea Surface Wind '
+    // 'Sea Surface Wind ',
+    // 'Sea Surface ',
+    // 'Sea Surface Wind',
+    // 'Sea Surface Wind ',
+    // 'Sea Surface ',
+    // 'Sea Surface Wind ',
+    // 'Sea Surface ',
+    // 'Sea Surface Wind '
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Wind 1',
+    // 'Sea Surface Wind 2',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Wind 1',
+    // 'Sea Surface Wind 2',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Wind 1',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Wind 2',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Wind 1',
+    // 'Sea Surface Wind 2',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Wind 1',
+    // 'Sea Surface Wind 2',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Wind 1',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Wind 2',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Wind 1',
+    // 'Sea Surface Wind 2',
     // 'Sea Surface Chlorophyll'
-    // 'Sea Surface Chlorophyll'
+    // 'Sea Surface Wind 1',
+    // 'Sea Surface Chlorophyll',
+    // 'Sea Surface Wind 2',
+    // 'Sea Surface Chlorophyll',
     // 'Sea Surface Chlorophyll'
   ];
 
-  // We need the SPREAD_FACTOR to be 1 when there are the max number of items (11) in the list.
-  // For fewer items, the spread factor should be less than 1 to reduce the spread.
-  // for just two items, the spread factor should be 0.25
-  //   const SPREAD_FACTOR =
-  //     seaSurfaceItems.length <= 3
-  //       ? 0.2
-  //       : Math.min(1, 0.25 + (seaSurfaceItems.length - 2) / 9);
+  const RADIUS = Math.round(rowCount / 4);
+  const ROTATION_DEGREE = 12;
+  const OPACITY_FACTOR = 8;
+  //   const startX = -24; // Center X of the grid
+  const startX = -64; // Center X of the grid
+  //   console.log('🚀 ~ startX:', startX);
+  const startY = rowCount / 2 + 1; // Center Y of the grid
+  //   console.log('🚀 ~ rowCount:', rowCount);
 
-  //   console.log('🚀 ~ {seaSurfaceItems.map ~ SPREAD_FACTOR:', SPREAD_FACTOR);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(
+    Math.floor(seaSurfaceItems.length / 2)
+  );
+  const itemCount = Math.min(seaSurfaceItems.length);
+
+  const [rotation, setRotation] = useState(0);
+
+  function calculateGridCoordinates(relativePosition: number) {
+    //   Any point on the circle can be calculated using
+    //   x = r * cos(θ)
+    //   y = r * sin(θ)
+
+    // Our CSS property expects a rotation value in degrees, which is why
+    // we convert angle from degrees to radians
+    const angle = relativePosition * ROTATION_DEGREE * (Math.PI / 180); // Reduced spread to tighten spacing
+
+    // Calculate position along the right half-circle
+    const gridColumnStart = Math.max(
+      1,
+      Math.round(startX + RADIUS * Math.cos(angle))
+    );
+
+    const gridRowStart = Math.max(
+      1,
+      Math.round(startY + RADIUS * Math.sin(angle))
+    );
+
+    return {
+      gridColumnStart,
+      gridRowStart
+    };
+  }
+
+  const rotateList = (e: React.TouchEvent) => {
+    // e.preventDefault();
+
+    if (!touchStartY) {
+      setTouchStartY(e.touches[0].clientY);
+      return;
+    }
+
+    const touchDelta = e.touches[0].clientY - touchStartY;
+    const itemHeight = 32; // Height of each item in pixels
+    const sensitivity = 0.51; // Adjust this to control movement sensitivity
+
+    // Calculate new index based on touch movement
+    const indexDelta = Math.round((touchDelta * sensitivity) / itemHeight);
+    setRotation(indexDelta);
+  };
+
+  const relativePositionToCenter = (index: number, count: number) =>
+    index - Math.floor(count / 2);
+
+  const handleTouchEnd = () => {
+    setTouchStartY(null);
+
+    // Snap to the closest middle position
+    const closestIndex = Math.round(currentIndex / 2) * 2;
+    setCurrentIndex(closestIndex);
+  };
 
   return (
     <div className={styles.dataViewer}>
+      <span
+        style={{
+          gridColumnStart: startX,
+          gridRowStart: startY,
+          backgroundColor: 'red',
+          height: '1px',
+          width: '1px'
+        }}></span>
       {/* {legend && getLegends()} */}
 
       <div
@@ -303,107 +408,54 @@ const DataViewer: FunctionComponent<Props> = ({
           action: () => setIsMainActive(true)
         })}
       </div>
-      <ol className={styles.contentNav} onTouchMove={e => moveList(e)}>
+      <ul
+        className={styles.contentNav}
+        onTouchMove={rotateList}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
+        style={{
+          rotate: `${rotation * ROTATION_DEGREE}deg`,
+          transformOrigin: '0 50%',
+          transition: 'all 0.3s ease-out'
+        }}>
+        {' '}
         {seaSurfaceItems.map((item, index) => {
-          const itemCount = Math.min(11, seaSurfaceItems.length);
+          const relativePosition = relativePositionToCenter(index, itemCount);
 
-          //   Any point on the circle can be calculated using
-
-          //   x = r * cos(θ)
-          //   y = r * sin(θ)
-
-          //  The right half of a circle spans from -90° to 90°, or
-          // -π/2 to π/2
-
-          //   console.log(
-          //     '🚀 ~ {seaSurfaceItems.map ~ middleIndex: log',
-          //     middleIndex
-          //   );
-          const radius = 26;
-
-          // The purpose of this code is to calculate the angle for each item
-          // in a list such that the items are distributed along a curve (specifically, a half-circle) with the middle item at the center. The angle is used to position the items in a visually appealing way, creating a curved layout.
-          // This variable is a normalized value that ranges from -1 to 1. It represents the relative position of the current item
-          // with respect to the middle item.
-
-          //  This approach ensures that the items are evenly distributed along the curve,
-          // with the middle item being at the center and the other items spreading out symmetrically on either side.
-          //   const normalizedPosition = (index - middleIndex) / middleIndex;
-
-          //   console.log('🚀 ~ spreadFactor: log', spreadFactor);
-
-          const normalizedPosition = (index - Math.floor(itemCount / 2)) * 0.1;
-
-          //   console.log(
-          //     '🚀 ~ normalizedPosition: log',
-          //     Math.abs(index - Math.floor(itemCount / 2)) * 0.1
-          //   );
-
-          //   console.log(
-          //     '🚀 ~ {seaSurfaceItems.map ~ 1 - Math.abs(index - Math.floor(itemCount / 2)): log'
-          //   );
-          const angle = normalizedPosition * (Math.PI / 2); // Reduced spread to tighten spacing
-          //   const angle = (index / itemCount) * Math.PI; // Calculate angle for each item (half-circle)
-
-          const startX = -4; // Center X of the grid
-          const startY = rowCount / 2 - 1; // Center Y of the grid
-
-          // Calculate position along the right half-circle
-          const gridColumnStart = Math.max(
-            1,
-            Math.round(startX + radius * Math.cos(angle))
-          );
-
-          const gridRowStart = Math.max(
-            1,
-            Math.ceil(startY + radius * Math.sin(angle))
-          );
+          const {gridColumnStart, gridRowStart} =
+            calculateGridCoordinates(relativePosition);
 
           const ROTATION_DEGREE = 12;
           const rotation =
             (index - Math.floor(itemCount / 2)) * ROTATION_DEGREE;
 
-          const opacity = 1 - Math.abs(index - Math.floor(itemCount / 2)) / 5;
+          const opacity =
+            1 - Math.abs(index - Math.floor(itemCount / 2)) / OPACITY_FACTOR;
+
           return (
             <li
+              data-relative-position={relativePosition}
+              className={
+                styles.contentNavItem
+                // index === Math.floor(itemCount / 2) ? styles.active : ''
+              }
               key={index}
               style={{
+                opacity,
                 gridRowStart,
                 gridColumnStart,
-                transform: `rotate(${rotation}deg)`,
-                opacity: `${opacity}`
+                rotate: `${rotation}deg`,
+                transition: 'all 0.3s ease-out',
+                transformOrigin: '0 50%'
               }}>
               {item}
             </li>
           );
         })}
-      </ol>
+      </ul>
+
       {/* <div className={styles.horizontalLine}></div>
       <div className={styles.verticalLine}></div> */}
-      {/*
-        <button onClick={moveGlobe} data-direction="up" style={{zIndex: 1}}>
-          ↑
-        </button>
-        <button onClick={moveGlobe} data-direction="down" style={{zIndex: 1}}>
-          ↓
-        </button>
-        <button onClick={moveGlobe} data-direction="right" style={{zIndex: 1}}>
-          →
-        </button>
-        <button onClick={moveGlobe} data-direction="left" style={{zIndex: 1}}>
-          ←
-        </button> */}
-
-      {/* {compareLayer &&
-            getDataWidget({
-              imageLayer: compareImageLayer,
-              layerDetails: compareLayerDetails,
-              active: !isMainActive,
-              action: () => setIsMainActive(false)
-            })}
-          {!hideNavigation && showGlobeNavigation && (
-            <GlobeNavigation mainLayer={mainLayer} compareLayer={compareLayer} />
-          )} */}
     </div>
   );
 };
