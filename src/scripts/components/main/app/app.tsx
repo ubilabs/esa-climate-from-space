@@ -27,6 +27,7 @@ import translations from '../../../i18n';
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
 import styles from './app.module.styl';
+import './app.module.css';
 
 // create matomo tracking instance
 const matomoInstance = createInstance({
@@ -58,12 +59,11 @@ const TranslatedApp: FunctionComponent = () => {
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
           <Route path="/" exact>
-            {embedLogo && logo}
+            <Navigation />
             <DataViewer
               hideNavigation={!globe_navigation}
               backgroundColor={'#10161A'}
             />
-            <Navigation />
             {time_slider && <TimeSlider />}
             {legend && <DataSetInfo />}
             <LayerSelector />

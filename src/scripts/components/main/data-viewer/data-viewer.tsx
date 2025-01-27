@@ -65,11 +65,12 @@ const DataViewer: FunctionComponent<Props> = ({
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const {rowCount, columnCount} = dimensions;
+  //   const {rowCount, columnCount} = dimensions;
 
-  const startX = Math.floor(columnCount / 2);
+  //   const startX = Math.floor(columnCount / 2);
 
-  const startY = Math.floor(rowCount / 4);
+  //   const startY = Math.floor(rowCount / 16);
+  const startY = 0;
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
@@ -310,17 +311,7 @@ const DataViewer: FunctionComponent<Props> = ({
     <div className={styles.dataViewer}>
       {legend && getLegends()}
 
-      <div
-        id="globeWrapper"
-        className={styles.globeWrapper}
-        data-x="0"
-        data-y="0"
-        style={{
-          gridRowStart: startY,
-          gridRowEnd: startY * -1,
-          gridColumnStart: 1,
-          gridColumnEnd: -1
-        }}>
+      <div id="globeWrapper" className={styles.globeWrapper}>
         {getDataWidget({
           imageLayer: mainImageLayer,
           layerDetails: mainLayerDetails,
@@ -332,13 +323,7 @@ const DataViewer: FunctionComponent<Props> = ({
         className={styles.contentNav}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchEnd}
-        style={{
-          gridRowStart: startY,
-          gridRowEnd: startY * -1,
-          gridColumnStart: 1,
-          gridColumnEnd: -1
-        }}>
+        onTouchCancel={handleTouchEnd}>
         {seaSurfaceItems.map((item, index) => {
           const relativePosition = relativePositionToCenter(
             index,
@@ -363,9 +348,9 @@ const DataViewer: FunctionComponent<Props> = ({
           active: !isMainActive,
           action: () => setIsMainActive(false)
         })}
-      {!hideNavigation && showGlobeNavigation && (
+      {/* {!hideNavigation && showGlobeNavigation && (
         <GlobeNavigation mainLayer={mainLayer} compareLayer={compareLayer} />
-      )}
+      )} */}
     </div>
   );
 };

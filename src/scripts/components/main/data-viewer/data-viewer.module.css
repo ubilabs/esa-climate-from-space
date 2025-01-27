@@ -1,15 +1,15 @@
 .dataViewer {
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, [col-start] minmax(1rem, auto));
-  grid-template-rows: repeat(auto-fill, [row-start] minmax(1rem, auto));
+  grid-area: content;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
 }
 
 .globeWrapper {
   transition: all 0.5s ease;
   z-index: 1;
-
-  transform: translateX(-55%);
+  /* transform: translateX(-55%); */
 }
 
 .contentNav {
