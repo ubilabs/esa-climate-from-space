@@ -34,21 +34,42 @@ import {Layer} from '../../../types/layer';
 import {LegendValueColor} from '../../../types/legend-value-color';
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
-import styles from './data-viewer.module.styl';
+import styles from './data-viewer.module.css';
 
 interface Props {
   backgroundColor: string;
   hideNavigation?: boolean;
-  markers?: Marker[];
 }
 
 const DataViewer: FunctionComponent<Props> = ({
   backgroundColor,
-  hideNavigation,
-  markers = []
+  hideNavigation
 }) => {
   const dispatch = useDispatch();
   const {legend} = useSelector(embedElementsSelector);
+
+  const [dimensions, setDimensions] = useState({
+    rowCount: Math.floor(window.innerHeight) / 16,
+    columnCount: Math.floor(window.innerWidth) / 16
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        rowCount: Math.floor(window.innerHeight) / 16,
+        columnCount: Math.floor(window.innerWidth) / 16
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const {rowCount, columnCount} = dimensions;
+
+  const startX = Math.floor(columnCount / 2);
+
+  const startY = Math.floor(rowCount / 4);
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
@@ -140,7 +161,6 @@ const DataViewer: FunctionComponent<Props> = ({
 
     return (
       <Globe
-        markers={markers}
         backgroundColor={backgroundColor}
         active={active}
         view={currentView}
@@ -171,7 +191,7 @@ const DataViewer: FunctionComponent<Props> = ({
             return null;
           }
 
-          return (id === 'land_cover.lccs_class' || id === 'land_cover.class') ? (
+          return id === 'land_cover.lccs_class' || id === 'land_cover.class' ? (
             <HoverLegend
               key={id}
               values={legendValues as LegendValueColor[]}
@@ -192,16 +212,149 @@ const DataViewer: FunctionComponent<Props> = ({
         }
       );
 
+  const seaSurfaceItems = [
+    'Sea Surface Wind 1',
+    'Sea Surface Wind 2',
+    'Sea Surface Sea',
+    'Sea Surface Wind 1',
+    'Sea Surface Sea',
+    'Sea Surface Wind 2',
+    'Sea Surface ',
+    'Sea Surface ',
+    'Sea Surface Wind ',
+    'Sea Surface Wind ',
+    'Sea Surface ',
+    'Sea Surface Wind',
+    'Sea Surface Wind ',
+    'Sea Surface ',
+    'Sea Surface Wind ',
+    'Sea Surface ',
+    'Sea Surface Wind ',
+    'Sea Surface Chlorophyll'
+  ];
+
+  const OPACITY_FACTOR = 6;
+  const ANGLE_BETWEEN_ELEMENTS = 12;
+
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
+  const [indexDelta, setIndexDelta] = useState(0);
+
+  function computeCartesianCoordinates(radius: number, angleInDegrees: number) {
+    const angleInRadians = angleInDegrees * (Math.PI / 180);
+
+    const x = radius * Math.cos(angleInRadians);
+    const y = radius * Math.sin(angleInRadians);
+
+    return {x, y};
+  }
+
+  const getCoordinates = useCallback((pos: number) => {
+    const _radius = 33;
+    const angleInDegrees = pos * ANGLE_BETWEEN_ELEMENTS;
+    const {x, y} = computeCartesianCoordinates(_radius, angleInDegrees);
+
+    return {x, y: y + 50};
+  }, []);
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!touchStartY) {
+      setTouchStartY(e.touches[0].clientY);
+      return;
+    }
+
+    const touchDelta = e.touches[0].clientY - touchStartY;
+
+    const itemHeight = 32; // Height of each item in pixels
+    const sensitivity = 0.5; // Adjust this to control movement sensitivity
+
+    const delta = Math.round((touchDelta * sensitivity) / itemHeight);
+
+    if (delta !== indexDelta) {
+      setIndexDelta(delta);
+      setTouchStartY(e.touches[0].clientY);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTouchStartY(null);
+  };
+
+  useEffect(() => {
+    const listItems: NodeListOf<HTMLElement> =
+      document.querySelectorAll('ul li');
+
+    for (const item of listItems) {
+      const relativePosition = Number(
+        item.getAttribute('data-relative-position')
+      );
+
+      const adjustedPosition = relativePosition + indexDelta;
+
+      const {x, y} = getCoordinates(adjustedPosition);
+      const rotation = adjustedPosition * ANGLE_BETWEEN_ELEMENTS;
+      const opacity = 1 - Math.abs(adjustedPosition) / OPACITY_FACTOR;
+
+      item.style.top = `${y}%`;
+      item.style.left = `${x}%`;
+      item.style.opacity = `${opacity}`;
+      item.style.rotate = `${rotation}deg`;
+
+      item.setAttribute('data-relative-position', adjustedPosition.toString());
+    }
+  }, [indexDelta, getCoordinates]);
+
+  const relativePositionToCenter = (index: number, count: number): number =>
+    index - Math.floor(count / 2);
+
   return (
     <div className={styles.dataViewer}>
       {legend && getLegends()}
 
-      {getDataWidget({
-        imageLayer: mainImageLayer,
-        layerDetails: mainLayerDetails,
-        active: isMainActive,
-        action: () => setIsMainActive(true)
-      })}
+      <div
+        id="globeWrapper"
+        className={styles.globeWrapper}
+        data-x="0"
+        data-y="0"
+        style={{
+          gridRowStart: startY,
+          gridRowEnd: startY * -1,
+          gridColumnStart: 1,
+          gridColumnEnd: -1
+        }}>
+        {getDataWidget({
+          imageLayer: mainImageLayer,
+          layerDetails: mainLayerDetails,
+          active: isMainActive,
+          action: () => setIsMainActive(true)
+        })}
+      </div>
+      <ul
+        className={styles.contentNav}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
+        style={{
+          gridRowStart: startY,
+          gridRowEnd: startY * -1,
+          gridColumnStart: 1,
+          gridColumnEnd: -1
+        }}>
+        {seaSurfaceItems.map((item, index) => {
+          const relativePosition = relativePositionToCenter(
+            index,
+            seaSurfaceItems.length
+          );
+
+          return (
+            <li
+              data-relative-position={relativePosition}
+              className={styles.contentNavItem}
+              key={index}>
+              {relativePosition} - {item}
+            </li>
+          );
+        })}
+      </ul>
 
       {compareLayer &&
         getDataWidget({
