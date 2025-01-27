@@ -9,7 +9,10 @@
 .globeWrapper {
   transition: all 0.5s ease;
   z-index: 1;
-  /* transform: translateX(-55%); */
+  /* width: 60%; */
+  margin: 0 auto;
+  height: 100%;
+  /* transform: translateX(-60%); */
 }
 
 .contentNav {
@@ -20,6 +23,7 @@
   margin: 0;
   padding: 0;
   color: white;
+  /* margin-block: 140px; */
 
   > li {
     position: absolute;

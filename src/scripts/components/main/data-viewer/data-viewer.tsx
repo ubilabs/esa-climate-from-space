@@ -323,7 +323,13 @@ const DataViewer: FunctionComponent<Props> = ({
         className={styles.contentNav}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchEnd}>
+        onTouchCancel={handleTouchEnd}
+        style={{
+          gridRowStart: startY,
+          gridRowEnd: startY * -1,
+          gridColumnStart: 1,
+          gridColumnEnd: -1
+        }}>
         {seaSurfaceItems.map((item, index) => {
           const relativePosition = relativePositionToCenter(
             index,
