@@ -50,15 +50,15 @@ const DataViewer: FunctionComponent<Props> = ({
   markers = []
 }) => {
   const [dimensions, setDimensions] = useState({
-    rowCount: Math.floor(window.innerHeight),
-    columnCount: Math.floor(window.innerWidth)
+    rowCount: Math.floor(window.innerHeight) / 16,
+    columnCount: Math.floor(window.innerWidth) / 16
   });
 
   useEffect(() => {
     const handleResize = () => {
       setDimensions({
-        rowCount: Math.floor(window.innerHeight),
-        columnCount: Math.floor(window.innerWidth)
+        rowCount: Math.floor(window.innerHeight) / 16,
+        columnCount: Math.floor(window.innerWidth) / 16
       });
     };
 
@@ -67,8 +67,12 @@ const DataViewer: FunctionComponent<Props> = ({
   }, []);
 
   const {rowCount, columnCount} = dimensions;
-  console.log('🚀 ~ columnCount:', columnCount);
-  //   console.log('🚀 ~ rowCount:', rowCount);
+
+  const startX = Math.floor(columnCount / 2);
+
+  const startY = Math.floor(rowCount / 4);
+  console.log('🚀 ~ startY:', startY);
+
   const dispatch = useDispatch();
   const {legend} = useSelector(embedElementsSelector);
 
@@ -213,194 +217,115 @@ const DataViewer: FunctionComponent<Props> = ({
         }
       );
 
-  function moveGlobe(event: React.MouseEvent<HTMLButtonElement>) {
-    const MOVE_STEP = 20;
-    // Get data-direction attribute from button
-    const direction = event.currentTarget.getAttribute('data-direction');
-    // console.log('🚀 ~ moveGlobe ~ direction:', direction);
-
-    const globeEl = document.querySelector('#globeWrapper') as HTMLElement;
-    // console.log('🚀 ~ moveGlobe ~ globeEl:', globeEl);
-
-    const currentX = globeEl.getAttribute('data-x');
-    // console.log('🚀 ~ moveGlobe ~ currentX:', currentX);
-    const currentY = globeEl.getAttribute('data-y');
-    // console.log('🚀 ~ moveGlobe ~ currentY:', currentY);
-
-    // globeEl.classList.toggle(styles[`move`]);
-
-    if (globeEl) {
-      //   globeEl.classList.toggle(styles[`move-${direction}`]);
-      let updatedY;
-      let updatedX;
-      switch (direction) {
-        case 'up':
-          updatedY = Number(currentY) - MOVE_STEP;
-          globeEl.setAttribute('data-y', `${updatedY}`);
-          globeEl.style.transform = `translate3d(${currentX}px, ${updatedY}px, 0)`;
-          break;
-        case 'down':
-          updatedY = Number(currentY) + MOVE_STEP;
-          globeEl.setAttribute('data-y', `${updatedY}`);
-          globeEl.style.transform = `translate3d(${currentX}px, ${updatedY}px, 0)`;
-          break;
-        case 'right':
-          updatedX = Number(currentX) + MOVE_STEP;
-          globeEl.setAttribute('data-x', `${updatedX}`);
-          globeEl.style.transform = `translate3d(${updatedX}px, ${currentY}px, 0)`;
-          break;
-        case 'left':
-          updatedX = Number(currentX) - MOVE_STEP;
-          globeEl.setAttribute('data-x', `${updatedX}`);
-          globeEl.style.transform = `translate3d(${updatedX}px, ${currentY}px, 0)`;
-          break;
-        default:
-          break;
-      }
-      // globeEl.style.transform = `translate3d(0, 0, 0)`;
-    }
-  }
-
   const seaSurfaceItems = [
     'Sea Surface Wind 1',
     'Sea Surface Wind 2',
-    'Sea Surface ',
+    'Sea Surface Sea',
     'Sea Surface Wind 1',
-    'Sea Surface ',
+    'Sea Surface Sea',
     'Sea Surface Wind 2',
     'Sea Surface ',
     'Sea Surface ',
-    'Sea Surface Wind '
-    // 'Sea Surface Wind ',
-    // 'Sea Surface ',
-    // 'Sea Surface Wind',
-    // 'Sea Surface Wind ',
-    // 'Sea Surface ',
-    // 'Sea Surface Wind ',
-    // 'Sea Surface ',
-    // 'Sea Surface Wind '
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Wind 1',
-    // 'Sea Surface Wind 2',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Wind 1',
-    // 'Sea Surface Wind 2',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Wind 1',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Wind 2',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Wind 1',
-    // 'Sea Surface Wind 2',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Wind 1',
-    // 'Sea Surface Wind 2',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Wind 1',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Wind 2',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Wind 1',
-    // 'Sea Surface Wind 2',
-    // 'Sea Surface Chlorophyll'
-    // 'Sea Surface Wind 1',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Wind 2',
-    // 'Sea Surface Chlorophyll',
-    // 'Sea Surface Chlorophyll'
+    'Sea Surface Wind ',
+    'Sea Surface Wind ',
+    'Sea Surface ',
+    'Sea Surface Wind',
+    'Sea Surface Wind ',
+    'Sea Surface ',
+    'Sea Surface Wind ',
+    'Sea Surface ',
+    'Sea Surface Wind ',
+    'Sea Surface Chlorophyll'
   ];
 
-  const RADIUS = Math.round(rowCount / 4);
-  const ROTATION_DEGREE = 12;
-  const OPACITY_FACTOR = 8;
-  //   const startX = -24; // Center X of the grid
-  const startX = -64; // Center X of the grid
-  //   console.log('🚀 ~ startX:', startX);
-  const startY = rowCount / 2 + 1; // Center Y of the grid
-  //   console.log('🚀 ~ rowCount:', rowCount);
+  const OPACITY_FACTOR = 6;
+  const ANGLE_BETWEEN_ELEMENTS = 12;
 
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(
-    Math.floor(seaSurfaceItems.length / 2)
-  );
-  const itemCount = Math.min(seaSurfaceItems.length);
+  const [indexDelta, setIndexDelta] = useState(0);
 
-  const [rotation, setRotation] = useState(0);
+  function computeCartesianCoordinates(radius: number, angleInDegrees: number) {
+    const angleInRadians = angleInDegrees * (Math.PI / 180);
 
-  function calculateGridCoordinates(relativePosition: number) {
-    //   Any point on the circle can be calculated using
-    //   x = r * cos(θ)
-    //   y = r * sin(θ)
+    const x = radius * Math.cos(angleInRadians);
+    const y = radius * Math.sin(angleInRadians);
 
-    // Our CSS property expects a rotation value in degrees, which is why
-    // we convert angle from degrees to radians
-    const angle = relativePosition * ROTATION_DEGREE * (Math.PI / 180); // Reduced spread to tighten spacing
-
-    // Calculate position along the right half-circle
-    const gridColumnStart = Math.max(
-      1,
-      Math.round(startX + RADIUS * Math.cos(angle))
-    );
-
-    const gridRowStart = Math.max(
-      1,
-      Math.round(startY + RADIUS * Math.sin(angle))
-    );
-
-    return {
-      gridColumnStart,
-      gridRowStart
-    };
+    return {x, y};
   }
 
-  const rotateList = (e: React.TouchEvent) => {
-    // e.preventDefault();
+  const getCoordinates = useCallback((pos: number) => {
+    const _radius = 33;
+    const angleInDegrees = pos * ANGLE_BETWEEN_ELEMENTS;
+    const {x, y} = computeCartesianCoordinates(_radius, angleInDegrees);
 
+    return {x, y: y + 50};
+  }, []);
+
+  const handleTouchMove = (e: React.TouchEvent) => {
     if (!touchStartY) {
       setTouchStartY(e.touches[0].clientY);
       return;
     }
 
     const touchDelta = e.touches[0].clientY - touchStartY;
+
     const itemHeight = 32; // Height of each item in pixels
-    const sensitivity = 0.51; // Adjust this to control movement sensitivity
+    const sensitivity = 0.5; // Adjust this to control movement sensitivity
 
-    // Calculate new index based on touch movement
-    const indexDelta = Math.round((touchDelta * sensitivity) / itemHeight);
-    setRotation(indexDelta);
+    const delta = Math.round((touchDelta * sensitivity) / itemHeight);
+
+    if (delta !== indexDelta) {
+      setIndexDelta(delta);
+      setTouchStartY(e.touches[0].clientY);
+    }
   };
-
-  const relativePositionToCenter = (index: number, count: number) =>
-    index - Math.floor(count / 2);
 
   const handleTouchEnd = () => {
     setTouchStartY(null);
-
-    // Snap to the closest middle position
-    const closestIndex = Math.round(currentIndex / 2) * 2;
-    setCurrentIndex(closestIndex);
   };
+
+  useEffect(() => {
+    const listItems: NodeListOf<HTMLElement> =
+      document.querySelectorAll('ul li');
+
+    for (const item of listItems) {
+      const relativePosition = Number(
+        item.getAttribute('data-relative-position')
+      );
+
+      const adjustedPosition = relativePosition + indexDelta;
+
+      const {x, y} = getCoordinates(adjustedPosition);
+      const rotation = adjustedPosition * ANGLE_BETWEEN_ELEMENTS;
+      const opacity = 1 - Math.abs(adjustedPosition) / OPACITY_FACTOR;
+
+      item.style.top = `${y}%`;
+      item.style.left = `${x}%`;
+      item.style.opacity = `${opacity}`;
+      item.style.rotate = `${rotation}deg`;
+
+      item.setAttribute('data-relative-position', adjustedPosition.toString());
+    }
+  }, [indexDelta, getCoordinates]);
+
+  const relativePositionToCenter = (index: number, count: number): number =>
+    index - Math.floor(count / 2);
 
   return (
     <div className={styles.dataViewer}>
-      <span
-        style={{
-          gridColumnStart: startX,
-          gridRowStart: startY,
-          backgroundColor: 'red',
-          height: '1px',
-          width: '1px'
-        }}></span>
-      {/* {legend && getLegends()} */}
+      {legend && getLegends()}
 
       <div
         id="globeWrapper"
         className={styles.globeWrapper}
         data-x="0"
-        data-y="0">
+        data-y="0"
+        style={{
+          gridRowStart: startY,
+          gridRowEnd: startY * -1,
+          gridColumnStart: 1,
+          gridColumnEnd: -1
+        }}>
         {getDataWidget({
           imageLayer: mainImageLayer,
           layerDetails: mainLayerDetails,
@@ -410,45 +335,27 @@ const DataViewer: FunctionComponent<Props> = ({
       </div>
       <ul
         className={styles.contentNav}
-        onTouchMove={rotateList}
+        onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onTouchCancel={handleTouchEnd}
         style={{
-          rotate: `${rotation * ROTATION_DEGREE}deg`,
-          transformOrigin: '0 50%',
-          transition: 'all 0.3s ease-out'
+          gridRowStart: startY,
+          gridRowEnd: startY * -1,
+          gridColumnStart: 1,
+          gridColumnEnd: -1
         }}>
-        {' '}
         {seaSurfaceItems.map((item, index) => {
-          const relativePosition = relativePositionToCenter(index, itemCount);
-
-          const {gridColumnStart, gridRowStart} =
-            calculateGridCoordinates(relativePosition);
-
-          const ROTATION_DEGREE = 12;
-          const rotation =
-            (index - Math.floor(itemCount / 2)) * ROTATION_DEGREE;
-
-          const opacity =
-            1 - Math.abs(index - Math.floor(itemCount / 2)) / OPACITY_FACTOR;
+          const relativePosition = relativePositionToCenter(
+            index,
+            seaSurfaceItems.length
+          );
 
           return (
             <li
               data-relative-position={relativePosition}
-              className={
-                styles.contentNavItem
-                // index === Math.floor(itemCount / 2) ? styles.active : ''
-              }
-              key={index}
-              style={{
-                opacity,
-                gridRowStart,
-                gridColumnStart,
-                rotate: `${rotation}deg`,
-                transition: 'all 0.3s ease-out',
-                transformOrigin: '0 50%'
-              }}>
-              {item}
+              className={styles.contentNavItem}
+              key={index}>
+              {relativePosition} - {item}
             </li>
           );
         })}
