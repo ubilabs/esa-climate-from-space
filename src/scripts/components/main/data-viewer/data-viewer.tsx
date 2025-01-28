@@ -35,6 +35,8 @@ import {LegendValueColor} from '../../../types/legend-value-color';
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
 import styles from './data-viewer.module.css';
+import CategoryNavigation from '../category-navigation/category-navigation';
+import Button from '../button/button';
 
 interface Props {
   backgroundColor: string;
@@ -49,15 +51,15 @@ const DataViewer: FunctionComponent<Props> = ({
   const {legend} = useSelector(embedElementsSelector);
 
   const [dimensions, setDimensions] = useState({
-    rowCount: Math.floor(window.innerHeight) / 16,
-    columnCount: Math.floor(window.innerWidth) / 16
+    screenHeight: Math.floor(window.innerHeight),
+    screenWidth: Math.floor(window.innerWidth)
   });
 
   useEffect(() => {
     const handleResize = () => {
       setDimensions({
-        rowCount: Math.floor(window.innerHeight) / 16,
-        columnCount: Math.floor(window.innerWidth) / 16
+        screenHeight: Math.floor(window.innerHeight),
+        screenWidth: Math.floor(window.innerWidth)
       });
     };
 
@@ -281,8 +283,9 @@ const DataViewer: FunctionComponent<Props> = ({
   };
 
   useEffect(() => {
-    const listItems: NodeListOf<HTMLElement> =
-      document.querySelectorAll('ul li');
+    const listItems = document.querySelectorAll(
+      'ul li'
+    ) as NodeListOf<HTMLElement>;
 
     for (const item of listItems) {
       const relativePosition = Number(
@@ -309,7 +312,18 @@ const DataViewer: FunctionComponent<Props> = ({
 
   return (
     <div className={styles.dataViewer}>
+      {}
+      {/* <div id="circle-container" className={styles.circleContainer}></div> */}
+      {/* <CircleSpans /> */}
+
       {legend && getLegends()}
+      <header className={styles.heading}>
+        <h2>Choose a category</h2>
+      </header>
+
+      <CategoryNavigation width={dimensions.screenWidth} />
+
+      <Button className={styles.exploreButton} label="Explore"></Button>
 
       <div id="globeWrapper" className={styles.globeWrapper}>
         {getDataWidget({
@@ -319,17 +333,11 @@ const DataViewer: FunctionComponent<Props> = ({
           action: () => setIsMainActive(true)
         })}
       </div>
-      <ul
+      {/* <ul
         className={styles.contentNav}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchEnd}
-        style={{
-          gridRowStart: startY,
-          gridRowEnd: startY * -1,
-          gridColumnStart: 1,
-          gridColumnEnd: -1
-        }}>
+        onTouchCancel={handleTouchEnd}>
         {seaSurfaceItems.map((item, index) => {
           const relativePosition = relativePositionToCenter(
             index,
@@ -341,11 +349,11 @@ const DataViewer: FunctionComponent<Props> = ({
               data-relative-position={relativePosition}
               className={styles.contentNavItem}
               key={index}>
-              {relativePosition} - {item}
+              {item}
             </li>
           );
         })}
-      </ul>
+      </ul> */}
 
       {compareLayer &&
         getDataWidget({
