@@ -58,16 +58,6 @@ const TranslatedApp: FunctionComponent = () => {
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
-          <Route path="/" exact>
-            <Navigation />
-            <DataViewer
-              hideNavigation={!globe_navigation}
-              backgroundColor={'#10161A'}
-            />
-            {time_slider && <TimeSlider />}
-            {legend && <DataSetInfo />}
-            <LayerSelector />
-          </Route>
           <Route path="/about" exact>
             {logo}
             <AboutProjectOverlay />
@@ -89,6 +79,16 @@ const TranslatedApp: FunctionComponent = () => {
             ]}
             exact>
             <Story />
+          </Route>
+          <Route path={['/', '/:category']} exact>
+            <Navigation />
+            <DataViewer
+              hideNavigation={!globe_navigation}
+              backgroundColor={'#10161A'}
+            />
+            {time_slider && <TimeSlider />}
+            {legend && <DataSetInfo />}
+            <LayerSelector />
           </Route>
         </Switch>
         <Tracking />

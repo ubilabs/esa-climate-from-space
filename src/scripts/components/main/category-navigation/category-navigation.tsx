@@ -4,15 +4,13 @@ import styles from './category-navigation.module.css';
 
 interface Props {
   width: number;
+  setCategory: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const CategoryNavigation: React.FC<Props> = ({width}) => {
+const CategoryNavigation: React.FC<Props> = ({width, setCategory}) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  console.log('🚀 ~ currentIndex:', currentIndex);
   const [isRotating, setIsRotating] = useState(false);
-
-  const [isAnimating, setIsAnimating] = useState(true);
 
   const overSize = 50;
 
@@ -21,14 +19,6 @@ const CategoryNavigation: React.FC<Props> = ({width}) => {
   const center = size / 2;
   const gapInDegrees = 5;
   const strokeWidth = 14;
-
-  useEffect(() => {
-    // Start animation after component mount
-    console.log('test');
-    setIsAnimating(true);
-    const timer = setTimeout(() => setIsAnimating(false), 10);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Arc and color configuration
   //   const arcs = [20, 21, 60, 50, 40, 10, 80];
@@ -43,10 +33,6 @@ const CategoryNavigation: React.FC<Props> = ({width}) => {
     {Landcover: 12},
     {'Greenhouse Gases': 30}
   ];
-
-  // Find largest arc and its index
-  // const maxArc = Math.max(...arcs);
-  // const maxArcIndex = arcs.indexOf(maxArc);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.touches[0].clientX);
@@ -66,15 +52,6 @@ const CategoryNavigation: React.FC<Props> = ({width}) => {
       const nextIndex = currentIndex + direction;
 
       setCurrentIndex(nextIndex);
-
-      // if (nextIndex < 0) {
-      //   setCurrentIndex(arcs.length - 1);
-      // } else if (nextIndex >= arcs.length) {
-      //   setCurrentIndex(0);
-      // } else {
-      //   setCurrentIndex(nextIndex);
-      // }
-
       setTouchStart(null);
       setIsRotating(true);
     }
@@ -96,14 +73,6 @@ const CategoryNavigation: React.FC<Props> = ({width}) => {
   // const scaledArcs = arcs;
 
   const scaledArcs = arcValues.map(angle => angle * scaleFactor);
-  // // Center the largest arc at 270 degrees (bottom)
-  // const rotationOffset =
-  //   90 - (angleToLargestArc + scaledArcs[maxArcIndex] / 2);
-
-  // Calculate rotation offset with bounds checking
-  // const safeCurrentIndex =
-  //   ((currentIndex % scaledArcs.length) + scaledArcs.length) %
-  //   scaledArcs.length;
 
   const normalizedIndex =
     ((currentIndex % scaledArcs.length) + scaledArcs.length) %
@@ -139,27 +108,23 @@ const CategoryNavigation: React.FC<Props> = ({width}) => {
 
   const rotationOffset = targetRotation;
 
-  // console.log('🚀 ~ test:', 90 - (angleToCurrentArc + 28.17391304347826 / 2));
   let startAngle = 0;
 
-  // Calculate rotation based on continuous index
-  // const degreesPerArc = 360 / scaledArcs.length;
-  // const baseRotation = currentIndex * degreesPerArc;
+  const [[category, entries]] = Object.entries(arcs[normalizedIndex]);
 
-  // Calculate total rotation based on current index
-  // const baseRotation = currentIndex * (360 / scaledArcs.length);
+  useEffect(() => {
+    const [[category, _]] = Object.entries(arcs[normalizedIndex]);
 
-  console.log(
-    'Object.values(arcs).find((entry, index) => index === normalizedIndex)',
-    // Object.values(arcs).find((entry, index) => index === normalizedIndex)
-    Object.entries(arcs).find((entry, index) => index === normalizedIndex)[1]
-  );
+    if (category) {
+      setCategory(category);
+    }
+  }, [normalizedIndex, setCategory, arcs]);
 
   return (
     <>
       <div className={styles.chosenCategory}>
-        <div>test</div>
-        <span>{normalizedIndex}</span>
+        <div>{category}</div>
+        <span>{entries} Entries</span>
       </div>
 
       <nav
@@ -176,6 +141,7 @@ const CategoryNavigation: React.FC<Props> = ({width}) => {
           height: `${size / 2}px`
         }}>
         <svg
+          className={styles['circle-container']}
           id="circle-container"
           data-current-rotation={rotationOffset}
           width={size}
@@ -183,7 +149,7 @@ const CategoryNavigation: React.FC<Props> = ({width}) => {
           viewBox={`0 0 ${size} ${size}`}
           style={{
             translate: ' 0 -50%',
-            transition: isRotating ? 'transform 0.3s ease-out' : 'none',
+            transition: 'all 0.5s ease-out',
             transform: `rotate(${rotationOffset}deg)`
           }}>
           {scaledArcs.map((arcAngle, index) => {
@@ -218,8 +184,18 @@ const CategoryNavigation: React.FC<Props> = ({width}) => {
             const selectedColor = 'rgba(0, 179, 152, 1)';
             const defaultColor = 'rgba(0, 51, 73, 1)';
 
+            const delay =
+              index <= Math.floor(arcs.length / 2)
+                ? Math.abs(Math.floor(arcs.length / 2) - index) * 0.1
+                : Math.abs(Math.floor(arcs.length / 2)) * 0.1 +
+                  (arcs.length - index) * 0.1;
+
             return (
-              <g key={index} data-index={index}>
+              <g
+                key={index}
+                data-index={index}
+                data-delay={delay}
+                className={styles.arc}>
                 <path
                   d={pathData}
                   stroke={
@@ -231,11 +207,7 @@ const CategoryNavigation: React.FC<Props> = ({width}) => {
                   strokeLinecap="round"
                   fill="none"
                   style={{
-                    strokeDasharray: '1000',
-                    strokeDashoffset: isAnimating ? '-1000' : '0',
-                    transition: `stroke-dashoffset 1s ease-out ${
-                      Math.abs(4 - index) * 0.1
-                    }s, stroke 0.3s ease-in-out`
+                    animationDelay: `${delay}s`
                   }}
                 />
               </g>

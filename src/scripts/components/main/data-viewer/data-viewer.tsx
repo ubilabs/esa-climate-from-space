@@ -37,6 +37,7 @@ import {embedElementsSelector} from '../../../selectors/embed-elements-selector'
 import styles from './data-viewer.module.css';
 import CategoryNavigation from '../category-navigation/category-navigation';
 import Button from '../button/button';
+import {useHistory} from 'react-router';
 
 interface Props {
   backgroundColor: string;
@@ -77,6 +78,7 @@ const DataViewer: FunctionComponent<Props> = ({
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
+  console.log('🚀 ~ globalGlobeView:', globalGlobeView);
   const globeSpinning = useSelector(globeSpinningSelector);
   const {mainId, compareId} = selectedLayerIds;
   const mainLayerDetails = useSelector((state: State) =>
@@ -239,6 +241,8 @@ const DataViewer: FunctionComponent<Props> = ({
   const OPACITY_FACTOR = 6;
   const ANGLE_BETWEEN_ELEMENTS = 12;
 
+  const history = useHistory();
+
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [indexDelta, setIndexDelta] = useState(0);
 
@@ -285,6 +289,7 @@ const DataViewer: FunctionComponent<Props> = ({
   useEffect(() => {
     const listItems = document.querySelectorAll(
       'ul li'
+      // eslint-disable-next-line no-undef
     ) as NodeListOf<HTMLElement>;
 
     for (const item of listItems) {
@@ -310,20 +315,27 @@ const DataViewer: FunctionComponent<Props> = ({
   const relativePositionToCenter = (index: number, count: number): number =>
     index - Math.floor(count / 2);
 
+  const [chosenCategory, setChosenCategory] = useState<string | null>(null);
+
   return (
     <div className={styles.dataViewer}>
-      {}
-      {/* <div id="circle-container" className={styles.circleContainer}></div> */}
-      {/* <CircleSpans /> */}
-
       {legend && getLegends()}
       <header className={styles.heading}>
         <h2>Choose a category</h2>
       </header>
 
-      <CategoryNavigation width={dimensions.screenWidth} />
+      <CategoryNavigation
+        width={dimensions.screenWidth}
+        setCategory={setChosenCategory}
+      />
 
-      <Button className={styles.exploreButton} label="Explore"></Button>
+      <Button
+        className={styles.exploreButton}
+        onClick={() => history.push(`/${chosenCategory}`)}
+        label="Explore"></Button>
+      <span
+        className={styles.swipeIndicator}
+        data-content="swipe to navigate"></span>
 
       <div id="globeWrapper" className={styles.globeWrapper}>
         {getDataWidget({
@@ -333,6 +345,7 @@ const DataViewer: FunctionComponent<Props> = ({
           action: () => setIsMainActive(true)
         })}
       </div>
+
       {/* <ul
         className={styles.contentNav}
         onTouchMove={handleTouchMove}

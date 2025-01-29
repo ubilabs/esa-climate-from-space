@@ -3,6 +3,18 @@
   margin-top: auto;
 }
 
+.circle-container {
+  rotate: -20deg;
+  animation: rotate 1s linear forwards;
+  animation-delay: 2s;
+}
+
+@keyframes rotate {
+  to {
+    rotate: 0deg;
+  }
+}
+
 .chosenCategory {
   grid-area: globe-nav-area;
   z-index: 2;
@@ -10,12 +22,16 @@
   color: var(--Neutral-White, #fff);
   text-align: center;
   text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
+  max-width: 80%;
   /* Mobile/H3 */
   font-family: NotesEsa;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
   line-height: 36px; /* 120% */
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 1s;
 
   > span {
     color: var(--main-colours-esa-teal-55, #98dbce);
@@ -27,5 +43,26 @@
     font-style: normal;
     font-weight: 400;
     line-height: 20px; /* 125% */
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+.arc {
+  > path {
+    stroke-dasharray: 1000;
+    transition: stroke 0.75s ease-in-out;
+    stroke-dashoffset: -1000;
+    animation: dashOffsetAnimation 0.5s ease-out forwards;
+  }
+}
+
+@keyframes dashOffsetAnimation {
+  to {
+    stroke-dashoffset: 0;
   }
 }
