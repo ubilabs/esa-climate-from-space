@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React, {
   FunctionComponent,
   useState,
@@ -37,11 +38,15 @@ import {embedElementsSelector} from '../../../selectors/embed-elements-selector'
 import styles from './data-viewer.module.css';
 import CategoryNavigation from '../category-navigation/category-navigation';
 import Button from '../button/button';
-import {useHistory} from 'react-router';
+import {useHistory, useParams} from 'react-router';
 
+import cx from 'classnames';
 interface Props {
   backgroundColor: string;
   hideNavigation?: boolean;
+}
+interface RouteParams {
+  category: string | undefined;
 }
 
 const DataViewer: FunctionComponent<Props> = ({
@@ -50,6 +55,17 @@ const DataViewer: FunctionComponent<Props> = ({
 }) => {
   const dispatch = useDispatch();
   const {legend} = useSelector(embedElementsSelector);
+  const {category} = useParams<RouteParams>();
+
+  const [showContentList, setShowContentList] = useState<boolean>(
+    Boolean(category)
+  );
+
+  const [currentCategory, setCurrentCategory] = useState<string | null>(
+    category || null
+  );
+
+  console.log('🚀 ~ params:', category);
 
   const [dimensions, setDimensions] = useState({
     screenHeight: Math.floor(window.innerHeight),
@@ -217,29 +233,47 @@ const DataViewer: FunctionComponent<Props> = ({
         }
       );
 
-  const seaSurfaceItems = [
-    'Sea Surface Wind 1',
-    'Sea Surface Wind 2',
-    'Sea Surface Sea',
-    'Sea Surface Wind 1',
-    'Sea Surface Sea',
-    'Sea Surface Wind 2',
-    'Sea Surface ',
-    'Sea Surface ',
-    'Sea Surface Wind ',
-    'Sea Surface Wind ',
-    'Sea Surface ',
-    'Sea Surface Wind',
-    'Sea Surface Wind ',
-    'Sea Surface ',
-    'Sea Surface Wind ',
-    'Sea Surface ',
-    'Sea Surface Wind ',
-    'Sea Surface Chlorophyll'
+  const contents = [
+    {name: 'Anomalies du niveau de la mer', type: 'image'},
+    {
+      name: 'Bienvenue sur le site Climate from Space With long title',
+      type: 'layer'
+    },
+    {name: 'Changement de la couverture des terres', type: 'image'},
+    {name: "Le cycle de l'eau", type: 'video'},
+    {name: 'Les glaciers surface', type: 'blog'},
+    {name: 'Température de surface de la mer', type: 'image'},
+    {name: 'Évolution des forêts', type: 'layer'},
+    {name: 'Cycle du carbone', type: 'video'},
+    {name: 'Fonte des glaces', type: 'blog'},
+    {name: "Température de l'air with another longer title", type: 'image'},
+    {name: 'Changements climatiques', type: 'layer'},
+    {name: 'Événements extrêmes', type: 'video'},
+    {name: 'Biodiversité', type: 'blog'}
   ];
 
-  const OPACITY_FACTOR = 6;
-  const ANGLE_BETWEEN_ELEMENTS = 12;
+  //   const seaSurfaceItems = [
+  //     'Sea Surface Wind 1',
+  //     'Sea Surface Wind 2',
+  //     'Sea Surface Sea',
+  //     'Sea Surface Wind 1',
+  //     'Sea Surface Sea',
+  //     'Sea Surface Wind 2',
+  //     'Sea Surface ',
+  //     'Sea Surface ',
+  //     'Sea Surface Wind ',
+  //     'Sea Surface Wind ',
+  //     'Sea Surface ',
+  //     'Sea Surface Wind',
+  //     'Sea Surface Wind ',
+  //     'Sea Surface ',
+  //     'Sea Surface Wind ',
+  //     'Sea Surface ',
+  //     'Sea Surface Wind ',
+  //     'Sea Surface Chlorophyll'
+  //   ];
+
+  const GAP_BETWEEN_ELEMENTS = 14;
 
   const history = useHistory();
 
@@ -256,8 +290,8 @@ const DataViewer: FunctionComponent<Props> = ({
   }
 
   const getCoordinates = useCallback((pos: number) => {
-    const _radius = 33;
-    const angleInDegrees = pos * ANGLE_BETWEEN_ELEMENTS;
+    const _radius = 30;
+    const angleInDegrees = pos * GAP_BETWEEN_ELEMENTS;
     const {x, y} = computeCartesianCoordinates(_radius, angleInDegrees);
 
     return {x, y: y + 50};
@@ -287,6 +321,12 @@ const DataViewer: FunctionComponent<Props> = ({
   };
 
   useEffect(() => {
+    setCurrentCategory(category || null);
+    setShowContentList(Boolean(category));
+    // console.log('history changed', history.location.pathname);
+  }, [category]);
+
+  useEffect(() => {
     const listItems = document.querySelectorAll(
       'ul li'
       // eslint-disable-next-line no-undef
@@ -300,8 +340,11 @@ const DataViewer: FunctionComponent<Props> = ({
       const adjustedPosition = relativePosition + indexDelta;
 
       const {x, y} = getCoordinates(adjustedPosition);
-      const rotation = adjustedPosition * ANGLE_BETWEEN_ELEMENTS;
-      const opacity = 1 - Math.abs(adjustedPosition) / OPACITY_FACTOR;
+      const rotation = adjustedPosition * GAP_BETWEEN_ELEMENTS;
+      const opacity =
+        adjustedPosition === 0
+          ? 1
+          : Math.pow(0.5, Math.abs(adjustedPosition)) * 0.5;
 
       item.style.top = `${y}%`;
       item.style.left = `${x}%`;
@@ -310,34 +353,45 @@ const DataViewer: FunctionComponent<Props> = ({
 
       item.setAttribute('data-relative-position', adjustedPosition.toString());
     }
-  }, [indexDelta, getCoordinates]);
+  }, [indexDelta, getCoordinates, showContentList]);
 
   const relativePositionToCenter = (index: number, count: number): number =>
     index - Math.floor(count / 2);
 
-  const [chosenCategory, setChosenCategory] = useState<string | null>(null);
+  const {x, y} = getCoordinates(0);
 
   return (
     <div className={styles.dataViewer}>
       {legend && getLegends()}
       <header className={styles.heading}>
-        <h2>Choose a category</h2>
+        {showContentList ? <Button link="/" label="Back"></Button> : null}
+        <h2>{showContentList ? currentCategory : 'Choose a category'}</h2>
       </header>
 
-      <CategoryNavigation
-        width={dimensions.screenWidth}
-        setCategory={setChosenCategory}
-      />
+      {!showContentList ? (
+        <CategoryNavigation
+          width={dimensions.screenWidth}
+          setCategory={setCurrentCategory}
+        />
+      ) : null}
 
       <Button
         className={styles.exploreButton}
-        onClick={() => history.push(`/${chosenCategory}`)}
-        label="Explore"></Button>
+        onClick={() => {
+          history.push(`/${currentCategory}`);
+          setShowContentList(!showContentList);
+        }}
+        label={showContentList ? 'Learn more' : 'Explore'}></Button>
       <span
         className={styles.swipeIndicator}
         data-content="swipe to navigate"></span>
 
-      <div id="globeWrapper" className={styles.globeWrapper}>
+      <div
+        id="globeWrapper"
+        className={cx(
+          styles.globeWrapper,
+          showContentList && styles.showContentList
+        )}>
         {getDataWidget({
           imageLayer: mainImageLayer,
           layerDetails: mainLayerDetails,
@@ -346,27 +400,39 @@ const DataViewer: FunctionComponent<Props> = ({
         })}
       </div>
 
-      {/* <ul
-        className={styles.contentNav}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchEnd}>
-        {seaSurfaceItems.map((item, index) => {
-          const relativePosition = relativePositionToCenter(
-            index,
-            seaSurfaceItems.length
-          );
+      {showContentList ? (
+        <ul
+          className={cx(styles.contentNav, showContentList && styles.show)}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onTouchCancel={handleTouchEnd}>
+          {contents.map(({name, type}, index) => {
+            const relativePosition = relativePositionToCenter(
+              index,
+              contents.length
+            );
 
-          return (
-            <li
-              data-relative-position={relativePosition}
-              className={styles.contentNavItem}
-              key={index}>
-              {item}
-            </li>
-          );
-        })}
-      </ul> */}
+            return (
+              <li
+                data-content-type={type}
+                data-relative-position={relativePosition}
+                className={cx(
+                  relativePosition === 0 && styles.active,
+                  styles.contentNavItem
+                )}
+                key={index}>
+                <span>{name}</span>
+              </li>
+            );
+          })}
+          <span
+            aria-hidden="true"
+            style={{
+              // 20px for the width of the symbol plus 8px for the padding
+              left: `calc(${x}% - 28px)`
+            }}></span>
+        </ul>
+      ) : null}
 
       {compareLayer &&
         getDataWidget({
