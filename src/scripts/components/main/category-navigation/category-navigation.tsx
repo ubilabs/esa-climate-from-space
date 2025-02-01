@@ -120,6 +120,14 @@ const CategoryNavigation: React.FC<Props> = ({width, setCategory}) => {
     }
   }, [normalizedIndex, setCategory, arcs]);
 
+  useEffect(() => {
+    const paths = document.querySelectorAll('path');
+    for (const path of paths) {
+      path.style.strokeDasharray = path.getTotalLength();
+      path.style.strokeDashoffset = path.getTotalLength();
+    }
+  }, []);
+
   return (
     <>
       <div className={styles.chosenCategory}>
@@ -190,6 +198,9 @@ const CategoryNavigation: React.FC<Props> = ({width, setCategory}) => {
                 : Math.abs(Math.floor(arcs.length / 2)) * 0.1 +
                   (arcs.length - index) * 0.1;
 
+            // Get stroke length
+            // const strokeLength = 2 * Math.PI * radius * (arcAngle / 360);
+
             return (
               <g
                 key={index}
@@ -205,6 +216,8 @@ const CategoryNavigation: React.FC<Props> = ({width, setCategory}) => {
                   }
                   strokeWidth={strokeWidth}
                   strokeLinecap="round"
+                  //   strokeDasharray={strokeLength}
+                  //   strokeDashoffset={strokeLength}
                   fill="none"
                   style={{
                     animationDelay: `${delay}s`
