@@ -1,3 +1,4 @@
+/* Use Grid to generate header and content area */
 :global(#app) {
   display: grid;
   grid-template-areas:
@@ -6,6 +7,4 @@
   grid-template-rows: 3.5rem 1fr;
   grid-template-columns: 1fr;
   background: rgba(0, 51, 73, 0.4);
-  /* grid-template-rows: 3.5rem repeat(auto-fill, [row-start] minmax(1rem, auto)); */
-  /* grid-template-columns: repeat(4, [col-start] 1fr [col-end]); */
 }

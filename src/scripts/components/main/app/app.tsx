@@ -79,6 +79,8 @@ const TranslatedApp: FunctionComponent = () => {
             exact>
             <Story />
           </Route>
+          {/* By placing the DataViewer Component at the bottom, we make sure that the :category parameter
+          does not interfere with other parameters */}
           <Route path={['/', '/:category']} exact>
             <Navigation />
             <DataViewer hideNavigation={true} backgroundColor={'#10161A'} />

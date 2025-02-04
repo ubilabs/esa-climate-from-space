@@ -15,7 +15,7 @@
   opacity: 0;
 
   &.show {
-    animation: showFromCenter 1s ease-out 0.5s forwards;
+    animation: showFromCenter 1.5s ease-out 0.5s forwards;
   }
 
   > span {
@@ -30,8 +30,6 @@
   }
 
   > li {
-    /* Needed to make it work */
-
     z-index: 2;
     padding-right: 1rem;
     color: var(--font-color);
@@ -45,7 +43,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: 22px; /* 137.5% */
-    /* transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1); */
 
     &[data-relative-position='0'] > span {
       width: fit-content;

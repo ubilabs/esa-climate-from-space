@@ -3,16 +3,16 @@
   margin-top: auto;
   clip-path: inset(0 100% 0 0);
 
-  &.concealed {
-    animation: none !important;
-  }
-
   &.reveal-from-right {
     animation: revealFromRight 0.5s linear forwards;
   }
 
   &.reveal-from-left {
     animation: revealFromLeft 0.5s linear forwards;
+  }
+
+  &.concealed {
+    animation: none !important;
   }
 
   &.conceal {
