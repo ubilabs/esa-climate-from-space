@@ -1,13 +1,7 @@
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useState
-} from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 import styles from './content-navigation.module.css';
 import cx from 'classnames';
-
-const GAP_BETWEEN_ELEMENTS = 16;
+import {getNavCoordinates} from '../../../libs/get-navigation-position';
 
 interface Props {
   showContentList: boolean;
@@ -85,24 +79,12 @@ const contents = [
 
 const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
+
+  // The indexDelta is the number of items the user has scrolled
   const [indexDelta, setIndexDelta] = useState(0);
 
-  function computeCartesianCoordinates(radius: number, angleInDegrees: number) {
-    const angleInRadians = angleInDegrees * (Math.PI / 180);
-
-    const x = radius * Math.cos(angleInRadians);
-    const y = radius * Math.sin(angleInRadians);
-
-    return {x, y};
-  }
-
-  const getCoordinates = useCallback((pos: number) => {
-    const _radius = 30;
-    const angleInDegrees = pos * GAP_BETWEEN_ELEMENTS;
-    const {x, y} = computeCartesianCoordinates(_radius, angleInDegrees);
-
-    return {x, y: y + 50};
-  }, []);
+  const GAP_BETWEEN_ELEMENTS = 16;
+  const RADIUS = 33;
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!touchStartY) {
@@ -127,6 +109,8 @@ const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
     setTouchStartY(null);
   };
 
+  // This effect will be triggered whenever the indexDelta changes, i.e. when the user scrolls
+  // Every item will be repositioned based on the new indexDelta
   useEffect(() => {
     const listItems = document.querySelectorAll(
       'ul li'
@@ -140,8 +124,15 @@ const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
 
       const adjustedPosition = relativePosition + indexDelta;
 
-      const {x, y} = getCoordinates(adjustedPosition);
-      const rotation = adjustedPosition * 12;
+      const {x, y} = getNavCoordinates(
+        adjustedPosition,
+        GAP_BETWEEN_ELEMENTS,
+        RADIUS
+      );
+
+      // 12 degrees of rotation per item
+      const _rotationAngle = 12;
+      const rotation = adjustedPosition * _rotationAngle;
       const opacity =
         adjustedPosition === 0
           ? 1
@@ -154,12 +145,10 @@ const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
 
       item.setAttribute('data-relative-position', adjustedPosition.toString());
     }
-  }, [indexDelta, getCoordinates, showContentList]);
+  }, [indexDelta, showContentList]);
 
-  const relativePositionToCenter = (index: number, count: number): number =>
-    index - Math.floor(count / 2);
-
-  const {x} = getCoordinates(0);
+  // Get the middle x coordinate for the highlight of the active item
+  const {x} = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS);
 
   return (
     <ul
@@ -168,14 +157,13 @@ const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}>
       {contents.map(({name, type}, index) => {
-        const relativePosition = relativePositionToCenter(
-          index,
-          contents.length
-        );
+        const relativePosition = index - Math.floor(contents.length / 2);
 
         return (
           <li
+            // Used in CSS to get the correct icon for the content type
             data-content-type={type}
+            // Used in the useEffect to calculate the new position
             data-relative-position={relativePosition}
             className={cx(
               relativePosition === 0 && styles.active,
@@ -186,10 +174,11 @@ const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
           </li>
         );
       })}
+      {/* This is the highlight of the currently selected item.
+      It serves a visual purpose only */}
       <span
         aria-hidden="true"
         style={{
-          // 20px for the width of the symbol plus 8px for the padding
           left: `calc(${x}% - 8px)`
         }}></span>
     </ul>
