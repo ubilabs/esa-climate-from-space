@@ -4,7 +4,8 @@ import React, {
   useState,
   useEffect,
   useCallback,
-  useLayoutEffect
+  useLayoutEffect,
+  useRef
 } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {CameraView, LayerLoadingState} from '@ubilabs/esa-webgl-globe';
@@ -90,12 +91,10 @@ const DataViewer: FunctionComponent<Props> = ({
   //   const startX = Math.floor(columnCount / 2);
 
   //   const startY = Math.floor(rowCount / 16);
-  const startY = 0;
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
-  console.log('🚀 ~ globalGlobeView:', globalGlobeView);
   const globeSpinning = useSelector(globeSpinningSelector);
   const {mainId, compareId} = selectedLayerIds;
   const mainLayerDetails = useSelector((state: State) =>
@@ -236,6 +235,8 @@ const DataViewer: FunctionComponent<Props> = ({
 
   const history = useHistory();
 
+  const isAnimationReady = useRef(false);
+
   useEffect(() => {
     setCurrentCategory(category || null);
     setShowContentList(Boolean(category));
@@ -252,21 +253,29 @@ const DataViewer: FunctionComponent<Props> = ({
         <h2>{showContentList ? currentCategory : 'Choose a category'}</h2>
       </header>
 
-      {!showContentList ? (
-        <CategoryNavigation
-          width={dimensions.screenWidth}
-          setCategory={setCurrentCategory}
-        />
-      ) : null}
+      <CategoryNavigation
+        showCategories={!showContentList}
+        width={dimensions.screenWidth}
+        setCategory={setCurrentCategory}
+        isAnimationReady={isAnimationReady}
+      />
 
-      <Button
-        className={styles.exploreButton}
-        onClick={() => {
-          history.push(`/${currentCategory}`);
-          setShowContentList(!showContentList);
-        }}
-        label={showContentList ? 'Learn more' : 'Explore'}></Button>
+      {showContentList ? (
+        <Button
+          className={styles.exploreButton}
+          link="/stories/story-1"
+          label={'Learn more'}></Button>
+      ) : (
+        <Button
+          className={styles.exploreButton}
+          onClick={() => {
+            history.push(`/${currentCategory}`);
+            setShowContentList(!showContentList);
+          }}
+          label="Explore"></Button>
+      )}
       <span
+        aria-hidden="true"
         className={styles.swipeIndicator}
         data-content="swipe to navigate"></span>
 
@@ -284,7 +293,7 @@ const DataViewer: FunctionComponent<Props> = ({
         })}
       </div>
 
-      {showContentList ? <ContentNavigation /> : null}
+      <ContentNavigation showContentList={showContentList} />
 
       {compareLayer &&
         getDataWidget({

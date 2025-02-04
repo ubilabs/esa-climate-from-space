@@ -1,19 +1,42 @@
 .category-navigation {
   grid-area: globe-nav-area;
   margin-top: auto;
-}
+  clip-path: inset(0 100% 0 0);
+  animation: revealFromLeft 0.5s linear forwards;
 
-/* .circle-container {
-  rotate: -20deg;
-  animation: rotate 1s linear forwards;
-  animation-delay: 2s;
-}
-
-@keyframes rotate {
-  to {
-    rotate: 0deg;
+  > svg {
+    /* animation: rotateBack 0.5s linear forwards;
+    animation-delay: 0.7s; */
   }
-} */
+
+  &.conceal {
+    animation: concealToRight 0.5s linear forwards;
+  }
+}
+
+@keyframes rotateBack {
+  from {
+    transform: rotate(10deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes concealToRight {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+@keyframes revealFromLeft {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
 
 .chosenCategory {
   grid-area: globe-nav-area;
@@ -31,18 +54,27 @@
   line-height: 36px; /* 120% */
   opacity: 0;
   animation: fadeIn 0.5s ease-out forwards;
-  animation-delay: 1s;
+  animation-delay: 2.8s;
 
-  > span {
-    color: var(--main-colours-esa-teal-55, #98dbce);
-    text-align: center;
-    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
-    /* Mobile/H6 */
-    font-family: NotesEsa;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px; /* 125% */
+  > li {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    > span {
+      display: block;
+      color: var(--main-colours-esa-teal-55, #98dbce);
+      text-align: center;
+      text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
+      /* Mobile/H6 */
+      font-family: NotesEsa;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px; /* 125% */
+    }
   }
 }
 
@@ -52,48 +84,8 @@
   }
 }
 
-/*.arc {
-  > path {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: dash 5s linear forwards;
-  }
-
-}*/
-
 .arc {
   > path {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 0; /* Start fully drawn */
-    animation: dashReverse 5s linear forwards;
-    animation-fill-mode: forwards;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    will-change: stroke-dashoffset;
+    transition: stroke 1s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
-
-@keyframes dashReverse {
-  to {
-    stroke-dashoffset: 609; /* Move stroke out */
-  }
-}
-
-/* @keyframes drawLine {
-  from {
-    stroke-dasharray: 0;
-  }
-  to {
-    stroke-dasharray: 10000;
-    stroke-dashoffset: 0;
-  }
-} */
-
-/* stroke-dasharray: 600;
-    stroke-dashoffset: -600;
-    animation: drawLine 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-    will-change: stroke-dashoffset, transform;
-    stroke-width: 14.01px;  */

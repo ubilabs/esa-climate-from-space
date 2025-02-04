@@ -1,13 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import styles from './category-navigation.module.css';
-
+import cx from 'classnames';
 interface Props {
+  showCategories: boolean;
   width: number;
   setCategory: React.Dispatch<React.SetStateAction<string | null>>;
+  isAnimationReady: React.MutableRefObject<boolean>;
 }
 
-const CategoryNavigation: React.FC<Props> = ({width, setCategory}) => {
+const CategoryNavigation: React.FC<Props> = ({
+  width,
+  setCategory,
+  showCategories,
+  isAnimationReady
+}) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isRotating, setIsRotating] = useState(false);
@@ -107,13 +114,10 @@ const CategoryNavigation: React.FC<Props> = ({width, setCategory}) => {
       : counterclockwiseDiff);
 
   const rotationOffset = targetRotation;
-
   let startAngle = 0;
 
-  const [[category, entries]] = Object.entries(arcs[normalizedIndex]);
-
   useEffect(() => {
-    const [[category, _]] = Object.entries(arcs[normalizedIndex]);
+    const [[category]] = Object.entries(arcs[normalizedIndex]);
 
     if (category) {
       setCategory(category);
@@ -121,26 +125,52 @@ const CategoryNavigation: React.FC<Props> = ({width, setCategory}) => {
   }, [normalizedIndex, setCategory, arcs]);
 
   useEffect(() => {
-    const paths = document.querySelectorAll('path');
-    for (const path of paths) {
-      path.style.strokeDasharray = path.getTotalLength();
-      path.style.strokeDashoffset = path.getTotalLength();
+    const circleContainer = document.getElementById('circle-container');
+    const currentRotation = parseFloat(
+      circleContainer?.dataset.currentRotation || '0'
+    );
+
+    if (!circleContainer) {
+      return;
     }
+
+    circleContainer.style.transform = `rotate(${currentRotation - 15}deg)`;
+
+    setTimeout(() => {
+      console.log('🚀 ~ setTimeout ~ isAnimationReady:', isAnimationReady);
+      circleContainer.style.transform = `rotate(${currentRotation}deg)`;
+      isAnimationReady.current = true;
+    }, 2800);
   }, []);
 
   return (
     <>
-      <div className={styles.chosenCategory}>
-        <div>{category}</div>
-        <span>{entries} Entries</span>
-      </div>
+      <nav className={styles.chosenCategory}>
+        {arcs.map((arc, index) => {
+          const [[category, entries]] = Object.entries(arc);
+          return (
+            <li
+              key={category}
+              className={cx(
+                styles.category,
+                index === normalizedIndex && showCategories && styles.active
+              )}>
+              {category}
+              <span>{entries} Entries</span>
+            </li>
+          );
+        })}
+      </nav>
 
-      <nav
+      <div
+        className={cx(
+          styles['category-navigation'],
+          !showCategories && styles.conceal
+        )}
         aria-label="Circle Navigation"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        className={styles['category-navigation']}
         style={{
           zIndex: '1',
           overscrollBehavior: 'contain',
@@ -216,8 +246,6 @@ const CategoryNavigation: React.FC<Props> = ({width, setCategory}) => {
                   }
                   strokeWidth={strokeWidth}
                   strokeLinecap="round"
-                  //   strokeDasharray={strokeLength}
-                  //   strokeDashoffset={strokeLength}
                   fill="none"
                   style={{
                     animationDelay: `${delay}s`
@@ -227,7 +255,7 @@ const CategoryNavigation: React.FC<Props> = ({width, setCategory}) => {
             );
           })}
         </svg>
-      </nav>
+      </div>
     </>
   );
 };

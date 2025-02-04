@@ -1,29 +1,87 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState
+} from 'react';
 import styles from './content-navigation.module.css';
 import cx from 'classnames';
 
 const GAP_BETWEEN_ELEMENTS = 16;
 
-const ContentNavigation = () => {
-  const contents = [
-    {name: 'Anomalies du niveau de la mer', type: 'image'},
-    {
-      name: 'Bienvenue sur le site Climate from Space With long title',
-      type: 'layer'
-    },
-    {name: 'Changement de la couverture des terres', type: 'image'},
-    {name: "Le cycle de l'eau", type: 'video'},
-    {name: 'Les glaciers surface', type: 'blog'},
-    {name: 'Température de surface de la mer', type: 'image'},
-    {name: 'Évolution des forêts', type: 'layer'},
-    {name: 'Cycle du carbone', type: 'video'},
-    {name: 'Fonte des glaces', type: 'blog'},
-    {name: "Température de l'air with another longer title", type: 'image'},
-    {name: 'Changements climatiques', type: 'layer'},
-    {name: 'Événements extrêmes', type: 'video'},
-    {name: 'Biodiversité', type: 'blog'}
-  ];
+interface Props {
+  showContentList: boolean;
+}
 
+const contents = [
+  {
+    name: 'Anomalies du niveau de la mere',
+    type: 'image',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: 'Bienvenue sur le site Climate from Space With long title',
+    type: 'layer',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: 'Changement de la couverture des terres',
+    type: 'image',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: "Le cycle de l'eau",
+    type: 'video',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: 'Les glaciers surface',
+    type: 'blog',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: 'Température de surface de la mer',
+    type: 'image',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: 'Évolution des forêts',
+    type: 'layer',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: 'Cycle du carbone',
+    type: 'video',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: 'Fonte des glaces',
+    type: 'blog',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: "Température de l'air with another longer title",
+    type: 'image',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: 'Changements climatiques',
+    type: 'layer',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: 'Événements extrêmes',
+    type: 'video',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  },
+  {
+    name: 'Biodiversité',
+    type: 'blog',
+    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+  }
+];
+
+const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [indexDelta, setIndexDelta] = useState(0);
 
@@ -37,7 +95,7 @@ const ContentNavigation = () => {
   }
 
   const getCoordinates = useCallback((pos: number) => {
-    const _radius = 30;
+    const _radius = 33;
     const angleInDegrees = pos * GAP_BETWEEN_ELEMENTS;
     const {x, y} = computeCartesianCoordinates(_radius, angleInDegrees);
 
@@ -66,8 +124,6 @@ const ContentNavigation = () => {
   const handleTouchEnd = () => {
     setTouchStartY(null);
   };
-
-  const showContentList = true;
 
   useEffect(() => {
     const listItems = document.querySelectorAll(
@@ -101,7 +157,7 @@ const ContentNavigation = () => {
   const relativePositionToCenter = (index: number, count: number): number =>
     index - Math.floor(count / 2);
 
-  const {x, y} = getCoordinates(0);
+  const {x} = getCoordinates(0);
 
   return (
     <ul
