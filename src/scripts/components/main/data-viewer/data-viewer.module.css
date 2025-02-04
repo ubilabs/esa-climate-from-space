@@ -17,9 +17,10 @@
   z-index: 0;
   height: 100%;
   width: 100%;
+  pointer-events: none;
 
   &.showContentList {
-    transform: translateX(-66%);
+    transform: translateX(-68%);
     transition-delay: 0.5s;
   }
 }
@@ -100,7 +101,12 @@
   background-repeat: no-repeat;
   transform: translateY(100px);
   animation: slideUp 0.5s ease-out forwards;
+
   animation-delay: 2.5s;
+
+  &.showFast {
+    animation-delay: 0.5s;
+  }
 }
 
 @keyframes slideUp {

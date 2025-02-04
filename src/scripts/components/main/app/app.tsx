@@ -41,7 +41,6 @@ const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
   const {
     logo: embedLogo,
-    globe_navigation,
     time_slider,
     legend
   } = useSelector(embedElementsSelector);
@@ -82,10 +81,7 @@ const TranslatedApp: FunctionComponent = () => {
           </Route>
           <Route path={['/', '/:category']} exact>
             <Navigation />
-            <DataViewer
-              hideNavigation={!globe_navigation}
-              backgroundColor={'#10161A'}
-            />
+            <DataViewer hideNavigation={true} backgroundColor={'#10161A'} />
             {time_slider && <TimeSlider />}
             {legend && <DataSetInfo />}
             <LayerSelector />

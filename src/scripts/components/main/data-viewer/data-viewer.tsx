@@ -24,12 +24,10 @@ import updateLayerLoadingStateAction from '../../../actions/update-layer-loading
 import {State} from '../../../reducers';
 import Globe from '../globe/globe';
 import Gallery from '../gallery/gallery';
-import GlobeNavigation from '../globe-navigation/globe-navigation';
 import LayerLegend from '../../layers/layer-legend/layer-legend';
 import {useImageLayerData} from '../../../hooks/use-image-layer-data';
 import HoverLegend from '../../layers/hover-legend/hover-legend';
 
-import {Marker} from '../../../types/marker-type';
 import {LayerType} from '../../../types/globe-layer-type';
 import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
 import {Layer} from '../../../types/layer';
@@ -43,6 +41,8 @@ import {useHistory, useParams} from 'react-router';
 
 import cx from 'classnames';
 import ContentNavigation from '../content-navigation/content-navigation';
+import {useScreenSize} from '../../../hooks/use-screen-size';
+import GlobeNavigation from '../globe-navigation/globe-navigation';
 interface Props {
   backgroundColor: string;
   hideNavigation?: boolean;
@@ -67,30 +67,9 @@ const DataViewer: FunctionComponent<Props> = ({
     category || null
   );
 
-  console.log('🚀 ~ params:', category);
+  const history = useHistory();
 
-  const [dimensions, setDimensions] = useState({
-    screenHeight: Math.floor(window.innerHeight),
-    screenWidth: Math.floor(window.innerWidth)
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setDimensions({
-        screenHeight: Math.floor(window.innerHeight),
-        screenWidth: Math.floor(window.innerWidth)
-      });
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  //   const {rowCount, columnCount} = dimensions;
-
-  //   const startX = Math.floor(columnCount / 2);
-
-  //   const startY = Math.floor(rowCount / 16);
+  const {screenWidth} = useScreenSize();
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
@@ -233,17 +212,17 @@ const DataViewer: FunctionComponent<Props> = ({
         }
       );
 
-  const history = useHistory();
-
-  const isAnimationReady = useRef(false);
+  // There is a set of animations which should be played only once
+  // This keeps track of that
+  const hasAnimationPlayed = useRef(Boolean(category));
 
   useEffect(() => {
-    setCurrentCategory(category || null);
     setShowContentList(Boolean(category));
-    // console.log('history changed', history.location.pathname);
   }, [category]);
 
   return (
+    // The data-view is a grid with three areas: header - main - footer
+    // This is the header area
     <div className={styles.dataViewer}>
       {legend && getLegends()}
       <header className={styles.heading}>
@@ -253,21 +232,32 @@ const DataViewer: FunctionComponent<Props> = ({
         <h2>{showContentList ? currentCategory : 'Choose a category'}</h2>
       </header>
 
+      {/* This is the main area
+        The navigation consists of three main components: the globe, the category navigation and the content navigation
+        The globe is the main component and is always visible
+        The category navigation is visible when the content navigation is not visible
+      */}
       <CategoryNavigation
         showCategories={!showContentList}
-        width={dimensions.screenWidth}
+        width={screenWidth}
         setCategory={setCurrentCategory}
-        isAnimationReady={isAnimationReady}
+        isAnimationReady={hasAnimationPlayed}
       />
 
       {showContentList ? (
         <Button
-          className={styles.exploreButton}
+          className={cx(
+            hasAnimationPlayed.current && styles.showFast,
+            styles.exploreButton
+          )}
           link="/stories/story-1"
           label={'Learn more'}></Button>
       ) : (
         <Button
-          className={styles.exploreButton}
+          className={cx(
+            hasAnimationPlayed.current && styles.showFast,
+            styles.exploreButton
+          )}
           onClick={() => {
             history.push(`/${currentCategory}`);
             setShowContentList(!showContentList);
@@ -277,6 +267,7 @@ const DataViewer: FunctionComponent<Props> = ({
       <span
         aria-hidden="true"
         className={styles.swipeIndicator}
+        style={{display: hasAnimationPlayed.current ? 'none' : 'block'}}
         data-content="swipe to navigate"></span>
 
       <div
@@ -302,9 +293,9 @@ const DataViewer: FunctionComponent<Props> = ({
           active: !isMainActive,
           action: () => setIsMainActive(false)
         })}
-      {/* {!hideNavigation && showGlobeNavigation && (
+      {!hideNavigation && showGlobeNavigation && (
         <GlobeNavigation mainLayer={mainLayer} compareLayer={compareLayer} />
-      )} */}
+      )}
     </div>
   );
 };

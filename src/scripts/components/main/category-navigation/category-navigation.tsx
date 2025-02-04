@@ -1,7 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 import styles from './category-navigation.module.css';
 import cx from 'classnames';
+import {useHistory} from 'react-router-dom';
 interface Props {
   showCategories: boolean;
   width: number;
@@ -9,6 +10,16 @@ interface Props {
   isAnimationReady: React.MutableRefObject<boolean>;
 }
 
+/**
+ * A circular navigation component that displays categories in an interactive wheel format.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {number} props.width - The width of the navigation wheel
+ * @param {React.Dispatch<React.SetStateAction<string | null>>} props.setCategory - The function to set the selected category
+ * @param {boolean} props.showCategories - Whether to show the categories
+ * @param {React.MutableRefObject<boolean>} props.isAnimationReady - A ref to check if the animation is ready
+ **/
 const CategoryNavigation: React.FC<Props> = ({
   width,
   setCategory,
@@ -16,31 +27,67 @@ const CategoryNavigation: React.FC<Props> = ({
   isAnimationReady
 }) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
+
+  // The index of the current category
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isRotating, setIsRotating] = useState(false);
+  const history = useHistory();
 
-  const overSize = 50;
+  // Control the gap between the lines (arcs)
+  const SPACING = 5;
 
-  const size = width + overSize;
-  const radius = size / 2 - 10;
-  const center = size / 2;
-  const gapInDegrees = 5;
-  const strokeWidth = 14;
+  // Control the thickness of the lines (arcs)
+  const LINE_THICKNESS = 14;
 
-  // Arc and color configuration
-  //   const arcs = [20, 21, 60, 50, 40, 10, 80];
-  const arcs = [
-    {'Sea Surface Temperature': 20},
-    {'Chlorophyll Concentration': 21},
-    {'Water Vapour': 60},
-    {'Sea Surface Salinity': 50},
-    {Highlights: 40},
-    {'Ice Sheets': 10},
-    {Permafrost: 80},
-    {Landcover: 12},
-    {'Greenhouse Gases': 30}
-  ];
+  // Why oversize? It's because the circle navigation should be bigger than the screen
+  // We hide the overflow in the parent container
+  const _overSize = 50;
 
+  // Calculate the size of the circle navigation
+  const _size = width + _overSize;
+  const _radius = _size / 2 - 10;
+  const _center = _size / 2;
+
+  // The current navigation state relative to the category-navigation
+  const [navigationState, setNavigationState] = useState<
+    'forward' | 'back' | 'none'
+  >('none');
+
+  // Listen to history changes
+  // This is used to determine the navigation state
+  // As the user navigates through the app, we need to trigger different animations
+  history.listen((location, action) => {
+    if (action === 'REPLACE') {
+      setNavigationState('none');
+    }
+
+    if (action === 'PUSH' || action === 'POP') {
+      if (location.pathname === '/') {
+        setNavigationState('back');
+      } else {
+        setNavigationState('forward');
+      }
+    }
+  });
+
+  // Placeholders
+  // Todo: Replace with actual data
+  const arcs = useMemo(
+    () => [
+      {'Sea Surface Temperature': 20},
+      {'Chlorophyll Concentration': 21},
+      {'Water Vapour': 60},
+      {'Sea Surface Salinity': 50},
+      {Highlights: 40},
+      {'Ice Sheets': 10},
+      {Permafrost: 80},
+      {Landcover: 12},
+      {'Greenhouse Gases': 30}
+    ],
+    []
+  );
+
+  // Handle touch events
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.touches[0].clientX);
   };
@@ -70,51 +117,59 @@ const CategoryNavigation: React.FC<Props> = ({
   };
 
   // Calculate proportional distribution
-
-  const totalGapDegrees = gapInDegrees * arcs.length;
+  // There are 360 degrees in a circle and we need to distribute the arcs proportionally
+  const totalGapDegrees = SPACING * arcs.length;
   const availableDegrees = 360 - totalGapDegrees;
 
   const arcValues = arcs.map(arc => Object.values(arc)[0]);
   const sumOfArcs = arcValues.reduce((sum, angle) => sum + angle, 0);
   const scaleFactor = availableDegrees / sumOfArcs;
-  // const scaledArcs = arcs;
 
   const scaledArcs = arcValues.map(angle => angle * scaleFactor);
 
+  // This is the arc that is currently selected
+  // The problem is that the the user can rotate in any direction, any number of times
+  // We calculate the "normalized" index to determine the current arc within the available arcs
   const normalizedIndex =
     ((currentIndex % scaledArcs.length) + scaledArcs.length) %
     scaledArcs.length;
 
   const angleToCurrentArc = scaledArcs
     .slice(0, normalizedIndex)
-    .reduce((sum, angle) => sum + angle + gapInDegrees, 0);
+    .reduce((sum, angle) => sum + angle + SPACING, 0);
 
   // Calculate current and target rotation
   const currentRotation = parseFloat(
     document.getElementById('circle-container')?.dataset.currentRotation || '0'
   );
 
-  let targetRotation =
+  // Calculate the target rotation to center the current arc
+  const targetRotation =
     90 - (angleToCurrentArc + scaledArcs[normalizedIndex] / 2);
 
-  // Normalize current rotation to be between 0 and 360
-  const normalizedCurrentRotation = ((currentRotation % 360) + 360) % 360;
-  const normalizedTargetRotation = ((targetRotation % 360) + 360) % 360;
+  // Normalize rotations to ensure they're within -180 to 180 degrees
+  const normalizeAngle = (angle: number) => {
+    const normalized = angle % 360;
+    // eslint-disable-next-line no-nested-ternary
+    return normalized > 180
+      ? normalized - 360
+      : normalized < -180
+      ? normalized + 360
+      : normalized;
+  };
 
-  // Calculate both clockwise and counterclockwise differences
-  const clockwiseDiff = normalizedTargetRotation - normalizedCurrentRotation;
-  const counterclockwiseDiff =
-    clockwiseDiff > 0 ? clockwiseDiff - 360 : clockwiseDiff + 360;
+  // Calculate the shortest rotation path
+  const getShortestRotation = (current: number, target: number) => {
+    const diff = normalizeAngle(target - current);
+    return current + diff;
+  };
 
-  // Choose the smaller rotation
-  targetRotation =
-    currentRotation +
-    (Math.abs(clockwiseDiff) < Math.abs(counterclockwiseDiff)
-      ? clockwiseDiff
-      : counterclockwiseDiff);
+  // Calculate final rotation offset
+  const rotationOffset = getShortestRotation(currentRotation, targetRotation);
 
-  const rotationOffset = targetRotation;
-  let startAngle = 0;
+  // Calculate the current angle
+  // Is updated as we iterate through the arcs to keep track of the end point of the previous arc
+  let currentAngle = 0;
 
   useEffect(() => {
     const [[category]] = Object.entries(arcs[normalizedIndex]);
@@ -125,6 +180,10 @@ const CategoryNavigation: React.FC<Props> = ({
   }, [normalizedIndex, setCategory, arcs]);
 
   useEffect(() => {
+    if (isAnimationReady.current) {
+      return;
+    }
+
     const circleContainer = document.getElementById('circle-container');
     const currentRotation = parseFloat(
       circleContainer?.dataset.currentRotation || '0'
@@ -137,11 +196,10 @@ const CategoryNavigation: React.FC<Props> = ({
     circleContainer.style.transform = `rotate(${currentRotation - 15}deg)`;
 
     setTimeout(() => {
-      console.log('🚀 ~ setTimeout ~ isAnimationReady:', isAnimationReady);
       circleContainer.style.transform = `rotate(${currentRotation}deg)`;
       isAnimationReady.current = true;
     }, 2800);
-  }, []);
+  }, [isAnimationReady]);
 
   return (
     <>
@@ -165,7 +223,12 @@ const CategoryNavigation: React.FC<Props> = ({
       <div
         className={cx(
           styles['category-navigation'],
-          !showCategories && styles.conceal
+          // Apply different classes based on the navigation state
+          // And whether the user has come the content- or category-navigation
+          navigationState === 'none' && styles['reveal-from-left'],
+          navigationState === 'none' && !showCategories && styles.concealed,
+          navigationState === 'back' && styles['reveal-from-right'],
+          navigationState === 'forward' && styles.conceal
         )}
         aria-label="Circle Navigation"
         onTouchStart={handleTouchStart}
@@ -174,69 +237,54 @@ const CategoryNavigation: React.FC<Props> = ({
         style={{
           zIndex: '1',
           overscrollBehavior: 'contain',
-          // marginLeft: `-${overSize / 2}px`,
           overflow: 'hidden',
-          height: `${size / 2}px`
+          height: `${_size / 2}px`
         }}>
         <svg
           className={styles['circle-container']}
           id="circle-container"
           data-current-rotation={rotationOffset}
-          width={size}
-          height={size}
-          viewBox={`0 0 ${size} ${size}`}
+          width={_size}
+          height={_size}
+          viewBox={`0 0 ${_size} ${_size}`}
           style={{
             translate: ' 0 -50%',
             transition: 'all 0.5s ease-out',
             transform: `rotate(${rotationOffset}deg)`
           }}>
+          {/* Each category is an "arc", their share of space is proportional to the number of content they have
+          We use SVG to generate the arcs
+          */}
           {scaledArcs.map((arcAngle, index) => {
-            // Calculate end angle with gap consideration
-
-            //       Start with offset
-            // let startAngle = gapInDegrees / 2 + rotationOffset;
-            const endAngle = startAngle + arcAngle;
+            const endAngle = currentAngle + arcAngle;
 
             // Convert to radians
-            const startRad = (startAngle * Math.PI) / 180;
+            const startRad = (currentAngle * Math.PI) / 180;
             const endRad = (endAngle * Math.PI) / 180;
 
             // Calculate arc points
-            const x1 = center + radius * Math.cos(startRad);
-            const y1 = center + radius * Math.sin(startRad);
-            const x2 = center + radius * Math.cos(endRad);
-            const y2 = center + radius * Math.sin(endRad);
+            const x1 = _center + _radius * Math.cos(startRad);
+            const y1 = _center + _radius * Math.sin(startRad);
+            const x2 = _center + _radius * Math.cos(endRad);
+            const y2 = _center + _radius * Math.sin(endRad);
 
             // Create arc path
             const largeArcFlag = arcAngle > 180 ? 1 : 0;
             const pathData = `
               M ${x1} ${y1}
-              A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
+              A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
             `;
 
             // Update start angle for next arc
-            startAngle = endAngle + gapInDegrees;
+            currentAngle = endAngle + SPACING;
 
             const isCurrentlySelected = index === normalizedIndex;
 
             const selectedColor = 'rgba(0, 179, 152, 1)';
             const defaultColor = 'rgba(0, 51, 73, 1)';
 
-            const delay =
-              index <= Math.floor(arcs.length / 2)
-                ? Math.abs(Math.floor(arcs.length / 2) - index) * 0.1
-                : Math.abs(Math.floor(arcs.length / 2)) * 0.1 +
-                  (arcs.length - index) * 0.1;
-
-            // Get stroke length
-            // const strokeLength = 2 * Math.PI * radius * (arcAngle / 360);
-
             return (
-              <g
-                key={index}
-                data-index={index}
-                data-delay={delay}
-                className={styles.arc}>
+              <g key={index} data-index={index} className={styles.arc}>
                 <path
                   d={pathData}
                   stroke={
@@ -244,12 +292,9 @@ const CategoryNavigation: React.FC<Props> = ({
                       ? selectedColor
                       : defaultColor
                   }
-                  strokeWidth={strokeWidth}
+                  strokeWidth={LINE_THICKNESS}
                   strokeLinecap="round"
                   fill="none"
-                  style={{
-                    animationDelay: `${delay}s`
-                  }}
                 />
               </g>
             );

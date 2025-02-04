@@ -2,15 +2,30 @@
   grid-area: globe-nav-area;
   margin-top: auto;
   clip-path: inset(0 100% 0 0);
-  animation: revealFromLeft 0.5s linear forwards;
 
-  > svg {
-    /* animation: rotateBack 0.5s linear forwards;
-    animation-delay: 0.7s; */
+  &.concealed {
+    animation: none !important;
+  }
+
+  &.reveal-from-right {
+    animation: revealFromRight 0.5s linear forwards;
+  }
+
+  &.reveal-from-left {
+    animation: revealFromLeft 0.5s linear forwards;
   }
 
   &.conceal {
     animation: concealToRight 0.5s linear forwards;
+  }
+}
+
+@keyframes revealFromRight {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
   }
 }
 

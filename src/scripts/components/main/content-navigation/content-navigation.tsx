@@ -13,6 +13,8 @@ interface Props {
   showContentList: boolean;
 }
 
+// Placeholder content
+// Todo: Replace with actual content
 const contents = [
   {
     name: 'Anomalies du niveau de la mere',
@@ -95,7 +97,7 @@ const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
   }
 
   const getCoordinates = useCallback((pos: number) => {
-    const _radius = 33;
+    const _radius = 30;
     const angleInDegrees = pos * GAP_BETWEEN_ELEMENTS;
     const {x, y} = computeCartesianCoordinates(_radius, angleInDegrees);
 
