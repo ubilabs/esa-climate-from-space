@@ -24,6 +24,7 @@
     transform: translate(0, -50%);
     z-index: 1;
     background-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="utf-8"%3F><svg xmlns="http://www.w3.org/2000/svg" viewBox="52.7278 148.217 394.5443 203.566" width="394.544px" height="203.566px"><path d="M 52.731 250.953 C 52.548 240.257 60.137 230.928 70.827 228.709 L 323.354 174.568 L 323.088 187.783 L 323.363 174.531 L 447.272 148.217 L 446.323 351.783 L 320.239 325.472 L 320.247 325.04 L 71.602 272.572 C 60.83 270.726 52.914 261.659 52.731 250.953 Z" fill="%23003349" fill-opacity="0.5" style="" transform="matrix(1, 0, 0, 1, 0, 2.2737367544323206e-13)"/></svg>');
+    background-repeat: no-repeat;
     content: '';
     width: 100%;
     height: 203px;
