@@ -1,0 +1,10 @@
+.storiesSelector {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #10161a;
+  pointer-events: auto;
+}

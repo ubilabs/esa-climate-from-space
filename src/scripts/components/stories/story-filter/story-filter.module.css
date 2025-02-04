@@ -1,0 +1,75 @@
+.storyFilter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1.5em 1.625em;
+}
+.arrowIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0.25em;
+  width: 3em;
+  color: #939597;
+  cursor: pointer;
+  user-select: none;
+}
+.arrowIcon:hover svg {
+  color: #fff;
+}
+.tagScrollerOuter {
+  position: relative;
+  flex-grow: 1;
+  overflow-x: hidden;
+}
+.tagScrollerOuter:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #10161a 0%, transparent 1%, transparent 99%, #10161a 100%);
+  content: '';
+  pointer-events: none;
+}
+.tagScrollerInner {
+  display: flex;
+  flex-direction: row;
+}
+.tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 1.5em;
+  min-height: 1.5em;
+  color: #939597;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.tag svg {
+  margin-right: 0.25em;
+  width: 1.5em;
+  height: 1.5em;
+  transform: translateY(-1px);
+  fill: #00ae9d;
+}
+.selected {
+  color: #00ae9d;
+}
+.resetButton {
+  flex-grow: 0;
+  padding-top: 0.125em;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #00ae9d;
+  white-space: nowrap;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.resetButton[disabled] {
+  color: #30404d;
+  cursor: default;
+}

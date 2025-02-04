@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import cx from 'classnames';
 
-import styles from './story-gallery-item.module.styl';
+import styles from './story-gallery-item.module.css';
 
 interface Props {
   children: React.ReactNode[];

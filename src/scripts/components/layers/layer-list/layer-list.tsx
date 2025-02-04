@@ -6,7 +6,7 @@ import {SelectedLayerIdsState} from '../../../reducers/layers/selected-ids';
 
 import {LayerListItem as LayerListItemType} from '../../../types/layer-list';
 
-import styles from './layer-list.module.styl';
+import styles from './layer-list.module.css';
 
 interface Props {
   selectedLayerIds: SelectedLayerIdsState;

@@ -1,0 +1,18 @@
+.storiesButton {
+  padding: 10px;
+  border: none;
+  background: none;
+  text-decoration: none;
+  pointer-events: auto;
+}
+.storiesLabel {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  color: #fff;
+  font-size: 1em;
+}
+.storiesLabel svg {
+  padding-right: 5px;
+}

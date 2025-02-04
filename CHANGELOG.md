@@ -176,7 +176,7 @@
 * **story-12-en:** update text ([21badf8](https://github.com/ubilabs/esa-climate-from-space/commit/21badf8662236dc681e6aad38b88d772077ad8de))
 * **story-12:** add iFrame to all languages ([dd9b435](https://github.com/ubilabs/esa-climate-from-space/commit/dd9b4358a3ff4c0659e06bbb281df2111c938fe5))
 * **story-embedded:** show description text for embedded content ([ca4c617](https://github.com/ubilabs/esa-climate-from-space/commit/ca4c61776402308be41a2a4db68cd6e690adfc89))
-* **story-embedded:** Update padding in story-embedded.module.styl ([d2dc91e](https://github.com/ubilabs/esa-climate-from-space/commit/d2dc91e039233b53e22e854e3481b53d97584c4a))
+* **story-embedded:** Update padding in story-embedded.module.css ([d2dc91e](https://github.com/ubilabs/esa-climate-from-space/commit/d2dc91e039233b53e22e854e3481b53d97584c4a))
 * **story:** add json for story 42 and 43 ([f26dffe](https://github.com/ubilabs/esa-climate-from-space/commit/f26dffecd3f9a933338d8c03ba79b5c221b72110))
 * **story:** create mixed content gallery component ([fe18fee](https://github.com/ubilabs/esa-climate-from-space/commit/fe18feee0602318963cc565418f3240023f56194))
 * update readme ([8eb74f7](https://github.com/ubilabs/esa-climate-from-space/commit/8eb74f7ed379bf5b0f450edfdd55f54d6481ae2f))

@@ -1,7 +1,7 @@
 import React, {FunctionComponent, LegacyRef} from 'react';
 import cx from 'classnames';
 
-import styles from './embed-link-preview.module.styl';
+import styles from './embed-link-preview.module.css';
 
 interface Props {
   embedUrl: string;

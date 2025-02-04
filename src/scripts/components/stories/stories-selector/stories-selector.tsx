@@ -11,7 +11,7 @@ import {embedElementsSelector} from '../../../selectors/embed-elements-selector'
 
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './stories-selector.module.styl';
+import styles from './stories-selector.module.css';
 
 const StoriesSelector: FunctionComponent = () => {
   const intl = useIntl();

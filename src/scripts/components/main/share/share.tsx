@@ -15,7 +15,7 @@ import Overlay from '../overlay/overlay';
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
 import EmbedWizard from '../embed-wizard/embed-wizard';
 
-import styles from './share.module.styl';
+import styles from './share.module.css';
 
 const Share: FunctionComponent = () => {
   const [showShare, setShowShare] = useState(false);

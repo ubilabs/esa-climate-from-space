@@ -5,7 +5,7 @@ import rehypeRaw from 'rehype-raw';
 import {LayerListItem} from '../../../types/layer-list';
 import config from '../../../config/main';
 
-import styles from './layer-info.module.styl';
+import styles from './layer-info.module.css';
 
 interface Props {
   layer: LayerListItem;

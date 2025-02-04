@@ -7,7 +7,7 @@ import {ElementOptions, UiEmbedElement} from '../../../types/embed-elements';
 import {useStoryParams} from '../../../hooks/use-story-params';
 import useIsStoriesPath from '../../../hooks/use-is-stories-path';
 
-import styles from './embed-checkbox-list.module.styl';
+import styles from './embed-checkbox-list.module.css';
 
 interface Props {
   elementList: UiEmbedElement;

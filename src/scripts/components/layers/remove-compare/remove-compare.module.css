@@ -1,0 +1,16 @@
+.removeCompare {
+  display: flex;
+  flex-direction: column;
+}
+.icon {
+  padding: 2px;
+  outline: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  line-height: 50%;
+  cursor: pointer;
+}
+.icon svg {
+  fill: #fff;
+}

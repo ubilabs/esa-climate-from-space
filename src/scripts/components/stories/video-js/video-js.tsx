@@ -6,7 +6,7 @@ import {Language} from '../../../types/language';
 import {VideoResolution} from '../../../types/video-resolution-type';
 
 import 'video.js/dist/video-js.css';
-import styles from './video-js.module.styl';
+import styles from './video-js.module.css';
 
 interface Props {
   storyId: string;

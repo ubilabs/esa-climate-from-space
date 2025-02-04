@@ -1,0 +1,30 @@
+.aboutProject {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  color: #939597;
+  font-family: NotesEsa;
+}
+.content {
+  overflow-y: scroll;
+  margin: 0.625em 0;
+  height: 80%;
+  color: #939597;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.content h1 {
+  display: flex;
+  justify-content: space-between;
+  color: #939597;
+}
+.content a {
+  color: #00ae9d;
+  text-decoration: none;
+}
+@media screen and (max-width: 480px) {
+  .aboutProject {
+    width: 80%;
+  }
+}

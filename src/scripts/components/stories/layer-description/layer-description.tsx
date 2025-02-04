@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 
 import config from '../../../config/main';
 
-import styles from './layer-description.module.styl';
+import styles from './layer-description.module.css';
 
 interface Props {
   layerDescription: string;

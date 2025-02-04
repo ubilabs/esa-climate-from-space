@@ -9,7 +9,7 @@ import {embedElementsSelector} from '../../../selectors/embed-elements-selector'
 import useIsStoriesPath from '../../../hooks/use-is-stories-path';
 import {useStoryParams} from '../../../hooks/use-story-params';
 
-import styles from './header.module.styl';
+import styles from './header.module.css';
 
 interface Props {
   backLink: string;

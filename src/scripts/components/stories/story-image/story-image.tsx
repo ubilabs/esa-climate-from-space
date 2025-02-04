@@ -6,7 +6,7 @@ import Caption from '../caption/caption';
 import {ImageItem} from '../../../types/gallery-item';
 import {ImageFit} from '../../../types/image-fit';
 
-import styles from './story-image.module.styl';
+import styles from './story-image.module.css';
 
 interface Props {
   storyId: string;

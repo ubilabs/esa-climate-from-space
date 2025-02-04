@@ -4,7 +4,7 @@ import {Link, matchPath, useLocation} from 'react-router-dom';
 
 import {CloseIcon} from '../../main/icons/close-icon';
 
-import styles from './remove-compare.module.styl';
+import styles from './remove-compare.module.css';
 
 const RemoveCompare: FunctionComponent = () => {
   const intl = useIntl();

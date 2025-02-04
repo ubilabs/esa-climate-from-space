@@ -1,0 +1,89 @@
+:global(.cesium-viewer-bottom) {
+  display: none !important;
+}
+.globe {
+  position: relative;
+  height: 100%;
+}
+.globe canvas {
+  z-index: 1;
+}
+.marker {
+  margin: -16px;
+  cursor: pointer;
+  user-select: none;
+}
+.marker:hover .markerCircle {
+  transition-duration: 0.25;
+  transform: scale(1.4);
+}
+.markerTitle {
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 6px 16px;
+  max-width: 500px;
+  width: fit-content;
+  height: 24px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: #30404d;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.14), 0px 3px 4px rgba(0,0,0,0.12), 0px 1px 5px rgba(0,0,0,0.2);
+  color: #eee;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 0.6px;
+  font-size: 11px;
+  font-family: sans-serif;
+  transition: color 0.1s ease-out;
+}
+.markerTitle:hover {
+  color: #fff;
+}
+.markerCircle {
+  transition: transform 0.1s ease-out;
+  transform-origin: 50%;
+  fill: #fff;
+}
+.fadeIn {
+  animation: fadeIn 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+.fastFadeIn {
+  animation: fadeIn 0.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

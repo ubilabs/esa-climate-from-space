@@ -1,0 +1,17 @@
+.copyButton {
+  flex-direction: row-reverse;
+  align-self: flex-start;
+  margin: 0.5em 1em;
+  color: #00ae9d;
+}
+.copyButton > svg {
+  width: 24px;
+  height: 24px;
+  fill: #00ae9d;
+}
+.copyButton:hover {
+  color: #fff;
+}
+.copyButton:hover > svg {
+  fill: #fff;
+}

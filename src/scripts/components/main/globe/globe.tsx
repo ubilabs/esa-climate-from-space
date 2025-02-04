@@ -34,7 +34,7 @@ import {LayerType} from '../../../types/globe-layer-type';
 import {useHistory} from 'react-router-dom';
 import config from '../../../config/main';
 
-import styles from './globe.module.styl';
+import styles from './globe.module.css';
 import {GlobeProjection} from '../../../types/globe-projection';
 
 type LayerLoadingStateChangedEvent =

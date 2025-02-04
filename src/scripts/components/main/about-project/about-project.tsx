@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 
 import config from '../../../config/main';
 
-import styles from './about-project.module.styl';
+import styles from './about-project.module.css';
 
 const AboutProject: FunctionComponent = () => {
   const intl = useIntl();

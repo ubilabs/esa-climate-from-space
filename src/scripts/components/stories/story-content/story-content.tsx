@@ -8,7 +8,7 @@ import config from '../../../config/main';
 import {StoryMode} from '../../../types/story-mode';
 import {Slide} from '../../../types/story';
 
-import styles from './story-content.module.styl';
+import styles from './story-content.module.css';
 
 interface Props {
   storyId: string;

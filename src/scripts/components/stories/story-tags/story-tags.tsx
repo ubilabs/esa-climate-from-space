@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 import setSelectedStoryTags from '../../../actions/set-selected-story-tags';
 
-import styles from './story-tags.module.styl';
+import styles from './story-tags.module.css';
 
 interface Props {
   tags: string[];

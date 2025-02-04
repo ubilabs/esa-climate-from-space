@@ -1,0 +1,85 @@
+.share {
+  display: flex;
+}
+.embedOverlay {
+  background: linear-gradient(0deg, #10161a 0%, #10161a 80%, rgba(16,22,26,0.974) 90%, rgba(16,22,26,0.921) 100%);
+}
+.embedOverlay > div {
+  margin-top: 1.875em;
+  height: 80%;
+}
+.shareOverlay {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5em;
+  max-width: 21.875em;
+  width: 50%;
+  border-radius: 0.25em;
+  background-color: #30404d;
+}
+.shareButton {
+  font-size: 1.125em;
+  line-height: 1.375em;
+}
+.shareButton svg {
+  filter: drop-shadow(3px 2px 2px rgba(16,22,26,0.2));
+}
+.closeButton {
+  position: absolute;
+  top: 0.625em;
+  right: 0.625em;
+}
+.title {
+  margin: 0;
+  margin-bottom: 0.9375em;
+  color: #fff;
+  text-align: center;
+  font-size: 2.25em;
+  font-family: NotesEsa;
+}
+.shareButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  gap: 1.875em;
+}
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  outline: 0;
+  border: none;
+  background: none;
+  color: #00ae9d;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-family: NotesEsa;
+  cursor: pointer;
+  gap: 0.625em;
+}
+.button svg {
+  width: 27px;
+  height: 27px;
+  fill: #00ae9d;
+}
+.button:hover {
+  color: #fff;
+}
+.button:hover svg {
+  fill: #fff;
+}
+@media screen and (max-width: 850px) {
+  .shareOverlay {
+    padding: 2em 1em;
+    width: 60%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .button {
+    padding: 0.9375em;
+  }
+}

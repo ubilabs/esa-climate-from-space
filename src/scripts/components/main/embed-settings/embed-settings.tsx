@@ -6,7 +6,7 @@ import EmbedCheckboxList from '../embed-checkbox-list/embed-checkbox-list';
 import {Language} from '../../../types/language';
 import {uiEmbedElements} from '../../../config/main';
 
-import styles from './embed-settings.module.styl';
+import styles from './embed-settings.module.css';
 
 interface Props {
   elementsChecked: ElementOptions;

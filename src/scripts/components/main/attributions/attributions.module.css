@@ -1,0 +1,29 @@
+.attributions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  font-family: NotesEsa;
+}
+.credits {
+  overflow-y: scroll;
+  margin: 0.625em 0;
+  height: 80%;
+  color: #939597;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.credits h1 {
+  display: flex;
+  justify-content: space-between;
+  color: #939597;
+}
+.credits a {
+  color: #00ae9d;
+  text-decoration: none;
+}
+@media screen and (max-width: 480px) {
+  .attributions {
+    width: 80%;
+  }
+}

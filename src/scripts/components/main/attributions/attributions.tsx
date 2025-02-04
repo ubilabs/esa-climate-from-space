@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 
 import config from '../../../config/main';
 
-import styles from './attributions.module.styl';
+import styles from './attributions.module.css';
 
 const Attributions: FunctionComponent = () => {
   const intl = useIntl();

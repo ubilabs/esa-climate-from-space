@@ -9,7 +9,7 @@ import {getOfflineLayerIconUrl} from '../../../libs/electron/get-offline-layer-i
 
 import {LayerListItem} from '../../../types/layer-list';
 
-import styles from './selected-layer-list-item.module.styl';
+import styles from './selected-layer-list-item.module.css';
 
 interface Props {
   layer: LayerListItem;

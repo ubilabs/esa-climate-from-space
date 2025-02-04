@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {EmbeddedItem} from '../../../types/gallery-item';
 
-import styles from './story-embedded.module.styl';
+import styles from './story-embedded.module.css';
 import Caption from '../caption/caption';
 import {ImageFit} from '../../../types/image-fit';
 

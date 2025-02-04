@@ -4,7 +4,7 @@ import Button from '../button/button';
 import {CopyTextIcon} from '../icons/copy-text-icon';
 import {CheckIcon} from '../icons/check-icon';
 
-import styles from './copy-to-clipboard-button.module.styl';
+import styles from './copy-to-clipboard-button.module.css';
 
 interface Props {
   label: string;

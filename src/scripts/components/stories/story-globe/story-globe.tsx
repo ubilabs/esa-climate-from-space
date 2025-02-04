@@ -10,7 +10,7 @@ import LayerDescription from '../layer-description/layer-description';
 
 import {GlobeItem} from '../../../types/gallery-item';
 
-import styles from './story-globe.module.styl';
+import styles from './story-globe.module.css';
 
 interface Props {
   globeItem: GlobeItem;

@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react';
 import {TimeRange} from '../../../types/time-range';
 
-import styles from './time-slider-range.module.styl';
+import styles from './time-slider-range.module.css';
 
 interface Props {
   range: TimeRange;

@@ -1,0 +1,48 @@
+.dataSetInfo {
+  position: absolute;
+  bottom: 8.75em;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  pointer-events: none;
+}
+.dataSetInfo > :first-child {
+  justify-content: flex-start;
+}
+.dataSetContent {
+  top: 0.3125em;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.375em;
+  width: 100%;
+}
+.title {
+  margin: 0;
+  color: #fff;
+  text-shadow: 0px 0px 2px #10161a;
+  font-weight: normal;
+  font-size: 1em;
+  user-select: none;
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  pointer-events: all;
+}
+@media screen and (max-width: 768px) {
+  .dataSetInfo {
+    top: 10%;
+    bottom: initial;
+  }
+}
+@media screen and (max-width: 480px) {
+  .dataSetContent {
+    align-items: flex-start;
+    padding: 0.625em;
+  }
+  .title {
+    text-align: center;
+    font-size: 0.8em;
+  }
+}

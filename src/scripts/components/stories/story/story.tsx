@@ -28,7 +28,7 @@ import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 
 import StoryEmbedded from '../story-embedded/story-embedded';
 
-import styles from './story.module.styl';
+import styles from './story.module.css';
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();

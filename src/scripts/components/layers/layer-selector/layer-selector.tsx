@@ -16,7 +16,7 @@ import showLayerSelectorAction from '../../../actions/show-layer-selector';
 import setSelectedLayerIdsAction from '../../../actions/set-selected-layer-id';
 import fetchLayerAction from '../../../actions/fetch-layer';
 
-import styles from './layer-selector.module.styl';
+import styles from './layer-selector.module.css';
 import {useMatomo} from '@datapunt/matomo-tracker-react';
 import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 
