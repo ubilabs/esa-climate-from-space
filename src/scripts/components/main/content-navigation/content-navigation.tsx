@@ -83,7 +83,13 @@ const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
   // The indexDelta is the number of items the user has scrolled
   const [indexDelta, setIndexDelta] = useState(0);
 
+  // The spread between the elements in the circle
   const GAP_BETWEEN_ELEMENTS = 16;
+
+  // The radius of the circle. We use a fixed radius here from
+  // 0 - 100 because the coordinates are used as the top and left values
+  // in a absolute positioned element. The advantage here is that the the elements
+  // will automatically positioned and re-positioned based on the size of the parent container
   const RADIUS = 33;
 
   const handleTouchMove = (e: React.TouchEvent) => {
