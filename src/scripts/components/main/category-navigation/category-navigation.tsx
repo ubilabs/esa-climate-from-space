@@ -39,11 +39,11 @@ const CategoryNavigation: React.FC<Props> = ({
   // Control the thickness of the lines (arcs)
   const LINE_THICKNESS = 14;
 
-  // Why oversize? It's because the circle navigation should be bigger than the screen
-  // We hide the overflow in the parent container
-  const _overSize = 50;
-
   // Calculate the size of the circle navigation
+  const _overSize = width * 0.15;
+
+  // Why _oversize? It's because the circle navigation should be bigger than the screen
+  // We hide the overflow in the parent container
   const _size = width + _overSize;
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
