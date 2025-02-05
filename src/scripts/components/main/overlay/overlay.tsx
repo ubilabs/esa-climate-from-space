@@ -1,11 +1,11 @@
-import {FunctionComponent} from 'react';
-import {createPortal} from 'react-dom';
-import cx from 'classnames';
+import { FunctionComponent } from "react";
+import { createPortal } from "react-dom";
+import cx from "classnames";
 
-import Button from '../button/button';
-import {CloseIcon} from '../icons/close-icon';
+import Button from "../button/button";
+import { CloseIcon } from "../icons/close-icon";
 
-import styles from './overlay.module.css';
+import styles from "./overlay.module.css";
 
 interface Props {
   className?: string;
@@ -16,11 +16,11 @@ interface Props {
 
 const Overlay: FunctionComponent<Props> = ({
   children,
-  className = '',
+  className = "",
   onClose,
-  showCloseButton = true
+  showCloseButton = true,
 }) => {
-  const modalElement = document.getElementById('modal');
+  const modalElement = document.getElementById("modal");
   const classes = cx(styles.overlay, className);
 
   const Content = (

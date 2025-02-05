@@ -1,18 +1,18 @@
 import {
   SET_DOWNLOADED_DATA,
-  SetDownloadedDataAction
-} from '../actions/set-downloaded-data';
+  SetDownloadedDataAction,
+} from "../actions/set-downloaded-data";
 
-import {DownloadedData} from '../types/downloaded-data';
+import { DownloadedData } from "../types/downloaded-data";
 
 const initialState: DownloadedData = {
   layers: [],
-  stories: []
+  stories: [],
 };
 
 function downloadedDataReducer(
   state: DownloadedData = initialState,
-  action: SetDownloadedDataAction
+  action: SetDownloadedDataAction,
 ): DownloadedData {
   switch (action.type) {
     case SET_DOWNLOADED_DATA:

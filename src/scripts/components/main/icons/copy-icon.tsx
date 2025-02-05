@@ -1,4 +1,4 @@
-import {FunctionComponent} from 'react';
+import { FunctionComponent } from "react";
 
 export const CopyIcon: FunctionComponent = () => (
   <svg
@@ -6,7 +6,8 @@ export const CopyIcon: FunctionComponent = () => (
     height="27"
     viewBox="0 0 27 27"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path d="M4.3875 13.5001C4.3875 11.5763 5.95125 10.0126 7.875 10.0126H12.375V7.87506H7.875C4.77 7.87506 2.25 10.3951 2.25 13.5001C2.25 16.6051 4.77 19.1251 7.875 19.1251H12.375V16.9876H7.875C5.95125 16.9876 4.3875 15.4238 4.3875 13.5001ZM9 14.6251H18V12.3751H9V14.6251ZM19.125 7.87506H14.625V10.0126H19.125C21.0487 10.0126 22.6125 11.5763 22.6125 13.5001C22.6125 15.4238 21.0487 16.9876 19.125 16.9876H14.625V19.1251H19.125C22.23 19.1251 24.75 16.6051 24.75 13.5001C24.75 10.3951 22.23 7.87506 19.125 7.87506Z" />
   </svg>
 );

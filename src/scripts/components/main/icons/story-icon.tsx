@@ -1,11 +1,12 @@
-import {FunctionComponent} from 'react';
+import { FunctionComponent } from "react";
 
 export const StoryIcon: FunctionComponent = () => (
   <svg
     width="24"
     height="24"
     viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       fillRule="evenodd"
       clipRule="evenodd"

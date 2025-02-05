@@ -1,4 +1,4 @@
-import {StoryList} from '../types/story-list';
+import { StoryList } from "../types/story-list";
 
 // filter stories by tags - keep story if all selected tags match
 export function filterStories(stories: StoryList, tags: string[]) {
@@ -6,5 +6,7 @@ export function filterStories(stories: StoryList, tags: string[]) {
     return stories;
   }
 
-  return stories.filter(story => tags.every(tag => story.tags.includes(tag)));
+  return stories.filter((story) =>
+    tags.every((tag) => story.tags.includes(tag)),
+  );
 }

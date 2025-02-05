@@ -1,10 +1,10 @@
-import config from '../config/main';
-import {replaceUrlPlaceholders} from './replace-url-placeholders';
-import {isElectron, isOffline, getOfflineTilesUrl} from './electron/index';
+import config from "../config/main";
+import { replaceUrlPlaceholders } from "./replace-url-placeholders";
+import { isElectron, isOffline, getOfflineTilesUrl } from "./electron/index";
 
-import {Layer} from '../types/layer';
-import {GlobeImageLayerData} from '../types/globe-image-layer-data';
-import {LayerType} from '../types/globe-layer-type';
+import { Layer } from "../types/layer";
+import { GlobeImageLayerData } from "../types/globe-image-layer-data";
+import { LayerType } from "../types/globe-layer-type";
 
 const NUM_PRELOAD_URLS = 5;
 
@@ -14,7 +14,7 @@ const NUM_PRELOAD_URLS = 5;
  */
 export function getImageLayerData(
   layer: Layer | null,
-  timeIndex: number
+  timeIndex: number,
 ): GlobeImageLayerData | null {
   if (!layer) {
     return null;
@@ -23,7 +23,7 @@ export function getImageLayerData(
   let url = {
     [LayerType.Tiles]: config.api.layerTiles,
     [LayerType.Image]: config.api.layerImage,
-    [LayerType.Gallery]: config.api.layerGalleryImage
+    [LayerType.Gallery]: config.api.layerGalleryImage,
   }[layer.type];
 
   // use local tiles when offline and in electron
@@ -33,17 +33,17 @@ export function getImageLayerData(
 
   const replacedUrl = replaceUrlPlaceholders(url, {
     id: layer.id,
-    timeIndex: timeIndex.toString()
+    timeIndex: timeIndex.toString(),
   });
 
-  const nextUrls = Array.from({length: NUM_PRELOAD_URLS})
+  const nextUrls = Array.from({ length: NUM_PRELOAD_URLS })
     .map((n, index) => timeIndex + index)
-    .filter(index => index < layer.timestamps.length)
-    .map(index =>
+    .filter((index) => index < layer.timestamps.length)
+    .map((index) =>
       replaceUrlPlaceholders(url, {
         id: layer.id,
-        timeIndex: index.toString()
-      })
+        timeIndex: index.toString(),
+      }),
     );
 
   return {
@@ -52,7 +52,7 @@ export function getImageLayerData(
     url: replacedUrl,
     nextUrls,
     zoomLevels: layer.zoomLevels || 0,
-    filter: layer.filter
+    filter: layer.filter,
   };
 }
 
@@ -62,7 +62,7 @@ export function getImageLayerData(
  */
 export function getLayerTimeIndex(
   sliderTime: number,
-  timestamps: string[]
+  timestamps: string[],
 ): number {
   let minDiff = Infinity;
   let index = timestamps.length - 1;

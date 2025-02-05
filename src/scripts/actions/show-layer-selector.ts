@@ -1,4 +1,4 @@
-export const SHOW_LAYER_SELECTOR = 'SHOW_LAYER_SELECTOR';
+export const SHOW_LAYER_SELECTOR = "SHOW_LAYER_SELECTOR";
 
 export interface ShowLayerSelectorAction {
   type: typeof SHOW_LAYER_SELECTOR;
@@ -6,10 +6,10 @@ export interface ShowLayerSelectorAction {
 }
 
 const showLayerSelectorAction = (
-  showLayerSelector: boolean
+  showLayerSelector: boolean,
 ): ShowLayerSelectorAction => ({
   type: SHOW_LAYER_SELECTOR,
-  showLayerSelector
+  showLayerSelector,
 });
 
 export default showLayerSelectorAction;

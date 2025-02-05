@@ -1,17 +1,17 @@
-import {FunctionComponent, useState} from 'react';
-import cx from 'classnames';
+import { FunctionComponent, useState } from "react";
+import cx from "classnames";
 
-import {LegendValueColor} from '../../../types/legend-value-color';
+import { LegendValueColor } from "../../../types/legend-value-color";
 
-import styles from './hover-legend.module.css';
+import styles from "./hover-legend.module.css";
 
 interface Props {
   values: LegendValueColor[];
   isCompare?: boolean;
 }
 
-const HoverLegend: FunctionComponent<Props> = ({values, isCompare}) => {
-  const [legendValue, setLegendValue] = useState('');
+const HoverLegend: FunctionComponent<Props> = ({ values, isCompare }) => {
+  const [legendValue, setLegendValue] = useState("");
 
   return (
     <div className={cx(styles.hoverLegend, isCompare && styles.rightSided)}>
@@ -19,9 +19,10 @@ const HoverLegend: FunctionComponent<Props> = ({values, isCompare}) => {
         <div className={styles.legendItem} key={index}>
           <div
             className={styles.color}
-            style={{backgroundColor: legendItem.color}}
+            style={{ backgroundColor: legendItem.color }}
             onMouseOver={() => setLegendValue(legendItem.value)}
-            onMouseLeave={() => setLegendValue('')}></div>
+            onMouseLeave={() => setLegendValue("")}
+          ></div>
           {legendValue === legendItem.value && (
             <span className={styles.hoverValue}>{legendValue}</span>
           )}

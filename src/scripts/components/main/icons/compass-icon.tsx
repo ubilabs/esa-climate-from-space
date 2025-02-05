@@ -1,4 +1,4 @@
-import {FunctionComponent} from 'react';
+import { FunctionComponent } from "react";
 
 export const CompassIcon: FunctionComponent = () => (
   <svg
@@ -6,7 +6,8 @@ export const CompassIcon: FunctionComponent = () => (
     height="24"
     viewBox="0 0 24 24"
     fill="var(--dark-grey-2)"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" />
     <path
       d="M8 11.9868L12.0098 0.650508L16.1458 11.9415L13.5125 11.9561C13.5103 11.5742 13.3566 11.2083 13.085 10.9397C12.8135 10.6712 12.4464 10.5215 12.0645 10.5237C11.6826 10.5257 11.3171 10.6795 11.0486 10.9511C10.7801 11.2226 10.6304 11.5897 10.6325 11.9717L8 11.9868Z"

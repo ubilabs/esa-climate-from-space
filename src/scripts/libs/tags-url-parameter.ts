@@ -1,15 +1,15 @@
-const char = 'I';
+const char = "I";
 
 // parses window.location and reads the story tags from query params
 //
 // note: we do not use the location.search prop here because the HashRouter
 // stores the query parameters in the location.hash prop
 export function parseUrl(): string[] {
-  const {hash} = location;
+  const { hash } = location;
   // only take the query portion of the hash string
-  const queryString = hash.substr(hash.indexOf('?'));
+  const queryString = hash.substr(hash.indexOf("?"));
   const urlParams = new URLSearchParams(queryString);
-  const tagsParam = urlParams.get('tags');
+  const tagsParam = urlParams.get("tags");
 
   if (!tagsParam) {
     return [];

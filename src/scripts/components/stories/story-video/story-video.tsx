@@ -1,17 +1,17 @@
-import {FunctionComponent} from 'react';
-import {useSelector} from 'react-redux';
-import cx from 'classnames';
-import {VideoJsPlayer} from 'video.js';
+import { FunctionComponent } from "react";
+import { useSelector } from "react-redux";
+import cx from "classnames";
+import { VideoJsPlayer } from "video.js";
 
-import {languageSelector} from '../../../selectors/language';
-import {StoryMode} from '../../../types/story-mode';
-import {YouTubePlayer} from 'youtube-player/dist/types';
-import VideoJS from '../video-js/video-js';
-import YoutubePlayer from '../youtube-player/youtube-player';
+import { languageSelector } from "../../../selectors/language";
+import { StoryMode } from "../../../types/story-mode";
+import { YouTubePlayer } from "youtube-player/dist/types";
+import VideoJS from "../video-js/video-js";
+import YoutubePlayer from "../youtube-player/youtube-player";
 
-import {VideoItem} from '../../../types/gallery-item';
+import { VideoItem } from "../../../types/gallery-item";
 
-import styles from './story-video.module.css';
+import styles from "./story-video.module.css";
 
 interface Props {
   mode: StoryMode | null;
@@ -24,14 +24,14 @@ const StoryVideo: FunctionComponent<Props> = ({
   mode,
   storyId,
   videoItem,
-  onPlay
+  onPlay,
 }) => {
-  const {videoSrc, videoId, videoCaptions, videoPoster} = videoItem;
+  const { videoSrc, videoId, videoCaptions, videoPoster } = videoItem;
   const language = useSelector(languageSelector);
   const isStoryMode = mode === StoryMode.Stories;
   const classes = cx(
     styles.storyVideo,
-    !isStoryMode && styles.presentationVideo
+    !isStoryMode && styles.presentationVideo,
   );
 
   return (

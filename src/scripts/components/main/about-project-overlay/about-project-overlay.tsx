@@ -1,13 +1,13 @@
-import {FunctionComponent} from 'react';
-import {useHistory} from 'react-router-dom';
-import AboutProject from '../about-project/about-project';
-import Overlay from '../overlay/overlay';
+import { FunctionComponent } from "react";
+import { useHistory } from "react-router-dom";
+import AboutProject from "../about-project/about-project";
+import Overlay from "../overlay/overlay";
 
 const AboutProjectOverlay: FunctionComponent = () => {
   const history = useHistory();
 
   return (
-    <Overlay onClose={() => history.push('/')}>{<AboutProject />}</Overlay>
+    <Overlay onClose={() => history.push("/")}>{<AboutProject />}</Overlay>
   );
 };
 

@@ -1,8 +1,11 @@
-import {SET_STORY_LAYER, SetStoryLayerAction} from '../actions/set-story-layer';
+import {
+  SET_STORY_LAYER,
+  SetStoryLayerAction,
+} from "../actions/set-story-layer";
 
 function storyLayerReducer(
   state: string | null = null,
-  action: SetStoryLayerAction
+  action: SetStoryLayerAction,
 ): string | null {
   switch (action.type) {
     case SET_STORY_LAYER:

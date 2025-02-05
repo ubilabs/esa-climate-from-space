@@ -1,23 +1,23 @@
-import {FunctionComponent} from 'react';
-import {useSelector} from 'react-redux';
-import {useStoryGlobe} from '../../../hooks/use-story-globe';
+import { FunctionComponent } from "react";
+import { useSelector } from "react-redux";
+import { useStoryGlobe } from "../../../hooks/use-story-globe";
 
-import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
+import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import DataViewer from '../../main/data-viewer/data-viewer';
-import TimeSlider from '../../layers/time-slider/time-slider';
-import LayerDescription from '../layer-description/layer-description';
+import DataViewer from "../../main/data-viewer/data-viewer";
+import TimeSlider from "../../layers/time-slider/time-slider";
+import LayerDescription from "../layer-description/layer-description";
 
-import {GlobeItem} from '../../../types/gallery-item';
+import { GlobeItem } from "../../../types/gallery-item";
 
-import styles from './story-globe.module.css';
+import styles from "./story-globe.module.css";
 
 interface Props {
   globeItem: GlobeItem;
 }
 
-const StoryGlobe: FunctionComponent<Props> = ({globeItem}) => {
-  const {time_slider} = useSelector(embedElementsSelector);
+const StoryGlobe: FunctionComponent<Props> = ({ globeItem }) => {
+  const { time_slider } = useSelector(embedElementsSelector);
 
   useStoryGlobe(globeItem);
 
@@ -26,7 +26,7 @@ const StoryGlobe: FunctionComponent<Props> = ({globeItem}) => {
       <DataViewer
         hideNavigation
         markers={globeItem.markers}
-        backgroundColor={'var(--plain-black)'}
+        backgroundColor={"var(--plain-black)"}
       />
       {time_slider && (
         <div className={styles.layerDetails}>

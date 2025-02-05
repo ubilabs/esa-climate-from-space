@@ -1,4 +1,4 @@
 export enum ImageFit {
-  Cover = 'cover',
-  Contain = 'contain'
+  Cover = "cover",
+  Contain = "contain",
 }

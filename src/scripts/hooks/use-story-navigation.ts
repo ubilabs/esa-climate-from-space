@@ -1,11 +1,11 @@
-import {useStoryParams} from './use-story-params';
-import config from '../config/main';
+import { useStoryParams } from "./use-story-params";
+import config from "../config/main";
 
-import {StoryMode} from '../types/story-mode';
-import {GalleryItemType} from '../types/gallery-item';
+import { StoryMode } from "../types/story-mode";
+import { GalleryItemType } from "../types/gallery-item";
 
 export const useStoryNavigation = (videoDuration: number) => {
-  const {mode, storyIds, storyIndex, slideIndex, selectedStory} =
+  const { mode, storyIds, storyIndex, slideIndex, selectedStory } =
     useStoryParams();
   const numberOfSlides = selectedStory?.slides.length;
 
@@ -15,7 +15,7 @@ export const useStoryNavigation = (videoDuration: number) => {
   let delay = config.delay;
 
   if (!numberOfSlides) {
-    return {autoPlayLink, nextSlideLink, previousSlideLink};
+    return { autoPlayLink, nextSlideLink, previousSlideLink };
   }
 
   const previousSlideIndex = slideIndex - 1;
@@ -30,8 +30,8 @@ export const useStoryNavigation = (videoDuration: number) => {
     }
   }
 
-  if (storyIds && typeof storyIndex === 'number') {
-    const showcaseStoryIds = storyIds.join('&');
+  if (storyIds && typeof storyIndex === "number") {
+    const showcaseStoryIds = storyIds.join("&");
     const nextStoryIndex = storyIndex + 1;
     const currentSlide = selectedStory?.slides[slideIndex];
     // go through all slides of one story
@@ -59,5 +59,5 @@ export const useStoryNavigation = (videoDuration: number) => {
     }
   }
 
-  return {autoPlayLink, nextSlideLink, previousSlideLink, delay};
+  return { autoPlayLink, nextSlideLink, previousSlideLink, delay };
 };

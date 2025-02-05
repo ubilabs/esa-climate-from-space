@@ -1,9 +1,9 @@
-import {Layer} from '../types/layer';
-import {TimeRange} from '../types/time-range';
+import { Layer } from "../types/layer";
+import { TimeRange } from "../types/time-range";
 
 export function getTimeRanges(
   mainLayer: Layer | null,
-  compareLayer: Layer | null
+  compareLayer: Layer | null,
 ): {
   main: TimeRange | null;
   compare: TimeRange | null;
@@ -19,7 +19,7 @@ export function getTimeRanges(
   return {
     main: mainRange,
     compare: compareRange,
-    combined: combinedRange
+    combined: combinedRange,
   };
 }
 
@@ -39,6 +39,6 @@ function getTimeRange(timestamps: string[]): TimeRange {
   return {
     min: Number(sorted[0]) || -Infinity,
     max: Number(sorted[sorted.length - 1]) || Infinity,
-    timestamps: sorted.map(date => date.toISOString())
+    timestamps: sorted.map((date) => date.toISOString()),
   };
 }

@@ -1,11 +1,12 @@
-import {FunctionComponent} from 'react';
+import { FunctionComponent } from "react";
 
 export const FacebookIcon: FunctionComponent = () => (
   <svg
     width="27"
     height="27"
     viewBox="0 0 27 27"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       fillRule="evenodd"
       clipRule="evenodd"

@@ -1,16 +1,16 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from "redux";
 
-import languageReducer from './language';
-import layersReducer from './layers/index';
-import storiesReducer from './story/index';
-import globeReducer from './globe';
-import flyToReducer from './fly-to';
-import storyLayerReducer from './story-layer';
-import showLayerSelectorReducer from './show-layer-selector';
-import offlineReducer from './offline/index';
-import downloadedDataReducer from './downloaded-data';
-import welcomeScreenReducer from './welcome-screen';
-import embedElementsReducer from './embed-elements';
+import languageReducer from "./language";
+import layersReducer from "./layers/index";
+import storiesReducer from "./story/index";
+import globeReducer from "./globe";
+import flyToReducer from "./fly-to";
+import storyLayerReducer from "./story-layer";
+import showLayerSelectorReducer from "./show-layer-selector";
+import offlineReducer from "./offline/index";
+import downloadedDataReducer from "./downloaded-data";
+import welcomeScreenReducer from "./welcome-screen";
+import embedElementsReducer from "./embed-elements";
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
   offline: offlineReducer,
   downloadedData: downloadedDataReducer,
   welcomeScreen: welcomeScreenReducer,
-  embedElements: embedElementsReducer
+  embedElements: embedElementsReducer,
 });
 
 export default rootReducer;

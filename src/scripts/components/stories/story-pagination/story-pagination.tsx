@@ -1,15 +1,15 @@
-import {FunctionComponent, useCallback, useEffect} from 'react';
-import {Link, useHistory} from 'react-router-dom';
-import {useIntl} from 'react-intl';
-import cx from 'classnames';
+import { FunctionComponent, useCallback, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useIntl } from "react-intl";
+import cx from "classnames";
 
-import {PreviousIcon} from '../../main/icons/previous-icon';
-import {NextIcon} from '../../main/icons/next-icon';
-import {CloseIcon} from '../../main/icons/close-icon';
+import { PreviousIcon } from "../../main/icons/previous-icon";
+import { NextIcon } from "../../main/icons/next-icon";
+import { CloseIcon } from "../../main/icons/close-icon";
 
-import {StoryMode} from '../../../types/story-mode';
+import { StoryMode } from "../../../types/story-mode";
 
-import styles from './story-pagination.module.css';
+import styles from "./story-pagination.module.css";
 
 interface Props {
   mode: StoryMode | null;
@@ -24,7 +24,7 @@ const StoryPagination: FunctionComponent<Props> = ({
   slideIndex,
   storySlidesLength,
   nextSlideLink,
-  previousSlideLink
+  previousSlideLink,
 }) => {
   const intl = useIntl();
   const history = useHistory();
@@ -59,20 +59,20 @@ const StoryPagination: FunctionComponent<Props> = ({
         history.push(`/${mode}`);
       }
     },
-    [isShowcaseMode, history, mode, previousSlideLink, nextSlideLink]
+    [isShowcaseMode, history, mode, previousSlideLink, nextSlideLink],
   );
 
   // add and remove event listener for keyboard events
   useEffect(() => {
-    window.addEventListener('keydown', onKeyDownHandler);
+    window.addEventListener("keydown", onKeyDownHandler);
     return () => {
-      window.removeEventListener('keydown', onKeyDownHandler);
+      window.removeEventListener("keydown", onKeyDownHandler);
     };
   }, [onKeyDownHandler]);
 
   const disabledClasses = cx(
     styles.disabled,
-    isShowcaseMode && styles.emptyIcon
+    isShowcaseMode && styles.emptyIcon,
   );
 
   return (
@@ -106,7 +106,8 @@ const StoryPagination: FunctionComponent<Props> = ({
           <div className={styles.closeIcon}>
             <Link
               to={`/${mode}`}
-              title={intl.formatMessage({id: 'closeStory'})}>
+              title={intl.formatMessage({ id: "closeStory" })}
+            >
               <CloseIcon />
             </Link>
           </div>
