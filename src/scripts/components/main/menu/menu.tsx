@@ -34,14 +34,14 @@ const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
   const version = INFO_VERSION;
 
   return (
-    <React.Fragment>
+    <>
       <nav className={styles.menuContainer}>
         {overlayType ? (
           <Overlay onClose={() => setOverlayType(null)}>
             {overlayType === 'about' ? <AboutProject /> : <Attributions />}
           </Overlay>
         ) : (
-          <React.Fragment>
+          <>
             <ul className={styles.menuList}>
               <li className={styles.menuItemTitle}>
                 <PresenterIcon /> <FormattedMessage id={'modes'} />
@@ -174,7 +174,7 @@ const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
                 <TrackingToggle />
               </li>
             </ul>
-          </React.Fragment>
+          </>
         )}
       </nav>
       <div className={styles.credits}>
@@ -205,7 +205,7 @@ const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
           </a>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

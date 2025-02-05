@@ -1,4 +1,4 @@
-import {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 import {YouTubePlayer} from 'youtube-player/dist/types';
 import {VideoJsPlayer} from 'video.js';
 import {useSelector} from 'react-redux';

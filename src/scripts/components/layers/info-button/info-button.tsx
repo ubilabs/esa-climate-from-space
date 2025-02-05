@@ -18,7 +18,7 @@ const InfoButton: FunctionComponent<Props> = ({layer}) => {
 
   return (
     layer && (
-      <React.Fragment>
+      <>
         <Button
           icon={InfoIcon}
           className={styles.infoButton}
@@ -30,7 +30,7 @@ const InfoButton: FunctionComponent<Props> = ({layer}) => {
             <LayerInfo layer={layer} />
           </Overlay>
         )}
-      </React.Fragment>
+      </>
     )
   );
 };
