@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import {FunctionComponent, useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useDispatch} from 'react-redux';
 import cx from 'classnames';

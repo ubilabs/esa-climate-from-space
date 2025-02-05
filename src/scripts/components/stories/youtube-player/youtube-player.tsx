@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import YouTube, {Options} from 'react-youtube';
 import {YouTubePlayer} from 'youtube-player/dist/types';
 

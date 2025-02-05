@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useLocation} from 'react-router-dom';
 import {useMatomo} from '@datapunt/matomo-tracker-react';

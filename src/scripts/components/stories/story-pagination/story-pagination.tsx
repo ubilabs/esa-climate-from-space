@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useCallback, useEffect} from 'react';
+import {FunctionComponent, useCallback, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import {useIntl} from 'react-intl';
 import cx from 'classnames';

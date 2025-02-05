@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import {useHistory, useParams} from 'react-router-dom';
 import {useIntl, FormattedMessage} from 'react-intl';
 import {useSelector} from 'react-redux';

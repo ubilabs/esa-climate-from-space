@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import cx from 'classnames';
 
 import styles from './story-progress.module.css';

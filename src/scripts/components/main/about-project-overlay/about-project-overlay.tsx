@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import {useHistory} from 'react-router-dom';
 import AboutProject from '../about-project/about-project';
 import Overlay from '../overlay/overlay';

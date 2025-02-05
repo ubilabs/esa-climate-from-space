@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 
 import {isElectron, downloadUrl, deleteId} from '../../../libs/electron/index';

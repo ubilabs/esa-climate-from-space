@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import {FunctionComponent, useState} from 'react';
 
 import Overlay from '../../main/overlay/overlay';
 import {InfoIcon} from '../../main/icons/info-icon';

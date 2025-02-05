@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import {useIntl} from 'react-intl';
 import {Link, matchPath, useLocation} from 'react-router-dom';
 

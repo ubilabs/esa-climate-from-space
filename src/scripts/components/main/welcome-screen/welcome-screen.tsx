@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import {useIntl} from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import {useDispatch} from 'react-redux';

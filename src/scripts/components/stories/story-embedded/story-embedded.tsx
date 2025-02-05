@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import {EmbeddedItem} from '../../../types/gallery-item';
 
 import styles from './story-embedded.module.css';

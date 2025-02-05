@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import {FunctionComponent, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Oval} from 'svg-loaders-react';
 import {RenderMode} from '@ubilabs/esa-webgl-globe';

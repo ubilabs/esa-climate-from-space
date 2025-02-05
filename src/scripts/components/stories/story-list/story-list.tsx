@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 import cx from 'classnames';
 import {FormattedMessage} from 'react-intl';

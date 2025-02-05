@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 
 import {RemoveIcon} from '../../main/icons/remove-icon';
 import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';

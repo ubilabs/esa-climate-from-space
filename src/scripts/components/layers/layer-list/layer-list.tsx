@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 
 import LayerListItem from '../layer-list-item/layer-list-item';
 

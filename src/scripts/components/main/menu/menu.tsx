@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import {FunctionComponent, useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 
 import planeratyVisionsLogo from '~/assets/images/planetary-visions.png';

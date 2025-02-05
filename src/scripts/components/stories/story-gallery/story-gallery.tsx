@@ -1,9 +1,4 @@
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useState
-} from 'react';
+import {FunctionComponent, useCallback, useEffect, useState} from 'react';
 import cx from 'classnames';
 
 import {PreviousIcon} from '../../main/icons/previous-icon';

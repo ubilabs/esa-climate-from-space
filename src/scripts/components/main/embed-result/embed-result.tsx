@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useRef} from 'react';
+import {FunctionComponent, useRef} from 'react';
 import {FormattedMessage} from 'react-intl';
 
 import {createEmbedUrl} from '../../../libs/create-embed-url';

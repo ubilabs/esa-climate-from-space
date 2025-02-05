@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 
 import Button from '../button/button';
 import {CopyTextIcon} from '../icons/copy-text-icon';

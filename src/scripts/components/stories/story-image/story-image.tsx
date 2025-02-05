@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 
 import Caption from '../caption/caption';

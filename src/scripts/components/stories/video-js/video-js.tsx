@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useRef} from 'react';
+import {FunctionComponent, useEffect, useRef} from 'react';
 import videojs, {VideoJsPlayer, VideoJsPlayerOptions} from 'video.js';
 
 import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';

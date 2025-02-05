@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import {FunctionComponent, useState} from 'react';
 import cx from 'classnames';
 
 import {LegendValueColor} from '../../../types/legend-value-color';

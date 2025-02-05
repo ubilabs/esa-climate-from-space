@@ -1,4 +1,4 @@
-import React, {Fragment, FunctionComponent, useState} from 'react';
+import {Fragment, FunctionComponent, useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 import {useSelector} from 'react-redux';
 

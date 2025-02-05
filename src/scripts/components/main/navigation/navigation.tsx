@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import {FunctionComponent, useState} from 'react';
 import {useSelector} from 'react-redux';
 
 import Button from '../button/button';
@@ -34,7 +34,7 @@ const Navigation: FunctionComponent = () => {
   );
 
   return (
-    <React.Fragment>
+    <>
       <div className={styles.navigation}>
         {stories_menu && (
           <div className={styles.storiesContainer}>
@@ -101,7 +101,7 @@ const Navigation: FunctionComponent = () => {
           />
         </Overlay>
       )}
-    </React.Fragment>
+    </>
   );
 };
 
