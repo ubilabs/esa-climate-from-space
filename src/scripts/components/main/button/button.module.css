@@ -16,10 +16,10 @@
   fill: #fff;
 }
 .button:hover {
-  color: #00ae9d;
+  color: var(--main);
 }
 .button:hover svg {
-  fill: #00ae9d;
+  fill: var(--main);
 }
 .disabled {
   color: #939597;

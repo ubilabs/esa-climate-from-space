@@ -8,7 +8,7 @@
   height: 100%;
 }
 .complete svg {
-  fill: #00ae9d;
+  fill: var(--main);
 }
 .notDownloaded svg {
   fill: #939597;
@@ -18,7 +18,7 @@
   transform: rotate(-90deg);
   fill: none;
   stroke-width: 4px;
-  stroke: #00ae9d;
+  stroke: var(--main);
   stroke-dasharray: 100;
 }
 .circle circle {

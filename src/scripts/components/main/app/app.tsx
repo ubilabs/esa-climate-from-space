@@ -28,6 +28,7 @@ import {useStoryMarkers} from '../../../hooks/use-story-markers';
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
 import styles from './app.module.css';
+import '../../../../variables.css';
 
 // create matomo tracking instance
 const matomoInstance = createInstance({

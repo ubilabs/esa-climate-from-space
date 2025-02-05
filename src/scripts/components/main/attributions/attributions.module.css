@@ -19,7 +19,7 @@
   color: #939597;
 }
 .credits a {
-  color: #00ae9d;
+  color: var(--main);
   text-decoration: none;
 }
 @media screen and (max-width: 480px) {

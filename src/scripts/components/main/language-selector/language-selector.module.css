@@ -8,5 +8,5 @@
   color: #939597;
 }
 .buttonActive {
-  color: #00ae9d;
+  color: var(--main);
 }

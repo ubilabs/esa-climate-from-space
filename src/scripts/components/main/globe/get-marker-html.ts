@@ -9,7 +9,7 @@ export function getMarkerHtml(title: string): string {
       <div style="position: relative; display: grid; grid-template-columns: auto 1fr">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g filter="url(#filter0_ddd)">
-            <circle cx="12" cy="11" r="9" fill="#00AE9D" />
+            <circle cx="12" cy="11" r="9" fill="var(--main)" />
           </g>
           <circle class="${styles.markerCircle}" cx="12" cy="11" r="3.75" />
           <defs>

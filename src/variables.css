@@ -1,6 +1,22 @@
-/**
- * calculate an rem-value for a given pixel-size
- */
-/**
- * calculate an em-value for a given pixel-size
- */
+:root {
+  /* Width */
+  --story-width: 500px;
+
+  /* Heights */
+  --header-height: 4.5em; /* 72px */
+  --footer-height: 4.5em; /* 72px */
+  --story-caption-height: 3.875em; /* 62px */
+
+  /* Colors */
+  --main: #00ae9d;
+  --black: #10161a;
+  --plain-black: #000000;
+  --dark-grey-1: #182026;
+  --dark-grey-2: #202b33;
+  --dark-grey-4: #30404d;
+  --text-default: #939597;
+  --text-color: #00ae9d;
+  --text-white: #ffffff;
+  --text-azure: #009bdb;
+  --text-disabled: #404041;
+}

@@ -7,7 +7,7 @@
 }
 .layerItem:hover,
 .layerItem:focus {
-  background-color: rgba(48,64,77,0.5);
+  background-color: rgba(48, 64, 77, 0.5);
 }
 .layerItem:hover .layerTitle,
 .layerItem:focus .layerTitle {
@@ -32,7 +32,7 @@
 }
 .compare:hover,
 .compare:focus {
-  color: #00ae9d;
+  color: var(--main);
 }
 .layerTitle {
   display: flex;

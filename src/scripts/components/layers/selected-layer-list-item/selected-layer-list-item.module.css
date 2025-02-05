@@ -10,7 +10,7 @@
   align-items: center;
 }
 .layerTitle {
-  color: #00ae9d;
+  color: var(--main);
   font-weight: bold;
 }
 .layerIcon {

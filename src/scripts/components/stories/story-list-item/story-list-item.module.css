@@ -9,7 +9,7 @@
 }
 .selected {
   position: relative;
-  border: 2px solid #00ae9d;
+  border: 2px solid var(--main);
 }
 .selected .imageInfo {
   border-bottom-right-radius: 2px;
@@ -22,7 +22,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #00ae9d;
+  background-color: var(--main);
   color: #fff;
   text-align: center;
   line-height: 30px;
@@ -47,7 +47,7 @@
 }
 .title {
   margin: 0;
-  color: #00ae9d;
+  color: var(--main);
   font-weight: bold;
 }
 .description {

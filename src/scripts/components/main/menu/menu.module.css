@@ -45,10 +45,10 @@
   color: #939597;
 }
 .menuButton:hover {
-  color: #00ae9d;
+  color: var(--main);
 }
 .menuButton:hover svg {
-  fill: #00ae9d;
+  fill: var(--main);
 }
 .menuButton svg {
   padding-right: 0.625em;
@@ -73,7 +73,7 @@
   fill: #fff;
 }
 .credits svg:hover {
-  fill: #00ae9d;
+  fill: var(--main);
 }
 .cciLogo {
   display: flex;
@@ -81,7 +81,7 @@
   justify-content: center;
 }
 .cciLogo svg {
-  fill: #00ae9d;
+  fill: var(--main);
 }
 .logo {
   padding: 0.625em 1.375em;

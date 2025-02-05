@@ -23,10 +23,10 @@
   transform: rotate(var(--globe-latitude));
 }
 .compass svg:hover {
-  fill: #00ae9d;
+  fill: var(--main);
 }
 .downloadIcon svg {
-  stroke: rgba(16,22,26,0.3);
+  stroke: rgba(16, 22, 26, 0.3);
   fill: #fff;
 }
 .downloadIcon svg:hover {

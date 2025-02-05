@@ -46,7 +46,7 @@
 }
 .content a {
   margin: 1em 0;
-  color: #00ae9d;
+  color: var(--main);
   text-decoration: none;
 }
 .shortTextContent {

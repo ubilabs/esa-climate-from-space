@@ -23,5 +23,5 @@
 .selected,
 .selected:hover {
   background: #30404d;
-  color: #00ae9d;
+  color: var(--main);
 }
