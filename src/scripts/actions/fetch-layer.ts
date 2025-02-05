@@ -1,4 +1,4 @@
-import { ThunkDispatch } from "../components/main/app/create-redux-store";
+import { AppThunkDispatch } from "../components/main/app/create-redux-store";
 
 import fetchLayerApi from "../api/fetch-layer";
 
@@ -43,7 +43,7 @@ function fetchLayerErrorAction(
   };
 }
 
-const fetchLayer = (id: string) => (dispatch: ThunkDispatch) =>
+const fetchLayer = (id: string) => (dispatch: AppThunkDispatch) =>
   fetchLayerApi(id)
     .then((layer) => dispatch(fetchLayerSuccessAction(id, layer)))
     .catch((error) => dispatch(fetchLayerErrorAction(id, error.message)));

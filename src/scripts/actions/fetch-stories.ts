@@ -1,4 +1,4 @@
-import { ThunkDispatch } from "../components/main/app/create-redux-store";
+import { AppThunkDispatch } from "../components/main/app/create-redux-store";
 import fetchStoriesApi from "../api/fetch-stories";
 import { languageSelector } from "../selectors/language";
 
@@ -38,12 +38,13 @@ function fetchStoriesErrorAction(message: string): FetchStoriesErrorAction {
   };
 }
 
-const fetchStories = () => (dispatch: ThunkDispatch, getState: () => State) => {
-  const language = languageSelector(getState());
+const fetchStories =
+  () => (dispatch: AppThunkDispatch, getState: () => State) => {
+    const language = languageSelector(getState());
 
-  return fetchStoriesApi(language)
-    .then((stories) => dispatch(fetchStoriesSuccessAction(stories)))
-    .catch((error) => dispatch(fetchStoriesErrorAction(error.message)));
-};
+    return fetchStoriesApi(language)
+      .then((stories) => dispatch(fetchStoriesSuccessAction(stories)))
+      .catch((error) => dispatch(fetchStoriesErrorAction(error.message)));
+  };
 
 export default fetchStories;
