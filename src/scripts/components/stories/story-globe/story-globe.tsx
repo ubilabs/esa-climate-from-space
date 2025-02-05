@@ -27,7 +27,7 @@ const StoryGlobe: FunctionComponent<Props> = ({globeItem}) => {
       <DataViewer
         hideNavigation
         markers={globeItem.markers}
-        backgroundColor={'#000000'}
+        backgroundColor={'var(--plain-black)'}
       />
       {/* eslint-disable-next-line camelcase */}
       {time_slider && (

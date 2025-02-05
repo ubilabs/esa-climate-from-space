@@ -16,16 +16,16 @@
   margin: 0 0.3125rem;
   width: 10px;
   height: 10px;
-  border: 1px solid #939597;
+  border: 1px solid var(--text-default);
   border-radius: 50%;
-  background: rgba(147,149,151,0.31);
+  background: rgba(147, 149, 151, 0.31);
 }
 .currentProgress {
   margin: 0 0.3125rem;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.7);
 }
 .lightboxProgressContainer {
   position: fixed;

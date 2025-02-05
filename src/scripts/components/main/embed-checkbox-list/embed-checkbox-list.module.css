@@ -15,17 +15,19 @@
   margin-left: 0;
   min-width: 1.25rem;
   min-height: 1.25rem;
-  border: 2.8px solid #404041;
+  border: 2.8px solid var(--text-disabled);
   border-radius: 2px;
   background: transparent;
   pointer-events: none;
   appearance: none;
   place-content: center;
 }
-.checkboxListContainer.disabledEmbed .checkboxListItem input[type='checkbox']:before {
+.checkboxListContainer.disabledEmbed
+  .checkboxListItem
+  input[type='checkbox']:before {
   width: 8px;
   height: 2px;
-  box-shadow: inset 10px 16px #404041;
+  box-shadow: inset 10px 16px var(--text-disabled);
   content: '';
   transition: 120ms transform ease-in-out;
   transform: scale(1);
@@ -53,5 +55,5 @@
   accent-color: #fff;
 }
 .checkboxListItem > label {
-  color: #939597;
+  color: var(--text-default);
 }

@@ -15,8 +15,5 @@
   --dark-grey-2: #202b33;
   --dark-grey-4: #30404d;
   --text-default: #939597;
-  --text-color: #00ae9d;
-  --text-white: #ffffff;
-  --text-azure: #009bdb;
-  --text-disabled: #404041;
+  --text-disabled: var(--text-disabled);
 }

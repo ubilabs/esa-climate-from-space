@@ -20,7 +20,7 @@
 .title {
   margin: 0;
   color: #fff;
-  text-shadow: 0px 0px 2px #10161a;
+  text-shadow: 0px 0px 2px var(--black);
   font-weight: normal;
   font-size: 1em;
   user-select: none;

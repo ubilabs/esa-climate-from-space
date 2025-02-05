@@ -40,7 +40,7 @@
   min-height: 45%;
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
-  background-color: #182026;
+  background-color: var(--dark-grey-1);
 }
 .storyListItem:hover .info {
   background-color: #222d36;
@@ -51,10 +51,10 @@
   font-weight: bold;
 }
 .description {
-  color: #939597;
+  color: var(--text-default);
 }
 a {
-  color: #939597;
+  color: var(--text-default);
   text-decoration: none;
 }
 .present img {

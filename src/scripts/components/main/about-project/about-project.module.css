@@ -4,20 +4,20 @@
   justify-content: center;
   width: 50%;
   height: 100%;
-  color: #939597;
+  color: var(--text-default);
   font-family: NotesEsa;
 }
 .content {
   overflow-y: scroll;
   margin: 0.625em 0;
   height: 80%;
-  color: #939597;
+  color: var(--text-default);
   font-family: Arial, Helvetica, sans-serif;
 }
 .content h1 {
   display: flex;
   justify-content: space-between;
-  color: #939597;
+  color: var(--text-default);
 }
 .content a {
   color: var(--main);

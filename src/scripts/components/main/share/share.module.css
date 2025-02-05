@@ -4,8 +4,8 @@
 .embedOverlay {
   background: linear-gradient(
     0deg,
-    #10161a 0%,
-    #10161a 80%,
+    var(--black) 0%,
+    var(--black) 80%,
     rgba(16, 22, 26, 0.974) 90%,
     rgba(16, 22, 26, 0.921) 100%
   );
@@ -23,7 +23,7 @@
   max-width: 21.875em;
   width: 50%;
   border-radius: 0.25em;
-  background-color: #30404d;
+  background-color: var(--dark-grey-4);
 }
 .shareButton {
   font-size: 1.125em;

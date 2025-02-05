@@ -66,7 +66,7 @@ const TranslatedApp: FunctionComponent = () => {
             <DataViewer
               hideNavigation={!globe_navigation}
               markers={embedMarkers ? markers : []}
-              backgroundColor={'#10161A'}
+              backgroundColor={'var(--black)'}
             />
             <Navigation />
             {time_slider && <TimeSlider />}

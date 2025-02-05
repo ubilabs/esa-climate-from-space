@@ -11,7 +11,7 @@
   fill: var(--main);
 }
 .notDownloaded svg {
-  fill: #939597;
+  fill: var(--text-default);
 }
 .circle {
   color: #f00;

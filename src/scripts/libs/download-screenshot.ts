@@ -67,7 +67,7 @@ function combineCanvases(canvases: HTMLCanvasElement[]) {
     throw new Error('failed to create 2d context');
   }
 
-  ctx.fillStyle = '#10161a';
+  ctx.fillStyle = 'var(--black)';
   ctx.fillRect(0, 0, width, height);
 
   let xOffset = 0;

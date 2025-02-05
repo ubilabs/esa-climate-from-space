@@ -10,7 +10,7 @@
   align-items: center;
   padding: 0 0.25em;
   width: 3em;
-  color: #939597;
+  color: var(--text-default);
   cursor: pointer;
   user-select: none;
 }
@@ -30,10 +30,10 @@
   height: 100%;
   background: linear-gradient(
     to right,
-    #10161a 0%,
+    var(--black) 0%,
     transparent 1%,
     transparent 99%,
-    #10161a 100%
+    var(--black) 100%
   );
   content: '';
   pointer-events: none;
@@ -48,7 +48,7 @@
   align-items: center;
   margin-right: 1.5em;
   min-height: 1.5em;
-  color: #939597;
+  color: var(--text-default);
   text-transform: uppercase;
   white-space: nowrap;
   font-size: 0.9em;
@@ -76,6 +76,6 @@
   cursor: pointer;
 }
 .resetButton[disabled] {
-  color: #30404d;
+  color: var(--dark-grey-4);
   cursor: default;
 }

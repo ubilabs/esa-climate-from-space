@@ -9,7 +9,7 @@
   padding: 1em;
   width: 85%;
   border-radius: 4px;
-  background-color: #30404d;
+  background-color: var(--dark-grey-4);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12),
     0px 1px 5px rgba(0, 0, 0, 0.2);
   transform: translateX(-50%);
@@ -34,6 +34,6 @@
 }
 .trackingNo {
   margin-right: 1.875em;
-  color: #939597;
+  color: var(--text-default);
   white-space: nowrap;
 }

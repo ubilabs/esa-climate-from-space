@@ -5,8 +5,8 @@
   justify-content: space-between;
   align-items: center;
   padding-left: 1.25em;
-  height: 4.5em;
-  background-color: #182026;
+  height: var(--header-height);
+  background-color: var(--dark-grey-1);
   font-family: NotesEsa;
 }
 .logo {
@@ -37,7 +37,7 @@
   align-items: center;
   padding-right: 1.5625em;
   width: 50%;
-  color: #939597;
+  color: var(--text-default);
 }
 @media screen and (max-width: 480px) {
   .title {

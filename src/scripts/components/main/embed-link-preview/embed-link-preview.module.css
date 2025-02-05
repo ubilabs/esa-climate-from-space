@@ -3,9 +3,9 @@
   overflow-y: hidden;
   padding-right: 0.625em;
   height: 2.75em;
-  border: 1px solid #939597;
+  border: 1px solid var(--text-default);
   border-radius: 4px;
-  background: #10161a;
+  background: var(--black);
 }
 .embedLinkPreview:after {
   position: absolute;
@@ -13,7 +13,11 @@
   right: 0;
   bottom: 0;
   width: 50px;
-  background-image: linear-gradient(to right, rgba(255,255,255,0), #182026 85%);
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    var(--dark-grey-1) 85%
+  );
   content: '';
   pointer-events: none;
 }
@@ -23,6 +27,6 @@
   overflow-x: scroll;
   padding: 0 2.5em 0 1em;
   height: 100%;
-  color: #939597;
+  color: var(--text-default);
   white-space: nowrap;
 }

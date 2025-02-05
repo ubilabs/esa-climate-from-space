@@ -9,7 +9,7 @@
   width: fit-content;
   height: fit-content;
   border-radius: 4px;
-  background-color: #30404d;
+  background-color: var(--dark-grey-4);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12),
     0px 1px 5px rgba(0, 0, 0, 0.2);
   text-transform: uppercase;
@@ -22,7 +22,7 @@
   left: 1.25em;
   border-top-color: inherit;
   border-right: 8px solid transparent;
-  border-bottom: 10px solid #30404d;
+  border-bottom: 10px solid var(--dark-grey-4);
   border-left: 8px solid transparent;
   content: '';
 }

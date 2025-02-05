@@ -5,7 +5,7 @@
   list-style: none;
 }
 .button {
-  color: #939597;
+  color: var(--text-default);
 }
 .buttonActive {
   color: var(--main);

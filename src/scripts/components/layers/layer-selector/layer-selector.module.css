@@ -7,7 +7,7 @@
   max-width: 31.25em;
   width: 33%;
   height: 100%;
-  background-color: #202b33;
+  background-color: var(--dark-grey-2);
 }
 .content {
   display: flex;
@@ -19,7 +19,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5em 2em;
-  background-color: #182026;
+  background-color: var(--dark-grey-1);
   color: #fff;
 }
 .button svg {

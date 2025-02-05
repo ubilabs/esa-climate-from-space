@@ -37,12 +37,12 @@
 }
 .menuListItem {
   padding: 0.625em 0 0.625em 2.1875em;
-  color: #939597;
+  color: var(--text-default);
 }
 .menuButton {
   display: flex;
   align-items: center;
-  color: #939597;
+  color: var(--text-default);
 }
 .menuButton:hover {
   color: var(--main);
@@ -52,11 +52,11 @@
 }
 .menuButton svg {
   padding-right: 0.625em;
-  fill: #939597;
+  fill: var(--text-default);
 }
 .version {
   align-self: center;
-  color: #939597;
+  color: var(--text-default);
   font-size: 10px;
 }
 .credits {
@@ -66,7 +66,7 @@
   justify-content: space-between;
   margin: 0 1.375em;
   width: 100%;
-  color: #939597;
+  color: var(--text-default);
 }
 .credits svg {
   height: 1.5625em;
@@ -85,7 +85,7 @@
 }
 .logo {
   padding: 0.625em 1.375em;
-  background-color: #10161a;
+  background-color: var(--black);
 }
 .logo img {
   width: 5em;

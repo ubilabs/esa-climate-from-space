@@ -16,14 +16,14 @@
   margin-right: auto;
   padding-left: 30px;
   width: 40%;
-  color: #939597;
+  color: var(--text-default);
   font-family: NotesEsa;
 }
 .content {
   overflow-y: scroll;
   margin: 0.625em 0;
   height: 80%;
-  color: #939597;
+  color: var(--text-default);
 }
 .content h1 {
   display: flex;
@@ -55,7 +55,7 @@
   background: var(--main);
 }
 .primaryTourButton:hover {
-  color: #182026;
+  color: var(--dark-grey-1);
 }
 .secondaryTourButton {
   margin-right: 1.25em;

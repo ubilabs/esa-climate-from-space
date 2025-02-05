@@ -14,9 +14,13 @@ input[type='checkbox'].trackingToggle:focus {
   margin: 0;
   width: 52px;
   height: 32px;
-  border: 2px solid #30404d;
+  border: 2px solid var(--dark-grey-4);
   border-radius: 16px;
-  background: linear-gradient(180deg, #202b33 0%, #182026 100%);
+  background: linear-gradient(
+    180deg,
+    var(--dark-grey-2) 0%,
+    var(--dark-grey-1) 100%
+  );
   transition: all 0.2s ease;
 }
 .trackingToggle:after {

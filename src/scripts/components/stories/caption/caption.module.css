@@ -4,16 +4,16 @@
   box-sizing: border-box;
   padding-right: 3.4375em;
   padding-bottom: 0.625em;
-  min-height: 3.875em;
+  min-height: var(--story-caption-height);
   width: 100%;
-  background: rgba(16,22,26,0.6);
+  background: rgba(16, 22, 26, 0.6);
 }
 .content {
   display: -webkit-box;
   overflow: hidden;
   padding: 0 0.9375em;
   width: 100%;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 11px;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -35,7 +35,7 @@
 }
 .caption:hover .content {
   overflow-y: auto;
-  min-height: 3.875em;
+  min-height: var(--story-caption-height);
   max-height: 6.25em;
   -webkit-line-clamp: initial;
 }

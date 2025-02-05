@@ -1,7 +1,7 @@
 .storyList {
   overflow-y: auto;
   height: 100%;
-  background-color: #10161a;
+  background-color: var(--black);
 }
 .storyListGrid {
   display: grid;
@@ -20,7 +20,7 @@
 }
 .noMatchingStories {
   margin-top: 3.125em;
-  color: #939597;
+  color: var(--text-default);
   text-align: center;
 }
 @media screen and (max-width: 480px) {

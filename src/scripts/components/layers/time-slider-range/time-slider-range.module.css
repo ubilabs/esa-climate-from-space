@@ -3,7 +3,7 @@
   width: 100%;
   height: 5px;
   border-radius: 0.125em;
-  background: #30404d;
+  background: var(--dark-grey-4);
 }
 .range {
   position: absolute;
@@ -18,7 +18,7 @@
   position: absolute;
   width: 0.0625em;
   height: 0.1875em;
-  background-color: rgba(48,64,77,0.75);
+  background-color: rgba(48, 64, 77, 0.75);
   transition: 0.2s all ease-out;
   transform: translate(-50%, 1px) scaleX(0.5);
 }

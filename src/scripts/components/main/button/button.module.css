@@ -22,11 +22,11 @@
   fill: var(--main);
 }
 .disabled {
-  color: #939597;
+  color: var(--text-default);
   pointer-events: none;
 }
 .disabled svg {
-  fill: #939597;
+  fill: var(--text-default);
 }
 @media screen and (max-width: 768px) {
   .hideLabel span {

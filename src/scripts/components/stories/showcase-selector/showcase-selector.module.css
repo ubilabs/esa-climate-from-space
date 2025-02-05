@@ -4,6 +4,6 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #10161a;
+  background-color: var(--black);
   pointer-events: auto;
 }
