@@ -16,23 +16,24 @@ export interface SetLanguageAction {
   language: Language;
 }
 
-const setLanguageAction = (language: Language) => (
-  dispatch: ReturnType<typeof useThunkDispatch>,
-  getState: () => State
-) => {
-  localStorage.setItem(config.localStorageLanguageKey, language);
+const setLanguageAction =
+  (language: Language) =>
+  (dispatch: ReturnType<typeof useThunkDispatch>, getState: () => State) => {
+    localStorage.setItem(config.localStorageLanguageKey, language);
 
-  dispatch({
-    type: SET_LANGUAGE,
-    language
-  });
+    dispatch({
+      type: SET_LANGUAGE,
+      language
+    });
 
-  dispatch(fetchLayers());
-  dispatch(fetchStories());
+    dispatch(fetchLayers());
+    dispatch(fetchStories());
 
-  const state = getState();
-  const story = unsafeSelectedStorySelector(state);
-  story && dispatch(fetchStory(story.id));
-};
+    const state = getState();
+    const story = unsafeSelectedStorySelector(state);
+    if (story) {
+      dispatch(fetchStory(story.id));
+    }
+  };
 
 export default setLanguageAction;

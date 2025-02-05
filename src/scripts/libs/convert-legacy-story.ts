@@ -29,10 +29,9 @@ const getGalleryItems = (
       type: GalleryItemType.Image,
       imageCaption: slide.imageCaptions
         ? slide.imageCaptions[index]
-        : // eslint-disable-next-line no-undefined
-          undefined,
+        : undefined,
       image,
-      // eslint-disable-next-line no-undefined
+
       imageFit: slide.imageFits ? slide.imageFits[index] : undefined
     }));
   }
@@ -77,7 +76,6 @@ export const convertLegacyStory = (story: LegacyStory): Story => ({
     splashImage:
       slide.images && slide.type === 'splashscreen'
         ? slide.images[0]
-        : // eslint-disable-next-line no-undefined
-          undefined
+        : undefined
   }))
 });

@@ -1,7 +1,6 @@
 import {Layer} from '../types/layer';
 import {TimeRange} from '../types/time-range';
 
-// eslint-disable-next-line complexity
 export function getTimeRanges(
   mainLayer: Layer | null,
   compareLayer: Layer | null

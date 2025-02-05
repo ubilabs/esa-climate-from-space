@@ -15,7 +15,6 @@ interface Props {
   handleChange: (elements: ElementOptions) => void;
 }
 
-// eslint-disable-next-line complexity
 const EmbedCheckboxList: FunctionComponent<Props> = ({
   elementList,
   elementsChecked,

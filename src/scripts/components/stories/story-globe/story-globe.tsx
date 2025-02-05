@@ -17,7 +17,6 @@ interface Props {
 }
 
 const StoryGlobe: FunctionComponent<Props> = ({globeItem}) => {
-  // eslint-disable-next-line camelcase
   const {time_slider} = useSelector(embedElementsSelector);
 
   useStoryGlobe(globeItem);
@@ -29,7 +28,6 @@ const StoryGlobe: FunctionComponent<Props> = ({globeItem}) => {
         markers={globeItem.markers}
         backgroundColor={'var(--plain-black)'}
       />
-      {/* eslint-disable-next-line camelcase */}
       {time_slider && (
         <div className={styles.layerDetails}>
           <TimeSlider noTimeClamp className={styles.storySlider} />

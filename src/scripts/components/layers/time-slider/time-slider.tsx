@@ -36,7 +36,6 @@ interface Props {
 // debounce the time update
 const DELAY = 200;
 
-// eslint-disable-next-line complexity
 const TimeSlider: FunctionComponent<Props> = ({
   className = '',
   noTimeClamp

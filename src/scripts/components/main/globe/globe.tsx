@@ -91,7 +91,6 @@ const Globe: FunctionComponent<Props> = props => {
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
-  // eslint-disable-next-line no-warning-comments
   // fixme: add auto-rotate functionality
 
   return (
@@ -139,13 +138,13 @@ function useWebGlGlobe(view: CameraView) {
 
       if ('renderer' in newGlobe) {
         // @TODO: Remove this setting after globe controls have been refactored.
-        // @ts-ignore Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
+        // @ts-expect-error Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
         newGlobe.renderer.globeControls.zoomSpeed = 1.5;
       }
 
       if ('renderer' in newGlobe) {
         // @TODO: Remove this setting after globe controls have been refactored.
-        // @ts-ignore Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
+        // @ts-expect-error Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
         newGlobe.renderer.globeControls.zoomSpeed = 1.5;
       }
 
@@ -216,7 +215,7 @@ function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
  * basemaps have been loaded.
  */
 function useInitialBasemapTilesLoaded(globe: WebGlGlobe | null) {
-  const [initalTilesLoaded, setInitialTilesLoaded] = useState(false);
+  const [initialTilesLoaded, setInitialTilesLoaded] = useState(false);
 
   const handleLoadingStateChange = useCallback(
     (ev: LayerLoadingStateChangedEvent) => {
@@ -249,7 +248,7 @@ function useInitialBasemapTilesLoaded(globe: WebGlGlobe | null) {
     };
   }, [globe, handleLoadingStateChange]);
 
-  return initalTilesLoaded;
+  return initialTilesLoaded;
 }
 
 /**

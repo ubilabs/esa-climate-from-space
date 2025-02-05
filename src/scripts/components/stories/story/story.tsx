@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, {FunctionComponent, useEffect, useState} from 'react';
 import {YouTubePlayer} from 'youtube-player/dist/types';
 import {VideoJsPlayer} from 'video.js';
@@ -43,7 +42,9 @@ const Story: FunctionComponent = () => {
 
   // fetch story of active storyId
   useEffect(() => {
-    currentStoryId && dispatch(fetchStory(currentStoryId));
+    if (currentStoryId) {
+      dispatch(fetchStory(currentStoryId));
+    }
   }, [dispatch, currentStoryId]);
 
   // set globe to sphere projection
@@ -102,7 +103,6 @@ const Story: FunctionComponent = () => {
                 return <StoryEmbedded embeddedItem={item} />;
               default:
                 console.warn(
-                  // eslint-disable-next-line dot-notation
                   `Unknown gallery item type ${item['type']} on slide ${
                     slideIndex + 1
                   } in story ${story.id}`
@@ -123,12 +123,11 @@ const Story: FunctionComponent = () => {
           backLink={`/${mode.toString()}`}
           backButtonId="backToStories"
           title={isSplashScreen ? '' : storyListItem.title}>
-          {/* eslint-disable-next-line */}
           {storyMode ? <Share /> : undefined}
         </Header>
       )}
       <main className={styles.main}>
-        {/* Instead of rendering only the currect slide we map over all slides to
+        {/* Instead of rendering only the current slide we map over all slides to
         enforce a newly mounted component when the slideNumber changes */}
         {selectedStory?.slides.map(
           (currentSlide, index) =>

@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import {
   SetEmbedElementsAction as SetEmbedElementsAction,
   TOGGLE_EMBED_ELEMENTS

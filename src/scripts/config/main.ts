@@ -46,13 +46,12 @@ export const uiEmbedElements: UiEmbedElement[] = [
   }
 ];
 
-// @ts-ignore - injected via vite
+// @ts-expect-error - injected via vite
 const version = INFO_VERSION;
 const baseUrlTiles = `https://storage.googleapis.com/esa-cfs-tiles/${version}`;
 let baseUrlStorage = '/';
 
 // use content from local server
-// @ts-ignore - injected via vite
 if (import.meta.env.PROD) {
   baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}/`;
 }

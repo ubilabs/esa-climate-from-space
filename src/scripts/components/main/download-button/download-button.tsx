@@ -22,7 +22,9 @@ export const DownloadButton: FunctionComponent<Props> = ({url, id}) => {
   const onDownload = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     event.preventDefault();
-    isElectron() && downloadUrl(url);
+    if (isElectron()) {
+      downloadUrl(url);
+    }
   };
   const isDownloading = typeof downloadProgress[url] === 'number';
   const progress = isDownloading ? Math.ceil(downloadProgress[url] * 100) : 0;

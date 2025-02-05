@@ -12,7 +12,7 @@ const Autoplay: FunctionComponent<Props> = ({autoPlayLink, delay}) => {
   const history = useHistory();
 
   useInterval(() => {
-    autoPlayLink && history.replace(autoPlayLink);
+    void (autoPlayLink && history.replace(autoPlayLink));
   }, delay);
 
   return null;

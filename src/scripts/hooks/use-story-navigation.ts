@@ -4,7 +4,6 @@ import config from '../config/main';
 import {StoryMode} from '../types/story-mode';
 import {GalleryItemType} from '../types/gallery-item';
 
-/* eslint-disable complexity */
 export const useStoryNavigation = (videoDuration: number) => {
   const {mode, storyIds, storyIndex, slideIndex, selectedStory} =
     useStoryParams();

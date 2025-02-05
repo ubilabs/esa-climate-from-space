@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, {FunctionComponent, useState} from 'react';
 import {useSelector} from 'react-redux';
 

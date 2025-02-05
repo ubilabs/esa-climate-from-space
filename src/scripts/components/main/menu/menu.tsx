@@ -30,7 +30,7 @@ interface Props {
 
 const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
   const [overlayType, setOverlayType] = useState<string | null>(null);
-  // @ts-ignore - injected via webpack's define plugin
+  // @ts-expect-error - injected via webpack's define plugin
   const version = INFO_VERSION;
 
   return (

@@ -26,7 +26,6 @@ const StoryFilter: FunctionComponent = () => {
   const allTags: string[] = stories
     .map(({tags}) => tags)
     .filter(Boolean)
-    // @ts-ignore Array.flat()
     .flat();
   const uniqTags = Array.from(new Set(allTags));
   const isSelected = (tag: string) => selectedTags.includes(tag);

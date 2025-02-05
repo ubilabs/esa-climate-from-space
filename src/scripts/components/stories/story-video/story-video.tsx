@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, {FunctionComponent} from 'react';
 import {useSelector} from 'react-redux';
 import cx from 'classnames';

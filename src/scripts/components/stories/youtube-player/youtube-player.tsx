@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, {FunctionComponent} from 'react';
 import YouTube, {Options} from 'react-youtube';
 import {YouTubePlayer} from 'youtube-player/dist/types';
@@ -27,7 +26,7 @@ const YoutubePlayer: FunctionComponent<Props> = ({
       rel: 0,
       cc_load_policy: 1,
       hl: language,
-      // @ts-ignore
+      // @ts-expect-error - injected via webpack's define plugin
       cc_lang_pref: language,
       color: 'red',
       controls: 2,

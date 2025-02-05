@@ -32,7 +32,6 @@ const StoryPagination: FunctionComponent<Props> = ({
   const isPresenterMode = mode === StoryMode.Present;
 
   const onKeyDownHandler = useCallback(
-    // eslint-disable-next-line complexity
     (event: KeyboardEvent) => {
       if (!isShowcaseMode) {
         // 37-arrow left, 33-page up, 38-arrow down
@@ -41,7 +40,9 @@ const StoryPagination: FunctionComponent<Props> = ({
           event.keyCode === 37 ||
           event.keyCode === 38
         ) {
-          previousSlideLink && history.push(previousSlideLink);
+          if (previousSlideLink) {
+            history.push(previousSlideLink);
+          }
         }
         // 39-arrow right, 34-page down, 40-arrow down
         if (
@@ -49,7 +50,9 @@ const StoryPagination: FunctionComponent<Props> = ({
           event.keyCode === 39 ||
           event.keyCode === 40
         ) {
-          nextSlideLink && history.push(nextSlideLink);
+          if (nextSlideLink) {
+            history.push(nextSlideLink);
+          }
         }
         // 27 - esc
       } else if (event.keyCode === 27) {

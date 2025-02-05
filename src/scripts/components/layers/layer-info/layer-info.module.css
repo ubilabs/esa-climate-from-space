@@ -16,13 +16,13 @@
   display: flex;
   justify-content: space-between;
   margin-top: 0.625rem;
-  color: #939597;
+  color: var(--text-default);
 }
 .description {
   overflow-y: scroll;
   margin: 0.625em 0;
   height: 50%;
-  color: #939597;
+  color: var(--text-default);
   font-family: Arial, Helvetica, sans-serif;
 }
 .description *:first-child {

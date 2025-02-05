@@ -21,7 +21,7 @@ interface ShowCaseParams {
 function isShowCaseParams(
   params: StoryParams | ShowCaseParams
 ): params is ShowCaseParams {
-  return (params as ShowCaseParams).storyIds !== undefined; // eslint-disable-line no-undefined
+  return (params as ShowCaseParams).storyIds !== undefined;
 }
 
 export const useStoryParams = () => {

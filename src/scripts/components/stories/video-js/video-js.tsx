@@ -66,7 +66,9 @@ const VideoJS: FunctionComponent<Props> = ({
 
     if (currentResVideo) {
       const mobileVideoUrl = getStoryAssetUrl(storyId, currentResVideo);
-      mobileVideoUrl && player.src(mobileVideoUrl);
+      if (mobileVideoUrl) {
+        player.src(mobileVideoUrl);
+      }
     }
   };
 

@@ -1,5 +1,4 @@
-/* eslint-disable camelcase */
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import {useIntl} from 'react-intl';
 import {useSelector} from 'react-redux';
 

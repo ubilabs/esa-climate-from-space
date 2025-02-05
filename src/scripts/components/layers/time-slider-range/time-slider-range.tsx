@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import {FunctionComponent} from 'react';
 import {TimeRange} from '../../../types/time-range';
 
 import styles from './time-slider-range.module.css';
@@ -29,8 +29,8 @@ const TimeSliderRange: FunctionComponent<Props> = ({
 
     return {
       left: `${tickPosition}%`,
-      backgroundColor: isSelected ? 'var(--main)' : undefined, // eslint-disable-line no-undefined
-      transform: isSelected ? 'translate(-50%, 1px) scale(3)' : undefined // eslint-disable-line no-undefined
+      backgroundColor: isSelected ? 'var(--main)' : undefined,
+      transform: isSelected ? 'translate(-50%, 1px) scale(3)' : undefined
     };
   };
 

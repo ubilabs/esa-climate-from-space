@@ -101,12 +101,10 @@ function createFileName(
 ) {
   const mainName =
     mainLayerName &&
-    // eslint-disable-next-line prefer-template
     `${mainLayerName} ${mainTimeFormat ? '- ' + mainTimeFormat : ''}`;
 
   const compareName =
     compareLayerName &&
-    // eslint-disable-next-line prefer-template
     `${compareLayerName} ${compareTimeFormat ? '- ' + compareTimeFormat : ''}`;
 
   const finalName = compareLayerName

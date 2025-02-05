@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, {FunctionComponent} from 'react';
 import {Provider as StoreProvider, useSelector} from 'react-redux';
 import {IntlProvider} from 'react-intl';
@@ -106,7 +105,7 @@ const TranslatedApp: FunctionComponent = () => {
 };
 
 const App: FunctionComponent = () => (
-  // @ts-ignore - MatomoProvider does not include children in props since react 18
+  // @ts-expect-error - MatomoProvider does not include children in props since react 18
   <MatomoProvider value={matomoInstance}>
     <StoreProvider store={store}>
       <TranslatedApp />
