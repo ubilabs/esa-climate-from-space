@@ -1,8 +1,8 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, { useEffect, useMemo, useState } from "react";
 
-import styles from './category-navigation.module.css';
-import cx from 'classnames';
-import {useHistory} from 'react-router-dom';
+import styles from "./category-navigation.module.css";
+import cx from "classnames";
+import { useHistory } from "react-router-dom";
 interface Props {
   showCategories: boolean;
   width: number;
@@ -24,7 +24,7 @@ const CategoryNavigation: React.FC<Props> = ({
   width,
   setCategory,
   showCategories,
-  isAnimationReady
+  isAnimationReady,
 }) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
@@ -50,22 +50,22 @@ const CategoryNavigation: React.FC<Props> = ({
 
   // The current navigation state relative to the category-navigation
   const [navigationState, setNavigationState] = useState<
-    'forward' | 'back' | 'none'
-  >('none');
+    "forward" | "back" | "none"
+  >("none");
 
   // Listen to history changes
   // This is used to determine the navigation state
   // As the user navigates through the app, we need to trigger different animations
   history.listen((location, action) => {
-    if (action === 'REPLACE') {
-      setNavigationState('none');
+    if (action === "REPLACE") {
+      setNavigationState("none");
     }
 
-    if (action === 'PUSH' || action === 'POP') {
-      if (location.pathname === '/') {
-        setNavigationState('back');
+    if (action === "PUSH" || action === "POP") {
+      if (location.pathname === "/") {
+        setNavigationState("back");
       } else {
-        setNavigationState('forward');
+        setNavigationState("forward");
       }
     }
   });
@@ -74,17 +74,17 @@ const CategoryNavigation: React.FC<Props> = ({
   // Todo: Replace with actual data
   const arcs = useMemo(
     () => [
-      {'Sea Surface Temperature': 20},
-      {'Chlorophyll Concentration': 21},
-      {'Water Vapour': 60},
-      {'Sea Surface Salinity': 50},
-      {Highlights: 40},
-      {'Ice Sheets': 10},
-      {Permafrost: 80},
-      {Landcover: 12},
-      {'Greenhouse Gases': 30}
+      { "Sea Surface Temperature": 20 },
+      { "Chlorophyll Concentration": 21 },
+      { "Water Vapour": 60 },
+      { "Sea Surface Salinity": 50 },
+      { Highlights: 40 },
+      { "Ice Sheets": 10 },
+      { Permafrost: 80 },
+      { Landcover: 12 },
+      { "Greenhouse Gases": 30 },
     ],
-    []
+    [],
   );
 
   // Handle touch events
@@ -121,11 +121,11 @@ const CategoryNavigation: React.FC<Props> = ({
   const totalGapDegrees = SPACING * arcs.length;
   const availableDegrees = 360 - totalGapDegrees;
 
-  const arcValues = arcs.map(arc => Object.values(arc)[0]);
+  const arcValues = arcs.map((arc) => Object.values(arc)[0]);
   const sumOfArcs = arcValues.reduce((sum, angle) => sum + angle, 0);
   const scaleFactor = availableDegrees / sumOfArcs;
 
-  const scaledArcs = arcValues.map(angle => angle * scaleFactor);
+  const scaledArcs = arcValues.map((angle) => angle * scaleFactor);
 
   // This is the arc that is currently selected
   // The problem is that the the user can rotate in any direction, any number of times
@@ -140,7 +140,7 @@ const CategoryNavigation: React.FC<Props> = ({
 
   // Calculate current and target rotation
   const currentRotation = parseFloat(
-    document.getElementById('circle-container')?.dataset.currentRotation || '0'
+    document.getElementById("circle-container")?.dataset.currentRotation || "0",
   );
 
   // Calculate the target rotation to center the current arc
@@ -150,12 +150,12 @@ const CategoryNavigation: React.FC<Props> = ({
   // Normalize rotations to ensure they're within -180 to 180 degrees
   const normalizeAngle = (angle: number) => {
     const normalized = angle % 360;
-    // eslint-disable-next-line no-nested-ternary
+
     return normalized > 180
       ? normalized - 360
       : normalized < -180
-      ? normalized + 360
-      : normalized;
+        ? normalized + 360
+        : normalized;
   };
 
   // Calculate the shortest rotation path
@@ -184,9 +184,9 @@ const CategoryNavigation: React.FC<Props> = ({
       return;
     }
 
-    const circleContainer = document.getElementById('circle-container');
+    const circleContainer = document.getElementById("circle-container");
     const currentRotation = parseFloat(
-      circleContainer?.dataset.currentRotation || '0'
+      circleContainer?.dataset.currentRotation || "0",
     );
 
     if (!circleContainer) {
@@ -211,8 +211,9 @@ const CategoryNavigation: React.FC<Props> = ({
               key={category}
               className={cx(
                 styles.category,
-                index === normalizedIndex && showCategories && styles.active
-              )}>
+                index === normalizedIndex && showCategories && styles.active,
+              )}
+            >
               {category}
               <span>{entries} Entries</span>
             </li>
@@ -222,36 +223,38 @@ const CategoryNavigation: React.FC<Props> = ({
 
       <div
         className={cx(
-          styles['category-navigation'],
+          styles["category-navigation"],
           // Apply different classes based on the navigation state
           // And whether the user has come the content- or category-navigation
-          navigationState === 'none' && styles['reveal-from-left'],
-          navigationState === 'none' && !showCategories && styles.concealed,
-          navigationState === 'back' && styles['reveal-from-right'],
-          navigationState === 'forward' && styles.conceal
+          navigationState === "none" && styles["reveal-from-left"],
+          navigationState === "none" && !showCategories && styles.concealed,
+          navigationState === "back" && styles["reveal-from-right"],
+          navigationState === "forward" && styles.conceal,
         )}
         aria-label="Circle Navigation"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         style={{
-          zIndex: '1',
-          overscrollBehavior: 'contain',
-          overflow: 'hidden',
-          height: `${_size / 2}px`
-        }}>
+          zIndex: "1",
+          overscrollBehavior: "contain",
+          overflow: "hidden",
+          height: `${_size / 2}px`,
+        }}
+      >
         <svg
-          className={styles['circle-container']}
+          className={styles["circle-container"]}
           id="circle-container"
           data-current-rotation={rotationOffset}
           width={_size}
           height={_size}
           viewBox={`0 0 ${_size} ${_size}`}
           style={{
-            translate: ' 0 -50%',
-            transition: 'all 0.5s ease-out',
-            transform: `rotate(${rotationOffset}deg)`
-          }}>
+            translate: " 0 -50%",
+            transition: "all 0.5s ease-out",
+            transform: `rotate(${rotationOffset}deg)`,
+          }}
+        >
           {/* Each category is an "arc", their share of space is proportional to the number of content they have
           We use SVG to generate the arcs
           */}
@@ -280,8 +283,8 @@ const CategoryNavigation: React.FC<Props> = ({
 
             const isCurrentlySelected = index === normalizedIndex;
 
-            const selectedColor = 'rgba(0, 179, 152, 1)';
-            const defaultColor = 'rgba(0, 51, 73, 1)';
+            const selectedColor = "rgba(0, 179, 152, 1)";
+            const defaultColor = "rgba(0, 51, 73, 1)";
 
             return (
               <g key={index} data-index={index} className={styles.arc}>

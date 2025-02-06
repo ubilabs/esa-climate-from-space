@@ -1,7 +1,7 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
-import styles from './content-navigation.module.css';
-import cx from 'classnames';
-import {getNavCoordinates} from '../../../libs/get-navigation-position';
+import React, { FunctionComponent, useEffect, useState } from "react";
+import styles from "./content-navigation.module.css";
+import cx from "classnames";
+import { getNavCoordinates } from "../../../libs/get-navigation-position";
 
 interface Props {
   showContentList: boolean;
@@ -11,73 +11,73 @@ interface Props {
 // Todo: Replace with actual content
 const contents = [
   {
-    name: 'Anomalies du niveau de la mere',
-    type: 'image',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    name: "Anomalies du niveau de la mere",
+    type: "image",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
-    name: 'Bienvenue sur le site Climate from Space With long title',
-    type: 'layer',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    name: "Bienvenue sur le site Climate from Space With long title",
+    type: "layer",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
-    name: 'Changement de la couverture des terres',
-    type: 'image',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    name: "Changement de la couverture des terres",
+    type: "image",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
     name: "Le cycle de l'eau",
-    type: 'video',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    type: "video",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
-    name: 'Les glaciers surface',
-    type: 'blog',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    name: "Les glaciers surface",
+    type: "blog",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
-    name: 'Température de surface de la mer',
-    type: 'image',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    name: "Température de surface de la mer",
+    type: "image",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
-    name: 'Évolution des forêts',
-    type: 'layer',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    name: "Évolution des forêts",
+    type: "layer",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
-    name: 'Cycle du carbone',
-    type: 'video',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    name: "Cycle du carbone",
+    type: "video",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
-    name: 'Fonte des glaces',
-    type: 'blog',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    name: "Fonte des glaces",
+    type: "blog",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
     name: "Température de l'air with another longer title",
-    type: 'image',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    type: "image",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
-    name: 'Changements climatiques',
-    type: 'layer',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    name: "Changements climatiques",
+    type: "layer",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
-    name: 'Événements extrêmes',
-    type: 'video',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
+    name: "Événements extrêmes",
+    type: "video",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
   },
   {
-    name: 'Biodiversité',
-    type: 'blog',
-    link: 'https://cfs.climate.esa.int/index.html#/stories/story-32/0'
-  }
+    name: "Biodiversité",
+    type: "blog",
+    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
+  },
 ];
 
-const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
+const ContentNavigation: FunctionComponent<Props> = ({ showContentList }) => {
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
 
   // The indexDelta is the number of items the user has scrolled
@@ -119,21 +119,20 @@ const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
   // Every item will be repositioned based on the new indexDelta
   useEffect(() => {
     const listItems = document.querySelectorAll(
-      'ul li'
-      // eslint-disable-next-line no-undef
+      "ul li",
     ) as NodeListOf<HTMLElement>;
 
     for (const item of listItems) {
       const relativePosition = Number(
-        item.getAttribute('data-relative-position')
+        item.getAttribute("data-relative-position"),
       );
 
       const adjustedPosition = relativePosition + indexDelta;
 
-      const {x, y} = getNavCoordinates(
+      const { x, y } = getNavCoordinates(
         adjustedPosition,
         GAP_BETWEEN_ELEMENTS,
-        RADIUS
+        RADIUS,
       );
 
       // 12 degrees of rotation per item
@@ -149,20 +148,21 @@ const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
       item.style.opacity = `${opacity}`;
       item.style.rotate = `${rotation}deg`;
 
-      item.setAttribute('data-relative-position', adjustedPosition.toString());
+      item.setAttribute("data-relative-position", adjustedPosition.toString());
     }
   }, [indexDelta, showContentList]);
 
   // Get the middle x coordinate for the highlight of the active item
-  const {x} = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS);
+  const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS);
 
   return (
     <ul
       className={cx(styles.contentNav, showContentList && styles.show)}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      onTouchCancel={handleTouchEnd}>
-      {contents.map(({name, type}, index) => {
+      onTouchCancel={handleTouchEnd}
+    >
+      {contents.map(({ name, type }, index) => {
         const relativePosition = index - Math.floor(contents.length / 2);
 
         return (
@@ -173,9 +173,10 @@ const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
             data-relative-position={relativePosition}
             className={cx(
               relativePosition === 0 && styles.active,
-              styles.contentNavItem
+              styles.contentNavItem,
             )}
-            key={index}>
+            key={index}
+          >
             <span>{name}</span>
           </li>
         );
@@ -185,8 +186,9 @@ const ContentNavigation: FunctionComponent<Props> = ({showContentList}) => {
       <span
         aria-hidden="true"
         style={{
-          left: `calc(${x}% - 8px)`
-        }}></span>
+          left: `calc(${x}% - 8px)`,
+        }}
+      ></span>
     </ul>
   );
 };
