@@ -2,15 +2,24 @@
 /dist
 /dist-electron
 /dist-src-electron
-.vscode
 /storage/**/*.zip
 /storage/basemaps
 /download
 .ipynb*
-.DS_Store
 assets/legend-images/
 
 pipeline/logs
 pipeline/workdir
 pipeline/*/__pycache__
 service-account.json
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

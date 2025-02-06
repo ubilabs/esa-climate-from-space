@@ -1,48 +1,47 @@
-/* eslint-disable complexity */
-import React, {
+import {
   FunctionComponent,
   useState,
   useEffect,
   useCallback,
   useLayoutEffect,
-  useRef
-} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {CameraView, LayerLoadingState} from '@ubilabs/esa-webgl-globe';
+  useRef,
+} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { CameraView, LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
-import {layerListItemSelector} from '../../../selectors/layers/list-item';
-import {globeViewSelector} from '../../../selectors/globe/view';
-import {timeSelector} from '../../../selectors/globe/time';
-import {projectionSelector} from '../../../selectors/globe/projection';
-import {flyToSelector} from '../../../selectors/fly-to';
-import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
-import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
-import {globeSpinningSelector} from '../../../selectors/globe/spinning';
-import setGlobeViewAction from '../../../actions/set-globe-view';
-import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
-import updateLayerLoadingStateAction from '../../../actions/update-layer-loading-state';
-import {State} from '../../../reducers';
-import Globe from '../globe/globe';
-import Gallery from '../gallery/gallery';
-import LayerLegend from '../../layers/layer-legend/layer-legend';
-import {useImageLayerData} from '../../../hooks/use-image-layer-data';
-import HoverLegend from '../../layers/hover-legend/hover-legend';
+import { layerListItemSelector } from "../../../selectors/layers/list-item";
+import { globeViewSelector } from "../../../selectors/globe/view";
+import { timeSelector } from "../../../selectors/globe/time";
+import { projectionSelector } from "../../../selectors/globe/projection";
+import { flyToSelector } from "../../../selectors/fly-to";
+import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { globeSpinningSelector } from "../../../selectors/globe/spinning";
+import setGlobeViewAction from "../../../actions/set-globe-view";
+import setGlobeSpinningAction from "../../../actions/set-globe-spinning";
+import updateLayerLoadingStateAction from "../../../actions/update-layer-loading-state";
+import { State } from "../../../reducers";
+import Globe from "../globe/globe";
+import Gallery from "../gallery/gallery";
+import LayerLegend from "../../layers/layer-legend/layer-legend";
+import { useImageLayerData } from "../../../hooks/use-image-layer-data";
+import HoverLegend from "../../layers/hover-legend/hover-legend";
 
-import {LayerType} from '../../../types/globe-layer-type';
-import {GlobeImageLayerData} from '../../../types/globe-image-layer-data';
-import {Layer} from '../../../types/layer';
-import {LegendValueColor} from '../../../types/legend-value-color';
-import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
+import { LayerType } from "../../../types/globe-layer-type";
+import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
+import { Layer } from "../../../types/layer";
+import { LegendValueColor } from "../../../types/legend-value-color";
+import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import styles from './data-viewer.module.css';
-import CategoryNavigation from '../category-navigation/category-navigation';
-import Button from '../button/button';
-import {useHistory, useParams} from 'react-router';
+import styles from "./data-viewer.module.css";
+import CategoryNavigation from "../category-navigation/category-navigation";
+import Button from "../button/button";
+import { useHistory, useParams } from "react-router";
 
-import cx from 'classnames';
-import ContentNavigation from '../content-navigation/content-navigation';
-import {useScreenSize} from '../../../hooks/use-screen-size';
-import GlobeNavigation from '../globe-navigation/globe-navigation';
+import cx from "classnames";
+import ContentNavigation from "../content-navigation/content-navigation";
+import { useScreenSize } from "../../../hooks/use-screen-size";
+import GlobeNavigation from "../globe-navigation/globe-navigation";
 interface Props {
   backgroundColor: string;
   hideNavigation?: boolean;
@@ -53,40 +52,40 @@ interface RouteParams {
 
 const DataViewer: FunctionComponent<Props> = ({
   backgroundColor,
-  hideNavigation
+  hideNavigation,
 }) => {
   const dispatch = useDispatch();
-  const {legend} = useSelector(embedElementsSelector);
-  const {category} = useParams<RouteParams>();
+  const { legend } = useSelector(embedElementsSelector);
+  const { category } = useParams<RouteParams>();
 
   const [showContentList, setShowContentList] = useState<boolean>(
-    Boolean(category)
+    Boolean(category),
   );
 
   const [currentCategory, setCurrentCategory] = useState<string | null>(
-    category || null
+    category || null,
   );
 
   const history = useHistory();
 
-  const {screenWidth} = useScreenSize();
+  const { screenWidth } = useScreenSize();
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
-  const {mainId, compareId} = selectedLayerIds;
+  const { mainId, compareId } = selectedLayerIds;
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, mainId)
+    layerDetailsSelector(state, mainId),
   );
   const mainLayer = useSelector((state: State) =>
-    layerListItemSelector(state, mainId)
+    layerListItemSelector(state, mainId),
   );
   const compareLayer = useSelector((state: State) =>
-    layerListItemSelector(state, compareId)
+    layerListItemSelector(state, compareId),
   );
   const compareLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, compareId)
+    layerDetailsSelector(state, compareId),
   );
 
   const time = useSelector(timeSelector);
@@ -97,25 +96,25 @@ const DataViewer: FunctionComponent<Props> = ({
     setCurrentView(view);
     // setting css variable for compass icon
     document.documentElement.style.setProperty(
-      '--globe-latitude',
-      `${view.lat}deg`
+      "--globe-latitude",
+      `${view.lat}deg`,
     );
   }, []);
 
   const onMoveStartHandler = useCallback(
     () => globeSpinning && dispatch(setGlobeSpinningAction(false)),
-    [dispatch, globeSpinning]
+    [dispatch, globeSpinning],
   );
 
   const onMoveEndHandler = useCallback(
     (view: CameraView) => dispatch(setGlobeViewAction(view)),
-    [dispatch]
+    [dispatch],
   );
 
   const onLayerLoadingStateChangeHandler = useCallback(
     (layerId: string, loadingState: LayerLoadingState) =>
       dispatch(updateLayerLoadingStateAction(layerId, loadingState)),
-    [dispatch]
+    [dispatch],
   );
 
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
@@ -141,14 +140,14 @@ const DataViewer: FunctionComponent<Props> = ({
   const showGlobeNavigation =
     (!mainLayerDetails && !compareLayerDetails) ||
     [mainLayerDetails, compareLayerDetails].some(
-      layer => layer && layer.type !== LayerType.Gallery
+      (layer) => layer && layer.type !== LayerType.Gallery,
     );
 
   const getDataWidget = ({
     imageLayer,
     layerDetails,
     active,
-    action
+    action,
   }: {
     imageLayer: GlobeImageLayerData | null;
     layerDetails: Layer | null;
@@ -184,14 +183,14 @@ const DataViewer: FunctionComponent<Props> = ({
       .filter((layer): layer is Layer => Boolean(layer))
       .map(
         (
-          {id, maxValue, minValue, units, basemap, legendValues, hideLegend},
-          index
+          { id, maxValue, minValue, units, basemap, legendValues, hideLegend },
+          index,
         ) => {
           if (hideLegend) {
             return null;
           }
 
-          return id === 'land_cover.lccs_class' || id === 'land_cover.class' ? (
+          return id === "land_cover.lccs_class" || id === "land_cover.class" ? (
             <HoverLegend
               key={id}
               values={legendValues as LegendValueColor[]}
@@ -209,7 +208,7 @@ const DataViewer: FunctionComponent<Props> = ({
               isCompare={index > 0}
             />
           );
-        }
+        },
       );
 
   // There is a set of animations which should be played only once
@@ -229,7 +228,7 @@ const DataViewer: FunctionComponent<Props> = ({
         {showContentList ? (
           <Button link="/" label="" className={styles.backArrow}></Button>
         ) : null}
-        <h2>{showContentList ? currentCategory : 'Choose a category'}</h2>
+        <h2>{showContentList ? currentCategory : "Choose a category"}</h2>
       </header>
 
       {/* This is the main area
@@ -248,39 +247,43 @@ const DataViewer: FunctionComponent<Props> = ({
         <Button
           className={cx(
             hasAnimationPlayed.current && styles.showFast,
-            styles.exploreButton
+            styles.exploreButton,
           )}
           link="/stories/story-1"
-          label={'Learn more'}></Button>
+          label={"Learn more"}
+        ></Button>
       ) : (
         <Button
           className={cx(
             hasAnimationPlayed.current && styles.showFast,
-            styles.exploreButton
+            styles.exploreButton,
           )}
           onClick={() => {
             history.push(`/${currentCategory}`);
             setShowContentList(!showContentList);
           }}
-          label="Explore"></Button>
+          label="Explore"
+        ></Button>
       )}
       <span
         aria-hidden="true"
         className={styles.swipeIndicator}
-        style={{display: hasAnimationPlayed.current ? 'none' : 'block'}}
-        data-content="swipe to navigate"></span>
+        style={{ display: hasAnimationPlayed.current ? "none" : "block" }}
+        data-content="swipe to navigate"
+      ></span>
 
       <div
         id="globeWrapper"
         className={cx(
           styles.globeWrapper,
-          showContentList && styles.showContentList
-        )}>
+          showContentList && styles.showContentList,
+        )}
+      >
         {getDataWidget({
           imageLayer: mainImageLayer,
           layerDetails: mainLayerDetails,
           active: isMainActive,
-          action: () => setIsMainActive(true)
+          action: () => setIsMainActive(true),
         })}
       </div>
 
@@ -291,7 +294,7 @@ const DataViewer: FunctionComponent<Props> = ({
           imageLayer: compareImageLayer,
           layerDetails: compareLayerDetails,
           active: !isMainActive,
-          action: () => setIsMainActive(false)
+          action: () => setIsMainActive(false),
         })}
       {!hideNavigation && showGlobeNavigation && (
         <GlobeNavigation mainLayer={mainLayer} compareLayer={compareLayer} />

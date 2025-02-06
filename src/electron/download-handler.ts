@@ -1,9 +1,10 @@
 import * as fs from 'fs';
 import * as path from 'path';
-// @ts-ignore no types available for cross-zip
+// @ts-expect-error no types available for cross-zip
 import {unzipSync} from 'cross-zip';
 import {app, BrowserWindow} from 'electron';
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const {getDownloadedIds} = require('./get-downloaded-ids');
 
 // keep track of all active downloads and their progress

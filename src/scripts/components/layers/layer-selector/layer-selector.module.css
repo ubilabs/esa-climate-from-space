@@ -1,0 +1,34 @@
+.layerSelector {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 4;
+  min-width: 18.75em;
+  max-width: 31.25em;
+  width: 33%;
+  height: 100%;
+  background-color: var(--dark-grey-2);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 2em;
+  background-color: var(--dark-grey-1);
+  color: #fff;
+}
+.button svg {
+  padding: 0;
+}
+.title {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 1.125em;
+  font-family: NotesEsa;
+  line-height: 1.125em;
+}

@@ -41,7 +41,7 @@ const actionsToPersist: ActionToPersist[] = [
   {
     success: FETCH_STORY_SUCCESS,
     error: FETCH_STORY_ERROR,
-    save: false, // for this action we only want to load the file from the storie's offline package
+    save: false, // for this action we only want to load the file from the stories' offline package
     load: true,
     getFilePath: (errorAction: AnyAction) =>
       `downloads/story-${errorAction.id}/${errorAction.id}-${errorAction.language}.json`, // the path relative to the app's offline folder
@@ -88,7 +88,7 @@ export const offlineLoadMiddleware: Middleware =
     if (actionToLoad?.load) {
       const filePath = actionToLoad.getFilePath
         ? actionToLoad.getFilePath(dispatchedAction)
-        : undefined; // eslint-disable-line no-undefined
+        : undefined;
       const content = await loadAction(actionToLoad.success, filePath);
 
       // persisted data not found -> dispatch original error action

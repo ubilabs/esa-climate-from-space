@@ -1,4 +1,4 @@
-export const SET_STORY_LAYER = 'SET_STORY_LAYER';
+export const SET_STORY_LAYER = "SET_STORY_LAYER";
 
 export interface SetStoryLayerAction {
   type: typeof SET_STORY_LAYER;
@@ -6,10 +6,10 @@ export interface SetStoryLayerAction {
 }
 
 const setStoryLayerAction = (
-  storyLayerId: string | null
+  storyLayerId: string | null,
 ): SetStoryLayerAction => ({
   type: SET_STORY_LAYER,
-  storyLayerId
+  storyLayerId,
 });
 
 export default setStoryLayerAction;

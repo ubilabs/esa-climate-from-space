@@ -1,11 +1,11 @@
-import {Layer} from '../types/layer';
+import { Layer } from "../types/layer";
 
 export default function getPlaybackStep(
   mainLayerDetails: Layer | null,
-  compareLayerDetails: Layer | null
+  compareLayerDetails: Layer | null,
 ): number {
   const averageStepSizes = [mainLayerDetails, compareLayerDetails]
-    .map(layerDetails => {
+    .map((layerDetails) => {
       const timestamps = layerDetails?.timestamps ?? [];
       const stepCount = timestamps.length - 1;
 
@@ -21,7 +21,7 @@ export default function getPlaybackStep(
 
       return totalTime / stepCount;
     })
-    .filter(averageTime => averageTime > 0);
+    .filter((averageTime) => averageTime > 0);
 
   return Math.min(...averageStepSizes);
 }

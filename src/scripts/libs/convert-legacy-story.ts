@@ -3,14 +3,14 @@ import {
   GalleryItemType,
   GlobeItem,
   ImageItem,
-  VideoItem
-} from '../types/gallery-item';
-import {LegacySlide, LegacyStory} from '../types/legacy-story';
-import {SlideType} from '../types/slide-type';
-import {Story} from '../types/story';
+  VideoItem,
+} from "../types/gallery-item";
+import { LegacySlide, LegacyStory } from "../types/legacy-story";
+import { SlideType } from "../types/slide-type";
+import { Story } from "../types/story";
 
 const getGalleryItems = (
-  slide: LegacySlide
+  slide: LegacySlide,
 ): VideoItem[] | ImageItem[] | GlobeItem[] | EmbeddedItem[] => {
   if (slide.type === SlideType.Video) {
     return [
@@ -19,8 +19,8 @@ const getGalleryItems = (
         videoId: slide.videoId,
         videoSrc: slide.videoSrc,
         videoCaptions: slide.videoCaptions,
-        videoPoster: slide.videoPoster
-      }
+        videoPoster: slide.videoPoster,
+      },
     ];
   }
 
@@ -29,11 +29,10 @@ const getGalleryItems = (
       type: GalleryItemType.Image,
       imageCaption: slide.imageCaptions
         ? slide.imageCaptions[index]
-        : // eslint-disable-next-line no-undefined
-          undefined,
+        : undefined,
       image,
-      // eslint-disable-next-line no-undefined
-      imageFit: slide.imageFits ? slide.imageFits[index] : undefined
+
+      imageFit: slide.imageFits ? slide.imageFits[index] : undefined,
     }));
   }
 
@@ -44,8 +43,8 @@ const getGalleryItems = (
         flyTo: slide.flyTo,
         markers: slide.markers,
         layer: slide.layer,
-        layerDescription: slide.layerDescription
-      }
+        layerDescription: slide.layerDescription,
+      },
     ];
   }
 
@@ -53,8 +52,8 @@ const getGalleryItems = (
     return [
       {
         type: GalleryItemType.Embedded,
-        embeddedSrc: slide.embeddedSrc
-      }
+        embeddedSrc: slide.embeddedSrc,
+      },
     ];
   }
 
@@ -70,14 +69,13 @@ const getGalleryItems = (
  */
 export const convertLegacyStory = (story: LegacyStory): Story => ({
   id: story.id,
-  slides: story.slides.map(slide => ({
+  slides: story.slides.map((slide) => ({
     text: slide.text,
     shortText: slide.shortText,
     galleryItems: getGalleryItems(slide),
     splashImage:
-      slide.images && slide.type === 'splashscreen'
+      slide.images && slide.type === "splashscreen"
         ? slide.images[0]
-        : // eslint-disable-next-line no-undefined
-          undefined
-  }))
+        : undefined,
+  })),
 });

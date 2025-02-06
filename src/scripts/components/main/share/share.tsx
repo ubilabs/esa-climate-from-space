@@ -1,33 +1,33 @@
-import React, {FunctionComponent, useState, useRef, useEffect} from 'react';
-import {FormattedMessage} from 'react-intl';
-import {useMatomo} from '@datapunt/matomo-tracker-react';
+import { FunctionComponent, useState, useRef, useEffect } from "react";
+import { FormattedMessage } from "react-intl";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
-import {TwitterIcon} from '../icons/twitter-icon';
-import {FacebookIcon} from '../icons/facebook-icon';
-import {CopyIcon} from '../icons/copy-icon';
-import {ShareIcon} from '../icons/share-icon';
-import config from '../../../config/main';
-import Button from '../button/button';
-import {CloseIcon} from '../icons/close-icon';
-import {EmbedIcon} from '../icons/embed-icon';
-import {CheckIcon} from '../icons/check-icon';
-import Overlay from '../overlay/overlay';
-import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
-import EmbedWizard from '../embed-wizard/embed-wizard';
+import { TwitterIcon } from "../icons/twitter-icon";
+import { FacebookIcon } from "../icons/facebook-icon";
+import { CopyIcon } from "../icons/copy-icon";
+import { ShareIcon } from "../icons/share-icon";
+import config from "../../../config/main";
+import Button from "../button/button";
+import { CloseIcon } from "../icons/close-icon";
+import { EmbedIcon } from "../icons/embed-icon";
+import { CheckIcon } from "../icons/check-icon";
+import Overlay from "../overlay/overlay";
+import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
+import EmbedWizard from "../embed-wizard/embed-wizard";
 
-import styles from './share.module.styl';
+import styles from "./share.module.css";
 
 const Share: FunctionComponent = () => {
   const [showShare, setShowShare] = useState(false);
   const [showEmbedWizard, setShowEmbedWizard] = useState<boolean>(false);
-  const {trackEvent} = useMatomo();
+  const { trackEvent } = useMatomo();
   const currentUrl = window.location.href;
 
   const facebookUrl = replaceUrlPlaceholders(config.share.facebook, {
-    currentUrl: encodeURIComponent(currentUrl)
+    currentUrl: encodeURIComponent(currentUrl),
   });
   const twitterUrl = replaceUrlPlaceholders(config.share.twitter, {
-    currentUrl: encodeURIComponent(currentUrl)
+    currentUrl: encodeURIComponent(currentUrl),
   });
   const [copied, setCopied] = useState(false);
 
@@ -52,17 +52,17 @@ const Share: FunctionComponent = () => {
         ref.current.value = currentUrl;
         ref.current.focus();
         ref.current.select();
-        document.execCommand('copy');
+        document.execCommand("copy");
       }
     }
   };
 
   const trackShareClick = (name: string) => {
     trackEvent({
-      category: 'share',
-      action: 'click',
+      category: "share",
+      action: "click",
       name,
-      href: currentUrl
+      href: currentUrl,
     });
   };
 
@@ -78,7 +78,8 @@ const Share: FunctionComponent = () => {
       {showEmbedWizard ? (
         <Overlay
           className={styles.embedOverlay}
-          onClose={() => setShowEmbedWizard(false)}>
+          onClose={() => setShowEmbedWizard(false)}
+        >
           <EmbedWizard />
         </Overlay>
       ) : (
@@ -98,23 +99,25 @@ const Share: FunctionComponent = () => {
                   onClick={() => setShowEmbedWizard(true)}
                   icon={EmbedIcon}
                   className={styles.button}
-                  label={'embed'}
+                  label={"embed"}
                 />
                 <a
                   href={twitterUrl}
-                  target={'_blank'}
+                  target={"_blank"}
                   rel="noopener noreferrer"
                   className={styles.button}
-                  onClick={() => trackShareClick('twitter')}>
+                  onClick={() => trackShareClick("twitter")}
+                >
                   <TwitterIcon />
                   <span>Twitter</span>
                 </a>
                 <a
                   href={facebookUrl}
-                  target={'_blank'}
+                  target={"_blank"}
                   rel="noopener noreferrer"
                   className={styles.button}
-                  onClick={() => trackShareClick('facebook')}>
+                  onClick={() => trackShareClick("facebook")}
+                >
                   <FacebookIcon />
                   <span>Facebook</span>
                 </a>
@@ -123,12 +126,13 @@ const Share: FunctionComponent = () => {
                   onClick={() => {
                     setCopied(true);
                     copyUrl();
-                    trackShareClick('link-copy');
-                  }}>
+                    trackShareClick("link-copy");
+                  }}
+                >
                   <input ref={ref} type="hidden" contentEditable="true" />
                   {copied ? <CheckIcon /> : <CopyIcon />}
                   <span>
-                    <FormattedMessage id={'copyLink'} />
+                    <FormattedMessage id={"copyLink"} />
                   </span>
                 </div>
               </div>

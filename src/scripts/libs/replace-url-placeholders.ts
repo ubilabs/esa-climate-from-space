@@ -14,9 +14,9 @@ export function replaceUrlPlaceholders(url: string, values: ValueMap): string {
     return url;
   }
 
-  matches.forEach(match => {
+  matches.forEach((match) => {
     // remove {} to get key
-    const key = match.replace(/{|}/g, '');
+    const key = match.replace(/{|}/g, "");
     // get value for this key
     const value = values[key];
 
@@ -26,7 +26,7 @@ export function replaceUrlPlaceholders(url: string, values: ValueMap): string {
     }
 
     // replace all placeholders for this key in the url with the value
-    const regex = new RegExp(`{${key}}`, 'g');
+    const regex = new RegExp(`{${key}}`, "g");
     url = url.replace(regex, value);
   });
 

@@ -1,9 +1,9 @@
-import {SET_LANGUAGE, SetLanguageAction} from '../actions/set-language';
-import getBrowserLanguage from '../libs/get-browser-language';
-import getLocalStorageLanguage from '../libs/get-local-storage-language';
-import {parseUrl} from '../libs/language-url-parameter';
+import { SET_LANGUAGE, SetLanguageAction } from "../actions/set-language";
+import getBrowserLanguage from "../libs/get-browser-language";
+import getLocalStorageLanguage from "../libs/get-local-storage-language";
+import { parseUrl } from "../libs/language-url-parameter";
 
-import {Language} from '../types/language';
+import { Language } from "../types/language";
 
 const initialState: Language =
   parseUrl() ||
@@ -13,7 +13,7 @@ const initialState: Language =
 
 function languageReducer(
   state: Language = initialState,
-  action: SetLanguageAction
+  action: SetLanguageAction,
 ): Language {
   switch (action.type) {
     case SET_LANGUAGE:

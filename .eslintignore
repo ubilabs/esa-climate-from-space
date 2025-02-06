@@ -1,4 +1,0 @@
-/node_modules/**
-/dist/**
-/dist-src-electron
-*.d.ts

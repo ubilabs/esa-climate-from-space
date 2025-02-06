@@ -1,0 +1,43 @@
+.progressContainer {
+  position: absolute;
+  bottom: 3.875em;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+}
+.progress {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0 0.625em;
+  height: 1.25em;
+}
+.progressItem {
+  margin: 0 0.3125rem;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--text-default);
+  border-radius: 50%;
+  background: rgba(147, 149, 151, 0.31);
+}
+.currentProgress {
+  margin: 0 0.3125rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+}
+.lightboxProgressContainer {
+  position: fixed;
+  bottom: 8.375em;
+  left: 0;
+  z-index: 2;
+}
+.lightboxProgressContainer .progress {
+  justify-content: center;
+}
+@media screen and (max-width: 480px) {
+  .progress {
+    padding: 0 1.5625em;
+  }
+}

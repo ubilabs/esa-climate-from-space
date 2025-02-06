@@ -1,27 +1,27 @@
-import React, {FunctionComponent} from 'react';
-import {useIntl} from 'react-intl';
-import ReactMarkdown from 'react-markdown';
-import {useDispatch} from 'react-redux';
+import { FunctionComponent } from "react";
+import { useIntl } from "react-intl";
+import ReactMarkdown from "react-markdown";
+import { useDispatch } from "react-redux";
 
-import setWelcomeScreenAction from '../../../actions/set-welcome-screen';
-import Button from '../button/button';
-import config from '../../../config/main';
-import Overlay from '../overlay/overlay';
+import setWelcomeScreenAction from "../../../actions/set-welcome-screen";
+import Button from "../button/button";
+import config from "../../../config/main";
+import Overlay from "../overlay/overlay";
 
-import styles from './welcome-screen.module.styl';
+import styles from "./welcome-screen.module.css";
 
 interface Props {
   onStartOnboarding: () => void;
 }
 
-const WelcomeScreen: FunctionComponent<Props> = ({onStartOnboarding}) => {
+const WelcomeScreen: FunctionComponent<Props> = ({ onStartOnboarding }) => {
   const intl = useIntl();
   const dispatch = useDispatch();
 
   const storeHideWelcomeScreen = (hideWelcomeScreen: boolean) => {
     localStorage.setItem(
       config.localStorageWelcomeScreenKey,
-      hideWelcomeScreen.toString()
+      hideWelcomeScreen.toString(),
     );
     dispatch(setWelcomeScreenAction(true));
   };
@@ -31,7 +31,7 @@ const WelcomeScreen: FunctionComponent<Props> = ({onStartOnboarding}) => {
       <div className={styles.welcomeScreen}>
         <div className={styles.content}>
           <ReactMarkdown
-            children={intl.formatMessage({id: 'welcomeContent'})}
+            children={intl.formatMessage({ id: "welcomeContent" })}
             linkTarget="_blank"
             allowedElements={config.markdownAllowedElements}
           />

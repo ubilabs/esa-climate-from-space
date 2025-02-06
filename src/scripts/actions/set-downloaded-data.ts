@@ -1,6 +1,6 @@
-import {DownloadedData} from '../types/downloaded-data';
+import { DownloadedData } from "../types/downloaded-data";
 
-export const SET_DOWNLOADED_DATA = 'SET_DOWNLOADED_DATA';
+export const SET_DOWNLOADED_DATA = "SET_DOWNLOADED_DATA";
 
 export interface SetDownloadedDataAction {
   type: typeof SET_DOWNLOADED_DATA;
@@ -8,10 +8,10 @@ export interface SetDownloadedDataAction {
 }
 
 const setDownloadedDataAction = (
-  data: DownloadedData
+  data: DownloadedData,
 ): SetDownloadedDataAction => ({
   type: SET_DOWNLOADED_DATA,
-  data
+  data,
 });
 
 export default setDownloadedDataAction;

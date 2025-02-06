@@ -1,5 +1,5 @@
 export enum StoryMode {
-  Present = 'present',
-  Showcase = 'showcase',
-  Stories = 'stories'
+  Present = "present",
+  Showcase = "showcase",
+  Stories = "stories",
 }

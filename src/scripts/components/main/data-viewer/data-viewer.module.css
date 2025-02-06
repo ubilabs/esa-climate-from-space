@@ -4,9 +4,9 @@
   place-items: center;
   grid-area: content;
   grid-template-areas:
-    'heading'
-    'globe-nav-area'
-    'explore';
+    "heading"
+    "globe-nav-area"
+    "explore";
   grid-template-rows: 3.5rem 1fr 6.5rem;
   grid-template-columns: 1fr;
 }

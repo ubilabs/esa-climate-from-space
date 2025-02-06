@@ -1,0 +1,80 @@
+.welcomeOverlay {
+  background: linear-gradient(
+    90deg,
+    rgba(16, 22, 26, 0.85) 0%,
+    rgba(16, 22, 26, 0.81) 48%,
+    rgba(16, 22, 26, 0.79) 50%,
+    rgba(16, 22, 26, 0.75) 52%,
+    rgba(16, 22, 26, 0.2) 60%,
+    rgba(16, 22, 26, 0.1) 70%,
+    rgba(16, 22, 26, 0) 100%
+  );
+}
+.welcomeScreen {
+  display: flex;
+  flex-direction: row;
+  margin-right: auto;
+  padding-left: 30px;
+  width: 40%;
+  color: var(--text-default);
+  font-family: NotesEsa;
+}
+.content {
+  overflow-y: scroll;
+  margin: 0.625em 0;
+  height: 80%;
+  color: var(--text-default);
+}
+.content h1 {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+.content h2 {
+  color: #fff;
+  font-family: NotesEsa;
+}
+.content a {
+  color: var(--main);
+  text-decoration: none;
+}
+.tourButtons {
+  display: flex;
+  flex-direction: row;
+  margin: 1.25em 0;
+}
+.primaryTourButton,
+.secondaryTourButton {
+  padding: 0.375em 0.875em;
+  border-radius: 40px;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-family: NotesEsaBold;
+}
+.primaryTourButton {
+  background: var(--main);
+}
+.primaryTourButton:hover {
+  color: var(--dark-grey-1);
+}
+.secondaryTourButton {
+  margin-right: 1.25em;
+  background: rgba(0, 174, 157, 0.2);
+}
+@media screen and (max-width: 480px) {
+  .welcomeOverlay {
+    background: linear-gradient(
+      rgba(16, 22, 26, 0.85) 0%,
+      rgba(16, 22, 26, 0.81) 48%,
+      rgba(16, 22, 26, 0.79) 50%,
+      rgba(16, 22, 26, 0.75) 52%,
+      rgba(16, 22, 26, 0.2) 60%,
+      rgba(16, 22, 26, 0.1) 70%,
+      rgba(16, 22, 26, 0) 100%
+    );
+  }
+  .welcomeScreen {
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,4 +1,4 @@
-import {AnyAction} from 'redux';
+import { AnyAction } from "redux";
 
 export interface ActionToPersist {
   success: string;
@@ -9,6 +9,6 @@ export interface ActionToPersist {
   successActionCreator?: (
     errorAction: AnyAction,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    content: any
+    content: any,
   ) => AnyAction;
 }

@@ -1,0 +1,43 @@
+.navigation {
+  position: absolute;
+  top: 1.375em;
+  right: 1.375em;
+  display: flex;
+  gap: 1.875em;
+  z-index: 1;
+}
+.storiesContainer {
+  display: flex;
+  gap: 0.5em;
+}
+.tagsContainer {
+  position: relative;
+  display: flex;
+}
+.button {
+  text-shadow: 0px 0px 2px var(--black);
+  font-size: 1.125em;
+  font-family: NotesEsa;
+  line-height: 1.375em;
+}
+.button:hover {
+  text-shadow: none;
+}
+.button svg {
+  filter: drop-shadow(3px 2px 2px rgba(16, 22, 26, 0.2));
+}
+.badge {
+  position: relative;
+  top: 0.125em;
+  left: -0.25em;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--main);
+  color: #fff;
+}
+@media screen and (max-width: 768px) {
+  .navigation {
+    gap: 0.9375em;
+  }
+}

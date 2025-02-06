@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import * as path from 'path';
 import {app, BrowserWindow, ipcMain} from 'electron';
 const isDev = require('electron-is-dev');

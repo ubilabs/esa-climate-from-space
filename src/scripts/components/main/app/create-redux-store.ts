@@ -12,8 +12,7 @@ import {
 
 import {configureStore} from '@reduxjs/toolkit';
 
-// @ts-ignore - injected by webpack
-const isProduction = import.meta.env.PROD; // eslint-disable-line no-undef
+const isProduction = import.meta.env.PROD;
 const middleware: Middleware[] = [thunk];
 
 if (isElectron()) {
@@ -22,7 +21,7 @@ if (isElectron()) {
 }
 
 if (!isProduction) {
-  middleware.push(createLogger({collapsed: true}));
+  middleware.push(createLogger({collapsed: true}) as Middleware);
 }
 
 export const store = configureStore({

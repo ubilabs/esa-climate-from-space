@@ -1,0 +1,53 @@
+.layerItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6875em 2em;
+  color: var(--text-default);
+}
+.layerItem:hover,
+.layerItem:focus {
+  background-color: rgba(48, 64, 77, 0.5);
+}
+.layerItem:hover .layerTitle,
+.layerItem:focus .layerTitle {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.layerItem:hover .compare,
+.layerItem:focus .compare {
+  display: block;
+}
+.compare {
+  display: none;
+  border: none;
+  background: none;
+  color: var(--text-default);
+  text-transform: uppercase;
+  font-size: 0.6875em;
+  cursor: pointer;
+}
+.compare:hover,
+.compare:focus {
+  color: var(--main);
+}
+.layerTitle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+@media screen and (max-width: 480px) {
+  .compare {
+    display: flex;
+  }
+  .layerTitle {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
