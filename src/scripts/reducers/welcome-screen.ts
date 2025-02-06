@@ -1,21 +1,17 @@
-import {
-  SET_WELCOME_SCREEN,
-  SetWelcomeScreenAction,
-} from "../actions/set-welcome-screen";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import getLocalStorageWelcomePage from "../libs/get-local-storage-welcome";
 
-const initialState = getLocalStorageWelcomePage() || false;
+const initialState: boolean = getLocalStorageWelcomePage() || false;
 
-function welcomeScreenReducer(
-  state: boolean = initialState,
-  action: SetWelcomeScreenAction,
-) {
-  switch (action.type) {
-    case SET_WELCOME_SCREEN:
-      return action.welcomeScreen;
-    default:
-      return state;
-  }
-}
+const welcomeScreenSlice = createSlice({
+  name: "welcomeScreen",
+  initialState,
+  reducers: {
+    setWelcomeScreen(state, action: PayloadAction<boolean>) {
+      return action.payload;
+    },
+  },
+});
 
-export default welcomeScreenReducer;
+export const { setWelcomeScreen } = welcomeScreenSlice.actions;
+export default welcomeScreenSlice.reducer;

@@ -7,14 +7,17 @@ import { StoriesStateSelector } from "../selectors/story/story-state";
 
 export const useStoryMarkers = () => {
   const selectedLayers = useSelector(selectedLayerIdsSelector);
-  const stories = useSelector(StoriesStateSelector).list;
+  const stories = useSelector(StoriesStateSelector);
+  console.log("🚀 ~ useStoryMarkers ~ stories:", stories);
+  //   const { data: stories } = useGetStoriesQuery("en");
+
   const selectedTags = useSelector(selectedTagsSelector);
   const filteredStories = filterStories(stories, selectedTags);
   const hideMarkers = Boolean(
     selectedLayers.mainId || selectedLayers.compareId,
   );
 
-  if (hideMarkers) {
+  if (false) {
     return [];
   }
 

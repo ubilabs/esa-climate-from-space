@@ -24,6 +24,7 @@ const LayerLoader: FunctionComponent = () => {
 
   // load layer list on mount
   useEffect(() => {
+    console.log("fetching layers");
     dispatch(fetchLayers());
   }, [dispatch]);
 

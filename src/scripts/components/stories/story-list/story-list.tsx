@@ -11,6 +11,7 @@ import { filterStories } from "../../../libs/filter-stories";
 import { StoryMode } from "../../../types/story-mode";
 
 import styles from "./story-list.module.css";
+import { useGetStoriesQuery } from "../../../services/api";
 
 interface Props {
   mode: StoryMode;
@@ -23,7 +24,7 @@ const StoryList: FunctionComponent<Props> = ({
   selectedIds,
   onSelectStory = () => {},
 }) => {
-  const stories = useSelector(storyListSelector);
+  const { data: stories } = useGetStoriesQuery("en");
   const selectedTags = useSelector(selectedTagsSelector);
   const filteredStories = filterStories(stories, selectedTags);
 

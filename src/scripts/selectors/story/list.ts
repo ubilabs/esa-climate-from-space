@@ -1,5 +1,5 @@
-import {State} from '../../reducers/index';
+import { State } from "../../reducers/index";
 
 export function storyListSelector(state: State) {
-  return state.stories.list;
+  return state.stories.storiesList;
 }

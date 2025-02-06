@@ -12,13 +12,13 @@ import { layersSelector } from "../../../selectors/layers/list";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { showLayerSelector as showLayerSelectorSelector } from "../../../selectors/show-layer-selector";
 
-import showLayerSelectorAction from "../../../actions/show-layer-selector";
-import setSelectedLayerIdsAction from "../../../actions/set-selected-layer-id";
 import fetchLayerAction from "../../../actions/fetch-layer";
 
 import styles from "./layer-selector.module.css";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
+import { setShowLayer } from "../../../reducers/show-layer-selector";
+import { setSelectedLayerIds } from "../../../reducers/layers";
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -26,11 +26,14 @@ const LayerSelector: FunctionComponent = () => {
 
   const { trackEvent } = useMatomo();
   const layers = useSelector(layersSelector);
-  const sortedLayers = layers.sort((a, b) =>
-    a.shortName.localeCompare(b.shortName),
-  );
+  const sortedLayers = layers
+    .map((layer) => ({ ...layer }))
+    .sort((a, b) => a.shortName.localeCompare(b.shortName));
+
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+
   const showLayerSelector = useSelector(showLayerSelectorSelector);
+
   const selectedMainLayer = layers.find(
     (layer) => layer.id === selectedLayerIds.mainId,
   );
@@ -56,13 +59,20 @@ const LayerSelector: FunctionComponent = () => {
               <Button
                 className={styles.button}
                 icon={CloseIcon}
-                onClick={() => dispatch(showLayerSelectorAction(false))}
+                onClick={() => dispatch(setShowLayer(false))}
               />
             </div>
             {selectedMainLayer && (
               <SelectedLayerListItem
                 isCompareSelected={Boolean(selectedCompareLayer)}
-                onRemove={() => dispatch(setSelectedLayerIdsAction(null, true))}
+                onRemove={() =>
+                  dispatch(
+                    setSelectedLayerIds({
+                      layerId: selectedMainLayer.id,
+                      isPrimary: false,
+                    }),
+                  )
+                }
                 layer={selectedMainLayer}
               />
             )}
@@ -70,7 +80,12 @@ const LayerSelector: FunctionComponent = () => {
               <SelectedLayerListItem
                 layer={selectedCompareLayer}
                 onRemove={() =>
-                  dispatch(setSelectedLayerIdsAction(null, false))
+                  dispatch(
+                    setSelectedLayerIds({
+                      layerId: null,
+                      isPrimary: false,
+                    }),
+                  )
                 }
               />
             )}
@@ -78,10 +93,10 @@ const LayerSelector: FunctionComponent = () => {
               layers={sortedLayers}
               selectedLayerIds={selectedLayerIds}
               onSelect={(layerId, isMain) => {
-                dispatch(showLayerSelectorAction(false));
+                dispatch(setShowLayer(false));
 
                 thunkDispatch(fetchLayerAction(layerId)).then(() => {
-                  dispatch(setSelectedLayerIdsAction(layerId, isMain));
+                  dispatch(setSelectedLayerIds({ layerId, isPrimary: isMain }));
 
                   const name = layers.find(
                     (layer) => layer.id === layerId,

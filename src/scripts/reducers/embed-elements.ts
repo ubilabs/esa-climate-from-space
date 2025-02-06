@@ -1,7 +1,4 @@
-import {
-  SetEmbedElementsAction as SetEmbedElementsAction,
-  TOGGLE_EMBED_ELEMENTS,
-} from "../actions/set-app-element-embed";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { parseUrl } from "../libs/embed-elements-url-parameter";
 import { EmbedElementsState } from "../types/embed-elements";
 
@@ -22,16 +19,15 @@ const initialState: EmbedElementsState = {
   story_back_link: parseUrl("story_back_link") ?? true,
 };
 
-function embedElementsReducer(
-  state: EmbedElementsState = initialState,
-  action: SetEmbedElementsAction,
-): EmbedElementsState {
-  switch (action.type) {
-    case TOGGLE_EMBED_ELEMENTS:
-      return action.embedElements;
-    default:
-      return state;
-  }
-}
+const embedElementsSlice = createSlice({
+  name: "embedElements",
+  initialState,
+  reducers: {
+    toggleEmbedElements(state, action: PayloadAction<EmbedElementsState>) {
+      return action.payload;
+    },
+  },
+});
 
-export default embedElementsReducer;
+export const { toggleEmbedElements } = embedElementsSlice.actions;
+export default embedElementsSlice.reducer;

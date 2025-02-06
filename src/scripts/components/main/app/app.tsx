@@ -39,13 +39,16 @@ const matomoInstance = createInstance({
 
 const TranslatedApp: FunctionComponent = () => {
   const markers = useStoryMarkers();
+
+  const state = useSelector((state) => state);
+  console.log("state", state);
   const language = useSelector(languageSelector);
   const {
-    logo: embedLogo,
-    globe_navigation,
+    //   logo: embedLogo,
+    //   globe_navigation,
     markers: embedMarkers,
-    time_slider,
-    legend,
+    //   time_slider,
+    //   legend,
   } = useSelector(embedElementsSelector);
 
   const logo = (
@@ -61,15 +64,15 @@ const TranslatedApp: FunctionComponent = () => {
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
           <Route path="/" exact>
-            {embedLogo && logo}
+            {/* {embedLogo && logo} */}
             <DataViewer
-              hideNavigation={!globe_navigation}
+              hideNavigation={true}
               markers={embedMarkers ? markers : []}
               backgroundColor={"var(--black)"}
             />
             <Navigation />
-            {time_slider && <TimeSlider />}
-            {legend && <DataSetInfo />}
+            {/* {time_slider && <TimeSlider />}
+            {legend && <DataSetInfo />} */}
             <LayerSelector />
           </Route>
           <Route path="/about" exact>
@@ -107,6 +110,7 @@ const TranslatedApp: FunctionComponent = () => {
 
 const App: FunctionComponent = () => (
   // @ts-expect-error - MatomoProvider does not include children in props since react 18
+
   <MatomoProvider value={matomoInstance}>
     <StoreProvider store={store}>
       <TranslatedApp />

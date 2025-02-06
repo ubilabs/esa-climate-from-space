@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 import languageReducer from "./language";
 import layersReducer from "./layers/index";
 import storiesReducer from "./story/index";
@@ -11,8 +9,11 @@ import offlineReducer from "./offline/index";
 import downloadedDataReducer from "./downloaded-data";
 import welcomeScreenReducer from "./welcome-screen";
 import embedElementsReducer from "./embed-elements";
+import { layersApi, storiesApi } from "../services/api";
 
-const rootReducer = combineReducers({
+const rootReducer = {
+  [layersApi.reducerPath]: layersApi.reducer,
+  [storiesApi.reducerPath]: storiesApi.reducer,
   language: languageReducer,
   layers: layersReducer,
   stories: storiesReducer,
@@ -24,7 +25,7 @@ const rootReducer = combineReducers({
   downloadedData: downloadedDataReducer,
   welcomeScreen: welcomeScreenReducer,
   embedElements: embedElementsReducer,
-});
+};
 
 export default rootReducer;
-export type State = ReturnType<typeof rootReducer>;
+export type State = any;

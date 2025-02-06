@@ -1,15 +1,44 @@
-import {combineReducers} from 'redux';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import listReducer from './list';
-import selectedReducer from './selected';
-import selectedTagsReducer from './selected-tags';
+interface StoriesState {
+  storiesList: any[]; // Replace 'any' with your actual stories list type
+  selected: string | null;
+  selectedTags: string[];
+}
 
-const storiesReducer = combineReducers({
-  list: listReducer,
-  selected: selectedReducer,
-  selectedTags: selectedTagsReducer
+const initialState: StoriesState = {
+  storiesList: [
+    {
+      id: "story-32",
+      title: "Bienvenue sur le site Climate from Space",
+      description: "",
+      image: "assets/atmospheric-ecvs.jpg",
+      tags: [],
+      position: [-60, -3],
+    },
+  ],
+  selected: null,
+  selectedTags: [],
+};
+
+const storiesSlice = createSlice({
+  name: "stories",
+  initialState,
+  reducers: {
+    setStoriesList: (state, action: PayloadAction<any[]>) => {
+      state.storiesList = action.payload;
+    },
+    setSelected: (state, action: PayloadAction<string | null>) => {
+      state.selected = action.payload;
+    },
+    setSelectedTags: (state, action: PayloadAction<string[]>) => {
+      state.selectedTags = action.payload;
+    },
+  },
 });
 
-export default storiesReducer;
+export const { setStoriesList, setSelected, setSelectedTags } =
+  storiesSlice.actions;
 
-export type StoriesState = ReturnType<typeof storiesReducer>;
+export default storiesSlice.reducer;
+export type { StoriesState };

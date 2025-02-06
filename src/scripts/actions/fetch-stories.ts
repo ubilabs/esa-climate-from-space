@@ -1,9 +1,12 @@
 import { AppThunkDispatch } from "../components/main/app/create-redux-store";
-import fetchStoriesApi from "../api/fetch-stories";
 import { languageSelector } from "../selectors/language";
 
 import { State } from "../reducers/index";
 import { StoryList } from "../types/story-list";
+import { setStoriesList } from "../reducers/story";
+import { config } from "process";
+import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
+import { Language } from "../types/language";
 
 export const FETCH_STORIES_SUCCESS = "FETCH_STORIES_SUCCESS";
 export const FETCH_STORIES_ERROR = "FETCH_STORIES_ERROR";
@@ -38,11 +41,246 @@ function fetchStoriesErrorAction(message: string): FetchStoriesErrorAction {
   };
 }
 
+const stories = [
+  {
+    id: "story-32",
+    title: "Bienvenue sur le site Climate from Space",
+    description: "",
+    image: "assets/atmospheric-ecvs.jpg",
+    tags: [],
+    position: [-60, -3],
+  },
+  {
+    id: "story-21",
+    title: "Le cycle de l'eau",
+    description: "",
+    image: "assets/story21-image02.jpg",
+    tags: [
+      "sea-surface-temperature",
+      "sea-surface-salinity",
+      "sea-level",
+      "water-vapour",
+      "aerosol",
+      "cloud",
+      "snow",
+      "soil-moisture",
+      "lakes",
+      "glaciers",
+      "ice-sheets",
+      "permafrost",
+      "sea-ice",
+    ],
+    position: [148, -20],
+  },
+  {
+    id: "story-29",
+    title: "Nourrir un monde en pleine croissance",
+    description: "",
+    image: "assets/soilmoisture_full_02.jpg",
+    tags: [
+      "land-cover",
+      "soil-moisture",
+      "land-surface-temperature",
+      "biomass",
+      "ocean-colour",
+    ],
+    position: [30, 1],
+  },
+  {
+    id: "story-12",
+    title: "Le cycle du carbone",
+    description: "",
+    image: "assets/story12-image02.jpg",
+    tags: ["greenhouse-gases", "land-cover", "ocean-colour", "fire"],
+    position: [3, 57],
+  },
+  {
+    id: "story-27",
+    title: "Chaleur urbaine",
+    description: "",
+    image: "assets/story27-image03.jpg",
+    tags: ["land-surface-temperature", "soil-moisture", "land-cover"],
+    position: [37, 55],
+  },
+  {
+    id: "story-31",
+    title: "Modélisation du climat",
+    description: "",
+    image: "assets/cmug_large_14.jpg",
+    tags: ["climate-modelling", "ocean-colour"],
+    position: [2, 41],
+  },
+  {
+    id: "story-16",
+    title: "Pompes à chaleur planétaires",
+    description: "",
+    image: "assets/sst.jpg",
+    tags: [
+      "sea-surface-temperature",
+      "sea-ice",
+      "ocean-colour",
+      "sea-surface-salinity",
+    ],
+    position: [-50, 40],
+  },
+  {
+    id: "story-8",
+    title: "L'ozone est-il bon ou mauvais ?",
+    description: "",
+    image: "assets/ozone.jpg",
+    tags: ["ozone", "aerosol"],
+    position: [-40, -65],
+  },
+  {
+    id: "story-15",
+    title: "Briser la glace",
+    description: "",
+    image: "assets/seaice.jpg",
+    tags: [
+      "sea-ice",
+      "sea-surface-temperature",
+      "sea-surface-salinity",
+      "permafrost",
+      "ice-sheets",
+    ],
+    position: [-105, 75],
+  },
+  {
+    id: "story-30",
+    title: "Les côtes menacées",
+    description: "",
+    image: "assets/sealevel.jpg",
+    tags: ["sea-level", "sea-surface-temperature", "glaciers", "ice-sheets"],
+    position: [175, -2],
+  },
+  {
+    id: "story-28",
+    title: "Biodiversité et perte d'habitat",
+    description: "",
+    image: "assets/landcover.jpg",
+    tags: [
+      "land-cover",
+      "hr-land-cover",
+      "land-surface-temperature",
+      "soil-moisture",
+      "permafrost",
+      "fire",
+    ],
+    position: [150, -35],
+  },
+  {
+    id: "story-26",
+    title: "Prendre le pouls de la planète",
+    description: "",
+    image: "assets/Sentinel-2.jpg",
+    tags: [
+      "satellite-orbits",
+      "sensors",
+      "electromagnetic-spectrum",
+      "geostationary-satellite",
+    ],
+    position: [40, -25],
+  },
+  {
+    id: "story-38",
+    title: "Compter le carbone",
+    description: "",
+    image: "assets/story38-image01.jpg",
+    tags: ["land-cover", "biomass", "fire", "ocean-colour"],
+    position: [77.2, 28.5],
+  },
+  {
+    id: "story-39",
+    title: "Océans et climat",
+    description: "",
+    image: "assets/story39-image01.jpg",
+    tags: ["sea-surface-temperature", "ocean-colour", "sea-surface-salinity"],
+    position: [80, -20],
+  },
+  {
+    id: "story-40",
+    title: "Changement en Arctique",
+    description: "",
+    image: "assets/story40-image01.jpg",
+    tags: ["glaciers", "ice-sheets", "snow", "permafrost", "sea-ice"],
+    position: [105, 75],
+  },
+  {
+    id: "story-41",
+    title: "Changement dans l'atmosphère",
+    description: "",
+    image: "assets/story41-image01.jpg",
+    tags: ["fire", "ghg", "ozone", "cloud", "aerosol"],
+    position: [138, 35.5],
+  },
+  {
+    id: "story-42",
+    title: "Coastal Sea Level",
+    description: "",
+    image: "assets/story42-image01.jpg",
+    tags: ["sea-level"],
+    position: [-80, 26],
+  },
+  {
+    id: "story-43",
+    title: "El Niño 2023",
+    description: "",
+    image: "assets/story43-image01.jpg",
+    tags: ["sea-surface-temperature", "sea-surface-salinity", "cloud"],
+    position: [-128, 5],
+  },
+  {
+    id: "story-33",
+    title: "L'étalement urbain",
+    description: "",
+    image: "assets/story33-image04.jpg",
+    tags: ["land-cover"],
+    position: [31.2, 30],
+  },
+  {
+    id: "story-34",
+    title: "Perte de la forêt en Amazonie",
+    description: "",
+    image: "assets/story34-image05.jpg",
+    tags: ["land-cover", "biomass"],
+    position: [-62.75, -10.9],
+  },
+  {
+    id: "story-35",
+    title: "Un glacier en course",
+    description: "",
+    image: "assets/story35-image05.jpg",
+    tags: ["glaciers", "ice-sheets"],
+    position: [-49.9, 69.1],
+  },
+  {
+    id: "story-36",
+    title: "La ville qui coule",
+    description: "",
+    image: "assets/story36-image03.jpg",
+    tags: ["soil-moisture"],
+    position: [106.8, -6.1],
+  },
+  {
+    id: "story-37",
+    title: "Satellites for Peat's Sake",
+    description: "",
+    image: "assets/story37-image07.jpg",
+    tags: ["land-cover", "fire", "soil-moisture", "ghg"],
+    position: [-4, 58.3],
+  },
+];
+
+async function fetchStoriesApi(lang: Language) {
+  const url = replaceUrlPlaceholders(config.api.stories, { lang });
+  return await fetch(url).then((res) => res.json());
+}
+
 const fetchStories =
-  () => (dispatch: AppThunkDispatch, getState: () => State) => {
+  () => async (dispatch: AppThunkDispatch, getState: () => State) => {
     const language = languageSelector(getState());
 
-    return fetchStoriesApi(language)
+    return await fetchStoriesApi(language)
       .then((stories) => dispatch(fetchStoriesSuccessAction(stories)))
       .catch((error) => dispatch(fetchStoriesErrorAction(error.message)));
   };

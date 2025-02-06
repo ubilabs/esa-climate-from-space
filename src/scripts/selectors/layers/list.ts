@@ -1,7 +1,7 @@
-import {State} from '../../reducers/index';
+import { State } from "../../reducers/index";
 
-import {LayerList} from '../../types/layer-list';
+import { LayerList } from "../../types/layer-list";
 
 export function layersSelector(state: State): LayerList {
-  return state.layers.list;
+  return state.layers.layerList;
 }

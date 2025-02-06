@@ -1,6 +1,9 @@
 import { AnyAction, Middleware } from "redux";
 import { createLogger } from "redux-logger";
 import { thunk, ThunkDispatch } from "redux-thunk";
+import { createApi } from "@reduxjs/toolkit/query/react";
+console.log("🚀 ~ createApi:", createApi);
+import { layersApi, storiesApi } from "../../../services/api";
 
 import rootReducer from "../../../reducers/index";
 import {
@@ -27,7 +30,10 @@ if (!isProduction) {
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(middleware);
+    return getDefaultMiddleware()
+      .concat(middleware)
+      .concat(layersApi.middleware)
+      .concat(storiesApi.middleware);
   },
 });
 

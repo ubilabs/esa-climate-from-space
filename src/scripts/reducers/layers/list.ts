@@ -15,7 +15,7 @@ function layersReducer(
     case FETCH_LAYERS_SUCCESS:
       return action.layers;
     default:
-      return layersState;
+      return [...layersState];
   }
 }
 
