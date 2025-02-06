@@ -244,14 +244,16 @@ const DataViewer: FunctionComponent<Props> = ({
       />
 
       {showContentList ? (
-        <Button
+        // Todo: should be a link ("button") to the story. Change
+        <a
+          href="https://storage.googleapis.com/esa-cfs-versions/web/master/index.html#/stories/story-15/0?globe=SI0.09I24.97I23840000I0.00I1738831631198I0II"
           className={cx(
             hasAnimationPlayed.current && styles.showFast,
             styles.exploreButton,
           )}
-          link="/stories/story-1"
-          label={"Learn more"}
-        ></Button>
+        >
+          Learn More
+        </a>
       ) : (
         <Button
           className={cx(
