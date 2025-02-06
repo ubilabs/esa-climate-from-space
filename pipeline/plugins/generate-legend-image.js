@@ -2,14 +2,13 @@
 
 // Create legend images from gdal color files
 
-const fs = require('fs');
-const {createCanvas} = require('/usr/lib/node_modules/canvas');
+import fs from 'fs';
+import {createCanvas} from '/usr/lib/node_modules/canvas';
 
-const COLOR_FILE = process.env.COLOR_FILE
-const FILEPATH_OUT = process.env.FILEPATH_OUT
+const COLOR_FILE = process.env.COLOR_FILE;
+const FILEPATH_OUT = process.env.FILEPATH_OUT;
 const WIDTH = 1;
 const HEIGHT = 500;
-
 
 const canvas = createCanvas(WIDTH, HEIGHT);
 const ctx = canvas.getContext('2d');
