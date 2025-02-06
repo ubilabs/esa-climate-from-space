@@ -27,6 +27,8 @@ const Navigation: FunctionComponent = () => {
   const selectedTags = useSelector(selectedTagsSelector);
   const { stories_menu, app_menu } = useSelector(embedElementsSelector);
 
+  const [showTooltip, setShowTooltip] = useState(Boolean(!savedLanguage));
+
   const NewLogo: FunctionComponent = () => (
     <a
       target="_blank"
@@ -218,10 +220,13 @@ const Navigation: FunctionComponent = () => {
         )}
       </nav>
 
-      {!savedLanguage && (
+      {showTooltip && (
         <LanguageTooltip
           onMenuOpen={() => setShowMenu(true)}
-          onClose={() => dispatch(setLanguageAction(selectedLanguage))}
+          onClose={() => {
+            dispatch(setLanguageAction(selectedLanguage));
+            setShowTooltip(false);
+          }}
         />
       )}
       {showMenu && (
