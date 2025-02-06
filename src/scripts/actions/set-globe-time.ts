@@ -1,4 +1,4 @@
-export const SET_GLOBE_TIME = 'SET_GLOBE_TIME';
+export const SET_GLOBE_TIME = "SET_GLOBE_TIME";
 
 export interface SetGlobeTimeAction {
   type: typeof SET_GLOBE_TIME;
@@ -7,7 +7,7 @@ export interface SetGlobeTimeAction {
 
 const setGlobeTimeAction = (time: number): SetGlobeTimeAction => ({
   type: SET_GLOBE_TIME,
-  time
+  time,
 });
 
 export default setGlobeTimeAction;

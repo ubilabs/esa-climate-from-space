@@ -1,0 +1,11 @@
+.storyFooter {
+  display: flex;
+  align-items: center;
+  height: var(--footer-height);
+  background-color: var(--dark-grey-1);
+  transition: transform 0.6s ease-in-out;
+  transform: translateY(0%);
+}
+.slideOutFooter {
+  transform: translateY(100%);
+}

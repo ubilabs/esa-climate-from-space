@@ -1,23 +1,23 @@
-import React, {FunctionComponent, useState} from 'react';
-import {FormattedMessage} from 'react-intl';
-import {useDispatch} from 'react-redux';
-import cx from 'classnames';
+import { FunctionComponent, useState } from "react";
+import { FormattedMessage } from "react-intl";
+import { useDispatch } from "react-redux";
+import cx from "classnames";
 
-import setSelectedStoryTags from '../../../actions/set-selected-story-tags';
+import setSelectedStoryTags from "../../../actions/set-selected-story-tags";
 
-import styles from './story-tags.module.styl';
+import styles from "./story-tags.module.css";
 
 interface Props {
   tags: string[];
   selected: string[];
 }
 
-const StoryTags: FunctionComponent<Props> = ({tags, selected}) => {
+const StoryTags: FunctionComponent<Props> = ({ tags, selected }) => {
   const dispatch = useDispatch();
   const [showAllTags, setShowAllTags] = useState(false);
   const toggleTag = (tag: string) => {
     const newTags = selected.includes(tag)
-      ? selected.filter(oldTag => oldTag !== tag)
+      ? selected.filter((oldTag) => oldTag !== tag)
       : selected.concat([tag]);
     dispatch(setSelectedStoryTags(newTags));
   };
@@ -45,7 +45,7 @@ const StoryTags: FunctionComponent<Props> = ({tags, selected}) => {
     <div className={styles.tags}>
       {sortedTags
         .slice(0, showAllTags ? sortedTags.length : tagCount)
-        .map(tag => (
+        .map((tag) => (
           <span
             className={getTagClasses(tag)}
             key={tag}
@@ -53,7 +53,8 @@ const StoryTags: FunctionComponent<Props> = ({tags, selected}) => {
               event.preventDefault();
               event.stopPropagation();
               toggleTag(tag);
-            }}>
+            }}
+          >
             <FormattedMessage id={`tags.${tag}`} />
           </span>
         ))}
@@ -64,7 +65,8 @@ const StoryTags: FunctionComponent<Props> = ({tags, selected}) => {
             event.preventDefault();
             event.stopPropagation();
             setShowAllTags(true);
-          }}>
+          }}
+        >
           +{sortedTags.length - tagCount}
         </span>
       )}

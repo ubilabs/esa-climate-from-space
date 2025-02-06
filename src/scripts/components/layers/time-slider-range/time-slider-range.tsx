@@ -1,7 +1,7 @@
-import React, {FunctionComponent} from 'react';
-import {TimeRange} from '../../../types/time-range';
+import { FunctionComponent } from "react";
+import { TimeRange } from "../../../types/time-range";
 
-import styles from './time-slider-range.module.styl';
+import styles from "./time-slider-range.module.css";
 
 interface Props {
   range: TimeRange;
@@ -12,7 +12,7 @@ interface Props {
 const TimeSliderRange: FunctionComponent<Props> = ({
   range,
   combined,
-  selectedTimeIndex
+  selectedTimeIndex,
 }) => {
   const totalRange = combined.max - combined.min;
   const left = Math.round(((range.min - combined.min) / totalRange) * 100);
@@ -20,7 +20,7 @@ const TimeSliderRange: FunctionComponent<Props> = ({
     100 - Math.round(((range.max - combined.min) / totalRange) * 100);
   const rangeStyle = {
     left: `${left}%`,
-    right: `${right}%`
+    right: `${right}%`,
   };
 
   const getTickStyle = (timestamp: string, isSelected: boolean) => {
@@ -29,8 +29,8 @@ const TimeSliderRange: FunctionComponent<Props> = ({
 
     return {
       left: `${tickPosition}%`,
-      backgroundColor: isSelected ? '#00AE9D' : undefined, // eslint-disable-line no-undefined
-      transform: isSelected ? 'translate(-50%, 1px) scale(3)' : undefined // eslint-disable-line no-undefined
+      backgroundColor: isSelected ? "var(--main)" : undefined,
+      transform: isSelected ? "translate(-50%, 1px) scale(3)" : undefined,
     };
   };
 

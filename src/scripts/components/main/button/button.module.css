@@ -1,0 +1,35 @@
+.button {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  outline: 0;
+  border: none;
+  background: none;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  fill: #fff;
+  gap: 0.4375em;
+}
+.button svg {
+  fill: #fff;
+}
+.button:hover {
+  color: var(--main);
+}
+.button:hover svg {
+  fill: var(--main);
+}
+.disabled {
+  color: var(--text-default);
+  pointer-events: none;
+}
+.disabled svg {
+  fill: var(--text-default);
+}
+@media screen and (max-width: 768px) {
+  .hideLabel span {
+    display: none;
+  }
+}

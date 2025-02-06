@@ -1,22 +1,22 @@
-import {useDispatch} from 'react-redux';
-import {useEffect} from 'react';
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
-import config from '../config/main';
-import setSelectedLayerIdsAction from '../actions/set-selected-layer-id';
-import setFlyToAction from '../actions/set-fly-to';
-import setGlobeTimeAction from '../actions/set-globe-time';
+import config from "../config/main";
+import setSelectedLayerIdsAction from "../actions/set-selected-layer-id";
+import setFlyToAction from "../actions/set-fly-to";
+import setGlobeTimeAction from "../actions/set-globe-time";
 
-import {GlobeItem} from '../types/gallery-item';
+import { GlobeItem } from "../types/gallery-item";
 
-import {CameraView, RenderMode} from '@ubilabs/esa-webgl-globe';
+import { CameraView, RenderMode } from "@ubilabs/esa-webgl-globe";
 
-function flyToToCameraView(flyTo: GlobeItem['flyTo']): CameraView {
+function flyToToCameraView(flyTo: GlobeItem["flyTo"]): CameraView {
   return {
-    renderMode: 'globe' as RenderMode.GLOBE,
+    renderMode: "globe" as RenderMode.GLOBE,
     lng: flyTo.position.longitude,
     lat: flyTo.position.latitude,
     altitude: flyTo.position.height,
-    zoom: 0
+    zoom: 0,
   };
 }
 
@@ -31,7 +31,6 @@ export const useStoryGlobe = (globeItem: GlobeItem) => {
     const slideTime = mainLayer?.timestamp
       ? Number(new Date(mainLayer?.timestamp))
       : 0;
-    // eslint-disable-next-line no-warning-comments
     // FIXME: the stories are the last place where the old flyTo syntax is being used.
     const cameraView: CameraView =
       globeItem.flyTo && flyToToCameraView(globeItem.flyTo);

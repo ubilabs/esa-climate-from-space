@@ -1,4 +1,4 @@
-export const SET_GLOBE_SPINNING = 'SET_GLOBE_SPINNING';
+export const SET_GLOBE_SPINNING = "SET_GLOBE_SPINNING";
 
 export interface SetGlobeSpinningAction {
   type: typeof SET_GLOBE_SPINNING;
@@ -7,7 +7,7 @@ export interface SetGlobeSpinningAction {
 
 const setGlobeSpinningAction = (spinning: boolean): SetGlobeSpinningAction => ({
   type: SET_GLOBE_SPINNING,
-  spinning
+  spinning,
 });
 
 export default setGlobeSpinningAction;

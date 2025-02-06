@@ -1,23 +1,23 @@
-import {useMemo} from 'react';
-import {useSelector} from 'react-redux';
-import {getLayerTimeIndex} from '../libs/get-image-layer-data';
-import {getTimeRanges} from '../libs/get-time-ranges';
-import {State} from '../reducers';
-import {timeSelector} from '../selectors/globe/time';
-import {languageSelector} from '../selectors/language';
-import {layerDetailsSelector} from '../selectors/layers/layer-details';
-import {selectedLayerIdsSelector} from '../selectors/layers/selected-ids';
+import { useMemo } from "react";
+import { useSelector } from "react-redux";
+import { getLayerTimeIndex } from "../libs/get-image-layer-data";
+import { getTimeRanges } from "../libs/get-time-ranges";
+import { State } from "../reducers";
+import { timeSelector } from "../selectors/globe/time";
+import { languageSelector } from "../selectors/language";
+import { layerDetailsSelector } from "../selectors/layers/layer-details";
+import { selectedLayerIdsSelector } from "../selectors/layers/selected-ids";
 
 export const useLayerTimes = () => {
   const language = useSelector(languageSelector);
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const time = useSelector(timeSelector);
-  const {mainId, compareId} = selectedLayerIds;
+  const { mainId, compareId } = selectedLayerIds;
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, mainId)
+    layerDetailsSelector(state, mainId),
   );
   const compareLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, compareId)
+    layerDetailsSelector(state, compareId),
   );
 
   // date format
@@ -25,28 +25,32 @@ export const useLayerTimes = () => {
   const compareDateFormat = compareLayerDetails?.timeFormat;
 
   // ranges
-  const {main: rangeMain, compare: rangeCompare, combined} = useMemo(
+  const {
+    main: rangeMain,
+    compare: rangeCompare,
+    combined,
+  } = useMemo(
     () => getTimeRanges(mainLayerDetails, compareLayerDetails),
-    [mainLayerDetails, compareLayerDetails]
+    [mainLayerDetails, compareLayerDetails],
   );
 
   const mainFormat = useMemo(
     () => new Intl.DateTimeFormat(language, mainDateFormat || {}),
-    [language, mainDateFormat]
+    [language, mainDateFormat],
   ).format;
 
   const compareFormat = useMemo(
     () => new Intl.DateTimeFormat(language, compareDateFormat || {}),
-    [language, compareDateFormat]
+    [language, compareDateFormat],
   ).format;
 
   const timeIndexMain = useMemo(
     () => getLayerTimeIndex(time, rangeMain?.timestamps || []),
-    [time, rangeMain]
+    [time, rangeMain],
   );
   const timeIndexCompare = useMemo(
     () => getLayerTimeIndex(time, rangeCompare?.timestamps || []),
-    [time, rangeCompare]
+    [time, rangeCompare],
   );
 
   const timeSelectedMain =
@@ -69,6 +73,6 @@ export const useLayerTimes = () => {
     rangeCompare,
     combined,
     timeIndexMain,
-    timeIndexCompare
+    timeIndexCompare,
   };
 };

@@ -12,7 +12,6 @@ export function layerListItemSelector(
   }
 
   const layers = layersSelector(state);
-  // @ts-ignore
   const subLayers = layers
     .map(layer => layer.subLayers)
     .flat()

@@ -1,32 +1,32 @@
-import React, {
+import {
   FunctionComponent,
   useState,
   useMemo,
   useEffect,
-  useCallback
-} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
-import {FormattedDate} from 'react-intl';
-import debounce from 'lodash.debounce';
-import cx from 'classnames';
+  useCallback,
+} from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { FormattedDate } from "react-intl";
+import debounce from "lodash.debounce";
+import cx from "classnames";
 
-import {timeSelector} from '../../../selectors/globe/time';
-import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
-import setGlobeTime from '../../../actions/set-globe-time';
-import {State} from '../../../reducers';
-import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
-import getPlaybackStep from '../../../libs/get-playback-step';
-import clampToRange from '../../../libs/clamp-to-range';
-import TimeSliderRange from '../time-slider-range/time-slider-range';
-import TimePlayback from '../time-playback/time-playback';
-import Button from '../../main/button/button';
-import {PlayCircleIcon} from '../../main/icons/play-circle-icon';
-import {PauseCircleIcon} from '../../main/icons/pause-circle-icon';
-import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
-import {globeSpinningSelector} from '../../../selectors/globe/spinning';
-import {useLayerTimes} from '../../../hooks/use-formatted-time';
+import { timeSelector } from "../../../selectors/globe/time";
+import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
+import setGlobeTime from "../../../actions/set-globe-time";
+import { State } from "../../../reducers";
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import getPlaybackStep from "../../../libs/get-playback-step";
+import clampToRange from "../../../libs/clamp-to-range";
+import TimeSliderRange from "../time-slider-range/time-slider-range";
+import TimePlayback from "../time-playback/time-playback";
+import Button from "../../main/button/button";
+import { PlayCircleIcon } from "../../main/icons/play-circle-icon";
+import { PauseCircleIcon } from "../../main/icons/pause-circle-icon";
+import setGlobeSpinningAction from "../../../actions/set-globe-spinning";
+import { globeSpinningSelector } from "../../../selectors/globe/spinning";
+import { useLayerTimes } from "../../../hooks/use-formatted-time";
 
-import styles from './time-slider.module.styl';
+import styles from "./time-slider.module.css";
 
 interface Props {
   className?: string;
@@ -36,41 +36,40 @@ interface Props {
 // debounce the time update
 const DELAY = 200;
 
-// eslint-disable-next-line complexity
 const TimeSlider: FunctionComponent<Props> = ({
-  className = '',
-  noTimeClamp
+  className = "",
+  noTimeClamp,
 }) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  const {mainId, compareId} = selectedLayerIds;
+  const { mainId, compareId } = selectedLayerIds;
   const dispatch = useDispatch();
   const globeTime = useSelector(timeSelector);
   const [time, setTime] = useState(globeTime);
   const [isPlaying, setIsPlaying] = useState(false);
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, mainId)
+    layerDetailsSelector(state, mainId),
   );
   const compareLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, compareId)
+    layerDetailsSelector(state, compareId),
   );
   const globeSpinning = useSelector(globeSpinningSelector);
 
-  const playbackSteps = useMemo(
-    () => {
-      if (mainLayerDetails && mainLayerDetails.useTimestampsForPlayback) {
-        return mainLayerDetails.timestamps.map(
-          timestamp => new Date(timestamp).getTime()
-        );
-      } else if (compareLayerDetails && compareLayerDetails.useTimestampsForPlayback) {
-          return compareLayerDetails.timestamps.map(
-            timestamp => new Date(timestamp).getTime()
-          );
-      }
-      return [Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails))];
-    },
-    [mainLayerDetails, compareLayerDetails]
-  );
+  const playbackSteps = useMemo(() => {
+    if (mainLayerDetails && mainLayerDetails.useTimestampsForPlayback) {
+      return mainLayerDetails.timestamps.map((timestamp) =>
+        new Date(timestamp).getTime(),
+      );
+    } else if (
+      compareLayerDetails &&
+      compareLayerDetails.useTimestampsForPlayback
+    ) {
+      return compareLayerDetails.timestamps.map((timestamp) =>
+        new Date(timestamp).getTime(),
+      );
+    }
+    return [Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails))];
+  }, [mainLayerDetails, compareLayerDetails]);
 
   const {
     mainTimeFormat,
@@ -79,7 +78,7 @@ const TimeSlider: FunctionComponent<Props> = ({
     rangeCompare,
     combined,
     timeIndexMain,
-    timeIndexCompare
+    timeIndexCompare,
   } = useLayerTimes();
 
   const clampedTime = clampToRange(time, combined.min, combined.max);
@@ -88,9 +87,9 @@ const TimeSlider: FunctionComponent<Props> = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSetGlobeTime = useCallback(
     debounce((newTime: number) => dispatch(setGlobeTime(newTime)), DELAY, {
-      maxWait: DELAY
+      maxWait: DELAY,
     }),
-    []
+    [],
   );
 
   // clamp globe time to min/max of the active layers when a layer changes
@@ -126,14 +125,14 @@ const TimeSlider: FunctionComponent<Props> = ({
   }
 
   const labelPosition = Number(
-    ((time - combined.min) * 100) / (combined.max - combined.min)
+    ((time - combined.min) * 100) / (combined.max - combined.min),
   );
   const clampedLabelPosition = Math.max(Math.min(labelPosition, 100), 0);
 
   const inputStyles = cx(
     styles.input,
     rangeMain && rangeCompare && styles.compareInput,
-    !rangeMain && rangeCompare && styles.singleInput
+    !rangeMain && rangeCompare && styles.singleInput,
   );
   const classes = cx(styles.timeSlider, className);
 
@@ -152,7 +151,7 @@ const TimeSlider: FunctionComponent<Props> = ({
         <Button
           className={cx(
             styles.playButton,
-            rangeCompare && styles.playButtonCompare
+            rangeCompare && styles.playButtonCompare,
           )}
           icon={isPlaying ? PauseCircleIcon : PlayCircleIcon}
           onClick={() => setIsPlaying(!isPlaying)}
@@ -162,7 +161,7 @@ const TimeSlider: FunctionComponent<Props> = ({
             className={inputStyles}
             type="range"
             value={time}
-            onChange={({target}) => {
+            onChange={({ target }) => {
               const newTime = parseInt(target.value, 10);
               setTime(newTime);
               debouncedSetGlobeTime(newTime);
@@ -177,11 +176,12 @@ const TimeSlider: FunctionComponent<Props> = ({
             <output
               className={cx(
                 styles.timeOutput,
-                rangeCompare && styles.timeOutputMain
+                rangeCompare && styles.timeOutputMain,
               )}
               style={{
-                left: `${clampedLabelPosition}%`
-              }}>
+                left: `${clampedLabelPosition}%`,
+              }}
+            >
               {mainTimeFormat}
             </output>
           )}
@@ -191,11 +191,12 @@ const TimeSlider: FunctionComponent<Props> = ({
               className={cx(
                 styles.timeOutput,
                 styles.timeOutputCompare,
-                !rangeMain && rangeCompare && styles.singleOutput
+                !rangeMain && rangeCompare && styles.singleOutput,
               )}
               style={{
-                left: `${clampedLabelPosition}%`
-              }}>
+                left: `${clampedLabelPosition}%`,
+              }}
+            >
               {compareTimeFormat}
             </output>
           )}
