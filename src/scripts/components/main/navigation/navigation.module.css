@@ -1,11 +1,24 @@
 .navigation {
-  position: absolute;
-  top: 1.375em;
-  right: 1.375em;
+  border-bottom: 2px solid #00b398;
+  background: #003349;
   display: flex;
+  align-items: center;
+  flex-wrap: no-wrap;
+  justify-content: space-between;
   gap: 1.875em;
   z-index: 1;
+  grid-area: header;
+  padding: 0 1.875em;
+
+  .logoLink {
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
 }
+
 .storiesContainer {
   display: flex;
   gap: 0.5em;

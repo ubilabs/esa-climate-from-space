@@ -4,6 +4,7 @@ import {
   useEffect,
   useCallback,
   useLayoutEffect,
+  useRef,
 } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { CameraView, LayerLoadingState } from "@ubilabs/esa-webgl-globe";
@@ -22,12 +23,10 @@ import updateLayerLoadingStateAction from "../../../actions/update-layer-loading
 import { State } from "../../../reducers";
 import Globe from "../globe/globe";
 import Gallery from "../gallery/gallery";
-import GlobeNavigation from "../globe-navigation/globe-navigation";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
 
-import { Marker } from "../../../types/marker-type";
 import { LayerType } from "../../../types/globe-layer-type";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { Layer } from "../../../types/layer";
@@ -35,20 +34,41 @@ import { LegendValueColor } from "../../../types/legend-value-color";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import styles from "./data-viewer.module.css";
+import CategoryNavigation from "../category-navigation/category-navigation";
+import Button from "../button/button";
+import { useHistory, useParams } from "react-router";
 
+import cx from "classnames";
+import ContentNavigation from "../content-navigation/content-navigation";
+import { useScreenSize } from "../../../hooks/use-screen-size";
+import GlobeNavigation from "../globe-navigation/globe-navigation";
 interface Props {
   backgroundColor: string;
   hideNavigation?: boolean;
-  markers?: Marker[];
+}
+interface RouteParams {
+  category: string | undefined;
 }
 
 const DataViewer: FunctionComponent<Props> = ({
   backgroundColor,
   hideNavigation,
-  markers = [],
 }) => {
   const dispatch = useDispatch();
   const { legend } = useSelector(embedElementsSelector);
+  const { category } = useParams<RouteParams>();
+
+  const [showContentList, setShowContentList] = useState<boolean>(
+    Boolean(category),
+  );
+
+  const [currentCategory, setCurrentCategory] = useState<string | null>(
+    category || null,
+  );
+
+  const history = useHistory();
+
+  const { screenWidth } = useScreenSize();
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const projectionState = useSelector(projectionSelector);
@@ -140,7 +160,6 @@ const DataViewer: FunctionComponent<Props> = ({
 
     return (
       <Globe
-        markers={markers}
         backgroundColor={backgroundColor}
         active={active}
         view={currentView}
@@ -192,16 +211,83 @@ const DataViewer: FunctionComponent<Props> = ({
         },
       );
 
+  // There is a set of animations which should be played only once
+  // This keeps track of that
+  const hasAnimationPlayed = useRef(Boolean(category));
+
+  useEffect(() => {
+    setShowContentList(Boolean(category));
+  }, [category]);
+
   return (
+    // The data-view is a grid with three areas: header - main - footer
+    // This is the header area
     <div className={styles.dataViewer}>
       {legend && getLegends()}
+      <header className={styles.heading}>
+        {showContentList ? (
+          <Button link="/" label="" className={styles.backArrow}></Button>
+        ) : null}
+        <h2>{showContentList ? currentCategory : "Choose a category"}</h2>
+      </header>
 
-      {getDataWidget({
-        imageLayer: mainImageLayer,
-        layerDetails: mainLayerDetails,
-        active: isMainActive,
-        action: () => setIsMainActive(true),
-      })}
+      {/* This is the main area
+        The navigation consists of three main components: the globe, the category navigation and the content navigation
+        The globe is the main component and is always visible
+        The category navigation is visible when the content navigation is not visible
+      */}
+      <CategoryNavigation
+        showCategories={!showContentList}
+        width={screenWidth}
+        setCategory={setCurrentCategory}
+        isAnimationReady={hasAnimationPlayed}
+      />
+
+      {showContentList ? (
+        <Button
+          className={cx(
+            hasAnimationPlayed.current && styles.showFast,
+            styles.exploreButton,
+          )}
+          link="/stories/story-1"
+          label={"Learn more"}
+        ></Button>
+      ) : (
+        <Button
+          className={cx(
+            hasAnimationPlayed.current && styles.showFast,
+            styles.exploreButton,
+          )}
+          onClick={() => {
+            history.push(`/${currentCategory}`);
+            setShowContentList(!showContentList);
+          }}
+          label="Explore"
+        ></Button>
+      )}
+      <span
+        aria-hidden="true"
+        className={styles.swipeIndicator}
+        style={{ display: hasAnimationPlayed.current ? "none" : "block" }}
+        data-content="swipe to navigate"
+      ></span>
+
+      <div
+        id="globeWrapper"
+        className={cx(
+          styles.globeWrapper,
+          showContentList && styles.showContentList,
+        )}
+      >
+        {getDataWidget({
+          imageLayer: mainImageLayer,
+          layerDetails: mainLayerDetails,
+          active: isMainActive,
+          action: () => setIsMainActive(true),
+        })}
+      </div>
+
+      <ContentNavigation showContentList={showContentList} />
 
       {compareLayer &&
         getDataWidget({

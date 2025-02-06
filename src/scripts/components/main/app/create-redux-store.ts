@@ -1,9 +1,6 @@
-import { AnyAction, Middleware } from "redux";
+import { Middleware, AnyAction } from "redux";
 import { createLogger } from "redux-logger";
-import { thunk, ThunkDispatch } from "redux-thunk";
-import { createApi } from "@reduxjs/toolkit/query/react";
-console.log("🚀 ~ createApi:", createApi);
-import { layersApi, storiesApi } from "../../../services/api";
+import thunk, { ThunkDispatch } from "redux-thunk";
 
 import rootReducer from "../../../reducers/index";
 import {
@@ -14,6 +11,7 @@ import {
 } from "../../../libs/electron/index";
 
 import { configureStore } from "@reduxjs/toolkit";
+import { layersApi, storiesApi } from "../../../services/api";
 
 const isProduction = import.meta.env.PROD;
 const middleware: Middleware[] = [thunk];
@@ -24,7 +22,7 @@ if (false) {
 }
 
 if (!isProduction) {
-  middleware.push(createLogger({ collapsed: true }));
+  middleware.push(createLogger({ collapsed: true }) as Middleware);
 }
 
 export const store = configureStore({
