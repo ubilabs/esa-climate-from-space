@@ -94,6 +94,6 @@
     "prettier": "^2.8.0",
     "svg-loaders-react": "^2.2.1",
     "typescript": "^5.0.4",
-    "vite": "^4.5.5"
+    "vite": "^4.5.9"
   }
 }
