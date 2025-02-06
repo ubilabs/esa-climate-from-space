@@ -23,10 +23,9 @@ import DataViewer from "../data-viewer/data-viewer";
 import Tracking from "../tracking/tracking";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
 import translations from "../../../i18n";
-import { useStoryMarkers } from "../../../hooks/use-story-markers";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import styles from "./app.module.css";
+import "./app.css";
 import "../../../../variables.css";
 
 // create matomo tracking instance
@@ -39,15 +38,11 @@ const matomoInstance = createInstance({
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
-  const {
-    logo: embedLogo,
-    time_slider,
-    legend,
-  } = useSelector(embedElementsSelector);
+  const { time_slider, legend } = useSelector(embedElementsSelector);
 
   const logo = (
     <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
-      <div className={styles.logo}>
+      <div className={"logo"} style={{ zIndex: 4, fill: "#fff" }}>
         <EsaLogo />
       </div>
     </a>
