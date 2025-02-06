@@ -17,11 +17,12 @@ function selectedLayerIdsReducer(
   action: SetSelectedLayerIdAction
 ): SelectedLayerIdsState {
   switch (action.type) {
-    case SET_SELECTED_LAYER_ID:
+    case SET_SELECTED_LAYER_ID: {
       const newState = {...state};
       const key = action.isPrimary ? 'mainId' : 'compareId';
       newState[key] = action.layerId;
       return newState;
+    }
     default:
       return state;
   }

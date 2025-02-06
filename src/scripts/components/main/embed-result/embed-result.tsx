@@ -1,18 +1,18 @@
-import React, {FunctionComponent, useRef} from 'react';
-import {FormattedMessage} from 'react-intl';
+import { FunctionComponent, useRef } from "react";
+import { FormattedMessage } from "react-intl";
 
-import {createEmbedUrl} from '../../../libs/create-embed-url';
-import {ElementOptions} from '../../../types/embed-elements';
-import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
-import EmbedLinkPreview from '../embed-link-preview/embed-link-preview';
-import CopyToClipboardButton from '../copy-to-clipboard-button/copy-to-clipboard-button';
+import { createEmbedUrl } from "../../../libs/create-embed-url";
+import { ElementOptions } from "../../../types/embed-elements";
+import { getEmbedParamsString } from "../../../libs/get-embed-params-string";
+import EmbedLinkPreview from "../embed-link-preview/embed-link-preview";
+import CopyToClipboardButton from "../copy-to-clipboard-button/copy-to-clipboard-button";
 
-import styles from './embed-result.module.css';
+import styles from "./embed-result.module.css";
 
 interface Props {
   elementsChecked: ElementOptions;
 }
-const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
+const EmbedResult: FunctionComponent<Props> = ({ elementsChecked }) => {
   const urlParams = getEmbedParamsString(elementsChecked);
   const iFrameRef = useRef<HTMLTextAreaElement>(null);
 
@@ -28,7 +28,7 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(copyValue);
     } else {
-      document.execCommand('copy');
+      document.execCommand("copy");
     }
   };
 
@@ -36,7 +36,7 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
     <div className={styles.result}>
       <div className={styles.resultItem}>
         <h2 className={styles.resultTitle}>
-          <FormattedMessage id={'embedCode'} />
+          <FormattedMessage id={"embedCode"} />
         </h2>
         <textarea
           ref={iFrameRef}
@@ -53,7 +53,7 @@ const EmbedResult: FunctionComponent<Props> = ({elementsChecked}) => {
 
       <div className={styles.resultItem}>
         <h2 className={styles.resultTitle}>
-          <FormattedMessage id={'embedLink'} />
+          <FormattedMessage id={"embedLink"} />
         </h2>
         <EmbedLinkPreview embedUrl={createEmbedUrl(urlParams)} />
 

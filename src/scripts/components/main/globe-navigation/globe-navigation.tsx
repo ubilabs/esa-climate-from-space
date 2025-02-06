@@ -1,23 +1,23 @@
-import React, {FunctionComponent, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {Oval} from 'svg-loaders-react';
-import {RenderMode} from '@ubilabs/esa-webgl-globe';
+import { FunctionComponent, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Oval } from "svg-loaders-react";
+import { RenderMode } from "@ubilabs/esa-webgl-globe";
 
-import config from '../../../config/main';
-import Button from '../button/button';
-import {CompassIcon} from '../icons/compass-icon';
-import {DownloadIcon} from '../icons/download-icon';
-import {LocationIcon} from '../icons/location-icon';
-import setGlobeProjectionAction from '../../../actions/set-globe-projection';
-import {projectionSelector} from '../../../selectors/globe/projection';
-import setFlyToAction from '../../../actions/set-fly-to';
-import {downloadScreenshot} from '../../../libs/download-screenshot';
-import {useLayerTimes} from '../../../hooks/use-formatted-time';
+import config from "../../../config/main";
+import Button from "../button/button";
+import { CompassIcon } from "../icons/compass-icon";
+import { DownloadIcon } from "../icons/download-icon";
+import { LocationIcon } from "../icons/location-icon";
+import setGlobeProjectionAction from "../../../actions/set-globe-projection";
+import { projectionSelector } from "../../../selectors/globe/projection";
+import setFlyToAction from "../../../actions/set-fly-to";
+import { downloadScreenshot } from "../../../libs/download-screenshot";
+import { useLayerTimes } from "../../../hooks/use-formatted-time";
 
-import {GlobeProjection} from '../../../types/globe-projection';
-import {LayerListItem} from '../../../types/layer-list';
+import { GlobeProjection } from "../../../types/globe-projection";
+import { LayerListItem } from "../../../types/layer-list";
 
-import styles from './globe-navigation.module.css';
+import styles from "./globe-navigation.module.css";
 
 interface Props {
   mainLayer: LayerListItem | null;
@@ -26,15 +26,15 @@ interface Props {
 
 const GlobeNavigation: FunctionComponent<Props> = ({
   mainLayer,
-  compareLayer
+  compareLayer,
 }) => {
   const dispatch = useDispatch();
   const [locationLoading, setLocationLoading] = useState(false);
   const defaultView = config.globe.view;
   const projectionState = useSelector(projectionSelector);
   const label =
-    projectionState.projection === GlobeProjection.Sphere ? '2D' : '3D';
-  const {mainTimeFormat, compareTimeFormat} = useLayerTimes();
+    projectionState.projection === GlobeProjection.Sphere ? "2D" : "3D";
+  const { mainTimeFormat, compareTimeFormat } = useLayerTimes();
 
   const onProjectionHandler = () => {
     const newProjection =
@@ -53,20 +53,20 @@ const GlobeNavigation: FunctionComponent<Props> = ({
     }
 
     navigator.geolocation.getCurrentPosition(
-      position => {
+      (position) => {
         const newView = {
-          renderMode: 'globe' as RenderMode.GLOBE,
+          renderMode: "globe" as RenderMode.GLOBE,
           lng: position.coords.longitude,
           lat: position.coords.latitude,
           altitude: 0,
-          zoom: 0
+          zoom: 0,
         };
         dispatch(setFlyToAction(newView));
         setLocationLoading(false);
       },
-      error => {
+      (error) => {
         console.error(`Error Code = ${error.code} - ${error.message}`);
-      }
+      },
     );
   };
 
@@ -91,7 +91,8 @@ const GlobeNavigation: FunctionComponent<Props> = ({
       <div
         className={styles.compass}
         id="ui-compass"
-        onClick={() => dispatch(setFlyToAction({...defaultView}))}>
+        onClick={() => dispatch(setFlyToAction({ ...defaultView }))}
+      >
         <CompassIcon />
       </div>
       <Button
@@ -103,7 +104,7 @@ const GlobeNavigation: FunctionComponent<Props> = ({
             mainTimeFormat,
             compareTimeFormat,
             mainLayer,
-            compareLayer
+            compareLayer,
           )
         }
       />

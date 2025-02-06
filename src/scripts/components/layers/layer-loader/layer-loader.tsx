@@ -1,12 +1,12 @@
-import {FunctionComponent, useEffect} from 'react';
-import {useSelector} from 'react-redux';
-import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
+import { FunctionComponent, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 
-import fetchLayers from '../../../actions/fetch-layers';
-import fetchLayerAction from '../../../actions/fetch-layer';
-import {State} from '../../../reducers';
-import {layerDetailsSelector} from '../../../selectors/layers/layer-details';
-import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
+import fetchLayers from "../../../actions/fetch-layers";
+import fetchLayerAction from "../../../actions/fetch-layer";
+import { State } from "../../../reducers";
+import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 
 /**
  * Handles loading of layer list and layer details data
@@ -14,12 +14,12 @@ import {selectedLayerIdsSelector} from '../../../selectors/layers/selected-ids';
 const LayerLoader: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  const {mainId, compareId} = selectedLayerIds;
+  const { mainId, compareId } = selectedLayerIds;
   const mainLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, mainId)
+    layerDetailsSelector(state, mainId),
   );
   const compareLayerDetails = useSelector((state: State) =>
-    layerDetailsSelector(state, compareId)
+    layerDetailsSelector(state, compareId),
   );
 
   // load layer list on mount

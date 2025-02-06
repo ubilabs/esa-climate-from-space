@@ -1,11 +1,11 @@
-import {useRouteMatch, useParams} from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import { useRouteMatch, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import {State} from '../reducers';
-import {selectedStorySelector} from '../selectors/story/selected';
-import {storyListSelector} from '../selectors/story/list';
+import { State } from "../reducers";
+import { selectedStorySelector } from "../selectors/story/selected";
+import { storyListSelector } from "../selectors/story/list";
 
-import {StoryMode} from '../types/story-mode';
+import { StoryMode } from "../types/story-mode";
 
 interface StoryParams {
   storyId: string;
@@ -19,19 +19,19 @@ interface ShowCaseParams {
 }
 
 function isShowCaseParams(
-  params: StoryParams | ShowCaseParams
+  params: StoryParams | ShowCaseParams,
 ): params is ShowCaseParams {
-  return (params as ShowCaseParams).storyIds !== undefined; // eslint-disable-line no-undefined
+  return (params as ShowCaseParams).storyIds !== undefined;
 }
 
 export const useStoryParams = () => {
-  const matchStories = useRouteMatch('/stories/:storyId');
-  const matchPresent = useRouteMatch('/present/:storyId');
-  const matchShowCase = useRouteMatch('/showcase/:storyIds');
+  const matchStories = useRouteMatch("/stories/:storyId");
+  const matchPresent = useRouteMatch("/present/:storyId");
+  const matchShowCase = useRouteMatch("/showcase/:storyIds");
 
   const params = useParams<StoryParams | ShowCaseParams>();
   const storyIds = isShowCaseParams(params)
-    ? params.storyIds.split('&')
+    ? params.storyIds.split("&")
     : [params.storyId];
   const storyIndex = isShowCaseParams(params)
     ? parseInt(params.storyIndex, 10)
@@ -52,11 +52,11 @@ export const useStoryParams = () => {
     mode === StoryMode.Showcase ? storyIds[storyIndex || 0] : storyIds[0];
 
   const selectedStory = useSelector((state: State) =>
-    selectedStorySelector(state, currentStoryId)
+    selectedStorySelector(state, currentStoryId),
   );
 
   const storyList = useSelector(storyListSelector);
-  const storyListItem = storyList.find(story => story.id === currentStoryId);
+  const storyListItem = storyList.find((story) => story.id === currentStoryId);
 
   return {
     mode,
@@ -65,6 +65,6 @@ export const useStoryParams = () => {
     slideIndex,
     currentStoryId,
     storyListItem,
-    selectedStory
+    selectedStory,
   };
 };

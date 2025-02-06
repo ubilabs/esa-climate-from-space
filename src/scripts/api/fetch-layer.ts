@@ -1,5 +1,5 @@
-import config from '../config/main';
-import {replaceUrlPlaceholders} from '../libs/replace-url-placeholders';
+import config from "../config/main";
+import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
 
 const layerRequestCache = new Map<string, Promise<unknown>>();
 
@@ -8,8 +8,8 @@ export default function fetchLayer(id: string) {
     return layerRequestCache.get(id) as Promise<unknown>;
   }
 
-  const url = replaceUrlPlaceholders(config.api.layer, {id});
-  const request = fetch(url).then(res => res.json());
+  const url = replaceUrlPlaceholders(config.api.layer, { id });
+  const request = fetch(url).then((res) => res.json());
 
   layerRequestCache.set(id, request);
 

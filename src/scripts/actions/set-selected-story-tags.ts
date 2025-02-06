@@ -1,4 +1,4 @@
-export const SET_SELECTED_STORY_TAGS = 'SET_SELECTED_STORY_TAGS';
+export const SET_SELECTED_STORY_TAGS = "SET_SELECTED_STORY_TAGS";
 
 export interface SetSelectedStoryTagsAction {
   type: typeof SET_SELECTED_STORY_TAGS;
@@ -6,10 +6,10 @@ export interface SetSelectedStoryTagsAction {
 }
 
 const setSelectedStoryTagsAction = (
-  tags: string[]
+  tags: string[],
 ): SetSelectedStoryTagsAction => ({
   type: SET_SELECTED_STORY_TAGS,
-  tags
+  tags,
 });
 
 export default setSelectedStoryTagsAction;

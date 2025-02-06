@@ -1,13 +1,13 @@
-import {ThunkDispatch} from '../components/main/app/create-redux-store';
+import { ThunkDispatch } from "../components/main/app/create-redux-store";
 
-import fetchLayersApi from '../api/fetch-layers';
-import {languageSelector} from '../selectors/language';
+import fetchLayersApi from "../api/fetch-layers";
+import { languageSelector } from "../selectors/language";
 
-import {State} from '../reducers/index';
-import {LayerList} from '../types/layer-list';
+import { State } from "../reducers/index";
+import { LayerList } from "../types/layer-list";
 
-export const FETCH_LAYERS_SUCCESS = 'FETCH_LAYERS_SUCCESS';
-export const FETCH_LAYERS_ERROR = 'FETCH_LAYERS_ERROR';
+export const FETCH_LAYERS_SUCCESS = "FETCH_LAYERS_SUCCESS";
+export const FETCH_LAYERS_ERROR = "FETCH_LAYERS_ERROR";
 
 interface FetchLayersSuccessAction {
   type: typeof FETCH_LAYERS_SUCCESS;
@@ -26,14 +26,14 @@ export type FetchLayersActions =
 function fetchLayersSuccessAction(layers: LayerList): FetchLayersSuccessAction {
   return {
     type: FETCH_LAYERS_SUCCESS,
-    layers
+    layers,
   };
 }
 
 function fetchLayersErrorAction(message: string): FetchLayersErrorAction {
   return {
     type: FETCH_LAYERS_ERROR,
-    message
+    message,
   };
 }
 
@@ -41,8 +41,8 @@ const fetchLayers = () => (dispatch: ThunkDispatch, getState: () => State) => {
   const language = languageSelector(getState());
 
   return fetchLayersApi(language)
-    .then(layers => dispatch(fetchLayersSuccessAction(layers)))
-    .catch(error => dispatch(fetchLayersErrorAction(error.message)));
+    .then((layers) => dispatch(fetchLayersSuccessAction(layers)))
+    .catch((error) => dispatch(fetchLayersErrorAction(error.message)));
 };
 
 export default fetchLayers;

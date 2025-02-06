@@ -1,4 +1,4 @@
-import {EmbeddedItem, GlobeItem, ImageItem, VideoItem} from './gallery-item';
+import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
 
 export interface Slide {
   text: string;

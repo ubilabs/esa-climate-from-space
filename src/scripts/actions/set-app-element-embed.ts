@@ -1,6 +1,6 @@
-import {EmbedElementsState} from '../types/embed-elements';
+import { EmbedElementsState } from "../types/embed-elements";
 
-export const TOGGLE_EMBED_ELEMENTS = 'TOGGLE_EMBED_ELEMENTS';
+export const TOGGLE_EMBED_ELEMENTS = "TOGGLE_EMBED_ELEMENTS";
 
 export interface SetEmbedElementsAction {
   type: typeof TOGGLE_EMBED_ELEMENTS;
@@ -8,11 +8,11 @@ export interface SetEmbedElementsAction {
 }
 
 export function setAppElementsAction(
-  embedElements: EmbedElementsState
+  embedElements: EmbedElementsState,
 ): SetEmbedElementsAction {
   return {
     type: TOGGLE_EMBED_ELEMENTS,
-    embedElements
+    embedElements,
   };
 }
 

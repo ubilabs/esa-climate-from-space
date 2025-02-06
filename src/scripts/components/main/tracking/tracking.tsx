@@ -1,35 +1,35 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
-import {FormattedMessage} from 'react-intl';
-import {useLocation} from 'react-router-dom';
-import {useMatomo} from '@datapunt/matomo-tracker-react';
+import { FunctionComponent, useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
+import { useLocation } from "react-router-dom";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
-import Button from '../button/button';
+import Button from "../button/button";
 
-import styles from './tracking.module.css';
+import styles from "./tracking.module.css";
 
 const Tracking: FunctionComponent = () => {
   const location = useLocation();
-  const {pushInstruction, trackPageView} = useMatomo();
+  const { pushInstruction, trackPageView } = useMatomo();
   const [consentGiven, setConsentGiven] = useState(
-    localStorage.getItem('matomoConsent') === 'yes'
+    localStorage.getItem("matomoConsent") === "yes",
   );
   const [consentRejected, setConsentRejected] = useState(
-    localStorage.getItem('matomoConsent') === 'no'
+    localStorage.getItem("matomoConsent") === "no",
   );
   const [requireConsentPushed, setRequireConsentPushed] = useState(false);
   const [forgetConsentPushed, setForgetConsentPushed] = useState(false);
 
   useEffect(() => {
     if (consentGiven) {
-      pushInstruction('rememberConsentGiven');
-      pushInstruction('enableJSErrorTracking');
+      pushInstruction("rememberConsentGiven");
+      pushInstruction("enableJSErrorTracking");
     } else if (!requireConsentPushed) {
-      pushInstruction('requireConsent');
+      pushInstruction("requireConsent");
       setRequireConsentPushed(true);
     }
 
     if (consentRejected && !forgetConsentPushed) {
-      pushInstruction('forgetConsentGiven');
+      pushInstruction("forgetConsentGiven");
       setForgetConsentPushed(true);
     }
   }, [
@@ -37,12 +37,12 @@ const Tracking: FunctionComponent = () => {
     consentRejected,
     pushInstruction,
     requireConsentPushed,
-    forgetConsentPushed
+    forgetConsentPushed,
   ]);
 
   useEffect(() => {
     trackPageView({
-      href: `${window.location.origin}/#${location.pathname}`
+      href: `${window.location.origin}/#${location.pathname}`,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
@@ -54,7 +54,7 @@ const Tracking: FunctionComponent = () => {
   return (
     <div className={styles.tracking}>
       <p className={styles.message}>
-        <FormattedMessage id={'tracking.message'} />
+        <FormattedMessage id={"tracking.message"} />
       </p>
       <div className={styles.buttons}>
         <Button
@@ -62,7 +62,7 @@ const Tracking: FunctionComponent = () => {
           label="tracking.no"
           onClick={() => {
             setConsentRejected(true);
-            localStorage.setItem('matomoConsent', 'no');
+            localStorage.setItem("matomoConsent", "no");
           }}
         />
         <Button
@@ -70,7 +70,7 @@ const Tracking: FunctionComponent = () => {
           label="tracking.yes"
           onClick={() => {
             setConsentGiven(true);
-            localStorage.setItem('matomoConsent', 'yes');
+            localStorage.setItem("matomoConsent", "yes");
           }}
         />
       </div>

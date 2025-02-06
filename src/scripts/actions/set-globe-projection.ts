@@ -1,6 +1,6 @@
-import {GlobeProjection} from '../types/globe-projection';
+import { GlobeProjection } from "../types/globe-projection";
 
-export const SET_GLOBE_PROJECTION = 'SET_GLOBE_PROJECTION';
+export const SET_GLOBE_PROJECTION = "SET_GLOBE_PROJECTION";
 
 export interface SetGlobeProjectionAction {
   type: typeof SET_GLOBE_PROJECTION;
@@ -10,11 +10,11 @@ export interface SetGlobeProjectionAction {
 
 const setGlobeProjectionAction = (
   projection: GlobeProjection,
-  morphTime: number
+  morphTime: number,
 ): SetGlobeProjectionAction => ({
   type: SET_GLOBE_PROJECTION,
   projection,
-  morphTime
+  morphTime,
 });
 
 export default setGlobeProjectionAction;

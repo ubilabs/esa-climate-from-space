@@ -1,14 +1,14 @@
-import {Dispatch} from 'redux';
+import { Dispatch } from "redux";
 
-import fetchStoryApi from '../api/fetch-story';
-import {languageSelector} from '../selectors/language';
-import {State} from '../reducers/index';
+import fetchStoryApi from "../api/fetch-story";
+import { languageSelector } from "../selectors/language";
+import { State } from "../reducers/index";
 
-import {LegacyStory} from '../types/legacy-story';
-import {Story} from '../types/story';
+import { LegacyStory } from "../types/legacy-story";
+import { Story } from "../types/story";
 
-export const FETCH_STORY_SUCCESS = 'FETCH_STORY_SUCCESS';
-export const FETCH_STORY_ERROR = 'FETCH_STORY_ERROR';
+export const FETCH_STORY_SUCCESS = "FETCH_STORY_SUCCESS";
+export const FETCH_STORY_ERROR = "FETCH_STORY_ERROR";
 
 interface FetchStorySuccessAction {
   type: typeof FETCH_STORY_SUCCESS;
@@ -28,26 +28,26 @@ export type FetchStoryActions = FetchStorySuccessAction | FetchStoryErrorAction;
 export function fetchStorySuccessAction(
   storyId: string,
   language: string,
-  story: LegacyStory
+  story: LegacyStory,
 ) {
   return {
     type: FETCH_STORY_SUCCESS,
     id: storyId,
     language,
-    story
+    story,
   };
 }
 
 function fetchStoryErrorAction(
   storyId: string,
   language: string,
-  message: string
+  message: string,
 ) {
   return {
     type: FETCH_STORY_ERROR,
     id: storyId,
     language,
-    message
+    message,
   };
 }
 
@@ -56,9 +56,9 @@ const fetchStory =
     const language = languageSelector(getState());
 
     return fetchStoryApi(id, language)
-      .then(story => dispatch(fetchStorySuccessAction(id, language, story)))
-      .catch(error =>
-        dispatch(fetchStoryErrorAction(id, language, error.message))
+      .then((story) => dispatch(fetchStorySuccessAction(id, language, story)))
+      .catch((error) =>
+        dispatch(fetchStoryErrorAction(id, language, error.message)),
       );
   };
 

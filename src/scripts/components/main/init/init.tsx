@@ -1,6 +1,6 @@
-import {FunctionComponent, useEffect} from 'react';
-import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
-import fetchStories from '../../../actions/fetch-stories';
+import { FunctionComponent, useEffect } from "react";
+import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
+import fetchStories from "../../../actions/fetch-stories";
 
 const Init: FunctionComponent = () => {
   const dispatch = useThunkDispatch();

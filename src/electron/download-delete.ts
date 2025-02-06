@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {BrowserWindow, app} from 'electron';
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const {getDownloadedIds} = require('./get-downloaded-ids');
 
 /**

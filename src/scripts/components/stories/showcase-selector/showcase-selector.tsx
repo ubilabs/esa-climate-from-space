@@ -1,32 +1,32 @@
-import React, {FunctionComponent} from 'react';
-import {useHistory, useParams} from 'react-router-dom';
-import {useIntl, FormattedMessage} from 'react-intl';
-import {useSelector} from 'react-redux';
+import { FunctionComponent } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { useIntl, FormattedMessage } from "react-intl";
+import { useSelector } from "react-redux";
 
-import StoryList from '../story-list/story-list';
-import Header from '../header/header';
-import {PlayIcon} from '../../main/icons/play-icon';
-import Button from '../../main/button/button';
-import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
+import StoryList from "../story-list/story-list";
+import Header from "../header/header";
+import { PlayIcon } from "../../main/icons/play-icon";
+import Button from "../../main/button/button";
+import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import {StoryMode} from '../../../types/story-mode';
+import { StoryMode } from "../../../types/story-mode";
 
-import styles from './showcase-selector.module.css';
+import styles from "./showcase-selector.module.css";
 
 const ShowcaseSelector: FunctionComponent = () => {
-  const params = useParams<{storyIds?: string}>();
+  const params = useParams<{ storyIds?: string }>();
   const history = useHistory();
   const intl = useIntl();
-  const storyIds = params.storyIds?.split('&');
+  const storyIds = params.storyIds?.split("&");
   const selectedIds = storyIds || [];
-  const {header} = useSelector(embedElementsSelector);
+  const { header } = useSelector(embedElementsSelector);
 
   const onSelectStory = (id: string) => {
     const isInList = selectedIds.includes(id);
     const newIds = isInList
-      ? selectedIds.filter(selectedId => selectedId !== id)
+      ? selectedIds.filter((selectedId) => selectedId !== id)
       : selectedIds.concat(id);
-    history.replace(`/showcase/${newIds.join('&')}`);
+    history.replace(`/showcase/${newIds.join("&")}`);
   };
   const isDisabled = selectedIds.length === 0;
 
@@ -36,22 +36,23 @@ const ShowcaseSelector: FunctionComponent = () => {
         <Header
           backLink="/"
           backButtonId="backToDataMode"
-          title={intl.formatMessage({id: 'showcase'})}>
+          title={intl.formatMessage({ id: "showcase" })}
+        >
           <FormattedMessage
             id="storiesSelected"
-            values={{numberSelected: selectedIds.length}}
+            values={{ numberSelected: selectedIds.length }}
           />
           <Button
             disabled={isDisabled}
-            label={'play'}
-            link={`/showcase/${selectedIds.join('&')}/0/0`}
+            label={"play"}
+            link={`/showcase/${selectedIds.join("&")}/0/0`}
             icon={PlayIcon}
           />
         </Header>
       )}
       <StoryList
         mode={StoryMode.Showcase}
-        onSelectStory={id => onSelectStory(id)}
+        onSelectStory={(id) => onSelectStory(id)}
         selectedIds={selectedIds}
       />
     </div>

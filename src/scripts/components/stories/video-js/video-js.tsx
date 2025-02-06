@@ -1,12 +1,12 @@
-import React, {FunctionComponent, useEffect, useRef} from 'react';
-import videojs, {VideoJsPlayer, VideoJsPlayerOptions} from 'video.js';
+import { FunctionComponent, useEffect, useRef } from "react";
+import videojs, { VideoJsPlayer, VideoJsPlayerOptions } from "video.js";
 
-import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
-import {Language} from '../../../types/language';
-import {VideoResolution} from '../../../types/video-resolution-type';
+import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
+import { Language } from "../../../types/language";
+import { VideoResolution } from "../../../types/video-resolution-type";
 
-import 'video.js/dist/video-js.css';
-import styles from './video-js.module.css';
+import "video.js/dist/video-js.css";
+import styles from "./video-js.module.css";
 
 interface Props {
   storyId: string;
@@ -25,7 +25,7 @@ const VideoJS: FunctionComponent<Props> = ({
   isStoryMode,
   videoCaptions,
   videoPoster,
-  onPlay
+  onPlay,
 }) => {
   const videoRef = useRef(null);
   const playerRef = useRef<VideoJsPlayer | null>();
@@ -34,7 +34,7 @@ const VideoJS: FunctionComponent<Props> = ({
   const posterUrl = videoPoster && getStoryAssetUrl(storyId, videoPoster);
 
   const getCaptionUrl = () => {
-    const captions = videoCaptions?.split('.');
+    const captions = videoCaptions?.split(".");
     const captionLanguagePath =
       captions && `${captions[0]}-${language}.${captions[1]}`;
     return (
@@ -47,26 +47,28 @@ const VideoJS: FunctionComponent<Props> = ({
     controls: true,
     // Make sure subtitles are handled by video.js and displayed consistently across browsers
     html5: {
-      nativeTextTracks: false
+      nativeTextTracks: false,
     },
     responsive: true,
-    aspectRatio: '4:3',
+    aspectRatio: "4:3",
     poster: posterUrl,
     sources: [
       {
         src: videoUrl,
-        type: 'video/mp4'
-      }
-    ]
+        type: "video/mp4",
+      },
+    ],
   };
 
   const getVideoResolution = (player: VideoJsPlayer, videoRes: string) => {
-    const webVideo = video.split('web');
+    const webVideo = video.split("web");
     const currentResVideo = webVideo[0] + videoRes + webVideo[1];
 
     if (currentResVideo) {
       const mobileVideoUrl = getStoryAssetUrl(storyId, currentResVideo);
-      mobileVideoUrl && player.src(mobileVideoUrl);
+      if (mobileVideoUrl) {
+        player.src(mobileVideoUrl);
+      }
     }
   };
 
@@ -76,24 +78,24 @@ const VideoJS: FunctionComponent<Props> = ({
     // Caption needs to be added after player is ready
     const textTrack = player?.addRemoteTextTrack(
       {
-        kind: 'captions',
+        kind: "captions",
         src: getCaptionUrl(),
         srclang: language,
-        label: language
+        label: language,
       },
-      true
+      true,
     );
 
     // Show subtitles by default but only if the language is not English
-    if (textTrack && textTrack.track && language !== 'en') {
-      textTrack.track.mode = 'showing';
+    if (textTrack && textTrack.track && language !== "en") {
+      textTrack.track.mode = "showing";
     }
 
     playerRef.current = player;
 
-    const mobile = window.matchMedia('(max-width: 480px)');
-    const screenHD = window.matchMedia('(max-width: 1280px)');
-    const screen4k = window.matchMedia('(max-width: 3840px)');
+    const mobile = window.matchMedia("(max-width: 480px)");
+    const screenHD = window.matchMedia("(max-width: 1280px)");
+    const screen4k = window.matchMedia("(max-width: 3840px)");
 
     if (mobile.matches) {
       getVideoResolution(player, VideoResolution.SD576);
@@ -117,7 +119,7 @@ const VideoJS: FunctionComponent<Props> = ({
       const player: VideoJsPlayer = (playerRef.current = videojs(
         videoElement,
         videoJsOptions,
-        () => handlePlayerReady(player)
+        () => handlePlayerReady(player),
       ));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -140,8 +142,8 @@ const VideoJS: FunctionComponent<Props> = ({
       <video
         ref={videoRef}
         className="video-js vjs-big-play-centered"
-        style={{height: '100%'}}
-        onPlay={event => onPlay(event.target as unknown as VideoJsPlayer)}
+        style={{ height: "100%" }}
+        onPlay={(event) => onPlay(event.target as unknown as VideoJsPlayer)}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import { FunctionComponent } from "react";
 
 export const Ubilabslogo: FunctionComponent = () => (
   <svg
@@ -6,7 +6,8 @@ export const Ubilabslogo: FunctionComponent = () => (
     height="15"
     viewBox="0 0 70 15"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <g clipPath="url(#clip0)">
       <path
         d="M28.5158 4.35986H26.529C26.4452 4.35986 26.3616 4.44365 26.3616 4.52743V14.7032C26.3616 14.787 26.4452 14.8292 26.529 14.8292H28.5158C28.5995 14.8292 28.6616 14.787 28.6616 14.7032V4.52743C28.6616 4.44365 28.5995 4.35986 28.5158 4.35986Z"

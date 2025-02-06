@@ -1,74 +1,75 @@
-import React, {FunctionComponent, useState} from 'react';
-import {FormattedMessage} from 'react-intl';
+import { FunctionComponent, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
-import planeratyVisionsLogo from '~/assets/images/planetary-visions.png';
+import planeratyVisionsLogo from "~/assets/images/planetary-visions.png";
 
-import LanguageSelector from '../language-selector/language-selector';
-import Button from '../button/button';
-import {PresenterIcon} from '../icons/presenter-icon';
-import {LanguageIcon} from '../icons/language-icon';
-import {InfoIcon} from '../icons/info-icon';
-import {DownloadIcon} from '../icons/download-icon';
-import {CCILogo} from '../icons/cci-logo';
-import AboutProject from '../about-project/about-project';
-import Overlay from '../overlay/overlay';
-import {WindowsIcon} from '../icons/windows-icon';
-import {AnalyticsIcon} from '../icons/analytics-icon';
-import {LinuxIcon} from '../icons/linux-icon';
-import {AppleIcon} from '../icons/apple-icon';
-import {Ubilabslogo} from '../icons/ubilabs-logo';
-import Attributions from '../attributions/attributions';
-import TrackingToggle from '../tracking-toggle/tracking-toggle';
-import {FeedbackIcon} from '../icons/feedback-icon';
-import config from '../../../config/main';
+import LanguageSelector from "../language-selector/language-selector";
+import Button from "../button/button";
+import { PresenterIcon } from "../icons/presenter-icon";
+import { LanguageIcon } from "../icons/language-icon";
+import { InfoIcon } from "../icons/info-icon";
+import { DownloadIcon } from "../icons/download-icon";
+import { CCILogo } from "../icons/cci-logo";
+import AboutProject from "../about-project/about-project";
+import Overlay from "../overlay/overlay";
+import { WindowsIcon } from "../icons/windows-icon";
+import { AnalyticsIcon } from "../icons/analytics-icon";
+import { LinuxIcon } from "../icons/linux-icon";
+import { AppleIcon } from "../icons/apple-icon";
+import { Ubilabslogo } from "../icons/ubilabs-logo";
+import Attributions from "../attributions/attributions";
+import TrackingToggle from "../tracking-toggle/tracking-toggle";
+import { FeedbackIcon } from "../icons/feedback-icon";
+import config from "../../../config/main";
 
-import styles from './menu.module.css';
+import styles from "./menu.module.css";
 
 interface Props {
   onRestartOnboarding: () => void;
 }
 
-const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
+const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
   const [overlayType, setOverlayType] = useState<string | null>(null);
-  // @ts-ignore - injected via webpack's define plugin
+  // @ts-expect-error - injected via webpack's define plugin
   const version = INFO_VERSION;
 
   return (
-    <React.Fragment>
+    <>
       <nav className={styles.menuContainer}>
         {overlayType ? (
           <Overlay onClose={() => setOverlayType(null)}>
-            {overlayType === 'about' ? <AboutProject /> : <Attributions />}
+            {overlayType === "about" ? <AboutProject /> : <Attributions />}
           </Overlay>
         ) : (
-          <React.Fragment>
+          <>
             <ul className={styles.menuList}>
               <li className={styles.menuItemTitle}>
-                <PresenterIcon /> <FormattedMessage id={'modes'} />
+                <PresenterIcon /> <FormattedMessage id={"modes"} />
               </li>
               <li className={styles.menuListItem}>
                 <Button
                   className={styles.menuButton}
-                  label={'presenterMode'}
-                  link={'/present'}
+                  label={"presenterMode"}
+                  link={"/present"}
                 />
               </li>
               <li className={styles.menuListItem}>
                 <Button
                   className={styles.menuButton}
-                  label={'showcaseMode'}
-                  link={'/showcase'}
+                  label={"showcaseMode"}
+                  link={"/showcase"}
                 />
               </li>
               <li className={styles.subMenuTitle}>
-                <DownloadIcon /> <FormattedMessage id={'offline'} />
+                <DownloadIcon /> <FormattedMessage id={"offline"} />
               </li>
               <li className={styles.menuListItem}>
                 <a
                   href={config.downloadUrls.windows}
-                  target={'_blank'}
+                  target={"_blank"}
                   rel="noopener noreferrer"
-                  className={styles.menuButton}>
+                  className={styles.menuButton}
+                >
                   <WindowsIcon />
                   Windows
                 </a>
@@ -76,9 +77,10 @@ const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
               <li className={styles.menuListItem}>
                 <a
                   href={config.downloadUrls.macOS}
-                  target={'_blank'}
+                  target={"_blank"}
                   rel="noopener noreferrer"
-                  className={styles.menuButton}>
+                  className={styles.menuButton}
+                >
                   <AppleIcon />
                   macOS
                 </a>
@@ -86,9 +88,10 @@ const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
               <li className={styles.menuListItem}>
                 <a
                   href={config.downloadUrls.linux}
-                  target={'_blank'}
+                  target={"_blank"}
                   rel="noopener noreferrer"
-                  className={styles.menuButton}>
+                  className={styles.menuButton}
+                >
                   <LinuxIcon />
                   Linux
                 </a>
@@ -97,94 +100,99 @@ const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
 
             <ul className={styles.menuList}>
               <li className={styles.menuItemTitle}>
-                <LanguageIcon /> <FormattedMessage id={'language'} />
+                <LanguageIcon /> <FormattedMessage id={"language"} />
               </li>
               <li>
                 <LanguageSelector className={styles.menuListItem} />
               </li>
               <li className={styles.subMenuTitle}>
-                <FeedbackIcon /> <FormattedMessage id={'feedback'} />
+                <FeedbackIcon /> <FormattedMessage id={"feedback"} />
               </li>
               <li className={styles.menuListItem}>
                 <a
                   href={config.feedbackUrl}
-                  target={'_blank'}
+                  target={"_blank"}
                   rel="noopener noreferrer"
-                  className={styles.menuButton}>
-                  <FormattedMessage id={'provideFeedback'} />
+                  className={styles.menuButton}
+                >
+                  <FormattedMessage id={"provideFeedback"} />
                 </a>
               </li>
             </ul>
             <ul className={styles.menuList}>
               <li className={styles.menuItemTitle}>
-                <InfoIcon /> <FormattedMessage id={'info'} />
+                <InfoIcon /> <FormattedMessage id={"info"} />
               </li>
               <li className={styles.menuListItem}>
                 <Button
                   className={styles.menuButton}
-                  label={'about'}
-                  onClick={() => setOverlayType('about')}
+                  label={"about"}
+                  onClick={() => setOverlayType("about")}
                 />
               </li>
               <li className={styles.menuListItem}>
                 <Button
                   className={styles.menuButton}
-                  label={'restartOnboarding'}
+                  label={"restartOnboarding"}
                   onClick={() => onRestartOnboarding()}
                 />
               </li>
               <li className={styles.menuListItem}>
                 <Button
                   className={styles.menuButton}
-                  label={'attributions'}
-                  onClick={() => setOverlayType('attributions')}
+                  label={"attributions"}
+                  onClick={() => setOverlayType("attributions")}
                 />
               </li>
               <li className={styles.menuListItem}>
                 <a
                   href={config.esaWebsite}
-                  target={'_blank'}
+                  target={"_blank"}
                   rel="noopener noreferrer"
-                  className={styles.menuButton}>
-                  <FormattedMessage id={'EsaWebsite'} />
+                  className={styles.menuButton}
+                >
+                  <FormattedMessage id={"EsaWebsite"} />
                 </a>
               </li>
               <li className={styles.menuListItem}>
                 <a
                   href={config.cciWebsite}
-                  target={'_blank'}
+                  target={"_blank"}
                   rel="noopener noreferrer"
-                  className={styles.menuButton}>
-                  <FormattedMessage id={'CCIWebsite'} />
+                  className={styles.menuButton}
+                >
+                  <FormattedMessage id={"CCIWebsite"} />
                 </a>
               </li>
               <li className={styles.menuListItem}>
                 <a
                   href={config.githubRepo}
-                  target={'_blank'}
+                  target={"_blank"}
                   rel="noopener noreferrer"
-                  className={styles.menuButton}>
-                  <FormattedMessage id={'github'} />
+                  className={styles.menuButton}
+                >
+                  <FormattedMessage id={"github"} />
                 </a>
               </li>
               <li className={styles.subMenuTitle}>
-                <AnalyticsIcon /> <FormattedMessage id={'analytics'} />
+                <AnalyticsIcon /> <FormattedMessage id={"analytics"} />
               </li>
               <li className={styles.menuListItem}>
                 <TrackingToggle />
               </li>
             </ul>
-          </React.Fragment>
+          </>
         )}
       </nav>
       <div className={styles.credits}>
         <div className={styles.logo}>
           <a
             href={config.ubilabsWebsite}
-            target={'_blank'}
-            rel="noopener noreferrer">
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
             <p className={styles.creditsText}>
-              <FormattedMessage id={'madeBy'} />
+              <FormattedMessage id={"madeBy"} />
             </p>
             <Ubilabslogo />
           </a>
@@ -196,16 +204,17 @@ const Menu: FunctionComponent<Props> = ({onRestartOnboarding}) => {
         <div className={styles.logo}>
           <a
             href={config.planetaryVisionsWebsite}
-            target={'_blank'}
-            rel="noopener noreferrer">
+            target={"_blank"}
+            rel="noopener noreferrer"
+          >
             <p className={styles.creditsText}>
-              <FormattedMessage id={'contentBy'} />
+              <FormattedMessage id={"contentBy"} />
             </p>
             <img src={planeratyVisionsLogo} />
           </a>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

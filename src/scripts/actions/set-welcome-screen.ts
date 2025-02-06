@@ -1,4 +1,4 @@
-export const SET_WELCOME_SCREEN = 'SET_WELCOME_SCREEN';
+export const SET_WELCOME_SCREEN = "SET_WELCOME_SCREEN";
 
 export interface SetWelcomeScreenAction {
   type: typeof SET_WELCOME_SCREEN;
@@ -6,10 +6,10 @@ export interface SetWelcomeScreenAction {
 }
 
 const setWelcomeScreenAction = (
-  welcomeScreen: boolean
+  welcomeScreen: boolean,
 ): SetWelcomeScreenAction => ({
   type: SET_WELCOME_SCREEN,
-  welcomeScreen
+  welcomeScreen,
 });
 
 export default setWelcomeScreenAction;

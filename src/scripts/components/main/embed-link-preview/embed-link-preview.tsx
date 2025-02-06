@@ -1,7 +1,7 @@
-import React, {FunctionComponent, LegacyRef} from 'react';
-import cx from 'classnames';
+import { FunctionComponent, LegacyRef } from "react";
+import cx from "classnames";
 
-import styles from './embed-link-preview.module.css';
+import styles from "./embed-link-preview.module.css";
 
 interface Props {
   embedUrl: string;
@@ -11,7 +11,7 @@ interface Props {
 const EmbedLinkPreview: FunctionComponent<Props> = ({
   embedUrl,
   ref,
-  className = ''
+  className = "",
 }) => {
   const classes = cx(className, styles.embedLinkPreview);
 

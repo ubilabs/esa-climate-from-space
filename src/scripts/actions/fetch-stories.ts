@@ -1,12 +1,12 @@
-import {ThunkDispatch} from '../components/main/app/create-redux-store';
-import fetchStoriesApi from '../api/fetch-stories';
-import {languageSelector} from '../selectors/language';
+import { ThunkDispatch } from "../components/main/app/create-redux-store";
+import fetchStoriesApi from "../api/fetch-stories";
+import { languageSelector } from "../selectors/language";
 
-import {State} from '../reducers/index';
-import {StoryList} from '../types/story-list';
+import { State } from "../reducers/index";
+import { StoryList } from "../types/story-list";
 
-export const FETCH_STORIES_SUCCESS = 'FETCH_STORIES_SUCCESS';
-export const FETCH_STORIES_ERROR = 'FETCH_STORIES_ERROR';
+export const FETCH_STORIES_SUCCESS = "FETCH_STORIES_SUCCESS";
+export const FETCH_STORIES_ERROR = "FETCH_STORIES_ERROR";
 
 interface FetchStoriesSuccessAction {
   type: typeof FETCH_STORIES_SUCCESS;
@@ -23,18 +23,18 @@ export type FetchStoriesActions =
   | FetchStoriesErrorAction;
 
 function fetchStoriesSuccessAction(
-  stories: StoryList
+  stories: StoryList,
 ): FetchStoriesSuccessAction {
   return {
     type: FETCH_STORIES_SUCCESS,
-    stories
+    stories,
   };
 }
 
 function fetchStoriesErrorAction(message: string): FetchStoriesErrorAction {
   return {
     type: FETCH_STORIES_ERROR,
-    message
+    message,
   };
 }
 
@@ -42,8 +42,8 @@ const fetchStories = () => (dispatch: ThunkDispatch, getState: () => State) => {
   const language = languageSelector(getState());
 
   return fetchStoriesApi(language)
-    .then(stories => dispatch(fetchStoriesSuccessAction(stories)))
-    .catch(error => dispatch(fetchStoriesErrorAction(error.message)));
+    .then((stories) => dispatch(fetchStoriesSuccessAction(stories)))
+    .catch((error) => dispatch(fetchStoriesErrorAction(error.message)));
 };
 
 export default fetchStories;

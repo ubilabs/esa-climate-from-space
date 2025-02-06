@@ -1,10 +1,10 @@
-import React, {FunctionComponent} from 'react';
-import {useIntl} from 'react-intl';
-import ReactMarkdown from 'react-markdown';
+import { FunctionComponent } from "react";
+import { useIntl } from "react-intl";
+import ReactMarkdown from "react-markdown";
 
-import config from '../../../config/main';
+import config from "../../../config/main";
 
-import styles from './about-project.module.css';
+import styles from "./about-project.module.css";
 
 const AboutProject: FunctionComponent = () => {
   const intl = useIntl();
@@ -13,7 +13,7 @@ const AboutProject: FunctionComponent = () => {
     <div className={styles.aboutProject}>
       <div className={styles.content}>
         <ReactMarkdown
-          children={intl.formatMessage({id: 'projectDescription'})}
+          children={intl.formatMessage({ id: "projectDescription" })}
           linkTarget="_blank"
           allowedElements={config.markdownAllowedElements}
         />

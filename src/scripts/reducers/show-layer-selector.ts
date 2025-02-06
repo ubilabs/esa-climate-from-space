@@ -1,13 +1,13 @@
 import {
   SHOW_LAYER_SELECTOR,
-  ShowLayerSelectorAction
-} from '../actions/show-layer-selector';
+  ShowLayerSelectorAction,
+} from "../actions/show-layer-selector";
 
 const initialState = false;
 
 function showLayerSelectorReducer(
   state: boolean = initialState,
-  action: ShowLayerSelectorAction
+  action: ShowLayerSelectorAction,
 ): boolean {
   switch (action.type) {
     case SHOW_LAYER_SELECTOR:

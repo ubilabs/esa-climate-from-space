@@ -1,6 +1,5 @@
 import styles from './globe.module.css';
 
-// eslint-disable-next-line no-warning-comments
 // fixme: this was copied and modified from ../../libs/create-marker.ts, need to find a good place for this.
 
 export function getMarkerHtml(title: string): string {

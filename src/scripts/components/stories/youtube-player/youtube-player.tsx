@@ -1,11 +1,10 @@
-/* eslint-disable camelcase */
-import React, {FunctionComponent} from 'react';
-import YouTube, {Options} from 'react-youtube';
-import {YouTubePlayer} from 'youtube-player/dist/types';
+import { FunctionComponent } from "react";
+import YouTube, { Options } from "react-youtube";
+import { YouTubePlayer } from "youtube-player/dist/types";
 
-import {Language} from '../../../types/language';
+import { Language } from "../../../types/language";
 
-import styles from './youtube-player.module.css';
+import styles from "./youtube-player.module.css";
 
 interface Props {
   videoId?: string;
@@ -18,25 +17,25 @@ const YoutubePlayer: FunctionComponent<Props> = ({
   videoId,
   language,
   isStoryMode,
-  onPlay
+  onPlay,
 }) => {
   const options: Options = {
-    height: '100%',
-    width: '100%',
+    height: "100%",
+    width: "100%",
     playerVars: {
       rel: 0,
       cc_load_policy: 1,
       hl: language,
-      // @ts-ignore
+      // @ts-expect-error - injected via webpack's define plugin
       cc_lang_pref: language,
-      color: 'red',
+      color: "red",
       controls: 2,
       iv_load_policy: 3,
       modestbranding: 1,
       showinfo: 0,
       allow:
-        'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-    }
+        "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+    },
   };
 
   return (
@@ -44,8 +43,8 @@ const YoutubePlayer: FunctionComponent<Props> = ({
       containerClassName={styles.videoPlayer}
       videoId={videoId}
       opts={options}
-      onReady={event => !isStoryMode && event.target.playVideo()}
-      onPlay={event => onPlay(event.target)}
+      onReady={(event) => !isStoryMode && event.target.playVideo()}
+      onPlay={(event) => onPlay(event.target)}
     />
   );
 };

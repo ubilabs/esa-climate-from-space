@@ -1,17 +1,17 @@
-import React, {FunctionComponent} from 'react';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
+import { FunctionComponent } from "react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
-import {LayerListItem} from '../../../types/layer-list';
-import config from '../../../config/main';
+import { LayerListItem } from "../../../types/layer-list";
+import config from "../../../config/main";
 
-import styles from './layer-info.module.css';
+import styles from "./layer-info.module.css";
 
 interface Props {
   layer: LayerListItem;
 }
 
-const LayerInfo: FunctionComponent<Props> = ({layer}) => (
+const LayerInfo: FunctionComponent<Props> = ({ layer }) => (
   <div className={styles.layerInfo}>
     <span className={styles.layerType}>{layer.type}</span>
     <h1 className={styles.layerTitle}>{layer.name}</h1>
