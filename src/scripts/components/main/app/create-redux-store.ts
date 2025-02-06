@@ -1,6 +1,6 @@
 import { Middleware, AnyAction } from "redux";
 import { createLogger } from "redux-logger";
-import { thunk, ThunkDispatch as ThunkDispatchInternal } from "redux-thunk";
+import thunk, { ThunkDispatch as ThunkDispatchInternal } from "redux-thunk";
 
 import rootReducer from "../../../reducers/index";
 import {
