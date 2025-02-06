@@ -17,7 +17,7 @@ import StoryProgress from '../story-progress/story-progress';
 
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './story-gallery.module.styl';
+import styles from './story-gallery.module.css';
 
 interface Props {
   storyId: string;

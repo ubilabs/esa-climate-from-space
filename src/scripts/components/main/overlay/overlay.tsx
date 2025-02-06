@@ -5,7 +5,7 @@ import cx from 'classnames';
 import Button from '../button/button';
 import {CloseIcon} from '../icons/close-icon';
 
-import styles from './overlay.module.styl';
+import styles from './overlay.module.css';
 
 interface Props {
   className?: string;

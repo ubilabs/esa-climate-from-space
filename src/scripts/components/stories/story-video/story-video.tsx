@@ -12,7 +12,7 @@ import YoutubePlayer from '../youtube-player/youtube-player';
 
 import {VideoItem} from '../../../types/gallery-item';
 
-import styles from './story-video.module.styl';
+import styles from './story-video.module.css';
 
 interface Props {
   mode: StoryMode | null;

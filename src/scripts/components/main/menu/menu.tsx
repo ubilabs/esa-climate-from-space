@@ -22,7 +22,7 @@ import TrackingToggle from '../tracking-toggle/tracking-toggle';
 import {FeedbackIcon} from '../icons/feedback-icon';
 import config from '../../../config/main';
 
-import styles from './menu.module.styl';
+import styles from './menu.module.css';
 
 interface Props {
   onRestartOnboarding: () => void;

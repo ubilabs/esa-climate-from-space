@@ -1,0 +1,38 @@
+.story {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  height: 100%;
+}
+.main > * {
+  flex-grow: 1;
+  width: 50%;
+}
+.rightSideComponent {
+  height: 100%;
+}
+.layerDescription {
+  position: unset;
+  padding-right: 0;
+  min-height: 3.875em;
+}
+@media screen and (max-width: 480px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  .main > :last-child {
+    height: 350px;
+  }
+  .main > * {
+    padding: 0.625em 1.5625em 0 1.5625em;
+    width: inherit;
+  }
+}

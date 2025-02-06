@@ -26,7 +26,7 @@ import setGlobeSpinningAction from '../../../actions/set-globe-spinning';
 import {globeSpinningSelector} from '../../../selectors/globe/spinning';
 import {useLayerTimes} from '../../../hooks/use-formatted-time';
 
-import styles from './time-slider.module.styl';
+import styles from './time-slider.module.css';
 
 interface Props {
   className?: string;
@@ -56,21 +56,21 @@ const TimeSlider: FunctionComponent<Props> = ({
   );
   const globeSpinning = useSelector(globeSpinningSelector);
 
-  const playbackSteps = useMemo(
-    () => {
-      if (mainLayerDetails && mainLayerDetails.useTimestampsForPlayback) {
-        return mainLayerDetails.timestamps.map(
-          timestamp => new Date(timestamp).getTime()
-        );
-      } else if (compareLayerDetails && compareLayerDetails.useTimestampsForPlayback) {
-          return compareLayerDetails.timestamps.map(
-            timestamp => new Date(timestamp).getTime()
-          );
-      }
-      return [Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails))];
-    },
-    [mainLayerDetails, compareLayerDetails]
-  );
+  const playbackSteps = useMemo(() => {
+    if (mainLayerDetails && mainLayerDetails.useTimestampsForPlayback) {
+      return mainLayerDetails.timestamps.map(timestamp =>
+        new Date(timestamp).getTime()
+      );
+    } else if (
+      compareLayerDetails &&
+      compareLayerDetails.useTimestampsForPlayback
+    ) {
+      return compareLayerDetails.timestamps.map(timestamp =>
+        new Date(timestamp).getTime()
+      );
+    }
+    return [Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails))];
+  }, [mainLayerDetails, compareLayerDetails]);
 
   const {
     mainTimeFormat,

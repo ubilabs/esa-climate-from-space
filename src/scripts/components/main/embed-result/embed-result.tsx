@@ -7,7 +7,7 @@ import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
 import EmbedLinkPreview from '../embed-link-preview/embed-link-preview';
 import CopyToClipboardButton from '../copy-to-clipboard-button/copy-to-clipboard-button';
 
-import styles from './embed-result.module.styl';
+import styles from './embed-result.module.css';
 
 interface Props {
   elementsChecked: ElementOptions;

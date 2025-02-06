@@ -10,7 +10,7 @@ import {getOfflineLegendImageUrl} from '../../../libs/electron/get-offline-legen
 
 import {BasemapId} from '../../../types/basemap';
 
-import styles from './layer-legend.module.styl';
+import styles from './layer-legend.module.css';
 
 const backgroundColorMapping: {[_: string]: string} = {
   blue: '#2A417B',

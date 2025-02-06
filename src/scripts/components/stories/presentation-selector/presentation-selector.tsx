@@ -9,7 +9,7 @@ import {embedElementsSelector} from '../../../selectors/embed-elements-selector'
 
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './presentation-selector.module.styl';
+import styles from './presentation-selector.module.css';
 
 const PresentationSelector: FunctionComponent = () => {
   const intl = useIntl();

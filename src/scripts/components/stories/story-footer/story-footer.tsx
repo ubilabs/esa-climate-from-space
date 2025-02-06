@@ -9,7 +9,7 @@ import {useMouseMove} from '../../../hooks/use-mouse-move';
 import {StoryMode} from '../../../types/story-mode';
 import {Story} from '../../../types/story';
 
-import styles from './story-footer.module.styl';
+import styles from './story-footer.module.css';
 
 interface Props {
   mode: StoryMode | null;
@@ -26,12 +26,8 @@ const StoryFooter: FunctionComponent<Props> = ({
 }) => {
   const isShowcaseMode = mode === StoryMode.Showcase;
   const isStoriesMode = mode === StoryMode.Stories;
-  const {
-    nextSlideLink,
-    previousSlideLink,
-    autoPlayLink,
-    delay
-  } = useStoryNavigation(videoDuration);
+  const {nextSlideLink, previousSlideLink, autoPlayLink, delay} =
+    useStoryNavigation(videoDuration);
   const mouseMove = useMouseMove();
   const footerClasses = cx(
     styles.storyFooter,

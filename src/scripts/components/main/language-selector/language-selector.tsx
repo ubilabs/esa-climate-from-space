@@ -9,7 +9,7 @@ import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 
 import {Language} from '../../../types/language';
 
-import styles from './language-selector.module.styl';
+import styles from './language-selector.module.css';
 
 const languages = Object.values(Language);
 

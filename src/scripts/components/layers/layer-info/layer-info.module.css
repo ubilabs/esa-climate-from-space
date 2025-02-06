@@ -1,0 +1,46 @@
+.layerInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  font-family: NotesEsa;
+}
+.layerType {
+  color: var(--main);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.6875em;
+}
+.layerTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.625rem;
+  color: #939597;
+}
+.description {
+  overflow-y: scroll;
+  margin: 0.625em 0;
+  height: 50%;
+  color: #939597;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.description *:first-child {
+  margin-top: 0;
+}
+.description a {
+  margin: 1em 0;
+  color: var(--main);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.75em;
+}
+.description ul {
+  padding: 0;
+  list-style: none;
+}
+@media screen and (max-width: 480px) {
+  .layerInfo {
+    width: 80%;
+  }
+}

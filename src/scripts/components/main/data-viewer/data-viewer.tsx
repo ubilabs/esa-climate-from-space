@@ -34,7 +34,7 @@ import {Layer} from '../../../types/layer';
 import {LegendValueColor} from '../../../types/legend-value-color';
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
-import styles from './data-viewer.module.styl';
+import styles from './data-viewer.module.css';
 
 interface Props {
   backgroundColor: string;
@@ -171,7 +171,7 @@ const DataViewer: FunctionComponent<Props> = ({
             return null;
           }
 
-          return (id === 'land_cover.lccs_class' || id === 'land_cover.class') ? (
+          return id === 'land_cover.lccs_class' || id === 'land_cover.class' ? (
             <HoverLegend
               key={id}
               values={legendValues as LegendValueColor[]}

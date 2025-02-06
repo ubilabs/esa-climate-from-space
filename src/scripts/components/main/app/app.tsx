@@ -27,7 +27,8 @@ import translations from '../../../i18n';
 import {useStoryMarkers} from '../../../hooks/use-story-markers';
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
-import styles from './app.module.styl';
+import styles from './app.module.css';
+import '../../../../variables.css';
 
 // create matomo tracking instance
 const matomoInstance = createInstance({
@@ -65,7 +66,7 @@ const TranslatedApp: FunctionComponent = () => {
             <DataViewer
               hideNavigation={!globe_navigation}
               markers={embedMarkers ? markers : []}
-              backgroundColor={'#10161A'}
+              backgroundColor={'var(--black)'}
             />
             <Navigation />
             {time_slider && <TimeSlider />}

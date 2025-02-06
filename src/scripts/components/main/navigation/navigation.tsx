@@ -21,7 +21,7 @@ import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
 import config from '../../../config/main';
 import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
 
-import styles from './navigation.module.styl';
+import styles from './navigation.module.css';
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();

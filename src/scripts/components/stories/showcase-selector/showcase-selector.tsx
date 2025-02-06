@@ -11,7 +11,7 @@ import {embedElementsSelector} from '../../../selectors/embed-elements-selector'
 
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './showcase-selector.module.styl';
+import styles from './showcase-selector.module.css';
 
 const ShowcaseSelector: FunctionComponent = () => {
   const params = useParams<{storyIds?: string}>();

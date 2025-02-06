@@ -7,7 +7,7 @@ import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
 import {Slide} from '../../../types/story';
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './splash-screen.module.styl';
+import styles from './splash-screen.module.css';
 
 interface Props {
   storyId: string;

@@ -7,7 +7,7 @@ import {DownloadButton} from '../../main/download-button/download-button';
 
 import {LayerListItem as LayerListItemType} from '../../../types/layer-list';
 
-import styles from './layer-list-item.module.styl';
+import styles from './layer-list-item.module.css';
 
 interface Props {
   layer: LayerListItemType;

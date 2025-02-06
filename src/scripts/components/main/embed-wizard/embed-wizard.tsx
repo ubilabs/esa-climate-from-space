@@ -10,7 +10,7 @@ import {createEmbedUrl} from '../../../libs/create-embed-url';
 import {getEmbedParamsString} from '../../../libs/get-embed-params-string';
 import EmbedLinkPreview from '../embed-link-preview/embed-link-preview';
 
-import styles from './embed-wizard.module.styl';
+import styles from './embed-wizard.module.css';
 
 const EmbedWizard: FunctionComponent = () => {
   const embedElements = useSelector(embedElementsSelector);

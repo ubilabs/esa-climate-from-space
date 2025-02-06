@@ -8,7 +8,7 @@ import Button from '../button/button';
 import config from '../../../config/main';
 import Overlay from '../overlay/overlay';
 
-import styles from './welcome-screen.module.styl';
+import styles from './welcome-screen.module.css';
 
 interface Props {
   onStartOnboarding: () => void;

@@ -10,7 +10,7 @@ import {filterStories} from '../../../libs/filter-stories';
 
 import {StoryMode} from '../../../types/story-mode';
 
-import styles from './story-list.module.styl';
+import styles from './story-list.module.css';
 
 interface Props {
   mode: StoryMode;
