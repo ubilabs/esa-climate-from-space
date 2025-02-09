@@ -28,6 +28,7 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 
 import styles from "./app.module.css";
 import "../../../../variables.css";
+import { useGetStoriesQuery } from "../../../services/api";
 
 // create matomo tracking instance
 const matomoInstance = createInstance({
@@ -50,6 +51,9 @@ const TranslatedApp: FunctionComponent = () => {
     //   time_slider,
     //   legend,
   } = useSelector(embedElementsSelector);
+
+  const { data: stories } = useGetStoriesQuery("en");
+  console.log("🚀 ~ stories:", stories);
 
   const logo = (
     <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
@@ -103,7 +107,7 @@ const TranslatedApp: FunctionComponent = () => {
       </IntlProvider>
       <UrlSync />
       <LayerLoader />
-      <Init />
+      {/* <Init /> */}
     </Router>
   );
 };
