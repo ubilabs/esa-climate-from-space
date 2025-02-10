@@ -2,11 +2,10 @@ import { FunctionComponent, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 
-import fetchLayers from "../../../actions/fetch-layers";
-import fetchLayerAction from "../../../actions/fetch-layer";
 import { State } from "../../../reducers";
 import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { useGetLayersQuery } from "../../../services/api";
 
 /**
  * Handles loading of layer list and layer details data
@@ -22,22 +21,18 @@ const LayerLoader: FunctionComponent = () => {
     layerDetailsSelector(state, compareId),
   );
 
-  // load layer list on mount
-  useEffect(() => {
-    console.log("fetching layers");
-    dispatch(fetchLayers());
-  }, [dispatch]);
-
+  const { data } = useGetLayersQuery("en");
+  console.log("🚀 ~ data:", data);
   // fetch layer if it is selected and not already downloaded
-  useEffect(() => {
-    if (mainId && !mainLayerDetails) {
-      dispatch(fetchLayerAction(mainId));
-    }
+  //   useEffect(() => {
+  //     if (mainId && !mainLayerDetails) {
+  //       dispatch(fetchLayerAction(mainId));
+  //     }
 
-    if (compareId && !compareLayerDetails) {
-      dispatch(fetchLayerAction(compareId));
-    }
-  }, [dispatch, mainId, mainLayerDetails, compareId, compareLayerDetails]);
+  //     if (compareId && !compareLayerDetails) {
+  //       dispatch(fetchLayerAction(compareId));
+  //     }
+  //   }, [dispatch, mainId, mainLayerDetails, compareId, compareLayerDetails]);
 
   return null;
 };

@@ -1,9 +1,9 @@
 import { useThunkDispatch } from "../hooks/use-thunk-dispatch";
 
 import { unsafeSelectedStorySelector } from "../selectors/story/selected";
-import fetchLayers from "./fetch-layers";
-import fetchStories from "./fetch-stories";
-import fetchStory from "./fetch-story";
+// import fetchlayers from "./fetch-layers";
+// import fetchstories from "./fetch-stories";
+// import fetchstory from "./fetch-story";
 import { State } from "../reducers/index";
 import config from "../config/main";
 
@@ -26,13 +26,13 @@ const setLanguageAction =
       language,
     });
 
-    dispatch(fetchLayers());
-    dispatch(fetchStories());
+    // dispatch(fetchLayers());
+    // dispatch(fetchStories());
 
     const state = getState();
     const story = unsafeSelectedStorySelector(state);
     if (story) {
-      dispatch(fetchStory(story.id));
+      //   dispatch(fetchStory(story.id));
     }
   };
 

@@ -7,19 +7,6 @@ import {
 } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { CameraView, LayerLoadingState } from "@ubilabs/esa-webgl-globe";
-
-import { layerListItemSelector } from "../../../selectors/layers/list-item";
-import { globeViewSelector } from "../../../selectors/globe/view";
-import { timeSelector } from "../../../selectors/globe/time";
-import { projectionSelector } from "../../../selectors/globe/projection";
-import { flyToSelector } from "../../../selectors/fly-to";
-import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
-import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
-import { globeSpinningSelector } from "../../../selectors/globe/spinning";
-import setGlobeViewAction from "../../../actions/set-globe-view";
-import setGlobeSpinningAction from "../../../actions/set-globe-spinning";
-import updateLayerLoadingStateAction from "../../../actions/update-layer-loading-state";
-import { State } from "../../../reducers";
 import Globe from "../globe/globe";
 import Gallery from "../gallery/gallery";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
@@ -35,6 +22,18 @@ import { LegendValueColor } from "../../../types/legend-value-color";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import styles from "./data-viewer.module.css";
+import updateLayerLoadingState from "../../../actions/update-layer-loading-state";
+import { State } from "../../../reducers";
+import { setGlobeSpinning } from "../../../reducers/globe/spinning";
+import { setGlobeView } from "../../../reducers/globe/view";
+import { flyToSelector } from "../../../selectors/fly-to";
+import { projectionSelector } from "../../../selectors/globe/projection";
+import { globeSpinningSelector } from "../../../selectors/globe/spinning";
+import { timeSelector } from "../../../selectors/globe/time";
+import { globeViewSelector } from "../../../selectors/globe/view";
+import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
+import { layerListItemSelector } from "../../../selectors/layers/list-item";
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 
 interface Props {
   backgroundColor: string;
@@ -51,13 +50,19 @@ const DataViewer: FunctionComponent<Props> = ({
   const { legend } = useSelector(embedElementsSelector);
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+  console.log("🚀 ~ selectedLayerIds:", selectedLayerIds);
   const projectionState = useSelector(projectionSelector);
+  console.log("🚀 ~ projectionState:", projectionState);
   const globalGlobeView = useSelector(globeViewSelector);
+  console.log("🚀 ~ globalGlobeView:", globalGlobeView);
   const globeSpinning = useSelector(globeSpinningSelector);
+  console.log("🚀 ~ globeSpinning:", globeSpinning);
   const { mainId, compareId } = selectedLayerIds;
+  console.log("🚀 ~ mainId:", mainId);
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
   );
+  console.log("🚀 ~ mainLayerDetails:", mainLayerDetails);
   const mainLayer = useSelector((state: State) =>
     layerListItemSelector(state, mainId),
   );
@@ -69,6 +74,7 @@ const DataViewer: FunctionComponent<Props> = ({
   );
 
   const time = useSelector(timeSelector);
+  console.log("🚀 ~ time:", time);
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
   const flyTo = useSelector(flyToSelector);
@@ -82,23 +88,25 @@ const DataViewer: FunctionComponent<Props> = ({
   }, []);
 
   const onMoveStartHandler = useCallback(
-    () => globeSpinning && dispatch(setGlobeSpinningAction(false)),
+    () => globeSpinning && dispatch(setGlobeSpinning(false)),
     [dispatch, globeSpinning],
   );
 
   const onMoveEndHandler = useCallback(
-    (view: CameraView) => dispatch(setGlobeViewAction(view)),
+    (view: CameraView) => dispatch(setGlobeView(view)),
     [dispatch],
   );
 
   const onLayerLoadingStateChangeHandler = useCallback(
     (layerId: string, loadingState: LayerLoadingState) =>
-      dispatch(updateLayerLoadingStateAction(layerId, loadingState)),
+      dispatch(updateLayerLoadingState({ layerId, loadingState })),
     [dispatch],
   );
 
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
+  console.log("🚀 ~ time:", time);
   const compareImageLayer = useImageLayerData(compareLayerDetails, time);
+  console.log("🚀 ~ time:", time);
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
@@ -109,9 +117,11 @@ const DataViewer: FunctionComponent<Props> = ({
   // stop globe spinning when layer is selected
   useEffect(() => {
     if ((mainId || compareId) && globeSpinning) {
-      dispatch(setGlobeSpinningAction(false));
+      console.log("🚀 ~ useEffect ~ mainId:", mainId);
+      dispatch(setGlobeSpinning(false));
     }
   }, [dispatch, mainId, compareId, globeSpinning]);
+  console.log("🚀 ~ mainId:", mainId);
 
   // Only show the globe navigation when a globe is shown.
   // Either when no data layer is selected and only basemap is shown
