@@ -5,12 +5,27 @@ import type { StoryList } from "../types/story-list";
 import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
 import { Language } from "../types/language";
 import config from "../config/main";
+export default async function fetchLayers(language: Language) {
+  const url = replaceUrlPlaceholders(config.api.layers, {
+    lang: language.toLowerCase(),
+  });
+
+  return await fetch(url).then((res) => res.json());
+}
+
 export const layersApi = createApi({
   reducerPath: "layersApi",
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
   endpoints: (builder) => ({
-    getLayers: builder.query<Layer[], void>({
-      query: () => "layers",
+    getLayers: builder.query<Layer[], Language>({
+      queryFn: async (language) => {
+        try {
+          const data = await fetchLayers(language);
+          return { data };
+        } catch (error) {
+          return { error: { status: "FETCH_ERROR", error: String(error) } };
+        }
+      },
     }),
     getLayer: builder.query<Layer, string>({
       query: (id) => `layer/${id}`,

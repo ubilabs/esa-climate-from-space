@@ -14,7 +14,7 @@ import Header from "../header/header";
 import StoryVideo from "../story-video/story-video";
 import setGlobeProjectionAction from "../../../actions/set-globe-projection";
 import setSelectedLayerIdsAction from "../../../actions/set-selected-layer-id";
-import setGlobeTimeAction from "../../../actions/set-globe-time";
+import { setGlobeTime } from "../../../reducers/globe/time";
 import Share from "../../main/share/share";
 import SplashScreen from "../splash-screen/splash-screen";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
@@ -41,11 +41,11 @@ const Story: FunctionComponent = () => {
   const { story_header } = useSelector(embedElementsSelector);
 
   // fetch story of active storyId
-  useEffect(() => {
-    if (currentStoryId) {
-      dispatch(fetchStory(currentStoryId));
-    }
-  }, [dispatch, currentStoryId]);
+  //   useEffect(() => {
+  //     if (currentStoryId) {
+  //       dispatch(fetchStory(currentStoryId));
+  //     }
+  //   }, [dispatch, currentStoryId]);
 
   // set globe to sphere projection
   useEffect(() => {
@@ -57,7 +57,7 @@ const Story: FunctionComponent = () => {
     () => () => {
       dispatch(setSelectedLayerIdsAction(null, true));
       dispatch(setSelectedLayerIdsAction(null, false));
-      dispatch(setGlobeTimeAction(0));
+      dispatch(setGlobeTime(0));
     },
     [dispatch],
   );

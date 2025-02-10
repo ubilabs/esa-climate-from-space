@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import config from "../../config/main";
-console.log("🚀 ~ config:", config);
 import { parseUrl } from "../../libs/globe-url-parameter";
 
 // get initial state from url or fallback to default state in config

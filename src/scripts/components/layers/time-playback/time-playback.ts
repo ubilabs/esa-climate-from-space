@@ -1,12 +1,12 @@
-import {FunctionComponent, useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { FunctionComponent, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import {timeSelector} from '../../../selectors/globe/time';
-import {layerLoadingStateSelector} from '../../../selectors/globe/layer-loading-state';
+import { timeSelector } from "../../../selectors/globe/time";
+import { layerLoadingStateSelector } from "../../../selectors/globe/layer-loading-state";
 
-import setGlobeTime from '../../../actions/set-globe-time';
-import {useInterval} from '../../../hooks/use-interval';
-import {LayerLoadingState} from '@ubilabs/esa-webgl-globe';
+import { useInterval } from "../../../hooks/use-interval";
+import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
+import { setGlobeTime } from "../../../reducers/globe/time";
 
 const PLAYBACK_STEP = 1000 * 60 * 60 * 24 * 30; // one month
 const PLAYBACK_SPEED = 1000; // increase one step per x milliseconds
@@ -26,7 +26,7 @@ const TimePlayback: FunctionComponent<Props> = ({
   speed = PLAYBACK_SPEED,
   steps = [PLAYBACK_STEP],
   mainLayerId,
-  compareLayerId
+  compareLayerId,
 }) => {
   const dispatch = useDispatch();
   const time = useSelector(timeSelector);
@@ -42,12 +42,12 @@ const TimePlayback: FunctionComponent<Props> = ({
       newTime = steps[stepIndex];
 
       if (stepIndex < steps.length) {
-        setStepIndex(prev => prev + 1);
+        setStepIndex((prev) => prev + 1);
       } else {
         setStepIndex(0);
         newTime = minTime;
       }
-    // if not, reuse single step for an evenly increasing playback.
+      // if not, reuse single step for an evenly increasing playback.
     } else {
       newTime = time + steps[0];
 
@@ -69,16 +69,16 @@ const TimePlayback: FunctionComponent<Props> = ({
   const layerLoadingState = useSelector(layerLoadingStateSelector);
   const mainLayerState = mainLayerId
     ? layerLoadingState[mainLayerId]
-    : ('idle' as LayerLoadingState);
+    : ("idle" as LayerLoadingState);
   const compareLayerState = compareLayerId
     ? layerLoadingState[compareLayerId]
-    : ('idle' as LayerLoadingState);
+    : ("idle" as LayerLoadingState);
 
   useEffect(() => {
     if (
       nextTime === time ||
-      mainLayerState === 'loading' ||
-      compareLayerState === 'loading'
+      mainLayerState === "loading" ||
+      compareLayerState === "loading"
     ) {
       return;
     }

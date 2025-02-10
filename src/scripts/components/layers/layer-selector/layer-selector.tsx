@@ -12,8 +12,6 @@ import { layersSelector } from "../../../selectors/layers/list";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { showLayerSelector as showLayerSelectorSelector } from "../../../selectors/show-layer-selector";
 
-import fetchLayerAction from "../../../actions/fetch-layer";
-
 import styles from "./layer-selector.module.css";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
@@ -93,22 +91,21 @@ const LayerSelector: FunctionComponent = () => {
               layers={sortedLayers}
               selectedLayerIds={selectedLayerIds}
               onSelect={(layerId, isMain) => {
-                dispatch(setShowLayer(false));
-
-                thunkDispatch(fetchLayerAction(layerId)).then(() => {
-                  dispatch(setSelectedLayerIds({ layerId, isPrimary: isMain }));
-
-                  const name = layers.find(
-                    (layer) => layer.id === layerId,
-                  )?.name;
-                  trackEvent({
-                    category: "datasets",
-                    action: isMain ? "select" : "compare",
-                    name: isMain
-                      ? name
-                      : `${selectedMainLayer?.name} - ${name}`,
-                  });
-                });
+                console.log("layerId, isMain", layerId, isMain);
+                // dispatch(setShowLayer(false));
+                // thunkDispatch(fetchLayer(layerId)).then(() => {
+                //   dispatch(setSelectedLayerIds({ layerId, isPrimary: isMain }));
+                //   const name = layers.find(
+                //     (layer) => layer.id === layerId,
+                //   )?.name;
+                //   trackEvent({
+                //     category: "datasets",
+                //     action: isMain ? "select" : "compare",
+                //     name: isMain
+                //       ? name
+                //       : `${selectedMainLayer?.name} - ${name}`,
+                //   });
+                // });
               }}
             />
           </div>
