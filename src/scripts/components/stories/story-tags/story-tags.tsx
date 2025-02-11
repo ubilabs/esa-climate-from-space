@@ -3,9 +3,8 @@ import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 import cx from "classnames";
 
-import setSelectedStoryTags from "../../../actions/set-selected-story-tags";
-
 import styles from "./story-tags.module.css";
+import { setSelectedTags } from "../../../reducers/story";
 
 interface Props {
   tags: string[];
@@ -19,7 +18,7 @@ const StoryTags: FunctionComponent<Props> = ({ tags, selected }) => {
     const newTags = selected.includes(tag)
       ? selected.filter((oldTag) => oldTag !== tag)
       : selected.concat([tag]);
-    dispatch(setSelectedStoryTags(newTags));
+    dispatch(setSelectedTags(newTags));
   };
   const getTagClasses = (tag: string) =>
     cx(styles.tag, selected.includes(tag) && styles.selected);

@@ -90,7 +90,7 @@ const TranslatedApp: FunctionComponent = () => {
           does not interfere with other parameters */}
           <Route path={["/", "/:category"]} exact>
             <Navigation />
-            <DataViewer hideNavigation={true} backgroundColor={"#10161A"} />
+            <DataViewer hideNavigation={true} backgroundColor={"#cccc1A"} />
             {time_slider && <TimeSlider />}
             {legend && <DataSetInfo />}
             <LayerSelector />
@@ -100,7 +100,7 @@ const TranslatedApp: FunctionComponent = () => {
       </IntlProvider>
       <UrlSync />
       <LayerLoader />
-      {/* <Init /> */}
+      <Init />
     </Router>
   );
 };

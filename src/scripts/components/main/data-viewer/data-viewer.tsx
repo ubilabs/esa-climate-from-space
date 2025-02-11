@@ -29,7 +29,6 @@ import cx from "classnames";
 import ContentNavigation from "../content-navigation/content-navigation";
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
-import { Props } from "react-intl/src/components/message";
 import { setGlobeSpinning } from "../../../reducers/globe/spinning";
 import { setGlobeView } from "../../../reducers/globe/view";
 import { State } from "../../../reducers";
@@ -42,10 +41,15 @@ import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
-import { useGetStoriesQuery } from "../../../services/api";
+import { Props } from "react-intl/src/components/message";
 interface RouteParams {
   category: string | undefined;
 }
+
+export type LayerLoadingStateChangeHandle = (
+  layerId: string,
+  loadingState: LayerLoadingState,
+) => void;
 
 const DataViewer: FunctionComponent<Props> = ({
   backgroundColor,
@@ -63,8 +67,8 @@ const DataViewer: FunctionComponent<Props> = ({
     category || null,
   );
 
-  const { data: stories } = useGetStoriesQuery("en");
-  console.log("🚀 ~ stories:", stories);
+  //   const { data: stories } = useGetStoriesQuery("en");
+  //   console.log("🚀 ~ stories:", stories);
   const history = useHistory();
 
   const { screenWidth } = useScreenSize();
@@ -117,11 +121,12 @@ const DataViewer: FunctionComponent<Props> = ({
     [dispatch],
   );
 
-  const onLayerLoadingStateChangeHandler = useCallback(
-    (layerId: string, loadingState: LayerLoadingState) =>
-      dispatch(updateLayerLoadingState({ layerId, loadingState })),
-    [dispatch],
-  );
+  const onLayerLoadingStateChangeHandler: LayerLoadingStateChangeHandle =
+    useCallback(
+      (layerId, loadingState) =>
+        dispatch(updateLayerLoadingState({ layerId, loadingState })),
+      [dispatch],
+    );
 
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
   console.log("🚀 ~ time:", time);

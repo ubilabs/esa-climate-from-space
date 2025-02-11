@@ -1,11 +1,11 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 
 import { State } from "../../../reducers";
 import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
-import { useGetLayersQuery } from "../../../services/api";
+import { layersApi } from "../../../services/api";
 
 /**
  * Handles loading of layer list and layer details data
@@ -21,20 +21,25 @@ const LayerLoader: FunctionComponent = () => {
     layerDetailsSelector(state, compareId),
   );
 
-  const { data } = useGetLayersQuery("en");
-  console.log("🚀 ~ data:", data);
-  //   const { data: layers } = layersApi.useGetLayersQuery();
-  //   console.log("🚀 ~ layers:", layers);
-  // fetch layer if it is selected and not already downloaded
-  //   useEffect(() => {
-  //     if (mainId && !mainLayerDetails) {
-  //       dispatch(fetchLayerAction(mainId));
-  //     }
+  // load layer list on mount
+  useEffect(() => {
+    // Add a subscription
+    const result = dispatch(layersApi.endpoints.getLayers.initiate("en"));
 
-  //     if (compareId && !compareLayerDetails) {
-  //       dispatch(fetchLayerAction(compareId));
-  //     }
-  //   }, [dispatch, mainId, mainLayerDetails, compareId, compareLayerDetails]);
+    // Return the `unsubscribe` callback to be called in the `useEffect` cleanup step
+    return result.unsubscribe;
+  }, [dispatch]);
+
+  // fetch layer if it is selected and not already downloaded
+  useEffect(() => {
+    if (mainId && !mainLayerDetails) {
+      dispatch(layersApi.endpoints.getLayer.initiate(mainId));
+    }
+
+    if (compareId && !compareLayerDetails) {
+      dispatch(layersApi.endpoints.getLayer.initiate(compareId));
+    }
+  }, [dispatch, mainId, mainLayerDetails, compareId, compareLayerDetails]);
 
   return null;
 };

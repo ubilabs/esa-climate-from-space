@@ -6,8 +6,9 @@ import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
 import { Language } from "../types/language";
 import config from "../config/main";
 import fetchLayer from "../api/fetch-layer";
+import { setLayerDetails } from "../reducers/layers";
 
-export default async function fetchLayers(language: Language) {
+async function fetchLayers(language: Language) {
   const url = replaceUrlPlaceholders(config.api.layers, {
     lang: language.toLowerCase(),
   });
@@ -20,12 +21,17 @@ export const layersApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
   endpoints: (builder) => ({
     getLayers: builder.query<Layer[], Language>({
-      queryFn: async (language) => {
+      queryFn: async (language: Language) => {
         try {
           const data = await fetchLayers(language);
           return { data };
         } catch (error) {
-          return { error: { status: "FETCH_ERROR", error: String(error) } };
+          return {
+            error: {
+              status: "CUSTOM_ERROR",
+              error: error instanceof Error ? error.message : "Unknown error",
+            },
+          };
         }
       },
     }),
@@ -33,6 +39,7 @@ export const layersApi = createApi({
       queryFn: async (id: string) => {
         try {
           const data = await fetchLayer(id);
+          setLayerDetails(data);
           return { data };
         } catch (error) {
           return {

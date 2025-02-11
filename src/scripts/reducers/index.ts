@@ -10,8 +10,9 @@ import downloadedDataReducer from "./downloaded-data";
 import welcomeScreenReducer from "./welcome-screen";
 import embedElementsReducer from "./embed-elements";
 import { layersApi, storiesApi } from "../services/api";
+import { combineReducers } from "redux";
 
-const rootReducer = {
+const rootReducer = combineReducers({
   [layersApi.reducerPath]: layersApi.reducer,
   [storiesApi.reducerPath]: storiesApi.reducer,
   language: languageReducer,
@@ -25,7 +26,7 @@ const rootReducer = {
   downloadedData: downloadedDataReducer,
   welcomeScreen: welcomeScreenReducer,
   embedElements: embedElementsReducer,
-};
+});
 
 export default rootReducer;
-export type State = any;
+export type State = ReturnType<typeof rootReducer>;

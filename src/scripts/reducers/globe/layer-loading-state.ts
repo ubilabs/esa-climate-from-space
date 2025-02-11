@@ -16,7 +16,10 @@ const layerLoadingStateSlice = createSlice({
       state,
       action: PayloadAction<UpdateLayerLoadingStatePayload>,
     ) => {
-      state[action.payload.layerId] = action.payload.loadingState;
+      return {
+        ...state,
+        [action.payload.layerId]: action.payload.loadingState,
+      };
     },
   },
 });

@@ -24,6 +24,7 @@ const LayerSelector: FunctionComponent = () => {
 
   const { trackEvent } = useMatomo();
   const layers = useSelector(layersSelector);
+  console.log("🚀 ~ layers:", layers);
   const sortedLayers = layers
     .map((layer) => ({ ...layer }))
     .sort((a, b) => a.shortName.localeCompare(b.shortName));
