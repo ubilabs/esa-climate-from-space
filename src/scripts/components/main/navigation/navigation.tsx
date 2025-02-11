@@ -10,17 +10,17 @@ import showLayerSelectorAction from "../../../actions/show-layer-selector";
 import Share from "../share/share";
 import { MenuIcon } from "../icons/menu-icon";
 import { FilterIcon } from "../icons/filter-icon";
-import setLanguageAction from "../../../actions/set-language";
 import { languageSelector } from "../../../selectors/language";
 import LanguageTooltip from "../language-tooltip/language-tooltip";
 import SelectedTags from "../../stories/selected-tags/selected-tags";
 import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
-import setWelcomeScreenAction from "../../../actions/set-welcome-screen";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import config from "../../../config/main";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import styles from "./navigation.module.css";
+import { setLanguage } from "../../../reducers/language";
+import { setWelcomeScreen } from "../../../reducers/welcome-screen";
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -88,7 +88,10 @@ const Navigation: FunctionComponent = () => {
       {!savedLanguage && (
         <LanguageTooltip
           onMenuOpen={() => setShowMenu(true)}
-          onClose={() => dispatch(setLanguageAction(selectedLanguage))}
+          onClose={() => {
+            dispatch(setLanguage(selectedLanguage));
+            // setShowTooltip(false);
+          }}
         />
       )}
       {showMenu && (
@@ -96,7 +99,7 @@ const Navigation: FunctionComponent = () => {
           <Menu
             onRestartOnboarding={() => {
               setShowMenu(false);
-              dispatch(setWelcomeScreenAction(false));
+              dispatch(setWelcomeScreen(false));
             }}
           />
         </Overlay>

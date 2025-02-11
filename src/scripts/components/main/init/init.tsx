@@ -1,18 +1,20 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, use, useEffect } from "react";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import fetchStories from "../../../actions/fetch-stories";
-import { useGetLayersQuery, useGetStoriesQuery } from "../../../services/api";
+import {
+  storiesApi,
+  useGetLayersQuery,
+  useGetStoriesQuery,
+} from "../../../services/api";
 
 const Init: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
 
-  console.log("fetching stories");
-  //   useEffect(() => {
-  //     dispatch(fetchStories());
-  // }, [dispatch]);
+  useEffect(() => {
+    const result = dispatch(storiesApi.endpoints.getStories.initiate("en"));
 
-  const { data: stories } = useGetStoriesQuery("en");
-  console.log("🚀 ~ stories:", stories);
+    return result.unsubscribe;
+  });
 
   return null;
 };

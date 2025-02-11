@@ -107,7 +107,7 @@ const TranslatedApp: FunctionComponent = () => {
       </IntlProvider>
       <UrlSync />
       <LayerLoader />
-      {/* <Init /> */}
+      <Init />
     </Router>
   );
 };

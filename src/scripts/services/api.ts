@@ -5,7 +5,10 @@ import type { StoryList } from "../types/story-list";
 import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
 import { Language } from "../types/language";
 import config from "../config/main";
-export default async function fetchLayers(language: Language) {
+import fetchLayer from "../api/fetch-layer";
+import { setLayerDetails } from "../reducers/layers";
+
+async function fetchLayers(language: Language) {
   const url = replaceUrlPlaceholders(config.api.layers, {
     lang: language.toLowerCase(),
   });
@@ -18,17 +21,35 @@ export const layersApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
   endpoints: (builder) => ({
     getLayers: builder.query<Layer[], Language>({
-      queryFn: async (language) => {
+      queryFn: async (language: Language) => {
         try {
           const data = await fetchLayers(language);
           return { data };
         } catch (error) {
-          return { error: { status: "FETCH_ERROR", error: String(error) } };
+          return {
+            error: {
+              status: "CUSTOM_ERROR",
+              error: error instanceof Error ? error.message : "Unknown error",
+            },
+          };
         }
       },
     }),
     getLayer: builder.query<Layer, string>({
-      query: (id) => `layer/${id}`,
+      queryFn: async (id: string) => {
+        try {
+          const data = await fetchLayer(id);
+          setLayerDetails(data);
+          return { data };
+        } catch (error) {
+          return {
+            error: {
+              status: "CUSTOM_ERROR",
+              error: error instanceof Error ? error.message : "Unknown error",
+            },
+          };
+        }
+      },
     }),
   }),
 });

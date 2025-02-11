@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { CameraView, LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 import Globe from "../globe/globe";
 import Gallery from "../gallery/gallery";
-import GlobeNavigation from "../globe-navigation/globe-navigation";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
@@ -22,8 +21,8 @@ import { LegendValueColor } from "../../../types/legend-value-color";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import styles from "./data-viewer.module.css";
-import updateLayerLoadingState from "../../../actions/update-layer-loading-state";
 import { State } from "../../../reducers";
+import GlobeNavigation from "../globe-navigation/globe-navigation";
 import { setGlobeSpinning } from "../../../reducers/globe/spinning";
 import { setGlobeView } from "../../../reducers/globe/view";
 import { flyToSelector } from "../../../selectors/fly-to";
@@ -34,12 +33,21 @@ import { globeViewSelector } from "../../../selectors/globe/view";
 import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
 
 interface Props {
   backgroundColor: string;
   hideNavigation?: boolean;
   markers?: Marker[];
 }
+interface RouteParams {
+  category: string | undefined;
+}
+
+export type LayerLoadingStateChangeHandle = (
+  layerId: string,
+  loadingState: LayerLoadingState,
+) => void;
 
 const DataViewer: FunctionComponent<Props> = ({
   backgroundColor,
@@ -97,11 +105,12 @@ const DataViewer: FunctionComponent<Props> = ({
     [dispatch],
   );
 
-  const onLayerLoadingStateChangeHandler = useCallback(
-    (layerId: string, loadingState: LayerLoadingState) =>
-      dispatch(updateLayerLoadingState({ layerId, loadingState })),
-    [dispatch],
-  );
+  const onLayerLoadingStateChangeHandler: LayerLoadingStateChangeHandle =
+    useCallback(
+      (layerId, loadingState) =>
+        dispatch(updateLayerLoadingState({ layerId, loadingState })),
+      [dispatch],
+    );
 
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
   console.log("🚀 ~ time:", time);

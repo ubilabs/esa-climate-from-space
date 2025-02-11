@@ -9,11 +9,8 @@ import StoryGlobe from "../story-globe/story-globe";
 import StoryContent from "../story-content/story-content";
 import StoryGallery from "../story-gallery/story-gallery";
 import StoryFooter from "../story-footer/story-footer";
-import fetchStory from "../../../actions/fetch-story";
 import Header from "../header/header";
 import StoryVideo from "../story-video/story-video";
-import setGlobeProjectionAction from "../../../actions/set-globe-projection";
-import setSelectedLayerIdsAction from "../../../actions/set-selected-layer-id";
 import { setGlobeTime } from "../../../reducers/globe/time";
 import Share from "../../main/share/share";
 import SplashScreen from "../splash-screen/splash-screen";
@@ -28,6 +25,9 @@ import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import StoryEmbedded from "../story-embedded/story-embedded";
 
 import styles from "./story.module.css";
+import { setGlobeProjection } from "../../../reducers/globe/projection";
+import { setSelectedLayerIds } from "../../../reducers/layers";
+import { storiesApi } from "../../../services/api";
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
@@ -41,22 +41,42 @@ const Story: FunctionComponent = () => {
   const { story_header } = useSelector(embedElementsSelector);
 
   // fetch story of active storyId
-  //   useEffect(() => {
-  //     if (currentStoryId) {
-  //       dispatch(fetchStory(currentStoryId));
-  //     }
-  //   }, [dispatch, currentStoryId]);
+  useEffect(() => {
+    if (currentStoryId) {
+      dispatch(
+        storiesApi.endpoints.getStory.initiate({
+          id: currentStoryId,
+          language: "en",
+        }),
+      );
+    }
+  }, [dispatch, currentStoryId]);
 
   // set globe to sphere projection
   useEffect(() => {
-    dispatch(setGlobeProjectionAction(sphereProjection, 0));
+    dispatch(
+      setGlobeProjection({
+        projection: sphereProjection,
+        morphTime: 0,
+      }),
+    );
   }, [dispatch, sphereProjection]);
 
   // clean up story on unmount
   useEffect(
     () => () => {
-      dispatch(setSelectedLayerIdsAction(null, true));
-      dispatch(setSelectedLayerIdsAction(null, false));
+      dispatch(
+        setSelectedLayerIds({
+          layerId: null,
+          isPrimary: true,
+        }),
+      );
+      dispatch(
+        setSelectedLayerIds({
+          layerId: null,
+          isPrimary: false,
+        }),
+      );
       dispatch(setGlobeTime(0));
     },
     [dispatch],
