@@ -216,8 +216,6 @@ function useInitialBasemapTilesLoaded(globe: WebGlGlobe | null) {
   const handleLoadingStateChange = useCallback(
     (ev: LayerLoadingStateChangedEvent) => {
       const { layer, state } = ev.detail;
-      console.log("🚀 ~ useInitialBasemapTilesLoaded ~ layer:", layer);
-      console.log("🚀 ~ useInitialBasemapTilesLoaded ~ ev:", ev);
 
       if (layer.id === "basemap") {
         if (state === "ready" || state === "idle") {

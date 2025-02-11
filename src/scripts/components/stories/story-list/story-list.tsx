@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import cx from "classnames";
 import { FormattedMessage } from "react-intl";
 
-import { storyListSelector } from "../../../selectors/story/list";
 import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
 import StoryListItem from "../story-list-item/story-list-item";
 import { filterStories } from "../../../libs/filter-stories";
@@ -27,6 +26,7 @@ const StoryList: FunctionComponent<Props> = ({
   const { data: stories } = useGetStoriesQuery("en");
   const selectedTags = useSelector(selectedTagsSelector);
   const filteredStories = filterStories(stories, selectedTags);
+  console.log("🚀 ~ filteredStories:", filteredStories);
 
   const classes = cx(
     styles.storyListGrid,

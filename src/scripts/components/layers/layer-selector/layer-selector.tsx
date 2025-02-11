@@ -17,6 +17,7 @@ import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
+import fetchLayer from "../../../api/fetch-layer";
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,6 @@ const LayerSelector: FunctionComponent = () => {
 
   const { trackEvent } = useMatomo();
   const layers = useSelector(layersSelector);
-  console.log("🚀 ~ layers:", layers);
   const sortedLayers = layers
     .map((layer) => ({ ...layer }))
     .sort((a, b) => a.shortName.localeCompare(b.shortName));
@@ -92,21 +92,20 @@ const LayerSelector: FunctionComponent = () => {
               layers={sortedLayers}
               selectedLayerIds={selectedLayerIds}
               onSelect={(layerId, isMain) => {
-                console.log("layerId, isMain", layerId, isMain);
-                // dispatch(setShowLayer(false));
-                // thunkDispatch(fetchLayer(layerId)).then(() => {
-                //   dispatch(setSelectedLayerIds({ layerId, isPrimary: isMain }));
-                //   const name = layers.find(
-                //     (layer) => layer.id === layerId,
-                //   )?.name;
-                //   trackEvent({
-                //     category: "datasets",
-                //     action: isMain ? "select" : "compare",
-                //     name: isMain
-                //       ? name
-                //       : `${selectedMainLayer?.name} - ${name}`,
-                //   });
-                // });
+                dispatch(setShowLayer(false));
+                thunkDispatch(fetchLayer(layerId)).then(() => {
+                  dispatch(setSelectedLayerIds({ layerId, isPrimary: isMain }));
+                  const name = layers.find(
+                    (layer) => layer.id === layerId,
+                  )?.name;
+                  trackEvent({
+                    category: "datasets",
+                    action: isMain ? "select" : "compare",
+                    name: isMain
+                      ? name
+                      : `${selectedMainLayer?.name} - ${name}`,
+                  });
+                });
               }}
             />
           </div>

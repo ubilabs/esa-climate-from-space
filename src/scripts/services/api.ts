@@ -7,6 +7,7 @@ import { Language } from "../types/language";
 import config from "../config/main";
 import fetchLayer from "../api/fetch-layer";
 import { setLayerDetails } from "../reducers/layers";
+import fetchStory from "../api/fetch-story";
 
 async function fetchLayers(language: Language) {
   const url = replaceUrlPlaceholders(config.api.layers, {
@@ -65,7 +66,19 @@ export const storiesApi = createApi({
       },
     }),
     getStory: builder.query<Story, { id: string; language: string }>({
-      query: ({ id, language }) => `stories/${id}?lang=${language}`,
+      queryFn: async ({ id, language }) => {
+        try {
+          const data = await fetchStory(id, language as Language);
+          return { data };
+        } catch (error) {
+          return {
+            error: {
+              status: "CUSTOM_ERROR",
+              error: error instanceof Error ? error.message : "Unknown error",
+            },
+          };
+        }
+      },
     }),
   }),
 });

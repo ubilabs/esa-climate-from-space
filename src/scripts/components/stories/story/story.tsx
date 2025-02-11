@@ -17,7 +17,6 @@ import SplashScreen from "../splash-screen/splash-screen";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import { GlobeProjection } from "../../../types/globe-projection";
-import { StoryMode } from "../../../types/story-mode";
 import { Slide, Story as StoryType } from "../../../types/story";
 import { GalleryItemType } from "../../../types/gallery-item";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
@@ -28,6 +27,7 @@ import styles from "./story.module.css";
 import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { storiesApi } from "../../../services/api";
+import { StoryMode } from "../../../types/story-mode";
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
@@ -43,6 +43,7 @@ const Story: FunctionComponent = () => {
   // fetch story of active storyId
   useEffect(() => {
     if (currentStoryId) {
+      console.log("🚀 ~ useEffect ~ currentStoryId:", currentStoryId);
       dispatch(
         storiesApi.endpoints.getStory.initiate({
           id: currentStoryId,

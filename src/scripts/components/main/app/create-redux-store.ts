@@ -18,7 +18,7 @@ import { configureStore } from "@reduxjs/toolkit";
 const isProduction = import.meta.env.PROD;
 const middleware: Middleware[] = [thunk];
 
-if (false) {
+if (isElectron()) {
   middleware.push(offlineSaveMiddleware);
   middleware.push(offlineLoadMiddleware);
 }
