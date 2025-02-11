@@ -23,20 +23,22 @@ const StoryTags: FunctionComponent<Props> = ({ tags, selected }) => {
   const getTagClasses = (tag: string) =>
     cx(styles.tag, selected.includes(tag) && styles.selected);
 
-  const sortedTags = tags.sort((a, b) => {
-    const isSelectedA = selected.includes(a);
-    const isSelectedB = selected.includes(b);
+  const sortedTags = tags
+    .map((tag) => tag)
+    .sort((a, b) => {
+      const isSelectedA = selected.includes(a);
+      const isSelectedB = selected.includes(b);
 
-    if (isSelectedA && !isSelectedB) {
-      return -1;
-    }
+      if (isSelectedA && !isSelectedB) {
+        return -1;
+      }
 
-    if (isSelectedB && !isSelectedA) {
-      return 1;
-    }
+      if (isSelectedB && !isSelectedA) {
+        return 1;
+      }
 
-    return 0;
-  });
+      return 0;
+    });
 
   const tagCount = 3;
 

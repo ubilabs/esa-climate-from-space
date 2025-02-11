@@ -23,7 +23,6 @@ import DataViewer from "../data-viewer/data-viewer";
 import Tracking from "../tracking/tracking";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
 import translations from "../../../i18n";
-import { useStoryMarkers } from "../../../hooks/use-story-markers";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import styles from "./app.module.css";
@@ -39,21 +38,14 @@ const matomoInstance = createInstance({
 });
 
 const TranslatedApp: FunctionComponent = () => {
-  const markers = useStoryMarkers();
-
-  const state = useSelector((state) => state);
-  console.log("state", state);
   const language = useSelector(languageSelector);
   const {
-    //   logo: embedLogo,
-    //   globe_navigation,
+    logo: embedLogo,
+    globe_navigation,
     markers: embedMarkers,
-    //   time_slider,
-    //   legend,
+    time_slider,
+    legend,
   } = useSelector(embedElementsSelector);
-
-  const { data: stories } = useGetStoriesQuery("en");
-  console.log("🚀 ~ stories:", stories);
 
   const logo = (
     <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
@@ -68,15 +60,14 @@ const TranslatedApp: FunctionComponent = () => {
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
           <Route path="/" exact>
-            {/* {embedLogo && logo} */}
+            {embedLogo && logo}
             <DataViewer
               hideNavigation={true}
-              markers={embedMarkers ? markers : []}
               backgroundColor={"var(--black)"}
             />
             <Navigation />
-            {/* {time_slider && <TimeSlider />}
-            {legend && <DataSetInfo />} */}
+            {time_slider && <TimeSlider />}
+            {legend && <DataSetInfo />}
             <LayerSelector />
           </Route>
           <Route path="/about" exact>

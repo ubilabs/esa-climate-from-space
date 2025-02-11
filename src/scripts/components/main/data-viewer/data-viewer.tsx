@@ -58,19 +58,13 @@ const DataViewer: FunctionComponent<Props> = ({
   const { legend } = useSelector(embedElementsSelector);
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  console.log("🚀 ~ selectedLayerIds:", selectedLayerIds);
   const projectionState = useSelector(projectionSelector);
-  console.log("🚀 ~ projectionState:", projectionState);
   const globalGlobeView = useSelector(globeViewSelector);
-  console.log("🚀 ~ globalGlobeView:", globalGlobeView);
   const globeSpinning = useSelector(globeSpinningSelector);
-  console.log("🚀 ~ globeSpinning:", globeSpinning);
   const { mainId, compareId } = selectedLayerIds;
-  console.log("🚀 ~ mainId:", mainId);
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
   );
-  console.log("🚀 ~ mainLayerDetails:", mainLayerDetails);
   const mainLayer = useSelector((state: State) =>
     layerListItemSelector(state, mainId),
   );
@@ -82,7 +76,6 @@ const DataViewer: FunctionComponent<Props> = ({
   );
 
   const time = useSelector(timeSelector);
-  console.log("🚀 ~ time:", time);
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const [isMainActive, setIsMainActive] = useState(true);
   const flyTo = useSelector(flyToSelector);
@@ -113,9 +106,7 @@ const DataViewer: FunctionComponent<Props> = ({
     );
 
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
-  console.log("🚀 ~ time:", time);
   const compareImageLayer = useImageLayerData(compareLayerDetails, time);
-  console.log("🚀 ~ time:", time);
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
@@ -126,11 +117,9 @@ const DataViewer: FunctionComponent<Props> = ({
   // stop globe spinning when layer is selected
   useEffect(() => {
     if ((mainId || compareId) && globeSpinning) {
-      console.log("🚀 ~ useEffect ~ mainId:", mainId);
       dispatch(setGlobeSpinning(false));
     }
   }, [dispatch, mainId, compareId, globeSpinning]);
-  console.log("🚀 ~ mainId:", mainId);
 
   // Only show the globe navigation when a globe is shown.
   // Either when no data layer is selected and only basemap is shown

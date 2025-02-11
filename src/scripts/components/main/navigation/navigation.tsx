@@ -6,7 +6,6 @@ import Overlay from "../overlay/overlay";
 import Menu from "../menu/menu";
 import { LayersIcon } from "../icons/layers-icon";
 import { StoryIcon } from "../icons/story-icon";
-import showLayerSelectorAction from "../../../actions/show-layer-selector";
 import Share from "../share/share";
 import { MenuIcon } from "../icons/menu-icon";
 import { FilterIcon } from "../icons/filter-icon";
@@ -21,6 +20,7 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 import styles from "./navigation.module.css";
 import { setLanguage } from "../../../reducers/language";
 import { setWelcomeScreen } from "../../../reducers/welcome-screen";
+import { setShowLayer } from "../../../reducers/show-layer-selector";
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -67,7 +67,7 @@ const Navigation: FunctionComponent = () => {
             className={styles.button}
             id="ui-layers"
             label="layers"
-            onClick={() => dispatch(showLayerSelectorAction(true))}
+            onClick={() => dispatch(setShowLayer(true))}
             icon={LayersIcon}
             hideLabelOnMobile
           />
