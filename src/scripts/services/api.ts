@@ -5,6 +5,8 @@ import type { StoryList } from "../types/story-list";
 import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
 import { Language } from "../types/language";
 import config from "../config/main";
+import fetchLayer from "../api/fetch-layer";
+
 export default async function fetchLayers(language: Language) {
   const url = replaceUrlPlaceholders(config.api.layers, {
     lang: language.toLowerCase(),
@@ -28,11 +30,27 @@ export const layersApi = createApi({
       },
     }),
     getLayer: builder.query<Layer, string>({
-      query: (id) => `layer/${id}`,
+      queryFn: async (id: string) => {
+        try {
+          const data = await fetchLayer(id);
+          return { data };
+        } catch (error) {
+          return {
+            error: {
+              status: "CUSTOM_ERROR",
+              error: error instanceof Error ? error.message : "Unknown error",
+            },
+          };
+        }
+      },
     }),
   }),
 });
 
+async function fetchStory(id: string, lang: Language) {
+  const url = replaceUrlPlaceholders(config.api.story, { id, lang });
+  return fetch(url).then((res) => res.json());
+}
 export const storiesApi = createApi({
   reducerPath: "storiesApi",
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
@@ -44,7 +62,10 @@ export const storiesApi = createApi({
       },
     }),
     getStory: builder.query<Story, { id: string; language: string }>({
-      query: ({ id, language }) => `stories/${id}?lang=${language}`,
+      queryFn: async ({ id, language }) => {
+        const story = await fetchStory(id, language as Language);
+        return { data: story };
+      },
     }),
   }),
 });

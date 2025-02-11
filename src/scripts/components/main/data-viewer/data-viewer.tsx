@@ -42,6 +42,7 @@ import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
+import { useGetStoriesQuery } from "../../../services/api";
 interface RouteParams {
   category: string | undefined;
 }
@@ -62,6 +63,8 @@ const DataViewer: FunctionComponent<Props> = ({
     category || null,
   );
 
+  const { data: stories } = useGetStoriesQuery("en");
+  console.log("🚀 ~ stories:", stories);
   const history = useHistory();
 
   const { screenWidth } = useScreenSize();

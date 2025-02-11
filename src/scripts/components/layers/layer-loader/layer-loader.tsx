@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent } from "react";
 import { useSelector } from "react-redux";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 
@@ -23,6 +23,8 @@ const LayerLoader: FunctionComponent = () => {
 
   const { data } = useGetLayersQuery("en");
   console.log("🚀 ~ data:", data);
+  //   const { data: layers } = layersApi.useGetLayersQuery();
+  //   console.log("🚀 ~ layers:", layers);
   // fetch layer if it is selected and not already downloaded
   //   useEffect(() => {
   //     if (mainId && !mainLayerDetails) {

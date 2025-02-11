@@ -16,6 +16,8 @@ import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import { store } from "./create-redux-store";
 
 import Story from "../../stories/story/story";
+console.log("🚀 ~ story:", story);
+console.log("🚀 ~ story:", story);
 import StoriesSelector from "../../stories/stories-selector/stories-selector";
 import PresentationSelector from "../../stories/presentation-selector/presentation-selector";
 import ShowcaseSelector from "../../stories/showcase-selector/showcase-selector";
@@ -28,7 +30,14 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 import "./app.css";
 import "../../../../variables.css";
 import { useStoryMarkers } from "../../../hooks/use-story-markers";
-import { useGetStoriesQuery } from "../../../services/api";
+console.log("🚀 ~ story:", story);
+import {
+  useGetLayerQuery,
+  useGetLayersQuery,
+  useGetStoriesQuery,
+  useGetStoryQuery,
+} from "../../../services/api";
+import story from "../../../reducers/story";
 
 // create matomo tracking instance
 const matomoInstance = createInstance({
@@ -41,9 +50,6 @@ const matomoInstance = createInstance({
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
   const { time_slider, legend } = useSelector(embedElementsSelector);
-
-  const { data: stories } = useGetStoriesQuery("en");
-  console.log("🚀 ~ stories:", stories);
 
   const logo = (
     <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
