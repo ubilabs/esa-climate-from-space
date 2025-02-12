@@ -26,7 +26,7 @@ import StoryEmbedded from "../story-embedded/story-embedded";
 import styles from "./story.module.css";
 import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { setSelectedLayerIds } from "../../../reducers/layers";
-import { storiesApi } from "../../../services/api";
+import { useGetStoryQuery } from "../../../services/api";
 import { StoryMode } from "../../../types/story-mode";
 
 const Story: FunctionComponent = () => {
@@ -34,24 +34,16 @@ const Story: FunctionComponent = () => {
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const { mode, slideIndex, currentStoryId, selectedStory, storyListItem } =
-    storyParams;
+  const { mode, slideIndex, currentStoryId, storyListItem } = storyParams;
   const storyMode = mode === StoryMode.Stories;
-  const isSplashScreen = Boolean(selectedStory?.slides[slideIndex].splashImage);
   const { story_header } = useSelector(embedElementsSelector);
 
-  // fetch story of active storyId
-  useEffect(() => {
-    if (currentStoryId) {
-      console.log("🚀 ~ useEffect ~ currentStoryId:", currentStoryId);
-      dispatch(
-        storiesApi.endpoints.getStory.initiate({
-          id: currentStoryId,
-          language: "en",
-        }),
-      );
-    }
-  }, [dispatch, currentStoryId]);
+  const { data: selectedStory } = useGetStoryQuery({
+    id: currentStoryId,
+    language: "en",
+  });
+
+  const isSplashScreen = Boolean(selectedStory?.slides[slideIndex].splashImage);
 
   // set globe to sphere projection
   useEffect(() => {

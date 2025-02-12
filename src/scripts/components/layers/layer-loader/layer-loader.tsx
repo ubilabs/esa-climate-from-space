@@ -5,7 +5,7 @@ import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { State } from "../../../reducers";
 import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
-import { layersApi } from "../../../services/api";
+import { layersApi, useGetLayerQuery } from "../../../services/api";
 
 /**
  * Handles loading of layer list and layer details data
@@ -31,15 +31,9 @@ const LayerLoader: FunctionComponent = () => {
   }, [dispatch]);
 
   // fetch layer if it is selected and not already downloaded
-  useEffect(() => {
-    if (mainId && !mainLayerDetails) {
-      dispatch(layersApi.endpoints.getLayer.initiate(mainId));
-    }
-
-    if (compareId && !compareLayerDetails) {
-      dispatch(layersApi.endpoints.getLayer.initiate(compareId));
-    }
-  }, [dispatch, mainId, mainLayerDetails, compareId, compareLayerDetails]);
+  // fetch layer details using RTK Query hooks
+  const {} = useGetLayerQuery(mainId ?? "", { skip: !mainId });
+  const {} = useGetLayerQuery(compareId ?? "", { skip: !compareId });
 
   return null;
 };

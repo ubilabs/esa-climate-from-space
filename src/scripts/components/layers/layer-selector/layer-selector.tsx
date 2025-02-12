@@ -17,7 +17,7 @@ import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
-import fetchLayer from "../../../api/fetch-layer";
+import { layersApi } from "../../../services/api";
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -93,18 +93,15 @@ const LayerSelector: FunctionComponent = () => {
               selectedLayerIds={selectedLayerIds}
               onSelect={(layerId, isMain) => {
                 dispatch(setShowLayer(false));
-                thunkDispatch(fetchLayer(layerId)).then(() => {
-                  dispatch(setSelectedLayerIds({ layerId, isPrimary: isMain }));
-                  const name = layers.find(
-                    (layer) => layer.id === layerId,
-                  )?.name;
-                  trackEvent({
-                    category: "datasets",
-                    action: isMain ? "select" : "compare",
-                    name: isMain
-                      ? name
-                      : `${selectedMainLayer?.name} - ${name}`,
-                  });
+                thunkDispatch(layersApi.endpoints.getLayer.initiate(layerId));
+                dispatch(setSelectedLayerIds({ layerId, isPrimary: isMain }));
+                const name = layers.find((layer) => layer.id === layerId)?.name;
+                console.log("🚀 ~ name:", name);
+                console.log("🚀 ~ selectedMainLayer:", selectedMainLayer);
+                trackEvent({
+                  category: "datasets",
+                  action: isMain ? "select" : "compare",
+                  name: isMain ? name : `${selectedMainLayer?.name} - ${name}`,
                 });
               }}
             />

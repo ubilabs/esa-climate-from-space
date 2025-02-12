@@ -34,7 +34,6 @@ const StoryListItemContent: FunctionComponent<Props> = ({
     mode === StoryMode.Showcase && styles.showcase,
     selectedIndex >= 0 && styles.selected,
   );
-  console.log("story", story);
   const isStoriesMode = StoryMode.Stories === mode;
   const downloadUrl = replaceUrlPlaceholders(config.api.storyOfflinePackage, {
     id: story.id,

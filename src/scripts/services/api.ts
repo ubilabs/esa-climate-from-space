@@ -8,6 +8,9 @@ import config from "../config/main";
 import fetchLayer from "../api/fetch-layer";
 import { setLayerDetails } from "../reducers/layers";
 import fetchStory from "../api/fetch-story";
+import { convertLegacyStory } from "../libs/convert-legacy-story";
+import { isLegacyStory } from "../libs/is-legacy-story";
+import { LegacyStory } from "../types/legacy-story";
 
 async function fetchLayers(language: Language) {
   const url = replaceUrlPlaceholders(config.api.layers, {
@@ -37,10 +40,11 @@ export const layersApi = createApi({
       },
     }),
     getLayer: builder.query<Layer, string>({
-      queryFn: async (id: string) => {
+      queryFn: async (id: string, { dispatch }) => {
         try {
           const data = await fetchLayer(id);
-          setLayerDetails(data);
+          console.log("🚀 ~ queryFn: ~ data:", data);
+          dispatch(setLayerDetails(data));
           return { data };
         } catch (error) {
           return {
@@ -68,7 +72,10 @@ export const storiesApi = createApi({
     getStory: builder.query<Story, { id: string; language: string }>({
       queryFn: async ({ id, language }) => {
         try {
-          const data = await fetchStory(id, language as Language);
+          const rawData = await fetchStory(id, language as Language);
+          const data = isLegacyStory(rawData)
+            ? convertLegacyStory(rawData as LegacyStory)
+            : (rawData as Story);
           return { data };
         } catch (error) {
           return {
