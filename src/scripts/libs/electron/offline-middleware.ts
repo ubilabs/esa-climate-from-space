@@ -1,70 +1,52 @@
 // This is a redux middleware which saves and loads the response of the given
 // fetch actions on the local file system for offline use.
-import {Middleware, Dispatch, AnyAction} from 'redux';
-import {
-  FETCH_LAYERS_SUCCESS,
-  FETCH_LAYERS_ERROR
-} from '../../actions/fetch-layers';
-import {
-  FETCH_STORIES_SUCCESS,
-  FETCH_STORIES_ERROR
-} from '../../actions/fetch-stories';
-import {
-  FETCH_STORY_SUCCESS,
-  FETCH_STORY_ERROR,
-  fetchStorySuccessAction
-} from '../../actions/fetch-story';
-import {
-  FETCH_LAYER_SUCCESS,
-  FETCH_LAYER_ERROR,
-  fetchLayerSuccessAction
-} from '../../actions/fetch-layer';
-import {saveAction} from './save-action';
-import {loadAction} from './load-action';
+import { Middleware, Dispatch, AnyAction } from "@reduxjs/toolkit";
+import { saveAction } from "./save-action";
+import { loadAction } from "./load-action";
 
-import {ActionToPersist} from '../../types/action-to-persist';
+import { ActionToPersist } from "../../types/action-to-persist";
 
 // These are the actions we want to save/load when in electron mode
 const actionsToPersist: ActionToPersist[] = [
   {
-    success: FETCH_LAYERS_SUCCESS,
-    error: FETCH_LAYERS_ERROR,
+    success: "fetchLayers/success",
+    error: "fetchLayers/error",
     save: true,
-    load: true
+    load: true,
   },
   {
-    success: FETCH_STORIES_SUCCESS,
-    error: FETCH_STORIES_ERROR,
+    success: "fetchStories/success",
+    error: "fetch",
     save: true,
-    load: true
+    load: true,
   },
   {
-    success: FETCH_STORY_SUCCESS,
-    error: FETCH_STORY_ERROR,
+    success: "fetchStory/success",
+    error: "fetchStory/error",
     save: false, // for this action we only want to load the file from the stories' offline package
     load: true,
     getFilePath: (errorAction: AnyAction) =>
       `downloads/story-${errorAction.id}/${errorAction.id}-${errorAction.language}.json`, // the path relative to the app's offline folder
-    successActionCreator: (errorAction, content) =>
-      fetchStorySuccessAction(errorAction.id, errorAction.language, content)
+    successActionCreator: (errorAction, content) => (
+      errorAction.id, errorAction.language, content
+    ),
   },
   {
-    success: FETCH_LAYER_SUCCESS,
-    error: FETCH_LAYER_ERROR,
+    success: "fetchLayer/success",
+    error: "fetchLayer/error",
     save: false, // for this action we only want to load the file from the layers's offline package
     load: true,
     getFilePath: (errorAction: AnyAction) =>
       `downloads/${errorAction.id}/metadata.json`, // the path relative to the app's offline folder
-    successActionCreator: (errorAction, content) =>
-      fetchLayerSuccessAction(errorAction.id, content)
-  }
+    successActionCreator: (errorAction, content) => (errorAction.id, content),
+  },
 ];
 
 // Saves the specified success actions as a json file on the file system
 export const offlineSaveMiddleware: Middleware =
   () => (next: Dispatch<AnyAction>) => (action: AnyAction) => {
     const actionToSave = actionsToPersist.find(
-      ({success}) => success === action.type
+      ({ success }) => success === action.type,
     );
 
     if (actionToSave?.save) {
@@ -79,7 +61,7 @@ export const offlineSaveMiddleware: Middleware =
 export const offlineLoadMiddleware: Middleware =
   () => (next: Dispatch<AnyAction>) => async (dispatchedAction: AnyAction) => {
     const actionToLoad = actionsToPersist.find(
-      ({error}) => error === dispatchedAction.type
+      ({ error }) => error === dispatchedAction.type,
     );
 
     // when the incoming action did fail and is one we probably saved before,

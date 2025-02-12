@@ -6,8 +6,6 @@ import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 
 import { languageSelector } from "../../../selectors/language";
 import UrlSync from "../url-sync/url-sync";
-import LayerLoader from "../../layers/layer-loader/layer-loader";
-import Init from "../init/init";
 import LayerSelector from "../../layers/layer-selector/layer-selector";
 import Navigation from "../navigation/navigation";
 import { EsaLogo } from "../icons/esa-logo";
@@ -38,7 +36,12 @@ const matomoInstance = createInstance({
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
-  const { time_slider, legend } = useSelector(embedElementsSelector);
+  const {
+    logo: embedLogo,
+    globe_navigation,
+    time_slider,
+    legend,
+  } = useSelector(embedElementsSelector);
 
   const logo = (
     <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
@@ -88,14 +91,13 @@ const TranslatedApp: FunctionComponent = () => {
         <Tracking />
       </IntlProvider>
       <UrlSync />
-      <LayerLoader />
-      <Init />
     </Router>
   );
 };
 
 const App: FunctionComponent = () => (
   // @ts-expect-error - MatomoProvider does not include children in props since react 18
+
   <MatomoProvider value={matomoInstance}>
     <StoreProvider store={store}>
       <TranslatedApp />

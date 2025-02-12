@@ -1,5 +1,9 @@
-import {State} from '../../reducers/index';
+import { State } from "../../reducers/index";
+import { storiesApi } from "../../services/api";
 
-export function storyListSelector(state: State) {
-  return state.stories.list;
-}
+// Get stories list
+export const selectStories = storiesApi.endpoints.getStories.select("en");
+
+// Create memoized selector for transformed data
+export const storyListSelector = (state: State) =>
+  selectStories(state).data ?? [];

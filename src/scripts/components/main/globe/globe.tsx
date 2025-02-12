@@ -10,7 +10,6 @@ import cx from "classnames";
 
 import {
   CameraView,
-  LayerLoadingState,
   LayerProps,
   MarkerProps,
   RenderMode,
@@ -36,6 +35,7 @@ import config from "../../../config/main";
 
 import styles from "./globe.module.css";
 import { GlobeProjection } from "../../../types/globe-projection";
+import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -61,12 +61,8 @@ interface Props {
   onChange: (view: CameraView) => void;
   onMoveStart: () => void;
   onMoveEnd: (view: CameraView) => void;
-  onLayerLoadingStateChange: (
-    layerId: string,
-    state: LayerLoadingState,
-  ) => void;
+  onLayerLoadingStateChange: LayerLoadingStateChangeHandle;
 }
-
 const EMPTY_FUNCTION = () => {};
 
 const Globe: FunctionComponent<Props> = (props) => {
@@ -85,7 +81,6 @@ const Globe: FunctionComponent<Props> = (props) => {
 
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
-
   useProjectionSwitch(globe, projectionState.projection);
   useMultiGlobeSynchronization(globe, props);
 
@@ -351,10 +346,11 @@ function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
  */
 function useLayerLoadingStateUpdater(
   globe: WebGlGlobe | null,
-  callback: (layerId: string, state: LayerLoadingState) => void,
+  callback: LayerLoadingStateChangeHandle,
 ) {
   const handler = useCallback(
     (ev: LayerLoadingStateChangedEvent) => {
+      console.log("changed");
       callback(ev.detail.layer.id, ev.detail.state);
     },
     [callback],

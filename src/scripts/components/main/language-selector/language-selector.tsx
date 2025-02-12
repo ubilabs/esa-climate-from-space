@@ -2,11 +2,11 @@ import { FunctionComponent } from "react";
 import { useSelector } from "react-redux";
 import cx from "classnames";
 
-import setLanguageAction from "../../../actions/set-language";
 import Button from "../button/button";
 import { languageSelector } from "../../../selectors/language";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 
+import { setLanguage } from "../../../reducers/language";
 import { Language } from "../../../types/language";
 
 import styles from "./language-selector.module.css";
@@ -35,7 +35,7 @@ const LanguageSelector: FunctionComponent<Props> = ({ className = "" }) => {
             <Button
               className={buttonClasses}
               key={language}
-              onClick={() => dispatch(setLanguageAction(language))}
+              onClick={() => dispatch(setLanguage(language))}
               label={`language.${language}`}
             />
           </li>

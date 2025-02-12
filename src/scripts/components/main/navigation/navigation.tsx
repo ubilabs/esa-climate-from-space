@@ -1,22 +1,22 @@
 import { FunctionComponent, useState } from "react";
 import { useSelector } from "react-redux";
 
-import Button from "../button/button";
-import Overlay from "../overlay/overlay";
-import Menu from "../menu/menu";
-import { MenuIcon } from "../icons/menu-icon";
-import { FilterIcon } from "../icons/filter-icon";
-import setLanguageAction from "../../../actions/set-language";
-import { languageSelector } from "../../../selectors/language";
-import LanguageTooltip from "../language-tooltip/language-tooltip";
-import SelectedTags from "../../stories/selected-tags/selected-tags";
-import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
-import setWelcomeScreenAction from "../../../actions/set-welcome-screen";
-import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import config from "../../../config/main";
+import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
+import { languageSelector } from "../../../selectors/language";
+import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
+import SelectedTags from "../../stories/selected-tags/selected-tags";
+import Button from "../button/button";
+import { FilterIcon } from "../icons/filter-icon";
+import { MenuIcon } from "../icons/menu-icon";
+import LanguageTooltip from "../language-tooltip/language-tooltip";
+import Menu from "../menu/menu";
+import Overlay from "../overlay/overlay";
+import { setWelcomeScreen } from "../../../reducers/welcome-screen";
 
 import styles from "./navigation.module.css";
+import { setLanguage } from "../../../reducers/language";
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -224,8 +224,9 @@ const Navigation: FunctionComponent = () => {
         <LanguageTooltip
           onMenuOpen={() => setShowMenu(true)}
           onClose={() => {
-            dispatch(setLanguageAction(selectedLanguage));
             setShowTooltip(false);
+            dispatch(setLanguage(selectedLanguage));
+            // setShowTooltip(false);
           }}
         />
       )}
@@ -234,7 +235,7 @@ const Navigation: FunctionComponent = () => {
           <Menu
             onRestartOnboarding={() => {
               setShowMenu(false);
-              dispatch(setWelcomeScreenAction(false));
+              dispatch(setWelcomeScreen(false));
             }}
           />
         </Overlay>

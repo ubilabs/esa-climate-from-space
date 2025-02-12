@@ -1,47 +1,49 @@
+import { CameraView, LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 import {
   FunctionComponent,
-  useState,
-  useEffect,
   useCallback,
+  useEffect,
   useLayoutEffect,
   useRef,
+  useState,
 } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { CameraView, LayerLoadingState } from "@ubilabs/esa-webgl-globe";
+import { useDispatch, useSelector } from "react-redux";
 
-import { layerListItemSelector } from "../../../selectors/layers/list-item";
-import { globeViewSelector } from "../../../selectors/globe/view";
-import { timeSelector } from "../../../selectors/globe/time";
-import { projectionSelector } from "../../../selectors/globe/projection";
-import { flyToSelector } from "../../../selectors/fly-to";
-import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
-import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
-import { globeSpinningSelector } from "../../../selectors/globe/spinning";
-import setGlobeViewAction from "../../../actions/set-globe-view";
-import setGlobeSpinningAction from "../../../actions/set-globe-spinning";
-import updateLayerLoadingStateAction from "../../../actions/update-layer-loading-state";
-import { State } from "../../../reducers";
-import Globe from "../globe/globe";
-import Gallery from "../gallery/gallery";
-import LayerLegend from "../../layers/layer-legend/layer-legend";
-import { useImageLayerData } from "../../../hooks/use-image-layer-data";
-import HoverLegend from "../../layers/hover-legend/hover-legend";
-
-import { LayerType } from "../../../types/globe-layer-type";
+import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
+import { LayerType } from "../../../types/globe-layer-type";
 import { Layer } from "../../../types/layer";
 import { LegendValueColor } from "../../../types/legend-value-color";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import styles from "./data-viewer.module.css";
-import CategoryNavigation from "../category-navigation/category-navigation";
-import Button from "../button/button";
+import { State } from "../../../reducers";
+import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
+import { setGlobeSpinning } from "../../../reducers/globe/spinning";
+import { setGlobeView } from "../../../reducers/globe/view";
+import { flyToSelector } from "../../../selectors/fly-to";
+import { projectionSelector } from "../../../selectors/globe/projection";
+import { globeSpinningSelector } from "../../../selectors/globe/spinning";
+import { timeSelector } from "../../../selectors/globe/time";
+import { globeViewSelector } from "../../../selectors/globe/view";
+import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
+import { layerListItemSelector } from "../../../selectors/layers/list-item";
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { useGetLayerQuery } from "../../../services/api";
+
+import { useScreenSize } from "../../../hooks/use-screen-size";
+import ContentNavigation from "../content-navigation/content-navigation";
+import GlobeNavigation from "../globe-navigation/globe-navigation";
 import { useHistory, useParams } from "react-router";
 
+import Button from "../button/button";
+import CategoryNavigation from "../category-navigation/category-navigation";
+import styles from "./data-viewer.module.css";
+
 import cx from "classnames";
-import ContentNavigation from "../content-navigation/content-navigation";
-import { useScreenSize } from "../../../hooks/use-screen-size";
-import GlobeNavigation from "../globe-navigation/globe-navigation";
+import { useImageLayerData } from "../../../hooks/use-image-layer-data";
+import HoverLegend from "../../layers/hover-legend/hover-legend";
+import LayerLegend from "../../layers/layer-legend/layer-legend";
+import Gallery from "../gallery/gallery";
+import Globe from "../globe/globe";
 interface Props {
   backgroundColor: string;
   hideNavigation?: boolean;
@@ -49,6 +51,11 @@ interface Props {
 interface RouteParams {
   category: string | undefined;
 }
+
+export type LayerLoadingStateChangeHandle = (
+  layerId: string,
+  loadingState: LayerLoadingState,
+) => void;
 
 const DataViewer: FunctionComponent<Props> = ({
   backgroundColor,
@@ -87,6 +94,8 @@ const DataViewer: FunctionComponent<Props> = ({
   const compareLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, compareId),
   );
+  // If initially, there is a main layer selected, we need to fetch the layer details
+  useGetLayerQuery(mainId ?? "", { skip: !mainId });
 
   const time = useSelector(timeSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
@@ -102,20 +111,21 @@ const DataViewer: FunctionComponent<Props> = ({
   }, []);
 
   const onMoveStartHandler = useCallback(
-    () => globeSpinning && dispatch(setGlobeSpinningAction(false)),
+    () => globeSpinning && dispatch(setGlobeSpinning(false)),
     [dispatch, globeSpinning],
   );
 
   const onMoveEndHandler = useCallback(
-    (view: CameraView) => dispatch(setGlobeViewAction(view)),
+    (view: CameraView) => dispatch(setGlobeView(view)),
     [dispatch],
   );
 
-  const onLayerLoadingStateChangeHandler = useCallback(
-    (layerId: string, loadingState: LayerLoadingState) =>
-      dispatch(updateLayerLoadingStateAction(layerId, loadingState)),
-    [dispatch],
-  );
+  const onLayerLoadingStateChangeHandler: LayerLoadingStateChangeHandle =
+    useCallback(
+      (layerId, loadingState) =>
+        dispatch(updateLayerLoadingState({ layerId, loadingState })),
+      [dispatch],
+    );
 
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
   const compareImageLayer = useImageLayerData(compareLayerDetails, time);
@@ -129,7 +139,7 @@ const DataViewer: FunctionComponent<Props> = ({
   // stop globe spinning when layer is selected
   useEffect(() => {
     if ((mainId || compareId) && globeSpinning) {
-      dispatch(setGlobeSpinningAction(false));
+      dispatch(setGlobeSpinning(false));
     }
   }, [dispatch, mainId, compareId, globeSpinning]);
 

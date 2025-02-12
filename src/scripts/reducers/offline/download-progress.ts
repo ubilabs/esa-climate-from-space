@@ -1,22 +1,17 @@
-import {
-  SET_DOWNLOAD_PROGRESS,
-  SetDownloadProgressAction
-} from '../../actions/set-download-progress';
-
-import {DownloadProgress} from '../../types/download-progress';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { DownloadProgress } from "../../types/download-progress";
 
 const initialState: DownloadProgress = {};
 
-function downloadProgressReducer(
-  state: DownloadProgress = initialState,
-  action: SetDownloadProgressAction
-): DownloadProgress {
-  switch (action.type) {
-    case SET_DOWNLOAD_PROGRESS:
-      return action.progress;
-    default:
-      return state;
-  }
-}
+const downloadProgressSlice = createSlice({
+  name: "downloadProgress",
+  initialState,
+  reducers: {
+    setDownloadProgress(state, action: PayloadAction<DownloadProgress>) {
+      return action.payload;
+    },
+  },
+});
 
-export default downloadProgressReducer;
+export const { setDownloadProgress } = downloadProgressSlice.actions;
+export default downloadProgressSlice.reducer;
