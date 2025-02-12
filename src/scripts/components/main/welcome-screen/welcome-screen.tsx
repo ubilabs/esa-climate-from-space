@@ -3,7 +3,8 @@ import { useIntl } from "react-intl";
 import ReactMarkdown from "react-markdown";
 import { useDispatch } from "react-redux";
 
-import setWelcomeScreenAction from "../../../actions/set-welcome-screen";
+import { setWelcomeScreen } from "../../../reducers/welcome-screen";
+
 import Button from "../button/button";
 import config from "../../../config/main";
 import Overlay from "../overlay/overlay";
@@ -23,7 +24,7 @@ const WelcomeScreen: FunctionComponent<Props> = ({ onStartOnboarding }) => {
       config.localStorageWelcomeScreenKey,
       hideWelcomeScreen.toString(),
     );
-    dispatch(setWelcomeScreenAction(true));
+    dispatch(setWelcomeScreen(true));
   };
 
   return (

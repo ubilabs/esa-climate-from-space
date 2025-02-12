@@ -1,11 +1,11 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from "@reduxjs/toolkit";
 
-import downloadedDataReducer from './downloaded-data';
-import downloadPrgressReducer from './download-progress';
+import downloadedDataReducer from "./downloaded-data";
+import downloadPrgressReducer from "./download-progress";
 
 const offlineReducer = combineReducers({
   downloaded: downloadedDataReducer,
-  progress: downloadPrgressReducer
+  progress: downloadPrgressReducer,
 });
 
 export default offlineReducer;

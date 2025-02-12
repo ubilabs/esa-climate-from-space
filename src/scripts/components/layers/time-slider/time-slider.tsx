@@ -12,7 +12,7 @@ import cx from "classnames";
 
 import { timeSelector } from "../../../selectors/globe/time";
 import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
-import setGlobeTime from "../../../actions/set-globe-time";
+import { setGlobeTime } from "../../../reducers/globe/time";
 import { State } from "../../../reducers";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import getPlaybackStep from "../../../libs/get-playback-step";
@@ -22,7 +22,7 @@ import TimePlayback from "../time-playback/time-playback";
 import Button from "../../main/button/button";
 import { PlayCircleIcon } from "../../main/icons/play-circle-icon";
 import { PauseCircleIcon } from "../../main/icons/pause-circle-icon";
-import setGlobeSpinningAction from "../../../actions/set-globe-spinning";
+import { setGlobeSpinning } from "../../../reducers/globe/spinning";
 import { globeSpinningSelector } from "../../../selectors/globe/spinning";
 import { useLayerTimes } from "../../../hooks/use-formatted-time";
 
@@ -115,7 +115,7 @@ const TimeSlider: FunctionComponent<Props> = ({
   // stop globe spinning when playing
   useEffect(() => {
     if (isPlaying && globeSpinning) {
-      dispatch(setGlobeSpinningAction(false));
+      dispatch(setGlobeSpinning(false));
     }
   }, [dispatch, isPlaying, globeSpinning]);
 

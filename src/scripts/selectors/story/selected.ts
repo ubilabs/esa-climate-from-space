@@ -1,18 +1,19 @@
-import {State} from '../../reducers/index';
+import { State } from "../../reducers/index";
+import { storiesApi } from "../../services/api";
 
-import {Story} from '../../types/story';
+import { Story } from "../../types/story";
 
-export function unsafeSelectedStorySelector(state: State): Story | null {
-  return state.stories.selected;
-}
+export const selectStory = (id: string) =>
+  storiesApi.endpoints.getStory.select({ id, language: "en" });
 
 export function selectedStorySelector(
   state: State,
-  storyId: string | null
+  storyId: string | null,
 ): Story | null {
-  if (!state.stories.selected || !storyId) {
+  if (!storyId) {
     return null;
   }
+  const story = selectStory(storyId)(state).data;
 
-  return state.stories.selected.id === storyId ? state.stories.selected : null;
+  return story ?? null;
 }

@@ -2,9 +2,9 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 import config from "../config/main";
-import setSelectedLayerIdsAction from "../actions/set-selected-layer-id";
-import setFlyToAction from "../actions/set-fly-to";
-import setGlobeTimeAction from "../actions/set-globe-time";
+import { setFlyTo } from "../reducers/fly-to";
+import { setGlobeTime } from "../reducers/globe/time";
+import { setSelectedLayerIds } from "../reducers/layers";
 
 import { GlobeItem } from "../types/gallery-item";
 
@@ -35,10 +35,20 @@ export const useStoryGlobe = (globeItem: GlobeItem) => {
     const cameraView: CameraView =
       globeItem.flyTo && flyToToCameraView(globeItem.flyTo);
 
-    dispatch(setFlyToAction(cameraView || defaultView));
-    dispatch(setSelectedLayerIdsAction(mainLayer?.id || null, true));
-    dispatch(setSelectedLayerIdsAction(compareLayer?.id || null, false));
-    dispatch(setGlobeTimeAction(slideTime));
+    dispatch(setFlyTo(cameraView || defaultView));
+    dispatch(
+      setSelectedLayerIds({
+        layerId: mainLayer?.id || null,
+        isPrimary: true,
+      }),
+    );
+    dispatch(
+      setSelectedLayerIds({
+        layerId: compareLayer?.id || null,
+        isPrimary: false,
+      }),
+    );
+    dispatch(setGlobeTime(slideTime));
   }, [dispatch, defaultView, globeItem]);
 
   return;

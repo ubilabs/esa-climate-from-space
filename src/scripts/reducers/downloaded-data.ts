@@ -1,8 +1,4 @@
-import {
-  SET_DOWNLOADED_DATA,
-  SetDownloadedDataAction,
-} from "../actions/set-downloaded-data";
-
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { DownloadedData } from "../types/downloaded-data";
 
 const initialState: DownloadedData = {
@@ -10,16 +6,15 @@ const initialState: DownloadedData = {
   stories: [],
 };
 
-function downloadedDataReducer(
-  state: DownloadedData = initialState,
-  action: SetDownloadedDataAction,
-): DownloadedData {
-  switch (action.type) {
-    case SET_DOWNLOADED_DATA:
-      return action.data;
-    default:
-      return state;
-  }
-}
+const downloadedDataSlice = createSlice({
+  name: "downloadedData",
+  initialState,
+  reducers: {
+    setDownloadedData(state, action: PayloadAction<DownloadedData>) {
+      return action.payload;
+    },
+  },
+});
 
-export default downloadedDataReducer;
+export const { setDownloadedData } = downloadedDataSlice.actions;
+export default downloadedDataSlice.reducer;

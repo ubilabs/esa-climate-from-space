@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 import languageReducer from "./language";
 import layersReducer from "./layers/index";
 import storiesReducer from "./story/index";
@@ -11,8 +9,12 @@ import offlineReducer from "./offline/index";
 import downloadedDataReducer from "./downloaded-data";
 import welcomeScreenReducer from "./welcome-screen";
 import embedElementsReducer from "./embed-elements";
+import { layersApi, storiesApi } from "../services/api";
+import { combineReducers } from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
+  [layersApi.reducerPath]: layersApi.reducer,
+  [storiesApi.reducerPath]: storiesApi.reducer,
   language: languageReducer,
   layers: layersReducer,
   stories: storiesReducer,
