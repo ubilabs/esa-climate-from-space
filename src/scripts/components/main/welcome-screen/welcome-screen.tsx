@@ -3,12 +3,13 @@ import { useIntl } from "react-intl";
 import ReactMarkdown from "react-markdown";
 import { useDispatch } from "react-redux";
 
+import { setWelcomeScreen } from "../../../reducers/welcome-screen";
+
 import Button from "../button/button";
 import config from "../../../config/main";
 import Overlay from "../overlay/overlay";
 
 import styles from "./welcome-screen.module.css";
-import { setWelcomeScreen } from "../../../reducers/welcome-screen";
 
 interface Props {
   onStartOnboarding: () => void;

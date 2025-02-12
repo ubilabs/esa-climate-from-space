@@ -6,10 +6,10 @@ import Button from "../button/button";
 import { languageSelector } from "../../../selectors/language";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 
+import { setLanguage } from "../../../reducers/language";
 import { Language } from "../../../types/language";
 
 import styles from "./language-selector.module.css";
-import { setLanguage } from "../../../reducers/language";
 
 const languages = Object.values(Language);
 

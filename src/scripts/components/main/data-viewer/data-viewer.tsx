@@ -1,28 +1,27 @@
+import { CameraView, LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 import {
   FunctionComponent,
-  useState,
-  useEffect,
   useCallback,
+  useEffect,
   useLayoutEffect,
+  useState,
 } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { CameraView, LayerLoadingState } from "@ubilabs/esa-webgl-globe";
-import Globe from "../globe/globe";
-import Gallery from "../gallery/gallery";
-import LayerLegend from "../../layers/layer-legend/layer-legend";
+import { useDispatch, useSelector } from "react-redux";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
+import LayerLegend from "../../layers/layer-legend/layer-legend";
+import Gallery from "../gallery/gallery";
+import Globe from "../globe/globe";
 
-import { Marker } from "../../../types/marker-type";
-import { LayerType } from "../../../types/globe-layer-type";
+import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
+import { LayerType } from "../../../types/globe-layer-type";
 import { Layer } from "../../../types/layer";
 import { LegendValueColor } from "../../../types/legend-value-color";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
+import { Marker } from "../../../types/marker-type";
 
-import styles from "./data-viewer.module.css";
 import { State } from "../../../reducers";
-import GlobeNavigation from "../globe-navigation/globe-navigation";
+import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
 import { setGlobeSpinning } from "../../../reducers/globe/spinning";
 import { setGlobeView } from "../../../reducers/globe/view";
 import { flyToSelector } from "../../../selectors/fly-to";
@@ -33,8 +32,10 @@ import { globeViewSelector } from "../../../selectors/globe/view";
 import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
-import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
 import { useGetLayerQuery } from "../../../services/api";
+import GlobeNavigation from "../globe-navigation/globe-navigation";
+
+import styles from "./data-viewer.module.css";
 
 interface Props {
   backgroundColor: string;

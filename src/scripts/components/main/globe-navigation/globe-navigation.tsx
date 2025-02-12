@@ -1,21 +1,21 @@
+import { RenderMode } from "@ubilabs/esa-webgl-globe";
 import { FunctionComponent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Oval } from "svg-loaders-react";
-import { RenderMode } from "@ubilabs/esa-webgl-globe";
 
 import config from "../../../config/main";
+import { useLayerTimes } from "../../../hooks/use-formatted-time";
+import { downloadScreenshot } from "../../../libs/download-screenshot";
+import { projectionSelector } from "../../../selectors/globe/projection";
 import Button from "../button/button";
 import { CompassIcon } from "../icons/compass-icon";
 import { DownloadIcon } from "../icons/download-icon";
 import { LocationIcon } from "../icons/location-icon";
-import { projectionSelector } from "../../../selectors/globe/projection";
-import { downloadScreenshot } from "../../../libs/download-screenshot";
-import { useLayerTimes } from "../../../hooks/use-formatted-time";
 
+import { setFlyTo } from "../../../reducers/fly-to";
+import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerListItem } from "../../../types/layer-list";
-import { setGlobeProjection } from "../../../reducers/globe/projection";
-import { setFlyTo } from "../../../reducers/fly-to";
 
 import styles from "./globe-navigation.module.css";
 interface Props {
