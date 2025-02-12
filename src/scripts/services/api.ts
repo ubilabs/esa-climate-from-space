@@ -11,6 +11,7 @@ import fetchStory from "../api/fetch-story";
 import { convertLegacyStory } from "../libs/convert-legacy-story";
 import { isLegacyStory } from "../libs/is-legacy-story";
 import { LegacyStory } from "../types/legacy-story";
+import { LayerList } from "../types/layer-list";
 
 async function fetchLayers(language: Language) {
   const url = replaceUrlPlaceholders(config.api.layers, {
@@ -24,7 +25,7 @@ export const layersApi = createApi({
   reducerPath: "layersApi",
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
   endpoints: (builder) => ({
-    getLayers: builder.query<Layer[], Language>({
+    getLayers: builder.query<LayerList, Language>({
       queryFn: async (language: Language) => {
         try {
           const data = await fetchLayers(language);

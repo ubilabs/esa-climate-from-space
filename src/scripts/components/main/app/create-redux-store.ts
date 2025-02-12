@@ -1,8 +1,6 @@
 import { AnyAction, Middleware } from "redux";
 import { createLogger } from "redux-logger";
 import { thunk, ThunkDispatch } from "redux-thunk";
-import { createApi } from "@reduxjs/toolkit/query/react";
-console.log("🚀 ~ createApi:", createApi);
 import { layersApi, storiesApi } from "../../../services/api";
 
 import rootReducer from "../../../reducers/index";

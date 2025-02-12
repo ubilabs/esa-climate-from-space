@@ -6,8 +6,6 @@ import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 
 import { languageSelector } from "../../../selectors/language";
 import UrlSync from "../url-sync/url-sync";
-import LayerLoader from "../../layers/layer-loader/layer-loader";
-import Init from "../init/init";
 import LayerSelector from "../../layers/layer-selector/layer-selector";
 import Navigation from "../navigation/navigation";
 import { EsaLogo } from "../icons/esa-logo";
@@ -27,7 +25,6 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 
 import styles from "./app.module.css";
 import "../../../../variables.css";
-import { useGetStoriesQuery } from "../../../services/api";
 
 // create matomo tracking instance
 const matomoInstance = createInstance({
@@ -42,7 +39,6 @@ const TranslatedApp: FunctionComponent = () => {
   const {
     logo: embedLogo,
     globe_navigation,
-    markers: embedMarkers,
     time_slider,
     legend,
   } = useSelector(embedElementsSelector);
@@ -62,7 +58,7 @@ const TranslatedApp: FunctionComponent = () => {
           <Route path="/" exact>
             {embedLogo && logo}
             <DataViewer
-              hideNavigation={true}
+              hideNavigation={Boolean(globe_navigation)}
               backgroundColor={"var(--black)"}
             />
             <Navigation />
@@ -97,8 +93,6 @@ const TranslatedApp: FunctionComponent = () => {
         <Tracking />
       </IntlProvider>
       <UrlSync />
-      <LayerLoader />
-      <Init />
     </Router>
   );
 };

@@ -8,7 +8,6 @@ import { CloseIcon } from "../../main/icons/close-icon";
 import LayerList from "../layer-list/layer-list";
 import SelectedLayerListItem from "../selected-layer-list-item/selected-layer-list-item";
 
-import { layersSelector } from "../../../selectors/layers/list";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { showLayerSelector as showLayerSelectorSelector } from "../../../selectors/show-layer-selector";
 
@@ -17,21 +16,22 @@ import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
-import { layersApi } from "../../../services/api";
+import { layersApi, useGetLayersQuery } from "../../../services/api";
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
   const thunkDispatch = useThunkDispatch();
 
   const { trackEvent } = useMatomo();
-  const layers = useSelector(layersSelector);
-  const sortedLayers = layers
-    .map((layer) => ({ ...layer }))
-    .sort((a, b) => a.shortName.localeCompare(b.shortName));
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
 
   const showLayerSelector = useSelector(showLayerSelectorSelector);
+
+  const { data: layers } = useGetLayersQuery("en");
+  if (!layers) {
+    return null;
+  }
 
   const selectedMainLayer = layers.find(
     (layer) => layer.id === selectedLayerIds.mainId,
@@ -39,6 +39,10 @@ const LayerSelector: FunctionComponent = () => {
   const selectedCompareLayer = layers.find(
     (layer) => layer.id === selectedLayerIds.compareId,
   );
+
+  const sortedLayers = layers
+    .map((layer) => ({ ...layer }))
+    .sort((a, b) => a.shortName.localeCompare(b.shortName));
 
   return (
     <AnimatePresence>
@@ -67,8 +71,8 @@ const LayerSelector: FunctionComponent = () => {
                 onRemove={() =>
                   dispatch(
                     setSelectedLayerIds({
-                      layerId: selectedMainLayer.id,
-                      isPrimary: false,
+                      layerId: null,
+                      isPrimary: true,
                     }),
                   )
                 }

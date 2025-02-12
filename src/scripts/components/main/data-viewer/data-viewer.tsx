@@ -34,14 +34,12 @@ import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
+import { useGetLayerQuery } from "../../../services/api";
 
 interface Props {
   backgroundColor: string;
   hideNavigation?: boolean;
   markers?: Marker[];
-}
-interface RouteParams {
-  category: string | undefined;
 }
 
 export type LayerLoadingStateChangeHandle = (
@@ -74,6 +72,8 @@ const DataViewer: FunctionComponent<Props> = ({
   const compareLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, compareId),
   );
+  // If initially, there is a main layer selected, we need to fetch the layer details
+  useGetLayerQuery(mainId ?? "", { skip: !mainId });
 
   const time = useSelector(timeSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
