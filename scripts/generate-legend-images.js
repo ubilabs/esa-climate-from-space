@@ -2,9 +2,9 @@
 
 // Create legend images from gdal color files
 
-const fs = require('fs');
-const path = require('path');
-const {createCanvas} = require('canvas');
+import fs from 'fs';
+import path from 'path';
+import {createCanvas} from 'canvas';
 
 const INTPUT_FOLDER = path.resolve(__dirname, '../data/gdal-colors/');
 const OUTPUT_FOLDER = path.resolve(__dirname, '../assets/legend-images/');
