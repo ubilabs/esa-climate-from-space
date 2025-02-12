@@ -1,4 +1,4 @@
-import { Dispatch } from "redux";
+import { Dispatch } from "@reduxjs/toolkit";
 import { setDownloadedData } from "../../reducers/downloaded-data";
 import { setDownloadProgress } from "../../reducers/offline/download-progress";
 let isStoreConnected = false;

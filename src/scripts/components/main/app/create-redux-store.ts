@@ -1,4 +1,4 @@
-import { AnyAction, Middleware } from "redux";
+import { configureStore, Middleware, AnyAction } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
 import { thunk, ThunkDispatch } from "redux-thunk";
 import { layersApi, storiesApi } from "../../../services/api";
@@ -10,8 +10,6 @@ import {
   offlineSaveMiddleware,
   offlineLoadMiddleware,
 } from "../../../libs/electron/index";
-
-import { configureStore } from "@reduxjs/toolkit";
 
 const isProduction = import.meta.env.PROD;
 const middleware: Middleware[] = [thunk];

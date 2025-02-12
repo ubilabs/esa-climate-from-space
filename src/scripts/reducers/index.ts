@@ -10,7 +10,7 @@ import downloadedDataReducer from "./downloaded-data";
 import welcomeScreenReducer from "./welcome-screen";
 import embedElementsReducer from "./embed-elements";
 import { layersApi, storiesApi } from "../services/api";
-import { combineReducers } from "redux";
+import { combineReducers } from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
   [layersApi.reducerPath]: layersApi.reducer,

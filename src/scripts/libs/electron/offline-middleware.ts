@@ -1,6 +1,6 @@
 // This is a redux middleware which saves and loads the response of the given
 // fetch actions on the local file system for offline use.
-import { Middleware, Dispatch, AnyAction } from "redux";
+import { Middleware, Dispatch, AnyAction } from "@reduxjs/toolkit";
 import { saveAction } from "./save-action";
 import { loadAction } from "./load-action";
 
