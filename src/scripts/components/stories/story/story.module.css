@@ -1,4 +1,5 @@
 .story {
+  grid-area: header / content / content / content;
   display: flex;
   flex-direction: column;
   height: 100%;
