@@ -22,7 +22,6 @@ const layersSlice = createSlice({
   initialState,
   reducers: {
     setLayerDetails: (state, action: PayloadAction<Layer>) => {
-      console.log("🚀 ~ action:", action);
       state.details[action.payload.id] = action.payload;
     },
     setSelectedLayerIds: (

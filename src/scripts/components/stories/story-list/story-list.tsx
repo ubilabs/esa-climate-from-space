@@ -26,7 +26,6 @@ const StoryList: FunctionComponent<Props> = ({
   const { data: stories } = useGetStoriesQuery("en");
   const selectedTags = useSelector(selectedTagsSelector);
   const filteredStories = filterStories(stories, selectedTags);
-  console.log("🚀 ~ filteredStories:", filteredStories);
 
   const classes = cx(
     styles.storyListGrid,

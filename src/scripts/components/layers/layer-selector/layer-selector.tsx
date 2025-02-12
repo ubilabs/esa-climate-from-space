@@ -96,8 +96,6 @@ const LayerSelector: FunctionComponent = () => {
                 thunkDispatch(layersApi.endpoints.getLayer.initiate(layerId));
                 dispatch(setSelectedLayerIds({ layerId, isPrimary: isMain }));
                 const name = layers.find((layer) => layer.id === layerId)?.name;
-                console.log("🚀 ~ name:", name);
-                console.log("🚀 ~ selectedMainLayer:", selectedMainLayer);
                 trackEvent({
                   category: "datasets",
                   action: isMain ? "select" : "compare",

@@ -43,7 +43,6 @@ export const layersApi = createApi({
       queryFn: async (id: string, { dispatch }) => {
         try {
           const data = await fetchLayer(id);
-          console.log("🚀 ~ queryFn: ~ data:", data);
           dispatch(setLayerDetails(data));
           return { data };
         } catch (error) {
