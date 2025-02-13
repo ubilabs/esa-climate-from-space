@@ -8,9 +8,9 @@ import { CheckIcon } from "../../main/icons/check-icon";
 
 import { storyListSelector } from "../../../selectors/story/list";
 import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
+import { setSelectedTags } from "../../../reducers/story";
 
 import styles from "./story-filter.module.css";
-import { setSelectedTags } from "../../../reducers/story";
 
 const StoryFilter: FunctionComponent = () => {
   const dispatch = useDispatch();

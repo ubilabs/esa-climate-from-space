@@ -1,18 +1,17 @@
 import { FunctionComponent } from "react";
-import { useSelector } from "react-redux";
+import cx from "classnames";
+
 import { FormattedMessage } from "react-intl";
+import { useSelector } from "react-redux";
 
 import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
 import { useGetStoriesQuery } from "../../../services/api";
 import { languageSelector } from "../../../selectors/language";
 import StoryListItem from "../story-list-item/story-list-item";
 import { filterStories } from "../../../libs/filter-stories";
-
 import { StoryMode } from "../../../types/story-mode";
 
 import styles from "./story-list.module.css";
-import cx from "classnames";
-
 interface Props {
   mode: StoryMode;
   selectedIds?: string[];
