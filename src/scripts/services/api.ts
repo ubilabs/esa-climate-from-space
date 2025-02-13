@@ -1,26 +1,32 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { Layer } from "../types/layer";
-import type { Story } from "../types/story";
-import type { StoryList } from "../types/story-list";
-import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
-import { Language } from "../types/language";
-import config from "../config/main";
 import fetchLayer from "../api/fetch-layer";
-import { setLayerDetails } from "../reducers/layers";
 import fetchStory from "../api/fetch-story";
+
+import config from "../config/main";
+
 import { convertLegacyStory } from "../libs/convert-legacy-story";
 import { isLegacyStory } from "../libs/is-legacy-story";
-import { LegacyStory } from "../types/legacy-story";
+import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
+
+import { setLayerDetails } from "../reducers/layers";
+
+import { Language } from "../types/language";
+import type { Layer } from "../types/layer";
 import { LayerList } from "../types/layer-list";
+import { LegacyStory } from "../types/legacy-story";
+import type { Story } from "../types/story";
+import type { StoryList } from "../types/story-list";
+import { fetchLayers } from "../api/fetch-layers";
 
-async function fetchLayers(language: Language) {
-  const url = replaceUrlPlaceholders(config.api.layers, {
-    lang: language.toLowerCase(),
-  });
+// In this file, we create an API slice for managing layer and story data using Redux Toolkit Query.
+// In combination with Redux Toolkit allows us to fetch data
+// from the server and store it in the Redux store. We can then use auto-generated hooks (e.g. useGetLayersQuery)
+// to get access to the data, loading state, and error state without writing any reducers or actions manually.
 
-  return await fetch(url).then((res) => res.json());
-}
-
+/**
+ * Creates an API slice for managing layer data using Redux Toolkit Query.
+ *
+ */
 export const layersApi = createApi({
   reducerPath: "layersApi",
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
@@ -59,6 +65,9 @@ export const layersApi = createApi({
   }),
 });
 
+/**
+ * Redux API slice for managing story-related API endpoints.
+ */
 export const storiesApi = createApi({
   reducerPath: "storiesApi",
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
