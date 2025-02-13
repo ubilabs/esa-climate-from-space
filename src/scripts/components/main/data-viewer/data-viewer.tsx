@@ -27,12 +27,13 @@ import { globeViewSelector } from "../../../selectors/globe/view";
 import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
-import { useGetLayerQuery } from "../../../services/api";
+import { useGetLayerQuery, useGetStoriesQuery } from "../../../services/api";
+import { languageSelector } from "../../../selectors/language";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import ContentNavigation from "../content-navigation/content-navigation";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
-import { useHistory, useParams } from "react-router";
+// import { useHistory } from "react-router";
 
 import Button from "../button/button";
 import CategoryNavigation from "../category-navigation/category-navigation";
@@ -44,6 +45,8 @@ import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
+import { useHistory, useParams } from "react-router-dom";
+import { setSelectedTags } from "../../../reducers/story";
 interface Props {
   backgroundColor: string;
   hideNavigation?: boolean;
@@ -110,6 +113,9 @@ const DataViewer: FunctionComponent<Props> = ({
     );
   }, []);
 
+  const language = useSelector(languageSelector);
+  const { data: stories } = useGetStoriesQuery(language);
+
   const onMoveStartHandler = useCallback(
     () => globeSpinning && dispatch(setGlobeSpinning(false)),
     [dispatch, globeSpinning],
@@ -136,12 +142,47 @@ const DataViewer: FunctionComponent<Props> = ({
     setCurrentView(globalGlobeView);
   }, [globalGlobeView]);
 
+  // There is a set of animations which should be played only once
+  // This keeps track of that
+  const hasAnimationPlayed = useRef(Boolean(category));
+
+  useEffect(() => {
+    setShowContentList(Boolean(category));
+  }, [category]);
+
   // stop globe spinning when layer is selected
   useEffect(() => {
     if ((mainId || compareId) && globeSpinning) {
       dispatch(setGlobeSpinning(false));
     }
   }, [dispatch, mainId, compareId, globeSpinning]);
+
+  if (!stories) {
+    return null;
+  }
+
+  const allTags: string[] = stories
+    .map(({ tags }) => tags)
+    .filter(Boolean)
+    .flat();
+  const uniqTags = Array.from(new Set(allTags));
+
+  const contents = stories.filter(
+    (story) => category && story.tags?.includes(category),
+  );
+  console.log("🚀 ~ contents:", contents);
+  // create a list of all tags with their number of occurrences in the stories
+  // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
+
+  const arcs = uniqTags
+    .map((tag) => {
+      const count = allTags.filter((t) => t === tag).length;
+      return { [tag]: count };
+    })
+    // Todo: Delete this filter when we have the new categories
+    .filter((arc) => Object.values(arc)[0] > 2);
+
+  // Show content of selected tag
 
   // Only show the globe navigation when a globe is shown.
   // Either when no data layer is selected and only basemap is shown
@@ -221,14 +262,6 @@ const DataViewer: FunctionComponent<Props> = ({
         },
       );
 
-  // There is a set of animations which should be played only once
-  // This keeps track of that
-  const hasAnimationPlayed = useRef(Boolean(category));
-
-  useEffect(() => {
-    setShowContentList(Boolean(category));
-  }, [category]);
-
   return (
     // The data-view is a grid with three areas: header - main - footer
     // This is the header area
@@ -247,24 +280,15 @@ const DataViewer: FunctionComponent<Props> = ({
         The category navigation is visible when the content navigation is not visible
       */}
       <CategoryNavigation
+        onSelect={(category) => setSelectedTags([category])}
+        arcs={arcs}
         showCategories={!showContentList}
         width={screenWidth}
         setCategory={setCurrentCategory}
         isAnimationReady={hasAnimationPlayed}
       />
 
-      {showContentList ? (
-        // Todo: should be a link ("button") to the story. Change
-        <a
-          href="https://storage.googleapis.com/esa-cfs-versions/web/master/index.html#/stories/story-15/0?globe=SI0.09I24.97I23840000I0.00I1738831631198I0II"
-          className={cx(
-            hasAnimationPlayed.current && styles.showFast,
-            styles.exploreButton,
-          )}
-        >
-          Learn More
-        </a>
-      ) : (
+      {!showContentList ? (
         <Button
           className={cx(
             hasAnimationPlayed.current && styles.showFast,
@@ -276,7 +300,7 @@ const DataViewer: FunctionComponent<Props> = ({
           }}
           label="Explore"
         ></Button>
-      )}
+      ) : null}
       <span
         aria-hidden="true"
         className={styles.swipeIndicator}
@@ -299,7 +323,10 @@ const DataViewer: FunctionComponent<Props> = ({
         })}
       </div>
 
-      <ContentNavigation showContentList={showContentList} />
+      <ContentNavigation
+        showContentList={showContentList}
+        contents={contents}
+      />
 
       {compareLayer &&
         getDataWidget({

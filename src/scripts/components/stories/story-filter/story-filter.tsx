@@ -8,14 +8,15 @@ import { CheckIcon } from "../../main/icons/check-icon";
 
 import { storyListSelector } from "../../../selectors/story/list";
 import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
+import { setSelectedTags } from "../../../reducers/story";
 
 import styles from "./story-filter.module.css";
-import { setSelectedTags } from "../../../reducers/story";
 
 const StoryFilter: FunctionComponent = () => {
   const dispatch = useDispatch();
   const stories = useSelector(storyListSelector);
   const selectedTags = useSelector(selectedTagsSelector);
+  console.log("🚀 ~ selectedTags:", selectedTags);
   const [translateValue, setTranslateValue] = useState(0);
   const scrollSpeed = 50; // pixels per frame
   const innerRef = useRef<HTMLDivElement>(null);

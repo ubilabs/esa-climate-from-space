@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { parseUrlTags } from "../../libs/tags-url-parameter";
 
 interface StoriesState {
   selected: string | null;
@@ -7,7 +8,7 @@ interface StoriesState {
 
 const initialState: StoriesState = {
   selected: null,
-  selectedTags: [],
+  selectedTags: parseUrlTags(),
 };
 
 const storiesSlice = createSlice({

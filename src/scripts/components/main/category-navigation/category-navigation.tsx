@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./category-navigation.module.css";
 import cx from "classnames";
@@ -8,6 +8,8 @@ interface Props {
   width: number;
   setCategory: React.Dispatch<React.SetStateAction<string | null>>;
   isAnimationReady: React.MutableRefObject<boolean>;
+  arcs: { [key: string]: number }[];
+  onSelect: (category: string) => void;
 }
 
 /**
@@ -24,7 +26,9 @@ const CategoryNavigation: React.FC<Props> = ({
   width,
   setCategory,
   showCategories,
+  arcs,
   isAnimationReady,
+  onSelect,
 }) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
@@ -72,20 +76,20 @@ const CategoryNavigation: React.FC<Props> = ({
 
   // Placeholders
   // Todo: Replace with actual data
-  const arcs = useMemo(
-    () => [
-      { "Sea Surface Temperature": 20 },
-      { "Chlorophyll Concentration": 21 },
-      { "Water Vapour": 60 },
-      { "Sea Surface Salinity": 50 },
-      { Highlights: 40 },
-      { "Ice Sheets": 10 },
-      { Permafrost: 80 },
-      { Landcover: 12 },
-      { "Greenhouse Gases": 30 },
-    ],
-    [],
-  );
+  // const arcs = useMemo(
+  // () => [
+  // { "Sea Surface Temperature": 20 },
+  // { "Chlorophyll Concentration": 21 },
+  // { "Water Vapour": 60 },
+  // { "Sea Surface Salinity": 50 },
+  // { Highlights: 40 },
+  // { "Ice Sheets": 10 },
+  // { Permafrost: 80 },
+  // { Landcover: 12 },
+  // { "Greenhouse Gases": 30 },
+  // ],
+  // [],
+  // );
 
   // Handle touch events
   const handleTouchStart = (e: React.TouchEvent) => {

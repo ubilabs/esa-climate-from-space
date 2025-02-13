@@ -2,82 +2,20 @@ import React, { FunctionComponent, useEffect, useState } from "react";
 import styles from "./content-navigation.module.css";
 import cx from "classnames";
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
+import { StoryList } from "../../../types/story-list";
+import Button from "../button/button";
+import { ul } from "framer-motion/client";
 
 interface Props {
   showContentList: boolean;
+  contents: StoryList;
 }
 
-// Placeholder content
-// Todo: Replace with actual content
-const contents = [
-  {
-    name: "Anomalies du niveau de la mere",
-    type: "image",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Bienvenue sur le site Climate from Space With long title",
-    type: "layer",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Changement de la couverture des terres",
-    type: "image",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Le cycle de l'eau",
-    type: "video",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Les glaciers surface",
-    type: "blog",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Température de surface de la mer",
-    type: "image",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Évolution des forêts",
-    type: "layer",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Cycle du carbone",
-    type: "video",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Fonte des glaces",
-    type: "blog",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Température de l'air with another longer title",
-    type: "image",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Changements climatiques",
-    type: "layer",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Événements extrêmes",
-    type: "video",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-  {
-    name: "Biodiversité",
-    type: "blog",
-    link: "https://cfs.climate.esa.int/index.html#/stories/story-32/0",
-  },
-];
-
-const ContentNavigation: FunctionComponent<Props> = ({ showContentList }) => {
+const ContentNavigation: FunctionComponent<Props> = ({
+  showContentList,
+  contents,
+}) => {
+  console.log("🚀 ~ contents:", contents);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
 
   // The indexDelta is the number of items the user has scrolled
@@ -162,9 +100,10 @@ const ContentNavigation: FunctionComponent<Props> = ({ showContentList }) => {
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
     >
-      {contents.map(({ name, type }, index) => {
+      {contents.map(({ title, id }, index) => {
         const relativePosition = index - Math.floor(contents.length / 2);
-
+        // Todo: Add type property to StoryList. For now we just take blog
+        const type = "blog";
         return (
           <li
             // Used in CSS to get the correct icon for the content type
@@ -176,8 +115,9 @@ const ContentNavigation: FunctionComponent<Props> = ({ showContentList }) => {
               styles.contentNavItem,
             )}
             key={index}
+            aria-label={`${type} content: ${title}`}
           >
-            <span>{name}</span>
+            <Button link={`stories/${id}/0/`} label={title}></Button>
           </li>
         );
       })}

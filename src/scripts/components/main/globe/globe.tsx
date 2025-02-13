@@ -1,5 +1,6 @@
 import {
   FunctionComponent,
+  memo,
   useCallback,
   useEffect,
   useRef,
@@ -65,7 +66,7 @@ interface Props {
 }
 const EMPTY_FUNCTION = () => {};
 
-const Globe: FunctionComponent<Props> = (props) => {
+const Globe: FunctionComponent<Props> = memo((props) => {
   const {
     view,
     projectionState,
@@ -78,15 +79,35 @@ const Globe: FunctionComponent<Props> = (props) => {
 
   const [containerRef, globe] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
+  const rotationRef = useRef<number>(180);
+  const isSpinning = useRef<boolean>(true);
 
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
   useProjectionSwitch(globe, projectionState.projection);
   useMultiGlobeSynchronization(globe, props);
 
-  useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
+  const spin = useCallback(() => {
+    rotationRef.current += 0.05;
+    const lng = (rotationRef.current % 360) - 180;
+    if (globe) {
+      globe.setProps({
+        cameraView: { lng, lat: 10, altitude: 23840000 },
+      });
+    }
 
-  // fixme: add auto-rotate functionality
+    if (isSpinning.current) {
+      requestAnimationFrame(spin);
+    }
+  }, [globe]);
+
+  useEffect(() => {
+    if (globe) {
+      spin();
+    }
+  }, [globe, spin]);
+
+  useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
   return (
     <div
@@ -96,7 +117,10 @@ const Globe: FunctionComponent<Props> = (props) => {
       onTouchStart={() => onTouchStart()}
     ></div>
   );
-};
+});
+
+// Don't forget to add the import at the top:
+// import { memo } from 'react';
 
 /**
  * Use a state-variable and callback as a ref so the element can be used

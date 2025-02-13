@@ -54,6 +54,7 @@
 }
 
 .chosenCategory {
+  text-transform: capitalize;
   grid-area: globe-nav-area;
   z-index: 2;
   color: white;
