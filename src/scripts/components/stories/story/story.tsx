@@ -27,6 +27,7 @@ import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { useGetStoryQuery } from "../../../services/api";
 import { StoryMode } from "../../../types/story-mode";
+import { languageSelector } from "../../../selectors/language";
 
 import styles from "./story.module.css";
 
@@ -39,9 +40,11 @@ const Story: FunctionComponent = () => {
   const storyMode = mode === StoryMode.Stories;
   const { story_header } = useSelector(embedElementsSelector);
 
+  const lang = useSelector(languageSelector);
+
   const { data: selectedStory } = useGetStoryQuery({
     id: currentStoryId,
-    language: "en",
+    language: lang,
   });
 
   const isSplashScreen = Boolean(selectedStory?.slides[slideIndex].splashImage);
