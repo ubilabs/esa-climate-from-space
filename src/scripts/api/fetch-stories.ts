@@ -6,5 +6,6 @@ import { Language } from "../types/language";
 
 export default async function fetchStories(lang: Language) {
   const url = replaceUrlPlaceholders(config.api.stories, { lang });
-  return await fetch(url).then((res) => res.json());
+  const response = await fetch(url);
+  return await response.json();
 }
