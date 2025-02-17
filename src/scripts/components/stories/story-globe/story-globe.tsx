@@ -7,6 +7,8 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 import DataViewer from "../../main/data-viewer/data-viewer";
 import TimeSlider from "../../layers/time-slider/time-slider";
 import LayerDescription from "../layer-description/layer-description";
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { useGetLayerQuery } from "../../../services/api";
 
 import { GlobeItem } from "../../../types/gallery-item";
 
@@ -18,6 +20,10 @@ interface Props {
 
 const StoryGlobe: FunctionComponent<Props> = ({ globeItem }) => {
   const { time_slider } = useSelector(embedElementsSelector);
+
+  const { mainId } = useSelector(selectedLayerIdsSelector);
+
+  useGetLayerQuery(mainId ?? "", { skip: !mainId });
 
   useStoryGlobe(globeItem);
 

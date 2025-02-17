@@ -1,24 +1,23 @@
+import { RenderMode } from "@ubilabs/esa-webgl-globe";
 import { FunctionComponent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Oval } from "svg-loaders-react";
-import { RenderMode } from "@ubilabs/esa-webgl-globe";
 
 import config from "../../../config/main";
+import { useLayerTimes } from "../../../hooks/use-formatted-time";
+import { downloadScreenshot } from "../../../libs/download-screenshot";
+import { projectionSelector } from "../../../selectors/globe/projection";
 import Button from "../button/button";
 import { CompassIcon } from "../icons/compass-icon";
 import { DownloadIcon } from "../icons/download-icon";
 import { LocationIcon } from "../icons/location-icon";
-import setGlobeProjectionAction from "../../../actions/set-globe-projection";
-import { projectionSelector } from "../../../selectors/globe/projection";
-import setFlyToAction from "../../../actions/set-fly-to";
-import { downloadScreenshot } from "../../../libs/download-screenshot";
-import { useLayerTimes } from "../../../hooks/use-formatted-time";
 
+import { setFlyTo } from "../../../reducers/fly-to";
+import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerListItem } from "../../../types/layer-list";
 
 import styles from "./globe-navigation.module.css";
-
 interface Props {
   mainLayer: LayerListItem | null;
   compareLayer: LayerListItem | null;
@@ -42,7 +41,12 @@ const GlobeNavigation: FunctionComponent<Props> = ({
         ? GlobeProjection.PlateCaree
         : GlobeProjection.Sphere;
 
-    dispatch(setGlobeProjectionAction(newProjection, 2));
+    dispatch(
+      setGlobeProjection({
+        projection: newProjection,
+        morphTime: 2,
+      }),
+    );
   };
 
   const onLocateMeHandler = () => {
@@ -61,7 +65,7 @@ const GlobeNavigation: FunctionComponent<Props> = ({
           altitude: 0,
           zoom: 0,
         };
-        dispatch(setFlyToAction(newView));
+        dispatch(setFlyTo(newView));
         setLocationLoading(false);
       },
       (error) => {
@@ -91,7 +95,7 @@ const GlobeNavigation: FunctionComponent<Props> = ({
       <div
         className={styles.compass}
         id="ui-compass"
-        onClick={() => dispatch(setFlyToAction({ ...defaultView }))}
+        onClick={() => dispatch(setFlyTo({ ...defaultView }))}
       >
         <CompassIcon />
       </div>

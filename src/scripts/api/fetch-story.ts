@@ -4,7 +4,8 @@ import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
 
 import { Language } from "../types/language";
 
-export default function fetchStory(id: string, lang: Language) {
+export default async function fetchStory(id: string, lang: Language) {
   const url = replaceUrlPlaceholders(config.api.story, { id, lang });
-  return fetch(url).then((res) => res.json());
+  const response = await fetch(url);
+  return await response.json();
 }

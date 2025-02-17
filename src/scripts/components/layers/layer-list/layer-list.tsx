@@ -2,8 +2,7 @@ import { FunctionComponent } from "react";
 
 import LayerListItem from "../layer-list-item/layer-list-item";
 
-import { SelectedLayerIdsState } from "../../../reducers/layers/selected-ids";
-
+import { SelectedLayerIdsState } from "../../../reducers/layers";
 import { LayerListItem as LayerListItemType } from "../../../types/layer-list";
 
 import styles from "./layer-list.module.css";

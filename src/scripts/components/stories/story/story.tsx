@@ -1,31 +1,33 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { YouTubePlayer } from "youtube-player/dist/types";
-import { VideoJsPlayer } from "video.js";
 import { useSelector } from "react-redux";
+import { VideoJsPlayer } from "video.js";
+import { YouTubePlayer } from "youtube-player/dist/types";
 
 import { useStoryParams } from "../../../hooks/use-story-params";
-import StoryImage from "../story-image/story-image";
-import StoryGlobe from "../story-globe/story-globe";
-import StoryContent from "../story-content/story-content";
-import StoryGallery from "../story-gallery/story-gallery";
-import StoryFooter from "../story-footer/story-footer";
-import fetchStory from "../../../actions/fetch-story";
-import Header from "../header/header";
-import StoryVideo from "../story-video/story-video";
-import setGlobeProjectionAction from "../../../actions/set-globe-projection";
-import setSelectedLayerIdsAction from "../../../actions/set-selected-layer-id";
-import setGlobeTimeAction from "../../../actions/set-globe-time";
-import Share from "../../main/share/share";
-import SplashScreen from "../splash-screen/splash-screen";
+import { setGlobeTime } from "../../../reducers/globe/time";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
+import Share from "../../main/share/share";
+import Header from "../header/header";
+import SplashScreen from "../splash-screen/splash-screen";
+import StoryContent from "../story-content/story-content";
+import StoryFooter from "../story-footer/story-footer";
+import StoryGallery from "../story-gallery/story-gallery";
+import StoryGlobe from "../story-globe/story-globe";
+import StoryImage from "../story-image/story-image";
+import StoryVideo from "../story-video/story-video";
 
-import { GlobeProjection } from "../../../types/globe-projection";
-import { StoryMode } from "../../../types/story-mode";
-import { Slide, Story as StoryType } from "../../../types/story";
-import { GalleryItemType } from "../../../types/gallery-item";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
+import { GalleryItemType } from "../../../types/gallery-item";
+import { GlobeProjection } from "../../../types/globe-projection";
+import { Slide, Story as StoryType } from "../../../types/story";
 
 import StoryEmbedded from "../story-embedded/story-embedded";
+
+import { setGlobeProjection } from "../../../reducers/globe/projection";
+import { setSelectedLayerIds } from "../../../reducers/layers";
+import { useGetStoryQuery } from "../../../services/api";
+import { StoryMode } from "../../../types/story-mode";
+import { languageSelector } from "../../../selectors/language";
 
 import styles from "./story.module.css";
 
@@ -34,30 +36,45 @@ const Story: FunctionComponent = () => {
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const { mode, slideIndex, currentStoryId, selectedStory, storyListItem } =
-    storyParams;
+  const { mode, slideIndex, currentStoryId, storyListItem } = storyParams;
   const storyMode = mode === StoryMode.Stories;
-  const isSplashScreen = Boolean(selectedStory?.slides[slideIndex].splashImage);
   const { story_header } = useSelector(embedElementsSelector);
 
-  // fetch story of active storyId
-  useEffect(() => {
-    if (currentStoryId) {
-      dispatch(fetchStory(currentStoryId));
-    }
-  }, [dispatch, currentStoryId]);
+  const lang = useSelector(languageSelector);
+
+  const { data: selectedStory } = useGetStoryQuery({
+    id: currentStoryId,
+    language: lang,
+  });
+
+  const isSplashScreen = Boolean(selectedStory?.slides[slideIndex].splashImage);
 
   // set globe to sphere projection
   useEffect(() => {
-    dispatch(setGlobeProjectionAction(sphereProjection, 0));
+    dispatch(
+      setGlobeProjection({
+        projection: sphereProjection,
+        morphTime: 0,
+      }),
+    );
   }, [dispatch, sphereProjection]);
 
   // clean up story on unmount
   useEffect(
     () => () => {
-      dispatch(setSelectedLayerIdsAction(null, true));
-      dispatch(setSelectedLayerIdsAction(null, false));
-      dispatch(setGlobeTimeAction(0));
+      dispatch(
+        setSelectedLayerIds({
+          layerId: null,
+          isPrimary: true,
+        }),
+      );
+      dispatch(
+        setSelectedLayerIds({
+          layerId: null,
+          isPrimary: false,
+        }),
+      );
+      dispatch(setGlobeTime(0));
     },
     [dispatch],
   );

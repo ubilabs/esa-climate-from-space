@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 
-import setSelectedStoryTagsAction from "../../../actions/set-selected-story-tags";
+import { setSelectedTags } from "../../../reducers/story";
 import { CheckIcon } from "../../main/icons/check-icon";
 
 import styles from "./selected-tags.module.css";
@@ -24,7 +24,7 @@ const SelectedTags: FunctionComponent<Props> = ({ selectedTags }) => {
       ))}
       <button
         className={styles.resetFilters}
-        onClick={() => dispatch(setSelectedStoryTagsAction([]))}
+        onClick={() => dispatch(setSelectedTags([]))}
       >
         <FormattedMessage id={"resetFilters"} />
       </button>

@@ -6,8 +6,6 @@ import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 
 import { languageSelector } from "../../../selectors/language";
 import UrlSync from "../url-sync/url-sync";
-import LayerLoader from "../../layers/layer-loader/layer-loader";
-import Init from "../init/init";
 import LayerSelector from "../../layers/layer-selector/layer-selector";
 import Navigation from "../navigation/navigation";
 import { EsaLogo } from "../icons/esa-logo";
@@ -23,7 +21,6 @@ import DataViewer from "../data-viewer/data-viewer";
 import Tracking from "../tracking/tracking";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
 import translations from "../../../i18n";
-import { useStoryMarkers } from "../../../hooks/use-story-markers";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import styles from "./app.module.css";
@@ -38,12 +35,10 @@ const matomoInstance = createInstance({
 });
 
 const TranslatedApp: FunctionComponent = () => {
-  const markers = useStoryMarkers();
   const language = useSelector(languageSelector);
   const {
     logo: embedLogo,
     globe_navigation,
-    markers: embedMarkers,
     time_slider,
     legend,
   } = useSelector(embedElementsSelector);
@@ -63,8 +58,7 @@ const TranslatedApp: FunctionComponent = () => {
           <Route path="/" exact>
             {embedLogo && logo}
             <DataViewer
-              hideNavigation={!globe_navigation}
-              markers={embedMarkers ? markers : []}
+              hideNavigation={Boolean(globe_navigation)}
               backgroundColor={"var(--black)"}
             />
             <Navigation />
@@ -99,14 +93,13 @@ const TranslatedApp: FunctionComponent = () => {
         <Tracking />
       </IntlProvider>
       <UrlSync />
-      <LayerLoader />
-      <Init />
     </Router>
   );
 };
 
 const App: FunctionComponent = () => (
   // @ts-expect-error - MatomoProvider does not include children in props since react 18
+
   <MatomoProvider value={matomoInstance}>
     <StoreProvider store={store}>
       <TranslatedApp />

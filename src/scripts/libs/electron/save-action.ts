@@ -1,9 +1,9 @@
-import {Action} from 'redux';
+import { Action } from "@reduxjs/toolkit";
 
 // Saves an action for offline usage
 export function saveAction(action: Action): void {
   if (!window.cfs) {
-    console.error('Calling electron function from a non-electron environment');
+    console.error("Calling electron function from a non-electron environment");
     return;
   }
 

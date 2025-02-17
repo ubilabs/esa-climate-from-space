@@ -8,7 +8,7 @@ import { CheckIcon } from "../../main/icons/check-icon";
 
 import { storyListSelector } from "../../../selectors/story/list";
 import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
-import setSelectedStoryTags from "../../../actions/set-selected-story-tags";
+import { setSelectedTags } from "../../../reducers/story";
 
 import styles from "./story-filter.module.css";
 
@@ -37,9 +37,9 @@ const StoryFilter: FunctionComponent = () => {
       ? selectedTags.filter((oldTag) => oldTag !== tag)
       : selectedTags.concat([tag]);
 
-    dispatch(setSelectedStoryTags(newTags));
+    dispatch(setSelectedTags(newTags));
   };
-  const resetTags = () => dispatch(setSelectedStoryTags([]));
+  const resetTags = () => dispatch(setSelectedTags([]));
 
   const leftClick = () => {
     if (translateValue < 0) {
