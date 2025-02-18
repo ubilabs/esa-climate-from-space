@@ -14,19 +14,15 @@ import { LocationIcon } from "../icons/location-icon";
 
 import { setFlyTo } from "../../../reducers/fly-to";
 import { setGlobeProjection } from "../../../reducers/globe/projection";
+import { State } from "../../../reducers";
 import { GlobeProjection } from "../../../types/globe-projection";
-import { LayerListItem } from "../../../types/layer-list";
+
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { layerListItemSelector } from "../../../selectors/layers/list-item";
 
 import styles from "./globe-navigation.module.css";
-interface Props {
-  mainLayer: LayerListItem | null;
-  compareLayer: LayerListItem | null;
-}
 
-const GlobeNavigation: FunctionComponent<Props> = ({
-  mainLayer,
-  compareLayer,
-}) => {
+const GlobeNavigation: FunctionComponent = () => {
   const dispatch = useDispatch();
   const [locationLoading, setLocationLoading] = useState(false);
   const defaultView = config.globe.view;
@@ -34,6 +30,16 @@ const GlobeNavigation: FunctionComponent<Props> = ({
   const label =
     projectionState.projection === GlobeProjection.Sphere ? "2D" : "3D";
   const { mainTimeFormat, compareTimeFormat } = useLayerTimes();
+
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+  const { mainId, compareId } = selectedLayerIds;
+
+  const mainLayer = useSelector((state: State) =>
+    layerListItemSelector(state, mainId),
+  );
+  const compareLayer = useSelector((state: State) =>
+    layerListItemSelector(state, compareId),
+  );
 
   const onProjectionHandler = () => {
     const newProjection =
