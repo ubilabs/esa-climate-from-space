@@ -2,9 +2,9 @@ import { FunctionComponent, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 import cx from "classnames";
+import { setSelectedTags } from "../../../reducers/story";
 
 import styles from "./story-tags.module.css";
-import { setSelectedTags } from "../../../reducers/story";
 
 interface Props {
   tags: string[];

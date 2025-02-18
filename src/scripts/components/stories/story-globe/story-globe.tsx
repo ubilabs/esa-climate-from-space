@@ -21,8 +21,7 @@ interface Props {
 const StoryGlobe: FunctionComponent<Props> = ({ globeItem }) => {
   const { time_slider } = useSelector(embedElementsSelector);
 
-  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  const { mainId } = selectedLayerIds;
+  const { mainId } = useSelector(selectedLayerIdsSelector);
 
   useGetLayerQuery(mainId ?? "", { skip: !mainId });
 

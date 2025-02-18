@@ -2,10 +2,10 @@ import { FunctionComponent } from "react";
 import { FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 
+import { setSelectedTags } from "../../../reducers/story";
 import { CheckIcon } from "../../main/icons/check-icon";
 
 import styles from "./selected-tags.module.css";
-import { setSelectedTags } from "../../../reducers/story";
 
 interface Props {
   selectedTags: string[];
