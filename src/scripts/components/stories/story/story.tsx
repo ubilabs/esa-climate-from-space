@@ -98,6 +98,7 @@ const Story: FunctionComponent = () => {
       return (
         <StoryGallery mode={mode} storyId={story.id} key={story.id}>
           {slide.galleryItems.map((item) => {
+           console.log(item)
             switch (item.type) {
               case GalleryItemType.Image:
                 return <StoryImage storyId={story.id} imageItem={item} />;

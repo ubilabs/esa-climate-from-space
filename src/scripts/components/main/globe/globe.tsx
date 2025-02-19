@@ -37,6 +37,8 @@ import config from "../../../config/main";
 import styles from "./globe.module.css";
 import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
+import { useSelector } from "react-redux";
+import { globeViewSelector } from "../../../selectors/globe/view";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -63,8 +65,12 @@ interface Props {
   onMoveStart: () => void;
   onMoveEnd: (view: CameraView) => void;
   onLayerLoadingStateChange: LayerLoadingStateChangeHandle;
+  isSpinning: boolean;
 }
-const EMPTY_FUNCTION = () => {};
+
+export type GlobeProps = Partial<Props>;
+
+const EMPTY_FUNCTION = () => { };
 
 const Globe: FunctionComponent<Props> = memo((props) => {
   const {
@@ -75,17 +81,54 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     layerDetails,
     imageLayer,
     markers,
+    isSpinning = false,
   } = props;
 
   const [containerRef, globe] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
   const rotationRef = useRef<number>(180);
-  const isSpinning = useRef<boolean>(true);
+  console.log("isSpinning", isSpinning);
+  const isSpinningRef = useRef<boolean>(isSpinning);
 
+  const spinTo = useCallback(
+    (lat: number, lng: number, speed: number) => {
+      const startLng = rotationRef.current % 360;
+      const startLat = 10; // Assuming the initial latitude is 10
+      const deltaLng = lng - startLng;
+      const deltaLat = lat - startLat;
+      const steps = Math.ceil(speed * 60); // Assuming 60 frames per second
+
+      let step = 0;
+
+      const animate = () => {
+        if (step < steps) {
+          const currentLng = startLng + (deltaLng * step) / steps;
+          const currentLat = startLat + (deltaLat * step) / steps;
+          if (globe) {
+            globe.setProps({
+              cameraView: {
+                lng: currentLng,
+                lat: currentLat,
+                altitude: 23840000,
+              },
+            });
+          }
+          step++;
+          requestAnimationFrame(animate);
+        }
+      };
+
+      animate();
+    },
+    [globe],
+  );
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
   useProjectionSwitch(globe, projectionState.projection);
-  useMultiGlobeSynchronization(globe, props);
+  useMultiGlobeSynchronization(globe, props, spinTo);
+
+  const globeView = useSelector(globeViewSelector);
+  console.log("globeView", globeView);
 
   const spin = useCallback(() => {
     rotationRef.current += 0.05;
@@ -96,16 +139,17 @@ const Globe: FunctionComponent<Props> = memo((props) => {
       });
     }
 
-    if (isSpinning.current) {
+    if (isSpinningRef.current) {
       requestAnimationFrame(spin);
     }
   }, [globe]);
 
   useEffect(() => {
-    if (globe) {
+    isSpinningRef.current = isSpinning;
+    if (globe && isSpinning) {
       spin();
     }
-  }, [globe, spin]);
+  }, [globe, spin, isSpinning]);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
@@ -295,7 +339,11 @@ function useProjectionSwitch(
  * Integrate the globe with the external view-state events and props
  * (view / flyTo / onChange).
  */
-function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
+function useMultiGlobeSynchronization(
+  globe: WebGlGlobe | null,
+  props: Props,
+  spinTo: (lat: number, lng: number, speed: number) => void,
+) {
   const { view, active, flyTo } = props;
 
   // forward camera changes from the active view to the parent component
@@ -311,7 +359,17 @@ function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
   // incoming flyTo cameraViews are always applied
   useEffect(() => {
     if (globe && flyTo) {
-      globe.setProps({ cameraView: flyTo });
+      if ("altitude" in flyTo) {
+        globe.setProps({ cameraView: flyTo });
+      } else {
+        // globe.setProps({
+        //   cameraView: {
+        //     ...view,
+        //     ...(typeof flyTo === "object" ? flyTo : {}),
+        //   },
+        // });
+        spinTo(flyTo.lat, flyTo.lng, 2); // Assuming speed is 1, you can adjust it as needed)
+      }
     }
   }, [globe, flyTo]);
 }
@@ -427,10 +485,10 @@ function getLayerProps(
         type === LayerType.Image
           ? () => url
           : ({ x, y, zoom }) =>
-              url
-                .replace("{x}", String(x))
-                .replace("{reverseY}", String(y))
-                .replace("{z}", String(zoom)),
+            url
+              .replace("{x}", String(x))
+              .replace("{reverseY}", String(y))
+              .replace("{z}", String(zoom)),
     });
   }
 

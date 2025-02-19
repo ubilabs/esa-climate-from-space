@@ -8,7 +8,7 @@ import {
 import { LayerType } from "../../../types/globe-layer-type";
 import { Layer } from "../../../types/layer";
 import Gallery from "../gallery/gallery";
-import Globe from "../globe/globe";
+import Globe, { GlobeProps } from "../globe/globe";
 import { projectionSelector } from "../../../selectors/globe/projection";
 import { useDispatch, useSelector } from "react-redux";
 import { globeViewSelector } from "../../../selectors/globe/view";
@@ -31,23 +31,24 @@ import LayerLegend from "../../layers/layer-legend/layer-legend";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
+import { Marker } from "../../../types/marker-type";
 
 interface Props {
-  backgroundColor: string;
   hideNavigation: boolean;
+  markers?: Marker[];
+  globeProps: GlobeProps;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
-  backgroundColor,
   hideNavigation,
+  markers,
+  globeProps,
 }) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const flyTo = useSelector(flyToSelector);
-
-
 
   const dispatch = useDispatch();
   const time = useSelector(timeSelector);
@@ -69,7 +70,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const compareLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, compareId),
   );
-
 
   const [active, setActive] = useState(Boolean(compareLayer));
   // If initially, there is a main layer selected, we need to fetch the layer details
@@ -168,24 +168,28 @@ export const GetDataWidget: FunctionComponent<Props> = ({
       dispatch(setGlobeSpinning(false));
     }
   }, [dispatch, mainId, compareId, globeSpinning]);
+
+  const props = {
+    active: active,
+    view: currentView,
+    projectionState: projectionState,
+    imageLayer: imageLayer,
+    layerDetails: layerDetails || null,
+    spinning: globeSpinning,
+    flyTo: flyTo,
+    onMouseEnter: () => setActive((prev) => !prev),
+    onTouchStart: () => setActive((prev) => !prev),
+    onChange: onChangeHandler,
+    onMoveStart: onMoveStartHandler,
+    onMoveEnd: onMoveEndHandler,
+    onLayerLoadingStateChange: onLayerLoadingStateChangeHandler,
+    markers: markers,
+    ...globeProps,
+  }
+
   return (
     <>
-      <Globe
-        backgroundColor={backgroundColor}
-        active={active}
-        view={currentView}
-        projectionState={projectionState}
-        imageLayer={imageLayer}
-        layerDetails={layerDetails || null}
-        spinning={globeSpinning}
-        flyTo={flyTo}
-        onMouseEnter={() => setActive((prev) => !prev)}
-        onTouchStart={() => setActive((prev) => !prev)}
-        onChange={onChangeHandler}
-        onMoveStart={onMoveStartHandler}
-        onMoveEnd={onMoveEndHandler}
-        onLayerLoadingStateChange={onLayerLoadingStateChangeHandler}
-      />
+      <Globe {...props} />
       {legend && getLegends()}
       {!hideNavigation && showGlobeNavigation && <GlobeNavigation />}
     </>

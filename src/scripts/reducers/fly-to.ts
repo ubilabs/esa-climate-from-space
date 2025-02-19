@@ -14,7 +14,10 @@ const flyToSlice = createSlice({
   initialState,
   reducers: {
     setFlyTo(state, action: PayloadAction<CameraView>) {
-      state.view = action.payload;
+      state.view = {
+        ...state.view,
+        ...action.payload,
+      };
     },
   },
 });

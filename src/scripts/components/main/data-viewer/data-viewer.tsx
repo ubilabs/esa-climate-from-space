@@ -1,6 +1,6 @@
 import { useHistory, useParams } from "react-router-dom";
 
-import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
+import { LayerLoadingState, RenderMode } from "@ubilabs/esa-webgl-globe";
 
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
@@ -23,6 +23,10 @@ import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids
 import { State } from "../../../reducers";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { GetDataWidget } from "../data-widget/data-widget";
+import { useStoryMarkers } from "../../../hooks/use-story-markers";
+import { useDispatch } from "react-redux";
+import { setFlyTo } from "../../../reducers/fly-to";
+import { setGlobeView } from "../../../reducers/globe/view";
 
 interface Props {
   backgroundColor: string;
@@ -41,21 +45,10 @@ const DataViewer: FunctionComponent<Props> = ({
   backgroundColor,
   hideNavigation,
 }) => {
-  // const dispatch = useDispatch();
   const { category } = useParams<RouteParams>();
 
   const [showContentList, setShowContentList] = useState<boolean>(
     Boolean(category),
-  );
-
-  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  const { compareId } = selectedLayerIds;
-  // const mainLayer = useSelector((state: State) =>
-  //  layerListItemSelector(state, mainId),
-  //);
-
-  const compareLayer = useSelector((state: State) =>
-    layerListItemSelector(state, compareId),
   );
 
   const [currentCategory, setCurrentCategory] = useState<string | null>(
@@ -69,11 +62,45 @@ const DataViewer: FunctionComponent<Props> = ({
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoriesQuery(language);
 
+  // We need to keep track of the current selected content Id because we need to
+  // set the flyTo for the marker, or add the data layer to the globe
+  const [selectedContentId, setSelectedContentId] = useState<string | null>(
+    null,
+  );
+
+  const dispatch = useDispatch();
+
+  const markers = useStoryMarkers().filter((story) =>
+    story.tags.includes(currentCategory),
+  );
   // There is a set of animations which should be played only once
   // This keeps track of that
   const hasAnimationPlayed = useRef(Boolean(category));
 
   useEffect(() => {
+    const previewedContent = stories?.find(
+      (story) => story.id === selectedContentId,
+    );
+
+    if (!previewedContent) {
+      console.warn("Content could not be found");
+    }
+
+    dispatch(
+      setFlyTo({
+        lat: previewedContent?.position[1]  || 0,
+        // On mobile, we only show the right 32% of the globe, so here
+        // adapt the lng position to make sure the marker is actually seen
+        lng: previewedContent?.position[0]- 35 || 0,
+      }),
+    );
+  }, [selectedContentId]);
+
+  useEffect(() => {
+    if (!showContentList) {
+      setSelectedContentId(null);
+      console.log("setting Id in dataViewer");
+    }
     setShowContentList(Boolean(category));
   }, [category]);
 
@@ -85,15 +112,19 @@ const DataViewer: FunctionComponent<Props> = ({
     .map(({ tags }) => tags)
     .filter(Boolean)
     .flat();
-  const uniqTags = Array.from(new Set(allTags));
+
+  const uniqueTags = Array.from(new Set(allTags));
 
   const contents = stories.filter(
     (story) => category && story.tags?.includes(category),
   );
+
+  console.log("markers", markers);
   // create a list of all tags with their number of occurrences in the stories
   // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
 
-  const arcs = uniqTags
+  // const markers = stories.filter
+  const arcs = uniqueTags
     .map((tag) => {
       const count = allTags.filter((t) => t === tag).length;
       return { [tag]: count };
@@ -117,27 +148,28 @@ const DataViewer: FunctionComponent<Props> = ({
         The globe is the main component and is always visible
         The category navigation is visible when the content navigation is not visible
       */}
-      <CategoryNavigation
-        onSelect={(category) => setSelectedTags([category])}
-        arcs={arcs}
-        showCategories={!showContentList}
-        width={screenWidth}
-        setCategory={setCurrentCategory}
-        isAnimationReady={hasAnimationPlayed}
-      />
-
       {!showContentList ? (
-        <Button
-          className={cx(
-            hasAnimationPlayed.current && styles.showFast,
-            styles.exploreButton,
-          )}
-          onClick={() => {
-            history.push(`/${currentCategory}`);
-            setShowContentList(!showContentList);
-          }}
-          label="Explore"
-        ></Button>
+        <>
+          <CategoryNavigation
+            onSelect={(category) => setSelectedTags([category])}
+            arcs={arcs}
+            showCategories={!showContentList}
+            width={screenWidth}
+            setCategory={setCurrentCategory}
+            isAnimationReady={hasAnimationPlayed}
+          />
+          <Button
+            className={cx(
+              hasAnimationPlayed.current && styles.showFast,
+              styles.exploreButton,
+            )}
+            onClick={() => {
+              history.push(`/${currentCategory}`);
+              setShowContentList(!showContentList);
+            }}
+            label="Explore"
+          ></Button>
+        </>
       ) : null}
       <span
         aria-hidden="true"
@@ -153,15 +185,21 @@ const DataViewer: FunctionComponent<Props> = ({
           showContentList && styles.showContentList,
         )}
       >
-        <GetDataWidget hideNavigation={Boolean(hideNavigation)} backgroundColor={backgroundColor} />
+        <GetDataWidget
+          markers={markers}
+          hideNavigation={Boolean(hideNavigation)}
+          globeProps={{
+            backgroundColor,
+            isSpinning: !showContentList,
+          }}
+        />
       </div>
 
       <ContentNavigation
         showContentList={showContentList}
         contents={contents}
+        setSelectedContentId={setSelectedContentId}
       />
-
-      {compareLayer && <GetDataWidget  hideNavigation={Boolean(hideNavigation)} backgroundColor={backgroundColor} />}
     </div>
   );
 };

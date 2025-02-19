@@ -1,21 +1,25 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import styles from "./content-navigation.module.css";
-import cx from "classnames";
+
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
+
 import { StoryList } from "../../../types/story-list";
 import Button from "../button/button";
-import { ul } from "framer-motion/client";
+
+import cx from "classnames";
+
+import styles from "./content-navigation.module.css";
 
 interface Props {
   showContentList: boolean;
   contents: StoryList;
+  setSelectedContentId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const ContentNavigation: FunctionComponent<Props> = ({
   showContentList,
   contents,
+  setSelectedContentId,
 }) => {
-  console.log("🚀 ~ contents:", contents);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
 
   // The indexDelta is the number of items the user has scrolled
@@ -53,6 +57,12 @@ const ContentNavigation: FunctionComponent<Props> = ({
     setTouchStartY(null);
   };
 
+  useEffect(() => {
+    return () => {
+      console.log("unmounting");
+    };
+  }, []);
+
   // This effect will be triggered whenever the indexDelta changes, i.e. when the user scrolls
   // Every item will be repositioned based on the new indexDelta
   useEffect(() => {
@@ -64,6 +74,17 @@ const ContentNavigation: FunctionComponent<Props> = ({
       const relativePosition = Number(
         item.getAttribute("data-relative-position"),
       );
+
+      if (relativePosition === 0) {
+        const id = item.getAttribute("data-content-id");
+
+        if (!id) {
+          console.warn(
+            "Selected content does not have an idea. This should not be the case",
+          );
+        }
+        setSelectedContentId(id);
+      }
 
       const adjustedPosition = relativePosition + indexDelta;
 
@@ -110,6 +131,10 @@ const ContentNavigation: FunctionComponent<Props> = ({
             data-content-type={type}
             // Used in the useEffect to calculate the new position
             data-relative-position={relativePosition}
+            // Used to identify the currently seletected content.
+            // Passed to the globe via props to make sure correct actions are triggered
+            // E.g. flyTo or show the data layer
+            data-content-id={id}
             className={cx(
               relativePosition === 0 && styles.active,
               styles.contentNavItem,
