@@ -29,7 +29,6 @@ import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
-import { getMarkerHtml } from "./get-marker-html";
 import { LayerType } from "../../../types/globe-layer-type";
 import { useHistory } from "react-router-dom";
 import config from "../../../config/main";
@@ -39,6 +38,9 @@ import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
 import { useSelector } from "react-redux";
 import { globeViewSelector } from "../../../selectors/globe/view";
+import { FlyToPayload } from "../../../reducers/fly-to";
+import { renderToStaticMarkup } from "react-dom/server";
+import { MarkerMarkup } from "./marker-markup";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -56,7 +58,7 @@ interface Props {
   imageLayer: GlobeImageLayerData | null;
   layerDetails: Layer | null;
   spinning: boolean;
-  flyTo: CameraView | null;
+  flyTo: FlyToPayload | null;
   markers?: Marker[];
   backgroundColor: string;
   onMouseEnter: () => void;
@@ -65,12 +67,12 @@ interface Props {
   onMoveStart: () => void;
   onMoveEnd: (view: CameraView) => void;
   onLayerLoadingStateChange: LayerLoadingStateChangeHandle;
-  isSpinning: boolean;
+  isAutoRoating: boolean;
 }
 
 export type GlobeProps = Partial<Props>;
 
-const EMPTY_FUNCTION = () => { };
+const EMPTY_FUNCTION = () => {};
 
 const Globe: FunctionComponent<Props> = memo((props) => {
   const {
@@ -81,22 +83,29 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     layerDetails,
     imageLayer,
     markers,
-    isSpinning = false,
+    isAutoRoating = false,
   } = props;
 
   const [containerRef, globe] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
-  const rotationRef = useRef<number>(180);
-  console.log("isSpinning", isSpinning);
-  const isSpinningRef = useRef<boolean>(isSpinning);
+  // const rotationRef = useRef<number>(180);
+   const rotationRef = useRef<number>(180);
+  const isAutoRotatingRef = useRef<boolean>(isAutoRoating);
 
-  const spinTo = useCallback(
-    (lat: number, lng: number, speed: number) => {
+  console.log("flyTo", props.flyTo);
+  // We have these custom functions for autoRotating the globe and animating the flyTo
+  // Ticket #1271 and #1270 reference these issues
+const animatedFlyTo = useCallback(
+    (lat: number, lng: number) => {
+      // This is the speed of the animation
+      const SPEED = 2;
+      // Adjust longitude by -90 degrees to show point on the right side
+      const targetLng = lng - 40;
       const startLng = rotationRef.current % 360;
-      const startLat = 10; // Assuming the initial latitude is 10
-      const deltaLng = lng - startLng;
+      const startLat = 10;
+      const deltaLng = targetLng - startLng;
       const deltaLat = lat - startLat;
-      const steps = Math.ceil(speed * 60); // Assuming 60 frames per second
+      const steps = Math.ceil(SPEED * 60); // Assuming 60 frames per second
 
       let step = 0;
 
@@ -105,6 +114,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
           const currentLng = startLng + (deltaLng * step) / steps;
           const currentLat = startLat + (deltaLat * step) / steps;
           if (globe) {
+            rotationRef.current = currentLng;
             globe.setProps({
               cameraView: {
                 lng: currentLng,
@@ -122,15 +132,8 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     },
     [globe],
   );
-  useGlobeLayers(globe, layerDetails, imageLayer);
-  useGlobeMarkers(globe, markers);
-  useProjectionSwitch(globe, projectionState.projection);
-  useMultiGlobeSynchronization(globe, props, spinTo);
 
-  const globeView = useSelector(globeViewSelector);
-  console.log("globeView", globeView);
-
-  const spin = useCallback(() => {
+  const autoRotate = useCallback(() => {
     rotationRef.current += 0.05;
     const lng = (rotationRef.current % 360) - 180;
     if (globe) {
@@ -139,17 +142,25 @@ const Globe: FunctionComponent<Props> = memo((props) => {
       });
     }
 
-    if (isSpinningRef.current) {
-      requestAnimationFrame(spin);
+    if (isAutoRotatingRef.current) {
+      requestAnimationFrame(autoRotate);
     }
   }, [globe]);
 
   useEffect(() => {
-    isSpinningRef.current = isSpinning;
-    if (globe && isSpinning) {
-      spin();
+    isAutoRotatingRef.current = isAutoRoating;
+    if (globe && isAutoRoating) {
+      autoRotate();
     }
-  }, [globe, spin, isSpinning]);
+  }, [globe, autoRotate, isAutoRoating]);
+
+  useGlobeLayers(globe, layerDetails, imageLayer);
+  useGlobeMarkers(globe, markers);
+  useProjectionSwitch(globe, projectionState.projection);
+  useMultiGlobeSynchronization(globe, props, animatedFlyTo);
+
+  const globeView = useSelector(globeViewSelector);
+  console.log("globeView", globeView);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
@@ -342,7 +353,7 @@ function useProjectionSwitch(
 function useMultiGlobeSynchronization(
   globe: WebGlGlobe | null,
   props: Props,
-  spinTo: (lat: number, lng: number, speed: number) => void,
+  animatedFlyTo: (lat: number, lng: number) => void,
 ) {
   const { view, active, flyTo } = props;
 
@@ -359,19 +370,13 @@ function useMultiGlobeSynchronization(
   // incoming flyTo cameraViews are always applied
   useEffect(() => {
     if (globe && flyTo) {
-      if ("altitude" in flyTo) {
-        globe.setProps({ cameraView: flyTo });
+      if (flyTo.isAnimated) {
+        animatedFlyTo(flyTo.lat, flyTo.lng);
       } else {
-        // globe.setProps({
-        //   cameraView: {
-        //     ...view,
-        //     ...(typeof flyTo === "object" ? flyTo : {}),
-        //   },
-        // });
-        spinTo(flyTo.lat, flyTo.lng, 2); // Assuming speed is 1, you can adjust it as needed)
+        globe.setProps({ cameraView: flyTo });
       }
     }
-  }, [globe, flyTo]);
+  }, [globe, flyTo, animatedFlyTo]);
 }
 
 /**
@@ -485,10 +490,10 @@ function getLayerProps(
         type === LayerType.Image
           ? () => url
           : ({ x, y, zoom }) =>
-            url
-              .replace("{x}", String(x))
-              .replace("{reverseY}", String(y))
-              .replace("{z}", String(zoom)),
+              url
+                .replace("{x}", String(x))
+                .replace("{reverseY}", String(y))
+                .replace("{z}", String(zoom)),
     });
   }
 
@@ -503,7 +508,9 @@ function getMarkerProps(
 
   for (const marker of markers) {
     const [lng, lat] = marker.position;
-    const html = getMarkerHtml(marker.title);
+    // const html = getMarkerHtml(marker.title);
+    const html = renderToStaticMarkup(<MarkerMarkup title={marker.title} />);
+
 
     if (!marker.link) {
       console.error("marker witout link!", marker);
