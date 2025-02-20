@@ -141,9 +141,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const imageLayer = compareLayer ? compareImageLayer : mainImageLayer;
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
-  if (mainImageLayer?.type === LayerType.Gallery) {
-    return <Gallery imageLayer={mainImageLayer} />;
-  }
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
@@ -174,6 +171,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     view: currentView,
     projectionState: projectionState,
     imageLayer: imageLayer,
+
     layerDetails: layerDetails || null,
     spinning: globeSpinning,
     flyTo: flyTo,
@@ -187,6 +185,9 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     ...globeProps,
   }
 
+  if (mainImageLayer?.type === LayerType.Gallery) {
+    return <Gallery imageLayer={mainImageLayer} />;
+  }
   return (
     <>
       <Globe {...props} />
