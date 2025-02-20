@@ -70,9 +70,16 @@ const DataViewer: FunctionComponent<Props> = ({
 
   const dispatch = useDispatch();
 
-  const markers = useStoryMarkers().filter((story) =>
-    story.tags.includes(currentCategory),
-  );
+  const markers = useStoryMarkers()
+    .filter((story) => story.tags.includes(currentCategory))
+    .filter((story) => {
+      if (selectedContentId && showContentList) {
+        return story.id === selectedContentId;
+      } else {
+        return story;
+      }
+    });
+console.log("markers", markers);
   // There is a set of animations which should be played only once
   // This keeps track of that
   const hasAnimationPlayed = useRef(Boolean(category));
@@ -84,17 +91,21 @@ const DataViewer: FunctionComponent<Props> = ({
 
     if (!previewedContent) {
       console.warn("Content could not be found");
+      return;
     }
+
+    console.log("setting flyTo in dataViewer", selectedContentId);
 
     dispatch(
       setFlyTo({
-        lat: previewedContent?.position[1]  || 0,
+        lat: previewedContent?.position[1] || 0,
         // On mobile, we only show the right 32% of the globe, so here
         // adapt the lng position to make sure the marker is actually seen
-        lng: previewedContent?.position[0]- 35 || 0,
+        lng: previewedContent?.position[0] - 0 || 0,
+        isAnimated: true,
       }),
     );
-  }, [selectedContentId]);
+  }, [selectedContentId, stories, dispatch]);
 
   useEffect(() => {
     if (!showContentList) {
@@ -148,16 +159,17 @@ const DataViewer: FunctionComponent<Props> = ({
         The globe is the main component and is always visible
         The category navigation is visible when the content navigation is not visible
       */}
+      <CategoryNavigation
+        onSelect={(category) => setSelectedTags([category])}
+        arcs={arcs}
+        showCategories={!showContentList}
+        width={screenWidth}
+        setCategory={setCurrentCategory}
+        isAnimationReady={hasAnimationPlayed}
+      />
+
       {!showContentList ? (
         <>
-          <CategoryNavigation
-            onSelect={(category) => setSelectedTags([category])}
-            arcs={arcs}
-            showCategories={!showContentList}
-            width={screenWidth}
-            setCategory={setCurrentCategory}
-            isAnimationReady={hasAnimationPlayed}
-          />
           <Button
             className={cx(
               hasAnimationPlayed.current && styles.showFast,
@@ -190,7 +202,7 @@ const DataViewer: FunctionComponent<Props> = ({
           hideNavigation={Boolean(hideNavigation)}
           globeProps={{
             backgroundColor,
-            isSpinning: !showContentList,
+            isAutoRoating: !showContentList,
           }}
         />
       </div>
