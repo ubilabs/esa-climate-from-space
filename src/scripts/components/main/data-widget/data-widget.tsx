@@ -171,7 +171,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     view: currentView,
     projectionState: projectionState,
     imageLayer: imageLayer,
-
     layerDetails: layerDetails || null,
     spinning: globeSpinning,
     flyTo: flyTo,

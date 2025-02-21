@@ -79,7 +79,7 @@ const DataViewer: FunctionComponent<Props> = ({
         return story;
       }
     });
-console.log("markers", markers);
+  console.log("markers", markers);
   // There is a set of animations which should be played only once
   // This keeps track of that
   const hasAnimationPlayed = useRef(Boolean(category));
@@ -201,6 +201,7 @@ console.log("markers", markers);
           markers={markers}
           hideNavigation={Boolean(hideNavigation)}
           globeProps={{
+            className: cx(!showContentList && styles.globe),
             backgroundColor,
             isAutoRoating: !showContentList,
           }}

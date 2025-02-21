@@ -68,6 +68,7 @@ interface Props {
   onMoveEnd: (view: CameraView) => void;
   onLayerLoadingStateChange: LayerLoadingStateChangeHandle;
   isAutoRoating: boolean;
+  className: string;
 }
 
 export type GlobeProps = Partial<Props>;
@@ -83,6 +84,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     layerDetails,
     imageLayer,
     markers,
+    className,
     isAutoRoating = false,
   } = props;
 
@@ -91,22 +93,38 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   // const rotationRef = useRef<number>(180);
    const rotationRef = useRef<number>(180);
   const isAutoRotatingRef = useRef<boolean>(isAutoRoating);
-
   console.log("flyTo", props.flyTo);
+const calculateLongitudeOffset = (lat: number) => {
+  // Base offset is 45 degrees
+  const baseOffset = 25;
+    console.log("baseLat", lat);
+  // Increase offset as we move away from equator
+  // abs(lat) / 90 gives us a factor between 0-1
+  const latitudeFactor = Math.abs(lat) / 90;
+  // Increase offset up to 90 degrees at poles
+  return baseOffset + (latitudeFactor * 90);
+};
+
   // We have these custom functions for autoRotating the globe and animating the flyTo
   // Ticket #1271 and #1270 reference these issues
 const animatedFlyTo = useCallback(
     (lat: number, lng: number) => {
+      console.log("animatedFlyTo");
+      console.log("lat", lat);
+      console.log("lng", lng);
       // This is the speed of the animation
       const SPEED = 2;
-      // Adjust longitude by -90 degrees to show point on the right side
-      const targetLng = lng - 40;
+      // Adjust longitude by -90 degreeis to show point on the right side
+      const targetLng = lng - calculateLongitudeOffset(lat);
+      const targetLat = lat;
       const startLng = rotationRef.current % 360;
       const startLat = 10;
       const deltaLng = targetLng - startLng;
-      const deltaLat = lat - startLat;
+      const deltaLat = targetLat - startLat;
       const steps = Math.ceil(SPEED * 60); // Assuming 60 frames per second
 
+      console.log('deltaLng', deltaLng);
+      console.log('deltaLat', deltaLat);
       let step = 0;
 
       const animate = () => {
@@ -167,7 +185,7 @@ const animatedFlyTo = useCallback(
   return (
     <div
       ref={containerRef}
-      className={cx(styles.globe, initialTilesLoaded && styles.fadeIn)}
+      className={cx(styles.globe, initialTilesLoaded && styles.fadeIn, className)}
       onMouseEnter={() => onMouseEnter()}
       onTouchStart={() => onTouchStart()}
     ></div>
@@ -194,7 +212,6 @@ function useCallbackRef() {
 function useWebGlGlobe(view: CameraView) {
   const [containerRef, containerEl] = useCallbackRef();
   const [globe, setGlobe] = useState<WebGlGlobe | null>(null);
-
   useEffect(
     () => {
       if (!containerEl) {
