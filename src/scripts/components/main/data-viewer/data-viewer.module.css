@@ -11,6 +11,16 @@
   grid-template-columns: 1fr;
 }
 
+/* As per request of the desgin team, the globe should visibly bigger than its intended size
+* even when that might cut off the globe on some screens.
+* */
+.globe {
+  >canvas {
+    transform: scale(1.15);
+    transform-origin: center;
+  }
+}
+
 .globeWrapper {
   grid-area: globe-nav-area;
   transition: all 0.5s ease;
@@ -20,7 +30,7 @@
   pointer-events: none;
 
   &.showContentList {
-    transform: translateX(-68%);
+    transform: translateX(-60%);
     transition-delay: 0.5s;
   }
 }
@@ -49,7 +59,8 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 22px; /* 157.143% */
+    line-height: 22px;
+    /* 157.143% */
   }
 }
 
@@ -58,6 +69,7 @@
     transform: translateY(0);
     opacity: 0;
   }
+
   25% {
     transform: translateY(0);
     opacity: 1;
@@ -129,7 +141,8 @@
   color: white;
   display: flex;
   justify-content: start;
-  > h2 {
+
+  >h2 {
     margin: 0 auto;
   }
 }
@@ -139,6 +152,7 @@
     transform: translateY(-10px);
     opacity: 0.2;
   }
+
   100% {
     transform: translateY(0);
     opacity: 1;
