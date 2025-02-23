@@ -93,67 +93,55 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   // const rotationRef = useRef<number>(180);
    const rotationRef = useRef<number>(180);
   const isAutoRotatingRef = useRef<boolean>(isAutoRoating);
-  console.log("flyTo", props.flyTo);
-const calculateLongitudeOffset = (lat: number) => {
-  // Base offset is 45 degrees
-  const baseOffset = 25;
-    console.log("baseLat", lat);
-  // Increase offset as we move away from equator
-  // abs(lat) / 90 gives us a factor between 0-1
-  const latitudeFactor = Math.abs(lat) / 90;
-  // Increase offset up to 90 degrees at poles
-  return baseOffset + (latitudeFactor * 90);
+
+const calculateLongitudeOffset = (latitude: number): number => {
+  const BASE_OFFSET = 25;
+  const MAX_OFFSET = 90;
+  const latitudeFactor = Math.abs(latitude) / 90;
+  return BASE_OFFSET + (latitudeFactor * (MAX_OFFSET - BASE_OFFSET));
 };
 
   // We have these custom functions for autoRotating the globe and animating the flyTo
   // Ticket #1271 and #1270 reference these issues
 const animatedFlyTo = useCallback(
-    (lat: number, lng: number) => {
-      console.log("animatedFlyTo");
-      console.log("lat", lat);
-      console.log("lng", lng);
-      // This is the speed of the animation
-      const SPEED = 2;
-      // Adjust longitude by -90 degreeis to show point on the right side
-      const targetLng = lng - calculateLongitudeOffset(lat);
-      const targetLat = lat;
-      const startLng = rotationRef.current % 360;
-      const startLat = 10;
-      const deltaLng = targetLng - startLng;
-      const deltaLat = targetLat - startLat;
-      const steps = Math.ceil(SPEED * 60); // Assuming 60 frames per second
+  (lat: number, lng: number) => {
+    const SPEED = 2;
+    const targetLng = lng - calculateLongitudeOffset(lat);
+    const targetLat = lat;
+    const startLng = rotationRef.current % 360;
+    const startLat = 10;
+    const deltaLng = targetLng - startLng;
+    const deltaLat = targetLat - startLat;
+    const steps = Math.ceil(SPEED * 60); // Assuming 60 frames per second
 
-      console.log('deltaLng', deltaLng);
-      console.log('deltaLat', deltaLat);
-      let step = 0;
-
-      const animate = () => {
-        if (step < steps) {
-          const currentLng = startLng + (deltaLng * step) / steps;
-          const currentLat = startLat + (deltaLat * step) / steps;
-          if (globe) {
-            rotationRef.current = currentLng;
-            globe.setProps({
-              cameraView: {
-                lng: currentLng,
-                lat: currentLat,
-                altitude: 23840000,
-              },
-            });
-          }
-          step++;
-          requestAnimationFrame(animate);
+    let step = 0;
+    const animate = () => {
+      if (step < steps) {
+        const currentLng = startLng + (deltaLng * step) / steps;
+        const currentLat = startLat + (deltaLat * step) / steps;
+        if (globe) {
+          rotationRef.current = currentLng;
+          globe.setProps({
+            cameraView: {
+              lng: currentLng,
+              lat: currentLat,
+              altitude: 23840000,
+            },
+          });
         }
-      };
+        step++;
+        requestAnimationFrame(animate);
+      }
+    };
 
-      animate();
-    },
-    [globe],
-  );
+    animate();
+  },
+  [globe],
+);
 
   const autoRotate = useCallback(() => {
-    rotationRef.current += 0.05;
-    const lng = (rotationRef.current % 360) - 180;
+    rotationRef.current = (rotationRef.current + 0.05) % 360;
+    const lng = rotationRef.current - 180;
     if (globe) {
       globe.setProps({
         cameraView: { lng, lat: 10, altitude: 23840000 },

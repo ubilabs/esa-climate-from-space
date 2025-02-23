@@ -18,7 +18,6 @@ import { useScreenSize } from "../../../hooks/use-screen-size";
 
 import cx from "classnames";
 
-import styles from "./data-viewer.module.css";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { State } from "../../../reducers";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
@@ -27,6 +26,8 @@ import { useStoryMarkers } from "../../../hooks/use-story-markers";
 import { useDispatch } from "react-redux";
 import { setFlyTo } from "../../../reducers/fly-to";
 import { setGlobeView } from "../../../reducers/globe/view";
+
+import styles from "./data-viewer.module.css";
 
 interface Props {
   backgroundColor: string;
@@ -41,6 +42,14 @@ export type LayerLoadingStateChangeHandle = (
   loadingState: LayerLoadingState,
 ) => void;
 
+/**
+ * DataViewer component responsible for displaying the data view with navigation and globe interaction.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.backgroundColor - The background color for the globe.
+ * @param {boolean} [props.hideNavigation] - Flag to hide navigation elements.
+ * @returns {JSX.Element} The rendered DataViewer component.
+ */
 const DataViewer: FunctionComponent<Props> = ({
   backgroundColor,
   hideNavigation,
@@ -120,9 +129,8 @@ const DataViewer: FunctionComponent<Props> = ({
   }
 
   const allTags: string[] = stories
-    .map(({ tags }) => tags)
-    .filter(Boolean)
-    .flat();
+    .flatMap(({ tags }) => tags)
+    .filter(Boolean);
 
   const uniqueTags = Array.from(new Set(allTags));
 
