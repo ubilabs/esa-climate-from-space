@@ -22,7 +22,6 @@ import GLOBE_WORKER_URL from "@ubilabs/esa-webgl-globe/worker?url";
 import ATMOSPHERE_TEXTURE_URL from "@ubilabs/esa-webgl-globe/textures/atmosphere.png?url";
 import SHADING_TEXTURE_URL from "@ubilabs/esa-webgl-globe/textures/shading.png?url";
 
-import { GlobeProectionState } from "../../../types/globe-proection-state";
 import { Layer } from "../../../types/layer";
 import { Marker } from "../../../types/marker-type";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
@@ -41,6 +40,7 @@ import { globeViewSelector } from "../../../selectors/globe/view";
 import { FlyToPayload } from "../../../reducers/fly-to";
 import { renderToStaticMarkup } from "react-dom/server";
 import { MarkerMarkup } from "./marker-markup";
+import { GlobeProjectionState } from "../../../types/globe-projection-state";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -91,7 +91,10 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   const [containerRef, globe] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
   // const rotationRef = useRef<number>(180);
-  const rotationRef = useRef<number>(180);
+  const rotationRef = useRef<{
+    lat: number;
+    lng: number;
+  }>({ lat: 10, lng: 180 });
   const isAutoRotatingRef = useRef<boolean>(isAutoRoating);
 
   console.log("flyTo", props.flyTo);
@@ -107,8 +110,8 @@ const Globe: FunctionComponent<Props> = memo((props) => {
       // Adjust longitude by -90 degrees to show point on the right side
       const targetLng = lng - 45;
       const targetLat = lat;
-      const startLng = rotationRef.current % 360;
-      const startLat = 10;
+      const startLng = rotationRef.current.lng % 360;
+      const startLat = rotationRef.current.lat;
       const deltaLng = targetLng - startLng;
       const deltaLat = targetLat - startLat;
       const steps = Math.ceil(SPEED * 60); // Assuming 60 frames per second
@@ -122,7 +125,8 @@ const Globe: FunctionComponent<Props> = memo((props) => {
           const currentLng = startLng + (deltaLng * step) / steps;
           const currentLat = startLat + (deltaLat * step) / steps;
           if (globe) {
-            rotationRef.current = currentLng;
+            rotationRef.current.lng = currentLng;
+            rotationRef.current.lat = currentLat;
             globe.setProps({
               cameraView: {
                 lng: currentLng,
@@ -142,8 +146,8 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   );
 
   const autoRotate = useCallback(() => {
-    rotationRef.current += 0.05;
-    const lng = (rotationRef.current % 360) - 180;
+    rotationRef.current.lng += 0.05;
+    const lng = (rotationRef.current.lng % 360) - 180;
     if (globe) {
       globe.setProps({
         cameraView: { lng, lat: 10, altitude: 23840000 },
@@ -175,7 +179,11 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   return (
     <div
       ref={containerRef}
-      className={cx(styles.globe, initialTilesLoaded && styles.fadeIn, className)}
+      className={cx(
+        styles.globe,
+        initialTilesLoaded && styles.fadeIn,
+        className,
+      )}
       onMouseEnter={() => onMouseEnter()}
       onTouchStart={() => onTouchStart()}
     ></div>
