@@ -1,3 +1,6 @@
+@custom-media --mobile-viewport (max-width: 767px);
+@custom-media --desktop-viewport (min-width: 768px);
+
 :root {
   /* Width */
   --story-width: 500px;
