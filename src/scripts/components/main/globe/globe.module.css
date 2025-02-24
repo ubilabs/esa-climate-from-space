@@ -8,6 +8,8 @@
 }
 
 .globe canvas {
+  /* We use the filter function to create an overlay. This makes the text on the globe more readable */
+  filter: brightness(0.85) saturate(0.85) opacity(0.95);
   transition: transform 0.8s ease;
   position: relative;
   z-index: 1;
