@@ -32,7 +32,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   // 0 - 100 because the coordinates are used as the top and left values
   // in a absolute positioned element. The advantage here is that the the elements
   // will automatically positioned and re-positioned based on the size of the parent container
-  const RADIUS = 36;
+  const RADIUS = 39;
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!touchStartY) {

@@ -16,7 +16,7 @@
 * */
 .globe {
   >canvas {
-    transform: scale(1.15);
+    transform: scale(1.1);
     transform-origin: center;
   }
 }
@@ -30,7 +30,7 @@
   pointer-events: none;
 
   &.showContentList {
-    transform: translateX(-60%);
+    transform: translateX(-55%);
     transition-delay: 0.5s;
   }
 }

@@ -128,9 +128,7 @@ const DataViewer: FunctionComponent<Props> = ({
     return null;
   }
 
-  const allTags: string[] = stories
-    .flatMap(({ tags }) => tags)
-    .filter(Boolean);
+  const allTags: string[] = stories.flatMap(({ tags }) => tags).filter(Boolean);
 
   const uniqueTags = Array.from(new Set(allTags));
 
