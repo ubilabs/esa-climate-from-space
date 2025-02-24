@@ -12,6 +12,7 @@ interface Props {
   onSelect: (category: string) => void;
 }
 
+export const HAS_USER_INTERACTED = 'hasUserInteraced'
 /**
  * A circular navigation component that displays categories in an interactive wheel format.
  *
@@ -95,6 +96,9 @@ const CategoryNavigation: React.FC<Props> = ({
       setCurrentIndex(nextIndex);
       setTouchStart(null);
       setIsRotating(true);
+
+      // Set a local state userHasInteracted to true
+      localStorage.setItem(HAS_USER_INTERACTED, "true");
     }
   };
 

@@ -10,7 +10,7 @@ import { languageSelector } from "../../../selectors/language";
 
 import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
-import CategoryNavigation from "../category-navigation/category-navigation";
+import CategoryNavigation, { HAS_USER_INTERACTED } from "../category-navigation/category-navigation";
 
 import { setSelectedTags } from "../../../reducers/story";
 
@@ -88,10 +88,10 @@ const DataViewer: FunctionComponent<Props> = ({
         return story;
       }
     });
-  console.log("markers", markers);
   // There is a set of animations which should be played only once
   // This keeps track of that
-  const hasAnimationPlayed = useRef(Boolean(category));
+  // Get state from local storage
+  const hasAnimationPlayed = useRef(localStorage.getItem(HAS_USER_INTERACTED) === 'true');
 
   useEffect(() => {
     const previewedContent = stories?.find(
@@ -103,7 +103,6 @@ const DataViewer: FunctionComponent<Props> = ({
       return;
     }
 
-    console.log("setting flyTo in dataViewer", selectedContentId);
 
     dispatch(
       setFlyTo({
@@ -119,7 +118,6 @@ const DataViewer: FunctionComponent<Props> = ({
   useEffect(() => {
     if (!showContentList) {
       setSelectedContentId(null);
-      console.log("setting Id in dataViewer");
     }
     setShowContentList(Boolean(category));
   }, [category]);
