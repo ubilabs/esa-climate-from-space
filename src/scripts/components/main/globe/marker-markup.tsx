@@ -18,7 +18,7 @@ export const MarkerMarkup: FunctionComponent<Props> = ({ title }) => {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <circle cx="12" cy="12" r="5" stroke="#00B398" />
+      <circle cx="12" cy="12" r="5" stroke="#00B398"   className={styles.outer} />
       <circle cx="12" cy="12" r="2" fill="#00B398" />
     </svg>
   );

@@ -74,23 +74,6 @@ const CategoryNavigation: React.FC<Props> = ({
     }
   });
 
-  // Placeholders
-  // Todo: Replace with actual data
-  // const arcs = useMemo(
-  // () => [
-  // { "Sea Surface Temperature": 20 },
-  // { "Chlorophyll Concentration": 21 },
-  // { "Water Vapour": 60 },
-  // { "Sea Surface Salinity": 50 },
-  // { Highlights: 40 },
-  // { "Ice Sheets": 10 },
-  // { Permafrost: 80 },
-  // { Landcover: 12 },
-  // { "Greenhouse Gases": 30 },
-  // ],
-  // [],
-  // );
-
   // Handle touch events
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.touches[0].clientX);

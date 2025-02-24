@@ -133,12 +133,12 @@ const Story: FunctionComponent = () => {
     }
     return null;
   };
-
+console.log("mode", mode.toString())
   return (
     <div className={styles.story}>
       {storyListItem && story_header && (
         <Header
-          backLink={`/${mode.toString()}`}
+          backLink={'/'}
           backButtonId="backToStories"
           title={isSplashScreen ? "" : storyListItem.title}
         >

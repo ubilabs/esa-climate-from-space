@@ -14,14 +14,54 @@
 }
 
 .marker {
-  margin: -16px;
   cursor: pointer;
   user-select: none;
+  animation: pulse 1s ease-in-out;
+  /* Add this line to apply the pulse animation */
 }
 
-.marker:hover .markerCircle {
-  transition-duration: 0.25;
-  transform: scale(1.4);
+.marker {
+  transform-origin: center;
+  animation: pulse 1.5s ease-out;
+
+  .outer {
+    opacity: 0.3;
+    animation: outerPulse 3s ease-out forwards;
+    transform-origin: center;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.1);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes outerPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .markerTitle {

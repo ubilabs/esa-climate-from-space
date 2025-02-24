@@ -22,7 +22,7 @@ import GLOBE_WORKER_URL from "@ubilabs/esa-webgl-globe/worker?url";
 import ATMOSPHERE_TEXTURE_URL from "@ubilabs/esa-webgl-globe/textures/atmosphere.png?url";
 import SHADING_TEXTURE_URL from "@ubilabs/esa-webgl-globe/textures/shading.png?url";
 
-import { GlobeProjectionState } from "../../../types/globe-projection-state";
+import { GlobeProectionState } from "../../../types/globe-proection-state";
 import { Layer } from "../../../types/layer";
 import { Marker } from "../../../types/marker-type";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
@@ -68,6 +68,7 @@ interface Props {
   onMoveEnd: (view: CameraView) => void;
   onLayerLoadingStateChange: LayerLoadingStateChangeHandle;
   isAutoRoating: boolean;
+  className: string;
 }
 
 export type GlobeProps = Partial<Props>;
@@ -84,6 +85,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     imageLayer,
     markers,
     isAutoRoating = false,
+    className,
   } = props;
 
   const [containerRef, globe] = useWebGlGlobe(view);
@@ -173,7 +175,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   return (
     <div
       ref={containerRef}
-      className={cx(styles.globe, initialTilesLoaded && styles.fadeIn)}
+      className={cx(styles.globe, initialTilesLoaded && styles.fadeIn, className)}
       onMouseEnter={() => onMouseEnter()}
       onTouchStart={() => onTouchStart()}
     ></div>

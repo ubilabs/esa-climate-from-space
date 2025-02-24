@@ -7,6 +7,7 @@ import { EsaLogoShort } from "../../main/icons/esa-logo-short";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import useIsStoriesPath from "../../../hooks/use-is-stories-path";
 import { useStoryParams } from "../../../hooks/use-story-params";
+import { useHistory } from "react-router-dom";
 
 import styles from "./header.module.css";
 
