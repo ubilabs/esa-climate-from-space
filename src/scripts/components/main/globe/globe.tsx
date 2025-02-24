@@ -102,9 +102,6 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   // Ticket #1271 and #1270 reference these issues
   const animatedFlyTo = useCallback(
     (lat: number, lng: number) => {
-      console.log("animatedFlyTo");
-      console.log("lat", lat);
-      console.log("lng", lng);
       // This is the speed of the animation
       const SPEED = 2;
       // Adjust longitude by -90 degrees to show point on the right side
