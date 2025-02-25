@@ -1,19 +1,20 @@
 .share {
   display: flex;
 }
+
 .embedOverlay {
-  background: linear-gradient(
-    0deg,
-    var(--black) 0%,
-    var(--black) 80%,
-    rgba(16, 22, 26, 0.974) 90%,
-    rgba(16, 22, 26, 0.921) 100%
-  );
+  background: linear-gradient(0deg,
+      var(--black) 0%,
+      var(--black) 80%,
+      rgba(16, 22, 26, 0.974) 90%,
+      rgba(16, 22, 26, 0.921) 100%);
 }
-.embedOverlay > div {
+
+.embedOverlay>div {
   margin-top: 1.875em;
   height: 80%;
 }
+
 .shareOverlay {
   position: relative;
   display: flex;
@@ -25,18 +26,22 @@
   border-radius: 0.25em;
   background-color: var(--dark-grey-4);
 }
+
 .shareButton {
   font-size: 1.125em;
   line-height: 1.375em;
 }
+
 .shareButton svg {
   filter: drop-shadow(3px 2px 2px rgba(16, 22, 26, 0.2));
 }
+
 .closeButton {
   position: absolute;
   top: 0.625em;
   right: 0.625em;
 }
+
 .title {
   margin: 0;
   margin-bottom: 0.9375em;
@@ -45,6 +50,7 @@
   font-size: 2.25em;
   font-family: NotesEsa;
 }
+
 .shareButtons {
   display: flex;
   flex-wrap: wrap;
@@ -53,6 +59,7 @@
   width: 100%;
   gap: 1.875em;
 }
+
 .button {
   display: flex;
   flex-direction: column;
@@ -67,24 +74,29 @@
   cursor: pointer;
   gap: 0.625em;
 }
+
 .button svg {
   width: 27px;
   height: 27px;
   fill: var(--main);
 }
+
 .button:hover {
   color: #fff;
 }
+
 .button:hover svg {
   fill: #fff;
 }
-@media screen and (max-width: 850px) {
+
+@media screen and (--desktop-viewport) {
   .shareOverlay {
     padding: 2em 1em;
     width: 60%;
   }
 }
-@media screen and (max-width: 480px) {
+
+@media screen and (--mobile-s-viewport) {
   .button {
     padding: 0.9375em;
   }

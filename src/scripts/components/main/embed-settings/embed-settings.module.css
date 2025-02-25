@@ -38,7 +38,7 @@
 .languageSelect > * {
   color: var(--text-default);
 }
-@media screen and (max-width: 850px) {
+@media screen and (--desktop-viewport) {
   .settings {
     grid-column-start: 1;
   }

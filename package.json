@@ -67,6 +67,7 @@
     "video.js": "^7.17.0"
   },
   "devDependencies": {
+    "@csstools/postcss-global-data": "^3.0.0",
     "@types/classnames": "^2.3.4",
     "@types/git-state": "^4.1.3",
     "@types/lodash.debounce": "^4.0.9",
@@ -81,7 +82,9 @@
     "@types/video.js": "^7.3.58",
     "@types/youtube-player": "^5.5.11",
     "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
     "conventional-changelog-cli": "^5.0.0",
+    "cssnano": "^7.0.6",
     "electron": "^34.0.2",
     "electron-builder": "^25.1.8",
     "eslint": "^9.19.0",
@@ -93,6 +96,8 @@
     "globals": "^15.14.0",
     "imagemin-cli": "^8.0.0",
     "license-checker": "^25.0.1",
+    "postcss": "^8.5.3",
+    "postcss-custom-media": "^11.0.5",
     "prettier": "3.4.2",
     "svg-loaders-react": "^3.1.1",
     "typescript": "^5.7.3",

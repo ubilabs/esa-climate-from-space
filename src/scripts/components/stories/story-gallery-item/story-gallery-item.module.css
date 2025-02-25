@@ -43,7 +43,7 @@
 .sliderItem {
   height: 100%;
 }
-@media screen and (max-width: 480px) {
+@media screen and (--mobile-viewport) {
   .lightboxStoryGallery .itemContainer {
     max-width: 100%;
     max-height: 100%;

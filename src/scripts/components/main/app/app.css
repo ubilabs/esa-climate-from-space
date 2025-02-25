@@ -43,11 +43,16 @@ body,
   -webkit-box-shadow: inset 0 0 6px rgba(16, 22, 26, 0.9);
 }
 
-@media screen and (max-width: 480px) {
-  path.hideText {
+@media screen and (--mobile-s-viewport) {
+  :global(path.hideText) {
     display: none;
   }
   .logo {
+    position: absolute;
+    top: 1.1875em;
+    left: 1.375em;
+    z-index: 4;
+    fill: #fff;
     overflow: hidden;
     width: 150px;
   }

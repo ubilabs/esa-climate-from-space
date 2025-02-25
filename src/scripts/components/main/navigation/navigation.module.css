@@ -49,7 +49,7 @@
   background: var(--main);
   color: #fff;
 }
-@media screen and (max-width: 768px) {
+@media screen and (--mobile-viewport) {
   .navigation {
     gap: 0.9375em;
   }

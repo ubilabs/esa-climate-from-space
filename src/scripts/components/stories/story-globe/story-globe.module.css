@@ -21,7 +21,7 @@
   min-width: 25%;
   width: 60%;
 }
-@media screen and (max-width: 1025px) {
+@media screen and (--desktop-viewport) {
   .layerDetails {
     height: inherit;
     background: none;
