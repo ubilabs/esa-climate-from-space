@@ -57,13 +57,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
     setTouchStartY(null);
   };
 
-  useEffect(() => {
-    return () => {
-      console.log("unmounting");
-    };
-  }, []);
-
-  // This effect will be triggered whenever the indexDelta changes, i.e. when the user scrolls
   // Every item will be repositioned based on the new indexDelta
   useEffect(() => {
     const listItems = document.querySelectorAll(
@@ -109,7 +102,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
       item.setAttribute("data-relative-position", adjustedPosition.toString());
     }
-  }, [indexDelta, showContentList]);
+  }, [indexDelta, showContentList, setSelectedContentId]);
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS);

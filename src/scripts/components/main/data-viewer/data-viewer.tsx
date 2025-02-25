@@ -28,6 +28,7 @@ import { setFlyTo } from "../../../reducers/fly-to";
 import { setGlobeView } from "../../../reducers/globe/view";
 
 import styles from "./data-viewer.module.css";
+import { debounce } from "../../../libs/debounce";
 
 interface Props {
   backgroundColor: string;
@@ -92,6 +93,7 @@ const DataViewer: FunctionComponent<Props> = ({
   // This keeps track of that
   // Get state from local storage
   const hasAnimationPlayed = useRef(localStorage.getItem(HAS_USER_INTERACTED) === 'true');
+  const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const previewedContent = stories?.find(
@@ -104,15 +106,17 @@ const DataViewer: FunctionComponent<Props> = ({
     }
 
 
-    dispatch(
-      setFlyTo({
-        lat: previewedContent?.position[1] || 0,
-        // On mobile, we only show the right 32% of the globe, so here
-        // adapt the lng position to make sure the marker is actually seen
-        lng: previewedContent?.position[0] - 0 || 0,
-        isAnimated: true,
-      }),
-    );
+    debounce(() => {
+      dispatch(
+        setFlyTo({
+          lat: previewedContent?.position[1] || 0,
+          // On mobile, we only show the right 32% of the globe, so here
+          // adapt the lng position to make sure the marker is actually seen
+          lng: previewedContent?.position[0] - 0 || 0,
+          isAnimated: true,
+        }),
+      );
+    }, 500, debounceTimeout);
   }, [selectedContentId, stories, dispatch]);
 
   useEffect(() => {
