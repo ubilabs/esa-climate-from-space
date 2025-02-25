@@ -39,14 +39,14 @@
   width: 50%;
   color: var(--text-default);
 }
-@media screen and (max-width: 480px) {
+@media screen and (--mobile-s-viewport) {
   .title {
     flex-basis: 400px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (--mobile-s-viewport) {
   .logo {
     width: 0.75em;
   }

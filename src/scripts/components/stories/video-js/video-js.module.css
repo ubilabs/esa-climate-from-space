@@ -2,16 +2,23 @@
   width: 100%;
   height: 100%;
 }
-@media screen and (min-width: 480px) {
+
+:global(.vjs_video_3-dimensions.vjs-fluid) {
+  padding-top: 0 !important;
+}
+
+@media screen and (--mobile-s-viewport) {
   :global(.vjs_video_3-dimensions.vjs-fluid) {
-    padding-top: 0 !important;
+    padding-top: inherit;
   }
 }
+
 :global(.vjs-text-track-cue) {
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
+
 :global(.vjs-text-track-cue > div) {
   font-weight: 700;
   font-style: normal;
@@ -19,7 +26,8 @@
   font-family: Arial;
   line-height: 22px;
 }
-@media screen and (max-width: 480px) {
+
+@media screen and (--mobile-s-viewport) {
   :global(.vjs-text-track-cue > div) {
     font-weight: 700;
     font-style: normal;

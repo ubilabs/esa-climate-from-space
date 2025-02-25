@@ -28,7 +28,7 @@
 .disabled svg {
   fill: var(--text-default);
 }
-@media screen and (max-width: 768px) {
+@media screen and (--mobile-viewport) {
   .hideLabel span {
     display: none;
   }
