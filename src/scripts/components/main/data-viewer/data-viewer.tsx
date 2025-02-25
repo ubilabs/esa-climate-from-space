@@ -79,15 +79,6 @@ const DataViewer: FunctionComponent<Props> = ({
 
   const dispatch = useDispatch();
 
-  const markers = useStoryMarkers()
-    .filter((story) => story.tags.includes(currentCategory))
-    .filter((story) => {
-      if (selectedContentId && showContentList) {
-        return story.id === selectedContentId;
-      } else {
-        return story;
-      }
-    });
   // There is a set of animations which should be played only once
   // This keeps track of that
   // Get state from local storage
@@ -207,7 +198,6 @@ const DataViewer: FunctionComponent<Props> = ({
         )}
       >
         <GetDataWidget
-          markers={markers}
           hideNavigation={Boolean(hideNavigation)}
           globeProps={{
             className: cx(!showContentList && styles.globe),
