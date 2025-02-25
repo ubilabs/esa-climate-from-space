@@ -63,7 +63,6 @@ const DataViewer: FunctionComponent<Props> = ({
     category || null,
   );
 
-
   const history = useHistory();
 
   const { screenWidth } = useScreenSize();

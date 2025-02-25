@@ -13,7 +13,7 @@ interface Props {
   showContentList: boolean;
   contents: StoryList;
   setSelectedContentId: React.Dispatch<React.SetStateAction<string | null>>;
-  category: string;
+  category: string | null;
 }
 
 const ContentNavigation: FunctionComponent<Props> = ({
