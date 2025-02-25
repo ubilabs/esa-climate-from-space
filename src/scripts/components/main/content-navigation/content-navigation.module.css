@@ -45,14 +45,14 @@
     font-weight: 400;
     line-height: 22px; /* 137.5% */
 
-    &[data-relative-position='0'] > span {
+    &[data-relative-position='0'] > a > span {
       width: fit-content;
       white-space: inherit;
       text-overflow: inherit;
       max-width: 100%;
     }
 
-    > span {
+    > a > span {
       max-width: 50vw;
       text-overflow: ellipsis;
       overflow: hidden;
