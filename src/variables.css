@@ -1,3 +1,4 @@
+/* Todo: Check if we can solidate the mobile viewport limits*/
 @custom-media --mobile-s-viewport (max-width: 480px);
 @custom-media --mobile-viewport (max-width: 767px);
 @custom-media --desktop-viewport (min-width: 768px);
