@@ -69,7 +69,7 @@
   line-height: 22px;
   cursor: pointer;
 }
-@media screen and (max-width: 850px) {
+@media screen and (--desktop-viewport) {
   .embedWizard {
     width: 80%;
   }

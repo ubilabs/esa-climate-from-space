@@ -147,12 +147,12 @@
   text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.33);
   font-size: 0.8em;
 }
-@media screen and (max-width: 768px) {
+@media screen and (--mobile-viewport) {
   .timeSlider {
     padding-bottom: 6.25em;
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (--mobile-s-viewport) {
   .container {
     min-width: 300px;
   }

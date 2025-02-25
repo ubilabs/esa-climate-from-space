@@ -39,7 +39,8 @@
   align-items: center;
   cursor: pointer;
 }
-@media screen and (max-width: 480px) {
+
+@media screen and (--mobile-viewport) {
   .compare {
     display: flex;
   }
