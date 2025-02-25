@@ -70,11 +70,11 @@ const TranslatedApp: FunctionComponent = () => {
           </Route>
           <Route
             path={[
+              "/:category/stories/:storyId/:slideIndex",
               "/stories/:storyId/:slideIndex",
               "/present/:storyId/:slideIndex",
               "/showcase/:storyIds/:storyIndex/:slideIndex",
             ]}
-            exact
           >
             <Story />
           </Route>

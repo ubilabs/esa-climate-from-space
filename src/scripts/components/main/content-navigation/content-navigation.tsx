@@ -13,9 +13,11 @@ interface Props {
   showContentList: boolean;
   contents: StoryList;
   setSelectedContentId: React.Dispatch<React.SetStateAction<string | null>>;
+  category: string;
 }
 
 const ContentNavigation: FunctionComponent<Props> = ({
+  category,
   showContentList,
   contents,
   setSelectedContentId,
@@ -135,7 +137,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             key={index}
             aria-label={`${type} content: ${title}`}
           >
-            <Button link={`stories/${id}/0/`} label={title}></Button>
+            <Button link={`${category}/stories/${id}/0/`} label={title}></Button>
           </li>
         );
       })}

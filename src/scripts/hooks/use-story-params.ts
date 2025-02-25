@@ -28,6 +28,7 @@ export const useStoryParams = () => {
   const matchStories = useRouteMatch("/stories/:storyId");
   const matchPresent = useRouteMatch("/present/:storyId");
   const matchShowCase = useRouteMatch("/showcase/:storyIds");
+  const matchCategory = useRouteMatch("/:category/stories/:storyId");
 
   const params = useParams<StoryParams | ShowCaseParams>();
   const storyIds = isShowCaseParams(params)
@@ -46,6 +47,8 @@ export const useStoryParams = () => {
     mode = StoryMode.Present;
   } else if (matchShowCase) {
     mode = StoryMode.Showcase;
+  } else if (matchCategory) {
+    mode = StoryMode.Stories;
   }
 
   const currentStoryId =
@@ -57,6 +60,7 @@ export const useStoryParams = () => {
 
   const storyList = useSelector(storyListSelector);
   const storyListItem = storyList.find((story) => story.id === currentStoryId);
+  const { category } = params;
 
   return {
     mode,
@@ -66,5 +70,6 @@ export const useStoryParams = () => {
     currentStoryId,
     storyListItem,
     selectedStory,
+    category
   };
 };

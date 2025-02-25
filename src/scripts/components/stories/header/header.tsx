@@ -24,9 +24,10 @@ const Header: FunctionComponent<Props> = ({
   backButtonId,
   children,
 }) => {
-  const { currentStoryId } = useStoryParams();
+  const { currentStoryId , storyListItem} = useStoryParams();
   const isStoriesPath = useIsStoriesPath();
   const { back_link, story_back_link } = useSelector(embedElementsSelector);
+
 
   const disabledEmbedLink =
     (isStoriesPath && back_link) || (currentStoryId && story_back_link);

@@ -36,7 +36,7 @@ const Story: FunctionComponent = () => {
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const { mode, slideIndex, currentStoryId, storyListItem } = storyParams;
+  const { mode, slideIndex, currentStoryId, storyListItem, category } = storyParams;
   const storyMode = mode === StoryMode.Stories;
   const { story_header } = useSelector(embedElementsSelector);
 
@@ -138,7 +138,7 @@ console.log("mode", mode.toString())
     <div className={styles.story}>
       {storyListItem && story_header && (
         <Header
-          backLink={'/'}
+          backLink={category ? `/${category}` : "/"}
           backButtonId="backToStories"
           title={isSplashScreen ? "" : storyListItem.title}
         >

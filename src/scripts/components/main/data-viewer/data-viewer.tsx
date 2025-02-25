@@ -1,6 +1,6 @@
 import { useHistory, useParams } from "react-router-dom";
 
-import { LayerLoadingState, RenderMode } from "@ubilabs/esa-webgl-globe";
+import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
@@ -10,7 +10,9 @@ import { languageSelector } from "../../../selectors/language";
 
 import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
-import CategoryNavigation, { HAS_USER_INTERACTED } from "../category-navigation/category-navigation";
+import CategoryNavigation, {
+  HAS_USER_INTERACTED,
+} from "../category-navigation/category-navigation";
 
 import { setSelectedTags } from "../../../reducers/story";
 
@@ -18,14 +20,10 @@ import { useScreenSize } from "../../../hooks/use-screen-size";
 
 import cx from "classnames";
 
-import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
-import { State } from "../../../reducers";
-import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { GetDataWidget } from "../data-widget/data-widget";
 import { useStoryMarkers } from "../../../hooks/use-story-markers";
 import { useDispatch } from "react-redux";
 import { setFlyTo } from "../../../reducers/fly-to";
-import { setGlobeView } from "../../../reducers/globe/view";
 
 import styles from "./data-viewer.module.css";
 import { debounce } from "../../../libs/debounce";
@@ -65,12 +63,14 @@ const DataViewer: FunctionComponent<Props> = ({
     category || null,
   );
 
+
   const history = useHistory();
 
   const { screenWidth } = useScreenSize();
 
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoriesQuery(language);
+  console.log("stories", stories);
 
   // We need to keep track of the current selected content Id because we need to
   // set the flyTo for the marker, or add the data layer to the globe
@@ -92,7 +92,9 @@ const DataViewer: FunctionComponent<Props> = ({
   // There is a set of animations which should be played only once
   // This keeps track of that
   // Get state from local storage
-  const hasAnimationPlayed = useRef(localStorage.getItem(HAS_USER_INTERACTED) === 'true');
+  const hasAnimationPlayed = useRef(
+    localStorage.getItem(HAS_USER_INTERACTED) === "true",
+  );
   const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -105,18 +107,21 @@ const DataViewer: FunctionComponent<Props> = ({
       return;
     }
 
-
-    debounce(() => {
-      dispatch(
-        setFlyTo({
-          lat: previewedContent?.position[1] || 0,
-          // On mobile, we only show the right 32% of the globe, so here
-          // adapt the lng position to make sure the marker is actually seen
-          lng: previewedContent?.position[0] - 0 || 0,
-          isAnimated: true,
-        }),
-      );
-    }, 500, debounceTimeout);
+    debounce(
+      () => {
+        dispatch(
+          setFlyTo({
+            lat: previewedContent?.position[1] || 0,
+            // On mobile, we only show the right 32% of the globe, so here
+            // adapt the lng position to make sure the marker is actually seen
+            lng: previewedContent?.position[0] - 0 || 0,
+            isAnimated: true,
+          }),
+        );
+      },
+      500,
+      debounceTimeout,
+    );
   }, [selectedContentId, stories, dispatch]);
 
   useEffect(() => {
@@ -138,11 +143,8 @@ const DataViewer: FunctionComponent<Props> = ({
     (story) => category && story.tags?.includes(category),
   );
 
-  console.log("markers", markers);
   // create a list of all tags with their number of occurrences in the stories
   // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
-
-  // const markers = stories.filter
   const arcs = uniqueTags
     .map((tag) => {
       const count = allTags.filter((t) => t === tag).length;
@@ -217,6 +219,7 @@ const DataViewer: FunctionComponent<Props> = ({
       </div>
 
       <ContentNavigation
+        category={currentCategory}
         showContentList={showContentList}
         contents={contents}
         setSelectedContentId={setSelectedContentId}
