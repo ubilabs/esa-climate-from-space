@@ -56,6 +56,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   };
 
   const handleTouchEnd = () => {
+    console.log("touchStartY", touchStartY);
     setTouchStartY(null);
   };
 
@@ -78,7 +79,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
             "Selected content does not have an idea. This should not be the case",
           );
         }
-        setSelectedContentId(id);
+        if (!touchStartY) {
+          setSelectedContentId(id);
+        }
       }
 
       const adjustedPosition = relativePosition + indexDelta;
@@ -104,7 +107,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
       item.setAttribute("data-relative-position", adjustedPosition.toString());
     }
-  }, [indexDelta, showContentList, setSelectedContentId]);
+  }, [touchStartY, indexDelta, showContentList, setSelectedContentId]);
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS);
@@ -137,7 +140,10 @@ const ContentNavigation: FunctionComponent<Props> = ({
             key={index}
             aria-label={`${type} content: ${title}`}
           >
-            <Button link={`${category}/stories/${id}/0/`} label={title}></Button>
+            <Button
+              link={`${category}/stories/${id}/0/`}
+              label={title}
+            ></Button>
           </li>
         );
       })}
