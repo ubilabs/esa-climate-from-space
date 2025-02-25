@@ -102,14 +102,12 @@ const DataViewer: FunctionComponent<Props> = ({
         dispatch(
           setFlyTo({
             lat: previewedContent?.position[1] || 0,
-            // On mobile, we only show the right 32% of the globe, so here
-            // adapt the lng position to make sure the marker is actually seen
-            lng: previewedContent?.position[0] - 0 || 0,
+            lng: previewedContent?.position[0]|| 0,
             isAnimated: true,
           }),
         );
       },
-      500,
+      100,
       debounceTimeout,
     );
   }, [selectedContentId, stories, dispatch]);

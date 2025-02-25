@@ -50,6 +50,7 @@
       white-space: inherit;
       text-overflow: inherit;
       max-width: 100%;
+      color: #00B398;
     }
 
     > a > span {
@@ -57,6 +58,7 @@
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
+      color: #3F6C7D;
     }
 
     &:before {
@@ -66,7 +68,8 @@
       height: 24px;
       margin-right: 1rem;
       scale: 0.75;
-      background: var(--font-color);
+      background: #3F6C7D;
+
     }
 
     &[data-content-type='image']:before {

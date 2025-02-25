@@ -65,6 +65,26 @@ const ContentNavigation: FunctionComponent<Props> = ({
     const listItems = document.querySelectorAll(
       "ul li",
     ) as NodeListOf<HTMLElement>;
+    // if at last of first item, we prevent any further scrolling
+    const listItemsLength = listItems.length - 1;
+    console.log("listItemsLength", listItemsLength);
+
+    // Check if the first item has a relativePosition of 0 or the last item has a relativePosition of listItemsLength
+    const firstItemRelativePosition = Number(
+      listItems[0]?.getAttribute("data-relative-position"),
+    );
+    const lastItemRelativePosition = Number(
+      listItems[listItems.length - 1]?.getAttribute("data-relative-position"),
+    );
+
+    // This prevents any scrolling beyond the last and first list item
+    if (
+      (firstItemRelativePosition === 0 && indexDelta > 0)
+       ||
+       lastItemRelativePosition === 0 && indexDelta < 0
+    ) {
+      return;
+    }
 
     for (const item of listItems) {
       const relativePosition = Number(
@@ -73,13 +93,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
       if (relativePosition === 0) {
         const id = item.getAttribute("data-content-id");
-
         if (!id) {
           console.warn(
-            "Selected content does not have an idea. This should not be the case",
+            "Selected content does not have an id. This should not be the case",
           );
-        }
-        if (!touchStartY) {
+        } else if (!touchStartY) {
           setSelectedContentId(id);
         }
       }
