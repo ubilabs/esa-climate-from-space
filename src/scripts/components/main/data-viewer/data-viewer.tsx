@@ -27,6 +27,7 @@ import { setFlyTo } from "../../../reducers/fly-to";
 import styles from "./data-viewer.module.css";
 import { debounce } from "../../../libs/debounce";
 import { useContentMarker } from "../../../hooks/use-story-markers";
+import { FormattedMessage } from "react-intl";
 
 interface Props {
   backgroundColor: string;
@@ -62,7 +63,10 @@ const DataViewer: FunctionComponent<Props> = ({
   const [currentCategory, setCurrentCategory] = useState<string | null>(
     category || null,
   );
-
+  console.log(
+    "🚀 ~ file: data-viewer.tsx ~ line 202 ~ DataViewer ~ currentCategory",
+    currentCategory,
+  );
   const history = useHistory();
 
   const { screenWidth } = useScreenSize();
@@ -152,9 +156,16 @@ const DataViewer: FunctionComponent<Props> = ({
     <div className={styles.dataViewer}>
       <header className={styles.heading}>
         {showContentList ? (
-          <Button link="/" label="" className={styles.backArrow}></Button>
-        ) : null}
-        <h2>{showContentList ? currentCategory : "Choose a category"}</h2>
+          <Button
+            label={
+              `tags.${currentCategory}`
+            }
+            link={'/'}
+            className={styles.backButton}
+          ></Button>
+        ) : (
+          <FormattedMessage id="category.choose" />
+        )}
       </header>
 
       {/* This is the main area
@@ -182,7 +193,7 @@ const DataViewer: FunctionComponent<Props> = ({
               history.push(`/${currentCategory}`);
               setShowContentList(!showContentList);
             }}
-            label="Explore"
+            label="explore"
           ></Button>
         </>
       ) : null}

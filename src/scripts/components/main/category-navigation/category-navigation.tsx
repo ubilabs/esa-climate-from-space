@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./category-navigation.module.css";
 import cx from "classnames";
 import { useHistory } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 interface Props {
   showCategories: boolean;
   width: number;
@@ -205,8 +206,14 @@ const CategoryNavigation: React.FC<Props> = ({
                 index === normalizedIndex && showCategories && styles.active,
               )}
             >
-              {category}
-              <span>{entries} Entries</span>
+              <FormattedMessage id={`tags.${category}`} />
+              <span>
+                <FormattedMessage id="entries" values={
+                  {
+                    count: entries
+                  }
+                }/>
+              </span>
             </li>
           );
         })}

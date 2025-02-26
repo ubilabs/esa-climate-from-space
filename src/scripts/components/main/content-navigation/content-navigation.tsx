@@ -8,6 +8,7 @@ import Button from "../button/button";
 import cx from "classnames";
 
 import styles from "./content-navigation.module.css";
+import { Link } from "react-router-dom";
 
 interface Props {
   showContentList: boolean;
@@ -79,9 +80,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
     // This prevents any scrolling beyond the last and first list item
     if (
-      (firstItemRelativePosition === 0 && indexDelta > 0)
-       ||
-       lastItemRelativePosition === 0 && indexDelta < 0
+      (firstItemRelativePosition === 0 && indexDelta > 0) ||
+      (lastItemRelativePosition === 0 && indexDelta < 0)
     ) {
       return;
     }
@@ -158,10 +158,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
             key={index}
             aria-label={`${type} content: ${title}`}
           >
-            <Button
-              link={`${category}/stories/${id}/0/`}
-              label={title}
-            ></Button>
+            <Link to={`${category}/stories/${id}/0/`}>
+              <span>{title}</span>
+            </Link>
           </li>
         );
       })}

@@ -57,12 +57,16 @@
       color: var(--primary-color);
     }
 
-    >a>span {
-      max-width: 50vw;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-      color: var(--secondary-color);
+    >a {
+      display: flex;
+
+      >span {
+        max-width: 50vw;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        color: var(--secondary-color);
+      }
     }
 
     &:before {
