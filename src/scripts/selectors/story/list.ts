@@ -1,9 +1,12 @@
 import { State } from "../../reducers/index";
 import { storiesApi } from "../../services/api";
+import { createSelector } from "@reduxjs/toolkit";
+import { Language } from "../../types/language";
 
 // Get stories list
-export const selectStories = storiesApi.endpoints.getStories.select("en");
+const selectStories = storiesApi.endpoints.getStories.select(Language.ES);
 
-// Create memoized selector for transformed data
-export const storyListSelector = (state: State) =>
-  selectStories(state).data ?? [];
+export const storyListSelector = createSelector(
+  [selectStories],
+  (storiesResult) => storiesResult.data ?? []
+);

@@ -1,8 +1,11 @@
-import { useSelector } from "react-redux";
-import { storyListSelector } from "../selectors/story/list";
+import { useGetStoriesQuery } from "../services/api";
+import { Language } from "../types/language";
 
-export const useContentMarker = (selectedStoryId: string | null) => {
-  const stories = useSelector(storyListSelector);
+export const useContentMarker = (selectedStoryId: string | null, language: Language) => {
+  const { data: stories } = useGetStoriesQuery(language);
+  if (!stories) {
+    return null;
+  }
   const selectedStory = stories.find((story) => story.id === selectedStoryId);
 
   if (!selectedStory) {

@@ -6,17 +6,18 @@ import { ArrowLeftIcon } from "../../main/icons/arrow-left-icon";
 import { ArrowRightIcon } from "../../main/icons/arrow-right-icon";
 import { CheckIcon } from "../../main/icons/check-icon";
 
-import { storyListSelector } from "../../../selectors/story/list";
 import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
 import { setSelectedTags } from "../../../reducers/story";
+import { useGetStoriesQuery } from "../../../services/api";
+import { languageSelector } from "../../../selectors/language";
 
 import styles from "./story-filter.module.css";
 
 const StoryFilter: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const stories = useSelector(storyListSelector);
+  const language = useSelector(languageSelector);
+  const { data: stories } = useGetStoriesQuery(language);
   const selectedTags = useSelector(selectedTagsSelector);
-  console.log("🚀 ~ selectedTags:", selectedTags);
   const [translateValue, setTranslateValue] = useState(0);
   const scrollSpeed = 50; // pixels per frame
   const innerRef = useRef<HTMLDivElement>(null);
