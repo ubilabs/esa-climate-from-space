@@ -26,6 +26,7 @@ import { setFlyTo } from "../../../reducers/fly-to";
 
 import styles from "./data-viewer.module.css";
 import { debounce } from "../../../libs/debounce";
+import { useContentMarker } from "../../../hooks/use-story-markers";
 
 interface Props {
   backgroundColor: string;
@@ -68,13 +69,13 @@ const DataViewer: FunctionComponent<Props> = ({
 
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoriesQuery(language);
-  console.log("stories", stories);
 
   // We need to keep track of the current selected content Id because we need to
   // set the flyTo for the marker, or add the data layer to the globe
   const [selectedContentId, setSelectedContentId] = useState<string | null>(
     null,
   );
+  const contentMarker = useContentMarker(selectedContentId);
 
   const dispatch = useDispatch();
 
@@ -101,7 +102,7 @@ const DataViewer: FunctionComponent<Props> = ({
         dispatch(
           setFlyTo({
             lat: previewedContent?.position[1] || 0,
-            lng: previewedContent?.position[0]|| 0,
+            lng: previewedContent?.position[0] || 0,
             isAnimated: true,
           }),
         );
@@ -197,6 +198,9 @@ const DataViewer: FunctionComponent<Props> = ({
         <GetDataWidget
           hideNavigation={Boolean(hideNavigation)}
           globeProps={{
+            ...(contentMarker && {
+              markers: [contentMarker],
+            }),
             className: cx(!showContentList && styles.globe),
             backgroundColor,
             isAutoRoating: !showContentList,
