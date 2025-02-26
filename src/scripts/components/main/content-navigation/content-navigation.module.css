@@ -1,5 +1,8 @@
 .contentNav {
   --font-color: rgba(0, 179, 152, 1);
+  --primary-color: #00b398;
+  --secondary-color: #3f6c7d;
+  --background-color: #003349;
   grid-area: globe-nav-area;
   width: 100%;
   height: 100%;
@@ -51,7 +54,7 @@
       white-space: inherit;
       text-overflow: inherit;
       max-width: 100%;
-      color: #00b398;
+      color: var(--primary-color);
     }
 
     >a>span {
@@ -59,7 +62,7 @@
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-      color: #3f6c7d;
+      color: var(--secondary-color);
     }
 
     &:before {
@@ -69,11 +72,11 @@
       height: 24px;
       margin-right: 1rem;
       scale: 0.75;
-      background: #3f6c7d;
+      background: var(--secondary-color);
     }
 
     &[data-relative-position="0"]:before {
-      background: #00b398;
+      background: var(--primary-color);
     }
 
     &[data-content-type="image"]:before {
