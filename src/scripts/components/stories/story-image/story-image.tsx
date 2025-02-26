@@ -23,12 +23,11 @@ const StoryImage: FunctionComponent<Props> = ({ storyId, imageItem }) => {
         style={{
           objectFit: imageFit === ImageFit.Cover ? "cover" : "contain",
         }}
-        src={imageUrl}
+       src={imageUrl}
       />
       {imageCaption && (
         <Caption
           showLightbox={false}
-          imageFit={imageFit}
           content={imageCaption}
         />
       )}

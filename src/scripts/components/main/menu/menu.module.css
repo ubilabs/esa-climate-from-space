@@ -96,7 +96,7 @@
   padding-left: 0.615384615384615em;
   font-size: 13px;
 }
-@media screen and (max-width: 480px) {
+@media screen and (--mobile-s-viewport) {
   .menuContainer {
     width: 100%;
   }
