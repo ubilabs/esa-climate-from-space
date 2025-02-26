@@ -119,5 +119,19 @@
   "tags.snow": "Sneeuw",
   "tags.lakes": "Meren",
   "tags.biomass": "Biomassa",
-  "tags.ghg": "GHG"
+  "tags.ghg": "GHG",
+  "filter.add": "Filters toevoegen",
+  "contentType": "Type inhoud",
+  "tags.all-options": "Alle opties",
+  "narrative": "Verhalend",
+  "data-layer": "Gegevenslaag",
+  "video": "Video",
+  "image-gallery": "Fotogalerij",
+  "show_entries": "Toon {count, number} {count, plural, one {inzending} other {inzendingen}}",
+  "entries": "{count, number} {count, plural, one {Inzending} other {Inzendingen}}",
+  "explore": "Verken",
+  "category.choose": "Kies een categorie",
+  "category.swipe": "Veeg om te navigeren",
+  "category.scroll": "scrollen om te navigeren",
+  "learn_more": "meer leren"
 }

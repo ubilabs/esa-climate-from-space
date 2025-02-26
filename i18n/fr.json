@@ -119,5 +119,19 @@
   "tags.snow": "Neige",
   "tags.lakes": "Lacs",
   "tags.biomass": "Biomasse",
-  "tags.ghg": "GHG"
+  "tags.ghg": "GHG",
+  "filter.add": "Add filters",
+  "contentType": "Type de contenu",
+  "tags.all-options": "Toutes les options",
+  "narrative": "Narratif",
+  "data-layer": "Couche de données",
+  "video": "Vidéo",
+  "image-gallery": "Galerie d'images",
+  "show_entries": "Afficher {count, number} {count, plural, one {entrée} other {entrées}}",
+  "entries": "{count, number} {count, plural, one {Entrée} other {Entrées}}",
+  "explore": "Explorer",
+  "category.choose": "Choisir une catégorie",
+  "category.swipe": "Balayer pour naviguer",
+  "category.scroll": "Faire défiler pour naviguer",
+  "learn_more": "en savoir plus"
 }
