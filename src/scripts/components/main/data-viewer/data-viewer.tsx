@@ -21,7 +21,6 @@ import { useScreenSize } from "../../../hooks/use-screen-size";
 import cx from "classnames";
 
 import { GetDataWidget } from "../data-widget/data-widget";
-import { useStoryMarkers } from "../../../hooks/use-story-markers";
 import { useDispatch } from "react-redux";
 import { setFlyTo } from "../../../reducers/fly-to";
 

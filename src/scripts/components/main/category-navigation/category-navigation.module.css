@@ -77,7 +77,7 @@
 
 
   /* The text-shadows causes weird flickr on mobile, so we only render on desktop */
-  @media (min-width: 768px) {
+  @media (--mobile-viewport) {
     text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
     appearance: none;
     -webkit-appearance: none;
@@ -95,13 +95,11 @@
       color: var(--main-colours-esa-teal-55, #98dbce);
       text-align: center;
       text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
-      /* Mobile/H6 */
       font-family: NotesEsa;
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
       line-height: 20px;
-      /* 125% */
     }
   }
 }

@@ -60,6 +60,9 @@
       white-space: nowrap;
       color: #3F6C7D;
     }
+&[data-relative-position='0']:before {
+      background: #00B398;
+    }
 
     &:before {
       flex-shrink: 0;
