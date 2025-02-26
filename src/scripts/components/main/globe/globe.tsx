@@ -97,9 +97,8 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   }>({ lat: 10, lng: 180 });
   const isAutoRotatingRef = useRef<boolean>(isAutoRoating);
 
-  console.log("flyTo", props.flyTo);
   // We have these custom functions for autoRotating the globe and animating the flyTo
-  // Ticket #1271 and #1270 reference these issues
+  // Ticket #1271 and #1270 reference these issues see https://github.com/orgs/ubilabs/projects/48
   const animatedFlyTo = useCallback(
     (lat: number, lng: number) => {
       // This is the speed of the animation
@@ -113,8 +112,6 @@ const Globe: FunctionComponent<Props> = memo((props) => {
       const deltaLat = targetLat - startLat;
       const steps = Math.ceil(SPEED * 60); // Assuming 60 frames per second
 
-      console.log("deltaLng", deltaLng);
-      console.log("deltaLat", deltaLat);
       let step = 0;
 
       const animate = () => {
@@ -168,8 +165,6 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   useProjectionSwitch(globe, projectionState.projection);
   useMultiGlobeSynchronization(globe, props, animatedFlyTo);
 
-  const globeView = useSelector(globeViewSelector);
-  console.log("globeView", globeView);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 

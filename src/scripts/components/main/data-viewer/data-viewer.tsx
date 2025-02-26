@@ -76,7 +76,6 @@ const DataViewer: FunctionComponent<Props> = ({
     null,
   );
   const contentMarker = useContentMarker(selectedContentId, language);
-  console.log("🚀 ~ contentMarker:", );
 
   const dispatch = useDispatch();
 
