@@ -89,12 +89,17 @@ const DataViewer: FunctionComponent<Props> = ({
   const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    const previewedContent = stories?.find(
+    // Don't proceed if there's no selectedContentId or no stories
+    if (!selectedContentId || !stories) {
+      return;
+    }
+
+    const previewedContent = stories.find(
       (story) => story.id === selectedContentId,
     );
 
     if (!previewedContent) {
-      console.warn("Content could not be found");
+      console.warn(`Content with id ${selectedContentId} could not be found`);
       return;
     }
 
@@ -102,8 +107,8 @@ const DataViewer: FunctionComponent<Props> = ({
       () => {
         dispatch(
           setFlyTo({
-            lat: previewedContent?.position[1] || 0,
-            lng: previewedContent?.position[0] || 0,
+            lat: previewedContent.position[1],
+            lng: previewedContent.position[0],
             isAnimated: true,
           }),
         );
@@ -118,7 +123,7 @@ const DataViewer: FunctionComponent<Props> = ({
       setSelectedContentId(null);
     }
     setShowContentList(Boolean(category));
-  }, [category]);
+  }, [category, showContentList]);
 
   if (!stories) {
     return null;
