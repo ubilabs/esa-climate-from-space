@@ -142,10 +142,9 @@ background-repeat: no-repeat;
   animation: headerAnimation 1s ease-out forwards;
   animation-delay: 0.7s;
   grid-area: heading;
-justify-content: center;
   color: white;
   display: flex;
-  justify-content: start;
+  justify-content: center;
 
   >h2 {
     margin: 0 auto;

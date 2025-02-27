@@ -1,5 +1,4 @@
 import { useHistory, useParams } from "react-router-dom";
-
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { FunctionComponent, useEffect, useRef, useState } from "react";
