@@ -5,6 +5,7 @@ export function useScreenSize() {
     screenHeight: Math.floor(window.innerHeight),
     screenWidth: Math.floor(window.innerWidth)
   });
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     const handleResize = () => {
@@ -12,11 +13,13 @@ export function useScreenSize() {
         screenHeight: Math.floor(window.innerHeight),
         screenWidth: Math.floor(window.innerWidth)
       });
+      // Make sure this is the same value as defined in in variables.css
+      setIsMobile(window.innerWidth < 768);
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return dimensions;
+  return {screenHeight: dimensions.screenHeight, screenWidth: dimensions.screenWidth, isMobile};
 }

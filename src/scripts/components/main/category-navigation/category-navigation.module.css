@@ -1,7 +1,15 @@
 .category-navigation {
   grid-area: globe-nav-area;
-  margin-top: auto;
+  display: flex;
+  justify-content: start;
+  place-self: end center;
+  /* This hides the navigation on initial load*/
   clip-path: inset(0 100% 0 0);
+  /* Show only the bottom half on mobile */
+  height: 50%;
+  z-index: 1;
+  overscroll-behavior: contain;
+  overflow: hidden;
 
   &.reveal-from-right {
     animation: revealFromRight 0.5s linear forwards;
@@ -17,6 +25,21 @@
 
   &.conceal {
     animation: concealToRight 0.5s linear forwards;
+  }
+
+  @media screen and (--desktop-viewport) {
+    place-self: center center;
+    height: 100%;
+    align-items: center;
+  }
+
+  .circle-container {
+    translate: 0 -50%;
+    transition: all 0.5s ease-out;
+
+    @media screen and (--desktop-viewport) {
+      translate: 0 0;
+    }
   }
 }
 
@@ -75,12 +98,37 @@
   animation: fadeIn 0.5s ease-out forwards;
   animation-delay: 2.8s;
 
-
   /* The text-shadows causes weird flickr on mobile, so we only render on desktop */
-  @media (--mobile-viewport) {
+  /*@media (--mobile-viewport) {*/
+  /*  text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);*/
+  /*  appearance: none;*/
+  /*  -webkit-appearance: none;*/
+  /*}*/
+
+  @media screen and (--desktop-viewport) {
+    text-align: start;
+    grid-area: title;
+    font-family: NotesEsa;
+    font-size: 62px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 68px;
+    place-self: start;
+    /* 109.677% */
     text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
-    appearance: none;
-    -webkit-appearance: none;
+
+    >li.active {
+
+      >span {
+        text-align: start;
+        font-family: NotesEsa;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px;
+        /* 120% */
+      }
+    }
   }
 
   >li {

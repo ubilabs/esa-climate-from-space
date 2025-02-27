@@ -26,7 +26,7 @@ import { setFlyTo } from "../../../reducers/fly-to";
 import styles from "./data-viewer.module.css";
 import { debounce } from "../../../libs/debounce";
 import { useContentMarker } from "../../../hooks/use-story-markers";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface Props {
   backgroundColor: string;
@@ -62,13 +62,11 @@ const DataViewer: FunctionComponent<Props> = ({
   const [currentCategory, setCurrentCategory] = useState<string | null>(
     category || null,
   );
-  console.log(
-    "🚀 ~ file: data-viewer.tsx ~ line 202 ~ DataViewer ~ currentCategory",
-    currentCategory,
-  );
-  const history = useHistory();
 
-  const { screenWidth } = useScreenSize();
+  const history = useHistory();
+  const intl = useIntl();
+
+  const { screenHeight, screenWidth, isMobile } = useScreenSize();
 
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoriesQuery(language);
@@ -86,7 +84,7 @@ const DataViewer: FunctionComponent<Props> = ({
   // This keeps track of that
   // Get state from local storage
   const hasAnimationPlayed = useRef(
-    localStorage.getItem(HAS_USER_INTERACTED) === "true",
+    !isMobile || localStorage.getItem(HAS_USER_INTERACTED) === "true",
   );
   const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
 
@@ -156,10 +154,8 @@ const DataViewer: FunctionComponent<Props> = ({
       <header className={styles.heading}>
         {showContentList ? (
           <Button
-            label={
-              `tags.${currentCategory}`
-            }
-            link={'/'}
+            label={`tags.${currentCategory}`}
+            link={"/"}
             className={styles.backButton}
           ></Button>
         ) : (
@@ -177,6 +173,8 @@ const DataViewer: FunctionComponent<Props> = ({
         arcs={arcs}
         showCategories={!showContentList}
         width={screenWidth}
+        height={screenHeight}
+        isMobile={isMobile}
         setCategory={setCurrentCategory}
         isAnimationReady={hasAnimationPlayed}
       />
@@ -198,9 +196,11 @@ const DataViewer: FunctionComponent<Props> = ({
       ) : null}
       <span
         aria-hidden="true"
-        className={styles.swipeIndicator}
-        style={{ display: hasAnimationPlayed.current ? "none" : "block" }}
-        data-content="swipe to navigate"
+        className={cx(styles.swipeIndicator, !isMobile && styles.scroll )}
+        //style={{ display: hasAnimationPlayed.current ? "none" : "block" }}
+        data-content={intl.formatMessage({
+          id: `category.${isMobile ? "swipe" : "scroll"}`,
+        })}
       ></span>
 
       <div

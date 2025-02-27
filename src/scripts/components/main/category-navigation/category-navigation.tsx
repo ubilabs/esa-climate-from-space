@@ -6,14 +6,16 @@ import { useHistory } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 interface Props {
   showCategories: boolean;
+  isMobile: boolean;
   width: number;
+  height: number;
   setCategory: React.Dispatch<React.SetStateAction<string | null>>;
   isAnimationReady: React.MutableRefObject<boolean>;
   arcs: { [key: string]: number }[];
   onSelect: (category: string) => void;
 }
 
-export const HAS_USER_INTERACTED = 'hasUserInteraced'
+export const HAS_USER_INTERACTED = "hasUserInteraced";
 /**
  * A circular navigation component that displays categories in an interactive wheel format.
  *
@@ -26,6 +28,8 @@ export const HAS_USER_INTERACTED = 'hasUserInteraced'
  **/
 const CategoryNavigation: React.FC<Props> = ({
   width,
+  height,
+  isMobile,
   setCategory,
   showCategories,
   arcs,
@@ -50,7 +54,10 @@ const CategoryNavigation: React.FC<Props> = ({
 
   // Why _oversize? It's because the circle navigation should be bigger than the screen
   // We hide the overflow in the parent container
-  const _size = width + _overSize;
+  //const _size = isMobile ? width + _overSize : (width - 154) / 3 *2;
+  const _size = isMobile
+    ? width + _overSize
+    : Math.min(((width - 200) / 3 * 2), height - 100);
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
 
@@ -208,11 +215,12 @@ const CategoryNavigation: React.FC<Props> = ({
             >
               <FormattedMessage id={`tags.${category}`} />
               <span>
-                <FormattedMessage id="entries" values={
-                  {
-                    count: entries
-                  }
-                }/>
+                <FormattedMessage
+                  id="entries"
+                  values={{
+                    count: entries,
+                  }}
+                />
               </span>
             </li>
           );
@@ -233,12 +241,11 @@ const CategoryNavigation: React.FC<Props> = ({
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        style={{
-          zIndex: "1",
-          overscrollBehavior: "contain",
-          overflow: "hidden",
-          height: `${_size / 2}px`,
-        }}
+        style={
+          {
+            //height: `${_size / 2}px`,
+          }
+        }
       >
         <svg
           className={styles["circle-container"]}
@@ -248,8 +255,8 @@ const CategoryNavigation: React.FC<Props> = ({
           height={_size}
           viewBox={`0 0 ${_size} ${_size}`}
           style={{
-            translate: " 0 -50%",
-            transition: "all 0.5s ease-out",
+            //translate: " 0 -50%",
+            //transition: "all 0.5s ease-out",
             transform: `rotate(${rotationOffset}deg)`,
           }}
         >

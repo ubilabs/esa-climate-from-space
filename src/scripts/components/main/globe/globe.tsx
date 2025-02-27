@@ -165,7 +165,6 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   useProjectionSwitch(globe, projectionState.projection);
   useMultiGlobeSynchronization(globe, props, animatedFlyTo);
 
-
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
   return (
