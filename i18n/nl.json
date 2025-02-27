@@ -131,7 +131,7 @@
   "entries": "{count, number} {count, plural, one {Inzending} other {Inzendingen}}",
   "explore": "Verken",
   "category.choose": "Kies een categorie",
-  "category.swipe": "Veeg om te navigeren",
+  "category.swipe": "veeg om te navigeren",
   "category.scroll": "scrollen om te navigeren",
   "learn_more": "meer leren"
 }

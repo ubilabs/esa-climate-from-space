@@ -131,7 +131,7 @@
   "entries": "{count, number} {count, plural, one {Entrée} other {Entrées}}",
   "explore": "Explorer",
   "category.choose": "Choisir une catégorie",
-  "category.swipe": "Balayer pour naviguer",
-  "category.scroll": "Faire défiler pour naviguer",
+  "category.swipe": "balayer pour naviguer",
+  "category.scroll": "faire défiler pour naviguer",
   "learn_more": "en savoir plus"
 }
