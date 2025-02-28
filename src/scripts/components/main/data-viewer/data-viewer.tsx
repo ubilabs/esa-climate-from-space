@@ -210,7 +210,6 @@ const DataViewer: FunctionComponent<Props> = ({
         <span
           aria-hidden="true"
           className={cx(styles.swipeIndicator, !isMobile && styles.scroll)}
-          //style={{ display: hasAnimationPlayed.current ? "none" : "block" }}
           data-content={intl.formatMessage({
             id: `category.${isMobile ? "swipe" : "scroll"}`,
           })}
@@ -230,7 +229,7 @@ const DataViewer: FunctionComponent<Props> = ({
             ...(contentMarker && {
               markers: [contentMarker],
             }),
-            className: cx(!showContentList && styles.globe),
+            className: cx(!showContentList && styles.globe, showContentList && isMobile && styles.globeContent),
             backgroundColor,
             isAutoRoating: !showContentList,
           }}

@@ -21,7 +21,7 @@
 
     &[data-content-view="true"] {
       grid-template-areas: "globe content-nav";
-      grid-template-columns:  auto clamp(300px, 50%, 700px);
+      grid-template-columns: auto clamp(300px, 50%, 700px);
       grid-template-rows: 1fr;
       grid-gap: 0;
 
@@ -39,6 +39,19 @@
         grid-area: content-nav;
       }
     }
+  }
+}
+
+.globeContent {
+  height: 180vh;
+  position: absolute !important;
+  width: 100vw;
+  transition: all 0.5s ease;
+
+  >canvas {
+    overflow: vsible;
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -65,6 +78,10 @@
   &.showContentList {
     transform: translateX(-55%);
     transition-delay: 0.5s;
+
+    @media screen and (--desktop-viewport) {
+      transform: translateX(-40%);
+    }
   }
 }
 
