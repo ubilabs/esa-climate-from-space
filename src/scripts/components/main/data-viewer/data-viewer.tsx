@@ -229,7 +229,7 @@ const DataViewer: FunctionComponent<Props> = ({
             ...(contentMarker && {
               markers: [contentMarker],
             }),
-            className: cx(!showContentList && styles.globe, showContentList && isMobile && styles.globeContent),
+            className: cx(!showContentList && styles.globe, showContentList && !isMobile && styles.globeContent),
             backgroundColor,
             isAutoRoating: !showContentList,
           }}
