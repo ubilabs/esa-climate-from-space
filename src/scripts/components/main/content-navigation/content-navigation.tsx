@@ -50,8 +50,6 @@ const {handleWheel} = useContentScrollHandlers(indexDelta, setIndexDelta);
       "ul li",
     ) as NodeListOf<HTMLElement>;
     // if at last of first item, we prevent any further scrolling
-    const listItemsLength = listItems.length - 1;
-    console.log("listItemsLength", listItemsLength);
 
     // Check if the first item has a relativePosition of 0 or the last item has a relativePosition of listItemsLength
     const firstItemRelativePosition = Number(

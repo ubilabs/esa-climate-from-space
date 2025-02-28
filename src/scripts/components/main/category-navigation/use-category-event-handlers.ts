@@ -89,7 +89,7 @@ export const useCategoryScrollHandlers = () => {
     // Check if we've crossed the threshold
     if (Math.abs(newScrollAccumulator) > SCROLL_THRESHOLD) {
       // Calculate direction (positive = down/right, negative = up/left)
-      const direction = newScrollAccumulator > 0 ? -1 : 1;
+      const direction = newScrollAccumulator > 0 ? 1 : -1;
 
       // Update the current index
       const nextIndex = currentScrollIndex + direction;
