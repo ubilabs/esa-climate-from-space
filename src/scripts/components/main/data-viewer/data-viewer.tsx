@@ -55,7 +55,7 @@ const DataViewer: FunctionComponent<Props> = ({
   hideNavigation,
 }) => {
   const { category } = useParams<RouteParams>();
-  const { handleScroll , currentScrollIndex} = useCategoryScrollHandlers();
+  const { handleScroll, currentScrollIndex } = useCategoryScrollHandlers();
 
   const [showContentList, setShowContentList] = useState<boolean>(
     Boolean(category),
@@ -149,12 +149,13 @@ const DataViewer: FunctionComponent<Props> = ({
     // Todo: Delete this filter when we have the new categories
     .filter((arc) => Object.values(arc)[0] > 2);
 
-
   return (
     // The data-view is a grid with three areas: header - main - footer
     // This is the header area
-    <div className={styles.dataViewer}
-             onWheel={handleScroll}
+    <div
+      className={styles.dataViewer}
+      onWheel={handleScroll}
+      data-content-view={showContentList}
     >
       <header className={styles.heading}>
         {showContentList ? (
@@ -173,17 +174,28 @@ const DataViewer: FunctionComponent<Props> = ({
         The globe is the main component and is always visible
         The category navigation is visible when the content navigation is not visible
       */}
-      <CategoryNavigation
-        currentScrollIndex={currentScrollIndex}
-        onSelect={(category) => setSelectedTags([category])}
-        arcs={arcs}
-        showCategories={!showContentList}
-        width={screenWidth}
-        height={screenHeight}
-        isMobile={isMobile}
-        setCategory={setCurrentCategory}
-        isAnimationReady={hasAnimationPlayed}
-      />
+      {!showContentList ? (
+        <CategoryNavigation
+          currentScrollIndex={currentScrollIndex}
+          onSelect={(category) => setSelectedTags([category])}
+          arcs={arcs}
+          showCategories={!showContentList}
+          width={screenWidth}
+          height={screenHeight}
+          isMobile={isMobile}
+          setCategory={setCurrentCategory}
+          isAnimationReady={hasAnimationPlayed}
+        />
+      ) : (
+        <ContentNavigation
+          isMobile={isMobile}
+          className={styles.contentNav}
+          category={currentCategory}
+          showContentList={showContentList}
+          contents={contents}
+          setSelectedContentId={setSelectedContentId}
+        />
+      )}
 
       {!showContentList ? (
         <>
@@ -200,14 +212,16 @@ const DataViewer: FunctionComponent<Props> = ({
           ></Button>
         </>
       ) : null}
-      <span
-        aria-hidden="true"
-        className={cx(styles.swipeIndicator, !isMobile && styles.scroll )}
-        //style={{ display: hasAnimationPlayed.current ? "none" : "block" }}
-        data-content={intl.formatMessage({
-          id: `category.${isMobile ? "swipe" : "scroll"}`,
-        })}
-      ></span>
+      {!showContentList && (
+        <span
+          aria-hidden="true"
+          className={cx(styles.swipeIndicator, !isMobile && styles.scroll)}
+          //style={{ display: hasAnimationPlayed.current ? "none" : "block" }}
+          data-content={intl.formatMessage({
+            id: `category.${isMobile ? "swipe" : "scroll"}`,
+          })}
+        ></span>
+      )}
 
       <div
         id="globeWrapper"
@@ -228,13 +242,6 @@ const DataViewer: FunctionComponent<Props> = ({
           }}
         />
       </div>
-
-      <ContentNavigation
-        category={currentCategory}
-        showContentList={showContentList}
-        contents={contents}
-        setSelectedContentId={setSelectedContentId}
-      />
     </div>
   );
 };

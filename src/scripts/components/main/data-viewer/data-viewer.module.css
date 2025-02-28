@@ -18,6 +18,27 @@
     grid-template-rows: 1fr auto 1fr;
     grid-template-columns: 2fr minmax(20vw, 1fr) 154px;
     grid-gap: 1.5rem;
+
+    &[data-content-view="true"] {
+      grid-template-areas: "globe content-nav";
+      grid-template-columns:  auto clamp(300px, 50%, 700px);
+      grid-template-rows: 1fr;
+      grid-gap: 0;
+
+      .globeWrapper {
+        grid-area: globe;
+      }
+
+      .heading {
+        margin-top: 1.125rem;
+        place-self: start;
+        grid-area: globe;
+      }
+
+      .contentNav {
+        grid-area: content-nav;
+      }
+    }
   }
 }
 

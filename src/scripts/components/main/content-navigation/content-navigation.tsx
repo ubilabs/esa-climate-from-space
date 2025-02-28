@@ -15,6 +15,8 @@ interface Props {
   contents: StoryList;
   setSelectedContentId: React.Dispatch<React.SetStateAction<string | null>>;
   category: string | null;
+  className?: string;
+  isMobile: boolean;
 }
 
 const ContentNavigation: FunctionComponent<Props> = ({
@@ -22,6 +24,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
   showContentList,
   contents,
   setSelectedContentId,
+  className,
+  isMobile,
 }) => {
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
 
@@ -35,7 +39,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   // 0 - 100 because the coordinates are used as the top and left values
   // in a absolute positioned element. The advantage here is that the the elements
   // will automatically positioned and re-positioned based on the size of the parent container
-  const RADIUS = 39;
+  const RADIUS = 40;
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!touchStartY) {
@@ -132,10 +136,17 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   return (
     <ul
-      className={cx(styles.contentNav, showContentList && styles.show)}
+      className={cx(
+        styles.contentNav,
+        showContentList && styles.show,
+        className,
+      )}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
+      style={{
+        transform: !isMobile ? `translateX(-${RADIUS}%)` : undefined,
+      }}
     >
       {contents.map(({ title, id }, index) => {
         const relativePosition = index - Math.floor(contents.length / 2);
@@ -169,7 +180,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
       <span
         aria-hidden="true"
         style={{
-          left: `calc(${x}% - 8px)`,
+       // The 8px or 24px is what the offset of the highlight to the left
+          left: `calc(${x}% - ${isMobile ? "8" : "24"}px)`,
         }}
       ></span>
     </ul>

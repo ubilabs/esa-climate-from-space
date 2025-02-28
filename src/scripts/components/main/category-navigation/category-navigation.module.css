@@ -99,14 +99,9 @@
   animation: fadeIn 0.5s ease-out forwards;
   animation-delay: 2.8s;
 
-  /* The text-shadows causes weird flickr on mobile, so we only render on desktop */
-  /*@media (--mobile-viewport) {*/
-  /*  text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);*/
-  /*  appearance: none;*/
-  /*  -webkit-appearance: none;*/
-  /*}*/
 
   @media screen and (--desktop-viewport) {
+    animation-delay: 0.8s;
     text-align: start;
     grid-area: title;
     font-family: NotesEsa;
