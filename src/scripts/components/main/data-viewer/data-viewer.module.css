@@ -160,7 +160,6 @@
   letter-spacing: 0.32px;
 
   @media screen and (--desktop-viewport) {
-
     place-self: start;
 
     &:after {

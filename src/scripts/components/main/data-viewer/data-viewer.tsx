@@ -27,6 +27,7 @@ import styles from "./data-viewer.module.css";
 import { debounce } from "../../../libs/debounce";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { FormattedMessage, useIntl } from "react-intl";
+import { useCategoryScrollHandlers } from "../category-navigation/use-category-event-handlers";
 
 interface Props {
   backgroundColor: string;
@@ -54,6 +55,7 @@ const DataViewer: FunctionComponent<Props> = ({
   hideNavigation,
 }) => {
   const { category } = useParams<RouteParams>();
+  const { handleScroll , currentScrollIndex} = useCategoryScrollHandlers();
 
   const [showContentList, setShowContentList] = useState<boolean>(
     Boolean(category),
@@ -147,10 +149,13 @@ const DataViewer: FunctionComponent<Props> = ({
     // Todo: Delete this filter when we have the new categories
     .filter((arc) => Object.values(arc)[0] > 2);
 
+
   return (
     // The data-view is a grid with three areas: header - main - footer
     // This is the header area
-    <div className={styles.dataViewer}>
+    <div className={styles.dataViewer}
+             onWheel={handleScroll}
+    >
       <header className={styles.heading}>
         {showContentList ? (
           <Button
@@ -169,6 +174,7 @@ const DataViewer: FunctionComponent<Props> = ({
         The category navigation is visible when the content navigation is not visible
       */}
       <CategoryNavigation
+        currentScrollIndex={currentScrollIndex}
         onSelect={(category) => setSelectedTags([category])}
         arcs={arcs}
         showCategories={!showContentList}

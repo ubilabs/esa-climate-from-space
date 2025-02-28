@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 
 import styles from "./category-navigation.module.css";
 import cx from "classnames";
 import { useHistory } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import { useCategoryTouchHandlers } from "./use-category-event-handlers";
 interface Props {
   showCategories: boolean;
   isMobile: boolean;
@@ -13,6 +14,7 @@ interface Props {
   isAnimationReady: React.MutableRefObject<boolean>;
   arcs: { [key: string]: number }[];
   onSelect: (category: string) => void;
+  currentScrollIndex: number | null;
 }
 
 export const HAS_USER_INTERACTED = "hasUserInteraced";
@@ -26,7 +28,7 @@ export const HAS_USER_INTERACTED = "hasUserInteraced";
  * @param {boolean} props.showCategories - Whether to show the categories
  * @param {React.MutableRefObject<boolean>} props.isAnimationReady - A ref to check if the animation is ready
  **/
-const CategoryNavigation: React.FC<Props> = ({
+const CategoryNavigation: FunctionComponent<Props> = ({
   width,
   height,
   isMobile,
@@ -35,14 +37,18 @@ const CategoryNavigation: React.FC<Props> = ({
   arcs,
   isAnimationReady,
   onSelect,
+  currentScrollIndex
 }) => {
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-
-  // The index of the current category
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isRotating, setIsRotating] = useState(false);
   const history = useHistory();
+  const {
+    isRotating,
+    currentTouchIndex,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+  } = useCategoryTouchHandlers();
 
+  const currentIndex = currentScrollIndex || currentTouchIndex;
   // Control the gap between the lines (arcs)
   const SPACING = 5;
 
@@ -57,7 +63,7 @@ const CategoryNavigation: React.FC<Props> = ({
   //const _size = isMobile ? width + _overSize : (width - 154) / 3 *2;
   const _size = isMobile
     ? width + _overSize
-    : Math.min(((width - 200) / 3 * 2), height - 100);
+    : Math.min(((width - 200) / 3) * 2, height - 100);
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
 
@@ -83,37 +89,7 @@ const CategoryNavigation: React.FC<Props> = ({
     }
   });
 
-  // Handle touch events
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!touchStart) {
-      return;
-    }
-
-    const currentTouch = e.touches[0].clientX;
-    const diff = touchStart - currentTouch;
-
-    if (Math.abs(diff) > 50) {
-      // Remove modulo, allow continuous rotation
-      const direction = diff > 0 ? -1 : 1;
-      const nextIndex = currentIndex + direction;
-
-      setCurrentIndex(nextIndex);
-      setTouchStart(null);
-      setIsRotating(true);
-
-      // Set a local state userHasInteracted to true
-      localStorage.setItem(HAS_USER_INTERACTED, "true");
-    }
-  };
-
-  const handleTouchEnd = () => {
-    setTouchStart(null);
-    setIsRotating(false);
-  };
+  // Handle scroll events
 
   // Calculate proportional distribution
   // There are 360 degrees in a circle and we need to distribute the arcs proportionally
@@ -241,6 +217,7 @@ const CategoryNavigation: React.FC<Props> = ({
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        // onWheel={handleScroll}
         style={
           {
             //height: `${_size / 2}px`,
