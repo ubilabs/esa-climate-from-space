@@ -105,8 +105,6 @@ const DataViewer: FunctionComponent<Props> = ({
       return;
     }
 
-    debounce(
-      () => {
         dispatch(
           setFlyTo({
             lat: previewedContent.position[1],
@@ -114,10 +112,6 @@ const DataViewer: FunctionComponent<Props> = ({
             isAnimated: true,
           }),
         );
-      },
-      100,
-      debounceTimeout,
-    );
   }, [selectedContentId, stories, dispatch]);
 
   useEffect(() => {

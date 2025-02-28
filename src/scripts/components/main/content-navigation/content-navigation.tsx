@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect, useState, useRef } from "react";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 
@@ -9,6 +9,7 @@ import cx from "classnames";
 
 import styles from "./content-navigation.module.css";
 import { Link } from "react-router-dom";
+import { useContentScrollHandlers, useContentTouchHandlers } from "./use-content-event-handlers";
 
 interface Props {
   showContentList: boolean;
@@ -27,10 +28,13 @@ const ContentNavigation: FunctionComponent<Props> = ({
   className,
   isMobile,
 }) => {
-  const [touchStartY, setTouchStartY] = useState<number | null>(null);
-
   // The indexDelta is the number of items the user has scrolled
   const [indexDelta, setIndexDelta] = useState(0);
+
+  const { touchStartY, handleTouchEnd, handleTouchMove } =
+    useContentTouchHandlers(indexDelta, setIndexDelta);
+
+const {handleWheel} = useContentScrollHandlers(indexDelta, setIndexDelta);
 
   // The spread between the elements in the circle
   const GAP_BETWEEN_ELEMENTS = 16;
@@ -41,31 +45,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
   // will automatically positioned and re-positioned based on the size of the parent container
   const RADIUS = 40;
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!touchStartY) {
-      setTouchStartY(e.touches[0].clientY);
-      return;
-    }
-
-    const touchDelta = e.touches[0].clientY - touchStartY;
-
-    const itemHeight = 32; // Height of each item in pixels
-    const sensitivity = 0.5; // Adjust this to control movement sensitivity
-
-    const delta = Math.round((touchDelta * sensitivity) / itemHeight);
-
-    if (delta !== indexDelta) {
-      setIndexDelta(delta);
-      setTouchStartY(e.touches[0].clientY);
-    }
-  };
-
-  const handleTouchEnd = () => {
-    console.log("touchStartY", touchStartY);
-    setTouchStartY(null);
-  };
-
-  // Every item will be repositioned based on the new indexDelta
   useEffect(() => {
     const listItems = document.querySelectorAll(
       "ul li",
@@ -131,6 +110,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
     }
   }, [touchStartY, indexDelta, showContentList, setSelectedContentId]);
 
+
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS);
 
@@ -144,6 +124,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
+      onWheel={handleWheel}
       style={{
         transform: !isMobile ? `translateX(-${RADIUS}%)` : undefined,
       }}
@@ -180,7 +161,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
       <span
         aria-hidden="true"
         style={{
-       // The 8px or 24px is what the offset of the highlight to the left
+          // The 8px or 24px is the offset of the highlight to the left
           left: `calc(${x}% - ${isMobile ? "8" : "24"}px)`,
         }}
       ></span>
