@@ -36,6 +36,7 @@ export const useContentTouchHandlers = (
     handleTouchMove,
   };
 };
+
 export const useContentScrollHandlers = (
   indexDelta: number,
   setIndexDelta: (delta: number) => void,

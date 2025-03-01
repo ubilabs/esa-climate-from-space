@@ -24,7 +24,6 @@ import { useDispatch } from "react-redux";
 import { setFlyTo } from "../../../reducers/fly-to";
 
 import styles from "./data-viewer.module.css";
-import { debounce } from "../../../libs/debounce";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useCategoryScrollHandlers } from "../category-navigation/use-category-event-handlers";
@@ -72,7 +71,6 @@ const DataViewer: FunctionComponent<Props> = ({
 
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoriesQuery(language);
-
   // We need to keep track of the current selected content Id because we need to
   // set the flyTo for the marker, or add the data layer to the globe
   const [selectedContentId, setSelectedContentId] = useState<string | null>(
@@ -142,7 +140,6 @@ const DataViewer: FunctionComponent<Props> = ({
     })
     // Todo: Delete this filter when we have the new categories
     .filter((arc) => Object.values(arc)[0] > 2);
-
   return (
     // The data-view is a grid with three areas: header - main - footer
     // This is the header area
