@@ -1,15 +1,15 @@
-import React, { FunctionComponent, useEffect, useState, useRef } from "react";
+import React, { FunctionComponent, useEffect, useState  } from "react";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 
 import { StoryList } from "../../../types/story-list";
-import Button from "../button/button";
+import { Link } from "react-router-dom";
+import { useContentScrollHandlers, useContentTouchHandlers } from "./use-content-event-handlers";
 
 import cx from "classnames";
 
 import styles from "./content-navigation.module.css";
-import { Link } from "react-router-dom";
-import { useContentScrollHandlers, useContentTouchHandlers } from "./use-content-event-handlers";
+import { FormattedMessage } from "react-intl";
 
 interface Props {
   showContentList: boolean;
@@ -89,6 +89,7 @@ const {handleWheel} = useContentScrollHandlers(indexDelta, setIndexDelta);
         adjustedPosition,
         GAP_BETWEEN_ELEMENTS,
         RADIUS,
+        isMobile
       );
 
       // 12 degrees of rotation per item
@@ -106,11 +107,11 @@ const {handleWheel} = useContentScrollHandlers(indexDelta, setIndexDelta);
 
       item.setAttribute("data-relative-position", adjustedPosition.toString());
     }
-  }, [touchStartY, indexDelta, showContentList, setSelectedContentId]);
+  }, [touchStartY, indexDelta, showContentList, setSelectedContentId, isMobile]);
 
 
   // Get the middle x coordinate for the highlight of the active item
-  const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS);
+  const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
 
   return (
     <ul
@@ -123,9 +124,6 @@ const {handleWheel} = useContentScrollHandlers(indexDelta, setIndexDelta);
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
       onWheel={handleWheel}
-      style={{
-        transform: !isMobile ? `translateX(-${RADIUS}%)` : undefined,
-      }}
     >
       {contents.map(({ title, id }, index) => {
         const relativePosition = index - Math.floor(contents.length / 2);
@@ -133,7 +131,7 @@ const {handleWheel} = useContentScrollHandlers(indexDelta, setIndexDelta);
         const type = "blog";
         return (
           <li
-            // Used in CSS to get the correct icon for the content type
+            // Used n CSS to get the correct icon for the content type
             data-content-type={type}
             // Used in the useEffect to calculate the new position
             data-relative-position={relativePosition}
@@ -150,6 +148,9 @@ const {handleWheel} = useContentScrollHandlers(indexDelta, setIndexDelta);
           >
             <Link to={`${category}/stories/${id}/0/`}>
               <span>{title}</span>
+              <span>
+                <FormattedMessage id="learn_more"/>
+              </span>
             </Link>
           </li>
         );

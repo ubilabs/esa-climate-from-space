@@ -4,7 +4,7 @@ function computeCartesianCoordinates(radius: number, angleInDegrees: number) {
   const x = radius * Math.cos(angleInRadians);
   const y = radius * Math.sin(angleInRadians);
 
-  return {x, y};
+  return { x, y };
 }
 
 /**
@@ -14,9 +14,14 @@ function computeCartesianCoordinates(radius: number, angleInDegrees: number) {
  * @param gap - The gap between positions in degrees
  * @returns An object containing x and y coordinates
  */
-export function getNavCoordinates(pos: number, gap: number, radius: number) {
+export function getNavCoordinates(
+  pos: number,
+  gap: number,
+  radius: number,
+  isMoble = false,
+) {
   const angleInDegrees = pos * gap;
-  const {x, y} = computeCartesianCoordinates(radius, angleInDegrees);
+  const { x, y } = computeCartesianCoordinates(radius, angleInDegrees);
 
-  return {x, y: y + 50};
+  return { x: x - (isMoble ? 0 : radius), y: y + 50 };
 }
