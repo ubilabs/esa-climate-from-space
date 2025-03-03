@@ -103,13 +103,13 @@ const DataViewer: FunctionComponent<Props> = ({
       return;
     }
 
-        dispatch(
-          setFlyTo({
-            lat: previewedContent.position[1],
-            lng: previewedContent.position[0],
-            isAnimated: true,
-          }),
-        );
+    dispatch(
+      setFlyTo({
+        lat: previewedContent.position[1],
+        lng: previewedContent.position[0],
+        isAnimated: true,
+      }),
+    );
   }, [selectedContentId, stories, dispatch]);
 
   useEffect(() => {
@@ -151,7 +151,10 @@ const DataViewer: FunctionComponent<Props> = ({
       <header className={styles.heading}>
         {showContentList ? (
           <Button
-            label={`tags.${currentCategory}`}
+            label={!isMobile ? "back_to_overview" : `tags.${currentCategory}`}
+            style={{
+              textTransform: "uppercase",
+            }}
             link={"/"}
             className={styles.backButton}
           ></Button>
@@ -212,7 +215,7 @@ const DataViewer: FunctionComponent<Props> = ({
           })}
         ></span>
       )}
-
+      {showContentList && !isMobile && <span className={styles.currentCategory}>{currentCategory}</span>}
       <div
         id="globeWrapper"
         className={cx(
@@ -226,7 +229,10 @@ const DataViewer: FunctionComponent<Props> = ({
             ...(contentMarker && {
               markers: [contentMarker],
             }),
-            className: cx(!showContentList && styles.globe, showContentList && !isMobile && styles.globeContent),
+            className: cx(
+              !showContentList && styles.globe,
+              showContentList && !isMobile && styles.globeContent,
+            ),
             backgroundColor,
             isAutoRoating: !showContentList,
           }}

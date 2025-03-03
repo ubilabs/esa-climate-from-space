@@ -80,10 +80,9 @@
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-        color: var(--secondary-color);
       }
 
-      >span:last-child {
+      >span.learnMore {
         display: none;
         transition: all 0.3s ease-out;
         transition-behavior: allow-discrete;
@@ -103,9 +102,9 @@
       background: var(--secondary-color);
     }
 
-    &[data-relative-position="0"]>a>span:last-child {
+    &[data-relative-position="0"]>a>span.learnMore {
 
-      /*This does not have full browser support yet, but can be considered nice-to-have*/
+      /*This does not have full browser support yet (see https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style), but can be considered nice-to-have*/
       @starting-style {
         transform: translateX(-100%);
       }
@@ -133,18 +132,28 @@
       margin-right: 1.5rem;
 
       &:after {
+        background-color: #3f6c7d !important;
         content: "";
-        height: 1rem;
-        width: 1rem;
+        height: 20px;
+        width: 20px;
         position: absolute;
         top: 50%;
         right: 0;
         transform: translate(-50%, -50%);
-        background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="arrow_forward_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24"><path id="Vector" d="M13.4791 10.833H3.33331V9.16634H13.4791L8.81248 4.49967L9.99998 3.33301L16.6666 9.99967L9.99998 16.6663L8.81248 15.4997L13.4791 10.833Z" fill="#3F6C7D"/></g></svg>');
+        mask: var(--arrow-right);
         background-repeat: no-repeat;
         background-position-y: center;
         background-position-x: right;
       }
+
+      &:hover {
+        transition: none;
+        border-color: white;
+        color: white !important;
+        &:after {
+          background-color: white !important;
+        }
+     }
     }
 
     span {

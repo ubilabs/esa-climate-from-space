@@ -1,10 +1,13 @@
-import React, { FunctionComponent, useEffect, useState  } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 
 import { StoryList } from "../../../types/story-list";
 import { Link } from "react-router-dom";
-import { useContentScrollHandlers, useContentTouchHandlers } from "./use-content-event-handlers";
+import {
+  useContentScrollHandlers,
+  useContentTouchHandlers,
+} from "./use-content-event-handlers";
 
 import cx from "classnames";
 
@@ -34,7 +37,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const { touchStartY, handleTouchEnd, handleTouchMove } =
     useContentTouchHandlers(indexDelta, setIndexDelta);
 
-const {handleWheel} = useContentScrollHandlers(indexDelta, setIndexDelta);
+  const { handleWheel } = useContentScrollHandlers(indexDelta, setIndexDelta);
 
   // The spread between the elements in the circle
   const GAP_BETWEEN_ELEMENTS = 16;
@@ -89,7 +92,7 @@ const {handleWheel} = useContentScrollHandlers(indexDelta, setIndexDelta);
         adjustedPosition,
         GAP_BETWEEN_ELEMENTS,
         RADIUS,
-        isMobile
+        isMobile,
       );
 
       // 12 degrees of rotation per item
@@ -107,8 +110,13 @@ const {handleWheel} = useContentScrollHandlers(indexDelta, setIndexDelta);
 
       item.setAttribute("data-relative-position", adjustedPosition.toString());
     }
-  }, [touchStartY, indexDelta, showContentList, setSelectedContentId, isMobile]);
-
+  }, [
+    touchStartY,
+    indexDelta,
+    showContentList,
+    setSelectedContentId,
+    isMobile,
+  ]);
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
@@ -148,9 +156,11 @@ const {handleWheel} = useContentScrollHandlers(indexDelta, setIndexDelta);
           >
             <Link to={`${category}/stories/${id}/0/`}>
               <span>{title}</span>
-              <span>
-                <FormattedMessage id="learn_more"/>
-              </span>
+              {!isMobile && (
+                <span className={styles.learnMore}>
+                  <FormattedMessage id="learn_more" />
+                </span>
+              )}
             </Link>
           </li>
         );
