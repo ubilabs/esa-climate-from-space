@@ -31,9 +31,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
   className,
   isMobile,
 }) => {
-  // The indexDelta is the number of items the user has scrolled
-  // const [indexDelta, setIndexDelta] = useState(0);
-  //
   const navigationRef = React.useRef<HTMLUListElement | null>(null);
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,6 +46,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const { handleWheel } = useContentScrollHandlers(
     currentIndex,
     setCurrentIndex,
+  maxIndex
   );
 
   // The spread between the elements in the circle

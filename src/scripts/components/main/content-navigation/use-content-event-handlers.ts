@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { throttle } from "lodash";
 
-
 export const useContentTouchHandlers = (
   currentIndex: number,
   setCurrentIndex: (index: number) => void,
@@ -26,7 +25,7 @@ export const useContentTouchHandlers = (
 
     // For content navigation, max should be number of items minus 1
     const maxIndex = Math.floor(numOfItems / 2);
-    const minIdex = Math.floor(( numOfItems -1 )/ 2) * -1;
+    const minIdex = Math.floor((numOfItems - 1) / 2) * -1;
 
     const itemHeight = 32; // Height of each item in pixels
     const sensitivity = 0.5; // Adjust this to control movement sensitivity
@@ -64,72 +63,36 @@ export const useContentTouchHandlers = (
 export const useContentScrollHandlers = (
   currentIndex: number,
   setCurrentIndex: (index: number) => void,
+  numOfItems: number // Total number of items
 ) => {
-  const wheelTimeoutRef = useRef<number | null>(null);
-  const lastWheelTimeRef = useRef<number>(0);
-  // Use a ref to keep track of the current index to prevent resets
-  const currentIndexRef = useRef<number>(currentIndex);
+  const isScrollingRef = useRef(false);
 
-  // Update the ref whenever the provided currentIndex changes
-  useEffect(() => {
-    currentIndexRef.current = currentIndex;
-  }, [currentIndex]);
+  // Dynamically calculate min and max index
+  const maxIndex = Math.floor(numOfItems / 2);
+  const minIndex = Math.floor((numOfItems - 1) / 2) * -1;
 
-  const throttledHandleWheel = useCallback(
-    throttle((e: React.WheelEvent) => {
-      // prevent default browser scrolling behavior
-      e.preventDefault();
+  const handleWheel = useCallback(
+    (e: React.WheelEvent) => {
 
-      // if we already have a pending scroll action, ignore this one
-      if (wheelTimeoutRef.current) {
-        clearTimeout(wheelTimeoutRef.current);
+      if (isScrollingRef.current ) return; // Prevents excessive triggering
+      isScrollingRef.current = true;
 
-        return;
-      }
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 200); // Adjust delay for smooth responsiveness
 
-      const now = Date.now();
-      const timesincelastwheel = now - lastWheelTimeRef.current;
+      const direction = e.deltaY > 0 ? 1 : -1; // Scroll down → next, Scroll up → previous
 
-      // throttle wheel events
-      if (timesincelastwheel < 300) {
-        // 300ms throttle time
-        //        return;
-      }
-
-      lastWheelTimeRef.current = now;
-
-      // determine scroll direction
-      const direction = e.deltaY > 0 ? -1 : 1;
-
-      // Use the latest index from ref and apply the direction
-      const newIndex = currentIndexRef.current + direction;
-
-      // Update both the state and our ref
-      setCurrentIndex(newIndex);
-      currentIndexRef.current = newIndex;
-
-      // set a timeout to reset the delta and allow another scroll
-    }, 500),
-    [],
+      setCurrentIndex((prevIndex) => {
+        const newIndex = prevIndex + direction;
+        return Math.max(minIndex, Math.min(newIndex, maxIndex)); // Keep within bounds
+      });
+    },
+    [setCurrentIndex, minIndex, maxIndex]
   );
 
-  useEffect(() => {
-    wheelTimeoutRef.current = window.setTimeout(() => {
-
-      wheelTimeoutRef.current = null;
-    }, 300); // Longer delay to ensure complete animation before accepting another scroll
-  }, [currentIndex]);
-
-  // Clean up timeout when component unmounts
-  useEffect(() => {
-    return () => {
-      if (wheelTimeoutRef.current) {
-        window.clearTimeout(wheelTimeoutRef.current);
-      }
-    };
-  }, []);
-
   return {
-    handleWheel: throttledHandleWheel,
+    handleWheel,
   };
 };
+
