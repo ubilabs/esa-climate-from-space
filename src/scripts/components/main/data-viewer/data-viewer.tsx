@@ -220,20 +220,6 @@ const DataViewer: FunctionComponent<Props> = ({
           showContentList && styles.showContentList,
         )}
       >
-        <GetDataWidget
-          hideNavigation={Boolean(hideNavigation)}
-          globeProps={{
-            ...(contentMarker && {
-              markers: [contentMarker],
-            }),
-            className: cx(
-              !showContentList && styles.globe,
-              showContentList && !isMobile && styles.globeContent,
-            ),
-            backgroundColor,
-            isAutoRoating: !showContentList,
-          }}
-        />
       </div>
     </div>
   );

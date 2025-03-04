@@ -32,12 +32,24 @@ const ContentNavigation: FunctionComponent<Props> = ({
   isMobile,
 }) => {
   // The indexDelta is the number of items the user has scrolled
-  const [indexDelta, setIndexDelta] = useState(0);
+  // const [indexDelta, setIndexDelta] = useState(0);
+  //
+  const navigationRef = React.useRef<HTMLUListElement | null>(null);
 
-  const { touchStartY, handleTouchEnd, handleTouchMove } =
-    useContentTouchHandlers(indexDelta, setIndexDelta);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const maxIndex = contents.length;
 
-  const { handleWheel } = useContentScrollHandlers(indexDelta, setIndexDelta);
+  const { handleTouchEnd, handleTouchMove } = useContentTouchHandlers(
+    currentIndex,
+    setCurrentIndex,
+    maxIndex,
+  );
+
+
+  const { handleWheel } = useContentScrollHandlers(
+    currentIndex,
+    setCurrentIndex,
+  );
 
   // The spread between the elements in the circle
   const GAP_BETWEEN_ELEMENTS = 16;
@@ -49,44 +61,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const RADIUS = 40;
 
   useEffect(() => {
-    const listItems = document.querySelectorAll(
-      "ul li",
-    ) as NodeListOf<HTMLElement>;
-    // if at last of first item, we prevent any further scrolling
+    const listItems = navigationRef.current?.querySelectorAll("li");
 
-    // Check if the first item has a relativePosition of 0 or the last item has a relativePosition of listItemsLength
-    const firstItemRelativePosition = Number(
-      listItems[0]?.getAttribute("data-relative-position"),
-    );
-    const lastItemRelativePosition = Number(
-      listItems[listItems.length - 1]?.getAttribute("data-relative-position"),
-    );
-
-    // This prevents any scrolling beyond the last and first list item
-    if (
-      (firstItemRelativePosition === 0 && indexDelta > 0) ||
-      (lastItemRelativePosition === 0 && indexDelta < 0)
-    ) {
+    if (!listItems) {
       return;
     }
 
-    for (const item of listItems) {
-      const relativePosition = Number(
-        item.getAttribute("data-relative-position"),
-      );
-
-      if (relativePosition === 0) {
-        const id = item.getAttribute("data-content-id");
-        if (!id) {
-          console.warn(
-            "Selected content does not have an id. This should not be the case",
-          );
-        } else if (!touchStartY) {
-          setSelectedContentId(id);
-        }
-      }
-
-      const adjustedPosition = relativePosition + indexDelta;
+    for (const [index, item] of Array.from(listItems).entries()) {
+      const middleIndex = Math.floor(contents.length / 2);
+      const adjustedPosition = index - (middleIndex - currentIndex);
 
       const { x, y } = getNavCoordinates(
         adjustedPosition,
@@ -107,22 +90,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
       item.style.left = `${x}%`;
       item.style.opacity = `${opacity}`;
       item.style.rotate = `${rotation}deg`;
-
-      item.setAttribute("data-relative-position", adjustedPosition.toString());
     }
-  }, [
-    touchStartY,
-    indexDelta,
-    showContentList,
-    setSelectedContentId,
-    isMobile,
-  ]);
+  }, [currentIndex, showContentList, setSelectedContentId, isMobile]);
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
 
   return (
     <ul
+      ref={navigationRef}
       className={cx(
         styles.contentNav,
         showContentList && styles.show,
@@ -141,8 +117,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
           <li
             // Used n CSS to get the correct icon for the content type
             data-content-type={type}
-            // Used in the useEffect to calculate the new position
-            data-relative-position={relativePosition}
             // Used to identify the currently seletected content.
             // Passed to the globe via props to make sure correct actions are triggered
             // E.g. flyTo or show the data layer
