@@ -152,9 +152,6 @@ const DataViewer: FunctionComponent<Props> = ({
         {showContentList ? (
           <Button
             label={!isMobile ? "back_to_overview" : `tags.${currentCategory}`}
-            style={{
-              textTransform: "uppercase",
-            }}
             link={"/"}
             className={styles.backButton}
           ></Button>

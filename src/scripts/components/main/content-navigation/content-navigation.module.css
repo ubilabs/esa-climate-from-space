@@ -134,8 +134,8 @@
       &:after {
         background-color: #3f6c7d !important;
         content: "";
-        height: 20px;
-        width: 20px;
+        height: 24px;
+        width: 24px;
         position: absolute;
         top: 50%;
         right: 0;
