@@ -3,12 +3,9 @@
 }
 
 .globe {
-  position: relative;
-  height: 100%;
   width: 100%;
-
   @media screen and (--desktop-viewport) {
-    height: 90vh;
+    position: relative;
   }
 }
 

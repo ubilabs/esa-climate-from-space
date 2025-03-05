@@ -32,15 +32,15 @@ import { LayerType } from "../../../types/globe-layer-type";
 import { useHistory } from "react-router-dom";
 import config from "../../../config/main";
 
-import styles from "./globe.module.css";
 import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
-import { useSelector } from "react-redux";
-import { globeViewSelector } from "../../../selectors/globe/view";
 import { FlyToPayload } from "../../../reducers/fly-to";
 import { renderToStaticMarkup } from "react-dom/server";
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
+
+import styles from "./globe.module.css";
+import { useGlobeDimensions } from "../../../hooks/use-navigation-dimensions";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -88,7 +88,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     className,
   } = props;
 
-  const [containerRef, globe] = useWebGlGlobe(view);
+  const [containerRef, globe, containerEl] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
   // const rotationRef = useRef<number>(180);
   const rotationRef = useRef<{
@@ -162,6 +162,8 @@ const Globe: FunctionComponent<Props> = memo((props) => {
 
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
+  useGlobeDimensions(containerEl);
+
   useProjectionSwitch(globe, projectionState.projection);
   useMultiGlobeSynchronization(globe, props, animatedFlyTo);
 
@@ -240,7 +242,7 @@ function useWebGlGlobe(view: CameraView) {
     [containerEl],
   );
 
-  return [containerRef, globe] as const;
+  return [containerRef, globe, containerEl] as const;
 }
 
 /**
@@ -275,7 +277,6 @@ function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
     if (!globe || !markers) {
       return EMPTY_FUNCTION;
     }
-
     globe.setProps({
       markers: getMarkerProps(markers, (marker: Marker) => {
         if (!marker.link) {

@@ -1,15 +1,18 @@
 .category-navigation {
   grid-area: globe-nav-area;
+  z-index: 2;
   display: flex;
   justify-content: start;
   place-self: end center;
-  /* This hides the navigation on initial load*/
-  clip-path: inset(0 100% 0 0);
-  /* Show only the bottom half on mobile */
-  height: 50%;
+  clip-path: inset(50% 100% 0 0);
+
   z-index: 1;
   overscroll-behavior: contain;
   overflow: hidden;
+
+  @media screen and (--desktop-viewport) {
+    clip-path: inset(0 100% 0 0); /* On desktop, don't clip the top */
+  }
 
   &.reveal-from-right {
     animation: revealFromRight 0.5s linear forwards;
@@ -34,7 +37,7 @@
   }
 
   .circle-container {
-    translate: 0 -50%;
+    /*translate: 0 -50%;*/
     transition: all 0.5s ease-out;
 
     @media screen and (--desktop-viewport) {
@@ -42,14 +45,27 @@
     }
   }
 }
-
+/*. Clip the top 50% of the div on initial load (and keep it clipped)*/
 @keyframes revealFromRight {
   from {
-    clip-path: inset(0 0 0 100%);
+    clip-path: inset(50% 0 0 100%);
   }
 
   to {
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(50% 0 0 0);
+  }
+}
+
+/* Desktop version of the animation */
+@media screen and (--desktop-viewport) {
+  @keyframes revealFromRight {
+    from {
+      clip-path: inset(0 0 0 100%);
+    }
+
+    to {
+      clip-path: inset(0 0 0 0);
+    }
   }
 }
 
@@ -65,17 +81,47 @@
 
 @keyframes concealToRight {
   from {
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(50% 0 0 0);
   }
 
   to {
-    clip-path: inset(0 0 0 100%);
+    clip-path: inset(50% 0 0 100%);
+  }
+}
+
+/* Desktop version of the conceal animation */
+@media screen and (--desktop-viewport) {
+  @keyframes concealToRight {
+    from {
+      clip-path: inset(0 0 0 0);
+    }
+
+    to {
+      clip-path: inset(0 0 0 100%);
+    }
   }
 }
 
 @keyframes revealFromLeft {
+  from {
+    clip-path: inset(50% 100% 0 0);
+  }
+
   to {
-    clip-path: inset(0 0 0 0);
+    clip-path: inset(50% 0 0 0);
+  }
+}
+
+/* Desktop version of reveal from left animation */
+@media screen and (--desktop-viewport) {
+  @keyframes revealFromLeft {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+      clip-path: inset(0 0 0 0);
+    }
   }
 }
 

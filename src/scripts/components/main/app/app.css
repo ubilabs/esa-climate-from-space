@@ -19,11 +19,12 @@ body,
 }
 
 #app {
+  --header-height: 3.5rem;
   display: grid;
   grid-template-areas:
     "header"
     "content";
-  grid-template-rows: 3.5rem 1fr;
+  grid-template-rows: var(--header-height) 1fr;
   grid-template-columns: 1fr;
   background: rgba(0, 51, 73, 0.4);
 }
