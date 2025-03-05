@@ -42,12 +42,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
     maxIndex,
   );
 
-
-  const { handleWheel } = useContentScrollHandlers(
-    currentIndex,
-    setCurrentIndex,
-  maxIndex
-  );
+  const { handleWheel } = useContentScrollHandlers(setCurrentIndex, maxIndex);
 
   // The spread between the elements in the circle
   const GAP_BETWEEN_ELEMENTS = 16;
@@ -90,6 +85,23 @@ const ContentNavigation: FunctionComponent<Props> = ({
       item.style.rotate = `${rotation}deg`;
     }
   }, [currentIndex, showContentList, setSelectedContentId, isMobile]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      // Calculate the actual array index based on currentIndex
+      // where currentIndex 0 is the middle item
+      const middleIndex = Math.floor(contents.length / 2);
+      const actualArrayIndex = middleIndex - currentIndex;
+
+      if (contents[actualArrayIndex]) {
+        setSelectedContentId(contents[actualArrayIndex].id);
+      }
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [currentIndex, contents]);
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);

@@ -1,9 +1,15 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { throttle } from "lodash";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 export const useContentTouchHandlers = (
   currentIndex: number,
-  setCurrentIndex: (index: number) => void,
+  setCurrentIndex: Dispatch<SetStateAction<number>>,
   numOfItems: number, // Ensures we stay within bounds
 ) => {
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
@@ -32,7 +38,7 @@ export const useContentTouchHandlers = (
     const threshold = itemHeight * sensitivity; // Minimum movement required
     if (Math.abs(touchDelta) > threshold) {
       // Determine direction based on touch movement
-      const direction = touchDelta > 0 ? -1 : 1;
+      const direction = touchDelta > 0 ? 1 : -1;
 
       // Use the ref value to ensure we're always working with the latest index value
       let newIndex = currentIndexRef.current + direction;
@@ -59,11 +65,9 @@ export const useContentTouchHandlers = (
   };
 };
 
-
 export const useContentScrollHandlers = (
-  currentIndex: number,
-  setCurrentIndex: (index: number) => void,
-  numOfItems: number // Total number of items
+  setCurrentIndex: Dispatch<SetStateAction<number>>,
+  numOfItems: number, // Total number of items
 ) => {
   const isScrollingRef = useRef(false);
 
@@ -73,26 +77,25 @@ export const useContentScrollHandlers = (
 
   const handleWheel = useCallback(
     (e: React.WheelEvent) => {
-
-      if (isScrollingRef.current ) return; // Prevents excessive triggering
+      if (isScrollingRef.current) return; // Prevents excessive triggering
       isScrollingRef.current = true;
 
       setTimeout(() => {
         isScrollingRef.current = false;
       }, 200); // Adjust delay for smooth responsiveness
 
-      const direction = e.deltaY > 0 ? 1 : -1; // Scroll down → next, Scroll up → previous
+      const direction = e.deltaY > 0 ? -1 : 1; // Scroll down → next, Scroll up → previous
 
       setCurrentIndex((prevIndex) => {
+        console.log(prevIndex, "prevIndex");
         const newIndex = prevIndex + direction;
         return Math.max(minIndex, Math.min(newIndex, maxIndex)); // Keep within bounds
       });
     },
-    [setCurrentIndex, minIndex, maxIndex]
+    [setCurrentIndex, minIndex, maxIndex],
   );
 
   return {
     handleWheel,
   };
 };
-
