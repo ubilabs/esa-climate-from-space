@@ -197,18 +197,6 @@
 
   >span {
     margin: 0 auto;
-  }
-
-  @media screen and (--desktop-viewport) {
-    text-transform: uppercase;
-    width: fit-content;
-    margin-left: 1.5rem;
-    padding-left: 0.5rem;
-
-    >span {
-      margin-left: 2rem;
-      position: relative;
-    }
 
     &:after {
       content: "";
@@ -222,9 +210,26 @@
       height: 24px;
       mask: var(--arrow-left);
     }
+  }
+
+  @media screen and (--desktop-viewport) {
+    text-transform: uppercase;
+    width: fit-content;
+    margin-left: 1.5rem;
+    padding-left: 0.5rem;
+
+    >span {
+      margin-left: 2rem;
+      position: relative;
+
+      &:after {
+        left: -2rem;
+      }
     &:hover:after {
       background-color: var(--main);
     }
+    }
+
   }
 }
 

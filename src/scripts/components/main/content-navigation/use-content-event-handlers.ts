@@ -87,7 +87,6 @@ export const useContentScrollHandlers = (
       const direction = e.deltaY > 0 ? -1 : 1; // Scroll down → next, Scroll up → previous
 
       setCurrentIndex((prevIndex) => {
-        console.log(prevIndex, "prevIndex");
         const newIndex = prevIndex + direction;
         return Math.max(minIndex, Math.min(newIndex, maxIndex)); // Keep within bounds
       });
