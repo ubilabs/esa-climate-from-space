@@ -141,7 +141,12 @@ const ContentNavigation: FunctionComponent<Props> = ({
             <Link to={`${category}/stories/${id}/0/`}>
               <span>{title}</span>
               {!isMobile && (
-                <span className={styles.learnMore}>
+                <span
+                  className={cx(
+                    styles.learnMore,
+                    relativePosition === 0 && styles.active,
+                  )}
+                >
                   <FormattedMessage id="learn_more" />
                 </span>
               )}

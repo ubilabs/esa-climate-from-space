@@ -102,7 +102,7 @@
       background: var(--secondary-color);
     }
 
-    &[data-relative-position="0"]>a>span.learnMore {
+    &.active>a>span.learnMore {
 
       /*This does not have full browser support yet (see https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style), but can be considered nice-to-have*/
       @starting-style {
@@ -164,7 +164,7 @@
       color: var(--primary-color);
     }
 
-    &[data-relative-position="0"]:before {
+    &.active:before {
       background: var(--primary-color);
     }
 
