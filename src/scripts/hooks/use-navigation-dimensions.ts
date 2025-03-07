@@ -1,6 +1,9 @@
-import { useLayoutEffect, useState, useEffect } from "react";
+import { useLayoutEffect, useState, useEffect, useRef } from "react";
 
 export const useGlobeDimensions = (globeRef: HTMLElement) => {
+  const widthRef = useRef<number>(0);
+  const heightRef = useRef<number>(0);
+  const isSetRef = useRef<boolean>(false);
 
   useLayoutEffect(() => {
     if (!globeRef) {
@@ -9,19 +12,37 @@ export const useGlobeDimensions = (globeRef: HTMLElement) => {
 
     // Get the current width of the container
     const updateHeight = () => {
-      const width = globeRef.offsetWidth;
-      const height = globeRef.offsetHeight;
-      console.log("height", height)
+      const rect = globeRef.getBoundingClientRect();
+      const { height, width } = rect;
 
-      const ratio = width/ height;
+      widthRef.current = width;
+      heightRef.current = height;
 
-      globeRef.style.height = `${height + 50 }px`
+//       const ratio = widthRef.current / heightRef.current;
+  //     console.log(ratio);
 
-      //if (ratio > 0.6) {
-      //  globeRef.style.marginTop = `-${height / 10}px`;
+      // globeRef.style.height = `${Math.min(widthRef.current, heightRef.current)}px`;
+
+
+      isSetRef.current = true;
+
+      //if (ratio < 1) {
+      //  // For narrow viewports
+      //  const baseGrowthFactor = 1.3;
+      //  const variableFactor = Math.min(0.6, widthRef.current / 2500) *
+      //                        Math.log10(widthRef.current / 250 + 1);
+      //  const growthFactor = baseGrowthFactor * (1 + variableFactor);
+      //  const growth = widthRef.current * growthFactor;
+      //
+      //  globeRef.style.height = `${growth}px`;
       //} else {
-      //  globeRef.style.height = `${height * 0.75}px`;
-      //  globeRef.style.marginTop = `-${height / 14}px`;
+      //  // For wide viewports
+      //  const baseGrowthFactor = 1.0;
+      //  const variableFactor = Math.min(0.2, widthRef.current / 3500) *
+      //                        Math.log10(widthRef.current / 250 + 1);
+      //  const growthFactor = baseGrowthFactor * (1 + variableFactor);
+      //  const growth = Math.min(widthRef.current * growthFactor, height);
+      //  globeRef.style.height = `${growth}px`;
       //}
     };
 
@@ -29,16 +50,7 @@ export const useGlobeDimensions = (globeRef: HTMLElement) => {
     updateHeight();
 
     // Update height on resize
-    const resizeObserver = new ResizeObserver(updateHeight);
-    resizeObserver.observe(globeRef);
-
-    // Cleanup
-    return () => {
-      if (globeRef) {
-        resizeObserver.unobserve(globeRef);
-      }
-      resizeObserver.disconnect();
-    };
   }, [globeRef]);
 
+  return { width: widthRef.current, height: heightRef.current };
 };

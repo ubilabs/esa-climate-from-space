@@ -3,10 +3,36 @@
   display: grid;
   place-items: center;
   grid-area: content;
-  grid-template-areas:
-    "heading"
-    "globe-nav-area"
-    "explore";
+
+  .globeWrapper {
+    grid-area: globe-nav-area;
+    transition: all 0.5s ease;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    display: grid;
+    position: relative;
+
+    container-name: wrapper;
+    container-type: size;
+  }
+
+  @container wrapper (aspect-ratio <=1 / 1) {
+    .globe {
+      height: calc(120cqw + 10cqh);
+    }
+  }
+
+  &[data-content-view="true"] {
+    .globeWrapper {
+      transform: translateX(-62vw);
+    }
+  }
+
+  grid-template-areas: "heading"
+  "globe-nav-area"
+  "explore";
   height: calc(100vh - var(--header-height));
   height: calc(100dvh - var(--header-height));
   grid-template-rows: 3.5rem calc(100vh - var(--header-height) - 10rem) 6.5rem;
@@ -15,12 +41,25 @@
 
   @media screen and (--desktop-viewport) {
     grid-template-areas:
-      "globe-nav-area heading scroll-indicator"
-      "globe-nav-area title scroll-indicator"
-      "globe-nav-area explore scroll-indicator";
+      "globe-nav-area heading "
+      "globe-nav-area title "
+      "globe-nav-area explore ";
     grid-template-rows: 1fr auto 1fr;
-    grid-template-columns: 2fr minmax(20vw, 1fr) 154px;
+    grid-template-columns: 50vw 50vw;
+    grid-template-columns: 50dvw 50dvw;
     grid-gap: 1.5rem;
+
+    .globeWrapper {
+      transform: translateY(0) !important;
+      scale: 1;
+    }
+
+    @container wrapper (aspect-ratio <=1 / 1) {
+      .globe {
+        scale: 1;
+        height: calc(110cqw);
+      }
+    }
 
     &[data-content-view="true"] {
       grid-template-areas: "globe content-nav";
@@ -28,9 +67,29 @@
       grid-template-rows: 1fr;
       grid-gap: 0;
 
+    @container wrapper (aspect-ratio <=1 / 1) {
+      .globe {
+        transform: translate(-140cqw, -50%) !important;
+        transition: all 0.5s ease;
+        scale: 1;
+        height: calc(110cqw);
+      }
+      }
       .globeWrapper {
         z-index: 0;
         grid-area: globe;
+
+        >.globe {
+          transform: translate(-60vw, -50%);
+          height: 160vh;
+          width: 100vw;
+
+          /*  >canvas {*/
+          /*    height: 100%;*/
+          /**/
+          /**/
+          /*}*/
+        }
       }
 
       .currentCategory {
@@ -65,46 +124,6 @@
   --arrow-left: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7.825 13L13.425 18.6L12 20L4 12L12 4L13.425 5.4L7.825 11H20V13H7.825Z" fill="white"/></svg>');
 
   --arrow-right: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M16.175 13H4V11H16.175L10.575 5.4L12 4L20 12L12 20L10.575 18.6L16.175 13Z" fill="white"/></svg>');
-}
-
-/*.globeContent {*/
-/*  transform: scale(1.3);*/
-/*  transform-origin: right center;*/
-/*  position: absolute !important;*/
-/*  width: 100vw;*/
-/*  transition: all 0.5s ease;*/
-/**/
-/*  >canvas {*/
-/*    overflow: vsible;*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*  }*/
-/*}*/
-
-/* As per request of the desgin team, the globe should visibly bigger than its intended size
-* even when that might cut off the globe on some screens.
-* */
-/*.globe {*/
-/*  >canvas {*/
-/*    transform: scale(1.1);*/
-/*    transform-origin: center;*/
-/*  }*/
-/*}*/
-
-.globeWrapper {
-  grid-area: globe-nav-area;
-  transition: all 0.5s ease;
-  z-index: 0;
-  height: 100%;
-  width: 100%;
-  pointer-events: none;
-  display: grid;
-
-  /*&.showContentList {*/
-  /*  transform: translateX(-55%);*/
-  /*  transition-delay: 0.5s;*/
-  /**/
-  /*}*/
 }
 
 .swipeIndicator {
@@ -242,6 +261,7 @@
   background-repeat: no-repeat;
   transform: translateY(100px);
   animation: slideUp 0.5s ease-out forwards;
+  animation-delay: 3s;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;

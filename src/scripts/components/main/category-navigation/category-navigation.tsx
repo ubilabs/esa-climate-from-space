@@ -63,7 +63,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   //const _size = isMobile ? width + _overSize : (width - 154) / 3 *2;
   const _size = isMobile
     ? width + _overSize
-    : Math.min(((width - 200) / 3) * 2, height - 100);
+    : width / 2 - 65 // 50% of the screen width minues some padding
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
 

@@ -86,6 +86,7 @@ const DataViewer: FunctionComponent<Props> = ({
   const hasAnimationPlayed = useRef(
     !isMobile || localStorage.getItem(HAS_USER_INTERACTED) === "true",
   );
+  console.log(hasAnimationPlayed.current);
   const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -203,16 +204,19 @@ const DataViewer: FunctionComponent<Props> = ({
           ></Button>
         </>
       ) : null}
-      {!showContentList && (
-        <span
-          aria-hidden="true"
-          className={cx(styles.swipeIndicator, !isMobile && styles.scroll)}
-          data-content={intl.formatMessage({
-            id: `category.${isMobile ? "swipe" : "scroll"}`,
-          })}
-        ></span>
+      {((!showContentList && !hasAnimationPlayed.current) ||
+        (!showContentList && !isMobile )) && (
+          <span
+            aria-hidden="true"
+            className={cx(styles.swipeIndicator, !isMobile && styles.scroll)}
+            data-content={intl.formatMessage({
+              id: `category.${isMobile ? "swipe" : "scroll"}`,
+            })}
+          ></span>
+        )}
+      {showContentList && !isMobile && (
+        <span className={styles.currentCategory}>{currentCategory}</span>
       )}
-      {showContentList && !isMobile && <span className={styles.currentCategory}>{currentCategory}</span>}
       <div
         id="globeWrapper"
         className={cx(
@@ -226,10 +230,7 @@ const DataViewer: FunctionComponent<Props> = ({
             ...(contentMarker && {
               markers: [contentMarker],
             }),
-            className: cx(
-              !showContentList && styles.globe,
-              showContentList && !isMobile && styles.globeContent,
-            ),
+            className: cx(styles.globe),
             backgroundColor,
             isAutoRoating: !showContentList,
           }}
