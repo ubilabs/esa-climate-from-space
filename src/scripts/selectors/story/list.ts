@@ -1,4 +1,3 @@
-import { State } from "../../reducers/index";
 import { storiesApi } from "../../services/api";
 import { createSelector } from "@reduxjs/toolkit";
 import { Language } from "../../types/language";

@@ -5,9 +5,11 @@ interface FlyToState {
   view: CameraView | null;
   isAnimated?: boolean;
 }
+
 export interface FlyToPayload extends CameraView {
   isAnimated?: boolean;
 }
+
 const initialState: FlyToState = {
   view: null,
   isAnimated: false,
