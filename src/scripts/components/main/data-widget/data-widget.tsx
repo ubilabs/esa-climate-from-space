@@ -183,6 +183,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     markers: markers,
     isAutoRotating: false,
     backgroundColor: "",
+    className: "",
     ...globeProps,
   }
 
