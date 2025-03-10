@@ -36,12 +36,7 @@ const matomoInstance = createInstance({
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
-  const {
-    logo: embedLogo,
-    globe_navigation,
-    time_slider,
-    legend,
-  } = useSelector(embedElementsSelector);
+  const { time_slider, legend } = useSelector(embedElementsSelector);
 
   const logo = (
     <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">

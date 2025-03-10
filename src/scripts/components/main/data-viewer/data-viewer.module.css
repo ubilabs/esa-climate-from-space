@@ -69,30 +69,24 @@
 
       @container wrapper (width > 100px) {
         .globe {
-          transform: translate(calc((300cqw) * -1), -50%) !important;
+          transform: translate(-210cqw, -50%) !important;
           transform-origin: start;
           transition: all 0.5s ease;
           scale: 1;
-          height: calc(400cqw);
-          width: 400cqw;
+          height: calc(300cqw);
+          width: 300cqw;
         }
       }
 
       .globeWrapper {
         z-index: 0;
         grid-area: globe;
-
-        >.globe {
-          /*transform: translate(-60vw, -50%);*/
-          /*height: 170vh;*/
-          /*width: 100vw;*/
-        }
       }
 
       .currentCategory {
         /*Make sure z-index is higher than the globe*/
         place-self: center start;
-        margin-left: 80px;
+        margin-left: clamp(36px, 2vw, 80px);
         z-index: 1;
         grid-area: globe;
         color: var(--Neutral-White, #fff);

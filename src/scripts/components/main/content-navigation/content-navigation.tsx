@@ -83,8 +83,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
       item.style.left = `${x}%`;
       item.style.opacity = `${opacity}`;
       item.style.rotate = `${rotation}deg`;
+      item.classList.toggle(styles.active, adjustedPosition === 0);
     }
-  }, [currentIndex, showContentList, setSelectedContentId, isMobile]);
+  }, [
+    currentIndex,
+    showContentList,
+    contents.length,
+    setSelectedContentId,
+    isMobile,
+  ]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -101,7 +108,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
     return () => {
       clearTimeout(timeout);
     };
-  }, [currentIndex, contents]);
+  }, [setSelectedContentId, currentIndex, contents]);
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
@@ -120,7 +127,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
       onWheel={handleWheel}
     >
       {contents.map(({ title, id }, index) => {
-        const relativePosition = index - Math.floor(contents.length / 2);
         // Todo: Add type property to StoryList. For now we just take blog
         const type = "blog";
         return (
@@ -131,22 +137,14 @@ const ContentNavigation: FunctionComponent<Props> = ({
             // Passed to the globe via props to make sure correct actions are triggered
             // E.g. flyTo or show the data layer
             data-content-id={id}
-            className={cx(
-              relativePosition === 0 && styles.active,
-              styles.contentNavItem,
-            )}
+            className={cx(styles.contentNavItem)}
             key={index}
             aria-label={`${type} content: ${title}`}
           >
             <Link to={`${category}/stories/${id}/0/`}>
               <span>{title}</span>
               {!isMobile && (
-                <span
-                  className={cx(
-                    styles.learnMore,
-                    relativePosition === 0 && styles.active,
-                  )}
-                >
+                <span className={cx(styles.learnMore)}>
                   <FormattedMessage id="learn_more" />
                 </span>
               )}

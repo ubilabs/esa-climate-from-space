@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState, useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 export const useGlobeDimensions = (globeRef: HTMLElement) => {
   const widthRef = useRef<number>(0);
@@ -18,34 +18,10 @@ export const useGlobeDimensions = (globeRef: HTMLElement) => {
       widthRef.current = width;
       heightRef.current = height;
 
-//       const ratio = widthRef.current / heightRef.current;
-  //     console.log(ratio);
-
-      // globeRef.style.height = `${Math.min(widthRef.current, heightRef.current)}px`;
-
 
       isSetRef.current = true;
 
-      //if (ratio < 1) {
-      //  // For narrow viewports
-      //  const baseGrowthFactor = 1.3;
-      //  const variableFactor = Math.min(0.6, widthRef.current / 2500) *
-      //                        Math.log10(widthRef.current / 250 + 1);
-      //  const growthFactor = baseGrowthFactor * (1 + variableFactor);
-      //  const growth = widthRef.current * growthFactor;
-      //
-      //  globeRef.style.height = `${growth}px`;
-      //} else {
-      //  // For wide viewports
-      //  const baseGrowthFactor = 1.0;
-      //  const variableFactor = Math.min(0.2, widthRef.current / 3500) *
-      //                        Math.log10(widthRef.current / 250 + 1);
-      //  const growthFactor = baseGrowthFactor * (1 + variableFactor);
-      //  const growth = Math.min(widthRef.current * growthFactor, height);
-      //  globeRef.style.height = `${growth}px`;
-      //}
     };
-
     // Set height initially
     updateHeight();
 

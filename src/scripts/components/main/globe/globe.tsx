@@ -40,7 +40,6 @@ import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
 
 import styles from "./globe.module.css";
-import { useGlobeDimensions } from "../../../hooks/use-navigation-dimensions";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -67,7 +66,7 @@ interface Props {
   onMoveStart: () => void;
   onMoveEnd: (view: CameraView) => void;
   onLayerLoadingStateChange: LayerLoadingStateChangeHandle;
-  isAutoRoating: boolean;
+  isAutoRotating: boolean;
   className: string;
 }
 
@@ -84,18 +83,18 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     layerDetails,
     imageLayer,
     markers,
-    isAutoRoating = false,
+     isAutoRotating = false,
     className,
   } = props;
 
-  const [containerRef, globe, containerEl] = useWebGlGlobe(view);
+  const [containerRef, globe ] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
   // const rotationRef = useRef<number>(180);
   const rotationRef = useRef<{
     lat: number;
     lng: number;
   }>({ lat: 10, lng: 180 });
-  const isAutoRotatingRef = useRef<boolean>(isAutoRoating);
+  const isAutoRotatingRef = useRef<boolean>(isAutoRotating);
 
   // We have these custom functions for autoRotating the globe and animating the flyTo
   // Ticket #1271 and #1270 reference these issues see https://github.com/orgs/ubilabs/projects/48
@@ -104,9 +103,9 @@ const Globe: FunctionComponent<Props> = memo((props) => {
       // This is the speed of the animation
       const SPEED = 2;
       // Adjust longitude by -90 degrees to show point on the right side
-      const targetLng = lng - 45;
+      const targetLng = lng - 55;
       const targetLat = lat;
-      const startLng = rotationRef.current.lng % 360;
+      const startLng = rotationRef.current.lng ;
       const startLat = rotationRef.current.lat;
       const deltaLng = targetLng - startLng;
       const deltaLat = targetLat - startLat;
@@ -154,15 +153,14 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   }, [globe]);
 
   useEffect(() => {
-    isAutoRotatingRef.current = isAutoRoating;
-    if (globe && isAutoRoating) {
+    isAutoRotatingRef.current = isAutoRotating;
+    if (globe && isAutoRotating) {
       autoRotate();
     }
-  }, [globe, autoRotate, isAutoRoating]);
+  }, [globe, autoRotate, isAutoRotating]);
 
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
-  useGlobeDimensions(containerEl);
 
   useProjectionSwitch(globe, projectionState.projection);
   useMultiGlobeSynchronization(globe, props, animatedFlyTo);
@@ -242,7 +240,7 @@ function useWebGlGlobe(view: CameraView) {
     [containerEl],
   );
 
-  return [containerRef, globe, containerEl] as const;
+  return [containerRef, globe] as const;
 }
 
 /**

@@ -181,6 +181,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     onMoveEnd: onMoveEndHandler,
     onLayerLoadingStateChange: onLayerLoadingStateChangeHandler,
     markers: markers,
+    isAutoRotating: false,
+    backgroundColor: "",
     ...globeProps,
   }
 

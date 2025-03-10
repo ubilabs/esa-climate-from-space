@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, RefObject, useEffect, useState } from "react";
 
 import styles from "./category-navigation.module.css";
 import cx from "classnames";
@@ -9,11 +9,9 @@ interface Props {
   showCategories: boolean;
   isMobile: boolean;
   width: number;
-  height: number;
   setCategory: React.Dispatch<React.SetStateAction<string | null>>;
-  isAnimationReady: React.MutableRefObject<boolean>;
+  isAnimationReady:RefObject<boolean>;
   arcs: { [key: string]: number }[];
-  onSelect: (category: string) => void;
   currentScrollIndex: number | null;
 }
 
@@ -30,13 +28,11 @@ export const HAS_USER_INTERACTED = "hasUserInteraced";
  **/
 const CategoryNavigation: FunctionComponent<Props> = ({
   width,
-  height,
   isMobile,
   setCategory,
   showCategories,
   arcs,
   isAnimationReady,
-  onSelect,
   currentScrollIndex
 }) => {
   const history = useHistory();

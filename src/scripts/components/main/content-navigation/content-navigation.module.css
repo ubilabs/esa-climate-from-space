@@ -74,8 +74,9 @@
       width: 100%;
       justify-content: space-between;
       align-items: center;
+      text-align: center;
 
-      >span {
+      >span:first-child {
         max-width: 50vw;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -83,12 +84,44 @@
       }
 
       >span.learnMore {
-        display: none;
         transition: all 0.3s ease-out;
-        transition-behavior: allow-discrete;
-        display: none;
+        transform-origin: right;
+        position: relative;
         opacity: 0;
-        scale: 0;
+        text-transform: uppercase;
+        color: #3f6c7d !important;
+        line-height: 1rem;
+        font-size: 1rem;
+        border-radius: 40px;
+        border: 2px solid var(--Supporting-Colours-Deep-Space-1, #3f6c7d);
+        padding: 12px;
+        padding-right: 2.5rem;
+        margin-right: 1.5rem;
+
+        &:after {
+          background-color: #3f6c7d !important;
+          content: "";
+          height: 24px;
+          width: 24px;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translate(-50%, -50%);
+          mask: var(--arrow-right);
+          background-repeat: no-repeat;
+          background-position-y: center;
+          background-position-x: right;
+        }
+
+        &:hover {
+          transition: none;
+          border-color: white;
+          color: white !important;
+
+          &:after {
+            background-color: white !important;
+          }
+        }
       }
     }
 
@@ -102,59 +135,14 @@
       background: var(--secondary-color);
     }
 
-    &.active>a>span.learnMore {
-
-      /*This does not have full browser support yet (see https://developer.mozilla.org/en-US/docs/Web/CSS/@starting-style), but can be considered nice-to-have*/
-      @starting-style {
-        transform: translateX(-100%);
+    &.active {
+      >a>span {
+        white-space: normal;
       }
 
-      height: auto;
-      display: block;
-      position: relative;
-      transition: all 0.25s;
-      transition-behavior: allow-discrete;
-      opacity: 1;
-      scale: 1;
-
-      transform: translateX(0);
-      opacity: 1;
-
-      display: block;
-      text-transform: uppercase;
-      color: #3f6c7d !important;
-      line-height: 1rem;
-      font-size: 1rem;
-      border-radius: 40px;
-      position: relative;
-      border: 2px solid var(--Supporting-Colours-Deep-Space-1, #3f6c7d);
-      padding: 12px;
-      padding-right: 2.5rem;
-      margin-right: 1.5rem;
-
-      &:after {
-        background-color: #3f6c7d !important;
-        content: "";
-        height: 24px;
-        width: 24px;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        transform: translate(-50%, -50%);
-        mask: var(--arrow-right);
-        background-repeat: no-repeat;
-        background-position-y: center;
-        background-position-x: right;
+      >a>span.learnMore {
+        opacity: 1;
       }
-
-      &:hover {
-        transition: none;
-        border-color: white;
-        color: white !important;
-        &:after {
-          background-color: white !important;
-        }
-     }
     }
 
     span {

@@ -1,37 +1,38 @@
+import { FunctionComponent, useEffect, useRef, useState, useMemo } from "react";
+
+import { FormattedMessage, useIntl } from "react-intl";
+
 import { useHistory, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import { useContentMarker } from "../../../hooks/use-story-markers";
+import { useScreenSize } from "../../../hooks/use-screen-size";
+
+import { useCategoryScrollHandlers } from "../category-navigation/use-category-event-handlers";
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
-import { FunctionComponent, useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { setFlyTo } from "../../../reducers/fly-to";
 
 import { useGetStoriesQuery } from "../../../services/api";
 import { languageSelector } from "../../../selectors/language";
 
 import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
+import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation, {
   HAS_USER_INTERACTED,
 } from "../category-navigation/category-navigation";
 
-import { setSelectedTags } from "../../../reducers/story";
-
-import { useScreenSize } from "../../../hooks/use-screen-size";
-
 import cx from "classnames";
 
-import { GetDataWidget } from "../data-widget/data-widget";
-import { useDispatch } from "react-redux";
-import { setFlyTo } from "../../../reducers/fly-to";
-
 import styles from "./data-viewer.module.css";
-import { useContentMarker } from "../../../hooks/use-story-markers";
-import { FormattedMessage, useIntl } from "react-intl";
-import { useCategoryScrollHandlers } from "../category-navigation/use-category-event-handlers";
+import { globeViewSelector } from "../../../selectors/globe/view";
 
 interface Props {
   backgroundColor: string;
   hideNavigation?: boolean;
 }
+
 interface RouteParams {
   category: string | undefined;
 }
@@ -67,7 +68,7 @@ const DataViewer: FunctionComponent<Props> = ({
   const history = useHistory();
   const intl = useIntl();
 
-  const { screenHeight, screenWidth, isMobile } = useScreenSize();
+  const {  screenWidth, isMobile } = useScreenSize();
 
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoriesQuery(language);
@@ -84,10 +85,10 @@ const DataViewer: FunctionComponent<Props> = ({
   // This keeps track of that
   // Get state from local storage
   const hasAnimationPlayed = useRef(
-    !isMobile || localStorage.getItem(HAS_USER_INTERACTED) === "true",
+    localStorage.getItem(HAS_USER_INTERACTED) === "true",
   );
-  console.log(hasAnimationPlayed.current);
-  const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const globalGlobeView = useSelector(globeViewSelector);
 
   useEffect(() => {
     // Don't proceed if there's no selectedContentId or no stories
@@ -106,12 +107,13 @@ const DataViewer: FunctionComponent<Props> = ({
 
     dispatch(
       setFlyTo({
+        isAnimated: true,
+        ...globalGlobeView,
         lat: previewedContent.position[1],
         lng: previewedContent.position[0],
-        isAnimated: true,
       }),
     );
-  }, [selectedContentId, stories, dispatch]);
+  }, [selectedContentId, globalGlobeView, stories, dispatch]);
 
   useEffect(() => {
     if (!showContentList) {
@@ -120,27 +122,33 @@ const DataViewer: FunctionComponent<Props> = ({
     setShowContentList(Boolean(category));
   }, [category, showContentList]);
 
-  if (!stories) {
-    return null;
-  }
-
-  const allTags: string[] = stories.flatMap(({ tags }) => tags).filter(Boolean);
+  const allTags = stories?.flatMap(({ tags }) => tags).filter(Boolean);
 
   const uniqueTags = Array.from(new Set(allTags));
 
-  const contents = stories.filter(
+  const contents = stories?.filter(
     (story) => category && story.tags?.includes(category),
   );
 
   // create a list of all tags with their number of occurrences in the stories
   // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
-  const arcs = uniqueTags
-    .map((tag) => {
-      const count = allTags.filter((t) => t === tag).length;
-      return { [tag]: count };
-    })
-    // Todo: Delete this filter when we have the new categories
-    .filter((arc) => Object.values(arc)[0] > 2);
+  const arcs = useMemo(
+    () =>
+      uniqueTags
+        .map((tag) => {
+          const tags = allTags ? allTags : [];
+          const count = tags.filter((t) => t === tag).length;
+          return { [tag]: count };
+        })
+        // Todo: Delete this filter when we have the new categories
+        .filter((tag) => Object.values(tag)[0] > 2),
+    [uniqueTags, allTags],
+  );
+
+  if (!stories || !arcs || !contents) {
+    return null;
+  }
+
   return (
     // The data-view is a grid with three areas: header - main - footer
     // This is the header area
@@ -169,11 +177,9 @@ const DataViewer: FunctionComponent<Props> = ({
       {!showContentList ? (
         <CategoryNavigation
           currentScrollIndex={currentScrollIndex}
-          onSelect={(category) => setSelectedTags([category])}
           arcs={arcs}
           showCategories={!showContentList}
           width={screenWidth}
-          height={screenHeight}
           isMobile={isMobile}
           setCategory={setCurrentCategory}
           isAnimationReady={hasAnimationPlayed}
@@ -204,16 +210,15 @@ const DataViewer: FunctionComponent<Props> = ({
           ></Button>
         </>
       ) : null}
-      {((!showContentList && !hasAnimationPlayed.current) ||
-        (!showContentList && !isMobile )) && (
-          <span
-            aria-hidden="true"
-            className={cx(styles.swipeIndicator, !isMobile && styles.scroll)}
-            data-content={intl.formatMessage({
-              id: `category.${isMobile ? "swipe" : "scroll"}`,
-            })}
-          ></span>
-        )}
+      {!showContentList && !hasAnimationPlayed.current && (
+        <span
+          aria-hidden="true"
+          className={cx(styles.swipeIndicator, !isMobile && styles.scroll)}
+          data-content={intl.formatMessage({
+            id: `category.${isMobile ? "swipe" : "scroll"}`,
+          })}
+        ></span>
+      )}
       {showContentList && !isMobile && (
         <span className={styles.currentCategory}>{currentCategory}</span>
       )}
@@ -232,7 +237,7 @@ const DataViewer: FunctionComponent<Props> = ({
             }),
             className: cx(styles.globe),
             backgroundColor,
-            isAutoRoating: !showContentList,
+            isAutoRotating: !showContentList,
           }}
         />
       </div>
