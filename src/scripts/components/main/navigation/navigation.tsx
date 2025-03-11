@@ -191,24 +191,6 @@ const Navigation: FunctionComponent = () => {
           <NewLogo />
         </span>
 
-        {stories_menu && (
-          <div className={styles.storiesContainer}>
-            {selectedTags.length > 0 && (
-              <div className={styles.tagsContainer}>
-                <Button
-                  className={styles.tagsButton}
-                  icon={FilterIcon}
-                  onClick={() => setShowTags(!showTags)}
-                />
-                <div className={styles.badge} />
-                {selectedTags.length > 0 && showTags && (
-                  <SelectedTags selectedTags={selectedTags} />
-                )}
-              </div>
-            )}
-          </div>
-        )}
-
         {app_menu && (
           <Button
             className={styles.button}
