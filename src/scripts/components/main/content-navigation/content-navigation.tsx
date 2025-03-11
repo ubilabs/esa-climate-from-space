@@ -13,6 +13,7 @@ import cx from "classnames";
 
 import styles from "./content-navigation.module.css";
 import { FormattedMessage } from "react-intl";
+import { ContentFilterIcon } from "../icons/content-filter-icon";
 
 interface Props {
   showContentList: boolean;
@@ -34,6 +35,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const navigationRef = React.useRef<HTMLUListElement | null>(null);
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showFilters, setShowFilters] = useState(false);
+
   const maxIndex = contents.length;
 
   const { handleTouchEnd, handleTouchMove } = useContentTouchHandlers(
@@ -112,56 +115,73 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
-
+  useEffect(() => {
+    console.log("showFilters", showFilters);
+  }, [showFilters]);
   return (
-    <ul
-      ref={navigationRef}
+    <div
       className={cx(
+        showFilters && styles.showFilters,
         styles.contentNav,
         showContentList && styles.show,
         className,
       )}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-      onTouchCancel={handleTouchEnd}
-      onWheel={handleWheel}
     >
-      {contents.map(({ title, id }, index) => {
-        // Todo: Add type property to StoryList. For now we just take blog
-        const type = "blog";
-        return (
-          <li
-            // Used n CSS to get the correct icon for the content type
-            data-content-type={type}
-            // Used to identify the currently seletected content.
-            // Passed to the globe via props to make sure correct actions are triggered
-            // E.g. flyTo or show the data layer
-            data-content-id={id}
-            className={cx(styles.contentNavItem)}
-            key={index}
-            aria-label={`${type} content: ${title}`}
-          >
-            <Link to={`${category}/stories/${id}/0/`}>
-              <span>{title}</span>
-              {!isMobile && (
-                <span className={cx(styles.learnMore)}>
-                  <FormattedMessage id="learn_more" />
-                </span>
-              )}
-            </Link>
-          </li>
-        );
-      })}
-      {/* This is the highlight of the currently selected item.
+      <ul
+        ref={navigationRef}
+        className={cx()}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
+        onWheel={handleWheel}
+      >
+        {contents.map(({ title, id }, index) => {
+          // Todo: Add type property to StoryList. For now we just take blog
+          const type = "blog";
+          return (
+            <li
+              // Used n CSS to get the correct icon for the content type
+              data-content-type={type}
+              // Used to identify the currently seletected content.
+              // Passed to the globe via props to make sure correct actions are triggered
+              // E.g. flyTo or show the data layer
+              data-content-id={id}
+              className={cx(styles.contentNavItem)}
+              key={index}
+              aria-label={`${type} content: ${title}`}
+            >
+              <Link to={`${category}/stories/${id}/0/`}>
+                <span>{title}</span>
+                {!isMobile && (
+                  <span className={cx(styles.learnMore)}>
+                    <FormattedMessage id="learn_more" />
+                  </span>
+                )}
+              </Link>
+            </li>
+          );
+        })}
+        {/* This is the highlight of the currently selected item.
       It serves a visual purpose only */}
-      <span
-        aria-hidden="true"
-        style={{
-          // The 8px or 24px is the offset of the highlight to the left
-          left: `calc(${x}% - ${isMobile ? "8" : "24"}px)`,
-        }}
-      ></span>
-    </ul>
+        <span
+          aria-hidden="true"
+          style={{
+            // The 8px or 24px is the offset of the highlight to the left
+            left: `calc(${x}% - ${isMobile ? "8" : "24"}px)`,
+          }}
+        ></span>
+      </ul>
+      <ContentFilterIcon
+        onClick={() => setShowFilters(true)}
+        className={styles.filterIcon}
+      />
+      <div
+        onClick={() => setShowFilters(false)}
+        className={cx(showFilters && styles.show, styles.contentFilters)}
+      >
+        TEST TEST
+      </div>
+    </div>
   );
 };
 

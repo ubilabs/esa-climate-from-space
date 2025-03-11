@@ -10,8 +10,6 @@
   touch-action: none;
   user-select: none;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin: 0;
-  padding: 0;
   color: white;
   margin: auto 0;
   opacity: 0;
@@ -20,7 +18,16 @@
     animation: showFromCenter 1.5s ease-out 0.5s forwards;
   }
 
-  >span {
+  >ul {
+    margin: 0;
+    padding: 0;
+    grid-area: globe-nav-area;
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+
+  >ul>span {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -34,22 +41,10 @@
     @media screen and (--desktop-viewport) {
       width: 785px;
       background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="785" height="206" viewBox="0 0 785 206" fill="none"><path d="M0 102.739C0 87.2037 11.8097 74.2145 27.2745 72.7401L785 0.5V206L27.2344 132.733C11.7869 131.24 0 118.258 0 102.739Z" fill="%23003349" fill-opacity="0.5"/></svg>');
-
-      /*&:after {*/
-      /*  position: absolute;*/
-      /*  content: "learn more";*/
-      /*  border: 1px solid var(--font-color);*/
-      /*  top: 50%;*/
-      /*  left: 100%;*/
-      /*  transform: translate(calc(-1rem - 100%), -50%);*/
-      /*  background-repeat: no-repeat;*/
-      /*background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="arrow_forward_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24"><path id="Vector" d="M13.4791 10.833H3.33331V9.16634H13.4791L8.81248 4.49967L9.99998 3.33301L16.6666 9.99967L9.99998 16.6663L8.81248 15.4997L13.4791 10.833Z" fill="white"/></g></svg>');*/
-      /*}*/
-      /**/
     }
   }
 
-  >li {
+  >ul>li {
     z-index: 2;
     padding-right: 1rem;
     color: var(--font-color);
@@ -171,6 +166,28 @@
     &[data-content-type="blog"]:before {
       mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 22.5C10.8 21.3667 9.425 20.5 7.875 19.9C6.325 19.3 4.7 19 3 19V8C4.68333 8 6.3 8.30417 7.85 8.9125C9.4 9.52083 10.7833 10.4 12 11.55C13.2167 10.4 14.6 9.52083 16.15 8.9125C17.7 8.30417 19.3167 8 21 8V19C19.2833 19 17.6542 19.3 16.1125 19.9C14.5708 20.5 13.2 21.3667 12 22.5ZM12 19.9C13.05 19.1167 14.1667 18.4917 15.35 18.025C16.5333 17.5583 17.75 17.25 19 17.1V10.2C17.7833 10.4167 16.5875 10.8542 15.4125 11.5125C14.2375 12.1708 13.1 13.05 12 14.15C10.9 13.05 9.7625 12.1708 8.5875 11.5125C7.4125 10.8542 6.21667 10.4167 5 10.2V17.1C6.25 17.25 7.46667 17.5583 8.65 18.025C9.83333 18.4917 10.95 19.1167 12 19.9ZM12 9C10.9 9 9.95833 8.60833 9.175 7.825C8.39167 7.04167 8 6.1 8 5C8 3.9 8.39167 2.95833 9.175 2.175C9.95833 1.39167 10.9 1 12 1C13.1 1 14.0417 1.39167 14.825 2.175C15.6083 2.95833 16 3.9 16 5C16 6.1 15.6083 7.04167 14.825 7.825C14.0417 8.60833 13.1 9 12 9ZM12 7C12.55 7 13.0208 6.80417 13.4125 6.4125C13.8042 6.02083 14 5.55 14 5C14 4.45 13.8042 3.97917 13.4125 3.5875C13.0208 3.19583 12.55 3 12 3C11.45 3 10.9792 3.19583 10.5875 3.5875C10.1958 3.97917 10 4.45 10 5C10 5.55 10.1958 6.02083 10.5875 6.4125C10.9792 6.80417 11.45 7 12 7Z" fill="currentColor"/></svg>');
     }
+  }
+}
+
+.filterIcon {
+  position: absolute;
+  right: 0;
+  margin: 1.5rem;
+  padding: 0.2rem;
+  border-radius: 40px;
+  border: 2px solid var(--Supporting-Colours-Deep-Space-1, #3f6c7d);
+  background: #031922;
+}
+
+.contentFilters {
+  position: absolute;
+  bottom: 0;
+  height: 40vw;
+  background-color: red;
+  transform: translateY(100%);
+
+  > .show {
+    transform: translateY(0);
   }
 }
 

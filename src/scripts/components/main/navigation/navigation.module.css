@@ -5,8 +5,6 @@
   align-items: center;
   flex-wrap: no-wrap;
   justify-content: space-between;
-  gap: 1.875em;
-  z-index: 1;
   grid-area: header;
   padding: 0 1.5rem;
 
