@@ -34,7 +34,7 @@ export const useContentTouchHandlers = (
     const minIdex = Math.floor((numOfItems - 1) / 2) * -1;
 
     const itemHeight = 32; // Height of each item in pixels
-    const sensitivity = 0.5; // Adjust this to control movement sensitivity
+    const sensitivity = 2; // Adjust this to control movement sensitivity
     const threshold = itemHeight * sensitivity; // Minimum movement required
     if (Math.abs(touchDelta) > threshold) {
       // Determine direction based on touch movement
@@ -46,7 +46,6 @@ export const useContentTouchHandlers = (
       // Clamp the value between min and max
       // Clamp the value between min and max using Math.min and Math.max
       newIndex = Math.max(Math.min(newIndex, maxIndex), minIdex);
-
       // Set the new index
       setCurrentIndex(newIndex);
       // Also update our ref
