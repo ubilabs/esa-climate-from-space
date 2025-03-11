@@ -23,6 +23,8 @@ import { FeedbackIcon } from "../icons/feedback-icon";
 import config from "../../../config/main";
 
 import styles from "./menu.module.css";
+import { ShareIcon } from "../icons/share-icon";
+import Share from "../share/share";
 
 interface Props {
   onRestartOnboarding: () => void;
@@ -104,6 +106,13 @@ const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
               </li>
               <li>
                 <LanguageSelector className={styles.menuListItem} />
+              </li>
+
+              <li className={styles.menuItemTitle}>
+                <ShareIcon /> <FormattedMessage id={"share"} />
+              </li>
+              <li>
+                  <Share  className={styles.menuListItem} / >
               </li>
               <li className={styles.subMenuTitle}>
                 <FeedbackIcon /> <FormattedMessage id={"feedback"} />

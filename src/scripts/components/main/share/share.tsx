@@ -17,16 +17,18 @@ import EmbedWizard from "../embed-wizard/embed-wizard";
 
 import styles from "./share.module.css";
 
-const Share: FunctionComponent = () => {
-  const [showShare, setShowShare] = useState(false);
+interface Props {
+  className?: string;
+}
+
+const Share: FunctionComponent<Props> = ({ className }) => {
+  const classes = `${styles.shareItem} ${className}`;
+
   const [showEmbedWizard, setShowEmbedWizard] = useState<boolean>(false);
   const { trackEvent } = useMatomo();
   const currentUrl = window.location.href;
 
   const facebookUrl = replaceUrlPlaceholders(config.share.facebook, {
-    currentUrl: encodeURIComponent(currentUrl),
-  });
-  const twitterUrl = replaceUrlPlaceholders(config.share.twitter, {
     currentUrl: encodeURIComponent(currentUrl),
   });
   const [copied, setCopied] = useState(false);
@@ -67,80 +69,49 @@ const Share: FunctionComponent = () => {
   };
 
   return (
-    <div className={styles.share}>
-      <Button
-        className={styles.shareButton}
-        id="ui-share"
-        icon={ShareIcon}
-        onClick={() => setShowShare(true)}
-      />
-
-      {showEmbedWizard ? (
+    <>
+      <ul className={styles.share}>
+        <li className={classes}>
+          <a
+            href={facebookUrl}
+            target={"_blank"}
+            rel="noopener noreferrer"
+            className={styles.button}
+            onClick={() => trackShareClick("facebook")}
+          >
+            <span>Facebook</span>
+          </a>
+        </li>
+        <li
+          className={classes}
+          onClick={() => {
+            setCopied(true);
+            copyUrl();
+            trackShareClick("link-copy");
+          }}
+        >
+          <input ref={ref} type="hidden" contentEditable="true" />
+          <span>
+            <FormattedMessage id={"copyLink"} />
+          </span>
+        </li>
+        <li>
+          <Button
+            onClick={() => setShowEmbedWizard(true)}
+            className={classes}
+            label={"embed"}
+          />
+        </li>
+      </ul>
+      {showEmbedWizard && (
         <Overlay
           className={styles.embedOverlay}
           onClose={() => setShowEmbedWizard(false)}
         >
           <EmbedWizard />
         </Overlay>
-      ) : (
-        showShare && (
-          <Overlay showCloseButton={false}>
-            <div className={styles.shareOverlay}>
-              <Button
-                icon={CloseIcon}
-                className={styles.closeButton}
-                onClick={() => setShowShare(false)}
-              />
-              <h1 className={styles.title}>
-                <FormattedMessage id="share" />
-              </h1>
-              <div className={styles.shareButtons}>
-                <Button
-                  onClick={() => setShowEmbedWizard(true)}
-                  icon={EmbedIcon}
-                  className={styles.button}
-                  label={"embed"}
-                />
-                <a
-                  href={twitterUrl}
-                  target={"_blank"}
-                  rel="noopener noreferrer"
-                  className={styles.button}
-                  onClick={() => trackShareClick("twitter")}
-                >
-                  <TwitterIcon />
-                  <span>Twitter</span>
-                </a>
-                <a
-                  href={facebookUrl}
-                  target={"_blank"}
-                  rel="noopener noreferrer"
-                  className={styles.button}
-                  onClick={() => trackShareClick("facebook")}
-                >
-                  <FacebookIcon />
-                  <span>Facebook</span>
-                </a>
-                <div
-                  className={styles.button}
-                  onClick={() => {
-                    setCopied(true);
-                    copyUrl();
-                    trackShareClick("link-copy");
-                  }}
-                >
-                  <input ref={ref} type="hidden" contentEditable="true" />
-                  {copied ? <CheckIcon /> : <CopyIcon />}
-                  <span>
-                    <FormattedMessage id={"copyLink"} />
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Overlay>
-        )
       )}
-    </div>
+    </>
   );
 };
 
