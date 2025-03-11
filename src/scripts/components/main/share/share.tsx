@@ -76,24 +76,24 @@ const Share: FunctionComponent<Props> = ({ className }) => {
             href={facebookUrl}
             target={"_blank"}
             rel="noopener noreferrer"
-            className={styles.button}
+            className={styles.link}
             onClick={() => trackShareClick("facebook")}
           >
             <span>Facebook</span>
           </a>
         </li>
         <li
-          className={classes}
-          onClick={() => {
-            setCopied(true);
-            copyUrl();
-            trackShareClick("link-copy");
-          }}
         >
-          <input ref={ref} type="hidden" contentEditable="true" />
-          <span>
-            <FormattedMessage id={"copyLink"} />
-          </span>
+          <Button
+            className={classes}
+            label="copyLink"
+            onClick={() => {
+              setCopied(true);
+              copyUrl();
+              trackShareClick("link-copy");
+            }}
+          >
+          </Button>
         </li>
         <li>
           <Button

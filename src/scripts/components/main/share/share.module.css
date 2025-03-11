@@ -5,9 +5,11 @@
     list-style: none;
   }
 }
-.button {
+
+.link {
   color: var(--text-default);
-}
-.buttonActive {
-  color: var(--main);
+
+  &:hover {
+    color: var(--main);
+  }
 }
