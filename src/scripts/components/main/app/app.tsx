@@ -41,7 +41,7 @@ const TranslatedApp: FunctionComponent = () => {
   const logo = (
     <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
       <div className={"logo"} style={{ zIndex: 4, fill: "#fff" }}>
-        <EsaLogo />
+        <EsaLogo variant="logoWithText" />
       </div>
     </a>
   );

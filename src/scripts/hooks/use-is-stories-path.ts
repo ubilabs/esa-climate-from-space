@@ -4,7 +4,7 @@ export default function useIsStoriesPath() {
   const { pathname } = useLocation();
 
   const isStoriesPath =
-    pathname === "/stories" ||
+    pathname.includes("stories") ||
     pathname === "/showcase" ||
     pathname === "/present";
 

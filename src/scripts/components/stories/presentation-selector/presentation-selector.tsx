@@ -10,6 +10,7 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 import { StoryMode } from "../../../types/story-mode";
 
 import styles from "./presentation-selector.module.css";
+import Menu from "../../main/menu/menu";
 
 const PresentationSelector: FunctionComponent = () => {
   const intl = useIntl();
@@ -23,7 +24,6 @@ const PresentationSelector: FunctionComponent = () => {
           backButtonId="backToDataMode"
           title={intl.formatMessage({ id: "presenter" })}
         >
-          <Share />
         </Header>
       )}
       <StoryList mode={StoryMode.Present} />

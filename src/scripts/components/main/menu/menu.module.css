@@ -96,7 +96,8 @@
   padding-left: 0.615384615384615em;
   font-size: 13px;
 }
-@media screen and (--mobile-s-viewport) {
+
+@media screen and (--mobile-viewport) {
   .menuContainer {
     width: 100%;
   }
@@ -110,7 +111,7 @@
   .credits {
     display: flex;
   }
-  :global(path.hideText) {
-    display: none;
-  }
+  /*:global(path.hideText) {*/
+  /*  display: none;*/
+  /*}*/
 }

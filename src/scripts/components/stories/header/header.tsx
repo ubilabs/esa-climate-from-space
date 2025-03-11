@@ -34,7 +34,6 @@ const Header: FunctionComponent<Props> = ({
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
-        <EsaLogoShort />
       </div>
       {disabledEmbedLink && (
         <Button

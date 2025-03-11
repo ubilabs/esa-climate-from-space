@@ -25,22 +25,28 @@ import StoryEmbedded from "../story-embedded/story-embedded";
 
 import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { setSelectedLayerIds } from "../../../reducers/layers";
-import { useGetStoryQuery } from "../../../services/api";
+import { useGetStoriesQuery, useGetStoryQuery } from "../../../services/api";
 import { StoryMode } from "../../../types/story-mode";
 import { languageSelector } from "../../../selectors/language";
 
 import styles from "./story.module.css";
+import Navigation from "../../main/navigation/navigation";
+import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
+import Button from "../../main/button/button";
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const { mode, slideIndex, currentStoryId, storyListItem, category } = storyParams;
+  const { mode, slideIndex, currentStoryId, storyListItem, category } =
+    storyParams;
   const storyMode = mode === StoryMode.Stories;
   const { story_header } = useSelector(embedElementsSelector);
 
   const lang = useSelector(languageSelector);
+
+  useGetStoriesQuery(lang);
 
   const { data: selectedStory } = useGetStoryQuery({
     id: currentStoryId,
@@ -98,7 +104,7 @@ const Story: FunctionComponent = () => {
       return (
         <StoryGallery mode={mode} storyId={story.id} key={story.id}>
           {slide.galleryItems.map((item) => {
-           console.log(item)
+            console.log(item);
             switch (item.type) {
               case GalleryItemType.Image:
                 return <StoryImage storyId={story.id} imageItem={item} />;
@@ -121,8 +127,7 @@ const Story: FunctionComponent = () => {
                 return <StoryEmbedded embeddedItem={item} />;
               default:
                 console.warn(
-                  `Unknown gallery item type ${item["type"]} on slide ${
-                    slideIndex + 1
+                  `Unknown gallery item type ${item["type"]} on slide ${slideIndex + 1
                   } in story ${story.id}`,
                 );
                 return <></>;
@@ -133,18 +138,18 @@ const Story: FunctionComponent = () => {
     }
     return null;
   };
-console.log("mode", mode.toString())
-  return (
+  console.log("mode", mode.toString());
+  return (<>
+    {storyListItem && story_header && (
+      <Navigation />
+    )}
     <div className={styles.story}>
-      {storyListItem && story_header && (
-        <Header
-          backLink={category ? `/${category}` : "/"}
-          backButtonId="backToStories"
-          title={isSplashScreen ? "" : storyListItem.title}
-        >
-          {storyMode ? <Share /> : undefined}
-        </Header>
-      )}
+          <Button
+            className={styles.backButton}
+            icon={ArrowBackIcon}
+            label={"backToDataMode"}
+            link={`/${category}`}
+          />)
       <main className={styles.main}>
         {/* Instead of rendering only the current slide we map over all slides to
         enforce a newly mounted component when the slideNumber changes */}
@@ -177,7 +182,7 @@ console.log("mode", mode.toString())
         selectedStory={selectedStory}
       />
     </div>
-  );
+  </>)
 };
 
 export default Story;
