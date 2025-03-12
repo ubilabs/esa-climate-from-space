@@ -23,14 +23,13 @@ import { ArrowBackIcon } from "../icons/arrow-back-icon";
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const [showTags, setShowTags] = useState(false);
   const selectedLanguage = useSelector(languageSelector);
   const savedLanguage = localStorage.getItem(config.localStorageLanguageKey);
-  const {  app_menu } = useSelector(embedElementsSelector);
+  const { app_menu } = useSelector(embedElementsSelector);
 
   const [showTooltip, setShowTooltip] = useState(Boolean(!savedLanguage));
 
-  const {category} = useStoryParams();
+  const { category } = useStoryParams();
   const isStoriesPath = useIsStoriesPath();
 
   const { isMobile } = useScreenSize();
@@ -48,14 +47,14 @@ const Navigation: FunctionComponent = () => {
             }
           />
         }
-        { isStoriesPath && (
+        {isStoriesPath && (
           <Button
             className={styles.backButton}
             icon={ArrowBackIcon}
             label={isMobile ? "" : "backToStories"}
             link={`/${category}`}
-          />)
-        }
+          />
+        )}
         {app_menu && (
           <Button
             className={styles.button}

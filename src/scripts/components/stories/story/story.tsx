@@ -6,8 +6,6 @@ import { YouTubePlayer } from "youtube-player/dist/types";
 import { useStoryParams } from "../../../hooks/use-story-params";
 import { setGlobeTime } from "../../../reducers/globe/time";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
-import Share from "../../main/share/share";
-import Header from "../header/header";
 import SplashScreen from "../splash-screen/splash-screen";
 import StoryContent from "../story-content/story-content";
 import StoryFooter from "../story-footer/story-footer";
@@ -15,6 +13,7 @@ import StoryGallery from "../story-gallery/story-gallery";
 import StoryGlobe from "../story-globe/story-globe";
 import StoryImage from "../story-image/story-image";
 import StoryVideo from "../story-video/story-video";
+import Navigation from "../../main/navigation/navigation";
 
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { GalleryItemType } from "../../../types/gallery-item";
@@ -26,22 +25,17 @@ import StoryEmbedded from "../story-embedded/story-embedded";
 import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { useGetStoriesQuery, useGetStoryQuery } from "../../../services/api";
-import { StoryMode } from "../../../types/story-mode";
 import { languageSelector } from "../../../selectors/language";
 
 import styles from "./story.module.css";
-import Navigation from "../../main/navigation/navigation";
-import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
-import Button from "../../main/button/button";
 
 const Story: FunctionComponent = () => {
   const storyParams = useStoryParams();
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const { mode, slideIndex, currentStoryId, storyListItem, category } =
+  const { mode, slideIndex, currentStoryId, storyListItem  } =
     storyParams;
-  const storyMode = mode === StoryMode.Stories;
   const { story_header } = useSelector(embedElementsSelector);
 
   const lang = useSelector(languageSelector);

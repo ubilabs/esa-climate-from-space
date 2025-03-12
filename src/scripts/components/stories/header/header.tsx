@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 import Button from "../../main/button/button";
 import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
-import { EsaLogoShort } from "../../main/icons/esa-logo-short";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import useIsStoriesPath from "../../../hooks/use-is-stories-path";
 import { useStoryParams } from "../../../hooks/use-story-params";

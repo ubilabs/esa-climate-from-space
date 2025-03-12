@@ -1,16 +1,8 @@
 import { FunctionComponent, useState, useRef, useEffect } from "react";
-import { FormattedMessage } from "react-intl";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
 
-import { TwitterIcon } from "../icons/twitter-icon";
-import { FacebookIcon } from "../icons/facebook-icon";
-import { CopyIcon } from "../icons/copy-icon";
-import { ShareIcon } from "../icons/share-icon";
 import config from "../../../config/main";
 import Button from "../button/button";
-import { CloseIcon } from "../icons/close-icon";
-import { EmbedIcon } from "../icons/embed-icon";
-import { CheckIcon } from "../icons/check-icon";
 import Overlay from "../overlay/overlay";
 import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
 import EmbedWizard from "../embed-wizard/embed-wizard";

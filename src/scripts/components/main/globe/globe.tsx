@@ -140,7 +140,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
 
       animate();
     },
-    [globe],
+    [globe, view.altitude],
   );
 
   const autoRotate = useCallback(() => {
@@ -156,7 +156,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     if (isAutoRotatingRef.current) {
       requestAnimationFrame(autoRotate);
     }
-  }, [globe]);
+  }, [globe, view.lat, view.altitude]);
 
   useEffect(() => {
     isAutoRotatingRef.current = isAutoRotating;
