@@ -23,6 +23,7 @@ import { ArrowBackIcon } from "../icons/arrow-back-icon";
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const [showTags, setShowTags] = useState(false);
   const selectedLanguage = useSelector(languageSelector);
   const savedLanguage = localStorage.getItem(config.localStorageLanguageKey);
   const {  app_menu } = useSelector(embedElementsSelector);

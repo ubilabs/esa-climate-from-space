@@ -1,10 +1,13 @@
 import React, { FunctionComponent, RefObject, useEffect, useState } from "react";
 
-import styles from "./category-navigation.module.css";
 import cx from "classnames";
+
 import { useHistory } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import { useCategoryTouchHandlers } from "./use-category-event-handlers";
+
+import styles from "./category-navigation.module.css";
+
 interface Props {
   showCategories: boolean;
   isMobile: boolean;
@@ -15,7 +18,6 @@ interface Props {
   currentScrollIndex: number | null;
 }
 
-export const HAS_USER_INTERACTED = "hasUserInteraced";
 /**
  * A circular navigation component that displays categories in an interactive wheel format.
  *
@@ -228,8 +230,6 @@ const CategoryNavigation: FunctionComponent<Props> = ({
           height={_size}
           viewBox={`0 0 ${_size} ${_size}`}
           style={{
-            //translate: " 0 -50%",
-            //transition: "all 0.5s ease-out",
             transform: `rotate(${rotationOffset}deg)`,
           }}
         >
@@ -261,8 +261,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
 
             const isCurrentlySelected = index === normalizedIndex;
 
-            const selectedColor = "rgba(0, 179, 152, 1)";
-            const defaultColor = "rgba(0, 51, 73, 1)";
+            const selectedColor = "var(--main)";
+            const defaultColor = "var( --dark-grey-5)";
 
             return (
               <g key={index} data-index={index} className={styles.arc}>

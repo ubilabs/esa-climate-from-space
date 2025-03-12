@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HAS_USER_INTERACTED } from "./category-navigation";
+import config from "../../../config/main";
 
 export const useCategoryTouchHandlers = () => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -31,7 +31,7 @@ export const useCategoryTouchHandlers = () => {
       setIsRotating(true);
 
       // Set a local state userHasInteracted to true
-      localStorage.setItem(HAS_USER_INTERACTED, "true");
+      localStorage.setItem(config.localStorageHasUserInteractedKey, "true");
     }
   };
 
@@ -101,8 +101,9 @@ export const useCategoryScrollHandlers = () => {
       // Set rotation state for visual feedback
       setIsRotating(true);
 
-      // Mark that user has interacted with the wheel
-      localStorage.setItem(HAS_USER_INTERACTED, "true");
+      // We want to avoid showing the scroll- or swipe indicator after the user has interacted
+      // Therefore, we keep track of the user interaction with the navigation
+      localStorage.setItem(config.localStorageHasUserInteractedKey, "true");
 
       // Reset rotation state after animation completes
       setTimeout(() => setIsRotating(false), 300);

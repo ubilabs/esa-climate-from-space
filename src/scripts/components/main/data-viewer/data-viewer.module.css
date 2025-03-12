@@ -138,7 +138,7 @@
     transform: translateX(-50%);
     position: absolute;
     content: attr(data-content);
-    color: var(--Supporting-Colours-Deep-Space-1, #3f6c7d);
+    color: var(--dark-blue);
     font-family: NotesEsa;
     font-size: 14px;
     font-style: normal;
@@ -251,7 +251,7 @@
   grid-area: explore;
   padding: 12px 24px;
   border-radius: 40px;
-  background: #3f6c7d;
+  background: var(--dark-blue);
   box-shadow: 0px 0px 12px 0px rgba(0, 51, 73, 0.25);
   background-repeat: no-repeat;
   transform: translateY(100px);

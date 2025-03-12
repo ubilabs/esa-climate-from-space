@@ -1,6 +1,6 @@
 .navigation {
-  border-bottom: 2px solid #00b398;
-  background: #003349;
+  border-bottom: 2px solid var(--main);
+  background: var(--dark-grey-5);
   display: flex;
   align-items: center;
   flex-wrap: no-wrap;

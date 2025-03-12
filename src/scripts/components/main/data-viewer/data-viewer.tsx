@@ -1,9 +1,12 @@
 import { FunctionComponent, useEffect, useRef, useState, useMemo } from "react";
 
-import { FormattedMessage, useIntl } from "react-intl";
-
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { FormattedMessage, useIntl } from "react-intl";
+
+import cx from "classnames";
+
+import config from "../../../config/main";
 
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useScreenSize } from "../../../hooks/use-screen-size";
@@ -15,18 +18,14 @@ import { setFlyTo } from "../../../reducers/fly-to";
 
 import { useGetStoriesQuery } from "../../../services/api";
 import { languageSelector } from "../../../selectors/language";
+import { globeViewSelector } from "../../../selectors/globe/view";
 
 import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
 import { GetDataWidget } from "../data-widget/data-widget";
-import CategoryNavigation, {
-  HAS_USER_INTERACTED,
-} from "../category-navigation/category-navigation";
-
-import cx from "classnames";
+import CategoryNavigation from "../category-navigation/category-navigation";
 
 import styles from "./data-viewer.module.css";
-import { globeViewSelector } from "../../../selectors/globe/view";
 
 interface Props {
   backgroundColor: string;
@@ -85,7 +84,7 @@ const DataViewer: FunctionComponent<Props> = ({
   // This keeps track of that
   // Get state from local storage
   const hasAnimationPlayed = useRef(
-    localStorage.getItem(HAS_USER_INTERACTED) === "true",
+    localStorage.getItem(config.localStorageHasUserInteractedKey) === "true",
   );
 
   const globalGlobeView = useSelector(globeViewSelector);

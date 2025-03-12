@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 
@@ -10,9 +11,7 @@ import {
 } from "./use-content-event-handlers";
 
 import cx from "classnames";
-
 import styles from "./content-navigation.module.css";
-import { FormattedMessage } from "react-intl";
 
 interface Props {
   showContentList: boolean;
@@ -34,15 +33,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const navigationRef = React.useRef<HTMLUListElement | null>(null);
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const maxIndex = contents.length;
+  const entryCount = contents.length;
 
   const { handleTouchEnd, handleTouchMove } = useContentTouchHandlers(
     currentIndex,
     setCurrentIndex,
-    maxIndex,
+    entryCount,
   );
 
-  const { handleWheel } = useContentScrollHandlers(setCurrentIndex, maxIndex);
+  const { handleWheel } = useContentScrollHandlers(setCurrentIndex, entryCount);
 
   // The spread between the elements in the circle
   const GAP_BETWEEN_ELEMENTS = 16;

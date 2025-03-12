@@ -31,9 +31,6 @@ const StoryPagination: FunctionComponent<Props> = ({
   const isShowcaseMode = mode === StoryMode.Showcase;
   const isPresenterMode = mode === StoryMode.Present;
 
-  console.log("nextSlideLink", nextSlideLink)
-console.log("StoryPagination -> mode", mode)
-
   const onKeyDownHandler = useCallback(
     (event: KeyboardEvent) => {
       if (!isShowcaseMode) {

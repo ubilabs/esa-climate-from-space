@@ -7,12 +7,12 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 import TimeSlider from "../../layers/time-slider/time-slider";
 import LayerDescription from "../layer-description/layer-description";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { GlobeCompareLayer } from "../../main/globe-compare-layer/globe-compare-layer";
 import { useGetLayerQuery } from "../../../services/api";
 
 import { GlobeItem } from "../../../types/gallery-item";
 
 import styles from "./story-globe.module.css";
-import { GlobeCompareLayer } from "../../main/globe-compare-layer/globe-compare-layer";
 
 interface Props {
   globeItem: GlobeItem;

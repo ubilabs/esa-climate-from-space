@@ -1,8 +1,8 @@
 .contentNav {
   --font-color: rgba(0, 179, 152, 1);
-  --primary-color: #00b398;
-  --secondary-color: #3f6c7d;
-  --background-color: #003349;
+  --primary-color: var(--main);
+  --secondary-color: var(--dark-blue);
+  --background-color: var(--dark-grey-5);
   grid-area: globe-nav-area;
   width: 100%;
   height: 100%;
@@ -34,18 +34,6 @@
     @media screen and (--desktop-viewport) {
       width: 785px;
       background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="785" height="206" viewBox="0 0 785 206" fill="none"><path d="M0 102.739C0 87.2037 11.8097 74.2145 27.2745 72.7401L785 0.5V206L27.2344 132.733C11.7869 131.24 0 118.258 0 102.739Z" fill="%23003349" fill-opacity="0.5"/></svg>');
-
-      /*&:after {*/
-      /*  position: absolute;*/
-      /*  content: "learn more";*/
-      /*  border: 1px solid var(--font-color);*/
-      /*  top: 50%;*/
-      /*  left: 100%;*/
-      /*  transform: translate(calc(-1rem - 100%), -50%);*/
-      /*  background-repeat: no-repeat;*/
-      /*background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="arrow_forward_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24"><path id="Vector" d="M13.4791 10.833H3.33331V9.16634H13.4791L8.81248 4.49967L9.99998 3.33301L16.6666 9.99967L9.99998 16.6663L8.81248 15.4997L13.4791 10.833Z" fill="white"/></g></svg>');*/
-      /*}*/
-      /**/
     }
   }
 
@@ -76,7 +64,8 @@
       align-items: center;
       text-align: center;
 
-      >span:first-child {
+      >span:not(last-child) {
+        color: var(--dark-blue);
         max-width: 50vw;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -89,17 +78,17 @@
         position: relative;
         opacity: 0;
         text-transform: uppercase;
-        color: #3f6c7d !important;
+        color: var(--dark-blue) !important;
         line-height: 1rem;
         font-size: 1rem;
         border-radius: 40px;
-        border: 2px solid var(--Supporting-Colours-Deep-Space-1, #3f6c7d);
+        border: 2px solid var(--dark-blue);
         padding: 12px;
         padding-right: 2.5rem;
         margin-right: 1.5rem;
 
         &:after {
-          background-color: #3f6c7d !important;
+          background-color: var(--dark-blue) !important;
           content: "";
           height: 24px;
           width: 24px;
@@ -136,20 +125,14 @@
     }
 
     &.active {
-      >a>span {
+      > a > span:not(.learnMore) {
+        color: var(--primary-color) !important;
         white-space: normal;
       }
 
       >a>span.learnMore {
         opacity: 1;
       }
-    }
-
-    span {
-      white-space: inherit;
-      text-overflow: inherit;
-      max-width: 100%;
-      color: var(--primary-color);
     }
 
     &.active:before {

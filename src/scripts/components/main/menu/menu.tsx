@@ -20,11 +20,12 @@ import { Ubilabslogo } from "../icons/ubilabs-logo";
 import Attributions from "../attributions/attributions";
 import TrackingToggle from "../tracking-toggle/tracking-toggle";
 import { FeedbackIcon } from "../icons/feedback-icon";
+import { ShareIcon } from "../icons/share-icon";
+import Share from "../share/share";
+
 import config from "../../../config/main";
 
 import styles from "./menu.module.css";
-import { ShareIcon } from "../icons/share-icon";
-import Share from "../share/share";
 
 interface Props {
   onRestartOnboarding: () => void;
@@ -109,7 +110,7 @@ const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
               </li>
 
               <li className={styles.menuItemTitle}>
-                <ShareIcon /> <FormattedMessage id={"share"} />
+                <ShareIcon /> <FormattedMessage id="share" />
               </li>
               <li>
                   <Share  className={styles.menuListItem} / >

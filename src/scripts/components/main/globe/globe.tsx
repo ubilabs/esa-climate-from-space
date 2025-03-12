@@ -74,6 +74,9 @@ export type GlobeProps = Partial<Props>;
 
 const EMPTY_FUNCTION = () => {};
 
+// This is the speed of the flyTo animation
+const SPEED = 2;
+
 const Globe: FunctionComponent<Props> = memo((props) => {
   const {
     view,
@@ -83,29 +86,31 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     layerDetails,
     imageLayer,
     markers,
-     isAutoRotating = false,
+    isAutoRotating = false,
     className,
   } = props;
 
-  const [containerRef, globe ] = useWebGlGlobe(view);
+  const [containerRef, globe] = useWebGlGlobe(view);
+
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
-  // const rotationRef = useRef<number>(180);
+
   const rotationRef = useRef<{
     lat: number;
     lng: number;
-  }>({ lat: 10, lng: 180 });
+  }>({ lat: view.lat, lng: view.lng });
+
   const isAutoRotatingRef = useRef<boolean>(isAutoRotating);
 
   // We have these custom functions for autoRotating the globe and animating the flyTo
   // Ticket #1271 and #1270 reference these issues see https://github.com/orgs/ubilabs/projects/48
   const animatedFlyTo = useCallback(
     (lat: number, lng: number) => {
-      // This is the speed of the animation
-      const SPEED = 2;
-      // Adjust longitude by -90 degrees to show point on the right side
+      // Instead of the center, we have to adjust the target position so that
+      // actual point we want to move to is rotated the right side
+      // This is because only the right side of the globe is actually visible to the user
       const targetLng = lng - 55;
       const targetLat = lat;
-      const startLng = rotationRef.current.lng ;
+      const startLng = rotationRef.current.lng;
       const startLat = rotationRef.current.lat;
       const deltaLng = targetLng - startLng;
       const deltaLat = targetLat - startLat;
@@ -124,7 +129,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
               cameraView: {
                 lng: currentLng,
                 lat: currentLat,
-                altitude: 23840000,
+                altitude: view.altitude,
               },
             });
           }
@@ -140,10 +145,11 @@ const Globe: FunctionComponent<Props> = memo((props) => {
 
   const autoRotate = useCallback(() => {
     rotationRef.current.lng += 0.05;
-    const lng = (rotationRef.current.lng % 360) - 180;
+    const lng = rotationRef.current.lng;
+
     if (globe) {
       globe.setProps({
-        cameraView: { lng, lat: 10, altitude: 23840000 },
+        cameraView: { lng, lat: view.lat, altitude: view.altitude },
       });
     }
 
@@ -443,7 +449,6 @@ function useLayerLoadingStateUpdater(
 ) {
   const handler = useCallback(
     (ev: LayerLoadingStateChangedEvent) => {
-      console.log("changed");
       callback(ev.detail.layer.id, ev.detail.state);
     },
     [callback],
