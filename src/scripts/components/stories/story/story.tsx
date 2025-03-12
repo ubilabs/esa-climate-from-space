@@ -53,8 +53,6 @@ const Story: FunctionComponent = () => {
     language: lang,
   });
 
-  const isSplashScreen = Boolean(selectedStory?.slides[slideIndex].splashImage);
-
   // set globe to sphere projection
   useEffect(() => {
     dispatch(
@@ -138,18 +136,12 @@ const Story: FunctionComponent = () => {
     }
     return null;
   };
-  console.log("mode", mode.toString());
+
   return (<>
     {storyListItem && story_header && (
       <Navigation />
     )}
     <div className={styles.story}>
-          <Button
-            className={styles.backButton}
-            icon={ArrowBackIcon}
-            label={"backToDataMode"}
-            link={`/${category}`}
-          />)
       <main className={styles.main}>
         {/* Instead of rendering only the current slide we map over all slides to
         enforce a newly mounted component when the slideNumber changes */}

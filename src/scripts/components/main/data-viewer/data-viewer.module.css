@@ -84,6 +84,8 @@
       }
 
       .currentCategory {
+        max-width: 40vw;
+        word-break: break-word;
         /*Make sure z-index is higher than the globe*/
         place-self: center start;
         margin-left: clamp(36px, 2vw, 80px);

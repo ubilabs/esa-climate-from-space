@@ -7,6 +7,8 @@ import { GalleryItemType } from "../types/gallery-item";
 export const useStoryNavigation = (videoDuration: number) => {
   const { mode, storyIds, storyIndex, slideIndex, selectedStory } =
     useStoryParams();
+
+console.log("useStoryNavigation -> selectedStory", selectedStory)
   const numberOfSlides = selectedStory?.slides.length;
 
   let autoPlayLink = null;

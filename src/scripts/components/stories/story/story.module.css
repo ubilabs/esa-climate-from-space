@@ -28,7 +28,7 @@
   min-height: 3.875em;
 }
 
-@media screen and (--mobile-s-viewport) {
+@media screen and (--mobile-viewport) {
   .main {
     display: flex;
     flex-direction: column;
@@ -45,24 +45,3 @@
   }
 }
 
-.backButton {
-  width: 100%;
-  position: absolute;
-  top: 4.5rem;
-  z-index: 1;
-
-  >span {
-    margin: 0 auto;
-  }
-
-  @media screen and (--desktop-viewport) {
-    text-transform: uppercase;
-    width: fit-content;
-    margin-left: 1.5rem;
-    padding-left: 0.5rem;
-
-    >span {
-      position: relative;
-    }
-  }
-}

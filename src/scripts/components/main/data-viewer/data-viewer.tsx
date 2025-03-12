@@ -68,7 +68,7 @@ const DataViewer: FunctionComponent<Props> = ({
   const history = useHistory();
   const intl = useIntl();
 
-  const {  screenWidth, isMobile } = useScreenSize();
+  const { screenWidth, isMobile } = useScreenSize();
 
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoriesQuery(language);
@@ -100,19 +100,24 @@ const DataViewer: FunctionComponent<Props> = ({
       (story) => story.id === selectedContentId,
     );
 
-    if (!previewedContent) {
-      console.warn(`Content with id ${selectedContentId} could not be found`);
-      return;
+    if (
+      previewedContent &&
+      previewedContent?.position[0] &&
+      previewedContent?.position[1]
+    ) {
+      dispatch(
+        setFlyTo({
+          isAnimated: true,
+          ...globalGlobeView,
+          lat: previewedContent.position[1],
+          lng: previewedContent.position[0],
+        }),
+      );
+    } else {
+      console.warn(
+        `Content with id ${selectedContentId} could not be found, ${previewedContent}`,
+      );
     }
-
-    dispatch(
-      setFlyTo({
-        isAnimated: true,
-        ...globalGlobeView,
-        lat: previewedContent.position[1],
-        lng: previewedContent.position[0],
-      }),
-    );
   }, [selectedContentId, globalGlobeView, stories, dispatch]);
 
   useEffect(() => {
@@ -220,7 +225,9 @@ const DataViewer: FunctionComponent<Props> = ({
         ></span>
       )}
       {showContentList && !isMobile && (
-        <span className={styles.currentCategory}>{currentCategory}</span>
+        <span className={styles.currentCategory}>
+          <FormattedMessage id={`tags.${currentCategory}`} />
+        </span>
       )}
       <div
         id="globeWrapper"

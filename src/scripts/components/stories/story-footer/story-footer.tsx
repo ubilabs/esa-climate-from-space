@@ -26,14 +26,17 @@ const StoryFooter: FunctionComponent<Props> = ({
 }) => {
   const isShowcaseMode = mode === StoryMode.Showcase;
   const isStoriesMode = mode === StoryMode.Stories;
+  //console.log("videoDuration", videoDuration);
+
   const { nextSlideLink, previousSlideLink, autoPlayLink, delay } =
     useStoryNavigation(videoDuration);
+
   const mouseMove = useMouseMove();
   const footerClasses = cx(
     styles.storyFooter,
     !isStoriesMode && !mouseMove && styles.slideOutFooter,
   );
-
+//console.log("selectedStory", selectedStory);
   return (
     <div className={footerClasses}>
       {selectedStory && (
