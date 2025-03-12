@@ -16,6 +16,7 @@ interface Props {
   isAnimationReady:RefObject<boolean>;
   arcs: { [key: string]: number }[];
   currentScrollIndex: number | null;
+  height: number;
 }
 
 /**
@@ -29,6 +30,7 @@ interface Props {
  * @param {React.MutableRefObject<boolean>} props.isAnimationReady - A ref to check if the animation is ready
  **/
 const CategoryNavigation: FunctionComponent<Props> = ({
+  height,
   width,
   isMobile,
   setCategory,
@@ -58,10 +60,11 @@ const CategoryNavigation: FunctionComponent<Props> = ({
 
   // Why _oversize? It's because the circle navigation should be bigger than the screen
   // We hide the overflow in the parent container
-  //const _size = isMobile ? width + _overSize : (width - 154) / 3 *2;
   const _size = isMobile
     ? width + _overSize
-    : width / 2 - 65 // 50% of the screen width minues some padding
+    // 50% of the screen width minues some padding
+    // But capped at the height of the screen minus some padding
+    : Math.min(width / 2 - 65, height - 120)
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
 

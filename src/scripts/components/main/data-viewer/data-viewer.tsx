@@ -67,7 +67,7 @@ const DataViewer: FunctionComponent<Props> = ({
   const history = useHistory();
   const intl = useIntl();
 
-  const { screenWidth, isMobile } = useScreenSize();
+  const { screenHeight, screenWidth, isMobile } = useScreenSize();
 
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoriesQuery(language);
@@ -184,6 +184,7 @@ const DataViewer: FunctionComponent<Props> = ({
           arcs={arcs}
           showCategories={!showContentList}
           width={screenWidth}
+          height={screenHeight}
           isMobile={isMobile}
           setCategory={setCurrentCategory}
           isAnimationReady={hasAnimationPlayed}
