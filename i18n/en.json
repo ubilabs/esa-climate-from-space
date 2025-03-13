@@ -134,5 +134,15 @@
   "category.swipe": "swipe to navigate",
   "category.scroll": "scroll to \nnavigate",
   "learn_more": "learn more",
-  "back_to_overview": "Back to overview"
+  "back_to_overview": "Back to overview",
+  "categories.welcome": "Welcome",
+  "categories.water_cycle": "Water Cycle",
+  "categories.land": "Land",
+  "categories.carbon_cycle": "Carbon Cycle",
+  "categories.climate_risk": "Climate Risk",
+  "categories.climate_action": "Climate Action",
+  "categories.improving_models": "Improving Models",
+  "categories.ocean": "Ocean",
+  "categories.atmosphere": "Atmosphere",
+  "categories.cryosphere": "Cryosphere"
 }
