@@ -21,7 +21,10 @@ import { setSelectedLayerIds } from "../../../reducers/layers";
 import { globeViewSelector } from "../../../selectors/globe/view";
 import { languageSelector } from "../../../selectors/language";
 
-import { useGetLayersQuery, useGetStoriesQuery } from "../../../services/api";
+import {
+  useGetLayerListQuery,
+  useGetStoryListQuery,
+} from "../../../services/api";
 
 import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
@@ -73,8 +76,8 @@ const DataViewer: FunctionComponent<Props> = ({
   const { screenHeight, screenWidth, isMobile } = useScreenSize();
 
   const language = useSelector(languageSelector);
-  const { data: stories } = useGetStoriesQuery(language);
-  const { data: layers } = useGetLayersQuery(language);
+  const { data: stories } = useGetStoryListQuery(language);
+  const { data: layers } = useGetLayerListQuery(language);
 
   // We need to keep track of the current selected content Id because we need to
   // set the flyTo for the marker, or add the data layer to the globe

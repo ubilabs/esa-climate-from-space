@@ -171,7 +171,8 @@
     "description": "",
     "image": "assets/story39-image01.jpg",
     "tags": ["sea-surface-temperature", "ocean-colour", "sea-surface-salinity"],
-    "position": [80, -20]
+    "position": [80, -20],
+    "categories": ["ocean"]
   },
   {
     "id": "story-40",
@@ -179,7 +180,8 @@
     "description": "",
     "image": "assets/story40-image01.jpg",
     "tags": ["glaciers", "ice-sheets", "snow", "permafrost", "sea-ice"],
-    "position": [105, 75]
+    "position": [105, 75],
+    "categories": ["cryosphere", "water_cycle"]
   },
   {
     "id": "story-41",
@@ -187,7 +189,8 @@
     "description": "",
     "image": "assets/story41-image01.jpg",
     "tags": ["fire", "ghg", "ozone", "cloud", "aerosol"],
-    "position": [138, 35.5]
+    "position": [138, 35.5],
+    "categories": ["atmosphere"]
   },
   {
     "id": "story-42",
@@ -195,7 +198,8 @@
     "description": "",
     "image": "assets/story42-image01.jpg",
     "tags": ["sea-level"],
-    "position": [-80, 26]
+    "position": [-80, 26],
+    "categories": ["ocean"]
   },
   {
     "id": "story-43",
@@ -203,7 +207,8 @@
     "description": "",
     "image": "assets/story43-image01.jpg",
     "tags": ["sea-surface-temperature", "sea-surface-salinity", "cloud"],
-    "position": [-128, 5]
+    "position": [-128, 5],
+    "categories": ["ocean"]
   },
   {
     "id": "story-33",
@@ -211,7 +216,8 @@
     "description": "",
     "image": "assets/story33-image04.jpg",
     "tags": ["land-cover"],
-    "position": [31.2, 30]
+    "position": [31.2, 30],
+    "categories": ["land"]
   },
   {
     "id": "story-34",
@@ -227,7 +233,8 @@
     "description": "",
     "image": "assets/story35-image05.jpg",
     "tags": ["glaciers", "ice-sheets"],
-    "position": [-49.9, 69.1]
+    "position": [-49.9, 69.1],
+    "categories": ["cryosphere"]
   },
   {
     "id": "story-36",
@@ -235,7 +242,8 @@
     "description": "",
     "image": "assets/story36-image03.jpg",
     "tags": ["soil-moisture"],
-    "position": [106.8, -6.1]
+    "position": [106.8, -6.1],
+    "categories": ["land"]
   },
   {
     "id": "story-37",
@@ -243,6 +251,7 @@
     "description": "",
     "image": "assets/story37-image07.jpg",
     "tags": ["land-cover", "fire", "soil-moisture", "ghg"],
-    "position": [-4, 58.3]
+    "position": [-4, 58.3],
+    "categories": ["land"]
   }
 ]

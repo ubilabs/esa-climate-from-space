@@ -1,20 +1,24 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
-import { layersApi } from "../../../services/api";
+import { layersApi, useGetStoriesQuery } from "../../../services/api";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 
+import { languageSelector } from "../../../selectors/language";
+
 import { LayerListItem } from "../../../types/layer-list";
 import { StoryListItem } from "../../../types/story-list";
+import { GalleryItemType } from "../../../types/gallery-item";
+import { Story } from "../../../types/story";
 
 import {
   useContentScrollHandlers,
@@ -50,6 +54,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const dispatch = useDispatch();
   const thunkDispatch = useThunkDispatch();
   const { trackEvent } = useMatomo();
+  const lang = useSelector(languageSelector);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const entryCount = contents.length;
@@ -131,6 +136,31 @@ const ContentNavigation: FunctionComponent<Props> = ({
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
 
+  const { data: stories } = useGetStoriesQuery({
+    ids: contents.filter((el) => isStoryListItem(el)).map(({ id }) => id),
+    language: lang,
+  });
+
+  const getStoryMediaType = (item: StoryListItem, stories?: Story[]) => {
+    let type = "blog";
+
+    const story = stories?.find((story) => story.id === item.id);
+    const galleyItemTypes = new Set(
+      story?.slides
+        .flatMap((slide) => slide.galleryItems)
+        .map(({ type }) => type),
+    );
+    if (
+      // if gallery only contains images or videos return media type
+      galleyItemTypes.size === 1 &&
+      (galleyItemTypes.has(GalleryItemType.Image) ||
+        galleyItemTypes.has(GalleryItemType.Video))
+    ) {
+      type = [...galleyItemTypes][0];
+    }
+    return type;
+  };
+
   return (
     <ul
       ref={navigationRef}
@@ -144,12 +174,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
       onTouchCancel={handleTouchEnd}
       onWheel={handleWheel}
     >
-      {contents.map((element, index) => {
-        const { id } = element;
-        const name = "title" in element ? element.title : element.name;
-        const isStory = isStoryListItem(element);
-        // Todo: Add type properties for Video Story and Image Story
-        const type = isStory ? "blog" : "layer";
+      {contents.map((item, index) => {
+        const { id } = item;
+        const name = "title" in item ? item.title : item.name;
+        const isStory = isStoryListItem(item);
+        const type = isStory ? getStoryMediaType(item, stories) : "layer";
 
         return (
           <li
@@ -158,7 +187,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             // Used to identify the currently seletected content.
             // Passed to the globe via props to make sure correct actions are triggered
             // E.g. flyTo or show the data layer
-            data-content-id={element.id}
+            data-content-id={item.id}
             className={cx(styles.contentNavItem)}
             key={index}
             aria-label={`${type} content: ${name}`}

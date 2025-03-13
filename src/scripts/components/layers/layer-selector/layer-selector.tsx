@@ -16,7 +16,7 @@ import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
-import { layersApi, useGetLayersQuery } from "../../../services/api";
+import { layersApi, useGetLayerListQuery } from "../../../services/api";
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const LayerSelector: FunctionComponent = () => {
 
   const showLayerSelector = useSelector(showLayerSelectorSelector);
 
-  const { data: layers } = useGetLayersQuery("en");
+  const { data: layers } = useGetLayerListQuery("en");
   if (!layers) {
     return null;
   }

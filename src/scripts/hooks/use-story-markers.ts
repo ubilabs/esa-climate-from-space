@@ -1,8 +1,11 @@
-import { useGetStoriesQuery } from "../services/api";
+import { useGetStoryListQuery } from "../services/api";
 import { Language } from "../types/language";
 
-export const useContentMarker = (selectedStoryId: string | null, language: Language) => {
-  const { data: stories } = useGetStoriesQuery(language);
+export const useContentMarker = (
+  selectedStoryId: string | null,
+  language: Language,
+) => {
+  const { data: stories } = useGetStoryListQuery(language);
   if (!stories) {
     return null;
   }
