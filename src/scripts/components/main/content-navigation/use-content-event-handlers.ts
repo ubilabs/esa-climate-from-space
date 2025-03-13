@@ -74,12 +74,11 @@ export const useContentTouchHandlers = (
 
 export const useContentScrollHandlers = (
   setCurrentIndex: Dispatch<SetStateAction<number>>,
-  numOfItems: number, // Total number of items
+  entryCount: number, // Total number of items
 ) => {
   const isScrollingRef = useRef(false);
 
-  const maxIndex = Math.floor(numOfItems / 2);
-  const minIndex = Math.floor((numOfItems - 1) / 2) * -1;
+    const { maxIndex, minIndex } = calculateNavigationBounds(entryCount);
 
   const handleWheel = useCallback(
     (e: React.WheelEvent) => {
