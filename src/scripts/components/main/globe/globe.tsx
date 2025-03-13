@@ -87,11 +87,11 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     imageLayer,
     markers,
     isAutoRotating = false,
+    backgroundColor,
     className,
   } = props;
 
   const [containerRef, globe] = useWebGlGlobe(view);
-
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
 
   const rotationRef = useRef<{
@@ -181,6 +181,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
         initialTilesLoaded && styles.fadeIn,
         className,
       )}
+      style={{ backgroundColor }}
       onMouseEnter={() => onMouseEnter()}
       onTouchStart={() => onTouchStart()}
     ></div>

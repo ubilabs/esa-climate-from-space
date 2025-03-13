@@ -1,21 +1,37 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import cx from "classnames";
+
+import { layersApi } from "../../../services/api";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 
-import { StoryList } from "../../../types/story-list";
-import { Link } from "react-router-dom";
+import { setShowLayer } from "../../../reducers/show-layer-selector";
+import { setSelectedLayerIds } from "../../../reducers/layers";
+
+import { LayerListItem } from "../../../types/layer-list";
+import { StoryListItem } from "../../../types/story-list";
+
 import {
   useContentScrollHandlers,
   useContentTouchHandlers,
 } from "./use-content-event-handlers";
 
-import cx from "classnames";
 import styles from "./content-navigation.module.css";
+
+function isStoryListItem(
+  obj: StoryListItem | LayerListItem,
+): obj is StoryListItem {
+  return obj && "title" in obj && "image" in obj;
+}
 
 interface Props {
   showContentList: boolean;
-  contents: StoryList;
+  contents: (StoryListItem | LayerListItem)[];
   setSelectedContentId: React.Dispatch<React.SetStateAction<string | null>>;
   category: string | null;
   className?: string;
@@ -31,6 +47,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
   isMobile,
 }) => {
   const navigationRef = React.useRef<HTMLUListElement | null>(null);
+  const dispatch = useDispatch();
+  const thunkDispatch = useThunkDispatch();
+  const { trackEvent } = useMatomo();
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const entryCount = contents.length;
@@ -125,9 +144,13 @@ const ContentNavigation: FunctionComponent<Props> = ({
       onTouchCancel={handleTouchEnd}
       onWheel={handleWheel}
     >
-      {contents.map(({ title, id }, index) => {
-        // Todo: Add type property to StoryList. For now we just take blog
-        const type = "blog";
+      {contents.map((element, index) => {
+        const { id } = element;
+        const name = "title" in element ? element.title : element.name;
+        const isStory = isStoryListItem(element);
+        // Todo: Add type properties for Video Story and Image Story
+        const type = isStory ? "blog" : "layer";
+
         return (
           <li
             // Used n CSS to get the correct icon for the content type
@@ -135,13 +158,25 @@ const ContentNavigation: FunctionComponent<Props> = ({
             // Used to identify the currently seletected content.
             // Passed to the globe via props to make sure correct actions are triggered
             // E.g. flyTo or show the data layer
-            data-content-id={id}
+            data-content-id={element.id}
             className={cx(styles.contentNavItem)}
             key={index}
-            aria-label={`${type} content: ${title}`}
+            aria-label={`${type} content: ${name}`}
+            onClick={() => {
+              if (!isStory) {
+                dispatch(setShowLayer(false));
+                thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
+                dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
+                trackEvent({
+                  category: "datasets",
+                  action: "select",
+                  name,
+                });
+              }
+            }}
           >
-            <Link to={`${category}/stories/${id}/0/`}>
-              <span>{title}</span>
+            <Link to={isStory ? `${category}/stories/${id}/0/` : "/data"}>
+              <span>{name}</span>
               {!isMobile && (
                 <span className={cx(styles.learnMore)}>
                   <FormattedMessage id="learn_more" />

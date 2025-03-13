@@ -7,6 +7,7 @@ interface LayerListItem {
   link: string;
   usageInfo: string;
   subLayers: LayerListItem[];
+  categories: string[];
 }
 
 export type LayerList = LayerListItem[];

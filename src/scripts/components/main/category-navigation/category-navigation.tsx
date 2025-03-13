@@ -1,9 +1,13 @@
-import React, { FunctionComponent, RefObject, useEffect, useState } from "react";
-
-import cx from "classnames";
-
+import React, {
+  FunctionComponent,
+  RefObject,
+  useEffect,
+  useState,
+} from "react";
 import { useHistory } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import cx from "classnames";
+
 import { useCategoryTouchHandlers } from "./use-category-event-handlers";
 
 import styles from "./category-navigation.module.css";
@@ -13,7 +17,7 @@ interface Props {
   isMobile: boolean;
   width: number;
   setCategory: React.Dispatch<React.SetStateAction<string | null>>;
-  isAnimationReady:RefObject<boolean>;
+  isAnimationReady: RefObject<boolean>;
   arcs: { [key: string]: number }[];
   currentScrollIndex: number | null;
   height: number;
@@ -37,7 +41,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   showCategories,
   arcs,
   isAnimationReady,
-  currentScrollIndex
+  currentScrollIndex,
 }) => {
   const history = useHistory();
   const {
@@ -62,9 +66,9 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   // We hide the overflow in the parent container
   const _size = isMobile
     ? width + _overSize
-    // 50% of the screen width minues some padding
-    // But capped at the height of the screen minus some padding
-    : Math.min(width / 2 - 65, height - 120)
+    : // 50% of the screen width minues some padding
+      // But capped at the height of the screen minus some padding
+      Math.min(width / 2 - 65, height - 120);
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
 
@@ -190,7 +194,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
                 index === normalizedIndex && showCategories && styles.active,
               )}
             >
-              <FormattedMessage id={`tags.${category}`} />
+              <FormattedMessage id={`categories.${category}`} />
               <span>
                 <FormattedMessage
                   id="entries"
