@@ -30,9 +30,10 @@
     }
   }
 
-  grid-template-areas: "heading"
-  "globe-nav-area"
-  "explore";
+  grid-template-areas:
+    "heading"
+    "globe-nav-area"
+    "explore";
   height: calc(100vh - var(--header-height));
   height: calc(100dvh - var(--header-height));
   grid-template-rows: 3.5rem calc(100vh - var(--header-height) - 10rem) 6.5rem;
@@ -54,10 +55,18 @@
       scale: 1;
     }
 
-    @container wrapper (aspect-ratio <=1 / 1) {
+    @container wrapper (width >=100px) {
       .globe {
-        scale: 1;
-        height: calc(110cqw);
+        /* We initialize the globe as big as we need it in the content view to appearance;
+* and scale it down to 40% while scaling it to 1 in the content view
+* We do this to achieve a nice transistion between category- and content view and also to make sure the globe looks sharp
+* */
+        height: 300cqw;
+        width: 300cqw;
+
+        canvas {
+          scale: 0.4;
+        }
       }
     }
 
@@ -67,14 +76,15 @@
       grid-template-rows: 1fr;
       grid-gap: 0;
 
-      @container wrapper (width > 100px) {
+      @container wrapper (width >=100px) {
         .globe {
-          transform: translate(-210cqw, -50%) !important;
+          transform: translate(-210cqw, -50%);
           transform-origin: start;
           transition: all 0.5s ease;
-          scale: 1;
-          height: calc(300cqw);
-          width: 300cqw;
+
+          canvas {
+            scale: 1;
+          }
         }
       }
 
@@ -208,7 +218,7 @@
 .backButton {
   width: 100%;
 
-  >span {
+  > span {
     margin: 0 auto;
 
     &:after {
@@ -231,7 +241,7 @@
     margin-left: 1.5rem;
     padding-left: 0.5rem;
 
-    >span {
+    > span {
       margin-left: 2rem;
       position: relative;
 
@@ -318,7 +328,7 @@
     /* 120% */
   }
 
-  >h2 {
+  > h2 {
     margin: 0 auto;
   }
 }
