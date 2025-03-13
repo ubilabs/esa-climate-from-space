@@ -79,8 +79,13 @@
       @container wrapper (width >=100px) {
         .globe {
           canvas {
+          /* We need to move the globe to the left to make space for the content nav */
             transform: translateX(-60cqw);
             scale: 1;
+          }
+          /* This will move all markers to their correct position*/
+          div {
+            left: -60cqw !important;
           }
         }
       }
