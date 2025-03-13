@@ -14,20 +14,17 @@
 .globe canvas {
   /* We use the filter function to create an overlay. This makes the text on the globe more readable */
   filter: brightness(0.85) saturate(0.85) opacity(0.95);
-  transition: transform 0.8s ease;
+  transform-origin: center;
+  transition: all 1s ease;
   position: relative;
   z-index: 1;
 }
 
 .marker {
-  cursor: pointer;
-  user-select: none;
-  animation: pulse 1s ease-in-out;
-  /* Add this line to apply the pulse animation */
-}
-
-.marker {
+  transition:none;
   transform-origin: center;
+  user-select: none;
+  cursor: pointer;
   animation: pulse 1.5s ease-out;
 
   .outer {

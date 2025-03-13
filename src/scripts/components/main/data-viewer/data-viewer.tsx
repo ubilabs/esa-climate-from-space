@@ -173,7 +173,6 @@ const DataViewer: FunctionComponent<Props> = ({
         const count = tags.filter((t) => t === tag).length;
         return { [tag]: count };
       }),
-    // Todo: Delete this filter when we have the new categories
     [uniqueTags, allCategories],
   );
 
