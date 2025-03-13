@@ -34,8 +34,9 @@ const Story: FunctionComponent = () => {
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const { mode, slideIndex, currentStoryId, storyListItem  } =
+  const { mode, slideIndex, currentStoryId   } =
     storyParams;
+
   const { story_header } = useSelector(embedElementsSelector);
 
   const lang = useSelector(languageSelector);
@@ -129,9 +130,8 @@ const Story: FunctionComponent = () => {
     }
     return null;
   };
-
   return (<>
-    {storyListItem && story_header && (
+    {story_header && (
       <Navigation />
     )}
     <div className={styles.story}>
