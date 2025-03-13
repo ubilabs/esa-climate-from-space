@@ -134,5 +134,15 @@
   "category.swipe": "veeg om te navigeren",
   "category.scroll": "scrollen om te \nnavigeren",
   "learn_more": "meer leren",
-  "back_to_overview": "Terug naar overzicht"
+  "back_to_overview": "Terug naar overzicht",
+  "categories.welcome": "Welkom",
+  "categories.water_cycle": "Watercyclus",
+  "categories.land": "Land",
+  "categories.carbon_cycle": "Koolstofcyclus",
+  "categories.climate_risk": "Klimaatrisico",
+  "categories.climate_action": "Klimaatactie",
+  "categories.improving_models": "Modellen Verbeteren",
+  "categories.ocean": "Oceaan",
+  "categories.atmosphere": "Atmosfeer",
+  "categories.cryosphere": "Cryosfeer"
 }
