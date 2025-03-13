@@ -65,7 +65,7 @@
         width: 300cqw;
 
         canvas {
-          scale: 0.4;
+          scale: 0.38;
         }
       }
     }
@@ -78,11 +78,8 @@
 
       @container wrapper (width >=100px) {
         .globe {
-          transform: translate(-210cqw, -50%);
-          transform-origin: start;
-          transition: all 0.5s ease;
-
           canvas {
+            transform: translateX(-60cqw);
             scale: 1;
           }
         }

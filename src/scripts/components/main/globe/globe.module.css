@@ -14,10 +14,10 @@
 .globe canvas {
   /* We use the filter function to create an overlay. This makes the text on the globe more readable */
   filter: brightness(0.85) saturate(0.85) opacity(0.95);
-  transition: transform 0.8s ease;
+          transform-origin: center;
+  transition: all 1s ease;
   position: relative;
   z-index: 1;
-  transition: scale 0.5s ease;
 }
 
 .marker {
