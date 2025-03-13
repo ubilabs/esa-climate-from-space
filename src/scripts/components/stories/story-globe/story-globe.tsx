@@ -4,10 +4,10 @@ import { useStoryGlobe } from "../../../hooks/use-story-globe";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import DataViewer from "../../main/data-viewer/data-viewer";
 import TimeSlider from "../../layers/time-slider/time-slider";
 import LayerDescription from "../layer-description/layer-description";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { GlobeCompareLayer } from "../../main/globe-compare-layer/globe-compare-layer";
 import { useGetLayerQuery } from "../../../services/api";
 
 import { GlobeItem } from "../../../types/gallery-item";
@@ -29,7 +29,7 @@ const StoryGlobe: FunctionComponent<Props> = ({ globeItem }) => {
 
   return (
     <div className={styles.globeContainer}>
-      <DataViewer
+      <GlobeCompareLayer
         hideNavigation
         markers={globeItem.markers}
         backgroundColor={"var(--plain-black)"}

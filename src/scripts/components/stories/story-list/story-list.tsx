@@ -33,6 +33,7 @@ const StoryList: FunctionComponent<Props> = ({
   }
 
   const filteredStories = filterStories(stories, selectedTags);
+
   const classes = cx(
     styles.storyListGrid,
     mode === StoryMode.Present && styles.present,

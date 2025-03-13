@@ -1,32 +1,26 @@
 import { FunctionComponent, useState, useRef, useEffect } from "react";
-import { FormattedMessage } from "react-intl";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
 
-import { TwitterIcon } from "../icons/twitter-icon";
-import { FacebookIcon } from "../icons/facebook-icon";
-import { CopyIcon } from "../icons/copy-icon";
-import { ShareIcon } from "../icons/share-icon";
 import config from "../../../config/main";
 import Button from "../button/button";
-import { CloseIcon } from "../icons/close-icon";
-import { EmbedIcon } from "../icons/embed-icon";
-import { CheckIcon } from "../icons/check-icon";
 import Overlay from "../overlay/overlay";
 import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
 import EmbedWizard from "../embed-wizard/embed-wizard";
 
 import styles from "./share.module.css";
 
-const Share: FunctionComponent = () => {
-  const [showShare, setShowShare] = useState(false);
+interface Props {
+  className?: string;
+}
+
+const Share: FunctionComponent<Props> = ({ className }) => {
+  const classes = `${styles.shareItem} ${className}`;
+
   const [showEmbedWizard, setShowEmbedWizard] = useState<boolean>(false);
   const { trackEvent } = useMatomo();
   const currentUrl = window.location.href;
 
   const facebookUrl = replaceUrlPlaceholders(config.share.facebook, {
-    currentUrl: encodeURIComponent(currentUrl),
-  });
-  const twitterUrl = replaceUrlPlaceholders(config.share.twitter, {
     currentUrl: encodeURIComponent(currentUrl),
   });
   const [copied, setCopied] = useState(false);
@@ -67,80 +61,49 @@ const Share: FunctionComponent = () => {
   };
 
   return (
-    <div className={styles.share}>
-      <Button
-        className={styles.shareButton}
-        id="ui-share"
-        icon={ShareIcon}
-        onClick={() => setShowShare(true)}
-      />
-
-      {showEmbedWizard ? (
+    <>
+      <ul className={styles.share}>
+        <li className={classes}>
+          <a
+            href={facebookUrl}
+            target={"_blank"}
+            rel="noopener noreferrer"
+            className={styles.link}
+            onClick={() => trackShareClick("facebook")}
+          >
+            <span>Facebook</span>
+          </a>
+        </li>
+        <li
+        >
+          <Button
+            className={classes}
+            label="copyLink"
+            onClick={() => {
+              setCopied(true);
+              copyUrl();
+              trackShareClick("link-copy");
+            }}
+          >
+          </Button>
+        </li>
+        <li>
+          <Button
+            onClick={() => setShowEmbedWizard(true)}
+            className={classes}
+            label={"embed"}
+          />
+        </li>
+      </ul>
+      {showEmbedWizard && (
         <Overlay
           className={styles.embedOverlay}
           onClose={() => setShowEmbedWizard(false)}
         >
           <EmbedWizard />
         </Overlay>
-      ) : (
-        showShare && (
-          <Overlay showCloseButton={false}>
-            <div className={styles.shareOverlay}>
-              <Button
-                icon={CloseIcon}
-                className={styles.closeButton}
-                onClick={() => setShowShare(false)}
-              />
-              <h1 className={styles.title}>
-                <FormattedMessage id="share" />
-              </h1>
-              <div className={styles.shareButtons}>
-                <Button
-                  onClick={() => setShowEmbedWizard(true)}
-                  icon={EmbedIcon}
-                  className={styles.button}
-                  label={"embed"}
-                />
-                <a
-                  href={twitterUrl}
-                  target={"_blank"}
-                  rel="noopener noreferrer"
-                  className={styles.button}
-                  onClick={() => trackShareClick("twitter")}
-                >
-                  <TwitterIcon />
-                  <span>Twitter</span>
-                </a>
-                <a
-                  href={facebookUrl}
-                  target={"_blank"}
-                  rel="noopener noreferrer"
-                  className={styles.button}
-                  onClick={() => trackShareClick("facebook")}
-                >
-                  <FacebookIcon />
-                  <span>Facebook</span>
-                </a>
-                <div
-                  className={styles.button}
-                  onClick={() => {
-                    setCopied(true);
-                    copyUrl();
-                    trackShareClick("link-copy");
-                  }}
-                >
-                  <input ref={ref} type="hidden" contentEditable="true" />
-                  {copied ? <CheckIcon /> : <CopyIcon />}
-                  <span>
-                    <FormattedMessage id={"copyLink"} />
-                  </span>
-                </div>
-              </div>
-            </div>
-          </Overlay>
-        )
       )}
-    </div>
+    </>
   );
 };
 

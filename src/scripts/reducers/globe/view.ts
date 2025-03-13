@@ -12,7 +12,10 @@ const globeViewSlice = createSlice({
   initialState,
   reducers: {
     setGlobeView(state, action: PayloadAction<CameraView>) {
-      return action.payload;
+      return {
+       ...state,
+       ...action.payload
+      };
     },
   },
 });

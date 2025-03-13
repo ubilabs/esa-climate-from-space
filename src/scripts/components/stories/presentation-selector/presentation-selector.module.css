@@ -1,4 +1,5 @@
 .presentationSelector {
+  grid-area: header / content / content / content;
   position: relative;
   display: flex;
   flex-direction: column;

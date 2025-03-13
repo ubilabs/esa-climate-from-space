@@ -1,11 +1,28 @@
 .navigation {
-  position: absolute;
-  top: 1.375em;
-  right: 1.375em;
+  border-bottom: 2px solid var(--main);
+  background: var(--dark-grey-5);
   display: flex;
-  gap: 1.875em;
+  align-items: center;
+  flex-wrap: no-wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
   z-index: 1;
+  grid-area: header;
+  padding: 0 1.5rem;
+
+  .logoLink {
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
 }
+
+.backButton {
+  margin-right: auto;
+}
+
 .storiesContainer {
   display: flex;
   gap: 0.5em;
@@ -35,9 +52,4 @@
   border-radius: 50%;
   background: var(--main);
   color: #fff;
-}
-@media screen and (--mobile-viewport) {
-  .navigation {
-    gap: 0.9375em;
-  }
 }

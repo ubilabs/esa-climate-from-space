@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 import Button from "../../main/button/button";
 import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
-import { EsaLogoShort } from "../../main/icons/esa-logo-short";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import useIsStoriesPath from "../../../hooks/use-is-stories-path";
 import { useStoryParams } from "../../../hooks/use-story-params";
@@ -23,9 +22,10 @@ const Header: FunctionComponent<Props> = ({
   backButtonId,
   children,
 }) => {
-  const { currentStoryId } = useStoryParams();
+  const { currentStoryId} = useStoryParams();
   const isStoriesPath = useIsStoriesPath();
   const { back_link, story_back_link } = useSelector(embedElementsSelector);
+
 
   const disabledEmbedLink =
     (isStoriesPath && back_link) || (currentStoryId && story_back_link);
@@ -33,7 +33,6 @@ const Header: FunctionComponent<Props> = ({
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
-        <EsaLogoShort />
       </div>
       {disabledEmbedLink && (
         <Button

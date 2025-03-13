@@ -119,5 +119,20 @@
   "tags.snow": "Schnee",
   "tags.lakes": "Seen",
   "tags.biomass": "Biomasse",
-  "tags.ghg": "GHG"
+  "tags.ghg": "GHG",
+  "filter.add": "Filter hinzufügen",
+  "contentType": "Art des Inhalts",
+  "tags.all-options": "Alle Optionen",
+  "narrative": "Erzählung",
+  "data-layer": "Datenebene",
+  "video": "Video",
+  "image-gallery": "Bildergalerie",
+  "show_entries": "Zeige {count, number} {count, plural, one {Eintrag} other {Einträge}}",
+  "entries": "{count, number} {count, plural, one {Eintrag} other {Einträge}}",
+  "explore": "Erkunden",
+  "category.choose": "Wählen Sie eine Kategorie",
+  "category.swipe": "swipen zum Navigieren",
+  "category.scroll": "scrollen zum \nNavigieren",
+  "learn_more": "mehr erfahren",
+  "back_to_overview": "Zurück zur Übersicht"
 }

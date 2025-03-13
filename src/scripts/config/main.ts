@@ -1,9 +1,9 @@
 import { RenderMode } from "@ubilabs/esa-webgl-globe";
 
-import { GlobeState } from "../reducers/globe/index";
 import { UiEmbedElement } from "../types/embed-elements";
 
 import { GlobeProjection } from "../types/globe-projection";
+import { GlobeState } from "../reducers/globe/globe-state";
 
 const globeState: GlobeState = {
   time: Date.now(),
@@ -126,6 +126,7 @@ export default {
   legendImage: `${baseUrlTiles}/{id}/legend.png`,
   downloadUrls,
   localStorageLanguageKey: "language",
+  localStorageHasUserInteractedKey: "hasUserInteracted",
   localStorageWelcomeScreenKey: "welcomeScreenChecked",
   delay: 5000,
   feedbackUrl: "https://climate.esa.int/en/helpdesk/",

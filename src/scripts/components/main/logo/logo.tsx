@@ -6,7 +6,7 @@ import styles from "./logo.module.css";
 
 const Logo: FunctionComponent = () => (
   <div className={styles.logo}>
-    <EsaLogo />
+    <EsaLogo variant="logoWithText"/>
   </div>
 );
 

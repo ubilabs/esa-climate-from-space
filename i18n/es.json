@@ -119,5 +119,20 @@
   "tags.snow": "Nieve",
   "tags.lakes": "Lagos",
   "tags.biomass": "Biomasa",
-  "tags.ghg": "GHG"
+  "tags.ghg": "GHG",
+  "filter.add": "Añadir filtros",
+  "contentType": "Tipo de contenido",
+  "tags.all-options": "Todas las opciones",
+  "narrative": "Narrativa",
+  "data-layer": "Capa de datos",
+  "video": "Vídeo",
+  "image-gallery": "Galería de imágenes",
+  "show_entries": "Mostrar {count, number} {count, plural, one {entrada} other {entradas}}",
+  "entries": "{count, number} {count, plural, one {Entrada} other {Entradas}}",
+  "explore": "Explorar",
+  "category.choose": "Elige una categoría",
+  "category.swipe": "desliza para navegar",
+  "category.scroll": "desplázate para \nnavegar",
+  "learn_more": "más información",
+  "back_to_overview": "Volver a la vista general"
 }

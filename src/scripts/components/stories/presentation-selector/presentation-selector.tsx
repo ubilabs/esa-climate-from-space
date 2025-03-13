@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 import StoryList from "../story-list/story-list";
 import Header from "../header/header";
-import Share from "../../main/share/share";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import { StoryMode } from "../../../types/story-mode";
@@ -23,7 +22,6 @@ const PresentationSelector: FunctionComponent = () => {
           backButtonId="backToDataMode"
           title={intl.formatMessage({ id: "presenter" })}
         >
-          <Share />
         </Header>
       )}
       <StoryList mode={StoryMode.Present} />

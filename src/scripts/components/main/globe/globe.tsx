@@ -1,5 +1,6 @@
 import {
   FunctionComponent,
+  memo,
   useCallback,
   useEffect,
   useRef,
@@ -21,21 +22,24 @@ import GLOBE_WORKER_URL from "@ubilabs/esa-webgl-globe/worker?url";
 import ATMOSPHERE_TEXTURE_URL from "@ubilabs/esa-webgl-globe/textures/atmosphere.png?url";
 import SHADING_TEXTURE_URL from "@ubilabs/esa-webgl-globe/textures/shading.png?url";
 
-import { GlobeProjectionState } from "../../../types/globe-projection-state";
 import { Layer } from "../../../types/layer";
 import { Marker } from "../../../types/marker-type";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
-import { getMarkerHtml } from "./get-marker-html";
 import { LayerType } from "../../../types/globe-layer-type";
 import { useHistory } from "react-router-dom";
 import config from "../../../config/main";
 
-import styles from "./globe.module.css";
 import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
+import { FlyToPayload } from "../../../reducers/fly-to";
+import { renderToStaticMarkup } from "react-dom/server";
+import { MarkerMarkup } from "./marker-markup";
+import { GlobeProjectionState } from "../../../types/globe-projection-state";
+
+import styles from "./globe.module.css";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -53,7 +57,7 @@ interface Props {
   imageLayer: GlobeImageLayerData | null;
   layerDetails: Layer | null;
   spinning: boolean;
-  flyTo: CameraView | null;
+  flyTo: FlyToPayload | null;
   markers?: Marker[];
   backgroundColor: string;
   onMouseEnter: () => void;
@@ -62,10 +66,18 @@ interface Props {
   onMoveStart: () => void;
   onMoveEnd: (view: CameraView) => void;
   onLayerLoadingStateChange: LayerLoadingStateChangeHandle;
+  isAutoRotating: boolean;
+  className: string;
 }
+
+export type GlobeProps = Partial<Props>;
+
 const EMPTY_FUNCTION = () => {};
 
-const Globe: FunctionComponent<Props> = (props) => {
+// This is the speed of the flyTo animation
+const SPEED = 2;
+
+const Globe: FunctionComponent<Props> = memo((props) => {
   const {
     view,
     projectionState,
@@ -74,29 +86,109 @@ const Globe: FunctionComponent<Props> = (props) => {
     layerDetails,
     imageLayer,
     markers,
+    isAutoRotating = false,
+    className,
   } = props;
 
   const [containerRef, globe] = useWebGlGlobe(view);
+
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
+
+  const rotationRef = useRef<{
+    lat: number;
+    lng: number;
+  }>({ lat: view.lat, lng: view.lng });
+
+  const isAutoRotatingRef = useRef<boolean>(isAutoRotating);
+
+  // We have these custom functions for autoRotating the globe and animating the flyTo
+  // Ticket #1271 and #1270 reference these issues see https://github.com/orgs/ubilabs/projects/48
+  const animatedFlyTo = useCallback(
+    (lat: number, lng: number) => {
+      // Instead of the center, we have to adjust the target position so that
+      // actual point we want to move to is rotated the right side
+      // This is because only the right side of the globe is actually visible to the user
+      const targetLng = lng - 55;
+      const targetLat = lat;
+      const startLng = rotationRef.current.lng;
+      const startLat = rotationRef.current.lat;
+      const deltaLng = targetLng - startLng;
+      const deltaLat = targetLat - startLat;
+      const steps = Math.ceil(SPEED * 60); // Assuming 60 frames per second
+
+      let step = 0;
+
+      const animate = () => {
+        if (step < steps) {
+          const currentLng = startLng + (deltaLng * step) / steps;
+          const currentLat = startLat + (deltaLat * step) / steps;
+          if (globe) {
+            rotationRef.current.lng = currentLng;
+            rotationRef.current.lat = currentLat;
+            globe.setProps({
+              cameraView: {
+                lng: currentLng,
+                lat: currentLat,
+                altitude: view.altitude,
+              },
+            });
+          }
+          step++;
+          requestAnimationFrame(animate);
+        }
+      };
+
+      animate();
+    },
+    [globe, view.altitude],
+  );
+
+  const autoRotate = useCallback(() => {
+    rotationRef.current.lng += 0.05;
+    const lng = rotationRef.current.lng;
+
+    if (globe) {
+      globe.setProps({
+        cameraView: { lng, lat: view.lat, altitude: view.altitude },
+      });
+    }
+
+    if (isAutoRotatingRef.current) {
+      requestAnimationFrame(autoRotate);
+    }
+  }, [globe, view.lat, view.altitude]);
+
+  useEffect(() => {
+    isAutoRotatingRef.current = isAutoRotating;
+    if (globe && isAutoRotating) {
+      autoRotate();
+    }
+  }, [globe, autoRotate, isAutoRotating]);
 
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
+
   useProjectionSwitch(globe, projectionState.projection);
-  useMultiGlobeSynchronization(globe, props);
+  useMultiGlobeSynchronization(globe, props, animatedFlyTo);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
-
-  // fixme: add auto-rotate functionality
 
   return (
     <div
       ref={containerRef}
-      className={cx(styles.globe, initialTilesLoaded && styles.fadeIn)}
+      className={cx(
+        styles.globe,
+        initialTilesLoaded && styles.fadeIn,
+        className,
+      )}
       onMouseEnter={() => onMouseEnter()}
       onTouchStart={() => onTouchStart()}
     ></div>
   );
-};
+});
+
+// Don't forget to add the import at the top:
+// import { memo } from 'react';
 
 /**
  * Use a state-variable and callback as a ref so the element can be used
@@ -189,7 +281,6 @@ function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
     if (!globe || !markers) {
       return EMPTY_FUNCTION;
     }
-
     globe.setProps({
       markers: getMarkerProps(markers, (marker: Marker) => {
         if (!marker.link) {
@@ -271,7 +362,11 @@ function useProjectionSwitch(
  * Integrate the globe with the external view-state events and props
  * (view / flyTo / onChange).
  */
-function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
+function useMultiGlobeSynchronization(
+  globe: WebGlGlobe | null,
+  props: Props,
+  animatedFlyTo: (lat: number, lng: number) => void,
+) {
   const { view, active, flyTo } = props;
 
   // forward camera changes from the active view to the parent component
@@ -287,9 +382,13 @@ function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
   // incoming flyTo cameraViews are always applied
   useEffect(() => {
     if (globe && flyTo) {
-      globe.setProps({ cameraView: flyTo });
+      if (flyTo.isAnimated) {
+        animatedFlyTo(flyTo.lat, flyTo.lng);
+      } else {
+        globe.setProps({ cameraView: flyTo });
+      }
     }
-  }, [globe, flyTo]);
+  }, [globe, flyTo, animatedFlyTo]);
 }
 
 /**
@@ -350,7 +449,6 @@ function useLayerLoadingStateUpdater(
 ) {
   const handler = useCallback(
     (ev: LayerLoadingStateChangedEvent) => {
-      console.log("changed");
       callback(ev.detail.layer.id, ev.detail.state);
     },
     [callback],
@@ -421,7 +519,8 @@ function getMarkerProps(
 
   for (const marker of markers) {
     const [lng, lat] = marker.position;
-    const html = getMarkerHtml(marker.title);
+    // const html = getMarkerHtml(marker.title);
+    const html = renderToStaticMarkup(<MarkerMarkup title={marker.title} />);
 
     if (!marker.link) {
       console.error("marker witout link!", marker);

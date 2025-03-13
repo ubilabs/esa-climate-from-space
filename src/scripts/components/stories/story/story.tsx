@@ -6,8 +6,6 @@ import { YouTubePlayer } from "youtube-player/dist/types";
 import { useStoryParams } from "../../../hooks/use-story-params";
 import { setGlobeTime } from "../../../reducers/globe/time";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
-import Share from "../../main/share/share";
-import Header from "../header/header";
 import SplashScreen from "../splash-screen/splash-screen";
 import StoryContent from "../story-content/story-content";
 import StoryFooter from "../story-footer/story-footer";
@@ -15,6 +13,7 @@ import StoryGallery from "../story-gallery/story-gallery";
 import StoryGlobe from "../story-globe/story-globe";
 import StoryImage from "../story-image/story-image";
 import StoryVideo from "../story-video/story-video";
+import Navigation from "../../main/navigation/navigation";
 
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { GalleryItemType } from "../../../types/gallery-item";
@@ -25,8 +24,7 @@ import StoryEmbedded from "../story-embedded/story-embedded";
 
 import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { setSelectedLayerIds } from "../../../reducers/layers";
-import { useGetStoryQuery } from "../../../services/api";
-import { StoryMode } from "../../../types/story-mode";
+import { useGetStoriesQuery, useGetStoryQuery } from "../../../services/api";
 import { languageSelector } from "../../../selectors/language";
 
 import styles from "./story.module.css";
@@ -36,18 +34,18 @@ const Story: FunctionComponent = () => {
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const { mode, slideIndex, currentStoryId, storyListItem } = storyParams;
-  const storyMode = mode === StoryMode.Stories;
+  const { mode, slideIndex, currentStoryId, storyListItem  } =
+    storyParams;
   const { story_header } = useSelector(embedElementsSelector);
 
   const lang = useSelector(languageSelector);
+
+  useGetStoriesQuery(lang);
 
   const { data: selectedStory } = useGetStoryQuery({
     id: currentStoryId,
     language: lang,
   });
-
-  const isSplashScreen = Boolean(selectedStory?.slides[slideIndex].splashImage);
 
   // set globe to sphere projection
   useEffect(() => {
@@ -120,8 +118,7 @@ const Story: FunctionComponent = () => {
                 return <StoryEmbedded embeddedItem={item} />;
               default:
                 console.warn(
-                  `Unknown gallery item type ${item["type"]} on slide ${
-                    slideIndex + 1
+                  `Unknown gallery item type ${item["type"]} on slide ${slideIndex + 1
                   } in story ${story.id}`,
                 );
                 return <></>;
@@ -133,17 +130,11 @@ const Story: FunctionComponent = () => {
     return null;
   };
 
-  return (
+  return (<>
+    {storyListItem && story_header && (
+      <Navigation />
+    )}
     <div className={styles.story}>
-      {storyListItem && story_header && (
-        <Header
-          backLink={`/${mode.toString()}`}
-          backButtonId="backToStories"
-          title={isSplashScreen ? "" : storyListItem.title}
-        >
-          {storyMode ? <Share /> : undefined}
-        </Header>
-      )}
       <main className={styles.main}>
         {/* Instead of rendering only the current slide we map over all slides to
         enforce a newly mounted component when the slideNumber changes */}
@@ -176,7 +167,7 @@ const Story: FunctionComponent = () => {
         selectedStory={selectedStory}
       />
     </div>
-  );
+  </>)
 };
 
 export default Story;

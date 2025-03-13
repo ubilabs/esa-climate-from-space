@@ -3,6 +3,7 @@ import getBrowserLanguage from "../libs/get-browser-language";
 import getLocalStorageLanguage from "../libs/get-local-storage-language";
 import { parseUrl } from "../libs/language-url-parameter";
 import { Language } from "../types/language";
+import config from "../config/main";
 
 const initialState: Language =
   parseUrl() ||
@@ -15,6 +16,7 @@ const languageSlice = createSlice({
   initialState,
   reducers: {
     setLanguage: (state, action: PayloadAction<Language>) => {
+      localStorage.setItem(config.localStorageLanguageKey, action.payload);
       return action.payload;
     },
   },

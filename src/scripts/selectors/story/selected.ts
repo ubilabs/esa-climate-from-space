@@ -3,8 +3,8 @@ import { storiesApi } from "../../services/api";
 
 import { Story } from "../../types/story";
 
-export const selectStory = (id: string) =>
-  storiesApi.endpoints.getStory.select({ id, language: "en" });
+export const selectStory = (id: string) => (state: State) =>
+  storiesApi.endpoints.getStory.select({ id, language: state.language })(state);
 
 export function selectedStorySelector(
   state: State,

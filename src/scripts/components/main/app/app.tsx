@@ -23,7 +23,7 @@ import AboutProjectOverlay from "../about-project-overlay/about-project-overlay"
 import translations from "../../../i18n";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import styles from "./app.module.css";
+import "./app.css";
 import "../../../../variables.css";
 
 // create matomo tracking instance
@@ -36,17 +36,12 @@ const matomoInstance = createInstance({
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
-  const {
-    logo: embedLogo,
-    globe_navigation,
-    time_slider,
-    legend,
-  } = useSelector(embedElementsSelector);
+  const { time_slider, legend } = useSelector(embedElementsSelector);
 
   const logo = (
     <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
-      <div className={styles.logo}>
-        <EsaLogo />
+      <div className={"logo"} style={{ zIndex: 4, fill: "#fff" }}>
+        <EsaLogo variant="logoWithText" />
       </div>
     </a>
   );
@@ -55,17 +50,6 @@ const TranslatedApp: FunctionComponent = () => {
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <Switch>
-          <Route path="/" exact>
-            {embedLogo && logo}
-            <DataViewer
-              hideNavigation={Boolean(globe_navigation)}
-              backgroundColor={"var(--black)"}
-            />
-            <Navigation />
-            {time_slider && <TimeSlider />}
-            {legend && <DataSetInfo />}
-            <LayerSelector />
-          </Route>
           <Route path="/about" exact>
             {logo}
             <AboutProjectOverlay />
@@ -81,13 +65,22 @@ const TranslatedApp: FunctionComponent = () => {
           </Route>
           <Route
             path={[
+              "/:category/stories/:storyId/:slideIndex",
               "/stories/:storyId/:slideIndex",
               "/present/:storyId/:slideIndex",
               "/showcase/:storyIds/:storyIndex/:slideIndex",
             ]}
-            exact
           >
             <Story />
+          </Route>
+          {/* By placing the DataViewer Component at the bottom, we make sure that the :category parameter
+          does not interfere with other parameters */}
+          <Route path={["/", "/:category"]} exact>
+            <Navigation />
+            <DataViewer hideNavigation={true} backgroundColor={"#10161A"} />
+            {time_slider && <TimeSlider />}
+            {legend && <DataSetInfo />}
+            <LayerSelector />
           </Route>
         </Switch>
         <Tracking />

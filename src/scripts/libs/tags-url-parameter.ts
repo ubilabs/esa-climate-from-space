@@ -4,7 +4,7 @@ const char = "I";
 //
 // note: we do not use the location.search prop here because the HashRouter
 // stores the query parameters in the location.hash prop
-export function parseUrl(): string[] {
+export function parseUrlTags(): string[] {
   const { hash } = location;
   // only take the query portion of the hash string
   const queryString = hash.substr(hash.indexOf("?"));
