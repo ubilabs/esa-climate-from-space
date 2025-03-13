@@ -24,7 +24,7 @@ import StoryEmbedded from "../story-embedded/story-embedded";
 
 import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { setSelectedLayerIds } from "../../../reducers/layers";
-import { useGetStoriesQuery, useGetStoryQuery } from "../../../services/api";
+import { useGetStoryListQuery, useGetStoryQuery } from "../../../services/api";
 import { languageSelector } from "../../../selectors/language";
 
 import styles from "./story.module.css";
@@ -40,7 +40,7 @@ const Story: FunctionComponent = () => {
 
   const lang = useSelector(languageSelector);
 
-  useGetStoriesQuery(lang);
+  useGetStoryListQuery(lang);
 
   const { data: selectedStory } = useGetStoryQuery({
     id: currentStoryId,

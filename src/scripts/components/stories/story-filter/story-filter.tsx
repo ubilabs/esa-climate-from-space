@@ -8,7 +8,7 @@ import { CheckIcon } from "../../main/icons/check-icon";
 
 import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
 import { setSelectedTags } from "../../../reducers/story";
-import { useGetStoriesQuery } from "../../../services/api";
+import { useGetStoryListQuery } from "../../../services/api";
 import { languageSelector } from "../../../selectors/language";
 
 import styles from "./story-filter.module.css";
@@ -16,7 +16,7 @@ import styles from "./story-filter.module.css";
 const StoryFilter: FunctionComponent = () => {
   const dispatch = useDispatch();
   const language = useSelector(languageSelector);
-  const { data: stories } = useGetStoriesQuery(language);
+  const { data: stories } = useGetStoryListQuery(language);
   const selectedTags = useSelector(selectedTagsSelector);
   const [translateValue, setTranslateValue] = useState(0);
   const scrollSpeed = 50; // pixels per frame

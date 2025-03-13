@@ -20,7 +20,7 @@ import { fetchLayers } from "../api/fetch-layers";
 
 // In this file, we create an API slice for managing layer and story data using Redux Toolkit Query.
 // In combination with Redux Toolkit allows us to fetch data
-// from the server and store it in the Redux store. We can then use auto-generated hooks (e.g. useGetLayersQuery)
+// from the server and store it in the Redux store. We can then use auto-generated hooks (e.g. useGetLayerListQuery)
 // to get access to the data, loading state, and error state without writing any reducers or actions manually.
 
 /**
@@ -31,7 +31,7 @@ export const layersApi = createApi({
   reducerPath: "layersApi",
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
   endpoints: (builder) => ({
-    getLayers: builder.query<LayerList, Language>({
+    getLayerList: builder.query<LayerList, Language>({
       queryFn: async (language: Language) => {
         try {
           const data = await fetchLayers(language);
@@ -65,6 +65,14 @@ export const layersApi = createApi({
   }),
 });
 
+const fetchAndConvertStory = async (id: string, language: Language) => {
+  const rawData = await fetchStory(id, language as Language);
+  const data = isLegacyStory(rawData)
+    ? convertLegacyStory(rawData as LegacyStory)
+    : (rawData as Story);
+  return data;
+};
+
 /**
  * Redux API slice for managing story-related API endpoints.
  */
@@ -72,7 +80,7 @@ export const storiesApi = createApi({
   reducerPath: "storiesApi",
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
   endpoints: (builder) => ({
-    getStories: builder.query<StoryList, Language>({
+    getStoryList: builder.query<StoryList, Language>({
       query: (lang) => {
         const url = replaceUrlPlaceholders(config.api.stories, { lang });
         return url;
@@ -81,10 +89,24 @@ export const storiesApi = createApi({
     getStory: builder.query<Story, { id: string; language: string }>({
       queryFn: async ({ id, language }) => {
         try {
-          const rawData = await fetchStory(id, language as Language);
-          const data = isLegacyStory(rawData)
-            ? convertLegacyStory(rawData as LegacyStory)
-            : (rawData as Story);
+          const data = await fetchAndConvertStory(id, language as Language);
+          return { data };
+        } catch (error) {
+          return {
+            error: {
+              status: "CUSTOM_ERROR",
+              error: error instanceof Error ? error.message : "Unknown error",
+            },
+          };
+        }
+      },
+    }),
+    getStories: builder.query<Story[], { ids: string[]; language: string }>({
+      queryFn: async ({ ids, language }) => {
+        try {
+          const data = await Promise.all(
+            ids.map((id) => fetchAndConvertStory(id, language as Language)),
+          );
           return { data };
         } catch (error) {
           return {
@@ -99,6 +121,7 @@ export const storiesApi = createApi({
   }),
 });
 
-export const { useGetLayersQuery, useGetLayerQuery } = layersApi;
+export const { useGetLayerListQuery, useGetLayerQuery } = layersApi;
 
-export const { useGetStoriesQuery, useGetStoryQuery } = storiesApi;
+export const { useGetStoriesQuery, useGetStoryListQuery, useGetStoryQuery } =
+  storiesApi;
