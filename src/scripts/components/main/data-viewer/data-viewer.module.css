@@ -65,7 +65,7 @@
         width: 300cqw;
 
         canvas {
-          scale: 0.4;
+          scale: 0.38;
         }
       }
     }
@@ -78,12 +78,14 @@
 
       @container wrapper (width >=100px) {
         .globe {
-          transform: translate(-210cqw, -50%);
-          transform-origin: start;
-          transition: all 0.5s ease;
-
           canvas {
+          /* We need to move the globe to the left to make space for the content nav */
+            transform: translateX(-60cqw);
             scale: 1;
+          }
+          /* This will move all markers to their correct position*/
+          div {
+            left: -60cqw !important;
           }
         }
       }
