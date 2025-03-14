@@ -13,8 +13,8 @@ const TOUCH_SENSITIVITY = 2; // Adjust this to control movement sensitivity
 
 // Calculate the bounds for content navigation
 const calculateNavigationBounds = (itemCount: number) => {
-  const maxIndex = Math.floor(itemCount / 2);
-  const minIndex = Math.floor((itemCount - 1) / 2) * -1;
+  const maxIndex = itemCount - 1;
+  const minIndex = 0;
 
   return { maxIndex, minIndex };
 };
@@ -47,7 +47,7 @@ export const useContentTouchHandlers = (
     const threshold = ITEM_HEIGHT * TOUCH_SENSITIVITY; // Minimum movement required
     if (Math.abs(touchDelta) > threshold) {
       // Determine direction based on touch movement
-      const direction = touchDelta > 0 ? 1 : -1;
+      const direction = touchDelta < 0 ? 1 : -1;
 
       // Use the ref value to ensure we're always working with the latest index value
       let newIndex = currentIndexRef.current + direction;
@@ -89,7 +89,7 @@ export const useContentScrollHandlers = (
         isScrollingRef.current = false;
       }, 200); // Adjust delay for smooth responsiveness
 
-      const direction = e.deltaY > 0 ? -1 : 1; // Scroll down → next, Scroll up → previous
+      const direction = e.deltaY < 0 ? -1 : 1; // Scroll down → next, Scroll up → previous
 
       setCurrentIndex((prevIndex) => {
         const newIndex = prevIndex + direction;
