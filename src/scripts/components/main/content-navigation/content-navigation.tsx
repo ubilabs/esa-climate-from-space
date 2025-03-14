@@ -56,8 +56,10 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const { trackEvent } = useMatomo();
   const lang = useSelector(languageSelector);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
   const entryCount = contents.length;
+  const centerIndex = Math.floor((entryCount - 1) / 2);
+
+  const [currentIndex, setCurrentIndex] = useState(centerIndex);
 
   const { handleTouchEnd, handleTouchMove } = useContentTouchHandlers(
     currentIndex,
@@ -84,8 +86,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
     }
 
     for (const [index, item] of Array.from(listItems).entries()) {
-      const middleIndex = Math.floor(contents.length / 2);
-      const adjustedPosition = index - (middleIndex - currentIndex);
+      const adjustedPosition = index - currentIndex;
 
       const { x, y } = getNavCoordinates(
         adjustedPosition,
@@ -109,22 +110,19 @@ const ContentNavigation: FunctionComponent<Props> = ({
       item.classList.toggle(styles.active, adjustedPosition === 0);
     }
   }, [
+    centerIndex,
     currentIndex,
     showContentList,
     contents.length,
     setSelectedContentId,
     isMobile,
+    entryCount,
   ]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      // Calculate the actual array index based on currentIndex
-      // where currentIndex 0 is the middle item
-      const middleIndex = Math.floor(contents.length / 2);
-      const actualArrayIndex = middleIndex - currentIndex;
-
-      if (contents[actualArrayIndex]) {
-        setSelectedContentId(contents[actualArrayIndex].id);
+      if (contents[currentIndex]) {
+        setSelectedContentId(contents[currentIndex].id);
       }
     }, 1000);
 
