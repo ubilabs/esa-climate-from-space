@@ -225,7 +225,8 @@
     "description": "",
     "image": "assets/story34-image05.jpg",
     "tags": ["land-cover", "biomass"],
-    "position": [-62.75, -10.9]
+    "position": [-62.75, -10.9],
+    "categories": ["land"]
   },
   {
     "id": "story-35",
