@@ -61,8 +61,8 @@
 * and scale it down to 40% while scaling it to 1 in the content view
 * We do this to achieve a nice transistion between category- and content view and also to make sure the globe looks sharp
 * */
-        height: 300cqw;
-        width: 300cqw;
+        height: min( 300cqw, 260vh );
+        width: min( 300cqw, 260vh );
 
         canvas {
           scale: 0.38;
