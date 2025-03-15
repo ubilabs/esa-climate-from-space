@@ -269,6 +269,7 @@ const DataViewer: FunctionComponent<Props> = ({
       >
         <GetDataWidget
           hideNavigation={Boolean(hideNavigation)}
+          showClouds={showCategories && !showContentList}
           globeProps={{
             ...(contentMarker && {
               markers: [contentMarker],

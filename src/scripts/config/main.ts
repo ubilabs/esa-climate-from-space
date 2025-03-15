@@ -56,7 +56,14 @@ if (import.meta.env.PROD) {
   baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}/`;
 }
 
-type BasemapId = "atmosphere" | "blue" | "colored" | "dark" | "land" | "ocean";
+type BasemapId =
+  | "atmosphere"
+  | "blue"
+  | "colored"
+  | "dark"
+  | "land"
+  | "ocean"
+  | "clouds";
 
 const basemapMaxZoom: { [id in BasemapId]: number } = {
   atmosphere: 4,
@@ -65,6 +72,7 @@ const basemapMaxZoom: { [id in BasemapId]: number } = {
   dark: 4,
   land: 4,
   ocean: 4,
+  clouds: 4,
 } as const;
 
 const basemapUrls: { [id in BasemapId]: string } = {
@@ -74,6 +82,7 @@ const basemapUrls: { [id in BasemapId]: string } = {
   blue: `${baseUrlTiles}/basemaps/blue`,
   dark: `${baseUrlTiles}/basemaps/dark`,
   colored: `${baseUrlTiles}/basemaps/colored`,
+  clouds: `${baseUrlTiles}/basemaps/clouds`,
 } as const;
 
 const basemapUrlsOffline: { [id in BasemapId]: string } = {
@@ -83,6 +92,7 @@ const basemapUrlsOffline: { [id in BasemapId]: string } = {
   blue: "basemaps/blue",
   dark: "basemaps/dark",
   colored: "basemaps/colored",
+  clouds: "basemaps/clouds",
 } as const;
 
 const downloadUrls = {
