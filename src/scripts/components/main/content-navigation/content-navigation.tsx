@@ -202,7 +202,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
               }
             }}
           >
-            <Link to={isStory ? `${category}/stories/${id}/0/` : "/data"}>
+            <Link to={isStory ? `${category}/stories/${id}/0/` : `${category}/data`}>
               <span>{name}</span>
               {!isMobile && (
                 <span className={cx(styles.learnMore)}>

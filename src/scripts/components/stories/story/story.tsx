@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { VideoJsPlayer } from "video.js";
 import { YouTubePlayer } from "youtube-player/dist/types";
 
-import { useStoryParams } from "../../../hooks/use-story-params";
+import { useContentParams } from "../../../hooks/use-content-params";
 import { setGlobeTime } from "../../../reducers/globe/time";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import SplashScreen from "../splash-screen/splash-screen";
@@ -30,7 +30,7 @@ import { languageSelector } from "../../../selectors/language";
 import styles from "./story.module.css";
 
 const Story: FunctionComponent = () => {
-  const storyParams = useStoryParams();
+  const storyParams = useContentParams();
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);

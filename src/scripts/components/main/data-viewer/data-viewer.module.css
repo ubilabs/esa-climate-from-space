@@ -24,16 +24,15 @@
     }
   }
 
-  &[data-content-view="true"] {
+  &[data-nav-content="nav-content"] {
     .globeWrapper {
       transform: translateX(-62vw);
     }
   }
 
-  grid-template-areas:
-    "heading"
-    "globe-nav-area"
-    "explore";
+  grid-template-areas: "heading"
+  "globe-nav-area"
+  "explore";
   height: calc(100vh - var(--header-height));
   height: calc(100dvh - var(--header-height));
   grid-template-rows: 3.5rem calc(100vh - var(--header-height) - 10rem) 6.5rem;
@@ -50,6 +49,29 @@
     grid-template-columns: 50dvw 50dvw;
     grid-gap: 1.5rem;
 
+    &[data-nav-content="content"] {
+      grid-template-areas: "globe-nav-area";
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+
+      .globeWrapper {
+        /*transform:38 translateX(0) !important;*/
+  pointer-events: auto; /* Allows clicks & hover */
+          touch-action: manipulation; /* Prevents zoom but allows tap */
+
+        canvas {
+          /*right: -50% !important;*/
+          position: absolute !important;
+          touch-action: manipulation; /* Prevents zoom but allows tap */
+          scale: 1 !important;
+          /*transform: translateX(-50%) !important;*/
+          /*transform: translateX(-50%) !important;*/
+          /*transform: translate(-50%, -50%) !important;*/
+          scale: 0.50 !important;
+        }
+      }
+    }
+
     .globeWrapper {
       transform: translateY(0) !important;
       scale: 1;
@@ -58,11 +80,12 @@
     @container wrapper (width >=100px) {
       .globe {
         /* We initialize the globe as big as we need it in the content view to appearance;
-* and scale it down to 40% while scaling it to 1 in the content view
+* and scale it down to 38% while scaling it to 1 in the content view
 * We do this to achieve a nice transistion between category- and content view and also to make sure the globe looks sharp
 * */
-        height: min( 300cqw, 260vh );
-        width: min( 300cqw, 260vh );
+
+        height: min(150vw, 260vh);
+        width: min(150vw, 260vh);
 
         canvas {
           scale: 0.38;
@@ -70,7 +93,7 @@
       }
     }
 
-    &[data-content-view="true"] {
+    &[data-nav-content="nav-content"] {
       grid-template-areas: "globe content-nav";
       grid-template-columns: auto clamp(300px, 50%, 700px);
       grid-template-rows: 1fr;
@@ -79,10 +102,11 @@
       @container wrapper (width >=100px) {
         .globe {
           canvas {
-          /* We need to move the globe to the left to make space for the content nav */
+            /* We need to move the globe to the left to make space for the content nav */
             transform: translateX(-60cqw);
             scale: 1;
           }
+
           /* This will move all markers to their correct position*/
           div {
             left: -60cqw !important;
@@ -220,7 +244,7 @@
 .backButton {
   width: 100%;
 
-  > span {
+  >span {
     margin: 0 auto;
 
     &:after {
@@ -243,7 +267,7 @@
     margin-left: 1.5rem;
     padding-left: 0.5rem;
 
-    > span {
+    >span {
       margin-left: 2rem;
       position: relative;
 
@@ -330,7 +354,7 @@
     /* 120% */
   }
 
-  > h2 {
+  >h2 {
     margin: 0 auto;
   }
 }

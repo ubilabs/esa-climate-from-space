@@ -73,18 +73,14 @@ const TranslatedApp: FunctionComponent = () => {
           >
             <Story />
           </Route>
-          <Route path="/data" exact>
+          {/* By placing the DataViewer Component at the bottom, we make sure that the :category parameter
+          does not interfere with other parameters */}
+          <Route path={["/", "/:category", "/:category/data"]} exact>
             <Navigation />
-            <DataViewer />
+            <DataViewer hideNavigation={true} showCategories={true} />
             {legend && <DataSetInfo />}
             {time_slider && <TimeSlider />}
             <LayerSelector />
-          </Route>
-          {/* By placing the DataViewer Component at the bottom, we make sure that the :category parameter
-          does not interfere with other parameters */}
-          <Route path={["/", "/:category"]} exact>
-            <Navigation />
-            <DataViewer hideNavigation={true} showCategories={true} />
           </Route>
         </Switch>
         <Tracking />

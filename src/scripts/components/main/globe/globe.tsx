@@ -29,7 +29,7 @@ import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
 import { LayerType } from "../../../types/globe-layer-type";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import config from "../../../config/main";
 
 import { GlobeProjection } from "../../../types/globe-projection";
@@ -172,7 +172,6 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   useMultiGlobeSynchronization(globe, props, animatedFlyTo);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
-
   return (
     <div
       ref={containerRef}

@@ -32,6 +32,9 @@ import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation from "../category-navigation/category-navigation";
 
 import styles from "./data-viewer.module.css";
+import { useContentParams } from "../../../hooks/use-content-params";
+import { StoryMode } from "../../../types/story-mode";
+import { setGlobeView } from "../../../reducers/globe/view";
 
 interface Props {
   hideNavigation?: boolean;
@@ -86,6 +89,9 @@ const DataViewer: FunctionComponent<Props> = ({
   );
   const contentMarker = useContentMarker(selectedContentId, language);
 
+  const { isNavigation, mode } = useContentParams();
+
+
   const dispatch = useDispatch();
 
   // There is a set of animations which should be played only once
@@ -101,7 +107,7 @@ const DataViewer: FunctionComponent<Props> = ({
 
   // Reset the selected layer when data view is not active
   useEffect(() => {
-    if (location.pathname !== "/data") {
+    if (isNavigation) {
       dispatch(
         setSelectedLayerIds({
           layerId: null,
@@ -109,7 +115,7 @@ const DataViewer: FunctionComponent<Props> = ({
         }),
       );
     }
-  }, [dispatch, location.pathname]);
+  }, [dispatch, location.pathname, isNavigation]);
 
   useEffect(() => {
     // Don't proceed if there's no selectedContentId or no stories
@@ -164,6 +170,18 @@ const DataViewer: FunctionComponent<Props> = ({
     ) ?? []),
   ];
 
+// We need to reset the globe view every time the user navigates back from the the /data page
+const [lastPage, setLastPage] = useState("");
+
+useEffect(() => {
+  return history.listen((location, action) => {
+    if (action === "REPLACE" && lastPage.includes("/data") && location.pathname !== lastPage) {
+        dispatch(setGlobeView(config.globe.view));
+    }
+    setLastPage(location.pathname);
+  });
+}, [history, lastPage, dispatch]);
+
   // create a list of all tags with their number of occurrences in the stories
   // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
   const arcs = useMemo(
@@ -186,8 +204,16 @@ const DataViewer: FunctionComponent<Props> = ({
     <div
       className={styles.dataViewer}
       onWheel={handleScroll}
-      data-content-view={showContentList}
+      data-nav-content={mode}
     >
+
+      {/* This is the main area
+        The navigation consists of three main components: the globe, the category navigation and the content navigation
+        The globe is the main component and is always visible
+        The category navigation is visible when the content navigation is not visible
+      */}
+      {isNavigation && (
+        <>
       {showCategories && (
         <header className={styles.heading}>
           {showContentList ? (
@@ -203,62 +229,63 @@ const DataViewer: FunctionComponent<Props> = ({
           )}
         </header>
       )}
+          {!showContentList && showCategories ? (
+            <CategoryNavigation
+              currentScrollIndex={currentScrollIndex}
+              arcs={arcs}
+              showCategories={!showContentList}
+              width={screenWidth}
+              height={screenHeight}
+              isMobile={isMobile}
+              setCategory={setCurrentCategory}
+              isAnimationReady={hasAnimationPlayed}
+            />
+          ) : (
+            <ContentNavigation
+              isMobile={isMobile}
+              className={styles.contentNav}
+              category={currentCategory}
+              showContentList={showContentList}
+              contents={contents}
+              setSelectedContentId={setSelectedContentId}
+            />
+          )}
 
-      {/* This is the main area
-        The navigation consists of three main components: the globe, the category navigation and the content navigation
-        The globe is the main component and is always visible
-        The category navigation is visible when the content navigation is not visible
-      */}
-      {!showContentList && showCategories ? (
-        <CategoryNavigation
-          currentScrollIndex={currentScrollIndex}
-          arcs={arcs}
-          showCategories={!showContentList}
-          width={screenWidth}
-          height={screenHeight}
-          isMobile={isMobile}
-          setCategory={setCurrentCategory}
-          isAnimationReady={hasAnimationPlayed}
-        />
-      ) : (
-        <ContentNavigation
-          isMobile={isMobile}
-          className={styles.contentNav}
-          category={currentCategory}
-          showContentList={showContentList}
-          contents={contents}
-          setSelectedContentId={setSelectedContentId}
-        />
-      )}
-
-      {!showContentList && showCategories ? (
-        <>
-          <Button
-            className={cx(
-              hasAnimationPlayed.current && styles.showFast,
-              styles.exploreButton,
+          {!showContentList && showCategories ? (
+            <>
+              <Button
+                className={cx(
+                  hasAnimationPlayed.current && styles.showFast,
+                  styles.exploreButton,
+                )}
+                onClick={() => {
+                  history.push(`/${currentCategory}`);
+                  setShowContentList(!showContentList);
+                }}
+                label="explore"
+              ></Button>
+            </>
+          ) : null}
+          {!showContentList &&
+            showCategories &&
+            !hasAnimationPlayed.current && (
+              <span
+                aria-hidden="true"
+                className={cx(
+                  styles.swipeIndicator,
+                  !isMobile && styles.scroll,
+                )}
+                data-content={intl.formatMessage({
+                  id: `category.${isMobile ? "swipe" : "scroll"}`,
+                })}
+              ></span>
             )}
-            onClick={() => {
-              history.push(`/${currentCategory}`);
-              setShowContentList(!showContentList);
-            }}
-            label="explore"
-          ></Button>
+          {showContentList && !isMobile && (
+            <span className={styles.currentCategory}>
+              <FormattedMessage id={`categories.${currentCategory}`} />
+            </span>
+          )}
         </>
-      ) : null}
-      {!showContentList && showCategories && !hasAnimationPlayed.current && (
-        <span
-          aria-hidden="true"
-          className={cx(styles.swipeIndicator, !isMobile && styles.scroll)}
-          data-content={intl.formatMessage({
-            id: `category.${isMobile ? "swipe" : "scroll"}`,
-          })}
-        ></span>
-      )}
-      {showContentList && !isMobile && (
-        <span className={styles.currentCategory}>
-          <FormattedMessage id={`categories.${currentCategory}`} />
-        </span>
       )}
       <div
         id="globeWrapper"
@@ -277,7 +304,7 @@ const DataViewer: FunctionComponent<Props> = ({
             className: cx(
               (showCategories || showContentList || isMobile) && styles.globe,
             ),
-            isAutoRotating: !showContentList && showCategories,
+            isAutoRotating: mode === StoryMode.NavCategory,
           }}
         />
       </div>
