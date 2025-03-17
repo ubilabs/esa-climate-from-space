@@ -473,7 +473,13 @@ function getLayerProps(
   imageLayer: GlobeImageLayerData | null,
   layerDetails: Layer | null,
 ) {
-  const basemapUrl = getBasemapUrl(layerDetails);
+  let basemapUrl = getBasemapUrl(layerDetails);
+  let cloudsUrl = null;
+
+  if (layerDetails?.basemap === "clouds") {
+    cloudsUrl = getBasemapUrl({ basemap: "clouds" } as Layer);
+    basemapUrl = getBasemapUrl({ basemap: config.defaultBasemap } as Layer);
+  }
   const basemapMaxZoom = getBasemapMaxZoom(layerDetails);
 
   const layers = [
@@ -486,6 +492,18 @@ function getLayerProps(
       getUrl: ({ x, y, zoom }) => `${basemapUrl}/${zoom}/${x}/${y}.png`,
     } as LayerProps,
   ];
+
+  if (cloudsUrl) {
+    layers.push({
+      id: "clouds",
+      zIndex: 1,
+      minZoom: 0,
+      maxZoom: basemapMaxZoom,
+      type: LayerType.Image,
+      urlParameters: {},
+      getUrl: () => `${cloudsUrl}/image.png`,
+    });
+  }
 
   if (imageLayer && layerDetails) {
     const { id, url } = imageLayer;
