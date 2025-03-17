@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 import { State } from "../reducers";
 import { selectedStorySelector } from "../selectors/story/selected";
-import { storyListSelector } from "../selectors/story/list";
 
 import { StoryMode } from "../types/story-mode";
 
@@ -14,6 +13,7 @@ interface StoryParams {
 }
 
 interface ShowCaseParams {
+  category: string;
   storyIds: string;
   storyIndex: string;
   slideIndex: string;
@@ -30,6 +30,7 @@ export const useStoryParams = () => {
   const matchPresent = useRouteMatch("/present/:storyId");
   const matchShowCase = useRouteMatch("/showcase/:storyIds");
   const matchCategory = useRouteMatch("/:category/stories/:storyId");
+  const matchContent = useRouteMatch("/:contentType/:category/stories/:storyId");
 
   const params = useParams<StoryParams | ShowCaseParams>();
   const storyIds = isShowCaseParams(params)
@@ -50,6 +51,8 @@ export const useStoryParams = () => {
     mode = StoryMode.Showcase;
   } else if (matchCategory) {
     mode = StoryMode.Stories;
+  } else if (matchContent) {
+    mode = StoryMode.Stories;
   }
 
   const currentStoryId =
@@ -59,9 +62,6 @@ export const useStoryParams = () => {
     selectedStorySelector(state, currentStoryId),
   );
 
-  const storyList = useSelector(storyListSelector);
-  const storyListItem = storyList.find((story) => story.id === currentStoryId);
-
   const { category } = params;
 
   return {
@@ -70,7 +70,6 @@ export const useStoryParams = () => {
     storyIndex,
     slideIndex,
     currentStoryId,
-    storyListItem,
     selectedStory,
     category
   };
