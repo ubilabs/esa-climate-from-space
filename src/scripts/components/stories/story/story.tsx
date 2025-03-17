@@ -24,7 +24,7 @@ import StoryEmbedded from "../story-embedded/story-embedded";
 
 import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { setSelectedLayerIds } from "../../../reducers/layers";
-import { useGetStoriesQuery, useGetStoryQuery } from "../../../services/api";
+import { useGetStoryListQuery, useGetStoryQuery } from "../../../services/api";
 import { languageSelector } from "../../../selectors/language";
 
 import styles from "./story.module.css";
@@ -34,13 +34,14 @@ const Story: FunctionComponent = () => {
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const { mode, slideIndex, currentStoryId, storyListItem  } =
+  const { mode, slideIndex, currentStoryId   } =
     storyParams;
+
   const { story_header } = useSelector(embedElementsSelector);
 
   const lang = useSelector(languageSelector);
 
-  useGetStoriesQuery(lang);
+  useGetStoryListQuery(lang);
 
   const { data: selectedStory } = useGetStoryQuery({
     id: currentStoryId,
@@ -129,9 +130,8 @@ const Story: FunctionComponent = () => {
     }
     return null;
   };
-
   return (<>
-    {storyListItem && story_header && (
+    {story_header && (
       <Navigation />
     )}
     <div className={styles.story}>

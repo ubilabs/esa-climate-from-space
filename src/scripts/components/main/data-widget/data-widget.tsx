@@ -37,12 +37,14 @@ interface Props {
   hideNavigation: boolean;
   markers?: Marker[];
   globeProps: GlobeProps;
+  showClouds?: boolean;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
   hideNavigation,
   markers,
   globeProps,
+  showClouds,
 }) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
@@ -141,6 +143,12 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const imageLayer = compareLayer ? compareImageLayer : mainImageLayer;
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
+  const updatedLayerDetails = showClouds
+    ? {
+        ...(layerDetails || {}),
+        basemap: "clouds",
+      }
+    : layerDetails;
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
@@ -171,7 +179,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     view: currentView,
     projectionState: projectionState,
     imageLayer: imageLayer,
-    layerDetails: layerDetails || null,
+    layerDetails: updatedLayerDetails,
     spinning: globeSpinning,
     flyTo: flyTo,
     onMouseEnter: () => setActive((prev) => !prev),
@@ -185,7 +193,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     backgroundColor: "",
     className: "",
     ...globeProps,
-  }
+  };
 
   if (mainImageLayer?.type === LayerType.Gallery) {
     return <Gallery imageLayer={mainImageLayer} />;

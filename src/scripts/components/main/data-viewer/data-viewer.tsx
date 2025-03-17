@@ -1,8 +1,9 @@
 import { FunctionComponent, useEffect, useRef, useState, useMemo } from "react";
 
-import { useHistory, useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import { FormattedMessage, useIntl } from "react-intl";
+
+import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import cx from "classnames";
 
@@ -15,10 +16,15 @@ import { useCategoryScrollHandlers } from "../category-navigation/use-category-e
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { setFlyTo } from "../../../reducers/fly-to";
+import { setSelectedLayerIds } from "../../../reducers/layers";
 
-import { useGetStoriesQuery } from "../../../services/api";
-import { languageSelector } from "../../../selectors/language";
 import { globeViewSelector } from "../../../selectors/globe/view";
+import { languageSelector } from "../../../selectors/language";
+
+import {
+  useGetLayerListQuery,
+  useGetStoryListQuery,
+} from "../../../services/api";
 
 import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
@@ -28,8 +34,8 @@ import CategoryNavigation from "../category-navigation/category-navigation";
 import styles from "./data-viewer.module.css";
 
 interface Props {
-  backgroundColor: string;
   hideNavigation?: boolean;
+  showCategories?: boolean;
 }
 
 interface RouteParams {
@@ -50,8 +56,8 @@ export type LayerLoadingStateChangeHandle = (
  * @returns {JSX.Element} The rendered DataViewer component.
  */
 const DataViewer: FunctionComponent<Props> = ({
-  backgroundColor,
   hideNavigation,
+  showCategories,
 }) => {
   const { category } = useParams<RouteParams>();
   const { handleScroll, currentScrollIndex } = useCategoryScrollHandlers();
@@ -70,7 +76,9 @@ const DataViewer: FunctionComponent<Props> = ({
   const { screenHeight, screenWidth, isMobile } = useScreenSize();
 
   const language = useSelector(languageSelector);
-  const { data: stories } = useGetStoriesQuery(language);
+  const { data: stories } = useGetStoryListQuery(language);
+  const { data: layers } = useGetLayerListQuery(language);
+
   // We need to keep track of the current selected content Id because we need to
   // set the flyTo for the marker, or add the data layer to the globe
   const [selectedContentId, setSelectedContentId] = useState<string | null>(
@@ -88,6 +96,20 @@ const DataViewer: FunctionComponent<Props> = ({
   );
 
   const globalGlobeView = useSelector(globeViewSelector);
+
+  const location = useLocation();
+
+  // Reset the selected layer when data view is not active
+  useEffect(() => {
+    if (location.pathname !== "/data") {
+      dispatch(
+        setSelectedLayerIds({
+          layerId: null,
+          isPrimary: true,
+        }),
+      );
+    }
+  }, [dispatch, location.pathname]);
 
   useEffect(() => {
     // Don't proceed if there's no selectedContentId or no stories
@@ -126,30 +148,35 @@ const DataViewer: FunctionComponent<Props> = ({
     setShowContentList(Boolean(category));
   }, [category, showContentList]);
 
-  const allTags = stories?.flatMap(({ tags }) => tags).filter(Boolean);
+  const allCategories = stories
+    ?.flatMap(({ categories }) => categories)
+    .concat(layers?.flatMap(({ categories }) => categories) ?? [])
+    .filter(Boolean);
 
-  const uniqueTags = Array.from(new Set(allTags));
+  const uniqueTags = Array.from(new Set(allCategories));
 
-  const contents = stories?.filter(
-    (story) => category && story.tags?.includes(category),
-  );
+  const contents = [
+    ...(stories?.filter(
+      (story) => category && story.categories?.includes(category),
+    ) ?? []),
+    ...(layers?.filter(
+      (layer) => category && layer.categories?.includes(category),
+    ) ?? []),
+  ];
 
   // create a list of all tags with their number of occurrences in the stories
   // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
   const arcs = useMemo(
     () =>
-      uniqueTags
-        .map((tag) => {
-          const tags = allTags ? allTags : [];
-          const count = tags.filter((t) => t === tag).length;
-          return { [tag]: count };
-        })
-        // Todo: Delete this filter when we have the new categories
-        .filter((tag) => Object.values(tag)[0] > 2),
-    [uniqueTags, allTags],
+      uniqueTags.map((tag) => {
+        const tags = allCategories ? allCategories : [];
+        const count = tags.filter((t) => t === tag).length;
+        return { [tag]: count };
+      }),
+    [uniqueTags, allCategories],
   );
 
-  if (!stories || !arcs || !contents) {
+  if (!stories || !layers || !arcs || !contents) {
     return null;
   }
 
@@ -161,24 +188,28 @@ const DataViewer: FunctionComponent<Props> = ({
       onWheel={handleScroll}
       data-content-view={showContentList}
     >
-      <header className={styles.heading}>
-        {showContentList ? (
-          <Button
-            label={!isMobile ? "back_to_overview" : `tags.${currentCategory}`}
-            link={"/"}
-            className={styles.backButton}
-          ></Button>
-        ) : (
-          <FormattedMessage id="category.choose" />
-        )}
-      </header>
+      {showCategories && (
+        <header className={styles.heading}>
+          {showContentList ? (
+            <Button
+              label={
+                !isMobile ? "back_to_overview" : `categories.${currentCategory}`
+              }
+              link={"/"}
+              className={styles.backButton}
+            ></Button>
+          ) : (
+            <FormattedMessage id="category.choose" />
+          )}
+        </header>
+      )}
 
       {/* This is the main area
         The navigation consists of three main components: the globe, the category navigation and the content navigation
         The globe is the main component and is always visible
         The category navigation is visible when the content navigation is not visible
       */}
-      {!showContentList ? (
+      {!showContentList && showCategories ? (
         <CategoryNavigation
           currentScrollIndex={currentScrollIndex}
           arcs={arcs}
@@ -200,7 +231,7 @@ const DataViewer: FunctionComponent<Props> = ({
         />
       )}
 
-      {!showContentList ? (
+      {!showContentList && showCategories ? (
         <>
           <Button
             className={cx(
@@ -215,7 +246,7 @@ const DataViewer: FunctionComponent<Props> = ({
           ></Button>
         </>
       ) : null}
-      {!showContentList && !hasAnimationPlayed.current && (
+      {!showContentList && showCategories && !hasAnimationPlayed.current && (
         <span
           aria-hidden="true"
           className={cx(styles.swipeIndicator, !isMobile && styles.scroll)}
@@ -226,25 +257,27 @@ const DataViewer: FunctionComponent<Props> = ({
       )}
       {showContentList && !isMobile && (
         <span className={styles.currentCategory}>
-          <FormattedMessage id={`tags.${currentCategory}`} />
+          <FormattedMessage id={`categories.${currentCategory}`} />
         </span>
       )}
       <div
         id="globeWrapper"
         className={cx(
-          styles.globeWrapper,
+          showCategories && styles.globeWrapper,
           showContentList && styles.showContentList,
         )}
       >
         <GetDataWidget
           hideNavigation={Boolean(hideNavigation)}
+          showClouds={showCategories && !showContentList}
           globeProps={{
             ...(contentMarker && {
               markers: [contentMarker],
             }),
-            className: cx(styles.globe),
-            backgroundColor,
-            isAutoRotating: !showContentList,
+            className: cx(
+              (showCategories || showContentList || isMobile) && styles.globe,
+            ),
+            isAutoRotating: !showContentList && showCategories,
           }}
         />
       </div>

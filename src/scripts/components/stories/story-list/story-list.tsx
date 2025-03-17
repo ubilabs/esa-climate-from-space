@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 
 import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
-import { useGetStoriesQuery } from "../../../services/api";
+import { useGetStoryListQuery } from "../../../services/api";
 import { languageSelector } from "../../../selectors/language";
 import StoryListItem from "../story-list-item/story-list-item";
 import { filterStories } from "../../../libs/filter-stories";
@@ -24,7 +24,7 @@ const StoryList: FunctionComponent<Props> = ({
   onSelectStory = () => {},
 }) => {
   const language = useSelector(languageSelector);
-  const { data: stories } = useGetStoriesQuery(language);
+  const { data: stories } = useGetStoryListQuery(language);
 
   const selectedTags = useSelector(selectedTagsSelector);
 

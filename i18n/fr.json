@@ -5,7 +5,6 @@
   "language.de": "Allemand",
   "language.fr": "Français",
   "language.es": "Espagnol",
-  "language.nl": "Néerlandais",
   "stories": "Articles",
   "backToDataMode": "Retour au globe",
   "backToStories": "Retour à la page des articles",
@@ -134,5 +133,15 @@
   "category.swipe": "balayer pour naviguer",
   "category.scroll": "faire défiler pour \nnaviguer",
   "learn_more": "en savoir plus",
-  "back_to_overview": "Retour à la vue d'ensemble"
+  "back_to_overview": "Retour à la vue d'ensemble",
+  "categories.welcome": "Bienvenue",
+  "categories.water_cycle": "Cycle de l'eau",
+  "categories.land": "Terre",
+  "categories.carbon_cycle": "Cycle du carbone",
+  "categories.climate_risk": "Risque climatique",
+  "categories.climate_action": "Action climatique",
+  "categories.improving_models": "Amélioration des modèles",
+  "categories.ocean": "Océan",
+  "categories.atmosphere": "Atmosphère",
+  "categories.cryosphere": "Cryosphère"
 }

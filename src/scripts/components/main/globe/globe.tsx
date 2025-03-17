@@ -87,11 +87,11 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     imageLayer,
     markers,
     isAutoRotating = false,
+    backgroundColor,
     className,
   } = props;
 
   const [containerRef, globe] = useWebGlGlobe(view);
-
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
 
   const rotationRef = useRef<{
@@ -181,6 +181,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
         initialTilesLoaded && styles.fadeIn,
         className,
       )}
+      style={{ backgroundColor }}
       onMouseEnter={() => onMouseEnter()}
       onTouchStart={() => onTouchStart()}
     ></div>
@@ -472,7 +473,13 @@ function getLayerProps(
   imageLayer: GlobeImageLayerData | null,
   layerDetails: Layer | null,
 ) {
-  const basemapUrl = getBasemapUrl(layerDetails);
+  let basemapUrl = getBasemapUrl(layerDetails);
+  let cloudsUrl = null;
+
+  if (layerDetails?.basemap === "clouds") {
+    cloudsUrl = getBasemapUrl({ basemap: "clouds" } as Layer);
+    basemapUrl = getBasemapUrl({ basemap: config.defaultBasemap } as Layer);
+  }
   const basemapMaxZoom = getBasemapMaxZoom(layerDetails);
 
   const layers = [
@@ -485,6 +492,18 @@ function getLayerProps(
       getUrl: ({ x, y, zoom }) => `${basemapUrl}/${zoom}/${x}/${y}.png`,
     } as LayerProps,
   ];
+
+  if (cloudsUrl) {
+    layers.push({
+      id: "clouds",
+      zIndex: 1,
+      minZoom: 0,
+      maxZoom: basemapMaxZoom,
+      type: LayerType.Image,
+      urlParameters: {},
+      getUrl: () => `${cloudsUrl}/image.png`,
+    });
+  }
 
   if (imageLayer && layerDetails) {
     const { id, url } = imageLayer;

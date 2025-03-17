@@ -1,21 +1,41 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import cx from "classnames";
+
+import { layersApi, useGetStoriesQuery } from "../../../services/api";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 
-import { StoryList } from "../../../types/story-list";
-import { Link } from "react-router-dom";
+import { setShowLayer } from "../../../reducers/show-layer-selector";
+import { setSelectedLayerIds } from "../../../reducers/layers";
+
+import { languageSelector } from "../../../selectors/language";
+
+import { LayerListItem } from "../../../types/layer-list";
+import { StoryListItem } from "../../../types/story-list";
+import { GalleryItemType } from "../../../types/gallery-item";
+import { Story } from "../../../types/story";
+
 import {
   useContentScrollHandlers,
   useContentTouchHandlers,
 } from "./use-content-event-handlers";
 
-import cx from "classnames";
 import styles from "./content-navigation.module.css";
+
+function isStoryListItem(
+  obj: StoryListItem | LayerListItem,
+): obj is StoryListItem {
+  return obj && "title" in obj && "image" in obj;
+}
 
 interface Props {
   showContentList: boolean;
-  contents: StoryList;
+  contents: (StoryListItem | LayerListItem)[];
   setSelectedContentId: React.Dispatch<React.SetStateAction<string | null>>;
   category: string | null;
   className?: string;
@@ -31,9 +51,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
   isMobile,
 }) => {
   const navigationRef = React.useRef<HTMLUListElement | null>(null);
+  const dispatch = useDispatch();
+  const thunkDispatch = useThunkDispatch();
+  const { trackEvent } = useMatomo();
+  const lang = useSelector(languageSelector);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
   const entryCount = contents.length;
+  const centerIndex = Math.floor((entryCount - 1) / 2);
+
+  const [currentIndex, setCurrentIndex] = useState(centerIndex);
 
   const { handleTouchEnd, handleTouchMove } = useContentTouchHandlers(
     currentIndex,
@@ -60,8 +86,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
     }
 
     for (const [index, item] of Array.from(listItems).entries()) {
-      const middleIndex = Math.floor(contents.length / 2);
-      const adjustedPosition = index - (middleIndex - currentIndex);
+      const adjustedPosition = index - currentIndex;
 
       const { x, y } = getNavCoordinates(
         adjustedPosition,
@@ -85,22 +110,19 @@ const ContentNavigation: FunctionComponent<Props> = ({
       item.classList.toggle(styles.active, adjustedPosition === 0);
     }
   }, [
+    centerIndex,
     currentIndex,
     showContentList,
     contents.length,
     setSelectedContentId,
     isMobile,
+    entryCount,
   ]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      // Calculate the actual array index based on currentIndex
-      // where currentIndex 0 is the middle item
-      const middleIndex = Math.floor(contents.length / 2);
-      const actualArrayIndex = middleIndex - currentIndex;
-
-      if (contents[actualArrayIndex]) {
-        setSelectedContentId(contents[actualArrayIndex].id);
+      if (contents[currentIndex]) {
+        setSelectedContentId(contents[currentIndex].id);
       }
     }, 1000);
 
@@ -111,6 +133,31 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
+
+  const { data: stories } = useGetStoriesQuery({
+    ids: contents.filter((el) => isStoryListItem(el)).map(({ id }) => id),
+    language: lang,
+  });
+
+  const getStoryMediaType = (item: StoryListItem, stories?: Story[]) => {
+    let type = "blog";
+
+    const story = stories?.find((story) => story.id === item.id);
+    const galleyItemTypes = new Set(
+      story?.slides
+        .flatMap((slide) => slide.galleryItems)
+        .map(({ type }) => type),
+    );
+    if (
+      // if gallery only contains images or videos return media type
+      galleyItemTypes.size === 1 &&
+      (galleyItemTypes.has(GalleryItemType.Image) ||
+        galleyItemTypes.has(GalleryItemType.Video))
+    ) {
+      type = [...galleyItemTypes][0];
+    }
+    return type;
+  };
 
   return (
     <ul
@@ -125,9 +172,12 @@ const ContentNavigation: FunctionComponent<Props> = ({
       onTouchCancel={handleTouchEnd}
       onWheel={handleWheel}
     >
-      {contents.map(({ title, id }, index) => {
-        // Todo: Add type property to StoryList. For now we just take blog
-        const type = "blog";
+      {contents.map((item, index) => {
+        const { id } = item;
+        const name = "title" in item ? item.title : item.name;
+        const isStory = isStoryListItem(item);
+        const type = isStory ? getStoryMediaType(item, stories) : "layer";
+
         return (
           <li
             // Used n CSS to get the correct icon for the content type
@@ -135,13 +185,25 @@ const ContentNavigation: FunctionComponent<Props> = ({
             // Used to identify the currently seletected content.
             // Passed to the globe via props to make sure correct actions are triggered
             // E.g. flyTo or show the data layer
-            data-content-id={id}
+            data-content-id={item.id}
             className={cx(styles.contentNavItem)}
             key={index}
-            aria-label={`${type} content: ${title}`}
+            aria-label={`${type} content: ${name}`}
+            onClick={() => {
+              if (!isStory) {
+                dispatch(setShowLayer(false));
+                thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
+                dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
+                trackEvent({
+                  category: "datasets",
+                  action: "select",
+                  name,
+                });
+              }
+            }}
           >
-            <Link to={`${category}/stories/${id}/0/`}>
-              <span>{title}</span>
+            <Link to={isStory ? `${category}/stories/${id}/0/` : "/data"}>
+              <span>{name}</span>
               {!isMobile && (
                 <span className={cx(styles.learnMore)}>
                   <FormattedMessage id="learn_more" />
