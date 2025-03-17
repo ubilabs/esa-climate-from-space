@@ -144,7 +144,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   );
 
   const autoRotate = useCallback(() => {
-    rotationRef.current.lng += 0.05;
+    rotationRef.current.lng -= 0.05;
     const lng = rotationRef.current.lng;
 
     if (globe) {
