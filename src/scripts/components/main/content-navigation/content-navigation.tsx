@@ -26,6 +26,7 @@ import {
 } from "./use-content-event-handlers";
 
 import styles from "./content-navigation.module.css";
+import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -120,6 +121,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
   ]);
 
   useEffect(() => {
+    const layerId = contents[currentIndex]?.id;
+    dispatch(setSelectedLayerIds({ layerId: layerId, isPrimary: true }));
     const timeout = setTimeout(() => {
       if (contents[currentIndex]) {
         setSelectedContentId(contents[currentIndex].id);
@@ -129,7 +132,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
     return () => {
       clearTimeout(timeout);
     };
-  }, [setSelectedContentId, currentIndex, contents]);
+  }, [dispatch, setSelectedContentId, currentIndex, contents]);
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
@@ -186,6 +189,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             // Passed to the globe via props to make sure correct actions are triggered
             // E.g. flyTo or show the data layer
             data-content-id={item.id}
+            data-layer-id={isStory ? "" : id}
             className={cx(styles.contentNavItem)}
             key={index}
             aria-label={`${type} content: ${name}`}
@@ -194,6 +198,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
                 dispatch(setShowLayer(false));
                 thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
                 dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
+                dispatch(toggleEmbedElements({legend: true, time_slider: true}));
                 trackEvent({
                   category: "datasets",
                   action: "select",
@@ -202,7 +207,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
               }
             }}
           >
-            <Link to={isStory ? `${category}/stories/${id}/0/` : `${category}/data`}>
+            <Link
+              to={isStory ? `${category}/stories/${id}/0/` : `${category}/data`}
+            >
               <span>{name}</span>
               {!isMobile && (
                 <span className={cx(styles.learnMore)}>
