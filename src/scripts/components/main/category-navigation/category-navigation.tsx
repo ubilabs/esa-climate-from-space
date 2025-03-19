@@ -44,6 +44,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   currentScrollIndex,
 }) => {
   const history = useHistory();
+
   const {
     isRotating,
     currentTouchIndex,
@@ -222,12 +223,6 @@ const CategoryNavigation: FunctionComponent<Props> = ({
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
-        // onWheel={handleScroll}
-        style={
-          {
-            //height: `${_size / 2}px`,
-          }
-        }
       >
         <svg
           className={styles["circle-container"]}

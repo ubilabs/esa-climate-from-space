@@ -234,7 +234,10 @@ const DataViewer: FunctionComponent<Props> = ({
                   className={styles.backButton}
                 ></Button>
               ) : (
-                <FormattedMessage id="category.choose" />
+
+                  <span className={styles.chooseHeading}>
+                    <FormattedMessage id="category.choose" />
+                  </span>
               )}
             </header>
           )}
