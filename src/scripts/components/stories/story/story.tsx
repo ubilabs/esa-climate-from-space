@@ -34,8 +34,7 @@ const Story: FunctionComponent = () => {
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const { mode, slideIndex, currentStoryId   } =
-    storyParams;
+  const { mode, slideIndex, currentStoryId } = storyParams;
 
   const { story_header } = useSelector(embedElementsSelector);
 
@@ -119,7 +118,8 @@ const Story: FunctionComponent = () => {
                 return <StoryEmbedded embeddedItem={item} />;
               default:
                 console.warn(
-                  `Unknown gallery item type ${item["type"]} on slide ${slideIndex + 1
+                  `Unknown gallery item type ${item["type"]} on slide ${
+                    slideIndex + 1
                   } in story ${story.id}`,
                 );
                 return <></>;
@@ -130,44 +130,44 @@ const Story: FunctionComponent = () => {
     }
     return null;
   };
-  return (<>
-    {story_header && (
+  return (
+    <>
       <Navigation />
-    )}
-    <div className={styles.story}>
-      <main className={styles.main}>
-        {/* Instead of rendering only the current slide we map over all slides to
+      <div className={styles.story}>
+        <main className={styles.main}>
+          {/* Instead of rendering only the current slide we map over all slides to
         enforce a newly mounted component when the slideNumber changes */}
-        {selectedStory?.slides.map(
-          (currentSlide, index) =>
-            index === slideIndex &&
-            (currentSlide.splashImage ? (
-              <SplashScreen
-                mode={mode}
-                key={index}
-                storyId={selectedStory.id}
-                slide={currentSlide}
-              />
-            ) : (
-              <React.Fragment key={index}>
-                <StoryContent
+          {selectedStory?.slides.map(
+            (currentSlide, index) =>
+              index === slideIndex &&
+              (currentSlide.splashImage ? (
+                <SplashScreen
                   mode={mode}
+                  key={index}
                   storyId={selectedStory.id}
                   slide={currentSlide}
                 />
-                {getRightSideComponent(currentSlide, selectedStory)}
-              </React.Fragment>
-            )),
-        )}
-      </main>
-      <StoryFooter
-        videoDuration={videoDuration}
-        mode={mode}
-        slideIndex={slideIndex}
-        selectedStory={selectedStory}
-      />
-    </div>
-  </>)
+              ) : (
+                <React.Fragment key={index}>
+                  <StoryContent
+                    mode={mode}
+                    storyId={selectedStory.id}
+                    slide={currentSlide}
+                  />
+                  {getRightSideComponent(currentSlide, selectedStory)}
+                </React.Fragment>
+              )),
+          )}
+        </main>
+        <StoryFooter
+          videoDuration={videoDuration}
+          mode={mode}
+          slideIndex={slideIndex}
+          selectedStory={selectedStory}
+        />
+      </div>
+    </>
+  );
 };
 
 export default Story;
