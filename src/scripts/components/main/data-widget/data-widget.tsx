@@ -195,6 +195,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   if (mainImageLayer?.type === LayerType.Gallery) {
     return <Gallery imageLayer={mainImageLayer} />;
   }
+
   return (
     <>
       <Globe {...props} />

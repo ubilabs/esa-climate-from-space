@@ -35,6 +35,7 @@ import styles from "./data-viewer.module.css";
 import { useContentParams } from "../../../hooks/use-content-params";
 import { StoryMode } from "../../../types/story-mode";
 import { setGlobeView } from "../../../reducers/globe/view";
+import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
 interface Props {
   hideNavigation?: boolean;
@@ -90,7 +91,6 @@ const DataViewer: FunctionComponent<Props> = ({
   const contentMarker = useContentMarker(selectedContentId, language);
 
   const { isNavigation, mode } = useContentParams();
-
 
   const dispatch = useDispatch();
 
@@ -170,17 +170,25 @@ const DataViewer: FunctionComponent<Props> = ({
     ) ?? []),
   ];
 
-// We need to reset the globe view every time the user navigates back from the the /data page
-const [lastPage, setLastPage] = useState("");
+  // We need to reset the globe view every time the user navigates back from the the /data page
 
-useEffect(() => {
-  return history.listen((location, action) => {
-    if (action === "REPLACE" && lastPage.includes("/data") && location.pathname !== lastPage) {
-        dispatch(setGlobeView(config.globe.view));
-    }
-    setLastPage(location.pathname);
-  });
-}, [history, lastPage, dispatch]);
+  const lastPage = useRef<string>(history.location.pathname);
+  useEffect(() => {
+    return history.listen((location) => {
+      if (
+        !location.pathname.includes("/data") &&
+        lastPage.current !== location.pathname
+      ) {
+        if (!isNavigation) {
+          const defaultView = config.globe.view;
+          dispatch(setGlobeView(defaultView));
+          dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
+          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+        }
+      }
+      lastPage.current = location.pathname;
+    });
+  }, [history, isNavigation, dispatch]);
 
   // create a list of all tags with their number of occurrences in the stories
   // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
@@ -206,7 +214,6 @@ useEffect(() => {
       onWheel={handleScroll}
       data-nav-content={mode}
     >
-
       {/* This is the main area
         The navigation consists of three main components: the globe, the category navigation and the content navigation
         The globe is the main component and is always visible
@@ -214,21 +221,23 @@ useEffect(() => {
       */}
       {isNavigation && (
         <>
-      {showCategories && (
-        <header className={styles.heading}>
-          {showContentList ? (
-            <Button
-              label={
-                !isMobile ? "back_to_overview" : `categories.${currentCategory}`
-              }
-              link={"/"}
-              className={styles.backButton}
-            ></Button>
-          ) : (
-            <FormattedMessage id="category.choose" />
+          {showCategories && (
+            <header className={styles.heading}>
+              {showContentList ? (
+                <Button
+                  label={
+                    !isMobile
+                      ? "back_to_overview"
+                      : `categories.${currentCategory}`
+                  }
+                  link={"/"}
+                  className={styles.backButton}
+                ></Button>
+              ) : (
+                <FormattedMessage id="category.choose" />
+              )}
+            </header>
           )}
-        </header>
-      )}
           {!showContentList && showCategories ? (
             <CategoryNavigation
               currentScrollIndex={currentScrollIndex}
