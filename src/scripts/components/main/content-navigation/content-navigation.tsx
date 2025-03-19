@@ -12,6 +12,7 @@ import { getNavCoordinates } from "../../../libs/get-navigation-position";
 
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
+import { setSelectedContentAction } from "../../../reducers/content";
 
 import { languageSelector } from "../../../selectors/language";
 
@@ -27,6 +28,7 @@ import {
 
 import styles from "./content-navigation.module.css";
 import { toggleEmbedElements } from "../../../reducers/embed-elements";
+import { contentSelector } from "../../../selectors/content";
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -56,8 +58,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const thunkDispatch = useThunkDispatch();
   const { trackEvent } = useMatomo();
   const lang = useSelector(languageSelector);
-
+  const content = useSelector(contentSelector);
+console.log('contentsSelector', content)
   const entryCount = contents.length;
+
+
   const centerIndex = Math.floor((entryCount - 1) / 2);
 
   const [currentIndex, setCurrentIndex] = useState(centerIndex);
@@ -194,6 +199,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             key={index}
             aria-label={`${type} content: ${name}`}
             onClick={() => {
+                dispatch(setSelectedContentAction({ contentId: id }));
               if (!isStory) {
                 dispatch(setShowLayer(false));
                 thunkDispatch(layersApi.endpoints.getLayer.initiate(id));

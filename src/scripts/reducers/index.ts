@@ -12,6 +12,7 @@ import offlineReducer from "./offline/index";
 import showLayerSelectorReducer from "./show-layer-selector";
 import storyLayerReducer from "./story-layer";
 import storiesReducer from "./story/index";
+import contentReducer from "./content/index";
 import welcomeScreenReducer from "./welcome-screen";
 
 const rootReducer = combineReducers({
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   [storiesApi.reducerPath]: storiesApi.reducer,
   // The reducers below contain the state of the application.
   // They are not created by RTK Query or contain any data fetched from somewhere else.
+  content: contentReducer,
   layers: layersReducer,
   stories: storiesReducer,
   language: languageReducer,

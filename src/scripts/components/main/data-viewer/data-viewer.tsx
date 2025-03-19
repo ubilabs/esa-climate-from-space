@@ -64,6 +64,7 @@ const DataViewer: FunctionComponent<Props> = ({
   showCategories,
 }) => {
   const { category } = useParams<RouteParams>();
+  console.log('category', category);
   const { handleScroll, currentScrollIndex } = useCategoryScrollHandlers();
 
   const [showContentList, setShowContentList] = useState<boolean>(
@@ -160,20 +161,6 @@ const DataViewer: FunctionComponent<Props> = ({
     .filter(Boolean);
 
   const uniqueTags = categoryTags;
-  console.log(uniqueTags);
-  //const uniqueTags = [
-  //  "Welcome",
-  //  "Land",
-  //  "Ocean",
-  //  "Atmosphere",
-  //  "Cryosphere",
-  //  "Water Cycle",
-  //  "Carbon Cycle",
-  //  "Climate Risk",
-  //  "Climate Action",
-  //  "Improving Models"
-  //];
-
   const contents = [
     ...(stories?.filter(
       (story) => category && story.categories?.includes(category),

@@ -53,6 +53,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
     handleTouchEnd,
   } = useCategoryTouchHandlers();
 
+
   const currentIndex = currentScrollIndex || currentTouchIndex;
   // Control the gap between the lines (arcs)
   const SPACING = 5;
