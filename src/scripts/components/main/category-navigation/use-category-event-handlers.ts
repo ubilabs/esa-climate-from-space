@@ -1,11 +1,10 @@
 import { useState } from "react";
 import config from "../../../config/main";
 
-export const useCategoryTouchHandlers = () => {
+export const useCategoryTouchHandlers = (currentIndex: number, setCurrentIndex: React.Dispatch<React.SetStateAction<number>>
+) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
-  // The index of the current category
-  const [currentTouchIndex, setCurrentIndex] = useState(0);
   const [isRotating, setIsRotating] = useState(false);
 
   // Handle touch events
@@ -24,7 +23,7 @@ export const useCategoryTouchHandlers = () => {
     if (Math.abs(diff) > 50) {
       // Remove modulo, allow continuous rotation
       const direction = diff > 0 ? -1 : 1;
-      const nextIndex = currentTouchIndex + direction;
+      const nextIndex = currentIndex + direction;
 
       setCurrentIndex(nextIndex);
       setTouchStart(null);
@@ -41,18 +40,16 @@ export const useCategoryTouchHandlers = () => {
   };
   return {
     isRotating,
-    currentTouchIndex,
     handleTouchStart,
     handleTouchMove,
     handleTouchEnd,
   };
 };
 
-export const useCategoryScrollHandlers = () => {
+export const useCategoryScrollHandlers = (currentIndex: number, setCurrentIndex: (index: number) => void) => {
   const [isRotating, setIsRotating] = useState(false);
   const [scrollAccumulator, setScrollAccumulator] = useState(0);
   const [lastScrollTime, setLastScrollTime] = useState(0);
-  const [currentScrollIndex, setCurrentIndex] = useState(0);
 
   const handleScroll = (e: React.WheelEvent) => {
     // Don't call preventDefault directly as it may not work with passive event listeners
@@ -92,7 +89,7 @@ export const useCategoryScrollHandlers = () => {
       const direction = newScrollAccumulator > 0 ? 1 : -1;
 
       // Update the current index
-      const nextIndex = currentScrollIndex + direction;
+      const nextIndex = currentIndex + direction;
       setCurrentIndex(nextIndex);
 
       // Reset the accumulator
@@ -111,6 +108,5 @@ export const useCategoryScrollHandlers = () => {
   };
   return {
     handleScroll,
-    currentScrollIndex,
   };
 };

@@ -5,6 +5,20 @@ import { UiEmbedElement } from "../types/embed-elements";
 import { GlobeProjection } from "../types/globe-projection";
 import { GlobeState } from "../reducers/globe/globe-state";
 
+// The order of these is important for the stories menu
+export const categoryTags = [
+  "welcome",
+  "land",
+  "ocean",
+  "atmosphere",
+  "cryosphere",
+  "water_cycle",
+  "carbon_cycle",
+  "climate_risk",
+  "climate_action",
+  "improving_models",
+];
+
 const globeState: GlobeState = {
   time: Date.now(),
   projectionState: {

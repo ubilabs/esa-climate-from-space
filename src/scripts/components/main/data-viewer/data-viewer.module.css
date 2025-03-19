@@ -56,18 +56,21 @@
 
       .globeWrapper {
         /*transform:38 translateX(0) !important;*/
-  pointer-events: auto; /* Allows clicks & hover */
-          touch-action: manipulation; /* Prevents zoom but allows tap */
+        pointer-events: auto;
+        /* Allows clicks & hover */
+        touch-action: manipulation;
+        /* Prevents zoom but allows tap */
 
         canvas {
           /*right: -50% !important;*/
           position: absolute !important;
-          touch-action: manipulation; /* Prevents zoom but allows tap */
+          touch-action: manipulation;
+          /* Prevents zoom but allows tap */
           scale: 1 !important;
           /*transform: translateX(-50%) !important;*/
           /*transform: translateX(-50%) !important;*/
           /*transform: translate(-50%, -50%) !important;*/
-          scale: 0.50 !important;
+          scale: 0.5 !important;
         }
       }
     }
@@ -243,7 +246,14 @@
 
 .backButton {
   width: 100%;
+  /* Mobile/H4 */
+  font-family: NotesEsa;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
 
+  /* 110% */
   >span {
     margin: 0 auto;
 
@@ -266,6 +276,9 @@
     width: fit-content;
     margin-left: 1.5rem;
     padding-left: 0.5rem;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: 0.32px;
 
     >span {
       margin-left: 2rem;
@@ -283,6 +296,7 @@
 }
 
 .exploreButton {
+  text-transform: uppercase;
   color: #fff;
   grid-area: explore;
   padding: 12px 24px;
@@ -341,6 +355,16 @@
   display: flex;
   justify-content: center;
   margin-top: 1.125rem;
+
+  >.chooseHeading {
+    text-align: center;
+    font-family: NotesEsa;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    /* 130% */
+  }
 
   @media screen and (--desktop-viewport) {
     padding: 0;
