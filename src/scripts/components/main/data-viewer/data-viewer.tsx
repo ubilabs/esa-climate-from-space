@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import cx from "classnames";
 
-import config from "../../../config/main";
+import config, { categoryTags } from "../../../config/main";
 
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useScreenSize } from "../../../hooks/use-screen-size";
@@ -66,6 +66,7 @@ const DataViewer: FunctionComponent<Props> = ({
   const { category } = useParams<RouteParams>();
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoryListQuery(language);
+
   const { data: layers } = useGetLayerListQuery(language);
 
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
@@ -177,7 +178,20 @@ const DataViewer: FunctionComponent<Props> = ({
     .concat(layers?.flatMap(({ categories }) => categories) ?? [])
     .filter(Boolean);
 
-  const uniqueTags = Array.from(new Set(allCategories));
+const uniqueTags =  categoryTags;
+  console.log(uniqueTags);
+  //const uniqueTags = [
+  //  "Welcome",
+  //  "Land",
+  //  "Ocean",
+  //  "Atmosphere",
+  //  "Cryosphere",
+  //  "Water Cycle",
+  //  "Carbon Cycle",
+  //  "Climate Risk",
+  //  "Climate Action",
+  //  "Improving Models"
+  //];
 
   // We need to reset the globe view every time the user navigates back from the the /data page
 
