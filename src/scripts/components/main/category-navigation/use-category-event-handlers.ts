@@ -1,10 +1,11 @@
 import { useState } from "react";
 import config from "../../../config/main";
 
-export const useCategoryTouchHandlers = (currentIndex: number, setCurrentIndex: React.Dispatch<React.SetStateAction<number>>
-) => {
+export const useCategoryTouchHandlers = () => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
 
+  // The index of the current category
+  const [currentTouchIndex, setCurrentIndex] = useState(0);
   const [isRotating, setIsRotating] = useState(false);
 
   // Handle touch events
@@ -23,7 +24,7 @@ export const useCategoryTouchHandlers = (currentIndex: number, setCurrentIndex: 
     if (Math.abs(diff) > 50) {
       // Remove modulo, allow continuous rotation
       const direction = diff > 0 ? -1 : 1;
-      const nextIndex = currentIndex + direction;
+      const nextIndex = currentTouchIndex + direction;
 
       setCurrentIndex(nextIndex);
       setTouchStart(null);
@@ -40,16 +41,18 @@ export const useCategoryTouchHandlers = (currentIndex: number, setCurrentIndex: 
   };
   return {
     isRotating,
+    currentTouchIndex,
     handleTouchStart,
     handleTouchMove,
     handleTouchEnd,
   };
 };
 
-export const useCategoryScrollHandlers = (currentIndex: number, setCurrentIndex: (index: number) => void) => {
+export const useCategoryScrollHandlers = () => {
   const [isRotating, setIsRotating] = useState(false);
   const [scrollAccumulator, setScrollAccumulator] = useState(0);
   const [lastScrollTime, setLastScrollTime] = useState(0);
+  const [currentScrollIndex, setCurrentIndex] = useState(0);
 
   const handleScroll = (e: React.WheelEvent) => {
     // Don't call preventDefault directly as it may not work with passive event listeners
@@ -89,7 +92,7 @@ export const useCategoryScrollHandlers = (currentIndex: number, setCurrentIndex:
       const direction = newScrollAccumulator > 0 ? 1 : -1;
 
       // Update the current index
-      const nextIndex = currentIndex + direction;
+      const nextIndex = currentScrollIndex + direction;
       setCurrentIndex(nextIndex);
 
       // Reset the accumulator
@@ -108,5 +111,6 @@ export const useCategoryScrollHandlers = (currentIndex: number, setCurrentIndex:
   };
   return {
     handleScroll,
+    currentScrollIndex,
   };
 };

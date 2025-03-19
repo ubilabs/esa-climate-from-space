@@ -69,13 +69,6 @@ const DataViewer: FunctionComponent<Props> = ({
 
   const { data: layers } = useGetLayerListQuery(language);
 
-  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
-
-  const { handleScroll } = useCategoryScrollHandlers(
-    currentCategoryIndex,
-    setCurrentCategoryIndex,
-  );
-
   const contents = [
     ...(stories?.filter(
       (story) => category && story.categories?.includes(category),
@@ -88,6 +81,7 @@ const DataViewer: FunctionComponent<Props> = ({
   const centerIndex = Math.floor((contents.length - 1) / 2);
 
   const [currentContentIndex, setCurrentContentIndex] = useState(centerIndex);
+  const { handleScroll, currentScrollIndex } = useCategoryScrollHandlers();
 
   const [showContentList, setShowContentList] = useState<boolean>(
     Boolean(category),
@@ -178,7 +172,7 @@ const DataViewer: FunctionComponent<Props> = ({
     .concat(layers?.flatMap(({ categories }) => categories) ?? [])
     .filter(Boolean);
 
-const uniqueTags =  categoryTags;
+  const uniqueTags = categoryTags;
   console.log(uniqueTags);
   //const uniqueTags = [
   //  "Welcome",
@@ -265,8 +259,7 @@ const uniqueTags =  categoryTags;
           )}
           {!showContentList && showCategories ? (
             <CategoryNavigation
-              currentIndex={currentCategoryIndex}
-              setCurrentIndex={setCurrentCategoryIndex}
+              currentScrollIndex={currentScrollIndex}
               arcs={arcs}
               showCategories={!showContentList}
               width={screenWidth}
