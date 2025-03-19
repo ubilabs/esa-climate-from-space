@@ -68,7 +68,6 @@ export const useContentParams = () => {
   const selectedStory = useSelector((state: State) =>
     selectedStorySelector(state, currentStoryId),
   );
-
   const isNavigation = mode === StoryMode.NavContent || mode === StoryMode.NavCategory;
 
   const { category } = params;
