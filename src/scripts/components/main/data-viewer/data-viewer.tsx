@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useRef, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
 
-import { Redirect, useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import cx from "classnames";
@@ -36,7 +36,6 @@ import { useContentParams } from "../../../hooks/use-content-params";
 import { StoryMode } from "../../../types/story-mode";
 import { setGlobeView } from "../../../reducers/globe/view";
 import { setGlobeSpinning } from "../../../reducers/globe/spinning";
-import { setShowLayer } from "../../../reducers/show-layer-selector";
 
 interface Props {
   hideNavigation?: boolean;
@@ -185,53 +184,23 @@ const DataViewer: FunctionComponent<Props> = ({
 
   const lastPage = useRef<string>(history.location.pathname);
   useEffect(() => {
-    return history.listen((location, action) => {
+    return history.listen((location) => {
       if (
-        !location.pathname.includes("/data") && lastPage.current !== location.pathname
+        !location.pathname.includes("/data") &&
+        lastPage.current !== location.pathname
       ) {
-        //console.log(
-        //  "Resetting globe view",
-        //  config.globe.view,
-        //  "action",
-        //  action,
-        //  "lastPage",
-        //  lastPage.current,
-        //  "location",
-        //  location.pathname,
-        //);
         if (!isNavigation) {
-      console.log("location data", location.pathname);
-      console.log("lastPage data", lastPage.current);
-      console.log("isNavigation data", isNavigation);
-      console.log("action data", action);
-          console.log("Resetting globe view", isNavigation);
           const defaultView = config.globe.view;
-          //dispatch(setFlyTo(defaultView));
           dispatch(setGlobeView(defaultView));
           dispatch(setGlobeSpinning(false));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-          //history.push("/");
         }
-        //dispatch(setGlobeView(config.globe.view));
-        //dispatch(setGlobeSpinning(false));
-        ////
-        //        dispatch(setShowLayer(false));
-        //        //thunkDispatch(layersApi.endpoints.getLayer.initiate(mainId));
       }
       lastPage.current = location.pathname;
     });
   }, [isNavigation, dispatch]);
 
-  //useEffect(() => {
-  //  if(!isNavigation) {
-  //  console.log("mode", mode);
-  //  const defaultView = config.globe.view;
-  //  dispatch(setFlyTo(defaultView));
-  //  dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
-  //  dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-  //  }
-  //}, [isNavigation, mode]);
 
   if (!stories || !layers || !arcs || !contents) {
     return null;
@@ -257,7 +226,7 @@ const DataViewer: FunctionComponent<Props> = ({
                 <Button
                   label={
                     !isMobile
-                      ? "sdfback_to_overview"
+                      ? "back_to_overview"
                       : `categories.${currentCategory}`
                   }
                   link={"/"}

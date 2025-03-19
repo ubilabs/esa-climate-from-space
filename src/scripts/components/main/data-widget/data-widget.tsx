@@ -156,8 +156,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   }, [currentView]);
 
   const onChangeHandler = (view: CameraView) => {
-    //console.log("calling on change handler, view", view);
-    //dispatch(setGlobeView(view));
     setCurrentView(view);
     // setting css variable for compass icon
     document.documentElement.style.setProperty(

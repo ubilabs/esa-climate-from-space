@@ -40,8 +40,6 @@ import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
 
 import styles from "./globe.module.css";
-import { globeViewSelector } from "../../../selectors/globe/view";
-import { useSelector } from "react-redux";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -175,6 +173,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   useMultiGlobeSynchronization(globe, props, animatedFlyTo);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
+
   return (
     <div
       ref={containerRef}
@@ -189,9 +188,6 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     ></div>
   );
 });
-
-// Don't forget to add the import at the top:
-// import { memo } from 'react';
 
 /**
  * Use a state-variable and callback as a ref so the element can be used
@@ -374,25 +370,24 @@ function useMultiGlobeSynchronization(
 
   // forward camera changes from the active view to the parent component
   useCameraChangeEvents(globe, props);
-console.log("acitve", active, props.imageLayer);
   // set camera-view unless it's the active globe
-  //useEffect(() => {
-  //  if (globe && !active) {
-  //
-  //    globe.setProps({ cameraView: view });
-  //  }
-  //}, [globe, view, active]);
-  //
-  //// incoming flyTo cameraViews are always applied
-  //useEffect(() => {
-  //  if (globe && flyTo) {
-  //    if (flyTo.isAnimated) {
-  //      animatedFlyTo(flyTo.lat, flyTo.lng);
-  //    } else {
-  //      globe.setProps({ cameraView: flyTo });
-  //    }
-  //  }
-  //}, [globe, flyTo, animatedFlyTo]);
+  useEffect(() => {
+    if (globe && !active) {
+
+      globe.setProps({ cameraView: view });
+    }
+  }, [globe, view, active]);
+
+  // incoming flyTo cameraViews are always applied
+  useEffect(() => {
+    if (globe && flyTo) {
+      if (flyTo.isAnimated) {
+        animatedFlyTo(flyTo.lat, flyTo.lng);
+      } else {
+        globe.setProps({ cameraView: flyTo });
+      }
+    }
+  }, [globe, flyTo, animatedFlyTo]);
 }
 
 /**
@@ -413,7 +408,6 @@ function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
 
       if (!ref.current.isMoving) {
         ref.current.isMoving = true;
-
         onMoveStart();
       }
 

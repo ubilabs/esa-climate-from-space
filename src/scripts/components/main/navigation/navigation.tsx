@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import config from "../../../config/main";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
@@ -19,7 +19,9 @@ import useIsStoriesPath from "../../../hooks/use-is-stories-path";
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import { EsaLogo } from "../icons/esa-logo";
 import { ArrowBackIcon } from "../icons/arrow-back-icon";
-import showLayerSelector, { setShowLayer } from "../../../reducers/show-layer-selector";
+import { setShowLayer } from "../../../reducers/show-layer-selector";
+import { StoryMode } from "../../../types/story-mode";
+import { LayerSelectorIcon } from "../icons/layer-selector-icon";
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -32,19 +34,22 @@ const Navigation: FunctionComponent = () => {
 
   const { category } = useContentParams();
   const isStoriesPath = useIsStoriesPath();
-  const {isNavigation} = useContentParams();
+
+  const { isNavigation } = useContentParams();
   const { isMobile } = useScreenSize();
+
+  const { mode } = useContentParams();
+
   return (
     <>
       <nav className={styles.navigation}>
         {
           <EsaLogo
             variant={
-              !isStoriesPath
-                ? "logoWithText"
-                : isMobile
-                  ? "shortLogo"
-                  : "logoWithText"
+              (!isMobile && "logoWithText") ||
+              (isStoriesPath || mode === StoryMode.Content
+                ? "shortLogo"
+                : "logoWithText")
             }
           />
         }
@@ -53,7 +58,16 @@ const Navigation: FunctionComponent = () => {
             className={styles.backButton}
             icon={ArrowBackIcon}
             label={isMobile ? "" : "backToStories"}
-            link={category ? `/${category}` : '/'}
+            link={category ? `/${category}` : "/"}
+          />
+        )}
+        {mode === StoryMode.Content && (
+          <Button
+            className={styles.button}
+            id="ui-menu"
+            icon={LayerSelectorIcon}
+            onClick={() => dispatch(setShowLayer(true))}
+            hideLabelOnMobile
           />
         )}
         {app_menu && (
@@ -61,7 +75,7 @@ const Navigation: FunctionComponent = () => {
             className={styles.button}
             id="ui-menu"
             icon={MenuIcon}
-            onClick={() => dispatch(setShowLayer(true))}
+            onClick={() => setShowMenu(true)}
             hideLabelOnMobile
           />
         )}
