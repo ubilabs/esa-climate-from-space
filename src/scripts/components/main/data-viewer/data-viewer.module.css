@@ -16,6 +16,27 @@
 
     container-name: wrapper;
     container-type: size;
+
+  }
+
+  /* Check if the globeWrapper currently contains two .globe elements
+* This means we are in the compare mode and should display the containers next to each other
+* ;*/
+.globeWrapper:has(.globe ~ .globe) {
+    grid-template-columns: 1fr 1fr;
+
+    > .globe {
+      position: relative !important;
+      height: 100%;
+      width: 100%;
+
+      > canvas {
+        height: 100%;
+        width:  100%;
+        scale: 1 !important;
+      }
+
+    }
   }
 
   @container wrapper (aspect-ratio <=1 / 1) {

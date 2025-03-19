@@ -1,5 +1,5 @@
 import { FunctionComponent, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import config from "../../../config/main";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
@@ -19,6 +19,7 @@ import useIsStoriesPath from "../../../hooks/use-is-stories-path";
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import { EsaLogo } from "../icons/esa-logo";
 import { ArrowBackIcon } from "../icons/arrow-back-icon";
+import showLayerSelector, { setShowLayer } from "../../../reducers/show-layer-selector";
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -32,7 +33,6 @@ const Navigation: FunctionComponent = () => {
   const { category } = useContentParams();
   const isStoriesPath = useIsStoriesPath();
   const {isNavigation} = useContentParams();
-
   const { isMobile } = useScreenSize();
   return (
     <>
@@ -61,7 +61,7 @@ const Navigation: FunctionComponent = () => {
             className={styles.button}
             id="ui-menu"
             icon={MenuIcon}
-            onClick={() => setShowMenu(true)}
+            onClick={() => dispatch(setShowLayer(true))}
             hideLabelOnMobile
           />
         )}

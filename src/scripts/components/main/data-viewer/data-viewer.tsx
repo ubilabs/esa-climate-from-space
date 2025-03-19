@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useRef, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
 
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { Redirect, useHistory, useLocation, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import cx from "classnames";
@@ -35,6 +35,8 @@ import styles from "./data-viewer.module.css";
 import { useContentParams } from "../../../hooks/use-content-params";
 import { StoryMode } from "../../../types/story-mode";
 import { setGlobeView } from "../../../reducers/globe/view";
+import { setGlobeSpinning } from "../../../reducers/globe/spinning";
+import { setShowLayer } from "../../../reducers/show-layer-selector";
 
 interface Props {
   hideNavigation?: boolean;
@@ -90,7 +92,6 @@ const DataViewer: FunctionComponent<Props> = ({
   const contentMarker = useContentMarker(selectedContentId, language);
 
   const { isNavigation, mode } = useContentParams();
-
 
   const dispatch = useDispatch();
 
@@ -170,18 +171,6 @@ const DataViewer: FunctionComponent<Props> = ({
     ) ?? []),
   ];
 
-// We need to reset the globe view every time the user navigates back from the the /data page
-const [lastPage, setLastPage] = useState("");
-
-useEffect(() => {
-  return history.listen((location, action) => {
-    if (action === "REPLACE" && lastPage.includes("/data") && location.pathname !== lastPage) {
-        dispatch(setGlobeView(config.globe.view));
-    }
-    setLastPage(location.pathname);
-  });
-}, [history, lastPage, dispatch]);
-
   // create a list of all tags with their number of occurrences in the stories
   // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
   const arcs = useMemo(
@@ -194,10 +183,59 @@ useEffect(() => {
     [uniqueTags, allCategories],
   );
 
+  const lastPage = useRef<string>(history.location.pathname);
+  useEffect(() => {
+    return history.listen((location, action) => {
+      if (
+        !location.pathname.includes("/data") && lastPage.current !== location.pathname
+      ) {
+        //console.log(
+        //  "Resetting globe view",
+        //  config.globe.view,
+        //  "action",
+        //  action,
+        //  "lastPage",
+        //  lastPage.current,
+        //  "location",
+        //  location.pathname,
+        //);
+        if (!isNavigation) {
+      console.log("location data", location.pathname);
+      console.log("lastPage data", lastPage.current);
+      console.log("isNavigation data", isNavigation);
+      console.log("action data", action);
+          console.log("Resetting globe view", isNavigation);
+          const defaultView = config.globe.view;
+          //dispatch(setFlyTo(defaultView));
+          dispatch(setGlobeView(defaultView));
+          dispatch(setGlobeSpinning(false));
+          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
+          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+          //history.push("/");
+        }
+        //dispatch(setGlobeView(config.globe.view));
+        //dispatch(setGlobeSpinning(false));
+        ////
+        //        dispatch(setShowLayer(false));
+        //        //thunkDispatch(layersApi.endpoints.getLayer.initiate(mainId));
+      }
+      lastPage.current = location.pathname;
+    });
+  }, [isNavigation, dispatch]);
+
+  //useEffect(() => {
+  //  if(!isNavigation) {
+  //  console.log("mode", mode);
+  //  const defaultView = config.globe.view;
+  //  dispatch(setFlyTo(defaultView));
+  //  dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
+  //  dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+  //  }
+  //}, [isNavigation, mode]);
+
   if (!stories || !layers || !arcs || !contents) {
     return null;
   }
-
   return (
     // The data-view is a grid with three areas: header - main - footer
     // This is the header area
@@ -206,7 +244,6 @@ useEffect(() => {
       onWheel={handleScroll}
       data-nav-content={mode}
     >
-
       {/* This is the main area
         The navigation consists of three main components: the globe, the category navigation and the content navigation
         The globe is the main component and is always visible
@@ -214,21 +251,23 @@ useEffect(() => {
       */}
       {isNavigation && (
         <>
-      {showCategories && (
-        <header className={styles.heading}>
-          {showContentList ? (
-            <Button
-              label={
-                !isMobile ? "back_to_overview" : `categories.${currentCategory}`
-              }
-              link={"/"}
-              className={styles.backButton}
-            ></Button>
-          ) : (
-            <FormattedMessage id="category.choose" />
+          {showCategories && (
+            <header className={styles.heading}>
+              {showContentList ? (
+                <Button
+                  label={
+                    !isMobile
+                      ? "sdfback_to_overview"
+                      : `categories.${currentCategory}`
+                  }
+                  link={"/"}
+                  className={styles.backButton}
+                ></Button>
+              ) : (
+                <FormattedMessage id="category.choose" />
+              )}
+            </header>
           )}
-        </header>
-      )}
           {!showContentList && showCategories ? (
             <CategoryNavigation
               currentScrollIndex={currentScrollIndex}
@@ -313,3 +352,6 @@ useEffect(() => {
 };
 
 export default DataViewer;
+function thunkDispatch(arg0: any) {
+  throw new Error("Function not implemented.");
+}

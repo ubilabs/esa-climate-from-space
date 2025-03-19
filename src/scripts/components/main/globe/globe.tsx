@@ -29,7 +29,7 @@ import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
 import { LayerType } from "../../../types/globe-layer-type";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import config from "../../../config/main";
 
 import { GlobeProjection } from "../../../types/globe-projection";
@@ -40,6 +40,8 @@ import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
 
 import styles from "./globe.module.css";
+import { globeViewSelector } from "../../../selectors/globe/view";
+import { useSelector } from "react-redux";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -51,8 +53,8 @@ WebGlGlobe.setTextureUrls({
 });
 
 interface Props {
+view: CameraView;
   active: boolean;
-  view: CameraView;
   projectionState: GlobeProjectionState;
   imageLayer: GlobeImageLayerData | null;
   layerDetails: Layer | null;
@@ -68,6 +70,7 @@ interface Props {
   onLayerLoadingStateChange: LayerLoadingStateChangeHandle;
   isAutoRotating: boolean;
   className: string;
+  action: () => void;
 }
 
 export type GlobeProps = Partial<Props>;
@@ -81,8 +84,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   const {
     view,
     projectionState,
-    onMouseEnter,
-    onTouchStart,
+    action,
     layerDetails,
     imageLayer,
     markers,
@@ -90,6 +92,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     backgroundColor,
     className,
   } = props;
+
 
   const [containerRef, globe] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
@@ -181,8 +184,8 @@ const Globe: FunctionComponent<Props> = memo((props) => {
         className,
       )}
       style={{ backgroundColor }}
-      onMouseEnter={() => onMouseEnter()}
-      onTouchStart={() => onTouchStart()}
+      onMouseEnter={action}
+      onTouchStart={action}
     ></div>
   );
 });
@@ -371,24 +374,25 @@ function useMultiGlobeSynchronization(
 
   // forward camera changes from the active view to the parent component
   useCameraChangeEvents(globe, props);
-
+console.log("acitve", active, props.imageLayer);
   // set camera-view unless it's the active globe
-  useEffect(() => {
-    if (globe && !active) {
-      globe.setProps({ cameraView: view });
-    }
-  }, [globe, view, active]);
-
-  // incoming flyTo cameraViews are always applied
-  useEffect(() => {
-    if (globe && flyTo) {
-      if (flyTo.isAnimated) {
-        animatedFlyTo(flyTo.lat, flyTo.lng);
-      } else {
-        globe.setProps({ cameraView: flyTo });
-      }
-    }
-  }, [globe, flyTo, animatedFlyTo]);
+  //useEffect(() => {
+  //  if (globe && !active) {
+  //
+  //    globe.setProps({ cameraView: view });
+  //  }
+  //}, [globe, view, active]);
+  //
+  //// incoming flyTo cameraViews are always applied
+  //useEffect(() => {
+  //  if (globe && flyTo) {
+  //    if (flyTo.isAnimated) {
+  //      animatedFlyTo(flyTo.lat, flyTo.lng);
+  //    } else {
+  //      globe.setProps({ cameraView: flyTo });
+  //    }
+  //  }
+  //}, [globe, flyTo, animatedFlyTo]);
 }
 
 /**
@@ -507,7 +511,6 @@ function getLayerProps(
   if (imageLayer && layerDetails) {
     const { id, url } = imageLayer;
     const { type = LayerType.Image } = layerDetails;
-
     layers.push({
       id,
       zIndex: 1,

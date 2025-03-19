@@ -33,6 +33,7 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 import GlobeNavigation from "../globe-navigation/globe-navigation";
 import { Marker } from "../../../types/marker-type";
 
+
 interface Props {
   hideNavigation: boolean;
   markers?: Marker[];
@@ -48,7 +49,9 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 }) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
+
   const globeSpinning = useSelector(globeSpinningSelector);
+
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const flyTo = useSelector(flyToSelector);
 
@@ -63,6 +66,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   );
 
   const compareLayer = useSelector((state: State) =>
+
     layerListItemSelector(state, compareId),
   );
 
@@ -73,6 +77,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const [active, setActive] = useState(Boolean(compareLayer));
   // If initially, there is a main layer selected, we need to fetch the layer details
   useGetLayerQuery(mainId ?? "", { skip: !mainId });
+  useGetLayerQuery(compareId ?? "", { skip: !compareId });
 
   const onMoveStartHandler = useCallback(
     () => globeSpinning && dispatch(setGlobeSpinning(false)),
@@ -137,31 +142,29 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
   const compareImageLayer = useImageLayerData(compareLayerDetails, time);
 
-  const imageLayer = compareLayer ? compareImageLayer : mainImageLayer;
-  const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
-
   const updatedLayerDetails = showClouds
     ? {
-        ...(layerDetails || {}),
+        ...(mainLayerDetails || {}),
         basemap: "clouds",
       }
-    : layerDetails;
+    : mainLayerDetails;
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
   useLayoutEffect(() => {
-    setCurrentView(globalGlobeView);
-  }, [globalGlobeView]);
+    setCurrentView(currentView);
+  }, [currentView]);
 
-  const onChangeHandler = useCallback((view: CameraView) => {
+  const onChangeHandler = (view: CameraView) => {
+    //console.log("calling on change handler, view", view);
+    //dispatch(setGlobeView(view));
     setCurrentView(view);
     // setting css variable for compass icon
     document.documentElement.style.setProperty(
       "--globe-latitude",
       `${view.lat}deg`,
     );
-  }, []);
-
+  };
   const { legend } = useSelector(embedElementsSelector);
 
   // stop globe spinning when layer is selected
@@ -171,16 +174,15 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     }
   }, [dispatch, mainId, compareId, globeSpinning]);
 
-  const props = {
+  const mainGlobeProps = {
+    imageLayer: mainImageLayer,
+    layerDetails: updatedLayerDetails,
     active: active,
+    action: () => setActive(true),
     view: currentView,
     projectionState: projectionState,
-    imageLayer: imageLayer,
-    layerDetails: updatedLayerDetails,
     spinning: globeSpinning,
     flyTo: flyTo,
-    onMouseEnter: () => setActive((prev) => !prev),
-    onTouchStart: () => setActive((prev) => !prev),
     onChange: onChangeHandler,
     onMoveStart: onMoveStartHandler,
     onMoveEnd: onMoveEndHandler,
@@ -192,12 +194,29 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     ...globeProps,
   };
 
+  const compareGlobeProps = {
+    imageLayer: compareImageLayer,
+    layerDetails: compareLayerDetails,
+    active: !active,
+    action: () => setActive(false),
+    flyTo: flyTo,
+    view: currentView,
+    isAutoRotating: false,
+    projectionState: projectionState,
+    onChange: onChangeHandler,
+    onMoveStart: onMoveStartHandler,
+    onMoveEnd: onMoveEndHandler,
+    ...globeProps,
+  };
+
   if (mainImageLayer?.type === LayerType.Gallery) {
     return <Gallery imageLayer={mainImageLayer} />;
   }
+
   return (
     <>
-      <Globe {...props} />
+      <Globe {...mainGlobeProps} />
+      {compareLayer && <Globe {...compareGlobeProps} />}
       {legend && getLegends()}
       {!hideNavigation && showGlobeNavigation && <GlobeNavigation />}
     </>
