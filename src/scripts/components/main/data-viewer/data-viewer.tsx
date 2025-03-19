@@ -64,23 +64,6 @@ const DataViewer: FunctionComponent<Props> = ({
   showCategories,
 }) => {
   const { category } = useParams<RouteParams>();
-  const language = useSelector(languageSelector);
-  const { data: stories } = useGetStoryListQuery(language);
-
-  const { data: layers } = useGetLayerListQuery(language);
-
-  const contents = [
-    ...(stories?.filter(
-      (story) => category && story.categories?.includes(category),
-    ) ?? []),
-    ...(layers?.filter(
-      (layer) => category && layer.categories?.includes(category),
-    ) ?? []),
-  ];
-
-  const centerIndex = Math.floor((contents.length - 1) / 2);
-
-  const [currentContentIndex, setCurrentContentIndex] = useState(centerIndex);
   const { handleScroll, currentScrollIndex } = useCategoryScrollHandlers();
 
   const [showContentList, setShowContentList] = useState<boolean>(
@@ -95,6 +78,10 @@ const DataViewer: FunctionComponent<Props> = ({
   const intl = useIntl();
 
   const { screenHeight, screenWidth, isMobile } = useScreenSize();
+
+  const language = useSelector(languageSelector);
+  const { data: stories } = useGetStoryListQuery(language);
+  const { data: layers } = useGetLayerListQuery(language);
 
   // We need to keep track of the current selected content Id because we need to
   // set the flyTo for the marker, or add the data layer to the globe
@@ -187,6 +174,15 @@ const DataViewer: FunctionComponent<Props> = ({
   //  "Improving Models"
   //];
 
+  const contents = [
+    ...(stories?.filter(
+      (story) => category && story.categories?.includes(category),
+    ) ?? []),
+    ...(layers?.filter(
+      (layer) => category && layer.categories?.includes(category),
+    ) ?? []),
+  ];
+
   // We need to reset the globe view every time the user navigates back from the the /data page
 
   const lastPage = useRef<string>(history.location.pathname);
@@ -270,8 +266,6 @@ const DataViewer: FunctionComponent<Props> = ({
             />
           ) : (
             <ContentNavigation
-              currentIndex={currentContentIndex}
-              setCurrentIndex={setCurrentContentIndex}
               isMobile={isMobile}
               className={styles.contentNav}
               category={currentCategory}
