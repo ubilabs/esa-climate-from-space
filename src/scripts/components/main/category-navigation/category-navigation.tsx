@@ -17,9 +17,10 @@ interface Props {
   isMobile: boolean;
   width: number;
   setCategory: React.Dispatch<React.SetStateAction<string | null>>;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
   isAnimationReady: RefObject<boolean>;
   arcs: { [key: string]: number }[];
-  currentScrollIndex: number | null;
+  currentIndex: number;
   height: number;
 }
 
@@ -41,19 +42,14 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   showCategories,
   arcs,
   isAnimationReady,
-  currentScrollIndex,
+  currentIndex,
+  setCurrentIndex,
 }) => {
   const history = useHistory();
 
-  const {
-    isRotating,
-    currentTouchIndex,
-    handleTouchStart,
-    handleTouchMove,
-    handleTouchEnd,
-  } = useCategoryTouchHandlers();
+  const { isRotating, handleTouchStart, handleTouchMove, handleTouchEnd } =
+    useCategoryTouchHandlers(currentIndex, setCurrentIndex);
 
-  const currentIndex = currentScrollIndex || currentTouchIndex;
   // Control the gap between the lines (arcs)
   const SPACING = 5;
 

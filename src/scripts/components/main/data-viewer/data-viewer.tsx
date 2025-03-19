@@ -64,7 +64,10 @@ const DataViewer: FunctionComponent<Props> = ({
   showCategories,
 }) => {
   const { category } = useParams<RouteParams>();
-  const { handleScroll, currentScrollIndex } = useCategoryScrollHandlers();
+
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
+
+  const { handleScroll } = useCategoryScrollHandlers(currentCategoryIndex, setCurrentCategoryIndex);
 
   const [showContentList, setShowContentList] = useState<boolean>(
     Boolean(category),
@@ -234,16 +237,16 @@ const DataViewer: FunctionComponent<Props> = ({
                   className={styles.backButton}
                 ></Button>
               ) : (
-
-                  <span className={styles.chooseHeading}>
-                    <FormattedMessage id="category.choose" />
-                  </span>
+                <span className={styles.chooseHeading}>
+                  <FormattedMessage id="category.choose" />
+                </span>
               )}
             </header>
           )}
           {!showContentList && showCategories ? (
             <CategoryNavigation
-              currentScrollIndex={currentScrollIndex}
+              currentIndex={currentCategoryIndex}
+              setCurrentIndex={setCurrentCategoryIndex}
               arcs={arcs}
               showCategories={!showContentList}
               width={screenWidth}
