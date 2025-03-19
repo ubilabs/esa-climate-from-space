@@ -5,7 +5,6 @@ import { YouTubePlayer } from "youtube-player/dist/types";
 
 import { useContentParams } from "../../../hooks/use-content-params";
 import { setGlobeTime } from "../../../reducers/globe/time";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import SplashScreen from "../splash-screen/splash-screen";
 import StoryContent from "../story-content/story-content";
 import StoryFooter from "../story-footer/story-footer";
@@ -35,8 +34,6 @@ const Story: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
   const { mode, slideIndex, currentStoryId } = storyParams;
-
-  const { story_header } = useSelector(embedElementsSelector);
 
   const lang = useSelector(languageSelector);
 
