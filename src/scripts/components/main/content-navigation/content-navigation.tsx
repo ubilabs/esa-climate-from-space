@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
@@ -41,6 +41,8 @@ interface Props {
   category: string | null;
   className?: string;
   isMobile: boolean;
+  currentIndex: number;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const ContentNavigation: FunctionComponent<Props> = ({
@@ -50,25 +52,23 @@ const ContentNavigation: FunctionComponent<Props> = ({
   setSelectedContentId,
   className,
   isMobile,
+  currentIndex,
+  setCurrentIndex,
 }) => {
   const navigationRef = React.useRef<HTMLUListElement | null>(null);
   const dispatch = useDispatch();
   const thunkDispatch = useThunkDispatch();
   const { trackEvent } = useMatomo();
   const lang = useSelector(languageSelector);
-
-  const entryCount = contents.length;
-  const centerIndex = Math.floor((entryCount - 1) / 2);
-
-  const [currentIndex, setCurrentIndex] = useState(centerIndex);
+console.log("ContentNavigation", currentIndex);
 
   const { handleTouchEnd, handleTouchMove } = useContentTouchHandlers(
     currentIndex,
     setCurrentIndex,
-    entryCount,
+    contents.length,
   );
 
-  const { handleWheel } = useContentScrollHandlers(setCurrentIndex, entryCount);
+  const { handleWheel } = useContentScrollHandlers(setCurrentIndex, contents.length);
 
   // The spread between the elements in the circle
   const GAP_BETWEEN_ELEMENTS = 16;
@@ -111,13 +111,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
       item.classList.toggle(styles.active, adjustedPosition === 0);
     }
   }, [
-    centerIndex,
     currentIndex,
     showContentList,
     contents.length,
     setSelectedContentId,
     isMobile,
-    entryCount,
   ]);
 
   useEffect(() => {
