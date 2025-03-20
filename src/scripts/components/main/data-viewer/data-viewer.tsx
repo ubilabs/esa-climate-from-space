@@ -195,9 +195,11 @@ const DataViewer: FunctionComponent<Props> = ({
       ) {
         if (!isNavigation) {
           const defaultView = config.globe.view;
+
           dispatch(setGlobeView(defaultView));
           dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
         }
       }
       lastPage.current = location.pathname;

@@ -108,6 +108,9 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   // Ticket #1271 and #1270 reference these issues see https://github.com/orgs/ubilabs/projects/48
   const animatedFlyTo = useCallback(
     (lat: number, lng: number) => {
+      if (rotationRef.current.lng === lng && rotationRef.current.lat === lat) {
+        return;
+      }
       // Instead of the center, we have to adjust the target position so that
       // actual point we want to move to is rotated the right side
       // This is because only the right side of the globe is actually visible to the user
