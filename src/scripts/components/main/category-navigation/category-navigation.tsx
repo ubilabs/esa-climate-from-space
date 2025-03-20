@@ -11,6 +11,8 @@ import cx from "classnames";
 import { useCategoryTouchHandlers } from "./use-category-event-handlers";
 
 import styles from "./category-navigation.module.css";
+import { setSelectedContentAction } from "../../../reducers/content";
+import { useDispatch } from "react-redux";
 
 interface Props {
   showCategories: boolean;
@@ -46,7 +48,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   setCurrentIndex,
 }) => {
   const history = useHistory();
-
+  const dispatch = useDispatch();
   const { isRotating, handleTouchStart, handleTouchMove, handleTouchEnd } =
     useCategoryTouchHandlers(currentIndex, setCurrentIndex);
 
@@ -152,9 +154,11 @@ const CategoryNavigation: FunctionComponent<Props> = ({
     const [[category]] = Object.entries(arcs[normalizedIndex]);
 
     if (category) {
+      dispatch(setSelectedContentAction({ category }));
+
       setCategory(category);
     }
-  }, [normalizedIndex, setCategory, arcs]);
+  }, [dispatch, normalizedIndex, setCategory, arcs]);
 
   useEffect(() => {
     if (isAnimationReady.current) {

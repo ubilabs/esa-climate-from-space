@@ -8,7 +8,6 @@ import {
 import { LayerType } from "../../../types/globe-layer-type";
 import { Layer } from "../../../types/layer";
 import Gallery from "../gallery/gallery";
-import Globe, { GlobeProps } from "../globe/globe";
 import { projectionSelector } from "../../../selectors/globe/projection";
 import { useDispatch, useSelector } from "react-redux";
 import { globeViewSelector } from "../../../selectors/globe/view";
@@ -33,11 +32,11 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 import GlobeNavigation from "../globe-navigation/globe-navigation";
 import { Marker } from "../../../types/marker-type";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
+import Globe from "../globe/globe";
 
 interface Props {
   hideNavigation: boolean;
   markers?: Marker[];
-  globeProps: GlobeProps;
   showClouds?: boolean;
   className?: string;
 }
@@ -45,7 +44,6 @@ interface Props {
 export const GetDataWidget: FunctionComponent<Props> = ({
   hideNavigation,
   markers,
-  globeProps,
   showClouds,
   className
 }) => {
@@ -232,6 +230,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({
           active: !isMainActive,
           action: () => setIsMainActive(false),
         })}
-    </>
+        {!hideNavigation && showGlobeNavigation && (
+        <GlobeNavigation/>
+      )}  </>
   );
 };

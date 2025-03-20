@@ -18,7 +18,6 @@ import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 import { setFlyTo } from "../../../reducers/fly-to";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 
-import { globeViewSelector } from "../../../selectors/globe/view";
 import { languageSelector } from "../../../selectors/language";
 
 import {
@@ -32,8 +31,6 @@ import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation from "../category-navigation/category-navigation";
 
 import { useContentParams } from "../../../hooks/use-content-params";
-import { StoryMode } from "../../../types/story-mode";
-import { setGlobeView } from "../../../reducers/globe/view";
 import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
 import styles from "./data-viewer.module.css";
@@ -197,8 +194,8 @@ const DataViewer: FunctionComponent<Props> = ({
         lastPage.current !== location.pathname
       ) {
         if (!isNavigation) {
-          const defaultView = config.globe.view;
 
+          const defaultView = config.globe.view;
           dispatch(setFlyTo(defaultView));
           dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));

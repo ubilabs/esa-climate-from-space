@@ -1,6 +1,7 @@
 import {
   FunctionComponent,
   memo,
+  RefObject,
   useCallback,
   useEffect,
   useRef,
@@ -35,7 +36,7 @@ import config from "../../../config/main";
 
 import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
-import { FlyToPayload, setFlyTo } from "../../../reducers/fly-to";
+import {  setFlyTo } from "../../../reducers/fly-to";
 import { renderToStaticMarkup } from "react-dom/server";
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
@@ -43,7 +44,6 @@ import { GlobeProjectionState } from "../../../types/globe-projection-state";
 import styles from "./globe.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
-import { useContentParams } from "../../../hooks/use-content-params";
 import { isAutoRotatingSelector } from "../../../selectors/auto-rotate";
 
 type LayerLoadingStateChangedEvent =
@@ -549,7 +549,7 @@ function useMultiGlobeSynchronization(
       globe.setProps({ cameraView: flyTo });
       dispatch(setFlyTo(null));
     }
-  }, [globe, flyTo, view.altitude]);
+  }, [dispatch, animationRef, rotationRef, globe, flyTo, view.altitude]);
   // Cleanup function to cancel any ongoing animation when unmounting
   return () => {
     if (animationRef.current.animationId !== null) {
