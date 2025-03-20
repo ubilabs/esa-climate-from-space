@@ -71,7 +71,9 @@ const DataViewer: FunctionComponent<Props> = ({
   const { data: layers } = useGetLayerListQuery(language);
 
   const categoryIndex = category ? categoryTags.indexOf(category) : -1;
-  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(categoryIndex !== -1 ? categoryIndex : 0);
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(
+    categoryIndex !== -1 ? categoryIndex : 0,
+  );
 
   const { handleScroll } = useCategoryScrollHandlers(
     currentCategoryIndex,
@@ -87,7 +89,9 @@ const DataViewer: FunctionComponent<Props> = ({
     ) ?? []),
   ];
 
-  const [currentContentIndex, setCurrentContentIndex] = useState<null | number >(null);
+  const [currentContentIndex, setCurrentContentIndex] = useState<null | number>(
+    null,
+  );
 
   const [showContentList, setShowContentList] = useState<boolean>(
     Boolean(category),
@@ -321,14 +325,14 @@ const DataViewer: FunctionComponent<Props> = ({
         <GetDataWidget
           hideNavigation={Boolean(hideNavigation)}
           showClouds={showCategories && !showContentList}
+          className={cx(
+            (showCategories || showContentList || isMobile) && styles.globe,
+          )}
           globeProps={{
             ...(contentMarker && {
               markers: [contentMarker],
             }),
-            className: cx(
-              (showCategories || showContentList || isMobile) && styles.globe,
-            ),
-            isAutoRotating: mode === StoryMode.NavCategory,
+            //isAutoRotating: mode === StoryMode.NavCategory,
           }}
         />
       </div>

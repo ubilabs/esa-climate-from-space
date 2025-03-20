@@ -11,6 +11,7 @@ import cx from "classnames";
 
 import {
   CameraView,
+  LayerLoadingState,
   LayerProps,
   MarkerProps,
   RenderMode,
@@ -51,13 +52,13 @@ WebGlGlobe.setTextureUrls({
 });
 
 interface Props {
-view: CameraView;
   active: boolean;
+  view: CameraView;
   projectionState: GlobeProjectionState;
   imageLayer: GlobeImageLayerData | null;
   layerDetails: Layer | null;
   spinning: boolean;
-  flyTo: FlyToPayload | null;
+  flyTo: CameraView | null;
   markers?: Marker[];
   backgroundColor: string;
   onMouseEnter: () => void;
@@ -65,11 +66,13 @@ view: CameraView;
   onChange: (view: CameraView) => void;
   onMoveStart: () => void;
   onMoveEnd: (view: CameraView) => void;
-  onLayerLoadingStateChange: LayerLoadingStateChangeHandle;
-  isAutoRotating: boolean;
-  className: string;
-  action: () => void;
+  className?: string;
+  onLayerLoadingStateChange: (
+    layerId: string,
+    state: LayerLoadingState
+  ) => void;
 }
+
 
 export type GlobeProps = Partial<Props>;
 
@@ -82,15 +85,14 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   const {
     view,
     projectionState,
-    action,
     layerDetails,
     imageLayer,
     markers,
-    isAutoRotating = false,
     backgroundColor,
     className,
+    onMouseEnter,
+    onTouchStart,
   } = props;
-
 
   const [containerRef, globe] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
@@ -100,7 +102,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     lng: number;
   }>({ lat: view.lat, lng: view.lng });
 
-  const isAutoRotatingRef = useRef<boolean>(isAutoRotating);
+  //const isAutoRotatingRef = useRef<boolean>(isAutoRotating);
 
   // We have these custom functions for autoRotating the globe and animating the flyTo
   // Ticket #1271 and #1270 reference these issues see https://github.com/orgs/ubilabs/projects/48
@@ -144,27 +146,27 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     [globe, view.altitude],
   );
 
-  const autoRotate = useCallback(() => {
-    rotationRef.current.lng -= 0.05;
-    const lng = rotationRef.current.lng;
+  //const autoRotate = useCallback(() => {
+  //  rotationRef.current.lng -= 0.05;
+  //  const lng = rotationRef.current.lng;
+  //
+  //  if (globe) {
+  //    globe.setProps({
+  //      cameraView: { lng, lat: view.lat, altitude: view.altitude },
+  //    });
+  //  }
 
-    if (globe) {
-      globe.setProps({
-        cameraView: { lng, lat: view.lat, altitude: view.altitude },
-      });
-    }
-
-    if (isAutoRotatingRef.current) {
-      requestAnimationFrame(autoRotate);
-    }
-  }, [globe, view.lat, view.altitude]);
-
-  useEffect(() => {
-    isAutoRotatingRef.current = isAutoRotating;
-    if (globe && isAutoRotating) {
-      autoRotate();
-    }
-  }, [globe, autoRotate, isAutoRotating]);
+  //  if (isAutoRotatingRef.current) {
+  //    requestAnimationFrame(autoRotate);
+  //  }
+  //}, [globe, view.lat, view.altitude]);
+  //
+  //useEffect(() => {
+  //  isAutoRotatingRef.current = isAutoRotating;
+  //  if (globe && isAutoRotating) {
+  //    autoRotate();
+  //  }
+  //}, [globe, autoRotate, isAutoRotating]);
 
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
@@ -174,6 +176,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
+  console.log("className", className);
   return (
     <div
       ref={containerRef}
@@ -183,9 +186,8 @@ const Globe: FunctionComponent<Props> = memo((props) => {
         className,
       )}
       style={{ backgroundColor }}
-      onMouseEnter={action}
-      onTouchStart={action}
-    ></div>
+      onMouseEnter={() => onMouseEnter()}
+      onTouchStart={() => onTouchStart()}></div>
   );
 });
 
@@ -373,7 +375,6 @@ function useMultiGlobeSynchronization(
   // set camera-view unless it's the active globe
   useEffect(() => {
     if (globe && !active) {
-
       globe.setProps({ cameraView: view });
     }
   }, [globe, view, active]);
