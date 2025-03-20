@@ -22,17 +22,17 @@ import { ArrowBackIcon } from "../icons/arrow-back-icon";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { StoryMode } from "../../../types/story-mode";
 import { LayerSelectorIcon } from "../icons/layer-selector-icon";
+import { contentSelector } from "../../../selectors/content";
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const selectedLanguage = useSelector(languageSelector);
   const savedLanguage = localStorage.getItem(config.localStorageLanguageKey);
-  const { app_menu } = useSelector(embedElementsSelector);
 
   const [showTooltip, setShowTooltip] = useState(Boolean(!savedLanguage));
 
-  const { category } = useContentParams();
+  const {category} = useSelector(contentSelector)
   const isStoriesPath = useIsStoriesPath();
 
   const { isNavigation } = useContentParams();
@@ -70,7 +70,6 @@ const Navigation: FunctionComponent = () => {
             hideLabelOnMobile
           />
         )}
-        {app_menu && (
           <Button
             className={styles.button}
             id="ui-menu"
@@ -78,7 +77,6 @@ const Navigation: FunctionComponent = () => {
             onClick={() => setShowMenu(true)}
             hideLabelOnMobile
           />
-        )}
       </nav>
 
       {showTooltip && (

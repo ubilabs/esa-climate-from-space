@@ -31,6 +31,7 @@ const globeState: GlobeState = {
     lng: 0,
     altitude: 23840000,
     zoom: 0,
+    isAnimated: false,
   },
   spinning: true,
   layerLoadingState: {},

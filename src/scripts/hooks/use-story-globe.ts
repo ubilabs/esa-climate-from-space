@@ -12,6 +12,7 @@ import { CameraView, RenderMode } from "@ubilabs/esa-webgl-globe";
 
 function flyToToCameraView(flyTo: GlobeItem["flyTo"]): CameraView {
   return {
+    isAnimated: false,
     renderMode: "globe" as RenderMode.GLOBE,
     lng: flyTo.position.longitude,
     lat: flyTo.position.latitude,
@@ -35,6 +36,7 @@ export const useStoryGlobe = (globeItem: GlobeItem) => {
     const cameraView: CameraView =
       globeItem.flyTo && flyToToCameraView(globeItem.flyTo);
 
+console.log("cameraView", cameraView);
     dispatch(setFlyTo(cameraView || defaultView));
     dispatch(
       setSelectedLayerIds({

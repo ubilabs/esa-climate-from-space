@@ -124,8 +124,6 @@ const DataViewer: FunctionComponent<Props> = ({
     localStorage.getItem(config.localStorageHasUserInteractedKey) === "true",
   );
 
-  const globalGlobeView = useSelector(globeViewSelector);
-
   const location = useLocation();
 
   // Reset the selected layer when data view is not active
@@ -158,7 +156,6 @@ const DataViewer: FunctionComponent<Props> = ({
       dispatch(
         setFlyTo({
           isAnimated: true,
-          ...globalGlobeView,
           lat: previewedContent.position[1],
           lng: previewedContent.position[0],
         }),
@@ -168,7 +165,7 @@ const DataViewer: FunctionComponent<Props> = ({
         `Content with id ${selectedContentId} could not be found, ${previewedContent}`,
       );
     }
-  }, [selectedContentId, globalGlobeView, stories, dispatch]);
+  }, [selectedContentId, stories, dispatch]);
 
   useEffect(() => {
     if (!showContentList) {

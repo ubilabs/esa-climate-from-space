@@ -1,30 +1,27 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CameraView } from "@ubilabs/esa-webgl-globe";
-
-interface FlyToState {
-  view: CameraView | null;
-  isAnimated?: boolean;
-}
+import config from "../config/main";
 
 export interface FlyToPayload extends CameraView {
-  isAnimated?: boolean;
+  isAnimated: boolean;
 }
-
-const initialState: FlyToState = {
-  view: null,
-  isAnimated: false,
-};
+const initialState = null;
+//  {
+//  lat: config.globe.view.lat,
+//  lng: config.globe.view.lng,
+//  renderMode: config.globe.view.renderMode,
+//  zoom: config.globe.view.zoom,
+//  altitude: config.globe.view.altitude,
+//  isAnimated: false,
+//};
 
 const flyToSlice = createSlice({
   name: "flyTo",
   initialState,
   reducers: {
     setFlyTo(state, action: PayloadAction<FlyToPayload>) {
-      state.view = {
-        ...state.view,
-        ...action.payload,
-      };
-      state.isAnimated = action.payload.isAnimated;
+      console.log("setFlyTo", action.payload);
+      return action.payload;
     },
   },
 });

@@ -75,7 +75,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     layerDetailsSelector(state, compareId),
   );
 
-  const [active, setActive] = useState(Boolean(compareLayer));
   // If initially, there is a main layer selected, we need to fetch the layer details
   useGetLayerQuery(mainId ?? "", { skip: !mainId });
 

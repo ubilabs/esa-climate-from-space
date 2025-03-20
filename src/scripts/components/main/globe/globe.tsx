@@ -9,6 +9,11 @@ import {
 
 import cx from "classnames";
 
+// Easing function for smoother animation
+function easeInOutQuad(t: number): number {
+  return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+}
+
 import {
   CameraView,
   LayerLoadingState,
@@ -35,12 +40,15 @@ import config from "../../../config/main";
 
 import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
-import { FlyToPayload } from "../../../reducers/fly-to";
+import { FlyToPayload, setFlyTo } from "../../../reducers/fly-to";
 import { renderToStaticMarkup } from "react-dom/server";
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
 
 import styles from "./globe.module.css";
+import { useDispatch } from "react-redux";
+import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
+import { useContentParams } from "../../../hooks/use-content-params";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -78,8 +86,8 @@ export type GlobeProps = Partial<Props>;
 
 const EMPTY_FUNCTION = () => {};
 
-// This is the speed of the flyTo animation
-const SPEED = 2;
+// Animation duration in milliseconds
+const ANIMATION_DURATION = 2000;
 
 const Globe: FunctionComponent<Props> = memo((props) => {
   const {
@@ -96,6 +104,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
 
   const [containerRef, globe] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
+const dispatch = useDispatch();
 
   const rotationRef = useRef<{
     lat: number;
@@ -106,48 +115,48 @@ const Globe: FunctionComponent<Props> = memo((props) => {
 
   // We have these custom functions for autoRotating the globe and animating the flyTo
   // Ticket #1271 and #1270 reference these issues see https://github.com/orgs/ubilabs/projects/48
-  const animatedFlyTo = useCallback(
-    (lat: number, lng: number) => {
-      if (rotationRef.current.lng === lng && rotationRef.current.lat === lat) {
-        return;
-      }
-      // Instead of the center, we have to adjust the target position so that
-      // actual point we want to move to is rotated the right side
-      // This is because only the right side of the globe is actually visible to the user
-      const targetLng = lng - 55;
-      const targetLat = lat;
-      const startLng = rotationRef.current.lng;
-      const startLat = rotationRef.current.lat;
-      const deltaLng = targetLng - startLng;
-      const deltaLat = targetLat - startLat;
-      const steps = Math.ceil(SPEED * 60); // Assuming 60 frames per second
-
-      let step = 0;
-
-      const animate = () => {
-        if (step < steps) {
-          const currentLng = startLng + (deltaLng * step) / steps;
-          const currentLat = startLat + (deltaLat * step) / steps;
-          if (globe) {
-            rotationRef.current.lng = currentLng;
-            rotationRef.current.lat = currentLat;
-            globe.setProps({
-              cameraView: {
-                lng: currentLng,
-                lat: currentLat,
-                altitude: view.altitude,
-              },
-            });
-          }
-          step++;
-          requestAnimationFrame(animate);
-        }
-      };
-
-      animate();
-    },
-    [globe, view.altitude],
-  );
+  //const animatedFlyTo = useCallback(
+  //  (lat: number, lng: number) => {
+  //    if (rotationRef.current.lng === lng && rotationRef.current.lat === lat) {
+  //      return;
+  //    }
+  //    // Instead of the center, we have to adjust the target position so that
+  //    // actual point we want to move to is rotated the right side
+  //    // This is because only the right side of the globe is actually visible to the user
+  //    const targetLng = lng - 55;
+  //    const targetLat = lat;
+  //    const startLng = rotationRef.current.lng;
+  //    const startLat = rotationRef.current.lat;
+  //    const deltaLng = targetLng - startLng;
+  //    const deltaLat = targetLat - startLat;
+  //    const steps = Math.ceil(SPEED * 60); // Assuming 60 frames per second
+  //
+  //    let step = 0;
+  //
+  //    const animate = () => {
+  //      if (step < steps) {
+  //        const currentLng = startLng + (deltaLng * step) / steps;
+  //        const currentLat = startLat + (deltaLat * step) / steps;
+  //        if (globe) {
+  //          rotationRef.current.lng = currentLng;
+  //          rotationRef.current.lat = currentLat;
+  //          globe.setProps({
+  //            cameraView: {
+  //              lng: currentLng,
+  //              lat: currentLat,
+  //              altitude: view.altitude,
+  //            },
+  //          });
+  //        }
+  //        step++;
+  //        requestAnimationFrame(animate);
+  //      }
+  //    };
+  //
+  //    animate();
+  //  },
+  //  [globe, view.altitude],
+  //);
 
   //const autoRotate = useCallback(() => {
   //  rotationRef.current.lng -= 0.05;
@@ -175,7 +184,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   useGlobeMarkers(globe, markers);
 
   useProjectionSwitch(globe, projectionState.projection);
-  useMultiGlobeSynchronization(globe, props, animatedFlyTo);
+  useMultiGlobeSynchronization(globe, props, dispatch);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
@@ -369,9 +378,14 @@ function useProjectionSwitch(
 function useMultiGlobeSynchronization(
   globe: WebGlGlobe | null,
   props: Props,
-  animatedFlyTo: (lat: number, lng: number) => void,
+  dispatch: Dispatch<UnknownAction>,
 ) {
   const { view, active, flyTo } = props;
+
+  const rotationRef = useRef<{
+    lat: number;
+    lng: number;
+  }>({ lat: view.lat, lng: view.lng });
 
   // forward camera changes from the active view to the parent component
   useCameraChangeEvents(globe, props);
@@ -382,16 +396,143 @@ function useMultiGlobeSynchronization(
     }
   }, [globe, view, active]);
 
+  // Track animation state to prevent multiple animations
+  const animationRef = useRef<{
+    isAnimating: boolean;
+    animationId: number | null;
+    lastFlyToTarget: { lat: number; lng: number } | null;
+  }>({
+    isAnimating: false,
+    animationId: null,
+    lastFlyToTarget: null
+  });
+
+  // ! Make sure to reset the FlyTo after the animation has been applied
+  // That way we make sure we can use the globe view to apply movements by event handlers
+  // There is probably a better way to do this?
+
   // incoming flyTo cameraViews are always applied
   useEffect(() => {
-    if (globe && flyTo) {
-      if (flyTo.isAnimated) {
-        animatedFlyTo(flyTo.lat, flyTo.lng);
+    // Skip entire effect if globe or flyTo is not available
+    if (!globe || !flyTo) return;
+    if (flyTo.isAnimated) {
+        // Extract target coordinates
+        const lat = flyTo.lat;
+        const lng = flyTo.lng;
+
+        // Skip if we're already at the target position
+        if (rotationRef.current.lng === lng && rotationRef.current.lat === lat) {
+          return;
+        }
+
+        // Skip if we're already animating to this target
+        if (
+          animationRef.current.isAnimating &&
+          animationRef.current.lastFlyToTarget &&
+          animationRef.current.lastFlyToTarget.lat === lat &&
+          animationRef.current.lastFlyToTarget.lng === lng
+        ) {
+          return;
+        }
+
+        // Cancel any existing animation
+        if (animationRef.current.isAnimating && animationRef.current.animationId !== null) {
+          cancelAnimationFrame(animationRef.current.animationId);
+          animationRef.current.isAnimating = false;
+          animationRef.current.animationId = null;
+        }
+
+        // Set the new animation target
+        animationRef.current.lastFlyToTarget = { lat, lng };
+        animationRef.current.isAnimating = true;
+
+        // Instead of the center, we have to adjust the target position so that
+        // actual point we want to move to is rotated the right side
+        // This is because only the right side of the globe is actually visible to the user
+        const targetLng = lng - 55;
+        const targetLat = lat;
+        const startLng = rotationRef.current.lng;
+        const startLat = rotationRef.current.lat;
+        const deltaLng = targetLng - startLng;
+        const deltaLat = targetLat - startLat;
+
+        // Fixed duration: 2 seconds (2000ms)
+        const animationDuration = 2000;
+        let startTime: number | null = null;
+
+        const animate = (timestamp: number) => {
+          // Initialize startTime on first animation frame
+          if (!startTime) startTime = timestamp;
+
+          // Calculate progress (0 to 1) based on elapsed time
+          const elapsedTime = timestamp - startTime;
+          const progress = Math.min(elapsedTime / animationDuration, 1);
+
+          // Use easeInOutQuad easing function for smoother animation
+          const easedProgress = easeInOutQuad(progress);
+
+          // Apply the current position based on progress with easing
+          const currentLng = startLng + (deltaLng * easedProgress);
+          const currentLat = startLat + (deltaLat * easedProgress);
+
+          if (globe) {
+            rotationRef.current.lng = currentLng;
+            rotationRef.current.lat = currentLat;
+            globe.setProps({
+              cameraView: {
+                lng: currentLng,
+                lat: currentLat,
+                altitude: view.altitude,
+              },
+            });
+          }
+
+          // Continue animation if not complete
+          if (progress < 1) {
+            animationRef.current.animationId = requestAnimationFrame(animate);
+          } else {
+            // Animation complete - ensure we reach exactly the target position
+            if (globe) {
+              rotationRef.current.lng = targetLng;
+              rotationRef.current.lat = targetLat;
+              globe.setProps({
+                cameraView: {
+                  lng: targetLng,
+                  lat: targetLat,
+                  altitude: view.altitude,
+                },
+              });
+            }
+
+            // Reset animation state
+            animationRef.current.isAnimating = false;
+            animationRef.current.animationId = null;
+          dispatch(setFlyTo(null));
+          }
+        };
+
+        // Start the animation
+        animationRef.current.animationId = requestAnimationFrame(animate);
       } else {
+        // For non-animated flyTo, cancel any ongoing animation
+        if (animationRef.current.isAnimating && animationRef.current.animationId !== null) {
+          cancelAnimationFrame(animationRef.current.animationId);
+          animationRef.current.isAnimating = false;
+          animationRef.current.animationId = null;
+        }
         globe.setProps({ cameraView: flyTo });
+      dispatch(setFlyTo(null));
       }
     }
-  }, [globe, flyTo, animatedFlyTo]);
+    , [globe, flyTo, view.altitude]);
+    // Cleanup function to cancel any ongoing animation when unmounting
+    return () => {
+      if (animationRef.current.animationId !== null) {
+        cancelAnimationFrame(animationRef.current.animationId);
+        animationRef.current.isAnimating = false;
+        animationRef.current.animationId = null;
+      }
+    };
 }
 
 /**
