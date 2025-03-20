@@ -37,6 +37,7 @@ import { setGlobeView } from "../../../reducers/globe/view";
 import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
 import styles from "./data-viewer.module.css";
+import { setIsAutoRotating } from "../../../reducers/globe/auto-rotation";
 
 interface Props {
   hideNavigation?: boolean;
@@ -186,6 +187,11 @@ const DataViewer: FunctionComponent<Props> = ({
   const lastPage = useRef<string>(history.location.pathname);
   useEffect(() => {
     return history.listen((location) => {
+      if (location.pathname === "/") {
+        dispatch(setIsAutoRotating(true));
+      } else {
+        dispatch(setIsAutoRotating(false));
+      }
       if (
         !location.pathname.includes("/data") &&
         lastPage.current !== location.pathname
@@ -193,7 +199,7 @@ const DataViewer: FunctionComponent<Props> = ({
         if (!isNavigation) {
           const defaultView = config.globe.view;
 
-          dispatch(setGlobeView(defaultView));
+          dispatch(setFlyTo(defaultView));
           dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));

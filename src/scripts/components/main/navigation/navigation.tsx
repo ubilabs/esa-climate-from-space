@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 import config from "../../../config/main";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { languageSelector } from "../../../selectors/language";
 import Button from "../button/button";
 import { MenuIcon } from "../icons/menu-icon";
@@ -39,6 +38,7 @@ const Navigation: FunctionComponent = () => {
   const { isMobile } = useScreenSize();
 
   const { mode } = useContentParams();
+  console.log("category", category);
 
   return (
     <>

@@ -56,7 +56,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const flyTo = useSelector(flyToSelector);
   const [isMainActive, setIsMainActive] = useState(true);
 
-  console.log("class name", className);
   const dispatch = useDispatch();
   const time = useSelector(timeSelector);
 
@@ -221,7 +220,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
       {getDataWidget({
         imageLayer: mainImageLayer,
-        layerDetails: mainLayerDetails,
+        layerDetails: updatedLayerDetails,
         active: isMainActive,
         action: () => setIsMainActive(true),
       })}
