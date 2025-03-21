@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import cx from "classnames";
 
-import config from "../../../config/main";
+import config, { categoryTags } from "../../../config/main";
 
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useScreenSize } from "../../../hooks/use-screen-size";
@@ -32,6 +32,10 @@ import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation from "../category-navigation/category-navigation";
 
 import styles from "./data-viewer.module.css";
+import { useContentParams } from "../../../hooks/use-content-params";
+import { StoryMode } from "../../../types/story-mode";
+import { setGlobeView } from "../../../reducers/globe/view";
+import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
 interface Props {
   hideNavigation?: boolean;
@@ -60,7 +64,30 @@ const DataViewer: FunctionComponent<Props> = ({
   showCategories,
 }) => {
   const { category } = useParams<RouteParams>();
-  const { handleScroll, currentScrollIndex } = useCategoryScrollHandlers();
+  const language = useSelector(languageSelector);
+  const { data: stories } = useGetStoryListQuery(language);
+
+  const { data: layers } = useGetLayerListQuery(language);
+
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
+
+  const { handleScroll } = useCategoryScrollHandlers(
+    currentCategoryIndex,
+    setCurrentCategoryIndex,
+  );
+
+  const contents = [
+    ...(stories?.filter(
+      (story) => category && story.categories?.includes(category),
+    ) ?? []),
+    ...(layers?.filter(
+      (layer) => category && layer.categories?.includes(category),
+    ) ?? []),
+  ];
+
+  const centerIndex = Math.floor((contents.length - 1) / 2);
+
+  const [currentContentIndex, setCurrentContentIndex] = useState(centerIndex);
 
   const [showContentList, setShowContentList] = useState<boolean>(
     Boolean(category),
@@ -75,16 +102,14 @@ const DataViewer: FunctionComponent<Props> = ({
 
   const { screenHeight, screenWidth, isMobile } = useScreenSize();
 
-  const language = useSelector(languageSelector);
-  const { data: stories } = useGetStoryListQuery(language);
-  const { data: layers } = useGetLayerListQuery(language);
-
   // We need to keep track of the current selected content Id because we need to
   // set the flyTo for the marker, or add the data layer to the globe
   const [selectedContentId, setSelectedContentId] = useState<string | null>(
     null,
   );
   const contentMarker = useContentMarker(selectedContentId, language);
+
+  const { isNavigation, mode } = useContentParams();
 
   const dispatch = useDispatch();
 
@@ -101,7 +126,7 @@ const DataViewer: FunctionComponent<Props> = ({
 
   // Reset the selected layer when data view is not active
   useEffect(() => {
-    if (location.pathname !== "/data") {
+    if (isNavigation) {
       dispatch(
         setSelectedLayerIds({
           layerId: null,
@@ -109,7 +134,7 @@ const DataViewer: FunctionComponent<Props> = ({
         }),
       );
     }
-  }, [dispatch, location.pathname]);
+  }, [dispatch, location.pathname, isNavigation]);
 
   useEffect(() => {
     // Don't proceed if there's no selectedContentId or no stories
@@ -153,16 +178,40 @@ const DataViewer: FunctionComponent<Props> = ({
     .concat(layers?.flatMap(({ categories }) => categories) ?? [])
     .filter(Boolean);
 
-  const uniqueTags = Array.from(new Set(allCategories));
+const uniqueTags =  categoryTags;
+  console.log(uniqueTags);
+  //const uniqueTags = [
+  //  "Welcome",
+  //  "Land",
+  //  "Ocean",
+  //  "Atmosphere",
+  //  "Cryosphere",
+  //  "Water Cycle",
+  //  "Carbon Cycle",
+  //  "Climate Risk",
+  //  "Climate Action",
+  //  "Improving Models"
+  //];
 
-  const contents = [
-    ...(stories?.filter(
-      (story) => category && story.categories?.includes(category),
-    ) ?? []),
-    ...(layers?.filter(
-      (layer) => category && layer.categories?.includes(category),
-    ) ?? []),
-  ];
+  // We need to reset the globe view every time the user navigates back from the the /data page
+
+  const lastPage = useRef<string>(history.location.pathname);
+  useEffect(() => {
+    return history.listen((location) => {
+      if (
+        !location.pathname.includes("/data") &&
+        lastPage.current !== location.pathname
+      ) {
+        if (!isNavigation) {
+          const defaultView = config.globe.view;
+          dispatch(setGlobeView(defaultView));
+          dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
+          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+        }
+      }
+      lastPage.current = location.pathname;
+    });
+  }, [history, isNavigation, dispatch]);
 
   // create a list of all tags with their number of occurrences in the stories
   // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
@@ -186,79 +235,94 @@ const DataViewer: FunctionComponent<Props> = ({
     <div
       className={styles.dataViewer}
       onWheel={handleScroll}
-      data-content-view={showContentList}
+      data-nav-content={mode}
     >
-      {showCategories && (
-        <header className={styles.heading}>
-          {showContentList ? (
-            <Button
-              label={
-                !isMobile ? "back_to_overview" : `categories.${currentCategory}`
-              }
-              link={"/"}
-              className={styles.backButton}
-            ></Button>
-          ) : (
-            <FormattedMessage id="category.choose" />
-          )}
-        </header>
-      )}
-
       {/* This is the main area
         The navigation consists of three main components: the globe, the category navigation and the content navigation
         The globe is the main component and is always visible
         The category navigation is visible when the content navigation is not visible
       */}
-      {!showContentList && showCategories ? (
-        <CategoryNavigation
-          currentScrollIndex={currentScrollIndex}
-          arcs={arcs}
-          showCategories={!showContentList}
-          width={screenWidth}
-          height={screenHeight}
-          isMobile={isMobile}
-          setCategory={setCurrentCategory}
-          isAnimationReady={hasAnimationPlayed}
-        />
-      ) : (
-        <ContentNavigation
-          isMobile={isMobile}
-          className={styles.contentNav}
-          category={currentCategory}
-          showContentList={showContentList}
-          contents={contents}
-          setSelectedContentId={setSelectedContentId}
-        />
-      )}
-
-      {!showContentList && showCategories ? (
+      {isNavigation && (
         <>
-          <Button
-            className={cx(
-              hasAnimationPlayed.current && styles.showFast,
-              styles.exploreButton,
+          {showCategories && (
+            <header className={styles.heading}>
+              {showContentList ? (
+                <Button
+                  label={
+                    !isMobile
+                      ? "back_to_overview"
+                      : `categories.${currentCategory}`
+                  }
+                  link={"/"}
+                  className={styles.backButton}
+                ></Button>
+              ) : (
+                <span className={styles.chooseHeading}>
+                  <FormattedMessage id="category.choose" />
+                </span>
+              )}
+            </header>
+          )}
+          {!showContentList && showCategories ? (
+            <CategoryNavigation
+              currentIndex={currentCategoryIndex}
+              setCurrentIndex={setCurrentCategoryIndex}
+              arcs={arcs}
+              showCategories={!showContentList}
+              width={screenWidth}
+              height={screenHeight}
+              isMobile={isMobile}
+              setCategory={setCurrentCategory}
+              isAnimationReady={hasAnimationPlayed}
+            />
+          ) : (
+            <ContentNavigation
+              currentIndex={currentContentIndex}
+              setCurrentIndex={setCurrentContentIndex}
+              isMobile={isMobile}
+              className={styles.contentNav}
+              category={currentCategory}
+              showContentList={showContentList}
+              contents={contents}
+              setSelectedContentId={setSelectedContentId}
+            />
+          )}
+
+          {!showContentList && showCategories ? (
+            <>
+              <Button
+                className={cx(
+                  hasAnimationPlayed.current && styles.showFast,
+                  styles.exploreButton,
+                )}
+                onClick={() => {
+                  history.push(`/${currentCategory}`);
+                  setShowContentList(!showContentList);
+                }}
+                label="explore"
+              ></Button>
+            </>
+          ) : null}
+          {!showContentList &&
+            showCategories &&
+            !hasAnimationPlayed.current && (
+              <span
+                aria-hidden="true"
+                className={cx(
+                  styles.swipeIndicator,
+                  !isMobile && styles.scroll,
+                )}
+                data-content={intl.formatMessage({
+                  id: `category.${isMobile ? "swipe" : "scroll"}`,
+                })}
+              ></span>
             )}
-            onClick={() => {
-              history.push(`/${currentCategory}`);
-              setShowContentList(!showContentList);
-            }}
-            label="explore"
-          ></Button>
+          {showContentList && !isMobile && (
+            <span className={styles.currentCategory}>
+              <FormattedMessage id={`categories.${currentCategory}`} />
+            </span>
+          )}
         </>
-      ) : null}
-      {!showContentList && showCategories && !hasAnimationPlayed.current && (
-        <span
-          aria-hidden="true"
-          className={cx(styles.swipeIndicator, !isMobile && styles.scroll)}
-          data-content={intl.formatMessage({
-            id: `category.${isMobile ? "swipe" : "scroll"}`,
-          })}
-        ></span>
-      )}
-      {showContentList && !isMobile && (
-        <span className={styles.currentCategory}>
-          <FormattedMessage id={`categories.${currentCategory}`} />
-        </span>
       )}
       <div
         id="globeWrapper"
@@ -277,7 +341,7 @@ const DataViewer: FunctionComponent<Props> = ({
             className: cx(
               (showCategories || showContentList || isMobile) && styles.globe,
             ),
-            isAutoRotating: !showContentList && showCategories,
+            isAutoRotating: mode === StoryMode.NavCategory,
           }}
         />
       </div>

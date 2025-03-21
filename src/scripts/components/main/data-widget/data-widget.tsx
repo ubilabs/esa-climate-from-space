@@ -61,9 +61,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
   );
-  // const mainLayer = useSelector((state: State) =>
-  //  layerListItemSelector(state, mainId),
-  //);
 
   const compareLayer = useSelector((state: State) =>
     layerListItemSelector(state, compareId),
@@ -198,6 +195,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   if (mainImageLayer?.type === LayerType.Gallery) {
     return <Gallery imageLayer={mainImageLayer} />;
   }
+
   return (
     <>
       <Globe {...props} />

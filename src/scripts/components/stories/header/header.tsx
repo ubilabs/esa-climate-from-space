@@ -5,7 +5,7 @@ import Button from "../../main/button/button";
 import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import useIsStoriesPath from "../../../hooks/use-is-stories-path";
-import { useStoryParams } from "../../../hooks/use-story-params";
+import { useContentParams } from "../../../hooks/use-content-params";
 
 import styles from "./header.module.css";
 
@@ -22,7 +22,7 @@ const Header: FunctionComponent<Props> = ({
   backButtonId,
   children,
 }) => {
-  const { currentStoryId} = useStoryParams();
+  const { currentStoryId} = useContentParams();
   const isStoriesPath = useIsStoriesPath();
   const { back_link, story_back_link } = useSelector(embedElementsSelector);
 

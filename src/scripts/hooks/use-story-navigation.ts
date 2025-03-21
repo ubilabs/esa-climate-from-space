@@ -1,4 +1,4 @@
-import { useStoryParams } from "./use-story-params";
+import { useContentParams } from "./use-content-params";
 import config from "../config/main";
 
 import { StoryMode } from "../types/story-mode";
@@ -6,7 +6,7 @@ import { GalleryItemType } from "../types/gallery-item";
 
 export const useStoryNavigation = (videoDuration: number) => {
   const { mode, storyIds, storyIndex, slideIndex, selectedStory } =
-    useStoryParams();
+    useContentParams();
 
   const numberOfSlides = selectedStory?.slides.length;
 

@@ -2,6 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { parseUrl } from "../libs/embed-elements-url-parameter";
 import { EmbedElementsState } from "../types/embed-elements";
 
+const { hash } = location;
+
+// If the user initaliye the app in route that contains data, we want to show the time slider and legend by default
+const isDataHashPresent = hash.includes("data");
 const initialState: EmbedElementsState = {
   logo: parseUrl("logo") ?? true,
   stories_menu: parseUrl("stories_menu") ?? true,
@@ -10,8 +14,8 @@ const initialState: EmbedElementsState = {
   app_menu: parseUrl("app_menu") ?? true,
   globe_navigation: parseUrl("globe_navigation") ?? true,
   markers: parseUrl("markers") ?? true,
-  time_slider: parseUrl("time_slider") ?? true,
-  legend: parseUrl("legend") ?? true,
+  time_slider: (parseUrl("time_slider") || isDataHashPresent) ?? false,
+  legend: (parseUrl("legend") || isDataHashPresent) ?? false,
   header: parseUrl("header") ?? true,
   back_link: parseUrl("back_link") ?? true,
   filter_tags: parseUrl("filter_tags") ?? true,

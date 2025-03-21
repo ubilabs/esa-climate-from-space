@@ -14,7 +14,7 @@ import { setWelcomeScreen } from "../../../reducers/welcome-screen";
 
 import styles from "./navigation.module.css";
 import { setLanguage } from "../../../reducers/language";
-import { useStoryParams } from "../../../hooks/use-story-params";
+import { useContentParams } from "../../../hooks/use-content-params";
 import useIsStoriesPath from "../../../hooks/use-is-stories-path";
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import { EsaLogo } from "../icons/esa-logo";
@@ -29,8 +29,9 @@ const Navigation: FunctionComponent = () => {
 
   const [showTooltip, setShowTooltip] = useState(Boolean(!savedLanguage));
 
-  const { category } = useStoryParams();
+  const { category } = useContentParams();
   const isStoriesPath = useIsStoriesPath();
+  const {isNavigation} = useContentParams();
 
   const { isMobile } = useScreenSize();
   return (
@@ -47,12 +48,12 @@ const Navigation: FunctionComponent = () => {
             }
           />
         }
-        {isStoriesPath && (
+        {!isNavigation && (
           <Button
             className={styles.backButton}
             icon={ArrowBackIcon}
             label={isMobile ? "" : "backToStories"}
-            link={`/${category}`}
+            link={category ? `/${category}` : '/'}
           />
         )}
         {app_menu && (
