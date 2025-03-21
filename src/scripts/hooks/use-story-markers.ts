@@ -6,9 +6,11 @@ export const useContentMarker = (
   language: Language,
 ) => {
   const { data: stories } = useGetStoryListQuery(language);
+
   if (!stories) {
     return null;
   }
+
   const selectedStory = stories.find((story) => story.id === selectedStoryId);
 
   if (!selectedStory) {

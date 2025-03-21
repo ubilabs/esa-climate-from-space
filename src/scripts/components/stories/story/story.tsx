@@ -26,7 +26,11 @@ import { setSelectedLayerIds } from "../../../reducers/layers";
 import { useGetStoryListQuery, useGetStoryQuery } from "../../../services/api";
 import { languageSelector } from "../../../selectors/language";
 
+import config from "../../../config/main";
+
 import styles from "./story.module.css";
+import { setFlyTo } from "../../../reducers/fly-to";
+import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
 const Story: FunctionComponent = () => {
   const storyParams = useContentParams();
@@ -55,14 +59,18 @@ const Story: FunctionComponent = () => {
   }, [dispatch, sphereProjection]);
 
   // clean up story on unmount
-  useEffect(
-    () => () => {
+  useEffect(() => {
+      dispatch(toggleEmbedElements({ legend: true, time_slider: true }));
+    return () => {
+      const defaultView = config.globe.view;
       dispatch(
         setSelectedLayerIds({
           layerId: null,
           isPrimary: true,
         }),
       );
+      dispatch(setFlyTo(defaultView));
+      dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
       dispatch(
         setSelectedLayerIds({
           layerId: null,
@@ -70,9 +78,8 @@ const Story: FunctionComponent = () => {
         }),
       );
       dispatch(setGlobeTime(0));
-    },
-    [dispatch],
-  );
+    };
+  }, []);
 
   if (!mode) {
     return null;

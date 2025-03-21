@@ -8,7 +8,6 @@ import {
 import { LayerType } from "../../../types/globe-layer-type";
 import { Layer } from "../../../types/layer";
 import Gallery from "../gallery/gallery";
-import Globe, { GlobeProps } from "../globe/globe";
 import { projectionSelector } from "../../../selectors/globe/projection";
 import { useDispatch, useSelector } from "react-redux";
 import { globeViewSelector } from "../../../selectors/globe/view";
@@ -32,25 +31,28 @@ import { useImageLayerData } from "../../../hooks/use-image-layer-data";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
 import { Marker } from "../../../types/marker-type";
+import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
+import Globe from "../globe/globe";
 
 interface Props {
   hideNavigation: boolean;
   markers?: Marker[];
-  globeProps: GlobeProps;
   showClouds?: boolean;
+  className?: string;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
   hideNavigation,
   markers,
-  globeProps,
   showClouds,
+  className
 }) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const flyTo = useSelector(flyToSelector);
+  const [isMainActive, setIsMainActive] = useState(true);
 
   const dispatch = useDispatch();
   const time = useSelector(timeSelector);
@@ -70,7 +72,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     layerDetailsSelector(state, compareId),
   );
 
-  const [active, setActive] = useState(Boolean(compareLayer));
   // If initially, there is a main layer selected, we need to fetch the layer details
   useGetLayerQuery(mainId ?? "", { skip: !mainId });
 
@@ -100,6 +101,42 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     [mainLayerDetails, compareLayerDetails].some(
       (layer) => layer && layer.type !== LayerType.Gallery,
     );
+  const getDataWidget = ({
+    imageLayer,
+    layerDetails,
+    active,
+    action,
+  }: {
+    imageLayer: GlobeImageLayerData | null;
+    layerDetails: Layer | null;
+    active: boolean;
+    action: () => void;
+  }) => {
+    if (imageLayer?.type === LayerType.Gallery) {
+      return <Gallery imageLayer={imageLayer} />;
+    }
+
+    return (
+      <Globe
+        markers={markers}
+        backgroundColor={""}
+        active={active}
+        view={currentView}
+        projectionState={projectionState}
+        imageLayer={imageLayer}
+        layerDetails={layerDetails || null}
+        spinning={globeSpinning}
+        flyTo={flyTo}
+        onMouseEnter={action}
+        onTouchStart={action}
+        onChange={onChangeHandler}
+        onMoveStart={onMoveStartHandler}
+        onMoveEnd={onMoveEndHandler}
+        onLayerLoadingStateChange={onLayerLoadingStateChangeHandler}
+        className={className}
+      />
+    );
+  };
 
   const getLegends = () =>
     [mainLayerDetails, compareLayerDetails]
@@ -137,7 +174,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
   const compareImageLayer = useImageLayerData(compareLayerDetails, time);
 
-  const imageLayer = compareLayer ? compareImageLayer : mainImageLayer;
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
   const updatedLayerDetails = showClouds
@@ -171,36 +207,30 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     }
   }, [dispatch, mainId, compareId, globeSpinning]);
 
-  const props = {
-    active: active,
-    view: currentView,
-    projectionState: projectionState,
-    imageLayer: imageLayer,
-    layerDetails: updatedLayerDetails,
-    spinning: globeSpinning,
-    flyTo: flyTo,
-    onMouseEnter: () => setActive((prev) => !prev),
-    onTouchStart: () => setActive((prev) => !prev),
-    onChange: onChangeHandler,
-    onMoveStart: onMoveStartHandler,
-    onMoveEnd: onMoveEndHandler,
-    onLayerLoadingStateChange: onLayerLoadingStateChangeHandler,
-    markers: markers,
-    isAutoRotating: false,
-    backgroundColor: "",
-    className: "",
-    ...globeProps,
-  };
-
   if (mainImageLayer?.type === LayerType.Gallery) {
     return <Gallery imageLayer={mainImageLayer} />;
   }
 
   return (
     <>
-      <Globe {...props} />
       {legend && getLegends()}
-      {!hideNavigation && showGlobeNavigation && <GlobeNavigation />}
-    </>
+
+      {getDataWidget({
+        imageLayer: mainImageLayer,
+        layerDetails: updatedLayerDetails,
+        active: isMainActive,
+        action: () => setIsMainActive(true),
+      })}
+
+      {compareLayer &&
+        getDataWidget({
+          imageLayer: compareImageLayer,
+          layerDetails: compareLayerDetails,
+          active: !isMainActive,
+          action: () => setIsMainActive(false),
+        })}
+        {!hideNavigation && showGlobeNavigation && (
+        <GlobeNavigation/>
+      )}  </>
   );
 };

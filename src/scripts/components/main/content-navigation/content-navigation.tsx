@@ -62,12 +62,14 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const thunkDispatch = useThunkDispatch();
   const { trackEvent } = useMatomo();
   const lang = useSelector(languageSelector);
-  const {contentId} = useSelector(contentSelector);
+  const { contentId } = useSelector(contentSelector);
 
   const isIndexSet = useRef<boolean>(false);
 
   if (!isIndexSet.current && contents.length > 0) {
-    const currentIndex = contents.findIndex((content) => content.id === contentId);
+    const currentIndex = contents.findIndex(
+      (content) => content.id === contentId,
+    );
     const centerIndex = Math.floor((contents.length - 1) / 2);
     setCurrentIndex(currentIndex !== -1 ? currentIndex : centerIndex);
     isIndexSet.current = true;
@@ -130,10 +132,18 @@ const ContentNavigation: FunctionComponent<Props> = ({
     setSelectedContentId,
     isMobile,
   ]);
-
   useEffect(() => {
     const layerId = contents[currentIndex]?.id;
-    dispatch(setSelectedLayerIds({ layerId: layerId, isPrimary: true }));
+    const timeout = setTimeout(() => {
+      dispatch(setSelectedLayerIds({ layerId: layerId, isPrimary: true }));
+    }, 100);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [dispatch, currentIndex, contents]);
+
+  useEffect(() => {
     const timeout = setTimeout(() => {
       if (contents[currentIndex]) {
         setSelectedContentId(contents[currentIndex].id);

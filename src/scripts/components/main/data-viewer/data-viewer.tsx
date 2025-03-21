@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useRef, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
 
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import cx from "classnames";
@@ -18,7 +18,6 @@ import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 import { setFlyTo } from "../../../reducers/fly-to";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 
-import { globeViewSelector } from "../../../selectors/globe/view";
 import { languageSelector } from "../../../selectors/language";
 
 import {
@@ -32,11 +31,11 @@ import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation from "../category-navigation/category-navigation";
 
 import { useContentParams } from "../../../hooks/use-content-params";
-import { StoryMode } from "../../../types/story-mode";
-import { setGlobeView } from "../../../reducers/globe/view";
 import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
 import styles from "./data-viewer.module.css";
+import { setIsAutoRotating } from "../../../reducers/globe/auto-rotation";
+import { setShowLayer } from "../../../reducers/show-layer-selector";
 
 interface Props {
   hideNavigation?: boolean;
@@ -71,7 +70,9 @@ const DataViewer: FunctionComponent<Props> = ({
   const { data: layers } = useGetLayerListQuery(language);
 
   const categoryIndex = category ? categoryTags.indexOf(category) : -1;
-  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(categoryIndex !== -1 ? categoryIndex : 0);
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(
+    categoryIndex !== -1 ? categoryIndex : 0,
+  );
 
   const { handleScroll } = useCategoryScrollHandlers(
     currentCategoryIndex,
@@ -87,7 +88,9 @@ const DataViewer: FunctionComponent<Props> = ({
     ) ?? []),
   ];
 
-  const [currentContentIndex, setCurrentContentIndex] = useState<null | number >(null);
+  const [currentContentIndex, setCurrentContentIndex] = useState<null | number>(
+    null,
+  );
 
   const [showContentList, setShowContentList] = useState<boolean>(
     Boolean(category),
@@ -120,22 +123,6 @@ const DataViewer: FunctionComponent<Props> = ({
     localStorage.getItem(config.localStorageHasUserInteractedKey) === "true",
   );
 
-  const globalGlobeView = useSelector(globeViewSelector);
-
-  const location = useLocation();
-
-  // Reset the selected layer when data view is not active
-  useEffect(() => {
-    if (isNavigation) {
-      dispatch(
-        setSelectedLayerIds({
-          layerId: null,
-          isPrimary: true,
-        }),
-      );
-    }
-  }, [dispatch, location.pathname, isNavigation]);
-
   useEffect(() => {
     // Don't proceed if there's no selectedContentId or no stories
     if (!selectedContentId || !stories) {
@@ -145,7 +132,6 @@ const DataViewer: FunctionComponent<Props> = ({
     const previewedContent = stories.find(
       (story) => story.id === selectedContentId,
     );
-
     if (
       previewedContent &&
       previewedContent?.position[0] &&
@@ -154,7 +140,6 @@ const DataViewer: FunctionComponent<Props> = ({
       dispatch(
         setFlyTo({
           isAnimated: true,
-          ...globalGlobeView,
           lat: previewedContent.position[1],
           lng: previewedContent.position[0],
         }),
@@ -164,7 +149,7 @@ const DataViewer: FunctionComponent<Props> = ({
         `Content with id ${selectedContentId} could not be found, ${previewedContent}`,
       );
     }
-  }, [selectedContentId, globalGlobeView, stories, dispatch]);
+  }, [selectedContentId, stories, dispatch]);
 
   useEffect(() => {
     if (!showContentList) {
@@ -183,20 +168,34 @@ const DataViewer: FunctionComponent<Props> = ({
   // We need to reset the globe view every time the user navigates back from the the /data page
 
   const lastPage = useRef<string>(history.location.pathname);
+
   useEffect(() => {
-    return history.listen((location) => {
+    let timeout: NodeJS.Timeout | null = null;
+    history.listen((location) => {
+      if (location.pathname === "/") {
+        dispatch(setIsAutoRotating(true));
+      } else {
+        dispatch(setIsAutoRotating(false));
+      }
       if (
         !location.pathname.includes("/data") &&
         lastPage.current !== location.pathname
       ) {
-        if (!isNavigation) {
-          const defaultView = config.globe.view;
-          dispatch(setGlobeView(defaultView));
+        const defaultView = config.globe.view;
+        timeout = setTimeout(() => {
+          dispatch(setFlyTo(defaultView));
+          dispatch(setShowLayer(false));
           dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-        }
+          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
+        }, 10); // Adjust the timeout duration as needed
       }
       lastPage.current = location.pathname;
+      return () => {
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+      };
     });
   }, [history, isNavigation, dispatch]);
 
@@ -321,15 +320,12 @@ const DataViewer: FunctionComponent<Props> = ({
         <GetDataWidget
           hideNavigation={Boolean(hideNavigation)}
           showClouds={showCategories && !showContentList}
-          globeProps={{
-            ...(contentMarker && {
-              markers: [contentMarker],
-            }),
-            className: cx(
-              (showCategories || showContentList || isMobile) && styles.globe,
-            ),
-            isAutoRotating: mode === StoryMode.NavCategory,
-          }}
+          className={cx(
+            (showCategories || showContentList || isMobile) && styles.globe,
+          )}
+          {...(contentMarker && {
+            markers: [contentMarker],
+          })}
         />
       </div>
     </div>
