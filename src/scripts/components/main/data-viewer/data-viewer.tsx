@@ -194,7 +194,6 @@ const DataViewer: FunctionComponent<Props> = ({
         lastPage.current !== location.pathname
       ) {
         if (!isNavigation) {
-
           const defaultView = config.globe.view;
           dispatch(setFlyTo(defaultView));
           dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
@@ -330,12 +329,9 @@ const DataViewer: FunctionComponent<Props> = ({
           className={cx(
             (showCategories || showContentList || isMobile) && styles.globe,
           )}
-          globeProps={{
-            ...(contentMarker && {
-              markers: [contentMarker],
-            }),
-            //isAutoRotating: mode === StoryMode.NavCategory,
-          }}
+          {...(contentMarker && {
+            markers: [contentMarker],
+          })}
         />
       </div>
     </div>

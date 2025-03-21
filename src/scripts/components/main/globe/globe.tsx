@@ -310,6 +310,7 @@ function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
     if (!globe || !markers) {
       return EMPTY_FUNCTION;
     }
+
     globe.setProps({
       markers: getMarkerProps(markers, (marker: Marker) => {
         if (!marker.link) {
