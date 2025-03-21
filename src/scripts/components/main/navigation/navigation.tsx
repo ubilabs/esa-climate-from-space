@@ -38,7 +38,6 @@ const Navigation: FunctionComponent = () => {
   const { isMobile } = useScreenSize();
 
   const { mode } = useContentParams();
-  console.log("category", category);
 
   return (
     <>

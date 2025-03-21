@@ -174,7 +174,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
   const compareImageLayer = useImageLayerData(compareLayerDetails, time);
 
-  //const imageLayer = compareLayer ? compareImageLayer : mainImageLayer;
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
   const updatedLayerDetails = showClouds

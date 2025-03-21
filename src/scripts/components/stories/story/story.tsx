@@ -60,6 +60,7 @@ const Story: FunctionComponent = () => {
 
   // clean up story on unmount
   useEffect(() => {
+      dispatch(toggleEmbedElements({ legend: true, time_slider: true }));
     return () => {
       const defaultView = config.globe.view;
       dispatch(

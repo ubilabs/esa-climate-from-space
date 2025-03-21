@@ -11,7 +11,6 @@ const flyToSlice = createSlice({
   initialState,
   reducers: {
     setFlyTo(state, action: PayloadAction<FlyToPayload>) {
-      console.log("setFlyTo", action.payload);
       return action.payload;
     },
   },

@@ -36,7 +36,6 @@ export const useStoryGlobe = (globeItem: GlobeItem) => {
     const cameraView: CameraView =
       globeItem.flyTo && flyToToCameraView(globeItem.flyTo);
 
-console.log("cameraView", cameraView);
     dispatch(setFlyTo(cameraView || defaultView));
     dispatch(
       setSelectedLayerIds({

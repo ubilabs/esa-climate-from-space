@@ -35,6 +35,7 @@ import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
 import styles from "./data-viewer.module.css";
 import { setIsAutoRotating } from "../../../reducers/globe/auto-rotation";
+import { setShowLayer } from "../../../reducers/show-layer-selector";
 
 interface Props {
   hideNavigation?: boolean;
@@ -122,19 +123,19 @@ const DataViewer: FunctionComponent<Props> = ({
     localStorage.getItem(config.localStorageHasUserInteractedKey) === "true",
   );
 
-  const location = useLocation();
+  //const location = useLocation();
 
   // Reset the selected layer when data view is not active
-  useEffect(() => {
-    if (isNavigation) {
-      dispatch(
-        setSelectedLayerIds({
-          layerId: null,
-          isPrimary: true,
-        }),
-      );
-    }
-  }, [dispatch, location.pathname, isNavigation]);
+  //useEffect(() => {
+  //  if (isNavigation) {
+  //    dispatch(
+  //      setSelectedLayerIds({
+  //        layerId: null,
+  //        isPrimary: true,
+  //      }),
+  //    );
+  //  }
+  //}, [dispatch, location.pathname, isNavigation]);
 
   useEffect(() => {
     // Don't proceed if there's no selectedContentId or no stories
@@ -145,7 +146,6 @@ const DataViewer: FunctionComponent<Props> = ({
     const previewedContent = stories.find(
       (story) => story.id === selectedContentId,
     );
-
     if (
       previewedContent &&
       previewedContent?.position[0] &&
@@ -193,13 +193,12 @@ const DataViewer: FunctionComponent<Props> = ({
         !location.pathname.includes("/data") &&
         lastPage.current !== location.pathname
       ) {
-        if (!isNavigation) {
-          const defaultView = config.globe.view;
-          dispatch(setFlyTo(defaultView));
-          dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
-          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
-        }
+        const defaultView = config.globe.view;
+        dispatch(setFlyTo(defaultView));
+        dispatch(setShowLayer(false));
+        dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
+        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
       }
       lastPage.current = location.pathname;
     });

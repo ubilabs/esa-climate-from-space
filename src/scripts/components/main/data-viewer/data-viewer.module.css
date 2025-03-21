@@ -58,6 +58,22 @@
   grid-template-rows: 3.5rem calc(100dvh - var(--header-height) - 10rem) 6.5rem;
   grid-template-columns: 1fr;
 
+  &[data-nav-content="content"] {
+    grid-template-areas: "globe-nav-area";
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    .globeWrapper {
+      pointer-events: auto;
+
+      canvas {
+        position: absolute !important;
+        scale: 1 !important;
+        scale: 0.5 !important;
+      }
+    }
+  }
+
   @media screen and (--desktop-viewport) {
     grid-template-areas:
       "globe-nav-area heading "
@@ -67,32 +83,6 @@
     grid-template-columns: 50vw 50vw;
     grid-template-columns: 50dvw 50dvw;
     grid-gap: 1.5rem;
-
-    &[data-nav-content="content"] {
-      grid-template-areas: "globe-nav-area";
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-
-      .globeWrapper {
-        /*transform:38 translateX(0) !important;*/
-        pointer-events: auto;
-        /* Allows clicks & hover */
-        touch-action: manipulation;
-        /* Prevents zoom but allows tap */
-
-        canvas {
-          /*right: -50% !important;*/
-          position: absolute !important;
-          touch-action: manipulation;
-          /* Prevents zoom but allows tap */
-          scale: 1 !important;
-          /*transform: translateX(-50%) !important;*/
-          /*transform: translateX(-50%) !important;*/
-          /*transform: translate(-50%, -50%) !important;*/
-          scale: 0.5 !important;
-        }
-      }
-    }
 
     .globeWrapper {
       transform: translateY(0) !important;
