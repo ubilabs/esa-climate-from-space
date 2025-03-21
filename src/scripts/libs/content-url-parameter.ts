@@ -1,9 +1,9 @@
 import { categoryTags } from "../config/main";
 import { parseUrl } from "./globe-url-parameter";
 
-function extractStoryId(urlPath: string): string | null {
+function extractStoryId(urlPath: string | undefined): string | null {
   const storyIdPattern = /(story-\d+)\//;
-  const match = urlPath.match(storyIdPattern);
+  const match = urlPath?.match(storyIdPattern);
   return match ? match[1] : null;
 }
 
@@ -11,12 +11,12 @@ function extractStoryId(urlPath: string): string | null {
 // stores the query parameters in the location.hash prop
 export function parseContentUrl() {
 
-  const urlPath = location.href.split("#")[1];
+  const urlPath: string | undefined = location.href.split("#")[1];
   const storyId = extractStoryId(urlPath);
 
   const categories = categoryTags;
 
-  const selectedCategory = categories.find((cat) => urlPath.includes(cat)) || null
+  const selectedCategory = categories.find((cat) => urlPath?.includes(cat)) || null
 
   const layerId = parseUrl()?.layerIds?.mainId;
   return {
