@@ -1,7 +1,6 @@
 import { FunctionComponent, useEffect, useRef, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
-
 import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -178,17 +177,16 @@ const DataViewer: FunctionComponent<Props> = ({
         dispatch(setIsAutoRotating(false));
       }
       if (
-        !location.pathname.includes("/data") &&
+        !location.pathname.includes("/welcome") &&
         lastPage.current !== location.pathname
       ) {
-        const defaultView = config.globe.view;
         timeout = setTimeout(() => {
-          dispatch(setFlyTo(defaultView));
+          dispatch(setFlyTo(null));
           dispatch(setShowLayer(false));
           dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
-        }, 10); // Adjust the timeout duration as needed
+        }, 100); // Adjust the timeout duration as needed
       }
       lastPage.current = location.pathname;
       return () => {
@@ -321,7 +319,7 @@ const DataViewer: FunctionComponent<Props> = ({
           hideNavigation={Boolean(hideNavigation)}
           showClouds={showCategories && !showContentList}
           className={cx(
-            (showCategories || showContentList || isMobile) && styles.globe,
+           styles.globe,
           )}
           {...(contentMarker && {
             markers: [contentMarker],

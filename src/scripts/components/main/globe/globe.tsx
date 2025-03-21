@@ -36,7 +36,7 @@ import config from "../../../config/main";
 
 import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
-import {  setFlyTo } from "../../../reducers/fly-to";
+import { setFlyTo } from "../../../reducers/fly-to";
 import { renderToStaticMarkup } from "react-dom/server";
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
@@ -86,43 +86,49 @@ function easeInOutQuad(t: number): number {
   return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
 }
 
-  /**
-   * Handles globe auto-rotation animation
-   * @param globeInstance Current WebGlGlobe instance
-   * @param rotation Reference to rotation state
-   * @param autoRotation Reference to auto rotation state
-   * @param viewLat Current view latitude
-   * @param viewAltitude Current view altitude
-   */
-  function handleAutoRotation(
-    globeInstance: WebGlGlobe | null,
-    rotation: { lat: number; lng: number },
-    autoRotation: { isActive: boolean; animationId: number | null },
-    viewLat: number,
-    viewAltitude: number
-  ) {
-    // If no longer enabled, don't schedule next frame
-    if (!autoRotation.isActive) return;
-    // Update rotation position
-    rotation.lng -= 0.05;
-    const lng = rotation.lng;
+/**
+ * Handles globe auto-rotation animation
+ * @param globeInstance Current WebGlGlobe instance
+ * @param rotation Reference to rotation state
+ * @param autoRotation Reference to auto rotation state
+ * @param viewLat Current view latitude
+ * @param viewAltitude Current view altitude
+ */
+function handleAutoRotation(
+  globeInstance: WebGlGlobe | null,
+  rotation: { lat: number; lng: number },
+  autoRotation: { isActive: boolean; animationId: number | null },
+  viewLat: number,
+  viewAltitude: number,
+) {
+  // If no longer enabled, don't schedule next frame
+  if (!autoRotation.isActive) return;
+  // Update rotation position
+  rotation.lng -= 0.05;
+  const lng = rotation.lng;
 
-    // Apply the rotation to the globe if available
-    if (globeInstance) {
-      globeInstance.setProps({
-        cameraView: {
-          lng,
-          lat: viewLat,
-          altitude: viewAltitude,
-        },
-      });
-    }
-
-    // Schedule next frame if still active
-    autoRotation.animationId = requestAnimationFrame(() =>
-      handleAutoRotation(globeInstance, rotation, autoRotation, viewLat, viewAltitude)
-    );
+  // Apply the rotation to the globe if available
+  if (globeInstance) {
+    globeInstance.setProps({
+      cameraView: {
+        lng,
+        lat: viewLat,
+        altitude: viewAltitude,
+      },
+    });
   }
+
+  // Schedule next frame if still active
+  autoRotation.animationId = requestAnimationFrame(() =>
+    handleAutoRotation(
+      globeInstance,
+      rotation,
+      autoRotation,
+      viewLat,
+      viewAltitude,
+    ),
+  );
+}
 const Globe: FunctionComponent<Props> = memo((props) => {
   const {
     view,
@@ -155,7 +161,6 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     lng: number;
   }>({ lat: view.lat, lng: view.lng });
 
-
   // Start or stop auto rotation based on isAutoRotatingEnabled
   useEffect(() => {
     // Update the ref to reflect current state
@@ -173,8 +178,8 @@ const Globe: FunctionComponent<Props> = memo((props) => {
           rotationRef.current,
           autoRotationRef.current,
           view.lat,
-          view.altitude
-        )
+          view.altitude,
+        ),
       );
     }
     // If disabled but currently running, cancel animation
@@ -310,7 +315,6 @@ function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
     if (!globe || !markers) {
       return EMPTY_FUNCTION;
     }
-
     globe.setProps({
       markers: getMarkerProps(markers, (marker: Marker) => {
         if (!marker.link) {
