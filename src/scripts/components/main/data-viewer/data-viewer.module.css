@@ -49,6 +49,12 @@
     }
   }
 
+  &[data-nav-content="content"] {
+    .globeWrapper {
+      pointer-events: auto;
+    }
+  }
+
   grid-template-areas: "heading"
   "globe-nav-area"
   "explore";
@@ -57,22 +63,6 @@
   grid-template-rows: 3.5rem calc(100vh - var(--header-height) - 10rem) 6.5rem;
   grid-template-rows: 3.5rem calc(100dvh - var(--header-height) - 10rem) 6.5rem;
   grid-template-columns: 1fr;
-
-  &[data-nav-content="content"] {
-    grid-template-areas: "globe-nav-area";
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-
-    .globeWrapper {
-      pointer-events: auto;
-
-      canvas {
-        position: absolute !important;
-        scale: 1 !important;
-        scale: 0.5 !important;
-      }
-    }
-  }
 
   @media screen and (--desktop-viewport) {
     grid-template-areas:
@@ -83,6 +73,21 @@
     grid-template-columns: 50vw 50vw;
     grid-template-columns: 50dvw 50dvw;
     grid-gap: 1.5rem;
+
+    &[data-nav-content="content"] {
+      grid-template-areas: "globe-nav-area";
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+
+      .globeWrapper {
+
+        canvas {
+          position: absolute !important;
+          scale: 1 !important;
+          scale: 0.5 !important;
+        }
+      }
+    }
 
     .globeWrapper {
       transform: translateY(0) !important;
