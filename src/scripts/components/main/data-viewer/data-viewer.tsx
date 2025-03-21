@@ -31,11 +31,12 @@ import Button from "../button/button";
 import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation from "../category-navigation/category-navigation";
 
-import styles from "./data-viewer.module.css";
 import { useContentParams } from "../../../hooks/use-content-params";
 import { StoryMode } from "../../../types/story-mode";
 import { setGlobeView } from "../../../reducers/globe/view";
 import { toggleEmbedElements } from "../../../reducers/embed-elements";
+
+import styles from "./data-viewer.module.css";
 
 interface Props {
   hideNavigation?: boolean;
@@ -69,7 +70,8 @@ const DataViewer: FunctionComponent<Props> = ({
 
   const { data: layers } = useGetLayerListQuery(language);
 
-  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
+  const categoryIndex = category ? categoryTags.indexOf(category) : -1;
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(categoryIndex !== -1 ? categoryIndex : 0);
 
   const { handleScroll } = useCategoryScrollHandlers(
     currentCategoryIndex,
@@ -85,9 +87,7 @@ const DataViewer: FunctionComponent<Props> = ({
     ) ?? []),
   ];
 
-  const centerIndex = Math.floor((contents.length - 1) / 2);
-
-  const [currentContentIndex, setCurrentContentIndex] = useState(centerIndex);
+  const [currentContentIndex, setCurrentContentIndex] = useState<null | number >(null);
 
   const [showContentList, setShowContentList] = useState<boolean>(
     Boolean(category),
@@ -178,20 +178,7 @@ const DataViewer: FunctionComponent<Props> = ({
     .concat(layers?.flatMap(({ categories }) => categories) ?? [])
     .filter(Boolean);
 
-const uniqueTags =  categoryTags;
-  console.log(uniqueTags);
-  //const uniqueTags = [
-  //  "Welcome",
-  //  "Land",
-  //  "Ocean",
-  //  "Atmosphere",
-  //  "Cryosphere",
-  //  "Water Cycle",
-  //  "Carbon Cycle",
-  //  "Climate Risk",
-  //  "Climate Action",
-  //  "Improving Models"
-  //];
+  const uniqueTags = categoryTags;
 
   // We need to reset the globe view every time the user navigates back from the the /data page
 

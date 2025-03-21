@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect  } from "react";
+import React, { FunctionComponent, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
@@ -12,6 +12,7 @@ import { getNavCoordinates } from "../../../libs/get-navigation-position";
 
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
+import { setSelectedContentAction } from "../../../reducers/content";
 
 import { languageSelector } from "../../../selectors/language";
 
@@ -27,6 +28,7 @@ import {
 
 import styles from "./content-navigation.module.css";
 import { toggleEmbedElements } from "../../../reducers/embed-elements";
+import { contentSelector } from "../../../selectors/content";
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -60,15 +62,26 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const thunkDispatch = useThunkDispatch();
   const { trackEvent } = useMatomo();
   const lang = useSelector(languageSelector);
-console.log("ContentNavigation", currentIndex);
+  const {contentId} = useSelector(contentSelector);
 
+  const isIndexSet = useRef<boolean>(false);
+
+  if (!isIndexSet.current && contents.length > 0) {
+    const currentIndex = contents.findIndex((content) => content.id === contentId);
+    const centerIndex = Math.floor((contents.length - 1) / 2);
+    setCurrentIndex(currentIndex !== -1 ? currentIndex : centerIndex);
+    isIndexSet.current = true;
+  }
   const { handleTouchEnd, handleTouchMove } = useContentTouchHandlers(
     currentIndex,
     setCurrentIndex,
     contents.length,
   );
 
-  const { handleWheel } = useContentScrollHandlers(setCurrentIndex, contents.length);
+  const { handleWheel } = useContentScrollHandlers(
+    setCurrentIndex,
+    contents.length,
+  );
 
   // The spread between the elements in the circle
   const GAP_BETWEEN_ELEMENTS = 16;
@@ -192,11 +205,14 @@ console.log("ContentNavigation", currentIndex);
             key={index}
             aria-label={`${type} content: ${name}`}
             onClick={() => {
+              dispatch(setSelectedContentAction({ contentId: id }));
               if (!isStory) {
                 dispatch(setShowLayer(false));
                 thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
                 dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
-                dispatch(toggleEmbedElements({legend: true, time_slider: true}));
+                dispatch(
+                  toggleEmbedElements({ legend: true, time_slider: true }),
+                );
                 trackEvent({
                   category: "datasets",
                   action: "select",
