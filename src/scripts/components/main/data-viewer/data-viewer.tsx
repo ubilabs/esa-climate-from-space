@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useRef, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
 
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import cx from "classnames";
@@ -123,20 +123,6 @@ const DataViewer: FunctionComponent<Props> = ({
     localStorage.getItem(config.localStorageHasUserInteractedKey) === "true",
   );
 
-  //const location = useLocation();
-
-  // Reset the selected layer when data view is not active
-  //useEffect(() => {
-  //  if (isNavigation) {
-  //    dispatch(
-  //      setSelectedLayerIds({
-  //        layerId: null,
-  //        isPrimary: true,
-  //      }),
-  //    );
-  //  }
-  //}, [dispatch, location.pathname, isNavigation]);
-
   useEffect(() => {
     // Don't proceed if there's no selectedContentId or no stories
     if (!selectedContentId || !stories) {
@@ -182,8 +168,10 @@ const DataViewer: FunctionComponent<Props> = ({
   // We need to reset the globe view every time the user navigates back from the the /data page
 
   const lastPage = useRef<string>(history.location.pathname);
+
   useEffect(() => {
-    return history.listen((location) => {
+    let timeout: NodeJS.Timeout | null = null;
+    history.listen((location) => {
       if (location.pathname === "/") {
         dispatch(setIsAutoRotating(true));
       } else {
@@ -194,13 +182,20 @@ const DataViewer: FunctionComponent<Props> = ({
         lastPage.current !== location.pathname
       ) {
         const defaultView = config.globe.view;
-        dispatch(setFlyTo(defaultView));
-        dispatch(setShowLayer(false));
-        dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
-        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
+        timeout = setTimeout(() => {
+          dispatch(setFlyTo(defaultView));
+          dispatch(setShowLayer(false));
+          dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
+          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
+        }, 10); // Adjust the timeout duration as needed
       }
       lastPage.current = location.pathname;
+      return () => {
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+      };
     });
   }, [history, isNavigation, dispatch]);
 
