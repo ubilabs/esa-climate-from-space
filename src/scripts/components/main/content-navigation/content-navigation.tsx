@@ -138,9 +138,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
     // We don't want to dispatch a layer action with story ids
     if (isStoryListItem(contents[currentIndex])) {
-        setSelectedContentId(null);
+      setSelectedContentId(null);
       dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-      return
+      return;
     }
 
     const timeout = setTimeout(() => {

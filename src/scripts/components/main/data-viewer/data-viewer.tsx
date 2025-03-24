@@ -22,6 +22,7 @@ import {
   useGetLayerListQuery,
   useGetStoryListQuery,
 } from "../../../services/api";
+import { useGlobeLocationState } from "../../../hooks/use-location";
 
 import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
@@ -31,7 +32,6 @@ import CategoryNavigation from "../category-navigation/category-navigation";
 import { useContentParams } from "../../../hooks/use-content-params";
 
 import styles from "./data-viewer.module.css";
-import { useGlobeLocationState } from "../../../hooks/use-location";
 
 interface Props {
   hideNavigation?: boolean;

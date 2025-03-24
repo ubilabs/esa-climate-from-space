@@ -83,6 +83,7 @@
 
         canvas {
           position: absolute !important;
+          scale: 1 !important;
           scale: 0.8 !important;
         }
       }

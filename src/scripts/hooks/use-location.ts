@@ -12,7 +12,7 @@ import { toggleEmbedElements } from "../reducers/embed-elements";
 import { setSelectedLayerIds } from "../reducers/layers";
 import { setFlyTo } from "../reducers/fly-to";
 import config from "../config/main";
-import { setGlobeView } from "../reducers/globe/view";
+import { useScreenSize } from "./use-screen-size";
 
 interface RouteParams {
   category: string | undefined;
@@ -71,7 +71,7 @@ export function useGlobeLocationState() {
    * Process pathname change, log route information, and update state
    */
   const handlePathnameChange = useCallback(
-    (pathname: string, isFirstRender = false) => {
+    (pathname: string, isFirstRender = false, isMobile: boolean ) => {
       // Only process if the pathname has actually changed or it's the first render
       if (pathname === previousPathnameRef.current && !isFirstRender) {
         return;
@@ -101,25 +101,37 @@ export function useGlobeLocationState() {
           dispatch(setFlyTo(config.globe.view));
         }
       }
+
+      if (routeMatches.dataPath && !isMobile) {
+        // As we use the CSS scale to increase the size of the canvas to make appear the globe bigger
+        // If we don't want to re-mount the globe component AND keep the canvas size across the entire screen, what we do here is zoom out to make the globe appear smaller
+        dispatch(
+          setFlyTo({
+            ...config.globe.view,
+            altitude: config.globe.view.altitude * 2,
+          }),
+        );
+      }
       // Store the current pathname for next comparison
       previousPathnameRef.current = pathname;
     },
     [dispatch, getRouteMatches, updateAutoRotationState],
   );
 
+  const isMobile = useScreenSize().isMobile;
   useEffect(() => {
     const unlisten = history.listen((location) => {
-      handlePathnameChange(location.pathname);
+      handlePathnameChange(location.pathname, false, isMobile);
     });
 
     return unlisten;
-  }, [history, handlePathnameChange]);
+  }, [history, handlePathnameChange, isMobile]);
 
   // Handle initial state and direct URL changes
   useEffect(() => {
     // Pass true as second parameter to indicate this is potentially the first render
-    handlePathnameChange(location.pathname, true);
-  }, [location.pathname, handlePathnameChange]);
+    handlePathnameChange(location.pathname, true, isMobile);
+  }, [location.pathname, handlePathnameChange, isMobile]);
 
   return { showContentList };
 }
