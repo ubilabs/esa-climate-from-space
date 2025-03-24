@@ -44,10 +44,6 @@
     z-index: 10;
   }
 
-  /* If you want to remove the default focus outline but keep custom styling */
-  .contentNavItem:focus {
-    outline: none;
-  }
 
   >li {
     z-index: 2;

@@ -206,21 +206,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
       onWheel={handleWheel}
       role="listbox"
       aria-label="Content navigation"
-      onKeyDown={(e) => {
-        // Handle tab navigation at the container level
-        if (e.key === "Tab") {
-          // Let the default tab behavior work, but update the visual state
-          // based on which item will receive focus next
-          const direction = e.shiftKey ? -1 : 1;
-          const nextIndex =
-            (currentIndex + direction + contents.length) % contents.length;
-
-          //// We'll defer the focus update to let the browser handle the natural tab flow
-          //setTimeout(() => {
-          //  setCurrentIndex(nextIndex);
-          //}, 0);
-        }
-      }}
     >
       {contents.map((item, index) => {
         const { id } = item;
