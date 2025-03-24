@@ -164,6 +164,38 @@ const ContentNavigation: FunctionComponent<Props> = ({
     };
   }, [dispatch, setSelectedContentId, currentIndex, contents]);
 
+  // fucntion to handle click and keyboard events
+  const handleItemSelection = (
+    id: string,
+    index: number,
+    name: string,
+    isStory: boolean,
+    element?: HTMLElement
+  ) => {
+    dispatch(setSelectedContentAction({ contentId: id }));
+    setCurrentIndex(index);
+
+    if (!isStory) {
+      dispatch(setShowLayer(false));
+      thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
+      dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
+      dispatch(toggleEmbedElements({ legend: true, time_slider: true }));
+      trackEvent({
+        category: "datasets",
+        action: "select",
+        name,
+      });
+    }
+
+    // For keyboard events, we need to programmatically navigate
+    if (element) {
+      const linkElement = element.querySelector('a');
+      if (linkElement) {
+        linkElement.click();
+      }
+    }
+  };
+
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
 
@@ -238,47 +270,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
-                dispatch(setSelectedContentAction({ contentId: id }));
-                setCurrentIndex(index);
-                if (!isStory) {
-                  dispatch(setShowLayer(false));
-                  thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
-                  dispatch(
-                    setSelectedLayerIds({ layerId: id, isPrimary: true }),
-                  );
-                  dispatch(
-                    toggleEmbedElements({ legend: true, time_slider: true }),
-                  );
-                  trackEvent({
-                    category: "datasets",
-                    action: "select",
-                    name,
-                  });
-                }
-
-                // Programmatically click the link inside this item to trigger navigation
-                const linkElement = e.currentTarget.querySelector('a');
-                if (linkElement) {
-                  linkElement.click();
-                }
+                handleItemSelection(id, index, name, isStory, e.currentTarget);
               }
             }}
-            onClick={() => {
-              dispatch(setSelectedContentAction({ contentId: id }));
-              setCurrentIndex(index);
-              if (!isStory) {
-                dispatch(setShowLayer(false));
-                thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
-                dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
-                dispatch(
-                  toggleEmbedElements({ legend: true, time_slider: true }),
-                );
-                trackEvent({
-                  category: "datasets",
-                  action: "select",
-                  name,
-                });
-              }
+            onClick={(e) => {
+              handleItemSelection(id, index, name, isStory, e.currentTarget);
             }}
           >
             <Link
