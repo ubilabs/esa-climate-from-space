@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
@@ -13,8 +13,11 @@ import { getNavCoordinates } from "../../../libs/get-navigation-position";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { setSelectedContentAction } from "../../../reducers/content";
+import { toggleEmbedElements } from "../../../reducers/embed-elements";
+import { setFlyTo } from "../../../reducers/fly-to";
 
 import { languageSelector } from "../../../selectors/language";
+import { contentSelector } from "../../../selectors/content";
 
 import { LayerListItem } from "../../../types/layer-list";
 import { StoryListItem } from "../../../types/story-list";
@@ -27,8 +30,6 @@ import {
 } from "./use-content-event-handlers";
 
 import styles from "./content-navigation.module.css";
-import { toggleEmbedElements } from "../../../reducers/embed-elements";
-import { contentSelector } from "../../../selectors/content";
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -39,23 +40,17 @@ function isStoryListItem(
 interface Props {
   showContentList: boolean;
   contents: (StoryListItem | LayerListItem)[];
-  setSelectedContentId: React.Dispatch<React.SetStateAction<string | null>>;
   category: string | null;
   className?: string;
   isMobile: boolean;
-  currentIndex: number;
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const ContentNavigation: FunctionComponent<Props> = ({
   category,
   showContentList,
   contents,
-  setSelectedContentId,
   className,
   isMobile,
-  currentIndex,
-  setCurrentIndex,
 }) => {
   const navigationRef = React.useRef<HTMLUListElement | null>(null);
   const dispatch = useDispatch();
@@ -64,16 +59,16 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const lang = useSelector(languageSelector);
   const { contentId } = useSelector(contentSelector);
 
-  const isIndexSet = useRef<boolean>(false);
+  // We either use the centerIndex or the index of the selected content if there is one
+  const centerIndex = Math.floor((contents.length - 1) / 2);
+  const initialIndex = contents.findIndex(
+    (content) => content.id === contentId,
+  );
 
-  if (!isIndexSet.current && contents.length > 0) {
-    const currentIndex = contents.findIndex(
-      (content) => content.id === contentId,
-    );
-    const centerIndex = Math.floor((contents.length - 1) / 2);
-    setCurrentIndex(currentIndex !== -1 ? currentIndex : centerIndex);
-    isIndexSet.current = true;
-  }
+  const validInitialIndex = initialIndex !== -1 ? initialIndex : centerIndex;
+
+  const [currentIndex, setCurrentIndex] = useState<number>(validInitialIndex);
+
   const { handleTouchEnd, handleTouchMove } = useContentTouchHandlers(
     currentIndex,
     setCurrentIndex,
@@ -125,20 +120,19 @@ const ContentNavigation: FunctionComponent<Props> = ({
       item.style.rotate = `${rotation}deg`;
       item.classList.toggle(styles.active, adjustedPosition === 0);
     }
-  }, [
-    currentIndex,
-    showContentList,
-    contents.length,
-    setSelectedContentId,
-    isMobile,
-  ]);
+  }, [currentIndex, showContentList, contents.length, isMobile]);
 
+  // This triggers two side effects:
+  // 1. It always dispatches the selected content id to the store
+  // 2. Toggles the layer id if the content is a data layer
   useEffect(() => {
     const id = contents[currentIndex]?.id;
 
+    dispatch(
+      setSelectedContentAction({ contentId: contents[currentIndex].id }),
+    );
     // We don't want to dispatch a layer action with story ids
     if (isStoryListItem(contents[currentIndex])) {
-      setSelectedContentId(null);
       dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
       return;
     }
@@ -150,19 +144,40 @@ const ContentNavigation: FunctionComponent<Props> = ({
     return () => {
       clearTimeout(timeout);
     };
-  }, [dispatch, currentIndex, contents, setSelectedContentId]);
+  }, [dispatch, currentIndex, contents]);
 
+  // Trigger flyTo when the user remains on the previewed list item for 1 second
+  // Checks if the position is given
   useEffect(() => {
+    const contentId = contents[currentIndex]?.id;
+
     const timeout = setTimeout(() => {
-      if (contents[currentIndex]) {
-        setSelectedContentId(contents[currentIndex].id);
+      if (contentId) {
+        const previewedContent = contents.find(
+          (story) => story.id === contentId,
+        );
+
+        if (
+          previewedContent &&
+          "position" in previewedContent &&
+          previewedContent.position[0] &&
+          previewedContent.position[1]
+        ) {
+          dispatch(
+            setFlyTo({
+              isAnimated: true,
+              lat: previewedContent.position[1],
+              lng: previewedContent.position[0],
+            }),
+          );
+        }
       }
     }, 1000);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [dispatch, setSelectedContentId, currentIndex, contents]);
+  }, [dispatch, currentIndex, contents]);
 
   // fucntion to handle click and keyboard events
   const handleItemSelection = (
@@ -170,7 +185,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
     index: number,
     name: string,
     isStory: boolean,
-    element?: HTMLElement
+    element?: HTMLElement,
   ) => {
     dispatch(setSelectedContentAction({ contentId: id }));
     setCurrentIndex(index);
@@ -189,7 +204,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
     // For keyboard events, we need to programmatically navigate
     if (element) {
-      const linkElement = element.querySelector('a');
+      const linkElement = element.querySelector("a");
       if (linkElement) {
         linkElement.click();
       }
