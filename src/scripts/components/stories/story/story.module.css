@@ -3,6 +3,11 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  @media(--mobile-viewport) {
+    margin-top: var(--header-height);
+    height: calc(100% - var(--header-height))
+  }
 }
 
 .main {

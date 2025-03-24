@@ -79,7 +79,7 @@ const Story: FunctionComponent = () => {
       );
       dispatch(setGlobeTime(0));
     };
-  }, []);
+  }, [dispatch]);
 
   if (!mode) {
     return null;

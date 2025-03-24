@@ -15,7 +15,6 @@ import { useCategoryScrollHandlers } from "../category-navigation/use-category-e
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { setFlyTo } from "../../../reducers/fly-to";
-import { setSelectedLayerIds } from "../../../reducers/layers";
 
 import { languageSelector } from "../../../selectors/language";
 
@@ -23,6 +22,7 @@ import {
   useGetLayerListQuery,
   useGetStoryListQuery,
 } from "../../../services/api";
+import { useGlobeLocationState } from "../../../hooks/use-location";
 
 import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
@@ -30,11 +30,8 @@ import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation from "../category-navigation/category-navigation";
 
 import { useContentParams } from "../../../hooks/use-content-params";
-import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
 import styles from "./data-viewer.module.css";
-import { setIsAutoRotating } from "../../../reducers/globe/auto-rotation";
-import { setShowLayer } from "../../../reducers/show-layer-selector";
 
 interface Props {
   hideNavigation?: boolean;
@@ -78,21 +75,17 @@ const DataViewer: FunctionComponent<Props> = ({
     setCurrentCategoryIndex,
   );
 
-  const contents = [
+  const contents = useMemo(() => [
     ...(stories?.filter(
       (story) => category && story.categories?.includes(category),
     ) ?? []),
     ...(layers?.filter(
       (layer) => category && layer.categories?.includes(category),
     ) ?? []),
-  ];
+  ], [stories, layers, category]);
 
   const [currentContentIndex, setCurrentContentIndex] = useState<null | number>(
     null,
-  );
-
-  const [showContentList, setShowContentList] = useState<boolean>(
-    Boolean(category),
   );
 
   const [currentCategory, setCurrentCategory] = useState<string | null>(
@@ -114,6 +107,9 @@ const DataViewer: FunctionComponent<Props> = ({
   const { isNavigation, mode } = useContentParams();
 
   const dispatch = useDispatch();
+
+  // We need to reset the globe view every time the user navigates back from the the /data page
+  const { showContentList } = useGlobeLocationState();
 
   // There is a set of animations which should be played only once
   // This keeps track of that
@@ -150,12 +146,6 @@ const DataViewer: FunctionComponent<Props> = ({
     }
   }, [selectedContentId, stories, dispatch]);
 
-  useEffect(() => {
-    if (!showContentList) {
-      setSelectedContentId(null);
-    }
-    setShowContentList(Boolean(category));
-  }, [category, showContentList]);
 
   const allCategories = stories
     ?.flatMap(({ categories }) => categories)
@@ -163,39 +153,6 @@ const DataViewer: FunctionComponent<Props> = ({
     .filter(Boolean);
 
   const uniqueTags = categoryTags;
-
-  // We need to reset the globe view every time the user navigates back from the the /data page
-
-  const lastPage = useRef<string>(history.location.pathname);
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout | null = null;
-    history.listen((location) => {
-      if (location.pathname === "/") {
-        dispatch(setIsAutoRotating(true));
-      } else {
-        dispatch(setIsAutoRotating(false));
-      }
-      if (
-        !location.pathname.includes("/welcome") &&
-        lastPage.current !== location.pathname
-      ) {
-        timeout = setTimeout(() => {
-          dispatch(setFlyTo(null));
-          dispatch(setShowLayer(false));
-          dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
-          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
-        }, 100); // Adjust the timeout duration as needed
-      }
-      lastPage.current = location.pathname;
-      return () => {
-        if (timeout) {
-          clearTimeout(timeout);
-        }
-      };
-    });
-  }, [history, isNavigation, dispatch]);
 
   // create a list of all tags with their number of occurrences in the stories
   // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
@@ -208,7 +165,6 @@ const DataViewer: FunctionComponent<Props> = ({
       }),
     [uniqueTags, allCategories],
   );
-
   if (!stories || !layers || !arcs || !contents) {
     return null;
   }
@@ -281,7 +237,6 @@ const DataViewer: FunctionComponent<Props> = ({
                 )}
                 onClick={() => {
                   history.push(`/${currentCategory}`);
-                  setShowContentList(!showContentList);
                 }}
                 label="explore"
               ></Button>
@@ -318,10 +273,8 @@ const DataViewer: FunctionComponent<Props> = ({
         <GetDataWidget
           hideNavigation={Boolean(hideNavigation)}
           showClouds={showCategories && !showContentList}
-          className={cx(
-           styles.globe,
-          )}
-          {...(contentMarker && {
+          className={cx(styles.globe)}
+          {...(contentMarker && showContentList &&{
             markers: [contentMarker],
           })}
         />

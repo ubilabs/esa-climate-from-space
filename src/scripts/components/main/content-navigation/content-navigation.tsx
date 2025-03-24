@@ -132,16 +132,25 @@ const ContentNavigation: FunctionComponent<Props> = ({
     setSelectedContentId,
     isMobile,
   ]);
+
   useEffect(() => {
-    const layerId = contents[currentIndex]?.id;
+    const id = contents[currentIndex]?.id;
+
+    // We don't want to dispatch a layer action with story ids
+    if (isStoryListItem(contents[currentIndex])) {
+      setSelectedContentId(null);
+      dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+      return;
+    }
+
     const timeout = setTimeout(() => {
-      dispatch(setSelectedLayerIds({ layerId: layerId, isPrimary: true }));
+      dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
     }, 100);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [dispatch, currentIndex, contents]);
+  }, [dispatch, currentIndex, contents, setSelectedContentId]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {

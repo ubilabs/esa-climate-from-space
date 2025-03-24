@@ -165,6 +165,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   useEffect(() => {
     // Update the ref to reflect current state
     autoRotationRef.current.isActive = isAutoRotatingEnabled;
+    const lat = config.globe.view.lat;
 
     // If enabled and not already running, start rotation
     if (
@@ -177,7 +178,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
           globe,
           rotationRef.current,
           autoRotationRef.current,
-          view.lat,
+          lat,
           view.altitude,
         ),
       );

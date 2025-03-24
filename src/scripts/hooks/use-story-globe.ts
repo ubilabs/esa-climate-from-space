@@ -11,6 +11,7 @@ import { GlobeItem } from "../types/gallery-item";
 import { CameraView, RenderMode } from "@ubilabs/esa-webgl-globe";
 
 function flyToToCameraView(flyTo: GlobeItem["flyTo"]): CameraView {
+
   return {
     isAnimated: false,
     renderMode: "globe" as RenderMode.GLOBE,
