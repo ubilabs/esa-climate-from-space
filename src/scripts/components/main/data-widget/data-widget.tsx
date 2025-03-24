@@ -1,3 +1,5 @@
+import { CameraView } from "@ubilabs/esa-webgl-globe";
+import { useDispatch, useSelector } from "react-redux";
 import {
   FunctionComponent,
   useCallback,
@@ -5,47 +7,50 @@ import {
   useLayoutEffect,
   useState,
 } from "react";
-import { LayerType } from "../../../types/globe-layer-type";
-import { Layer } from "../../../types/layer";
-import Gallery from "../gallery/gallery";
-import { projectionSelector } from "../../../selectors/globe/projection";
-import { useDispatch, useSelector } from "react-redux";
-import { globeViewSelector } from "../../../selectors/globe/view";
-import { CameraView } from "@ubilabs/esa-webgl-globe";
-import { globeSpinningSelector } from "../../../selectors/globe/spinning";
+
+import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
+import { contentSelector } from "../../../selectors/content";
 import { flyToSelector } from "../../../selectors/fly-to";
+import { globeSpinningSelector } from "../../../selectors/globe/spinning";
+import { globeViewSelector } from "../../../selectors/globe/view";
+import { languageSelector } from "../../../selectors/language";
+import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
+import { layerListItemSelector } from "../../../selectors/layers/list-item";
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { projectionSelector } from "../../../selectors/globe/projection";
+import { timeSelector } from "../../../selectors/globe/time";
+
+import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
 import { setGlobeSpinning } from "../../../reducers/globe/spinning";
 import { setGlobeView } from "../../../reducers/globe/view";
-import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
-import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
-import { timeSelector } from "../../../selectors/globe/time";
-import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
-import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { State } from "../../../reducers";
-import { layerListItemSelector } from "../../../selectors/layers/list-item";
+
+import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerQuery } from "../../../services/api";
-import HoverLegend from "../../layers/hover-legend/hover-legend";
-import { LegendValueColor } from "../../../types/legend-value-color";
-import LayerLegend from "../../layers/layer-legend/layer-legend";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
-import GlobeNavigation from "../globe-navigation/globe-navigation";
-import { Marker } from "../../../types/marker-type";
+
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
+import { LayerType } from "../../../types/globe-layer-type";
+import { LegendValueColor } from "../../../types/legend-value-color";
+import { Layer } from "../../../types/layer";
+
+import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
+import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
+import GlobeNavigation from "../globe-navigation/globe-navigation";
+import HoverLegend from "../../layers/hover-legend/hover-legend";
+import LayerLegend from "../../layers/layer-legend/layer-legend";
 
 interface Props {
   hideNavigation: boolean;
-  markers?: Marker[];
   showClouds?: boolean;
   className?: string;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
   hideNavigation,
-  markers,
   showClouds,
-  className
+  className,
 }) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
@@ -54,6 +59,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const flyTo = useSelector(flyToSelector);
   const [isMainActive, setIsMainActive] = useState(true);
 
+  const language = useSelector(languageSelector);
   const dispatch = useDispatch();
   const time = useSelector(timeSelector);
 
@@ -101,6 +107,10 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     [mainLayerDetails, compareLayerDetails].some(
       (layer) => layer && layer.type !== LayerType.Gallery,
     );
+  const selectedContentId = useSelector(contentSelector).contentId;
+
+  const contentMarker = useContentMarker(selectedContentId, language);
+
   const getDataWidget = ({
     imageLayer,
     layerDetails,
@@ -115,10 +125,12 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     if (imageLayer?.type === LayerType.Gallery) {
       return <Gallery imageLayer={imageLayer} />;
     }
-
     return (
       <Globe
-        markers={markers}
+        {...(contentMarker &&
+          {
+          markers: [contentMarker],
+        })}
         backgroundColor={""}
         active={active}
         view={currentView}
@@ -178,9 +190,9 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const updatedLayerDetails = showClouds
     ? {
-        ...(layerDetails || {}),
-        basemap: "clouds",
-      }
+      ...(layerDetails || {}),
+      basemap: "clouds",
+    }
     : layerDetails;
 
   // apply changes in the app state view to our local view copy
@@ -214,14 +226,12 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   return (
     <>
       {legend && getLegends()}
-
       {getDataWidget({
         imageLayer: mainImageLayer,
         layerDetails: updatedLayerDetails,
         active: isMainActive,
         action: () => setIsMainActive(true),
       })}
-
       {compareLayer &&
         getDataWidget({
           imageLayer: compareImageLayer,
@@ -229,8 +239,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
           active: !isMainActive,
           action: () => setIsMainActive(false),
         })}
-        {!hideNavigation && showGlobeNavigation && (
-        <GlobeNavigation/>
-      )}  </>
+      {!hideNavigation && showGlobeNavigation && <GlobeNavigation />}{" "}
+    </>
   );
 };

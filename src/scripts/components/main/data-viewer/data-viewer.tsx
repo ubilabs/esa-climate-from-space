@@ -1,20 +1,17 @@
-import { FunctionComponent, useEffect, useRef, useState, useMemo } from "react";
+import { FunctionComponent, useRef, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
 import { useHistory, useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import cx from "classnames";
 
 import config, { categoryTags } from "../../../config/main";
 
-import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useScreenSize } from "../../../hooks/use-screen-size";
 
 import { useCategoryScrollHandlers } from "../category-navigation/use-category-event-handlers";
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
-
-import { setFlyTo } from "../../../reducers/fly-to";
 
 import { languageSelector } from "../../../selectors/language";
 
@@ -84,10 +81,6 @@ const DataViewer: FunctionComponent<Props> = ({
     ) ?? []),
   ], [stories, layers, category]);
 
-  const [currentContentIndex, setCurrentContentIndex] = useState<null | number>(
-    null,
-  );
-
   const [currentCategory, setCurrentCategory] = useState<string | null>(
     category || null,
   );
@@ -97,16 +90,7 @@ const DataViewer: FunctionComponent<Props> = ({
 
   const { screenHeight, screenWidth, isMobile } = useScreenSize();
 
-  // We need to keep track of the current selected content Id because we need to
-  // set the flyTo for the marker, or add the data layer to the globe
-  const [selectedContentId, setSelectedContentId] = useState<string | null>(
-    null,
-  );
-  const contentMarker = useContentMarker(selectedContentId, language);
-
   const { isNavigation, mode } = useContentParams();
-
-  const dispatch = useDispatch();
 
   // We need to reset the globe view every time the user navigates back from the the /data page
   const { showContentList } = useGlobeLocationState();
@@ -118,33 +102,6 @@ const DataViewer: FunctionComponent<Props> = ({
     localStorage.getItem(config.localStorageHasUserInteractedKey) === "true",
   );
 
-  useEffect(() => {
-    // Don't proceed if there's no selectedContentId or no stories
-    if (!selectedContentId || !stories) {
-      return;
-    }
-
-    const previewedContent = stories.find(
-      (story) => story.id === selectedContentId,
-    );
-    if (
-      previewedContent &&
-      previewedContent?.position[0] &&
-      previewedContent?.position[1]
-    ) {
-      dispatch(
-        setFlyTo({
-          isAnimated: true,
-          lat: previewedContent.position[1],
-          lng: previewedContent.position[0],
-        }),
-      );
-    } else {
-      console.warn(
-        `Content with id ${selectedContentId} could not be found, ${previewedContent}`,
-      );
-    }
-  }, [selectedContentId, stories, dispatch]);
 
 
   const allCategories = stories
@@ -217,14 +174,11 @@ const DataViewer: FunctionComponent<Props> = ({
             />
           ) : (
             <ContentNavigation
-              currentIndex={currentContentIndex}
-              setCurrentIndex={setCurrentContentIndex}
               isMobile={isMobile}
               className={styles.contentNav}
               category={currentCategory}
               showContentList={showContentList}
               contents={contents}
-              setSelectedContentId={setSelectedContentId}
             />
           )}
 
@@ -274,9 +228,6 @@ const DataViewer: FunctionComponent<Props> = ({
           hideNavigation={Boolean(hideNavigation)}
           showClouds={showCategories && !showContentList}
           className={cx(styles.globe)}
-          {...(contentMarker && showContentList &&{
-            markers: [contentMarker],
-          })}
         />
       </div>
     </div>
