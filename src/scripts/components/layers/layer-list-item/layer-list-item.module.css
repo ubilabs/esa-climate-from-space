@@ -20,6 +20,7 @@
 .layerItem:hover .compare,
 .layerItem:focus .compare {
   display: block;
+  color: var(--main);
 }
 .compare {
   display: none;
@@ -29,10 +30,6 @@
   text-transform: uppercase;
   font-size: 0.6875em;
   cursor: pointer;
-}
-.compare:hover,
-.compare:focus {
-  color: var(--main);
 }
 .layerTitle {
   display: flex;

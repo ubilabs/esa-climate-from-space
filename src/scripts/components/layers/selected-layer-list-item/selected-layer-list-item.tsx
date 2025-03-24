@@ -1,4 +1,7 @@
 import { FunctionComponent } from "react";
+import { useSelector } from "react-redux";
+
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 
 import { RemoveIcon } from "../../main/icons/remove-icon";
 import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
@@ -29,6 +32,8 @@ const SelectedLayerListItem: FunctionComponent<Props> = ({
   const layerIconUrl = replaceUrlPlaceholders(layerIconTemplate, {
     id: layer.id,
   });
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+  const { mainId } = selectedLayerIds;
 
   return (
     <div className={styles.selectedLayerListItem}>
@@ -36,7 +41,7 @@ const SelectedLayerListItem: FunctionComponent<Props> = ({
         <img src={layerIconUrl} className={styles.layerIcon} />
         <span className={styles.layerTitle}>{layer.shortName}</span>
       </div>
-      {!isCompareSelected && (
+      {!isCompareSelected && layer.id !== mainId && (
         <button className={styles.removeIcon} onClick={() => onRemove()}>
           <RemoveIcon />
         </button>
