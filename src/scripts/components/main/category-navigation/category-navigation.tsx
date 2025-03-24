@@ -267,7 +267,25 @@ const CategoryNavigation: FunctionComponent<Props> = ({
             const defaultColor = "var( --dark-grey-5)";
 
             return (
-              <g key={index} data-index={index} className={styles.arc}>
+              <g
+                key={index}
+                data-index={index}
+                className={styles.arc}
+                tabIndex={0}
+                role="button"
+                aria-label={`${Object.keys(arcs[index])[0]} category`}
+                aria-selected={isCurrentlySelected}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setCurrentIndex(index);
+                  }
+                }}
+                onClick={() => setCurrentIndex(index)}
+                style={{
+                  outline: 'none', // Remove default outline
+                }}
+              >
                 <path
                   d={pathData}
                   stroke={

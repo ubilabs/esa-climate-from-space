@@ -10,6 +10,7 @@ import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { uiEmbedElements } from "../../../config/main";
 import { getEmbedParamsString } from "../../../libs/get-embed-params-string";
+import { useGlobeLocationState } from "../../../hooks/use-location";
 
 // syncs the query parameters of the url when values change in store
 const UrlSync: FunctionComponent = () => {
