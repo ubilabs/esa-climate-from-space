@@ -13,13 +13,19 @@ export const MarkerMarkup: FunctionComponent<Props> = ({ title }) => {
       className={styles.marker}
       data-marker={title}
       xmlns="http://www.w3.org/2000/svg"
-      width="48"
-      height="48"
-      viewBox="0 0 48 48"
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
       fill="none"
     >
-      <circle cx="24" cy="24" r="10" stroke="var(--main)"   className={styles.outer} />
-      <circle cx="24" cy="24" r="4" fill="var(--main)" />
+      <circle
+        cx="16"
+        cy="16"
+        r="10"
+        stroke="var(--main)"
+        className={styles.outer}
+      />
+      <circle cx="16" cy="16" r="4" fill="var(--main)" />
     </svg>
   );
 };
