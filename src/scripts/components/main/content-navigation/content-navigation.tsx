@@ -288,8 +288,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
                 handleItemSelection(id, index, name, isStory, e.currentTarget);
               }
             }}
-            onClick={(e) => {
-              handleItemSelection(id, index, name, isStory, e.currentTarget);
+            onClick={() => {
+              handleItemSelection(id, index, name, isStory);
             }}
           >
             <Link
