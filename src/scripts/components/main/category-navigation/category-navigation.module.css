@@ -11,24 +11,16 @@
   overflow: hidden;
 
   @media screen and (--desktop-viewport) {
-    clip-path: inset(0 100% 0 0); /* On desktop, don't clip the top */
-  }
-
-  &.reveal-from-right {
-    animation: revealFromRight 0.5s linear forwards;
+    margin-right: var(--spacing);
+    clip-path: inset(0 100% 0 0);
+    /* On desktop, don't clip the top */
   }
 
   &.reveal-from-left {
     animation: revealFromLeft 0.5s linear forwards;
+    animation-delay: 0.5s;
   }
 
-  &.concealed {
-    animation: none !important;
-  }
-
-  &.conceal {
-    animation: concealToRight 0.5s linear forwards;
-  }
 
   @media screen and (--desktop-viewport) {
     place-self: center center;
@@ -37,7 +29,6 @@
   }
 
   .circle-container {
-    /*translate: 0 -50%;*/
     transition: all 0.5s ease-out;
 
     @media screen and (--desktop-viewport) {
@@ -45,6 +36,7 @@
     }
   }
 }
+
 /*. Clip the top 50% of the div on initial load (and keep it clipped)*/
 @keyframes revealFromRight {
   from {
@@ -145,31 +137,28 @@
   animation: fadeIn 0.5s ease-out forwards;
   animation-delay: 2.8s;
 
-
   @media screen and (--desktop-viewport) {
-  min-height: 160px;
+    min-height: 160px;
     animation-delay: 0.8s;
     text-align: start;
     grid-area: title;
-    font-family: NotesEsa;
-    font-size: 62px;
+
+    font-size: 78px;
     font-style: normal;
     font-weight: 700;
-    line-height: 68px;
+    line-height: 80px;
+    /* 102.564% */
     place-self: start;
     /* 109.677% */
     text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
 
     >li.active {
-
       >span {
         text-align: start;
-        font-family: NotesEsa;
-        font-size: 20px;
+        font-size: 28px;
         font-style: normal;
         font-weight: 700;
-        line-height: 24px;
-        /* 120% */
+        line-height: 32px;
       }
     }
   }
@@ -205,6 +194,7 @@
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
   outline: none;
   transition: all 0.2s ease;
+
   >path {
     transition: stroke 1s cubic-bezier(0.4, 0, 0.2, 1);
   }
