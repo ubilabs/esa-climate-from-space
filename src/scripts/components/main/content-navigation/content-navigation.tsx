@@ -179,6 +179,38 @@ const ContentNavigation: FunctionComponent<Props> = ({
     };
   }, [dispatch, currentIndex, contents]);
 
+  // fucntion to handle click and keyboard events
+  const handleItemSelection = (
+    id: string,
+    index: number,
+    name: string,
+    isStory: boolean,
+    element?: HTMLElement,
+  ) => {
+    dispatch(setSelectedContentAction({ contentId: id }));
+    setCurrentIndex(index);
+
+    if (!isStory) {
+      dispatch(setShowLayer(false));
+      thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
+      dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
+      dispatch(toggleEmbedElements({ legend: true, time_slider: true }));
+      trackEvent({
+        category: "datasets",
+        action: "select",
+        name,
+      });
+    }
+
+    // For keyboard events, we need to programmatically navigate
+    if (element) {
+      const linkElement = element.querySelector("a");
+      if (linkElement) {
+        linkElement.click();
+      }
+    }
+  };
+
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
 
@@ -219,6 +251,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
       onWheel={handleWheel}
+      role="listbox"
+      aria-label="Content navigation"
     >
       {contents.map((item, index) => {
         const { id } = item;
@@ -238,20 +272,24 @@ const ContentNavigation: FunctionComponent<Props> = ({
             className={cx(styles.contentNavItem)}
             key={index}
             aria-label={`${type} content: ${name}`}
-            onClick={() => {
-              if (!isStory) {
-                dispatch(setShowLayer(false));
-                thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
-                dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
-                dispatch(
-                  toggleEmbedElements({ legend: true, time_slider: true }),
-                );
-                trackEvent({
-                  category: "datasets",
-                  action: "select",
-                  name,
-                });
+            // Make only the current item focusable in the tab order
+            // This creates a "roving tabindex" pattern
+            tabIndex={index === currentIndex ? 0 : -1}
+            role="button"
+            aria-selected={index === currentIndex}
+            onFocus={() => {
+              // When an item receives focus, update the current index
+              setCurrentIndex(index);
+              dispatch(setSelectedContentAction({ contentId: id }));
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                handleItemSelection(id, index, name, isStory, e.currentTarget);
               }
+            }}
+            onClick={(e) => {
+              handleItemSelection(id, index, name, isStory, e.currentTarget);
             }}
           >
             <Link

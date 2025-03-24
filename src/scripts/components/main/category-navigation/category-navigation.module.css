@@ -202,9 +202,6 @@
 }
 
 .arc:focus {
-
-
-  stroke-width: 17px;
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
   outline: none;
   transition: all 0.2s ease;

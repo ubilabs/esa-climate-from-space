@@ -12,6 +12,25 @@
   fill: #fff;
   gap: 0.4375em;
 }
+
+.button:focus {
+  outline: 2px solid var(--main);
+  outline-offset: 2px;
+}
+
+.button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--main);
+  outline-offset: 2px;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
 .button svg {
   fill: #fff;
 }
