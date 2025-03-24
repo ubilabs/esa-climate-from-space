@@ -25,16 +25,10 @@ const LayerListItem: FunctionComponent<Props> = ({
   });
 
   return (
-    <div className={styles.layerItem} >
+    <div className={styles.layerItem} onClick={() => onSelect(layer.id, false)}>
       <span className={styles.layerTitle}>{layer.shortName}</span>
       {isMainSelected && (
-        <button
-          className={styles.compare}
-          onClick={(event) => {
-            onSelect(layer.id, false);
-            event.stopPropagation();
-          }}
-        >
+        <button className={styles.compare}>
           <FormattedMessage id={"layerSelector.compare"} />
         </button>
       )}
