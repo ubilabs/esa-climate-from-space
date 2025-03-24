@@ -138,9 +138,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
     // We don't want to dispatch a layer action with story ids
     if (isStoryListItem(contents[currentIndex])) {
-        setSelectedContentId(null);
+      setSelectedContentId(null);
       dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-      return
+      return;
     }
 
     const timeout = setTimeout(() => {
@@ -204,6 +204,23 @@ const ContentNavigation: FunctionComponent<Props> = ({
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
       onWheel={handleWheel}
+      role="listbox"
+      aria-label="Content navigation"
+      onKeyDown={(e) => {
+        // Handle tab navigation at the container level
+        if (e.key === "Tab") {
+          // Let the default tab behavior work, but update the visual state
+          // based on which item will receive focus next
+          const direction = e.shiftKey ? -1 : 1;
+          const nextIndex =
+            (currentIndex + direction + contents.length) % contents.length;
+
+          //// We'll defer the focus update to let the browser handle the natural tab flow
+          //setTimeout(() => {
+          //  setCurrentIndex(nextIndex);
+          //}, 0);
+        }
+      }}
     >
       {contents.map((item, index) => {
         const { id } = item;
@@ -223,8 +240,47 @@ const ContentNavigation: FunctionComponent<Props> = ({
             className={cx(styles.contentNavItem)}
             key={index}
             aria-label={`${type} content: ${name}`}
+            // Make only the current item focusable in the tab order
+            // This creates a "roving tabindex" pattern
+            tabIndex={index === currentIndex ? 0 : -1}
+            role="button"
+            aria-selected={index === currentIndex}
+            onFocus={() => {
+              // When an item receives focus, update the current index
+              setCurrentIndex(index);
+              dispatch(setSelectedContentAction({ contentId: id }));
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                dispatch(setSelectedContentAction({ contentId: id }));
+                setCurrentIndex(index);
+                if (!isStory) {
+                  dispatch(setShowLayer(false));
+                  thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
+                  dispatch(
+                    setSelectedLayerIds({ layerId: id, isPrimary: true }),
+                  );
+                  dispatch(
+                    toggleEmbedElements({ legend: true, time_slider: true }),
+                  );
+                  trackEvent({
+                    category: "datasets",
+                    action: "select",
+                    name,
+                  });
+                }
+
+                // Programmatically click the link inside this item to trigger navigation
+                const linkElement = e.currentTarget.querySelector('a');
+                if (linkElement) {
+                  linkElement.click();
+                }
+              }
+            }}
             onClick={() => {
               dispatch(setSelectedContentAction({ contentId: id }));
+              setCurrentIndex(index);
               if (!isStory) {
                 dispatch(setShowLayer(false));
                 thunkDispatch(layersApi.endpoints.getLayer.initiate(id));

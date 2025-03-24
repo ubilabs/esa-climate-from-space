@@ -37,6 +37,18 @@
     }
   }
 
+  /* Focus styles for keyboard navigation */
+  .contentNavItem:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 4px;
+    z-index: 10;
+  }
+
+  /* If you want to remove the default focus outline but keep custom styling */
+  .contentNavItem:focus {
+    outline: none;
+  }
+
   >li {
     z-index: 2;
     padding-right: 1rem;
@@ -125,7 +137,7 @@
     }
 
     &.active {
-      > a > span:not(.learnMore) {
+      >a>span:not(.learnMore) {
         color: var(--primary-color) !important;
         white-space: normal;
       }
