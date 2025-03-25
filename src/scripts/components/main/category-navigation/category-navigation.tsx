@@ -2,15 +2,17 @@ import React, {
   FunctionComponent,
   RefObject,
   useEffect,
+  useState,
 } from "react";
+import { useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
+import { createPortal } from "react-dom";
 import cx from "classnames";
 
+import { setSelectedContentAction } from "../../../reducers/content";
 import { useCategoryTouchHandlers } from "./use-category-event-handlers";
 
 import styles from "./category-navigation.module.css";
-import { setSelectedContentAction } from "../../../reducers/content";
-import { useDispatch } from "react-redux";
 
 interface Props {
   showCategories: boolean;
@@ -23,6 +25,9 @@ interface Props {
   currentIndex: number;
   height: number;
 }
+
+// We reference the SVG container by its ID
+const CIRCLE_CONTAINER_ID = "circle-container";
 
 /**
  * A circular navigation component that displays categories in an interactive wheel format.
@@ -49,6 +54,15 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   const { isRotating, handleTouchStart, handleTouchMove, handleTouchEnd } =
     useCategoryTouchHandlers(currentIndex, setCurrentIndex);
 
+  // State to control the tooltip visibility and position. The tooltip the currently hovered or focused category
+  const [tooltipInfo, setTooltipInfo] = useState<{
+    // Stores information about the currently hovered or focused category
+    index: number;
+    visible: boolean;
+    x?: number;
+    y?: number;
+  }>({ index: -1, visible: false });
+
   // Control the gap between the lines (arcs)
   const SPACING = 5;
 
@@ -63,8 +77,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   const _size = isMobile
     ? width + _overSize
     : // 50% of the screen width minues some padding
-      // But capped at the height of the screen minus some padding
-      Math.min(width / 2 - 65, height - 120);
+    // But capped at the height of the screen minus some padding
+    Math.min(width / 2 - 65, height - 120);
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
 
@@ -92,7 +106,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
 
   // Calculate current and target rotation
   const currentRotation = parseFloat(
-    document.getElementById("circle-container")?.dataset.currentRotation || "0",
+    document.getElementById(CIRCLE_CONTAINER_ID)?.dataset.currentRotation || "0",
   );
 
   // Calculate the target rotation to center the current arc
@@ -119,6 +133,38 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   // Calculate final rotation offset
   const rotationOffset = getShortestRotation(currentRotation, targetRotation);
 
+  // Handle showing tooltip for both mouse events and keyboard focus
+  const handleShowTooltip = (e: React.MouseEvent | React.FocusEvent, index: number) => {
+    const svgRect = document.getElementById(CIRCLE_CONTAINER_ID)?.getBoundingClientRect();
+
+    if (svgRect) {
+      // For mouse events, use cursor position
+      // For focus events, use element position
+      if ('clientX' in e) {
+        // Mouse event
+        setTooltipInfo({
+          index,
+          visible: true,
+          x: e.clientX,
+          y: e.clientY
+        });
+      } else {
+        // Focus event
+        const element = e.currentTarget;
+        const rect = element.getBoundingClientRect();
+
+        setTooltipInfo({
+          index,
+          visible: true,
+          x: rect.left + rect.width / 2,
+          y: rect.top
+        });
+      }
+    }
+  };
+
+  // Handle hiding tooltip
+  const handleHideTooltip = () => setTooltipInfo({ index: -1, visible: false });
   // Calculate the current angle
   // Is updated as we iterate through the arcs to keep track of the end point of the previous arc
   let currentAngle = 0;
@@ -138,7 +184,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
       return;
     }
 
-    const circleContainer = document.getElementById("circle-container");
+    const circleContainer = document.getElementById(CIRCLE_CONTAINER_ID);
     const currentRotation = parseFloat(
       circleContainer?.dataset.currentRotation || "0",
     );
@@ -185,27 +231,59 @@ const CategoryNavigation: FunctionComponent<Props> = ({
       <div
         className={cx(
           styles["category-navigation"],
-  styles["reveal-from-left"],
+          styles["reveal-from-left"],
         )}
         aria-label="Circle Navigation"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
+        {tooltipInfo.visible &&
+          tooltipInfo.x !== undefined &&
+          tooltipInfo.y !== undefined &&
+          // We create a portal to render to render the tooltip on the body
+          // We do this to avoid z-index and stacking context issues
+          // The tooltip position x and y values are set to the cursor position
+          createPortal(
+            <div
+              className={styles.tooltip}
+              style={{
+                position: "fixed", // Changed from absolute to fixed since we're in document.body
+                left: `${tooltipInfo.x}px`,
+                top: `${tooltipInfo.y}px`,
+                transform: "translate(-50%, -110%)" // Center horizontally and position above the point
+              }}
+              role="tooltip"
+            >
+              {(() => {
+                const categoryKey = Object.keys(arcs[tooltipInfo.index])[0];
+                return (
+                  <FormattedMessage
+                    id={`categories.${categoryKey}`}
+                  />
+                );
+              })()}
+            </div>,
+            document.body
+          )
+        }
+
         <svg
-          className={styles["circle-container"]}
-          id="circle-container"
-          data-current-rotation={rotationOffset}
+          id={CIRCLE_CONTAINER_ID}
+          className={styles[CIRCLE_CONTAINER_ID]}
           width={_size}
           height={_size}
           viewBox={`0 0 ${_size} ${_size}`}
           style={{
             transform: `rotate(${rotationOffset}deg)`,
+            transition: isRotating ? "none" : "transform 0.5s ease-out",
           }}
+          data-current-rotation={rotationOffset}
+          aria-hidden="true"
         >
           {/* Each category is an "arc", their share of space is proportional to the number of content they have
-          We use SVG to generate the arcs
-          */}
+            We use SVG to generate the arcs
+            */}
           {scaledArcs.map((arcAngle, index) => {
             const endAngle = currentAngle + arcAngle;
 
@@ -222,9 +300,9 @@ const CategoryNavigation: FunctionComponent<Props> = ({
             // Create arc path
             const largeArcFlag = arcAngle > 180 ? 1 : 0;
             const pathData = `
-              M ${x1} ${y1}
-              A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
-            `;
+M ${x1} ${y1}
+A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
+`;
 
             // Update start angle for next arc
             currentAngle = endAngle + SPACING;
@@ -250,9 +328,10 @@ const CategoryNavigation: FunctionComponent<Props> = ({
                   }
                 }}
                 onClick={() => setCurrentIndex(index)}
-                style={{
-                  outline: "none", // Remove default outline
-                }}
+                onMouseEnter={(e) => handleShowTooltip(e, index)}
+                onMouseLeave={handleHideTooltip}
+                onFocus={(e) => handleShowTooltip(e, index)}
+                onBlur={handleHideTooltip}
               >
                 <path
                   d={pathData}
