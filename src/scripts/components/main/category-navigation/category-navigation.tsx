@@ -77,8 +77,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   const _size = isMobile
     ? width + _overSize
     : // 50% of the screen width minues some padding
-      // But capped at the height of the screen minus some padding
-      Math.min(width / 2 - 65, height - 120);
+    // But capped at the height of the screen minus some padding
+    Math.min(width / 2 - 65, height - 120);
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
 
@@ -156,7 +156,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
         setTooltipInfo({
           index,
           visible: true,
-          x: rect.left + rect.width/2,
+          x: rect.left + rect.width / 2,
           y: rect.top
         });
       }
@@ -164,7 +164,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   };
 
   // Handle hiding tooltip
-  const handleHideTooltip = () => setTooltipInfo({  visible: false });
+  const handleHideTooltip = () => setTooltipInfo({ index: -1, visible: false });
   // Calculate the current angle
   // Is updated as we iterate through the arcs to keep track of the end point of the previous arc
   let currentAngle = 0;
@@ -238,111 +238,116 @@ const CategoryNavigation: FunctionComponent<Props> = ({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-          {tooltipInfo.visible &&
-            tooltipInfo.x !== undefined &&
-            tooltipInfo.y !== undefined &&
+        {tooltipInfo.visible &&
+          tooltipInfo.x !== undefined &&
+          tooltipInfo.y !== undefined &&
           // We create a portal to render to render the tooltip on the body
           // We do this to avoid z-index and stacking context issues
           // The tooltip position x and y values are set to the cursor position
-            createPortal(
-              <div
-                className={styles.tooltip}
-                style={{
-                  position: "fixed", // Changed from absolute to fixed since we're in document.body
-                  left: `${tooltipInfo.x}px`,
-                  top: `${tooltipInfo.y}px`,
-                  transform: "translate(-50%, -110%)" // Center horizontally and position above the point
-                }}
-                role="tooltip"
-              >
-                <FormattedMessage
-                  id={`categories.${Object.keys(arcs[tooltipInfo.index])[0]}`}
-                />
-              </div>,
-              document.body
-            )
-          }
+          createPortal(
+            <div
+              className={styles.tooltip}
+              style={{
+                position: "fixed", // Changed from absolute to fixed since we're in document.body
+                left: `${tooltipInfo.x}px`,
+                top: `${tooltipInfo.y}px`,
+                transform: "translate(-50%, -110%)" // Center horizontally and position above the point
+              }}
+              role="tooltip"
+            >
+              {(() => {
+                const categoryKey = Object.keys(arcs[tooltipInfo.index])[0];
+                return (
+                  <FormattedMessage
+                    id={`categories.${categoryKey}`}
+                  />
+                );
+              })()}
+            </div>,
+            document.body
+          )
+        }
 
-          <svg
-            id={ CIRCLE_CONTAINER_ID }
-            className={styles[CIRCLE_CONTAINER_ID]}
-            width={_size}
-            height={_size}
-            viewBox={`0 0 ${_size} ${_size}`}
-            style={{
-              transform: `rotate(${rotationOffset}deg)`,
-              transition: isRotating ? "none" : "transform 0.5s ease-out",
-            }}
-            data-current-rotation={rotationOffset}
-            aria-hidden="true"
-          >
-            {/* Each category is an "arc", their share of space is proportional to the number of content they have
+        <svg
+          id={CIRCLE_CONTAINER_ID}
+          className={styles[CIRCLE_CONTAINER_ID]}
+          width={_size}
+          height={_size}
+          viewBox={`0 0 ${_size} ${_size}`}
+          style={{
+            transform: `rotate(${rotationOffset}deg)`,
+            transition: isRotating ? "none" : "transform 0.5s ease-out",
+          }}
+          data-current-rotation={rotationOffset}
+          aria-hidden="true"
+        >
+          {/* Each category is an "arc", their share of space is proportional to the number of content they have
             We use SVG to generate the arcs
             */}
-            {scaledArcs.map((arcAngle, index) => {
-              const endAngle = currentAngle + arcAngle;
+          {scaledArcs.map((arcAngle, index) => {
+            const endAngle = currentAngle + arcAngle;
 
-              // Convert to radians
-              const startRad = (currentAngle * Math.PI) / 180;
-              const endRad = (endAngle * Math.PI) / 180;
+            // Convert to radians
+            const startRad = (currentAngle * Math.PI) / 180;
+            const endRad = (endAngle * Math.PI) / 180;
 
-              // Calculate arc points
-              const x1 = _center + _radius * Math.cos(startRad);
-              const y1 = _center + _radius * Math.sin(startRad);
-              const x2 = _center + _radius * Math.cos(endRad);
-              const y2 = _center + _radius * Math.sin(endRad);
+            // Calculate arc points
+            const x1 = _center + _radius * Math.cos(startRad);
+            const y1 = _center + _radius * Math.sin(startRad);
+            const x2 = _center + _radius * Math.cos(endRad);
+            const y2 = _center + _radius * Math.sin(endRad);
 
-              // Create arc path
-              const largeArcFlag = arcAngle > 180 ? 1 : 0;
-              const pathData = `
+            // Create arc path
+            const largeArcFlag = arcAngle > 180 ? 1 : 0;
+            const pathData = `
 M ${x1} ${y1}
 A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
 `;
 
-              // Update start angle for next arc
-              currentAngle = endAngle + SPACING;
+            // Update start angle for next arc
+            currentAngle = endAngle + SPACING;
 
-              const isCurrentlySelected = index === normalizedIndex;
+            const isCurrentlySelected = index === normalizedIndex;
 
-              const selectedColor = "var(--main)";
-              const defaultColor = "var( --dark-grey-5)";
+            const selectedColor = "var(--main)";
+            const defaultColor = "var( --dark-grey-5)";
 
-              return (
-                <g
-                  key={index}
-                  data-index={index}
-                  className={styles.arc}
-                  tabIndex={0}
-                  role="button"
-                  aria-label={`${Object.keys(arcs[index])[0]} category`}
-                  aria-selected={isCurrentlySelected}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      setCurrentIndex(index);
-                    }
-                  }}
-                  onClick={() => setCurrentIndex(index)}
-                  onMouseEnter={(e) => handleShowTooltip(e, index)}
-                  onMouseLeave={handleHideTooltip}
-                  onFocus={(e) => handleShowTooltip(e, index)}
-                  onBlur={handleHideTooltip}
-                >
-                  <path
-                    d={pathData}
-                    stroke={
-                      isCurrentlySelected && !isRotating
-                        ? selectedColor
-                        : defaultColor
-                    }
-                    strokeWidth={LINE_THICKNESS}
-                    strokeLinecap="round"
-                    fill="none"
-                  />
-                </g>
-              );
-            })}
-          </svg>
+            return (
+              <g
+                key={index}
+                data-index={index}
+                className={styles.arc}
+                tabIndex={0}
+                role="button"
+                aria-label={`${Object.keys(arcs[index])[0]} category`}
+                aria-selected={isCurrentlySelected}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setCurrentIndex(index);
+                  }
+                }}
+                onClick={() => setCurrentIndex(index)}
+                onMouseEnter={(e) => handleShowTooltip(e, index)}
+                onMouseLeave={handleHideTooltip}
+                onFocus={(e) => handleShowTooltip(e, index)}
+                onBlur={handleHideTooltip}
+              >
+                <path
+                  d={pathData}
+                  stroke={
+                    isCurrentlySelected && !isRotating
+                      ? selectedColor
+                      : defaultColor
+                  }
+                  strokeWidth={LINE_THICKNESS}
+                  strokeLinecap="round"
+                  fill="none"
+                />
+              </g>
+            );
+          })}
+        </svg>
       </div>
     </>
   );
