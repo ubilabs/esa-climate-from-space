@@ -13,6 +13,7 @@ import { setSelectedLayerIds } from "../reducers/layers";
 import { setFlyTo } from "../reducers/fly-to";
 import config from "../config/main";
 import { useScreenSize } from "./use-screen-size";
+import { setSelectedContentAction } from "../reducers/content";
 
 interface RouteParams {
   category: string | undefined;
@@ -86,6 +87,7 @@ export function useGlobeLocationState() {
       if (routeMatches.basePath) {
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
         dispatch(setFlyTo(null));
+        dispatch(setSelectedContentAction({contentId: null}));
         setShowContentList(false);
       }
       // Remove layer in NavContent mode when coming from the data page
