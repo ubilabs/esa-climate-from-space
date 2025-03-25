@@ -9,8 +9,17 @@ import { FormattedMessage } from "react-intl";
 import { createPortal } from "react-dom";
 import cx from "classnames";
 
+import {
+  categoryTags,
+} from "../../../config/main";
+
 import { setSelectedContentAction } from "../../../reducers/content";
-import { useCategoryTouchHandlers } from "./use-category-event-handlers";
+import { useParams } from "react-router-dom";
+import useAutoRotate from "../../../hooks/use-auto-content-rotation";
+import {
+  useCategoryScrollHandlers,
+  useCategoryTouchHandlers,
+} from "./use-category-event-handlers";
 
 import styles from "./category-navigation.module.css";
 
@@ -18,11 +27,13 @@ interface Props {
   isMobile: boolean;
   width: number;
   setCategory: React.Dispatch<React.SetStateAction<string | null>>;
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
   isAnimationReady: RefObject<boolean>;
   arcs: { [key: string]: number }[];
-  currentIndex: number;
   height: number;
+}
+
+interface RouteParams {
+  category: string | undefined;
 }
 
 // We reference the SVG container by its ID
@@ -45,12 +56,33 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   setCategory,
   arcs,
   isAnimationReady,
-  currentIndex,
-  setCurrentIndex,
 }) => {
+  const { category } = useParams<RouteParams>();
+  // Ref to store and control the auto-rotation interval
+  const [lastUserInteractionTime, setLastUserInteractionTime] = useState(
+    Date.now(),
+  );
+
   const dispatch = useDispatch();
-  const { isRotating, handleTouchStart, handleTouchMove, handleTouchEnd } =
-    useCategoryTouchHandlers(currentIndex, setCurrentIndex);
+
+  const categoryIndex = category ? categoryTags.indexOf(category) : -1;
+
+  const [currentIndex, setCurrentIndex] = useState(
+    categoryIndex !== -1 ? categoryIndex : 0,
+  );
+
+  useCategoryScrollHandlers(
+    currentIndex,
+    setCurrentIndex,
+    setLastUserInteractionTime,
+  );
+
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } =
+    useCategoryTouchHandlers(
+      currentIndex,
+      setCurrentIndex,
+      setLastUserInteractionTime,
+    );
 
   // State to control the tooltip visibility and position. The tooltip the currently hovered or focused category
   const [tooltipInfo, setTooltipInfo] = useState<{
@@ -75,8 +107,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   const _size = isMobile
     ? width + _overSize
     : // 50% of the screen width minues some padding
-      // But capped at the height of the screen minus some padding
-      Math.min(width / 2 - 65, height - 120);
+    // But capped at the height of the screen minus some padding
+    Math.min(width / 2 - 65, height - 120);
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
 
@@ -105,7 +137,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   // Calculate current and target rotation
   const currentRotation = parseFloat(
     document.getElementById(CIRCLE_CONTAINER_ID)?.dataset.currentRotation ||
-      "0",
+    "0",
   );
 
   // Calculate the target rotation to center the current arc
@@ -172,6 +204,14 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   // Calculate the current angle
   // Is updated as we iterate through the arcs to keep track of the end point of the previous arc
   let currentAngle = 0;
+
+  // Auto initialize auto-rotation on user inactivity
+  useAutoRotate({
+    lastUserInteractionTime,
+    setCurrentIndex,
+    itemsLength: arcs.length,
+    isAnimationReady,
+  });
 
   useEffect(() => {
     const [[category]] = Object.entries(arcs[normalizedIndex]);
@@ -275,7 +315,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
           viewBox={`0 0 ${_size} ${_size}`}
           style={{
             transform: `rotate(${rotationOffset}deg)`,
-            transition: isRotating ? "none" : "transform 0.5s ease-out",
+            transition: "transform 0.5s ease-out",
           }}
           data-current-rotation={rotationOffset}
           aria-hidden="true"
@@ -323,10 +363,14 @@ A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
+                    setLastUserInteractionTime(Date.now());
                     setCurrentIndex(index);
                   }
                 }}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => {
+                  setLastUserInteractionTime(Date.now());
+                  setCurrentIndex(index);
+                }}
                 onMouseEnter={(e) => handleShowTooltip(e, index)}
                 onMouseLeave={handleHideTooltip}
                 onFocus={(e) => handleShowTooltip(e, index)}
@@ -334,11 +378,7 @@ A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
               >
                 <path
                   d={pathData}
-                  stroke={
-                    isCurrentlySelected && !isRotating
-                      ? selectedColor
-                      : defaultColor
-                  }
+                  stroke={isCurrentlySelected ? selectedColor : defaultColor}
                   strokeWidth={LINE_THICKNESS}
                   strokeLinecap="round"
                   fill="none"

@@ -64,63 +64,6 @@
   }
 }
 
-/*. Clip the top 50% of the div on initial load (and keep it clipped)*/
-@keyframes revealFromRight {
-  from {
-    clip-path: inset(50% 0 0 100%);
-  }
-
-  to {
-    clip-path: inset(50% 0 0 0);
-  }
-}
-
-/* Desktop version of the animation */
-@media screen and (--desktop-viewport) {
-  @keyframes revealFromRight {
-    from {
-      clip-path: inset(0 0 0 100%);
-    }
-
-    to {
-      clip-path: inset(0 0 0 0);
-    }
-  }
-}
-
-@keyframes rotateBack {
-  from {
-    transform: rotate(10deg);
-  }
-
-  to {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes concealToRight {
-  from {
-    clip-path: inset(50% 0 0 0);
-  }
-
-  to {
-    clip-path: inset(50% 0 0 100%);
-  }
-}
-
-/* Desktop version of the conceal animation */
-@media screen and (--desktop-viewport) {
-  @keyframes concealToRight {
-    from {
-      clip-path: inset(0 0 0 0);
-    }
-
-    to {
-      clip-path: inset(0 0 0 100%);
-    }
-  }
-}
-
 @keyframes revealFromLeft {
   from {
     clip-path: inset(50% 100% 0 0);
@@ -217,13 +160,15 @@
   }
 }
 
-.arc:hover,
-.arc:focus {
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
-  outline: none;
-  transition: all 0.2s ease;
-
+.arc {
   >path {
-    transition: stroke 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: stroke 0.2s ease;
+  }
+
+  &:hover,
+  &:focus {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+    outline: none;
+    transition: all 0.2s ease;
   }
 }

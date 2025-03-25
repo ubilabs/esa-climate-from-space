@@ -10,7 +10,6 @@ import config, { categoryTags } from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
 
-import { useCategoryScrollHandlers } from "../category-navigation/use-category-event-handlers";
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { languageSelector } from "../../../selectors/language";
@@ -53,16 +52,6 @@ const DataViewer: FunctionComponent = () => {
   const { data: stories } = useGetStoryListQuery(language);
 
   const { data: layers } = useGetLayerListQuery(language);
-
-  const categoryIndex = category ? categoryTags.indexOf(category) : -1;
-  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(
-    categoryIndex !== -1 ? categoryIndex : 0,
-  );
-
-  const { handleScroll } = useCategoryScrollHandlers(
-    currentCategoryIndex,
-    setCurrentCategoryIndex,
-  );
 
   const contents = useMemo(() => [
     ...(stories?.filter(
@@ -124,7 +113,6 @@ const DataViewer: FunctionComponent = () => {
     // This is the header area
     <div
       className={styles.dataViewer}
-      onWheel={handleScroll}
       data-nav-content={mode}
     >
       {/* This is the main area
@@ -153,8 +141,6 @@ const DataViewer: FunctionComponent = () => {
           </header>
           {!showContentList ? (
             <CategoryNavigation
-              currentIndex={currentCategoryIndex}
-              setCurrentIndex={setCurrentCategoryIndex}
               arcs={arcs}
               width={screenWidth}
               height={screenHeight}

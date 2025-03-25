@@ -23,6 +23,7 @@ export const useContentTouchHandlers = (
   currentIndex: number,
   setCurrentIndex: Dispatch<SetStateAction<number>>,
   entryCount: number, // Ensures we stay within bounds
+  setLastUserInteractionTime: Dispatch<SetStateAction<number>>,
 ) => {
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
   // Save the current index value in a ref to prevent it from resetting
@@ -59,6 +60,7 @@ export const useContentTouchHandlers = (
       // Also update our ref
       currentIndexRef.current = newIndex;
       setTouchStartY(e.touches[0].clientY); // Reset for smooth transition
+      setLastUserInteractionTime(Date.now());
     }
   };
 
@@ -75,10 +77,11 @@ export const useContentTouchHandlers = (
 export const useContentScrollHandlers = (
   setCurrentIndex: Dispatch<SetStateAction<number>>,
   entryCount: number, // Total number of items
+  setLastUserInteractionTime: Dispatch<SetStateAction<number>>,
 ) => {
   const isScrollingRef = useRef(false);
 
-    const { maxIndex, minIndex } = calculateNavigationBounds(entryCount);
+  const { maxIndex, minIndex } = calculateNavigationBounds(entryCount);
 
   const handleWheel = useCallback(
     (e: React.WheelEvent) => {
@@ -93,10 +96,11 @@ export const useContentScrollHandlers = (
 
       setCurrentIndex((prevIndex) => {
         const newIndex = prevIndex + direction;
+        setLastUserInteractionTime(Date.now());
         return Math.max(minIndex, Math.min(newIndex, maxIndex)); // Keep within bounds
       });
     },
-    [setCurrentIndex, minIndex, maxIndex],
+    [setCurrentIndex, minIndex, maxIndex, setLastUserInteractionTime]
   );
 
   return {
