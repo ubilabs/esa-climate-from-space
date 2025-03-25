@@ -1,3 +1,31 @@
+.tooltip {
+  position: absolute;
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: NotesEsa;
+  pointer-events: none;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  border: 1px solid var(--main);
+  font-size: 1rem;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--main) transparent transparent transparent;
+  }
+}
+
 .category-navigation {
   grid-area: globe-nav-area;
   z-index: 2;
@@ -20,7 +48,6 @@
     animation: revealFromLeft 0.5s linear forwards;
     animation-delay: 0.5s;
   }
-
 
   @media screen and (--desktop-viewport) {
     place-self: center center;
@@ -190,6 +217,7 @@
   }
 }
 
+.arc:hover,
 .arc:focus {
   filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
   outline: none;
