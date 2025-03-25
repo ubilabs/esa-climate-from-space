@@ -21,14 +21,12 @@ const contentSlice = createSlice({
         category?: string | null;
       }>,
     ) => {
-      if (action.payload.contentId !== undefined) {
-        state.contentId = action.payload.contentId ?? state.contentId;
-      }
-      if (action.payload.category !== undefined) {
-        state.category = action.payload.category ?? state.category;
-      }
+      return {
+        ...state,
+        ...action.payload,
+      };
     },
-  },
+},
 });
 
 export const { setSelectedContentAction } = contentSlice.actions;
