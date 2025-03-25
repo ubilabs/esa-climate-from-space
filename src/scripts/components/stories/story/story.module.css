@@ -1,13 +1,7 @@
 .story {
-  grid-area: header / content / content / content;
   display: flex;
   flex-direction: column;
-  height: 100%;
-
-  @media(--mobile-viewport) {
-    margin-top: var(--header-height);
-    height: calc(100% - var(--header-height))
-  }
+  height: calc(100vh - var(--header-height));
 }
 
 .main {
@@ -41,7 +35,7 @@
   }
 
   .main> :last-child {
-    height: 350px;
+    min-height: 350px;
   }
 
   .main>* {
