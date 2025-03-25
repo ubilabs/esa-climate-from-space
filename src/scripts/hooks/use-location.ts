@@ -38,6 +38,7 @@ export function useGlobeLocationState() {
   const [showContentList, setShowContentList] = useState<boolean>(
     Boolean(category),
   );
+  const [showDataSet, setShowDataSet] = useState<boolean>(false);
 
   const history = useHistory();
   const location = useLocation();
@@ -72,11 +73,13 @@ export function useGlobeLocationState() {
    * Process pathname change, log route information, and update state
    */
   const handlePathnameChange = useCallback(
-    (pathname: string, isFirstRender = false, isMobile: boolean ) => {
+    (pathname: string, isFirstRender = false, isMobile: boolean) => {
       // Only process if the pathname has actually changed or it's the first render
       if (pathname === previousPathnameRef.current && !isFirstRender) {
         return;
       }
+
+      setShowDataSet(false);
 
       // Get and log all route matches
       const routeMatches = getRouteMatches(pathname);
@@ -104,15 +107,19 @@ export function useGlobeLocationState() {
         }
       }
 
-      if (routeMatches.dataPath && !isMobile) {
-        // As we use the CSS scale to increase the size of the canvas to make appear the globe bigger
-        // If we don't want to re-mount the globe component AND keep the canvas size across the entire screen, what we do here is zoom out to make the globe appear smaller
-        dispatch(
-          setFlyTo({
-            ...config.globe.view,
-            altitude: config.globe.view.altitude * 2,
-          }),
-        );
+      if (routeMatches.dataPath) {
+        setShowDataSet(true);
+
+        if (!isMobile) {
+          // As we use the CSS scale to increase the size of the canvas to make appear the globe bigger
+          // If we don't want to re-mount the globe component AND keep the canvas size across the entire screen, what we do here is zoom out to make the globe appear smaller
+          dispatch(
+            setFlyTo({
+              ...config.globe.view,
+              altitude: config.globe.view.altitude * 2,
+            }),
+          );
+        }
       }
       // Store the current pathname for next comparison
       previousPathnameRef.current = pathname;
@@ -135,5 +142,5 @@ export function useGlobeLocationState() {
     handlePathnameChange(location.pathname, true, isMobile);
   }, [location.pathname, handlePathnameChange, isMobile]);
 
-  return { showContentList };
+  return { showContentList, showDataSet };
 }

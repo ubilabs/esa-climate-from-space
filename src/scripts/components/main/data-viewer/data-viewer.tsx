@@ -25,15 +25,11 @@ import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
 import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation from "../category-navigation/category-navigation";
+import GlobeNavigation from "../globe-navigation/globe-navigation";
 
 import { useContentParams } from "../../../hooks/use-content-params";
 
 import styles from "./data-viewer.module.css";
-
-interface Props {
-  hideNavigation?: boolean;
-  showCategories?: boolean;
-}
 
 interface RouteParams {
   category: string | undefined;
@@ -49,13 +45,9 @@ export type LayerLoadingStateChangeHandle = (
  *
  * @param {Object} props - The component props.
  * @param {string} props.backgroundColor - The background color for the globe.
- * @param {boolean} [props.hideNavigation] - Flag to hide navigation elements.
  * @returns {JSX.Element} The rendered DataViewer component.
  */
-const DataViewer: FunctionComponent<Props> = ({
-  hideNavigation,
-  showCategories,
-}) => {
+const DataViewer: FunctionComponent = () => {
   const { category } = useParams<RouteParams>();
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoryListQuery(language);
@@ -93,7 +85,7 @@ const DataViewer: FunctionComponent<Props> = ({
   const { isNavigation, mode } = useContentParams();
 
   // We need to reset the globe view every time the user navigates back from the the /data page
-  const { showContentList } = useGlobeLocationState();
+  const { showContentList, showDataSet } = useGlobeLocationState();
 
   // There is a set of animations which should be played only once
   // This keeps track of that
@@ -142,31 +134,28 @@ const DataViewer: FunctionComponent<Props> = ({
       */}
       {isNavigation && (
         <>
-          {showCategories && (
-            <header className={styles.heading}>
-              {showContentList ? (
-                <Button
-                  label={
-                    !isMobile
-                      ? "back_to_overview"
-                      : `categories.${currentCategory}`
-                  }
-                  link={"/"}
-                  className={styles.backButton}
-                ></Button>
-              ) : (
-                <span className={styles.chooseHeading}>
-                  <FormattedMessage id="category.choose" />
-                </span>
-              )}
-            </header>
-          )}
-          {!showContentList && showCategories ? (
+          <header className={styles.heading}>
+            {showContentList ? (
+              <Button
+                label={
+                  !isMobile
+                    ? "back_to_overview"
+                    : `categories.${currentCategory}`
+                }
+                link={"/"}
+                className={styles.backButton}
+              ></Button>
+            ) : (
+              <span className={styles.chooseHeading}>
+                <FormattedMessage id="category.choose" />
+              </span>
+            )}
+          </header>
+          {!showContentList ? (
             <CategoryNavigation
               currentIndex={currentCategoryIndex}
               setCurrentIndex={setCurrentCategoryIndex}
               arcs={arcs}
-              showCategories={!showContentList}
               width={screenWidth}
               height={screenHeight}
               isMobile={isMobile}
@@ -183,7 +172,7 @@ const DataViewer: FunctionComponent<Props> = ({
             />
           )}
 
-          {!showContentList && showCategories ? (
+          {!showContentList ? (
             <>
               <Button
                 className={cx(
@@ -197,20 +186,15 @@ const DataViewer: FunctionComponent<Props> = ({
               ></Button>
             </>
           ) : null}
-          {!showContentList &&
-            showCategories &&
-            !hasAnimationPlayed.current && (
-              <span
-                aria-hidden="true"
-                className={cx(
-                  styles.swipeIndicator,
-                  !isMobile && styles.scroll,
-                )}
-                data-content={intl.formatMessage({
-                  id: `category.${isMobile ? "swipe" : "scroll"}`,
-                })}
-              ></span>
-            )}
+          {!showContentList && !hasAnimationPlayed.current && (
+            <span
+              aria-hidden="true"
+              className={cx(styles.swipeIndicator, !isMobile && styles.scroll)}
+              data-content={intl.formatMessage({
+                id: `category.${isMobile ? "swipe" : "scroll"}`,
+              })}
+            ></span>
+          )}
           {showContentList && !isMobile && (
             <span className={styles.currentCategory}>
               <FormattedMessage id={`categories.${currentCategory}`} />
@@ -221,16 +205,16 @@ const DataViewer: FunctionComponent<Props> = ({
       <div
         id="globeWrapper"
         className={cx(
-          showCategories && styles.globeWrapper,
+          styles.globeWrapper,
           showContentList && styles.showContentList,
         )}
       >
         <GetDataWidget
-          hideNavigation={Boolean(hideNavigation)}
-          showClouds={showCategories && !showContentList}
+          showClouds={!showContentList}
           className={cx(styles.globe)}
         />
       </div>
+      {showDataSet && <GlobeNavigation />}
     </div>
   );
 };
