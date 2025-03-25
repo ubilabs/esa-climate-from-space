@@ -24,6 +24,7 @@ import { StoryListItem } from "../../../types/story-list";
 import { GalleryItemType } from "../../../types/gallery-item";
 import { Story } from "../../../types/story";
 
+import useAutoRotate from "../../../hooks/use-auto-content-rotation";
 import {
   useContentScrollHandlers,
   useContentTouchHandlers,
@@ -69,15 +70,22 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const [currentIndex, setCurrentIndex] = useState<number>(validInitialIndex);
 
+  // Ref to store and control the auto-rotation interval
+  const [lastUserInteractionTime, setLastUserInteractionTime] = useState(
+    Date.now(),
+  );
+
   const { handleTouchEnd, handleTouchMove } = useContentTouchHandlers(
     currentIndex,
     setCurrentIndex,
     contents.length,
+    setLastUserInteractionTime,
   );
 
   const { handleWheel } = useContentScrollHandlers(
     setCurrentIndex,
     contents.length,
+    setLastUserInteractionTime,
   );
 
   // The spread between the elements in the circle
@@ -122,9 +130,14 @@ const ContentNavigation: FunctionComponent<Props> = ({
     }
   }, [currentIndex, showContentList, contents.length, isMobile]);
 
-  // This triggers two side effects:
-  // 1. It always dispatches the selected content id to the store
-  // 2. Toggles the layer id if the content is a data layer
+
+  // Auto initialize auto-rotation on user inactivity
+  useAutoRotate({
+    lastUserInteractionTime,
+    setCurrentIndex,
+    itemsLength: contents.length,
+  });
+
   useEffect(() => {
     const id = contents[currentIndex]?.id;
 

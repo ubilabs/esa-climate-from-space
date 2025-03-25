@@ -3,7 +3,6 @@ import React, {
   RefObject,
   useEffect,
   useState,
-  useRef,
 } from "react";
 import { useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
@@ -11,13 +10,12 @@ import { createPortal } from "react-dom";
 import cx from "classnames";
 
 import {
-  AUTO_ROTATE_INTERVAL,
   categoryTags,
-  USER_INACTIVITY_TIMEOUT,
 } from "../../../config/main";
 
 import { setSelectedContentAction } from "../../../reducers/content";
 import { useParams } from "react-router-dom";
+import useAutoRotate from "../../../hooks/use-auto-content-rotation";
 import {
   useCategoryScrollHandlers,
   useCategoryTouchHandlers,
@@ -61,7 +59,6 @@ const CategoryNavigation: FunctionComponent<Props> = ({
 }) => {
   const { category } = useParams<RouteParams>();
   // Ref to store and control the auto-rotation interval
-  const autoRotateIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const [lastUserInteractionTime, setLastUserInteractionTime] = useState(
     Date.now(),
   );
@@ -110,8 +107,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   const _size = isMobile
     ? width + _overSize
     : // 50% of the screen width minues some padding
-      // But capped at the height of the screen minus some padding
-      Math.min(width / 2 - 65, height - 120);
+    // But capped at the height of the screen minus some padding
+    Math.min(width / 2 - 65, height - 120);
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
 
@@ -140,7 +137,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   // Calculate current and target rotation
   const currentRotation = parseFloat(
     document.getElementById(CIRCLE_CONTAINER_ID)?.dataset.currentRotation ||
-      "0",
+    "0",
   );
 
   // Calculate the target rotation to center the current arc
@@ -208,6 +205,14 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   // Is updated as we iterate through the arcs to keep track of the end point of the previous arc
   let currentAngle = 0;
 
+  // Auto initialize auto-rotation on user inactivity
+  useAutoRotate({
+    lastUserInteractionTime,
+    setCurrentIndex,
+    itemsLength: arcs.length,
+    isAnimationReady,
+  });
+
   useEffect(() => {
     const [[category]] = Object.entries(arcs[normalizedIndex]);
 
@@ -239,52 +244,6 @@ const CategoryNavigation: FunctionComponent<Props> = ({
       isAnimationReady.current = true;
     }, 2800);
   }, [isAnimationReady]);
-
-  // Check if enough time has passed since last user interaction to start auto-rotation
-  const [shouldAutoRotate, setShouldAutoRotate] = useState(false);
-
-  // Check inactivity time and update shouldAutoRotate state
-  useEffect(() => {
-    // Set a timeout to enable auto-rotation after USER_INACTIVITY_TIMEOUT
-    const inactivityTimeout = setTimeout(() => {
-      setShouldAutoRotate(true);
-    }, USER_INACTIVITY_TIMEOUT);
-
-    // Clear the timeout if there's a new user interaction
-    return () => {
-      clearTimeout(inactivityTimeout);
-      setShouldAutoRotate(false);
-    };
-  }, [lastUserInteractionTime]);
-
-  // Automatically change category every AUTO_ROTATE_INTERVAL, but only after user inactivity period
-  useEffect(() => {
-    // Only start auto-rotation when animation is ready and enough time has passed since last interaction
-    if (isAnimationReady.current && shouldAutoRotate) {
-      // Clear any existing interval to avoid multiple intervals running concurrently
-      if (autoRotateIntervalRef.current) {
-        clearInterval(autoRotateIntervalRef.current);
-      }
-
-      // Set up a new interval to rotate categories
-      autoRotateIntervalRef.current = setInterval(() => {
-        // Move to next category
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % arcs.length);
-      }, AUTO_ROTATE_INTERVAL);
-    } else if (!shouldAutoRotate && autoRotateIntervalRef.current) {
-      // If we shouldn't auto-rotate (recent user interaction), clear the interval
-      clearInterval(autoRotateIntervalRef.current);
-      autoRotateIntervalRef.current = null;
-    }
-
-    // Clean up the interval when the component unmounts or dependencies change
-    return () => {
-      if (autoRotateIntervalRef.current) {
-        clearInterval(autoRotateIntervalRef.current);
-        autoRotateIntervalRef.current = null;
-      }
-    };
-  }, [isAnimationReady, shouldAutoRotate, arcs.length, setCurrentIndex]);
 
   return (
     <>
