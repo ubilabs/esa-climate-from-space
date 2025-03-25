@@ -37,18 +37,15 @@ import { Layer } from "../../../types/layer";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
 import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
-import GlobeNavigation from "../globe-navigation/globe-navigation";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 
 interface Props {
-  hideNavigation: boolean;
   showClouds?: boolean;
   className?: string;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
-  hideNavigation,
   showClouds,
   className,
 }) => {
@@ -98,15 +95,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
       [dispatch],
     );
 
-  // Only show the globe navigation when a globe is shown.
-  // Either when no data layer is selected and only basemap is shown
-  // or when one of the selected layers is a globe. Do not show globe navigation
-  // when the only visible layer is of type "gallery"
-  const showGlobeNavigation =
-    (!mainLayerDetails && !compareLayerDetails) ||
-    [mainLayerDetails, compareLayerDetails].some(
-      (layer) => layer && layer.type !== LayerType.Gallery,
-    );
   const selectedContentId = useSelector(contentSelector).contentId;
 
   const contentMarker = useContentMarker(selectedContentId, language);
@@ -239,7 +227,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
           active: !isMainActive,
           action: () => setIsMainActive(false),
         })}
-      {!hideNavigation && showGlobeNavigation && <GlobeNavigation />}{" "}
     </>
   );
 };

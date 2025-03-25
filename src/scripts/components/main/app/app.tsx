@@ -77,7 +77,7 @@ const TranslatedApp: FunctionComponent = () => {
           does not interfere with other parameters */}
           <Route path={["/", "/:category", "/:category/data"]} exact>
             <Navigation />
-            <DataViewer hideNavigation={true} showCategories={true} />
+            <DataViewer />
             {legend && <DataSetInfo />}
             {time_slider && <TimeSlider />}
             <LayerSelector />
