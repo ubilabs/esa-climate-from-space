@@ -2,9 +2,7 @@ import React, {
   FunctionComponent,
   RefObject,
   useEffect,
-  useState,
 } from "react";
-import { useHistory } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
@@ -47,7 +45,6 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   currentIndex,
   setCurrentIndex,
 }) => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const { isRotating, handleTouchStart, handleTouchMove, handleTouchEnd } =
     useCategoryTouchHandlers(currentIndex, setCurrentIndex);
@@ -70,30 +67,6 @@ const CategoryNavigation: FunctionComponent<Props> = ({
       Math.min(width / 2 - 65, height - 120);
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
-
-  // The current navigation state relative to the category-navigation
-  const [navigationState, setNavigationState] = useState<
-    "forward" | "back" | "none"
-  >("none");
-
-  // Listen to history changes
-  // This is used to determine the navigation state
-  // As the user navigates through the app, we need to trigger different animations
-  history.listen((location, action) => {
-    if (action === "REPLACE") {
-      setNavigationState("none");
-    }
-
-    if (action === "PUSH" || action === "POP") {
-      if (location.pathname === "/") {
-        setNavigationState("back");
-      } else {
-        setNavigationState("forward");
-      }
-    }
-  });
-
-  // Handle scroll events
 
   // Calculate proportional distribution
   // There are 360 degrees in a circle and we need to distribute the arcs proportionally
@@ -212,12 +185,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
       <div
         className={cx(
           styles["category-navigation"],
-          // Apply different classes based on the navigation state
-          // And whether the user has come the content- or category-navigation
-          navigationState === "none" && styles["reveal-from-left"],
-          navigationState === "none" && !showCategories && styles.concealed,
-          navigationState === "back" && styles["reveal-from-right"],
-          navigationState === "forward" && styles.conceal,
+  styles["reveal-from-left"],
         )}
         aria-label="Circle Navigation"
         onTouchStart={handleTouchStart}
@@ -276,14 +244,14 @@ const CategoryNavigation: FunctionComponent<Props> = ({
                 aria-label={`${Object.keys(arcs[index])[0]} category`}
                 aria-selected={isCurrentlySelected}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
+                  if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
                     setCurrentIndex(index);
                   }
                 }}
                 onClick={() => setCurrentIndex(index)}
                 style={{
-                  outline: 'none', // Remove default outline
+                  outline: "none", // Remove default outline
                 }}
               >
                 <path

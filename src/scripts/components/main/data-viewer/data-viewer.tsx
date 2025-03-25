@@ -102,26 +102,27 @@ const DataViewer: FunctionComponent<Props> = ({
     localStorage.getItem(config.localStorageHasUserInteractedKey) === "true",
   );
 
+  const allCategories = useMemo(() =>
+    stories
+      ?.flatMap(({ categories }) => categories)
+      .concat(layers?.flatMap(({ categories }) => categories) ?? [])
+      .filter(Boolean),
+    [stories, layers]
+  );
 
-
-  const allCategories = stories
-    ?.flatMap(({ categories }) => categories)
-    .concat(layers?.flatMap(({ categories }) => categories) ?? [])
-    .filter(Boolean);
-
-  const uniqueTags = categoryTags;
 
   // create a list of all tags with their number of occurrences in the stories
   // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
   const arcs = useMemo(
     () =>
-      uniqueTags.map((tag) => {
+      categoryTags.map((tag) => {
         const tags = allCategories ? allCategories : [];
         const count = tags.filter((t) => t === tag).length;
         return { [tag]: count };
       }),
-    [uniqueTags, allCategories],
+    [allCategories],
   );
+
   if (!stories || !layers || !arcs || !contents) {
     return null;
   }
