@@ -6,14 +6,18 @@
   background-color: #000;
 }
 .layerDetails {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  position: relative;
+  height: inherit;
   padding: inherit;
+  pointer-events: none;
 }
+
+.layerDetails > * {
+  pointer-events: all;
+}
+
 .storySlider {
-  position: unset;
+  position: absolute;
   padding: 2.5em 0;
   background: none;
 }
@@ -25,12 +29,10 @@
   .layerDetails {
     height: inherit;
     background: none;
-    pointer-events: none;
   }
   .layerDetails > * {
     position: relative;
     z-index: 1;
-    pointer-events: all;
   }
   .storySlider {
     position: absolute;
