@@ -1,4 +1,10 @@
-import React, { FunctionComponent, RefObject, useEffect } from "react";
+import React, {
+  FunctionComponent,
+  RefObject,
+  useEffect,
+  useState,
+} from "react";
+import { useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { createPortal } from "react-dom";
 import cx from "classnames";
