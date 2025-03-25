@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  RefObject,
-  useEffect,
-  useState,
-} from "react";
-import { useDispatch } from "react-redux";
+import React, { FunctionComponent, RefObject, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { createPortal } from "react-dom";
 import cx from "classnames";
@@ -15,7 +9,6 @@ import { useCategoryTouchHandlers } from "./use-category-event-handlers";
 import styles from "./category-navigation.module.css";
 
 interface Props {
-  showCategories: boolean;
   isMobile: boolean;
   width: number;
   setCategory: React.Dispatch<React.SetStateAction<string | null>>;
@@ -44,7 +37,6 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   width,
   isMobile,
   setCategory,
-  showCategories,
   arcs,
   isAnimationReady,
   currentIndex,
@@ -77,8 +69,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   const _size = isMobile
     ? width + _overSize
     : // 50% of the screen width minues some padding
-    // But capped at the height of the screen minus some padding
-    Math.min(width / 2 - 65, height - 120);
+      // But capped at the height of the screen minus some padding
+      Math.min(width / 2 - 65, height - 120);
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
 
@@ -106,7 +98,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
 
   // Calculate current and target rotation
   const currentRotation = parseFloat(
-    document.getElementById(CIRCLE_CONTAINER_ID)?.dataset.currentRotation || "0",
+    document.getElementById(CIRCLE_CONTAINER_ID)?.dataset.currentRotation ||
+      "0",
   );
 
   // Calculate the target rotation to center the current arc
@@ -134,19 +127,24 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   const rotationOffset = getShortestRotation(currentRotation, targetRotation);
 
   // Handle showing tooltip for both mouse events and keyboard focus
-  const handleShowTooltip = (e: React.MouseEvent | React.FocusEvent, index: number) => {
-    const svgRect = document.getElementById(CIRCLE_CONTAINER_ID)?.getBoundingClientRect();
+  const handleShowTooltip = (
+    e: React.MouseEvent | React.FocusEvent,
+    index: number,
+  ) => {
+    const svgRect = document
+      .getElementById(CIRCLE_CONTAINER_ID)
+      ?.getBoundingClientRect();
 
     if (svgRect) {
       // For mouse events, use cursor position
       // For focus events, use element position
-      if ('clientX' in e) {
+      if ("clientX" in e) {
         // Mouse event
         setTooltipInfo({
           index,
           visible: true,
           x: e.clientX,
-          y: e.clientY
+          y: e.clientY,
         });
       } else {
         // Focus event
@@ -157,7 +155,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
           index,
           visible: true,
           x: rect.left + rect.width / 2,
-          y: rect.top
+          y: rect.top,
         });
       }
     }
@@ -211,7 +209,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
               key={category}
               className={cx(
                 styles.category,
-                index === normalizedIndex && showCategories && styles.active,
+                index === normalizedIndex && styles.active,
               )}
             >
               <FormattedMessage id={`categories.${category}`} />
@@ -251,22 +249,17 @@ const CategoryNavigation: FunctionComponent<Props> = ({
                 position: "fixed", // Changed from absolute to fixed since we're in document.body
                 left: `${tooltipInfo.x}px`,
                 top: `${tooltipInfo.y}px`,
-                transform: "translate(-50%, -110%)" // Center horizontally and position above the point
+                transform: "translate(-50%, -110%)", // Center horizontally and position above the point
               }}
               role="tooltip"
             >
               {(() => {
                 const categoryKey = Object.keys(arcs[tooltipInfo.index])[0];
-                return (
-                  <FormattedMessage
-                    id={`categories.${categoryKey}`}
-                  />
-                );
+                return <FormattedMessage id={`categories.${categoryKey}`} />;
               })()}
             </div>,
-            document.body
-          )
-        }
+            document.body,
+          )}
 
         <svg
           id={CIRCLE_CONTAINER_ID}
