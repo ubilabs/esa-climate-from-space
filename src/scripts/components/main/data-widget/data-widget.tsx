@@ -28,6 +28,7 @@ import { State } from "../../../reducers";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
+import { useGlobeLocationState } from "../../../hooks/use-location";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
@@ -99,6 +100,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const contentMarker = useContentMarker(selectedContentId, language);
 
+  const { showContentList } = useGlobeLocationState();
+
   const getDataWidget = ({
     imageLayer,
     layerDetails,
@@ -115,10 +118,10 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     }
     return (
       <Globe
-        {...(contentMarker &&
-          {
-          markers: [contentMarker],
-        })}
+        {...(showContentList &&
+          contentMarker && {
+            markers: [contentMarker],
+          })}
         backgroundColor={""}
         active={active}
         view={currentView}
