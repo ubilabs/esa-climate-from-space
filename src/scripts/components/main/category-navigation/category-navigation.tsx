@@ -3,14 +3,25 @@ import React, {
   RefObject,
   useEffect,
   useState,
+  useRef,
 } from "react";
 import { useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { createPortal } from "react-dom";
 import cx from "classnames";
 
+import {
+  AUTO_ROTATE_INTERVAL,
+  categoryTags,
+  USER_INACTIVITY_TIMEOUT,
+} from "../../../config/main";
+
 import { setSelectedContentAction } from "../../../reducers/content";
-import { useCategoryTouchHandlers } from "./use-category-event-handlers";
+import { useParams } from "react-router-dom";
+import {
+  useCategoryScrollHandlers,
+  useCategoryTouchHandlers,
+} from "./use-category-event-handlers";
 
 import styles from "./category-navigation.module.css";
 
@@ -18,11 +29,13 @@ interface Props {
   isMobile: boolean;
   width: number;
   setCategory: React.Dispatch<React.SetStateAction<string | null>>;
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
   isAnimationReady: RefObject<boolean>;
   arcs: { [key: string]: number }[];
-  currentIndex: number;
   height: number;
+}
+
+interface RouteParams {
+  category: string | undefined;
 }
 
 // We reference the SVG container by its ID
@@ -45,12 +58,34 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   setCategory,
   arcs,
   isAnimationReady,
-  currentIndex,
-  setCurrentIndex,
 }) => {
+  const { category } = useParams<RouteParams>();
+  // Ref to store and control the auto-rotation interval
+  const autoRotateIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [lastUserInteractionTime, setLastUserInteractionTime] = useState(
+    Date.now(),
+  );
+
   const dispatch = useDispatch();
-  const { isRotating, handleTouchStart, handleTouchMove, handleTouchEnd } =
-    useCategoryTouchHandlers(currentIndex, setCurrentIndex);
+
+  const categoryIndex = category ? categoryTags.indexOf(category) : -1;
+
+  const [currentIndex, setCurrentIndex] = useState(
+    categoryIndex !== -1 ? categoryIndex : 0,
+  );
+
+  useCategoryScrollHandlers(
+    currentIndex,
+    setCurrentIndex,
+    setLastUserInteractionTime,
+  );
+
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } =
+    useCategoryTouchHandlers(
+      currentIndex,
+      setCurrentIndex,
+      setLastUserInteractionTime,
+    );
 
   // State to control the tooltip visibility and position. The tooltip the currently hovered or focused category
   const [tooltipInfo, setTooltipInfo] = useState<{
@@ -205,6 +240,52 @@ const CategoryNavigation: FunctionComponent<Props> = ({
     }, 2800);
   }, [isAnimationReady]);
 
+  // Check if enough time has passed since last user interaction to start auto-rotation
+  const [shouldAutoRotate, setShouldAutoRotate] = useState(false);
+
+  // Check inactivity time and update shouldAutoRotate state
+  useEffect(() => {
+    // Set a timeout to enable auto-rotation after USER_INACTIVITY_TIMEOUT
+    const inactivityTimeout = setTimeout(() => {
+      setShouldAutoRotate(true);
+    }, USER_INACTIVITY_TIMEOUT);
+
+    // Clear the timeout if there's a new user interaction
+    return () => {
+      clearTimeout(inactivityTimeout);
+      setShouldAutoRotate(false);
+    };
+  }, [lastUserInteractionTime]);
+
+  // Automatically change category every AUTO_ROTATE_INTERVAL, but only after user inactivity period
+  useEffect(() => {
+    // Only start auto-rotation when animation is ready and enough time has passed since last interaction
+    if (isAnimationReady.current && shouldAutoRotate) {
+      // Clear any existing interval to avoid multiple intervals running concurrently
+      if (autoRotateIntervalRef.current) {
+        clearInterval(autoRotateIntervalRef.current);
+      }
+
+      // Set up a new interval to rotate categories
+      autoRotateIntervalRef.current = setInterval(() => {
+        // Move to next category
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % arcs.length);
+      }, AUTO_ROTATE_INTERVAL);
+    } else if (!shouldAutoRotate && autoRotateIntervalRef.current) {
+      // If we shouldn't auto-rotate (recent user interaction), clear the interval
+      clearInterval(autoRotateIntervalRef.current);
+      autoRotateIntervalRef.current = null;
+    }
+
+    // Clean up the interval when the component unmounts or dependencies change
+    return () => {
+      if (autoRotateIntervalRef.current) {
+        clearInterval(autoRotateIntervalRef.current);
+        autoRotateIntervalRef.current = null;
+      }
+    };
+  }, [isAnimationReady, shouldAutoRotate, arcs.length, setCurrentIndex]);
+
   return (
     <>
       <nav className={styles.chosenCategory}>
@@ -275,7 +356,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
           viewBox={`0 0 ${_size} ${_size}`}
           style={{
             transform: `rotate(${rotationOffset}deg)`,
-            transition: isRotating ? "none" : "transform 0.5s ease-out",
+            transition: "transform 0.5s ease-out",
           }}
           data-current-rotation={rotationOffset}
           aria-hidden="true"
@@ -323,10 +404,14 @@ A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
+                    setLastUserInteractionTime(Date.now());
                     setCurrentIndex(index);
                   }
                 }}
-                onClick={() => setCurrentIndex(index)}
+                onClick={() => {
+                  setLastUserInteractionTime(Date.now());
+                  setCurrentIndex(index);
+                }}
                 onMouseEnter={(e) => handleShowTooltip(e, index)}
                 onMouseLeave={handleHideTooltip}
                 onFocus={(e) => handleShowTooltip(e, index)}
@@ -334,11 +419,7 @@ A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
               >
                 <path
                   d={pathData}
-                  stroke={
-                    isCurrentlySelected && !isRotating
-                      ? selectedColor
-                      : defaultColor
-                  }
+                  stroke={isCurrentlySelected ? selectedColor : defaultColor}
                   strokeWidth={LINE_THICKNESS}
                   strokeLinecap="round"
                   fill="none"

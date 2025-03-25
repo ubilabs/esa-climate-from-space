@@ -5,6 +5,10 @@ import { UiEmbedElement } from "../types/embed-elements";
 import { GlobeProjection } from "../types/globe-projection";
 import { GlobeState } from "../reducers/globe/globe-state";
 
+// Constants for auto-rotation timing
+export const AUTO_ROTATE_INTERVAL = 5000; // Time between auto-rotations in milliseconds
+export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interaction before restarting auto-rotation
+
 // The order of these is important for the stories menu
 export const categoryTags = [
   "welcome",
