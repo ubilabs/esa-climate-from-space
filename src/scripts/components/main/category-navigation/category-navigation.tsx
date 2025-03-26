@@ -368,8 +368,10 @@ A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
                   }
                 }}
                 onClick={() => {
-                  setLastUserInteractionTime(Date.now());
-                  setCurrentIndex(index);
+                  if (!isMobile) {
+                    setLastUserInteractionTime(Date.now());
+                    setCurrentIndex(index);
+                  }
                 }}
                 onMouseEnter={(e) => handleShowTooltip(e, index)}
                 onMouseLeave={handleHideTooltip}

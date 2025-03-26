@@ -122,6 +122,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
           ? 1
           : Math.pow(0.5, Math.abs(adjustedPosition)) * 0.5;
 
+      // disalbe pointer events for items that are not in the center
+      item.style.pointerEvents = adjustedPosition === 0 ? "auto" : "none";
       item.style.top = `${y}%`;
       item.style.left = `${x}%`;
       item.style.opacity = `${opacity}`;
@@ -129,7 +131,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
       item.classList.toggle(styles.active, adjustedPosition === 0);
     }
   }, [currentIndex, showContentList, contents.length, isMobile]);
-
 
   // Auto initialize auto-rotation on user inactivity
   useAutoRotate({

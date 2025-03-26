@@ -165,10 +165,17 @@
     transition: stroke 0.2s ease;
   }
 
-  &:hover,
   &:focus {
-    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
     outline: none;
-    transition: all 0.2s ease;
+  }
+
+  @media (--desktop-viewport) {
+
+    &:hover,
+    &:focus {
+      filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+      outline: none;
+      transition: all 0.2s ease;
+    }
   }
 }
