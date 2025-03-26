@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { VideoJsPlayer } from "video.js";
 import { YouTubePlayer } from "youtube-player/dist/types";
@@ -38,6 +38,7 @@ const Story: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
   const { mode, slideIndex, currentStoryId } = storyParams;
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const lang = useSelector(languageSelector);
 
@@ -60,7 +61,7 @@ const Story: FunctionComponent = () => {
 
   // clean up story on unmount
   useEffect(() => {
-      dispatch(toggleEmbedElements({ legend: true, time_slider: true }));
+    dispatch(toggleEmbedElements({ legend: true, time_slider: true }));
     return () => {
       const defaultView = config.globe.view;
       dispatch(
@@ -80,6 +81,13 @@ const Story: FunctionComponent = () => {
       dispatch(setGlobeTime(0));
     };
   }, [dispatch]);
+
+  // Scroll to top of page when slide index changes
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTo(0, 0);
+    }
+  }, [slideIndex]);
 
   if (!mode) {
     return null;
@@ -138,7 +146,7 @@ const Story: FunctionComponent = () => {
     <>
       <Navigation />
       <div className={styles.story}>
-        <main className={styles.main}>
+        <main className={styles.main} ref={contentRef}>
           {/* Instead of rendering only the current slide we map over all slides to
         enforce a newly mounted component when the slideNumber changes */}
           {selectedStory?.slides.map(
