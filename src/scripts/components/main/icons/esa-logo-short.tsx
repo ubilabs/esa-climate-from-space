@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import { FunctionComponent } from "react";
 
 export const EsaLogoShort: FunctionComponent = () => (
   <svg
@@ -6,7 +6,8 @@ export const EsaLogoShort: FunctionComponent = () => (
     height="29"
     viewBox="0 0 79 29"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <g opacity="0.4" clipPath="url(#clip0)">
       <path
         className="hideText"

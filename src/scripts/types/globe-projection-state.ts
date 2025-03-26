@@ -1,4 +1,4 @@
-import {GlobeProjection} from './globe-projection';
+import { GlobeProjection } from "./globe-projection";
 
 export interface GlobeProjectionState {
   projection: GlobeProjection;

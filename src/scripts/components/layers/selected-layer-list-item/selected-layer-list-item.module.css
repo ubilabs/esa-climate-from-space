@@ -1,0 +1,28 @@
+.selectedLayerListItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6875em 2em;
+  background-color: var(--dark-grey-4);
+}
+.layer {
+  display: flex;
+  align-items: center;
+}
+.layerTitle {
+  color: var(--main);
+  font-weight: bold;
+}
+.layerIcon {
+  margin-right: 1em;
+  width: 1.5em;
+  height: 1.5em;
+}
+.removeIcon {
+  display: flex;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  fill: var(--text-default);
+}

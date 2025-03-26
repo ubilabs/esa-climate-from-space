@@ -1,65 +1,93 @@
-/* eslint-disable camelcase */
-import React, {FunctionComponent, useEffect, useState} from 'react';
-import {YouTubePlayer} from 'youtube-player/dist/types';
-import {VideoJsPlayer} from 'video.js';
-import {useSelector} from 'react-redux';
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { VideoJsPlayer } from "video.js";
+import { YouTubePlayer } from "youtube-player/dist/types";
 
-import {useStoryParams} from '../../../hooks/use-story-params';
-import StoryImage from '../story-image/story-image';
-import StoryGlobe from '../story-globe/story-globe';
-import StoryContent from '../story-content/story-content';
-import StoryGallery from '../story-gallery/story-gallery';
-import StoryFooter from '../story-footer/story-footer';
-import fetchStory from '../../../actions/fetch-story';
-import Header from '../header/header';
-import StoryVideo from '../story-video/story-video';
-import setGlobeProjectionAction from '../../../actions/set-globe-projection';
-import setSelectedLayerIdsAction from '../../../actions/set-selected-layer-id';
-import setGlobeTimeAction from '../../../actions/set-globe-time';
-import Share from '../../main/share/share';
-import SplashScreen from '../splash-screen/splash-screen';
-import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
+import { useContentParams } from "../../../hooks/use-content-params";
+import { setGlobeTime } from "../../../reducers/globe/time";
+import SplashScreen from "../splash-screen/splash-screen";
+import StoryContent from "../story-content/story-content";
+import StoryFooter from "../story-footer/story-footer";
+import StoryGallery from "../story-gallery/story-gallery";
+import StoryGlobe from "../story-globe/story-globe";
+import StoryImage from "../story-image/story-image";
+import StoryVideo from "../story-video/story-video";
+import Navigation from "../../main/navigation/navigation";
 
-import {GlobeProjection} from '../../../types/globe-projection';
-import {StoryMode} from '../../../types/story-mode';
-import {Slide, Story as StoryType} from '../../../types/story';
-import {GalleryItemType} from '../../../types/gallery-item';
-import {useThunkDispatch} from '../../../hooks/use-thunk-dispatch';
+import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
+import { GalleryItemType } from "../../../types/gallery-item";
+import { GlobeProjection } from "../../../types/globe-projection";
+import { Slide, Story as StoryType } from "../../../types/story";
 
-import StoryEmbedded from '../story-embedded/story-embedded';
+import StoryEmbedded from "../story-embedded/story-embedded";
 
-import styles from './story.module.styl';
+import { setGlobeProjection } from "../../../reducers/globe/projection";
+import { setSelectedLayerIds } from "../../../reducers/layers";
+import { useGetStoryListQuery, useGetStoryQuery } from "../../../services/api";
+import { languageSelector } from "../../../selectors/language";
+
+import config from "../../../config/main";
+
+import styles from "./story.module.css";
+import { setFlyTo } from "../../../reducers/fly-to";
+import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
 const Story: FunctionComponent = () => {
-  const storyParams = useStoryParams();
+  const storyParams = useContentParams();
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const {mode, slideIndex, currentStoryId, selectedStory, storyListItem} =
-    storyParams;
-  const storyMode = mode === StoryMode.Stories;
-  const isSplashScreen = Boolean(selectedStory?.slides[slideIndex].splashImage);
-  const {story_header} = useSelector(embedElementsSelector);
+  const { mode, slideIndex, currentStoryId } = storyParams;
+  const contentRef = useRef<HTMLDivElement>(null);
 
-  // fetch story of active storyId
-  useEffect(() => {
-    currentStoryId && dispatch(fetchStory(currentStoryId));
-  }, [dispatch, currentStoryId]);
+  const lang = useSelector(languageSelector);
+
+  useGetStoryListQuery(lang);
+
+  const { data: selectedStory } = useGetStoryQuery({
+    id: currentStoryId,
+    language: lang,
+  });
 
   // set globe to sphere projection
   useEffect(() => {
-    dispatch(setGlobeProjectionAction(sphereProjection, 0));
+    dispatch(
+      setGlobeProjection({
+        projection: sphereProjection,
+        morphTime: 0,
+      }),
+    );
   }, [dispatch, sphereProjection]);
 
   // clean up story on unmount
-  useEffect(
-    () => () => {
-      dispatch(setSelectedLayerIdsAction(null, true));
-      dispatch(setSelectedLayerIdsAction(null, false));
-      dispatch(setGlobeTimeAction(0));
-    },
-    [dispatch]
-  );
+  useEffect(() => {
+    dispatch(toggleEmbedElements({ legend: true, time_slider: true }));
+    return () => {
+      const defaultView = config.globe.view;
+      dispatch(
+        setSelectedLayerIds({
+          layerId: null,
+          isPrimary: true,
+        }),
+      );
+      dispatch(setFlyTo(defaultView));
+      dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
+      dispatch(
+        setSelectedLayerIds({
+          layerId: null,
+          isPrimary: false,
+        }),
+      );
+      dispatch(setGlobeTime(0));
+    };
+  }, [dispatch]);
+
+  // Scroll to top of page when slide index changes
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.scrollTo(0, 0);
+    }
+  }, [slideIndex]);
 
   if (!mode) {
     return null;
@@ -79,7 +107,7 @@ const Story: FunctionComponent = () => {
     if (slide.galleryItems) {
       return (
         <StoryGallery mode={mode} storyId={story.id} key={story.id}>
-          {slide.galleryItems.map(item => {
+          {slide.galleryItems.map((item) => {
             switch (item.type) {
               case GalleryItemType.Image:
                 return <StoryImage storyId={story.id} imageItem={item} />;
@@ -102,10 +130,9 @@ const Story: FunctionComponent = () => {
                 return <StoryEmbedded embeddedItem={item} />;
               default:
                 console.warn(
-                  // eslint-disable-next-line dot-notation
-                  `Unknown gallery item type ${item['type']} on slide ${
+                  `Unknown gallery item type ${item["type"]} on slide ${
                     slideIndex + 1
-                  } in story ${story.id}`
+                  } in story ${story.id}`,
                 );
                 return <></>;
             }
@@ -115,50 +142,43 @@ const Story: FunctionComponent = () => {
     }
     return null;
   };
-
   return (
-    <div className={styles.story}>
-      {storyListItem && story_header && (
-        <Header
-          backLink={`/${mode.toString()}`}
-          backButtonId="backToStories"
-          title={isSplashScreen ? '' : storyListItem.title}>
-          {/* eslint-disable-next-line */}
-          {storyMode ? <Share /> : undefined}
-        </Header>
-      )}
-      <main className={styles.main}>
-        {/* Instead of rendering only the currect slide we map over all slides to
+    <>
+      <Navigation />
+      <div className={styles.story}>
+        <main className={styles.main} ref={contentRef}>
+          {/* Instead of rendering only the current slide we map over all slides to
         enforce a newly mounted component when the slideNumber changes */}
-        {selectedStory?.slides.map(
-          (currentSlide, index) =>
-            index === slideIndex &&
-            (currentSlide.splashImage ? (
-              <SplashScreen
-                mode={mode}
-                key={index}
-                storyId={selectedStory.id}
-                slide={currentSlide}
-              />
-            ) : (
-              <React.Fragment key={index}>
-                <StoryContent
+          {selectedStory?.slides.map(
+            (currentSlide, index) =>
+              index === slideIndex &&
+              (currentSlide.splashImage ? (
+                <SplashScreen
                   mode={mode}
+                  key={index}
                   storyId={selectedStory.id}
                   slide={currentSlide}
                 />
-                {getRightSideComponent(currentSlide, selectedStory)}
-              </React.Fragment>
-            ))
-        )}
-      </main>
-      <StoryFooter
-        videoDuration={videoDuration}
-        mode={mode}
-        slideIndex={slideIndex}
-        selectedStory={selectedStory}
-      />
-    </div>
+              ) : (
+                <React.Fragment key={index}>
+                  <StoryContent
+                    mode={mode}
+                    storyId={selectedStory.id}
+                    slide={currentSlide}
+                  />
+                  {getRightSideComponent(currentSlide, selectedStory)}
+                </React.Fragment>
+              )),
+          )}
+        </main>
+        <StoryFooter
+          videoDuration={videoDuration}
+          mode={mode}
+          slideIndex={slideIndex}
+          selectedStory={selectedStory}
+        />
+      </div>
+    </>
   );
 };
 

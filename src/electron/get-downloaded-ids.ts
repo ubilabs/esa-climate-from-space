@@ -5,7 +5,7 @@ import {app} from 'electron';
 /**
  * Get downloaded Ids from the downloads folder content
  */
-module.exports.getDownloadedIds = function() {
+module.exports.getDownloadedIds = function () {
   const downloadsPath = path.join(app.getPath('downloads'), 'downloads');
 
   try {
@@ -24,7 +24,7 @@ module.exports.getDownloadedIds = function() {
       stories
     };
   } catch (error) {
-    console.log('Could not read downlods folder at', downloadsPath);
+    console.log('Could not read downloads folder at', downloadsPath, error);
   }
 
   return {

@@ -1,43 +1,44 @@
-import React, {FunctionComponent, useState} from 'react';
-import {FormattedMessage} from 'react-intl';
-import {useDispatch} from 'react-redux';
-import cx from 'classnames';
+import { FunctionComponent, useState } from "react";
+import { FormattedMessage } from "react-intl";
+import { useDispatch } from "react-redux";
+import cx from "classnames";
+import { setSelectedTags } from "../../../reducers/story";
 
-import setSelectedStoryTags from '../../../actions/set-selected-story-tags';
-
-import styles from './story-tags.module.styl';
+import styles from "./story-tags.module.css";
 
 interface Props {
   tags: string[];
   selected: string[];
 }
 
-const StoryTags: FunctionComponent<Props> = ({tags, selected}) => {
+const StoryTags: FunctionComponent<Props> = ({ tags, selected }) => {
   const dispatch = useDispatch();
   const [showAllTags, setShowAllTags] = useState(false);
   const toggleTag = (tag: string) => {
     const newTags = selected.includes(tag)
-      ? selected.filter(oldTag => oldTag !== tag)
+      ? selected.filter((oldTag) => oldTag !== tag)
       : selected.concat([tag]);
-    dispatch(setSelectedStoryTags(newTags));
+    dispatch(setSelectedTags(newTags));
   };
   const getTagClasses = (tag: string) =>
     cx(styles.tag, selected.includes(tag) && styles.selected);
 
-  const sortedTags = tags.sort((a, b) => {
-    const isSelectedA = selected.includes(a);
-    const isSelectedB = selected.includes(b);
+  const sortedTags = tags
+    .map((tag) => tag)
+    .sort((a, b) => {
+      const isSelectedA = selected.includes(a);
+      const isSelectedB = selected.includes(b);
 
-    if (isSelectedA && !isSelectedB) {
-      return -1;
-    }
+      if (isSelectedA && !isSelectedB) {
+        return -1;
+      }
 
-    if (isSelectedB && !isSelectedA) {
-      return 1;
-    }
+      if (isSelectedB && !isSelectedA) {
+        return 1;
+      }
 
-    return 0;
-  });
+      return 0;
+    });
 
   const tagCount = 3;
 
@@ -45,7 +46,7 @@ const StoryTags: FunctionComponent<Props> = ({tags, selected}) => {
     <div className={styles.tags}>
       {sortedTags
         .slice(0, showAllTags ? sortedTags.length : tagCount)
-        .map(tag => (
+        .map((tag) => (
           <span
             className={getTagClasses(tag)}
             key={tag}
@@ -53,7 +54,8 @@ const StoryTags: FunctionComponent<Props> = ({tags, selected}) => {
               event.preventDefault();
               event.stopPropagation();
               toggleTag(tag);
-            }}>
+            }}
+          >
             <FormattedMessage id={`tags.${tag}`} />
           </span>
         ))}
@@ -64,7 +66,8 @@ const StoryTags: FunctionComponent<Props> = ({tags, selected}) => {
             event.preventDefault();
             event.stopPropagation();
             setShowAllTags(true);
-          }}>
+          }}
+        >
           +{sortedTags.length - tagCount}
         </span>
       )}

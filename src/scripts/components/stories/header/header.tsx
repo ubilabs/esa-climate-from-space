@@ -1,15 +1,13 @@
-/* eslint-disable camelcase */
-import React, {FunctionComponent} from 'react';
-import {useSelector} from 'react-redux';
+import { FunctionComponent } from "react";
+import { useSelector } from "react-redux";
 
-import Button from '../../main/button/button';
-import {ArrowBackIcon} from '../../main/icons/arrow-back-icon';
-import {EsaLogoShort} from '../../main/icons/esa-logo-short';
-import {embedElementsSelector} from '../../../selectors/embed-elements-selector';
-import useIsStoriesPath from '../../../hooks/use-is-stories-path';
-import {useStoryParams} from '../../../hooks/use-story-params';
+import Button from "../../main/button/button";
+import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
+import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
+import useIsStoriesPath from "../../../hooks/use-is-stories-path";
+import { useContentParams } from "../../../hooks/use-content-params";
 
-import styles from './header.module.styl';
+import styles from "./header.module.css";
 
 interface Props {
   backLink: string;
@@ -22,11 +20,12 @@ const Header: FunctionComponent<Props> = ({
   backLink,
   title,
   backButtonId,
-  children
+  children,
 }) => {
-  const {currentStoryId} = useStoryParams();
+  const { currentStoryId} = useContentParams();
   const isStoriesPath = useIsStoriesPath();
-  const {back_link, story_back_link} = useSelector(embedElementsSelector);
+  const { back_link, story_back_link } = useSelector(embedElementsSelector);
+
 
   const disabledEmbedLink =
     (isStoriesPath && back_link) || (currentStoryId && story_back_link);
@@ -34,7 +33,6 @@ const Header: FunctionComponent<Props> = ({
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
-        <EsaLogoShort />
       </div>
       {disabledEmbedLink && (
         <Button

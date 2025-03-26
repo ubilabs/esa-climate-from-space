@@ -1,22 +1,24 @@
-import {useDispatch} from 'react-redux';
-import {useEffect} from 'react';
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
-import config from '../config/main';
-import setSelectedLayerIdsAction from '../actions/set-selected-layer-id';
-import setFlyToAction from '../actions/set-fly-to';
-import setGlobeTimeAction from '../actions/set-globe-time';
+import config from "../config/main";
+import { setFlyTo } from "../reducers/fly-to";
+import { setGlobeTime } from "../reducers/globe/time";
+import { setSelectedLayerIds } from "../reducers/layers";
 
-import {GlobeItem} from '../types/gallery-item';
+import { GlobeItem } from "../types/gallery-item";
 
-import {CameraView, RenderMode} from '@ubilabs/esa-webgl-globe';
+import { CameraView, RenderMode } from "@ubilabs/esa-webgl-globe";
 
-function flyToToCameraView(flyTo: GlobeItem['flyTo']): CameraView {
+function flyToToCameraView(flyTo: GlobeItem["flyTo"]): CameraView {
+
   return {
-    renderMode: 'globe' as RenderMode.GLOBE,
+    isAnimated: false,
+    renderMode: "globe" as RenderMode.GLOBE,
     lng: flyTo.position.longitude,
     lat: flyTo.position.latitude,
     altitude: flyTo.position.height,
-    zoom: 0
+    zoom: 0,
   };
 }
 
@@ -31,15 +33,24 @@ export const useStoryGlobe = (globeItem: GlobeItem) => {
     const slideTime = mainLayer?.timestamp
       ? Number(new Date(mainLayer?.timestamp))
       : 0;
-    // eslint-disable-next-line no-warning-comments
     // FIXME: the stories are the last place where the old flyTo syntax is being used.
     const cameraView: CameraView =
       globeItem.flyTo && flyToToCameraView(globeItem.flyTo);
 
-    dispatch(setFlyToAction(cameraView || defaultView));
-    dispatch(setSelectedLayerIdsAction(mainLayer?.id || null, true));
-    dispatch(setSelectedLayerIdsAction(compareLayer?.id || null, false));
-    dispatch(setGlobeTimeAction(slideTime));
+    dispatch(setFlyTo(cameraView || defaultView));
+    dispatch(
+      setSelectedLayerIds({
+        layerId: mainLayer?.id || null,
+        isPrimary: true,
+      }),
+    );
+    dispatch(
+      setSelectedLayerIds({
+        layerId: compareLayer?.id || null,
+        isPrimary: false,
+      }),
+    );
+    dispatch(setGlobeTime(slideTime));
   }, [dispatch, defaultView, globeItem]);
 
   return;

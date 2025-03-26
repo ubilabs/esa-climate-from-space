@@ -1,0 +1,42 @@
+.controls {
+  display: flex;
+  align-items: center;
+  padding-left: 1.25em;
+  color: #fff;
+  font-family: NotesEsa;
+}
+
+.slides {
+  padding: 0 0.9375em;
+}
+
+.icon,
+.disabled {
+  height: 1.5em;
+}
+
+.icon svg,
+.disabled svg {
+  width: 1.5em;
+  height: 1.5em;
+  fill: #fff;
+}
+
+.disabled svg {
+  fill: var(--text-disabled);
+}
+
+.closeIcon {
+  padding-left: 1.25em;
+  height: 1.25em;
+}
+
+.closeIcon svg {
+  width: 1.25em;
+  height: 1.25em;
+  fill: var(--text-default);
+}
+
+.emptyIcon svg {
+  display: none;
+}

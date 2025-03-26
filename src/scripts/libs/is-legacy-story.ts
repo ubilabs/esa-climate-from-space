@@ -1,5 +1,5 @@
-import {LegacyStory} from '../types/legacy-story';
-import {Story} from '../types/story';
+import { LegacyStory } from "../types/legacy-story";
+import { Story } from "../types/story";
 
 /**
  * Checks if a given story is a legacy story.
@@ -13,7 +13,7 @@ export const isLegacyStory = (story: LegacyStory | Story): boolean => {
   // If a story slide contains the property "galleryItems", we infer that is a new story
   // Otherwise, it is a legacy story
   for (const slide of story.slides) {
-    if ('galleryItems' in slide) {
+    if ("galleryItems" in slide) {
       return false;
     }
   }

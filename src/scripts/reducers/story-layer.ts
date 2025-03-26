@@ -1,15 +1,22 @@
-import {SET_STORY_LAYER, SetStoryLayerAction} from '../actions/set-story-layer';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-function storyLayerReducer(
-  state: string | null = null,
-  action: SetStoryLayerAction
-): string | null {
-  switch (action.type) {
-    case SET_STORY_LAYER:
-      return action.storyLayerId;
-    default:
-      return state;
-  }
+interface StoryLayerState {
+  storyLayerId: string | null;
 }
 
-export default storyLayerReducer;
+const initialState: StoryLayerState = {
+  storyLayerId: null,
+};
+
+const storyLayerSlice = createSlice({
+  name: "storyLayer",
+  initialState,
+  reducers: {
+    setStoryLayer(state, action: PayloadAction<string | null>) {
+      state.storyLayerId = action.payload;
+    },
+  },
+});
+
+export const { setStoryLayer } = storyLayerSlice.actions;
+export default storyLayerSlice.reducer;

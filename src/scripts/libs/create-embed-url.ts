@@ -3,7 +3,7 @@ export const createEmbedUrl = (paramsString: string) => {
 
   if (paramsString.length === 0) {
     return currentUrl;
-  } else if (currentUrl.includes('?')) {
+  } else if (currentUrl.includes("?")) {
     return `${currentUrl}&${paramsString}`;
   }
 

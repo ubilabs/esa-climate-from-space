@@ -1,0 +1,156 @@
+:global(.cesium-viewer-bottom) {
+  display: none !important;
+}
+
+.globe {
+  width: 100%;
+  height: 100%;
+  position: absolute !important;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  transition: all 1s ease;
+}
+
+.globe canvas {
+  /* We use the filter function to create an overlay. This makes the text on the globe more readable */
+  filter: brightness(0.85) saturate(0.85) opacity(0.95);
+  transform-origin: center;
+  transition: scale 1s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.marker {
+  transition:none;
+  transform-origin: center;
+  user-select: none;
+  cursor: pointer;
+  animation: pulse 1.5s ease-out;
+  margin: -16px;
+
+  .outer {
+    opacity: 0.3;
+    animation: outerPulse 3s ease-out forwards;
+    transform-origin: center;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.1);
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes outerPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.markerTitle {
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 6px 16px;
+  max-width: var(--story-width);
+  width: fit-content;
+  height: 24px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: var(--dark-grey-4);
+  box-shadow:
+    0px 2px 4px rgba(0, 0, 0, 0.14),
+    0px 3px 4px rgba(0, 0, 0, 0.12),
+    0px 1px 5px rgba(0, 0, 0, 0.2);
+  color: #eee;
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 0.6px;
+  font-size: 11px;
+  font-family: sans-serif;
+  transition: color 0.1s ease-out;
+}
+
+.markerTitle:hover {
+  color: #fff;
+}
+
+.markerCircle {
+  transition: transform 0.1s ease-out;
+  transform-origin: 50%;
+  fill: #fff;
+}
+
+.fadeIn {
+  animation: fadeIn 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.fastFadeIn {
+  animation: fadeIn 0.5s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

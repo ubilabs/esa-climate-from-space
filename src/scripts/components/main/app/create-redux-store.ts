@@ -1,19 +1,17 @@
-import {Middleware, AnyAction} from 'redux';
-import {createLogger} from 'redux-logger';
-import thunk, {ThunkDispatch as ThunkDispatchInternal} from 'redux-thunk';
+import { configureStore, Middleware, AnyAction } from "@reduxjs/toolkit";
+import { createLogger } from "redux-logger";
+import { thunk, ThunkDispatch } from "redux-thunk";
+import { layersApi, storiesApi } from "../../../services/api";
 
-import rootReducer from '../../../reducers/index';
+import rootReducer from "../../../reducers/index";
 import {
   isElectron,
   connectToStore,
   offlineSaveMiddleware,
-  offlineLoadMiddleware
-} from '../../../libs/electron/index';
+  offlineLoadMiddleware,
+} from "../../../libs/electron/index";
 
-import {configureStore} from '@reduxjs/toolkit';
-
-// @ts-ignore - injected by webpack
-const isProduction = import.meta.env.PROD; // eslint-disable-line no-undef
+const isProduction = import.meta.env.PROD;
 const middleware: Middleware[] = [thunk];
 
 if (isElectron()) {
@@ -22,12 +20,17 @@ if (isElectron()) {
 }
 
 if (!isProduction) {
-  middleware.push(createLogger({collapsed: true}));
+  middleware.push(createLogger({ collapsed: true }));
 }
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware()
+      .concat(middleware)
+      .concat(layersApi.middleware)
+      .concat(storiesApi.middleware);
+  },
 });
 
 // connect electron messages to redux store
@@ -36,4 +39,4 @@ if (isElectron()) {
 }
 
 export type RootState = ReturnType<typeof store.getState>;
-export type ThunkDispatch = ThunkDispatchInternal<RootState, void, AnyAction>;
+export type AppThunkDispatch = ThunkDispatch<RootState, void, AnyAction>;

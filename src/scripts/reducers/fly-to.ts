@@ -1,19 +1,21 @@
-import {SET_FLY_TO, SetFlyToAction} from '../actions/set-fly-to';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { CameraView } from "@ubilabs/esa-webgl-globe";
 
-import {CameraView} from '@ubilabs/esa-webgl-globe';
-
+export interface FlyToPayload extends CameraView {
+  isAnimated: boolean;
+}
 const initialState = null;
 
-function flyToReducer(
-  state: CameraView | null = initialState,
-  action: SetFlyToAction
-): CameraView | null {
-  switch (action.type) {
-    case SET_FLY_TO:
-      return action.view;
-    default:
-      return state;
-  }
-}
+const flyToSlice = createSlice({
+  name: "flyTo",
+  initialState,
+  reducers: {
+    setFlyTo(state, action: PayloadAction<FlyToPayload>) {
+      return action.payload;
+    },
+  },
+});
 
-export default flyToReducer;
+
+export const { setFlyTo } = flyToSlice.actions;
+export default flyToSlice.reducer;

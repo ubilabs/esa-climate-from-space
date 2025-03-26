@@ -5,6 +5,7 @@ export interface StoryListItem {
   link: string;
   image: string;
   tags: string[];
+  categories: string[];
   position: number[];
 }
 

@@ -1,0 +1,117 @@
+.menuContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  width: 65%;
+  height: 90%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.menuList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0.625em 2em;
+  min-width: 12.5em;
+  width: 25%;
+  color: #fff;
+  list-style: none;
+}
+.menuItemTitle,
+.subMenuTitle {
+  display: flex;
+  align-items: center;
+  padding: 0.625em 0;
+  pointer-events: none;
+}
+.menuItemTitle svg,
+.subMenuTitle svg {
+  padding-right: 0.625em;
+  fill: #fff;
+}
+.subMenuTitle {
+  padding-top: 30px;
+}
+.menuListItem {
+  padding: 0.625em 0 0.625em 2.1875em;
+  color: var(--text-default);
+}
+.menuButton {
+  display: flex;
+  align-items: center;
+  color: var(--text-default);
+}
+.menuButton:hover {
+  color: var(--main);
+}
+.menuButton:hover svg {
+  fill: var(--main);
+}
+.menuButton svg {
+  padding-right: 0.625em;
+  fill: var(--text-default);
+}
+.version {
+  align-self: center;
+  color: var(--text-default);
+  font-size: 10px;
+}
+.credits {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1.375em;
+  width: 100%;
+  color: var(--text-default);
+}
+.credits svg {
+  height: 1.5625em;
+  fill: #fff;
+}
+.credits svg:hover {
+  fill: var(--main);
+}
+.cciLogo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cciLogo svg {
+  fill: var(--main);
+}
+.logo {
+  padding: 0.625em 1.375em;
+  background-color: var(--black);
+}
+.logo img {
+  width: 5em;
+}
+.creditsText {
+  margin: 0.3125em;
+  margin-left: 0;
+  padding-left: 0.615384615384615em;
+  font-size: 13px;
+}
+
+@media screen and (--mobile-viewport) {
+  .menuContainer {
+    width: 100%;
+  }
+  .menuList:first-child {
+    display: none;
+  }
+  .cciLogo {
+    justify-content: space-evenly;
+    width: 6.25em;
+  }
+  .credits {
+    display: flex;
+  }
+  /*:global(path.hideText) {*/
+  /*  display: none;*/
+  /*}*/
+}

@@ -1,30 +1,29 @@
-import {useSelector} from 'react-redux';
-import {filterStories} from '../libs/filter-stories';
+import { useGetStoryListQuery } from "../services/api";
+import { Language } from "../types/language";
 
-import {selectedLayerIdsSelector} from '../selectors/layers/selected-ids';
-import {selectedTagsSelector} from '../selectors/story/selected-tags';
-import {StoriesStateSelector} from '../selectors/story/story-state';
+export const useContentMarker = (
+  selectedStoryId: string | null,
+  language: Language,
+) => {
+  const { data: stories } = useGetStoryListQuery(language);
 
-export const useStoryMarkers = () => {
-  const selectedLayers = useSelector(selectedLayerIdsSelector);
-  const stories = useSelector(StoriesStateSelector).list;
-  const selectedTags = useSelector(selectedTagsSelector);
-  const filteredStories = filterStories(stories, selectedTags);
-  const hideMarkers = Boolean(
-    selectedLayers.mainId || selectedLayers.compareId
-  );
-
-  if (hideMarkers) {
-    return [];
+  if (!stories) {
+    return null;
   }
 
-  const storyMarkers = filteredStories
-    .map(story => ({
-      title: story.title,
-      position: story.position,
-      link: `/stories/${story.id}/0`
-    }))
-    .filter(marker => marker.position);
+  const selectedStory = stories.find((story) => story.id === selectedStoryId);
 
-  return storyMarkers;
+  if (!selectedStory) {
+    return null;
+  }
+
+  const marker = {
+    id: selectedStory.id,
+    title: selectedStory.title,
+    position: selectedStory.position,
+    link: `/stories/${selectedStory.id}/0`,
+    tags: selectedStory.tags,
+  };
+
+  return marker;
 };

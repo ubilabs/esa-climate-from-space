@@ -1,0 +1,181 @@
+.tooltip {
+  position: absolute;
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: NotesEsa;
+  pointer-events: none;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  border: 1px solid var(--main);
+  font-size: 1rem;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--main) transparent transparent transparent;
+  }
+}
+
+.category-navigation {
+  grid-area: globe-nav-area;
+  z-index: 2;
+  display: flex;
+  justify-content: start;
+  place-self: end center;
+  clip-path: inset(50% 100% 0 0);
+
+  z-index: 1;
+  overscroll-behavior: contain;
+  overflow: hidden;
+
+  @media screen and (--desktop-viewport) {
+    margin-right: var(--spacing);
+    clip-path: inset(0 100% 0 0);
+    /* On desktop, don't clip the top */
+  }
+
+  &.reveal-from-left {
+    animation: revealFromLeft 0.5s linear forwards;
+    animation-delay: 0.5s;
+  }
+
+  @media screen and (--desktop-viewport) {
+    place-self: center center;
+    height: 100%;
+    align-items: center;
+  }
+
+  .circle-container {
+    transition: all 0.5s ease-out;
+
+    @media screen and (--desktop-viewport) {
+      translate: 0 0;
+    }
+  }
+}
+
+@keyframes revealFromLeft {
+  from {
+    clip-path: inset(50% 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(50% 0 0 0);
+  }
+}
+
+/* Desktop version of reveal from left animation */
+@media screen and (--desktop-viewport) {
+  @keyframes revealFromLeft {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
+
+.chosenCategory {
+  word-break: break-word;
+  text-transform: capitalize;
+  grid-area: globe-nav-area;
+  z-index: 2;
+  color: white;
+  color: var(--Neutral-White, #fff);
+  text-align: center;
+  max-width: 80%;
+  /* Mobile/H3 */
+  font-family: NotesEsaBold;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 36px;
+  /* 120% */
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 2.8s;
+
+  @media screen and (--desktop-viewport) {
+    min-height: 160px;
+    animation-delay: 0.8s;
+    text-align: start;
+    grid-area: title;
+
+    font-size: 78px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 80px;
+    /* 102.564% */
+    place-self: start;
+    /* 109.677% */
+    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
+
+    >li.active {
+      >span {
+        text-align: start;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 32px;
+      }
+    }
+  }
+
+  >li {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    >span {
+      display: block;
+      color: var(--main-colours-esa-teal-55, #98dbce);
+      text-align: center;
+      text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
+      font-family: NotesEsa;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+.arc {
+  >path {
+    transition: stroke 0.2s ease;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  @media (--desktop-viewport) {
+
+    &:hover,
+    &:focus {
+      filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+      outline: none;
+      transition: all 0.2s ease;
+    }
+  }
+}

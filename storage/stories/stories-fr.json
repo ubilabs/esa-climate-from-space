@@ -5,7 +5,8 @@
     "description": "",
     "image": "assets/atmospheric-ecvs.jpg",
     "tags": [],
-    "position": [-60, -3]
+    "position": [-60, -3],
+    "categories": ["welcome"]
   },
   {
     "id": "story-21",
@@ -27,7 +28,8 @@
       "permafrost",
       "sea-ice"
     ],
-    "position": [148, -20]
+    "position": [148, -20],
+    "categories": ["water_cycle"]
   },
   {
     "id": "story-29",
@@ -41,7 +43,8 @@
       "biomass",
       "ocean-colour"
     ],
-    "position": [30, 1]
+    "position": [30, 1],
+    "categories": ["land"]
   },
   {
     "id": "story-12",
@@ -49,7 +52,8 @@
     "description": "",
     "image": "assets/story12-image02.jpg",
     "tags": ["greenhouse-gases", "land-cover", "ocean-colour", "fire"],
-    "position": [3, 57]
+    "position": [3, 57],
+    "categories": ["carbon_cycle"]
   },
   {
     "id": "story-27",
@@ -57,7 +61,8 @@
     "description": "",
     "image": "assets/story27-image03.jpg",
     "tags": ["land-surface-temperature", "soil-moisture", "land-cover"],
-    "position": [37, 55]
+    "position": [37, 55],
+    "categories": ["land", "climate_risk"]
   },
   {
     "id": "story-31",
@@ -65,7 +70,8 @@
     "description": "",
     "image": "assets/cmug_large_14.jpg",
     "tags": ["climate-modelling", "ocean-colour"],
-    "position": [2, 41]
+    "position": [2, 41],
+    "categories": ["improving_models"]
   },
   {
     "id": "story-16",
@@ -78,7 +84,8 @@
       "ocean-colour",
       "sea-surface-salinity"
     ],
-    "position": [-50, 40]
+    "position": [-50, 40],
+    "categories": ["ocean"]
   },
   {
     "id": "story-8",
@@ -86,7 +93,8 @@
     "description": "",
     "image": "assets/ozone.jpg",
     "tags": ["ozone", "aerosol"],
-    "position": [-40, -65]
+    "position": [-40, -65],
+    "categories": ["atmosphere"]
   },
   {
     "id": "story-15",
@@ -100,7 +108,8 @@
       "permafrost",
       "ice-sheets"
     ],
-    "position": [-105, 75]
+    "position": [-105, 75],
+    "categories": ["cryosphere"]
   },
   {
     "id": "story-30",
@@ -108,7 +117,8 @@
     "description": "",
     "image": "assets/sealevel.jpg",
     "tags": ["sea-level", "sea-surface-temperature", "glaciers", "ice-sheets"],
-    "position": [175, -2]
+    "position": [175, -2],
+    "categories": ["ocean", "climate_risk"]
   },
   {
     "id": "story-28",
@@ -123,7 +133,8 @@
       "permafrost",
       "fire"
     ],
-    "position": [150, -35]
+    "position": [150, -35],
+    "categories": ["land"]
   },
   {
     "id": "story-26",
@@ -136,7 +147,8 @@
       "electromagnetic-spectrum",
       "geostationary-satellite"
     ],
-    "position": [40, -25]
+    "position": [40, -25],
+    "categories": ["welcome"]
   },
   {
     "id": "story-38",
@@ -144,7 +156,8 @@
     "description": "",
     "image": "assets/story38-image01.jpg",
     "tags": ["land-cover", "biomass", "fire", "ocean-colour"],
-    "position": [77.2, 28.5]
+    "position": [77.2, 28.5],
+    "categories": ["carbon_cycle"]
   },
   {
     "id": "story-39",
@@ -152,7 +165,8 @@
     "description": "",
     "image": "assets/story39-image01.jpg",
     "tags": ["sea-surface-temperature", "ocean-colour", "sea-surface-salinity"],
-    "position": [80, -20]
+    "position": [80, -20],
+    "categories": ["ocean"]
   },
   {
     "id": "story-40",
@@ -160,7 +174,8 @@
     "description": "",
     "image": "assets/story40-image01.jpg",
     "tags": ["glaciers", "ice-sheets", "snow", "permafrost", "sea-ice"],
-    "position": [105, 75]
+    "position": [105, 75],
+    "categories": ["cryosphere", "water_cycle"]
   },
   {
     "id": "story-41",
@@ -168,15 +183,17 @@
     "description": "",
     "image": "assets/story41-image01.jpg",
     "tags": ["fire", "ghg", "ozone", "cloud", "aerosol"],
-    "position": [138, 35.5]
+    "position": [138, 35.5],
+    "categories": ["atmosphere"]
   },
   {
     "id": "story-42",
-    "title": "Coastal Sea Level",
+    "title": "Niveau de la mer côtière",
     "description": "",
     "image": "assets/story42-image01.jpg",
     "tags": ["sea-level"],
-    "position": [-80, 26]
+    "position": [-80, 26],
+    "categories": ["ocean"]
   },
   {
     "id": "story-43",
@@ -184,7 +201,8 @@
     "description": "",
     "image": "assets/story43-image01.jpg",
     "tags": ["sea-surface-temperature", "sea-surface-salinity", "cloud"],
-    "position": [-128, 5]
+    "position": [-128, 5],
+    "categories": ["ocean"]
   },
   {
     "id": "story-33",
@@ -192,7 +210,8 @@
     "description": "",
     "image": "assets/story33-image04.jpg",
     "tags": ["land-cover"],
-    "position": [31.2, 30]
+    "position": [31.2, 30],
+    "categories": ["land"]
   },
   {
     "id": "story-34",
@@ -200,7 +219,8 @@
     "description": "",
     "image": "assets/story34-image05.jpg",
     "tags": ["land-cover", "biomass"],
-    "position": [-62.75, -10.9]
+    "position": [-62.75, -10.9],
+    "categories": ["land"]
   },
   {
     "id": "story-35",
@@ -208,7 +228,8 @@
     "description": "",
     "image": "assets/story35-image05.jpg",
     "tags": ["glaciers", "ice-sheets"],
-    "position": [-49.9, 69.1]
+    "position": [-49.9, 69.1],
+    "categories": ["cryosphere"]
   },
   {
     "id": "story-36",
@@ -216,7 +237,8 @@
     "description": "",
     "image": "assets/story36-image03.jpg",
     "tags": ["soil-moisture"],
-    "position": [106.8, -6.1]
+    "position": [106.8, -6.1],
+    "categories": ["land"]
   },
   {
     "id": "story-37",
@@ -224,6 +246,7 @@
     "description": "",
     "image": "assets/story37-image07.jpg",
     "tags": ["land-cover", "fire", "soil-moisture", "ghg"],
-    "position": [-4, 58.3]
+    "position": [-4, 58.3],
+    "categories": ["land"]
   }
 ]

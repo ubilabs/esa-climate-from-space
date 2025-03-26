@@ -1,9 +1,9 @@
-import {SET_LANGUAGE, SetLanguageAction} from '../actions/set-language';
-import getBrowserLanguage from '../libs/get-browser-language';
-import getLocalStorageLanguage from '../libs/get-local-storage-language';
-import {parseUrl} from '../libs/language-url-parameter';
-
-import {Language} from '../types/language';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import getBrowserLanguage from "../libs/get-browser-language";
+import getLocalStorageLanguage from "../libs/get-local-storage-language";
+import { parseUrl } from "../libs/language-url-parameter";
+import { Language } from "../types/language";
+import config from "../config/main";
 
 const initialState: Language =
   parseUrl() ||
@@ -11,16 +11,16 @@ const initialState: Language =
   getBrowserLanguage() ||
   Language.EN;
 
-function languageReducer(
-  state: Language = initialState,
-  action: SetLanguageAction
-): Language {
-  switch (action.type) {
-    case SET_LANGUAGE:
-      return action.language;
-    default:
-      return state;
-  }
-}
+const languageSlice = createSlice({
+  name: "language",
+  initialState,
+  reducers: {
+    setLanguage: (state, action: PayloadAction<Language>) => {
+      localStorage.setItem(config.localStorageLanguageKey, action.payload);
+      return action.payload;
+    },
+  },
+});
 
-export default languageReducer;
+export const { setLanguage } = languageSlice.actions;
+export default languageSlice.reducer;

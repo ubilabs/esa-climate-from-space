@@ -1,40 +1,45 @@
-import React, {FunctionComponent, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {Oval} from 'svg-loaders-react';
-import {RenderMode} from '@ubilabs/esa-webgl-globe';
+import { RenderMode } from "@ubilabs/esa-webgl-globe";
+import { FunctionComponent, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Oval } from "svg-loaders-react";
 
-import config from '../../../config/main';
-import Button from '../button/button';
-import {CompassIcon} from '../icons/compass-icon';
-import {DownloadIcon} from '../icons/download-icon';
-import {LocationIcon} from '../icons/location-icon';
-import setGlobeProjectionAction from '../../../actions/set-globe-projection';
-import {projectionSelector} from '../../../selectors/globe/projection';
-import setFlyToAction from '../../../actions/set-fly-to';
-import {downloadScreenshot} from '../../../libs/download-screenshot';
-import {useLayerTimes} from '../../../hooks/use-formatted-time';
+import config from "../../../config/main";
+import { useLayerTimes } from "../../../hooks/use-formatted-time";
+import { downloadScreenshot } from "../../../libs/download-screenshot";
+import { projectionSelector } from "../../../selectors/globe/projection";
+import Button from "../button/button";
+import { CompassIcon } from "../icons/compass-icon";
+import { DownloadIcon } from "../icons/download-icon";
+import { LocationIcon } from "../icons/location-icon";
 
-import {GlobeProjection} from '../../../types/globe-projection';
-import {LayerListItem} from '../../../types/layer-list';
+import { setFlyTo } from "../../../reducers/fly-to";
+import { setGlobeProjection } from "../../../reducers/globe/projection";
+import { State } from "../../../reducers";
+import { GlobeProjection } from "../../../types/globe-projection";
 
-import styles from './globe-navigation.module.styl';
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { layerListItemSelector } from "../../../selectors/layers/list-item";
 
-interface Props {
-  mainLayer: LayerListItem | null;
-  compareLayer: LayerListItem | null;
-}
+import styles from "./globe-navigation.module.css";
 
-const GlobeNavigation: FunctionComponent<Props> = ({
-  mainLayer,
-  compareLayer
-}) => {
+const GlobeNavigation: FunctionComponent = () => {
   const dispatch = useDispatch();
   const [locationLoading, setLocationLoading] = useState(false);
   const defaultView = config.globe.view;
   const projectionState = useSelector(projectionSelector);
   const label =
-    projectionState.projection === GlobeProjection.Sphere ? '2D' : '3D';
-  const {mainTimeFormat, compareTimeFormat} = useLayerTimes();
+    projectionState.projection === GlobeProjection.Sphere ? "2D" : "3D";
+  const { mainTimeFormat, compareTimeFormat } = useLayerTimes();
+
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+  const { mainId, compareId } = selectedLayerIds;
+
+  const mainLayer = useSelector((state: State) =>
+    layerListItemSelector(state, mainId),
+  );
+  const compareLayer = useSelector((state: State) =>
+    layerListItemSelector(state, compareId),
+  );
 
   const onProjectionHandler = () => {
     const newProjection =
@@ -42,7 +47,12 @@ const GlobeNavigation: FunctionComponent<Props> = ({
         ? GlobeProjection.PlateCaree
         : GlobeProjection.Sphere;
 
-    dispatch(setGlobeProjectionAction(newProjection, 2));
+    dispatch(
+      setGlobeProjection({
+        projection: newProjection,
+        morphTime: 2,
+      }),
+    );
   };
 
   const onLocateMeHandler = () => {
@@ -53,20 +63,20 @@ const GlobeNavigation: FunctionComponent<Props> = ({
     }
 
     navigator.geolocation.getCurrentPosition(
-      position => {
+      (position) => {
         const newView = {
-          renderMode: 'globe' as RenderMode.GLOBE,
+          renderMode: "globe" as RenderMode.GLOBE,
           lng: position.coords.longitude,
           lat: position.coords.latitude,
           altitude: 0,
-          zoom: 0
+          zoom: 0,
         };
-        dispatch(setFlyToAction(newView));
+        dispatch(setFlyTo(newView));
         setLocationLoading(false);
       },
-      error => {
+      (error) => {
         console.error(`Error Code = ${error.code} - ${error.message}`);
-      }
+      },
     );
   };
 
@@ -91,7 +101,8 @@ const GlobeNavigation: FunctionComponent<Props> = ({
       <div
         className={styles.compass}
         id="ui-compass"
-        onClick={() => dispatch(setFlyToAction({...defaultView}))}>
+        onClick={() => dispatch(setFlyTo({ ...defaultView }))}
+      >
         <CompassIcon />
       </div>
       <Button
@@ -103,7 +114,7 @@ const GlobeNavigation: FunctionComponent<Props> = ({
             mainTimeFormat,
             compareTimeFormat,
             mainLayer,
-            compareLayer
+            compareLayer,
           )
         }
       />

@@ -1,13 +1,13 @@
-import React, {FunctionComponent} from 'react';
-import {FormattedMessage} from 'react-intl';
+import { FunctionComponent } from "react";
+import { FormattedMessage } from "react-intl";
 
-import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
-import config from '../../../config/main';
-import {DownloadButton} from '../../main/download-button/download-button';
+import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
+import config from "../../../config/main";
+import { DownloadButton } from "../../main/download-button/download-button";
 
-import {LayerListItem as LayerListItemType} from '../../../types/layer-list';
+import { LayerListItem as LayerListItemType } from "../../../types/layer-list";
 
-import styles from './layer-list-item.module.styl';
+import styles from "./layer-list-item.module.css";
 
 interface Props {
   layer: LayerListItemType;
@@ -18,23 +18,18 @@ interface Props {
 const LayerListItem: FunctionComponent<Props> = ({
   layer,
   isMainSelected,
-  onSelect
+  onSelect,
 }) => {
   const offlineUrl = replaceUrlPlaceholders(config.api.layerOfflinePackage, {
-    id: layer.id
+    id: layer.id,
   });
 
   return (
-    <div className={styles.layerItem} onClick={() => onSelect(layer.id, true)}>
+    <div className={styles.layerItem} onClick={() => onSelect(layer.id, false)}>
       <span className={styles.layerTitle}>{layer.shortName}</span>
       {isMainSelected && (
-        <button
-          className={styles.compare}
-          onClick={event => {
-            onSelect(layer.id, false);
-            event.stopPropagation();
-          }}>
-          <FormattedMessage id={'layerSelector.compare'} />
+        <button className={styles.compare}>
+          <FormattedMessage id={"layerSelector.compare"} />
         </button>
       )}
 
