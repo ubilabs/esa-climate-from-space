@@ -282,7 +282,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {tooltipInfo.visible &&
+        {tooltipInfo.visible && !isMobile &&
           tooltipInfo.x !== undefined &&
           tooltipInfo.y !== undefined &&
           // We create a portal to render to render the tooltip on the body
@@ -368,8 +368,10 @@ A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
                   }
                 }}
                 onClick={() => {
-                  setLastUserInteractionTime(Date.now());
-                  setCurrentIndex(index);
+                  if (!isMobile) {
+                    setLastUserInteractionTime(Date.now());
+                    setCurrentIndex(index);
+                  }
                 }}
                 onMouseEnter={(e) => handleShowTooltip(e, index)}
                 onMouseLeave={handleHideTooltip}
