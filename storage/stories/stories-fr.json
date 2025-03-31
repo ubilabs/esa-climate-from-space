@@ -248,5 +248,14 @@
     "tags": ["land-cover", "fire", "soil-moisture", "ghg"],
     "position": [-4, 58.3],
     "categories": ["land"]
+  },
+  {
+    "id": "story-44",
+    "title": "Ocean Warming",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [],
+    "categories": ["ocean"]
   }
 ]
