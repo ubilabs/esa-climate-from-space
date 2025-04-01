@@ -1,3 +1,12 @@
+## [2.0.1](https://github.com/ubilabs/esa-climate-from-space/compare/v2.0.0...v2.0.1) (2025-04-01)
+
+
+### Features
+
+* add story 44 id ([bf018c3](https://github.com/ubilabs/esa-climate-from-space/commit/bf018c3dfd51e6fc31260d0e193f7093fc0770d8))
+
+
+
 # [2.0.0](https://github.com/ubilabs/esa-climate-from-space/compare/v1.17.2...v2.0.0) (2025-03-26)
 
 
