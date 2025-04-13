@@ -1,5 +1,61 @@
 {
   "id": "story-44",
-  "slides": []
+  "slides": [
+    {
+      "type": "splashscreen",
+      "text": "# Ocean Warming\r\n\r\nEarth’s oceans are getting warmer, and the pace of warming is accelerating. Between April 2023 and June 2024 ocean temperatures were record-breaking, leading to an investigation of the underlying causes.",
+      "shortText": "# Ocean Warming\r\n\r\nEarth’s oceans are getting warmer, and the pace of warming is accelerating. Between April 2023 and June 2024 ocean temperatures were record-breaking, leading to an investigation of the underlying causes.",
+      "images": [
+        "assets/story44-image01.jpg"
+      ]
+    },
+    {
+      "type": "globe",
+      "text": "##  Observed Change\r\n\r\nSatellites have been observing Earth’s oceans for more than 40 years, recording the temperature of the sea surface with great precision almost every day. Although the global average sea-surface temperature (SST) fluctuates up and down from year to year, the long-term trend is up. \r\n\r\n![global mean sea surface temperature graph ](assets/story44-image02.png) \r\n_Monthly global average SST plot over 40 years (ESA CCI)_    \r\n\r\n2023-2024 was the hottest period on record for Earth’s ocean, with records broken by an unusual degree for 14 months. In part this was due to a strong [El Niño](stories/story43/1) warming event, but it is also a sign that heat is building up faster in the ocean. \r\n\r\nScientists from ESA’s Climate Change Initiative have analysed potential drivers of the change in sea-surface temperature, including energy input from the Sun, volcanic eruptions, the El Niño Southern Oscillation (ENSO) and Earth’s accumulated energy.",
+      "shortText": "##  Observed Change\r\n\r\nSatellites have been observing Earth’s oceans for more than 40 years, recording the temperature of the sea surface with great precision almost every day. Although the global average sea-surface temperature (SST) fluctuates up and down from year to year, the long-term trend is up. \r\n\r\n![global mean sea surface temperature graph ](assets/story44-image02.png) \r\n_Monthly global average SST plot over 40 years (ESA CCI)_   \r\n \r\n2023-2024 was the hottest period on record for Earth’s ocean, with records broken by an unusual degree for 14 months. In part this was due to a strong El Niño warming event, but it is also a sign that heat is building up faster in the ocean. \r\n\r\nScientists from ESA’s Climate Change Initiative have analysed potential drivers of the change in sea-surface temperature, including energy input from the Sun, volcanic eruptions, the El Niño Southern Oscillation (ENSO) and Earth’s accumulated energy.",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "layerDescription": "https://storage.googleapis.com/esa-cfs-versions/web/develop/index.html#/?globe=SI-41.64I34.93I25009995.54I360.00I-89.82I0.00I1596492810807.00I0.00Isst.analysed_sstI",
+      "videoId": "# CCI Sea Surface Temperature"
+    },
+    {
+      "type": "video",
+      "text": "## Drivers of Change\r\n\r\n## Solar Effect\r\nThe energy that drives Earth’s climate system comes in the form of light and heat from the Sun, which varies over the solar cycle of 11 years.\r\n\r\n## Volcanic Eruptions\r\nAerosol particles from volcanoes can reduce the amount of solar energy reaching Earth’s surface. The eruption of Mount Pinatubo in 1991 threw a huge volume of aerosols high into the atmosphere, where they reflected a significant amount of solar energy, lowering temperatures around the world for a few years. \r\n\r\n## El Niño Southern Oscillation\r\n[El Niño and La Niña events](stories/story16/6) change the temperature of a large part of the central Pacific Ocean, and so significantly affect the global average SST, as shown in the SST plot. \r\n\r\n## Earth Energy Accumulation\r\nSatellites have measured that the energy coming in from the Sun exceeds the energy going out from Earth. It is this energy imbalance that drives global warming. Over the last 40 years, it is estimated that each square metre of Earth’s surface has accumulated about 1 gigajoule of energy – enough to boil 4,500 kettles of water.\r\n\r\nBy quantifying the individual drivers of ocean warming, seasonal and interannual variability can be separated from long-term trends. Adding the drivers together gives a good fit to the observed SST changes across the satellite record. \r\n\r\nEarth energy accumulation is found to be the most important driver of the long-term temperature increase, and explains the observed acceleration of ocean warming over the past four decades. This is consistent with reported accelerations in the storage of heat in the ocean and sea level rise.",
+      "shortText": "## Drivers of Change\r\n\r\n## Solar Effect\r\nThe energy that drives Earth’s climate system comes in the form of light and heat from the Sun, which varies over the solar cycle of 11 years.\r\n\r\n## Volcanic Eruptions\r\nAerosol particles from volcanoes can reduce the amount of solar energy reaching Earth’s surface. The eruption of Mount Pinatubo in 1991 threw a huge volume of aerosols high into the atmosphere, where they reflected a significant amount of solar energy, lowering temperatures around the world for a few years. \r\n\r\n## El Niño Southern Oscillation\r\nEl Niño and La Niña events change the temperature of a large part of the central Pacific Ocean, and so significantly affect the global average SST, as shown in the SST plot. \r\n\r\n## Earth Energy Accumulation\r\nSatellites have measured that the energy coming in from the Sun exceeds the energy going out from Earth. It is this energy imbalance that drives global warming. Over the last 40 years, it is estimated that each square metre of Earth’s surface has accumulated about 1 gigajoule of energy – enough to boil 4,500 kettles of water.\r\n\r\nBy quantifying the individual drivers of ocean warming, seasonal and interannual variability can be separated from long-term trends. Adding the drivers together gives a good fit to the observed SST changes across the satellite record. \r\n\r\nEarth energy accumulation is found to be the most important driver of the long-term temperature increase, and explains the observed acceleration of ocean warming over the past four decades. This is consistent with reported accelerations in the storage of heat in the ocean and sea level rise.",
+      "imageFits": [
+        "cover",
+        "cover",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "videoPoster": "assets/oceanwarming.jpg",
+      "videoSrc": [
+        "assets/oceanwarming-web.mp4"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "##  Future Ocean Warming\r\n\r\nIf recent Earth energy accumulation rates continue, the 0.5°C rise in global mean SST observed over the last 40 years will likely be exceeded in the next 20 years. We should expect ocean temperature to rise twice as fast as we have seen so far, and be prepared for the consequences.\r\n\r\nSince warmer water expands, ocean temperature is a major driver of sea level rise. Warmer surface water also fuels hurricanes and typhoons, increasing their strength and frequency. The acceleration in ocean warming amplifies natural climate cycles such as El Niño, strengthening their impacts. It also worsens ocean heatwaves, which damage marine ecosystems - often irreversibly - costing billions of euros in losses for fisheries and aquaculture.\r\n\r\nThe long-duration and high-quality datasets developed by [ESA’s Climate Change Initiative](stories/story-32/3)  are helping scientists to uncover new knowledge about the processes driving the climate system. This knowledge will help improve the accuracy of climate models and provide a firmer basis for climate action.",
+      "shortText": "##  Future Ocean Warming\r\n\r\nIf recent Earth energy accumulation rates continue, the 0.5°C rise in global mean SST observed over the last 40 years will likely be exceeded in the next 20 years. We should expect ocean temperature to rise twice as fast as we have seen so far, and be prepared for the consequences.\r\n\r\nSince warmer water expands, ocean temperature is a major driver of sea level rise. Warmer surface water also fuels hurricanes and typhoons, increasing their strength and frequency. The acceleration in ocean warming amplifies natural climate cycles such as El Niño, strengthening their impacts. It also worsens ocean heatwaves, which damage marine ecosystems - often irreversibly - costing billions of euros in losses for fisheries and aquaculture.\r\n\r\nThe long-duration and high-quality datasets developed by ESA’s Climate Change Initiative are helping scientists to uncover new knowledge about the processes driving the climate system. This knowledge will help improve the accuracy of climate models and provide a firmer basis for climate action.",
+      "images": [
+        "assets/story44-image03.jpg"
+      ],
+      "imageCaptions": [
+        "# Global Mean Sea Surface Temperature\r\nScenarios for future global mean sea-surface temperature (GMSST). The range of uncertainty is shown in green.\r\n1. Worst-case scenario following the accelerated trend from 2010 onwards\r\n2. Moderate scenario reverting to the pre-2010 trend\r\n3. Scenario with mitigation policies reducing Earth’s energy imbalance\r\n4. Projection of linear fit to observations (ignoring the acceleration)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ]
+    }
+  ]
 }
-
