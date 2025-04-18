@@ -47,7 +47,7 @@
         "assets/story44-image03.png"
       ],
       "imageCaptions": [
-        "# Global Mean Sea Surface Temperature\r\nScenarios for future global mean sea-surface temperature (GMSST). The range of uncertainty is shown in green.\r\n1. Worst-case scenario following the accelerated trend from 2010 onwards\r\n2. Moderate scenario reverting to the pre-2010 trend\r\n3. Scenario with mitigation policies reducing Earth’s energy imbalance\r\n4. Projection of linear fit to observations (ignoring the acceleration)"
+        "# Global Mean Sea Surface Temperature\r\nScenarios for future global mean sea-surface temperature (GMSST). The range of uncertainty is shown in green. 1. Worst-case scenario following the accelerated trend from 2010 onwards. 2. Moderate scenario reverting to the pre-2010 trend. 3. Scenario with mitigation policies reducing Earth’s energy imbalance. 4. Projection of linear fit to observations, ignoring the acceleration. (ESA CCI)"
       ],
       "imageFits": [
         "contain",
