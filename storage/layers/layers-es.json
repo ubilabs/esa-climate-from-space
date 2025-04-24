@@ -90,7 +90,7 @@
     "categories": ["land", "cryosphere", "water_cycle"]
   },
   {
-    "id": "permafrost.pfr",
+    "id": "permafrost.PFR",
     "type": "Cryosphere",
     "name": "Permafrost",
     "shortName": "Permafrost",
