@@ -20,8 +20,13 @@
         "contain",
         "contain"
       ],
-      "layerDescription": "https://storage.googleapis.com/esa-cfs-versions/web/develop/index.html#/?globe=SI-41.64I34.93I25009995.54I360.00I-89.82I0.00I1596492810807.00I0.00Isst.analysed_sstI",
-      "videoId": "# CCI Sea Surface Temperature"
+      "layer": [
+        {
+          "id": "sst.analysed_sst",
+          "timestamp": "2020-08-03T22:13:30.807Z"
+        }
+      ],
+      "layerDescription": "# CCI Sea Surface Temperature"
     },
     {
       "type": "video",
