@@ -1,26 +1,12 @@
 from xcube.core.store import new_data_store
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
 
 # Initialize the data store
 cci_store = new_data_store('esa-cci')
 
 # Define the date range
-start_date = '2003-01-01'
-end_date = '2021-01-01'
-
-# Parse datetime objects
-f = "%Y-%m-%dT%H:%M:%S.%fZ"
-start_date_time = datetime.strptime(start_date + "T12:00:00.000Z", f)
-end_date_time = datetime.strptime(end_date + "T12:00:00.000Z", f)
-
-# Generate monthly timestamps (1st of each month)
-timestamps = []
-current_date = start_date_time
-
-while current_date <= end_date_time:
-    timestamps.append(current_date)
-    current_date += relativedelta(years=+1)
+start_date = '2003-07-02'
+end_date = '2021-07-02'
 
 # Open the data cube once
 cube = cci_store.open_data(
@@ -29,6 +15,8 @@ cube = cci_store.open_data(
     time_range=[start_date, end_date]
 )
 
-# Loop through each timestamp (1st of each month)
-for ts in timestamps:
-    cube.PFR.sel(time=ts, method='nearest').to_netcdf(path='./permafrost/' + ts.strftime("%Y%m%d") + '.nc')
+# Loop through each timestamp in cube.time.values
+for ts in cube.time.values:
+    ts_datetime = datetime.utcfromtimestamp(ts.astype('O') / 1e9)  # Convert numpy.datetime64 to datetime
+    output_path = f'./permafrost/{ts_datetime.strftime("%Y%m%d")}.nc'
+    cube.PFR.sel(time=ts, method='nearest').to_netcdf(path=output_path)
