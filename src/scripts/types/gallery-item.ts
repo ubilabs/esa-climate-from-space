@@ -47,4 +47,5 @@ export interface GlobeItem {
   markers: Marker[];
   layer?: StoryLayer[];
   layerDescription?: string;
+  layerAutoplay?: boolean;
 }

@@ -17,6 +17,7 @@ export interface LegacySlide {
   embeddedSrc?: string;
   layer?: StoryLayer[];
   layerDescription?: string;
+  layerAutoplay?: boolean;
   flyTo: {
     position: {
       longitude: number;

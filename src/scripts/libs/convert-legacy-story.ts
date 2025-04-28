@@ -44,6 +44,7 @@ const getGalleryItems = (
         markers: slide.markers,
         layer: slide.layer,
         layerDescription: slide.layerDescription,
+        layerAutoplay: slide.layerAutoplay,
       },
     ];
   }

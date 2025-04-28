@@ -31,6 +31,7 @@ import styles from "./time-slider.module.css";
 interface Props {
   className?: string;
   noTimeClamp?: boolean;
+  autoplay?: boolean;
 }
 
 // debounce the time update
@@ -39,6 +40,7 @@ const DELAY = 200;
 const TimeSlider: FunctionComponent<Props> = ({
   className = "",
   noTimeClamp,
+  autoplay = false,
 }) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;
@@ -102,8 +104,8 @@ const TimeSlider: FunctionComponent<Props> = ({
 
   // stop playback when layer changes
   useEffect(() => {
-    setIsPlaying(false);
-  }, [mainLayerDetails, compareLayerDetails]);
+    setIsPlaying(autoplay);
+  }, [mainLayerDetails, compareLayerDetails, autoplay]);
 
   // sync local time
   useEffect(() => {
