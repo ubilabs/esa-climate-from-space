@@ -31,7 +31,11 @@ const StoryImage: FunctionComponent<Props> = ({
         src={imageUrl}
       />
       {imageCaption && (
-        <Caption showLightbox={showLightbox} content={imageCaption} />
+        <Caption
+          showLightbox={showLightbox}
+          content={imageCaption}
+          imageFit={imageFit}
+        />
       )}
     </>
   );

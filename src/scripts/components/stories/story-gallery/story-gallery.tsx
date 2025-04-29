@@ -92,11 +92,6 @@ const StoryGallery: FunctionComponent<Props> = ({
 
   return (
     <div className={storyGalleryClasses}>
-      {children.length > 1 && (
-        <StoryProgress currentIndex={currentIndex} showLightbox={showLightbox}>
-          {children}
-        </StoryProgress>
-      )}
       <div className={styles.gallery}>
         {!showLightbox ? (
           <div
@@ -130,6 +125,11 @@ const StoryGallery: FunctionComponent<Props> = ({
           </div>
         )}
       </div>
+      {children.length > 1 && (
+        <StoryProgress currentIndex={currentIndex} showLightbox={showLightbox}>
+          {children}
+        </StoryProgress>
+      )}
     </div>
   );
 };

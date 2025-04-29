@@ -3,7 +3,7 @@
   bottom: 0;
   box-sizing: border-box;
   padding-right: 3.4375em;
-  padding-bottom: 0.625em;
+  padding-bottom: 2.5em;
   min-height: var(--story-caption-height);
   width: 100%;
   background: rgba(16, 22, 26, 0.6);
@@ -19,8 +19,7 @@
 }
 .lightboxCaption {
   overflow: hidden;
-  padding: 0.9375em;
-  height: 7.5em;
+  padding: 1.5em 0.9375em;
   pointer-events: none;
 }
 .lightboxCaption .content {
@@ -47,6 +46,7 @@
   .lightboxCaption {
     pointer-events: none;
   }
+
   .lightboxCaption .content {
     overflow: hidden;
     padding: 0;
