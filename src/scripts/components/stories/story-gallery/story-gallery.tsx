@@ -18,11 +18,17 @@ interface Props {
   storyId: string;
   mode: StoryMode | null;
   children: React.ReactElement[];
+  showLightbox: boolean;
+  setShowLightbox: (showLightbox: boolean) => void;
 }
 
-const StoryGallery: FunctionComponent<Props> = ({ mode, children }) => {
+const StoryGallery: FunctionComponent<Props> = ({
+  mode,
+  showLightbox,
+  setShowLightbox,
+  children,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showLightbox, setShowLightbox] = useState(false);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < children.length - 1;
   const delay = mode === StoryMode.Showcase ? config.delay : null;

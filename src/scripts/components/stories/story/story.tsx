@@ -39,6 +39,7 @@ const Story: FunctionComponent = () => {
   const [videoDuration, setVideoDuration] = useState<number>(0);
   const { mode, slideIndex, currentStoryId } = storyParams;
   const contentRef = useRef<HTMLDivElement>(null);
+  const [showLightbox, setShowLightbox] = useState(false);
 
   const lang = useSelector(languageSelector);
 
@@ -106,11 +107,23 @@ const Story: FunctionComponent = () => {
   const getRightSideComponent = (slide: Slide, story: StoryType) => {
     if (slide.galleryItems) {
       return (
-        <StoryGallery mode={mode} storyId={story.id} key={story.id}>
+        <StoryGallery
+          mode={mode}
+          storyId={story.id}
+          key={story.id}
+          showLightbox={showLightbox}
+          setShowLightbox={setShowLightbox}
+        >
           {slide.galleryItems.map((item) => {
             switch (item.type) {
               case GalleryItemType.Image:
-                return <StoryImage storyId={story.id} imageItem={item} />;
+                return (
+                  <StoryImage
+                    storyId={story.id}
+                    imageItem={item}
+                    showLightbox={showLightbox}
+                  />
+                );
               case GalleryItemType.Video:
                 return item.videoSrc || item.videoId ? (
                   <StoryVideo
@@ -127,7 +140,12 @@ const Story: FunctionComponent = () => {
               case GalleryItemType.Globe:
                 return <StoryGlobe globeItem={item} />;
               case GalleryItemType.Embedded:
-                return <StoryEmbedded embeddedItem={item} />;
+                return (
+                  <StoryEmbedded
+                    embeddedItem={item}
+                    showLightbox={showLightbox}
+                  />
+                );
               default:
                 console.warn(
                   `Unknown gallery item type ${item["type"]} on slide ${
