@@ -1,4 +1,6 @@
 import { FunctionComponent } from "react";
+import cx from "classnames";
+
 import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
 
 import Caption from "../caption/caption";
@@ -24,7 +26,7 @@ const StoryImage: FunctionComponent<Props> = ({
   return (
     <>
       <img
-        className={styles.photo}
+        className={cx(styles.photo, showLightbox && styles.lightboxPhoto)}
         style={{
           objectFit: imageFit === ImageFit.Cover ? "cover" : "contain",
         }}
