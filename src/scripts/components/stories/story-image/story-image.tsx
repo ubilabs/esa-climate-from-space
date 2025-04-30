@@ -11,9 +11,14 @@ import styles from "./story-image.module.css";
 interface Props {
   storyId: string;
   imageItem: ImageItem;
+  showLightbox: boolean;
 }
 
-const StoryImage: FunctionComponent<Props> = ({ storyId, imageItem }) => {
+const StoryImage: FunctionComponent<Props> = ({
+  storyId,
+  imageItem,
+  showLightbox,
+}) => {
   const imageUrl = getStoryAssetUrl(storyId, imageItem.image);
   const { imageCaption, imageFit } = imageItem;
   return (
@@ -23,12 +28,13 @@ const StoryImage: FunctionComponent<Props> = ({ storyId, imageItem }) => {
         style={{
           objectFit: imageFit === ImageFit.Cover ? "cover" : "contain",
         }}
-       src={imageUrl}
+        src={imageUrl}
       />
       {imageCaption && (
         <Caption
-          showLightbox={false}
+          showLightbox={showLightbox}
           content={imageCaption}
+          imageFit={imageFit}
         />
       )}
     </>
