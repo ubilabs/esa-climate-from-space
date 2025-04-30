@@ -1,9 +1,6 @@
 .caption {
-  position: absolute;
-  bottom: 0;
   box-sizing: border-box;
   padding-right: 3.4375em;
-  padding-bottom: 2.5em;
   min-height: var(--story-caption-height);
   width: 100%;
   background: rgba(16, 22, 26, 0.6);
@@ -18,6 +15,9 @@
   -webkit-box-orient: vertical;
 }
 .lightboxCaption {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 2.5em;
   overflow: hidden;
   padding: 1.5em 0.9375em;
   pointer-events: none;
@@ -32,6 +32,12 @@
 }
 
 @media screen and (--mobile-s-viewport) {
+  .caption {
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 2.5em;
+  }
+
   .content {
     -webkit-line-clamp: 3;
   }
