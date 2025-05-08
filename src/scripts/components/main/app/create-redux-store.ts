@@ -19,7 +19,7 @@ if (isElectron()) {
   middleware.push(offlineLoadMiddleware);
 }
 
-if (!isProduction) {
+if (!isProduction || isElectron()) {
   middleware.push(createLogger({ collapsed: true }));
 }
 
@@ -27,9 +27,9 @@ export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
-      .concat(middleware)
+      .concat(storiesApi.middleware)
       .concat(layersApi.middleware)
-      .concat(storiesApi.middleware);
+      .concat(middleware);
   },
 });
 

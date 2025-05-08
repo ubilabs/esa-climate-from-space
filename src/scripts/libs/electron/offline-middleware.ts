@@ -1,67 +1,90 @@
 // This is a redux middleware which saves and loads the response of the given
 // fetch actions on the local file system for offline use.
-import { Middleware, Dispatch, AnyAction } from "@reduxjs/toolkit";
+import { Middleware } from "@reduxjs/toolkit";
 import { saveAction } from "./save-action";
 import { loadAction } from "./load-action";
 
-import { ActionToPersist } from "../../types/action-to-persist";
+import { ActionToPersist, RTKQueryAction } from "../../types/action-to-persist";
+import { layersApi, storiesApi } from "../../services/api";
+import { setLayerDetails } from "../../reducers/layers";
+import { Layer } from "../../types/layer";
 
 // These are the actions we want to save/load when in electron mode
 const actionsToPersist: ActionToPersist[] = [
   {
-    success: "fetchLayers/success",
-    error: "fetchLayers/error",
+    meta: {
+      arg: {
+        endpointName: "getLayerList",
+      },
+    },
     save: true,
     load: true,
+    payload: undefined,
   },
   {
-    success: "fetchStories/success",
-    error: "fetch",
+    meta: {
+      arg: {
+        endpointName: "getStoryList",
+      },
+    },
     save: true,
     load: true,
+    payload: undefined,
   },
   {
-    success: "fetchStory/success",
-    error: "fetchStory/error",
+    meta: {
+      arg: {
+        endpointName: "getStory",
+      },
+    },
     save: false, // for this action we only want to load the file from the stories' offline package
     load: true,
-    getFilePath: (errorAction: AnyAction) =>
-      `downloads/story-${errorAction.id}/${errorAction.id}-${errorAction.language}.json`, // the path relative to the app's offline folder
-    successActionCreator: (errorAction, content) => (
-      errorAction.id, errorAction.language, content
-    ),
+    payload: undefined,
+    getFilePath: (errorAction: RTKQueryAction) =>
+      `downloads/story-${errorAction.meta?.arg.originalArgs.id}/${errorAction.meta?.arg.originalArgs.id}-${errorAction.meta?.arg.originalArgs.language}.json`, // the path relative to the app's offline folder
   },
   {
-    success: "fetchLayer/success",
-    error: "fetchLayer/error",
+    meta: {
+      arg: {
+        endpointName: "getLayer",
+      },
+    },
     save: false, // for this action we only want to load the file from the layers's offline package
     load: true,
-    getFilePath: (errorAction: AnyAction) =>
-      `downloads/${errorAction.id}/metadata.json`, // the path relative to the app's offline folder
-    successActionCreator: (errorAction, content) => (errorAction.id, content),
+    payload: undefined,
+    getFilePath: (errorAction: RTKQueryAction) =>
+      `downloads/${errorAction.meta?.arg.originalArgs}/metadata.json`, // the path relative to the app's offline folder
   },
 ];
 
 // Saves the specified success actions as a json file on the file system
-export const offlineSaveMiddleware: Middleware =
-  () => (next: Dispatch<AnyAction>) => (action: AnyAction) => {
-    const actionToSave = actionsToPersist.find(
-      ({ success }) => success === action.type,
-    );
+export const offlineSaveMiddleware: Middleware = () => (next) => (action) => {
+  const dispatchedAction = action as RTKQueryAction;
 
-    if (actionToSave?.save) {
-      saveAction(action);
-    }
+  const actionToSave = actionsToPersist.find(
+    ({ meta }) =>
+      meta.arg.endpointName === dispatchedAction.meta?.arg?.endpointName,
+  );
 
-    return next(action);
-  };
+  if (
+    dispatchedAction.meta?.requestStatus === "fulfilled" &&
+    actionToSave?.save
+  ) {
+    saveAction(dispatchedAction);
+  }
+
+  return next(action);
+};
 
 // Tries to load persisted success actions in case their error counterpart was
 // dispatched
 export const offlineLoadMiddleware: Middleware =
-  () => (next: Dispatch<AnyAction>) => async (dispatchedAction: AnyAction) => {
+  (storeApi) => (next) => async (action) => {
+    const dispatchedAction = action as RTKQueryAction;
+    const fetchArgs = dispatchedAction.meta?.arg;
+
     const actionToLoad = actionsToPersist.find(
-      ({ error }) => error === dispatchedAction.type,
+      ({ meta }) => meta.arg.endpointName === fetchArgs?.endpointName,
     );
 
     // when the incoming action did fail and is one we probably saved before,
@@ -71,25 +94,51 @@ export const offlineLoadMiddleware: Middleware =
       const filePath = actionToLoad.getFilePath
         ? actionToLoad.getFilePath(dispatchedAction)
         : undefined;
-      const content = await loadAction(actionToLoad.success, filePath);
+      const loadedAction = await loadAction(
+        actionToLoad.meta.arg.endpointName,
+        filePath,
+      );
 
       // persisted data not found -> dispatch original error action
-      if (!content) {
-        return next(dispatchedAction);
+      if (!loadedAction) {
+        return next(action);
       }
 
-      // if we load the action directly the content is already the complete action
-      // if we load content from a downloaded package we have to create the action
-      // object first with the successActionCreator function
-      const loadedAction = actionToLoad.successActionCreator
-        ? actionToLoad.successActionCreator(dispatchedAction, content)
-        : content;
-
       if (loadedAction) {
-        return next(loadedAction);
+        const content =
+          "payload" in loadedAction ? loadedAction.payload : loadedAction;
+        if (
+          storiesApi.endpoints.getStoryList.matchRejected(action) ||
+          storiesApi.endpoints.getStories.matchRejected(action) ||
+          storiesApi.endpoints.getStory.matchRejected(action)
+        ) {
+          storeApi.dispatch(
+            // @ts-expect-error Argument of type 'ThunkAction<InfiniteQueryActionCreatorResult<any> | QueryActionCreatorResult<any> | QueryActionCreatorResult<never>, RootState<...>, any, UnknownAction>' is not assignable to parameter of type 'UnknownAction'
+            storiesApi.util.upsertQueryData(
+              fetchArgs?.endpointName as keyof typeof storiesApi.endpoints,
+              // @ts-expect-error Argument of type 'unknown' is not assignable to parameter of type 'Language | { id: string; language: string; } | { ids: string[]; language: string; }'
+              fetchArgs?.originalArgs,
+              content,
+            ),
+          );
+          return;
+        } else if (layersApi.endpoints.getLayerList.matchRejected(action)) {
+          storeApi.dispatch(
+            // @ts-expect-error Argument of type 'ThunkAction<InfiniteQueryActionCreatorResult<any> | QueryActionCreatorResult<any> | QueryActionCreatorResult<never>, RootState<...>, any, UnknownAction>' is not assignable to parameter of type 'UnknownAction'
+            layersApi.util.upsertQueryData(
+              fetchArgs?.endpointName as keyof typeof layersApi.endpoints,
+              // @ts-expect-error Argument of type 'unknown' is not assignable to parameter of type 'string'
+              fetchArgs?.originalArgs,
+              content,
+            ),
+          );
+          return;
+        } else if (layersApi.endpoints.getLayer.matchRejected(action)) {
+          storeApi.dispatch(setLayerDetails(content as Layer));
+        }
       }
     }
 
     // return the original error action when not found
-    return next(dispatchedAction);
+    return next(action);
   };
