@@ -41,7 +41,7 @@ const actionsToPersist: ActionToPersist[] = [
     load: true,
     payload: undefined,
     getFilePath: (errorAction: RTKQueryAction) =>
-      `downloads/story-${errorAction.meta?.arg.originalArgs.id}/${errorAction.meta?.arg.originalArgs.id}-${errorAction.meta?.arg.originalArgs.language}.json`, // the path relative to the app's offline folder
+      `downloads/${errorAction.meta?.arg.originalArgs.id}/${errorAction.meta?.arg.originalArgs.id}-${errorAction.meta?.arg.originalArgs.language}.json`, // the path relative to the app's offline folder
   },
   {
     meta: {

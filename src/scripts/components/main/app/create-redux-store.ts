@@ -1,6 +1,6 @@
 import { configureStore, Middleware, AnyAction } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
-import { thunk, ThunkDispatch } from "redux-thunk";
+import { ThunkDispatch } from "redux-thunk";
 import { layersApi, storiesApi } from "../../../services/api";
 
 import rootReducer from "../../../reducers/index";
@@ -12,7 +12,7 @@ import {
 } from "../../../libs/electron/index";
 
 const isProduction = import.meta.env.PROD;
-const middleware: Middleware[] = [thunk];
+const middleware: Middleware[] = [];
 
 if (isElectron()) {
   middleware.push(offlineSaveMiddleware);

@@ -25,6 +25,9 @@ export function addDownloadHandler(browserWindow: BrowserWindow) {
 
   browserWindow.webContents.session.on("will-download", (_, item) => {
     console.log("will-download", item.getFilename());
+    if (!item.getFilename().toLowerCase().endsWith(".zip")) {
+      return;
+    }
     const downloadsPath = app.getPath("downloads");
     const offlinePath = path.join(downloadsPath, "downloads");
     const tmpFilePath = path.join(offlinePath, `${Date.now()}.zip`);
@@ -32,7 +35,7 @@ export function addDownloadHandler(browserWindow: BrowserWindow) {
 
     activeDownloads[item.getFilename()] = 0;
 
-    console.log(`Downloading file ${item.getURL()} to ${item.savePath}`);
+    console.log(`Downloading file ${item.getFilename()} to ${item.savePath}`);
 
     item.on("updated", (event, state) => {
       if (state === "interrupted") {
