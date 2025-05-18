@@ -20,13 +20,26 @@
         "contain",
         "contain"
       ],
+      "flyTo": {
+        "position": {
+          "longitude": -41.64,
+          "latitude": 34.93,
+          "height": 25009995.54
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.82,
+          "roll": 0
+        }
+      },
       "layer": [
         {
           "id": "sst.analysed_sst",
           "timestamp": "2020-08-03T22:13:30.807Z"
         }
       ],
-      "layerDescription": "# CCI Sea Surface Temperature"
+      "layerDescription": "# CCI Sea Surface Temperature",
+      "layerAutoplay": true
     },
     {
       "type": "video",
