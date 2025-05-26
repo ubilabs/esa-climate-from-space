@@ -14,8 +14,8 @@ import {
 } from "../../../config/main";
 
 import { setSelectedContentAction } from "../../../reducers/content";
-import { useParams } from "react-router-dom";
 import useAutoRotate from "../../../hooks/use-auto-content-rotation";
+import { useContentParams } from "../../../hooks/use-content-params";
 import {
   useCategoryScrollHandlers,
   useCategoryTouchHandlers,
@@ -30,10 +30,6 @@ interface Props {
   isAnimationReady: RefObject<boolean>;
   arcs: { [key: string]: number }[];
   height: number;
-}
-
-interface RouteParams {
-  category: string | undefined;
 }
 
 // We reference the SVG container by its ID
@@ -57,7 +53,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   arcs,
   isAnimationReady,
 }) => {
-  const { category } = useParams<RouteParams>();
+  const { category } = useContentParams()
   // Ref to store and control the auto-rotation interval
   const [lastUserInteractionTime, setLastUserInteractionTime] = useState(
     Date.now(),
