@@ -16,7 +16,6 @@ function loadAction(actionType: string, pathToFile: string) {
 
   try {
     const content = fs.readFileSync(filePath, "utf8");
-    //console.log("load action", content);
     action = JSON.parse(content);
     console.log(`Loaded action ${actionType} from ${filePath}`);
   } catch (error) {
