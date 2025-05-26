@@ -1,0 +1,79 @@
+{
+  "id": "story-44",
+  "slides": [
+    {
+      "type": "splashscreen",
+      "text": "# Opwarming van de oceaan\r\n\r\nDe oceanen op aarde worden warmer en het tempo van de opwarming versnelt. Tussen april 2023 en juni 2024 overtroffen de gemiddelde oceaantemperaturen vorige records ruimschoots, wat leidde tot een onderzoek naar de onderliggende oorzaken.",
+      "shortText": "# Opwarming van de oceaan\r\n\r\nDe oceanen op aarde worden warmer en het tempo van de opwarming versnelt. Tussen april 2023 en juni 2024 overtroffen de gemiddelde oceaantemperaturen vorige records ruimschoots, wat leidde tot een onderzoek naar de onderliggende oorzaken.",
+      "images": [
+        "assets/story44-image01.jpg"
+      ]
+    },
+    {
+      "type": "globe",
+      "text": "## Waargenomen verandering\r\n\r\nSatellieten observeren de oceanen op aarde al meer dan 40 jaar en registreren bijna elke dag met grote precisie de temperatuur van het zeeoppervlak. Hoewel de wereldwijde gemiddelde temperatuur van het zeeoppervlak (SST) van jaar tot jaar op en neer gaat, is de langetermijntrend stijgend.\r\n\r\nwereldgemiddelde zeeoppervlaktetemperatuur grafiek ](assets/story44-image02.png)\r\n_Maandelijks wereldwijd gemiddelde SST over 40 jaar (ESA CCI)_\r\n\r\nMaar een ongebruikelijke temperatuursprong vond plaats tussen 2023-2024, de warmste periode ooit voor de oceanen op aarde, met records gebroken gedurende 14 maanden. Deels was dit te wijten aan een [El Niño](stories/story-43/1) opwarming, maar het is ook een teken dat de warmte zich sneller opbouwt in de oceaan.  \r\n\r\nWetenschappers van ESA's Climate Change Initiative hebben mogelijke oorzaken van de verandering in de temperatuur van het zeeoppervlak geanalyseerd, waaronder energie-input van de zon, vulkaanuitbarstingen, de El Niño Southern Oscillation (ENSO) en de geaccumuleerde energie van de aarde.",
+      "shortText": "## Waargenomen verandering\r\n\r\nSatellieten observeren de oceanen op aarde al meer dan 40 jaar en registreren bijna elke dag de temperatuur van het zeeoppervlak. Hoewel de gemiddelde temperatuur van het zeeoppervlak van jaar tot jaar op en neer gaat, is de langetermijntrend stijgend.\r\n\r\nwereldgemiddelde zeeoppervlaktetemperatuur grafiek ](assets/story44-image02.png)\r\n_Maandelijks wereldwijd gemiddelde SST over 40 jaar (ESA CCI)_\r\n\r\nDe temperaturen stegen tussen 2023-2024, de warmste periode ooit voor de oceanen op aarde. Deels was dit te wijten aan een El Niño-opwarming, maar het is ook een teken dat de warmte zich sneller opbouwt in de oceaan.\r\n\r\nWetenschappers van ESA's Climate Change Initiative hebben mogelijke oorzaken van de verandering in SST geanalyseerd: energie-input van de zon, vulkaanuitbarstingen, de El Niño Southern Oscillation (ENSO) en de geaccumuleerde energie van de aarde.",
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "flyTo": {
+        "position": {
+          "longitude": -41.64,
+          "latitude": 34.93,
+          "height": 25009995.54
+        },
+        "orientation": {
+          "heading": 360,
+          "pitch": -89.82,
+          "roll": 0
+        }
+      },
+      "layer": [
+        {
+          "id": "sst.analysed_sst",
+          "timestamp": "2020-08-03T22:13:30.807Z"
+        }
+      ],
+      "layerDescription": "# CCI Sea Surface Temperature",
+      "layerAutoplay": true
+    },
+    {
+      "type": "video",
+      "text": "## Aanjagers van verandering\r\n\r\nZonne-effect:\r\n\r\nDe energie die het klimaatsysteem van de aarde aandrijft komt in de vorm van licht en warmte van de zon, die varieert gedurende de zonnecyclus van 11 jaar.\r\n\r\nVulkaanuitbarstingen:\r\n\r\nAërosoldeeltjes van vulkanen kunnen de hoeveelheid zonne-energie die het aardoppervlak bereikt verminderen. De uitbarsting van Mount Pinatubo in 1991 wierp een enorme hoeveelheid aerosolen hoog in de atmosfeer, waar ze een aanzienlijke hoeveelheid zonne-energie weerkaatsten en de temperaturen over de hele wereld een paar jaar lang verlaagden.\r\n\r\nEl Niño Zuidelijke Oscillatie:\r\n\r\n[El Niño en La Niña gebeurtenissen](stories/story-16/6) veranderen de temperatuur van een groot deel van het centrale deel van de Stille Oceaan en hebben zo een grote invloed op de wereldwijde gemiddelde SST, zoals te zien is in de SST-plot.\r\n\r\nAccumulatie van energie op aarde:\r\n\r\nSatellieten hebben gemeten dat de energie die van de zon binnenkomt groter is dan de energie die van de aarde uitgaat. Het is deze onbalans in energie die de opwarming van de aarde veroorzaakt. In de afgelopen 40 jaar heeft elke vierkante meter van het aardoppervlak naar schatting ongeveer 1 gigajoule aan energie geaccumuleerd - genoeg om 4.500 waterkokers water te koken.\r\n\r\nDoor de individuele oorzaken van de opwarming van de oceaan te kwantificeren, kunnen seizoensgebonden en interjaarlijkse variabiliteit worden gescheiden van langetermijntrends. Door de oorzaken bij elkaar op te tellen kunnen de waargenomen SST-veranderingen in de satellietgegevens goed worden weergegeven.\r\n\r\nDe accumulatie van energie op aarde blijkt de belangrijkste drijvende kracht achter de temperatuurstijging op lange termijn te zijn en verklaart de waargenomen versnelling van de opwarming van de oceanen in de afgelopen vier decennia. Dit komt overeen met gerapporteerde versnellingen in de opslag van warmte in de oceaan en zeespiegelstijging.",
+      "shortText": "## Aanjagers van verandering\r\n\r\n- Zonne-effect: Licht en warmte van de zon, variërend gedurende de zonnecyclus van 11 jaar.\r\n\r\n- Vulkaanuitbarstingen: Aërosoldeeltjes verminderen de hoeveelheid zonne-energie die het aardoppervlak bereikt. Mt Pinatubo wierp in 1991 een enorme hoeveelheid aërosolen hoog de atmosfeer in, waardoor zonne-energie werd weerkaatst en de temperaturen over de hele wereld een paar jaar lang daalden.\r\n\r\n- El Niño Zuidelijke Oscillatie: El Niño en La Niña veranderen de temperatuur van een groot deel van de Stille Oceaan, waardoor de wereldwijde gemiddelde SST aanzienlijk wordt beïnvloed, zoals te zien is in de SST-plot.\r\n\r\n- Accumulatie van energie op aarde: Er komt meer energie van de zon binnen dan er van de aarde uitgaat. Deze onbalans in energie, gemeten door satellieten, is verantwoordelijk voor de opwarming van de aarde. In de afgelopen 40 jaar heeft elke vierkante meter van het aardoppervlak 1 gigajoule aan energie geaccumuleerd - genoeg om 4500 waterkokers te koken.\r\n\r\nDoor de afzonderlijke oorzaken van de opwarming van de oceaan te kwantificeren, kunnen seizoensgebonden en interjaarlijkse variabiliteit worden gescheiden van langetermijntrends. Door de oorzaken bij elkaar op te tellen, kunnen de waargenomen SST-veranderingen in de satellietgegevens goed worden weergegeven.\r\n\r\nDe accumulatie van energie op aarde is de belangrijkste drijvende kracht achter de temperatuurstijging op lange termijn. Het verklaart de waargenomen versnelling van de opwarming van de oceaan in de afgelopen vier decennia en komt overeen met gerapporteerde versnellingen in de opslag van warmte in de oceaan en zeespiegelstijging.",
+      "imageFits": [
+        "cover",
+        "cover",
+        "contain",
+        "contain",
+        "contain"
+      ],
+      "videoPoster": "assets/oceanwarming.jpg",
+      "videoSrc": [
+        "assets/oceanwarming-web.mp4"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "## Toekomstige opwarming van de oceaan\r\n\r\nAls de recente accumulatie van energie op aarde doorgaat, zal de stijging van de wereldgemiddelde SST met 0,5°C die de afgelopen 40 jaar is waargenomen, waarschijnlijk in de komende 20 jaar worden overschreden. We moeten verwachten dat de oceaantemperatuur twee keer zo snel zal stijgen als we tot nu toe hebben gezien en we moeten voorbereid zijn op de gevolgen.\r\n\r\nOmdat warmer water uitzet, is de temperatuur van de oceaan een belangrijke drijvende kracht achter de zeespiegelstijging. Warmer oppervlaktewater wakkert ook orkanen en tyfoons aan, waardoor ze krachtiger worden en vaker voorkomen. De versnelde opwarming van de oceaan versterkt natuurlijke klimaatcycli zoals El Niño, waardoor hun impact wordt versterkt. Het verergert ook hittegolven in de oceaan, die mariene ecosystemen beschadigen - vaak onomkeerbaar - en miljarden euro's verlies kosten voor de visserij en aquacultuur.\r\n\r\nDe datasets van hoge kwaliteit die zijn ontwikkeld door [ESA's Climate Change Initiative](stories/story-32/3) zijn bedoeld om de langst mogelijke tijdspanne van datarecords vanuit de ruimte te creëren, om onderzoekers te helpen nieuwe kennis te ontdekken over de processen die het klimaatsysteem aandrijven. Deze kennis zal de nauwkeurigheid van klimaatmodellen helpen verbeteren en een stevigere basis leggen voor klimaatactie.",
+      "shortText": "## Toekomstige opwarming van de oceaan\r\n\r\nAls de recente accumulatie van energie op aarde doorgaat, zal de stijging van de wereldgemiddelde SST met 0,5°C, die de afgelopen 40 jaar is waargenomen, waarschijnlijk in de komende 20 jaar worden overschreden.\r\n\r\n- De oceaantemperatuur zal in de toekomst naar verwachting twee keer zo snel stijgen.\r\n- warmer water zet uit, waardoor de zeespiegel stijgt\r\n- Het warmere oppervlaktewater stimuleert orkanen en tyfoons, waardoor ze krachtiger worden en vaker voorkomen.\r\n- De versnelde opwarming van de oceaan versterkt natuurlijke klimaatcycli zoals El Niño, waardoor hun impact wordt versterkt.\r\n- het verergert ook hittegolven in de oceaan, waardoor mariene ecosystemen worden beschadigd en miljarden euro's verloren gaan aan visserij en aquacultuur\r\n\r\nDe datasets van hoge kwaliteit die door het Climate Change Initiative van ESA zijn ontwikkeld, zijn bedoeld om de langst mogelijke tijdspanne van datarecords vanuit de ruimte te creëren, zodat onderzoekers nieuwe kennis kunnen opdoen over de processen die het klimaatsysteem aansturen. Deze kennis helpt de nauwkeurigheid van klimaatmodellen te verbeteren en biedt een stevigere basis voor klimaatmaatregelen.",
+      "images": [
+        "assets/story44-image03.png"
+      ],
+      "imageCaptions": [
+        "# Wereldgemiddelde temperatuur van het zeeoppervlak\r\nDe wereldgemiddelde temperatuur van het zeeoppervlak (GMSST) zal in de jaren 2020 meer dan 4 keer sneller stijgen dan aan het eind van de jaren 1980. De toekomstige temperatuurstijging is gemodelleerd aan de hand van scenario's met verschillende aannames over de energieaccumulatie op aarde in de komende decennia. Het onzekerheidsbereik voor de scenario's 1-3 wordt in groen weergegeven. 1. Worst case scenario volgens de versnelde energietrend vanaf 2010. 2. Gematigd scenario dat terugkeert naar de lineaire trend van vóór 2010. 3. Scenario met mitigatiebeleid dat de onbalans in de energiebalans van de aarde vermindert. 4. Projectie van lineaire aanpassing aan waarnemingen, waarbij de versnelling wordt genegeerd. (ESA CCI)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ]
+    }
+  ]
+}
