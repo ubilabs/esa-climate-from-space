@@ -53,14 +53,17 @@ const DataViewer: FunctionComponent = () => {
 
   const { data: layers } = useGetLayerListQuery(language);
 
-  const contents = useMemo(() => [
-    ...(stories?.filter(
-      (story) => category && story.categories?.includes(category),
-    ) ?? []),
-    ...(layers?.filter(
-      (layer) => category && layer.categories?.includes(category),
-    ) ?? []),
-  ], [stories, layers, category]);
+  const contents = useMemo(
+    () => [
+      ...(stories?.filter(
+        (story) => category && story.categories?.includes(category),
+      ) ?? []),
+      ...(layers?.filter(
+        (layer) => category && layer.categories?.includes(category),
+      ) ?? []),
+    ],
+    [stories, layers, category],
+  );
 
   const [currentCategory, setCurrentCategory] = useState<string | null>(
     category || null,
@@ -69,7 +72,10 @@ const DataViewer: FunctionComponent = () => {
   const history = useHistory();
   const intl = useIntl();
 
-  const { screenHeight, screenWidth, isMobile } = useScreenSize();
+  const { screenHeight, screenWidth, isMobile, isTouchDevice } =
+    useScreenSize();
+
+  console.log("isTouchDevice", isTouchDevice);
 
   const { isNavigation, mode } = useContentParams();
 
@@ -83,14 +89,14 @@ const DataViewer: FunctionComponent = () => {
     localStorage.getItem(config.localStorageHasUserInteractedKey) === "true",
   );
 
-  const allCategories = useMemo(() =>
-    stories
-      ?.flatMap(({ categories }) => categories)
-      .concat(layers?.flatMap(({ categories }) => categories) ?? [])
-      .filter(Boolean),
-    [stories, layers]
+  const allCategories = useMemo(
+    () =>
+      stories
+        ?.flatMap(({ categories }) => categories)
+        .concat(layers?.flatMap(({ categories }) => categories) ?? [])
+        .filter(Boolean),
+    [stories, layers],
   );
-
 
   // create a list of all tags with their number of occurrences in the stories
   // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
@@ -111,10 +117,7 @@ const DataViewer: FunctionComponent = () => {
   return (
     // The data-view is a grid with three areas: header - main - footer
     // This is the header area
-    <div
-      className={styles.dataViewer}
-      data-nav-content={mode}
-    >
+    <div className={styles.dataViewer} data-nav-content={mode}>
       {/* This is the main area
         The navigation consists of three main components: the globe, the category navigation and the content navigation
         The globe is the main component and is always visible
@@ -175,9 +178,12 @@ const DataViewer: FunctionComponent = () => {
           {!showContentList && !hasAnimationPlayed.current && (
             <span
               aria-hidden="true"
-              className={cx(styles.swipeIndicator, !isMobile && styles.scroll)}
+              className={cx(
+                // Make sure to show the gesture indicator depending on whether it is touch screen device
+                styles.gestureIndicator, isTouchDevice ? styles.touch : styles.scroll,
+              )}
               data-content={intl.formatMessage({
-                id: `category.${isMobile ? "swipe" : "scroll"}`,
+                id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
               })}
             ></span>
           )}
