@@ -75,8 +75,6 @@ const DataViewer: FunctionComponent = () => {
   const { screenHeight, screenWidth, isMobile, isTouchDevice } =
     useScreenSize();
 
-  console.log("isTouchDevice", isTouchDevice);
-
   const { isNavigation, mode } = useContentParams();
 
   // We need to reset the globe view every time the user navigates back from the the /data page

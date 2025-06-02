@@ -120,7 +120,7 @@
 
     &[data-nav-content="nav-content"] {
       grid-template-areas: "globe content-nav";
-      grid-template-columns: auto clamp(300px, 50%, 700px);
+      grid-template-columns: auto clamp(300px, 48%, 700px);
       grid-template-rows: 1fr;
       grid-gap: 0;
 
@@ -154,6 +154,17 @@
         grid-area: globe;
         color: var(--Neutral-White, #fff);
         text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
+
+        /* We see some issues with the NotesEsaBold font in combination with the text-shadow property on tablet devices. We decided to not render a text-shadow for now */
+        @media (hover: none) {
+          text-shadow: none;
+
+          >li.active {
+            >span {
+              text-shadow: none;
+            }
+          }
+        }
 
         /* H2 */
         font-family: NotesEsa;
