@@ -18,7 +18,7 @@
     "preversion": "npm run test",
     "version": "npm run changelog && git checkout -b chore/release-${npm_package_version} && git add .",
     "postversion": "git push -u origin chore/release-${npm_package_version} && git push --tags --no-verify",
-    "electron:compile": "tsc --project tsconfig-electron.json && cp src/electron/preload.js dist-src-electron/",
+    "electron:compile": "tsc --project tsconfig-electron.json && cp src/electron/preload.cjs dist-src-electron/",
     "electron:start": "npm run electron:compile && electron .",
     "electron:install": "electron-builder install-app-deps",
     "electron:clean": "rm -rf ./dist-electron && rm -rf ./dist-src-electron",

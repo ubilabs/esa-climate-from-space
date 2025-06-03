@@ -13,7 +13,7 @@ function createWindow() {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
 
-  console.log(path.join(__dirname, "preload.js"));
+  console.log(path.join(__dirname, "preload.cjs"));
   // create a new browser window
   const window = new BrowserWindow({
     width: 1400,
@@ -22,7 +22,7 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: true,
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, "preload.cjs"),
       sandbox: false,
     },
   });
