@@ -1,34 +1,34 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import {app} from 'electron';
+import * as fs from "fs";
+import * as path from "path";
+import { app } from "electron";
 
 /**
  * Get downloaded Ids from the downloads folder content
  */
-module.exports.getDownloadedIds = function () {
-  const downloadsPath = path.join(app.getPath('downloads'), 'downloads');
+export const getDownloadedIds = () => {
+  const downloadsPath = path.join(app.getPath("downloads"), "downloads");
 
   try {
     const dirContent = fs
       .readdirSync(downloadsPath, {
-        withFileTypes: true
+        withFileTypes: true,
       })
-      .filter(entry => entry.isDirectory())
-      .map(entry => entry.name);
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name);
 
-    const layers = dirContent.filter(name => !name.startsWith('story'));
-    const stories = dirContent.filter(name => name.startsWith('story'));
+    const layers = dirContent.filter((name) => !name.startsWith("story"));
+    const stories = dirContent.filter((name) => name.startsWith("story"));
 
     return {
       layers,
-      stories
+      stories,
     };
   } catch (error) {
-    console.log('Could not read downloads folder at', downloadsPath, error);
+    console.log("Could not read downloads folder at", downloadsPath, error);
   }
 
   return {
     layers: [],
-    stories: []
+    stories: [],
   };
 };

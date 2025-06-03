@@ -72,12 +72,17 @@
       align-items: center;
       text-align: center;
 
-      >span:not(last-child) {
-        color: var(--dark-blue);
-        max-width: 50vw;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
+      > div {
+        display: flex;
+
+        >span {
+          color: var(--dark-blue);
+          max-width: 50vw;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          margin-right: 1rem;
+        }
       }
 
       >span.learnMore {
@@ -133,7 +138,7 @@
     }
 
     &.active {
-      >a>span:not(.learnMore) {
+      >a>div>span {
         color: var(--primary-color) !important;
         white-space: normal;
       }

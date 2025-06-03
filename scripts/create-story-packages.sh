@@ -7,14 +7,14 @@
 cd storage/stories
 
 for storyId in */; do
-  tmpDir=/tmp/story-$storyId
+  tmpDir=/tmp/$storyId
   mkdir $tmpDir
 
   cp -rf ./$storyId/* $tmpDir
   lastDir=(`pwd`)
 
   cd /tmp
-  zip -r $lastDir/$storyId/package.zip ./story-$storyId
+  zip -r $lastDir/$storyId/package.zip ./$storyId
   cd $lastDir
 
   rm -rf $tmpDir

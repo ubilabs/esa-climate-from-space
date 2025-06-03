@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
+import config from "../../../config/main";
 import { layersApi, useGetStoriesQuery } from "../../../services/api";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
+import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
 
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
@@ -29,6 +31,8 @@ import {
   useContentScrollHandlers,
   useContentTouchHandlers,
 } from "./use-content-event-handlers";
+
+import { DownloadButton } from "../download-button/download-button";
 
 import styles from "./content-navigation.module.css";
 
@@ -273,6 +277,14 @@ const ContentNavigation: FunctionComponent<Props> = ({
         const name = "title" in item ? item.title : item.name;
         const isStory = isStoryListItem(item);
         const type = isStory ? getStoryMediaType(item, stories) : "layer";
+        const downloadUrl = replaceUrlPlaceholders(
+          isStory
+            ? config.api.storyOfflinePackage
+            : config.api.layerOfflinePackage,
+          {
+            id: item.id,
+          },
+        );
 
         return (
           <li
@@ -283,7 +295,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             // E.g. flyTo or show the data layer
             data-content-id={item.id}
             data-layer-id={isStory ? "" : id}
-            className={cx(styles.contentNavItem)}
+            className={styles.contentNavItem}
             key={index}
             aria-label={`${type} content: ${name}`}
             // Make only the current item focusable in the tab order
@@ -309,7 +321,10 @@ const ContentNavigation: FunctionComponent<Props> = ({
             <Link
               to={isStory ? `${category}/stories/${id}/0/` : `${category}/data`}
             >
-              <span>{name}</span>
+              <div>
+                <span>{name}</span>
+                <DownloadButton url={downloadUrl} id={item.id} />
+              </div>
               {!isMobile && (
                 <span className={cx(styles.learnMore)}>
                   <FormattedMessage id="learn_more" />

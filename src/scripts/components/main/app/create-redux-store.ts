@@ -1,6 +1,6 @@
 import { configureStore, Middleware, AnyAction } from "@reduxjs/toolkit";
 import { createLogger } from "redux-logger";
-import { thunk, ThunkDispatch } from "redux-thunk";
+import { ThunkDispatch } from "redux-thunk";
 import { layersApi, storiesApi } from "../../../services/api";
 
 import rootReducer from "../../../reducers/index";
@@ -12,14 +12,14 @@ import {
 } from "../../../libs/electron/index";
 
 const isProduction = import.meta.env.PROD;
-const middleware: Middleware[] = [thunk];
+const middleware: Middleware[] = [];
 
 if (isElectron()) {
   middleware.push(offlineSaveMiddleware);
   middleware.push(offlineLoadMiddleware);
 }
 
-if (!isProduction) {
+if (!isProduction || isElectron()) {
   middleware.push(createLogger({ collapsed: true }));
 }
 
@@ -27,9 +27,9 @@ export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
-      .concat(middleware)
+      .concat(storiesApi.middleware)
       .concat(layersApi.middleware)
-      .concat(storiesApi.middleware);
+      .concat(middleware);
   },
 });
 
