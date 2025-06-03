@@ -4,18 +4,17 @@ import React, {
   useEffect,
   useState,
 } from "react";
+
 import { useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { createPortal } from "react-dom";
 import cx from "classnames";
 
-import {
-  categoryTags,
-} from "../../../config/main";
+import { categoryTags } from "../../../config/main";
 
 import { setSelectedContentAction } from "../../../reducers/content";
-import { useParams } from "react-router-dom";
 import useAutoRotate from "../../../hooks/use-auto-content-rotation";
+import { useContentParams } from "../../../hooks/use-content-params";
 import {
   useCategoryScrollHandlers,
   useCategoryTouchHandlers,
@@ -30,10 +29,6 @@ interface Props {
   isAnimationReady: RefObject<boolean>;
   arcs: { [key: string]: number }[];
   height: number;
-}
-
-interface RouteParams {
-  category: string | undefined;
 }
 
 // We reference the SVG container by its ID
@@ -57,12 +52,11 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   arcs,
   isAnimationReady,
 }) => {
-  const { category } = useParams<RouteParams>();
+  const { category } = useContentParams();
   // Ref to store and control the auto-rotation interval
   const [lastUserInteractionTime, setLastUserInteractionTime] = useState(
     Date.now(),
   );
-
   const dispatch = useDispatch();
 
   const categoryIndex = category ? categoryTags.indexOf(category) : -1;
@@ -106,9 +100,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   // We hide the overflow in the parent container
   const _size = isMobile
     ? width + _overSize
-    : // 50% of the screen width minues some padding
-    // But capped at the height of the screen minus some padding
-    Math.min(width / 2 - 65, height - 120);
+    : Math.min(width / 2, height - 60);
+
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
 
@@ -137,7 +130,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   // Calculate current and target rotation
   const currentRotation = parseFloat(
     document.getElementById(CIRCLE_CONTAINER_ID)?.dataset.currentRotation ||
-    "0",
+      "0",
   );
 
   // Calculate the target rotation to center the current arc
@@ -282,7 +275,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {tooltipInfo.visible && !isMobile &&
+        {tooltipInfo.visible &&
+          !isMobile &&
           tooltipInfo.x !== undefined &&
           tooltipInfo.y !== undefined &&
           // We create a portal to render to render the tooltip on the body
