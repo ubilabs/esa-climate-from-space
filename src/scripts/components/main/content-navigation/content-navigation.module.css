@@ -138,7 +138,7 @@
     }
 
     &.active {
-      >a>span:not(.learnMore) {
+      >a>div>span {
         color: var(--primary-color) !important;
         white-space: normal;
       }

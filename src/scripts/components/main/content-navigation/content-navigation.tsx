@@ -295,7 +295,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             // E.g. flyTo or show the data layer
             data-content-id={item.id}
             data-layer-id={isStory ? "" : id}
-            className={cx(styles.contentNavItem)}
+            className={styles.contentNavItem}
             key={index}
             aria-label={`${type} content: ${name}`}
             // Make only the current item focusable in the tab order
