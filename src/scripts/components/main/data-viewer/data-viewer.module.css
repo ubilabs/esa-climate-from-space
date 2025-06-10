@@ -120,7 +120,7 @@
 
     &[data-nav-content="nav-content"] {
       grid-template-areas: "globe content-nav";
-      grid-template-columns: auto clamp(300px, 48%, 700px);
+      grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
       grid-gap: 0;
 
@@ -166,18 +166,33 @@
           }
         }
 
-        /* H2 */
         font-family: NotesEsa;
-        font-size: 62px;
+        font-size: 3.875rem;
         font-style: normal;
         font-weight: 700;
-        line-height: 68px;
-        /* 109.677% */
+        line-height: 4rem;
+
+        @media screen and (--desktop-xxl-viewport) {
+          font-size: 4.5rem;
+          line-height: 5rem;
+        }
       }
 
       .heading {
         place-self: start;
         grid-area: globe;
+
+        @media screen and (--desktop-xxl-viewport) {
+          a {
+            margin-left: auto;
+            font-size: 1.25rem;
+            line-height: 1.25em;
+          }
+        }
+
+        >a {
+          margin-left: auto;
+        }
       }
 
       .contentNav {
