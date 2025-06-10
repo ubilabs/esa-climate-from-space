@@ -40,7 +40,7 @@
     @media screen and (--desktop-xxl-viewport) {
       height: 203px;
       width: 2000px;
-      background-image: url('data:image/svg+xml,<svg width="2000" height="206" viewBox="0 0 2000 206" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 102.227C0 86.9391 12.0902 74.388 27.3679 73.8163L2000 0V205.5L27.3528 130.638C12.0813 130.059 0 117.51 0 102.227Z" fill="url(%23paint0_linear_1911_13513)" fill-opacity="0.5"/><defs><linearGradient id="paint0_linear_1911_13513" x1="0" y1="102.75" x2="2000" y2="102.75" gradientUnits="userSpaceOnUse"><stop stop-color="%23003349" stop-opacity="0.5"/><stop offset="0.797771" stop-color="%23003349" stop-opacity="0.4"/><stop offset="0.9" stop-color="%23003349" stop-opacity="0"/></linearGradient></defs></svg>');
+      background-image: url('data:image/svg+xml,<svg width="2000" height="206" viewBox="0 0 2000 206" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 102.227C0 86.9391 12.0902 74.388 27.3679 73.8163L2000 0V205.5L27.3528 130.638C12.0813 130.059 0 117.51 0 102.227Z" fill="%23003349" fill-opacity="0.5"/><defs><linearGradient id="paint0_linear_1911_13513" x1="0" y1="102.75" x2="2000" y2="102.75" gradientUnits="userSpaceOnUse"><stop stop-color="%23003349" stop-opacity="0.5"/><stop offset="0.797771" stop-color="%23003349" stop-opacity="0.4"/><stop offset="0.9" stop-color="%23003349" stop-opacity="0"/></linearGradient></defs></svg>');
     }
   }
 
