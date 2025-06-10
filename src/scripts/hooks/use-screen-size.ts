@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 const MOBILE_WIDTH = 768;
+const DESKTOP_WIDTH = 1024;
 
 export function useScreenSize() {
   const [dimensions, setDimensions] = useState({
@@ -8,6 +9,7 @@ export function useScreenSize() {
     screenWidth: Math.floor(window.innerWidth),
   });
   const [isMobile, setIsMobile] = useState(window.innerWidth < MOBILE_WIDTH);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= DESKTOP_WIDTH);
 
   const isTouchDevice =
     "ontouchstart" in window || navigator.maxTouchPoints > 0;
@@ -20,6 +22,7 @@ export function useScreenSize() {
       });
       // Make sure this is the same value as defined in in variables.css
       setIsMobile(window.innerWidth < MOBILE_WIDTH);
+      setIsDesktop(window.innerWidth >= DESKTOP_WIDTH);
     };
 
     window.addEventListener("resize", handleResize);
@@ -31,5 +34,6 @@ export function useScreenSize() {
     screenWidth: dimensions.screenWidth,
     isMobile,
     isTouchDevice,
+    isDesktop,
   };
 }
