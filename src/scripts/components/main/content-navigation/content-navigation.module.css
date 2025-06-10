@@ -65,7 +65,6 @@
     line-height: 1.5rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 22px;
     width: 100%;
 
     @media screen and (--desktop-xxl-viewport) {
