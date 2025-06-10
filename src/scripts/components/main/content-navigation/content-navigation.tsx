@@ -171,24 +171,19 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
     const timeout = setTimeout(() => {
       if (contentId) {
-        const previewedContent = contents.find(
-          (story) => story.id === contentId,
-        );
+        const previewedContent = contents.find(({ id }) => id === contentId);
 
-        if (
-          previewedContent &&
-          "position" in previewedContent &&
-          previewedContent.position[0] &&
-          previewedContent.position[1]
-        ) {
-          dispatch(
-            setFlyTo({
-              isAnimated: true,
-              lat: previewedContent.position[1],
-              lng: previewedContent.position[0],
-            }),
-          );
-        }
+        dispatch(
+          setFlyTo({
+            isAnimated: true,
+            ...(previewedContent?.position
+              ? {
+                  lat: previewedContent.position[1],
+                  lng: previewedContent.position[0],
+                }
+              : config.globe.view),
+          }),
+        );
       }
     }, 1000);
 
