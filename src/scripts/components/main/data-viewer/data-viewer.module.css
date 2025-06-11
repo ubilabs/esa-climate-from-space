@@ -184,14 +184,9 @@
 
         @media screen and (--desktop-xxl-viewport) {
           a {
-            margin-left: auto;
             font-size: 1.25rem;
             line-height: 1.25em;
           }
-        }
-
-        >a {
-          margin-left: auto;
         }
       }
 
