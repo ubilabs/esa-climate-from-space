@@ -7,6 +7,8 @@ import {
   useRef,
   useState,
 } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
 
 import cx from "classnames";
 
@@ -32,19 +34,19 @@ import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
 import { LayerType } from "../../../types/globe-layer-type";
 import { useHistory } from "react-router-dom";
-import config from "../../../config/main";
+import { useScreenSize } from "../../../hooks/use-screen-size";
 
 import { GlobeProjection } from "../../../types/globe-projection";
+import { isAutoRotatingSelector } from "../../../selectors/auto-rotate";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
 import { setFlyTo } from "../../../reducers/fly-to";
 import { renderToStaticMarkup } from "react-dom/server";
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
 
+import config from "../../../config/main";
+
 import styles from "./globe.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
-import { isAutoRotatingSelector } from "../../../selectors/auto-rotate";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -311,19 +313,24 @@ function useGlobeLayers(
  */
 function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
   const history = useHistory();
+  const { isDesktop } = useScreenSize();
 
   useEffect(() => {
     if (!globe || !markers) {
       return EMPTY_FUNCTION;
     }
     globe.setProps({
-      markers: getMarkerProps(markers, (marker: Marker) => {
-        if (!marker.link) {
-          return;
-        }
+      markers: getMarkerProps(
+        markers,
+        (marker: Marker) => {
+          if (!marker.link) {
+            return;
+          }
 
-        history.push(marker.link);
-      }),
+          history.push(marker.link);
+        },
+        isDesktop,
+      ),
     });
 
     return () => {
@@ -705,13 +712,15 @@ function getLayerProps(
 function getMarkerProps(
   markers: Marker[],
   onClick: (marker: Marker) => void,
+  isDesktop: boolean = true,
 ): MarkerProps[] {
   const res: MarkerProps[] = [];
 
   for (const marker of markers) {
     const [lng, lat] = marker.position;
-    // const html = getMarkerHtml(marker.title);
-    const html = renderToStaticMarkup(<MarkerMarkup title={marker.title} />);
+    const html = renderToStaticMarkup(
+      <MarkerMarkup title={marker.title} isDesktop={isDesktop} />,
+    );
 
     if (!marker.link) {
       console.error("marker witout link!", marker);

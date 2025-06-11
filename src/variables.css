@@ -2,6 +2,7 @@
 @custom-media --mobile-s-viewport (max-width: 480px);
 @custom-media --mobile-viewport (max-width: 767px);
 @custom-media --desktop-viewport (min-width: 768px);
+@custom-media --desktop-xxl-viewport (min-width: 1400px);
 
 :root {
   /* Width */
