@@ -148,7 +148,6 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
   const dispatch = useDispatch();
   const isAutoRotatingEnabled = useSelector(isAutoRotatingSelector);
-  const { isDesktop } = useScreenSize();
 
   // Track auto rotation with a ref to avoid dependencies issues
   const autoRotationRef = useRef<{
