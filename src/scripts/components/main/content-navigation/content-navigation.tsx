@@ -175,13 +175,13 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
         dispatch(
           setFlyTo({
-            isAnimated: true,
             ...(previewedContent?.position
               ? {
                   lat: previewedContent.position[1],
                   lng: previewedContent.position[0],
                 }
               : config.globe.view),
+            isAnimated: true,
           }),
         );
       }

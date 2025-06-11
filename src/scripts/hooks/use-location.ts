@@ -131,6 +131,7 @@ export function useGlobeLocationState() {
                 ? { lat: position[1], lng: position[0] }
                 : config.globe.view),
               altitude: config.globe.view.altitude * 2,
+              isAnimated: true,
             }),
           );
         }
