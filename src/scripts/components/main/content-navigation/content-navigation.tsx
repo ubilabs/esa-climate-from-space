@@ -175,7 +175,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
         dispatch(
           setFlyTo({
-            ...(previewedContent?.position
+            ...(previewedContent?.position?.length === 2
               ? {
                   lat: previewedContent.position[1],
                   lng: previewedContent.position[0],
