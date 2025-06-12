@@ -1,3 +1,55 @@
+## [2.0.2](https://github.com/ubilabs/esa-climate-from-space/compare/v2.0.1...v2.0.2) (2025-06-12)
+
+
+### Bug Fixes
+
+* avoid text shadow issues on ipad and other tables ([7161ad8](https://github.com/ubilabs/esa-climate-from-space/commit/7161ad81ffd6da763a7eacb03097047d262c75b4))
+* background highlight color ([224e10a](https://github.com/ubilabs/esa-climate-from-space/commit/224e10a744195ab435344050a955afab98697489))
+* **content-navigation:** list element active style not applied ([a774244](https://github.com/ubilabs/esa-climate-from-space/commit/a774244c3c7e9917ece40eff1d605e8e152a8095))
+* **content-navigation:** validate fly-to coordinates ([b9d6a79](https://github.com/ubilabs/esa-climate-from-space/commit/b9d6a79910ddb25d7f424115ecd7a2b3733c7f1c))
+* **content-nav:** improve marker markup implemenation ([d5cdb6e](https://github.com/ubilabs/esa-climate-from-space/commit/d5cdb6e2683b5266b689905a60a5738188a9eeae))
+* correctly retrieve persisted category ([84974c5](https://github.com/ubilabs/esa-climate-from-space/commit/84974c5fe28020595848ac32a436c8dd5d0ff9d2))
+* **electron:** change preload script to commonjs ([8560e76](https://github.com/ubilabs/esa-climate-from-space/commit/8560e76768a2c7be30fc580af1f7f74778fbf49f))
+* **electron:** update dependencies and offline middleware ([304e622](https://github.com/ubilabs/esa-climate-from-space/commit/304e6220a905752d9c099418e62379077d168ad5))
+* **globe:** remove unused variable ([089b1a0](https://github.com/ubilabs/esa-climate-from-space/commit/089b1a098e3f7755b22ca75af8632ea7d22fb3b5))
+* **layers:** layers selector language parameter ([695f43f](https://github.com/ubilabs/esa-climate-from-space/commit/695f43f3c711065b2b3a99e3a5ef70ee47866042))
+* place back button on the left ([ddc1a94](https://github.com/ubilabs/esa-climate-from-space/commit/ddc1a943d955b9ab5a034ec9fe50f330a951d55f))
+* show correct gesture Indicator depending on device type ([247b8eb](https://github.com/ubilabs/esa-climate-from-space/commit/247b8eb0374f496915515211c9b39ffb00ac0e09))
+* some smaller viusal fixes for tablets ([1f0b694](https://github.com/ubilabs/esa-climate-from-space/commit/1f0b694449bc3179eed9496dbf6b2e3e14007b6a))
+* spacing on smaller laptop and tablet devices ([b0c9f8f](https://github.com/ubilabs/esa-climate-from-space/commit/b0c9f8fe6d2c924c1cb65af260d4a670c7d92920))
+* **story-44:** add correct image path ([57fc3cd](https://github.com/ubilabs/esa-climate-from-space/commit/57fc3cd7dcc7bdec2cee9f303861fbc42d882e7b))
+
+
+### Features
+
+* adapt content navigation font and layout for xxl monitor ([eaf2069](https://github.com/ubilabs/esa-climate-from-space/commit/eaf206933339c4adc129655e83879d06149d6660))
+* add new breakpoint for xxl monitor ([6212314](https://github.com/ubilabs/esa-climate-from-space/commit/6212314556e1528aa1c5d54c4ac7c96de7f95260))
+* **ci:** add docker container for toolbox ([18b2b50](https://github.com/ubilabs/esa-climate-from-space/commit/18b2b5078083c9daffbfa1285a3398b0edc91e85))
+* **content-navigation:** add download button for electron ([c20467d](https://github.com/ubilabs/esa-climate-from-space/commit/c20467daf7991c7900d864d41e3cf6c1d1b415e4))
+* **content-navigation:** make fly-to animated ([1404f57](https://github.com/ubilabs/esa-climate-from-space/commit/1404f575cedd19b85b98e67c08968a15a0ef8cbf))
+* **content:** Auto content commit for layers ([be683d2](https://github.com/ubilabs/esa-climate-from-space/commit/be683d26fa710c72571efb8b9bd2715ad4b24dff))
+* **content:** Auto content commit for story id: story-44 ([02824b1](https://github.com/ubilabs/esa-climate-from-space/commit/02824b17558f161c163f71c99407013374002c92))
+* **content:** Auto content commit for story id: story-44 ([1c3ad77](https://github.com/ubilabs/esa-climate-from-space/commit/1c3ad77c5ac23884142736946bf3dd6fd036dd94))
+* **content:** Auto content commit for story id: story-44 ([6caa07f](https://github.com/ubilabs/esa-climate-from-space/commit/6caa07fd62a5aaed3a38e1295fcb9d984bae1672))
+* **content:** Auto content commit for story id: story-44 ([8480624](https://github.com/ubilabs/esa-climate-from-space/commit/848062437d8700215280555347840943aaf41d44))
+* **layers:** add position to datasets ([712443f](https://github.com/ubilabs/esa-climate-from-space/commit/712443f9957631c3d76520b958f8c5df728ca264))
+* **marker:** increase marker size for larger devices ([e6bda9c](https://github.com/ubilabs/esa-climate-from-space/commit/e6bda9cbb46bade0869aa2cc333d44a0f72cbfaf))
+* **pipeline:** add download and dag script for permafrost ([1702c47](https://github.com/ubilabs/esa-climate-from-space/commit/1702c47299388cc3aaa0372368f945efe247d2ce))
+* **pipeline:** update permafrost dataset ([da86609](https://github.com/ubilabs/esa-climate-from-space/commit/da86609c786958485c64aef1f18b3ff6def60c67))
+* **stories:** Auto content commit for story id: story-44 ([4149d96](https://github.com/ubilabs/esa-climate-from-space/commit/4149d969daa366d89efc65d529b291c4cc53c202))
+* **story-gallery:** bottom-align story progress ([eee451a](https://github.com/ubilabs/esa-climate-from-space/commit/eee451a32975464d642f42dda3bad52c6ba8bb40))
+* **story-globe:** add on demand layer autoplay ([0eb063e](https://github.com/ubilabs/esa-climate-from-space/commit/0eb063e78c0f629d0cd7f305ccab706965f28127))
+* **story-image:** attach caption to image on desktop ([9394b42](https://github.com/ubilabs/esa-climate-from-space/commit/9394b42201b5e46daa009b7760d80ff92f089f2e))
+* **story-image:** attach caption to image on fullscreen ([212917b](https://github.com/ubilabs/esa-climate-from-space/commit/212917bd3a043a966ef23d51182935170516fcb6))
+* **story-image:** shrink caption only on mobile ([16c6c39](https://github.com/ubilabs/esa-climate-from-space/commit/16c6c39d879e56822ddf30a8375cf320b10219f8))
+
+
+### Reverts
+
+* **layers:** use layers config of v2.0.0 ([034e985](https://github.com/ubilabs/esa-climate-from-space/commit/034e9852d6bcf0827366be83989ae3e0f5225bdd))
+
+
+
 ## [2.0.1](https://github.com/ubilabs/esa-climate-from-space/compare/v2.0.0...v2.0.1) (2025-04-01)
 
 
