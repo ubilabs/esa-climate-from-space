@@ -1,9 +1,10 @@
 .progressContainer {
   position: absolute;
-  bottom: 3.875em;
-  left: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: .625em;
   z-index: 1;
-  width: 100%;
 }
 .progress {
   display: flex;
@@ -29,8 +30,6 @@
 }
 .lightboxProgressContainer {
   position: fixed;
-  bottom: 8.375em;
-  left: 0;
   z-index: 2;
 }
 .lightboxProgressContainer .progress {

@@ -93,9 +93,7 @@
   grid-area: globe-nav-area;
   z-index: 2;
   color: white;
-  color: var(--Neutral-White, #fff);
   text-align: center;
-  max-width: 80%;
   /* Mobile/H3 */
   font-family: NotesEsaBold;
   font-size: 30px;
@@ -106,21 +104,32 @@
   opacity: 0;
   animation: fadeIn 0.5s ease-out forwards;
   animation-delay: 2.8s;
+  opacity: 0;
 
   @media screen and (--desktop-viewport) {
     min-height: 160px;
     animation-delay: 0.8s;
     text-align: start;
     grid-area: title;
+    font-size: clamp(1rem, calc(4vw + 1rem), 4.875rem);
 
-    font-size: 78px;
     font-style: normal;
     font-weight: 700;
     line-height: 80px;
     /* 102.564% */
     place-self: start;
     /* 109.677% */
-    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
+
+    /* We see some issues with the NotesEsaBold font in combination with the text-shadow property on tablet devices. We decided to not render a text-shadow for now */
+    @media (hover: none) {
+      text-shadow: none;
+
+      >li.active {
+        >span {
+          text-shadow: none;
+        }
+      }
+    }
 
     >li.active {
       >span {
@@ -129,6 +138,7 @@
         font-style: normal;
         font-weight: 700;
         line-height: 32px;
+        margin-top: 0.5rem;
       }
     }
   }

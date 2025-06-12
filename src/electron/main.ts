@@ -1,25 +1,28 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-import * as path from "path";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
 import { app, BrowserWindow, ipcMain } from "electron";
-const isDev = require("electron-is-dev");
+import isDev from "electron-is-dev";
 import { addDownloadHandler } from "./download-handler.js";
-const loadAction = require("./load-action");
-const saveAction = require("./save-action");
-const downloadDelete = require("./download-delete");
+import loadAction from "./load-action.js";
+import saveAction from "./save-action.js";
+import downloadDelete from "./download-delete.js";
 
 let windows: BrowserWindow[] = [];
 
 function createWindow() {
-  console.log(path.join(__dirname, "preload.js"));
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+
+  console.log(path.join(__dirname, "preload.cjs"));
   // create a new browser window
   const window = new BrowserWindow({
     width: 1400,
     height: 800,
     title: "ESA – Climate from Space",
     webPreferences: {
-      nodeIntegration: false,
+      nodeIntegration: true,
       contextIsolation: true,
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, "preload.cjs"),
       sandbox: false,
     },
   });

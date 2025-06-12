@@ -1,4 +1,4 @@
-import { Action } from "@reduxjs/toolkit";
+import { Action, PayloadAction } from "@reduxjs/toolkit";
 
 // Extend global window type with our cfs namespace
 declare global {
@@ -12,7 +12,7 @@ declare global {
       loadAction: (
         actionType: string,
         filePath?: string,
-      ) => Promise<Action | null>;
+      ) => Promise<PayloadAction | null>;
       addIpcListener: (
         channel: string,
         callback: (event: Record<string, unknown>, message: string) => void,

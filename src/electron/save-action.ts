@@ -6,8 +6,8 @@ import { AnyAction } from "@reduxjs/toolkit";
 /**
  * Saves an action for offline usage
  */
-module.exports = function saveAction(action: AnyAction) {
-  const type = action.type.toLowerCase();
+function saveAction(action: AnyAction) {
+  const type = action.meta?.arg?.endpointName.toLowerCase();
   const downloadsPath = app.getPath("downloads");
   const actionsPath = path.join(downloadsPath, "actions");
   const filePath = path.join(actionsPath, type);
@@ -21,4 +21,6 @@ module.exports = function saveAction(action: AnyAction) {
     }
     console.log("Saved action to", filePath);
   });
-};
+}
+
+export default saveAction;

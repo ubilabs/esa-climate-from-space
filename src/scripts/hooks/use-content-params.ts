@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import { State } from "../reducers";
 import { selectedStorySelector } from "../selectors/story/selected";
+import { contentSelector } from "../selectors/content";
 
 import { StoryMode } from "../types/story-mode";
 
@@ -70,7 +71,14 @@ export const useContentParams = () => {
   );
   const isNavigation = mode === StoryMode.NavContent || mode === StoryMode.NavCategory;
 
-  const { category } = params;
+  // Get initial category from URL params, or use null if not present
+  const initialCategory = params.category || null;
+
+  // Get persisted category from the Redux store
+  const {category: persistedCategory} = useSelector(contentSelector)
+
+  // Use the URL category if available, otherwise fallback to persisted category
+  const  category  =  initialCategory || persistedCategory || undefined;
 
   return {
     mode,

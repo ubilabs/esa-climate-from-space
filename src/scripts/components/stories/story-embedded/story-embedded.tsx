@@ -7,16 +7,20 @@ import { ImageFit } from "../../../types/image-fit";
 
 interface Props {
   embeddedItem: EmbeddedItem;
+  showLightbox: boolean;
 }
 
-const StoryEmbedded: FunctionComponent<Props> = ({ embeddedItem }) => {
+const StoryEmbedded: FunctionComponent<Props> = ({
+  embeddedItem,
+  showLightbox,
+}) => {
   const { description } = embeddedItem;
   return (
     <div className={styles.embeddedContent}>
       <iframe src={embeddedItem.embeddedSrc}></iframe>
       {description && (
         <Caption
-          showLightbox={false}
+          showLightbox={showLightbox}
           imageFit={ImageFit.Cover}
           content={description}
         />

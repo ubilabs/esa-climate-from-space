@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   useHistory,
   useLocation,
@@ -14,6 +14,9 @@ import { setFlyTo } from "../reducers/fly-to";
 import config from "../config/main";
 import { useScreenSize } from "./use-screen-size";
 import { setSelectedContentAction } from "../reducers/content";
+import { selectedLayerIdsSelector } from "../selectors/layers/selected-ids";
+import { languageSelector } from "../selectors/language";
+import { useGetLayerListQuery } from "../services/api";
 
 interface RouteParams {
   category: string | undefined;
@@ -44,6 +47,11 @@ export function useGlobeLocationState() {
   const location = useLocation();
   const dispatch = useDispatch();
   const previousPathnameRef = useRef(location.pathname);
+
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+  const { mainId } = selectedLayerIds;
+  const language = useSelector(languageSelector);
+  const { data: layers } = useGetLayerListQuery(language);
 
   /**
    * Update auto-rotation state based on the current pathname
@@ -90,7 +98,7 @@ export function useGlobeLocationState() {
       if (routeMatches.basePath) {
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
         dispatch(setFlyTo(null));
-        dispatch(setSelectedContentAction({contentId: null}));
+        dispatch(setSelectedContentAction({ contentId: null }));
         setShowContentList(false);
       }
       // Remove layer in NavContent mode when coming from the data page
@@ -113,10 +121,17 @@ export function useGlobeLocationState() {
         if (!isMobile) {
           // As we use the CSS scale to increase the size of the canvas to make appear the globe bigger
           // If we don't want to re-mount the globe component AND keep the canvas size across the entire screen, what we do here is zoom out to make the globe appear smaller
+
+          const layer = layers?.find((layer) => layer.id === mainId);
+          const position = layer?.position;
+
           dispatch(
             setFlyTo({
-              ...config.globe.view,
+              ...(position?.length === 2
+                ? { lat: position[1], lng: position[0] }
+                : config.globe.view),
               altitude: config.globe.view.altitude * 2,
+              isAnimated: true,
             }),
           );
         }
@@ -124,7 +139,7 @@ export function useGlobeLocationState() {
       // Store the current pathname for next comparison
       previousPathnameRef.current = pathname;
     },
-    [dispatch, getRouteMatches, updateAutoRotationState],
+    [dispatch, getRouteMatches, layers, mainId, updateAutoRotationState],
   );
 
   const isMobile = useScreenSize().isMobile;

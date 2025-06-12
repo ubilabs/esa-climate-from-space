@@ -19,7 +19,8 @@ Example DAG:
 
 ## DAGs and data flow
 
-For now the Airflow pipelines start with downloading the (preprocessed) files from our GCS bucket `gs://esa-cfs-cate-data`. Note that the scripts to download these files from the data hub and upload to GCS are the same as for the old pipeline and can be found in `/data/downloads`. In the future these download tasks will probably also be implemented as Airflow DAGs. For now you can use the following command to run the download tasks in a Docker container suitable for this purpose: `docker run -it --rm --name cate -v $PWD/data:/data gcr.io/esa-climate-from-space/cate:latest bash`.
+For now the Airflow pipelines start with downloading the (preprocessed) files from our GCS bucket `gs://esa-cfs-cate-data`. Note that the scripts to download these files from the data hub and upload to GCS are the same as for the old pipeline and can be found in `/data/downloads`. In the future these download tasks will probably also be implemented as Airflow DAGs. For now you can use the following command to run the download tasks in a Docker container suitable for this purpose: `docker run -it --rm --name cate -v $PWD/data:/data gcr.io/esa-climate-from-space/cate:latest bash`. In order to run download tasks using the
+[ESA CCI Toolbox](https://climate.esa.int/en/data/toolbox/) (Python scripts in `/data/downloads` prefixed with `toolbox-`) you can use `docker run -it --rm --name toolbox -v $PWD/data:/data gcr.io/esa-climate-from-space/toolbox:latest bash` to start a Docker container, which has esa-climate-toolbox already preinstalled.
 
 If you are logged in to the esa-climate-from-space project on GCP but you don't have the necessary permissions to access the docker image from the container artifactory, you can run the following command to authenticate: `gcloud auth configure-docker gcr.io`. The scripts can be found in the `data` folder and executed with `bash [scriptname]`.
 

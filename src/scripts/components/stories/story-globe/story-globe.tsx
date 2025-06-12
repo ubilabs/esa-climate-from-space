@@ -35,7 +35,11 @@ const StoryGlobe: FunctionComponent<Props> = ({ globeItem }) => {
       />
       {time_slider && (
         <div className={styles.layerDetails}>
-          <TimeSlider noTimeClamp className={styles.storySlider} />
+          <TimeSlider
+            autoplay={globeItem.layerAutoplay}
+            noTimeClamp
+            className={styles.storySlider}
+          />
           {globeItem.layerDescription && (
             <LayerDescription layerDescription={globeItem.layerDescription} />
           )}
