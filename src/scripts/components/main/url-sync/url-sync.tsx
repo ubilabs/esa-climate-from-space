@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { globeStateSelector } from "../../../selectors/globe/globe-state";
@@ -13,7 +13,7 @@ import { getEmbedParamsString } from "../../../libs/get-embed-params-string";
 
 // syncs the query parameters of the url when values change in store
 const UrlSync: FunctionComponent = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const globeState = useSelector(globeStateSelector);
   const selectedTags = useSelector(selectedTagsSelector);
@@ -36,10 +36,10 @@ const UrlSync: FunctionComponent = () => {
 
     const params = new URLSearchParams(location.search);
     params.set("globe", globeParamString);
-    history.replace({ search: params.toString() });
+    navigate({ search: params.toString() }, { replace: true });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [globeState, mainId, compareId, history]); // we don't want to check for location.search changes
+  }, [globeState, mainId, compareId, navigate]); // we don't want to check for location.search changes
 
   // set story tag query params in url when tags state changes
   useEffect(() => {
@@ -51,10 +51,10 @@ const UrlSync: FunctionComponent = () => {
       params.set("tags", tagsParamString);
     }
 
-    history.replace({ search: params.toString() });
+    navigate({ search: params.toString() }, { replace: true });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedTags, history]); // we don't want to check for location.search changes
+  }, [selectedTags, navigate]); // we don't want to check for location.search changes
 
   // set embed elements query params in url when state changes
   useEffect(() => {
@@ -70,43 +70,52 @@ const UrlSync: FunctionComponent = () => {
       paramsArray.map((param) => params.set(param[0], param[1]));
     }
 
-    history.replace({ search: params.toString() });
+    navigate({ search: params.toString() }, { replace: true });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [embedElements, history]); // we don't want to check for location.search changes
+  }, [embedElements, navigate]); // we don't want to check for location.search changes
 
-  // listen on history updates and re-add query parameters if missing
+  // listen on location updates and re-add query parameters if missing
   useEffect(() => {
-    const unlisten = history.listen((newLocation) => {
-      const params = new URLSearchParams(newLocation.search);
+    const params = new URLSearchParams(location.search);
 
-      const hasEmbedParam = embedParamOptions.some((element) =>
-        params.has(element),
-      );
+    let updated = false;
 
-      if (tagsParamString && params.get("tags") !== tagsParamString) {
-        params.set("tags", tagsParamString);
-        history.replace({ search: params.toString() });
-      }
+    const hasEmbedParam = embedParamOptions.some((element) =>
+      params.has(element),
+    );
 
-      if (globeParamString && !params.has("globe")) {
-        params.set("globe", globeParamString);
-        history.replace({ search: params.toString() });
-      }
+    if (tagsParamString && params.get("tags") !== tagsParamString) {
+      params.set("tags", tagsParamString);
+      updated = true;
+    }
 
-      if (embedParamString && !hasEmbedParam) {
-        const paramsArray = embedParamString
-          .split("&")
-          .map((key) => key.split("="));
+    if (globeParamString && !params.has("globe")) {
+      params.set("globe", globeParamString);
+      updated = true;
+    }
 
-        paramsArray.map((param) => params.set(param[0], param[1]));
-        history.replace({ search: params.toString() });
-      }
-    });
+    if (embedParamString && !hasEmbedParam) {
+      const paramsArray = embedParamString
+        .split("&")
+        .map((key) => key.split("="));
 
-    return unlisten;
+      paramsArray.forEach(([key, value]) => params.set(key, value));
+      updated = true;
+    }
+
+    if (updated) {
+      navigate({ search: params.toString() }, { replace: true });
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [globeParamString, tagsParamString, embedParamString, history]);
+  }, [
+    location.search,
+    tagsParamString,
+    globeParamString,
+    embedParamString,
+    navigate,
+  ]);
 
   return null;
 };

@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { Provider as StoreProvider, useSelector } from "react-redux";
 import { IntlProvider } from "react-intl";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 
 import { languageSelector } from "../../../selectors/language";
@@ -34,6 +34,24 @@ const matomoInstance = createInstance({
   srcUrl: "https://matomo-ext.esa.int/matomo.js",
 });
 
+interface MainContentProps {
+  legend?: boolean;
+  time_slider?: boolean;
+}
+
+const MainContent: FunctionComponent<MainContentProps> = ({
+  legend,
+  time_slider,
+}) => (
+  <>
+    <Navigation />
+    <DataViewer />
+    {legend && <DataSetInfo />}
+    {time_slider && <TimeSlider />}
+    <LayerSelector />
+  </>
+);
+
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
   const { time_slider, legend } = useSelector(embedElementsSelector);
@@ -49,40 +67,43 @@ const TranslatedApp: FunctionComponent = () => {
   return (
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
-        <Switch>
-          <Route path="/about" exact>
-            {logo}
-            <AboutProjectOverlay />
-          </Route>
-          <Route path="/stories" exact>
-            <StoriesSelector />
-          </Route>
-          <Route path="/present" exact>
-            <PresentationSelector />
-          </Route>
-          <Route path={["/showcase/:storyIds", "/showcase"]} exact>
-            <ShowcaseSelector />
-          </Route>
+        <Routes>
           <Route
-            path={[
-              "/:category/stories/:storyId/:slideIndex",
-              "/stories/:storyId/:slideIndex",
-              "/present/:storyId/:slideIndex",
-              "/showcase/:storyIds/:storyIndex/:slideIndex",
-            ]}
-          >
-            <Story />
-          </Route>
-          {/* By placing the DataViewer Component at the bottom, we make sure that the :category parameter
-          does not interfere with other parameters */}
-          <Route path={["/", "/:category", "/:category/data"]} exact>
-            <Navigation />
-            <DataViewer />
-            {legend && <DataSetInfo />}
-            {time_slider && <TimeSlider />}
-            <LayerSelector />
-          </Route>
-        </Switch>
+            path="/about"
+            element={
+              <>
+                {logo}
+                <AboutProjectOverlay />
+              </>
+            }
+          />
+          <Route path="/stories" element={<StoriesSelector />} />
+          <Route path="/present" element={<PresentationSelector />} />
+          <Route path="/showcase" element={<ShowcaseSelector />} />
+          <Route path="/showcase/:storyIds" element={<ShowcaseSelector />} />
+          <Route
+            path="/:category/stories/:storyId/:slideIndex"
+            element={<Story />}
+          />
+          <Route path="/stories/:storyId/:slideIndex" element={<Story />} />
+          <Route path="/present/:storyId/:slideIndex" element={<Story />} />
+          <Route
+            path="/showcase/:storyIds/:storyIndex/:slideIndex"
+            element={<Story />}
+          />
+          <Route
+            path="/"
+            element={<MainContent legend={legend} time_slider={time_slider} />}
+          />
+          <Route
+            path="/:category"
+            element={<MainContent legend={legend} time_slider={time_slider} />}
+          />
+          <Route
+            path="/:category/data"
+            element={<MainContent legend={legend} time_slider={time_slider} />}
+          />
+        </Routes>
         <Tracking />
       </IntlProvider>
       <UrlSync />

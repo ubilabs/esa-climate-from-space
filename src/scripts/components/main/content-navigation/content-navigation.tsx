@@ -15,7 +15,6 @@ import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { setSelectedContentAction } from "../../../reducers/content";
-import { toggleEmbedElements } from "../../../reducers/embed-elements";
 import { setFlyTo } from "../../../reducers/fly-to";
 
 import { languageSelector } from "../../../selectors/language";
@@ -146,9 +145,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   useEffect(() => {
     const id = contents[currentIndex]?.id;
 
-    dispatch(
-      setSelectedContentAction({ contentId: contents[currentIndex].id }),
-    );
+    dispatch(setSelectedContentAction({ contentId: id }));
     // We don't want to dispatch a layer action with story ids
     if (isStoryListItem(contents[currentIndex])) {
       dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
@@ -207,7 +204,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
       dispatch(setShowLayer(false));
       thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
       dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
-      dispatch(toggleEmbedElements({ legend: true, time_slider: true }));
       trackEvent({
         category: "datasets",
         action: "select",
@@ -314,7 +310,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
             }}
           >
             <Link
-              to={isStory ? `${category}/stories/${id}/0/` : `${category}/data`}
+              to={
+                isStory ? `/${category}/stories/${id}/0` : `/${category}/data`
+              }
             >
               <div>
                 <span>{name}</span>

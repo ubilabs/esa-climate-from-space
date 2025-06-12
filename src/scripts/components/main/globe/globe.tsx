@@ -33,8 +33,8 @@ import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
 import { LayerType } from "../../../types/globe-layer-type";
-import { useHistory } from "react-router-dom";
 import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useNavigate } from "react-router-dom";
 
 import { GlobeProjection } from "../../../types/globe-projection";
 import { isAutoRotatingSelector } from "../../../selectors/auto-rotate";
@@ -312,31 +312,27 @@ function useGlobeLayers(
  * Updates the markers on the globe when they become available.
  */
 function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
-  const history = useHistory();
   const { isDesktop } = useScreenSize();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!globe || !markers) {
       return EMPTY_FUNCTION;
     }
-    globe.setProps({
-      markers: getMarkerProps(
-        markers,
-        (marker: Marker) => {
-          if (!marker.link) {
-            return;
-          }
 
-          history.push(marker.link);
-        },
-        isDesktop,
-      ),
+    globe.setProps({
+      markers: getMarkerProps(markers, (marker: Marker) => {
+        if (!marker.link) {
+          return;
+        }
+        navigate(marker.link);
+      }, isDesktop),
     });
 
     return () => {
       globe.setProps({ markers: [] });
     };
-  }, [history, globe, markers]);
+  }, [navigate, globe, markers, isDesktop]);
 }
 
 /**
