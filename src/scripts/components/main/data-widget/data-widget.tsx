@@ -180,10 +180,9 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
   const updatedLayerDetails = showClouds
-    ? {
-        ...(layerDetails || {}),
-        basemap: "clouds",
-      }
+    ? Object.assign({}, layerDetails, {
+      basemap: "clouds",
+    })
     : layerDetails;
 
   // apply changes in the app state view to our local view copy
