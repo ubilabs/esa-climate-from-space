@@ -1,10 +1,6 @@
 import { useEffect, useCallback, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  useLocation,
-  matchPath,
-  useParams,
-} from "react-router-dom";
+import { useLocation, matchPath, useParams } from "react-router-dom";
 import { setIsAutoRotating } from "../reducers/globe/auto-rotation";
 import { setShowLayer } from "../reducers/show-layer-selector";
 import { toggleEmbedElements } from "../reducers/embed-elements";
@@ -34,6 +30,8 @@ const ROUTE_PATTERNS = {
 /**
  * Hook that manages globe state based on location changes
  * Handles auto-rotation functionality based on current route
+ * Please import this hook only once as it would fire state dispachtes multiple times
+ * We should refactor this hook into dedicated components in the future
  */
 export function useGlobeLocationState() {
   const { category } = useParams<RouteParams>();
@@ -150,6 +148,7 @@ export function useGlobeLocationState() {
   );
 
   const isMobile = useScreenSize().isMobile;
+
   useEffect(() => {
     handlePathnameChange(location.pathname, false, isMobile);
   }, [location.pathname, handlePathnameChange, isMobile]);
