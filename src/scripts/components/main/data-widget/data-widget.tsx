@@ -1,5 +1,3 @@
-import { CameraView } from "@ubilabs/esa-webgl-globe";
-import { useDispatch, useSelector } from "react-redux";
 import {
   FunctionComponent,
   useCallback,
@@ -7,6 +5,9 @@ import {
   useLayoutEffect,
   useState,
 } from "react";
+
+import { CameraView } from "@ubilabs/esa-webgl-globe";
+import { useDispatch, useSelector } from "react-redux";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { contentSelector } from "../../../selectors/content";
@@ -28,7 +29,6 @@ import { State } from "../../../reducers";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
-import { useGlobeLocationState } from "../../../hooks/use-location";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
@@ -44,11 +44,13 @@ import LayerLegend from "../../layers/layer-legend/layer-legend";
 interface Props {
   showClouds?: boolean;
   className?: string;
+  showContentList?: boolean;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
   showClouds,
   className,
+  showContentList = false,
 }) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
@@ -100,18 +102,18 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const contentMarker = useContentMarker(selectedContentId, language);
 
-  const { showContentList } = useGlobeLocationState();
-
   const getDataWidget = ({
     imageLayer,
     layerDetails,
     active,
     action,
+    showContentList,
   }: {
     imageLayer: GlobeImageLayerData | null;
     layerDetails: Layer | null;
     active: boolean;
     action: () => void;
+    showContentList?: boolean;
   }) => {
     if (imageLayer?.type === LayerType.Gallery) {
       return <Gallery imageLayer={imageLayer} />;
@@ -120,8 +122,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({
       <Globe
         {...(showContentList &&
           contentMarker && {
-            markers: [contentMarker],
-          })}
+          markers: [contentMarker],
+        })}
         backgroundColor={""}
         active={active}
         view={currentView}
@@ -217,6 +219,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     <>
       {legend && getLegends()}
       {getDataWidget({
+        showContentList,
         imageLayer: mainImageLayer,
         layerDetails: updatedLayerDetails,
         active: isMainActive,
@@ -224,6 +227,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
       })}
       {compareLayer &&
         getDataWidget({
+          showContentList,
           imageLayer: compareImageLayer,
           layerDetails: compareLayerDetails,
           active: !isMainActive,
