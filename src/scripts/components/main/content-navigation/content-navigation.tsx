@@ -1,18 +1,15 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
 import config from "../../../config/main";
-import { layersApi, useGetStoriesQuery } from "../../../services/api";
+import { useGetStoriesQuery } from "../../../services/api";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
 
-import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { setSelectedContentAction } from "../../../reducers/content";
 import { setFlyTo } from "../../../reducers/fly-to";
@@ -58,8 +55,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
 }) => {
   const navigationRef = React.useRef<HTMLUListElement | null>(null);
   const dispatch = useDispatch();
-  const thunkDispatch = useThunkDispatch();
-  const { trackEvent } = useMatomo();
   const lang = useSelector(languageSelector);
   const { contentId } = useSelector(contentSelector);
 
