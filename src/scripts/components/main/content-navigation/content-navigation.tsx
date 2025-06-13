@@ -174,9 +174,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
           setFlyTo({
             ...(previewedContent?.position?.length === 2
               ? {
-                  lat: previewedContent.position[1],
-                  lng: previewedContent.position[0],
-                }
+                lat: previewedContent.position[1],
+                lng: previewedContent.position[0],
+              }
               : config.globe.view),
             isAnimated: true,
           }),
@@ -299,15 +299,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
               setCurrentIndex(index);
               dispatch(setSelectedContentAction({ contentId: id }));
             }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                handleItemSelection(id, index, name, isStory, e.currentTarget);
-              }
-            }}
-            onClick={() => {
-              handleItemSelection(id, index, name, isStory);
-            }}
           >
             <Link
               to={
@@ -316,6 +307,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             >
               <div>
                 <span>{name}</span>
+                {/* for electron*/}
                 <DownloadButton url={downloadUrl} id={item.id} />
               </div>
               {!isMobile && (
