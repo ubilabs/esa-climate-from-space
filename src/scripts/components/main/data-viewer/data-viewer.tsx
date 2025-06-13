@@ -34,10 +34,6 @@ import GlobeNavigation from "../globe-navigation/globe-navigation";
 
 import styles from "./data-viewer.module.css";
 
-interface RouteParams {
-  category: string | undefined;
-}
-
 export type LayerLoadingStateChangeHandle = (
   layerId: string,
   loadingState: LayerLoadingState,
@@ -51,7 +47,7 @@ export type LayerLoadingStateChangeHandle = (
  * @returns {JSX.Element} The rendered DataViewer component.
  */
 const DataViewer: FunctionComponent = () => {
-  const { category } = useParams<RouteParams>();
+  const { category } = useParams();
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoryListQuery(language);
 
