@@ -1,13 +1,16 @@
 {
-  "include": ["src/electron/*"],
+  "include": [
+    "src/electron/*"
+  ],
   "compilerOptions": {
     "outDir": "./dist-src-electron/",
     "strict": true,
     "noImplicitAny": true,
     "sourceMap": true,
-    "module": "commonjs",
-    "allowSyntheticDefaultImports": false,
+    "module": "ES2020",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "target": "ES2019"
+    "target": "ES2020"
   }
 }

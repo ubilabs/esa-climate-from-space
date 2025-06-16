@@ -1,0 +1,454 @@
+.dataViewer {
+  --spacing: min(120px, 8%);
+  height: 100%;
+  display: grid;
+  place-items: center;
+  grid-area: content;
+
+  .globeWrapper {
+    grid-area: globe-nav-area;
+    transition: all 0.5s ease;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    display: grid;
+    position: relative;
+
+    container-name: wrapper;
+    container-type: size;
+  }
+
+  /* Check if the globeWrapper currently contains two .globe elements
+* This means we are in the compare mode and should display the containers next to each other
+* ;*/
+  .globeWrapper:has(.globe ~ .globe) {
+    grid-template-columns: 1fr 1fr;
+
+    >.globe {
+      position: relative !important;
+      height: 100%;
+      width: 100%;
+
+      >canvas {
+        height: 100%;
+        width: 100%;
+        scale: 1 !important;
+      }
+    }
+  }
+
+  @container wrapper (aspect-ratio <=1 / 1) {
+    .globe {
+      height: calc(120cqw + 10cqh);
+    }
+  }
+
+  &[data-nav-content="nav-content"] {
+    .globeWrapper {
+      transform: translateX(-62vw);
+    }
+  }
+
+  &[data-nav-content="content"] {
+    .globeWrapper {
+      pointer-events: auto;
+    }
+  }
+
+  grid-template-areas: "heading"
+  "globe-nav-area"
+  "explore";
+  height: calc(100vh - var(--header-height));
+  height: calc(100dvh - var(--header-height));
+  grid-template-rows: 3.5rem calc(100vh - var(--header-height) - 10rem) 6.5rem;
+  grid-template-rows: 3.5rem calc(100dvh - var(--header-height) - 10rem) 6.5rem;
+  grid-template-columns: 1fr;
+
+  @media screen and (--desktop-viewport) {
+    grid-template-areas:
+      "globe-nav-area heading "
+      "globe-nav-area title "
+      "globe-nav-area explore ";
+    grid-template-rows: 1fr auto 1fr;
+    grid-template-columns: 50vw 50vw;
+    grid-template-columns: 1fr 25vw;
+    grid-gap: 1.5rem;
+
+    &[data-nav-content="nav-category"] {
+      margin-inline: var(--spacing);
+
+      .globeWrapper {
+        margin-right: var(--spacing);
+      }
+    }
+
+    &[data-nav-content="content"] {
+      grid-template-areas: "globe-nav-area";
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+
+      .globeWrapper {
+        canvas {
+          position: absolute !important;
+          scale: 1 !important;
+          scale: 0.8 !important;
+        }
+      }
+    }
+
+    .globeWrapper {
+      transform: translateY(0) !important;
+      scale: 1;
+    }
+
+    @container wrapper (width >=100px) {
+      .globe {
+        /* We initialize the globe as big as we need it in the content view to appearance;
+* and scale it down to 38% while scaling it to 1 in the content view
+* We do this to achieve a nice transistion between category- and content view and also to make sure the globe looks sharp
+* */
+
+        height: min(150vw, 260vh);
+        width: min(150vw, 260vh);
+
+        canvas {
+          scale: 0.38;
+        }
+      }
+    }
+
+    &[data-nav-content="nav-content"] {
+      grid-template-areas: "globe content-nav";
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-gap: 0;
+
+      @container wrapper (width >=100px) {
+        .globe {
+          canvas {
+            /* We need to move the globe to the left to make space for the content nav */
+            transform: translateX(-60cqw);
+            scale: 1;
+          }
+
+          /* This will move all markers to their correct position*/
+          div {
+            left: -60cqw !important;
+          }
+        }
+      }
+
+      .globeWrapper {
+        z-index: 0;
+        grid-area: globe;
+      }
+
+      .currentCategory {
+        max-width: 40vw;
+        word-break: break-word;
+        /*Make sure z-index is higher than the globe*/
+        place-self: center start;
+        margin-left: clamp(36px, 2vw, 80px);
+        z-index: 1;
+        grid-area: globe;
+        color: var(--Neutral-White, #fff);
+        text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.48);
+
+        /* We see some issues with the NotesEsaBold font in combination with the text-shadow property on tablet devices. We decided to not render a text-shadow for now */
+        @media (hover: none) {
+          text-shadow: none;
+
+          >li.active {
+            >span {
+              text-shadow: none;
+            }
+          }
+        }
+
+        font-family: NotesEsa;
+        font-size: 3.875rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 4rem;
+
+        @media screen and (--desktop-xxl-viewport) {
+          font-size: 4.5rem;
+          line-height: 5rem;
+        }
+      }
+
+      .heading {
+        place-self: start;
+        grid-area: globe;
+
+        @media screen and (--desktop-xxl-viewport) {
+          a {
+            font-size: 1.25rem;
+            line-height: 1.25em;
+          }
+        }
+      }
+
+      .contentNav {
+        grid-area: content-nav;
+      }
+    }
+  }
+
+  --arrow-left: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7.825 13L13.425 18.6L12 20L4 12L12 4L13.425 5.4L7.825 11H20V13H7.825Z" fill="white"/></svg>');
+
+  --arrow-right: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M16.175 13H4V11H16.175L10.575 5.4L12 4L20 12L12 20L10.575 18.6L16.175 13Z" fill="white"/></svg>');
+}
+
+.gestureIndicator {
+  margin-top: 1rem;
+  place-self: start center;
+  position: relative;
+  height: 24px;
+  width: 24px;
+  background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="swipe_FILL0_wght300_GRAD0_opsz24"><path id="Vector" d="M12.175 2.50024C12.543 2.50024 12.8927 2.56883 13.2241 2.70601C13.5555 2.8432 13.8532 3.04384 14.1173 3.30794L19.1308 8.32716L18.5154 8.94831C18.3064 9.15086 18.0645 9.28515 17.7895 9.35119C17.5145 9.41721 17.2404 9.41304 16.9674 9.33869L14.75 8.75789L14.75 17.0002C14.75 17.2127 14.6781 17.3908 14.5343 17.5346C14.3905 17.6783 14.2123 17.7502 13.9997 17.7502C13.7871 17.7502 13.609 17.6783 13.4654 17.5346C13.3218 17.3908 13.2501 17.2127 13.2501 17.0002L13.2501 6.76179L16.2809 7.59066L13.0481 4.36754C12.9391 4.25855 12.8075 4.17009 12.6533 4.10214C12.499 4.03419 12.3396 4.00021 12.175 4.00021L8.25005 4.00021C7.62312 4.00021 7.09138 4.21849 6.65485 4.65504C6.2183 5.09157 6.00002 5.6233 6.00002 6.25024L6.00002 10.2502C6.00002 10.4627 5.92811 10.6408 5.7843 10.7846C5.6405 10.9283 5.4623 11.0002 5.2497 11.0002C5.03712 11.0002 4.85903 10.9283 4.71545 10.7846C4.57185 10.6408 4.50005 10.4627 4.50005 10.2502L4.50005 6.25024C4.50005 5.21434 4.86608 4.33036 5.59813 3.59831C6.33018 2.86626 7.21352 2.50024 8.24815 2.50024L12.175 2.50024ZM11.8365 9.25024L11.8365 13.2502C11.8365 13.4631 11.7646 13.6413 11.6208 13.7848C11.477 13.9284 11.2988 14.0002 11.0862 14.0002C10.8736 14.0002 10.6956 13.9283 10.552 13.7846C10.4084 13.6408 10.3366 13.4627 10.3366 13.2502L10.3366 9.25024L11.8365 9.25024ZM8.91348 9.25024L8.91348 12.2502C8.91348 12.4631 8.84157 12.6413 8.69777 12.7848C8.55396 12.9284 8.37575 13.0002 8.16315 13.0002C7.95057 13.0002 7.77248 12.9283 7.6289 12.7846C7.48532 12.6408 7.41352 12.4627 7.41352 12.2502L7.41352 9.25024L8.91348 9.25024ZM2.50005 16.8079L7.19235 16.8079L7.19235 18.0002L4.10002 18.0002C5.21926 18.9476 6.44907 19.6957 7.78945 20.2444C9.12983 20.7931 10.5334 21.0675 12 21.0675C13.4667 21.0675 14.8702 20.7931 16.2106 20.2444C17.551 19.6957 18.7808 18.9476 19.9 18.0002L16.8077 18.0002L16.8077 16.8079L21.5 16.8079L21.5 21.5002L20.3077 21.5002L20.3077 19.2348C19.1141 20.1796 17.8132 20.92 16.4048 21.4559C14.9965 21.9918 13.5282 22.2598 12 22.2598C10.4718 22.2598 9.00356 21.9918 7.59522 21.4559C6.18689 20.92 4.88593 20.1796 3.69235 19.2348L3.69235 21.5002L2.50005 21.5002L2.50005 16.8079Z" fill="%233F6C7D"/></g></svg>');
+  animation: fadeIn 2s ease-out forwards;
+  animation-delay: 0.7s;
+  opacity: 0;
+
+  &:after {
+    bottom: -2rem;
+    left: 50%;
+    white-space: nowrap;
+    transform: translateX(-50%);
+    position: absolute;
+    content: attr(data-content);
+    color: var(--dark-blue);
+    font-family: NotesEsa;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+  }
+
+  &.touch {
+    grid-area: explore;
+
+    @media screen and (--desktop-viewport) {
+      transform: translateY(0);
+      opacity: 1;
+      animation: none;
+      animation-delay: 0;
+      margin-bottom: 5rem;
+      grid-area: globe-nav-area;
+      place-self: end center;
+    }
+  }
+
+  &.scroll {
+    grid-area: title;
+    margin-right: -2rem;
+    place-self: center end;
+    z-index: 10;
+    transform: translateY(-50%);
+    background-image: url('data:image/svg+xml,<svg width="24" height="80" viewBox="0 0 24 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 18V8.8L7.4 12.4L6 11L12 5L18 11L16.6 12.4L13 8.8V18H11Z" fill="%233F6C7D"/><path fill-rule="evenodd" clip-rule="evenodd" d="M6 33.4828C6 31.5528 7.57354 30 9.5 30L14.5 30C16.4265 30 18 31.5528 18 33.4828L18 46.5172C18 48.4472 16.4265 50 14.5 50L9.5 50C7.57354 50 6 48.4472 6 46.5172L6 33.4828ZM9.5 32C8.66504 32 8 32.6704 8 33.4828L8 46.5172C8 47.3296 8.66504 48 9.5 48L14.5 48C15.335 48 16 47.3296 16 46.5172L16 33.4828C16 32.6704 15.335 32 14.5 32L9.5 32Z" fill="%233F6C7D"/><path d="M11 35C11 34.4477 11.4477 34 12 34C12.5523 34 13 34.4477 13 35V37C13 37.5523 12.5523 38 12 38C11.4477 38 11 37.5523 11 37V35Z" fill="%233F6C7D"/><path d="M12 74L6 68L7.4 66.6L11 70.2V61H13V70.2L16.6 66.6L18 68L12 74Z" fill="%233F6C7D"/></svg>');
+    width: 24px;
+    height: 80px;
+    animation: none;
+    opacity: 1;
+
+    &:after {
+      top: 100%;
+      left: 50%;
+      white-space: pre-line;
+      transform: translateX(-50%);
+      height: fit-content;
+      text-align: center;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  25% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  75% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  90% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100px);
+    opacity: 1;
+  }
+}
+
+.backButton {
+  width: 100%;
+  /* Mobile/H4 */
+  font-family: NotesEsa;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+
+  /* 110% */
+  >span {
+    margin: 0 auto;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+
+      background-color: white;
+      width: 24px;
+      height: 24px;
+      mask: var(--arrow-left);
+    }
+  }
+
+  @media screen and (--desktop-viewport) {
+    text-transform: uppercase;
+    width: fit-content;
+    margin-left: 1.5rem;
+    padding-left: 0.5rem;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: 0.32px;
+
+    >span {
+      margin-left: 2rem;
+      position: relative;
+
+      &:after {
+        left: -2rem;
+      }
+
+      &:hover:after {
+        background-color: var(--main);
+      }
+    }
+  }
+}
+
+.exploreButton {
+  text-transform: uppercase;
+  color: #fff;
+  grid-area: explore;
+  padding: 12px 24px;
+  border-radius: 40px;
+  background: var(--dark-blue);
+  box-shadow: 0px 0px 12px 0px rgba(0, 51, 73, 0.25);
+  background-repeat: no-repeat;
+  transform: translateY(100px);
+  animation: slideUp 0.5s ease-out forwards;
+  animation-delay: 3s;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.32px;
+
+  @media screen and (--desktop-viewport) {
+    place-self: start;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.36px;
+    text-transform: uppercase;
+
+    &:after {
+      content: "";
+      height: 24px;
+      width: 24px;
+      place-self: start;
+      background-color: white;
+      mask: var(--arrow-right);
+    }
+
+    &:hover:after {
+      background-color: var(--main);
+    }
+  }
+
+  &.showFast {
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes slideUp {
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.heading {
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  z-index: 3;
+  width: 100%;
+  opacity: 0;
+  animation: headerAnimation 1s ease-out forwards;
+  animation-delay: 0.7s;
+  grid-area: heading;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.125rem;
+
+  >.chooseHeading {
+    text-align: center;
+    font-family: NotesEsa;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    /* 130% */
+  }
+
+  @media screen and (--desktop-viewport) {
+    padding: 0;
+    justify-content: start;
+    place-self: end start;
+    font-family: NotesEsa;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    /* 114.286% */
+  }
+
+  >h2 {
+    margin: 0 auto;
+  }
+}
+
+@keyframes headerAnimation {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

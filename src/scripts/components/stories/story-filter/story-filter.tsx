@@ -1,20 +1,22 @@
-import React, {FunctionComponent, useRef, useState} from 'react';
-import {FormattedMessage} from 'react-intl';
-import {useSelector, useDispatch} from 'react-redux';
-import cx from 'classnames';
-import {ArrowLeftIcon} from '../../main/icons/arrow-left-icon';
-import {ArrowRightIcon} from '../../main/icons/arrow-right-icon';
-import {CheckIcon} from '../../main/icons/check-icon';
+import { FunctionComponent, useRef, useState } from "react";
+import { FormattedMessage } from "react-intl";
+import { useSelector, useDispatch } from "react-redux";
+import cx from "classnames";
+import { ArrowLeftIcon } from "../../main/icons/arrow-left-icon";
+import { ArrowRightIcon } from "../../main/icons/arrow-right-icon";
+import { CheckIcon } from "../../main/icons/check-icon";
 
-import {storyListSelector} from '../../../selectors/story/list';
-import {selectedTagsSelector} from '../../../selectors/story/selected-tags';
-import setSelectedStoryTags from '../../../actions/set-selected-story-tags';
+import { selectedTagsSelector } from "../../../selectors/story/selected-tags";
+import { setSelectedTags } from "../../../reducers/story";
+import { useGetStoryListQuery } from "../../../services/api";
+import { languageSelector } from "../../../selectors/language";
 
-import styles from './story-filter.module.styl';
+import styles from "./story-filter.module.css";
 
 const StoryFilter: FunctionComponent = () => {
   const dispatch = useDispatch();
-  const stories = useSelector(storyListSelector);
+  const language = useSelector(languageSelector);
+  const { data: stories } = useGetStoryListQuery(language);
   const selectedTags = useSelector(selectedTagsSelector);
   const [translateValue, setTranslateValue] = useState(0);
   const scrollSpeed = 50; // pixels per frame
@@ -24,9 +26,8 @@ const StoryFilter: FunctionComponent = () => {
       innerRef.current?.scrollWidth - innerRef.current?.clientWidth) ||
     0;
   const allTags: string[] = stories
-    .map(({tags}) => tags)
+    .map(({ tags }) => tags)
     .filter(Boolean)
-    // @ts-ignore Array.flat()
     .flat();
   const uniqTags = Array.from(new Set(allTags));
   const isSelected = (tag: string) => selectedTags.includes(tag);
@@ -35,12 +36,12 @@ const StoryFilter: FunctionComponent = () => {
 
   const toggleTag = (tag: string) => {
     const newTags = selectedTags.includes(tag)
-      ? selectedTags.filter(oldTag => oldTag !== tag)
+      ? selectedTags.filter((oldTag) => oldTag !== tag)
       : selectedTags.concat([tag]);
 
-    dispatch(setSelectedStoryTags(newTags));
+    dispatch(setSelectedTags(newTags));
   };
-  const resetTags = () => dispatch(setSelectedStoryTags([]));
+  const resetTags = () => dispatch(setSelectedTags([]));
 
   const leftClick = () => {
     if (translateValue < 0) {
@@ -64,13 +65,15 @@ const StoryFilter: FunctionComponent = () => {
       <div className={styles.tagScrollerOuter}>
         <div
           className={styles.tagScrollerInner}
-          style={{transform: `translateX(${translateValue}px)`}}
-          ref={innerRef}>
-          {uniqTags.map(tag => (
+          style={{ transform: `translateX(${translateValue}px)` }}
+          ref={innerRef}
+        >
+          {uniqTags.map((tag) => (
             <div
               className={getTagClasses(tag)}
               onClick={() => toggleTag(tag)}
-              key={tag}>
+              key={tag}
+            >
               {isSelected(tag) && <CheckIcon />}
               <FormattedMessage id={`tags.${tag}`} />
             </div>
@@ -83,7 +86,8 @@ const StoryFilter: FunctionComponent = () => {
       <button
         disabled={selectedTags.length === 0}
         className={styles.resetButton}
-        onClick={resetTags}>
+        onClick={resetTags}
+      >
         <FormattedMessage id="resetFilters" />
       </button>
     </div>

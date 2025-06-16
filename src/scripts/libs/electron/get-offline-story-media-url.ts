@@ -5,5 +5,5 @@ export function getOfflineStoryMediaUrl(): string {
     return '';
   }
 
-  return window.cfs.getDownloadsPath('downloads', 'story-{id}');
+  return window.cfs.getDownloadsPath('downloads', '{id}');
 }

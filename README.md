@@ -95,6 +95,24 @@ Trigger the electron build task on Cloud build for the master branch (https://co
 Copy the master electron application files into a separate version folder
 `gsutil cp -r gs://esa-cfs-versions/electron/master/*{VERSION}* gs://esa-cfs-versions/electron/{VERSION}/`
 
+### Add new story (content)
+
+To add a new story or update content, follow these steps:
+
+1. **Prepare the content**:
+   - Use the [Story Mapper tool](https://github.com/ubilabs/esa-climate-story-mapper), which is a GCP Cloud Function
+   - The tool takes a spreadsheet and a story ID as input and transforms it into a valid story JSON
+
+2. **Update the necessary files**:
+   - Add the new story to all language variants of the stories index file (`stories-en.json`, `stories-de.json`, etc.)
+   - Create a new directory with translation files in `/stories/story-[id]/` (where `[id]` is the story number)
+   - Ensure all required language versions are included (e.g., `story-[id]-en.json`, `story-[id]-de.json`)
+
+3. **Deploy the changes**:
+   - Merge the new files into the `develop` branch
+   - Use the `upload-stories` script to upload the updated content to cloud storage
+   - Test the new story on the staging environment before proceeding to production
+
 ## Contact
 
 - PM Ubilabs: Patrick Mast <mast@ubilabs.net>

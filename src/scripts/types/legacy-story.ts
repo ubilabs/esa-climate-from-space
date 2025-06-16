@@ -1,7 +1,7 @@
-import {StoryLayer} from './story-layer';
-import {SlideType} from './slide-type';
-import {Marker} from './marker-type';
-import {ImageFit} from './image-fit';
+import { StoryLayer } from "./story-layer";
+import { SlideType } from "./slide-type";
+import { Marker } from "./marker-type";
+import { ImageFit } from "./image-fit";
 
 export interface LegacySlide {
   type: SlideType;
@@ -17,6 +17,7 @@ export interface LegacySlide {
   embeddedSrc?: string;
   layer?: StoryLayer[];
   layerDescription?: string;
+  layerAutoplay?: boolean;
   flyTo: {
     position: {
       longitude: number;

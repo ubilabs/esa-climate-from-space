@@ -1,21 +1,28 @@
-import {LayerLoadingState} from '@ubilabs/esa-webgl-globe';
-import {
-  UPDATE_LAYER_LOADING_STATE,
-  UpdateLayerLoadingStateAction
-} from '../../actions/update-layer-loading-state';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
-export type LoadingStateByLayer = {[layerId: string]: LayerLoadingState};
+export type LoadingStateByLayer = { [layerId: string]: LayerLoadingState };
 
-function layerLoadingStateReducer(
-  state: LoadingStateByLayer = {},
-  action: UpdateLayerLoadingStateAction
-): LoadingStateByLayer {
-  switch (action.type) {
-    case UPDATE_LAYER_LOADING_STATE:
-      return {...state, [action.layerId]: action.loadingState};
-    default:
-      return state;
-  }
+interface UpdateLayerLoadingStatePayload {
+  layerId: string;
+  loadingState: LayerLoadingState;
 }
 
-export default layerLoadingStateReducer;
+const layerLoadingStateSlice = createSlice({
+  name: "layerLoadingState",
+  initialState: {} as LoadingStateByLayer,
+  reducers: {
+    updateLayerLoadingState: (
+      state,
+      action: PayloadAction<UpdateLayerLoadingStatePayload>,
+    ) => {
+      return {
+        ...state,
+        [action.payload.layerId]: action.payload.loadingState,
+      };
+    },
+  },
+});
+
+export const { updateLayerLoadingState } = layerLoadingStateSlice.actions;
+export default layerLoadingStateSlice.reducer;

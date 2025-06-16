@@ -1,13 +1,13 @@
-import React, {FunctionComponent} from 'react';
-import {FormattedMessage} from 'react-intl';
-import {useLocation} from 'react-router-dom';
-import cx from 'classnames';
+import { FunctionComponent } from "react";
+import { FormattedMessage } from "react-intl";
+import { useLocation } from "react-router-dom";
+import cx from "classnames";
 
-import {ElementOptions, UiEmbedElement} from '../../../types/embed-elements';
-import {useStoryParams} from '../../../hooks/use-story-params';
-import useIsStoriesPath from '../../../hooks/use-is-stories-path';
+import { ElementOptions, UiEmbedElement } from "../../../types/embed-elements";
+import { useContentParams } from "../../../hooks/use-content-params";
+import useIsStoriesPath from "../../../hooks/use-is-stories-path";
 
-import styles from './embed-checkbox-list.module.styl';
+import styles from "./embed-checkbox-list.module.css";
 
 interface Props {
   elementList: UiEmbedElement;
@@ -15,19 +15,18 @@ interface Props {
   handleChange: (elements: ElementOptions) => void;
 }
 
-// eslint-disable-next-line complexity
 const EmbedCheckboxList: FunctionComponent<Props> = ({
   elementList,
   elementsChecked,
-  handleChange
+  handleChange,
 }) => {
-  const {pathname} = useLocation();
-  const {currentStoryId} = useStoryParams();
+  const { pathname } = useLocation();
+  const { currentStoryId } = useContentParams();
   const isStoriesPath = useIsStoriesPath();
-  const isDataPath = pathname === '/';
-  const isStoriesList = elementList.title === 'stories';
-  const isStory = elementList.title === 'story';
-  const isApp = elementList.title === 'app';
+  const isDataPath = pathname === "/";
+  const isStoriesList = elementList.title === "stories";
+  const isStory = elementList.title === "story";
+  const isApp = elementList.title === "app";
 
   const disabledEmbed =
     (isDataPath && (isStoriesList || isStory)) ||
@@ -37,7 +36,7 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
   const checkboxListClasses = cx(
     styles.checkboxListContainer,
     disabledEmbed && styles.disabledEmbed,
-    styles[elementList.title]
+    styles[elementList.title],
   );
 
   return (
@@ -47,19 +46,20 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
       </h2>
       <div
         className={styles.checkBoxList}
-        title={disabledEmbed ? 'Disabled for this layer' : ''}>
-        {elementList.elements.map(element => (
+        title={disabledEmbed ? "Disabled for this layer" : ""}
+      >
+        {elementList.elements.map((element) => (
           <div className={styles.checkboxListItem} key={element}>
             <input
               type="checkbox"
               name={element}
               checked={elementsChecked[element] === true}
-              onChange={event => {
+              onChange={(event) => {
                 const checked = event.target.checked;
 
                 handleChange({
                   ...elementsChecked,
-                  [element]: checked
+                  [element]: checked,
                 });
               }}
             />

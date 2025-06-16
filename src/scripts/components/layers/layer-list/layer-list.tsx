@@ -1,12 +1,11 @@
-import React, {FunctionComponent} from 'react';
+import { FunctionComponent } from "react";
 
-import LayerListItem from '../layer-list-item/layer-list-item';
+import LayerListItem from "../layer-list-item/layer-list-item";
 
-import {SelectedLayerIdsState} from '../../../reducers/layers/selected-ids';
+import { SelectedLayerIdsState } from "../../../reducers/layers";
+import { LayerListItem as LayerListItemType } from "../../../types/layer-list";
 
-import {LayerListItem as LayerListItemType} from '../../../types/layer-list';
-
-import styles from './layer-list.module.styl';
+import styles from "./layer-list.module.css";
 
 interface Props {
   selectedLayerIds: SelectedLayerIdsState;
@@ -17,16 +16,16 @@ interface Props {
 const LayerList: FunctionComponent<Props> = ({
   selectedLayerIds,
   layers,
-  onSelect
+  onSelect,
 }) => {
-  const {mainId} = selectedLayerIds;
+  const { mainId } = selectedLayerIds;
   const isMainSelected = Boolean(mainId);
 
   return (
     <ul className={styles.layerList}>
       {layers
-        .filter(layer => !Object.values(selectedLayerIds).includes(layer.id))
-        .map(layer => (
+        .filter((layer) => !Object.values(selectedLayerIds).includes(layer.id))
+        .map((layer) => (
           <li key={layer.id}>
             <LayerListItem
               onSelect={(id, isMain) => onSelect(id, isMain)}

@@ -1,17 +1,17 @@
-import React, {FunctionComponent} from 'react';
-import {Link} from 'react-router-dom';
-import cx from 'classnames';
+import { FunctionComponent } from "react";
+import { Link } from "react-router-dom";
+import cx from "classnames";
 
-import StoryTags from '../story-tags/story-tags';
-import {replaceUrlPlaceholders} from '../../../libs/replace-url-placeholders';
-import {DownloadButton} from '../../main/download-button/download-button';
-import {getStoryAssetUrl} from '../../../libs/get-story-asset-urls';
-import config from '../../../config/main';
+import StoryTags from "../story-tags/story-tags";
+import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
+import { DownloadButton } from "../../main/download-button/download-button";
+import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
+import config from "../../../config/main";
 
-import {StoryListItem as StoryListItemType} from '../../../types/story-list';
-import {StoryMode} from '../../../types/story-mode';
+import { StoryListItem as StoryListItemType } from "../../../types/story-list";
+import { StoryMode } from "../../../types/story-mode";
 
-import styles from './story-list-item.module.styl';
+import styles from "./story-list-item.module.css";
 
 interface Props {
   story: StoryListItemType;
@@ -26,17 +26,17 @@ const StoryListItemContent: FunctionComponent<Props> = ({
   story,
   selectedIndex,
   selectedTags,
-  onSelectStory
+  onSelectStory,
 }) => {
   const classes = cx(
     styles.storyListItem,
     mode === StoryMode.Present && styles.present,
     mode === StoryMode.Showcase && styles.showcase,
-    selectedIndex >= 0 && styles.selected
+    selectedIndex >= 0 && styles.selected,
   );
   const isStoriesMode = StoryMode.Stories === mode;
   const downloadUrl = replaceUrlPlaceholders(config.api.storyOfflinePackage, {
-    id: story.id
+    id: story.id,
   });
   const downloadId = `story-${story.id}`;
   const imageUrl = getStoryAssetUrl(story.id, story.image);
@@ -44,13 +44,15 @@ const StoryListItemContent: FunctionComponent<Props> = ({
   return (
     <div
       className={classes}
-      onClick={() => mode === StoryMode.Showcase && onSelectStory(story.id)}>
+      onClick={() => mode === StoryMode.Showcase && onSelectStory(story.id)}
+    >
       {selectedIndex >= 0 && (
         <div className={styles.storyNumber}>{selectedIndex + 1}</div>
       )}
       <div
         className={styles.image}
-        style={{backgroundImage: `url(${imageUrl})`}}></div>
+        style={{ backgroundImage: `url(${imageUrl})` }}
+      ></div>
       <div className={styles.info}>
         <p className={styles.title}>{story.title}</p>
         <p className={styles.description}>{story.description}</p>
@@ -70,7 +72,7 @@ const StoryListItem: FunctionComponent<Props> = ({
   mode,
   selectedIndex,
   selectedTags,
-  onSelectStory
+  onSelectStory,
 }) => {
   const isShowcaseMode = mode === StoryMode.Showcase;
 
@@ -81,7 +83,7 @@ const StoryListItem: FunctionComponent<Props> = ({
         selectedTags={selectedTags}
         mode={mode}
         story={story}
-        onSelectStory={id => onSelectStory(id)}
+        onSelectStory={(id) => onSelectStory(id)}
       />
     </Link>
   ) : (
@@ -90,7 +92,7 @@ const StoryListItem: FunctionComponent<Props> = ({
       selectedTags={selectedTags}
       mode={mode}
       story={story}
-      onSelectStory={id => onSelectStory(id)}
+      onSelectStory={(id) => onSelectStory(id)}
     />
   );
 };

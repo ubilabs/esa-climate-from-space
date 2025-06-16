@@ -1,0 +1,27 @@
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tag {
+  overflow: hidden;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+  padding: 0.3125rem 0.5rem;
+  border: 1px solid var(--dark-grey-4);
+  border-radius: 12px;
+  color: var(--text-default);
+  text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.8em;
+  cursor: pointer;
+}
+.tag:hover {
+  border-color: #445a6c;
+  background: var(--dark-grey-2);
+}
+.selected,
+.selected:hover {
+  background: var(--dark-grey-4);
+  color: var(--main);
+}

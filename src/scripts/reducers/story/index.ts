@@ -1,15 +1,30 @@
-import {combineReducers} from 'redux';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { parseUrlTags } from "../../libs/tags-url-parameter";
 
-import listReducer from './list';
-import selectedReducer from './selected';
-import selectedTagsReducer from './selected-tags';
+interface StoriesState {
+  selected: string | null;
+  selectedTags: string[];
+}
 
-const storiesReducer = combineReducers({
-  list: listReducer,
-  selected: selectedReducer,
-  selectedTags: selectedTagsReducer
+const initialState: StoriesState = {
+  selected: null,
+  selectedTags: parseUrlTags(),
+};
+
+const storiesSlice = createSlice({
+  name: "stories",
+  initialState,
+  reducers: {
+    setSelected: (state, action: PayloadAction<string | null>) => {
+      state.selected = action.payload;
+    },
+    setSelectedTags: (state, action: PayloadAction<string[]>) => {
+      state.selectedTags = action.payload;
+    },
+  },
 });
 
-export default storiesReducer;
+export const { setSelected, setSelectedTags } = storiesSlice.actions;
 
-export type StoriesState = ReturnType<typeof storiesReducer>;
+export default storiesSlice.reducer;
+export type { StoriesState };

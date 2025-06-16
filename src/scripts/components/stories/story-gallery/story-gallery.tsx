@@ -1,33 +1,34 @@
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useState
-} from 'react';
-import cx from 'classnames';
+import { FunctionComponent, useCallback, useEffect, useState } from "react";
+import cx from "classnames";
 
-import {PreviousIcon} from '../../main/icons/previous-icon';
-import {NextIcon} from '../../main/icons/next-icon';
-import {FullscreenIcon} from '../../main/icons/fullscreen-icon';
-import {useInterval} from '../../../hooks/use-interval';
-import config from '../../../config/main';
-import {CloseIcon} from '../../main/icons/close-icon';
-import StoryGalleryItem from '../story-gallery-item/story-gallery-item';
-import StoryProgress from '../story-progress/story-progress';
+import { PreviousIcon } from "../../main/icons/previous-icon";
+import { NextIcon } from "../../main/icons/next-icon";
+import { FullscreenIcon } from "../../main/icons/fullscreen-icon";
+import { useInterval } from "../../../hooks/use-interval";
+import config from "../../../config/main";
+import { CloseIcon } from "../../main/icons/close-icon";
+import StoryGalleryItem from "../story-gallery-item/story-gallery-item";
+import StoryProgress from "../story-progress/story-progress";
 
-import {StoryMode} from '../../../types/story-mode';
+import { StoryMode } from "../../../types/story-mode";
 
-import styles from './story-gallery.module.styl';
+import styles from "./story-gallery.module.css";
 
 interface Props {
   storyId: string;
   mode: StoryMode | null;
   children: React.ReactElement[];
+  showLightbox: boolean;
+  setShowLightbox: (showLightbox: boolean) => void;
 }
 
-const StoryGallery: FunctionComponent<Props> = ({mode, children}) => {
+const StoryGallery: FunctionComponent<Props> = ({
+  mode,
+  showLightbox,
+  setShowLightbox,
+  children,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showLightbox, setShowLightbox] = useState(false);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < children.length - 1;
   const delay = mode === StoryMode.Showcase ? config.delay : null;
@@ -65,54 +66,52 @@ const StoryGallery: FunctionComponent<Props> = ({mode, children}) => {
         }
       }
     },
-    [showLightbox]
+    [showLightbox],
   );
 
   // add and remove event listener for keyboard events
   useEffect(() => {
-    window.addEventListener('keydown', onKeyDownHandler);
+    window.addEventListener("keydown", onKeyDownHandler);
     return () => {
-      window.removeEventListener('keydown', onKeyDownHandler);
+      window.removeEventListener("keydown", onKeyDownHandler);
     };
   }, [onKeyDownHandler]);
 
   const storyGalleryClasses = cx(
     styles.storyGallery,
-    showLightbox && styles.lightboxStoryGallery
+    showLightbox && styles.lightboxStoryGallery,
   );
   const prevIconClasses = cx(
     styles.navIcon,
-    !showPrevButton && styles.disabledNavIcon
+    !showPrevButton && styles.disabledNavIcon,
   );
   const nextIconClasses = cx(
     styles.navIcon,
-    !showNextButton && styles.disabledNavIcon
+    !showNextButton && styles.disabledNavIcon,
   );
 
   return (
     <div className={storyGalleryClasses}>
-      {children.length > 1 && (
-        <StoryProgress currentIndex={currentIndex} showLightbox={showLightbox}>
-          {children}
-        </StoryProgress>
-      )}
       <div className={styles.gallery}>
         {!showLightbox ? (
           <div
             className={styles.fullscreenIcon}
-            onClick={() => setShowLightbox(true)}>
+            onClick={() => setShowLightbox(true)}
+          >
             <FullscreenIcon />
           </div>
         ) : (
           <div
             className={styles.fullscreenExitIcon}
-            onClick={() => setShowLightbox(false)}>
+            onClick={() => setShowLightbox(false)}
+          >
             <CloseIcon />
           </div>
         )}
         <StoryGalleryItem
           currentIndex={currentIndex}
-          showLightbox={showLightbox}>
+          showLightbox={showLightbox}
+        >
           {children}
         </StoryGalleryItem>
         {children.length > 1 && (
@@ -126,6 +125,11 @@ const StoryGallery: FunctionComponent<Props> = ({mode, children}) => {
           </div>
         )}
       </div>
+      {children.length > 1 && (
+        <StoryProgress currentIndex={currentIndex} showLightbox={showLightbox}>
+          {children}
+        </StoryProgress>
+      )}
     </div>
   );
 };

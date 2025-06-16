@@ -1,0 +1,15 @@
+.share {
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+.link {
+  color: var(--text-default);
+
+  &:hover {
+    color: var(--main);
+  }
+}

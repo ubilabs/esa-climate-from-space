@@ -1,12 +1,12 @@
-import {ImageFit} from './image-fit';
-import {Marker} from './marker-type';
-import {StoryLayer} from './story-layer';
+import { ImageFit } from "./image-fit";
+import { Marker } from "./marker-type";
+import { StoryLayer } from "./story-layer";
 
 export enum GalleryItemType {
-  Video = 'video',
-  Image = 'image',
-  Embedded = 'embedded',
-  Globe = 'globe'
+  Video = "video",
+  Image = "image",
+  Embedded = "embedded",
+  Globe = "globe",
 }
 
 export interface ImageItem {
@@ -47,4 +47,5 @@ export interface GlobeItem {
   markers: Marker[];
   layer?: StoryLayer[];
   layerDescription?: string;
+  layerAutoplay?: boolean;
 }

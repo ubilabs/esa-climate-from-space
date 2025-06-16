@@ -1,16 +1,16 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import { FunctionComponent, useEffect, useState } from "react";
 
-import Button from '../button/button';
-import {CopyTextIcon} from '../icons/copy-text-icon';
-import {CheckIcon} from '../icons/check-icon';
+import Button from "../button/button";
+import { CopyTextIcon } from "../icons/copy-text-icon";
+import { CheckIcon } from "../icons/check-icon";
 
-import styles from './copy-to-clipboard-button.module.styl';
+import styles from "./copy-to-clipboard-button.module.css";
 
 interface Props {
   label: string;
   onCopy: () => void;
 }
-const CopyToClipboardButton: FunctionComponent<Props> = ({label, onCopy}) => {
+const CopyToClipboardButton: FunctionComponent<Props> = ({ label, onCopy }) => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {

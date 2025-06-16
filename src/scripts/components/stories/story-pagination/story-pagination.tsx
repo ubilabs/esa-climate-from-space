@@ -1,15 +1,15 @@
-import React, {FunctionComponent, useCallback, useEffect} from 'react';
-import {Link, useHistory} from 'react-router-dom';
-import {useIntl} from 'react-intl';
-import cx from 'classnames';
+import { FunctionComponent, useCallback, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useIntl } from "react-intl";
+import cx from "classnames";
 
-import {PreviousIcon} from '../../main/icons/previous-icon';
-import {NextIcon} from '../../main/icons/next-icon';
-import {CloseIcon} from '../../main/icons/close-icon';
+import { PreviousIcon } from "../../main/icons/previous-icon";
+import { NextIcon } from "../../main/icons/next-icon";
+import { CloseIcon } from "../../main/icons/close-icon";
 
-import {StoryMode} from '../../../types/story-mode';
+import { StoryMode } from "../../../types/story-mode";
 
-import styles from './story-pagination.module.styl';
+import styles from "./story-pagination.module.css";
 
 interface Props {
   mode: StoryMode | null;
@@ -24,7 +24,7 @@ const StoryPagination: FunctionComponent<Props> = ({
   slideIndex,
   storySlidesLength,
   nextSlideLink,
-  previousSlideLink
+  previousSlideLink,
 }) => {
   const intl = useIntl();
   const history = useHistory();
@@ -32,7 +32,6 @@ const StoryPagination: FunctionComponent<Props> = ({
   const isPresenterMode = mode === StoryMode.Present;
 
   const onKeyDownHandler = useCallback(
-    // eslint-disable-next-line complexity
     (event: KeyboardEvent) => {
       if (!isShowcaseMode) {
         // 37-arrow left, 33-page up, 38-arrow down
@@ -41,7 +40,9 @@ const StoryPagination: FunctionComponent<Props> = ({
           event.keyCode === 37 ||
           event.keyCode === 38
         ) {
-          previousSlideLink && history.push(previousSlideLink);
+          if (previousSlideLink) {
+            history.push(previousSlideLink);
+          }
         }
         // 39-arrow right, 34-page down, 40-arrow down
         if (
@@ -49,27 +50,29 @@ const StoryPagination: FunctionComponent<Props> = ({
           event.keyCode === 39 ||
           event.keyCode === 40
         ) {
-          nextSlideLink && history.push(nextSlideLink);
+          if (nextSlideLink) {
+            history.push(nextSlideLink);
+          }
         }
         // 27 - esc
       } else if (event.keyCode === 27) {
         history.push(`/${mode}`);
       }
     },
-    [isShowcaseMode, history, mode, previousSlideLink, nextSlideLink]
+    [isShowcaseMode, history, mode, previousSlideLink, nextSlideLink],
   );
 
   // add and remove event listener for keyboard events
   useEffect(() => {
-    window.addEventListener('keydown', onKeyDownHandler);
+    window.addEventListener("keydown", onKeyDownHandler);
     return () => {
-      window.removeEventListener('keydown', onKeyDownHandler);
+      window.removeEventListener("keydown", onKeyDownHandler);
     };
   }, [onKeyDownHandler]);
 
   const disabledClasses = cx(
     styles.disabled,
-    isShowcaseMode && styles.emptyIcon
+    isShowcaseMode && styles.emptyIcon,
   );
 
   return (
@@ -103,7 +106,8 @@ const StoryPagination: FunctionComponent<Props> = ({
           <div className={styles.closeIcon}>
             <Link
               to={`/${mode}`}
-              title={intl.formatMessage({id: 'closeStory'})}>
+              title={intl.formatMessage({ id: "closeStory" })}
+            >
               <CloseIcon />
             </Link>
           </div>

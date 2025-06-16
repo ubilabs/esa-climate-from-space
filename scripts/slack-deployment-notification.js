@@ -1,5 +1,5 @@
-const {execSync} = require('child_process');
-const https = require('https');
+import {execSync} from 'child_process';
+import https from 'https';
 
 const url = process.env.SLACK_HOOK_URL;
 const branchName = process.env.BRANCH_NAME;
@@ -7,10 +7,7 @@ const branchName = process.env.BRANCH_NAME;
 const commitMessage = execSync('git log -1 --pretty=%B', {
   encoding: 'utf8'
 });
-const shortMessage = commitMessage
-  .replace(/\*/g, '')
-  .split('\n')[0]
-  .trim();
+const shortMessage = commitMessage.replace(/\*/g, '').split('\n')[0].trim();
 
 const commitHash = execSync('git rev-parse HEAD', {
   encoding: 'utf8'

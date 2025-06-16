@@ -1,7 +1,22 @@
-import {State} from '../../reducers/index';
+import { State } from "../../reducers/index";
+import { layersApi } from "../../services/api";
+import { createSelector } from "@reduxjs/toolkit";
 
-import {LayerList} from '../../types/layer-list';
+// Get current language from the state
+const selectCurrentLanguage = (state: State) => state.language;
 
-export function layersSelector(state: State): LayerList {
-  return state.layers.list;
-}
+// Get layers list
+export const selectLayers = createSelector(
+  [selectCurrentLanguage, (state) => state],
+  (language, state) => {
+    const layersResult =
+      layersApi.endpoints.getLayerList.select(language)(state);
+    return layersResult;
+  },
+);
+
+// Create memoized selector for transformed data
+export const layersSelector = createSelector(
+  (state: State) => selectLayers(state).data,
+  (data) => data ?? [],
+);

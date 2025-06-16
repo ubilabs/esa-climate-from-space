@@ -1,14 +1,27 @@
-import {AnyAction} from 'redux';
+import { PayloadAction } from "@reduxjs/toolkit";
 
+export interface RTKQueryAction extends PayloadAction {
+  meta?: {
+    arg: {
+      endpointName: unknown;
+      originalArgs: {
+        id?: string;
+        ids?: string[];
+        language?: string;
+      };
+    };
+    requestStatus: string;
+  };
+}
 export interface ActionToPersist {
-  success: string;
-  error: string;
+  meta: {
+    arg: {
+      endpointName: string;
+    };
+  };
   save: boolean;
   load: boolean;
-  getFilePath?: (errorAction: AnyAction) => string;
-  successActionCreator?: (
-    errorAction: AnyAction,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    content: any
-  ) => AnyAction;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  payload: any;
+  getFilePath?: (errorAction: RTKQueryAction) => string;
 }

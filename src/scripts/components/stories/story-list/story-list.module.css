@@ -1,0 +1,30 @@
+.storyList {
+  overflow-y: auto;
+  height: 100%;
+  background-color: var(--black);
+}
+.storyListGrid {
+  display: grid;
+  padding: 1.25em;
+  padding-top: 0;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-auto-rows: 340px;
+  grid-gap: 16px;
+}
+.present {
+  padding-top: 1.25em;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+.showcase {
+  padding-top: 1.25em;
+}
+.noMatchingStories {
+  margin-top: 3.125em;
+  color: var(--text-default);
+  text-align: center;
+}
+@media screen and (--mobile-s-viewport) {
+  .storyListGrid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
