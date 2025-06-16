@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { useInterval } from "../../../hooks/use-interval";
 
@@ -9,10 +9,10 @@ interface Props {
 }
 
 const Autoplay: FunctionComponent<Props> = ({ autoPlayLink, delay }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useInterval(() => {
-    void (autoPlayLink && history.replace(autoPlayLink));
+    void (autoPlayLink && navigate(autoPlayLink, { replace: true }));
   }, delay);
 
   return null;

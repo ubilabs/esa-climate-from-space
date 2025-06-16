@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useIntl, FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 
@@ -15,7 +15,7 @@ import styles from "./showcase-selector.module.css";
 
 const ShowcaseSelector: FunctionComponent = () => {
   const params = useParams<{ storyIds?: string }>();
-  const history = useHistory();
+  const navigate = useNavigate();
   const intl = useIntl();
   const storyIds = params.storyIds?.split("&");
   const selectedIds = storyIds || [];
@@ -26,7 +26,7 @@ const ShowcaseSelector: FunctionComponent = () => {
     const newIds = isInList
       ? selectedIds.filter((selectedId) => selectedId !== id)
       : selectedIds.concat(id);
-    history.replace(`/showcase/${newIds.join("&")}`);
+    navigate(`/showcase/${newIds.join("&")}`, { replace: true });
   };
   const isDisabled = selectedIds.length === 0;
 

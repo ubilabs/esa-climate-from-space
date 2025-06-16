@@ -1,11 +1,6 @@
 import { useEffect, useCallback, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  useHistory,
-  useLocation,
-  matchPath,
-  useParams,
-} from "react-router-dom";
+import { useLocation, matchPath, useParams } from "react-router-dom";
 import { setIsAutoRotating } from "../reducers/globe/auto-rotation";
 import { setShowLayer } from "../reducers/show-layer-selector";
 import { toggleEmbedElements } from "../reducers/embed-elements";
@@ -18,7 +13,7 @@ import { selectedLayerIdsSelector } from "../selectors/layers/selected-ids";
 import { languageSelector } from "../selectors/language";
 import { useGetLayerListQuery } from "../services/api";
 
-interface RouteParams {
+interface RouteParams extends Record<string, string | undefined> {
   category: string | undefined;
 }
 
@@ -26,15 +21,17 @@ interface RouteParams {
  * Path patterns used for route matching
  */
 const ROUTE_PATTERNS = {
-  basePath: { path: "/", exact: true },
-  navPath: { path: "/:category", exact: true },
-  dataPath: { path: "/:category/data", exact: true },
+  basePath: { path: "/" },
+  navPath: { path: "/:category" },
+  dataPath: { path: "/:category/data" },
   storyPath: { path: "/:category/stories/:storyId" },
 };
 
 /**
  * Hook that manages globe state based on location changes
  * Handles auto-rotation functionality based on current route
+ * Please import this hook only once as it would fire state dispachtes multiple times
+ * We should refactor this hook into dedicated components in the future
  */
 export function useGlobeLocationState() {
   const { category } = useParams<RouteParams>();
@@ -43,7 +40,6 @@ export function useGlobeLocationState() {
   );
   const [showDataSet, setShowDataSet] = useState<boolean>(false);
 
-  const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
   const previousPathnameRef = useRef(location.pathname);
@@ -70,10 +66,19 @@ export function useGlobeLocationState() {
    */
   const getRouteMatches = useCallback((pathname: string) => {
     return {
-      basePath: matchPath(pathname, ROUTE_PATTERNS.basePath),
-      navPath: matchPath(pathname, ROUTE_PATTERNS.navPath),
-      dataPath: matchPath(pathname, ROUTE_PATTERNS.dataPath),
-      storyPath: matchPath(pathname, ROUTE_PATTERNS.storyPath),
+      basePath: matchPath(
+        { path: ROUTE_PATTERNS.basePath.path, end: true },
+        pathname,
+      ),
+      navPath: matchPath(
+        { path: ROUTE_PATTERNS.navPath.path, end: true },
+        pathname,
+      ),
+      dataPath: matchPath(
+        { path: ROUTE_PATTERNS.dataPath.path, end: true },
+        pathname,
+      ),
+      storyPath: matchPath({ path: ROUTE_PATTERNS.storyPath.path }, pathname),
     };
   }, []);
 
@@ -105,7 +110,7 @@ export function useGlobeLocationState() {
       if (routeMatches.navPath) {
         setShowContentList(true);
         // This will only be triggered when the user is navigating back from /data page
-        if (previousPathnameRef.current.endsWith("/data")) {
+        if (getRouteMatches(previousPathnameRef.current).dataPath) {
           dispatch(setShowLayer(false));
           dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
@@ -143,13 +148,10 @@ export function useGlobeLocationState() {
   );
 
   const isMobile = useScreenSize().isMobile;
-  useEffect(() => {
-    const unlisten = history.listen((location) => {
-      handlePathnameChange(location.pathname, false, isMobile);
-    });
 
-    return unlisten;
-  }, [history, handlePathnameChange, isMobile]);
+  useEffect(() => {
+    handlePathnameChange(location.pathname, false, isMobile);
+  }, [location.pathname, handlePathnameChange, isMobile]);
 
   // Handle initial state and direct URL changes
   useEffect(() => {

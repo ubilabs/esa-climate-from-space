@@ -1,4 +1,4 @@
-import { useRouteMatch, useParams } from "react-router-dom";
+import { useMatch, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { State } from "../reducers";
@@ -27,14 +27,15 @@ function isShowCaseParams(
 }
 
 export const useContentParams = () => {
-  const matchStories = useRouteMatch(["/stories/:storyId", "/:category/stories/:storyId"]);
-  const matchPresent = useRouteMatch("/present/:storyId");
-  const matchShowCase = useRouteMatch("/showcase/:storyIds");
-  const matchCategory = useRouteMatch("/:category/stories/:storyId");
+  const matchStories = useMatch("/stories/:storyId/*");
 
-  const matchDataContent = useRouteMatch("/:category/data");
-  const matchContentNavigation = useRouteMatch("/:category");
-  const matchCategoryNavigation = useRouteMatch("/");
+  const matchPresent = useMatch("/present/:storyId/*");
+  const matchShowCase = useMatch("/showcase/:storyIds/*");
+  const matchCategory = useMatch("/:category/stories/:storyId/*");
+
+  const matchDataContent = useMatch("/:category/data/*");
+  const matchContentNavigation = useMatch("/:category/*");
+  const matchCategoryNavigation = useMatch("/*");
 
   const params = useParams<StoryParams | ShowCaseParams>();
   const storyIds = isShowCaseParams(params)
@@ -69,7 +70,8 @@ export const useContentParams = () => {
   const selectedStory = useSelector((state: State) =>
     selectedStorySelector(state, currentStoryId),
   );
-  const isNavigation = mode === StoryMode.NavContent || mode === StoryMode.NavCategory;
+  const isNavigation =
+    mode === StoryMode.NavContent || mode === StoryMode.NavCategory;
 
   // Get initial category from URL params, or use null if not present
   const initialCategory = params.category || null;

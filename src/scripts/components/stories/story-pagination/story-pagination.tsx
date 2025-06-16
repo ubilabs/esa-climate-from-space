@@ -1,5 +1,5 @@
 import { FunctionComponent, useCallback, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useIntl } from "react-intl";
 import cx from "classnames";
 
@@ -27,7 +27,7 @@ const StoryPagination: FunctionComponent<Props> = ({
   previousSlideLink,
 }) => {
   const intl = useIntl();
-  const history = useHistory();
+  const navigate = useNavigate();
   const isShowcaseMode = mode === StoryMode.Showcase;
   const isPresenterMode = mode === StoryMode.Present;
 
@@ -41,7 +41,7 @@ const StoryPagination: FunctionComponent<Props> = ({
           event.keyCode === 38
         ) {
           if (previousSlideLink) {
-            history.push(previousSlideLink);
+            navigate(previousSlideLink);
           }
         }
         // 39-arrow right, 34-page down, 40-arrow down
@@ -51,15 +51,15 @@ const StoryPagination: FunctionComponent<Props> = ({
           event.keyCode === 40
         ) {
           if (nextSlideLink) {
-            history.push(nextSlideLink);
+            navigate(nextSlideLink);
           }
         }
         // 27 - esc
       } else if (event.keyCode === 27) {
-        history.push(`/${mode}`);
+        navigate(`/${mode}`);
       }
     },
-    [isShowcaseMode, history, mode, previousSlideLink, nextSlideLink],
+    [isShowcaseMode, navigate, mode, previousSlideLink, nextSlideLink],
   );
 
   // add and remove event listener for keyboard events

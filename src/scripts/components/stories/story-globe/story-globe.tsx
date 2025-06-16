@@ -7,12 +7,12 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 import TimeSlider from "../../layers/time-slider/time-slider";
 import LayerDescription from "../layer-description/layer-description";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
-import { GlobeCompareLayer } from "../../main/globe-compare-layer/globe-compare-layer";
 import { useGetLayerQuery } from "../../../services/api";
 
 import { GlobeItem } from "../../../types/gallery-item";
 
 import styles from "./story-globe.module.css";
+import { GetDataWidget } from "../../main/data-widget/data-widget";
 
 interface Props {
   globeItem: GlobeItem;
@@ -29,10 +29,7 @@ const StoryGlobe: FunctionComponent<Props> = ({ globeItem }) => {
 
   return (
     <div className={styles.globeContainer}>
-      <GlobeCompareLayer
-        markers={globeItem.markers}
-        backgroundColor={"var(--plain-black)"}
-      />
+      <GetDataWidget />
       {time_slider && (
         <div className={styles.layerDetails}>
           <TimeSlider

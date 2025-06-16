@@ -1,21 +1,17 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
 import config from "../../../config/main";
-import { layersApi, useGetStoriesQuery } from "../../../services/api";
+import { useGetStoriesQuery } from "../../../services/api";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
 
-import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { setSelectedContentAction } from "../../../reducers/content";
-import { toggleEmbedElements } from "../../../reducers/embed-elements";
 import { setFlyTo } from "../../../reducers/fly-to";
 
 import { languageSelector } from "../../../selectors/language";
@@ -59,8 +55,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
 }) => {
   const navigationRef = React.useRef<HTMLUListElement | null>(null);
   const dispatch = useDispatch();
-  const thunkDispatch = useThunkDispatch();
-  const { trackEvent } = useMatomo();
   const lang = useSelector(languageSelector);
   const { contentId } = useSelector(contentSelector);
 
@@ -146,9 +140,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   useEffect(() => {
     const id = contents[currentIndex]?.id;
 
-    dispatch(
-      setSelectedContentAction({ contentId: contents[currentIndex].id }),
-    );
+    dispatch(setSelectedContentAction({ contentId: id }));
     // We don't want to dispatch a layer action with story ids
     if (isStoryListItem(contents[currentIndex])) {
       dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
@@ -177,9 +169,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
           setFlyTo({
             ...(previewedContent?.position?.length === 2
               ? {
-                  lat: previewedContent.position[1],
-                  lng: previewedContent.position[0],
-                }
+                lat: previewedContent.position[1],
+                lng: previewedContent.position[0],
+              }
               : config.globe.view),
             isAnimated: true,
           }),
@@ -191,38 +183,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
       clearTimeout(timeout);
     };
   }, [dispatch, currentIndex, contents]);
-
-  // fucntion to handle click and keyboard events
-  const handleItemSelection = (
-    id: string,
-    index: number,
-    name: string,
-    isStory: boolean,
-    element?: HTMLElement,
-  ) => {
-    dispatch(setSelectedContentAction({ contentId: id }));
-    setCurrentIndex(index);
-
-    if (!isStory) {
-      dispatch(setShowLayer(false));
-      thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
-      dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
-      dispatch(toggleEmbedElements({ legend: true, time_slider: true }));
-      trackEvent({
-        category: "datasets",
-        action: "select",
-        name,
-      });
-    }
-
-    // For keyboard events, we need to programmatically navigate
-    if (element) {
-      const linkElement = element.querySelector("a");
-      if (linkElement) {
-        linkElement.click();
-      }
-    }
-  };
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
@@ -303,21 +263,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
               setCurrentIndex(index);
               dispatch(setSelectedContentAction({ contentId: id }));
             }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                handleItemSelection(id, index, name, isStory, e.currentTarget);
-              }
-            }}
-            onClick={() => {
-              handleItemSelection(id, index, name, isStory);
-            }}
           >
             <Link
-              to={isStory ? `${category}/stories/${id}/0/` : `${category}/data`}
+              to={
+                isStory ? `/${category}/stories/${id}/0` : `/${category}/data`
+              }
             >
               <div>
                 <span>{name}</span>
+                {/* for electron*/}
                 <DownloadButton url={downloadUrl} id={item.id} />
               </div>
               {!isMobile && (

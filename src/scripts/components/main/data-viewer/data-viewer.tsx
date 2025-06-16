@@ -1,24 +1,30 @@
-import { FunctionComponent, useRef, useState, useMemo } from "react";
+import { FunctionComponent, useRef, useState, useMemo, useEffect } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
-import { useHistory, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import cx from "classnames";
 
 import config, { categoryTags } from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useGlobeLocationState } from "../../../hooks/use-location";
+import { useContentParams } from "../../../hooks/use-content-params";
 
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { languageSelector } from "../../../selectors/language";
+import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
+
+import { toggleEmbedElements } from "../../../reducers/embed-elements";
+
+import { StoryMode } from "../../../types/story-mode";
 
 import {
   useGetLayerListQuery,
   useGetStoryListQuery,
 } from "../../../services/api";
-import { useGlobeLocationState } from "../../../hooks/use-location";
 
 import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
@@ -26,13 +32,7 @@ import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation from "../category-navigation/category-navigation";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
 
-import { useContentParams } from "../../../hooks/use-content-params";
-
 import styles from "./data-viewer.module.css";
-
-interface RouteParams {
-  category: string | undefined;
-}
 
 export type LayerLoadingStateChangeHandle = (
   layerId: string,
@@ -47,7 +47,7 @@ export type LayerLoadingStateChangeHandle = (
  * @returns {JSX.Element} The rendered DataViewer component.
  */
 const DataViewer: FunctionComponent = () => {
-  const { category } = useParams<RouteParams>();
+  const { category } = useParams();
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoryListQuery(language);
 
@@ -69,13 +69,29 @@ const DataViewer: FunctionComponent = () => {
     category || null,
   );
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const intl = useIntl();
 
   const { screenHeight, screenWidth, isMobile, isTouchDevice } =
     useScreenSize();
 
   const { isNavigation, mode } = useContentParams();
+
+  const dispatch = useDispatch();
+  const embedElements = useSelector(embedElementsSelector);
+
+  // Enable legend and time slider only in content mode
+  useEffect(() => {
+    const isContentMode = mode === StoryMode.Content;
+    dispatch(
+      toggleEmbedElements({
+        ...embedElements,
+        legend: isContentMode,
+        time_slider: isContentMode,
+      }),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode, dispatch]);
 
   // We need to reset the globe view every time the user navigates back from the the /data page
   const { showContentList, showDataSet } = useGlobeLocationState();
@@ -167,7 +183,7 @@ const DataViewer: FunctionComponent = () => {
                   styles.exploreButton,
                 )}
                 onClick={() => {
-                  history.push(`/${currentCategory}`);
+                  navigate(`/${currentCategory}`);
                 }}
                 label="explore"
               ></Button>
@@ -178,7 +194,8 @@ const DataViewer: FunctionComponent = () => {
               aria-hidden="true"
               className={cx(
                 // Make sure to show the gesture indicator depending on whether it is touch screen device
-                styles.gestureIndicator, isTouchDevice ? styles.touch : styles.scroll,
+                styles.gestureIndicator,
+                isTouchDevice ? styles.touch : styles.scroll,
               )}
               data-content={intl.formatMessage({
                 id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
