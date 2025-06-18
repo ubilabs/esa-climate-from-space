@@ -5,6 +5,13 @@
   place-items: center;
   grid-area: content;
 
+  .globe {
+    transition: all 1s ease;
+    canvas {
+      transition: all 1s ease;
+    }
+  }
+
   .globeWrapper {
     grid-area: globe-nav-area;
     transition: all 0.5s ease;
@@ -14,34 +21,8 @@
     pointer-events: none;
     display: grid;
     position: relative;
-
     container-name: wrapper;
     container-type: size;
-  }
-
-  /* Check if the globeWrapper currently contains two .globe elements
-* This means we are in the compare mode and should display the containers next to each other
-* ;*/
-  .globeWrapper:has(.globe ~ .globe) {
-    grid-template-columns: 1fr 1fr;
-
-    >.globe {
-      position: relative !important;
-      height: 100%;
-      width: 100%;
-
-      >canvas {
-        height: 100%;
-        width: 100%;
-        scale: 1 !important;
-      }
-    }
-  }
-
-  @container wrapper (aspect-ratio <=1 / 1) {
-    .globe {
-      height: calc(120cqw + 10cqh);
-    }
   }
 
   &[data-nav-content="nav-content"] {
@@ -53,6 +34,92 @@
   &[data-nav-content="content"] {
     .globeWrapper {
       pointer-events: auto;
+      grid-area: globe;
+    }
+
+    .globe {
+      /* left: 50%; */
+      /* position: absolute !important; */
+      /* top: 50%; */
+      /* transform: translate(-50%, -50%); */
+
+      /* We need to move the globe to the left to make space for the content nav */
+      /* canvas { */
+      /*   transform: translateX(-60cqw); */
+      /*   scale: 1; */
+      /* } */
+
+      /* This will move all markers to their correct position*/
+      /* div { */
+      /*   left: -60cqw !important; */
+      /* } */
+        canvas {
+          transform: translateX(20%) !important;
+        }
+    }
+
+    /* Check if the globeWrapper currently contains two .globe elements
+* * This means we are in the compare mode and should display the containers next to each other
+* * ;*/
+    .globeWrapper:has(.globe ~ .globe) {
+
+      /* grid-template-columns: 1fr 1fr; */
+      .globe {
+        /* width: 90%; */
+        /* height: 90%; */
+        /* width: 50% !important; */
+      }
+
+      .globe {
+        /* pointer-events: auto; */
+        /* position: absolute !important; */
+        /* left: 0 !important; */
+        /* transform: translate(0, -50%) !important; */
+
+        /* transform: translate(100px, 0) !important; */
+
+        canvas {
+          /* translate: 50%; */
+          /* transform: scaleX(0.5) !important; */
+          /* clip-path: inset(0 0 0 50%); */
+          /* position: absolute !important; */
+          /* transform: translateX(-50dvw) !important; */
+          /* scale: 0.5 !important; */
+          /* pointer-events: auto; */
+        }
+      }
+
+      .globe~.globe {
+        /* pointer-events: auto; */
+
+        /* transform: scaleX(0.5) !important; */
+        /* position: absolute !important; */
+
+        canvas {
+          /* position: absolute !important; */
+          /* transform: translateX(150dvw) !important; */
+          /* right: 0 !important; */
+          /* left: auto !important; */
+          /* scale: 0.5 !important; */
+          /* pointer-events: auto; */
+        }
+      }
+    }
+
+    @media screen and (--desktop-viewport) {
+      &[data-nav-content="content"] {
+        /* grid-template-areas: "globe-nav-area"; */
+        /* grid-template-columns: 1fr; */
+        /* grid-template-rows: 1fr; */
+
+        .globeWrapper {
+          canvas {
+            position: absolute !important;
+            scale: 1 !important;
+            scale: 0.8 !important;
+          }
+        }
+      }
     }
   }
 
@@ -83,20 +150,6 @@
       }
     }
 
-    &[data-nav-content="content"] {
-      grid-template-areas: "globe-nav-area";
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr;
-
-      .globeWrapper {
-        canvas {
-          position: absolute !important;
-          scale: 1 !important;
-          scale: 0.8 !important;
-        }
-      }
-    }
-
     .globeWrapper {
       transform: translateY(0) !important;
       scale: 1;
@@ -109,8 +162,10 @@
 * We do this to achieve a nice transistion between category- and content view and also to make sure the globe looks sharp
 * */
 
-        height: min(150vw, 260vh);
-        width: min(150vw, 260vh);
+        /* height: min(150vw, 260vh); */
+        /* width: min(150vw, 260vh); */
+        height: 150dvh;
+        width: 150dvw;
 
         canvas {
           scale: 0.38;
@@ -118,7 +173,8 @@
       }
     }
 
-    &[data-nav-content="nav-content"] {
+    &[data-nav-content="nav-content"],
+    &[data-nav-content="content"] {
       grid-template-areas: "globe content-nav";
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
