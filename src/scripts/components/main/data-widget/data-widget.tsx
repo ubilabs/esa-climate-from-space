@@ -28,6 +28,7 @@ import { State } from "../../../reducers";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
+import { useGlobeLocationState } from "../../../hooks/use-location";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
