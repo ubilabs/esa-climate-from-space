@@ -28,6 +28,7 @@ import { State } from "../../../reducers";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
+import { useGlobeLocationState } from "../../../hooks/use-location";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
@@ -41,16 +42,10 @@ import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 
 interface Props {
-  showDataSet?: boolean;
-  showContentList?: boolean;
   className?: string;
 }
 
-export const GetDataWidget: FunctionComponent<Props> = ({
-  showDataSet = false,
-  showContentList = true,
-  className,
-}) => {
+export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
@@ -100,6 +95,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const selectedContentId = useSelector(contentSelector).contentId;
 
   const contentMarker = useContentMarker(selectedContentId, language);
+
+  const { showContentList, showDataSet } = useGlobeLocationState();
 
   const getDataWidget = ({
     imageLayer,
