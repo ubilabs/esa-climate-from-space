@@ -46,7 +46,7 @@ export function useGlobeLocationState() {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
-  const previousPathnameRef = useRef(location.pathname);
+  const previousPathnameRef = useRef<string | null>(null);
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId } = selectedLayerIds;
@@ -81,9 +81,13 @@ export function useGlobeLocationState() {
    * Process pathname change, log route information, and update state
    */
   const handlePathnameChange = useCallback(
-    (pathname: string, isFirstRender = false, isMobile: boolean) => {
+    (pathname: string, isMobile: boolean) => {
       // Only process if the pathname has actually changed or it's the first render
-      if (pathname === previousPathnameRef.current && !isFirstRender) {
+      if (
+        // null on first render
+        previousPathnameRef.current &&
+        pathname === previousPathnameRef.current
+      ) {
         return;
       }
 
@@ -96,16 +100,28 @@ export function useGlobeLocationState() {
       updateAutoRotationState(Boolean(routeMatches.basePath));
 
       if (routeMatches.basePath) {
-        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-        dispatch(setFlyTo(null));
-        dispatch(setSelectedContentAction({ contentId: null }));
-        setShowContentList(false);
+        // On first load try to select data layer if set via URL params.
+        // This is needed to ensure backward compatibility with CfS < 2.0
+        if (!previousPathnameRef.current) {
+          const layerId = selectedLayerIds?.mainId;
+          const layer = layers?.find((layer) => layer.id === layerId);
+
+          if (layer && layer.categories?.length) {
+            dispatch(setSelectedLayerIds({ layerId, isPrimary: true }));
+            history.replace(`/${layer.categories[0]}/data`);
+          }
+        } else {
+          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+          dispatch(setFlyTo(null));
+          dispatch(setSelectedContentAction({ contentId: null }));
+          setShowContentList(false);
+        }
       }
       // Remove layer in NavContent mode when coming from the data page
       if (routeMatches.navPath) {
         setShowContentList(true);
         // This will only be triggered when the user is navigating back from /data page
-        if (previousPathnameRef.current.endsWith("/data")) {
+        if (previousPathnameRef.current?.endsWith("/data")) {
           dispatch(setShowLayer(false));
           dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
@@ -127,10 +143,10 @@ export function useGlobeLocationState() {
 
           dispatch(
             setFlyTo({
+              ...config.globe.view,
               ...(position?.length === 2
                 ? { lat: position[1], lng: position[0] }
-                : config.globe.view),
-              altitude: config.globe.view.altitude * 2,
+                : {}),
               isAnimated: true,
             }),
           );
@@ -143,18 +159,10 @@ export function useGlobeLocationState() {
   );
 
   const isMobile = useScreenSize().isMobile;
-  useEffect(() => {
-    const unlisten = history.listen((location) => {
-      handlePathnameChange(location.pathname, false, isMobile);
-    });
-
-    return unlisten;
-  }, [history, handlePathnameChange, isMobile]);
 
   // Handle initial state and direct URL changes
   useEffect(() => {
-    // Pass true as second parameter to indicate this is potentially the first render
-    handlePathnameChange(location.pathname, true, isMobile);
+    handlePathnameChange(location.pathname, isMobile);
   }, [location.pathname, handlePathnameChange, isMobile]);
 
   return { showContentList, showDataSet };
