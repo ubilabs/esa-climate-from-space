@@ -28,7 +28,6 @@ import { State } from "../../../reducers";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
-import { useGlobeLocationState } from "../../../hooks/use-location";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
@@ -42,12 +41,14 @@ import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 
 interface Props {
-  showClouds?: boolean;
+  showDataSet?: boolean;
+  showContentList?: boolean;
   className?: string;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
-  showClouds,
+  showDataSet = false,
+  showContentList = true,
   className,
 }) => {
   const projectionState = useSelector(projectionSelector);
@@ -100,18 +101,18 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const contentMarker = useContentMarker(selectedContentId, language);
 
-  const { showContentList } = useGlobeLocationState();
-
   const getDataWidget = ({
     imageLayer,
     layerDetails,
     active,
     action,
+    showDataSet,
   }: {
     imageLayer: GlobeImageLayerData | null;
     layerDetails: Layer | null;
     active: boolean;
     action: () => void;
+    showDataSet?: boolean;
   }) => {
     if (imageLayer?.type === LayerType.Gallery) {
       return <Gallery imageLayer={imageLayer} />;
@@ -137,6 +138,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         onMoveEnd={onMoveEndHandler}
         onLayerLoadingStateChange={onLayerLoadingStateChangeHandler}
         className={className}
+        showDataSet={showDataSet}
       />
     );
   };
@@ -179,12 +181,13 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
-  const updatedLayerDetails = showClouds
-    ? {
-      ...(layerDetails || {}),
-      basemap: "clouds",
-    }
-    : layerDetails;
+  const updatedLayerDetails =
+    !showDataSet && !showContentList
+      ? {
+          ...(layerDetails || {}),
+          basemap: "clouds",
+        }
+      : layerDetails;
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
@@ -222,6 +225,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         layerDetails: updatedLayerDetails,
         active: isMainActive,
         action: () => setIsMainActive(true),
+        showDataSet,
       })}
       {compareLayer &&
         getDataWidget({
@@ -229,6 +233,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
           layerDetails: compareLayerDetails,
           active: !isMainActive,
           action: () => setIsMainActive(false),
+          showDataSet,
         })}
     </>
   );
