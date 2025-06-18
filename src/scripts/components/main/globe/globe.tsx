@@ -44,7 +44,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
 
-import config from "../../../config/main";
+import config, { CONTENT_NAV_LONGITUDE_OFFSET } from "../../../config/main";
 
 import styles from "./globe.module.css";
 
@@ -77,6 +77,7 @@ interface Props {
     layerId: string,
     state: LayerLoadingState,
   ) => void;
+  showDataSet?: boolean;
 }
 
 export type GlobeProps = Partial<Props>;
@@ -410,7 +411,7 @@ function useMultiGlobeSynchronization(
   dispatch: Dispatch<UnknownAction>,
   rotationRef: RefObject<{ lat: number; lng: number }>,
 ) {
-  const { view, active, flyTo } = props;
+  const { view, active, flyTo, showDataSet } = props;
 
   // Update rotationRef when view changes to keep it in sync with external changes
   useEffect(() => {
@@ -485,7 +486,7 @@ function useMultiGlobeSynchronization(
       // Instead of the center, we have to adjust the target position so that
       // actual point we want to move to is rotated the right side
       // This is because only the right side of the globe is actually visible to the user
-      const targetLng = lng - 55;
+      const targetLng = lng + (showDataSet ? 0 : CONTENT_NAV_LONGITUDE_OFFSET);
       const targetLat = lat;
       const startLng = rotationRef.current.lng;
       const startLat = rotationRef.current.lat;
@@ -562,7 +563,15 @@ function useMultiGlobeSynchronization(
       globe.setProps({ cameraView: flyTo });
       dispatch(setFlyTo(null));
     }
-  }, [dispatch, animationRef, rotationRef, globe, flyTo, view.altitude]);
+  }, [
+    dispatch,
+    animationRef,
+    rotationRef,
+    globe,
+    flyTo,
+    view.altitude,
+    showDataSet,
+  ]);
   // Cleanup function to cancel any ongoing animation when unmounting
   return () => {
     if (animationRef.current.animationId !== null) {
