@@ -197,10 +197,9 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const onChangeHandler = useCallback((view: CameraView) => {
     setCurrentView(view);
     // setting css variable for compass icon
-    document.documentElement.style.setProperty(
-      "--globe-latitude",
-      `${view.lat}deg`,
-    );
+    document
+      .getElementById("ui-compass")
+      ?.style.setProperty("--globe-latitude", `${view.lat}deg`);
   }, []);
 
   const { legend } = useSelector(embedElementsSelector);
