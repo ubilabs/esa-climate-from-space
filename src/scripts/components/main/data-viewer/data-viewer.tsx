@@ -216,10 +216,7 @@ const DataViewer: FunctionComponent = () => {
           showContentList && styles.showContentList,
         )}
       >
-        <GetDataWidget
-          showClouds={!showContentList}
-          className={cx(styles.globe)}
-        />
+        <GetDataWidget className={cx(styles.globe)} />
       </div>
       {showDataSet && <GlobeNavigation />}
     </div>

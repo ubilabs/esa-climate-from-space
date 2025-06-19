@@ -11,6 +11,8 @@ import { GlobeState } from "../reducers/globe/globe-state";
 export const AUTO_ROTATE_INTERVAL = 5000; // Time between auto-rotations in milliseconds
 export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interaction before restarting auto-rotation
 
+export const CONTENT_NAV_LONGITUDE_OFFSET = -55;
+
 // The order of these is important for the stories menu
 export const categoryTags = [
   "welcome",
