@@ -42,16 +42,11 @@ import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 
 interface Props {
-  showClouds?: boolean;
   className?: string;
   showContentList?: boolean;
 }
 
-export const GetDataWidget: FunctionComponent<Props> = ({
-  showClouds,
-  className,
-  showContentList = false,
-}) => {
+export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
@@ -102,18 +97,20 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const contentMarker = useContentMarker(selectedContentId, language);
 
+  const { showContentList, showDataSet } = useGlobeLocationState();
+
   const getDataWidget = ({
     imageLayer,
     layerDetails,
     active,
     action,
-    showContentList,
+    showDataSet,
   }: {
     imageLayer: GlobeImageLayerData | null;
     layerDetails: Layer | null;
     active: boolean;
     action: () => void;
-    showContentList?: boolean;
+    showDataSet?: boolean;
   }) => {
     if (imageLayer?.type === LayerType.Gallery) {
       return <Gallery imageLayer={imageLayer} />;
@@ -139,6 +136,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         onMoveEnd={onMoveEndHandler}
         onLayerLoadingStateChange={onLayerLoadingStateChangeHandler}
         className={className}
+        showDataSet={showDataSet}
       />
     );
   };
@@ -181,11 +179,13 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
-  const updatedLayerDetails = showClouds
-    ? Object.assign({}, layerDetails, {
-      basemap: "clouds",
-    })
-    : layerDetails;
+  const updatedLayerDetails =
+    !showDataSet && !showContentList
+      ? {
+          ...(layerDetails || {}),
+          basemap: "clouds",
+        }
+      : layerDetails;
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
@@ -224,6 +224,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         layerDetails: updatedLayerDetails,
         active: isMainActive,
         action: () => setIsMainActive(true),
+        showDataSet,
       })}
       {compareLayer &&
         getDataWidget({
@@ -232,6 +233,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
           layerDetails: compareLayerDetails,
           active: !isMainActive,
           action: () => setIsMainActive(false),
+          showDataSet,
         })}
     </>
   );
