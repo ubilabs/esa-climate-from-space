@@ -1,6 +1,6 @@
 import { useEffect, useCallback, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, matchPath, useParams } from "react-router-dom";
+import { useLocation, matchPath, useParams, useNavigate } from "react-router-dom";
 import { setIsAutoRotating } from "../reducers/globe/auto-rotation";
 import { setShowLayer } from "../reducers/show-layer-selector";
 import { toggleEmbedElements } from "../reducers/embed-elements";
@@ -25,12 +25,13 @@ const ROUTE_PATTERNS = {
   navPath: { path: "/:category" },
   dataPath: { path: "/:category/data" },
   storyPath: { path: "/:category/stories/:storyId" },
+  storiesPath: { path: "/stories/:storyId/*" },
 };
 
 /**
  * Hook that manages globe state based on location changes
  * Handles auto-rotation functionality based on current route
- * Please import this hook only once as it would fire state dispachtes multiple times
+ * Please import this hook only once in the globe.tsx as it would fire state dispachtes multiple times
  * We should refactor this hook into dedicated components in the future
  */
 export function useGlobeLocationState() {
@@ -41,6 +42,7 @@ export function useGlobeLocationState() {
   const [showDataSet, setShowDataSet] = useState<boolean>(false);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const previousPathnameRef = useRef<string | null>(null);
 
@@ -113,7 +115,7 @@ export function useGlobeLocationState() {
 
           if (layer && layer.categories?.length) {
             dispatch(setSelectedLayerIds({ layerId, isPrimary: true }));
-            history.replace(`/${layer.categories[0]}/data`);
+            navigate(`/${layer.categories[0]}/data`);
           }
         } else {
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
