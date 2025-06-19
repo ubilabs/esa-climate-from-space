@@ -40,6 +40,7 @@ import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
+import { useGlobeLocationState } from "../../../hooks/use-location";
 
 interface Props {
   className?: string;
