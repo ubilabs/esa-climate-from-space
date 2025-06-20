@@ -13,6 +13,8 @@ import TimeSlider from "../../layers/time-slider/time-slider";
 import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import { store } from "./create-redux-store";
 
+import { ROUTES } from "../../../config/main";
+
 import Story from "../../stories/story/story";
 import StoriesSelector from "../../stories/stories-selector/stories-selector";
 import PresentationSelector from "../../stories/presentation-selector/presentation-selector";
@@ -68,8 +70,24 @@ const TranslatedApp: FunctionComponent = () => {
     <Router>
       <IntlProvider locale={language} messages={translations[language]}>
         <Routes>
+          // Main application routes
           <Route
-            path="/about"
+            path={ROUTES.base.path}
+            element={<MainContent legend={legend} time_slider={time_slider} />}
+          />
+          <Route
+            path={ROUTES.nav_content.path}
+            element={<MainContent legend={legend} time_slider={time_slider} />}
+          />
+          <Route
+            path={ROUTES.data.path}
+            element={<MainContent legend={legend} time_slider={time_slider} />}
+          />
+          <Route path={ROUTES.stories.path} element={<Story />} />
+
+          // About project
+          <Route
+            path={ROUTES.about.path}
             element={
               <>
                 {logo}
@@ -77,31 +95,36 @@ const TranslatedApp: FunctionComponent = () => {
               </>
             }
           />
-          <Route path="/stories" element={<StoriesSelector />} />
-          <Route path="/present" element={<PresentationSelector />} />
-          <Route path="/showcase" element={<ShowcaseSelector />} />
-          <Route path="/showcase/:storyIds" element={<ShowcaseSelector />} />
+
+          // Legacy routes are maintained for embedded links compatibility prior
+          to version 2
+
+          // Stories routes
           <Route
-            path="/:category/stories/:storyId/:slideIndex"
+
+            path={ROUTES.legacy_stories.path}
+            element={<StoriesSelector />}
+          />
+          <Route path={ROUTES.legacy_story.path} element={<Story />} />
+
+          // Present story routes
+          <Route
+            path={ROUTES.present.path}
+            element={<PresentationSelector />}
+          />
+          <Route path={ROUTES.present_story.path} element={<Story />} />
+          <Route
+            path={ROUTES.showcase.path}
+            element={<ShowcaseSelector />}
+          />
+          // Showcase stories and story routes
+          <Route
+            path={ROUTES.showcase_stories.path}
+            element={<ShowcaseSelector />}
+          />
+          <Route
+            path={ROUTES.showcase_story.path}
             element={<Story />}
-          />
-          <Route path="/stories/:storyId/:slideIndex" element={<Story />} />
-          <Route path="/present/:storyId/:slideIndex" element={<Story />} />
-          <Route
-            path="/showcase/:storyIds/:storyIndex/:slideIndex"
-            element={<Story />}
-          />
-          <Route
-            path="/"
-            element={<MainContent legend={legend} time_slider={time_slider} />}
-          />
-          <Route
-            path="/:category"
-            element={<MainContent legend={legend} time_slider={time_slider} />}
-          />
-          <Route
-            path="/:category/data"
-            element={<MainContent legend={legend} time_slider={time_slider} />}
           />
         </Routes>
         <Tracking />

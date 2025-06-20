@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
 
@@ -29,6 +30,7 @@ import SHADING_TEXTURE_URL from "@ubilabs/esa-webgl-globe/textures/shading.png?u
 import { Layer } from "../../../types/layer";
 import { Marker } from "../../../types/marker-type";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
+import { useGlobeLocationState } from "../../../hooks/use-globe-location-state";
 
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
@@ -40,7 +42,6 @@ import { GlobeProjection } from "../../../types/globe-projection";
 import { isAutoRotatingSelector } from "../../../selectors/auto-rotate";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
 import { setFlyTo } from "../../../reducers/fly-to";
-import { renderToStaticMarkup } from "react-dom/server";
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
 
@@ -149,6 +150,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
   const dispatch = useDispatch();
   const isAutoRotatingEnabled = useSelector(isAutoRotatingSelector);
+  useGlobeLocationState()
 
   // Track auto rotation with a ref to avoid dependencies issues
   const autoRotationRef = useRef<{

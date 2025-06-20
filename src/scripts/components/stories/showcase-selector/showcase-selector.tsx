@@ -9,7 +9,7 @@ import { PlayIcon } from "../../main/icons/play-icon";
 import Button from "../../main/button/button";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import { StoryMode } from "../../../types/story-mode";
+import { RouteMatch } from "../../../types/story-mode";
 
 import styles from "./showcase-selector.module.css";
 
@@ -51,7 +51,7 @@ const ShowcaseSelector: FunctionComponent = () => {
         </Header>
       )}
       <StoryList
-        mode={StoryMode.Showcase}
+        mode={RouteMatch.Showcase}
         onSelectStory={(id) => onSelectStory(id)}
         selectedIds={selectedIds}
       />

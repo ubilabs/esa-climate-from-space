@@ -7,12 +7,12 @@ import { PreviousIcon } from "../../main/icons/previous-icon";
 import { NextIcon } from "../../main/icons/next-icon";
 import { CloseIcon } from "../../main/icons/close-icon";
 
-import { StoryMode } from "../../../types/story-mode";
+import { RouteMatch } from "../../../types/story-mode";
 
 import styles from "./story-pagination.module.css";
 
 interface Props {
-  mode: StoryMode | null;
+  mode: RouteMatch | null;
   slideIndex: number;
   storySlidesLength: number;
   nextSlideLink: string | null;
@@ -28,8 +28,8 @@ const StoryPagination: FunctionComponent<Props> = ({
 }) => {
   const intl = useIntl();
   const navigate = useNavigate();
-  const isShowcaseMode = mode === StoryMode.Showcase;
-  const isPresenterMode = mode === StoryMode.Present;
+  const isShowcaseMode = mode === RouteMatch.Showcase;
+  const isPresenterMode = mode === RouteMatch.Present;
 
   const onKeyDownHandler = useCallback(
     (event: KeyboardEvent) => {

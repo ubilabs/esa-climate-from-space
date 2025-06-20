@@ -9,17 +9,16 @@ import cx from "classnames";
 import config, { categoryTags } from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
-import { useGlobeLocationState } from "../../../hooks/use-location";
-import { useContentParams } from "../../../hooks/use-content-params";
 
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { languageSelector } from "../../../selectors/language";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
+import { routeMatchSelector } from "../../../selectors/route-match";
 
 import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
-import { StoryMode } from "../../../types/story-mode";
+import { RouteMatch } from "../../../types/story-mode";
 
 import {
   useGetLayerListQuery,
@@ -75,26 +74,28 @@ const DataViewer: FunctionComponent = () => {
   const { screenHeight, screenWidth, isMobile, isTouchDevice } =
     useScreenSize();
 
-  const { isNavigation, mode } = useContentParams();
-
   const dispatch = useDispatch();
   const embedElements = useSelector(embedElementsSelector);
+  const { routeMatch } = useSelector(routeMatchSelector);
 
-  // Enable legend and time slider only in content mode
+  const isNavigation =
+    routeMatch === RouteMatch.NavContent ||
+    routeMatch === RouteMatch.Base;
+
+  const showContentList = routeMatch === RouteMatch.NavContent;
+  const showDataSet = routeMatch === RouteMatch.Data;
+
   useEffect(() => {
-    const isContentMode = mode === StoryMode.Content;
+    const isDataMode = routeMatch === RouteMatch.Data;
     dispatch(
       toggleEmbedElements({
         ...embedElements,
-        legend: isContentMode,
-        time_slider: isContentMode,
+        legend: isDataMode,
+        time_slider: isDataMode,
       }),
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, dispatch]);
-
-  // We need to reset the globe view every time the user navigates back from the the /data page
-  const { showContentList, showDataSet } = useGlobeLocationState();
+  }, [dispatch, routeMatch]);
 
   // There is a set of animations which should be played only once
   // This keeps track of that
@@ -131,7 +132,7 @@ const DataViewer: FunctionComponent = () => {
   return (
     // The data-view is a grid with three areas: header - main - footer
     // This is the header area
-    <div className={styles.dataViewer} data-nav-content={mode}>
+    <div className={styles.dataViewer} data-nav-content={routeMatch}>
       {/* This is the main area
         The navigation consists of three main components: the globe, the category navigation and the content navigation
         The globe is the main component and is always visible
@@ -216,7 +217,11 @@ const DataViewer: FunctionComponent = () => {
           showContentList && styles.showContentList,
         )}
       >
-        <GetDataWidget className={cx(styles.globe)} />
+        <GetDataWidget
+          className={cx(styles.globe)}
+          showDataSet={showDataSet}
+          showContentList={showContentList}
+        />
       </div>
       {showDataSet && <GlobeNavigation />}
     </div>

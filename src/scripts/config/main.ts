@@ -4,6 +4,40 @@ import { UiEmbedElement } from "../types/embed-elements";
 
 import { GlobeProjection } from "../types/globe-projection";
 import { GlobeState } from "../reducers/globe/globe-state";
+import { RouteMatch } from "../types/story-mode";
+
+/**
+ * Routes are utilized to manage state transitions within the application.
+ * The Header.tsx component is updating the state as it renders across relevant routes.
+ * Legacy routes are also supported and maintained.
+ * Extend or modify route patterns here as necessary to accommodate new requirements.
+ */
+export const ROUTES = {
+  [RouteMatch.Base]: { path: "/", end: true },
+  [RouteMatch.NavContent]: { path: "/:category", end: true },
+  [RouteMatch.Data]: { path: "/:category/data", end: true },
+  [RouteMatch.Stories]: {
+    path: "/:category/stories/:storyId/:slideIndex",
+    end: false,
+  },
+  [RouteMatch.Present]: { path: "/present", end: true },
+  [RouteMatch.PresentStory]: {
+    path: "/present/:storyId/:slideIndex",
+    end: true,
+  },
+  [RouteMatch.Showcase]: { path: "/showcase", end: false },
+  [RouteMatch.ShowcaseStories]: { path: "/showcase/:storyIds", end: false },
+  [RouteMatch.ShowcaseStory]: {
+    path: "/showcase/:storyIds/:storyIndex/:slideIndex",
+    end: false,
+  },
+  [RouteMatch.About]: { path: "/about", end: true },
+  [RouteMatch.LegacyStories]: { path: "stories/*", end: false },
+  [RouteMatch.LegacyStory]: {
+    path: "stories/:storyId/:slideIndex",
+    end: false,
+  },
+} as const;
 
 // Constants for auto-rotation timing of the content navigation
 // This is not related to the auto rotation of the globe
