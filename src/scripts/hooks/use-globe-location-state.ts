@@ -1,6 +1,6 @@
-import { useEffect, useCallback, useRef, useState } from "react";
+import { useEffect, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, matchPath, useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setIsAutoRotating } from "../reducers/globe/auto-rotation";
 import { setShowLayer } from "../reducers/show-layer-selector";
 import { toggleEmbedElements } from "../reducers/embed-elements";
@@ -12,21 +12,8 @@ import { setSelectedContentAction } from "../reducers/content";
 import { selectedLayerIdsSelector } from "../selectors/layers/selected-ids";
 import { languageSelector } from "../selectors/language";
 import { useGetLayerListQuery } from "../services/api";
-
-interface RouteParams extends Record<string, string | undefined> {
-  category: string | undefined;
-}
-
-/**
- * Path patterns used for route matching
- */
-const ROUTE_PATTERNS = {
-  basePath: { path: "/" },
-  navPath: { path: "/:category" },
-  dataPath: { path: "/:category/data" },
-  storyPath: { path: "/:category/stories/:storyId" },
-  storiesPath: { path: "/stories/:storyId/*" },
-};
+import { routeMatchSelector } from "../selectors/route-match";
+import { RouteMatch } from "../types/story-mode";
 
 /**
  * Hook that manages globe state based on location changes
@@ -35,15 +22,10 @@ const ROUTE_PATTERNS = {
  * We should refactor this hook into dedicated components in the future
  */
 export function useGlobeLocationState() {
-  const { category } = useParams<RouteParams>();
-  const [showContentList, setShowContentList] = useState<boolean>(
-    Boolean(category),
-  );
-  const [showDataSet, setShowDataSet] = useState<boolean>(false);
-
-  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isMobile = useScreenSize().isMobile;
+  const { routeMatch } = useSelector(routeMatchSelector);
   const previousPathnameRef = useRef<string | null>(null);
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
@@ -63,114 +45,82 @@ export function useGlobeLocationState() {
   );
 
   /**
-   * Match current path against known route patterns
-   * Returns an object with all matching route results
-   */
-  const getRouteMatches = useCallback((pathname: string) => {
-    return {
-      basePath: matchPath(
-        { path: ROUTE_PATTERNS.basePath.path, end: true },
-        pathname,
-      ),
-      navPath: matchPath(
-        { path: ROUTE_PATTERNS.navPath.path, end: true },
-        pathname,
-      ),
-      dataPath: matchPath(
-        { path: ROUTE_PATTERNS.dataPath.path, end: true },
-        pathname,
-      ),
-      storyPath: matchPath({ path: ROUTE_PATTERNS.storyPath.path }, pathname),
-    };
-  }, []);
-
-  /**
    * Process pathname change, log route information, and update state
    */
   const handlePathnameChange = useCallback(
-    (pathname: string, isMobile: boolean) => {
-      // Only process if the pathname has actually changed or it's the first render
-      if (
-        // null on first render
-        previousPathnameRef.current &&
-        pathname === previousPathnameRef.current
-      ) {
-        return;
-      }
-
-      setShowDataSet(false);
-
-      // Get and log all route matches
-      const routeMatches = getRouteMatches(pathname);
-
+    (currentRoute: RouteMatch, isMobile: boolean) => {
       // Update auto-rotation state
-      updateAutoRotationState(Boolean(routeMatches.basePath));
+      updateAutoRotationState(currentRoute === RouteMatch.Base);
 
-      if (routeMatches.basePath) {
-        // On first load try to select data layer if set via URL params.
-        // This is needed to ensure backward compatibility with CfS < 2.0
-        if (!previousPathnameRef.current) {
-          const layerId = selectedLayerIds?.mainId;
-          const layer = layers?.find((layer) => layer.id === layerId);
-
-          if (layer && layer.categories?.length) {
-            dispatch(setSelectedLayerIds({ layerId, isPrimary: true }));
-            navigate(`/${layer.categories[0]}/data`);
+      switch (currentRoute) {
+        case RouteMatch.Base:
+          // On initial load, attempt to select the data layer specified via URL parameters.
+          // This ensures backward compatibility with CfS versions prior to 2.0.
+          if (!previousPathnameRef.current) {
+            const layerId = selectedLayerIds?.mainId;
+            const layer = layers?.find((layer) => layer.id === layerId);
+            if (layer && layer.categories?.length) {
+              dispatch(setSelectedLayerIds({ layerId, isPrimary: true }));
+              navigate(`/${layer.categories[0]}/data`);
+            }
+            break;
           }
-        } else {
+
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
           dispatch(setFlyTo(null));
           dispatch(setSelectedContentAction({ contentId: null }));
-          setShowContentList(false);
-        }
-      }
-      // Remove layer in NavContent mode when coming from the data page
-      if (routeMatches.navPath) {
-        setShowContentList(true);
-        // This will only be triggered when the user is navigating back from /data page
-        if (previousPathnameRef.current?.endsWith("/data")) {
+          break;
+
+        case RouteMatch.NavContent:
+          // Remove layer in NavContent mode when coming from the data page
           dispatch(setShowLayer(false));
           dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
-
-          // reset gthe globe view
+          // Reset the globe view
           dispatch(setFlyTo(config.globe.view));
-        }
+          break;
+
+        case RouteMatch.Data:
+          // Handle data route
+          if (!isMobile) {
+            const layer = layers?.find((layer) => layer.id === mainId);
+            const position = layer?.position;
+
+            dispatch(
+              setFlyTo({
+                ...config.globe.view,
+                ...(position?.length === 2
+                  ? { lat: position[1], lng: position[0] }
+                  : {}),
+                isAnimated: true,
+              }),
+            );
+          }
+          break;
+
+        default:
+          break;
       }
 
-      if (routeMatches.dataPath) {
-        setShowDataSet(true);
-
-        if (!isMobile) {
-          // As we use the CSS scale to increase the size of the canvas to make appear the globe bigger
-          // If we don't want to re-mount the globe component AND keep the canvas size across the entire screen, what we do here is zoom out to make the globe appear smaller
-
-          const layer = layers?.find((layer) => layer.id === mainId);
-          const position = layer?.position;
-
-          dispatch(
-            setFlyTo({
-              ...config.globe.view,
-              ...(position?.length === 2
-                ? { lat: position[1], lng: position[0] }
-                : {}),
-              isAnimated: true,
-            }),
-          );
-        }
-      }
       // Store the current pathname for next comparison
-      previousPathnameRef.current = pathname;
+      previousPathnameRef.current = currentRoute;
     },
-    [dispatch, getRouteMatches, layers, mainId, updateAutoRotationState],
+    [
+      dispatch,
+      layers,
+      mainId,
+      navigate,
+      selectedLayerIds?.mainId,
+      updateAutoRotationState,
+    ],
   );
 
-  const isMobile = useScreenSize().isMobile;
-
-  // Handle initial state and direct URL changes
+  // Handle  direct URL changes
   useEffect(() => {
-    handlePathnameChange(location.pathname, isMobile);
-  }, [location.pathname, handlePathnameChange, isMobile]);
-
-  return { showContentList, showDataSet };
+    // only call function when the route match *changes*
+    if (routeMatch && routeMatch === previousPathnameRef.current) {
+      return;
+    }
+    handlePathnameChange(routeMatch, isMobile);
+  }, [routeMatch, isMobile, handlePathnameChange]);
 }

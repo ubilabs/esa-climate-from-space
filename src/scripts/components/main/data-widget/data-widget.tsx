@@ -40,14 +40,18 @@ import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
-import { useGlobeLocationState } from "../../../hooks/use-location";
 
 interface Props {
   className?: string;
   showContentList?: boolean;
+  showDataSet?: boolean;
 }
 
-export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
+export const GetDataWidget: FunctionComponent<Props> = ({
+  className,
+  showContentList,
+  showDataSet,
+}) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
@@ -98,20 +102,20 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const contentMarker = useContentMarker(selectedContentId, language);
 
-  const { showContentList, showDataSet } = useGlobeLocationState();
-
   const getDataWidget = ({
     imageLayer,
     layerDetails,
     active,
     action,
     showDataSet,
+    showContentList,
   }: {
     imageLayer: GlobeImageLayerData | null;
     layerDetails: Layer | null;
     active: boolean;
     action: () => void;
     showDataSet?: boolean;
+    showContentList?: boolean;
   }) => {
     if (imageLayer?.type === LayerType.Gallery) {
       return <Gallery imageLayer={imageLayer} />;
@@ -120,8 +124,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
       <Globe
         {...(showContentList &&
           contentMarker && {
-          markers: [contentMarker],
-        })}
+            markers: [contentMarker],
+          })}
         backgroundColor={""}
         active={active}
         view={currentView}

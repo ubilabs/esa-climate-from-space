@@ -1,7 +1,7 @@
 import { useContentParams } from "./use-content-params";
 import config from "../config/main";
 
-import { StoryMode } from "../types/story-mode";
+import { RouteMatch } from "../types/story-mode";
 import { GalleryItemType } from "../types/gallery-item";
 
 export const useStoryNavigation = (videoDuration: number) => {
@@ -22,7 +22,7 @@ export const useStoryNavigation = (videoDuration: number) => {
   const previousSlideIndex = slideIndex - 1;
   const nextSlideIndex = slideIndex + 1;
 
-  if (mode !== StoryMode.Showcase) {
+  if (mode !== RouteMatch.Showcase) {
     if (previousSlideIndex >= 0) {
       previousSlideLink = `/${mode}/${storyIds}/${previousSlideIndex}`;
     }

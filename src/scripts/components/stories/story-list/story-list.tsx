@@ -9,11 +9,11 @@ import { useGetStoryListQuery } from "../../../services/api";
 import { languageSelector } from "../../../selectors/language";
 import StoryListItem from "../story-list-item/story-list-item";
 import { filterStories } from "../../../libs/filter-stories";
-import { StoryMode } from "../../../types/story-mode";
+import { RouteMatch } from "../../../types/story-mode";
 
 import styles from "./story-list.module.css";
 interface Props {
-  mode: StoryMode;
+  mode: RouteMatch;
   selectedIds?: string[];
   onSelectStory?: (id: string) => void;
 }
@@ -36,8 +36,8 @@ const StoryList: FunctionComponent<Props> = ({
 
   const classes = cx(
     styles.storyListGrid,
-    mode === StoryMode.Present && styles.present,
-    mode === StoryMode.Showcase && styles.showcase,
+    mode === RouteMatch.Present && styles.present,
+    mode === RouteMatch.Showcase && styles.showcase,
   );
 
   return (

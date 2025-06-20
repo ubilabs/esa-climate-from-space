@@ -8,7 +8,7 @@ import Header from "../header/header";
 import Share from "../../main/share/share";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import { StoryMode } from "../../../types/story-mode";
+import { RouteMatch } from "../../../types/story-mode";
 
 import styles from "./stories-selector.module.css";
 
@@ -28,7 +28,7 @@ const StoriesSelector: FunctionComponent = () => {
         </Header>
       )}
       {filter_tags && <StoryFilter />}
-      <StoryList mode={StoryMode.Stories} />
+      <StoryList mode={RouteMatch.Stories} />
     </div>
   );
 };

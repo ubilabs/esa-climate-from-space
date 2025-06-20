@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import config from "../../../config/main";
@@ -13,15 +13,17 @@ import { setWelcomeScreen } from "../../../reducers/welcome-screen";
 
 import styles from "./navigation.module.css";
 import { setLanguage } from "../../../reducers/language";
-import { useContentParams } from "../../../hooks/use-content-params";
 import useIsStoriesPath from "../../../hooks/use-is-stories-path";
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import { EsaLogo } from "../icons/esa-logo";
 import { ArrowBackIcon } from "../icons/arrow-back-icon";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
-import { StoryMode } from "../../../types/story-mode";
+import { RouteMatch } from "../../../types/story-mode";
 import { LayerSelectorIcon } from "../icons/layer-selector-icon";
 import { contentSelector } from "../../../selectors/content";
+import { routeMatchSelector } from "../../../selectors/route-match";
+import { setRouteMatch } from "../../../reducers/route-match";
+import { useLocation } from "react-router-dom";
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -31,13 +33,17 @@ const Navigation: FunctionComponent = () => {
 
   const [showTooltip, setShowTooltip] = useState(Boolean(!savedLanguage));
 
-  const {category} = useSelector(contentSelector)
+  const { category } = useSelector(contentSelector);
   const isStoriesPath = useIsStoriesPath();
 
-  const { isNavigation } = useContentParams();
   const { isMobile } = useScreenSize();
+  const { routeMatch } = useSelector(routeMatchSelector);
 
-  const { mode } = useContentParams();
+  const location = useLocation();
+
+  useEffect(() => {
+    dispatch(setRouteMatch(location.pathname));
+  }, [location.pathname, dispatch]);
 
   return (
     <>
@@ -46,13 +52,14 @@ const Navigation: FunctionComponent = () => {
           <EsaLogo
             variant={
               (!isMobile && "logoWithText") ||
-              (isStoriesPath || mode === StoryMode.Content
+              (isStoriesPath || routeMatch === RouteMatch.Stories
                 ? "shortLogo"
                 : "logoWithText")
             }
           />
         }
-        {!isNavigation && (
+        {(routeMatch === RouteMatch.Data ||
+          routeMatch === RouteMatch.Stories) && (
           <Button
             className={styles.backButton}
             icon={ArrowBackIcon}
@@ -60,7 +67,7 @@ const Navigation: FunctionComponent = () => {
             link={category ? `/${category}` : "/"}
           />
         )}
-        {mode === StoryMode.Content && (
+        {routeMatch === RouteMatch.Data && (
           <Button
             className={styles.button}
             id="ui-menu"
@@ -69,13 +76,13 @@ const Navigation: FunctionComponent = () => {
             hideLabelOnMobile
           />
         )}
-          <Button
-            className={styles.button}
-            id="ui-menu"
-            icon={MenuIcon}
-            onClick={() => setShowMenu(true)}
-            hideLabelOnMobile
-          />
+        <Button
+          className={styles.button}
+          id="ui-menu"
+          icon={MenuIcon}
+          onClick={() => setShowMenu(true)}
+          hideLabelOnMobile
+        />
       </nav>
 
       {showTooltip && (
