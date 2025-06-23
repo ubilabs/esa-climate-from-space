@@ -30,8 +30,7 @@ const StoryGlobe: FunctionComponent<Props> = ({ globeItem }) => {
   return (
     <div className={styles.globeContainer}>
       <GlobeCompareLayer
-        markers={globeItem.markers}
-        backgroundColor={"var(--plain-black)"}
+        className={styles.globe}
       />
       {time_slider && (
         <div className={styles.layerDetails}>
