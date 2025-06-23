@@ -75,6 +75,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   // If initially, there is a main layer selected, we need to fetch the layer details
   useGetLayerQuery(mainId ?? "", { skip: !mainId });
+  useGetLayerQuery(compareId ?? "", { skip: !compareId });
 
   const onMoveStartHandler = useCallback(
     () => globeSpinning && dispatch(setGlobeSpinning(false)),
