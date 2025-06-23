@@ -7,6 +7,7 @@ import {
 } from "react";
 
 import { CameraView } from "@ubilabs/esa-webgl-globe";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
@@ -29,6 +30,7 @@ import { State } from "../../../reducers";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
+import { useGlobeLocationState } from "../../../hooks/use-location";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
@@ -40,7 +42,6 @@ import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
-import { useGlobeLocationState } from "../../../hooks/use-location";
 
 interface Props {
   className?: string;
@@ -76,6 +77,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   // If initially, there is a main layer selected, we need to fetch the layer details
   useGetLayerQuery(mainId ?? "", { skip: !mainId });
+  useGetLayerQuery(compareId ?? "", { skip: !compareId });
 
   const onMoveStartHandler = useCallback(
     () => globeSpinning && dispatch(setGlobeSpinning(false)),
@@ -100,6 +102,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const { showContentList, showDataSet } = useGlobeLocationState();
 
+  const isBasePath = Boolean(useLocation().pathname === "/");
   const getDataWidget = ({
     imageLayer,
     layerDetails,
@@ -120,8 +123,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
       <Globe
         {...(showContentList &&
           contentMarker && {
-          markers: [contentMarker],
-        })}
+            markers: [contentMarker],
+          })}
         backgroundColor={""}
         active={active}
         view={currentView}
@@ -180,13 +183,13 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
-  const updatedLayerDetails =
-    !showDataSet && !showContentList
-      ? {
-          ...(layerDetails || {}),
-          basemap: "clouds",
-        }
-      : layerDetails;
+  // we only want to show the clouds layer in base path. This is a temporary fix
+  const updatedLayerDetails = isBasePath
+    ? {
+        ...(layerDetails || {}),
+        basemap: "clouds",
+      }
+    : layerDetails;
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
@@ -228,7 +231,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
       })}
       {compareLayer &&
         getDataWidget({
-          showContentList,
           imageLayer: compareImageLayer,
           layerDetails: compareLayerDetails,
           active: !isMainActive,
