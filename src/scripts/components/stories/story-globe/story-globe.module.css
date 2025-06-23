@@ -4,6 +4,11 @@
   height: 100%;
   background-color: #000;
 
+  .globe {
+    position: relative;
+    transition: none;
+  }
+
   /*  Make sure two globes are displayed side by side */
   /*  in the story slider */
   &:has(.globe ~ .globe) {
@@ -12,12 +17,13 @@
       transform: none;
       top: 0;
       position: relative !important;
-        transition: none ;
+      transition: none;
 
       canvas {
-        transition: none ;
+        transition: none;
       }
     }
+
     .layerDetails {
       position: absolute;
     }
