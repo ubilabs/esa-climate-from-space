@@ -219,8 +219,6 @@ const DataViewer: FunctionComponent = () => {
       >
         <GetDataWidget
           className={cx(styles.globe)}
-          showDataSet={showDataSet}
-          showContentList={showContentList}
         />
       </div>
       {showDataSet && <GlobeNavigation />}

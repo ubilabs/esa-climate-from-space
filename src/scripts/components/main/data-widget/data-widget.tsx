@@ -40,18 +40,14 @@ import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
+import { routeMatchSelector } from "../../../selectors/route-match";
+import { RouteMatch } from "../../../types/story-mode";
 
 interface Props {
   className?: string;
-  showContentList?: boolean;
-  showDataSet?: boolean;
 }
 
-export const GetDataWidget: FunctionComponent<Props> = ({
-  className,
-  showContentList,
-  showDataSet,
-}) => {
+export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
@@ -65,6 +61,11 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;
+
+  const routeMatch = useSelector(routeMatchSelector).routeMatch;
+
+  const isBase = routeMatch === RouteMatch.Base;
+  const isContentNav = routeMatch === RouteMatch.NavContent;
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
@@ -107,26 +108,27 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     layerDetails,
     active,
     action,
-    showDataSet,
-    showContentList,
+    isBase = false,
   }: {
     imageLayer: GlobeImageLayerData | null;
     layerDetails: Layer | null;
     active: boolean;
     action: () => void;
-    showDataSet?: boolean;
-    showContentList?: boolean;
+    isBase?: boolean;
   }) => {
     if (imageLayer?.type === LayerType.Gallery) {
       return <Gallery imageLayer={imageLayer} />;
     }
+
     return (
       <Globe
-        {...(showContentList &&
+        {...(!isBase &&
           contentMarker && {
             markers: [contentMarker],
           })}
         backgroundColor={""}
+        // We should offset the markers when user is in content nav
+        isMarkerOffset={isContentNav}
         active={active}
         view={currentView}
         projectionState={projectionState}
@@ -141,7 +143,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         onMoveEnd={onMoveEndHandler}
         onLayerLoadingStateChange={onLayerLoadingStateChangeHandler}
         className={className}
-        showDataSet={showDataSet}
       />
     );
   };
@@ -184,13 +185,12 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
-  const updatedLayerDetails =
-    !showDataSet && !showContentList
-      ? {
-          ...(layerDetails || {}),
-          basemap: "clouds",
-        }
-      : layerDetails;
+  const updatedLayerDetails = isBase
+    ? {
+        ...(layerDetails || {}),
+        basemap: "clouds",
+      }
+    : layerDetails;
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
@@ -223,21 +223,17 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     <>
       {legend && getLegends()}
       {getDataWidget({
-        showContentList,
         imageLayer: mainImageLayer,
         layerDetails: updatedLayerDetails,
         active: isMainActive,
         action: () => setIsMainActive(true),
-        showDataSet,
       })}
       {compareLayer &&
         getDataWidget({
-          showContentList,
           imageLayer: compareImageLayer,
           layerDetails: compareLayerDetails,
           active: !isMainActive,
           action: () => setIsMainActive(false),
-          showDataSet,
         })}
     </>
   );

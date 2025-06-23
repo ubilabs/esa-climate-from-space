@@ -3,10 +3,14 @@ import config from "../config/main";
 
 import { RouteMatch } from "../types/story-mode";
 import { GalleryItemType } from "../types/gallery-item";
+import { routeMatchSelector } from "../selectors/route-match";
+import { useSelector } from "react-redux";
 
 export const useStoryNavigation = (videoDuration: number) => {
-  const { mode, storyIds, storyIndex, slideIndex, selectedStory } =
+  const { storyIds, storyIndex, slideIndex, selectedStory } =
     useContentParams();
+
+  const routeMatch = useSelector(routeMatchSelector).routeMatch;
 
   const numberOfSlides = selectedStory?.slides.length;
 
@@ -22,12 +26,12 @@ export const useStoryNavigation = (videoDuration: number) => {
   const previousSlideIndex = slideIndex - 1;
   const nextSlideIndex = slideIndex + 1;
 
-  if (mode !== RouteMatch.Showcase) {
+  if (routeMatch !== RouteMatch.Showcase) {
     if (previousSlideIndex >= 0) {
-      previousSlideLink = `/${mode}/${storyIds}/${previousSlideIndex}`;
+      previousSlideLink = `/stories/${storyIds}/${previousSlideIndex}`;
     }
     if (nextSlideIndex < numberOfSlides) {
-      nextSlideLink = `/${mode}/${storyIds}/${nextSlideIndex}`;
+      nextSlideLink = `/stories/${storyIds}/${nextSlideIndex}`;
     }
   }
 
