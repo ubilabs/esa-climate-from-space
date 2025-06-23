@@ -1,4 +1,5 @@
 import { CameraView } from "@ubilabs/esa-webgl-globe";
+import { useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   FunctionComponent,
@@ -98,6 +99,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const { showContentList, showDataSet } = useGlobeLocationState();
 
+  const isBasePath = Boolean(useRouteMatch({ path: "/", exact: true }));
+
   const getDataWidget = ({
     imageLayer,
     layerDetails,
@@ -118,8 +121,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
       <Globe
         {...(showContentList &&
           contentMarker && {
-            markers: [contentMarker],
-          })}
+          markers: [contentMarker],
+        })}
         backgroundColor={""}
         active={active}
         view={currentView}
@@ -178,13 +181,14 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
-  const updatedLayerDetails =
-    !showDataSet && !showContentList
-      ? {
-          ...(layerDetails || {}),
-          basemap: "clouds",
-        }
-      : layerDetails;
+
+  // we only want to show the clouds layer in base path. This is a temporary fix
+  const updatedLayerDetails = isBasePath
+    ? {
+      ...(layerDetails || {}),
+      basemap: "clouds",
+    }
+    : layerDetails;
 
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
