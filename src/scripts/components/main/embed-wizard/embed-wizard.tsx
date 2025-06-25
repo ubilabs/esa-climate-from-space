@@ -7,7 +7,6 @@ import { ElementOptions } from "../../../types/embed-elements";
 import EmbedResult from "../embed-result/embed-result";
 import EmbedSettings from "../embed-settings/embed-settings";
 import { createEmbedUrl } from "../../../libs/create-embed-url";
-import { getEmbedParamsString } from "../../../libs/get-embed-params-string";
 import EmbedLinkPreview from "../embed-link-preview/embed-link-preview";
 
 import styles from "./embed-wizard.module.css";
@@ -17,7 +16,6 @@ const EmbedWizard: FunctionComponent = () => {
   const [uiElementsChecked, setUiElementsChecked] = useState(
     embedElements as ElementOptions,
   );
-  const urlParams = getEmbedParamsString(uiElementsChecked);
 
   return (
     <div className={styles.embedWizard}>
@@ -44,12 +42,12 @@ const EmbedWizard: FunctionComponent = () => {
           <div className={styles.resultLink}>
             <EmbedLinkPreview
               className={styles.previewTextArea}
-              embedUrl={createEmbedUrl(urlParams)}
+              embedUrl={createEmbedUrl(uiElementsChecked)}
             />
 
             <a
               className={styles.previewButton}
-              href={createEmbedUrl(urlParams)}
+              href={createEmbedUrl(uiElementsChecked)}
               target={"_blank"}
               rel="noopener noreferrer"
             >

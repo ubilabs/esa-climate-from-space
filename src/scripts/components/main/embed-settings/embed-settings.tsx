@@ -16,44 +16,49 @@ interface Props {
 const EmbedSettings: FunctionComponent<Props> = ({
   elementsChecked,
   handleChange,
-}) => (
-  <div className={styles.settings}>
-    {uiEmbedElements.map((element) => (
-      <EmbedCheckboxList
-        key={element.title}
-        elementList={element}
-        elementsChecked={elementsChecked}
-        handleChange={(elements) => handleChange(elements)}
-      />
-    ))}
-    <div className={styles.languageSelect}>
-      <label htmlFor="language" className={styles.title}>
-        <FormattedMessage id="embedLanguage" />
-      </label>
-      <select
-        name="language"
-        id="language"
-        defaultValue="autoLng"
-        onChange={(event) => {
-          const selectedLng = event.target.value as Language;
+}) => {
+  const currentUrl = window.location.href;
 
-          handleChange({
-            ...elementsChecked,
-            lng: selectedLng,
-          });
-        }}
-      >
-        <option value="autoLng">
-          <FormattedMessage id="detectLanguage" />
-        </option>
-        {Object.values(Language).map((lng) => (
-          <option key={lng} value={lng as Language}>
-            <FormattedMessage id={`language.${lng}`} />
+  return (
+    <div className={styles.settings}>
+      {uiEmbedElements.map((element) => (
+        <EmbedCheckboxList
+          disabledEmbed={!currentUrl.includes(element.embedPath)}
+          key={element.title}
+          elementList={element}
+          elementsChecked={elementsChecked}
+          handleChange={(elements) => handleChange(elements)}
+        />
+      ))}
+      <div className={styles.languageSelect}>
+        <label htmlFor="language" className={styles.title}>
+          <FormattedMessage id="embedLanguage" />
+        </label>
+        <select
+          name="language"
+          id="language"
+          defaultValue="autoLng"
+          onChange={(event) => {
+            const selectedLng = event.target.value as Language;
+
+            handleChange({
+              ...elementsChecked,
+              lng: selectedLng,
+            });
+          }}
+        >
+          <option value="autoLng">
+            <FormattedMessage id="detectLanguage" />
           </option>
-        ))}
-      </select>
+          {Object.values(Language).map((lng) => (
+            <option key={lng} value={lng as Language}>
+              <FormattedMessage id={`language.${lng}`} />
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default EmbedSettings;
