@@ -8,13 +8,13 @@ import Header from "../header/header";
 import Share from "../../main/share/share";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import { RouteMatch } from "../../../types/story-mode";
 
 import styles from "./stories-selector.module.css";
+import { AppRoute } from "../../../types/app-routes";
 
 const StoriesSelector: FunctionComponent = () => {
   const intl = useIntl();
-  const { header, filter_tags } = useSelector(embedElementsSelector);
+  const { header  } = useSelector(embedElementsSelector);
 
   return (
     <div className={styles.storiesSelector}>
@@ -27,8 +27,8 @@ const StoriesSelector: FunctionComponent = () => {
           <Share />
         </Header>
       )}
-      {filter_tags && <StoryFilter />}
-      <StoryList mode={RouteMatch.Stories} />
+      <StoryFilter />
+      <StoryList route={AppRoute.Stories} />
     </div>
   );
 };

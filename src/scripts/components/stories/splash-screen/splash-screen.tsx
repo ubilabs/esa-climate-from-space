@@ -5,22 +5,22 @@ import cx from "classnames";
 import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
 
 import { Slide } from "../../../types/story";
-import { RouteMatch } from "../../../types/story-mode";
+import { AppRoute } from "../../../types/app-routes";
 
 import styles from "./splash-screen.module.css";
 
 interface Props {
   storyId: string;
-  mode: RouteMatch;
+  route: AppRoute;
   slide: Slide;
 }
 
-const SplashScreen: FunctionComponent<Props> = ({ storyId, mode, slide }) => {
+const SplashScreen: FunctionComponent<Props> = ({ storyId, route, slide }) => {
   const imageUrl =
     slide.splashImage && getStoryAssetUrl(storyId, slide.splashImage);
   const contentClasses = cx(
     styles.content,
-    mode !== RouteMatch.Stories && styles.presentationContent,
+    route !== AppRoute.Stories && styles.presentationContent,
   );
 
   return (

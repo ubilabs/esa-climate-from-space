@@ -4,7 +4,7 @@ import { UiEmbedElement } from "../types/embed-elements";
 
 import { GlobeProjection } from "../types/globe-projection";
 import { GlobeState } from "../reducers/globe/globe-state";
-import { RouteMatch } from "../types/story-mode";
+import { AppRoute } from "../types/app-routes";
 
 /**
  * Routes are utilized to manage state transitions within the application.
@@ -13,27 +13,27 @@ import { RouteMatch } from "../types/story-mode";
  * Extend or modify route patterns here as necessary to accommodate new requirements.
  */
 export const ROUTES = {
-  [RouteMatch.Base]: { path: "/", end: true },
-  [RouteMatch.NavContent]: { path: "/:category", end: true },
-  [RouteMatch.Data]: { path: "/:category/data", end: true },
-  [RouteMatch.Stories]: {
+  [AppRoute.Base]: { path: "/", end: true },
+  [AppRoute.NavContent]: { path: "/:category", end: true },
+  [AppRoute.Data]: { path: "/:category/data", end: true },
+  [AppRoute.Stories]: {
     path: "/:category/stories/:storyId/:slideIndex",
     end: false,
   },
-  [RouteMatch.Present]: { path: "/present", end: true },
-  [RouteMatch.PresentStory]: {
+  [AppRoute.Present]: { path: "/present", end: true },
+  [AppRoute.PresentStory]: {
     path: "/present/:storyId/:slideIndex",
     end: true,
   },
-  [RouteMatch.Showcase]: { path: "/showcase", end: false },
-  [RouteMatch.ShowcaseStories]: { path: "/showcase/:storyIds", end: false },
-  [RouteMatch.ShowcaseStory]: {
+  [AppRoute.Showcase]: { path: "/showcase", end: false },
+  [AppRoute.ShowcaseStories]: { path: "/showcase/:storyIds", end: false },
+  [AppRoute.ShowcaseStory]: {
     path: "/showcase/:storyIds/:storyIndex/:slideIndex",
     end: false,
   },
-  [RouteMatch.About]: { path: "/about", end: true },
-  [RouteMatch.LegacyStories]: { path: "stories/*", end: false },
-  [RouteMatch.LegacyStory]: {
+  [AppRoute.About]: { path: "/about", end: true },
+  [AppRoute.LegacyStories]: { path: "stories/*", end: false },
+  [AppRoute.LegacyStory]: {
     path: "stories/:storyId/:slideIndex",
     end: false,
   },

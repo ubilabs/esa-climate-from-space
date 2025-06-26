@@ -12,8 +12,8 @@ import { setSelectedContentAction } from "../reducers/content";
 import { selectedLayerIdsSelector } from "../selectors/layers/selected-ids";
 import { languageSelector } from "../selectors/language";
 import { useGetLayerListQuery } from "../services/api";
-import { routeMatchSelector } from "../selectors/route-match";
-import { RouteMatch } from "../types/story-mode";
+import { appRouteSelector } from "../selectors/route-match";
+import {  AppRoute } from "../types/app-routes";
 
 /**
  * Hook that manages globe state based on location changes
@@ -25,7 +25,7 @@ export function useGlobeLocationState() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isMobile = useScreenSize().isMobile;
-  const { routeMatch } = useSelector(routeMatchSelector);
+  const { appRoute } = useSelector(appRouteSelector);
   const previousPathnameRef = useRef<string | null>(null);
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
@@ -48,12 +48,12 @@ export function useGlobeLocationState() {
    * Process pathname change, log route information, and update state
    */
   const handlePathnameChange = useCallback(
-    (currentRoute: RouteMatch, isMobile: boolean) => {
+    (currentRoute: AppRoute, isMobile: boolean) => {
       // Update auto-rotation state
-      updateAutoRotationState(currentRoute === RouteMatch.Base);
+      updateAutoRotationState(currentRoute === AppRoute.Base);
 
       switch (currentRoute) {
-        case RouteMatch.Base:
+        case AppRoute.Base:
           // On initial load, attempt to select the data layer specified via URL parameters.
           // This ensures backward compatibility with CfS versions prior to 2.0.
           if (!previousPathnameRef.current) {
@@ -71,7 +71,7 @@ export function useGlobeLocationState() {
           dispatch(setSelectedContentAction({ contentId: null }));
           break;
 
-        case RouteMatch.NavContent:
+        case AppRoute.NavContent:
           // Remove layer in NavContent mode when coming from the data page
           dispatch(setShowLayer(false));
           dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
@@ -80,7 +80,7 @@ export function useGlobeLocationState() {
           dispatch(setFlyTo(config.globe.view));
           break;
 
-        case RouteMatch.Data:
+        case AppRoute.Data:
           // Handle data route
           if (!isMobile) {
             const layer = layers?.find((layer) => layer.id === mainId);
@@ -118,9 +118,9 @@ export function useGlobeLocationState() {
   // Handle  direct URL changes
   useEffect(() => {
     // only call function when the route match *changes*
-    if (routeMatch && routeMatch === previousPathnameRef.current) {
+    if (appRoute && appRoute === previousPathnameRef.current) {
       return;
     }
-    handlePathnameChange(routeMatch, isMobile);
-  }, [routeMatch, isMobile, handlePathnameChange]);
+    handlePathnameChange(appRoute, isMobile);
+  }, [appRoute, isMobile, handlePathnameChange]);
 }

@@ -6,13 +6,13 @@ import Autoplay from "../autoplay/autoplay";
 import { useStoryNavigation } from "../../../hooks/use-story-navigation";
 import { useMouseMove } from "../../../hooks/use-mouse-move";
 
-import { RouteMatch } from "../../../types/story-mode";
+import { AppRoute } from "../../../types/app-routes";
 import { Story } from "../../../types/story";
 
 import styles from "./story-footer.module.css";
 
 interface Props {
-  mode: RouteMatch | null;
+  mode: AppRoute | null;
   slideIndex: number;
   selectedStory: Story | null;
   videoDuration: number;
@@ -24,8 +24,8 @@ const StoryFooter: FunctionComponent<Props> = ({
   selectedStory,
   videoDuration,
 }) => {
-  const isShowcaseMode = mode === RouteMatch.Showcase;
-  const isStoriesMode = mode === RouteMatch.Stories;
+  const isShowcaseMode = mode === AppRoute.Showcase;
+  const isStoriesMode = mode === AppRoute.Stories;
 
   const { nextSlideLink, previousSlideLink, autoPlayLink, delay } =
     useStoryNavigation(videoDuration);

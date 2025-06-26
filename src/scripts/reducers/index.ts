@@ -14,7 +14,7 @@ import storyLayerReducer from "./story-layer";
 import storiesReducer from "./story/index";
 import contentReducer from "./content/index";
 import welcomeScreenReducer from "./welcome-screen";
-import routeMatchReducer from "./route-match";
+import appRouteReducer from "./app-route";
 
 const rootReducer = combineReducers({
   // We dynamically fetch information about layers and stories using RTK Query.
@@ -23,7 +23,7 @@ const rootReducer = combineReducers({
   [storiesApi.reducerPath]: storiesApi.reducer,
   // The reducers below contain the state of the application.
   // They are not created by RTK Query or contain any data fetched from somewhere else.
-  routeMatch: routeMatchReducer,
+  appRoute: appRouteReducer,
   content: contentReducer,
   layers: layersReducer,
   stories: storiesReducer,

@@ -6,7 +6,7 @@ import StoryList from "../story-list/story-list";
 import Header from "../header/header";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import { RouteMatch } from "../../../types/story-mode";
+import { AppRoute } from "../../../types/app-routes";
 
 import styles from "./presentation-selector.module.css";
 
@@ -24,7 +24,7 @@ const PresentationSelector: FunctionComponent = () => {
         >
         </Header>
       )}
-      <StoryList mode={RouteMatch.Present} />
+      <StoryList route={AppRoute.Present} />
     </div>
   );
 };

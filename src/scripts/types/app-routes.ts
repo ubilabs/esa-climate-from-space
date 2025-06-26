@@ -1,4 +1,4 @@
-export enum RouteMatch {
+export enum AppRoute {
   About = "about",
   Base = "base",
   Data = "data",

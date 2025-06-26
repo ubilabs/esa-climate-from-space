@@ -10,15 +10,15 @@ import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 
 import { contentSelector } from "../../../selectors/content";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
-import { routeMatchSelector } from "../../../selectors/route-match";
+import { appRouteSelector } from "../../../selectors/route-match";
 import { languageSelector } from "../../../selectors/language";
 
 import { setLanguage } from "../../../reducers/language";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
-import { setRouteMatch } from "../../../reducers/route-match";
+import { setAppRoute } from "../../../reducers/app-route";
 import { setWelcomeScreen } from "../../../reducers/welcome-screen";
 
-import { RouteMatch } from "../../../types/story-mode";
+import { AppRoute } from "../../../types/app-routes";
 
 import Button from "../button/button";
 import { EsaLogo } from "../icons/esa-logo";
@@ -43,12 +43,12 @@ const Navigation: FunctionComponent = () => {
   const isStoriesPath = useIsStoriesPath();
 
   const { isMobile } = useScreenSize();
-  const { routeMatch } = useSelector(routeMatchSelector);
+  const { appRoute } = useSelector(appRouteSelector);
 
   const location = useLocation();
 
   useEffect(() => {
-    dispatch(setRouteMatch(location.pathname));
+    dispatch(setAppRoute(location.pathname));
   }, [location.pathname, dispatch]);
 
   const { header, logo, back_link, app_menu, layers_menu } = useSelector(
@@ -69,14 +69,14 @@ const Navigation: FunctionComponent = () => {
           <EsaLogo
             variant={
               (!isMobile && "logoWithText") ||
-              (isStoriesPath || routeMatch === RouteMatch.Stories
+              (isStoriesPath || appRoute === AppRoute.Stories
                 ? "shortLogo"
                 : "logoWithText")
             }
           />
         )}
-        {(routeMatch === RouteMatch.Data ||
-          routeMatch === RouteMatch.Stories) &&
+        {(appRoute === AppRoute.Data ||
+          appRoute === AppRoute.Stories) &&
           back_link && (
             <Button
               className={styles.backButton}
@@ -85,7 +85,7 @@ const Navigation: FunctionComponent = () => {
               link={category ? `/${category}` : "/"}
             />
           )}
-        {routeMatch === RouteMatch.Data && layers_menu && (
+        {appRoute === AppRoute.Data && layers_menu && (
           <Button
             className={styles.button}
             id="ui-menu"

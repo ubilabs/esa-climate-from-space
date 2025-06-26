@@ -9,13 +9,13 @@ import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
 import config from "../../../config/main";
 
 import { StoryListItem as StoryListItemType } from "../../../types/story-list";
-import { RouteMatch } from "../../../types/story-mode";
+import { AppRoute } from "../../../types/app-routes";
 
 import styles from "./story-list-item.module.css";
 
 interface Props {
   story: StoryListItemType;
-  mode: RouteMatch;
+  mode: AppRoute;
   selectedIndex: number;
   selectedTags: string[];
   onSelectStory: (id: string) => void;
@@ -30,11 +30,11 @@ const StoryListItemContent: FunctionComponent<Props> = ({
 }) => {
   const classes = cx(
     styles.storyListItem,
-    mode === RouteMatch.Present && styles.present,
-    mode === RouteMatch.Showcase && styles.showcase,
+    mode === AppRoute.Present && styles.present,
+    mode === AppRoute.Showcase && styles.showcase,
     selectedIndex >= 0 && styles.selected,
   );
-  const isStoriesMode = RouteMatch.Stories === mode;
+  const isStoriesMode = AppRoute.Stories === mode;
   const downloadUrl = replaceUrlPlaceholders(config.api.storyOfflinePackage, {
     id: story.id,
   });
@@ -44,7 +44,7 @@ const StoryListItemContent: FunctionComponent<Props> = ({
   return (
     <div
       className={classes}
-      onClick={() => mode === RouteMatch.Showcase && onSelectStory(story.id)}
+      onClick={() => mode === AppRoute.Showcase && onSelectStory(story.id)}
     >
       {selectedIndex >= 0 && (
         <div className={styles.storyNumber}>{selectedIndex + 1}</div>
@@ -74,7 +74,7 @@ const StoryListItem: FunctionComponent<Props> = ({
   selectedTags,
   onSelectStory,
 }) => {
-  const isShowcaseMode = mode === RouteMatch.Showcase;
+  const isShowcaseMode = mode === AppRoute.Showcase;
 
   return !isShowcaseMode ? (
     <Link to={`/${mode}/${story.id}/0`}>

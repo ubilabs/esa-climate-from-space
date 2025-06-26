@@ -5,23 +5,23 @@ import cx from "classnames";
 import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
 import config from "../../../config/main";
 
-import { RouteMatch } from "../../../types/story-mode";
+import { AppRoute } from "../../../types/app-routes";
 import { Slide } from "../../../types/story";
 
 import styles from "./story-content.module.css";
 
 interface Props {
   storyId: string;
-  mode: RouteMatch;
+  route: AppRoute;
   slide: Slide;
 }
 
-const StoryContent: FunctionComponent<Props> = ({ mode, slide, storyId }) => {
-  const storyText = mode === RouteMatch.Stories ? slide.text : slide.shortText;
+const StoryContent: FunctionComponent<Props> = ({ route, slide, storyId }) => {
+  const storyText = route === AppRoute.Stories ? slide.text : slide.shortText;
 
   const contentClasses = cx(
     styles.content,
-    mode !== RouteMatch.Stories && styles.shortTextContent,
+    route === AppRoute.Stories && styles.shortTextContent,
   );
 
   const transformImageUri = (originalSrc: string) =>

@@ -10,13 +10,13 @@ import { CloseIcon } from "../../main/icons/close-icon";
 import StoryGalleryItem from "../story-gallery-item/story-gallery-item";
 import StoryProgress from "../story-progress/story-progress";
 
-import { RouteMatch } from "../../../types/story-mode";
+import { AppRoute } from "../../../types/app-routes";
 
 import styles from "./story-gallery.module.css";
 
 interface Props {
   storyId: string;
-  mode: RouteMatch | null;
+  mode: AppRoute | null;
   children: React.ReactElement[];
   showLightbox: boolean;
   setShowLightbox: (showLightbox: boolean) => void;
@@ -31,10 +31,10 @@ const StoryGallery: FunctionComponent<Props> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < children.length - 1;
-  const delay = mode === RouteMatch.Showcase ? config.delay : null;
+  const delay = mode === AppRoute.Showcase ? config.delay : null;
 
   useInterval(() => {
-    if (mode === RouteMatch.Showcase) {
+    if (mode === AppRoute.Showcase) {
       if (currentIndex >= children.length - 1) {
         return;
       }

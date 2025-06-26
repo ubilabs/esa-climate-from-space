@@ -1,45 +1,45 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RouteMatch } from "../types/story-mode";
+import { AppRoute } from "../types/app-routes";
 import { matchPath } from "react-router-dom";
 import { ROUTES } from "../config/main";
 
 /**
  * Tries to match a pathname to one of the route patterns
  */
-export function matchRoute(pathname: string): RouteMatch {
+export function matchRoute(pathname: string): AppRoute {
   for (const [key, pattern] of Object.entries(ROUTES) as [
-    RouteMatch,
+    AppRoute,
     { path: string; end: boolean },
   ][]) {
-    if (key === RouteMatch.Unknown) continue;
+    if (key === AppRoute.Unknown) continue;
 
     const match = matchPath(pattern, pathname);
     if (match) return key;
   }
 
   console.warn("No route match for:", pathname);
-  return RouteMatch.Unknown;
+  return AppRoute.Unknown;
 }
 
-export interface RouteMatchState {
-  routeMatch: RouteMatch;
+export interface AppRouteState {
+  appRoute: AppRoute;
 }
 
-const initialState: RouteMatchState = {
-  routeMatch: matchRoute(window.location.pathname),
+const initialState: AppRouteState = {
+  appRoute: matchRoute(window.location.pathname),
 };
 
-const RouteMatchSlice = createSlice({
-  name: "routeMatch",
+const AppRouteSlice = createSlice({
+  name: "AppRoute",
   initialState,
   reducers: {
-    setRouteMatch(state, action: PayloadAction<string>) {
+    setAppRoute(state, action: PayloadAction<string>) {
       console.log("Setting route match for:", action.payload);
       console.log("Current route match:", matchRoute(action.payload));
-      state.routeMatch = matchRoute(action.payload);
+      state.appRoute = matchRoute(action.payload);
     },
   },
 });
 
-export const { setRouteMatch } = RouteMatchSlice.actions;
-export default RouteMatchSlice.reducer;
+export const { setAppRoute } = AppRouteSlice.actions;
+export default AppRouteSlice.reducer;

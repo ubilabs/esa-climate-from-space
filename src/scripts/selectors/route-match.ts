@@ -1,7 +1,6 @@
 import { State } from "../reducers/index";
-import { RouteMatchState } from "../reducers/route-match";
+import { AppRouteState } from "../reducers/app-route";
 
-
-export function routeMatchSelector(state: State): RouteMatchState {
-  return state.routeMatch;
+export function appRouteSelector(state: State): AppRouteState {
+  return state.appRoute;
 }

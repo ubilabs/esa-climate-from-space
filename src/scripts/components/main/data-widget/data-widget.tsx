@@ -19,7 +19,7 @@ import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { projectionSelector } from "../../../selectors/globe/projection";
-import { routeMatchSelector } from "../../../selectors/route-match";
+import { appRouteSelector } from "../../../selectors/route-match";
 import { timeSelector } from "../../../selectors/globe/time";
 
 import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
@@ -32,7 +32,7 @@ import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
-import { RouteMatch } from "../../../types/story-mode";
+import { AppRoute } from "../../../types/app-routes";
 import { LayerType } from "../../../types/globe-layer-type";
 import { LegendValueColor } from "../../../types/legend-value-color";
 import { Layer } from "../../../types/layer";
@@ -64,11 +64,11 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;
 
-  const routeMatch = useSelector(routeMatchSelector).routeMatch;
+  const appRoute = useSelector(appRouteSelector).appRoute;
 
-  const isBase = routeMatch === RouteMatch.Base;
-  const isContentNav = routeMatch === RouteMatch.NavContent;
-  const isStories = routeMatch === RouteMatch.Stories;
+  const isBase = appRoute === AppRoute.Base;
+  const isContentNav = appRoute === AppRoute.NavContent;
+  const isStories = appRoute === AppRoute.Stories;
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),

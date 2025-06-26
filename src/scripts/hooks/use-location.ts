@@ -63,7 +63,7 @@ export function useGlobeLocationState() {
    * Match current path against known route patterns
    * Returns an object with all matching route results
    */
-  const getRouteMatches = useCallback((pathname: string) => {
+  const getappRoutees = useCallback((pathname: string) => {
     return {
       basePath: matchPath(
         { path: ROUTE_PATTERNS.basePath.path, end: true },
@@ -98,12 +98,12 @@ export function useGlobeLocationState() {
       setShowDataSet(false);
 
       // Get and log all route matches
-      const routeMatches = getRouteMatches(pathname);
+      const appRoutees = getappRoutees(pathname);
 
       // Update auto-rotation state
-      updateAutoRotationState(Boolean(routeMatches.basePath));
+      updateAutoRotationState(Boolean(appRoutees.basePath));
 
-      if (routeMatches.basePath) {
+      if (appRoutees.basePath) {
         // On first load try to select data layer if set via URL params.
         // This is needed to ensure backward compatibility with CfS < 2.0
         if (!previousPathnameRef.current) {
@@ -122,7 +122,7 @@ export function useGlobeLocationState() {
         }
       }
       // Remove layer in NavContent mode when coming from the data page
-      if (routeMatches.navPath) {
+      if (appRoutees.navPath) {
         setShowContentList(true);
         // This will only be triggered when the user is navigating back from /data page
         if (previousPathnameRef.current?.endsWith("/data")) {
@@ -134,7 +134,7 @@ export function useGlobeLocationState() {
         }
       }
 
-      if (routeMatches.dataPath) {
+      if (appRoutees.dataPath) {
         setShowDataSet(true);
 
         if (!isMobile) {
@@ -158,7 +158,7 @@ export function useGlobeLocationState() {
       // Store the current pathname for next comparison
       previousPathnameRef.current = pathname;
     },
-    [dispatch, getRouteMatches, layers, mainId, updateAutoRotationState],
+    [dispatch, getappRoutees, layers, mainId, updateAutoRotationState],
   );
 
   const isMobile = useScreenSize().isMobile;

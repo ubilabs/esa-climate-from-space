@@ -14,11 +14,11 @@ import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { languageSelector } from "../../../selectors/language";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
-import { routeMatchSelector } from "../../../selectors/route-match";
+import { appRouteSelector } from "../../../selectors/route-match";
 
 import { toggleEmbedElements } from "../../../reducers/embed-elements";
 
-import { RouteMatch } from "../../../types/story-mode";
+import { AppRoute } from "../../../types/app-routes";
 
 import {
   useGetLayerListQuery,
@@ -76,26 +76,26 @@ const DataViewer: FunctionComponent = () => {
 
   const dispatch = useDispatch();
   const embedElements = useSelector(embedElementsSelector);
-  const { routeMatch } = useSelector(routeMatchSelector);
+  const { appRoute } = useSelector(appRouteSelector);
 
-  const isNavigation =
-    routeMatch === RouteMatch.NavContent ||
-    routeMatch === RouteMatch.Base;
+  const showNavigation =
+    appRoute === AppRoute.NavContent ||
+    appRoute === AppRoute.Base;
 
-  const showContentList = routeMatch === RouteMatch.NavContent;
-  const showDataSet = routeMatch === RouteMatch.Data;
+  const showContentList = appRoute === AppRoute.NavContent;
+  const showDataSet = appRoute === AppRoute.Data;
 
   useEffect(() => {
-    const isDataMode = routeMatch === RouteMatch.Data;
+    const isDataRoute = appRoute === AppRoute.Data;
     dispatch(
       toggleEmbedElements({
         ...embedElements,
-        legend: isDataMode,
-        time_slider: isDataMode,
+        legend: isDataRoute,
+        time_slider: isDataRoute,
       }),
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, routeMatch]);
+  }, [dispatch, appRoute]);
 
   // There is a set of animations which should be played only once
   // This keeps track of that
@@ -132,13 +132,13 @@ const DataViewer: FunctionComponent = () => {
   return (
     // The data-view is a grid with three areas: header - main - footer
     // This is the header area
-    <div className={styles.dataViewer} data-nav-content={routeMatch}>
+    <div className={styles.dataViewer} data-nav-content={appRoute}>
       {/* This is the main area
         The navigation consists of three main components: the globe, the category navigation and the content navigation
         The globe is the main component and is always visible
         The category navigation is visible when the content navigation is not visible
       */}
-      {isNavigation && (
+      {showNavigation && (
         <>
           <header className={styles.heading}>
             {showContentList ? (
