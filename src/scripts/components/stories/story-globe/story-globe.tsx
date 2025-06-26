@@ -6,13 +6,13 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 
 import TimeSlider from "../../layers/time-slider/time-slider";
 import LayerDescription from "../layer-description/layer-description";
+import { GlobeCompareLayer } from "../../main/globe-compare-layer/globe-compare-layer";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { useGetLayerQuery } from "../../../services/api";
 
 import { GlobeItem } from "../../../types/gallery-item";
 
 import styles from "./story-globe.module.css";
-import { GetDataWidget } from "../../main/data-widget/data-widget";
 
 interface Props {
   globeItem: GlobeItem;
@@ -29,7 +29,9 @@ const StoryGlobe: FunctionComponent<Props> = ({ globeItem }) => {
 
   return (
     <div className={styles.globeContainer}>
-      <GetDataWidget />
+      <GlobeCompareLayer
+        className={styles.globe}
+      />
       {time_slider && (
         <div className={styles.layerDetails}>
           <TimeSlider

@@ -7,6 +7,7 @@ import {
 } from "react";
 
 import { CameraView } from "@ubilabs/esa-webgl-globe";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
@@ -19,6 +20,7 @@ import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { projectionSelector } from "../../../selectors/globe/projection";
+import { routeMatchSelector } from "../../../selectors/route-match";
 import { timeSelector } from "../../../selectors/globe/time";
 
 import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
@@ -29,8 +31,10 @@ import { State } from "../../../reducers";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
+import { useGlobeLocationState } from "../../../hooks/use-location";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
+import { RouteMatch } from "../../../types/story-mode";
 import { LayerType } from "../../../types/globe-layer-type";
 import { LegendValueColor } from "../../../types/legend-value-color";
 import { Layer } from "../../../types/layer";
@@ -40,8 +44,6 @@ import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
-import { routeMatchSelector } from "../../../selectors/route-match";
-import { RouteMatch } from "../../../types/story-mode";
 
 interface Props {
   className?: string;
@@ -81,6 +83,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   // If initially, there is a main layer selected, we need to fetch the layer details
   useGetLayerQuery(mainId ?? "", { skip: !mainId });
+  useGetLayerQuery(compareId ?? "", { skip: !compareId });
 
   const onMoveStartHandler = useCallback(
     () => globeSpinning && dispatch(setGlobeSpinning(false)),
