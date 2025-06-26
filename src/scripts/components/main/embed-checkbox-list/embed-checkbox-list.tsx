@@ -17,9 +17,8 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
   elementList,
   elementsChecked,
   handleChange,
-  disabledEmbed
+  disabledEmbed,
 }) => {
-
   const checkboxListClasses = cx(
     styles.checkboxListContainer,
     disabledEmbed && styles.disabledEmbed,
@@ -35,26 +34,42 @@ const EmbedCheckboxList: FunctionComponent<Props> = ({
         className={styles.checkBoxList}
         title={disabledEmbed ? "Disabled for this layer" : ""}
       >
-        {elementList.elements.map((element) => (
-          <div className={styles.checkboxListItem} key={element}>
-            <input
-              type="checkbox"
-              name={element}
-              checked={elementsChecked[element] === true}
-              onChange={(event) => {
-                const checked = event.target.checked;
+        {elementList.elements.map((element) => {
 
-                handleChange({
-                  ...elementsChecked,
-                  [element]: checked,
-                });
-              }}
-            />
-            <label htmlFor={element}>
-              <FormattedMessage id={element} />
-            </label>
-          </div>
-        ))}
+          // Disable header checkboxes if the header itself is not checked
+          const isDisabled =
+            elementsChecked["header"] === false &&
+            elementList.title === "app" &&
+            element !== "header";
+
+          return (
+            <div
+              className={cx(
+                styles.checkboxListItem,
+                isDisabled && styles.disabled,
+                element === "header" && styles.divider,
+              )}
+              key={element}
+            >
+              <input
+                type="checkbox"
+                name={element}
+                checked={elementsChecked[element] === true}
+                onChange={(event) => {
+                  const checked = event.target.checked;
+
+                  handleChange({
+                    ...elementsChecked,
+                    [element]: checked,
+                  });
+                }}
+              />
+              <label htmlFor={element}>
+                <FormattedMessage id={element} />
+              </label>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
