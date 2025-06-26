@@ -23,8 +23,20 @@ const Overlay: FunctionComponent<Props> = ({
   const modalElement = document.getElementById("modal");
   const classes = cx(styles.overlay, className);
 
+  // stops progation when overlay is present
+  // This is useful because otherwise the user would also
+  // control the gesture-based navigation and interfere with the overlay
+  const stopPropagation = (e: React.SyntheticEvent) => {
+    e.stopPropagation();
+  };
+
   const Content = (
-    <div className={classes}>
+    <div
+      className={classes}
+      onWheel={stopPropagation}
+      onMouseDown={stopPropagation}
+      onTouchStart={stopPropagation}
+    >
       {showCloseButton && (
         <Button
           icon={CloseIcon}
