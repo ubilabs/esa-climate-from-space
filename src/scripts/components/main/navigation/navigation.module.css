@@ -37,7 +37,7 @@
   font-family: NotesEsa;
   line-height: 1.375em;
 
-  &:not(:last-child) {
+  &:first-of-type {
     margin-left: auto;
   }
 
