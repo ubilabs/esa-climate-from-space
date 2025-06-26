@@ -1,32 +1,30 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, StrictMode } from "react";
 import { Provider as StoreProvider, useSelector } from "react-redux";
-import { IntlProvider } from "react-intl";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { IntlProvider } from "react-intl";
 import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 
-import { languageSelector } from "../../../selectors/language";
-import UrlSync from "../url-sync/url-sync";
-import LayerSelector from "../../layers/layer-selector/layer-selector";
-import Navigation from "../navigation/navigation";
-import { EsaLogo } from "../icons/esa-logo";
-import TimeSlider from "../../layers/time-slider/time-slider";
-import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import { store } from "./create-redux-store";
+import { languageSelector } from "../../../selectors/language";
+import translations from "../../../i18n";
 
-import Story from "../../stories/story/story";
+import UrlSync from "../url-sync/url-sync";
+import Navigation from "../navigation/navigation";
+import LayerSelector from "../../layers/layer-selector/layer-selector";
+import DataViewer from "../data-viewer/data-viewer";
+import Tracking from "../tracking/tracking";
+
 import StoriesSelector from "../../stories/stories-selector/stories-selector";
 import PresentationSelector from "../../stories/presentation-selector/presentation-selector";
 import ShowcaseSelector from "../../stories/showcase-selector/showcase-selector";
-import DataViewer from "../data-viewer/data-viewer";
-import Tracking from "../tracking/tracking";
+import Story from "../../stories/story/story";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
-import translations from "../../../i18n";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
+import { EsaLogo } from "../icons/esa-logo";
 
 import "./app.css";
 import "../../../../variables.css";
 
-// create matomo tracking instance
+// Create Matomo tracking instance
 const matomoInstance = createInstance({
   urlBase: "https://matomo-ext.esa.int/",
   siteId: 6,
@@ -34,91 +32,77 @@ const matomoInstance = createInstance({
   srcUrl: "https://matomo-ext.esa.int/matomo.js",
 });
 
-interface MainContentProps {
-  legend?: boolean;
-  time_slider?: boolean;
-}
+const EsaLogoLink: FunctionComponent = () => (
+  <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
+    <div className="logo" style={{ zIndex: 4 }}>
+      <EsaLogo variant="logoWithText" />
+    </div>
+  </a>
+);
 
-const MainContent: FunctionComponent<MainContentProps> = ({
-  legend,
-  time_slider,
-}) => (
+const MainContent: FunctionComponent = () => (
   <>
     <Navigation />
     <DataViewer />
-    {legend && <DataSetInfo />}
-    {time_slider && <TimeSlider />}
     <LayerSelector />
   </>
 );
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
-  const { time_slider, legend } = useSelector(embedElementsSelector);
-
-  const logo = (
-    <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
-      <div className={"logo"} style={{ zIndex: 4, fill: "#fff" }}>
-        <EsaLogo variant="logoWithText" />
-      </div>
-    </a>
-  );
 
   return (
-    <Router>
-      <IntlProvider locale={language} messages={translations[language]}>
+    <IntlProvider
+      key={language} // ensures re-render on language change
+      locale={language}
+      messages={translations[language]}
+    >
+      <Router>
         <Routes>
+          <Route path="/" element={<MainContent />} />
+          <Route path="/:category" element={<MainContent />} />
+          <Route path="/:category/data" element={<MainContent />} />
+
           <Route
             path="/about"
             element={
               <>
-                {logo}
+                <EsaLogoLink />
                 <AboutProjectOverlay />
               </>
             }
           />
           <Route path="/stories" element={<StoriesSelector />} />
+          <Route path="/stories/:storyId/:slideIndex" element={<Story />} />
           <Route path="/present" element={<PresentationSelector />} />
+          <Route path="/present/:storyId/:slideIndex" element={<Story />} />
           <Route path="/showcase" element={<ShowcaseSelector />} />
           <Route path="/showcase/:storyIds" element={<ShowcaseSelector />} />
-          <Route
-            path="/:category/stories/:storyId/:slideIndex"
-            element={<Story />}
-          />
-          <Route path="/stories/:storyId/:slideIndex" element={<Story />} />
-          <Route path="/present/:storyId/:slideIndex" element={<Story />} />
           <Route
             path="/showcase/:storyIds/:storyIndex/:slideIndex"
             element={<Story />}
           />
           <Route
-            path="/"
-            element={<MainContent legend={legend} time_slider={time_slider} />}
-          />
-          <Route
-            path="/:category"
-            element={<MainContent legend={legend} time_slider={time_slider} />}
-          />
-          <Route
-            path="/:category/data"
-            element={<MainContent legend={legend} time_slider={time_slider} />}
+            path="/:category/stories/:storyId/:slideIndex"
+            element={<Story />}
           />
         </Routes>
         <Tracking />
-      </IntlProvider>
-      <UrlSync />
-    </Router>
+        <UrlSync />
+      </Router>
+    </IntlProvider>
   );
 };
 
 const App: FunctionComponent = () => (
-  // @ts-expect-error - MatomoProvider does not include children in props since react 18
-
-  <MatomoProvider value={matomoInstance}>
-    <StoreProvider store={store}>
-      <TranslatedApp />
-    </StoreProvider>
-  </MatomoProvider>
+  <StrictMode>
+    {/* @ts-expect-error - children prop not typed correctly in MatomoProvider */}
+    <MatomoProvider value={matomoInstance}>
+      <StoreProvider store={store}>
+        <TranslatedApp />
+      </StoreProvider>
+    </MatomoProvider>
+  </StrictMode>
 );
 
 export default App;

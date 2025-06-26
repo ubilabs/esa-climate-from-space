@@ -28,6 +28,7 @@ import { setGlobeView } from "../../../reducers/globe/view";
 import { State } from "../../../reducers";
 
 import { useContentMarker } from "../../../hooks/use-story-markers";
+import { useContentParams } from "../../../hooks/use-content-params";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
 import { useGlobeLocationState } from "../../../hooks/use-location";
@@ -35,6 +36,7 @@ import { useGlobeLocationState } from "../../../hooks/use-location";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
 import { LegendValueColor } from "../../../types/legend-value-color";
+import { StoryMode } from "../../../types/story-mode";
 import { Layer } from "../../../types/layer";
 
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
@@ -42,6 +44,8 @@ import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
+import DataSetInfo from "../../layers/data-set-info/data-set-info";
+import TimeSlider from "../../layers/time-slider/time-slider";
 
 interface Props {
   className?: string;
@@ -55,6 +59,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const flyTo = useSelector(flyToSelector);
   const [isMainActive, setIsMainActive] = useState(true);
+  const { mode } = useContentParams();
 
   const language = useSelector(languageSelector);
   const dispatch = useDispatch();
@@ -205,7 +210,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
       ?.style.setProperty("--globe-latitude", `${view.lat}deg`);
   }, []);
 
-  const { legend } = useSelector(embedElementsSelector);
+  const { legend, time_slider } = useSelector(embedElementsSelector);
 
   // stop globe spinning when layer is selected
   useEffect(() => {
@@ -220,7 +225,14 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   return (
     <>
-      {legend && getLegends()}
+      {mode === StoryMode.NavContent ? null : (
+        <>
+          {mode !== StoryMode.Stories && <DataSetInfo />}
+          {legend && getLegends()}
+          {time_slider && <TimeSlider />}
+        </>
+      )}
+
       {getDataWidget({
         showContentList,
         imageLayer: mainImageLayer,

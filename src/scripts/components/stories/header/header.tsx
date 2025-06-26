@@ -24,11 +24,11 @@ const Header: FunctionComponent<Props> = ({
 }) => {
   const { currentStoryId} = useContentParams();
   const isStoriesPath = useIsStoriesPath();
-  const { back_link, story_back_link } = useSelector(embedElementsSelector);
+  const { back_link } = useSelector(embedElementsSelector);
 
 
   const disabledEmbedLink =
-    (isStoriesPath && back_link) || (currentStoryId && story_back_link);
+    (isStoriesPath && back_link) || (currentStoryId );
 
   return (
     <div className={styles.header}>

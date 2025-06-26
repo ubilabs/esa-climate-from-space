@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, matchPath, useParams } from "react-router-dom";
 import { setIsAutoRotating } from "../reducers/globe/auto-rotation";
 import { setShowLayer } from "../reducers/show-layer-selector";
-import { toggleEmbedElements } from "../reducers/embed-elements";
 import { setSelectedLayerIds } from "../reducers/layers";
 import { setFlyTo } from "../reducers/fly-to";
 import config from "../config/main";
@@ -128,7 +127,6 @@ export function useGlobeLocationState() {
         // This will only be triggered when the user is navigating back from /data page
         if (previousPathnameRef.current?.endsWith("/data")) {
           dispatch(setShowLayer(false));
-          dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
 
           // reset gthe globe view

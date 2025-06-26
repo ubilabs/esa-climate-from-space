@@ -4,7 +4,6 @@ import { useStoryGlobe } from "../../../hooks/use-story-globe";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import TimeSlider from "../../layers/time-slider/time-slider";
 import LayerDescription from "../layer-description/layer-description";
 import { GlobeCompareLayer } from "../../main/globe-compare-layer/globe-compare-layer";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
@@ -34,11 +33,6 @@ const StoryGlobe: FunctionComponent<Props> = ({ globeItem }) => {
       />
       {time_slider && (
         <div className={styles.layerDetails}>
-          <TimeSlider
-            autoplay={globeItem.layerAutoplay}
-            noTimeClamp
-            className={styles.storySlider}
-          />
           {globeItem.layerDescription && (
             <LayerDescription layerDescription={globeItem.layerDescription} />
           )}
