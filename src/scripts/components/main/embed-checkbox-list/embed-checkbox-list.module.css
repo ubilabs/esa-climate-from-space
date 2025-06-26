@@ -12,6 +12,10 @@
 .checkboxListContainer {
   &.app {
     grid-area: 1 / 1 / 4 / 2;
+
+    @media screen and (--mobile-viewport) {
+      grid-area: auto;
+    }
   }
 
   &.disabledEmbed {
