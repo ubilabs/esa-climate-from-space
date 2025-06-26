@@ -31,8 +31,6 @@ import { languageSelector } from "../../../selectors/language";
 
 import config from "../../../config/main";
 
-import styles from "./story.module.css";
-
 const Story: FunctionComponent = () => {
   const storyParams = useContentParams();
   const sphereProjection = GlobeProjection.Sphere;
@@ -65,7 +63,6 @@ const Story: FunctionComponent = () => {
 
   // clean up story on unmount
   useEffect(() => {
-    dispatch(toggleEmbedElements({ legend: true, time_slider: true }));
     return () => {
       const defaultView = config.globe.view;
       dispatch(
@@ -75,7 +72,6 @@ const Story: FunctionComponent = () => {
         }),
       );
       dispatch(setFlyTo(defaultView));
-      dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
       dispatch(
         setSelectedLayerIds({
           layerId: null,

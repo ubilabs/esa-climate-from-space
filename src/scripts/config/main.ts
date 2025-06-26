@@ -81,25 +81,14 @@ const globeState: GlobeState = {
 
 export const uiEmbedElements: UiEmbedElement[] = [
   {
+    embedPath: "/",
     title: "app",
-    elements: [
-      "logo",
-      "stories_menu",
-      "layers_menu",
-      "share_button",
-      "app_menu",
-      "globe_navigation",
-      "markers",
-    ],
-  },
-  { title: "layers", elements: ["time_slider", "legend"] },
-  {
-    title: "stories",
-    elements: ["header", "back_link", "filter_tags"],
+    elements: ["header", "logo", "app_menu", "back_link"],
   },
   {
-    title: "story",
-    elements: ["story_header", "story_back_link"],
+    title: "layers",
+    elements: ["time_slider", "legend", "layers_menu"],
+    embedPath: "/data",
   },
 ];
 

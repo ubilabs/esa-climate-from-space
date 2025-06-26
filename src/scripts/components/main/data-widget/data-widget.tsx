@@ -7,7 +7,6 @@ import {
 } from "react";
 
 import { CameraView } from "@ubilabs/esa-webgl-globe";
-import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
@@ -31,7 +30,6 @@ import { State } from "../../../reducers";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
-import { useGlobeLocationState } from "../../../hooks/use-location";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { RouteMatch } from "../../../types/story-mode";
@@ -44,6 +42,8 @@ import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
+import DataSetInfo from "../../layers/data-set-info/data-set-info";
+import TimeSlider from "../../layers/time-slider/time-slider";
 
 interface Props {
   className?: string;
@@ -68,6 +68,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const isBase = routeMatch === RouteMatch.Base;
   const isContentNav = routeMatch === RouteMatch.NavContent;
+  const isStories = routeMatch === RouteMatch.Stories;
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
@@ -127,8 +128,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
       <Globe
         {...(!isBase &&
           contentMarker && {
-            markers: [contentMarker],
-          })}
+          markers: [contentMarker],
+        })}
         backgroundColor={""}
         // We should offset the markers when user is in content nav
         isMarkerOffset={isContentNav}
@@ -190,9 +191,9 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const updatedLayerDetails = isBase
     ? {
-        ...(layerDetails || {}),
-        basemap: "clouds",
-      }
+      ...(layerDetails || {}),
+      basemap: "clouds",
+    }
     : layerDetails;
 
   // apply changes in the app state view to our local view copy
@@ -209,7 +210,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
       ?.style.setProperty("--globe-latitude", `${view.lat}deg`);
   }, []);
 
-  const { legend } = useSelector(embedElementsSelector);
+  const { legend, time_slider } = useSelector(embedElementsSelector);
 
   // stop globe spinning when layer is selected
   useEffect(() => {
@@ -224,7 +225,14 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   return (
     <>
-      {legend && getLegends()}
+      {isContentNav ? null : (
+        <>
+          {isStories && <DataSetInfo />}
+          {legend && getLegends()}
+          {time_slider && <TimeSlider />}
+        </>
+      )}
+
       {getDataWidget({
         imageLayer: mainImageLayer,
         layerDetails: updatedLayerDetails,

@@ -21,7 +21,6 @@ body,
 }
 
 #app {
-  --header-height: 3.5rem;
   display: grid;
   grid-template-areas:
     "header"
