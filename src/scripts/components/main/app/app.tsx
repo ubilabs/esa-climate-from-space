@@ -19,10 +19,10 @@ import PresentationSelector from "../../stories/presentation-selector/presentati
 import ShowcaseSelector from "../../stories/showcase-selector/showcase-selector";
 import Story from "../../stories/story/story";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
-import { EsaLogo } from "../icons/esa-logo";
 
 import "./app.css";
 import "../../../../variables.css";
+import { EsaLogoLink } from "../logo/logo";
 
 // Create Matomo tracking instance
 const matomoInstance = createInstance({
@@ -31,14 +31,6 @@ const matomoInstance = createInstance({
   trackerUrl: "https://matomo-ext.esa.int/matomo.php",
   srcUrl: "https://matomo-ext.esa.int/matomo.js",
 });
-
-const EsaLogoLink: FunctionComponent = () => (
-  <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
-    <div className="logo" style={{ zIndex: 4 }}>
-      <EsaLogo variant="logoWithText" />
-    </div>
-  </a>
-);
 
 const MainContent: FunctionComponent = () => (
   <>
