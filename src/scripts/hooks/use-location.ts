@@ -122,7 +122,6 @@ export function useGlobeLocationState() {
         // This will only be triggered when the user is navigating back from /data page
         if (previousPathnameRef.current?.endsWith("/data")) {
           dispatch(setShowLayer(false));
-          // dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
 
           // reset gthe globe view

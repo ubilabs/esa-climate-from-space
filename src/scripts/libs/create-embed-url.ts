@@ -7,7 +7,7 @@ export const createEmbedUrl = (uiElementsChecked: ElementOptions): string => {
   const [hashPath, queryString = ""] = hash.split("?");
   const params = new URLSearchParams(queryString);
 
-  //Remvoe params from URL that are not the globe
+  // Remvoe params from URL that are not the globe
   for (const key of Array.from(params.keys())) {
     if (key !== "globe") {
       params.delete(key);
@@ -27,8 +27,9 @@ export const createEmbedUrl = (uiElementsChecked: ElementOptions): string => {
   }
 
   // Rebuild the new hash part
-  const newHash = `${hashPath}${params.toString() ? `?${params.toString()}` : ""}`;
+  const queryParams = params.toString();
+  const newHash = queryParams ? `${hashPath}?${queryParams}` : hashPath
 
   // Construct and return full updated URL
-  return `${origin}${pathname}${newHash}`;
+ return origin + pathname + newHash
 };

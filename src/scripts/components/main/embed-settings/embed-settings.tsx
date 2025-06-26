@@ -7,6 +7,7 @@ import { Language } from "../../../types/language";
 import { uiEmbedElements } from "../../../config/main";
 
 import styles from "./embed-settings.module.css";
+import { useLocation } from "react-router-dom";
 
 interface Props {
   elementsChecked: ElementOptions;
@@ -17,13 +18,13 @@ const EmbedSettings: FunctionComponent<Props> = ({
   elementsChecked,
   handleChange,
 }) => {
-  const currentUrl = window.location.href;
+  const { pathname } = useLocation();
 
   return (
     <div className={styles.settings}>
       {uiEmbedElements.map((element) => (
         <EmbedCheckboxList
-          disabledEmbed={!currentUrl.includes(element.embedPath)}
+          disabledEmbed={!pathname.includes(element.embedPath)}
           key={element.title}
           elementList={element}
           elementsChecked={elementsChecked}

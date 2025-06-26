@@ -9,6 +9,7 @@ import { useScreenSize } from "../../../hooks/use-screen-size";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 
 import { contentSelector } from "../../../selectors/content";
+import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { languageSelector } from "../../../selectors/language";
 
 import { setLanguage } from "../../../reducers/language";
@@ -27,7 +28,6 @@ import Menu from "../menu/menu";
 import Overlay from "../overlay/overlay";
 
 import styles from "./navigation.module.css";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -47,7 +47,9 @@ const Navigation: FunctionComponent = () => {
   const { header, logo, back_link, app_menu, layers_menu } = useSelector(
     embedElementsSelector,
   );
+
   if (!header) {
+    // The app element determines the layout via grid which is why we should return a DOM element here
     // set css custom property --header-height to 0
     document.documentElement.style.setProperty("--header-height", "0px");
     return <nav aria-disabled="true"></nav>;
