@@ -36,6 +36,11 @@
   font-size: 1.125em;
   font-family: NotesEsa;
   line-height: 1.375em;
+
+  &:first-of-type {
+    margin-left: auto;
+  }
+
 }
 .button:hover {
   text-shadow: none;

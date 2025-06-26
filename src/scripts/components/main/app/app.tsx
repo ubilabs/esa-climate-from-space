@@ -9,8 +9,6 @@ import UrlSync from "../url-sync/url-sync";
 import LayerSelector from "../../layers/layer-selector/layer-selector";
 import Navigation from "../navigation/navigation";
 import { EsaLogo } from "../icons/esa-logo";
-import TimeSlider from "../../layers/time-slider/time-slider";
-import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import { store } from "./create-redux-store";
 
 import Story from "../../stories/story/story";
@@ -21,7 +19,6 @@ import DataViewer from "../data-viewer/data-viewer";
 import Tracking from "../tracking/tracking";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
 import translations from "../../../i18n";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import "./app.css";
 import "../../../../variables.css";
@@ -36,7 +33,6 @@ const matomoInstance = createInstance({
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
-  const { time_slider, legend } = useSelector(embedElementsSelector);
 
   const logo = (
     <a target="_blank" rel="noopener noreferrer" href="https://climate.esa.int">
@@ -78,8 +74,6 @@ const TranslatedApp: FunctionComponent = () => {
           <Route path={["/", "/:category", "/:category/data"]} exact>
             <Navigation />
             <DataViewer />
-            {legend && <DataSetInfo />}
-            {time_slider && <TimeSlider />}
             <LayerSelector />
           </Route>
         </Switch>

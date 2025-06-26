@@ -6,21 +6,26 @@
   border: 1px solid var(--text-default);
   border-radius: 4px;
   background: var(--black);
+
+  >span {
+    justify-content: start;
+    align-items: center;
+  }
 }
+
 .embedLinkPreview:after {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   width: 50px;
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0),
-    var(--dark-grey-1) 85%
-  );
-  content: '';
+  background-image: linear-gradient(to right,
+      rgba(255, 255, 255, 0),
+      var(--dark-grey-1) 85%);
+  content: "";
   pointer-events: none;
 }
+
 .previewContent {
   display: flex;
   align-items: self-end;
