@@ -49,9 +49,13 @@ export const uiEmbedElements: UiEmbedElement[] = [
   {
     embedPath: "/",
     title: "app",
-    elements: ["logo", "app_menu", "header", "back_link"],
+    elements: ["header", "logo", "app_menu", "back_link"],
   },
-  { title: "layers", elements: ["time_slider", "legend", "layers_menu"], embedPath: "/data" },
+  {
+    title: "layers",
+    elements: ["time_slider", "legend", "layers_menu"],
+    embedPath: "/data",
+  },
 ];
 
 // @ts-expect-error - injected via vite
