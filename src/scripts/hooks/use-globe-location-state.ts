@@ -72,7 +72,6 @@ export function useGlobeLocationState() {
           break;
 
         case AppRoute.NavContent:
-          // Remove layer in NavContent mode when coming from the data page
           dispatch(setShowLayer(false));
           dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));

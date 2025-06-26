@@ -78,12 +78,12 @@ const DataViewer: FunctionComponent = () => {
   const embedElements = useSelector(embedElementsSelector);
   const { appRoute } = useSelector(appRouteSelector);
 
-  const showNavigation =
-    appRoute === AppRoute.NavContent ||
-    appRoute === AppRoute.Base;
+  const isNavigationView =
+    appRoute === AppRoute.NavContent || appRoute === AppRoute.Base;
 
-  const showContentList = appRoute === AppRoute.NavContent;
-  const showDataSet = appRoute === AppRoute.Data;
+  const isContentNavRoute = appRoute === AppRoute.NavContent;
+  const isDataRoute = appRoute === AppRoute.Data;
+  const isBaseRoute = appRoute === AppRoute.Base;
 
   useEffect(() => {
     const isDataRoute = appRoute === AppRoute.Data;
@@ -138,10 +138,20 @@ const DataViewer: FunctionComponent = () => {
         The globe is the main component and is always visible
         The category navigation is visible when the content navigation is not visible
       */}
-      {showNavigation && (
+      <div
+        id="globeWrapper"
+        className={cx(
+          styles.globeWrapper,
+          isContentNavRoute && styles.showContentList,
+        )}
+      >
+        <GetDataWidget className={cx(styles.globe)} />
+      </div>
+      {isDataRoute && <GlobeNavigation />}
+      {isNavigationView && (
         <>
           <header className={styles.heading}>
-            {showContentList ? (
+            {isContentNavRoute ? (
               <Button
                 label={
                   !isMobile
@@ -157,27 +167,16 @@ const DataViewer: FunctionComponent = () => {
               </span>
             )}
           </header>
-          {!showContentList ? (
-            <CategoryNavigation
-              arcs={arcs}
-              width={screenWidth}
-              height={screenHeight}
-              isMobile={isMobile}
-              setCategory={setCurrentCategory}
-              isAnimationReady={hasAnimationPlayed}
-            />
-          ) : (
-            <ContentNavigation
-              isMobile={isMobile}
-              className={styles.contentNav}
-              category={currentCategory}
-              showContentList={showContentList}
-              contents={contents}
-            />
-          )}
-
-          {!showContentList ? (
+          {isBaseRoute && (
             <>
+              <CategoryNavigation
+                arcs={arcs}
+                width={screenWidth}
+                height={screenHeight}
+                isMobile={isMobile}
+                setCategory={setCurrentCategory}
+                isAnimationReady={hasAnimationPlayed}
+              />
               <Button
                 className={cx(
                   hasAnimationPlayed.current && styles.showFast,
@@ -188,40 +187,39 @@ const DataViewer: FunctionComponent = () => {
                 }}
                 label="explore"
               ></Button>
-            </>
-          ) : null}
-          {!showContentList && !hasAnimationPlayed.current && (
-            <span
-              aria-hidden="true"
-              className={cx(
-                // Make sure to show the gesture indicator depending on whether it is touch screen device
-                styles.gestureIndicator,
-                isTouchDevice ? styles.touch : styles.scroll,
+              {!hasAnimationPlayed.current && (
+                <span
+                  aria-hidden="true"
+                  className={cx(
+                    // Make sure to show the gesture indicator depending on whether it is touch screen device
+                    styles.gestureIndicator,
+                    isTouchDevice ? styles.touch : styles.scroll,
+                  )}
+                  data-content={intl.formatMessage({
+                    id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
+                  })}
+                ></span>
               )}
-              data-content={intl.formatMessage({
-                id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
-              })}
-            ></span>
+            </>
           )}
-          {showContentList && !isMobile && (
-            <span className={styles.currentCategory}>
-              <FormattedMessage id={`categories.${currentCategory}`} />
-            </span>
+          {isContentNavRoute && (
+            <>
+              <ContentNavigation
+                isMobile={isMobile}
+                className={styles.contentNav}
+                category={currentCategory}
+                showContentList
+                contents={contents}
+              />
+              {!isMobile && (
+                <span className={styles.currentCategory}>
+                  <FormattedMessage id={`categories.${currentCategory}`} />
+                </span>
+              )}
+            </>
           )}
         </>
       )}
-      <div
-        id="globeWrapper"
-        className={cx(
-          styles.globeWrapper,
-          showContentList && styles.showContentList,
-        )}
-      >
-        <GetDataWidget
-          className={cx(styles.globe)}
-        />
-      </div>
-      {showDataSet && <GlobeNavigation />}
     </div>
   );
 };

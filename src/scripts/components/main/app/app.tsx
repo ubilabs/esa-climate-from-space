@@ -75,7 +75,8 @@ const TranslatedApp: FunctionComponent = () => {
             element={<StoriesSelector />}
           />
           <Route path={ROUTES.legacy_story.path} element={<Story />} />
-          // Present story routes
+
+          {/* Present story routes */}
           <Route
             path={ROUTES.present.path}
             element={<PresentationSelector />}
