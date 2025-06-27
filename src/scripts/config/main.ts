@@ -8,35 +8,32 @@ import { AppRoute } from "../types/app-routes";
 
 /**
  * Routes are utilized to manage state transitions within the application.
- * The Header.tsx component is updating the state as it renders across relevant routes.
+ * The RouteMatch component is updating the state as it renders across all routes.
  * Legacy routes are also supported and maintained.
  * Extend or modify route patterns here as necessary to accommodate new requirements.
+ * Be aware that the order here matters because this object is used to match route patterns
  */
 export const ROUTES = {
-  [AppRoute.Base]: { path: "/", end: true },
-  [AppRoute.NavContent]: { path: "/:category", end: true },
-  [AppRoute.Data]: { path: "/:category/data", end: true },
-  [AppRoute.Stories]: {
-    path: "/:category/stories/:storyId/:slideIndex",
-    end: false,
-  },
-  [AppRoute.Present]: { path: "/present", end: true },
-  [AppRoute.PresentStory]: {
-    path: "/present/:storyId/:slideIndex",
-    end: true,
-  },
-  [AppRoute.Showcase]: { path: "/showcase", end: false },
-  [AppRoute.ShowcaseStories]: { path: "/showcase/:storyIds", end: false },
-  [AppRoute.ShowcaseStory]: {
-    path: "/showcase/:storyIds/:storyIndex/:slideIndex",
-    end: false,
-  },
-  [AppRoute.About]: { path: "/about", end: true },
-  [AppRoute.LegacyStories]: { path: "stories/*", end: false },
   [AppRoute.LegacyStory]: {
     path: "stories/:storyId/:slideIndex",
-    end: false,
   },
+  [AppRoute.LegacyStories]: { path: "stories/" },
+  [AppRoute.About]: { path: "/about" },
+  [AppRoute.PresentStory]: {
+    path: "/present/:storyId/:slideIndex",
+  },
+  [AppRoute.Present]: { path: "/present" },
+  [AppRoute.ShowcaseStory]: {
+    path: "/showcase/:storyIds/:storyIndex/:slideIndex",
+  },
+  [AppRoute.ShowcaseStories]: { path: "/showcase/:storyIds" },
+  [AppRoute.Showcase]: { path: "/showcase" },
+  [AppRoute.Stories]: {
+    path: "/:category/stories/:storyId/:slideIndex",
+  },
+  [AppRoute.Data]: { path: "/:category/data" },
+  [AppRoute.NavContent]: { path: "/:category" },
+  [AppRoute.Base]: { path: "/" },
 } as const;
 
 // Constants for auto-rotation timing of the content navigation
