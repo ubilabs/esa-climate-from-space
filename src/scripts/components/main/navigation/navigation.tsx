@@ -45,11 +45,6 @@ const Navigation: FunctionComponent = () => {
   const { isMobile } = useScreenSize();
   const { appRoute } = useSelector(appRouteSelector);
 
-  const location = useLocation();
-
-  useEffect(() => {
-    dispatch(setAppRoute(location.pathname));
-  }, [location.pathname, dispatch]);
 
   const { header, logo, back_link, app_menu, layers_menu } = useSelector(
     embedElementsSelector,

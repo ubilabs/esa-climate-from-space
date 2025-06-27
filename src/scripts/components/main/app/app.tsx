@@ -1,6 +1,16 @@
-import { FunctionComponent, StrictMode } from "react";
-import { Provider as StoreProvider, useSelector } from "react-redux";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { FunctionComponent, StrictMode, useEffect } from "react";
+import {
+  Provider as StoreProvider,
+  useDispatch,
+  useSelector,
+} from "react-redux";
+import {
+  HashRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+  Outlet,
+} from "react-router-dom";
 import { IntlProvider } from "react-intl";
 import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 
@@ -10,6 +20,7 @@ import translations from "../../../i18n";
 
 import UrlSync from "../url-sync/url-sync";
 import Navigation from "../navigation/navigation";
+import { EsaLogoLink } from "../logo/logo";
 import LayerSelector from "../../layers/layer-selector/layer-selector";
 import DataViewer from "../data-viewer/data-viewer";
 import Tracking from "../tracking/tracking";
@@ -24,7 +35,7 @@ import AboutProjectOverlay from "../about-project-overlay/about-project-overlay"
 
 import "./app.css";
 import "../../../../variables.css";
-import { EsaLogoLink } from "../logo/logo";
+import { setAppRoute } from "../../../reducers/app-route";
 
 // Create Matomo tracking instance
 const matomoInstance = createInstance({
@@ -42,6 +53,19 @@ const MainContent: FunctionComponent = () => (
   </>
 );
 
+// This component is used to update the app route in the store
+// This is useful because we use the current path to determine app state
+const RouteMatch: FunctionComponent = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setAppRoute(location.pathname));
+  }, [location.pathname, dispatch]);
+
+  return <Outlet />;
+};
+
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
 
@@ -53,42 +77,43 @@ const TranslatedApp: FunctionComponent = () => {
     >
       <Router>
         <Routes>
-          {/*  Main application routes */}
-          <Route path={ROUTES.base.path} element={<MainContent />} />
-          <Route path={ROUTES.nav_content.path} element={<MainContent />} />
-          <Route path={ROUTES.data.path} element={<MainContent />} />
-          <Route path={ROUTES.stories.path} element={<Story />} />
-          {/*  About project */}
-          <Route
-            path={ROUTES.about.path}
-            element={
-              <>
-                <EsaLogoLink />
-                <AboutProjectOverlay />
-              </>
-            }
-          />
-          {/*  Legacy routes are maintained for embedded links compatibility prior
+          <Route element={<RouteMatch />}>
+            {/*  Main application routes */}
+            <Route path={ROUTES.base.path} element={<MainContent />} />
+            <Route path={ROUTES.nav_content.path} element={<MainContent />} />
+            <Route path={ROUTES.data.path} element={<MainContent />} />
+            <Route path={ROUTES.stories.path} element={<Story />} />
+            {/*  About project */}
+            <Route
+              path={ROUTES.about.path}
+              element={
+                <>
+                  <EsaLogoLink />
+                  <AboutProjectOverlay />
+                </>
+              }
+            />
+            {/*  Legacy routes are maintained for embedded links compatibility prior
           to version 2 */}
-          <Route
-            path={ROUTES.legacy_stories.path}
-            element={<StoriesSelector />}
-          />
-          <Route path={ROUTES.legacy_story.path} element={<Story />} />
-
-          {/* Present story routes */}
-          <Route
-            path={ROUTES.present.path}
-            element={<PresentationSelector />}
-          />
-          <Route path={ROUTES.present_story.path} element={<Story />} />
-          <Route path={ROUTES.showcase.path} element={<ShowcaseSelector />} />
-          {/* Showcase stories and story routes */}
-          <Route
-            path={ROUTES.showcase_stories.path}
-            element={<ShowcaseSelector />}
-          />
-          <Route path={ROUTES.showcase_story.path} element={<Story />} />
+            <Route
+              path={ROUTES.legacy_stories.path}
+              element={<StoriesSelector />}
+            />
+            <Route path={ROUTES.legacy_story.path} element={<Story />} />
+            {/* Present story routes */}
+            <Route
+              path={ROUTES.present.path}
+              element={<PresentationSelector />}
+            />
+            <Route path={ROUTES.present_story.path} element={<Story />} />
+            <Route path={ROUTES.showcase.path} element={<ShowcaseSelector />} />
+            {/* Showcase stories and story routes */}
+            <Route
+              path={ROUTES.showcase_stories.path}
+              element={<ShowcaseSelector />}
+            />
+            <Route path={ROUTES.showcase_story.path} element={<Story />} />
+          </Route>
         </Routes>
         <Tracking />
         <UrlSync />
