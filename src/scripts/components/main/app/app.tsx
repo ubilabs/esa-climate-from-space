@@ -11,6 +11,7 @@ import {
   useLocation,
   Outlet,
 } from "react-router-dom";
+
 import { IntlProvider } from "react-intl";
 import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 
@@ -78,11 +79,6 @@ const TranslatedApp: FunctionComponent = () => {
       <Router>
         <Routes>
           <Route element={<RouteMatch />}>
-            {/*  Main application routes */}
-            <Route path={ROUTES.base.path} element={<MainContent />} />
-            <Route path={ROUTES.nav_content.path} element={<MainContent />} />
-            <Route path={ROUTES.data.path} element={<MainContent />} />
-            <Route path={ROUTES.stories.path} element={<Story />} />
             {/*  About project */}
             <Route
               path={ROUTES.about.path}
@@ -113,6 +109,11 @@ const TranslatedApp: FunctionComponent = () => {
               element={<ShowcaseSelector />}
             />
             <Route path={ROUTES.showcase_story.path} element={<Story />} />
+            {/*  Main application routes */}
+            <Route path={ROUTES.base.path} element={<MainContent />} />
+            <Route path={ROUTES.nav_content.path} element={<MainContent />} />
+            <Route path={ROUTES.data.path} element={<MainContent />} />
+            <Route path={ROUTES.stories.path} element={<Story />} />
           </Route>
         </Routes>
         <Tracking />
