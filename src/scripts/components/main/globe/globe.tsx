@@ -30,7 +30,7 @@ import SHADING_TEXTURE_URL from "@ubilabs/esa-webgl-globe/textures/shading.png?u
 import { Layer } from "../../../types/layer";
 import { Marker } from "../../../types/marker-type";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
-import { useGlobeLocationState } from "../../../hooks/use-globe-location-state";
+import { useGlobeRouteState } from "../../../hooks/use-globe-route-state";
 
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
@@ -150,7 +150,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
   const dispatch = useDispatch();
   const isAutoRotatingEnabled = useSelector(isAutoRotatingSelector);
-  useGlobeLocationState();
+  useGlobeRouteState();
 
   // Track auto rotation with a ref to avoid dependencies issues
   const autoRotationRef = useRef<{

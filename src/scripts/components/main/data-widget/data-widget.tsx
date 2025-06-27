@@ -64,7 +64,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;
 
-  const appRoute = useSelector(appRouteSelector).appRoute;
+  const { appRoute } = useSelector(appRouteSelector);
 
   const isBase = appRoute === AppRoute.Base;
   const isContentNav = appRoute === AppRoute.NavContent;

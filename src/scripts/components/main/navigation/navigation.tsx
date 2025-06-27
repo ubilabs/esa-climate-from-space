@@ -1,5 +1,4 @@
-import { FunctionComponent, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { FunctionComponent, useState } from "react";
 import { useSelector } from "react-redux";
 
 import config from "../../../config/main";
@@ -15,7 +14,6 @@ import { languageSelector } from "../../../selectors/language";
 
 import { setLanguage } from "../../../reducers/language";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
-import { setAppRoute } from "../../../reducers/app-route";
 import { setWelcomeScreen } from "../../../reducers/welcome-screen";
 
 import { AppRoute } from "../../../types/app-routes";
