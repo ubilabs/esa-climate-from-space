@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 import config from "../../../config/main";
 
-import useIsStoriesPath from "../../../hooks/use-is-stories-path";
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 
@@ -28,6 +27,7 @@ import Menu from "../menu/menu";
 import Overlay from "../overlay/overlay";
 
 import styles from "./navigation.module.css";
+import { useAppPath } from "../../../hooks/use-app-path";
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -38,11 +38,10 @@ const Navigation: FunctionComponent = () => {
   const [showTooltip, setShowTooltip] = useState(Boolean(!savedLanguage));
 
   const { category } = useSelector(contentSelector);
-  const isStoriesPath = useIsStoriesPath();
+  const { isStoriesPath, isDataPath } = useAppPath();
 
-  const { isMobile } = useScreenSize();
+  const { isMobile, isDesktop } = useScreenSize();
   const { appRoute } = useSelector(appRouteSelector);
-
 
   const { header, logo, back_link, app_menu, layers_menu } = useSelector(
     embedElementsSelector,
@@ -61,15 +60,12 @@ const Navigation: FunctionComponent = () => {
         {logo && (
           <EsaLogo
             variant={
-              (!isMobile && "logoWithText") ||
-              (isStoriesPath || appRoute === AppRoute.Stories
-                ? "shortLogo"
-                : "logoWithText")
+              (isDesktop && "logoWithText") ||
+              (isDataPath || isStoriesPath ? "shortLogo" : "logoWithText")
             }
           />
         )}
-        {(appRoute === AppRoute.Data ||
-          appRoute === AppRoute.Stories) &&
+        {(appRoute === AppRoute.Data || appRoute === AppRoute.Stories) &&
           back_link && (
             <Button
               className={styles.backButton}

@@ -34,8 +34,6 @@ const AppRouteSlice = createSlice({
   initialState,
   reducers: {
     setAppRoute(state, action: PayloadAction<string>) {
-      console.log("Setting route match for:", action.payload);
-      console.log("Current route match:", matchRoute(action.payload));
       state.appRoute = matchRoute(action.payload);
     },
   },
