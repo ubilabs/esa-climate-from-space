@@ -21,20 +21,16 @@ export function matchRoute(pathname: string): AppRoute {
   return AppRoute.Unknown;
 }
 
-export interface AppRouteState {
-  appRoute: AppRoute;
-}
+export type AppRouteState = AppRoute;
 
-const initialState: AppRouteState = {
-  appRoute: matchRoute(window.location.pathname),
-};
+const initialState: AppRouteState = matchRoute(window.location.pathname);
 
 const AppRouteSlice = createSlice({
   name: "AppRoute",
   initialState,
   reducers: {
-    setAppRoute(state, action: PayloadAction<string>) {
-      state.appRoute = matchRoute(action.payload);
+    setAppRoute(_state, action: PayloadAction<AppRoute>) {
+      return matchRoute(action.payload);
     },
   },
 });

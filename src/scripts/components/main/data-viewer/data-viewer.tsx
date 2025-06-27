@@ -45,7 +45,7 @@ const DataViewer: FunctionComponent = () => {
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoryListQuery(language);
 
-  const { appRoute } = useSelector(appRouteSelector);
+  const appRoute = useSelector(appRouteSelector);
 
   const { data: layers } = useGetLayerListQuery(language);
 

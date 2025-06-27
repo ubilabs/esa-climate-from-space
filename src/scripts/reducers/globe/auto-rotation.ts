@@ -1,22 +1,18 @@
-
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface AutoRotatingPayload {
-  isAutoRotating: boolean;
-}
-const initialState = false
+export type AutoRotatingState = boolean;
 
+const initialState = false;
 
 const autoRotateSlice = createSlice({
-  name: "flyTo",
+  name: "autoRotate",
   initialState,
   reducers: {
-    setIsAutoRotating(state, action: PayloadAction<AutoRotatingPayload>) {
+    setIsAutoRotating(_state, action: PayloadAction<boolean>) {
       return action.payload;
     },
   },
 });
-
 
 export const { setIsAutoRotating } = autoRotateSlice.actions;
 export default autoRotateSlice.reducer;

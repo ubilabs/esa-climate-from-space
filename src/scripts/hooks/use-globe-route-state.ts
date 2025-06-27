@@ -27,7 +27,7 @@ import { AppRoute } from "../types/app-routes";
 export function useGlobeRouteState() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { appRoute } = useSelector(appRouteSelector);
+  const appRoute = useSelector(appRouteSelector);
   const previousPathnameRef = useRef<string | null>(null);
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
