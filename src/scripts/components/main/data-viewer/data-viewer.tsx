@@ -1,8 +1,8 @@
-import { FunctionComponent, useRef, useState, useMemo, useEffect } from "react";
+import { FunctionComponent, useRef, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import cx from "classnames";
 
@@ -13,13 +13,6 @@ import { useScreenSize } from "../../../hooks/use-screen-size";
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { languageSelector } from "../../../selectors/language";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
-import { appRouteSelector } from "../../../selectors/route-match";
-
-import { toggleEmbedElements } from "../../../reducers/embed-elements";
-
-import { AppRoute } from "../../../types/app-routes";
-
 import {
   useGetLayerListQuery,
   useGetStoryListQuery,
@@ -32,6 +25,8 @@ import CategoryNavigation from "../category-navigation/category-navigation";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
 
 import styles from "./data-viewer.module.css";
+import { useAppPath } from "../../../hooks/use-app-path";
+import { appRouteSelector } from "../../../selectors/route-match";
 
 export type LayerLoadingStateChangeHandle = (
   layerId: string,
@@ -49,6 +44,8 @@ const DataViewer: FunctionComponent = () => {
   const { category } = useParams();
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoryListQuery(language);
+
+  const { appRoute } = useSelector(appRouteSelector);
 
   const { data: layers } = useGetLayerListQuery(language);
 
@@ -74,28 +71,8 @@ const DataViewer: FunctionComponent = () => {
   const { screenHeight, screenWidth, isMobile, isTouchDevice } =
     useScreenSize();
 
-  const dispatch = useDispatch();
-  const embedElements = useSelector(embedElementsSelector);
-  const { appRoute } = useSelector(appRouteSelector);
-
-  const isNavigationView =
-    appRoute === AppRoute.NavContent || appRoute === AppRoute.Base;
-
-  const isContentNavRoute = appRoute === AppRoute.NavContent;
-  const isDataRoute = appRoute === AppRoute.Data;
-  const isBaseRoute = appRoute === AppRoute.Base;
-
-  useEffect(() => {
-    const isDataRoute = appRoute === AppRoute.Data;
-    dispatch(
-      toggleEmbedElements({
-        ...embedElements,
-        legend: isDataRoute,
-        time_slider: isDataRoute,
-      }),
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, appRoute]);
+  const { isBasePath, isNavigationView, isDataPath, isContentNavRoute } =
+    useAppPath();
 
   // There is a set of animations which should be played only once
   // This keeps track of that
@@ -147,7 +124,7 @@ const DataViewer: FunctionComponent = () => {
       >
         <GetDataWidget className={cx(styles.globe)} />
       </div>
-      {isDataRoute && <GlobeNavigation />}
+      {isDataPath && <GlobeNavigation />}
       {isNavigationView && (
         <>
           <header className={styles.heading}>
@@ -167,7 +144,7 @@ const DataViewer: FunctionComponent = () => {
               </span>
             )}
           </header>
-          {isBaseRoute && (
+          {isBasePath && (
             <>
               <CategoryNavigation
                 arcs={arcs}

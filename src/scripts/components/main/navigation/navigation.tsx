@@ -5,6 +5,7 @@ import config from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
+import { useAppPath } from "../../../hooks/use-app-path";
 
 import { contentSelector } from "../../../selectors/content";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
@@ -27,7 +28,6 @@ import Menu from "../menu/menu";
 import Overlay from "../overlay/overlay";
 
 import styles from "./navigation.module.css";
-import { useAppPath } from "../../../hooks/use-app-path";
 
 const Navigation: FunctionComponent = () => {
   const dispatch = useThunkDispatch();

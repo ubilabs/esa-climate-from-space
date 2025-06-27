@@ -14,21 +14,21 @@ import { VideoItem } from "../../../types/gallery-item";
 import styles from "./story-video.module.css";
 
 interface Props {
-  mode: AppRoute | null;
+  route: AppRoute | null;
   storyId: string;
   videoItem: VideoItem;
   onPlay: (player: YouTubePlayer | VideoJsPlayer) => void;
 }
 
 const StoryVideo: FunctionComponent<Props> = ({
-  mode,
+  route,
   storyId,
   videoItem,
   onPlay,
 }) => {
   const { videoSrc, videoId, videoCaptions, videoPoster } = videoItem;
   const language = useSelector(languageSelector);
-  const isStoryMode = mode === AppRoute.Stories;
+  const isStoryMode = route === AppRoute.Stories;
   const classes = cx(
     styles.storyVideo,
     !isStoryMode && styles.presentationVideo,

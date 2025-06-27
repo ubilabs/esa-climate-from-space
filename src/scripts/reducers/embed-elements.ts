@@ -5,9 +5,9 @@ import { EmbedElementsState } from "../types/embed-elements";
 // We updated the params according to the new navigation and removed params which no longer make sense. We ensure backwards compactibility for the remaining params.
 const initialState: EmbedElementsState = {
   logo: parseUrl("logo") ?? true,
-  time_slider: (parseUrl("time_slider") ) ?? true,
-  layers_menu: (parseUrl("layers_menu") ) ?? true,
-  legend: (parseUrl("legend") ) ?? true,
+  time_slider: parseUrl("time_slider") ?? true,
+  layers_menu: parseUrl("layers_menu") ?? true,
+  legend: parseUrl("legend") ?? true,
   header: parseUrl("header") ?? true,
   back_link: parseUrl("back_link") ?? true,
   app_menu: parseUrl("app_menu") ?? true,

@@ -19,7 +19,6 @@ import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { projectionSelector } from "../../../selectors/globe/projection";
-import { appRouteSelector } from "../../../selectors/route-match";
 import { timeSelector } from "../../../selectors/globe/time";
 
 import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
@@ -32,7 +31,6 @@ import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
-import { AppRoute } from "../../../types/app-routes";
 import { LayerType } from "../../../types/globe-layer-type";
 import { LegendValueColor } from "../../../types/legend-value-color";
 import { Layer } from "../../../types/layer";
@@ -44,6 +42,7 @@ import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import TimeSlider from "../../layers/time-slider/time-slider";
+import { useAppPath } from "../../../hooks/use-app-path";
 
 interface Props {
   className?: string;
@@ -64,11 +63,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;
 
-  const { appRoute } = useSelector(appRouteSelector);
-
-  const isBase = appRoute === AppRoute.Base;
-  const isContentNav = appRoute === AppRoute.NavContent;
-  const isStories = appRoute === AppRoute.Stories;
+  const { isBasePath, isContentNavRoute, isStoriesPath } = useAppPath();
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
@@ -132,7 +127,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
         })}
         backgroundColor={""}
         // We should offset the markers when user is in content nav
-        isMarkerOffset={isContentNav}
+        isMarkerOffset={isContentNavRoute}
         active={active}
         view={currentView}
         projectionState={projectionState}
@@ -189,7 +184,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
-  const updatedLayerDetails = isBase
+  const updatedLayerDetails = isBasePath
     ? {
       ...(layerDetails || {}),
       basemap: "clouds",
@@ -225,9 +220,9 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   return (
     <>
-      {isContentNav ? null : (
+      {isContentNavRoute ? null : (
         <>
-          {isStories && <DataSetInfo />}
+          {isStoriesPath && <DataSetInfo />}
           {legend && getLegends()}
           {time_slider && <TimeSlider />}
         </>

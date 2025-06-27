@@ -104,7 +104,7 @@ const Story: FunctionComponent = () => {
     if (slide.galleryItems) {
       return (
         <StoryGallery
-          mode={appRoute}
+          route={appRoute}
           storyId={story.id}
           key={story.id}
           showLightbox={showLightbox}
@@ -123,7 +123,7 @@ const Story: FunctionComponent = () => {
               case GalleryItemType.Video:
                 return item.videoSrc || item.videoId ? (
                   <StoryVideo
-                    mode={appRoute}
+                    route={appRoute}
                     storyId={story.id}
                     videoItem={item}
                     onPlay={(player: YouTubePlayer | VideoJsPlayer) =>
@@ -167,7 +167,6 @@ const Story: FunctionComponent = () => {
               index === slideIndex &&
               (currentSlide.splashImage ? (
                 <SplashScreen
-                  route={appRoute}
                   key={index}
                   storyId={selectedStory.id}
                   slide={currentSlide}

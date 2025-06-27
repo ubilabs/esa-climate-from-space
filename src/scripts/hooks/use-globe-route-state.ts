@@ -9,7 +9,6 @@ import { setFlyTo } from "../reducers/fly-to";
 import { setIsAutoRotating } from "../reducers/globe/auto-rotation";
 import { setSelectedLayerIds } from "../reducers/layers";
 import { setShowLayer } from "../reducers/show-layer-selector";
-import { toggleEmbedElements } from "../reducers/embed-elements";
 
 import { languageSelector } from "../selectors/language";
 import { selectedLayerIdsSelector } from "../selectors/layers/selected-ids";
@@ -71,14 +70,13 @@ export function useGlobeRouteState() {
         }
 
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-        dispatch(setFlyTo(null));
         dispatch(setSelectedContentAction({ contentId: null }));
         break;
 
       case AppRoute.NavContent:
         dispatch(setShowLayer(false));
-        dispatch(toggleEmbedElements({ legend: false, time_slider: false }));
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
+
         // Reset the globe view
         dispatch(setFlyTo(config.globe.view));
         break;

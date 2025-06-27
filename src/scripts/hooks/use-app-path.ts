@@ -9,10 +9,22 @@ export function useAppPath() {
   const isNavigationView =
     appRoute === AppRoute.Base || appRoute === AppRoute.NavContent;
 
+  const isContentNavRoute = appRoute === AppRoute.NavContent;
+
   const isStoriesPath =
     appRoute === AppRoute.Stories || appRoute === AppRoute.LegacyStory;
 
   const isDataPath = appRoute === AppRoute.Data;
 
-  return { isStoriesPath, isNavigationView, isDataPath };
+  const isShowCasePath = appRoute === AppRoute.Showcase;
+  const isBasePath = appRoute === AppRoute.Base;
+
+  return {
+    isContentNavRoute,
+    isStoriesPath,
+    isBasePath,
+    isNavigationView,
+    isDataPath,
+    isShowCasePath,
+  };
 }

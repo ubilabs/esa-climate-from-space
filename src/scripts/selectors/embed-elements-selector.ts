@@ -1,6 +1,8 @@
+import { createSelector } from "@reduxjs/toolkit";
 import { State } from "../reducers";
 import { EmbedElementsState } from "../types/embed-elements";
 
-export function embedElementsSelector(state: State): EmbedElementsState {
-  return state.embedElements;
-}
+export const embedElementsSelector = createSelector(
+  (state: State) => state.embedElements,
+  (embedElements: EmbedElementsState) => embedElements
+);

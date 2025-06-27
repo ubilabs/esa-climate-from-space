@@ -1,16 +1,14 @@
 import { useContentParams } from "./use-content-params";
 import config from "../config/main";
 
-import { AppRoute } from "../types/app-routes";
 import { GalleryItemType } from "../types/gallery-item";
-import { appRouteSelector } from "../selectors/route-match";
-import { useSelector } from "react-redux";
+import { useAppPath } from "./use-app-path";
 
 export const useStoryNavigation = (videoDuration: number) => {
   const { storyIds, storyIndex, slideIndex, selectedStory } =
     useContentParams();
 
-  const appRoute = useSelector(appRouteSelector).appRoute;
+  const { isShowCasePath } = useAppPath();
 
   const numberOfSlides = selectedStory?.slides.length;
 
@@ -26,7 +24,7 @@ export const useStoryNavigation = (videoDuration: number) => {
   const previousSlideIndex = slideIndex - 1;
   const nextSlideIndex = slideIndex + 1;
 
-  if (appRoute !== AppRoute.Showcase) {
+  if (isShowCasePath) {
     if (previousSlideIndex >= 0) {
       previousSlideLink = `/stories/${storyIds}/${previousSlideIndex}`;
     }

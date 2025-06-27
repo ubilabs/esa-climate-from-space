@@ -16,14 +16,14 @@ import styles from "./story-gallery.module.css";
 
 interface Props {
   storyId: string;
-  mode: AppRoute | null;
+  route: AppRoute | null;
   children: React.ReactElement[];
   showLightbox: boolean;
   setShowLightbox: (showLightbox: boolean) => void;
 }
 
 const StoryGallery: FunctionComponent<Props> = ({
-  mode,
+  route,
   showLightbox,
   setShowLightbox,
   children,
@@ -31,10 +31,10 @@ const StoryGallery: FunctionComponent<Props> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < children.length - 1;
-  const delay = mode === AppRoute.Showcase ? config.delay : null;
+  const delay = route === AppRoute.Showcase ? config.delay : null;
 
   useInterval(() => {
-    if (mode === AppRoute.Showcase) {
+    if (route === AppRoute.Showcase) {
       if (currentIndex >= children.length - 1) {
         return;
       }
