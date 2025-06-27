@@ -3,7 +3,7 @@ import { appRouteSelector } from "../selectors/route-match";
 import { AppRoute } from "../types/app-routes";
 
 export function useAppPath() {
-  const { appRoute } = useSelector(appRouteSelector);
+  const appRoute = useSelector(appRouteSelector);
 
   // the "navigation view" consists of the category (rendered at the base path) as well as the content navigation
   const isNavigationView =

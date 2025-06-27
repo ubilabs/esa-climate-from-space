@@ -41,7 +41,7 @@ const Story: FunctionComponent = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [showLightbox, setShowLightbox] = useState(false);
 
-  const { appRoute } = useSelector(appRouteSelector);
+  const appRoute = useSelector(appRouteSelector);
 
   const lang = useSelector(languageSelector);
 
