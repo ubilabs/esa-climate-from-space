@@ -10,18 +10,12 @@ const spinningSlice = createSlice({
   name: "spinning",
   initialState,
   reducers: {
-    setGlobeSpinning(state, action: PayloadAction<boolean>) {
+    setGlobeSpinning(_state, action: PayloadAction<boolean>) {
       return action.payload;
-    },
-    setGlobeProjection() {
-      return false;
-    },
-    setFlyTo() {
-      return false;
     },
   },
 });
 
-export const { setGlobeSpinning, setGlobeProjection, setFlyTo } =
+export const { setGlobeSpinning } =
   spinningSlice.actions;
 export default spinningSlice.reducer;

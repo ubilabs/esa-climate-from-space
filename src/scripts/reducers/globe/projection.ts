@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { parseUrl } from "../../libs/globe-url-parameter";
 import config from "../../config/main";
 import { GlobeProjectionState } from "../../types/globe-projection-state";
+import { GlobeProjection } from "../../types/globe-projection";
 
 // get initial state from url or fallback to default state in config
 const globeState = parseUrl()?.globeState || config.globe;
@@ -16,7 +17,7 @@ const projectionSlice = createSlice({
   reducers: {
     setGlobeProjection(
       state,
-      action: PayloadAction<{ projection: string; morphTime: number }>,
+      action: PayloadAction<{ projection: GlobeProjection; morphTime: number }>,
     ) {
       state.projection = action.payload.projection;
       state.morphTime = action.payload.morphTime;

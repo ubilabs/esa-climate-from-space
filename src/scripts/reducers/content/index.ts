@@ -14,19 +14,17 @@ const contentSlice = createSlice({
   name: "content",
   initialState,
   reducers: {
-    setSelectedContentAction: (
+    setSelectedContentAction(
       state,
       action: PayloadAction<{
         contentId?: string | null;
         category?: string | null;
       }>,
-    ) => {
-      return {
-        ...state,
-        ...action.payload,
-      };
+    ) {
+      state.contentId = action.payload.contentId ?? null;
+      state.category = action.payload.category ?? null;
     },
-},
+  },
 });
 
 export const { setSelectedContentAction } = contentSlice.actions;
