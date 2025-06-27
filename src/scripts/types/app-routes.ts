@@ -1,0 +1,15 @@
+export enum AppRoute {
+  About = "about",
+  Base = "base",
+  Data = "data",
+  Present = "present",
+  PresentStory = "present_story",
+  Showcase = "showcase",
+  ShowcaseStories = "showcase_stories",
+  ShowcaseStory = "showcase_story",
+  Stories = "stories",
+  NavContent = "nav_content",
+  LegacyStories = "legacy_stories",
+  LegacyStory = "legacy_story",
+  Unknown = "unknown",
+}
