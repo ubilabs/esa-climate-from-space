@@ -7,7 +7,7 @@ const welcomeScreenSlice = createSlice({
   name: "welcomeScreen",
   initialState,
   reducers: {
-    setWelcomeScreen(state, action: PayloadAction<boolean>) {
+    setWelcomeScreen(_state, action: PayloadAction<boolean>) {
       return action.payload;
     },
   },

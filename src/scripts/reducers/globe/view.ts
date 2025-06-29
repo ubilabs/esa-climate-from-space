@@ -1,7 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { parseUrl } from "../../libs/globe-url-parameter";
-import config from "../../config/main";
+
 import { CameraView } from "@ubilabs/esa-webgl-globe";
+
+import config from "../../config/main";
+
+import { parseUrl } from "../../libs/globe-url-parameter";
 
 // get initial state from url or fallback to default state in config
 const globeState = parseUrl()?.globeState || config.globe;
@@ -12,10 +15,7 @@ const globeViewSlice = createSlice({
   initialState,
   reducers: {
     setGlobeView(state, action: PayloadAction<CameraView>) {
-      return {
-       ...state,
-       ...action.payload
-      };
+      Object.assign(state, action.payload);
     },
   },
 });

@@ -18,10 +18,7 @@ const embedElementsSlice = createSlice({
   initialState,
   reducers: {
     toggleEmbedElements(state, action: PayloadAction<EmbedElementsState>) {
-      return {
-        ...state,
-        ...action.payload,
-      };
+      return Object.assign(state, action.payload);
     },
   },
 });

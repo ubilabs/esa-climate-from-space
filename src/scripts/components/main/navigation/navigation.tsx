@@ -41,7 +41,7 @@ const Navigation: FunctionComponent = () => {
   const { isStoriesPath, isDataPath } = useAppPath();
 
   const { isMobile, isDesktop } = useScreenSize();
-  const { appRoute } = useSelector(appRouteSelector);
+  const appRoute = useSelector(appRouteSelector);
 
   const { header, logo, back_link, app_menu, layers_menu } = useSelector(
     embedElementsSelector,
