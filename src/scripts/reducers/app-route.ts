@@ -23,7 +23,10 @@ export function matchRoute(pathname: string): AppRoute {
 
 export type AppRouteState = AppRoute;
 
-const initialState: AppRouteState = matchRoute(window.location.pathname);
+// split the href at the # and pass the second part to matchRoute
+const initialState: AppRouteState = matchRoute(
+  window.location.href.toString().split("#")[1] || "/",
+);
 
 const AppRouteSlice = createSlice({
   name: "AppRoute",
