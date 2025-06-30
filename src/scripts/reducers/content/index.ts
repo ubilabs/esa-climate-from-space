@@ -21,8 +21,8 @@ const contentSlice = createSlice({
         category?: string | null;
       }>,
     ) {
-      state.contentId = action.payload.contentId ?? null;
-      state.category = action.payload.category ?? null;
+      state.contentId = action.payload.contentId ?? state.contentId;
+      state.category = action.payload.category ?? state.category;
     },
   },
 });
