@@ -65,15 +65,14 @@ const Navigation: FunctionComponent = () => {
             }
           />
         )}
-        {(appRoute === AppRoute.Data || appRoute === AppRoute.Stories) &&
-          back_link && (
-            <Button
-              className={styles.backButton}
-              icon={ArrowBackIcon}
-              label={isMobile ? "" : "backToStories"}
-              link={category ? `/${category}` : "/"}
-            />
-          )}
+        {(isStoriesPath || isDataPath) && back_link && (
+          <Button
+            className={styles.backButton}
+            icon={ArrowBackIcon}
+            label={isMobile ? "" : "backToStories"}
+            link={category ? `/${category}` : "/"}
+          />
+        )}
         {appRoute === AppRoute.Data && layers_menu && (
           <Button
             className={styles.button}

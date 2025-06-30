@@ -24,7 +24,7 @@ export const useStoryNavigation = (videoDuration: number) => {
   const previousSlideIndex = slideIndex - 1;
   const nextSlideIndex = slideIndex + 1;
 
-  if (isShowCasePath) {
+  if (!isShowCasePath) {
     if (previousSlideIndex >= 0) {
       previousSlideLink = `/stories/${storyIds}/${previousSlideIndex}`;
     }
