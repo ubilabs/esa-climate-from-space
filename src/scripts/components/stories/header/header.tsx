@@ -1,13 +1,15 @@
 import { FunctionComponent } from "react";
 import { useSelector } from "react-redux";
 
-import Button from "../../main/button/button";
-import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
+
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { useContentParams } from "../../../hooks/use-content-params";
+import { useAppPath } from "../../../hooks/use-app-path";
+
+import Button from "../../main/button/button";
+import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
 
 import styles from "./header.module.css";
-import { useAppPath } from "../../../hooks/use-app-path";
 
 interface Props {
   backLink: string;

@@ -6,11 +6,11 @@ import StoryList from "../story-list/story-list";
 import StoryFilter from "../story-filter/story-filter";
 import Header from "../header/header";
 import Share from "../../main/share/share";
+import { AppRoute } from "../../../types/app-routes";
+
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-
 import styles from "./stories-selector.module.css";
-import { AppRoute } from "../../../types/app-routes";
 
 const StoriesSelector: FunctionComponent = () => {
   const intl = useIntl();

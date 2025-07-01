@@ -9,10 +9,12 @@ import cx from "classnames";
 import config, { categoryTags } from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useAppPath } from "../../../hooks/use-app-path";
 
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { languageSelector } from "../../../selectors/language";
+import { appRouteSelector } from "../../../selectors/route-match";
 import {
   useGetLayerListQuery,
   useGetStoryListQuery,
@@ -25,8 +27,6 @@ import CategoryNavigation from "../category-navigation/category-navigation";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
 
 import styles from "./data-viewer.module.css";
-import { useAppPath } from "../../../hooks/use-app-path";
-import { appRouteSelector } from "../../../selectors/route-match";
 
 export type LayerLoadingStateChangeHandle = (
   layerId: string,
