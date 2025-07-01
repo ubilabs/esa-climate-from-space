@@ -1,13 +1,15 @@
 import { FunctionComponent } from "react";
 import { useSelector } from "react-redux";
 
+import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
+
+import { useContentParams } from "../../../hooks/use-content-params";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
+
 import Button from "../../main/button/button";
 import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
-import { useContentParams } from "../../../hooks/use-content-params";
 
 import styles from "./header.module.css";
-import { useAppPath } from "../../../hooks/use-app-path";
 
 interface Props {
   backLink: string;
@@ -23,12 +25,12 @@ const Header: FunctionComponent<Props> = ({
   children,
 }) => {
   const { currentStoryId} = useContentParams();
-  const { isStoriesPath} = useAppPath();
+  const { isStoriesRoute} = useAppRouteFlags();
   const { back_link } = useSelector(embedElementsSelector);
 
 
   const disabledEmbedLink =
-    (isStoriesPath && back_link) || (currentStoryId);
+    (isStoriesRoute && back_link) || (currentStoryId);
 
   return (
     <div className={styles.header}>

@@ -29,6 +29,7 @@ import { State } from "../../../reducers";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
@@ -42,7 +43,6 @@ import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import TimeSlider from "../../layers/time-slider/time-slider";
-import { useAppPath } from "../../../hooks/use-app-path";
 
 interface Props {
   className?: string;
@@ -63,7 +63,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;
 
-  const { isContentNavRoute, isStoriesPath } = useAppPath();
+  const { isContentNavRoute, isStoriesRoute } = useAppRouteFlags();
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
@@ -209,7 +209,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
     <>
       {isContentNavRoute ? null : (
         <>
-          {isStoriesPath && <DataSetInfo />}
+          {isStoriesRoute && <DataSetInfo />}
           {legend && getLegends()}
           {time_slider && <TimeSlider />}
         </>

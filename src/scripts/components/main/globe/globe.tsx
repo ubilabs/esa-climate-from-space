@@ -32,9 +32,9 @@ import { Layer } from "../../../types/layer";
 import { Marker } from "../../../types/marker-type";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { useGlobeRouteState } from "../../../hooks/use-globe-route-state";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { isElectron } from "../../../libs/electron";
-import { useAppPath } from "../../../hooks/use-app-path";
 import { BasemapId } from "../../../types/basemap";
 import { LayerType } from "../../../types/globe-layer-type";
 import { useScreenSize } from "../../../hooks/use-screen-size";
@@ -87,7 +87,7 @@ interface Props {
 
 export type GlobeProps = Partial<Props>;
 
-const EMPTY_FUNCTION = () => { };
+const EMPTY_FUNCTION = () => {};
 
 // Easing function for smoother animation
 function easeInOutQuad(t: number): number {
@@ -301,19 +301,19 @@ function useGlobeLayers(
   layerDetails: Layer | null,
   imageLayer: GlobeImageLayerData | null,
 ) {
-  const { isBasePath } = useAppPath();
+  const { isBaseRoute } = useAppRouteFlags();
   useEffect(() => {
     if (!globe) {
       return EMPTY_FUNCTION;
     }
-    const layers = getLayerProps(imageLayer, layerDetails, isBasePath);
+    const layers = getLayerProps(imageLayer, layerDetails, isBaseRoute);
 
     globe.setProps({ layers });
 
     // we don't reset the layers in the cleanup-function as this would lead
     // to animations not working.
     return EMPTY_FUNCTION;
-  }, [globe, layerDetails, imageLayer, isBasePath]);
+  }, [globe, layerDetails, imageLayer, isBaseRoute]);
 }
 
 /**
@@ -419,7 +419,7 @@ function useMultiGlobeSynchronization(
   rotationRef: RefObject<{ lat: number; lng: number }>,
 ) {
   const { view, active, flyTo, isMarkerOffset } = props;
-  const isBasePath = useAppPath().isBasePath;
+  const isBaseRoute = useAppRouteFlags().isBaseRoute;
 
   // Update rotationRef when view changes to keep it in sync with external changes
   useEffect(() => {
@@ -456,7 +456,7 @@ function useMultiGlobeSynchronization(
 
   // incoming flyTo cameraViews are always applied
   useEffect(() => {
-    if (!isBasePath && isAutoRotating) {
+    if (!isBaseRoute && isAutoRotating) {
       dispatch(setIsAutoRotating(false));
     }
     // Skip entire effect if globe or flyTo is not available
@@ -568,7 +568,7 @@ function useMultiGlobeSynchronization(
           // Reset animation state
           animationRef.current.isAnimating = false;
           animationRef.current.animationId = null;
-          if (isBasePath) {
+          if (isBaseRoute) {
             dispatch(setIsAutoRotating(true));
           }
         }
@@ -590,7 +590,7 @@ function useMultiGlobeSynchronization(
     }
   }, [
     isAutoRotating,
-    isBasePath,
+    isBaseRoute,
     dispatch,
     animationRef,
     rotationRef,
@@ -691,7 +691,6 @@ function getLayerProps(
   layerDetails: Layer | null,
   includeClouds: boolean = true,
 ) {
-
   const basemapUrl = getBasemapUrl(layerDetails);
   const cloudsUrl = getBasemapUrl({ basemap: "clouds" } as Layer);
 
@@ -734,10 +733,10 @@ function getLayerProps(
         type === LayerType.Image
           ? () => url
           : ({ x, y, zoom }) =>
-            url
-              .replace("{x}", String(x))
-              .replace("{reverseY}", String(y))
-              .replace("{z}", String(zoom)),
+              url
+                .replace("{x}", String(x))
+                .replace("{reverseY}", String(y))
+                .replace("{z}", String(zoom)),
     });
   }
 

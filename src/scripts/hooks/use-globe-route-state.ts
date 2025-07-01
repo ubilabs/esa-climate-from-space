@@ -40,9 +40,9 @@ export function useGlobeRouteState() {
    * Update auto-rotation state based on the current pathname
    */
   const updateAutoRotationState = useCallback(
-    (isBasePath: boolean) => {
+    (isBaseRoute: boolean) => {
       // Only dispatch if needed to prevent unnecessary renders
-      dispatch(setIsAutoRotating(isBasePath));
+      dispatch(setIsAutoRotating(isBaseRoute));
     },
     [dispatch],
   );

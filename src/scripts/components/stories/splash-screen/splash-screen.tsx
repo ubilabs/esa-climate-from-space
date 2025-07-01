@@ -4,7 +4,7 @@ import cx from "classnames";
 
 import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
 
-import { useAppPath } from "../../../hooks/use-app-path";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { Slide } from "../../../types/story";
 
@@ -16,12 +16,12 @@ interface Props {
 }
 
 const SplashScreen: FunctionComponent<Props> = ({ storyId, slide }) => {
-  const { isStoriesPath } = useAppPath();
+  const { isStoriesRoute } = useAppRouteFlags();
   const imageUrl =
     slide.splashImage && getStoryAssetUrl(storyId, slide.splashImage);
   const contentClasses = cx(
     styles.content,
-    isStoriesPath && styles.presentationContent,
+    isStoriesRoute && styles.presentationContent,
   );
 
   return (

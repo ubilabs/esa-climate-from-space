@@ -5,7 +5,7 @@ import config from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
-import { useAppPath } from "../../../hooks/use-app-path";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { contentSelector } from "../../../selectors/content";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
@@ -38,7 +38,7 @@ const Navigation: FunctionComponent = () => {
   const [showTooltip, setShowTooltip] = useState(Boolean(!savedLanguage));
 
   const { category } = useSelector(contentSelector);
-  const { isStoriesPath, isDataPath } = useAppPath();
+  const { isStoriesRoute, isDataRoute } = useAppRouteFlags();
 
   const { isMobile, isDesktop } = useScreenSize();
   const appRoute = useSelector(appRouteSelector);
@@ -61,11 +61,11 @@ const Navigation: FunctionComponent = () => {
           <EsaLogo
             variant={
               (isDesktop && "logoWithText") ||
-              (isDataPath || isStoriesPath ? "shortLogo" : "logoWithText")
+              (isDataRoute || isStoriesRoute ? "shortLogo" : "logoWithText")
             }
           />
         )}
-        {(isStoriesPath || isDataPath) && back_link && (
+        {(isStoriesRoute || isDataRoute) && back_link && (
           <Button
             className={styles.backButton}
             icon={ArrowBackIcon}
