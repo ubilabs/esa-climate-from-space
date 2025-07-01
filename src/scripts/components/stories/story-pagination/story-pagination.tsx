@@ -7,12 +7,10 @@ import { PreviousIcon } from "../../main/icons/previous-icon";
 import { NextIcon } from "../../main/icons/next-icon";
 import { CloseIcon } from "../../main/icons/close-icon";
 
-import { AppRoute } from "../../../types/app-routes";
-
 import styles from "./story-pagination.module.css";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 interface Props {
-  mode: AppRoute | null;
   slideIndex: number;
   storySlidesLength: number;
   nextSlideLink: string | null;
@@ -20,7 +18,6 @@ interface Props {
 }
 
 const StoryPagination: FunctionComponent<Props> = ({
-  mode,
   slideIndex,
   storySlidesLength,
   nextSlideLink,
@@ -28,12 +25,14 @@ const StoryPagination: FunctionComponent<Props> = ({
 }) => {
   const intl = useIntl();
   const navigate = useNavigate();
-  const isShowcaseMode = mode === AppRoute.Showcase;
-  const isPresenterMode = mode === AppRoute.Present;
+  const { isShowCaseView, isPresentView } = useAppRouteFlags();
+
+  const route = isShowCaseView ? "showcase" : isPresentView ? "present" : "";
+  console.log("nextSlideLink", nextSlideLink);
 
   const onKeyDownHandler = useCallback(
     (event: KeyboardEvent) => {
-      if (!isShowcaseMode) {
+      if (!isShowCaseView) {
         // 37-arrow left, 33-page up, 38-arrow down
         if (
           event.keyCode === 33 ||
@@ -41,7 +40,7 @@ const StoryPagination: FunctionComponent<Props> = ({
           event.keyCode === 38
         ) {
           if (previousSlideLink) {
-            navigate(previousSlideLink);
+            navigate(`/${previousSlideLink}`);
           }
         }
         // 39-arrow right, 34-page down, 40-arrow down
@@ -51,15 +50,15 @@ const StoryPagination: FunctionComponent<Props> = ({
           event.keyCode === 40
         ) {
           if (nextSlideLink) {
-            navigate(nextSlideLink);
+            navigate(`/${nextSlideLink}`);
           }
         }
         // 27 - esc
       } else if (event.keyCode === 27) {
-        navigate(`/${mode}`);
+        navigate(`/${route}`);
       }
     },
-    [isShowcaseMode, navigate, mode, previousSlideLink, nextSlideLink],
+    [isShowCaseView, previousSlideLink, navigate, nextSlideLink, route],
   );
 
   // add and remove event listener for keyboard events
@@ -72,14 +71,14 @@ const StoryPagination: FunctionComponent<Props> = ({
 
   const disabledClasses = cx(
     styles.disabled,
-    isShowcaseMode && styles.emptyIcon,
+    isShowCaseView && styles.emptyIcon,
   );
 
   return (
     <div className={styles.pagination}>
       <div className={styles.controls}>
         {previousSlideLink ? (
-          <Link to={previousSlideLink} className={styles.icon}>
+          <Link to={"/" + previousSlideLink} className={styles.icon}>
             <PreviousIcon />
           </Link>
         ) : (
@@ -93,7 +92,7 @@ const StoryPagination: FunctionComponent<Props> = ({
         </span>
 
         {nextSlideLink ? (
-          <Link to={nextSlideLink} className={styles.icon}>
+          <Link to={"/" + nextSlideLink} className={styles.icon}>
             <NextIcon />
           </Link>
         ) : (
@@ -102,10 +101,10 @@ const StoryPagination: FunctionComponent<Props> = ({
           </div>
         )}
 
-        {isPresenterMode && (
+        {isPresentView && (
           <div className={styles.closeIcon}>
             <Link
-              to={`/${mode}`}
+              to={"/present"}
               title={intl.formatMessage({ id: "closeStory" })}
             >
               <CloseIcon />
