@@ -5,7 +5,7 @@ export interface FlyToPayload extends CameraView {
   isAnimated: boolean;
 }
 // If we pass empty object, the app will stop working. Fix
-const initialState = null as unknown as FlyToPayload;
+const initialState: FlyToPayload | null = null;
 
 const flyToSlice = createSlice({
   name: "flyTo",
