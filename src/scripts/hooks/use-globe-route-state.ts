@@ -85,8 +85,6 @@ export function useGlobeRouteState() {
         dispatch(setShowLayer(false));
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
 
-        // Reset the globe view
-        dispatch(setFlyTo(config.globe.view));
         break;
 
       case AppRoute.Data:
