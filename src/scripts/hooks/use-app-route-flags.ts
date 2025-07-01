@@ -9,6 +9,15 @@ export function useAppRouteFlags() {
   const isNavigationView =
     appRoute === AppRoute.Base || appRoute === AppRoute.NavContent;
 
+  const isShowCaseView =
+    appRoute === AppRoute.Showcase ||
+    appRoute === AppRoute.ShowcaseStory ||
+    appRoute === AppRoute.ShowcaseStories;
+
+  const isPresentView =
+    appRoute === AppRoute.Present ||
+    appRoute === AppRoute.PresentStory
+
   const isContentNavRoute = appRoute === AppRoute.NavContent;
 
   const isStoriesRoute =
@@ -16,7 +25,6 @@ export function useAppRouteFlags() {
 
   const isDataRoute = appRoute === AppRoute.Data;
 
-  const isShowCaseRoute = appRoute === AppRoute.Showcase;
   const isBaseRoute = appRoute === AppRoute.Base;
 
   return {
@@ -25,6 +33,7 @@ export function useAppRouteFlags() {
     isBaseRoute,
     isNavigationView,
     isDataRoute,
-    isShowCaseRoute,
+    isShowCaseView,
+    isPresentView,
   };
 }
