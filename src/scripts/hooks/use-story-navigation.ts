@@ -2,13 +2,13 @@ import { useContentParams } from "./use-content-params";
 import config from "../config/main";
 
 import { GalleryItemType } from "../types/gallery-item";
-import { useAppPath } from "./use-app-path";
+import { useAppRouteFlags } from "./use-app-route-flags";
 
 export const useStoryNavigation = (videoDuration: number) => {
   const { storyIds, storyIndex, slideIndex, selectedStory } =
     useContentParams();
 
-  const { isShowCasePath } = useAppPath();
+  const { isShowCasePath } = useAppRouteFlags();
 
   const numberOfSlides = selectedStory?.slides.length;
 
