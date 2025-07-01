@@ -5,6 +5,7 @@ import { UiEmbedElement } from "../types/embed-elements";
 import { GlobeProjection } from "../types/globe-projection";
 import { GlobeState } from "../reducers/globe/globe-state";
 import { AppRoute } from "../types/app-routes";
+import { getNormalizedScreenWidth } from "../libs/normalize-screen-width";
 
 /**
  * Routes are utilized to manage state transitions within the application.
@@ -42,7 +43,7 @@ export const ROUTES = {
 export const AUTO_ROTATE_INTERVAL = 5000; // Time between auto-rotations in milliseconds
 export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interaction before restarting auto-rotation
 
-export const CONTENT_NAV_LONGITUDE_OFFSET = -55;
+export const CONTENT_NAV_LONGITUDE_OFFSET = -25;
 
 // The order of these is important for the stories menu
 export const categoryTags = [
@@ -58,6 +59,7 @@ export const categoryTags = [
   "improving_models",
 ];
 
+
 const globeState: GlobeState = {
   time: Date.now(),
   projectionState: {
@@ -68,7 +70,9 @@ const globeState: GlobeState = {
     renderMode: "globe" as RenderMode,
     lat: 25,
     lng: 0,
-    altitude: 23840000,
+    // This is the default altitude for the globe view
+    // The altitude is adjusted based on the normalized screen width to ensure the globe is rendered proportionally across all screen sizes
+    altitude: 25840000 * getNormalizedScreenWidth(),
     zoom: 0,
     isAnimated: false,
   },
