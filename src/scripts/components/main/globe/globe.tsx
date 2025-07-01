@@ -462,7 +462,7 @@ function useMultiGlobeSynchronization(
     // Skip entire effect if globe or flyTo is not available
     if (!globe || !flyTo) return;
     // Globe movements by user interaction are not properly handled if we don't reset the flyTo
-    // Todo: fix! This is more a workound than a solution
+    // Todo: fix! This is more a workaround than a solution
     dispatch(setFlyTo(null));
     if (flyTo.isAnimated) {
       // Extract target coordinates
