@@ -44,6 +44,7 @@ export const AUTO_ROTATE_INTERVAL = 5000; // Time between auto-rotations in mill
 export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interaction before restarting auto-rotation
 
 export const CONTENT_NAV_LONGITUDE_OFFSET = -25;
+export const ALTITUDE_FACTOR_MOBILE = 0.4;
 
 // The order of these is important for the stories menu
 export const categoryTags = [
@@ -58,7 +59,6 @@ export const categoryTags = [
   "climate_action",
   "improving_models",
 ];
-
 
 const globeState: GlobeState = {
   time: Date.now(),

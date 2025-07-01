@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
-import config from "../../../config/main";
+import config, { ALTITUDE_FACTOR_MOBILE } from "../../../config/main";
 import { useGetStoriesQuery } from "../../../services/api";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
@@ -165,7 +165,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
       if (contentId) {
         const previewedContent = contents.find(({ id }) => id === contentId);
 
-        const altitude = config.globe.view.altitude * (isMobile ? 1 : 0.4);
+        const altitude = config.globe.view.altitude * (isMobile ? 1 : ALTITUDE_FACTOR_MOBILE);
 
         dispatch(
           setFlyTo({
