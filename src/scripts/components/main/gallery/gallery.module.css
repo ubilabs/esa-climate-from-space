@@ -2,7 +2,7 @@
   position: relative;
   flex-grow: 1;
   flex-basis: 50%;
-  width: 100%;
+  width: 50%;
   height: 100%;
 }
 .galleryItem {
