@@ -9,6 +9,7 @@ import cx from "classnames";
 import config, { categoryTags } from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
