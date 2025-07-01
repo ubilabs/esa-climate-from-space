@@ -39,7 +39,6 @@
   overflow: hidden;
 
   @media screen and (--desktop-viewport) {
-    margin-right: var(--spacing);
     clip-path: inset(0 100% 0 0);
     /* On desktop, don't clip the top */
   }

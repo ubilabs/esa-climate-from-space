@@ -165,24 +165,30 @@ const ContentNavigation: FunctionComponent<Props> = ({
       if (contentId) {
         const previewedContent = contents.find(({ id }) => id === contentId);
 
+        const altitude = config.globe.view.altitude * (isMobile ? 1 : 0.4);
+
         dispatch(
           setFlyTo({
             ...(previewedContent?.position?.length === 2
               ? {
                 lat: previewedContent.position[1],
                 lng: previewedContent.position[0],
+                altitude,
               }
-              : config.globe.view),
+              : {
+                ...config.globe.view,
+                altitude,
+              }),
             isAnimated: true,
           }),
         );
       }
-    }, 1000);
+    }, 100);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [dispatch, currentIndex, contents]);
+  }, [dispatch, currentIndex, contents, isMobile]);
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
