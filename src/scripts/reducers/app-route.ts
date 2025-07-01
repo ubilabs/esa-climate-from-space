@@ -28,7 +28,9 @@ export type AppRouteState = AppRoute;
 
 // split the href at the # and pass the second part to matchRoute
 const initialState: AppRouteState = matchRoute(
-  window.location.href.toString().split("#")[1] || "/",
+  window.location.href.toString().split("#").length > 1
+    ? window.location.href.toString().split("#")[1]
+    : "/",
 );
 
 const AppRouteSlice = createSlice({
