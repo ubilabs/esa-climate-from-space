@@ -419,7 +419,7 @@ function useMultiGlobeSynchronization(
   rotationRef: RefObject<{ lat: number; lng: number }>,
 ) {
   const { view, active, flyTo, isMarkerOffset } = props;
-  const isBaseRoute = useAppRouteFlags().isBaseRoute;
+  const { isBaseRoute } = useAppRouteFlags();
 
   // Update rotationRef when view changes to keep it in sync with external changes
   useEffect(() => {
