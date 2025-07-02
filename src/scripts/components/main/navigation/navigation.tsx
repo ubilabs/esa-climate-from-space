@@ -3,20 +3,20 @@ import { useSelector } from "react-redux";
 
 import config from "../../../config/main";
 
-import { useContentParams } from "../../../hooks/use-content-params";
-import useIsStoriesPath from "../../../hooks/use-is-stories-path";
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
+import { useAppPath } from "../../../hooks/use-app-path";
 
 import { contentSelector } from "../../../selectors/content";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
+import { appRouteSelector } from "../../../selectors/route-match";
 import { languageSelector } from "../../../selectors/language";
 
 import { setLanguage } from "../../../reducers/language";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setWelcomeScreen } from "../../../reducers/welcome-screen";
 
-import { StoryMode } from "../../../types/story-mode";
+import { AppRoute } from "../../../types/app-routes";
 
 import Button from "../button/button";
 import { EsaLogo } from "../icons/esa-logo";
@@ -38,12 +38,11 @@ const Navigation: FunctionComponent = () => {
   const [showTooltip, setShowTooltip] = useState(Boolean(!savedLanguage));
 
   const { category } = useSelector(contentSelector);
-  const isStoriesPath = useIsStoriesPath();
+  const { isStoriesPath, isDataPath } = useAppPath();
 
-  const { isNavigation } = useContentParams();
-  const { isMobile } = useScreenSize();
+  const { isMobile, isDesktop } = useScreenSize();
+  const { appRoute } = useSelector(appRouteSelector);
 
-  const { mode } = useContentParams();
   const { header, logo, back_link, app_menu, layers_menu } = useSelector(
     embedElementsSelector,
   );
@@ -61,14 +60,12 @@ const Navigation: FunctionComponent = () => {
         {logo && (
           <EsaLogo
             variant={
-              (!isMobile && "logoWithText") ||
-              (isStoriesPath || mode === StoryMode.Content
-                ? "shortLogo"
-                : "logoWithText")
+              (isDesktop && "logoWithText") ||
+              (isDataPath || isStoriesPath ? "shortLogo" : "logoWithText")
             }
           />
         )}
-        {!isNavigation && back_link && (
+        {(isStoriesPath || isDataPath) && back_link && (
           <Button
             className={styles.backButton}
             icon={ArrowBackIcon}
@@ -76,7 +73,7 @@ const Navigation: FunctionComponent = () => {
             link={category ? `/${category}` : "/"}
           />
         )}
-        {mode === StoryMode.Content && layers_menu && (
+        {appRoute === AppRoute.Data && layers_menu && (
           <Button
             className={styles.button}
             id="ui-menu"

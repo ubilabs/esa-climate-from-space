@@ -44,13 +44,14 @@
     }
   }
 
-  &[data-nav-content="nav-content"] {
+  /* The data-nav-content values are based on the current route of the application */
+  &[data-nav-content="nav_content"] {
     .globeWrapper {
       transform: translateX(-62vw);
     }
   }
 
-  &[data-nav-content="content"] {
+  &[data-nav-content="data"] {
     .globeWrapper {
       pointer-events: auto;
     }
@@ -75,7 +76,7 @@
     grid-template-columns: 1fr 25vw;
     grid-gap: 1.5rem;
 
-    &[data-nav-content="nav-category"] {
+    &[data-nav-content="base"] {
       margin-inline: var(--spacing);
 
       .globeWrapper {
@@ -83,7 +84,7 @@
       }
     }
 
-    &[data-nav-content="content"] {
+    &[data-nav-content="data"] {
       grid-template-areas: "globe-nav-area";
       grid-template-columns: 1fr;
       grid-template-rows: 1fr;
@@ -117,7 +118,7 @@
       }
     }
 
-    &[data-nav-content="nav-content"] {
+    &[data-nav-content="nav_content"] {
       grid-template-areas: "globe content-nav";
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;

@@ -4,6 +4,37 @@ import { UiEmbedElement } from "../types/embed-elements";
 
 import { GlobeProjection } from "../types/globe-projection";
 import { GlobeState } from "../reducers/globe/globe-state";
+import { AppRoute } from "../types/app-routes";
+
+/**
+ * Routes are utilized to manage state transitions within the application.
+ * The RouteMatch component is updating the state as it renders across all routes.
+ * Legacy routes are also supported and maintained.
+ * Extend or modify route patterns here as necessary to accommodate new requirements.
+ * Be aware that the order here matters because this object is used to match route patterns
+ */
+export const ROUTES = {
+  [AppRoute.LegacyStory]: {
+    path: "stories/:storyId/:slideIndex",
+  },
+  [AppRoute.LegacyStories]: { path: "stories/" },
+  [AppRoute.About]: { path: "/about" },
+  [AppRoute.PresentStory]: {
+    path: "/present/:storyId/:slideIndex",
+  },
+  [AppRoute.Present]: { path: "/present" },
+  [AppRoute.ShowcaseStory]: {
+    path: "/showcase/:storyIds/:storyIndex/:slideIndex",
+  },
+  [AppRoute.ShowcaseStories]: { path: "/showcase/:storyIds" },
+  [AppRoute.Showcase]: { path: "/showcase" },
+  [AppRoute.Stories]: {
+    path: "/:category/stories/:storyId/:slideIndex",
+  },
+  [AppRoute.Data]: { path: "/:category/data" },
+  [AppRoute.NavContent]: { path: "/:category" },
+  [AppRoute.Base]: { path: "/" },
+} as const;
 
 // Constants for auto-rotation timing of the content navigation
 // This is not related to the auto rotation of the globe

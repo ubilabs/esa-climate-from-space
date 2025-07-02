@@ -16,7 +16,7 @@ export const selectLayers = createSelector(
 );
 
 // Create memoized selector for transformed data
-export const layersSelector = createSelector(
-  (state: State) => selectLayers(state).data,
-  (data) => data ?? [],
-);
+export const layersSelector = (state: State) => {
+  const data = selectLayers(state).data;
+  return data ?? [];
+};

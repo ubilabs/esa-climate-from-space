@@ -1,12 +1,14 @@
 import { useContentParams } from "./use-content-params";
 import config from "../config/main";
 
-import { StoryMode } from "../types/story-mode";
 import { GalleryItemType } from "../types/gallery-item";
+import { useAppPath } from "./use-app-path";
 
 export const useStoryNavigation = (videoDuration: number) => {
-  const { mode, storyIds, storyIndex, slideIndex, selectedStory } =
+  const { storyIds, storyIndex, slideIndex, selectedStory } =
     useContentParams();
+
+  const { isShowCasePath } = useAppPath();
 
   const numberOfSlides = selectedStory?.slides.length;
 
@@ -22,12 +24,12 @@ export const useStoryNavigation = (videoDuration: number) => {
   const previousSlideIndex = slideIndex - 1;
   const nextSlideIndex = slideIndex + 1;
 
-  if (mode !== StoryMode.Showcase) {
+  if (!isShowCasePath) {
     if (previousSlideIndex >= 0) {
-      previousSlideLink = `/${mode}/${storyIds}/${previousSlideIndex}`;
+      previousSlideLink = `/stories/${storyIds}/${previousSlideIndex}`;
     }
     if (nextSlideIndex < numberOfSlides) {
-      nextSlideLink = `/${mode}/${storyIds}/${nextSlideIndex}`;
+      nextSlideLink = `/stories/${storyIds}/${nextSlideIndex}`;
     }
   }
 

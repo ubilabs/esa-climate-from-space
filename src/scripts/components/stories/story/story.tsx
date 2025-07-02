@@ -21,24 +21,27 @@ import { Slide, Story as StoryType } from "../../../types/story";
 
 import StoryEmbedded from "../story-embedded/story-embedded";
 
+import { setFlyTo } from "../../../reducers/fly-to";
 import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { useGetStoryListQuery, useGetStoryQuery } from "../../../services/api";
+import { appRouteSelector } from "../../../selectors/route-match";
 import { languageSelector } from "../../../selectors/language";
 
 import config from "../../../config/main";
 
 import styles from "./story.module.css";
-import { setFlyTo } from "../../../reducers/fly-to";
 
 const Story: FunctionComponent = () => {
   const storyParams = useContentParams();
   const sphereProjection = GlobeProjection.Sphere;
   const dispatch = useThunkDispatch();
   const [videoDuration, setVideoDuration] = useState<number>(0);
-  const { mode, slideIndex, currentStoryId } = storyParams;
+  const { slideIndex, currentStoryId } = storyParams;
   const contentRef = useRef<HTMLDivElement>(null);
   const [showLightbox, setShowLightbox] = useState(false);
+
+  const { appRoute } = useSelector(appRouteSelector);
 
   const lang = useSelector(languageSelector);
 
@@ -87,10 +90,6 @@ const Story: FunctionComponent = () => {
     }
   }, [slideIndex]);
 
-  if (!mode) {
-    return null;
-  }
-
   const getVideoDuration = async (player: YouTubePlayer | VideoJsPlayer) => {
     if ((player as YouTubePlayer).getDuration) {
       const duration = await (player as YouTubePlayer).getDuration();
@@ -105,7 +104,7 @@ const Story: FunctionComponent = () => {
     if (slide.galleryItems) {
       return (
         <StoryGallery
-          mode={mode}
+          route={appRoute}
           storyId={story.id}
           key={story.id}
           showLightbox={showLightbox}
@@ -124,7 +123,7 @@ const Story: FunctionComponent = () => {
               case GalleryItemType.Video:
                 return item.videoSrc || item.videoId ? (
                   <StoryVideo
-                    mode={mode}
+                    route={appRoute}
                     storyId={story.id}
                     videoItem={item}
                     onPlay={(player: YouTubePlayer | VideoJsPlayer) =>
@@ -145,8 +144,7 @@ const Story: FunctionComponent = () => {
                 );
               default:
                 console.warn(
-                  `Unknown gallery item type ${item["type"]} on slide ${
-                    slideIndex + 1
+                  `Unknown gallery item type ${item["type"]} on slide ${slideIndex + 1
                   } in story ${story.id}`,
                 );
                 return <></>;
@@ -169,7 +167,6 @@ const Story: FunctionComponent = () => {
               index === slideIndex &&
               (currentSlide.splashImage ? (
                 <SplashScreen
-                  mode={mode}
                   key={index}
                   storyId={selectedStory.id}
                   slide={currentSlide}
@@ -177,7 +174,7 @@ const Story: FunctionComponent = () => {
               ) : (
                 <React.Fragment key={index}>
                   <StoryContent
-                    mode={mode}
+                    route={appRoute}
                     storyId={selectedStory.id}
                     slide={currentSlide}
                   />
@@ -188,9 +185,9 @@ const Story: FunctionComponent = () => {
         </main>
         <StoryFooter
           videoDuration={videoDuration}
-          mode={mode}
+          mode={appRoute}
           slideIndex={slideIndex}
-          selectedStory={selectedStory}
+          selectedStory={selectedStory ? selectedStory : null}
         />
       </div>
     </>

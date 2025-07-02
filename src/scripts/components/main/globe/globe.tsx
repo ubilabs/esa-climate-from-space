@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
 
@@ -29,6 +30,7 @@ import SHADING_TEXTURE_URL from "@ubilabs/esa-webgl-globe/textures/shading.png?u
 import { Layer } from "../../../types/layer";
 import { Marker } from "../../../types/marker-type";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
+import { useGlobeRouteState } from "../../../hooks/use-globe-route-state";
 
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
@@ -40,7 +42,6 @@ import { GlobeProjection } from "../../../types/globe-projection";
 import { isAutoRotatingSelector } from "../../../selectors/auto-rotate";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
 import { setFlyTo } from "../../../reducers/fly-to";
-import { renderToStaticMarkup } from "react-dom/server";
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
 
@@ -66,6 +67,7 @@ interface Props {
   spinning: boolean;
   flyTo: CameraView | null;
   markers?: Marker[];
+  isMarkerOffset?: boolean;
   backgroundColor: string;
   onMouseEnter: () => void;
   onTouchStart: () => void;
@@ -77,12 +79,11 @@ interface Props {
     layerId: string,
     state: LayerLoadingState,
   ) => void;
-  showDataSet?: boolean;
 }
 
 export type GlobeProps = Partial<Props>;
 
-const EMPTY_FUNCTION = () => {};
+const EMPTY_FUNCTION = () => { };
 
 // Easing function for smoother animation
 function easeInOutQuad(t: number): number {
@@ -149,6 +150,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
   const dispatch = useDispatch();
   const isAutoRotatingEnabled = useSelector(isAutoRotatingSelector);
+  useGlobeRouteState();
 
   // Track auto rotation with a ref to avoid dependencies issues
   const autoRotationRef = useRef<{
@@ -322,12 +324,16 @@ function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
     }
 
     globe.setProps({
-      markers: getMarkerProps(markers, (marker: Marker) => {
-        if (!marker.link) {
-          return;
-        }
-        navigate(marker.link);
-      }, isDesktop),
+      markers: getMarkerProps(
+        markers,
+        (marker: Marker) => {
+          if (!marker.link) {
+            return;
+          }
+          navigate(marker.link);
+        },
+        isDesktop,
+      ),
     });
 
     return () => {
@@ -407,7 +413,7 @@ function useMultiGlobeSynchronization(
   dispatch: Dispatch<UnknownAction>,
   rotationRef: RefObject<{ lat: number; lng: number }>,
 ) {
-  const { view, active, flyTo, showDataSet } = props;
+  const { view, active, flyTo, isMarkerOffset } = props;
 
   // Update rotationRef when view changes to keep it in sync with external changes
   useEffect(() => {
@@ -482,7 +488,8 @@ function useMultiGlobeSynchronization(
       // Instead of the center, we have to adjust the target position so that
       // actual point we want to move to is rotated the right side
       // This is because only the right side of the globe is actually visible to the user
-      const targetLng = lng + (showDataSet ? 0 : CONTENT_NAV_LONGITUDE_OFFSET);
+      const targetLng =
+        lng + (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0);
       const targetLat = lat;
       const startLng = rotationRef.current.lng;
       const startLat = rotationRef.current.lat;
@@ -559,15 +566,7 @@ function useMultiGlobeSynchronization(
       globe.setProps({ cameraView: flyTo });
       dispatch(setFlyTo(null));
     }
-  }, [
-    dispatch,
-    animationRef,
-    rotationRef,
-    globe,
-    flyTo,
-    view.altitude,
-    showDataSet,
-  ]);
+  }, [dispatch, animationRef, rotationRef, globe, flyTo, view.altitude]);
   // Cleanup function to cancel any ongoing animation when unmounting
   return () => {
     if (animationRef.current.animationId !== null) {
@@ -704,10 +703,10 @@ function getLayerProps(
         type === LayerType.Image
           ? () => url
           : ({ x, y, zoom }) =>
-              url
-                .replace("{x}", String(x))
-                .replace("{reverseY}", String(y))
-                .replace("{z}", String(zoom)),
+            url
+              .replace("{x}", String(x))
+              .replace("{reverseY}", String(y))
+              .replace("{z}", String(zoom)),
     });
   }
 

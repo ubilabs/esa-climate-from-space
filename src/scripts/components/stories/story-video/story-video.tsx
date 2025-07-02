@@ -4,7 +4,7 @@ import cx from "classnames";
 import { VideoJsPlayer } from "video.js";
 
 import { languageSelector } from "../../../selectors/language";
-import { StoryMode } from "../../../types/story-mode";
+import { AppRoute } from "../../../types/app-routes";
 import { YouTubePlayer } from "youtube-player/dist/types";
 import VideoJS from "../video-js/video-js";
 import YoutubePlayer from "../youtube-player/youtube-player";
@@ -14,21 +14,21 @@ import { VideoItem } from "../../../types/gallery-item";
 import styles from "./story-video.module.css";
 
 interface Props {
-  mode: StoryMode | null;
+  route: AppRoute | null;
   storyId: string;
   videoItem: VideoItem;
   onPlay: (player: YouTubePlayer | VideoJsPlayer) => void;
 }
 
 const StoryVideo: FunctionComponent<Props> = ({
-  mode,
+  route,
   storyId,
   videoItem,
   onPlay,
 }) => {
   const { videoSrc, videoId, videoCaptions, videoPoster } = videoItem;
   const language = useSelector(languageSelector);
-  const isStoryMode = mode === StoryMode.Stories;
+  const isStoryMode = route === AppRoute.Stories;
   const classes = cx(
     styles.storyVideo,
     !isStoryMode && styles.presentationVideo,

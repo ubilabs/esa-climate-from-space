@@ -6,15 +6,15 @@ import StoryList from "../story-list/story-list";
 import StoryFilter from "../story-filter/story-filter";
 import Header from "../header/header";
 import Share from "../../main/share/share";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
+import { AppRoute } from "../../../types/app-routes";
 
-import { StoryMode } from "../../../types/story-mode";
+import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import styles from "./stories-selector.module.css";
 
 const StoriesSelector: FunctionComponent = () => {
   const intl = useIntl();
-  const { header, filter_tags } = useSelector(embedElementsSelector);
+  const { header  } = useSelector(embedElementsSelector);
 
   return (
     <div className={styles.storiesSelector}>
@@ -27,8 +27,8 @@ const StoriesSelector: FunctionComponent = () => {
           <Share />
         </Header>
       )}
-      {filter_tags && <StoryFilter />}
-      <StoryList mode={StoryMode.Stories} />
+      <StoryFilter />
+      <StoryList route={AppRoute.Stories} />
     </div>
   );
 };
