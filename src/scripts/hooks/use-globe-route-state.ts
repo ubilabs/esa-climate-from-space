@@ -27,7 +27,7 @@ import { AppRoute } from "../types/app-routes";
 export function useGlobeRouteState() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { appRoute } = useSelector(appRouteSelector);
+  const appRoute = useSelector(appRouteSelector);
   const previousPathnameRef = useRef<string | null>(null);
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
@@ -39,9 +39,9 @@ export function useGlobeRouteState() {
    * Update auto-rotation state based on the current pathname
    */
   const updateAutoRotationState = useCallback(
-    (isBasePath: boolean) => {
+    (isBaseRoute: boolean) => {
       // Only dispatch if needed to prevent unnecessary renders
-      dispatch(setIsAutoRotating(isBasePath));
+      dispatch(setIsAutoRotating(isBaseRoute));
     },
     [dispatch],
   );

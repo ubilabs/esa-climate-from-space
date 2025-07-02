@@ -9,7 +9,7 @@ import cx from "classnames";
 import config, { categoryTags } from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
-import { useAppPath } from "../../../hooks/use-app-path";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
@@ -45,7 +45,7 @@ const DataViewer: FunctionComponent = () => {
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoryListQuery(language);
 
-  const { appRoute } = useSelector(appRouteSelector);
+  const appRoute = useSelector(appRouteSelector);
 
   const { data: layers } = useGetLayerListQuery(language);
 
@@ -71,8 +71,8 @@ const DataViewer: FunctionComponent = () => {
   const { screenHeight, screenWidth, isMobile, isTouchDevice } =
     useScreenSize();
 
-  const { isBasePath, isNavigationView, isDataPath, isContentNavRoute } =
-    useAppPath();
+  const { isBaseRoute, isNavigationView, isDataRoute, isContentNavRoute } =
+    useAppRouteFlags();
 
   // There is a set of animations which should be played only once
   // This keeps track of that
@@ -124,7 +124,7 @@ const DataViewer: FunctionComponent = () => {
       >
         <GetDataWidget className={cx(styles.globe)} />
       </div>
-      {isDataPath && <GlobeNavigation />}
+      {isDataRoute && <GlobeNavigation />}
       {isNavigationView && (
         <>
           <header className={styles.heading}>
@@ -144,7 +144,7 @@ const DataViewer: FunctionComponent = () => {
               </span>
             )}
           </header>
-          {isBasePath && (
+          {isBaseRoute && (
             <>
               <CategoryNavigation
                 arcs={arcs}

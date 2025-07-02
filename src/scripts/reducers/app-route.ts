@@ -6,35 +6,39 @@ import { ROUTES } from "../config/main";
 /**
  * Tries to match a pathname to one of the route patterns
  */
-export function matchRoute(pathname: string): AppRoute {
-  for (const [key, pattern] of Object.entries(ROUTES) as [
-    AppRoute,
-    { path: string; end: boolean },
-  ][]) {
-    if (key === AppRoute.Unknown) continue;
+// Define route order from most specific to most general
 
-    const match = matchPath(pattern, pathname);
-    if (match) return key;
+export function matchRoute(rawPathname: string): AppRoute {
+  // Strip query and hash
+  const pathname = rawPathname.split(/[?#]/)[0];
+
+  for (const key of Object.keys(ROUTES)) {
+    const route = ROUTES[key as keyof typeof ROUTES];
+    const match = matchPath({ path: route.path, end: route.end }, pathname);
+    if (match) {
+      return key as AppRoute;
+    }
   }
 
   console.warn("No route match for:", pathname);
   return AppRoute.Unknown;
 }
 
-export interface AppRouteState {
-  appRoute: AppRoute;
-}
+export type AppRouteState = AppRoute;
 
-const initialState: AppRouteState = {
-  appRoute: matchRoute(window.location.pathname),
-};
+// split the href at the # and pass the second part to matchRoute
+const initialState: AppRouteState = matchRoute(
+  window.location.href.toString().split("#").length > 1
+    ? window.location.href.toString().split("#")[1]
+    : "/",
+);
 
 const AppRouteSlice = createSlice({
   name: "AppRoute",
   initialState,
   reducers: {
-    setAppRoute(state, action: PayloadAction<string>) {
-      state.appRoute = matchRoute(action.payload);
+    setAppRoute(_state, action: PayloadAction<AppRoute>) {
+      return matchRoute(action.payload);
     },
   },
 });

@@ -2,8 +2,8 @@ import { useSelector } from "react-redux";
 import { appRouteSelector } from "../selectors/route-match";
 import { AppRoute } from "../types/app-routes";
 
-export function useAppPath() {
-  const { appRoute } = useSelector(appRouteSelector);
+export function useAppRouteFlags() {
+  const appRoute = useSelector(appRouteSelector);
 
   // the "navigation view" consists of the category (rendered at the base path) as well as the content navigation
   const isNavigationView =
@@ -11,20 +11,20 @@ export function useAppPath() {
 
   const isContentNavRoute = appRoute === AppRoute.NavContent;
 
-  const isStoriesPath =
+  const isStoriesRoute =
     appRoute === AppRoute.Stories || appRoute === AppRoute.LegacyStory;
 
-  const isDataPath = appRoute === AppRoute.Data;
+  const isDataRoute = appRoute === AppRoute.Data;
 
-  const isShowCasePath = appRoute === AppRoute.Showcase;
-  const isBasePath = appRoute === AppRoute.Base;
+  const isShowCaseRoute = appRoute === AppRoute.Showcase;
+  const isBaseRoute = appRoute === AppRoute.Base;
 
   return {
     isContentNavRoute,
-    isStoriesPath,
-    isBasePath,
+    isStoriesRoute,
+    isBaseRoute,
     isNavigationView,
-    isDataPath,
-    isShowCasePath,
+    isDataRoute,
+    isShowCaseRoute,
   };
 }

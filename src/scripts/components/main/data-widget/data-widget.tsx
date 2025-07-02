@@ -42,7 +42,7 @@ import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import TimeSlider from "../../layers/time-slider/time-slider";
-import { useAppPath } from "../../../hooks/use-app-path";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 interface Props {
   className?: string;
@@ -63,7 +63,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;
 
-  const { isBasePath, isContentNavRoute, isStoriesPath } = useAppPath();
+  const { isBaseRoute, isContentNavRoute, isStoriesRoute } = useAppRouteFlags();
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
@@ -184,7 +184,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
 
-  const updatedLayerDetails = isBasePath
+  const updatedLayerDetails = isBaseRoute
     ? {
       ...(layerDetails || {}),
       basemap: "clouds",
@@ -222,7 +222,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
     <>
       {isContentNavRoute ? null : (
         <>
-          {isStoriesPath && <DataSetInfo />}
+          {isStoriesRoute && <DataSetInfo />}
           {legend && getLegends()}
           {time_slider && <TimeSlider />}
         </>
