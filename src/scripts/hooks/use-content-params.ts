@@ -36,7 +36,7 @@ export const useContentParams = () => {
 
   const slideIndex = params.slideIndex
     ? parseInt(params.slideIndex, 10)
-    : NaN;
+    : null;
   const currentStoryId = storyIds[storyIndex || 0];
 
   const selectedStory = useSelector((state: State) =>
