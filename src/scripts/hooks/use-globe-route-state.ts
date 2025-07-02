@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 import config from "../config/main";
 
+import { AppRoute } from "../types/app-routes";
+
 import { setSelectedContentAction } from "../reducers/content";
 import { setFlyTo } from "../reducers/fly-to";
 import { setIsAutoRotating } from "../reducers/globe/auto-rotation";
-import { setSelectedLayerIds } from "../reducers/layers";
+import {  setSelectedLayerIds } from "../reducers/layers";
 import { setShowLayer } from "../reducers/show-layer-selector";
 
 import { languageSelector } from "../selectors/language";
@@ -16,7 +18,6 @@ import { appRouteSelector } from "../selectors/route-match";
 
 import { useGetLayerListQuery } from "../services/api";
 
-import { AppRoute } from "../types/app-routes";
 
 /**
  * Hook that manages globe state based on location changes
@@ -53,8 +54,6 @@ export function useGlobeRouteState() {
       return;
     }
 
-    updateAutoRotationState(appRoute === AppRoute.Base);
-
     switch (appRoute) {
       case AppRoute.Base:
         // On initial load, attempt to select the data layer specified via URL parameters.
@@ -66,8 +65,17 @@ export function useGlobeRouteState() {
             dispatch(setSelectedLayerIds({ layerId, isPrimary: true }));
             navigate(`/${layer.categories[0]}/data`);
           }
+          dispatch(setIsAutoRotating(true));
           break;
         }
+
+        // Reset the globe view to the default state
+        dispatch(
+          setFlyTo({
+            ...config.globe.view,
+            isAnimated: true,
+          }),
+        );
 
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
         dispatch(setSelectedContentAction({ contentId: null }));
@@ -77,8 +85,6 @@ export function useGlobeRouteState() {
         dispatch(setShowLayer(false));
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
 
-        // Reset the globe view
-        dispatch(setFlyTo(config.globe.view));
         break;
 
       case AppRoute.Data:

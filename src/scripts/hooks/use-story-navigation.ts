@@ -8,7 +8,7 @@ export const useStoryNavigation = (videoDuration: number) => {
   const { storyIds, storyIndex, slideIndex, selectedStory } =
     useContentParams();
 
-  const { isShowCasePath } = useAppRouteFlags();
+  const { isShowCaseView, isPresentView } = useAppRouteFlags();
 
   const numberOfSlides = selectedStory?.slides.length;
 
@@ -24,12 +24,13 @@ export const useStoryNavigation = (videoDuration: number) => {
   const previousSlideIndex = slideIndex - 1;
   const nextSlideIndex = slideIndex + 1;
 
-  if (!isShowCasePath) {
+  if (!isShowCaseView) {
+    const route = isPresentView ? "present" : "stories";
     if (previousSlideIndex >= 0) {
-      previousSlideLink = `/stories/${storyIds}/${previousSlideIndex}`;
+      previousSlideLink = `${route}/${storyIds}/${previousSlideIndex}`;
     }
     if (nextSlideIndex < numberOfSlides) {
-      nextSlideLink = `/stories/${storyIds}/${nextSlideIndex}`;
+      nextSlideLink = `${route}/${storyIds}/${nextSlideIndex}`;
     }
   }
 

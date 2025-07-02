@@ -29,6 +29,7 @@ import { State } from "../../../reducers";
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
@@ -42,7 +43,6 @@ import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import TimeSlider from "../../layers/time-slider/time-slider";
-import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 interface Props {
   className?: string;
@@ -63,7 +63,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;
 
-  const { isBaseRoute, isContentNavRoute, isStoriesRoute } = useAppRouteFlags();
+  const { isContentNavRoute, isStoriesRoute } = useAppRouteFlags();
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
@@ -123,8 +123,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
       <Globe
         {...(!isBase &&
           contentMarker && {
-          markers: [contentMarker],
-        })}
+            markers: [contentMarker],
+          })}
         backgroundColor={""}
         // We should offset the markers when user is in content nav
         isMarkerOffset={isContentNavRoute}
@@ -182,15 +182,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
   const compareImageLayer = useImageLayerData(compareLayerDetails, time);
 
-  const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
-
-  const updatedLayerDetails = isBaseRoute
-    ? {
-      ...(layerDetails || {}),
-      basemap: "clouds",
-    }
-    : layerDetails;
-
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
   useLayoutEffect(() => {
@@ -214,10 +205,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
     }
   }, [dispatch, mainId, compareId, globeSpinning]);
 
-  if (mainImageLayer?.type === LayerType.Gallery) {
-    return <Gallery imageLayer={mainImageLayer} />;
-  }
-
   return (
     <>
       {isContentNavRoute ? null : (
@@ -230,7 +217,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
       {getDataWidget({
         imageLayer: mainImageLayer,
-        layerDetails: updatedLayerDetails,
+        layerDetails: mainLayerDetails,
         active: isMainActive,
         action: () => setIsMainActive(true),
       })}

@@ -104,7 +104,6 @@ const Story: FunctionComponent = () => {
     if (slide.galleryItems) {
       return (
         <StoryGallery
-          route={appRoute}
           storyId={story.id}
           key={story.id}
           showLightbox={showLightbox}
@@ -185,7 +184,6 @@ const Story: FunctionComponent = () => {
         </main>
         <StoryFooter
           videoDuration={videoDuration}
-          mode={appRoute}
           slideIndex={slideIndex}
           selectedStory={selectedStory ? selectedStory : null}
         />
