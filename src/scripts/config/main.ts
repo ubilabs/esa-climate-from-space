@@ -17,24 +17,28 @@ import { getNormalizedScreenWidth } from "../libs/normalize-screen-width";
 export const ROUTES = {
   [AppRoute.LegacyStory]: {
     path: "stories/:storyId/:slideIndex",
+    end: true,
   },
-  [AppRoute.LegacyStories]: { path: "stories/" },
-  [AppRoute.About]: { path: "/about" },
+  [AppRoute.LegacyStories]: { path: "stories/", end: true },
+  [AppRoute.About]: { path: "/about", end: true },
   [AppRoute.PresentStory]: {
     path: "/present/:storyId/:slideIndex",
+    end: true,
   },
-  [AppRoute.Present]: { path: "/present" },
+  [AppRoute.Present]: { path: "/present", end: true },
   [AppRoute.ShowcaseStory]: {
     path: "/showcase/:storyIds/:storyIndex/:slideIndex",
+    end: true,
   },
-  [AppRoute.ShowcaseStories]: { path: "/showcase/:storyIds" },
-  [AppRoute.Showcase]: { path: "/showcase" },
+  [AppRoute.ShowcaseStories]: { path: "/showcase/:storyIds", end: true },
+  [AppRoute.Showcase]: { path: "/showcase", end: true },
   [AppRoute.Stories]: {
     path: "/:category/stories/:storyId/:slideIndex",
+    end: true,
   },
-  [AppRoute.Data]: { path: "/:category/data" },
-  [AppRoute.NavContent]: { path: "/:category" },
-  [AppRoute.Base]: { path: "/" },
+  [AppRoute.Data]: { path: "/:category/data", end: true },
+  [AppRoute.NavContent]: { path: "/:category", end: true },
+  [AppRoute.Base]: { path: "/", end: true },
 } as const;
 
 // Constants for auto-rotation timing of the content navigation

@@ -118,7 +118,6 @@ export function useGlobeRouteState() {
     layers,
     mainId,
     navigate,
-    selectedLayerIds?.mainId,
     updateAutoRotationState,
   ]);
 }
