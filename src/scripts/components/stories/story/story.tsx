@@ -12,7 +12,7 @@ import StoryGallery from "../story-gallery/story-gallery";
 import StoryGlobe from "../story-globe/story-globe";
 import StoryImage from "../story-image/story-image";
 import StoryVideo from "../story-video/story-video";
-import Navigation from "../../main/navigation/navigation";
+import Header from "../../main/header/header";
 
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { GalleryItemType } from "../../../types/gallery-item";
@@ -156,7 +156,7 @@ const Story: FunctionComponent = () => {
   };
   return (
     <>
-      <Navigation />
+      <Header />
       <div className={styles.story}>
         <main className={styles.main} ref={contentRef}>
           {/* Instead of rendering only the current slide we map over all slides to

@@ -27,9 +27,9 @@ import LanguageTooltip from "../language-tooltip/language-tooltip";
 import Menu from "../menu/menu";
 import Overlay from "../overlay/overlay";
 
-import styles from "./navigation.module.css";
+import styles from "./header.module.css";
 
-const Navigation: FunctionComponent = () => {
+const Header: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const selectedLanguage = useSelector(languageSelector);
@@ -56,7 +56,7 @@ const Navigation: FunctionComponent = () => {
 
   return (
     <>
-      <nav className={styles.navigation}>
+      <nav className={styles.header}>
         {logo && (
           <EsaLogo
             variant={
@@ -116,4 +116,4 @@ const Navigation: FunctionComponent = () => {
   );
 };
 
-export default Navigation;
+export default Header;
