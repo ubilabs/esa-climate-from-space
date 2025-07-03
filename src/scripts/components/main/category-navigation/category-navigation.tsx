@@ -155,7 +155,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   };
 
   // Calculate final rotation offset
-  const rotationOffset = getShortestRotation(currentRotation, targetRotation);
+  const rotationOffset =
+    getShortestRotation(currentRotation, targetRotation) - (isMobile ? 0 : 90);
 
   // Handle showing tooltip for both mouse events and keyboard focus
   const handleShowTooltip = (
