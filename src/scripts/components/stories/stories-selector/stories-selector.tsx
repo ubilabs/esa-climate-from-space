@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import StoryList from "../story-list/story-list";
 import StoryFilter from "../story-filter/story-filter";
-import Header from "../header/header";
+import LegacyHeader from "../legacy-header/legacy-header";
 import Share from "../../main/share/share";
 import { AppRoute } from "../../../types/app-routes";
 
@@ -19,13 +19,13 @@ const StoriesSelector: FunctionComponent = () => {
   return (
     <div className={styles.storiesSelector}>
       {header && (
-        <Header
+        <LegacyHeader
           backLink="/"
           backButtonId="backToDataMode"
           title={intl.formatMessage({ id: "storyMode" })}
         >
           <Share />
-        </Header>
+        </LegacyHeader>
       )}
       <StoryFilter />
       <StoryList route={AppRoute.Stories} />

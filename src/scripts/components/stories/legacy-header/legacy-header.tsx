@@ -9,7 +9,7 @@ import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 import Button from "../../main/button/button";
 import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
 
-import styles from "./header.module.css";
+import styles from "./legacy-header.module.css";
 
 interface Props {
   backLink: string;
@@ -18,7 +18,8 @@ interface Props {
   children?: React.ReactElement | React.ReactElement[];
 }
 
-const Header: FunctionComponent<Props> = ({
+// LegacyHeader component is used in the old stories and navigation (prior to v.2.0.0) section of the application.
+const LegacyHeader: FunctionComponent<Props> = ({
   backLink,
   title,
   backButtonId,
@@ -51,4 +52,4 @@ const Header: FunctionComponent<Props> = ({
   );
 };
 
-export default Header;
+export default LegacyHeader;
