@@ -33,7 +33,8 @@ import { setAppRoute } from "../../../reducers/app-route";
 import StoriesSelector from "../../legacy-stories/stories-selector/stories-selector";
 import PresentationSelector from "../../legacy-stories/presentation-selector/presentation-selector";
 import ShowcaseSelector from "../../legacy-stories/showcase-selector/showcase-selector";
-import Story from "../../legacy-stories/story/story";
+import LegacyStory from "../../legacy-stories/story/story";
+import Story from "../../stories/story/story";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
 
 import "./app.css";
@@ -96,25 +97,25 @@ const TranslatedApp: FunctionComponent = () => {
               path={ROUTES.legacy_stories.path}
               element={<StoriesSelector />}
             />
-            <Route path={ROUTES.legacy_story.path} element={<Story />} />
+            <Route path={ROUTES.legacy_story.path} element={<LegacyStory />} />
             {/* Present story routes */}
             <Route
               path={ROUTES.present.path}
               element={<PresentationSelector />}
             />
-            <Route path={ROUTES.present_story.path} element={<Story />} />
+            <Route path={ROUTES.present_story.path} element={<LegacyStory />} />
             <Route path={ROUTES.showcase.path} element={<ShowcaseSelector />} />
             {/* Showcase stories and story routes */}
             <Route
               path={ROUTES.showcase_stories.path}
               element={<ShowcaseSelector />}
             />
-            <Route path={ROUTES.showcase_story.path} element={<Story />} />
+            <Route path={ROUTES.showcase_story.path} element={<LegacyStory />} />
             {/*  Main application routes */}
             <Route path={ROUTES.base.path} element={<MainContent />} />
             <Route path={ROUTES.nav_content.path} element={<MainContent />} />
             <Route path={ROUTES.data.path} element={<MainContent />} />
-            <Route path={ROUTES.stories.path} element={<Story />} />
+            <Route path={ROUTES.stories.path} element={<MainContent />} />
           </Route>
         </Routes>
         <Tracking />
