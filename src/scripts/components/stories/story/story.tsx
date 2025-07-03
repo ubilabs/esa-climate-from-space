@@ -1,22 +1,23 @@
-import React, { FunctionComponent } from 'react';
-import { ImageGallery } from './blocks/image-gallery/image-gallery';
-import TextBlock from './blocks/text-block/text-block';
+import { FunctionComponent } from "react";
 
-type StoryExtraProps = {
-  ImageGallery?: typeof ImageGallery;
-  TextBlock?: typeof TextBlock;
-};
+import styles from "./story.module.css";
 
-const Story: FunctionComponent<{ children?: React.ReactNode }> & StoryExtraProps = ({ children }) => {
+import { ImageGallery } from "./blocks/image-gallery/image-gallery";
+import TextBlock from "./blocks/text-block/text-block";
+
+// type StoryExtraProps = {
+//   ImageGallery?: typeof ImageGallery;
+//   TextBlock?: typeof TextBlock;
+// };
+
+const Story: FunctionComponent = () => {
   return (
-    <div>
-      {children}
-    </div>
+    <main className={styles.story}>
+      <ImageGallery>
+        <ImageGallery.CompareMode />
+      </ImageGallery>
+    </main>
   );
 };
 
-Story.ImageGallery = ImageGallery;
-Story.TextBlock = TextBlock;
-
 export default Story;
-

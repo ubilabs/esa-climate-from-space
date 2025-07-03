@@ -24,7 +24,7 @@ export const ImageGallery: FunctionComponent<{ children: ReactNode }> &
 
     return (
       <ImageGalleryContext.Provider value={{ mode, setMode }}>
-        <div className="image-gallery">{children}</div>
+        <article className="image-gallery">{children}</article>
       </ImageGalleryContext.Provider>
     );
   };

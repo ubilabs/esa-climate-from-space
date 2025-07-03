@@ -1,12 +1,11 @@
-import React from 'react';
+import React from "react";
+import styles from "./compare-mode.module.css";
+import { FormatSection } from "../../../block-format-section/block-format-section";
 
 const CompareMode: React.FC = () => {
   return (
-    <div>
-      Compare Mode Component
-    </div>
+    <FormatSection className={styles.compareMode}>Compare Mode Component</FormatSection>
   );
 };
 
 export default CompareMode;
-

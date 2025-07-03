@@ -2,9 +2,9 @@ import React from 'react';
 
 const ScrollCaption: React.FC = () => {
   return (
-    <div>
+    <section>
       Scroll Caption Component
-    </div>
+    </section>
   );
 };
 

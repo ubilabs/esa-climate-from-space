@@ -1,12 +1,13 @@
-import{ FunctionComponent } from 'react';
+import { FunctionComponent } from "react";
+
+import styles from "./frequency-blend.module.css";
 
 const FrequencyBlend: FunctionComponent = () => {
   return (
-    <div>
+    <section className={styles.frequencyBlend}>
       Frequency Blend Component
-    </div>
+    </section>
   );
 };
 
 export default FrequencyBlend;
-

@@ -110,12 +110,23 @@ const TranslatedApp: FunctionComponent = () => {
               path={ROUTES.showcase_stories.path}
               element={<ShowcaseSelector />}
             />
-            <Route path={ROUTES.showcase_story.path} element={<LegacyStory />} />
+            <Route
+              path={ROUTES.showcase_story.path}
+              element={<LegacyStory />}
+            />
             {/*  Main application routes */}
             <Route path={ROUTES.base.path} element={<MainContent />} />
             <Route path={ROUTES.nav_content.path} element={<MainContent />} />
             <Route path={ROUTES.data.path} element={<MainContent />} />
-            <Route path={ROUTES.stories.path} element={<MainContent />} />
+            <Route
+              path={ROUTES.stories.path}
+              element={
+                <>
+                  <MainContent />
+                  <Story />
+                </>
+              }
+            />
           </Route>
         </Routes>
         <Tracking />
