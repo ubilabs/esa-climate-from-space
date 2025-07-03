@@ -4,6 +4,42 @@ import { UiEmbedElement } from "../types/embed-elements";
 
 import { GlobeProjection } from "../types/globe-projection";
 import { GlobeState } from "../reducers/globe/globe-state";
+import { AppRoute } from "../types/app-routes";
+import { getNormalizedScreenWidth } from "../libs/normalize-screen-width";
+
+/**
+ * Routes are utilized to manage state transitions within the application.
+ * The RouteMatch component is updating the state as it renders across all routes.
+ * Legacy routes are also supported and maintained.
+ * Extend or modify route patterns here as necessary to accommodate new requirements.
+ * Be aware that the order here matters because this object is used to match route patterns
+ */
+export const ROUTES = {
+  [AppRoute.LegacyStory]: {
+    path: "stories/:storyId/:slideIndex",
+    end: true,
+  },
+  [AppRoute.LegacyStories]: { path: "stories/", end: true },
+  [AppRoute.About]: { path: "/about", end: true },
+  [AppRoute.PresentStory]: {
+    path: "/present/:storyId/:slideIndex",
+    end: true,
+  },
+  [AppRoute.Present]: { path: "/present", end: true },
+  [AppRoute.ShowcaseStory]: {
+    path: "/showcase/:storyIds/:storyIndex/:slideIndex",
+    end: true,
+  },
+  [AppRoute.ShowcaseStories]: { path: "/showcase/:storyIds", end: true },
+  [AppRoute.Showcase]: { path: "/showcase", end: true },
+  [AppRoute.Stories]: {
+    path: "/:category/stories/:storyId/:slideIndex",
+    end: true,
+  },
+  [AppRoute.Data]: { path: "/:category/data", end: true },
+  [AppRoute.NavContent]: { path: "/:category", end: true },
+  [AppRoute.Base]: { path: "/", end: true },
+} as const;
 
 // Constants for auto-rotation timing of the content navigation
 // This is not related to the auto rotation of the globe
@@ -11,7 +47,8 @@ import { GlobeState } from "../reducers/globe/globe-state";
 export const AUTO_ROTATE_INTERVAL = 5000; // Time between auto-rotations in milliseconds
 export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interaction before restarting auto-rotation
 
-export const CONTENT_NAV_LONGITUDE_OFFSET = -55;
+export const CONTENT_NAV_LONGITUDE_OFFSET = -25;
+export const ALTITUDE_FACTOR_MOBILE = 0.4;
 
 // The order of these is important for the stories menu
 export const categoryTags = [
@@ -37,7 +74,9 @@ const globeState: GlobeState = {
     renderMode: "globe" as RenderMode,
     lat: 25,
     lng: 0,
-    altitude: 23840000,
+    // This is the default altitude for the globe view
+    // The altitude is adjusted based on the normalized screen width to ensure the globe is rendered proportionally across all screen sizes
+    altitude: 25840000 * getNormalizedScreenWidth(),
     zoom: 0,
     isAnimated: false,
   },

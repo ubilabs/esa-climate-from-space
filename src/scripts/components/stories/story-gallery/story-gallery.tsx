@@ -4,26 +4,25 @@ import cx from "classnames";
 import { PreviousIcon } from "../../main/icons/previous-icon";
 import { NextIcon } from "../../main/icons/next-icon";
 import { FullscreenIcon } from "../../main/icons/fullscreen-icon";
+
 import { useInterval } from "../../../hooks/use-interval";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
+
 import config from "../../../config/main";
 import { CloseIcon } from "../../main/icons/close-icon";
 import StoryGalleryItem from "../story-gallery-item/story-gallery-item";
 import StoryProgress from "../story-progress/story-progress";
 
-import { StoryMode } from "../../../types/story-mode";
-
 import styles from "./story-gallery.module.css";
 
 interface Props {
   storyId: string;
-  mode: StoryMode | null;
   children: React.ReactElement[];
   showLightbox: boolean;
   setShowLightbox: (showLightbox: boolean) => void;
 }
 
 const StoryGallery: FunctionComponent<Props> = ({
-  mode,
   showLightbox,
   setShowLightbox,
   children,
@@ -31,10 +30,11 @@ const StoryGallery: FunctionComponent<Props> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const showPrevButton = currentIndex > 0;
   const showNextButton = currentIndex < children.length - 1;
-  const delay = mode === StoryMode.Showcase ? config.delay : null;
+  const {isShowCaseView} = useAppRouteFlags();
+  const delay = isShowCaseView ? config.delay : null;
 
   useInterval(() => {
-    if (mode === StoryMode.Showcase) {
+    if (isShowCaseView ) {
       if (currentIndex >= children.length - 1) {
         return;
       }

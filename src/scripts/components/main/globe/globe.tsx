@@ -7,6 +7,8 @@ import {
   useRef,
   useState,
 } from "react";
+import { useNavigate } from "react-router-dom";
+import { renderToStaticMarkup } from "react-dom/server";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
 
@@ -29,18 +31,21 @@ import SHADING_TEXTURE_URL from "@ubilabs/esa-webgl-globe/textures/shading.png?u
 import { Layer } from "../../../types/layer";
 import { Marker } from "../../../types/marker-type";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
+import { useGlobeRouteState } from "../../../hooks/use-globe-route-state";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
 import { LayerType } from "../../../types/globe-layer-type";
 import { useScreenSize } from "../../../hooks/use-screen-size";
-import { useNavigate } from "react-router-dom";
 
 import { GlobeProjection } from "../../../types/globe-projection";
 import { isAutoRotatingSelector } from "../../../selectors/auto-rotate";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
+
+import { setIsAutoRotating } from "../../../reducers/globe/auto-rotation";
 import { setFlyTo } from "../../../reducers/fly-to";
-import { renderToStaticMarkup } from "react-dom/server";
+
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
 
@@ -66,6 +71,7 @@ interface Props {
   spinning: boolean;
   flyTo: CameraView | null;
   markers?: Marker[];
+  isMarkerOffset?: boolean;
   backgroundColor: string;
   onMouseEnter: () => void;
   onTouchStart: () => void;
@@ -77,7 +83,6 @@ interface Props {
     layerId: string,
     state: LayerLoadingState,
   ) => void;
-  showDataSet?: boolean;
 }
 
 export type GlobeProps = Partial<Props>;
@@ -149,6 +154,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
   const dispatch = useDispatch();
   const isAutoRotatingEnabled = useSelector(isAutoRotatingSelector);
+  useGlobeRouteState();
 
   // Track auto rotation with a ref to avoid dependencies issues
   const autoRotationRef = useRef<{
@@ -295,18 +301,19 @@ function useGlobeLayers(
   layerDetails: Layer | null,
   imageLayer: GlobeImageLayerData | null,
 ) {
+  const { isBaseRoute } = useAppRouteFlags();
   useEffect(() => {
     if (!globe) {
       return EMPTY_FUNCTION;
     }
-    const layers = getLayerProps(imageLayer, layerDetails);
+    const layers = getLayerProps(imageLayer, layerDetails, isBaseRoute);
 
     globe.setProps({ layers });
 
     // we don't reset the layers in the cleanup-function as this would lead
     // to animations not working.
     return EMPTY_FUNCTION;
-  }, [globe, layerDetails, imageLayer]);
+  }, [globe, layerDetails, imageLayer, isBaseRoute]);
 }
 
 /**
@@ -322,12 +329,16 @@ function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
     }
 
     globe.setProps({
-      markers: getMarkerProps(markers, (marker: Marker) => {
-        if (!marker.link) {
-          return;
-        }
-        navigate(marker.link);
-      }, isDesktop),
+      markers: getMarkerProps(
+        markers,
+        (marker: Marker) => {
+          if (!marker.link) {
+            return;
+          }
+          navigate(marker.link);
+        },
+        isDesktop,
+      ),
     });
 
     return () => {
@@ -407,7 +418,8 @@ function useMultiGlobeSynchronization(
   dispatch: Dispatch<UnknownAction>,
   rotationRef: RefObject<{ lat: number; lng: number }>,
 ) {
-  const { view, active, flyTo, showDataSet } = props;
+  const { view, active, flyTo, isMarkerOffset } = props;
+  const { isBaseRoute } = useAppRouteFlags();
 
   // Update rotationRef when view changes to keep it in sync with external changes
   useEffect(() => {
@@ -433,6 +445,7 @@ function useMultiGlobeSynchronization(
     animationId: null,
     lastFlyToTarget: null,
   });
+  const isAutoRotating = useSelector(isAutoRotatingSelector);
 
   // ! Make sure to reset the FlyTo after the animation has been applied
   // That way we make sure we can use the globe view to apply movements by event handlers
@@ -443,15 +456,26 @@ function useMultiGlobeSynchronization(
 
   // incoming flyTo cameraViews are always applied
   useEffect(() => {
+    if (!isBaseRoute && isAutoRotating) {
+      dispatch(setIsAutoRotating(false));
+    }
     // Skip entire effect if globe or flyTo is not available
     if (!globe || !flyTo) return;
+    // Globe movements by user interaction are not properly handled if we don't reset the flyTo
+    // Todo: fix! This is more a workaround than a solution
+    dispatch(setFlyTo(null));
     if (flyTo.isAnimated) {
       // Extract target coordinates
       const lat = flyTo.lat;
       const lng = flyTo.lng;
+      const altitude = flyTo.altitude;
 
       // Skip if we're already at the target position
-      if (rotationRef.current.lng === lng && rotationRef.current.lat === lat) {
+      if (
+        rotationRef.current.lng === lng &&
+        rotationRef.current.lat === lat &&
+        view.altitude === altitude
+      ) {
         return;
       }
 
@@ -460,7 +484,8 @@ function useMultiGlobeSynchronization(
         animationRef.current.isAnimating &&
         animationRef.current.lastFlyToTarget &&
         animationRef.current.lastFlyToTarget.lat === lat &&
-        animationRef.current.lastFlyToTarget.lng === lng
+        animationRef.current.lastFlyToTarget.lng === lng &&
+        animationRef.current.lastFlyToTarget.altitude === altitude
       ) {
         return;
       }
@@ -476,18 +501,20 @@ function useMultiGlobeSynchronization(
       }
 
       // Set the new animation target
-      animationRef.current.lastFlyToTarget = { lat, lng };
+      animationRef.current.lastFlyToTarget = { lat, lng, altitude };
       animationRef.current.isAnimating = true;
 
-      // Instead of the center, we have to adjust the target position so that
-      // actual point we want to move to is rotated the right side
-      // This is because only the right side of the globe is actually visible to the user
-      const targetLng = lng + (showDataSet ? 0 : CONTENT_NAV_LONGITUDE_OFFSET);
+      // Adjust the target position for offset and calculate deltas
+      const targetLng =
+        lng + (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0);
       const targetLat = lat;
+      const targetAltitude = altitude;
       const startLng = rotationRef.current.lng;
       const startLat = rotationRef.current.lat;
+      const startAltitude = view.altitude;
       const deltaLng = targetLng - startLng;
       const deltaLat = targetLat - startLat;
+      const deltaAltitude = targetAltitude - startAltitude;
 
       // Fixed duration: 2 seconds (2000ms)
       const animationDuration = 2000;
@@ -507,6 +534,7 @@ function useMultiGlobeSynchronization(
         // Apply the current position based on progress with easing
         const currentLng = startLng + deltaLng * easedProgress;
         const currentLat = startLat + deltaLat * easedProgress;
+        const currentAltitude = startAltitude + deltaAltitude * easedProgress;
 
         if (globe) {
           rotationRef.current.lng = currentLng;
@@ -515,7 +543,7 @@ function useMultiGlobeSynchronization(
             cameraView: {
               lng: currentLng,
               lat: currentLat,
-              altitude: view.altitude,
+              altitude: currentAltitude,
             },
           });
         }
@@ -532,7 +560,7 @@ function useMultiGlobeSynchronization(
               cameraView: {
                 lng: targetLng,
                 lat: targetLat,
-                altitude: view.altitude,
+                altitude: targetAltitude,
               },
             });
           }
@@ -540,7 +568,9 @@ function useMultiGlobeSynchronization(
           // Reset animation state
           animationRef.current.isAnimating = false;
           animationRef.current.animationId = null;
-          dispatch(setFlyTo(null));
+          if (isBaseRoute) {
+            dispatch(setIsAutoRotating(true));
+          }
         }
       };
 
@@ -557,16 +587,18 @@ function useMultiGlobeSynchronization(
         animationRef.current.animationId = null;
       }
       globe.setProps({ cameraView: flyTo });
-      dispatch(setFlyTo(null));
     }
   }, [
+    isAutoRotating,
+    isBaseRoute,
     dispatch,
     animationRef,
     rotationRef,
     globe,
     flyTo,
     view.altitude,
-    showDataSet,
+    isMarkerOffset,
+    view,
   ]);
   // Cleanup function to cancel any ongoing animation when unmounting
   return () => {
@@ -657,14 +689,11 @@ function useLayerLoadingStateUpdater(
 function getLayerProps(
   imageLayer: GlobeImageLayerData | null,
   layerDetails: Layer | null,
+  includeClouds: boolean = true,
 ) {
-  let basemapUrl = getBasemapUrl(layerDetails);
-  let cloudsUrl = null;
+  const basemapUrl = getBasemapUrl(layerDetails);
+  const cloudsUrl = getBasemapUrl({ basemap: "clouds" } as Layer);
 
-  if (layerDetails?.basemap === "clouds") {
-    cloudsUrl = getBasemapUrl({ basemap: "clouds" } as Layer);
-    basemapUrl = getBasemapUrl({ basemap: config.defaultBasemap } as Layer);
-  }
   const basemapMaxZoom = getBasemapMaxZoom(layerDetails);
 
   const layers = [
@@ -678,7 +707,7 @@ function getLayerProps(
     } as LayerProps,
   ];
 
-  if (cloudsUrl) {
+  if (includeClouds) {
     layers.push({
       id: "clouds",
       zIndex: 1,

@@ -6,48 +6,46 @@ import Autoplay from "../autoplay/autoplay";
 import { useStoryNavigation } from "../../../hooks/use-story-navigation";
 import { useMouseMove } from "../../../hooks/use-mouse-move";
 
-import { StoryMode } from "../../../types/story-mode";
 import { Story } from "../../../types/story";
 
 import styles from "./story-footer.module.css";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 interface Props {
-  mode: StoryMode | null;
   slideIndex: number;
   selectedStory: Story | null;
   videoDuration: number;
 }
 
 const StoryFooter: FunctionComponent<Props> = ({
-  mode,
   slideIndex,
   selectedStory,
   videoDuration,
 }) => {
-  const isShowcaseMode = mode === StoryMode.Showcase;
-  const isStoriesMode = mode === StoryMode.Stories;
+
+  const {isShowCaseView, isPresentView} = useAppRouteFlags();
 
   const { nextSlideLink, previousSlideLink, autoPlayLink, delay } =
     useStoryNavigation(videoDuration);
+  // console.log("nextSlideLink", nextSlideLink);
 
   const mouseMove = useMouseMove();
   const footerClasses = cx(
     styles.storyFooter,
-    !isStoriesMode && !mouseMove && styles.slideOutFooter,
+    (isShowCaseView || isPresentView) && !mouseMove && styles.slideOutFooter,
   );
 
   return (
     <div className={footerClasses}>
       {selectedStory && (
         <StoryPagination
-          mode={mode}
           slideIndex={slideIndex}
           storySlidesLength={selectedStory.slides.length}
           nextSlideLink={nextSlideLink}
           previousSlideLink={previousSlideLink}
         />
       )}
-      {isShowcaseMode && autoPlayLink && delay && (
+      {isShowCaseView && autoPlayLink && delay && (
         <Autoplay delay={delay} autoPlayLink={autoPlayLink} />
       )}
     </div>

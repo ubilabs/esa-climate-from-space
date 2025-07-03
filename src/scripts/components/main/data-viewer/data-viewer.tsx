@@ -1,25 +1,20 @@
-import { FunctionComponent, useRef, useState, useMemo, useEffect } from "react";
+import { FunctionComponent, useRef, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import cx from "classnames";
 
 import config, { categoryTags } from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
-import { useGlobeLocationState } from "../../../hooks/use-location";
-import { useContentParams } from "../../../hooks/use-content-params";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { languageSelector } from "../../../selectors/language";
-import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
-
-import { toggleEmbedElements } from "../../../reducers/embed-elements";
-
-import { StoryMode } from "../../../types/story-mode";
+import { appRouteSelector } from "../../../selectors/route-match";
 
 import {
   useGetLayerListQuery,
@@ -51,6 +46,8 @@ const DataViewer: FunctionComponent = () => {
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoryListQuery(language);
 
+  const appRoute = useSelector(appRouteSelector);
+
   const { data: layers } = useGetLayerListQuery(language);
 
   const contents = useMemo(
@@ -75,26 +72,8 @@ const DataViewer: FunctionComponent = () => {
   const { screenHeight, screenWidth, isMobile, isTouchDevice } =
     useScreenSize();
 
-  const { isNavigation, mode } = useContentParams();
-
-  const dispatch = useDispatch();
-  const embedElements = useSelector(embedElementsSelector);
-
-  // Enable legend and time slider only in content mode
-  useEffect(() => {
-    const isContentMode = mode === StoryMode.Content;
-    dispatch(
-      toggleEmbedElements({
-        ...embedElements,
-        legend: isContentMode,
-        time_slider: isContentMode,
-      }),
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, dispatch]);
-
-  // We need to reset the globe view every time the user navigates back from the the /data page
-  const { showContentList, showDataSet } = useGlobeLocationState();
+  const { isBaseRoute, isNavigationView, isDataRoute, isContentNavRoute } =
+    useAppRouteFlags();
 
   // There is a set of animations which should be played only once
   // This keeps track of that
@@ -131,16 +110,26 @@ const DataViewer: FunctionComponent = () => {
   return (
     // The data-view is a grid with three areas: header - main - footer
     // This is the header area
-    <div className={styles.dataViewer} data-nav-content={mode}>
+    <div className={styles.dataViewer} data-nav-content={appRoute}>
       {/* This is the main area
         The navigation consists of three main components: the globe, the category navigation and the content navigation
         The globe is the main component and is always visible
         The category navigation is visible when the content navigation is not visible
       */}
-      {isNavigation && (
+      <div
+        id="globeWrapper"
+        className={cx(
+          styles.globeWrapper,
+          isContentNavRoute && styles.showContentList,
+        )}
+      >
+        <GetDataWidget className={cx(styles.globe)} />
+      </div>
+      {isDataRoute && <GlobeNavigation />}
+      {isNavigationView && (
         <>
           <header className={styles.heading}>
-            {showContentList ? (
+            {isContentNavRoute ? (
               <Button
                 label={
                   !isMobile
@@ -156,27 +145,16 @@ const DataViewer: FunctionComponent = () => {
               </span>
             )}
           </header>
-          {!showContentList ? (
-            <CategoryNavigation
-              arcs={arcs}
-              width={screenWidth}
-              height={screenHeight}
-              isMobile={isMobile}
-              setCategory={setCurrentCategory}
-              isAnimationReady={hasAnimationPlayed}
-            />
-          ) : (
-            <ContentNavigation
-              isMobile={isMobile}
-              className={styles.contentNav}
-              category={currentCategory}
-              showContentList={showContentList}
-              contents={contents}
-            />
-          )}
-
-          {!showContentList ? (
+          {isBaseRoute && (
             <>
+              <CategoryNavigation
+                arcs={arcs}
+                width={screenWidth}
+                height={screenHeight}
+                isMobile={isMobile}
+                setCategory={setCurrentCategory}
+                isAnimationReady={hasAnimationPlayed}
+              />
               <Button
                 className={cx(
                   hasAnimationPlayed.current && styles.showFast,
@@ -187,38 +165,39 @@ const DataViewer: FunctionComponent = () => {
                 }}
                 label="explore"
               ></Button>
-            </>
-          ) : null}
-          {!showContentList && !hasAnimationPlayed.current && (
-            <span
-              aria-hidden="true"
-              className={cx(
-                // Make sure to show the gesture indicator depending on whether it is touch screen device
-                styles.gestureIndicator,
-                isTouchDevice ? styles.touch : styles.scroll,
+              {!hasAnimationPlayed.current && (
+                <span
+                  aria-hidden="true"
+                  className={cx(
+                    // Make sure to show the gesture indicator depending on whether it is touch screen device
+                    styles.gestureIndicator,
+                    isTouchDevice ? styles.touch : styles.scroll,
+                  )}
+                  data-content={intl.formatMessage({
+                    id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
+                  })}
+                ></span>
               )}
-              data-content={intl.formatMessage({
-                id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
-              })}
-            ></span>
+            </>
           )}
-          {showContentList && !isMobile && (
-            <span className={styles.currentCategory}>
-              <FormattedMessage id={`categories.${currentCategory}`} />
-            </span>
+          {isContentNavRoute && (
+            <>
+              <ContentNavigation
+                isMobile={isMobile}
+                className={styles.contentNav}
+                category={currentCategory}
+                showContentList
+                contents={contents}
+              />
+              {!isMobile && (
+                <span className={styles.currentCategory}>
+                  <FormattedMessage id={`categories.${currentCategory}`} />
+                </span>
+              )}
+            </>
           )}
         </>
       )}
-      <div
-        id="globeWrapper"
-        className={cx(
-          styles.globeWrapper,
-          showContentList && styles.showContentList,
-        )}
-      >
-        <GetDataWidget className={cx(styles.globe)} />
-      </div>
-      {showDataSet && <GlobeNavigation />}
     </div>
   );
 };
