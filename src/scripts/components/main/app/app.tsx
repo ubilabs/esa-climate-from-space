@@ -30,10 +30,10 @@ import { ROUTES } from "../../../config/main";
 
 import { setAppRoute } from "../../../reducers/app-route";
 
-import StoriesSelector from "../../stories/stories-selector/stories-selector";
-import PresentationSelector from "../../stories/presentation-selector/presentation-selector";
-import ShowcaseSelector from "../../stories/showcase-selector/showcase-selector";
-import Story from "../../stories/story/story";
+import StoriesSelector from "../../legacy-stories/stories-selector/stories-selector";
+import PresentationSelector from "../../legacy-stories/presentation-selector/presentation-selector";
+import ShowcaseSelector from "../../legacy-stories/showcase-selector/showcase-selector";
+import Story from "../../legacy-stories/story/story";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
 
 import "./app.css";
