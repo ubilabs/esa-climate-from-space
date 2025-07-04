@@ -1,6 +1,4 @@
 .imageGallery {
-  scroll-snap-type: y mandatory;
-  overflow: scroll;
-  height: 100vh;
-  scroll-snap-type: y mandatory;
+  /* overflow: scroll; */
+  height: 100%;
 }

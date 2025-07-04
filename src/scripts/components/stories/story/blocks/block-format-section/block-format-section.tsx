@@ -18,7 +18,7 @@ export const FormatParallexSection: FunctionComponent<Props> = ({
   <Parallax
     {...parallaxProps}
     className={cx(styles.formatSection, className)}
-    speed={Math.floor(Math.random() * 210) - 10}
+    speed={Math.floor(Math.random() * 21) - 10}
   >
     {children}
   </Parallax>

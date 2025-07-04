@@ -1,29 +1,77 @@
-import { FunctionComponent, RefObject } from "react";
+import { FunctionComponent, ReactNode, RefObject } from "react";
 
-import { ImageGallery } from "./blocks/image-gallery/image-gallery";
+import {
+  ImageGallery,
+  ImageGalleryCompoundComponents,
+  imageGalleryFormatMap,
+} from "./blocks/image-gallery/image-gallery";
 import { useContentParams } from "../../../hooks/use-content-params";
 import { useGetStoryQuery } from "../../../services/api";
 
 import styles from "./story.module.css";
+import { SplashScreen } from "./splashscreen/splashscreen";
+import { ImageGalleryBlock } from "../../../types/story";
 
 const Story: FunctionComponent<{ ref: RefObject<HTMLDivElement | null> }> = ({
   ref,
 }) => {
   const { currentStoryId } = useContentParams();
 
-  const {data: selectedStory} = useGetStoryQuery({
+  const { data: selectedStory } = useGetStoryQuery({
     id: currentStoryId,
     language: "en",
   });
-  console.log("Selected Story:", selectedStory);
+
+  const contentBlockMap:
+    | Record<
+      string,
+      FunctionComponent<{ children: ReactNode }> &
+      ImageGalleryCompoundComponents
+    >
+    | undefined = {
+    imageGallery: ImageGallery,
+  };
+
+  const formatMap: Record<ImageGalleryBlock["type"], FunctionComponent> = {
+    ...imageGalleryFormatMap,
+  };
 
   return (
     <main className={styles.story} ref={ref} id="story">
-      <ImageGallery>
-        <ImageGallery.CompareMode />
-        <ImageGallery.TimeBlend />
-        <ImageGallery.CompareMode />
-      </ImageGallery>
+      {selectedStory && (
+        <>
+          <SplashScreen />
+          {selectedStory.content.map((contentBlock, idx) => {
+            const BlockComponent = contentBlockMap[contentBlock.type];
+
+            if (!BlockComponent) {
+              console.warn(
+                `No component found for content block type: ${contentBlock.type}`,
+              );
+              return null;
+            }
+
+            return (
+              <BlockComponent key={idx}>
+                {/* <ContentComponent.CompareMode /> */}
+                {/* <div>TEST</div> */}
+                {contentBlock.blocks.map((block) => {
+                  const FormatComponent = formatMap[block.type];
+
+                  if (!FormatComponent) {
+                    console.warn(
+                      `No format component found for block type: ${block.type}`,
+                    );
+                    return null;
+                  }
+
+                  return <FormatComponent />;
+                })}
+              </BlockComponent>
+            );
+          })}
+        </>
+      )}
     </main>
   );
 };
