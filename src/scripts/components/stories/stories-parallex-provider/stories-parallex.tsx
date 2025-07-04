@@ -5,29 +5,38 @@ import {
   ReactNode,
   SetStateAction,
   use,
+  useEffect,
   useState,
 } from "react";
-import { ParallaxProvider, ParallaxProviderProps } from "react-scroll-parallax";
+import {
+  ParallaxProvider,
+  ParallaxProviderProps,
+  useParallaxController,
+} from "react-scroll-parallax";
 
-import { LegacyStory } from "../../../types/story";
+import { Story } from "../../../types/story";
+import { useLocation } from "react-router-dom";
 
 interface StoryContextProps {
-  story: LegacyStory | null;
-  setStory: Dispatch<SetStateAction<LegacyStory | null>>;
+  story: Story | null;
+  setStory: Dispatch<SetStateAction<Story | null>>;
+  setParallaxProviderProps: Dispatch<SetStateAction<ParallaxProviderProps>>;
 }
 
 const StoryContext = createContext<StoryContextProps | undefined>(undefined);
 
-export const CustomParallaxProvider: FunctionComponent<
-  ParallaxProviderProps & {
-    children: ReactNode;
-  }
-> = ({ children, ...parallaxProviderProps }) => {
-  const [story, setStory] = useState<LegacyStory | null>("test");
+export const CustomParallaxProvider: FunctionComponent<{
+  children: ReactNode;
+}> = ({ children }) => {
+
+  const [story, setStory] = useState<Story | null>(null);
+  const [parallaxProviderProps, setParallaxProviderProps] =
+    useState<ParallaxProviderProps>({});
+
   return (
-    <StoryContext.Provider value={{ story, setStory }}>
+    <StoryContext value={{ story, setStory, setParallaxProviderProps }}>
       <ParallaxProvider {...parallaxProviderProps}>{children}</ParallaxProvider>
-    </StoryContext.Provider>
+    </StoryContext>
   );
 };
 
@@ -39,4 +48,19 @@ export function useStoryContext(): StoryContextProps {
     );
   }
   return context;
+}
+
+export function useUpdateControllerOnRouteChange() {
+  const location = useLocation();
+  const parallaxController = useParallaxController();
+
+  useEffect(() => {
+    parallaxController?.update();
+  }, [location.pathname, parallaxController]);
+
+  useEffect(() => {
+    return () => {
+      parallaxController?.destroy();
+    };
+  }, [parallaxController]);
 }

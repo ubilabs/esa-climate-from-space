@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode, RefObject } from "react";
+import { FunctionComponent, ReactNode, useEffect, useRef } from "react";
 
 import {
   ImageGallery,
@@ -9,13 +9,26 @@ import { useContentParams } from "../../../hooks/use-content-params";
 import { useGetStoryQuery } from "../../../services/api";
 
 import styles from "./story.module.css";
-import { SplashScreen } from "./splashscreen/splashscreen";
 import { ImageGalleryBlock } from "../../../types/story";
+import { SplashScreen } from "./blocks/splashscreen/splashscreen";
+import {
+  useStoryContext,
+  useUpdateControllerOnRouteChange,
+} from "../stories-parallex-provider/stories-parallex";
 
-const Story: FunctionComponent<{ ref: RefObject<HTMLDivElement | null> }> = ({
-  ref,
-}) => {
+const Story: FunctionComponent = () => {
   const { currentStoryId } = useContentParams();
+  const storyElement = useRef<HTMLDivElement | null>(null);
+  useUpdateControllerOnRouteChange();
+
+  const { setParallaxProviderProps } = useStoryContext();
+  useEffect(() => {
+    if (!storyElement.current) {
+      return;
+    }
+
+    setParallaxProviderProps({ scrollContainer: storyElement.current });
+  }, [setParallaxProviderProps]);
 
   const { data: selectedStory } = useGetStoryQuery({
     id: currentStoryId,
@@ -37,7 +50,7 @@ const Story: FunctionComponent<{ ref: RefObject<HTMLDivElement | null> }> = ({
   };
 
   return (
-    <main className={styles.story} ref={ref} id="story">
+    <main className={styles.story} ref={storyElement} id="story">
       {selectedStory && (
         <>
           <SplashScreen />
@@ -53,9 +66,7 @@ const Story: FunctionComponent<{ ref: RefObject<HTMLDivElement | null> }> = ({
 
             return (
               <BlockComponent key={idx}>
-                {/* <ContentComponent.CompareMode /> */}
-                {/* <div>TEST</div> */}
-                {contentBlock.blocks.map((block) => {
+                {contentBlock.blocks.map((block, i) => {
                   const FormatComponent = formatMap[block.type];
 
                   if (!FormatComponent) {
@@ -65,7 +76,7 @@ const Story: FunctionComponent<{ ref: RefObject<HTMLDivElement | null> }> = ({
                     return null;
                   }
 
-                  return <FormatComponent />;
+                  return <FormatComponent key={i}/>;
                 })}
               </BlockComponent>
             );

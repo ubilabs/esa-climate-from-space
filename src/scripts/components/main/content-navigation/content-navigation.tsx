@@ -272,7 +272,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
           >
             <Link
               to={
-                isStory ? `/${category}/stories/story-image-gallery/0` : `/${category}/data`
+                isStory ? `/${category}/stories/${id}/0` : `/${category}/data`
               }
             >
               <div>

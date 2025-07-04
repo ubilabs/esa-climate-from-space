@@ -1,4 +1,10 @@
-import { FunctionComponent, StrictMode, useEffect, useRef, useState } from "react";
+import {
+  FunctionComponent,
+  StrictMode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   Provider as StoreProvider,
   useDispatch,
@@ -51,11 +57,10 @@ const matomoInstance = createInstance({
 
 const MainContent: FunctionComponent<{
   children?: React.ReactNode;
-  scrollEl?: HTMLDivElement | undefined;
-}> = ({ children, scrollEl }) => {
+}> = ({ children }) => {
   return (
     <>
-      <CustomParallaxProvider scrollContainer={scrollEl}>
+      <CustomParallaxProvider>
         <Header />
         {children}
         <DataViewer />
@@ -80,14 +85,6 @@ const RouteMatch: FunctionComponent = () => {
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
-
-  const [scrollEl, setScrollElement] = useState<HTMLDivElement | null>(null);
-
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setScrollElement(ref.current);
-  }, [setScrollElement]);
 
   return (
     <IntlProvider
@@ -139,10 +136,7 @@ const TranslatedApp: FunctionComponent = () => {
               path={ROUTES.stories.path}
               element={
                 <>
-                  <MainContent
-                    scrollEl={scrollEl}
-                    children={<Story ref={ref} />}
-                  />
+                  <MainContent children={<Story />} />
                 </>
               }
             />
