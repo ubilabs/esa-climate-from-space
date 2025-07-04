@@ -8,7 +8,6 @@ import {
 import { useContentParams } from "../../../hooks/use-content-params";
 import { useGetStoryQuery } from "../../../services/api";
 
-import styles from "./story.module.css";
 import { ImageGalleryBlock } from "../../../types/story";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 import {
@@ -16,12 +15,16 @@ import {
   useUpdateControllerOnRouteChange,
 } from "../stories-parallex-provider/stories-parallex";
 
+import cx from "classnames";
+
+import styles from "./story.module.css";
+
 const Story: FunctionComponent = () => {
   const { currentStoryId } = useContentParams();
   const storyElement = useRef<HTMLDivElement | null>(null);
   useUpdateControllerOnRouteChange();
 
-  const { setParallaxProviderProps } = useStoryContext();
+  const { setParallaxProviderProps, setStory } = useStoryContext();
   useEffect(() => {
     if (!storyElement.current) {
       return;
@@ -34,6 +37,19 @@ const Story: FunctionComponent = () => {
     id: currentStoryId,
     language: "en",
   });
+
+  useEffect(() => {
+    if (selectedStory) {
+      setStory(selectedStory);
+    }
+  }, [selectedStory, setStory]);
+
+  if (!selectedStory) {
+    console.warn(
+      `No story found for id: ${currentStoryId}. Please check the story ID or ensure the story exists.`,
+    );
+    return null;
+  }
 
   const contentBlockMap:
     | Record<
@@ -50,7 +66,7 @@ const Story: FunctionComponent = () => {
   };
 
   return (
-    <main className={styles.story} ref={storyElement} id="story">
+    <main className={cx(styles.story, styles.fadeIn)} ref={storyElement} id="story">
       {selectedStory && (
         <>
           <SplashScreen />
@@ -76,7 +92,7 @@ const Story: FunctionComponent = () => {
                     return null;
                   }
 
-                  return <FormatComponent key={i}/>;
+                  return <FormatComponent key={i} />;
                 })}
               </BlockComponent>
             );

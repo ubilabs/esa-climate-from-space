@@ -1,10 +1,11 @@
 import React from 'react';
+import { FormatParallexSection } from '../../../block-format-section/block-format-section';
 
 const TimeBlend: React.FC = () => {
   return (
-    <div>
+    <FormatParallexSection>
       Time Blend Component
-    </div>
+    </FormatParallexSection>
   );
 };
 

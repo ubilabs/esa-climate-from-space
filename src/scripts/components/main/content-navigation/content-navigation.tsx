@@ -271,6 +271,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             }}
           >
             <Link
+              prefetch="viewport"
               to={
                 isStory ? `/${category}/stories/${id}/0` : `/${category}/data`
               }
