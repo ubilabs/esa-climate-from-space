@@ -20,7 +20,7 @@ import { contentSelector } from "../../../selectors/content";
 import { LayerListItem } from "../../../types/layer-list";
 import { StoryListItem } from "../../../types/story-list";
 import { GalleryItemType } from "../../../types/gallery-item";
-import { Story } from "../../../types/story";
+import { LegacyStory } from "../../../types/story";
 
 import useAutoRotate from "../../../hooks/use-auto-content-rotation";
 import {
@@ -198,7 +198,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
     language: lang,
   });
 
-  const getStoryMediaType = (item: StoryListItem, stories?: Story[]) => {
+  const getStoryMediaType = (item: StoryListItem, stories?: LegacyStory[]) => {
     let type = "blog";
 
     const story = stories?.find((story) => story.id === item.id);
@@ -272,7 +272,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
           >
             <Link
               to={
-                isStory ? `/${category}/stories/${id}/0` : `/${category}/data`
+                isStory ? `/${category}/stories/story-image-gallery/0` : `/${category}/data`
               }
             >
               <div>

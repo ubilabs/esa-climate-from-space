@@ -17,14 +17,14 @@ import Header from "../../main/header/header";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { GalleryItemType } from "../../../types/gallery-item";
 import { GlobeProjection } from "../../../types/globe-projection";
-import { Slide, Story as StoryType } from "../../../types/story";
+import { Slide, LegacyStory as StoryType } from "../../../types/story";
 
 import StoryEmbedded from "../story-embedded/story-embedded";
 
 import { setFlyTo } from "../../../reducers/fly-to";
 import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { setSelectedLayerIds } from "../../../reducers/layers";
-import { useGetStoryListQuery, useGetStoryQuery } from "../../../services/api";
+import { useGetStoryListQuery, useGetLegacyStoryQuery } from "../../../services/api";
 import { appRouteSelector } from "../../../selectors/route-match";
 import { languageSelector } from "../../../selectors/language";
 
@@ -47,7 +47,7 @@ const Story: FunctionComponent = () => {
 
   useGetStoryListQuery(lang);
 
-  const { data: selectedStory } = useGetStoryQuery({
+  const { data: selectedStory } = useGetLegacyStoryQuery({
     id: currentStoryId,
     language: lang,
   });

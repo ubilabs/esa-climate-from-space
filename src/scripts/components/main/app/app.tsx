@@ -1,4 +1,4 @@
-import { FunctionComponent, StrictMode, useEffect } from "react";
+import { FunctionComponent, StrictMode, useEffect, useRef, useState } from "react";
 import {
   Provider as StoreProvider,
   useDispatch,
@@ -39,6 +39,7 @@ import AboutProjectOverlay from "../about-project-overlay/about-project-overlay"
 
 import "./app.css";
 import "../../../../variables.css";
+import { CustomParallaxProvider } from "../../stories/stories-parallex-provider/stories-parallex";
 
 // Create Matomo tracking instance
 const matomoInstance = createInstance({
@@ -48,13 +49,21 @@ const matomoInstance = createInstance({
   srcUrl: "https://matomo-ext.esa.int/matomo.js",
 });
 
-const MainContent: FunctionComponent = () => (
-  <>
-    <Header />
-    <DataViewer />
-    <LayerSelector />
-  </>
-);
+const MainContent: FunctionComponent<{
+  children?: React.ReactNode;
+  scrollEl?: HTMLDivElement | undefined;
+}> = ({ children, scrollEl }) => {
+  return (
+    <>
+      <CustomParallaxProvider scrollContainer={scrollEl}>
+        <Header />
+        {children}
+        <DataViewer />
+        <LayerSelector />
+      </CustomParallaxProvider>
+    </>
+  );
+};
 
 // This component is used to update the app route in the store
 // This is useful because we use the current path to determine app state
@@ -71,6 +80,14 @@ const RouteMatch: FunctionComponent = () => {
 
 const TranslatedApp: FunctionComponent = () => {
   const language = useSelector(languageSelector);
+
+  const [scrollEl, setScrollElement] = useState<HTMLDivElement | null>(null);
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setScrollElement(ref.current);
+  }, [setScrollElement]);
 
   return (
     <IntlProvider
@@ -122,8 +139,10 @@ const TranslatedApp: FunctionComponent = () => {
               path={ROUTES.stories.path}
               element={
                 <>
-                  <MainContent />
-                  <Story />
+                  <MainContent
+                    scrollEl={scrollEl}
+                    children={<Story ref={ref} />}
+                  />
                 </>
               }
             />

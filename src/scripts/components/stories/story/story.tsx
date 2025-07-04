@@ -1,19 +1,27 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, RefObject } from "react";
+
+import { ImageGallery } from "./blocks/image-gallery/image-gallery";
+import { useContentParams } from "../../../hooks/use-content-params";
+import { useGetStoryQuery } from "../../../services/api";
 
 import styles from "./story.module.css";
 
-import { ImageGallery } from "./blocks/image-gallery/image-gallery";
-import TextBlock from "./blocks/text-block/text-block";
+const Story: FunctionComponent<{ ref: RefObject<HTMLDivElement | null> }> = ({
+  ref,
+}) => {
+  const { currentStoryId } = useContentParams();
 
-// type StoryExtraProps = {
-//   ImageGallery?: typeof ImageGallery;
-//   TextBlock?: typeof TextBlock;
-// };
+  const {data: selectedStory} = useGetStoryQuery({
+    id: currentStoryId,
+    language: "en",
+  });
+  console.log("Selected Story:", selectedStory);
 
-const Story: FunctionComponent = () => {
   return (
-    <main className={styles.story}>
+    <main className={styles.story} ref={ref} id="story">
       <ImageGallery>
+        <ImageGallery.CompareMode />
+        <ImageGallery.TimeBlend />
         <ImageGallery.CompareMode />
       </ImageGallery>
     </main>

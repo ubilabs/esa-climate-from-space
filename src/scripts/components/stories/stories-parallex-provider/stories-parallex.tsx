@@ -1,25 +1,42 @@
-import React, { createContext, useContext } from 'react';
-import styles from './stories.module.css';
+import {
+  createContext,
+  Dispatch,
+  FunctionComponent,
+  ReactNode,
+  SetStateAction,
+  use,
+  useState,
+} from "react";
+import { ParallaxProvider, ParallaxProviderProps } from "react-scroll-parallax";
 
-interface StoriesProps {
-  children: React.ReactNode;
+import { LegacyStory } from "../../../types/story";
+
+interface StoryContextProps {
+  story: LegacyStory | null;
+  setStory: Dispatch<SetStateAction<LegacyStory | null>>;
 }
 
-const StoriesContext = createContext({});
+const StoryContext = createContext<StoryContextProps | undefined>(undefined);
 
-const StoriesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const CustomParallaxProvider: FunctionComponent<
+  ParallaxProviderProps & {
+    children: ReactNode;
+  }
+> = ({ children, ...parallaxProviderProps }) => {
+  const [story, setStory] = useState<LegacyStory | null>("test");
   return (
-    <StoriesContext.Provider value={{}}>
-      <div className={styles.stories}>{children}</div>
-    </StoriesContext.Provider>
+    <StoryContext.Provider value={{ story, setStory }}>
+      <ParallaxProvider {...parallaxProviderProps}>{children}</ParallaxProvider>
+    </StoryContext.Provider>
   );
 };
 
-export const useStories = () => useContext(StoriesContext);
-
-const Stories: React.FC<StoriesProps> = ({ children }) => {
-  return <StoriesProvider>{children}</StoriesProvider>;
-};
-
-export default Stories;
-
+export function useStoryContext(): StoryContextProps {
+  const context = use(StoryContext);
+  if (!context) {
+    throw new Error(
+      "useStoryContext must be used within a CustomParallaxProvider",
+    );
+  }
+  return context;
+}

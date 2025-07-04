@@ -6,14 +6,14 @@ import Autoplay from "../autoplay/autoplay";
 import { useStoryNavigation } from "../../../hooks/use-story-navigation";
 import { useMouseMove } from "../../../hooks/use-mouse-move";
 
-import { Story } from "../../../types/story";
+import { LegacyStory } from "../../../types/story";
 
 import styles from "./story-footer.module.css";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 interface Props {
   slideIndex: number;
-  selectedStory: Story | null;
+  selectedStory: LegacyStory | null;
   videoDuration: number;
 }
 

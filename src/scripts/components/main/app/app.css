@@ -10,10 +10,14 @@
   src: url("../../../../../assets/fonts/NotesEsaBol.otf");
 }
 
+body {
+  overflow: hidden;
+  /* scroll-snap-type: x mandatory; */
+}
+
 html,
 body,
 #app {
-  overflow: hidden;
   margin: 0;
   height: 100%;
   background-color: var(--black);
@@ -29,19 +33,22 @@ body,
   grid-template-columns: 100vw;
   background: rgba(0, 51, 73, 0.4);
 }
+
 * {
   scrollbar-color: var(--dark-grey-1) transparent;
   scrollbar-width: auto;
 }
+
 ::-webkit-scrollbar {
   width: 12px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background-color: var(--dark-grey-1);
   -webkit-box-shadow: inset 0 0 6px rgba(16, 22, 26, 0.9);
 }
-

@@ -1,10 +1,10 @@
-import React from "react";
+import  { FunctionComponent } from "react";
 import styles from "./compare-mode.module.css";
-import { FormatSection } from "../../../block-format-section/block-format-section";
+import { FormatParallexSection } from "../../../block-format-section/block-format-section";
 
-const CompareMode: React.FC = () => {
+const CompareMode: FunctionComponent = () => {
   return (
-    <FormatSection className={styles.compareMode}>Compare Mode Component</FormatSection>
+    <FormatParallexSection className={styles.compareMode}>Compare Mode Component</FormatParallexSection>
   );
 };
 
