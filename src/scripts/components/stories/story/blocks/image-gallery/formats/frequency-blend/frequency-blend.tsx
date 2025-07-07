@@ -1,13 +1,13 @@
 import { FunctionComponent } from "react";
-import { FormatParallexSection } from "../../../block-format-section/block-format-section";
 
 import styles from "./frequency-blend.module.css";
+import { FormatParallexLayout } from "../../../../../layout/block-format-layout/block-format-section";
 
 const FrequencyBlend: FunctionComponent = () => {
   return (
-    <FormatParallexSection className={styles.frequencyBlend}>
+    <FormatParallexLayout className={styles.frequencyBlend}>
       Frequency Blend Component
-    </FormatParallexSection>
+    </FormatParallexLayout>
   );
 };
 

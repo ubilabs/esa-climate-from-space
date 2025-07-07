@@ -1,12 +1,12 @@
 import { FunctionComponent } from "react";
 
 import styles from "./splashscreen.module.css";
-import { FormatParallexSection } from "../block-format-section/block-format-section";
-import { useStoryContext } from "../../../stories-parallex-provider/stories-parallex";
 import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
+import { useStory } from "../../../../../providers/story/use-story";
+import { FormatParallexLayout } from "../../../layout/block-format-layout/block-format-section";
 
 export const SplashScreen: FunctionComponent = () => {
-  const { story } = useStoryContext();
+  const { story } = useStory();
 
   if (!story) {
     return null;
@@ -18,8 +18,8 @@ export const SplashScreen: FunctionComponent = () => {
 
   const imageUrl = getStoryAssetUrl(id, image);
   return (
-    <FormatParallexSection className={styles.splashscreen}>
+    <FormatParallexLayout className={styles.splashscreen}>
       <img src={imageUrl} />
-    </FormatParallexSection>
+    </FormatParallexLayout>
   );
 };

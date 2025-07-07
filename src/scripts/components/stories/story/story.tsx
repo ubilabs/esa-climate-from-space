@@ -1,4 +1,9 @@
-import { FunctionComponent, ReactNode, useEffect, useRef } from "react";
+import {
+  FunctionComponent,
+  ReactNode,
+  useCallback,
+  useEffect,
+} from "react";
 
 import {
   ImageGallery,
@@ -10,28 +15,28 @@ import { useGetStoryQuery } from "../../../services/api";
 
 import { ImageGalleryBlock } from "../../../types/story";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
-import {
-  useStoryContext,
-  useUpdateControllerOnRouteChange,
-} from "../stories-parallex-provider/stories-parallex";
 
 import cx from "classnames";
 
 import styles from "./story.module.css";
+import { useUpdateControllerOnRouteChange } from "../../../providers/parallax/use-parallax-config";
+import { useStory } from "../../../providers/story/use-story";
 
 const Story: FunctionComponent = () => {
   const { currentStoryId } = useContentParams();
-  const storyElement = useRef<HTMLDivElement | null>(null);
   useUpdateControllerOnRouteChange();
 
-  const { setParallaxProviderProps, setStory } = useStoryContext();
-  useEffect(() => {
-    if (!storyElement.current) {
-      return;
-    }
+  const { setStory, setStoryElement } = useStory();
 
-    setParallaxProviderProps({ scrollContainer: storyElement.current });
-  }, [setParallaxProviderProps]);
+  // A callback Ref ensures setStoryElement is called the moment the DOM node is available. We are using similar approach in globe.tsx
+  const callbackRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (node) {
+        setStoryElement(node);
+      }
+    },
+    [setStoryElement],
+  );
 
   const { data: selectedStory } = useGetStoryQuery({
     id: currentStoryId,
@@ -53,10 +58,10 @@ const Story: FunctionComponent = () => {
 
   const contentBlockMap:
     | Record<
-      string,
-      FunctionComponent<{ children: ReactNode }> &
-      ImageGalleryCompoundComponents
-    >
+        string,
+        FunctionComponent<{ children: ReactNode }> &
+          ImageGalleryCompoundComponents
+      >
     | undefined = {
     imageGallery: ImageGallery,
   };
@@ -66,7 +71,11 @@ const Story: FunctionComponent = () => {
   };
 
   return (
-    <main className={cx(styles.story, styles.fadeIn)} ref={storyElement} id="story">
+    <main
+      className={cx(styles.story, styles.fadeIn)}
+      ref={callbackRef}
+      id="story"
+    >
       {selectedStory && (
         <>
           <SplashScreen />

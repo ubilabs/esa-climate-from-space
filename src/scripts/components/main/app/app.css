@@ -10,16 +10,19 @@
   src: url("../../../../../assets/fonts/NotesEsaBol.otf");
 }
 
-body {
+html,
+body,
+app {
   overflow: hidden;
-  /* scroll-snap-type: x mandatory; */
+
 }
 
 html,
 body,
 #app {
   margin: 0;
-  height: 100%;
+  height: 100vh;
+  height: 100dvh;
   background-color: var(--black);
   font-family: NotesEsa, Arial, Helvetica, sans-serif;
 }

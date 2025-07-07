@@ -1,10 +1,5 @@
-import {
-  FunctionComponent,
-  StrictMode,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { FunctionComponent, StrictMode, useEffect } from "react";
+
 import {
   Provider as StoreProvider,
   useDispatch,
@@ -45,7 +40,8 @@ import AboutProjectOverlay from "../about-project-overlay/about-project-overlay"
 
 import "./app.css";
 import "../../../../variables.css";
-import { CustomParallaxProvider } from "../../stories/stories-parallex-provider/stories-parallex";
+import { CustomParallaxProvider } from "../../../providers/parallax/parallex-provider";
+import { StoryProvider } from "../../../providers/story/story-provider";
 
 // Create Matomo tracking instance
 const matomoInstance = createInstance({
@@ -60,12 +56,14 @@ const MainContent: FunctionComponent<{
 }> = ({ children }) => {
   return (
     <>
-      <CustomParallaxProvider>
-        <Header />
-        {children}
-        <DataViewer />
-        <LayerSelector />
-      </CustomParallaxProvider>
+      <StoryProvider>
+        <CustomParallaxProvider>
+          <Header />
+          {children}
+          <DataViewer />
+          <LayerSelector />
+        </CustomParallaxProvider>
+      </StoryProvider>
     </>
   );
 };

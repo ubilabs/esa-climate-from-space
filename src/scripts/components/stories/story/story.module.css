@@ -2,8 +2,8 @@
   z-index: 1;
   grid-area: content;
   background: rgba(255, 255, 255, 1 );
-  max-height: 100vh;
-  max-height: 100dvh;
+  /* max-height: 100vh; */
+  /* max-height: 100dvh; */
   overflow: scroll;
   scroll-snap-type: y mandatory;
   position: relative;
