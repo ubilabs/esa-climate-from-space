@@ -37,11 +37,11 @@ export type ContentBlock = {
 
 export type ImageGalleryBlock = {
   type:
-  | "scrollOverlay"
-  | "frequencyBlend"
-  | "compareMode"
-  | "timeBlend"
-  | "scrollCaption"; // Add more block types as needed
+    | "scrollOverlay"
+    | "frequencyBlend"
+    | "compareMode"
+    | "timeBlend"
+    | "scrollCaption"; // Add more block types as needed
   description?: string; // optional long text
   shortText?: string;
   slides: ImageSlide[];
@@ -54,6 +54,10 @@ export type ImageSlide = {
   fit?: "cover" | "contain";
 };
 
+export type StorySectionProps = {
+  slideIndex: number;
+};
+
 export const imageGalleryBlockComponentMap: Record<
   ImageGalleryBlock["type"],
   FunctionComponent | undefined
@@ -61,4 +65,6 @@ export const imageGalleryBlockComponentMap: Record<
   compareMode: CompareMode,
   timeBlend: TimeBlend,
   frequencyBlend: FrequencyBlend,
+  scrollOverlay: undefined,
+  scrollCaption: undefined,
 };

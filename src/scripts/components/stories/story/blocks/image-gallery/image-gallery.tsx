@@ -20,7 +20,6 @@ export type ImageGalleryCompoundComponents = {
 
 export const ImageGallery = (({ children }: { children: ReactNode }) => {
   const [mode, setMode] = useState<GalleryFormats>(GalleryFormats.Blend);
-  console.log("i am rendering");
 
   return (
     <ImageGalleryContext.Provider value={{ mode, setMode }}>

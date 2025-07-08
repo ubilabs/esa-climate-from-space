@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ScrollCaption: React.FC = () => {
+const ScrollCaption: FunctionComponent = () => {
   return (
     <section>
       Scroll Caption Component

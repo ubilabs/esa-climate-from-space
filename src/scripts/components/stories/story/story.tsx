@@ -3,6 +3,7 @@ import {
   ReactNode,
   useCallback,
   useEffect,
+  useLayoutEffect,
 } from "react";
 
 import {
@@ -13,7 +14,7 @@ import {
 import { useContentParams } from "../../../hooks/use-content-params";
 import { useGetStoryQuery } from "../../../services/api";
 
-import { ImageGalleryBlock } from "../../../types/story";
+import { ImageGalleryBlock, StorySectionProps } from "../../../types/story";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 
 import cx from "classnames";
@@ -21,12 +22,19 @@ import cx from "classnames";
 import styles from "./story.module.css";
 import { useUpdateControllerOnRouteChange } from "../../../providers/parallax/use-parallax-config";
 import { useStory } from "../../../providers/story/use-story";
+// import { NavigationObserver } from "../utils/navigation-observer";
 
 const Story: FunctionComponent = () => {
   const { currentStoryId } = useContentParams();
   useUpdateControllerOnRouteChange();
 
-  const { setStory, setStoryElement } = useStory();
+  const { setStory, setStoryElement, storyElement } = useStory();
+
+  // useLayoutEffect(() => {
+  //   // const storyElements = storyElement?.querySelectorAll("#chapterSequence");
+  //   // console.log("storyElements", storyElements);
+  // }, [storyElement]);
+  // // chapterNav.observe()
 
   // A callback Ref ensures setStoryElement is called the moment the DOM node is available. We are using similar approach in globe.tsx
   const callbackRef = useCallback(
@@ -66,7 +74,10 @@ const Story: FunctionComponent = () => {
     imageGallery: ImageGallery,
   };
 
-  const formatMap: Record<ImageGalleryBlock["type"], FunctionComponent> = {
+  const formatMap: Record<
+    ImageGalleryBlock["type"],
+    FunctionComponent<StorySectionProps>
+  > = {
     ...imageGalleryFormatMap,
   };
 
@@ -78,7 +89,7 @@ const Story: FunctionComponent = () => {
     >
       {selectedStory && (
         <>
-          <SplashScreen />
+          <SplashScreen slideIndex={0} />
           {selectedStory.content.map((contentBlock, idx) => {
             const BlockComponent = contentBlockMap[contentBlock.type];
 
@@ -101,7 +112,7 @@ const Story: FunctionComponent = () => {
                     return null;
                   }
 
-                  return <FormatComponent key={i} />;
+                  return <FormatComponent key={i} slideIndex={i + 1} />;
                 })}
               </BlockComponent>
             );

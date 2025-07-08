@@ -28,7 +28,6 @@ const StoryPagination: FunctionComponent<Props> = ({
   const { isShowCaseView, isPresentView } = useAppRouteFlags();
 
   const route = isShowCaseView ? "showcase" : isPresentView ? "present" : "";
-  console.log("nextSlideLink", nextSlideLink);
 
   const onKeyDownHandler = useCallback(
     (event: KeyboardEvent) => {

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
+import { StorySectionProps } from '../../../../../../../types/story';
 
-const ScrollOverlay: React.FC = () => {
+const ScrollOverlay: FunctionComponent<StorySectionProps> = ({ slideIndex }) => {
   return (
     <div>
       Scroll Overlay Component
