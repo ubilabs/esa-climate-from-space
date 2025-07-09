@@ -1,6 +1,5 @@
-import { FunctionComponent, ReactNode, useState } from "react";
+import { FunctionComponent, ReactNode } from "react";
 
-import { GalleryFormats, ImageGalleryContext } from "./image-gallery-context";
 import FrequencyBlend from "./formats/frequency-blend/frequency-blend";
 import CompareMode from "./formats/compare-mode/compare-mode";
 import TimeBlend from "./formats/time-blend/time-blend";
@@ -18,13 +17,7 @@ export type ImageGalleryCompoundComponents = {
 };
 
 export const ImageGallery = (({ children }: { children: ReactNode }) => {
-  const [mode, setMode] = useState<GalleryFormats>(GalleryFormats.Blend);
-
-  return (
-    <ImageGalleryContext.Provider value={{ mode, setMode }}>
-      <article className={styles.imageGallery}>{children}</article>
-    </ImageGalleryContext.Provider>
-  );
+  return <article className={styles.imageGallery}>{children}</article>;
 }) as FunctionComponent<{ children: ReactNode }> &
   ImageGalleryCompoundComponents;
 
@@ -33,4 +26,3 @@ ImageGallery.CompareMode = CompareMode;
 ImageGallery.TimeBlend = TimeBlend;
 ImageGallery.ScrollCaption = ScrollCaption;
 ImageGallery.ScrollOverlay = ScrollOverlay;
-
