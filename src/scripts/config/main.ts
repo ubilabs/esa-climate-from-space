@@ -107,6 +107,8 @@ if (import.meta.env.PROD) {
   baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}/`;
 }
 
+export const SLIDE_INDEX_ATTRIBUTE = "data-slide-index";
+
 type BasemapId =
   | "atmosphere"
   | "blue"

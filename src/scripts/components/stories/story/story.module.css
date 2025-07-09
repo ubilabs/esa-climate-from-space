@@ -1,9 +1,7 @@
 .story {
   z-index: 1;
   grid-area: content;
-  background: rgba(255, 255, 255, 1 );
-  /* max-height: 100vh; */
-  /* max-height: 100dvh; */
+  background: rgba(255, 255, 255, 1);
   overflow: scroll;
   scroll-snap-type: y mandatory;
   position: relative;

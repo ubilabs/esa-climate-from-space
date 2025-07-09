@@ -1,6 +1,7 @@
 import { FunctionComponent, PropsWithChildren, ReactNode } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { SLIDE_INDEX_ATTRIBUTE } from "../../../../config/main";
 import { Parallax, ParallaxProps } from "react-scroll-parallax";
 
 import { useStory } from "../../../../providers/story/use-story";
@@ -15,7 +16,6 @@ interface Props extends PropsWithChildren<ParallaxProps> {
   index?: number;
 }
 
-export const indexAttribute = "data-index";
 
 export const FormatParallexLayout: FunctionComponent<Props> = ({
   children,
@@ -34,7 +34,7 @@ export const FormatParallexLayout: FunctionComponent<Props> = ({
       data-index={index}
       rootMargin={{ top: -100, right: 0, bottom: -100, left: 0 }}
       onEnter={(pEl) => {
-        const currentIndex = pEl.el.getAttribute(indexAttribute);
+        const currentIndex = pEl.el.getAttribute(SLIDE_INDEX_ATTRIBUTE);
 
         if (!currentIndex) {
           console.warn(

@@ -1,11 +1,8 @@
-import { FunctionComponent, memo, useCallback, useEffect } from "react";
+import { FunctionComponent, memo, useCallback } from "react";
 
 import { useStoryAutoScroll } from "../../../hooks/use-story-auto-scroll";
-import { useLocation, useNavigate } from "react-router-dom";
 import { useUpdateControllerOnRouteChange } from "../../../providers/parallax/use-parallax-config";
 import { useStory } from "../../../providers/story/use-story";
-
-import { getUpdatedStoryUrl } from "../../../libs/get-updated-story-url";
 
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 
@@ -22,7 +19,7 @@ import {
  *
  * A story is divided into content blocks, each containing various formats. (Story -> Block -> Format)
  * This component dynamically renders the main story page, including content blocks and their respective formats.
- * It handles auto-scrolling behavior on initial render, updates the URL when the story slide index changes,
+ * It handles auto-scrolling behavior on initial render
  * and sets the story element as a callback ref for DOM manipulation.
  *
  * Notes:
@@ -30,28 +27,13 @@ import {
  * - Missing components for content blocks or block formats will log warnings to the console.
  */
 const Story: FunctionComponent = () => {
-  const { setStoryElement, story, storySlideIndex, storyElement } = useStory();
-
-  // const navigate = useNavigate();
-  // const location = useLocation();
+  const { setStoryElement, story } = useStory();
 
   // Custom hook to handle auto-scrolling behavior on intial render
-  const { isInitialScroll } = useStoryAutoScroll(storyElement);
+  useStoryAutoScroll();
 
   // Update parallax controller on route change
   useUpdateControllerOnRouteChange();
-
-  // Sync URL when index changes
-  // useEffect(() => {
-  //   // Prevent URL update on initial scroll
-  //   // If we do not check for isInitialScroll, the URL will be updated on initial auto-scroll
-  //   // This would effectively stop the auto-scroll
-  //   if (isInitialScroll) return;
-  //
-  //   const newUrl = getUpdatedStoryUrl(location.pathname, storySlideIndex.current);
-  //
-  //   navigate(newUrl);
-  // }, [storySlideIndex, navigate, isInitialScroll, location.pathname]);
 
   // A callback Ref ensures setStoryElement is called the moment the DOM node is available. We are using similar approach in globe.tsx
   const callbackRef = useCallback(

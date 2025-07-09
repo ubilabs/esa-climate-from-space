@@ -10,15 +10,15 @@ const TimeBlend: FunctionComponent<StorySectionProps> = ({ slideIndex }) => {
       <p>This is some dummy content for the Time Blend component.</p>
       <ul>
         <li>Dummy Point 1</li>
-        {/* <ParallaxObject speed={-10}> */}
-        {/*   <li>Dummy Point 2</li> */}
-        {/* </ParallaxObject> */}
-        {/* <ParallaxObject speed={2}> */}
-        {/*   <li>Dummy Point 3</li> */}
-        {/* </ParallaxObject> */}
-        {/* <ParallaxObject speed={-5}> */}
-        {/*   <li>Dummy Point 4</li> */}
-        {/* </ParallaxObject> */}
+        <ParallaxObject speed={-10}>
+          <li>Dummy Point 2</li>
+        </ParallaxObject>
+        <ParallaxObject speed={2}>
+          <li>Dummy Point 3</li>
+        </ParallaxObject>
+        <ParallaxObject speed={-5}>
+          <li>Dummy Point 4</li>
+        </ParallaxObject>
         <li>Dummy Point 5</li>
       </ul>
     </FormatParallexLayout>

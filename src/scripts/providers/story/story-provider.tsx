@@ -20,7 +20,7 @@ export interface StoryContextValue {
 }
 
 interface StoryProviderProps extends PropsWithChildren {
-  story: Story;
+  story: Story | null;
 }
 
 export function StoryProvider({ children, story }: StoryProviderProps) {

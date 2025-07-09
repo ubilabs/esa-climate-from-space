@@ -202,7 +202,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
     let type = "blog";
 
     const story = stories?.find((story) => story.id === item.id);
-    console.log("getStoryMediaType", item, story);
     const galleyItemTypes = story && "slides" in story && new Set(
       story?.slides
         .flatMap((slide) => slide.galleryItems)

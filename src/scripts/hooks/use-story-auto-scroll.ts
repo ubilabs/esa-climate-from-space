@@ -2,6 +2,7 @@ import { useCallback, useEffect } from "react";
 import { useStory } from "../providers/story/use-story";
 import { extractSlideIndex } from "../libs/content-url-parameter";
 import { getHashPathName } from "../libs/get-hash-path";
+import { SLIDE_INDEX_ATTRIBUTE } from "../config/main";
 
 export function useStoryAutoScroll() {
   const { storyElement, hasInitialScrolled } = useStory();
@@ -11,8 +12,8 @@ export function useStoryAutoScroll() {
       if (!storyElement) return;
 
       const targetElement = Array.from(
-        document.querySelectorAll("[data-index]"),
-      ).find((el) => el.getAttribute("data-index") === index.toString());
+        document.querySelectorAll(`[${SLIDE_INDEX_ATTRIBUTE}]`),
+      ).find((el) => el.getAttribute(SLIDE_INDEX_ATTRIBUTE) === index.toString());
 
       if (targetElement) {
         targetElement.scrollIntoView({

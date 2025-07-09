@@ -12,9 +12,8 @@
 
 html,
 body,
-app {
+#app {
   overflow: hidden;
-
 }
 
 html,

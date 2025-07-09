@@ -14,13 +14,10 @@ export const CustomParallaxProvider: FunctionComponent<{
   >({
     isDisabled: userPrefersReducedMotion,
   });
-  // const parallaxProviderProps: ParallaxProviderProps = {};
+
   const { storyElement } = useStory();
 
   useEffect(() => {
-    // if (!storyElement) {
-    //   return;
-    // }
     setParallaxProviderProps((prev) => ({
       ...prev,
       scrollContainer: storyElement || undefined,
