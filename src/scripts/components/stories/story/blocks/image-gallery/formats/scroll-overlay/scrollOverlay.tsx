@@ -1,13 +1,8 @@
-import React, { FunctionComponent } from 'react';
-import { StorySectionProps } from '../../../../../../../types/story';
+import { FunctionComponent } from "react";
+import { StorySectionProps } from "../../../../../../../types/story";
 
-const ScrollOverlay: FunctionComponent<StorySectionProps> = ({ slideIndex }) => {
-  return (
-    <div>
-      Scroll Overlay Component
-    </div>
-  );
+const ScrollOverlay: FunctionComponent<StorySectionProps> = () => {
+  return <div>Scroll Overlay Component</div>;
 };
 
 export default ScrollOverlay;
-
