@@ -1,4 +1,4 @@
-import { FunctionComponent, memo, useCallback } from "react";
+import { FunctionComponent, useCallback } from "react";
 
 import { useStoryAutoScroll } from "../../../hooks/use-story-auto-scroll";
 import { useUpdateControllerOnRouteChange } from "../../../providers/parallax/use-parallax-config";
@@ -76,4 +76,4 @@ const Story: FunctionComponent = () => {
   );
 };
 
-export default memo(Story);
+export default Story;
