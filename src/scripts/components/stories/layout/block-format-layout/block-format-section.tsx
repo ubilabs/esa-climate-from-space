@@ -39,7 +39,9 @@ export const FormatParallexLayout: FunctionComponent<Props> = ({
       rootMargin={{ top: -100, right: 0, bottom: -100, left: 0 }}
       onEnter={(pEl) => {
         const currentIndex = pEl.el.getAttribute(indexAttribute);
-        setStorySlideIndex(currentIndex);
+        if (currentIndex) {
+          setStorySlideIndex(currentIndex);
+        }
       }}
       className={cx(styles.formatSection, className, "test")}
     >

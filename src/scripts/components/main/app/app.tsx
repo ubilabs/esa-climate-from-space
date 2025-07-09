@@ -27,9 +27,16 @@ import LayerSelector from "../../layers/layer-selector/layer-selector";
 import DataViewer from "../data-viewer/data-viewer";
 import Tracking from "../tracking/tracking";
 
+import { useGetStoryQuery } from "../../../services/api";
+import { useContentParams } from "../../../hooks/use-content-params";
+
 import { ROUTES } from "../../../config/main";
 
 import { setAppRoute } from "../../../reducers/app-route";
+import { isLegacyStory } from "../../../libs/is-legacy-story";
+
+import { CustomParallaxProvider } from "../../../providers/parallax/parallex-provider";
+import { StoryProvider } from "../../../providers/story/story-provider";
 
 import StoriesSelector from "../../legacy-stories/stories-selector/stories-selector";
 import PresentationSelector from "../../legacy-stories/presentation-selector/presentation-selector";
@@ -40,8 +47,6 @@ import AboutProjectOverlay from "../about-project-overlay/about-project-overlay"
 
 import "./app.css";
 import "../../../../variables.css";
-import { CustomParallaxProvider } from "../../../providers/parallax/parallex-provider";
-import { StoryProvider } from "../../../providers/story/story-provider";
 
 // Create Matomo tracking instance
 const matomoInstance = createInstance({
@@ -54,9 +59,26 @@ const matomoInstance = createInstance({
 const MainContent: FunctionComponent<{
   children?: React.ReactNode;
 }> = ({ children }) => {
+  const lang = useSelector(languageSelector);
+
+  const { currentStoryId } = useContentParams();
+
+  // Support both legacy and new stories
+  // If currentStoryId exists, fetch the story and determine if it is a legacy story
+  const { data: selectedStory } = useGetStoryQuery({
+    id: currentStoryId,
+    language: lang,
+  });
+
+  // There can be a story still in cache due to how redux toolkit fetches the story
+  // Therefore, we should also check if the currentStoryId is provided
+  if (currentStoryId && selectedStory && isLegacyStory(selectedStory)) {
+    return <LegacyStory />;
+  }
+
   return (
     <>
-      <StoryProvider>
+      <StoryProvider story={selectedStory}>
         <CustomParallaxProvider>
           <Header />
           {children}
@@ -75,6 +97,7 @@ const RouteMatch: FunctionComponent = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("RouteMatch location", location.pathname);
     dispatch(setAppRoute(location.pathname));
   }, [location.pathname, dispatch]);
 

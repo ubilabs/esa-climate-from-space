@@ -5,8 +5,9 @@ import { GalleryItemType } from "../types/gallery-item";
 import { useAppRouteFlags } from "./use-app-route-flags";
 
 export const useStoryNavigation = (videoDuration: number) => {
-  const { storyIds, storyIndex, slideIndex, selectedStory } =
+  const { storyIds, storyIndex, slideIndex, selectedStory, category } =
     useContentParams();
+  console.log("useStoryNavigation", category);
 
   const { isShowCaseView, isPresentView } = useAppRouteFlags();
 
@@ -25,7 +26,7 @@ export const useStoryNavigation = (videoDuration: number) => {
   const nextSlideIndex = slideIndex + 1;
 
   if (!isShowCaseView) {
-    const route = isPresentView ? "present" : "stories";
+    const route = isPresentView ? "present" : `${category}/stories`;
     if (previousSlideIndex >= 0) {
       previousSlideLink = `${route}/${storyIds}/${previousSlideIndex}`;
     }

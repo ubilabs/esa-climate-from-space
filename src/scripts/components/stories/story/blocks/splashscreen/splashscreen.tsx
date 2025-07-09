@@ -21,11 +21,9 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({
 
   const imageUrl = getStoryAssetUrl(id, image);
   return (
-    <FormatParallexLayout
-      className={styles.splashscreen}
-      index={slideIndex}
-    >
+    <FormatParallexLayout className={styles.splashscreen} index={slideIndex}>
       <img src={imageUrl} />
+      <div className={styles.textContainer}>{text}</div>
     </FormatParallexLayout>
   );
 };

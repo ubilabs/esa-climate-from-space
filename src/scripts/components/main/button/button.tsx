@@ -39,6 +39,7 @@ const Button: FunctionComponent<Props> = ({
       id={id}
       className={classes}
       to={link}
+      replace={true}
     >
       {Icon && <Icon />}
       {label && (

@@ -9,4 +9,8 @@
     width: 100%;
     object-fit: cover;
   }
+
+.textContainer {
+    font-size: 4rem;
+  }
 }

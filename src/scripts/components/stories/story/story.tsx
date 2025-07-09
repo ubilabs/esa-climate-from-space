@@ -1,40 +1,70 @@
-import {
-  FunctionComponent,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-} from "react";
+import { FunctionComponent, ReactNode, useCallback, useEffect } from "react";
 
 import {
   ImageGallery,
   ImageGalleryCompoundComponents,
-  imageGalleryFormatMap,
 } from "./blocks/image-gallery/image-gallery";
-import { useContentParams } from "../../../hooks/use-content-params";
-import { useGetStoryQuery } from "../../../services/api";
 
-import { ImageGalleryBlock, StorySectionProps } from "../../../types/story";
+import { useStoryAutoScroll } from "../../../hooks/use-story-auto-scroll";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useUpdateControllerOnRouteChange } from "../../../providers/parallax/use-parallax-config";
+import { useStory } from "../../../providers/story/use-story";
+
+import { getUpdatedStoryUrl } from "../../../libs/get-updated-story-url";
+
+import {
+  ImageGalleryBlock,
+  imageGalleryFormatMap,
+  StorySectionProps,
+} from "../../../types/story";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 
 import cx from "classnames";
 
 import styles from "./story.module.css";
-import { useUpdateControllerOnRouteChange } from "../../../providers/parallax/use-parallax-config";
-import { useStory } from "../../../providers/story/use-story";
-// import { NavigationObserver } from "../utils/navigation-observer";
 
+/**
+ * Story Component
+ *
+ * A story is divided into content blocks, each containing various formats. (Story -> Content Block -> Format)
+ * This component dynamically renders the main story page, including content blocks and their respective formats.
+ * It handles auto-scrolling behavior on initial render, updates the URL when the story slide index changes,
+ * and sets the story element as a callback ref for DOM manipulation.
+ *
+ * Hooks:
+ * - `useStory`: Provides the story data and methods to manage the story state.
+ * - `useNavigate`: Enables navigation between routes.
+ * - `useLocation`: Retrieves the current location object.
+ * - `useStoryAutoScroll`: Custom hook to handle auto-scrolling behavior on initial render.
+ * - `useUpdateControllerOnRouteChange`: Updates the parallax controller on route changes.
+ *
+ * Notes:
+ * - Ensure there are no duplicate slide indices in the story.
+ * - Missing components for content blocks or block formats will log warnings to the console.
+ */
 const Story: FunctionComponent = () => {
-  const { currentStoryId } = useContentParams();
+  const { setStoryElement, story, storySlideIndex, storyElement } = useStory();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Custom hook to handle auto-scrolling behavior on intial render
+  const { isInitialScroll } = useStoryAutoScroll(storyElement);
+
+  // Update parallax controller on route change
   useUpdateControllerOnRouteChange();
 
-  const { setStory, setStoryElement, storyElement } = useStory();
+  // Sync URL when index changes
+  useEffect(() => {
+    // Prevent URL update on initial scroll
+    // If we do not check for isInitialScroll, the URL will be updated on initial auto-scroll
+    // This would effectively stop the auto-scroll
+    if (isInitialScroll) return;
 
-  // useLayoutEffect(() => {
-  //   // const storyElements = storyElement?.querySelectorAll("#chapterSequence");
-  //   // console.log("storyElements", storyElements);
-  // }, [storyElement]);
-  // // chapterNav.observe()
+    const newUrl = getUpdatedStoryUrl(location.pathname, storySlideIndex);
+
+    navigate(newUrl);
+  }, [storySlideIndex, navigate, isInitialScroll, location.pathname]);
 
   // A callback Ref ensures setStoryElement is called the moment the DOM node is available. We are using similar approach in globe.tsx
   const callbackRef = useCallback(
@@ -46,24 +76,8 @@ const Story: FunctionComponent = () => {
     [setStoryElement],
   );
 
-  const { data: selectedStory } = useGetStoryQuery({
-    id: currentStoryId,
-    language: "en",
-  });
-
-  useEffect(() => {
-    if (selectedStory) {
-      setStory(selectedStory);
-    }
-  }, [selectedStory, setStory]);
-
-  if (!selectedStory) {
-    console.warn(
-      `No story found for id: ${currentStoryId}. Please check the story ID or ensure the story exists.`,
-    );
-    return null;
-  }
-
+  // Map of content block types to their respective components
+  // Add missing components here as needed
   const contentBlockMap:
     | Record<
         string,
@@ -74,6 +88,8 @@ const Story: FunctionComponent = () => {
     imageGallery: ImageGallery,
   };
 
+  // Map of block types to their respective format components
+  // Add missing format components here as needed
   const formatMap: Record<
     ImageGalleryBlock["type"],
     FunctionComponent<StorySectionProps>
@@ -87,10 +103,12 @@ const Story: FunctionComponent = () => {
       ref={callbackRef}
       id="story"
     >
-      {selectedStory && (
+      {story && (
         <>
+          {/*  Slide index is used to determine which slide is currently active */}
+          {/*  Make sure there is no duplicate slide index in the story */}
           <SplashScreen slideIndex={0} />
-          {selectedStory.content.map((contentBlock, idx) => {
+          {story.content.map((contentBlock, idx) => {
             const BlockComponent = contentBlockMap[contentBlock.type];
 
             if (!BlockComponent) {

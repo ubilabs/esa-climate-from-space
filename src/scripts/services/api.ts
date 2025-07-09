@@ -101,8 +101,12 @@ export const storiesApi = createApi({
         }
       },
     }),
-    // Fetch legacy pagination-based stories
-    getLegacyStory: builder.query<LegacyStory, { id: string; language: string }>({
+
+    // Fetch legacy stories. Still in use in LegacyStory.tsx
+    getLegacyStory: builder.query<
+      LegacyStory,
+      { id: string; language: string }
+    >({
       queryFn: async ({ id, language }) => {
         try {
           const data = await fetchAndConvertStory(id, language as Language);
@@ -117,7 +121,10 @@ export const storiesApi = createApi({
         }
       },
     }),
-    getStories: builder.query<LegacyStory[], { ids: string[]; language: string }>({
+    getStories: builder.query<
+      LegacyStory[],
+      { ids: string[]; language: string }
+    >({
       queryFn: async ({ ids, language }) => {
         try {
           const data = await Promise.all(

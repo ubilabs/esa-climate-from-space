@@ -8,7 +8,6 @@ import ScrollCaption from "./formats/scroll-caption/scroll-caption";
 import ScrollOverlay from "./formats/scroll-overlay/scrollOverlay";
 
 import styles from "./image-gallery.module.css";
-import { ImageGalleryBlock } from "../../../../../types/story";
 
 export type ImageGalleryCompoundComponents = {
   FrequencyBlend: typeof FrequencyBlend;
@@ -35,13 +34,3 @@ ImageGallery.TimeBlend = TimeBlend;
 ImageGallery.ScrollCaption = ScrollCaption;
 ImageGallery.ScrollOverlay = ScrollOverlay;
 
-export const imageGalleryFormatMap: Record<
-  ImageGalleryBlock["type"],
-  FunctionComponent
-> = {
-  frequencyBlend: ImageGallery.FrequencyBlend,
-  timeBlend: ImageGallery.TimeBlend,
-  compareMode: ImageGallery.CompareMode,
-  scrollCaption: ImageGallery.ScrollCaption,
-  scrollOverlay: ImageGallery.ScrollOverlay,
-};

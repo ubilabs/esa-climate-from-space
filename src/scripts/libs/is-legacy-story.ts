@@ -1,21 +1,13 @@
 import { LegacyStory } from "../types/legacy-story";
-import { LegacyStory } from "../types/story";
+import { Story } from "../types/story";
 
 /**
- * Checks if a given story is a legacy story.
- * Background: Currently, we have stories that adhere to the "legacy" structure of a story
- * as well as stories with the updated structure to support mixed content
- * @param story - The story to check.
- * @returns True if the story is a legacy story, false otherwise.
- *
+ * Checks if a given story is a legacy story. Legacy stories are pagination-based stories
  */
-export const isLegacyStory = (story: LegacyStory | LegacyStory): boolean => {
-  // If a story slide contains the property "galleryItems", we infer that is a new story
-  // Otherwise, it is a legacy story
-  for (const slide of story.slides) {
-    if ("galleryItems" in slide) {
-      return false;
-    }
+export const isLegacyStory = (story: LegacyStory | Story): boolean => {
+  // if a story has the new 'content' property, it is not a legacy story
+  if ("content" in story) {
+    return false;
   }
 
   return true;

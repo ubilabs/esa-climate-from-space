@@ -202,12 +202,14 @@ const ContentNavigation: FunctionComponent<Props> = ({
     let type = "blog";
 
     const story = stories?.find((story) => story.id === item.id);
-    const galleyItemTypes = new Set(
+    console.log("getStoryMediaType", item, story);
+    const galleyItemTypes = story && "slides" in story && new Set(
       story?.slides
         .flatMap((slide) => slide.galleryItems)
         .map(({ type }) => type),
     );
     if (
+      galleyItemTypes &&
       // if gallery only contains images or videos return media type
       galleyItemTypes.size === 1 &&
       (galleyItemTypes.has(GalleryItemType.Image) ||
@@ -271,7 +273,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
             }}
           >
             <Link
-              prefetch="viewport"
               to={
                 isStory ? `/${category}/stories/${id}/0` : `/${category}/data`
               }
