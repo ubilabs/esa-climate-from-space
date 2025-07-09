@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { FormatParallexLayout } from "../../../layout/block-format-layout/block-format-section";
 import { StorySectionProps } from "../../../../../types/story";
 
-import { ParallaxBanner } from "react-scroll-parallax";
+import { BannerLayer, ParallaxBanner } from "react-scroll-parallax";
 
 import styles from "./splashscreen.module.css";
 
@@ -22,24 +22,32 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({
   const { text, image } = story.splashscreen;
   const { id } = story;
 
-  const imageUrl = getStoryAssetUrl(id, image);
+  const imageBackgroundLayer: BannerLayer = {
+    image: getStoryAssetUrl(id, image),
+    className: styles.parallaxContainer,
+    translateY: [0, 15],
+    scale: [1, 1.1, "easeOutCubic"],
+  };
+
+  const textLayer: BannerLayer = {
+    translateY: [0, 30],
+    scale: [1, 1.05, "easeOutCubic"],
+    shouldAlwaysCompleteAnimation: true,
+    expanded: false,
+    style: { display: "grid", placeItems: "center" },
+    children: (
+      <ReactMarkdown
+        className={styles.content}
+        children={text}
+        allowedElements={["h1", "h2", "h3", "p", "br", "em", "b"]}
+      />
+    ),
+  };
+
   return (
     <FormatParallexLayout className={styles.splashscreen} index={slideIndex}>
       <ParallaxBanner
-        layers={[
-          { image: imageUrl, speed: -10, className: styles.parallaxContainer },
-          {
-            speed: -30,
-            style: { display: "grid", placeItems: "center" },
-            children: (
-              <ReactMarkdown
-                className={styles.content}
-                children={text}
-                allowedElements={["h1", "h2", "h3", "p", "br", "em", "b"]}
-              />
-            ),
-          },
-        ]}
+        layers={[imageBackgroundLayer, textLayer]}
         className={styles.splashscreen}
       ></ParallaxBanner>
     </FormatParallexLayout>
