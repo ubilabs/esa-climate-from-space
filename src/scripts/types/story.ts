@@ -35,18 +35,22 @@ export type Splashscreen = {
   shortText?: string;
 };
 
+export type ContentBlockType = "imageGallery" | "textBlock"; // Extend with union for other types if needed
+
 export type ContentBlock = {
-  type: "imageGallery" | "textBlock"; // Extend with union for other types if needed
-  blocks: ImageGalleryBlock[];
+  type: ContentBlockType;
+  blocks: ImageGalleryFormat[];
 };
 
-export type ImageGalleryBlock = {
-  type:
-    | "scrollOverlay"
-    | "frequencyBlend"
-    | "compareMode"
-    | "timeBlend"
-    | "scrollCaption"; // Add more block types as needed
+export type ImageGalleryFormatType =
+  | "scrollOverlay"
+  | "frequencyBlend"
+  | "compareMode"
+  | "timeBlend"
+  | "scrollCaption";
+
+export type ImageGalleryFormat = {
+  type: ImageGalleryFormatType;
   description?: string; // optional long text
   shortText?: string;
   slides: ImageSlide[];
@@ -64,7 +68,7 @@ export type StorySectionProps = {
 };
 
 export const imageGalleryFormatMap: Record<
-  ImageGalleryBlock["type"],
+  ImageGalleryFormat["type"],
   FunctionComponent<StorySectionProps>
 > = {
   frequencyBlend: ImageGallery.FrequencyBlend,
@@ -75,7 +79,7 @@ export const imageGalleryFormatMap: Record<
 };
 
 export const imageGalleryBlockComponentMap: Record<
-  ImageGalleryBlock["type"],
+  ImageGalleryFormat["type"],
   FunctionComponent<StorySectionProps> | undefined
 > = {
   compareMode: CompareMode,

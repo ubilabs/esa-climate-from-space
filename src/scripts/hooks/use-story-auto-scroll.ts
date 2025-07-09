@@ -1,22 +1,10 @@
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-} from "react";
-import { useLocation } from "react-router-dom";
+import { useCallback, useEffect } from "react";
+import { useStory } from "../providers/story/use-story";
 import { extractSlideIndex } from "../libs/content-url-parameter";
+import { getHashPathName } from "../libs/get-hash-path";
 
-export function useStoryAutoScroll(storyElement: Element | null) {
-  const location = useLocation();
-  const initialSlideIndex = useMemo(
-    () => extractSlideIndex(location.pathname),
-    [location.pathname],
-  );
-
-  // Prevent initial scroll from triggering URL update
-  const isInitialScroll = useRef(initialSlideIndex > 0);
+export function useStoryAutoScroll() {
+  const { storyElement, hasInitialScrolled } = useStory();
 
   const scrollToSlideIndex = useCallback(
     (index: number) => {
@@ -38,14 +26,14 @@ export function useStoryAutoScroll(storyElement: Element | null) {
 
   // Scroll on initial mount
   useEffect(() => {
-    if (!storyElement || !isInitialScroll.current) return;
+    if (!storyElement || hasInitialScrolled.current) return;
 
     // Ideally, we would use the "scrollEnd" event here, but it is not supported in Safari as of now
     // However, setting the event listener only once achieves a similar result
     storyElement.addEventListener(
       "scroll",
       () => {
-        isInitialScroll.current = false;
+        hasInitialScrolled.current = true;
       },
       { once: true },
     );
@@ -53,12 +41,12 @@ export function useStoryAutoScroll(storyElement: Element | null) {
     // Use timeout to let the initial fading animation finish
     setTimeout(() => {
       requestAnimationFrame(() => {
-        scrollToSlideIndex(initialSlideIndex);
+        scrollToSlideIndex(extractSlideIndex(getHashPathName()));
       });
     }, 1000);
-  }, [initialSlideIndex, scrollToSlideIndex, storyElement]);
+  }, [hasInitialScrolled, scrollToSlideIndex, storyElement]);
 
   return {
-    isInitialScroll: isInitialScroll.current,
+    isInitialScroll: hasInitialScrolled.current,
   };
 }

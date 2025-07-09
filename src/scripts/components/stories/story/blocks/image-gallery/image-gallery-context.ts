@@ -1,6 +1,4 @@
-import { createContext, FunctionComponent, useContext } from "react";
-import { ImageGalleryBlock, StorySectionProps } from "../../../../../types/story";
-import { ImageGallery } from "./image-gallery";
+import { createContext, useContext } from "react";
 
 export enum GalleryFormats {
   Compare = "compare",
@@ -25,4 +23,3 @@ export function useImageGalleryContext() {
   }
   return ctx;
 }
-

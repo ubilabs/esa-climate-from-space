@@ -1,18 +1,22 @@
-import { useState, PropsWithChildren } from "react";
-
-import { useLocation } from "react-router-dom";
+import {
+  useState,
+  PropsWithChildren,
+  SetStateAction,
+  Dispatch,
+  useRef,
+  RefObject,
+} from "react";
 
 import { Story } from "../../types/story";
 import { StoryContext } from "./use-story";
 import { extractSlideIndex } from "../../libs/content-url-parameter";
-import { useStoryAutoScroll } from "../../hooks/use-story-auto-scroll";
+import { getHashPathName } from "../../libs/get-hash-path";
 
 export interface StoryContextValue {
   story: Story | null;
   storyElement: HTMLDivElement | null;
-  setStoryElement: React.Dispatch<React.SetStateAction<HTMLDivElement | null>>;
-  storySlideIndex: number;
-  setStorySlideIndex: React.Dispatch<React.SetStateAction<number>>;
+  setStoryElement: Dispatch<SetStateAction<HTMLDivElement | null>>;
+  hasInitialScrolled: RefObject<boolean>;
 }
 
 interface StoryProviderProps extends PropsWithChildren {
@@ -20,13 +24,12 @@ interface StoryProviderProps extends PropsWithChildren {
 }
 
 export function StoryProvider({ children, story }: StoryProviderProps) {
-  const location = useLocation();
-  const [storySlideIndex, setStorySlideIndex] = useState(
-    extractSlideIndex(location.pathname),
-  );
   const [storyElement, setStoryElement] = useState<HTMLDivElement | null>(null);
 
-  // useStoryAutoScroll(storyElement);
+  const initialSlideIndex = extractSlideIndex(getHashPathName());
+
+  // Prevent initial scroll from triggering URL update
+  const hasInitialScrolled = useRef(initialSlideIndex < 0);
 
   return (
     <StoryContext
@@ -34,8 +37,7 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
         story,
         storyElement,
         setStoryElement,
-        storySlideIndex,
-        setStorySlideIndex,
+        hasInitialScrolled,
       }}
     >
       {children}

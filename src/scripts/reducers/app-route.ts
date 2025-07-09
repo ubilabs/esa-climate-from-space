@@ -1,6 +1,9 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppRoute } from "../types/app-routes";
+
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { getHashPathName } from "../libs/get-hash-path";
 import { matchPath } from "react-router-dom";
+
 import { ROUTES } from "../config/main";
 
 /**
@@ -27,11 +30,7 @@ export function matchRoute(rawPathname: string): AppRoute {
 export type AppRouteState = AppRoute;
 
 // split the href at the # and pass the second part to matchRoute
-const initialState: AppRouteState = matchRoute(
-  window.location.href.toString().split("#").length > 1
-    ? window.location.href.toString().split("#")[1]
-    : "/",
-);
+const initialState: AppRouteState = matchRoute(getHashPathName());
 
 const AppRouteSlice = createSlice({
   name: "AppRoute",
