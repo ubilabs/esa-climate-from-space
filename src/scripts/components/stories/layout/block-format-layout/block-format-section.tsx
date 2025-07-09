@@ -16,7 +16,6 @@ interface Props extends PropsWithChildren<ParallaxProps> {
   index?: number;
 }
 
-
 export const FormatParallexLayout: FunctionComponent<Props> = ({
   children,
   className,
@@ -31,14 +30,14 @@ export const FormatParallexLayout: FunctionComponent<Props> = ({
   return (
     <Parallax
       {...parallaxProps}
-      data-index={index}
+      {...{ [SLIDE_INDEX_ATTRIBUTE]: index }}
       rootMargin={{ top: -100, right: 0, bottom: -100, left: 0 }}
       onEnter={(pEl) => {
         const currentIndex = pEl.el.getAttribute(SLIDE_INDEX_ATTRIBUTE);
 
         if (!currentIndex) {
           console.warn(
-            `FormatParallexElement ${pEl}: Missing index attribute on element. Will not update url`,
+            `FormatParallexElement ${pEl.id}: Missing index attribute on element. Will not update url`,
           );
           return;
         }

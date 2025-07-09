@@ -45,7 +45,6 @@ const Story: FunctionComponent = () => {
     [setStoryElement],
   );
 
-  console.log("story");
   if (!story) {
     return null;
   }

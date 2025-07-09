@@ -17,7 +17,6 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({
 
   const { text, image } = story.splashscreen;
   const { id } = story;
-  console.log("imageid", id);
 
   const imageUrl = getStoryAssetUrl(id, image);
   return (
