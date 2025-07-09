@@ -3,7 +3,7 @@ import { useIntl } from "react-intl";
 import { useSelector } from "react-redux";
 
 import StoryList from "../story-list/story-list";
-import Header from "../header/header";
+import LegacyHeader from "../legacy-header/legacy-header";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import { AppRoute } from "../../../types/app-routes";
@@ -17,12 +17,12 @@ const PresentationSelector: FunctionComponent = () => {
   return (
     <div className={styles.presentationSelector}>
       {header && (
-        <Header
+        <LegacyHeader
           backLink="/"
           backButtonId="backToDataMode"
           title={intl.formatMessage({ id: "presenter" })}
         >
-        </Header>
+        </LegacyHeader>
       )}
       <StoryList route={AppRoute.Present} />
     </div>

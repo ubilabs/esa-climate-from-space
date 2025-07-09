@@ -1,4 +1,4 @@
-.navigation {
+.header {
   border-bottom: 2px solid var(--main);
   background: var(--dark-grey-5);
   display: flex;

@@ -4,7 +4,7 @@ import { useIntl, FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 
 import StoryList from "../story-list/story-list";
-import Header from "../header/header";
+import LegacyHeader from "../legacy-header/legacy-header";
 import { PlayIcon } from "../../main/icons/play-icon";
 import Button from "../../main/button/button";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
@@ -33,7 +33,7 @@ const ShowcaseSelector: FunctionComponent = () => {
   return (
     <div className={styles.showcaseSelector}>
       {header && (
-        <Header
+        <LegacyHeader
           backLink="/"
           backButtonId="backToDataMode"
           title={intl.formatMessage({ id: "showcase" })}
@@ -48,7 +48,7 @@ const ShowcaseSelector: FunctionComponent = () => {
             link={`/showcase/${selectedIds.join("&")}/0/0`}
             icon={PlayIcon}
           />
-        </Header>
+        </LegacyHeader>
       )}
       <StoryList
         route={AppRoute.Showcase}

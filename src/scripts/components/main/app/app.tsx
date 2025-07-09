@@ -20,23 +20,24 @@ import { languageSelector } from "../../../selectors/language";
 import translations from "../../../i18n";
 
 import UrlSync from "../url-sync/url-sync";
-import Navigation from "../navigation/navigation";
 import { EsaLogoLink } from "../logo/logo";
+import Header from "../header/header";
 import LayerSelector from "../../layers/layer-selector/layer-selector";
 import DataViewer from "../data-viewer/data-viewer";
 import Tracking from "../tracking/tracking";
 
 import { ROUTES } from "../../../config/main";
 
-import StoriesSelector from "../../stories/stories-selector/stories-selector";
-import PresentationSelector from "../../stories/presentation-selector/presentation-selector";
-import ShowcaseSelector from "../../stories/showcase-selector/showcase-selector";
-import Story from "../../stories/story/story";
+import { setAppRoute } from "../../../reducers/app-route";
+
+import StoriesSelector from "../../legacy-stories/stories-selector/stories-selector";
+import PresentationSelector from "../../legacy-stories/presentation-selector/presentation-selector";
+import ShowcaseSelector from "../../legacy-stories/showcase-selector/showcase-selector";
+import Story from "../../legacy-stories/story/story";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
 
 import "./app.css";
 import "../../../../variables.css";
-import { setAppRoute } from "../../../reducers/app-route";
 
 // Create Matomo tracking instance
 const matomoInstance = createInstance({
@@ -48,7 +49,7 @@ const matomoInstance = createInstance({
 
 const MainContent: FunctionComponent = () => (
   <>
-    <Navigation />
+    <Header />
     <DataViewer />
     <LayerSelector />
   </>
