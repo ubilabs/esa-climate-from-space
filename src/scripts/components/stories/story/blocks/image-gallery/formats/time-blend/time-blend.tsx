@@ -1,11 +1,11 @@
 import { FunctionComponent } from "react";
-import { FormatParallexLayout } from "../../../../../layout/block-format-layout/block-format-section";
+import { FormatParallaxLayout } from "../../../../../layout/block-format-layout/block-format-section";
 import { ParallaxObject } from "../../../../../layout/parallax-object/parallax-object";
 import { StorySectionProps } from "../../../../../../../types/story";
 
 const TimeBlend: FunctionComponent<StorySectionProps> = ({ slideIndex }) => {
   return (
-    <FormatParallexLayout className="timeBlend" index={slideIndex}>
+    <FormatParallaxLayout className="timeBlend" index={slideIndex}>
       <h1>Time Blend Component</h1>
       <p>This is some dummy content for the Time Blend component.</p>
       <ul>
@@ -21,7 +21,7 @@ const TimeBlend: FunctionComponent<StorySectionProps> = ({ slideIndex }) => {
         </ParallaxObject>
         <li>Dummy Point 5</li>
       </ul>
-    </FormatParallexLayout>
+    </FormatParallaxLayout>
   );
 };
 

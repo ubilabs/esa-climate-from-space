@@ -1,10 +1,12 @@
 import { FunctionComponent } from "react";
 
-import styles from "./splashscreen.module.css";
-import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
 import { useStory } from "../../../../../providers/story/use-story";
-import { FormatParallexLayout } from "../../../layout/block-format-layout/block-format-section";
+
 import { StorySectionProps } from "../../../../../types/story";
+import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
+import { FormatParallaxLayout } from "../../../layout/block-format-layout/block-format-section";
+
+import styles from "./splashscreen.module.css";
 
 export const SplashScreen: FunctionComponent<StorySectionProps> = ({
   slideIndex,
@@ -20,9 +22,9 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({
 
   const imageUrl = getStoryAssetUrl(id, image);
   return (
-    <FormatParallexLayout className={styles.splashscreen} index={slideIndex}>
+    <FormatParallaxLayout className={styles.splashscreen} index={slideIndex}>
       <img src={imageUrl} />
       <div className={styles.textContainer}>{text}</div>
-    </FormatParallexLayout>
+    </FormatParallaxLayout>
   );
 };
