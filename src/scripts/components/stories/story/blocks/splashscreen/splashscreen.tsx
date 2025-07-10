@@ -1,12 +1,13 @@
 import { FunctionComponent } from "react";
 
+import ReactMarkdown from "react-markdown";
+import { BannerLayer, ParallaxBanner } from "react-scroll-parallax";
+
 import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
 import { useStory } from "../../../../../providers/story/use-story";
-import ReactMarkdown from "react-markdown";
+
 import { FormatParallexLayout } from "../../../layout/block-format-layout/block-format-section";
 import { StorySectionProps } from "../../../../../types/story";
-
-import { BannerLayer, ParallaxBanner } from "react-scroll-parallax";
 
 import styles from "./splashscreen.module.css";
 

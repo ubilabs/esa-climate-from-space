@@ -29,9 +29,8 @@ export const FormatParallexLayout: FunctionComponent<Props> = ({
 
   return (
     <Parallax
-      {...parallaxProps}
       {...{ [SLIDE_INDEX_ATTRIBUTE]: index }}
-      rootMargin={{ top: -100, right: 0, bottom: -100, left: 0 }}
+      rootMargin={{ top: 0, right: 0, bottom: 0, left: 0 }}
       onEnter={(pEl) => {
         const currentIndex = pEl.el.getAttribute(SLIDE_INDEX_ATTRIBUTE);
 
@@ -53,6 +52,7 @@ export const FormatParallexLayout: FunctionComponent<Props> = ({
         }
       }}
       className={cx(styles.formatSection, className, "test")}
+      {...parallaxProps}
     >
       {children}
     </Parallax>
