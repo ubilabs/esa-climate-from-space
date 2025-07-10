@@ -733,10 +733,10 @@ function getLayerProps(
         type === LayerType.Image
           ? () => url
           : ({ x, y, zoom }) =>
-              url
-                .replace("{x}", String(x))
-                .replace("{reverseY}", String(y))
-                .replace("{z}", String(zoom)),
+            url
+              .replace("{x}", String(x))
+              .replace("{reverseY}", String(y))
+              .replace("{z}", String(zoom)),
     });
   }
 

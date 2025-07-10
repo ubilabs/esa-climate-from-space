@@ -1,0 +1,22 @@
+.story {
+  z-index: 1;
+  grid-area: content;
+  background: rgba(255, 255, 255, 1);
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
+  position: relative;
+
+  &.fadeIn {
+    animation: fadeIn 1.5s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

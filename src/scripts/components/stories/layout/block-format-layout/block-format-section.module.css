@@ -1,0 +1,6 @@
+.formatSection {
+  /* make sure that any parallax content is not visible outside the section. Might need to change */
+  overflow: hidden;
+  scroll-snap-align: start;
+  height: 100%;
+}

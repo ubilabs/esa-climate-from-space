@@ -1,15 +1,15 @@
 import { State } from "../../reducers/index";
 import { storiesApi } from "../../services/api";
 
-import { Story } from "../../types/story";
+import { LegacyStory } from "../../types/story";
 
 export const selectStory = (id: string) => (state: State) =>
-  storiesApi.endpoints.getStory.select({ id, language: state.language })(state);
+  storiesApi.endpoints.getLegacyStory.select({ id, language: state.language })(state);
 
 export function selectedStorySelector(
   state: State,
   storyId: string | null,
-): Story | null {
+): LegacyStory | null {
   if (!storyId) {
     return null;
   }
