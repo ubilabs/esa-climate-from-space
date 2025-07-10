@@ -18,7 +18,7 @@ import { store } from "./create-redux-store";
 
 import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 
-import { CustomParallaxProvider } from "../../../providers/parallax/parallex-provider";
+import { CustomParallaxProvider } from "../../../providers/parallax/parallax-provider";
 import { StoryProvider } from "../../../providers/story/story-provider";
 
 import { languageSelector } from "../../../selectors/language";
