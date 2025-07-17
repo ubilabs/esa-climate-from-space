@@ -25,6 +25,7 @@ export const useContentTouchHandlers = (
   entryCount: number, // Ensures we stay within bounds
   setLastUserInteractionTime: Dispatch<SetStateAction<number>>,
 ) => {
+
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
   // Save the current index value in a ref to prevent it from resetting
   const currentIndexRef = useRef(currentIndex);

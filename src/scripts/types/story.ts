@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { ComponentProps, FunctionComponent } from "react";
 
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
 
@@ -63,9 +63,7 @@ export type ImageSlide = {
   fit?: "cover" | "contain";
 };
 
-export type StorySectionProps = {
-  slideIndex: number;
-};
+export type StorySectionProps = {} & ComponentProps<"div">;
 
 export const imageGalleryFormatMap: Record<
   ImageGalleryFormat["type"],

@@ -1,15 +1,15 @@
 import { FunctionComponent } from "react";
 
-import { FormatParallaxLayout } from "../../../../../layout/block-format-layout/block-format-section";
 import { StorySectionProps } from "../../../../../../../types/story";
+import { FormatContainer } from "../../../../../layout/format-container/format-container";
 
 import styles from "./compare-mode.module.css";
 
-const CompareMode: FunctionComponent<StorySectionProps> = ({ slideIndex }) => {
+const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
   return (
-    <FormatParallaxLayout className={styles.compareMode} index={slideIndex}>
+    <FormatContainer className={styles.compareMode} ref={ref}>
       Compare Mode Component
-    </FormatParallaxLayout>
+    </FormatContainer>
   );
 };
 

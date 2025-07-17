@@ -1,0 +1,8 @@
+.formatSection {
+  width: 100%;
+  scroll-snap-align: start;
+
+  >* {
+    height: var(--story-height);
+  }
+}

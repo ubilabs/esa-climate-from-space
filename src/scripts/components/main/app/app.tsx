@@ -18,7 +18,6 @@ import { store } from "./create-redux-store";
 
 import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 
-import { CustomParallaxProvider } from "../../../providers/parallax/parallax-provider";
 import { StoryProvider } from "../../../providers/story/story-provider";
 
 import { languageSelector } from "../../../selectors/language";
@@ -61,7 +60,6 @@ const MainContent: FunctionComponent<{
   children?: React.ReactNode;
 }> = ({ children }) => {
   const lang = useSelector(languageSelector);
-
   const { currentStoryId } = useContentParams();
 
   // Handle both legacy and new stories
@@ -80,12 +78,10 @@ const MainContent: FunctionComponent<{
   return (
     <>
       <StoryProvider story={story || null}>
-        <CustomParallaxProvider>
-          <Header />
-          {children}
-          <DataViewer />
-          <LayerSelector />
-        </CustomParallaxProvider>
+        <Header />
+        {children}
+        <DataViewer />
+        <LayerSelector />
       </StoryProvider>
     </>
   );

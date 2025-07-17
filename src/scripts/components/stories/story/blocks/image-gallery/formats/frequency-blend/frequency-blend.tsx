@@ -1,15 +1,15 @@
 import { FunctionComponent } from "react";
 
-import { FormatParallaxLayout } from "../../../../../layout/block-format-layout/block-format-section";
 import { StorySectionProps } from "../../../../../../../types/story";
+import { FormatContainer } from "../../../../../layout/format-container/format-container";
 
 import styles from "./frequency-blend.module.css";
 
-const FrequencyBlend: FunctionComponent<StorySectionProps> = ({ slideIndex }) => {
+const FrequencyBlend: FunctionComponent<StorySectionProps> = ({ ref }) => {
   return (
-    <FormatParallaxLayout className={styles.frequencyBlend} index={slideIndex}>
-      Frequency Blend Component
-    </FormatParallaxLayout>
+    <FormatContainer className={styles.frequencyBlend} ref={ref}>
+      <div>Frequency Blend Component</div>
+    </FormatContainer>
   );
 };
 

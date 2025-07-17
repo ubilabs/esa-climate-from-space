@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 
 import Button from "../../main/button/button";
 import { CloseIcon } from "../../main/icons/close-icon";
