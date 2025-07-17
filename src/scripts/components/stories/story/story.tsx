@@ -3,7 +3,7 @@ import { FunctionComponent, useCallback } from "react";
 import { useStory } from "../../../providers/story/use-story";
 
 import { SyncStoryUrl } from "../../../hooks/use-sync-story-url";
-import { FormatProvider } from "../../../providers/format/format-provider";
+import { FormatProvider } from "../../../providers/story/format/format-provider";
 
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 import {
