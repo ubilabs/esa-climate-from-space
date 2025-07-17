@@ -15,6 +15,10 @@
   /* New container for absolute positioning */
   width: 100%;
   height: 100%;
+
+  li {
+    list-style-type: none;
+  }
 }
 
 .altText {
