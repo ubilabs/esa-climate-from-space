@@ -1,11 +1,14 @@
 .story {
   --story-padding: 1.75rem;
+  --story-height: calc(100vh - var(--header-height));
+  --story-height: calc(100dvh - var(--header-height));
   z-index: 1;
   grid-area: content;
   background: rgba(255, 255, 255, 1);
   overflow: scroll;
-  scroll-snap-type: y mandatory;
+  height: var(--story-height);
   position: relative;
+  scroll-snap-type: block proximity;
 
   &.fadeIn {
     animation: fadeIn 1.5s ease-in-out;
