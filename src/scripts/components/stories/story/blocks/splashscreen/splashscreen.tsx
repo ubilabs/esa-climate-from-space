@@ -3,10 +3,13 @@ import ReactMarkdown from "react-markdown";
 import { motion, useTransform } from "motion/react";
 
 import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
+
+import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 import { useStory } from "../../../../../providers/story/use-story";
+
 import { StorySectionProps } from "../../../../../types/story";
 import { FormatContainer } from "../../../layout/format-container/format-container";
-import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
+
 
 import styles from "./splashscreen.module.css";
 

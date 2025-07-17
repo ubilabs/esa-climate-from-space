@@ -7,7 +7,6 @@ import { useAppRouteFlags } from "./use-app-route-flags";
 export const useStoryNavigation = (videoDuration: number) => {
   const { storyIds, storyIndex, slideIndex, selectedStory, category } =
     useContentParams();
-  console.log("useStoryNavigation", category);
 
   const { isShowCaseView, isPresentView } = useAppRouteFlags();
 

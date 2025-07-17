@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 
-import { FormatContainer } from "../../../../../layout/format-container/format-container";
 import { StorySectionProps } from "../../../../../../../types/story";
+import { FormatContainer } from "../../../../../layout/format-container/format-container";
 
 import styles from "./compare-mode.module.css";
 

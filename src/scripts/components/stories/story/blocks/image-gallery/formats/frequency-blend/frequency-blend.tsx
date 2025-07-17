@@ -1,9 +1,9 @@
 import { FunctionComponent } from "react";
 
 import { StorySectionProps } from "../../../../../../../types/story";
+import { FormatContainer } from "../../../../../layout/format-container/format-container";
 
 import styles from "./frequency-blend.module.css";
-import { FormatContainer } from "../../../../../layout/format-container/format-container";
 
 const FrequencyBlend: FunctionComponent<StorySectionProps> = ({ ref }) => {
   return (

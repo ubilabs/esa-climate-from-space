@@ -3,8 +3,8 @@ import { TimeBlendImage } from "./time-blend-image/time-blend-image";
 
 import { FormatContainer } from "../../../../../layout/format-container/format-container";
 
-import { useFormat } from "../../../../../../../providers/story/format/use-format";
 import { useStoryScroll } from "../../../../../../../hooks/use-story-scroll";
+import { useFormat } from "../../../../../../../providers/story/format/use-format";
 
 import styles from "./time-blend.module.css";
 
