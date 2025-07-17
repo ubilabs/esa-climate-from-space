@@ -1,9 +1,11 @@
 import { FunctionComponent } from "react";
+
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
+import { ImageSlide } from "../../../../../../../../types/story";
+
 import { motion, useTransform, MotionValue } from "motion/react";
 
 import styles from "./time-blend-image.module.css";
-import { ImageSlide } from "../../../../../../../../types/story";
 
 interface TimeBlendImageProps {
   scrollYProgress: MotionValue<number>;
