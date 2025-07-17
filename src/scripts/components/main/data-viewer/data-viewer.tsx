@@ -116,15 +116,15 @@ const DataViewer: FunctionComponent = () => {
         The globe is the main component and is always visible
         The category navigation is visible when the content navigation is not visible
       */}
-      {/* <div */}
-      {/*   id="globeWrapper" */}
-      {/*   className={cx( */}
-      {/*     styles.globeWrapper, */}
-      {/*     isContentNavRoute && styles.showContentList, */}
-      {/*   )} */}
-      {/* > */}
-      {/*   <GetDataWidget className={cx(styles.globe)} /> */}
-      {/* </div> */}
+      <div
+        id="globeWrapper"
+        className={cx(
+          styles.globeWrapper,
+          isContentNavRoute && styles.showContentList,
+        )}
+      >
+        <GetDataWidget className={cx(styles.globe)} />
+      </div>
       {isDataRoute && <GlobeNavigation />}
       {isNavigationView && (
         <>
