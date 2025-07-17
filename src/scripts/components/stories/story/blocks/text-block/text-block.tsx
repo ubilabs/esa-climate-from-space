@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { forwardRef } from "react";
 
-const TextBlock: React.FC<{ content?: string }> = ({ content }) => {
+interface TextBlockProps {
+  content?: string;
+}
+
+const TextBlockWithRef: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  TextBlockProps
+> = ({ content }, ref) => {
   return (
-    <div>
-      {content || 'Default Text Block Content'}
+    <div ref={ref}>
+      {content || "Default Text Block Content"}
     </div>
   );
 };
 
+const TextBlock = forwardRef(TextBlockWithRef);
+
 export default TextBlock;
+
 
