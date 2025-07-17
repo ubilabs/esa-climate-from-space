@@ -1,22 +1,13 @@
-import {
-  useState,
-  PropsWithChildren,
-  SetStateAction,
-  Dispatch,
-  useRef,
-  RefObject,
-} from "react";
+import { PropsWithChildren, useRef, RefObject } from "react";
 
 import { Story } from "../../types/story";
 import { StoryContext } from "./use-story";
-import { extractSlideIndex } from "../../libs/content-url-parameter";
-import { getHashPathName } from "../../libs/get-hash-path";
 
 export interface StoryContextValue {
   story: Story | null;
-  storyElement: HTMLDivElement | null;
-  setStoryElement: Dispatch<SetStateAction<HTMLDivElement | null>>;
-  hasInitialScrolled: RefObject<boolean>;
+  storyElementRef: RefObject<HTMLDivElement | null>;
+  scrollableFormatRefs: RefObject<Map<string, Element> | null>;
+  getScrollableFormatsMap: () => Map<string, Element>;
 }
 
 interface StoryProviderProps extends PropsWithChildren {
@@ -24,20 +15,26 @@ interface StoryProviderProps extends PropsWithChildren {
 }
 
 export function StoryProvider({ children, story }: StoryProviderProps) {
-  const [storyElement, setStoryElement] = useState<HTMLDivElement | null>(null);
+  // const [storyElement, setStoryElement] = useState<HTMLDivElement | null>(null);
+  const storyElementRef = useRef<HTMLDivElement | null>(null);
+  const scrollableFormatRefs = useRef<Map<string, Element>>(null);
 
-  const initialSlideIndex = extractSlideIndex(getHashPathName());
 
-  // Prevent initial scroll from triggering URL update
-  const hasInitialScrolled = useRef(initialSlideIndex < 0);
+  function getScrollableFormatsMap() {
+    if (!scrollableFormatRefs.current) {
+      // Initialize the Map on first usage.
+      scrollableFormatRefs.current = new Map();
+    }
+    return scrollableFormatRefs.current;
+  }
 
   return (
     <StoryContext
       value={{
         story,
-        storyElement,
-        setStoryElement,
-        hasInitialScrolled,
+        storyElementRef,
+        scrollableFormatRefs,
+        getScrollableFormatsMap,
       }}
     >
       {children}
