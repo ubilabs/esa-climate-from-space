@@ -10,20 +10,20 @@
   src: url("../../../../../assets/fonts/NotesEsaBol.otf");
 }
 
-/*  default margin */
+/* default margin and padding*/
 * {
   margin: 0;
   padding: 0;
 }
 
-/* 1. Use a more-intuitive box-sizing model */
+/*  Use a more-intuitive box-sizing model */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* 9. Improve line wrapping */
+/* Improve line wrapping */
 p {
   text-wrap: pretty;
 }
