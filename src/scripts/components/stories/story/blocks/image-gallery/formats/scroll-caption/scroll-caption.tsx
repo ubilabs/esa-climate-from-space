@@ -9,13 +9,16 @@ import styles from "./scroll-caption.module.css";
 
 const ScrollCaption: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const { content, storyId } = useFormat();
-  console.log("ScrollCaption content:", content, "storyId:", storyId);
 
   return (
     <FormatContainer ref={ref}>
-      {content.slides.map((slide, index) => {
-        return <CaptionImage src={getStoryAssetUrl(storyId, slide.url)} key={index} />;
-      })}
+      {content.slides.map((slide, index) => (
+        <div key={index} className={styles.imageContainer}>
+          <CaptionImage src={getStoryAssetUrl(storyId, slide.url)} />
+          <p>{slide.caption}</p>
+          <p>{slide.altText}</p>
+        </div>
+      ))}
     </FormatContainer>
   );
 };

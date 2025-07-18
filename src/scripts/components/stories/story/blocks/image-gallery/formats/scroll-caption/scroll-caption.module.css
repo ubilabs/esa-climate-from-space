@@ -1,4 +1,3 @@
-.scrollCaptionContainer {
-  height: var(--story-height)
+.imageContainer {
+  height: auto;
 }
-

@@ -64,15 +64,12 @@ export const CaptionImage: FunctionComponent<Props> = ({ src }) => {
         ref={imgRef}
         src={src}
         alt="Zoomable"
+        className={styles.image}
         style={{
           x: isFullscreen ? x : 0,
           y: isFullscreen ? y : 0,
           scale: isFullscreen ? scale : 1,
           cursor: isFullscreen ? "grab" : "pointer",
-          maxWidth: "100%",
-          maxHeight: "100%",
-          userSelect: "none",
-          touchAction: "none",
         }}
         draggable={false}
       />
