@@ -13,9 +13,7 @@ import { FormatContainer } from "../../../layout/format-container/format-contain
 
 import styles from "./splashscreen.module.css";
 
-type Props = StorySectionProps;
-
-export const SplashScreen: FunctionComponent<Props> = ({ ref }) => {
+export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const { story } = useStory();
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -58,4 +56,3 @@ export const SplashScreen: FunctionComponent<Props> = ({ ref }) => {
   );
 };
 
-SplashScreen.displayName = "SplashScreen";
