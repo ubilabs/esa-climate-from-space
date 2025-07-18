@@ -38,7 +38,7 @@
       line-height: 1.25rem;
       letter-spacing: 0.175px;
 
-      >* {
+      h3, p {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
