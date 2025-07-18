@@ -23,10 +23,13 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
   image: { url, altText },
   animationDirection,
 }) => {
-  const inputRange = [
-    (slideIndex - 1) / (numSlides - 1),
-    slideIndex / (numSlides - 1),
-  ];
+  const inputRange =
+    numSlides === 1
+      ? [0, 1] // Fallback range when there's only one slide
+      : [
+          (slideIndex - 1) / (numSlides - 1),
+          slideIndex / (numSlides - 1),
+        ];
 
   // output range depends on the animation direction
   // For the first slide, we want to keep it at the top
