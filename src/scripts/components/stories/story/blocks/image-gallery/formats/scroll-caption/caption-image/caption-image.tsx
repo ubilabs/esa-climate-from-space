@@ -1,5 +1,8 @@
-import { useState, useRef, useEffect, FunctionComponent } from "react";
+import { useState, useRef, FunctionComponent } from "react";
 import { motion, useMotionValue, AnimatePresence } from "motion/react";
+import { useGesture } from "@use-gesture/react";
+
+import styles from "./caption-image.module.css";
 
 interface Props {
   src: string; // Image source
@@ -7,25 +10,47 @@ interface Props {
 
 export const CaptionImage: FunctionComponent<Props> = ({ src }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Motion values for drag and scale
   const scale = useMotionValue(1);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef(null);
 
-  // Zoom with wheel
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+  // Gesture bindings
+  useGesture(
+    {
+      onDrag: ({ offset: [dx, dy] }) => {
+        x.set(dx);
+        y.set(dy);
+      },
+      onPinch: ({ offset: [d] }) => {
+        const s = Math.min(Math.max(d / 100, 1), 5); // limit zoom 1–5x
+        scale.set(s);
+      },
+      onWheel: ({ event }) => {
+        // prevent default scrolling
+        event.preventDefault();
+        const delta = -event.deltaY * 0.001;
+        const newScale = Math.min(Math.max(scale.get() + delta, 1), 5);
+        scale.set(newScale);
+      },
+    },
+    {
+      target: imgRef,
+      eventOptions: { passive: false },
+      drag: { from: () => [x.get(), y.get()] },
+      pinch: { from: () => [scale.get() * 100, 0] }, // convert scale to %
+    },
+  );
 
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      const newScale = Math.min(5, Math.max(1, scale.get() - e.deltaY * 0.001));
-      scale.set(newScale);
-    };
-
-    container.addEventListener("wheel", onWheel, { passive: false });
-    return () => container.removeEventListener("wheel", onWheel);
-  }, [scale]);
+  // Reset on close
+  const handleClose = () => {
+    scale.set(1);
+    x.set(0);
+    y.set(0);
+    setIsFullscreen(false);
+  };
 
   return (
     <div>
@@ -34,54 +59,30 @@ export const CaptionImage: FunctionComponent<Props> = ({ src }) => {
       <AnimatePresence>
         {isFullscreen && (
           <motion.div
-            ref={containerRef}
-            className="fullscreen-overlay"
+            className={styles.fullscreenOverlay}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              zIndex: 1000,
-              background: "rgba(0, 0, 0, 0.9)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              overflow: "hidden",
-            }}
           >
             <motion.img
+              ref={imgRef}
               src={src}
               alt="Zoomable"
-              drag
-              dragConstraints={{
-                top: -1000,
-                bottom: 1000,
-                left: -1000,
-                right: 1000,
-              }}
               style={{
                 x,
                 y,
                 scale,
                 cursor: "grab",
-                touchAction: "none",
                 maxWidth: "100%",
                 maxHeight: "100%",
+                userSelect: "none",
+                touchAction: "none",
               }}
-              whileTap={{ cursor: "grabbing" }}
+              draggable={false}
             />
 
             <button
-              onClick={() => {
-                x.set(0);
-                y.set(0);
-                scale.set(1);
-                setIsFullscreen(false);
-              }}
+              onClick={handleClose}
               style={{
                 position: "absolute",
                 top: 20,
