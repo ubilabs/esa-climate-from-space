@@ -46,7 +46,7 @@ const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
   }
 
   return (
-    <FormatContainer ref={ref} className={styles.blendWrapper}>
+    <FormatContainer ref={ref}>
       <div
         ref={targetRef}
         className={styles.stickySectionWrapper}
