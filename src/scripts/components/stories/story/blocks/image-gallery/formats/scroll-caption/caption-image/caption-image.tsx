@@ -1,5 +1,5 @@
 import { useState, useRef, FunctionComponent } from "react";
-import { motion, useMotionValue, AnimatePresence } from "motion/react";
+import { motion, useMotionValue } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 
 import styles from "./caption-image.module.css";
@@ -41,6 +41,7 @@ export const CaptionImage: FunctionComponent<Props> = ({ src }) => {
       eventOptions: { passive: false },
       drag: { from: () => [x.get(), y.get()] },
       pinch: { from: () => [scale.get() * 100, 0] }, // convert scale to %
+      enabled: isFullscreen, // Only enable gestures when in fullscreen
     },
   );
 
@@ -53,52 +54,59 @@ export const CaptionImage: FunctionComponent<Props> = ({ src }) => {
   };
 
   return (
-    <div>
-      <button onClick={() => setIsFullscreen(true)}>🔍</button>
+    <motion.div
+      layout
+      className={isFullscreen ? styles.fullscreenOverlay : styles.imageContainer}
+      onClick={() => !isFullscreen && setIsFullscreen(true)}
+    >
+      <motion.img
+        layout
+        ref={imgRef}
+        src={src}
+        alt="Zoomable"
+        style={{
+          x: isFullscreen ? x : 0,
+          y: isFullscreen ? y : 0,
+          scale: isFullscreen ? scale : 1,
+          cursor: isFullscreen ? "grab" : "pointer",
+          maxWidth: "100%",
+          maxHeight: "100%",
+          userSelect: "none",
+          touchAction: "none",
+        }}
+        draggable={false}
+      />
 
-      <AnimatePresence>
-        {isFullscreen && (
-          <motion.div
-            className={styles.fullscreenOverlay}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.img
-              ref={imgRef}
-              src={src}
-              alt="Zoomable"
-              style={{
-                x,
-                y,
-                scale,
-                cursor: "grab",
-                maxWidth: "100%",
-                maxHeight: "100%",
-                userSelect: "none",
-                touchAction: "none",
-              }}
-              draggable={false}
-            />
+      {!isFullscreen && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsFullscreen(true);
+          }}
+          className={styles.fullscreenButton}
+        >
+          🔍
+        </button>
+      )}
 
-            <button
-              onClick={handleClose}
-              style={{
-                position: "absolute",
-                top: 20,
-                right: 20,
-                fontSize: "2rem",
-                color: "white",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              ✕
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+      {isFullscreen && (
+        <button
+          onClick={handleClose}
+          style={{
+            position: "absolute",
+            top: 20,
+            right: 20,
+            fontSize: "2rem",
+            color: "white",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            zIndex: 100,
+          }}
+        >
+          ✕
+        </button>
+      )}
+    </motion.div>
   );
 };
