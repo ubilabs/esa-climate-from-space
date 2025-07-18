@@ -31,7 +31,7 @@ export const TimeBlendImage: FunctionComponent<TimeBlendImageProps> = ({
     scrollYProgress,
     isFirstSlide
       ? [0, 1]
-      : [(slideIndex - 1) / (numSlides - 1), slideIndex / numSlides],
+      : [(slideIndex - 1) / (numSlides - 1), slideIndex / (numSlides - 1)],
     isFirstSlide ? ["0vw", "0vw"] : ["100vw", "0vw"],
   );
 
