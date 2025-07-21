@@ -4,7 +4,6 @@ import cx from "classnames";
 
 import { FormattedMessage, useIntl } from "react-intl";
 import { useFormat } from "../../../../../../../providers/story/format/use-format";
-import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 import { StorySectionProps } from "../../../../../../../types/story";
 import { FormatContainer } from "../../../../../layout/format-container/format-container";
 import { CompareImages } from "./compare-images/compare-images";
@@ -21,7 +20,9 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const intl = useIntl();
 
   if (!slides || slides.length < 2) {
-    console.error("CompareMode requires at least two slides containing image sources to perform a comparison.");
+    console.error(
+      "CompareMode requires at least two slides containing image sources to perform a comparison.",
+    );
     return null;
   }
 
@@ -30,9 +31,6 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
       "CompareMode currently supports only two images for comparison. Additional images will be ignored.",
     );
   }
-
-  const image1 = slides[0];
-  const image2 = slides[1];
 
   return (
     <FormatContainer
@@ -65,10 +63,9 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
       )}
       <CompareImages
         isComparing={isComparing}
-        src1={getStoryAssetUrl(storyId, image1.url)}
-        alt1={image1.caption || image1.altText}
-        src2={getStoryAssetUrl(storyId, image2.url)}
-        alt2={image2.caption || image2.altText}
+        slide1={slides[0]}
+        slide2={slides[1]}
+        storyId={storyId}
       />
     </FormatContainer>
   );

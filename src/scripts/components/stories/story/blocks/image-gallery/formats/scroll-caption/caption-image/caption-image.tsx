@@ -1,18 +1,16 @@
 import { useState, useRef, FunctionComponent } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import { motion, useMotionValue } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 
+import { MAX_ZOOM_SCALE, MIN_ZOOM_SCALE, PINCH_SCALE_FACTOR, WHEEL_SCALE_FACTOR } from "../../../../../../../../config/main";
+
 import styles from "./caption-image.module.css";
-import { FormattedMessage, useIntl } from "react-intl";
 
 interface Props {
   src: string;
   alt: string;
 }
-const WHEEL_SCALE_FACTOR = 0.001,
-  MIN_ZOOM_SCALE = 1,
-  PINCH_SCALE_FACTOR = 100,
-  MAX_ZOOM_SCALE = 5;
 
 export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);

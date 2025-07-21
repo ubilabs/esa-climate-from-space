@@ -50,6 +50,11 @@ export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interac
 export const CONTENT_NAV_LONGITUDE_OFFSET = -25;
 export const ALTITUDE_FACTOR_MOBILE = 0.4;
 
+export const WHEEL_SCALE_FACTOR = 0.001,
+  MIN_ZOOM_SCALE = 1,
+  PINCH_SCALE_FACTOR = 100,
+  MAX_ZOOM_SCALE = 5;
+
 // The order of these is important for the stories menu
 export const categoryTags = [
   "welcome",
