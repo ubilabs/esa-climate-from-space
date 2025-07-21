@@ -3,14 +3,17 @@ import { motion, useMotionValue } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 
 import styles from "./caption-image.module.css";
+import { FormattedMessage, useIntl } from "react-intl";
 
 interface Props {
   src: string; // Image source
+  alt?: string; // Optional alt text
 }
 
-export const CaptionImage: FunctionComponent<Props> = ({ src }) => {
+export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
+  const intl = useIntl();
   // Motion values for drag and scale
   const scale = useMotionValue(1);
   const x = useMotionValue(0);
@@ -59,12 +62,15 @@ export const CaptionImage: FunctionComponent<Props> = ({ src }) => {
       className={
         isFullscreen ? styles.fullscreenOverlay : styles.imageContainer
       }
+      role="dialog"
+      aria-modal="true"
+      aria-hidden={!isFullscreen}
     >
       <motion.img
         layout
         ref={imgRef}
         src={src}
-        alt="Zoomable"
+        alt={alt || "Caption image"}
         className={styles.image}
         style={{
           x: isFullscreen ? x : 0,
@@ -82,13 +88,20 @@ export const CaptionImage: FunctionComponent<Props> = ({ src }) => {
             setIsFullscreen(true);
           }}
           className={styles.fullscreenButton}
+          aria-label={intl.formatMessage({ id: "enterFullscreen" })}
         ></button>
       )}
 
       {isFullscreen && (
         <>
-          <span>Zoom with two fingers, move with one</span>
-          <button onClick={handleClose} className={styles.closeButton}>
+          <span id="gesture-instructions">
+            <FormattedMessage id={"zoomInstruction"} />
+          </span>
+          <button
+            onClick={handleClose}
+            className={styles.closeButton}
+            aria-label={intl.formatMessage({ id: "exitFullscreen" })}
+          >
             ✕
           </button>
         </>
