@@ -64,8 +64,8 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
       className={
         isFullscreen ? styles.fullscreenOverlay : styles.imageContainer
       }
-      role="dialog"
-      aria-modal="true"
+      role={isFullscreen ? "dialog" : undefined}
+      aria-modal={isFullscreen ? "true" : undefined}
       aria-hidden={!isFullscreen}
     >
       <motion.img
