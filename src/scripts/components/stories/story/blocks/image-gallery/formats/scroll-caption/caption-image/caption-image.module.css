@@ -1,24 +1,25 @@
 .imageContainer {
-  width: 100%;
   height: auto;
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.9);
 
   img {
     width: 100%;
     height: auto;
     min-height: 200px;
     object-fit: cover;
-    margin-bottom: 1rem;
   }
 }
 
 .fullscreenOverlay {
+  height: var(--story-height);
   width: 100vw;
   -webkit-user-select: none;
-  height: var(--story-height);
   user-select: none;
   touch-action: none;
   position: fixed;
@@ -29,6 +30,29 @@
   justify-content: center;
   align-items: center;
   z-index: 10;
+
+  &:before {
+    z-index: 1;
+    content: "";
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 56px;
+    background: linear-gradient(0deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.44) 78.37%);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 97px;
+    width: 100%;
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.64) 86.54%);
+  }
 
   >span {
     position: absolute;
@@ -53,31 +77,6 @@
     }
 
     z-index: 1;
-  }
-
-  &:before {
-    z-index: 1;
-    content: "";
-    width: 100%;
-    position: absolute;
-    top: 0;
-    height: 56px;
-    background: linear-gradient(0deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.44) 78.37%);
-  }
-
-  &:after {
-    content: "";
-    height: 97px;
-    width: 100%;
-    background: linear-gradient(180deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.64) 86.54%);
-
-    position: absolute;
-
-    bottom: 0;
   }
 
   .image {
