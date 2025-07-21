@@ -52,6 +52,7 @@ export type ImageGalleryFormatType =
 export type ImageGalleryFormat = {
   type: ImageGalleryFormatType;
   description?: string; // optional long text
+  caption?: string; // optional short text
   shortText?: string;
   slides: ImageSlide[];
 };
