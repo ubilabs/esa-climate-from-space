@@ -32,11 +32,13 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
         scale.set(s);
       },
       onWheel: ({ event }) => {
-        // prevent default scrolling
-        event.preventDefault();
-        const delta = -event.deltaY * 0.001;
-        const newScale = Math.min(Math.max(scale.get() + delta, 1), 5);
-        scale.set(newScale);
+        if (isFullscreen) {
+          // prevent default scrolling only in fullscreen mode
+          event.preventDefault();
+          const delta = -event.deltaY * 0.001;
+          const newScale = Math.min(Math.max(scale.get() + delta, 1), 5);
+          scale.set(newScale);
+        }
       },
     },
     {
