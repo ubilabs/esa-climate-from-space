@@ -4,7 +4,9 @@
   --story-height: calc(100dvh - var(--header-height));
   z-index: 1;
   grid-area: content;
-  background: rgba(255, 255, 255, 1);
+
+  background: #011e2b;
+  color: #fff;
   overflow: scroll;
   height: var(--story-height);
   position: relative;

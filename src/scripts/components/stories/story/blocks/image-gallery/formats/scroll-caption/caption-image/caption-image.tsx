@@ -56,8 +56,9 @@ export const CaptionImage: FunctionComponent<Props> = ({ src }) => {
   return (
     <motion.div
       layout
-      className={isFullscreen ? styles.fullscreenOverlay : styles.imageContainer}
-      onClick={() => !isFullscreen && setIsFullscreen(true)}
+      className={
+        isFullscreen ? styles.fullscreenOverlay : styles.imageContainer
+      }
     >
       <motion.img
         layout
@@ -69,7 +70,7 @@ export const CaptionImage: FunctionComponent<Props> = ({ src }) => {
           x: isFullscreen ? x : 0,
           y: isFullscreen ? y : 0,
           scale: isFullscreen ? scale : 1,
-          cursor: isFullscreen ? "grab" : "pointer",
+          cursor: isFullscreen ? "grab" : "default",
         }}
         draggable={false}
       />
@@ -81,28 +82,16 @@ export const CaptionImage: FunctionComponent<Props> = ({ src }) => {
             setIsFullscreen(true);
           }}
           className={styles.fullscreenButton}
-        >
-          🔍
-        </button>
+        ></button>
       )}
 
       {isFullscreen && (
-        <button
-          onClick={handleClose}
-          style={{
-            position: "absolute",
-            top: 20,
-            right: 20,
-            fontSize: "2rem",
-            color: "white",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            zIndex: 100,
-          }}
-        >
-          ✕
-        </button>
+        <>
+          <span>Zoom with two fingers, move with one</span>
+          <button onClick={handleClose} className={styles.closeButton}>
+            ✕
+          </button>
+        </>
       )}
     </motion.div>
   );
