@@ -6,9 +6,13 @@ import styles from "./caption-image.module.css";
 import { FormattedMessage, useIntl } from "react-intl";
 
 interface Props {
-  src: string; // Image source
-  alt?: string; // Optional alt text
+  src: string;
+  alt: string;
 }
+const WHEEL_SCALE_FACTOR = 0.001,
+  MIN_ZOOM_SCALE = 1,
+  PINCH_SCALE_FACTOR = 100,
+  MAX_ZOOM_SCALE = 5;
 
 export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -28,15 +32,18 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
         y.set(dy);
       },
       onPinch: ({ offset: [d] }) => {
-        const s = Math.min(Math.max(d / 100, 1), 5); // limit zoom 1–5x
+        const s = Math.min(Math.max(d / PINCH_SCALE_FACTOR, 1), MAX_ZOOM_SCALE); // limit zoom 1–5x
         scale.set(s);
       },
       onWheel: ({ event }) => {
+        // prevent default scrolling
         if (isFullscreen) {
-          // prevent default scrolling only in fullscreen mode
           event.preventDefault();
-          const delta = -event.deltaY * 0.001;
-          const newScale = Math.min(Math.max(scale.get() + delta, 1), 5);
+          const delta = -event.deltaY * WHEEL_SCALE_FACTOR;
+          const newScale = Math.min(
+            Math.max(scale.get() + delta, MIN_ZOOM_SCALE),
+            MAX_ZOOM_SCALE,
+          );
           scale.set(newScale);
         }
       },
@@ -96,7 +103,7 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
 
       {isFullscreen && (
         <>
-          <span id="gesture-instructions">
+          <span aria-describedby="gesture-instructions">
             <FormattedMessage id={"zoomInstruction"} />
           </span>
           <button
