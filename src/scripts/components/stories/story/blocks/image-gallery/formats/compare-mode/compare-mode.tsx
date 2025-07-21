@@ -27,20 +27,17 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
       ref={ref}
       className={cx(styles.compareModeBlock, isComparing && styles.isComparing)}
     >
-      <div
-        className={cx(
-          styles.compareModeContent,
-          isComparing && styles.isComparing,
-        )}
-      >
-        <p className={styles.description}>{content.description}</p>
-        <button
-          className={styles.controlButton}
-          onClick={() => setIsComparing((prev) => !prev)}
-        >
-          {isComparing ? "Exit Compare" : "Start Compare"}
-        </button>
-      </div>
+      {!isComparing && (
+        <div className={styles.compareModeContent}>
+          <p className={styles.description}>{content.description}</p>
+          <button
+            className={styles.controlButton}
+            onClick={() => setIsComparing((prev) => !prev)}
+          >
+            {isComparing ? "Exit Compare" : "Start Compare"}
+          </button>
+        </div>
+      )}
       <CompareImages
         isComparing={isComparing}
         src1={getStoryAssetUrl(storyId, image1.url)}
