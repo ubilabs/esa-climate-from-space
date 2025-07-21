@@ -10,8 +10,9 @@
     {
       "type": "imageGallery",
       "blocks": [
-{
+        {
           "type": "compareMode",
+          "description": "Compare various satellite imagery and data visualizations of Scotland's Flow Country, showcasing its unique landscapes changes over time.",
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
@@ -35,7 +36,7 @@
             }
           ]
         },
-{
+        {
           "type": "scrollCaption",
           "slides": [
             {
