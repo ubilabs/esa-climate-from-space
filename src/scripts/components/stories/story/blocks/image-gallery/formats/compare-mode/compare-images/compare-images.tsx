@@ -1,4 +1,4 @@
-import { useRef, FunctionComponent } from "react";
+import { useRef, FunctionComponent, useEffect } from "react";
 import { motion, useMotionValue, AnimatePresence } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 
@@ -29,6 +29,14 @@ export const CompareImages: FunctionComponent<Props> = ({
   const y = useMotionValue(0);
 
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (!isComparing) {
+      scale.set(1);
+      x.set(0);
+      y.set(0);
+    }
+  }, [isComparing, scale, x, y]);
 
   useGesture(
     {
