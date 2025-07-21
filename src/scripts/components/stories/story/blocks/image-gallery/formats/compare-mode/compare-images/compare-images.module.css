@@ -5,7 +5,31 @@
   /* overflow: hidden; */
   /* cursor: grab; */
   touch-action: none;
+  position: relative;
   /* background-color: #000; */
+
+  &:before {
+    z-index: 1;
+    content: "";
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 56px;
+    background: linear-gradient(0deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.44) 78.37%);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 97px;
+    width: 100%;
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.64) 86.54%);
+  }
 }
 
 .imageWrapper {

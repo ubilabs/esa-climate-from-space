@@ -7,11 +7,14 @@ import styles from "./compare-mode.module.css";
 import { CompareImages } from "./compare-images/compare-images";
 
 import cx from "classnames";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const { content, storyId } = useFormat();
   const { slides } = content;
   const [isComparing, setIsComparing] = useState(false);
+  const intl = useIntl();
+
   console.log("CompareMode content:", content);
 
   if (!slides || slides.length < 2) {
@@ -32,11 +35,25 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
           <p className={styles.description}>{content.description}</p>
           <button
             className={styles.controlButton}
-            onClick={() => setIsComparing((prev) => !prev)}
+            onClick={() => setIsComparing(true)}
           >
             {isComparing ? "Exit Compare" : "Start Compare"}
           </button>
         </div>
+      )}
+      {isComparing && (
+        <>
+          <span aria-describedby="gesture-instructions">
+            <FormattedMessage id={"zoomInstruction"} />
+          </span>
+          <button
+            onClick={() => setIsComparing(false)}
+            className={styles.closeButton}
+            aria-label={intl.formatMessage({ id: "exitFullscreen" })}
+          >
+            ✕
+          </button>
+        </>
       )}
       <CompareImages
         isComparing={isComparing}
