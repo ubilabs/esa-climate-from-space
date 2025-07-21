@@ -57,6 +57,8 @@
     .description {
       color: var(--Neutral-White, #fff);
       text-align: center;
+      max-height: 60vh;
+      overflow-y: scroll;
 
       /* M3/Elevation Light/1 */
       text-shadow:
@@ -73,6 +75,7 @@
     }
 
     .controlButton {
+      text-transform: capitalize;
       color: #fff;
       font-size: 16px;
       width: fit-content;

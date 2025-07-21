@@ -1,6 +1,7 @@
 import { useRef, FunctionComponent, useEffect } from "react";
 import { motion, useMotionValue, AnimatePresence, animate } from "motion/react";
 import { useGesture } from "@use-gesture/react";
+import cx from "classnames";
 
 import styles from "./compare-images.module.css";
 
@@ -72,7 +73,10 @@ export const CompareImages: FunctionComponent<Props> = ({
   );
 
   return (
-    <div ref={containerRef} className={styles.compareContainer}>
+    <div
+      ref={containerRef}
+      className={cx(styles.compareContainer, isComparing && styles.isComparing)}
+    >
       <motion.div
         className={styles.imageWrapper}
         animate={{ height: isComparing ? "50%" : "100%" }}
