@@ -1,24 +1,21 @@
 .compareContainer {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  cursor: grab;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* width: 100%; */
+  /* overflow: hidden; */
+  /* cursor: grab; */
   touch-action: none;
-  background-color: #000;
+  /* background-color: #000; */
 }
 
 .imageWrapper {
-  flex: 1;
   overflow: hidden;
   position: relative;
-  height: 50%;
   border-bottom: 2px solid white;
 }
 
 .imageWrapper:last-child {
-  border-bottom: none;
+  /* border-bottom: none; */
 }
 
 .image {

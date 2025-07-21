@@ -1,6 +1,7 @@
 import { useRef, FunctionComponent } from "react";
-import { motion, useMotionValue } from "motion/react";
+import { motion, useMotionValue, AnimatePresence } from "motion/react";
 import { useGesture } from "@use-gesture/react";
+
 import styles from "./compare-images.module.css";
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
   alt1?: string;
   src2: string;
   alt2?: string;
+  isComparing: boolean;
 }
 
 const PINCH_SCALE_FACTOR = 100;
@@ -20,6 +22,7 @@ export const CompareImages: FunctionComponent<Props> = ({
   alt1,
   src2,
   alt2,
+  isComparing,
 }) => {
   const scale = useMotionValue(1);
   const x = useMotionValue(0);
@@ -55,12 +58,17 @@ export const CompareImages: FunctionComponent<Props> = ({
       eventOptions: { passive: false },
       drag: { from: () => [x.get(), y.get()] },
       pinch: { from: () => [scale.get() * PINCH_SCALE_FACTOR, 0] },
+      enabled: isComparing, // Only enable gestures when comparing
     },
   );
 
   return (
     <div ref={containerRef} className={styles.compareContainer}>
-      <div className={styles.imageWrapper}>
+      <motion.div
+        className={styles.imageWrapper}
+        animate={{ height: isComparing ? "50%" : "100%" }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      >
         <motion.img
           src={src1}
           alt={alt1}
@@ -68,16 +76,26 @@ export const CompareImages: FunctionComponent<Props> = ({
           style={{ x, y, scale }}
           draggable={false}
         />
-      </div>
-      <div className={styles.imageWrapper}>
-        <motion.img
-          src={src2}
-          alt={alt2}
-          className={styles.image}
-          style={{ x, y, scale }}
-          draggable={false}
-        />
-      </div>
+      </motion.div>
+      <AnimatePresence>
+        {isComparing && (
+          <motion.div
+            className={styles.imageWrapper}
+            initial={{ height: "0%" }}
+            animate={{ height: "50%" }}
+            exit={{ height: "0%" }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            <motion.img
+              src={src2}
+              alt={alt2}
+              className={styles.image}
+              style={{ x, y, scale }}
+              draggable={false}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
