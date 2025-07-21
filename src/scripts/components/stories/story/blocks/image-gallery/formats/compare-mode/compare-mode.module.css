@@ -1,2 +1,32 @@
-.compareMode{
+.compareModeBlock {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1rem;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.captions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 19px;
+  letter-spacing: 0.175px;
+  color: white;
+
+  > div {
+    flex: 1;
+  }
+
+  h3 {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    font-weight: 400;
+  }
 }
