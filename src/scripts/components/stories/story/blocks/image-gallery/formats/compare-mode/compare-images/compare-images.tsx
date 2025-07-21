@@ -1,33 +1,39 @@
-import { useRef, FunctionComponent, useEffect } from "react";
-import { motion, useMotionValue, AnimatePresence, animate } from "motion/react";
+import { FunctionComponent, useEffect, useRef } from "react";
+import { AnimatePresence, animate, motion, useMotionValue } from "motion/react";
 import { useGesture } from "@use-gesture/react";
+
 import cx from "classnames";
+
+import { ImageSlide } from "../../../../../../../../types/story";
+import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
+
+import { MAX_ZOOM_SCALE, MIN_ZOOM_SCALE, PINCH_SCALE_FACTOR, WHEEL_SCALE_FACTOR } from "../../../../../../../../config/main";
 
 import styles from "./compare-images.module.css";
 
 interface Props {
-  src1: string;
-  alt1?: string;
-  src2: string;
-  alt2?: string;
+  slide1: ImageSlide;
+  slide2: ImageSlide;
+  storyId: string;
   isComparing: boolean;
 }
 
-const PINCH_SCALE_FACTOR = 100;
-const MIN_ZOOM_SCALE = 1;
-const MAX_ZOOM_SCALE = 5;
-const WHEEL_SCALE_FACTOR = 0.001;
-
 export const CompareImages: FunctionComponent<Props> = ({
-  src1,
-  alt1,
-  src2,
-  alt2,
+  slide1,
+  slide2,
+  storyId,
   isComparing,
 }) => {
   const scale = useMotionValue(1);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+
+  // Extract image URLs and alt texts from the slides
+  const { url: url1, altText: alt1 } = slide1;
+  const { url: url2, altText: alt2 } = slide2;
+
+  const src1 = getStoryAssetUrl(storyId,url1);
+  const src2 = getStoryAssetUrl(storyId, url2 );
 
   const containerRef = useRef(null);
 
