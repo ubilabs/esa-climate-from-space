@@ -2,7 +2,7 @@
   touch-action: none;
   position: relative;
 
-  &.isComparing :before {
+  &.isComparing:before {
     z-index: 1;
     content: "";
     width: 100%;
@@ -14,11 +14,12 @@
         rgba(0, 0, 0, 0.44) 78.37%);
   }
 
-  &.isComparing :after {
+  &.isComparing:after {
     content: "";
     position: absolute;
     bottom: 0;
     height: 97px;
+    left: 0;
     width: 100%;
     background: linear-gradient(180deg,
         rgba(0, 0, 0, 0) 0%,
