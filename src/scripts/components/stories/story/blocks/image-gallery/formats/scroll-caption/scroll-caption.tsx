@@ -14,7 +14,7 @@ const ScrollCaption: FunctionComponent<StorySectionProps> = ({ ref }) => {
     <FormatContainer ref={ref} className={styles.scrollCaptionBlock}>
       {content.slides.map((slide, index) => (
         <div key={index} className={styles.scrollImageContainer}>
-          <CaptionImage src={getStoryAssetUrl(storyId, slide.url)} />
+          <CaptionImage src={getStoryAssetUrl(storyId, slide.url)} alt={slide.altText} />
           <h3>{slide.caption}</h3>
           <p>{slide.altText}</p>
         </div>
