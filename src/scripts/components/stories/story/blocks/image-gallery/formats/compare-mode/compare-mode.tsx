@@ -15,8 +15,6 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const [isComparing, setIsComparing] = useState(false);
   const intl = useIntl();
 
-  console.log("CompareMode content:", content);
-
   if (!slides || slides.length < 2) {
     console.warn("CompareMode requires at least two images to compare.");
     return null;
