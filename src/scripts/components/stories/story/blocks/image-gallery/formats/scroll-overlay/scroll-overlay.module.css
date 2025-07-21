@@ -1,0 +1,6 @@
+.scrollOverlayContainer {
+  width: 100%;
+  height: var(--story-height);
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}

@@ -14,7 +14,6 @@
           "type": "scrollOverlay",
           "caption": "Satellites for peat's sake",
           "subCaption": "Flow Country, Scotland",
-          "description": "Compare various satellite imagery and data visualizations of Scotland's Flow Country, showcasing its unique landscapes changes over time.",
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
@@ -27,7 +26,7 @@
               "caption": "Satellites for peat's sake. We can also show gifs"
             },
             {
-              "url": "assets/earth-image01.gif",
+              "url": "assets/launch.mp4",
               "altText": "Satellites for peat's sake.",
               "caption": "... And videos!"
             }
