@@ -1,12 +1,6 @@
 .compareContainer {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* width: 100%; */
-  /* overflow: hidden; */
-  /* cursor: grab; */
   touch-action: none;
   position: relative;
-  /* background-color: #000; */
 
   &:before {
     z-index: 1;
@@ -36,10 +30,6 @@
   overflow: hidden;
   position: relative;
   border-bottom: 2px solid white;
-}
-
-.imageWrapper:last-child {
-  /* border-bottom: none; */
 }
 
 .image {

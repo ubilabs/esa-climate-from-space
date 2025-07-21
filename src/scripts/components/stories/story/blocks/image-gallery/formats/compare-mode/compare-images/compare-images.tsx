@@ -1,5 +1,5 @@
 import { useRef, FunctionComponent, useEffect } from "react";
-import { motion, useMotionValue, AnimatePresence } from "motion/react";
+import { motion, useMotionValue, AnimatePresence, animate } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 
 import styles from "./compare-images.module.css";
@@ -30,11 +30,12 @@ export const CompareImages: FunctionComponent<Props> = ({
 
   const containerRef = useRef(null);
 
+  // Reset position and scale when exiting compare mode
   useEffect(() => {
     if (!isComparing) {
-      scale.set(1);
-      x.set(0);
-      y.set(0);
+      animate(scale, 1);
+      animate(x, 0);
+      animate(y, 0);
     }
   }, [isComparing, scale, x, y]);
 
@@ -75,7 +76,6 @@ export const CompareImages: FunctionComponent<Props> = ({
       <motion.div
         className={styles.imageWrapper}
         animate={{ height: isComparing ? "50%" : "100%" }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
         <motion.img
           src={src1}
@@ -92,7 +92,6 @@ export const CompareImages: FunctionComponent<Props> = ({
             initial={{ height: "0%" }}
             animate={{ height: "50%" }}
             exit={{ height: "0%" }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
           >
             <motion.img
               src={src2}
