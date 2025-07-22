@@ -73,7 +73,7 @@ export const ScrollOverlaySlide: FunctionComponent<Props> = ({
       >
         <>
           <h2>{slide.caption}</h2>
-          {"subCaption" in slide && <h3>{slide.subCaption}</h3>}
+          {slide.subCaption && <h3>{slide.subCaption}</h3>}
         </>
       </motion.div>
     </div>

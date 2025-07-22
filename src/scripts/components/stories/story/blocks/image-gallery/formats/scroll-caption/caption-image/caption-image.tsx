@@ -1,5 +1,5 @@
 import { useState, useRef, FunctionComponent } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import { motion, useMotionValue } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 
