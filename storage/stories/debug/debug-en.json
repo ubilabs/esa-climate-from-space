@@ -1,7 +1,7 @@
 {
   "id": "debug",
   "splashscreen": {
-    "text": "# Satellites for Peat's Sake \r\n\r\nFlow Country, Scotland",
+    "text": "# Satellites for Peat's Sake \r\n\r\n Welcome the the optional splash screen",
     "location": {},
     "markers": [],
     "image": "assets/story37-image07.jpg"
@@ -12,18 +12,17 @@
       "blocks": [
         {
           "type": "scrollOverlay",
-          "caption": "Satellites for peat's sake",
-          "subCaption": "Flow Country, Scotland",
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
               "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view ",
-              "caption": "Satellites for peat's sake."
+              "caption": "Example Scroll overlay",
+              "subCaption": "This has no overlay"
             },
             {
               "url": "assets/satellite.gif",
               "altText": "Satellites for peat's sake.",
-              "caption": "Satellites for peat's sake. We can also show gifs"
+              "caption": " Even GIFs are over the moon!"
             },
             {
               "url": "assets/launch.mp4",
