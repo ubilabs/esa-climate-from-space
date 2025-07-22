@@ -10,7 +10,23 @@
     {
       "type": "imageGallery",
       "blocks": [
-{
+        {
+          "type": "compareMode",
+          "description": "Compare various satellite imagery and data visualizations of Scotland's Flow Country, showcasing its unique landscapes changes over time.",
+          "slides": [
+            {
+              "url": "assets/story37-image01.jpg",
+              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "caption": "Satellites for peat's sake."
+            },
+            {
+              "url": "assets/story37-image02.jpg",
+              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+              "caption": "Satellites for peat's sake. 2"
+            }
+          ]
+        },
+        {
           "type": "scrollCaption",
           "slides": [
             {
