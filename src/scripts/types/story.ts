@@ -23,7 +23,8 @@ export interface LegacyStory {
 
 export type Story = {
   id: string;
-  splashscreen: Splashscreen;
+  // Splashscreen is optional
+  splashscreen?: Splashscreen;
   content: ContentBlock[];
 };
 
