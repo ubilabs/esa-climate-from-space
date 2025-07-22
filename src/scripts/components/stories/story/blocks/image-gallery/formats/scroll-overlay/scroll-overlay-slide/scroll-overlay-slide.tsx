@@ -1,11 +1,18 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef } from "react";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
-import { Slide as SlideType } from "../../../../../../../../types/story";
+import { ImageSlide } from "../../../../../../../../types/story";
 import styles from "./scroll-overlay-slide.module.css";
 import cx from "classnames";
+import {
+  useMotionValueEvent,
+  motion,
+  useScroll,
+  useTransform,
+} from "motion/react";
+import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 
 interface Props {
-  slide: SlideType;
+  slide: ImageSlide;
   storyId: string;
   isFirst?: boolean;
   mainCaption?: string;
