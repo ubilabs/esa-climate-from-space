@@ -7,7 +7,7 @@ import { ScrollOverlaySlide } from "./scroll-overlay-slide/scroll-overlay-slide"
 
 const ScrollOverlay: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const {
-    content: { caption, subCaption, slides },
+    content: { slides },
     storyId,
   } = useFormat();
 
@@ -16,11 +16,9 @@ const ScrollOverlay: FunctionComponent<StorySectionProps> = ({ ref }) => {
       {slides.map((slide, index) => (
         <ScrollOverlaySlide
           key={index}
+          isFirst={index === 0}
           storyId={storyId}
           slide={slide}
-          isFirst={index === 0}
-          mainCaption={caption}
-          mainSubCaption={subCaption}
         />
       ))}
     </FormatContainer>
