@@ -51,8 +51,8 @@ export type ImageGalleryFormatType =
 
 export type ImageGalleryFormat = {
   type: ImageGalleryFormatType;
-  description?: string; // optional long text
-  caption?: string; // optional short text
+  description?: string;
+  caption?: string;
   shortText?: string;
   slides: ImageSlide[];
 };
@@ -61,6 +61,7 @@ export type ImageSlide = {
   url: string;
   altText: string;
   caption: string;
+  subCaption?: string;
   fit?: "cover" | "contain";
 };
 
