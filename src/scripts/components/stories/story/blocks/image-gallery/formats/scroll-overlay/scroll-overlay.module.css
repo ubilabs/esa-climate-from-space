@@ -1,6 +1,5 @@
 .scrollOverlayContainer {
   width: 100%;
-  height: var(--story-height);
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
+  /* As we want the slides to snap, we need to disable the scroll snap alignment on the container. Otherwise, it might not work properly */
+  scroll-snap-align: none;
 }
