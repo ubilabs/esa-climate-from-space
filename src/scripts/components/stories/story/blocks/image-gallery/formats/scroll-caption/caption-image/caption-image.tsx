@@ -1,11 +1,17 @@
 import { useState, useRef, FunctionComponent } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { motion, useMotionValue, AnimatePresence } from "motion/react";
+import { motion, useMotionValue } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 
-import { MAX_ZOOM_SCALE, MIN_ZOOM_SCALE, PINCH_SCALE_FACTOR, WHEEL_SCALE_FACTOR } from "../../../../../../../../config/main";
+import {
+  MAX_ZOOM_SCALE,
+  MIN_ZOOM_SCALE,
+  PINCH_SCALE_FACTOR,
+  WHEEL_SCALE_FACTOR,
+} from "../../../../../../../../config/main";
 
 import styles from "./caption-image.module.css";
+import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
 
 interface Props {
   src: string;
@@ -114,18 +120,10 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
 
       {isFullscreen && (
         <>
-          <AnimatePresence>
-            {showInstructions && (
-              <motion.span
-                initial={{ opacity: 1 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                aria-describedby="gesture-instructions"
-              >
-                <FormattedMessage id={"zoomInstruction"} />
-              </motion.span>
-            )}
-          </AnimatePresence>
+          <InstructionOverlay
+            show={showInstructions}
+            messageId="zoomInstruction"
+          />
           <button
             onClick={handleClose}
             className={styles.closeButton}
