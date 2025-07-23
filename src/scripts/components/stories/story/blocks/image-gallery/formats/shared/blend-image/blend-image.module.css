@@ -10,4 +10,9 @@
     height: 100%;
     object-fit: cover;
   }
+
+  .blendBorder {
+    position: absolute;
+    background-color: white;
+  }
 }

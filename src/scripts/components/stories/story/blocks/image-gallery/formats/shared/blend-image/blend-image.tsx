@@ -28,18 +28,37 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
       ? [0, 1]
       : [(slideIndex - 1) / (numSlides - 1), slideIndex / (numSlides - 1)];
 
-  const outputRange =
-    animationDirection === "vertical"
-      ? // make sure the %-sign is correctly placed
-        ["inset(100% 0 0 0)", "inset(0% 0 0 0)"]
-      : ["inset(0 100% 0 0)", "inset(0 0% 0 0)"];
+  const percentageValue = useTransform(scrollYProgress, inputRange, [100, -2]);
 
-  const clipPathValue = useTransform(scrollYProgress, inputRange, outputRange);
+  const clipPathValue = useTransform(percentageValue, (v) =>
+    animationDirection === "vertical"
+      ? `inset(${v}% 0 0 0)`
+      : `inset(0 ${v}% 0 0)`,
+  );
 
   const style = {
     clipPath: slideIndex === 0 ? "inset(0 0 0 0)" : clipPathValue,
     zIndex: slideIndex,
   };
+
+  const borderPosition = useTransform(percentageValue, (v) => `${v}%`);
+
+  const borderThickness = "2px";
+
+  const borderStyle =
+    animationDirection === "vertical"
+      ? {
+          top: borderPosition,
+          left: 0,
+          width: "100%",
+          height: borderThickness,
+        }
+      : {
+          top: 0,
+          right: borderPosition,
+          width: borderThickness,
+          height: "100%",
+        };
 
   return (
     <motion.li style={style} className={styles.blendItem}>
@@ -48,6 +67,13 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
         alt={`Slide ${slideIndex + 1}, ${altText}`}
         className={styles.blendImage}
       />
+      {slideIndex !== 0 && (
+        <motion.div
+          className={styles.blendBorder}
+          style={borderStyle}
+          aria-hidden="true"
+        />
+      )}
     </motion.li>
   );
 };
