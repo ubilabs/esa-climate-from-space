@@ -25,32 +25,23 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
 }) => {
   const inputRange =
     numSlides === 1
-      ? [0, 1] // Fallback range when there's only one slide
-      : [
-          (slideIndex - 1) / (numSlides - 1),
-          slideIndex / (numSlides - 1),
-        ];
+      ? [0, 1]
+      : [(slideIndex - 1) / (numSlides - 1), slideIndex / (numSlides - 1)];
 
-  // output range depends on the animation direction
-  // For the first slide, we want to keep it at the top
   const outputRange =
-    slideIndex === 0
-      ? animationDirection === "vertical"
-        ? ["0vh", "0vh"]
-        : ["0vw", "0vw"]
-      : animationDirection === "vertical"
-        ? ["100vh", "0vh"]
-        : ["100vw", "0vw"];
-
-  const transformValue = useTransform(scrollYProgress, inputRange, outputRange);
-
-  const style =
     animationDirection === "vertical"
-      ? { translateY: transformValue }
-      : { translateX: transformValue };
+      ? ["inset(0 0 100% 0)", "inset(0 0 0% 0)"]
+      : ["inset(0 100% 0 0)", "inset(0 0% 0 0)"];
+
+  const clipPathValue = useTransform(scrollYProgress, inputRange, outputRange);
+
+  const style = {
+    clipPath: slideIndex === 0 ? "inset(0 0 0% 0)" : clipPathValue,
+    zIndex: slideIndex,
+  };
 
   return (
-    <motion.li style={style}>
+    <motion.li style={style} className={styles.blendItem}>
       <img
         src={getStoryAssetUrl(storyId, url)}
         alt={`Slide ${slideIndex + 1}, ${altText}`}

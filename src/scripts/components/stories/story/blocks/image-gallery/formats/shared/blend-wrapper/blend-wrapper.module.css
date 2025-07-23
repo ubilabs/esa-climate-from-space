@@ -6,6 +6,8 @@
     position: sticky;
     top: 0;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     /* Keep content from spilling out */
 
     .imageContainer {
@@ -22,23 +24,20 @@
     .altText {
       height: 4.375rem;
       width: 100%;
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
       background-color: var(--Neutral-ESA-Background, #011e2b);
       padding: 16px 24px;
       color: var(--Neutral-ESA-White, #fff);
       text-shadow:
         0px 1px 2px rgba(0, 0, 0, 0.3),
         0px 1px 3px rgba(0, 0, 0, 0.15);
-      font-family: 'NotesEsa', sans-serif;
+      font-family: "NotesEsa", sans-serif;
       font-size: 0.875rem;
       font-style: normal;
       line-height: 1.25rem;
       letter-spacing: 0.175px;
 
-      h3, p {
+      h3,
+      p {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
