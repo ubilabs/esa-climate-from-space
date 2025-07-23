@@ -7,7 +7,12 @@ import cx from "classnames";
 import { ImageSlide } from "../../../../../../../../types/story";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 
-import { MAX_ZOOM_SCALE, MIN_ZOOM_SCALE, PINCH_SCALE_FACTOR, WHEEL_SCALE_FACTOR } from "../../../../../../../../config/main";
+import {
+  MAX_ZOOM_SCALE,
+  MIN_ZOOM_SCALE,
+  PINCH_SCALE_FACTOR,
+  WHEEL_SCALE_FACTOR,
+} from "../../../../../../../../config/main";
 
 import styles from "./compare-images.module.css";
 
@@ -16,6 +21,7 @@ interface Props {
   slide2: ImageSlide;
   storyId: string;
   isComparing: boolean;
+  onInteraction?: () => void;
 }
 
 export const CompareImages: FunctionComponent<Props> = ({
@@ -23,6 +29,7 @@ export const CompareImages: FunctionComponent<Props> = ({
   slide2,
   storyId,
   isComparing,
+  onInteraction
 }) => {
   const scale = useMotionValue(1);
   const x = useMotionValue(0);
@@ -32,8 +39,8 @@ export const CompareImages: FunctionComponent<Props> = ({
   const { url: url1, altText: alt1 } = slide1;
   const { url: url2, altText: alt2 } = slide2;
 
-  const src1 = getStoryAssetUrl(storyId,url1);
-  const src2 = getStoryAssetUrl(storyId, url2 );
+  const src1 = getStoryAssetUrl(storyId, url1);
+  const src2 = getStoryAssetUrl(storyId, url2);
 
   const containerRef = useRef(null);
 
@@ -48,10 +55,12 @@ export const CompareImages: FunctionComponent<Props> = ({
 
   useGesture(
     {
+      onDragStart: onInteraction,
       onDrag: ({ offset: [dx, dy] }) => {
         x.set(dx);
         y.set(dy);
       },
+      onPinchStart: onInteraction,
       onPinch: ({ offset: [d] }) => {
         const s = Math.min(
           Math.max(d / PINCH_SCALE_FACTOR, MIN_ZOOM_SCALE),
@@ -59,6 +68,7 @@ export const CompareImages: FunctionComponent<Props> = ({
         );
         scale.set(s);
       },
+      onWheelStart: onInteraction,
       onWheel: ({ event }) => {
         event.preventDefault();
         const delta = -event.deltaY * WHEEL_SCALE_FACTOR;

@@ -41,7 +41,7 @@ const Story: FunctionComponent = () => {
       ref={storyElementRef}
       id="story"
     >
-      <SplashScreen ref={getRefCallback("0-0")} />
+      {story.splashscreen && <SplashScreen ref={getRefCallback("0-0")} />}
       {story.content.map((contentBlock, idx) => {
         const BlockComponent = getBlockComponent(contentBlock.type);
         const blockIndex = idx + 1;

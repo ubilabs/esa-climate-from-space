@@ -1,7 +1,7 @@
 {
   "id": "debug",
   "splashscreen": {
-    "text": "# Satellites for Peat's Sake \r\n\r\nFlow Country, Scotland",
+    "text": "# Satellites for Peat's Sake \r\n\r\n Welcome to the optional splash screen",
     "location": {},
     "markers": [],
     "image": "assets/story37-image07.jpg"
@@ -10,6 +10,27 @@
     {
       "type": "imageGallery",
       "blocks": [
+        {
+          "type": "scrollOverlay",
+          "slides": [
+            {
+              "url": "assets/story37-image01.jpg",
+              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view ",
+              "caption": "Example Scroll overlay",
+              "subCaption": "This has no overlay"
+            },
+            {
+              "url": "assets/satellite.gif",
+              "altText": "Satellites for peat's sake.",
+              "caption": " Even GIFs are over the moon!"
+            },
+            {
+              "url": "assets/launch.mp4",
+              "altText": "Satellites for peat's sake.",
+              "caption": "... And videos!"
+            }
+          ]
+        },
         {
           "type": "compareMode",
           "description": "Compare various satellite imagery and data visualizations of Scotland's Flow Country, showcasing its unique landscapes changes over time.",

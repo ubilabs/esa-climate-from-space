@@ -1,12 +1,11 @@
-import { FunctionComponent, useState } from "react";
-
+import { FunctionComponent, useState, useEffect } from "react";
 import cx from "classnames";
-
 import { FormattedMessage, useIntl } from "react-intl";
 import { useFormat } from "../../../../../../../providers/story/format/use-format";
 import { StorySectionProps } from "../../../../../../../types/story";
 import { FormatContainer } from "../../../../../layout/format-container/format-container";
 import { CompareImages } from "./compare-images/compare-images";
+import { InstructionOverlay } from "../../../../../../ui/instruction-overlay/instruction-overlay";
 
 import styles from "./compare-mode.module.css";
 
@@ -17,7 +16,14 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
   } = useFormat();
 
   const [isComparing, setIsComparing] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(false);
   const intl = useIntl();
+
+  useEffect(() => {
+    if (isComparing) {
+      setShowInstructions(true);
+    }
+  }, [isComparing]);
 
   if (!slides || slides.length < 2) {
     console.error(
@@ -31,6 +37,12 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
       "CompareMode currently supports only two images for comparison. Additional images will be ignored.",
     );
   }
+
+  const handleInteraction = () => {
+    if (showInstructions) {
+      setShowInstructions(false);
+    }
+  };
 
   return (
     <FormatContainer
@@ -49,9 +61,10 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
         </div>
       ) : (
         <>
-          <span aria-describedby="gesture-instructions">
-            <FormattedMessage id={"zoomInstruction"} />
-          </span>
+          <InstructionOverlay
+            show={showInstructions}
+            messageId="zoomInstruction"
+          />
           <button
             onClick={() => setIsComparing(false)}
             className={styles.closeButton}
@@ -62,6 +75,7 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
         </>
       )}
       <CompareImages
+        onInteraction={handleInteraction}
         isComparing={isComparing}
         slide1={slides[0]}
         slide2={slides[1]}

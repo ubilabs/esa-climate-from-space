@@ -23,7 +23,8 @@ export interface LegacyStory {
 
 export type Story = {
   id: string;
-  splashscreen: Splashscreen;
+  // Splashscreen is optional
+  splashscreen?: Splashscreen;
   content: ContentBlock[];
 };
 
@@ -51,7 +52,8 @@ export type ImageGalleryFormatType =
 
 export type ImageGalleryFormat = {
   type: ImageGalleryFormatType;
-  description?: string; // optional long text
+  description?: string;
+  caption?: string;
   shortText?: string;
   slides: ImageSlide[];
 };
@@ -60,6 +62,7 @@ export type ImageSlide = {
   url: string;
   altText: string;
   caption: string;
+  subCaption?: string;
   fit?: "cover" | "contain";
 };
 

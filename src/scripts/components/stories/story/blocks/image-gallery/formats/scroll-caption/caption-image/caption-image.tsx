@@ -1,11 +1,17 @@
 import { useState, useRef, FunctionComponent } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { useIntl } from "react-intl";
 import { motion, useMotionValue } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 
-import { MAX_ZOOM_SCALE, MIN_ZOOM_SCALE, PINCH_SCALE_FACTOR, WHEEL_SCALE_FACTOR } from "../../../../../../../../config/main";
+import {
+  MAX_ZOOM_SCALE,
+  MIN_ZOOM_SCALE,
+  PINCH_SCALE_FACTOR,
+  WHEEL_SCALE_FACTOR,
+} from "../../../../../../../../config/main";
 
 import styles from "./caption-image.module.css";
+import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
 
 interface Props {
   src: string;
@@ -14,6 +20,7 @@ interface Props {
 
 export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(true);
 
   const intl = useIntl();
   // Motion values for drag and scale
@@ -22,17 +29,26 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
   const y = useMotionValue(0);
   const imgRef = useRef(null);
 
+  const hideInstructions = () => {
+    if (showInstructions) {
+      setShowInstructions(false);
+    }
+  };
+
   // Gesture bindings
   useGesture(
     {
+      onDragStart: hideInstructions,
       onDrag: ({ offset: [dx, dy] }) => {
         x.set(dx);
         y.set(dy);
       },
+      onPinchStart: hideInstructions,
       onPinch: ({ offset: [d] }) => {
         const s = Math.min(Math.max(d / PINCH_SCALE_FACTOR, 1), MAX_ZOOM_SCALE); // limit zoom 1–5x
         scale.set(s);
       },
+      onWheelStart: hideInstructions,
       onWheel: ({ event }) => {
         // prevent default scrolling
         if (isFullscreen) {
@@ -63,6 +79,12 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
     setIsFullscreen(false);
   };
 
+  const handleOpen = (e) => {
+    e.stopPropagation();
+    setIsFullscreen(true);
+    setShowInstructions(true);
+  };
+
   return (
     <motion.div
       layout
@@ -90,10 +112,7 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
 
       {!isFullscreen && (
         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            setIsFullscreen(true);
-          }}
+          onClick={handleOpen}
           className={styles.fullscreenButton}
           aria-label={intl.formatMessage({ id: "enterFullscreen" })}
         ></button>
@@ -101,9 +120,10 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
 
       {isFullscreen && (
         <>
-          <span aria-describedby="gesture-instructions">
-            <FormattedMessage id={"zoomInstruction"} />
-          </span>
+          <InstructionOverlay
+            show={showInstructions}
+            messageId="zoomInstruction"
+          />
           <button
             onClick={handleClose}
             className={styles.closeButton}

@@ -10,7 +10,6 @@ import { useStory } from "../../../../../providers/story/use-story";
 import { StorySectionProps } from "../../../../../types/story";
 import { FormatContainer } from "../../../layout/format-container/format-container";
 
-
 import styles from "./splashscreen.module.css";
 
 export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
@@ -23,10 +22,10 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   });
 
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const textY = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
 
-  if (!story) {
+  if (!story || !story.splashscreen) {
     return null;
   }
 
@@ -44,7 +43,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
             backgroundImage: `url(${getStoryAssetUrl(id, image)})`,
           }}
         />
-        <motion.div style={{ y: textY }} className={styles.contentContainer}>
+        <motion.div style={{ opacity }} className={styles.contentContainer}>
           <ReactMarkdown
             className={styles.content}
             children={text}
@@ -55,4 +54,3 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
     </FormatContainer>
   );
 };
-
