@@ -16,7 +16,6 @@ const ScrollOverlay: FunctionComponent<StorySectionProps> = ({ ref }) => {
       {slides.map((slide, index) => (
         <ScrollOverlaySlide
           key={index}
-          isFirst={index === 0}
           storyId={storyId}
           slide={slide}
         />

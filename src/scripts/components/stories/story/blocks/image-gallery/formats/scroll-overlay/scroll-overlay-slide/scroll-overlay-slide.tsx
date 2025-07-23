@@ -12,7 +12,6 @@ import styles from "./scroll-overlay-slide.module.css";
 interface Props {
   slide: ImageSlide;
   storyId: string;
-  isFirst: boolean;
 }
 
 const isVideo = (url: string) => {
@@ -22,7 +21,6 @@ const isVideo = (url: string) => {
 export const ScrollOverlaySlide: FunctionComponent<Props> = ({
   slide,
   storyId,
-  isFirst,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const assetUrl = getStoryAssetUrl(storyId, slide.url);
@@ -45,7 +43,7 @@ export const ScrollOverlaySlide: FunctionComponent<Props> = ({
   );
 
   return (
-    <div ref={ref} className={cx(styles.slide, isFirst && styles.first)}>
+    <div ref={ref} className={cx(styles.slide)}>
       <div className={styles.assetContainer}>
         {isVideo(slide.url) ? (
           <video

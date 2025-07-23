@@ -24,7 +24,7 @@
     object-fit: cover;
   }
 
-  &:not(.first):before {
+  &:not(:first-child):before {
     content: "";
     position: absolute;
     top: 0;
@@ -35,7 +35,7 @@
     z-index: 2;
   }
 
-  &.first .captionContainer {
+  &:first-child .captionContainer {
     padding: 1.5rem;
     margin-right: auto;
 
