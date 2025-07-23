@@ -25,37 +25,55 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
 }) => {
   const inputRange =
     numSlides === 1
-      ? [0, 1] // Fallback range when there's only one slide
-      : [
-          (slideIndex - 1) / (numSlides - 1),
-          slideIndex / (numSlides - 1),
-        ];
+      ? [0, 1]
+      : [(slideIndex - 1) / (numSlides - 1), slideIndex / (numSlides - 1)];
 
-  // output range depends on the animation direction
-  // For the first slide, we want to keep it at the top
-  const outputRange =
-    slideIndex === 0
-      ? animationDirection === "vertical"
-        ? ["0vh", "0vh"]
-        : ["0vw", "0vw"]
-      : animationDirection === "vertical"
-        ? ["100vh", "0vh"]
-        : ["100vw", "0vw"];
+  const percentageValue = useTransform(scrollYProgress, inputRange, [100, -2]);
 
-  const transformValue = useTransform(scrollYProgress, inputRange, outputRange);
-
-  const style =
+  const clipPathValue = useTransform(percentageValue, (v) =>
     animationDirection === "vertical"
-      ? { translateY: transformValue }
-      : { translateX: transformValue };
+      ? `inset(${v}% 0 0 0)`
+      : `inset(0 ${v}% 0 0)`,
+  );
+
+  const style = {
+    clipPath: slideIndex === 0 ? "inset(0 0 0 0)" : clipPathValue,
+    zIndex: slideIndex,
+  };
+
+  const borderPosition = useTransform(percentageValue, (v) => `${v}%`);
+
+  const borderThickness = "2px";
+
+  const borderStyle =
+    animationDirection === "vertical"
+      ? {
+          top: borderPosition,
+          left: 0,
+          width: "100%",
+          height: borderThickness,
+        }
+      : {
+          top: 0,
+          right: borderPosition,
+          width: borderThickness,
+          height: "100%",
+        };
 
   return (
-    <motion.li style={style}>
+    <motion.li style={style} className={styles.blendItem}>
       <img
         src={getStoryAssetUrl(storyId, url)}
         alt={`Slide ${slideIndex + 1}, ${altText}`}
         className={styles.blendImage}
       />
+      {slideIndex !== 0 && (
+        <motion.div
+          className={styles.blendBorder}
+          style={borderStyle}
+          aria-hidden="true"
+        />
+      )}
     </motion.li>
   );
 };
