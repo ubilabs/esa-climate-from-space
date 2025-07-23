@@ -30,7 +30,7 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
 
   const outputRange =
     animationDirection === "vertical"
-      ? ["inset(0 0 100% 0)", "inset(0 0 0% 0)"]
+      ? ["inset(100% 0 0 0)", "inset(0% 0 0 0)"]
       : ["inset(0 100% 0 0)", "inset(0 0% 0 0)"];
 
   const clipPathValue = useTransform(scrollYProgress, inputRange, outputRange);
