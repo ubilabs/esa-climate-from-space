@@ -6,7 +6,7 @@ import Overlay from "../overlay/overlay";
 const AboutProjectOverlay: FunctionComponent = () => {
   const navigate = useNavigate();
 
-  return <Overlay onClose={() => navigate("/")}>{<AboutProject />}</Overlay>;
+  return <Overlay onClose={() => navigate(-1)}>{<AboutProject />}</Overlay>;
 };
 
 export default AboutProjectOverlay;
