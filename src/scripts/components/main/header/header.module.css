@@ -10,12 +10,13 @@
   grid-area: header;
   padding: 0 1.5rem;
 
-  .logoLink {
-    height: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+  >a:first-child {
+    display: inline-block;
+    text-decoration: none;
+
+    svg {
+      display: block;
+    }
   }
 }
 

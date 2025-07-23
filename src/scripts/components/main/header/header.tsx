@@ -28,6 +28,7 @@ import Menu from "../menu/menu";
 import Overlay from "../overlay/overlay";
 
 import styles from "./header.module.css";
+import { Link } from "react-router-dom";
 
 const Header: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -58,12 +59,17 @@ const Header: FunctionComponent = () => {
     <>
       <nav className={styles.header}>
         {logo && (
-          <EsaLogo
-            variant={
-              (isDesktop && "logoWithText") ||
-              (isDataRoute || isStoriesRoute ? "shortLogo" : "logoWithText")
-            }
-          />
+          <Link to="/about">
+            <EsaLogo
+              variant={
+                isDesktop
+                  ? "logoWithText"
+                  : isDataRoute || isStoriesRoute
+                    ? "shortLogo"
+                    : "logoWithText"
+              }
+            />
+          </Link>
         )}
         {(isStoriesRoute || isDataRoute) && back_link && (
           <Button
