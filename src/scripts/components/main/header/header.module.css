@@ -10,7 +10,7 @@
   grid-area: header;
   padding: 0 1.5rem;
 
-  >a:first-child {
+  > a:first-child {
     display: inline-block;
     text-decoration: none;
 

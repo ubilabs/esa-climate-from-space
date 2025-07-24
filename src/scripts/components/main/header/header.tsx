@@ -1,4 +1,5 @@
 import { FunctionComponent, useState } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import config from "../../../config/main";
@@ -28,7 +29,6 @@ import Menu from "../menu/menu";
 import Overlay from "../overlay/overlay";
 
 import styles from "./header.module.css";
-import { Link } from "react-router-dom";
 
 const Header: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -55,20 +55,18 @@ const Header: FunctionComponent = () => {
     return <nav aria-disabled="true"></nav>;
   }
 
+  const logoVariant = isDesktop
+    ? "logoWithText"
+    : isDataRoute || isStoriesRoute
+      ? "shortLogo"
+      : "logoWithText";
+
   return (
     <>
       <nav className={styles.header}>
         {logo && (
           <Link to="/about">
-            <EsaLogo
-              variant={
-                isDesktop
-                  ? "logoWithText"
-                  : isDataRoute || isStoriesRoute
-                    ? "shortLogo"
-                    : "logoWithText"
-              }
-            />
+            <EsaLogo variant={logoVariant} />
           </Link>
         )}
         {(isStoriesRoute || isDataRoute) && back_link && (
