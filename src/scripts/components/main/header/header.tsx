@@ -1,4 +1,5 @@
 import { FunctionComponent, useState } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import config from "../../../config/main";
@@ -54,16 +55,19 @@ const Header: FunctionComponent = () => {
     return <nav aria-disabled="true"></nav>;
   }
 
+  const logoVariant = isDesktop
+    ? "logoWithText"
+    : isDataRoute || isStoriesRoute
+      ? "shortLogo"
+      : "logoWithText";
+
   return (
     <>
       <nav className={styles.header}>
         {logo && (
-          <EsaLogo
-            variant={
-              (isDesktop && "logoWithText") ||
-              (isDataRoute || isStoriesRoute ? "shortLogo" : "logoWithText")
-            }
-          />
+          <Link to="/about">
+            <EsaLogo variant={logoVariant} />
+          </Link>
         )}
         {(isStoriesRoute || isDataRoute) && back_link && (
           <Button
