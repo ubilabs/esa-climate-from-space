@@ -6,6 +6,12 @@
   height: 100%;
   overflow: hidden;
 
+  &.locationStory {
+    .parallaxContainer {
+      background-image: none;
+    }
+  }
+
   .splashBanner {
     height: 100%;
     position: relative;
@@ -59,4 +65,3 @@
     }
   }
 }
-

@@ -78,6 +78,8 @@ const globeState: GlobeState = {
     renderMode: "globe" as RenderMode,
     lat: 25,
     lng: 0,
+    // This is the default altitude for the globe view
+    // The altitude is adjusted based on the normalized screen width to ensure the globe is rendered proportionally across all screen sizes
     altitude: 25840000,
     zoom: 0,
     // Initially, this should be set to false since isAnimated defaults to true.

@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef } from "react";
+import { FunctionComponent, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { motion, useTransform } from "motion/react";
 
@@ -10,7 +10,11 @@ import { useStory } from "../../../../../providers/story/use-story";
 import { StorySectionProps } from "../../../../../types/story";
 import { FormatContainer } from "../../../layout/format-container/format-container";
 
+import cx from "classnames";
+
 import styles from "./splashscreen.module.css";
+import { useDispatch } from "react-redux";
+import { setFlyTo } from "../../../../../reducers/fly-to";
 
 export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const { story } = useStory();
@@ -24,23 +28,38 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const dispatch = useDispatch();
 
   if (!story || !story.splashscreen) {
     return null;
   }
 
-  const { text, image } = story.splashscreen;
+  const { text, image, location } = story.splashscreen;
+  const isLocationBased = location && Object.keys(location).length >= 2;
   const { id } = story;
 
+    dispatch(
+      setFlyTo({
+        ...location,
+        isAnimated: true,
+      }),
+    );
+
   return (
-    <FormatContainer className={styles.splashscreen} ref={ref}>
+    <FormatContainer
+      className={cx(
+        styles.splashscreen,
+        isLocationBased && styles.locationStory,
+      )}
+      ref={ref}
+    >
       <div ref={targetRef} className={styles.splashBanner}>
         <motion.div
           className={styles.parallaxContainer}
           style={{
             y: imageY,
             scale,
-            backgroundImage: `url(${getStoryAssetUrl(id, image)})`,
+            backgroundImage: `${!isLocationBased ? `url(${getStoryAssetUrl(id, image)})` : "none"}`,
           }}
         />
         <motion.div style={{ opacity }} className={styles.contentContainer}>
