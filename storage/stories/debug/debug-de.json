@@ -1,0 +1,105 @@
+{
+  "id": "debug",
+  "splashscreen": {
+    "text": "# Der Wasserkreislauf \r\n\r\n  Wasser ist für unser Leben unerlässlich. Der Wasserkreislauf verbindet viele Komponenten des Klimasystems der Erde und spielt eine wichtige Rolle beim Transport von Wärme um den Planeten.",
+    "location": {},
+    "markers": [],
+    "image": "assets/story21-image10.jpg"
+  },
+  "content": [
+    {
+      "type": "imageGallery",
+      "blocks": [
+        {
+          "type": "scrollOverlay",
+          "slides": [
+            {
+              "url": "",
+              "altText": "",
+              "captions": [
+                "Im Jahr 2010 erlebte Queensland den nassesten Dezember seit Beginn der Aufzeichnungen, was zu einer längeren Periode mit ausgedehnten Überschwemmungen führte.",
+                "Dies ist ein Beispiel für jine Scroll-Überschrift ohne Overlay"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "compareMode",
+          "description": "Compare various satellite imagery and data visualizations of Scotland's Flow Country, showcasing its unique landscapes changes over time.",
+          "slides": [
+            {
+              "url": "assets/story37-image01.jpg",
+              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "caption": "Satellites for peat's sake."
+            },
+            {
+              "url": "assets/story37-image02.jpg",
+              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+              "caption": "Satellites for peat's sake. 2"
+            }
+          ]
+        },
+        {
+          "type": "scrollCaption",
+          "slides": [
+            {
+              "url": "assets/story37-image01.jpg",
+              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "caption": "Satellites for peat's sake."
+            },
+            {
+              "url": "assets/story37-image02.jpg",
+              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+              "caption": "Satellites for peat's sake. 2"
+            },
+            {
+              "url": "assets/story37-image04.jpg",
+              "altText": "Satellites for peat's sake. ",
+              "caption": "Satellites for peat's sake 2.5"
+            },
+            {
+              "url": "assets/story37-image05.jpg",
+              "altText": "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red.",
+              "caption": "Satellites for peat's sake 3"
+            }
+          ]
+        },
+        {
+          "type": "timeBlend",
+          "slides": [
+            {
+              "url": "assets/story37-image01.jpg",
+              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "caption": "Satellites for peat's sake."
+            },
+            {
+              "url": "assets/story37-image02.jpg",
+              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+              "caption": "Satellites for peat's sake. 2"
+            }
+          ]
+        },
+        {
+          "type": "frequencyBlend",
+          "slides": [
+            {
+              "url": "assets/story37-image04.jpg",
+              "altText": "Satellites for peat's sake. False colour image including the near-infrared channel hihglights healthy vegetation in red and shows the burn scar in dark brown.",
+              "caption": "False colour image including the near-infrared channel highlights healthy vegetation in red and shows the burn scar in dark brown."
+            },
+            {
+              "url": "assets/story37-image05.jpg",
+              "altText": "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red.",
+              "caption": "False colour image including the shortwave infrared channels highlights the active fire front in bright red."
+            },
+            {
+              "url": "assets/story37-image06.jpg",
+              "altText": "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red.",
+              "caption": "False colour image including the shortwave infrared channels highlights the active fire front in bright red."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
