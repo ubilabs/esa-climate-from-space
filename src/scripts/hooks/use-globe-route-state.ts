@@ -2,14 +2,15 @@ import { useEffect, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { WebGlGlobe } from "@ubilabs/esa-webgl-globe";
+
 import config from "../config/main";
 
 import { AppRoute } from "../types/app-routes";
 
 import { setSelectedContentAction } from "../reducers/content";
 import { setFlyTo } from "../reducers/fly-to";
-import { setIsAutoRotating } from "../reducers/globe/auto-rotation";
-import {  setSelectedLayerIds } from "../reducers/layers";
+import { setSelectedLayerIds } from "../reducers/layers";
 import { setShowLayer } from "../reducers/show-layer-selector";
 
 import { languageSelector } from "../selectors/language";
@@ -18,14 +19,13 @@ import { appRouteSelector } from "../selectors/route-match";
 
 import { useGetLayerListQuery } from "../services/api";
 
-
 /**
  * Hook that manages globe state based on location changes
  * Handles auto-rotation functionality based on current route
  * Please import this hook only once in the globe.tsx as it would fire state dispachtes multiple times
  * We should refactor this hook into dedicated components in the future
  */
-export function useGlobeRouteState() {
+export function useGlobeRouteState(globe: WebGlGlobe | null) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const appRoute = useSelector(appRouteSelector);
@@ -36,23 +36,39 @@ export function useGlobeRouteState() {
   const language = useSelector(languageSelector);
   const { data: layers } = useGetLayerListQuery(language);
 
-  /**
-   * Update auto-rotation state based on the current pathname
-   */
   const updateAutoRotationState = useCallback(
-    (isBaseRoute: boolean) => {
-      // Only dispatch if needed to prevent unnecessary renders
-      dispatch(setIsAutoRotating(isBaseRoute));
+    (shouldAutoSpin: boolean, globe: WebGlGlobe) => {
+      if (shouldAutoSpin) {
+        globe.startAutoSpin();
+      } else {
+        globe.stopAutoSpin();
+      }
     },
-    [dispatch],
+    [],
   );
 
+  const updateUserInteractionEnabledState = useCallback(
+    (shouldUserInteract: boolean, globe: WebGlGlobe) => {
+      globe.setControlsInteractionEnabled(shouldUserInteract);
+    },
+    [],
+  );
   // Handle  direct URL changes
   useEffect(() => {
+    if (!globe) {
+      return;
+    }
+
     // only call function when the route match *changes*
     if (appRoute && appRoute === previousPathnameRef.current) {
       return;
     }
+
+    updateAutoRotationState(appRoute === AppRoute.Base, globe);
+    updateUserInteractionEnabledState(
+      appRoute === AppRoute.Stories || appRoute === AppRoute.Data,
+      globe,
+    );
 
     switch (appRoute) {
       case AppRoute.Base:
@@ -65,15 +81,14 @@ export function useGlobeRouteState() {
             dispatch(setSelectedLayerIds({ layerId, isPrimary: true }));
             navigate(`/${layer.categories[0]}/data`);
           }
-          dispatch(setIsAutoRotating(true));
           break;
         }
 
-        // Reset the globe view to the default state
         dispatch(
           setFlyTo({
             ...config.globe.view,
             isAnimated: true,
+            interpolationFactor: 0.08,
           }),
         );
 
@@ -84,7 +99,6 @@ export function useGlobeRouteState() {
       case AppRoute.NavContent:
         dispatch(setShowLayer(false));
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
-
         break;
 
       case AppRoute.Data:
@@ -95,6 +109,7 @@ export function useGlobeRouteState() {
 
           dispatch(
             setFlyTo({
+              interpolationFactor: 0.1,
               ...config.globe.view,
               ...(position?.length === 2
                 ? { lat: position[1], lng: position[0] }
@@ -115,9 +130,12 @@ export function useGlobeRouteState() {
   }, [
     appRoute,
     dispatch,
+    globe,
     layers,
     mainId,
     navigate,
+    selectedLayerIds?.mainId,
     updateAutoRotationState,
+    updateUserInteractionEnabledState,
   ]);
 }

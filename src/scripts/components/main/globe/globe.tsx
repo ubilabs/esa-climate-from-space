@@ -1,7 +1,6 @@
 import {
   FunctionComponent,
   memo,
-  RefObject,
   useCallback,
   useEffect,
   useRef,
@@ -9,8 +8,6 @@ import {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { renderToStaticMarkup } from "react-dom/server";
-import { useDispatch, useSelector } from "react-redux";
-import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
 
 import cx from "classnames";
 
@@ -40,11 +37,7 @@ import { LayerType } from "../../../types/globe-layer-type";
 import { useScreenSize } from "../../../hooks/use-screen-size";
 
 import { GlobeProjection } from "../../../types/globe-projection";
-import { isAutoRotatingSelector } from "../../../selectors/auto-rotate";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
-
-import { setIsAutoRotating } from "../../../reducers/globe/auto-rotation";
-import { setFlyTo } from "../../../reducers/fly-to";
 
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
@@ -89,54 +82,6 @@ export type GlobeProps = Partial<Props>;
 
 const EMPTY_FUNCTION = () => {};
 
-// Easing function for smoother animation
-function easeInOutQuad(t: number): number {
-  return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-}
-
-/**
- * Handles globe auto-rotation animation
- * @param globeInstance Current WebGlGlobe instance
- * @param rotation Reference to rotation state
- * @param autoRotation Reference to auto rotation state
- * @param viewLat Current view latitude
- * @param viewAltitude Current view altitude
- */
-function handleAutoRotation(
-  globeInstance: WebGlGlobe | null,
-  rotation: { lat: number; lng: number },
-  autoRotation: { isActive: boolean; animationId: number | null },
-  viewLat: number,
-  viewAltitude: number,
-) {
-  // If no longer enabled, don't schedule next frame
-  if (!autoRotation.isActive) return;
-  // Update rotation position
-  rotation.lng -= 0.05;
-  const lng = rotation.lng;
-
-  // Apply the rotation to the globe if available
-  if (globeInstance) {
-    globeInstance.setProps({
-      cameraView: {
-        lng,
-        lat: viewLat,
-        altitude: viewAltitude,
-      },
-    });
-  }
-
-  // Schedule next frame if still active
-  autoRotation.animationId = requestAnimationFrame(() =>
-    handleAutoRotation(
-      globeInstance,
-      rotation,
-      autoRotation,
-      viewLat,
-      viewAltitude,
-    ),
-  );
-}
 const Globe: FunctionComponent<Props> = memo((props) => {
   const {
     view,
@@ -152,70 +97,14 @@ const Globe: FunctionComponent<Props> = memo((props) => {
 
   const [containerRef, globe] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
-  const dispatch = useDispatch();
-  const isAutoRotatingEnabled = useSelector(isAutoRotatingSelector);
-  useGlobeRouteState();
 
-  // Track auto rotation with a ref to avoid dependencies issues
-  const autoRotationRef = useRef<{
-    isActive: boolean;
-    animationId: number | null;
-  }>({
-    isActive: false,
-    animationId: null,
-  });
-
-  const rotationRef = useRef<{
-    lat: number;
-    lng: number;
-  }>({ lat: view.lat, lng: view.lng });
-
-  // Start or stop auto rotation based on isAutoRotatingEnabled
-  useEffect(() => {
-    // Update the ref to reflect current state
-    autoRotationRef.current.isActive = isAutoRotatingEnabled;
-    const lat = config.globe.view.lat;
-
-    // If enabled and not already running, start rotation
-    if (
-      globe &&
-      isAutoRotatingEnabled &&
-      autoRotationRef.current.animationId === null
-    ) {
-      autoRotationRef.current.animationId = requestAnimationFrame(() =>
-        handleAutoRotation(
-          globe,
-          rotationRef.current,
-          autoRotationRef.current,
-          lat,
-          view.altitude,
-        ),
-      );
-    }
-    // If disabled but currently running, cancel animation
-    else if (
-      !isAutoRotatingEnabled &&
-      autoRotationRef.current.animationId !== null
-    ) {
-      cancelAnimationFrame(autoRotationRef.current.animationId);
-      autoRotationRef.current.animationId = null;
-    }
-
-    // Cleanup on unmount or when dependencies change
-    return () => {
-      if (autoRotationRef.current.animationId !== null) {
-        cancelAnimationFrame(autoRotationRef.current.animationId);
-        autoRotationRef.current.animationId = null;
-        autoRotationRef.current.isActive = false;
-      }
-    };
-  }, [globe, isAutoRotatingEnabled, view.lat, view.altitude]);
+  useGlobeRouteState(globe);
 
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
 
   useProjectionSwitch(globe, projectionState.projection);
-  useMultiGlobeSynchronization(globe, props, dispatch, rotationRef);
+  useMultiGlobeSynchronization(globe, props);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
@@ -412,202 +301,31 @@ function useProjectionSwitch(
  * Integrate the globe with the external view-state events and props
  * (view / flyTo / onChange).
  */
-function useMultiGlobeSynchronization(
-  globe: WebGlGlobe | null,
-  props: Props,
-  dispatch: Dispatch<UnknownAction>,
-  rotationRef: RefObject<{ lat: number; lng: number }>,
-) {
+function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
   const { view, active, flyTo, isMarkerOffset } = props;
-  const { isBaseRoute } = useAppRouteFlags();
-
-  // Update rotationRef when view changes to keep it in sync with external changes
-  useEffect(() => {
-    rotationRef.current = { lat: view.lat, lng: view.lng };
-  }, [view.lat, view.lng, rotationRef]);
 
   // forward camera changes from the active view to the parent component
   useCameraChangeEvents(globe, props);
+
   // set camera-view unless it's the active globe
   useEffect(() => {
     if (globe && !active) {
-      globe.setProps({ cameraView: view });
+      // make sure the applied is not animated
+      globe.setProps({ cameraView: { ...view } });
     }
   }, [globe, view, active]);
 
-  // Track animation state to prevent multiple animations
-  const animationRef = useRef<{
-    isAnimating: boolean;
-    animationId: number | null;
-    lastFlyToTarget: { lat: number; lng: number } | null;
-  }>({
-    isAnimating: false,
-    animationId: null,
-    lastFlyToTarget: null,
-  });
-  const isAutoRotating = useSelector(isAutoRotatingSelector);
 
-  // ! Make sure to reset the FlyTo after the animation has been applied
-  // That way we make sure we can use the globe view to apply movements by event handlers
-  // There is probably a better way to do this?
-
-  // We have these custom functions for autoRotating the globe and animating the flyTo
-  // Ticket #1271 and #1270 reference these issues see https://github.com/orgs/ubilabs/projects/48
-
-  // incoming flyTo cameraViews are always applied
+  // apply incomfing flyTo props to the globe
   useEffect(() => {
-    if (!isBaseRoute && isAutoRotating) {
-      dispatch(setIsAutoRotating(false));
-    }
-    // Skip entire effect if globe or flyTo is not available
     if (!globe || !flyTo) return;
-    // Globe movements by user interaction are not properly handled if we don't reset the flyTo
-    // Todo: fix! This is more a workaround than a solution
-    dispatch(setFlyTo(null));
-    if (flyTo.isAnimated) {
-      // Extract target coordinates
-      const lat = flyTo.lat;
-      const lng = flyTo.lng;
-      const altitude = flyTo.altitude;
-
-      // Skip if we're already at the target position
-      if (
-        rotationRef.current.lng === lng &&
-        rotationRef.current.lat === lat &&
-        view.altitude === altitude
-      ) {
-        return;
-      }
-
-      // Skip if we're already animating to this target
-      if (
-        animationRef.current.isAnimating &&
-        animationRef.current.lastFlyToTarget &&
-        animationRef.current.lastFlyToTarget.lat === lat &&
-        animationRef.current.lastFlyToTarget.lng === lng &&
-        animationRef.current.lastFlyToTarget.altitude === altitude
-      ) {
-        return;
-      }
-
-      // Cancel any existing animation
-      if (
-        animationRef.current.isAnimating &&
-        animationRef.current.animationId !== null
-      ) {
-        cancelAnimationFrame(animationRef.current.animationId);
-        animationRef.current.isAnimating = false;
-        animationRef.current.animationId = null;
-      }
-
-      // Set the new animation target
-      animationRef.current.lastFlyToTarget = { lat, lng, altitude };
-      animationRef.current.isAnimating = true;
-
-      // Adjust the target position for offset and calculate deltas
-      const targetLng =
-        lng + (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0);
-      const targetLat = lat;
-      const targetAltitude = altitude;
-      const startLng = rotationRef.current.lng;
-      const startLat = rotationRef.current.lat;
-      const startAltitude = view.altitude;
-      const deltaLng = targetLng - startLng;
-      const deltaLat = targetLat - startLat;
-      const deltaAltitude = targetAltitude - startAltitude;
-
-      // Fixed duration: 2 seconds (2000ms)
-      const animationDuration = 2000;
-      let startTime: number | null = null;
-
-      const animate = (timestamp: number) => {
-        // Initialize startTime on first animation frame
-        if (!startTime) startTime = timestamp;
-
-        // Calculate progress (0 to 1) based on elapsed time
-        const elapsedTime = timestamp - startTime;
-        const progress = Math.min(elapsedTime / animationDuration, 1);
-
-        // Use easeInOutQuad easing function for smoother animation
-        const easedProgress = easeInOutQuad(progress);
-
-        // Apply the current position based on progress with easing
-        const currentLng = startLng + deltaLng * easedProgress;
-        const currentLat = startLat + deltaLat * easedProgress;
-        const currentAltitude = startAltitude + deltaAltitude * easedProgress;
-
-        if (globe) {
-          rotationRef.current.lng = currentLng;
-          rotationRef.current.lat = currentLat;
-          globe.setProps({
-            cameraView: {
-              lng: currentLng,
-              lat: currentLat,
-              altitude: currentAltitude,
-            },
-          });
-        }
-
-        // Continue animation if not complete
-        if (progress < 1) {
-          animationRef.current.animationId = requestAnimationFrame(animate);
-        } else {
-          // Animation complete - ensure we reach exactly the target position
-          if (globe) {
-            rotationRef.current.lng = targetLng;
-            rotationRef.current.lat = targetLat;
-            globe.setProps({
-              cameraView: {
-                lng: targetLng,
-                lat: targetLat,
-                altitude: targetAltitude,
-              },
-            });
-          }
-
-          // Reset animation state
-          animationRef.current.isAnimating = false;
-          animationRef.current.animationId = null;
-          if (isBaseRoute) {
-            dispatch(setIsAutoRotating(true));
-          }
-        }
-      };
-
-      // Start the animation
-      animationRef.current.animationId = requestAnimationFrame(animate);
-    } else {
-      // For non-animated flyTo, cancel any ongoing animation
-      if (
-        animationRef.current.isAnimating &&
-        animationRef.current.animationId !== null
-      ) {
-        cancelAnimationFrame(animationRef.current.animationId);
-        animationRef.current.isAnimating = false;
-        animationRef.current.animationId = null;
-      }
-      globe.setProps({ cameraView: flyTo });
-    }
-  }, [
-    isAutoRotating,
-    isBaseRoute,
-    dispatch,
-    animationRef,
-    rotationRef,
-    globe,
-    flyTo,
-    view.altitude,
-    isMarkerOffset,
-    view,
-  ]);
-  // Cleanup function to cancel any ongoing animation when unmounting
-  return () => {
-    if (animationRef.current.animationId !== null) {
-      cancelAnimationFrame(animationRef.current.animationId);
-      animationRef.current.isAnimating = false;
-      animationRef.current.animationId = null;
-    }
-  };
+    globe.setProps({
+      cameraView: {
+        ...flyTo,
+        lng: flyTo.lng + (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0),
+      },
+    });
+  }, [flyTo, globe, isMarkerOffset]);
 }
 
 /**
@@ -733,10 +451,10 @@ function getLayerProps(
         type === LayerType.Image
           ? () => url
           : ({ x, y, zoom }) =>
-            url
-              .replace("{x}", String(x))
-              .replace("{reverseY}", String(y))
-              .replace("{z}", String(zoom)),
+              url
+                .replace("{x}", String(x))
+                .replace("{reverseY}", String(y))
+                .replace("{z}", String(zoom)),
     });
   }
 
