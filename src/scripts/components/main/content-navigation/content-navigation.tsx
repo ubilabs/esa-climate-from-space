@@ -174,11 +174,12 @@ const ContentNavigation: FunctionComponent<Props> = ({
               ? {
                   lat: previewedContent.position[1],
                   lng: previewedContent.position[0],
-                  interpolationFactor: 0.05,
+                  isAnimated: true,
                   altitude,
                 }
               : {
                   ...config.globe.view,
+                  isAnimated: true,
                   altitude,
                 }),
           }),
