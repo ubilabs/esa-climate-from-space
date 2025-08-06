@@ -16,9 +16,12 @@ import styles from "./splashscreen.module.css";
 import { useDispatch } from "react-redux";
 import { setFlyTo } from "../../../../../reducers/fly-to";
 
+const LATITUDE_OFFSET = 5; // Offset for the latitude when flying to the location
+
 export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
-  const { story } = useStory();
+  const { story, storyElementRef } = useStory();
   const targetRef = useRef<HTMLDivElement>(null);
+  storyElementRef.current?.classList.toggle(styles.islocationbased);
 
   const { scrollYProgress } = useStoryScroll({
     target: targetRef,
@@ -29,21 +32,29 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const dispatch = useDispatch();
+  const location = story?.splashscreen?.location;
+
+  useEffect(() => {
+    if (location) {
+      setTimeout(() => {
+        dispatch(
+          setFlyTo({
+            ...location,
+            lat: (location.lat as number) + LATITUDE_OFFSET,
+            isAnimated: true,
+          }),
+        );
+      }, 1000);
+    }
+  }, [location, dispatch]);
 
   if (!story || !story.splashscreen) {
     return null;
   }
 
-  const { text, image, location } = story.splashscreen;
+  const { text, image } = story.splashscreen;
   const isLocationBased = location && Object.keys(location).length >= 2;
   const { id } = story;
-
-    dispatch(
-      setFlyTo({
-        ...location,
-        isAnimated: true,
-      }),
-    );
 
   return (
     <FormatContainer

@@ -46,9 +46,13 @@ import TimeSlider from "../../layers/time-slider/time-slider";
 
 interface Props {
   className?: string;
+  showMarkers?: boolean;
 }
 
-export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
+export const GetDataWidget: FunctionComponent<Props> = ({
+  className,
+  showMarkers = true,
+}) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
@@ -100,20 +104,18 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const selectedContentId = useSelector(contentSelector).contentId;
 
-  const contentMarker = useContentMarker(selectedContentId, language);
+  const contentMarker = useContentMarker(selectedContentId ?? null, language);
 
   const getDataWidget = ({
     imageLayer,
     layerDetails,
     active,
     action,
-    isBase = false,
   }: {
     imageLayer: GlobeImageLayerData | null;
     layerDetails: Layer | null;
     active: boolean;
     action: () => void;
-    isBase?: boolean;
   }) => {
     if (imageLayer?.type === LayerType.Gallery) {
       return <Gallery imageLayer={imageLayer} />;
@@ -121,7 +123,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
     return (
       <Globe
-        {...(!isBase &&
+        {...(showMarkers &&
           contentMarker && {
             markers: [contentMarker],
           })}
