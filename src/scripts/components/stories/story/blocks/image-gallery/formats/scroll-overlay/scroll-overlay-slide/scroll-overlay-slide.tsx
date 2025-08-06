@@ -4,7 +4,6 @@ import {
   motion,
   useTransform,
   MotionValue,
-  useMotionValueEvent,
 } from "motion/react";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
@@ -22,50 +21,20 @@ interface CaptionProps {
 const Caption: FunctionComponent<CaptionProps> = ({
   caption,
   subCaption,
-  index,
-  totalCaptions,
 }) => {
-  // const numSteps = totalCaptions > 1 ? totalCaptions + 1 : totalCaptions;
-  // const step = 1 / numSteps;
-  // const start = step * index;
-  // const end = start + step;
-
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useStoryScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset: ["center center", "end start"],
   });
 
-  console.log("index", index, "scrollprocess", scrollYProgress);
-  useMotionValueEvent(scrollYProgress, "change", (e) => {
-    if (index === 1) {
-      console.log("e", e);
-    }
-  });
-  // const numSteps = totalCaptions > 1 ? totalCaptions + 1 : totalCaptions;
-  // const step = 1 / numSteps;
-  // const start = 0.5 - step / 2 + step * index;
-  // const end = start + step;
+  const captionOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
-
-  const captionOpacity = useTransform(
-    scrollYProgress,
-    [0,1],
-    [0, 1],
-  );
-
-  const captionTransform = useTransform(
-    scrollYProgress,
-    [0,1],
-    ["100px", "-100px"], // symmetrical vertical movement
-  );
   return (
     <motion.div
       ref={ref}
       style={{
-        backgroundColor: `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.random()})`,
         opacity: captionOpacity,
-        x: captionTransform,
       }}
       className={cx(styles.captionContainer)}
     >
@@ -94,7 +63,7 @@ export const ScrollOverlaySlide: FunctionComponent<Props> = ({
   return (
     <div
       className={cx(styles.slide)}
-      style={{ height: `calc(2 * var(--story-height))` }}
+      style={{ height: `calc(${slide.captions.length} * var(--story-height))` }}
     >
       <div className={styles.assetContainer}>
         {hasAsset &&
@@ -115,15 +84,18 @@ export const ScrollOverlaySlide: FunctionComponent<Props> = ({
             />
           ))}
       </div>
-      {slide.captions.map((caption, index) => (
-        <Caption
-          key={index}
-          caption={caption}
-          subCaption={slide.subCaption}
-          index={index}
-          totalCaptions={slide.captions.length}
-        />
-      ))}
+      <div className={styles.captionsContainer}>
+        {slide.captions.map((caption, index) => (
+          <Caption
+            key={index}
+            caption={caption}
+            subCaption={slide.subCaption}
+            index={index}
+            totalCaptions={slide.captions.length}
+          />
+        ))}
+      </div>
     </div>
   );
 };
+
