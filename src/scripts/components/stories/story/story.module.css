@@ -5,8 +5,6 @@
   z-index: 1;
   grid-area: content;
 
-  /* background: #011e2b; */
-  background-color: transparent;
   color: #fff;
   overflow: scroll;
   height: var(--story-height);

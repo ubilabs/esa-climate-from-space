@@ -1,4 +1,5 @@
 .splashscreen {
+  background-color: var(--Neutral-ESA-Background, #011e2b);
   scroll-snap-align: start;
   background-position: center;
   background-size: cover;
@@ -7,6 +8,7 @@
   overflow: hidden;
 
   &.locationStory {
+    background-color: transparent;
     .parallaxContainer {
       background-image: none;
     }
