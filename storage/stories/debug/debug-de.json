@@ -14,11 +14,12 @@
           "type": "scrollOverlay",
           "slides": [
             {
-              "url": "",
+              "url": "assets/story37-image01.jpg",
               "altText": "",
               "captions": [
                 "Im Jahr 2010 erlebte Queensland den nassesten Dezember seit Beginn der Aufzeichnungen, was zu einer längeren Periode mit ausgedehnten Überschwemmungen führte.",
-                "Dies ist ein Beispiel für jine Scroll-Überschrift ohne Overlay"
+                "Dies ist ein Beispiel für eine Scroll-Überschrift ohne Overlay",
+                "Dies ist ein Beispiel für eine Scroll-Überschrift ohne Overlay"
               ]
             }
           ]
