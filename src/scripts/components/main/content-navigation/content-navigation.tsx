@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
-import config, { ALTITUDE_FACTOR_MOBILE } from "../../../config/main";
+import config, { ALTITUDE_FACTOR_DESKTOP } from "../../../config/main";
 import { useGetStoriesQuery } from "../../../services/api";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
@@ -165,21 +165,23 @@ const ContentNavigation: FunctionComponent<Props> = ({
       if (contentId) {
         const previewedContent = contents.find(({ id }) => id === contentId);
 
-        const altitude = config.globe.view.altitude * (isMobile ? 1 : ALTITUDE_FACTOR_MOBILE);
+        const altitude =
+          config.globe.view.altitude * (isMobile ? 1 : ALTITUDE_FACTOR_DESKTOP);
 
         dispatch(
           setFlyTo({
             ...(previewedContent?.position?.length === 2
               ? {
-                lat: previewedContent.position[1],
-                lng: previewedContent.position[0],
-                altitude,
-              }
+                  lat: previewedContent.position[1],
+                  lng: previewedContent.position[0],
+                  isAnimated: true,
+                  altitude,
+                }
               : {
-                ...config.globe.view,
-                altitude,
-              }),
-            isAnimated: true,
+                  ...config.globe.view,
+                  isAnimated: true,
+                  altitude,
+                }),
           }),
         );
       }
@@ -202,11 +204,14 @@ const ContentNavigation: FunctionComponent<Props> = ({
     let type = "blog";
 
     const story = stories?.find((story) => story.id === item.id);
-    const galleyItemTypes = story && "slides" in story && new Set(
-      story?.slides
-        .flatMap((slide) => slide.galleryItems)
-        .map(({ type }) => type),
-    );
+    const galleyItemTypes =
+      story &&
+      "slides" in story &&
+      new Set(
+        story?.slides
+          .flatMap((slide) => slide.galleryItems)
+          .map(({ type }) => type),
+      );
     if (
       galleyItemTypes &&
       // if gallery only contains images or videos return media type

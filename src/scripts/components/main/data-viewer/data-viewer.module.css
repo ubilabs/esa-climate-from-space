@@ -13,33 +13,23 @@
     z-index: 0;
     height: 100%;
     width: 100%;
-    pointer-events: none;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     container-type: size;
-
-    @media screen and (--desktop-viewport) {
-      display: block;
-    }
   }
 
   /* see globe.module for globe base styles */
   /* The data-nav-content values are based on the current route of the application */
   &[data-nav-content="nav_content"] {
     .globe {
-      right: 55vw;
+      transform: translateX(-55%);
     }
   }
 
   &[data-nav-content="data"] {
-    .globeWrapper {
-      pointer-events: auto;
-    }
-
     .globeWrapper:has(.globe ~ .globe) {
       display: flex;
       flex-direction: row;
@@ -80,7 +70,7 @@
       grid-template-rows: 1fr;
 
       .globe {
-        right: 0;
+        transform: translateX(0%);
       }
     }
 
@@ -91,9 +81,8 @@
       grid-gap: 0;
 
       .globe {
-        right: calc(50vw);
+        transform: translateX(-40%);
       }
-
       .globeWrapper {
         z-index: 0;
       }

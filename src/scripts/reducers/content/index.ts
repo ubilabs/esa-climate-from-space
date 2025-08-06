@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { parseContentUrl } from "../../libs/content-url-parameter";
 
 interface StoriesState {
-  category: string | null;
-  contentId: string | null;
+  category: string | null | undefined;
+  contentId: string | null | undefined;
 }
 
 const initialState: StoriesState = {
@@ -21,7 +21,7 @@ const contentSlice = createSlice({
         category?: string | null;
       }>,
     ) {
-      state.contentId = action.payload.contentId ?? state.contentId;
+      state.contentId = action.payload.contentId;
       state.category = action.payload.category ?? state.category;
     },
   },
