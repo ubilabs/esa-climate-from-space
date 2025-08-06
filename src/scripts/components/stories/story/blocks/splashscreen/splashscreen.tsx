@@ -1,6 +1,9 @@
 import { FunctionComponent, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
+import { useDispatch } from "react-redux";
 import { motion, useTransform } from "motion/react";
+
+import { setFlyTo } from "../../../../../reducers/fly-to";
 
 import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
 
@@ -10,13 +13,11 @@ import { useStory } from "../../../../../providers/story/use-story";
 import { StorySectionProps } from "../../../../../types/story";
 import { FormatContainer } from "../../../layout/format-container/format-container";
 
+import { STORY_LATITUDE_OFFSET } from "../../../../../config/main";
+
 import cx from "classnames";
 
 import styles from "./splashscreen.module.css";
-import { useDispatch } from "react-redux";
-import { setFlyTo } from "../../../../../reducers/fly-to";
-
-const LATITUDE_OFFSET = 5; // Offset for the latitude when flying to the location
 
 export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const { story, storyElementRef } = useStory();
@@ -40,7 +41,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
         dispatch(
           setFlyTo({
             ...location,
-            lat: (location.lat as number) + LATITUDE_OFFSET,
+            lat: (location.lat as number) + STORY_LATITUDE_OFFSET,
             isAnimated: true,
           }),
         );

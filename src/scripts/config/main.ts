@@ -47,6 +47,7 @@ export const AUTO_ROTATE_INTERVAL = 5000; // Time between auto-rotations in mill
 export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interaction before restarting auto-rotation
 
 export const CONTENT_NAV_LONGITUDE_OFFSET = -30;
+export const STORY_LATITUDE_OFFSET = 5; // Offset for the latitude when flying to the location
 export const ALTITUDE_FACTOR_DESKTOP = 0.5;
 
 export const WHEEL_SCALE_FACTOR = 0.001,
@@ -78,8 +79,6 @@ const globeState: GlobeState = {
     renderMode: "globe" as RenderMode,
     lat: 25,
     lng: 0,
-    // This is the default altitude for the globe view
-    // The altitude is adjusted based on the normalized screen width to ensure the globe is rendered proportionally across all screen sizes
     altitude: 25840000,
     zoom: 0,
     // Initially, this should be set to false since isAnimated defaults to true.
