@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import ReactMarkdown from "react-markdown";
 import { useFormat } from "../../../../../../../providers/story/format/use-format";
 import { FormatContainer } from "../../../../../layout/format-container/format-container";
 import { StorySectionProps } from "../../../../../../../types/story";
@@ -14,9 +15,14 @@ const ScrollCaption: FunctionComponent<StorySectionProps> = ({ ref }) => {
     <FormatContainer ref={ref} className={styles.scrollCaptionBlock}>
       {content.slides.map((slide, index) => (
         <div key={index} className={styles.scrollImageContainer}>
-          <CaptionImage src={getStoryAssetUrl(storyId, slide.url)} alt={slide.altText} />
-          <h3>{slide.caption}</h3>
-          <p>{slide.altText}</p>
+          <CaptionImage
+            src={getStoryAssetUrl(storyId, slide.url)}
+            alt={slide.altText}
+          />
+          <ReactMarkdown
+            children={slide.captions.join("\n\n")}
+            allowedElements={["h3", "p", "br", "em", "b", "a"]}
+          />
         </div>
       ))}
     </FormatContainer>

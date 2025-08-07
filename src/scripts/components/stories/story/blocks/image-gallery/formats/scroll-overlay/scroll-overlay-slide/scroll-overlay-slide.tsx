@@ -33,7 +33,7 @@ const Caption: FunctionComponent<CaptionProps> = ({ caption }) => {
     >
       <ReactMarkdown
         children={caption}
-        allowedElements={["p", "br", "em", "b", "a"]}
+        allowedElements={["h2","h3", "p", "br", "em", "b", "a"]}
       />
     </motion.div>
   );
