@@ -29,7 +29,7 @@
               "url": "assets/story21-image14.jpg",
               "altText": "",
               "captions": [
-                "Die starke Bewölkung und die Regenfälle im Nordosten Australiens waren auf ungewöhnliche Temperatur- und Verdunstungsmuster im zentralen Pazifik zurückzuführen, die als [La Niña](https://de.wikipedia.org/wiki/La_Ni%C3%B1a) bezeichnet werden.",
+                "Die starke Bewölkung und die Regenfälle im Nordosten Australiens waren auf ungewöhnliche Temperatur- und Verdunstungsmuster im zentralen Pazifik zurückzuführen, die als [La Niña](https://cfs.climate.esa.int/index.html#/stories/story-16/6?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI) bezeichnet werden.",
                 "Die Erwärmung des Klimas, das Auftauen von Permafrostböden und das Eindringen von Schmelzwasser gehören zu den Ursachen für solche Ereignisse."
               ]
             }
@@ -51,9 +51,12 @@
           "type": "scrollCaption",
           "slides": [
             {
-              "url": "assets/story37-image01.jpg",
+              "url": "assets/story21-image01.jpg",
               "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "caption": "Satellites for peat's sake."
+              "captions": [
+                "### Toowoomba, Queensland, Australien",
+                "Eine Frau harrt während einer Sturzflut am 10. Januar 2011, auf dem Dach ihres Autos aus [T Swinson](https://cfs.climate.esa.int/index.html#/stories/story-21/1?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI)"
+              ]
             }
           ]
         },
