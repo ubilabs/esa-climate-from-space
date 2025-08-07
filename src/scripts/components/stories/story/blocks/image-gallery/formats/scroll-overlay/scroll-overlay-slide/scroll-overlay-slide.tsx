@@ -1,6 +1,6 @@
 import { FunctionComponent, useRef } from "react";
 import cx from "classnames";
-import { motion, useTransform, MotionValue } from "motion/react";
+import { motion, useTransform } from "motion/react";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 import { ImageSlide } from "../../../../../../../../types/story";
@@ -33,7 +33,7 @@ const Caption: FunctionComponent<CaptionProps> = ({ caption }) => {
     >
       <ReactMarkdown
         children={caption}
-        allowedElements={["h2","h3", "p", "br", "em", "b", "a"]}
+        allowedElements={["h2", "h3", "p", "br", "em", "b", "a"]}
       />
     </motion.div>
   );
