@@ -14,15 +14,23 @@ const ScrollCaption: FunctionComponent<StorySectionProps> = ({ ref }) => {
   return (
     <FormatContainer ref={ref} className={styles.scrollCaptionBlock}>
       {content.slides.map((slide, index) => (
-        <div key={index} className={styles.scrollImageContainer}>
-          <CaptionImage
-            src={getStoryAssetUrl(storyId, slide.url)}
-            alt={slide.altText}
-          />
-          <ReactMarkdown
-            children={slide.captions.join("\n\n")}
-            allowedElements={["h3", "p", "br", "em", "b", "a"]}
-          />
+        <div className={styles.scrollCaptionSlide} key={index}>
+          {slide.text && (
+            <ReactMarkdown
+              children={slide.text}
+              className={styles.scrollCaptionText}
+            />
+          )}
+          <div className={styles.scrollImageContainer}>
+            <CaptionImage
+              src={getStoryAssetUrl(storyId, slide.url)}
+              alt={slide.altText}
+            />
+            <ReactMarkdown
+              children={slide.captions.join("\n\n")}
+              allowedElements={["h3", "p", "br", "em", "b", "a"]}
+            />
+          </div>
         </div>
       ))}
     </FormatContainer>
