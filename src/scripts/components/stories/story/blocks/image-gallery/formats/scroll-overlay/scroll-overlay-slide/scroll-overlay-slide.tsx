@@ -1,27 +1,20 @@
 import { FunctionComponent, useRef } from "react";
 import cx from "classnames";
-import {
-  motion,
-  useTransform,
-  MotionValue,
-} from "motion/react";
+import { motion, useTransform, MotionValue } from "motion/react";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 import { ImageSlide } from "../../../../../../../../types/story";
 import styles from "./scroll-overlay-slide.module.css";
+import ReactMarkdown from "react-markdown";
 
 interface CaptionProps {
   caption: string;
   subCaption?: string;
-  scrollYProgress: MotionValue<number>;
   index: number;
   totalCaptions: number;
 }
 
-const Caption: FunctionComponent<CaptionProps> = ({
-  caption,
-  subCaption,
-}) => {
+const Caption: FunctionComponent<CaptionProps> = ({ caption }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useStoryScroll({
     target: ref,
@@ -38,8 +31,10 @@ const Caption: FunctionComponent<CaptionProps> = ({
       }}
       className={cx(styles.captionContainer)}
     >
-      <h2>{caption}</h2>
-      {subCaption && <h3>{subCaption}</h3>}
+      <ReactMarkdown
+        children={caption}
+        allowedElements={["p", "br", "em", "b", "a"]}
+      />
     </motion.div>
   );
 };
@@ -89,7 +84,6 @@ export const ScrollOverlaySlide: FunctionComponent<Props> = ({
           <Caption
             key={index}
             caption={caption}
-            subCaption={slide.subCaption}
             index={index}
             totalCaptions={slide.captions.length}
           />
@@ -98,4 +92,3 @@ export const ScrollOverlaySlide: FunctionComponent<Props> = ({
     </div>
   );
 };
-
