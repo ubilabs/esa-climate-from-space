@@ -33,14 +33,19 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const dispatch = useDispatch();
+
+  // A story can be "location based" where the splashscreen does not have an image
+  // We consider a location based story if the splashscreen has a location defined
   const location = story?.splashscreen?.location;
 
+  // We apply the flyTo with a delay. This is a visual effect to make sure the globe container is centered
   useEffect(() => {
     if (location) {
       setTimeout(() => {
         dispatch(
           setFlyTo({
             ...location,
+            // We offset center because otherwise it would overlap with the text (which is also centered)
             lat: (location.lat as number) + STORY_LATITUDE_OFFSET,
             isAnimated: true,
           }),
@@ -54,7 +59,11 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   }
 
   const { text, image } = story.splashscreen;
-  const isLocationBased = location && Object.keys(location).length >= 2;
+
+  // Location-based if location has 2 or 3 properties
+  const isLocationBased =
+    location && [2, 3].includes(Object.keys(location).length);
+
   const { id } = story;
 
   return (
