@@ -14,29 +14,36 @@
           "type": "scrollOverlay",
           "slides": [
             {
-              "url": "assets/story37-image01.jpg",
+              "url": "",
               "altText": "",
               "captions": [
-                "Im Jahr 2010 erlebte Queensland den nassesten Dezember seit Beginn der Aufzeichnungen, was zu einer längeren Periode mit ausgedehnten Überschwemmungen führte.",
-                "Dies ist ein Beispiel für eine Scroll-Überschrift ohne Overlay",
-                "Dies ist ein Beispiel für eine Scroll-Überschrift ohne Overlay"
+                "Im Jahr 2010 erlebte Queensland den nassesten Dezember seit Beginn der Aufzeichnungen, was zu einer längeren Periode mit ausgedehnten Überschwemmungen führte."
               ]
             }
           ]
         },
         {
-          "type": "compareMode",
-          "description": "Compare various satellite imagery and data visualizations of Scotland's Flow Country, showcasing its unique landscapes changes over time.",
+          "type": "scrollOverlay",
           "slides": [
             {
-              "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "caption": "Satellites for peat's sake."
-            },
+              "url": "assets/story21-image14.jpg",
+              "altText": "",
+              "captions": [
+                "Die starke Bewölkung und die Regenfälle im Nordosten Australiens waren auf ungewöhnliche Temperatur- und Verdunstungsmuster im zentralen Pazifik zurückzuführen, die als [La Niña](https://de.wikipedia.org/wiki/La_Ni%C3%B1a) bezeichnet werden.",
+                "Die Erwärmung des Klimas, das Auftauen von Permafrostböden und das Eindringen von Schmelzwasser gehören zu den Ursachen für solche Ereignisse."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "scrollOverlay",
+          "slides": [
             {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "caption": "Satellites for peat's sake. 2"
+              "url": "",
+              "altText": "",
+              "captions": [
+                "Dieses Ereignis zeigt, wie verschiedene Teile des Erdsystems – Ozean, Atmosphäre und Land – und Orte, die Tausende Kilometer voneinander entfernt sind, durch den Wasserkreislauf miteinander verbunden sind."
+              ]
             }
           ]
         },
@@ -47,21 +54,6 @@
               "url": "assets/story37-image01.jpg",
               "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
               "caption": "Satellites for peat's sake."
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "caption": "Satellites for peat's sake. 2"
-            },
-            {
-              "url": "assets/story37-image04.jpg",
-              "altText": "Satellites for peat's sake. ",
-              "caption": "Satellites for peat's sake 2.5"
-            },
-            {
-              "url": "assets/story37-image05.jpg",
-              "altText": "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red.",
-              "caption": "Satellites for peat's sake 3"
             }
           ]
         },
