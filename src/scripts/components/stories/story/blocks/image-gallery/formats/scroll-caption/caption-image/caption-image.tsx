@@ -1,4 +1,4 @@
-import { useState, useRef, FunctionComponent } from "react";
+import { useState, useRef, FunctionComponent, SyntheticEvent } from "react";
 import { useIntl } from "react-intl";
 import { motion, useMotionValue } from "motion/react";
 import { useGesture } from "@use-gesture/react";
@@ -79,7 +79,7 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
     setIsFullscreen(false);
   };
 
-  const handleOpen = (e) => {
+  const handleOpen = (e: SyntheticEvent) => {
     e.stopPropagation();
     setIsFullscreen(true);
     setShowInstructions(true);
