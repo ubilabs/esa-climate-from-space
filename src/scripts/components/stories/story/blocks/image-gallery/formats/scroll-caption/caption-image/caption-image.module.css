@@ -7,7 +7,7 @@
   align-items: center;
 
   @media screen and (--desktop-viewport) {
-    width: min(40vw, 1100px);
+    width: max(35vw, 500px);
     height: 50vh;
   }
 
@@ -17,6 +17,7 @@
     object-fit: cover;
   }
 }
+
 
 .fullscreenOverlay {
   height: var(--story-height);
