@@ -8,15 +8,16 @@
   background-position: center;
   background-size: cover;
   font-family: NotesEsa;
+  padding: 3.5em;
 }
 .content {
-  padding: 3.5em;
-  width: 40%;
+  max-width: 65ch;
   color: #fff;
   font-size: 1em;
 }
 .content h1 {
   margin-top: 0;
+  margin-bottom: 1rem;
   color: #fff;
   text-transform: uppercase;
   font-weight: bold;

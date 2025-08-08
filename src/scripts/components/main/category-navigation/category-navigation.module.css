@@ -104,6 +104,7 @@
   animation: fadeIn 0.5s ease-out forwards;
   animation-delay: 2.8s;
   opacity: 0;
+  padding-bottom: 2rem;
 
   @media screen and (--desktop-viewport) {
     min-height: 160px;
