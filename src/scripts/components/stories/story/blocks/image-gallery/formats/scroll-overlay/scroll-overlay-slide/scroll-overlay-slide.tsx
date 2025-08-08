@@ -1,11 +1,15 @@
 import { FunctionComponent, useRef } from "react";
-import cx from "classnames";
+
+import ReactMarkdown from "react-markdown";
 import { motion, useTransform } from "motion/react";
+
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 import { ImageSlide } from "../../../../../../../../types/story";
+
+import cx from "classnames";
+
 import styles from "./scroll-overlay-slide.module.css";
-import ReactMarkdown from "react-markdown";
 
 interface CaptionProps {
   caption: string;
