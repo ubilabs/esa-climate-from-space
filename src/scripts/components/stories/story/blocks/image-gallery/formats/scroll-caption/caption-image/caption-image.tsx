@@ -3,6 +3,7 @@ import { useIntl } from "react-intl";
 import { motion, useMotionValue } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 
+import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
 import {
   MAX_ZOOM_SCALE,
   MIN_ZOOM_SCALE,
@@ -11,7 +12,6 @@ import {
 } from "../../../../../../../../config/main";
 
 import styles from "./caption-image.module.css";
-import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
 
 interface Props {
   src: string;

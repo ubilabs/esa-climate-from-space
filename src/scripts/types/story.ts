@@ -61,6 +61,7 @@ export type ImageGalleryFormat = {
 export type ImageSlide = {
   url: string;
   altText: string;
+  text?: string;
   captions: string[];
   fit?: "cover" | "contain";
 };
