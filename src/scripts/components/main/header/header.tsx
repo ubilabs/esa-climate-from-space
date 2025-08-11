@@ -29,6 +29,7 @@ import Menu from "../menu/menu";
 import Overlay from "../overlay/overlay";
 
 import styles from "./header.module.css";
+import { showLayerSelector } from "../../../selectors/show-layer-selector";
 
 const Header: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -47,6 +48,8 @@ const Header: FunctionComponent = () => {
   const { header, logo, back_link, app_menu, layers_menu } = useSelector(
     embedElementsSelector,
   );
+
+  const isLayerSelectorVisible = useSelector(showLayerSelector);
 
   if (!header) {
     // The app element determines the layout via grid which is why we should return a DOM element here
@@ -82,7 +85,7 @@ const Header: FunctionComponent = () => {
             className={styles.button}
             id="ui-menu"
             icon={LayerSelectorIcon}
-            onClick={() => dispatch(setShowLayer(true))}
+            onClick={() => dispatch(setShowLayer(!isLayerSelectorVisible))}
             hideLabelOnMobile
           />
         )}

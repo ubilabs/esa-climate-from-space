@@ -1,8 +1,10 @@
-import { useState, useRef, FunctionComponent } from "react";
+import { useState, useRef, FunctionComponent, SyntheticEvent } from "react";
 import { useIntl } from "react-intl";
-import { motion, useMotionValue } from "motion/react";
+import { motion, useMotionValue, useTransform } from "motion/react";
 import { useGesture } from "@use-gesture/react";
+import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 
+import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
 import {
   MAX_ZOOM_SCALE,
   MIN_ZOOM_SCALE,
@@ -11,7 +13,6 @@ import {
 } from "../../../../../../../../config/main";
 
 import styles from "./caption-image.module.css";
-import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
 
 interface Props {
   src: string;
@@ -19,6 +20,7 @@ interface Props {
 }
 
 export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
+  const ref = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
 
@@ -34,6 +36,19 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
       setShowInstructions(false);
     }
   };
+
+  const { scrollYProgress } = useStoryScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
+
+  const clipPath = useTransform(
+    scrollYProgress,
+    [0.5, 1],
+    ["inset(10% 10% 10% 10%)", "inset(0% 0% 0% 0%)"],
+  );
+
+  const buttonOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
 
   // Gesture bindings
   useGesture(
@@ -79,7 +94,7 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
     setIsFullscreen(false);
   };
 
-  const handleOpen = (e) => {
+  const handleOpen = (e: SyntheticEvent) => {
     e.stopPropagation();
     setIsFullscreen(true);
     setShowInstructions(true);
@@ -87,10 +102,9 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
 
   return (
     <motion.div
+      ref={ref}
       layout
-      className={
-        isFullscreen ? styles.fullscreenOverlay : styles.imageContainer
-      }
+      data-status={isFullscreen ? "fullscreenOverlay" : "imageContainer"}
       role={isFullscreen ? "dialog" : undefined}
       aria-modal={isFullscreen ? "true" : undefined}
       aria-hidden={!isFullscreen}
@@ -106,16 +120,18 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
           y: isFullscreen ? y : 0,
           scale: isFullscreen ? scale : 1,
           cursor: isFullscreen ? "grab" : "default",
+          clipPath: isFullscreen ? "none" : clipPath,
         }}
         draggable={false}
       />
 
       {!isFullscreen && (
-        <button
+        <motion.button
           onClick={handleOpen}
           className={styles.fullscreenButton}
           aria-label={intl.formatMessage({ id: "enterFullscreen" })}
-        ></button>
+          style={{ opacity: buttonOpacity }}
+        ></motion.button>
       )}
 
       {isFullscreen && (

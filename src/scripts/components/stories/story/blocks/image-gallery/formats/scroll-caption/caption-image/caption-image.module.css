@@ -1,4 +1,4 @@
-.imageContainer {
+div[data-status="imageContainer"] {
   height: auto;
   width: 100%;
   position: relative;
@@ -6,17 +6,20 @@
   justify-content: center;
   align-items: center;
 
-  background-color: rgba(0, 0, 0, 0.9);
+  @media screen and (--desktop-viewport) {
+    width: max(35vw, 500px);
+    height: 50vh;
+  }
 
   img {
     width: 100%;
-    height: auto;
-    min-height: 200px;
+    height: 100%;
     object-fit: cover;
   }
 }
 
-.fullscreenOverlay {
+
+div[data-status="fullscreenOverlay"] {
   height: var(--story-height);
   width: 100vw;
   -webkit-user-select: none;
@@ -38,9 +41,11 @@
     position: absolute;
     top: 0;
     height: 56px;
-    background: linear-gradient(0deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.44) 78.37%);
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.44) 78.37%
+    );
   }
 
   &:after {
@@ -49,12 +54,14 @@
     bottom: 0;
     height: 97px;
     width: 100%;
-    background: linear-gradient(180deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.64) 86.54%);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.64) 86.54%
+    );
   }
 
-  >span {
+  > span {
     position: absolute;
     bottom: 2rem;
     font-size: 14px;

@@ -15,6 +15,7 @@ import {
 } from "../../../../../../../../config/main";
 
 import styles from "./compare-images.module.css";
+import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
 
 interface Props {
   slide1: ImageSlide;
@@ -29,11 +30,13 @@ export const CompareImages: FunctionComponent<Props> = ({
   slide2,
   storyId,
   isComparing,
-  onInteraction
+  onInteraction,
 }) => {
   const scale = useMotionValue(1);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+
+  const isMobile = useScreenSize().isMobile;
 
   // Extract image URLs and alt texts from the slides
   const { url: url1, altText: alt1 } = slide1;
@@ -88,14 +91,22 @@ export const CompareImages: FunctionComponent<Props> = ({
     },
   );
 
+  const animateProp = isMobile ? "height" : "width";
+
   return (
     <div
+      // We need to force a re-evaluation of the motion values when the animateProp changes
+      key={animateProp}
       ref={containerRef}
-      className={cx(styles.compareContainer, isComparing && styles.isComparing)}
+      className={cx(
+        styles.compareContainer,
+        !isMobile && styles.isVerticalSplit,
+        isComparing && styles.isComparing,
+      )}
     >
       <motion.div
         className={styles.imageWrapper}
-        animate={{ height: isComparing ? "50%" : "100%" }}
+        animate={{ [animateProp]: isComparing ? "50%" : "100%" }}
       >
         <motion.img
           src={src1}
@@ -109,9 +120,9 @@ export const CompareImages: FunctionComponent<Props> = ({
         {isComparing && (
           <motion.div
             className={styles.imageWrapper}
-            initial={{ height: "0%" }}
-            animate={{ height: "50%" }}
-            exit={{ height: "0%" }}
+            initial={{ [animateProp]: "0%" }}
+            animate={{ [animateProp]: "50%" }}
+            exit={{ [animateProp]: "0%" }}
           >
             <motion.img
               src={src2}

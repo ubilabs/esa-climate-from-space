@@ -1,5 +1,8 @@
 import { FunctionComponent } from "react";
 import ReactMarkdown from "react-markdown";
+
+import config from "../../../config/main";
+
 import cx from "classnames";
 
 import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
@@ -36,7 +39,7 @@ const SplashScreen: FunctionComponent<Props> = ({ storyId, slide }) => {
       <div className={contentClasses}>
         <ReactMarkdown
           children={slide.text}
-          allowedElements={["h1", "h2", "h3", "p", "br", "em", "b"]}
+          allowedElements={config.markdownAllowedElements}
         />
       </div>
     </div>

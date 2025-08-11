@@ -2,6 +2,16 @@
   touch-action: none;
   position: relative;
 
+  &.isVerticalSplit {
+    display: flex;
+
+    .imageWrapper {
+      border-right: 2px solid white;
+      border-bottom: none;
+      height: 100%;
+    }
+  }
+
   &.isComparing:before {
     z-index: 1;
     content: "";
@@ -9,9 +19,11 @@
     position: absolute;
     top: 0;
     height: 56px;
-    background: linear-gradient(0deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.44) 78.37%);
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.44) 78.37%
+    );
   }
 
   &.isComparing:after {
@@ -21,9 +33,11 @@
     height: 97px;
     left: 0;
     width: 100%;
-    background: linear-gradient(180deg,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.64) 86.54%);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.64) 86.54%
+    );
   }
 }
 
