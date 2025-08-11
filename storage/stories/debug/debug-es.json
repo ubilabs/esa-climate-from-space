@@ -1,10 +1,10 @@
 {
   "id": "debug",
   "splashscreen": {
-    "text": "",
+    "text": "# Der Wasserkreislauf \r\n\r\n  Wasser ist für unser Leben unerlässlich. Der Wasserkreislauf verbindet viele Komponenten des Klimasystems der Erde und spielt eine wichtige Rolle beim Transport von Wärme um den Planeten.",
     "location": {},
     "markers": [],
-    "image": ""
+    "image": "assets/story21-image10.jpg"
   },
   "contents": []
 }
