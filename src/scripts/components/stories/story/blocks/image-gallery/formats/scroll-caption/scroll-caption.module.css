@@ -10,7 +10,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: var(--story-height);
       gap: 5vw;
 
       &:has(.scrollCaptionText) {
@@ -71,7 +70,6 @@
     flex-direction: column;
     align-items: left;
     justify-content: center;
-    height: var(--story-height);
     scroll-snap-align: center;
     text-shadow:
       0px 1px 2px rgba(0, 0, 0, 0.3),
@@ -95,7 +93,7 @@
       font-weight: 400;
     }
     @media screen and (--desktop-viewport) {
-      height: fit-content;
+      height: calc(var(--story-height) / 1.5);
 
       /* if the scrollImageContainer does not have a scrollCaptionText sibling, */
       /* the imageContainer child can take the full width */
