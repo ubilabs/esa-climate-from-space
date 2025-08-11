@@ -3,6 +3,8 @@ import { FunctionComponent, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { motion, useTransform } from "motion/react";
 
+import config from "../../../../../../../../config/main";
+
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 import { ImageSlide } from "../../../../../../../../types/story";
@@ -37,7 +39,7 @@ const Caption: FunctionComponent<CaptionProps> = ({ caption }) => {
     >
       <ReactMarkdown
         children={caption}
-        allowedElements={["h2", "h3", "p", "br", "em", "b", "a"]}
+        allowedElements={config.markdownAllowedElements}
       />
     </motion.div>
   );

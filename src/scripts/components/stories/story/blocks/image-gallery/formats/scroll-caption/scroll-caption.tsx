@@ -1,5 +1,8 @@
 import { FunctionComponent } from "react";
 import ReactMarkdown from "react-markdown";
+
+import config from "../../../../../../../config/main";
+
 import { useFormat } from "../../../../../../../providers/story/format/use-format";
 import { FormatContainer } from "../../../../../layout/format-container/format-container";
 import { StorySectionProps } from "../../../../../../../types/story";
@@ -28,7 +31,7 @@ const ScrollCaption: FunctionComponent<StorySectionProps> = ({ ref }) => {
             />
             <ReactMarkdown
               children={slide.captions.join("\n\n")}
-              allowedElements={["h3", "p", "br", "em", "b", "a"]}
+              allowedElements={config.markdownAllowedElements}
             />
           </div>
         </div>

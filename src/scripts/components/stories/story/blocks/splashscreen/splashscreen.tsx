@@ -3,6 +3,8 @@ import ReactMarkdown from "react-markdown";
 import { useDispatch } from "react-redux";
 import { motion, useTransform } from "motion/react";
 
+import config from "../../../../../config/main";
+
 import { setFlyTo } from "../../../../../reducers/fly-to";
 
 import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
@@ -84,7 +86,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
           <ReactMarkdown
             className={styles.content}
             children={text}
-            allowedElements={["h1", "h2", "h3", "p", "br", "em", "b"]}
+            allowedElements={config.markdownAllowedElements}
           />
         </motion.div>
       </div>
