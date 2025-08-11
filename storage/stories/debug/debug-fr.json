@@ -1,10 +1,10 @@
 {
+  "id": "debug",
   "splashscreen": {
     "text": "",
     "location": {},
     "markers": [],
     "image": ""
   },
-  "contents": [],
-  "id": "debug"
+  "contents": []
 }
