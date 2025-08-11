@@ -44,8 +44,8 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
 
   const clipPath = useTransform(
     scrollYProgress,
-    [0, 1],
-    ["inset(45% 45% 45% 45%)", "inset(0% 0% 0% 0%)"],
+    [0.5, 1],
+    ["inset(10% 10% 10% 10%)", "inset(0% 0% 0% 0%)"],
   );
 
   const buttonOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);

@@ -5,12 +5,14 @@
 
   .scrollCaptionSlide {
     height: 100%;
+    padding-block: 1rem;
 
     @media screen and (--desktop-viewport) {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 5vw;
+      padding-block: 0;
 
       &:has(.scrollCaptionText) {
         flex-direction: row-reverse;
