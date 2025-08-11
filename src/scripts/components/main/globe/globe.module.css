@@ -3,7 +3,7 @@
 }
 
 .globe {
-  transition: all 1.5s ease;
+  transition: transform 1.5s ease;
   height: 100%;
   width: 100%;
   margin-bottom: var(--header-height);

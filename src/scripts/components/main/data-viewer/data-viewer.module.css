@@ -29,6 +29,12 @@
     }
   }
 
+  &[data-nav-content="stories"] {
+    .globe {
+      margin-bottom: 0;
+    }
+  }
+
   &[data-nav-content="data"] {
     .globeWrapper:has(.globe ~ .globe) {
       display: flex;

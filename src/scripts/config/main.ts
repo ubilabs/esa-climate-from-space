@@ -47,6 +47,7 @@ export const AUTO_ROTATE_INTERVAL = 5000; // Time between auto-rotations in mill
 export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interaction before restarting auto-rotation
 
 export const CONTENT_NAV_LONGITUDE_OFFSET = -30;
+export const STORY_LATITUDE_OFFSET = 5; // Offset for the latitude when flying to the location
 export const ALTITUDE_FACTOR_DESKTOP = 0.5;
 
 export const WHEEL_SCALE_FACTOR = 0.001,

@@ -24,7 +24,7 @@
     object-fit: cover;
   }
 
-  &:not(:first-child):before {
+  &:before {
     content: "";
     position: absolute;
     top: 0;
@@ -33,24 +33,6 @@
     height: 100%;
     background: rgba(1, 30, 43, 0.5);
     z-index: 2;
-  }
-
-  &:first-child .captionContainer {
-    padding: 1.5rem;
-    margin-right: auto;
-
-    h2 {
-      text-align: left;
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: 2.25em;
-      font-family: NotesEsaBold;
-      line-height: 1em;
-    }
-
-    h3 {
-      text-align: left;
-    }
   }
 
   .captionContainer {
