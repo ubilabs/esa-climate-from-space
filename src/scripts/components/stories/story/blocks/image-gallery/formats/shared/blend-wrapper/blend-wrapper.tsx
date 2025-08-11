@@ -28,7 +28,9 @@ const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
   });
 
   const [description, setDescription] = useState(images[0]?.altText ?? "");
-  const [captions, setCaption] = useState(images[0]?.captions ?? "");
+  const [captions, setCaptions] = useState<Array<string>>(
+    images[0]?.captions ?? "",
+  );
 
   useEffect(() => {
     return scrollYProgress.on("change", (latest) => {
@@ -36,7 +38,7 @@ const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
       const activeSlide = images[activeSlideIndex];
       if (activeSlide && activeSlide.altText !== description) {
         setDescription(activeSlide.altText ?? "");
-        setCaption(activeSlide.captions ?? "");
+        setCaptions(activeSlide.captions ?? []);
       }
     });
   }, [scrollYProgress, images, numSlides, description]);
@@ -67,7 +69,7 @@ const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
             ))}
           </ul>
           <div className={styles.altText}>
-            <h3>{captions.join()}</h3>
+            <h3>{captions.join(" ")}</h3>
             <p>{description}</p>
           </div>
         </div>
