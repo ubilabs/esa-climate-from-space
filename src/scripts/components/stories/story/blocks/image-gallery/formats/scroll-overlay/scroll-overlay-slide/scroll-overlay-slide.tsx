@@ -19,6 +19,8 @@ interface CaptionProps {
   index: number;
 }
 
+const TRANSLATE_DISTANCE = 400;
+
 const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -33,7 +35,9 @@ const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
     scrollYProgress,
     [0, 0.5, 1],
     // For even indices, move left; for odd indices, move right
-    index % 2 === 0 ? [-400, 0, 400] : [400, 0, -400],
+    index % 2 === 0
+      ? [-TRANSLATE_DISTANCE, 0, TRANSLATE_DISTANCE]
+      : [TRANSLATE_DISTANCE, 0, -TRANSLATE_DISTANCE],
   );
 
   return (
