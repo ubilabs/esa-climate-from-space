@@ -94,6 +94,12 @@
     p {
       font-weight: 400;
     }
+
+    &:has(div[data-status="fullscreenOverlay"]) {
+      height: var(--story-height);
+      width: 100vw;
+    }
+
     @media screen and (--desktop-viewport) {
       height: calc(var(--story-height) / 1.5);
 

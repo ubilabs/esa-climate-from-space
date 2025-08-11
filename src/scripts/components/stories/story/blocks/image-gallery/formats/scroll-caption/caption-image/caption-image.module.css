@@ -1,4 +1,4 @@
-.imageContainer {
+div[data-status="imageContainer"] {
   height: auto;
   width: 100%;
   position: relative;
@@ -19,7 +19,7 @@
 }
 
 
-.fullscreenOverlay {
+div[data-status="fullscreenOverlay"] {
   height: var(--story-height);
   width: 100vw;
   -webkit-user-select: none;
