@@ -17,23 +17,31 @@ interface CaptionProps {
   caption: string;
   subCaption?: string;
   index: number;
-  totalCaptions: number;
 }
 
-const Caption: FunctionComponent<CaptionProps> = ({ caption }) => {
+const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
   const ref = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useStoryScroll({
     target: ref,
-    offset: ["center center", "end start"],
+    offset: ["start end", "end start"],
   });
 
-  const captionOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+
+  const translateX = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    // For even indices, move left; for odd indices, move right
+    index % 2 === 0 ? [-400, 0, 400] : [400, 0, -400],
+  );
 
   return (
     <motion.div
       ref={ref}
       style={{
-        opacity: captionOpacity,
+        opacity: opacity,
+        translateX: translateX,
       }}
       className={cx(styles.captionContainer)}
     >
@@ -87,12 +95,7 @@ export const ScrollOverlaySlide: FunctionComponent<Props> = ({
       </div>
       <div className={styles.captionsContainer}>
         {slide.captions.map((caption, index) => (
-          <Caption
-            key={index}
-            caption={caption}
-            index={index}
-            totalCaptions={slide.captions.length}
-          />
+          <Caption key={index} caption={caption} index={index} />
         ))}
       </div>
     </div>
