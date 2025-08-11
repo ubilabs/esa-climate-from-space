@@ -1,7 +1,8 @@
 import { useState, useRef, FunctionComponent, SyntheticEvent } from "react";
 import { useIntl } from "react-intl";
-import { motion, useMotionValue } from "motion/react";
+import { motion, useMotionValue, useTransform } from "motion/react";
 import { useGesture } from "@use-gesture/react";
+import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 
 import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
 import {
@@ -19,6 +20,7 @@ interface Props {
 }
 
 export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
+  const ref = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
 
@@ -34,6 +36,19 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
       setShowInstructions(false);
     }
   };
+
+  const { scrollYProgress } = useStoryScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
+
+  const clipPath = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["inset(45% 45% 45% 45%)", "inset(0% 0% 0% 0%)"],
+  );
+
+  const buttonOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
 
   // Gesture bindings
   useGesture(
@@ -87,6 +102,7 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
 
   return (
     <motion.div
+      ref={ref}
       layout
       className={
         isFullscreen ? styles.fullscreenOverlay : styles.imageContainer
@@ -106,16 +122,18 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
           y: isFullscreen ? y : 0,
           scale: isFullscreen ? scale : 1,
           cursor: isFullscreen ? "grab" : "default",
+          clipPath: isFullscreen ? "none" : clipPath,
         }}
         draggable={false}
       />
 
       {!isFullscreen && (
-        <button
+        <motion.button
           onClick={handleOpen}
           className={styles.fullscreenButton}
           aria-label={intl.formatMessage({ id: "enterFullscreen" })}
-        ></button>
+          style={{ opacity: buttonOpacity }}
+        ></motion.button>
       )}
 
       {isFullscreen && (
