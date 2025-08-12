@@ -56,7 +56,7 @@ export type ImageGalleryFormat = {
   caption?: string;
   shortText?: string;
   slides: ImageSlide[];
-  cta?: string;
+  buttonText?: string;
 };
 
 export type ImageSlide = {

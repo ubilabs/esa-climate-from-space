@@ -11,7 +11,7 @@ import styles from "./compare-mode.module.css";
 
 const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const {
-    content: { slides, description, cta },
+    content: { slides, description, buttonText },
     storyId,
   } = useFormat();
 
@@ -56,7 +56,11 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
             className={styles.controlButton}
             onClick={() => setIsComparing(true)}
           >
-            {cta ? cta : <FormattedMessage id={"openComparison"} />}
+            {buttonText ? (
+              buttonText
+            ) : (
+              <FormattedMessage id={"openComparison"} />
+            )}
           </button>
         </div>
       ) : (

@@ -111,8 +111,8 @@
         },
         {
           "type": "compareMode",
-          "description": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom cta",
-          "cta": "",
+          "description": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
+          "buttonText": "",
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
