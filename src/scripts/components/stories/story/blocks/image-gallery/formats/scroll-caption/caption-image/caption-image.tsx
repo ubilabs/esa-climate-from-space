@@ -16,7 +16,7 @@ import styles from "./caption-image.module.css";
 
 interface Props {
   src: string;
-  alt: string;
+  alt: string | undefined;
 }
 
 export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
@@ -100,6 +100,12 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
     setShowInstructions(true);
   };
 
+  if (!alt) {
+    console.warn(
+      "CaptionImage component requires an alt text for accessibility.",
+    );
+  }
+
   return (
     <motion.div
       ref={ref}
@@ -113,7 +119,7 @@ export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
         layout
         ref={imgRef}
         src={src}
-        alt={alt || "Caption image"}
+        alt={alt}
         className={styles.image}
         style={{
           x: isFullscreen ? x : 0,
