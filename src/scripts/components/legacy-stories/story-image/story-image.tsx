@@ -31,6 +31,7 @@ const StoryImage: FunctionComponent<Props> = ({
           objectFit: imageFit === ImageFit.Cover ? "cover" : "contain",
         }}
         src={imageUrl}
+        alt={imageItem.imageCaption || ""}
       />
       {imageCaption && (
         <Caption

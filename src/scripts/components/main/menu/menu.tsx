@@ -220,7 +220,7 @@ const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
             <p className={styles.creditsText}>
               <FormattedMessage id={"contentBy"} />
             </p>
-            <img src={planeratyVisionsLogo} />
+            <img src={planeratyVisionsLogo} alt="Planetary Visions logo" />
           </a>
         </div>
       </div>

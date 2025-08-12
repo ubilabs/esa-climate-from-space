@@ -17,7 +17,7 @@ const StoryEmbedded: FunctionComponent<Props> = ({
   const { description } = embeddedItem;
   return (
     <div className={styles.embeddedContent}>
-      <iframe src={embeddedItem.embeddedSrc}></iframe>
+      <iframe src={embeddedItem.embeddedSrc} title={embeddedItem.description || "Embedded content"}></iframe>
       {description && (
         <Caption
           showLightbox={showLightbox}

@@ -36,6 +36,14 @@ const Overlay: FunctionComponent<Props> = ({
       onWheel={stopPropagation}
       onMouseDown={stopPropagation}
       onTouchStart={stopPropagation}
+      onClick={() => onClose && onClose()}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          if (onClose) { onClose(); }
+        }
+      }}
+      role="button"
+      tabIndex={0}
     >
       {showCloseButton && (
         <Button

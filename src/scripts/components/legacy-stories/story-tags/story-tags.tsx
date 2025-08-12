@@ -55,6 +55,13 @@ const StoryTags: FunctionComponent<Props> = ({ tags, selected }) => {
               event.stopPropagation();
               toggleTag(tag);
             }}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                toggleTag(tag);
+              }
+            }}
+            role="button"
+            tabIndex={0}
           >
             <FormattedMessage id={`tags.${tag}`} />
           </span>
@@ -67,6 +74,13 @@ const StoryTags: FunctionComponent<Props> = ({ tags, selected }) => {
             event.stopPropagation();
             setShowAllTags(true);
           }}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              setShowAllTags(true);
+            }
+          }}
+          role="button"
+          tabIndex={0}
         >
           +{sortedTags.length - tagCount}
         </span>

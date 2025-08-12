@@ -54,7 +54,7 @@ const Header: FunctionComponent = () => {
     // The app element determines the layout via grid which is why we should return a DOM element here
     // set css custom property --header-height to 0
     document.documentElement.style.setProperty("--header-height", "0px");
-    return <nav aria-disabled="true"></nav>;
+    return <nav></nav>;
   }
 
   const logoVariant = isDesktop

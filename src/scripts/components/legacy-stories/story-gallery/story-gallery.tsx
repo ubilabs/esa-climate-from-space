@@ -66,7 +66,7 @@ const StoryGallery: FunctionComponent<Props> = ({
         }
       }
     },
-    [showLightbox],
+    [showLightbox, setShowLightbox],
   );
 
   // add and remove event listener for keyboard events
@@ -97,6 +97,13 @@ const StoryGallery: FunctionComponent<Props> = ({
           <div
             className={styles.fullscreenIcon}
             onClick={() => setShowLightbox(true)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                setShowLightbox(true);
+              }
+            }}
+            role="button"
+            tabIndex={0}
           >
             <FullscreenIcon />
           </div>
@@ -104,6 +111,13 @@ const StoryGallery: FunctionComponent<Props> = ({
           <div
             className={styles.fullscreenExitIcon}
             onClick={() => setShowLightbox(false)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                setShowLightbox(false);
+              }
+            }}
+            role="button"
+            tabIndex={0}
           >
             <CloseIcon />
           </div>
@@ -116,10 +130,30 @@ const StoryGallery: FunctionComponent<Props> = ({
         </StoryGalleryItem>
         {children.length > 1 && (
           <div className={styles.buttonContainer}>
-            <div onClick={onPrevClick} className={prevIconClasses}>
+            <div
+              onClick={onPrevClick}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  onPrevClick();
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              className={prevIconClasses}
+            >
               <PreviousIcon />
             </div>
-            <div onClick={onNextClick} className={nextIconClasses}>
+            <div
+              onClick={onNextClick}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  onNextClick();
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              className={nextIconClasses}
+            >
               <NextIcon />
             </div>
           </div>
