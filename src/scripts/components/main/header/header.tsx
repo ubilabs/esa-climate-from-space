@@ -1,5 +1,4 @@
 import { FunctionComponent, useState } from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import config from "../../../config/main";
@@ -68,7 +67,7 @@ const Header: FunctionComponent = () => {
     <>
       <nav className={styles.header}>
         {logo && (
-          <Button link="/about" name="about">
+          <Button link="/about" ariaLabel="about">
             <EsaLogo variant={logoVariant} />
           </Button>
         )}
@@ -77,7 +76,7 @@ const Header: FunctionComponent = () => {
             className={styles.backButton}
             icon={ArrowBackIcon}
             label={isMobile ? "" : "backToStories"}
-            name={"backToStories"}
+            ariaLabel={"backToStories"}
             link={category ? `/${category}` : "/"}
           />
         )}

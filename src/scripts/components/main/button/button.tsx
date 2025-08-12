@@ -14,7 +14,7 @@ interface Props {
   id?: string;
   hideLabelOnMobile?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  name?: string;
+  ariaLabel?: string;
 }
 
 const Button: FunctionComponent<PropsWithChildren<Props>> = ({
@@ -26,7 +26,7 @@ const Button: FunctionComponent<PropsWithChildren<Props>> = ({
   id,
   hideLabelOnMobile,
   onClick,
-  name,
+  ariaLabel,
   children,
 }) => {
   const classes = cx(
@@ -44,7 +44,7 @@ const Button: FunctionComponent<PropsWithChildren<Props>> = ({
       id={id}
       className={classes}
       to={link}
-      aria-label={name && formatMessage({ id: name })}
+      aria-label={ariaLabel && formatMessage({ id: ariaLabel })}
     >
       {Icon && <Icon />}
       {children}
@@ -60,7 +60,7 @@ const Button: FunctionComponent<PropsWithChildren<Props>> = ({
       className={classes}
       id={id}
       onClick={onClick}
-      name={name && formatMessage({ id: name })}
+      aria-label={ariaLabel && formatMessage({ id: ariaLabel })}
     >
       {Icon && <Icon />}
       {children}
