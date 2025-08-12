@@ -107,28 +107,19 @@
           ]
         },
         {
-          "type": "frequencyBlend",
+          "type": "compareMode",
+          "description": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
+          "cta": "Vergleichen Sie die Satellitenbilder",
           "slides": [
             {
-              "url": "assets/story37-image04.jpg",
-              "altText": "Satellites for peat's sake. False colour image including the near-infrared channel hihglights healthy vegetation in red and shows the burn scar in dark brown.",
-              "captions": [
-                "False colour image including the near-infrared channel highlights healthy vegetation in red and shows the burn scar in dark brown."
-              ]
+              "url": "assets/story37-image01.jpg",
+              "altText": "Satelliten im Dienste der Moore. Dieses Mosaik, aufgenommen am 28. Mai 2018, bietet einen seltenen wolkenfreien Blick auf die weiten Ebenen des Flow Country in Schottland.",
+              "captions": ["Satelliten im Dienste der Moore."]
             },
             {
-              "url": "assets/story37-image05.jpg",
-              "altText": "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red.",
-              "captions": [
-                "False colour image including the shortwave infrared channels highlights the active fire front in bright red."
-              ]
-            },
-            {
-              "url": "assets/story37-image06.jpg",
-              "altText": "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red.",
-              "captions": [
-                "False colour image including the shortwave infrared channels highlights the active fire front in bright red."
-              ]
+              "url": "assets/story37-image02.jpg",
+              "altText": "Satelliten im Dienste der Moore. Diese hochauflösende Landbedeckungskarte, abgeleitet aus Copernicus Sentinel-2-Daten, zeigt das Ausmaß der Moore in Violett.",
+              "captions": ["Ein neuer Text für die Bildunterschrift."]
             }
           ]
         }
