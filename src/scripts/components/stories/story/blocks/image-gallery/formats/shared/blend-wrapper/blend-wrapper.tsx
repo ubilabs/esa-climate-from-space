@@ -29,7 +29,7 @@ const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
 
   const [description, setDescription] = useState(images[0]?.altText ?? "");
   const [captions, setCaptions] = useState<Array<string>>(
-    images[0]?.captions ?? "",
+    images[0]?.captions ?? [],
   );
 
   useEffect(() => {

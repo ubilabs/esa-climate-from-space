@@ -6,6 +6,7 @@
   .scrollCaptionSlide {
     height: 100%;
     padding-block: 1rem;
+    margin-bottom: 1.5rem;
 
     @media screen and (--desktop-viewport) {
       display: flex;
@@ -104,9 +105,14 @@
       height: calc(var(--story-height) / 1.5);
 
       /* if the scrollImageContainer does not have a scrollCaptionText sibling, */
-      /* the imageContainer child can take the full width */
-      &:not(.scrollCaptionText + .scrollImageContainer) div:first-child {
-        width: 100%;
+      /* the imageContainer child can take the full width up to 1500px*/
+      &:not(.scrollCaptionText + .scrollImageContainer) {
+        width: min(100%, 1500px);
+
+        div:first-child {
+          height: 60vh;
+          width: 100%;
+        }
       }
     }
   }

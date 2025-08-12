@@ -18,9 +18,9 @@ const ScrollCaption: FunctionComponent<StorySectionProps> = ({ ref }) => {
     <FormatContainer ref={ref} className={styles.scrollCaptionBlock}>
       {content.slides.map((slide, index) => (
         <div className={styles.scrollCaptionSlide} key={index}>
-          {slide.text && (
+          {slide.description && (
             <ReactMarkdown
-              children={slide.text}
+              children={slide.description}
               className={styles.scrollCaptionText}
             />
           )}

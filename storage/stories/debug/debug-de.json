@@ -1,7 +1,7 @@
 {
   "id": "debug",
   "splashscreen": {
-    "text": "# Der Wasserkreislauf \r\n\r\n  Wasser ist für unser Leben unerlässlich. Der Wasserkreislauf verbindet viele Komponenten des Klimasystems der Erde und spielt eine wichtige Rolle beim Transport von Wärme um den Planeten.",
+    "description": "# Der Wasserkreislauf \r\n\r\n  Wasser ist für unser Leben unerlässlich. Der Wasserkreislauf verbindet viele Komponenten des Klimasystems der Erde und spielt eine wichtige Rolle beim Transport von Wärme um den Planeten.",
     "location": {},
     "markers": [],
     "image": "assets/story21-image10.jpg"
@@ -15,7 +15,7 @@
           "slides": [
             {
               "url": "",
-              "altText": "",
+              "altText": "Im Jahr 2010 erlebte Queensland den nassesten Dezember seit Beginn der Aufzeichnungen, was zu einer längeren Periode mit ausgedehnten Überschwemmungen führte.",
               "captions": [
                 "Im Jahr 2010 erlebte Queensland den nassesten Dezember seit Beginn der Aufzeichnungen, was zu einer längeren Periode mit ausgedehnten Überschwemmungen führte."
               ]
@@ -27,7 +27,7 @@
           "slides": [
             {
               "url": "assets/story21-image14.jpg",
-              "altText": "",
+              "altText": "Die starke Bewölkung und die Regenfälle im Nordosten Australiens waren auf ungewöhnliche Temperatur- und Verdunstungsmuster im zentralen Pazifik zurückzuführen",
               "captions": [
                 "Die starke Bewölkung und die Regenfälle im Nordosten Australiens waren auf ungewöhnliche Temperatur- und Verdunstungsmuster im zentralen Pazifik zurückzuführen, die als [La Niña](https://cfs.climate.esa.int/index.html#/stories/story-16/6?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI) bezeichnet werden.",
                 "Die Erwärmung des Klimas, das Auftauen von Permafrostböden und das Eindringen von Schmelzwasser gehören zu den Ursachen für solche Ereignisse."
@@ -40,7 +40,7 @@
           "slides": [
             {
               "url": "",
-              "altText": "",
+              "altText": "Dieses Ereignis zeigt, wie verschiedene Teile des Erdsystems – Ozean, Atmosphäre und Land – und Orte, die Tausende Kilometer voneinander entfernt sind, durch den Wasserkreislauf miteinander verbunden sind.",
               "captions": [
                 "Dieses Ereignis zeigt, wie verschiedene Teile des Erdsystems – Ozean, Atmosphäre und Land – und Orte, die Tausende Kilometer voneinander entfernt sind, durch den Wasserkreislauf miteinander verbunden sind."
               ]
@@ -52,7 +52,7 @@
           "slides": [
             {
               "url": "assets/story21-image01.jpg",
-              "text": "",
+              "description": "Bitte geben Sie hier einen aussagekräftigen Text ein.",
               "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
               "captions": [
                 "### Toowoomba, Queensland, Australien",
@@ -61,8 +61,8 @@
             },
             {
               "url": "assets/story21-image06.png",
-              "text": "## Globaler mittlerer Meeresspiegel \r\n\r\n Der von Satelliten beobachtete globale Meeresspiegel zeigt eine steigende Tendenz von 3,3 mm pro Jahr, aber einen Rückgang im Jahr 2011 aufgrund der großen Menge an überschüssigem Wasser an Land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
-              "altText": "",
+              "description": "## Globaler mittlerer Meeresspiegel \r\n\r\n Der von Satelliten beobachtete globale Meeresspiegel zeigt eine steigende Tendenz von 3,3 mm pro Jahr, aber einen Rückgang im Jahr 2011 aufgrund der großen Menge an überschüssigem Wasser an Land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
+              "altText": "Globaler mittlerer Meeresspiegel",
               "captions": [
                 "### Bildunterschrift",
                 "ESA-CCI/Copernicus Dienst zur Überwachung der Meeresumwelt"
@@ -70,8 +70,8 @@
             },
             {
               "url": "assets/story21-image12.jpg",
-              "text": "## New South Wales, Australien \r\n\r\n Copernicus Sentinel-1 Radaraufnahmen vom 7. und 19. März 2021 zeigen ausgedehnte überschwemmte Gebiete in Blau. Gebiete, die im Vorjahr durch Waldbrände verbrannt wurden, sind in Braun dargestellt.           ",
-              "altText": "",
+              "description": "## New South Wales, Australien \r\n\r\n Copernicus Sentinel-1 Radaraufnahmen vom 7. und 19. März 2021 zeigen ausgedehnte überschwemmte Gebiete in Blau. Gebiete, die im Vorjahr durch Waldbrände verbrannt wurden, sind in Braun dargestellt.           ",
+              "altText": "New South Wales, Australien",
               "captions": [
                 "### Bildunterschrift",
                 "Enthält modifizierte Copernicus-Sentinel-Daten (2021), verarbeitet von ESA / NASA MODIS"
@@ -84,7 +84,7 @@
           "slides": [
             {
               "url": "",
-              "altText": "",
+              "altText": "Nach Monaten mit hohen Temperaturen und geringen Niederschlägen erreichte der Wasserstand des italienischen Flusses Po im Jahr 2022 einen Rekordtiefstand. Die Dürre in Norditalien beeinträchtigte die landwirtschaftliche Produktion der Region, die häufig auf Bewässerung angewiesen ist.",
               "captions": [
                 "Nach Monaten mit hohen Temperaturen und geringen Niederschlägen erreichte der Wasserstand des italienischen Flusses Po im Jahr 2022 einen Rekordtiefstand. Die Dürre in Norditalien beeinträchtigte die landwirtschaftliche Produktion der Region, die häufig auf Bewässerung angewiesen ist."
               ]
@@ -97,7 +97,7 @@
             {
               "url": "assets/story37-image01.jpg",
               "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": ["TEST "]
+              "captions": ["Wolkenfreier Blick auf die Landschaft"]
             },
             {
               "url": "assets/story37-image02.jpg",
@@ -107,28 +107,19 @@
           ]
         },
         {
-          "type": "frequencyBlend",
+          "type": "compareMode",
+          "description": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
+          "buttonText": "Vergleichen Sie die Satellitenbilder",
           "slides": [
             {
-              "url": "assets/story37-image04.jpg",
-              "altText": "Satellites for peat's sake. False colour image including the near-infrared channel hihglights healthy vegetation in red and shows the burn scar in dark brown.",
-              "captions": [
-                "False colour image including the near-infrared channel highlights healthy vegetation in red and shows the burn scar in dark brown."
-              ]
+              "url": "assets/story37-image01.jpg",
+              "altText": "Satelliten im Dienste der Moore. Dieses Mosaik, aufgenommen am 28. Mai 2018, bietet einen seltenen wolkenfreien Blick auf die weiten Ebenen des Flow Country in Schottland.",
+              "captions": ["Satelliten im Dienste der Moore."]
             },
             {
-              "url": "assets/story37-image05.jpg",
-              "altText": "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red.",
-              "captions": [
-                "False colour image including the shortwave infrared channels highlights the active fire front in bright red."
-              ]
-            },
-            {
-              "url": "assets/story37-image06.jpg",
-              "altText": "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red.",
-              "captions": [
-                "False colour image including the shortwave infrared channels highlights the active fire front in bright red."
-              ]
+              "url": "assets/story37-image02.jpg",
+              "altText": "Satelliten im Dienste der Moore. Diese hochauflösende Landbedeckungskarte, abgeleitet aus Copernicus Sentinel-2-Daten, zeigt das Ausmaß der Moore in Violett.",
+              "captions": ["Ein neuer Text für die Bildunterschrift."]
             }
           ]
         }

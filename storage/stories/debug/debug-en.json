@@ -1,10 +1,10 @@
 {
   "id": "debug",
   "splashscreen": {
-    "text": "# Satellites for Peat's Sake \r\n\r\n Welcome to the optional splash screen",
+    "description": "# The Water Cycle \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based",
+    "markers": [{ "lat": 58.5, "lng": -4.5 }],
     "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
-    "markers": [],
-    "image": "assets/story37-image07.jpg"
+    "image": "assets/story21-image10.jpg"
   },
   "content": [
     {
@@ -14,36 +14,36 @@
           "type": "scrollOverlay",
           "slides": [
             {
-              "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view ",
-              "captions":[  "Example Scroll overlay" ],
-              "subcaptions": "This has no overlay"
-            },
-            {
-              "url": "assets/satellite.gif",
-              "altText": "Satellites for peat's sake.",
-              "captions":[ " We can now include GIFs", " They are over the moon!" ]
-            },
-            {
-              "url": "assets/launch.mp4",
-              "altText": "Satellites for peat's sake.",
-              "captions":[  "... And videos!" ]
+              "url": "",
+              "altText": "In 2010, Queensland experienced the wettest December on record, leading to a prolonged period of extensive flooding.",
+              "captions": [
+                "In 2010, Queensland experienced the wettest December on record, leading to a prolonged period of extensive flooding."
+              ]
             }
           ]
         },
         {
-          "type": "compareMode",
-          "description": "Compare various satellite imagery and data visualizations of Scotland's Flow Country, showcasing its unique landscapes changes over time.",
+          "type": "scrollOverlay",
           "slides": [
             {
-              "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions":[  "Satellites for peat's sake." ]
-            },
+              "url": "assets/story21-image14.jpg",
+              "altText": "Heavy cloud cover and rainfall in northeastern Australia were due to unusual temperature and evaporation patterns in the central Pacific",
+              "captions": [
+                "Heavy cloud cover and rainfall in northeastern Australia were due to unusual temperature and evaporation patterns in the central Pacific, referred to as [La Niña](https://cfs.climate.esa.int/index.html#/stories/story-16/6?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI).",
+                "The warming of the climate, thawing of permafrost, and intrusion of meltwater are among the causes of such events."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "scrollOverlay",
+          "slides": [
             {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions":[  "Satellites for peat's sake. 2" ]
+              "url": "",
+              "altText": "This event illustrates how different parts of the Earth system – ocean, atmosphere, and land – and locations thousands of kilometers apart are interconnected through the water cycle.",
+              "captions": [
+                "This event illustrates how different parts of the Earth system – ocean, atmosphere, and land – and locations thousands of kilometers apart are interconnected through the water cycle."
+              ]
             }
           ]
         },
@@ -51,39 +51,43 @@
           "type": "scrollCaption",
           "slides": [
             {
-              "url": "assets/story37-image01.jpg",
+              "url": "assets/story21-image01.jpg",
+              "description": "",
               "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions":[  "Satellites for peat's sake." ]
+              "captions": [
+                "### Toowoomba, Queensland, Australia",
+                "A woman waits on the roof of her car during a flash flood on January 10, 2011 [T Swinson](https://cfs.climate.esa.int/index.html#/stories/story-21/1?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI)"
+              ]
             },
             {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions":[  "Satellites for peat's sake. 2" ]
+              "url": "assets/story21-image06.png",
+              "description": "## Global Mean Sea Level \r\n\r\n The global sea level observed by satellites shows an upward trend of 3.3 mm per year, but a decline in 2011 due to the large amount of excess water on land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
+              "altText": "Copernicus Marine Environment Monitoring Service",
+              "captions": [
+                "### Caption",
+                "ESA-CCI/Copernicus Marine Environment Monitoring Service"
+              ]
             },
             {
-              "url": "assets/story37-image04.jpg",
-              "altText": "Satellites for peat's sake. ",
-              "captions":[  "Satellites for peat's sake 2.5" ]
-            },
-            {
-              "url": "assets/story37-image05.jpg",
-              "altText": "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red.",
-              "captions":[  "Satellites for peat's sake 3" ]
+              "url": "assets/story21-image12.jpg",
+              "description": "## New South Wales, Australia \r\n\r\n Copernicus Sentinel-1 radar images from March 7 and 19, 2021, show extensive flooded areas in blue. Areas burned by wildfires in the previous year are shown in brown.           ",
+              "altText": "Copernicus Marine Environment Monitoring Service",
+              "captions": [
+                "### Caption",
+                "Contains modified Copernicus Sentinel data (2021), processed by ESA / NASA MODIS"
+              ]
             }
           ]
         },
         {
-          "type": "timeBlend",
+          "type": "scrollOverlay",
           "slides": [
             {
-              "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions":[  "Satellites for peat's sake." ]
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions":[  "Satellites for peat's sake. 2" ]
+              "url": "",
+              "altText": "Copernicus Marine Environment Monitoring Service",
+              "captions": [
+                "After months of high temperatures and low rainfall, the water level of Italy's Po River reached a record low in 2022. The drought in northern Italy impacted the region's agricultural production, which often relies on irrigation."
+              ]
             }
           ]
         },
@@ -91,19 +95,34 @@
           "type": "frequencyBlend",
           "slides": [
             {
-              "url": "assets/story37-image04.jpg",
-              "altText": "Satellites for peat's sake. False colour image including the near-infrared channel hihglights healthy vegetation in red and shows the burn scar in dark brown.",
-              "captions":[  "False colour image including the near-infrared channel highlights healthy vegetation in red and shows the burn scar in dark brown." ]
+              "url": "assets/story37-image01.jpg",
+              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "captions": [
+                "Satellites for peat's sake. Cloud-free view.",
+                "Lorem Ipsum"
+              ]
             },
             {
-              "url": "assets/story37-image05.jpg",
-              "altText": "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red.",
-              "captions":[  "False colour image including the shortwave infrared channels highlights the active fire front in bright red." ]
+              "url": "assets/story37-image02.jpg",
+              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+              "captions": ["Satellites for peat's sake. 2"]
+            }
+          ]
+        },
+        {
+          "type": "compareMode",
+          "description": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
+          "buttonText": "",
+          "slides": [
+            {
+              "url": "assets/story37-image01.jpg",
+              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "captions": ["Satellites for peat's sake."]
             },
             {
-              "url": "assets/story37-image06.jpg",
-              "altText": "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red.",
-              "captions":[  "False colour image including the shortwave infrared channels highlights the active fire front in bright red." ]
+              "url": "assets/story37-image02.jpg",
+              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+              "captions": ["A new caption text."]
             }
           ]
         }

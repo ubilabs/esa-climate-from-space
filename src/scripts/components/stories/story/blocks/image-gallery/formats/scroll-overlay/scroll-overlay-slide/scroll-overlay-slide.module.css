@@ -1,4 +1,5 @@
 .slide {
+  scroll-snap-align: center;
   position: relative;
   color: white;
 
@@ -34,13 +35,13 @@
     top: 0;
     position: absolute;
     padding-inline: max(1.5rem, 12vw);
+    overflow: hidden;
 
     .captionContainer {
       color: var(--Neutral-White, #fff);
       display: flex;
       justify-content: center;
       align-items: center;
-      scroll-snap-align: center;
       height: var(--story-height);
       position: relative;
       z-index: 1000;
