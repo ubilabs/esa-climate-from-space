@@ -1,7 +1,7 @@
 {
   "id": "debug",
   "splashscreen": {
-    "text": "# The Water Cycle \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based",
+    "description": "# The Water Cycle \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based",
     "markers": [{ "lat": 58.5, "lng": -4.5 }],
     "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
     "image": "assets/story21-image10.jpg"
@@ -52,7 +52,7 @@
           "slides": [
             {
               "url": "assets/story21-image01.jpg",
-              "text": "",
+              "description": "",
               "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
               "captions": [
                 "### Toowoomba, Queensland, Australia",
@@ -61,7 +61,7 @@
             },
             {
               "url": "assets/story21-image06.png",
-              "text": "## Global Mean Sea Level \r\n\r\n The global sea level observed by satellites shows an upward trend of 3.3 mm per year, but a decline in 2011 due to the large amount of excess water on land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
+              "description": "## Global Mean Sea Level \r\n\r\n The global sea level observed by satellites shows an upward trend of 3.3 mm per year, but a decline in 2011 due to the large amount of excess water on land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
               "altText": "Copernicus Marine Environment Monitoring Service",
               "captions": [
                 "### Caption",
@@ -70,7 +70,7 @@
             },
             {
               "url": "assets/story21-image12.jpg",
-              "text": "## New South Wales, Australia \r\n\r\n Copernicus Sentinel-1 radar images from March 7 and 19, 2021, show extensive flooded areas in blue. Areas burned by wildfires in the previous year are shown in brown.           ",
+              "description": "## New South Wales, Australia \r\n\r\n Copernicus Sentinel-1 radar images from March 7 and 19, 2021, show extensive flooded areas in blue. Areas burned by wildfires in the previous year are shown in brown.           ",
               "altText": "Copernicus Marine Environment Monitoring Service",
               "captions": [
                 "### Caption",
