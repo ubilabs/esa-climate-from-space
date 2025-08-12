@@ -16,7 +16,7 @@ import styles from "./caption-image.module.css";
 
 interface Props {
   src: string;
-  alt: string | undefined;
+  alt?: string;
 }
 
 export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
