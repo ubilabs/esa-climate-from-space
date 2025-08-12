@@ -35,6 +35,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const imageY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.5, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+
   const dispatch = useDispatch();
 
   const isLocationBased = isLocationStory(story);

@@ -44,6 +44,8 @@
   .contentContainer {
     position: relative;
     height: 100%;
+    max-width: 95ch;
+    margin: 0 auto;
     display: grid;
     place-items: center;
     z-index: 2;
@@ -55,15 +57,23 @@
     padding-inline: var(--story-padding);
 
     p {
-      line-height: 1.375em;
+      color: var(--Neutral-ESA-White, #fff);
+      text-align: center;
+      text-shadow: 0 2px 1px rgba(0, 0, 0, 0.48);
+      font-family: NotesEsa;
+      font-size: clamp(18px, 4vw, 22px);
+      line-height: clamp(28px, 5vw, 36px);
+      font-style: normal;
+      font-weight: 400;
     }
 
     h1 {
+      text-align: center;
       text-transform: uppercase;
       font-weight: bold;
-      font-size: 2.25em;
+      font-size: clamp(36px, 5vw, 80px);
       font-family: NotesEsaBold;
-      line-height: 1em;
+      line-height: 1;
       margin-bottom: 1rem;
     }
   }
