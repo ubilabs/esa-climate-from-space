@@ -1,9 +1,12 @@
-import { FunctionComponent, useCallback } from "react";
+import { FunctionComponent, useCallback, useEffect } from "react";
 
 import { useStory } from "../../../providers/story/use-story";
+import { useDispatch } from "react-redux";
 
 import { SyncStoryUrl } from "../../../hooks/use-sync-story-url";
 import { FormatProvider } from "../../../providers/story/format/format-provider";
+
+import { setSelectedContentAction } from "../../../reducers/content";
 
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 import {
@@ -17,6 +20,7 @@ import styles from "./story.module.css";
 
 const Story: FunctionComponent = () => {
   const { storyElementRef, story, getScrollableFormatsMap } = useStory();
+  const dispatch = useDispatch();
 
   // Callback to get a reference to each scrollable format element
   const getRefCallback = useCallback(
@@ -30,6 +34,18 @@ const Story: FunctionComponent = () => {
     },
     [getScrollableFormatsMap],
   );
+
+  useEffect(() => {
+    if (!story?.id) {
+      return;
+    }
+
+    dispatch(setSelectedContentAction({ contentId: story.id }));
+
+    return () => {
+      dispatch(setSelectedContentAction({ contentId: null }));
+    };
+  }, [dispatch, story?.id]);
 
   if (!story) {
     return null;
