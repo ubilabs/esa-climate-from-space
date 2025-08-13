@@ -23,13 +23,12 @@ export interface LegacyStory {
 
 export type Story = {
   id: string;
-  // Splashscreen is optional
-  splashscreen?: Splashscreen;
+  splashscreen: Splashscreen;
   content: ContentBlock[];
 };
 
 export type Splashscreen = {
-  text: string;
+  description: string;
   location: Record<string, unknown>;
   markers: unknown[]; // Use a more specific type if marker structure is known
   image: string;
