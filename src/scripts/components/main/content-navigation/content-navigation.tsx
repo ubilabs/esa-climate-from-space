@@ -268,7 +268,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             // Make only the current item focusable in the tab order
             // This creates a "roving tabindex" pattern
             tabIndex={index === currentIndex ? 0 : -1}
-            role="button"
+            role="option"
             aria-selected={index === currentIndex}
             onFocus={() => {
               // When an item receives focus, update the current index

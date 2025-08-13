@@ -38,7 +38,7 @@ const SelectedLayerListItem: FunctionComponent<Props> = ({
   return (
     <div className={styles.selectedLayerListItem}>
       <div className={styles.layer}>
-        <img src={layerIconUrl} className={styles.layerIcon} />
+        <img src={layerIconUrl} className={styles.layerIcon} alt={layer.shortName} />
         <span className={styles.layerTitle}>{layer.shortName}</span>
       </div>
       {!isCompareSelected && layer.id !== mainId && (

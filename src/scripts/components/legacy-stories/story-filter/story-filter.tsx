@@ -59,7 +59,17 @@ const StoryFilter: FunctionComponent = () => {
 
   return (
     <div className={styles.storyFilter}>
-      <div className={styles.arrowIcon} onClick={() => leftClick()}>
+      <div
+        className={styles.arrowIcon}
+        onClick={() => leftClick()}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            leftClick();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+      >
         <ArrowLeftIcon />
       </div>
       <div className={styles.tagScrollerOuter}>
@@ -72,6 +82,13 @@ const StoryFilter: FunctionComponent = () => {
             <div
               className={getTagClasses(tag)}
               onClick={() => toggleTag(tag)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  toggleTag(tag);
+                }
+              }}
+              role="button"
+              tabIndex={0}
               key={tag}
             >
               {isSelected(tag) && <CheckIcon />}
@@ -80,7 +97,17 @@ const StoryFilter: FunctionComponent = () => {
           ))}
         </div>
       </div>
-      <div className={styles.arrowIcon} onClick={() => rightClick()}>
+      <div
+        className={styles.arrowIcon}
+        onClick={() => rightClick()}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            rightClick();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+      >
         <ArrowRightIcon />
       </div>
       <button

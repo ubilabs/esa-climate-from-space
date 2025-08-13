@@ -144,7 +144,9 @@ const VideoJS: FunctionComponent<Props> = ({
         className="video-js vjs-big-play-centered"
         style={{ height: "100%" }}
         onPlay={(event) => onPlay(event.target as unknown as VideoJsPlayer)}
-      />
+      >
+        <track kind="captions" src={getCaptionUrl()} srclang={language} label={language} />
+      </video>
     </div>
   );
 };

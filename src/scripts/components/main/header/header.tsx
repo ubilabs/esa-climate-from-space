@@ -1,5 +1,4 @@
 import { FunctionComponent, useState } from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import config from "../../../config/main";
@@ -12,6 +11,7 @@ import { contentSelector } from "../../../selectors/content";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { appRouteSelector } from "../../../selectors/route-match";
 import { languageSelector } from "../../../selectors/language";
+import { showLayerSelector } from "../../../selectors/show-layer-selector";
 
 import { setLanguage } from "../../../reducers/language";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
@@ -29,7 +29,6 @@ import Menu from "../menu/menu";
 import Overlay from "../overlay/overlay";
 
 import styles from "./header.module.css";
-import { showLayerSelector } from "../../../selectors/show-layer-selector";
 
 const Header: FunctionComponent = () => {
   const dispatch = useThunkDispatch();
@@ -55,7 +54,7 @@ const Header: FunctionComponent = () => {
     // The app element determines the layout via grid which is why we should return a DOM element here
     // set css custom property --header-height to 0
     document.documentElement.style.setProperty("--header-height", "0px");
-    return <nav aria-disabled="true"></nav>;
+    return <nav></nav>;
   }
 
   const logoVariant = isDesktop
@@ -68,15 +67,16 @@ const Header: FunctionComponent = () => {
     <>
       <nav className={styles.header}>
         {logo && (
-          <Link to="/about">
+          <Button link="/about" ariaLabel="about">
             <EsaLogo variant={logoVariant} />
-          </Link>
+          </Button>
         )}
         {(isStoriesRoute || isDataRoute) && back_link && (
           <Button
             className={styles.backButton}
             icon={ArrowBackIcon}
             label={isMobile ? "" : "backToStories"}
+            ariaLabel={"backToStories"}
             link={category ? `/${category}` : "/"}
           />
         )}
@@ -94,6 +94,7 @@ const Header: FunctionComponent = () => {
             className={styles.button}
             id="ui-menu"
             icon={MenuIcon}
+            name={"app_menu"}
             onClick={() => setShowMenu(true)}
             hideLabelOnMobile
           />

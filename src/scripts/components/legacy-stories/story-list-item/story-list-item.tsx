@@ -45,6 +45,13 @@ const StoryListItemContent: FunctionComponent<Props> = ({
     <div
       className={classes}
       onClick={() => mode === AppRoute.Showcase && onSelectStory(story.id)}
+      onKeyDown={(event) => {
+        if (mode === AppRoute.Showcase && (event.key === "Enter" || event.key === " ")) {
+          onSelectStory(story.id);
+        }
+      }}
+      role={mode === AppRoute.Showcase ? "button" : undefined}
+      tabIndex={mode === AppRoute.Showcase ? 0 : undefined}
     >
       {selectedIndex >= 0 && (
         <div className={styles.storyNumber}>{selectedIndex + 1}</div>
