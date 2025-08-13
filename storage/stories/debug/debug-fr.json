@@ -1,4 +1,10 @@
 {
   "id": "debug",
+  "splashscreen": {
+    "description": "",
+    "location": {},
+    "markers": [],
+    "image": ""
+  },
   "content": []
 }
