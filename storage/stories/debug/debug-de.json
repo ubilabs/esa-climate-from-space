@@ -14,6 +14,7 @@
           "type": "scrollOverlay",
           "slides": [
             {
+              "url": "",
               "altText": "Im Jahr 2010 erlebte Queensland den nassesten Dezember seit Beginn der Aufzeichnungen, was zu einer längeren Periode mit ausgedehnten Überschwemmungen führte.",
               "captions": [
                 "Im Jahr 2010 erlebte Queensland den nassesten Dezember seit Beginn der Aufzeichnungen, was zu einer längeren Periode mit ausgedehnten Überschwemmungen führte."
@@ -38,6 +39,7 @@
           "type": "scrollOverlay",
           "slides": [
             {
+              "url": "",
               "altText": "Dieses Ereignis zeigt, wie verschiedene Teile des Erdsystems – Ozean, Atmosphäre und Land – und Orte, die Tausende Kilometer voneinander entfernt sind, durch den Wasserkreislauf miteinander verbunden sind.",
               "captions": [
                 "Dieses Ereignis zeigt, wie verschiedene Teile des Erdsystems – Ozean, Atmosphäre und Land – und Orte, die Tausende Kilometer voneinander entfernt sind, durch den Wasserkreislauf miteinander verbunden sind."
@@ -81,6 +83,7 @@
           "type": "scrollOverlay",
           "slides": [
             {
+              "url": "",
               "altText": "Nach Monaten mit hohen Temperaturen und geringen Niederschlägen erreichte der Wasserstand des italienischen Flusses Po im Jahr 2022 einen Rekordtiefstand. Die Dürre in Norditalien beeinträchtigte die landwirtschaftliche Produktion der Region, die häufig auf Bewässerung angewiesen ist.",
               "captions": [
                 "Nach Monaten mit hohen Temperaturen und geringen Niederschlägen erreichte der Wasserstand des italienischen Flusses Po im Jahr 2022 einen Rekordtiefstand. Die Dürre in Norditalien beeinträchtigte die landwirtschaftliche Produktion der Region, die häufig auf Bewässerung angewiesen ist."
@@ -90,6 +93,8 @@
         },
         {
           "type": "timeBlend",
+          "text": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
+          "buttonText": "Vergleichen Sie die Satellitenbilder",
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
