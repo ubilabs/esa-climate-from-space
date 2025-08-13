@@ -1,11 +1,5 @@
 {
   "id": "debug",
-  "splashscreen": {
-    "text": "# Der Wasserkreislauf \r\n\r\n  Wasser ist für unser Leben unerlässlich. Der Wasserkreislauf verbindet viele Komponenten des Klimasystems der Erde und spielt eine wichtige Rolle beim Transport von Wärme um den Planeten.",
-    "location": {},
-    "markers": [],
-    "image": "assets/story21-image10.jpg"
-  },
   "content": [
     {
       "type": "imageGallery",
@@ -15,7 +9,6 @@
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
-              "text": "",
               "altText": "Satelliten im Dienste der Moore. Dieses Mosaik, aufgenommen am 28. Mai 2018, bietet einen seltenen wolkenfreien Blick auf die weiten Ebenen des Flow Country in Schottland.",
               "captions": [
                 "Satelliten im Dienste der Moore."
@@ -23,7 +16,6 @@
             },
             {
               "url": "assets/story37-image02.jpg",
-              "text": "",
               "altText": "Satelliten im Dienste der Moore. Diese hochauflösende Landbedeckungskarte, abgeleitet aus Copernicus Sentinel-2-Daten, zeigt das Ausmaß der Moore in Violett.",
               "captions": [
                 "Ein neuer Text für die Bildunterschrift."
@@ -33,5 +25,11 @@
         }
       ]
     }
-  ]
+  ],
+  "splashscreen": {
+    "description": "# Der Wasserkreislauf \r\n\r\n  Wasser ist für unser Leben unerlässlich. Der Wasserkreislauf verbindet viele Komponenten des Klimasystems der Erde und spielt eine wichtige Rolle beim Transport von Wärme um den Planeten.",
+    "location": {},
+    "markers": [],
+    "image": "assets/story21-image10.jpg"
+  }
 }
