@@ -62,7 +62,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
     return null;
   }
 
-  const { text, image } = story.splashscreen;
+  const { description, image } = story.splashscreen;
 
   const { id } = story;
 
@@ -86,7 +86,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
         <motion.div style={{ opacity }} className={styles.contentContainer}>
           <ReactMarkdown
             className={styles.content}
-            children={text}
+            children={description}
             allowedElements={config.markdownAllowedElements}
           />
         </motion.div>
