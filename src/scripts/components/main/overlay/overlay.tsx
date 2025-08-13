@@ -40,7 +40,7 @@ const Overlay: FunctionComponent<Props> = ({
           onClick={() => dialogRef.current?.close()}
         />
       )}
-      <div className={styles.overlayContent}>{children}</div>
+      <div className={styles.overlayContent} onWheel={(e) => e.stopPropagation()}>{children}</div>
     </dialog>
   );
 };
