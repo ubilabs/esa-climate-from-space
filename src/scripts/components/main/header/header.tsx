@@ -94,7 +94,7 @@ const Header: FunctionComponent = () => {
             className={styles.button}
             id="ui-menu"
             icon={MenuIcon}
-            name={"app_menu"}
+            ariaLabel={"app_menu"}
             onClick={() => setShowMenu(true)}
             hideLabelOnMobile
           />
