@@ -6,7 +6,6 @@
   .scrollCaptionSlide {
     height: 100%;
     padding-block: 1rem;
-    margin-bottom: 1.5rem;
 
     @media screen and (--desktop-viewport) {
       display: flex;
@@ -108,6 +107,8 @@
       /* the imageContainer child can take the full width up to 1500px*/
       &:not(.scrollCaptionText + .scrollImageContainer) {
         width: min(100%, 1500px);
+        height: 100%;
+        margin-bottom: 4rem;
 
         div:first-child {
           height: 60vh;
