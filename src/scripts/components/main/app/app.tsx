@@ -56,6 +56,27 @@ const matomoInstance = createInstance({
   srcUrl: "https://matomo-ext.esa.int/matomo.js",
 });
 
+const LegacyOrRecentStory: FunctionComponent = () => {
+  const lang = useSelector(languageSelector);
+  const { currentStoryId } = useContentParams();
+
+  const { data: story } = useGetStoryQuery({
+    id: currentStoryId,
+    language: lang,
+  });
+
+  // Redux Toolkit may cache the story data, so it's essential to confirm
+  // the presence of the currentStoryId
+  if (currentStoryId && story && isLegacyStory(story)) {
+    return <LegacyStory />;
+  }
+  return (
+    <StoryProvider story={story || null}>
+      <Story />
+    </StoryProvider>
+  );
+};
+
 const MainContent: FunctionComponent<{
   children?: React.ReactNode;
 }> = ({ children }) => {
@@ -143,7 +164,7 @@ const TranslatedApp: FunctionComponent = () => {
             />
             <Route
               path={ROUTES.showcase_story.path}
-              element={<LegacyStory />}
+              element={<LegacyOrRecentStory />}
             />
             {/*  Main application routes */}
             <Route path={ROUTES.base.path} element={<MainContent />} />

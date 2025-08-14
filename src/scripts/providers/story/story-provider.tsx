@@ -1,4 +1,4 @@
-import { PropsWithChildren, useRef, RefObject } from "react";
+import { PropsWithChildren, useRef, RefObject, useCallback } from "react";
 
 import { Story } from "../../types/story";
 import { StoryContext } from "./use-story";
@@ -15,21 +15,20 @@ interface StoryProviderProps extends PropsWithChildren {
 }
 
 export function StoryProvider({ children, story }: StoryProviderProps) {
-  // const [storyElement, setStoryElement] = useState<HTMLDivElement | null>(null);
   const storyElementRef = useRef<HTMLDivElement | null>(null);
   const scrollableFormatRefs = useRef<Map<string, Element>>(null);
 
 
-  function getScrollableFormatsMap() {
+  const getScrollableFormatsMap = useCallback(() => {
     if (!scrollableFormatRefs.current) {
       // Initialize the Map on first usage.
       scrollableFormatRefs.current = new Map();
     }
     return scrollableFormatRefs.current;
-  }
+  }, []);
 
   return (
-    <StoryContext
+    <StoryContext.Provider
       value={{
         story,
         storyElementRef,
@@ -38,6 +37,6 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
       }}
     >
       {children}
-    </StoryContext>
+    </StoryContext.Provider>
   );
 }

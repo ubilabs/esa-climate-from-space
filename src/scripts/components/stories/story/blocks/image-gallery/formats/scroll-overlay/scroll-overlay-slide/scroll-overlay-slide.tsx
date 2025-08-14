@@ -12,6 +12,7 @@ import { ImageSlide } from "../../../../../../../../types/story";
 import cx from "classnames";
 
 import styles from "./scroll-overlay-slide.module.css";
+import { FormatContainer } from "../../../../../../layout/format-container/format-container";
 
 interface CaptionProps {
   caption: string;
@@ -60,6 +61,7 @@ const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
 interface Props {
   slide: ImageSlide;
   storyId: string;
+  getRefCallback: (index: number) => (element: HTMLDivElement) => void;
 }
 
 const isVideo = (url: string) => {
@@ -69,6 +71,7 @@ const isVideo = (url: string) => {
 export const ScrollOverlaySlide: FunctionComponent<Props> = ({
   slide,
   storyId,
+  getRefCallback,
 }) => {
   const assetUrl = getStoryAssetUrl(storyId, slide?.url);
   const hasAsset = assetUrl && assetUrl.length > 0;
@@ -99,7 +102,9 @@ export const ScrollOverlaySlide: FunctionComponent<Props> = ({
       </div>
       <div className={styles.captionsContainer}>
         {slide.captions.map((caption, index) => (
-          <Caption key={index} caption={caption} index={index} />
+          <div ref={getRefCallback(index)} key={index}>
+            <Caption key={index} caption={caption} index={index} />
+          </div>
         ))}
       </div>
     </div>

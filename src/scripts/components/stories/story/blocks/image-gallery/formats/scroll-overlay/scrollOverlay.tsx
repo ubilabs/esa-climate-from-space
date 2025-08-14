@@ -5,22 +5,26 @@ import { useFormat } from "../../../../../../../providers/story/format/use-forma
 import styles from "./scroll-overlay.module.css";
 import { ScrollOverlaySlide } from "./scroll-overlay-slide/scroll-overlay-slide";
 
-const ScrollOverlay: FunctionComponent<StorySectionProps> = ({ ref }) => {
+const ScrollOverlay: FunctionComponent<StorySectionProps> = ({
+  getRefCallback,
+}) => {
   const {
     content: { slides },
     storyId,
   } = useFormat();
+  console.log("ScrollOverlay", { slides });
 
   return (
-    <FormatContainer ref={ref} className={styles.scrollOverlayContainer}>
+    <div className={styles.scrollOverlayContainer}>
       {slides.map((slide, index) => (
         <ScrollOverlaySlide
+          getRefCallback={getRefCallback}
           key={index}
           storyId={storyId}
           slide={slide}
         />
       ))}
-    </FormatContainer>
+    </div>
   );
 };
 
