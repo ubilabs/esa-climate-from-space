@@ -1,13 +1,16 @@
 import { FunctionComponent } from "react";
 import { FormattedMessage } from "react-intl";
+import { useLocation } from "react-router-dom";
 
 import { ElementOptions } from "../../../types/embed-elements";
 import EmbedCheckboxList from "../embed-checkbox-list/embed-checkbox-list";
+import { parseUrl } from "../../../libs/language-url-parameter";
 import { Language } from "../../../types/language";
 import { uiEmbedElements } from "../../../config/main";
 
 import styles from "./embed-settings.module.css";
-import { useLocation } from "react-router-dom";
+
+export const autoLng = "autoLng";
 
 interface Props {
   elementsChecked: ElementOptions;
@@ -38,7 +41,7 @@ const EmbedSettings: FunctionComponent<Props> = ({
         <select
           name="language"
           id="language"
-          defaultValue="autoLng"
+          defaultValue={parseUrl() ?? autoLng}
           onChange={(event) => {
             const selectedLng = event.target.value as Language;
 
