@@ -6,8 +6,10 @@ import { StoryContext } from "./use-story";
 export interface StoryContextValue {
   story: Story | null;
   storyElementRef: RefObject<HTMLDivElement | null>;
-  scrollableFormatRefs: RefObject<Map<string, Element> | null>;
   getScrollableFormatsMap: () => Map<string, Element>;
+  setScrollableFormatRefs: (
+    key: string,
+  ) => (node: HTMLElement | null | undefined) => void;
 }
 
 interface StoryProviderProps extends PropsWithChildren {
@@ -18,7 +20,6 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
   const storyElementRef = useRef<HTMLDivElement | null>(null);
   const scrollableFormatRefs = useRef<Map<string, Element>>(null);
 
-
   const getScrollableFormatsMap = useCallback(() => {
     if (!scrollableFormatRefs.current) {
       // Initialize the Map on first usage.
@@ -27,13 +28,25 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
     return scrollableFormatRefs.current;
   }, []);
 
+  const setScrollableFormatRefs = useCallback(
+    (key: string) => (node: HTMLElement | undefined | null) => {
+      const map = getScrollableFormatsMap();
+      if (node) {
+        map.set(key, node);
+      } else {
+        map.delete(key);
+      }
+    },
+    [getScrollableFormatsMap],
+  );
+
   return (
     <StoryContext.Provider
       value={{
         story,
         storyElementRef,
-        scrollableFormatRefs,
         getScrollableFormatsMap,
+        setScrollableFormatRefs,
       }}
     >
       {children}
