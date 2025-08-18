@@ -1,8 +1,11 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, RefObject } from "react";
 import { motion, useTransform, MotionValue } from "motion/react";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 import { ImageSlide } from "../../../../../../../../types/story";
 import styles from "./blend-image.module.css";
+import cx from "classnames";
+
+import { FormatContainer } from "../../../../../../layout/format-container/format-container";
 
 export type AnimationDirection = "vertical" | "horizontal";
 
@@ -13,6 +16,8 @@ interface BlendImageProps {
   storyId: string;
   image: ImageSlide;
   animationDirection: AnimationDirection;
+  active: boolean;
+  ref?: RefObject<HTMLSpanElement>;
 }
 
 export const BlendImage: FunctionComponent<BlendImageProps> = ({
@@ -22,6 +27,8 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
   storyId,
   image: { url, altText },
   animationDirection,
+  active,
+  ref,
 }) => {
   const inputRange =
     numSlides === 1
@@ -62,6 +69,17 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
 
   return (
     <motion.li style={style} className={styles.blendItem}>
+      <span
+        aria-hidden="true"
+        ref={ref}
+        style={{
+          scrollMarginTop:
+            slideIndex === 0 ? "0px" : "calc(var(--story-height) * -1 + 1px)",
+        }}
+        className={cx(styles.sentinelElement, active && styles.inView)}
+      >
+        {slideIndex}
+      </span>
       <img
         src={getStoryAssetUrl(storyId, url)}
         alt={`Slide ${slideIndex + 1}, ${altText}`}
@@ -72,7 +90,7 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
           className={styles.blendBorder}
           style={borderStyle}
           aria-hidden="true"
-        />
+        ></motion.div>
       )}
     </motion.li>
   );

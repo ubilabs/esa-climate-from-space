@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect, useMemo, FunctionComponent } from "react";
 import { BlendImage, AnimationDirection } from "../blend-image/blend-image";
+import { useMotionValueEvent, motion } from "motion/react";
 import styles from "./blend-wrapper.module.css";
-import { FormatContainer } from "../../../../../../layout/format-container/format-container";
 import {
   ImageSlide,
   StorySectionProps,
@@ -15,66 +15,83 @@ interface BlendWrapperProps extends StorySectionProps {
 
 const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
   animationDirection,
-  ref,
+  getRefCallback,
 }) => {
   const { content, storyId } = useFormat();
   const targetRef = useRef<HTMLDivElement | null>(null);
+  // const sentinelRefs = useRef<(HTMLLIElement | null)[]>([]);
   const images: ImageSlide[] = useMemo(() => content?.slides ?? [], [content]);
   const numSlides = images.length;
+  const [activeSlideIndex, setActiveSlideIndex] = useState<number | null>(null);
 
   const { scrollYProgress } = useStoryScroll({
     target: targetRef,
     offset: ["start start", "end end"],
   });
 
-  const [description, setDescription] = useState(images[0]?.altText ?? "");
-  const [captions, setCaptions] = useState<Array<string>>(
-    images[0]?.captions ?? [],
-  );
+  // const [description, setDescription] = useState(images[0]?.altText ?? "");
+  // const [captions, setCaptions] = useState<Array<string>>(
+  //   images[0]?.captions ?? [],
+  // );
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log("latest", latest, "numSlides", numSlides);
+    setActiveSlideIndex(Math.min(Math.round(latest * numSlides), numSlides -1));
+  });
 
-  useEffect(() => {
-    return scrollYProgress.on("change", (latest) => {
-      const activeSlideIndex = Math.round(latest * numSlides);
-      const activeSlide = images[activeSlideIndex];
-      if (activeSlide && activeSlide.altText !== description) {
-        setDescription(activeSlide.altText ?? "");
-        setCaptions(activeSlide.captions ?? []);
-      }
-    });
-  }, [scrollYProgress, images, numSlides, description]);
+  // useEffect(() => {
+  //   return scrollYProgress.on("change", (latest) => {
+  //   setActiveSlideIndex(Math.round(latest * numSlides));
+  //   //   const activeSlideIndex = Math.round(latest * numSlides);
+  //   //   const activeSlide = images[activeSlideIndex];
+  //   //   if (activeSlide && activeSlide.altText !== description) {
+  //   //     setDescription(activeSlide.altText ?? "");
+  //   //     setCaptions(activeSlide.captions ?? []);
+  //   //   }
+  //   // });
+  // }, [scrollYProgress, images, numSlides, description]);
+  console.log("activeSlideIndex", activeSlideIndex);
+  //
+  const description = useMemo(() => {
+    const activeSlide = images[activeSlideIndex ?? 0];
+    return activeSlide ? activeSlide.altText : "";
+  }, [activeSlideIndex, images]);
+
+  const captions = useMemo(() => {
+    const activeSlide = images[activeSlideIndex ?? 0];
+    return activeSlide ? activeSlide.captions : [];
+  }, [activeSlideIndex, images]);
 
   if (!content || numSlides === 0) {
     return null;
   }
 
   return (
-    <FormatContainer ref={ref}>
-      <div
-        ref={targetRef}
-        className={styles.stickySectionWrapper}
-        style={{ height: `${numSlides * 100}dvh` }}
-      >
-        <div className={styles.stickyScroller}>
-          <ul className={styles.imageContainer}>
-            {images.map((image, i) => (
-              <BlendImage
-                key={i}
-                slideIndex={i}
-                scrollYProgress={scrollYProgress}
-                numSlides={numSlides}
-                storyId={storyId}
-                image={image}
-                animationDirection={animationDirection}
-              />
-            ))}
-          </ul>
-          <div className={styles.altText}>
-            <h3>{captions.join(" ")}</h3>
-            <p>{description}</p>
-          </div>
+    <div
+      ref={targetRef}
+      className={styles.stickySectionWrapper}
+      style={{ height: `calc(${numSlides} * var(--story-height))` }}
+    >
+      <div className={styles.stickyScroller}>
+        <ul className={styles.imageContainer}>
+          {images.map((image, i) => (
+            <BlendImage
+              ref={getRefCallback(i)}
+              active={activeSlideIndex === i}
+              slideIndex={i}
+              scrollYProgress={scrollYProgress}
+              numSlides={numSlides}
+              storyId={storyId}
+              image={image}
+              animationDirection={animationDirection}
+            />
+          ))}
+        </ul>
+        <div className={styles.altText}>
+          <h3>{captions.join(" ")}</h3>
+          <p>{description}</p>
         </div>
       </div>
-    </FormatContainer>
+    </div>
   );
 };
 
