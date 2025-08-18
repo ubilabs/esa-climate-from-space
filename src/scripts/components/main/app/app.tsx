@@ -72,6 +72,7 @@ const LegacyOrRecentStory: FunctionComponent = () => {
   }
   return (
     <StoryProvider story={story || null}>
+      <Header />
       <Story />
     </StoryProvider>
   );
