@@ -71,7 +71,7 @@ export const SyncStoryUrl: FunctionComponent = () => {
 
         if (mostVisibleKey && mostVisibleKey !== activeNodeKeyRef.current) {
           activeNodeKeyRef.current = mostVisibleKey;
-          const index = [...nodeMap.keys()].indexOf(mostVisibleKey);
+          const index = [...Array.from(nodeMap.keys())].sort().indexOf(mostVisibleKey);
           const newUrl = getUpdatedStoryUrl(location.pathname, index);
           navigate(newUrl);
         }
