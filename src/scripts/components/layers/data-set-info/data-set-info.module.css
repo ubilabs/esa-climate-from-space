@@ -5,6 +5,7 @@
   flex-direction: row;
   width: 100%;
   pointer-events: none;
+  z-index: 1;
 }
 .dataSetInfo > :first-child {
   justify-content: flex-start;
