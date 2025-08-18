@@ -132,6 +132,7 @@
   margin-top: -1.3125em;
   padding-right: 1em;
   transform: scale(1.2);
+  z-index: 1;
 }
 .playButton svg {
   filter: drop-shadow(3px 2px 2px rgba(16, 22, 26, 0.2));
