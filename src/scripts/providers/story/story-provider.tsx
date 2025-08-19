@@ -30,11 +30,6 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
     return scrollableFormatRefs.current;
   }, []);
 
-  useEffect(() => {
-    setIsLastNodeRegistered(false);
-    getScrollableFormatsMap().clear();
-  }, [story, getScrollableFormatsMap]);
-
   const setScrollableFormatRefs = useCallback(
     (key: string) => (node: HTMLElement | undefined | null) => {
       const map = getScrollableFormatsMap();
@@ -58,7 +53,7 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
   );
 
   return (
-    <StoryContext.Provider
+    <StoryContext
       value={{
         story,
         isLastNodeRegistered,
@@ -68,6 +63,6 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
       }}
     >
       {children}
-    </StoryContext.Provider>
+    </StoryContext>
   );
 }
