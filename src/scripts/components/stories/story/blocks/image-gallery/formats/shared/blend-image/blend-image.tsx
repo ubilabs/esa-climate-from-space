@@ -2,10 +2,9 @@ import { FunctionComponent, RefObject } from "react";
 import { motion, useTransform, MotionValue } from "motion/react";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 import { ImageSlide } from "../../../../../../../../types/story";
-import styles from "./blend-image.module.css";
 import cx from "classnames";
 
-import { FormatContainer } from "../../../../../../layout/format-container/format-container";
+import styles from "./blend-image.module.css";
 
 export type AnimationDirection = "vertical" | "horizontal";
 

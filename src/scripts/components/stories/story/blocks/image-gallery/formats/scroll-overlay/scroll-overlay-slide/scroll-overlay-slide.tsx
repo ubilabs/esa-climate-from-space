@@ -12,7 +12,6 @@ import { ImageSlide } from "../../../../../../../../types/story";
 import cx from "classnames";
 
 import styles from "./scroll-overlay-slide.module.css";
-import { FormatContainer } from "../../../../../../layout/format-container/format-container";
 
 interface CaptionProps {
   caption: string;
