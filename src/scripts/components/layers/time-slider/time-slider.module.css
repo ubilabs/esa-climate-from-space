@@ -14,6 +14,7 @@
   );
   font-size: 1em;
   user-select: none;
+  z-index: 1;
 }
 .container {
   position: relative;
