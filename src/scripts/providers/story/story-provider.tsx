@@ -1,10 +1,11 @@
-import { PropsWithChildren, useRef, RefObject, useCallback } from "react";
+import { PropsWithChildren, useRef, RefObject, useCallback, useState, useEffect } from "react";
 
 import { Story } from "../../types/story";
 import { StoryContext } from "./use-story";
 
 export interface StoryContextValue {
   story: Story | null;
+  isLastNodeRegistered: boolean;
   storyElementRef: RefObject<HTMLDivElement | null>;
   getScrollableFormatsMap: () => Map<string, Element>;
   setScrollableFormatRefs: (
@@ -19,6 +20,7 @@ interface StoryProviderProps extends PropsWithChildren {
 export function StoryProvider({ children, story }: StoryProviderProps) {
   const storyElementRef = useRef<HTMLDivElement | null>(null);
   const scrollableFormatRefs = useRef<Map<string, Element>>(null);
+  const [isLastNodeRegistered, setIsLastNodeRegistered] = useState(false);
 
   const getScrollableFormatsMap = useCallback(() => {
     if (!scrollableFormatRefs.current) {
@@ -28,6 +30,11 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
     return scrollableFormatRefs.current;
   }, []);
 
+  useEffect(() => {
+    setIsLastNodeRegistered(false);
+    getScrollableFormatsMap().clear();
+  }, [story, getScrollableFormatsMap]);
+
   const setScrollableFormatRefs = useCallback(
     (key: string) => (node: HTMLElement | undefined | null) => {
       const map = getScrollableFormatsMap();
@@ -36,14 +43,25 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
       } else {
         map.delete(key);
       }
+
+      if (story && !isLastNodeRegistered) {
+        const totalNodes = story.content.reduce(
+          (sum, current) => sum + current.blocks.length,
+          0,
+        );
+        if (map.size === totalNodes) {
+          setIsLastNodeRegistered(true);
+        }
+      }
     },
-    [getScrollableFormatsMap],
+    [getScrollableFormatsMap, story, isLastNodeRegistered],
   );
 
   return (
     <StoryContext.Provider
       value={{
         story,
+        isLastNodeRegistered,
         storyElementRef,
         getScrollableFormatsMap,
         setScrollableFormatRefs,
