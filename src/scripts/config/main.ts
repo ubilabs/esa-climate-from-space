@@ -196,7 +196,7 @@ export default {
   localStorageLanguageKey: "language",
   localStorageHasUserInteractedKey: "hasUserInteracted",
   localStorageWelcomeScreenKey: "welcomeScreenChecked",
-  delay: 1000,
+  delay: 5000,
   feedbackUrl: "https://climate.esa.int/en/helpdesk/",
   markdownAllowedElements: [
     "p",
