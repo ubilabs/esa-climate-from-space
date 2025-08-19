@@ -27,7 +27,6 @@ const StoryFooter: FunctionComponent<Props> = ({
 
   const { nextSlideLink, previousSlideLink, autoPlayLink, delay } =
     useStoryNavigation(videoDuration);
-  // console.log("nextSlideLink", nextSlideLink);
 
   const mouseMove = useMouseMove();
   const footerClasses = cx(

@@ -1,13 +1,11 @@
-import { FunctionComponent, useCallback, useEffect, useState } from "react";
+import { FunctionComponent, useEffect } from "react";
 
 import { useStory } from "../../../providers/story/use-story";
 import { useDispatch } from "react-redux";
 
-import config from "../../../config/main";
+import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
+import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
 
-import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
-
-import { SyncStoryUrl } from "../../../hooks/use-sync-story-url";
 import { FormatProvider } from "../../../providers/story/format/format-provider";
 
 import { setSelectedContentAction } from "../../../reducers/content";
@@ -22,63 +20,13 @@ import cx from "classnames";
 
 import styles from "./story.module.css";
 
-function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-async function scrollElements(
-  elements: Element[],
-  abortSignal: { aborted: boolean },
-) {
-  for (const element of elements) {
-    if (abortSignal.aborted) {
-      break;
-    }
-    element.scrollIntoView({ behavior: "smooth" });
-
-    await delay(config.delay);
-  }
-}
-
-// run it
 const Story: FunctionComponent = () => {
-  const {
-    storyElementRef,
-    story,
-    getScrollableFormatsMap,
-    setScrollableFormatRefs,
-  } = useStory();
+  const { storyElementRef, story, setScrollableFormatRefs } = useStory();
   const dispatch = useDispatch();
-  const { isShowCaseView, isPresentView } = useAppRouteFlags();
-  // const [elementCount, setElementCount] = useState(0);
 
-  // const expectedElements = story
-  //   ? (story.splashscreen ? 1 : 0) +
-  //     story.content.reduce((acc, cb) => acc + cb.blocks.length, 0)
-  //   : 0;
+  useAutoScrollInShowcase();
+  useSyncStoryUrl()
 
-  // console.log("elementCount", getScrollableFormatsMap());
-  // Callback to get a reference to each scrollable format element
-
-  useEffect(() => {
-    if (isShowCaseView || isPresentView) {
-      setTimeout(() => {
-        const elements = getScrollableFormatsMap();
-        console.log("Scrollable elements count:", elements);
-        const scrollableElements = Array.from(elements.values());
-        const abortSignal = { aborted: false };
-
-        scrollElements(scrollableElements, abortSignal);
-
-        return () => {
-          abortSignal.aborted = true;
-        };
-      }, 1000);
-    }
-  }, []);
-
-  const elements = getScrollableFormatsMap();
-  console.log("Scrollable elements count:", elements);
   useEffect(() => {
     if (!story?.id) {
       return;
@@ -131,7 +79,6 @@ const Story: FunctionComponent = () => {
           </BlockComponent>
         );
       })}
-      <SyncStoryUrl />
     </main>
   );
 };
