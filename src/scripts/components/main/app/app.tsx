@@ -56,7 +56,9 @@ const matomoInstance = createInstance({
   srcUrl: "https://matomo-ext.esa.int/matomo.js",
 });
 
-const LegacyOrRecentStory: FunctionComponent = () => {
+const StoryWrapper: FunctionComponent<{ children?: React.ReactNode }> = ({
+  children,
+}) => {
   const lang = useSelector(languageSelector);
   const { currentStoryId } = useContentParams();
 
@@ -70,41 +72,30 @@ const LegacyOrRecentStory: FunctionComponent = () => {
   if (currentStoryId && story && isLegacyStory(story)) {
     return <LegacyStory />;
   }
+
+  return <StoryProvider story={story || null}>{children}</StoryProvider>;
+};
+
+const LegacyOrRecentStory: FunctionComponent = () => {
   return (
-    <StoryProvider story={story || null}>
+    <StoryWrapper>
       <Header />
       <Story />
-    </StoryProvider>
+    </StoryWrapper>
   );
 };
 
 const MainContent: FunctionComponent<{
   children?: React.ReactNode;
 }> = ({ children }) => {
-  const lang = useSelector(languageSelector);
-  const { currentStoryId } = useContentParams();
-
-  // Handle both legacy and new stories
-  // If currentStoryId is defined, fetch the story and determine if it qualifies as a legacy story
-  const { data: story } = useGetStoryQuery({
-    id: currentStoryId,
-    language: lang,
-  });
-
-  // Redux Toolkit may cache the story data, so it's essential to confirm
-  // the presence of the currentStoryId
-  if (currentStoryId && story && isLegacyStory(story)) {
-    return <LegacyStory />;
-  }
-
   return (
     <>
-      <StoryProvider story={story || null}>
+      <StoryWrapper>
         <Header />
         {children}
         <DataViewer />
         <LayerSelector />
-      </StoryProvider>
+      </StoryWrapper>
     </>
   );
 };
