@@ -54,7 +54,7 @@ export const useAutoScrollInShowcase = () => {
 
   useEffect(() => {
     // delay execution until all DOM nodes are created
-    if ((isShowCaseView || isPresentView) && scrollableElements.length) {
+    if ((isShowCaseView) && scrollableElements.length) {
       const abortSignal = { aborted: false };
 
       (async () => {

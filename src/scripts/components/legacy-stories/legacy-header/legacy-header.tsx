@@ -3,13 +3,11 @@ import { useSelector } from "react-redux";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import { useContentParams } from "../../../hooks/use-content-params";
-import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
-
 import Button from "../../main/button/button";
 import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
 
 import styles from "./legacy-header.module.css";
+import { EsaLogo } from "../../main/icons/esa-logo";
 
 interface Props {
   backLink: string;
@@ -25,18 +23,15 @@ const LegacyHeader: FunctionComponent<Props> = ({
   backButtonId,
   children,
 }) => {
-  const { currentStoryId} = useContentParams();
-  const { isStoriesRoute} = useAppRouteFlags();
   const { back_link } = useSelector(embedElementsSelector);
 
+  const disabledEmbedLink = Boolean(back_link);
 
-  const disabledEmbedLink =
-    (isStoriesRoute && back_link) || (currentStoryId);
-
+  const appRoute = useSelector((state: any) => state.appRoute);
+  console.log("appRoute", appRoute);
   return (
     <div className={styles.header}>
-      <div className={styles.logo}>
-      </div>
+      <EsaLogo variant="logo" />
       {disabledEmbedLink && (
         <Button
           className={styles.backButton}

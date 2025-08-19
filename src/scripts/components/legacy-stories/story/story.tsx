@@ -154,6 +154,7 @@ const Story: FunctionComponent = () => {
     }
     return null;
   };
+  console.log("appRoute", appRoute);
   return (
     <>
       <Header />

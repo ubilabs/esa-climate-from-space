@@ -39,7 +39,15 @@ const Header: FunctionComponent = () => {
   const [showTooltip, setShowTooltip] = useState(Boolean(!savedLanguage));
 
   const { category } = useSelector(contentSelector);
-  const { isStoriesRoute, isDataRoute } = useAppRouteFlags();
+  const {
+    isShowCaseStoryRoute,
+    isPresentStoryRoute,
+    isStoriesRoute,
+    isDataRoute,
+    isPresentView,
+    isNavigationView,
+    isBaseRoute,
+  } = useAppRouteFlags();
 
   const { isMobile, isDesktop } = useScreenSize();
   const appRoute = useSelector(appRouteSelector);
@@ -57,11 +65,31 @@ const Header: FunctionComponent = () => {
     return <nav></nav>;
   }
 
-  const logoVariant = isDesktop
-    ? "logoWithText"
-    : isDataRoute || isStoriesRoute
-      ? "shortLogo"
-      : "logoWithText";
+  const logoVariant = (() => {
+    if (isPresentView) {
+      return "logo";
+    }
+    if (isDesktop) {
+      return "logoWithText";
+    }
+    if (isDataRoute || isStoriesRoute) {
+      return "shortLogo";
+    }
+    return "logoWithText";
+  })();
+
+  const linkPath = (() => {
+    if (isShowCaseStoryRoute) {
+      return "/showcase/";
+    }
+    if (isPresentStoryRoute) {
+      return "/present";
+    }
+    if (category) {
+      return `/${category}`;
+    }
+    return "/";
+  })();
 
   return (
     <>
@@ -71,13 +99,13 @@ const Header: FunctionComponent = () => {
             <EsaLogo variant={logoVariant} />
           </Button>
         )}
-        {(isStoriesRoute || isDataRoute) && back_link && (
+        {!isBaseRoute && !isNavigationView && back_link && (
           <Button
             className={styles.backButton}
             icon={ArrowBackIcon}
             label={isMobile ? "" : "backToStories"}
             ariaLabel={"backToStories"}
-            link={category ? `/${category}` : "/"}
+            link={linkPath}
           />
         )}
         {appRoute === AppRoute.Data && layers_menu && (

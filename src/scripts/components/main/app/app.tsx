@@ -147,7 +147,7 @@ const TranslatedApp: FunctionComponent = () => {
               path={ROUTES.present.path}
               element={<PresentationSelector />}
             />
-            <Route path={ROUTES.present_story.path} element={<LegacyStory />} />
+            <Route path={ROUTES.present_story.path} element={<LegacyOrRecentStory />} />
             <Route path={ROUTES.showcase.path} element={<ShowcaseSelector />} />
             {/* Showcase stories and story routes */}
             <Route

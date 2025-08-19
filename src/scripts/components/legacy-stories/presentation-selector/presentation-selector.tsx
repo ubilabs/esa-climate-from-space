@@ -21,8 +21,7 @@ const PresentationSelector: FunctionComponent = () => {
           backLink="/"
           backButtonId="backToDataMode"
           title={intl.formatMessage({ id: "presenter" })}
-        >
-        </LegacyHeader>
+        ></LegacyHeader>
       )}
       <StoryList route={AppRoute.Present} />
     </div>
