@@ -1,6 +1,6 @@
-import { useRef, useState, useEffect, useMemo, FunctionComponent } from "react";
+import { useRef, useState, useMemo, FunctionComponent } from "react";
 import { BlendImage, AnimationDirection } from "../blend-image/blend-image";
-import { useMotionValueEvent, motion } from "motion/react";
+import { useMotionValueEvent } from "motion/react";
 import styles from "./blend-wrapper.module.css";
 import {
   ImageSlide,
@@ -19,7 +19,6 @@ const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
 }) => {
   const { content, storyId } = useFormat();
   const targetRef = useRef<HTMLDivElement | null>(null);
-  // const sentinelRefs = useRef<(HTMLLIElement | null)[]>([]);
   const images: ImageSlide[] = useMemo(() => content?.slides ?? [], [content]);
   const numSlides = images.length;
   const [activeSlideIndex, setActiveSlideIndex] = useState<number | null>(null);
@@ -29,28 +28,12 @@ const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
     offset: ["start start", "end end"],
   });
 
-  // const [description, setDescription] = useState(images[0]?.altText ?? "");
-  // const [captions, setCaptions] = useState<Array<string>>(
-  //   images[0]?.captions ?? [],
-  // );
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("latest", latest, "numSlides", numSlides);
-    setActiveSlideIndex(Math.min(Math.round(latest * numSlides), numSlides -1));
+    setActiveSlideIndex(
+      Math.min(Math.round(latest * numSlides), numSlides - 1),
+    );
   });
 
-  // useEffect(() => {
-  //   return scrollYProgress.on("change", (latest) => {
-  //   setActiveSlideIndex(Math.round(latest * numSlides));
-  //   //   const activeSlideIndex = Math.round(latest * numSlides);
-  //   //   const activeSlide = images[activeSlideIndex];
-  //   //   if (activeSlide && activeSlide.altText !== description) {
-  //   //     setDescription(activeSlide.altText ?? "");
-  //   //     setCaptions(activeSlide.captions ?? []);
-  //   //   }
-  //   // });
-  // }, [scrollYProgress, images, numSlides, description]);
-  console.log("activeSlideIndex", activeSlideIndex);
-  //
   const description = useMemo(() => {
     const activeSlide = images[activeSlideIndex ?? 0];
     return activeSlide ? activeSlide.altText : "";
