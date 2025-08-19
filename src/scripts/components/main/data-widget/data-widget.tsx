@@ -211,7 +211,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     <>
       {isContentNavRoute ? null : (
         <>
-          {isStoriesRoute && <DataSetInfo />}
+          {!isStoriesRoute && <DataSetInfo />}
           {legend && getLegends()}
           {time_slider && <TimeSlider />}
         </>
