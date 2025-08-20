@@ -1,4 +1,4 @@
-import { FunctionComponent, RefObject } from "react";
+import { FunctionComponent, Ref, RefObject } from "react";
 import { motion, useTransform, MotionValue } from "motion/react";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 import { ImageSlide } from "../../../../../../../../types/story";
@@ -16,7 +16,7 @@ interface BlendImageProps {
   image: ImageSlide;
   animationDirection: AnimationDirection;
   active: boolean;
-  ref?: RefObject<HTMLSpanElement>;
+  ref: Ref<HTMLDivElement> | undefined;
 }
 
 export const BlendImage: FunctionComponent<BlendImageProps> = ({
@@ -68,6 +68,8 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
 
   return (
     <motion.li style={style} className={styles.blendItem}>
+      {/* This element is used to help the intersection observer keep track of which image is currently visible.
+          The image itself cannot be used because it may not always be fully in view due to the applied clip-path. */}
       <span
         aria-hidden="true"
         ref={ref}

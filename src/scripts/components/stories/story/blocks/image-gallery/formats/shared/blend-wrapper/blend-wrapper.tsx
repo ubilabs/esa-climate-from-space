@@ -63,7 +63,7 @@ const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
           {images.map((image, i) => (
             <BlendImage
               key={`${storyId}-${i}`}
-              ref={getRefCallback(i)}
+              ref={getRefCallback?.(i)}
               active={activeSlideIndex === i}
               slideIndex={i}
               scrollYProgress={scrollYProgress}

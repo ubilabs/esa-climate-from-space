@@ -35,7 +35,7 @@ export const useSyncStoryUrl = () => {
     // or if storyElementRef changes (container is ready), or story data is available.
   }, [getScrollableFormatsMap, storyElementRef, story]);
 
-  // Effect for when the url is changed
+  // Effect for when the url is changed by the user
   useEffect(() => {
     const index = extractSlideIndex(location.pathname);
     const nodeMap = getScrollableFormatsMap();
