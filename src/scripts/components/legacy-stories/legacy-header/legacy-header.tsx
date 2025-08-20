@@ -3,10 +3,8 @@ import { useSelector } from "react-redux";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
-import { useContentParams } from "../../../hooks/use-content-params";
-import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
-
 import Button from "../../main/button/button";
+import { EsaLogo } from "../../main/icons/esa-logo";
 import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
 
 import styles from "./legacy-header.module.css";
@@ -18,26 +16,21 @@ interface Props {
   children?: React.ReactElement | React.ReactElement[];
 }
 
-// LegacyHeader component is used in the old stories and navigation (prior to v.2.0.0) section of the application.
+// LegacyHeader component is used in the legacy stories (prior to v.2.0.0) as well as showcase- and present view section of the application.
 const LegacyHeader: FunctionComponent<Props> = ({
   backLink,
   title,
   backButtonId,
   children,
 }) => {
-  const { currentStoryId} = useContentParams();
-  const { isStoriesRoute} = useAppRouteFlags();
   const { back_link } = useSelector(embedElementsSelector);
 
-
-  const disabledEmbedLink =
-    (isStoriesRoute && back_link) || (currentStoryId);
+  const showBackLink = Boolean(back_link);
 
   return (
     <div className={styles.header}>
-      <div className={styles.logo}>
-      </div>
-      {disabledEmbedLink && (
+      <EsaLogo variant="logo" />
+      {showBackLink && (
         <Button
           className={styles.backButton}
           icon={ArrowBackIcon}

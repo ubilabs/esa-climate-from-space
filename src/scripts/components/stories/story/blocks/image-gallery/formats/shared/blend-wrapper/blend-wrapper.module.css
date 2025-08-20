@@ -2,7 +2,8 @@
   position: relative;
 
   .stickyScroller {
-    height: calc(100dvh - var(--header-height));
+    scroll-margin-top: calc(-2 * var(--story-height));
+    height: var(--story-height);
     position: sticky;
     top: 0;
     overflow: hidden;
@@ -53,3 +54,4 @@
     }
   }
 }
+

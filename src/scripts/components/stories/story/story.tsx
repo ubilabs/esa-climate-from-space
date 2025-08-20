@@ -1,9 +1,11 @@
-import { FunctionComponent, useCallback, useEffect } from "react";
+import { FunctionComponent, useEffect } from "react";
 
 import { useStory } from "../../../providers/story/use-story";
 import { useDispatch } from "react-redux";
 
-import { SyncStoryUrl } from "../../../hooks/use-sync-story-url";
+import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
+import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
+
 import { FormatProvider } from "../../../providers/story/format/format-provider";
 
 import { setSelectedContentAction } from "../../../reducers/content";
@@ -19,21 +21,11 @@ import cx from "classnames";
 import styles from "./story.module.css";
 
 const Story: FunctionComponent = () => {
-  const { storyElementRef, story, getScrollableFormatsMap } = useStory();
+  const { storyElementRef, story, setScrollableFormatRefs } = useStory();
   const dispatch = useDispatch();
 
-  // Callback to get a reference to each scrollable format element
-  const getRefCallback = useCallback(
-    (key: string) => (node: HTMLElement | null) => {
-      const map = getScrollableFormatsMap();
-      if (node) {
-        map.set(key, node);
-      } else {
-        map.delete(key);
-      }
-    },
-    [getScrollableFormatsMap],
-  );
+  useAutoScrollInShowcase();
+  useSyncStoryUrl()
 
   useEffect(() => {
     if (!story?.id) {
@@ -57,9 +49,12 @@ const Story: FunctionComponent = () => {
       ref={storyElementRef}
       id="story"
     >
-      {story.splashscreen && <SplashScreen ref={getRefCallback("0-0")} />}
+      {story.splashscreen && (
+        <SplashScreen ref={setScrollableFormatRefs("0-0-0")} />
+      )}
       {story.content.map((contentBlock, idx) => {
         const BlockComponent = getBlockComponent(contentBlock.type);
+
         const blockIndex = idx + 1;
 
         return (
@@ -68,16 +63,22 @@ const Story: FunctionComponent = () => {
               const FormatComponent = getFormatComponent(type);
               const formatData = contentBlock.blocks[i];
 
+              const createRefCallbackForBlock = (index: number) =>
+                setScrollableFormatRefs(`${blockIndex}-${i}-${index}`);
+
               return (
                 <FormatProvider key={i} content={formatData} storyId={story.id}>
-                  <FormatComponent ref={getRefCallback(`${blockIndex}-${i}`)} />
+                  <FormatComponent
+                    ref={setScrollableFormatRefs(`${blockIndex}-${i}`)}
+                    // should be passed via FormatProvider
+                    getRefCallback={createRefCallbackForBlock}
+                  />
                 </FormatProvider>
               );
             })}
           </BlockComponent>
         );
       })}
-      <SyncStoryUrl />
     </main>
   );
 };

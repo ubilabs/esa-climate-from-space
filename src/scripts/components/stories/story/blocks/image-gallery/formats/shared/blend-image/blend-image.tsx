@@ -1,7 +1,9 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, Ref } from "react";
 import { motion, useTransform, MotionValue } from "motion/react";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 import { ImageSlide } from "../../../../../../../../types/story";
+import cx from "classnames";
+
 import styles from "./blend-image.module.css";
 
 export type AnimationDirection = "vertical" | "horizontal";
@@ -13,6 +15,8 @@ interface BlendImageProps {
   storyId: string;
   image: ImageSlide;
   animationDirection: AnimationDirection;
+  active: boolean;
+  ref: Ref<HTMLDivElement> | undefined;
 }
 
 export const BlendImage: FunctionComponent<BlendImageProps> = ({
@@ -22,6 +26,8 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
   storyId,
   image: { url, altText },
   animationDirection,
+  active,
+  ref,
 }) => {
   const inputRange =
     numSlides === 1
@@ -62,6 +68,19 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
 
   return (
     <motion.li style={style} className={styles.blendItem}>
+      {/* This element is used to help the intersection observer keep track of which image is currently visible.
+          The image itself cannot be used because it may not always be fully in view due to the applied clip-path. */}
+      <span
+        aria-hidden="true"
+        ref={ref}
+        style={{
+          scrollMarginTop:
+            slideIndex === 0 ? "0px" : "calc(var(--story-height) * -1 + 1px)",
+        }}
+        className={cx(styles.sentinelElement, active && styles.inView)}
+      >
+        {slideIndex}
+      </span>
       <img
         src={getStoryAssetUrl(storyId, url)}
         alt={`Slide ${slideIndex + 1}, ${altText}`}
@@ -72,7 +91,7 @@ export const BlendImage: FunctionComponent<BlendImageProps> = ({
           className={styles.blendBorder}
           style={borderStyle}
           aria-hidden="true"
-        />
+        ></motion.div>
       )}
     </motion.li>
   );

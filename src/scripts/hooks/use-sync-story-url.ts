@@ -1,17 +1,18 @@
-import { FunctionComponent, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useStory } from "../providers/story/use-story";
 import { getUpdatedStoryUrl } from "../libs/get-updated-story-url";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigationType } from "react-router-dom";
 import { extractSlideIndex } from "../libs/content-url-parameter";
 import { getHashPathName } from "../libs/get-hash-path";
 
-export const SyncStoryUrl: FunctionComponent = () => {
+export const useSyncStoryUrl = () => {
   const { getScrollableFormatsMap, storyElementRef, story } = useStory();
   const activeNodeKeyRef = useRef<string | null>(null);
   const initialScrollPerformed = useRef(false); // Flag to ensure initial scroll only happens once
+  const isProgrammaticScroll = useRef(false);
 
   const location = useLocation();
-  const navigate = useNavigate();
+  const navigationType = useNavigationType();
 
   // Effect for initial scroll on page load
   useEffect(() => {
@@ -26,7 +27,7 @@ export const SyncStoryUrl: FunctionComponent = () => {
     if (initialSlideIndex > 0 && nodeMap.size > initialSlideIndex) {
       const targetNode = Array.from(nodeMap.values())[initialSlideIndex];
       if (targetNode) {
-        targetNode.scrollIntoView({ behavior: "auto", block: "start" });
+        targetNode.scrollIntoView({ behavior: "smooth", block: "start" });
         initialScrollPerformed.current = true; // Mark as performed
       }
     }
@@ -34,58 +35,107 @@ export const SyncStoryUrl: FunctionComponent = () => {
     // or if storyElementRef changes (container is ready), or story data is available.
   }, [getScrollableFormatsMap, storyElementRef, story]);
 
+  // Effect for when the url is changed by the user
+  useEffect(() => {
+    const index = extractSlideIndex(location.pathname);
+    const nodeMap = getScrollableFormatsMap();
+    const targetNode = Array.from(nodeMap.values())[index];
+    if (targetNode && navigationType !== "PUSH") {
+      targetNode.scrollIntoView({ behavior: "smooth", block: "start" });
+      initialScrollPerformed.current = true; // Mark as performed
+      setTimeout(() => {
+        isProgrammaticScroll.current = false;
+      }, 1000);
+    }
+  }, [location, getScrollableFormatsMap, navigationType]);
+
   // Effect for Intersection Observer to update URL on scroll
   useEffect(() => {
     const container = storyElementRef.current;
     const nodeMap = getScrollableFormatsMap();
 
-    if (!container || !story || nodeMap.size === 0) {
-      return;
-    }
+    if (!container || !story || nodeMap.size === 0) return;
 
-    // Track the intersection ratio for each node's key.
-    const intersectingNodeKeys = new Map<string, number>();
+    // Precompute lookups once.
+    const nodeToKey = new WeakMap<Element, string>();
+    nodeMap.forEach((node, key) => nodeToKey.set(node, key));
+
+    const sortedKeys = Array.from(nodeMap.keys()).sort(); // stable order for index lookup
+    const indexByKey = new Map<string, number>();
+    for (let i = 0; i < sortedKeys.length; i++)
+      indexByKey.set(sortedKeys[i], i);
+
+    // Track current intersections.
+    const intersecting = new Map<string, number>();
+
+    let frameRequested = false;
+    const applyMostVisible = () => {
+      frameRequested = false;
+      if (isProgrammaticScroll.current || intersecting.size === 0) return;
+
+      // Find key with max intersection ratio.
+      let bestKey: string | null = null;
+      let bestRatio = -1;
+      for (const [key, ratio] of intersecting) {
+        if (ratio > bestRatio) {
+          bestRatio = ratio;
+          bestKey = key;
+        }
+      }
+      if (!bestKey || bestKey === activeNodeKeyRef.current) return;
+
+      activeNodeKeyRef.current = bestKey;
+
+      const idx = indexByKey.get(bestKey);
+      if (typeof idx === "number") {
+        // Keeping the URL parameters intact is crucial to prevent the <UrlSync> useEffect
+        // from being triggered redundantly, which can cause the URL to update again.
+        const newUrl =
+          getUpdatedStoryUrl(location.pathname, idx) +
+          location.search +
+          location.hash;
+        // Directly using window.history.pushState for updating the URL
+        // This approach is chosen to avoid triggering a re-render
+        // The URL update here is solely for sharing purposes and does not involve state management
+        window.history.pushState(null, "", `#${newUrl}`);
+      }
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          const key = [...nodeMap.entries()].find(
-            ([, node]) => node === entry.target,
-          )?.[0];
-
-          if (!key) return;
+        for (const entry of entries) {
+          const key = nodeToKey.get(entry.target);
+          if (!key) continue;
 
           if (entry.isIntersecting) {
-            intersectingNodeKeys.set(key, entry.intersectionRatio);
+            intersecting.set(key, entry.intersectionRatio);
           } else {
-            intersectingNodeKeys.delete(key);
+            intersecting.delete(key);
           }
-        });
+        }
 
-        if (intersectingNodeKeys.size === 0) return;
-
-        // Find the key with the highest intersection ratio.
-        const mostVisibleKey = [...intersectingNodeKeys.entries()].reduce(
-          (max, entry) => (entry[1] > max[1] ? entry : max),
-        )[0];
-
-        if (mostVisibleKey && mostVisibleKey !== activeNodeKeyRef.current) {
-          activeNodeKeyRef.current = mostVisibleKey;
-          const index = [...nodeMap.keys()].indexOf(mostVisibleKey);
-          const newUrl = getUpdatedStoryUrl(location.pathname, index);
-          navigate(newUrl);
+        // Batch compute/navigation to next frame.
+        if (!frameRequested) {
+          frameRequested = true;
+          requestAnimationFrame(applyMostVisible);
         }
       },
       {
         root: container,
-        threshold: 0.1,
+        // A few thresholds make ratios more stable without being noisy.
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
       },
     );
 
     nodeMap.forEach((node) => observer.observe(node));
 
     return () => observer.disconnect();
-  }, [story, storyElementRef, getScrollableFormatsMap, location, navigate]);
-
-  return null;
+  }, [
+    story,
+    storyElementRef,
+    getScrollableFormatsMap,
+    location.pathname,
+    location.search,
+    location.hash,
+  ]);
 };
