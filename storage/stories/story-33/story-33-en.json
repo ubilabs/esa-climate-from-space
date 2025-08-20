@@ -1,32 +1,42 @@
 {
   "id": "story-33",
-  "slides": [
+  "splashscreen": {
+    "description": "# Urban Sprawl\n\n30 years of Cairo: Egypt’s sprawling capital. Satellite-based images are useful in monitoring large scale urban development. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission.",
+    "image": "assets/story33-image04.jpg"
+  },
+  "content": [
     {
-      "type": "splashscreen",
-      "text": "# Urban Sprawl\r\n\r\nCairo, Egypt",
-      "shortText": "# Urban Sprawl\r\n\r\nCairo, Egypt",
-      "images": [
-        "assets/story33-image04.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
-      "shortText": "## Cairo, Urban Sprawl\r\n\r\n30 years of Cairo: Egypt’s sprawling capital. The first image was captured by the US Landsat-5 in 1988, the second in 2018 and the third in 2021 both from the Copernicus Sentinel-2 mission. Satellite-based images are useful in monitoring large scale urban development. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018), processed by ESA. USGS/ESA",
-      "images": [
-        "assets/story33-image01.jpg",
-        "assets/story33-image02.jpg",
-        "assets/story33-image03.jpg"
-      ],
-      "imageCaptions": [
-        "This image was acquired on 14 August 1988 and shows the city of Cairo and its surroundings more than 30 years ago",
-        "This image was acquired on 2 August 2018 and shows the city of Cairo and its surroundings",
-        "This image was acquired on 31 August 2021 and shows the city of Cairo and its surroundings"
-      ],
-      "imageFits": [
-        "cover",
-        "cover",
-        "cover"
+      "type": "imageGallery",
+      "blocks": [
+        {
+          "type": "timeBlend",
+          "slides": [
+            {
+              "url": "assets/story33-image01.jpg",
+              "description": "This image was acquired on 14 August 1988 and shows the city of Cairo and its surroundings more than 30 years ago (USGS/ESA)",
+              "altText": "This image was acquired on 14 August 1988 and shows the city of Cairo and its surroundings more than 30 years ago (USGS/ESA)",
+              "captions": [
+                1989
+              ]
+            },
+            {
+              "url": "assets/story33-image02.jpg",
+              "description": "This image was acquired on 2 August 2018 and shows the city of Cairo and its surroundings (contains modified Copernicus Sentinel data (2018))",
+              "altText": "This image was acquired on 2 August 2018 and shows the city of Cairo and its surroundings (contains modified Copernicus Sentinel data (2018))",
+              "captions": [
+                2018
+              ]
+            },
+            {
+              "url": "assets/story33-image03.jpg",
+              "description": "This image was acquired on 14 August 1988 and shows the city of Cairo and its surroundings more than 30 years ago (USGS/ESA)",
+              "altText": "This image was acquired on 31 August 2021 and shows the city of Cairo and its surroundings (contains modified Copernicus Sentinel data (2021))",
+              "captions": [
+                2021
+              ]
+            }
+          ]
+        }
       ]
     }
   ]
