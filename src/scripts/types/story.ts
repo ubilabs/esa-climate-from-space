@@ -66,7 +66,9 @@ export type ImageSlide = {
   fit?: "cover" | "contain";
 };
 
-export type StorySectionProps = {} & ComponentProps<"div">;
+export type StorySectionProps = {
+  getRefCallback?: (index: number) => (node: HTMLElement | null) => void;
+} & ComponentProps<"div">;
 
 export const imageGalleryFormatMap: Record<
   ImageGalleryFormat["type"],

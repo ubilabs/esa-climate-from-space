@@ -56,14 +56,12 @@ const matomoInstance = createInstance({
   srcUrl: "https://matomo-ext.esa.int/matomo.js",
 });
 
-const MainContent: FunctionComponent<{
-  children?: React.ReactNode;
-}> = ({ children }) => {
+const StoryWrapper: FunctionComponent<{ children?: React.ReactNode }> = ({
+  children,
+}) => {
   const lang = useSelector(languageSelector);
   const { currentStoryId } = useContentParams();
 
-  // Handle both legacy and new stories
-  // If currentStoryId is defined, fetch the story and determine if it qualifies as a legacy story
   const { data: story } = useGetStoryQuery({
     id: currentStoryId,
     language: lang,
@@ -75,14 +73,29 @@ const MainContent: FunctionComponent<{
     return <LegacyStory />;
   }
 
+  return <StoryProvider story={story || null}>{children}</StoryProvider>;
+};
+
+const LegacyOrRecentStory: FunctionComponent = () => {
+  return (
+    <StoryWrapper>
+      <Header />
+      <Story />
+    </StoryWrapper>
+  );
+};
+
+const MainContent: FunctionComponent<{
+  children?: React.ReactNode;
+}> = ({ children }) => {
   return (
     <>
-      <StoryProvider story={story || null}>
+      <StoryWrapper>
         <Header />
         {children}
         <DataViewer />
         <LayerSelector />
-      </StoryProvider>
+      </StoryWrapper>
     </>
   );
 };
@@ -134,7 +147,7 @@ const TranslatedApp: FunctionComponent = () => {
               path={ROUTES.present.path}
               element={<PresentationSelector />}
             />
-            <Route path={ROUTES.present_story.path} element={<LegacyStory />} />
+            <Route path={ROUTES.present_story.path} element={<LegacyOrRecentStory />} />
             <Route path={ROUTES.showcase.path} element={<ShowcaseSelector />} />
             {/* Showcase stories and story routes */}
             <Route
@@ -143,7 +156,7 @@ const TranslatedApp: FunctionComponent = () => {
             />
             <Route
               path={ROUTES.showcase_story.path}
-              element={<LegacyStory />}
+              element={<LegacyOrRecentStory />}
             />
             {/*  Main application routes */}
             <Route path={ROUTES.base.path} element={<MainContent />} />

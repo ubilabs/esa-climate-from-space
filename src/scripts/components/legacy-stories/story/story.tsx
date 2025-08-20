@@ -154,6 +154,7 @@ const Story: FunctionComponent = () => {
     }
     return null;
   };
+
   return (
     <>
       <Header />

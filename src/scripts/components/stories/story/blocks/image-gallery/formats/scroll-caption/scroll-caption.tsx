@@ -11,13 +11,18 @@ import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls
 
 import styles from "./scroll-caption.module.css";
 
-const ScrollCaption: FunctionComponent<StorySectionProps> = ({ ref }) => {
+const ScrollCaption: FunctionComponent<StorySectionProps> = ({
+  getRefCallback,
+}) => {
   const { content, storyId } = useFormat();
-
   return (
-    <FormatContainer ref={ref} className={styles.scrollCaptionBlock}>
+    <div className={styles.scrollCaptionBlock}>
       {content.slides.map((slide, index) => (
-        <div className={styles.scrollCaptionSlide} key={index}>
+        <FormatContainer
+          ref={getRefCallback?.(index)}
+          className={styles.scrollCaptionSlide}
+          key={index}
+        >
           {slide.description && (
             <ReactMarkdown
               children={slide.description}
@@ -34,9 +39,9 @@ const ScrollCaption: FunctionComponent<StorySectionProps> = ({ ref }) => {
               allowedElements={config.markdownAllowedElements}
             />
           </div>
-        </div>
+        </FormatContainer>
       ))}
-    </FormatContainer>
+    </div>
   );
 };
 

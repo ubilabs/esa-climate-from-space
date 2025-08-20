@@ -1,4 +1,4 @@
-import { PropsWithChildren, Ref } from "react";
+import { PropsWithChildren, Ref, CSSProperties } from "react";
 
 import cx from "classnames";
 
@@ -9,12 +9,17 @@ interface Props extends PropsWithChildren {
   // make sure ref is passed as a prop
   // This is necessary, otherwise the SyncStoryUrl component will not detect the section
   ref: Ref<HTMLDivElement> | undefined;
+  style?: CSSProperties;
 }
 
 // This component is used to wrap each format in the story
-export const FormatContainer = ({ children, className, ref }: Props) => {
+export const FormatContainer = ({ children, className, ref, style }: Props) => {
   return (
-    <section ref={ref} className={cx(styles.formatSection, className)}>
+    <section
+      ref={ref}
+      className={cx(styles.formatSection, className)}
+      style={style}
+    >
       {children}
     </section>
   );
