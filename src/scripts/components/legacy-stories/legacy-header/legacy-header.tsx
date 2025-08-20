@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
 import Button from "../../main/button/button";
+import { EsaLogo } from "../../main/icons/esa-logo";
 import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
 
 import styles from "./legacy-header.module.css";
-import { EsaLogo } from "../../main/icons/esa-logo";
 
 interface Props {
   backLink: string;
@@ -16,7 +16,7 @@ interface Props {
   children?: React.ReactElement | React.ReactElement[];
 }
 
-// LegacyHeader component is used in the old stories and navigation (prior to v.2.0.0) section of the application.
+// LegacyHeader component is used in the legacy stories (prior to v.2.0.0) as well as showcase- and present view section of the application.
 const LegacyHeader: FunctionComponent<Props> = ({
   backLink,
   title,
@@ -27,8 +27,6 @@ const LegacyHeader: FunctionComponent<Props> = ({
 
   const disabledEmbedLink = Boolean(back_link);
 
-  const appRoute = useSelector((state: any) => state.appRoute);
-  console.log("appRoute", appRoute);
   return (
     <div className={styles.header}>
       <EsaLogo variant="logo" />

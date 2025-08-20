@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 
 import StoryList from "../story-list/story-list";
 import LegacyHeader from "../legacy-header/legacy-header";
-import { ArrowBackIcon } from "../../main/icons/arrow-back-icon";
 import { PlayIcon } from "../../main/icons/play-icon";
 import Button from "../../main/button/button";
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
@@ -13,7 +12,6 @@ import { embedElementsSelector } from "../../../selectors/embed-elements-selecto
 import { AppRoute } from "../../../types/app-routes";
 
 import styles from "./showcase-selector.module.css";
-import { EsaLogo } from "../../main/icons/esa-logo";
 
 const ShowcaseSelector: FunctionComponent = () => {
   const params = useParams<{ storyIds?: string }>();
