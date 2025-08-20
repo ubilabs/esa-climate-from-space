@@ -52,9 +52,13 @@ export const useAutoScrollInShowcase = () => {
 
   useEffect(
     () => {
-      if (isShowCaseView || isPresentView) {
-        const elements = getScrollableFormatsMap();
-        const scrollableElements = Array.from(elements.values());
+      // delay execution until all DOM nodes are created
+      if ((isShowCaseView || isPresentView) && isLastNodeRegistered) {
+
+        const scrollableElements = Array.from(
+          getScrollableFormatsMap().values(),
+        );
+
         const abortSignal = { aborted: false };
 
         (async () => {
@@ -72,8 +76,6 @@ export const useAutoScrollInShowcase = () => {
         };
       }
     },
-    // navigate is missing in the dependency array to avoid unnecessary re-renders. Ideally, we would get it from a stable context.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       isLastNodeRegistered,
       isShowCaseView,
@@ -81,6 +83,7 @@ export const useAutoScrollInShowcase = () => {
       getScrollableFormatsMap,
       storyIndex,
       storyIds,
+      navigate,
     ],
   );
 };

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useStory } from "../providers/story/use-story";
 import { getUpdatedStoryUrl } from "../libs/get-updated-story-url";
-import { useLocation, useNavigate, useNavigationType } from "react-router-dom";
+import { useLocation, useNavigationType } from "react-router-dom";
 import { extractSlideIndex } from "../libs/content-url-parameter";
 import { getHashPathName } from "../libs/get-hash-path";
 
@@ -12,7 +12,6 @@ export const useSyncStoryUrl = () => {
   const isProgrammaticScroll = useRef(false);
 
   const location = useLocation();
-  const navigate = useNavigate();
   const navigationType = useNavigationType();
 
   // Effect for initial scroll on page load
@@ -95,12 +94,10 @@ export const useSyncStoryUrl = () => {
           getUpdatedStoryUrl(location.pathname, idx) +
           location.search +
           location.hash;
-
-        // Only navigate if URL would actually change.
-        const current = location.pathname + location.search + location.hash;
-        if (newUrl !== current) {
-          navigate(newUrl, { replace: false });
-        }
+        // Directly using window.history.pushState for updating the URL
+        // This approach is chosen to avoid triggering a re-render
+        // The URL update here is solely for sharing purposes and does not involve state management
+        window.history.pushState(null, "", `#${newUrl}`);
       }
     };
 
@@ -133,13 +130,11 @@ export const useSyncStoryUrl = () => {
     nodeMap.forEach((node) => observer.observe(node));
 
     return () => observer.disconnect();
-    // Narrow deps to avoid unnecessary re-subscribes.
   }, [
     story,
     storyElementRef,
     getScrollableFormatsMap,
     location.pathname,
-    navigate,
     location.search,
     location.hash,
   ]);
