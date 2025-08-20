@@ -36,7 +36,11 @@ const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
 
   const description = useMemo(() => {
     const activeSlide = images[activeSlideIndex ?? 0];
-    return activeSlide ? activeSlide.altText : "";
+    return activeSlide
+      ? activeSlide.description
+        ? activeSlide.description
+        : activeSlide.altText
+      : "";
   }, [activeSlideIndex, images]);
 
   const captions = useMemo(() => {
