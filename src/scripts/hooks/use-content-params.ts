@@ -1,59 +1,72 @@
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { State } from "../reducers";
 import { selectedStorySelector } from "../selectors/story/selected";
 import { contentSelector } from "../selectors/content";
+import { useMemo } from "react";
 
 interface StoryParams {
   category: string;
   storyId: string;
   slideIndex: string;
+  storyIds?: undefined;
+  storyIndex: undefined;
 }
 
 interface ShowCaseParams {
+  storyId: undefined;
   category: string;
   storyIds: string;
   storyIndex: string;
   slideIndex: string;
 }
 
-function isShowCaseParams(
-  params: Partial<StoryParams> | Partial<ShowCaseParams>,
-): params is Partial<ShowCaseParams> {
-  return (params as Partial<ShowCaseParams>).storyIds !== undefined;
+function isShowCaseParams(storyIds: string | undefined) {
+  return (storyIds as Partial<ShowCaseParams>) !== undefined;
 }
 
 export const useContentParams = () => {
+  const {
+    storyIds,
+    storyId: rawStoryId,
+    category: paramCategory,
+    slideIndex: paramSlideIndex,
+    storyIndex: paramStoryIndex,
+  } = useParams<Partial<StoryParams> | Partial<ShowCaseParams>>();
 
-  const params = useParams<Partial<StoryParams> | Partial<ShowCaseParams>>();
-  const storyIds = isShowCaseParams(params) && params.storyIds
-    ? params.storyIds.split("&")
-    : params.storyId ? [params.storyId] : [];
+  const processedStoryIds = useMemo(() => {
+    if (isShowCaseParams(storyIds) && storyIds) {
+      return storyIds.split("&");
+    } else if (rawStoryId) {
+      return [rawStoryId];
+    }
+    return [];
+  }, [storyIds, rawStoryId]);
 
-  const storyIndex = isShowCaseParams(params) && params.storyIndex
-    ? parseInt(params.storyIndex, 10)
-    : null;
+  const storyIndex = useMemo(() => {
+    return paramStoryIndex ? parseInt(paramStoryIndex, 10) : null;
+  }, [paramStoryIndex]);
 
-  const slideIndex = params.slideIndex
-    ? parseInt(params.slideIndex, 10)
-    : null;
-  const currentStoryId = storyIds[storyIndex || 0];
+  const slideIndex = useMemo(() => {
+    return paramSlideIndex ? parseInt(paramSlideIndex, 10) : null;
+  }, [paramSlideIndex]);
+
+  const currentStoryId = useMemo(() => {
+    return processedStoryIds[storyIndex || 0];
+  }, [processedStoryIds, storyIndex]);
 
   const selectedStory = useSelector((state: State) =>
     selectedStorySelector(state, currentStoryId),
   );
 
-  // Get initial category from URL params, or use null if not present
-  const initialCategory = params.category || null;
+  const initialCategory = paramCategory || null;
 
-  // Get persisted category from the Redux store
-  const {category: persistedCategory} = useSelector(contentSelector)
+  const { category: persistedCategory } = useSelector(contentSelector);
 
-  // Use the URL category if available, otherwise fallback to persisted category
-  const  category  =  initialCategory || persistedCategory || undefined;
+  const category = initialCategory || persistedCategory || undefined;
 
   return {
-    storyIds,
+    storyIds: processedStoryIds,
     storyIndex,
     slideIndex,
     currentStoryId,
