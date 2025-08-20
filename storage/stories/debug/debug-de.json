@@ -2,8 +2,6 @@
   "id": "debug",
   "splashscreen": {
     "description": "# Der Wasserkreislauf \r\n\r\n  Wasser ist für unser Leben unerlässlich. Der Wasserkreislauf verbindet viele Komponenten des Klimasystems der Erde und spielt eine wichtige Rolle beim Transport von Wärme um den Planeten.",
-    "location": {},
-    "markers": [],
     "image": "assets/story21-image10.jpg"
   },
   "content": [
@@ -70,7 +68,7 @@
             },
             {
               "url": "assets/story21-image12.jpg",
-              "description": "## New South Wales, Australien \r\n\r\n Copernicus Sentinel-1 Radaraufnahmen vom 7. und 19. März 2021 zeigen ausgedehnte überschwemmte Gebiete in Blau. Gebiete, die im Vorjahr durch Waldbrände verbrannt wurden, sind in Braun dargestellt.           ",
+              "description": "## New South Wales, Australien \r\n\r\n Copernicus Sentinel-1 Radaraufnahmen vom 7. und 19. März 2021 zeigen ausgedehnte überschwemmte Gebiete in Blau. Gebiete, die im Vorjahr durch Waldbrände verbrannt wurden, sind in Braun dargestellt.",
               "altText": "New South Wales, Australien",
               "captions": [
                 "### Bildunterschrift",
@@ -97,29 +95,37 @@
             {
               "url": "assets/story37-image01.jpg",
               "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": ["Wolkenfreier Blick auf die Landschaft"]
+              "captions": [
+                "Wolkenfreier Blick auf die Landschaft"
+              ]
             },
             {
               "url": "assets/story37-image02.jpg",
               "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["Satellites for peat's sake. 2"]
+              "captions": [
+                "Satellites for peat's sake. 2"
+              ]
             }
           ]
         },
         {
           "type": "compareMode",
-          "description": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
+          "text": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
           "buttonText": "Vergleichen Sie die Satellitenbilder",
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
               "altText": "Satelliten im Dienste der Moore. Dieses Mosaik, aufgenommen am 28. Mai 2018, bietet einen seltenen wolkenfreien Blick auf die weiten Ebenen des Flow Country in Schottland.",
-              "captions": ["Satelliten im Dienste der Moore."]
+              "captions": [
+                "Satelliten im Dienste der Moore."
+              ]
             },
             {
               "url": "assets/story37-image02.jpg",
               "altText": "Satelliten im Dienste der Moore. Diese hochauflösende Landbedeckungskarte, abgeleitet aus Copernicus Sentinel-2-Daten, zeigt das Ausmaß der Moore in Violett.",
-              "captions": ["Ein neuer Text für die Bildunterschrift."]
+              "captions": [
+                "Ein neuer Text für die Bildunterschrift."
+              ]
             }
           ]
         }
