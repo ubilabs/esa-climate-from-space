@@ -1,9 +1,4 @@
-import {
-  PropsWithChildren,
-  useRef,
-  RefObject,
-  useCallback,
-} from "react";
+import { PropsWithChildren, useRef, RefObject, useCallback } from "react";
 
 import { Story } from "../../types/story";
 import { StoryContext } from "./use-story";

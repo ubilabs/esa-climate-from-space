@@ -14,9 +14,12 @@ export function useAppRouteFlags() {
     appRoute === AppRoute.ShowcaseStory ||
     appRoute === AppRoute.ShowcaseStories;
 
+  const isShowCaseStoryRoute = appRoute === AppRoute.ShowcaseStory;
+
   const isPresentView =
-    appRoute === AppRoute.Present ||
-    appRoute === AppRoute.PresentStory
+    appRoute === AppRoute.Present || appRoute === AppRoute.PresentStory;
+
+  const isPresentStoryRoute = appRoute === AppRoute.PresentStory;
 
   const isContentNavRoute = appRoute === AppRoute.NavContent;
 
@@ -28,6 +31,8 @@ export function useAppRouteFlags() {
   const isBaseRoute = appRoute === AppRoute.Base;
 
   return {
+    isPresentStoryRoute,
+    isShowCaseStoryRoute,
     isContentNavRoute,
     isStoriesRoute,
     isBaseRoute,
