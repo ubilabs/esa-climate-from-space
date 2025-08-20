@@ -25,12 +25,12 @@ const LegacyHeader: FunctionComponent<Props> = ({
 }) => {
   const { back_link } = useSelector(embedElementsSelector);
 
-  const disabledEmbedLink = Boolean(back_link);
+  const showBackLink = Boolean(back_link);
 
   return (
     <div className={styles.header}>
       <EsaLogo variant="logo" />
-      {disabledEmbedLink && (
+      {showBackLink && (
         <Button
           className={styles.backButton}
           icon={ArrowBackIcon}
