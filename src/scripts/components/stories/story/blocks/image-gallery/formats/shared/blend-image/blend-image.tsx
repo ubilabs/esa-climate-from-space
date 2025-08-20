@@ -1,4 +1,4 @@
-import { FunctionComponent, Ref, RefObject } from "react";
+import { FunctionComponent, Ref } from "react";
 import { motion, useTransform, MotionValue } from "motion/react";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 import { ImageSlide } from "../../../../../../../../types/story";
