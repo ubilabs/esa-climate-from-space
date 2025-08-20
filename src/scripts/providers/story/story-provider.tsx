@@ -1,11 +1,15 @@
-import { PropsWithChildren, useRef, RefObject, useCallback, useState } from "react";
+import {
+  PropsWithChildren,
+  useRef,
+  RefObject,
+  useCallback,
+} from "react";
 
 import { Story } from "../../types/story";
 import { StoryContext } from "./use-story";
 
 export interface StoryContextValue {
   story: Story | null;
-  isLastNodeRegistered: boolean;
   storyElementRef: RefObject<HTMLDivElement | null>;
   getScrollableFormatsMap: () => Map<string, Element>;
   setScrollableFormatRefs: (
@@ -20,7 +24,6 @@ interface StoryProviderProps extends PropsWithChildren {
 export function StoryProvider({ children, story }: StoryProviderProps) {
   const storyElementRef = useRef<HTMLDivElement | null>(null);
   const scrollableFormatRefs = useRef<Map<string, Element>>(null);
-  const [isLastNodeRegistered, setIsLastNodeRegistered] = useState(false);
 
   const getScrollableFormatsMap = useCallback(() => {
     if (!scrollableFormatRefs.current) {
@@ -38,25 +41,14 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
       } else {
         map.delete(key);
       }
-
-      if (story && !isLastNodeRegistered) {
-        const totalNodes = story.content.reduce(
-          (sum, current) => sum + current.blocks.length,
-          0,
-        );
-        if (map.size === totalNodes) {
-          setIsLastNodeRegistered(true);
-        }
-      }
     },
-    [getScrollableFormatsMap, story, isLastNodeRegistered],
+    [getScrollableFormatsMap],
   );
 
   return (
     <StoryContext
       value={{
         story,
-        isLastNodeRegistered,
         storyElementRef,
         getScrollableFormatsMap,
         setScrollableFormatRefs,

@@ -45,45 +45,39 @@ async function scrollElements(
 }
 
 export const useAutoScrollInShowcase = () => {
-  const { getScrollableFormatsMap, isLastNodeRegistered } = useStory();
+  const { getScrollableFormatsMap } = useStory();
   const { isShowCaseView, isPresentView } = useAppRouteFlags();
   const navigate = useNavigate();
   const { storyIds, storyIndex } = useContentParams();
 
-  useEffect(
-    () => {
-      // delay execution until all DOM nodes are created
-      if ((isShowCaseView || isPresentView) && isLastNodeRegistered) {
+  const scrollableElements = Array.from(getScrollableFormatsMap().values());
 
-        const scrollableElements = Array.from(
-          getScrollableFormatsMap().values(),
+  useEffect(() => {
+    // delay execution until all DOM nodes are created
+    if ((isShowCaseView || isPresentView) && scrollableElements.length) {
+      const abortSignal = { aborted: false };
+
+      (async () => {
+        await scrollElements(
+          scrollableElements,
+          abortSignal,
+          storyIndex,
+          storyIds,
+          navigate,
         );
+      })();
 
-        const abortSignal = { aborted: false };
-
-        (async () => {
-          await scrollElements(
-            scrollableElements,
-            abortSignal,
-            storyIndex,
-            storyIds,
-            navigate,
-          );
-        })();
-
-        return () => {
-          abortSignal.aborted = true;
-        };
-      }
-    },
-    [
-      isLastNodeRegistered,
-      isShowCaseView,
-      isPresentView,
-      getScrollableFormatsMap,
-      storyIndex,
-      storyIds,
-      navigate,
-    ],
-  );
+      return () => {
+        abortSignal.aborted = true;
+      };
+    }
+  }, [
+    isShowCaseView,
+    isPresentView,
+    getScrollableFormatsMap,
+    storyIndex,
+    storyIds,
+    navigate,
+    scrollableElements,
+  ]);
 };
