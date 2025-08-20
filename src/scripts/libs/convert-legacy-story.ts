@@ -7,7 +7,7 @@ import {
 } from "../types/gallery-item";
 import { LegacySlide, LegacyStory } from "../types/legacy-story";
 import { SlideType } from "../types/slide-type";
-import { Story } from "../types/story";
+import { LegacyStory } from "../types/story";
 
 const getGalleryItems = (
   slide: LegacySlide,
@@ -68,7 +68,7 @@ const getGalleryItems = (
  * @param story Legacy story object
  * @returns Story object
  */
-export const convertLegacyStory = (story: LegacyStory): Story => ({
+export const convertLegacyStory = (story: LegacyStory): LegacyStory => ({
   id: story.id,
   slides: story.slides.map((slide) => ({
     text: slide.text,

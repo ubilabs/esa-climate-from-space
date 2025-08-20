@@ -155,7 +155,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   };
 
   // Calculate final rotation offset
-  const rotationOffset = getShortestRotation(currentRotation, targetRotation);
+  const rotationOffset =
+    getShortestRotation(currentRotation, targetRotation) - (isMobile ? 0 : 90);
 
   // Handle showing tooltip for both mouse events and keyboard focus
   const handleShowTooltip = (
@@ -353,7 +354,6 @@ A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
                 tabIndex={0}
                 role="button"
                 aria-label={`${Object.keys(arcs[index])[0]} category`}
-                aria-selected={isCurrentlySelected}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();

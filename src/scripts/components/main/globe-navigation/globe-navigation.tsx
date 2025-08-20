@@ -100,8 +100,16 @@ const GlobeNavigation: FunctionComponent = () => {
       />
       <div
         className={styles.compass}
+        // id is used in data-widget.tsx to identify compass element
         id="ui-compass"
         onClick={() => dispatch(setFlyTo({ ...defaultView }))}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            dispatch(setFlyTo({ ...defaultView }));
+          }
+        }}
+        role="button"
+        tabIndex={0}
       >
         <CompassIcon />
       </div>

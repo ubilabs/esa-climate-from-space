@@ -1,14 +1,12 @@
 import { FunctionComponent } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AboutProject from "../about-project/about-project";
 import Overlay from "../overlay/overlay";
 
 const AboutProjectOverlay: FunctionComponent = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  return (
-    <Overlay onClose={() => history.push("/")}>{<AboutProject />}</Overlay>
-  );
+  return <Overlay onClose={() => navigate(-1)}>{<AboutProject />}</Overlay>;
 };
 
 export default AboutProjectOverlay;

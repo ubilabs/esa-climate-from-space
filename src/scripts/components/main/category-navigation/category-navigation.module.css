@@ -39,7 +39,6 @@
   overflow: hidden;
 
   @media screen and (--desktop-viewport) {
-    margin-right: var(--spacing);
     clip-path: inset(0 100% 0 0);
     /* On desktop, don't clip the top */
   }
@@ -107,6 +106,8 @@
   opacity: 0;
 
   @media screen and (--desktop-viewport) {
+    padding-bottom: 2rem;
+    padding-right: 1.5rem;
     min-height: 160px;
     animation-delay: 0.8s;
     text-align: start;
@@ -124,15 +125,15 @@
     @media (hover: none) {
       text-shadow: none;
 
-      >li.active {
-        >span {
+      > li.active {
+        > span {
           text-shadow: none;
         }
       }
     }
 
-    >li.active {
-      >span {
+    > li.active {
+      > span {
         text-align: start;
         font-size: 28px;
         font-style: normal;
@@ -143,14 +144,14 @@
     }
   }
 
-  >li {
+  > li {
     display: none;
 
     &.active {
       display: block;
     }
 
-    >span {
+    > span {
       display: block;
       color: var(--main-colours-esa-teal-55, #98dbce);
       text-align: center;
@@ -171,7 +172,7 @@
 }
 
 .arc {
-  >path {
+  > path {
     transition: stroke 0.2s ease;
   }
 
@@ -180,7 +181,6 @@
   }
 
   @media (--desktop-viewport) {
-
     &:hover,
     &:focus {
       filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));

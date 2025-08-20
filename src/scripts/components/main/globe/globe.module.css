@@ -3,26 +3,23 @@
 }
 
 .globe {
-  width: 100%;
+  transition: transform 1.5s ease;
   height: 100%;
-  position: absolute !important;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  transition: transform 1s ease;
+  width: 100%;
+  margin-bottom: var(--header-height);
+  will-change: transform;
+
+  @media screen and (--desktop-viewport) {
+    margin-bottom: 0;
+  }
 }
 
 .globe canvas {
-  /* We use the filter function to create an overlay. This makes the text on the globe more readable */
   filter: brightness(0.85) saturate(0.85) opacity(0.95);
-  transform-origin: center;
-  transition: scale 1s ease;
-  position: relative;
-  z-index: 1;
 }
 
 .marker {
-  transition:none;
+  transition: none;
   transform-origin: center;
   user-select: none;
   cursor: pointer;

@@ -10,12 +10,46 @@
   src: url("../../../../../assets/fonts/NotesEsaBol.otf");
 }
 
+/* default margin and padding*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*  Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
 html,
 body,
 #app {
+  overscroll-behavior: none;
   overflow: hidden;
+}
+
+html,
+body,
+#app {
   margin: 0;
-  height: 100%;
+  height: 100vh;
+  height: 100dvh;
   background-color: var(--black);
   font-family: NotesEsa, Arial, Helvetica, sans-serif;
 }
@@ -29,19 +63,22 @@ body,
   grid-template-columns: 100vw;
   background: rgba(0, 51, 73, 0.4);
 }
+
 * {
   scrollbar-color: var(--dark-grey-1) transparent;
   scrollbar-width: auto;
 }
+
 ::-webkit-scrollbar {
   width: 12px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   border-radius: 20px;
   background-color: var(--dark-grey-1);
   -webkit-box-shadow: inset 0 0 6px rgba(16, 22, 26, 0.9);
 }
-

@@ -1,25 +1,36 @@
 .overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  /* overwrite dialog default */
+  margin: auto;
+  max-height: 100%;
+  max-width: 100%;
   width: 100%;
   height: 100%;
-  background-color: rgba(16,22,26,0.9);
-}
-.overlayContent {
+  overflow: auto;
+  pointer-events: auto;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: inherit;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 70%;
+  padding: 0;
 }
+
+.overlay::backdrop {
+  background-color: rgba(16, 22, 26, 0.9);
+}
+
+.overlayContent {
+  color: white;
+  align-items: center;
+  display: flex;
+  height: 70%;
+  justify-content: center;
+  width: 100%;
+}
+
 .closeButton {
   position: absolute;
-  top: 1rem;
   right: 1.5rem;
+  top: 1rem;
 }

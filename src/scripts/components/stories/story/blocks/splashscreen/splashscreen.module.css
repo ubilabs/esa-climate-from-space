@@ -1,0 +1,80 @@
+.splashscreen {
+  background-color: var(--Neutral-ESA-Background, #011e2b);
+  scroll-snap-align: start;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+
+  &.locationStory {
+    background-color: transparent;
+    .parallaxContainer {
+      background-image: none;
+    }
+  }
+
+  .splashBanner {
+    height: 100%;
+    position: relative;
+  }
+
+  .parallaxContainer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+
+    &:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0)
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+  }
+
+  .contentContainer {
+    position: relative;
+    height: 100%;
+    max-width: 95ch;
+    margin: 0 auto;
+    display: grid;
+    place-items: center;
+    z-index: 2;
+    will-change: transform;
+  }
+
+  .content {
+    color: white;
+    padding-inline: var(--story-padding);
+
+    p {
+      color: var(--Neutral-ESA-White, #fff);
+      text-align: center;
+      text-shadow: 0 2px 1px rgba(0, 0, 0, 0.48);
+      font-family: NotesEsa;
+      font-size: clamp(18px, 4vw, 22px);
+      line-height: clamp(28px, 5vw, 36px);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    h1 {
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: clamp(36px, 5vw, 80px);
+      font-family: NotesEsaBold;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+  }
+}

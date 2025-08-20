@@ -8,9 +8,8 @@ const storyListSlice = createSlice({
   initialState,
   reducers: {
     fetchStoriesSuccess: (state, action: PayloadAction<StoryList>) => {
-      return [...action.payload];
-    },
-  },
+      state.push(...action.payload);
+    }, },
 });
 
 export const { fetchStoriesSuccess } = storyListSlice.actions;

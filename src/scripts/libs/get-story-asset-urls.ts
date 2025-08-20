@@ -6,7 +6,13 @@ import {
 import { replaceUrlPlaceholders } from "./replace-url-placeholders";
 import config from "../config/main";
 
-export function getStoryAssetUrl(storyId: string, path: string): string {
+export function getStoryAssetUrl(
+  storyId: string,
+  path: string | undefined,
+): string {
+  if (!path || path.length === 0) {
+    return "";
+  }
   if (path.startsWith("http")) {
     return path;
   }

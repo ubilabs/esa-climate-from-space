@@ -1,6 +1,6 @@
 .layerSelector {
   position: fixed;
-  top: 0;
+  top: var(--header-height);
   right: 0;
   z-index: 4;
   min-width: 18.75em;

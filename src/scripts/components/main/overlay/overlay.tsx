@@ -1,5 +1,4 @@
-import { FunctionComponent } from "react";
-import { createPortal } from "react-dom";
+import { FunctionComponent, useEffect, useRef } from "react";
 import cx from "classnames";
 
 import Button from "../button/button";
@@ -20,39 +19,30 @@ const Overlay: FunctionComponent<Props> = ({
   onClose,
   showCloseButton = true,
 }) => {
-  const modalElement = document.getElementById("modal");
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  // Trigger dialog visibility upon initial rendering
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (dialog) {
+      dialog.showModal();
+    }
+  }, []);
+
   const classes = cx(styles.overlay, className);
 
-  // stops progation when overlay is present
-  // This is useful because otherwise the user would also
-  // control the gesture-based navigation and interfere with the overlay
-  const stopPropagation = (e: React.SyntheticEvent) => {
-    e.stopPropagation();
-  };
-
-  const Content = (
-    <div
-      className={classes}
-      onWheel={stopPropagation}
-      onMouseDown={stopPropagation}
-      onTouchStart={stopPropagation}
-    >
+  return (
+    <dialog ref={dialogRef} className={classes} onClose={onClose}>
       {showCloseButton && (
         <Button
           icon={CloseIcon}
           className={styles.closeButton}
-          onClick={() => onClose && onClose()}
+          onClick={() => dialogRef.current?.close()}
         />
       )}
-      <div className={styles.overlayContent}>{children}</div>
-    </div>
+      <div className={styles.overlayContent} onWheel={(e) => e.stopPropagation()}>{children}</div>
+    </dialog>
   );
-
-  if (modalElement) {
-    return createPortal(Content, modalElement);
-  }
-
-  return null;
 };
 
 export default Overlay;

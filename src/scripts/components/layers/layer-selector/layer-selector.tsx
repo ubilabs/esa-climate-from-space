@@ -1,22 +1,23 @@
 import { FunctionComponent } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { FormattedMessage } from "react-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
+import { useDispatch, useSelector } from "react-redux";
 
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 import Button from "../../main/button/button";
 import { CloseIcon } from "../../main/icons/close-icon";
 import LayerList from "../layer-list/layer-list";
 import SelectedLayerListItem from "../selected-layer-list-item/selected-layer-list-item";
 
+import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
+import { languageSelector } from "../../../selectors/language";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { showLayerSelector as showLayerSelectorSelector } from "../../../selectors/show-layer-selector";
+import { setSelectedLayerIds } from "../../../reducers/layers";
+import { setShowLayer } from "../../../reducers/show-layer-selector";
+import { layersApi, useGetLayerListQuery } from "../../../services/api";
 
 import styles from "./layer-selector.module.css";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
-import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
-import { setShowLayer } from "../../../reducers/show-layer-selector";
-import { setSelectedLayerIds } from "../../../reducers/layers";
-import { layersApi, useGetLayerListQuery } from "../../../services/api";
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -27,8 +28,9 @@ const LayerSelector: FunctionComponent = () => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
 
   const showLayerSelector = useSelector(showLayerSelectorSelector);
+  const lang = useSelector(languageSelector);
 
-  const { data: layers } = useGetLayerListQuery("en");
+  const { data: layers } = useGetLayerListQuery(lang);
   if (!layers) {
     return null;
   }

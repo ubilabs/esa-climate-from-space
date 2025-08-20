@@ -4,6 +4,41 @@ import { UiEmbedElement } from "../types/embed-elements";
 
 import { GlobeProjection } from "../types/globe-projection";
 import { GlobeState } from "../reducers/globe/globe-state";
+import { AppRoute } from "../types/app-routes";
+
+/**
+ * Routes are utilized to manage state transitions within the application.
+ * The RouteMatch component is updating the state as it renders across all routes.
+ * Legacy routes are also supported and maintained.
+ * Extend or modify route patterns here as necessary to accommodate new requirements.
+ * Be aware that the order here matters because this object is used to match route patterns
+ */
+export const ROUTES = {
+  [AppRoute.LegacyStory]: {
+    path: "stories/:storyId/:slideIndex",
+    end: true,
+  },
+  [AppRoute.LegacyStories]: { path: "stories/", end: true },
+  [AppRoute.About]: { path: "/about", end: true },
+  [AppRoute.PresentStory]: {
+    path: "/present/:storyId/:slideIndex",
+    end: true,
+  },
+  [AppRoute.Present]: { path: "/present", end: true },
+  [AppRoute.ShowcaseStory]: {
+    path: "/showcase/:storyIds/:storyIndex/:slideIndex",
+    end: true,
+  },
+  [AppRoute.ShowcaseStories]: { path: "/showcase/:storyIds", end: true },
+  [AppRoute.Showcase]: { path: "/showcase", end: true },
+  [AppRoute.Stories]: {
+    path: "/:category/stories/:storyId/:slideIndex",
+    end: true,
+  },
+  [AppRoute.Data]: { path: "/:category/data", end: true },
+  [AppRoute.NavContent]: { path: "/:category", end: true },
+  [AppRoute.Base]: { path: "/", end: true },
+} as const;
 
 // Constants for auto-rotation timing of the content navigation
 // This is not related to the auto rotation of the globe
@@ -11,7 +46,14 @@ import { GlobeState } from "../reducers/globe/globe-state";
 export const AUTO_ROTATE_INTERVAL = 5000; // Time between auto-rotations in milliseconds
 export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interaction before restarting auto-rotation
 
-export const CONTENT_NAV_LONGITUDE_OFFSET = -55;
+export const CONTENT_NAV_LONGITUDE_OFFSET = -30;
+export const STORY_LATITUDE_OFFSET = 5; // Offset for the latitude when flying to the location
+export const ALTITUDE_FACTOR_DESKTOP = 0.5;
+
+export const WHEEL_SCALE_FACTOR = 0.001,
+  MIN_ZOOM_SCALE = 1,
+  PINCH_SCALE_FACTOR = 100,
+  MAX_ZOOM_SCALE = 5;
 
 // The order of these is important for the stories menu
 export const categoryTags = [
@@ -37,8 +79,10 @@ const globeState: GlobeState = {
     renderMode: "globe" as RenderMode,
     lat: 25,
     lng: 0,
-    altitude: 23840000,
+    altitude: 25840000,
     zoom: 0,
+    // Initially, this should be set to false since isAnimated defaults to true.
+    // If set to true, it could cause delays in responding to user interactions.
     isAnimated: false,
   },
   spinning: true,
@@ -67,6 +111,8 @@ let baseUrlStorage = "/";
 if (import.meta.env.PROD) {
   baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}/`;
 }
+
+export const SLIDE_INDEX_ATTRIBUTE = "data-slide-index";
 
 type BasemapId =
   | "atmosphere"

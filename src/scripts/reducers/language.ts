@@ -11,12 +11,15 @@ const initialState: Language =
   getBrowserLanguage() ||
   Language.EN;
 
+document.documentElement.lang = initialState;
+
 const languageSlice = createSlice({
   name: "language",
   initialState,
   reducers: {
-    setLanguage: (state, action: PayloadAction<Language>) => {
+    setLanguage: (_state, action: PayloadAction<Language>) => {
       localStorage.setItem(config.localStorageLanguageKey, action.payload);
+      document.documentElement.lang = action.payload;
       return action.payload;
     },
   },

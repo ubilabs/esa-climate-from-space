@@ -1,10 +1,12 @@
+div[data-nav-content="data"] .gallery {
+  transform: translateX(0);
+}
 .gallery {
   position: relative;
-  flex-grow: 1;
-  flex-basis: 50%;
-  width: 100%;
-  height: 100%;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(-50%);
 }
+
 .galleryItem {
   box-sizing: border-box;
   padding: 3.125em;
