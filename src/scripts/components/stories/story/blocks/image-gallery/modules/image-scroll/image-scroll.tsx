@@ -20,7 +20,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
         <ModuleContainer
           ref={getRefCallback?.(index)}
           className={styles.slide}
-          key={index}
+          key={slide.url || index}
         >
           {slide.description && (
             <ReactMarkdown

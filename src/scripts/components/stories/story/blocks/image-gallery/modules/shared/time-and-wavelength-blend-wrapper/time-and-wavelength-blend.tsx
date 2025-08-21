@@ -63,7 +63,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
         <ul className={styles.imageContainer}>
           {images.map((image, i) => (
             <TimeAndWavelengthBlendImage
-              key={`${storyId}-${i}`}
+              key={`${storyId}-${image.url}`}
               ref={getRefCallback?.(i)}
               active={activeSlideIndex === i}
               slideIndex={i}
