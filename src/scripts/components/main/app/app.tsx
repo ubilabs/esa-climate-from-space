@@ -72,16 +72,16 @@ const StoryWrapper: FunctionComponent<{ children?: React.ReactNode }> = ({
   });
 
   useEffect(() => {
-    if (!story?.id) {
+    if (!story?.id || !currentStoryId) {
       return;
     }
 
     dispatch(setSelectedContentAction({ contentId: story.id }));
 
-    return () => {
-      dispatch(setSelectedContentAction({ contentId: null }));
-    };
-  }, [dispatch, story?.id]);
+    // Cleanup is intentionally omitted on unmount
+    // This ensures the story Content ID persists, allowing the correct entry
+    // to remain selected in the content navigation.
+  }, [currentStoryId, dispatch, story?.id]);
 
   // Redux Toolkit may cache the story data, so it's essential to confirm
   // the presence of the currentStoryId
@@ -163,7 +163,10 @@ const TranslatedApp: FunctionComponent = () => {
               path={ROUTES.present.path}
               element={<PresentationSelector />}
             />
-            <Route path={ROUTES.present_story.path} element={<LegacyOrRecentStory />} />
+            <Route
+              path={ROUTES.present_story.path}
+              element={<LegacyOrRecentStory />}
+            />
             <Route path={ROUTES.showcase.path} element={<ShowcaseSelector />} />
             {/* Showcase stories and story routes */}
             <Route
