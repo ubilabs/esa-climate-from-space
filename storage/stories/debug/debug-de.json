@@ -11,7 +11,7 @@
       "type": "imageGallery",
       "modules": [
         {
-          "type": "scrollOverlay",
+          "type": "textOverlay",
           "slides": [
             {
               "url": "",
@@ -23,7 +23,7 @@
           ]
         },
         {
-          "type": "scrollOverlay",
+          "type": "textOverlay",
           "slides": [
             {
               "url": "assets/story21-image14.jpg",
@@ -36,7 +36,7 @@
           ]
         },
         {
-          "type": "scrollOverlay",
+          "type": "textOverlay",
           "slides": [
             {
               "url": "",
@@ -48,7 +48,7 @@
           ]
         },
         {
-          "type": "scrollCaption",
+          "type": "imageScroll",
           "slides": [
             {
               "url": "assets/story21-image01.jpg",
@@ -80,7 +80,7 @@
           ]
         },
         {
-          "type": "scrollOverlay",
+          "type": "textOverlay",
           "slides": [
             {
               "url": "",
@@ -92,7 +92,7 @@
           ]
         },
         {
-          "type": "timeBlend",
+          "type": "imageTime",
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
@@ -107,7 +107,7 @@
           ]
         },
         {
-          "type": "compareMode",
+          "type": "imageCompare",
           "text": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
           "buttonText": "Vergleichen Sie die Satellitenbilder",
           "slides": [
