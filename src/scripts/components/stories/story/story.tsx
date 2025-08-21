@@ -17,9 +17,17 @@ import cx from "classnames";
 
 import styles from "./story.module.css";
 
+/**
+ * The Story component is responsible for rendering the story's content.
+ * Each story is dynamically generated from a JSON file located in storage/stories/[story].
+ * The hierarchical structure of a story is organized as follows: story > block > module.
+ */
 const Story: FunctionComponent = () => {
+  // use the StoryProvider to access the story data
   const { storyElementRef, story, setScrollableFormatRefs } = useStory();
 
+  // Handles automatic scrolling through the story in showcase mode
+  // and manages navigation to the next story when the current one ends
   useAutoScrollInShowcase();
   useSyncStoryUrl();
 
