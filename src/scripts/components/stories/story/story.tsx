@@ -19,7 +19,7 @@ import styles from "./story.module.css";
 /**
  * The Story component is responsible for rendering the story's content.
  * Each story is dynamically generated from a JSON file located in storage/stories/[story].
- * The hierarchical structure of a story is organized as follows: story > block > module.
+ * The hierarchical structure of a story is organized as follows: story > block > module > slides
  */
 const Story: FunctionComponent = () => {
   const { storyElementRef, story, setScrollAnchorRefs } = useStory();
@@ -65,9 +65,7 @@ const Story: FunctionComponent = () => {
                   storyId={story.id}
                   getRefCallback={generateScrollAnchorRef}
                 >
-                  <ModuleComponent
-                    ref={setScrollAnchorRefs(`${blockIndex}-${i}`)}
-                  />
+                  <ModuleComponent />
                 </ModuleContentProvider>
               );
             })}

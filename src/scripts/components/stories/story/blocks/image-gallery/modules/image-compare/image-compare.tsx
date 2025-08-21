@@ -12,10 +12,11 @@ import cx from "classnames";
 
 import styles from "./image-compare.module.css";
 
-const ImageCompare: FunctionComponent<StorySectionProps> = ({ ref }) => {
+const ImageCompare: FunctionComponent<StorySectionProps> = () => {
   const {
     module: { slides, text: description, buttonText },
     storyId,
+    getRefCallback
   } = useModuleContent();
 
   const [isComparing, setIsComparing] = useState(false);
@@ -49,7 +50,7 @@ const ImageCompare: FunctionComponent<StorySectionProps> = ({ ref }) => {
 
   return (
     <SlideContainer
-      ref={ref}
+      ref={getRefCallback(0)}
       className={cx(styles.imageCompare, isComparing && styles.isComparing)}
     >
       {!isComparing ? (

@@ -35,6 +35,7 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
   const setScrollAnchorRefs = useCallback(
     (key: string) => (node: HTMLElement | undefined | null) => {
       const map = getScrollAnchorRefsMap();
+
       if (node) {
         map.set(key, node);
       } else {
