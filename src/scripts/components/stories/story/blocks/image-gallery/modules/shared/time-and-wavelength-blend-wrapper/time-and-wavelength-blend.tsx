@@ -1,19 +1,21 @@
 import { useRef, useState, useMemo, FunctionComponent } from "react";
-import { BlendImage, AnimationDirection } from "../blend-image/blend-image";
 import { useMotionValueEvent } from "motion/react";
-import styles from "./blend-wrapper.module.css";
 import {
   ImageSlide,
   StorySectionProps,
 } from "../../../../../../../../types/story";
+
+import { AnimationDirection, TimeAndWavelengthBlendImage } from "../time-and-wavelength-blend-image/time-and-wavelength-blend-image";
 import { useFormat } from "../../../../../../../../providers/story/format/use-format";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
+
+import styles from "./time-and-wavelength-blend.module.css";
 
 interface BlendWrapperProps extends StorySectionProps {
   animationDirection: AnimationDirection;
 }
 
-const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
+const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
   animationDirection,
   getRefCallback,
 }) => {
@@ -61,7 +63,7 @@ const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
       <div className={styles.stickyScroller}>
         <ul className={styles.imageContainer}>
           {images.map((image, i) => (
-            <BlendImage
+            <TimeAndWavelengthBlendImage
               key={`${storyId}-${i}`}
               ref={getRefCallback?.(i)}
               active={activeSlideIndex === i}
@@ -83,4 +85,4 @@ const BlendWrapper: FunctionComponent<BlendWrapperProps> = ({
   );
 };
 
-export default BlendWrapper;
+export default TimeAndWavelengthBlend;

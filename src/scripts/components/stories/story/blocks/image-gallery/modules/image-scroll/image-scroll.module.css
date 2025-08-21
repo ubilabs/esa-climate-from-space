@@ -1,9 +1,9 @@
-.scrollCaptionBlock {
+.imageScroll {
   padding: 1.5rem;
   scroll-snap-align: none;
   height: fit-content;
 
-  .scrollCaptionSlide {
+  .slide {
     height: 100%;
     padding-block: 1rem;
 
@@ -14,7 +14,7 @@
       gap: 5vw;
       padding-block: 0;
 
-      &:has(.scrollCaptionText) {
+      &:has(.imageScrollText) {
         flex-direction: row-reverse;
       }
 
@@ -24,7 +24,7 @@
     }
   }
 
-  .scrollCaptionText {
+  .imageScrollText {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -103,9 +103,9 @@
     @media screen and (--desktop-viewport) {
       height: calc(var(--story-height) / 1.5);
 
-      /* if the scrollImageContainer does not have a scrollCaptionText sibling, */
+      /* if the scrollImageContainer does not have a imageScrollText sibling, */
       /* the imageContainer child can take the full width up to 1500px*/
-      &:not(.scrollCaptionText + .scrollImageContainer) {
+      &:not(.imageScrollText + .scrollImageContainer) {
         width: min(100%, 1500px);
         height: 100%;
         margin-bottom: 4rem;

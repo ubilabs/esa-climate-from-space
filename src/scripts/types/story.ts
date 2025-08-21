@@ -1,13 +1,12 @@
 import { ComponentProps, FunctionComponent } from "react";
 
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
-
-import CompareMode from "../components/stories/story/blocks/image-gallery/formats/compare-mode/compare-mode";
-import TimeBlend from "../components/stories/story/blocks/image-gallery/formats/time-blend/time-blend";
-import FrequencyBlend from "../components/stories/story/blocks/image-gallery/formats/frequency-blend/frequency-blend";
+import ImageWavelength from "../components/stories/story/blocks/image-gallery/modules/image-wavelength/image-wavelength";
+import ImageCompare from "../components/stories/story/blocks/image-gallery/modules/image-compare/image-compare";
+import ImageTime from "../components/stories/story/blocks/image-gallery/modules/image-time/image-time";
+import ImageScroll from "../components/stories/story/blocks/image-gallery/modules/image-scroll/image-scroll";
+import TextOverlay from "../components/stories/story/blocks/generic/text-overlay/text-overlay";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
-import ScrollOverlay from "../components/stories/story/blocks/image-gallery/formats/scroll-overlay/scrollOverlay";
-import ScrollCaption from "../components/stories/story/blocks/image-gallery/formats/scroll-caption/scroll-caption";
 
 export interface Slide {
   text: string;
@@ -35,7 +34,7 @@ export type Splashscreen = {
   shortText?: string;
 };
 
-export type ContentBlockType = "imageGallery" | "textBlock"; // Extend with union for other types if needed
+export type ContentBlockType = "imageGallery"; // Extend with union for other types if needed
 
 export type ContentBlock = {
   type: ContentBlockType;
@@ -43,11 +42,11 @@ export type ContentBlock = {
 };
 
 export type ImageGalleryFormatType =
-  | "scrollOverlay"
-  | "frequencyBlend"
-  | "compareMode"
-  | "timeBlend"
-  | "scrollCaption";
+  | "textOverlay"
+  | "imageWavelength"
+  | "imageCompare"
+  | "imageTime"
+  | "imageScroll";
 
 export type ImageGalleryFormat = {
   type: ImageGalleryFormatType;
@@ -74,20 +73,20 @@ export const imageGalleryFormatMap: Record<
   ImageGalleryFormat["type"],
   FunctionComponent<StorySectionProps>
 > = {
-  frequencyBlend: ImageGallery.FrequencyBlend,
-  timeBlend: ImageGallery.TimeBlend,
-  compareMode: ImageGallery.CompareMode,
-  scrollCaption: ImageGallery.ScrollCaption,
-  scrollOverlay: ImageGallery.ScrollOverlay,
+  imageWavelength: ImageGallery.ImageWavelength,
+  imageCompare: ImageGallery.ImageCompare,
+  imageTime: ImageGallery.ImageTime,
+  imageScroll: ImageGallery.ImageScroll,
+  textOverlay: ImageGallery.TextOverlay,
 };
 
 export const imageGalleryBlockComponentMap: Record<
   ImageGalleryFormat["type"],
   FunctionComponent<StorySectionProps> | undefined
 > = {
-  compareMode: CompareMode,
-  timeBlend: TimeBlend,
-  frequencyBlend: FrequencyBlend,
-  scrollOverlay: ScrollOverlay,
-  scrollCaption: ScrollCaption,
+  imageWavelength: ImageWavelength,
+  imageCompare: ImageCompare,
+  imageTime: ImageTime,
+  imageScroll: ImageScroll,
+  textOverlay: TextOverlay,
 };

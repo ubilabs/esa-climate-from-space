@@ -1,15 +1,17 @@
 import { FunctionComponent, useState, useEffect } from "react";
-import cx from "classnames";
 import { FormattedMessage, useIntl } from "react-intl";
+
 import { useFormat } from "../../../../../../../providers/story/format/use-format";
 import { StorySectionProps } from "../../../../../../../types/story";
 import { FormatContainer } from "../../../../../layout/format-container/format-container";
-import { CompareImages } from "./compare-images/compare-images";
 import { InstructionOverlay } from "../../../../../../ui/instruction-overlay/instruction-overlay";
+import { ComparisonViewer } from "./comparison-viewer/comparison-viewer";
 
-import styles from "./compare-mode.module.css";
+import cx from "classnames";
 
-const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
+import styles from "./image-compare.module.css";
+
+const ImageCompare: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const {
     content: { slides, description, buttonText },
     storyId,
@@ -47,7 +49,7 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
   return (
     <FormatContainer
       ref={ref}
-      className={cx(styles.compareModeBlock, isComparing && styles.isComparing)}
+      className={cx(styles.imageCompare, isComparing && styles.isComparing)}
     >
       {!isComparing ? (
         <div className={styles.compareModeContent}>
@@ -78,7 +80,7 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
           </button>
         </>
       )}
-      <CompareImages
+      <ComparisonViewer
         onInteraction={handleInteraction}
         isComparing={isComparing}
         slide1={slides[0]}
@@ -89,4 +91,4 @@ const CompareMode: FunctionComponent<StorySectionProps> = ({ ref }) => {
   );
 };
 
-export default CompareMode;
+export default ImageCompare;

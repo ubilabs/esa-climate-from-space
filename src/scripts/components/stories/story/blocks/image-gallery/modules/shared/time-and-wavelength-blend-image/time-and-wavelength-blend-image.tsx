@@ -4,7 +4,7 @@ import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-u
 import { ImageSlide } from "../../../../../../../../types/story";
 import cx from "classnames";
 
-import styles from "./blend-image.module.css";
+import styles from "./time-and-wavelength-blend-image.module.css";
 
 export type AnimationDirection = "vertical" | "horizontal";
 
@@ -19,7 +19,7 @@ interface BlendImageProps {
   ref: Ref<HTMLDivElement> | undefined;
 }
 
-export const BlendImage: FunctionComponent<BlendImageProps> = ({
+export const TimeAndWavelengthBlendImage: FunctionComponent<BlendImageProps> = ({
   scrollYProgress,
   slideIndex,
   numSlides,

@@ -3,15 +3,15 @@ import { FunctionComponent, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { motion, useTransform } from "motion/react";
 
-import config from "../../../../../../../../config/main";
+import config from "../../../../../../../config/main";
 
-import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
-import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
-import { ImageSlide } from "../../../../../../../../types/story";
+import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
+import { useStoryScroll } from "../../../../../../../hooks/use-story-scroll";
+import { ImageSlide } from "../../../../../../../types/story";
 
 import cx from "classnames";
 
-import styles from "./scroll-overlay-slide.module.css";
+import styles from "./text-overlay-slide.module.css";
 
 interface CaptionProps {
   caption: string;
@@ -67,7 +67,7 @@ const isVideo = (url: string) => {
   return url.endsWith(".mp4") || url.endsWith(".webm");
 };
 
-export const ScrollOverlaySlide: FunctionComponent<Props> = ({
+export const TextOverlaySlide: FunctionComponent<Props> = ({
   slide,
   storyId,
   getRefCallback,

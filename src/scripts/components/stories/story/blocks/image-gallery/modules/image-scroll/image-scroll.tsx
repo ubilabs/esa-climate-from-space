@@ -6,31 +6,31 @@ import config from "../../../../../../../config/main";
 import { useFormat } from "../../../../../../../providers/story/format/use-format";
 import { FormatContainer } from "../../../../../layout/format-container/format-container";
 import { StorySectionProps } from "../../../../../../../types/story";
-import { CaptionImage } from "./caption-image/caption-image";
+import { ScrollImage } from "./image-scroll-image/image-scroll-image";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 
-import styles from "./scroll-caption.module.css";
+import styles from "./image-scroll.module.css";
 
-const ScrollCaption: FunctionComponent<StorySectionProps> = ({
+const ImageScroll: FunctionComponent<StorySectionProps> = ({
   getRefCallback,
 }) => {
   const { content, storyId } = useFormat();
   return (
-    <div className={styles.scrollCaptionBlock}>
+    <div className={styles.imageScroll}>
       {content.slides.map((slide, index) => (
         <FormatContainer
           ref={getRefCallback?.(index)}
-          className={styles.scrollCaptionSlide}
+          className={styles.slide}
           key={index}
         >
           {slide.description && (
             <ReactMarkdown
               children={slide.description}
-              className={styles.scrollCaptionText}
+              className={styles.imageScrollText}
             />
           )}
           <div className={styles.scrollImageContainer}>
-            <CaptionImage
+            <ScrollImage
               src={getStoryAssetUrl(storyId, slide.url)}
               alt={slide.altText}
             />
@@ -45,4 +45,4 @@ const ScrollCaption: FunctionComponent<StorySectionProps> = ({
   );
 };
 
-export default ScrollCaption;
+export default ImageScroll;

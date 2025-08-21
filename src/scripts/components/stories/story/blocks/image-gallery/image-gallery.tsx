@@ -1,19 +1,19 @@
 import { FunctionComponent, ReactNode } from "react";
 
-import FrequencyBlend from "./formats/frequency-blend/frequency-blend";
-import CompareMode from "./formats/compare-mode/compare-mode";
-import TimeBlend from "./formats/time-blend/time-blend";
-import ScrollCaption from "./formats/scroll-caption/scroll-caption";
-import ScrollOverlay from "./formats/scroll-overlay/scrollOverlay";
+import ImageWavelength from "./modules/image-wavelength/image-wavelength";
+import ImageCompare from "./modules/image-compare/image-compare";
+import ImageTime from "./modules/image-time/image-time";
+import ImageScroll from "./modules/image-scroll/image-scroll";
+import TextOverlay from "../generic/text-overlay/text-overlay";
 
 import styles from "./image-gallery.module.css";
 
 export type ImageGalleryCompoundComponents = {
-  FrequencyBlend: typeof FrequencyBlend;
-  CompareMode: typeof CompareMode;
-  TimeBlend: typeof TimeBlend;
-  ScrollCaption: typeof ScrollCaption;
-  ScrollOverlay: typeof ScrollOverlay;
+  ImageWavelength: typeof ImageWavelength;
+  ImageCompare: typeof ImageCompare;
+  ImageTime: typeof ImageTime;
+  ImageScroll: typeof ImageScroll;
+  TextOverlay: typeof TextOverlay;
 };
 
 export const ImageGallery = (({ children }: { children: ReactNode }) => {
@@ -21,8 +21,8 @@ export const ImageGallery = (({ children }: { children: ReactNode }) => {
 }) as FunctionComponent<{ children: ReactNode }> &
   ImageGalleryCompoundComponents;
 
-ImageGallery.FrequencyBlend = FrequencyBlend;
-ImageGallery.CompareMode = CompareMode;
-ImageGallery.TimeBlend = TimeBlend;
-ImageGallery.ScrollCaption = ScrollCaption;
-ImageGallery.ScrollOverlay = ScrollOverlay;
+ImageGallery.ImageWavelength = ImageWavelength;
+ImageGallery.ImageCompare = ImageCompare;
+ImageGallery.ImageTime = ImageTime;
+ImageGallery.ImageScroll = ImageScroll;
+ImageGallery.TextOverlay = TextOverlay;

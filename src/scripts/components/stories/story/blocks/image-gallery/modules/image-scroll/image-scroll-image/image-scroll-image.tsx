@@ -12,14 +12,14 @@ import {
   WHEEL_SCALE_FACTOR,
 } from "../../../../../../../../config/main";
 
-import styles from "./caption-image.module.css";
+import styles from "./image-scroll-image.module.css";
 
 interface Props {
   src: string;
   alt?: string;
 }
 
-export const CaptionImage: FunctionComponent<Props> = ({ src, alt }) => {
+export const ScrollImage: FunctionComponent<Props> = ({ src, alt }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);

@@ -5,6 +5,7 @@ import { useGesture } from "@use-gesture/react";
 import cx from "classnames";
 
 import { ImageSlide } from "../../../../../../../../types/story";
+import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 
 import {
@@ -14,8 +15,7 @@ import {
   WHEEL_SCALE_FACTOR,
 } from "../../../../../../../../config/main";
 
-import styles from "./compare-images.module.css";
-import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+import styles from "./comparison-viewer.module.css";
 
 interface Props {
   slide1: ImageSlide;
@@ -25,7 +25,7 @@ interface Props {
   onInteraction?: () => void;
 }
 
-export const CompareImages: FunctionComponent<Props> = ({
+export const ComparisonViewer: FunctionComponent<Props> = ({
   slide1,
   slide2,
   storyId,
@@ -99,7 +99,7 @@ export const CompareImages: FunctionComponent<Props> = ({
       key={animateProp}
       ref={containerRef}
       className={cx(
-        styles.compareContainer,
+        styles.comparisonViewer,
         !isMobile && styles.isVerticalSplit,
         isComparing && styles.isComparing,
       )}
