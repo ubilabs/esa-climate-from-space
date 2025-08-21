@@ -5,7 +5,7 @@ import config from "../../../../../../../config/main";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
-import { ModuleContainer } from "../../../../../layout/module-container/module-container";
+import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
 import { StorySectionProps } from "../../../../../../../types/story";
 import { ScrollImage } from "./image-scroll-image/image-scroll-image";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
@@ -17,7 +17,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
   return (
     <div className={styles.imageScroll}>
       {module.slides?.map((slide, index) => (
-        <ModuleContainer
+        <SlideContainer
           ref={getRefCallback?.(index)}
           className={styles.slide}
           key={slide.url || index}
@@ -38,7 +38,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
               allowedElements={config.markdownAllowedElements}
             />
           </div>
-        </ModuleContainer>
+        </SlideContainer>
       ))}
     </div>
   );

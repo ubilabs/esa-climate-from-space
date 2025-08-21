@@ -2,7 +2,7 @@ import { PropsWithChildren, Ref, CSSProperties, HTMLAttributes } from "react";
 
 import cx from "classnames";
 
-import styles from "./module-container.module.css";
+import styles from "./slide-container.module.css";
 
 interface Props extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -13,10 +13,10 @@ interface Props extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * A wrapper component for rendering a module section. It accepts children elements,
- * This is optional but provides some  styling and anchor ref
+ * A wrapper component for rendering a slide. It accepts children elements
+ * This is optional but provides some styling and anchor ref
  */
-export const ModuleContainer = ({
+export const SlideContainer = ({
   children,
   className,
   ref,
@@ -26,7 +26,7 @@ export const ModuleContainer = ({
   return (
     <div
       ref={ref}
-      className={cx(styles.module, className)}
+      className={cx(styles.slideContainer, className)}
       style={style}
       {...elementProps}
     >
@@ -35,4 +35,4 @@ export const ModuleContainer = ({
   );
 };
 
-ModuleContainer.displayName = "ModuleContainer";
+SlideContainer.displayName = "ModuleContainer";

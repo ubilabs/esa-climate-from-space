@@ -19,9 +19,11 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
   animationDirection,
 }) => {
   const { module, storyId , getRefCallback} = useModuleContent();
+
   const targetRef = useRef<HTMLDivElement | null>(null);
   const images: ImageModuleSlide[] = useMemo(() => module?.slides ?? [], [module]);
   const numSlides = images.length;
+
   const [activeSlideIndex, setActiveSlideIndex] = useState<number | null>(null);
 
   const { scrollYProgress } = useStoryScroll({

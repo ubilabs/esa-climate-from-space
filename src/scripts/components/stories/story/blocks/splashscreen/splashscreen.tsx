@@ -15,7 +15,7 @@ import { useStory } from "../../../../../providers/story/use-story";
 
 import { StorySectionProps } from "../../../../../types/story";
 
-import { ModuleContainer } from "../../../layout/module-container/module-container";
+import { SlideContainer } from "../../../layout/slide-container/slide-container";
 
 import { STORY_LATITUDE_OFFSET } from "../../../../../config/main";
 
@@ -68,7 +68,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const { id } = story;
 
   return (
-    <ModuleContainer
+    <SlideContainer
       className={cx(
         styles.splashscreen,
         isLocationBased && styles.locationStory,
@@ -92,6 +92,6 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
           />
         </motion.div>
       </div>
-    </ModuleContainer>
+    </SlideContainer>
   );
 };

@@ -3,7 +3,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 
 import { StorySectionProps } from "../../../../../../../types/story";
 import { InstructionOverlay } from "../../../../../../ui/instruction-overlay/instruction-overlay";
-import { ModuleContainer } from "../../../../../layout/module-container/module-container";
+import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
 import { ComparisonViewer } from "./comparison-viewer/comparison-viewer";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
@@ -48,7 +48,7 @@ const ImageCompare: FunctionComponent<StorySectionProps> = ({ ref }) => {
   };
 
   return (
-    <ModuleContainer
+    <SlideContainer
       ref={ref}
       className={cx(styles.imageCompare, isComparing && styles.isComparing)}
     >
@@ -88,7 +88,7 @@ const ImageCompare: FunctionComponent<StorySectionProps> = ({ ref }) => {
         slide2={slides[1]}
         storyId={storyId}
       />
-    </ModuleContainer>
+    </SlideContainer>
   );
 };
 
