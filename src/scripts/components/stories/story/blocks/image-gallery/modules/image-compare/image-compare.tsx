@@ -1,11 +1,12 @@
 import { FunctionComponent, useState, useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
-import { useFormat } from "../../../../../../../providers/story/format/use-format";
 import { StorySectionProps } from "../../../../../../../types/story";
-import { FormatContainer } from "../../../../../layout/format-container/format-container";
 import { InstructionOverlay } from "../../../../../../ui/instruction-overlay/instruction-overlay";
+import { ModuleWrapper } from "../../../../../layout/module-container/module-container";
 import { ComparisonViewer } from "./comparison-viewer/comparison-viewer";
+
+import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 import cx from "classnames";
 
@@ -13,9 +14,9 @@ import styles from "./image-compare.module.css";
 
 const ImageCompare: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const {
-    content: { slides, description, buttonText },
+    module: { slides, text: description, buttonText },
     storyId,
-  } = useFormat();
+  } = useModuleContent();
 
   const [isComparing, setIsComparing] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
@@ -47,7 +48,7 @@ const ImageCompare: FunctionComponent<StorySectionProps> = ({ ref }) => {
   };
 
   return (
-    <FormatContainer
+    <ModuleWrapper
       ref={ref}
       className={cx(styles.imageCompare, isComparing && styles.isComparing)}
     >
@@ -87,7 +88,7 @@ const ImageCompare: FunctionComponent<StorySectionProps> = ({ ref }) => {
         slide2={slides[1]}
         storyId={storyId}
       />
-    </FormatContainer>
+    </ModuleWrapper>
   );
 };
 

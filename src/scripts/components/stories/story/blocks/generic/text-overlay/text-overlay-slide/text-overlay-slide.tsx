@@ -7,7 +7,7 @@ import config from "../../../../../../../config/main";
 
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 import { useStoryScroll } from "../../../../../../../hooks/use-story-scroll";
-import { ImageSlide } from "../../../../../../../types/story";
+import { ImageModuleSlide } from "../../../../../../../types/story";
 
 import cx from "classnames";
 
@@ -58,7 +58,7 @@ const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
 };
 
 interface Props {
-  slide: ImageSlide;
+  slide: ImageModuleSlide;
   storyId: string;
   getRefCallback: (index: number) => (element: HTMLDivElement) => void;
 }

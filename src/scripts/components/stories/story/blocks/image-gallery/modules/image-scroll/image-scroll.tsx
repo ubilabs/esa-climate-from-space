@@ -3,8 +3,9 @@ import ReactMarkdown from "react-markdown";
 
 import config from "../../../../../../../config/main";
 
-import { useFormat } from "../../../../../../../providers/story/format/use-format";
-import { FormatContainer } from "../../../../../layout/format-container/format-container";
+import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+
+import { ModuleWrapper } from "../../../../../layout/module-container/module-container";
 import { StorySectionProps } from "../../../../../../../types/story";
 import { ScrollImage } from "./image-scroll-image/image-scroll-image";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
@@ -14,11 +15,11 @@ import styles from "./image-scroll.module.css";
 const ImageScroll: FunctionComponent<StorySectionProps> = ({
   getRefCallback,
 }) => {
-  const { content, storyId } = useFormat();
+  const { module, storyId } = useModuleContent();
   return (
     <div className={styles.imageScroll}>
-      {content.slides.map((slide, index) => (
-        <FormatContainer
+      {module.slides?.map((slide, index) => (
+        <ModuleWrapper
           ref={getRefCallback?.(index)}
           className={styles.slide}
           key={index}
@@ -39,7 +40,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = ({
               allowedElements={config.markdownAllowedElements}
             />
           </div>
-        </FormatContainer>
+        </ModuleWrapper>
       ))}
     </div>
   );

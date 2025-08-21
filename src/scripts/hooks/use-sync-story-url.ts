@@ -6,7 +6,7 @@ import { extractSlideIndex } from "../libs/content-url-parameter";
 import { getHashPathName } from "../libs/get-hash-path";
 
 export const useSyncStoryUrl = () => {
-  const { getScrollableFormatsMap, storyElementRef, story } = useStory();
+  const {getScrollAnchorRefsMap , storyElementRef, story } = useStory();
   const activeNodeKeyRef = useRef<string | null>(null);
   const initialScrollPerformed = useRef(false); // Flag to ensure initial scroll only happens once
   const isProgrammaticScroll = useRef(false);
@@ -20,7 +20,7 @@ export const useSyncStoryUrl = () => {
       return; // Already performed initial scroll
     }
 
-    const nodeMap = getScrollableFormatsMap();
+    const nodeMap = getScrollAnchorRefsMap();
     const initialSlideIndex = extractSlideIndex(getHashPathName());
 
     // Only attempt to scroll if there's an initial index and the nodeMap is populated enough
@@ -33,12 +33,12 @@ export const useSyncStoryUrl = () => {
     }
     // Dependencies: Re-run if nodeMap changes (meaning more nodes might be available)
     // or if storyElementRef changes (container is ready), or story data is available.
-  }, [getScrollableFormatsMap, storyElementRef, story]);
+  }, [getScrollAnchorRefsMap, storyElementRef, story]);
 
   // Effect for when the url is changed by the user
   useEffect(() => {
     const index = extractSlideIndex(location.pathname);
-    const nodeMap = getScrollableFormatsMap();
+    const nodeMap = getScrollAnchorRefsMap();
     const targetNode = Array.from(nodeMap.values())[index];
     if (targetNode && navigationType !== "PUSH") {
       targetNode.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -47,12 +47,12 @@ export const useSyncStoryUrl = () => {
         isProgrammaticScroll.current = false;
       }, 1000);
     }
-  }, [location, getScrollableFormatsMap, navigationType]);
+  }, [location, getScrollAnchorRefsMap, navigationType]);
 
   // Effect for Intersection Observer to update URL on scroll
   useEffect(() => {
     const container = storyElementRef.current;
-    const nodeMap = getScrollableFormatsMap();
+    const nodeMap = getScrollAnchorRefsMap();
 
     if (!container || !story || nodeMap.size === 0) return;
 
@@ -133,7 +133,7 @@ export const useSyncStoryUrl = () => {
   }, [
     story,
     storyElementRef,
-    getScrollableFormatsMap,
+    getScrollAnchorRefsMap,
     location.pathname,
     location.search,
     location.hash,

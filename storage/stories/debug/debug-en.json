@@ -6,12 +6,12 @@
     "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
     "image": "assets/story21-image10.jpg"
   },
-  "content": [
+  "blocks": [
     {
       "type": "imageGallery",
-      "blocks": [
+      "modules": [
         {
-          "type": "scrollOverlay",
+          "type": "textOverlay",
           "slides": [
             {
               "url": "",
@@ -23,7 +23,7 @@
           ]
         },
         {
-          "type": "scrollOverlay",
+          "type": "textOverlay",
           "slides": [
             {
               "url": "assets/story21-image14.jpg",
@@ -36,7 +36,7 @@
           ]
         },
         {
-          "type": "scrollOverlay",
+          "type": "textOverlay",
           "slides": [
             {
               "url": "",
@@ -48,7 +48,7 @@
           ]
         },
         {
-          "type": "scrollCaption",
+          "type": "imageScroll",
           "slides": [
             {
               "url": "assets/story21-image01.jpg",
@@ -80,7 +80,7 @@
           ]
         },
         {
-          "type": "scrollOverlay",
+          "type": "textOverlay",
           "slides": [
             {
               "url": "",
@@ -92,7 +92,7 @@
           ]
         },
         {
-          "type": "frequencyBlend",
+          "type": "imageWavelength",
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
@@ -110,7 +110,7 @@
           ]
         },
         {
-          "type": "compareMode",
+          "type": "imageCompare",
           "description": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
           "buttonText": "",
           "slides": [

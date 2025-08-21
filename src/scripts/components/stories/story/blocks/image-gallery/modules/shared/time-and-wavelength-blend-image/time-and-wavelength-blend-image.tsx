@@ -1,7 +1,9 @@
 import { FunctionComponent, Ref } from "react";
 import { motion, useTransform, MotionValue } from "motion/react";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
-import { ImageSlide } from "../../../../../../../../types/story";
+
+import { ImageModuleSlide } from "../../../../../../../../types/story";
+
 import cx from "classnames";
 
 import styles from "./time-and-wavelength-blend-image.module.css";
@@ -13,7 +15,7 @@ interface BlendImageProps {
   slideIndex: number;
   numSlides: number;
   storyId: string;
-  image: ImageSlide;
+  image: ImageModuleSlide;
   animationDirection: AnimationDirection;
   active: boolean;
   ref: Ref<HTMLDivElement> | undefined;

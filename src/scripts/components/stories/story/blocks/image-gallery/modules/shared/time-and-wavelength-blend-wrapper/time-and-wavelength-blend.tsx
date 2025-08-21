@@ -1,13 +1,13 @@
 import { useRef, useState, useMemo, FunctionComponent } from "react";
 import { useMotionValueEvent } from "motion/react";
 import {
-  ImageSlide,
+  ImageModuleSlide,
   StorySectionProps,
 } from "../../../../../../../../types/story";
 
 import { AnimationDirection, TimeAndWavelengthBlendImage } from "../time-and-wavelength-blend-image/time-and-wavelength-blend-image";
-import { useFormat } from "../../../../../../../../providers/story/format/use-format";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
+import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
 
 import styles from "./time-and-wavelength-blend.module.css";
 
@@ -19,9 +19,9 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
   animationDirection,
   getRefCallback,
 }) => {
-  const { content, storyId } = useFormat();
+  const { module: content, storyId } = useModuleContent();
   const targetRef = useRef<HTMLDivElement | null>(null);
-  const images: ImageSlide[] = useMemo(() => content?.slides ?? [], [content]);
+  const images: ImageModuleSlide[] = useMemo(() => content?.slides ?? [], [content]);
   const numSlides = images.length;
   const [activeSlideIndex, setActiveSlideIndex] = useState<number | null>(null);
 

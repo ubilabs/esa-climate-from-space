@@ -45,16 +45,16 @@ async function scrollElements(
 }
 
 export const useAutoScrollInShowcase = () => {
-  const { getScrollableFormatsMap } = useStory();
+  const { getScrollAnchorRefsMap } = useStory();
   const { isShowCaseView, isPresentView } = useAppRouteFlags();
   const navigate = useNavigate();
   const { storyIds, storyIndex } = useContentParams();
 
-  const scrollableElements = Array.from(getScrollableFormatsMap().values());
+  const scrollableElements = Array.from(getScrollAnchorRefsMap().values());
 
   useEffect(() => {
     // delay execution until all DOM nodes are created
-    if ((isShowCaseView) && scrollableElements.length) {
+    if ((isShowCaseView || isPresentView) && scrollableElements.length) {
       const abortSignal = { aborted: false };
 
       (async () => {
@@ -74,7 +74,6 @@ export const useAutoScrollInShowcase = () => {
   }, [
     isShowCaseView,
     isPresentView,
-    getScrollableFormatsMap,
     storyIndex,
     storyIds,
     navigate,

@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { StorySectionProps } from "../../../../../../types/story";
-import { useFormat } from "../../../../../../providers/story/format/use-format";
+import { useModuleContent } from "../../../../../../providers/story/module-content/use-module-content";
 import { TextOverlaySlide } from "./text-overlay-slide/text-overlay-slide";
 
 import styles from "./text-overlay.module.css";
@@ -15,9 +15,9 @@ const TextOverlay: FunctionComponent<StorySectionProps> = ({
   getRefCallback,
 }) => {
   const {
-    content: { slides },
+    module: { slides },
     storyId,
-  } = useFormat();
+  } = useModuleContent();
 
   return (
     <div className={styles.textOverlay}>

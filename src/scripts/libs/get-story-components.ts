@@ -4,10 +4,10 @@ import {
   ImageGalleryCompoundComponents,
 } from "../components/stories/story/blocks/image-gallery/image-gallery";
 import {
-  ContentBlockType,
-  ImageGalleryFormat,
-  imageGalleryFormatMap,
+  BlockType,
+  imageGalleryModuleMap,
   StorySectionProps,
+  ModuleType,
 } from "../types/story";
 
 // Map of content block types to their respective components
@@ -22,21 +22,21 @@ const contentBlockMap:
   imageGallery: ImageGallery,
 };
 
-// Map of block types to their respective format components
-// Add missing format components here as needed
-const formatMap: Record<
-  ImageGalleryFormat["type"],
+// Map of block types to their respective module components
+// Extendable map to include additional modules as needed
+const moduleMap: Record<
+  ModuleType,
   FunctionComponent<StorySectionProps>
 > = {
-  ...imageGalleryFormatMap,
+  ...imageGalleryModuleMap,
 };
 
-export const getBlockComponent = (contentBlockType: ContentBlockType) => {
+export const getBlockComponent = (contentBlockType: BlockType) => {
   const BlockComponent = contentBlockMap[contentBlockType];
 
   if (!BlockComponent) {
     console.warn(
-      `No component found for content block type: ${contentBlockType}`,
+      `No block component found for block type: ${contentBlockType}`,
     );
 
     return () => null;
@@ -45,13 +45,15 @@ export const getBlockComponent = (contentBlockType: ContentBlockType) => {
   return BlockComponent;
 };
 
-export const getFormatComponent = (formatType: ImageGalleryFormat["type"]) => {
-  const FormatComponent = formatMap[formatType]; // Correctly retrieve the component based on the formatType
+export const getModuleComponent = (moduleType: ModuleType) => {
+  const ContentModule = moduleMap[moduleType]; // Correctly retrieve the component based on the formatType
 
-  if (!FormatComponent) {
-    console.warn(`No format component found for block type: ${formatType}`);
+  if (!ContentModule) {
+    console.warn(
+      `No module component found for type: ${moduleType}`,
+    );
     return () => null;
   }
 
-  return FormatComponent;
+  return ContentModule;
 };

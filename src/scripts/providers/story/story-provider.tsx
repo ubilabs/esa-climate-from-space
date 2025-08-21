@@ -6,8 +6,8 @@ import { StoryContext } from "./use-story";
 export interface StoryContextValue {
   story: Story | null;
   storyElementRef: RefObject<HTMLDivElement | null>;
-  getScrollableFormatsMap: () => Map<string, Element>;
-  setScrollableFormatRefs: (
+  getScrollAnchorRefsMap: () => Map<string, Element>;
+  setScrollAnchorRefs: (
     key: string,
   ) => (node: HTMLElement | null | undefined) => void;
 }
@@ -17,27 +17,31 @@ interface StoryProviderProps extends PropsWithChildren {
 }
 
 export function StoryProvider({ children, story }: StoryProviderProps) {
+  // Reference to the story container element.
   const storyElementRef = useRef<HTMLDivElement | null>(null);
-  const scrollableFormatRefs = useRef<Map<string, Element>>(null);
 
-  const getScrollableFormatsMap = useCallback(() => {
-    if (!scrollableFormatRefs.current) {
+  // Holds references to anchor elements.
+  // Add a node to this Map for the intersection observer to detect it and adjust the URL parameters accordingly.
+  const scrollAnchorRefs = useRef<Map<string, Element>>(null);
+
+  const getScrollAnchorRefsMap = useCallback(() => {
+    if (!scrollAnchorRefs.current) {
       // Initialize the Map on first usage.
-      scrollableFormatRefs.current = new Map();
+      scrollAnchorRefs.current = new Map();
     }
-    return scrollableFormatRefs.current;
+    return scrollAnchorRefs.current;
   }, []);
 
-  const setScrollableFormatRefs = useCallback(
+  const setScrollAnchorRefs = useCallback(
     (key: string) => (node: HTMLElement | undefined | null) => {
-      const map = getScrollableFormatsMap();
+      const map = getScrollAnchorRefsMap();
       if (node) {
         map.set(key, node);
       } else {
         map.delete(key);
       }
     },
-    [getScrollableFormatsMap],
+    [getScrollAnchorRefsMap],
   );
 
   return (
@@ -45,8 +49,8 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
       value={{
         story,
         storyElementRef,
-        getScrollableFormatsMap,
-        setScrollableFormatRefs,
+        getScrollAnchorRefsMap,
+        setScrollAnchorRefs,
       }}
     >
       {children}

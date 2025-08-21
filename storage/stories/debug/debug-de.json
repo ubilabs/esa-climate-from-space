@@ -6,10 +6,10 @@
     "markers": [],
     "image": "assets/story21-image10.jpg"
   },
-  "content": [
+  "blocks": [
     {
       "type": "imageGallery",
-      "blocks": [
+      "modules": [
         {
           "type": "scrollOverlay",
           "slides": [
@@ -108,7 +108,7 @@
         },
         {
           "type": "compareMode",
-          "description": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
+          "text": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
           "buttonText": "Vergleichen Sie die Satellitenbilder",
           "slides": [
             {

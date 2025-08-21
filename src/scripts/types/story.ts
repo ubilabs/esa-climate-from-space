@@ -23,7 +23,7 @@ export interface LegacyStory {
 export type Story = {
   id: string;
   splashscreen: Splashscreen;
-  content: ContentBlock[];
+  blocks: ContentBlock[];
 };
 
 export type Splashscreen = {
@@ -33,12 +33,18 @@ export type Splashscreen = {
   image: string;
 };
 
-export type BlockType = "imageGallery"; // Extend with union for other types if needed
+// Extend with union for other types if needed
+export type BlockType = "imageGallery";
 
 export type ContentBlock = {
   type: BlockType;
-  blocks: ImageGalleryModule[];
+  modules: Module[];
 };
+
+// Extend with union for other block types if needed
+export type Module = ImageModule;
+
+export type ModuleType = ImageModule["type"];
 
 export type ImageGalleryModuleType =
   | "textOverlay"
@@ -47,15 +53,15 @@ export type ImageGalleryModuleType =
   | "imageTime"
   | "imageScroll";
 
-export type ImageGalleryModule = {
+export type ImageModule = {
   type: ImageGalleryModuleType;
   text?: string;
   caption?: string;
-  slides: ImageModule[];
+  slides?: ImageModuleSlide[];
   buttonText?: string;
 };
 
-export type ImageModule = {
+export type ImageModuleSlide = {
   url: string;
   altText: string;
   description?: string;
@@ -68,7 +74,7 @@ export type StorySectionProps = {
 } & ComponentProps<"div">;
 
 export const imageGalleryModuleMap: Record<
-  ImageGalleryModule["type"],
+  ImageModule["type"],
   FunctionComponent<StorySectionProps>
 > = {
   imageWavelength: ImageGallery.ImageWavelength,
@@ -79,7 +85,7 @@ export const imageGalleryModuleMap: Record<
 };
 
 export const imageGalleryBlockComponentMap: Record<
-  ImageGalleryModule["type"],
+  ImageModule["type"],
   FunctionComponent<StorySectionProps> | undefined
 > = {
   imageWavelength: ImageWavelength,

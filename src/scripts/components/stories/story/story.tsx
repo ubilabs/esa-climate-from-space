@@ -5,12 +5,11 @@ import { useStory } from "../../../providers/story/use-story";
 import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
 import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
 
-import { FormatProvider } from "../../../providers/story/format/format-provider";
-
+import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 import {
   getBlockComponent,
-  getFormatComponent,
+  getModuleComponent,
 } from "../../../libs/get-story-components";
 
 import cx from "classnames";
@@ -23,8 +22,7 @@ import styles from "./story.module.css";
  * The hierarchical structure of a story is organized as follows: story > block > module.
  */
 const Story: FunctionComponent = () => {
-  // use the StoryProvider to access the story data
-  const { storyElementRef, story, setScrollableFormatRefs } = useStory();
+  const { storyElementRef, story, setScrollAnchorRefs } = useStory();
 
   // Handles automatic scrolling through the story in showcase mode
   // and manages navigation to the next story when the current one ends
@@ -42,30 +40,34 @@ const Story: FunctionComponent = () => {
       id="story"
     >
       {story.splashscreen && (
-        <SplashScreen ref={setScrollableFormatRefs("0-0-0")} />
+        <SplashScreen ref={setScrollAnchorRefs("0-0-0")} />
       )}
-      {story.content.map((contentBlock, idx) => {
+      {story.blocks.map((contentBlock, idx) => {
         const BlockComponent = getBlockComponent(contentBlock.type);
 
         const blockIndex = idx + 1;
 
         return (
           <BlockComponent key={idx}>
-            {contentBlock.blocks.map(({ type }, i) => {
-              const FormatComponent = getFormatComponent(type);
-              const formatData = contentBlock.blocks[i];
+            {contentBlock.modules.map(({ type }, i) => {
+              const ModuleComponent = getModuleComponent(type);
+              const moduleData = contentBlock.modules[i];
 
               const createRefCallbackForBlock = (index: number) =>
-                setScrollableFormatRefs(`${blockIndex}-${i}-${index}`);
+                setScrollAnchorRefs(`${blockIndex}-${i}-${index}`);
 
               return (
-                <FormatProvider key={i} content={formatData} storyId={story.id}>
-                  <FormatComponent
-                    ref={setScrollableFormatRefs(`${blockIndex}-${i}`)}
+                <ModuleContentProvider
+                  key={i}
+                  module={moduleData}
+                  storyId={story.id}
+                >
+                  <ModuleComponent
+                    ref={setScrollAnchorRefs(`${blockIndex}-${i}`)}
                     // should be passed via FormatProvider
                     getRefCallback={createRefCallbackForBlock}
                   />
-                </FormatProvider>
+                </ModuleContentProvider>
               );
             })}
           </BlockComponent>
