@@ -31,33 +31,31 @@ export type Splashscreen = {
   location: Record<string, unknown>;
   markers: unknown[]; // Use a more specific type if marker structure is known
   image: string;
-  shortText?: string;
 };
 
-export type ContentBlockType = "imageGallery"; // Extend with union for other types if needed
+export type BlockType = "imageGallery"; // Extend with union for other types if needed
 
 export type ContentBlock = {
-  type: ContentBlockType;
-  blocks: ImageGalleryFormat[];
+  type: BlockType;
+  blocks: ImageGalleryModule[];
 };
 
-export type ImageGalleryFormatType =
+export type ImageGalleryModuleType =
   | "textOverlay"
   | "imageWavelength"
   | "imageCompare"
   | "imageTime"
   | "imageScroll";
 
-export type ImageGalleryFormat = {
-  type: ImageGalleryFormatType;
-  description?: string;
+export type ImageGalleryModule = {
+  type: ImageGalleryModuleType;
+  text?: string;
   caption?: string;
-  shortText?: string;
-  slides: ImageSlide[];
+  slides: ImageModule[];
   buttonText?: string;
 };
 
-export type ImageSlide = {
+export type ImageModule = {
   url: string;
   altText: string;
   description?: string;
@@ -69,8 +67,8 @@ export type StorySectionProps = {
   getRefCallback?: (index: number) => (node: HTMLElement | null) => void;
 } & ComponentProps<"div">;
 
-export const imageGalleryFormatMap: Record<
-  ImageGalleryFormat["type"],
+export const imageGalleryModuleMap: Record<
+  ImageGalleryModule["type"],
   FunctionComponent<StorySectionProps>
 > = {
   imageWavelength: ImageGallery.ImageWavelength,
@@ -81,7 +79,7 @@ export const imageGalleryFormatMap: Record<
 };
 
 export const imageGalleryBlockComponentMap: Record<
-  ImageGalleryFormat["type"],
+  ImageGalleryModule["type"],
   FunctionComponent<StorySectionProps> | undefined
 > = {
   imageWavelength: ImageWavelength,
