@@ -17,11 +17,10 @@ interface BlendWrapperProps extends StorySectionProps {
 
 const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
   animationDirection,
-  getRefCallback,
 }) => {
-  const { module: content, storyId } = useModuleContent();
+  const { module, storyId , getRefCallback} = useModuleContent();
   const targetRef = useRef<HTMLDivElement | null>(null);
-  const images: ImageModuleSlide[] = useMemo(() => content?.slides ?? [], [content]);
+  const images: ImageModuleSlide[] = useMemo(() => module?.slides ?? [], [module]);
   const numSlides = images.length;
   const [activeSlideIndex, setActiveSlideIndex] = useState<number | null>(null);
 
@@ -50,7 +49,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
     return activeSlide ? activeSlide.captions : [];
   }, [activeSlideIndex, images]);
 
-  if (!content || numSlides === 0) {
+  if (!module || numSlides === 0) {
     return null;
   }
 

@@ -4,7 +4,7 @@ import { useGesture } from "@use-gesture/react";
 
 import cx from "classnames";
 
-import { ImageSlide } from "../../../../../../../../types/story";
+import { ImageModuleSlide } from "../../../../../../../../types/story";
 import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 
@@ -18,8 +18,8 @@ import {
 import styles from "./comparison-viewer.module.css";
 
 interface Props {
-  slide1: ImageSlide;
-  slide2: ImageSlide;
+  slide1: ImageModuleSlide;
+  slide2: ImageModuleSlide;
   storyId: string;
   isComparing: boolean;
   onInteraction?: () => void;

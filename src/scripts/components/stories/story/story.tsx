@@ -53,7 +53,9 @@ const Story: FunctionComponent = () => {
               const ModuleComponent = getModuleComponent(type);
               const moduleData = contentBlock.modules[i];
 
-              const createRefCallbackForBlock = (index: number) =>
+              // Assign this to element's ref within modules that should serve as scroll anchors.
+              // For instance, in time- or wavelength modules, designate every "blendImage" as a scroll anchor.
+              const generateScrollAnchorRef = (index: number) =>
                 setScrollAnchorRefs(`${blockIndex}-${i}-${index}`);
 
               return (
@@ -61,11 +63,10 @@ const Story: FunctionComponent = () => {
                   key={i}
                   module={moduleData}
                   storyId={story.id}
+                  getRefCallback={generateScrollAnchorRef}
                 >
                   <ModuleComponent
                     ref={setScrollAnchorRefs(`${blockIndex}-${i}`)}
-                    // should be passed via FormatProvider
-                    getRefCallback={createRefCallbackForBlock}
                   />
                 </ModuleContentProvider>
               );

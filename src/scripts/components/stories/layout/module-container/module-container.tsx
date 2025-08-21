@@ -1,10 +1,10 @@
-import { PropsWithChildren, Ref, CSSProperties } from "react";
+import { PropsWithChildren, Ref, CSSProperties, HTMLAttributes } from "react";
 
 import cx from "classnames";
 
 import styles from "./module-container.module.css";
 
-interface Props extends PropsWithChildren {
+interface Props extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
   className?: string;
   // make sure ref is passed as a prop
   // This is necessary, otherwise the SyncStoryUrl component will not detect the section
@@ -14,14 +14,25 @@ interface Props extends PropsWithChildren {
 
 /**
  * A wrapper component for rendering a module section. It accepts children elements,
- * This is optional but provides some common section styling and correct anchor ref
+ * This is optional but provides some  styling and anchor ref
  */
-export const ModuleWrapper = ({ children, className, ref, style }: Props) => {
+export const ModuleContainer = ({
+  children,
+  className,
+  ref,
+  style,
+  ...elementProps
+}: Props) => {
   return (
-    <section ref={ref} className={cx(styles.module, className)} style={style}>
+    <div
+      ref={ref}
+      className={cx(styles.module, className)}
+      style={style}
+      {...elementProps}
+    >
       {children}
-    </section>
+    </div>
   );
 };
 
-ModuleWrapper.displayName = "ModuleWrapper";
+ModuleContainer.displayName = "ModuleContainer";

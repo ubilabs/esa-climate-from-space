@@ -1,18 +1,9 @@
 import { StorySectionProps } from "../../../../../../../types/story";
-import TimeAndWavelengthBlend from "../shared/time-and-wavelength-blend-wrapper/time-and-wavelength-blend";
 import { FunctionComponent } from "react";
+import TimeAndWavelengthBlend from "../shared/time-and-wavelength-blend-wrapper/time-and-wavelength-blend";
 
-const ImageTime: FunctionComponent<StorySectionProps> = ({
-  getRefCallback,
-  ...props
-}) => {
-  return (
-    <TimeAndWavelengthBlend
-      {...props}
-      getRefCallback={getRefCallback}
-      animationDirection="horizontal"
-    />
-  );
+const ImageTime: FunctionComponent<StorySectionProps> = ({ ...props }) => {
+  return <TimeAndWavelengthBlend {...props} animationDirection="horizontal" />;
 };
 
 export default ImageTime;

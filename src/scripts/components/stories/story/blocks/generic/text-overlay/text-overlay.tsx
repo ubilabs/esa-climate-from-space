@@ -11,17 +11,16 @@ import styles from "./text-overlay.module.css";
  * Capable of generating one or multiple slides with options for no background, image background, or video background.
  *
  */
-const TextOverlay: FunctionComponent<StorySectionProps> = ({
-  getRefCallback,
-}) => {
+const TextOverlay: FunctionComponent<StorySectionProps> = () => {
   const {
     module: { slides },
     storyId,
+    getRefCallback,
   } = useModuleContent();
 
   return (
     <div className={styles.textOverlay}>
-      {slides.map((slide, index) => (
+      {slides?.map((slide, index) => (
         <TextOverlaySlide
           getRefCallback={getRefCallback}
           key={index}
