@@ -111,7 +111,7 @@
         },
         {
           "type": "compareMode",
-          "description": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
+          "text": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
           "buttonText": "",
           "slides": [
             {

@@ -108,7 +108,7 @@
         },
         {
           "type": "compareMode",
-          "description": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
+          "text": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
           "buttonText": "Vergleichen Sie die Satellitenbilder",
           "slides": [
             {
