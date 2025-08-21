@@ -1,14 +1,11 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent } from "react";
 
 import { useStory } from "../../../providers/story/use-story";
-import { useDispatch } from "react-redux";
 
 import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
 import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
 
 import { FormatProvider } from "../../../providers/story/format/format-provider";
-
-import { setSelectedContentAction } from "../../../reducers/content";
 
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 import {
@@ -22,22 +19,9 @@ import styles from "./story.module.css";
 
 const Story: FunctionComponent = () => {
   const { storyElementRef, story, setScrollableFormatRefs } = useStory();
-  const dispatch = useDispatch();
 
   useAutoScrollInShowcase();
-  useSyncStoryUrl()
-
-  useEffect(() => {
-    if (!story?.id) {
-      return;
-    }
-
-    dispatch(setSelectedContentAction({ contentId: story.id }));
-
-    return () => {
-      dispatch(setSelectedContentAction({ contentId: null }));
-    };
-  }, [dispatch, story?.id]);
+  useSyncStoryUrl();
 
   if (!story) {
     return null;

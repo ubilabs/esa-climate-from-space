@@ -21,6 +21,9 @@ import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 import { StoryProvider } from "../../../providers/story/story-provider";
 
 import { languageSelector } from "../../../selectors/language";
+
+import { setSelectedContentAction } from "../../../reducers/content";
+
 import translations from "../../../i18n";
 
 import UrlSync from "../url-sync/url-sync";
@@ -61,11 +64,24 @@ const StoryWrapper: FunctionComponent<{ children?: React.ReactNode }> = ({
 }) => {
   const lang = useSelector(languageSelector);
   const { currentStoryId } = useContentParams();
+  const dispatch = useDispatch();
 
   const { data: story } = useGetStoryQuery({
     id: currentStoryId,
     language: lang,
   });
+
+  useEffect(() => {
+    if (!story?.id || !currentStoryId) {
+      return;
+    }
+
+    dispatch(setSelectedContentAction({ contentId: story.id }));
+
+    // Cleanup is intentionally omitted on unmount
+    // This ensures the story Content ID persists, allowing the correct entry
+    // to remain selected in the content navigation.
+  }, [currentStoryId, dispatch, story?.id]);
 
   // Redux Toolkit may cache the story data, so it's essential to confirm
   // the presence of the currentStoryId
@@ -147,7 +163,10 @@ const TranslatedApp: FunctionComponent = () => {
               path={ROUTES.present.path}
               element={<PresentationSelector />}
             />
-            <Route path={ROUTES.present_story.path} element={<LegacyOrRecentStory />} />
+            <Route
+              path={ROUTES.present_story.path}
+              element={<LegacyOrRecentStory />}
+            />
             <Route path={ROUTES.showcase.path} element={<ShowcaseSelector />} />
             {/* Showcase stories and story routes */}
             <Route
