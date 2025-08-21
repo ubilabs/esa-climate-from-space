@@ -1,7 +1,6 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent } from "react";
 
 import { useStory } from "../../../providers/story/use-story";
-import { useDispatch } from "react-redux";
 
 import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
 import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
