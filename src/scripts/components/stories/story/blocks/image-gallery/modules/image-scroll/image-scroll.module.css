@@ -103,14 +103,14 @@
     @media screen and (--desktop-viewport) {
       height: calc(var(--story-height) / 1.5);
 
-      /* if the scrollImageContainer does not have a imageScrollText sibling, */
-      /* the imageContainer child can take the full width up to 1500px*/
+      /* When the scrollImageContainer lacks an imageScrollText sibling, */
+      /* the imageContainer child can expand to a full width of up to 1500px */
       &:not(.imageScrollText + .scrollImageContainer) {
         width: min(100%, 1500px);
-        height: 100%;
+        height: var(--story-height);
         margin-bottom: 4rem;
 
-        div:first-child {
+        div:not([data-status="fullscreenOverlay"]):first-child {
           height: 60vh;
           width: 100%;
         }
