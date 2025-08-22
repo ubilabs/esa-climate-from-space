@@ -19,7 +19,7 @@ interface CaptionProps {
   index: number;
 }
 
-const TRANSLATE_DISTANCE = 400;
+const TRANSLATE_DISTANCE = 300;
 
 const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -31,7 +31,7 @@ const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
 
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
 
-  const translateX = useTransform(
+  const translateY = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
     // For even indices, move left; for odd indices, move right
@@ -41,11 +41,12 @@ const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
   );
 
   return (
-    <motion.div
+    <motion.section
+      tabIndex={-1}
       ref={ref}
       style={{
         opacity: opacity,
-        translateX: translateX,
+        translateY: translateY,
       }}
       className={cx(styles.captionContainer)}
     >
@@ -53,7 +54,7 @@ const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
         children={caption}
         allowedElements={config.markdownAllowedElements}
       />
-    </motion.div>
+    </motion.section>
   );
 };
 
