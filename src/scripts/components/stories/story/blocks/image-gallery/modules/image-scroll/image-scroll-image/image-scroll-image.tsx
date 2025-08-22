@@ -2,6 +2,7 @@ import { useState, useRef, FunctionComponent, SyntheticEvent } from "react";
 import { useIntl } from "react-intl";
 import { motion, useMotionValue, useTransform } from "motion/react";
 import { useGesture } from "@use-gesture/react";
+import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 
 import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
@@ -25,6 +26,8 @@ export const ScrollImage: FunctionComponent<Props> = ({ src, alt }) => {
   const [showInstructions, setShowInstructions] = useState(true);
 
   const intl = useIntl();
+  const { isMobile } = useScreenSize();
+
   // Motion values for drag and scale
   const scale = useMotionValue(1);
   const x = useMotionValue(0);
@@ -113,7 +116,6 @@ export const ScrollImage: FunctionComponent<Props> = ({ src, alt }) => {
       data-status={isFullscreen ? "fullscreenOverlay" : "imageContainer"}
       role={isFullscreen ? "dialog" : undefined}
       aria-modal={isFullscreen ? "true" : undefined}
-      aria-hidden={!isFullscreen}
     >
       <motion.img
         layout
@@ -142,10 +144,12 @@ export const ScrollImage: FunctionComponent<Props> = ({ src, alt }) => {
 
       {isFullscreen && (
         <>
-          <InstructionOverlay
-            show={showInstructions}
-            messageId="zoomInstruction"
-          />
+          {isMobile && (
+            <InstructionOverlay
+              show={showInstructions}
+              messageId="zoomInstruction"
+            />
+          )}
           <button
             onClick={handleClose}
             className={styles.closeButton}

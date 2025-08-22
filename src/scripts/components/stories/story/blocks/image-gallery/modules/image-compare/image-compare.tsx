@@ -7,6 +7,7 @@ import { SlideContainer } from "../../../../../layout/slide-container/slide-cont
 import { ComparisonViewer } from "./comparison-viewer/comparison-viewer";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+import { useScreenSize } from "../../../../../../../hooks/use-screen-size";
 
 import cx from "classnames";
 
@@ -16,11 +17,12 @@ const ImageCompare: FunctionComponent<StorySectionProps> = () => {
   const {
     module: { slides, text: description, buttonText },
     storyId,
-    getRefCallback
+    getRefCallback,
   } = useModuleContent();
 
   const [isComparing, setIsComparing] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
+  const { isMobile } = useScreenSize();
   const intl = useIntl();
 
   useEffect(() => {
@@ -69,10 +71,12 @@ const ImageCompare: FunctionComponent<StorySectionProps> = () => {
         </div>
       ) : (
         <>
-          <InstructionOverlay
-            show={showInstructions}
-            messageId="zoomInstruction"
-          />
+          {isMobile && (
+            <InstructionOverlay
+              show={showInstructions}
+              messageId="zoomInstruction"
+            />
+          )}
           <button
             onClick={() => setIsComparing(false)}
             className={styles.closeButton}
