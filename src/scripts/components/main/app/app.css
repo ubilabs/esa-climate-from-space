@@ -10,6 +10,10 @@
   src: url("../../../../../assets/fonts/NotesEsaBol.otf");
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 /* default margin and padding*/
 * {
   margin: 0;
