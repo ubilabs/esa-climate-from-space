@@ -14,7 +14,8 @@ import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 import { useStory } from "../../../../../providers/story/use-story";
 
 import { StorySectionProps } from "../../../../../types/story";
-import { FormatContainer } from "../../../layout/format-container/format-container";
+
+import { SlideContainer } from "../../../layout/slide-container/slide-container";
 
 import { STORY_LATITUDE_OFFSET } from "../../../../../config/main";
 
@@ -67,7 +68,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const { id } = story;
 
   return (
-    <FormatContainer
+    <SlideContainer
       className={cx(
         styles.splashscreen,
         isLocationBased && styles.locationStory,
@@ -91,6 +92,6 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
           />
         </motion.div>
       </div>
-    </FormatContainer>
+    </SlideContainer>
   );
 };

@@ -6,7 +6,7 @@ import { Story } from "../types/story";
  */
 export const isLegacyStory = (story: LegacyStory | Story): boolean => {
   // if a story has the new 'content' property, it is not a legacy story
-  if ("content" in story) {
+  if ("blocks" in story) {
     return false;
   }
 
