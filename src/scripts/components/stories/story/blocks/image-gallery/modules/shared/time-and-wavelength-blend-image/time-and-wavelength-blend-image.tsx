@@ -71,7 +71,7 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<BlendImageProps> = (
   return (
     <motion.li style={style} className={styles.blendItem}>
       {/* This element is used to help the intersection observer keep track of which image is currently visible.
-          The image itself cannot be used because it may not always be fully in view due to the applied clip-path. */}
+          The image itself cannot be used because it will always be fully in view */}
       <span
         aria-hidden="true"
         ref={ref}

@@ -39,28 +39,26 @@ const Story: FunctionComponent = () => {
       ref={storyElementRef}
       id="story"
     >
-      {story.splashscreen && (
-        <SplashScreen ref={setScrollAnchorRefs("0-0-0")} />
-      )}
-      {story.blocks.map((contentBlock, idx) => {
+      <SplashScreen ref={setScrollAnchorRefs("0-0-0")} />
+      {story.blocks.map((contentBlock, blockIndex) => {
         const BlockComponent = getBlockComponent(contentBlock.type);
 
-        const blockIndex = idx + 1;
-
         return (
-          <BlockComponent key={idx}>
-            {contentBlock.modules.map(({ type }, i) => {
+          <BlockComponent key={blockIndex}>
+            {contentBlock.modules.map(({ type }, moduleIndex) => {
               const ModuleComponent = getModuleComponent(type);
-              const moduleData = contentBlock.modules[i];
+              const moduleData = contentBlock.modules[moduleIndex];
 
               // Assign this to element's ref within modules that should serve as scroll anchors.
               // For instance, in time- or wavelength modules, designate every "blendImage" as a scroll anchor.
-              const generateScrollAnchorRef = (index: number) =>
-                setScrollAnchorRefs(`${blockIndex}-${i}-${index}`);
+              const generateScrollAnchorRef = (nodeIndex: number) =>
+                setScrollAnchorRefs(
+                  `${blockIndex + 1}-${moduleIndex}-${nodeIndex}`,
+                );
 
               return (
                 <ModuleContentProvider
-                  key={i}
+                  key={moduleIndex}
                   module={moduleData}
                   storyId={story.id}
                   getRefCallback={generateScrollAnchorRef}
