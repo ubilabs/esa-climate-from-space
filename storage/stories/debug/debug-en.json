@@ -2,7 +2,6 @@
   "id": "debug",
   "splashscreen": {
     "description": "# The Water Cycle \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based",
-    "markers": [{ "lat": 58.5, "lng": -4.5 }],
     "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
     "image": "assets/story21-image10.jpg"
   },
@@ -61,7 +60,8 @@
               ]
             }
           ]
-        },{
+        },
+        {
           "type": "imageTime",
           "slides": [
             {
@@ -142,7 +142,7 @@
         },
         {
           "type": "imageCompare",
-          "description": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
+          "text": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
           "buttonText": "",
           "slides": [
             {
