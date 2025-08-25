@@ -78,7 +78,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
           ))}
         </ul>
         <div className={styles.altText}>
-          <h3>{captions.join(" ")}</h3>
+          <h3>{captions?.join(" ")}</h3>
           <p>{description}</p>
         </div>
       </div>
