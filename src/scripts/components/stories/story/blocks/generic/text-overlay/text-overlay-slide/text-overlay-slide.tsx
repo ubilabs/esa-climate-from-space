@@ -64,8 +64,8 @@ interface Props {
   getRefCallback: (index: number) => (element: HTMLDivElement) => void;
 }
 
-const isVideo = (url: string) => {
-  return url.endsWith(".mp4") || url.endsWith(".webm");
+const isVideo = (url: string | undefined) => {
+  return url?.endsWith(".mp4") || url?.endsWith(".webm") || false;
 };
 
 export const TextOverlaySlide: FunctionComponent<Props> = ({
@@ -76,10 +76,19 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
   const assetUrl = getStoryAssetUrl(storyId, slide?.url);
   const hasAsset = assetUrl && assetUrl.length > 0;
 
+  if (!slide.captions || slide.captions.length === 0) {
+    console.warn(
+      `TextOverlaySlide: Slide for story ${storyId} has no captions, skipping rendering.`,
+    );
+    return null;
+  }
+
   return (
     <div
       className={cx(styles.slide)}
-      style={{ height: `calc(${slide.captions.length} * var(--story-height))` }}
+      style={{
+        height: `calc(${slide.captions?.length} * var(--story-height))`,
+      }}
     >
       <div className={styles.assetContainer}>
         {hasAsset &&

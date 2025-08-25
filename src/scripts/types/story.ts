@@ -62,10 +62,10 @@ export type ImageModule = {
 };
 
 export type ImageModuleSlide = {
-  url: string;
-  altText: string;
+  url?: string;
+  altText?: string;
   description?: string;
-  captions: string[];
+  captions?: string[];
   fit?: "cover" | "contain";
 };
 
