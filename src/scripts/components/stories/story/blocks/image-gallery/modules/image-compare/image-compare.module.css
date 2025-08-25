@@ -83,7 +83,7 @@
       font-weight: 700;
       line-height: 1;
       letter-spacing: 0.32px;
-      height: 40px;
+      height: fit-content;
       padding: 12px;
       border-radius: 40px;
       border: none;
