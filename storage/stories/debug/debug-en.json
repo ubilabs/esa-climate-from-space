@@ -15,7 +15,6 @@
           "slides": [
             {
               "url": "",
-              "altText": "In 2010, Queensland experienced the wettest December on record, leading to a prolonged period of extensive flooding.",
               "captions": [
                 "In 2010, Queensland experienced the wettest December on record, leading to a prolonged period of extensive flooding."
               ]
@@ -27,7 +26,6 @@
           "slides": [
             {
               "url": "assets/story21-image14.jpg",
-              "altText": "Heavy cloud cover and rainfall in northeastern Australia were due to unusual temperature and evaporation patterns in the central Pacific",
               "captions": [
                 "Heavy cloud cover and rainfall in northeastern Australia were due to unusual temperature and evaporation patterns in the central Pacific, referred to as [La Niña](https://cfs.climate.esa.int/index.html#/stories/story-16/6?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI).",
                 "The warming of the climate, thawing of permafrost, and intrusion of meltwater are among the causes of such events."
@@ -36,11 +34,28 @@
           ]
         },
         {
+          "type": "imageTime",
+          "slides": [
+            {
+              "url": "assets/story37-image01.jpg",
+              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "captions": [
+                "Satellites for peat's sake. Cloud-free view.",
+                "Lorem Ipsum"
+              ]
+            },
+            {
+              "url": "assets/story37-image02.jpg",
+              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+              "captions": ["Satellites for peat's sake. 2"]
+            }
+          ]
+        },
+        {
           "type": "textOverlay",
           "slides": [
             {
               "url": "",
-              "altText": "This event illustrates how different parts of the Earth system – ocean, atmosphere, and land – and locations thousands of kilometers apart are interconnected through the water cycle.",
               "captions": [
                 "This event illustrates how different parts of the Earth system – ocean, atmosphere, and land – and locations thousands of kilometers apart are interconnected through the water cycle."
               ]
@@ -84,7 +99,6 @@
           "slides": [
             {
               "url": "",
-              "altText": "Copernicus Marine Environment Monitoring Service",
               "captions": [
                 "After months of high temperatures and low rainfall, the water level of Italy's Po River reached a record low in 2022. The drought in northern Italy impacted the region's agricultural production, which often relies on irrigation."
               ]
@@ -123,6 +137,15 @@
               "url": "assets/story37-image02.jpg",
               "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
               "captions": ["A new caption text."]
+            }
+          ]
+        },
+        {
+          "type": "textOverlay",
+          "slides": [
+            {
+              "url": "assets/satellite.gif",
+              "captions": ["Thanks for scrolling through"]
             }
           ]
         }

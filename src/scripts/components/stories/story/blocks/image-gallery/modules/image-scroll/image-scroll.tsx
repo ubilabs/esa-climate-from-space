@@ -34,7 +34,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
               alt={slide.altText}
             />
             <ReactMarkdown
-              children={slide.captions.join("\n\n")}
+              children={slide.captions?.join("\n\n") || ""}
               allowedElements={config.markdownAllowedElements}
             />
           </div>
