@@ -4,12 +4,12 @@
     "description": "# Urban Sprawl\n\nCairo, Egypt",
     "image": "assets/story33-image04.jpg"
   },
-  "content": [
+  "blocks": [
     {
       "type": "imageGallery",
-      "blocks": [
+      "modules": [
         {
-          "type": "scrollOverlay",
+          "type": "textOverlay",
           "slides": [
             {
               "url": "",
@@ -21,7 +21,7 @@
           ]
         },
         {
-          "type": "timeBlend",
+          "type": "imageTime",
           "slides": [
             {
               "url": "assets/story33-image01.jpg",
