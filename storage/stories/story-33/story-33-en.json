@@ -9,7 +9,7 @@
       "type": "imageGallery",
       "modules": [
         {
-          "type": "scrollOverlay",
+          "type": "textOverlay",
           "slides": [
             {
               "url": "",
@@ -21,7 +21,7 @@
           ]
         },
         {
-          "type": "timeBlend",
+          "type": "imageTime",
           "slides": [
             {
               "url": "assets/story33-image01.jpg",
