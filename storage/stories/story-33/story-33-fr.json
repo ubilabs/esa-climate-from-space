@@ -4,10 +4,10 @@
     "description": "# L'étalement urbain\n\nLe Caire, Égypte",
     "image": "assets/story33-image04.jpg"
   },
-  "content": [
+  "blocks": [
     {
       "type": "imageGallery",
-      "blocks": [
+      "modules": [
         {
           "type": "scrollOverlay",
           "slides": [
