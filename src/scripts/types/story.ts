@@ -28,9 +28,8 @@ export type Story = {
 
 export type Splashscreen = {
   description: string;
-  location: Record<string, unknown>;
-  markers: unknown[]; // Use a more specific type if marker structure is known
-  image: string;
+  location?: Record<string, number>;
+  image?: string;
 };
 
 // Extend with union for other types if needed
@@ -56,7 +55,6 @@ export type ImageGalleryModuleType =
 export type ImageModule = {
   type: ImageGalleryModuleType;
   text?: string;
-  caption?: string;
   slides?: ImageModuleSlide[];
   buttonText?: string;
 };
@@ -66,7 +64,6 @@ export type ImageModuleSlide = {
   altText?: string;
   description?: string;
   captions?: string[];
-  fit?: "cover" | "contain";
 };
 
 export type StorySectionProps = {
