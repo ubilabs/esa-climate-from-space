@@ -1,35 +1,72 @@
 {
   "id": "story-34",
-  "slides": [
+  "splashscreen": {
+    "description": "# Perte de forêts\n\nBassin de l'Amazone, Brésil",
+    "image": "assets/story34-image05.jpg"
+  },
+  "blocks": [
     {
-      "type": "splashscreen",
-      "text": "# Perte de forêts\r\n\r\nBassin de l'Amazone, Brésil",
-      "shortText": "# Perte de forêts\r\n\r\nBassin de l'Amazone, Brésil",
-      "images": [
-        "assets/story34-image05.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Perte de forêts en Amazonie, Brésil\r\n\r\nLa première séquence montre la perte cumulative de forêts de 2001 à 2020 dans le bassin de l'Amazone. Dans cet ensemble de données, la perte de forêts est définie comme le passage d'un état forestier à un état non forestier pour chaque pixel de l'ensemble de données. Les données sur la perte de forêts, fournies par l'université du Maryland, ont été superposées à l'ensemble de données sur la biomasse aérienne en 2020, généré par l'initiative sur le changement climatique de l'ESA. Comme le montre la deuxième séquence, les forêts tropicales humides du monde entier sont détruites à un rythme alarmant. La conversion des forêts tropicales humides en pâturages et en terres cultivées a un effet dramatique sur le paysage, la biodiversité et l'environnement. Cette situation est très préoccupante, car les forêts tropicales humides jouent un rôle important dans le climat mondial. On estime que 20 % du biome amazonien a déjà disparu et que la tendance s'aggravera si rien n'est fait. \r\n\r\nCrédits : ESA (sources de données : projet CCI Biomass et Hansen/UMD/Google/USGS/NASA). Contient des données Copernicus Sentinel modifiées (2019), traitées par l'ESA. USGS/ESA",
-      "shortText": "## Perte de forêts en Amazonie, Brésil\r\n\r\nLa première séquence montre la perte cumulative de forêts de 2001 à 2020 dans le bassin de l'Amazone. Dans cet ensemble de données, la perte de forêts est définie comme le passage d'un état forestier à un état non forestier pour chaque pixel de l'ensemble de données. Les données sur la perte de forêts, fournies par l'université du Maryland, ont été superposées à l'ensemble de données sur la biomasse aérienne en 2020, généré par l'initiative sur le changement climatique de l'ESA. Comme le montre la deuxième séquence, les forêts tropicales humides du monde entier sont détruites à un rythme alarmant. La conversion des forêts tropicales humides en pâturages et en terres cultivées a un effet dramatique sur le paysage, la biodiversité et l'environnement. Cette situation est très préoccupante, car les forêts tropicales humides jouent un rôle important dans le climat mondial. On estime que 20 % du biome amazonien a déjà disparu et que la tendance s'aggravera si rien n'est fait. \r\n\r\nCrédits : ESA (sources de données : projet CCI Biomass et Hansen/UMD/Google/USGS/NASA). Contient des données Copernicus Sentinel modifiées (2019), traitées par l'ESA. USGS/ESA",
-      "images": [
-        "assets/story34-image01.jpg",
-        "assets/story34-image02.jpg",
-        "assets/story34-image03.jpg",
-        "assets/story34-image04.jpg"
-      ],
-      "imageCaptions": [
-        "2020 biomasse aérienne dans le bassin amazonien",
-        "Perte cumulée de forêts entre 2001 et 2020 dans le bassin amazonien",
-        "Rondônia, Brésil : déforestation dans la forêt amazonienne. La déforestation et les zones urbaines sont clairement visibles dans les tons beige, vert clair et brun, tandis que la forêt intacte apparaît en vert foncé. Cette image a été prise le 8 juillet 1989.",
-        "Rondônia, Brésil : déforestation dans la forêt amazonienne. La déforestation et les zones urbaines sont clairement visibles dans les tons beige, vert clair et brun, tandis que la forêt intacte apparaît en vert foncé. Cette image a été prise le 5 juin 2019."
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "cover",
-        "cover"
+      "type": "imageGallery",
+      "modules": [
+        {
+          "type": "textOverlay",
+          "slides": [
+            {
+              "url": "",
+              "altText": "",
+              "captions": [
+                "La première séquence montre la perte cumulative de forêts de 2001 à 2020 dans le bassin de l'Amazone. Dans cet ensemble de données, la perte de forêts est définie comme le passage d'un état forestier à un état non forestier pour chaque pixel de l'ensemble de données. Les données sur la perte de forêts, fournies par l'université du Maryland, ont été superposées à l'ensemble de données sur la biomasse aérienne en 2020, généré par l'initiative sur le changement climatique de l'ESA."
+              ]
+            },
+            {
+              "url": "",
+              "altText": "",
+              "captions": [
+                "Comme le montre la deuxième séquence, les forêts tropicales humides du monde entier sont détruites à un rythme alarmant. La conversion des forêts tropicales humides en pâturages et en terres cultivées a un effet dramatique sur le paysage, la biodiversité et l'environnement. Cette situation est très préoccupante, car les forêts tropicales humides jouent un rôle important dans le climat mondial. On estime que 20 % du biome amazonien a déjà disparu et que la tendance s'aggravera si rien n'est fait."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "imageTime",
+          "slides": [
+            {
+              "url": "assets/story34-image01.jpg",
+              "altText": "",
+              "captions": [
+                "2020 biomasse aérienne dans le bassin amazonien"
+              ]
+            },
+            {
+              "url": "assets/story34-image02.jpg",
+              "altText": "",
+              "captions": [
+                "Perte cumulée de forêts entre 2001 et 2020 dans le bassin amazonien"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "imageTime",
+          "slides": [
+            {
+              "url": "assets/story34-image03.jpg",
+              "description": "La déforestation et les zones urbaines sont clairement visibles dans les tons beige, vert clair et brun, tandis que la forêt intacte apparaît en vert foncé. Cette image a été prise le 8 juillet 1989.",
+              "altText": "",
+              "captions": [
+                "Rondônia, Brésil : déforestation dans la forêt amazonienne."
+              ]
+            },
+            {
+              "url": "assets/story34-image04.jpg",
+              "description": "La déforestation et les zones urbaines sont clairement visibles dans les tons beige, vert clair et brun, tandis que la forêt intacte apparaît en vert foncé. Cette image a été prise le 5 juin 2019.",
+              "altText": "",
+              "captions": [
+                "Rondônia, Brésil : déforestation dans la forêt amazonienne."
+              ]
+            }
+          ]
+        }
       ]
     }
   ]
