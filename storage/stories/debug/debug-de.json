@@ -1,125 +1,69 @@
 {
   "id": "debug",
   "splashscreen": {
-    "description": "# Der Wasserkreislauf \r\n\r\n  Wasser ist für unser Leben unerlässlich. Der Wasserkreislauf verbindet viele Komponenten des Klimasystems der Erde und spielt eine wichtige Rolle beim Transport von Wärme um den Planeten.",
-    "location": {},
-    "markers": [],
-    "image": "assets/story21-image10.jpg"
+    "description": "# Waldverlust\n\nAmazonasbecken, Brasilien",
+    "image": "assets/story34-image05.jpg"
   },
   "blocks": [
     {
       "type": "imageGallery",
       "modules": [
         {
-          "type": "textOverlay",
+          "type": "undefined",
           "slides": [
             {
               "url": "",
-              "altText": "Im Jahr 2010 erlebte Queensland den nassesten Dezember seit Beginn der Aufzeichnungen, was zu einer längeren Periode mit ausgedehnten Überschwemmungen führte.",
+              "altText": "",
               "captions": [
-                "Im Jahr 2010 erlebte Queensland den nassesten Dezember seit Beginn der Aufzeichnungen, was zu einer längeren Periode mit ausgedehnten Überschwemmungen führte."
+                "Die erste Sequenz zeigt den kumulativen Waldverlust von 2001 bis 2020 im Amazonasbecken. Waldverlust ist in diesem Datensatz als Veränderung von einem Wald- zu einem Nicht-Wald-Zustand für jedes Pixel des Datensatzes definiert. Die von der University of Maryland stammenden Daten zum Waldverlust wurden mit dem von der ESA-Initiative zum Klimawandel erstellten Datensatz zur oberirdischen Biomasse für 2020 überlagert. Wie in der zweiten Sequenz zu sehen ist, werden die Regenwälder weltweit in einem alarmierenden Tempo zerstört."
               ]
-            }
-          ]
-        },
-        {
-          "type": "textOverlay",
-          "slides": [
-            {
-              "url": "assets/story21-image14.jpg",
-              "altText": "Die starke Bewölkung und die Regenfälle im Nordosten Australiens waren auf ungewöhnliche Temperatur- und Verdunstungsmuster im zentralen Pazifik zurückzuführen",
-              "captions": [
-                "Die starke Bewölkung und die Regenfälle im Nordosten Australiens waren auf ungewöhnliche Temperatur- und Verdunstungsmuster im zentralen Pazifik zurückzuführen, die als [La Niña](https://cfs.climate.esa.int/index.html#/stories/story-16/6?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI) bezeichnet werden.",
-                "Die Erwärmung des Klimas, das Auftauen von Permafrostböden und das Eindringen von Schmelzwasser gehören zu den Ursachen für solche Ereignisse."
-              ]
-            }
-          ]
-        },
-        {
-          "type": "textOverlay",
-          "slides": [
+            },
             {
               "url": "",
-              "altText": "Dieses Ereignis zeigt, wie verschiedene Teile des Erdsystems – Ozean, Atmosphäre und Land – und Orte, die Tausende Kilometer voneinander entfernt sind, durch den Wasserkreislauf miteinander verbunden sind.",
+              "altText": "",
               "captions": [
-                "Dieses Ereignis zeigt, wie verschiedene Teile des Erdsystems – Ozean, Atmosphäre und Land – und Orte, die Tausende Kilometer voneinander entfernt sind, durch den Wasserkreislauf miteinander verbunden sind."
+                "Die Umwandlung tropischer Regenwälder in Weide- und Ackerland hat dramatische Auswirkungen auf die Landschaft, die biologische Vielfalt und die Umwelt. Dies ist sehr besorgniserregend, da die Regenwälder eine wichtige Rolle für unser globales Klima spielen. Schätzungen zufolge sind bereits 20 % des Amazonas-Bioms verloren gegangen, und der Trend wird sich noch verstärken, wenn er nicht gestoppt wird."
               ]
             }
           ]
         },
         {
-          "type": "imageScroll",
+          "type": "undefined",
           "slides": [
             {
-              "url": "assets/story21-image01.jpg",
-              "description": "Bitte geben Sie hier einen aussagekräftigen Text ein.",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "url": "assets/story34-image01.jpg",
+              "altText": "",
               "captions": [
-                "### Toowoomba, Queensland, Australien",
-                "Eine Frau harrt während einer Sturzflut am 10. Januar 2011, auf dem Dach ihres Autos aus [T Swinson](https://cfs.climate.esa.int/index.html#/stories/story-21/1?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI)"
+                "2020 Oberirdische Biomasse im Amazonasbecken"
               ]
             },
             {
-              "url": "assets/story21-image06.png",
-              "description": "## Globaler mittlerer Meeresspiegel \r\n\r\n Der von Satelliten beobachtete globale Meeresspiegel zeigt eine steigende Tendenz von 3,3 mm pro Jahr, aber einen Rückgang im Jahr 2011 aufgrund der großen Menge an überschüssigem Wasser an Land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
-              "altText": "Globaler mittlerer Meeresspiegel",
+              "url": "assets/story34-image02.jpg",
+              "altText": "",
               "captions": [
-                "### Bildunterschrift",
-                "ESA-CCI/Copernicus Dienst zur Überwachung der Meeresumwelt"
-              ]
-            },
-            {
-              "url": "assets/story21-image12.jpg",
-              "description": "## New South Wales, Australien \r\n\r\n Copernicus Sentinel-1 Radaraufnahmen vom 7. und 19. März 2021 zeigen ausgedehnte überschwemmte Gebiete in Blau. Gebiete, die im Vorjahr durch Waldbrände verbrannt wurden, sind in Braun dargestellt.           ",
-              "altText": "New South Wales, Australien",
-              "captions": [
-                "### Bildunterschrift",
-                "Enthält modifizierte Copernicus-Sentinel-Daten (2021), verarbeitet von ESA / NASA MODIS"
+                "Kumulativer Waldverlust zwischen 2001 und 2020 im Amazonasbecken"
               ]
             }
           ]
         },
         {
-          "type": "textOverlay",
+          "type": "undefined",
           "slides": [
             {
-              "url": "",
-              "altText": "Nach Monaten mit hohen Temperaturen und geringen Niederschlägen erreichte der Wasserstand des italienischen Flusses Po im Jahr 2022 einen Rekordtiefstand. Die Dürre in Norditalien beeinträchtigte die landwirtschaftliche Produktion der Region, die häufig auf Bewässerung angewiesen ist.",
+              "url": "assets/story34-image03.jpg",
+              "description": "Abgeholzte und städtische Gebiete sind deutlich in Beige-, Hellgrün- und Brauntönen zu erkennen, während der verbleibende unberührte Wald dunkelgrün erscheint. Dieses Bild wurde am 8. Juli 1989 aufgenommen.",
+              "altText": "",
               "captions": [
-                "Nach Monaten mit hohen Temperaturen und geringen Niederschlägen erreichte der Wasserstand des italienischen Flusses Po im Jahr 2022 einen Rekordtiefstand. Die Dürre in Norditalien beeinträchtigte die landwirtschaftliche Produktion der Region, die häufig auf Bewässerung angewiesen ist."
+                "Rondônia, Brasilien: Abholzung im Amazonas."
               ]
-            }
-          ]
-        },
-        {
-          "type": "imageTime",
-          "slides": [
-            {
-              "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": ["Wolkenfreier Blick auf die Landschaft"]
             },
             {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["Satellites for peat's sake. 2"]
-            }
-          ]
-        },
-        {
-          "type": "imageCompare",
-          "text": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
-          "buttonText": "Vergleichen Sie die Satellitenbilder",
-          "slides": [
-            {
-              "url": "assets/story37-image01.jpg",
-              "altText": "Satelliten im Dienste der Moore. Dieses Mosaik, aufgenommen am 28. Mai 2018, bietet einen seltenen wolkenfreien Blick auf die weiten Ebenen des Flow Country in Schottland.",
-              "captions": ["Satelliten im Dienste der Moore."]
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satelliten im Dienste der Moore. Diese hochauflösende Landbedeckungskarte, abgeleitet aus Copernicus Sentinel-2-Daten, zeigt das Ausmaß der Moore in Violett.",
-              "captions": ["Ein neuer Text für die Bildunterschrift."]
+              "url": "assets/story34-image04.jpg",
+              "description": "Abgeholzte und städtische Gebiete sind deutlich in Beige-, Hellgrün- und Brauntönen zu erkennen, während der verbleibende unberührte Wald dunkelgrün erscheint. Dieses Bild wurde am 5. Juni 2019 aufgenommen.",
+              "altText": "",
+              "captions": [
+                "Rondônia, Brasilien: Abholzung im Amazonas"
+              ]
             }
           ]
         }

@@ -1,168 +1,70 @@
 {
   "id": "debug",
   "splashscreen": {
-    "description": "# The Water Cycle \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based",
-    "markers": [{ "lat": 58.5, "lng": -4.5 }],
-    "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
-    "image": "assets/story21-image10.jpg"
+    "description": "# Forest Loss\n\nAmazon Basin, Brazil",
+    "image": "assets/story34-image05.jpg"
   },
   "blocks": [
     {
       "type": "imageGallery",
       "modules": [
         {
-          "type": "textOverlay",
+          "type": "undefined",
           "slides": [
             {
               "url": "",
+              "altText": "",
               "captions": [
-                "In 2010, Queensland experienced the wettest December on record, leading to a prolonged period of extensive flooding."
-              ]
-            }
-          ]
-        },
-        {
-          "type": "textOverlay",
-          "slides": [
-            {
-              "url": "assets/story21-image14.jpg",
-              "captions": [
-                "Heavy cloud cover and rainfall in northeastern Australia were due to unusual temperature and evaporation patterns in the central Pacific, referred to as [La Niña](https://cfs.climate.esa.int/index.html#/stories/story-16/6?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI).",
-                "The warming of the climate, thawing of permafrost, and intrusion of meltwater are among the causes of such events."
-              ]
-            }
-          ]
-        },
-        {
-          "type": "imageTime",
-          "slides": [
-            {
-              "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": [
-                "Satellites for peat's sake. Cloud-free view.",
-                "Lorem Ipsum"
+                "Rainforests worldwide are being destroyed at an alarming rate. The conversion of tropical rainforests to pastures and croplands is causing a dramatic effect on the landscape, biodiversity and environment."
               ]
             },
-            {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["Satellites for peat's sake. 2"]
-            }
-          ]
-        },
-        {
-          "type": "textOverlay",
-          "slides": [
             {
               "url": "",
+              "altText": "",
               "captions": [
-                "This event illustrates how different parts of the Earth system – ocean, atmosphere, and land – and locations thousands of kilometers apart are interconnected through the water cycle."
-              ]
-            }
-          ]
-        },{
-          "type": "imageTime",
-          "slides": [
-            {
-              "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": [
-                "Satellites for peat's sake. Cloud-free view.",
-                "Lorem Ipsum"
-              ]
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["Satellites for peat's sake. 2"]
-            }
-          ]
-        },
-        {
-          "type": "imageScroll",
-          "slides": [
-            {
-              "url": "assets/story21-image01.jpg",
-              "description": "",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": [
-                "### Toowoomba, Queensland, Australia",
-                "A woman waits on the roof of her car during a flash flood on January 10, 2011 [T Swinson](https://cfs.climate.esa.int/index.html#/stories/story-21/1?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI)"
-              ]
-            },
-            {
-              "url": "assets/story21-image06.png",
-              "description": "## Global Mean Sea Level \r\n\r\n The global sea level observed by satellites shows an upward trend of 3.3 mm per year, but a decline in 2011 due to the large amount of excess water on land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
-              "altText": "Copernicus Marine Environment Monitoring Service",
-              "captions": [
-                "### Caption",
-                "ESA-CCI/Copernicus Marine Environment Monitoring Service"
-              ]
-            },
-            {
-              "url": "assets/story21-image12.jpg",
-              "description": "## New South Wales, Australia \r\n\r\n Copernicus Sentinel-1 radar images from March 7 and 19, 2021, show extensive flooded areas in blue. Areas burned by wildfires in the previous year are shown in brown.           ",
-              "altText": "Copernicus Marine Environment Monitoring Service",
-              "captions": [
-                "### Caption",
-                "Contains modified Copernicus Sentinel data (2021), processed by ESA / NASA MODIS"
+                "This is of great concern as rainforests play an important role in our global climate. It is estimated that 20% of the Amazon biome has already been lost and the trend will worsen if gone unchecked."
               ]
             }
           ]
         },
         {
-          "type": "textOverlay",
+          "type": "undefined",
           "slides": [
             {
-              "url": "",
+              "url": "assets/story34-image01.jpg",
+              "altText": "",
               "captions": [
-                "After months of high temperatures and low rainfall, the water level of Italy's Po River reached a record low in 2022. The drought in northern Italy impacted the region's agricultural production, which often relies on irrigation."
+                "2020 above ground biomass in the Amazon Basin generated by ESA’s Climate Change Initiative. (ESA/CCI Biomass project)"
+              ]
+            },
+            {
+              "url": "assets/story34-image02.jpg",
+              "description": "Forest loss is defined as a change from a forest to non-forest state. The forest loss data, from the University of Maryland, has been overlaid onto the 2020 above ground biomass dataset, generated by ESA’s Climate Change Initiative.  (ESA/CCI Biomass project and Hansen/UMD/Google/USGS/NASA)",
+              "altText": "",
+              "captions": [
+                "Cumulative forest loss between 2001 and 2020 in the Amazon Basin"
               ]
             }
           ]
         },
         {
-          "type": "imageWavelength",
+          "type": "undefined",
           "slides": [
             {
-              "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "url": "assets/story34-image03.jpg",
+              "description": "Deforestation and urban areas are clearly visible in shades of beige, light green and brown, while remaining untouched forest appears dark green. This image was captured on 8 July 1989. (USGS/ESA)",
+              "altText": "",
               "captions": [
-                "Satellites for peat's sake. Cloud-free view.",
-                "Lorem Ipsum"
+                "Rondônia, Brazil: deforestation in the Amazon forest"
               ]
             },
             {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["Satellites for peat's sake. 2"]
-            }
-          ]
-        },
-        {
-          "type": "imageCompare",
-          "description": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
-          "buttonText": "",
-          "slides": [
-            {
-              "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": ["Satellites for peat's sake."]
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["A new caption text."]
-            }
-          ]
-        },
-        {
-          "type": "textOverlay",
-          "slides": [
-            {
-              "url": "assets/satellite.gif",
-              "captions": ["Thanks for scrolling through"]
+              "url": "assets/story34-image04.jpg",
+              "description": "Deforestation and urban areas are clearly visible in shades of beige, light green and brown, while remaining untouched forest appears dark green. This image was captured on 5 June 2019. (Contains modified Copernicus Sentinel data (2019))",
+              "altText": "",
+              "captions": [
+                "Rondônia, Brazil: deforestation in the Amazon forest"
+              ]
             }
           ]
         }
