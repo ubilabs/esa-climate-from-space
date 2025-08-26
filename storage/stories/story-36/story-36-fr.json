@@ -1,29 +1,53 @@
 {
   "id": "story-36",
-  "slides": [
+  "splashscreen": {
+    "description": "# La ville qui s’enfonce\n\nJakarta, Indonésie",
+    "image": "assets/story36-image03.jpg"
+  },
+  "blocks": [
     {
-      "type": "splashscreen",
-      "text": "# La ville qui s'enfonce\r\n\r\nJakarta, Indonésie",
-      "shortText": "# La ville qui s'enfonce\r\n\r\nJakarta, Indonésie",
-      "images": [
-        "assets/story36-image03.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## La ville qui s'enfonce, Jakarta, Indonésie\r\n\r\nLa capitale indonésienne de Jakarta, qui compte 10 millions d'habitants, est aussi l'une des villes qui s'affaissent le plus rapidement au monde en raison de l'extraction massive d'eau souterraine et du poids élevé des bâtiments. Les chercheurs estiment que certaines parties de la mégalopole pourraient être entièrement submergées d'ici 2050. Cette carte montre les taux moyens de déplacement du sol d'après les données du radar Sentinel-1. Les modèles d'enfoncement locaux atteignent environ 12 cm par an. \r\n\r\nCrédits : ESA GEP & CNR-IREA",
-      "shortText": "## La ville qui s'enfonce, Jakarta, Indonésie\r\n\r\nLa capitale indonésienne de Jakarta, qui compte 10 millions d'habitants, est aussi l'une des villes qui s'affaissent le plus rapidement au monde en raison de l'extraction massive d'eau souterraine et du poids élevé des bâtiments. Les chercheurs estiment que certaines parties de la mégalopole pourraient être entièrement submergées d'ici 2050. Cette carte montre les taux moyens de déplacement du sol d'après les données du radar Sentinel-1. Les modèles d'enfoncement locaux atteignent environ 12 cm par an. \r\n\r\nCrédits : ESA GEP & CNR-IREA",
-      "images": [
-        "assets/story36-image01.jpg",
-        "assets/story36-image02.jpg"
-      ],
-      "imageCaptions": [
-        "Jakarta, Indonésie : la ville qui s'enfonce. En utilisant un grand nombre d'images satellites radar sur une période de deux ans, il est possible de calculer avec précision l'affaissement du sol.",
-        "Jakarta, Indonésie : la ville qui s'enfonce. En utilisant un grand nombre d'images satellites radar sur une période de deux ans, il est possible de calculer avec précision l'affaissement du sol. Sur cette image, l'évolution des niveaux de surface entre 2017 et 2018 a été superposée."
-      ],
-      "imageFits": [
-        "contain",
-        "contain"
+      "type": "imageGallery",
+      "modules": [
+        {
+          "type": "textOverlay",
+          "slides": [
+            {
+              "url": "",
+              "altText": "",
+              "captions": [
+                "La capitale indonésienne de Jakarta, qui compte 10 millions d'habitants, est aussi l'une des villes qui s'affaissent le plus rapidement au monde en raison de l'extraction massive d'eau souterraine et du poids élevé des bâtiments."
+              ]
+            },
+            {
+              "url": "",
+              "altText": "",
+              "captions": [
+                "Les chercheurs estiment que certaines parties de la mégalopole pourraient être entièrement submergées d'ici 2050. Cette carte montre les taux moyens de déplacement du sol d'après les données du radar Sentinel-1. Les modèles d'enfoncement locaux atteignent environ 12 cm par an."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "imageWavelength",
+          "slides": [
+            {
+              "url": "assets/story36-image01.jpg",
+              "description": "En utilisant un grand nombre d'images satellites radar sur une période de deux ans, il est possible de calculer avec précision l'affaissement du sol",
+              "altText": "",
+              "captions": [
+                "Jakarta, Indonésie : la ville qui s'enfonce."
+              ]
+            },
+            {
+              "url": "assets/story36-image02.jpg",
+              "description": "En utilisant un grand nombre d'images satellites radar sur une période de deux ans, il est possible de calculer avec précision l'affaissement du sol. Sur cette image, l'évolution des niveaux de surface entre 2017 et 2018 a été superposée",
+              "altText": "",
+              "captions": [
+                "Jakarta, Indonésie : la ville qui s'enfonce."
+              ]
+            }
+          ]
+        }
       ]
     }
   ]
