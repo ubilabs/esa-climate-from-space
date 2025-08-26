@@ -6,6 +6,7 @@ import cx from "classnames";
 
 import { ImageModuleSlide } from "../../../../../../../../types/story";
 import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+import { useLenisToggle } from "../../../../../../../../hooks/use-lenis-toggle";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 
 import {
@@ -46,6 +47,8 @@ export const ComparisonViewer: FunctionComponent<Props> = ({
   const src2 = getStoryAssetUrl(storyId, url2);
 
   const containerRef = useRef(null);
+
+  useLenisToggle(isComparing, containerRef.current);
 
   // Reset position and scale when exiting compare mode
   useEffect(() => {

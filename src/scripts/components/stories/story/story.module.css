@@ -9,7 +9,9 @@
   overflow: scroll;
   height: var(--story-height);
   position: relative;
-  scroll-snap-type: block proximity;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
 
   &.fadeIn {
     animation: fadeIn 1.5s ease-in-out;

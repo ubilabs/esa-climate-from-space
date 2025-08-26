@@ -4,6 +4,7 @@ import { useStory } from "../../../providers/story/use-story";
 
 import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
 import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
+import { useLenisForStory } from "../../../hooks/use-lenis-for-story";
 
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
@@ -24,9 +25,14 @@ import styles from "./story.module.css";
 const Story: FunctionComponent = () => {
   const { storyElementRef, story, setScrollAnchorRefs } = useStory();
 
+  // Initialize Lenis for smooth scrolling behavior in the story
+  useLenisForStory();
+
   // Handles automatic scrolling through the story in showcase mode
   // and manages navigation to the next story when the current one ends
   useAutoScrollInShowcase();
+
+  // Synchronize the URL with the current story state
   useSyncStoryUrl();
 
   if (!story) {
