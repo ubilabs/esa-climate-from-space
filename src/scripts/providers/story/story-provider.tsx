@@ -1,11 +1,14 @@
 import { PropsWithChildren, useRef, RefObject, useCallback } from "react";
 
+import Lenis from "lenis";
+
 import { Story } from "../../types/story";
 import { StoryContext } from "./use-story";
 
 export interface StoryContextValue {
   story: Story | null;
   storyElementRef: RefObject<HTMLDivElement | null>;
+  lenisRef: RefObject<Lenis | null>;
   getScrollAnchorRefsMap: () => Map<string, Element>;
   setScrollAnchorRefs: (
     key: string,
@@ -20,6 +23,7 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
   // Reference to the story container element.
   const storyElementRef = useRef<HTMLDivElement | null>(null);
 
+  const lenisRef = useRef<Lenis | null>(null);
   // Holds references to anchor elements.
   // Add a node to this Map for the intersection observer to detect it and adjust the URL parameters accordingly.
   const scrollAnchorRefs = useRef<Map<string, Element>>(null);
@@ -52,6 +56,7 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
         storyElementRef,
         getScrollAnchorRefsMap,
         setScrollAnchorRefs,
+        lenisRef,
       }}
     >
       {children}
