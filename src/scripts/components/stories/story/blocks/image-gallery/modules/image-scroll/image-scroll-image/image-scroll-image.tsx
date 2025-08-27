@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
+import { useLenisToggle } from "../../../../../../../../hooks/use-lenis-toggle";
 
 import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
 import {
@@ -27,6 +28,8 @@ export const ScrollImage: FunctionComponent<Props> = ({ src, alt }) => {
 
   const intl = useIntl();
   const { isMobile } = useScreenSize();
+
+  useLenisToggle(isFullscreen);
 
   // Motion values for drag and scale
   const scale = useMotionValue(1);

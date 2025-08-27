@@ -1,6 +1,5 @@
 .imageScroll {
   padding: 1.5rem;
-  scroll-snap-align: none;
   height: fit-content;
 
   .slide {
@@ -29,7 +28,6 @@
     justify-content: center;
     flex-direction: column;
     align-items: start;
-    scroll-snap-align: center;
     height: var(--story-height);
 
     > * {
@@ -61,7 +59,6 @@
 
     @media screen and (--desktop-viewport) {
       height: fit-content;
-      scroll-snap-align: none;
       width: 100%;
       max-width: 65ch;
     }
@@ -72,7 +69,6 @@
     flex-direction: column;
     align-items: left;
     justify-content: center;
-    scroll-snap-align: center;
     text-shadow:
       0px 1px 2px rgba(0, 0, 0, 0.3),
       0px 1px 3px rgba(0, 0, 0, 0.15);

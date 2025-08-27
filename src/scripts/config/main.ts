@@ -5,6 +5,8 @@ import { UiEmbedElement } from "../types/embed-elements";
 import { GlobeProjection } from "../types/globe-projection";
 import { GlobeState } from "../reducers/globe/globe-state";
 import { AppRoute } from "../types/app-routes";
+import { LenisOptions } from "lenis";
+import { isIos16orLower } from "../libs/is-ios-16-or-lower";
 
 /**
  * Routes are utilized to manage state transitions within the application.
@@ -215,4 +217,17 @@ export default {
     "ol",
     "strong",
   ],
+  lenisOptions: {
+    lerp: 0.06, // primary smoothing knob (heavier than default)
+    wheelMultiplier: 0.7, // good for story sites
+    syncTouch: !isIos16orLower(), // keep DOM/IO in sync (disable on old iOS)
+    smoothWheel: true,
+    smoothTouch: true, // enable smoothing on touch
+    touchMultiplier: 2.5, // smaller per-swipe distance (was 6)
+    // Extra touch-only gravity controls (available in newer Lenis versions):
+    syncTouchLerp: 0.04, // lower => heavier/floatier tail
+    touchInertiaExponent: 0.5, // higher => longer inertia feel
+    easing: (t: number) => 1 - Math.pow(1 - t, 2), // quadOut
+
+  } as LenisOptions,
 };
