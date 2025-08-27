@@ -52,6 +52,7 @@
     "classnames": "^2.5.1",
     "cross-zip": "^4.0.0",
     "electron-is-dev": "^2.0.0",
+    "fuse.js": "^7.1.0",
     "lodash.debounce": "^4.0.8",
     "lodash.intersection": "^4.4.0",
     "motion": "^12.23.3",

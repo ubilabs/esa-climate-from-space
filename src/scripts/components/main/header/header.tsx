@@ -27,6 +27,7 @@ import { MenuIcon } from "../icons/menu-icon";
 import LanguageTooltip from "../language-tooltip/language-tooltip";
 import Menu from "../menu/menu";
 import Overlay from "../overlay/overlay";
+import ContentSearch from "../search/content-search";
 
 import styles from "./header.module.css";
 
@@ -127,6 +128,7 @@ const Header: FunctionComponent = () => {
             hideLabelOnMobile
           />
         )}
+        <ContentSearch />
       </nav>
 
       {showTooltip && (

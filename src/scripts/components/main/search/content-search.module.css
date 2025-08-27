@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+
+    > input {
+        height: 2rem;
+    }
+}
+
+.results {
+    position: absolute;
+    top: var(--header-height);
+}
