@@ -154,6 +154,7 @@
       >a>div>span {
         color: var(--primary-color) !important;
         white-space: normal;
+        padding-right: 1rem;
       }
 
       >a>span.learnMore {

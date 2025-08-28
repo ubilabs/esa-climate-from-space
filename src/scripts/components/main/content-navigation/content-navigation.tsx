@@ -93,7 +93,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   // 0 - 100 because the coordinates are used as the top and left values
   // in a absolute positioned element. The advantage here is that the the elements
   // will automatically positioned and re-positioned based on the size of the parent container
-  const RADIUS = 40;
+  const RADIUS = 42;
 
   useEffect(() => {
     const listItems = navigationRef.current?.querySelectorAll("li");
