@@ -22,8 +22,8 @@
       }
     }
 
-    .altText {
-      height: 4.375rem;
+    .currentImageText {
+      height: 4.5rem;
       width: 100%;
       background-color: var(--Neutral-ESA-Background, #011e2b);
       padding: 16px 24px;
@@ -34,7 +34,6 @@
       font-family: "NotesEsa", sans-serif;
       font-size: 0.875rem;
       font-style: normal;
-      line-height: 1.25rem;
       letter-spacing: 0.175px;
 
       h3,

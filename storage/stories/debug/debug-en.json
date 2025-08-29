@@ -38,15 +38,22 @@
             {
               "url": "assets/story37-image01.jpg",
               "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": [
-                "Satellites for peat's sake. Cloud-free view.",
-                "Lorem Ipsum"
-              ]
+              "captions": ["1990"]
             },
             {
               "url": "assets/story37-image02.jpg",
               "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["Satellites for peat's sake. 2"]
+              "captions": ["2000"]
+            },
+            {
+              "url": "assets/story37-image01.jpg",
+              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "captions": ["2010"]
+            },
+            {
+              "url": "assets/story37-image02.jpg",
+              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+              "captions": ["2020"]
             }
           ]
         },
