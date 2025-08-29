@@ -27,7 +27,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
   animationDirection,
 }) => {
   const { module, storyId, getRefCallback } = useModuleContent();
-  const { storyElementRef } = useStory();
+  const { lenisRef } = useStory();
   const { isTouchDevice, isMobile } = useScreenSize();
 
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -56,12 +56,12 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
   useGesture(
     {
       onDrag: ({ movement: [mx], first, memo }) => {
-        if (!storyElementRef.current) return memo;
+        if (!lenisRef.current) return memo;
         if (first) {
-          memo = storyElementRef.current.scrollTop;
+          memo = lenisRef.current.scroll;
         }
         const newScrollTop = memo + mx * SENSITIVITY_FACTOR;
-        storyElementRef.current.scrollTop = newScrollTop;
+        lenisRef.current.scrollTo(newScrollTop, { immediate: true });
         return memo;
       },
     },
