@@ -8,6 +8,7 @@ import React, {
 import { useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { createPortal } from "react-dom";
+import { motion } from "framer-motion";
 
 import { categoryTags } from "../../../config/main";
 
@@ -231,6 +232,20 @@ const CategoryNavigation: FunctionComponent<Props> = ({
     }, 2800);
   }, [isAnimationReady]);
 
+  const variants = {
+    initial: (isMobile: boolean) => ({
+      clipPath: isMobile ? "inset(50% 100% 0 0)" : "inset(0 100% 0 0)",
+    }),
+    animate: (isMobile: boolean) => ({
+      clipPath: isMobile ? "inset(50% 0 0 0)" : "inset(0 0 0 0)",
+      transition: { duration: 0.5, delay: 0.5, ease: "linear" },
+    }),
+    exit: (isMobile: boolean) => ({
+      clipPath: isMobile ? "inset(50% 0 0 100%)" : "inset(0 0 0 100%)",
+      transition: { duration: 0.5, ease: "linear" },
+    }),
+  };
+
   return (
     <>
       <nav className={styles.chosenCategory}>
@@ -258,12 +273,15 @@ const CategoryNavigation: FunctionComponent<Props> = ({
         })}
       </nav>
 
-      <div
-        className={cx(
-          styles["category-navigation"],
-          styles["reveal-from-left"],
-        )}
+      <motion.div
+        data-attr="category-navigation"
+        className={styles["category-navigation"]}
         aria-label="Circle Navigation"
+        variants={variants}
+        custom={isMobile}
+        initial="initial"
+        animate="animate"
+        exit="exit"
       >
         {tooltipInfo.visible &&
           !isMobile &&
@@ -372,7 +390,7 @@ A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
             );
           })}
         </svg>
-      </div>
+      </motion.div>
     </>
   );
 };

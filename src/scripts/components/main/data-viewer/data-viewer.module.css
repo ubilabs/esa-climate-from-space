@@ -81,10 +81,14 @@
     }
 
     &[data-nav-content="nav_content"] {
-      grid-template-areas: "globe content-nav";
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr;
-      grid-gap: 0;
+      /* grid-template-areas: "globe content-nav"; */
+      /* grid-template-columns: 1fr 1fr; */
+      /* grid-template-rows: 1fr; */
+      /* grid-gap: 0; */
+
+      /* > div[data-attr="category-navigation"] { */
+      /*   grid-area: content-nav; */
+      /* } */
 
       .globe {
         transform: translateX(-40%);

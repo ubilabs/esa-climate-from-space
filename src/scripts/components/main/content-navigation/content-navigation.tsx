@@ -2,6 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import { motion } from "framer-motion";
 import cx from "classnames";
 
 import config, { ALTITUDE_FACTOR_DESKTOP } from "../../../config/main";
@@ -215,8 +216,18 @@ const ContentNavigation: FunctionComponent<Props> = ({
     return type;
   };
 
+  const variants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { delay: 0.5 } },
+    exit: { opacity: 0 },
+  };
+
   return (
-    <ul
+    <motion.ul
+      variants={variants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
       ref={navigationRef}
       className={cx(
         styles.contentNav,
@@ -291,7 +302,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
           left: `calc(${x}% - ${isMobile ? "8" : "24"}px)`,
         }}
       ></span>
-    </ul>
+    </motion.ul>
   );
 };
 

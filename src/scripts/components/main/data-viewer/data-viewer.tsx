@@ -1,6 +1,7 @@
 import { FunctionComponent, useRef, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
+import { AnimatePresence, motion } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -145,41 +146,6 @@ const DataViewer: FunctionComponent = () => {
               </span>
             )}
           </header>
-          {isBaseRoute && (
-            <>
-              <CategoryNavigation
-                arcs={arcs}
-                width={screenWidth}
-                height={screenHeight}
-                isMobile={isMobile}
-                setCategory={setCurrentCategory}
-                isAnimationReady={hasAnimationPlayed}
-              />
-              <Button
-                className={cx(
-                  hasAnimationPlayed.current && styles.showFast,
-                  styles.exploreButton,
-                )}
-                onClick={() => {
-                  navigate(`/${currentCategory}`);
-                }}
-                label="explore"
-              ></Button>
-              {!hasAnimationPlayed.current && (
-                <span
-                  aria-hidden="true"
-                  className={cx(
-                    // Make sure to show the gesture indicator depending on whether it is touch screen device
-                    styles.gestureIndicator,
-                    isTouchDevice ? styles.touch : styles.scroll,
-                  )}
-                  data-content={intl.formatMessage({
-                    id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
-                  })}
-                ></span>
-              )}
-            </>
-          )}
           {isContentNavRoute && (
             <>
               <ContentNavigation
@@ -196,6 +162,44 @@ const DataViewer: FunctionComponent = () => {
               )}
             </>
           )}
+          <AnimatePresence>
+            {[
+              <CategoryNavigation
+                key="category-navigation"
+                arcs={arcs}
+                width={screenWidth}
+                height={screenHeight}
+                isMobile={isMobile}
+                setCategory={setCurrentCategory}
+                isAnimationReady={hasAnimationPlayed}
+              />,
+              <Button
+                key="explore-button"
+                className={cx(
+                  hasAnimationPlayed.current && styles.showFast,
+                  styles.exploreButton,
+                )}
+                onClick={() => {
+                  navigate(`/${currentCategory}`);
+                }}
+                label="explore"
+              ></Button>,
+              !hasAnimationPlayed.current && (
+                <span
+                  key="gesture-indicator"
+                  aria-hidden="true"
+                  className={cx(
+                    // Make sure to show the gesture indicator depending on whether it is touch screen device
+                    styles.gestureIndicator,
+                    isTouchDevice ? styles.touch : styles.scroll,
+                  )}
+                  data-content={intl.formatMessage({
+                    id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
+                  })}
+                ></span>
+              ),
+            ]}
+          </AnimatePresence>
         </>
       )}
     </div>
