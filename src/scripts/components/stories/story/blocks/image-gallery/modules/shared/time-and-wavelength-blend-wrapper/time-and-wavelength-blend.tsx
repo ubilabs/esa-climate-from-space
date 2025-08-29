@@ -90,10 +90,6 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
     return activeSlide ? activeSlide.captions : [];
   }, [activeSlideIndex, images]);
 
-  if (!module || numSlides === 0) {
-    return null;
-  }
-
   return (
     <div
       ref={targetRef}
@@ -104,7 +100,8 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
         <ul className={styles.imageContainer}>
           {images.map((image, i) => (
             <TimeAndWavelengthBlendImage
-              key={`${storyId}-${image.url}`}
+              prevCaption={images[i - 1]?.captions?.join()}
+              key={`${storyId}-${image.url}_${i}`}
               ref={getRefCallback?.(i)}
               active={activeSlideIndex === i}
               slideIndex={i}
@@ -116,7 +113,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
             />
           ))}
         </ul>
-        <div className={styles.altText}>
+        <div className={styles.currentImageText}>
           <h3>{captions?.join(" ")}</h3>
           <p>{description}</p>
         </div>
