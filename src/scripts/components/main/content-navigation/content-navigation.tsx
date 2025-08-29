@@ -23,10 +23,7 @@ import { GalleryItemType } from "../../../types/gallery-item";
 import { LegacyStory } from "../../../types/story";
 
 import useAutoRotate from "../../../hooks/use-auto-content-rotation";
-import {
-  useContentScrollHandlers,
-  useContentTouchHandlers,
-} from "./use-content-event-handlers";
+import { useNavGestures } from "../../../libs/use-nav-gestures";
 
 import { DownloadButton } from "../download-button/download-button";
 
@@ -73,17 +70,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
     Date.now(),
   );
 
-  const { handleTouchEnd, handleTouchMove } = useContentTouchHandlers(
-    currentIndex,
-    setCurrentIndex,
+  useNavGestures(
     contents.length,
-    setLastUserInteractionTime,
-  );
-
-  const { handleWheel } = useContentScrollHandlers(
     setCurrentIndex,
-    contents.length,
     setLastUserInteractionTime,
+    "y",
   );
 
   // The spread between the elements in the circle
@@ -232,10 +223,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
         showContentList && styles.show,
         className,
       )}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-      onTouchCancel={handleTouchEnd}
-      onWheel={handleWheel}
       role="listbox"
       aria-label="Content navigation"
     >
