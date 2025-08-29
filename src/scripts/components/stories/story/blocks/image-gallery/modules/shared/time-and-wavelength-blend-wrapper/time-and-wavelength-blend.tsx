@@ -101,7 +101,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
           {images.map((image, i) => (
             <TimeAndWavelengthBlendImage
               prevCaption={images[i - 1]?.captions?.join()}
-              key={`${storyId}-${image.url}`}
+              key={`${storyId}-${image.url}_${i}`}
               ref={getRefCallback?.(i)}
               active={activeSlideIndex === i}
               slideIndex={i}

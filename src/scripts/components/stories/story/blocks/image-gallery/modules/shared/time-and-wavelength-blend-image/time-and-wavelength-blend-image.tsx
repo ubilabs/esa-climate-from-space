@@ -114,9 +114,9 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<BlendImageProps> = (
             aria-hidden="true"
           />
           {animationDirection === "horizontal" &&
-            flags.map((flag) => (
+            flags.map((flag, index) => (
               <motion.span
-                key={flag}
+                key={index}
                 style={{ right: borderPosition }}
                 className={styles.flag}
               >
