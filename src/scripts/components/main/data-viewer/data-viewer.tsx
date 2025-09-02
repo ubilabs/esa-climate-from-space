@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef, useState, useMemo } from "react";
+import { FunctionComponent, useRef, useState, useMemo, useEffect } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
@@ -75,12 +75,8 @@ const DataViewer: FunctionComponent = () => {
   const { isBaseRoute, isNavigationView, isDataRoute, isContentNavRoute } =
     useAppRouteFlags();
 
-  // There is a set of animations which should be played only once
-  // This keeps track of that
-  // Get state from local storage
-  const hasAnimationPlayed = useRef(
-    localStorage.getItem(config.localStorageHasUserInteractedKey) === "true",
-  );
+  // This keeps track of whether the animation has played
+  const hasAnimationPlayed = useRef(false);
 
   const allCategories = useMemo(
     () =>

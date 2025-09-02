@@ -269,7 +269,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
           !isMobile &&
           tooltipInfo.x !== undefined &&
           tooltipInfo.y !== undefined &&
-          // We create a portal to render to render the tooltip on the body
+          // We create a portal to render the tooltip on the body
           // We do this to avoid z-index and stacking context issues
           // The tooltip position x and y values are set to the cursor position
           createPortal(
