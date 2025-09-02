@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 import cx from "classnames";
 
-import config, { categoryTags } from "../../../config/main";
+import { categoryTags } from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
@@ -75,12 +75,8 @@ const DataViewer: FunctionComponent = () => {
   const { isBaseRoute, isNavigationView, isDataRoute, isContentNavRoute } =
     useAppRouteFlags();
 
-  // There is a set of animations which should be played only once
-  // This keeps track of that
-  // Get state from local storage
-  const hasAnimationPlayed = useRef(
-    localStorage.getItem(config.localStorageHasUserInteractedKey) === "true",
-  );
+  // This keeps track of whether the animation has played
+  const hasAnimationPlayed = useRef(false);
 
   const allCategories = useMemo(
     () =>

@@ -24,16 +24,17 @@
     line-height: 20px; /* 142.857% */
     letter-spacing: 0.175px;
     position: absolute;
-    transform: translate( 0, -50%);
+    transform: translate(-100%, -50%);
     top: 50%;
     background-color: #3f6c7d;
     color: white;
     margin-right: 4.5px;
 
     &:nth-of-type(2) {
-      margin-right: -2.5px;
+      margin-right: 0;
+      margin-left: 4.5px;
       color: var(--Supporting-Colours-Deep-Space, #003349);
-      transform: translate(100%, -50%);
+      transform: translate(0, -50%);
       background-color: white;
     }
   }

@@ -57,10 +57,10 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
     {
       onDrag: ({ movement: [mx], first, memo }) => {
         if (!lenisRef.current) return memo;
-        if (first) {
+        if (first || !mx) {
           memo = lenisRef.current.scroll;
         }
-        const newScrollTop = memo + mx * SENSITIVITY_FACTOR;
+        const newScrollTop = memo - mx * SENSITIVITY_FACTOR;
         lenisRef.current.scrollTo(newScrollTop, { immediate: true });
         return memo;
       },
@@ -69,6 +69,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
       target: targetRef,
       eventOptions: { passive: true },
       drag: {
+        preventDefault: true,
         axis: "x",
         filterTaps: true,
         enabled: isTouchDevice && isMobile,

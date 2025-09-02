@@ -192,10 +192,9 @@
 
   &.scroll {
     grid-area: title;
-    margin-right: -2rem;
     place-self: center end;
+    margin-right: calc(clamp(32px, 4vw, 60px));
     z-index: 10;
-    transform: translateY(-50%);
     background-image: url('data:image/svg+xml,<svg width="24" height="80" viewBox="0 0 24 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 18V8.8L7.4 12.4L6 11L12 5L18 11L16.6 12.4L13 8.8V18H11Z" fill="%233F6C7D"/><path fill-rule="evenodd" clip-rule="evenodd" d="M6 33.4828C6 31.5528 7.57354 30 9.5 30L14.5 30C16.4265 30 18 31.5528 18 33.4828L18 46.5172C18 48.4472 16.4265 50 14.5 50L9.5 50C7.57354 50 6 48.4472 6 46.5172L6 33.4828ZM9.5 32C8.66504 32 8 32.6704 8 33.4828L8 46.5172C8 47.3296 8.66504 48 9.5 48L14.5 48C15.335 48 16 47.3296 16 46.5172L16 33.4828C16 32.6704 15.335 32 14.5 32L9.5 32Z" fill="%233F6C7D"/><path d="M11 35C11 34.4477 11.4477 34 12 34C12.5523 34 13 34.4477 13 35V37C13 37.5523 12.5523 38 12 38C11.4477 38 11 37.5523 11 37V35Z" fill="%233F6C7D"/><path d="M12 74L6 68L7.4 66.6L11 70.2V61H13V70.2L16.6 66.6L18 68L12 74Z" fill="%233F6C7D"/></svg>');
     width: 24px;
     height: 80px;
