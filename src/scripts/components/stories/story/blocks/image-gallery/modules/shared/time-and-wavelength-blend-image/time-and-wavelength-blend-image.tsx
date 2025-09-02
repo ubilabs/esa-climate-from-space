@@ -27,7 +27,9 @@ interface BlendImageProps {
   storyId: string;
 }
 
-export const TimeAndWavelengthBlendImage: FunctionComponent<BlendImageProps> = ({
+export const TimeAndWavelengthBlendImage: FunctionComponent<
+  BlendImageProps
+> = ({
   active,
   animationDirection,
   image: { url, altText, captions },
@@ -54,7 +56,7 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<BlendImageProps> = (
   const clipPathValue = useTransform(percentageValue, (v) =>
     animationDirection === "vertical"
       ? `inset(${v}% 0 0 0)`
-      : `inset(0 ${v}% 0 0)`,
+      : `inset(0 0 0 ${v}%)`,
   );
 
   const borderPosition = useTransform(percentageValue, (v) => `${v}%`);
@@ -71,7 +73,7 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<BlendImageProps> = (
         }
       : {
           top: 0,
-          right: borderPosition,
+          left: borderPosition,
           width: borderThickness,
           height: "100%",
         };
@@ -86,7 +88,7 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<BlendImageProps> = (
       slideIndex === 0 ? "0px" : "calc(var(--story-height) * -1 + 1px)",
   };
 
-  const flags = [prevCaption || "", caption || ""];
+  const flags = [caption || "", prevCaption || ""];
 
   return (
     <li className={styles.blendItem}>
@@ -117,7 +119,7 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<BlendImageProps> = (
             flags.map((flag, index) => (
               <motion.span
                 key={index}
-                style={{ right: borderPosition }}
+                style={{ left: borderPosition }}
                 className={styles.flag}
               >
                 {flag}
@@ -128,4 +130,3 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<BlendImageProps> = (
     </li>
   );
 };
-
