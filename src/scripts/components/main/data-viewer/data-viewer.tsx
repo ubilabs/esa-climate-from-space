@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef, useState, useMemo, useEffect } from "react";
+import { FunctionComponent, useRef, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 import cx from "classnames";
 
-import config, { categoryTags } from "../../../config/main";
+import { categoryTags } from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
