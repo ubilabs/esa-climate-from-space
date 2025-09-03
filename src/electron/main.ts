@@ -48,11 +48,6 @@ function createWindow() {
     windows = windows.filter((w) => w !== window);
   });
 
-  // ipc handler
-  ipcMain.handle("loadAction", (event, { actionType, pathToFile }) =>
-    loadAction(actionType, pathToFile),
-  );
-
   ipcMain.on("saveAction", (event, action) => saveAction(action));
 
   ipcMain.on("downloadUrl", (event, url) =>
@@ -60,11 +55,18 @@ function createWindow() {
   );
 
   ipcMain.on("downloadDelete", (event, id) => downloadDelete(window, id));
-
-  ipcMain.handle("downloadsPath", () => app.getPath("downloads"));
 }
 
-app.on("ready", createWindow);
+app.on("ready", () => {
+  // ipc handler
+  ipcMain.handle("loadAction", (event, { actionType, pathToFile }) =>
+    loadAction(actionType, pathToFile),
+  );
+
+  ipcMain.handle("downloadsPath", () => app.getPath("downloads"));
+
+  createWindow();
+});
 
 // Quit when all windows are closed.
 app.on("window-all-closed", () => {
