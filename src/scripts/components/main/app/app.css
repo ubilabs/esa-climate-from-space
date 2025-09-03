@@ -68,3 +68,16 @@ body,
   scrollbar-color: var(--dark-grey-1) transparent;
   scrollbar-width: auto;
 }
+
+/* story utility class */
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  place-items: center;
+  gap: 0.5rem;
+  padding-inline: var(--story-padding);
+
+  @media screen and (--desktop-viewport) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}

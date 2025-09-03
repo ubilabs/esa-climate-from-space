@@ -33,16 +33,10 @@
   .captionsContainer {
     top: 0;
     position: absolute;
-    padding-inline: max(1.5rem, 12vw);
     overflow: hidden;
 
     .captionContainer {
       color: var(--Neutral-White, #fff);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      justify-content: center;
-      align-items: center;
       height: var(--story-height);
       position: relative;
       z-index: 1000;
@@ -52,6 +46,7 @@
       }
 
       p {
+        grid-column: 1 / -1;
         display: block;
         text-align: center;
         /* M3/Elevation Light/1 */
@@ -69,6 +64,7 @@
           text-shadow: 0 2px 1px rgba(0, 0, 0, 0.48);
           font-size: 48px;
           line-height: 60px; /* 125% */
+          grid-column: 2 / -2;
         }
       }
     }

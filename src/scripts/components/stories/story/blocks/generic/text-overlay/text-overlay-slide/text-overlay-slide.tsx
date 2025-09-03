@@ -48,7 +48,7 @@ const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
         opacity: opacity,
         translateY: translateY,
       }}
-      className={cx(styles.captionContainer)}
+      className={cx(styles.captionContainer, "story-grid")}
     >
       <ReactMarkdown
         children={caption}

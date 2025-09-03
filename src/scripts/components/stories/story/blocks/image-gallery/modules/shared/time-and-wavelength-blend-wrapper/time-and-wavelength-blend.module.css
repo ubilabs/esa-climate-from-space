@@ -22,17 +22,19 @@
       }
     }
 
+    /* recevies story-grid class */
     .currentImageText {
-      height: 4.5rem;
+      place-items: start;
+      padding-block: 1.5rem;
       width: 100%;
       background-color: var(--Neutral-ESA-Background, #011e2b);
-      padding: 16px 24px;
       color: var(--Neutral-ESA-White, #fff);
       text-shadow:
         0px 1px 2px rgba(0, 0, 0, 0.3),
         0px 1px 3px rgba(0, 0, 0, 0.15);
       font-family: "NotesEsa", sans-serif;
-      font-size: 0.875rem;
+      font-size: 1rem;
+      line-height: 1.25;
       font-style: normal;
       letter-spacing: 0.175px;
 
@@ -44,13 +46,25 @@
       }
 
       h3 {
+        grid-column-start: 1;
+        grid-column: 1 / -1;
         font-weight: 700;
-      }
-    }
 
-    p {
-      font-weight: 400;
+        @media screen and (--desktop-viewport) {
+          grid-column-start: 2;
+        }
+      }
+
+      p {
+        max-width: 100%;
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+        font-weight: 400;
+
+        @media screen and (--desktop-viewport) {
+          grid-column: 2 / -3;
+        }
+      }
     }
   }
 }
-

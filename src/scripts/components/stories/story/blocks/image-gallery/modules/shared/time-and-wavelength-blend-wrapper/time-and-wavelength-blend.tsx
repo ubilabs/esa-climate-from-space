@@ -15,6 +15,8 @@ import { useModuleContent } from "../../../../../../../../providers/story/module
 import { useStory } from "../../../../../../../../providers/story/use-story";
 import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
 
+import cx from "classnames";
+
 import styles from "./time-and-wavelength-blend.module.css";
 
 const SENSITIVITY_FACTOR = 2.5;
@@ -114,7 +116,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
             />
           ))}
         </ul>
-        <div className={styles.currentImageText}>
+        <div className={cx(styles.currentImageText, "story-grid")}>
           <h3>{captions?.join(" ")}</h3>
           <p>{description}</p>
         </div>
