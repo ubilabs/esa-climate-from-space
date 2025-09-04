@@ -1,6 +1,7 @@
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { app, BrowserWindow, ipcMain } from "electron";
+import { Action } from "@reduxjs/toolkit";
 import isDev from "electron-is-dev";
 import { addDownloadHandler } from "./download-handler.js";
 import loadAction from "./load-action.js";
@@ -43,26 +44,32 @@ function createWindow() {
     window.webContents.openDevTools();
   }
 
+  const saveActionListener = (_: Electron.IpcMainEvent, action: Action) =>
+    saveAction(action);
+  const downloadUrlListener = (_: Electron.IpcMainEvent, url: string) =>
+    window.webContents.downloadURL(url);
+  const downloadDeleteListener = (_: Electron.IpcMainEvent, id: string) =>
+    downloadDelete(window, id);
+
   // free window reference when closed
   window.on("closed", () => {
+    ipcMain.off("saveAction", saveActionListener);
+    ipcMain.off("downloadUrl", downloadUrlListener);
+    ipcMain.off("downloadDelete", downloadDeleteListener);
+
     windows = windows.filter((w) => w !== window);
   });
 
-  ipcMain.on("saveAction", (event, action) => saveAction(action));
-
-  ipcMain.on("downloadUrl", (event, url) =>
-    window.webContents.downloadURL(url),
-  );
-
-  ipcMain.on("downloadDelete", (event, id) => downloadDelete(window, id));
+  ipcMain.on("saveAction", saveActionListener);
+  ipcMain.on("downloadUrl", downloadUrlListener);
+  ipcMain.on("downloadDelete", downloadDeleteListener);
 }
 
 app.on("ready", () => {
   // ipc handler
-  ipcMain.handle("loadAction", (event, { actionType, pathToFile }) =>
+  ipcMain.handle("loadAction", (_, { actionType, pathToFile }) =>
     loadAction(actionType, pathToFile),
   );
-
   ipcMain.handle("downloadsPath", () => app.getPath("downloads"));
 
   createWindow();
@@ -73,6 +80,9 @@ app.on("window-all-closed", () => {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== "darwin") {
+    ipcMain.removeHandler("loadAction");
+    ipcMain.removeHandler("downloadsPath");
+
     app.quit();
   }
 });
