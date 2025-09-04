@@ -10,6 +10,32 @@ import { getDownloadedIds } from "./get-downloaded-ids.js";
 const activeDownloads: { [url: string]: number } = {};
 
 /**
+ * Removes a nested folder from the offline path if it exists.
+ * @param offlinePath The path to the offline directory.
+ * @param datasetName The name of the dataset.
+ */
+function removeNestedFolder(offlinePath: string, datasetName: string) {
+  // Check if the extracted folder contains a nested folder with the same name
+  const extractedPath = path.join(offlinePath, datasetName ?? "");
+  const nestedPath = path.join(extractedPath, datasetName ?? "");
+
+  if (
+    datasetName &&
+    fs.existsSync(nestedPath) &&
+    fs.lstatSync(nestedPath).isDirectory()
+  ) {
+    // Move all files from nestedPath to extractedPath
+    for (const file of fs.readdirSync(nestedPath)) {
+      const src = path.join(nestedPath, file);
+      const dest = path.join(extractedPath, file);
+      fs.renameSync(src, dest);
+    }
+    // Remove the now-empty nested directory
+    fs.rmdirSync(nestedPath);
+  }
+}
+
+/**
  * Intercepts all browser downloads in the given window
  */
 export function addDownloadHandler(browserWindow: BrowserWindow) {
@@ -57,20 +83,34 @@ export function addDownloadHandler(browserWindow: BrowserWindow) {
 
     item.once("done", (event, state) => {
       if (state === "completed") {
-        console.log("Download successfully", item.savePath);
-        unzipSync(item.savePath, offlinePath);
-        fs.unlinkSync(item.savePath);
-        browserWindow.webContents.send(
-          "offline-update",
-          JSON.stringify(getDownloadedIds()),
-        );
+        const match = item.getURL().match(/\/([^/]+)\/package\.zip$/);
+        const datasetName = match ? match[1] : null;
 
-        delete activeDownloads[item.getURL()];
-        browserWindow.webContents.send(
-          "progress-update",
-          JSON.stringify(activeDownloads),
-        );
-      } else {
+        if (datasetName) {
+          unzipSync(item.savePath, `${offlinePath}/${datasetName}`);
+
+          // package.zip files are not consistent, some contain a nested folder with dataset's name, some do not.
+          // This was caused by moving dataset creation from cloud build to new Airflow Pipeline. To support all
+          // legacy datasets we need to remove the nested folder, if it exists.
+          removeNestedFolder(offlinePath, datasetName);
+
+          fs.unlinkSync(item.savePath);
+          browserWindow.webContents.send(
+            "offline-update",
+            JSON.stringify(getDownloadedIds()),
+          );
+
+          delete activeDownloads[item.getURL()];
+          browserWindow.webContents.send(
+            "progress-update",
+            JSON.stringify(activeDownloads),
+          );
+
+          console.log("Download successfully", item.savePath);
+
+          return;
+        }
+
         console.log(`Download failed: ${state}`, item.savePath);
       }
     });
