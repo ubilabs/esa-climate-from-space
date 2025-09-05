@@ -3,22 +3,21 @@
 
   /* recevies story-grid class */
   .slide {
-    height: 100%;
+    height: fit-content;
     padding-block: 1rem;
 
     @media screen and (--mobile-viewport) {
+      margin-block: 4rem;
       &:has(.imageScrollText + .scrollImageContainer) {
         grid-template-rows: 1fr 1fr;
 
         > .imageScrollText {
-          height: 60vh;
           grid-column: 1 / -1;
           grid-row: 1 / 2;
           padding-bottom: 1rem;
         }
 
         > .scrollImageContainer {
-          height: 60vh;
           grid-column: 1 / -1;
           grid-row: 2 / 3;
         }
@@ -26,8 +25,6 @@
     }
 
     @media screen and (--desktop-viewport) {
-      height: var(--story-height);
-
       &:nth-child(odd) {
         .imageScrollText {
           grid-column: 9/ 12;
@@ -43,11 +40,11 @@
   }
 
   .imageScrollText {
+    height: auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: start;
-    height: var(--story-height);
 
     > * {
       line-height: 1.625; /* 162.5% */
@@ -85,23 +82,34 @@
   }
 
   .scrollImageContainer {
-    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
     text-shadow:
       0px 1px 2px rgba(0, 0, 0, 0.3),
       0px 1px 3px rgba(0, 0, 0, 0.15);
+    color: var(--Neutral-ESA-White, #fff);
+    font-family: NotesEsa;
+
     font-size: 14px;
     font-style: normal;
-    line-height: 19px;
-    /* 135.714% */
+    font-weight: 400;
+    line-height: 19px; /* 135.714% */
     letter-spacing: 0.175px;
 
     a {
       color: var(--Main-Esa-Teal, #00b398);
     }
+
+    h1,
+    h2,
     h3 {
       font-weight: 700;
       margin-top: 1rem;
       margin-bottom: 0.25rem;
+      @media screen and (--desktop-viewport) {
+        margin-top: 1.5rem;
+      }
     }
 
     p {
@@ -118,12 +126,14 @@
     }
 
     @media screen and (--desktop-viewport) {
-      height: var(--story-height);
       display: grid;
       grid-column: 6/13;
       grid-template-columns: subgrid;
-      grid-template-rows: 1fr auto auto;
+      grid-template-rows: minmax(40vh, 1fr) auto auto;
       height: calc(var(--story-height) / 1.5);
+      font-size: 1rem;
+      line-height: 1.25rem; /* 125% */
+      letter-spacing: 0.0125rem;
 
       > *:first-child {
         grid-column: 1 / 8;
@@ -140,9 +150,7 @@
         margin-block: 4rem;
 
         div:not([data-status="fullscreenOverlay"]):first-child {
-          height: 60vh;
           grid-column: 1 / -1;
-          width: 100%;
         }
       }
     }

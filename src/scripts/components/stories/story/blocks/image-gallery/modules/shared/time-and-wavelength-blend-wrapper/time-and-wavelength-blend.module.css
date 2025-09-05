@@ -25,7 +25,7 @@
     /* recevies story-grid class */
     .currentImageText {
       place-items: start;
-      padding-block: 1.5rem;
+      padding-block: 1rem;
       width: 100%;
       background-color: var(--Neutral-ESA-Background, #011e2b);
       color: var(--Neutral-ESA-White, #fff);
@@ -33,11 +33,21 @@
         0px 1px 2px rgba(0, 0, 0, 0.3),
         0px 1px 3px rgba(0, 0, 0, 0.15);
       font-family: "NotesEsa", sans-serif;
-      font-size: 1rem;
-      line-height: 1.25;
       font-style: normal;
+
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 19px; /* 135.714% */
       letter-spacing: 0.175px;
 
+      @media screen and (--desktop-viewport) {
+        padding-block: 1.5rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.33;
+        letter-spacing: 0.15px;
+      }
       h3,
       p {
         text-overflow: ellipsis;
@@ -46,20 +56,21 @@
       }
 
       h3 {
-        grid-column-start: 1;
         grid-column: 1 / -1;
         font-weight: 700;
 
         @media screen and (--desktop-viewport) {
-          grid-column-start: 2;
+          font-size: 1rem;
+          line-height: 1.25;
+          letter-spacing: 0.175px;
+          grid-column: 2;
         }
       }
 
       p {
         max-width: 100%;
         grid-column: 1 / -1;
-        grid-row: 2 / 3;
-        font-weight: 400;
+        grid-row: 2;
 
         @media screen and (--desktop-viewport) {
           grid-column: 2 / -3;
