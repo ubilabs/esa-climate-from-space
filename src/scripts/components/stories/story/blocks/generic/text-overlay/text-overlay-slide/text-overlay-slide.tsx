@@ -16,14 +16,14 @@ import styles from "./text-overlay-slide.module.css";
 interface CaptionProps {
   caption: string;
   className?: string;
-  index: number;
+  index?: number;
 }
 
 const TRANSLATE_DISTANCE = 300;
 
 export const Caption: FunctionComponent<CaptionProps> = ({
   caption,
-  index,
+  index = 0,
   className,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
