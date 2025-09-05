@@ -10,6 +10,8 @@ import { StorySectionProps } from "../../../../../../../types/story";
 import { ScrollImage } from "./image-scroll-image/image-scroll-image";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 
+import cx from "classnames";
+
 import styles from "./image-scroll.module.css";
 
 const ImageScroll: FunctionComponent<StorySectionProps> = () => {
@@ -19,7 +21,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
       {module.slides?.map((slide, index) => (
         <SlideContainer
           ref={getRefCallback?.(index)}
-          className={styles.slide}
+          className={cx(styles.slide, "story-grid")}
           key={slide.url || index}
         >
           {slide.description && (

@@ -15,13 +15,17 @@ import styles from "./text-overlay-slide.module.css";
 
 interface CaptionProps {
   caption: string;
-  subCaption?: string;
-  index: number;
+  className?: string;
+  index?: number;
 }
 
 const TRANSLATE_DISTANCE = 300;
 
-const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
+export const Caption: FunctionComponent<CaptionProps> = ({
+  caption,
+  index = 0,
+  className,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useStoryScroll({
@@ -48,12 +52,14 @@ const Caption: FunctionComponent<CaptionProps> = ({ caption, index }) => {
         opacity: opacity,
         translateY: translateY,
       }}
-      className={cx(styles.captionContainer)}
+      className={cx(styles.captionContainer, "story-grid", className)}
     >
-      <ReactMarkdown
-        children={caption}
-        allowedElements={config.markdownAllowedElements}
-      />
+      <div className={styles.caption}>
+        <ReactMarkdown
+          children={caption}
+          allowedElements={config.markdownAllowedElements}
+        />
+      </div>
     </motion.section>
   );
 };

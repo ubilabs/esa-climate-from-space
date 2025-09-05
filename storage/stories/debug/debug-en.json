@@ -1,9 +1,18 @@
 {
   "id": "debug",
   "splashscreen": {
-    "description": "# The Water Cycle \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based",
-    "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
-    "image": "assets/story21-image10.jpg"
+    "image": "assets/story21-image10.jpg",
+    "slides": [
+      {
+        "description": "# The Water Cycle slide 1 \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based"
+      },
+      {
+        "description": "# The Water Cycle slide2 \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based"
+      },
+      {
+        "description": "# The Water Cycle slide3 \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based"
+      }
+    ]
   },
   "blocks": [
     {
@@ -26,7 +35,7 @@
             {
               "url": "assets/story21-image14.jpg",
               "captions": [
-                "Heavy cloud cover and rainfall in northeastern Australia were due to unusual temperature and evaporation patterns in the central Pacific, referred to as [La Niña](https://cfs.climate.esa.int/index.html#/stories/story-16/6?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI).",
+                "# Heavy clouds \r\n\r\n Heavy cloud cover and rainfall in northeastern Australia were due to unusual temperature and evaporation patterns in the central Pacific, referred to as [La Niña](https://cfs.climate.esa.int/index.html#/stories/story-16/6?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI).",
                 "The warming of the climate, thawing of permafrost, and intrusion of meltwater are among the causes of such events."
               ]
             }
