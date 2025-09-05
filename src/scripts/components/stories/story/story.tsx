@@ -7,6 +7,7 @@ import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
 import { useLenisForStory } from "../../../hooks/use-lenis-for-story";
 
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
+import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 import {
   getBlockComponent,
@@ -55,8 +56,9 @@ const Story: FunctionComponent = () => {
               const ModuleComponent = getModuleComponent(type);
               const moduleData = contentBlock.modules[moduleIndex];
 
-              // Assign this to element's ref within modules that should serve as scroll anchors.
-              // For instance, in time- or wavelength modules, designate every "blendImage" as a scroll anchor.
+              {
+                /* Assign this to element's ref within modules that should serve as scroll anchors. For instance, in time- or wavelength modules, designate every "blendImage" as a scroll anchor. */
+              }
               const generateScrollAnchorRef = (nodeIndex: number) =>
                 setScrollAnchorRefs(
                   `${blockIndex + 1}-${moduleIndex}-${nodeIndex}`,
@@ -76,6 +78,8 @@ const Story: FunctionComponent = () => {
           </BlockComponent>
         );
       })}
+      {/* Provisional - will be replaced with a proper end screen later */}
+      <ClosingScreen />
     </main>
   );
 };
