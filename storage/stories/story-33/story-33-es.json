@@ -1,7 +1,7 @@
 {
   "id": "story-33",
   "splashscreen": {
-    "description": "# La expansión urbana\n\nEl Cairo, Egipto",
+    "description": "# La expansión urbana\r\n\r\nEl Cairo, Egipto",
     "image": "assets/story33-image04.jpg"
   },
   "blocks": [
@@ -13,7 +13,7 @@
           "slides": [
             {
               "url": "",
-              "altText": "30 años de El Cairo: La capital egipcia en expansión. La primera imagen fue captada por el satélite estadounidense Landsat-5 en 1988, la segunda en 2018 y la tercera en 2021, ambas de la misión Sentinel-2 de Copernicus. Las imágenes por satélite son útiles para vigilar el desarrollo urbano a gran escala. \n\nCréditos: contiene datos modificados de Copernicus Sentinel (2018), procesados por la ESA. USGS/ESA",
+              "altText": "30 años de El Cairo: La capital egipcia en expansión. La primera imagen fue captada por el satélite estadounidense Landsat-5 en 1988, la segunda en 2018 y la tercera en 2021, ambas de la misión Sentinel-2 de Copernicus. Las imágenes por satélite son útiles para vigilar el desarrollo urbano a gran escala. \r\n\r\nCréditos: contiene datos modificados de Copernicus Sentinel (2018), procesados por la ESA. USGS/ESA",
               "captions": []
             }
           ]
