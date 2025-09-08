@@ -9,7 +9,7 @@
       "type": "imageGallery",
       "modules": [
         {
-          "type": "splashscreen",
+          "type": "textOverlay",
           "slides": [
             {
               "url": "assets/story33-image04.jpg",
