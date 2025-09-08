@@ -51,18 +51,21 @@ body,
   margin: 0;
   height: 100vh;
   height: 100dvh;
-  background-color: var(--black);
   font-family: NotesEsa, Arial, Helvetica, sans-serif;
 }
 
+body {
+  background-color: var(--dark-grey-5);
+}
+
 #app {
+  background-color: var(--Neutral-ESA-Background, #011e2b);
   display: grid;
   grid-template-areas:
     "header"
     "content";
   grid-template-rows: var(--header-height) 1fr;
   grid-template-columns: 100vw;
-  background: rgba(0, 51, 73, 0.4);
 }
 
 * {
