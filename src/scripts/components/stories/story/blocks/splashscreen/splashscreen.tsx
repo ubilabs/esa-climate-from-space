@@ -78,7 +78,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
         <div className={styles.contentContainer}>
           {slides.map((slide, i) => (
             <Caption
-              caption={slide.description}
+              caption={slide.text}
               key={i}
               index={i}
               className={(i === 0 && styles.storyIntro) || ""}

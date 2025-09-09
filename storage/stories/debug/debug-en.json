@@ -1,16 +1,20 @@
 {
   "id": "debug",
   "splashscreen": {
-    "image": "assets/story21-image10.jpg",
+    "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
+    "url": "assets/story21-image10.jpg",
+    "focus": "center",
+    "title": "The Water Cycle",
+    "subtitle": "An example of all the components",
     "slides": [
       {
-        "description": "# The Water Cycle slide 1 \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based"
+        "text": "# The Water Cycle slide 1 \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based"
       },
       {
-        "description": "# The Water Cycle slide2 \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based"
+        "text": "# The Water Cycle slide2 \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based"
       },
       {
-        "description": "# The Water Cycle slide3 \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based"
+        "text": "# The Water Cycle slide3 \r\n\r\n  Water is essential for our lives. The water cycle connects many components of Earth's climate system and plays a significant role in transporting heat around the planet. This is location based"
       }
     ]
   },
@@ -20,24 +24,21 @@
       "modules": [
         {
           "type": "textOverlay",
+          "url": "assets/story21-image14.jpg",
+          "focus": "right",
           "slides": [
             {
-              "url": "",
-              "captions": [
-                "In 2010, Queensland experienced the wettest December on record, leading to a prolonged period of extensive flooding."
-              ]
+              "text": "# Flooding in Australia \r\n\r\n In 2010, Queensland experienced its wettest December on record, leading to a prolonged period of extensive flooding."
             }
           ]
         },
         {
           "type": "textOverlay",
+          "url": "assets/story21-image10.jpg",
+          "focus": "left",
           "slides": [
             {
-              "url": "assets/story21-image14.jpg",
-              "captions": [
-                "# Heavy clouds \r\n\r\n Heavy cloud cover and rainfall in northeastern Australia were due to unusual temperature and evaporation patterns in the central Pacific, referred to as [La Niña](https://cfs.climate.esa.int/index.html#/stories/story-16/6?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI).",
-                "The warming of the climate, thawing of permafrost, and intrusion of meltwater are among the causes of such events."
-              ]
+              "text": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text"
             }
           ]
         },
@@ -46,52 +47,41 @@
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
+              "focus": "right",
               "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": ["1990"]
+              "caption": "# Some caption 1",
+              "flag": "2018"
             },
             {
               "url": "assets/story37-image02.jpg",
+              "focus": "right",
               "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["2000"]
+              "caption": "# Some caption 2",
+              "flag": "2020"
             },
             {
               "url": "assets/story37-image01.jpg",
+              "focus": "right",
               "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": ["2010"]
+              "caption": "# Some caption 3",
+              "flag": "2022"
             },
             {
               "url": "assets/story37-image02.jpg",
+              "focus": "right",
               "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["2020"]
+              "caption": "# Some caption 4",
+              "flag": "2022"
             }
           ]
         },
         {
           "type": "textOverlay",
+          "url": "assets/story21-image14.jpg",
+          "focus": "right",
           "slides": [
             {
-              "url": "",
-              "captions": [
-                "This event illustrates how different parts of the Earth system – ocean, atmosphere, and land – and locations thousands of kilometers apart are interconnected through the water cycle."
-              ]
-            }
-          ]
-        },
-        {
-          "type": "imageTime",
-          "slides": [
-            {
-              "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": [
-                "Satellites for peat's sake. Cloud-free view.",
-                "Lorem Ipsum"
-              ]
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["Satellites for peat's sake. 2"]
+              "text": "This event shows how different parts of the Earth system – ocean, atmosphere, and land – and places thousands of kilometers apart are connected through the water cycle."
             }
           ]
         },
@@ -100,30 +90,23 @@
           "slides": [
             {
               "url": "assets/story21-image01.jpg",
-              "description": "",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": [
-                "### Toowoomba, Queensland, Australia",
-                "A woman waits on the roof of her car during a flash flood on January 10, 2011 [T Swinson](https://cfs.climate.esa.int/index.html#/stories/story-21/1?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI)"
-              ]
+              "focus": "center",
+              "alt": "some alt text",
+              "text": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+
+              "caption": "## Toowoomba, Queensland, Australia A woman waits on the roof of her car during a flash flood on January 10, 2011 [T Swinson](https://cfs.climate.esa.int/index.html#/stories/story-21/1?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI)"
             },
             {
               "url": "assets/story21-image06.png",
-              "description": "## Global Mean Sea Level \r\n\r\n The global sea level observed by satellites shows an upward trend of 3.3 mm per year, but a decline in 2011 due to the large amount of excess water on land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
-              "altText": "Copernicus Marine Environment Monitoring Service",
-              "captions": [
-                "### Caption",
-                "ESA-CCI/Copernicus Marine Environment Monitoring Service"
-              ]
+              "text": "## Global Mean Sea Level \r\n\r\n The global sea level observed by satellites shows an upward trend of 3.3 mm per year, but a decline in 2011 due to the large amount of excess water on land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
+              "alt": "Copernicus Marine Environment Monitoring Service",
+              "caption": "### Caption \r\n\r\n ESA-CCI/Copernicus Marine Environment Monitoring Service"
             },
             {
               "url": "assets/story21-image12.jpg",
-              "description": "## New South Wales, Australia \r\n\r\n Copernicus Sentinel-1 radar images from March 7 and 19, 2021, show extensive flooded areas in blue. Areas burned by wildfires in the previous year are shown in brown.           ",
-              "altText": "Copernicus Marine Environment Monitoring Service",
-              "captions": [
-                "### Caption",
-                "Contains modified Copernicus Sentinel data (2021), processed by ESA / NASA MODIS"
-              ]
+              "text": "## New South Wales, Australia \r\n\r\n Copernicus Sentinel-1 radar images from March 7 and 19, 2021, show extensive flooded areas in blue. Areas burned by wildfires in the previous year are shown in brown.           ",
+              "alt": "Copernicus Marine Environment Monitoring Service",
+              "caption": "### Caption \r\n\r\n Contains modified Copernicus Sentinel data (2021), processed by ESA / NASA MODIS"
             }
           ]
         },
@@ -132,8 +115,11 @@
           "slides": [
             {
               "url": "",
-              "captions": [
-                "After months of high temperatures and low rainfall, the water level of Italy's Po River reached a record low in 2022. The drought in northern Italy impacted the region's agricultural production, which often relies on irrigation."
+              "focus": "center",
+              "slides": [
+                {
+                  "text": "After months of high temperatures and low rainfall, the water level of Italy's Po River reached a record low in 2022. The drought in northern Italy impacted the region's agricultural production, which often relies on irrigation."
+                }
               ]
             }
           ]
@@ -143,42 +129,42 @@
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": [
-                "Satellites for peat's sake. Cloud-free view.",
-                "Lorem Ipsum"
-              ]
+              "focus": "center",
+              "alt": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "caption": "Satellites for peat's sake. Cloud-free view."
             },
             {
               "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["Satellites for peat's sake. 2"]
+              "focus": "center",
+              "alt": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+              "caption": ["Satellites for peat's sake. 2"]
             }
           ]
         },
         {
           "type": "imageCompare",
-          "text": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
-          "buttonText": "",
+          "startButtonText": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
+          "text": "compare now",
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "captions": ["Satellites for peat's sake."]
+              "alt": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+              "caption": ["Satellites for peat's sake."]
             },
             {
               "url": "assets/story37-image02.jpg",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "captions": ["A new caption text."]
+              "alt": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+              "caption": ["A new caption text."]
             }
           ]
         },
         {
           "type": "textOverlay",
+          "url": "assets/satellite.gif",
+          "focus": "right",
           "slides": [
             {
-              "url": "assets/satellite.gif",
-              "captions": ["Thanks for scrolling through"]
+              "text": "Thanks for scrolling through"
             }
           ]
         }
