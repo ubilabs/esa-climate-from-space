@@ -147,5 +147,6 @@
   "categories.improving_models": "Improving Models",
   "categories.ocean": "Ocean",
   "categories.atmosphere": "Atmosphere",
-  "categories.cryosphere": "Cryosphere"
+  "categories.cryosphere": "Cryosphere",
+  "exploreMoreInCategory": "Explore more in this [category](#/{category})"
 }

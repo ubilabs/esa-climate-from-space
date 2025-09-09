@@ -27,7 +27,7 @@ export type Story = {
 };
 
 export type Splashscreen = {
-  description: string;
+  slides: Array<{ description: string }>;
   location?: Record<string, number>;
   image?: string;
 };
@@ -63,11 +63,11 @@ export type ImageModuleSlide = {
   url?: string;
   altText?: string;
   description?: string;
+  descriptions?: string[];
   captions?: string[];
 };
 
-export type StorySectionProps = {
-} & ComponentProps<"div">;
+export type StorySectionProps = {} & ComponentProps<"div">;
 
 export const imageGalleryModuleMap: Record<
   ImageModule["type"],

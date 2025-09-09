@@ -1,10 +1,8 @@
-.splashscreen {
+.splashscreenContainer {
   background-color: var(--Neutral-ESA-Background, #011e2b);
   background-position: center;
   background-size: cover;
   position: relative;
-  height: 100%;
-  overflow: hidden;
 
   &.locationStory {
     background-color: transparent;
@@ -14,13 +12,19 @@
   }
 
   .splashBanner {
-    height: 100%;
     position: relative;
   }
 
   .parallaxContainer {
-    position: absolute;
-    inset: 0;
+    z-index: 0;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--story-height);
+    will-change: transform;
+    /* position: absolute; */
+    /* inset: 0; */
     background-size: cover;
     background-position: center;
     will-change: transform;
@@ -41,7 +45,9 @@
   }
 
   .contentContainer {
-    position: relative;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
     height: 100%;
     max-width: 95ch;
     margin: 0 auto;
@@ -49,9 +55,10 @@
     place-items: center;
     z-index: 2;
     will-change: transform;
+    inset: 0;
   }
 
-  .content {
+  .storyIntro {
     color: white;
     padding-inline: var(--story-padding);
 

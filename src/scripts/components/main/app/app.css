@@ -34,6 +34,7 @@ h3,
 h4,
 h5,
 h6 {
+  all: unset;
   text-wrap: balance;
 }
 
@@ -50,21 +51,37 @@ body,
   margin: 0;
   height: 100vh;
   height: 100dvh;
-  background-color: var(--black);
   font-family: NotesEsa, Arial, Helvetica, sans-serif;
 }
 
+body {
+  background-color: var(--dark-grey-5);
+}
+
 #app {
+  background-color: var(--Neutral-ESA-Background, #011e2b);
   display: grid;
   grid-template-areas:
     "header"
     "content";
   grid-template-rows: var(--header-height) 1fr;
   grid-template-columns: 100vw;
-  background: rgba(0, 51, 73, 0.4);
 }
 
 * {
   scrollbar-color: var(--dark-grey-1) transparent;
   scrollbar-width: auto;
+}
+
+/* story utility class */
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  place-items: center;
+  gap: 0.5rem;
+  padding-inline: var(--story-padding);
+
+  @media screen and (--desktop-viewport) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
 }

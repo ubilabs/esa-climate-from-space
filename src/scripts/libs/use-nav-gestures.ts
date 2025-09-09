@@ -13,6 +13,7 @@ const clamp = (value: number, min: number, max: number): number => {
   }
   return value;
 };
+const DEBOUNCE_MS = 500; // adjust to taste
 
 export const useNavGestures = (
   maxIndex: number,
@@ -20,35 +21,28 @@ export const useNavGestures = (
   setLastUserInteraction: Dispatch<SetStateAction<number>>,
   direction: "x" | "y" = "x",
 ) => {
+  const lastWheelRef = useRef<number | null>(null);
   const slides = Array.from({ length: maxIndex }, (_, index) => index);
   const lethargy = useRef(new Lethargy());
-
   const handleWheel = useCallback(
-    ({
-      event,
-      last,
-      memo: wait = false,
-    }: {
-      event: WheelEvent;
-      last: boolean;
-      memo?: boolean;
-    }) => {
-      if (!last) {
-        const s = lethargy.current.check(event);
-        if (s) {
-          if (!wait) {
-            setCurrentIndex((i) => clamp(i - s, 0, slides.length - 1));
-            setLastUserInteraction(Date.now());
-            return true;
-          }
-        } else {
-          return false;
-        }
+    ({ event, last }: { event: WheelEvent; last: boolean }) => {
+      if (last) return;
+
+      const s = lethargy.current.check(event);
+      if (!s) return false;
+
+      const now = Date.now();
+      // store last trigger time in ref
+      if (!lastWheelRef.current || now - lastWheelRef.current > DEBOUNCE_MS) {
+        setCurrentIndex((i) => clamp(i - s, 0, slides.length - 1));
+        setLastUserInteraction(now);
+        lastWheelRef.current = now;
+        return true;
       }
+      return false;
     },
     [setCurrentIndex, setLastUserInteraction, slides.length],
   );
-
   const handleDrag = useCallback(
     ({
       active,
