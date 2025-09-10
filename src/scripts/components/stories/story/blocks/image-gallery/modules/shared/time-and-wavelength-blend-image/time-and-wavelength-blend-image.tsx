@@ -95,6 +95,7 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<
       {/* This element is used to help the intersection observer keep track of which image is currently visible.
           The image itself cannot be used because it will always be fully in view */}
       <span
+        data-scroll
         aria-hidden="true"
         ref={ref}
         style={sentinelStyle}
