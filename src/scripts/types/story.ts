@@ -26,10 +26,15 @@ export type Story = {
   blocks: ContentBlock[];
 };
 
+type ImageFocus = "center" | "left" | "right";
+
 export type Splashscreen = {
-  slides: Array<{ description: string }>;
   location?: Record<string, number>;
-  image?: string;
+  url?: string;
+  slides: Array<{ text: string }>;
+  title?: string;
+  focus?: ImageFocus;
+  subtitle?: string;
 };
 
 // Extend with union for other types if needed

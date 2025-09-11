@@ -49,7 +49,10 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
     return null;
   }
 
-  const { image, slides } = story.splashscreen;
+  const { url, slides, title, subtitle } = story.splashscreen;
+
+  // Convert plain strings into markdown heading strings
+  const titleMarkdown = `# ${title} \n ${subtitle}`;
 
   const { id } = story;
 
@@ -63,7 +66,8 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
     >
       <div
         style={{
-          height: `calc(${slides.length} * var(--story-height))`,
+          // plus one to account for the intro slide
+          height: `calc(${slides.length + 1} * var(--story-height))`,
         }}
         ref={targetRef}
         className={styles.splashBanner}
@@ -72,17 +76,16 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
         <div
           className={styles.parallaxContainer}
           style={{
-            backgroundImage: `${!isLocationBased ? `url(${getStoryAssetUrl(id, image)})` : "none"}`,
+            backgroundImage: `${!isLocationBased ? `url(${getStoryAssetUrl(id, url)})` : "none"}`,
           }}
         />
         <div className={styles.contentContainer}>
+          <Caption
+            caption={titleMarkdown || ""}
+            className={styles.storyIntro}
+          />
           {slides.map((slide, i) => (
-            <Caption
-              caption={slide.text}
-              key={i}
-              index={i}
-              className={(i === 0 && styles.storyIntro) || ""}
-            />
+            <Caption caption={slide.text} key={i} index={i} />
           ))}
         </div>
       </div>
