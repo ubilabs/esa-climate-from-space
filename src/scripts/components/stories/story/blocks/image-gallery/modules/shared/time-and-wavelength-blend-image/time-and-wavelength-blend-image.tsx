@@ -20,7 +20,7 @@ interface BlendImageProps {
   animationDirection: AnimationDirection;
   image: ImageModuleSlide;
   numSlides: number;
-  prevCaption: string | undefined;
+  prevFlag: string | undefined;
   ref: Ref<HTMLDivElement> | undefined;
   scrollYProgress: MotionValue<number>;
   slideIndex: number;
@@ -32,15 +32,14 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<
 > = ({
   active,
   animationDirection,
-  image: { url, altText, captions },
+  image: { url, altText, focus, flag, caption },
   numSlides,
-  prevCaption,
+  prevFlag,
   ref,
   scrollYProgress,
   slideIndex,
   storyId,
 }) => {
-  const caption = captions?.join();
   const inputRange =
     numSlides === 1
       ? [0, 1]
@@ -88,7 +87,7 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<
       slideIndex === 0 ? "0px" : "calc(var(--story-height) * -1 + 1px)",
   };
 
-  const flags = [caption || "", prevCaption || ""];
+  const flags = [flag || "", prevFlag || ""];
 
   return (
     <li className={styles.blendItem}>
@@ -105,8 +104,8 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<
       <motion.img
         style={style}
         src={getStoryAssetUrl(storyId, url)}
-        alt={`Slide ${slideIndex + 1}, ${altText}`}
-        className={styles.blendImage}
+        alt={`Slide ${slideIndex + 1}, ${altText || caption || ""} `}
+        className={cx(styles.blendImage, focus)}
       />
       {isVisible && (
         <>

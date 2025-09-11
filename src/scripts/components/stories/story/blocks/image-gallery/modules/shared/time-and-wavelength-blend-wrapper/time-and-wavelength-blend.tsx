@@ -79,18 +79,10 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
     },
   );
 
-  const description = useMemo(() => {
-    const activeSlide = images[activeSlideIndex ?? 0];
-    return activeSlide
-      ? activeSlide.description
-        ? activeSlide.description
-        : activeSlide.altText
-      : "";
-  }, [activeSlideIndex, images]);
-
-  const captions = useMemo(() => {
-    const activeSlide = images[activeSlideIndex ?? 0];
-    return activeSlide ? activeSlide.captions : [];
+  const caption = useMemo(() => {
+    const activeSlide = images[activeSlideIndex];
+    if (!activeSlide) return "";
+    return activeSlide.caption || "";
   }, [activeSlideIndex, images]);
 
   return (
@@ -103,7 +95,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
         <ul className={styles.imageContainer}>
           {images.map((image, i) => (
             <TimeAndWavelengthBlendImage
-              prevCaption={images[i - 1]?.captions?.join()}
+              prevFlag={images[i - 1]?.flag}
               key={`${storyId}-${image.url}_${i}`}
               ref={getRefCallback?.(i)}
               active={activeSlideIndex === i}
@@ -117,8 +109,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
           ))}
         </ul>
         <div className={cx(styles.currentImageText, "story-grid")}>
-          <h3>{captions?.join(" ")}</h3>
-          <p>{description}</p>
+          <p>{caption}</p>
         </div>
       </motion.div>
     </div>
