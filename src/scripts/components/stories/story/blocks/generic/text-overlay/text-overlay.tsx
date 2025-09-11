@@ -3,6 +3,11 @@ import { StorySectionProps } from "../../../../../../types/story";
 import { useModuleContent } from "../../../../../../providers/story/module-content/use-module-content";
 import { TextOverlaySlide } from "./text-overlay-slide/text-overlay-slide";
 
+import { getStoryAssetUrl } from "../../../../../../libs/get-story-asset-urls";
+import { splitText } from "../../../../../../libs/split-text";
+
+import cx from "classnames";
+
 import styles from "./text-overlay.module.css";
 
 /**
@@ -11,23 +16,61 @@ import styles from "./text-overlay.module.css";
  * Capable of generating one or multiple slides with options for no background, image background, or video background.
  *
  */
+
+const isVideo = (url: string | undefined) => {
+  return url?.endsWith(".mp4") || url?.endsWith(".webm") || false;
+};
+
 const TextOverlay: FunctionComponent<StorySectionProps> = () => {
-  const {
-    module: { slides },
-    storyId,
-    getRefCallback,
-  } = useModuleContent();
+  const { module, storyId, getRefCallback } = useModuleContent();
+  const { url, slides, focus, altText } = module;
+
+  const assetUrl = getStoryAssetUrl(storyId, url);
+  const hasAsset = assetUrl && assetUrl.length > 0;
+
+  const totalSlides = slides?.reduce((acc, slide) => {
+    const textChunks = splitText(slide.text);
+    return acc + textChunks.length;
+  }, 0);
 
   return (
     <div className={styles.textOverlay}>
-      {slides?.map((slide, index) => (
-        <TextOverlaySlide
-          getRefCallback={getRefCallback}
-          key={index}
-          storyId={storyId}
-          slide={slide}
-        />
-      ))}
+      <div
+        className={cx(styles.slide)}
+        style={{
+          height: `calc(${totalSlides} * var(--story-height))`,
+        }}
+      >
+        <div className={styles.assetContainer}>
+          {hasAsset &&
+            (isVideo(url) ? (
+              <video
+                className={styles.asset}
+                src={assetUrl}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            ) : (
+              <img
+                className={cx(styles.asset, focus)}
+                src={assetUrl}
+                alt={altText || ""}
+              />
+            ))}
+        </div>
+        <div className={styles.slidesContainer}>
+          {slides?.map((slide, index) => (
+            <TextOverlaySlide
+              getRefCallback={getRefCallback}
+              key={index}
+              storyId={storyId}
+              slide={slide}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

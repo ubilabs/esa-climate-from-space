@@ -26,7 +26,7 @@ export type Story = {
   blocks: ContentBlock[];
 };
 
-type ImageFocus = "center" | "left" | "right";
+type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
 
 export type Splashscreen = {
   location?: Record<string, number>;
@@ -60,16 +60,20 @@ export type ImageGalleryModuleType =
 export type ImageModule = {
   type: ImageGalleryModuleType;
   text?: string;
+  altText?: string;
   slides?: ImageModuleSlide[];
-  buttonText?: string;
+  startButtonText?: string;
+  focus?: ImageFocus;
+  url?: string;
 };
 
 export type ImageModuleSlide = {
   url?: string;
   altText?: string;
-  description?: string;
-  descriptions?: string[];
-  captions?: string[];
+  text: string;
+  focus?: ImageFocus;
+  flag: string;
+  caption: string;
 };
 
 export type StorySectionProps = {} & ComponentProps<"div">;

@@ -63,14 +63,14 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   } = story?.splashscreen || {};
 
   // Count total captions by splitting each slide's text
-  const totalCaptions = slides.reduce((acc, slide) => {
+  const totalSlides = slides.reduce((acc, slide) => {
     const textChunks = splitText(slide.text);
     return acc + textChunks.length;
   }, 0);
 
   const overlayOpacity = useTransform(
     scrollYProgress,
-    [0, 1 / (totalCaptions + 1)],
+    [0, 1 / (totalSlides + 1)],
     [0, 0.5],
   );
 
@@ -94,7 +94,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
       <div
         style={{
           // plus one to account for the intro slide
-          height: `calc(${totalCaptions + 1} * var(--story-height))`,
+          height: `calc(${totalSlides + 1} * var(--story-height))`,
         }}
         ref={targetRef}
         className={styles.splashBanner}
@@ -112,14 +112,14 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
         />
         <div className={styles.contentContainer}>
           <TextContainer
-            caption={titleMarkdown || ""}
+            text={titleMarkdown || ""}
             className={styles.storyIntro}
           />
           {slides.flatMap((slide, i) => {
             const textChunks = splitText(slide.text);
             return textChunks.map((chunk, chunkIndex) => (
               <TextContainer
-                caption={chunk}
+                text={chunk}
                 key={`${i}-${chunkIndex}`}
                 index={i * 1000 + chunkIndex}
               />

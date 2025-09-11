@@ -19,7 +19,7 @@ export const ClosingScreen: FunctionComponent<StorySectionProps> = () => {
 
   return (
     <div style={{ backgroundColor: "#011e2b" }}>
-      <TextContainer caption={message} />
+      <TextContainer text={message} />
     </div>
   );
 };
