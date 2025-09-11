@@ -1,10 +1,10 @@
-export const MAX_WORDS_PER_CAPTION = 40;
-export const MIN_WORDS_PER_CAPTION = 5;
+const MAX_WORDS_PER_CAPTION = 40;
+const MIN_WORDS_PER_CAPTION = 5;
 
 export const splitText = (
   text: string,
-  maxWords: number,
-  minWords: number,
+  maxWords: number = MAX_WORDS_PER_CAPTION,
+  minWords: number = MIN_WORDS_PER_CAPTION,
 ): string[] => {
   if (!text) return [];
   const words = text.split(" ");
