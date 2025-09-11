@@ -28,3 +28,11 @@ export const splitText = (
   }
   return chunks;
 };
+
+export const calculateTotalSlides = (slides: { text: string }[]): number => {
+  if (!slides) return 0;
+  return slides.reduce((acc, slide) => {
+    const textChunks = splitText(slide.text);
+    return acc + textChunks.length;
+  }, 0);
+};

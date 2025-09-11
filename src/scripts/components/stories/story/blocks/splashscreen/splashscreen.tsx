@@ -6,7 +6,7 @@ import { setFlyTo } from "../../../../../reducers/fly-to";
 
 import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
 import { isLocationStory } from "../../../../../libs/is-location-story";
-import { splitText } from "../../../../../libs/split-text";
+import { calculateTotalSlides, splitText } from "../../../../../libs/split-text";
 
 import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 
@@ -62,11 +62,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
     focus,
   } = story?.splashscreen || {};
 
-  // Count total captions by splitting each slide's text
-  const totalSlides = slides.reduce((acc, slide) => {
-    const textChunks = splitText(slide.text);
-    return acc + textChunks.length;
-  }, 0);
+  const totalSlides = calculateTotalSlides(slides);
 
   const overlayOpacity = useTransform(
     scrollYProgress,

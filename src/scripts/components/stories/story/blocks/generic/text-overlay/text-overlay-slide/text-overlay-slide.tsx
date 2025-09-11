@@ -52,7 +52,7 @@ export const TextContainer: FunctionComponent<TextContainerProps> = ({
         opacity: opacity,
         translateY: translateY,
       }}
-      className={cx(styles.textContainer, "story-grid", )}
+      className={cx(styles.textContainer, "story-grid", className)}
     >
       <div className={styles.textBlock}>
         <ReactMarkdown

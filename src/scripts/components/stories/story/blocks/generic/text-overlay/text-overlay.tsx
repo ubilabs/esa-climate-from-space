@@ -4,7 +4,7 @@ import { useModuleContent } from "../../../../../../providers/story/module-conte
 import { TextOverlaySlide } from "./text-overlay-slide/text-overlay-slide";
 
 import { getStoryAssetUrl } from "../../../../../../libs/get-story-asset-urls";
-import { splitText } from "../../../../../../libs/split-text";
+import { calculateTotalSlides, splitText } from "../../../../../../libs/split-text";
 
 import cx from "classnames";
 
@@ -28,10 +28,7 @@ const TextOverlay: FunctionComponent<StorySectionProps> = () => {
   const assetUrl = getStoryAssetUrl(storyId, url);
   const hasAsset = assetUrl && assetUrl.length > 0;
 
-  const totalSlides = slides?.reduce((acc, slide) => {
-    const textChunks = splitText(slide.text);
-    return acc + textChunks.length;
-  }, 0);
+  const totalSlides = calculateTotalSlides(slides);
 
   return (
     <div className={styles.textOverlay}>
