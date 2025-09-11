@@ -5,6 +5,7 @@ import { setFlyTo } from "../../../../../reducers/fly-to";
 
 import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
 import { isLocationStory } from "../../../../../libs/is-location-story";
+import { splitText } from "../../../../../libs/split-text";
 
 import { useStory } from "../../../../../providers/story/use-story";
 
@@ -18,6 +19,9 @@ import { STORY_LATITUDE_OFFSET } from "../../../../../config/main";
 import cx from "classnames";
 
 import styles from "./splashscreen.module.css";
+
+const MAX_WORDS_PER_CAPTION = 40;
+const MIN_WORDS_PER_CAPTION = 5;
 
 export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const { story } = useStory();
@@ -51,6 +55,15 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
 
   const { url, slides, title, subtitle } = story.splashscreen;
 
+  const totalCaptions = slides.reduce((acc, slide) => {
+    const textChunks = splitText(
+      slide.text,
+      MAX_WORDS_PER_CAPTION,
+      MIN_WORDS_PER_CAPTION,
+    );
+    return acc + textChunks.length;
+  }, 0);
+
   // Convert plain strings into markdown heading strings
   const titleMarkdown = `# ${title} \n ${subtitle}`;
 
@@ -67,7 +80,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
       <div
         style={{
           // plus one to account for the intro slide
-          height: `calc(${slides.length + 1} * var(--story-height))`,
+          height: `calc(${totalCaptions + 1} * var(--story-height))`,
         }}
         ref={targetRef}
         className={styles.splashBanner}
@@ -84,9 +97,20 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
             caption={titleMarkdown || ""}
             className={styles.storyIntro}
           />
-          {slides.map((slide, i) => (
-            <Caption caption={slide.text} key={i} index={i} />
-          ))}
+          {slides.flatMap((slide, i) => {
+            const textChunks = splitText(
+              slide.text,
+              MAX_WORDS_PER_CAPTION,
+              MIN_WORDS_PER_CAPTION,
+            );
+            return textChunks.map((chunk, chunkIndex) => (
+              <Caption
+                caption={chunk}
+                key={`${i}-${chunkIndex}`}
+                index={i * 1000 + chunkIndex}
+              />
+            ));
+          })}
         </div>
       </div>
     </SlideContainer>
