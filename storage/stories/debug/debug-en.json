@@ -48,7 +48,6 @@
             {
               "url": "assets/story37-image01.jpg",
               "focus": "right",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
               "caption": "# Some caption 1",
               "flag": "2018"
             },
@@ -97,6 +96,7 @@
               "caption": "## Toowoomba, Queensland, Australia A woman waits on the roof of her car during a flash flood on January 10, 2011 [T Swinson](https://cfs.climate.esa.int/index.html#/stories/story-21/1?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI)"
             },
             {
+              "focus": "right",
               "url": "assets/story21-image06.png",
               "text": "## Global Mean Sea Level \r\n\r\n The global sea level observed by satellites shows an upward trend of 3.3 mm per year, but a decline in 2011 due to the large amount of excess water on land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
               "alt": "Copernicus Marine Environment Monitoring Service",
@@ -143,18 +143,16 @@
         },
         {
           "type": "imageCompare",
-          "startButtonText": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
-          "text": "compare now",
+          "text": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
+          "startButtonText": "compare now",
           "slides": [
             {
               "url": "assets/story37-image01.jpg",
-              "alt": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "caption": ["Satellites for peat's sake."]
+              "alt": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country."
             },
             {
               "url": "assets/story37-image02.jpg",
-              "alt": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "caption": ["A new caption text."]
+              "alt": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple."
             }
           ]
         },
