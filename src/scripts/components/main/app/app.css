@@ -85,3 +85,23 @@ body {
     grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 }
+
+/* for within the story, the focus can be set to determine the image position */
+#story {
+  .right {
+    background-position: right;
+  }
+
+  .left {
+    background-position: left;
+  }
+  .center {
+    background-position: center;
+  }
+  .bottom {
+    background-position: bottom;
+  }
+  .top {
+    background-position: top;
+  }
+}

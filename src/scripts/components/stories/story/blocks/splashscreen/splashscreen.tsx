@@ -54,7 +54,13 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
     }
   }, [isLocationBased, dispatch, location]);
 
-  const { url, slides = [], title, subtitle } = story?.splashscreen || {};
+  const {
+    url,
+    slides = [],
+    title,
+    subtitle,
+    focus,
+  } = story?.splashscreen || {};
 
   // Count total captions by splitting each slide's text
   const totalCaptions = slides.reduce((acc, slide) => {
@@ -95,7 +101,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
       >
         {/* needs to be placed outside of the content container, will other interfere with the transition calculation of framer */}
         <div
-          className={styles.parallaxContainer}
+          className={cx(styles.parallaxContainer, focus)}
           style={{
             backgroundImage: `${!isLocationBased ? `url(${getStoryAssetUrl(id, url)})` : "none"}`,
           }}

@@ -1,6 +1,5 @@
 .splashscreenContainer {
   background-color: var(--Neutral-ESA-Background, #011e2b);
-  background-position: center;
   background-size: cover;
   position: relative;
 
@@ -26,7 +25,6 @@
     /* position: absolute; */
     /* inset: 0; */
     background-size: cover;
-    background-position: center;
     will-change: transform;
 
     &:before {
