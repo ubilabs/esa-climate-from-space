@@ -15,28 +15,30 @@ import cx from "classnames";
 import styles from "./image-scroll.module.css";
 
 const ImageScroll: FunctionComponent<StorySectionProps> = () => {
-  const { module, storyId, getRefCallback } = useModuleContent();
+  const {
+    module: { slides },
+    storyId,
+    getRefCallback,
+  } = useModuleContent();
   return (
     <div className={styles.imageScroll}>
-      {module.slides?.map((slide, index) => (
+      {slides?.map(({ url, text, altText, caption, focus }, index) => (
         <SlideContainer
           ref={getRefCallback?.(index)}
           className={cx(styles.slide, "story-grid")}
-          key={slide.url || index}
+          key={url || index}
         >
-          {slide.description && (
-            <ReactMarkdown
-              children={slide.description}
-              className={styles.imageScrollText}
-            />
+          {text && (
+            <ReactMarkdown children={text} className={styles.imageScrollText} />
           )}
           <div className={styles.scrollImageContainer}>
             <ScrollImage
-              src={getStoryAssetUrl(storyId, slide.url)}
-              alt={slide.altText}
+              className={focus}
+              src={getStoryAssetUrl(storyId, url)}
+              alt={altText || text}
             />
             <ReactMarkdown
-              children={slide.captions?.join("\n\n") || ""}
+              children={caption}
               allowedElements={config.markdownAllowedElements}
             />
           </div>

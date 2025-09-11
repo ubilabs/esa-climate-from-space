@@ -14,14 +14,17 @@ import {
   WHEEL_SCALE_FACTOR,
 } from "../../../../../../../../config/main";
 
+import cx from "classnames";
+
 import styles from "./image-scroll-image.module.css";
 
 interface Props {
   src: string;
   alt?: string;
+  className?: string;
 }
 
-export const ScrollImage: FunctionComponent<Props> = ({ src, alt }) => {
+export const ScrollImage: FunctionComponent<Props> = ({ src, alt, className }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
@@ -125,7 +128,7 @@ export const ScrollImage: FunctionComponent<Props> = ({ src, alt }) => {
         ref={imgRef}
         src={src}
         alt={alt}
-        className={styles.image}
+        className={cx( styles.image, className)}
         style={{
           x: isFullscreen ? x : 0,
           y: isFullscreen ? y : 0,
