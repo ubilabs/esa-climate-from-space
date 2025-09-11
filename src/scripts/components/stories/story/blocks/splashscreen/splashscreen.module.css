@@ -84,3 +84,14 @@
     }
   }
 }
+
+.backgroundOverlay {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--story-height);
+  background-color: rgba(1, 30, 43, 0.5);
+  z-index: 1;
+  pointer-events: none;
+}

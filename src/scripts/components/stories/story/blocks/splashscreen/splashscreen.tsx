@@ -1,11 +1,14 @@
 import { FunctionComponent, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { motion, useTransform } from "motion/react";
 
 import { setFlyTo } from "../../../../../reducers/fly-to";
 
 import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
 import { isLocationStory } from "../../../../../libs/is-location-story";
 import { splitText } from "../../../../../libs/split-text";
+
+import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 
 import { useStory } from "../../../../../providers/story/use-story";
 
@@ -20,14 +23,16 @@ import cx from "classnames";
 
 import styles from "./splashscreen.module.css";
 
-const MAX_WORDS_PER_CAPTION = 40;
-const MIN_WORDS_PER_CAPTION = 5;
-
 export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const { story } = useStory();
   const targetRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useDispatch();
+
+  const { scrollYProgress } = useStoryScroll({
+    target: targetRef,
+    offset: ["start start", "end start"],
+  });
 
   const isLocationBased = isLocationStory(story);
   const location = story?.splashscreen?.location;
@@ -49,23 +54,26 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
     }
   }, [isLocationBased, dispatch, location]);
 
-  if (!story || !story.splashscreen) {
-    return null;
-  }
+  const { url, slides = [], title, subtitle } = story?.splashscreen || {};
 
-  const { url, slides, title, subtitle } = story.splashscreen;
-
+  // Count total captions by splitting each slide's text
   const totalCaptions = slides.reduce((acc, slide) => {
-    const textChunks = splitText(
-      slide.text,
-      MAX_WORDS_PER_CAPTION,
-      MIN_WORDS_PER_CAPTION,
-    );
+    const textChunks = splitText(slide.text);
     return acc + textChunks.length;
   }, 0);
 
+  const overlayOpacity = useTransform(
+    scrollYProgress,
+    [0, 1 / (totalCaptions + 1)],
+    [0, 0.5],
+  );
+
   // Convert plain strings into markdown heading strings
   const titleMarkdown = `# ${title} \n ${subtitle}`;
+
+  if (!story) {
+    return null;
+  }
 
   const { id } = story;
 
@@ -92,17 +100,17 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
             backgroundImage: `${!isLocationBased ? `url(${getStoryAssetUrl(id, url)})` : "none"}`,
           }}
         />
+        <motion.div
+          className={styles.backgroundOverlay}
+          style={{ opacity: overlayOpacity }}
+        />
         <div className={styles.contentContainer}>
           <Caption
             caption={titleMarkdown || ""}
             className={styles.storyIntro}
           />
           {slides.flatMap((slide, i) => {
-            const textChunks = splitText(
-              slide.text,
-              MAX_WORDS_PER_CAPTION,
-              MIN_WORDS_PER_CAPTION,
-            );
+            const textChunks = splitText(slide.text);
             return textChunks.map((chunk, chunkIndex) => (
               <Caption
                 caption={chunk}
