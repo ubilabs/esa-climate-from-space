@@ -13,7 +13,7 @@ import cx from "classnames";
 
 import styles from "./text-overlay-slide.module.css";
 
-interface CaptionProps {
+interface TextContainerProps {
   caption: string;
   className?: string;
   index?: number;
@@ -21,7 +21,7 @@ interface CaptionProps {
 
 const TRANSLATE_DISTANCE = 300;
 
-export const Caption: FunctionComponent<CaptionProps> = ({
+export const TextContainer: FunctionComponent<TextContainerProps> = ({
   caption,
   index = 0,
   className,
@@ -118,7 +118,7 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
       <div className={styles.captionsContainer}>
         {slide.captions.map((caption, index) => (
           <div ref={getRefCallback(index)} key={index}>
-            <Caption key={index} caption={caption} index={index} />
+            <TextContainer key={index} caption={caption} index={index} />
           </div>
         ))}
       </div>
