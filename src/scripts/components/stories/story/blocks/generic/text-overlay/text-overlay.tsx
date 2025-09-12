@@ -1,12 +1,12 @@
 import { FunctionComponent } from "react";
 import {
-  ImageModuleSlide,
   StorySectionProps,
 } from "../../../../../../types/story";
 
 import { useModuleContent } from "../../../../../../providers/story/module-content/use-module-content";
 import { TextOverlaySlide } from "./text-overlay-slide/text-overlay-slide";
 
+import { calculateTotalSlides } from "../../../../../../libs/split-text";
 import { getStoryAssetUrl } from "../../../../../../libs/get-story-asset-urls";
 
 import cx from "classnames";
@@ -26,7 +26,7 @@ const isVideo = (url: string | undefined) => {
 
 const TextOverlay: FunctionComponent<StorySectionProps> = () => {
   const { module, storyId, getRefCallback } = useModuleContent();
-  const { url, slides, focus, altText } = module;
+  const { url, slides = [], focus, altText } = module;
 
   const assetUrl = getStoryAssetUrl(storyId, url);
   const hasAsset = assetUrl && assetUrl.length > 0;
