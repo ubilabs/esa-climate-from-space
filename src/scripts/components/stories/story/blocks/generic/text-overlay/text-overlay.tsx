@@ -1,10 +1,13 @@
 import { FunctionComponent } from "react";
-import { StorySectionProps } from "../../../../../../types/story";
+import {
+  ImageModuleSlide,
+  StorySectionProps,
+} from "../../../../../../types/story";
+
 import { useModuleContent } from "../../../../../../providers/story/module-content/use-module-content";
 import { TextOverlaySlide } from "./text-overlay-slide/text-overlay-slide";
 
 import { getStoryAssetUrl } from "../../../../../../libs/get-story-asset-urls";
-import { calculateTotalSlides, splitText } from "../../../../../../libs/split-text";
 
 import cx from "classnames";
 

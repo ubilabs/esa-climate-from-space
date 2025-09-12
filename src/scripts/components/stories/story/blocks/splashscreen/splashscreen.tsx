@@ -6,7 +6,10 @@ import { setFlyTo } from "../../../../../reducers/fly-to";
 
 import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
 import { isLocationStory } from "../../../../../libs/is-location-story";
-import { calculateTotalSlides, splitText } from "../../../../../libs/split-text";
+import {
+  calculateTotalSlides,
+  splitText,
+} from "../../../../../libs/split-text";
 
 import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 
@@ -117,7 +120,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
               <TextContainer
                 text={chunk}
                 key={`${i}-${chunkIndex}`}
-                index={i * 1000 + chunkIndex}
+                index={i + chunkIndex}
               />
             ));
           })}

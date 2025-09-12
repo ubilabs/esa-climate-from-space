@@ -1,17 +1,17 @@
 import { FunctionComponent, useRef } from "react";
 
 import ReactMarkdown from "react-markdown";
+import { ImageModuleSlide } from "../../../../../../../types/story";
 import { motion, useTransform } from "motion/react";
 
 import config from "../../../../../../../config/main";
 
 import { useStoryScroll } from "../../../../../../../hooks/use-story-scroll";
-import { ImageModuleSlide } from "../../../../../../../types/story";
+import { splitText } from "../../../../../../../libs/split-text";
 
 import cx from "classnames";
 
 import styles from "./text-overlay-slide.module.css";
-import { splitText } from "../../../../../../../libs/split-text";
 
 interface TextContainerProps {
   text: string;
@@ -75,7 +75,7 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
   storyId,
   getRefCallback,
 }) => {
-  if (!slide.text || slide.text.length === 0) {
+  if (!slide.text) {
     console.warn(
       `TextOverlaySlide: Slide for story ${storyId} has no text, skipping rendering.`,
     );
