@@ -1,7 +1,5 @@
 import { FunctionComponent } from "react";
-import {
-  StorySectionProps,
-} from "../../../../../../types/story";
+import { StorySectionProps } from "../../../../../../types/story";
 
 import { useModuleContent } from "../../../../../../providers/story/module-content/use-module-content";
 import { TextOverlaySlide } from "./text-overlay-slide/text-overlay-slide";
@@ -21,7 +19,17 @@ import styles from "./text-overlay.module.css";
  */
 
 const isVideo = (url: string | undefined) => {
-  return url?.endsWith(".mp4") || url?.endsWith(".webm") || false;
+  const videoExtensions = [
+    ".mp4",
+    ".webm",
+    ".ogg",
+    ".mov",
+    ".avi",
+    ".wmv",
+    ".flv",
+    ".mkv",
+  ];
+  return videoExtensions.some((ext) => url?.toLowerCase().includes(ext));
 };
 
 const TextOverlay: FunctionComponent<StorySectionProps> = () => {
