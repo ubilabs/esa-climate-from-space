@@ -17,11 +17,13 @@ interface TextContainerProps {
   text: string;
   className?: string;
   index?: number;
+  refProp?: React.Ref<HTMLDivElement>;
 }
 
 const TRANSLATE_DISTANCE = 300;
 
 export const TextContainer: FunctionComponent<TextContainerProps> = ({
+  refProp,
   text,
   index = 0,
   className,

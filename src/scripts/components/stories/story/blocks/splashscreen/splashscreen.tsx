@@ -26,7 +26,9 @@ import cx from "classnames";
 
 import styles from "./splashscreen.module.css";
 
-export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
+export const SplashScreen: FunctionComponent<StorySectionProps> = ({
+  getRefCallback,
+}) => {
   const { story } = useStory();
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -88,7 +90,6 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
         styles.splashscreenContainer,
         isLocationBased && styles.locationStory,
       )}
-      ref={ref}
     >
       <div
         style={{

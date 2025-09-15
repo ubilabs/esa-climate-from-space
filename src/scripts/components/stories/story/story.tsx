@@ -9,9 +9,7 @@ import { useLenisForStory } from "../../../hooks/use-lenis-for-story";
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
-import {
-  getModuleComponent,
-} from "../../../libs/get-story-components";
+import { getModuleComponent } from "../../../libs/get-story-components";
 
 import cx from "classnames";
 
@@ -23,7 +21,12 @@ import styles from "./story.module.css";
  * The hierarchical structure of a story is organized as follows: story > module > slides
  */
 const Story: FunctionComponent = () => {
-  const { storyElementRef, story, setScrollAnchorRefs } = useStory();
+  const {
+    storyElementRef,
+    story,
+    setScrollAnchorRefs,
+    getScrollAnchorRefsMap,
+  } = useStory();
 
   // Initialize Lenis for smooth scrolling behavior in the story
   useLenisForStory();
@@ -38,21 +41,23 @@ const Story: FunctionComponent = () => {
   if (!story) {
     return null;
   }
-
+  console.log("Scroll Anchor Refs Map:", getScrollAnchorRefsMap());
   return (
     <main
       className={cx(styles.story, styles.fadeIn)}
       ref={storyElementRef}
       id="story"
     >
-      <SplashScreen ref={setScrollAnchorRefs("0-0")} />
+      <SplashScreen
+        getRefCallback={(index: number) => setScrollAnchorRefs(`0-${index}`)}
+      />
       {story.modules.map(({ type }, moduleIndex) => {
         const ModuleComponent = getModuleComponent(type);
         const moduleData = story.modules[moduleIndex];
 
         /* Assign this to element's ref within modules that should serve as scroll anchors. For instance, in time- or wavelength modules, designate every "blendImage" as a scroll anchor. */
         const generateScrollAnchorRef = (nodeIndex: number) =>
-          setScrollAnchorRefs(`${moduleIndex}-${nodeIndex}`);
+          setScrollAnchorRefs(`${moduleIndex + 1}-${nodeIndex}`);
 
         return (
           <ModuleContentProvider
