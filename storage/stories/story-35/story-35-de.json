@@ -1,68 +1,43 @@
 {
   "id": "story-35",
   "splashscreen": {
-    "description": "# Ein rasender Gletscher\nJakobshavn, Grönland",
-    "image": "assets/story35-image05.jpg"
+    "url": "assets/story35-image05.jpg",
+    "focus": "center",
+    "title": "Ein rasender Gletscher",
+    "subtitle": "Jakobshavn, Grönland",
+    "altText": "Ein rasender Gletscher in Jakobshavn, Grönland",
+    "slides": [
+      {
+        "text": "Grönland verliert durch den Jakobshavn-Gletscher mehr Eis als durch jeden anderen Gletscher dieses riesigen Eisschildes. Der Jakobshavn - einer der sich am schnellsten bewegenden Gletscher der Welt - bewegt sich bis zu 40 Meter pro Tag."
+      },
+      {
+        "text": "Satellitenaufnahmen zeigen, dass er in letzter Zeit langsamer fließt und dicker wird, obwohl er immer noch mehr Eis verliert als gewinnt. Beobachtungen aus dem Weltraum sind der Schlüssel zur Überwachung dynamischer Prozesse wie diesem."
+      }
+    ]
   },
-  "blocks": [
+  "modules": [
     {
-      "type": "imageGallery",
-      "modules": [
+      "type": "imageWavelength",
+      "slides": [
         {
-          "type": "textOverlay",
-          "slides": [
-            {
-              "url": "",
-              "altText": "",
-              "captions": [
-                "Grönland verliert durch den Jakobshavn-Gletscher mehr Eis als durch jeden anderen Gletscher dieses riesigen Eisschildes. Der Jakobshavn - einer der sich am schnellsten bewegenden Gletscher der Welt - bewegt sich bis zu 40 Meter pro Tag."
-              ]
-            },
-            {
-              "url": "",
-              "altText": "",
-              "captions": [
-                "Satellitenaufnahmen zeigen, dass er in letzter Zeit langsamer fließt und dicker wird, obwohl er immer noch mehr Eis verliert als gewinnt. Beobachtungen aus dem Weltraum sind der Schlüssel zur Überwachung dynamischer Prozesse wie diesem."
-              ]
-            }
-          ]
+          "url": "assets/story35-image01.jpg",
+          "caption": "Dieses am 11. Juni 2019 aufgenommene Satellitenbild zeigt den Jakobshavn-Gletscher, einen der sich am schnellsten bewegenden Gletscher der Welt.",
+          "altText": ""
         },
         {
-          "type": "imageWavelength",
-          "slides": [
-            {
-              "url": "assets/story35-image01.jpg",
-              "description": "Dieses am 11. Juni 2019 aufgenommene Satellitenbild zeigt den Jakobshavn-Gletscher, einen der sich am schnellsten bewegenden Gletscher der Welt.",
-              "altText": "",
-              "captions": [
-                "Jakobshavn: Ein rasender Gletscher."
-              ]
-            },
-            {
-              "url": "assets/story35-image02.jpg",
-              "description": "Archivsatellitenbilder sind nützlich, um langfristige Trends bei der Gletscherüberwachung zu erkennen.",
-              "altText": "",
-              "captions": [
-                "Jakobshavn: Ein rasender Gletscher."
-              ]
-            },
-            {
-              "url": "assets/story35-image03.jpg",
-              "description": "Satelliten werden auch eingesetzt, um die Höhe und Dicke der Eiskappe zu kartieren und ihre Veränderungen im Laufe der Zeit zu überwachen.",
-              "altText": "",
-              "captions": [
-                "Jakobshavn: Ein rasender Gletscher."
-              ]
-            },
-            {
-              "url": "assets/story35-image04.jpg",
-              "description": "Die Eisgeschwindigkeit kann dank mehrerer Radaraufnahmen gemessen werden. So können Wissenschaftler jeden Gletscher regelmäßig überwachen, um sowohl die lang- als auch die kurzfristige Dynamik zu verstehen.",
-              "altText": "",
-              "captions": [
-                "Jakobshavn: Ein rasender Gletscher."
-              ]
-            }
-          ]
+          "url": "assets/story35-image02.jpg",
+          "caption": "Archivsatellitenbilder sind nützlich, um langfristige Trends bei der Gletscherüberwachung zu erkennen.",
+          "altText": ""
+        },
+        {
+          "url": "assets/story35-image03.jpg",
+          "caption": "Satelliten werden auch eingesetzt, um die Höhe und Dicke der Eiskappe zu kartieren und ihre Veränderungen im Laufe der Zeit zu überwachen.",
+          "altText": ""
+        },
+        {
+          "url": "assets/story35-image04.jpg",
+          "caption": "Die Eisgeschwindigkeit kann dank mehrerer Radaraufnahmen gemessen werden. So können Wissenschaftler jeden Gletscher regelmäßig überwachen, um sowohl die lang- als auch die kurzfristige Dynamik zu verstehen.",
+          "altText": ""
         }
       ]
     }
