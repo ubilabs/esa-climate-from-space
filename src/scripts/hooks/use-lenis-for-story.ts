@@ -3,12 +3,13 @@ import { useEffect, useRef, useCallback } from "react";
 import Lenis from "lenis";
 import Snap from "lenis/snap";
 
+import { getCssVarPx } from "../libs/get-css-var-in-px";
+
 import { useStory } from "../providers/story/use-story";
 import config from "../config/main";
 
 export function useLenisForStory() {
-  const { storyElementRef, story, lenisRef, getScrollAnchorRefsMap } =
-    useStory();
+  const { storyElementRef, story, lenisRef } = useStory();
 
   // stable raf loop
   const rafRef = useRef<number | null>(null);
@@ -32,7 +33,6 @@ export function useLenisForStory() {
     if (!storyElementRef.current || !story) return;
 
     const wrapper = storyElementRef.current;
-    // wrapper.classList.add("lenis-wrapper");
 
     const lenis = new Lenis({
       // important: bind Lenis to the storyElementRef
@@ -43,26 +43,23 @@ export function useLenisForStory() {
     lenisRef.current = lenis;
     startRaf();
 
+    // We want to snap certain elements into place when scrolling
+    // To add elements to the snap list, add custom attribute data-lenis-scroll-snap
     const snap = new Snap(lenis, {
       type: "proximity", // 'mandatory', 'proximity'
-      // velocityThreshold: 1.2,
       distanceThreshold: "50%",
       debounce: 500,
-      // duration: 2,
-      // easing: (t) => t,
-
-      onSnapStart: (snap) => {
-        console.log("onSnapStart", snap);
-      },
-      onSnapComplete: (snap) => {
-        console.log("onSnapComplete", snap);
-      },
     });
 
-    snap.viewport.height = window.innerHeight + 54;
+    // We need to account for the header height when snapping
+    const headerHeight = getCssVarPx("--header-height");
+
+    snap.viewport.height = window.innerHeight + headerHeight;
 
     const scrollSnapElements =
-      storyElementRef.current.querySelectorAll<HTMLElement>("[data-scroll]");
+      storyElementRef.current.querySelectorAll<HTMLElement>(
+        "[data-lenis-scroll-snap]",
+      );
 
     scrollSnapElements.forEach((el) => {
       snap.addElement(el, {
@@ -76,7 +73,6 @@ export function useLenisForStory() {
       stopRaf();
       lenis.destroy();
       lenisRef.current = null;
-      // wrapper.classList.remove("lenis-wrapper");
     };
   }, [storyElementRef, story, lenisRef, startRaf, stopRaf]);
 }

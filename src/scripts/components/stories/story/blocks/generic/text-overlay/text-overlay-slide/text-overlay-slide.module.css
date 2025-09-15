@@ -39,7 +39,6 @@
 }
 
 .captionContainer {
-  outline: 1px solid red;
   color: var(--Neutral-White, #fff);
   height: var(--story-height);
   position: relative;
