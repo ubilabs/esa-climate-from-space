@@ -8,7 +8,7 @@ import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
 import { isLocationStory } from "../../../../../libs/is-location-story";
 import {
   calculateTotalSlides,
-  splitText,
+  splitTextIntoChunks,
 } from "../../../../../libs/split-text";
 
 import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
@@ -115,7 +115,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
             className={styles.storyIntro}
           />
           {slides.flatMap((slide, i) => {
-            const textChunks = splitText(slide.text);
+            const textChunks = splitTextIntoChunks(slide.text);
             return textChunks.map((chunk, chunkIndex) => (
               <TextContainer
                 text={chunk}
