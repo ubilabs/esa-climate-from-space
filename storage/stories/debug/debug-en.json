@@ -12,159 +12,154 @@
       }
     ]
   },
-  "blocks": [
+  "modules": [
     {
-      "type": "imageGallery",
-      "modules": [
+      "type": "textOverlay",
+      "url": "assets/story21-image14.jpg",
+      "focus": "right",
+      "slides": [
         {
-          "type": "textOverlay",
-          "url": "assets/story21-image14.jpg",
+          "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
+        },
+        {
+          "text": "# Flooding in Australia \r\n\r\n In 2010, Queensland experienced its wettest December on record, leading to a prolonged period of extensive flooding."
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "url": "assets/story21-image10.jpg",
+      "focus": "left",
+      "slides": [
+        {
+          "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
+        },
+        {
+          "text": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text"
+        }
+      ]
+    },
+    {
+      "type": "imageTime",
+      "slides": [
+        {
+          "url": "assets/story37-image01.jpg",
           "focus": "right",
-          "slides": [
-            {
-              "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
-            },
-            {
-              "text": "# Flooding in Australia \r\n\r\n In 2010, Queensland experienced its wettest December on record, leading to a prolonged period of extensive flooding."
-            }
-          ]
+          "caption": "# Some caption 1",
+          "flag": "2018"
         },
         {
-          "type": "textOverlay",
-          "url": "assets/story21-image10.jpg",
-          "focus": "left",
-          "slides": [
-            {
-              "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
-            },
-            {
-              "text": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text"
-            }
-          ]
-        },
-        {
-          "type": "imageTime",
-          "slides": [
-            {
-              "url": "assets/story37-image01.jpg",
-              "focus": "right",
-              "caption": "# Some caption 1",
-              "flag": "2018"
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "focus": "right",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "caption": "# Some caption 2",
-              "flag": "2020"
-            },
-            {
-              "url": "assets/story37-image01.jpg",
-              "focus": "right",
-              "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "caption": "# Some caption 3",
-              "flag": "2022"
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "focus": "right",
-              "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "caption": "# Some caption 4",
-              "flag": "2022"
-            }
-          ]
-        },
-        {
-          "type": "textOverlay",
-          "url": "assets/story21-image14.jpg",
+          "url": "assets/story37-image02.jpg",
           "focus": "right",
-          "slides": [
-            {
-              "text": "This event shows how different parts of the Earth system – ocean, atmosphere, and land – and places thousands of kilometers apart are connected through the water cycle."
-            }
-          ]
+          "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+          "caption": "# Some caption 2",
+          "flag": "2020"
         },
         {
-          "type": "imageScroll",
-          "slides": [
-            {
-              "url": "assets/story21-image01.jpg",
-              "focus": "center",
-              "alt": "some alt text",
-              "text": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+          "url": "assets/story37-image01.jpg",
+          "focus": "right",
+          "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+          "caption": "# Some caption 3",
+          "flag": "2022"
+        },
+        {
+          "url": "assets/story37-image02.jpg",
+          "focus": "right",
+          "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+          "caption": "# Some caption 4",
+          "flag": "2022"
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "url": "assets/story21-image14.jpg",
+      "focus": "right",
+      "slides": [
+        {
+          "text": "This event shows how different parts of the Earth system – ocean, atmosphere, and land – and places thousands of kilometers apart are connected through the water cycle."
+        }
+      ]
+    },
+    {
+      "type": "imageScroll",
+      "slides": [
+        {
+          "url": "assets/story21-image01.jpg",
+          "focus": "center",
+          "alt": "some alt text",
+          "text": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
 
-              "caption": "## Toowoomba, Queensland, Australia A woman waits on the roof of her car during a flash flood on January 10, 2011 [T Swinson](https://cfs.climate.esa.int/index.html#/stories/story-21/1?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI)"
-            },
-            {
-              "focus": "right",
-              "url": "assets/story21-image06.png",
-              "text": "## Global Mean Sea Level \r\n\r\n The global sea level observed by satellites shows an upward trend of 3.3 mm per year, but a decline in 2011 due to the large amount of excess water on land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
-              "alt": "Copernicus Marine Environment Monitoring Service",
-              "caption": "### Caption \r\n\r\n ESA-CCI/Copernicus Marine Environment Monitoring Service"
-            },
-            {
-              "url": "assets/story21-image12.jpg",
-              "text": "## New South Wales, Australia \r\n\r\n Copernicus Sentinel-1 radar images from March 7 and 19, 2021, show extensive flooded areas in blue. Areas burned by wildfires in the previous year are shown in brown.           ",
-              "alt": "Copernicus Marine Environment Monitoring Service",
-              "caption": "### Caption \r\n\r\n Contains modified Copernicus Sentinel data (2021), processed by ESA / NASA MODIS"
-            }
-          ]
+          "caption": "## Toowoomba, Queensland, Australia A woman waits on the roof of her car during a flash flood on January 10, 2011 [T Swinson](https://cfs.climate.esa.int/index.html#/stories/story-21/1?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI)"
         },
         {
-          "type": "textOverlay",
-          "slides": [
-            {
-              "url": "",
-              "focus": "center",
-              "slides": [
-                {
-                  "text": "After months of high temperatures and low rainfall, the water level of Italy's Po River reached a record low in 2022. The drought in northern Italy impacted the region's agricultural production, which often relies on irrigation."
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "imageWavelength",
-          "slides": [
-            {
-              "url": "assets/story37-image01.jpg",
-              "focus": "center",
-              "alt": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-              "caption": "Satellites for peat's sake. Cloud-free view."
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "focus": "center",
-              "alt": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-              "caption": ["Satellites for peat's sake. 2"]
-            }
-          ]
-        },
-        {
-          "type": "imageCompare",
-          "text": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
-          "startButtonText": "compare now",
-          "slides": [
-            {
-              "url": "assets/story37-image01.jpg",
-              "alt": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country."
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "alt": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple."
-            }
-          ]
-        },
-        {
-          "type": "textOverlay",
-          "url": "assets/satellite.gif",
           "focus": "right",
+          "url": "assets/story21-image06.png",
+          "text": "## Global Mean Sea Level \r\n\r\n The global sea level observed by satellites shows an upward trend of 3.3 mm per year, but a decline in 2011 due to the large amount of excess water on land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
+          "alt": "Copernicus Marine Environment Monitoring Service",
+          "caption": "### Caption \r\n\r\n ESA-CCI/Copernicus Marine Environment Monitoring Service"
+        },
+        {
+          "url": "assets/story21-image12.jpg",
+          "text": "## New South Wales, Australia \r\n\r\n Copernicus Sentinel-1 radar images from March 7 and 19, 2021, show extensive flooded areas in blue. Areas burned by wildfires in the previous year are shown in brown.           ",
+          "alt": "Copernicus Marine Environment Monitoring Service",
+          "caption": "### Caption \r\n\r\n Contains modified Copernicus Sentinel data (2021), processed by ESA / NASA MODIS"
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "url": "",
+          "focus": "center",
           "slides": [
             {
-              "text": "Thanks for scrolling through"
+              "text": "After months of high temperatures and low rainfall, the water level of Italy's Po River reached a record low in 2022. The drought in northern Italy impacted the region's agricultural production, which often relies on irrigation."
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image01.jpg",
+          "focus": "center",
+          "alt": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+          "caption": "Satellites for peat's sake. Cloud-free view."
+        },
+        {
+          "url": "assets/story37-image02.jpg",
+          "focus": "center",
+          "alt": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+          "caption": ["Satellites for peat's sake. 2"]
+        }
+      ]
+    },
+    {
+      "type": "imageCompare",
+      "text": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
+      "startButtonText": "compare now",
+      "slides": [
+        {
+          "url": "assets/story37-image01.jpg",
+          "alt": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country."
+        },
+        {
+          "url": "assets/story37-image02.jpg",
+          "alt": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple."
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "url": "assets/satellite.gif",
+      "focus": "right",
+      "slides": [
+        {
+          "text": "Thanks for scrolling through"
         }
       ]
     }

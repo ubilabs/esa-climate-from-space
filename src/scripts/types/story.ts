@@ -23,7 +23,7 @@ export interface LegacyStory {
 export type Story = {
   id: string;
   splashscreen: Splashscreen;
-  blocks: ContentBlock[];
+  modules: Module[];
 };
 
 type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
@@ -35,14 +35,6 @@ export type Splashscreen = {
   title?: string;
   focus?: ImageFocus;
   subtitle?: string;
-};
-
-// Extend with union for other types if needed
-export type BlockType = "imageGallery";
-
-export type ContentBlock = {
-  type: BlockType;
-  modules: Module[];
 };
 
 // Extend with union for other block types if needed

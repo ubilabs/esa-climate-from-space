@@ -10,7 +10,6 @@ import { ModuleContentProvider } from "../../../providers/story/module-content/m
 import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 import {
-  getBlockComponent,
   getModuleComponent,
 } from "../../../libs/get-story-components";
 
@@ -21,7 +20,7 @@ import styles from "./story.module.css";
 /**
  * The Story component is responsible for rendering the story's content.
  * Each story is dynamically generated from a JSON file located in storage/stories/[story].
- * The hierarchical structure of a story is organized as follows: story > block > module > slides
+ * The hierarchical structure of a story is organized as follows: story > module > slides
  */
 const Story: FunctionComponent = () => {
   const { storyElementRef, story, setScrollAnchorRefs } = useStory();
@@ -46,36 +45,24 @@ const Story: FunctionComponent = () => {
       ref={storyElementRef}
       id="story"
     >
-      <SplashScreen ref={setScrollAnchorRefs("0-0-0")} />
-      {story.blocks.map((contentBlock, blockIndex) => {
-        const BlockComponent = getBlockComponent(contentBlock.type);
+      <SplashScreen ref={setScrollAnchorRefs("0-0")} />
+      {story.modules.map(({ type }, moduleIndex) => {
+        const ModuleComponent = getModuleComponent(type);
+        const moduleData = story.modules[moduleIndex];
+
+        /* Assign this to element's ref within modules that should serve as scroll anchors. For instance, in time- or wavelength modules, designate every "blendImage" as a scroll anchor. */
+        const generateScrollAnchorRef = (nodeIndex: number) =>
+          setScrollAnchorRefs(`${moduleIndex}-${nodeIndex}`);
 
         return (
-          <BlockComponent key={blockIndex}>
-            {contentBlock.modules.map(({ type }, moduleIndex) => {
-              const ModuleComponent = getModuleComponent(type);
-              const moduleData = contentBlock.modules[moduleIndex];
-
-              {
-                /* Assign this to element's ref within modules that should serve as scroll anchors. For instance, in time- or wavelength modules, designate every "blendImage" as a scroll anchor. */
-              }
-              const generateScrollAnchorRef = (nodeIndex: number) =>
-                setScrollAnchorRefs(
-                  `${blockIndex + 1}-${moduleIndex}-${nodeIndex}`,
-                );
-
-              return (
-                <ModuleContentProvider
-                  key={moduleIndex}
-                  module={moduleData}
-                  storyId={story.id}
-                  getRefCallback={generateScrollAnchorRef}
-                >
-                  <ModuleComponent />
-                </ModuleContentProvider>
-              );
-            })}
-          </BlockComponent>
+          <ModuleContentProvider
+            key={moduleIndex}
+            module={moduleData}
+            storyId={story.id}
+            getRefCallback={generateScrollAnchorRef}
+          >
+            <ModuleComponent />
+          </ModuleContentProvider>
         );
       })}
       {/* Provisional - will be replaced with a proper end screen later */}
