@@ -3,6 +3,7 @@
   background-position: center;
   background-size: cover;
   position: relative;
+  scroll-snap-align: start;
 
   &.locationStory {
     background-color: transparent;

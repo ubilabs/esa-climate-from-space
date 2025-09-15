@@ -46,6 +46,7 @@ export const Caption: FunctionComponent<CaptionProps> = ({
 
   return (
     <motion.section
+      data-lenis-scroll-snap
       tabIndex={-1}
       ref={ref}
       style={{
