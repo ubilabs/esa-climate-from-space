@@ -1,81 +1,53 @@
 {
   "id": "story-37",
   "splashscreen": {
-    "description": "# Satelliten um des Torfes willen\n\nFlow Country, Scotland",
-    "image": "assets/story37-image07.jpg"
+    "url": "assets/story37-image07.jpg",
+    "focus": "center",
+    "title": "Satelliten um des Torfes willen",
+    "subtitle": "Flow Country, Scotland",
+    "altText": "Satelliten um des Torfes willen in Flow Country, Scotland",
+    "slides": [
+      {
+        "text": "Torfmoore machen nur 3 % der weltweiten Landfläche aus, binden aber doppelt so viel Kohlendioxid wie alle Wälder zusammen. In gesunden Mooren zersetzt sich das Torfmoos nicht vollständig, sondern bildet langsam Schichten aus kohlenstoffreichem Torf. Trocknet das Moor jedoch aus oder wird es durch einen Brand beschädigt, wird der Kohlenstoff freigesetzt und trägt so zu den Auswirkungen des Klimawandels bei. Das Flow Country ist das größte noch verbliebene Hochmoorgebiet in Europa."
+      },
+      {
+        "text": "Es wird geschätzt, dass der gespeicherte Kohlenstoff den schottischen Emissionen aus fossilen Brennstoffen für 100 Jahre entspricht. Mit Hilfe von Satellitenbildern können Karten von Mooren erstellt, die Bodenfeuchtigkeit gemessen und Störungen wie Brände erkannt werden, was die Überwachung und Erhaltung dieser wertvollen Landschaften billiger und einfacher macht.\nBildnachweis: enthält modifizierte Copernicus-Sentinel-Daten (2018, 2019), bearbeitet von der ESA, CC BY-SA 3.0 IGO"
+      }
+    ]
   },
-  "blocks": [
+  "modules": [
     {
-      "type": "imageGallery",
-      "modules": [
+      "type": "imageWavelength",
+      "slides": [
         {
-          "type": "textOverlay",
-          "slides": [
-            {
-              "url": "",
-              "altText": "",
-              "captions": [
-                "Torfmoore machen nur 3 % der weltweiten Landfläche aus, binden aber doppelt so viel Kohlendioxid wie alle Wälder zusammen. In gesunden Mooren zersetzt sich das Torfmoos nicht vollständig, sondern bildet langsam Schichten aus kohlenstoffreichem Torf. Trocknet das Moor jedoch aus oder wird es durch einen Brand beschädigt, wird der Kohlenstoff freigesetzt und trägt so zu den Auswirkungen des Klimawandels bei. Das Flow Country ist das größte noch verbliebene Hochmoorgebiet in Europa."
-              ]
-            },
-            {
-              "url": "",
-              "altText": "",
-              "captions": [
-                "Es wird geschätzt, dass der gespeicherte Kohlenstoff den schottischen Emissionen aus fossilen Brennstoffen für 100 Jahre entspricht. Mit Hilfe von Satellitenbildern können Karten von Mooren erstellt, die Bodenfeuchtigkeit gemessen und Störungen wie Brände erkannt werden, was die Überwachung und Erhaltung dieser wertvollen Landschaften billiger und einfacher macht.\nBildnachweis: enthält modifizierte Copernicus-Sentinel-Daten (2018, 2019), bearbeitet von der ESA, CC BY-SA 3.0 IGO"
-              ]
-            }
-          ]
+          "url": "assets/story37-image01.jpg",
+          "caption": "Dieses Mosaik, aufgenommen am 28. Mai 2018, bietet einen seltenen wolkenfreien Blick über die Weiten des schottischen Flow Country.",
+          "altText": ""
         },
         {
-          "type": "imageWavelength",
-          "slides": [
-            {
-              "url": "assets/story37-image01.jpg",
-              "description": "Dieses Mosaik, aufgenommen am 28. Mai 2018, bietet einen seltenen wolkenfreien Blick über die Weiten des schottischen Flow Country.",
-              "altText": "",
-              "captions": [
-                "Satelliten um des Torfes willen"
-              ]
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "description": "Diese hochauflösende Landbedeckungskarte, die aus Copernicus Sentinel-2 Daten abgeleitet wurde, zeigt die Ausdehnung von Torfgebieten in Lila.",
-              "altText": "",
-              "captions": [
-                "Satelliten um des Torfes willen"
-              ]
-            }
-          ]
+          "url": "assets/story37-image02.jpg",
+          "caption": "Diese hochauflösende Landbedeckungskarte, die aus Copernicus Sentinel-2 Daten abgeleitet wurde, zeigt die Ausdehnung von Torfgebieten in Lila.",
+          "altText": ""
+        }
+      ]
+    },
+    {
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image04.jpg",
+          "caption": "2019 brannte ein großes Feuer 5 700 Hektar Torfland nieder. Dieses Bild wurde am 16. Mai aufgenommen.",
+          "altText": ""
         },
         {
-          "type": "imageWavelength",
-          "slides": [
-            {
-              "url": "assets/story37-image04.jpg",
-              "description": "2019 brannte ein großes Feuer 5 700 Hektar Torfland nieder. Dieses Bild wurde am 16. Mai aufgenommen.",
-              "altText": "",
-              "captions": [
-                "Satelliten um des Torfes willen"
-              ]
-            },
-            {
-              "url": "assets/story37-image05.jpg",
-              "description": "Falschfarbenbild mit Nahinfrarot-Kanal lässt gesunde Vegetation rot und verbrannte Vegetation in dunkelbraun erscheinen.",
-              "altText": "",
-              "captions": [
-                "Satelliten um des Torfes willen"
-              ]
-            },
-            {
-              "url": "assets/story37-image06.jpg",
-              "description": "Das Falschfarbenbild mit den Kurzwellen-Infrarotkanälen hebt die aktive Feuerfront in leuchtendem Rot hervor.",
-              "altText": "",
-              "captions": [
-                "Satelliten um des Torfes willen"
-              ]
-            }
-          ]
+          "url": "assets/story37-image05.jpg",
+          "caption": "Falschfarbenbild mit Nahinfrarot-Kanal lässt gesunde Vegetation rot und verbrannte Vegetation in dunkelbraun erscheinen.",
+          "altText": ""
+        },
+        {
+          "url": "assets/story37-image06.jpg",
+          "caption": "Das Falschfarbenbild mit den Kurzwellen-Infrarotkanälen hebt die aktive Feuerfront in leuchtendem Rot hervor.",
+          "altText": ""
         }
       ]
     }

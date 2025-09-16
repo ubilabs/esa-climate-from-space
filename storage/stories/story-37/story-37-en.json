@@ -1,81 +1,53 @@
 {
   "id": "story-37",
   "splashscreen": {
-    "description": "# Satellites for Peat's Sake \n\nFlow Country, Scotland",
-    "image": "assets/story37-image07.jpg"
+    "url": "assets/story37-image07.jpg",
+    "focus": "center",
+    "title": "Satellites for Peat's Sake",
+    "subtitle": "Flow Country, Scotland",
+    "altText": "Satellites for Peat's Sake in Flow Country, Scotland",
+    "slides": [
+      {
+        "text": "Peatlands make up just 3% of land globally but capture twice as much carbon dioxide as all forests combined. In healthy bogs, peat moss does not fully decay, and instead slowly builds up to form layers of carbon-rich peat. However, if the bog dries out, or is damaged by fire, the carbon is released – adding to the effects of climate change."
+      },
+      {
+        "text": "The Flow Country is the largest remaining expanse of blanket bog in Europe, and it is estimated that the carbon stored equals 100 years’ worth of Scotland’s fossil fuel emissions. Satellite imagery can be used to create maps of peatlands, measure soil moisture, and detect disturbances such as fires, making it cheaper and easier to monitor and preserve these valuable landscapes"
+      }
+    ]
   },
-  "blocks": [
+  "modules": [
     {
-      "type": "imageGallery",
-      "modules": [
+      "type": "imageWavelength",
+      "slides": [
         {
-          "type": "textOverlay",
-          "slides": [
-            {
-              "url": "",
-              "altText": "",
-              "captions": [
-                "Peatlands make up just 3% of land globally but capture twice as much carbon dioxide as all forests combined. In healthy bogs, peat moss does not fully decay, and instead slowly builds up to form layers of carbon-rich peat. However, if the bog dries out, or is damaged by fire, the carbon is released – adding to the effects of climate change."
-              ]
-            },
-            {
-              "url": "",
-              "altText": "",
-              "captions": [
-                "The Flow Country is the largest remaining expanse of blanket bog in Europe, and it is estimated that the carbon stored equals 100 years’ worth of Scotland’s fossil fuel emissions. Satellite imagery can be used to create maps of peatlands, measure soil moisture, and detect disturbances such as fires, making it cheaper and easier to monitor and preserve these valuable landscapes"
-              ]
-            }
-          ]
+          "url": "assets/story37-image01.jpg",
+          "caption": "This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country. (Contains modified Copernicus Sentinel data (2018), processed by ESA, CC BY-SA 3.0 IGO)",
+          "altText": ""
         },
         {
-          "type": "imageWavelength",
-          "slides": [
-            {
-              "url": "assets/story37-image01.jpg",
-              "description": "This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country. (Contains modified Copernicus Sentinel data (2018), processed by ESA, CC BY-SA 3.0 IGO)",
-              "altText": "",
-              "captions": [
-                "Satellites for peat's sake"
-              ]
-            },
-            {
-              "url": "assets/story37-image02.jpg",
-              "description": "This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple. (Contains modified Copernicus Sentinel data (2018), processed by ESA, CC BY-SA 3.0 IGO)",
-              "altText": "",
-              "captions": [
-                "Satellites for peat's sake"
-              ]
-            }
-          ]
+          "url": "assets/story37-image02.jpg",
+          "caption": "This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple. (Contains modified Copernicus Sentinel data (2018), processed by ESA, CC BY-SA 3.0 IGO)",
+          "altText": ""
+        }
+      ]
+    },
+    {
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image04.jpg",
+          "caption": "A massive fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May. (Contains modified Copernicus Sentinel data (2019), processed by ESA, CC BY-SA 3.0 IGO)",
+          "altText": ""
         },
         {
-          "type": "imageWavelength",
-          "slides": [
-            {
-              "url": "assets/story37-image04.jpg",
-              "description": "A massive fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May. (Contains modified Copernicus Sentinel data (2019), processed by ESA, CC BY-SA 3.0 IGO)",
-              "altText": "",
-              "captions": [
-                "Satellites for peat's sake"
-              ]
-            },
-            {
-              "url": "assets/story37-image05.jpg",
-              "description": "False colour image including the near-infrared channel highlights healthy vegetation in red and shows the burn scar in dark brown. (Contains modified Copernicus Sentinel data (2019), processed by ESA, CC BY-SA 3.0 IGO)",
-              "altText": "",
-              "captions": [
-                "Satellites for peat's sake"
-              ]
-            },
-            {
-              "url": "assets/story37-image06.jpg",
-              "description": "False colour image including the shortwave infrared channels highlights the active fire front in bright red. (Contains modified Copernicus Sentinel data (2019), processed by ESA, CC BY-SA 3.0 IGO)",
-              "altText": "",
-              "captions": [
-                "Satellites for peat's sake"
-              ]
-            }
-          ]
+          "url": "assets/story37-image05.jpg",
+          "caption": "False colour image including the near-infrared channel highlights healthy vegetation in red and shows the burn scar in dark brown. (Contains modified Copernicus Sentinel data (2019), processed by ESA, CC BY-SA 3.0 IGO)",
+          "altText": ""
+        },
+        {
+          "url": "assets/story37-image06.jpg",
+          "caption": "False colour image including the shortwave infrared channels highlights the active fire front in bright red. (Contains modified Copernicus Sentinel data (2019), processed by ESA, CC BY-SA 3.0 IGO)",
+          "altText": ""
         }
       ]
     }
