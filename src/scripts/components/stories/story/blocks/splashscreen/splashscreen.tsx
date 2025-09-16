@@ -112,6 +112,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({
         />
         <div className={styles.contentContainer}>
           <TextContainer
+            refProp={getRefCallback?.(0)}
             text={titleMarkdown || ""}
             className={styles.storyIntro}
           />
@@ -119,6 +120,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({
             const textChunks = splitTextIntoChunks(slide.text);
             return textChunks.map((chunk, chunkIndex) => (
               <TextContainer
+                refProp={getRefCallback?.(chunkIndex + 1)}
                 text={chunk}
                 key={`${i}-${chunkIndex}`}
                 index={i + chunkIndex}

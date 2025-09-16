@@ -56,7 +56,7 @@ const Story: FunctionComponent = () => {
         const moduleData = story.modules[moduleIndex];
 
         /* Assign this to element's ref within modules that should serve as scroll anchors. For instance, in time- or wavelength modules, designate every "blendImage" as a scroll anchor. */
-        const generateScrollAnchorRef = (nodeIndex: number) =>
+        const generateScrollAnchorRef = (nodeIndex: number | string) =>
           setScrollAnchorRefs(`${moduleIndex + 1}-${nodeIndex}`);
 
         return (

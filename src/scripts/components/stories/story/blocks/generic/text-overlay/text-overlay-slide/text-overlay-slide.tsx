@@ -57,7 +57,7 @@ export const TextContainer: FunctionComponent<TextContainerProps> = ({
       }}
       className={cx(styles.textContainer, "story-grid", className)}
     >
-      <div className={styles.textBlock}>
+      <div className={styles.textBlock} ref={refProp}>
         <ReactMarkdown
           children={text}
           allowedElements={config.markdownAllowedElements}
@@ -70,10 +70,12 @@ export const TextContainer: FunctionComponent<TextContainerProps> = ({
 interface Props {
   slide: ImageModuleSlide;
   storyId: string;
-  getRefCallback: (index: number) => (element: HTMLDivElement) => void;
+  getRefCallback: (index: number | string) => (element: HTMLDivElement) => void;
+  index: number;
 }
 
 export const TextOverlaySlide: FunctionComponent<Props> = ({
+  index,
   slide,
   storyId,
   getRefCallback,
@@ -89,9 +91,13 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
 
   return (
     <>
-      {textChunks.map((text, index) => (
-        <div ref={getRefCallback(index)} key={index}>
-          <TextContainer text={text} index={index} />
+      {textChunks.map((text, chunkIndex) => (
+        <div key={chunkIndex}>
+          <TextContainer
+            text={text}
+            index={chunkIndex}
+            refProp={getRefCallback(`${index}-${chunkIndex}`)}
+          />
         </div>
       ))}
     </>
