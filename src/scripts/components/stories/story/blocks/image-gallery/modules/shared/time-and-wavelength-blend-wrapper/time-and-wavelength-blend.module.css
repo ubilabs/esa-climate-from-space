@@ -38,8 +38,21 @@
       font-size: 14px;
       font-style: normal;
       font-weight: 400;
-      line-height: 19px; /* 135.714% */
+      line-height: 16px; /* 135.714% */
       letter-spacing: 0.175px;
+      /* color: var(--neutral-esa-45-black, #9a9b9c); */
+
+      /* M3/Elevation Light/1 */
+      text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.15);
+      font-style: normal;
+      line-height: 16px; /* 114.286% */
+      letter-spacing: 0.175px;
+
+      > * {
+        grid-column: 1 / -1;
+      }
 
       @media screen and (--desktop-viewport) {
         padding-block: 1.5rem;
@@ -48,33 +61,20 @@
         line-height: 1.33;
         letter-spacing: 0.15px;
       }
-      h3,
+
       p {
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        /* this will truncate the text after two lines. Use legacy webkit properties for better support (95% of browsers) */
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
+        box-orient: vertical;
         overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       h3 {
-        grid-column: 1 / -1;
         font-weight: 700;
-
-        @media screen and (--desktop-viewport) {
-          font-size: 1rem;
-          line-height: 1.25;
-          letter-spacing: 0.175px;
-          grid-column: 2;
-        }
-      }
-
-      p {
-        max-width: 100%;
-        grid-column: 1 / -1;
-        grid-row: 2;
-
-        @media screen and (--desktop-viewport) {
-          grid-column: 2 / -3;
-        }
       }
     }
   }

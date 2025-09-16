@@ -12,7 +12,7 @@ export const useSyncStoryUrl = () => {
 
   const initialSlideIndex = extractSlideIndex(getHashPathName());
   const isInitialScrollPerformed = useRef(Boolean(!initialSlideIndex)); // Flag to ensure initial scroll only happens once
-  console.log("Initial scroll performed:", isInitialScrollPerformed.current);
+
   const isProgrammaticScroll = useRef(false);
 
   const location = useLocation();
@@ -25,7 +25,6 @@ export const useSyncStoryUrl = () => {
     }
 
     const nodeMap = getScrollAnchorRefsMap();
-    console.log("Node map size:", nodeMap);
 
     // Only attempt to scroll if there's an initial index and the nodeMap is populated enough
     if (story && nodeMap.size > initialSlideIndex && lenisRef.current) {
