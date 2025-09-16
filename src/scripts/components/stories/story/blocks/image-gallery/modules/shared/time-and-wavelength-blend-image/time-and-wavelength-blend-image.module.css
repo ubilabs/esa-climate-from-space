@@ -15,7 +15,7 @@
     position: absolute;
     background-color: white;
 
-    &:before {
+    &.horizontal:before {
       content: "";
       background-image: url('data:image/svg+xml,<svg width="21" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.36425e-07 5.5L5 0L5 11L2.36425e-07 5.5Z" fill="white"/><path d="M19.3288 5.49932L14 10.8281L14 0.170526L19.3288 5.49932Z" fill="white"/></svg>');
       position: absolute;
@@ -27,7 +27,7 @@
       height: 12px;
     }
 
-    &:after {
+    &.horizontal:after {
       position: absolute;
       content: "";
       top: 50%;
