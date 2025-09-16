@@ -4,7 +4,6 @@ import { getUpdatedStoryUrl } from "../libs/get-updated-story-url";
 import { useLocation, useNavigationType } from "react-router-dom";
 import { extractSlideIndex } from "../libs/content-url-parameter";
 import { getHashPathName } from "../libs/get-hash-path";
-import { getCssVarPx } from "../libs/get-css-var-in-px";
 
 export const useSyncStoryUrl = () => {
   const { getScrollAnchorRefsMap, storyElementRef, story, lenisRef } =
