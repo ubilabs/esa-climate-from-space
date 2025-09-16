@@ -22,12 +22,14 @@
         {
           "url": "assets/story34-image01.jpg",
           "altText": "",
-          "caption": "2020 Oberirdische Biomasse im Amazonasbecken"
+          "caption": "2020 Oberirdische Biomasse im Amazonasbecken",
+          "flag": "2001"
         },
         {
           "url": "assets/story34-image02.jpg",
           "altText": "",
-          "caption": "Kumulativer Waldverlust zwischen 2001 und 2020 im Amazonasbecken"
+          "caption": "Kumulativer Waldverlust zwischen 2001 und 2020 im Amazonasbecken",
+          "flag": "2020"
         }
       ]
     },
@@ -38,13 +40,13 @@
           "url": "assets/story34-image03.jpg",
           "caption": "Abgeholzte und städtische Gebiete sind deutlich in Beige-, Hellgrün- und Brauntönen zu erkennen, während der verbleibende unberührte Wald dunkelgrün erscheint. Dieses Bild wurde am 8. Juli 1989 aufgenommen.",
           "altText": "",
-          "flag": "Rondônia, Brasilien: Abholzung im Amazonas."
+          "flag": "1989"
         },
         {
           "url": "assets/story34-image04.jpg",
           "caption": "Abgeholzte und städtische Gebiete sind deutlich in Beige-, Hellgrün- und Brauntönen zu erkennen, während der verbleibende unberührte Wald dunkelgrün erscheint. Dieses Bild wurde am 5. Juni 2019 aufgenommen.",
           "altText": "",
-          "flag": "Rondônia, Brasilien: Abholzung im Amazonas"
+          "flag": "2019"
         }
       ]
     }

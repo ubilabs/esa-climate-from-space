@@ -22,12 +22,14 @@
         {
           "url": "assets/story34-image01.jpg",
           "altText": "",
-          "caption": "2020 biomasa aérea en la cuenca amazónica"
+          "caption": "2020 biomasa aérea en la cuenca amazónica",
+          "flag": "2001"
         },
         {
           "url": "assets/story34-image02.jpg",
           "altText": "",
-          "caption": "Pérdida acumulada de bosques entre 2001 y 2020 en la cuenca del Amazonas"
+          "caption": "Pérdida acumulada de bosques entre 2001 y 2020 en la cuenca del Amazonas",
+          "flag": "2020"
         }
       ]
     },
@@ -38,13 +40,14 @@
           "url": "assets/story34-image03.jpg",
           "caption": "La deforestación y las zonas urbanas son claramente visibles en tonos beige, verde claro y marrón, mientras que el bosque intacto aparece de color verde oscuro. Esta imagen fue tomada el 8 de julio de 1989.",
           "altText": "",
-          "flag": "Rondônia, Brasil: deforestación en la selva amazónica"
+
+          "flag": "1989"
         },
         {
           "url": "assets/story34-image04.jpg",
           "caption": ". La deforestación y las zonas urbanas son claramente visibles en tonos beige, verde claro y marrón, mientras que el bosque intacto restante aparece de color verde oscuro. Esta imagen fue capturada el 5 de junio de 2019.",
           "altText": "",
-          "flag": "Rondônia, Brasil: deforestación en la selva amazónica"
+          "flag": "2019"
         }
       ]
     }
