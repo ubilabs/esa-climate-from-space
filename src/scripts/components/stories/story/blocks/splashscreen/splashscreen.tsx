@@ -116,14 +116,14 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({
             text={titleMarkdown || ""}
             className={styles.storyIntro}
           />
-          {slides.flatMap((slide, i) => {
+          {slides.map((slide, i) => {
             const textChunks = splitTextIntoChunks(slide.text);
+            console.log("textChunks", textChunks);
             return textChunks.map((chunk, chunkIndex) => (
               <TextContainer
-                refProp={getRefCallback?.(chunkIndex + 1)}
+                refProp={getRefCallback?.(`${i + 1}-${chunkIndex}`)}
                 text={chunk}
                 key={`${i}-${chunkIndex}`}
-                index={i + chunkIndex}
               />
             ));
           })}
