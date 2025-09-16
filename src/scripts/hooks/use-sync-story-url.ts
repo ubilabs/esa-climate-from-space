@@ -10,7 +10,10 @@ export const useSyncStoryUrl = () => {
   const { getScrollAnchorRefsMap, storyElementRef, story, lenisRef } =
     useStory();
   const activeNodeKeyRef = useRef<string | null>(null);
-  const initialScrollPerformed = useRef(false); // Flag to ensure initial scroll only happens once
+
+  const initialSlideIndex = extractSlideIndex(getHashPathName());
+  const isInitialScrollPerformed = useRef(Boolean(!initialSlideIndex)); // Flag to ensure initial scroll only happens once
+  console.log("Initial scroll performed:", isInitialScrollPerformed.current);
   const isProgrammaticScroll = useRef(false);
 
   const location = useLocation();
@@ -18,45 +21,55 @@ export const useSyncStoryUrl = () => {
 
   // Effect for initial scroll on page load
   useEffect(() => {
-    if (initialScrollPerformed.current) {
+    if (isInitialScrollPerformed.current) {
       return; // Already performed initial scroll
     }
 
     const nodeMap = getScrollAnchorRefsMap();
-    const initialSlideIndex = extractSlideIndex(getHashPathName());
+    console.log("Node map size:", nodeMap);
 
     // Only attempt to scroll if there's an initial index and the nodeMap is populated enough
-    if (
-      story &&
-      initialSlideIndex >= 0 &&
-      nodeMap.size > initialSlideIndex &&
-      lenisRef.current
-    ) {
+    if (story && nodeMap.size > initialSlideIndex && lenisRef.current) {
       const targetNode = Array.from(nodeMap.values())[
         initialSlideIndex
       ] as HTMLElement;
       if (targetNode) {
         lenisRef.current?.scrollTo(targetNode, {
-          offset: -getCssVarPx("--header-height"),
+          onComplete: () => {
+            isInitialScrollPerformed.current = true; // Mark as performed
+          },
         });
-        initialScrollPerformed.current = true; // Mark as performed
       }
     }
-  }, [getScrollAnchorRefsMap, storyElementRef, story, lenisRef]);
+  }, [
+    getScrollAnchorRefsMap,
+    storyElementRef,
+    story,
+    lenisRef,
+    initialSlideIndex,
+  ]);
 
   // Effect for when the url is changed by the user
   useEffect(() => {
     const index = extractSlideIndex(location.pathname);
     const nodeMap = getScrollAnchorRefsMap();
     const targetNode = Array.from(nodeMap.values())[index];
-    if (targetNode && navigationType !== "PUSH") {
-      targetNode.scrollIntoView({ behavior: "smooth", block: "start" });
-      initialScrollPerformed.current = true; // Mark as performed
-      setTimeout(() => {
-        isProgrammaticScroll.current = false;
-      }, 1000);
+
+    if (
+      targetNode &&
+      navigationType !== "PUSH" &&
+      isInitialScrollPerformed.current
+    ) {
+      lenisRef.current?.scrollTo(targetNode as HTMLElement, {
+        onStart: () => {
+          isProgrammaticScroll.current = true;
+        },
+        onComplete: () => {
+          isProgrammaticScroll.current = false;
+        },
+      });
     }
-  }, [location, getScrollAnchorRefsMap, navigationType]);
+  }, [location, getScrollAnchorRefsMap, navigationType, lenisRef]);
 
   // Effect for Intersection Observer to update URL on scroll
   useEffect(() => {
