@@ -49,7 +49,6 @@ export const TextContainer: FunctionComponent<TextContainerProps> = ({
   return (
     <motion.section
       data-lenis-scroll-snap
-      tabIndex={-1}
       ref={ref}
       style={{
         opacity: opacity,

@@ -4,9 +4,11 @@ import { getUpdatedStoryUrl } from "../libs/get-updated-story-url";
 import { useLocation, useNavigationType } from "react-router-dom";
 import { extractSlideIndex } from "../libs/content-url-parameter";
 import { getHashPathName } from "../libs/get-hash-path";
+import { getCssVarPx } from "../libs/get-css-var-in-px";
 
 export const useSyncStoryUrl = () => {
-  const {getScrollAnchorRefsMap , storyElementRef, story } = useStory();
+  const { getScrollAnchorRefsMap, storyElementRef, story, lenisRef } =
+    useStory();
   const activeNodeKeyRef = useRef<string | null>(null);
   const initialScrollPerformed = useRef(false); // Flag to ensure initial scroll only happens once
   const isProgrammaticScroll = useRef(false);
@@ -24,16 +26,23 @@ export const useSyncStoryUrl = () => {
     const initialSlideIndex = extractSlideIndex(getHashPathName());
 
     // Only attempt to scroll if there's an initial index and the nodeMap is populated enough
-    if (initialSlideIndex > 0 && nodeMap.size > initialSlideIndex) {
-      const targetNode = Array.from(nodeMap.values())[initialSlideIndex];
+    if (
+      story &&
+      initialSlideIndex >= 0 &&
+      nodeMap.size > initialSlideIndex &&
+      lenisRef.current
+    ) {
+      const targetNode = Array.from(nodeMap.values())[
+        initialSlideIndex
+      ] as HTMLElement;
       if (targetNode) {
-        targetNode.scrollIntoView({ behavior: "smooth", block: "start" });
+        lenisRef.current?.scrollTo(targetNode, {
+          offset: -getCssVarPx("--header-height"),
+        });
         initialScrollPerformed.current = true; // Mark as performed
       }
     }
-    // Dependencies: Re-run if nodeMap changes (meaning more nodes might be available)
-    // or if storyElementRef changes (container is ready), or story data is available.
-  }, [getScrollAnchorRefsMap, storyElementRef, story]);
+  }, [getScrollAnchorRefsMap, storyElementRef, story, lenisRef]);
 
   // Effect for when the url is changed by the user
   useEffect(() => {
