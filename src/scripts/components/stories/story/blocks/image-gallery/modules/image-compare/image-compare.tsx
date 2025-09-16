@@ -15,7 +15,7 @@ import styles from "./image-compare.module.css";
 
 const ImageCompare: FunctionComponent<StorySectionProps> = () => {
   const {
-    module: { slides, text: description, buttonText },
+    module: { slides, text, startButtonText },
     storyId,
     getRefCallback,
   } = useModuleContent();
@@ -57,13 +57,13 @@ const ImageCompare: FunctionComponent<StorySectionProps> = () => {
     >
       {!isComparing ? (
         <div className={styles.compareModeContent}>
-          <p className={styles.description}>{description}</p>
+          <p className={styles.description}>{text}</p>
           <button
             className={styles.controlButton}
             onClick={() => setIsComparing(true)}
           >
-            {buttonText ? (
-              buttonText
+            {startButtonText ? (
+              startButtonText
             ) : (
               <FormattedMessage id={"openComparison"} />
             )}

@@ -1,14 +1,21 @@
 import { FunctionComponent, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { motion, useTransform } from "motion/react";
 
 import { setFlyTo } from "../../../../../reducers/fly-to";
 
 import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
 import { isLocationStory } from "../../../../../libs/is-location-story";
+import {
+  calculateTotalSlides,
+  splitTextIntoChunks,
+} from "../../../../../libs/split-text";
+
+import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 
 import { useStory } from "../../../../../providers/story/use-story";
 
-import { Caption } from "../generic/text-overlay/text-overlay-slide/text-overlay-slide";
+import { TextContainer } from "../generic/text-overlay/text-overlay-slide/text-overlay-slide";
 import { StorySectionProps } from "../../../../../types/story";
 
 import { SlideContainer } from "../../../layout/slide-container/slide-container";
@@ -24,6 +31,11 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
   const targetRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useDispatch();
+
+  const { scrollYProgress } = useStoryScroll({
+    target: targetRef,
+    offset: ["start start", "end start"],
+  });
 
   const isLocationBased = isLocationStory(story);
   const location = story?.splashscreen?.location;
@@ -45,11 +57,28 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
     }
   }, [isLocationBased, dispatch, location]);
 
-  if (!story || !story.splashscreen) {
+  const {
+    url,
+    slides = [],
+    title,
+    subtitle,
+    focus,
+  } = story?.splashscreen || {};
+
+  const totalSlides = calculateTotalSlides(slides);
+
+  const overlayOpacity = useTransform(
+    scrollYProgress,
+    [0, 1 / (totalSlides + 1)],
+    [0, 0.5],
+  );
+
+  // Convert plain strings into markdown heading strings
+  const titleMarkdown = `# ${title} \n ${subtitle}`;
+
+  if (!story) {
     return null;
   }
-
-  const { image, slides } = story.splashscreen;
 
   const { id } = story;
 
@@ -63,27 +92,38 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
     >
       <div
         style={{
-          height: `calc(${slides.length} * var(--story-height))`,
+          // plus one to account for the intro slide
+          height: `calc(${totalSlides + 1} * var(--story-height))`,
         }}
         ref={targetRef}
         className={styles.splashBanner}
       >
         {/* needs to be placed outside of the content container, will other interfere with the transition calculation of framer */}
         <div
-          className={styles.parallaxContainer}
+          className={cx(styles.parallaxContainer, focus)}
           style={{
-            backgroundImage: `${!isLocationBased ? `url(${getStoryAssetUrl(id, image)})` : "none"}`,
+            backgroundImage: `${!isLocationBased ? `url(${getStoryAssetUrl(id, url)})` : "none"}`,
           }}
         />
+        <motion.div
+          className={styles.backgroundOverlay}
+          style={{ opacity: overlayOpacity }}
+        />
         <div className={styles.contentContainer}>
-          {slides.map((slide, i) => (
-            <Caption
-              caption={slide.description}
-              key={i}
-              index={i}
-              className={(i === 0 && styles.storyIntro) || ""}
-            />
-          ))}
+          <TextContainer
+            text={titleMarkdown || ""}
+            className={styles.storyIntro}
+          />
+          {slides.flatMap((slide, i) => {
+            const textChunks = splitTextIntoChunks(slide.text);
+            return textChunks.map((chunk, chunkIndex) => (
+              <TextContainer
+                text={chunk}
+                key={`${i}-${chunkIndex}`}
+                index={i + chunkIndex}
+              />
+            ));
+          })}
         </div>
       </div>
     </SlideContainer>

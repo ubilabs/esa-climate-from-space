@@ -1,50 +1,10 @@
-.slide {
-  position: relative;
-  color: white;
-
-  /* Either video or image as background */
-  .assetContainer {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--story-height);
-    z-index: 1;
-    will-change: transform;
-  }
-
-  .asset {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(1, 30, 43, 0.5);
-    z-index: 2;
-  }
-
-  .captionsContainer {
-    width: 100%;
-    top: 0;
-    position: absolute;
-    overflow: hidden;
-  }
-}
-
-.captionContainer {
+.textContainer {
   color: var(--Neutral-White, #fff);
   height: var(--story-height);
   position: relative;
   z-index: 1000;
 
-  .caption {
+  .textBlock {
     grid-column: 1/-1;
     grid-row: 1/ -1;
     text-align: center;

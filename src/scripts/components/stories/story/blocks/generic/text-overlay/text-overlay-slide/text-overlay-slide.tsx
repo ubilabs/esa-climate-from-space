@@ -1,28 +1,28 @@
 import { FunctionComponent, useRef } from "react";
 
 import ReactMarkdown from "react-markdown";
+import { ImageModuleSlide } from "../../../../../../../types/story";
 import { motion, useTransform } from "motion/react";
 
 import config from "../../../../../../../config/main";
 
-import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 import { useStoryScroll } from "../../../../../../../hooks/use-story-scroll";
-import { ImageModuleSlide } from "../../../../../../../types/story";
+import { splitTextIntoChunks } from "../../../../../../../libs/split-text";
 
 import cx from "classnames";
 
 import styles from "./text-overlay-slide.module.css";
 
-interface CaptionProps {
-  caption: string;
+interface TextContainerProps {
+  text: string;
   className?: string;
   index?: number;
 }
 
 const TRANSLATE_DISTANCE = 300;
 
-export const Caption: FunctionComponent<CaptionProps> = ({
-  caption,
+export const TextContainer: FunctionComponent<TextContainerProps> = ({
+  text,
   index = 0,
   className,
 }) => {
@@ -53,11 +53,11 @@ export const Caption: FunctionComponent<CaptionProps> = ({
         opacity: opacity,
         translateY: translateY,
       }}
-      className={cx(styles.captionContainer, "story-grid", className)}
+      className={cx(styles.textContainer, "story-grid", className)}
     >
-      <div className={styles.caption}>
+      <div className={styles.textBlock}>
         <ReactMarkdown
-          children={caption}
+          children={text}
           allowedElements={config.markdownAllowedElements}
         />
       </div>
@@ -71,58 +71,27 @@ interface Props {
   getRefCallback: (index: number) => (element: HTMLDivElement) => void;
 }
 
-const isVideo = (url: string | undefined) => {
-  return url?.endsWith(".mp4") || url?.endsWith(".webm") || false;
-};
-
 export const TextOverlaySlide: FunctionComponent<Props> = ({
   slide,
   storyId,
   getRefCallback,
 }) => {
-  const assetUrl = getStoryAssetUrl(storyId, slide?.url);
-  const hasAsset = assetUrl && assetUrl.length > 0;
-
-  if (!slide.captions || slide.captions.length === 0) {
+  if (!slide.text) {
     console.warn(
-      `TextOverlaySlide: Slide for story ${storyId} has no captions, skipping rendering.`,
+      `TextOverlaySlide: Slide for story ${storyId} has no text, skipping rendering.`,
     );
     return null;
   }
 
+  const textChunks = splitTextIntoChunks(slide.text);
+
   return (
-    <div
-      className={cx(styles.slide)}
-      style={{
-        height: `calc(${slide.captions?.length} * var(--story-height))`,
-      }}
-    >
-      <div className={styles.assetContainer}>
-        {hasAsset &&
-          (isVideo(slide.url) ? (
-            <video
-              className={styles.asset}
-              src={assetUrl}
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
-          ) : (
-            <img
-              className={styles.asset}
-              src={assetUrl}
-              alt={slide.altText || ""}
-            />
-          ))}
-      </div>
-      <div className={styles.captionsContainer}>
-        {slide.captions.map((caption, index) => (
-          <div ref={getRefCallback(index)} key={index}>
-            <Caption key={index} caption={caption} index={index} />
-          </div>
-        ))}
-      </div>
-    </div>
+    <>
+      {textChunks.map((text, index) => (
+        <div ref={getRefCallback(index)} key={index}>
+          <TextContainer text={text} index={index} />
+        </div>
+      ))}
+    </>
   );
 };

@@ -23,21 +23,18 @@ export interface LegacyStory {
 export type Story = {
   id: string;
   splashscreen: Splashscreen;
-  blocks: ContentBlock[];
+  modules: Module[];
 };
+
+type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
 
 export type Splashscreen = {
-  slides: Array<{ description: string }>;
   location?: Record<string, number>;
-  image?: string;
-};
-
-// Extend with union for other types if needed
-export type BlockType = "imageGallery";
-
-export type ContentBlock = {
-  type: BlockType;
-  modules: Module[];
+  url?: string;
+  slides: Array<{ text: string }>;
+  title?: string;
+  focus?: ImageFocus;
+  subtitle?: string;
 };
 
 // Extend with union for other block types if needed
@@ -55,16 +52,20 @@ export type ImageGalleryModuleType =
 export type ImageModule = {
   type: ImageGalleryModuleType;
   text?: string;
+  altText?: string;
   slides?: ImageModuleSlide[];
-  buttonText?: string;
+  startButtonText?: string;
+  focus?: ImageFocus;
+  url?: string;
 };
 
 export type ImageModuleSlide = {
   url?: string;
   altText?: string;
-  description?: string;
-  descriptions?: string[];
-  captions?: string[];
+  text: string;
+  focus?: ImageFocus;
+  flag: string;
+  caption: string;
 };
 
 export type StorySectionProps = {} & ComponentProps<"div">;
