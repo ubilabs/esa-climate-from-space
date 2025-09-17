@@ -22,22 +22,26 @@
         {
           "url": "assets/story35-image01.jpg",
           "caption": "Esta imagen de satélite adquirida el 11 de junio de 2019 muestra el glaciar Jakobshavn, uno de los lgaciares de movimiento más rápido del mundo.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story35-image02.jpg",
           "caption": "Las imágenes de satélite de archivo son útiles para detectar tendencias a largo plazo en la vigilancia de glaciares.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story35-image03.jpg",
           "caption": "Los satélites también se utilizan para cartografiar la elevación y el grosor de la capa de hielo, y controlar sus cambios a lo largo del tiempo.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story35-image04.jpg",
           "caption": "La velocidad del hielo puede medirse gracias a múltiples adquisiciones de radar. Esto permite a los científicos controlar cada glaciar con regularidad para comprender la dinámica a corto y largo plazo.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         }
       ]
     }

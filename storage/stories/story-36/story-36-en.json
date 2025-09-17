@@ -22,12 +22,14 @@
         {
           "url": "assets/story36-image01.jpg",
           "caption": "By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story36-image02.jpg",
           "caption": "By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence. In this image, changes in surface levels from 2017-2018 have been overlaid.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         }
       ]
     }

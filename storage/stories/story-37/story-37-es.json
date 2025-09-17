@@ -22,12 +22,15 @@
         {
           "url": "assets/story37-image01.jpg",
           "caption": "Este mosaico, adquirido el 28 de mayo de 2018, ofrece una rara vista sin nubes sobre las vastas extensiones del Flow Country escocés.",
-          "altText": ""
+          "altText": "",
+          "focus": "right"
         },
+
         {
           "url": "assets/story37-image02.jpg",
           "caption": "Este mapa de alta resolución de la cubierta terrestre derivado de los datos de Copernicus Sentinel-2 muestra la extensión de las turberas en púrpura.",
-          "altText": ""
+          "altText": "",
+          "focus": "right"
         }
       ]
     },
@@ -37,17 +40,20 @@
         {
           "url": "assets/story37-image04.jpg",
           "caption": "Un incendio masivo quemó 5.700 hectáreas de turbera en 2019. Esta imagen se tomó el 16 de mayo.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story37-image05.jpg",
           "caption": "Imagen en falso color que incluye el canal del infrarrojo cercano que ilumina la vegetación sana en rojo y muestra la cicatriz de la quemadura en marrón oscuro.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story37-image06.jpg",
           "caption": "La imagen en falso color que incluye los canales infrarrojos de onda corta destaca el frente de fuego activo en rojo brillante.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         }
       ]
     }

@@ -24,12 +24,16 @@
           "altText": "",
           "caption": "2020 Oberirdische Biomasse im Amazonasbecken",
           "flag": "2001"
+,
+          "focus": "left"
         },
         {
           "url": "assets/story34-image02.jpg",
           "altText": "",
           "caption": "Kumulativer Waldverlust zwischen 2001 und 2020 im Amazonasbecken",
           "flag": "2020"
+,
+          "focus": "left"
         }
       ]
     },

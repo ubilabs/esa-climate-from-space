@@ -23,13 +23,15 @@
           "url": "assets/story34-image01.jpg",
           "altText": "",
           "caption": "2020 biomasa aérea en la cuenca amazónica",
-          "flag": "2001"
+          "flag": "2001",
+          "focus": "left"
         },
         {
           "url": "assets/story34-image02.jpg",
           "altText": "",
           "caption": "Pérdida acumulada de bosques entre 2001 y 2020 en la cuenca del Amazonas",
-          "flag": "2020"
+          "flag": "2020",
+          "focus": "left"
         }
       ]
     },

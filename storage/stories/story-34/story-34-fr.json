@@ -23,13 +23,15 @@
           "url": "assets/story34-image01.jpg",
           "altText": "",
           "caption": "2020 biomasse aérienne dans le bassin amazonien",
-          "flag": "2001"
+          "flag": "2001",
+          "focus": "left"
         },
         {
           "url": "assets/story34-image02.jpg",
           "altText": "",
           "caption": "Perte cumulée de forêts entre 2001 et 2020 dans le bassin amazonien",
-          "flag": "2020"
+          "flag": "2020",
+          "focus": "left"
         }
       ]
     },

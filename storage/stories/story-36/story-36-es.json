@@ -22,12 +22,14 @@
         {
           "url": "assets/story36-image01.jpg",
           "caption": "El uso de un gran número de imágenes de radar por satélite durante un periodo de dos años permite calcular con precisión el hundimiento del suelo.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story36-image02.jpg",
           "caption": "Utilizando un gran número de imágenes de radar por satélite a lo largo de un periodo de dos años, es posible calcular con precisión el hundimiento del suelo. En esta imagen se han superpuesto los cambios en el nivel de la superficie entre 2017 y 2018.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         }
       ]
     }
