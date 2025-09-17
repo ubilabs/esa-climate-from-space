@@ -118,7 +118,6 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({
           />
           {slides.map((slide, i) => {
             const textChunks = splitTextIntoChunks(slide.text);
-            console.log("textChunks", textChunks);
             return textChunks.map((chunk, chunkIndex) => (
               <TextContainer
                 refProp={getRefCallback?.(`${i + 1}-${chunkIndex}`)}

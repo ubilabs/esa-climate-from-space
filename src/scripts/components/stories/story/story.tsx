@@ -36,6 +36,7 @@ const Story: FunctionComponent = () => {
   if (!story) {
     return null;
   }
+
   return (
     <main
       className={cx(styles.story, styles.fadeIn)}
