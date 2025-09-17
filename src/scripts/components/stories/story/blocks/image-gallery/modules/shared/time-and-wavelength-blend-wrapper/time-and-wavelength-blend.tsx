@@ -112,10 +112,15 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
           ))}
         </ul>
         <div className={cx(styles.currentImageText, "story-grid")}>
-          <ReactMarkdown
-            children={caption}
-            allowedElements={config.markdownAllowedElements}
-          />
+          <div className={styles.slideAndText}>
+            <div className={styles.slideIndicator}>
+              {activeSlideIndex + 1}/{numSlides}
+            </div>
+            <ReactMarkdown
+              children={caption}
+              allowedElements={config.markdownAllowedElements}
+            />
+          </div>
         </div>
       </motion.div>
     </div>

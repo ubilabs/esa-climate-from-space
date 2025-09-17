@@ -26,6 +26,9 @@
       }
     }
 
+    .slideAndText {
+      display: flex;
+    }
     /* recevies story-grid class */
     .currentImageText {
       place-items: start;
@@ -75,6 +78,11 @@
         box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
+      }
+
+      .slideIndicator {
+        color: #9a9b9c;
+        margin-right: 0.5rem;
       }
 
       h3 {
