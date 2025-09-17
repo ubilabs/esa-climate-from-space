@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+import { RefObject, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Lenis from "lenis";
 
 import config from "../config/main";
+
+import { getCssVarPx } from "../libs/get-css-var-in-px";
 
 import { useAppRouteFlags } from "./use-app-route-flags";
 import { useContentParams } from "./use-content-params";
@@ -17,12 +20,17 @@ async function scrollElements(
   storyIndex: number | null,
   storyIds: string[],
   navigate: (path: string, options: { replace: boolean }) => void,
+  lenisRef: RefObject<Lenis | null>,
 ) {
-  for (const element of elements) {
+
+  const headerHeight = getCssVarPx("--header-height");
+
+  for (let i = 0; i < elements.length; i++) {
+    lenisRef.current?.scrollTo(i * (window.innerHeight - headerHeight));
+
     if (abortSignal.aborted) {
       break;
     }
-    element.scrollIntoView({ behavior: "smooth" });
     await delay(config.delay);
   }
 
@@ -39,14 +47,21 @@ async function scrollElements(
     navigate(`/showcase/${storyIds.join("&")}/0/0`, { replace: true });
 
     if (!abortSignal.aborted) {
-      await scrollElements(elements, abortSignal, 0, storyIds, navigate);
+      await scrollElements(
+        elements,
+        abortSignal,
+        0,
+        storyIds,
+        navigate,
+        lenisRef,
+      );
     }
   }
 }
 
 export const useAutoScrollInShowcase = () => {
-  const { getScrollAnchorRefsMap } = useStory();
-  const { isShowCaseView, isPresentView } = useAppRouteFlags();
+  const { getScrollAnchorRefsMap, lenisRef } = useStory();
+  const { isShowCaseView } = useAppRouteFlags();
   const navigate = useNavigate();
   const { storyIds, storyIndex } = useContentParams();
 
@@ -54,7 +69,7 @@ export const useAutoScrollInShowcase = () => {
 
   useEffect(() => {
     // delay execution until all DOM nodes are created
-    if ((isShowCaseView || isPresentView) && scrollableElements.length) {
+    if (isShowCaseView && scrollableElements.length) {
       const abortSignal = { aborted: false };
 
       (async () => {
@@ -64,6 +79,7 @@ export const useAutoScrollInShowcase = () => {
           storyIndex,
           storyIds,
           navigate,
+          lenisRef,
         );
       })();
 
@@ -72,8 +88,8 @@ export const useAutoScrollInShowcase = () => {
       };
     }
   }, [
+    lenisRef,
     isShowCaseView,
-    isPresentView,
     storyIndex,
     storyIds,
     navigate,

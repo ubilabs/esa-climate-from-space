@@ -26,6 +26,7 @@ export const useSyncStoryUrl = () => {
     }
 
     const headerHeight = getCssVarPx("--header-height");
+
     if (story && lenisRef.current && initialSlideIndex > 0) {
       lenisRef.current.scrollTo(
         initialSlideIndex * (window.innerHeight - headerHeight),

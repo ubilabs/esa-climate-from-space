@@ -43,7 +43,9 @@ const Story: FunctionComponent = () => {
       id="story"
     >
       <SplashScreen
-        getRefCallback={(index: number) => setScrollAnchorRefs(`0-${index}`)}
+        getRefCallback={(index: number | string) =>
+          setScrollAnchorRefs(`0-${index}`)
+        }
       />
       {story.modules.map(({ type }, moduleIndex) => {
         const ModuleComponent = getModuleComponent(type);
