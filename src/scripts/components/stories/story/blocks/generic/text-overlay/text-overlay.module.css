@@ -1,4 +1,6 @@
 .textOverlay {
+  content-visibility: auto;
+  contain-intrinsic-size: var(--story-height) 100%;
   width: 100%;
   /* As we want the slides to snap, we need to disable the scroll snap alignment on the container. Otherwise, it might not work properly */
   > * {
