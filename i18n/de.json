@@ -148,5 +148,5 @@
   "categories.ocean": "Ozean",
   "categories.atmosphere": "Atmosphäre",
   "categories.cryosphere": "Kryosphäre",
-  "exploreMoreInCategory": "Entdecken Sie mehr in dieser [Kategorie](/stories/category/{category})"
+  "exploreMoreInCategory": "Entdecken Sie mehr in dieser [Kategorie](#/{category})"
 }
