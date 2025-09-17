@@ -4,6 +4,7 @@ import { getUpdatedStoryUrl } from "../libs/get-updated-story-url";
 import { useLocation, useNavigationType } from "react-router-dom";
 import { extractSlideIndex } from "../libs/content-url-parameter";
 import { getHashPathName } from "../libs/get-hash-path";
+import { getCssVarPx } from "../libs/get-css-var-in-px";
 
 export const useSyncStoryUrl = () => {
   const { getScrollAnchorRefsMap, storyElementRef, story, lenisRef } =
@@ -18,54 +19,23 @@ export const useSyncStoryUrl = () => {
   const location = useLocation();
   const navigationType = useNavigationType();
 
-  // function getOffsetTop(el, container = storyElementRef.current) {
-  //   const rEl = el.getBoundingClientRect();
-  //   // const rCt = container.getBoundingClientRect();
-  //   console.log(
-  //     "rEl.top, rCt.top, offsetHeight",
-  //     rEl.top,
-  //     // rCt.top,
-  //     rEl.offsetHeight,
-  //   );
-  //   return rEl.top + window.screenY;
-  // }
-
-  // function getOffsetTop(el) {
-  //   const rect = el.getBoundingClientRect();
-  //   return rect.top + window.scrollY;
-  // }
-
   // Effect for initial scroll on page load
   useEffect(() => {
-    if (isInitialScrollPerformed.current) {
+    if (isInitialScrollPerformed.current || isProgrammaticScroll.current) {
       return; // Already performed initial scroll
     }
 
-    const nodeMap = getScrollAnchorRefsMap();
-
-    // Only attempt to scroll if there's an initial index and the nodeMap is populated enough
-    if (story && nodeMap.size > initialSlideIndex && lenisRef.current) {
-      const targetNode = Array.from(nodeMap.values())[
-        initialSlideIndex
-      ] as HTMLElement;
-      if (targetNode) {
-        console.log(
-          "Initial scroll to index:",
-          initialSlideIndex,
-          nodeMap,
-          nodeMap.size,
-        );
-        lenisRef.current?.scrollTo(
-          initialSlideIndex * (window.innerHeight - 56),
-          {
-            // offset: targetNode.clientHeight * 0.5 - 56,
-            onComplete: () => {
-              isInitialScrollPerformed.current = true; // Mark as performed
-            },
-            programmatic: true,
+    const headerHeight = getCssVarPx("--header-height");
+    if (story && lenisRef.current && initialSlideIndex > 0) {
+      lenisRef.current.scrollTo(
+        initialSlideIndex * (window.innerHeight - headerHeight),
+        {
+          force: true,
+          onComplete: () => {
+            isInitialScrollPerformed.current = true;
           },
-        );
-      }
+        },
+      );
     }
   }, [
     getScrollAnchorRefsMap,
@@ -78,15 +48,14 @@ export const useSyncStoryUrl = () => {
   // Effect for when the url is changed by the user
   useEffect(() => {
     const index = extractSlideIndex(location.pathname);
-    const nodeMap = getScrollAnchorRefsMap();
-    const targetNode = Array.from(nodeMap.values())[index];
+    const headerHeight = getCssVarPx("--header-height");
 
     if (
-      targetNode &&
       navigationType !== "PUSH" &&
-      isInitialScrollPerformed.current
+      isInitialScrollPerformed.current &&
+      index >= 0
     ) {
-      lenisRef.current?.scrollTo(index * (window.innerHeight - 56), {
+      lenisRef.current?.scrollTo(index * (window.innerHeight - headerHeight), {
         onStart: () => {
           isProgrammaticScroll.current = true;
         },
