@@ -1,6 +1,6 @@
 import { chunk } from "llm-chunk";
 
-const MAX_WORDS_PER_CAPTION = 100;
+const MAX_WORDS_PER_CAPTION = 1000;
 const MIN_WORDS_PER_CAPTION = 40;
 
 /**
@@ -20,14 +20,31 @@ export const splitTextIntoChunks = (
   if (!text || text.trim().length === 0) {
     return [];
   }
+
+  const linkMap: { [key: string]: string } = {};
+  let linkIndex = 0;
+
+  // Protect markdown links by replacing them with placeholders
+  const protectedText = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match) => {
+    const placeholder = `__MARKDOWN_LINK_${linkIndex++}__`;
+    linkMap[placeholder] = match;
+    return placeholder;
+  });
+
   // Default options
-  const chunks = chunk(text, {
+  const chunks = chunk(protectedText, {
     minLength: minWords, // number of minimum characters into chunk
     maxLength: maxWords, // number of maximum characters into chunk
     splitter: "sentence", // paragraph | sentence
   });
 
-  return chunks;
+  const restoredChunks = chunks.map((c) => {
+    return Object.keys(linkMap).reduce((acc, placeholder) => {
+      return acc.replace(new RegExp(placeholder, 'g'), linkMap[placeholder]);
+    }, c);
+  });
+
+  return restoredChunks;
 };
 
 export const calculateTotalSlides = (slides: { text: string }[]): number => {
