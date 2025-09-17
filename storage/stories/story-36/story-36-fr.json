@@ -22,12 +22,14 @@
         {
           "url": "assets/story36-image01.jpg",
           "caption": "En utilisant un grand nombre d'images satellites radar sur une période de deux ans, il est possible de calculer avec précision l'affaissement du sol",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story36-image02.jpg",
           "caption": "En utilisant un grand nombre d'images satellites radar sur une période de deux ans, il est possible de calculer avec précision l'affaissement du sol. Sur cette image, l'évolution des niveaux de surface entre 2017 et 2018 a été superposée",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         }
       ]
     }

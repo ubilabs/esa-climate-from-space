@@ -3,11 +3,10 @@
 
   /* recevies story-grid class */
   .slide {
-    height: fit-content;
+    height: var(--story-height);
     padding-block: 1rem;
 
     @media screen and (--mobile-viewport) {
-      margin-block: 4rem;
       &:has(.imageScrollText + .scrollImageContainer) {
         grid-template-rows: 1fr 1fr;
 

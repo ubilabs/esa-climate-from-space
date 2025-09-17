@@ -22,22 +22,28 @@
         {
           "url": "assets/story35-image01.jpg",
           "caption": "Dieses am 11. Juni 2019 aufgenommene Satellitenbild zeigt den Jakobshavn-Gletscher, einen der sich am schnellsten bewegenden Gletscher der Welt.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story35-image02.jpg",
           "caption": "Archivsatellitenbilder sind nützlich, um langfristige Trends bei der Gletscherüberwachung zu erkennen.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story35-image03.jpg",
           "caption": "Satelliten werden auch eingesetzt, um die Höhe und Dicke der Eiskappe zu kartieren und ihre Veränderungen im Laufe der Zeit zu überwachen.",
           "altText": ""
+,
+          "focus": "left"
         },
         {
           "url": "assets/story35-image04.jpg",
           "caption": "Die Eisgeschwindigkeit kann dank mehrerer Radaraufnahmen gemessen werden. So können Wissenschaftler jeden Gletscher regelmäßig überwachen, um sowohl die lang- als auch die kurzfristige Dynamik zu verstehen.",
           "altText": ""
+,
+          "focus": "left"
         }
       ]
     }

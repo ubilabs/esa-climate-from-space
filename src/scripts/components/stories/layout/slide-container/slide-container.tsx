@@ -8,7 +8,7 @@ interface Props extends PropsWithChildren, HTMLAttributes<HTMLDivElement> {
   className?: string;
   // make sure ref is passed as a prop
   // This is necessary, otherwise the SyncStoryUrl component will not detect the section
-  ref: Ref<HTMLDivElement> | undefined;
+  ref?: Ref<HTMLDivElement> | undefined;
   style?: CSSProperties;
 }
 

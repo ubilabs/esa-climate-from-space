@@ -5,6 +5,8 @@
   z-index: 1000;
 
   .textBlock {
+    height: 100%;
+    justify-content: center;
     grid-column: 1/-1;
     grid-row: 1/ -1;
     text-align: center;

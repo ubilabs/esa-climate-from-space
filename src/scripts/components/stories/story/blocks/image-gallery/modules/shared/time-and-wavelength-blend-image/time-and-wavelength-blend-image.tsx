@@ -110,7 +110,10 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<
       {isVisible && (
         <>
           <motion.div
-            className={styles.blendBorder}
+            className={cx(
+              styles.blendBorder,
+              animationDirection === "horizontal" && styles.horizontal,
+            )}
             style={borderStyle}
             aria-hidden="true"
           />

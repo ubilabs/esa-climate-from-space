@@ -5,7 +5,7 @@ import { Module } from "../../../types/story";
 export const StoryContentContext = createContext<{
   module: Module;
   storyId: string;
-  getRefCallback: (index: number) => (node: HTMLElement | null) => void;
+  getRefCallback: (index: number | string) => (node: HTMLElement | null) => void;
 } | null>(null);
 
 export const useModuleContent = () => {

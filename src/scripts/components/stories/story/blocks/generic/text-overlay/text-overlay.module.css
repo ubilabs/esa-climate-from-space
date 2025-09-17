@@ -1,4 +1,5 @@
 .textOverlay {
+  background: rgb(1, 30, 43);
   width: 100%;
   /* As we want the slides to snap, we need to disable the scroll snap alignment on the container. Otherwise, it might not work properly */
   > * {

@@ -22,12 +22,14 @@
         {
           "url": "assets/story37-image01.jpg",
           "caption": "Cette mosaïque, acquise le 28 mai 2018, offre une rare vue sans nuage sur les vastes étendues du Flow Country écossais.",
-          "altText": ""
+          "altText": "",
+          "focus": "right"
         },
         {
           "url": "assets/story37-image02.jpg",
           "caption": "Cette carte à haute résolution de l'occupation des sols dérivée des données de Copernicus Sentinel-2 montre l'étendue des tourbières en violet.",
-          "altText": ""
+          "altText": "",
+          "focus": "right"
         }
       ]
     },
@@ -37,17 +39,23 @@
         {
           "url": "assets/story37-image04.jpg",
           "caption": "Un gigantesque incendie a brûlé 5 700 hectares de tourbières en 2019. Cette image a été prise le 16 mai.",
-          "altText": ""
+          "altText": "",
+
+          "focus": "left"
         },
         {
           "url": "assets/story37-image05.jpg",
           "caption": "L'image en fausses couleurs incluant le canal proche infrarouge met en évidence la végétation saine en rouge et montre la cicatrice de brûlure en marron foncé.",
-          "altText": ""
+          "altText": "",
+
+          "focus": "left"
         },
         {
           "url": "assets/story37-image06.jpg",
           "caption": "L'image en fausses couleurs incluant les canaux infrarouges à ondes courtes met en évidence le front de feu actif en rouge vif.",
-          "altText": ""
+          "altText": "",
+
+          "focus": "left"
         }
       ]
     }

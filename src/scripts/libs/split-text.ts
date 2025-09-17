@@ -1,5 +1,7 @@
-const MAX_WORDS_PER_CAPTION = 40;
-const MIN_WORDS_PER_CAPTION = 5;
+import { chunk } from "llm-chunk";
+
+const MAX_WORDS_PER_CAPTION = 1000;
+const MIN_WORDS_PER_CAPTION = 40;
 
 /**
  * Splits a given text into chunks based on the maximum and minimum word limits.
@@ -15,27 +17,34 @@ export const splitTextIntoChunks = (
   maxWords: number = MAX_WORDS_PER_CAPTION,
   minWords: number = MIN_WORDS_PER_CAPTION,
 ): string[] => {
-  if (!text) return [];
-  const words = text.split(" ");
-  const n = words.length;
-  if (n <= maxWords) {
-    return [text];
+  if (!text || text.trim().length === 0) {
+    return [];
   }
 
-  const chunks = [];
-  let currentPos = 0;
-  while (currentPos < n) {
-    let endPos = currentPos + maxWords;
-    if (endPos >= n) {
-      endPos = n;
-    } else if (n - endPos < minWords) {
-      const remainingWords = n - currentPos;
-      endPos = currentPos + Math.ceil(remainingWords / 2);
-    }
-    chunks.push(words.slice(currentPos, endPos).join(" "));
-    currentPos = endPos;
-  }
-  return chunks;
+  const linkMap: { [key: string]: string } = {};
+  let linkIndex = 0;
+
+  // Protect markdown links by replacing them with placeholders
+  const protectedText = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match) => {
+    const placeholder = `__MARKDOWN_LINK_${linkIndex++}__`;
+    linkMap[placeholder] = match;
+    return placeholder;
+  });
+
+  // Default options
+  const chunks = chunk(protectedText, {
+    minLength: minWords, // number of minimum characters into chunk
+    maxLength: maxWords, // number of maximum characters into chunk
+    splitter: "sentence", // paragraph | sentence
+  });
+
+  const restoredChunks = chunks.map((c) => {
+    return Object.keys(linkMap).reduce((acc, placeholder) => {
+      return acc.replace(new RegExp(placeholder, 'g'), linkMap[placeholder]);
+    }, c);
+  });
+
+  return restoredChunks;
 };
 
 export const calculateTotalSlides = (slides: { text: string }[]): number => {

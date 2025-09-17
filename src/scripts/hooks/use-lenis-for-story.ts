@@ -29,6 +29,14 @@ export function useLenisForStory() {
     }
   }, []);
 
+  // Any scrolling should be handled by lenis, so we disable the browser's native scroll restoration
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   useEffect(() => {
     if (!storyElementRef.current || !story) return;
 

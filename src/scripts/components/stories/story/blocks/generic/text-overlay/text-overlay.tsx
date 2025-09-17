@@ -72,6 +72,7 @@ const TextOverlay: FunctionComponent<StorySectionProps> = () => {
           {slides?.map((slide, index) => (
             <TextOverlaySlide
               getRefCallback={getRefCallback}
+              index={index}
               key={index}
               storyId={storyId}
               slide={slide}

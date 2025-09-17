@@ -26,7 +26,9 @@ import cx from "classnames";
 
 import styles from "./splashscreen.module.css";
 
-export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
+export const SplashScreen: FunctionComponent<StorySectionProps> = ({
+  getRefCallback,
+}) => {
   const { story } = useStory();
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -88,7 +90,6 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
         styles.splashscreenContainer,
         isLocationBased && styles.locationStory,
       )}
-      ref={ref}
     >
       <div
         style={{
@@ -111,16 +112,17 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({ ref }) => {
         />
         <div className={styles.contentContainer}>
           <TextContainer
+            refProp={getRefCallback?.(0)}
             text={titleMarkdown || ""}
             className={styles.storyIntro}
           />
-          {slides.flatMap((slide, i) => {
+          {slides.map((slide, i) => {
             const textChunks = splitTextIntoChunks(slide.text);
             return textChunks.map((chunk, chunkIndex) => (
               <TextContainer
+                refProp={getRefCallback?.(`${i + 1}-${chunkIndex}`)}
                 text={chunk}
                 key={`${i}-${chunkIndex}`}
-                index={i + chunkIndex}
               />
             ));
           })}

@@ -1,4 +1,5 @@
 import { useRef, useState, useMemo, FunctionComponent } from "react";
+import ReactMarkdown from "react-markdown";
 import { motion, useMotionValueEvent } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 import {
@@ -14,6 +15,8 @@ import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
 import { useStory } from "../../../../../../../../providers/story/use-story";
 import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+
+import config from "../../../../../../../../config/main";
 
 import cx from "classnames";
 
@@ -109,7 +112,15 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
           ))}
         </ul>
         <div className={cx(styles.currentImageText, "story-grid")}>
-          <p>{caption}</p>
+          <div className={styles.slideAndText}>
+            <div className={styles.slideIndicator}>
+              {activeSlideIndex + 1}/{numSlides}
+            </div>
+            <ReactMarkdown
+              children={caption}
+              allowedElements={config.markdownAllowedElements}
+            />
+          </div>
         </div>
       </motion.div>
     </div>

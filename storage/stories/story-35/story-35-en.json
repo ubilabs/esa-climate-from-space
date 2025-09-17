@@ -22,22 +22,26 @@
         {
           "url": "assets/story35-image01.jpg",
           "caption": "This satellite image acquired on 11 June 2019 shows the Jakobshavn Glacier, one of the fastest moving lgaciers in the world.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story35-image02.jpg",
           "caption": "Archives satellite images are useful to detect long term trends in glacier monitoring.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story35-image03.jpg",
           "caption": "Satellites are also used to map elevation and thickness of the ice cap, and monitor its changes over time.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story35-image04.jpg",
           "caption": "Ice velocity can be measured thanks to multiple radar acquisitions. It allows scientists to montior each glacier on a regular basis to unerstand both long- and short-term dynamics.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         }
       ]
     }

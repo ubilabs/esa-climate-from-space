@@ -22,12 +22,14 @@
         {
           "url": "assets/story37-image01.jpg",
           "caption": "Dieses Mosaik, aufgenommen am 28. Mai 2018, bietet einen seltenen wolkenfreien Blick über die Weiten des schottischen Flow Country.",
-          "altText": ""
+          "altText": "",
+          "focus": "right"
         },
         {
           "url": "assets/story37-image02.jpg",
           "caption": "Diese hochauflösende Landbedeckungskarte, die aus Copernicus Sentinel-2 Daten abgeleitet wurde, zeigt die Ausdehnung von Torfgebieten in Lila.",
-          "altText": ""
+          "altText": "",
+          "focus": "right"
         }
       ]
     },
@@ -42,12 +44,14 @@
         {
           "url": "assets/story37-image05.jpg",
           "caption": "Falschfarbenbild mit Nahinfrarot-Kanal lässt gesunde Vegetation rot und verbrannte Vegetation in dunkelbraun erscheinen.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story37-image06.jpg",
           "caption": "Das Falschfarbenbild mit den Kurzwellen-Infrarotkanälen hebt die aktive Feuerfront in leuchtendem Rot hervor.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         }
       ]
     }

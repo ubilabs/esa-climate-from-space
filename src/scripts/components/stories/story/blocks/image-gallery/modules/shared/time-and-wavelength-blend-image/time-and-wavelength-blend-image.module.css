@@ -14,28 +14,45 @@
   .blendBorder {
     position: absolute;
     background-color: white;
+
+    &.horizontal:before {
+      content: "";
+      background-image: url('data:image/svg+xml,<svg width="21" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.36425e-07 5.5L5 0L5 11L2.36425e-07 5.5Z" fill="white"/><path d="M19.3288 5.49932L14 10.8281L14 0.170526L19.3288 5.49932Z" fill="white"/></svg>');
+      position: absolute;
+      background-repeat: no-repeat;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 12px;
+    }
+
+    &.horizontal:after {
+      position: absolute;
+      content: "";
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 36px;
+      border: 2px solid white;
+    }
   }
 
   .flag {
-    padding: 4px 8px;
+    padding: 4px 12px;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px; /* 142.857% */
-    letter-spacing: 0.175px;
+    letter-spacing: 1.25%;
     position: absolute;
-    transform: translate(-100%, -50%);
-    top: 50%;
-    background-color: #3f6c7d;
+    transform: translate(calc(-100% - 4px), 0);
+    margin-top: 4px;
+    background: rgba(1, 30, 43, 0.5);
     color: white;
-    margin-right: 4.5px;
 
     &:nth-of-type(2) {
-      margin-right: 0;
-      margin-left: 4.5px;
-      color: var(--Supporting-Colours-Deep-Space, #003349);
-      transform: translate(0, -50%);
-      background-color: white;
+      transform: translateX(6px);
     }
   }
 }

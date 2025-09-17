@@ -22,12 +22,14 @@
         {
           "url": "assets/story36-image01.jpg",
           "caption": "Durch die Verwendung einer großen Anzahl von Radarsatellitenbildern über einen Zeitraum von zwei Jahren ist es möglich, die Bodensenkungen (Sackung) genau zu berechnen.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         },
         {
           "url": "assets/story36-image02.jpg",
           "caption": "Durch die Verwendung einer großen Anzahl von Radarsatellitenbildern über einen Zeitraum von zwei Jahren ist es möglich, die Bodensenkungen (Sackung) genau zu berechnen. In diesem Bild wurden die Veränderungen der Bodenhöhe von 2017-2018 überlagert.",
-          "altText": ""
+          "altText": "",
+          "focus": "left"
         }
       ]
     }

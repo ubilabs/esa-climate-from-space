@@ -9,9 +9,7 @@ import { useLenisForStory } from "../../../hooks/use-lenis-for-story";
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
-import {
-  getModuleComponent,
-} from "../../../libs/get-story-components";
+import { getModuleComponent } from "../../../libs/get-story-components";
 
 import cx from "classnames";
 
@@ -45,14 +43,18 @@ const Story: FunctionComponent = () => {
       ref={storyElementRef}
       id="story"
     >
-      <SplashScreen ref={setScrollAnchorRefs("0-0")} />
+      <SplashScreen
+        getRefCallback={(index: number | string) =>
+          setScrollAnchorRefs(`0-${index}`)
+        }
+      />
       {story.modules.map(({ type }, moduleIndex) => {
         const ModuleComponent = getModuleComponent(type);
         const moduleData = story.modules[moduleIndex];
 
         /* Assign this to element's ref within modules that should serve as scroll anchors. For instance, in time- or wavelength modules, designate every "blendImage" as a scroll anchor. */
-        const generateScrollAnchorRef = (nodeIndex: number) =>
-          setScrollAnchorRefs(`${moduleIndex}-${nodeIndex}`);
+        const generateScrollAnchorRef = (nodeIndex: number | string) =>
+          setScrollAnchorRefs(`${moduleIndex + 1}-${nodeIndex}`);
 
         return (
           <ModuleContentProvider
