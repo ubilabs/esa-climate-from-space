@@ -48,7 +48,6 @@ export const TextContainer: FunctionComponent<TextContainerProps> = ({
 
   return (
     <motion.section
-      data-lenis-scroll-snap
       ref={ref}
       style={{
         opacity: opacity,

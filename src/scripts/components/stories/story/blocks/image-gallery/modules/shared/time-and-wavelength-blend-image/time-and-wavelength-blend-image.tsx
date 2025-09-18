@@ -12,6 +12,7 @@ import { ImageModuleSlide } from "../../../../../../../../types/story";
 import cx from "classnames";
 
 import styles from "./time-and-wavelength-blend-image.module.css";
+import { DATA_NO_SNAP_ATTR } from "../../../../../../../../hooks/use-lenis-for-story";
 
 export type AnimationDirection = "vertical" | "horizontal";
 
@@ -94,6 +95,8 @@ export const TimeAndWavelengthBlendImage: FunctionComponent<
       {/* This element is used to help the intersection observer keep track of which image is currently visible.
           The image itself cannot be used because it will always be fully in view */}
       <span
+        /* We add the data-no-snap attribute here because we want the user to have full control of the "slider" */
+        {...{ [DATA_NO_SNAP_ATTR]: true }}
         aria-hidden="true"
         ref={ref}
         style={sentinelStyle}

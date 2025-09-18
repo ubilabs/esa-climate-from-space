@@ -21,7 +21,12 @@ import styles from "./story.module.css";
  * The hierarchical structure of a story is organized as follows: story > module > slides
  */
 const Story: FunctionComponent = () => {
-  const { storyElementRef, story, setScrollAnchorRefs } = useStory();
+  const {
+    getScrollAnchorRefsMap,
+    storyElementRef,
+    story,
+    setScrollAnchorRefs,
+  } = useStory();
 
   // Initialize Lenis for smooth scrolling behavior in the story
   useLenisForStory();
@@ -52,7 +57,7 @@ const Story: FunctionComponent = () => {
         const ModuleComponent = getModuleComponent(type);
         const moduleData = story.modules[moduleIndex];
 
-        /* Assign this to element's ref within modules that should serve as scroll anchors. For instance, in time- or wavelength modules, designate every "blendImage" as a scroll anchor. */
+        /* Assign this to element's ref within modules that should serve as scroll- and snap anchors. Snap anchor is opt-out, i.e. if you want to an element to serve as a scroll anchor, but should not trigger a snap, use the data-no-snap attribute (like for the blend elements)  */
         const generateScrollAnchorRef = (nodeIndex: number | string) =>
           setScrollAnchorRefs(`${moduleIndex + 1}-${nodeIndex}`);
 

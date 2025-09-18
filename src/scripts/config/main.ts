@@ -114,8 +114,6 @@ if (import.meta.env.PROD) {
   baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}/`;
 }
 
-export const SLIDE_INDEX_ATTRIBUTE = "data-slide-index";
-
 type BasemapId =
   | "atmosphere"
   | "blue"
@@ -227,6 +225,5 @@ export default {
     syncTouchLerp: 0.04, // lower => heavier/floatier tail
     touchInertiaExponent: 0.5, // higher => longer inertia feel
     easing: (t: number) => 1 - Math.pow(1 - t, 2), // quadOut
-
   } as LenisOptions,
 };
