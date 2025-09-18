@@ -19,6 +19,12 @@ interface StoryProviderProps extends PropsWithChildren {
   story: Story | null;
 }
 
+// Natural-ish order: "1-2-10" after "1-2-3"
+const collator = new Intl.Collator(undefined, {
+  numeric: true,
+  sensitivity: "base",
+});
+
 export function StoryProvider({ children, story }: StoryProviderProps) {
   // Reference to the story container element.
   const storyElementRef = useRef<HTMLDivElement | null>(null);
@@ -29,11 +35,12 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
   const scrollAnchorRefs = useRef<Map<string, Element>>(null);
 
   const getScrollAnchorRefsMap = useCallback(() => {
-    if (!scrollAnchorRefs.current) {
-      // Initialize the Map on first usage.
-      scrollAnchorRefs.current = new Map();
-    }
-    return scrollAnchorRefs.current;
+    const map = (scrollAnchorRefs.current ??= new Map<string, HTMLElement>());
+
+    // enforce sorted order in case elements were added out of order
+    return new Map(
+      [...map.entries()].sort(([a], [b]) => collator.compare(a, b)),
+    );
   }, []);
 
   const setScrollAnchorRefs = useCallback(
@@ -45,23 +52,6 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
       } else {
         map.delete(key);
       }
-
-      const sortedMap = new Map(
-        [...map.entries()].sort(([keyA], [keyB]) => {
-          const a = keyA.split("-").map(Number);
-          const b = keyB.split("-").map(Number);
-
-          for (let i = 0; i < Math.min(a.length, b.length); i++) {
-            if (a[i] !== b[i]) {
-              return a[i] - b[i];
-            }
-          }
-
-          return a.length - b.length;
-        }),
-      );
-
-      scrollAnchorRefs.current = sortedMap;
     },
     [getScrollAnchorRefsMap],
   );

@@ -66,16 +66,22 @@ export const useSyncStoryUrl = () => {
     const container = storyElementRef.current;
     const nodeMap = getScrollAnchorRefsMap();
 
+    console.log("sync seSyncStoryUrl: Setting up IntersectionObserver");
+    console.log("sync Nodes being observed:", nodeMap);
+    console.log("sync Container:", container);
+    console.log("sync story:", story);
+
     if (!container || !story || nodeMap.size === 0) return;
 
     // Precompute lookups once.
     const nodeToKey = new WeakMap<Element, string>();
     nodeMap.forEach((node, key) => nodeToKey.set(node, key));
 
-    const sortedKeys = Array.from(nodeMap.keys()).sort(); // stable order for index lookup
     const indexByKey = new Map<string, number>();
-    for (let i = 0; i < sortedKeys.length; i++)
-      indexByKey.set(sortedKeys[i], i);
+    let i = 0;
+    for (const key of nodeMap.keys()) {
+      indexByKey.set(key, i++);
+    }
 
     // Track current intersections.
     const intersecting = new Map<string, number>();
