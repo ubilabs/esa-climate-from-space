@@ -21,12 +21,7 @@ import styles from "./story.module.css";
  * The hierarchical structure of a story is organized as follows: story > module > slides
  */
 const Story: FunctionComponent = () => {
-  const {
-    getScrollAnchorRefsMap,
-    storyElementRef,
-    story,
-    setScrollAnchorRefs,
-  } = useStory();
+  const { storyElementRef, story, setScrollAnchorRefs } = useStory();
 
   // Initialize Lenis for smooth scrolling behavior in the story
   useLenisForStory();
