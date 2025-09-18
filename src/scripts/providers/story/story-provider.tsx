@@ -45,6 +45,23 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
       } else {
         map.delete(key);
       }
+
+      const sortedMap = new Map(
+        [...map.entries()].sort(([keyA], [keyB]) => {
+          const a = keyA.split("-").map(Number);
+          const b = keyB.split("-").map(Number);
+
+          for (let i = 0; i < Math.min(a.length, b.length); i++) {
+            if (a[i] !== b[i]) {
+              return a[i] - b[i];
+            }
+          }
+
+          return a.length - b.length;
+        }),
+      );
+
+      scrollAnchorRefs.current = sortedMap;
     },
     [getScrollAnchorRefsMap],
   );
