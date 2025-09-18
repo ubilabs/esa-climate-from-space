@@ -7,12 +7,18 @@ import { getCssVarPx } from "../libs/get-css-var-in-px";
 
 import { useStory } from "../providers/story/use-story";
 import config from "../config/main";
+import { useScreenSize } from "./use-screen-size";
+
+export const DATA_NO_SNAP_ATTR = "data-no-snap";
 
 export function useLenisForStory() {
-  const { storyElementRef, story, lenisRef } = useStory();
+  const { storyElementRef, story, lenisRef, getScrollAnchorRefsMap } =
+    useStory();
 
   // stable raf loop
   const rafRef = useRef<number | null>(null);
+
+  const { screenHeight } = useScreenSize();
 
   const startRaf = useCallback(() => {
     const raf = (time: number) => {
@@ -51,8 +57,8 @@ export function useLenisForStory() {
     lenisRef.current = lenis;
     startRaf();
 
-    // We want to snap certain elements into place when scrolling
-    // To add elements to the snap list, add custom attribute data-lenis-scroll-snap
+    // We want to snap anchor elements into place when scrolling
+    // To exclude an element from snapping, add the data-no-snap attribute to it
     const snap = new Snap(lenis, {
       type: "proximity", // 'mandatory', 'proximity'
       distanceThreshold: "50%",
@@ -62,15 +68,12 @@ export function useLenisForStory() {
     // We need to account for the header height when snapping
     const headerHeight = getCssVarPx("--header-height");
 
-    snap.viewport.height = window.innerHeight + headerHeight;
+    snap.viewport.height = screenHeight + headerHeight;
 
-    const scrollSnapElements =
-      storyElementRef.current.querySelectorAll<HTMLElement>(
-        "[data-lenis-scroll-snap]",
-      );
-
-    scrollSnapElements.forEach((el) => {
-      snap.addElement(el, {
+    getScrollAnchorRefsMap().forEach((el) => {
+      // skip element if it has the data-no-snap attribute
+      if (el.hasAttribute(DATA_NO_SNAP_ATTR)) return;
+      snap.addElement(el as HTMLElement, {
         align: "center",
         ignoreTransform: true,
         ignoreSticky: false,
@@ -82,5 +85,13 @@ export function useLenisForStory() {
       lenis.destroy();
       lenisRef.current = null;
     };
-  }, [storyElementRef, story, lenisRef, startRaf, stopRaf]);
+  }, [
+    screenHeight,
+    getScrollAnchorRefsMap,
+    storyElementRef,
+    story,
+    lenisRef,
+    startRaf,
+    stopRaf,
+  ]);
 }

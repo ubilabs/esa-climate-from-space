@@ -2,7 +2,7 @@ import { PropsWithChildren, useRef, RefObject, useCallback } from "react";
 
 import Lenis from "lenis";
 
-import { Story } from "../../types/story";
+import { AnchorKey, Story } from "../../types/story";
 import { StoryContext } from "./use-story";
 
 export interface StoryContextValue {
@@ -19,6 +19,12 @@ interface StoryProviderProps extends PropsWithChildren {
   story: Story | null;
 }
 
+// Natural-ish order: "1-2-10" after "1-2-3"
+const collator = new Intl.Collator(undefined, {
+  numeric: true,
+  sensitivity: "base",
+});
+
 export function StoryProvider({ children, story }: StoryProviderProps) {
   // Reference to the story container element.
   const storyElementRef = useRef<HTMLDivElement | null>(null);
@@ -28,17 +34,20 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
   // Add a node to this Map for the intersection observer to detect it and adjust the URL parameters accordingly.
   const scrollAnchorRefs = useRef<Map<string, Element>>(null);
 
-  const getScrollAnchorRefsMap = useCallback(() => {
-    if (!scrollAnchorRefs.current) {
-      // Initialize the Map on first usage.
-      scrollAnchorRefs.current = new Map();
-    }
-    return scrollAnchorRefs.current;
+  const getMap = useCallback(() => {
+    return (scrollAnchorRefs.current ??= new Map<AnchorKey, HTMLElement>());
   }, []);
+
+  const getScrollAnchorRefsMap = useCallback(() => {
+    const map = getMap();
+    return new Map(
+      [...map.entries()].sort(([a], [b]) => collator.compare(a, b)),
+    );
+  }, [getMap]);
 
   const setScrollAnchorRefs = useCallback(
     (key: string) => (node: HTMLElement | undefined | null) => {
-      const map = getScrollAnchorRefsMap();
+      const map = getMap();
 
       if (node) {
         map.set(key, node);
@@ -46,7 +55,7 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
         map.delete(key);
       }
     },
-    [getScrollAnchorRefsMap],
+    [getMap],
   );
 
   return (

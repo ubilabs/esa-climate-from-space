@@ -43,18 +43,14 @@ const Story: FunctionComponent = () => {
       ref={storyElementRef}
       id="story"
     >
-      <SplashScreen
-        getRefCallback={(index: number | string) =>
-          setScrollAnchorRefs(`0-${index}`)
-        }
-      />
+      <SplashScreen />
       {story.modules.map(({ type }, moduleIndex) => {
         const ModuleComponent = getModuleComponent(type);
         const moduleData = story.modules[moduleIndex];
 
-        /* Assign this to element's ref within modules that should serve as scroll anchors. For instance, in time- or wavelength modules, designate every "blendImage" as a scroll anchor. */
-        const generateScrollAnchorRef = (nodeIndex: number | string) =>
-          setScrollAnchorRefs(`${moduleIndex + 1}-${nodeIndex}`);
+        /* Assign this to element's ref within modules that should serve as scroll- and snap anchors. Snap anchor is opt-out, i.e. if you want to an element to serve as a scroll anchor, but should not trigger a snap, use the data-no-snap attribute (like for the blend elements)  */
+        const generateScrollAnchorRef = (nodeIndex: number, subIndex: number) =>
+          setScrollAnchorRefs(`${moduleIndex + 1}-${nodeIndex}-${subIndex}`);
 
         return (
           <ModuleContentProvider

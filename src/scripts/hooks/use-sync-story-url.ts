@@ -38,13 +38,7 @@ export const useSyncStoryUrl = () => {
         },
       );
     }
-  }, [
-    getScrollAnchorRefsMap,
-    storyElementRef,
-    story,
-    lenisRef,
-    initialSlideIndex,
-  ]);
+  }, [storyElementRef, story, lenisRef, initialSlideIndex]);
 
   // Effect for when the url is changed by the user
   useEffect(() => {
@@ -65,7 +59,7 @@ export const useSyncStoryUrl = () => {
         },
       });
     }
-  }, [location, getScrollAnchorRefsMap, navigationType, lenisRef]);
+  }, [location, navigationType, lenisRef]);
 
   // Effect for Intersection Observer to update URL on scroll
   useEffect(() => {
@@ -78,10 +72,11 @@ export const useSyncStoryUrl = () => {
     const nodeToKey = new WeakMap<Element, string>();
     nodeMap.forEach((node, key) => nodeToKey.set(node, key));
 
-    const sortedKeys = Array.from(nodeMap.keys()).sort(); // stable order for index lookup
     const indexByKey = new Map<string, number>();
-    for (let i = 0; i < sortedKeys.length; i++)
-      indexByKey.set(sortedKeys[i], i);
+    let i = 0;
+    for (const key of nodeMap.keys()) {
+      indexByKey.set(key, i++);
+    }
 
     // Track current intersections.
     const intersecting = new Map<string, number>();

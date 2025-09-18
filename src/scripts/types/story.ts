@@ -68,9 +68,14 @@ export type ImageModuleSlide = {
   caption: string;
 };
 
-export type StorySectionProps = {
-  getRefCallback?: (index: number| string) => (node: HTMLElement | null) => void;
-} & ComponentProps<"div">;
+export type AnchorKey = `${number}-${number}-${number}`;
+
+export type GetRefCallback = (
+  index: number,
+  subIndex: number,
+) => (node: HTMLElement | null) => void;
+
+export type StorySectionProps = {} & ComponentProps<"div">;
 
 export const imageGalleryModuleMap: Record<
   ImageModule["type"],

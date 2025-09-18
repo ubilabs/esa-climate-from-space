@@ -25,7 +25,6 @@ export const SlideContainer = ({
 }: Props) => {
   return (
     <div
-      data-lenis-scroll-snap
       ref={ref}
       className={cx(styles.slideContainer, className)}
       style={style}

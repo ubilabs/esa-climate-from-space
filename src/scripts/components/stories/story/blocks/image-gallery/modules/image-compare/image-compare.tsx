@@ -52,7 +52,7 @@ const ImageCompare: FunctionComponent<StorySectionProps> = () => {
 
   return (
     <SlideContainer
-      ref={getRefCallback(0)}
+      ref={getRefCallback(0, 0)}
       className={cx(styles.imageCompare, isComparing && styles.isComparing)}
     >
       {!isComparing ? (

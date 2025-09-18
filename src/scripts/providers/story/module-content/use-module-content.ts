@@ -1,11 +1,11 @@
 import { createContext, use } from "react";
-import { Module } from "../../../types/story";
+import { GetRefCallback, Module } from "../../../types/story";
 
 // update for more content types
 export const StoryContentContext = createContext<{
   module: Module;
   storyId: string;
-  getRefCallback: (index: number | string) => (node: HTMLElement | null) => void;
+  getRefCallback: GetRefCallback;
 } | null>(null);
 
 export const useModuleContent = () => {

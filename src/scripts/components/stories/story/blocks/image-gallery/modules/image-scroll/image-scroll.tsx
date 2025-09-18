@@ -24,7 +24,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
     <div className={styles.imageScroll}>
       {slides?.map(({ url, text, altText, caption, focus }, index) => (
         <SlideContainer
-          ref={getRefCallback?.(index)}
+          ref={getRefCallback?.(index, 0)}
           className={cx(styles.slide, "story-grid")}
           key={url || index}
         >
