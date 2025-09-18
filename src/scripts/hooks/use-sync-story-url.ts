@@ -66,11 +66,6 @@ export const useSyncStoryUrl = () => {
     const container = storyElementRef.current;
     const nodeMap = getScrollAnchorRefsMap();
 
-    console.log("sync seSyncStoryUrl: Setting up IntersectionObserver");
-    console.log("sync Nodes being observed:", nodeMap);
-    console.log("sync Container:", container);
-    console.log("sync story:", story);
-
     if (!container || !story || nodeMap.size === 0) return;
 
     // Precompute lookups once.

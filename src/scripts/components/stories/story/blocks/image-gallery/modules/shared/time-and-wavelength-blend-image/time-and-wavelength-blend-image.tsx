@@ -11,8 +11,9 @@ import { ImageModuleSlide } from "../../../../../../../../types/story";
 
 import cx from "classnames";
 
-import styles from "./time-and-wavelength-blend-image.module.css";
 import { DATA_NO_SNAP_ATTR } from "../../../../../../../../hooks/use-lenis-for-story";
+
+import styles from "./time-and-wavelength-blend-image.module.css";
 
 export type AnimationDirection = "vertical" | "horizontal";
 
