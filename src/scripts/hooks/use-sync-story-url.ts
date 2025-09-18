@@ -38,13 +38,7 @@ export const useSyncStoryUrl = () => {
         },
       );
     }
-  }, [
-    getScrollAnchorRefsMap,
-    storyElementRef,
-    story,
-    lenisRef,
-    initialSlideIndex,
-  ]);
+  }, [storyElementRef, story, lenisRef, initialSlideIndex]);
 
   // Effect for when the url is changed by the user
   useEffect(() => {
@@ -65,7 +59,7 @@ export const useSyncStoryUrl = () => {
         },
       });
     }
-  }, [location, getScrollAnchorRefsMap, navigationType, lenisRef]);
+  }, [location, navigationType, lenisRef]);
 
   // Effect for Intersection Observer to update URL on scroll
   useEffect(() => {
