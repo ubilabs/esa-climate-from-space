@@ -1,7 +1,10 @@
 import { FunctionComponent, useRef } from "react";
 
 import ReactMarkdown from "react-markdown";
-import { ImageModuleSlide } from "../../../../../../../types/story";
+import {
+  GetRefCallback,
+  ImageModuleSlide,
+} from "../../../../../../../types/story";
 import { motion, useTransform } from "motion/react";
 
 import config from "../../../../../../../config/main";
@@ -68,7 +71,7 @@ export const TextContainer: FunctionComponent<TextContainerProps> = ({
 interface Props {
   slide: ImageModuleSlide;
   storyId: string;
-  getRefCallback: (index: number | string) => (element: HTMLDivElement) => void;
+  getRefCallback: GetRefCallback;
   index: number;
 }
 
@@ -94,7 +97,7 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
           <TextContainer
             text={text}
             index={chunkIndex}
-            refProp={getRefCallback(`${index}-${chunkIndex}`)}
+            refProp={getRefCallback(chunkIndex, index)}
           />
         </div>
       ))}

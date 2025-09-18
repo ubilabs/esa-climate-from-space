@@ -26,10 +26,8 @@ import cx from "classnames";
 
 import styles from "./splashscreen.module.css";
 
-export const SplashScreen: FunctionComponent<StorySectionProps> = ({
-  getRefCallback,
-}) => {
-  const { story } = useStory();
+export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
+  const { story, setScrollAnchorRefs } = useStory();
   const targetRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useDispatch();
@@ -112,7 +110,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({
         />
         <div className={styles.contentContainer}>
           <TextContainer
-            refProp={getRefCallback?.(0)}
+            refProp={setScrollAnchorRefs("0-0-0")}
             text={titleMarkdown || ""}
             className={styles.storyIntro}
           />
@@ -120,7 +118,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = ({
             const textChunks = splitTextIntoChunks(slide.text);
             return textChunks.map((chunk, chunkIndex) => (
               <TextContainer
-                refProp={getRefCallback?.(`${i + 1}-${chunkIndex}`)}
+                refProp={setScrollAnchorRefs(`0-${i + 1}-${chunkIndex}`)}
                 text={chunk}
                 key={`${i}-${chunkIndex}`}
               />

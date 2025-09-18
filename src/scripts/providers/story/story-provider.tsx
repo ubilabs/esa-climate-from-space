@@ -2,7 +2,7 @@ import { PropsWithChildren, useRef, RefObject, useCallback } from "react";
 
 import Lenis from "lenis";
 
-import { Story } from "../../types/story";
+import { AnchorKey, Story } from "../../types/story";
 import { StoryContext } from "./use-story";
 
 export interface StoryContextValue {
@@ -34,18 +34,20 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
   // Add a node to this Map for the intersection observer to detect it and adjust the URL parameters accordingly.
   const scrollAnchorRefs = useRef<Map<string, Element>>(null);
 
-  const getScrollAnchorRefsMap = useCallback(() => {
-    const map = (scrollAnchorRefs.current ??= new Map<string, HTMLElement>());
+  const getMap = useCallback(() => {
+    return (scrollAnchorRefs.current ??= new Map<AnchorKey, HTMLElement>());
+  }, []);
 
-    // enforce sorted order in case elements were added out of order
+  const getScrollAnchorRefsMap = useCallback(() => {
+    const map = getMap();
     return new Map(
       [...map.entries()].sort(([a], [b]) => collator.compare(a, b)),
     );
-  }, []);
+  }, [getMap]);
 
   const setScrollAnchorRefs = useCallback(
     (key: string) => (node: HTMLElement | undefined | null) => {
-      const map = getScrollAnchorRefsMap();
+      const map = getMap();
 
       if (node) {
         map.set(key, node);
@@ -53,7 +55,7 @@ export function StoryProvider({ children, story }: StoryProviderProps) {
         map.delete(key);
       }
     },
-    [getScrollAnchorRefsMap],
+    [getMap],
   );
 
   return (

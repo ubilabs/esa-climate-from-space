@@ -100,7 +100,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
             <TimeAndWavelengthBlendImage
               prevFlag={images[i - 1]?.flag}
               key={`${storyId}-${image.url}_${i}`}
-              ref={getRefCallback?.(i)}
+              ref={getRefCallback?.(i, 0)}
               active={activeSlideIndex === i}
               slideIndex={i}
               scrollYProgress={scrollYProgress}
