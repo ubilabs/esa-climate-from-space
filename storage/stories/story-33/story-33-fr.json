@@ -17,18 +17,21 @@
       "type": "imageTime",
       "slides": [
         {
+          "focus": "left",
           "url": "assets/story33-image01.jpg",
           "caption": "Cette image a été acquise le 14 août 1988 et montre la ville du Caire et ses environs il y a plus de 30 ans.",
           "altText": "Cette image a été acquise le 14 août 1988 et montre la ville du Caire et ses environs il y a plus de 30 ans.",
           "flag": "1988"
         },
         {
+          "focus": "left",
           "url": "assets/story33-image02.jpg",
           "caption": "Cette image a été acquise le 2 août 2018 et montre la ville du Caire et ses environs",
           "altText": "Cette image a été acquise le 2 août 2018 et montre la ville du Caire et ses environs",
           "flag": "2018"
         },
         {
+          "focus": "left",
           "url": "assets/story33-image03.jpg",
           "caption": "Cette image a été acquise le 31 août 2021 et montre la ville du Caire et ses environs.",
           "altText": "Cette image a été acquise le 31 août 2021 et montre la ville du Caire et ses environs.",
