@@ -68,6 +68,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
     arcs.length,
     setCurrentIndex,
     setLastUserInteractionTime,
+    "x",
+    true,
   );
 
   // State to control the tooltip visibility and position. The tooltip the currently hovered or focused category
@@ -90,9 +92,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
 
   // Why _oversize? It's because the circle navigation should be bigger than the screen
   // We hide the overflow in the parent container
-  const _size = isMobile
-    ? width + _overSize
-    : Math.min(width / 2, height - 60);
+  const _size = isMobile ? width + _overSize : Math.min(width / 2, height - 60);
 
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
