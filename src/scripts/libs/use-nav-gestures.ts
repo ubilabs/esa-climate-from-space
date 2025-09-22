@@ -4,16 +4,16 @@ import { useGesture, Vector2 } from "@use-gesture/react";
 import { Lethargy } from "lethargy";
 
 const clamp = (value: number, min: number, max: number): number => {
-  // Wrap the value around if it goes below the minimum or above the maximum
+  // Clamps the value to be within the [min, max] range
   if (value < min) {
-    return max;
+    return min;
   }
   if (value > max) {
-    return min;
+    return max;
   }
   return value;
 };
-const DEBOUNCE_MS = 500; // adjust to taste
+const DEBOUNCE_MS = 250; // adjust to taste
 
 export const useNavGestures = (
   maxIndex: number,
