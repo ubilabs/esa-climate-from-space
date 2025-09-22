@@ -40,11 +40,20 @@ export const splitTextIntoChunks = (
 
   const restoredChunks = chunks.map((c) => {
     return Object.keys(linkMap).reduce((acc, placeholder) => {
-      return acc.replace(new RegExp(placeholder, 'g'), linkMap[placeholder]);
+      return acc.replace(new RegExp(placeholder, "g"), linkMap[placeholder]);
     }, c);
   });
 
-  return restoredChunks;
+  // Avoid very short last chunks by merging them with the previous chunk
+  return restoredChunks.reduce((acc, chunk) => {
+    const wordCount = chunk.split(/\s+/).filter(Boolean).length;
+    if (acc.length > 0 && wordCount < 5) {
+      acc[acc.length - 1] += ` ${chunk}`;
+    } else {
+      acc.push(chunk);
+    }
+    return acc;
+  }, [] as string[]);
 };
 
 export const calculateTotalSlides = (slides: { text: string }[]): number => {
