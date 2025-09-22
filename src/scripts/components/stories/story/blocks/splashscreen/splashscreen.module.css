@@ -48,7 +48,6 @@
     position: absolute;
     top: 0;
     height: 100%;
-    max-width: 95ch;
     margin: 0 auto;
     display: grid;
     place-items: center;
