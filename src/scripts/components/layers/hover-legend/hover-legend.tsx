@@ -21,7 +21,9 @@ const HoverLegend: FunctionComponent<Props> = ({ values, isCompare }) => {
             className={styles.color}
             style={{ backgroundColor: legendItem.color }}
             onMouseOver={() => setLegendValue(legendItem.value)}
+            onFocus={() => setLegendValue(legendItem.value)}
             onMouseLeave={() => setLegendValue("")}
+            onBlur={() => setLegendValue("")}
           ></div>
           {legendValue === legendItem.value && (
             <span className={styles.hoverValue}>{legendValue}</span>

@@ -1,29 +1,36 @@
 {
   "id": "story-36",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story36-image03.jpg",
+    "focus": "center",
+    "title": "Sinkende Stadt",
+    "subtitle": "Jakarta, Indonesien",
+    "altText": "Sinkende Stadt in Jakarta, Indonesien",
+    "slides": [
+      {
+        "text": "Die indonesische Hauptstadt Jakarta beherbergt 10 Millionen Menschen und ist eine der am schnellsten sinkenden Städte der Welt, was auf die umfangreiche Grundwasserentnahme und das hohe Gewicht der Gebäude zurückzuführen ist."
+      },
+      {
+        "text": "Forscher gehen davon aus, dass Teile der Megastadt bis 2050 vollständig unter Wasser stehen könnten. Diese Karte zeigt die mittleren Bodenverschiebungsraten auf der Grundlage von Sentinel-1-Radardaten. Lokale Senkungsmuster erreichen etwa 12 cm pro Jahr.\nCredits: ESA GEP & CNR-IREA"
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Sinkende Stadt\r\n\r\nJakarta, Indonesien",
-      "shortText": "# Sinkende Stadt\r\n\r\nJakarta, Indonesien",
-      "images": [
-        "assets/story36-image03.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Versinkende Stadt, Jakarta, Indonesien\r\n\r\nDie indonesische Hauptstadt Jakarta beherbergt 10 Millionen Menschen und ist eine der am schnellsten sinkenden Städte der Welt, was auf die umfangreiche Grundwasserentnahme und das hohe Gewicht der Gebäude zurückzuführen ist. Forscher gehen davon aus, dass Teile der Megastadt bis 2050 vollständig unter Wasser stehen könnten. Diese Karte zeigt die mittleren Bodenverschiebungsraten auf der Grundlage von Sentinel-1-Radardaten. Lokale Senkungsmuster erreichen etwa 12 cm pro Jahr. \r\n\r\nCredits: ESA GEP & CNR-IREA",
-      "shortText": "## Versinkende Stadt, Jakarta, Indonesien\r\n\r\nDie indonesische Hauptstadt Jakarta beherbergt 10 Millionen Menschen und ist eine der am schnellsten sinkenden Städte der Welt, was auf die umfangreiche Grundwasserentnahme und das hohe Gewicht der Gebäude zurückzuführen ist. Forscher gehen davon aus, dass Teile der Megastadt bis 2050 vollständig unter Wasser stehen könnten. Diese Karte zeigt die mittleren Bodenverschiebungsraten auf der Grundlage von Sentinel-1-Radardaten. Lokale Senkungsmuster erreichen etwa 12 cm pro Jahr. \r\n\r\nCredits: ESA GEP & CNR-IREA",
-      "images": [
-        "assets/story36-image01.jpg",
-        "assets/story36-image02.jpg"
-      ],
-      "imageCaptions": [
-        "Jakarta, Indonesien: die sinkende Stadt. Durch die Verwendung einer großen Anzahl von Radarsatellitenbildern über einen Zeitraum von zwei Jahren ist es möglich, die Bodensenkungen (Sackung) genau zu berechnen.",
-        "Jakarta, Indonesien: die sinkende Stadt. Durch die Verwendung einer großen Anzahl von Radarsatellitenbildern über einen Zeitraum von zwei Jahren ist es möglich, die Bodensenkungen (Sackung) genau zu berechnen. In diesem Bild wurden die Veränderungen der Bodenhöhe von 2017-2018 überlagert."
-      ],
-      "imageFits": [
-        "contain",
-        "contain"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story36-image01.jpg",
+          "caption": "Durch die Verwendung einer großen Anzahl von Radarsatellitenbildern über einen Zeitraum von zwei Jahren ist es möglich, die Bodensenkungen (Sackung) genau zu berechnen.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story36-image02.jpg",
+          "caption": "Durch die Verwendung einer großen Anzahl von Radarsatellitenbildern über einen Zeitraum von zwei Jahren ist es möglich, die Bodensenkungen (Sackung) genau zu berechnen. In diesem Bild wurden die Veränderungen der Bodenhöhe von 2017-2018 überlagert.",
+          "altText": "",
+          "focus": "left"
+        }
       ]
     }
   ]

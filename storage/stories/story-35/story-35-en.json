@@ -1,35 +1,48 @@
 {
   "id": "story-35",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story35-image05.jpg",
+    "focus": "center",
+    "title": "A Racing Glacier",
+    "subtitle": "Jakobshavn, Greenland",
+    "altText": "A Racing Glacier in Jakobshavn, Greenland",
+    "slides": [
+      {
+        "text": "Greenland loses more ice through the Jakobshavn Glacier than from anywhere else on this huge ice sheet. Jakobshavn – one of the fastest moving glaciers in the world – travels up to 40 metres per day."
+      },
+      {
+        "text": "Satellites show that recently it has been flowing more slowly and getting thicker, although it is still losing more ice than it gains. Observations from space are key to monitoring dynamic features such as this."
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
-      "shortText": "# A Racing Glacier\r\n\r\nJakobshavn, Greenland",
-      "images": [
-        "assets/story35-image05.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## A Racing Glacier, Jakobshavn, Greenland\r\n\r\nGreenland loses more ice through the Jakobshavn Glacier than from anywhere else on this huge ice sheet. Jakobshavn – one of the fastest moving glaciers in the world – travels up to 40 metres per day. Satellites show that recently it has been flowing more slowly and getting thicker, although it is still losing more ice than it gains. Observations from space are key to monitoring dynamic features such as this. \r\n\r\nCredits: ESA CCI; Polar Geospatial Center; contains modified Copernicus Sentinel data (2019), processed by ESA.",
-      "shortText": "## A Racing Glacier, Jakobshavn, Greenland\r\n\r\nGreenland loses more ice through the Jakobshavn Glacier than from anywhere else on this huge ice sheet. Jakobshavn – one of the fastest moving glaciers in the world – travels up to 40 metres per day. Satellites show that recently it has been flowing more slowly and getting thicker, although it is still losing more ice than it gains. Observations from space are key to monitoring dynamic features such as this. \r\n\r\nCredits: ESA CCI; Polar Geospatial Center; contains modified Copernicus Sentinel data (2019), processed by ESA.",
-      "images": [
-        "assets/story35-image01.jpg",
-        "assets/story35-image02.jpg",
-        "assets/story35-image03.jpg",
-        "assets/story35-image04.jpg"
-      ],
-      "imageCaptions": [
-        "Jakobshavn: A racing glacier. This satellite image acquired on 11 June 2019 shows the Jakobshavn Glacier, one of the fastest moving lgaciers in the world.",
-        "Jakobshavn: A racing glacier. Archives satellite images are useful to detect long term trends in glacier monitoring.",
-        "Jakobshavn: A racing glacier. Satellites are also used to map elevation and thickness of the ice cap, and monitor its changes over time.",
-        "Jakobshavn: A racing glacier. Ice velocity can be measured thanks to multiple radar acquisitions. It allows scientists to montior each glacier on a regular basis to unerstand both long- and short-term dynamics."
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story35-image01.jpg",
+          "caption": "This satellite image acquired on 11 June 2019 shows the Jakobshavn Glacier, one of the fastest moving lgaciers in the world.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story35-image02.jpg",
+          "caption": "Archives satellite images are useful to detect long term trends in glacier monitoring.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story35-image03.jpg",
+          "caption": "Satellites are also used to map elevation and thickness of the ice cap, and monitor its changes over time.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story35-image04.jpg",
+          "caption": "Ice velocity can be measured thanks to multiple radar acquisitions. It allows scientists to montior each glacier on a regular basis to unerstand both long- and short-term dynamics.",
+          "altText": "",
+          "focus": "left"
+        }
       ]
     }
   ]

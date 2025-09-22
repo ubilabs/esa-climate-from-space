@@ -1,35 +1,48 @@
 {
   "id": "story-35",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story35-image05.jpg",
+    "focus": "center",
+    "title": "Un glacier en course",
+    "subtitle": "Jakobshavn, Groenland",
+    "altText": "Un glacier en course en Jakobshavn, Groenland",
+    "slides": [
+      {
+        "text": "Le Groenland perd plus de glace par le glacier Jakobshavn que par n'importe quel autre glacier de cette immense calotte glaciaire. Jakobshavn, l'un des glaciers qui se déplacent le plus rapidement au monde, parcourt jusqu'à 40 mètres par jour."
+      },
+      {
+        "text": "Les satellites montrent qu'il s'écoule plus lentement et qu'il s'épaissit, bien qu'il perde toujours plus de glace qu'il n'en gagne. Les observations depuis l'espace sont essentielles pour surveiller des phénomènes dynamiques tels que celui-ci.\nCrédits : ESA CCI ; Polar Geospatial Center ; contient des données Copernicus Sentinel modifiées (2019), traitées par l'ESA."
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Un glacier en course\r\n\r\nJakobshavn, Groenland",
-      "shortText": "# Un glacier en course\r\n\r\nJakobshavn, Groenland",
-      "images": [
-        "assets/story35-image05.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Un glacier en pleine course, Jakobshavn, Groenland\r\n\r\nLe Groenland perd plus de glace par le glacier Jakobshavn que par n'importe quel autre glacier de cette immense calotte glaciaire. Jakobshavn, l'un des glaciers qui se déplacent le plus rapidement au monde, parcourt jusqu'à 40 mètres par jour. Les satellites montrent qu'il s'écoule plus lentement et qu'il s'épaissit, bien qu'il perde toujours plus de glace qu'il n'en gagne. Les observations depuis l'espace sont essentielles pour surveiller des phénomènes dynamiques tels que celui-ci. \r\n\r\nCrédits : ESA CCI ; Polar Geospatial Center ; contient des données Copernicus Sentinel modifiées (2019), traitées par l'ESA.",
-      "shortText": "## Un glacier en pleine course, Jakobshavn, Groenland\r\n\r\nLe Groenland perd plus de glace par le glacier Jakobshavn que par n'importe quel autre glacier de cette immense calotte glaciaire. Jakobshavn, l'un des glaciers qui se déplacent le plus rapidement au monde, parcourt jusqu'à 40 mètres par jour. Les satellites montrent qu'il s'écoule plus lentement et qu'il s'épaissit, bien qu'il perde toujours plus de glace qu'il n'en gagne. Les observations depuis l'espace sont essentielles pour surveiller des phénomènes dynamiques tels que celui-ci. \r\n\r\nCrédits : ESA CCI ; Polar Geospatial Center ; contient des données Copernicus Sentinel modifiées (2019), traitées par l'ESA.",
-      "images": [
-        "assets/story35-image01.jpg",
-        "assets/story35-image02.jpg",
-        "assets/story35-image03.jpg",
-        "assets/story35-image04.jpg"
-      ],
-      "imageCaptions": [
-        "Jakobshavn : un glacier en pleine course. Cette image satellite acquise le 11 juin 2019 montre le glacier Jakobshavn, l'un des glaciers qui se déplacent le plus rapidement au monde.",
-        "Jakobshavn : un glacier en pleine course. Les images satellites d'archives sont utiles pour détecter les tendances à long terme dans la surveillance des glaciers.",
-        "Jakobshavn : un glacier en pleine course. Les satellites sont également utilisés pour cartographier l'altitude et l'épaisseur de la calotte glaciaire et suivre son évolution dans le temps.",
-        "Jakobshavn : un glacier en pleine course. La vitesse de la glace peut être mesurée grâce à de multiples acquisitions radar. Cela permet aux scientifiques de surveiller régulièrement chaque glacier afin de comprendre les dynamiques à court et à long terme."
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story35-image01.jpg",
+          "caption": "Cette image satellite acquise le 11 juin 2019 montre le glacier Jakobshavn, l'un des glaciers qui se déplacent le plus rapidement au monde.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story35-image02.jpg",
+          "caption": "Les images satellites d'archives sont utiles pour détecter les tendances à long terme dans la surveillance des glaciers.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story35-image03.jpg",
+          "caption": "Les satellites sont également utilisés pour cartographier l'altitude et l'épaisseur de la calotte glaciaire et suivre son évolution dans le temps.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story35-image04.jpg",
+          "caption": "La vitesse de la glace peut être mesurée grâce à de multiples acquisitions radar. Cela permet aux scientifiques de surveiller régulièrement chaque glacier afin de comprendre les dynamiques à court et à long terme.",
+          "altText": "",
+          "focus": "left"
+        }
       ]
     }
   ]

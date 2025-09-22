@@ -110,7 +110,7 @@ export const offlineLoadMiddleware: Middleware =
         if (
           storiesApi.endpoints.getStoryList.matchRejected(action) ||
           storiesApi.endpoints.getStories.matchRejected(action) ||
-          storiesApi.endpoints.getStory.matchRejected(action)
+          storiesApi.endpoints.getLegacyStory.matchRejected(action)
         ) {
           storeApi.dispatch(
             // @ts-expect-error Argument of type 'ThunkAction<InfiniteQueryActionCreatorResult<any> | QueryActionCreatorResult<any> | QueryActionCreatorResult<never>, RootState<...>, any, UnknownAction>' is not assignable to parameter of type 'UnknownAction'

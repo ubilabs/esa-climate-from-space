@@ -1,32 +1,42 @@
 {
   "id": "story-33",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story33-image04.jpg",
+    "focus": "center",
+    "title": "La expansión urbana",
+    "subtitle": "El Cairo, Egipto",
+    "altText": "La expansión urbana en El Cairo, Egipto",
+    "slides": [
+      {
+        "text": "30 años de El Cairo: La capital egipcia en expansión. La primera imagen fue captada por el satélite estadounidense Landsat-5 en 1988, la segunda en 2018 y la tercera en 2021, ambas de la misión Sentinel-2 de Copernicus. Las imágenes por satélite son útiles para vigilar el desarrollo urbano a gran escala. \r\n\r\nCréditos: contiene datos modificados de Copernicus Sentinel (2018), procesados por la ESA. USGS/ESA"
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# La expansión urbana\r\n\r\nEl Cairo, Egipto",
-      "shortText": "# La expansión urbana\r\n\r\nEl Cairo, Egipto",
-      "images": [
-        "assets/story33-image04.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## El Cairo, expansión urbana\r\n\r\n30 años de El Cairo: La capital egipcia en expansión. La primera imagen fue captada por el satélite estadounidense Landsat-5 en 1988, la segunda en 2018 y la tercera en 2021, ambas de la misión Sentinel-2 de Copernicus. Las imágenes por satélite son útiles para vigilar el desarrollo urbano a gran escala. \r\n\r\nCréditos: contiene datos modificados de Copernicus Sentinel (2018), procesados por la ESA. USGS/ESA",
-      "shortText": "## El Cairo, expansión urbana\r\n\r\n30 años de El Cairo: La capital egipcia en expansión. La primera imagen fue captada por el satélite estadounidense Landsat-5 en 1988, la segunda en 2018 y la tercera en 2021, ambas de la misión Sentinel-2 de Copernicus. Las imágenes por satélite son útiles para vigilar el desarrollo urbano a gran escala. \r\n\r\nCréditos: contiene datos modificados de Copernicus Sentinel (2018), procesados por la ESA. USGS/ESA",
-      "images": [
-        "assets/story33-image01.jpg",
-        "assets/story33-image02.jpg",
-        "assets/story33-image03.jpg"
-      ],
-      "imageCaptions": [
-        "Esta imagen fue tomada el 14 de agosto de 1988 y muestra la ciudad de El Cairo y sus alrededores hace más de 30 años.",
-        "Esta imagen fue adquirida el 2 de agosto de 2018 y muestra la ciudad de El Cairo y sus alrededores",
-        "Esta imagen fue tomada el 31 de agosto de 2021 y muestra la ciudad de El Cairo y sus alrededores"
-      ],
-      "imageFits": [
-        "cover",
-        "cover",
-        "cover"
+      "type": "imageTime",
+      "slides": [
+        {
+          "focus": "left",
+          "url": "assets/story33-image01.jpg",
+          "caption": "Esta imagen fue tomada el 14 de agosto de 1988 y muestra la ciudad de El Cairo y sus alrededores hace más de 30 años.",
+          "altText": "Esta imagen fue tomada el 14 de agosto de 1988 y muestra la ciudad de El Cairo y sus alrededores hace más de 30 años.",
+          "flag": "1988"
+        },
+        {
+          "focus": "left",
+          "url": "assets/story33-image02.jpg",
+          "caption": "Esta imagen fue adquirida el 2 de agosto de 2018 y muestra la ciudad de El Cairo y sus alrededores",
+          "altText": "Esta imagen fue adquirida el 2 de agosto de 2018 y muestra la ciudad de El Cairo y sus alrededores",
+          "flag": "2018"
+        },
+        {
+          "focus": "left",
+          "url": "assets/story33-image03.jpg",
+          "caption": "Esta imagen fue tomada el 31 de agosto de 2021 y muestra la ciudad de El Cairo y sus alrededores (contiene datos modificados de Copernicus Sentinel (2021))",
+          "altText": "Esta imagen fue tomada el 31 de agosto de 2021 y muestra la ciudad de El Cairo y sus alrededores",
+          "flag": "2021"
+        }
       ]
     }
   ]

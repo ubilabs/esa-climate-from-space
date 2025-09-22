@@ -1,47 +1,33 @@
 .story {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: auto;
-}
+  --story-padding: 1.5rem;
+  --story-height: calc(100vh - var(--header-height));
+  --story-height: calc(100dvh - var(--header-height));
+  z-index: 1;
+  grid-area: content;
 
-.main {
+  color: #fff;
+  overflow: scroll;
+  height: var(--story-height);
   position: relative;
-  display: flex;
-  flex-direction: row;
   overflow: hidden;
-  height: calc(100% - var(--footer-height));
-}
+  overscroll-behavior: none;
+  touch-action: none;
 
-.main>* {
-  flex-grow: 1;
-  width: 50%;
-}
-
-.rightSideComponent {
-  height: 100%;
-}
-
-.layerDescription {
-  position: unset;
-  padding-right: 0;
-  min-height: 3.875em;
-}
-
-@media screen and (--mobile-viewport) {
-  .main {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
+  @media screen and (--desktop-viewport) {
+    --story-padding: 2.75rem;
   }
 
-  .main> :last-child {
-    min-height: 350px;
-  }
-
-  .main>* {
-    padding: 0.625em 1.5625em 0 1.5625em;
-    width: inherit;
+  &.fadeIn {
+    animation: fadeIn 1.5s ease-in-out;
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

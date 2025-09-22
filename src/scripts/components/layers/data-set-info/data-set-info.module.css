@@ -1,4 +1,5 @@
 .dataSetInfo {
+  z-index:1;
   position: absolute;
   bottom: 8.75em;
   display: flex;

@@ -1,35 +1,57 @@
 {
   "id": "story-34",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story34-image05.jpg",
+    "focus": "center",
+    "title": "Waldverlust",
+    "subtitle": "Amazonasbecken, Brasilien",
+    "altText": "Waldverlust im Amazonasbecken, Brasilien",
+    "slides": [
+      {
+        "text": "Die erste Sequenz zeigt den kumulativen Waldverlust von 2001 bis 2020 im Amazonasbecken. Waldverlust ist in diesem Datensatz als Veränderung von einem Wald- zu einem Nicht-Wald-Zustand für jedes Pixel des Datensatzes definiert. Die von der University of Maryland stammenden Daten zum Waldverlust wurden mit dem von der ESA-Initiative zum Klimawandel erstellten Datensatz zur oberirdischen Biomasse für 2020 überlagert. Wie in der zweiten Sequenz zu sehen ist, werden die Regenwälder weltweit in einem alarmierenden Tempo zerstört."
+      },
+      {
+        "text": "Die Umwandlung tropischer Regenwälder in Weide- und Ackerland hat dramatische Auswirkungen auf die Landschaft, die biologische Vielfalt und die Umwelt. Dies ist sehr besorgniserregend, da die Regenwälder eine wichtige Rolle für unser globales Klima spielen. Schätzungen zufolge sind bereits 20 % des Amazonas-Bioms verloren gegangen, und der Trend wird sich noch verstärken, wenn er nicht gestoppt wird."
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Waldverlust\r\n\r\nAmazonasbecken, Brasilien",
-      "shortText": "# Waldverlust\r\n\r\nAmazonasbecken, Brasilien",
-      "images": [
-        "assets/story34-image05.jpg"
+      "type": "imageTime",
+      "slides": [
+        {
+          "url": "assets/story34-image01.jpg",
+          "altText": "",
+          "caption": "2020 Oberirdische Biomasse im Amazonasbecken",
+          "flag": "2001"
+,
+          "focus": "left"
+        },
+        {
+          "url": "assets/story34-image02.jpg",
+          "altText": "",
+          "caption": "Kumulativer Waldverlust zwischen 2001 und 2020 im Amazonasbecken",
+          "flag": "2020"
+,
+          "focus": "left"
+        }
       ]
     },
     {
-      "type": "image",
-      "text": "## Waldverlust im Amazonasgebiet, Brasilien\r\n\r\nDie erste Sequenz zeigt den kumulativen Waldverlust von 2001 bis 2020 im Amazonasbecken. Waldverlust ist in diesem Datensatz als Veränderung von einem Wald- zu einem Nicht-Wald-Zustand für jedes Pixel des Datensatzes definiert. Die von der University of Maryland stammenden Daten zum Waldverlust wurden mit dem von der ESA-Initiative zum Klimawandel erstellten Datensatz zur oberirdischen Biomasse für 2020 überlagert. Wie in der zweiten Sequenz zu sehen ist, werden die Regenwälder weltweit in einem alarmierenden Tempo zerstört. Die Umwandlung tropischer Regenwälder in Weide- und Ackerland hat dramatische Auswirkungen auf die Landschaft, die biologische Vielfalt und die Umwelt. Dies ist sehr besorgniserregend, da die Regenwälder eine wichtige Rolle für unser globales Klima spielen. Schätzungen zufolge sind bereits 20 % des Amazonas-Bioms verloren gegangen, und der Trend wird sich noch verstärken, wenn er nicht gestoppt wird. \r\n\r\nCredits: ESA (Datenquellen: CCI Biomass project und Hansen/UMD/Google/USGS/NASA). Enthält modifizierte Copernicus-Sentinel-Daten (2019), verarbeitet von der ESA. USGS/ESA",
-      "shortText": "## Waldverlust im Amazonasgebiet, Brasilien\r\n\r\nDie erste Sequenz zeigt den kumulativen Waldverlust von 2001 bis 2020 im Amazonasbecken. Der Waldverlust wird in diesem Datensatz als Wechsel von einem Wald- zu einem Nicht-Waldzustand für jedes Pixel des Datensatzes definiert. Die von der University of Maryland stammenden Daten zum Waldverlust wurden mit dem von der ESA-Initiative zum Klimawandel erstellten Datensatz zur oberirdischen Biomasse für 2020 überlagert. Wie in der zweiten Sequenz zu sehen ist, werden die Regenwälder weltweit in einem alarmierenden Tempo zerstört. Die Umwandlung tropischer Regenwälder in Weide- und Ackerland hat dramatische Auswirkungen auf die Landschaft, die biologische Vielfalt und die Umwelt. Dies ist sehr besorgniserregend, da die Regenwälder eine wichtige Rolle für unser globales Klima spielen. Schätzungen zufolge sind bereits 20 % des Amazonas-Bioms verloren gegangen, und der Trend wird sich noch verstärken, wenn er nicht gestoppt wird. \r\n\r\nCredits: ESA (Datenquellen: CCI Biomass project und Hansen/UMD/Google/USGS/NASA). Enthält modifizierte Copernicus-Sentinel-Daten (2019), verarbeitet von der ESA. USGS/ESA",
-      "images": [
-        "assets/story34-image01.jpg",
-        "assets/story34-image02.jpg",
-        "assets/story34-image03.jpg",
-        "assets/story34-image04.jpg"
-      ],
-      "imageCaptions": [
-        "2020 Oberirdische Biomasse im Amazonasbecken",
-        "Kumulativer Waldverlust zwischen 2001 und 2020 im Amazonasbecken",
-        "Rondônia, Brasilien: Abholzung im Amazonas. Abgeholzte und städtische Gebiete sind deutlich in Beige-, Hellgrün- und Brauntönen zu erkennen, während der verbleibende unberührte Wald dunkelgrün erscheint. Dieses Bild wurde am 8. Juli 1989 aufgenommen.",
-        "Rondônia, Brasilien: Abholzung im Amazonas. Abgeholzte und städtische Gebiete sind deutlich in Beige-, Hellgrün- und Brauntönen zu erkennen, während der verbleibende unberührte Wald dunkelgrün erscheint. Dieses Bild wurde am 5. Juni 2019 aufgenommen."
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "cover",
-        "cover"
+      "type": "imageTime",
+      "slides": [
+        {
+          "url": "assets/story34-image03.jpg",
+          "caption": "Abgeholzte und städtische Gebiete sind deutlich in Beige-, Hellgrün- und Brauntönen zu erkennen, während der verbleibende unberührte Wald dunkelgrün erscheint. Dieses Bild wurde am 8. Juli 1989 aufgenommen.",
+          "altText": "",
+          "flag": "1989"
+        },
+        {
+          "url": "assets/story34-image04.jpg",
+          "caption": "Abgeholzte und städtische Gebiete sind deutlich in Beige-, Hellgrün- und Brauntönen zu erkennen, während der verbleibende unberührte Wald dunkelgrün erscheint. Dieses Bild wurde am 5. Juni 2019 aufgenommen.",
+          "altText": "",
+          "flag": "2019"
+        }
       ]
     }
   ]

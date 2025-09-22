@@ -115,7 +115,8 @@ To add a new story or update content, follow these steps:
 
 ## Contact
 
-- PM Ubilabs: Patrick Mast <mast@ubilabs.net>
-- Dev Ubilabs: Philipp Wambach <wambach@ubilabs.net>
-- Dev Ubilabs: Katherina Marcenko <marcenko@ubilabs.net>
-- Dev Ubilabs: Malte Modrow <modrow@ubilabs.net>
+- PM Ubilabs: Annika van Lengen <vanlengen@ubilabs.net>
+- Dev Ubilabs: Andreas Helms <helms@ubilabs.net>
+- Dev Ubilabs: Immo Beeck <beeck@ubilabs.net>
+- Design Ubilabs: Kai Dohse <dohse@ubilabs.net>
+- Design Ubilabs: Elena Menzel <menzel@ubilabs.net>

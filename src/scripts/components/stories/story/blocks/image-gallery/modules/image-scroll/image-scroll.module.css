@@ -1,0 +1,157 @@
+.imageScroll {
+  height: fit-content;
+
+  /* recevies story-grid class */
+  .slide {
+    height: var(--story-height);
+    padding-block: 1rem;
+
+    @media screen and (--mobile-viewport) {
+      &:has(.imageScrollText + .scrollImageContainer) {
+        grid-template-rows: 1fr 1fr;
+
+        > .imageScrollText {
+          grid-column: 1 / -1;
+          grid-row: 1 / 2;
+          padding-bottom: 1rem;
+        }
+
+        > .scrollImageContainer {
+          grid-column: 1 / -1;
+          grid-row: 2 / 3;
+        }
+      }
+    }
+
+    @media screen and (--desktop-viewport) {
+      &:nth-child(odd) {
+        .imageScrollText {
+          grid-column: 9/ 12;
+          grid-row: 1/-1;
+        }
+
+        .scrollImageContainer {
+          grid-column: 1/ 8;
+          grid-row: 1/-1;
+        }
+      }
+    }
+  }
+
+  .imageScrollText {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+
+    > * {
+      line-height: 1.625; /* 162.5% */
+      text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    > *:first-child {
+      margin-bottom: 1rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--Neutral-White, #fff);
+
+      /* M3/Elevation Light/1 */
+      text-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.15);
+      font-family: NotesEsa;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 30px; /* 125% */
+    }
+
+    @media screen and (--desktop-viewport) {
+      grid-column: 2/5;
+      height: fit-content;
+      width: 100%;
+      max-width: 65ch;
+    }
+  }
+
+  .scrollImageContainer {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    text-shadow:
+      0px 1px 2px rgba(0, 0, 0, 0.3),
+      0px 1px 3px rgba(0, 0, 0, 0.15);
+    color: var(--Neutral-ESA-White, #fff);
+    font-family: NotesEsa;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px; /* 135.714% */
+    letter-spacing: 0.175px;
+
+    a {
+      color: var(--Main-Esa-Teal, #00b398);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 700;
+      margin-top: 1rem;
+      margin-bottom: 0.25rem;
+      @media screen and (--desktop-viewport) {
+        margin-top: 1.5rem;
+      }
+    }
+
+    p {
+      font-weight: 400;
+    }
+
+    &:not(.imageScrollText + .scrollImageContainer) {
+      grid-column: 1/-1;
+    }
+
+    &:has(div[data-status="fullscreenOverlay"]) {
+      height: var(--story-height);
+      width: 100vw;
+    }
+
+    @media screen and (--desktop-viewport) {
+      display: grid;
+      grid-column: 6/13;
+      grid-template-columns: subgrid;
+      grid-template-rows: minmax(40vh, 1fr) auto auto;
+      height: calc(var(--story-height) / 1.5);
+      font-size: 1rem;
+      line-height: 1.25rem; /* 125% */
+      letter-spacing: 0.0125rem;
+
+      > *:first-child {
+        grid-column: 1 / 8;
+      }
+
+      > *:not(:first-child) {
+        grid-column: 2 /-1;
+      }
+
+      /* When the scrollImageContainer lacks an imageScrollText sibling, */
+      /* the imageContainer child can expand to a full width of up to 1500px */
+      &:not(.imageScrollText + .scrollImageContainer) {
+        grid-column: 1 / -1;
+        margin-block: 4rem;
+
+        div:not([data-status="fullscreenOverlay"]):first-child {
+          grid-column: 1 / -1;
+        }
+      }
+    }
+  }
+}

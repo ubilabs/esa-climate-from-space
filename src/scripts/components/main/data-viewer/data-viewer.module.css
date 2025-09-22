@@ -1,64 +1,55 @@
 .dataViewer {
-  --spacing: min(120px, 8%);
+  --globe: 65vw;
+  --category: 35vw;
   height: 100%;
   display: grid;
   place-items: center;
   grid-area: content;
+  overflow: hidden;
 
   .globeWrapper {
-    grid-area: globe-nav-area;
+    grid-area: 1 /1 /-1 /-1;
     transition: all 0.5s ease;
     z-index: 0;
     height: 100%;
     width: 100%;
-    pointer-events: none;
-    display: grid;
     position: relative;
-
-    container-name: wrapper;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     container-type: size;
   }
 
-  /* Check if the globeWrapper currently contains two .globe elements
-* This means we are in the compare mode and should display the containers next to each other
-* ;*/
-  .globeWrapper:has(.globe ~ .globe) {
-    grid-template-columns: 1fr 1fr;
+  /* see globe.module for globe base styles */
+  /* The data-nav-content values are based on the current route of the application */
+  &[data-nav-content="nav_content"] {
+    .globe {
+      transform: translateX(-55%);
+    }
+  }
 
-    >.globe {
-      position: relative !important;
-      height: 100%;
-      width: 100%;
+  &[data-nav-content="stories"] {
+    .globe {
+      margin-bottom: 0;
+    }
+  }
 
-      >canvas {
-        height: 100%;
-        width: 100%;
-        scale: 1 !important;
+  &[data-nav-content="data"] {
+    .globeWrapper:has(.globe ~ .globe) {
+      display: flex;
+      flex-direction: row;
+
+      .globe {
+        flex-basis: 50%;
       }
     }
   }
 
-  @container wrapper (aspect-ratio <=1 / 1) {
-    .globe {
-      height: calc(120cqw + 10cqh);
-    }
-  }
-
-  &[data-nav-content="nav-content"] {
-    .globeWrapper {
-      transform: translateX(-62vw);
-    }
-  }
-
-  &[data-nav-content="content"] {
-    .globeWrapper {
-      pointer-events: auto;
-    }
-  }
-
-  grid-template-areas: "heading"
-  "globe-nav-area"
-  "explore";
+  grid-template-areas:
+    "heading"
+    "globe-nav-area"
+    "explore";
   height: calc(100vh - var(--header-height));
   height: calc(100dvh - var(--header-height));
   grid-template-rows: 3.5rem calc(100vh - var(--header-height) - 10rem) 6.5rem;
@@ -71,76 +62,35 @@
       "globe-nav-area title "
       "globe-nav-area explore ";
     grid-template-rows: 1fr auto 1fr;
-    grid-template-columns: 50vw 50vw;
-    grid-template-columns: 1fr 25vw;
-    grid-gap: 1.5rem;
+    grid-template-columns: var(--globe) var(--category);
 
-    &[data-nav-content="nav-category"] {
-      margin-inline: var(--spacing);
-
-      .globeWrapper {
-        margin-right: var(--spacing);
+    &[data-nav-content="base"] {
+      .globe {
+        right: calc(var(--category) / 2);
       }
     }
 
-    &[data-nav-content="content"] {
+    &[data-nav-content="data"] {
       grid-template-areas: "globe-nav-area";
       grid-template-columns: 1fr;
       grid-template-rows: 1fr;
 
-      .globeWrapper {
-        canvas {
-          position: absolute !important;
-          scale: 0.4 !important;
-        }
-      }
-    }
-
-    .globeWrapper {
-      transform: translateY(0) !important;
-      scale: 1;
-    }
-
-    @container wrapper (width >=100px) {
       .globe {
-        /* We initialize the globe as big as we need it in the content view to appearance;
-* and scale it down to 38% while scaling it to 1 in the content view
-* We do this to achieve a nice transistion between category- and content view and also to make sure the globe looks sharp
-* */
-
-        height: min(150vw, 260vh);
-        width: min(150vw, 260vh);
-
-        canvas {
-          scale: 0.38;
-        }
+        transform: translateX(0%);
       }
     }
 
-    &[data-nav-content="nav-content"] {
+    &[data-nav-content="nav_content"] {
       grid-template-areas: "globe content-nav";
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
       grid-gap: 0;
 
-      @container wrapper (width >=100px) {
-        .globe {
-          canvas {
-            /* We need to move the globe to the left to make space for the content nav */
-            transform: translateX(-60cqw);
-            scale: 1;
-          }
-
-          /* This will move all markers to their correct position*/
-          div {
-            left: -60cqw !important;
-          }
-        }
+      .globe {
+        transform: translateX(-40%);
       }
-
       .globeWrapper {
         z-index: 0;
-        grid-area: globe;
       }
 
       .currentCategory {
@@ -158,8 +108,8 @@
         @media (hover: none) {
           text-shadow: none;
 
-          >li.active {
-            >span {
+          > li.active {
+            > span {
               text-shadow: none;
             }
           }
@@ -242,10 +192,9 @@
 
   &.scroll {
     grid-area: title;
-    margin-right: -2rem;
     place-self: center end;
+    margin-right: calc(clamp(32px, 4vw, 60px));
     z-index: 10;
-    transform: translateY(-50%);
     background-image: url('data:image/svg+xml,<svg width="24" height="80" viewBox="0 0 24 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11 18V8.8L7.4 12.4L6 11L12 5L18 11L16.6 12.4L13 8.8V18H11Z" fill="%233F6C7D"/><path fill-rule="evenodd" clip-rule="evenodd" d="M6 33.4828C6 31.5528 7.57354 30 9.5 30L14.5 30C16.4265 30 18 31.5528 18 33.4828L18 46.5172C18 48.4472 16.4265 50 14.5 50L9.5 50C7.57354 50 6 48.4472 6 46.5172L6 33.4828ZM9.5 32C8.66504 32 8 32.6704 8 33.4828L8 46.5172C8 47.3296 8.66504 48 9.5 48L14.5 48C15.335 48 16 47.3296 16 46.5172L16 33.4828C16 32.6704 15.335 32 14.5 32L9.5 32Z" fill="%233F6C7D"/><path d="M11 35C11 34.4477 11.4477 34 12 34C12.5523 34 13 34.4477 13 35V37C13 37.5523 12.5523 38 12 38C11.4477 38 11 37.5523 11 37V35Z" fill="%233F6C7D"/><path d="M12 74L6 68L7.4 66.6L11 70.2V61H13V70.2L16.6 66.6L18 68L12 74Z" fill="%233F6C7D"/></svg>');
     width: 24px;
     height: 80px;
@@ -305,7 +254,7 @@
   line-height: 22px;
 
   /* 110% */
-  >span {
+  > span {
     margin: 0 auto;
 
     &:after {
@@ -331,7 +280,7 @@
     line-height: normal;
     letter-spacing: 0.32px;
 
-    >span {
+    > span {
       margin-left: 2rem;
       position: relative;
 
@@ -413,7 +362,7 @@
   justify-content: center;
   margin-top: 1.125rem;
 
-  >.chooseHeading {
+  > .chooseHeading {
     text-align: center;
     font-family: NotesEsa;
     font-size: 20px;
@@ -435,7 +384,7 @@
     /* 114.286% */
   }
 
-  >h2 {
+  > h2 {
     margin: 0 auto;
   }
 }

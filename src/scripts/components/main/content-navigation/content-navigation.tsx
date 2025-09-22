@@ -1,21 +1,17 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
-import config from "../../../config/main";
-import { layersApi, useGetStoriesQuery } from "../../../services/api";
+import config, { ALTITUDE_FACTOR_DESKTOP } from "../../../config/main";
+import { useGetStoriesQuery } from "../../../services/api";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
 
-import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { setSelectedContentAction } from "../../../reducers/content";
-import { toggleEmbedElements } from "../../../reducers/embed-elements";
 import { setFlyTo } from "../../../reducers/fly-to";
 
 import { languageSelector } from "../../../selectors/language";
@@ -24,13 +20,10 @@ import { contentSelector } from "../../../selectors/content";
 import { LayerListItem } from "../../../types/layer-list";
 import { StoryListItem } from "../../../types/story-list";
 import { GalleryItemType } from "../../../types/gallery-item";
-import { Story } from "../../../types/story";
+import { LegacyStory } from "../../../types/story";
 
 import useAutoRotate from "../../../hooks/use-auto-content-rotation";
-import {
-  useContentScrollHandlers,
-  useContentTouchHandlers,
-} from "./use-content-event-handlers";
+import { useNavGestures } from "../../../libs/use-nav-gestures";
 
 import { DownloadButton } from "../download-button/download-button";
 
@@ -59,8 +52,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
 }) => {
   const navigationRef = React.useRef<HTMLUListElement | null>(null);
   const dispatch = useDispatch();
-  const thunkDispatch = useThunkDispatch();
-  const { trackEvent } = useMatomo();
   const lang = useSelector(languageSelector);
   const { contentId } = useSelector(contentSelector);
 
@@ -79,17 +70,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
     Date.now(),
   );
 
-  const { handleTouchEnd, handleTouchMove } = useContentTouchHandlers(
-    currentIndex,
-    setCurrentIndex,
+  useNavGestures(
     contents.length,
-    setLastUserInteractionTime,
-  );
-
-  const { handleWheel } = useContentScrollHandlers(
     setCurrentIndex,
-    contents.length,
     setLastUserInteractionTime,
+    "y",
   );
 
   // The spread between the elements in the circle
@@ -99,7 +84,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   // 0 - 100 because the coordinates are used as the top and left values
   // in a absolute positioned element. The advantage here is that the the elements
   // will automatically positioned and re-positioned based on the size of the parent container
-  const RADIUS = 40;
+  const RADIUS = 42;
 
   useEffect(() => {
     const listItems = navigationRef.current?.querySelectorAll("li");
@@ -171,56 +156,32 @@ const ContentNavigation: FunctionComponent<Props> = ({
       if (contentId) {
         const previewedContent = contents.find(({ id }) => id === contentId);
 
+        const altitude =
+          config.globe.view.altitude * (isMobile ? 1 : ALTITUDE_FACTOR_DESKTOP);
+
         dispatch(
           setFlyTo({
             ...(previewedContent?.position?.length === 2
               ? {
                   lat: previewedContent.position[1],
                   lng: previewedContent.position[0],
+                  isAnimated: true,
+                  altitude,
                 }
-              : config.globe.view),
-            isAnimated: true,
+              : {
+                  ...config.globe.view,
+                  isAnimated: true,
+                  altitude,
+                }),
           }),
         );
       }
-    }, 1000);
+    }, 100);
 
     return () => {
       clearTimeout(timeout);
     };
-  }, [dispatch, currentIndex, contents]);
-
-  // fucntion to handle click and keyboard events
-  const handleItemSelection = (
-    id: string,
-    index: number,
-    name: string,
-    isStory: boolean,
-    element?: HTMLElement,
-  ) => {
-    dispatch(setSelectedContentAction({ contentId: id }));
-    setCurrentIndex(index);
-
-    if (!isStory) {
-      dispatch(setShowLayer(false));
-      thunkDispatch(layersApi.endpoints.getLayer.initiate(id));
-      dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
-      dispatch(toggleEmbedElements({ legend: true, time_slider: true }));
-      trackEvent({
-        category: "datasets",
-        action: "select",
-        name,
-      });
-    }
-
-    // For keyboard events, we need to programmatically navigate
-    if (element) {
-      const linkElement = element.querySelector("a");
-      if (linkElement) {
-        linkElement.click();
-      }
-    }
-  };
+  }, [dispatch, currentIndex, contents, isMobile]);
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
@@ -230,16 +191,20 @@ const ContentNavigation: FunctionComponent<Props> = ({
     language: lang,
   });
 
-  const getStoryMediaType = (item: StoryListItem, stories?: Story[]) => {
+  const getStoryMediaType = (item: StoryListItem, stories?: LegacyStory[]) => {
     let type = "blog";
 
     const story = stories?.find((story) => story.id === item.id);
-    const galleyItemTypes = new Set(
-      story?.slides
-        .flatMap((slide) => slide.galleryItems)
-        .map(({ type }) => type),
-    );
+    const galleyItemTypes =
+      story &&
+      "slides" in story &&
+      new Set(
+        story?.slides
+          .flatMap((slide) => slide.galleryItems)
+          .map(({ type }) => type),
+      );
     if (
+      galleyItemTypes &&
       // if gallery only contains images or videos return media type
       galleyItemTypes.size === 1 &&
       (galleyItemTypes.has(GalleryItemType.Image) ||
@@ -258,10 +223,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
         showContentList && styles.show,
         className,
       )}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-      onTouchCancel={handleTouchEnd}
-      onWheel={handleWheel}
       role="listbox"
       aria-label="Content navigation"
     >
@@ -294,28 +255,22 @@ const ContentNavigation: FunctionComponent<Props> = ({
             // Make only the current item focusable in the tab order
             // This creates a "roving tabindex" pattern
             tabIndex={index === currentIndex ? 0 : -1}
-            role="button"
+            role="option"
             aria-selected={index === currentIndex}
             onFocus={() => {
               // When an item receives focus, update the current index
               setCurrentIndex(index);
               dispatch(setSelectedContentAction({ contentId: id }));
             }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                handleItemSelection(id, index, name, isStory, e.currentTarget);
-              }
-            }}
-            onClick={() => {
-              handleItemSelection(id, index, name, isStory);
-            }}
           >
             <Link
-              to={isStory ? `${category}/stories/${id}/0/` : `${category}/data`}
+              to={
+                isStory ? `/${category}/stories/${id}/0` : `/${category}/data`
+              }
             >
               <div>
                 <span>{name}</span>
+                {/* for electron*/}
                 <DownloadButton url={downloadUrl} id={item.id} />
               </div>
               {!isMobile && (

@@ -1,89 +1,106 @@
 {
   "id": "debug",
-  "slides": [
+  "splashscreen": {
+    "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
+    "url": "assets/story21-image10.jpg",
+    "focus": "center",
+    "title": "Der Wasserkreislauf",
+    "subtitle": "Ein Beispiel für alle Komponenten",
+    "altText": "Der Wasserkreislauf",
+    "slides": [
+      {
+        "text": "Wasser ist für unser Leben unerlässlich. Der Wasserkreislauf verbindet viele Komponenten des Klimasystems der Erde und spielt eine wichtige Rolle beim Transport von Wärme um den Planeten."
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Deutsch Is Ozone Good or Bad?\n\nThe ozone layer protects life on Earth from ultraviolet solar radiation, but ozone is also a powerful greenhouse gas and at ground level is extremely hazardous to health.",
-      "shortText": "# Is Ozone Good or Bad?\n\n(placeholder)",
-      "images": ["assets/elnino.jpg"]
-    },
-    {
-      "type": "video",
-      "text": "# VIDEO How Low Can You Go? \n\nIn 1979, engineers received the first data from a new instrument on an American research satellite. The sensor measured so little ozone in the atmosphere over Antarctica that the readings were discounted as instrument error. But not long afterwards, a team of British researchers recorded similarly low amounts of ozone from their Antarctic research station. \n\nIt was only when the ground-based results were published in the scientific literature that the low values in the satellite data were taken seriously. They showed a wide area with very low amounts of ozone developing every spring over the South Pole. This ‘hole’ in Earth’s protective ozone layer quickly gained the attention of the media and policy-makers. And, with their data verified, scientists gained confidence in the emerging technology of Earth observation from space.\n\n## Protective Layer \n\nThe layer of ozone high up in the stratosphere is our main defence against the Sun’s ultraviolet (UV) radiation. Without it we’d suffer sunburn after a few minutes outdoors, followed by eye damage and skin cancer after prolonged exposure. Unfiltered, UV light would have a catastrophic effect on all life on Earth.    \n\n![The Sun in visible and UV light](assets/story8_02.png) \n_The Sun in visible (left) and ultraviolet light (right), as viewed by the SOHO satellite on February 3, 2002. (ESA/NASA)_\n\nOzone is also a powerful greenhouse gas. Change in the distribution of ozone is the second largest human impact on the climate, after the increase in carbon dioxide. But, while ozone _loss_ has been the concern in the stratosphere, ozone has been _increasing_ at ground level. Here, ozone associated with transport and industrial pollution is a hazard to human health. Whether ozone is good or bad for you depends on where you find it.",
-      "shortText": "# How Low Can You Go?\n\n(placeholder)",
-      "videoSrc": [
-        "assets/elnino-web.mp4",
-        "assets/elnino-SD576.mp4",
-        "assets/elnino-HD720.mp4",
-        "assets/elnino-HD1080.mp4"
-      ],
-      "videoCaptions": "assets/elnino-de.vtt",
-      "videoPoster": "assets/elnino.jpg"
-    },
-    {
-      "type": "video",
-      "text": "# Stacking up the Data\n\nThe CCI Ozone team has worked on data from European and third party missions covering more than two decades of continuous ozone observations since 1995. Each space-borne sensor has its own radiometric characteristics, spatial resolution and coverage, making the harmonisation and merging of the data a complex task. The resulting integrated datasets have the advantage of providing better spatial coverage than those from individual sensors, and allow time series to exceed the life of a single instrument, giving the long-term trends so crucial for climate studies. They have enabled a better understanding of natural and anthropogenic factors affecting the distribution of atmospheric ozone and improved our understanding of ozone processes in climate models.  \n\n![Ozone sensors](assets/ozone_large_09.png) \n_Satellites and sensors used by the CCI Ozone team. (update – extend time lines?)_\n\nJust as individuals can use daily UV and air quality warnings based on satellite data to protect their own health and that of their children, scientists are using the same observations from space to track the effect of ozone on the climate, so that political leaders have the information they need to make decisions and take action to protect us all. Emission controls will continue to reduce ozone destruction in the stratosphere and limit ozone creation in the troposphere, and provide successful examples of international cooperation to solve an environmental problem.",
-      "shortText": "# Stacking up the Data\n\n(placeholder)",
-      "videoId": "evPBTu_a27I"
-    },
-    {
-      "type": "globe",
-      "text": "# GLOBE Ozone Depletion \n\nAtmospheric sampling from balloons and aircraft identified the causes of ozone depletion as man-made gases, particularly the chlorofluorocarbons (CFCs) used as a propellant in aerosol sprays, fire extinguishers and pesticides, and as a coolant in refrigerators and air conditioners. Most of these gases are harmless for human beings, but once they reach the stratosphere they are hit by solar radiation that changes their molecular structure, releasing atoms of chlorine. \n\n![Sources of stratospheric chlorine graph](assets/story8_01.png) \n_Sources of stratospheric chlorine._\n\nA single atom of chlorine can split apart a large number of ozone molecules. Although ozone depletion is a global process, atmospheric conditions including extremely low temperatures, stratospheric cloud formation and the polar vortex concentrate it in the springtime in the polar regions, particularly over Antarctica. \n\n![Chlorine in ozone depletion diagram](assets/ozone_large_03a.png) \n_The role of chlorine in ozone depletion._\n\nIn 1987 severe limits on CFC emissions were agreed at an intergovernmental conference in Montreal. The wide adoption of the Montreal Protocol and the identification of safer alternatives means that CFCs have largely been phased out of use, and the ozone layer is slowly recovering. It is a good example of international cooperation to address a threat to the global environment. But CFCs have a very long lifetime in the atmosphere, and stratospheric ozone is not expected to return to 1980 levels until 2030-2060.",
-      "shortText": "# Ozone Depletion \n\n(placeholder)",
-      "flyTo": {
-        "position": {
-          "longitude": 4.63,
-          "latitude": 20.19,
-          "height": 25002676
-        },
-        "orientation": {
-          "heading": 360,
-          "pitch": -89.99,
-          "roll": 0
-        }
-      },
-      "layer": [
+      "type": "imageScroll",
+      "slides": [
         {
-          "id": "cloud.cfc",
-          "timestamp": "2020-07-14T06:37:39.657Z"
+          "url": "assets/story21-image01.jpg",
+          "text": "Bitte geben Sie hier einen aussagekräftigen Text ein.",
+          "alt": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+          "caption": "### Toowoomba, Queensland, Australien\nEine Frau harrt während einer Sturzflut am 10. Januar 2011, auf dem Dach ihres Autos aus [T Swinson](https://cfs.climate.esa.int/index.html#/stories/story-21/1?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI)"
+        },
+        {
+          "url": "assets/story21-image06.png",
+          "text": "## Globaler mittlerer Meeresspiegel \n\n Der von Satelliten beobachtete globale Meeresspiegel zeigt eine steigende Tendenz von 3,3 mm pro Jahr, aber einen Rückgang im Jahr 2011 aufgrund der großen Menge an überschüssigem Wasser an Land. \n\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. Dolor tempus quis ipsum adipiscing amet. Aliquet pretium nulla morbi sem commodo scelerisque. Convallis egestas justo tortor eleifend volutpat tristique ornare. Faucibus vulputate amet sociis urna nisi. Placerat volutpat pellentesque purus et commodo ligula id rhoncus.",
+          "alt": "Globaler mittlerer Meeresspiegel",
+          "caption": "### Bildunterschrift\nESA-CCI/Copernicus Dienst zur Überwachung der Meeresumwelt"
+        },
+        {
+          "url": "assets/story21-image12.jpg",
+          "text": "## New South Wales, Australien \n\n Copernicus Sentinel-1 Radaraufnahmen vom 7. und 19. März 2021 zeigen ausgedehnte überschwemmte Gebiete in Blau. Gebiete, die im Vorjahr durch Waldbrände verbrannt wurden, sind in Braun dargestellt.           ",
+          "alt": "New South Wales, Australien",
+          "caption": "### Bildunterschrift\nEnthält modifizierte Copernicus-Sentinel-Daten (2021), verarbeitet von ESA / NASA MODIS"
         }
-      ],
-      "markers": [
-        {"position": [10, 50], "title": "some more content"},
-        {"position": [50, 10], "title": "debug"}
-      ],
-      "layerDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat necessitatibus quibusdam labore eos consectetur fugiat beatae aperiam! Nulla similique corrupti perferendis, accusantium repellat ipsum voluptate illum reiciendis? Voluptatum, quidem est."
-    },
-    {
-      "type": "video",
-      "text": "# VIDEO/YOUTUBE Ozone and Climate \n\nOzone and the climate are closely connected since ozone is a powerful greenhouse gas. By absorbing ultraviolet radiation it warms the surrounding atmosphere, so ozone loss has cooled the stratosphere. This can influence atmospheric circulation patterns, such as shifting the position of the jet stream. Beneath the ozone hole, stronger winds blowing off Antarctica may be partly responsible for the observed increase in Southern Ocean sea ice. \n\nBut stratospheric ozone depletion lets more solar energy through to the troposphere below. Here, ground-level ozone and other greenhouse gases absorb that energy. So ozone changes are pulling the temperature in opposite directions in the stratosphere and the troposphere. The overall effect has been a warming of the atmosphere.",
-      "shortText": "# Ozone and Climate \n\n(placeholder)",
-      "videoId": "evPBTu_a27I",
-      "videoSrc": ["assets/elnino-web.mp4"],
-      "videoCaptions": "assets/elnino-de.vtt",
-      "videoPoster": "assets/elnino.jpg"
-    },
-    {
-      "type": "image",
-      "text": "# Ground-level Ozone \n\nAlthough most ozone is found in the stratosphere – above about 15km in altitude – some is present lower down in the troposphere. Here it is formed when light interacts with combustion by-products from cars and industry, mainly nitrogen oxides (NOx) and volatile organic compounds (VOCs). At ground level, ozone is harmful to human health, causing breathing difficulties that contribute to about half a million premature deaths every year. It also has a detrimental impact on vegetation growth, reducing its ability to absorb carbon dioxide, leading to crop losses valued at tens of billions of euros per year.\n\nAs with stratospheric ozone, regulations have been introduced to limit the damage. Newly-manufactured vehicles must meet internationally-agreed emission controls. The use of unleaded petrol and catalytic converters has removed a lot of the ozone-forming pollutants from car exhausts over recent decades. Similar technology is applied to factory and power station smokestacks, while simpler steps like planting trees in urban areas can also help soak up ground-level ozone.",
-      "shortText": "# Ground-level Ozone \n\n(placeholder)",
-      "images": ["assets/elnino.jpg"],
-      "imageCaptions": [
-        "Nitrogen dioxide over Europe in January 2020 from the TROPOMI instrument on Sentinel-5P."
       ]
     },
     {
-      "type": "image",
-      "text": "# IMG Ozone from Space \n\nSatellite observations are essential to track ozone distribution across the globe and at different levels in the atmosphere. They allow us to monitor the recovery of the ozone layer and calculate a UV exposure index as part of our daily weather forecasts. They also deepen our knowledge of the long-term evolution of atmospheric ozone and our understanding of how it affects the climate, and how it might respond to climate change. \n\nDifferent observation techniques allow us to distinguish between the “good” ozone in the stratosphere and the “bad” ozone in the troposphere. Satellites looking straight down produce maps of *total ozone* – the total amount of ozone in a column going from the surface to the top of the atmosphere. Total ozone is a good measure of stratospheric ozone, which accounts for about 90% of the total ozone column.  \n\n![Ozone profile](assets/ozone_large_15.jpg) \n_Ozone profiles show the vertical distribution of ozone through the atmosphere._\n\nBy looking sideways into the atmosphere, satellites can also measure the *ozone profile* – the vertical distribution of ozone from sea level up to about 50 km high. Further information is obtained by seeing how light is absorbed by different chemicals in the atmosphere when looking towards a light source – the Sun or the Moon.",
-      "shortText": "# Ozone from Space \n\n(placeholder)",
-      "images": ["assets/elnino.jpg"],
-      "imageCaptions": ["Observing total ozone and ozone profile from space."]
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "Im Jahr 2010 erlebte Queensland den nassesten Dezember seit Beginn der Aufzeichnungen, was zu einer längeren Periode mit ausgedehnten Überschwemmungen führte."
+        }
+      ]
     },
     {
-      "type": "video",
-      "text": "# YOUTUBE Stacking up the Data\n\nThe CCI Ozone team has worked on data from European and third party missions covering more than two decades of continuous ozone observations since 1995. Each space-borne sensor has its own radiometric characteristics, spatial resolution and coverage, making the harmonisation and merging of the data a complex task. The resulting integrated datasets have the advantage of providing better spatial coverage than those from individual sensors, and allow time series to exceed the life of a single instrument, giving the long-term trends so crucial for climate studies. They have enabled a better understanding of natural and anthropogenic factors affecting the distribution of atmospheric ozone and improved our understanding of ozone processes in climate models.  \n\n![Ozone sensors](assets/ozone_large_09.png) \n_Satellites and sensors used by the CCI Ozone team. (update – extend time lines?)_\n\nJust as individuals can use daily UV and air quality warnings based on satellite data to protect their own health and that of their children, scientists are using the same observations from space to track the effect of ozone on the climate, so that political leaders have the information they need to make decisions and take action to protect us all. Emission controls will continue to reduce ozone destruction in the stratosphere and limit ozone creation in the troposphere, and provide successful examples of international cooperation to solve an environmental problem.",
-      "shortText": "# Stacking up the Data\n\n(placeholder)",
-      "videoId": "evPBTu_a27I"
+      "type": "textOverlay",
+      "url": "assets/story21-image14.jpg",
+      "slides": [
+        {
+          "text": "Die starke Bewölkung und die Regenfälle im Nordosten Australiens waren auf ungewöhnliche Temperatur- und Verdunstungsmuster im zentralen Pazifik zurückzuführen, die als [La Niña](https://cfs.climate.esa.int/index.html#/stories/story-16/6?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI) bezeichnet werden.\nDie Erwärmung des Klimas, das Auftauen von Permafrostböden und das Eindringen von Schmelzwasser gehören zu den Ursachen für solche Ereignisse."
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "Dieses Ereignis zeigt, wie verschiedene Teile des Erdsystems – Ozean, Atmosphäre und Land – und Orte, die Tausende Kilometer voneinander entfernt sind, durch den Wasserkreislauf miteinander verbunden sind."
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "Nach Monaten mit hohen Temperaturen und geringen Niederschlägen erreichte der Wasserstand des italienischen Flusses Po im Jahr 2022 einen Rekordtiefstand. Die Dürre in Norditalien beeinträchtigte die landwirtschaftliche Produktion der Region, die häufig auf Bewässerung angewiesen ist."
+        }
+      ]
+    },
+    {
+      "type": "imageTime",
+      "slides": [
+        {
+          "url": "assets/story37-image01.jpg",
+          "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+          "caption": "Wolkenfreier Blick auf die Landschaft",
+          "flag": "2018"
+        },
+        {
+          "url": "assets/story37-image02.jpg",
+          "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+          "caption": "Satellites for peat's sake. 2",
+          "flag": "2020"
+        }
+      ]
+    },
+    {
+      "type": "imageCompare",
+      "text": "Änderungen der Landschaft in Schottlands Flow Country, Pixel zu Pixel",
+      "startButtonText": "Vergleichen Sie die Satellitenbilder",
+      "slides": [
+        {
+          "url": "assets/story37-image01.jpg",
+          "alt": "Satelliten im Dienste der Moore. Dieses Mosaik, aufgenommen am 28. Mai 2018, bietet einen seltenen wolkenfreien Blick auf die weiten Ebenen des Flow Country in Schottland."
+        },
+        {
+          "url": "assets/story37-image02.jpg",
+          "alt": "Satelliten im Dienste der Moore. Diese hochauflösende Landbedeckungskarte, abgeleitet aus Copernicus Sentinel-2-Daten, zeigt das Ausmaß der Moore in Violett."
+        }
+      ]
     }
   ]
 }

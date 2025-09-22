@@ -1,93 +1,76 @@
-import { useRouteMatch, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import { State } from "../reducers";
 import { selectedStorySelector } from "../selectors/story/selected";
 import { contentSelector } from "../selectors/content";
-
-import { StoryMode } from "../types/story-mode";
+import { useMemo } from "react";
 
 interface StoryParams {
   category: string;
   storyId: string;
   slideIndex: string;
+  storyIds?: undefined;
+  storyIndex: undefined;
 }
 
 interface ShowCaseParams {
+  storyId: undefined;
   category: string;
   storyIds: string;
   storyIndex: string;
   slideIndex: string;
 }
 
-function isShowCaseParams(
-  params: StoryParams | ShowCaseParams,
-): params is ShowCaseParams {
-  return (params as ShowCaseParams).storyIds !== undefined;
+function isShowCaseParams(storyIds: string | undefined) {
+  return (storyIds as Partial<ShowCaseParams>) !== undefined;
 }
 
 export const useContentParams = () => {
-  const matchStories = useRouteMatch(["/stories/:storyId", "/:category/stories/:storyId"]);
-  const matchPresent = useRouteMatch("/present/:storyId");
-  const matchShowCase = useRouteMatch("/showcase/:storyIds");
-  const matchCategory = useRouteMatch("/:category/stories/:storyId");
+  const {
+    storyIds,
+    storyId: rawStoryId,
+    category: paramCategory,
+    slideIndex: paramSlideIndex,
+    storyIndex: paramStoryIndex,
+  } = useParams<Partial<StoryParams> | Partial<ShowCaseParams>>();
 
-  const matchDataContent = useRouteMatch("/:category/data");
-  const matchContentNavigation = useRouteMatch("/:category");
-  const matchCategoryNavigation = useRouteMatch("/");
+  const processedStoryIds = useMemo(() => {
+    if (isShowCaseParams(storyIds) && storyIds) {
+      return storyIds.split("&");
+    } else if (rawStoryId) {
+      return [rawStoryId];
+    }
+    return [];
+  }, [storyIds, rawStoryId]);
 
-  const params = useParams<StoryParams | ShowCaseParams>();
-  const storyIds = isShowCaseParams(params)
-    ? params.storyIds.split("&")
-    : [params.storyId];
-  const storyIndex = isShowCaseParams(params)
-    ? parseInt(params.storyIndex, 10)
-    : null;
-  const slideIndex = parseInt(params.slideIndex, 10);
+  const storyIndex = useMemo(() => {
+    return paramStoryIndex ? parseInt(paramStoryIndex, 10) : null;
+  }, [paramStoryIndex]);
 
-  let mode = null;
+  const slideIndex = useMemo(() => {
+    return paramSlideIndex ? parseInt(paramSlideIndex, 10) : null;
+  }, [paramSlideIndex]);
 
-  if (matchStories) {
-    mode = StoryMode.Stories;
-  } else if (matchPresent) {
-    mode = StoryMode.Present;
-  } else if (matchShowCase) {
-    mode = StoryMode.Showcase;
-  } else if (matchCategory) {
-    mode = StoryMode.Stories;
-  } else if (matchDataContent) {
-    mode = StoryMode.Content;
-  } else if (matchContentNavigation) {
-    mode = StoryMode.NavContent;
-  } else if (matchCategoryNavigation) {
-    mode = StoryMode.NavCategory;
-  }
-
-  const currentStoryId =
-    mode === StoryMode.Showcase ? storyIds[storyIndex || 0] : storyIds[0];
+  const currentStoryId = useMemo(() => {
+    return processedStoryIds[storyIndex || 0];
+  }, [processedStoryIds, storyIndex]);
 
   const selectedStory = useSelector((state: State) =>
     selectedStorySelector(state, currentStoryId),
   );
-  const isNavigation = mode === StoryMode.NavContent || mode === StoryMode.NavCategory;
 
-  // Get initial category from URL params, or use null if not present
-  const initialCategory = params.category || null;
+  const initialCategory = paramCategory || null;
 
-  // Get persisted category from the Redux store
-  const {category: persistedCategory} = useSelector(contentSelector)
+  const { category: persistedCategory } = useSelector(contentSelector);
 
-  // Use the URL category if available, otherwise fallback to persisted category
-  const  category  =  initialCategory || persistedCategory || undefined;
+  const category = initialCategory || persistedCategory || undefined;
 
   return {
-    mode,
-    storyIds,
+    storyIds: processedStoryIds,
     storyIndex,
     slideIndex,
     currentStoryId,
     selectedStory,
     category,
-    isNavigation,
   };
 };

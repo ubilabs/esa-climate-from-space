@@ -1,0 +1,80 @@
+.globeContainer {
+  position: relative;
+  display: flex;
+  height: 100%;
+  background-color: #000;
+  justify-content: center;
+
+  .globe {
+    height: 100%;
+    left: 50%;
+    position: absolute !important;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 1s ease;
+    width: 100%;
+    position: relative;
+    transition: none;
+  }
+
+  /*  Make sure two globes are displayed side by side */
+  /*  in the story slider */
+  &:has(.globe ~ .globe) {
+    .globe {
+      left: auto;
+      transform: none;
+      top: 0;
+      position: relative !important;
+      transition: none;
+
+      canvas {
+        transition: none;
+      }
+    }
+
+    .layerDetails {
+      position: absolute;
+    }
+  }
+}
+
+.layerDetails {
+  position: relative;
+  height: inherit;
+  padding: inherit;
+  pointer-events: none;
+}
+
+.layerDetails > * {
+  pointer-events: all;
+}
+
+.storySlider {
+  position: absolute;
+  padding: 2.5em 0;
+  background: none;
+}
+
+.storySlider > div {
+  min-width: 25%;
+  width: 60%;
+}
+
+@media screen and (--desktop-viewport) {
+  .layerDetails {
+    height: inherit;
+    background: none;
+  }
+
+  .layerDetails > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .storySlider {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 2.5em 0 1.25em;
+  }
+}

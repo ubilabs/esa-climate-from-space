@@ -1,6 +1,6 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, PropsWithChildren } from "react";
 import { Link } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import cx from "classnames";
 
 import styles from "./button.module.css";
@@ -14,9 +14,10 @@ interface Props {
   id?: string;
   hideLabelOnMobile?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  ariaLabel?: string;
 }
 
-const Button: FunctionComponent<Props> = ({
+const Button: FunctionComponent<PropsWithChildren<Props>> = ({
   label,
   link,
   icon: Icon,
@@ -25,6 +26,8 @@ const Button: FunctionComponent<Props> = ({
   id,
   hideLabelOnMobile,
   onClick,
+  ariaLabel,
+  children,
 }) => {
   const classes = cx(
     styles.button,
@@ -33,14 +36,18 @@ const Button: FunctionComponent<Props> = ({
     hideLabelOnMobile && styles.hideLabel,
   );
 
+  const { formatMessage } = useIntl();
+
   return link ? (
     <Link
       onClick={(event) => disabled && event.preventDefault()}
       id={id}
       className={classes}
       to={link}
+      aria-label={ariaLabel && formatMessage({ id: ariaLabel })}
     >
       {Icon && <Icon />}
+      {children}
       {label && (
         <span className={styles.label}>
           <FormattedMessage id={label} />
@@ -48,8 +55,15 @@ const Button: FunctionComponent<Props> = ({
       )}
     </Link>
   ) : (
-    <button disabled={disabled} className={classes} id={id} onClick={onClick}>
+    <button
+      disabled={disabled}
+      className={classes}
+      id={id}
+      onClick={onClick}
+      aria-label={ariaLabel && formatMessage({ id: ariaLabel })}
+    >
       {Icon && <Icon />}
+      {children}
       {label && (
         <span className={styles.label}>
           <FormattedMessage id={label} />

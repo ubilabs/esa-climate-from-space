@@ -1,6 +1,3 @@
-import { CameraView } from "@ubilabs/esa-webgl-globe";
-import { useRouteMatch } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import {
   FunctionComponent,
   useCallback,
@@ -8,6 +5,9 @@ import {
   useLayoutEffect,
   useState,
 } from "react";
+
+import { CameraView } from "@ubilabs/esa-webgl-globe";
+import { useDispatch, useSelector } from "react-redux";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { contentSelector } from "../../../selectors/content";
@@ -27,15 +27,13 @@ import { setGlobeView } from "../../../reducers/globe/view";
 import { State } from "../../../reducers";
 
 import { useContentMarker } from "../../../hooks/use-story-markers";
-import { useContentParams } from "../../../hooks/use-content-params";
 import { useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
-import { useGlobeLocationState } from "../../../hooks/use-location";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
 import { LegendValueColor } from "../../../types/legend-value-color";
-import { StoryMode } from "../../../types/story-mode";
 import { Layer } from "../../../types/layer";
 
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
@@ -48,16 +46,19 @@ import TimeSlider from "../../layers/time-slider/time-slider";
 
 interface Props {
   className?: string;
+  showMarkers?: boolean;
 }
 
-export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
+export const GetDataWidget: FunctionComponent<Props> = ({
+  className,
+  showMarkers = true,
+}) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const flyTo = useSelector(flyToSelector);
   const [isMainActive, setIsMainActive] = useState(true);
-  const { mode } = useContentParams();
 
   const language = useSelector(languageSelector);
   const dispatch = useDispatch();
@@ -65,6 +66,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;
+
+  const { isContentNavRoute, isStoriesRoute } = useAppRouteFlags();
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
@@ -101,35 +104,32 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
   const selectedContentId = useSelector(contentSelector).contentId;
 
-  const contentMarker = useContentMarker(selectedContentId, language);
-
-  const { showContentList, showDataSet } = useGlobeLocationState();
-
-  const isBasePath = Boolean(useRouteMatch({ path: "/", exact: true }));
+  const contentMarker = useContentMarker(selectedContentId ?? null, language);
 
   const getDataWidget = ({
     imageLayer,
     layerDetails,
     active,
     action,
-    showDataSet,
   }: {
     imageLayer: GlobeImageLayerData | null;
     layerDetails: Layer | null;
     active: boolean;
     action: () => void;
-    showDataSet?: boolean;
   }) => {
     if (imageLayer?.type === LayerType.Gallery) {
       return <Gallery imageLayer={imageLayer} />;
     }
+
     return (
       <Globe
-        {...(showContentList &&
+        {...(showMarkers &&
           contentMarker && {
-          markers: [contentMarker],
-        })}
+            markers: [contentMarker],
+          })}
         backgroundColor={""}
+        // We should offset the markers when user is in content nav
+        isMarkerOffset={isContentNavRoute}
         active={active}
         view={currentView}
         projectionState={projectionState}
@@ -144,7 +144,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
         onMoveEnd={onMoveEndHandler}
         onLayerLoadingStateChange={onLayerLoadingStateChangeHandler}
         className={className}
-        showDataSet={showDataSet}
       />
     );
   };
@@ -185,16 +184,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
   const compareImageLayer = useImageLayerData(compareLayerDetails, time);
 
-  const layerDetails = compareLayer ? compareLayerDetails : mainLayerDetails;
-
-  // we only want to show the clouds layer in base path. This is a temporary fix
-  const updatedLayerDetails = isBasePath
-    ? {
-      ...(layerDetails || {}),
-      basemap: "clouds",
-    }
-    : layerDetails;
-
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
   useLayoutEffect(() => {
@@ -204,10 +193,9 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
   const onChangeHandler = useCallback((view: CameraView) => {
     setCurrentView(view);
     // setting css variable for compass icon
-    document.documentElement.style.setProperty(
-      "--globe-latitude",
-      `${view.lat}deg`,
-    );
+    document
+      .getElementById("ui-compass")
+      ?.style.setProperty("--globe-latitude", `${view.lat}deg`);
   }, []);
 
   const { legend, time_slider } = useSelector(embedElementsSelector);
@@ -219,15 +207,11 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
     }
   }, [dispatch, mainId, compareId, globeSpinning]);
 
-  if (mainImageLayer?.type === LayerType.Gallery) {
-    return <Gallery imageLayer={mainImageLayer} />;
-  }
-
   return (
     <>
-      {mode === StoryMode.NavContent ? null : (
+      {isContentNavRoute ? null : (
         <>
-          {mode !== StoryMode.Stories && <DataSetInfo />}
+          {!isStoriesRoute && <DataSetInfo />}
           {legend && getLegends()}
           {time_slider && <TimeSlider />}
         </>
@@ -235,10 +219,9 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
 
       {getDataWidget({
         imageLayer: mainImageLayer,
-        layerDetails: updatedLayerDetails,
+        layerDetails: mainLayerDetails,
         active: isMainActive,
         action: () => setIsMainActive(true),
-        showDataSet,
       })}
       {compareLayer &&
         getDataWidget({
@@ -246,7 +229,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({ className }) => {
           layerDetails: compareLayerDetails,
           active: !isMainActive,
           action: () => setIsMainActive(false),
-          showDataSet,
         })}
     </>
   );

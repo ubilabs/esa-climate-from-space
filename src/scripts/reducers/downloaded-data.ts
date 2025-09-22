@@ -10,7 +10,7 @@ const downloadedDataSlice = createSlice({
   name: "downloadedData",
   initialState,
   reducers: {
-    setDownloadedData(state, action: PayloadAction<DownloadedData>) {
+    setDownloadedData(_state, action: PayloadAction<DownloadedData>) {
       return action.payload;
     },
   },

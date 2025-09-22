@@ -10,7 +10,7 @@ const timeReducer = createSlice({
   name: "time",
   initialState,
   reducers: {
-    setGlobeTime(state, action: PayloadAction<number>) {
+    setGlobeTime(_state, action: PayloadAction<number>) {
       return action.payload;
     },
   },

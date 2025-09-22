@@ -1,21 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { parseUrl } from "../../libs/globe-url-parameter";
-import config from "../../config/main";
+
 import { CameraView } from "@ubilabs/esa-webgl-globe";
 
-// get initial state from url or fallback to default state in config
-const globeState = parseUrl()?.globeState || config.globe;
-const initialState: CameraView = globeState.view;
+import config from "../../config/main";
+
+// get initial state from  state in config
+// We don't parse the state from the URL because we want to initially make sure that the globe view is in the correct state
+const initialState: CameraView = config.globe.view;
 
 const globeViewSlice = createSlice({
   name: "globeView",
   initialState,
   reducers: {
     setGlobeView(state, action: PayloadAction<CameraView>) {
-      return {
-       ...state,
-       ...action.payload
-      };
+      Object.assign(state, action.payload);
     },
   },
 });

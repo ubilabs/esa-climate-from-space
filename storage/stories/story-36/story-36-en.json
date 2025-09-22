@@ -1,29 +1,36 @@
 {
   "id": "story-36",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story36-image03.jpg",
+    "focus": "center",
+    "title": "Sinking City",
+    "subtitle": "Jakarta, Indonesia",
+    "altText": "Sinking City in Jakarta, Indonesia",
+    "slides": [
+      {
+        "text": "The Indonesian capital of Jakarta is home to 10 million people and is also one of the fastest-sinking cities in the world due to extensive ground water extraction and the heavier  weight of the buildings."
+      },
+      {
+        "text": "Researchers suggest that parts of the megacity could be entirely submerged by 2050. This map shows the mean ground displacement rates based on Sentinel-1 radar data. Local sinking patterns reach about 12 cm per year."
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Sinking City\r\n\r\nJakarta, Indonesia",
-      "shortText": "# Sinking City\r\n\r\nJakarta, Indonesia",
-      "images": [
-        "assets/story36-image03.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Sinking City, Jakarta, Indonesia\r\n\r\nThe Indonesian capital of Jakarta is home to 10 million people and is also one of the fastest-sinking cities in the world due to extensive ground water extraction and the heavier  weight of the buildings. Researchers suggest that parts of the megacity could be entirely submerged by 2050. This map shows the mean ground displacement rates based on Sentinel-1 radar data. Local sinking patterns reach about 12 cm per year. \r\n\r\nCredits: ESA GEP & CNR-IREA",
-      "shortText": "## Sinking City, Jakarta, Indonesia\r\n\r\nThe Indonesian capital of Jakarta is home to 10 million people and is also one of the fastest-sinking cities in the world due to extensive ground water extraction and the heavier  weight of the buildings. Researchers suggest that parts of the megacity could be entirely submerged by 2050. This map shows the mean ground displacement rates based on Sentinel-1 radar data. Local sinking patterns reach about 12 cm per year. \r\n\r\nCredits: ESA GEP & CNR-IREA",
-      "images": [
-        "assets/story36-image01.jpg",
-        "assets/story36-image02.jpg"
-      ],
-      "imageCaptions": [
-        "Jakarta, Indonesia: the sinking city. By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence.",
-        "Jakarta, Indonesia: the sinking city. By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence. In this image, changes in surface levels from 2017-2018 have been overlaid."
-      ],
-      "imageFits": [
-        "contain",
-        "contain"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story36-image01.jpg",
+          "caption": "By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story36-image02.jpg",
+          "caption": "By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence. In this image, changes in surface levels from 2017-2018 have been overlaid.",
+          "altText": "",
+          "focus": "left"
+        }
       ]
     }
   ]

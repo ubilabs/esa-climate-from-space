@@ -1,0 +1,73 @@
+.blendItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .blendImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .blendBorder {
+    position: absolute;
+    background-color: white;
+
+    &.horizontal:before {
+      content: "";
+      background-image: url('data:image/svg+xml,<svg width="21" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.36425e-07 5.5L5 0L5 11L2.36425e-07 5.5Z" fill="white"/><path d="M19.3288 5.49932L14 10.8281L14 0.170526L19.3288 5.49932Z" fill="white"/></svg>');
+      position: absolute;
+      background-repeat: no-repeat;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 12px;
+    }
+
+    &.horizontal:after {
+      position: absolute;
+      content: "";
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 36px;
+      border: 2px solid white;
+    }
+  }
+
+  .flag {
+    padding: 4px 12px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+    letter-spacing: 1.25%;
+    position: absolute;
+    transform: translate(calc(-100% - 4px), 0);
+    margin-top: 4px;
+    background: rgba(1, 30, 43, 0.5);
+    color: white;
+
+    &:nth-of-type(2) {
+      transform: translateX(6px);
+    }
+  }
+}
+
+.sentinelElement {
+  z-index: -1000;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transition: top 0.3s ease-in-out;
+  opacity: 0;
+  left: -100%;
+  top: 0;
+}
+
+.inView {
+  left: 0;
+}

@@ -1,14 +1,13 @@
 import {
   FunctionComponent,
   memo,
-  RefObject,
   useCallback,
   useEffect,
   useRef,
   useState,
 } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
+import { renderToStaticMarkup } from "react-dom/server";
 
 import cx from "classnames";
 
@@ -29,18 +28,17 @@ import SHADING_TEXTURE_URL from "@ubilabs/esa-webgl-globe/textures/shading.png?u
 import { Layer } from "../../../types/layer";
 import { Marker } from "../../../types/marker-type";
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
+import { useGlobeRouteState } from "../../../hooks/use-globe-route-state";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
 import { LayerType } from "../../../types/globe-layer-type";
-import { useHistory } from "react-router-dom";
 import { useScreenSize } from "../../../hooks/use-screen-size";
 
 import { GlobeProjection } from "../../../types/globe-projection";
-import { isAutoRotatingSelector } from "../../../selectors/auto-rotate";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
-import { setFlyTo } from "../../../reducers/fly-to";
-import { renderToStaticMarkup } from "react-dom/server";
+
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
 
@@ -66,6 +64,7 @@ interface Props {
   spinning: boolean;
   flyTo: CameraView | null;
   markers?: Marker[];
+  isMarkerOffset?: boolean;
   backgroundColor: string;
   onMouseEnter: () => void;
   onTouchStart: () => void;
@@ -77,61 +76,12 @@ interface Props {
     layerId: string,
     state: LayerLoadingState,
   ) => void;
-  showDataSet?: boolean;
 }
 
 export type GlobeProps = Partial<Props>;
 
 const EMPTY_FUNCTION = () => {};
 
-// Easing function for smoother animation
-function easeInOutQuad(t: number): number {
-  return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-}
-
-/**
- * Handles globe auto-rotation animation
- * @param globeInstance Current WebGlGlobe instance
- * @param rotation Reference to rotation state
- * @param autoRotation Reference to auto rotation state
- * @param viewLat Current view latitude
- * @param viewAltitude Current view altitude
- */
-function handleAutoRotation(
-  globeInstance: WebGlGlobe | null,
-  rotation: { lat: number; lng: number },
-  autoRotation: { isActive: boolean; animationId: number | null },
-  viewLat: number,
-  viewAltitude: number,
-) {
-  // If no longer enabled, don't schedule next frame
-  if (!autoRotation.isActive) return;
-  // Update rotation position
-  rotation.lng -= 0.05;
-  const lng = rotation.lng;
-
-  // Apply the rotation to the globe if available
-  if (globeInstance) {
-    globeInstance.setProps({
-      cameraView: {
-        lng,
-        lat: viewLat,
-        altitude: viewAltitude,
-      },
-    });
-  }
-
-  // Schedule next frame if still active
-  autoRotation.animationId = requestAnimationFrame(() =>
-    handleAutoRotation(
-      globeInstance,
-      rotation,
-      autoRotation,
-      viewLat,
-      viewAltitude,
-    ),
-  );
-}
 const Globe: FunctionComponent<Props> = memo((props) => {
   const {
     view,
@@ -147,69 +97,14 @@ const Globe: FunctionComponent<Props> = memo((props) => {
 
   const [containerRef, globe] = useWebGlGlobe(view);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
-  const dispatch = useDispatch();
-  const isAutoRotatingEnabled = useSelector(isAutoRotatingSelector);
 
-  // Track auto rotation with a ref to avoid dependencies issues
-  const autoRotationRef = useRef<{
-    isActive: boolean;
-    animationId: number | null;
-  }>({
-    isActive: false,
-    animationId: null,
-  });
-
-  const rotationRef = useRef<{
-    lat: number;
-    lng: number;
-  }>({ lat: view.lat, lng: view.lng });
-
-  // Start or stop auto rotation based on isAutoRotatingEnabled
-  useEffect(() => {
-    // Update the ref to reflect current state
-    autoRotationRef.current.isActive = isAutoRotatingEnabled;
-    const lat = config.globe.view.lat;
-
-    // If enabled and not already running, start rotation
-    if (
-      globe &&
-      isAutoRotatingEnabled &&
-      autoRotationRef.current.animationId === null
-    ) {
-      autoRotationRef.current.animationId = requestAnimationFrame(() =>
-        handleAutoRotation(
-          globe,
-          rotationRef.current,
-          autoRotationRef.current,
-          lat,
-          view.altitude,
-        ),
-      );
-    }
-    // If disabled but currently running, cancel animation
-    else if (
-      !isAutoRotatingEnabled &&
-      autoRotationRef.current.animationId !== null
-    ) {
-      cancelAnimationFrame(autoRotationRef.current.animationId);
-      autoRotationRef.current.animationId = null;
-    }
-
-    // Cleanup on unmount or when dependencies change
-    return () => {
-      if (autoRotationRef.current.animationId !== null) {
-        cancelAnimationFrame(autoRotationRef.current.animationId);
-        autoRotationRef.current.animationId = null;
-        autoRotationRef.current.isActive = false;
-      }
-    };
-  }, [globe, isAutoRotatingEnabled, view.lat, view.altitude]);
+  useGlobeRouteState(globe);
 
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
 
   useProjectionSwitch(globe, projectionState.projection);
-  useMultiGlobeSynchronization(globe, props, dispatch, rotationRef);
+  useMultiGlobeSynchronization(globe, props);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
@@ -295,31 +190,33 @@ function useGlobeLayers(
   layerDetails: Layer | null,
   imageLayer: GlobeImageLayerData | null,
 ) {
+  const { isBaseRoute } = useAppRouteFlags();
   useEffect(() => {
     if (!globe) {
       return EMPTY_FUNCTION;
     }
-    const layers = getLayerProps(imageLayer, layerDetails);
+    const layers = getLayerProps(imageLayer, layerDetails, isBaseRoute);
 
     globe.setProps({ layers });
 
     // we don't reset the layers in the cleanup-function as this would lead
     // to animations not working.
     return EMPTY_FUNCTION;
-  }, [globe, layerDetails, imageLayer]);
+  }, [globe, layerDetails, imageLayer, isBaseRoute]);
 }
 
 /**
  * Updates the markers on the globe when they become available.
  */
 function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
-  const history = useHistory();
   const { isDesktop } = useScreenSize();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!globe || !markers) {
       return EMPTY_FUNCTION;
     }
+
     globe.setProps({
       markers: getMarkerProps(
         markers,
@@ -327,8 +224,7 @@ function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
           if (!marker.link) {
             return;
           }
-
-          history.push(marker.link);
+          navigate(marker.link);
         },
         isDesktop,
       ),
@@ -337,7 +233,7 @@ function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
     return () => {
       globe.setProps({ markers: [] });
     };
-  }, [history, globe, markers]);
+  }, [navigate, globe, markers, isDesktop]);
 }
 
 /**
@@ -405,181 +301,31 @@ function useProjectionSwitch(
  * Integrate the globe with the external view-state events and props
  * (view / flyTo / onChange).
  */
-function useMultiGlobeSynchronization(
-  globe: WebGlGlobe | null,
-  props: Props,
-  dispatch: Dispatch<UnknownAction>,
-  rotationRef: RefObject<{ lat: number; lng: number }>,
-) {
-  const { view, active, flyTo, showDataSet } = props;
-
-  // Update rotationRef when view changes to keep it in sync with external changes
-  useEffect(() => {
-    rotationRef.current = { lat: view.lat, lng: view.lng };
-  }, [view.lat, view.lng, rotationRef]);
+function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
+  const { view, active, flyTo, isMarkerOffset } = props;
 
   // forward camera changes from the active view to the parent component
   useCameraChangeEvents(globe, props);
+
   // set camera-view unless it's the active globe
   useEffect(() => {
     if (globe && !active) {
-      globe.setProps({ cameraView: view });
+      // make sure the applied is not animated
+      globe.setProps({ cameraView: { ...view } });
     }
   }, [globe, view, active]);
 
-  // Track animation state to prevent multiple animations
-  const animationRef = useRef<{
-    isAnimating: boolean;
-    animationId: number | null;
-    lastFlyToTarget: { lat: number; lng: number } | null;
-  }>({
-    isAnimating: false,
-    animationId: null,
-    lastFlyToTarget: null,
-  });
 
-  // ! Make sure to reset the FlyTo after the animation has been applied
-  // That way we make sure we can use the globe view to apply movements by event handlers
-  // There is probably a better way to do this?
-
-  // We have these custom functions for autoRotating the globe and animating the flyTo
-  // Ticket #1271 and #1270 reference these issues see https://github.com/orgs/ubilabs/projects/48
-
-  // incoming flyTo cameraViews are always applied
+  // apply incomfing flyTo props to the globe
   useEffect(() => {
-    // Skip entire effect if globe or flyTo is not available
     if (!globe || !flyTo) return;
-    if (flyTo.isAnimated) {
-      // Extract target coordinates
-      const lat = flyTo.lat;
-      const lng = flyTo.lng;
-
-      // Skip if we're already at the target position
-      if (rotationRef.current.lng === lng && rotationRef.current.lat === lat) {
-        return;
-      }
-
-      // Skip if we're already animating to this target
-      if (
-        animationRef.current.isAnimating &&
-        animationRef.current.lastFlyToTarget &&
-        animationRef.current.lastFlyToTarget.lat === lat &&
-        animationRef.current.lastFlyToTarget.lng === lng
-      ) {
-        return;
-      }
-
-      // Cancel any existing animation
-      if (
-        animationRef.current.isAnimating &&
-        animationRef.current.animationId !== null
-      ) {
-        cancelAnimationFrame(animationRef.current.animationId);
-        animationRef.current.isAnimating = false;
-        animationRef.current.animationId = null;
-      }
-
-      // Set the new animation target
-      animationRef.current.lastFlyToTarget = { lat, lng };
-      animationRef.current.isAnimating = true;
-
-      // Instead of the center, we have to adjust the target position so that
-      // actual point we want to move to is rotated the right side
-      // This is because only the right side of the globe is actually visible to the user
-      const targetLng = lng + (showDataSet ? 0 : CONTENT_NAV_LONGITUDE_OFFSET);
-      const targetLat = lat;
-      const startLng = rotationRef.current.lng;
-      const startLat = rotationRef.current.lat;
-      const deltaLng = targetLng - startLng;
-      const deltaLat = targetLat - startLat;
-
-      // Fixed duration: 2 seconds (2000ms)
-      const animationDuration = 2000;
-      let startTime: number | null = null;
-
-      const animate = (timestamp: number) => {
-        // Initialize startTime on first animation frame
-        if (!startTime) startTime = timestamp;
-
-        // Calculate progress (0 to 1) based on elapsed time
-        const elapsedTime = timestamp - startTime;
-        const progress = Math.min(elapsedTime / animationDuration, 1);
-
-        // Use easeInOutQuad easing function for smoother animation
-        const easedProgress = easeInOutQuad(progress);
-
-        // Apply the current position based on progress with easing
-        const currentLng = startLng + deltaLng * easedProgress;
-        const currentLat = startLat + deltaLat * easedProgress;
-
-        if (globe) {
-          rotationRef.current.lng = currentLng;
-          rotationRef.current.lat = currentLat;
-          globe.setProps({
-            cameraView: {
-              lng: currentLng,
-              lat: currentLat,
-              altitude: view.altitude,
-            },
-          });
-        }
-
-        // Continue animation if not complete
-        if (progress < 1) {
-          animationRef.current.animationId = requestAnimationFrame(animate);
-        } else {
-          // Animation complete - ensure we reach exactly the target position
-          if (globe) {
-            rotationRef.current.lng = targetLng;
-            rotationRef.current.lat = targetLat;
-            globe.setProps({
-              cameraView: {
-                lng: targetLng,
-                lat: targetLat,
-                altitude: view.altitude,
-              },
-            });
-          }
-
-          // Reset animation state
-          animationRef.current.isAnimating = false;
-          animationRef.current.animationId = null;
-          dispatch(setFlyTo(null));
-        }
-      };
-
-      // Start the animation
-      animationRef.current.animationId = requestAnimationFrame(animate);
-    } else {
-      // For non-animated flyTo, cancel any ongoing animation
-      if (
-        animationRef.current.isAnimating &&
-        animationRef.current.animationId !== null
-      ) {
-        cancelAnimationFrame(animationRef.current.animationId);
-        animationRef.current.isAnimating = false;
-        animationRef.current.animationId = null;
-      }
-      globe.setProps({ cameraView: flyTo });
-      dispatch(setFlyTo(null));
-    }
-  }, [
-    dispatch,
-    animationRef,
-    rotationRef,
-    globe,
-    flyTo,
-    view.altitude,
-    showDataSet,
-  ]);
-  // Cleanup function to cancel any ongoing animation when unmounting
-  return () => {
-    if (animationRef.current.animationId !== null) {
-      cancelAnimationFrame(animationRef.current.animationId);
-      animationRef.current.isAnimating = false;
-      animationRef.current.animationId = null;
-    }
-  };
+    globe.setProps({
+      cameraView: {
+        ...flyTo,
+        lng: flyTo.lng + (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0),
+      },
+    });
+  }, [flyTo, globe, isMarkerOffset]);
 }
 
 /**
@@ -661,14 +407,11 @@ function useLayerLoadingStateUpdater(
 function getLayerProps(
   imageLayer: GlobeImageLayerData | null,
   layerDetails: Layer | null,
+  includeClouds: boolean = true,
 ) {
-  let basemapUrl = getBasemapUrl(layerDetails);
-  let cloudsUrl = null;
+  const basemapUrl = getBasemapUrl(layerDetails);
+  const cloudsUrl = getBasemapUrl({ basemap: "clouds" } as Layer);
 
-  if (layerDetails?.basemap === "clouds") {
-    cloudsUrl = getBasemapUrl({ basemap: "clouds" } as Layer);
-    basemapUrl = getBasemapUrl({ basemap: config.defaultBasemap } as Layer);
-  }
   const basemapMaxZoom = getBasemapMaxZoom(layerDetails);
 
   const layers = [
@@ -682,7 +425,7 @@ function getLayerProps(
     } as LayerProps,
   ];
 
-  if (cloudsUrl) {
+  if (includeClouds) {
     layers.push({
       id: "clouds",
       zIndex: 1,

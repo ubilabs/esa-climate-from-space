@@ -20,7 +20,7 @@ METADATA = {
     "zoom_levels": '0-3',
     "units": 'm3 m-3',
     "basemap": None,
-    "legend_values": ["> 100 l/m³", "-100"],
+    "legend_values": ["100 l/m³", "0", "-100"],
     "time_format": {
         "year": "numeric",
         "month": "long"

@@ -6,6 +6,7 @@ export interface EmbedElementsState {
   back_link?: boolean;
   app_menu?: boolean;
   layers_menu?: boolean;
+  lng: string | null;
 }
 
 export interface ElementOptions {

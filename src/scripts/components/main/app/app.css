@@ -10,38 +10,105 @@
   src: url("../../../../../assets/fonts/NotesEsaBol.otf");
 }
 
+/* default margin and padding*/
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*  Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  all: unset;
+  text-wrap: balance;
+}
+
 html,
 body,
 #app {
+  overscroll-behavior: none;
   overflow: hidden;
+}
+
+html,
+body,
+#app {
   margin: 0;
-  height: 100%;
-  background-color: var(--black);
+  height: 100vh;
+  height: 100dvh;
   font-family: NotesEsa, Arial, Helvetica, sans-serif;
 }
 
+body {
+  background-color: var(--dark-grey-5);
+}
+
 #app {
+  background-color: var(--Neutral-ESA-Background, #011e2b);
   display: grid;
   grid-template-areas:
     "header"
     "content";
   grid-template-rows: var(--header-height) 1fr;
   grid-template-columns: 100vw;
-  background: rgba(0, 51, 73, 0.4);
 }
+
 * {
   scrollbar-color: var(--dark-grey-1) transparent;
   scrollbar-width: auto;
 }
-::-webkit-scrollbar {
-  width: 12px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 20px;
-  background-color: var(--dark-grey-1);
-  -webkit-box-shadow: inset 0 0 6px rgba(16, 22, 26, 0.9);
+
+/* story utility class */
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  place-items: center;
+  gap: 0.5rem;
+  padding-inline: var(--story-padding);
+
+  @media screen and (--desktop-viewport) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
 }
 
+/* for within the story, the focus can be set to determine the image position */
+#story {
+  .right {
+    background-position: right;
+    object-position: right;
+  }
+
+  .left {
+    background-position: left;
+    object-position: left;
+  }
+
+  .center {
+    background-position: center;
+    object-position: center;
+  }
+
+  .bottom {
+    background-position: bottom;
+    object-position: bottom;
+  }
+  .top {
+    background-position: top;
+    object-position: top;
+  }
+}
