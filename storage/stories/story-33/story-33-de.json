@@ -17,18 +17,21 @@
       "type": "imageTime",
       "slides": [
         {
+          "focus": "left",
           "url": "assets/story33-image01.jpg",
           "caption": "Dieses Bild wurde am 14. August 1988 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung vor mehr als 30 Jahren",
           "altText": "Dieses Bild wurde am 14. August 1988 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung vor mehr als 30 Jahren",
           "flag": "1988"
         },
         {
+          "focus": "left",
           "url": "assets/story33-image02.jpg",
           "caption": "Dieses Bild wurde am 2. August 2018 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung",
           "altText": "Dieses Bild wurde am 2. August 2018 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung",
           "flag": "2018"
         },
         {
+          "focus": "left",
           "url": "assets/story33-image03.jpg",
           "caption": "Dieses Bild wurde am 31. August 2021 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung",
           "altText": "Dieses Bild wurde am 31. August 2021 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung",

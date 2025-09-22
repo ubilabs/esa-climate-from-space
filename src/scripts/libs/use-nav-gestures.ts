@@ -4,6 +4,17 @@ import { useGesture, Vector2 } from "@use-gesture/react";
 import { Lethargy } from "lethargy";
 
 const clamp = (value: number, min: number, max: number): number => {
+  // Clamps the value to be within the [min, max] range
+  if (value < min) {
+    return min;
+  }
+  if (value > max) {
+    return max;
+  }
+  return value;
+};
+
+const wrap = (value: number, min: number, max: number): number => {
   // Wrap the value around if it goes below the minimum or above the maximum
   if (value < min) {
     return max;
@@ -13,17 +24,22 @@ const clamp = (value: number, min: number, max: number): number => {
   }
   return value;
 };
-const DEBOUNCE_MS = 500; // adjust to taste
+
+const DEBOUNCE_MS = 250; // adjust to taste
 
 export const useNavGestures = (
   maxIndex: number,
   setCurrentIndex: Dispatch<SetStateAction<number>>,
   setLastUserInteraction: Dispatch<SetStateAction<number>>,
   direction: "x" | "y" = "x",
+  infinite = false,
 ) => {
   const lastWheelRef = useRef<number | null>(null);
   const slides = Array.from({ length: maxIndex }, (_, index) => index);
   const lethargy = useRef(new Lethargy());
+
+  const clampFn = infinite ? wrap : clamp;
+
   const handleWheel = useCallback(
     ({ event, last }: { event: WheelEvent; last: boolean }) => {
       if (last) return;
@@ -34,14 +50,14 @@ export const useNavGestures = (
       const now = Date.now();
       // store last trigger time in ref
       if (!lastWheelRef.current || now - lastWheelRef.current > DEBOUNCE_MS) {
-        setCurrentIndex((i) => clamp(i - s, 0, slides.length - 1));
+        setCurrentIndex((i) => clampFn(i - s, 0, slides.length - 1));
         setLastUserInteraction(now);
         lastWheelRef.current = now;
         return true;
       }
       return false;
     },
-    [setCurrentIndex, setLastUserInteraction, slides.length],
+    [clampFn, setCurrentIndex, setLastUserInteraction, slides.length],
   );
   const handleDrag = useCallback(
     ({
@@ -58,15 +74,21 @@ export const useNavGestures = (
       const m = direction === "x" ? mx : my;
       if (active && Math.abs(m) < window.innerWidth / 3) {
         if (direction === "x") {
-          setCurrentIndex((i) => clamp(i + xDir, 0, slides.length - 1));
+          setCurrentIndex((i) => clampFn(i + xDir, 0, slides.length - 1));
         } else {
-          setCurrentIndex((i) => clamp(i - yDir, 0, slides.length - 1));
+          setCurrentIndex((i) => clampFn(i - yDir, 0, slides.length - 1));
         }
         setLastUserInteraction(Date.now());
         cancel();
       }
     },
-    [direction, setCurrentIndex, setLastUserInteraction, slides.length],
+    [
+      clampFn,
+      direction,
+      setCurrentIndex,
+      setLastUserInteraction,
+      slides.length,
+    ],
   );
 
   useGesture(

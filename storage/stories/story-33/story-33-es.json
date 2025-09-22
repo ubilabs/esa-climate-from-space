@@ -17,18 +17,21 @@
       "type": "imageTime",
       "slides": [
         {
+          "focus": "left",
           "url": "assets/story33-image01.jpg",
           "caption": "Esta imagen fue tomada el 14 de agosto de 1988 y muestra la ciudad de El Cairo y sus alrededores hace más de 30 años.",
           "altText": "Esta imagen fue tomada el 14 de agosto de 1988 y muestra la ciudad de El Cairo y sus alrededores hace más de 30 años.",
           "flag": "1988"
         },
         {
+          "focus": "left",
           "url": "assets/story33-image02.jpg",
           "caption": "Esta imagen fue adquirida el 2 de agosto de 2018 y muestra la ciudad de El Cairo y sus alrededores",
           "altText": "Esta imagen fue adquirida el 2 de agosto de 2018 y muestra la ciudad de El Cairo y sus alrededores",
           "flag": "2018"
         },
         {
+          "focus": "left",
           "url": "assets/story33-image03.jpg",
           "caption": "Esta imagen fue tomada el 31 de agosto de 2021 y muestra la ciudad de El Cairo y sus alrededores (contiene datos modificados de Copernicus Sentinel (2021))",
           "altText": "Esta imagen fue tomada el 31 de agosto de 2021 y muestra la ciudad de El Cairo y sus alrededores",
