@@ -22,8 +22,6 @@ import cx from "classnames";
 
 import styles from "./time-and-wavelength-blend.module.css";
 
-const SENSITIVITY_FACTOR = 2.5;
-
 interface BlendWrapperProps extends StorySectionProps {
   animationDirection: AnimationDirection;
 }
@@ -33,7 +31,9 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
 }) => {
   const { module, storyId, getRefCallback } = useModuleContent();
   const { lenisRef } = useStory();
-  const { isTouchDevice, isMobile } = useScreenSize();
+  const { isTouchDevice } = useScreenSize();
+
+  const sensitivityFactor = isTouchDevice ? 2.5 : 1
 
   const targetRef = useRef<HTMLDivElement | null>(null);
   const images: ImageModuleSlide[] = useMemo(
@@ -65,7 +65,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
         if (first || !mx) {
           memo = lenisRef.current.scroll;
         }
-        const newScrollTop = memo - mx * SENSITIVITY_FACTOR;
+        const newScrollTop = memo - mx * sensitivityFactor;
         lenisRef.current.scrollTo(newScrollTop, { immediate: true });
         return memo;
       },
@@ -77,7 +77,6 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
         preventDefault: true,
         axis: "x",
         filterTaps: true,
-        enabled: isTouchDevice && isMobile,
       },
     },
   );
