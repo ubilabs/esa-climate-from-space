@@ -1,8 +1,8 @@
 {
   "id": "debug",
   "splashscreen": {
-    "url": "assets/story37-image02.jpg",
-    "focus": "right",
+    "url": "assets/story37-image01.jpg",
+    "focus": "center",
     "title": "The Water Cycle",
     "subtitle": "An example of all the components",
     "altText": "An example of all the components",
