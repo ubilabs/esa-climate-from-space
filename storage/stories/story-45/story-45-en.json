@@ -1,3 +1,96 @@
 {
-  "id": "story-45"
+  "id": "story-45",
+  "slides": [
+    {
+      "type": "splashscreen",
+      "text": "# Land Carbon Dynamics\r\n\r\nForests absorb carbon from the atmosphere, helping offset human-produced carbon emissions. But measurements from space show the ability of forests across the world to absorb carbon is declining.",
+      "shortText": "# Land Carbon Dynamics\r\n\r\nForests absorb carbon from the atmosphere, helping offset human-produced carbon emissions. But measurements from space show the ability of forests across the world to absorb carbon is declining.",
+      "images": [
+        "assets/story45-image01.jpg"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "##  Measuring Biomass from Space\r\n\r\nCarbon is continually exchanged between the atmosphere and land surface. Carbon sinks remove carbon from the atmosphere, helping to offset natural and human carbon emissions. Whether an area is a carbon source or a sink can flip through the year, and in response to environmental changes such as droughts, wildfires and land use.\r\n\r\nESA’s Regional Carbon Cycle Analysis and Processes project (RECCAP2) uses satellites to measure land climate variables such as soil moisture and biomass. The L-band microwave radiometer on the SMOS satellite is sensitive to annual changes in vegetation, including forests.\r\n\r\nThese observations are combined with ground data and computer models to map global land carbon stocks. Earth’s forests store carbon as woody biomass, but environmental changes can impair their ability to absorb carbon.",
+      "shortText": "##  Measuring Biomass from Space\r\n\r\nCarbon is continually exchanged between the atmosphere and land surface. Carbon sinks remove carbon from the atmosphere, helping to offset natural and human carbon emissions. Whether an area is a carbon source or a sink can flip through the year, and in response to environmental changes such as droughts, wildfires and land use.\r\n\r\nESA’s Regional Carbon Cycle Analysis and Processes project (RECCAP2) uses satellites to measure land climate variables such as soil moisture and biomass. The L-band microwave radiometer on the SMOS satellite is sensitive to annual changes in vegetation, including forests.",
+      "images": [
+        "assets/story45-image02.jpg",
+        "assets/story45-image03.jpg",
+        "assets/story45-image04.jpg"
+      ],
+      "imageCaptions": [
+        "Land surface carbon flux, showing carbon sinks in blue and carbon sources in yellow and red. Spikes correspond to extreme carbon-releasing events such as forest fires. (Global Carbon Project/Planetary Visions)",
+        "ESA's Soil Moisture and Ocean Salinity (SMOS) satellite in orbit. (ESA/Planetary Visions)",
+        "Biomass 2022: live above-ground carbon based on SMOS L-band Vegetation Optical Depth (ESA-CCI)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "## Amazon Basin\r\n\r\nThe Amazon Basin accounts for 14% of the atmospheric carbon taken up by plants each year. But the region has lost 370 million tonnes of carbon over the decade 2010-20, and the southeastern part is now a net carbon source. Carbon absorption by growing forest has been outweighed by deforestation, degradation and agricultural use.",
+      "shortText": "## Amazon Basin\r\n\r\nThe Amazon Basin accounts for 14% of the atmospheric carbon taken up by plants each year. But the region has lost 370 million tonnes of carbon over the decade 2010-20, and the southeastern part is now a net carbon source. Carbon absorption by growing forest has been outweighed by deforestation, degradation and agricultural use.",
+      "images": [
+        "assets/story45-image05.jpg",
+        "assets/story45-image06.jpg",
+        "assets/story45-image07.png"
+      ],
+      "imageCaptions": [
+        "Forest cleared for agriculture in the Amazon Basin, as viewed from the International Space Station by ESA astronaut Thomas Pasquet (ESA/NASA – T Pasquet)",
+        "Biomass change 2010-2020 for the Amazon Basin (ESA-CCI)",
+        "Cumulative Biomass  Change for the Amazon Basin (ESA-CCI)"
+      ],
+      "imageFits": [
+        "cover",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "##  Northern Forests\r\n\r\n41% of the world’s forest area is in the northern hemisphere. Northern forests have been accumulating biomass in recent decades. But since 2016 increasing droughts and wildfires have weakened their capacity to absorb carbon.",
+      "shortText": "##  Northern Forests\r\n\r\n41% of the world’s forest area is in the northern hemisphere. Northern forests have been accumulating biomass in recent decades. But since 2016 increasing droughts and wildfires have weakened their capacity to absorb carbon.",
+      "images": [
+        "assets/story45-image08.jpg",
+        "assets/story45-image09.jpg",
+        "assets/story45-image10.png"
+      ],
+      "imageCaptions": [
+        "Smoke from numerous forest fires fills river valleys in Siberia in this Copernicus Sentinel-2 image from September 2016. (contains modified Copernicus Sentinel data (2016), processed by ESA)",
+        "Northern hemisphere net L-VOD biomass change 2016-2022 (ESA-CCI)",
+        "Cumulative Biomass change in temperate regions  (ESA-CCI)"
+      ],
+      "imageFits": [
+        "cover",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "##  European Emissions Offset\r\n\r\nAcross Europe, forests absorbed about 10% of the EU’s greenhouse gas emissions between 1990 and 2022. But in the last ten years this emissions offset has declined by nearly 30% due to forest harvesting and ageing, more frequent droughts, heatwaves and wildfires, plus insect outbreaks and plant disease. This decline poses a risk to achieving future European climate goals.\r\n\r\nImproved knowledge of land carbon dynamics will help us gauge how much carbon budget is left within the Paris Agreement temperature limits, or if we’ll have to deal with the more severe consequences of further warming.",
+      "shortText": "##  European Emissions Offset\r\n\r\nAcross Europe, forests absorbed about 10% of the EU’s greenhouse gas emissions between 1990 and 2022. But in the last ten years this emissions offset has declined by nearly 30% due to forest harvesting and ageing, more frequent droughts, heatwaves and wildfires, plus insect outbreaks and plant disease. This decline poses a risk to achieving future European climate goals.\r\n\r\nImproved knowledge of land carbon dynamics will help us gauge how much carbon budget is left within the Paris Agreement temperature limits, or if we’ll have to deal with the more severe consequences of further warming.",
+      "images": [
+        "assets/story45-image11.jpg",
+        "assets/story45-image12.jpg"
+      ],
+      "imageCaptions": [
+        "Most of Europe is a carbon sink in June 2018 as growing vegetation absorbs carbon from the atmosphere. Over the horizon in Siberia, carbon emissions are spiking due to wildfires burning after a warm, dry winter.  (Global Carbon Project/Planetary Visions)",
+        "European emissions offset: offset by land and forest; offset needed to achieve EU 2040 target; projected offset (ESA-CCI)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain"
+      ]
+    }
+  ]
 }
