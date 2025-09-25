@@ -13,6 +13,15 @@
   overscroll-behavior: none;
   touch-action: none;
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    all: unset;
+  }
+
   @media screen and (--desktop-viewport) {
     --story-padding: 2.75rem;
   }

@@ -32,6 +32,23 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+
+  p {
+    margin: 0.625em 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: NotesEsaBold;
+    font-size: 1.4375em;
+    font-weight: 700;
+    line-height: 1em;
+    margin-top: 0;
+  }
 }
 .photo {
   flex: 0;
