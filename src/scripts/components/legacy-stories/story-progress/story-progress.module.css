@@ -15,16 +15,16 @@
 }
 .progressItem {
   margin: 0 0.3125rem;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border: 1px solid var(--text-default);
   border-radius: 50%;
   background: rgba(147, 149, 151, 0.31);
 }
 .currentProgress {
   margin: 0 0.3125rem;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.7);
 }
