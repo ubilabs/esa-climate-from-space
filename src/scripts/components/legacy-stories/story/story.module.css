@@ -13,7 +13,8 @@
   height: calc(100% - var(--footer-height));
 }
 
-.main>* {
+.main > * {
+  box-sizing: content-box;
   flex-grow: 1;
   width: 50%;
 }
@@ -35,13 +36,12 @@
     overflow-y: auto;
   }
 
-  .main> :last-child {
+  .main > :last-child {
     min-height: 350px;
   }
 
-  .main>* {
+  .main > * {
     padding: 0.625em 1.5625em 0 1.5625em;
     width: inherit;
   }
 }
-
