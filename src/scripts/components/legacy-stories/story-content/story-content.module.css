@@ -1,6 +1,6 @@
 .content {
   overflow-y: scroll;
-  padding: calc(var(--header-height) + 1.5rem) 1.75em var(--footer-height) 3.5em;
+  padding: calc(var(--header-height) + 1.5rem) 1.75em var(--footer-height) 3.5em !important;
   max-width: 46.875em;
   background-color: #000;
   color: var(--text-default);
@@ -18,11 +18,13 @@
   line-height: 1em;
 }
 .content h2 {
-  margin-top: 0;
   font-size: 1.1875em;
+  margin-bottom: 1em;
+  font-family: NotesEsaBold;
 }
 .content p + h2 {
   margin-top: 1.875em;
+  margin-bottom: 1em;
   font-family: NotesEsaBold;
 }
 .content p + h3,
@@ -50,6 +52,7 @@
   text-decoration: none;
 }
 .shortTextContent {
+  min-width: 50vw;
   overflow-y: auto;
   padding: 2.5em;
   font-size: 1rem;
