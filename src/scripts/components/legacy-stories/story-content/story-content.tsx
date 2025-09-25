@@ -21,7 +21,8 @@ const StoryContent: FunctionComponent<Props> = ({ route, slide, storyId }) => {
 
   const contentClasses = cx(
     styles.content,
-    route === AppRoute.Stories && styles.shortTextContent,
+    route === (AppRoute.LegacyStory || AppRoute.LegacyStories) &&
+      styles.shortTextContent,
   );
 
   const transformImageUri = (originalSrc: string) =>
