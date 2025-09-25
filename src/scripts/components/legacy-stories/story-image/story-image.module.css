@@ -3,6 +3,7 @@
   width: 100%;
   max-height: calc(100vh - 150px - var(--header-height) - var(--footer-height));
   height: auto;
+  max-height: 66vh;
 }
 
 .lightboxPhoto {
