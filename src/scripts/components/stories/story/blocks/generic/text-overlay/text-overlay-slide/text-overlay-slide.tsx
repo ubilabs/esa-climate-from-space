@@ -10,7 +10,6 @@ import { motion, useTransform } from "motion/react";
 import config from "../../../../../../../config/main";
 
 import { useStoryScroll } from "../../../../../../../hooks/use-story-scroll";
-import { splitTextIntoChunks } from "../../../../../../../libs/split-text";
 
 import cx from "classnames";
 
@@ -88,19 +87,13 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
     return null;
   }
 
-  const textChunks = splitTextIntoChunks(slide.text);
-
   return (
-    <>
-      {textChunks.map((text, chunkIndex) => (
-        <div key={chunkIndex}>
-          <TextContainer
-            text={text}
-            index={chunkIndex}
-            refProp={getRefCallback(chunkIndex, index)}
-          />
-        </div>
-      ))}
-    </>
+    <div>
+      <TextContainer
+        text={slide.text}
+        index={0}
+        refProp={getRefCallback(0, index)}
+      />
+    </div>
   );
 };

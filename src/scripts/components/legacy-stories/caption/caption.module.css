@@ -1,4 +1,5 @@
 .caption {
+  padding: 0.625em 0;
   box-sizing: border-box;
   padding-right: 3.4375em;
   min-height: var(--story-caption-height);

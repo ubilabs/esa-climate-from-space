@@ -33,7 +33,7 @@
   width: 100%;
   height: 100%;
 
-  p {
+  p:not(:first-child) {
     margin: 0.625em 0;
   }
 
