@@ -6,10 +6,7 @@ import { setFlyTo } from "../../../../../reducers/fly-to";
 
 import { getStoryAssetUrl } from "../../../../../libs/get-story-asset-urls";
 import { isLocationStory } from "../../../../../libs/is-location-story";
-import {
-  calculateTotalSlides,
-  splitTextIntoChunks,
-} from "../../../../../libs/split-text";
+import { calculateTotalSlides } from "../../../../../libs/split-text";
 
 import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 
@@ -115,14 +112,13 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
             className={styles.storyIntro}
           />
           {slides.map((slide, i) => {
-            const textChunks = splitTextIntoChunks(slide.text);
-            return textChunks.map((chunk, chunkIndex) => (
+            return (
               <TextContainer
-                refProp={setScrollAnchorRefs(`0-${i + 1}-${chunkIndex}`)}
-                text={chunk}
-                key={`${i}-${chunkIndex}`}
+                refProp={setScrollAnchorRefs(`0-${i + 1}-0`)}
+                text={slide.text || ""}
+                key={`${i}-0`}
               />
-            ));
+            );
           })}
         </div>
       </div>
