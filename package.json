@@ -47,7 +47,7 @@
   "dependencies": {
     "@datapunt/matomo-tracker-react": "^0.5.1",
     "@reduxjs/toolkit": "^2.5.1",
-    "@ubilabs/esa-webgl-globe": "^1.3.0",
+    "@ubilabs/esa-webgl-globe": "^1.3.1",
     "@use-gesture/react": "^10.3.1",
     "classnames": "^2.5.1",
     "cross-zip": "^4.0.0",
