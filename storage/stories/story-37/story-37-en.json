@@ -21,13 +21,13 @@
       "slides": [
         {
           "url": "assets/story37-image01.jpg",
-          "caption": "This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country. (Contains modified Copernicus Sentinel data (2018), processed by ESA, CC BY-SA 3.0 IGO)",
+          "caption": "This satellite image mosaic, from 28 May 2018, offers a cloud-free view over Scotland's Flow Country. (ESA)",
           "altText": "",
           "focus": "right"
         },
         {
           "url": "assets/story37-image02.jpg",
-          "caption": "This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple. (Contains modified Copernicus Sentinel data (2018), processed by ESA, CC BY-SA 3.0 IGO)",
+          "caption": "Land cover map derived from Copernicus Sentinel-2 data, showing peatland in purple. (ESA)",
           "altText": "",
           "focus": "right"
         }
@@ -38,19 +38,19 @@
       "slides": [
         {
           "url": "assets/story37-image04.jpg",
-          "caption": "A massive fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May. (Contains modified Copernicus Sentinel data (2019), processed by ESA, CC BY-SA 3.0 IGO)",
+          "caption": "Fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May. (ESA)",
           "altText": "",
           "focus": "left"
         },
         {
           "url": "assets/story37-image05.jpg",
-          "caption": "False colour image including the near-infrared channel highlights healthy vegetation in red and shows the burn scar in dark brown. (Contains modified Copernicus Sentinel data (2019), processed by ESA, CC BY-SA 3.0 IGO)",
+          "caption": "Near-infrared wavelengths highlight healthy vegetation in red and the burn scar in dark brown. (ESA)",
           "altText": "",
           "focus": "left"
         },
         {
           "url": "assets/story37-image06.jpg",
-          "caption": "False colour image including the shortwave infrared channels highlights the active fire front in bright red. (Contains modified Copernicus Sentinel data (2019), processed by ESA, CC BY-SA 3.0 IGO)",
+          "caption": "Shortwave infrared reveals the active fire front in bright red. (ESA)",
           "altText": "",
           "focus": "left"
         }

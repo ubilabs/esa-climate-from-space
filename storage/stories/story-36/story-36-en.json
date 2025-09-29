@@ -21,13 +21,13 @@
       "slides": [
         {
           "url": "assets/story36-image01.jpg",
-          "caption": "By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence.",
+          "caption": "A large number of radar satellite images allow accurate calculation of changes in land height.",
           "altText": "",
           "focus": "left"
         },
         {
           "url": "assets/story36-image02.jpg",
-          "caption": "By using a large number of radar satellite images over a two-year period, it is possible to accurately calculate ground subsidence. In this image, changes in surface levels from 2017-2018 have been overlaid.",
+          "caption": "Changes in surface level from 2017-2018 are overlaid, with red showing the greatest ground subsidence.",
           "altText": "",
           "focus": "left"
         }
