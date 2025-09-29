@@ -95,7 +95,7 @@ const Header: FunctionComponent = () => {
     <>
       <nav className={styles.header}>
         {logo && (
-          <Button link="/about" ariaLabel="about">
+          <Button link="/" ariaLabel="homepage">
             <EsaLogo variant={logoVariant} />
           </Button>
         )}

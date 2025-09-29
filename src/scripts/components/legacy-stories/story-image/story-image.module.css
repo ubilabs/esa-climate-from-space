@@ -1,6 +1,7 @@
 .photo {
   flex: 0;
   width: 100%;
+  max-height: calc(100vh - 150px - var(--header-height) - var(--footer-height));
   height: auto;
 }
 
