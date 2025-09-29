@@ -25,7 +25,7 @@ const wrap = (value: number, min: number, max: number): number => {
   return value;
 };
 
-const DEBOUNCE_MS = 250; // adjust to taste
+const DEBOUNCE_MS = 600; // adjust to taste
 
 export const useNavGestures = (
   maxIndex: number,
