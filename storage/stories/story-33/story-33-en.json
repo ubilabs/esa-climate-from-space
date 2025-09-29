@@ -26,14 +26,14 @@
         {
           "focus": "left",
           "url": "assets/story33-image02.jpg",
-          "caption": "Cairo on 2 August 2018 from Copernicus Sentinel-2 (contains modified Copernicus Sentinel data (2018))",
+          "caption": "Cairo on 2 August 2018 from Copernicus Sentinel-2 (ESA)",
           "altText": "2018 from Sentinel-2",
           "flag": "2018"
         },
         {
           "focus": "left",
           "url": "assets/story33-image03.jpg",
-          "caption": "Cairo on 31 August 2021 from Copernicus Sentinel-2 (contains modified Copernicus Sentinel data (2021))",
+          "caption": "Cairo on 31 August 2021 from Copernicus Sentinel-2 (ESA)",
           "altText": "2021 from Sentinel-2",
           "flag": "2021"
         }
