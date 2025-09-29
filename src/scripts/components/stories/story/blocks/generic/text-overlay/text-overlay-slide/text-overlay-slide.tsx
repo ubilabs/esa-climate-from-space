@@ -88,12 +88,12 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
   }
 
   return (
-    <div>
+    <>
       <TextContainer
         text={slide.text}
         index={0}
         refProp={getRefCallback(0, index)}
       />
-    </div>
+    </>
   );
 };
