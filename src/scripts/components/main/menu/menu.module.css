@@ -112,7 +112,4 @@
   .credits {
     display: flex;
   }
-  /*:global(path.hideText) {*/
-  /*  display: none;*/
-  /*}*/
 }

@@ -1,4 +1,7 @@
 .caption {
+  position: absolute;
+  padding-bottom: 2.5em;
+  bottom: 0;
   padding: 0.625em 0;
   box-sizing: border-box;
   padding-right: 3.4375em;
@@ -32,13 +35,13 @@
   height: 100%;
 }
 
-@media screen and (--mobile-s-viewport) {
+@media screen and (--mobile-viewport) {
   .caption {
-    position: absolute;
-    bottom: 0;
     padding-bottom: 2.5em;
   }
+}
 
+@media screen and (--mobile-s-viewport) {
   .content {
     -webkit-line-clamp: 3;
   }
