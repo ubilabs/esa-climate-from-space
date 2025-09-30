@@ -20,12 +20,12 @@
       ],
       "imageCaptions": [
         "# Land Surface Carbon Flux July 2022\r\n\r\nCarbon sinks are shown in blue and carbon sources in yellow and red. Spikes correspond to extreme carbon-releasing events such as forest fires. (Global Carbon Project/Planetary Visions)",
-        "ESA's Soil Moisture and Ocean Salinity (SMOS) satellite in orbit. (ESA/Planetary Visions)",
+        "ESA's Soil Moisture and Ocean Salinity (SMOS) satellite uses microwaves to sense changes in vegetation. (ESA/Planetary Visions)",
         "# Global Biomass 2022\r\n\r\nLive above-ground carbon based on SMOS L-band Vegetation Optical Depth (L-VOD)  (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
-        "contain",
+        "cover",
         "contain",
         "contain",
         "contain"
@@ -47,7 +47,7 @@
       ],
       "imageFits": [
         "cover",
-        "cover",
+        "contain",
         "contain",
         "contain",
         "contain"
@@ -88,6 +88,7 @@
         "# Emissions Offset for Europe 2005-2030\r\n\r\nThe offset by land and forest exceeded the target offset until 2016, but has dropped below the target since then. The projected future offset is not expected to recover enough to hit the target. (ESA-CCI)"
       ],
       "imageFits": [
+        "contain",
         "contain"
       ]
     }
