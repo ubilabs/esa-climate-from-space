@@ -53,6 +53,7 @@
         "contain"
       ],
       "videoPoster": "assets/oceanwarming.jpg",
+      "videoCaptions": "assets/oceanwarming.vtt",
       "videoSrc": [
         "assets/oceanwarming-web.mp4"
       ]
