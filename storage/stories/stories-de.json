@@ -9,15 +9,6 @@
     "categories": ["welcome"]
   },
   {
-    "id": "debug",
-    "title": "Willkommen zur neuen Story-Bildgalerie",
-    "description": "",
-    "image": "assets/Sentinel-2.jpg",
-    "tags": [],
-    "position": [-4.5, 58.5],
-    "categories": ["welcome"]
-  },
-  {
     "id": "story-21",
     "title": "Der Wasserzyklus",
     "description": "",
@@ -272,5 +263,14 @@
     "tags": [],
     "position": [],
     "categories": ["ocean"]
+  },
+  {
+    "id": "story-45",
+    "title": "Land Carbon Dynamics",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [],
+    "categories": ["land", "carbon_cycle"]
   }
 ]

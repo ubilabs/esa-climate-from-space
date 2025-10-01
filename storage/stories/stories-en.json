@@ -9,15 +9,6 @@
     "categories": ["welcome"]
   },
   {
-    "id": "debug",
-    "title": "Welcome to the new story image gallery",
-    "description": "",
-    "image": "assets/story21-image01.jpg",
-    "tags": [],
-    "position": [-4.5, 58.5],
-    "categories": ["welcome"]
-  },
-  {
     "id": "story-21",
     "title": "The Water Cycle",
     "description": "",
@@ -272,5 +263,14 @@
     "tags": [],
     "position": [],
     "categories": ["ocean"]
+  },
+  {
+    "id": "story-45",
+    "title": "Land Carbon Dynamics",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [],
+    "categories": ["land", "carbon_cycle"]
   }
 ]
