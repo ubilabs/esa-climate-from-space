@@ -90,11 +90,6 @@ In addition all remote files on cloud storage have to be updated to the new vers
 Copy the master web application files into a separate version folder
 `gsutil cp -r gs://esa-cfs-versions/web/master/* gs://esa-cfs-versions/web/{VERSION}/`
 
-Trigger the electron build task on Cloud build for the master branch (https://console.cloud.google.com/cloud-build/triggers?project=esa-climate-from-space)
-
-Copy the master electron application files into a separate version folder
-`gsutil cp -r gs://esa-cfs-versions/electron/master/*{VERSION}* gs://esa-cfs-versions/electron/{VERSION}/`
-
 ### Add new story (content)
 
 To add a new story or update content, follow these steps:
