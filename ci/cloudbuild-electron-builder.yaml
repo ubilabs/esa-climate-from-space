@@ -13,7 +13,7 @@ steps:
 
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
     entrypoint: 'bash'
-    args: ['-c', 'gsutil -m cp -r gs://esa-cfs-tiles/$(cat version.txt)/basemaps ./dist']
+    args: ['-c', 'gsutil -m cp -r gs://esa-cfs-tiles/$$(cat version.txt)/basemaps ./dist']
 
   - name: gcr.io/esa-climate-from-space/electron-builder
     env:
@@ -33,8 +33,11 @@ steps:
       cd /workspace/dist-electron/mac
       zip -r /workspace/dist-electron/esa-climate-from-space-$$VERSION-mac.zip ./*
 
-artifacts:
-  objects:
-    location: 'gs://esa-cfs-versions/electron/${BRANCH_NAME}'
-    paths: ['./dist-electron/esa-climate*']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        VERSION=$$(cat version.txt)
+        gsutil -m cp ./dist-electron/esa-climate* gs://esa-cfs-versions/electron/$$VERSION/
 timeout: 2500s
