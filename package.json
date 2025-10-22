@@ -105,6 +105,6 @@
     "svg-loaders-react": "^3.1.1",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.23.0",
-    "vite": "^6.3.6"
+    "vite": "^6.4.1"
   }
 }
