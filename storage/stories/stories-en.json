@@ -263,5 +263,14 @@
     "tags": [],
     "position": [],
     "categories": ["ocean"]
+  },
+  {
+    "id": "story-45",
+    "title": "Land Carbon Dynamics",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [],
+    "categories": ["land", "carbon_cycle"]
   }
 ]

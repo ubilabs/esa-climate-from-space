@@ -25,7 +25,17 @@ const LayerListItem: FunctionComponent<Props> = ({
   });
 
   return (
-    <div className={styles.layerItem} onClick={() => onSelect(layer.id, false)}>
+    <div
+      className={styles.layerItem}
+      onClick={() => onSelect(layer.id, false)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          onSelect(layer.id, false);
+        }
+      }}
+      role="button"
+      tabIndex={0}
+    >
       <span className={styles.layerTitle}>{layer.shortName}</span>
       {isMainSelected && (
         <button className={styles.compare}>

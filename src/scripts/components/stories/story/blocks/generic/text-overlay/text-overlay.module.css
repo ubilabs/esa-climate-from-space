@@ -1,0 +1,48 @@
+.textOverlay {
+  background: rgb(1, 30, 43);
+  width: 100%;
+  /* As we want the slides to snap, we need to disable the scroll snap alignment on the container. Otherwise, it might not work properly */
+  > * {
+    height: var(--story-height);
+  }
+}
+
+.slide {
+  position: relative;
+  color: white;
+
+  .slidesContainer {
+    width: 100%;
+    top: 0;
+    position: absolute;
+    overflow: hidden;
+  }
+
+  /* Either video or image as background */
+  .assetContainer {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--story-height);
+    z-index: 1;
+    will-change: transform;
+  }
+
+  .asset {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(1, 30, 43, 0.5);
+    z-index: 2;
+  }
+}

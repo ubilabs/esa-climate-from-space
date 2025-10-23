@@ -4,6 +4,43 @@ import { UiEmbedElement } from "../types/embed-elements";
 
 import { GlobeProjection } from "../types/globe-projection";
 import { GlobeState } from "../reducers/globe/globe-state";
+import { AppRoute } from "../types/app-routes";
+import { LenisOptions } from "lenis";
+import { isIos16orLower } from "../libs/is-ios-16-or-lower";
+
+/**
+ * Routes are utilized to manage state transitions within the application.
+ * The RouteMatch component is updating the state as it renders across all routes.
+ * Legacy routes are also supported and maintained.
+ * Extend or modify route patterns here as necessary to accommodate new requirements.
+ * Be aware that the order here matters because this object is used to match route patterns
+ */
+export const ROUTES = {
+  [AppRoute.LegacyStory]: {
+    path: "stories/:storyId/:slideIndex",
+    end: true,
+  },
+  [AppRoute.LegacyStories]: { path: "stories/", end: true },
+  [AppRoute.About]: { path: "/about", end: true },
+  [AppRoute.PresentStory]: {
+    path: "/present/:storyId/:slideIndex",
+    end: true,
+  },
+  [AppRoute.Present]: { path: "/present", end: true },
+  [AppRoute.ShowcaseStory]: {
+    path: "/showcase/:storyIds/:storyIndex/:slideIndex",
+    end: true,
+  },
+  [AppRoute.ShowcaseStories]: { path: "/showcase/:storyIds", end: true },
+  [AppRoute.Showcase]: { path: "/showcase", end: true },
+  [AppRoute.Stories]: {
+    path: "/:category/stories/:storyId/:slideIndex",
+    end: true,
+  },
+  [AppRoute.Data]: { path: "/:category/data", end: true },
+  [AppRoute.NavContent]: { path: "/:category", end: true },
+  [AppRoute.Base]: { path: "/", end: true },
+} as const;
 
 // Constants for auto-rotation timing of the content navigation
 // This is not related to the auto rotation of the globe
@@ -11,7 +48,14 @@ import { GlobeState } from "../reducers/globe/globe-state";
 export const AUTO_ROTATE_INTERVAL = 5000; // Time between auto-rotations in milliseconds
 export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interaction before restarting auto-rotation
 
-export const CONTENT_NAV_LONGITUDE_OFFSET = -55;
+export const CONTENT_NAV_LONGITUDE_OFFSET = -30;
+export const STORY_LATITUDE_OFFSET = 5; // Offset for the latitude when flying to the location
+export const ALTITUDE_FACTOR_DESKTOP = 0.5;
+
+export const WHEEL_SCALE_FACTOR = 0.001,
+  MIN_ZOOM_SCALE = 1,
+  PINCH_SCALE_FACTOR = 100,
+  MAX_ZOOM_SCALE = 5;
 
 // The order of these is important for the stories menu
 export const categoryTags = [
@@ -37,8 +81,10 @@ const globeState: GlobeState = {
     renderMode: "globe" as RenderMode,
     lat: 25,
     lng: 0,
-    altitude: 23840000,
+    altitude: 25840000,
     zoom: 0,
+    // Initially, this should be set to false since isAnimated defaults to true.
+    // If set to true, it could cause delays in responding to user interactions.
     isAnimated: false,
   },
   spinning: true,
@@ -148,7 +194,6 @@ export default {
   legendImage: `${baseUrlTiles}/{id}/legend.png`,
   downloadUrls,
   localStorageLanguageKey: "language",
-  localStorageHasUserInteractedKey: "hasUserInteracted",
   localStorageWelcomeScreenKey: "welcomeScreenChecked",
   delay: 5000,
   feedbackUrl: "https://climate.esa.int/en/helpdesk/",
@@ -169,4 +214,16 @@ export default {
     "ol",
     "strong",
   ],
+  lenisOptions: {
+    lerp: 0.06, // primary smoothing knob (heavier than default)
+    wheelMultiplier: 0.7, // good for story sites
+    syncTouch: !isIos16orLower(), // keep DOM/IO in sync (disable on old iOS)
+    smoothWheel: true,
+    smoothTouch: true, // enable smoothing on touch
+    touchMultiplier: 2.5, // smaller per-swipe distance (was 6)
+    // Extra touch-only gravity controls (available in newer Lenis versions):
+    syncTouchLerp: 0.04, // lower => heavier/floatier tail
+    touchInertiaExponent: 0.5, // higher => longer inertia feel
+    easing: (t: number) => 1 - Math.pow(1 - t, 2), // quadOut
+  } as LenisOptions,
 };

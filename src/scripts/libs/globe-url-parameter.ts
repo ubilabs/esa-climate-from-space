@@ -1,8 +1,8 @@
-import { GlobeState } from "../reducers/globe/index";
 import { UrlHashState } from "../types/url-hash-state";
 
 import { GlobeProjection } from "../types/globe-projection";
 import { RenderMode } from "@ubilabs/esa-webgl-globe";
+import { GlobeState } from "../reducers/globe/globe-state";
 
 const SEPARATOR_CHAR = "I";
 const PARAM_COUNT = 9;

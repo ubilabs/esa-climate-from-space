@@ -1,32 +1,42 @@
 {
   "id": "story-33",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story33-image04.jpg",
+    "focus": "center",
+    "title": "Urban Sprawl",
+    "subtitle": "Kairo, Ägypten",
+    "altText": "Urban Sprawl in Kairo, Ägypten",
+    "slides": [
+      {
+        "text": "30 Jahre Kairo: Ägyptens sich ausbreitende Hauptstadt. Das erste Bild wurde 1988 vom US-Satelliten Landsat-5 aufgenommen, das zweite 2018 und das dritte 2021, beide von der Copernicus-Sentinel-2-Mission. Satellitengestützte Bilder sind für die Überwachung großflächiger städtischer Entwicklungen nützlich. \r\n\r\nCredits: enthält modifizierte Copernicus-Sentinel-Daten (2018), verarbeitet von der ESA. USGS/ESA"
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Urban Sprawl\r\n\r\nKairo, Ägypten",
-      "shortText": "# Urban Sprawl\r\n\r\nKairo, Ägypten",
-      "images": [
-        "assets/story33-image04.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Kairo, Zersiedelung\r\n\r\n30 Jahre Kairo: Ägyptens sich ausbreitende Hauptstadt. Das erste Bild wurde 1988 vom US-Satelliten Landsat-5 aufgenommen, das zweite 2018 und das dritte 2021, beide von der Copernicus-Sentinel-2-Mission. Satellitengestützte Bilder sind für die Überwachung großflächiger städtischer Entwicklungen nützlich. \r\n\r\nCredits: enthält modifizierte Copernicus-Sentinel-Daten (2018), verarbeitet von der ESA. USGS/ESA",
-      "shortText": "## Kairo, Zersiedelung\r\n\r\n30 Jahre Kairo: Ägyptens sich ausbreitende Hauptstadt. Das erste Bild wurde 1988 vom US-Satelliten Landsat-5 aufgenommen, das zweite 2018 und das dritte 2021, beide von der Copernicus-Sentinel-2-Mission. Satellitengestützte Bilder sind für die Überwachung großflächiger städtischer Entwicklungen nützlich. \r\n\r\nCredits: enthält modifizierte Copernicus-Sentinel-Daten (2018), verarbeitet von der ESA. USGS/ESA",
-      "images": [
-        "assets/story33-image01.jpg",
-        "assets/story33-image02.jpg",
-        "assets/story33-image03.jpg"
-      ],
-      "imageCaptions": [
-        "Dieses Bild wurde am 14. August 1988 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung vor mehr als 30 Jahren",
-        "Dieses Bild wurde am 2. August 2018 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung",
-        "Dieses Bild wurde am 31. August 2021 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung"
-      ],
-      "imageFits": [
-        "cover",
-        "cover",
-        "cover"
+      "type": "imageTime",
+      "slides": [
+        {
+          "focus": "left",
+          "url": "assets/story33-image01.jpg",
+          "caption": "Dieses Bild wurde am 14. August 1988 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung vor mehr als 30 Jahren",
+          "altText": "Dieses Bild wurde am 14. August 1988 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung vor mehr als 30 Jahren",
+          "flag": "1988"
+        },
+        {
+          "focus": "left",
+          "url": "assets/story33-image02.jpg",
+          "caption": "Dieses Bild wurde am 2. August 2018 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung",
+          "altText": "Dieses Bild wurde am 2. August 2018 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung",
+          "flag": "2018"
+        },
+        {
+          "focus": "left",
+          "url": "assets/story33-image03.jpg",
+          "caption": "Dieses Bild wurde am 31. August 2021 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung",
+          "altText": "Dieses Bild wurde am 31. August 2021 aufgenommen und zeigt die Stadt Kairo und ihre Umgebung",
+          "flag": "2021"
+        }
       ]
     }
   ]

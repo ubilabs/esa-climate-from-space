@@ -7,7 +7,7 @@ const downloadProgressSlice = createSlice({
   name: "downloadProgress",
   initialState,
   reducers: {
-    setDownloadProgress(state, action: PayloadAction<DownloadProgress>) {
+    setDownloadProgress(_state, action: PayloadAction<DownloadProgress>) {
       return action.payload;
     },
   },

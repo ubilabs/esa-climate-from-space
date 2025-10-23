@@ -90,11 +90,6 @@ In addition all remote files on cloud storage have to be updated to the new vers
 Copy the master web application files into a separate version folder
 `gsutil cp -r gs://esa-cfs-versions/web/master/* gs://esa-cfs-versions/web/{VERSION}/`
 
-Trigger the electron build task on Cloud build for the master branch (https://console.cloud.google.com/cloud-build/triggers?project=esa-climate-from-space)
-
-Copy the master electron application files into a separate version folder
-`gsutil cp -r gs://esa-cfs-versions/electron/master/*{VERSION}* gs://esa-cfs-versions/electron/{VERSION}/`
-
 ### Add new story (content)
 
 To add a new story or update content, follow these steps:
@@ -115,7 +110,8 @@ To add a new story or update content, follow these steps:
 
 ## Contact
 
-- PM Ubilabs: Patrick Mast <mast@ubilabs.net>
-- Dev Ubilabs: Philipp Wambach <wambach@ubilabs.net>
-- Dev Ubilabs: Katherina Marcenko <marcenko@ubilabs.net>
-- Dev Ubilabs: Malte Modrow <modrow@ubilabs.net>
+- PM Ubilabs: Annika van Lengen <vanlengen@ubilabs.net>
+- Dev Ubilabs: Andreas Helms <helms@ubilabs.net>
+- Dev Ubilabs: Immo Beeck <beeck@ubilabs.net>
+- Design Ubilabs: Kai Dohse <dohse@ubilabs.net>
+- Design Ubilabs: Elena Menzel <menzel@ubilabs.net>

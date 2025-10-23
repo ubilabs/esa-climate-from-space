@@ -1,38 +1,62 @@
 {
   "id": "story-37",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story37-image07.jpg",
+    "focus": "center",
+    "title": "Satellites pour l'amour de la tourbe",
+    "subtitle": "Flow Country, Écosse",
+    "altText": "Satellites pour l'amour de la tourbe en Flow Country, Écosse",
+    "slides": [
+      {
+        "text": "Les tourbières ne représentent que 3 % des terres de la planète, mais elles capturent deux fois plus de dioxyde de carbone que toutes les forêts réunies. Dans les tourbières saines, la mousse de tourbe ne se décompose pas complètement et s'accumule lentement pour former des couches de tourbe riches en carbone. Toutefois, si la tourbière s'assèche ou est endommagée par un incendie, le carbone est libéré, ce qui aggrave les effets du changement climatique."
+      },
+      {
+        "text": "Le Flow Country est la plus grande étendue de tourbières de couverture encore existante en Europe, et l'on estime que le carbone stocké équivaut à 100 ans d'émissions de combustibles fossiles de l'Écosse. L'imagerie satellitaire peut être utilisée pour créer des cartes des tourbières, mesurer l'humidité du sol et détecter les perturbations telles que les incendies, ce qui rend la surveillance et la préservation de ces paysages précieux moins coûteuses et plus faciles.\nCrédits : contient des données Copernicus Sentinel modifiées (2018, 2019), traitées par l'ESA, CC BY-SA 3.0 IGO"
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Satellites pour l'amour de la tourbe \r\n\r\nFlow Country, Écosse",
-      "shortText": "# Satellites pour l'amour de la tourbe \r\n\r\nFlow Country, Écosse",
-      "images": [
-        "assets/story37-image07.jpg"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image01.jpg",
+          "caption": "Cette mosaïque, acquise le 28 mai 2018, offre une rare vue sans nuage sur les vastes étendues du Flow Country écossais.",
+          "altText": "",
+          "focus": "right"
+        },
+        {
+          "url": "assets/story37-image02.jpg",
+          "caption": "Cette carte à haute résolution de l'occupation des sols dérivée des données de Copernicus Sentinel-2 montre l'étendue des tourbières en violet.",
+          "altText": "",
+          "focus": "right"
+        }
       ]
     },
     {
-      "type": "image",
-      "text": "## Flow Country, Écosse \r\n\r\nLes tourbières ne représentent que 3 % des terres de la planète, mais elles capturent deux fois plus de dioxyde de carbone que toutes les forêts réunies. Dans les tourbières saines, la mousse de tourbe ne se décompose pas complètement et s'accumule lentement pour former des couches de tourbe riches en carbone. Toutefois, si la tourbière s'assèche ou est endommagée par un incendie, le carbone est libéré, ce qui aggrave les effets du changement climatique. Le Flow Country est la plus grande étendue de tourbières de couverture encore existante en Europe, et l'on estime que le carbone stocké équivaut à 100 ans d'émissions de combustibles fossiles de l'Écosse. L'imagerie satellitaire peut être utilisée pour créer des cartes des tourbières, mesurer l'humidité du sol et détecter les perturbations telles que les incendies, ce qui rend la surveillance et la préservation de ces paysages précieux moins coûteuses et plus faciles. \r\n\r\nCrédits : contient des données Copernicus Sentinel modifiées (2018, 2019), traitées par l'ESA, CC BY-SA 3.0 IGO",
-      "shortText": "## Flow Country, Écosse \r\n\r\nLes tourbières ne représentent que 3 % des terres de la planète, mais elles capturent deux fois plus de dioxyde de carbone que toutes les forêts réunies. Dans les tourbières saines, la mousse de tourbe ne se décompose pas complètement et s'accumule lentement pour former des couches de tourbe riches en carbone. Toutefois, si la tourbière s'assèche ou est endommagée par un incendie, le carbone est libéré, ce qui aggrave les effets du changement climatique. Le Flow Country est la plus grande étendue de tourbières de couverture encore existante en Europe, et l'on estime que le carbone stocké équivaut à 100 ans d'émissions de combustibles fossiles de l'Écosse. L'imagerie satellitaire peut être utilisée pour créer des cartes des tourbières, mesurer l'humidité du sol et détecter les perturbations telles que les incendies, ce qui rend la surveillance et la préservation de ces paysages précieux moins coûteuses et plus faciles. \r\n\r\nCrédits : contient des données Copernicus Sentinel modifiées (2018, 2019), traitées par l'ESA, CC BY-SA 3.0 IGO",
-      "images": [
-        "assets/story37-image01.jpg",
-        "assets/story37-image02.jpg",
-        "assets/story37-image04.jpg",
-        "assets/story37-image05.jpg",
-        "assets/story37-image06.jpg"
-      ],
-      "imageCaptions": [
-        "Des satellites pour l'amour de la tourbe. Cette mosaïque, acquise le 28 mai 2018, offre une rare vue sans nuage sur les vastes étendues du Flow Country écossais.",
-        "Des satellites pour l'amour de la tourbe. Cette carte à haute résolution de l'occupation des sols dérivée des données de Copernicus Sentinel-2 montre l'étendue des tourbières en violet.",
-        "Des satellites pour l'amour de la tourbe. Un gigantesque incendie a brûlé 5 700 hectares de tourbières en 2019. Cette image a été prise le 16 mai.",
-        "Des satellites pour l'amour de la tourbe. L'image en fausses couleurs incluant le canal proche infrarouge met en évidence la végétation saine en rouge et montre la cicatrice de brûlure en marron foncé.",
-        "Des satellites pour l'amour de la tourbe. L'image en fausses couleurs incluant les canaux infrarouges à ondes courtes met en évidence le front de feu actif en rouge vif."
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "cover",
-        "cover",
-        "cover"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image04.jpg",
+          "caption": "Un gigantesque incendie a brûlé 5 700 hectares de tourbières en 2019. Cette image a été prise le 16 mai.",
+          "altText": "",
+
+          "focus": "left"
+        },
+        {
+          "url": "assets/story37-image05.jpg",
+          "caption": "L'image en fausses couleurs incluant le canal proche infrarouge met en évidence la végétation saine en rouge et montre la cicatrice de brûlure en marron foncé.",
+          "altText": "",
+
+          "focus": "left"
+        },
+        {
+          "url": "assets/story37-image06.jpg",
+          "caption": "L'image en fausses couleurs incluant les canaux infrarouges à ondes courtes met en évidence le front de feu actif en rouge vif.",
+          "altText": "",
+
+          "focus": "left"
+        }
       ]
     }
   ]

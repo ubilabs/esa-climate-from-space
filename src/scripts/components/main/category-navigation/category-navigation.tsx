@@ -8,19 +8,17 @@ import React, {
 import { useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { createPortal } from "react-dom";
-import cx from "classnames";
 
 import { categoryTags } from "../../../config/main";
 
 import { setSelectedContentAction } from "../../../reducers/content";
 import useAutoRotate from "../../../hooks/use-auto-content-rotation";
+import { useNavGestures } from "../../../libs/use-nav-gestures";
 import { useContentParams } from "../../../hooks/use-content-params";
-import {
-  useCategoryScrollHandlers,
-  useCategoryTouchHandlers,
-} from "./use-category-event-handlers";
 
 import styles from "./category-navigation.module.css";
+
+import cx from "classnames";
 
 interface Props {
   isMobile: boolean;
@@ -65,18 +63,14 @@ const CategoryNavigation: FunctionComponent<Props> = ({
     categoryIndex !== -1 ? categoryIndex : 0,
   );
 
-  useCategoryScrollHandlers(
-    currentIndex,
+  // Custom hook to handle wheel and drag gestures for navigation
+  useNavGestures(
+    arcs.length,
     setCurrentIndex,
     setLastUserInteractionTime,
+    "x",
+    true,
   );
-
-  const { handleTouchStart, handleTouchMove, handleTouchEnd } =
-    useCategoryTouchHandlers(
-      currentIndex,
-      setCurrentIndex,
-      setLastUserInteractionTime,
-    );
 
   // State to control the tooltip visibility and position. The tooltip the currently hovered or focused category
   const [tooltipInfo, setTooltipInfo] = useState<{
@@ -100,7 +94,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   // We hide the overflow in the parent container
   const _size = isMobile
     ? width + _overSize
-    : Math.min(width / 2, height - 60);
+    : Math.min(width / 2, height - 100);
 
   const _radius = _size / 2 - 10;
   const _center = _size / 2;
@@ -155,7 +149,8 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   };
 
   // Calculate final rotation offset
-  const rotationOffset = getShortestRotation(currentRotation, targetRotation);
+  const rotationOffset =
+    getShortestRotation(currentRotation, targetRotation) - (isMobile ? 0 : 90);
 
   // Handle showing tooltip for both mouse events and keyboard focus
   const handleShowTooltip = (
@@ -271,15 +266,12 @@ const CategoryNavigation: FunctionComponent<Props> = ({
           styles["reveal-from-left"],
         )}
         aria-label="Circle Navigation"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
       >
         {tooltipInfo.visible &&
           !isMobile &&
           tooltipInfo.x !== undefined &&
           tooltipInfo.y !== undefined &&
-          // We create a portal to render to render the tooltip on the body
+          // We create a portal to render the tooltip on the body
           // We do this to avoid z-index and stacking context issues
           // The tooltip position x and y values are set to the cursor position
           createPortal(
@@ -353,7 +345,6 @@ A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
                 tabIndex={0}
                 role="button"
                 aria-label={`${Object.keys(arcs[index])[0]} category`}
-                aria-selected={isCurrentlySelected}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();

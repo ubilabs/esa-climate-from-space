@@ -5,8 +5,6 @@ interface Props {
   className?: string;
 }
 
-export const GlobeCompareLayer: FunctionComponent<Props> = ({
-  className,
-}) => {
-  return <GetDataWidget  className={className} />;
+export const GlobeCompareLayer: FunctionComponent<Props> = ({ className }) => {
+  return <GetDataWidget className={className} showMarkers={false} />;
 };

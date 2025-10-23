@@ -14,7 +14,7 @@ import { Language } from "../types/language";
 import type { Layer } from "../types/layer";
 import { LayerList } from "../types/layer-list";
 import { LegacyStory } from "../types/legacy-story";
-import type { Story } from "../types/story";
+import type { LegacyStory, Story } from "../types/story";
 import type { StoryList } from "../types/story-list";
 import { fetchLayers } from "../api/fetch-layers";
 
@@ -69,7 +69,7 @@ const fetchAndConvertStory = async (id: string, language: Language) => {
   const rawData = await fetchStory(id, language as Language);
   const data = isLegacyStory(rawData)
     ? convertLegacyStory(rawData as LegacyStory)
-    : (rawData as Story);
+    : (rawData as LegacyStory);
   return data;
 };
 
@@ -89,6 +89,26 @@ export const storiesApi = createApi({
     getStory: builder.query<Story, { id: string; language: string }>({
       queryFn: async ({ id, language }) => {
         try {
+          const data = await fetchStory(id, language as Language);
+          return { data };
+        } catch (error) {
+          return {
+            error: {
+              status: "CUSTOM_ERROR",
+              error: error instanceof Error ? error.message : "Unknown error",
+            },
+          };
+        }
+      },
+    }),
+
+    // Fetch legacy stories. Still in use in LegacyStory.tsx
+    getLegacyStory: builder.query<
+      LegacyStory,
+      { id: string; language: string }
+    >({
+      queryFn: async ({ id, language }) => {
+        try {
           const data = await fetchAndConvertStory(id, language as Language);
           return { data };
         } catch (error) {
@@ -101,7 +121,10 @@ export const storiesApi = createApi({
         }
       },
     }),
-    getStories: builder.query<Story[], { ids: string[]; language: string }>({
+    getStories: builder.query<
+      LegacyStory[],
+      { ids: string[]; language: string }
+    >({
       queryFn: async ({ ids, language }) => {
         try {
           const data = await Promise.all(
@@ -123,5 +146,9 @@ export const storiesApi = createApi({
 
 export const { useGetLayerListQuery, useGetLayerQuery } = layersApi;
 
-export const { useGetStoriesQuery, useGetStoryListQuery, useGetStoryQuery } =
-  storiesApi;
+export const {
+  useGetStoriesQuery,
+  useGetStoryListQuery,
+  useGetLegacyStoryQuery,
+  useGetStoryQuery,
+} = storiesApi;

@@ -1,35 +1,56 @@
 {
   "id": "story-34",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story34-image05.jpg",
+    "focus": "center",
+    "title": "Pérdida de bosques",
+    "subtitle": "Cuenca del Amazonas, Brasil",
+    "altText": "Pérdida de bosques en la Cuenca del Amazonas, Brasil",
+    "slides": [
+      {
+        "text": "La primera secuencia muestra la pérdida acumulada de bosques de 2001 a 2020 en la cuenca del Amazonas. La pérdida de bosques en este conjunto de datos se define como el cambio de un estado forestal a no forestal para cada píxel del conjunto de datos. Los datos de pérdida de bosques, procedentes de la Universidad de Maryland, se han superpuesto al conjunto de datos de biomasa sobre el suelo de 2020, generado por la Iniciativa sobre el Cambio Climático de la ESA. Como se aprecia en la segunda secuencia, las selvas tropicales de todo el mundo se están destruyendo a un ritmo alarmante."
+      },
+      {
+        "text": "La conversión de las selvas tropicales en pastos y tierras de cultivo está causando un efecto dramático en el paisaje, la biodiversidad y el medio ambiente. Esto es muy preocupante, ya que las selvas tropicales desempeñan un papel importante en nuestro clima global. Se calcula que ya se ha perdido el 20% del bioma amazónico y la tendencia empeorará si no se pone freno.\nCréditos: ESA (fuentes de datos: proyecto CCI Biomass y Hansen/UMD/Google/USGS/NASA). Contiene datos modificados de Copernicus Sentinel (2019), procesados por la ESA. USGS/ESA"
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Pérdida de bosques\r\n\r\nCuenca del Amazonas, Brasil",
-      "shortText": "# Pérdida de bosques\r\n\r\nCuenca del Amazonas, Brasil",
-      "images": [
-        "assets/story34-image05.jpg"
+      "type": "imageTime",
+      "slides": [
+        {
+          "url": "assets/story34-image01.jpg",
+          "altText": "",
+          "caption": "2020 biomasa aérea en la cuenca amazónica",
+          "flag": "2001",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story34-image02.jpg",
+          "altText": "",
+          "caption": "Pérdida acumulada de bosques entre 2001 y 2020 en la cuenca del Amazonas",
+          "flag": "2020",
+          "focus": "left"
+        }
       ]
     },
     {
-      "type": "image",
-      "text": "## Pérdida de bosques en el Amazonas, Brasil\r\n\r\nLa primera secuencia muestra la pérdida acumulada de bosques de 2001 a 2020 en la cuenca del Amazonas. La pérdida de bosques en este conjunto de datos se define como el cambio de un estado forestal a no forestal para cada píxel del conjunto de datos. Los datos de pérdida de bosques, procedentes de la Universidad de Maryland, se han superpuesto al conjunto de datos de biomasa sobre el suelo de 2020, generado por la Iniciativa sobre el Cambio Climático de la ESA. Como se aprecia en la segunda secuencia, las selvas tropicales de todo el mundo se están destruyendo a un ritmo alarmante. La conversión de las selvas tropicales en pastos y tierras de cultivo está causando un efecto dramático en el paisaje, la biodiversidad y el medio ambiente. Esto es muy preocupante, ya que las selvas tropicales desempeñan un papel importante en nuestro clima global. Se calcula que ya se ha perdido el 20% del bioma amazónico y la tendencia empeorará si no se pone freno. \r\n\r\nCréditos: ESA (fuentes de datos: proyecto CCI Biomass y Hansen/UMD/Google/USGS/NASA). Contiene datos modificados de Copernicus Sentinel (2019), procesados por la ESA. USGS/ESA",
-      "shortText": "## Pérdida de bosques en el Amazonas, Brasil\r\n\r\nLa primera secuencia muestra la pérdida acumulada de bosques de 2001 a 2020 en la cuenca del Amazonas. La pérdida de bosques en este conjunto de datos se define como el cambio de un estado forestal a no forestal para cada píxel del conjunto de datos. Los datos de pérdida de bosques, procedentes de la Universidad de Maryland, se han superpuesto al conjunto de datos de biomasa sobre el suelo de 2020, generado por la Iniciativa sobre el Cambio Climático de la ESA. Como se aprecia en la segunda secuencia, las selvas tropicales de todo el mundo se están destruyendo a un ritmo alarmante. La conversión de las selvas tropicales en pastos y tierras de cultivo está causando un efecto dramático en el paisaje, la biodiversidad y el medio ambiente. Esto es muy preocupante, ya que las selvas tropicales desempeñan un papel importante en nuestro clima global. Se calcula que ya se ha perdido el 20% del bioma amazónico y la tendencia empeorará si no se pone freno. \r\n\r\nCréditos: ESA (fuentes de datos: proyecto CCI Biomass y Hansen/UMD/Google/USGS/NASA). Contiene datos modificados de Copernicus Sentinel (2019), procesados por la ESA. USGS/ESA",
-      "images": [
-        "assets/story34-image01.jpg",
-        "assets/story34-image02.jpg",
-        "assets/story34-image03.jpg",
-        "assets/story34-image04.jpg"
-      ],
-      "imageCaptions": [
-        "2020 biomasa aérea en la cuenca amazónica",
-        "Pérdida acumulada de bosques entre 2001 y 2020 en la cuenca del Amazonas",
-        "Rondônia, Brasil: deforestación en la selva amazónica. La deforestación y las zonas urbanas son claramente visibles en tonos beige, verde claro y marrón, mientras que el bosque intacto aparece de color verde oscuro. Esta imagen fue tomada el 8 de julio de 1989.",
-        "Rondônia, Brasil: deforestación en la selva amazónica. La deforestación y las zonas urbanas son claramente visibles en tonos beige, verde claro y marrón, mientras que el bosque intacto restante aparece de color verde oscuro. Esta imagen fue capturada el 5 de junio de 2019."
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "cover",
-        "cover"
+      "type": "imageTime",
+      "slides": [
+        {
+          "url": "assets/story34-image03.jpg",
+          "caption": "La deforestación y las zonas urbanas son claramente visibles en tonos beige, verde claro y marrón, mientras que el bosque intacto aparece de color verde oscuro. Esta imagen fue tomada el 8 de julio de 1989.",
+          "altText": "",
+
+          "flag": "1989"
+        },
+        {
+          "url": "assets/story34-image04.jpg",
+          "caption": ". La deforestación y las zonas urbanas son claramente visibles en tonos beige, verde claro y marrón, mientras que el bosque intacto restante aparece de color verde oscuro. Esta imagen fue capturada el 5 de junio de 2019.",
+          "altText": "",
+          "flag": "2019"
+        }
       ]
     }
   ]

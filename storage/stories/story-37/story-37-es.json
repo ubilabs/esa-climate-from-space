@@ -1,38 +1,60 @@
 {
   "id": "story-37",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story37-image07.jpg",
+    "focus": "center",
+    "title": "Satélites para la turba",
+    "subtitle": "Flow Country, Escocia",
+    "altText": "Satélites para la turba en Flow Country, Escocia",
+    "slides": [
+      {
+        "text": "Las turberas sólo representan el 3% de la superficie terrestre mundial, pero capturan el doble de dióxido de carbono que todos los bosques juntos. En las turberas sanas, el musgo de turba no se descompone del todo, sino que se acumula lentamente formando capas de turba rica en carbono. Sin embargo, si la turbera se seca o resulta dañada por un incendio, el carbono se libera, lo que agrava los efectos del cambio climático."
+      },
+      {
+        "text": "El Flow Country es la mayor extensión de turberas de manto que queda en Europa, y se calcula que el carbono almacenado equivale a 100 años de emisiones de combustibles fósiles en Escocia. Las imágenes por satélite pueden utilizarse para crear mapas de las turberas, medir la humedad del suelo y detectar perturbaciones como incendios, lo que abaratará y facilitará la vigilancia y conservación de estos valiosos paisajes.\nCréditos: contiene datos modificados de Copernicus Sentinel (2018, 2019), procesados por la ESA, CC BY-SA 3.0 IGO"
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Satélites para la turba \r\n\r\nFlow Country, Escocia",
-      "shortText": "# Satélites para la turba \r\n\r\nFlow Country, Escocia",
-      "images": [
-        "assets/story37-image07.jpg"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image01.jpg",
+          "caption": "Este mosaico, adquirido el 28 de mayo de 2018, ofrece una rara vista sin nubes sobre las vastas extensiones del Flow Country escocés.",
+          "altText": "",
+          "focus": "right"
+        },
+
+        {
+          "url": "assets/story37-image02.jpg",
+          "caption": "Este mapa de alta resolución de la cubierta terrestre derivado de los datos de Copernicus Sentinel-2 muestra la extensión de las turberas en púrpura.",
+          "altText": "",
+          "focus": "right"
+        }
       ]
     },
     {
-      "type": "image",
-      "text": "## Flow Country, Escocia \r\n\r\nLas turberas sólo representan el 3% de la superficie terrestre mundial, pero capturan el doble de dióxido de carbono que todos los bosques juntos. En las turberas sanas, el musgo de turba no se descompone del todo, sino que se acumula lentamente formando capas de turba rica en carbono. Sin embargo, si la turbera se seca o resulta dañada por un incendio, el carbono se libera, lo que agrava los efectos del cambio climático. El Flow Country es la mayor extensión de turberas de manto que queda en Europa, y se calcula que el carbono almacenado equivale a 100 años de emisiones de combustibles fósiles en Escocia. Las imágenes por satélite pueden utilizarse para crear mapas de las turberas, medir la humedad del suelo y detectar perturbaciones como incendios, lo que abaratará y facilitará la vigilancia y conservación de estos valiosos paisajes. \r\n\r\nCréditos: contiene datos modificados de Copernicus Sentinel (2018, 2019), procesados por la ESA, CC BY-SA 3.0 IGO",
-      "shortText": "## Flow Country, Escocia \r\n\r\nLas turberas sólo representan el 3% de la superficie terrestre mundial, pero capturan el doble de dióxido de carbono que todos los bosques juntos. En las turberas sanas, el musgo de turba no se descompone del todo, sino que se acumula lentamente formando capas de turba rica en carbono. Sin embargo, si la turbera se seca o resulta dañada por un incendio, el carbono se libera, lo que agrava los efectos del cambio climático. El Flow Country es la mayor extensión de turberas de manto que queda en Europa, y se calcula que el carbono almacenado equivale a 100 años de emisiones de combustibles fósiles en Escocia. Las imágenes por satélite pueden utilizarse para crear mapas de las turberas, medir la humedad del suelo y detectar perturbaciones como incendios, lo que abaratará y facilitará la vigilancia y conservación de estos valiosos paisajes. \r\n\r\nCréditos: contiene datos modificados de Copernicus Sentinel (2018, 2019), procesados por la ESA, CC BY-SA 3.0 IGO",
-      "images": [
-        "assets/story37-image01.jpg",
-        "assets/story37-image02.jpg",
-        "assets/story37-image04.jpg",
-        "assets/story37-image05.jpg",
-        "assets/story37-image06.jpg"
-      ],
-      "imageCaptions": [
-        "Satélites para la turba. Este mosaico, adquirido el 28 de mayo de 2018, ofrece una rara vista sin nubes sobre las vastas extensiones del Flow Country escocés.",
-        "Satélites para la turba. Este mapa de alta resolución de la cubierta terrestre derivado de los datos de Copernicus Sentinel-2 muestra la extensión de las turberas en púrpura.",
-        "Satélites para la turba. Un incendio masivo quemó 5.700 hectáreas de turbera en 2019. Esta imagen se tomó el 16 de mayo.",
-        "Satélites para la turba. Imagen en falso color que incluye el canal del infrarrojo cercano que ilumina la vegetación sana en rojo y muestra la cicatriz de la quemadura en marrón oscuro.",
-        "Satélites para la turba. La imagen en falso color que incluye los canales infrarrojos de onda corta destaca el frente de fuego activo en rojo brillante."
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "cover",
-        "cover",
-        "cover"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image04.jpg",
+          "caption": "Un incendio masivo quemó 5.700 hectáreas de turbera en 2019. Esta imagen se tomó el 16 de mayo.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story37-image05.jpg",
+          "caption": "Imagen en falso color que incluye el canal del infrarrojo cercano que ilumina la vegetación sana en rojo y muestra la cicatriz de la quemadura en marrón oscuro.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story37-image06.jpg",
+          "caption": "La imagen en falso color que incluye los canales infrarrojos de onda corta destaca el frente de fuego activo en rojo brillante.",
+          "altText": "",
+          "focus": "left"
+        }
       ]
     }
   ]

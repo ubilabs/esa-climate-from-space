@@ -1,0 +1,9 @@
+.slideContainer {
+  background: rgb(1, 30, 43);
+  width: 100%;
+  /* We should not use overflow: hidden here, as it will cause the scroll snap to not work properly. */
+
+  > * {
+    height: var(--story-height);
+  }
+}

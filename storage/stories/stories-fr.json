@@ -251,11 +251,20 @@
   },
   {
     "id": "story-44",
-    "title": "Ocean Warming",
+    "title": "Réchauffement des océans",
     "description": "",
     "image": "",
     "tags": [],
     "position": [],
     "categories": ["ocean"]
+  },
+  {
+    "id": "story-45",
+    "title": "Land Carbon Dynamics",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [],
+    "categories": ["land", "carbon_cycle"]
   }
 ]

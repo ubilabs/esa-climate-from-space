@@ -1,0 +1,47 @@
+.story {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+}
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  height: calc(100% - var(--footer-height));
+}
+
+.main > * {
+  box-sizing: content-box;
+  flex-grow: 1;
+  width: 50%;
+}
+
+.rightSideComponent {
+  height: 100%;
+}
+
+.layerDescription {
+  position: unset;
+  padding-right: 0;
+  min-height: 3.875em;
+}
+
+@media screen and (--mobile-viewport) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .main > :last-child {
+    min-height: 350px;
+  }
+
+  .main > * {
+    padding: 0.625em 1.5625em 0 1.5625em;
+    width: inherit;
+  }
+}

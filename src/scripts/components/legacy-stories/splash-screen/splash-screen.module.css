@@ -1,0 +1,39 @@
+.splashscreen {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  font-family: NotesEsa;
+  padding: 3.5em;
+}
+.content {
+  max-width: 65ch;
+  color: #fff;
+  font-size: 1em;
+}
+.content h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2.25em;
+  font-family: NotesEsaBold;
+  line-height: 1em;
+}
+.content p {
+  line-height: 1.375em;
+}
+.presentationContent {
+  font-size: 1.375em;
+}
+@media screen and (--mobile-s-viewport) {
+  .content {
+    padding: 1.25em;
+    width: 80%;
+  }
+}

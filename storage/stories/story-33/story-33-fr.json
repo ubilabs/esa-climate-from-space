@@ -1,32 +1,42 @@
 {
   "id": "story-33",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story33-image04.jpg",
+    "focus": "center",
+    "title": "L'étalement urbain",
+    "subtitle": "Le Caire, Égypte",
+    "altText": "L'étalement urbain au Caire, Égypte",
+    "slides": [
+      {
+        "text": "Le Caire en 30 ans : La capitale tentaculaire de l'Égypte. La première image a été prise par le satellite américain Landsat-5 en 1988, la deuxième en 2018 et la troisième en 2021, toutes deux issues de la mission Copernicus Sentinel-2. Les images satellitaires sont utiles pour surveiller le développement urbain à grande échelle. \r\n\r\nCrédits : contient des données Copernicus Sentinel modifiées (2018), traitées par l'ESA. USGS/ESA"
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# L'étalement urbain\r\n\r\nLe Caire, Égypte",
-      "shortText": "# L'étalement urbain\r\n\r\nLe Caire, Égypte",
-      "images": [
-        "assets/story33-image04.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Le Caire, L'étalement urbain\r\n\r\nLe Caire en 30 ans : La capitale tentaculaire de l'Égypte. La première image a été prise par le satellite américain Landsat-5 en 1988, la deuxième en 2018 et la troisième en 2021, toutes deux issues de la mission Copernicus Sentinel-2. Les images satellitaires sont utiles pour surveiller le développement urbain à grande échelle. \r\n\r\nCrédits : contient des données Copernicus Sentinel modifiées (2018), traitées par l'ESA. USGS/ESA",
-      "shortText": "## Le Caire, L'étalement urbain\r\n\r\nLe Caire en 30 ans : La capitale tentaculaire de l'Égypte. La première image a été prise par le satellite américain Landsat-5 en 1988, la deuxième en 2018 et la troisième en 2021, toutes deux issues de la mission Copernicus Sentinel-2. Les images satellitaires sont utiles pour surveiller le développement urbain à grande échelle. \r\n\r\nCrédits : contient des données Copernicus Sentinel modifiées (2018), traitées par l'ESA. USGS/ESA",
-      "images": [
-        "assets/story33-image01.jpg",
-        "assets/story33-image02.jpg",
-        "assets/story33-image03.jpg"
-      ],
-      "imageCaptions": [
-        "Cette image a été acquise le 14 août 1988 et montre la ville du Caire et ses environs il y a plus de 30 ans.",
-        "Cette image a été acquise le 2 août 2018 et montre la ville du Caire et ses environs",
-        "Cette image a été acquise le 31 août 2021 et montre la ville du Caire et ses environs."
-      ],
-      "imageFits": [
-        "cover",
-        "cover",
-        "cover"
+      "type": "imageTime",
+      "slides": [
+        {
+          "focus": "left",
+          "url": "assets/story33-image01.jpg",
+          "caption": "Cette image a été acquise le 14 août 1988 et montre la ville du Caire et ses environs il y a plus de 30 ans.",
+          "altText": "Cette image a été acquise le 14 août 1988 et montre la ville du Caire et ses environs il y a plus de 30 ans.",
+          "flag": "1988"
+        },
+        {
+          "focus": "left",
+          "url": "assets/story33-image02.jpg",
+          "caption": "Cette image a été acquise le 2 août 2018 et montre la ville du Caire et ses environs",
+          "altText": "Cette image a été acquise le 2 août 2018 et montre la ville du Caire et ses environs",
+          "flag": "2018"
+        },
+        {
+          "focus": "left",
+          "url": "assets/story33-image03.jpg",
+          "caption": "Cette image a été acquise le 31 août 2021 et montre la ville du Caire et ses environs.",
+          "altText": "Cette image a été acquise le 31 août 2021 et montre la ville du Caire et ses environs.",
+          "flag": "2021"
+        }
       ]
     }
   ]

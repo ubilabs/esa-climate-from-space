@@ -1,3 +1,5 @@
+# build with "gcloud builds submit --config ./ci/cloudbuild-build-electron-builder.yaml --timeout=2000 ./ci/docker"
+
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
@@ -6,7 +8,7 @@ steps:
         '-t',
         'gcr.io/$PROJECT_ID/electron-builder',
         '-f',
-        './docker/electron-builder/Dockerfile',
+        './electron-builder/Dockerfile',
         '.',
       ]
 images:

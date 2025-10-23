@@ -1,0 +1,23 @@
+.photo {
+  flex: 0;
+  width: 100%;
+  max-height: calc(100vh - 150px - var(--header-height) - var(--footer-height));
+  height: auto;
+}
+
+.lightboxPhoto {
+  flex: 1;
+  height: 0;
+}
+
+@media screen and (--mobile-viewport) {
+  .photo {
+    flex: 1;
+    height: 0;
+  }
+
+  .lightboxPhoto {
+    flex: 0;
+    height: auto;
+  }
+}

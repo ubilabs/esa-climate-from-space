@@ -1,29 +1,36 @@
 {
   "id": "story-36",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story36-image03.jpg",
+    "focus": "center",
+    "title": "Ciudad que se hunde",
+    "subtitle": "Yakarta, Indonesia",
+    "altText": "Ciudad que se hunde en Yakarta, Indonesia",
+    "slides": [
+      {
+        "text": "La capital indonesia de Yakarta, donde viven 10 millones de personas, es también una de las ciudades del mundo que más rápido se hunde debido a la gran extracción de aguas subterráneas y al mayor peso de los edificios."
+      },
+      {
+        "text": "Los investigadores sugieren que partes de la megaciudad podrían quedar totalmente sumergidas en 2050. Este mapa muestra las tasas medias de desplazamiento del suelo basadas en los datos del radar Sentinel-1. Los patrones locales de hundimiento alcanzan unos 12 cm al año.\nCréditos: ESA GEP & CNR-IREA"
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Sinking City\r\n\r\nYakarta, Indonesia",
-      "shortText": "# Sinking City\r\n\r\nYakarta, Indonesia",
-      "images": [
-        "assets/story36-image03.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Ciudad que se hunde, Yakarta, Indonesia\r\n\r\nLa capital indonesia de Yakarta, donde viven 10 millones de personas, es también una de las ciudades del mundo que más rápido se hunde debido a la gran extracción de aguas subterráneas y al mayor peso de los edificios. Los investigadores sugieren que partes de la megaciudad podrían quedar totalmente sumergidas en 2050. Este mapa muestra las tasas medias de desplazamiento del suelo basadas en los datos del radar Sentinel-1. Los patrones locales de hundimiento alcanzan unos 12 cm al año. \r\n\r\nCréditos: ESA GEP & CNR-IREA",
-      "shortText": "## Ciudad que se hunde, Yakarta, Indonesia\r\n\r\nLa capital indonesia de Yakarta, donde viven 10 millones de personas, es también una de las ciudades del mundo que más rápido se hunde debido a la gran extracción de aguas subterráneas y al mayor peso de los edificios. Los investigadores sugieren que partes de la megaciudad podrían quedar totalmente sumergidas en 2050. Este mapa muestra las tasas medias de desplazamiento del suelo basadas en los datos del radar Sentinel-1. Los patrones locales de hundimiento alcanzan unos 12 cm al año. \r\n\r\nCréditos: ESA GEP & CNR-IREA",
-      "images": [
-        "assets/story36-image01.jpg",
-        "assets/story36-image02.jpg"
-      ],
-      "imageCaptions": [
-        "Yakarta, Indonesia: la ciudad que se hunde. El uso de un gran número de imágenes de radar por satélite durante un periodo de dos años permite calcular con precisión el hundimiento del suelo.",
-        "Yakarta, Indonesia: la ciudad que se hunde. Utilizando un gran número de imágenes de radar por satélite a lo largo de un periodo de dos años, es posible calcular con precisión el hundimiento del suelo. En esta imagen se han superpuesto los cambios en el nivel de la superficie entre 2017 y 2018."
-      ],
-      "imageFits": [
-        "contain",
-        "contain"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story36-image01.jpg",
+          "caption": "El uso de un gran número de imágenes de radar por satélite durante un periodo de dos años permite calcular con precisión el hundimiento del suelo.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story36-image02.jpg",
+          "caption": "Utilizando un gran número de imágenes de radar por satélite a lo largo de un periodo de dos años, es posible calcular con precisión el hundimiento del suelo. En esta imagen se han superpuesto los cambios en el nivel de la superficie entre 2017 y 2018.",
+          "altText": "",
+          "focus": "left"
+        }
       ]
     }
   ]

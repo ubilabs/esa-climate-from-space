@@ -55,6 +55,7 @@ const LayerLegend: FunctionComponent<Props> = ({
         className={styles.image}
         style={{ backgroundColor: getBackgroundColor(basemap) }}
         src={imageUrl}
+        alt="Layer legend"
       />
 
       <div className={styles.values}>

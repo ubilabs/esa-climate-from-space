@@ -4,6 +4,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
 
 export default tseslint.config(
   { ignores: ["/node_modules/**", "/dist/**", "/dist-src-electron", "*.d.ts"] },
@@ -18,6 +19,7 @@ export default tseslint.config(
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
       prettier: eslintPluginPrettierRecommended,
+      "jsx-a11y": eslintPluginJsxA11y,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -25,6 +27,7 @@ export default tseslint.config(
         "warn",
         { allowConstantExport: true },
       ],
+      ...eslintPluginJsxA11y.configs.recommended.rules,
     },
   },
 );

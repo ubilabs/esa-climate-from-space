@@ -4,24 +4,27 @@
   align-items: center;
   padding: 0.6875em 2em;
   color: var(--text-default);
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    background-color: rgba(48, 64, 77, 0.5);
+
+    .layerTitle {
+      display: block;
+      overflow: hidden;
+      width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .compare {
+      display: block;
+      color: var(--main);
+    }
+  }
 }
-.layerItem:hover,
-.layerItem:focus {
-  background-color: rgba(48, 64, 77, 0.5);
-}
-.layerItem:hover .layerTitle,
-.layerItem:focus .layerTitle {
-  display: block;
-  overflow: hidden;
-  width: 100%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.layerItem:hover .compare,
-.layerItem:focus .compare {
-  display: block;
-  color: var(--main);
-}
+
 .compare {
   display: none;
   border: none;
@@ -31,6 +34,7 @@
   font-size: 0.6875em;
   cursor: pointer;
 }
+
 .layerTitle {
   display: flex;
   align-items: center;
@@ -41,6 +45,7 @@
   .compare {
     display: flex;
   }
+
   .layerTitle {
     display: block;
     overflow: hidden;

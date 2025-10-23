@@ -1,38 +1,58 @@
 {
   "id": "story-37",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story37-image07.jpg",
+    "focus": "center",
+    "title": "Satelliten um des Torfes willen",
+    "subtitle": "Flow Country, Scotland",
+    "altText": "Satelliten um des Torfes willen in Flow Country, Scotland",
+    "slides": [
+      {
+        "text": "Torfmoore machen nur 3 % der weltweiten Landfläche aus, binden aber doppelt so viel Kohlendioxid wie alle Wälder zusammen. In gesunden Mooren zersetzt sich das Torfmoos nicht vollständig, sondern bildet langsam Schichten aus kohlenstoffreichem Torf. Trocknet das Moor jedoch aus oder wird es durch einen Brand beschädigt, wird der Kohlenstoff freigesetzt und trägt so zu den Auswirkungen des Klimawandels bei. Das Flow Country ist das größte noch verbliebene Hochmoorgebiet in Europa."
+      },
+      {
+        "text": "Es wird geschätzt, dass der gespeicherte Kohlenstoff den schottischen Emissionen aus fossilen Brennstoffen für 100 Jahre entspricht. Mit Hilfe von Satellitenbildern können Karten von Mooren erstellt, die Bodenfeuchtigkeit gemessen und Störungen wie Brände erkannt werden, was die Überwachung und Erhaltung dieser wertvollen Landschaften billiger und einfacher macht.\nBildnachweis: enthält modifizierte Copernicus-Sentinel-Daten (2018, 2019), bearbeitet von der ESA, CC BY-SA 3.0 IGO"
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Satelliten um des Torfes willen \r\n\r\nFlow Country, Schottland",
-      "shortText": "# Satelliten um des Torfes willen \r\n\r\nFlow Country, Schottland",
-      "images": [
-        "assets/story37-image07.jpg"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image01.jpg",
+          "caption": "Dieses Mosaik, aufgenommen am 28. Mai 2018, bietet einen seltenen wolkenfreien Blick über die Weiten des schottischen Flow Country.",
+          "altText": "",
+          "focus": "right"
+        },
+        {
+          "url": "assets/story37-image02.jpg",
+          "caption": "Diese hochauflösende Landbedeckungskarte, die aus Copernicus Sentinel-2 Daten abgeleitet wurde, zeigt die Ausdehnung von Torfgebieten in Lila.",
+          "altText": "",
+          "focus": "right"
+        }
       ]
     },
     {
-      "type": "image",
-      "text": "## Flow Country, Schottland \r\n\r\nTorfmoore machen nur 3 % der weltweiten Landfläche aus, binden aber doppelt so viel Kohlendioxid wie alle Wälder zusammen. In gesunden Mooren zersetzt sich das Torfmoos nicht vollständig, sondern bildet langsam Schichten aus kohlenstoffreichem Torf. Trocknet das Moor jedoch aus oder wird es durch einen Brand beschädigt, wird der Kohlenstoff freigesetzt und trägt so zu den Auswirkungen des Klimawandels bei. Das Flow Country ist das größte noch verbliebene Hochmoorgebiet in Europa. Es wird geschätzt, dass der gespeicherte Kohlenstoff den schottischen Emissionen aus fossilen Brennstoffen für 100 Jahre entspricht. Mit Hilfe von Satellitenbildern können Karten von Mooren erstellt, die Bodenfeuchtigkeit gemessen und Störungen wie Brände erkannt werden, was die Überwachung und Erhaltung dieser wertvollen Landschaften billiger und einfacher macht. \r\n\r\nBildnachweis: enthält modifizierte Copernicus-Sentinel-Daten (2018, 2019), bearbeitet von der ESA, CC BY-SA 3.0 IGO",
-      "shortText": "## Flow Country, Schottland \r\n\r\nTorfmoore machen nur 3 % der weltweiten Landfläche aus, binden aber doppelt so viel Kohlendioxid wie alle Wälder zusammen. In gesunden Mooren zersetzt sich das Torfmoos nicht vollständig, sondern bildet langsam Schichten aus kohlenstoffreichem Torf. Trocknet das Moor jedoch aus oder wird es durch einen Brand beschädigt, wird der Kohlenstoff freigesetzt und trägt so zu den Auswirkungen des Klimawandels bei. Das Flow Country ist das größte noch verbliebene Hochmoorgebiet in Europa. Es wird geschätzt, dass der gespeicherte Kohlenstoff den schottischen Emissionen aus fossilen Brennstoffen für 100 Jahre entspricht. Mit Hilfe von Satellitenbildern können Karten von Mooren erstellt, die Bodenfeuchtigkeit gemessen und Störungen wie Brände erkannt werden, was die Überwachung und Erhaltung dieser wertvollen Landschaften billiger und einfacher macht. \r\n\r\nBildnachweis: enthält modifizierte Copernicus-Sentinel-Daten (2018, 2019), bearbeitet von der ESA, CC BY-SA 3.0 IGO",
-      "images": [
-        "assets/story37-image01.jpg",
-        "assets/story37-image02.jpg",
-        "assets/story37-image04.jpg",
-        "assets/story37-image05.jpg",
-        "assets/story37-image06.jpg"
-      ],
-      "imageCaptions": [
-        "Satelliten um des Torfes willen. Dieses Mosaik, aufgenommen am 28. Mai 2018, bietet einen seltenen wolkenfreien Blick über die Weiten des schottischen Flow Country.",
-        "Satelliten um des Torfes willen. Diese hochauflösende Landbedeckungskarte, die aus Copernicus Sentinel-2 Daten abgeleitet wurde, zeigt die Ausdehnung von Torfgebieten in Lila.",
-        "Satelliten um des Torfes willen. 2019 brannte ein großes Feuer 5 700 Hektar Torfland nieder. Dieses Bild wurde am 16. Mai aufgenommen.",
-        "Satelliten um des Torfes willen. Falschfarbenbild mit Nahinfrarot-Kanal lässt gesunde Vegetation rot und verbrannte Vegetation in dunkelbraun erscheinen.",
-        "Satelliten um des Torfes willen. Das Falschfarbenbild mit den Kurzwellen-Infrarotkanälen hebt die aktive Feuerfront in leuchtendem Rot hervor."
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "cover",
-        "cover",
-        "cover"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image04.jpg",
+          "caption": "2019 brannte ein großes Feuer 5 700 Hektar Torfland nieder. Dieses Bild wurde am 16. Mai aufgenommen.",
+          "altText": ""
+        },
+        {
+          "url": "assets/story37-image05.jpg",
+          "caption": "Falschfarbenbild mit Nahinfrarot-Kanal lässt gesunde Vegetation rot und verbrannte Vegetation in dunkelbraun erscheinen.",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story37-image06.jpg",
+          "caption": "Das Falschfarbenbild mit den Kurzwellen-Infrarotkanälen hebt die aktive Feuerfront in leuchtendem Rot hervor.",
+          "altText": "",
+          "focus": "left"
+        }
       ]
     }
   ]

@@ -1,38 +1,59 @@
 {
   "id": "story-37",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/story37-image07.jpg",
+    "focus": "center",
+    "title": "Satellites for Peat's Sake",
+    "subtitle": "Flow Country, Scotland",
+    "altText": "Satellites for Peat's Sake in Flow Country, Scotland",
+    "slides": [
+      {
+        "text": "Peatlands make up just 3% of land globally but capture twice as much carbon dioxide as all forests combined. In healthy bogs, peat moss does not fully decay, and instead slowly builds up to form layers of carbon-rich peat. However, if the bog dries out, or is damaged by fire, the carbon is released – adding to the effects of climate change."
+      },
+      {
+        "text": "The Flow Country is the largest remaining expanse of blanket bog in Europe, and it is estimated that the carbon stored equals 100 years’ worth of Scotland’s fossil fuel emissions. Satellite imagery can be used to create maps of peatlands, measure soil moisture, and detect disturbances such as fires, making it cheaper and easier to monitor and preserve these valuable landscapes"
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Satellites for Peat's Sake \r\n\r\nFlow Country, Scotland",
-      "shortText": "# Satellites for Peat's Sake\r\n\r\nFlow Country, Scotland",
-      "images": [
-        "assets/story37-image07.jpg"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image01.jpg",
+          "caption": "This satellite image mosaic, from 28 May 2018, offers a cloud-free view over Scotland's Flow Country. (ESA)",
+          "altText": "",
+          "focus": "right"
+        },
+        {
+          "url": "assets/story37-image02.jpg",
+          "caption": "Land cover map derived from Copernicus Sentinel-2 data, showing peatland in purple. (ESA)",
+          "altText": "",
+          "focus": "right"
+        }
       ]
     },
     {
-      "type": "image",
-      "text": "## Flow Country, Scotland \r\n\r\nPeatlands make up just 3% of land globally but capture twice as much carbon dioxide as all forests combined. In healthy bogs, peat moss does not fully decay, and instead slowly builds up to form layers of carbon-rich peat. However, if the bog dries out, or is damaged by fire, the carbon is released – adding to the effects of climate change. The Flow Country is the largest remaining expanse of blanket bog in Europe, and it is estimated that the carbon stored equals 100 years’ worth of Scotland’s fossil fuel emissions. Satellite imagery can be used to create maps of peatlands, measure soil moisture, and detect disturbances such as fires, making it cheaper and easier to monitor and preserve these valuable landscapes. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018, 2019), processed by ESA, CC BY-SA 3.0 IGO",
-      "shortText": "## Flow Country, Scotland \r\n\r\nPeatlands make up just 3% of land globally but capture twice as much carbon dioxide as all forests combined. In healthy bogs, peat moss does not fully decay, and instead slowly builds up to form layers of carbon-rich peat. However, if the bog dries out, or is damaged by fire, the carbon is released – adding to the effects of climate change. The Flow Country is the largest remaining expanse of blanket bog in Europe, and it is estimated that the carbon stored equals 100 years’ worth of Scotland’s fossil fuel emissions. Satellite imagery can be used to create maps of peatlands, measure soil moisture, and detect disturbances such as fires, making it cheaper and easier to monitor and preserve these valuable landscapes. \r\n\r\nCredits: contains modified Copernicus Sentinel data (2018, 2019), processed by ESA, CC BY-SA 3.0 IGO",
-      "images": [
-        "assets/story37-image01.jpg",
-        "assets/story37-image02.jpg",
-        "assets/story37-image04.jpg",
-        "assets/story37-image05.jpg",
-        "assets/story37-image06.jpg"
-      ],
-      "imageCaptions": [
-        "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-        "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-        "Satellites for peat's sake. A massive fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May.",
-        "Satellites for peat's sake. False colour image including the near-infrared channel hihglights healthy vegetation in red and shows the burn scar in dark brown.",
-        "Satellites for peat's sake. False colour image including the shortwave infrared channels highlights the active fire front in bright red."
-      ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "cover",
-        "cover",
-        "cover"
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image04.jpg",
+          "caption": "Fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May. (ESA)",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story37-image05.jpg",
+          "caption": "Near-infrared wavelengths highlight healthy vegetation in red and the burn scar in dark brown. (ESA)",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story37-image06.jpg",
+          "caption": "Shortwave infrared reveals the active fire front in bright red. (ESA)",
+          "altText": "",
+          "focus": "left"
+        }
       ]
     }
   ]
