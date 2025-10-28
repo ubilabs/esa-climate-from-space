@@ -3,25 +3,25 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Land Carbon Dynamics\r\n\r\nForests absorb carbon from the atmosphere, helping offset human-produced carbon emissions. But measurements from space show the ability of forests and other live biomass to absorb carbon is declining across the world.",
-      "shortText": "# Land Carbon Dynamics\r\n\r\nForests absorb carbon from the atmosphere, helping offset human-produced carbon emissions. But measurements from space show the ability of forests and other live biomass to absorb carbon is declining across the world.",
+      "text": "# Kohlenstoffdynamik an Land\r\n\r\nWälder absorbieren Kohlenstoff aus der Atmosphäre und tragen so dazu bei, die vom Menschen verursachten Kohlenstoffemissionen auszugleichen. Messungen aus dem Weltraum zeigen jedoch, dass die Fähigkeit von Wäldern und anderer lebender Biomasse, Kohlenstoff zu absorbieren, weltweit abnimmt.",
+      "shortText": "# Kohlenstoffdynamik an Land\r\n\r\nWälder absorbieren Kohlenstoff aus der Atmosphäre und tragen so dazu bei, die vom Menschen verursachten Kohlenstoffemissionen auszugleichen. Messungen aus dem Weltraum zeigen jedoch, dass die Fähigkeit von Wäldern und anderer lebender Biomasse, Kohlenstoff zu absorbieren, weltweit abnimmt.",
       "images": [
         "assets/story45-image01.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "##  Measuring Biomass from Space\r\n\r\nCarbon is continually exchanged between the atmosphere and land surface. Carbon sinks remove carbon from the atmosphere, helping to offset natural and human carbon emissions. Whether an area is a carbon source or a sink can flip through the year, and in response to environmental changes such as droughts, wildfires and land use.\r\n\r\nESA’s Regional Carbon Cycle Analysis and Processes project (RECCAP2) uses satellites to measure land climate variables such as soil moisture and biomass. The L-band microwave radiometer on the SMOS satellite is sensitive to annual changes in vegetation, including forests. These observations are combined with ground data and computer models to map global land carbon stocks.",
-      "shortText": "##  Measuring Biomass from Space\r\n\r\nCarbon is continually exchanged between the atmosphere and land surface. Carbon sinks remove carbon from the atmosphere, helping to offset natural and human carbon emissions. Whether an area is a carbon source or a sink can flip through the year, and in response to environmental changes such as droughts, wildfires and land use.\r\n\r\nESA’s Regional Carbon Cycle Analysis and Processes project (RECCAP2) uses satellites to measure land climate variables such as soil moisture and biomass. The L-band microwave radiometer on the SMOS satellite is sensitive to annual changes in vegetation, including forests. These observations are combined with ground data and computer models to map global land carbon stocks.",
+      "text": "##  Messung der Biomasse aus dem Weltraum\r\n\r\nKohlenstoff wird kontinuierlich zwischen der Atmosphäre und der Landoberfläche ausgetauscht. Kohlenstoffsenken entfernen Kohlenstoff aus der Atmosphäre und tragen so dazu bei, natürliche und vom Menschen verursachte Kohlenstoffemissionen auszugleichen. Ob ein Gebiet eine Kohlenstoffquelle oder eine Kohlenstoffsenke ist, kann sich im Laufe des Jahres und als Reaktion auf Umweltveränderungen wie Dürren, Waldbrände und Landnutzung ändern.\r\n\r\nDas Projekt „Regional Carbon Cycle Analysis and Processes“ (RECCAP2) der ESA nutzt Satelliten zur Messung von Klimavariablen wie Bodenfeuchte und Biomasse. Das L-Band-Mikrowellenradiometer auf dem SMOS-Satelliten reagiert empfindlich auf jährliche Veränderungen der Vegetation, einschließlich der Wälder. Diese Beobachtungen werden mit Bodendaten und Computermodellen kombiniert, um die globalen Kohlenstoffvorräte an Land zu kartieren.",
+      "shortText": "##  Messung der Biomasse aus dem Weltraum\r\n\r\nKohlenstoff wird kontinuierlich zwischen der Atmosphäre und der Landoberfläche ausgetauscht. Kohlenstoffsenken entfernen Kohlenstoff aus der Atmosphäre und tragen so dazu bei, natürliche und vom Menschen verursachte Kohlenstoffemissionen auszugleichen. Ob ein Gebiet eine Kohlenstoffquelle oder eine Kohlenstoffsenke ist, kann sich im Laufe des Jahres und als Reaktion auf Umweltveränderungen wie Dürren, Waldbrände und Landnutzung ändern.\r\n\r\nDas Projekt „Regional Carbon Cycle Analysis and Processes“ (RECCAP2) der ESA nutzt Satelliten zur Messung von Klimavariablen wie Bodenfeuchte und Biomasse. Das L-Band-Mikrowellenradiometer auf dem SMOS-Satelliten reagiert empfindlich auf jährliche Veränderungen der Vegetation, einschließlich der Wälder. Diese Beobachtungen werden mit Bodendaten und Computermodellen kombiniert, um die globalen Kohlenstoffvorräte an Land zu kartieren.",
       "images": [
         "assets/story45-image02.jpg",
         "assets/story45-image03.jpg",
         "assets/story45-image04.jpg"
       ],
       "imageCaptions": [
-        "# Land Surface Carbon Flux July 2022\r\n\r\nCarbon sinks are shown in blue and carbon sources in yellow and red. Spikes correspond to extreme carbon-releasing events such as forest fires. (Global Carbon Project/Planetary Visions)",
-        "ESA's Soil Moisture and Ocean Salinity (SMOS) satellite uses microwaves to sense changes in vegetation. (ESA/Planetary Visions)",
-        "# Global Biomass 2022\r\n\r\nLive above-ground carbon based on SMOS L-band Vegetation Optical Depth (L-VOD)  (ESA-CCI)"
+        "# Kohlenstofffluss an der Landoberfläche Juli 2022\r\n\r\nKohlenstoffsenken sind blau dargestellt, Kohlenstoffquellen gelb und rot. Spitzen entsprechen extremen Ereignissen mit hoher Kohlenstofffreisetzung, wie beispielsweise Waldbränden. (Global Carbon Project/Planetary Visions)",
+        "Der Satellit „Soil Moisture and Ocean Salinity” (SMOS) der ESA nutzt Mikrowellen, um Veränderungen in der Vegetation zu erfassen. (ESA/Planetary Visions)",
+        "# Globale Biomasse 2022\r\n\r\nLebender oberirdischer Kohlenstoff basierend auf SMOS L-Band Vegetation Optical Depth (L-VOD)  (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
@@ -33,17 +33,17 @@
     },
     {
       "type": "image",
-      "text": "## Amazon Basin\r\n\r\nThe Amazon Basin accounts for 14% of the atmospheric carbon taken up by plants each year. But the region has lost 370 million tonnes of carbon over the decade 2010-20, and the southeastern part is now a net carbon source. Carbon absorption by growing forest has been outweighed by deforestation, degradation and agricultural use.",
-      "shortText": "## Amazon Basin\r\n\r\nThe Amazon Basin accounts for 14% of the atmospheric carbon taken up by plants each year. But the region has lost 370 million tonnes of carbon over the decade 2010-20, and the southeastern part is now a net carbon source. Carbon absorption by growing forest has been outweighed by deforestation, degradation and agricultural use.",
+      "text": "## Amazonasbecken\r\n\r\nDas Amazonasbecken ist für 14 % des Kohlenstoffs verantwortlich, den Pflanzen jedes Jahr aus der Atmosphäre aufnehmen. Allerdings hat die Region zwischen 2010 und 2020 370 Millionen Tonnen Kohlenstoff verloren, und der südöstliche Teil ist nun eine Netto-Kohlenstoffquelle. Die Kohlenstoffaufnahme durch wachsende Wälder wurde durch Abholzung, Degradation und landwirtschaftliche Nutzung überkompensiert.",
+      "shortText": "## Amazonasbecken\r\n\r\nDas Amazonasbecken ist für 14 % des Kohlenstoffs verantwortlich, den Pflanzen jedes Jahr aus der Atmosphäre aufnehmen. Allerdings hat die Region zwischen 2010 und 2020 370 Millionen Tonnen Kohlenstoff verloren, und der südöstliche Teil ist nun eine Netto-Kohlenstoffquelle. Die Kohlenstoffaufnahme durch wachsende Wälder wurde durch Abholzung, Degradation und landwirtschaftliche Nutzung überkompensiert.",
       "images": [
         "assets/story45-image05.jpg",
         "assets/story45-image06.jpg",
         "assets/story45-image07.png"
       ],
       "imageCaptions": [
-        "Forest cleared for agriculture in the Amazon Basin, as viewed from the International Space Station by ESA astronaut Thomas Pasquet (ESA/NASA – T Pasquet)",
-        "# Biomass change 2010-2020 for the Amazon Basin\r\n\r\n(ESA-CCI)",
-        "# Cumulative Biomass  Change for the Amazon Basin\r\n\r\n(ESA-CCI)"
+        "Von der Internationalen Raumstation aus gesehen: Abgeholzte Waldflächen für die Landwirtschaft im Amazonasbecken, aufgenommen vom ESA-Astronauten Thomas Pasquet (ESA/NASA – T Pasquet)",
+        "# Biomasseänderung 2010–2020 für das Amazonasbecken\r\n\r\n(ESA-CCI)",
+        "# Kumulative Biomasseänderung für das Amazonasbecken\r\n\r\n(ESA-CCI)"
       ],
       "imageFits": [
         "cover",
@@ -55,17 +55,17 @@
     },
     {
       "type": "image",
-      "text": "##  Northern Forests\r\n\r\n41% of the world’s forest area is in the northern hemisphere. Northern forests have been accumulating biomass in recent decades. But since 2016 increasing droughts and wildfires have weakened their capacity to absorb carbon.",
-      "shortText": "##  Northern Forests\r\n\r\n41% of the world’s forest area is in the northern hemisphere. Northern forests have been accumulating biomass in recent decades. But since 2016 increasing droughts and wildfires have weakened their capacity to absorb carbon.",
+      "text": "##  Nördliche Wälder\r\n\r\n41 % der weltweiten Waldfläche befinden sich auf der Nordhalbkugel. In den letzten Jahrzehnten haben die nördlichen Wälder Biomasse angesammelt. Seit 2016 haben jedoch zunehmende Dürren und Waldbrände ihre Fähigkeit zur Kohlenstoffaufnahme geschwächt.",
+      "shortText": "##  Nördliche Wälder\r\n\r\n41 % der weltweiten Waldfläche befinden sich auf der Nordhalbkugel. In den letzten Jahrzehnten haben die nördlichen Wälder Biomasse angesammelt. Seit 2016 haben jedoch zunehmende Dürren und Waldbrände ihre Fähigkeit zur Kohlenstoffaufnahme geschwächt.",
       "images": [
         "assets/story45-image08.jpg",
         "assets/story45-image09.jpg",
         "assets/story45-image10.png"
       ],
       "imageCaptions": [
-        "Smoke from numerous forest fires fills river valleys in Siberia in this Copernicus Sentinel-2 image from September 2016. (contains modified Copernicus Sentinel data (2016), processed by ESA)",
-        "# Net L-VOD Biomass Change 2016-2022\r\n\r\nChanges to biomass in the northern hemisphere are shwon with biomass loss in red and biomass gain in green (ESA-CCI)",
-        "# Cumulative Biomass Change in Temperate Regions \r\n\r\nNorthern forest biomass has been declining since 2016 (ESA-CCI)"
+        "Auf diesem Copernicus Sentinel-2-Bild vom September 2016 füllt Rauch von zahlreichen Waldbränden die Flusstäler Sibiriens. (Enthält modifizierte Copernicus Sentinel-Daten (2016), verarbeitet von der ESA)",
+        "# Netto-L-VOD-Biomasseänderung 2016–2022\r\n\r\nVeränderungen der Biomasse in der nördlichen Hemisphäre werden dargestellt, wobei Biomasseverluste rot und Biomassegewinne grün dargestellt sind (ESA-CCI).",
+        "# Kumulative Veränderung der Biomasse in gemäßigten Regionen \r\n\r\nDie Biomasse der nördlichen Wälder ist seit 2016 rückläufig (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
@@ -77,15 +77,15 @@
     },
     {
       "type": "image",
-      "text": "##  European Emissions Offset\r\n\r\nAcross Europe, forests absorbed about 10% of the EU’s greenhouse gas emissions between 1990 and 2022. But in the last ten years this emissions offset has declined by nearly 30% due to forest harvesting and ageing, more frequent droughts, heatwaves and wildfires, plus insect outbreaks and plant disease. This decline poses a risk to achieving future European climate goals.\r\n\r\nImproved knowledge of land carbon dynamics will help us gauge how much carbon budget is left within the Paris Agreement temperature limits, or if we’ll have to deal with the more severe consequences of further warming.",
-      "shortText": "##  European Emissions Offset\r\n\r\nAcross Europe, forests absorbed about 10% of the EU’s greenhouse gas emissions between 1990 and 2022. But in the last ten years this emissions offset has declined by nearly 30% due to forest harvesting and ageing, more frequent droughts, heatwaves and wildfires, plus insect outbreaks and plant disease. This decline poses a risk to achieving future European climate goals.\r\n\r\nImproved knowledge of land carbon dynamics will help us gauge how much carbon budget is left within the Paris Agreement temperature limits, or if we’ll have to deal with the more severe consequences of further warming.",
+      "text": "##  Europäischer Emissionsausgleich\r\n\r\nZwischen 1990 und 2022 haben die Wälder in Europa etwa 10 % der Treibhausgasemissionen der EU absorbiert. In den letzten zehn Jahren ist dieser Emissionsausgleich jedoch um fast 30 % zurückgegangen, was auf Holzeinschlag und Alterung der Wälder, häufigere Dürren, Hitzewellen und Waldbrände sowie Insektenbefall und Pflanzenkrankheiten zurückzuführen ist. Dieser Rückgang gefährdet die Erreichung der künftigen europäischen Klimaziele.\r\n\r\nVerbesserte Kenntnisse über die Kohlenstoffdynamik des Bodens werden uns helfen, abzuschätzen, wie viel Kohlenstoffbudget innerhalb der Temperaturgrenzen des Pariser Abkommens noch übrig ist oder ob wir mit den schwerwiegenderen Folgen einer weiteren Erwärmung rechnen müssen.",
+      "shortText": "##  Europäischer Emissionsausgleich\r\n\r\nZwischen 1990 und 2022 haben die Wälder in Europa etwa 10 % der Treibhausgasemissionen der EU absorbiert. In den letzten zehn Jahren ist dieser Emissionsausgleich jedoch um fast 30 % zurückgegangen, was auf Holzeinschlag und Alterung der Wälder, häufigere Dürren, Hitzewellen und Waldbrände sowie Insektenbefall und Pflanzenkrankheiten zurückzuführen ist. Dieser Rückgang gefährdet die Erreichung der künftigen europäischen Klimaziele.\r\n\r\nVerbesserte Kenntnisse über die Kohlenstoffdynamik des Bodens werden uns helfen, abzuschätzen, wie viel Kohlenstoffbudget innerhalb der Temperaturgrenzen des Pariser Abkommens noch übrig ist oder ob wir mit den schwerwiegenderen Folgen einer weiteren Erwärmung rechnen müssen.",
       "images": [
         "assets/story45-image11.jpg",
         "assets/story45-image12.png"
       ],
       "imageCaptions": [
-        "# Land Surface Carbon Flux June 2018\r\n\r\nMost of Europe is a carbon sink in June 2018 as growing vegetation absorbs carbon from the atmosphere. Over the horizon in Siberia, carbon emissions are spiking due to wildfires burning after a warm, dry winter.  (Global Carbon Project/Planetary Visions)",
-        "# Emissions Offset for Europe 2005-2030\r\n\r\nThe offset by land and forest exceeded the target offset until 2016, but has dropped below the target since then. The projected future offset is not expected to recover enough to hit the target. (ESA-CCI)"
+        "# Kohlenstofffluss an der Landoberfläche Juni 2018\r\n\r\nDer größte Teil Europas ist im Juni 2018 eine Kohlenstoffsenke, da die wachsende Vegetation Kohlenstoff aus der Atmosphäre aufnimmt. Am Horizont in Sibirien steigen die Kohlenstoffemissionen aufgrund von Waldbränden nach einem warmen, trockenen Winter sprunghaft an.  (Global Carbon Project/Planetary Visions)",
+        "# Emissionsausgleich für Europa 2005–2030\r\n\r\nDer Ausgleich durch Land und Wald übertraf bis 2016 das Ausgleichsziel, ist seitdem jedoch unter das Ziel gefallen. Es ist nicht zu erwarten, dass sich der prognostizierte künftige Ausgleich so weit erholen wird, dass das Ziel erreicht wird. (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
