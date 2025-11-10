@@ -19,8 +19,7 @@ METADATA = {
     "units": 'Mg/ha AGB',
     "basemap": 'land',
     "time_format": {
-        "year": "numeric",
-        "month": "long"
+        "year": "numeric"
     },
     "filter": "linear"
 }
