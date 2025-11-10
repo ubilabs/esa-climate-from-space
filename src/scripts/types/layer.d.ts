@@ -23,5 +23,4 @@ export interface Layer {
   legendValues: string[] | LegendValueColor[];
   legendBackgroundColor: string;
   hideLegend?: boolean;
-  useTimestampsForPlayback?: boolean;
 }

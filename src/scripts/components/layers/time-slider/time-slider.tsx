@@ -58,19 +58,17 @@ const TimeSlider: FunctionComponent<Props> = ({
   const globeSpinning = useSelector(globeSpinningSelector);
 
   const playbackSteps = useMemo(() => {
-    if (mainLayerDetails && mainLayerDetails.useTimestampsForPlayback) {
+    // return all timestamps when no compare layer is selected
+    if (!compareLayerDetails && mainLayerDetails) {
       return mainLayerDetails.timestamps.map((timestamp) =>
         new Date(timestamp).getTime(),
       );
-    } else if (
-      compareLayerDetails &&
-      compareLayerDetails.useTimestampsForPlayback
-    ) {
-      return compareLayerDetails.timestamps.map((timestamp) =>
-        new Date(timestamp).getTime(),
-      );
+      // Calculate steps from both layers when compare layer is selected
+    } else {
+      return [
+        Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails)),
+      ];
     }
-    return [Math.floor(getPlaybackStep(mainLayerDetails, compareLayerDetails))];
   }, [mainLayerDetails, compareLayerDetails]);
 
   const {
