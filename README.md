@@ -12,11 +12,11 @@ Besides the web version we also deliver a native Electron app to download and ru
 
 The native app releases can be downloaded from:
 
-- Windows https://storage.googleapis.com/esa-cfs-versions/electron/${VERSION}/esa-climate-from-space-${VERSION}-win.exe
+- Windows https://storage.googleapis.com/esa-cfs-versions/electron/${VERSION}/esa-climate-from-space-${VERSION}-win.zip
 - MacOs https://storage.googleapis.com/esa-cfs-versions/electron/${VERSION}/esa-climate-from-space-${VERSION}-mac.zip
 - Linux https://storage.googleapis.com/esa-cfs-versions/electron/${VERSION}/esa-climate-from-space-${VERSION}-linux.zip
 
-Note: Be sure to replace the `VERSION` number e.g. (`0.4.0` -> `https://storage.googleapis.com/esa-cfs-versions/electron/0.4.0/esa-climate-from-space-0.4.0-win.exe`)
+Note: Be sure to replace the `VERSION` number e.g. (`0.4.0` -> `https://storage.googleapis.com/esa-cfs-versions/electron/0.4.0/esa-climate-from-space-0.4.0-win.zip`)
 
 ### Installation
 

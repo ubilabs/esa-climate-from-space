@@ -33,6 +33,16 @@ steps:
       cd /workspace/dist-electron/mac
       zip -r /workspace/dist-electron/esa-climate-from-space-$$VERSION-mac.zip ./*
 
+  - name: gcr.io/esa-climate-from-space/zip
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      VERSION=$$(cat version.txt)
+      cd /workspace/dist-electron
+      zip esa-climate-from-space-$$VERSION-win.zip esa-climate-from-space-$$VERSION-win.exe
+      rm -r /workspace/dist-electron/esa-climate-from-space-*-win.exe
+
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
     entrypoint: 'bash'
     args:
