@@ -23,25 +23,25 @@
           "url": "assets/story35-image01.jpg",
           "caption": "A stream of icebergs fills the Ilulissat Icefjord on 11 June 2019 (ESA)",
           "altText": "",
-          "focus": "left"
+          "focus": "right"
         },
         {
           "url": "assets/story35-image02.jpg",
           "caption": "Archived satellite images track the Jakobshavn Glacier’s calving front back to 1994.",
           "altText": "",
-          "focus": "left"
+          "focus": "right"
         },
         {
           "url": "assets/story35-image03.jpg",
           "caption": "Satellites also map elevation and thickness of the ice cap, and monitor its changes over time.",
           "altText": "",
-          "focus": "left"
+          "focus": "right"
         },
         {
           "url": "assets/story35-image04.jpg",
           "caption": "Ice velocity from multiple satellite radar observations, allowing scientists to understand long- and short-term dynamics.",
           "altText": "",
-          "focus": "left"
+          "focus": "right"
         }
       ]
     }
