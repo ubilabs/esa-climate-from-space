@@ -1,0 +1,213 @@
+.cookieConsent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 2em;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--dark-grey-4);
+  box-shadow:
+    0px 2px 4px rgba(0, 0, 0, 0.14),
+    0px 3px 4px rgba(0, 0, 0, 0.12),
+    0px 1px 5px rgba(0, 0, 0, 0.2);
+
+  @media screen and (--desktop-viewport) {
+    width: 600px;
+  }
+}
+
+.cookieConsent::backdrop {
+  background-color: rgba(16, 22, 26, 0.5);
+}
+
+.title {
+  margin: 0 0 1em 0;
+  color: #fff;
+  font-size: 1.5em;
+  font-family: NotesEsaBold;
+}
+
+.message {
+  margin: 0 0 1em 0;
+  color: #fff;
+  white-space: pre-line;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.details {
+  margin: 0 0 1.5em 0;
+  color: #ccc;
+  font-size: 0.85em;
+  line-height: 1.5;
+}
+
+.categories {
+  margin: 1.5em 0;
+}
+
+.category {
+  margin-bottom: 1.5em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.category:last-child {
+  border-bottom: none;
+}
+
+.categoryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.categoryTitle {
+  margin: 0;
+  color: #fff;
+  font-size: 1em;
+  font-family: NotesEsaBold;
+}
+
+.categoryDescription {
+  margin: 0;
+  color: #ccc;
+  font-size: 0.85em;
+  line-height: 1.5;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.toggle input[type="checkbox"] {
+  appearance: none;
+  width: 48px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle input[type="checkbox"]:checked {
+  background-color: var(--main);
+}
+
+.toggle input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.toggle input[type="checkbox"]::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+}
+
+.toggle input[type="checkbox"]:checked::before {
+  transform: translateX(24px);
+}
+
+.toggleSlider {
+  /* Not needed with custom checkbox styling */
+  display: none;
+}
+
+.alwaysActive {
+  color: #ccc;
+  font-size: 0.85em;
+}
+
+.buttons {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-end;
+  margin-top: 1em;
+}
+
+@media screen and (--mobile-viewport) {
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cookieConsentPrimary,
+.cookieConsentSecondary,
+.cookieConsentTertiary {
+  color: var(--main);
+  padding: 0.75em 1.5em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-family: NotesEsaBold;
+
+  > span {
+    width: 100%;
+    text-align: center;
+  };
+}
+
+.cookieConsentPrimary {
+  background-color: var(--main);
+  color: #FFF;
+  grid-column: 2;
+}
+
+.cookieConsentPrimary:hover {
+  color: #FFF;
+}
+
+.cookieConsentSecondary {
+  background-color: transparent;
+  color: var(--text-default);
+  border: 1px solid var(--text-default);
+}
+
+.cookieConsentSecondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.cookieConsentTertiary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.cookieConsentTertiary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Legacy button styles for backward compatibility */
+.cookieConsentYes,
+.cookieConsentNo {
+  color: var(--main);
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 0.6875em;
+  font-family: NotesEsaBold;
+}
+
+.cookieConsentNo {
+  margin-right: 1.875em;
+  color: var(--text-default);
+  white-space: nowrap;
+}

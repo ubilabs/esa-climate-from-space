@@ -1,8 +1,9 @@
 import { FunctionComponent } from "react";
 import YouTube, { Options } from "react-youtube";
 import { YouTubePlayer } from "youtube-player/dist/types";
-
 import { Language } from "../../../types/language";
+
+import { loadConsent } from "../../../libs/load-consent";
 
 import styles from "./youtube-player.module.css";
 
@@ -19,6 +20,10 @@ const YoutubePlayer: FunctionComponent<Props> = ({
   isStoryMode,
   onPlay,
 }) => {
+  if (!loadConsent()?.youTube) {
+    return null;
+  }
+
   const options: Options = {
     height: "100%",
     width: "100%",
