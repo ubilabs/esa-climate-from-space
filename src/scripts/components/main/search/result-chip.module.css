@@ -13,7 +13,7 @@
     border-radius: 4px;
 
     > strong {
-        color: var(--main);
+        color: var(--light-green);
     }
 }
 
@@ -53,7 +53,7 @@
     align-items: center;
     padding-right: 1rem;
     text-transform: capitalize;
-    color: var(--dark-blue);
+    color: var(--text-green);
 
     &[data-content-type]:before {
         flex-shrink: 0;

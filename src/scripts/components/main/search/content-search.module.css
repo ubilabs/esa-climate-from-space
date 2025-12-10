@@ -38,6 +38,71 @@
         }
     }
 
+    .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        justify-content: center;
+    }
+
+    .filterChip {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: transparent;
+        border: 1px solid var(--light-blue);
+        border-radius: 5px;
+        color: var(--light-blue);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+
+        &[data-icon]::before {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: currentColor;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+        }
+
+        &[data-icon="check"]::before {
+            mask-image: var(--icon-check);
+        }
+
+        &[data-icon="blog"]::before {
+            mask-image: var(--icon-blog);
+        }
+
+        &[data-icon="image"]::before {
+            mask-image: var(--icon-image);
+        }
+
+        &[data-icon="video"]::before {
+            mask-image: var(--icon-video);
+        }
+
+        &[data-icon="layer"]::before {
+            mask-image: var(--icon-layer);
+        }
+
+        &.active {
+            background: var(--light-blue);
+            color: white;
+        }
+    }
+
+    .resultsCount {
+        text-align: left;
+        padding: 1.5rem 0 0.5rem;
+        border-top: 1px solid var(--dark-grey-4);
+        margin: 0.5rem 0;
+    }
+
     .results {
         height: 100%;
         overflow-y: scroll;
