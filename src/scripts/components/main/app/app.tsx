@@ -50,6 +50,8 @@ import { isLegacyStory } from "../../../libs/is-legacy-story";
 
 import "./app.css";
 import "../../../../variables.css";
+import SearchPage from "../search/search-page";
+import ContentSearch from "../search/content-search";
 
 // Create Matomo tracking instance
 const matomoInstance = createInstance({
@@ -148,6 +150,15 @@ const TranslatedApp: FunctionComponent = () => {
                 <>
                   <EsaLogoLink />
                   <AboutProjectOverlay />
+                </>
+              }
+            />
+            <Route
+              path={ROUTES.search.path}
+              element={
+                <>
+                  <Header />
+                  <ContentSearch />
                 </>
               }
             />

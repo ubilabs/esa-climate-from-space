@@ -68,6 +68,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^3.1.0",
     "rehype-raw": "^6.1.1",
+    "remove-markdown": "^0.6.2",
     "video.js": "^7.17.0"
   },
   "devDependencies": {

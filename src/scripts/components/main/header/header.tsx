@@ -1,7 +1,8 @@
 import { FunctionComponent, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import config from "../../../config/main";
+import config, { ROUTES } from "../../../config/main";
 
 import { useScreenSize } from "../../../hooks/use-screen-size";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
@@ -24,10 +25,10 @@ import { EsaLogo } from "../icons/esa-logo";
 import { ArrowBackIcon } from "../icons/arrow-back-icon";
 import { LayerSelectorIcon } from "../icons/layer-selector-icon";
 import { MenuIcon } from "../icons/menu-icon";
+import { SearchIcon } from "../icons/search-icon";
 import LanguageTooltip from "../language-tooltip/language-tooltip";
 import Menu from "../menu/menu";
 import Overlay from "../overlay/overlay";
-import ContentSearch from "../search/content-search";
 
 import styles from "./header.module.css";
 
@@ -48,6 +49,7 @@ const Header: FunctionComponent = () => {
     isPresentView,
     isNavigationView,
     isBaseRoute,
+    isSearchRoute,
   } = useAppRouteFlags();
 
   const { isMobile, isDesktop } = useScreenSize();
@@ -58,6 +60,8 @@ const Header: FunctionComponent = () => {
   );
 
   const isLayerSelectorVisible = useSelector(showLayerSelector);
+
+  const navigate = useNavigate();
 
   if (!header) {
     // The app element determines the layout via grid which is why we should return a DOM element here
@@ -100,7 +104,7 @@ const Header: FunctionComponent = () => {
             <EsaLogo variant={logoVariant} />
           </Button>
         )}
-        {!isBaseRoute && !isNavigationView && back_link && (
+        {!isBaseRoute && !isNavigationView && !isSearchRoute && back_link && (
           <Button
             className={styles.backButton}
             icon={ArrowBackIcon}
@@ -118,6 +122,14 @@ const Header: FunctionComponent = () => {
             hideLabelOnMobile
           />
         )}
+        <Button
+          className={styles.button}
+          id="ui-search"
+          icon={SearchIcon}
+          ariaLabel={"app_search"}
+          onClick={() => navigate(ROUTES.search.path)}
+          hideLabelOnMobile
+        />
         {app_menu && (
           <Button
             className={styles.button}
@@ -128,7 +140,6 @@ const Header: FunctionComponent = () => {
             hideLabelOnMobile
           />
         )}
-        <ContentSearch />
       </nav>
 
       {showTooltip && (

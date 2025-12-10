@@ -1,15 +1,45 @@
 .container {
     display: flex;
     flex-direction: column;
+    padding-top: 2rem;
+    text-align: center;
     color: white;
-    justify-content: center;
+    padding: 1rem;
+    overflow-y: hidden;
 
-    > input {
-        height: 2rem;
+    .searchInputWrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+        background-color: var(--dark-grey-5);
+        border-radius: 4px;
+        padding: 0 1rem;
+        height: 3rem;
+
+        > svg {
+            flex-shrink: 0;
+            fill: var(--main);
+            margin-right: 0.5rem;
+        }
+
+        > input {
+            flex: 1;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            height: 3rem;
+
+            &::placeholder {
+                color: var(--text-default);
+            }
+        }
     }
-}
 
-.results {
-    position: absolute;
-    top: var(--header-height);
+    .results {
+        height: 100%;
+        overflow-y: scroll;
+    }
 }

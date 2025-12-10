@@ -22,6 +22,7 @@ export const ROUTES = {
   },
   [AppRoute.LegacyStories]: { path: "stories/", end: true },
   [AppRoute.About]: { path: "/about", end: true },
+  [AppRoute.Search]: { path: "/search", end: true },
   [AppRoute.PresentStory]: {
     path: "/present/:storyId/:slideIndex",
     end: true,

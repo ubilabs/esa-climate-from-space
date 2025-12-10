@@ -1,66 +1,39 @@
 import { useState } from "react";
 import { useSearch } from "./search";
 
-type SearchResult = {
-  storyId: string | number;
-  id: string | number;
-  title: string;
-  text?: string;
-};
+import ResultChip from "./result-chip";
+import { SearchIcon } from "../icons/search-icon";
 
 import styles from "./content-search.module.css";
 
 export default function ContentSearch() {
-  const { searchLayers, searchStories } = useSearch();
+  const { search } = useSearch();
   const [query, setQuery] = useState("");
-  const results: Record<"layers" | "stories", SearchResult[]> = {
-    layers: searchLayers(query) as SearchResult[],
-    stories: searchStories(query) as SearchResult[],
-  };
+  const searchResult = search(query);
 
   return (
     <div className={styles.container}>
-      <input
-        type="text"
-        placeholder="Search across all content..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      {/* Results are now rendered below the input */}
-      <div className={styles.results}>
-        {results.layers.length > 0 && (
-          <>
-            <h3>Layers</h3>
-            <ul>
-              {results.layers.map((result) => (
-                <li
-                  className="search-result"
-                  key={`layer-${result.storyId}-${result.id}`}
-                >
-                  <strong>{result.name}</strong>
-                  {result.text && <div>{result.text}</div>}
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-        {results.stories.length > 0 && (
-          <>
-            <h3>Stories</h3>
-            <ul>
-              {results.stories.map((result) => (
-                <li
-                  className="search-result"
-                  key={`story-${result.storyId}-${result.id}`}
-                >
-                  <strong>{result.title}</strong>
-                  {result.text && <div>{result.text}</div>}
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
+      <h2>What are you looking for?</h2>
+      <div className={styles.searchInputWrapper}>
+        <SearchIcon />
+        <input
+          type="text"
+          placeholder="Search ESA Climate from Space"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
       </div>
+      {/* Results are now rendered below the input */}
+      {searchResult.length > 0 && (
+        <ul className={styles.results}>
+          {searchResult.map((result) => (
+            <ResultChip
+              key={`${result.type}-${result.item.id}`}
+              result={result}
+            />
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
