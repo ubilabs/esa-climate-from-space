@@ -169,5 +169,16 @@
   "categories.atmosphere": "Atmosphäre",
   "categories.cryosphere": "Kryosphäre",
   "exploreMoreInCategory": "Entdecken Sie mehr in dieser [Kategorie](#/{category})",
-  "youTube.consentRequired": "Um YouTube-Videos anzusehen, aktivieren Sie bitte Media-Cookies in Ihren Datenschutzeinstellungen."
+  "youTube.consentRequired": "Um YouTube-Videos anzusehen, aktivieren Sie bitte Media-Cookies in Ihren Datenschutzeinstellungen.",
+  "contentType.blog": "Geschichte",
+  "contentType.video": "Video",
+  "contentType.image": "Bildergalerie",
+  "contentType.layer": "Daten Layer",
+  "search.allOptions": "Alle Optionen",
+  "search.placeholder": "ESA Climate from Space durchsuchen",
+  "search.title": "Wonach suchen Sie?",
+  "search.clear": "Suche löschen",
+  "search.resultsCount": "{count, plural, =0 {Keine Ergebnisse} one {# Ergebnis} other {# Ergebnisse}} für {query}",
+  "search.filtersLabel": "Suchfilter",
+  "search.resultsLabel": "Suchergebnisse"
 }

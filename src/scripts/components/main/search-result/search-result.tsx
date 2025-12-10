@@ -1,11 +1,11 @@
-import { SearchResult } from "./search";
-
-import styles from "./result-chip.module.css";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setSelectedContentAction } from "../../../reducers/content";
+
 import { setSelectedLayerIds } from "../../../reducers/layers";
+import { SearchResult } from "../../../hooks/use-search";
+
+import styles from "./search-result.module.css";
 
 function highlightMatches(
   text: string,
@@ -45,9 +45,12 @@ function highlightMatches(
   return parts;
 }
 
-export default function ResultChip({ result }: { result: SearchResult }) {
+export default function SeachResult({ result }: { result: SearchResult }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const intl = useIntl();
+
+  const item = result.item;
 
   // Get the first match for display
   const firstMatch = result.matches?.[0];
@@ -81,8 +84,8 @@ export default function ResultChip({ result }: { result: SearchResult }) {
     }
   }
 
-  const category = result.item.categories?.[0];
-  const id = result.item.id;
+  const category = item.categories?.[0];
+  const id = item.id;
 
   const handleResultSelect = () => {
     if (!category || !id) {
@@ -90,11 +93,20 @@ export default function ResultChip({ result }: { result: SearchResult }) {
     }
     if (result.type === "layer") {
       dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
-      navigate(`/${category}/data`);
+      // Ensure navigation always happens after dispatch
+      setTimeout(() => {
+        navigate(`/${category}/data`);
+      }, 0);
     } else {
       navigate(`/${category}/stories/${id}/0`);
     }
   };
+
+  const title = "title" in item ? item.title : item.name;
+  const resultTypeLabel = intl.formatMessage({
+    id: `contentType.${result.type}`,
+  });
+  const ariaLabel = `${title}, ${resultTypeLabel}${item.categories ? `, ${item.categories.map((cat: string) => intl.formatMessage({ id: `categories.${cat}` })).join(", ")}` : ""}`;
 
   return (
     <li className={styles.container}>
@@ -107,8 +119,9 @@ export default function ResultChip({ result }: { result: SearchResult }) {
             handleResultSelect();
           }
         }}
+        aria-label={ariaLabel}
       >
-        <strong>{result.item.title || result.item.name}</strong>
+        <strong>{title}</strong>
         {displayText && (
           <div className={styles.matches}>
             <div className={styles.matchItem}>
@@ -116,9 +129,9 @@ export default function ResultChip({ result }: { result: SearchResult }) {
             </div>
             <div className={styles.meta}>
               <span className={styles.type} data-content-type={result.type}>
-                {result.type}
+                <FormattedMessage id={`contentType.${result.type}`} />
               </span>
-              {result.item.categories?.map((category: string) => (
+              {item.categories?.map((category: string) => (
                 <span key={category} className={styles.type}>
                   <FormattedMessage id={`categories.${category}`} />
                 </span>

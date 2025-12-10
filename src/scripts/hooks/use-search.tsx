@@ -1,14 +1,20 @@
-import { useEffect, useState } from "react";
 import Fuse from "fuse.js";
 import type { FuseResult } from "fuse.js";
-import { useSelector } from "react-redux";
-import { languageSelector } from "../../../selectors/language";
-import { getStoryMediaType } from "../../../libs/get-story-media-type";
 import removeMarkdown from "remove-markdown";
-import { LayerListItem } from "../../../types/layer-list";
-import { StoryListItem } from "../../../types/story-list";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { getStoryMediaType } from "../libs/get-story-media-type";
+import { languageSelector } from "../selectors/language";
+import { LayerListItem } from "../types/layer-list";
+import { StoryListItem } from "../types/story-list";
+import { LegacySlide } from "../types/legacy-story";
 
-export type SearchResult = FuseResult<LayerListItem | StoryListItem> & {
+type SearchLayerItem = LayerListItem;
+type SearchStoryItem = StoryListItem & {
+  slides?: Array<LegacySlide>;
+};
+
+export type SearchResult = FuseResult<SearchLayerItem | SearchStoryItem> & {
   type: string;
 };
 
@@ -23,18 +29,17 @@ const fuseConfig = {
 export function useSearch() {
   const lang = useSelector(languageSelector);
 
-  const [layers, setLayers] = useState<LayerListItem[]>([]);
-  const [stories, setStories] = useState<StoryListItem[]>([]);
+  const [layers, setLayers] = useState<SearchLayerItem[]>([]);
+  const [stories, setStories] = useState<SearchStoryItem[]>([]);
 
   useEffect(() => {
     fetch(`/index/storage-index-${lang}.json.gz`)
       .then((res) => res.json())
       .then((indexData) => {
-        // indexData is now { layers: [...], stories: [...] }
-        const layersArr: LayerListItem[] = Array.isArray(indexData.layers)
+        const layersArr: SearchLayerItem[] = Array.isArray(indexData.layers)
           ? indexData.layers.filter(Boolean)
           : [];
-        const storiesArr: StoryListItem[] = Array.isArray(indexData.stories)
+        const storiesArr: SearchStoryItem[] = Array.isArray(indexData.stories)
           ? indexData.stories.filter(Boolean)
           : [];
         setLayers(layersArr);
@@ -45,7 +50,6 @@ export function useSearch() {
   const search = (query: string): SearchResult[] => {
     if (!query) return [];
 
-    // Recreate Fuse instances with query-length-specific minMatchCharLength
     const layerSearcher =
       layers.length > 0
         ? new Fuse(layers, {
@@ -92,7 +96,10 @@ export function useSearch() {
     const storyResults: SearchResult[] = storySearcher
       ? storySearcher.search(query).map((result) => ({
           ...result,
-          type: getStoryMediaType(result.item, stories),
+          type: getStoryMediaType(
+            result.item,
+            stories.map((story) => ({ ...story, slides: story.slides || [] })),
+          ),
         }))
       : [];
 

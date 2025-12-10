@@ -38,6 +38,7 @@ import ShowcaseSelector from "../../legacy-stories/showcase-selector/showcase-se
 import LegacyStory from "../../legacy-stories/story/story";
 import Story from "../../stories/story/story";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
+import ContentSearch from "../content-search/content-search";
 
 import { useGetStoryQuery } from "../../../services/api";
 import { useContentParams } from "../../../hooks/use-content-params";
@@ -50,8 +51,6 @@ import { isLegacyStory } from "../../../libs/is-legacy-story";
 
 import "./app.css";
 import "../../../../variables.css";
-import SearchPage from "../search/search-page";
-import ContentSearch from "../search/content-search";
 
 // Create Matomo tracking instance
 const matomoInstance = createInstance({

@@ -1,9 +1,6 @@
 import { GalleryItemType } from "../types/gallery-item";
 import { LegacyStory } from "../types/story";
-import {
-  LegacyStory as LegacySlidesStory,
-  LegacySlide,
-} from "../types/legacy-story";
+import { LegacyStory as LegacySlidesStory } from "../types/legacy-story";
 import { SlideType } from "../types/slide-type";
 
 export function getStoryMediaType(

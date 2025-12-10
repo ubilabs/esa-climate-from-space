@@ -10,7 +10,11 @@
     background: var(--dark-grey-5);
     padding: 8px 12px;
     margin-bottom: 8px;
-    border-radius: 4px;
+    border-radius: 8px;
+
+    @media screen and (--desktop-viewport) {
+        margin-bottom: 16px;
+    }
 
     > strong {
         color: var(--light-green);
@@ -46,6 +50,8 @@
 
 .meta {
     display: flex;
+    overflow: hidden;
+    white-space: nowrap;   
 }
 
 .type {
