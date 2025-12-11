@@ -7,20 +7,17 @@ import type { CookieConsent } from "../../../types/cookie-consent";
 
 import Button from "../button/button";
 
+import { loadConsent } from "../../../libs/load-consent";
+import { useConsent } from "../../../hooks/use-consent";
+
 import styles from "./cookie-consent.module.css";
 
 const CookieConsent: FunctionComponent = () => {
   const location = useLocation();
-  const { pushInstruction, trackPageView } = useMatomo();
+  const { trackPageView } = useMatomo();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  // Load consent from localStorage or use defaults
-  const loadConsent = (): CookieConsent | null => {
-    const stored = localStorage.getItem("cookieConsent");
-    return stored ? JSON.parse(stored) : null;
-  };
-
-  const [consent, setConsent] = useState<CookieConsent | null>(loadConsent());
+  const { consent, saveConsent } = useConsent();
   const [showBanner, setShowBanner] = useState(!consent);
   const [showPreferences, setShowPreferences] = useState(false);
   const [openedExternally, setOpenedExternally] = useState(false);
@@ -29,10 +26,9 @@ const CookieConsent: FunctionComponent = () => {
   const [analyticsEnabled, setAnalyticsEnabled] = useState(
     consent?.analytics ?? false,
   );
-  const [youTubeEnabled, setMediaEnabled] = useState(consent?.youTube ?? false);
-
-  const [requireConsentPushed, setRequireConsentPushed] = useState(false);
-  const [forgetConsentPushed, setForgetConsentPushed] = useState(false);
+  const [youTubeEnabled, setYouTubeEnabled] = useState(
+    consent?.youTube ?? false,
+  );
 
   // Listen for external requests to open privacy settings
   useEffect(() => {
@@ -43,7 +39,7 @@ const CookieConsent: FunctionComponent = () => {
       // Update preferences state with current consent
       const currentConsent = loadConsent();
       setAnalyticsEnabled(currentConsent?.analytics ?? false);
-      setMediaEnabled(currentConsent?.youTube ?? false);
+      setYouTubeEnabled(currentConsent?.youTube ?? false);
     };
 
     window.addEventListener("openPrivacySettings", handleOpenSettings);
@@ -63,29 +59,18 @@ const CookieConsent: FunctionComponent = () => {
     }
   }, [showBanner, showPreferences]);
 
-  // Save consent and apply settings
-  const saveConsent = (newConsent: CookieConsent) => {
-    localStorage.setItem("cookieConsent", JSON.stringify(newConsent));
-    setConsent(newConsent);
+  const acceptAll = () => {
+    saveConsent({ necessary: true, analytics: true, youTube: true });
     setShowBanner(false);
     setShowPreferences(false);
     setOpenedExternally(false);
-
-    // Apply Matomo settings
-    if (newConsent.analytics) {
-      pushInstruction("rememberConsentGiven");
-      pushInstruction("enableJSErrorTracking");
-    } else {
-      pushInstruction("forgetConsentGiven");
-    }
-  };
-
-  const acceptAll = () => {
-    saveConsent({ necessary: true, analytics: true, youTube: true });
   };
 
   const rejectOptional = () => {
     saveConsent({ necessary: true, analytics: false, youTube: false });
+    setShowBanner(false);
+    setShowPreferences(false);
+    setOpenedExternally(false);
   };
 
   const savePreferences = () => {
@@ -94,26 +79,14 @@ const CookieConsent: FunctionComponent = () => {
       analytics: analyticsEnabled,
       youTube: youTubeEnabled,
     });
+    setShowBanner(false);
+    setShowPreferences(false);
+    setOpenedExternally(false);
   };
 
   const openPreferences = () => {
     setShowPreferences(true);
   };
-
-  useEffect(() => {
-    if (consent?.analytics) {
-      pushInstruction("rememberConsentGiven");
-      pushInstruction("enableJSErrorTracking");
-    } else if (!requireConsentPushed) {
-      pushInstruction("requireConsent");
-      setRequireConsentPushed(true);
-    }
-
-    if (consent && !consent.analytics && !forgetConsentPushed) {
-      pushInstruction("forgetConsentGiven");
-      setForgetConsentPushed(true);
-    }
-  }, [consent, pushInstruction, requireConsentPushed, forgetConsentPushed]);
 
   // Track page views
   useEffect(() => {
@@ -195,7 +168,7 @@ const CookieConsent: FunctionComponent = () => {
                   <input
                     type="checkbox"
                     checked={youTubeEnabled}
-                    onChange={(e) => setMediaEnabled(e.target.checked)}
+                    onChange={(e) => setYouTubeEnabled(e.target.checked)}
                   />
                   <span className={styles.toggleSlider}></span>
                 </label>
