@@ -7,42 +7,72 @@ import type { SearchResult } from "../../../hooks/use-search";
 
 import styles from "./search-result.module.css";
 
+/**
+ * Highlights matched substrings in the given text.
+ * @param text The full text to display.
+ * @param indices Array of [start, end] pairs for matches.
+ * @returns React nodes with matches wrapped in a span.
+ */
 function highlightMatches(
   text: string,
   indices: readonly [number, number][],
 ): React.ReactNode {
-  if (!indices || indices.length === 0) {
-    return text;
-  }
+  if (!indices?.length) return text;
 
   const parts: React.ReactNode[] = [];
   let lastIndex = 0;
 
-  // Sort indices by start position
-  const sortedIndices = [...indices].sort((a, b) => a[0] - b[0]);
+  (Array.from(indices) as [number, number][])
+    .sort((a: [number, number], b: [number, number]) => a[0] - b[0])
+    .forEach(([start, end]: [number, number], i: number) => {
+      if (start > lastIndex) parts.push(text.slice(lastIndex, start));
+      parts.push(
+        <span key={i} className={styles.highlight}>
+          {text.slice(start, end + 1)}
+        </span>,
+      );
+      lastIndex = end + 1;
+    });
 
-  sortedIndices.forEach(([start, end], i) => {
-    // Add text before the match
-    if (start > lastIndex) {
-      parts.push(text.substring(lastIndex, start));
+  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
+  return parts;
+}
+
+/**
+ * Extracts display text and highlight indices from the first match in a search result.
+ * Shows up to 50 characters before and after the match, with ellipsis if truncated.
+ * @param result The search result object.
+ * @returns An object containing displayText and displayIndices.
+ */
+function getDisplayMatch(result: SearchResult): {
+  displayText: string;
+  displayIndices: readonly [number, number][];
+} {
+  const firstMatch = result.matches?.[0];
+  let displayText = "";
+  let displayIndices: readonly [number, number][] = [];
+
+  if (firstMatch?.indices?.length) {
+    const text = firstMatch.value || "";
+    const [matchStart, matchEnd] = firstMatch.indices[0];
+
+    // Show up to 50 chars before/after match
+    const contextStart = Math.max(0, matchStart - 50);
+    const contextEnd = Math.min(text.length, matchEnd + 51);
+
+    displayText = text.slice(contextStart, contextEnd);
+    displayIndices = [[matchStart - contextStart, matchEnd - contextStart]];
+
+    if (contextStart > 0) {
+      displayText = "..." + displayText;
+      displayIndices = [[displayIndices[0][0] + 3, displayIndices[0][1] + 3]];
     }
-
-    // Add highlighted match
-    parts.push(
-      <span key={i} className={styles.highlight}>
-        {text.substring(start, end + 1)}
-      </span>,
-    );
-
-    lastIndex = end + 1;
-  });
-
-  // Add remaining text after last match
-  if (lastIndex < text.length) {
-    parts.push(text.substring(lastIndex));
+    if (contextEnd < text.length) {
+      displayText += "...";
+    }
   }
 
-  return parts;
+  return { displayText, displayIndices };
 }
 
 export default function SearchResult({ result }: { result: SearchResult }) {
@@ -50,40 +80,9 @@ export default function SearchResult({ result }: { result: SearchResult }) {
   const dispatch = useDispatch();
   const intl = useIntl();
 
+  const { displayText, displayIndices } = getDisplayMatch(result);
+
   const item = result.item;
-
-  // Get the first match for display
-  const firstMatch = result.matches?.[0];
-  let displayText = "";
-  let displayIndices: readonly [number, number][] = [];
-
-  if (firstMatch && firstMatch.indices && firstMatch.indices.length > 0) {
-    const text = firstMatch.value || "";
-    const firstMatchIndices = firstMatch.indices[0];
-    const matchStart = firstMatchIndices[0];
-    const matchEnd = firstMatchIndices[1];
-
-    // Get some context around the match (50 chars before and after)
-    const contextStart = Math.max(0, matchStart - 50);
-    const contextEnd = Math.min(text.length, matchEnd + 50);
-
-    displayText = text.substring(contextStart, contextEnd);
-
-    // Adjust indices relative to the new substring
-    displayIndices = [[matchStart - contextStart, matchEnd - contextStart]];
-
-    // Add ellipsis if we cut off text
-    if (contextStart > 0) {
-      displayText = "..." + displayText;
-      displayIndices = displayIndices.map(
-        ([s, e]) => [s + 3, e + 3] as [number, number],
-      );
-    }
-    if (contextEnd < text.length) {
-      displayText = displayText + "...";
-    }
-  }
-
   const category = item.categories?.[0];
   const id = item.id;
 
@@ -113,12 +112,6 @@ export default function SearchResult({ result }: { result: SearchResult }) {
       <button
         className={styles.button}
         onClick={handleResultSelect}
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            handleResultSelect();
-          }
-        }}
         aria-label={ariaLabel}
       >
         <strong>{title}</strong>
