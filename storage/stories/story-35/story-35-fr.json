@@ -23,25 +23,25 @@
           "url": "assets/story35-image01.jpg",
           "caption": "Cette image satellite acquise le 11 juin 2019 montre le glacier Jakobshavn, l'un des glaciers qui se déplacent le plus rapidement au monde.",
           "altText": "",
-          "focus": "left"
+          "focus": "right"
         },
         {
           "url": "assets/story35-image02.jpg",
           "caption": "Les images satellites d'archives sont utiles pour détecter les tendances à long terme dans la surveillance des glaciers.",
           "altText": "",
-          "focus": "left"
+          "focus": "right"
         },
         {
           "url": "assets/story35-image03.jpg",
           "caption": "Les satellites sont également utilisés pour cartographier l'altitude et l'épaisseur de la calotte glaciaire et suivre son évolution dans le temps.",
           "altText": "",
-          "focus": "left"
+          "focus": "right"
         },
         {
           "url": "assets/story35-image04.jpg",
           "caption": "La vitesse de la glace peut être mesurée grâce à de multiples acquisitions radar. Cela permet aux scientifiques de surveiller régulièrement chaque glacier afin de comprendre les dynamiques à court et à long terme.",
           "altText": "",
-          "focus": "left"
+          "focus": "right"
         }
       ]
     }
