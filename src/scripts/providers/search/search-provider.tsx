@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 
 import { useSelector } from "react-redux";
 import { languageSelector } from "../../selectors/language";
+import { SearchContext } from "../../hooks/use-search";
 
-import {
-  SearchContext,
-  SearchLayerItem,
-  SearchStoryItem,
-} from "../../hooks/use-search";
+import config from "../../config/main";
+import { SearchLayerItem, SearchStoryItem } from "../../types/search";
+
+import { replaceUrlPlaceholders } from "../../libs/replace-url-placeholders";
 
 export function SearchProvider({ children }: { children: React.ReactNode }) {
   const lang = useSelector(languageSelector);
@@ -16,7 +16,7 @@ export function SearchProvider({ children }: { children: React.ReactNode }) {
   const [stories, setStories] = useState<SearchStoryItem[]>([]);
 
   useEffect(() => {
-    fetch(`/index/storage-index-${lang}.json.gz`)
+    fetch(replaceUrlPlaceholders(config.api.searchIndex, { lang }))
       .then((res) => res.json())
       .then((indexData) => {
         const layersArr: SearchLayerItem[] = Array.isArray(indexData.layers)
@@ -31,13 +31,13 @@ export function SearchProvider({ children }: { children: React.ReactNode }) {
   }, [lang]);
 
   return (
-    <SearchContext
+    <SearchContext.Provider
       value={{
         layers,
         stories,
       }}
     >
       {children}
-    </SearchContext>
+    </SearchContext.Provider>
   );
 }

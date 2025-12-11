@@ -1,16 +1,18 @@
+import { createContext, use } from "react";
 import Fuse from "fuse.js";
 import type { FuseResult } from "fuse.js";
-import removeMarkdown from "remove-markdown";
-import { createContext, use } from "react";
-import { getStoryMediaType } from "../libs/get-story-media-type";
-import { LayerListItem } from "../types/layer-list";
-import { StoryListItem } from "../types/story-list";
-import { LegacySlide } from "../types/legacy-story";
 
-export type SearchLayerItem = LayerListItem;
-export type SearchStoryItem = StoryListItem & {
-  slides?: Array<LegacySlide>;
-};
+import removeMarkdown from "remove-markdown";
+
+import { getStoryMediaType } from "../libs/get-story-media-type";
+
+import {
+  searchableLayerKeys,
+  searchableStorySlideKeys,
+  searchableStoryKeys,
+  SearchLayerItem,
+  SearchStoryItem,
+} from "../types/search";
 
 type SearchContextValue = {
   layers: SearchLayerItem[];
@@ -44,7 +46,7 @@ export function useSearch() {
     const layerSearcher =
       layers.length > 0
         ? new Fuse(layers, {
-            keys: ["name", "shortName", "description"],
+            keys: [...searchableLayerKeys],
             ...fuseConfig,
             minMatchCharLength: query.length,
           })
@@ -64,13 +66,8 @@ export function useSearch() {
             })),
             {
               keys: [
-                "title",
-                "subtitle",
-                "description",
-                "slides.text",
-                "slides.shortText",
-                "slides.layerDescription",
-                "slides.imageCaptions",
+                ...searchableStoryKeys,
+                ...searchableStorySlideKeys.map((key) => `slides.${key}`),
               ],
               ...fuseConfig,
               minMatchCharLength: query.length,
@@ -87,10 +84,7 @@ export function useSearch() {
     const storyResults: SearchResult[] = storySearcher
       ? storySearcher.search(query).map((result) => ({
           ...result,
-          type: getStoryMediaType(
-            result.item,
-            stories.map((story) => ({ ...story, slides: story.slides || [] })),
-          ),
+          type: getStoryMediaType(result.item, stories),
         }))
       : [];
 
