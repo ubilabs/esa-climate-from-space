@@ -23,7 +23,7 @@
     "electron:install": "electron-builder install-app-deps",
     "electron:clean": "rm -rf ./dist-electron && rm -rf ./dist-src-electron",
     "electron:prepare-build": "npm run electron:clean && npm run electron:install && npm run clean && vite build && npm run copy:assets && npm run electron:compile",
-    "electron:build": "electron-builder -mwl --x64 --config electron-builder.json --publish never",
+    "electron:build": "electron-builder -mwl --config electron-builder.json --publish never",
     "electron:download-basemaps": "gsutil -m rsync -drc gs://esa-cfs-tiles/${npm_package_version}/basemaps ./storage/basemaps",
     "electron:copy-basemaps": "cp -r ./storage/basemaps ./dist",
     "story-packages": "./scripts/create-story-packages.sh",
@@ -105,6 +105,6 @@
     "svg-loaders-react": "^3.1.1",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.23.0",
-    "vite": "^6.3.6"
+    "vite": "^6.4.1"
   }
 }
