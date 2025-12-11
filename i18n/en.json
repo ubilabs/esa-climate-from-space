@@ -166,5 +166,6 @@
   "categories.ocean": "Ocean",
   "categories.atmosphere": "Atmosphere",
   "categories.cryosphere": "Cryosphere",
-  "exploreMoreInCategory": "Explore more in this [category](#/{category})"
+  "exploreMoreInCategory": "Explore more in this [category](#/{category})",
+  "youTube.consentRequired": "To view YouTube videos, please enable media cookies in your privacy settings."
 }

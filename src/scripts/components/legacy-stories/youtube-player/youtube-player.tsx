@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { FormattedMessage } from "react-intl";
 import YouTube, { Options } from "react-youtube";
 import { YouTubePlayer } from "youtube-player/dist/types";
 import { Language } from "../../../types/language";
@@ -21,7 +22,11 @@ const YoutubePlayer: FunctionComponent<Props> = ({
   onPlay,
 }) => {
   if (!loadConsent()?.youTube) {
-    return null;
+    return (
+      <div className={styles.consentMessage}>
+        <FormattedMessage id="youTube.consentRequired" />
+      </div>
+    );
   }
 
   const options: Options = {
