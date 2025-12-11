@@ -1,18 +1,25 @@
 import Fuse from "fuse.js";
 import type { FuseResult } from "fuse.js";
 import removeMarkdown from "remove-markdown";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { createContext, use } from "react";
 import { getStoryMediaType } from "../libs/get-story-media-type";
-import { languageSelector } from "../selectors/language";
 import { LayerListItem } from "../types/layer-list";
 import { StoryListItem } from "../types/story-list";
 import { LegacySlide } from "../types/legacy-story";
 
-type SearchLayerItem = LayerListItem;
-type SearchStoryItem = StoryListItem & {
+export type SearchLayerItem = LayerListItem;
+export type SearchStoryItem = StoryListItem & {
   slides?: Array<LegacySlide>;
 };
+
+type SearchContextValue = {
+  layers: SearchLayerItem[];
+  stories: SearchStoryItem[];
+};
+
+export const SearchContext = createContext<SearchContextValue | undefined>(
+  undefined,
+);
 
 export type SearchResult = FuseResult<SearchLayerItem | SearchStoryItem> & {
   type: string;
@@ -27,28 +34,12 @@ const fuseConfig = {
 };
 
 export function useSearch() {
-  const lang = useSelector(languageSelector);
+  const context = use(SearchContext);
 
-  const [layers, setLayers] = useState<SearchLayerItem[]>([]);
-  const [stories, setStories] = useState<SearchStoryItem[]>([]);
-
-  useEffect(() => {
-    fetch(`/index/storage-index-${lang}.json.gz`)
-      .then((res) => res.json())
-      .then((indexData) => {
-        const layersArr: SearchLayerItem[] = Array.isArray(indexData.layers)
-          ? indexData.layers.filter(Boolean)
-          : [];
-        const storiesArr: SearchStoryItem[] = Array.isArray(indexData.stories)
-          ? indexData.stories.filter(Boolean)
-          : [];
-        setLayers(layersArr);
-        setStories(storiesArr);
-      });
-  }, [lang]);
-
-  const search = (query: string): SearchResult[] => {
+  return (query: string): SearchResult[] => {
     if (!query) return [];
+
+    const { layers, stories } = context ?? { layers: [], stories: [] };
 
     const layerSearcher =
       layers.length > 0
@@ -108,6 +99,4 @@ export function useSearch() {
       (a, b) => (a.score ?? 1) - (b.score ?? 1),
     );
   };
-
-  return { search, layers, stories };
 }

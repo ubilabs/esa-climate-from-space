@@ -30,7 +30,7 @@ const filters: Filter[] = [
 ];
 
 export default function ContentSearch() {
-  const { search } = useSearch();
+  const search = useSearch();
   const intl = useIntl();
   const [query, setQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState<FilterType>(FilterType.All);

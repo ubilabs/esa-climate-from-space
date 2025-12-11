@@ -18,6 +18,7 @@ import { store } from "./create-redux-store";
 
 import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 
+import { SearchProvider } from "../../../providers/search/search-provider";
 import { StoryProvider } from "../../../providers/story/story-provider";
 
 import { languageSelector } from "../../../selectors/language";
@@ -139,67 +140,75 @@ const TranslatedApp: FunctionComponent = () => {
       locale={language}
       messages={translations[language]}
     >
-      <Router>
-        <Routes>
-          <Route element={<RouteMatch />}>
-            {/*  About project */}
-            <Route
-              path={ROUTES.about.path}
-              element={
-                <>
-                  <EsaLogoLink />
-                  <AboutProjectOverlay />
-                </>
-              }
-            />
-            <Route
-              path={ROUTES.search.path}
-              element={
-                <>
-                  <Header />
-                  <ContentSearch />
-                </>
-              }
-            />
-            {/*  Legacy routes are maintained for embedded links compatibility prior
+      <SearchProvider>
+        <Router>
+          <Routes>
+            <Route element={<RouteMatch />}>
+              {/*  About project */}
+              <Route
+                path={ROUTES.about.path}
+                element={
+                  <>
+                    <EsaLogoLink />
+                    <AboutProjectOverlay />
+                  </>
+                }
+              />
+              <Route
+                path={ROUTES.search.path}
+                element={
+                  <>
+                    <Header />
+                    <ContentSearch />
+                  </>
+                }
+              />
+              {/*  Legacy routes are maintained for embedded links compatibility prior
           to version 2 */}
-            <Route
-              path={ROUTES.legacy_stories.path}
-              element={<StoriesSelector />}
-            />
-            <Route path={ROUTES.legacy_story.path} element={<LegacyStory />} />
-            {/* Present story routes */}
-            <Route
-              path={ROUTES.present.path}
-              element={<PresentationSelector />}
-            />
-            <Route
-              path={ROUTES.present_story.path}
-              element={<LegacyOrRecentStory />}
-            />
-            <Route path={ROUTES.showcase.path} element={<ShowcaseSelector />} />
-            {/* Showcase stories and story routes */}
-            <Route
-              path={ROUTES.showcase_stories.path}
-              element={<ShowcaseSelector />}
-            />
-            <Route
-              path={ROUTES.showcase_story.path}
-              element={<LegacyOrRecentStory />}
-            />
-            {/*  Main application routes */}
-            <Route path={ROUTES.base.path} element={<MainContent />} />
-            <Route path={ROUTES.nav_content.path} element={<MainContent />} />
-            <Route path={ROUTES.data.path} element={<MainContent />} />
-            <Route
-              path={ROUTES.stories.path}
-              element={<MainContent children={<Story />} />}
-            />
-          </Route>
-        </Routes>
-        <CookieConsent />
-        <UrlSync />
-      </Router>
+              <Route
+                path={ROUTES.legacy_stories.path}
+                element={<StoriesSelector />}
+              />
+              <Route
+                path={ROUTES.legacy_story.path}
+                element={<LegacyStory />}
+              />
+              {/* Present story routes */}
+              <Route
+                path={ROUTES.present.path}
+                element={<PresentationSelector />}
+              />
+              <Route
+                path={ROUTES.present_story.path}
+                element={<LegacyOrRecentStory />}
+              />
+              <Route
+                path={ROUTES.showcase.path}
+                element={<ShowcaseSelector />}
+              />
+              {/* Showcase stories and story routes */}
+              <Route
+                path={ROUTES.showcase_stories.path}
+                element={<ShowcaseSelector />}
+              />
+              <Route
+                path={ROUTES.showcase_story.path}
+                element={<LegacyOrRecentStory />}
+              />
+              {/*  Main application routes */}
+              <Route path={ROUTES.base.path} element={<MainContent />} />
+              <Route path={ROUTES.nav_content.path} element={<MainContent />} />
+              <Route path={ROUTES.data.path} element={<MainContent />} />
+              <Route
+                path={ROUTES.stories.path}
+                element={<MainContent children={<Story />} />}
+              />
+            </Route>
+          </Routes>
+          <CookieConsent />
+          <UrlSync />
+        </Router>
+      </SearchProvider>
     </IntlProvider>
   );
 };
