@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { setSelectedLayerIds } from "../../../reducers/layers";
-import { SearchResult } from "../../../hooks/use-search";
+import type { SearchResult } from "../../../hooks/use-search";
 
 import styles from "./search-result.module.css";
 
@@ -45,7 +45,7 @@ function highlightMatches(
   return parts;
 }
 
-export default function SeachResult({ result }: { result: SearchResult }) {
+export default function SearchResult({ result }: { result: SearchResult }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const intl = useIntl();

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import { useSearch } from "../../../hooks/use-search";
-import SeachResult from "../search-result/search-result";
+import SearchResult from "../search-result/search-result";
 import { SearchIcon } from "../icons/search-icon";
 import { CloseIcon } from "../icons/close-icon";
 
@@ -100,7 +100,7 @@ export default function ContentSearch() {
           aria-label={intl.formatMessage({ id: "search.resultsLabel" })}
         >
           {filteredResults.map((result) => (
-            <SeachResult
+            <SearchResult
               key={`${result.type}-${result.item.id}`}
               result={result}
             />
