@@ -85,6 +85,8 @@
   "cookieConsent.back": "Zurück",
   "cookieConsent.yes": "Akzeptieren",
   "cookieConsent.no": "Nicht tracken",
+  "cookieConsent.toggleAnalytics": "Analytics-Cookies umschalten",
+  "cookieConsent.toggleMedia": "Media-Cookies umschalten",
   "privacySettings": "Datenschutzeinstellungen",
   "dataPrivacy": "Datenschutz",
   "feedback": "Feedback",

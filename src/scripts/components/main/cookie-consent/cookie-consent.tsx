@@ -1,5 +1,5 @@
 import { FunctionComponent, useEffect, useState, useRef } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
 
@@ -16,6 +16,7 @@ const CookieConsent: FunctionComponent = () => {
   const location = useLocation();
   const { trackPageView } = useMatomo();
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const intl = useIntl();
 
   const { consent, saveConsent } = useConsent();
   const [showBanner, setShowBanner] = useState(!consent);
@@ -140,7 +141,9 @@ const CookieConsent: FunctionComponent = () => {
                 </h3>
                 <label
                   className={styles.toggle}
-                  aria-label="Toggle analytics cookies"
+                  aria-label={intl.formatMessage({
+                    id: "cookieConsent.toggleAnalytics",
+                  })}
                 >
                   <input
                     type="checkbox"
@@ -163,7 +166,9 @@ const CookieConsent: FunctionComponent = () => {
                 </h3>
                 <label
                   className={styles.toggle}
-                  aria-label="Toggle media cookies"
+                  aria-label={intl.formatMessage({
+                    id: "cookieConsent.toggleMedia",
+                  })}
                 >
                   <input
                     type="checkbox"

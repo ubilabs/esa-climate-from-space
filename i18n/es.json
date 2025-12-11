@@ -85,6 +85,8 @@
   "cookieConsent.back": "Atrás",
   "cookieConsent.yes": "Aceptar",
   "cookieConsent.no": "No Rastrear",
+  "cookieConsent.toggleAnalytics": "Alternar cookies de análisis",
+  "cookieConsent.toggleMedia": "Alternar cookies de medios",
   "privacySettings": "Configuración de privacidad",
   "dataPrivacy": "Privacidad de datos",
   "feedback": "Feedback",
