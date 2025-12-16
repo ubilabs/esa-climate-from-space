@@ -162,7 +162,7 @@ const downloadUrls = {
 
 export default {
   api: {
-    searchIndex: `${baseUrlStorage}index/search-index-{lang}.json.gz`,
+    searchIndex: `${baseUrlStorage}index/search-index-{lang}.json`,
     layers: `${baseUrlStorage}layers/layers-{lang}.json`,
     layer: `${baseUrlTiles}/{id}/metadata.json`,
     layerTiles: `${baseUrlTiles}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
