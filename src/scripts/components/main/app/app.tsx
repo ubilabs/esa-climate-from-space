@@ -31,7 +31,7 @@ import { EsaLogoLink } from "../logo/logo";
 import Header from "../header/header";
 import LayerSelector from "../../layers/layer-selector/layer-selector";
 import DataViewer from "../data-viewer/data-viewer";
-import Tracking from "../tracking/tracking";
+import CookieConsent from "../cookie-consent/cookie-consent";
 import StoriesSelector from "../../legacy-stories/stories-selector/stories-selector";
 import PresentationSelector from "../../legacy-stories/presentation-selector/presentation-selector";
 import ShowcaseSelector from "../../legacy-stories/showcase-selector/showcase-selector";
@@ -187,7 +187,7 @@ const TranslatedApp: FunctionComponent = () => {
             />
           </Route>
         </Routes>
-        <Tracking />
+        <CookieConsent />
         <UrlSync />
       </Router>
     </IntlProvider>
