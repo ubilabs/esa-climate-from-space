@@ -1,6 +1,6 @@
 import { createContext, use } from "react";
 import Fuse from "fuse.js";
-import type { FuseResult } from "fuse.js";
+import type { FuseResult, FuseResultMatch } from "fuse.js";
 
 import removeMarkdown from "remove-markdown";
 
@@ -35,6 +35,53 @@ const fuseConfig = {
   findAllMatches: true,
 };
 
+/**
+ * Filters search matches to prioritize "perfect matches" where the matched
+ * substring exactly equals the search query (case-insensitive).
+ *
+ * For each match, if there are any perfect matches found, only those perfect
+ * matches are kept. Otherwise, all original matches are preserved.
+ *
+ * @param matches - The array of Fuse.js match results to filter
+ * @param query - The search query string to compare against
+ * @returns The filtered array of matches with perfect matches prioritized, or undefined if no matches provided
+ *
+ * @example
+ * // If query is "ocean" and a match contains both "ocean" and "oceanic"
+ * // Only the "ocean" match will be kept in the indices
+ */
+function filterMatchesToPerfect(
+  matches: readonly FuseResultMatch[] | undefined,
+  query: string,
+): FuseResultMatch[] | undefined {
+  if (!matches) return undefined;
+
+  const lowerQuery = query.toLowerCase();
+
+  return matches.map((match) => {
+    const { value, indices } = match;
+
+    if (!value || !indices) return match;
+
+    // Identify "perfect matches" — substring exactly equal to query
+    const perfectMatches = indices.filter(([start, end]) => {
+      const substr = value.slice(start, end + 1);
+      return substr.toLowerCase() === lowerQuery;
+    });
+
+    // If there is at least one perfect match, keep only those
+    if (perfectMatches.length > 0) {
+      return {
+        ...match,
+        indices: perfectMatches,
+      };
+    }
+
+    // Otherwise, keep all original matches
+    return match;
+  });
+}
+
 export function useSearch() {
   const context = use(SearchContext);
 
@@ -45,11 +92,17 @@ export function useSearch() {
 
     const layerSearcher =
       layers.length > 0
-        ? new Fuse(layers, {
-            keys: [...searchableLayerKeys],
-            ...fuseConfig,
-            minMatchCharLength: query.length,
-          })
+        ? new Fuse(
+            layers.map((layer) => ({
+              ...layer,
+              description: removeMarkdown(layer.description ?? ""),
+            })),
+            {
+              keys: [...searchableLayerKeys],
+              ...fuseConfig,
+              minMatchCharLength: query.length,
+            },
+          )
         : null;
 
     const storySearcher =
@@ -76,15 +129,18 @@ export function useSearch() {
         : null;
 
     const layerResults: SearchResult[] = layerSearcher
-      ? layerSearcher
-          .search(query)
-          .map((result) => ({ ...result, type: "layer" as const }))
+      ? layerSearcher.search(query).map((result) => ({
+          ...result,
+          type: "layer" as const,
+          matches: filterMatchesToPerfect(result.matches, query),
+        }))
       : [];
 
     const storyResults: SearchResult[] = storySearcher
       ? storySearcher.search(query).map((result) => ({
           ...result,
           type: getStoryMediaType(result.item, stories),
+          matches: filterMatchesToPerfect(result.matches, query),
         }))
       : [];
 
