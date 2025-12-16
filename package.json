@@ -31,7 +31,7 @@
     "download-stories": "gsutil -m rsync -x \".*stories-.*\\.json$\" -r gs://esa-cfs-storage/$npm_package_version/stories ./storage/stories/ && npm run clean:story-packages",
     "upload-stories": "./scripts/confirm-storage-upload.sh && npm run story-packages && find ./storage/stories -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/stories/* gs://esa-cfs-storage/$npm_package_version/stories/ && npm run clean:story-packages",
     "upload-layers": "find ./storage/layers -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers",
-    "upload-index": "find ./storage/index -type f -name \".DS_Store\" -delete && bash -c 'for f in ./storage/index/*.json.gz; do name=$(basename \"$f\" .json.gz); gsutil -h \"Content-Type: application/json\" -h \"Content-Encoding: gzip\" cp \"$f\" \"gs://esa-cfs-storage/$npm_package_version/index/$name.json\"; done'",
+    "upload-index": "find ./storage/index -type f -name \".DS_Store\" -delete && bash -c 'shopt -s nullglob; for f in ./storage/index/*.json; do gzip -c \"$f\" > \"$f.gz\"; name=$(basename \"$f\"); gsutil -h \"Content-Type: application/json\" -h \"Content-Encoding: gzip\" cp \"$f.gz\" \"gs://esa-cfs-storage/$npm_package_version/index/$name\"; rm \"$f.gz\"; done'",
     "download-layers": "gsutil -m cp gs://esa-cfs-storage/$npm_package_version/layers/layers-*.json ./storage/layers/",
     "optimize-story-images": "./scripts/optimize-story-images.sh"
   },
