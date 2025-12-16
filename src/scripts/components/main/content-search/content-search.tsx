@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { useSearch } from "../../../hooks/use-search";
 import SearchResult from "../search-result/search-result";
@@ -41,6 +42,23 @@ export default function ContentSearch() {
     return result.type === activeFilter;
   });
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.query) {
+      setQuery(location.state.query);
+    }
+  }, [location.state?.query, navigate]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
+
+  const handleClear = () => {
+    setQuery("");
+  };
+
   return (
     <div className={styles.container}>
       <h3>
@@ -52,14 +70,14 @@ export default function ContentSearch() {
           type="text"
           placeholder={intl.formatMessage({ id: "search.placeholder" })}
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleInputChange}
           aria-label={intl.formatMessage({ id: "search.placeholder" })}
         />
         {query && (
           <button
             type="button"
             className={styles.clearButton}
-            onClick={() => setQuery("")}
+            onClick={handleClear}
             aria-label={intl.formatMessage({ id: "search.clear" })}
           >
             <CloseIcon />
@@ -102,6 +120,7 @@ export default function ContentSearch() {
           {filteredResults.map((result) => (
             <SearchResult
               key={`${result.type}-${result.item.id}`}
+              query={query}
               result={result}
             />
           ))}

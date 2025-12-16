@@ -1,6 +1,6 @@
 import { FunctionComponent, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import config, { ROUTES } from "../../../config/main";
 
@@ -62,6 +62,9 @@ const Header: FunctionComponent = () => {
   const isLayerSelectorVisible = useSelector(showLayerSelector);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const searchQuery = location.state?.query;
 
   if (!header) {
     // The app element determines the layout via grid which is why we should return a DOM element here
@@ -84,6 +87,9 @@ const Header: FunctionComponent = () => {
   })();
 
   const linkPath = (() => {
+    if (searchQuery) {
+      return "/search";
+    }
     if (isShowCaseStoryRoute) {
       return "/showcase/";
     }
@@ -108,9 +114,13 @@ const Header: FunctionComponent = () => {
           <Button
             className={styles.backButton}
             icon={ArrowBackIcon}
-            label={isMobile ? "" : "backToStories"}
-            ariaLabel={"backToStories"}
+            label={
+              isMobile ? "" : !searchQuery ? "backToStories" : "backToSearch"
+            }
+            ariaLabel={!searchQuery ? "backToStories" : "backToSearch"}
             link={linkPath}
+            state={location.state}
+            replace={true}
           />
         )}
         {appRoute === AppRoute.Data && layers_menu && (

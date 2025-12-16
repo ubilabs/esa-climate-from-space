@@ -75,7 +75,13 @@ function getDisplayMatch(result: SearchResult): {
   return { displayText, displayIndices };
 }
 
-export default function SearchResult({ result }: { result: SearchResult }) {
+export default function SearchResult({
+  query,
+  result,
+}: {
+  query: string;
+  result: SearchResult;
+}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const intl = useIntl();
@@ -90,14 +96,20 @@ export default function SearchResult({ result }: { result: SearchResult }) {
     if (!category || !id) {
       return;
     }
+
+    // Persist search query in navigation state for back navigation
+    navigate("/search", { state: { query } });
+
     if (result.type === "layer") {
       dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
       // Ensure navigation always happens after dispatch
       setTimeout(() => {
-        navigate(`/${category}/data`);
+        navigate(`/${category}/data`, { state: { query } });
       }, 0);
     } else {
-      navigate(`/${category}/stories/${id}/0`);
+      navigate(`/${category}/stories/${id}/0`, {
+        state: { query },
+      });
     }
   };
 
