@@ -1,3 +1,31 @@
+# [2.1.0](https://github.com/ubilabs/esa-climate-from-space/compare/v2.0.5...v2.1.0) (2025-12-17)
+
+
+### Bug Fixes
+
+* **app:** fixes from review ([eb3a002](https://github.com/ubilabs/esa-climate-from-space/commit/eb3a0020b1cf0fb7c5a372f2c84143eb8642dd05))
+* **legacy-story:** fix broken styles ([38e9ca4](https://github.com/ubilabs/esa-climate-from-space/commit/38e9ca4c2d9e9b77ce9625f383b1bd1cfd881dee))
+* **legacy-story:** gallery image ([58879ab](https://github.com/ubilabs/esa-climate-from-space/commit/58879ab5b48dcbf177e99c2ea0f4a99c7d2dabd4))
+* **legacy-story:** limit image height ([e1059ae](https://github.com/ubilabs/esa-climate-from-space/commit/e1059ae02cbb1c6c92b0b977373d2d30f257378b))
+* **legacy-story:** make sure image is identical ([31a7e33](https://github.com/ubilabs/esa-climate-from-space/commit/31a7e3387386035896deec544ebd3514d884fcca))
+* **story-44:** add missing captions ([7468841](https://github.com/ubilabs/esa-climate-from-space/commit/74688412ed305f8ccae95ba30b176f2a7f3418fd))
+* **time-playback:** step index initialized with zero ([#2033](https://github.com/ubilabs/esa-climate-from-space/issues/2033)) ([37dfbbe](https://github.com/ubilabs/esa-climate-from-space/commit/37dfbbe3824d52cdf68870714299b701a1f73288))
+* **time-slider:** calculate steps from timestamps of main layer ([#2018](https://github.com/ubilabs/esa-climate-from-space/issues/2018)) ([516cf06](https://github.com/ubilabs/esa-climate-from-space/commit/516cf06eba4829a5e511f9fa788b4b1586ff8a3d))
+
+
+### Features
+
+* add more content ([f32ef05](https://github.com/ubilabs/esa-climate-from-space/commit/f32ef05cd7b972b56b9f2eb622cc8eee4e42c9ec))
+* **content:** Auto content commit for story id: story-44 ([49f207e](https://github.com/ubilabs/esa-climate-from-space/commit/49f207e17adb57e1e69db1ee66cdc8250366c679))
+* **content:** Auto content commit for story id: story-45 ([caee0cc](https://github.com/ubilabs/esa-climate-from-space/commit/caee0cc623cc868f12d191f0528ea45e1ff24edc))
+* **cookie-consent:** adjust order of buttons ([74e6e47](https://github.com/ubilabs/esa-climate-from-space/commit/74e6e47a00da76e67810fd5cef56f941f22af488))
+* **cookie-consent:** dialog with multiple privacy settings ([#2024](https://github.com/ubilabs/esa-climate-from-space/issues/2024)) ([d1227c1](https://github.com/ubilabs/esa-climate-from-space/commit/d1227c104792c9a8bb2af185bf07540ab87d4eb4))
+* **electron:** multi platform and architecture builds ([#2028](https://github.com/ubilabs/esa-climate-from-space/issues/2028)) ([3ba9e11](https://github.com/ubilabs/esa-climate-from-space/commit/3ba9e11efebb514df4946c4e56737e58e931ead0))
+* **search:** content search for datasets and layers ([#1933](https://github.com/ubilabs/esa-climate-from-space/issues/1933)) ([a600a21](https://github.com/ubilabs/esa-climate-from-space/commit/a600a21d38d99146e80632e2fbb2a506c2a25d59))
+* **stories:** update story: story-35 ([#2027](https://github.com/ubilabs/esa-climate-from-space/issues/2027)) ([21894c6](https://github.com/ubilabs/esa-climate-from-space/commit/21894c6766fab803a5ce2bab7490884cd662471c))
+
+
+
 ## [2.0.5](https://github.com/ubilabs/esa-climate-from-space/compare/v2.0.4...v2.0.5) (2025-09-22)
 
 
