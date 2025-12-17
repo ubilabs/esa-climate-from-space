@@ -170,7 +170,6 @@
 .cookieConsentPrimary {
   background-color: var(--main);
   color: #FFF;
-  grid-column: 2;
 }
 
 .cookieConsentPrimary:hover {
