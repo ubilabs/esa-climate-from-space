@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { useSearch } from "../../../hooks/use-search";
 import { useScreenSize } from "../../../hooks/use-screen-size";
+
+import { Filter, FilterType } from "../../../types/search";
 
 import SearchResult from "../search-result/search-result";
 import { BackButton } from "../back-button/back-button";
@@ -13,19 +15,6 @@ import { CloseIcon } from "../icons/close-icon";
 
 import styles from "./content-search.module.css";
 
-enum FilterType {
-  All = "all",
-  Blog = "blog",
-  Layer = "layer",
-  Video = "video",
-  Image = "image",
-}
-
-type Filter = {
-  type: FilterType;
-  labelId: string;
-  icon: string;
-};
 const filters: Filter[] = [
   { type: FilterType.All, labelId: "search.allOptions", icon: "check" },
   { type: FilterType.Blog, labelId: "contentType.blog", icon: "blog" },
@@ -48,7 +37,6 @@ export default function ContentSearch() {
     return result.type === activeFilter;
   });
 
-  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -56,10 +44,16 @@ export default function ContentSearch() {
   }, []);
 
   useEffect(() => {
-    if (location.state?.query) {
-      setQuery(location.state.query);
+    if (location.state) {
+      const { query, filter } = location.state;
+      if (query) {
+        setQuery(query);
+      }
+      if (filter) {
+        setActiveFilter(filter);
+      }
     }
-  }, [location.state?.query, navigate]);
+  }, [location.state]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -139,6 +133,7 @@ export default function ContentSearch() {
               <SearchResult
                 key={`${result.type}-${result.item.id}`}
                 query={query}
+                filter={activeFilter}
                 result={result}
               />
             ))}

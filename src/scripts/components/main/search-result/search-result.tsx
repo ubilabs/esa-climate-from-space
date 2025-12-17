@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import type { SearchResult } from "../../../hooks/use-search";
 
+import { FilterType } from "../../../types/search";
+
 import styles from "./search-result.module.css";
 
 /**
@@ -78,8 +80,10 @@ function getDisplayMatch(result: SearchResult): {
 export default function SearchResult({
   query,
   result,
+  filter,
 }: {
   query: string;
+  filter: FilterType;
   result: SearchResult;
 }) {
   const navigate = useNavigate();
@@ -104,11 +108,11 @@ export default function SearchResult({
       dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
       // Ensure navigation always happens after dispatch
       setTimeout(() => {
-        navigate(`/${category}/data`, { state: { query } });
+        navigate(`/${category}/data`, { state: { query, filter } });
       }, 0);
     } else {
       navigate(`/${category}/stories/${id}/0`, {
-        state: { query },
+        state: { query, filter },
       });
     }
   };

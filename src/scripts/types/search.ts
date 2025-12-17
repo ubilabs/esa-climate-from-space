@@ -43,3 +43,17 @@ export type SearchStoryItem = SearchMetaInfo &
   SearchStoryFields & {
     slides: Array<SearchStorySlide>;
   };
+
+export enum FilterType {
+  All = "all",
+  Blog = "blog",
+  Layer = "layer",
+  Video = "video",
+  Image = "image",
+}
+
+export type Filter = {
+  type: FilterType;
+  labelId: string;
+  icon: string;
+};
