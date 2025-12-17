@@ -32,7 +32,9 @@ const TimePlayback: FunctionComponent<Props> = ({
   const time = useSelector(timeSelector);
 
   const [nextTime, setNextTime] = useState(time);
-  const [stepIndex, setStepIndex] = useState(0);
+  const [stepIndex, setStepIndex] = useState(
+    steps.findIndex((step) => step >= time),
+  );
 
   useInterval(() => {
     let newTime = 0;
