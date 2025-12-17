@@ -220,6 +220,11 @@ const CookieConsent: FunctionComponent = () => {
           </p>
           <div className={styles.buttons}>
             <Button
+              className={styles.cookieConsentPrimary}
+              label="cookieConsent.acceptAll"
+              onClick={acceptAll}
+            />
+            <Button
               className={styles.cookieConsentSecondary}
               label="cookieConsent.rejectOptional"
               onClick={rejectOptional}
@@ -228,11 +233,6 @@ const CookieConsent: FunctionComponent = () => {
               className={styles.cookieConsentTertiary}
               label="cookieConsent.managePreferences"
               onClick={openPreferences}
-            />
-            <Button
-              className={styles.cookieConsentPrimary}
-              label="cookieConsent.acceptAll"
-              onClick={acceptAll}
             />
           </div>
         </>
