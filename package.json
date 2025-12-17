@@ -30,7 +30,8 @@
     "clean:story-packages": "find ./storage -type f -name \"*.zip\" -delete",
     "download-stories": "gsutil -m rsync -x \".*stories-.*\\.json$\" -r gs://esa-cfs-storage/$npm_package_version/stories ./storage/stories/ && npm run clean:story-packages",
     "upload-stories": "./scripts/confirm-storage-upload.sh && npm run story-packages && find ./storage/stories -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/stories/* gs://esa-cfs-storage/$npm_package_version/stories/ && npm run clean:story-packages",
-    "upload-layers": "find ./storage -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers",
+    "upload-layers": "find ./storage/layers -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers",
+    "upload-index": "node ./scripts/create-search-index.js && find ./storage/index -type f -name \".DS_Store\" -delete && bash -c 'shopt -s nullglob; for f in ./storage/index/*.json; do gzip -c \"$f\" > \"$f.gz\"; name=$(basename \"$f\"); gsutil -h \"Content-Type: application/json\" -h \"Content-Encoding: gzip\" cp \"$f.gz\" \"gs://esa-cfs-storage/$npm_package_version/index/$name\"; rm \"$f.gz\"; done'",
     "download-layers": "gsutil -m cp gs://esa-cfs-storage/$npm_package_version/layers/layers-*.json ./storage/layers/",
     "optimize-story-images": "./scripts/optimize-story-images.sh"
   },
@@ -52,6 +53,7 @@
     "classnames": "^2.5.1",
     "cross-zip": "^4.0.0",
     "electron-is-dev": "^2.0.0",
+    "fuse.js": "^7.1.0",
     "lenis": "^1.3.9",
     "lethargy": "^1.0.9",
     "lodash.debounce": "^4.0.8",
@@ -67,6 +69,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^3.1.0",
     "rehype-raw": "^6.1.1",
+    "remove-markdown": "^0.6.2",
     "video.js": "^7.17.0"
   },
   "devDependencies": {
@@ -102,6 +105,7 @@
     "postcss": "^8.5.3",
     "postcss-custom-media": "^11.0.5",
     "prettier": "3.4.2",
+    "rollup": "^4.9.0",
     "svg-loaders-react": "^3.1.1",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.23.0",

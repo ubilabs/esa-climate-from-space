@@ -1,0 +1,51 @@
+.backButton {
+  position: relative;
+  width: 100%;
+  /* Mobile/H4 */
+  font-family: NotesEsa;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+
+  /* 110% */
+  > span {
+    margin: 0 auto;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+
+      background-color: white;
+      width: 25px;
+      height: 25px;
+      mask: var(--arrow-left);
+    }
+  }
+
+  @media screen and (--desktop-viewport) {
+    text-transform: uppercase;
+    width: fit-content;
+    margin-left: 1.5rem;
+    padding-left: 0.5rem;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: 0.32px;
+
+    > span {
+      margin-left: 2rem;
+      position: relative;
+
+      &:after {
+        left: -2rem;
+      }
+
+      &:hover:after {
+        background-color: var(--main);
+      }
+    }
+  }
+}

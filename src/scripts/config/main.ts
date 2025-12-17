@@ -22,6 +22,7 @@ export const ROUTES = {
   },
   [AppRoute.LegacyStories]: { path: "stories/", end: true },
   [AppRoute.About]: { path: "/about", end: true },
+  [AppRoute.Search]: { path: "/search", end: true },
   [AppRoute.PresentStory]: {
     path: "/present/:storyId/:slideIndex",
     end: true,
@@ -161,6 +162,7 @@ const downloadUrls = {
 
 export default {
   api: {
+    searchIndex: `${baseUrlStorage}index/search-index-{lang}.json`,
     layers: `${baseUrlStorage}layers/layers-{lang}.json`,
     layer: `${baseUrlTiles}/{id}/metadata.json`,
     layerTiles: `${baseUrlTiles}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
