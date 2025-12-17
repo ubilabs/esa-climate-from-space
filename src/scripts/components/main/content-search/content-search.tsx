@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { useSearch } from "../../../hooks/use-search";
+import { useScreenSize } from "../../../hooks/use-screen-size";
+
 import SearchResult from "../search-result/search-result";
+import { BackButton } from "../back-button/back-button";
+
 import { SearchIcon } from "../icons/search-icon";
 import { CloseIcon } from "../icons/close-icon";
 
@@ -33,9 +37,11 @@ const filters: Filter[] = [
 export default function ContentSearch() {
   const search = useSearch();
   const intl = useIntl();
+  const { isDesktop } = useScreenSize();
   const [query, setQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState<FilterType>(FilterType.All);
   const searchResult = search(query);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const filteredResults = searchResult.filter((result) => {
     if (activeFilter === FilterType.All) return true;
@@ -44,6 +50,10 @@ export default function ContentSearch() {
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     if (location.state?.query) {
@@ -61,71 +71,80 @@ export default function ContentSearch() {
 
   return (
     <div className={styles.container}>
-      <h3>
-        <FormattedMessage id="search.title" />
-      </h3>
-      <div className={styles.searchInputWrapper}>
-        <SearchIcon />
-        <input
-          type="text"
-          placeholder={intl.formatMessage({ id: "search.placeholder" })}
-          value={query}
-          onChange={handleInputChange}
-          aria-label={intl.formatMessage({ id: "search.placeholder" })}
-        />
+      <header className={styles.heading}>
+        <BackButton label="back_to_overview" link="/"></BackButton>
+      </header>
+
+      <div className={styles.searchContainer}>
+        {isDesktop && (
+          <h3>
+            <FormattedMessage id="search.title" />
+          </h3>
+        )}
+        <div className={styles.searchInputWrapper}>
+          <SearchIcon />
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder={intl.formatMessage({ id: "search.placeholder" })}
+            value={query}
+            onChange={handleInputChange}
+            aria-label={intl.formatMessage({ id: "search.placeholder" })}
+          />
+          {query && (
+            <button
+              type="button"
+              className={styles.clearButton}
+              onClick={handleClear}
+              aria-label={intl.formatMessage({ id: "search.clear" })}
+            >
+              <CloseIcon />
+            </button>
+          )}
+        </div>
+        <div
+          className={styles.filters}
+          role="group"
+          aria-label={intl.formatMessage({ id: "search.filtersLabel" })}
+        >
+          {filters.map(({ type, labelId: label, icon }) => (
+            <button
+              key={type}
+              className={`${styles.filterChip} ${activeFilter === type ? styles.active : ""}`}
+              onClick={() => setActiveFilter(type)}
+              {...(icon ? { "data-icon": icon } : {})}
+              aria-pressed={activeFilter === type}
+              aria-label={intl.formatMessage({ id: label })}
+            >
+              <FormattedMessage id={label} />
+            </button>
+          ))}
+        </div>
+
         {query && (
-          <button
-            type="button"
-            className={styles.clearButton}
-            onClick={handleClear}
-            aria-label={intl.formatMessage({ id: "search.clear" })}
+          <div className={styles.resultsCount} role="status" aria-live="polite">
+            <FormattedMessage
+              id="search.resultsCount"
+              values={{ count: filteredResults.length, query }}
+            />
+          </div>
+        )}
+
+        {filteredResults.length > 0 && (
+          <ul
+            className={styles.results}
+            aria-label={intl.formatMessage({ id: "search.resultsLabel" })}
           >
-            <CloseIcon />
-          </button>
+            {filteredResults.map((result) => (
+              <SearchResult
+                key={`${result.type}-${result.item.id}`}
+                query={query}
+                result={result}
+              />
+            ))}
+          </ul>
         )}
       </div>
-      <div
-        className={styles.filters}
-        role="group"
-        aria-label={intl.formatMessage({ id: "search.filtersLabel" })}
-      >
-        {filters.map(({ type, labelId: label, icon }) => (
-          <button
-            key={type}
-            className={`${styles.filterChip} ${activeFilter === type ? styles.active : ""}`}
-            onClick={() => setActiveFilter(type)}
-            {...(icon ? { "data-icon": icon } : {})}
-            aria-pressed={activeFilter === type}
-            aria-label={intl.formatMessage({ id: label })}
-          >
-            <FormattedMessage id={label} />
-          </button>
-        ))}
-      </div>
-
-      {query && (
-        <div className={styles.resultsCount} role="status" aria-live="polite">
-          <FormattedMessage
-            id="search.resultsCount"
-            values={{ count: filteredResults.length, query }}
-          />
-        </div>
-      )}
-
-      {filteredResults.length > 0 && (
-        <ul
-          className={styles.results}
-          aria-label={intl.formatMessage({ id: "search.resultsLabel" })}
-        >
-          {filteredResults.map((result) => (
-            <SearchResult
-              key={`${result.type}-${result.item.id}`}
-              query={query}
-              result={result}
-            />
-          ))}
-        </ul>
-      )}
     </div>
   );
 }

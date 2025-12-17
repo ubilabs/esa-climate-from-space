@@ -1,14 +1,49 @@
 .container {
+    overflow: hidden;
+}
+
+.heading {
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    z-index: 3;
+    width: 100%;
+    grid-area: heading;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    overflow: hidden;
+
+    @media screen and (--desktop-viewport) {
+    padding: 0;
+    justify-content: start;
+    place-self: end start;
+    font-family: NotesEsa;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    /* 114.286% */
+
+    @media screen and (--desktop-xxl-viewport) {
+        a {
+        font-size: 1.25rem;
+        line-height: 1.25em;
+        }
+    }
+  }
+}
+
+.searchContainer {
     display: flex;
     flex-direction: column;
-    padding-top: 2rem;
     text-align: center;
     color: white;
     padding: 1rem;
-    overflow-y: hidden;
+    height: 100%;
+    overflow: hidden;
 
     @media screen and (--desktop-viewport) {
-        padding-top: 80px;
+        padding-top: 40px;
         justify-self: center;
         width: 744px;
     }
