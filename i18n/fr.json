@@ -8,6 +8,7 @@
   "stories": "Articles",
   "backToDataMode": "Retour au globe",
   "backToStories": "Retour à la page des articles",
+  "backToSearch": "Retour à la recherche",
   "storyMode": "Articles",
   "projection": "Projection",
   "layers": "Couches de données",
@@ -169,5 +170,16 @@
   "categories.atmosphere": "Atmosphère",
   "categories.cryosphere": "Cryosphère",
   "exploreMoreInCategory": "Explorez plus dans cette [catégorie](#/{category})",
-  "youTube.consentRequired": "Pour regarder des vidéos YouTube, veuillez activer les cookies médias dans vos paramètres de confidentialité."
+  "youTube.consentRequired": "Pour regarder des vidéos YouTube, veuillez activer les cookies médias dans vos paramètres de confidentialité.",
+  "contentType.blog": "Article",
+  "contentType.video": "Vidéo",
+  "contentType.image": "Galerie d'Images",
+  "contentType.layer": "Couche de Données",
+  "search.allOptions": "Toutes les Options",
+  "search.placeholder": "Rechercher dans ESA Climate from Space",
+  "search.title": "Que recherchez-vous ?",
+  "search.clear": "Effacer la recherche",
+  "search.resultsCount": "{count, plural, =0 {Aucun résultat} one {# résultat} other {# résultats}} pour {query}",
+  "search.filtersLabel": "Filtres de recherche",
+  "search.resultsLabel": "Résultats de recherche"
 }

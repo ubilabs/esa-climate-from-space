@@ -77,9 +77,18 @@ const UrlSync: FunctionComponent = () => {
     }
 
     if (hasChanges) {
-      navigate({ search: targetSearch }, { replace: true });
+      navigate(
+        { search: targetSearch },
+        { replace: true, state: location.state },
+      );
     }
-  }, [targetSearch, location.search, navigate, embedParamOptions]);
+  }, [
+    targetSearch,
+    location.search,
+    location.state,
+    navigate,
+    embedParamOptions,
+  ]);
 
   return null;
 };
