@@ -1,6 +1,6 @@
 {
   "name": "esa-climate-from-space",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "dist-src-electron/main.js",
   "type": "module",
@@ -105,7 +105,7 @@
     "postcss": "^8.5.3",
     "postcss-custom-media": "^11.0.5",
     "prettier": "3.4.2",
-    "rollup": "^4.9.0",
+    "rollup": "^4.53.5",
     "svg-loaders-react": "^3.1.1",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.23.0",
