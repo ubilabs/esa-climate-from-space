@@ -105,7 +105,7 @@
     "postcss": "^8.5.3",
     "postcss-custom-media": "^11.0.5",
     "prettier": "3.4.2",
-    "rollup": "^4.9.0",
+    "rollup": "^4.22.4",
     "svg-loaders-react": "^3.1.1",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.23.0",
