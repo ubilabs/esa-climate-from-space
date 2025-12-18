@@ -1,4 +1,6 @@
 .container {
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
 }
 
@@ -38,13 +40,12 @@
     flex-direction: column;
     text-align: center;
     color: white;
-    padding: 1rem;
-    height: 100%;
-    overflow: hidden;
+    padding: 1rem 1rem 0;
+    height: calc(100% - var(--header-height));
 
     @media screen and (--desktop-viewport) {
         padding-top: 40px;
-        justify-self: center;
+        align-self: center;
         width: 744px;
     }
 
@@ -163,7 +164,7 @@
     }
 
     .results {
-        height: 100%;
-        overflow-y: scroll;
+        flex: 1;
+        overflow-y: auto;
     }
 }
