@@ -47,7 +47,7 @@ export default function ContentSearch() {
   }, [state?.search]);
 
   useEffect(() => {
-    if (state?.search) {
+    if (state?.search && typeof state.search === "object") {
       const { query, filter } = state.search as ActiveSearchState;
       if (query) {
         setQuery(query);
