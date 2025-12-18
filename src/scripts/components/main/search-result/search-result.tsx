@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import type { SearchResult } from "../../../hooks/use-search";
 
-import { ActiveSearchState, FilterType } from "../../../types/search";
+import { FilterType } from "../../../types/search";
 
 import styles from "./search-result.module.css";
 
