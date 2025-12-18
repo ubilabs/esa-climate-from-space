@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useSearch } from "../../../hooks/use-search";
 import { useScreenSize } from "../../../hooks/use-screen-size";
 
-import { Filter, FilterType } from "../../../types/search";
+import { ActiveSearchState, Filter, FilterType } from "../../../types/search";
 
 import SearchResult from "../search-result/search-result";
 import { BackButton } from "../back-button/back-button";
@@ -37,15 +37,18 @@ export default function ContentSearch() {
     return result.type === activeFilter;
   });
 
-  const location = useLocation();
+  const { state } = useLocation();
 
   useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
+    // Focus input only if no active search state is provided
+    if (!state?.search) {
+      inputRef.current?.focus();
+    }
+  }, [state?.search]);
 
   useEffect(() => {
-    if (location.state) {
-      const { query, filter } = location.state;
+    if (state?.search && typeof state.search === "object") {
+      const { query, filter } = state.search as ActiveSearchState;
       if (query) {
         setQuery(query);
       }
@@ -53,7 +56,7 @@ export default function ContentSearch() {
         setActiveFilter(filter);
       }
     }
-  }, [location.state]);
+  }, [state?.search]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);

@@ -101,18 +101,22 @@ export default function SearchResult({
       return;
     }
 
+    const activeSearchState = {
+      search: { query, filter },
+    };
+
     // Persist search query in navigation state for back navigation
-    navigate("/search", { state: { query } });
+    navigate("/search", { state: activeSearchState });
 
     if (result.type === "layer") {
       dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
       // Ensure navigation always happens after dispatch
       setTimeout(() => {
-        navigate(`/${category}/data`, { state: { query, filter } });
+        navigate(`/${category}/data`, { state: activeSearchState });
       }, 0);
     } else {
       navigate(`/${category}/stories/${id}/0`, {
-        state: { query, filter },
+        state: activeSearchState,
       });
     }
   };
