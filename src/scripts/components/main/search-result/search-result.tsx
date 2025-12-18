@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import type { SearchResult } from "../../../hooks/use-search";
 
-import { FilterType } from "../../../types/search";
+import { ActiveSearchState, FilterType } from "../../../types/search";
 
 import styles from "./search-result.module.css";
 
@@ -101,18 +101,22 @@ export default function SearchResult({
       return;
     }
 
+    const activeSearchState = {
+      search: { query, filter } as ActiveSearchState,
+    };
+
     // Persist search query in navigation state for back navigation
-    navigate("/search", { state: { query } });
+    navigate("/search", { state: activeSearchState });
 
     if (result.type === "layer") {
       dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
       // Ensure navigation always happens after dispatch
       setTimeout(() => {
-        navigate(`/${category}/data`, { state: { query, filter } });
+        navigate(`/${category}/data`, { state: activeSearchState });
       }, 0);
     } else {
       navigate(`/${category}/stories/${id}/0`, {
-        state: { query, filter },
+        state: activeSearchState,
       });
     }
   };

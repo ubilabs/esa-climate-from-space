@@ -57,3 +57,8 @@ export type Filter = {
   labelId: string;
   icon: string;
 };
+
+export type ActiveSearchState = {
+  query: string;
+  filter: FilterType;
+};
