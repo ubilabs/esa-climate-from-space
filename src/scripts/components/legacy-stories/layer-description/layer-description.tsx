@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import rehypeRaw from "rehype-raw";
 import ReactMarkdown from "react-markdown";
 
 import config from "../../../config/main";
@@ -13,7 +14,7 @@ const LayerDescription: FunctionComponent<Props> = ({ layerDescription }) => (
   <div className={styles.layerDescription}>
     <ReactMarkdown
       children={layerDescription}
-      linkTarget="_blank"
+      rehypePlugins={[rehypeRaw]}
       allowedElements={config.markdownAllowedElements}
     />
   </div>
