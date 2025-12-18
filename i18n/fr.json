@@ -1,4 +1,5 @@
 {
+  "homepage": "la page d'accueil",
   "layerSelector.main": "Principal",
   "layerSelector.compare": "Comparez",
   "language.en": "Anglais",
@@ -175,6 +176,7 @@
   "contentType.video": "Vidéo",
   "contentType.image": "Galerie d'Images",
   "contentType.layer": "Couche de Données",
+  "app_search": "Recherche",
   "search.allOptions": "Toutes les Options",
   "search.placeholder": "Rechercher dans ESA Climate from Space",
   "search.title": "Que recherchez-vous ?",
