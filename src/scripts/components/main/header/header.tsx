@@ -64,7 +64,7 @@ const Header: FunctionComponent = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const searchQuery = location.state?.query;
+  const isSearchActive = Boolean(location.state?.search);
 
   if (!header) {
     // The app element determines the layout via grid which is why we should return a DOM element here
@@ -87,7 +87,7 @@ const Header: FunctionComponent = () => {
   })();
 
   const linkPath = (() => {
-    if (searchQuery) {
+    if (isSearchActive) {
       return "/search";
     }
     if (isShowCaseStoryRoute) {
@@ -115,9 +115,9 @@ const Header: FunctionComponent = () => {
             className={styles.backButton}
             icon={ArrowBackIcon}
             label={
-              isMobile ? "" : !searchQuery ? "backToStories" : "backToSearch"
+              isMobile ? "" : !isSearchActive ? "backToStories" : "backToSearch"
             }
-            ariaLabel={!searchQuery ? "backToStories" : "backToSearch"}
+            ariaLabel={!isSearchActive ? "backToStories" : "backToSearch"}
             link={linkPath}
             state={location.state}
             replace={true}
