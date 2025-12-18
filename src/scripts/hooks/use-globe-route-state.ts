@@ -117,7 +117,10 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
 
     // Store the current pathname for next comparison
     previousPathnameRef.current = appRoute;
+  }, [appRoute, dispatch, layers, mainId, navigate, selectedLayerIds?.mainId]);
 
+  // Update globe states based on route changes
+  useEffect(() => {
     if (!globe) {
       return;
     }
@@ -129,12 +132,7 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
     );
   }, [
     appRoute,
-    dispatch,
     globe,
-    layers,
-    mainId,
-    navigate,
-    selectedLayerIds?.mainId,
     updateAutoRotationState,
     updateUserInteractionEnabledState,
   ]);
