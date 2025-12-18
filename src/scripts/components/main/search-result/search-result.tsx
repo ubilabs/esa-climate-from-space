@@ -102,7 +102,7 @@ export default function SearchResult({
     }
 
     const activeSearchState = {
-      search: { query, filter } as ActiveSearchState,
+      search: { query, filter },
     };
 
     // Persist search query in navigation state for back navigation
