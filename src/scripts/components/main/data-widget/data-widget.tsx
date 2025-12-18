@@ -184,11 +184,16 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const mainImageLayer = useImageLayerData(mainLayerDetails, time);
   const compareImageLayer = useImageLayerData(compareLayerDetails, time);
 
-  // apply changes in the app state view to our local view copy
-  // we don't use the app state view all the time to keep store updates low
   useLayoutEffect(() => {
-    setCurrentView(globalGlobeView);
-  }, [globalGlobeView]);
+    if (
+      currentView.lat !== globalGlobeView.lat ||
+      currentView.lng !== globalGlobeView.lng ||
+      currentView.altitude !== globalGlobeView.altitude
+    ) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setCurrentView(globalGlobeView);
+    }
+  }, [globalGlobeView, currentView]);
 
   const onChangeHandler = useCallback((view: CameraView) => {
     setCurrentView(view);
