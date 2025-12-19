@@ -66,6 +66,12 @@
         background-color: var(--dark-grey-5);
         padding: 0 1rem;
         height: 3rem;
+        border: 2px solid transparent;
+        transition: border-color 0.2s ease;
+
+        &:focus-within {
+            border-color: var(--main);
+        }
 
         > svg {
             flex-shrink: 0;
@@ -92,6 +98,16 @@
         background: transparent;
         border: none;
         cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--main);
+            outline-offset: 2px;
+        }
 
         > svg {
             fill: var(--text-default);
@@ -118,6 +134,16 @@
         cursor: pointer;
         transition: all 0.2s ease;
         white-space: nowrap;
+
+        &:hover {
+            background: rgba(91, 138, 156, 0.1);
+            border-color: var(--main);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--main);
+            outline-offset: 2px;
+        }
 
         &[data-icon]::before {
             content: '';
@@ -153,6 +179,10 @@
         &.active {
             background: var(--light-blue);
             color: white;
+
+            &:hover {
+                background: var(--main);
+            }
         }
     }
 
