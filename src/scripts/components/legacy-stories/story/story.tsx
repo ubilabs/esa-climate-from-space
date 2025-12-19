@@ -17,7 +17,7 @@ import Header from "../../main/header/header";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { GalleryItemType } from "../../../types/gallery-item";
 import { GlobeProjection } from "../../../types/globe-projection";
-import { Slide, LegacyStory as StoryType } from "../../../types/story";
+import { Slide, LegacyStoryType as StoryType } from "../../../types/story";
 
 import StoryEmbedded from "../story-embedded/story-embedded";
 
