@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
 
@@ -46,17 +46,22 @@ export default function ContentSearch() {
     }
   }, [state?.search]);
 
-  useEffect(() => {
-    if (state?.search && typeof state.search === "object") {
-      const { query, filter } = state.search as ActiveSearchState;
-      if (query) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setQuery(query);
+  const updateQueryValues = useEffectEvent(() => {
+    if (state?.search && state.search?.query !== query) {
+      const { query: currentQuery, filter } =
+        state?.search as ActiveSearchState;
+      if (currentQuery) {
+        setQuery(currentQuery);
       }
+
       if (filter) {
         setActiveFilter(filter);
       }
     }
+  });
+
+  useEffect(() => {
+    updateQueryValues();
   }, [state?.search]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
