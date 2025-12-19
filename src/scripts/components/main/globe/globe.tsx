@@ -363,12 +363,13 @@ function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
       return EMPTY_FUNCTION;
     }
 
+    const timerId = ref.current.timerId;
+
     globe.addEventListener("cameraViewChanged", handleViewChanged);
 
     return () => {
       // there could be a leftover timer running
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      window.clearTimeout(ref.current.timerId);
+      window.clearTimeout(timerId);
       globe.removeEventListener("cameraViewChanged", handleViewChanged);
     };
   }, [globe, active, handleViewChanged]);
