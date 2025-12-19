@@ -66,7 +66,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   // Ref to store and control the auto-rotation interval
   const [lastUserInteractionTime, setLastUserInteractionTime] = useState(
-    Date.now(),
+    Date.now,
   );
 
   useNavGestures(

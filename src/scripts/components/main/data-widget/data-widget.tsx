@@ -187,6 +187,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
   useLayoutEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentView(globalGlobeView);
   }, [globalGlobeView]);
 

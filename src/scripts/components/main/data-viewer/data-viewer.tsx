@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef, useState, useMemo } from "react";
+import { FunctionComponent, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
@@ -76,8 +76,7 @@ const DataViewer: FunctionComponent = () => {
   const { isBaseRoute, isNavigationView, isDataRoute, isContentNavRoute } =
     useAppRouteFlags();
 
-  // This keeps track of whether the animation has played
-  const hasAnimationPlayed = useRef(false);
+  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
 
   const allCategories = useMemo(
     () =>
@@ -149,11 +148,11 @@ const DataViewer: FunctionComponent = () => {
                 height={screenHeight}
                 isMobile={isMobile}
                 setCategory={setCurrentCategory}
-                isAnimationReady={hasAnimationPlayed}
+                setAnimationReady={setHasAnimationPlayed}
               />
               <Button
                 className={cx(
-                  hasAnimationPlayed.current && styles.showFast,
+                  hasAnimationPlayed && styles.showFast,
                   styles.exploreButton,
                 )}
                 onClick={() => {
@@ -161,7 +160,7 @@ const DataViewer: FunctionComponent = () => {
                 }}
                 label="explore"
               ></Button>
-              {!hasAnimationPlayed.current && (
+              {!hasAnimationPlayed && (
                 <span
                   aria-hidden="true"
                   className={cx(

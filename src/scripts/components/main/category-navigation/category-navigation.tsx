@@ -1,6 +1,5 @@
 import React, {
   FunctionComponent,
-  RefObject,
   useEffect,
   useState,
 } from "react";
@@ -24,7 +23,7 @@ interface Props {
   isMobile: boolean;
   width: number;
   setCategory: React.Dispatch<React.SetStateAction<string | null>>;
-  isAnimationReady: RefObject<boolean>;
+  setAnimationReady: React.Dispatch<React.SetStateAction<boolean>>;
   arcs: { [key: string]: number }[];
   height: number;
 }
@@ -48,12 +47,12 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   isMobile,
   setCategory,
   arcs,
-  isAnimationReady,
+  setAnimationReady,
 }) => {
   const { category } = useContentParams();
   // Ref to store and control the auto-rotation interval
   const [lastUserInteractionTime, setLastUserInteractionTime] = useState(
-    Date.now(),
+    Date.now,
   );
   const dispatch = useDispatch();
 
@@ -189,16 +188,14 @@ const CategoryNavigation: FunctionComponent<Props> = ({
 
   // Handle hiding tooltip
   const handleHideTooltip = () => setTooltipInfo({ index: -1, visible: false });
-  // Calculate the current angle
-  // Is updated as we iterate through the arcs to keep track of the end point of the previous arc
-  let currentAngle = 0;
 
+  const [isAnimationFinished, setIsAnimationFinished] = useState(false);
   // Auto initialize auto-rotation on user inactivity
   useAutoRotate({
     lastUserInteractionTime,
     setCurrentIndex,
     itemsLength: arcs.length,
-    isAnimationReady,
+    isAnimationReady: isAnimationFinished,
   });
 
   useEffect(() => {
@@ -212,7 +209,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({
   }, [dispatch, normalizedIndex, setCategory, arcs]);
 
   useEffect(() => {
-    if (isAnimationReady.current) {
+    if (isAnimationFinished) {
       return;
     }
 
@@ -229,9 +226,10 @@ const CategoryNavigation: FunctionComponent<Props> = ({
 
     setTimeout(() => {
       circleContainer.style.transform = `rotate(${currentRotation}deg)`;
-      isAnimationReady.current = true;
+      setAnimationReady(true);
+      setIsAnimationFinished(true);
     }, 2800);
-  }, [isAnimationReady]);
+  }, [isAnimationFinished, setAnimationReady]);
 
   return (
     <>
@@ -306,73 +304,75 @@ const CategoryNavigation: FunctionComponent<Props> = ({
           data-current-rotation={rotationOffset}
           aria-hidden="true"
         >
-          {/* Each category is an "arc", their share of space is proportional to the number of content they have
-            We use SVG to generate the arcs
-            */}
-          {scaledArcs.map((arcAngle, index) => {
-            const endAngle = currentAngle + arcAngle;
+          {scaledArcs.reduce(
+            (acc, arcAngle, index) => {
+              const endAngle = acc.angle + arcAngle;
 
-            // Convert to radians
-            const startRad = (currentAngle * Math.PI) / 180;
-            const endRad = (endAngle * Math.PI) / 180;
+              // Convert to radians
+              const startRad = (acc.angle * Math.PI) / 180;
+              const endRad = (endAngle * Math.PI) / 180;
 
-            // Calculate arc points
-            const x1 = _center + _radius * Math.cos(startRad);
-            const y1 = _center + _radius * Math.sin(startRad);
-            const x2 = _center + _radius * Math.cos(endRad);
-            const y2 = _center + _radius * Math.sin(endRad);
+              // Calculate arc points
+              const x1 = _center + _radius * Math.cos(startRad);
+              const y1 = _center + _radius * Math.sin(startRad);
+              const x2 = _center + _radius * Math.cos(endRad);
+              const y2 = _center + _radius * Math.sin(endRad);
 
-            // Create arc path
-            const largeArcFlag = arcAngle > 180 ? 1 : 0;
-            const pathData = `
+              // Create arc path
+              const largeArcFlag = arcAngle > 180 ? 1 : 0;
+              const pathData = `
 M ${x1} ${y1}
 A ${_radius} ${_radius} 0 ${largeArcFlag} 1 ${x2} ${y2}
 `;
 
-            // Update start angle for next arc
-            currentAngle = endAngle + SPACING;
+              const isCurrentlySelected = index === normalizedIndex;
 
-            const isCurrentlySelected = index === normalizedIndex;
+              const selectedColor = "var(--main)";
+              const defaultColor = "var( --dark-grey-5)";
 
-            const selectedColor = "var(--main)";
-            const defaultColor = "var( --dark-grey-5)";
+              acc.elements.push(
+                <g
+                  key={index}
+                  data-index={index}
+                  className={styles.arc}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`${Object.keys(arcs[index])[0]} category`}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setLastUserInteractionTime(Date.now());
+                      setCurrentIndex(index);
+                    }
+                  }}
+                  onClick={() => {
+                    if (!isMobile) {
+                      setLastUserInteractionTime(Date.now());
+                      setCurrentIndex(index);
+                    }
+                  }}
+                  onMouseEnter={(e) => handleShowTooltip(e, index)}
+                  onMouseLeave={handleHideTooltip}
+                  onFocus={(e) => handleShowTooltip(e, index)}
+                  onBlur={handleHideTooltip}
+                >
+                  <path
+                    d={pathData}
+                    stroke={isCurrentlySelected ? selectedColor : defaultColor}
+                    strokeWidth={LINE_THICKNESS}
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </g>,
+              );
 
-            return (
-              <g
-                key={index}
-                data-index={index}
-                className={styles.arc}
-                tabIndex={0}
-                role="button"
-                aria-label={`${Object.keys(arcs[index])[0]} category`}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setLastUserInteractionTime(Date.now());
-                    setCurrentIndex(index);
-                  }
-                }}
-                onClick={() => {
-                  if (!isMobile) {
-                    setLastUserInteractionTime(Date.now());
-                    setCurrentIndex(index);
-                  }
-                }}
-                onMouseEnter={(e) => handleShowTooltip(e, index)}
-                onMouseLeave={handleHideTooltip}
-                onFocus={(e) => handleShowTooltip(e, index)}
-                onBlur={handleHideTooltip}
-              >
-                <path
-                  d={pathData}
-                  stroke={isCurrentlySelected ? selectedColor : defaultColor}
-                  strokeWidth={LINE_THICKNESS}
-                  strokeLinecap="round"
-                  fill="none"
-                />
-              </g>
-            );
-          })}
+              return {
+                angle: endAngle + SPACING,
+                elements: acc.elements,
+              };
+            },
+            { angle: 0, elements: [] as JSX.Element[] },
+          ).elements}
         </svg>
       </div>
     </>

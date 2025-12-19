@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useEffect } from "react";
+import { FunctionComponent, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import { StorySectionProps } from "../../../../../../../types/story";
@@ -24,12 +24,6 @@ const ImageCompare: FunctionComponent<StorySectionProps> = () => {
   const [showInstructions, setShowInstructions] = useState(false);
   const { isMobile } = useScreenSize();
   const intl = useIntl();
-
-  useEffect(() => {
-    if (isComparing) {
-      setShowInstructions(true);
-    }
-  }, [isComparing]);
 
   if (!slides || slides.length < 2) {
     console.error(
@@ -60,7 +54,10 @@ const ImageCompare: FunctionComponent<StorySectionProps> = () => {
           <p className={styles.description}>{text}</p>
           <button
             className={styles.controlButton}
-            onClick={() => setIsComparing(true)}
+            onClick={() => {
+              setIsComparing(true);
+              setShowInstructions(true);
+            }}
           >
             {startButtonText ? (
               startButtonText

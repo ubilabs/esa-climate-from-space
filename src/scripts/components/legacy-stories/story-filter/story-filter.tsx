@@ -1,4 +1,10 @@
-import { FunctionComponent, useRef, useState } from "react";
+import {
+  FunctionComponent,
+  useRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
+} from 'react';
 import { FormattedMessage } from "react-intl";
 import { useSelector, useDispatch } from "react-redux";
 import cx from "classnames";
@@ -19,12 +25,37 @@ const StoryFilter: FunctionComponent = () => {
   const { data: stories } = useGetStoryListQuery(language);
   const selectedTags = useSelector(selectedTagsSelector);
   const [translateValue, setTranslateValue] = useState(0);
+  const [maxScroll, setMaxScroll] = useState(0);
   const scrollSpeed = 50; // pixels per frame
   const innerRef = useRef<HTMLDivElement>(null);
-  const maxScroll =
-    (innerRef.current &&
-      innerRef.current?.scrollWidth - innerRef.current?.clientWidth) ||
-    0;
+
+  useEffect(() => {
+    const calculateMaxScroll = () => {
+      if (innerRef.current) {
+        setMaxScroll(
+          innerRef.current.scrollWidth - innerRef.current.clientWidth,
+        );
+      }
+    };
+
+    calculateMaxScroll();
+  }, [stories]);
+
+  useLayoutEffect(() => {
+    const calculateMaxScroll = () => {
+      if (innerRef.current) {
+        setMaxScroll(
+          innerRef.current.scrollWidth - innerRef.current.clientWidth,
+        );
+      }
+    };
+
+    window.addEventListener('resize', calculateMaxScroll);
+    return () => {
+      window.removeEventListener('resize', calculateMaxScroll);
+    };
+  }, []);
+
   const allTags: string[] = stories
     .map(({ tags }) => tags)
     .filter(Boolean)

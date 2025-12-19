@@ -29,7 +29,9 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
           key={url || index}
         >
           {text && (
-            <ReactMarkdown children={text} className={styles.imageScrollText} />
+            <div className={styles.imageScrollText}>
+              <ReactMarkdown children={text} />
+            </div>
           )}
           <div className={styles.scrollImageContainer}>
             <ScrollImage
