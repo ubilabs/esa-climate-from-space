@@ -14,7 +14,7 @@ import { Language } from "../types/language";
 import type { Layer } from "../types/layer";
 import { LayerList } from "../types/layer-list";
 import { LegacyStory } from "../types/legacy-story";
-import type { LegacyStory, Story } from "../types/story";
+import type { LegacyStoryType, Story } from "../types/story";
 import type { StoryList } from "../types/story-list";
 import { fetchLayers } from "../api/fetch-layers";
 
@@ -69,7 +69,7 @@ const fetchAndConvertStory = async (id: string, language: Language) => {
   const rawData = await fetchStory(id, language as Language);
   const data = isLegacyStory(rawData)
     ? convertLegacyStory(rawData as LegacyStory)
-    : (rawData as LegacyStory);
+    : (rawData as LegacyStoryType);
   return data;
 };
 

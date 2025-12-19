@@ -32,7 +32,13 @@ export default defineConfig(({command}) => {
       copyPublicDir: command === 'serve',
       assetsDir: ''
     },
-    plugins: [react()],
+    plugins: [
+      react({
+        babel: {
+          plugins: ["babel-plugin-react-compiler"],
+        },
+      }),
+    ],
     define: DEFINES,
     publicDir: '../storage'
   };

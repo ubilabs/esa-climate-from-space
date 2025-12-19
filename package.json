@@ -88,6 +88,7 @@
     "@types/youtube-player": "^5.5.11",
     "@vitejs/plugin-react": "^5.1.2",
     "autoprefixer": "^10.4.23",
+    "babel-plugin-react-compiler": "^1.0.0",
     "conventional-changelog-cli": "^5.0.0",
     "cssnano": "^7.1.2",
     "electron": "^34.5.8",

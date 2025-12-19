@@ -15,7 +15,7 @@ export interface Slide {
   splashImage?: string;
 }
 
-export interface LegacyStory {
+export interface LegacyStoryType {
   id: string;
   slides: Slide[];
 }
