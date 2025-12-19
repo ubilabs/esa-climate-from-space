@@ -105,9 +105,6 @@ export default function SearchResult({
       search: { query, filter },
     };
 
-    // Persist search query in navigation state for back navigation
-    navigate("/search", { state: activeSearchState });
-
     if (result.type === "layer") {
       dispatch(setSelectedLayerIds({ layerId: id, isPrimary: true }));
       // Ensure navigation always happens after dispatch

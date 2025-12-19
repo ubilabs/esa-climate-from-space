@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 import { useSearch } from "../../../hooks/use-search";
 import { useScreenSize } from "../../../hooks/use-screen-size";
@@ -24,34 +24,46 @@ const filters: Filter[] = [
 ];
 
 export default function ContentSearch() {
-  const search = useSearch();
   const intl = useIntl();
   const { isDesktop } = useScreenSize();
-  const [query, setQuery] = useState("");
-  const [activeFilter, setActiveFilter] = useState<FilterType>(FilterType.All);
-  const searchResult = search(query);
+  const { state } = useLocation();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const inputRef = useRef<HTMLInputElement>(null);
+  const inputQuery = searchParams.get("searchQuery") || "";
+
+  const search = useSearch();
+
+  console.log("🚀 ~ content-search.tsx:31 → inputQuery:", inputQuery);
+
+  const setInputQuery = (value: string) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (value) {
+      newParams.set("searchQuery", value);
+    } else {
+      newParams.delete("searchQuery");
+    }
+    setSearchParams(newParams, { replace: true });
+  };
+
+  // const [inputQuery, setInputQuery] = useState("");
+  const searchResult = search(inputQuery);
+
+  const [activeFilter, setActiveFilter] = useState<FilterType>(FilterType.All);
 
   const filteredResults = searchResult.filter((result) => {
     if (activeFilter === FilterType.All) return true;
     return result.type === activeFilter;
   });
 
-  const { state } = useLocation();
-
-  useEffect(() => {
-    // Focus input only if no active search state is provided
-    if (!state?.search) {
-      inputRef.current?.focus();
-    }
-  }, [state?.search]);
-
   useEffect(() => {
     if (state?.search && typeof state.search === "object") {
       const { query, filter } = state.search as ActiveSearchState;
-      if (query) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setQuery(query);
+      if (query && query !== inputQuery) {
+        const newParams = new URLSearchParams(searchParams);
+        newParams.set("searchQuery", query);
+        setSearchParams(newParams, { replace: true });
       }
       if (filter) {
         setActiveFilter(filter);
@@ -60,11 +72,11 @@ export default function ContentSearch() {
   }, [state?.search]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
+    setInputQuery(e.target.value);
   };
 
   const handleClear = () => {
-    setQuery("");
+    setInputQuery("");
   };
 
   return (
@@ -85,11 +97,11 @@ export default function ContentSearch() {
             ref={inputRef}
             type="text"
             placeholder={intl.formatMessage({ id: "search.placeholder" })}
-            value={query}
+            value={inputQuery}
             onChange={handleInputChange}
             aria-label={intl.formatMessage({ id: "search.placeholder" })}
           />
-          {query && (
+          {inputQuery && (
             <button
               type="button"
               className={styles.clearButton}
@@ -119,11 +131,11 @@ export default function ContentSearch() {
           ))}
         </div>
 
-        {query && (
+        {inputQuery && (
           <div className={styles.resultsCount} role="status" aria-live="polite">
             <FormattedMessage
               id="search.resultsCount"
-              values={{ count: filteredResults.length, query }}
+              values={{ count: filteredResults.length, query: inputQuery }}
             />
           </div>
         )}
@@ -136,7 +148,7 @@ export default function ContentSearch() {
             {filteredResults.map((result) => (
               <SearchResult
                 key={`${result.type}-${result.item.id}`}
-                query={query}
+                query={inputQuery}
                 filter={activeFilter}
                 result={result}
               />

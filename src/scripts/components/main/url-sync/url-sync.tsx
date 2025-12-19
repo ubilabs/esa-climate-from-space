@@ -39,6 +39,7 @@ const UrlSync: FunctionComponent = () => {
     if (tagsParam) params.set("tags", tagsParam);
 
     const embedParam = getEmbedParamsString(embedElements);
+
     if (embedParam) {
       embedParam.split("&").forEach((kv) => {
         const [key, value] = kv.split("=");
@@ -51,7 +52,18 @@ const UrlSync: FunctionComponent = () => {
 
   useEffect(() => {
     const currentParams = new URLSearchParams(location.search);
+    console.log("🚀 ~ url-sync.tsx:54 → location:", location);
+    console.log(
+      "🚀 ~ url-sync.tsx:54 → currentParams:",
+      currentParams.get("searchQuery"),
+    );
     const targetParams = new URLSearchParams(targetSearch);
+
+    const searchParam = currentParams.get("searchQuery") ?? null;
+
+    if (searchParam) {
+      targetParams.set("searchQuery", searchParam);
+    }
 
     let hasChanges = false;
 
@@ -77,9 +89,10 @@ const UrlSync: FunctionComponent = () => {
     }
 
     if (hasChanges) {
+      console.log("🚀 ~ url-sync.tsx:96 → targetSearch:", targetSearch);
       navigate(
-        { search: targetSearch },
-        { replace: true, state: location.state },
+        { search: targetParams.toString() },
+        { replace: false, state: location.state },
       );
     }
   }, [

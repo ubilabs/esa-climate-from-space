@@ -144,6 +144,16 @@ const TranslatedApp: FunctionComponent = () => {
         <Router>
           <Routes>
             <Route element={<RouteMatch />}>
+              {/*  Search route */}
+              <Route
+                path="/search"
+                element={
+                  <>
+                    <Header />
+                    <ContentSearch />
+                  </>
+                }
+              />
               {/*  About project */}
               <Route
                 path={ROUTES.about.path}
@@ -151,15 +161,6 @@ const TranslatedApp: FunctionComponent = () => {
                   <>
                     <EsaLogoLink />
                     <AboutProjectOverlay />
-                  </>
-                }
-              />
-              <Route
-                path={ROUTES.search.path}
-                element={
-                  <>
-                    <Header />
-                    <ContentSearch />
                   </>
                 }
               />

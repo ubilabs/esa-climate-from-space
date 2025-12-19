@@ -1,21 +1,24 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+  z-index: 10;
+  background-color: #011e2b;
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .heading {
-    padding: 0 1.5rem;
-    box-sizing: border-box;
-    z-index: 3;
-    width: 100%;
-    grid-area: heading;
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5rem;
-    overflow: hidden;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  z-index: 3;
+  width: 100%;
+  grid-area: heading;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  overflow: hidden;
 
-    @media screen and (--desktop-viewport) {
+  @media screen and (--desktop-viewport) {
     padding: 0;
     justify-content: start;
     place-self: end start;
@@ -27,144 +30,144 @@
     /* 114.286% */
 
     @media screen and (--desktop-xxl-viewport) {
-        a {
+      a {
         font-size: 1.25rem;
         line-height: 1.25em;
-        }
+      }
     }
   }
 }
 
 .searchContainer {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    color: white;
-    padding: 1rem 1rem 0;
-    height: calc(100% - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  padding: 1rem 1rem 0;
+  height: calc(100% - var(--header-height));
+
+  @media screen and (--desktop-viewport) {
+    padding-top: 40px;
+    align-self: center;
+    width: 744px;
+  }
+
+  > h3 {
+    padding: 0.5rem 0;
 
     @media screen and (--desktop-viewport) {
-        padding-top: 40px;
-        align-self: center;
-        width: 744px;
+      font-size: 42px;
+      padding-bottom: 1rem;
+    }
+  }
+
+  .searchInputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    background-color: var(--dark-grey-5);
+    padding: 0 1rem;
+    height: 3rem;
+
+    > svg {
+      flex-shrink: 0;
+      fill: var(--main);
+      margin-right: 0.5rem;
     }
 
-    > h3 {
-        padding: 0.5rem 0;
+    > input {
+      flex: 1;
+      height: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      height: 3rem;
 
-         @media screen and (--desktop-viewport){
-            font-size: 42px;
-            padding-bottom: 1rem;
-         }
+      &::placeholder {
+        color: var(--text-default);
+      }
+    }
+  }
+
+  .clearButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    > svg {
+      fill: var(--text-default);
+    }
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    justify-content: left;
+  }
+
+  .filterChip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--light-blue);
+    border-radius: 5px;
+    color: var(--light-blue);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    &[data-icon]::before {
+      content: "";
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: currentColor;
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
     }
 
-    .searchInputWrapper {
-        position: relative;
-        display: flex;
-        align-items: center;
-        margin: 1rem 0;
-        background-color: var(--dark-grey-5);
-        padding: 0 1rem;
-        height: 3rem;
-
-        > svg {
-            flex-shrink: 0;
-            fill: var(--main);
-            margin-right: 0.5rem;
-        }
-
-        > input {
-            flex: 1;
-            height: 100%;
-            background: transparent;
-            border: none;
-            outline: none;
-            color: white;
-            height: 3rem;
-
-            &::placeholder {
-                color: var(--text-default);
-            }
-        }
+    &[data-icon="check"]::before {
+      mask-image: var(--icon-check);
     }
 
-    .clearButton {
-        background: transparent;
-        border: none;
-        cursor: pointer;
-
-        > svg {
-            fill: var(--text-default);
-        }
+    &[data-icon="blog"]::before {
+      mask-image: var(--icon-blog);
     }
 
-    .filters {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1rem;
-        justify-content: left;
+    &[data-icon="image"]::before {
+      mask-image: var(--icon-image);
     }
 
-    .filterChip {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        background: transparent;
-        border: 1px solid var(--light-blue);
-        border-radius: 5px;
-        color: var(--light-blue);
-        cursor: pointer;
-        transition: all 0.2s ease;
-        white-space: nowrap;
-
-        &[data-icon]::before {
-            content: '';
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            background: currentColor;
-            mask-size: contain;
-            mask-repeat: no-repeat;
-            mask-position: center;
-        }
-
-        &[data-icon="check"]::before {
-            mask-image: var(--icon-check);
-        }
-
-        &[data-icon="blog"]::before {
-            mask-image: var(--icon-blog);
-        }
-
-        &[data-icon="image"]::before {
-            mask-image: var(--icon-image);
-        }
-
-        &[data-icon="video"]::before {
-            mask-image: var(--icon-video);
-        }
-
-        &[data-icon="layer"]::before {
-            mask-image: var(--icon-layer);
-        }
-
-        &.active {
-            background: var(--light-blue);
-            color: white;
-        }
+    &[data-icon="video"]::before {
+      mask-image: var(--icon-video);
     }
 
-    .resultsCount {
-        text-align: left;
-        padding: 1.5rem 0 0.5rem;
-        border-top: 1px solid var(--dark-grey-4);
-        margin: 0.5rem 0;
+    &[data-icon="layer"]::before {
+      mask-image: var(--icon-layer);
     }
 
-    .results {
-        flex: 1;
-        overflow-y: auto;
+    &.active {
+      background: var(--light-blue);
+      color: white;
     }
+  }
+
+  .resultsCount {
+    text-align: left;
+    padding: 1.5rem 0 0.5rem;
+    border-top: 1px solid var(--dark-grey-4);
+    margin: 0.5rem 0;
+  }
+
+  .results {
+    flex: 1;
+    overflow-y: auto;
+  }
 }

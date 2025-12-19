@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import { Activity, FunctionComponent, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -28,6 +28,7 @@ import { MenuIcon } from "../icons/menu-icon";
 import { SearchIcon } from "../icons/search-icon";
 import LanguageTooltip from "../language-tooltip/language-tooltip";
 import Menu from "../menu/menu";
+import ContentSearch from "../content-search/content-search";
 import Overlay from "../overlay/overlay";
 
 import styles from "./header.module.css";
@@ -40,6 +41,8 @@ const Header: FunctionComponent = () => {
 
   const [showTooltip, setShowTooltip] = useState(Boolean(!savedLanguage));
 
+  const [showSearch, setShowSearch] = useState(false);
+
   const { category } = useSelector(contentSelector);
   const {
     isShowCaseStoryRoute,
@@ -49,7 +52,6 @@ const Header: FunctionComponent = () => {
     isPresentView,
     isNavigationView,
     isBaseRoute,
-    isSearchRoute,
   } = useAppRouteFlags();
 
   const { isMobile, isDesktop } = useScreenSize();
@@ -64,7 +66,7 @@ const Header: FunctionComponent = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isSearchActive = Boolean(location.state?.search);
+  // const isSearchActive = Boolean(location.state?.search);
 
   if (!header) {
     // The app element determines the layout via grid which is why we should return a DOM element here
@@ -87,9 +89,9 @@ const Header: FunctionComponent = () => {
   })();
 
   const linkPath = (() => {
-    if (isSearchActive) {
-      return "/search";
-    }
+    // if (isSearchActive) {
+    //   return "/search";
+    // }
     if (isShowCaseStoryRoute) {
       return "/showcase/";
     }
@@ -110,14 +112,12 @@ const Header: FunctionComponent = () => {
             <EsaLogo variant={logoVariant} />
           </Button>
         )}
-        {!isBaseRoute && !isNavigationView && !isSearchRoute && back_link && (
+        {!isBaseRoute && !isNavigationView && back_link && (
           <Button
             className={styles.backButton}
             icon={ArrowBackIcon}
-            label={
-              isMobile ? "" : !isSearchActive ? "backToStories" : "backToSearch"
-            }
-            ariaLabel={!isSearchActive ? "backToStories" : "backToSearch"}
+            label={isMobile ? "" : !true ? "backToStories" : "backToSearch"}
+            ariaLabel={!true ? "backToStories" : "backToSearch"}
             link={linkPath}
             state={location.state}
             replace={true}
@@ -137,7 +137,7 @@ const Header: FunctionComponent = () => {
           id="ui-search"
           icon={SearchIcon}
           ariaLabel={"app_search"}
-          onClick={() => navigate(ROUTES.search.path)}
+          link="/search"
           hideLabelOnMobile
         />
         {app_menu && (
