@@ -7,7 +7,6 @@ import {
 } from "../types/gallery-item";
 import { LegacySlide, LegacyStory } from "../types/legacy-story";
 import { SlideType } from "../types/slide-type";
-import { LegacyStoryType } from "../types/story";
 
 const getGalleryItems = (
   slide: LegacySlide,
