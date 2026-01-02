@@ -18,7 +18,6 @@ const LayerInfo: FunctionComponent<Props> = ({ layer }) => (
     <div className={styles.description}>
       <ReactMarkdown
         children={layer.description}
-        linkTarget="_blank"
         rehypePlugins={[rehypeRaw]}
         allowedElements={config.markdownAllowedElements}
       />

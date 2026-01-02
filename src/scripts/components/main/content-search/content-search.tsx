@@ -50,6 +50,7 @@ export default function ContentSearch() {
     if (state?.search && typeof state.search === "object") {
       const { query, filter } = state.search as ActiveSearchState;
       if (query) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setQuery(query);
       }
       if (filter) {

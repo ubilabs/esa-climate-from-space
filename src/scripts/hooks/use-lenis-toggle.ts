@@ -1,13 +1,14 @@
-import { useEffect } from "react";
-import { useStory } from "../providers/story/use-story";
+import { useEffect, RefObject } from 'react';
+import { useStory } from '../providers/story/use-story';
 
 export function useLenisToggle(
   isOff: boolean,
-  toCenterElement?: HTMLElement | null,
+  toCenterElementRef?: RefObject<HTMLElement | null>,
 ) {
   const { lenisRef } = useStory();
 
   useEffect(() => {
+    const toCenterElement = toCenterElementRef?.current;
     if (isOff) {
       lenisRef.current?.stop();
       if (toCenterElement) {
@@ -19,5 +20,5 @@ export function useLenisToggle(
     } else {
       lenisRef.current?.start();
     }
-  }, [isOff, lenisRef, toCenterElement]);
+  }, [isOff, lenisRef, toCenterElementRef]);
 }

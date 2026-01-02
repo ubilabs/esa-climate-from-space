@@ -48,7 +48,7 @@ export const ComparisonViewer: FunctionComponent<Props> = ({
 
   const containerRef = useRef(null);
 
-  useLenisToggle(isComparing, containerRef.current);
+  useLenisToggle(isComparing, containerRef);
 
   // Reset position and scale when exiting compare mode
   useEffect(() => {

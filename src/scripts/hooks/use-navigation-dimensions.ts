@@ -1,9 +1,8 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useState } from 'react';
 
 export const useGlobeDimensions = (globeRef: HTMLElement) => {
-  const widthRef = useRef<number>(0);
-  const heightRef = useRef<number>(0);
-  const isSetRef = useRef<boolean>(false);
+  const [width, setWidth] = useState<number>(0);
+  const [height, setHeight] = useState<number>(0);
 
   useLayoutEffect(() => {
     if (!globeRef) {
@@ -15,12 +14,8 @@ export const useGlobeDimensions = (globeRef: HTMLElement) => {
       const rect = globeRef.getBoundingClientRect();
       const { height, width } = rect;
 
-      widthRef.current = width;
-      heightRef.current = height;
-
-
-      isSetRef.current = true;
-
+      setWidth(width);
+      setHeight(height);
     };
     // Set height initially
     updateHeight();
@@ -28,5 +23,6 @@ export const useGlobeDimensions = (globeRef: HTMLElement) => {
     // Update height on resize
   }, [globeRef]);
 
-  return { width: widthRef.current, height: heightRef.current };
+  return { width, height };
 };
+
