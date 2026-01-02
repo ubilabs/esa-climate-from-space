@@ -34,8 +34,8 @@
       place-items: start;
       padding-block: 1rem;
       width: 100%;
-      background-color: var(--Neutral-ESA-Background, #011e2b);
-      color: var(--Neutral-ESA-White, #fff);
+      background-color: var(--Neutral-ESA-Background);
+      color: var(--Neutral-ESA-White);
       text-shadow:
         0px 1px 2px rgba(0, 0, 0, 0.3),
         0px 1px 3px rgba(0, 0, 0, 0.15);

@@ -27,7 +27,7 @@
     }
 
     a {
-      color: var(--Main-ESA-Teal, #00b398);
+      color: var(--Main-ESA-Teal);
     }
 
     * {
