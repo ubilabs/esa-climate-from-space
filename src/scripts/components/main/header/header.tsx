@@ -117,7 +117,7 @@ const Header: FunctionComponent = () => {
             label={
               isMobile ? "" : isSearchActive ? "backToSearch" : "backToStories"
             }
-            ariaLabel={!isSearchActive ? "backToStories" : "backToSearch"}
+            ariaLabel={isSearchActive ? "backToSearch" : "backToStories"}
             link={linkPath}
             state={location.state}
             replace={true}
