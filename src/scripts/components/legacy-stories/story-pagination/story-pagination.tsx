@@ -35,37 +35,29 @@ const StoryPagination: FunctionComponent<Props> = ({
   useEffect(() => {
     const onKeyDownHandler = (event: KeyboardEvent) => {
       if (!isShowCaseView) {
-        // PageUp, ArrowLeft, ArrowUp
-        if (
-          event.key === "PageUp" ||
-          event.key === "ArrowLeft" ||
-          event.key === "ArrowUp"
-        ) {
+        const prevKeys = ["PageUp", "ArrowLeft", "ArrowUp"];
+        const nextKeys = ["PageDown", "ArrowRight", "ArrowDown"];
+
+        if (prevKeys.includes(event.key)) {
           if (previousSlideLink) {
             navigate(`/${previousSlideLink}`, {
               state,
             });
           }
-        }
-        // PageDown, ArrowRight, ArrowDown
-        if (
-          event.key === "PageDown" ||
-          event.key === "ArrowRight" ||
-          event.key === "ArrowDown"
-        ) {
+        } else if (nextKeys.includes(event.key)) {
           if (nextSlideLink) {
             navigate(`/${nextSlideLink}`, {
               state,
             });
           }
         }
-        // Escape
       } else if (event.key === "Escape") {
         navigate(`/${route}`, {
           state,
         });
       }
     };
+
     window.addEventListener("keydown", onKeyDownHandler);
     return () => {
       window.removeEventListener("keydown", onKeyDownHandler);
@@ -106,11 +98,7 @@ const StoryPagination: FunctionComponent<Props> = ({
         </span>
 
         {nextSlideLink ? (
-          <Link
-            to={"/" + nextSlideLink}
-            className={styles.icon}
-            state={state}
-          >
+          <Link to={"/" + nextSlideLink} className={styles.icon} state={state}>
             <NextIcon />
           </Link>
         ) : (
