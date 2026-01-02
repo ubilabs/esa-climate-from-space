@@ -1,5 +1,5 @@
-import { FunctionComponent, useCallback, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { FunctionComponent, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useIntl } from "react-intl";
 import cx from "classnames";
 
@@ -27,46 +27,57 @@ const StoryPagination: FunctionComponent<Props> = ({
   const navigate = useNavigate();
   const { isShowCaseView, isPresentView } = useAppRouteFlags();
 
+  // preserve location state search when navigating.
+  const { state } = useLocation();
   const route = isShowCaseView ? "showcase" : isPresentView ? "present" : "";
-
-  const onKeyDownHandler = useCallback(
-    (event: KeyboardEvent) => {
-      if (!isShowCaseView) {
-        // 37-arrow left, 33-page up, 38-arrow down
-        if (
-          event.keyCode === 33 ||
-          event.keyCode === 37 ||
-          event.keyCode === 38
-        ) {
-          if (previousSlideLink) {
-            navigate(`/${previousSlideLink}`);
-          }
-        }
-        // 39-arrow right, 34-page down, 40-arrow down
-        if (
-          event.keyCode === 34 ||
-          event.keyCode === 39 ||
-          event.keyCode === 40
-        ) {
-          if (nextSlideLink) {
-            navigate(`/${nextSlideLink}`);
-          }
-        }
-        // 27 - esc
-      } else if (event.keyCode === 27) {
-        navigate(`/${route}`);
-      }
-    },
-    [isShowCaseView, previousSlideLink, navigate, nextSlideLink, route],
-  );
 
   // add and remove event listener for keyboard events
   useEffect(() => {
+    const onKeyDownHandler = (event: KeyboardEvent) => {
+      if (!isShowCaseView) {
+        // PageUp, ArrowLeft, ArrowUp
+        if (
+          event.key === "PageUp" ||
+          event.key === "ArrowLeft" ||
+          event.key === "ArrowUp"
+        ) {
+          if (previousSlideLink) {
+            navigate(`/${previousSlideLink}`, {
+              state,
+            });
+          }
+        }
+        // PageDown, ArrowRight, ArrowDown
+        if (
+          event.key === "PageDown" ||
+          event.key === "ArrowRight" ||
+          event.key === "ArrowDown"
+        ) {
+          if (nextSlideLink) {
+            navigate(`/${nextSlideLink}`, {
+              state,
+            });
+          }
+        }
+        // Escape
+      } else if (event.key === "Escape") {
+        navigate(`/${route}`, {
+          state,
+        });
+      }
+    };
     window.addEventListener("keydown", onKeyDownHandler);
     return () => {
       window.removeEventListener("keydown", onKeyDownHandler);
     };
-  }, [onKeyDownHandler]);
+  }, [
+    isShowCaseView,
+    navigate,
+    nextSlideLink,
+    previousSlideLink,
+    route,
+    state,
+  ]);
 
   const disabledClasses = cx(
     styles.disabled,
@@ -77,7 +88,11 @@ const StoryPagination: FunctionComponent<Props> = ({
     <div className={styles.pagination}>
       <div className={styles.controls}>
         {previousSlideLink ? (
-          <Link to={"/" + previousSlideLink} className={styles.icon}>
+          <Link
+            to={"/" + previousSlideLink}
+            className={styles.icon}
+            state={state}
+          >
             <PreviousIcon />
           </Link>
         ) : (
@@ -91,7 +106,11 @@ const StoryPagination: FunctionComponent<Props> = ({
         </span>
 
         {nextSlideLink ? (
-          <Link to={"/" + nextSlideLink} className={styles.icon}>
+          <Link
+            to={"/" + nextSlideLink}
+            className={styles.icon}
+            state={state}
+          >
             <NextIcon />
           </Link>
         ) : (

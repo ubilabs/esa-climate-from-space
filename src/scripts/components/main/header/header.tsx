@@ -115,7 +115,7 @@ const Header: FunctionComponent = () => {
             className={styles.backButton}
             icon={ArrowBackIcon}
             label={
-              isMobile ? "" : !isSearchActive ? "backToStories" : "backToSearch"
+              isMobile ? "" : isSearchActive ? "backToSearch" : "backToStories"
             }
             ariaLabel={!isSearchActive ? "backToStories" : "backToSearch"}
             link={linkPath}
