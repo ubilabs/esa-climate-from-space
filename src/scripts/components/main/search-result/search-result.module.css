@@ -17,6 +17,8 @@
     }
 
     > strong {
+        display: block;
+        text-align: left;
         color: var(--light-green);
     }
 }
