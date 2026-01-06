@@ -1,9 +1,9 @@
 {
-  "id": "debug",
+  "id": "debug-legacy",
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Deutsch Is Ozone Good or Bad?\n\nThe ozone layer protects life on Earth from ultraviolet solar radiation, but ozone is also a powerful greenhouse gas and at ground level is extremely hazardous to health.",
+      "text": "# ENGLISH Is Ozone Good or Bad?\n\nThe ozone layer protects life on Earth from ultraviolet solar radiation, but ozone is also a powerful greenhouse gas and at ground level is extremely hazardous to health.",
       "shortText": "# Is Ozone Good or Bad?\n\n(placeholder)",
       "images": ["assets/elnino.jpg"]
     },
@@ -17,14 +17,8 @@
         "assets/elnino-HD720.mp4",
         "assets/elnino-HD1080.mp4"
       ],
-      "videoCaptions": "assets/elnino-de.vtt",
+      "videoCaptions": "assets/elnino-en.vtt",
       "videoPoster": "assets/elnino.jpg"
-    },
-    {
-      "type": "video",
-      "text": "# Stacking up the Data\n\nThe CCI Ozone team has worked on data from European and third party missions covering more than two decades of continuous ozone observations since 1995. Each space-borne sensor has its own radiometric characteristics, spatial resolution and coverage, making the harmonisation and merging of the data a complex task. The resulting integrated datasets have the advantage of providing better spatial coverage than those from individual sensors, and allow time series to exceed the life of a single instrument, giving the long-term trends so crucial for climate studies. They have enabled a better understanding of natural and anthropogenic factors affecting the distribution of atmospheric ozone and improved our understanding of ozone processes in climate models.  \n\n![Ozone sensors](assets/ozone_large_09.png) \n_Satellites and sensors used by the CCI Ozone team. (update – extend time lines?)_\n\nJust as individuals can use daily UV and air quality warnings based on satellite data to protect their own health and that of their children, scientists are using the same observations from space to track the effect of ozone on the climate, so that political leaders have the information they need to make decisions and take action to protect us all. Emission controls will continue to reduce ozone destruction in the stratosphere and limit ozone creation in the troposphere, and provide successful examples of international cooperation to solve an environmental problem.",
-      "shortText": "# Stacking up the Data\n\n(placeholder)",
-      "videoId": "evPBTu_a27I"
     },
     {
       "type": "globe",
@@ -49,8 +43,8 @@
         }
       ],
       "markers": [
-        {"position": [10, 50], "title": "some more content"},
-        {"position": [50, 10], "title": "debug"}
+        { "position": [10, 50], "title": "some more content" },
+        { "position": [50, 10], "title": "debug" }
       ],
       "layerDescription": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat necessitatibus quibusdam labore eos consectetur fugiat beatae aperiam! Nulla similique corrupti perferendis, accusantium repellat ipsum voluptate illum reiciendis? Voluptatum, quidem est."
     },
@@ -60,7 +54,7 @@
       "shortText": "# Ozone and Climate \n\n(placeholder)",
       "videoId": "evPBTu_a27I",
       "videoSrc": ["assets/elnino-web.mp4"],
-      "videoCaptions": "assets/elnino-de.vtt",
+      "videoCaptions": "assets/elnino-en.vtt",
       "videoPoster": "assets/elnino.jpg"
     },
     {
@@ -84,6 +78,12 @@
       "text": "# YOUTUBE Stacking up the Data\n\nThe CCI Ozone team has worked on data from European and third party missions covering more than two decades of continuous ozone observations since 1995. Each space-borne sensor has its own radiometric characteristics, spatial resolution and coverage, making the harmonisation and merging of the data a complex task. The resulting integrated datasets have the advantage of providing better spatial coverage than those from individual sensors, and allow time series to exceed the life of a single instrument, giving the long-term trends so crucial for climate studies. They have enabled a better understanding of natural and anthropogenic factors affecting the distribution of atmospheric ozone and improved our understanding of ozone processes in climate models.  \n\n![Ozone sensors](assets/ozone_large_09.png) \n_Satellites and sensors used by the CCI Ozone team. (update – extend time lines?)_\n\nJust as individuals can use daily UV and air quality warnings based on satellite data to protect their own health and that of their children, scientists are using the same observations from space to track the effect of ozone on the climate, so that political leaders have the information they need to make decisions and take action to protect us all. Emission controls will continue to reduce ozone destruction in the stratosphere and limit ozone creation in the troposphere, and provide successful examples of international cooperation to solve an environmental problem.",
       "shortText": "# Stacking up the Data\n\n(placeholder)",
       "videoId": "evPBTu_a27I"
+    },
+    {
+      "type": "embedded",
+      "text": "## A Vital Element \r\n\r\nCarbon is the basic building block for life on Earth. It can form stable chemical bonds with many elements, allowing large and complex molecules to be built, including the organic compounds essential to life. Carbon’s bonds to other elements are stable, but not so strong that they prevent chemical reaction. \r\n\r\nAs it reacts with other elements, carbon cycles through the atmosphere, the oceans, plants and animals, soil and rocks. There are exchanges between these carbon reservoirs through a variety of processes. When carbon bonds are broken, energy is released, making some carbon compounds – hydrocarbons – convenient fuel sources. \r\n \r\n## Greenhouse Gases \r\n\r\nBut the same bonds that make carbon molecules so essential to life and modern living have a downside. They are also good at absorbing long-wavelength infrared radiation, allowing the molecules to vibrate and warm up, trapping heat in the atmosphere, contributing to the greenhouse effect. \r\n\r\nCarbon compounds such as carbon dioxide and methane are not the only greenhouse gases, nor the most powerful, but our increased burning of fossil fuels – coal, oil and natural gas – has caused an accumulation of carbon dioxide in the atmosphere, disrupting the carbon cycle, and warming the Earth’s climate.",
+      "shortText": "## A Vital Element \r\n\r\n- Carbon is the basic building block for life on Earth.\r\n- Forms stable bonds with many elements.\r\n- Allows large and complex molecules to be built, including organic compounds essential for life.\r\n- Bonds are stable, but not so strong that they prevent chemical reaction. \r\n- Reactions drive carbon through the atmosphere, the oceans, plants and animals, soil and rocks. \r\n- When carbon bonds are broken, energy is released.\r\n- So some carbon compounds – hydrocarbons – are convenient fuel sources. \r\n\r\n## Greenhouse Gases \r\n\r\n- Carbon bonds also good at absorbing infrared radiation, allowing molecules to vibrate and warm up.\r\n- Traps heat in the atmosphere, contributing to the greenhouse effect. \r\n\r\nIncreased burning of fossil fuels has caused an accumulation of CO2 in the atmosphere, disrupting the carbon cycle, and warming the climate.",
+      "embeddedSrc": "https://datawrapper.dwcdn.net/F0JkU/1/?transparent=true"
     }
   ]
 }
