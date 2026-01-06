@@ -11,6 +11,7 @@
     padding: 8px 12px;
     margin-bottom: 8px;
     border-radius: 8px;
+    text-align: left;
 
     @media screen and (--desktop-viewport) {
         margin-bottom: 16px;
@@ -41,7 +42,6 @@
     line-clamp: 2;
     -webkit-box-orient: vertical;
     line-height: 1.4;
-    text-align: left;
 }
 
 .matchKey {
