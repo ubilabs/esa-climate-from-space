@@ -58,7 +58,7 @@ body {
 }
 
 #app {
-  background-color: var(--Neutral-ESA-Background);
+  background-color: var(--neutral-esa-background);
   display: grid;
   grid-template-areas:
     "header"
