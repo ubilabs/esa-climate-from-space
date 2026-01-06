@@ -3,6 +3,7 @@ import {
   memo,
   useCallback,
   useEffect,
+  useEffectEvent,
   useRef,
   useState,
 } from "react";
@@ -141,43 +142,41 @@ function useWebGlGlobe(view: CameraView) {
   const [containerRef, containerEl] = useCallbackRef();
   const [globe, setGlobe] = useState<WebGlGlobe | null>(null);
 
-  useEffect(
-    () => {
-      if (!containerEl) {
-        return EMPTY_FUNCTION;
-      }
+  const initGlobe = useEffectEvent((element: HTMLElement | null) => {
+    if (!element) {
+      return EMPTY_FUNCTION;
+    }
 
-      const newGlobe = new WebGlGlobe(containerEl, {
-        cameraView: view,
-        renderOptions: {
-          atmosphereEnabled: true,
-          shadingEnabled: true,
-          atmosphereStrength: 0.8,
-          atmosphereColor: [0.58, 0.79, 1], // {r: 148, g: 201, b: 255}
-        },
-      });
+    const newGlobe = new WebGlGlobe(element, {
+      cameraView: view,
+      renderOptions: {
+        atmosphereEnabled: true,
+        shadingEnabled: true,
+        atmosphereStrength: 0.8,
+        atmosphereColor: [0.58, 0.79, 1], // {r: 148, g: 201, b: 255}
+      },
+    });
 
-      if ("renderer" in newGlobe) {
-        // @TODO: Remove this setting after globe controls have been refactored.
-        // @ts-expect-error Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
-        newGlobe.renderer.globeControls.zoomSpeed = 1.5;
-      }
+    if ("renderer" in newGlobe) {
+      // @TODO: Remove this setting after globe controls have been refactored.
+      // @ts-expect-error Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
+      newGlobe.renderer.globeControls.zoomSpeed = 1.5;
+    }
 
-      if ("renderer" in newGlobe) {
-        // @TODO: Remove this setting after globe controls have been refactored.
-        // @ts-expect-error Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
-        newGlobe.renderer.globeControls.zoomSpeed = 1.5;
-      }
+    if ("renderer" in newGlobe) {
+      // @TODO: Remove this setting after globe controls have been refactored.
+      // @ts-expect-error Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
+      newGlobe.renderer.globeControls.zoomSpeed = 1.5;
+    }
 
-      setGlobe(newGlobe);
+    setGlobe(newGlobe);
 
-      return () => newGlobe.destroy();
-    },
-    // we absolutely don't want to react to all view-changes here, so `view`
-    // is left out of dependencies.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [containerEl],
-  );
+    return () => newGlobe.destroy();
+  });
+
+  useEffect(() => {
+    initGlobe(containerEl);
+  }, [containerEl]);
 
   return [containerRef, globe] as const;
 }
@@ -315,7 +314,6 @@ function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
     }
   }, [globe, view, active]);
 
-
   // apply incomfing flyTo props to the globe
   useEffect(() => {
     if (!globe || !flyTo) return;
@@ -365,12 +363,13 @@ function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
       return EMPTY_FUNCTION;
     }
 
+    const timerId = ref.current.timerId;
+
     globe.addEventListener("cameraViewChanged", handleViewChanged);
 
     return () => {
       // there could be a leftover timer running
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      window.clearTimeout(ref.current.timerId);
+      window.clearTimeout(timerId);
       globe.removeEventListener("cameraViewChanged", handleViewChanged);
     };
   }, [globe, active, handleViewChanged]);
