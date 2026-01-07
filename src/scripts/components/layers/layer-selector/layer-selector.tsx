@@ -12,14 +12,15 @@ import SelectedLayerListItem from "../selected-layer-list-item/selected-layer-li
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { languageSelector } from "../../../selectors/language";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { appRouteSelector } from "../../../selectors/route-match";
 import { showLayerSelector as showLayerSelectorSelector } from "../../../selectors/show-layer-selector";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { layersApi, useGetLayerListQuery } from "../../../services/api";
 
-import styles from "./layer-selector.module.css";
-import { appRouteSelector } from "../../../selectors/route-match";
 import { AppRoute } from "../../../types/app-routes";
+
+import styles from "./layer-selector.module.css";
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
