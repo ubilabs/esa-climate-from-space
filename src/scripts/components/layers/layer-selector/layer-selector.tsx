@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { motion, AnimatePresence } from "motion/react";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +18,8 @@ import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { layersApi, useGetLayerListQuery } from "../../../services/api";
 
 import styles from "./layer-selector.module.css";
+import { appRouteSelector } from "../../../selectors/route-match";
+import { AppRoute } from "../../../types/app-routes";
 
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -25,10 +27,19 @@ const LayerSelector: FunctionComponent = () => {
 
   const { trackEvent } = useMatomo();
 
+  const appRoute = useSelector(appRouteSelector);
+
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
 
   const showLayerSelector = useSelector(showLayerSelectorSelector);
   const lang = useSelector(languageSelector);
+
+  // always close layer selector on route change if still mounted
+  useEffect(() => {
+    if (appRoute !== AppRoute.Data) {
+      dispatch(setShowLayer(false));
+    }
+  }, [appRoute, dispatch]);
 
   const { data: layers } = useGetLayerListQuery(lang);
   if (!layers) {
