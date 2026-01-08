@@ -82,7 +82,9 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
           }),
         );
 
+        // reset all layers on base route
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
         dispatch(setSelectedContentAction({ contentId: null }));
         break;
 
