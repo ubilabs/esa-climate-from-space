@@ -3,6 +3,7 @@
   "splashscreen": {
     "url": "assets/seaice.jpg",
     "title": "Breaking the Ice",
+    "subtitle": "",
     "slides": [
       {
         "text": "The polar regions are among the most sensitive to variations in global climate, with the Arctic in particular experiencing rapid change on both sea and land."
