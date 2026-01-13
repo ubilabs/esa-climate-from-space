@@ -16,7 +16,23 @@
       "slides": [
         {
           "text": "## A Passage Opens \n\nFor centuries, the Northwest Passage between mainland Canada and its Arctic islands has held promise as a shorter sea route between Europe and Asia. But for most of this time it has proved an impenetrable barrier, locked fast in the grip of a frozen sea."
-        },
+        }
+      ]
+    },
+    {
+      "type": "imageScroll",
+      "slides": [
+        {
+          "text": "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
+          "imageAltText": "some alt text",
+          "url": "assets/story15_01.jpg",
+          "caption": "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
         {
           "text": "The pack ice defeated the Royal Navy in 1845 when Sir John Franklin’s expedition was lost. Eighteen search parties over the next thirty years failed to find any trace of him and his 130 crewmen. It wasn’t until 1906 that Roald Amundsen became the first to complete a route through the Northwest Passage, after a journey lasting three years."
         }
@@ -48,7 +64,21 @@
       "slides": [
         {
           "text": "A century later, still only a handful of voyages had picked their way through the icy waters, some with the aid of icebreakers. Then in the summer of 2007, satellite images showed, for the first time on record, the entire Passage to be largely ice-free. This surprised climate scientists, whose models predicted it would remain ice-bound for some decades to come. Today, you can book a cruise through the Northwest Passage on a liner with hundreds of other  passengers.\n\nFranklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance."
-        },
+        }
+      ]
+    },
+    {
+      "type": "chapterDivider",
+      "slides": [
+        {
+          "category": "Ocean",
+          "url": "assets/seaice.jpg"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
         {
           "text": "The loss of Arctic sea ice has been faster than was predicted, with the southern route of the Northwest Passage now navigable almost every year. In 2008, the first commercial ship passed through and in 2013 the first bulk carrier took cargo from Vancouver to Finland. 86 cargo ships passed through the Northwest Passage in 2019."
         }
@@ -88,6 +118,14 @@
           "text": "Ship tracks in the eastern part of the Northwest Passage in 2013 (green) and 2019 (orange). Traffic increased from 112 to 160 ships between these years. (Arctic Council)",
           "url": "assets/story15_12.jpg",
           "focus": "right"
+        }
+      ]
+    },
+    {
+      "type": "chapterDivider",
+      "slides": [
+        {
+          "url": "assets/seaice.jpg"
         }
       ]
     },
@@ -154,7 +192,20 @@
       "slides": [
         {
           "text": "Satellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2020. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.\n\nArctic coastlines have traditionally been protected by year-round ice. However, with sea-ice in retreat, erosion events have already increased and are anticipated to rise further owing to the combined action of increasing wave height, sea level, storm surges and intensifying permafrost degradation. These combined effects are set to have an increasing impact on ecosystems and communities in low-lying coastal areas of the Arctic."
-        },
+        }
+      ]
+    },
+    {
+      "type": "chapterDivider",
+      "slides": [
+        {
+          "url": "assets/seaice.jpg"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
         {
           "text": "The ocean and the atmosphere are the climate’s two great [heat pumps](stories/story-16/0), and sea ice forms where they meet. It has a complex influence on the energy exchanges between them. Sea ice insulates the sea, reducing heat loss to the atmosphere and providing a barrier to the exchange of gases and motion. But bright ice also reflects sunlight that would be absorbed by dark ocean water, keeping the sea cooler than it would otherwise be. So, in a warming climate sea ice is subject to a positive feedback: melting ice exposes darker ocean water, which warms up, leading to further melting."
         }
@@ -231,6 +282,14 @@
           "text": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
           "url": "assets/story15_08.jpg",
           "caption": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)"
+        }
+      ]
+    },
+    {
+      "type": "chapterDivider",
+      "slides": [
+        {
+          "url": "assets/seaice.jpg"
         }
       ]
     },
