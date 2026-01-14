@@ -1,6 +1,7 @@
 {
   "id": "story-15",
   "splashscreen": {
+    "url": "assets/seaice.jpg",
     "title": "Breaking the Ice",
     "subtitle": "",
     "slides": [
@@ -24,6 +25,7 @@
         {
           "text": "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
           "caption": "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
+          "url": "assets/story15_01.jpg",
           "altText": "some alt text"
         }
       ]
@@ -41,13 +43,19 @@
       "slides": [
         {
           "text": "Summer sea ice in the Canadian Arctic. The narrow channel between mainland Canada and its Arctic islands is usually blocked by sea ice. In this Envisat MERIS image from 2nd July 2007 Lancaster Sound (lower centre) is ice-free, but to the west ice still blocks Parry Channel. (ESA)",
+          "url": "assets/seaice_large_01.jpg",
+          "focus": "right",
           "altText": "some alt text"
         },
         {
-          "text": "Sea ice is shown in blue in this Envisat ASAR mosaic of the Arctic Ocean from August 2008. The southerly branch of the Northwest Passage is ice-free. (ESA)"
+          "text": "Sea ice is shown in blue in this Envisat ASAR mosaic of the Arctic Ocean from August 2008. The southerly branch of the Northwest Passage is ice-free. (ESA)",
+          "url": "assets/seaice_large_12a.jpg",
+          "focus": "right"
         },
         {
-          "text": "The southern route through the Northwest Passage was nearly ice-free in August 2016, as shown by this image from the Suomi NPP weather satellite (NASA)"
+          "text": "The southern route through the Northwest Passage was nearly ice-free in August 2016, as shown by this image from the Suomi NPP weather satellite (NASA)",
+          "url": "assets/story15_11.jpg",
+          "focus": "right"
         }
       ]
     },
@@ -63,7 +71,8 @@
       "type": "chapterDivider",
       "slides": [
         {
-          "category": "Ocean"
+          "category": "Ocean",
+          "url": "assets/seaice.jpg"
         }
       ]
     },
@@ -80,7 +89,9 @@
       "slides": [
         {
           "text": "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
-          "caption": "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)"
+          "caption": "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
+          "url": "assets/story15_02.jpg",
+          "focus": "left"
         }
       ]
     },
@@ -99,17 +110,23 @@
       "type": "imageCarousel",
       "slides": [
         {
-          "text": "Icebreaker escorting a cargo vessel through sea ice in the Arctic Ocean (Aker Arctic)"
+          "text": "Icebreaker escorting a cargo vessel through sea ice in the Arctic Ocean (Aker Arctic)",
+          "url": "assets/story15_03.jpg",
+          "focus": "centre"
         },
         {
-          "text": "Ship tracks in the eastern part of the Northwest Passage in 2013 (green) and 2019 (orange). Traffic increased from 112 to 160 ships between these years. (Arctic Council)"
+          "text": "Ship tracks in the eastern part of the Northwest Passage in 2013 (green) and 2019 (orange). Traffic increased from 112 to 160 ships between these years. (Arctic Council)",
+          "url": "assets/story15_12.jpg",
+          "focus": "right"
         }
       ]
     },
     {
       "type": "chapterDivider",
       "slides": [
-        {}
+        {
+          "url": "assets/seaice.jpg"
+        }
       ]
     },
     {
@@ -125,7 +142,9 @@
       "slides": [
         {
           "text": "# CCI Sea Ice Concentration",
-          "caption": "# CCI Sea Ice Concentration"
+          "caption": "# CCI Sea Ice Concentration",
+          "url": "assets/story15_03.jpg",
+          "focus": "right"
         }
       ]
     },
@@ -141,16 +160,20 @@
       "type": "imageCarousel",
       "slides": [
         {
-          "text": "Young Arctic sea ice viewed from an aircraft. Sea ice thinner than 50 cm is particularly important for weather and climate as it controls the exchange of heat and water between the ocean and atmosphere. (S Hendriks/AWI)"
+          "text": "Young Arctic sea ice viewed from an aircraft. Sea ice thinner than 50 cm is particularly important for weather and climate as it controls the exchange of heat and water between the ocean and atmosphere. (S Hendriks/AWI)",
+          "url": "assets/seaice_large_05.jpg"
         },
         {
-          "text": "Pressure ridge in thick Arctic sea ice, formed as two ice floes converge. (Seymour Laxon/CPOM/UCL)"
+          "text": "Pressure ridge in thick Arctic sea ice, formed as two ice floes converge. (Seymour Laxon/CPOM/UCL)",
+          "url": "assets/seaice_large_13.jpg"
         },
         {
-          "text": "Sea ice in Resolute Bay, Canada, from Sentinel-2. (Modified Copernicus Sentinel data (2019), processed by Pierre Markuse)"
+          "text": "Sea ice in Resolute Bay, Canada, from Sentinel-2. (Modified Copernicus Sentinel data (2019), processed by Pierre Markuse)",
+          "url": "assets/story15_06.jpg"
         },
         {
-          "text": "Melting sea ice swirls off the east coast of Greenland \nin this Sentinel-2 image taken on 20 April, 2020 (contains modified Copernicus Sentinel data (2020))"
+          "text": "Melting sea ice swirls off the east coast of Greenland \nin this Sentinel-2 image taken on 20 April, 2020 (contains modified Copernicus Sentinel data (2020))",
+          "url": "assets/story15_07.jpg"
         }
       ]
     },
@@ -159,7 +182,8 @@
       "slides": [
         {
           "text": "# Arctic Sea Ice Extent in August 1979-2023 \nSummer ice extent in the Arctic is down 68,000 sq km per year, or 8.9% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)",
-          "caption": "# Arctic Sea Ice Extent in August 1979-2023 \nSummer ice extent in the Arctic is down 68,000 sq km per year, or 8.9% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)"
+          "caption": "# Arctic Sea Ice Extent in August 1979-2023 \nSummer ice extent in the Arctic is down 68,000 sq km per year, or 8.9% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)",
+          "url": "assets/story15_04.png"
         }
       ]
     },
@@ -174,7 +198,9 @@
     {
       "type": "chapterDivider",
       "slides": [
-        {}
+        {
+          "url": "assets/seaice.jpg"
+        }
       ]
     },
     {
@@ -190,7 +216,8 @@
       "slides": [
         {
           "text": "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%.",
-          "caption": "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%."
+          "caption": "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%.",
+          "url": "assets/story15_05.png"
         }
       ]
     },
@@ -210,7 +237,8 @@
       "slides": [
         {
           "text": "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
-          "caption": "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)"
+          "caption": "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
+          "url": "assets/icesheet_large_16.jpg"
         }
       ]
     },
@@ -226,13 +254,16 @@
       "type": "imageCarousel",
       "slides": [
         {
-          "text": "# Greenland Air Temperature Anomaly 2019-2021 \nAir temperature for Greenland in August 2019-2021 compared to the average for the preceding 30 years. The heatwave of 2021 brought the first recorded rainfall to the high centre of Greenland, where usually there would be snowfall. (ERA5 data from Copernicus Climate Change Service/ECMWF/ESA)"
+          "text": "# Greenland Air Temperature Anomaly 2019-2021 \nAir temperature for Greenland in August 2019-2021 compared to the average for the preceding 30 years. The heatwave of 2021 brought the first recorded rainfall to the high centre of Greenland, where usually there would be snowfall. (ERA5 data from Copernicus Climate Change Service/ECMWF/ESA)",
+          "url": "assets/story15_13.jpg"
         },
         {
-          "text": "The Greenland heatwave of 2021 led to rapid melting of snow and ice, creating extensive flows of meltwater and deeper, darker lakes on the ice sheet surface. Sentinel-2 image from 20 August 2021 (contains modified Copernicus Sentinel data (2021), processed by ESA)"
+          "text": "The Greenland heatwave of 2021 led to rapid melting of snow and ice, creating extensive flows of meltwater and deeper, darker lakes on the ice sheet surface. Sentinel-2 image from 20 August 2021 (contains modified Copernicus Sentinel data (2021), processed by ESA)",
+          "url": "assets/story15_14.jpg"
         },
         {
-          "text": "Surface meltwater runs across Leverett Glacier, about 50km from the western edge of the Greenland  ice sheet, on 19th August 2009. (Andrew Sole, University of Sheffield)"
+          "text": "Surface meltwater runs across Leverett Glacier, about 50km from the western edge of the Greenland  ice sheet, on 19th August 2009. (Andrew Sole, University of Sheffield)",
+          "url": "assets/icesheet_large_01.jpg"
         }
       ]
     },
@@ -249,14 +280,17 @@
       "slides": [
         {
           "text": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
-          "caption": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)"
+          "caption": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
+          "url": "assets/story15_08.jpg"
         }
       ]
     },
     {
       "type": "chapterDivider",
       "slides": [
-        {}
+        {
+          "url": "assets/seaice.jpg"
+        }
       ]
     },
     {
@@ -271,16 +305,20 @@
       "type": "imageCarousel",
       "slides": [
         {
-          "text": "The edge of the ice pack viewed by the Enhanced Thematic Mapper on Landsat 7, with thinner, younger ice in the lower part of the image. (USGS/ESA)"
+          "text": "The edge of the ice pack viewed by the Enhanced Thematic Mapper on Landsat 7, with thinner, younger ice in the lower part of the image. (USGS/ESA)",
+          "url": "assets/seaice_large_04.jpg"
         },
         {
-          "text": "Microwave brightness of the Arctic Ocean on March 1 2003, measured at a frequency of 89 GHz by the AMSR-E instrument on NASA's Aqua satellite. (A Ivanoff, NASA-GSFC)"
+          "text": "Microwave brightness of the Arctic Ocean on March 1 2003, measured at a frequency of 89 GHz by the AMSR-E instrument on NASA's Aqua satellite. (A Ivanoff, NASA-GSFC)",
+          "url": "assets/seaice_large_14.jpg"
         },
         {
-          "text": "Sea ice around Antarctica was particularly low in February 2023. This map shows the mean sea-ice concentration for the month, compared with the median extent measured by satellites between 1981–2010, shown by a red line. (ESA / data: NSIDC)"
+          "text": "Sea ice around Antarctica was particularly low in February 2023. This map shows the mean sea-ice concentration for the month, compared with the median extent measured by satellites between 1981–2010, shown by a red line. (ESA / data: NSIDC)",
+          "url": "assets/story15-image18.jpg"
         },
         {
-          "text": "Ice-shelf calving fronts on the Antarctic Peninsula from the 1960s to 2019, during which time most of the Larsen A and B ice shelves have been lost. (ESA / data: Cook and Vaughan, 2010; Andreasen et al., 2023; LIMA Project)"
+          "text": "Ice-shelf calving fronts on the Antarctic Peninsula from the 1960s to 2019, during which time most of the Larsen A and B ice shelves have been lost. (ESA / data: Cook and Vaughan, 2010; Andreasen et al., 2023; LIMA Project)",
+          "url": "assets/story15-image19.jpg"
         }
       ]
     },
@@ -300,7 +338,8 @@
       "slides": [
         {
           "text": "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)",
-          "caption": "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)"
+          "caption": "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)",
+          "url": "assets/icesheet_large_17.jpg"
         }
       ]
     },
