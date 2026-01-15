@@ -4,8 +4,7 @@
     "url": "assets/seaice.jpg",
     "title": "Breaking the Ice",
     "subtitle": "",
-    "latitude": 53.507,
-    "longitude": 9.9619,
+    "location": {},
     "slides": [
       {
         "text": "The polar regions are among the most sensitive to variations in global climate, with the Arctic in particular experiencing rapid change on both sea and land."
@@ -228,7 +227,12 @@
       "slides": [
         {
           "text": "This is part of a process called the Arctic amplification. More heat is also being transported to the poles by both the atmosphere and the ocean as they warm up. This makes the Arctic one of the most sensitive regions to variations in global climate, and the place where most climate models predict the greatest warming.  Observed temperature rise in the Arctic has been 2-3 times the global average. \n\n## Climate Regulator\nSea ice has an important influence on the global ocean circulation. When seawater freezes in the winter, it leaves salt behind, increasing the salinity and therefore the density of the surrounding water, causing it to sink. This process is one of the main drivers behind the ocean’s global vertical circulation (the [thermohaline circulation](stories/story-16/5)), which helps distribute energy around the planet. \n\nWhen the sea ice melts in the summer, it produces an influx of fresh water, adding to that from large rivers running in from Siberia and North America. This makes the Arctic Ocean much fresher than the salty Atlantic and Pacific. Ocean circulation is partly driven by temperature and salinity differences in the water, so changes to the cycle of sea ice freezing and melting can affect ocean currents and weather systems far from the Arctic."
-        },
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
         {
           "text": "The inhabitants of the Arctic region are living on the climate change front line. As traditional ways of hunting and travel are being disrupted, they have to adjust their lifestyles to the rapid warming. The sea ice that was such a barrier to European explorers provides a vital link for Greenlanders, both to food sources and between coastal communities. Waters that are becoming easier for a cruise ship to navigate are becoming more difficult for dogsled and snowmobile."
         }
@@ -329,7 +333,12 @@
       "slides": [
         {
           "text": "One of the world’s longest satellite data archives, going back to 1978, is of passive microwave observations of sea ice. The [CCI](stories/story-32/3) Sea Ice team is working with this data, in collaboration with Europe’s weather satellite organisation, EUMETSAT, to produce daily maps of sea ice concentration at both poles, as well as investigating more modern instruments to carry the data series forward. But ice extent is only half the story – climate modellers also want to know the volume of ice present."
-        },
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
         {
           "text": "To measure the volume of sea ice, its thickness is also required. Radar altimeters are used to measure very precisely the height of the ice above the sea surface, from which its thickness can be derived. The CCI Sea Ice team has developed monthly sea ice thickness maps using radar altimeter data from ESA’s Envisat mission from 2002 to 2012, and from CryoSat, launched in 2010. The CCI Ice Sheet team also uses these satellite altimeters to measure the thickness of the Greenland and Antarctic Ice Sheets."
         }
