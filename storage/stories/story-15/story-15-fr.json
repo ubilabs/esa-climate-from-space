@@ -69,15 +69,6 @@
       ]
     },
     {
-      "type": "chapterDivider",
-      "slides": [
-        {
-          "category": "Ocean",
-          "url": "assets/seaice.jpg"
-        }
-      ]
-    },
-    {
       "type": "textBodyLarge",
       "slides": [
         {
@@ -119,14 +110,6 @@
           "text": "Ship tracks in the eastern part of the Northwest Passage in 2013 (green) and 2019 (orange). Traffic increased from 112 to 160 ships between these years. (Arctic Council)",
           "url": "assets/story15_12.jpg",
           "focus": "right"
-        }
-      ]
-    },
-    {
-      "type": "chapterDivider",
-      "slides": [
-        {
-          "url": "assets/seaice.jpg"
         }
       ]
     },
@@ -193,14 +176,6 @@
       "slides": [
         {
           "text": "Satellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2020. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.\n\nArctic coastlines have traditionally been protected by year-round ice. However, with sea-ice in retreat, erosion events have already increased and are anticipated to rise further owing to the combined action of increasing wave height, sea level, storm surges and intensifying permafrost degradation. These combined effects are set to have an increasing impact on ecosystems and communities in low-lying coastal areas of the Arctic."
-        }
-      ]
-    },
-    {
-      "type": "chapterDivider",
-      "slides": [
-        {
-          "url": "assets/seaice.jpg"
         }
       ]
     },
@@ -288,14 +263,6 @@
           "text": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
           "caption": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
           "url": "assets/story15_08.jpg"
-        }
-      ]
-    },
-    {
-      "type": "chapterDivider",
-      "slides": [
-        {
-          "url": "assets/seaice.jpg"
         }
       ]
     },
