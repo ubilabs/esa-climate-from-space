@@ -6,7 +6,7 @@ import {
 } from "../../../../../../../types/story";
 
 import { TextContainer } from "../../text-container/text-container";
-import { TextBlock } from "../../text-container/text-block/text-block";
+import { TextSection } from "../../text-container/text-section/text-section";
 
 interface Props {
   slide: ImageModuleSlide;
@@ -15,7 +15,7 @@ interface Props {
   index: number;
 }
 
-export const TextOverlaySlide: FunctionComponent<Props> = ({
+export const TextBodyLargeSlide: FunctionComponent<Props> = ({
   index,
   slide,
   storyId,
@@ -23,7 +23,7 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
 }) => {
   if (!slide.text) {
     console.warn(
-      `TextOverlaySlide: Slide for story ${storyId} has no text, skipping rendering.`,
+      `TextBodyLargeSlide: Slide for story ${storyId} has no text, skipping rendering.`,
     );
     return null;
   }
@@ -31,7 +31,7 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
   return (
     <>
       <TextContainer index={0}>
-        <TextBlock text={slide.text} refProp={getRefCallback(0, index)} />
+        <TextSection text={slide.text} refProp={getRefCallback(0, index)} />
       </TextContainer>
     </>
   );

@@ -1,7 +1,8 @@
 import { FunctionComponent } from "react";
 import { useIntl } from "react-intl";
 import { useStory } from "../../../../../providers/story/use-story";
-import { TextContainer } from "../generic/text-overlay/text-overlay-slide/text-overlay-slide";
+import { TextContainer } from "../generic/text-container/text-container";
+import { TextBlock } from "../generic/text-container/text-block/text-block";
 import { StorySectionProps } from "../../../../../types/story";
 import { useContentParams } from "../../../../../hooks/use-content-params";
 
@@ -19,7 +20,9 @@ export const ClosingScreen: FunctionComponent<StorySectionProps> = () => {
 
   return (
     <div style={{ backgroundColor: "#011e2b" }}>
-      <TextContainer text={message} />
+      <TextContainer>
+        <TextBlock text={message} />
+      </TextContainer>
     </div>
   );
 };

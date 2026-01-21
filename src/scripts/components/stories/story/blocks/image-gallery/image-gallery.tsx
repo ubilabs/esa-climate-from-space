@@ -5,6 +5,7 @@ import ImageCompare from "./modules/image-compare/image-compare";
 import ImageTime from "./modules/image-time/image-time";
 import ImageScroll from "./modules/image-scroll/image-scroll";
 import TextOverlay from "../generic/text-overlay/text-overlay";
+import TextBodyLarge from "../generic/text-body-large/text-body-large";
 
 import styles from "./image-gallery.module.css";
 
@@ -14,6 +15,7 @@ export type ImageGalleryCompoundComponents = {
   ImageTime: typeof ImageTime;
   ImageScroll: typeof ImageScroll;
   TextOverlay: typeof TextOverlay;
+  TextBodyLarge: typeof TextBodyLarge;
 };
 
 export const ImageGallery = (({ children }: { children: ReactNode }) => {
@@ -26,3 +28,4 @@ ImageGallery.ImageCompare = ImageCompare;
 ImageGallery.ImageTime = ImageTime;
 ImageGallery.ImageScroll = ImageScroll;
 ImageGallery.TextOverlay = TextOverlay;
+ImageGallery.TextBodyLarge = TextBodyLarge;
