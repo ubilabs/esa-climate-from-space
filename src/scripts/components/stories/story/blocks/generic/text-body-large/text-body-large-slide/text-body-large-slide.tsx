@@ -32,7 +32,6 @@ export const TextBodyLargeSlide: FunctionComponent<Props> = ({
       <TextWrapper
         text={slide.text}
         hasRichText
-        index={0}
         refProp={getRefCallback(0, index)}
       />
     </>
