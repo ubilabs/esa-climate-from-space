@@ -101,6 +101,24 @@
           "alt": "Satelliten im Dienste der Moore. Diese hochauflösende Landbedeckungskarte, abgeleitet aus Copernicus Sentinel-2-Daten, zeigt das Ausmaß der Moore in Violett."
         }
       ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "## Eine Passage öffnet sich \n\nSeit Jahrhunderten verspricht die Nordwestpassage zwischen dem kanadischen Festland und seinen arktischen Inseln eine kürzere Seewegverbindung zwischen Europa und Asien. Doch die meiste Zeit erwies sie sich als undurchdringliche Barriere, fest eingeschlossen im Griff eines gefrorenen Meeres."
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "url": "assets/satellite.gif",
+      "focus": "right",
+      "slides": [
+        {
+          "text": "Danke für's Durchscrollen"
+        }
+      ]
     }
   ]
 }

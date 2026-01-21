@@ -134,6 +134,14 @@
       ]
     },
     {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "## A Passage Opens \n\nFor centuries, the Northwest Passage between mainland Canada and its Arctic islands has held promise as a shorter sea route between Europe and Asia. But for most of this time it has proved an impenetrable barrier, locked fast in the grip of a frozen sea."
+        }
+      ]
+    },
+    {
       "type": "textOverlay",
       "url": "assets/satellite.gif",
       "focus": "right",
