@@ -6,6 +6,7 @@ import config from "../../../../../../../config/main";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
+import { TextBlock } from "../../../generic/text-container/text-block/text-block";
 import { StorySectionProps } from "../../../../../../../types/story";
 import { ScrollImage } from "./image-scroll-image/image-scroll-image";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
@@ -29,9 +30,11 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
           key={url || index}
         >
           {text && (
-            <div className={styles.imageScrollText}>
-              <ReactMarkdown children={text} />
-            </div>
+            <TextBlock
+              text={text}
+              hasRichText
+              className={styles.imageScrollText}
+            />
           )}
           <div className={styles.scrollImageContainer}>
             <ScrollImage

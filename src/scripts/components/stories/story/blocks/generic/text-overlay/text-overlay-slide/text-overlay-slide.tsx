@@ -5,8 +5,7 @@ import {
   ImageModuleSlide,
 } from "../../../../../../../types/story";
 
-import { TextContainer } from "../../text-container/text-container";
-import { TextBlock } from "../../text-container/text-block/text-block";
+import { TextWrapper } from "../../text-container/text-wrapper";
 
 interface Props {
   slide: ImageModuleSlide;
@@ -30,9 +29,11 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
 
   return (
     <>
-      <TextContainer index={0}>
-        <TextBlock text={slide.text} refProp={getRefCallback(0, index)} />
-      </TextContainer>
+      <TextWrapper
+        text={slide.text}
+        index={0}
+        refProp={getRefCallback(0, index)}
+      />
     </>
   );
 };

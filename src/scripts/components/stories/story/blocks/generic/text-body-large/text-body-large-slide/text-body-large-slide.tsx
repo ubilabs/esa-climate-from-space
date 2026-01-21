@@ -5,8 +5,7 @@ import {
   ImageModuleSlide,
 } from "../../../../../../../types/story";
 
-import { TextContainer } from "../../text-container/text-container";
-import { TextSection } from "../../text-container/text-section/text-section";
+import { TextWrapper } from "../../text-container/text-wrapper";
 
 interface Props {
   slide: ImageModuleSlide;
@@ -23,16 +22,19 @@ export const TextBodyLargeSlide: FunctionComponent<Props> = ({
 }) => {
   if (!slide.text) {
     console.warn(
-      `TextBodyLargeSlide: Slide for story ${storyId} has no text, skipping rendering.`,
+      `TextBodyLarge: Slide for story ${storyId} has no text, skipping rendering.`,
     );
     return null;
   }
 
   return (
     <>
-      <TextContainer index={0}>
-        <TextSection text={slide.text} refProp={getRefCallback(0, index)} />
-      </TextContainer>
+      <TextWrapper
+        text={slide.text}
+        hasRichText
+        index={0}
+        refProp={getRefCallback(0, index)}
+      />
     </>
   );
 };

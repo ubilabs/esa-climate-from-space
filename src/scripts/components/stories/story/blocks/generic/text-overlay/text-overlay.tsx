@@ -12,7 +12,7 @@ import cx from "classnames";
 import styles from "./text-overlay.module.css";
 
 /**
- * TextOverlay component responsible for rendering textual content.
+ * TextOverlay component responsible for rendering plain textual content.
  * Suitable for use within any content block (ImageGallery etc.).
  * Capable of generating one or multiple slides with options for no background, image background, or video background.
  *
