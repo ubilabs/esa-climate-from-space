@@ -1,0 +1,9 @@
+/* inhereits story grid class */
+.textWrapper {
+  color: var(--Neutral-White, #fff);
+  height: var(--story-height);
+  position: relative;
+  z-index: 1000;
+}
+
+

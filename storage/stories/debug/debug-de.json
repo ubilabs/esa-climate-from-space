@@ -101,6 +101,27 @@
           "alt": "Satelliten im Dienste der Moore. Diese hochauflösende Landbedeckungskarte, abgeleitet aus Copernicus Sentinel-2-Daten, zeigt das Ausmaß der Moore in Violett."
         }
       ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "## Eine Passage öffnet sich \n\nSeit Jahrhunderten verspricht die Nordwestpassage zwischen dem kanadischen Festland und seinen arktischen Inseln eine kürzere Seewegverbindung zwischen Europa und Asien. Doch die meiste Zeit erwies sie sich als undurchdringliche Barriere, fest eingeschlossen im Griff eines gefrorenen Meeres."
+        },
+        {
+          "text": "Das Packeis besiegte die Royal Navy im Jahr 1845, als die Expedition von Sir John Franklin verloren ging. Achtzehn Suchtrupps fanden in den folgenden dreißig Jahren keine Spur von ihm und seinen 130 Mannschaftsmitgliedern. Erst 1906 gelang es Roald Amundsen als erstem, eine Route durch die Nordwestpassage zu vollenden, nach einer dreijährigen Reise."
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "url": "assets/satellite.gif",
+      "focus": "right",
+      "slides": [
+        {
+          "text": "Danke für's Durchscrollen"
+        }
+      ]
     }
   ]
 }
