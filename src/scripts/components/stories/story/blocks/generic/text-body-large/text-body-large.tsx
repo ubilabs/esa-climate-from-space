@@ -11,10 +11,15 @@ import cx from "classnames";
 import styles from "./text-body-large.module.css";
 
 /**
- * TextBodyLarge component responsible for rendering text with multiple headlines,
- * sections, links and other markdown elements.
+ * TextBodyLarge is a React functional component that renders a large text body section
+ * within a story module. It supports multiple slides, each potentially containing headlines,
+ * sections, links, and other markdown elements. The component calculates the total number
+ * of slides and dynamically sets the container height to accommodate all slides.
+ *
+ * @component
+ * @param {StorySectionProps} props - The properties for the story section, injected via context.
+ * @returns {JSX.Element} The rendered text body large component.
  */
-
 const TextBodyLarge: FunctionComponent<StorySectionProps> = () => {
   const { module, storyId, getRefCallback } = useModuleContent();
   const { slides = [] } = module;

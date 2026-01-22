@@ -12,12 +12,21 @@ import cx from "classnames";
 import styles from "./text-overlay.module.css";
 
 /**
- * TextOverlay component responsible for rendering plain textual content.
- * Suitable for use within any content block (ImageGallery etc.).
- * Capable of generating one or multiple slides with options for no background, image background, or video background.
+ * TextOverlay component responsible for rendering plain textual content overlays.
  *
+ * This component can be used within any content block (such as ImageGallery, etc.).
+ * It supports generating one or multiple slides, with options for:
+ * - No background
+ * - Image background
+ * - Video background
+ *
+ * The component determines the type of asset (image or video) based on the file extension,
+ * and renders the appropriate HTML element. It also handles slide rendering and layout.
+ *
+ * @component
+ * @param {StorySectionProps} props - The props for the TextOverlay component, provided via context.
+ * @returns {JSX.Element} The rendered TextOverlay component.
  */
-
 const isVideo = (url: string | undefined) => {
   const videoExtensions = [
     ".mp4",
