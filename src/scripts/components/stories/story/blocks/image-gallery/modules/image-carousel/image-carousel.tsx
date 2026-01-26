@@ -10,6 +10,7 @@ import { motion, useAnimationControls } from "motion/react";
 import ReactMarkdown from "react-markdown";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 import { useScreenSize } from "../../../../../../../hooks/use-screen-size";
+import { useLenisToggle } from "../../../../../../../hooks/use-lenis-toggle";
 
 import config from "../../../../../../../config/main";
 
@@ -38,6 +39,9 @@ const ImageCarousel: FunctionComponent = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slideWidth, setSlideWidth] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isSlideTouched, setIsSlideTouched] = useState(false);
+
+  useLenisToggle(isSlideTouched);
 
   useLayoutEffect(() => {
     if (!slideRef.current) return;
@@ -109,6 +113,8 @@ const ImageCarousel: FunctionComponent = () => {
               <div
                 key={url || i}
                 ref={i === 0 ? slideRef : null}
+                onTouchStart={() => setIsSlideTouched(true)}
+                onTouchEnd={() => setIsSlideTouched(false)}
                 className={styles.slide}
               >
                 <ScrollImage
