@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
 import { useIntl } from "react-intl";
+import cx from "classnames";
 
 import { NextIcon } from "../../../../../../../main/icons/next-icon";
 import { PreviousIcon } from "../../../../../../../main/icons/previous-icon";
@@ -28,7 +29,7 @@ const CarouselNavigation: FunctionComponent<Props> = ({
           {slides.map((_, i) => (
             <button
               key={i}
-              className={`${styles.bullet} ${i === index ? styles.active : ""}`}
+              className={cx(styles.bullet, i === index && styles.active)}
               onClick={() => snapToIndex(i)}
               aria-label={intl.formatMessage(
                 { id: "slides.goTo" },
