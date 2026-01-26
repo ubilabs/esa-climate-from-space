@@ -51,17 +51,18 @@
   }
 }
 
-.caption {
+.text {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 24px 16px;
+  padding: 24px 0px;
   color: white;
   font-size: 14px;
   background: var(--neutral-esa-background);
   line-height: 1.4;
   gap: 4px;
+
+  @media screen and (--desktop-viewport) {
+    font-size: 16px;
+    padding: 24px;
+  }
 }

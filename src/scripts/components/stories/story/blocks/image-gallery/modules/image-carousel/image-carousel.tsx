@@ -105,7 +105,7 @@ const ImageCarousel: FunctionComponent = () => {
               snapToIndex(currentIndex + direction);
             }}
           >
-            {slides.map(({ url, altText, caption }, i) => (
+            {slides.map(({ url, altText, text }, i) => (
               <div
                 key={url || i}
                 ref={i === 0 ? slideRef : null}
@@ -119,10 +119,10 @@ const ImageCarousel: FunctionComponent = () => {
                     setIsFullscreen(isFullscreen)
                   }
                 />
-                {caption && !isFullscreen && (
-                  <div className={styles.caption}>
+                {text && !isFullscreen && (
+                  <div className={styles.text}>
                     <ReactMarkdown
-                      children={caption}
+                      children={text}
                       allowedElements={config.markdownAllowedElements}
                     />
                   </div>
