@@ -106,7 +106,7 @@ const ImageCarousel: FunctionComponent = () => {
             }}
           >
             {slides.map(({ url, altText, caption }, i) => (
-              <div key={i} ref={slideRef} className={styles.slide}>
+              <div key={url || i} ref={i === 0 ? slideRef : null} className={styles.slide}>
                 <ScrollImage
                   className={styles.image}
                   src={getStoryAssetUrl(storyId, url)}
