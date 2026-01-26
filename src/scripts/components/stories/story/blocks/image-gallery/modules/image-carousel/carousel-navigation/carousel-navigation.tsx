@@ -2,6 +2,9 @@ import { FunctionComponent } from "react";
 import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
 import { useIntl } from "react-intl";
 
+import { NextIcon } from "../../../../../../../main/icons/next-icon";
+import { PreviousIcon } from "../../../../../../../main/icons/previous-icon";
+
 import styles from "./carousel-navigation.module.css";
 
 interface Props {
@@ -42,7 +45,7 @@ const CarouselNavigation: FunctionComponent<Props> = ({
             disabled={index === 0}
             aria-label={intl.formatMessage({ id: "slides.previous" })}
           >
-            ‹
+            <PreviousIcon />
           </button>
           <span className={styles.counter}>
             {index + 1}/{slides.length}
@@ -53,7 +56,7 @@ const CarouselNavigation: FunctionComponent<Props> = ({
             disabled={index === slides.length - 1}
             aria-label={intl.formatMessage({ id: "slides.next" })}
           >
-            ›
+            <NextIcon />
           </button>
         </div>
       )}
