@@ -1,0 +1,154 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 24px;
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.slidesContainer {
+  position: relative;
+  width: 100%;
+}
+
+.track {
+  display: flex;
+  gap: 24px;
+  height: 100%;
+}
+
+.slide {
+  flex: 0 0 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  @media screen and (--desktop-viewport) {
+    flex: 0 0 60%;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  touch-action: pan-x;
+  z-index: 1;
+
+  @media screen and (--desktop-viewport) {
+    max-height: 544px;
+  }
+}
+
+.caption {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 16px;
+  color: white;
+  font-size: 14px;
+  background: rgba(6, 30, 40);
+  line-height: 1.4;
+  gap: 4px;
+}
+
+.navigation {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 15px 15px;
+}
+
+.navigation::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--dark-grey-5);
+    opacity: 0.5;
+    z-index: -1;
+    border-radius: 999px;
+}
+
+@media screen and (min-width: 769px) {
+  .navigation {
+    gap: 16px;
+    padding: 12px 16px;
+  }
+
+  .navButton {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--dark-blue);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    align-items: center;
+    padding-bottom: 4px;
+    transition: background 0.2s ease;
+  }
+  
+  .navButton:disabled {
+    cursor: initial;
+    background: var(--dark-grey-5);
+  }
+  
+  .counter {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    min-width: 40px;
+    text-align: center;
+  }
+}
+
+.bullet {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  margin: 5px 8px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.bullet.active {
+  width: 21px;
+  height: 21px;
+  margin: 0 3px;
+  background: transparent;
+  border: 3px solid #5eb3b3;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.bullet.active::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #5eb3b3;
+}

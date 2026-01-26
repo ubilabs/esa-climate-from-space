@@ -183,5 +183,8 @@
   "search.clear": "Suche löschen",
   "search.resultsCount": "{count, plural, =0 {Keine Ergebnisse} one {# Ergebnis} other {# Ergebnisse}} für {query}",
   "search.filtersLabel": "Suchfilter",
-  "search.resultsLabel": "Suchergebnisse"
+  "search.resultsLabel": "Suchergebnisse",
+  "slides.next": "Nächste Folie",
+  "slides.previous": "Vorherige Folie",
+  "slides.goTo": "Gehe zu Folie {number}"
 }
