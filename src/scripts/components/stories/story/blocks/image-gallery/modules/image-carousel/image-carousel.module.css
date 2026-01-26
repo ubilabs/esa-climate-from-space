@@ -61,7 +61,7 @@
   padding: 24px 16px;
   color: white;
   font-size: 14px;
-  background: rgba(6, 30, 40);
+  background: var(--neutral-esa-background);
   line-height: 1.4;
   gap: 4px;
 }

@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   border-radius: 999px;
-  padding: 15px 15px;
+  padding: 12px;
 }
 
 .navigation::before {
@@ -20,7 +20,6 @@
 @media screen and (min-width: 769px) {
   .navigation {
     gap: 12px;
-    padding: 12px
   }
 
   .navButton {
@@ -73,7 +72,7 @@
   height: 21px;
   margin: 0 3px;
   background: transparent;
-  border: 3px solid #5eb3b3;
+  border: 3px solid var(--main-esa-teal);
   box-sizing: border-box;
   position: relative;
 }
@@ -87,5 +86,5 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #5eb3b3;
+  background: var(--main-esa-teal);
 }
