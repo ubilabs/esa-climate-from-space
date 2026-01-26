@@ -7,7 +7,6 @@ import {
   useLayoutEffect,
 } from "react";
 import { motion, useAnimationControls } from "motion/react";
-import { useIntl } from "react-intl";
 import ReactMarkdown from "react-markdown";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 import { useScreenSize } from "../../../../../../../hooks/use-screen-size";
@@ -16,6 +15,7 @@ import config from "../../../../../../../config/main";
 
 import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
 import { ScrollImage } from "../image-scroll/image-scroll-image/image-scroll-image";
+import CarouselNavigation from "./carousel-navigation/carousel-navigation";
 
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 
@@ -33,10 +33,9 @@ const ImageCarousel: FunctionComponent = () => {
   } = useModuleContent();
   const { isMobile } = useScreenSize();
   const controls = useAnimationControls();
-  const intl = useIntl();
 
   const slideRef = useRef<HTMLDivElement>(null);
-  const [index, setIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [slideWidth, setSlideWidth] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -49,7 +48,7 @@ const ImageCarousel: FunctionComponent = () => {
 
   const updateXPostion = useEffectEvent(() => {
     controls.set({
-      x: !isFullscreen ? -index * step : 0,
+      x: !isFullscreen ? -currentIndex * step : 0,
     });
   });
 
@@ -67,7 +66,7 @@ const ImageCarousel: FunctionComponent = () => {
 
   const snapToIndex = (i: number) => {
     const clamped = Math.max(0, Math.min(slides.length - 1, i));
-    setIndex(clamped);
+    setCurrentIndex(clamped);
 
     controls.start({
       x: -clamped * step,
@@ -103,7 +102,7 @@ const ImageCarousel: FunctionComponent = () => {
                     ? -1
                     : 0;
 
-              snapToIndex(index + direction);
+              snapToIndex(currentIndex + direction);
             }}
           >
             {slides.map(({ url, altText, caption }, i) => (
@@ -130,45 +129,11 @@ const ImageCarousel: FunctionComponent = () => {
         </div>
 
         {!isFullscreen && (
-          <>
-            {isMobile ? (
-              <div className={styles.navigation}>
-                {slides.map((_, i) => (
-                  <button
-                    key={i}
-                    className={`${styles.bullet} ${i === index ? styles.active : ""}`}
-                    onClick={() => snapToIndex(i)}
-                    aria-label={intl.formatMessage(
-                      { id: "slides.goTo" },
-                      { number: i + 1 },
-                    )}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className={styles.navigation}>
-                <button
-                  className={styles.navButton}
-                  onClick={() => snapToIndex(index - 1)}
-                  disabled={index === 0}
-                  aria-label={intl.formatMessage({ id: "slides.previous" })}
-                >
-                  ‹
-                </button>
-                <span className={styles.counter}>
-                  {index + 1}/{slides.length}
-                </span>
-                <button
-                  className={styles.navButton}
-                  onClick={() => snapToIndex(index + 1)}
-                  disabled={index === slides.length - 1}
-                  aria-label={intl.formatMessage({ id: "slides.next" })}
-                >
-                  ›
-                </button>
-              </div>
-            )}
-          </>
+          <CarouselNavigation
+            index={currentIndex}
+            slides={slides}
+            snapToIndex={snapToIndex}
+          />
         )}
       </div>
     </SlideContainer>
