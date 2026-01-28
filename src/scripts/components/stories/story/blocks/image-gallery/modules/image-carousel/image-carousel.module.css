@@ -62,6 +62,7 @@
   gap: 4px;
 
   @media screen and (--desktop-viewport) {
+    margin-left: 100px;
     font-size: 16px;
     padding: 24px;
   }
