@@ -116,6 +116,11 @@ const ImageCarousel: FunctionComponent = () => {
                 onTouchStart={() => setIsSlideTouched(true)}
                 onTouchEnd={() => setIsSlideTouched(false)}
                 className={styles.slide}
+                // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                tabIndex={0}
+                onFocus={() => {
+                  if (i !== currentIndex) snapToIndex(i);
+                }}
               >
                 <ScrollImage
                   className={styles.image}
