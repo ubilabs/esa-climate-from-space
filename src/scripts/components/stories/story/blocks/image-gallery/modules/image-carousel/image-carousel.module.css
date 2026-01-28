@@ -47,7 +47,7 @@
   z-index: 1;
 
   @media screen and (--desktop-viewport) {
-    max-height: 544px;
+    max-height: 60vh;
   }
 }
 
