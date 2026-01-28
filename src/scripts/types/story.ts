@@ -6,6 +6,7 @@ import ImageCompare from "../components/stories/story/blocks/image-gallery/modul
 import ImageTime from "../components/stories/story/blocks/image-gallery/modules/image-time/image-time";
 import ImageScroll from "../components/stories/story/blocks/image-gallery/modules/image-scroll/image-scroll";
 import TextOverlay from "../components/stories/story/blocks/generic/text-overlay/text-overlay";
+import TextBodyLarge from "../components/stories/story/blocks/generic/text-body-large/text-body-large";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
 
 export interface Slide {
@@ -47,7 +48,8 @@ export type ImageGalleryModuleType =
   | "imageWavelength"
   | "imageCompare"
   | "imageTime"
-  | "imageScroll";
+  | "imageScroll"
+  | "textBodyLarge";
 
 export type ImageModule = {
   type: ImageGalleryModuleType;
@@ -86,6 +88,7 @@ export const imageGalleryModuleMap: Record<
   imageTime: ImageGallery.ImageTime,
   imageScroll: ImageGallery.ImageScroll,
   textOverlay: ImageGallery.TextOverlay,
+  textBodyLarge: ImageGallery.TextBodyLarge,
 };
 
 export const imageGalleryBlockComponentMap: Record<
@@ -97,4 +100,5 @@ export const imageGalleryBlockComponentMap: Record<
   imageTime: ImageTime,
   imageScroll: ImageScroll,
   textOverlay: TextOverlay,
+  textBodyLarge: TextBodyLarge,
 };

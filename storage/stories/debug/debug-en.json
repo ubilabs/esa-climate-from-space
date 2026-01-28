@@ -134,6 +134,17 @@
       ]
     },
     {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "## A Passage Opens \n\nFor centuries, the Northwest Passage between mainland Canada and its Arctic islands has held promise as a shorter sea route between Europe and Asia. But for most of this time it has proved an impenetrable barrier, locked fast in the grip of a frozen sea."
+        },
+        {
+          "text": "The pack ice defeated the Royal Navy in 1845 when Sir John Franklin’s expedition was lost. Eighteen search parties over the next thirty years failed to find any trace of him and his 130 crewmen. It wasn’t until 1906 that Roald Amundsen became the first to complete a route through the Northwest Passage, after a journey lasting three years."
+        }
+      ]
+    },
+    {
       "type": "textOverlay",
       "url": "assets/satellite.gif",
       "focus": "right",

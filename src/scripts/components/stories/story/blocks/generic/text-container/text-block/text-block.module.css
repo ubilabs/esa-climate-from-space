@@ -1,0 +1,65 @@
+.textBlock {
+    justify-content: center;
+    grid-column: 1/-1;
+    grid-row: 1/ -1;
+    display: flex;
+    flex-direction: column;
+
+    text-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 1px 3px rgba(0, 0, 0, 0.15);
+    font-family: NotesEsa;
+    font-style: normal;
+    font-weight: 400;
+
+    h1,
+    h2,
+    h3 {
+        font-weight: 700;
+        line-height: 1.25 /* 125% */
+    }
+
+    a {
+        color: var(--main-esa-teal);
+    }
+
+    @media screen and (--desktop-viewport) {
+      grid-column: 2 / -2;
+      text-shadow: 0 2px 1px rgba(0, 0, 0, 0.48);
+    }
+
+    .simpleText {
+        height: 100%;
+        text-align: center;
+        font-size: 28px;
+        line-height: 36px; /* 128.571% */
+
+        @media screen and (--desktop-viewport) {
+            font-size: 48px;
+            line-height: 60px; /* 125% */
+        }
+    }
+
+    .richText {
+        display: flex;
+        flex-direction: column;
+        font-size: 18px;
+        line-height: 150%; /* 27px */
+        gap: 16px;
+
+        @media screen and (--desktop-viewport) {
+            text-align: left;
+            font-size: 28px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-size: 28px;
+
+            @media screen and (--desktop-viewport) {
+                font-size: 42px;
+            }
+        }
+    }
+  }
