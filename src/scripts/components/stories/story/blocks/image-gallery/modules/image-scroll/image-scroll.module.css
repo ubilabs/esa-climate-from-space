@@ -85,6 +85,7 @@
     }
 
     p {
+      padding: 24px 0;
       font-weight: 400;
     }
 
@@ -106,6 +107,7 @@
       font-size: 1rem;
       line-height: 1.25rem; /* 125% */
       letter-spacing: 0.0125rem;
+      padding: 24px;
 
       > *:first-child {
         grid-column: 1 / 8;
