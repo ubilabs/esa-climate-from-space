@@ -11,6 +11,7 @@ import ReactMarkdown from "react-markdown";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 import { useScreenSize } from "../../../../../../../hooks/use-screen-size";
 import { useLenisToggle } from "../../../../../../../hooks/use-lenis-toggle";
+import cx from "classnames";
 
 import config from "../../../../../../../config/main";
 
@@ -22,7 +23,7 @@ import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls
 
 import styles from "./image-carousel.module.css";
 
-const GAP = 24;
+const PADDING = 24;
 const VELOCITY = 300;
 
 // Image carousel component for displaying a series of images with navigation controls
@@ -48,7 +49,7 @@ const ImageCarousel: FunctionComponent = () => {
     setSlideWidth(slideRef.current.offsetWidth);
   }, []);
 
-  const step = slideWidth + GAP;
+  const step = slideWidth + PADDING;
 
   const updateXPostion = useEffectEvent(() => {
     controls.set({
@@ -83,7 +84,10 @@ const ImageCarousel: FunctionComponent = () => {
   };
 
   return (
-    <SlideContainer ref={getRefCallback(0, 0)} className={styles.container}>
+    <SlideContainer
+      ref={getRefCallback(0, 0)}
+      className={cx(styles.container, !isMobile && "story-grid")}
+    >
       <div className={styles.wrapper}>
         <div className={styles.slidesContainer}>
           <motion.div
@@ -116,20 +120,17 @@ const ImageCarousel: FunctionComponent = () => {
                 onTouchStart={() => setIsSlideTouched(true)}
                 onTouchEnd={() => setIsSlideTouched(false)}
                 className={styles.slide}
-                // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-                tabIndex={0}
-                onFocus={() => {
-                  if (i !== currentIndex) snapToIndex(i);
-                }}
               >
-                <ScrollImage
-                  className={styles.image}
-                  src={getStoryAssetUrl(storyId, url)}
-                  alt={altText}
-                  onFullscreenToggle={(isFullscreen) =>
-                    setIsFullscreen(isFullscreen)
-                  }
-                />
+                <div className={styles.imageContainer}>
+                  <ScrollImage
+                    className={styles.image}
+                    src={getStoryAssetUrl(storyId, url)}
+                    alt={altText}
+                    onFullscreenToggle={(isFullscreen) =>
+                      setIsFullscreen(isFullscreen)
+                    }
+                  />
+                </div>
                 {text && !isFullscreen && (
                   <div className={styles.text}>
                     <ReactMarkdown
