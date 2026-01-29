@@ -222,7 +222,7 @@ export default {
     syncTouch: !isIos16orLower(), // keep DOM/IO in sync (disable on old iOS)
     smoothWheel: true,
     smoothTouch: true, // enable smoothing on touch
-    touchMultiplier: 2.5, // smaller per-swipe distance (was 6)
+    touchMultiplier: 5, // smaller per-swipe distance (was 6)
     // Extra touch-only gravity controls (available in newer Lenis versions):
     syncTouchLerp: 0.04, // lower => heavier/floatier tail
     touchInertiaExponent: 0.5, // higher => longer inertia feel
