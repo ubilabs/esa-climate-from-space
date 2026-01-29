@@ -12,7 +12,7 @@ import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 
 import { useStory } from "../../../../../providers/story/use-story";
 
-import { TextContainer } from "../generic/text-overlay/text-overlay-slide/text-overlay-slide";
+import { TextWrapper } from "../generic/text-container/text-wrapper";
 import { StorySectionProps } from "../../../../../types/story";
 
 import { SlideContainer } from "../../../layout/slide-container/slide-container";
@@ -106,14 +106,14 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
           style={{ opacity: overlayOpacity }}
         />
         <div className={styles.contentContainer}>
-          <TextContainer
+          <TextWrapper
             refProp={setScrollAnchorRefs("0-0-0")}
             text={titleMarkdown || ""}
             className={styles.storyIntro}
           />
           {slides.map((slide, i) => {
             return (
-              <TextContainer
+              <TextWrapper
                 refProp={setScrollAnchorRefs(`0-${i + 1}-0`)}
                 text={slide.text || ""}
                 key={`${i}-0`}

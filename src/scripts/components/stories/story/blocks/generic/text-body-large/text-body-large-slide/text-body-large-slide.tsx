@@ -14,7 +14,7 @@ interface Props {
   index: number;
 }
 
-export const TextOverlaySlide: FunctionComponent<Props> = ({
+export const TextBodyLargeSlide: FunctionComponent<Props> = ({
   index,
   slide,
   storyId,
@@ -22,14 +22,18 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
 }) => {
   if (!slide.text) {
     console.warn(
-      `TextOverlaySlide: Slide for story ${storyId} has no text, skipping rendering.`,
+      `TextBodyLarge: Slide for story ${storyId} has no text, skipping rendering.`,
     );
     return null;
   }
 
   return (
     <>
-      <TextWrapper text={slide.text} refProp={getRefCallback(0, index)} />
+      <TextWrapper
+        text={slide.text}
+        hasRichText
+        refProp={getRefCallback(0, index)}
+      />
     </>
   );
 };
