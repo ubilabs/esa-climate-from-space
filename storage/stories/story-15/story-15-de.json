@@ -1,187 +1,332 @@
 {
   "id": "story-15",
-  "slides": [
+  "splashscreen": {
+    "url": "assets/seaice.jpg",
+    "title": "Breaking the Ice",
+    "subtitle": "",
+    "location": {},
+    "slides": [
+      {
+        "text": "The polar regions are among the most sensitive to variations in global climate, with the Arctic in particular experiencing rapid change on both sea and land."
+      }
+    ]
+  },
+  "modules": [
     {
-      "type": "splashscreen",
-      "text": "# Das Eis bricht\r\n\r\nDie Polarregionen gehören zu den Gebieten, die am empfindlichsten auf Schwankungen des Weltklimas reagieren. Insbesondere die Arktis ist sowohl auf dem Meer als auch auf dem Land raschen Veränderungen unterworfen.",
-      "shortText": "# Das Eis bricht\r\n\r\nDie Polarregionen gehören zu den Gebieten, die am empfindlichsten auf Schwankungen des Weltklimas reagieren. Insbesondere die Arktis ist sowohl auf dem Meer als auch auf dem Land raschen Veränderungen unterworfen.",
-      "images": [
-        "assets/seaice.jpg"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Eine Passage öffnet sich\r\n\r\nSeit Jahrhunderten wird die Nordwestpassage zwischen dem kanadischen Festland und dem kanadisch-arktischen Archipel als möglicher kürzerer Seeweg zwischen Europa und Asien angesehen. Doch die meiste Zeit über war sie eine undurchdringliche Barriere, fest im Griff eines gefrorenen Meeres.\r\n \r\nDas Packeis wurde der Expedition von Sir John Franklin der Royal Navy 1845 zum Verhängnis. Achtzehn Suchtrupps konnten in den folgenden dreißig Jahren keine Spur von ihm und seinen 130 Besatzungsmitgliedern finden. Erst 1906 gelang es Roald Amundsen nach einer dreijährigen Reise als erstem, die Nordwestpassage zu durchqueren.\r\n\r\nEin Jahrhundert später hatten sich immer noch nur eine Handvoll Schiffe einen Weg durch die eisigen Gewässer gebahnt, einige mit Hilfe von Eisbrechern. Im Sommer 2007 zeigten dann Satellitenbilder, dass die gesamte Passage zum ersten Mal in der Geschichte weitgehend eisfrei war. Dies überraschte die Klimaforscher, deren Modelle voraussagten, dass die Passage noch einige Jahrzehnte vom Eis bedeckt bleiben würde. Heute kann man eine Kreuzfahrt durch die Nordwestpassage auf einem Schiff mit Hunderten von anderen Passagieren buchen.\r\n\r\nFranklins Schiffe, die HMS Erebus und die HMS Terror, wurden 2014 und 2016 bei Untersuchungen des kanadischen Meeresbodens gefunden, wodurch zumindest ein Teil des 170 Jahre alten Rätsels um das Verschwinden der Expedition gelöst werden konnte.",
-      "shortText": "## Eine Passage öffnet sich\r\n\r\nJahrhundertelang hat das Meereis die Nordwestpassage zwischen dem kanadischen Festland und dem kanadisch-arktischen Archipel blockiert:\r\n \r\n- Die von Sir John Franklin geleitete Expedition der Royal Navy blieb hier 1845 verschollen.\r\n- 18 Suchaktionen über 30 Jahre hinweg führten zu keiner Spur.\r\n- Roald Amundsen durchquerte die Passage 1906 als Erster.\r\n- Ein Jahrhundert später sind es noch immer nur eine Handvoll Durchquerungen.\r\n\r\nSommer 2007: Satellitenbilder zeigen zum ersten Mal, dass die gesamte Passage weitgehend eisfrei ist.\r\n\r\nHeute kann die Nordwestpassage auf einem Kreuzfahrtschiff durchfahren werden.\r\n\r\nDie gesunkenen Schiffe der Franklin Expedition wurden schließlich 2014 und 2016 durch Untersuchungen des Meeresbodens gefunden.",
-      "images": [
-        "assets/story15_01.jpg",
-        "assets/seaice_large_01.jpg",
-        "assets/seaice_large_12a.jpg",
-        "assets/story15_11.jpg"
-      ],
-      "imageCaptions": [
-        "HMS Terror vom Eis aufgeworfen in der gefrorenen Meerenge. Kupferstich nach einer Zeichnung von Kapitän George Back. (Nationalarchiv von Kanada)",
-        "Sommerliches Meereis in der kanadischen Arktis. Der schmale Kanal zwischen dem kanadischen Festland und seinen arktischen Inseln\r\nist normalerweise durch Meereis blockiert. In diesem Envisat MERIS-Bild vom 2. Juli 2007\r\nist der Lancaster Sound (unten in der Mitte) eisfrei, aber im Westen blockiert das Eis immer noch den\r\nParry-Kanal. (ESA)",
-        "Das Meereis ist in diesem Envisat ASAR-Mosaik des Arktischen Ozeans vom August 2008 blau dargestellt. Der südliche Arm der Nordwestpassage ist eisfrei. (ESA)",
-        "Die südliche Route durch die Nordwestpassage war im August 2016 nahezu eisfrei, wie dieses Bild des Wettersatelliten Suomi NPP zeigt (NASA)"
-      ],
-      "imageFits": [
-        "contain",
-        "cover",
-        "cover",
-        "cover",
-        "contain"
-      ]
-    },
-    {
-      "type": "image",
-      "text": "## Neue Handelsrouten\r\n\r\nDas arktische Meereis hat schneller an Masse verloren als vorhergesagt, und die Südroute der Nordwestpassage ist nun fast jedes Jahr befahrbar. Im Jahr 2008 passierte das erste Handelsschiff die Passage und 2013 brachte der erste Massengutfrachter Fracht von Vancouver nach Finnland. Im Jahr 2019 passierten 86 Frachtschiffe die Nordwestpassage.\r\n\r\nDas abnehmende Packeis macht auch die Nordküste Russlands für die Schifffahrt zugänglich – die Nordostpassage. Diese Route verkürzt die Fahrstrecke von Yokohama nach Hamburg um mehr als ein Drittel im Vergleich zur derzeit kürzesten Route durch den Suezkanal. Ein noch größeres Potenzial für Entfernungs-, Zeit- und Treibstoffeinsparungen besteht, wenn sich das Eis so weit zurückzieht, dass die Schifffahrt durch die Mitte des Arktischen Ozeans möglich wird – die transpolare Schifffahrtsroute.\r\n\r\nKürzere Schifffahrtsrouten bedeuten, dass weniger Treibstoff verbraucht und weniger Kohlenstoff in die Atmosphäre ausgestoßen wird, aber die Arktis wird eine lokale Zunahme von Schadstoffen erleben. Rußpartikel könnten das verbliebene Eis verdunkeln und so die Erwärmung verstärken, aber auch mehr Wolken kondensieren lassen, was einen kühlenden Effekt haben könnte.\r\n\r\nObwohl dies eine gute Nachricht für die Schifffahrts- und Tourismusbranche ist, ist der Rückzug der Eiskante eine deutliche Warnung, dass sich das Klima der Erde rasch in unbekannte Gewässer bewegt.",
-      "shortText": "## Neue Handelsrouten\r\n\r\n- Nordwestpassage ist jetzt fast jedes Jahr offen.\r\n- 2008: Erstes kommerzielles Schiff passiert die Passage.\r\n- 2013: Massengutfrachter brachte Fracht von Vancouver nach Finnland.\r\n- 2019: 86 Frachtschiffe durchquerten die Nordwestpassage.\r\n- Auch die Nordostpassage (russische Küste) öffnet sich.\r\n- Yokohama nach Hamburg über den Suez-Kanal: 11.430 Seemeilen\r\n- über NW-Passage: 8.000 Seemeilen, über NE-Passage: 7.200 Seemeilen\r\n- über die transpolare Schifffahrtsroute: 6.600 Seemeilen\r\n\r\nKürzere Routen → weniger Treibstoffverbrauch → weniger Kohlenstoffausstoß, aber lokale Verschmutzung:\r\n \r\n- Ruß könnte das Eis verdunkeln und damit die Erwärmung verstärken,\r\n- könnte aber auch dazu führen, dass mehr Wolken kondensieren, was einen kühlenden Effekt haben könnte.\r\n\r\nGute Nachrichten für die Schifffahrts- und Tourismusbranche, aber der rasche Rückgang der Eiskante ist eine deutliche Warnung, dass das Klima der Erde in unbekannte Gewässer abdriftet.",
-      "images": [
-        "assets/story15_02.jpg",
-        "assets/story15_03.jpg",
-        "assets/story15_04.png",
-        "assets/story15_12.jpg"
-      ],
-      "imageCaptions": [
-        "Das Envisat ASAR-Radarmosaik zeigt mögliche Schifffahrtsrouten durch die Nordwestpassage (gelb, links), die Nordostpassage (blau, rechts) und die transpolare Schifffahrtsroute (grün, Mitte) (ESA/Planetary Visions)",
-        "Eisbrecher, der ein Frachtschiff durch das Meereis im Arktischen Ozean eskortiert (Aker Arctic)",
-        "# Arktische Meereisausdehnung im August 1979–2023 \r\nDie sommerliche Eisausdehnung in der Arktis nimmt um 68.000 km² pro Jahr oder 8,9 % pro Jahrzehnt ab.  (EUMETSAT OSISAF-Daten, mit F&E-Input von ESA CCI)",
-        "Schiffsdurchfahrten im östlichen Teil der Nordwestpassage in den Jahren 2013 (grün) und 2019 (orange). Die Zahl stieg zwischen diesen Jahren von 112 auf 160 Schiffe. (Arctic Council)"
-      ],
-      "imageFits": [
-        "contain",
-        "cover",
-        "contain",
-        "contain",
-        "contain"
-      ]
-    },
-    {
-      "type": "globe",
-      "text": "## Saisonaler Zyklus\r\n\r\nDer Arktische Ozean ist durch die Meereisdecke und ihre jahreszeitlichen Schwankungen gekennzeichnet. Im Winter wächst das Packeis auf eine Fläche von 14 bis 16 Millionen Quadratkilometer an, die sich bis zum Ende des Sommers auf vier bis fünf Millionen Quadratkilometer reduziert. Diese Fläche, die im Laufe des Jahres entsteht und wieder verschwindet, entspricht der gesamten Fläche Europas.\r\n\r\nMit der Zeitleiste des interaktiven Globus auf der rechten Seite kann man die jährliche Ausdehnung und Schrumpfung der gefrorenen Meeresoberfläche sehen. Vergleichen Sie die jährlichen Mindesteisausdehnungen Mitte September für das erste Jahr und das letzte Jahr der Sequenz. Drehen Sie den Globus zur Antarktis, um das Meereis im Südpolarmeer zu sehen.\r\n\r\nDer Kern der Eisdecke besteht aus Schichten von gefrorenem Meerwasser, die das sommerliche Tauwetter überstanden haben. Dieses mehrjährige Eis erreicht in der Arktis eine Dicke von zwei bis vier Metern, während das Meereis im ersten Jahr in der Regel nur 1 bis 1,5 Meter dick ist.\r\n\r\n## Langfristiger Trend\r\n\r\nSatellitenbeobachtungen zeigen einen erheblichen Rückgang des arktischen Meereises in den letzten Jahrzehnten, wobei die geringsten Ausmaße im Jahr 2012 beobachtet wurden, gefolgt von 2007 und 2020. Seit der Einführung regelmäßiger Satellitenmessungen des Meereises im Jahr 1978 hat sich die sommerliche Meereisausdehnung des Arktischen Ozeans um fast 40 % verringert. Im Südpolarmeer nahm die mittlere Eisausdehnung um die Antarktis über den größten Teil dieses Zeitraums um 4–6 % zu, ist aber seit 2014 dreimal so schnell zurückgegangen wie in der Arktis. Global gesehen ist der Trend rückläufig und der Verlust beschleunigt sich.\r\n\r\nDie arktischen Küsten sind traditionell durch ganzjähriges Eis geschützt. Mit dem Rückgang des Meereises haben die Erosionsereignisse jedoch bereits zugenommen, und es wird erwartet, dass sie aufgrund der kombinierten Wirkung von zunehmender Wellenhöhe, Meeresspiegel, Sturmfluten und verstärktem Permafrostabbau weiter zunehmen werden. Diese kombinierten Auswirkungen werden sich zunehmend auf die Ökosysteme und die Bevölkerung in den niedrig gelegenen Küstengebieten der Arktis auswirken.",
-      "shortText": "## Saisonaler Zyklus\r\n\r\nSaisonale Schwankungen der Meereisbedeckung im Arktischen Ozean:\r\n\r\n- Packeisfläche im Winter 14–16 Mio. km²\r\n- Schrumpft bis zum Ende des Sommers auf 4–5 Mio. km²\r\n- Eine Fläche von der Größe Europas entsteht/verschwindet im Laufe des Jahres.\r\n\r\nDen Kern der Eisdecke bilden Schichten aus gefrorenem Meerwasser, die das sommerliche Tauwetter überstanden haben:\r\n \r\n- Mehrjähriges Eis von 2 bis 4 Metern Dicke in der Arktis\r\n- Das einjährige Eis erreicht in der Regel nur 1 bis 1,5 Meter\r\n\r\nSatellitenbeobachtungen zeigen einen erheblichen Rückgang an arktischem Meereis in den letzten Jahrzehnten:\r\n\r\n- Die geringsten Ausdehnungen wurden 2012, 2007 und 2020 beobachtet.\r\n- Seit 1978 ist die arktische Sommereisausdehnung um fast 40 % zurückgegangen.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
-      "flyTo": {
-        "position": {
-          "longitude": -3.42,
-          "latitude": 89.99,
-          "height": 24925805.95
-        },
-        "orientation": {
-          "heading": 360,
-          "pitch": -90,
-          "roll": 0
-        }
-      },
-      "layer": [
+      "type": "textBodyLarge",
+      "slides": [
         {
-          "id": "sea_ice.ice_conc",
-          "timestamp": "2012-09-09T12:00:00.000Z"
+          "text": "## A Passage Opens \n\nFor centuries, the Northwest Passage between mainland Canada and its Arctic islands has held promise as a shorter sea route between Europe and Asia. But for most of this time it has proved an impenetrable barrier, locked fast in the grip of a frozen sea."
         }
-      ],
-      "layerDescription": "# CCI Meereiskonzentration"
-    },
-    {
-      "type": "image",
-      "text": "## Gefangen in der Mitte\r\n\r\nDer Ozean und die Atmosphäre sind die beiden großen [Wärmepumpen](stories/story-16/0) des Klimas. Das Meereis bildet sich dort, wo beide aufeinandertreffen. Es hat einen komplexen Einfluss auf den Energieaustausch zwischen beiden. Meereis isoliert das Meer. Es verringert den Wärmeverlust an die Atmosphäre und es bildet eine Barriere für den Austausch von Gasen und Bewegungen an der Wasseroberfläche. Helles Eis reflektiert aber auch das Sonnenlicht, das vom dunklen Meerwasser absorbiert werden würde. Dadurch bleibt das Meer kühler. In einem sich erwärmenden Klima unterliegt das Meereis also einer positiven Rückkopplung: Schmelzendes Eis legt dunkleres Meerwasser frei, das sich erwärmt, was zu weiterem Schmelzen führt.\r\n\r\nDies ist Teil eines Prozesses, der als Arktische Verstärkung bezeichnet wird. Zusätzlich wird durch die Erwärmung der Atmosphäre und der Ozeane mehr Wärme zu den Polen transportiert. Dies macht die Arktis zu einer der Regionen, die am empfindlichsten auf Schwankungen des globalen Klimas reagieren, und es macht die Arktis zu dem Ort, für den die meisten Klimamodelle die stärkste Erwärmung vorhersagen. Der beobachtete Temperaturanstieg in der Arktis war 2 bis 3 Mal so hoch wie der globale Durchschnitt.\r\n\r\n## Klimaregulator\r\nDas Meereis hat einen großen Einfluss auf die globale Ozeanzirkulation. Wenn das Meerwasser im Winter gefriert, bleibt Salz zurück, das den Salzgehalt und damit die Dichte des umgebenden Wassers erhöht. Das Wasser sinkt ab. Dieser Prozess ist eine der Hauptantriebskräfte für die globale vertikale Ozeanzirkulation (die [thermohaline Zirkulation](stories/story-16/5)), die zur Verteilung der Energie auf dem Planeten beiträgt.\r\n\r\nSchmelzendes Meereis führt dem arktischen Ozean im Sommer zusätzlich zu den großen Flüssen aus Sibirien und Nordamerika Süßwasser zu. Dadurch ist der arktische Ozean viel weniger salzig als der Atlantik und Pazifik. Die Ozeanzirkulation wird teilweise durch Temperatur- und Salzgehaltsunterschiede im Wasser angetrieben. Eine Veränderung im Zyklus des Gefrierens und Schmelzens des Meereises kann Meeresströmungen und Wettersysteme weit entfernt von der Arktis beeinflussen.",
-      "shortText": "## Gefangen in der Mitte\r\n\r\nDas Meereis entsteht dort, wo Ozean und Atmosphäre aufeinandertreffen:\r\n\r\n- Es isoliert das Meer und verringert den Wärmeverlust an die Atmosphäre.\r\n- Es verhindert den Austausch von Gasen und Bewegungen.\r\n- Es reflektiert das Sonnenlicht, das das dunkle Meerwasser absorbieren würde. Dadurch bleibt das Meer kühler.\r\n\r\nDas Meereis unterliegt einer positiven Rückkopplung:\r\n\r\n- Schmelzendes Eis legt dunkles Meerwasser frei, das sich erwärmt, was zu weiterem Schmelzen führt.\r\n- Sowohl die Atmosphäre als auch der Ozean transportieren mehr Wärme zu den Polen, wenn sie sich erwärmen.\r\n- Die Arktis ist besonders empfindlich für den Klimawandel.\r\n- Der Temperaturanstieg in der Arktis ist 2–3-mal so hoch wie der globale Durchschnitt.\r\n\r\nDas Meereis hat einen großen Einfluss auf die globale Ozeanzirkulation und beeinflusst Meeresströmungen und Wettersysteme weit entfernt von der Arktis.",
-      "images": [
-        "assets/seaice_large_05.jpg",
-        "assets/seaice_large_13.jpg",
-        "assets/story15_06.jpg",
-        "assets/story15_07.jpg",
-        "assets/story15_05.png"
-      ],
-      "imageCaptions": [
-        "Junges arktisches Meereis von einem Flugzeug aus gesehen. Meereis, das dünner als 50 cm ist, ist besonders wichtig für das Wetter und das Klima, da es den Austausch von Wärme und Wasser zwischen dem Ozean und der Atmosphäre steuert. (S Hendriks/AWI)",
-        "Presseisrücken im dicken arktischen Meereis, der durch das Zusammentreffen zweier Eisschollen entsteht. (Seymour Laxon/CPOM/UCL)",
-        "Meereis in der Resolute Bay, Kanada, von Sentinel-2. (Modifizierte Copernicus Sentinel-Daten (2019), bearbeitet von Pierre Markuse)",
-        "Schmelzendes Meereis wirbelt vor der Ostküste Grönlands\r\nauf diesem Sentinel-2-Bild vom 20. April 2020 (enthält modifizierte Copernicus-Sentinel-Daten (2020))",
-        "Das Schmelzen des Meereises verändert die Energiebilanz im Arktischen Ozean dramatisch. Eis reflektiert etwa 90 % der einfallenden Sonnenstrahlung, während offenes Wasser etwa 94 % absorbiert."
-      ],
-      "imageFits": [
-        "cover",
-        "cover",
-        "cover",
-        "cover",
-        "contain"
       ]
     },
     {
-      "type": "image",
-      "text": "## Leben an der Front\r\n\r\nDie Bewohner der arktischen Region leben an vorderster Front des Klimawandels. Da ihre traditionellen Jagd- und Reisewege unterbrochen werden, müssen sie ihre Lebensweise an die rasche Erwärmung anpassen. Das Meereis, das für die europäischen Entdecker ein Hindernis darstellte, ist für die Grönländer eine lebenswichtige Verbindung zu den Nahrungsquellen und zwischen den Küstengemeinden. Gewässer, die für Kreuzfahrtschiffe leichter zu befahren sind, werden immer unzugänglicher für Hundeschlitten und Schneemobile.\r\n\r\nVon Alaska bis Sibirien werden moderne Infrastrukturen wie Straßen, Gebäude und Ölpipelines instabil, wenn der gefrorene Boden auf dem sie gebaut sind – der Permafrostboden –, auftaut. Dabei werden auch Kohlendioxid und das noch stärkere [Treibhausgas](stories/story-12/1) Methan aus dem ehemals gefrorenen Boden freigesetzt. Auch auf dem breiten Kontinentalschelf des Arktischen Ozeans sind riesige Mengen Methan in Form von gefrorenen Methanhydraten eingeschlossen, von denen Teile ebenfalls auftauen könnten, wenn die Temperatur ansteigt.\r\n\r\nDas Schmelzwasser des grönländischen Eisschilds hat seit 1992 11 mm zum Anstieg des Meeresspiegels beigetragen. Das entspricht den schlimmsten Prognosen für die Klimaerwärmung. Da es sich um Süßwasser handelt, stört es zusätzlich den Salzhaushalt des Arktischen Ozeans und der umliegenden Meere. Auch auf Inseln wie Sewernaja Semlja hat der Gletscherfluss mit der Erwärmung des umgebenden Ozeans zugenommen. Eisschilde, Gletscher, Permafrostböden und der Salzgehalt der Ozeane gelten ebenso wie das Meereis als \"wesentliche Klimavariablen\", die wir überwachen müssen, um zu verstehen, wie sich das Klima verändert.",
-      "shortText": "## Leben an der Front\r\n\r\nWas für Kreuzfahrtschiffe einfacher ist, wird für Schlittenhunde und Schneemobile schwieriger:\r\n\r\n- Traditionelle Jagd- und Reisewege werden unterbrochen.\r\n- Verbindungen zu Nahrungsquellen und zwischen Gemeinschaften werden unterbrochen.\r\n\r\nVon Alaska bis Sibirien taut der Permafrostboden auf:\r\n\r\n- Gebäude, Straßen und Pipelines werden instabil.\r\n- Kohlendioxid und Methan werden aus dem Boden freigesetzt.\r\n- Methanhydrate auf dem Meeresboden könnten ebenfalls auftauen.\r\n\r\nSchmelzwasser vom grönländischen Eisschild:\r\n- hat seit 1992 11 mm zum Anstieg des Meeresspiegels beigetragen,\r\n- folgt den schlimmsten Vorhersagen der Klimaerwärmung,\r\n- stört den Salzhaushalt der umliegenden Meere.\r\n\r\nEisschilde, Gletscher, Permafrostböden, Salzgehalt der Ozeane und Meereis sind allesamt \"wesentliche Klimavariablen\".",
-      "images": [
-        "assets/icesheet_large_16.jpg",
-        "assets/story15_13.jpg",
-        "assets/story15_14.jpg",
-        "assets/icesheet_large_01.jpg",
-        "assets/story15_08.jpg"
-      ],
-      "imageCaptions": [
-        "Nuuk, die Hauptstadt von Grönland. Die Grönländer müssen sich an die Klimaerwärmung anpassen. Das schmelzende Meereis verkürzt nicht nur die Jagdsaison, sondern erschwert auch das Erreichen benachbarter Gemeinden mit Hundeschlitten oder Schneemobilen. (Oliver Schauf)",
-        "# Anomalie der Lufttemperatur über Grönland \r\nLufttemperatur für Grönland im August 2019–2021 im Vergleich zum Durchschnitt der vorangegangenen 30 Jahre. Die Hitzewelle von 2021 brachte die ersten aufgezeichneten Niederschläge im Inland von Grönland, wo normalerweise Schnee fällt. (ERA5-Daten von Copernicus Climate Change Service/ECMWF/ESA)",
-        "Die Hitzewelle in Grönland im Jahr 2021 führte zu einem raschen Schmelzen von Schnee und Eis, wodurch ausgedehnte Schmelzwasserströme und tiefere, dunklere Seen auf der Oberfläche des Eisschildes entstanden. Sentinel-2-Bild vom 20. August 2021 (enthält modifizierte Copernicus-Sentinel-Daten (2021), verarbeitet von der ESA)",
-        "Oberflächenschmelzwasser läuft über den Leverett Gletscher, etwa 50 km\r\nvom westlichen Rand des grönländischen Eisschildes, am 19. August 2009.\r\n(Andrew Sole, Universität von Sheffield)",
-        "# CCI Permafrost-Ausmaß\r\n \r\nPermafrost der nördlichen Hemisphäre 2003–2017 (ESA-CCI)"
-      ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "cover",
-        "cover",
-        "contain"
+      "type": "imageScroll",
+      "slides": [
+        {
+          "text": "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
+          "caption": "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
+          "url": "assets/story15_01.jpg",
+          "altText": "some alt text"
+        }
       ]
     },
     {
-      "type": "image",
-      "text": "## Sehen im Dunkeln\r\n\r\nSatelliten verschaffen uns einen einzigartigen Überblick über die Polarregionen. Sie ermöglichen Messungen, die in der unwirtlichen Umgebung dieser weiten und abgelegenen Gebiete bisher nicht möglich waren. Herkömmliche Kameras, die mit sichtbarem Licht arbeiten, können jedoch nur tagsüber und bei wolkenlosem Himmel eingesetzt werden. In Polarregionen mit schlechtem Wetter und langen Perioden winterlicher Dunkelheit stellt das ein Problem dar. Mikrowellen, die durch die Wolkendecke dringen und nicht auf die Sonne als Quelle angewiesen sind, sind hier besser geeignet.\r\n\r\nMikrowellen werden von der Erdoberfläche abgestrahlt und können von passiven Sensoren auf Satelliten empfangen werden. Sie können aber auch von einem Satellitenradar erzeugt und ausgesendet werden, um so die Erdoberfläche zu beleuchten. Die Europäische Weltraumorganisation hat in eine Reihe von Radarsatelliten investiert, die es ermöglichen, Oberflächeneigenschaften durch die Analyse des reflektierten Mikrowellenstrahls zu untersuchen.\r\n\r\nEines der längsten Satellitendatenarchive der Welt, umfasst passive Mikrowellenbeobachtungen des Meereises und reicht bis ins Jahr 1978 zurück. Das [CCI Meereis-Team](stories/story-32/3) nutzt diese Daten und arbeitet zusammen mit der europäischen Wettersatellitenorganisation EUMETSAT an der Erstellung täglicher Karten der Meereiskonzentration an beiden Polen. Sie forschen auch an moderneren Instrumenten, um die Datenreihen weiterzuführen. Doch die Ausdehnung des Eises ist nur die halbe Miete – Klimamodellierer wollen auch das Volumen des vorhandenen Eises kennen.",
-      "shortText": "## Sehen im Dunkeln\r\n\r\n- Polare Regionen mit schlechtem Wetter\r\n- Lange Perioden der winterlichen Dunkelheit\r\n- In Abwesenheit von sichtbarem Licht sind Mikrowellen besser geeignet\r\n- Die durchdringen Wolken und benötigen keine Sonne\r\n- Von der Erdoberfläche abgestrahlte Mikrowellen werden von passiven Sensoren empfangen.\r\n- Die Oberfläche kann auch mit Mikrowellen eines Satellitenradars beleuchtet werden.\r\n- Die ESA hat in eine Reihe von Radarsatelliten investiert.\r\n\r\nDas CCI-Meereis-Team der ESA arbeitet mit:\r\n\r\n- passiven Mikrowellenbeobachtungen, die bis ins Jahr 1978 zurückreichen,\r\n- einem der längsten Satellitendatenarchive der Welt,\r\n- der europäischen Wettersatellitenorganisation EUMETSAT zusammen,\r\n- um tägliche Karten der Meereiskonzentration an beiden Polen zu erstellen.",
-      "images": [
-        "assets/seaice_large_04.jpg",
-        "assets/seaice_large_14.jpg",
-        "assets/story15-image18.jpg",
-        "assets/story15-image19.jpg",
-        "assets/icesheet_large_17.jpg"
-      ],
-      "imageCaptions": [
-        "Der Rand des Packeises, aufgenommen mit dem Enhanced Thematic Mapper auf Landsat 7, mit dünnerem, jüngerem Eis im unteren Teil des Bildes. (USGS/ESA)",
-        "Mikrowellenhelligkeit des Arktischen Ozeans am 1. März 2003, gemessen bei einer Frequenz von 89 GHz durch das AMSR-E Instrument auf dem Aqua-Satelliten der NASA. (A Ivanoff, NASA-GSFC)",
-        "Das Meereis um die Antarktis war im Februar 2023 besonders niedrig. Diese Karte zeigt die mittlere Meereiskonzentration für den Monat, verglichen mit der von Satelliten gemessenen mittleren Ausdehnung zwischen 1981 und 2010, dargestellt durch eine rote Linie. (ESA / Daten: NSIDC)",
-        "Kalbungsfronten auf der Antarktischen Halbinsel von den 1960er Jahren bis 2019, in denen die meisten der Schelfe von Larsen A und B verloren gegangen sind. (ESA / Daten: Cook und Vaughan, 2010; Andreasen et al., 2023; LIMA-Projekt)",
-        "Künstlerische Darstellung von CryoSat 2, der Eismission der ESA, über der antarktischen Halbinsel. Der Satellit ist mit einem Radar-Höhenmesser ausgestattet, der Eisschilde, Meeresspiegel und Meereis untersucht. (ESA/NASA/Planetary Visions)"
-      ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "The pack ice defeated the Royal Navy in 1845 when Sir John Franklin’s expedition was lost. Eighteen search parties over the next thirty years failed to find any trace of him and his 130 crewmen. It wasn’t until 1906 that Roald Amundsen became the first to complete a route through the Northwest Passage, after a journey lasting three years."
+        }
       ]
     },
     {
-      "type": "video",
-      "text": "## Die dritte Dimension\r\n\r\nUm das Volumen des Meereises zu messen, ist auch seine Dicke erforderlich. Mit radarbasierten Höhenmessgeräten (Radaraltimetrie) wird die Höhe des Eises über der Meeresoberfläche sehr genau gemessen. Daraus lässt sich seine Dicke ableiten. Das CCI-Meereisteam hat monatliche Meereisdickenkarten erstellt, die auf Radaraltimeterdaten der ESA-Mission Envisat aus den Jahren 2002 bis 2012 und des 2010 in Betrieb genommenen CryoSat basieren. Das CCI-Eisschildteam nutzt diese Satellitenaltimeter auch zur Messung der Dicke des grönländischen und des antarktischen Eisschilds.\r\n \r\nDie Ermittlung der Meereisdicke mit Hilfe der Altimetrie funktioniert nur in den Wintermonaten und nur bei relativ dickem Eis. Das Team forscht aber auch an der Nutzung von Daten des ESA-Satelliten SMOS (Soil Moisture and Ocean Salinity), um die Dicke von dünnem Eis zu messen, sowie an neuen Möglichkeiten, die zukünftige ESA-Satelliten wie CRISTAL und CIMR bieten.\r\n\r\nDer beobachtete Rückgang des arktischen Meereises hängt direkt mit den kumulativen Kohlendioxidemissionen der Menschheit zusammen: Für jede Tonne Kohlendioxid, die wir der Atmosphäre zuführen, gehen im September 3 Quadratmeter Eis verloren. Das entspricht etwa dem Ausstoß pro Passagier auf einem einzigen Transatlantikflug. [Klimamodelle](stories/story-31/0), die die CCI-Daten als Input verwenden, zeigen, dass bei den derzeitigen Emissionsraten der Arktische Ozean im Sommer vor 2050 wahrscheinlich weitgehend eisfrei sein wird.",
-      "shortText": "## Die dritte Dimension\r\n\r\nUm das Volumen des Meereises zu messen, ist auch die Dicke erforderlich:\r\n\r\n- Radaraltimeter messen die Höhe des Eises über der Meeresoberfläche\r\n- Monatliche Eisdickenkarten von Envisat und CryoSat\r\n- Wird auch zur Messung der Dicke der kontinentalen Eisschilde auf Grönland und in der Antarktis verwendet\r\n\r\nDer arktische Meereisverlust folgt direkt den kumulativen CO2-Emissionen:\r\n \r\n- 3 Quadratmeter Eisverlust im September für jede Tonne CO2, die der Atmosphäre zugeführt wird\r\n- Das entspricht in etwa dem Ausstoß eines Passagiers auf einem Transatlantikflug\r\n\r\nBei den derzeitigen Emissionsraten wird der Arktische Ozean im Sommer vor 2050 weitgehend eisfrei sein.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
-      "videoId": "9einyMSOmHE",
-      "videoCaptions": "assets/seaicethickness.vtt",
-      "videoPoster": "assets/seaicethickness.jpg",
-      "videoSrc": [
-        "assets/seaicethickness-web.mp4"
+      "type": "imageCarousel",
+      "slides": [
+        {
+          "text": "Summer sea ice in the Canadian Arctic. The narrow channel between mainland Canada and its Arctic islands is usually blocked by sea ice. In this Envisat MERIS image from 2nd July 2007 Lancaster Sound (lower centre) is ice-free, but to the west ice still blocks Parry Channel. (ESA)",
+          "url": "assets/seaice_large_01.jpg",
+          "focus": "right",
+          "altText": "some alt text"
+        },
+        {
+          "text": "Sea ice is shown in blue in this Envisat ASAR mosaic of the Arctic Ocean from August 2008. The southerly branch of the Northwest Passage is ice-free. (ESA)",
+          "url": "assets/seaice_large_12a.jpg",
+          "focus": "right"
+        },
+        {
+          "text": "The southern route through the Northwest Passage was nearly ice-free in August 2016, as shown by this image from the Suomi NPP weather satellite (NASA)",
+          "url": "assets/story15_11.jpg",
+          "focus": "right"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "A century later, still only a handful of voyages had picked their way through the icy waters, some with the aid of icebreakers. Then in the summer of 2007, satellite images showed, for the first time on record, the entire Passage to be largely ice-free. This surprised climate scientists, whose models predicted it would remain ice-bound for some decades to come. Today, you can book a cruise through the Northwest Passage on a liner with hundreds of other  passengers.\n\nFranklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance."
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "The loss of Arctic sea ice has been faster than was predicted, with the southern route of the Northwest Passage now navigable almost every year. In 2008, the first commercial ship passed through and in 2013 the first bulk carrier took cargo from Vancouver to Finland. 86 cargo ships passed through the Northwest Passage in 2019."
+        }
+      ]
+    },
+    {
+      "type": "imageScroll",
+      "slides": [
+        {
+          "text": "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
+          "caption": "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
+          "url": "assets/story15_02.jpg",
+          "focus": "left"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "The shrinking icepack is also opening up to shipping the northern coast of Russia – the Northeast Passage. This route shaves more than one third off the sailing distance from Yokohama to Hamburg, compared with the current shortest route through the Suez Canal. There is even greater potential for savings in distance, time and fuel if the ice recedes enough for navigation across the centre of the Arctic Ocean – the Transpolar Sea Route."
+        },
+        {
+          "text": "Shorter shipping routes will mean less fuel is burned, and less carbon pumped into the atmosphere, but the Arctic will see a local increase in pollutants. Soot particles could darken the remaining ice, adding to the warming, but could also cause more clouds to condense, which might have a cooling effect.\n\nAlthough good news for the shipping and tourism industries, the retreat of the ice edge is a stark warning that the Earth’s climate is rapidly heading into uncharted waters."
+        }
+      ]
+    },
+    {
+      "type": "imageCarousel",
+      "slides": [
+        {
+          "text": "Icebreaker escorting a cargo vessel through sea ice in the Arctic Ocean (Aker Arctic)",
+          "url": "assets/story15_03.jpg",
+          "focus": "centre"
+        },
+        {
+          "text": "Ship tracks in the eastern part of the Northwest Passage in 2013 (green) and 2019 (orange). Traffic increased from 112 to 160 ships between these years. (Arctic Council)",
+          "url": "assets/story15_12.jpg",
+          "focus": "right"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "The Arctic Ocean is characterised by the sea ice cover and its seasonal fluctuations. During winter, the ice pack grows to an area between 14 and 16 million square kilometres, reducing to four to five million square kilometres by the end of summer. That’s an area equivalent to the entire surface of Europe appearing and disappearing through the year."
+        }
+      ]
+    },
+    {
+      "type": "imageScroll",
+      "slides": [
+        {
+          "text": "# CCI Sea Ice Concentration",
+          "caption": "# CCI Sea Ice Concentration",
+          "url": "assets/story15_03.jpg",
+          "focus": "right"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "You can see the annual expansion and contraction of the frozen sea surface by scrubbing through the timeline of the interactive globe. Compare the annual minimum ice extents in mid-September for the first year and the final year of the sequence. Spin the globe round to Antarctica to see the sea ice in the Southern Ocean.\n\nThe core of the ice cover is formed of layers of frozen seawater that have survived the summer thaw. This multi-year ice reaches a thickness of two to four metres in the Arctic, whereas first-year sea ice typically reaches only 1 – 1.5 metres."
+        }
+      ]
+    },
+    {
+      "type": "imageCarousel",
+      "slides": [
+        {
+          "text": "Young Arctic sea ice viewed from an aircraft. Sea ice thinner than 50 cm is particularly important for weather and climate as it controls the exchange of heat and water between the ocean and atmosphere. (S Hendriks/AWI)",
+          "url": "assets/seaice_large_05.jpg"
+        },
+        {
+          "text": "Pressure ridge in thick Arctic sea ice, formed as two ice floes converge. (Seymour Laxon/CPOM/UCL)",
+          "url": "assets/seaice_large_13.jpg"
+        },
+        {
+          "text": "Sea ice in Resolute Bay, Canada, from Sentinel-2. (Modified Copernicus Sentinel data (2019), processed by Pierre Markuse)",
+          "url": "assets/story15_06.jpg"
+        },
+        {
+          "text": "Melting sea ice swirls off the east coast of Greenland \nin this Sentinel-2 image taken on 20 April, 2020 (contains modified Copernicus Sentinel data (2020))",
+          "url": "assets/story15_07.jpg"
+        }
+      ]
+    },
+    {
+      "type": "imageScroll",
+      "slides": [
+        {
+          "text": "# Arctic Sea Ice Extent in August 1979-2023 \nSummer ice extent in the Arctic is down 68,000 sq km per year, or 8.9% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)",
+          "caption": "# Arctic Sea Ice Extent in August 1979-2023 \nSummer ice extent in the Arctic is down 68,000 sq km per year, or 8.9% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)",
+          "url": "assets/story15_04.png"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "Satellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2020. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.\n\nArctic coastlines have traditionally been protected by year-round ice. However, with sea-ice in retreat, erosion events have already increased and are anticipated to rise further owing to the combined action of increasing wave height, sea level, storm surges and intensifying permafrost degradation. These combined effects are set to have an increasing impact on ecosystems and communities in low-lying coastal areas of the Arctic."
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "The ocean and the atmosphere are the climate’s two great [heat pumps](stories/story-16/0), and sea ice forms where they meet. It has a complex influence on the energy exchanges between them. Sea ice insulates the sea, reducing heat loss to the atmosphere and providing a barrier to the exchange of gases and motion. But bright ice also reflects sunlight that would be absorbed by dark ocean water, keeping the sea cooler than it would otherwise be. So, in a warming climate sea ice is subject to a positive feedback: melting ice exposes darker ocean water, which warms up, leading to further melting."
+        }
+      ]
+    },
+    {
+      "type": "imageScroll",
+      "slides": [
+        {
+          "text": "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%.",
+          "caption": "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%.",
+          "url": "assets/story15_05.png"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "This is part of a process called the Arctic amplification. More heat is also being transported to the poles by both the atmosphere and the ocean as they warm up. This makes the Arctic one of the most sensitive regions to variations in global climate, and the place where most climate models predict the greatest warming.  Observed temperature rise in the Arctic has been 2-3 times the global average. \n\n## Climate Regulator\nSea ice has an important influence on the global ocean circulation. When seawater freezes in the winter, it leaves salt behind, increasing the salinity and therefore the density of the surrounding water, causing it to sink. This process is one of the main drivers behind the ocean’s global vertical circulation (the [thermohaline circulation](stories/story-16/5)), which helps distribute energy around the planet. \n\nWhen the sea ice melts in the summer, it produces an influx of fresh water, adding to that from large rivers running in from Siberia and North America. This makes the Arctic Ocean much fresher than the salty Atlantic and Pacific. Ocean circulation is partly driven by temperature and salinity differences in the water, so changes to the cycle of sea ice freezing and melting can affect ocean currents and weather systems far from the Arctic."
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "The inhabitants of the Arctic region are living on the climate change front line. As traditional ways of hunting and travel are being disrupted, they have to adjust their lifestyles to the rapid warming. The sea ice that was such a barrier to European explorers provides a vital link for Greenlanders, both to food sources and between coastal communities. Waters that are becoming easier for a cruise ship to navigate are becoming more difficult for dogsled and snowmobile."
+        }
+      ]
+    },
+    {
+      "type": "imageScroll",
+      "slides": [
+        {
+          "text": "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
+          "caption": "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
+          "url": "assets/icesheet_large_16.jpg"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "From Alaska to Siberia, modern infrastructure such as roads, buildings and oil pipelines are undermined as the frozen ground – permafrost – on which they are built thaws out. This also releases carbon dioxide and the more powerful [greenhouse gas](stories/story-12/1) methane from the previously-frozen soil. Vast quantities of methane also lie trapped as frozen methane hydrates on the Arctic Ocean’s broad continental shelf, parts of which could also thaw as the temperature rises."
+        }
+      ]
+    },
+    {
+      "type": "imageCarousel",
+      "slides": [
+        {
+          "text": "# Greenland Air Temperature Anomaly 2019-2021 \nAir temperature for Greenland in August 2019-2021 compared to the average for the preceding 30 years. The heatwave of 2021 brought the first recorded rainfall to the high centre of Greenland, where usually there would be snowfall. (ERA5 data from Copernicus Climate Change Service/ECMWF/ESA)",
+          "url": "assets/story15_13.jpg"
+        },
+        {
+          "text": "The Greenland heatwave of 2021 led to rapid melting of snow and ice, creating extensive flows of meltwater and deeper, darker lakes on the ice sheet surface. Sentinel-2 image from 20 August 2021 (contains modified Copernicus Sentinel data (2021), processed by ESA)",
+          "url": "assets/story15_14.jpg"
+        },
+        {
+          "text": "Surface meltwater runs across Leverett Glacier, about 50km from the western edge of the Greenland  ice sheet, on 19th August 2009. (Andrew Sole, University of Sheffield)",
+          "url": "assets/icesheet_large_01.jpg"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "Melt-water from the Greenland Ice Sheet has contributed 11mm to sea level rise since 1992 and is tracking the worst-case climate warming predictions. Being fresh water, it is a further disruption to the salinity balance in the Arctic Ocean and surrounding seas. The flow of glaciers has also increased on islands such as Severnaya Zemlya as the surrounding ocean has warmed. Ice sheets, glaciers, permafrost and ocean salinity are, like sea ice, considered to be ‘essential climate variables’ that we need to monitor in order to understand how the climate is changing."
+        }
+      ]
+    },
+    {
+      "type": "imageScroll",
+      "slides": [
+        {
+          "text": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
+          "caption": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
+          "url": "assets/story15_08.jpg"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "Satellites give us a unique overview of the polar regions, providing measurements that were previously impossible to acquire in the hostile environment of these vast and remote areas. But conventional cameras using visible light can only work during the daytime and in the absence of clouds, which is a problem in polar regions prone to bad weather and long periods of winter darkness. Here, microwaves, which can pass through clouds and don’t need the Sun as a source, are more useful.\n\nMicrowaves are emitted from the surface of the Earth and can be detected by passive sensors on satellites. They can also be generated by a satellite radar and sent out to illuminate the Earth’s surface. The European Space Agency has invested in a series of radar satellites that allow surface properties to be measured by analysing the reflected beam of microwaves."
+        }
+      ]
+    },
+    {
+      "type": "imageCarousel",
+      "slides": [
+        {
+          "text": "The edge of the ice pack viewed by the Enhanced Thematic Mapper on Landsat 7, with thinner, younger ice in the lower part of the image. (USGS/ESA)",
+          "url": "assets/seaice_large_04.jpg"
+        },
+        {
+          "text": "Microwave brightness of the Arctic Ocean on March 1 2003, measured at a frequency of 89 GHz by the AMSR-E instrument on NASA's Aqua satellite. (A Ivanoff, NASA-GSFC)",
+          "url": "assets/seaice_large_14.jpg"
+        },
+        {
+          "text": "Sea ice around Antarctica was particularly low in February 2023. This map shows the mean sea-ice concentration for the month, compared with the median extent measured by satellites between 1981–2010, shown by a red line. (ESA / data: NSIDC)",
+          "url": "assets/story15-image18.jpg"
+        },
+        {
+          "text": "Ice-shelf calving fronts on the Antarctic Peninsula from the 1960s to 2019, during which time most of the Larsen A and B ice shelves have been lost. (ESA / data: Cook and Vaughan, 2010; Andreasen et al., 2023; LIMA Project)",
+          "url": "assets/story15-image19.jpg"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "One of the world’s longest satellite data archives, going back to 1978, is of passive microwave observations of sea ice. The [CCI](stories/story-32/3) Sea Ice team is working with this data, in collaboration with Europe’s weather satellite organisation, EUMETSAT, to produce daily maps of sea ice concentration at both poles, as well as investigating more modern instruments to carry the data series forward. But ice extent is only half the story – climate modellers also want to know the volume of ice present."
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "To measure the volume of sea ice, its thickness is also required. Radar altimeters are used to measure very precisely the height of the ice above the sea surface, from which its thickness can be derived. The CCI Sea Ice team has developed monthly sea ice thickness maps using radar altimeter data from ESA’s Envisat mission from 2002 to 2012, and from CryoSat, launched in 2010. The CCI Ice Sheet team also uses these satellite altimeters to measure the thickness of the Greenland and Antarctic Ice Sheets."
+        }
+      ]
+    },
+    {
+      "type": "imageScroll",
+      "slides": [
+        {
+          "text": "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)",
+          "caption": "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)",
+          "url": "assets/icesheet_large_17.jpg"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "The retrieval of sea ice thickness from altimetry works well only in the winter months, and only for relatively thick ice. The team is also looking at the novel use of data from ESA’s Soil Moisture and Ocean Salinity satellite (SMOS) to measure the thickness of thin ice, and at the new capabilities offered by future ESA satellites such as CRISTAL and CIMR. \n\nThe observed Arctic sea ice loss has been found to directly follow humanity’s cumulative carbon dioxide emissions: 3 square metres of ice are lost in September for every tonne of carbon dioxide we add to the atmosphere. That’s about the emission per passenger on a single trans-Atlantic flight. [Climate models](stories/story-31/0) using the CCI data as an input show that, at current emission rates, it is likely that the Arctic Ocean will be largely ice-free in the summer before 2050."
+        }
       ]
     }
   ]
