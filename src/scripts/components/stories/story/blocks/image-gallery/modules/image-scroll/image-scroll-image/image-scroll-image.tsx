@@ -17,14 +17,19 @@ import {
 import cx from "classnames";
 
 import styles from "./image-scroll-image.module.css";
-
 interface Props {
   src: string;
   alt?: string;
   className?: string;
+  onFullscreenToggle?: (isFullscreen: boolean) => void;
 }
 
-export const ScrollImage: FunctionComponent<Props> = ({ src, alt, className }) => {
+export const ScrollImage: FunctionComponent<Props> = ({
+  src,
+  alt,
+  className,
+  onFullscreenToggle,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
@@ -101,12 +106,14 @@ export const ScrollImage: FunctionComponent<Props> = ({ src, alt, className }) =
     x.set(0);
     y.set(0);
     setIsFullscreen(false);
+    onFullscreenToggle?.(false);
   };
 
   const handleOpen = (e: SyntheticEvent) => {
     e.stopPropagation();
     setIsFullscreen(true);
     setShowInstructions(true);
+    onFullscreenToggle?.(true);
   };
 
   if (!alt) {
@@ -128,7 +135,7 @@ export const ScrollImage: FunctionComponent<Props> = ({ src, alt, className }) =
         ref={imgRef}
         src={src}
         alt={alt}
-        className={cx( styles.image, className)}
+        className={cx(styles.image, className)}
         style={{
           x: isFullscreen ? x : 0,
           y: isFullscreen ? y : 0,

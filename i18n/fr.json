@@ -183,5 +183,8 @@
   "search.clear": "Effacer la recherche",
   "search.resultsCount": "{count, plural, =0 {Aucun résultat} one {# résultat} other {# résultats}} pour {query}",
   "search.filtersLabel": "Filtres de recherche",
-  "search.resultsLabel": "Résultats de recherche"
+  "search.resultsLabel": "Résultats de recherche",
+  "slides.next": "Diapositive suivante",
+  "slides.previous": "Diapositive précédente",
+  "slides.goTo": "Aller à la diapositive {number}"
 }
