@@ -1,4 +1,5 @@
 div[data-status="imageContainer"] {
+  width: 100%;
   position: relative;
 
   img {
