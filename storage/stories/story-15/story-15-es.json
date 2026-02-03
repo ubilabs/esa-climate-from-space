@@ -136,15 +136,6 @@
       ]
     },
     {
-      "type": "globe",
-      "slides": [
-        {
-          "layerUrl": "https://storage.googleapis.com/esa-cfs-versions/web/develop/index.html#/ocean/data?globe=SI-38.98I73.03I25840000I0.00I1493596800000I0Isea_ice.ice_concI",
-          "layerAutoplay": true
-        }
-      ]
-    },
-    {
       "type": "imageCarousel",
       "slides": [
         {
