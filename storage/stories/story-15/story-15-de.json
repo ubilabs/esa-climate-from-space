@@ -45,18 +45,15 @@
         {
           "text": "Summer sea ice in the Canadian Arctic. The narrow channel between mainland Canada and its Arctic islands is usually blocked by sea ice. In this Envisat MERIS image from 2nd July 2007 Lancaster Sound (lower centre) is ice-free, but to the west ice still blocks Parry Channel. (ESA)",
           "url": "assets/seaice_large_01.jpg",
-          "focus": "right",
           "altText": "some alt text"
         },
         {
           "text": "Sea ice is shown in blue in this Envisat ASAR mosaic of the Arctic Ocean from August 2008. The southerly branch of the Northwest Passage is ice-free. (ESA)",
-          "url": "assets/seaice_large_12a.jpg",
-          "focus": "right"
+          "url": "assets/seaice_large_12a.jpg"
         },
         {
           "text": "The southern route through the Northwest Passage was nearly ice-free in August 2016, as shown by this image from the Suomi NPP weather satellite (NASA)",
-          "url": "assets/story15_11.jpg",
-          "focus": "right"
+          "url": "assets/story15_11.jpg"
         }
       ]
     },
@@ -103,13 +100,11 @@
       "slides": [
         {
           "text": "Icebreaker escorting a cargo vessel through sea ice in the Arctic Ocean (Aker Arctic)",
-          "url": "assets/story15_03.jpg",
-          "focus": "centre"
+          "url": "assets/story15_03.jpg"
         },
         {
           "text": "Ship tracks in the eastern part of the Northwest Passage in 2013 (green) and 2019 (orange). Traffic increased from 112 to 160 ships between these years. (Arctic Council)",
-          "url": "assets/story15_12.jpg",
-          "focus": "right"
+          "url": "assets/story15_12.jpg"
         }
       ]
     },
@@ -139,6 +134,29 @@
           "text": "You can see the annual expansion and contraction of the frozen sea surface by scrubbing through the timeline of the interactive globe. Compare the annual minimum ice extents in mid-September for the first year and the final year of the sequence. Spin the globe round to Antarctica to see the sea ice in the Southern Ocean.\n\nThe core of the ice cover is formed of layers of frozen seawater that have survived the summer thaw. This multi-year ice reaches a thickness of two to four metres in the Arctic, whereas first-year sea ice typically reaches only 1 – 1.5 metres."
         }
       ]
+    },
+    {
+      "type": "globe",
+      "globe": {
+        "flyTo": {
+          "position": {
+            "longitude": -38.98,
+            "latitude": 73.03,
+            "height": 25840000
+          },
+          "orientation": {
+            "heading": 0
+          }
+        },
+        "layer": [
+          {
+            "id": "sea_ice.ice_conc",
+            "timestamp": "2017-05-01T00:00:00.000Z"
+          }
+        ],
+        "layerAutoplay": true
+      },
+      "slides": []
     },
     {
       "type": "imageCarousel",
