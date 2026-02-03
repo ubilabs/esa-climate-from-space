@@ -136,6 +136,29 @@
       ]
     },
     {
+      "type": "globe",
+      "globe": {
+        "flyTo": {
+          "position": {
+            "longitude": -38.98,
+            "latitude": 73.03,
+            "height": 25840000
+          },
+          "orientation": {
+            "heading": 0
+          }
+        },
+        "layer": [
+          {
+            "id": "sea_ice.ice_conc",
+            "timestamp": "2017-05-01T00:00:00.000Z"
+          }
+        ],
+        "layerAutoplay": true
+      },
+      "slides": []
+    },
+    {
       "type": "imageCarousel",
       "slides": [
         {
