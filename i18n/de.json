@@ -186,5 +186,7 @@
   "search.resultsLabel": "Suchergebnisse",
   "slides.next": "Nächste Folie",
   "slides.previous": "Vorherige Folie",
-  "slides.goTo": "Gehe zu Folie {number}"
+  "slides.goTo": "Gehe zu Folie {number}",
+  "storyGlobe.interact": "Interagieren",
+  "storyGlobe.quitInteraction": "Interaktiven Modus beenden"
 }

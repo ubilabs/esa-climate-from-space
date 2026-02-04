@@ -49,11 +49,15 @@ import TimeSlider from "../../layers/time-slider/time-slider";
 interface Props {
   className?: string;
   showMarkers?: boolean;
+  autoplay?: boolean;
+  touchable?: boolean;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
   className,
   showMarkers = true,
+  autoplay = false,
+  touchable = true,
 }) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
@@ -163,6 +167,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         // We should offset the markers when user is in content nav
         isMarkerOffset={isContentNavRoute}
         active={active}
+        touchable={touchable}
         view={currentView}
         projectionState={projectionState}
         imageLayer={imageLayer}
@@ -246,7 +251,9 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         <>
           {!isStoriesRoute && <DataSetInfo />}
           {legend && getLegends()}
-          {time_slider && <TimeSlider />}
+          {time_slider && (
+            <TimeSlider noTimeClamp={isStoriesRoute} autoplay={autoplay} />
+          )}
         </>
       )}
 

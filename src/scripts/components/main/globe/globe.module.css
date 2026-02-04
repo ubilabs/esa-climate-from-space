@@ -18,6 +18,10 @@
   filter: brightness(0.85) saturate(0.85) opacity(0.95);
 }
 
+.globe.notTouchable {
+  pointer-events: none !important;
+}
+
 .marker {
   transition: none;
   transform-origin: center;

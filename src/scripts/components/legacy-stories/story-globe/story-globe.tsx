@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import { useSelector } from "react-redux";
 import { useStoryGlobe } from "../../../hooks/use-story-globe";
+import cx from "classnames";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 
@@ -15,9 +16,15 @@ import styles from "./story-globe.module.css";
 
 interface Props {
   globeItem: GlobeItem;
+  touchable?: boolean;
+  className?: string;
 }
 
-const StoryGlobe: FunctionComponent<Props> = ({ globeItem }) => {
+const StoryGlobe: FunctionComponent<Props> = ({
+  globeItem,
+  touchable = true,
+  className,
+}) => {
   const { time_slider } = useSelector(embedElementsSelector);
 
   const { mainId } = useSelector(selectedLayerIdsSelector);
@@ -27,9 +34,11 @@ const StoryGlobe: FunctionComponent<Props> = ({ globeItem }) => {
   useStoryGlobe(globeItem);
 
   return (
-    <div className={styles.globeContainer}>
+    <div className={cx(styles.globeContainer, className)}>
       <GlobeCompareLayer
         className={styles.globe}
+        autoplay={globeItem.layerAutoplay}
+        touchable={touchable}
       />
       {time_slider && (
         <div className={styles.layerDetails}>

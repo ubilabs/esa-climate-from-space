@@ -186,5 +186,7 @@
   "search.resultsLabel": "Search results",
   "slides.next": "Next slide",
   "slides.previous": "Previous slide",
-  "slides.goTo": "Go to slide {number}"
+  "slides.goTo": "Go to slide {number}",
+  "storyGlobe.interact": "Interact",
+  "storyGlobe.quitInteraction": "Quit interactive mode"
 }

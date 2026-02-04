@@ -166,6 +166,28 @@
       ]
     },
     {
+      "type": "globe",
+      "globe": {
+        "flyTo": {
+          "position": {
+            "longitude": 54.03,
+            "latitude": 26.9,
+            "height": 24997871.88
+          },
+          "orientation": {
+            "heading": 360
+          }
+        },
+        "layer": [
+          {
+            "id": "greenhouse.xco2",
+            "timestamp": "2007-12-06T00:00:00.000Z"
+          }
+        ],
+        "layerAutoplay": true
+      }
+    },
+    {
       "type": "textOverlay",
       "url": "assets/satellite.gif",
       "focus": "right",

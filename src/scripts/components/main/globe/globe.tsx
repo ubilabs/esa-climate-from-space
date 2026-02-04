@@ -77,6 +77,7 @@ interface Props {
     layerId: string,
     state: LayerLoadingState,
   ) => void;
+  touchable?: boolean;
 }
 
 export type GlobeProps = Partial<Props>;
@@ -92,6 +93,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     markers,
     backgroundColor,
     className,
+    touchable = true,
     onMouseEnter,
     onTouchStart,
   } = props;
@@ -115,6 +117,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
       className={cx(
         styles.globe,
         initialTilesLoaded && styles.fadeIn,
+        !touchable && styles.notTouchable,
         className,
       )}
       style={{ backgroundColor }}
