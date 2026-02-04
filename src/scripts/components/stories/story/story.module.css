@@ -6,6 +6,7 @@
   grid-area: content;
 
   color: #fff;
+  background-color: var(--neutral-esa-background);
   overflow: scroll;
   height: var(--story-height);
   position: relative;

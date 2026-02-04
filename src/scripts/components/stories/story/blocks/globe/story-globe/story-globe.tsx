@@ -68,15 +68,16 @@ const StoryGlobe: FunctionComponent = () => {
   return (
     <SlideContainer ref={getRefCallback(0, 0)} className={cx(styles.container)}>
       {!isInteractive ? (
-        <button
+        <Button
           className={styles.interactButton}
           onClick={() => {
             setIsInteractive(true);
             setScrollDisabled(true);
           }}
+          aria-label={intl.formatMessage({ id: "storyGlobe.interact" })}
         >
           {intl.formatMessage({ id: "storyGlobe.interact" })}
-        </button>
+        </Button>
       ) : (
         <Button
           icon={CloseIcon}
