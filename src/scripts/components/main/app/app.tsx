@@ -16,7 +16,7 @@ import {
 import { IntlProvider } from "react-intl";
 import { store } from "./create-redux-store";
 
-import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
+import { MatomoProvider, createInstance } from "@streamr/matomo-tracker-react";
 
 import { SearchProvider } from "../../../providers/search/search-provider";
 import { StoryProvider } from "../../../providers/story/story-provider";
@@ -215,7 +215,6 @@ const TranslatedApp: FunctionComponent = () => {
 
 const App: FunctionComponent = () => (
   <StrictMode>
-    {/* @ts-expect-error - children prop not typed correctly in MatomoProvider */}
     <MatomoProvider value={matomoInstance}>
       <StoreProvider store={store}>
         <TranslatedApp />

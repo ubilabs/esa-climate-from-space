@@ -24,7 +24,10 @@ import StoryEmbedded from "../story-embedded/story-embedded";
 import { setFlyTo } from "../../../reducers/fly-to";
 import { setGlobeProjection } from "../../../reducers/globe/projection";
 import { setSelectedLayerIds } from "../../../reducers/layers";
-import { useGetStoryListQuery, useGetLegacyStoryQuery } from "../../../services/api";
+import {
+  useGetStoryListQuery,
+  useGetLegacyStoryQuery,
+} from "../../../services/api";
 import { appRouteSelector } from "../../../selectors/route-match";
 import { languageSelector } from "../../../selectors/language";
 
@@ -125,9 +128,9 @@ const Story: FunctionComponent = () => {
                     route={appRoute}
                     storyId={story.id}
                     videoItem={item}
-                    onPlay={(player: YouTubePlayer | VideoJsPlayer) =>
-                      getVideoDuration(player)
-                    }
+                    onPlay={(player: YouTubePlayer | VideoJsPlayer) => {
+                      getVideoDuration(player);
+                    }}
                   />
                 ) : (
                   <></>

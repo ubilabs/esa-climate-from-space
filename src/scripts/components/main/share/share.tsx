@@ -1,5 +1,5 @@
 import { FunctionComponent, useState, useRef, useEffect } from "react";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { useMatomo } from "@streamr/matomo-tracker-react";
 
 import config from "../../../config/main";
 import Button from "../button/button";
@@ -74,8 +74,7 @@ const Share: FunctionComponent<Props> = ({ className }) => {
             <span>Facebook</span>
           </a>
         </li>
-        <li
-        >
+        <li>
           <Button
             className={classes}
             label="copyLink"
@@ -84,8 +83,7 @@ const Share: FunctionComponent<Props> = ({ className }) => {
               copyUrl();
               trackShareClick("link-copy");
             }}
-          >
-          </Button>
+          ></Button>
         </li>
         <li>
           <Button
