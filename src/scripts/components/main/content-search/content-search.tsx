@@ -1,6 +1,8 @@
-import { useEffect, useEffectEvent, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
+import { useMatomo } from "@streamr/matomo-tracker-react";
+import debounce from "lodash.debounce";
 
 import { useSearch } from "../../../hooks/use-search";
 import { useScreenSize } from "../../../hooks/use-screen-size";
@@ -26,6 +28,7 @@ const filters: Filter[] = [
 export default function ContentSearch() {
   const search = useSearch();
   const intl = useIntl();
+  const { trackSiteSearch } = useMatomo();
   const { isDesktop } = useScreenSize();
   const [query, setQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState<FilterType>(FilterType.All);
@@ -64,12 +67,40 @@ export default function ContentSearch() {
     updateQueryValues();
   }, [state?.search]);
 
+  const trackSearchQuery = useMemo(
+    () =>
+      debounce((currentQuery: string, resultsCount: number) => {
+        trackSiteSearch({
+          category: "search",
+          keyword: currentQuery,
+          count: resultsCount,
+        });
+        // Wait for 1 seconds of input change inactivity before sending next event
+      }, 1000),
+    [trackSiteSearch],
+  );
+
+  useEffect(() => {
+    // Cleanup the debounced function on component unmount
+    return () => {
+      trackSearchQuery.cancel();
+    };
+  }, [trackSearchQuery]);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
+    const queryString = e.target.value;
+
+    setQuery(queryString);
+    trackSearchQuery(queryString, filteredResults.length);
+
+    if (!queryString) {
+      trackSearchQuery.cancel();
+    }
   };
 
   const handleClear = () => {
     setQuery("");
+    trackSearchQuery.cancel();
   };
 
   return (

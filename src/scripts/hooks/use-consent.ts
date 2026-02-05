@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import { useMatomo } from '@datapunt/matomo-tracker-react';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useMatomo } from "@streamr/matomo-tracker-react";
 
-import type { CookieConsent } from '../types/cookie-consent';
-import { loadConsent } from '../libs/load-consent';
+import type { CookieConsent } from "../types/cookie-consent";
+import { loadConsent } from "../libs/load-consent";
 
 export function useConsent() {
   const { pushInstruction } = useMatomo();
@@ -12,31 +12,35 @@ export function useConsent() {
   // Tracks if forgetConsentGiven instruction has initially been pushed
   const forgetConsentPushed = useRef(false);
 
+  const enableAnalytics = useCallback(() => {
+    pushInstruction("rememberConsentGiven");
+    pushInstruction("enableJSErrorTracking");
+    pushInstruction("enableMediaAnalytics");
+  }, [pushInstruction]);
+
   useEffect(() => {
     if (consent?.analytics) {
-      pushInstruction('rememberConsentGiven');
-      pushInstruction('enableJSErrorTracking');
+      enableAnalytics();
     } else if (!requireConsentPushed.current) {
-      pushInstruction('requireConsent');
+      pushInstruction("requireConsent");
       requireConsentPushed.current = true;
     }
 
     if (consent && !consent.analytics && !forgetConsentPushed.current) {
-      pushInstruction('forgetConsentGiven');
+      pushInstruction("forgetConsentGiven");
       forgetConsentPushed.current = true;
     }
-  }, [consent, pushInstruction]);
+  }, [consent, pushInstruction, enableAnalytics]);
 
   const saveConsent = (newConsent: CookieConsent) => {
-    localStorage.setItem('cookieConsent', JSON.stringify(newConsent));
+    localStorage.setItem("cookieConsent", JSON.stringify(newConsent));
     setConsent(newConsent);
 
     // Apply Matomo settings
     if (newConsent.analytics) {
-      pushInstruction('rememberConsentGiven');
-      pushInstruction('enableJSErrorTracking');
+      enableAnalytics();
     } else {
-      pushInstruction('forgetConsentGiven');
+      pushInstruction("forgetConsentGiven");
     }
   };
 
