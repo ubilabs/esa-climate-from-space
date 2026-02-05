@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useState, useRef } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { useMatomo } from "@streamr/matomo-tracker-react";
 
 import type { CookieConsent } from "../../../types/cookie-consent";
 
