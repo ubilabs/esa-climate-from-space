@@ -3,14 +3,6 @@
   height: 100%;
   width: 100%;
 
-  .globeContainer {
-    background: var(--neutral-esa-background);
-
-    h1, p {
-      font-size: 20px;
-    }
-  }
-
   .interactButton {
     display: initial;
     position: absolute;
@@ -53,6 +45,70 @@
       justify-content: center;
       content: var(--icon-touch);
       width: 100%;
+    }
+  }
+
+  .globeContainer {
+    position: relative;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    background: var(--neutral-esa-background);
+
+    .globe {
+      height: 100%;
+      left: 50%;
+      position: absolute !important;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 1s ease;
+      width: 100%;
+      position: relative;
+      transition: none;
+    }
+
+    /*  Make sure two globes are displayed side by side */
+    /*  in the story slider */
+    &:has(.globe ~ .globe) {
+      .globe {
+        left: auto;
+        transform: none;
+        top: 0;
+        position: relative !important;
+        transition: none;
+
+        canvas {
+          transition: none;
+        }
+      }
+
+      .layerDetails {
+        position: absolute;
+      }
+    }
+  }
+
+  .layerDetails {
+    position: relative;
+    height: inherit;
+    padding: inherit;
+    pointer-events: none;
+  }
+
+  .layerDetails > * {
+    pointer-events: all;
+    font-size: 20px;
+  }
+
+  @media screen and (--desktop-viewport) {
+    .layerDetails {
+      height: inherit;
+      background: none;
+    }
+
+    .layerDetails > * {
+      position: relative;
+      z-index: 1;
     }
   }
 }

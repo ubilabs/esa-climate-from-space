@@ -30,6 +30,9 @@ import styles from "./time-slider.module.css";
 
 interface Props {
   className?: string;
+  mainLayerId: string | null;
+  compareLayerId: string | null;
+  time?: number;
   noTimeClamp?: boolean;
   autoplay?: boolean;
 }
@@ -39,11 +42,19 @@ const DELAY = 200;
 
 const TimeSlider: FunctionComponent<Props> = ({
   className = "",
+  mainLayerId,
+  compareLayerId,
   noTimeClamp,
   autoplay = false,
 }) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  const { mainId, compareId } = selectedLayerIds;
+  let { mainId, compareId } = selectedLayerIds;
+  if (mainLayerId) {
+    mainId = mainLayerId;
+  }
+  if (compareLayerId) {
+    compareId = compareLayerId;
+  }
   const dispatch = useDispatch();
   const globeTime = useSelector(timeSelector);
   const [time, setTime] = useState(globeTime);
@@ -79,7 +90,7 @@ const TimeSlider: FunctionComponent<Props> = ({
     combined,
     timeIndexMain,
     timeIndexCompare,
-  } = useLayerTimes();
+  } = useLayerTimes(mainId, compareId);
 
   const clampedTime = clampToRange(time, combined.min, combined.max);
 

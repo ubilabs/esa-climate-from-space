@@ -1,17 +1,21 @@
-import { FunctionComponent, useEffect, useEffectEvent, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { useIntl } from "react-intl";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import cx from "classnames";
+
 import { useModuleContent } from "../../../../../../providers/story/module-content/use-module-content";
 import { useLenisToggle } from "../../../../../../hooks/use-lenis-toggle";
 
-import { globeViewSelector } from "../../../../../../selectors/globe/view";
 import { languageSelector } from "../../../../../../selectors/language";
+import { embedElementsSelector } from "../../../../../../selectors/embed-elements-selector";
+
+import { setGlobeTime } from "../../../../../../reducers/globe/time";
 
 import { useGetLayerListQuery } from "../../../../../../services/api";
 
 import { SlideContainer } from "../../../../layout/slide-container/slide-container";
-import Globe from "../../../../../legacy-stories/story-globe/story-globe";
+import { GlobeCompareLayer } from "../../../../../main/globe-compare-layer/globe-compare-layer";
+import LayerDescription from "../../../../../legacy-stories/layer-description/layer-description";
 import Button from "../../../../../main/button/button";
 import { CloseIcon } from "../../../../../main/icons/close-icon";
 
@@ -19,32 +23,31 @@ import styles from "./story-globe.module.css";
 
 const StoryGlobe: FunctionComponent = () => {
   const intl = useIntl();
+  const dispatch = useDispatch();
   const [isInteractive, setIsInteractive] = useState(false);
-  const [scrollDisabled, setScrollDisabled] = useState(false);
   const language = useSelector(languageSelector);
-  const globalGlobeView = useSelector(globeViewSelector);
   const { data: layers } = useGetLayerListQuery(language);
+  const { time_slider } = useSelector(embedElementsSelector);
 
   const {
     module: { globe },
     getRefCallback,
   } = useModuleContent();
 
-  useLenisToggle(scrollDisabled);
+  useLenisToggle(isInteractive);
 
-  const toggleScroll = useEffectEvent(() => {
-    if (scrollDisabled && !isInteractive) {
-      setTimeout(() => {
-        setScrollDisabled(false);
-      }, 100);
-    }
-  });
-
-  // Toggle scroll lock only when globe view has been updated.
-  // If lock is removed before, the story scroll position may jump.
+  // Apply time from globeItem if interactive state is enabled
   useEffect(() => {
-    toggleScroll();
-  }, [globalGlobeView]);
+    if (globe && isInteractive) {
+      const [mainLayer] = globe?.layer || [];
+      const time = mainLayer?.timestamp
+        ? new Date(mainLayer.timestamp).getTime()
+        : null;
+      if (time) {
+        dispatch(setGlobeTime(time));
+      }
+    }
+  }, [globe, isInteractive, dispatch]);
 
   if (!globe) {
     return null;
@@ -58,7 +61,7 @@ const StoryGlobe: FunctionComponent = () => {
    * @returns Formatted string of layer names or undefined if no valid names found
    */
   const getLayerNames = (layerIds: string[] | undefined) => {
-    if (!layerIds || !layers) return undefined;
+    if (!layerIds || !layers) return "";
     return layerIds
       .map((id) => layers.find((layer) => layer.id === id)?.name)
       .filter((name): name is string => !!name)
@@ -70,10 +73,7 @@ const StoryGlobe: FunctionComponent = () => {
       {!isInteractive ? (
         <Button
           className={styles.interactButton}
-          onClick={() => {
-            setIsInteractive(true);
-            setScrollDisabled(true);
-          }}
+          onClick={() => setIsInteractive(true)}
           aria-label={intl.formatMessage({ id: "storyGlobe.interact" })}
         >
           {intl.formatMessage({ id: "storyGlobe.interact" })}
@@ -81,26 +81,28 @@ const StoryGlobe: FunctionComponent = () => {
       ) : (
         <Button
           icon={CloseIcon}
-          onClick={(e) => {
-            e.stopPropagation();
-            setIsInteractive(false);
-          }}
+          onClick={() => setIsInteractive(false)}
           className={styles.closeButton}
           aria-label={intl.formatMessage({ id: "storyGlobe.quitInteraction" })}
         ></Button>
       )}
-      <Globe
-        touchable={isInteractive}
-        className={styles.globeContainer}
-        globeItem={{
-          ...globe,
-          layerDescription: getLayerNames(
-            globe.layer?.map((layer) => layer.id),
-          ),
-          // Only autoplay if the user has made the globe interactive
-          layerAutoplay: isInteractive && globe.layerAutoplay,
-        }}
-      />
+      <div className={styles.globeContainer}>
+        <GlobeCompareLayer
+          className={styles.globe}
+          globeItem={globe}
+          autoplay={globe?.layerAutoplay && isInteractive}
+          touchable={isInteractive}
+        />
+        {time_slider && (
+          <div className={styles.layerDetails}>
+            <LayerDescription
+              layerDescription={getLayerNames(
+                globe?.layer?.map((layer) => layer.id),
+              )}
+            />
+          </div>
+        )}
+      </div>
     </SlideContainer>
   );
 };
