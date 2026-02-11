@@ -2,7 +2,6 @@ import {
   FunctionComponent,
   useCallback,
   useEffect,
-  useEffectEvent,
   useLayoutEffect,
   useState,
 } from "react";
@@ -90,7 +89,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const { data: layers } = useGetLayerListQuery(language);
 
-  const onDatasetChange = useEffectEvent(() => {
+  // todo: use useEffectEvent hook
+  useEffect(() => {
     // Only track when on data route to ensure tracking is only done on actively selecting datasets
     if (isDataRoute && layers) {
       const mainLayerName = layers?.find((layer) => layer.id === mainId)?.name;
@@ -111,11 +111,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
           : `${mainLayerName} - ${compareLayerName}`,
       });
     }
-  });
-
-  useEffect(() => {
-    onDatasetChange();
-  }, [mainId, compareId]);
+  }, [mainId, compareId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onMoveStartHandler = useCallback(
     () => globeSpinning && dispatch(setGlobeSpinning(false)),
