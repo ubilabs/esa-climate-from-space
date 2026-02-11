@@ -228,4 +228,5 @@ export default {
     touchInertiaExponent: 0.5, // higher => longer inertia feel
     easing: (t: number) => 1 - Math.pow(1 - t, 2), // quadOut
   } as LenisOptions,
+  matomoUrl: "https://matomo-ext.esa.int",
 };

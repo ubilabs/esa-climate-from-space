@@ -4,6 +4,8 @@ import { useMatomo } from "@streamr/matomo-tracker-react";
 import type { CookieConsent } from "../types/cookie-consent";
 import { loadConsent } from "../libs/load-consent";
 
+import config from "../config/main";
+
 export function useConsent() {
   const { pushInstruction } = useMatomo();
   const [consent, setConsent] = useState<CookieConsent | null>(loadConsent());
@@ -15,8 +17,19 @@ export function useConsent() {
   const enableAnalytics = useCallback(() => {
     pushInstruction("rememberConsentGiven");
     pushInstruction("enableJSErrorTracking");
-    pushInstruction("MediaAnalytics::enableMediaAnalytics");
-    pushInstruction("MediaAnalytics::scanForMedia");
+
+    const script = document.createElement("script");
+    // Media Analytics plugin is not included in the main matomo.js bundle,
+    // so we need to load it separately
+    script.src = `${config.matomoUrl}/plugins/MediaAnalytics/tracker.min.js`;
+    script.async = true;
+
+    script.onload = () => {
+      pushInstruction("MediaAnalytics::enableMediaAnalytics");
+      pushInstruction("MediaAnalytics::scanForMedia");
+    };
+
+    document.body.appendChild(script);
   }, [pushInstruction]);
 
   useEffect(() => {
