@@ -111,7 +111,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
           : `${mainLayerName} - ${compareLayerName}`,
       });
     }
-  }, [mainId, compareId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [mainId, compareId, isDataRoute]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onMoveStartHandler = useCallback(
     () => globeSpinning && dispatch(setGlobeSpinning(false)),
