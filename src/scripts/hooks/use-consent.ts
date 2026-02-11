@@ -15,7 +15,8 @@ export function useConsent() {
   const enableAnalytics = useCallback(() => {
     pushInstruction("rememberConsentGiven");
     pushInstruction("enableJSErrorTracking");
-    pushInstruction("enableMediaAnalytics");
+    pushInstruction("MediaAnalytics::enableMediaAnalytics");
+    pushInstruction("MediaAnalytics::scanForMedia");
   }, [pushInstruction]);
 
   useEffect(() => {
