@@ -22,16 +22,16 @@ steps:
     entrypoint: 'npm'
     args: ['run', 'electron:build']
 
-  # fix bug in electron mac zip by re-zipping the app again
   - name: gcr.io/esa-climate-from-space/zip
     entrypoint: 'bash'
     args:
     - '-c'
     - |
       VERSION=$$(cat version.txt)
-      rm -r /workspace/dist-electron/esa-climate-from-space-*-mac.zip
-      cd /workspace/dist-electron/mac
-      zip -r /workspace/dist-electron/esa-climate-from-space-$$VERSION-mac.zip ./*
+      cd /workspace/dist-electron
+      zip esa-climate-from-space-$$VERSION-win.zip esa-climate-from-space-$$VERSION-win-*.exe
+      zip -r esa-climate-from-space-$$VERSION-mac.zip mac*
+      zip esa-climate-from-space-$$VERSION-linux.zip esa-climate-from-space-$$VERSION-linux-*.AppImage
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
     entrypoint: 'bash'
@@ -39,5 +39,5 @@ steps:
       - '-c'
       - |
         VERSION=$$(cat version.txt)
-        gsutil -m cp ./dist-electron/esa-climate* gs://esa-cfs-versions/electron/$$VERSION/
+        gsutil -m cp ./dist-electron/esa-climate-from-space-$$VERSION-*.zip gs://esa-cfs-versions/electron/$$VERSION/
 timeout: 2500s

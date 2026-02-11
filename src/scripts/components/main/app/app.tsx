@@ -16,8 +16,9 @@ import {
 import { IntlProvider } from "react-intl";
 import { store } from "./create-redux-store";
 
-import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
+import { MatomoProvider, createInstance } from "@streamr/matomo-tracker-react";
 
+import { SearchProvider } from "../../../providers/search/search-provider";
 import { StoryProvider } from "../../../providers/story/story-provider";
 
 import { languageSelector } from "../../../selectors/language";
@@ -31,18 +32,20 @@ import { EsaLogoLink } from "../logo/logo";
 import Header from "../header/header";
 import LayerSelector from "../../layers/layer-selector/layer-selector";
 import DataViewer from "../data-viewer/data-viewer";
-import Tracking from "../tracking/tracking";
+import CookieConsent from "../cookie-consent/cookie-consent";
 import StoriesSelector from "../../legacy-stories/stories-selector/stories-selector";
 import PresentationSelector from "../../legacy-stories/presentation-selector/presentation-selector";
 import ShowcaseSelector from "../../legacy-stories/showcase-selector/showcase-selector";
 import LegacyStory from "../../legacy-stories/story/story";
 import Story from "../../stories/story/story";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
+import ContentSearch from "../content-search/content-search";
 
 import { useGetStoryQuery } from "../../../services/api";
 import { useContentParams } from "../../../hooks/use-content-params";
 
 import { ROUTES } from "../../../config/main";
+import config from "../../../config/main";
 
 import { setAppRoute } from "../../../reducers/app-route";
 
@@ -53,10 +56,10 @@ import "../../../../variables.css";
 
 // Create Matomo tracking instance
 const matomoInstance = createInstance({
-  urlBase: "https://matomo-ext.esa.int/",
+  urlBase: config.matomoUrl,
   siteId: 6,
-  trackerUrl: "https://matomo-ext.esa.int/matomo.php",
-  srcUrl: "https://matomo-ext.esa.int/matomo.js",
+  trackerUrl: `${config.matomoUrl}/matomo.php`,
+  srcUrl: `${config.matomoUrl}/matomo.js`,
 });
 
 const StoryWrapper: FunctionComponent<{ children?: React.ReactNode }> = ({
@@ -138,65 +141,81 @@ const TranslatedApp: FunctionComponent = () => {
       locale={language}
       messages={translations[language]}
     >
-      <Router>
-        <Routes>
-          <Route element={<RouteMatch />}>
-            {/*  About project */}
-            <Route
-              path={ROUTES.about.path}
-              element={
-                <>
-                  <EsaLogoLink />
-                  <AboutProjectOverlay />
-                </>
-              }
-            />
-            {/*  Legacy routes are maintained for embedded links compatibility prior
+      <SearchProvider>
+        <Router>
+          <Routes>
+            <Route element={<RouteMatch />}>
+              {/*  About project */}
+              <Route
+                path={ROUTES.about.path}
+                element={
+                  <>
+                    <EsaLogoLink />
+                    <AboutProjectOverlay />
+                  </>
+                }
+              />
+              <Route
+                path={ROUTES.search.path}
+                element={
+                  <>
+                    <Header />
+                    <ContentSearch />
+                  </>
+                }
+              />
+              {/*  Legacy routes are maintained for embedded links compatibility prior
           to version 2 */}
-            <Route
-              path={ROUTES.legacy_stories.path}
-              element={<StoriesSelector />}
-            />
-            <Route path={ROUTES.legacy_story.path} element={<LegacyStory />} />
-            {/* Present story routes */}
-            <Route
-              path={ROUTES.present.path}
-              element={<PresentationSelector />}
-            />
-            <Route
-              path={ROUTES.present_story.path}
-              element={<LegacyOrRecentStory />}
-            />
-            <Route path={ROUTES.showcase.path} element={<ShowcaseSelector />} />
-            {/* Showcase stories and story routes */}
-            <Route
-              path={ROUTES.showcase_stories.path}
-              element={<ShowcaseSelector />}
-            />
-            <Route
-              path={ROUTES.showcase_story.path}
-              element={<LegacyOrRecentStory />}
-            />
-            {/*  Main application routes */}
-            <Route path={ROUTES.base.path} element={<MainContent />} />
-            <Route path={ROUTES.nav_content.path} element={<MainContent />} />
-            <Route path={ROUTES.data.path} element={<MainContent />} />
-            <Route
-              path={ROUTES.stories.path}
-              element={<MainContent children={<Story />} />}
-            />
-          </Route>
-        </Routes>
-        <Tracking />
-        <UrlSync />
-      </Router>
+              <Route
+                path={ROUTES.legacy_stories.path}
+                element={<StoriesSelector />}
+              />
+              <Route
+                path={ROUTES.legacy_story.path}
+                element={<LegacyStory />}
+              />
+              {/* Present story routes */}
+              <Route
+                path={ROUTES.present.path}
+                element={<PresentationSelector />}
+              />
+              <Route
+                path={ROUTES.present_story.path}
+                element={<LegacyOrRecentStory />}
+              />
+              <Route
+                path={ROUTES.showcase.path}
+                element={<ShowcaseSelector />}
+              />
+              {/* Showcase stories and story routes */}
+              <Route
+                path={ROUTES.showcase_stories.path}
+                element={<ShowcaseSelector />}
+              />
+              <Route
+                path={ROUTES.showcase_story.path}
+                element={<LegacyOrRecentStory />}
+              />
+              {/*  Main application routes */}
+              <Route path={ROUTES.base.path} element={<MainContent />} />
+              <Route path={ROUTES.nav_content.path} element={<MainContent />} />
+              <Route path={ROUTES.data.path} element={<MainContent />} />
+              <Route
+                path={ROUTES.stories.path}
+                element={<MainContent children={<Story />} />}
+              />
+            </Route>
+          </Routes>
+          <CookieConsent />
+          <UrlSync />
+        </Router>
+      </SearchProvider>
     </IntlProvider>
   );
 };
 
 const App: FunctionComponent = () => (
   <StrictMode>
-    {/* @ts-expect-error - children prop not typed correctly in MatomoProvider */}
     <MatomoProvider value={matomoInstance}>
       <StoreProvider store={store}>
         <TranslatedApp />

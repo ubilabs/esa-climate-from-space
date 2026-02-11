@@ -9,6 +9,7 @@ import { useGetStoriesQuery } from "../../../services/api";
 
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
+import { getStoryMediaType } from "../../../libs/get-story-media-type";
 
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { setSelectedContentAction } from "../../../reducers/content";
@@ -19,8 +20,6 @@ import { contentSelector } from "../../../selectors/content";
 
 import { LayerListItem } from "../../../types/layer-list";
 import { StoryListItem } from "../../../types/story-list";
-import { GalleryItemType } from "../../../types/gallery-item";
-import { LegacyStory } from "../../../types/story";
 
 import useAutoRotate from "../../../hooks/use-auto-content-rotation";
 import { useNavGestures } from "../../../libs/use-nav-gestures";
@@ -190,30 +189,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
     ids: contents.filter((el) => isStoryListItem(el)).map(({ id }) => id),
     language: lang,
   });
-
-  const getStoryMediaType = (item: StoryListItem, stories?: LegacyStory[]) => {
-    let type = "blog";
-
-    const story = stories?.find((story) => story.id === item.id);
-    const galleyItemTypes =
-      story &&
-      "slides" in story &&
-      new Set(
-        story?.slides
-          .flatMap((slide) => slide.galleryItems)
-          .map(({ type }) => type),
-      );
-    if (
-      galleyItemTypes &&
-      // if gallery only contains images or videos return media type
-      galleyItemTypes.size === 1 &&
-      (galleyItemTypes.has(GalleryItemType.Image) ||
-        galleyItemTypes.has(GalleryItemType.Video))
-    ) {
-      type = [...galleyItemTypes][0];
-    }
-    return type;
-  };
 
   return (
     <ul

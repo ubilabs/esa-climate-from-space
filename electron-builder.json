@@ -6,14 +6,28 @@
   "appId": "com.ubilabs.esa.cfs",
   "productName": "ESA – Climate from Space",
   "files": ["./dist-src-electron/*", "./dist/**/*"],
+
   "win": {
-    "target": "portable"
+    "target": [
+      { "target": "portable", "arch": "x64" },
+      { "target": "portable", "arch": "ia32" },
+      { "target": "portable", "arch": "arm64" }
+    ]
   },
+
   "mac": {
-    "target": "zip"
+    "target": [
+      { "target": "dir", "arch": "x64" },
+      { "target": "dir", "arch": "arm64" }
+    ]
   },
+
   "linux": {
-    "target": "zip"
+    "target": [
+      { "target": "AppImage", "arch": "x64" },
+      { "target": "AppImage", "arch": "arm64" },
+      { "target": "AppImage", "arch": "armv7l" }
+    ]
   },
-  "artifactName": "esa-climate-from-space-${version}-${os}.${ext}"
+  "artifactName": "esa-climate-from-space-${version}-${os}-${arch}.${ext}"
 }

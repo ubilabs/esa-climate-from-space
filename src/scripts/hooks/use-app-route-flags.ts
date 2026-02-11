@@ -30,6 +30,8 @@ export function useAppRouteFlags() {
 
   const isBaseRoute = appRoute === AppRoute.Base;
 
+  const isSearchRoute = appRoute === AppRoute.Search;
+
   return {
     isPresentStoryRoute,
     isShowCaseStoryRoute,
@@ -40,5 +42,6 @@ export function useAppRouteFlags() {
     isDataRoute,
     isShowCaseView,
     isPresentView,
+    isSearchRoute,
   };
 }

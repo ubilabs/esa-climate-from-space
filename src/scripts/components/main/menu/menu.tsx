@@ -13,12 +13,11 @@ import { CCILogo } from "../icons/cci-logo";
 import AboutProject from "../about-project/about-project";
 import Overlay from "../overlay/overlay";
 import { WindowsIcon } from "../icons/windows-icon";
-import { AnalyticsIcon } from "../icons/analytics-icon";
 import { LinuxIcon } from "../icons/linux-icon";
 import { AppleIcon } from "../icons/apple-icon";
 import { Ubilabslogo } from "../icons/ubilabs-logo";
+import { PrivacyIcon } from "../icons/privacy-icon";
 import Attributions from "../attributions/attributions";
-import TrackingToggle from "../tracking-toggle/tracking-toggle";
 import { FeedbackIcon } from "../icons/feedback-icon";
 import { ShareIcon } from "../icons/share-icon";
 import Share from "../share/share";
@@ -113,7 +112,7 @@ const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
                 <ShareIcon /> <FormattedMessage id="share" />
               </li>
               <li>
-                  <Share  className={styles.menuListItem} / >
+                <Share className={styles.menuListItem} />
               </li>
               <li className={styles.subMenuTitle}>
                 <FeedbackIcon /> <FormattedMessage id={"feedback"} />
@@ -185,10 +184,16 @@ const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
                 </a>
               </li>
               <li className={styles.subMenuTitle}>
-                <AnalyticsIcon /> <FormattedMessage id={"analytics"} />
+                <PrivacyIcon /> <FormattedMessage id={"dataPrivacy"} />
               </li>
               <li className={styles.menuListItem}>
-                <TrackingToggle />
+                <Button
+                  className={styles.menuButton}
+                  label={"privacySettings"}
+                  onClick={() =>
+                    window.dispatchEvent(new CustomEvent("openPrivacySettings"))
+                  }
+                />
               </li>
             </ul>
           </>

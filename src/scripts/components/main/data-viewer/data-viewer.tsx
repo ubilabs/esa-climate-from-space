@@ -26,6 +26,7 @@ import Button from "../button/button";
 import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation from "../category-navigation/category-navigation";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
+import { BackButton } from "../back-button/back-button";
 
 import styles from "./data-viewer.module.css";
 
@@ -126,15 +127,14 @@ const DataViewer: FunctionComponent = () => {
         <>
           <header className={styles.heading}>
             {isContentNavRoute ? (
-              <Button
+              <BackButton
                 label={
                   !isMobile
                     ? "back_to_overview"
                     : `categories.${currentCategory}`
                 }
-                link={"/"}
-                className={styles.backButton}
-              ></Button>
+                link="/"
+              ></BackButton>
             ) : (
               <span className={styles.chooseHeading}>
                 <FormattedMessage id="category.choose" />

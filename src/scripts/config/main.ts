@@ -22,6 +22,7 @@ export const ROUTES = {
   },
   [AppRoute.LegacyStories]: { path: "stories/", end: true },
   [AppRoute.About]: { path: "/about", end: true },
+  [AppRoute.Search]: { path: "/search", end: true },
   [AppRoute.PresentStory]: {
     path: "/present/:storyId/:slideIndex",
     end: true,
@@ -154,13 +155,14 @@ const basemapUrlsOffline: { [id in BasemapId]: string } = {
 } as const;
 
 const downloadUrls = {
-  windows: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-win.exe`,
+  windows: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-win.zip`,
   macOS: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-mac.zip`,
   linux: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-linux.zip`,
 } as const;
 
 export default {
   api: {
+    searchIndex: `${baseUrlStorage}index/search-index-{lang}.json`,
     layers: `${baseUrlStorage}layers/layers-{lang}.json`,
     layer: `${baseUrlTiles}/{id}/metadata.json`,
     layerTiles: `${baseUrlTiles}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
@@ -226,4 +228,5 @@ export default {
     touchInertiaExponent: 0.5, // higher => longer inertia feel
     easing: (t: number) => 1 - Math.pow(1 - t, 2), // quadOut
   } as LenisOptions,
+  matomoUrl: "https://matomo-ext.esa.int",
 };

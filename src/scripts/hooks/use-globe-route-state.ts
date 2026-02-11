@@ -55,20 +55,10 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
   );
   // Handle  direct URL changes
   useEffect(() => {
-    if (!globe) {
-      return;
-    }
-
     // only call function when the route match *changes*
     if (appRoute && appRoute === previousPathnameRef.current) {
       return;
     }
-
-    updateAutoRotationState(appRoute === AppRoute.Base, globe);
-    updateUserInteractionEnabledState(
-      appRoute === AppRoute.Stories || appRoute === AppRoute.Data,
-      globe,
-    );
 
     switch (appRoute) {
       case AppRoute.Base:
@@ -127,14 +117,22 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
 
     // Store the current pathname for next comparison
     previousPathnameRef.current = appRoute;
+  }, [appRoute, dispatch, layers, mainId, navigate, selectedLayerIds?.mainId]);
+
+  // Update globe states based on route changes
+  useEffect(() => {
+    if (!globe) {
+      return;
+    }
+
+    updateAutoRotationState(appRoute === AppRoute.Base, globe);
+    updateUserInteractionEnabledState(
+      appRoute === AppRoute.Stories || appRoute === AppRoute.Data,
+      globe,
+    );
   }, [
     appRoute,
-    dispatch,
     globe,
-    layers,
-    mainId,
-    navigate,
-    selectedLayerIds?.mainId,
     updateAutoRotationState,
     updateUserInteractionEnabledState,
   ]);

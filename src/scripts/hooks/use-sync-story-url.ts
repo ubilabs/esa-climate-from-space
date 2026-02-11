@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useMatomo } from "@streamr/matomo-tracker-react";
 import { useStory } from "../providers/story/use-story";
 import { getUpdatedStoryUrl } from "../libs/get-updated-story-url";
 import { useLocation, useNavigationType } from "react-router-dom";
@@ -9,6 +10,7 @@ import { getCssVarPx } from "../libs/get-css-var-in-px";
 export const useSyncStoryUrl = () => {
   const { getScrollAnchorRefsMap, storyElementRef, story, lenisRef } =
     useStory();
+  const { trackPageView } = useMatomo();
   const activeNodeKeyRef = useRef<string | null>(null);
 
   const initialSlideIndex = extractSlideIndex(getHashPathName());
@@ -101,12 +103,18 @@ export const useSyncStoryUrl = () => {
 
       const idx = indexByKey.get(bestKey);
       if (typeof idx === "number") {
+        const storyUrl = getUpdatedStoryUrl(location.pathname, idx);
         // Keeping the URL parameters intact is crucial to prevent the <UrlSync> useEffect
         // from being triggered redundantly, which can cause the URL to update again.
-        const newUrl =
-          getUpdatedStoryUrl(location.pathname, idx) +
-          location.search +
-          location.hash;
+        const newUrl = storyUrl + location.search + location.hash;
+
+        if (storyUrl !== location.pathname) {
+          // Track page view on URL change
+          trackPageView({
+            href: storyUrl,
+          });
+        }
+
         // Directly using window.history.pushState for updating the URL
         // This approach is chosen to avoid triggering a re-render
         // The URL update here is solely for sharing purposes and does not involve state management
@@ -150,5 +158,6 @@ export const useSyncStoryUrl = () => {
     location.pathname,
     location.search,
     location.hash,
+    trackPageView,
   ]);
 };
