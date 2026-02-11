@@ -16,7 +16,7 @@ import {
 import { IntlProvider } from "react-intl";
 import { store } from "./create-redux-store";
 
-import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
+import { MatomoProvider, createInstance } from "@streamr/matomo-tracker-react";
 
 import { SearchProvider } from "../../../providers/search/search-provider";
 import { StoryProvider } from "../../../providers/story/story-provider";
@@ -45,6 +45,7 @@ import { useGetStoryQuery } from "../../../services/api";
 import { useContentParams } from "../../../hooks/use-content-params";
 
 import { ROUTES } from "../../../config/main";
+import config from "../../../config/main";
 
 import { setAppRoute } from "../../../reducers/app-route";
 
@@ -55,10 +56,10 @@ import "../../../../variables.css";
 
 // Create Matomo tracking instance
 const matomoInstance = createInstance({
-  urlBase: "https://matomo-ext.esa.int/",
+  urlBase: config.matomoUrl,
   siteId: 6,
-  trackerUrl: "https://matomo-ext.esa.int/matomo.php",
-  srcUrl: "https://matomo-ext.esa.int/matomo.js",
+  trackerUrl: `${config.matomoUrl}/matomo.php`,
+  srcUrl: `${config.matomoUrl}/matomo.js`,
 });
 
 const StoryWrapper: FunctionComponent<{ children?: React.ReactNode }> = ({
@@ -215,7 +216,6 @@ const TranslatedApp: FunctionComponent = () => {
 
 const App: FunctionComponent = () => (
   <StrictMode>
-    {/* @ts-expect-error - children prop not typed correctly in MatomoProvider */}
     <MatomoProvider value={matomoInstance}>
       <StoreProvider store={store}>
         <TranslatedApp />

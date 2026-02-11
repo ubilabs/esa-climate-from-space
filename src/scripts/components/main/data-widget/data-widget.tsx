@@ -8,6 +8,7 @@ import {
 
 import { CameraView } from "@ubilabs/esa-webgl-globe";
 import { useDispatch, useSelector } from "react-redux";
+import { useMatomo } from "@streamr/matomo-tracker-react";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { contentSelector } from "../../../selectors/content";
@@ -27,7 +28,7 @@ import { setGlobeView } from "../../../reducers/globe/view";
 import { State } from "../../../reducers";
 
 import { useContentMarker } from "../../../hooks/use-story-markers";
-import { useGetLayerQuery } from "../../../services/api";
+import { useGetLayerListQuery, useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
@@ -59,6 +60,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const [currentView, setCurrentView] = useState(globalGlobeView);
   const flyTo = useSelector(flyToSelector);
   const [isMainActive, setIsMainActive] = useState(true);
+  const { trackEvent } = useMatomo();
 
   const language = useSelector(languageSelector);
   const dispatch = useDispatch();
@@ -67,7 +69,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;
 
-  const { isContentNavRoute, isStoriesRoute } = useAppRouteFlags();
+  const { isContentNavRoute, isStoriesRoute, isDataRoute } = useAppRouteFlags();
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
@@ -84,6 +86,32 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   // If initially, there is a main layer selected, we need to fetch the layer details
   useGetLayerQuery(mainId ?? "", { skip: !mainId });
   useGetLayerQuery(compareId ?? "", { skip: !compareId });
+
+  const { data: layers } = useGetLayerListQuery(language);
+
+  // todo: use useEffectEvent hook
+  useEffect(() => {
+    // Only track when on data route to ensure tracking is only done on actively selecting datasets
+    if (isDataRoute && layers) {
+      const mainLayerName = layers?.find((layer) => layer.id === mainId)?.name;
+      const compareLayerName = layers?.find(
+        (layer) => layer.id === compareId,
+      )?.name;
+
+      // Don't track if the main layer is not selected or its name is not yet available
+      if (!mainId || !mainLayerName) {
+        return;
+      }
+
+      trackEvent({
+        category: "datasets",
+        action: !compareId ? "select" : "compare",
+        name: !compareId
+          ? mainLayerName
+          : `${mainLayerName} - ${compareLayerName}`,
+      });
+    }
+  }, [mainId, compareId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onMoveStartHandler = useCallback(
     () => globeSpinning && dispatch(setGlobeSpinning(false)),

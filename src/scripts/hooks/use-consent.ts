@@ -1,31 +1,51 @@
-import { useEffect, useState } from "react";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useMatomo } from "@streamr/matomo-tracker-react";
 
 import type { CookieConsent } from "../types/cookie-consent";
 import { loadConsent } from "../libs/load-consent";
 
+import config from "../config/main";
+
 export function useConsent() {
+
   const { pushInstruction } = useMatomo();
   const [consent, setConsent] = useState<CookieConsent | null>(loadConsent());
   // Tracks if requireConsentGiven instruction has initially been pushed
-  const [requireConsentPushed, setRequireConsentPushed] = useState(false);
+  const requireConsentPushed = useRef(false);
   // Tracks if forgetConsentGiven instruction has initially been pushed
-  const [forgetConsentPushed, setForgetConsentPushed] = useState(false);
+  const forgetConsentPushed = useRef(false);
+
+  const enableAnalytics = useCallback(() => {
+    pushInstruction("rememberConsentGiven");
+    pushInstruction("enableJSErrorTracking");
+
+    const script = document.createElement("script");
+    // Media Analytics plugin is not included in the main matomo.js bundle,
+    // so we need to load it separately
+    script.src = `${config.matomoUrl}/plugins/MediaAnalytics/tracker.min.js`;
+    script.async = true;
+
+    script.onload = () => {
+      pushInstruction("MediaAnalytics::enableMediaAnalytics");
+      pushInstruction("MediaAnalytics::scanForMedia");
+    };
+
+    document.body.appendChild(script);
+  }, [pushInstruction]);
 
   useEffect(() => {
     if (consent?.analytics) {
-      pushInstruction("rememberConsentGiven");
-      pushInstruction("enableJSErrorTracking");
-    } else if (!requireConsentPushed) {
+      enableAnalytics();
+    } else if (!requireConsentPushed.current) {
       pushInstruction("requireConsent");
-      setRequireConsentPushed(true);
+      requireConsentPushed.current = true;
     }
 
-    if (consent && !consent.analytics && !forgetConsentPushed) {
+    if (consent && !consent.analytics && !forgetConsentPushed.current) {
       pushInstruction("forgetConsentGiven");
-      setForgetConsentPushed(true);
+      forgetConsentPushed.current = true;
     }
-  }, [consent, pushInstruction, requireConsentPushed, forgetConsentPushed]);
+  }, [consent, pushInstruction, enableAnalytics]);
 
   const saveConsent = (newConsent: CookieConsent) => {
     localStorage.setItem("cookieConsent", JSON.stringify(newConsent));
@@ -33,8 +53,7 @@ export function useConsent() {
 
     // Apply Matomo settings
     if (newConsent.analytics) {
-      pushInstruction("rememberConsentGiven");
-      pushInstruction("enableJSErrorTracking");
+      enableAnalytics();
     } else {
       pushInstruction("forgetConsentGiven");
     }

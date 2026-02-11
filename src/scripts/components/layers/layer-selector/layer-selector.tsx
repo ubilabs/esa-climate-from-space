@@ -3,7 +3,6 @@ import { FormattedMessage } from "react-intl";
 import { motion, AnimatePresence } from "motion/react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { useMatomo } from "@datapunt/matomo-tracker-react";
 import Button from "../../main/button/button";
 import { CloseIcon } from "../../main/icons/close-icon";
 import LayerList from "../layer-list/layer-list";
@@ -22,8 +21,6 @@ import styles from "./layer-selector.module.css";
 const LayerSelector: FunctionComponent = () => {
   const dispatch = useDispatch();
   const thunkDispatch = useThunkDispatch();
-
-  const { trackEvent } = useMatomo();
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
 
@@ -101,12 +98,6 @@ const LayerSelector: FunctionComponent = () => {
                 dispatch(setShowLayer(false));
                 thunkDispatch(layersApi.endpoints.getLayer.initiate(layerId));
                 dispatch(setSelectedLayerIds({ layerId, isPrimary: isMain }));
-                const name = layers.find((layer) => layer.id === layerId)?.name;
-                trackEvent({
-                  category: "datasets",
-                  action: isMain ? "select" : "compare",
-                  name: isMain ? name : `${selectedMainLayer?.name} - ${name}`,
-                });
               }}
             />
           </div>
