@@ -65,7 +65,7 @@ const StoryGlobe: FunctionComponent = () => {
     return layerIds
       .map((id) => layers.find((layer) => layer.id === id)?.name)
       .filter((name): name is string => !!name)
-      .join("/ ");
+      .join(" / ");
   };
 
   return (

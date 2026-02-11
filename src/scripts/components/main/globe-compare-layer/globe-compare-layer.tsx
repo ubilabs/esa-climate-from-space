@@ -4,7 +4,7 @@ import { GlobeItem } from "../../../types/gallery-item";
 
 interface Props {
   className?: string;
-  globeItem?: GlobeItem
+  globeItem?: GlobeItem;
   autoplay?: boolean;
   touchable?: boolean;
 }

@@ -66,7 +66,10 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
-  let flyTo = useSelector(flyToSelector);
+  const [flyToState, setFlyToState] = useState(
+    globeItem?.flyTo ? flyToToCameraView(globeItem.flyTo) : null,
+  );
+  const flyTo = useSelector(flyToSelector);
   const [isMainActive, setIsMainActive] = useState(true);
   const { trackEvent } = useMatomo();
 
@@ -87,13 +90,18 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     const [mainLayer, compareLayer] = globeItem?.layer || [];
     mainId = mainLayer?.id || mainId;
     compareId = compareLayer?.id || compareId;
-    if (!touchable) {
-      flyTo = globeItem.flyTo ? flyToToCameraView(globeItem.flyTo) : flyTo;
-    } else if (isStoriesRoute) {
-      // In stories never use global flyTo state
-      flyTo = null;
-    }
   }
+
+  // Update flyToState if it is not already set via globeItem
+  const flyToEvent = useEffectEvent(() => {
+    if (!flyToState || !globeItem) {
+      setFlyToState(flyTo);
+    }
+  });
+
+  useEffect(() => {
+    flyToEvent();
+  }, [flyTo, globeItem]);
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
@@ -192,7 +200,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         imageLayer={imageLayer}
         layerDetails={layerDetails || null}
         spinning={globeSpinning}
-        flyTo={flyTo}
+        flyTo={flyToState}
         onMouseEnter={action}
         onTouchStart={action}
         onChange={onChangeHandler}

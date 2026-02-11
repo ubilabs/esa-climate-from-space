@@ -37,7 +37,7 @@ const StoryGlobe: FunctionComponent<Props> = ({
     <div className={cx(styles.globeContainer, className)}>
       <GlobeCompareLayer
         className={styles.globe}
-        autoplay={globeItem.layerAutoplay}
+        globeItem={globeItem}
         touchable={touchable}
       />
       {time_slider && (
