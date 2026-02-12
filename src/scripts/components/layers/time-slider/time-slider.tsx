@@ -14,7 +14,6 @@ import { timeSelector } from "../../../selectors/globe/time";
 import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { setGlobeTime } from "../../../reducers/globe/time";
 import { State } from "../../../reducers";
-import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import getPlaybackStep from "../../../libs/get-playback-step";
 import clampToRange from "../../../libs/clamp-to-range";
 import TimeSliderRange from "../time-slider-range/time-slider-range";
@@ -30,8 +29,8 @@ import styles from "./time-slider.module.css";
 
 interface Props {
   className?: string;
-  mainLayerId: string | null;
-  compareLayerId: string | null;
+  mainId: string | null;
+  compareId: string | null;
   time?: number;
   noTimeClamp?: boolean;
   autoplay?: boolean;
@@ -42,19 +41,11 @@ const DELAY = 200;
 
 const TimeSlider: FunctionComponent<Props> = ({
   className = "",
-  mainLayerId,
-  compareLayerId,
+  mainId,
+  compareId,
   noTimeClamp,
   autoplay = false,
 }) => {
-  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  let { mainId, compareId } = selectedLayerIds;
-  if (mainLayerId) {
-    mainId = mainLayerId;
-  }
-  if (compareLayerId) {
-    compareId = compareLayerId;
-  }
   const dispatch = useDispatch();
   const globeTime = useSelector(timeSelector);
   const [time, setTime] = useState(globeTime);

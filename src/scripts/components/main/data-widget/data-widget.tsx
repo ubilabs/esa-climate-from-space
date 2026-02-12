@@ -280,8 +280,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({
           {legend && getLegends()}
           {time_slider && touchable && (
             <TimeSlider
-              mainLayerId={mainId}
-              compareLayerId={compareId}
+              mainId={mainId}
+              compareId={compareId}
               noTimeClamp={isStoriesRoute}
               autoplay={autoplay}
             />
