@@ -63,16 +63,32 @@ export default function ContentSearch() {
 
   const trackSearchQuery = useMemo(
     () =>
-      debounce((currentQuery: string, resultsCount: number) => {
-        trackSiteSearch({
-          category: "search",
-          keyword: currentQuery,
-          count: resultsCount,
-        });
-        // Wait for 1 seconds of input change inactivity before sending next event
-      }, 1000),
+      debounce(
+        (
+          currentQuery: string,
+          resultsCount: number,
+          activeFilter: FilterType,
+        ) => {
+          trackSiteSearch({
+            category: activeFilter,
+            keyword: currentQuery,
+            count: resultsCount,
+          });
+          // Wait for 1 seconds of input change inactivity before sending next event
+        },
+        1000,
+      ),
     [trackSiteSearch],
   );
+
+  // Track search query, results count and applied filter on change
+  useEffect(() => {
+    trackSearchQuery(query, filteredResults.length, activeFilter);
+
+    if (!query) {
+      trackSearchQuery.cancel();
+    }
+  }, [filteredResults.length, query, activeFilter, trackSearchQuery]);
 
   useEffect(() => {
     // Cleanup the debounced function on component unmount
@@ -82,14 +98,7 @@ export default function ContentSearch() {
   }, [trackSearchQuery]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const queryString = e.target.value;
-
-    setQuery(queryString);
-    trackSearchQuery(queryString, filteredResults.length);
-
-    if (!queryString) {
-      trackSearchQuery.cancel();
-    }
+    setQuery(e.target.value);
   };
 
   const handleClear = () => {
