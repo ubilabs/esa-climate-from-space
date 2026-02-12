@@ -60,7 +60,7 @@ const StoryGlobe: FunctionComponent = () => {
    * @param layerIds - Array of layer IDs to retrieve names for
    * @returns Formatted string of layer names or undefined if no valid names found
    */
-  const getLayerNames = (layerIds: string[] | undefined) => {
+  const formatLayerNames = (layerIds: string[] | undefined) => {
     if (!layerIds || !layers) return "";
     return layerIds
       .map((id) => layers.find((layer) => layer.id === id)?.name)
@@ -96,7 +96,7 @@ const StoryGlobe: FunctionComponent = () => {
         {time_slider && (
           <div className={styles.layerDetails}>
             <LayerDescription
-              layerDescription={getLayerNames(
+              layerDescription={formatLayerNames(
                 globe?.layer?.map((layer) => layer.id),
               )}
             />
