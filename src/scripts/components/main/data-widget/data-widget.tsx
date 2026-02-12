@@ -146,7 +146,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   useEffect(() => {
     onDatasetChange();
-  }, [mainId, compareId]);
+  }, [mainId, compareId, isDataRoute]);
 
   const onMoveStartHandler = useCallback(
     () => globeSpinning && dispatch(setGlobeSpinning(false)),
