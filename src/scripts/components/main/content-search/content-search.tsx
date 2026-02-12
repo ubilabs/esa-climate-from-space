@@ -83,9 +83,9 @@ export default function ContentSearch() {
 
   // Track search query, results count and applied filter on change
   useEffect(() => {
-    trackSearchQuery(query, filteredResults.length, activeFilter);
-
-    if (!query) {
+    if (query) {
+      trackSearchQuery(query, filteredResults.length, activeFilter);
+    } else {
       trackSearchQuery.cancel();
     }
   }, [filteredResults.length, query, activeFilter, trackSearchQuery]);
