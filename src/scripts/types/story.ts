@@ -8,6 +8,7 @@ import ImageScroll from "../components/stories/story/blocks/image-gallery/module
 import ImageCarousel from "../components/stories/story/blocks/image-gallery/modules/image-carousel/image-carousel";
 import TextOverlay from "../components/stories/story/blocks/generic/text-overlay/text-overlay";
 import TextBodyLarge from "../components/stories/story/blocks/generic/text-body-large/text-body-large";
+import StoryGlobe from "../components/stories/story/blocks/globe/story-globe/story-globe";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
 
 export interface Slide {
@@ -51,7 +52,8 @@ export type ImageGalleryModuleType =
   | "imageTime"
   | "imageScroll"
   | "textBodyLarge"
-  | "imageCarousel";
+  | "imageCarousel"
+  | "globe";
 
 export type ImageModule = {
   type: ImageGalleryModuleType;
@@ -61,6 +63,7 @@ export type ImageModule = {
   startButtonText?: string;
   focus?: ImageFocus;
   url?: string;
+  globe?: GlobeItem;
 };
 
 export type ImageModuleSlide = {
@@ -92,6 +95,7 @@ export const imageGalleryModuleMap: Record<
   textOverlay: ImageGallery.TextOverlay,
   textBodyLarge: ImageGallery.TextBodyLarge,
   imageCarousel: ImageGallery.ImageCarousel,
+  globe: ImageGallery.StoryGlobe,
 };
 
 export const imageGalleryBlockComponentMap: Record<
@@ -105,4 +109,5 @@ export const imageGalleryBlockComponentMap: Record<
   textOverlay: TextOverlay,
   textBodyLarge: TextBodyLarge,
   imageCarousel: ImageCarousel,
+  globe: StoryGlobe,
 };

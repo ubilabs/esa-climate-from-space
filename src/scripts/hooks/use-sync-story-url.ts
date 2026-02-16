@@ -106,19 +106,16 @@ export const useSyncStoryUrl = () => {
         const storyUrl = getUpdatedStoryUrl(location.pathname, idx);
         // Keeping the URL parameters intact is crucial to prevent the <UrlSync> useEffect
         // from being triggered redundantly, which can cause the URL to update again.
-        const newUrl = storyUrl + location.search + location.hash;
-
         if (storyUrl !== location.pathname) {
           // Track page view on URL change
           trackPageView({
             href: storyUrl,
           });
         }
-
         // Directly using window.history.pushState for updating the URL
         // This approach is chosen to avoid triggering a re-render
         // The URL update here is solely for sharing purposes and does not involve state management
-        window.history.pushState(null, "", `#${newUrl}`);
+        window.history.pushState(null, "", `#${storyUrl}`);
       }
     };
 

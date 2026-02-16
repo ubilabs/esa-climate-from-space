@@ -17,6 +17,7 @@ import { IntlProvider } from "react-intl";
 import { store } from "./create-redux-store";
 
 import { MatomoProvider, createInstance } from "@streamr/matomo-tracker-react";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { SearchProvider } from "../../../providers/search/search-provider";
 import { StoryProvider } from "../../../providers/story/story-provider";
@@ -107,12 +108,15 @@ const LegacyOrRecentStory: FunctionComponent = () => {
 const MainContent: FunctionComponent<{
   children?: React.ReactNode;
 }> = ({ children }) => {
+  const { isStoriesRoute } = useAppRouteFlags();
+
   return (
     <>
       <StoryWrapper>
         <Header />
         {children}
-        <DataViewer />
+        {/* Stories use StoryGlobe component for globe visualization instead of DataViewer */}
+        {!isStoriesRoute && <DataViewer />}
         <LayerSelector />
       </StoryWrapper>
     </>

@@ -49,17 +49,6 @@
   pointer-events: all;
 }
 
-.storySlider {
-  position: absolute;
-  padding: 2.5em 0;
-  background: none;
-}
-
-.storySlider > div {
-  min-width: 25%;
-  width: 60%;
-}
-
 @media screen and (--desktop-viewport) {
   .layerDetails {
     height: inherit;
@@ -69,12 +58,5 @@
   .layerDetails > * {
     position: relative;
     z-index: 1;
-  }
-
-  .storySlider {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    padding: 2.5em 0 1.25em;
   }
 }

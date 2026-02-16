@@ -32,11 +32,13 @@ import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerListQuery, useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
+import { flyToToCameraView } from "../../../hooks/use-story-globe";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
 import { LegendValueColor } from "../../../types/legend-value-color";
 import { Layer } from "../../../types/layer";
+import { GlobeItem } from "../../../types/gallery-item";
 
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
 import Gallery from "../gallery/gallery";
@@ -45,20 +47,28 @@ import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import TimeSlider from "../../layers/time-slider/time-slider";
-
 interface Props {
+  globeItem?: GlobeItem;
   className?: string;
   showMarkers?: boolean;
+  autoplay?: boolean;
+  touchable?: boolean;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
+  globeItem,
   className,
   showMarkers = true,
+  autoplay = false,
+  touchable = true,
 }) => {
   const projectionState = useSelector(projectionSelector);
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
   const [currentView, setCurrentView] = useState(globalGlobeView);
+  const [flyToState, setFlyToState] = useState(
+    globeItem?.flyTo ? flyToToCameraView(globeItem.flyTo) : null,
+  );
   const flyTo = useSelector(flyToSelector);
   const [isMainActive, setIsMainActive] = useState(true);
   const { trackEvent } = useMatomo();
@@ -68,9 +78,30 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const time = useSelector(timeSelector);
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  const { mainId, compareId } = selectedLayerIds;
+  let { mainId, compareId } = selectedLayerIds;
 
   const { isContentNavRoute, isStoriesRoute, isDataRoute } = useAppRouteFlags();
+
+  // If globeItem is provided, it takes precedence over the selected layer IDs and flyTo in the store.
+  // This allows us to use the GetDataWidget component in different contexts, such as in stories where
+  // we want to apply specific globe items without affecting the global state of selected layers and
+  // flyTo for other parts of the app.
+  if (globeItem) {
+    const [mainLayer, compareLayer] = globeItem?.layer || [];
+    mainId = mainLayer?.id || mainId;
+    compareId = compareLayer?.id || compareId;
+  }
+
+  // Update flyToState if it is not already set via globeItem
+  const flyToEvent = useEffectEvent(() => {
+    if (!flyToState || !globeItem) {
+      setFlyToState(flyTo);
+    }
+  });
+
+  useEffect(() => {
+    flyToEvent();
+  }, [flyTo, globeItem]);
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
@@ -163,12 +194,13 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         // We should offset the markers when user is in content nav
         isMarkerOffset={isContentNavRoute}
         active={active}
+        touchable={touchable}
         view={currentView}
         projectionState={projectionState}
         imageLayer={imageLayer}
         layerDetails={layerDetails || null}
         spinning={globeSpinning}
-        flyTo={flyTo}
+        flyTo={flyToState}
         onMouseEnter={action}
         onTouchStart={action}
         onChange={onChangeHandler}
@@ -246,7 +278,14 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         <>
           {!isStoriesRoute && <DataSetInfo />}
           {legend && getLegends()}
-          {time_slider && <TimeSlider />}
+          {time_slider && touchable && (
+            <TimeSlider
+              mainId={mainId}
+              compareId={compareId}
+              noTimeClamp={isStoriesRoute}
+              autoplay={autoplay}
+            />
+          )}
         </>
       )}
 

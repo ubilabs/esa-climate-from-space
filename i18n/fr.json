@@ -186,5 +186,7 @@
   "search.resultsLabel": "Résultats de recherche",
   "slides.next": "Diapositive suivante",
   "slides.previous": "Diapositive précédente",
-  "slides.goTo": "Aller à la diapositive {number}"
+  "slides.goTo": "Aller à la diapositive {number}",
+  "storyGlobe.interact": "Interagir",
+  "storyGlobe.quitInteraction": "Quitter le mode interactif"
 }
