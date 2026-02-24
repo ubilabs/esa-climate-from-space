@@ -239,15 +239,17 @@ export const GetDataWidget: FunctionComponent<Props> = ({
       )}
       {compareLayer && isGalleryTypeLayer(compareImageLayer) ? (
         <Gallery imageLayer={compareImageLayer} />
-      ) : compareLayer && (
-        <Globe
-          {...globeProps}
-          active={!isMainActive}
-          imageLayer={compareImageLayer}
-          layerDetails={compareLayerDetails || null}
-          onMouseEnter={() => setIsMainActive(false)}
-          onTouchStart={() => setIsMainActive(false)}
-        />
+      ) : (
+        compareLayer && (
+          <Globe
+            {...globeProps}
+            active={!isMainActive}
+            imageLayer={compareImageLayer}
+            layerDetails={compareLayerDetails || null}
+            onMouseEnter={() => setIsMainActive(false)}
+            onTouchStart={() => setIsMainActive(false)}
+          />
+        )
       )}
     </>
   );
