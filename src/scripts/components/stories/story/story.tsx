@@ -14,6 +14,7 @@ import { getModuleComponent } from "../../../libs/get-story-components";
 import cx from "classnames";
 
 import styles from "./story.module.css";
+import EEIGlobe from "../story-eei/eei-globe";
 
 /**
  * The Story component is responsible for rendering the story's content.
@@ -22,6 +23,7 @@ import styles from "./story.module.css";
  */
 const Story: FunctionComponent = () => {
   const { storyElementRef, story, setScrollAnchorRefs } = useStory();
+  console.log("🚀 ~ story.tsx:25 → story:", story);
 
   // Initialize Lenis for smooth scrolling behavior in the story
   useLenisForStory();
@@ -31,7 +33,7 @@ const Story: FunctionComponent = () => {
   useAutoScrollInShowcase();
 
   // Synchronize the URL with the current story state
-  useSyncStoryUrl();
+  // useSyncStoryUrl();
 
   if (!story) {
     return null;
@@ -43,28 +45,8 @@ const Story: FunctionComponent = () => {
       ref={storyElementRef}
       id="story"
     >
-      <SplashScreen />
-      {story.modules.map(({ type }, moduleIndex) => {
-        const ModuleComponent = getModuleComponent(type);
-        const moduleData = story.modules[moduleIndex];
-
-        /* Assign this to element's ref within modules that should serve as scroll- and snap anchors. Snap anchor is opt-out, i.e. if you want to an element to serve as a scroll anchor, but should not trigger a snap, use the data-no-snap attribute (like for the blend elements)  */
-        const generateScrollAnchorRef = (nodeIndex: number, subIndex: number) =>
-          setScrollAnchorRefs(`${moduleIndex + 1}-${nodeIndex}-${subIndex}`);
-
-        return (
-          <ModuleContentProvider
-            key={moduleIndex}
-            module={moduleData}
-            storyId={story.id}
-            getRefCallback={generateScrollAnchorRef}
-          >
-            <ModuleComponent />
-          </ModuleContentProvider>
-        );
-      })}
+      <EEIGlobe />
       {/* Provisional - will be replaced with a proper end screen later */}
-      <ClosingScreen />
     </main>
   );
 };
