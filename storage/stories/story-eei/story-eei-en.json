@@ -1,0 +1,23 @@
+{
+  "id": "story-eei",
+  "splashscreen": {
+    "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
+    "focus": "center",
+    "title": "Earth Engine Imbalance",
+    "subtitle": "Probably not good"
+  },
+  "modules": [
+    {
+      "type": "baseSlide",
+      "text": "slide 1"
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 2"
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 3"
+    }
+  ]
+}
