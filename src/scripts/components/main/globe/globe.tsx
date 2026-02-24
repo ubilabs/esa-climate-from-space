@@ -46,6 +46,7 @@ import { GlobeProjectionState } from "../../../types/globe-projection-state";
 import config, { CONTENT_NAV_LONGITUDE_OFFSET } from "../../../config/main";
 
 import styles from "./globe.module.css";
+import { useStory } from "../../../providers/story/use-story";
 
 type LayerLoadingStateChangedEvent =
   WebGlGlobeEventMap["layerLoadingStateChanged"];
@@ -99,8 +100,12 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   } = props;
 
   const [containerRef, globe] = useWebGlGlobe(view);
+  // console.log("🚀 ~ globe.tsx:100 → globe:", globe);
+  // console.log("🚀 ~ globe.tsx:100 → containerRef:", containerRef);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
 
+  const story = useStory();
+  // console.log("🚀 ~ globe.tsx:103 → story:", story);
   useGlobeRouteState(globe);
 
   useGlobeLayers(globe, layerDetails, imageLayer);
