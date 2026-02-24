@@ -6,102 +6,83 @@ import {
   useLayoutEffect,
   useState,
 } from "react";
+import { useSelector } from "react-redux";
 
 import { CameraView } from "@ubilabs/esa-webgl-globe";
-import { useDispatch, useSelector } from "react-redux";
 import { useMatomo } from "@streamr/matomo-tracker-react";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { contentSelector } from "../../../selectors/content";
-import { flyToSelector } from "../../../selectors/fly-to";
-import { globeSpinningSelector } from "../../../selectors/globe/spinning";
-import { globeViewSelector } from "../../../selectors/globe/view";
 import { languageSelector } from "../../../selectors/language";
 import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
-import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { projectionSelector } from "../../../selectors/globe/projection";
-import { timeSelector } from "../../../selectors/globe/time";
 
-import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
-import { setGlobeSpinning } from "../../../reducers/globe/spinning";
-import { setGlobeView } from "../../../reducers/globe/view";
 import { State } from "../../../reducers";
 
 import { useContentMarker } from "../../../hooks/use-story-markers";
 import { useGetLayerListQuery, useGetLayerQuery } from "../../../services/api";
 import { useImageLayerData } from "../../../hooks/use-image-layer-data";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
-import { flyToToCameraView } from "../../../hooks/use-story-globe";
 
 import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
 import { LegendValueColor } from "../../../types/legend-value-color";
 import { Layer } from "../../../types/layer";
 import { GlobeItem } from "../../../types/gallery-item";
-
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
+
 import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import TimeSlider from "../../layers/time-slider/time-slider";
+
 interface Props {
   globeItem?: GlobeItem;
   className?: string;
   showMarkers?: boolean;
   autoplay?: boolean;
   touchable?: boolean;
+  globeView: CameraView;
+  mainId: string | null;
+  compareId: string | null;
+  time: number;
+  setGlobeTime: (time: number) => void;
+  globeSpinning: boolean;
+  flyTo: CameraView | null;
+  onMoveStartHandler: () => void;
+  onMoveEndHandler: (view: CameraView) => void;
+  onLayerLoadingStateChangeHandler: LayerLoadingStateChangeHandle;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
-  globeItem,
   className,
   showMarkers = true,
   autoplay = false,
   touchable = true,
+  globeView,
+  mainId,
+  compareId,
+  time,
+  setGlobeTime,
+  globeSpinning,
+  flyTo,
+  onMoveStartHandler,
+  onMoveEndHandler,
+  onLayerLoadingStateChangeHandler,
 }) => {
   const projectionState = useSelector(projectionSelector);
-  const globalGlobeView = useSelector(globeViewSelector);
-  const globeSpinning = useSelector(globeSpinningSelector);
-  const [currentView, setCurrentView] = useState(globalGlobeView);
-  const [flyToState, setFlyToState] = useState(
-    globeItem?.flyTo ? flyToToCameraView(globeItem.flyTo) : null,
-  );
-  const flyTo = useSelector(flyToSelector);
+
+  const [currentView, setCurrentView] = useState(globeView);
+
   const [isMainActive, setIsMainActive] = useState(true);
   const { trackEvent } = useMatomo();
 
-  const language = useSelector(languageSelector);
-  const dispatch = useDispatch();
-  const time = useSelector(timeSelector);
-
-  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  let { mainId, compareId } = selectedLayerIds;
-
   const { isContentNavRoute, isStoriesRoute, isDataRoute } = useAppRouteFlags();
 
-  // If globeItem is provided, it takes precedence over the selected layer IDs and flyTo in the store.
-  // This allows us to use the GetDataWidget component in different contexts, such as in stories where
-  // we want to apply specific globe items without affecting the global state of selected layers and
-  // flyTo for other parts of the app.
-  if (globeItem) {
-    const [mainLayer, compareLayer] = globeItem?.layer || [];
-    mainId = mainLayer?.id || mainId;
-    compareId = compareLayer?.id || compareId;
-  }
-
-  // Update flyToState if it is not already set via globeItem
-  const flyToEvent = useEffectEvent(() => {
-    if (!flyToState || !globeItem) {
-      setFlyToState(flyTo);
-    }
-  });
-
-  useEffect(() => {
-    flyToEvent();
-  }, [flyTo, globeItem]);
+  const language = useSelector(languageSelector);
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
@@ -148,23 +129,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     onDatasetChange();
   }, [mainId, compareId, isDataRoute]);
 
-  const onMoveStartHandler = useCallback(
-    () => globeSpinning && dispatch(setGlobeSpinning(false)),
-    [dispatch, globeSpinning],
-  );
-
-  const onMoveEndHandler = useCallback(
-    (view: CameraView) => dispatch(setGlobeView(view)),
-    [dispatch],
-  );
-
-  const onLayerLoadingStateChangeHandler: LayerLoadingStateChangeHandle =
-    useCallback(
-      (layerId, loadingState) =>
-        dispatch(updateLayerLoadingState({ layerId, loadingState })),
-      [dispatch],
-    );
-
   const selectedContentId = useSelector(contentSelector).contentId;
 
   const contentMarker = useContentMarker(selectedContentId ?? null, language);
@@ -209,8 +173,8 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   // we don't use the app state view all the time to keep store updates low
   useLayoutEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setCurrentView(globalGlobeView);
-  }, [globalGlobeView]);
+    setCurrentView(globeView);
+  }, [globeView]);
 
   const onChangeHandler = useCallback((view: CameraView) => {
     setCurrentView(view);
@@ -222,13 +186,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const { legend, time_slider } = useSelector(embedElementsSelector);
 
-  // stop globe spinning when layer is selected
-  useEffect(() => {
-    if ((mainId || compareId) && globeSpinning) {
-      dispatch(setGlobeSpinning(false));
-    }
-  }, [dispatch, mainId, compareId, globeSpinning]);
-
   // Shared props for Globe instances
   const globeProps = {
     ...(showMarkers && contentMarker && { markers: [contentMarker] }),
@@ -238,7 +195,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     view: currentView,
     projectionState,
     spinning: globeSpinning,
-    flyTo: flyToState,
+    flyTo,
     onChange: onChangeHandler,
     onMoveStart: onMoveStartHandler,
     onMoveEnd: onMoveEndHandler,
@@ -255,8 +212,10 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         <>
           {!isStoriesRoute && <DataSetInfo />}
           {legend && getLegends()}
-          {time_slider && touchable && (
+          {time_slider && (
             <TimeSlider
+              time={time}
+              setGlobeTime={setGlobeTime}
               mainId={mainId}
               compareId={compareId}
               noTimeClamp={isStoriesRoute}
