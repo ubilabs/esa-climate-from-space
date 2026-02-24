@@ -1,17 +1,17 @@
 import { FunctionComponent, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { timeSelector } from "../../../selectors/globe/time";
 import { layerLoadingStateSelector } from "../../../selectors/globe/layer-loading-state";
 
 import { useInterval } from "../../../hooks/use-interval";
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
-import { setGlobeTime } from "../../../reducers/globe/time";
 
 const PLAYBACK_STEP = 1000 * 60 * 60 * 24 * 30; // one month
 const PLAYBACK_SPEED = 1000; // increase one step per x milliseconds
 
 interface Props {
+  time: number;
+  setGlobeTime: (time: number) => void;
   minTime: number;
   maxTime: number;
   speed?: number;
@@ -21,6 +21,8 @@ interface Props {
 }
 
 const TimePlayback: FunctionComponent<Props> = ({
+  time,
+  setGlobeTime,
   minTime,
   maxTime,
   speed = PLAYBACK_SPEED,
@@ -28,9 +30,6 @@ const TimePlayback: FunctionComponent<Props> = ({
   mainLayerId,
   compareLayerId,
 }) => {
-  const dispatch = useDispatch();
-  const time = useSelector(timeSelector);
-
   const [nextTime, setNextTime] = useState(time);
   const [stepIndex, setStepIndex] = useState(() => {
     const index = steps.findIndex((step) => step >= time);
@@ -86,8 +85,8 @@ const TimePlayback: FunctionComponent<Props> = ({
       return;
     }
 
-    dispatch(setGlobeTime(nextTime));
-  }, [dispatch, time, nextTime, mainLayerState, compareLayerState]);
+    setGlobeTime(nextTime);
+  }, [time, nextTime, mainLayerState, compareLayerState, setGlobeTime]);
 
   return null;
 };
