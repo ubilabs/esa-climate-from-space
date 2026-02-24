@@ -1,0 +1,107 @@
+import { useRef } from "react";
+import styles from "./eei-globe.module.css";
+import {
+  cubicBezier,
+  motion,
+  useMotionValueEvent,
+  useTransform,
+} from "motion/react";
+import { useStoryScroll } from "../../../hooks/use-story-scroll";
+import { setFlyTo } from "../../../reducers/fly-to";
+import { useDispatch } from "react-redux";
+
+export default function EEIGlobe() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useStoryScroll({
+    target: ref,
+  });
+
+  const totalLength = 12;
+
+  const normalizedSteps = [
+    0,
+    ...Array.from({ length: totalLength - 1 }, (_, i) =>
+      Number(((i + 1) / (totalLength - 1)).toFixed(5)),
+    ),
+  ];
+
+  console.log("🚀 ~ eei-globe.tsx:26 → normalizedSteps:", normalizedSteps);
+
+  const constructions = {
+    0: 220,
+    1: -200,
+    2: -400,
+    3: -100,
+    4: 0,
+    5: -100,
+    6: -100,
+    7: 100,
+    8: 100,
+    9: 0,
+    10: 200,
+    11: 0,
+  };
+
+  const altitudes = {
+    0: 22839999.9999918,
+    1: 2079886.324157265,
+    2: 2079886.324157265,
+    3: 1079886.324157265,
+    4: 79886,
+    5: 79886,
+    6: 1079886,
+    7: 1079886,
+    8: 2079886,
+    9: 4079886,
+    10: 4079886,
+    11: 22839999,
+  };
+
+  const dispatch = useDispatch();
+  const yValues = Object.values(constructions);
+  const altitudeValues = Object.values(altitudes);
+  console.log("🚀 ~ eei-globe.tsx:57 → altitudeValues:", altitudeValues);
+
+  // const y = useTransform(scrollYProgress, normalizedSteps, yValues, {});
+  const altitude = useTransform(
+    scrollYProgress,
+    normalizedSteps,
+    altitudeValues,
+    {
+      ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
+    },
+  );
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    dispatch(
+      setFlyTo({
+        renderMode: "globe",
+        lat: 53.54917458120199,
+        lng: 10.051499257242103,
+        altitude: altitude.get(),
+        zoom: 10,
+        isAnimated: false,
+      }),
+    );
+    console.log("x changed to", latest);
+  });
+
+  return (
+    <div ref={ref} className={styles.wrapper}>
+      {/* <motion.div */}
+      {/*   style={{ */}
+      {/*     // rotate, */}
+      {/*     // transform: `translate(${x}%, ${y}%)`, */}
+      {/*     // opacity, */}
+      {/*     translateY: y, */}
+      {/*   }} */}
+      {/*   className={styles.globe} */}
+      {/* ></motion.div> */}
+      {Array.from({ length: totalLength }).map((_, i) => (
+        <div className={styles.slide} key={i}>
+          slide {i}
+        </div>
+      ))}
+    </div>
+  );
+}

@@ -1,0 +1,24 @@
+.wrapper {
+  position: relative;
+  /* background-image: linear-gradient(#e66465, #9198e5); */
+  /* height: calc(8 * var(--story-height)); */
+  display: grid;
+  place-items: center;
+
+  .slide {
+    height: var(--story-height);
+    width: 100%;
+    outline: 1px solid gray;
+    display: grid;
+    place-items: center;
+  }
+
+  .globe {
+    position: fixed;
+    bottom: 20vh;
+    width: 300px;
+    height: 300px;
+    border-radius: 40%;
+    background-color: lightblue;
+  }
+}
