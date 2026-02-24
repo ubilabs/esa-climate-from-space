@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./eei-globe.module.css";
 import {
   cubicBezier,
@@ -25,7 +25,7 @@ export default function EEIGlobe() {
     ),
   ];
 
-  console.log("🚀 ~ eei-globe.tsx:26 → normalizedSteps:", normalizedSteps);
+  // console.log("🚀 ~ eei-globe.tsx:26 → normalizedSteps:", normalizedSteps);
 
   const constructions = {
     0: 220,
@@ -58,9 +58,20 @@ export default function EEIGlobe() {
   };
 
   const dispatch = useDispatch();
-  const yValues = Object.values(constructions);
+  // const yValues = Object.values(constructions);
   const altitudeValues = Object.values(altitudes);
-  console.log("🚀 ~ eei-globe.tsx:57 → altitudeValues:", altitudeValues);
+  // console.log("🚀 ~ eei-globe.tsx:57 → altitudeValues:", altitudeValues);
+  //
+  useEffect(() => {
+    // const dataView = document.querySelector("#globeWrapper > div");
+    // console.log("🚀 ~ eei-globe.tsx:65 → dataView:", dataView);
+
+    // setTimeout(() => {
+    //   if (dataView) {
+    //     dataView.style.transform = "translateX(-200px)";
+    //   }
+    // }, 2000);
+  }, []);
 
   // const y = useTransform(scrollYProgress, normalizedSteps, yValues, {});
   const altitude = useTransform(
@@ -88,15 +99,6 @@ export default function EEIGlobe() {
 
   return (
     <div ref={ref} className={styles.wrapper}>
-      {/* <motion.div */}
-      {/*   style={{ */}
-      {/*     // rotate, */}
-      {/*     // transform: `translate(${x}%, ${y}%)`, */}
-      {/*     // opacity, */}
-      {/*     translateY: y, */}
-      {/*   }} */}
-      {/*   className={styles.globe} */}
-      {/* ></motion.div> */}
       {Array.from({ length: totalLength }).map((_, i) => (
         <div className={styles.slide} key={i}>
           slide {i}
