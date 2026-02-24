@@ -1,15 +1,8 @@
 import { ComponentProps, FunctionComponent } from "react";
 
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
-import ImageWavelength from "../components/stories/story/blocks/image-gallery/modules/image-wavelength/image-wavelength";
-import ImageCompare from "../components/stories/story/blocks/image-gallery/modules/image-compare/image-compare";
-import ImageTime from "../components/stories/story/blocks/image-gallery/modules/image-time/image-time";
-import ImageScroll from "../components/stories/story/blocks/image-gallery/modules/image-scroll/image-scroll";
-import ImageCarousel from "../components/stories/story/blocks/image-gallery/modules/image-carousel/image-carousel";
-import TextOverlay from "../components/stories/story/blocks/generic/text-overlay/text-overlay";
-import TextBodyLarge from "../components/stories/story/blocks/generic/text-body-large/text-body-large";
-import StoryGlobe from "../components/stories/story/blocks/globe/story-globe/story-globe";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
+import { StoryEEI } from "../components/stories/story/blocks/story-eei/story-eei";
 
 export interface Slide {
   text: string;
@@ -40,11 +33,6 @@ export type Splashscreen = {
   subtitle?: string;
 };
 
-// Extend with union for other block types if needed
-export type Module = ImageModule;
-
-export type ModuleType = ImageModule["type"];
-
 export type ImageGalleryModuleType =
   | "textOverlay"
   | "imageWavelength"
@@ -55,18 +43,27 @@ export type ImageGalleryModuleType =
   | "imageCarousel"
   | "globe";
 
-export type ImageModule = {
-  type: ImageGalleryModuleType;
+export type StoryEEIModuleType = "textOverlay" | "baseSlide";
+
+type BaseModule = {
   text?: string;
   altText?: string;
-  slides?: ImageModuleSlide[];
+  slides?: BaseModuleSlide[];
   startButtonText?: string;
   focus?: ImageFocus;
   url?: string;
   globe?: GlobeItem;
 };
 
-export type ImageModuleSlide = {
+export type ImageModule = BaseModule & {
+  type: ImageGalleryModuleType;
+};
+
+export type StoryEEIModule = Pick<BaseModule, "text"> & {
+  type: StoryEEIModuleType;
+};
+
+export type BaseModuleSlide = {
   url?: string;
   altText?: string;
   text: string;
@@ -74,6 +71,11 @@ export type ImageModuleSlide = {
   flag: string;
   caption: string;
 };
+
+// Extend with union for other block types if needed
+export type Module = ImageModule | StoryEEIModule;
+
+export type ModuleType = Module["type"];
 
 export type AnchorKey = `${number}-${number}-${number}`;
 
@@ -98,16 +100,10 @@ export const imageGalleryModuleMap: Record<
   globe: ImageGallery.StoryGlobe,
 };
 
-export const imageGalleryBlockComponentMap: Record<
-  ImageModule["type"],
-  FunctionComponent<StorySectionProps> | undefined
+export const storyEEIModuleMap: Record<
+  StoryEEIModule["type"],
+  FunctionComponent<StorySectionProps>
 > = {
-  imageWavelength: ImageWavelength,
-  imageCompare: ImageCompare,
-  imageTime: ImageTime,
-  imageScroll: ImageScroll,
-  textOverlay: TextOverlay,
-  textBodyLarge: TextBodyLarge,
-  imageCarousel: ImageCarousel,
-  globe: StoryGlobe,
+  textOverlay: StoryEEI.TextOverlay,
+  baseSlide: StoryEEI.BaseSlide,
 };

@@ -1,14 +1,16 @@
 import { FunctionComponent } from "react";
 import {
-  imageGalleryModuleMap,
+  storyEEIModuleMap,
   StorySectionProps,
   ModuleType,
+  imageGalleryModuleMap,
 } from "../types/story";
 
 // Map of block types to their respective module components
 // Extendable map to include additional modules as needed
 const moduleMap: Record<ModuleType, FunctionComponent<StorySectionProps>> = {
   ...imageGalleryModuleMap,
+  ...storyEEIModuleMap,
 };
 
 export const getModuleComponent = (moduleType: ModuleType) => {
