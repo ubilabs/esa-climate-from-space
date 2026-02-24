@@ -169,49 +169,6 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const contentMarker = useContentMarker(selectedContentId ?? null, language);
 
-  const getDataWidget = ({
-    imageLayer,
-    layerDetails,
-    active,
-    action,
-  }: {
-    imageLayer: GlobeImageLayerData | null;
-    layerDetails: Layer | null;
-    active: boolean;
-    action: () => void;
-  }) => {
-    if (imageLayer?.type === LayerType.Gallery) {
-      return <Gallery imageLayer={imageLayer} />;
-    }
-
-    return (
-      <Globe
-        {...(showMarkers &&
-          contentMarker && {
-            markers: [contentMarker],
-          })}
-        backgroundColor={""}
-        // We should offset the markers when user is in content nav
-        isMarkerOffset={isContentNavRoute}
-        active={active}
-        touchable={touchable}
-        view={currentView}
-        projectionState={projectionState}
-        imageLayer={imageLayer}
-        layerDetails={layerDetails || null}
-        spinning={globeSpinning}
-        flyTo={flyToState}
-        onMouseEnter={action}
-        onTouchStart={action}
-        onChange={onChangeHandler}
-        onMoveStart={onMoveStartHandler}
-        onMoveEnd={onMoveEndHandler}
-        onLayerLoadingStateChange={onLayerLoadingStateChangeHandler}
-        className={className}
-      />
-    );
-  };
-
   const getLegends = () =>
     [mainLayerDetails, compareLayerDetails]
       .filter((layer): layer is Layer => Boolean(layer))
@@ -272,6 +229,26 @@ export const GetDataWidget: FunctionComponent<Props> = ({
     }
   }, [dispatch, mainId, compareId, globeSpinning]);
 
+  // Shared props for Globe instances
+  const globeProps = {
+    ...(showMarkers && contentMarker && { markers: [contentMarker] }),
+    backgroundColor: "",
+    isMarkerOffset: isContentNavRoute,
+    touchable,
+    view: currentView,
+    projectionState,
+    spinning: globeSpinning,
+    flyTo: flyToState,
+    onChange: onChangeHandler,
+    onMoveStart: onMoveStartHandler,
+    onMoveEnd: onMoveEndHandler,
+    onLayerLoadingStateChange: onLayerLoadingStateChangeHandler,
+    className,
+  };
+
+  const isGalleryTypeLayer = (layer: GlobeImageLayerData | null | undefined) =>
+    layer?.type === LayerType.Gallery;
+
   return (
     <>
       {isContentNavRoute ? null : (
@@ -289,19 +266,30 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         </>
       )}
 
-      {getDataWidget({
-        imageLayer: mainImageLayer,
-        layerDetails: mainLayerDetails,
-        active: isMainActive,
-        action: () => setIsMainActive(true),
-      })}
-      {compareLayer &&
-        getDataWidget({
-          imageLayer: compareImageLayer,
-          layerDetails: compareLayerDetails,
-          active: !isMainActive,
-          action: () => setIsMainActive(false),
-        })}
+      {isGalleryTypeLayer(mainImageLayer) ? (
+        <Gallery imageLayer={mainImageLayer} />
+      ) : mainImageLayer && (
+        <Globe
+          {...globeProps}
+          active={isMainActive}
+          imageLayer={mainImageLayer}
+          layerDetails={mainLayerDetails || null}
+          onMouseEnter={() => setIsMainActive(true)}
+          onTouchStart={() => setIsMainActive(true)}
+        />
+      )}
+      {compareLayer && isGalleryTypeLayer(compareImageLayer) ? (
+        <Gallery imageLayer={compareImageLayer} />
+      ) : compareLayer && compareImageLayer && (
+        <Globe
+          {...globeProps}
+          active={!isMainActive}
+          imageLayer={compareImageLayer}
+          layerDetails={compareLayerDetails || null}
+          onMouseEnter={() => setIsMainActive(false)}
+          onTouchStart={() => setIsMainActive(false)}
+        />
+      )}
     </>
   );
 };
