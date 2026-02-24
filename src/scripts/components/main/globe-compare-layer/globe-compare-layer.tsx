@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
-import { GetDataWidget } from "../data-widget/data-widget";
 import { GlobeItem } from "../../../types/gallery-item";
+import { GetLocalDataWidget } from "../data-widget/local-data-widget";
 
 interface Props {
   className?: string;
@@ -15,11 +15,14 @@ export const GlobeCompareLayer: FunctionComponent<Props> = ({
   touchable = true,
   globeItem,
 }) => {
+  if (!globeItem) {
+    return null;
+  }
+
   return (
-    <GetDataWidget
+    <GetLocalDataWidget
       className={className}
       globeItem={globeItem}
-      showMarkers={false}
       autoplay={autoplay}
       touchable={touchable}
     />

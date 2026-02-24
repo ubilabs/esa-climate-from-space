@@ -7,6 +7,7 @@ import config from "../../../config/main";
 import { useLayerTimes } from "../../../hooks/use-formatted-time";
 import { downloadScreenshot } from "../../../libs/download-screenshot";
 import { projectionSelector } from "../../../selectors/globe/projection";
+import { timeSelector } from "../../../selectors/globe/time";
 import Button from "../button/button";
 import { CompassIcon } from "../icons/compass-icon";
 import { DownloadIcon } from "../icons/download-icon";
@@ -29,7 +30,8 @@ const GlobeNavigation: FunctionComponent = () => {
   const projectionState = useSelector(projectionSelector);
   const label =
     projectionState.projection === GlobeProjection.Sphere ? "2D" : "3D";
-  const { mainTimeFormat, compareTimeFormat } = useLayerTimes();
+  const time = useSelector(timeSelector);
+  const { mainTimeFormat, compareTimeFormat } = useLayerTimes(time, null, null);
 
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;

@@ -3,16 +3,14 @@ import {
   useState,
   useMemo,
   useEffect,
-  useCallback,
+  useEffectEvent,
 } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FormattedDate } from "react-intl";
 import debounce from "lodash.debounce";
 import cx from "classnames";
 
-import { timeSelector } from "../../../selectors/globe/time";
 import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
-import { setGlobeTime } from "../../../reducers/globe/time";
 import { State } from "../../../reducers";
 import getPlaybackStep from "../../../libs/get-playback-step";
 import clampToRange from "../../../libs/clamp-to-range";
@@ -31,7 +29,8 @@ interface Props {
   className?: string;
   mainId: string | null;
   compareId: string | null;
-  time?: number;
+  time: number;
+  setGlobeTime: (time: number) => void;
   noTimeClamp?: boolean;
   autoplay?: boolean;
 }
@@ -43,12 +42,13 @@ const TimeSlider: FunctionComponent<Props> = ({
   className = "",
   mainId,
   compareId,
+  time: propsTime,
+  setGlobeTime,
   noTimeClamp,
   autoplay = false,
 }) => {
   const dispatch = useDispatch();
-  const globeTime = useSelector(timeSelector);
-  const [time, setTime] = useState(globeTime);
+  const [time, setTime] = useState(propsTime);
   const [isPlaying, setIsPlaying] = useState(false);
   const stepSize = 1000 * 60 * 60 * 24; // one day
   const mainLayerDetails = useSelector((state: State) =>
@@ -81,38 +81,41 @@ const TimeSlider: FunctionComponent<Props> = ({
     combined,
     timeIndexMain,
     timeIndexCompare,
-  } = useLayerTimes(mainId, compareId);
+  } = useLayerTimes(time, mainId, compareId);
 
   const clampedTime = clampToRange(time, combined.min, combined.max);
 
   // update app state
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debouncedSetGlobeTime = useCallback(
-    debounce((newTime: number) => dispatch(setGlobeTime(newTime)), DELAY, {
+  const debouncedSetGlobeTime = useMemo(
+    () => debounce((newTime: number) => setGlobeTime(newTime), DELAY, {
       maxWait: DELAY,
     }),
-    [],
+    [setGlobeTime],
   );
 
   // clamp globe time to min/max of the active layers when a layer changes
   // dont clamp in story mode where time is set by slide
   useEffect(() => {
     if (!noTimeClamp && clampedTime !== time) {
-      dispatch(setGlobeTime(clampedTime));
+      setGlobeTime(clampedTime);
     }
-  }, [noTimeClamp, clampedTime, time, dispatch]);
+  }, [noTimeClamp, clampedTime, time, setGlobeTime]);
+
+  const togglePlayback = useEffectEvent((autoplay: boolean) => setIsPlaying(autoplay));
 
   // stop playback when layer changes
   useEffect(() => {
-    setIsPlaying(autoplay);
+    togglePlayback(autoplay);
   }, [mainLayerDetails, compareLayerDetails, autoplay]);
+
+  const syncLocalTime = useEffectEvent((time: number) => setTime(time));
 
   // sync local time
   useEffect(() => {
-    if (time !== globeTime) {
-      setTime(globeTime);
+    if (time !== propsTime) {
+      syncLocalTime(propsTime);
     }
-  }, [time, globeTime]);
+  }, [time, propsTime]);
 
   // stop globe spinning when playing
   useEffect(() => {
@@ -142,6 +145,8 @@ const TimeSlider: FunctionComponent<Props> = ({
     <div className={classes}>
       {isPlaying && (
         <TimePlayback
+          time={time}
+          setGlobeTime={setGlobeTime}
           minTime={combined.min}
           maxTime={combined.max}
           steps={playbackSteps}

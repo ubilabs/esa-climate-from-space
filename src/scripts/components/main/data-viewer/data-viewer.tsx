@@ -23,9 +23,9 @@ import {
 
 import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
-import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation from "../category-navigation/category-navigation";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
+import { GetGlobalDataWidget } from "../data-widget/global-data-widget";
 import { BackButton } from "../back-button/back-button";
 
 import styles from "./data-viewer.module.css";
@@ -119,7 +119,7 @@ const DataViewer: FunctionComponent = () => {
           isContentNavRoute && styles.showContentList,
         )}
       >
-        <GetDataWidget className={cx(styles.globe)} />
+        <GetGlobalDataWidget className={cx(styles.globe)} />
       </div>
       {isDataRoute && <GlobeNavigation />}
       {isNavigationView && (
