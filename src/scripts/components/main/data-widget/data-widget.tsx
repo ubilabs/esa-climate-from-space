@@ -268,7 +268,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
       {isGalleryTypeLayer(mainImageLayer) ? (
         <Gallery imageLayer={mainImageLayer} />
-      ) : mainImageLayer && (
+      ) : (
         <Globe
           {...globeProps}
           active={isMainActive}
@@ -280,7 +280,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
       )}
       {compareLayer && isGalleryTypeLayer(compareImageLayer) ? (
         <Gallery imageLayer={compareImageLayer} />
-      ) : compareLayer && compareImageLayer && (
+      ) : compareLayer && (
         <Globe
           {...globeProps}
           active={!isMainActive}
