@@ -22,8 +22,10 @@ import { STORY_LATITUDE_OFFSET } from "../../../../../config/main";
 import cx from "classnames";
 
 import styles from "./splashscreen.module.css";
+import useGlobeScroll from "../../../../../hooks/use-globe-scroll";
 
 export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
+
   const { story, setScrollAnchorRefs } = useStory();
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -36,6 +38,8 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
 
   const isLocationBased = isLocationStory(story);
   const location = story?.splashscreen?.location;
+
+  useGlobeScroll()
 
   // We apply the flyTo with a delay. This is a visual effect to make sure the globe container is centered
   useEffect(() => {

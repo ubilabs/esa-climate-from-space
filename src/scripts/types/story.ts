@@ -43,7 +43,7 @@ export type ImageGalleryModuleType =
   | "imageCarousel"
   | "globe";
 
-export type StoryEEIModuleType = "textOverlay" | "baseSlide";
+export type StoryEEIModuleType = "textOverlay" | "baseSlide" | "globe";
 
 type BaseModule = {
   text?: string;
@@ -106,4 +106,5 @@ export const storyEEIModuleMap: Record<
 > = {
   textOverlay: StoryEEI.TextOverlay,
   baseSlide: StoryEEI.BaseSlide,
+  globe: StoryEEI.StoryGlobe,
 };

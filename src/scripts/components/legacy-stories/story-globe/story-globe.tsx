@@ -13,6 +13,7 @@ import { useGetLayerQuery } from "../../../services/api";
 import { GlobeItem } from "../../../types/gallery-item";
 
 import styles from "./story-globe.module.css";
+import useGlobeScroll from "../../../hooks/use-globe-scroll";
 
 interface Props {
   globeItem: GlobeItem;
@@ -32,6 +33,7 @@ const StoryGlobe: FunctionComponent<Props> = ({
   useGetLayerQuery(mainId ?? "", { skip: !mainId });
 
   useStoryGlobe(globeItem);
+  useGlobeScroll()
 
   return (
     <div className={cx(styles.globeContainer, className)}>

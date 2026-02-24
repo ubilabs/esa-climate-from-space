@@ -1,20 +1,11 @@
-import { useEffect, useRef } from "react";
-import styles from "./eei-globe.module.css";
-import {
-  cubicBezier,
-  motion,
-  useMotionValueEvent,
-  useTransform,
-} from "motion/react";
-import { useStoryScroll } from "../../../hooks/use-story-scroll";
-import { setFlyTo } from "../../../reducers/fly-to";
+import { useEffect } from "react";
+import { cubicBezier, useMotionValueEvent, useTransform } from "motion/react";
 import { useDispatch } from "react-redux";
+import { useStoryScroll } from "./use-story-scroll";
+import { setFlyTo } from "../reducers/fly-to";
 
-export default function EEIGlobe() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useStoryScroll({
-    target: ref,
-  });
+export default function useGlobeScroll() {
+  const { scrollYProgress } = useStoryScroll({});
 
   const totalLength = 12;
 
@@ -24,23 +15,6 @@ export default function EEIGlobe() {
       Number(((i + 1) / (totalLength - 1)).toFixed(5)),
     ),
   ];
-
-  // console.log("🚀 ~ eei-globe.tsx:26 → normalizedSteps:", normalizedSteps);
-
-  const constructions = {
-    0: 220,
-    1: -200,
-    2: -400,
-    3: -100,
-    4: 0,
-    5: -100,
-    6: -100,
-    7: 100,
-    8: 100,
-    9: 0,
-    10: 200,
-    11: 0,
-  };
 
   const altitudes = {
     0: 22839999.9999918,
@@ -95,14 +69,4 @@ export default function EEIGlobe() {
     );
     console.log("x changed to", latest);
   });
-
-  return (
-    <div ref={ref} className={styles.wrapper}>
-      {Array.from({ length: totalLength }).map((_, i) => (
-        <div className={styles.slide} key={i}>
-          slide {i}
-        </div>
-      ))}
-    </div>
-  );
 }

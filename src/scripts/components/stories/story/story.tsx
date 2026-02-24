@@ -4,17 +4,18 @@ import { useStory } from "../../../providers/story/use-story";
 
 import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
 import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
+import StoryGlobe from "./blocks/globe/story-globe/story-globe";
 import { useLenisForStory } from "../../../hooks/use-lenis-for-story";
 
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 import { getModuleComponent } from "../../../libs/get-story-components";
+import useGlobeScroll from "../../../hooks/use-globe-scroll";
 
 import cx from "classnames";
 
 import styles from "./story.module.css";
-import EEIGlobe from "../story-eei/eei-globe";
 
 /**
  * The Story component is responsible for rendering the story's content.
@@ -40,14 +41,39 @@ const Story: FunctionComponent = () => {
   }
 
   return (
-    <main
-      className={cx(styles.story, styles.fadeIn)}
-      ref={storyElementRef}
-      id="story"
-    >
-      <EEIGlobe />
-      {/* Provisional - will be replaced with a proper end screen later */}
-    </main>
+    <>
+      <main
+        className={cx(styles.story, styles.fadeIn)}
+        ref={storyElementRef}
+        id="story"
+      >
+        <SplashScreen />
+        {story.modules.map(({ type }, moduleIndex) => {
+          const ModuleComponent = getModuleComponent(type);
+          const moduleData = story.modules[moduleIndex];
+
+          /* Assign this to element's ref within modules that should serve as scroll- and snap anchors. Snap anchor is opt-out, i.e. if you want to an element to serve as a scroll anchor, but should not trigger a snap, use the data-no-snap attribute (like for the blend elements)  */
+          const generateScrollAnchorRef = (
+            nodeIndex: number,
+            subIndex: number,
+          ) =>
+            setScrollAnchorRefs(`${moduleIndex + 1}-${nodeIndex}-${subIndex}`);
+
+          return (
+            <ModuleContentProvider
+              key={moduleIndex}
+              module={moduleData}
+              storyId={story.id}
+              getRefCallback={generateScrollAnchorRef}
+            >
+              <ModuleComponent />
+            </ModuleContentProvider>
+          );
+        })}
+        {/* Provisional - will be replaced with a proper end screen later */}
+        <ClosingScreen />
+      </main>
+    </>
   );
 };
 

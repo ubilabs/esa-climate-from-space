@@ -8,6 +8,22 @@
   },
   "modules": [
     {
+      "type": "globe",
+      "globe": {
+        "flyTo": {
+          "position": {
+            "longitude": 53.03,
+            "latitude": 9.9,
+            "height": 24997871.88
+          },
+          "orientation": {
+            "heading": 360
+          }
+        },
+        "layer": []
+      }
+    },
+    {
       "type": "baseSlide",
       "text": "slide 1"
     },
