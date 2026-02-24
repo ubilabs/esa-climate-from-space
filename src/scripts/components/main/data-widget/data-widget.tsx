@@ -130,6 +130,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const selectedContentId = useSelector(contentSelector).contentId;
 
   const contentMarker = useContentMarker(selectedContentId ?? null, language);
+  console.log("🚀 ~ data-widget.tsx:132 → contentMarker:", contentMarker);
 
   const getLegends = () =>
     [mainLayerDetails, compareLayerDetails]
@@ -237,15 +238,17 @@ export const GetDataWidget: FunctionComponent<Props> = ({
       )}
       {compareLayer && isGalleryTypeLayer(compareImageLayer) ? (
         <Gallery imageLayer={compareImageLayer} />
-      ) : compareLayer && (
-        <Globe
-          {...globeProps}
-          active={!isMainActive}
-          imageLayer={compareImageLayer}
-          layerDetails={compareLayerDetails || null}
-          onMouseEnter={() => setIsMainActive(false)}
-          onTouchStart={() => setIsMainActive(false)}
-        />
+      ) : (
+        compareLayer && (
+          <Globe
+            {...globeProps}
+            active={!isMainActive}
+            imageLayer={compareImageLayer}
+            layerDetails={compareLayerDetails || null}
+            onMouseEnter={() => setIsMainActive(false)}
+            onTouchStart={() => setIsMainActive(false)}
+          />
+        )
       )}
     </>
   );

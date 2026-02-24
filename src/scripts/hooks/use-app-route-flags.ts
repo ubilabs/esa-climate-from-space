@@ -24,6 +24,11 @@ export function useAppRouteFlags() {
   const isContentNavRoute = appRoute === AppRoute.NavContent;
 
   const isStoriesRoute =
+    appRoute === AppRoute.Stories ||
+    appRoute === AppRoute.LegacyStory ||
+    AppRoute.StoryEEI;
+
+  const isRegularStory =
     appRoute === AppRoute.Stories || appRoute === AppRoute.LegacyStory;
 
   const isDataRoute = appRoute === AppRoute.Data;
@@ -43,5 +48,6 @@ export function useAppRouteFlags() {
     isShowCaseView,
     isPresentView,
     isSearchRoute,
+    isRegularStory,
   };
 }

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useCallback } from "react";
 
 import Lenis from "lenis";
-import Snap from "lenis/snap";
+import Snap, { SnapOptions } from "lenis/snap";
 
 import { getCssVarPx } from "../libs/get-css-var-in-px";
 
@@ -11,7 +11,13 @@ import { useScreenSize } from "./use-screen-size";
 
 export const DATA_NO_SNAP_ATTR = "data-no-snap";
 
-export function useLenisForStory() {
+type SnapElementOptions = {
+  align?: string | string[];
+  ignoreSticky?: boolean;
+  ignoreTransform?: boolean;
+};
+
+export function useLenisForStory(options?: SnapElementOptions) {
   const { storyElementRef, story, lenisRef, getScrollAnchorRefsMap } =
     useStory();
 
@@ -73,11 +79,16 @@ export function useLenisForStory() {
     getScrollAnchorRefsMap().forEach((el) => {
       // skip element if it has the data-no-snap attribute
       if (el.hasAttribute(DATA_NO_SNAP_ATTR)) return;
-      snap.addElement(el as HTMLElement, {
-        align: "center",
-        ignoreTransform: true,
-        ignoreSticky: false,
-      });
+
+      const snapElOptions = options
+        ? options
+        : {
+            align: "center",
+            ignoreTransform: true,
+            ignoreSticky: false,
+          };
+
+      snap.addElement(el as HTMLElement, snapElOptions);
     });
 
     return () => {
@@ -86,6 +97,7 @@ export function useLenisForStory() {
       lenisRef.current = null;
     };
   }, [
+    options,
     screenHeight,
     getScrollAnchorRefsMap,
     storyElementRef,

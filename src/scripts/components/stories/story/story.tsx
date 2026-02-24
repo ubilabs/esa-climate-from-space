@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useMemo } from "react";
 
 import { useStory } from "../../../providers/story/use-story";
 
@@ -27,14 +27,20 @@ const Story: FunctionComponent = () => {
   console.log("🚀 ~ story.tsx:25 → story:", story);
 
   // Initialize Lenis for smooth scrolling behavior in the story
-  useLenisForStory();
+ const snapElementOptions = useMemo(() => {
+  if (story?.id !== "story-eei") return undefined;
+  return { align: "end" as const };
+}, [story?.id]); //
+
+
+  useLenisForStory(snapElementOptions);
 
   // Handles automatic scrolling through the story in showcase mode
   // and manages navigation to the next story when the current one ends
   useAutoScrollInShowcase();
 
   // Synchronize the URL with the current story state
-  // useSyncStoryUrl();
+  useSyncStoryUrl();
 
   if (!story) {
     return null;

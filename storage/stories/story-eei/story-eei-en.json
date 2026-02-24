@@ -8,32 +8,93 @@
   },
   "modules": [
     {
-      "type": "globe",
-      "globe": {
-        "flyTo": {
-          "position": {
-            "longitude": 53.03,
-            "latitude": 9.9,
-            "height": 24997871.88
-          },
-          "orientation": {
-            "heading": 360
-          }
-        },
-        "layer": []
-      }
-    },
-    {
       "type": "baseSlide",
       "text": "slide 1"
     },
     {
       "type": "baseSlide",
-      "text": "slide 2"
+      "text": "slide 2",
+      "globe": {
+        "flyTo": {
+          "position": {
+            "lat": -14.3821,
+            "lng": 132.7459,
+            "altitude": 1850000
+          }
+        }
+      }
     },
     {
       "type": "baseSlide",
       "text": "slide 3"
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 4",
+      "globe": {
+        "flyTo": {
+          "position": {
+            "lat": 37.9284,
+            "lng": -109.7421,
+            "altitude": 11200000
+          }
+        }
+      }
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 5"
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 6",
+      "globe": {
+        "flyTo": {
+          "position": {
+            "lat": -52.1183,
+            "lng": -68.4479,
+            "altitude": 4200000
+          }
+        }
+      }
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 7"
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 8",
+      "globe": {
+        "flyTo": {
+          "position": {
+            "lat": 63.2741,
+            "lng": 96.5513,
+            "altitude": 24800000
+          }
+        }
+      }
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 9"
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 10",
+      "globe": {
+        "flyTo": {
+          "position": {
+            "lat": 9.8827,
+            "lng": -27.1945,
+            "altitude": 7600000
+          }
+        }
+      }
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 1"
     }
   ]
 }

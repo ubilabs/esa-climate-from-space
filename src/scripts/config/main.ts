@@ -34,6 +34,10 @@ export const ROUTES = {
   },
   [AppRoute.ShowcaseStories]: { path: "/showcase/:storyIds", end: true },
   [AppRoute.Showcase]: { path: "/showcase", end: true },
+  [AppRoute.StoryEEI]: {
+    path: "/:category/stories/story-eei/:slideIndex",
+    end: true,
+  },
   [AppRoute.Stories]: {
     path: "/:category/stories/:storyId/:slideIndex",
     end: true,

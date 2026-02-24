@@ -59,7 +59,7 @@ export type ImageModule = BaseModule & {
   type: ImageGalleryModuleType;
 };
 
-export type StoryEEIModule = Pick<BaseModule, "text"> & {
+export type StoryEEIModule = Pick<BaseModule, "text" | "globe"> & {
   type: StoryEEIModuleType;
 };
 

@@ -54,6 +54,7 @@ import { isLegacyStory } from "../../../libs/is-legacy-story";
 
 import "./app.css";
 import "../../../../variables.css";
+import { useStory } from "../../../providers/story/use-story";
 
 // Create Matomo tracking instance
 const matomoInstance = createInstance({
@@ -108,7 +109,7 @@ const LegacyOrRecentStory: FunctionComponent = () => {
 const MainContent: FunctionComponent<{
   children?: React.ReactNode;
 }> = ({ children }) => {
-  const { isStoriesRoute } = useAppRouteFlags();
+  const { isRegularStory } = useAppRouteFlags();
 
   return (
     <>
@@ -116,7 +117,8 @@ const MainContent: FunctionComponent<{
         <Header />
         {children}
         {/* Stories use StoryGlobe component for globe visualization instead of DataViewer */}
-        {!isStoriesRoute && <DataViewer />}
+        {/* Keep the global globe in Dataviewer for EEI Story */}
+        {!isRegularStory && <DataViewer />}
         <LayerSelector />
       </StoryWrapper>
     </>

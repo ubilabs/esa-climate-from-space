@@ -62,7 +62,7 @@ export const GetGlobalDataWidget = ({ className }: Props) => {
   );
 
   return (
-    <GetDataWidget 
+    <GetDataWidget
       className={className}
       globeView={globalGlobeView}
       mainId={mainId}
