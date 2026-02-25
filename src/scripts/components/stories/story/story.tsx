@@ -3,18 +3,21 @@ import { FunctionComponent } from "react";
 import { useStory } from "../../../providers/story/use-story";
 
 import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
+
 import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
 import { useLenisForStory } from "../../../hooks/use-lenis-for-story";
 
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
+import GlobeScroll from "./blocks/story-eei/globe-scroll";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
+
 import { getModuleComponent } from "../../../libs/get-story-components";
 
 import cx from "classnames";
 
 import styles from "./story.module.css";
-import EEIGlobe from "../story-eei/eei-globe";
 
 /**
  * The Story component is responsible for rendering the story's content.
@@ -23,31 +26,59 @@ import EEIGlobe from "../story-eei/eei-globe";
  */
 const Story: FunctionComponent = () => {
   const { storyElementRef, story, setScrollAnchorRefs } = useStory();
-  console.log("🚀 ~ story.tsx:25 → story:", story);
+  const { isStoryEEI } = useAppRouteFlags();
 
   // Initialize Lenis for smooth scrolling behavior in the story
-  useLenisForStory();
+  useLenisForStory(isStoryEEI);
 
   // Handles automatic scrolling through the story in showcase mode
   // and manages navigation to the next story when the current one ends
   useAutoScrollInShowcase();
 
   // Synchronize the URL with the current story state
-  // useSyncStoryUrl();
+  useSyncStoryUrl();
 
   if (!story) {
     return null;
   }
 
   return (
-    <main
-      className={cx(styles.story, styles.fadeIn)}
-      ref={storyElementRef}
-      id="story"
-    >
-      <EEIGlobe />
-      {/* Provisional - will be replaced with a proper end screen later */}
-    </main>
+    <>
+      <main
+        className={cx(styles.story, styles.fadeIn)}
+        ref={storyElementRef}
+        id="story"
+      >
+        {/* enable globe to react to scroll event (currently only story-eei)*/}
+        {isStoryEEI && <GlobeScroll />}
+        <SplashScreen />
+
+        {story.modules.map(({ type }, moduleIndex) => {
+          const ModuleComponent = getModuleComponent(type);
+          const moduleData = story.modules[moduleIndex];
+
+          /* Assign this to element's ref within modules that should serve as scroll- and snap anchors. Snap anchor is opt-out, i.e. if you want to an element to serve as a scroll anchor, but should not trigger a snap, use the data-no-snap attribute (like for the blend elements)  */
+          const generateScrollAnchorRef = (
+            nodeIndex: number,
+            subIndex: number,
+          ) =>
+            setScrollAnchorRefs(`${moduleIndex + 1}-${nodeIndex}-${subIndex}`);
+
+          return (
+            <ModuleContentProvider
+              key={moduleIndex}
+              module={moduleData}
+              storyId={story.id}
+              getRefCallback={generateScrollAnchorRef}
+            >
+              <ModuleComponent />
+            </ModuleContentProvider>
+          );
+        })}
+        {/* Provisional - will be replaced with a proper end screen later */}
+        <ClosingScreen />
+      </main>
+    </>
   );
 };
 
