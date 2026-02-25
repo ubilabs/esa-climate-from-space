@@ -58,7 +58,7 @@
     "lethargy": "^1.0.9",
     "lodash.debounce": "^4.0.8",
     "lodash.intersection": "^4.4.0",
-    "motion": "^12.23.26",
+    "motion": "^12.34.3",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-intl": "^8.0.4",
