@@ -16,7 +16,6 @@ const GlobeScroll: FunctionComponent = () => {
   const { scrollYProgress } = useStoryScroll({});
   const modules = story?.modules ?? [];
 
-  // We take the total number of modules plus 1 (splash screen)
   const numberOfModules = Number(modules?.length);
 
   // generate array with equal spacing for all modules, starting at 0 (splashscreen) and ending at 1 (last module) before closing screen
@@ -58,7 +57,6 @@ const GlobeScroll: FunctionComponent = () => {
     }
     return acc;
   }, initialValue);
-
 
   // map location values to progress steps
   const { altitude, lng, lat } = useTransform(
