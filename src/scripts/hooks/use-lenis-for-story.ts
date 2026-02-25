@@ -11,7 +11,7 @@ import { useScreenSize } from "./use-screen-size";
 
 export const DATA_NO_SNAP_ATTR = "data-no-snap";
 
-export function useLenisForStory() {
+export function useLenisForStory(isStoryEEI: boolean) {
   const { storyElementRef, story, lenisRef, getScrollAnchorRefsMap } =
     useStory();
 
@@ -70,14 +70,18 @@ export function useLenisForStory() {
 
     snap.viewport.height = screenHeight + headerHeight;
 
+    const options = isStoryEEI
+      ? { align: "end" }
+      : {
+          align: "center",
+          ignoreTransform: true,
+          ignoreSticky: false,
+        };
+
     getScrollAnchorRefsMap().forEach((el) => {
       // skip element if it has the data-no-snap attribute
       if (el.hasAttribute(DATA_NO_SNAP_ATTR)) return;
-      snap.addElement(el as HTMLElement, {
-        align: "center",
-        ignoreTransform: true,
-        ignoreSticky: false,
-      });
+      snap.addElement(el as HTMLElement, options);
     });
 
     return () => {
@@ -86,6 +90,7 @@ export function useLenisForStory() {
       lenisRef.current = null;
     };
   }, [
+    isStoryEEI,
     screenHeight,
     getScrollAnchorRefsMap,
     storyElementRef,
