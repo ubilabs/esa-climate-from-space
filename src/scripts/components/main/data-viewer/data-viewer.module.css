@@ -29,7 +29,8 @@
     }
   }
 
-  &[data-nav-content="stories"] {
+  &[data-nav-conent="stories"],
+  &[data-nav-content="story-eei"] {
     .globe {
       margin-bottom: 0;
     }

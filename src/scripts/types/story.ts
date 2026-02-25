@@ -25,13 +25,12 @@ export type Story = {
 type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
 
 export type Splashscreen = {
-  location?: Record<string, number>;
   url?: string;
   slides: Array<{ text: string }>;
   title?: string;
   focus?: ImageFocus;
   subtitle?: string;
-};
+} & ScrollGlobe;
 
 export type ImageGalleryModuleType =
   | "textOverlay"
@@ -59,8 +58,21 @@ export type ImageModule = BaseModule & {
   type: ImageGalleryModuleType;
 };
 
+type ScrollGlobe = {
+  containerPosition: {
+    x: number;
+    y: number;
+  };
+  location: {
+    lng: number;
+    lat: number;
+    altitude: number;
+  };
+};
+
 export type StoryEEIModule = Pick<BaseModule, "text" | "globe"> & {
   type: StoryEEIModuleType;
+  globe?: ScrollGlobe;
 };
 
 export type BaseModuleSlide = {
