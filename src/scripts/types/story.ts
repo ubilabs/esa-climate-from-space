@@ -76,7 +76,7 @@ export type ImageModule = BaseModule & {
 
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
   type: StoryEEIModuleType;
-  globe: ScrollGlobe;
+  globe?: ScrollGlobe;
 };
 
 export type BaseModuleSlide = {
