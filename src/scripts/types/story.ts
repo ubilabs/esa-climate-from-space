@@ -40,7 +40,7 @@ export interface ScrollGlobe {
 export type Location = ScrollGlobe["location"];
 
 export type Splashscreen = {
-  location: Location;
+  location?: Location;
   url?: string;
   slides: Array<{ text: string }>;
   title?: string;
