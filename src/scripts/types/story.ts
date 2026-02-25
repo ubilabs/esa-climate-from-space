@@ -24,8 +24,23 @@ export type Story = {
 
 type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
 
+export interface ScrollGlobe {
+  type: "scrollGlobe";
+  containerPosition: {
+    x: number;
+    y: number;
+  };
+  location: {
+    lng: number;
+    lat: number;
+    altitude: number;
+  };
+}
+
+export type Location = ScrollGlobe["location"];
+
 export type Splashscreen = {
-  location?: Record<string, number>;
+  location: Location;
   url?: string;
   slides: Array<{ text: string }>;
   title?: string;
@@ -43,7 +58,7 @@ export type ImageGalleryModuleType =
   | "imageCarousel"
   | "globe";
 
-export type StoryEEIModuleType = "textOverlay" | "baseSlide";
+export type StoryEEIModuleType = "textOverlay" | "baseSlide" | "scrollGlobe";
 
 type BaseModule = {
   text?: string;
@@ -61,6 +76,7 @@ export type ImageModule = BaseModule & {
 
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
   type: StoryEEIModuleType;
+  globe: ScrollGlobe;
 };
 
 export type BaseModuleSlide = {
@@ -106,4 +122,5 @@ export const storyEEIModuleMap: Record<
 > = {
   textOverlay: StoryEEI.TextOverlay,
   baseSlide: StoryEEI.BaseSlide,
+  globe: StoryEEI.StoryGlobe,
 };
