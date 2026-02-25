@@ -8,6 +8,13 @@
   },
   "modules": [
     {
+      "globe": {
+        "location": {
+          "lat": -14.3821,
+          "lng": 132.7459,
+          "altitude": 20047171
+        }
+      },
       "type": "baseSlide",
       "text": "slide 1"
     },
@@ -18,6 +25,62 @@
     {
       "type": "baseSlide",
       "text": "slide 3"
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 4",
+      "globe": {
+        "location": {
+          "lat": 37.9284,
+          "lng": -109.7421,
+          "altitude": 11200000
+        }
+      }
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 5"
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 6",
+      "globe": {
+        "location": {
+          "lat": -52.1183,
+          "lng": -68.4479,
+          "altitude": 4200000
+        }
+      }
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 7"
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 8",
+      "globe": {
+        "location": {
+          "lat": 63.2741,
+          "lng": 96.5513,
+          "altitude": 2079886
+        }
+      }
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 9"
+    },
+    {
+      "type": "baseSlide",
+      "text": "slide 10",
+      "globe": {
+        "location": {
+          "lat": 9.8827,
+          "lng": -27.1945,
+          "altitude": 7600000
+        }
+      }
     }
   ]
 }
