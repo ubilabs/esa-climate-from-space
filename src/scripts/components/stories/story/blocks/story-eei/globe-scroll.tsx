@@ -30,15 +30,26 @@ const GlobeScroll: FunctionComponent = () => {
 
   const location = story?.splashscreen?.location;
 
+  // Default location values to ensure useTransform always has valid data
+  const defaultLocation: Location = {
+    lat: 0,
+    lng: 0,
+    altitude: 5000000,
+  };
+
+  // Validate that location has all required properties, otherwise use defaults
+  const validLocation: Location = {
+    lat: location?.lat ?? defaultLocation.lat,
+    lng: location?.lng ?? defaultLocation.lng,
+    altitude: location?.altitude ?? defaultLocation.altitude,
+  };
+
   // construct an object with lat, lng, altitude as key and their values as first item in an array
-  const initialValue = (
-    Object.entries(location ?? {}) as Array<
-      [keyof Location, Location[keyof Location]]
-    >
-  ).reduce<Partial<Record<keyof Location, number[]>>>((acc, [key, value]) => {
-    acc[key] = [value];
-    return acc;
-  }, {});
+  const initialValue: Record<keyof Location, number[]> = {
+    lat: [validLocation.lat],
+    lng: [validLocation.lng],
+    altitude: [validLocation.altitude],
+  };
 
   // arrays are populated with location values specified in the story-eei.json
   const locationValues = modules.reduce((acc, currentValue) => {
