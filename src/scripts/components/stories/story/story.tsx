@@ -1,4 +1,5 @@
-import { FunctionComponent, useMemo } from "react";
+import { FunctionComponent, useEffect, useMemo } from "react";
+import { useDispatch } from "react-redux";
 
 import { useStory } from "../../../providers/story/use-story";
 
@@ -6,6 +7,8 @@ import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showc
 import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
 import StoryGlobe from "./blocks/globe/story-globe/story-globe";
 import { useLenisForStory } from "../../../hooks/use-lenis-for-story";
+
+import { setSelectedLayerIds } from "../../../reducers/layers";
 
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
@@ -27,11 +30,18 @@ const Story: FunctionComponent = () => {
   console.log("🚀 ~ story.tsx:25 → story:", story);
 
   // Initialize Lenis for smooth scrolling behavior in the story
- const snapElementOptions = useMemo(() => {
-  if (story?.id !== "story-eei") return undefined;
-  return { align: "end" as const };
-}, [story?.id]); //
+  const snapElementOptions = useMemo(() => {
+    if (story?.id !== "story-eei") return undefined;
+    return { align: "end" as const };
+  }, [story?.id]); //
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (story?.id === "story-eei") {
+      dispatch(setSelectedLayerIds({ layerId: "water_mask", isPrimary: true }));
+    }
+  }, [story?.id]);
 
   useLenisForStory(snapElementOptions);
 
