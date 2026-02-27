@@ -1,12 +1,14 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import { useStory } from "../../../providers/story/use-story";
 
 import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
-
 import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
 import { useLenisForStory } from "../../../hooks/use-lenis-for-story";
+
+import { setSelectedLayerIds } from "../../../reducers/layers";
 
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
@@ -27,6 +29,16 @@ import styles from "./story.module.css";
 const Story: FunctionComponent = () => {
   const { storyElementRef, story, setScrollAnchorRefs } = useStory();
   const { isStoryEEI } = useAppRouteFlags();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isStoryEEI) {
+      dispatch(setSelectedLayerIds({ layerId: "water_mask", isPrimary: true }));
+      return () => {
+        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+      };
+    }
+  }, [isStoryEEI, dispatch]);
 
   // Initialize Lenis for smooth scrolling behavior in the story
   useLenisForStory(isStoryEEI);
