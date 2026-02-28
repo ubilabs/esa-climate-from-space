@@ -34,7 +34,9 @@ function haveMotionValuesChanges(
 const GlobeScroll: FunctionComponent = () => {
   const { story } = useStory();
   const dispatch = useDispatch();
-  const location = story?.splashscreen?.location;
+
+  const location = story?.splashscreen.location;
+  const containerPosition = story?.splashscreen.containerPosition;
 
   const { scrollYProgress } = useStoryScroll({});
   const modules = story?.modules ?? [];
@@ -53,7 +55,7 @@ const GlobeScroll: FunctionComponent = () => {
 
   // construct an object with lat, lng, altitude as key and their values as first item in an array
   const initialValue = (
-    Object.entries(location ?? {}) as Array<
+    Object.entries({ ...location, ...containerPosition }) as Array<
       [keyof Location, Location[keyof Location]]
     >
   ).reduce<Partial<Record<keyof Location, number[]>>>((acc, [key, value]) => {
@@ -62,25 +64,29 @@ const GlobeScroll: FunctionComponent = () => {
   }, {});
 
   // arrays are populated with location values specified in the story-eei.json
-  const locationValues = modules.reduce((acc, module) => {
-    const globeValues = module?.globe;
+  const locationValues = modules.reduce(
+    (acc, module) => {
+      const globeOrContainerValue = {
+        ...module?.globe?.location,
+        ...module?.globe?.containerPosition,
+      };
 
-    const location =
-      globeValues && "location" in globeValues && globeValues?.location;
-
-    for (const [key, value] of Object.entries(acc)) {
-      // if we haven't specified location for a slide, we assume the globe should stay in the current position
-      const newValue =
-        location && key in location
-          ? location[key as keyof Location]
-          : (value.at(-1) ?? 0);
-      acc[key as keyof typeof acc] = [...value, newValue];
-    }
-    return acc;
-  }, initialValue);
+      for (const [key, value] of Object.entries(acc)) {
+        console.log("🚀 ~ globe-scroll.tsx:80 → key:", key);
+        // if we haven't specified location for a slide, we assume the globe should stay in the current position
+        const newValue =
+          globeOrContainerValue && key in globeOrContainerValue
+            ? globeOrContainerValue[key]
+            : (value.at(-1) ?? 0);
+        acc[key as keyof typeof acc] = [...value, newValue];
+      }
+      return acc;
+    },
+    { ...initialValue },
+  );
 
   // map location values to progress steps
-  const globeMotions = useTransform(
+  const { x, y, ...globeMotions } = useTransform(
     scrollYProgress,
     progressSteps,
     locationValues,
@@ -89,6 +95,13 @@ const GlobeScroll: FunctionComponent = () => {
       ease: cubicBezier(0.17, 0.67, 0.83, 0.67),
     },
   );
+
+  const root = document.documentElement;
+  useMotionValueEvent(scrollYProgress, "change", () => {
+    // root.style.setProperty("--globe-container-x", `${x.get() * 100}vh`);
+    root.style.setProperty("--globe-container-y", `${y.get() * -100}vh`);
+    root.style.setProperty("--globe-container-x", `${x.get() * -100}vw`);
+  });
 
   // Dispatch interpolated globe position to store
   useMotionValueEvent(scrollYProgress, "change", () => {

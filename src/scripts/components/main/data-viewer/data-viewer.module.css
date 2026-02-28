@@ -29,6 +29,12 @@
     }
   }
 
+  &[data-nav-content="story-eei"] {
+    .globe {
+      transition: none ;
+    }
+  }
+
   &[data-nav-content="stories"],
   &[data-nav-content="story-eei"] {
     .globe {

@@ -38,8 +38,14 @@ export interface ScrollGlobe {
 
 export type Location = ScrollGlobe["location"];
 
+export type ContainerPosition = {
+  x: number;
+  y: number;
+};
+
 export type Splashscreen = {
   location?: Location;
+  containerPosition?: ContainerPosition;
   url?: string;
   slides: Array<{ text: string }>;
   title?: string;

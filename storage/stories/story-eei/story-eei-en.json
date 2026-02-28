@@ -1,7 +1,8 @@
 {
   "id": "story-eei",
   "splashscreen": {
-    "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
+    "location": { "altitude": 13040000, "lat": 0, "lng": 0 },
+    "containerPosition": { "x": 0, "y": -2 },
     "focus": "center",
     "title": "Earth Engine Imbalance",
     "subtitle": "Probably not good"
@@ -9,10 +10,11 @@
   "modules": [
     {
       "globe": {
+        "containerPosition": { "x": 0, "y": -0.4 },
         "location": {
           "lat": -14.3821,
           "lng": 132.7459,
-          "altitude": 20047171
+          "altitude": 13040000
         }
       },
       "type": "baseSlide",
@@ -20,11 +22,21 @@
     },
     {
       "type": "baseSlide",
-      "text": "slide 2"
+      "text": "slide 2",
+
+        "location": {
+          "lat": -14.3821,
+          "lng": 132.7459,
+          "altitude": 20047171
+        }
     },
     {
       "type": "baseSlide",
-      "text": "slide 3"
+      "text": "slide 3",
+
+      "globe": {
+        "containerPosition": { "y": 0.5, "x": 0 }
+      }
     },
     {
       "type": "baseSlide",
@@ -45,6 +57,7 @@
       "type": "baseSlide",
       "text": "slide 6",
       "globe": {
+        "containerPosition": { "x": 0.5, "y": 0 },
         "location": {
           "lat": -52.1183,
           "lng": -68.4479,
@@ -60,6 +73,7 @@
       "type": "baseSlide",
       "text": "slide 8",
       "globe": {
+        "containerPosition": { "x": 0, "y": 0 },
         "location": {
           "lat": 63.2741,
           "lng": 96.5513,
