@@ -8,6 +8,10 @@
   },
   "modules": [
     {
+      "type": "baseScrollModule",
+      "text": "slide 1"
+    },
+    {
       "globe": {
         "location": {
           "lat": -14.3821,
@@ -15,12 +19,8 @@
           "altitude": 20047171
         }
       },
-      "type": "baseScrollModule",
-      "text": "slide 1"
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 2"
+      "type": "kettleAmountModule",
+      "text": "kettle amount module"
     },
     {
       "type": "baseScrollModule",

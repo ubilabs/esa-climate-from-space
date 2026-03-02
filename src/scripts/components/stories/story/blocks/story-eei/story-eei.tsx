@@ -1,13 +1,15 @@
 import { FunctionComponent, ReactNode } from "react";
 
 import TextOverlay from "../generic/text-overlay/text-overlay";
-import BaseScrollModule from "./modules/base-scroll/base-scroll-module";
+import ScrollModule from "./modules/base-scroll/module/scroll-module";
 import StoryGlobe from "../globe/story-globe/story-globe";
+import KettleAmountModule from "./modules/kettle-amount/kettle-amount";
 
 export type StoryEEICompoundComponents = {
   TextOverlay: typeof TextOverlay;
-  BaseSlide: typeof BaseScrollModule;
+  BaseSlide: typeof ScrollModule;
   StoryGlobe: typeof StoryGlobe;
+  KettleAmountModule: typeof KettleAmountModule,
 };
 
 /* Module Wrapper for Earth Engine Imbalance Story Components*/
@@ -16,5 +18,6 @@ export const StoryEEI = (({ children }: { children: ReactNode }) => {
 }) as FunctionComponent<{ children: ReactNode }> & StoryEEICompoundComponents;
 
 StoryEEI.TextOverlay = TextOverlay;
-StoryEEI.BaseSlide = BaseScrollModule;
+StoryEEI.BaseSlide = ScrollModule;
 StoryEEI.StoryGlobe = StoryGlobe;
+StoryEEI.KettleAmountModule = KettleAmountModule

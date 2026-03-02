@@ -1,0 +1,9 @@
+.kettleAmountWrapper {
+  opacity: 0.2;
+  height: calc(var(--story-height) * 2);
+
+  .test {
+    height: var(--story-height);
+    background-image: linear-gradient(red, blue)
+  }
+}
