@@ -73,6 +73,12 @@ export type ImageModule = BaseModule & {
   type: ImageGalleryModuleType;
 };
 
+export type ImageCarouselModule = ImageModule & {
+  type: "imageCarousel";
+  headerText?: string;
+  readMoreUrl?: string;
+};
+
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
   type: StoryEEIModuleType;
   globe?: ScrollGlobe;
@@ -88,7 +94,7 @@ export type BaseModuleSlide = {
 };
 
 // Extend with union for other block types if needed
-export type Module = ImageModule | StoryEEIModule;
+export type Module = ImageModule | ImageCarouselModule | StoryEEIModule;
 
 export type ModuleType = Module["type"];
 

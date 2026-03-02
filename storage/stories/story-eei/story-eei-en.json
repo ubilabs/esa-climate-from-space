@@ -81,6 +81,25 @@
           "altitude": 7600000
         }
       }
+    },
+    {
+      "type": "imageCarousel",
+      "headerText": "ECVs related to MOTECOSUMA",
+      "readMoreUrl": "https://climate.esa.int/en/Cross_ECV_Projects/motecusoma/",
+      "slides": [
+        {
+          "text": "[Ice Sheet](#/land/data?globe=SI-38.98I73.03I25840000I0.00I1293840000000I0Igreenland_ice.secI)",
+          "url": "assets/ice_sheet.png"
+        },
+        {
+          "text": "[Sea Ice](#/ocean/data?globe=SI-38.98I73.03I25840000I0.00I1493596800000I0Isea_ice.ice_concI)",
+          "url": "assets/sea_ice.png"
+        },
+        {
+          "text": "[Sea Level Anomalies](#/ocean/data?globe=SI0.00I25.00I25840000I0.00I1450137600000I0Isea_level.slaI)",
+          "url": "assets/sea_level.png"
+        }
+      ]
     }
   ]
 }

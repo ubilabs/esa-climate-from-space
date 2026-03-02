@@ -37,6 +37,11 @@ h6 {
   text-wrap: balance;
 }
 
+a {
+  color: var(--text-default);
+  text-decoration: none;
+}
+
 html,
 body,
 #app {
