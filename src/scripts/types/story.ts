@@ -24,8 +24,22 @@ export type Story = {
 
 type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
 
+export interface ScrollGlobe {
+  containerPosition: {
+    x: number;
+    y: number;
+  };
+  location: {
+    lng: number;
+    lat: number;
+    altitude: number;
+  };
+}
+
+export type Location = ScrollGlobe["location"];
+
 export type Splashscreen = {
-  location?: Record<string, number>;
+  location?: Location;
   url?: string;
   slides: Array<{ text: string }>;
   title?: string;
@@ -61,6 +75,7 @@ export type ImageModule = BaseModule & {
 
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
   type: StoryEEIModuleType;
+  globe?: ScrollGlobe;
 };
 
 export type BaseModuleSlide = {

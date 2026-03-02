@@ -13,7 +13,7 @@ export const useContentMarker = (
 
   const selectedStory = stories.find((story) => story.id === selectedStoryId);
 
-  if (!selectedStory) {
+  if (!selectedStory || !selectedStory.position.length) {
     return null;
   }
 
