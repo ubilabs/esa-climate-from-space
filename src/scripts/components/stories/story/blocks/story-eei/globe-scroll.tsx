@@ -56,7 +56,7 @@ const GlobeScroll: FunctionComponent = () => {
   // construct an object with lat, lng, altitude, container x- and y, as key and their values as first item in an array
   const initialValue = (
     Object.entries({ ...location, ...containerPosition }) as Array<
-      [keyof Location, Location[keyof Location]]
+      [keyof ScrollGlobeValues, ScrollGlobeValues[keyof ScrollGlobeValues]]
     >
   ).reduce<Partial<Record<keyof ScrollGlobeValues, number[]>>>(
     (acc, [key, value]) => {
