@@ -38,6 +38,9 @@ export interface ScrollGlobe {
 
 export type Location = ScrollGlobe["location"];
 
+export type ScrollGlobeValues = ScrollGlobe["location"] &
+  ScrollGlobe["containerPosition"];
+
 export type ContainerPosition = {
   x: number;
   y: number;

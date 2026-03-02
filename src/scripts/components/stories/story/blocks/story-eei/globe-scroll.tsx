@@ -13,7 +13,7 @@ import { setFlyTo } from "../../../../../reducers/fly-to";
 import { useStory } from "../../../../../providers/story/use-story";
 import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 
-import { Location } from "../../../../../types/story";
+import { Location, ScrollGlobeValues } from "../../../../../types/story";
 
 function haveMotionValuesChanges(
   values: Partial<Record<keyof Location, MotionValue<unknown> | undefined>>,
@@ -53,32 +53,40 @@ const GlobeScroll: FunctionComponent = () => {
     ),
   ];
 
-  // construct an object with lat, lng, altitude as key and their values as first item in an array
+  // construct an object with lat, lng, altitude, container x- and y, as key and their values as first item in an array
   const initialValue = (
     Object.entries({ ...location, ...containerPosition }) as Array<
       [keyof Location, Location[keyof Location]]
     >
-  ).reduce<Partial<Record<keyof Location, number[]>>>((acc, [key, value]) => {
-    acc[key] = [value];
-    return acc;
-  }, {});
+  ).reduce<Partial<Record<keyof ScrollGlobeValues, number[]>>>(
+    (acc, [key, value]) => {
+      acc[key] = [value];
+      return acc;
+    },
+    {},
+  );
 
-  // arrays are populated with location values specified in the story-eei.json
+  // arrays are populated with globe values specified in the story-eei.json
   const locationValues = modules.reduce(
     (acc, module) => {
-      const globeOrContainerValue = {
-        ...module?.globe?.location,
-        ...module?.globe?.containerPosition,
-      };
+      if (module.type === "baseSlide") {
+        const globeOrContainerValue = {
+          ...module?.globe?.location,
+          ...module?.globe?.containerPosition,
+        };
 
-      for (const [key, value] of Object.entries(acc)) {
-        console.log("🚀 ~ globe-scroll.tsx:80 → key:", key);
-        // if we haven't specified location for a slide, we assume the globe should stay in the current position
-        const newValue =
-          globeOrContainerValue && key in globeOrContainerValue
-            ? globeOrContainerValue[key]
-            : (value.at(-1) ?? 0);
-        acc[key as keyof typeof acc] = [...value, newValue];
+        for (const [key, value] of Object.entries(acc)) {
+          // if we haven't specified location for a slide, we assume the globe should stay in the current position
+          const newValue =
+            globeOrContainerValue && key in globeOrContainerValue
+              ? globeOrContainerValue[key as keyof typeof globeOrContainerValue]
+              : (value.at(-1) ?? 0);
+          acc[key as keyof typeof acc] = [...value, newValue as number];
+        }
+      } else {
+        console.warn(
+          `module type "${module.type} passed to GlobeScroll is not compatible, returning initialValue`,
+        );
       }
       return acc;
     },
@@ -97,10 +105,18 @@ const GlobeScroll: FunctionComponent = () => {
   );
 
   const root = document.documentElement;
+
   useMotionValueEvent(scrollYProgress, "change", () => {
-    // root.style.setProperty("--globe-container-x", `${x.get() * 100}vh`);
-    root.style.setProperty("--globe-container-y", `${y.get() * -100}vh`);
-    root.style.setProperty("--globe-container-x", `${x.get() * -100}vw`);
+    if (x && y) {
+      root.style.setProperty(
+        "--globe-container-y",
+        `${Number(y.get()) * -100}vh`,
+      );
+      root.style.setProperty(
+        "--globe-container-x",
+        `${Number(x.get()) * -100}vw`,
+      );
+    }
   });
 
   // Dispatch interpolated globe position to store
