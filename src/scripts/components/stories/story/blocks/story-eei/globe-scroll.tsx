@@ -69,7 +69,7 @@ const GlobeScroll: FunctionComponent = () => {
   // arrays are populated with globe values specified in the story-eei.json
   const locationValues = modules.reduce(
     (acc, module) => {
-      if (module.type === "baseSlide") {
+      if (module.type === "baseScrollModule") {
         const globeOrContainerValue = {
           ...module?.globe?.location,
           ...module?.globe?.containerPosition,

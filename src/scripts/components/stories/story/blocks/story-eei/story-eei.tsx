@@ -1,12 +1,12 @@
 import { FunctionComponent, ReactNode } from "react";
 
 import TextOverlay from "../generic/text-overlay/text-overlay";
-import BaseSlide from "./modules/base-slide/base-slide";
+import BaseScrollModule from "./modules/base-scroll/base-scroll-module";
 import StoryGlobe from "../globe/story-globe/story-globe";
 
 export type StoryEEICompoundComponents = {
   TextOverlay: typeof TextOverlay;
-  BaseSlide: typeof BaseSlide;
+  BaseSlide: typeof BaseScrollModule;
   StoryGlobe: typeof StoryGlobe;
 };
 
@@ -16,5 +16,5 @@ export const StoryEEI = (({ children }: { children: ReactNode }) => {
 }) as FunctionComponent<{ children: ReactNode }> & StoryEEICompoundComponents;
 
 StoryEEI.TextOverlay = TextOverlay;
-StoryEEI.BaseSlide = BaseSlide;
+StoryEEI.BaseSlide = BaseScrollModule;
 StoryEEI.StoryGlobe = StoryGlobe;

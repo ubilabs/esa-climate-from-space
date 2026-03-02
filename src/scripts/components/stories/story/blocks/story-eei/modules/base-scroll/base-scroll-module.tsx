@@ -5,9 +5,9 @@ import { StorySectionProps } from "../../../../../../../types/story";
 import { useStoryScroll } from "../../../../../../../hooks/use-story-scroll";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
-import styles from "./base-slide.module.css";
+import styles from "./base-scroll-module.module.css";
 
-const BaseSlide: FunctionComponent<StorySectionProps> = () => {
+const BaseScrollModule: FunctionComponent<StorySectionProps> = () => {
   const { module, getRefCallback } = useModuleContent();
   const { text } = module;
 
@@ -26,7 +26,7 @@ const BaseSlide: FunctionComponent<StorySectionProps> = () => {
   useMotionValueEvent(scrollYProgress, "change", setYProgress);
 
   return (
-    <div className={styles.baseSlide} ref={slideRef}>
+    <div className={styles.baseScrollModule} ref={slideRef}>
       <div ref={getRefCallback(0, 0)}>
         <div>{text}</div>
         <div>ScrollY: {y}</div>
@@ -36,4 +36,4 @@ const BaseSlide: FunctionComponent<StorySectionProps> = () => {
   );
 };
 
-export default BaseSlide;
+export default BaseScrollModule;
