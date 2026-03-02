@@ -1,5 +1,14 @@
 [
   {
+    "id": "story-eei",
+    "title": "Earth Energy Imbalance",
+    "image": "assets/atmospheric-ecvs.jpg",
+    "description": "",
+    "tags": [],
+    "position": [],
+    "categories": ["welcome"]
+  },
+  {
     "id": "story-32",
     "title": "Welcome to Climate from Space",
     "description": "",

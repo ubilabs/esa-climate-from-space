@@ -108,7 +108,7 @@ const LegacyOrRecentStory: FunctionComponent = () => {
 const MainContent: FunctionComponent<{
   children?: React.ReactNode;
 }> = ({ children }) => {
-  const { isStoriesRoute } = useAppRouteFlags();
+  const { isRegularStory } = useAppRouteFlags();
 
   return (
     <>
@@ -116,7 +116,8 @@ const MainContent: FunctionComponent<{
         <Header />
         {children}
         {/* Stories use StoryGlobe component for globe visualization instead of DataViewer */}
-        {!isStoriesRoute && <DataViewer />}
+        {/* Keep the global globe in Dataviewer for EEI Story */}
+        {!isRegularStory && <DataViewer />}
         <LayerSelector />
       </StoryWrapper>
     </>

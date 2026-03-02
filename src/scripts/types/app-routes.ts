@@ -12,5 +12,6 @@ export enum AppRoute {
   NavContent = "nav_content",
   LegacyStories = "legacy_stories",
   LegacyStory = "legacy_story",
+  StoryEEI = "story-eei",
   Unknown = "unknown",
 }
