@@ -20,6 +20,7 @@ import { contentSelector } from "../../../selectors/content";
 
 import { LayerListItem } from "../../../types/layer-list";
 import { StoryListItem } from "../../../types/story-list";
+import { AppRoute } from "../../../types/app-routes";
 
 import useAutoRotate from "../../../hooks/use-auto-content-rotation";
 import { useNavGestures } from "../../../libs/use-nav-gestures";
@@ -131,9 +132,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
     const contentId = contents[currentIndex]?.id;
 
     dispatch(setSelectedContentAction({ contentId }));
-    // We don't want to dispatch a layer action with story ids
+    // We don't want to dispatch a layer action with story ids (except for EEI-story)
     if (isStoryListItem(contents[currentIndex])) {
-      dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+      if (contentId !== AppRoute.StoryEEI) {
+        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+      } else {
+        dispatch(
+          setSelectedLayerIds({ layerId: "water_mask", isPrimary: true }),
+        );
+      }
       return;
     }
 
