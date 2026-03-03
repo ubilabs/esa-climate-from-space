@@ -109,7 +109,7 @@ const ImageCarousel: FunctionComponent = () => {
     >
       <div className={cx(styles.wrapper, isStoryEEI && styles.eeiWrapper)}>
         {"headerText" in module && module.headerText && (
-          <header>{module.headerText}</header>
+          <h1>{module.headerText}</h1>
         )}
         <div className={styles.slidesContainer} ref={slidesContainerRef}>
           <motion.div
@@ -181,19 +181,12 @@ const ImageCarousel: FunctionComponent = () => {
           module.readMore?.url &&
           URL.canParse(module.readMore.url) && (
             <div className={styles.readMore}>
-              <span>
-                <FormattedMessage id="story.slide.readMore" />
-              </span>
+              <FormattedMessage id="story.slide.readMore" />
               <Button
-                onClick={() => {
-                  window.open(
-                    module.readMore?.url,
-                    "_blank",
-                    "noopener,noreferrer",
-                  );
-                }}
+                className={styles.readMoreButton}
+                link={module.readMore.url}
               >
-                {module.readMore?.title}
+                <span>{module.readMore.title}</span>
                 <LinkIcon />
               </Button>
             </div>
