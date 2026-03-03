@@ -41,7 +41,7 @@
         position: relative;
 
         @media screen and (--desktop-viewport) {
-          flex: 0 0 60;
+          flex: 0 0 60%;
         }
 
         .imageContainer {
