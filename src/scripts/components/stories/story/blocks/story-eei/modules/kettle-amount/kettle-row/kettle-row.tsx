@@ -10,8 +10,8 @@ interface Props {
 function getInputRangeForIndex(
   index: number,
   itemCount = 8,
-  rangeStart = 0.3,
-  rangeEnd = 0.5,
+  rangeStart = 0.5,
+  rangeEnd = 0.6,
 ): [number, number] {
   if (index < 0 || index >= itemCount) {
     throw new Error(`Index ${index} out of bounds (0–${itemCount - 1})`);
@@ -34,14 +34,18 @@ export default function KettleRow({ index, progress }: Props) {
     "inset(0% 0% 0% 100%)",
   ]);
 
+  const opacity = useTransform(progress, [0.3, 0.33], [0, 1]);
+
   return (
     <motion.span
       className={styles.kettleRow}
+      initial={{ opacity: 0 }}
       style={
         {
           "--grid-row-start": index + 2,
           "--grid-column-start": index === 0 ? 2 : 1,
-          clipPath: clipPath,
+          clipPath,
+          opacity,
         } as unknown as CSSProperties
       }
     ></motion.span>

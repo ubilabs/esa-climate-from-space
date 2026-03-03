@@ -1,0 +1,15 @@
+.yearSlider {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black calc(50% - 16px),
+    black calc(50% + 16px),
+    transparent 0%
+  );
+
+  .container {
+    display: flex;
+    gap: 1rem;
+  }
+  overflow: hidden;
+}
