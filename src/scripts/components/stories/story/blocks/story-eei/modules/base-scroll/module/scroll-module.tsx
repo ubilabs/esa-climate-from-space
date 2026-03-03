@@ -23,17 +23,15 @@ const ScrollSlide = ({ children, className }: Props) => {
   const slideRef = useRef(null);
 
   return (
-    <div ref={getRefCallback(0, 0)}>
-      <div ref={slideRef} className={cx(styles.slide, className)}>
-        {children}
-      </div>
+    <div ref={slideRef} className={cx(styles.slide, className)}>
+      {children}
     </div>
   );
 };
 
 const ScrollModule: FunctionComponent<Props> & {
   Slide: typeof ScrollSlide;
-} = ({ children, className, motionCallbacks }) => {
+} = ({ children, className, motionCallbacks, ...rest }) => {
   const moduleRef = useRef(null);
 
   const { scrollY, scrollYProgress } = useStoryScroll({
@@ -57,7 +55,11 @@ const ScrollModule: FunctionComponent<Props> & {
   }, [motionCallbacks, scrollY, scrollYProgress]);
 
   return (
-    <div ref={moduleRef} className={cx(styles.baseScrollModule, className)}>
+    <div
+      ref={moduleRef}
+      className={cx(styles.baseScrollModule, className)}
+      {...rest}
+    >
       {children}
     </div>
   );
