@@ -188,5 +188,6 @@
   "slides.previous": "Vorherige Folie",
   "slides.goTo": "Gehe zu Folie {number}",
   "storyGlobe.interact": "Interagieren",
-  "storyGlobe.quitInteraction": "Interaktiven Modus beenden"
+  "storyGlobe.quitInteraction": "Interaktiven Modus beenden",
+  "story.slide.readMore": "Mehr erfahren über"
 }

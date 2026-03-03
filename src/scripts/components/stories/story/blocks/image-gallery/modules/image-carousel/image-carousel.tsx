@@ -6,6 +6,7 @@ import {
   useEffectEvent,
   useLayoutEffect,
 } from "react";
+import { FormattedMessage } from "react-intl";
 import { motion, useAnimationControls } from "motion/react";
 import ReactMarkdown from "react-markdown";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
@@ -22,25 +23,32 @@ import CarouselNavigation from "./carousel-navigation/carousel-navigation";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 
 import styles from "./image-carousel.module.css";
+import Button from "../../../../../../main/button/button";
+import { LinkIcon } from "../../../../../../main/icons/link-icon";
+import { ImageCarouselModule } from "../../../../../../../types/story";
+import { useAppRouteFlags } from "../../../../../../../hooks/use-app-route-flags";
 
 const PADDING = 24;
 const VELOCITY = 300;
 
 // Image carousel component for displaying a series of images with navigation controls
 const ImageCarousel: FunctionComponent = () => {
-  const {
-    module: { slides },
-    storyId,
-    getRefCallback,
-  } = useModuleContent();
+  const { module, storyId, getRefCallback } = useModuleContent();
+  const { slides } = module as ImageCarouselModule;
   const { isMobile } = useScreenSize();
   const controls = useAnimationControls();
+  const { isStoryEEI } = useAppRouteFlags();
 
+  const slidesContainerRef = useRef<HTMLDivElement>(null);
   const slideRef = useRef<HTMLDivElement>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [slideWidth, setSlideWidth] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [fullscreenSlideIndex, setFullscreenSlideIndex] = useState<
+    number | undefined
+  >();
   const [isSlideTouched, setIsSlideTouched] = useState(false);
+  const [isNavigationVisible, setIsNavigationVisible] = useState(true);
+  const isFullscreen = fullscreenSlideIndex !== undefined;
 
   useLenisToggle(isSlideTouched);
 
@@ -51,9 +59,20 @@ const ImageCarousel: FunctionComponent = () => {
 
   const step = slideWidth + PADDING;
 
+  const updateNavigationVisibility = useEffectEvent(() => {
+    setIsNavigationVisible(
+      (slidesContainerRef.current?.offsetWidth || 0) <
+        (slides?.length || 0) * slideWidth,
+    );
+  });
+
+  useEffect(() => {
+    updateNavigationVisibility();
+  }, [slideWidth, slides?.length]);
+
   const updateXPostion = useEffectEvent(() => {
     controls.set({
-      x: !isFullscreen ? -currentIndex * step : 0,
+      x: !isFullscreen ? -currentSlideIndex * step : 0,
     });
   });
 
@@ -71,7 +90,7 @@ const ImageCarousel: FunctionComponent = () => {
 
   const snapToIndex = (i: number) => {
     const clamped = Math.max(0, Math.min(slides.length - 1, i));
-    setCurrentIndex(clamped);
+    setCurrentSlideIndex(clamped);
 
     controls.start({
       x: -clamped * step,
@@ -88,8 +107,11 @@ const ImageCarousel: FunctionComponent = () => {
       ref={getRefCallback(0, 0)}
       className={cx(styles.container, !isMobile && "story-grid")}
     >
-      <div className={styles.wrapper}>
-        <div className={styles.slidesContainer}>
+      <div className={cx(styles.wrapper, isStoryEEI && styles.eeiWrapper)}>
+        {"headerText" in module && module.headerText && (
+          <h1>{module.headerText}</h1>
+        )}
+        <div className={styles.slidesContainer} ref={slidesContainerRef}>
           <motion.div
             className={styles.track}
             animate={controls}
@@ -110,7 +132,7 @@ const ImageCarousel: FunctionComponent = () => {
                     ? -1
                     : 0;
 
-              snapToIndex(currentIndex + direction);
+              snapToIndex(currentSlideIndex + direction);
             }}
           >
             {slides.map(({ url, altText, text }, i) => (
@@ -120,6 +142,11 @@ const ImageCarousel: FunctionComponent = () => {
                 onTouchStart={() => setIsSlideTouched(true)}
                 onTouchEnd={() => setIsSlideTouched(false)}
                 className={styles.slide}
+                style={
+                  isFullscreen && fullscreenSlideIndex !== i
+                    ? { display: "none" }
+                    : undefined
+                }
               >
                 <div className={styles.imageContainer}>
                   <ScrollImage
@@ -127,7 +154,7 @@ const ImageCarousel: FunctionComponent = () => {
                     src={getStoryAssetUrl(storyId, url)}
                     alt={altText}
                     onFullscreenToggle={(isFullscreen) =>
-                      setIsFullscreen(isFullscreen)
+                      setFullscreenSlideIndex(isFullscreen ? i : undefined)
                     }
                   />
                 </div>
@@ -143,14 +170,27 @@ const ImageCarousel: FunctionComponent = () => {
             ))}
           </motion.div>
         </div>
-
-        {!isFullscreen && (
+        {!isFullscreen && isNavigationVisible && (
           <CarouselNavigation
-            index={currentIndex}
+            index={currentSlideIndex}
             slides={slides}
             snapToIndex={snapToIndex}
           />
         )}
+        {"readMore" in module &&
+          module.readMore?.url &&
+          URL.canParse(module.readMore.url) && (
+            <div className={styles.readMore}>
+              <FormattedMessage id="story.slide.readMore" />
+              <Button
+                className={styles.readMoreButton}
+                link={module.readMore.url}
+              >
+                <span>{module.readMore.title}</span>
+                <LinkIcon />
+              </Button>
+            </div>
+          )}
       </div>
     </SlideContainer>
   );
