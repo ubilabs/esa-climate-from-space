@@ -177,25 +177,27 @@ const ImageCarousel: FunctionComponent = () => {
             snapToIndex={snapToIndex}
           />
         )}
-        {"readMore" in module && (
-          <div className={styles.readMore}>
-            <span>
-              <FormattedMessage id="story.slide.readMore" />
-            </span>
-            <Button
-              onClick={() => {
-                window.open(
-                  module.readMore?.url,
-                  "_blank",
-                  "noopener,noreferrer",
-                );
-              }}
-            >
-              {module.readMore?.title}
-              <LinkIcon />
-            </Button>
-          </div>
-        )}
+        {"readMore" in module &&
+          module.readMore?.url &&
+          URL.canParse(module.readMore.url) && (
+            <div className={styles.readMore}>
+              <span>
+                <FormattedMessage id="story.slide.readMore" />
+              </span>
+              <Button
+                onClick={() => {
+                  window.open(
+                    module.readMore?.url,
+                    "_blank",
+                    "noopener,noreferrer",
+                  );
+                }}
+              >
+                {module.readMore?.title}
+                <LinkIcon />
+              </Button>
+            </div>
+          )}
       </div>
     </SlideContainer>
   );

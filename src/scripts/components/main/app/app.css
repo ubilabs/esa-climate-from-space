@@ -84,6 +84,7 @@ body {
   place-items: center;
   gap: 0.5rem;
   padding-inline: var(--story-padding);
+  z-index: 0;
 
   @media screen and (--desktop-viewport) {
     grid-template-columns: repeat(12, minmax(0, 1fr));
