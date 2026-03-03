@@ -188,5 +188,6 @@
   "slides.previous": "Previous slide",
   "slides.goTo": "Go to slide {number}",
   "storyGlobe.interact": "Interact",
-  "storyGlobe.quitInteraction": "Quit interactive mode"
+  "storyGlobe.quitInteraction": "Quit interactive mode",
+  "story.slide.readMore": "Read more about"
 }

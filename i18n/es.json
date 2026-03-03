@@ -188,5 +188,6 @@
   "slides.previous": "Diapositiva anterior",
   "slides.goTo": "Ir a la diapositiva {number}",
   "storyGlobe.interact": "Interactuar",
-  "storyGlobe.quitInteraction": "Salir del modo interactivo"
+  "storyGlobe.quitInteraction": "Salir del modo interactivo",
+  "story.slide.readMore": "Leer más sobre"
 }
