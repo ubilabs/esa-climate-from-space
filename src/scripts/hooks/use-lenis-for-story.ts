@@ -71,7 +71,7 @@ export function useLenisForStory(isStoryEEI: boolean) {
     snap.viewport.height = screenHeight + headerHeight;
 
     const options = isStoryEEI
-      ? { align: "end" }
+      ? { align: "end", ignoreSticky: false }
       : {
           align: "center",
           ignoreTransform: true,

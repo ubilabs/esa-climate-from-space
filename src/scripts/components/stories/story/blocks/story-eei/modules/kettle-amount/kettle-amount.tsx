@@ -1,25 +1,37 @@
-import { useRef } from "react";
-import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+import { useMemo } from "react";
+import { useMotionValue, useMotionValueEvent } from "motion/react";
 import ScrollModule from "../base-scroll/module/scroll-module";
 
 import styles from "./kettle-amount.module.css";
-import { MotionValue } from "motion";
 
 export default function KettleAmountModule() {
-  // const { module } = useModuleContent();
-  // // const { text } = module;
+  const scrollYProgress = useMotionValue(0);
 
-  const valueRef = useRef<MotionValue<number>>(null);
-  // console.log("🚀 ~ kettle-amount.tsx:12 → valueRef:", valueRef);
+  // get the motion values from the module wrapper
+  const motionCallbacks = useMemo(
+    () => ({
+      updateScrollYProgress: (value: number) => scrollYProgress.set(value),
+      updateScrollY: () => null,
+    }),
+    [scrollYProgress],
+  );
+
+  useMotionValueEvent(scrollYProgress, "change", (e: number) =>
+    console.log("using progress value", e),
+  );
 
   return (
-    <ScrollModule className={styles.kettleAmountWrapper}>
-      <ScrollModule.Slide
-        className={styles.test}
-        scrollValue={(value: MotionValue<number>) => (valueRef.current = value)}
-      >
-        slide 1
-      </ScrollModule.Slide>
+    <ScrollModule
+      className={styles.kettleAmountWrapper}
+      motionCallbacks={motionCallbacks}
+    >
+      <div className={styles.container}>
+        <ScrollModule.Slide className={styles.slide}>
+          {Array.from({ length: 7 }).map(() => (
+            <div>test</div>
+          ))}
+        </ScrollModule.Slide>
+      </div>
     </ScrollModule>
   );
 }

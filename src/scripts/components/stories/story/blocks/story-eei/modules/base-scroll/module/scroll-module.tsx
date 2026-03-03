@@ -1,14 +1,4 @@
-import {
-  FunctionComponent,
-  MutableRefObject,
-  PropsWithChildren,
-  Ref,
-  RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { MotionValue, useMotionValue, useMotionValueEvent } from "motion/react";
+import { FunctionComponent, PropsWithChildren, useEffect, useRef } from "react";
 
 import { StorySectionProps } from "../../../../../../../../types/story";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
@@ -18,33 +8,19 @@ import cx from "classnames";
 
 import styles from "./scroll-module.module.css";
 
-const ScrollSlide: FunctionComponent<
-  PropsWithChildren<StorySectionProps & { scrollValue: (value: any) => void }>
-> = ({ children, className, scrollValue }) => {
+type Props = PropsWithChildren<
+  StorySectionProps & {
+    motionCallbacks?: Record<
+      "updateScrollY" | "updateScrollYProgress",
+      (value: number) => void
+    >;
+  }
+>;
+
+const ScrollSlide = ({ children, className }: Props) => {
   const { getRefCallback } = useModuleContent();
 
   const slideRef = useRef(null);
-
-  const { scrollY, scrollYProgress } = useStoryScroll({
-    target: slideRef,
-    offset: ["start end", "end end"],
-  });
-
-  // const [y, setY] = useState(0);
-  // const [yProgress, setYProgress] = useState(0);
-  //
-  //
-  const doSomething = (value: number) => {
-    console.log("🚀 ~ scroll-module.tsx:35 → scrollYProgress:", scrollYProgress);
-  };
-
-  useEffect(() => {
-    const unsubY = scrollYProgress.on("change", doSomething);
-
-    return () => {
-      unsubY();
-    };
-  }, [scrollYProgress]);
 
   return (
     <div ref={getRefCallback(0, 0)}>
@@ -55,9 +31,18 @@ const ScrollSlide: FunctionComponent<
   );
 };
 
-const ScrollModule: FunctionComponent<PropsWithChildren<StorySectionProps>> & {
+const ScrollModule: FunctionComponent<
+  PropsWithChildren<
+    StorySectionProps & {
+      motionCallbacks?: Record<
+        "updateScrollY" | "updateScrollYProgress",
+        (value: number) => void
+      >;
+    }
+  >
+> & {
   Slide: typeof ScrollSlide;
-} = ({ children, className }) => {
+} = ({ children, className, motionCallbacks }) => {
   const moduleRef = useRef(null);
 
   const { scrollY, scrollYProgress } = useStoryScroll({
@@ -65,13 +50,24 @@ const ScrollModule: FunctionComponent<PropsWithChildren<StorySectionProps>> & {
     offset: ["start end", "end end"],
   });
 
-  // This is just for demonstrative purposes because forces React to re-render (unlike motion's motion values)
-  // useMotionValueEvent(scrollY, "change", setY);
-  // useMotionValueEvent(scrollYProgress, "change", setYProgress);
+  useEffect(() => {
+    const unsubScrollYProgress = scrollYProgress.on("change", (e) =>
+      motionCallbacks?.updateScrollYProgress?.(e),
+    );
+
+    const unsubScrollY = scrollY.on("change", (e) =>
+      motionCallbacks?.updateScrollY?.(e),
+    );
+
+    return () => {
+      unsubScrollYProgress();
+      unsubScrollY();
+    };
+  }, [motionCallbacks, scrollY, scrollYProgress]);
 
   return (
-    <div className={cx(styles.baseScrollModule, className)} ref={moduleRef}>
-      <div>{children}</div>
+    <div ref={moduleRef} className={cx(styles.baseScrollModule, className)}>
+      {children}
     </div>
   );
 };

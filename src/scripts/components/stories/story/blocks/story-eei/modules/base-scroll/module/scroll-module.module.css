@@ -1,4 +1,5 @@
 .baseScrollModule {
+  height: var(--story-height);
   .slide {
     height: var(--story-height);
     background-color: red;
