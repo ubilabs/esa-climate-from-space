@@ -6,6 +6,7 @@ import {
   useEffectEvent,
   useLayoutEffect,
 } from "react";
+import { FormattedMessage } from "react-intl";
 import { motion, useAnimationControls } from "motion/react";
 import ReactMarkdown from "react-markdown";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
@@ -176,19 +177,21 @@ const ImageCarousel: FunctionComponent = () => {
             snapToIndex={snapToIndex}
           />
         )}
-        {"readMoreUrl" in module && module.readMoreUrl && (
+        {"readMore" in module && (
           <div className={styles.readMore}>
-            <span>Read more about</span>
+            <span>
+              <FormattedMessage id="story.slide.readMore" />
+            </span>
             <Button
               onClick={() => {
                 window.open(
-                  module.readMoreUrl,
+                  module.readMore?.url,
                   "_blank",
                   "noopener,noreferrer",
                 );
               }}
             >
-              MOTECOSUMA
+              {module.readMore?.title}
               <LinkIcon />
             </Button>
           </div>

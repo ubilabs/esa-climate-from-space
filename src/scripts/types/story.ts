@@ -76,7 +76,10 @@ export type ImageModule = BaseModule & {
 export type ImageCarouselModule = ImageModule & {
   type: "imageCarousel";
   headerText?: string;
-  readMoreUrl?: string;
+  readMore?: {
+    title: string;
+    url: string;
+  };
 };
 
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
