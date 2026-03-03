@@ -12,10 +12,11 @@ import KettleRow from "./kettle-row/kettle-row";
 import YearSlider from "./year-slider/year-slider";
 import KettleOverlay from "./kettle-overlay/kettle-overlay";
 import { SatelliteIcon } from "../../../../../../main/icons/satellite-icon";
+import { StoryEEIBulb } from "../../../../../../main/icons/story-eei-bulb";
 
 export default function KettleAmountModule() {
   const scrollYProgress = useMotionValue(0);
-  const moduleTotalLength = 10;
+  const moduleTotalLength = 5;
 
   // get the motion values from the module wrapper
   const motionCallbacks = useMemo(
@@ -30,7 +31,11 @@ export default function KettleAmountModule() {
     console.log("using progress value", e),
   );
 
-  const scale = useTransform(scrollYProgress, [0.1, 0.2], [0.1, 1]);
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.05, 0.1, 0.2],
+    [0.01, 0.05, 0.1, 1],
+  );
   const y = useTransform(scrollYProgress, [0, 0.2], ["20%", "0%"]);
 
   const kettleRowCounter = 8;
@@ -46,9 +51,24 @@ export default function KettleAmountModule() {
           style={{
             y: useTransform(scrollYProgress, [0.1, 0.2], ["0vh", "-100vh"]),
           }}
-          className={styles.bulbContainer}
+          className={styles.bulbInfoContaier}
         >
-          <span>placeholder</span>
+          <div className={styles.bulbContainer}>
+            <motion.span
+              style={{
+                opacity: useTransform(
+                  scrollYProgress,
+                  [0, 0.07, 0.09, 0.12],
+                  [0, 0, 0.8, 1],
+                ),
+              }}
+            >
+              <StoryEEIBulb isGlowing={true} />
+            </motion.span>
+            <motion.span>
+              <StoryEEIBulb isGlowing={false} />
+            </motion.span>
+          </div>
           <span>Each square metre of Earth’s surface retains 1.4 Watts.</span>
         </motion.div>
         <div className={styles.boxContainer}>
@@ -59,23 +79,24 @@ export default function KettleAmountModule() {
             <motion.span
               className={styles.squareMeter}
               style={{
-                scale: useTransform(scrollYProgress, [0.2, 0.3], ["7", "1"]),
+                scale: useTransform(scrollYProgress, [0.2, 0.3], ["8", "1"]),
               }}
             >
               1m2
             </motion.span>
             <motion.div
               className={styles.satellite}
+              initial={{ x: "-10vw" }}
               style={{
                 x: useTransform(
                   scrollYProgress,
-                  [0, 0.4, 0.45, 0.48, 0.65],
-                  ["-10vw", "-10vw", "0", "0", "-10vw"],
+                  [0, 0.4, 0.56, 0.65],
+                  ["-25vw", "0vw", "0", "-25vw"],
                 ),
 
                 opacity: useTransform(
                   scrollYProgress,
-                  [0, 0.4, 0.45, 0.63, 0.65],
+                  [0, 0.3, 0.4, 0.65, 0.67],
                   ["0", "0", "1", "1", "0"],
                 ),
               }}

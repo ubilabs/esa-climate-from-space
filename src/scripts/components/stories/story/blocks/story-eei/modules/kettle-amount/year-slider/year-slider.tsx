@@ -18,7 +18,12 @@ export default function YearSlider({ progress }: Props) {
         opacity: useTransform(progress, [0.3, 0.33], ["0", "1"]),
       }}
     >
-      <motion.div className={styles.container} initial={{ x: "-50%" }}>
+      <motion.div
+        className={styles.container}
+        style={{
+          x: useTransform(progress, [0, 0.54, 0.64], ["-46%", "-46%", "0%"]),
+        }}
+      >
         {Array.from({ length: numberOfYears }).map((_, index) => (
           <span>{startYear + index}</span>
         ))}
