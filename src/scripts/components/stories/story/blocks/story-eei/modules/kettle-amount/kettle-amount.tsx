@@ -9,6 +9,9 @@ import ScrollModule from "../base-scroll/module/scroll-module";
 
 import styles from "./kettle-amount.module.css";
 import KettleRow from "./kettle-row/kettle-row";
+import YearSlider from "./year-slider/year-slider";
+import KettleOverlay from "./kettle-overlay/kettle-overlay";
+import { SatelliteIcon } from "../../../../../../main/icons/satellite-icon";
 
 export default function KettleAmountModule() {
   const scrollYProgress = useMotionValue(0);
@@ -48,19 +51,60 @@ export default function KettleAmountModule() {
           <span>placeholder</span>
           <span>Each square metre of Earth’s surface retains 1.4 Watts.</span>
         </motion.div>
-        <motion.div className={styles.box} style={{ scale, y }}>
-          {Array.from({ length: kettleRowCounter }).map((_, index) => (
-            <KettleRow index={index} progress={scrollYProgress} />
-          ))}
-          <motion.span
-            className={styles.squareMeter}
-            style={{
-              scale: useTransform(scrollYProgress, [0.2, 0.3], ["7", "1"]),
-            }}
-          >
-            1m2
-          </motion.span>
-        </motion.div>
+        <div className={styles.boxContainer}>
+          <motion.div className={styles.box} style={{ scale, y }}>
+            {Array.from({ length: kettleRowCounter }).map((_, index) => (
+              <KettleRow index={index} progress={scrollYProgress} />
+            ))}
+            <motion.span
+              className={styles.squareMeter}
+              style={{
+                scale: useTransform(scrollYProgress, [0.2, 0.3], ["7", "1"]),
+              }}
+            >
+              1m2
+            </motion.span>
+            <motion.div
+              className={styles.satellite}
+              style={{
+                x: useTransform(
+                  scrollYProgress,
+                  [0, 0.4, 0.45, 0.48, 0.65],
+                  ["-10vw", "-10vw", "0", "0", "-10vw"],
+                ),
+
+                opacity: useTransform(
+                  scrollYProgress,
+                  [0, 0.4, 0.45, 0.63, 0.65],
+                  ["0", "0", "1", "1", "0"],
+                ),
+              }}
+            >
+              <SatelliteIcon />
+            </motion.div>
+          </motion.div>
+          <YearSlider progress={scrollYProgress} />
+        </div>
+
+        <KettleOverlay
+          progress={scrollYProgress}
+          inpuRange={[0.33, 0.35, 0.38, 0.4]}
+          text={
+            "But accumulated over a year, it’s enough energy to boil 70 kettles of water."
+          }
+        />
+        <KettleOverlay
+          progress={scrollYProgress}
+          inpuRange={[0.4, 0.42, 0.48, 0.5]}
+          text={
+            "Satellites have been measuring the solar energy reaching and leaving Earth since the start of the century."
+          }
+        />
+        <KettleOverlay
+          progress={scrollYProgress}
+          inpuRange={[0.54, 0.55, 0.64, 0.65]}
+          text={"Five years ago the energy imbalance was smaller."}
+        />
       </ScrollModule.Slide>
     </ScrollModule>
   );
