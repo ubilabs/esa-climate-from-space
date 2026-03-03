@@ -15,7 +15,6 @@ const BaseSlide: FunctionComponent<StorySectionProps> = () => {
 
   const { scrollY, scrollYProgress } = useStoryScroll({
     target: slideRef,
-
     offset: ["start end", "end end"],
   });
 
