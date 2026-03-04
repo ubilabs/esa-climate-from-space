@@ -1,3 +1,4 @@
+import { useIntl } from "react-intl";
 import ScrollModule from "../base-scroll/module/scroll-module";
 import BulbAnimation from "./bulb-animation/bulb-animation";
 import KettleBox from "./kettle-box/kettle-box";
@@ -6,6 +7,7 @@ import { KettleAmountAnimationConfig } from "./kettle-amount-types";
 import styles from "./kettle-amount.module.css";
 
 export default function KettleAmountModule() {
+  const intl = useIntl();
   const moduleTotalLength = 5;
 
   const animationConfig: KettleAmountAnimationConfig = {
@@ -62,15 +64,15 @@ export default function KettleAmountModule() {
     overlays: [
       {
         inputRange: [0.33, 0.35, 0.38, 0.4],
-        text: "But accumulated over a year, it's enough energy to boil 70 kettles of water.",
+        text: intl.formatMessage({ id: "story.eei.kettle.overlay1" }),
       },
       {
         inputRange: [0.4, 0.42, 0.48, 0.5],
-        text: "Satellites have been measuring the solar energy reaching and leaving Earth since the start of the century.",
+        text: intl.formatMessage({ id: "story.eei.kettle.overlay2" }),
       },
       {
         inputRange: [0.54, 0.55, 0.64, 0.65],
-        text: "Five years ago the energy imbalance was smaller.",
+        text: intl.formatMessage({ id: "story.eei.kettle.overlay3" }),
       },
     ],
   };

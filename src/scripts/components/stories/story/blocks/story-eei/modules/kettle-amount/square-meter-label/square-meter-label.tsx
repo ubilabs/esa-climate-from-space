@@ -18,7 +18,7 @@ export default function SquareMeterLabel() {
         ),
       }}
     >
-      1m<sup>2</sup>
+      1m²
     </motion.span>
   );
 }
