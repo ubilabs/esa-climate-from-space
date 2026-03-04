@@ -1,5 +1,4 @@
 .kettleAmountWrapper {
-  opacity: 0.2;
   height: calc(var(--story-height) * 3);
   position: relative;
 
@@ -9,7 +8,7 @@
     height: var(--story-height);
 
     .slide {
-      height: calc(var(--story-height) * 1);
+      height: var(--story-height);
     }
   }
 }
