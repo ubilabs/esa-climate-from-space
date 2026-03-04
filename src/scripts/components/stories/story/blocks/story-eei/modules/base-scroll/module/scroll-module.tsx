@@ -31,16 +31,7 @@ const ScrollSlide = ({ children, className }: Props) => {
   );
 };
 
-const ScrollModule: FunctionComponent<
-  PropsWithChildren<
-    StorySectionProps & {
-      motionCallbacks?: Record<
-        "updateScrollY" | "updateScrollYProgress",
-        (value: number) => void
-      >;
-    }
-  >
-> & {
+const ScrollModule: FunctionComponent<Props> & {
   Slide: typeof ScrollSlide;
 } = ({ children, className, motionCallbacks }) => {
   const moduleRef = useRef(null);
