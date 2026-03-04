@@ -5,6 +5,7 @@ import KettleBox from "./kettle-box/kettle-box";
 import KettleOverlay, {
   KettleOverlayProps,
 } from "./kettle-overlay/kettle-overlay";
+
 import styles from "./kettle-amount.module.css";
 
 const animationConfig = {
@@ -58,7 +59,7 @@ const animationConfig = {
       output: ["-46%", "-46%", "0%"],
     },
   },
-} as const;
+} ;
 
 export type KettleAmountAnimationConfig = typeof animationConfig;
 

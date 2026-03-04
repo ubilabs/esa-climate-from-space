@@ -1,7 +1,8 @@
 import { motion, useTransform } from "motion/react";
 import { useScrollModule } from "../../base-scroll/use-scroll-module";
-import { KettleAmountAnimationConfig } from "../kettle-amount-types";
+import { KettleAmountAnimationConfig } from "../kettle-amount";
 import { StoryEEIBulb } from "../../../../../../../main/icons/story-eei-bulb";
+
 import styles from "./bulb-animation.module.css";
 
 export default function BulbAnimation() {

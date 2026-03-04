@@ -1,6 +1,6 @@
 import { motion, useTransform } from "motion/react";
 import { useScrollModule } from "../../base-scroll/use-scroll-module";
-import { KettleAmountAnimationConfig } from "../kettle-amount-types";
+import { KettleAmountAnimationConfig } from "../kettle-amount";
 import KettleRow from "../kettle-row/kettle-row";
 import YearSlider from "../year-slider/year-slider";
 import SquareMeterLabel from "../square-meter-label/square-meter-label";
