@@ -5,14 +5,15 @@ import {
   useMotionValueEvent,
   useTransform,
 } from "motion/react";
-import ScrollModule from "../base-scroll/module/scroll-module";
 
-import styles from "./kettle-amount.module.css";
+import ScrollModule from "../base-scroll/module/scroll-module";
 import KettleRow from "./kettle-row/kettle-row";
 import YearSlider from "./year-slider/year-slider";
 import KettleOverlay from "./kettle-overlay/kettle-overlay";
 import { SatelliteIcon } from "../../../../../../main/icons/satellite-icon";
 import { StoryEEIBulb } from "../../../../../../main/icons/story-eei-bulb";
+
+import styles from "./kettle-amount.module.css";
 
 export default function KettleAmountModule() {
   const scrollYProgress = useMotionValue(0);
@@ -109,21 +110,21 @@ export default function KettleAmountModule() {
 
         <KettleOverlay
           progress={scrollYProgress}
-          inpuRange={[0.33, 0.35, 0.38, 0.4]}
+          inputRange={[0.33, 0.35, 0.38, 0.4]}
           text={
             "But accumulated over a year, it’s enough energy to boil 70 kettles of water."
           }
         />
         <KettleOverlay
           progress={scrollYProgress}
-          inpuRange={[0.4, 0.42, 0.48, 0.5]}
+          inputRange={[0.4, 0.42, 0.48, 0.5]}
           text={
             "Satellites have been measuring the solar energy reaching and leaving Earth since the start of the century."
           }
         />
         <KettleOverlay
           progress={scrollYProgress}
-          inpuRange={[0.54, 0.55, 0.64, 0.65]}
+          inputRange={[0.54, 0.55, 0.64, 0.65]}
           text={"Five years ago the energy imbalance was smaller."}
         />
       </ScrollModule.Slide>
