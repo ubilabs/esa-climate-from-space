@@ -10,15 +10,15 @@ import styles from "./scroll-module.module.css";
 
 type Props<TConfig = unknown> = PropsWithChildren<
   StorySectionProps & {
-    config?: TConfig;
+    config: TConfig;
   }
 >;
 
-const ScrollSlide = ({ children, className }: Props) => {
+const ScrollSlide = ({ children, className, ...rest }: Props) => {
   const slideRef = useRef(null);
 
   return (
-    <div ref={slideRef} className={cx(styles.slide, className)}>
+    <div ref={slideRef} className={cx(styles.slide, className)} {...rest}>
       {children}
     </div>
   );
