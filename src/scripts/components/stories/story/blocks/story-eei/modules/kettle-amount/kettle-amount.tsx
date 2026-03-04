@@ -27,8 +27,8 @@ export default function KettleAmountModule() {
     >
       <div className={styles.container}>
         <ScrollModule.Slide className={styles.slide}>
-          {Array.from({ length: 7 }).map(() => (
-            <div>test</div>
+          {Array.from({ length: 7 }).map((_, index) => (
+            <div key={index}>test</div>
           ))}
         </ScrollModule.Slide>
       </div>
