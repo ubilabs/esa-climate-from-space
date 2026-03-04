@@ -1,18 +1,16 @@
-import { FunctionComponent, PropsWithChildren, useEffect, useRef } from "react";
+import { FunctionComponent, PropsWithChildren, useMemo, useRef } from "react";
 
 import { StorySectionProps } from "../../../../../../../../types/story";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
+import { ScrollModuleContext } from "../use-scroll-module";
 
 import cx from "classnames";
 
 import styles from "./scroll-module.module.css";
 
-type Props = PropsWithChildren<
+type Props<TConfig = unknown> = PropsWithChildren<
   StorySectionProps & {
-    motionCallbacks?: Record<
-      "updateScrollY" | "updateScrollYProgress",
-      (value: number) => void
-    >;
+    config?: TConfig;
   }
 >;
 
@@ -28,7 +26,7 @@ const ScrollSlide = ({ children, className }: Props) => {
 
 const ScrollModule: FunctionComponent<Props> & {
   Slide: typeof ScrollSlide;
-} = ({ children, className, motionCallbacks, ...rest }) => {
+} = ({ children, className, config, ...rest }) => {
   const moduleRef = useRef(null);
 
   const { scrollY, scrollYProgress } = useStoryScroll({
@@ -36,29 +34,21 @@ const ScrollModule: FunctionComponent<Props> & {
     offset: ["start end", "end end"],
   });
 
-  useEffect(() => {
-    const unsubScrollYProgress = scrollYProgress.on("change", (e) =>
-      motionCallbacks?.updateScrollYProgress?.(e),
-    );
-
-    const unsubScrollY = scrollY.on("change", (e) =>
-      motionCallbacks?.updateScrollY?.(e),
-    );
-
-    return () => {
-      unsubScrollYProgress();
-      unsubScrollY();
-    };
-  }, [motionCallbacks, scrollY, scrollYProgress]);
+  const contextValue = useMemo(
+    () => ({ scrollY, scrollYProgress, config }),
+    [scrollY, scrollYProgress, config],
+  );
 
   return (
-    <div
-      ref={moduleRef}
-      className={cx(styles.baseScrollModule, className)}
-      {...rest}
-    >
-      {children}
-    </div>
+    <ScrollModuleContext.Provider value={contextValue}>
+      <div
+        ref={moduleRef}
+        className={cx(styles.baseScrollModule, className)}
+        {...rest}
+      >
+        {children}
+      </div>
+    </ScrollModuleContext.Provider>
   );
 };
 

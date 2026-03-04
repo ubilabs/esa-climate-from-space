@@ -1,12 +1,11 @@
-import { MotionValue } from "motion";
-import styles from "./year-slider.module.css";
 import { motion, useTransform } from "motion/react";
+import { useScrollModule } from "../../base-scroll/use-scroll-module";
+import { KettleAmountAnimationConfig } from "../kettle-amount-types";
+import styles from "./year-slider.module.css";
 
-interface Props {
-  progress: MotionValue;
-}
-
-export default function YearSlider({ progress }: Props) {
+export default function YearSlider() {
+  const { config, scrollYProgress } =
+    useScrollModule<KettleAmountAnimationConfig>();
   const startYear = 2017;
   const numberOfYears = 9;
 
@@ -15,13 +14,21 @@ export default function YearSlider({ progress }: Props) {
       className={styles.yearSlider}
       initial={{ opacity: 0 }}
       style={{
-        opacity: useTransform(progress, [0.3, 0.33], ["0", "1"]),
+        opacity: useTransform(
+          scrollYProgress,
+          config.yearSlider.fadeIn.input,
+          config.yearSlider.fadeIn.output,
+        ),
       }}
     >
       <motion.div
         className={styles.container}
         style={{
-          x: useTransform(progress, [0, 0.54, 0.64], ["-46%", "-46%", "0%"]),
+          x: useTransform(
+            scrollYProgress,
+            config.yearSlider.slide.input,
+            config.yearSlider.slide.output,
+          ),
         }}
       >
         {Array.from({ length: numberOfYears }).map((_, index) => (

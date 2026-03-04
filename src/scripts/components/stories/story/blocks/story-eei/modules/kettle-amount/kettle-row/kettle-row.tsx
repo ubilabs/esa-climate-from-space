@@ -1,10 +1,11 @@
 import { CSSProperties } from "react";
+import { motion, useTransform } from "motion/react";
+import { useScrollModule } from "../../base-scroll/use-scroll-module";
+import { KettleAmountAnimationConfig } from "../kettle-amount-types";
 import styles from "./kettle-row.module.css";
-import { motion, MotionValue, useTransform } from "motion/react";
 
 interface Props {
   index: number;
-  progress: MotionValue;
 }
 
 function getInputRangeForIndex(
@@ -26,15 +27,27 @@ function getInputRangeForIndex(
   return [start, end] as const;
 }
 
-export default function KettleRow({ index, progress }: Props) {
-  const inputRange = getInputRangeForIndex(index);
+export default function KettleRow({ index }: Props) {
+  const { config, scrollYProgress } =
+    useScrollModule<KettleAmountAnimationConfig>();
 
-  const clipPath = useTransform(progress, inputRange, [
+  const inputRange = getInputRangeForIndex(
+    index,
+    8,
+    config.kettleRows.rangeStart,
+    config.kettleRows.rangeEnd,
+  );
+
+  const clipPath = useTransform(scrollYProgress, inputRange, [
     "inset(0 0 0 0)",
     "inset(0% 0% 0% 100%)",
   ]);
 
-  const opacity = useTransform(progress, [0.3, 0.33], [0, 1]);
+  const opacity = useTransform(
+    scrollYProgress,
+    config.kettleRows.fadeIn.input,
+    config.kettleRows.fadeIn.output,
+  );
 
   return (
     <motion.span
