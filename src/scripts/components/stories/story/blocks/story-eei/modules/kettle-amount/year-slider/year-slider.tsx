@@ -32,7 +32,7 @@ export default function YearSlider() {
         }}
       >
         {Array.from({ length: numberOfYears }).map((_, index) => (
-          <span>{startYear + index}</span>
+          <span key={index}>{startYear + index}</span>
         ))}
       </motion.div>
     </motion.div>
