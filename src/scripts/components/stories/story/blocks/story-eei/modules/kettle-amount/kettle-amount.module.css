@@ -40,10 +40,7 @@
         text-align: center;
         text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
 
-        /* Mobile/Story/Body/XL */
         font-size: 26px;
-        font-style: normal;
-        font-weight: 400;
         line-height: 140%; /* 36.4px */
       }
     }
