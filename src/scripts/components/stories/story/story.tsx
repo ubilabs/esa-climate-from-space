@@ -28,7 +28,7 @@ const Story: FunctionComponent = () => {
   const { isStoryEEI } = useAppRouteFlags();
 
   // Initialize Lenis for smooth scrolling behavior in the story
-  // useLenisForStory(isStoryEEI);
+  useLenisForStory(isStoryEEI);
 
   // Handles automatic scrolling through the story in showcase mode
   // and manages navigation to the next story when the current one ends
