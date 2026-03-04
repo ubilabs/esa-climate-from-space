@@ -66,7 +66,10 @@ export type ImageGalleryModuleType =
   | "imageCarousel"
   | "globe";
 
-export type StoryEEIModuleType = "textOverlay" | "baseSlide";
+export type StoryEEIModuleType =
+  | "textOverlay"
+  | "baseScrollModule"
+  | "kettleAmountModule";
 
 type BaseModule = {
   text?: string;
@@ -138,5 +141,6 @@ export const storyEEIModuleMap: Record<
   FunctionComponent<StorySectionProps>
 > = {
   textOverlay: StoryEEI.TextOverlay,
-  baseSlide: StoryEEI.BaseSlide,
+  baseScrollModule: StoryEEI.BaseSlide,
+  kettleAmountModule: StoryEEI.KettleAmountModule,
 };

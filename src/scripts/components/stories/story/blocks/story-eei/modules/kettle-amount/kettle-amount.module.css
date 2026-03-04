@@ -1,0 +1,14 @@
+.kettleAmountWrapper {
+  height: calc(var(--story-height) * 3);
+  position: relative;
+
+  .container {
+    top: 0;
+    position: sticky;
+    height: var(--story-height);
+
+    .slide {
+      height: var(--story-height);
+    }
+  }
+}

@@ -1,0 +1,6 @@
+.baseScrollModule {
+  height: var(--story-height);
+  .slide {
+    height: var(--story-height);
+  }
+}
