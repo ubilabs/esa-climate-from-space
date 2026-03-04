@@ -2,7 +2,6 @@ import { FunctionComponent, PropsWithChildren, useEffect, useRef } from "react";
 
 import { StorySectionProps } from "../../../../../../../../types/story";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
-import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
 
 import cx from "classnames";
 
@@ -18,8 +17,6 @@ type Props = PropsWithChildren<
 >;
 
 const ScrollSlide = ({ children, className }: Props) => {
-  const { getRefCallback } = useModuleContent();
-
   const slideRef = useRef(null);
 
   return (
