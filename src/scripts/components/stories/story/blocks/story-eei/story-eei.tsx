@@ -9,7 +9,7 @@ export type StoryEEICompoundComponents = {
   TextOverlay: typeof TextOverlay;
   BaseSlide: typeof ScrollModule;
   StoryGlobe: typeof StoryGlobe;
-  KettleAmountModule: typeof KettleAmountModule,
+  KettleAmountModule: typeof KettleAmountModule;
 };
 
 /* Module Wrapper for Earth Engine Imbalance Story Components*/
@@ -20,4 +20,4 @@ export const StoryEEI = (({ children }: { children: ReactNode }) => {
 StoryEEI.TextOverlay = TextOverlay;
 StoryEEI.BaseSlide = ScrollModule;
 StoryEEI.StoryGlobe = StoryGlobe;
-StoryEEI.KettleAmountModule = KettleAmountModule
+StoryEEI.KettleAmountModule = KettleAmountModule;
