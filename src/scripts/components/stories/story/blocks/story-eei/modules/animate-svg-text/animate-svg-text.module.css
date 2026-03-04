@@ -1,0 +1,24 @@
+.animateSVGTextWrapper {
+  position: relative;
+  background-color: lightblue;
+}
+
+.container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--story-height);
+}
+
+.svgContainer {
+  width: 80%;
+  max-width: 1200px;
+  height: auto;
+}
+
+.svgText {
+  fill: white;
+  font-size: 48px;
+  font-weight: 600;
+  font-family: var(--font-family-primary, sans-serif);
+}

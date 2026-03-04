@@ -14,7 +14,11 @@ type Props<TConfig = unknown> = PropsWithChildren<
   }
 >;
 
-const ScrollSlide = ({ children, className, ...rest }: Props) => {
+const ScrollSlide = ({
+  children,
+  className,
+  ...rest
+}: PropsWithChildren<StorySectionProps>) => {
   const slideRef = useRef(null);
 
   return (
