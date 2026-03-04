@@ -1,25 +1,19 @@
 .kettleOverlay {
+  --overlay-bg: rgba(0, 51, 73, 0.9);
   z-index: 2;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(0, 51, 73, 0.9);
   display: flex;
   width: 342px;
   padding: 24px;
   flex-direction: column;
   justify-content: center;
+  background-color: var(--overlay-bg);
   align-items: center;
   gap: 16px;
-  color: #fff;
   text-align: center;
   text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
-
-  /* Mobile/Story/Body/XL */
-  font-family: NotesEsa;
   font-size: 26px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%; /* 36.4px */
 }

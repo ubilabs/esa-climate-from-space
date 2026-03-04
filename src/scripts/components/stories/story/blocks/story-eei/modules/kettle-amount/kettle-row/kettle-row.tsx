@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
-import styles from "./kettle-row.module.css";
 import { motion, MotionValue, useTransform } from "motion/react";
+
+import styles from "./kettle-row.module.css";
 
 interface Props {
   index: number;
