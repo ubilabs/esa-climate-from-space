@@ -54,7 +54,7 @@ export default function TreeMapGrid({
   }, [selectedLayerId, dispatch]);
 
   const topRowData = data.slice(0, 3);
-  const bottomData = data[3];
+  const bottomData = data.length > 3 ? data[3] : undefined;
 
   const topRowTotal = topRowData.reduce(
     (sum, item) => sum + item.percentage,
@@ -64,9 +64,9 @@ export default function TreeMapGrid({
   return (
     <div className={styles.gridContainer}>
       <div className={styles.gridTop} style={{ height: `${topRowTotal}%` }}>
-        {topRowData.map((data, index) => (
+        {topRowData.map((data) => (
           <div
-            key={index}
+            key={data.layerId}
             className={cx(
               styles.gridCell,
               data.layerId === selectedLayerId && styles.highlight,
@@ -77,19 +77,21 @@ export default function TreeMapGrid({
           </div>
         ))}
       </div>
-      <div
-        className={styles.gridBottom}
-        style={{ height: `${bottomData.percentage}%` }}
-      >
+      {bottomData && (
         <div
-          className={cx(
-            styles.gridCellLarge,
-            bottomData.layerId === selectedLayerId && styles.highlight,
-          )}
+          className={styles.gridBottom}
+          style={{ height: `${bottomData.percentage}%` }}
         >
-          <span className={styles.percentage}>{bottomData.percentage}%</span>
+          <div
+            className={cx(
+              styles.gridCellLarge,
+              bottomData.layerId === selectedLayerId && styles.highlight,
+            )}
+          >
+            <span className={styles.percentage}>{bottomData.percentage}%</span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
