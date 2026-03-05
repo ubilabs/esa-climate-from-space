@@ -1,15 +1,13 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, ReactNode } from "react";
 
 import { useStory } from "../../../providers/story/use-story";
 
-import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
-import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
-import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
 import { useLenisForStory } from "../../../hooks/use-lenis-for-story";
+import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
+import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
 
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
-import GlobeScroll from "./blocks/story-eei/globe-scroll";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
 
 import { getModuleComponent } from "../../../libs/get-story-components";
@@ -23,12 +21,11 @@ import styles from "./story.module.css";
  * Each story is dynamically generated from a JSON file located in storage/stories/[story].
  * The hierarchical structure of a story is organized as follows: story > module > slides
  */
-const Story: FunctionComponent = () => {
+const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
   const { storyElementRef, story, setScrollAnchorRefs } = useStory();
-  const { isStoryEEI } = useAppRouteFlags();
 
   // Initialize Lenis for smooth scrolling behavior in the story
-  useLenisForStory(isStoryEEI);
+  useLenisForStory();
 
   // Handles automatic scrolling through the story in showcase mode
   // and manages navigation to the next story when the current one ends
@@ -48,8 +45,6 @@ const Story: FunctionComponent = () => {
         ref={storyElementRef}
         id="story"
       >
-        {/* enable globe to react to scroll event (currently only story-eei)*/}
-        {isStoryEEI && <GlobeScroll />}
         <SplashScreen />
 
         {story.modules.map(({ type }, moduleIndex) => {
@@ -77,6 +72,7 @@ const Story: FunctionComponent = () => {
         {/* Provisional - will be replaced with a proper end screen later */}
         <ClosingScreen />
       </main>
+      {children}
     </>
   );
 };
