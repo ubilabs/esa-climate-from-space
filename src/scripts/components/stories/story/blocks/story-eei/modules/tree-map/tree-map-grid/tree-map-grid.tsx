@@ -21,10 +21,10 @@ export default function TreeMapGrid({
   onHighlightGridCell,
 }: TreeMapGridProps) {
   const dispatch = useDispatch();
-  const { scrollYProgress: storyScrollYProgress } = useScrollModule();
+  const { scrollYProgress } = useScrollModule();
   const [selectedLayerId, setSelectedLayerId] = useState<string | null>(null);
 
-  useMotionValueEvent(storyScrollYProgress, "change", (progress: number) => {
+  useMotionValueEvent(scrollYProgress, "change", (progress: number) => {
     if (!data || data.length === 0) {
       return;
     }
