@@ -68,7 +68,6 @@ export type ImageGalleryModuleType =
 
 export type StoryEEIModuleType =
   | "textOverlay"
-  | "baseScrollModule"
   | "kettleAmountModule"
   | "animateSVGTextModule";
 
@@ -142,7 +141,6 @@ export const storyEEIModuleMap: Record<
   FunctionComponent<StorySectionProps>
 > = {
   textOverlay: StoryEEI.TextOverlay,
-  baseScrollModule: StoryEEI.BaseSlide,
   kettleAmountModule: StoryEEI.KettleAmountModule,
-    animateSVGTextModule: StoryEEI.AnimateSVGTextModule
+  animateSVGTextModule: StoryEEI.AnimateSVGTextModule,
 };
