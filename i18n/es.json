@@ -189,5 +189,8 @@
   "slides.goTo": "Ir a la diapositiva {number}",
   "storyGlobe.interact": "Interactuar",
   "storyGlobe.quitInteraction": "Salir del modo interactivo",
-  "story.slide.readMore": "Leer más sobre"
+  "story.slide.readMore": "Leer más sobre",
+  "story.eei.kettle.overlay1": "Pero acumulada durante un año, es suficiente energía para hervir 70 teteras de agua.",
+  "story.eei.kettle.overlay2": "Los satélites han estado midiendo la energía solar que llega y sale de la Tierra desde principios de siglo.",
+  "story.eei.kettle.overlay3": "Hace cinco años el desequilibrio energético era menor."
 }
