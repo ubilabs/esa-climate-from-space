@@ -110,9 +110,13 @@ export type TreeMapModule = {
 };
 
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
-  type: StoryEEIModuleType;
   globe?: ScrollGlobe;
-} & TreeMapModule;
+} & (
+    | { type: "textOverlay" }
+    | { type: "baseScrollModule" }
+    | { type: "kettleAmountModule" }
+    | ({ type: "treeMapModule" } & TreeMapModule)
+  );
 
 export type BaseModuleSlide = {
   url?: string;
