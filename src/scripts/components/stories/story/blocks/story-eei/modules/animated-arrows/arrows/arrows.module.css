@@ -1,2 +1,31 @@
 .arrows {
+  span.arrow {
+    display: "inline-block";
+    position: fixed;
+    left: 50%;
+    top: 66%;
+
+    &:first-child {
+      transform: translate(-100%, -100%);
+
+      &:after {
+        content: "100%";
+        position: absolute;
+        top: 76%;
+        left: 74%;
+        rotate: 47deg;
+      }
+    }
+
+    &:last-child {
+      transform: translateY(-100%);
+      &:after {
+        content: "99,98%";
+        left: 23%;
+        position: absolute;
+        rotate: -45deg;
+        top: 51%;
+      }
+    }
+  }
 }

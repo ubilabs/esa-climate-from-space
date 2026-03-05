@@ -28,8 +28,8 @@ export const EEIArrow: FunctionComponent<Props> = ({ variant }) => {
               y2="319.612"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#00B398" stop-opacity="0" />
-              <stop offset="1" stop-color="#00B398" />
+              <stop stopColor="#00B398" stopOpacity="0" />
+              <stop offset="1" stopColor="#00B398" />
             </linearGradient>
           </defs>
         </svg>
@@ -56,8 +56,8 @@ export const EEIArrow: FunctionComponent<Props> = ({ variant }) => {
               y2="5.65685"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#00B398" stop-opacity="0" />
-              <stop offset="1" stop-color="#00B398" />
+              <stop stopColor="#00B398" stopOpacity="0" />
+              <stop offset="1" stopColor="#00B398" />
             </linearGradient>
           </defs>
         </svg>
