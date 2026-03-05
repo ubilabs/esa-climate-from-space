@@ -13,7 +13,7 @@
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(9, 1fr);
     place-items: center;
-    height: min(80vw, 600px);
+    width: min(80vw, 600px);
     aspect-ratio: 1/ 1;
 
     > span {
