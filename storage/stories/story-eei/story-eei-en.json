@@ -8,6 +8,10 @@
   },
   "modules": [
     {
+      "type": "kettleCount",
+      "text": "Animated SVG Text Module"
+    },
+    {
       "type": "animateSVGTextModule",
       "text": "Animated SVG Text Module"
     },

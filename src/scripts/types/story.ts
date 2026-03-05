@@ -69,6 +69,7 @@ export type ImageGalleryModuleType =
 export type StoryEEIModuleType =
   | "textOverlay"
   | "kettleAmountModule"
+  | "kettleCount"
   | "animateSVGTextModule";
 
 type BaseModule = {
@@ -143,4 +144,5 @@ export const storyEEIModuleMap: Record<
   textOverlay: StoryEEI.TextOverlay,
   kettleAmountModule: StoryEEI.KettleAmountModule,
   animateSVGTextModule: StoryEEI.AnimateSVGTextModule,
+  kettleCount: StoryEEI.KettleCount,
 };
