@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { motion, useTransform, useMotionTemplate } from "motion/react";
 import { EEIArrow } from "../../../../../../../main/icons/eei-arrow";
 import { useScrollModule } from "../../base-scroll/use-scroll-module";
 import { AnimatedArrowsConfig } from "../animated-arrows";
@@ -8,11 +8,13 @@ import styles from "./arrows.module.css";
 export default function Arrows() {
   const { scrollYProgress } = useScrollModule<AnimatedArrowsConfig>();
 
-  // Down arrow scales from top-left corner (shoots down diagonally)
-  const downArrowScale = useTransform(scrollYProgress, [0.2, 0.4], [0, 1]);
+  // Down arrow reveals diagonally from top-left toward bottom-right (keeps tip intact)
+  const downArrowProgress = useTransform(scrollYProgress, [0.2, 0.4], [100, 0]);
+  const downArrowClip = useMotionTemplate`inset(0% ${downArrowProgress}% ${downArrowProgress}% 0%)`;
 
-  // Up arrow scales from bottom-left corner (shoots up diagonally)
-  const upArrowScale = useTransform(scrollYProgress, [0.4, 0.6], [0, 1]);
+  // Up arrow reveals from bottom-left toward top-right (keeps tip intact)
+  const upArrowProgress = useTransform(scrollYProgress, [0.4, 0.6], [100, 0]);
+  const upArrowClip = useMotionTemplate`inset(${upArrowProgress}% ${upArrowProgress}% 0% 0%)`;
 
   return (
     <motion.div
@@ -27,8 +29,7 @@ export default function Arrows() {
     >
       <motion.span
         style={{
-          scale: downArrowScale,
-          transformOrigin: "top left",
+          clipPath: downArrowClip,
           display: "inline-block",
         }}
       >
@@ -36,8 +37,7 @@ export default function Arrows() {
       </motion.span>
       <motion.span
         style={{
-          scale: upArrowScale,
-          transformOrigin: "bottom left",
+          clipPath: upArrowClip,
           display: "inline-block",
         }}
       >
