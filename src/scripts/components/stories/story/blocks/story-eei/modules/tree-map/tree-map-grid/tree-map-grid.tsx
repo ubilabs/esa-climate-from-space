@@ -53,8 +53,8 @@ export default function TreeMapGrid({
     }
   }, [selectedLayerId, dispatch]);
 
-  const topRowData = data.slice(0, 3);
-  const bottomData = data.length > 3 ? data[3] : undefined;
+  const topRowData = data.filter((item) => item.percentage <= 10);
+  const bottomRowData = data.filter((item) => item.percentage > 10);
 
   const topRowTotal = topRowData.reduce(
     (sum, item) => sum + item.percentage,
@@ -63,33 +63,38 @@ export default function TreeMapGrid({
 
   return (
     <div className={styles.gridContainer}>
-      <div className={styles.gridTop} style={{ height: `${topRowTotal}%` }}>
-        {topRowData.map((data) => (
-          <div
-            key={data.layerId}
-            className={cx(
-              styles.gridCell,
-              data.layerId === selectedLayerId && styles.highlight,
-            )}
-            style={{ width: `${(data.percentage / topRowTotal) * 100}%` }}
-          >
-            <span className={styles.percentage}>{data.percentage}%</span>
-          </div>
-        ))}
-      </div>
-      {bottomData && (
-        <div
-          className={styles.gridBottom}
-          style={{ height: `${bottomData.percentage}%` }}
-        >
-          <div
-            className={cx(
-              styles.gridCellLarge,
-              bottomData.layerId === selectedLayerId && styles.highlight,
-            )}
-          >
-            <span className={styles.percentage}>{bottomData.percentage}%</span>
-          </div>
+      {topRowData.length > 0 && (
+        <div className={styles.gridTop} style={{ height: `${topRowTotal}%` }}>
+          {topRowData.map((item) => (
+            <div
+              key={item.layerId}
+              className={cx(
+                styles.gridCell,
+                item.layerId === selectedLayerId && styles.highlight,
+              )}
+              style={{ width: `${(item.percentage / topRowTotal) * 100}%` }}
+            >
+              <span className={styles.percentage}>{item.percentage}%</span>
+            </div>
+          ))}
+        </div>
+      )}
+      {bottomRowData.length > 0 && (
+        <div className={styles.gridBottom}>
+          {bottomRowData.map((item) => (
+            <div
+              key={item.layerId}
+              className={cx(
+                styles.gridCellLarge,
+                item.layerId === selectedLayerId && styles.highlight,
+              )}
+              style={{
+                flex: item.percentage,
+              }}
+            >
+              <span className={styles.percentage}>{item.percentage}%</span>
+            </div>
+          ))}
         </div>
       )}
     </div>

@@ -21,6 +21,8 @@
 
 .gridBottom {
   width: 100%;
+  display: flex;
+  flex: 1;
 }
 
 .gridCell {
@@ -39,6 +41,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-right: 2px solid var(--main-colours-esa-teal-55);
+
+  &:last-child {
+    border-right: none;
+  }
 }
 
 .percentage {
