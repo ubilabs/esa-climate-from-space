@@ -16,7 +16,7 @@ const animationConfig = {
 export type AnimatedArrowsConfig = typeof animationConfig;
 
 export default function AnimatedArrowsModule() {
-  const moduleTotalLength = 5;
+  const moduleTotalLength = 8;
 
   return (
     <ScrollModule
@@ -28,9 +28,15 @@ export default function AnimatedArrowsModule() {
         <Arrows />
 
         <ScrollText
-          text="test"
-          inputRange={[0, 0.2]}
-          outputRange={["0vw", "100vw"]}
+          text="Earth’s energy is out of balance."
+          inputRange={[0.2, 0.4]}
+          outputRange={["0vh", "-50vh"]}
+        />
+
+        <ScrollText
+          text="More energy comes in from the Sun than we lose to space."
+          inputRange={[0.2, 0.4]}
+          outputRange={["0vh", "-50vh"]}
         />
       </ScrollModule.Slide>
     </ScrollModule>

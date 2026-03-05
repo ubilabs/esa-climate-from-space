@@ -1,4 +1,4 @@
-import { motion, useTransform } from "motion/react";
+import { motion, useMotionValueEvent, useTransform } from "motion/react";
 import styles from "./scroll-text.module.css";
 import { AnimatedArrowsConfig } from "../../animated-arrows/animated-arrows";
 import { useScrollModule } from "../use-scroll-module";
@@ -15,6 +15,10 @@ export default function ScrollText<T extends string | number>({
   outputRange,
 }: Props<T>) {
   const { scrollYProgress } = useScrollModule<AnimatedArrowsConfig>();
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log(`x changed to of scrolltext `, latest);
+  });
 
   return (
     <motion.div
