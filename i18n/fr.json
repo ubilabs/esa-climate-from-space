@@ -189,5 +189,8 @@
   "slides.goTo": "Aller à la diapositive {number}",
   "storyGlobe.interact": "Interagir",
   "storyGlobe.quitInteraction": "Quitter le mode interactif",
-  "story.slide.readMore": "En savoir plus sur"
+  "story.slide.readMore": "En savoir plus sur",
+  "story.eei.kettle.overlay1": "Mais accumulée sur une année, c'est assez d'énergie pour faire bouillir 70 bouilloires d'eau.",
+  "story.eei.kettle.overlay2": "Les satellites mesurent l'énergie solaire qui atteint et quitte la Terre depuis le début du siècle.",
+  "story.eei.kettle.overlay3": "Il y a cinq ans, le déséquilibre énergétique était plus faible."
 }

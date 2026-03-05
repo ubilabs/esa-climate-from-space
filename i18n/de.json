@@ -189,5 +189,8 @@
   "slides.goTo": "Gehe zu Folie {number}",
   "storyGlobe.interact": "Interagieren",
   "storyGlobe.quitInteraction": "Interaktiven Modus beenden",
-  "story.slide.readMore": "Mehr erfahren über"
+  "story.slide.readMore": "Mehr erfahren über",
+  "story.eei.kettle.overlay1": "Aber über ein Jahr kumuliert reicht es aus, um 70 Wasserkocher zu kochen.",
+  "story.eei.kettle.overlay2": "Satelliten messen die Sonnenenergie, die die Erde erreicht und verlässt, seit Beginn des Jahrhunderts.",
+  "story.eei.kettle.overlay3": "Vor fünf Jahren war das Energieungleichgewicht kleiner."
 }

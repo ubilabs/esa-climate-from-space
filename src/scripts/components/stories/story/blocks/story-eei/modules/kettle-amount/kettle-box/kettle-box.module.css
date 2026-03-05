@@ -1,0 +1,28 @@
+.boxContainer {
+  display: grid;
+  gap: 2rem;
+  place-items: center;
+
+  .box {
+    --box-background: rgba(152, 219, 206, 0.1);
+    position: relative;
+    border: 1px solid var(--font-55-esa-teal, #98dbce);
+    background-color: var(--box-background);
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    place-items: center;
+    height: min(80vw, 600px);
+    aspect-ratio: 1/ 1;
+
+    > span {
+      color: var(--font-55-esa-teal, #98dbce);
+      text-align: center;
+      font-family: NotesEsa;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 115%;
+    }
+  }
+}
