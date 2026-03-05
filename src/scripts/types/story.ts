@@ -70,7 +70,10 @@ export type StoryEEIModuleType =
   | "textOverlay"
   | "kettleAmountModule"
   | "kettleCount"
-  | "animateSVGTextModule";
+  | "animateSVGTextModule"
+  | "baseScrollModule"
+  | "kettleAmountModule"
+  | "treeMapModule";
 
 type BaseModule = {
   text?: string;
@@ -95,10 +98,21 @@ export type ImageCarouselModule = ImageModule & {
   };
 };
 
+export type TreeMapModule = {
+  grid: {
+    title: string;
+    data: {
+      label: string;
+      layerId: string;
+      percentage: number;
+    }[];
+  };
+};
+
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
   type: StoryEEIModuleType;
   globe?: ScrollGlobe;
-};
+} & TreeMapModule;
 
 export type BaseModuleSlide = {
   url?: string;
@@ -145,4 +159,5 @@ export const storyEEIModuleMap: Record<
   kettleAmountModule: StoryEEI.KettleAmountModule,
   animateSVGTextModule: StoryEEI.AnimateSVGTextModule,
   kettleCount: StoryEEI.KettleCount,
+  treeMapModule: StoryEEI.TreeMapModule,
 };

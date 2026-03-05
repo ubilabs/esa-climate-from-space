@@ -91,6 +91,22 @@
       }
     },
     {
+      "type": "treeMapModule",
+      "grid": {
+        "title": "Energy absorption",
+        "data": [
+          { "label": "Ocean", "layerId": "eei_water_mask", "percentage": 91 },
+          { "label": "Land", "layerId": "eei_land_mask", "percentage": 5 },
+          { "label": "Ice", "layerId": "eei_ice_mask", "percentage": 3 },
+          {
+            "label": "Atmosphere",
+            "layerId": "eei_atmosphere_mask",
+            "percentage": 1
+          }
+        ]
+      }
+    },
+    {
       "type": "imageCarousel",
       "headerText": "ECVs related to MOTECOSUMA",
       "readMore": {
