@@ -8,12 +8,14 @@ import { getCssVarPx } from "../libs/get-css-var-in-px";
 import { useStory } from "../providers/story/use-story";
 import config from "../config/main";
 import { useScreenSize } from "./use-screen-size";
+import { useAppRouteFlags } from "./use-app-route-flags";
 
 export const DATA_NO_SNAP_ATTR = "data-no-snap";
 
-export function useLenisForStory(isStoryEEI: boolean) {
+export function useLenisForStory() {
   const { storyElementRef, story, lenisRef, getScrollAnchorRefsMap } =
     useStory();
+  const { isStoryEEI } = useAppRouteFlags();
 
   // stable raf loop
   const rafRef = useRef<number | null>(null);

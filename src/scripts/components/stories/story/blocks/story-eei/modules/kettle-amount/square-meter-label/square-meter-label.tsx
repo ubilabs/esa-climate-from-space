@@ -1,6 +1,7 @@
 import { motion, useTransform } from "motion/react";
 import { useScrollModule } from "../../base-scroll/use-scroll-module";
-import { KettleAmountAnimationConfig } from "../kettle-amount-types";
+import { KettleAmountAnimationConfig } from "../kettle-amount";
+
 import styles from "./square-meter-label.module.css";
 
 export default function SquareMeterLabel() {

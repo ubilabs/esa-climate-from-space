@@ -1,7 +1,8 @@
 import { motion, useTransform } from "motion/react";
 import { useScrollModule } from "../../base-scroll/use-scroll-module";
-import { KettleAmountAnimationConfig } from "../kettle-amount-types";
 import { SatelliteIcon } from "../../../../../../../main/icons/satellite-icon";
+import { KettleAmountAnimationConfig } from "../kettle-amount";
+
 import styles from "./satellite-animation.module.css";
 
 export default function SatelliteAnimation() {
