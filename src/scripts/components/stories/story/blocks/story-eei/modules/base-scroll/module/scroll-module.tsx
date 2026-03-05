@@ -7,7 +7,6 @@ import { ScrollModuleContext } from "../use-scroll-module";
 import cx from "classnames";
 
 import styles from "./scroll-module.module.css";
-import { useMotionValueEvent } from "motion/react";
 
 type Props<TConfig = unknown> = PropsWithChildren<
   StorySectionProps & {
