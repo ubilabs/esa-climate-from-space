@@ -33,11 +33,11 @@ const animationConfig = {
   },
   satellite: {
     xPosition: {
-      input: [0, 0.4, 0.56, 0.65],
-      output: ["-25vw", "0vw", "0", "-25vw"],
+      input: [0, 0.4, 0.5, 0.65],
+      output: ["-100vw", "25vw", "25vw", "100vw"],
     },
     opacity: {
-      input: [0, 0.3, 0.4, 0.65, 0.67],
+      input: [0, 0.26, 0.3, 0.65, 0.67],
       output: ["0", "0", "1", "1", "0"],
     },
   },
@@ -59,7 +59,7 @@ const animationConfig = {
       output: ["-46%", "-46%", "0%"],
     },
   },
-} ;
+};
 
 export type KettleAmountAnimationConfig = typeof animationConfig;
 

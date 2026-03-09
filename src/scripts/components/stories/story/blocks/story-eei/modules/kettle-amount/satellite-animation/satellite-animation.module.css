@@ -1,5 +1,11 @@
 .satellite {
+  height: fit-content;
   position: absolute;
-  top: -50px;
-  left: -50px;
+  top: 0px;
+  left: 0px;
+  transform: translate(-50%, -50%);
+
+  > img {
+    width: min(200px, 30vw);
+  }
 }
