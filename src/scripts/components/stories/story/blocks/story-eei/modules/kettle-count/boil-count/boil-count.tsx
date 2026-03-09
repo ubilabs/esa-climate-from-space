@@ -5,15 +5,23 @@ import { KettleCountConfig } from "../kettle-count";
 
 import styles from "./boil-count.module.css";
 
+function abbreviateNumber(num: number): string {
+  if (num < 1_000_000_000) return (num / 1_000_000).toFixed(1) + "M";
+  if (num < 1_000_000_000_000) return (num / 1_000_000_000).toFixed(1) + "B";
+  return (num / 1_000_000_000_000).toFixed(1) + "T";
+}
+
 export default function BoilCount() {
-  const [value, setValue] = useState(1000);
+  const KETTLES_PER_SECOND = 1137667304;
+  const [value, setValue] = useState(0);
 
   const { scrollYProgress, config } = useScrollModule<KettleCountConfig>();
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setValue((prevValue) => prevValue + 1000);
+      setValue((prevValue) => prevValue + KETTLES_PER_SECOND);
     }, 1000);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -28,7 +36,7 @@ export default function BoilCount() {
         ),
       }}
     >
-      <span className={styles.count}>{value}</span>
+      <span className={styles.count}>{abbreviateNumber(value)}</span>
       <span className={styles.text}>kettles of water</span>
     </motion.div>
   );
