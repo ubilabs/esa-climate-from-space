@@ -116,14 +116,17 @@
       "slides": [
         {
           "text": "[Ice Sheet](/#/land/data?globe=SI-38.98I73.03I25840000I0.00I1293840000000I0Igreenland_ice.secI)",
+          "altText": "Ice sheet",
           "url": "assets/ice_sheet.png"
         },
         {
           "text": "[Sea Ice](/#/ocean/data?globe=SI-38.98I73.03I25840000I0.00I1493596800000I0Isea_ice.ice_concI)",
+          "altText": "Sea ice",
           "url": "assets/sea_ice.png"
         },
         {
           "text": "[Sea Level Anomalies](/#/ocean/data?globe=SI0.00I25.00I25840000I0.00I1450137600000I0Isea_level.slaI)",
+          "altText": "Sea level anomalies",
           "url": "assets/sea_level.png"
         }
       ]
