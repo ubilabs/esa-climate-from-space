@@ -1,14 +1,12 @@
 .treeMapWrapper {
-  height: var(--story-height);
   position: relative;
 
   .container {
     top: 0;
     position: sticky;
-    height: var(--story-height);
 
     .slide {
-      height: var(--story-height);
+      height: 100%;
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -46,7 +44,6 @@
         justify-content: center;
 
         @media screen and (--mobile-viewport) {
-          
           height: calc(50% - var(--headline-font-size));
           width: 100%;
           justify-content: flex-start;

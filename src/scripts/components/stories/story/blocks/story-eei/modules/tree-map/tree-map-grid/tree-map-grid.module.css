@@ -1,6 +1,5 @@
 .gridContainer {
-  width: 90%;
-  max-width: 600px;
+  width: min(90%, 600px);
   margin-top: 25px;
   aspect-ratio: 1.2;
   display: flex;
