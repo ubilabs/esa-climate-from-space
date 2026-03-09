@@ -9,7 +9,7 @@
   "modules": [
     {
       "type": "kettleCount",
-      "text": "Animated SVG Text Module"
+      "text": "Kettle Count Module"
     },
     {
       "type": "animateSVGTextModule",
