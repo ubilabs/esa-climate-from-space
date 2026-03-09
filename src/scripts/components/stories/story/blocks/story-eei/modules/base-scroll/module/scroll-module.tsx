@@ -14,7 +14,11 @@ type Props<TConfig = unknown> = PropsWithChildren<
   }
 >;
 
-const ScrollSlide = ({ children, className, ...rest }: Props) => {
+const ScrollSlide = ({
+  children,
+  className,
+  ...rest
+}: PropsWithChildren<StorySectionProps>) => {
   const slideRef = useRef(null);
 
   return (
@@ -33,6 +37,7 @@ const ScrollModule: FunctionComponent<Props> & {
     target: moduleRef,
     offset: ["start end", "end end"],
   });
+
 
   const contextValue = useMemo(
     () => ({ scrollY, scrollYProgress, config }),
