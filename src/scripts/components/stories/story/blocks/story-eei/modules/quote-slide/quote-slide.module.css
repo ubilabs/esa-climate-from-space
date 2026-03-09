@@ -1,14 +1,22 @@
 .quoteWrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  place-items: center;
+  width: min(90%, 600px);
+  margin: 0 auto;
+
+
   .quote {
+    padding-inline: 1.5rem;
     text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
-    height: var(--story-height);
+    height: fit-content;
+    border-left: 4px solid var(--Background-ESA-Teal, #00b398);
+
     p {
       line-height: 150%; /* 30px */
       font-size: 1.25rem;
       font-weight: 700;
       line-height: 150%; /* 30px */
+      margin-bottom: 1rem;
     }
     span {
       color: var(--font-55-esa-teal, #98dbce);
