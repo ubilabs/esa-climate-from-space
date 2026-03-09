@@ -8,7 +8,7 @@ import TreeMapGrid from "./tree-map-grid/tree-map-grid";
 import styles from "./tree-map.module.css";
 
 export default function TreeMapModule() {
-  const { module, getRefCallback } = useModuleContent();
+  const { module } = useModuleContent();
   const [highlightedLayerId, setHighlightedLayerId] = useState<string | null>(
     null,
   );
@@ -21,7 +21,6 @@ export default function TreeMapModule() {
 
   return (
     <ScrollModule
-      ref={getRefCallback(0, 0)}
       className={styles.treeMapWrapper}
       style={{
         height: `calc(var(--story-height) * ${module.grid.data.length})`,

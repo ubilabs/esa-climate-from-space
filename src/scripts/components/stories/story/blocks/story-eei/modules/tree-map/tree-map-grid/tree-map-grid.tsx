@@ -28,12 +28,21 @@ export default function TreeMapGrid({
     if (!data || data.length === 0) {
       return;
     }
+
+    // Decrease progress by one view height to start the first layer highlight
+    // after scrolling one full screen
+    const decreasedProgress = progress - 1 / (data.length + 1);
+
     // Map progress (0-1) to layer index
     // Each layer occupies an equal portion of the scroll range
     const index = Math.min(
-      Math.floor(progress * (data.length + 1)),
+      Math.floor(decreasedProgress * (data.length + 1)),
       data.length - 1,
     );
+
+    if (index < 0 || index >= data.length) {
+      return;
+    }
 
     const { layerId } = data[index];
 
