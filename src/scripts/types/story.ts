@@ -67,10 +67,10 @@ export type ImageGalleryModuleType =
   | "globe";
 
 export type StoryEEIModuleType =
-  | "textOverlay"
   | "kettleAmountModule"
   | "kettleCount"
-  | "animateSVGTextModule";
+  | "animateSVGTextModule"
+  | "quoteSlide";
 
 type BaseModule = {
   text?: string;
@@ -141,8 +141,8 @@ export const storyEEIModuleMap: Record<
   StoryEEIModule["type"],
   FunctionComponent<StorySectionProps>
 > = {
-  textOverlay: StoryEEI.TextOverlay,
   kettleAmountModule: StoryEEI.KettleAmountModule,
   animateSVGTextModule: StoryEEI.AnimateSVGTextModule,
   kettleCount: StoryEEI.KettleCount,
+  quoteSlide: StoryEEI.QuoteSlide,
 };

@@ -5,20 +5,20 @@ import { setSelectedLayerIds } from "../../../../../reducers/layers";
 
 import Story from "../../story";
 import GlobeScroll from "./globe-scroll";
-import TextOverlay from "../generic/text-overlay/text-overlay";
 import ScrollModule from "./modules/base-scroll/module/scroll-module";
 import StoryGlobe from "../globe/story-globe/story-globe";
 import KettleAmountModule from "./modules/kettle-amount/kettle-amount";
 import AnimatedArrowsModule from "./modules/animated-arrows/animated-arrows";
 import KettleCount from "./modules/kettle-count/kettle-count";
+import QuoteSlide from "./modules/quote-slide/quote-slide";
 
 export type StoryEEICompoundComponents = {
-  TextOverlay: typeof TextOverlay;
   BaseSlide: typeof ScrollModule;
   StoryGlobe: typeof StoryGlobe;
   KettleAmountModule: typeof KettleAmountModule;
   KettleCount: typeof KettleCount;
   AnimateSVGTextModule: typeof AnimatedArrowsModule;
+  QuoteSlide: typeof QuoteSlide;
 };
 
 /* Module Wrapper for Earth Engine Imbalance Story Components*/
@@ -40,8 +40,8 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   );
 };
 
-StoryEEI.TextOverlay = TextOverlay;
 StoryEEI.BaseSlide = ScrollModule;
+StoryEEI.QuoteSlide = QuoteSlide;
 StoryEEI.StoryGlobe = StoryGlobe;
 StoryEEI.KettleAmountModule = KettleAmountModule;
 StoryEEI.KettleCount = KettleCount;
