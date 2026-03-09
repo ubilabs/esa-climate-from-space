@@ -6,8 +6,11 @@ import cx from "classnames";
 import { useScrollModule } from "../../base-scroll/use-scroll-module";
 
 import { setSelectedLayerIds } from "../../../../../../../../reducers/layers";
+import { setGlobeRenderOptions } from "../../../../../../../../reducers/globe/render-options";
 
 import { TreeMapModule } from "../../../../../../../../types/story";
+
+import config from "../../../../../../../../config/main";
 
 import styles from "./tree-map-grid.module.css";
 
@@ -56,6 +59,17 @@ export default function TreeMapGrid({
 
   useEffect(() => {
     if (selectedLayerId) {
+      if (selectedLayerId === "eei_atmosphere_mask") {
+        dispatch(
+          setGlobeRenderOptions({
+            atmosphereStrength: 1.8,
+            atmosphereColor: [0.5961, 0.8588, 0.8078],
+          }),
+        );
+      } else {
+        dispatch(setGlobeRenderOptions(config.globe.renderOptions));
+      }
+
       dispatch(
         setSelectedLayerIds({ layerId: selectedLayerId, isPrimary: true }),
       );
