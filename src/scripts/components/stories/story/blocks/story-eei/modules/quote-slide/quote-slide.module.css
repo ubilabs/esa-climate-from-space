@@ -1,0 +1,10 @@
+.quoteWrapper {
+  display: flex;
+  flex-direction: column;
+  .quote {
+    height: var(--story-height);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 150%; /* 30px */
+  }
+}

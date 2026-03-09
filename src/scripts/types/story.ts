@@ -95,9 +95,15 @@ export type ImageCarouselModule = ImageModule & {
   };
 };
 
+type QuoteSlide = {
+  text: string;
+  author: string;
+};
+
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
   type: StoryEEIModuleType;
   globe?: ScrollGlobe;
+  quote?: QuoteSlide;
 };
 
 export type BaseModuleSlide = {
