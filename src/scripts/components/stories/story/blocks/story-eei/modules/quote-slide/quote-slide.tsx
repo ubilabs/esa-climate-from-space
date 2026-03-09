@@ -12,8 +12,8 @@ export default function QuoteSlide() {
 
   return (
     <ScrollModule className={styles.quoteWrapper} config={animationConfig}>
-      <ScrollModule.Slide>
-        <p className={styles.quote}>{quoteModule.quote?.text}</p>
+      <ScrollModule.Slide className={styles.quote}>
+        <p>{quoteModule.quote?.text}</p>
         <span className={styles.quote}>{quoteModule.quote?.author}</span>
       </ScrollModule.Slide>
     </ScrollModule>
