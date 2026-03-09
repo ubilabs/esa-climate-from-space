@@ -1,0 +1,31 @@
+.countWrapper {
+  --text-color: #98dbce;
+  text-align: center;
+
+  > span {
+    display: block;
+  }
+  .count {
+    color: var(--text-color);
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 115%; /* 92px */
+  }
+
+  .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    text-align: center;
+    font-size: 28px;
+    font-style: normal;
+    line-height: 150%; /* 42px */
+  }
+
+  .countContainer {
+    margin-block: 1rem;
+  }
+}

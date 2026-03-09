@@ -1,0 +1,6 @@
+.scrollText {
+  font-size: 1.625rem;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+  line-height: 140%; /* 36.4px */
+  text-align: center;
+}

@@ -33,11 +33,11 @@ const animationConfig = {
   },
   satellite: {
     xPosition: {
-      input: [0, 0.4, 0.56, 0.65],
-      output: ["-25vw", "0vw", "0", "-25vw"],
+      input: [0, 0.4, 0.5, 0.65],
+      output: ["-100vw", "25vw", "25vw", "100vw"],
     },
     opacity: {
-      input: [0, 0.3, 0.4, 0.65, 0.67],
+      input: [0, 0.26, 0.3, 0.65, 0.67],
       output: ["0", "0", "1", "1", "0"],
     },
   },
@@ -59,13 +59,13 @@ const animationConfig = {
       output: ["-46%", "-46%", "0%"],
     },
   },
-} ;
+};
 
 export type KettleAmountAnimationConfig = typeof animationConfig;
 
 export default function KettleAmountModule() {
   const intl = useIntl();
-  const moduleTotalLength = 5;
+  const MODULE_TOTAL_LENGTH = 5;
 
   const overlays: Array<KettleOverlayProps> = [
     {
@@ -85,7 +85,7 @@ export default function KettleAmountModule() {
   return (
     <ScrollModule
       config={animationConfig}
-      style={{ height: `calc(var(--story-height) * ${moduleTotalLength})` }}
+      style={{ height: `calc(var(--story-height) * ${MODULE_TOTAL_LENGTH})` }}
       className={styles.kettleAmountWrapper}
     >
       <ScrollModule.Slide className={styles.container}>
