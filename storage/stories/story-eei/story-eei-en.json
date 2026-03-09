@@ -31,6 +31,22 @@
       "text": "kettle amount module"
     },
     {
+      "type": "treeMapModule",
+      "grid": {
+        "title": "Energy absorption",
+        "data": [
+          { "label": "Ocean", "layerId": "eei_water_mask", "percentage": 91 },
+          { "label": "Land", "layerId": "eei_land_mask", "percentage": 5 },
+          { "label": "Ice", "layerId": "eei_ice_mask", "percentage": 3 },
+          {
+            "label": "Atmosphere",
+            "layerId": "eei_atmosphere_mask",
+            "percentage": 1
+          }
+        ]
+      }
+    },
+    {
       "type": "baseScrollModule",
       "text": "slide 3"
     },
@@ -41,7 +57,7 @@
         "location": {
           "lat": 37.9284,
           "lng": -109.7421,
-          "altitude": 11200000
+          "altitude": 111200000
         }
       }
     },
@@ -56,7 +72,7 @@
         "location": {
           "lat": -52.1183,
           "lng": -68.4479,
-          "altitude": 4200000
+          "altitude": 14200000
         }
       }
     },

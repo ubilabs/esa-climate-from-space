@@ -1,0 +1,62 @@
+.gridContainer {
+  width: min(90%, 600px);
+  margin-top: 25px;
+  aspect-ratio: 1.2;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--main-colours-esa-teal-55);
+
+  @media screen and (--mobile-viewport) {
+    width: 70%;
+    max-height: 70%;
+  }
+}
+
+.gridTop {
+  display: flex;
+  width: 100%;
+  border-bottom: 2px solid var(--main-colours-esa-teal-55);
+}
+
+.gridBottom {
+  width: 100%;
+  display: flex;
+  flex: 1;
+}
+
+.gridCell {
+  border-right: 2px solid var(--main-colours-esa-teal-55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.gridCellLarge {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid var(--main-colours-esa-teal-55);
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.percentage {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 400;
+
+  @media screen and (--mobile-viewport) {
+    font-size: 0.732rem;
+  }
+}
+
+.highlight {
+  background: rgba(152, 219, 206, 0.40);
+}
