@@ -37,7 +37,7 @@ export default function SatelliteAnimation() {
         ),
       }}
     >
-      <img src={assetUrl} alt="" className={styles.satellite} />
+      <img src={assetUrl} alt="Suomi satellite" />
     </motion.div>
   );
 }
