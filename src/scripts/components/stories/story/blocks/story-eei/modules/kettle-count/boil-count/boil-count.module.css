@@ -14,10 +14,18 @@
   }
 
   .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     color: var(--text-color);
     text-align: center;
     font-size: 28px;
     font-style: normal;
     line-height: 150%; /* 42px */
+  }
+
+  .countContainer {
+    margin-block: 1rem;
   }
 }

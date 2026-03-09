@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useDeferredValue, useEffect, useState } from "react";
 import { useScrollModule } from "../../base-scroll/use-scroll-module";
 import { motion, useTransform } from "motion/react";
 import ScrollText from "../../base-scroll/scroll-text/scroll-text";
 import { KettleCountConfig } from "../kettle-count";
+import { KettleIcon } from "../../../../../../../main/icons/kettle-icon";
 import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
 
 import styles from "./boil-count.module.css";
@@ -32,6 +33,8 @@ function formatNumber(value: number, isMobile: boolean): string {
 export default function BoilCount() {
   const KETTLES_PER_SECOND = 1137667304;
   const [value, setValue] = useState(0);
+  // let react priorizite other UI updates
+  const deferredCount = useDeferredValue(value);
 
   const { isMobile } = useScreenSize();
   const { scrollYProgress, config } = useScrollModule<KettleCountConfig>();
@@ -47,7 +50,12 @@ export default function BoilCount() {
   return (
     <>
       <ScrollText
-        text="Since you arrived on this page, we have trapped enough heat to boil"
+        text="Since you arrived on this page,"
+        inputRange={config.scrollText2.input}
+        outputRange={config.scrollText2.output}
+      />
+      <ScrollText
+        text="we have trapped enough heat to boil"
         inputRange={config.scrollText2.input}
         outputRange={config.scrollText2.output}
       />
@@ -61,8 +69,15 @@ export default function BoilCount() {
           ),
         }}
       >
-        <span className={styles.count}>{formatNumber(value, isMobile)}</span>
-        <span className={styles.text}>kettles of water</span>
+        <div className={styles.countContainer}>
+          <span className={styles.count}>
+            {formatNumber(deferredCount, isMobile)}
+          </span>
+          <span className={styles.text}>
+            <KettleIcon />
+            kettles of water
+          </span>
+        </div>
       </motion.div>
     </>
   );

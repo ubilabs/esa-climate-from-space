@@ -42,11 +42,6 @@ export default function KettleCount() {
         />
         <BoilCount />
         <ScrollText
-          text="Since you arrived on this page, we have trapped enough heat to boil"
-          inputRange={animationConfig.scrollText2.input}
-          outputRange={animationConfig.scrollText2.output}
-        />
-        <ScrollText
           text="This excess energy fuels the changes we are seeing in Earth’s climate. It is the engine behind stronger storms, floods, droughts, and rising seas."
           inputRange={animationConfig.scrollText3.input}
           outputRange={animationConfig.scrollText3.output}
