@@ -65,7 +65,7 @@ export type KettleAmountAnimationConfig = typeof animationConfig;
 
 export default function KettleAmountModule() {
   const intl = useIntl();
-  const moduleTotalLength = 5;
+  const MODULE_TOTAL_LENGTH = 5;
 
   const overlays: Array<KettleOverlayProps> = [
     {
@@ -85,7 +85,7 @@ export default function KettleAmountModule() {
   return (
     <ScrollModule
       config={animationConfig}
-      style={{ height: `calc(var(--story-height) * ${moduleTotalLength})` }}
+      style={{ height: `calc(var(--story-height) * ${MODULE_TOTAL_LENGTH})` }}
       className={styles.kettleAmountWrapper}
     >
       <ScrollModule.Slide className={styles.container}>

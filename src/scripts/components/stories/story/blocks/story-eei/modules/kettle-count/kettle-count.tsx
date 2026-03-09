@@ -26,12 +26,12 @@ const animationConfig = {
 export type KettleCountConfig = typeof animationConfig;
 
 export default function KettleCount() {
-  const moduleTotalLength = 20;
+  const MODULE_TOTAL_LENGTH = 20;
 
   return (
     <ScrollModule
       config={animationConfig}
-      style={{ height: `calc(var(--story-height) * ${moduleTotalLength})` }}
+      style={{ height: `calc(var(--story-height) * ${MODULE_TOTAL_LENGTH})` }}
       className={styles.kettleCountWrapper}
     >
       <ScrollModule.Slide className={styles.container}>
