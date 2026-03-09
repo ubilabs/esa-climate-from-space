@@ -30,12 +30,12 @@ const animationConfig = {
 export type AnimatedArrowsConfig = typeof animationConfig;
 
 export default function AnimatedArrowsModule() {
-  const moduleTotalLength = 10;
+  const MODULE_TOTAL_LENGTH = 10;
 
   return (
     <ScrollModule
       config={animationConfig}
-      style={{ height: `calc(var(--story-height) * ${moduleTotalLength})` }}
+      style={{ height: `calc(var(--story-height) * ${MODULE_TOTAL_LENGTH})` }}
       className={styles.animatedArrowsWrapper}
     >
       <ScrollModule.Slide className={styles.container}>

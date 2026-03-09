@@ -10,12 +10,14 @@ import ScrollModule from "./modules/base-scroll/module/scroll-module";
 import StoryGlobe from "../globe/story-globe/story-globe";
 import KettleAmountModule from "./modules/kettle-amount/kettle-amount";
 import AnimatedArrowsModule from "./modules/animated-arrows/animated-arrows";
+import KettleCount from "./modules/kettle-count/kettle-count";
 
 export type StoryEEICompoundComponents = {
   TextOverlay: typeof TextOverlay;
   BaseSlide: typeof ScrollModule;
   StoryGlobe: typeof StoryGlobe;
   KettleAmountModule: typeof KettleAmountModule;
+  KettleCount: typeof KettleCount;
   AnimateSVGTextModule: typeof AnimatedArrowsModule;
 };
 
@@ -42,4 +44,5 @@ StoryEEI.TextOverlay = TextOverlay;
 StoryEEI.BaseSlide = ScrollModule;
 StoryEEI.StoryGlobe = StoryGlobe;
 StoryEEI.KettleAmountModule = KettleAmountModule;
+StoryEEI.KettleCount = KettleCount;
 StoryEEI.AnimateSVGTextModule = AnimatedArrowsModule;
