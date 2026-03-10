@@ -60,15 +60,40 @@
       "type": "kettleCount"
     },
     {
+      "type": "baseScrollModule",
+      "lengthFactor": 1,
       "globe": {
-        "containerPosition": { "x": 0, "y": 0 },
+        "containerPosition": { "x": -0.25, "y": -0.025 },
         "location": {
-          "lat": 51.5074,
-          "lng": -0.1278,
-          "altitude": 18000000
+          "lat": 1.816919,
+          "lng": -24.726276,
+          "altitude": 38000000
+        }
+      }
+    },
+    {
+      "type": "baseScrollModule",
+      "lengthFactor": 1,
+      "globe": {
+        "containerPosition": { "x": -0.25, "y": -0.025 },
+        "location": {
+          "lat": -35.26634,
+          "lng": -14.363042,
+          "altitude": 38000000
+        }
+      }
+    },
+    {
+      "globe": {
+        "title": "Surface area",
+        "containerPosition": { "x": -0.25, "y": -0.025 },
+        "location": {
+          "lat": -35.26634,
+          "lng": -14.363042,
+          "altitude": 38000000
         }
       },
-      "lengthFactor": 10,
+      "lengthFactor": 4,
       "type": "treeMapModule",
       "grid": {
         "title": "Energy absorption",
@@ -82,9 +107,6 @@
             "percentage": 1
           }
         ]
-      },
-      "globe": {
-        "title": "Surface area"
       }
     },
     {
