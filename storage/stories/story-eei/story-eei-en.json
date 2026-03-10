@@ -8,6 +8,7 @@
   },
   "modules": [
     {
+      "lengthFactor": 10,
       "type": "animatedArrowsModule"
     },
     {
@@ -18,14 +19,15 @@
           "altitude": 20047171
         }
       },
-      "type": "kettleAmountModule",
-      "text": "kettle amount module"
+      "lengthFactor": 20,
+      "type": "kettleAmountModule"
     },
     {
-      "type": "kettleCount",
-      "text": "Kettle Count Module"
+      "lengthFactor": 5,
+      "type": "kettleCount"
     },
     {
+      "lengthFactor": 10,
       "type": "treeMapModule",
       "grid": {
         "title": "Energy absorption",
@@ -42,66 +44,7 @@
       }
     },
     {
-      "type": "baseScrollModule",
-      "text": "slide 3"
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 4",
-      "globe": {
-        "location": {
-          "lat": 37.9284,
-          "lng": -109.7421,
-          "altitude": 111200000
-        }
-      }
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 5"
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 6",
-      "globe": {
-        "location": {
-          "lat": -52.1183,
-          "lng": -68.4479,
-          "altitude": 14200000
-        }
-      }
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 7"
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 8",
-      "globe": {
-        "location": {
-          "lat": 63.2741,
-          "lng": 96.5513,
-          "altitude": 2079886
-        }
-      }
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 9"
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 10",
-      "globe": {
-        "location": {
-          "lat": 9.8827,
-          "lng": -27.1945,
-          "altitude": 7600000
-        }
-      }
-    },
-    {
+      "lengthFactor": 2,
       "type": "quoteSlide",
       "quote": {
         "text": "The MOTECUSOMA team is nearing completion of the EEI and TAS estimation official datasets. Scientific analyses using these datasets are scheduled to start in the coming months.",
@@ -109,6 +52,7 @@
       }
     },
     {
+      "lengthFactor": 1,
       "type": "imageCarousel",
       "headerText": "ECVs related to MOTECOSUMA",
       "readMore": {

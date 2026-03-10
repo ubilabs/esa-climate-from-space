@@ -2,7 +2,7 @@ import ScrollModule from "../base-scroll/module/scroll-module";
 import ScrollText from "../base-scroll/scroll-text/scroll-text";
 import BoilCount from "./boil-count/boil-count";
 
-import styles from "./kettle-count.module.css";
+import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 const animationConfig = {
   scrollText1: {
@@ -26,15 +26,13 @@ const animationConfig = {
 export type KettleCountConfig = typeof animationConfig;
 
 export default function KettleCount() {
-  const MODULE_TOTAL_LENGTH = 20;
+  const {
+    module: { lengthFactor },
+  } = useModuleContent();
 
   return (
-    <ScrollModule
-      config={animationConfig}
-      style={{ height: `calc(var(--story-height) * ${MODULE_TOTAL_LENGTH})` }}
-      className={styles.kettleCountWrapper}
-    >
-      <ScrollModule.Slide className={styles.container}>
+    <ScrollModule config={animationConfig} lengthFactor={lengthFactor}>
+      <ScrollModule.StickyContainer>
         <ScrollText
           text="And if you apply that increase to the entire surface of the Earth..."
           inputRange={animationConfig.scrollText1.input}
@@ -51,7 +49,7 @@ export default function KettleCount() {
           inputRange={animationConfig.scrollText4.input}
           outputRange={animationConfig.scrollText4.output}
         />
-      </ScrollModule.Slide>
+      </ScrollModule.StickyContainer>
     </ScrollModule>
   );
 }

@@ -2,7 +2,7 @@ import ScrollModule from "../base-scroll/module/scroll-module";
 import Arrows from "./arrows/arrows";
 import ScrollText from "../base-scroll/scroll-text/scroll-text";
 
-import styles from "./animated-arrows.module.css";
+import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 const animationConfig = {
   downArrow: {
@@ -30,15 +30,13 @@ const animationConfig = {
 export type AnimatedArrowsConfig = typeof animationConfig;
 
 export default function AnimatedArrowsModule() {
-  const MODULE_TOTAL_LENGTH = 10;
+  const {
+    module: { lengthFactor },
+  } = useModuleContent();
 
   return (
-    <ScrollModule
-      config={animationConfig}
-      style={{ height: `calc(var(--story-height) * ${MODULE_TOTAL_LENGTH})` }}
-      className={styles.animatedArrowsWrapper}
-    >
-      <ScrollModule.Slide className={styles.container}>
+    <ScrollModule lengthFactor={lengthFactor} config={animationConfig}>
+      <ScrollModule.StickyContainer>
         <Arrows />
 
         <ScrollText
@@ -52,7 +50,7 @@ export default function AnimatedArrowsModule() {
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
-      </ScrollModule.Slide>
+      </ScrollModule.StickyContainer>
     </ScrollModule>
   );
 }

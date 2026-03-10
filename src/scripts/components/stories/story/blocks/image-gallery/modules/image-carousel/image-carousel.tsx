@@ -24,6 +24,7 @@ import { useAppRouteFlags } from "../../../../../../../hooks/use-app-route-flags
 import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
 import { ScrollImage } from "../image-scroll/image-scroll-image/image-scroll-image";
 import CarouselNavigation from "./carousel-navigation/carousel-navigation";
+import ScrollModule from "../../../story-eei/modules/base-scroll/module/scroll-module";
 
 import styles from "./image-carousel.module.css";
 
@@ -101,7 +102,7 @@ const ImageCarousel: FunctionComponent = () => {
     });
   };
 
-  return (
+  const content = (
     <SlideContainer
       ref={getRefCallback(0, 0)}
       className={cx(styles.container, !isMobile && "story-grid")}
@@ -192,6 +193,14 @@ const ImageCarousel: FunctionComponent = () => {
           )}
       </div>
     </SlideContainer>
+  );
+
+  return module.lengthFactor ? (
+    <ScrollModule lengthFactor={module.lengthFactor} config={{}}>
+      {content}
+    </ScrollModule>
+  ) : (
+    content
   );
 };
 

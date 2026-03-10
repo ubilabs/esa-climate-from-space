@@ -13,6 +13,9 @@
   --footer-height: 3rem; /* 72px */
   --story-caption-height: 3.875em; /* 62px */
 
+  /* story-eei default module length factor */
+  --default-scroll-length-factor: 1
+
   /* Colors */
   --main: #00ae9d;
   --light-green: #98dbce;

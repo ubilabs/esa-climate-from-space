@@ -117,6 +117,7 @@ export type TreeMapModule = {
 
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
   globe?: ScrollGlobe;
+  lengthFactor: number;
 } & (
     | { type: "kettleCount" }
     | { type: "animatedArrowsModule" }

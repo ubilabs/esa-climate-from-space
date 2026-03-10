@@ -41,7 +41,7 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   return (
     <Story>
       {/* enable globe to react to scroll event (currently only story-eei)*/}
-      <GlobeScroll />
+      {/* <GlobeScroll /> */}
     </Story>
   );
 };

@@ -1,65 +1,56 @@
-.treeMapWrapper {
-  position: relative;
+.slide {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 5%;
 
-  .container {
-    top: 0;
-    position: sticky;
+  --headline-font-size: 3.875rem;
 
-    .slide {
-      height: 100%;
-      display: flex;
+  @media screen and (--mobile-viewport) {
+    justify-content: center;
+    align-items: flex-end;
+    padding-left: 0;
+  }
+
+  > h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 6vh;
+    font-size: var(--headline-font-size);
+    font-weight: 700;
+
+    @media screen and (--mobile-viewport) {
+      left: initial;
+      top: calc(50%);
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+    }
+  }
+
+  .leftPanel {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (--mobile-viewport) {
+      height: calc(50% - var(--headline-font-size));
+      width: 100%;
       justify-content: flex-start;
-      align-items: center;
-      padding-left: 5%;
+    }
 
-      --headline-font-size: 3.875rem;
+    h2 {
+      color: var(--light-green);
+      font-size: 1.125rem;
+      font-weight: 700;
+      text-align: center;
 
       @media screen and (--mobile-viewport) {
-        justify-content: center;
-        align-items: flex-end;
-        padding-left: 0;
-      }
-
-      > h1 {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: 6vh;
-        font-size: var(--headline-font-size);
-        font-weight: 700;
-
-        @media screen and (--mobile-viewport) {
-          left: initial;
-          top: calc(50%);
-          transform: translateY(-50%);
-          font-size: 2.5rem;
-        }
-      }
-
-      .leftPanel {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        @media screen and (--mobile-viewport) {
-          height: calc(50% - var(--headline-font-size));
-          width: 100%;
-          justify-content: flex-start;
-        }
-
-        h2 {
-          color: var(--light-green);
-          font-size: 1.125rem;
-          font-weight: 700;
-          text-align: center;
-
-          @media screen and (--mobile-viewport) {
-            font-size: 0.875rem;
-            font-weight: 400;
-          }
-        }
+        font-size: 0.875rem;
+        font-weight: 400;
       }
     }
   }

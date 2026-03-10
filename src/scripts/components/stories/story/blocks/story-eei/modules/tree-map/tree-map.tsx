@@ -22,12 +22,10 @@ export default function TreeMapModule() {
   return (
     <ScrollModule
       className={styles.treeMapWrapper}
-      style={{
-        height: `calc(var(--story-height) * ${module.grid.data.length})`,
-      }}
+      lengthFactor={module.lengthFactor}
       config={null}
     >
-      <ScrollModule.Slide className={styles.container} config={{}}>
+      <ScrollModule.StickyContainer>
         <div className={styles.slide}>
           <h1>
             {
@@ -43,7 +41,7 @@ export default function TreeMapModule() {
             />
           </div>
         </div>
-      </ScrollModule.Slide>
+      </ScrollModule.StickyContainer>
     </ScrollModule>
   );
 }
