@@ -5,6 +5,8 @@ import { Layers } from "./constants/globe";
 
 import { setSelectedLayerIds } from "../../../../../reducers/layers";
 
+import { useStory } from "../../../../../providers/story/use-story";
+
 import Story from "../../story";
 import GlobeScroll from "./globe-scroll";
 import ScrollModule from "./modules/base-scroll/module/scroll-module";
@@ -14,8 +16,6 @@ import AnimatedArrowsModule from "./modules/animated-arrows/animated-arrows";
 import KettleCount from "./modules/kettle-count/kettle-count";
 import QuoteSlide from "./modules/quote-slide/quote-slide";
 import TreeMapModule from "./modules/tree-map/tree-map";
-import { ScrollGlobe } from "../../../../../types/story";
-import { useStory } from "../../../../../providers/story/use-story";
 
 export type StoryEEICompoundComponents = {
   BaseSlide: typeof ScrollModule;

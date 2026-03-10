@@ -80,13 +80,19 @@ const GlobeScroll: FunctionComponent<Props> = ({
   const totalLength =
     (splashscreenLengthFactor ?? defaultLengthFactor) +
     storySegments.reduce((sum, module, index) => {
-      if (module.lengthFactor === undefined) {
+      if ("lengthFactor" in module && module.lengthFactor === undefined) {
         console.warn(
           `lengthFactor is missing from module at index ${index} (type: ${module.type}), using default:`,
           defaultLengthFactor,
         );
       }
-      return sum + (module.lengthFactor ?? defaultLengthFactor);
+
+      const lengthFactor =
+        "lengthFactor" in module && typeof module.lengthFactor === "number"
+          ? module.lengthFactor
+          : defaultLengthFactor;
+
+      return sum + lengthFactor;
     }, 0);
 
   // Generate progress steps based on cumulative lengthFactors
@@ -99,7 +105,13 @@ const GlobeScroll: FunctionComponent<Props> = ({
       0.0001,
     ), // After splashscreen
     ...modules.map((module) => {
-      cumulativeLength += module.lengthFactor ?? defaultLengthFactor;
+      const lengthFactor =
+        "lengthFactor" in module && typeof module.lengthFactor === "number"
+          ? module.lengthFactor
+          : defaultLengthFactor;
+
+      // eslint-disable-next-line
+      cumulativeLength += lengthFactor;
       return quantize(
         ((splashscreenLengthFactor ?? defaultLengthFactor) + cumulativeLength) /
           totalLength,
@@ -121,14 +133,17 @@ const GlobeScroll: FunctionComponent<Props> = ({
     {},
   );
 
-  console.log("🚀 ~ globe-scroll.tsx:98 → initialValue:", initialValue);
   // arrays are populated with globe values specified in the story-eei.json
   const locationValues = [...storySegments].reduce(
     (acc, module) => {
       if ("globe" in module) {
         const globeOrContainerValue = {
-          ...module?.globe?.location,
-          ...module?.globe?.containerPosition,
+          ...(module?.globe && "location" in module.globe
+            ? module?.globe?.location
+            : {}),
+          ...(module?.globe && "containerPosition" in module.globe
+            ? module.globe.containerPosition
+            : {}),
         };
 
         for (const [key, value] of Object.entries(acc)) {
@@ -148,7 +163,6 @@ const GlobeScroll: FunctionComponent<Props> = ({
     },
     { ...initialValue },
   );
-  console.log("🚀 ~ globe-scroll.tsx:111 → locationValues:", locationValues);
 
   // map location values to progress steps
   const { x, y, ...globeMotions } = useTransform(
@@ -177,7 +191,7 @@ const GlobeScroll: FunctionComponent<Props> = ({
   });
 
   // Dispatch interpolated globe position to store
-  useMotionValueEvent(scrollYProgress, "change", (progress) => {
+  useMotionValueEvent(scrollYProgress, "change", () => {
     if (haveMotionValuesChanges(globeMotions)) {
       dispatch(
         setFlyTo({
