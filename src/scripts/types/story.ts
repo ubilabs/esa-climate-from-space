@@ -69,7 +69,7 @@ export type ImageGalleryModuleType =
 export type StoryEEIModuleType =
   | "kettleAmountModule"
   | "kettleCount"
-  | "animateSVGTextModule"
+  | "animatedArrowsModule"
   | "quoteSlide"
   | "kettleAmountModule"
   | "treeMapModule";
@@ -119,7 +119,7 @@ export type StoryEEIModule = Pick<BaseModule, "text"> & {
   globe?: ScrollGlobe;
 } & (
     | { type: "kettleCount" }
-    | { type: "animateSVGTextModule" }
+    | { type: "animatedArrowsModule" }
     | { type: "kettleAmountModule" }
     | ({ type: "quoteSlide" } & QuoteSlide)
     | ({ type: "treeMapModule" } & TreeMapModule)
@@ -167,7 +167,7 @@ export const storyEEIModuleMap: Record<
   FunctionComponent<StorySectionProps>
 > = {
   kettleAmountModule: StoryEEI.KettleAmountModule,
-  animateSVGTextModule: StoryEEI.AnimateSVGTextModule,
+  animatedArrowsModule: StoryEEI.AnimatedArrowsModule,
   kettleCount: StoryEEI.KettleCount,
   quoteSlide: StoryEEI.QuoteSlide,
   treeMapModule: StoryEEI.TreeMapModule,

@@ -20,7 +20,7 @@ export type StoryEEICompoundComponents = {
   StoryGlobe: typeof StoryGlobe;
   KettleAmountModule: typeof KettleAmountModule;
   KettleCount: typeof KettleCount;
-  AnimateSVGTextModule: typeof AnimatedArrowsModule;
+  AnimatedArrowsModule: typeof AnimatedArrowsModule;
   QuoteSlide: typeof QuoteSlide;
   TreeMapModule: typeof TreeMapModule;
 };
@@ -51,5 +51,5 @@ StoryEEI.QuoteSlide = QuoteSlide;
 StoryEEI.StoryGlobe = StoryGlobe;
 StoryEEI.KettleAmountModule = KettleAmountModule;
 StoryEEI.KettleCount = KettleCount;
-StoryEEI.AnimateSVGTextModule = AnimatedArrowsModule;
+StoryEEI.AnimatedArrowsModule = AnimatedArrowsModule;
 StoryEEI.TreeMapModule = TreeMapModule;

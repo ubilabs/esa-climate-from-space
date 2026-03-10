@@ -8,8 +8,7 @@
   },
   "modules": [
     {
-      "type": "animateSVGTextModule",
-      "text": "Animated SVG Text Module"
+      "type": "animatedArrowsModule"
     },
     {
       "globe": {
