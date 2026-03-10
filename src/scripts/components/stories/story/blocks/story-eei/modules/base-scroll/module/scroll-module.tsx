@@ -39,10 +39,10 @@ const StickyContainer = ({
 const ScrollModule: FunctionComponent<Props> & {
   StickyContainer: typeof StickyContainer;
 } = ({ children, className, config, lengthFactor, ...rest }) => {
-  if (!lengthFactor || typeof lengthFactor !== "number") {
+  if (lengthFactor === null || typeof lengthFactor !== "number") {
     console.warn(
       "Warning: lengthFactor is missing or not a number in ScrollModule. This can cause out-of-sync globe movements",
-      lengthFactor
+      lengthFactor,
     );
   }
   const moduleRef = useRef(null);

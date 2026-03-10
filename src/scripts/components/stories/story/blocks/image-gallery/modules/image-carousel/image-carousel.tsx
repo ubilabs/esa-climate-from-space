@@ -34,7 +34,7 @@ const VELOCITY = 300;
 // Image carousel component for displaying a series of images with navigation controls
 const ImageCarousel: FunctionComponent = () => {
   const { module, storyId, getRefCallback } = useModuleContent();
-  const { slides } = module as ImageCarouselModule;
+  const { slides, lengthFactor } = module as ImageCarouselModule;
   const { isMobile } = useScreenSize();
   const controls = useAnimationControls();
   const { isStoryEEI } = useAppRouteFlags();
@@ -195,8 +195,8 @@ const ImageCarousel: FunctionComponent = () => {
     </SlideContainer>
   );
 
-  return module.lengthFactor ? (
-    <ScrollModule lengthFactor={module.lengthFactor} config={{}}>
+  return lengthFactor ? (
+    <ScrollModule lengthFactor={lengthFactor} config={{}}>
       {content}
     </ScrollModule>
   ) : (

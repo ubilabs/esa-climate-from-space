@@ -95,6 +95,7 @@ export type ImageModule = BaseModule & {
 
 export type ImageCarouselModule = ImageModule & {
   type: "imageCarousel";
+  lengthFactor?: number;
   headerText?: string;
   readMore?: {
     title: string;
