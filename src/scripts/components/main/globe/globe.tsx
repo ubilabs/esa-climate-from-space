@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { renderToStaticMarkup } from "react-dom/server";
 
@@ -39,6 +40,9 @@ import { useScreenSize } from "../../../hooks/use-screen-size";
 
 import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
+
+import { globeRenderOptionsSelector } from "../../../selectors/globe/render-options";
+import { GlobeRenderOptions } from "../../../reducers/globe/render-options";
 
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
@@ -97,8 +101,9 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     onMouseEnter,
     onTouchStart,
   } = props;
+  const renderOptions = useSelector(globeRenderOptionsSelector);
 
-  const [containerRef, globe] = useWebGlGlobe(view);
+  const [containerRef, globe] = useWebGlGlobe(view, renderOptions);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
 
   useGlobeRouteState(globe);
@@ -107,6 +112,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
   useGlobeMarkers(globe, markers);
 
   useProjectionSwitch(globe, projectionState.projection);
+  useGlobeRenderOptions(globe, renderOptions);
   useMultiGlobeSynchronization(globe, props);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
@@ -141,7 +147,7 @@ function useCallbackRef() {
 /**
  * Creates the WebGlGlobe instance once the container element becomes available.
  */
-function useWebGlGlobe(view: CameraView) {
+function useWebGlGlobe(view: CameraView, renderOptions: GlobeRenderOptions) {
   const [containerRef, containerEl] = useCallbackRef();
   const [globe, setGlobe] = useState<WebGlGlobe | null>(null);
 
@@ -152,19 +158,8 @@ function useWebGlGlobe(view: CameraView) {
 
     const newGlobe = new WebGlGlobe(element, {
       cameraView: view,
-      renderOptions: {
-        atmosphereEnabled: true,
-        shadingEnabled: true,
-        atmosphereStrength: 0.8,
-        atmosphereColor: [0.58, 0.79, 1], // {r: 148, g: 201, b: 255}
-      },
+      renderOptions,
     });
-
-    if ("renderer" in newGlobe) {
-      // @TODO: Remove this setting after globe controls have been refactored.
-      // @ts-expect-error Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
-      newGlobe.renderer.globeControls.zoomSpeed = 1.5;
-    }
 
     if ("renderer" in newGlobe) {
       // @TODO: Remove this setting after globe controls have been refactored.
@@ -182,6 +177,22 @@ function useWebGlGlobe(view: CameraView) {
   }, [containerEl]);
 
   return [containerRef, globe] as const;
+}
+
+/**
+ * Applies render option changes that can be updated after globe initialization.
+ */
+function useGlobeRenderOptions(
+  globe: WebGlGlobe | null,
+  renderOptions: GlobeRenderOptions,
+) {
+  useEffect(() => {
+    if (!globe) {
+      return;
+    }
+
+    globe.setProps({ renderOptions });
+  }, [globe, renderOptions]);
 }
 
 /**

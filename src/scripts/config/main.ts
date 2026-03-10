@@ -3,7 +3,6 @@ import { RenderMode } from "@ubilabs/esa-webgl-globe";
 import { UiEmbedElement } from "../types/embed-elements";
 
 import { GlobeProjection } from "../types/globe-projection";
-import { GlobeState } from "../reducers/globe/globe-state";
 import { AppRoute } from "../types/app-routes";
 import { LenisOptions } from "lenis";
 import { isIos16orLower } from "../libs/is-ios-16-or-lower";
@@ -76,7 +75,7 @@ export const categoryTags = [
   "improving_models",
 ];
 
-const globeState: GlobeState = {
+const globeState = {
   time: Date.now(),
   projectionState: {
     projection: GlobeProjection.Sphere,
@@ -94,6 +93,12 @@ const globeState: GlobeState = {
   },
   spinning: true,
   layerLoadingState: {},
+  renderOptions: {
+    atmosphereEnabled: true,
+    shadingEnabled: true,
+    atmosphereStrength: 0.8,
+    atmosphereColor: [0.58, 0.79, 1], // {r: 148, g: 201, b: 255}
+  },
 };
 
 export const uiEmbedElements: UiEmbedElement[] = [
