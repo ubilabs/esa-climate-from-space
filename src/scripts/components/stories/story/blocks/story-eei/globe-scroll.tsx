@@ -14,6 +14,7 @@ import { useStory } from "../../../../../providers/story/use-story";
 import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 
 import {
+  GlobeKeyframe,
   Location,
   ScrollGlobe,
   ScrollGlobeValues,
@@ -77,46 +78,50 @@ const GlobeScroll: FunctionComponent<Props> = ({
   }
 
   // Calculate total length from all modules
-  const totalLength =
-    (splashscreenLengthFactor ?? defaultLengthFactor) +
-    storySegments.reduce((sum, module, index) => {
-      if ("lengthFactor" in module && module.lengthFactor === undefined) {
-        console.warn(
-          `lengthFactor is missing from module at index ${index} (type: ${module.type}), using default:`,
-          defaultLengthFactor,
-        );
-      }
+  const totalLength = storySegments.reduce((sum, module, index) => {
+    if ("lengthFactor" in module && module.lengthFactor === undefined) {
+      console.warn(
+        `lengthFactor is missing from module at index ${index} (type: ${module.type}), using default:`,
+        defaultLengthFactor,
+      );
+    }
 
-      const lengthFactor =
-        "lengthFactor" in module && typeof module.lengthFactor === "number"
-          ? module.lengthFactor
-          : defaultLengthFactor;
+    const lengthFactor =
+      "lengthFactor" in module && typeof module.lengthFactor === "number"
+        ? module.lengthFactor
+        : defaultLengthFactor;
 
-      return sum + lengthFactor;
-    }, 0);
+    return sum + lengthFactor;
+  }, 0);
 
   // Generate progress steps based on cumulative lengthFactors
   // Each step represents the scroll progress at the START of each module
-  let cumulativeLength = 0;
+  // Start with splashscreen's length
+  let cumulativeLength = splashscreenLengthFactor ?? defaultLengthFactor;
   const progressSteps = [
     0, // Start at 0
-    quantize(
-      (splashscreenLengthFactor ?? defaultLengthFactor) / totalLength,
-      0.0001,
-    ), // After splashscreen
-    ...modules.map((module) => {
+    ...modules.flatMap((module) => {
       const lengthFactor =
         "lengthFactor" in module && typeof module.lengthFactor === "number"
           ? module.lengthFactor
           : defaultLengthFactor;
 
-      // eslint-disable-next-line
+      // we know the lengthFactor of the module, so we need to distribute it according to the keyFrame definition
+      const keyframes: Array<GlobeKeyframe> =
+        ("globeKeyframes" in module && module?.globeKeyframes) || [];
+
+      const moduleStartLength = cumulativeLength;
+      const distributedProgress: Array<number> = keyframes.map((frame) => {
+        const absoluteProgress =
+          moduleStartLength + lengthFactor * frame.progress;
+
+        return quantize(absoluteProgress / totalLength, 0.0001);
+      });
+
+      // Update cumulative length after processing all keyframes in this module
       cumulativeLength += lengthFactor;
-      return quantize(
-        ((splashscreenLengthFactor ?? defaultLengthFactor) + cumulativeLength) /
-          totalLength,
-        0.0001,
-      );
+
+      return distributedProgress;
     }),
   ];
 
@@ -134,31 +139,30 @@ const GlobeScroll: FunctionComponent<Props> = ({
   );
 
   // arrays are populated with globe values specified in the story-eei.json
-  const locationValues = [...storySegments].reduce(
+  // Now considering globeKeyframes to match the progressSteps structure
+  const locationValues = modules.reduce(
     (acc, module) => {
-      if ("globe" in module) {
+      // Get keyframes for this module
+      const keyframes: Array<GlobeKeyframe> =
+        ("globeKeyframes" in module && module?.globeKeyframes) || [];
+
+      // For each keyframe, add its location and containerPosition values
+      keyframes.forEach((frame) => {
         const globeOrContainerValue = {
-          ...(module?.globe && "location" in module.globe
-            ? module?.globe?.location
-            : {}),
-          ...(module?.globe && "containerPosition" in module.globe
-            ? module.globe.containerPosition
-            : {}),
+          ...frame.location,
+          ...frame.containerPosition,
         };
 
         for (const [key, value] of Object.entries(acc)) {
-          // if we haven't specified location for a slide, we assume the globe should stay in the current position
+          // Use the keyframe's value if available, otherwise keep the last value
           const newValue =
-            globeOrContainerValue && key in globeOrContainerValue
+            key in globeOrContainerValue
               ? globeOrContainerValue[key as keyof typeof globeOrContainerValue]
               : (value.at(-1) ?? 0);
           acc[key as keyof typeof acc] = [...value, newValue as number];
         }
-      } else {
-        console.warn(
-          `globe prop in present in module type "${module.type}. passed to GlobeScroll is not compatible, returning initialValue`,
-        );
-      }
+      });
+
       return acc;
     },
     { ...initialValue },

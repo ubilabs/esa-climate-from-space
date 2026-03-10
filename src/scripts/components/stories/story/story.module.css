@@ -9,9 +9,9 @@
   overflow: scroll;
   height: var(--story-height);
   position: relative;
-  overflow: hidden;
-  overscroll-behavior: none;
-  touch-action: none;
+  /* overflow: hidden; */
+  /* overscroll-behavior: none; */
+  /* touch-action: none; */
 
   h1,
   h2,

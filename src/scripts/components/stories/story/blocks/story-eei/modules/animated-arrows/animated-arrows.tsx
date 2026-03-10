@@ -5,6 +5,10 @@ import ScrollText from "../base-scroll/scroll-text/scroll-text";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 const animationConfig = {
+  scrollText1: {
+    input: [0, 0.1, 0.15, 0.25],
+    output: ["100%", "100%", "0%", "-100%"],
+  },
   downArrow: {
     input: [0.15, 0.4],
     output: [100, 0],
@@ -16,10 +20,6 @@ const animationConfig = {
   opacity: {
     input: [0.8, 0.9],
     output: [1, 0],
-  },
-  scrollText1: {
-    input: [0, 0.1, 0.15, 0.25],
-    output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText2: {
     input: [0, 0.6, 0.8, 0.95],
