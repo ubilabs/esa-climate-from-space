@@ -4,9 +4,16 @@
     "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
     "focus": "center",
     "title": "Earth Engine Imbalance",
-    "subtitle": "Probably not good"
+    "subtitle": ""
   },
   "modules": [
+    {
+      "type": "quoteSlide",
+      "quote": {
+        "text": "The MOTECUSOMA team is nearing completion of the EEI and TAS estimation official datasets. Scientific analyses using these datasets are scheduled to start in the coming months.",
+        "author": "MOTECUSOMA Team"
+      }
+    },
     {
       "type": "kettleCount",
       "text": "Kettle Count Module"
