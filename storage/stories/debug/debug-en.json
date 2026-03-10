@@ -149,18 +149,22 @@
       "slides": [
         {
           "text": "Young Arctic sea ice viewed from an aircraft. Sea ice thinner than 50 cm is particularly important for weather and climate as it controls the exchange of heat and water between the ocean and atmosphere. (S Hendriks/AWI)",
+          "altText": "Arctic sea ice viewed from an aircraft",
           "url": "assets/story37-image01.jpg"
         },
         {
           "text": "Pressure ridge in thick Arctic sea ice, formed as two ice floes converge. (Seymour Laxon/CPOM/UCL)",
+          "altText": "Pressure ridge in Arctic sea ice",
           "url": "assets/story37-image02.jpg"
         },
         {
           "text": "Sea ice in Resolute Bay, Canada, from Sentinel-2. (Modified Copernicus Sentinel data (2019), processed by Pierre Markuse)",
+          "altText": "Sea ice in Resolute Bay, Canada",
           "url": "assets/story37-image04.jpg"
         },
         {
           "text": "Melting sea ice swirls off the east coast of Greenland \nin this Sentinel-2 image taken on 20 April, 2020 (contains modified Copernicus Sentinel data (2020))",
+          "altText": "Melting sea ice off the east coast of Greenland",
           "url": "assets/story37-image05.jpg"
         }
       ]

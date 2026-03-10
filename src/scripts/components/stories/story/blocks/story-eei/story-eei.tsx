@@ -11,6 +11,7 @@ import KettleAmountModule from "./modules/kettle-amount/kettle-amount";
 import AnimatedArrowsModule from "./modules/animated-arrows/animated-arrows";
 import KettleCount from "./modules/kettle-count/kettle-count";
 import QuoteSlide from "./modules/quote-slide/quote-slide";
+import TreeMapModule from "./modules/tree-map/tree-map";
 
 export type StoryEEICompoundComponents = {
   BaseSlide: typeof ScrollModule;
@@ -19,6 +20,7 @@ export type StoryEEICompoundComponents = {
   KettleCount: typeof KettleCount;
   AnimateSVGTextModule: typeof AnimatedArrowsModule;
   QuoteSlide: typeof QuoteSlide;
+  TreeMapModule: typeof TreeMapModule;
 };
 
 /* Module Wrapper for Earth Engine Imbalance Story Components*/
@@ -26,7 +28,7 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setSelectedLayerIds({ layerId: "water_mask", isPrimary: true }));
+    dispatch(setSelectedLayerIds({ layerId: "eei_no_mask", isPrimary: true }));
     return () => {
       dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
     };
@@ -46,3 +48,4 @@ StoryEEI.StoryGlobe = StoryGlobe;
 StoryEEI.KettleAmountModule = KettleAmountModule;
 StoryEEI.KettleCount = KettleCount;
 StoryEEI.AnimateSVGTextModule = AnimatedArrowsModule;
+StoryEEI.TreeMapModule = TreeMapModule;
