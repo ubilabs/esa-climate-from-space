@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
+import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 import config, { ALTITUDE_FACTOR_DESKTOP } from "../../../config/main";
 import { useGetStoriesQuery } from "../../../services/api";
 
@@ -138,7 +139,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
       } else {
         dispatch(
-          setSelectedLayerIds({ layerId: "eei_no_mask", isPrimary: true }),
+          setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
         );
       }
       return;

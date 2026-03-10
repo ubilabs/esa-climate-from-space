@@ -3,6 +3,11 @@ import { useDispatch } from "react-redux";
 import { useMotionValueEvent } from "motion/react";
 import cx from "classnames";
 
+import {
+  ATMOSPHERE_MASK_RENDER_OPTIONS,
+  Layers,
+} from "../../../constants/globe";
+
 import { useScrollModule } from "../../base-scroll/use-scroll-module";
 
 import { setSelectedLayerIds } from "../../../../../../../../reducers/layers";
@@ -59,13 +64,8 @@ export default function TreeMapGrid({
 
   useEffect(() => {
     if (selectedLayerId) {
-      if (selectedLayerId === "eei_atmosphere_mask") {
-        dispatch(
-          setGlobeRenderOptions({
-            atmosphereStrength: 1.8,
-            atmosphereColor: [0.5961, 0.8588, 0.8078],
-          }),
-        );
+      if (selectedLayerId === Layers.EEI_ATMOSPHERE_MASK) {
+        dispatch(setGlobeRenderOptions(ATMOSPHERE_MASK_RENDER_OPTIONS));
       } else {
         dispatch(setGlobeRenderOptions(config.globe.renderOptions));
       }

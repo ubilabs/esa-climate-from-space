@@ -1,6 +1,8 @@
 import { FunctionComponent, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
+import { Layers } from "./constants/globe";
+
 import { setSelectedLayerIds } from "../../../../../reducers/layers";
 
 import Story from "../../story";
@@ -28,7 +30,9 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setSelectedLayerIds({ layerId: "eei_no_mask", isPrimary: true }));
+    dispatch(
+      setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
+    );
     return () => {
       dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
     };
