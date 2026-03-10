@@ -97,9 +97,11 @@ export type ImageCarouselModule = ImageModule & {
   };
 };
 
-type QuoteSlide = {
-  text: string;
-  author: string;
+export type QuoteSlideType = {
+  quote: {
+    text: string;
+    author: string;
+  };
 };
 
 export type TreeMapModule = {

@@ -1,7 +1,7 @@
 import { motion, useTransform } from "motion/react";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
-import { StoryEEIModule } from "../../../../../../../types/story";
 import ScrollModule from "../base-scroll/module/scroll-module";
+import { QuoteSlideType } from "../../../../../../../types/story";
 import { useScrollModule } from "../base-scroll/use-scroll-module";
 
 import styles from "./quote-slide.module.css";
@@ -17,7 +17,8 @@ export type QuoteSlideAnimationConfig = typeof animationConfig;
 
 function QuoteContent() {
   const { module } = useModuleContent();
-  const quoteModule = module as StoryEEIModule;
+
+  const quoteSlide = module as QuoteSlideType;
 
   const { scrollYProgress, config } =
     useScrollModule<QuoteSlideAnimationConfig>();
@@ -32,8 +33,8 @@ function QuoteContent() {
         ),
       }}
     >
-      <p>{quoteModule.quote?.text}</p>
-      <span>{quoteModule.quote?.author}</span>
+      <p>{quoteSlide.quote?.text}</p>
+      <span>{quoteSlide.quote?.author}</span>
     </motion.div>
   );
 }
