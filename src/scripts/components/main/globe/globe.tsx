@@ -412,31 +412,37 @@ function getLayerProps(
   includeClouds: boolean = true,
 ) {
   const basemapUrl = getBasemapUrl(layerDetails);
-  const cloudsUrl = getBasemapUrl({ basemap: "clouds" } as Layer);
-
   const basemapMaxZoom = getBasemapMaxZoom(layerDetails);
 
-  const layers = [
-    {
+  const layers = [];
+
+  if (basemapUrl) {
+    layers.push({
       id: "basemap",
       zIndex: 0,
       minZoom: 1,
       maxZoom: basemapMaxZoom,
       urlParameters: {},
       getUrl: ({ x, y, zoom }) => `${basemapUrl}/${zoom}/${x}/${y}.png`,
-    } as LayerProps,
-  ];
+    } as LayerProps);
+  }
 
   if (includeClouds) {
-    layers.push({
-      id: "clouds",
-      zIndex: 1,
-      minZoom: 0,
-      maxZoom: basemapMaxZoom,
-      type: LayerType.Image,
-      urlParameters: {},
-      getUrl: () => `${cloudsUrl}/image.png`,
-    });
+    const cloudsUrl = getBasemapUrl({ basemap: "clouds" } as Layer);
+
+    if (cloudsUrl) {
+      const cloudsMaxZoom = getBasemapMaxZoom({ basemap: "clouds" } as Layer);
+
+      layers.push({
+        id: "clouds",
+        zIndex: 1,
+        minZoom: 0,
+        maxZoom: cloudsMaxZoom,
+        type: LayerType.Image,
+        urlParameters: {},
+        getUrl: () => `${cloudsUrl}/image.png`,
+      });
+    }
   }
 
   if (imageLayer && layerDetails) {
@@ -508,7 +514,7 @@ function getBasemapId(layerDetails: Layer | null): BasemapId {
     return config.defaultBasemap;
   } else if (
     !layerDetails.basemap ||
-    !config.basemapUrls[layerDetails.basemap]
+    !(layerDetails.basemap in config.basemapUrls)
   ) {
     return config.defaultLayerBasemap;
   }
