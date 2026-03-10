@@ -3,11 +3,19 @@ import { useDispatch } from "react-redux";
 import { useMotionValueEvent } from "motion/react";
 import cx from "classnames";
 
+import {
+  ATMOSPHERE_MASK_RENDER_OPTIONS,
+  Layers,
+} from "../../../constants/globe";
+
 import { useScrollModule } from "../../base-scroll/use-scroll-module";
 
 import { setSelectedLayerIds } from "../../../../../../../../reducers/layers";
+import { setGlobeRenderOptions } from "../../../../../../../../reducers/globe/render-options";
 
 import { TreeMapModule } from "../../../../../../../../types/story";
+
+import config from "../../../../../../../../config/main";
 
 import styles from "./tree-map-grid.module.css";
 
@@ -56,6 +64,12 @@ export default function TreeMapGrid({
 
   useEffect(() => {
     if (selectedLayerId) {
+      if (selectedLayerId === Layers.EEI_ATMOSPHERE_MASK) {
+        dispatch(setGlobeRenderOptions(ATMOSPHERE_MASK_RENDER_OPTIONS));
+      } else {
+        dispatch(setGlobeRenderOptions(config.globe.renderOptions));
+      }
+
       dispatch(
         setSelectedLayerIds({ layerId: selectedLayerId, isPrimary: true }),
       );
