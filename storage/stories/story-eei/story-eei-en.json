@@ -82,6 +82,9 @@
             "percentage": 1
           }
         ]
+      },
+      "globe": {
+        "title": "Surface area"
       }
     },
     {
