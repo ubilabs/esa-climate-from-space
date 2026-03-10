@@ -37,6 +37,12 @@ export default function TreeMapGrid({
       return;
     }
 
+    // Reset to no mask layer when reaching the top or bottom of the scroll
+    if (progress === 0 || progress === 1) {
+      setSelectedLayerId(Layers.EEI_NO_MASK);
+      return;
+    }
+
     // Decrease progress by one view height to start the first layer highlight
     // after scrolling one full screen
     const decreasedProgress = progress - 1 / (data.length + 1);
