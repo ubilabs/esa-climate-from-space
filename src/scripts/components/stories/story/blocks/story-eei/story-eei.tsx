@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect, useLayoutEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 
 import { Layers } from "./constants/globe";
@@ -32,7 +32,26 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   const dispatch = useDispatch();
   const { story } = useStory();
 
-  const initialGlobe = story?.initialglobeConfig ?? undefined;
+  const initialGlobe = useMemo(
+    () => story?.initialglobeConfig ?? undefined,
+    [story],
+  );
+
+  // set initial globe container position
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    if (initialGlobe?.containerPosition) {
+      root.style.setProperty(
+        "--globe-container-y",
+        `${initialGlobe?.containerPosition.y * -100}vh`,
+      );
+
+      root.style.setProperty(
+        "--globe-container-x",
+        `${initialGlobe?.containerPosition.x * -100}vw`,
+      );
+    }
+  }, [initialGlobe]);
 
   useEffect(() => {
     dispatch(

@@ -5,7 +5,7 @@
     "location": {
       "lat": -14.3821,
       "lng": 132.7459,
-      "altitude": 13040000
+      "altitude": 18040000
     }
   },
   "splashscreen": {
@@ -17,7 +17,7 @@
       "location": {
         "lat": -14.3821,
         "lng": 32.7459,
-        "altitude": 10040000
+        "altitude": 20040000
       }
     },
     "lengthFactor": 1,
@@ -30,7 +30,7 @@
         "location": {
           "lat": -14.3821,
           "lng": 132.7459,
-          "altitude": 13040000
+          "altitude": 25040000
         }
       },
       "lengthFactor": 10,
@@ -86,14 +86,14 @@
     },
     {
       "globe": {
-        "containerPosition": { "x": 0, "y": -0.5 },
+        "containerPosition": { "x": 0, "y": 0 },
         "location": {
           "lat": -33.8688,
           "lng": 151.2093,
           "altitude": 16500000
         }
       },
-      "lengthFactor": 2,
+      "lengthFactor": 5,
       "type": "quoteSlide",
       "quote": {
         "text": "The MOTECUSOMA team is nearing completion of the EEI and TAS estimation official datasets. Scientific analyses using these datasets are scheduled to start in the coming months.",
@@ -102,11 +102,11 @@
     },
     {
       "globe": {
-        "containerPosition": { "x": -0.2, "y": 1 },
+        "containerPosition": { "x": 0, "y": -0.5 },
         "location": {
-          "lat": 40.7128,
-          "lng": -74.006,
-          "altitude": 14000000
+          "lat": -33.8688,
+          "lng": 151.2093,
+          "altitude": 216500000
         }
       },
       "lengthFactor": 1,
