@@ -20,6 +20,8 @@ export type Story = {
   id: string;
   splashscreen: Splashscreen;
   modules: Module[];
+  // special property for StoryEEI
+  initialglobeConfig?: ScrollGlobe;
 };
 
 type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
@@ -50,10 +52,13 @@ export type Splashscreen = {
   location?: Location;
   containerPosition?: ContainerPosition;
   url?: string;
-  slides: Array<{ text: string }>;
+  slides?: Array<{ text: string }>;
   title?: string;
   focus?: ImageFocus;
   subtitle?: string;
+  globe?: ScrollGlobe;
+  lengthFactor?: number;
+  type?: string;
 };
 
 export type ImageGalleryModuleType =
@@ -117,12 +122,12 @@ export type TreeMapModule = {
 
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
   globe?: ScrollGlobe;
-  lengthFactor: number;
+  lengthFactor?: number;
 } & (
     | { type: "kettleCount" }
     | { type: "animatedArrowsModule" }
     | { type: "kettleAmountModule" }
-    | ({ type: "quoteSlide" } & QuoteSlide)
+    | ({ type: "quoteSlide" } & QuoteSlideType)
     | ({ type: "treeMapModule" } & TreeMapModule)
   );
 

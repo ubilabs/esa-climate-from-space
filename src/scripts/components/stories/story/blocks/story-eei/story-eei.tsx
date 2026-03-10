@@ -14,6 +14,8 @@ import AnimatedArrowsModule from "./modules/animated-arrows/animated-arrows";
 import KettleCount from "./modules/kettle-count/kettle-count";
 import QuoteSlide from "./modules/quote-slide/quote-slide";
 import TreeMapModule from "./modules/tree-map/tree-map";
+import { ScrollGlobe } from "../../../../../types/story";
+import { useStory } from "../../../../../providers/story/use-story";
 
 export type StoryEEICompoundComponents = {
   BaseSlide: typeof ScrollModule;
@@ -28,6 +30,9 @@ export type StoryEEICompoundComponents = {
 /* Module Wrapper for Earth Engine Imbalance Story Components*/
 export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   const dispatch = useDispatch();
+  const { story } = useStory();
+
+  const initialGlobe = story?.initialglobeConfig ?? undefined;
 
   useEffect(() => {
     dispatch(
@@ -41,7 +46,7 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   return (
     <Story>
       {/* enable globe to react to scroll event (currently only story-eei)*/}
-      {/* <GlobeScroll /> */}
+      <GlobeScroll initialGlobeConfiguration={initialGlobe} />
     </Story>
   );
 };
