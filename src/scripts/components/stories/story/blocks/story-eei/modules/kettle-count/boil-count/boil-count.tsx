@@ -50,22 +50,18 @@ export default function BoilCount() {
   return (
     <>
       <ScrollText
-        text="Since you arrived on this page,"
+        text="Since you arrived on this page, we have trapped enough heat to boil"
         inputRange={config.scrollText2.input}
         outputRange={config.scrollText2.output}
       />
-      <ScrollText
-        text="we have trapped enough heat to boil"
-        inputRange={config.scrollText2.input}
-        outputRange={config.scrollText2.output}
-      />
+
       <motion.div
         className={styles.countWrapper}
         style={{
           y: useTransform(
             scrollYProgress,
-            config.scrollText2.input,
-            config.scrollText2.output,
+            config.boilCount.input,
+            config.boilCount.output,
           ),
         }}
       >

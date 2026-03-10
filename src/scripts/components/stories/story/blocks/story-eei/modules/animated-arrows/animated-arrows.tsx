@@ -6,7 +6,7 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 
 const animationConfig = {
   downArrow: {
-    input: [0.2, 0.4],
+    input: [0.15, 0.4],
     output: [100, 0],
   },
   upArrow: {
@@ -18,12 +18,12 @@ const animationConfig = {
     output: [1, 0],
   },
   scrollText1: {
-    input: [0.2, 0.25, 0.4],
-    output: ["40vh", "40vh", "-10vh"],
+    input: [0, 0.1, 0.15, 0.25],
+    output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText2: {
-    input: [0, 0.6, 0.8, 0.9, 1],
-    output: ["100vh", "100vh", "10vw", "6vw", "-50vh"],
+    input: [0, 0.6, 0.8, 0.95],
+    output: ["100%", "0%", "0%", "-100%" ],
   },
 };
 

@@ -1,6 +1,9 @@
 .countWrapper {
   --text-color: #98dbce;
   text-align: center;
+  transform: translateY(-50%);
+  display: grid;
+  place-content: center;
 
   > span {
     display: block;

@@ -23,7 +23,7 @@
       "type": "kettleAmountModule"
     },
     {
-      "lengthFactor": 5,
+      "lengthFactor": 20,
       "type": "kettleCount"
     },
     {
