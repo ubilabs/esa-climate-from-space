@@ -1,5 +1,13 @@
 [
   {
+    "id": "story-eei",
+    "title": "Earth Energy Imbalance",
+    "description": "",
+    "tags": [],
+    "position": [],
+    "categories": ["improving_models"]
+  },
+  {
     "id": "story-32",
     "title": "Willkommen zu Climate from Space",
     "description": "",
@@ -272,5 +280,14 @@
     "tags": [],
     "position": [],
     "categories": ["land", "carbon_cycle"]
+  }
+,{
+    "id": "story-46",
+    "title": "Tipping Points",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [],
+    "categories": ["climate_risk"]
   }
 ]

@@ -67,11 +67,10 @@ export type ImageGalleryModuleType =
   | "globe";
 
 export type StoryEEIModuleType =
-  | "textOverlay"
   | "kettleAmountModule"
   | "kettleCount"
   | "animateSVGTextModule"
-  | "baseScrollModule"
+  | "quoteSlide"
   | "kettleAmountModule"
   | "treeMapModule";
 
@@ -98,6 +97,13 @@ export type ImageCarouselModule = ImageModule & {
   };
 };
 
+export type QuoteSlideType = {
+  quote: {
+    text: string;
+    author: string;
+  };
+};
+
 export type TreeMapModule = {
   grid: {
     title: string;
@@ -112,9 +118,10 @@ export type TreeMapModule = {
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
   globe?: ScrollGlobe;
 } & (
-    | { type: "textOverlay" }
-    | { type: "baseScrollModule" }
+    | { type: "kettleCount" }
+    | { type: "animateSVGTextModule" }
     | { type: "kettleAmountModule" }
+    | ({ type: "quoteSlide" } & QuoteSlide)
     | ({ type: "treeMapModule" } & TreeMapModule)
   );
 
@@ -159,9 +166,9 @@ export const storyEEIModuleMap: Record<
   StoryEEIModule["type"],
   FunctionComponent<StorySectionProps>
 > = {
-  textOverlay: StoryEEI.TextOverlay,
   kettleAmountModule: StoryEEI.KettleAmountModule,
   animateSVGTextModule: StoryEEI.AnimateSVGTextModule,
   kettleCount: StoryEEI.KettleCount,
+  quoteSlide: StoryEEI.QuoteSlide,
   treeMapModule: StoryEEI.TreeMapModule,
 };
