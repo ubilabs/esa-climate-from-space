@@ -138,7 +138,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
       } else {
         dispatch(
-          setSelectedLayerIds({ layerId: "water_mask", isPrimary: true }),
+          setSelectedLayerIds({ layerId: "eei_no_mask", isPrimary: true }),
         );
       }
       return;
