@@ -46,7 +46,7 @@ export default function QuoteSlide() {
       config={animationConfig}
       lengthFactor={lengthFactor}
     >
-      <ScrollModule.StickyContainer className={styles.quote}>
+      <ScrollModule.StickyContainer className={styles.quote} isGrid>
         <QuoteContent />
       </ScrollModule.StickyContainer>
     </ScrollModule>

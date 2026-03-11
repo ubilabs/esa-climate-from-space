@@ -107,40 +107,49 @@
           }
         },
         {
-          "progress": 1,
+          "progress": 0.9,
           "containerPosition": { "x": 0, "y": 0 },
           "location": {
             "lat": 51.5074,
             "lng": -35.1278,
             "altitude": 80000
           }
+        },
+        {
+          "progress": 1,
+          "containerPosition": { "x": 0, "y": 0 },
+          "location": {
+            "lat": 48.5074,
+            "lng": -25.1278,
+            "altitude": 4000000
+          }
         }
       ],
-      "lengthFactor": 60,
+      "lengthFactor": 80,
       "type": "kettleAmountModule"
     },
     {
       "globeKeyframes": [
         {
-          "progress": 0,
+          "progress": 0.2,
           "containerPosition": { "x": 0, "y": 0 },
           "location": {
-            "lat": 35.6762,
-            "lng": 139.6503,
-            "altitude": 15000000
+            "lat": 45.5074,
+            "lng": -25.1278,
+            "altitude": 4000000
           }
         },
         {
           "progress": 1,
           "containerPosition": { "x": 0, "y": 0 },
           "location": {
-            "lat": 35.6762,
-            "lng": 139.6503,
-            "altitude": 15000000
+            "lat": 25.5074,
+            "lng": -0.1278,
+            "altitude": 20000000
           }
         }
       ],
-      "lengthFactor": 20,
+      "lengthFactor": 30,
       "type": "kettleCount"
     },
     {
@@ -149,22 +158,31 @@
           "progress": 0,
           "containerPosition": { "x": 0, "y": 0 },
           "location": {
-            "lat": 51.5074,
+            "lat": 25.5074,
             "lng": -0.1278,
-            "altitude": 18000000
+            "altitude": 20000000
+          }
+        },
+        {
+          "progress": 0.1,
+          "containerPosition": { "x": -0.25, "y": 0 },
+          "location": {
+            "lat": 25.5074,
+            "lng": -0.1278,
+            "altitude": 20000000
           }
         },
         {
           "progress": 1,
-          "containerPosition": { "x": 0, "y": 0 },
+          "containerPosition": { "x": -0.25, "y": 0 },
           "location": {
-            "lat": 51.5074,
+            "lat": 25.5074,
             "lng": -0.1278,
-            "altitude": 18000000
+            "altitude": 20000000
           }
         }
       ],
-      "lengthFactor": 10,
+      "lengthFactor": 25,
       "type": "treeMapModule",
       "grid": {
         "title": "Energy absorption",
@@ -183,21 +201,21 @@
     {
       "globeKeyframes": [
         {
-          "progress": 0,
+          "progress": 0.2,
           "containerPosition": { "x": 0, "y": 0 },
           "location": {
             "lat": -33.8688,
             "lng": 151.2093,
-            "altitude": 16500000
+            "altitude": 20000000
           }
         },
         {
           "progress": 1,
-          "containerPosition": { "x": 0, "y": 0 },
+          "containerPosition": { "x": 0, "y": 1 },
           "location": {
             "lat": -33.8688,
             "lng": 151.2093,
-            "altitude": 16500000
+            "altitude": 20000000
           }
         }
       ],
@@ -212,7 +230,7 @@
       "globeKeyframes": [
         {
           "progress": 0,
-          "containerPosition": { "x": 0, "y": -0.5 },
+          "containerPosition": { "x": 0, "y": 1 },
           "location": {
             "lat": -33.8688,
             "lng": 151.2093,
@@ -221,7 +239,7 @@
         },
         {
           "progress": 1,
-          "containerPosition": { "x": 0, "y": -0.5 },
+          "containerPosition": { "x": 0, "y": 1 },
           "location": {
             "lat": -33.8688,
             "lng": 151.2093,

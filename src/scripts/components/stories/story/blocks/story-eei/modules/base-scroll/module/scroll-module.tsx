@@ -58,10 +58,6 @@ const ScrollModule: FunctionComponent<Props> & {
     offset: ["start end", "end end"],
   });
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("x changed to", latest);
-  });
-
   const contextValue = useMemo(
     () => ({ scrollY, scrollYProgress, config }),
     [scrollY, scrollYProgress, config],
