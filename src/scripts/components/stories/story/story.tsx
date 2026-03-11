@@ -25,7 +25,7 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
   const { storyElementRef, story, setScrollAnchorRefs } = useStory();
 
   // Initialize Lenis for smooth scrolling behavior in the story
-  // useLenisForStory();
+  useLenisForStory();
 
   // Handles automatic scrolling through the story in showcase mode
   // and manages navigation to the next story when the current one ends

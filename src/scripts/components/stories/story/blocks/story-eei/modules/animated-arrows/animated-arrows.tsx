@@ -6,24 +6,24 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 
 const animationConfig = {
   scrollText1: {
-    input: [0, 0.1, 0.15, 0.25],
+    input: [0, 0.05, 0.075, 0.125],
     output: ["100%", "100%", "0%", "-100%"],
   },
   downArrow: {
-    input: [0.15, 0.4],
+    input: [0.075, 0.2],
     output: [100, 0],
   },
   upArrow: {
-    input: [0.3, 0.6],
+    input: [0.15, 0.3],
     output: [100, 0],
   },
   opacity: {
-    input: [0.8, 0.9],
+    input: [0.4, 0.45],
     output: [1, 0],
   },
   scrollText2: {
-    input: [0, 0.6, 0.8, 0.95],
-    output: ["100%", "0%", "0%", "-100%" ],
+    input: [0, 0.158, 0.2105, 0.25],
+    output: ["100%", "0%", "0%", "-100%"],
   },
 };
 

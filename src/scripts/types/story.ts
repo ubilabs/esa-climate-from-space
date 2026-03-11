@@ -3,6 +3,7 @@ import { ComponentProps, FunctionComponent } from "react";
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
 import { StoryEEI } from "../components/stories/story/blocks/story-eei/story-eei";
+import GlobeScroll from "../components/stories/story/blocks/story-eei/globe-scroll";
 
 export interface Slide {
   text: string;
@@ -38,17 +39,8 @@ export interface ScrollGlobe {
   };
 }
 
-export interface GlobeKeyframe {
+export interface GlobeKeyframe extends ScrollGlobe {
   progress: number; // 0 to 1, relative to the module
-  containerPosition: {
-    x: number;
-    y: number;
-  };
-  location: {
-    lng: number;
-    lat: number;
-    altitude: number;
-  };
 }
 
 export type Location = ScrollGlobe["location"];

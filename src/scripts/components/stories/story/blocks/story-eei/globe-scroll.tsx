@@ -96,8 +96,8 @@ const GlobeScroll: FunctionComponent<Props> = ({
 
   // Generate progress steps based on cumulative lengthFactors
   // Each step represents the scroll progress at the START of each module
-  // Start with splashscreen's length
-  let cumulativeLength = splashscreenLengthFactor ?? defaultLengthFactor;
+  let cumulativeLength = 0;
+
   const progressSteps = [
     0, // Start at 0
     ...modules.flatMap((module) => {
