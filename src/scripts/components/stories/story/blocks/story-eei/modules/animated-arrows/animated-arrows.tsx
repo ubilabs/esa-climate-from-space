@@ -6,24 +6,24 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 
 const animationConfig = {
   scrollText1: {
-    input: [0, 0.05, 0.075, 0.125],
-    output: ["100%", "100%", "0%", "-100%"],
+    input: [0, 0.19, 0.29, 0.49],
+    output: ["0%", "-40%", "-40%", "-100%"],
   },
   downArrow: {
-    input: [0.075, 0.2],
-    output: [100, 0],
+    input: [0.065, 0.19, 0.39],
+    output: [100, 0, 0],
   },
   upArrow: {
-    input: [0.15, 0.3],
-    output: [100, 0],
+    input: [0.14, 0.29, 0.49],
+    output: [100, 0, 0.5],
   },
   opacity: {
-    input: [0.4, 0.45],
-    output: [1, 0],
+    input: [0.29, 0.34, 0.44, 0.49],
+    output: [1, 1, 1, 0],
   },
   scrollText2: {
-    input: [0, 0.158, 0.2105, 0.25],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: [0.29, 0.32158, 0.39, 0.49, 0.5325],
+    output: ["100%", "100%", "-40%", "-40%", "-100%"],
   },
 };
 
@@ -36,7 +36,7 @@ export default function AnimatedArrowsModule() {
 
   return (
     <ScrollModule lengthFactor={lengthFactor} config={animationConfig}>
-      <ScrollModule.StickyContainer>
+      <ScrollModule.StickyContainer isGrid>
         <Arrows />
 
         <ScrollText

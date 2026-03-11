@@ -3,8 +3,8 @@
   "initialglobeConfig": {
     "containerPosition": { "x": 0, "y": -1 },
     "location": {
-      "lat": -14.3821,
-      "lng": 132.7459,
+      "lat": 51.5074,
+      "lng": -0.1278,
       "altitude": 18040000
     }
   },
@@ -17,13 +17,13 @@
         "progress": 1,
         "containerPosition": { "x": 0, "y": -1 },
         "location": {
-          "lat": -14.3821,
-          "lng": 32.7459,
-          "altitude": 20040000
+          "lat": 51.5074,
+          "lng": -0.1278,
+          "altitude": 18040000
         }
       }
     ],
-    "lengthFactor": 5
+    "lengthFactor": 1
   },
   "modules": [
     {
@@ -32,40 +32,67 @@
           "progress": 0,
           "containerPosition": { "x": 0, "y": -1 },
           "location": {
-            "lat": -14.3821,
-            "lng": 132.7459,
-            "altitude": 25040000
+            "lat": 51.5074,
+            "lng": -0.1278,
+            "altitude": 18040000
           }
         },
         {
           "progress": 0.3,
           "containerPosition": { "x": 0, "y": -0.5 },
           "location": {
-            "lat": -14.3821,
-            "lng": 132.7459,
-            "altitude": 25040000
+            "lat": 51.5074,
+            "lng": -0.1278,
+            "altitude": 18040000
+          }
+        },
+        {
+          "progress": 0.5,
+          "containerPosition": { "x": 0, "y": -0.5 },
+          "location": {
+            "lat": 51.5074,
+            "lng": -0.1278,
+            "altitude": 18040000
+          }
+        },
+        {
+          "progress": 0.7,
+          "containerPosition": { "x": 0, "y": 0 },
+          "location": {
+            "lat": 51.5074,
+            "lng": -0.1278,
+            "altitude": 18040000
+          }
+        },
+        {
+          "progress": 0.8,
+          "containerPosition": { "x": 0, "y": 0 },
+          "location": {
+            "lat": 51.5074,
+            "lng": -35.1278,
+            "altitude": 12040000
           }
         },
         {
           "progress": 0.9,
-          "containerPosition": { "x": 0, "y": -0.5 },
+          "containerPosition": { "x": 0, "y": 0 },
           "location": {
-            "lat": -14.3821,
-            "lng": 132.7459,
-            "altitude": 25040000
+            "lat": 51.5074,
+            "lng": -35.1278,
+            "altitude": 8040000
           }
         },
         {
           "progress": 1,
-          "containerPosition": { "x": 0, "y": -0.5 },
+          "containerPosition": { "x": 0, "y": 0 },
           "location": {
-            "lat": -14.3821,
-            "lng": 132.7459,
-            "altitude": 25040000
+            "lat": 51.5074,
+            "lng": -35.1278,
+            "altitude": 80000
           }
         }
       ],
-      "lengthFactor": 12,
+      "lengthFactor": 26,
       "type": "animatedArrowsModule"
     },
     {
@@ -74,22 +101,22 @@
           "progress": 0,
           "containerPosition": { "x": 0, "y": 0 },
           "location": {
-            "lat": -14.3821,
-            "lng": 132.7459,
-            "altitude": 1047171
+            "lat": 51.5074,
+            "lng": -35.1278,
+            "altitude": 80000
           }
         },
         {
           "progress": 1,
           "containerPosition": { "x": 0, "y": 0 },
           "location": {
-            "lat": -14.3821,
-            "lng": 132.7459,
-            "altitude": 1047171
+            "lat": 51.5074,
+            "lng": -35.1278,
+            "altitude": 80000
           }
         }
       ],
-      "lengthFactor": 20,
+      "lengthFactor": 40,
       "type": "kettleAmountModule"
     },
     {

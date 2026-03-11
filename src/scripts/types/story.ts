@@ -3,7 +3,6 @@ import { ComponentProps, FunctionComponent } from "react";
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
 import { StoryEEI } from "../components/stories/story/blocks/story-eei/story-eei";
-import GlobeScroll from "../components/stories/story/blocks/story-eei/globe-scroll";
 
 export interface Slide {
   text: string;

@@ -4,8 +4,6 @@ import BoilCount from "./boil-count/boil-count";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
-import styles from "./kettle-count.module.css";
-
 const animationConfig = {
   scrollText1: {
     input: [0, 0.05, 0.15, 0.2],
@@ -38,7 +36,7 @@ export default function KettleCount() {
 
   return (
     <ScrollModule config={animationConfig} lengthFactor={lengthFactor}>
-      <ScrollModule.StickyContainer className={styles.container}>
+      <ScrollModule.StickyContainer isGrid>
         <ScrollText
           text="And if you apply that increase to the entire surface of the Earth..."
           inputRange={animationConfig.scrollText1.input}

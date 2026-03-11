@@ -100,7 +100,7 @@ const GlobeScroll: FunctionComponent<Props> = ({
 
   const progressSteps = [
     0, // Start at 0
-    ...modules.flatMap((module) => {
+    ...storySegments.flatMap((module) => {
       const lengthFactor =
         "lengthFactor" in module && typeof module.lengthFactor === "number"
           ? module.lengthFactor
@@ -140,7 +140,7 @@ const GlobeScroll: FunctionComponent<Props> = ({
 
   // arrays are populated with globe values specified in the story-eei.json
   // Now considering globeKeyframes to match the progressSteps structure
-  const locationValues = modules.reduce(
+  const locationValues = storySegments.reduce(
     (acc, module) => {
       // Get keyframes for this module
       const keyframes: Array<GlobeKeyframe> =
