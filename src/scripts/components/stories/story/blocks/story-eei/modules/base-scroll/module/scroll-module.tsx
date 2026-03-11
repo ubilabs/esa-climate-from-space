@@ -6,7 +6,6 @@ import {
   useRef,
 } from "react";
 
-import { useMotionValueEvent } from "motion/react";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 
 import { StorySectionProps } from "../../../../../../../../types/story";
