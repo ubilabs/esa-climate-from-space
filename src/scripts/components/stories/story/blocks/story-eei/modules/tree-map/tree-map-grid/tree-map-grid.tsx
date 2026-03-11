@@ -41,6 +41,12 @@ export default function TreeMapGrid({
     // after scrolling one full screen
     const decreasedProgress = progress - 1 / (data.length + 1);
 
+    // Reset to no mask layer when reaching the top or bottom of the scroll
+    if (decreasedProgress <= 0 || progress >= 1) {
+      setSelectedLayerId(Layers.EEI_NO_MASK);
+      return;
+    }
+
     // Map progress (0-1) to layer index
     // Each layer occupies an equal portion of the scroll range
     const index = Math.min(
@@ -56,14 +62,15 @@ export default function TreeMapGrid({
 
     if (layerId !== selectedLayerId) {
       setSelectedLayerId(layerId);
-      if (onHighlightGridCell) {
-        onHighlightGridCell(layerId);
-      }
     }
   });
 
   useEffect(() => {
     if (selectedLayerId) {
+      if (onHighlightGridCell) {
+        onHighlightGridCell(selectedLayerId);
+      }
+
       if (selectedLayerId === Layers.EEI_ATMOSPHERE_MASK) {
         dispatch(setGlobeRenderOptions(ATMOSPHERE_MASK_RENDER_OPTIONS));
       } else {
@@ -74,7 +81,7 @@ export default function TreeMapGrid({
         setSelectedLayerIds({ layerId: selectedLayerId, isPrimary: true }),
       );
     }
-  }, [selectedLayerId, dispatch]);
+  }, [selectedLayerId, dispatch, onHighlightGridCell]);
 
   const topRowData = data.filter((item) => item.percentage <= 10);
   const bottomRowData = data.filter((item) => item.percentage > 10);

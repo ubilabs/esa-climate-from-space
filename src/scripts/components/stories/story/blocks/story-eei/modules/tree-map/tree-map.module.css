@@ -13,7 +13,7 @@
     padding-left: 0;
   }
 
-  > h1 {
+  .label {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -29,20 +29,53 @@
     }
   }
 
-  .leftPanel {
-    width: 50%;
+  .panelContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
 
     @media screen and (--mobile-viewport) {
-      height: calc(50% - var(--headline-font-size));
-      width: 100%;
-      justify-content: flex-start;
+      flex-direction: column-reverse;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
     }
 
-    h2 {
+    .gridPanel {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @media screen and (--mobile-viewport) {
+        height: calc(50% - var(--headline-font-size));
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+
+    .globePanel {
+      width: 50%;
+      display: flex;
+      justify-content: start;
+
+      @media screen and (--mobile-viewport) {
+        height: 100%;
+        justify-content: center;
+      }
+
+      .title {
+        translate: calc(var(--globe-container-x) - 100%);
+        width: max-content;
+
+        @media screen and (--mobile-viewport) {
+          translate: 0 100%;
+          height: max-content;
+        }
+      }
+    }
+
+    .title {
       color: var(--light-green);
       font-size: 1.125rem;
       font-weight: 700;
@@ -53,5 +86,19 @@
         font-weight: 400;
       }
     }
+  }
+}
+
+.globeOverlay {
+  position: fixed;
+  left: calc(50vw + var(--globe-container-x));
+  top: calc(50vh + var(--globe-container-y) + 30px);
+  transform: translate(-50%, -50%);
+  font-size: 1.875rem;
+  font-weight: 700;
+
+  @media screen and (--mobile-viewport) {
+    font-size: 0.735rem;
+    font-weight: 400;
   }
 }

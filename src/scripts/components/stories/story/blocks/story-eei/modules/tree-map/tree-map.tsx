@@ -18,27 +18,33 @@ export default function TreeMapModule() {
   }
 
   const gridData = module.grid.data;
+  const highlightedData = gridData.find(
+    ({ layerId }) => layerId === highlightedLayerId,
+  );
 
   return (
-    <ScrollModule
-      className={styles.treeMapWrapper}
-      lengthFactor={module.lengthFactor}
-      config={null}
-    >
+    <ScrollModule lengthFactor={module.lengthFactor} config={null}>
       <ScrollModule.StickyContainer>
         <div className={styles.slide}>
-          <h1>
-            {
-              gridData.find(({ layerId }) => layerId === highlightedLayerId)
-                ?.label
-            }
-          </h1>
-          <div className={styles.leftPanel}>
-            <h2>{module.grid.title}</h2>
-            <TreeMapGrid
-              data={module.grid.data}
-              onHighlightGridCell={setHighlightedLayerId}
-            />
+          <h1 className={styles.label}>{highlightedData?.label}</h1>
+          <div className={styles.panelContainer}>
+            <div className={styles.gridPanel}>
+              <h2 className={styles.title}>{module.grid.title}</h2>
+              <TreeMapGrid
+                data={module.grid.data}
+                onHighlightGridCell={setHighlightedLayerId}
+              />
+            </div>
+            {highlightedData && (
+              <>
+                <div className={styles.globePanel}>
+                  <h2 className={styles.title}>{module.globe?.title}</h2>
+                </div>
+                <span className={styles.globeOverlay}>
+                  {highlightedData.percentage} %
+                </span>
+              </>
+            )}
           </div>
         </div>
       </ScrollModule.StickyContainer>
