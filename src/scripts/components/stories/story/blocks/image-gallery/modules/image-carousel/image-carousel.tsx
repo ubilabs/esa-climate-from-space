@@ -1,20 +1,16 @@
 import {
   FunctionComponent,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
   useEffectEvent,
 } from "react";
 import { motion, useAnimationControls } from "motion/react";
 import cx from "classnames";
-import ReactMarkdown from "react-markdown";
 import { FormattedMessage } from "react-intl";
 
-import config from "../../../../../../../config/main";
 import { useScreenSize } from "../../../../../../../hooks/use-screen-size";
 import { useLenisToggle } from "../../../../../../../hooks/use-lenis-toggle";
-import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 import Button from "../../../../../../main/button/button";
@@ -22,8 +18,8 @@ import { LinkIcon } from "../../../../../../main/icons/link-icon";
 import { ImageCarouselModule } from "../../../../../../../types/story";
 import { useAppRouteFlags } from "../../../../../../../hooks/use-app-route-flags";
 import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
-import { ScrollImage } from "../image-scroll/image-scroll-image/image-scroll-image";
 import CarouselNavigation from "./carousel-navigation/carousel-navigation";
+import CarouselSlide from "./carousel-slide/carousel-slide";
 import ScrollModule from "../../../story-eei/modules/base-scroll/module/scroll-module";
 
 import styles from "./image-carousel.module.css";
@@ -40,7 +36,6 @@ const ImageCarousel: FunctionComponent = () => {
   const { isStoryEEI } = useAppRouteFlags();
 
   const slidesContainerRef = useRef<HTMLDivElement>(null);
-  const slideRef = useRef<HTMLDivElement>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [slideWidth, setSlideWidth] = useState(0);
   const [fullscreenSlideIndex, setFullscreenSlideIndex] = useState<
@@ -52,14 +47,10 @@ const ImageCarousel: FunctionComponent = () => {
 
   useLenisToggle(isSlideTouched);
 
-  useLayoutEffect(() => {
-    if (!slideRef.current) return;
-    setSlideWidth(slideRef.current.offsetWidth);
-  }, []);
-
   const step = slideWidth + PADDING;
 
   const updateNavigationVisibility = useEffectEvent(() => {
+    // Show navigation if the slides are wider than current viewport
     setIsNavigationVisible(
       (slidesContainerRef.current?.offsetWidth || 0) <
         (slides?.length || 0) * slideWidth,
@@ -135,38 +126,18 @@ const ImageCarousel: FunctionComponent = () => {
               snapToIndex(currentSlideIndex + direction);
             }}
           >
-            {slides.map(({ url, altText, text }, i) => (
-              <div
-                key={url || i}
-                ref={i === 0 ? slideRef : null}
-                onTouchStart={() => setIsSlideTouched(true)}
-                onTouchEnd={() => setIsSlideTouched(false)}
-                className={styles.slide}
-                style={
-                  isFullscreen && fullscreenSlideIndex !== i
-                    ? { display: "none" }
-                    : undefined
-                }
-              >
-                <div className={styles.imageContainer}>
-                  <ScrollImage
-                    className={styles.image}
-                    src={getStoryAssetUrl(storyId, url)}
-                    alt={altText}
-                    onFullscreenToggle={(isFullscreen) =>
-                      setFullscreenSlideIndex(isFullscreen ? i : undefined)
-                    }
-                  />
-                </div>
-                {text && !isFullscreen && (
-                  <div className={styles.text}>
-                    <ReactMarkdown
-                      children={text}
-                      allowedElements={config.markdownAllowedElements}
-                    />
-                  </div>
-                )}
-              </div>
+            {slides.map((slide, index) => (
+              <CarouselSlide
+                key={slide.url || index}
+                slide={slide}
+                index={index}
+                isFullscreen={isFullscreen}
+                fullscreenSlideIndex={fullscreenSlideIndex}
+                onWidthChange={setSlideWidth}
+                storyId={storyId}
+                setIsSlideTouched={setIsSlideTouched}
+                setFullscreenSlideIndex={setFullscreenSlideIndex}
+              />
             ))}
           </motion.div>
         </div>

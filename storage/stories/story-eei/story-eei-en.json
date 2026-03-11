@@ -256,19 +256,39 @@
       },
       "slides": [
         {
-          "text": "[Ice Sheet](/#/land/data?globe=SI-38.98I73.03I25840000I0.00I1293840000000I0Igreenland_ice.secI)",
+          "text": "[Sea Surface Temperature](#/ocean/data?globe=SI0.00I25.00I25840000I0.00I1717200000000I0Isst.analysed_sstI)",
+          "altText": "Sea surface temperature",
+          "url": "assets/sea_surface_temperature.png"
+        },
+        {
+          "text": "[Land Surface Temperature](#/land/data?globe=SI0.00I25.00I25840000I0.00I1493596800000I0Iland_surface_temperature.lstI)",
+          "altText": "Land surface temperature",
+          "url": "assets/land_surface_temperature.png"
+        },
+        {
+          "text": "[Sea Level](#/ocean/data?globe=SI0.00I25.00I25840000I0.00I1450137600000I0Isea_level.slaI)",
+          "altText": "Sea level anomalies",
+          "url": "assets/sea_level.png"
+        },
+        {
+          "text": "[Water Vapour](#/water_cycle/data?globe=SI-66.21I-2.26I25840000I0.00I1493596800000I0Iwater_vapour.tcwvI)",
+          "altText": "Water vapour",
+          "url": "assets/water_vapour.png"
+        },
+        {
+          "text": "[Ice Sheet](#/land/data?globe=SI-38.98I73.03I25840000I0.00I1293840000000I0Igreenland_ice.secI)",
           "altText": "Ice sheet",
           "url": "assets/ice_sheet.png"
         },
         {
-          "text": "[Sea Ice](/#/ocean/data?globe=SI-38.98I73.03I25840000I0.00I1493596800000I0Isea_ice.ice_concI)",
+          "text": "[Sea Ice](#/ocean/data?globe=SI-38.98I73.03I25840000I0.00I1493596800000I0Isea_ice.ice_concI)",
           "altText": "Sea ice",
           "url": "assets/sea_ice.png"
         },
         {
-          "text": "[Sea Level Anomalies](/#/ocean/data?globe=SI0.00I25.00I25840000I0.00I1450137600000I0Isea_level.slaI)",
-          "altText": "Sea level anomalies",
-          "url": "assets/sea_level.png"
+          "text": "[Glaciers](#/water_cycle/data?globe=SI-66.21I-2.26I25840000I0.00I1493596800000I0Iglaciers.tcwvI)",
+          "altText": "Glaciers",
+          "url": "assets/glaciers.png"
         }
       ]
     }
