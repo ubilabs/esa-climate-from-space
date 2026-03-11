@@ -41,6 +41,7 @@ const ImageCarousel: FunctionComponent = () => {
 
   const slidesContainerRef = useRef<HTMLDivElement>(null);
   const slideRef = useRef<HTMLDivElement>(null);
+  const slideTextRef = useRef<HTMLDivElement>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [slideWidth, setSlideWidth] = useState(0);
   const [fullscreenSlideIndex, setFullscreenSlideIndex] = useState<
@@ -48,6 +49,7 @@ const ImageCarousel: FunctionComponent = () => {
   >();
   const [isSlideTouched, setIsSlideTouched] = useState(false);
   const [isNavigationVisible, setIsNavigationVisible] = useState(true);
+  const [isSlideImageClickable, setIsSlideImageClickable] = useState(false);
   const isFullscreen = fullscreenSlideIndex !== undefined;
 
   useLenisToggle(isSlideTouched);
@@ -57,9 +59,17 @@ const ImageCarousel: FunctionComponent = () => {
     setSlideWidth(slideRef.current.offsetWidth);
   }, []);
 
+  const toggleSlideImageClickability = useEffectEvent(() =>
+    // Make slide image clickable if the slide text contains a link
+    setIsSlideImageClickable(Boolean(slideTextRef.current?.querySelector("a"))),
+  );
+
+  useEffect(() => toggleSlideImageClickability(), [slideTextRef]);
+
   const step = slideWidth + PADDING;
 
   const updateNavigationVisibility = useEffectEvent(() => {
+    // Show navigation if the slides are wider than current viewport
     setIsNavigationVisible(
       (slidesContainerRef.current?.offsetWidth || 0) <
         (slides?.length || 0) * slideWidth,
@@ -100,6 +110,12 @@ const ImageCarousel: FunctionComponent = () => {
         damping: 32,
       },
     });
+  };
+
+  const handleSlideImageClick = () => {
+    // Forward click on image to the text if it contains a link, to make clicking
+    // slide image have the same behavior as clicking the text below it
+    slideTextRef.current?.querySelector("a")?.click();
   };
 
   const content = (
@@ -148,18 +164,37 @@ const ImageCarousel: FunctionComponent = () => {
                     : undefined
                 }
               >
-                <div className={styles.imageContainer}>
-                  <ScrollImage
-                    className={styles.image}
-                    src={getStoryAssetUrl(storyId, url)}
-                    alt={altText}
-                    onFullscreenToggle={(isFullscreen) =>
-                      setFullscreenSlideIndex(isFullscreen ? i : undefined)
+                <div
+                  className={styles.imageContainer}
+                  onClick={handleSlideImageClick}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      handleSlideImageClick();
                     }
-                  />
+                  }}
+                  role="button"
+                  tabIndex={0}
+                >
+                  {isSlideImageClickable ? (
+                    <img
+                      className={styles.image}
+                      src={getStoryAssetUrl(storyId, url)}
+                      style={{ cursor: "pointer" }}
+                      alt={altText}
+                    />
+                  ) : (
+                    <ScrollImage
+                      className={styles.image}
+                      src={getStoryAssetUrl(storyId, url)}
+                      alt={altText}
+                      onFullscreenToggle={(isFullscreen) =>
+                        setFullscreenSlideIndex(isFullscreen ? i : undefined)
+                      }
+                    />
+                  )}
                 </div>
                 {text && !isFullscreen && (
-                  <div className={styles.text}>
+                  <div className={styles.text} ref={slideTextRef}>
                     <ReactMarkdown
                       children={text}
                       allowedElements={config.markdownAllowedElements}
