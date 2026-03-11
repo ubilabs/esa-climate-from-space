@@ -4,5 +4,5 @@ import { Story } from "../types/story";
 // We consider a location based story if the splashscreen has a location defined
 export function isLocationStory(story: Story | null) {
   const location = story?.splashscreen?.location;
-  return location && [2, 3].includes(Object.keys(location).length);
+  return Boolean(location && [2, 3].includes(Object.keys(location).length));
 }

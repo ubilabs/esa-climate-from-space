@@ -20,6 +20,8 @@ export type Story = {
   id: string;
   splashscreen: Splashscreen;
   modules: Module[];
+  // special property for StoryEEI
+  initialglobeConfig?: ScrollGlobe;
 };
 
 type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
@@ -50,10 +52,13 @@ export type Splashscreen = {
   location?: Location;
   containerPosition?: ContainerPosition;
   url?: string;
-  slides: Array<{ text: string }>;
+  slides?: Array<{ text: string }>;
   title?: string;
   focus?: ImageFocus;
   subtitle?: string;
+  globe?: ScrollGlobe;
+  lengthFactor?: number;
+  type?: string;
 };
 
 export type ImageGalleryModuleType =
@@ -69,7 +74,7 @@ export type ImageGalleryModuleType =
 export type StoryEEIModuleType =
   | "kettleAmountModule"
   | "kettleCount"
-  | "animateSVGTextModule"
+  | "animatedArrowsModule"
   | "quoteSlide"
   | "kettleAmountModule"
   | "treeMapModule";
@@ -90,6 +95,7 @@ export type ImageModule = BaseModule & {
 
 export type ImageCarouselModule = ImageModule & {
   type: "imageCarousel";
+  lengthFactor?: number;
   headerText?: string;
   readMore?: {
     title: string;
@@ -117,11 +123,12 @@ export type TreeMapModule = {
 
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
   globe?: ScrollGlobe;
+  lengthFactor: number;
 } & (
     | { type: "kettleCount" }
-    | { type: "animateSVGTextModule" }
+    | { type: "animatedArrowsModule" }
     | { type: "kettleAmountModule" }
-    | ({ type: "quoteSlide" } & QuoteSlide)
+    | ({ type: "quoteSlide" } & QuoteSlideType)
     | ({ type: "treeMapModule" } & TreeMapModule)
   );
 
@@ -167,7 +174,7 @@ export const storyEEIModuleMap: Record<
   FunctionComponent<StorySectionProps>
 > = {
   kettleAmountModule: StoryEEI.KettleAmountModule,
-  animateSVGTextModule: StoryEEI.AnimateSVGTextModule,
+  animatedArrowsModule: StoryEEI.AnimatedArrowsModule,
   kettleCount: StoryEEI.KettleCount,
   quoteSlide: StoryEEI.QuoteSlide,
   treeMapModule: StoryEEI.TreeMapModule,

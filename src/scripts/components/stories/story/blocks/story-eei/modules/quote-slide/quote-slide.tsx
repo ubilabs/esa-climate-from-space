@@ -1,7 +1,6 @@
 import { motion, useTransform } from "motion/react";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 import ScrollModule from "../base-scroll/module/scroll-module";
-import { QuoteSlideType } from "../../../../../../../types/story";
 import { useScrollModule } from "../base-scroll/use-scroll-module";
 
 import styles from "./quote-slide.module.css";
@@ -18,8 +17,6 @@ export type QuoteSlideAnimationConfig = typeof animationConfig;
 function QuoteContent() {
   const { module } = useModuleContent();
 
-  const quoteSlide = module as QuoteSlideType;
-
   const { scrollYProgress, config } =
     useScrollModule<QuoteSlideAnimationConfig>();
 
@@ -33,18 +30,25 @@ function QuoteContent() {
         ),
       }}
     >
-      <p>{quoteSlide.quote?.text}</p>
-      <span>{quoteSlide.quote?.author}</span>
+      <p>{module.quote?.text}</p>
+      <span>{module.quote?.author}</span>
     </motion.div>
   );
 }
 
 export default function QuoteSlide() {
+  const {
+    module: { lengthFactor },
+  } = useModuleContent();
   return (
-    <ScrollModule className={styles.quoteWrapper} config={animationConfig}>
-      <ScrollModule.Slide className={styles.quote}>
+    <ScrollModule
+      className={styles.quoteWrapper}
+      config={animationConfig}
+      lengthFactor={lengthFactor}
+    >
+      <ScrollModule.StickyContainer className={styles.quote}>
         <QuoteContent />
-      </ScrollModule.Slide>
+      </ScrollModule.StickyContainer>
     </ScrollModule>
   );
 }

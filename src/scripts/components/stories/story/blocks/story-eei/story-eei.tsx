@@ -1,9 +1,11 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect, useLayoutEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 
 import { Layers } from "./constants/globe";
 
 import { setSelectedLayerIds } from "../../../../../reducers/layers";
+
+import { useStory } from "../../../../../providers/story/use-story";
 
 import Story from "../../story";
 import GlobeScroll from "./globe-scroll";
@@ -20,7 +22,7 @@ export type StoryEEICompoundComponents = {
   StoryGlobe: typeof StoryGlobe;
   KettleAmountModule: typeof KettleAmountModule;
   KettleCount: typeof KettleCount;
-  AnimateSVGTextModule: typeof AnimatedArrowsModule;
+  AnimatedArrowsModule: typeof AnimatedArrowsModule;
   QuoteSlide: typeof QuoteSlide;
   TreeMapModule: typeof TreeMapModule;
 };
@@ -28,6 +30,28 @@ export type StoryEEICompoundComponents = {
 /* Module Wrapper for Earth Engine Imbalance Story Components*/
 export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   const dispatch = useDispatch();
+  const { story } = useStory();
+
+  const initialGlobe = useMemo(
+    () => story?.initialglobeConfig ?? undefined,
+    [story],
+  );
+
+  // set initial globe container position
+  useLayoutEffect(() => {
+    const root = document.documentElement;
+    if (initialGlobe?.containerPosition) {
+      root.style.setProperty(
+        "--globe-container-y",
+        `${initialGlobe?.containerPosition.y * -100}vh`,
+      );
+
+      root.style.setProperty(
+        "--globe-container-x",
+        `${initialGlobe?.containerPosition.x * -100}vw`,
+      );
+    }
+  }, [initialGlobe]);
 
   useEffect(() => {
     dispatch(
@@ -41,7 +65,7 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   return (
     <Story>
       {/* enable globe to react to scroll event (currently only story-eei)*/}
-      <GlobeScroll />
+      <GlobeScroll initialGlobeConfiguration={initialGlobe} />
     </Story>
   );
 };
@@ -51,5 +75,5 @@ StoryEEI.QuoteSlide = QuoteSlide;
 StoryEEI.StoryGlobe = StoryGlobe;
 StoryEEI.KettleAmountModule = KettleAmountModule;
 StoryEEI.KettleCount = KettleCount;
-StoryEEI.AnimateSVGTextModule = AnimatedArrowsModule;
+StoryEEI.AnimatedArrowsModule = AnimatedArrowsModule;
 StoryEEI.TreeMapModule = TreeMapModule;

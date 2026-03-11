@@ -6,7 +6,7 @@ import KettleOverlay, {
   KettleOverlayProps,
 } from "./kettle-overlay/kettle-overlay";
 
-import styles from "./kettle-amount.module.css";
+import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 const animationConfig = {
   initial: {
@@ -33,17 +33,17 @@ const animationConfig = {
   },
   satellite: {
     xPosition: {
-      input: [0, 0.4, 0.5, 0.65],
+      input: [0, 0.4, 0.5, 0.9],
       output: ["-100vw", "25vw", "25vw", "100vw"],
     },
     opacity: {
-      input: [0, 0.26, 0.3, 0.65, 0.67],
+      input: [0, 0.26, 0.3, 0.65, 1],
       output: ["0", "0", "1", "1", "0"],
     },
   },
   kettleRows: {
     rangeStart: 0.5,
-    rangeEnd: 0.6,
+    rangeEnd: 1,
     fadeIn: {
       input: [0.3, 0.33],
       output: [0, 1],
@@ -65,7 +65,10 @@ export type KettleAmountAnimationConfig = typeof animationConfig;
 
 export default function KettleAmountModule() {
   const intl = useIntl();
-  const MODULE_TOTAL_LENGTH = 5;
+
+  const {
+    module: { lengthFactor },
+  } = useModuleContent();
 
   const overlays: Array<KettleOverlayProps> = [
     {
@@ -83,18 +86,14 @@ export default function KettleAmountModule() {
   ];
 
   return (
-    <ScrollModule
-      config={animationConfig}
-      style={{ height: `calc(var(--story-height) * ${MODULE_TOTAL_LENGTH})` }}
-      className={styles.kettleAmountWrapper}
-    >
-      <ScrollModule.Slide className={styles.container}>
+    <ScrollModule config={animationConfig} lengthFactor={lengthFactor}>
+      <ScrollModule.StickyContainer>
         <BulbAnimation />
         <KettleBox />
         {overlays.map((overlay, index) => (
           <KettleOverlay key={index} {...overlay} />
         ))}
-      </ScrollModule.Slide>
+      </ScrollModule.StickyContainer>
     </ScrollModule>
   );
 }

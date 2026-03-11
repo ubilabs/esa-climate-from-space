@@ -1,6 +1,11 @@
 .baseScrollModule {
-  height: var(--story-height);
-  .slide {
+  --scroll-length-factor: var(--default-scroll-length-factor);
+  height: calc(var(--story-height) * var(--scroll-length-factor));
+  position: relative;
+
+  .sticky {
     height: var(--story-height);
+    top: 0;
+    position: sticky;
   }
 }

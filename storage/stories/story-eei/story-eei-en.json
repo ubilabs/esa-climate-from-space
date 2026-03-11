@@ -1,30 +1,40 @@
 {
   "id": "story-eei",
+  "initialglobeConfig": {
+    "containerPosition": { "x": 0, "y": -1 },
+    "location": {
+      "lat": -14.3821,
+      "lng": 132.7459,
+      "altitude": 18040000
+    }
+  },
   "splashscreen": {
-    "location": { "altitude": 5040000, "lat": 58.5, "lng": -4.5 },
     "focus": "center",
-    "title": "Earth Engine Imbalance",
-    "subtitle": ""
+    "title": "Earth Energy Imbalance",
+    "subtitle": "",
+    "globe": {
+      "containerPosition": { "x": 0, "y": 0 },
+      "location": {
+        "lat": -14.3821,
+        "lng": 32.7459,
+        "altitude": 20040000
+      }
+    },
+    "lengthFactor": 1,
+    "type": "animatedArrowsModule"
   },
   "modules": [
     {
-      "type": "quoteSlide",
-      "quote": {
-        "text": "The MOTECUSOMA team is nearing completion of the EEI and TAS estimation official datasets. Scientific analyses using these datasets are scheduled to start in the coming months.",
-        "author": "MOTECUSOMA Team"
-      }
-    },
-    {
-      "type": "kettleCount",
-      "text": "Kettle Count Module"
-    },
-    {
-      "type": "animateSVGTextModule",
-      "text": "Animated SVG Text Module"
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 1"
+      "globe": {
+        "containerPosition": { "x": 0, "y": 0 },
+        "location": {
+          "lat": -14.3821,
+          "lng": 132.7459,
+          "altitude": 25040000
+        }
+      },
+      "lengthFactor": 10,
+      "type": "animatedArrowsModule"
     },
     {
       "globe": {
@@ -34,10 +44,31 @@
           "altitude": 20047171
         }
       },
-      "type": "kettleAmountModule",
-      "text": "kettle amount module"
+      "lengthFactor": 20,
+      "type": "kettleAmountModule"
     },
     {
+      "globe": {
+        "containerPosition": { "x": 0, "y": 0 },
+        "location": {
+          "lat": 35.6762,
+          "lng": 139.6503,
+          "altitude": 15000000
+        }
+      },
+      "lengthFactor": 20,
+      "type": "kettleCount"
+    },
+    {
+      "globe": {
+        "containerPosition": { "x": 0, "y": 0 },
+        "location": {
+          "lat": 51.5074,
+          "lng": -0.1278,
+          "altitude": 18000000
+        }
+      },
+      "lengthFactor": 10,
       "type": "treeMapModule",
       "grid": {
         "title": "Energy absorption",
@@ -54,66 +85,31 @@
       }
     },
     {
-      "type": "baseScrollModule",
-      "text": "slide 3"
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 4",
       "globe": {
+        "containerPosition": { "x": 0, "y": 0 },
         "location": {
-          "lat": 37.9284,
-          "lng": -109.7421,
-          "altitude": 111200000
+          "lat": -33.8688,
+          "lng": 151.2093,
+          "altitude": 16500000
         }
+      },
+      "lengthFactor": 5,
+      "type": "quoteSlide",
+      "quote": {
+        "text": "The MOTECUSOMA team is nearing completion of the EEI and TAS estimation official datasets. Scientific analyses using these datasets are scheduled to start in the coming months.",
+        "author": "MOTECUSOMA Team"
       }
     },
     {
-      "type": "baseScrollModule",
-      "text": "slide 5"
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 6",
       "globe": {
+        "containerPosition": { "x": 0, "y": -0.5 },
         "location": {
-          "lat": -52.1183,
-          "lng": -68.4479,
-          "altitude": 14200000
+          "lat": -33.8688,
+          "lng": 151.2093,
+          "altitude": 216500000
         }
-      }
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 7"
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 8",
-      "globe": {
-        "location": {
-          "lat": 63.2741,
-          "lng": 96.5513,
-          "altitude": 2079886
-        }
-      }
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 9"
-    },
-    {
-      "type": "baseScrollModule",
-      "text": "slide 10",
-      "globe": {
-        "location": {
-          "lat": 9.8827,
-          "lng": -27.1945,
-          "altitude": 7600000
-        }
-      }
-    },
-    {
+      },
+      "lengthFactor": 1,
       "type": "imageCarousel",
       "headerText": "ECVs related to MOTECOSUMA",
       "readMore": {

@@ -1,11 +1,4 @@
-.kettleAmountWrapper {
-  position: relative;
-
-  .container {
-    top: 0;
-    position: sticky;
-    height: var(--story-height);
-    display: grid;
-    place-items: center;
-  }
+.container {
+  display: grid;
+  place-items: center;
 }
