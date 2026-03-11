@@ -2,39 +2,43 @@ import ScrollModule from "../base-scroll/module/scroll-module";
 import ScrollText from "../base-scroll/scroll-text/scroll-text";
 import BoilCount from "./boil-count/boil-count";
 
+import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+
 import styles from "./kettle-count.module.css";
 
 const animationConfig = {
   scrollText1: {
-    input: [0.13, 0.2, 0.3],
-    output: ["50vh", "50vh", "-50vh"],
+    input: [0, 0.05, 0.15, 0.2],
+    output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText2: {
-    input: [0.4, 0.5, 0.6, 0.7],
-    output: ["100vh", "20vh", "20vh", "-50vh"],
+    input: [0, 0.2, 0.25, 0.35],
+    output: ["100%", "200%", "200%", "-100%"],
+  },
+  boilCount: {
+    input: [0, 0.4, 0.45, 0.55, 0.6],
+    output: ["100%", "100%", "0%", "0%", "-100%"],
   },
   scrollText3: {
-    input: [0.5, 0.6, 0.7, 0.8],
-    output: ["100vh", "30vh", "30vh", "-50vh"],
+    input: [0, 0.6, 0.65, 0.75, 0.8],
+    output: ["100%", "100%", "0%", "0%", "-100%"],
   },
   scrollText4: {
-    input: [0.75, 0.8, 0.9, 1],
-    output: ["100vh", "20vh", "20vh", "-50vh"],
+    input: [0, 0.8, 0.85, 0.95, 1],
+    output: ["100%", "100%", "0%", "0%", "-100%"],
   },
 };
 
 export type KettleCountConfig = typeof animationConfig;
 
 export default function KettleCount() {
-  const MODULE_TOTAL_LENGTH = 20;
+  const {
+    module: { lengthFactor },
+  } = useModuleContent();
 
   return (
-    <ScrollModule
-      config={animationConfig}
-      style={{ height: `calc(var(--story-height) * ${MODULE_TOTAL_LENGTH})` }}
-      className={styles.kettleCountWrapper}
-    >
-      <ScrollModule.Slide className={styles.container}>
+    <ScrollModule config={animationConfig} lengthFactor={lengthFactor}>
+      <ScrollModule.StickyContainer className={styles.container}>
         <ScrollText
           text="And if you apply that increase to the entire surface of the Earth..."
           inputRange={animationConfig.scrollText1.input}
@@ -51,7 +55,7 @@ export default function KettleCount() {
           inputRange={animationConfig.scrollText4.input}
           outputRange={animationConfig.scrollText4.output}
         />
-      </ScrollModule.Slide>
+      </ScrollModule.StickyContainer>
     </ScrollModule>
   );
 }

@@ -1,32 +1,32 @@
 import {
   FunctionComponent,
+  useEffect,
+  useLayoutEffect,
   useRef,
   useState,
-  useEffect,
   useEffectEvent,
-  useLayoutEffect,
 } from "react";
-import { FormattedMessage } from "react-intl";
 import { motion, useAnimationControls } from "motion/react";
-import ReactMarkdown from "react-markdown";
-import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
-import { useScreenSize } from "../../../../../../../hooks/use-screen-size";
-import { useLenisToggle } from "../../../../../../../hooks/use-lenis-toggle";
 import cx from "classnames";
+import ReactMarkdown from "react-markdown";
+import { FormattedMessage } from "react-intl";
 
 import config from "../../../../../../../config/main";
-
-import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
-import { ScrollImage } from "../image-scroll/image-scroll-image/image-scroll-image";
-import CarouselNavigation from "./carousel-navigation/carousel-navigation";
-
+import { useScreenSize } from "../../../../../../../hooks/use-screen-size";
+import { useLenisToggle } from "../../../../../../../hooks/use-lenis-toggle";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
+import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
-import styles from "./image-carousel.module.css";
 import Button from "../../../../../../main/button/button";
 import { LinkIcon } from "../../../../../../main/icons/link-icon";
 import { ImageCarouselModule } from "../../../../../../../types/story";
 import { useAppRouteFlags } from "../../../../../../../hooks/use-app-route-flags";
+import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
+import { ScrollImage } from "../image-scroll/image-scroll-image/image-scroll-image";
+import CarouselNavigation from "./carousel-navigation/carousel-navigation";
+import ScrollModule from "../../../story-eei/modules/base-scroll/module/scroll-module";
+
+import styles from "./image-carousel.module.css";
 
 const PADDING = 24;
 const VELOCITY = 300;
@@ -34,7 +34,7 @@ const VELOCITY = 300;
 // Image carousel component for displaying a series of images with navigation controls
 const ImageCarousel: FunctionComponent = () => {
   const { module, storyId, getRefCallback } = useModuleContent();
-  const { slides } = module as ImageCarouselModule;
+  const { slides, lengthFactor } = module as ImageCarouselModule;
   const { isMobile } = useScreenSize();
   const controls = useAnimationControls();
   const { isStoryEEI } = useAppRouteFlags();
@@ -102,7 +102,7 @@ const ImageCarousel: FunctionComponent = () => {
     });
   };
 
-  return (
+  const content = (
     <SlideContainer
       ref={getRefCallback(0, 0)}
       className={cx(styles.container, !isMobile && "story-grid")}
@@ -193,6 +193,14 @@ const ImageCarousel: FunctionComponent = () => {
           )}
       </div>
     </SlideContainer>
+  );
+
+  return lengthFactor ? (
+    <ScrollModule lengthFactor={lengthFactor} config={{}}>
+      {content}
+    </ScrollModule>
+  ) : (
+    content
   );
 };
 

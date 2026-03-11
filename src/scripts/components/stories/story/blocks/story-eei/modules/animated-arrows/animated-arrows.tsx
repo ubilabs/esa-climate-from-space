@@ -2,11 +2,11 @@ import ScrollModule from "../base-scroll/module/scroll-module";
 import Arrows from "./arrows/arrows";
 import ScrollText from "../base-scroll/scroll-text/scroll-text";
 
-import styles from "./animated-arrows.module.css";
+import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 const animationConfig = {
   downArrow: {
-    input: [0.2, 0.4],
+    input: [0.15, 0.4],
     output: [100, 0],
   },
   upArrow: {
@@ -18,27 +18,25 @@ const animationConfig = {
     output: [1, 0],
   },
   scrollText1: {
-    input: [0.2, 0.25, 0.4],
-    output: ["40vh", "40vh", "-10vh"],
+    input: [0, 0.1, 0.15, 0.25],
+    output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText2: {
-    input: [0, 0.6, 0.8, 0.9, 1],
-    output: ["100vh", "100vh", "10vw", "6vw", "-50vh"],
+    input: [0, 0.6, 0.8, 0.95],
+    output: ["100%", "0%", "0%", "-100%" ],
   },
 };
 
 export type AnimatedArrowsConfig = typeof animationConfig;
 
 export default function AnimatedArrowsModule() {
-  const MODULE_TOTAL_LENGTH = 10;
+  const {
+    module: { lengthFactor },
+  } = useModuleContent();
 
   return (
-    <ScrollModule
-      config={animationConfig}
-      style={{ height: `calc(var(--story-height) * ${MODULE_TOTAL_LENGTH})` }}
-      className={styles.animatedArrowsWrapper}
-    >
-      <ScrollModule.Slide className={styles.container}>
+    <ScrollModule lengthFactor={lengthFactor} config={animationConfig}>
+      <ScrollModule.StickyContainer>
         <Arrows />
 
         <ScrollText
@@ -52,7 +50,7 @@ export default function AnimatedArrowsModule() {
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
-      </ScrollModule.Slide>
+      </ScrollModule.StickyContainer>
     </ScrollModule>
   );
 }

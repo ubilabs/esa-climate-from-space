@@ -83,7 +83,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
     <SlideContainer
       className={cx(
         styles.splashscreenContainer,
-        isLocationBased && styles.locationStory,
+        styles.locationStory,
       )}
     >
       <div
