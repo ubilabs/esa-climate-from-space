@@ -27,6 +27,7 @@ export type Story = {
 type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
 
 export interface ScrollGlobe {
+  title?: string;
   containerPosition: {
     x: number;
     y: number;
