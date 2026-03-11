@@ -24,9 +24,15 @@ export default function KettleBox() {
     config.initial.yPosition.output,
   );
 
+  const opacity = useTransform(
+    scrollYProgress,
+    config.initial.opacity.input,
+    config.initial.opacity.output,
+  );
+
   return (
     <div className={styles.boxContainer}>
-      <motion.div className={styles.box} style={{ scale, y }}>
+      <motion.div className={styles.box} style={{ scale, y, opacity }}>
         {Array.from({ length: 8 }).map((_, index) => (
           <KettleRow index={index} key={index} />
         ))}

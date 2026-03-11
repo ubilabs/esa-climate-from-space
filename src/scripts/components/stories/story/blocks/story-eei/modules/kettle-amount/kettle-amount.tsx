@@ -7,57 +7,66 @@ import KettleOverlay, {
 } from "./kettle-overlay/kettle-overlay";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+import ScrollText from "../base-scroll/scroll-text/scroll-text";
 
 const animationConfig = {
   initial: {
     scale: {
-      input: [0, 0.05, 0.1, 0.2],
-      output: [0.01, 0.05, 0.1, 1],
+      input: [0, 0.025, 0.05, 0.1, 0.6, 1],
+      output: [0.01, 0.05, 0.1, 1, 1, 0.01],
     },
     yPosition: {
-      input: [0, 0.2],
+      input: [0, 0.1],
       output: ["20%", "0%"],
     },
+    opacity: {
+      input: [0, 0.88, 1],
+      output: [1, 1, 0],
+    },
     bulbOpacity: {
-      input: [0, 0.07, 0.09, 0.12],
+      input: [0, 0.035, 0.045, 0.06],
       output: [0, 0, 0.8, 1],
     },
   },
   bulbExit: {
-    input: [0.1, 0.2],
+    input: [0.05, 0.1],
     output: ["0vh", "-100vh"],
   },
   squareMeterScale: {
-    input: [0.2, 0.3],
+    input: [0.1, 0.15],
     output: ["8", "1"],
   },
   satellite: {
     xPosition: {
-      input: [0, 0.4, 0.5, 0.9],
-      output: ["-100vw", "25vw", "25vw", "100vw"],
+      input: [0, 0.8, 1],
+      output: ["-50vw", "50vw", "200vw"],
     },
     opacity: {
-      input: [0, 0.26, 0.3, 0.65, 1],
+      input: [0, 0.13, 0.15, 0.7, 0.9],
       output: ["0", "0", "1", "1", "0"],
     },
   },
   kettleRows: {
-    rangeStart: 0.5,
-    rangeEnd: 1,
+    rangeStart: 0.25,
+    rangeEnd: 0.65,
     fadeIn: {
-      input: [0.3, 0.33],
+      input: [0.15, 0.165],
       output: [0, 1],
     },
   },
   yearSlider: {
     fadeIn: {
-      input: [0.3, 0.33],
-      output: ["0", "1"],
+      input: [0.15, 0.165, 0.5, 0.75],
+      output: ["0", "1", "1", "0"],
     },
     slide: {
-      input: [0, 0.54, 0.64],
+      input: [0, 0.27, 0.32],
       output: ["-46%", "-46%", "0%"],
     },
+  },
+  scrollText: {
+    input: [0, 0.7, 0.75, 0.85, 1],
+    output: ["100%", "100%", "30%", "30%", "-100%"],
   },
 };
 
@@ -80,19 +89,24 @@ export default function KettleAmountModule() {
       text: intl.formatMessage({ id: "story.eei.kettle.overlay2" }),
     },
     {
-      inputRange: [0.54, 0.55, 0.64, 0.65],
+      inputRange: [0.5, 0.55, 0.59, 0.62],
       text: intl.formatMessage({ id: "story.eei.kettle.overlay3" }),
     },
   ];
 
   return (
     <ScrollModule config={animationConfig} lengthFactor={lengthFactor}>
-      <ScrollModule.StickyContainer>
+      <ScrollModule.StickyContainer isGrid>
         <BulbAnimation />
         <KettleBox />
         {overlays.map((overlay, index) => (
           <KettleOverlay key={index} {...overlay} />
         ))}
+        <ScrollText
+          text="That square metre is now trapping much more heat."
+          inputRange={animationConfig.scrollText.input}
+          outputRange={animationConfig.scrollText.output}
+        />
       </ScrollModule.StickyContainer>
     </ScrollModule>
   );
