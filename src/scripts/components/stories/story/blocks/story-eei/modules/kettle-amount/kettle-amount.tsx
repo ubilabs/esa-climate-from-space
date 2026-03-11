@@ -8,56 +8,74 @@ import KettleOverlay, {
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
+import ScrollText from "../base-scroll/scroll-text/scroll-text";
+
 const animationConfig = {
   initial: {
     scale: {
-      input: [0, 0.05, 0.1, 0.2],
-      output: [0.01, 0.05, 0.1, 1],
+      input: [0, 0.1, 0.4, 0.9, 1],
+      output: [0.01, 0.1, 1, 1, 0.01],
     },
     yPosition: {
-      input: [0, 0.2],
-      output: ["20%", "0%"],
+      input: [0, 0.04, 0.1, 0.2],
+      output: ["50%", "50%", "50%", "0%"],
+    },
+    opacity: {
+      input: [0, 0.88, 1],
+      output: [1, 1, 0],
     },
     bulbOpacity: {
-      input: [0, 0.07, 0.09, 0.12],
+      input: [0, 0.045, 0.057, 0.06],
       output: [0, 0, 0.8, 1],
+    },
+    text1: {
+      input: [0, 0.05, 0.055],
+      output: [1, 0.8, 0],
+    },
+    text2: {
+      input: [0, 0.055, 0.06, 0.08, 0.1],
+      output: [0, 0, 1, 1, 0],
     },
   },
   bulbExit: {
-    input: [0.1, 0.2],
+    input: [0.1, 0.12],
     output: ["0vh", "-100vh"],
   },
   squareMeterScale: {
-    input: [0.2, 0.3],
-    output: ["8", "1"],
+    input: [0.1, 0.45, 0.5],
+    output: ["8", "8", "1"],
   },
   satellite: {
     xPosition: {
-      input: [0, 0.4, 0.5, 0.9],
-      output: ["-100vw", "25vw", "25vw", "100vw"],
+      input: [0, 0.5, 0.8, 1],
+      output: ["-100vw", "-50vw", "50vw", "200vw"],
     },
     opacity: {
-      input: [0, 0.26, 0.3, 0.65, 1],
+      input: [0, 0.4, 0.45, 0.7, 0.9],
       output: ["0", "0", "1", "1", "0"],
     },
   },
   kettleRows: {
-    rangeStart: 0.5,
-    rangeEnd: 1,
+    rangeStart: 0.7,
+    rangeEnd: 0.84,
     fadeIn: {
-      input: [0.3, 0.33],
+      input: [0.45, 0.55],
       output: [0, 1],
     },
   },
   yearSlider: {
     fadeIn: {
-      input: [0.3, 0.33],
-      output: ["0", "1"],
+      input: [0.4, 0.5, 0.7, 0.75],
+      output: ["0", "1", "1", "0"],
     },
     slide: {
-      input: [0, 0.54, 0.64],
+      input: [0, 0.7, 0.8],
       output: ["-46%", "-46%", "0%"],
     },
+  },
+  scrollText: {
+    input: [0, 0.9, 0.92, 0.96, 1],
+    output: ["100%", "100%", "30%", "0%", "-100%"],
   },
 };
 
@@ -72,27 +90,32 @@ export default function KettleAmountModule() {
 
   const overlays: Array<KettleOverlayProps> = [
     {
-      inputRange: [0.33, 0.35, 0.38, 0.4],
+      inputRange: [0.5, 0.54, 0.58, 0.6],
       text: intl.formatMessage({ id: "story.eei.kettle.overlay1" }),
     },
     {
-      inputRange: [0.4, 0.42, 0.48, 0.5],
+      inputRange: [0.6, 0.62, 0.66, 0.7],
       text: intl.formatMessage({ id: "story.eei.kettle.overlay2" }),
     },
     {
-      inputRange: [0.54, 0.55, 0.64, 0.65],
+      inputRange: [0.8, 0.82, 0.86, 0.9],
       text: intl.formatMessage({ id: "story.eei.kettle.overlay3" }),
     },
   ];
 
   return (
     <ScrollModule config={animationConfig} lengthFactor={lengthFactor}>
-      <ScrollModule.StickyContainer>
+      <ScrollModule.StickyContainer isGrid>
         <BulbAnimation />
         <KettleBox />
         {overlays.map((overlay, index) => (
           <KettleOverlay key={index} {...overlay} />
         ))}
+        <ScrollText
+          text="That square metre is now trapping much more heat."
+          inputRange={animationConfig.scrollText.input}
+          outputRange={animationConfig.scrollText.output}
+        />
       </ScrollModule.StickyContainer>
     </ScrollModule>
   );

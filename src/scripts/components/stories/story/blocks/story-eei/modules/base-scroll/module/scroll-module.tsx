@@ -6,8 +6,9 @@ import {
   useRef,
 } from "react";
 
-import { StorySectionProps } from "../../../../../../../../types/story";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
+
+import { StorySectionProps } from "../../../../../../../../types/story";
 import { ScrollModuleContext } from "../use-scroll-module";
 
 import cx from "classnames";
@@ -27,10 +28,14 @@ type Props<TConfig = unknown> = PropsWithChildren<
 const StickyContainer = ({
   children,
   className,
+  isGrid = false,
   ...rest
-}: PropsWithChildren<StorySectionProps>) => {
+}: PropsWithChildren<StorySectionProps & { isGrid?: boolean }>) => {
   return (
-    <div className={cx(styles.sticky, className)} {...rest}>
+    <div
+      className={cx(styles.sticky, isGrid && styles.grid, className)}
+      {...rest}
+    >
       {children}
     </div>
   );

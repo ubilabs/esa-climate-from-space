@@ -39,6 +39,10 @@ export interface ScrollGlobe {
   };
 }
 
+export interface GlobeKeyframe extends ScrollGlobe {
+  progress: number; // 0 to 1, relative to the module
+}
+
 export type Location = ScrollGlobe["location"];
 
 export type ScrollGlobeValues = ScrollGlobe["location"] &
@@ -57,7 +61,7 @@ export type Splashscreen = {
   title?: string;
   focus?: ImageFocus;
   subtitle?: string;
-  globe?: ScrollGlobe;
+  globeKeyframes?: GlobeKeyframe[];
   lengthFactor?: number;
   type?: string;
 };
@@ -123,7 +127,7 @@ export type TreeMapModule = {
 };
 
 export type StoryEEIModule = Pick<BaseModule, "text"> & {
-  globe?: ScrollGlobe;
+  globeKeyframes?: GlobeKeyframe[];
   lengthFactor: number;
 } & (
     | { type: "kettleCount" }
