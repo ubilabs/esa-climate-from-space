@@ -1,20 +1,16 @@
 import {
   FunctionComponent,
   useEffect,
-  useLayoutEffect,
   useRef,
   useState,
   useEffectEvent,
 } from "react";
 import { motion, useAnimationControls } from "motion/react";
 import cx from "classnames";
-import ReactMarkdown from "react-markdown";
 import { FormattedMessage } from "react-intl";
 
-import config from "../../../../../../../config/main";
 import { useScreenSize } from "../../../../../../../hooks/use-screen-size";
 import { useLenisToggle } from "../../../../../../../hooks/use-lenis-toggle";
-import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 import Button from "../../../../../../main/button/button";
@@ -22,8 +18,8 @@ import { LinkIcon } from "../../../../../../main/icons/link-icon";
 import { ImageCarouselModule } from "../../../../../../../types/story";
 import { useAppRouteFlags } from "../../../../../../../hooks/use-app-route-flags";
 import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
-import { ScrollImage } from "../image-scroll/image-scroll-image/image-scroll-image";
 import CarouselNavigation from "./carousel-navigation/carousel-navigation";
+import CarouselSlide from "./carousel-slide/carousel-slide";
 import ScrollModule from "../../../story-eei/modules/base-scroll/module/scroll-module";
 
 import styles from "./image-carousel.module.css";
@@ -40,8 +36,6 @@ const ImageCarousel: FunctionComponent = () => {
   const { isStoryEEI } = useAppRouteFlags();
 
   const slidesContainerRef = useRef<HTMLDivElement>(null);
-  const slideRef = useRef<HTMLDivElement>(null);
-  const slideTextRef = useRef<HTMLDivElement>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [slideWidth, setSlideWidth] = useState(0);
   const [fullscreenSlideIndex, setFullscreenSlideIndex] = useState<
@@ -49,22 +43,9 @@ const ImageCarousel: FunctionComponent = () => {
   >();
   const [isSlideTouched, setIsSlideTouched] = useState(false);
   const [isNavigationVisible, setIsNavigationVisible] = useState(true);
-  const [isSlideImageClickable, setIsSlideImageClickable] = useState(false);
   const isFullscreen = fullscreenSlideIndex !== undefined;
 
   useLenisToggle(isSlideTouched);
-
-  useLayoutEffect(() => {
-    if (!slideRef.current) return;
-    setSlideWidth(slideRef.current.offsetWidth);
-  }, []);
-
-  const toggleSlideImageClickability = useEffectEvent(() =>
-    // Make slide image clickable if the slide text contains a link
-    setIsSlideImageClickable(Boolean(slideTextRef.current?.querySelector("a"))),
-  );
-
-  useEffect(() => toggleSlideImageClickability(), [slideTextRef]);
 
   const step = slideWidth + PADDING;
 
@@ -112,12 +93,6 @@ const ImageCarousel: FunctionComponent = () => {
     });
   };
 
-  const handleSlideImageClick = () => {
-    // Forward click on image to the text if it contains a link, to make clicking
-    // slide image have the same behavior as clicking the text below it
-    slideTextRef.current?.querySelector("a")?.click();
-  };
-
   const content = (
     <SlideContainer
       ref={getRefCallback(0, 0)}
@@ -151,57 +126,18 @@ const ImageCarousel: FunctionComponent = () => {
               snapToIndex(currentSlideIndex + direction);
             }}
           >
-            {slides.map(({ url, altText, text }, i) => (
-              <div
-                key={url || i}
-                ref={i === 0 ? slideRef : null}
-                onTouchStart={() => setIsSlideTouched(true)}
-                onTouchEnd={() => setIsSlideTouched(false)}
-                className={styles.slide}
-                style={
-                  isFullscreen && fullscreenSlideIndex !== i
-                    ? { display: "none" }
-                    : undefined
-                }
-              >
-                <div
-                  className={styles.imageContainer}
-                  onClick={handleSlideImageClick}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      handleSlideImageClick();
-                    }
-                  }}
-                  role="button"
-                  tabIndex={0}
-                >
-                  {isSlideImageClickable ? (
-                    <img
-                      className={styles.image}
-                      src={getStoryAssetUrl(storyId, url)}
-                      style={{ cursor: "pointer" }}
-                      alt={altText}
-                    />
-                  ) : (
-                    <ScrollImage
-                      className={styles.image}
-                      src={getStoryAssetUrl(storyId, url)}
-                      alt={altText}
-                      onFullscreenToggle={(isFullscreen) =>
-                        setFullscreenSlideIndex(isFullscreen ? i : undefined)
-                      }
-                    />
-                  )}
-                </div>
-                {text && !isFullscreen && (
-                  <div className={styles.text} ref={slideTextRef}>
-                    <ReactMarkdown
-                      children={text}
-                      allowedElements={config.markdownAllowedElements}
-                    />
-                  </div>
-                )}
-              </div>
+            {slides.map((slide, index) => (
+              <CarouselSlide
+                key={slide.url || index}
+                slide={slide}
+                index={index}
+                isFullscreen={isFullscreen}
+                fullscreenSlideIndex={fullscreenSlideIndex}
+                onWidthChange={setSlideWidth}
+                storyId={storyId}
+                setIsSlideTouched={setIsSlideTouched}
+                setFullscreenSlideIndex={setFullscreenSlideIndex}
+              />
             ))}
           </motion.div>
         </div>
