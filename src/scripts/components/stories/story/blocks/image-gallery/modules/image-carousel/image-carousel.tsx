@@ -156,6 +156,7 @@ const ImageCarousel: FunctionComponent = () => {
               <Button
                 className={styles.readMoreButton}
                 link={module.readMore.url}
+                isExternalLink
               >
                 <span>{module.readMore.title}</span>
                 <LinkIcon />

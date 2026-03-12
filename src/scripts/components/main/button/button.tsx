@@ -17,6 +17,7 @@ interface Props {
   ariaLabel?: string;
   replace?: boolean;
   state?: Record<string, string>;
+  isExternalLink?: boolean;
 }
 
 const Button: FunctionComponent<PropsWithChildren<Props>> = ({
@@ -32,6 +33,7 @@ const Button: FunctionComponent<PropsWithChildren<Props>> = ({
   children,
   replace,
   state,
+  isExternalLink = false,
 }) => {
   const classes = cx(
     styles.button,
@@ -41,8 +43,6 @@ const Button: FunctionComponent<PropsWithChildren<Props>> = ({
   );
 
   const { formatMessage } = useIntl();
-
-  const isExternalLink = link?.toLowerCase().startsWith("http");
 
   return link ? (
     <Link
