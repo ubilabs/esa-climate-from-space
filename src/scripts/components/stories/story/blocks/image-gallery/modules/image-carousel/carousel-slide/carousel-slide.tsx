@@ -86,10 +86,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = ({
       }
     >
       <div
-        className={cx(
-          styles.imageContainer,
-          isStoryEEI && styles.eeiImageContainer,
-        )}
+        className={cx(styles.imageContainer)}
         onClick={handleSlideImageClick}
         onKeyDown={(event) => {
           if (event.key === "Enter" || event.key === " ") {
@@ -118,10 +115,7 @@ const CarouselSlide: React.FC<CarouselSlideProps> = ({
         )}
       </div>
       {text && !isFullscreen && (
-        <div
-          className={cx(styles.text, isStoryEEI && styles.eeiText)}
-          ref={slideTextRef}
-        >
+        <div className={cx(styles.text)} ref={slideTextRef}>
           <ReactMarkdown
             children={text}
             allowedElements={config.markdownAllowedElements}

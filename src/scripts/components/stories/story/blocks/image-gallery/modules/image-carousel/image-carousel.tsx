@@ -96,9 +96,9 @@ const ImageCarousel: FunctionComponent = () => {
   const content = (
     <SlideContainer
       ref={getRefCallback(0, 0)}
-      className={cx(styles.container, !isMobile && "story-grid")}
+      className={cx(styles.container, !isMobile && !isStoryEEI && "story-grid")}
     >
-      <div className={cx(styles.wrapper, isStoryEEI && styles.eeiWrapper)}>
+      <div className={cx(styles.wrapper)}>
         {"headerText" in module && module.headerText && (
           <h1>{module.headerText}</h1>
         )}
