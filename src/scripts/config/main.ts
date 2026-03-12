@@ -233,6 +233,7 @@ export default {
     // Gentle mouse wheel for story reading
     wheelMultiplier: 0.8,
     touchMultiplier: 0.8,
+    smoothTouch: true,
     smoothWheel: true,
 
     // Modern iOS touch sync
