@@ -13,6 +13,7 @@ import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 import { useStory } from "../../../../../providers/story/use-story";
 
 import { TextWrapper } from "../generic/text-container/text-wrapper";
+import SplashscreenEei from "./splashscreen-eei";
 import { StorySectionProps } from "../../../../../types/story";
 
 import { SlideContainer } from "../../../layout/slide-container/slide-container";
@@ -79,12 +80,14 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
 
   const { id } = story;
 
+  // render SplashScreen for story-eei
+  if (id === "story-eei") {
+    return <SplashscreenEei />;
+  }
+
   return (
     <SlideContainer
-      className={cx(
-        styles.splashscreenContainer,
-        styles.locationStory,
-      )}
+      className={cx(styles.splashscreenContainer, styles.locationStory)}
     >
       <div
         style={{
