@@ -42,6 +42,8 @@ const Button: FunctionComponent<PropsWithChildren<Props>> = ({
 
   const { formatMessage } = useIntl();
 
+  const isExternalLink = link?.toLowerCase().startsWith("http");
+
   return link ? (
     <Link
       onClick={(event) => disabled && event.preventDefault()}
@@ -50,6 +52,8 @@ const Button: FunctionComponent<PropsWithChildren<Props>> = ({
       to={link}
       state={state}
       replace={replace}
+      target={isExternalLink ? "_blank" : undefined}
+      rel={isExternalLink ? "noopener noreferrer" : undefined}
       aria-label={ariaLabel && formatMessage({ id: ariaLabel })}
     >
       {Icon && <Icon />}
