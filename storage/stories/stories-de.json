@@ -3,6 +3,7 @@
     "id": "story-eei",
     "title": "Earth Energy Imbalance",
     "description": "",
+    "image": "",
     "tags": [],
     "position": [],
     "categories": ["improving_models"]
@@ -280,8 +281,8 @@
     "tags": [],
     "position": [],
     "categories": ["land", "carbon_cycle"]
-  }
-,{
+  },
+  {
     "id": "story-46",
     "title": "Tipping Points",
     "description": "",
