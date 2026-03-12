@@ -36,7 +36,7 @@ export default function BulbAnimation() {
           <StoryEEIBulb isGlowing={false} />
         </motion.span>
       </div>
-      <div>
+      <div className={styles.textContainer}>
         <motion.span
           className={styles.bulbInfo}
           style={{

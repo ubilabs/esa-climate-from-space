@@ -232,7 +232,7 @@ export default {
   lenisOptions: {
     // Gentle mouse wheel for story reading
     wheelMultiplier: 0.8,
-    touchMultiplier: 0.8,
+    touchMultiplier: 1,
     smoothTouch: true,
     smoothWheel: true,
 
