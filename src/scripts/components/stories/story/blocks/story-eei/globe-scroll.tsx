@@ -6,6 +6,7 @@ import {
   useMotionValueEvent,
   useTransform,
 } from "motion/react";
+import { useScreenSize } from "../../../../../hooks/use-screen-size";
 
 import { quantize } from "../../../../../libs/quantize";
 import { setFlyTo } from "../../../../../reducers/fly-to";
@@ -16,7 +17,6 @@ import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
 import {
   GlobeKeyframe,
   Location,
-  ScrollGlobe,
   ScrollGlobeValues,
 } from "../../../../../types/story";
 
@@ -45,20 +45,27 @@ const getDefaultLengthFactor = (): number => {
 };
 
 interface Props {
-  initialGlobeConfiguration: ScrollGlobe | undefined;
+  initialGlobeConfiguration: Omit<GlobeKeyframe, "progress"> | undefined;
 }
 
 const GlobeScroll: FunctionComponent<Props> = ({
   initialGlobeConfiguration,
 }) => {
+  const { isDesktop } = useScreenSize();
   const { story } = useStory();
   const modules = story?.modules ?? [];
   const splashscreen = story?.splashscreen;
 
   const dispatch = useDispatch();
 
-  const initialGlobe = initialGlobeConfiguration?.location;
-  const initialContainerPosition = initialGlobeConfiguration?.containerPosition;
+  const screenSizeSpecificInitialGlobe = isDesktop
+    ? // Fallback to mobile configuration if desktop configuration is missing, otherwise use desktop configuration
+      (initialGlobeConfiguration?.desktop ?? initialGlobeConfiguration?.mobile)
+    : initialGlobeConfiguration?.mobile;
+
+  const initialGlobe = screenSizeSpecificInitialGlobe?.location;
+  const initialContainerPosition =
+    screenSizeSpecificInitialGlobe?.containerPosition;
 
   const { scrollYProgress } = useStoryScroll({});
 
@@ -148,9 +155,14 @@ const GlobeScroll: FunctionComponent<Props> = ({
 
       // For each keyframe, add its location and containerPosition values
       keyframes.forEach((frame) => {
+        const screenSizeSpecificFrame = isDesktop
+          ? // Fallback to mobile frame if desktop frame is missing and we're on desktop
+            (frame.desktop ?? frame.mobile)
+          : frame.mobile;
+
         const globeOrContainerValue = {
-          ...frame.location,
-          ...frame.containerPosition,
+          ...screenSizeSpecificFrame.location,
+          ...screenSizeSpecificFrame.containerPosition,
         };
 
         for (const [key, value] of Object.entries(acc)) {

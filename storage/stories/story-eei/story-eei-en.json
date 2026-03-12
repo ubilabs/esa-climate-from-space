@@ -1,11 +1,16 @@
 {
   "id": "story-eei",
   "initialglobeConfig": {
-    "containerPosition": { "x": 0, "y": -1 },
-    "location": {
-      "lat": 51.5074,
-      "lng": -0.1278,
-      "altitude": 18040000
+    "mobile": {
+      "containerPosition": {
+        "x": 0,
+        "y": -1
+      },
+      "location": {
+        "lat": 51.5074,
+        "lng": -0.1278,
+        "altitude": 18040000
+      }
     }
   },
   "splashscreen": {
@@ -15,11 +20,16 @@
     "globeKeyframes": [
       {
         "progress": 1,
-        "containerPosition": { "x": 0, "y": -1 },
-        "location": {
-          "lat": 51.5074,
-          "lng": -0.1278,
-          "altitude": 18040000
+        "mobile": {
+          "containerPosition": {
+            "x": 0,
+            "y": -1
+          },
+          "location": {
+            "lat": 51.5074,
+            "lng": -0.1278,
+            "altitude": 18040000
+          }
         }
       }
     ],
@@ -30,65 +40,100 @@
       "globeKeyframes": [
         {
           "progress": 0,
-          "containerPosition": { "x": 0, "y": -1 },
-          "location": {
-            "lat": 51.5074,
-            "lng": -0.1278,
-            "altitude": 18040000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": -1
+            },
+            "location": {
+              "lat": 51.5074,
+              "lng": -0.1278,
+              "altitude": 18040000
+            }
           }
         },
         {
           "progress": 0.3,
-          "containerPosition": { "x": 0, "y": -0.5 },
-          "location": {
-            "lat": 51.5074,
-            "lng": -0.1278,
-            "altitude": 18040000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": -0.5
+            },
+            "location": {
+              "lat": 51.5074,
+              "lng": -0.1278,
+              "altitude": 18040000
+            }
           }
         },
         {
           "progress": 0.5,
-          "containerPosition": { "x": 0, "y": -0.5 },
-          "location": {
-            "lat": 51.5074,
-            "lng": -0.1278,
-            "altitude": 18040000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": -0.5
+            },
+            "location": {
+              "lat": 51.5074,
+              "lng": -0.1278,
+              "altitude": 18040000
+            }
           }
         },
         {
           "progress": 0.7,
-          "containerPosition": { "x": 0, "y": 0 },
-          "location": {
-            "lat": 51.5074,
-            "lng": -0.1278,
-            "altitude": 18040000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 51.5074,
+              "lng": -0.1278,
+              "altitude": 18040000
+            }
           }
         },
         {
           "progress": 0.8,
-          "containerPosition": { "x": 0, "y": 0 },
-          "location": {
-            "lat": 51.5074,
-            "lng": -35.1278,
-            "altitude": 12040000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 51.5074,
+              "lng": -35.1278,
+              "altitude": 12040000
+            }
           }
         },
         {
           "progress": 0.9,
-          "containerPosition": { "x": 0, "y": 0 },
-          "location": {
-            "lat": 51.5074,
-            "lng": -35.1278,
-            "altitude": 8040000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 51.5074,
+              "lng": -35.1278,
+              "altitude": 8040000
+            }
           }
         },
         {
           "progress": 1,
-          "containerPosition": { "x": 0, "y": 0 },
-          "location": {
-            "lat": 51.5074,
-            "lng": -35.1278,
-            "altitude": 80000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 51.5074,
+              "lng": -35.1278,
+              "altitude": 80000
+            }
           }
         }
       ],
@@ -99,29 +144,44 @@
       "globeKeyframes": [
         {
           "progress": 0,
-          "containerPosition": { "x": 0, "y": 0 },
-          "location": {
-            "lat": 51.5074,
-            "lng": -35.1278,
-            "altitude": 80000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 51.5074,
+              "lng": -35.1278,
+              "altitude": 80000
+            }
           }
         },
         {
           "progress": 0.9,
-          "containerPosition": { "x": 0, "y": 0 },
-          "location": {
-            "lat": 51.5074,
-            "lng": -35.1278,
-            "altitude": 80000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 51.5074,
+              "lng": -35.1278,
+              "altitude": 80000
+            }
           }
         },
         {
           "progress": 1,
-          "containerPosition": { "x": 0, "y": 0 },
-          "location": {
-            "lat": 48.5074,
-            "lng": -25.1278,
-            "altitude": 4000000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 48.5074,
+              "lng": -25.1278,
+              "altitude": 4000000
+            }
           }
         }
       ],
@@ -132,20 +192,30 @@
       "globeKeyframes": [
         {
           "progress": 0.2,
-          "containerPosition": { "x": 0, "y": 0 },
-          "location": {
-            "lat": 45.5074,
-            "lng": -25.1278,
-            "altitude": 4000000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 45.5074,
+              "lng": -25.1278,
+              "altitude": 4000000
+            }
           }
         },
         {
           "progress": 1,
-          "containerPosition": { "x": 0, "y": 0 },
-          "location": {
-            "lat": 25.5074,
-            "lng": -0.1278,
-            "altitude": 20000000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 25.5074,
+              "lng": -0.1278,
+              "altitude": 20000000
+            }
           }
         }
       ],
@@ -156,29 +226,116 @@
       "globeKeyframes": [
         {
           "progress": 0,
-          "containerPosition": { "x": 0, "y": 0 },
-          "location": {
-            "lat": 25.5074,
-            "lng": -0.1278,
-            "altitude": 20000000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 25.5074,
+              "lng": -0.1278,
+              "altitude": 20000000
+            }
           }
         },
         {
           "progress": 0.1,
-          "containerPosition": { "x": -0.25, "y": 0 },
-          "location": {
-            "lat": 25.5074,
-            "lng": -0.1278,
-            "altitude": 20000000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0.25
+            },
+            "location": {
+              "lat": 1.816919,
+              "lng": -24.726276,
+              "altitude": 48000000
+            }
+          },
+          "desktop": {
+            "containerPosition": {
+              "x": -0.25,
+              "y": -0.03
+            },
+            "location": {
+              "lat": 1.816919,
+              "lng": -24.726276,
+              "altitude": 37000000
+            }
+          }
+        },
+        {
+          "progress": 0.5,
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0.25
+            },
+            "location": {
+              "lat": 1.816919,
+              "lng": -24.726276,
+              "altitude": 48000000
+            }
+          },
+          "desktop": {
+            "containerPosition": {
+              "x": -0.25,
+              "y": -0.03
+            },
+            "location": {
+              "lat": 1.816919,
+              "lng": -24.726276,
+              "altitude": 37000000
+            }
+          }
+        },
+        {
+          "progress": 0.6,
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0.25
+            },
+            "location": {
+              "lat": -35.26634,
+              "lng": -14.363042,
+              "altitude": 48000000
+            }
+          },
+          "desktop": {
+            "containerPosition": {
+              "x": -0.25,
+              "y": -0.03
+            },
+            "location": {
+              "lat": -35.26634,
+              "lng": -14.363042,
+              "altitude": 37000000
+            }
           }
         },
         {
           "progress": 1,
-          "containerPosition": { "x": -0.25, "y": 0 },
-          "location": {
-            "lat": 25.5074,
-            "lng": -0.1278,
-            "altitude": 20000000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0.25
+            },
+            "location": {
+              "lat": -35.26634,
+              "lng": -14.363042,
+              "altitude": 48000000
+            }
+          },
+          "desktop": {
+            "containerPosition": {
+              "x": -0.25,
+              "y": -0.03
+            },
+            "location": {
+              "lat": -35.26634,
+              "lng": -14.363042,
+              "altitude": 37000000
+            }
           }
         }
       ],
@@ -187,35 +344,71 @@
       "grid": {
         "title": "Energy absorption",
         "data": [
-          { "label": "Ocean", "layerId": "eei_water_mask", "percentage": 91 },
-          { "label": "Land", "layerId": "eei_land_mask", "percentage": 5 },
-          { "label": "Ice", "layerId": "eei_ice_mask", "percentage": 3 },
+          {
+            "label": "Ocean",
+            "layerId": "eei_water_mask",
+            "percentage": 91
+          },
+          {
+            "label": "Land",
+            "layerId": "eei_land_mask",
+            "percentage": 5
+          },
+          {
+            "label": "Ice",
+            "layerId": "eei_ice_mask",
+            "percentage": 3
+          },
           {
             "label": "Atmosphere",
             "layerId": "eei_atmosphere_mask",
             "percentage": 1
           }
         ]
+      },
+      "globe": {
+        "title": "Surface area"
       }
     },
     {
       "globeKeyframes": [
         {
           "progress": 0.2,
-          "containerPosition": { "x": 0, "y": 0 },
-          "location": {
-            "lat": -33.8688,
-            "lng": 151.2093,
-            "altitude": 20000000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0.25
+            },
+            "location": {
+              "lat": -33.8688,
+              "lng": 151.2093,
+              "altitude": 20000000
+            }
+          },
+          "desktop": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": -33.8688,
+              "lng": 151.2093,
+              "altitude": 20000000
+            }
           }
         },
         {
           "progress": 1,
-          "containerPosition": { "x": 0, "y": 1 },
-          "location": {
-            "lat": -33.8688,
-            "lng": 151.2093,
-            "altitude": 20000000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 1
+            },
+            "location": {
+              "lat": -33.8688,
+              "lng": 151.2093,
+              "altitude": 20000000
+            }
           }
         }
       ],
@@ -230,20 +423,30 @@
       "globeKeyframes": [
         {
           "progress": 0,
-          "containerPosition": { "x": 0, "y": 1 },
-          "location": {
-            "lat": -33.8688,
-            "lng": 151.2093,
-            "altitude": 216500000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 1
+            },
+            "location": {
+              "lat": -33.8688,
+              "lng": 151.2093,
+              "altitude": 216500000
+            }
           }
         },
         {
           "progress": 1,
-          "containerPosition": { "x": 0, "y": 1 },
-          "location": {
-            "lat": -33.8688,
-            "lng": 151.2093,
-            "altitude": 216500000
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 1
+            },
+            "location": {
+              "lat": -33.8688,
+              "lng": 151.2093,
+              "altitude": 216500000
+            }
           }
         }
       ],

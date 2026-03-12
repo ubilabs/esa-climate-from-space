@@ -21,7 +21,7 @@ export type Story = {
   splashscreen: Splashscreen;
   modules: Module[];
   // special property for StoryEEI
-  initialglobeConfig?: ScrollGlobe;
+  initialGlobeConfig?: ScrollGlobe;
 };
 
 type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
@@ -39,8 +39,10 @@ export interface ScrollGlobe {
   };
 }
 
-export interface GlobeKeyframe extends ScrollGlobe {
+export interface GlobeKeyframe {
   progress: number; // 0 to 1, relative to the module
+  mobile: ScrollGlobe;
+  desktop?: ScrollGlobe;
 }
 
 export type Location = ScrollGlobe["location"];
@@ -123,6 +125,9 @@ export type TreeMapModule = {
       layerId: string;
       percentage: number;
     }[];
+  };
+  globe: {
+    title: string;
   };
 };
 
