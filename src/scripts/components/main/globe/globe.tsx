@@ -93,6 +93,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     view,
     projectionState,
     layerDetails,
+    spinning,
     imageLayer,
     markers,
     backgroundColor,
@@ -110,6 +111,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
 
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
+  useGlobeSpin(globe, spinning);
 
   useProjectionSwitch(globe, projectionState.projection);
   useGlobeRenderOptions(globe, renderOptions);
@@ -412,6 +414,19 @@ function useLayerLoadingStateUpdater(
 
     return () => globe.removeEventListener("layerLoadingStateChanged", handler);
   }, [globe, handler]);
+}
+
+/*
+ * Start or stop the globe auto-spin based on the spinning prop.
+ */
+function useGlobeSpin(globe: WebGlGlobe | null, spinning: boolean) {
+  useEffect(() => {
+    if (spinning) {
+      globe?.startAutoSpin();
+    } else {
+      globe?.stopAutoSpin();
+    }
+  }, [spinning, globe]);
 }
 
 // ----
