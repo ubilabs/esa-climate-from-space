@@ -1,4 +1,5 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect } from "react";
+import { frame, cancelFrame } from "motion/react";
 
 import Lenis from "lenis";
 import Snap from "lenis/snap";
@@ -17,25 +18,7 @@ export function useLenisForStory() {
     useStory();
   const { isStoryEEI } = useAppRouteFlags();
 
-  // stable raf loop
-  const rafRef = useRef<number | null>(null);
-
   const { screenHeight } = useScreenSize();
-
-  const startRaf = useCallback(() => {
-    const raf = (time: number) => {
-      lenisRef.current?.raf(time);
-      rafRef.current = requestAnimationFrame(raf);
-    };
-    rafRef.current = requestAnimationFrame(raf);
-  }, [lenisRef]);
-
-  const stopRaf = useCallback(() => {
-    if (rafRef.current != null) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-  }, []);
 
   // Any scrolling should be handled by lenis, so we disable the browser's native scroll restoration
   useEffect(() => {
@@ -45,6 +28,7 @@ export function useLenisForStory() {
     }
   }, []);
 
+  // Initialize Lenis and integrate with Framer Motion's RAF loop
   useEffect(() => {
     if (!storyElementRef.current || !story) return;
 
@@ -57,7 +41,14 @@ export function useLenisForStory() {
     });
 
     lenisRef.current = lenis;
-    startRaf();
+
+    // Integrate Lenis with Framer Motion's RAF loop
+    // This ensures perfect sync between Lenis smooth scrolling and Framer Motion animations
+    function update(data: { timestamp: number }) {
+      lenis.raf(data.timestamp);
+    }
+
+    frame.update(update, true);
 
     // We want to snap anchor elements into place when scrolling
     // To exclude an element from snapping, add the data-no-snap attribute to it
@@ -87,7 +78,7 @@ export function useLenisForStory() {
     });
 
     return () => {
-      stopRaf();
+      cancelFrame(update);
       lenis.destroy();
       lenisRef.current = null;
     };
@@ -98,7 +89,5 @@ export function useLenisForStory() {
     storyElementRef,
     story,
     lenisRef,
-    startRaf,
-    stopRaf,
   ]);
 }
