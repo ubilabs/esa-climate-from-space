@@ -33,7 +33,7 @@ import styles from "./content-navigation.module.css";
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
 ): obj is StoryListItem {
-  return obj.id.startsWith("story-");
+  return obj && obj.id.startsWith("story-");
 }
 
 interface Props {
