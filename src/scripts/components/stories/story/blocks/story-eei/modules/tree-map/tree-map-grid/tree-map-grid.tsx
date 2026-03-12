@@ -12,6 +12,7 @@ import { useScrollModule } from "../../base-scroll/use-scroll-module";
 
 import { setSelectedLayerIds } from "../../../../../../../../reducers/layers";
 import { setGlobeRenderOptions } from "../../../../../../../../reducers/globe/render-options";
+import { setGlobeSpinning } from "../../../../../../../../reducers/globe/spinning";
 
 import { TreeMapModule } from "../../../../../../../../types/story";
 
@@ -41,9 +42,10 @@ export default function TreeMapGrid({
     // after scrolling one full screen
     const decreasedProgress = progress - 1 / (data.length + 1);
 
-    // Reset to no mask layer when reaching the top or bottom of the scroll
+    // Reset to no mask layer and stop spinning when reaching the top or bottom of the scroll
     if (decreasedProgress <= 0 || progress >= 1) {
       setSelectedLayerId(Layers.EEI_NO_MASK);
+      dispatch(setGlobeSpinning(false));
       return;
     }
 
@@ -61,6 +63,7 @@ export default function TreeMapGrid({
     const { layerId } = data[index];
 
     if (layerId !== selectedLayerId) {
+      dispatch(setGlobeSpinning(true));
       setSelectedLayerId(layerId);
     }
   });
