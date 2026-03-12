@@ -41,8 +41,8 @@ export interface ScrollGlobe {
 
 export interface GlobeKeyframe {
   progress: number; // 0 to 1, relative to the module
-  desktop: ScrollGlobe;
-  mobile?: ScrollGlobe;
+  mobile: ScrollGlobe;
+  desktop?: ScrollGlobe;
 }
 
 export type Location = ScrollGlobe["location"];

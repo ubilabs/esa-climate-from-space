@@ -59,9 +59,9 @@ const GlobeScroll: FunctionComponent<Props> = ({
   const dispatch = useDispatch();
 
   const screenSizeSpecificInitialGlobe = isDesktop
-    ? initialGlobeConfiguration?.desktop
-    : // Fallback to desktop configuration if mobile configuration is missing, otherwise use mobile configuration
-      (initialGlobeConfiguration?.mobile ?? initialGlobeConfiguration?.desktop);
+    ? // Fallback to mobile configuration if desktop configuration is missing, otherwise use desktop configuration
+      (initialGlobeConfiguration?.desktop ?? initialGlobeConfiguration?.mobile)
+    : initialGlobeConfiguration?.mobile;
 
   const initialGlobe = screenSizeSpecificInitialGlobe?.location;
   const initialContainerPosition =
@@ -156,9 +156,9 @@ const GlobeScroll: FunctionComponent<Props> = ({
       // For each keyframe, add its location and containerPosition values
       keyframes.forEach((frame) => {
         const screenSizeSpecificFrame = isDesktop
-          ? frame.desktop
-          : // Fallback to desktop frame if mobile frame is missing and we're on mobile
-            (frame.mobile ?? frame.desktop);
+          ? // Fallback to mobile frame if desktop frame is missing and we're on desktop
+            (frame.desktop ?? frame.mobile)
+          : frame.mobile;
 
         const globeOrContainerValue = {
           ...screenSizeSpecificFrame.location,
