@@ -233,10 +233,13 @@ export default {
     // Gentle mouse wheel for story reading
     wheelMultiplier: 0.8,
     touchMultiplier: 0.8,
-    // Desktop smoothing
     smoothWheel: true,
+
     // Modern iOS touch sync
     syncTouch: !isIos16orLower(),
+
+    // Disable autoRaf -use Framer Motion's RAF loop for sync
+    autoRaf: false,
   } as LenisOptions,
   matomoUrl: "https://matomo-ext.esa.int",
 };
