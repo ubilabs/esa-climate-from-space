@@ -92,7 +92,7 @@
           }
         }
       ],
-      "lengthFactor": 26,
+      "lengthFactor": 12,
       "type": "animatedArrowsModule"
     },
     {
@@ -125,7 +125,7 @@
           }
         }
       ],
-      "lengthFactor": 40,
+      "lengthFactor": 20,
       "type": "kettleAmountModule"
     },
     {
@@ -149,7 +149,7 @@
           }
         }
       ],
-      "lengthFactor": 30,
+      "lengthFactor": 16,
       "type": "kettleCount"
     },
     {
@@ -182,7 +182,7 @@
           }
         }
       ],
-      "lengthFactor": 25,
+      "lengthFactor": 12,
       "type": "treeMapModule",
       "grid": {
         "title": "Energy absorption",
