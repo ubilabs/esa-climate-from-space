@@ -24,7 +24,6 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
           "caption": "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
           "url": "assets/story15_01.jpg",
           "altText": "some alt text"
@@ -66,6 +65,15 @@
       ]
     },
     {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "## New Trade Routes",
+          "url": "assets/seaice.jpg"
+        }
+      ]
+    },
+    {
       "type": "textBodyLarge",
       "slides": [
         {
@@ -77,7 +85,6 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
           "caption": "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
           "url": "assets/story15_02.jpg",
           "focus": "left"
@@ -109,6 +116,15 @@
       ]
     },
     {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "## Seasonal Cycle, Long-Term Trends",
+          "url": "assets/seaice.jpg"
+        }
+      ]
+    },
+    {
       "type": "textBodyLarge",
       "slides": [
         {
@@ -117,21 +133,10 @@
       ]
     },
     {
-      "type": "imageScroll",
-      "slides": [
-        {
-          "text": "# CCI Sea Ice Concentration",
-          "caption": "# CCI Sea Ice Concentration",
-          "url": "assets/story15_03.jpg",
-          "focus": "right"
-        }
-      ]
-    },
-    {
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "You can see the annual expansion and contraction of the frozen sea surface by scrubbing through the timeline of the interactive globe. Compare the annual minimum ice extents in mid-September for the first year and the final year of the sequence. Spin the globe round to Antarctica to see the sea ice in the Southern Ocean.\n\nThe core of the ice cover is formed of layers of frozen seawater that have survived the summer thaw. This multi-year ice reaches a thickness of two to four metres in the Arctic, whereas first-year sea ice typically reaches only 1 – 1.5 metres."
+          "text": "You can see the annual expansion and contraction of the frozen sea surface by scrubbing through the timeline of the interactive globe. Compare the annual minimum ice extents in mid-September for the first year and the final year of the sequence. Spin the globe round to Antarctica to see the sea ice in the Southern Ocean."
         }
       ]
     },
@@ -159,6 +164,14 @@
       "slides": []
     },
     {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "The core of the ice cover is formed of layers of frozen seawater that have survived the summer thaw. This multi-year ice reaches a thickness of two to four metres in the Arctic, whereas first-year sea ice typically reaches only 1 – 1.5 metres."
+        }
+      ]
+    },
+    {
       "type": "imageCarousel",
       "slides": [
         {
@@ -183,7 +196,7 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "# Arctic Sea Ice Extent in August 1979-2023 \nSummer ice extent in the Arctic is down 68,000 sq km per year, or 8.9% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)",
+          "text": "Satellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2020. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.",
           "caption": "# Arctic Sea Ice Extent in August 1979-2023 \nSummer ice extent in the Arctic is down 68,000 sq km per year, or 8.9% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)",
           "url": "assets/story15_04.png"
         }
@@ -193,7 +206,16 @@
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "Satellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2020. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.\n\nArctic coastlines have traditionally been protected by year-round ice. However, with sea-ice in retreat, erosion events have already increased and are anticipated to rise further owing to the combined action of increasing wave height, sea level, storm surges and intensifying permafrost degradation. These combined effects are set to have an increasing impact on ecosystems and communities in low-lying coastal areas of the Arctic."
+          "text": "Arctic coastlines have traditionally been protected by year-round ice. However, with sea-ice in retreat, erosion events have already increased and are anticipated to rise further owing to the combined action of increasing wave height, sea level, storm surges and intensifying permafrost degradation. These combined effects are set to have an increasing impact on ecosystems and communities in low-lying coastal areas of the Arctic."
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "## Caught in the Middle",
+          "url": "assets/seaice.jpg"
         }
       ]
     },
@@ -209,7 +231,6 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%.",
           "caption": "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%.",
           "url": "assets/story15_05.png"
         }
@@ -235,7 +256,6 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
           "caption": "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
           "url": "assets/icesheet_large_16.jpg"
         }
@@ -278,9 +298,17 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
           "caption": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
           "url": "assets/story15_08.jpg"
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "## Seeing in the Dark",
+          "url": "assets/seaice.jpg"
         }
       ]
     },
@@ -322,6 +350,15 @@
       ]
     },
     {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "## The Third Dimension",
+          "url": "assets/seaice.jpg"
+        }
+      ]
+    },
+    {
       "type": "textBodyLarge",
       "slides": [
         {
@@ -333,7 +370,6 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)",
           "caption": "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)",
           "url": "assets/icesheet_large_17.jpg"
         }
