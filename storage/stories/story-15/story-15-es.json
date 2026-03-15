@@ -36,9 +36,6 @@
       "slides": [
         {
           "text": "A century later, still only a handful of voyages had picked their way through the icy waters, some with the aid of icebreakers. Then in the summer of 2007, satellite images showed, for the first time on record, the entire Passage to be largely ice-free. This surprised climate scientists, whose models predicted it would remain ice-bound for some decades to come. Today, you can book a cruise through the Northwest Passage on a liner with hundreds of other  passengers."
-        },
-        {
-          "text": "Franklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance."
         }
       ]
     },
@@ -57,6 +54,14 @@
         {
           "text": "The southern route through the Northwest Passage was nearly ice-free in August 2016, as shown by this image from the Suomi NPP weather satellite (NASA)",
           "url": "assets/story15_11.jpg"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "Franklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance."
         }
       ]
     },
@@ -263,14 +268,6 @@
           "text": "The inhabitants of the Arctic region are living on the climate change front line. As traditional ways of hunting and travel are being disrupted, they have to adjust their lifestyles to the rapid warming. The sea ice that was such a barrier to European explorers provides a vital link for Greenlanders, both to food sources and between coastal communities. Waters that are becoming easier for a cruise ship to navigate are becoming more difficult for dogsled and snowmobile.",
           "caption": "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
           "url": "assets/icesheet_large_16.jpg"
-        }
-      ]
-    },
-    {
-      "type": "textBodyLarge",
-      "slides": [
-        {
-          "text": "From Alaska to Siberia, modern infrastructure such as roads, buildings and oil pipelines are undermined as the frozen ground – permafrost – on which they are built thaws out. This also releases carbon dioxide and the more powerful [greenhouse gas](stories/story-12/1) methane from the previously-frozen soil. Vast quantities of methane also lie trapped as frozen methane hydrates on the Arctic Ocean’s broad continental shelf, parts of which could also thaw as the temperature rises."
         }
       ]
     },
