@@ -70,7 +70,8 @@
       "slides": [
         {
           "text": "## New Trade Routes",
-          "url": "assets/story15_03.jpg"
+          "url": "assets/story15_03.jpg",
+          "urlMobile": "assets/story15_03.jpg"
         }
       ]
     },
@@ -119,7 +120,8 @@
       "slides": [
         {
           "text": "## Seasonal Cycle, Long-Term Trends",
-          "url": "assets/seaice.jpg"
+          "url": "assets/seaice.jpg",
+          "urlMobile": "assets/seaice.jpg"
         }
       ]
     },
@@ -215,7 +217,8 @@
       "slides": [
         {
           "text": "## Caught in the Middle",
-          "url": "assets/seaice.jpg"
+          "url": "assets/seaice.jpg",
+          "urlMobile": "assets/seaice.jpg"
         }
       ]
     },
@@ -257,7 +260,8 @@
       "slides": [
         {
           "text": "## Life on the Front Line",
-          "url": "assets/seaice.jpg"
+          "url": "assets/seaice.jpg",
+          "urlMobile": "assets/seaice.jpg"
         }
       ]
     },
@@ -311,7 +315,8 @@
       "slides": [
         {
           "text": "## Seeing in the Dark",
-          "url": "assets/seaice.jpg"
+          "url": "assets/seaice.jpg",
+          "urlMobile": "assets/seaice.jpg"
         }
       ]
     },
@@ -357,7 +362,8 @@
       "slides": [
         {
           "text": "## The Third Dimension",
-          "url": "assets/seaice.jpg"
+          "url": "assets/seaice.jpg",
+          "urlMobile": "assets/seaice.jpg"
         }
       ]
     },
