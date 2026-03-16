@@ -66,20 +66,10 @@
       ]
     },
     {
-      "type": "textOverlay",
-      "slides": [
-        {
-          "text": "## New Trade Routes",
-          "url": "assets/story15_03.jpg",
-          "urlMobile": "assets/story15_03.jpg"
-        }
-      ]
-    },
-    {
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "The loss of Arctic sea ice has been faster than was predicted, with the southern route of the Northwest Passage now navigable almost every year. In 2008, the first commercial ship passed through and in 2013 the first bulk carrier took cargo from Vancouver to Finland. 86 cargo ships passed through the Northwest Passage in 2019."
+          "text": "## New Trade Routes\n\nThe loss of Arctic sea ice has been faster than was predicted, with the southern route of the Northwest Passage now navigable almost every year. In 2008, the first commercial ship passed through and in 2013 the first bulk carrier took cargo from Vancouver to Finland. 86 cargo ships passed through the Northwest Passage in 2019."
         }
       ]
     },
@@ -116,20 +106,10 @@
       ]
     },
     {
-      "type": "textOverlay",
-      "slides": [
-        {
-          "text": "## Seasonal Cycle, Long-Term Trends",
-          "url": "assets/seaice.jpg",
-          "urlMobile": "assets/seaice.jpg"
-        }
-      ]
-    },
-    {
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "The Arctic Ocean is characterised by the sea ice cover and its seasonal fluctuations. During winter, the ice pack grows to an area between 14 and 16 million square kilometres, reducing to four to five million square kilometres by the end of summer. That’s an area equivalent to the entire surface of Europe appearing and disappearing through the year."
+          "text": "## Seasonal Cycle, Long-Term Trends\n\nThe Arctic Ocean is characterised by the sea ice cover and its seasonal fluctuations. During winter, the ice pack grows to an area between 14 and 16 million square kilometres, reducing to four to five million square kilometres by the end of summer. That’s an area equivalent to the entire surface of Europe appearing and disappearing through the year."
         }
       ]
     },
@@ -213,20 +193,10 @@
       ]
     },
     {
-      "type": "textOverlay",
-      "slides": [
-        {
-          "text": "## Caught in the Middle",
-          "url": "assets/seaice.jpg",
-          "urlMobile": "assets/seaice.jpg"
-        }
-      ]
-    },
-    {
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "The ocean and the atmosphere are the climate’s two great [heat pumps](stories/story-16/0), and sea ice forms where they meet. It has a complex influence on the energy exchanges between them. Sea ice insulates the sea, reducing heat loss to the atmosphere and providing a barrier to the exchange of gases and motion. But bright ice also reflects sunlight that would be absorbed by dark ocean water, keeping the sea cooler than it would otherwise be. So, in a warming climate sea ice is subject to a positive feedback: melting ice exposes darker ocean water, which warms up, leading to further melting."
+          "text": "## Caught in the Middle\n\nThe ocean and the atmosphere are the climate’s two great [heat pumps](stories/story-16/0), and sea ice forms where they meet. It has a complex influence on the energy exchanges between them. Sea ice insulates the sea, reducing heat loss to the atmosphere and providing a barrier to the exchange of gases and motion. But bright ice also reflects sunlight that would be absorbed by dark ocean water, keeping the sea cooler than it would otherwise be. So, in a warming climate sea ice is subject to a positive feedback: melting ice exposes darker ocean water, which warms up, leading to further melting."
         }
       ]
     },
@@ -256,20 +226,10 @@
       ]
     },
     {
-      "type": "textOverlay",
-      "slides": [
-        {
-          "text": "## Life on the Front Line",
-          "url": "assets/seaice.jpg",
-          "urlMobile": "assets/seaice.jpg"
-        }
-      ]
-    },
-    {
       "type": "imageScroll",
       "slides": [
         {
-          "text": "The inhabitants of the Arctic region are living on the climate change front line. As traditional ways of hunting and travel are being disrupted, they have to adjust their lifestyles to the rapid warming. The sea ice that was such a barrier to European explorers provides a vital link for Greenlanders, both to food sources and between coastal communities. Waters that are becoming easier for a cruise ship to navigate are becoming more difficult for dogsled and snowmobile.",
+          "text": "## Life on the Front Line\n\nThe inhabitants of the Arctic region are living on the climate change front line. As traditional ways of hunting and travel are being disrupted, they have to adjust their lifestyles to the rapid warming. The sea ice that was such a barrier to European explorers provides a vital link for Greenlanders, both to food sources and between coastal communities. Waters that are becoming easier for a cruise ship to navigate are becoming more difficult for dogsled and snowmobile.",
           "caption": "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
           "url": "assets/icesheet_large_16.jpg"
         }
@@ -311,20 +271,10 @@
       ]
     },
     {
-      "type": "textOverlay",
-      "slides": [
-        {
-          "text": "## Seeing in the Dark",
-          "url": "assets/seaice.jpg",
-          "urlMobile": "assets/seaice.jpg"
-        }
-      ]
-    },
-    {
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "Satellites give us a unique overview of the polar regions, providing measurements that were previously impossible to acquire in the hostile environment of these vast and remote areas. But conventional cameras using visible light can only work during the daytime and in the absence of clouds, which is a problem in polar regions prone to bad weather and long periods of winter darkness. Here, microwaves, which can pass through clouds and don’t need the Sun as a source, are more useful.\n\nMicrowaves are emitted from the surface of the Earth and can be detected by passive sensors on satellites. They can also be generated by a satellite radar and sent out to illuminate the Earth’s surface. The European Space Agency has invested in a series of radar satellites that allow surface properties to be measured by analysing the reflected beam of microwaves."
+          "text": "## Seeing in the Dark\n\nSatellites give us a unique overview of the polar regions, providing measurements that were previously impossible to acquire in the hostile environment of these vast and remote areas. But conventional cameras using visible light can only work during the daytime and in the absence of clouds, which is a problem in polar regions prone to bad weather and long periods of winter darkness. Here, microwaves, which can pass through clouds and don’t need the Sun as a source, are more useful.\n\nMicrowaves are emitted from the surface of the Earth and can be detected by passive sensors on satellites. They can also be generated by a satellite radar and sent out to illuminate the Earth’s surface. The European Space Agency has invested in a series of radar satellites that allow surface properties to be measured by analysing the reflected beam of microwaves."
         }
       ]
     },
@@ -358,20 +308,10 @@
       ]
     },
     {
-      "type": "textOverlay",
-      "slides": [
-        {
-          "text": "## The Third Dimension",
-          "url": "assets/seaice.jpg",
-          "urlMobile": "assets/seaice.jpg"
-        }
-      ]
-    },
-    {
       "type": "imageScroll",
       "slides": [
         {
-          "text": "To measure the volume of sea ice, its thickness is also required. Radar altimeters are used to measure very precisely the height of the ice above the sea surface, from which its thickness can be derived. The CCI Sea Ice team has developed monthly sea ice thickness maps using radar altimeter data from ESA’s Envisat mission from 2002 to 2012, and from CryoSat, launched in 2010. The CCI Ice Sheet team also uses these satellite altimeters to measure the thickness of the Greenland and Antarctic Ice Sheets.",
+          "text": "## The Third Dimension\n\nTo measure the volume of sea ice, its thickness is also required. Radar altimeters are used to measure very precisely the height of the ice above the sea surface, from which its thickness can be derived. The CCI Sea Ice team has developed monthly sea ice thickness maps using radar altimeter data from ESA’s Envisat mission from 2002 to 2012, and from CryoSat, launched in 2010. The CCI Ice Sheet team also uses these satellite altimeters to measure the thickness of the Greenland and Antarctic Ice Sheets.",
           "caption": "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)",
           "url": "assets/icesheet_large_17.jpg"
         }
