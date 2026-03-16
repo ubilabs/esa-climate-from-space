@@ -24,7 +24,7 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
+          "text": "The pack ice defeated the Royal Navy in 1845 when Sir John Franklin’s expedition was lost. Eighteen search parties over the next thirty years failed to find any trace of him and his 130 crewmen. It wasn’t until 1906 that Roald Amundsen became the first to complete a route through the Northwest Passage, after a journey lasting three years.",
           "caption": "HMS Terror Thrown Up by the Ice in Frozen Strait. Engraving from a drawing by Capt George Back. (National Archives of Canada)",
           "url": "assets/story15_01.jpg",
           "altText": "some alt text"
@@ -35,7 +35,7 @@
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "The pack ice defeated the Royal Navy in 1845 when Sir John Franklin’s expedition was lost. Eighteen search parties over the next thirty years failed to find any trace of him and his 130 crewmen. It wasn’t until 1906 that Roald Amundsen became the first to complete a route through the Northwest Passage, after a journey lasting three years."
+          "text": "A century later, still only a handful of voyages had picked their way through the icy waters, some with the aid of icebreakers. Then in the summer of 2007, satellite images showed, for the first time on record, the entire Passage to be largely ice-free. This surprised climate scientists, whose models predicted it would remain ice-bound for some decades to come. Today, you can book a cruise through the Northwest Passage on a liner with hundreds of other  passengers."
         }
       ]
     },
@@ -61,7 +61,17 @@
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "A century later, still only a handful of voyages had picked their way through the icy waters, some with the aid of icebreakers. Then in the summer of 2007, satellite images showed, for the first time on record, the entire Passage to be largely ice-free. This surprised climate scientists, whose models predicted it would remain ice-bound for some decades to come. Today, you can book a cruise through the Northwest Passage on a liner with hundreds of other  passengers.\n\nFranklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance."
+          "text": "Franklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance."
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "## New Trade Routes",
+          "url": "assets/story15_03.jpg",
+          "urlMobile": "assets/story15_03.jpg"
         }
       ]
     },
@@ -70,28 +80,6 @@
       "slides": [
         {
           "text": "The loss of Arctic sea ice has been faster than was predicted, with the southern route of the Northwest Passage now navigable almost every year. In 2008, the first commercial ship passed through and in 2013 the first bulk carrier took cargo from Vancouver to Finland. 86 cargo ships passed through the Northwest Passage in 2019."
-        }
-      ]
-    },
-    {
-      "type": "imageScroll",
-      "slides": [
-        {
-          "text": "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
-          "caption": "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
-          "url": "assets/story15_02.jpg",
-          "focus": "left"
-        }
-      ]
-    },
-    {
-      "type": "textBodyLarge",
-      "slides": [
-        {
-          "text": "The shrinking icepack is also opening up to shipping the northern coast of Russia – the Northeast Passage. This route shaves more than one third off the sailing distance from Yokohama to Hamburg, compared with the current shortest route through the Suez Canal. There is even greater potential for savings in distance, time and fuel if the ice recedes enough for navigation across the centre of the Arctic Ocean – the Transpolar Sea Route."
-        },
-        {
-          "text": "Shorter shipping routes will mean less fuel is burned, and less carbon pumped into the atmosphere, but the Arctic will see a local increase in pollutants. Soot particles could darken the remaining ice, adding to the warming, but could also cause more clouds to condense, which might have a cooling effect.\n\nAlthough good news for the shipping and tourism industries, the retreat of the ice edge is a stark warning that the Earth’s climate is rapidly heading into uncharted waters."
         }
       ]
     },
@@ -109,6 +97,35 @@
       ]
     },
     {
+      "type": "imageScroll",
+      "slides": [
+        {
+          "text": "The shrinking icepack is also opening up to shipping the northern coast of Russia – the Northeast Passage. This route shaves more than one third off the sailing distance from Yokohama to Hamburg, compared with the current shortest route through the Suez Canal. There is even greater potential for savings in distance, time and fuel if the ice recedes enough for navigation across the centre of the Arctic Ocean – the Transpolar Sea Route.",
+          "caption": "Envisat ASAR radar mosaic showing potential shipping routes through the Northwest Passage (yellow, left), the Northeast Passage (blue, right) and the Transpolar Sea Route (green, centre) (ESA/Planetary Visions)",
+          "url": "assets/story15_02.jpg",
+          "focus": "left"
+        }
+      ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "Shorter shipping routes will mean less fuel is burned, and less carbon pumped into the atmosphere, but the Arctic will see a local increase in pollutants. Soot particles could darken the remaining ice, adding to the warming, but could also cause more clouds to condense, which might have a cooling effect.\n\nAlthough good news for the shipping and tourism industries, the retreat of the ice edge is a stark warning that the Earth’s climate is rapidly heading into uncharted waters."
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "## Seasonal Cycle, Long-Term Trends",
+          "url": "assets/seaice.jpg",
+          "urlMobile": "assets/seaice.jpg"
+        }
+      ]
+    },
+    {
       "type": "textBodyLarge",
       "slides": [
         {
@@ -117,21 +134,10 @@
       ]
     },
     {
-      "type": "imageScroll",
-      "slides": [
-        {
-          "text": "# CCI Sea Ice Concentration",
-          "caption": "# CCI Sea Ice Concentration",
-          "url": "assets/story15_03.jpg",
-          "focus": "right"
-        }
-      ]
-    },
-    {
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "You can see the annual expansion and contraction of the frozen sea surface by scrubbing through the timeline of the interactive globe. Compare the annual minimum ice extents in mid-September for the first year and the final year of the sequence. Spin the globe round to Antarctica to see the sea ice in the Southern Ocean.\n\nThe core of the ice cover is formed of layers of frozen seawater that have survived the summer thaw. This multi-year ice reaches a thickness of two to four metres in the Arctic, whereas first-year sea ice typically reaches only 1 – 1.5 metres."
+          "text": "You can see the annual expansion and contraction of the frozen sea surface by scrubbing through the timeline of the interactive globe. Compare the annual minimum ice extents in mid-September for the first year and the final year of the sequence. Spin the globe round to Antarctica to see the sea ice in the Southern Ocean."
         }
       ]
     },
@@ -159,6 +165,14 @@
       "slides": []
     },
     {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "The core of the ice cover is formed of layers of frozen seawater that have survived the summer thaw. This multi-year ice reaches a thickness of two to four metres in the Arctic, whereas first-year sea ice typically reaches only 1 – 1.5 metres."
+        }
+      ]
+    },
+    {
       "type": "imageCarousel",
       "slides": [
         {
@@ -183,9 +197,10 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "# Arctic Sea Ice Extent in August 1979-2023 \nSummer ice extent in the Arctic is down 68,000 sq km per year, or 8.9% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)",
+          "text": "Satellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2020. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.",
           "caption": "# Arctic Sea Ice Extent in August 1979-2023 \nSummer ice extent in the Arctic is down 68,000 sq km per year, or 8.9% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)",
-          "url": "assets/story15_04.png"
+          "url": "assets/story15_04.png",
+          "focus": "cover"
         }
       ]
     },
@@ -193,7 +208,17 @@
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "Satellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2020. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.\n\nArctic coastlines have traditionally been protected by year-round ice. However, with sea-ice in retreat, erosion events have already increased and are anticipated to rise further owing to the combined action of increasing wave height, sea level, storm surges and intensifying permafrost degradation. These combined effects are set to have an increasing impact on ecosystems and communities in low-lying coastal areas of the Arctic."
+          "text": "Arctic coastlines have traditionally been protected by year-round ice. However, with sea-ice in retreat, erosion events have already increased and are anticipated to rise further owing to the combined action of increasing wave height, sea level, storm surges and intensifying permafrost degradation. These combined effects are set to have an increasing impact on ecosystems and communities in low-lying coastal areas of the Arctic."
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "## Caught in the Middle",
+          "url": "assets/seaice.jpg",
+          "urlMobile": "assets/seaice.jpg"
         }
       ]
     },
@@ -209,7 +234,6 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%.",
           "caption": "Melting of sea ice dramatically changes the energy balance in the Arctic Ocean. Ice reflects about 90% of the incoming solar radiation, whereas open water absorbs about 94%.",
           "url": "assets/story15_05.png"
         }
@@ -219,7 +243,7 @@
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "This is part of a process called the Arctic amplification. More heat is also being transported to the poles by both the atmosphere and the ocean as they warm up. This makes the Arctic one of the most sensitive regions to variations in global climate, and the place where most climate models predict the greatest warming.  Observed temperature rise in the Arctic has been 2-3 times the global average. \n\n## Climate Regulator\nSea ice has an important influence on the global ocean circulation. When seawater freezes in the winter, it leaves salt behind, increasing the salinity and therefore the density of the surrounding water, causing it to sink. This process is one of the main drivers behind the ocean’s global vertical circulation (the [thermohaline circulation](stories/story-16/5)), which helps distribute energy around the planet. \n\nWhen the sea ice melts in the summer, it produces an influx of fresh water, adding to that from large rivers running in from Siberia and North America. This makes the Arctic Ocean much fresher than the salty Atlantic and Pacific. Ocean circulation is partly driven by temperature and salinity differences in the water, so changes to the cycle of sea ice freezing and melting can affect ocean currents and weather systems far from the Arctic."
+          "text": "This is part of a process called the Arctic amplification. More heat is also being transported to the poles by both the atmosphere and the ocean as they warm up. This makes the Arctic one of the most sensitive regions to variations in global climate, and the place where most climate models predict the greatest warming.  Observed temperature rise in the Arctic has been 2-3 times the global average."
         }
       ]
     },
@@ -227,7 +251,17 @@
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "The inhabitants of the Arctic region are living on the climate change front line. As traditional ways of hunting and travel are being disrupted, they have to adjust their lifestyles to the rapid warming. The sea ice that was such a barrier to European explorers provides a vital link for Greenlanders, both to food sources and between coastal communities. Waters that are becoming easier for a cruise ship to navigate are becoming more difficult for dogsled and snowmobile."
+          "text": "## Climate Regulator\nSea ice has an important influence on the global ocean circulation. When seawater freezes in the winter, it leaves salt behind, increasing the salinity and therefore the density of the surrounding water, causing it to sink. This process is one of the main drivers behind the ocean’s global vertical circulation (the [thermohaline circulation](stories/story-16/5)), which helps distribute energy around the planet. \n\nWhen the sea ice melts in the summer, it produces an influx of fresh water, adding to that from large rivers running in from Siberia and North America. This makes the Arctic Ocean much fresher than the salty Atlantic and Pacific. Ocean circulation is partly driven by temperature and salinity differences in the water, so changes to the cycle of sea ice freezing and melting can affect ocean currents and weather systems far from the Arctic."
+        }
+      ]
+    },
+    {
+      "type": "textOverlay",
+      "slides": [
+        {
+          "text": "## Life on the Front Line",
+          "url": "assets/seaice.jpg",
+          "urlMobile": "assets/seaice.jpg"
         }
       ]
     },
@@ -235,17 +269,19 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
+          "text": "The inhabitants of the Arctic region are living on the climate change front line. As traditional ways of hunting and travel are being disrupted, they have to adjust their lifestyles to the rapid warming. The sea ice that was such a barrier to European explorers provides a vital link for Greenlanders, both to food sources and between coastal communities. Waters that are becoming easier for a cruise ship to navigate are becoming more difficult for dogsled and snowmobile.",
           "caption": "Nuuk, the capital of Greenland. Greenlanders are having to adapt to a warming climate. Melting sea ice not only shortens the hunting season, but also makes it more difficult to reach neighbouring communities by dogsled or snowmobile. (Oliver Schauf)",
           "url": "assets/icesheet_large_16.jpg"
         }
       ]
     },
     {
-      "type": "textBodyLarge",
+      "type": "imageScroll",
       "slides": [
         {
-          "text": "From Alaska to Siberia, modern infrastructure such as roads, buildings and oil pipelines are undermined as the frozen ground – permafrost – on which they are built thaws out. This also releases carbon dioxide and the more powerful [greenhouse gas](stories/story-12/1) methane from the previously-frozen soil. Vast quantities of methane also lie trapped as frozen methane hydrates on the Arctic Ocean’s broad continental shelf, parts of which could also thaw as the temperature rises."
+          "text": "From Alaska to Siberia, modern infrastructure such as roads, buildings and oil pipelines are undermined as the frozen ground – permafrost – on which they are built thaws out. This also releases carbon dioxide and the more powerful [greenhouse gas](stories/story-12/1) methane from the previously-frozen soil. Vast quantities of methane also lie trapped as frozen methane hydrates on the Arctic Ocean’s broad continental shelf, parts of which could also thaw as the temperature rises.",
+          "caption": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
+          "url": "assets/story15_08.jpg"
         }
       ]
     },
@@ -275,12 +311,12 @@
       ]
     },
     {
-      "type": "imageScroll",
+      "type": "textOverlay",
       "slides": [
         {
-          "text": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
-          "caption": "# CCI Permafrost Extent\n \nNorthern hemisphere permafrost 2003-2017 (ESA-CCI)",
-          "url": "assets/story15_08.jpg"
+          "text": "## Seeing in the Dark",
+          "url": "assets/seaice.jpg",
+          "urlMobile": "assets/seaice.jpg"
         }
       ]
     },
@@ -322,10 +358,12 @@
       ]
     },
     {
-      "type": "textBodyLarge",
+      "type": "textOverlay",
       "slides": [
         {
-          "text": "To measure the volume of sea ice, its thickness is also required. Radar altimeters are used to measure very precisely the height of the ice above the sea surface, from which its thickness can be derived. The CCI Sea Ice team has developed monthly sea ice thickness maps using radar altimeter data from ESA’s Envisat mission from 2002 to 2012, and from CryoSat, launched in 2010. The CCI Ice Sheet team also uses these satellite altimeters to measure the thickness of the Greenland and Antarctic Ice Sheets."
+          "text": "## The Third Dimension",
+          "url": "assets/seaice.jpg",
+          "urlMobile": "assets/seaice.jpg"
         }
       ]
     },
@@ -333,7 +371,7 @@
       "type": "imageScroll",
       "slides": [
         {
-          "text": "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)",
+          "text": "To measure the volume of sea ice, its thickness is also required. Radar altimeters are used to measure very precisely the height of the ice above the sea surface, from which its thickness can be derived. The CCI Sea Ice team has developed monthly sea ice thickness maps using radar altimeter data from ESA’s Envisat mission from 2002 to 2012, and from CryoSat, launched in 2010. The CCI Ice Sheet team also uses these satellite altimeters to measure the thickness of the Greenland and Antarctic Ice Sheets.",
           "caption": "Artist's impression of CryoSat 2, ESA's ice mission, pictured over the Antarctic Peninsula. The satellite carries a radar altimeter to probe ice sheets, sea level and sea ice. (ESA/NASA/Planetary Visions)",
           "url": "assets/icesheet_large_17.jpg"
         }
