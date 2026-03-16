@@ -1,7 +1,15 @@
+import { useScreenSize } from "../../../../../hooks/use-screen-size";
 import { useStory } from "../../../../../providers/story/use-story";
 import { StoryIcon } from "../../../../main/icons/story-icon";
 import ScrollModule from "../story-eei/modules/base-scroll/module/scroll-module";
+
+import cx from "classnames";
+
 import styles from "./splashscreen-eei.module.css";
+import { useIntl } from "react-intl";
+import { ArrowUpIcon } from "../../../../main/icons/arrow-up-icon";
+import { MouseIcon } from "../../../../main/icons/mouse-icon";
+import { ArrowDownIcon } from "../../../../main/icons/arrow-down-icon";
 
 const animationConfig = {
   initial: {
@@ -16,6 +24,8 @@ export default function SplashscreenEei() {
   const { story } = useStory();
   const splashConfig = story?.splashscreen;
   console.log("🚀 ~ splashscreen-eei.tsx:17 → splashConfig:", splashConfig);
+  const { isTouchDevice } = useScreenSize();
+  const intl = useIntl();
 
   return (
     <ScrollModule
@@ -24,7 +34,7 @@ export default function SplashscreenEei() {
     >
       <ScrollModule.StickyContainer className={styles.splashWrapper}>
         <div className={styles.introIconContainer}>
-          {<StoryIcon />}
+          {<StoryIcon isHollow />}
           Story
           <div className={styles.sunContainer}>
             <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMin slice">
@@ -78,6 +88,22 @@ export default function SplashscreenEei() {
           </div>
         </div>
         <div className={styles.title}>{splashConfig?.title}</div>
+
+        <div
+          aria-hidden="true"
+          className={cx(
+            // Make sure to show the gesture indicator depending on whether it is touch screen device
+            styles.gestureIndicator,
+            isTouchDevice ? styles.touch : styles.scroll,
+          )}
+          data-content={intl.formatMessage({
+            id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
+          })}
+        >
+          <ArrowUpIcon />
+          <MouseIcon />
+          <ArrowDownIcon />
+        </div>
       </ScrollModule.StickyContainer>
     </ScrollModule>
   );
