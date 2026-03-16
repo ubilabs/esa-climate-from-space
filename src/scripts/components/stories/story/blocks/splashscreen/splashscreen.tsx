@@ -9,10 +9,12 @@ import { isLocationStory } from "../../../../../libs/is-location-story";
 import { calculateTotalSlides } from "../../../../../libs/split-text";
 
 import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
+import { useAppRouteFlags } from "../../../../../hooks/use-app-route-flags";
 
 import { useStory } from "../../../../../providers/story/use-story";
 
 import { TextWrapper } from "../generic/text-container/text-wrapper";
+import SplashscreenEei from "./splashscreen-eei";
 import { StorySectionProps } from "../../../../../types/story";
 
 import { SlideContainer } from "../../../layout/slide-container/slide-container";
@@ -24,6 +26,7 @@ import cx from "classnames";
 import styles from "./splashscreen.module.css";
 
 export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
+  const { isStoryEEI } = useAppRouteFlags();
   const { story, setScrollAnchorRefs } = useStory();
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -77,14 +80,16 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
     return null;
   }
 
+  // render SplashScreen for story-eei
+  if (isStoryEEI) {
+    return <SplashscreenEei />;
+  }
+
   const { id } = story;
 
   return (
     <SlideContainer
-      className={cx(
-        styles.splashscreenContainer,
-        styles.locationStory,
-      )}
+      className={cx(styles.splashscreenContainer, styles.locationStory)}
     >
       <div
         style={{

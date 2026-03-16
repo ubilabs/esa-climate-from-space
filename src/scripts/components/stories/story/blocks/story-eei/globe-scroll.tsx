@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useEffectEvent } from "react";
 import { useDispatch } from "react-redux";
 import {
   cubicBezier,
@@ -193,7 +193,7 @@ const GlobeScroll: FunctionComponent<Props> = ({
 
   const root = document.documentElement;
 
-  useMotionValueEvent(scrollYProgress, "change", () => {
+  const updateGlobeContainerPosition = () => {
     if (x && y) {
       root.style.setProperty(
         "--globe-container-y",
@@ -204,10 +204,10 @@ const GlobeScroll: FunctionComponent<Props> = ({
         `${Number(x.get()) * -100}vw`,
       );
     }
-  });
+  };
 
   // Dispatch interpolated globe position to store
-  useMotionValueEvent(scrollYProgress, "change", () => {
+  const updateGlobePosition = () => {
     if (haveMotionValuesChanges(globeMotions)) {
       dispatch(
         setFlyTo({
@@ -217,6 +217,21 @@ const GlobeScroll: FunctionComponent<Props> = ({
         }),
       );
     }
+  };
+
+  const setInitialGlobePositions = useEffectEvent(() => {
+    updateGlobeContainerPosition();
+    updateGlobePosition();
+  });
+
+  useEffect(() => {
+    // Set initial globe position and container position on mount
+    setInitialGlobePositions();
+  }, []);
+
+  useMotionValueEvent(scrollYProgress, "change", () => {
+    updateGlobeContainerPosition();
+    updateGlobePosition();
   });
 
   return null;
