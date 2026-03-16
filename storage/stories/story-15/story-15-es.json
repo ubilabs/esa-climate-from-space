@@ -35,7 +35,7 @@
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "A century later, still only a handful of voyages had picked their way through the icy waters, some with the aid of icebreakers. Then in the summer of 2007, satellite images showed, for the first time on record, the entire Passage to be largely ice-free. This surprised climate scientists, whose models predicted it would remain ice-bound for some decades to come. Today, you can book a cruise through the Northwest Passage on a liner with hundreds of other  passengers."
+          "text": "A century later, still only a handful of voyages had picked their way through the icy waters, some with the aid of icebreakers. Then in the summer of 2007, satellite images showed, for the first time on record, the entire Passage to be largely ice-free. This surprised climate scientists, whose models predicted it would remain ice-bound for some decades to come. Today, you can book a cruise through the Northwest Passage on a liner with hundreds of other  passengers.\n\nFranklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance."
         }
       ]
     },
@@ -54,14 +54,6 @@
         {
           "text": "The southern route through the Northwest Passage was nearly ice-free in August 2016, as shown by this image from the Suomi NPP weather satellite (NASA)",
           "url": "assets/story15_11.jpg"
-        }
-      ]
-    },
-    {
-      "type": "textBodyLarge",
-      "slides": [
-        {
-          "text": "Franklin’s ships, HMS Erebus and HMS Terror, were found by Canadian seafloor surveys in 2014 and 2016, solving at least part of the 170 year-old mystery surrounding the expedition’s disappearance."
         }
       ]
     },
@@ -196,7 +188,7 @@
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "## Caught in the Middle\n\nThe ocean and the atmosphere are the climate’s two great [heat pumps](stories/story-16/0), and sea ice forms where they meet. It has a complex influence on the energy exchanges between them. Sea ice insulates the sea, reducing heat loss to the atmosphere and providing a barrier to the exchange of gases and motion. But bright ice also reflects sunlight that would be absorbed by dark ocean water, keeping the sea cooler than it would otherwise be. So, in a warming climate sea ice is subject to a positive feedback: melting ice exposes darker ocean water, which warms up, leading to further melting."
+          "text": "## Caught in the Middle\n\nThe ocean and the atmosphere are the climate’s two great [heat pumps](stories/story-16/0), and sea ice forms where they meet. It has a complex influence on the energy exchanges between them. Sea ice insulates the sea, reducing heat loss to the atmosphere and providing a barrier to the exchange of gases and motion. But bright ice also reflects sunlight that would be absorbed by dark ocean water, keeping the sea cooler than it would otherwise be. So, in a warming climate sea ice is subject to a positive feedback: melting ice exposes darker ocean water, which warms up, leading to further melting. \n\nThis is part of a process called the Arctic amplification. More heat is also being transported to the poles by both the atmosphere and the ocean as they warm up. This makes the Arctic one of the most sensitive regions to variations in global climate, and the place where most climate models predict the greatest warming. Observed temperature rise in the Arctic has been 2-3 times the global average."
         }
       ]
     },
@@ -213,7 +205,7 @@
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "This is part of a process called the Arctic amplification. More heat is also being transported to the poles by both the atmosphere and the ocean as they warm up. This makes the Arctic one of the most sensitive regions to variations in global climate, and the place where most climate models predict the greatest warming.  Observed temperature rise in the Arctic has been 2-3 times the global average. \n\n## Climate Regulator\nSea ice has an important influence on the global ocean circulation. When seawater freezes in the winter, it leaves salt behind, increasing the salinity and therefore the density of the surrounding water, causing it to sink. This process is one of the main drivers behind the ocean’s global vertical circulation (the [thermohaline circulation](stories/story-16/5)), which helps distribute energy around the planet. \n\nWhen the sea ice melts in the summer, it produces an influx of fresh water, adding to that from large rivers running in from Siberia and North America. This makes the Arctic Ocean much fresher than the salty Atlantic and Pacific. Ocean circulation is partly driven by temperature and salinity differences in the water, so changes to the cycle of sea ice freezing and melting can affect ocean currents and weather systems far from the Arctic."
+          "text": "## Climate Regulator\nSea ice has an important influence on the global ocean circulation. When seawater freezes in the winter, it leaves salt behind, increasing the salinity and therefore the density of the surrounding water, causing it to sink. This process is one of the main drivers behind the ocean’s global vertical circulation (the [thermohaline circulation](stories/story-16/5)), which helps distribute energy around the planet. \n\nWhen the sea ice melts in the summer, it produces an influx of fresh water, adding to that from large rivers running in from Siberia and North America. This makes the Arctic Ocean much fresher than the salty Atlantic and Pacific. Ocean circulation is partly driven by temperature and salinity differences in the water, so changes to the cycle of sea ice freezing and melting can affect ocean currents and weather systems far from the Arctic."
         }
       ]
     },
