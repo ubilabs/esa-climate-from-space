@@ -2,36 +2,24 @@ import { useScreenSize } from "../../../../../hooks/use-screen-size";
 import { useStory } from "../../../../../providers/story/use-story";
 import { StoryIcon } from "../../../../main/icons/story-icon";
 import ScrollModule from "../story-eei/modules/base-scroll/module/scroll-module";
-
-import cx from "classnames";
-
-import styles from "./splashscreen-eei.module.css";
-import { useIntl } from "react-intl";
 import { ArrowUpIcon } from "../../../../main/icons/arrow-up-icon";
 import { MouseIcon } from "../../../../main/icons/mouse-icon";
 import { ArrowDownIcon } from "../../../../main/icons/arrow-down-icon";
 
-const animationConfig = {
-  initial: {
-    scale: {
-      input: [0, 0.1, 0.4, 0.9, 1],
-      output: [0.01, 0.1, 1, 1, 0.01],
-    },
-  },
-};
+import { useIntl } from "react-intl";
+
+import cx from "classnames";
+
+import styles from "./splashscreen-eei.module.css";
 
 export default function SplashscreenEei() {
   const { story } = useStory();
   const splashConfig = story?.splashscreen;
-  console.log("🚀 ~ splashscreen-eei.tsx:17 → splashConfig:", splashConfig);
   const { isTouchDevice } = useScreenSize();
   const intl = useIntl();
 
   return (
-    <ScrollModule
-      config={animationConfig}
-      lengthFactor={splashConfig?.lengthFactor ?? 1}
-    >
+    <ScrollModule config={{}} lengthFactor={splashConfig?.lengthFactor ?? 1}>
       <ScrollModule.StickyContainer className={styles.splashWrapper}>
         <div className={styles.introIconContainer}>
           {<StoryIcon isHollow />}
