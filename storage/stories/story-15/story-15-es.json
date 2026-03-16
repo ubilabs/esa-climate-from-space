@@ -213,15 +213,7 @@
       "type": "textBodyLarge",
       "slides": [
         {
-          "text": "This is part of a process called the Arctic amplification. More heat is also being transported to the poles by both the atmosphere and the ocean as they warm up. This makes the Arctic one of the most sensitive regions to variations in global climate, and the place where most climate models predict the greatest warming.  Observed temperature rise in the Arctic has been 2-3 times the global average."
-        }
-      ]
-    },
-    {
-      "type": "textBodyLarge",
-      "slides": [
-        {
-          "text": "## Climate Regulator\nSea ice has an important influence on the global ocean circulation. When seawater freezes in the winter, it leaves salt behind, increasing the salinity and therefore the density of the surrounding water, causing it to sink. This process is one of the main drivers behind the ocean’s global vertical circulation (the [thermohaline circulation](stories/story-16/5)), which helps distribute energy around the planet. \n\nWhen the sea ice melts in the summer, it produces an influx of fresh water, adding to that from large rivers running in from Siberia and North America. This makes the Arctic Ocean much fresher than the salty Atlantic and Pacific. Ocean circulation is partly driven by temperature and salinity differences in the water, so changes to the cycle of sea ice freezing and melting can affect ocean currents and weather systems far from the Arctic."
+          "text": "This is part of a process called the Arctic amplification. More heat is also being transported to the poles by both the atmosphere and the ocean as they warm up. This makes the Arctic one of the most sensitive regions to variations in global climate, and the place where most climate models predict the greatest warming.  Observed temperature rise in the Arctic has been 2-3 times the global average. \n\n## Climate Regulator\nSea ice has an important influence on the global ocean circulation. When seawater freezes in the winter, it leaves salt behind, increasing the salinity and therefore the density of the surrounding water, causing it to sink. This process is one of the main drivers behind the ocean’s global vertical circulation (the [thermohaline circulation](stories/story-16/5)), which helps distribute energy around the planet. \n\nWhen the sea ice melts in the summer, it produces an influx of fresh water, adding to that from large rivers running in from Siberia and North America. This makes the Arctic Ocean much fresher than the salty Atlantic and Pacific. Ocean circulation is partly driven by temperature and salinity differences in the water, so changes to the cycle of sea ice freezing and melting can affect ocean currents and weather systems far from the Arctic."
         }
       ]
     },
@@ -246,6 +238,14 @@
       ]
     },
     {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "Melt-water from the Greenland Ice Sheet has contributed 11mm to sea level rise since 1992 and is tracking the worst-case climate warming predictions. Being fresh water, it is a further disruption to the salinity balance in the Arctic Ocean and surrounding seas. The flow of glaciers has also increased on islands such as Severnaya Zemlya as the surrounding ocean has warmed. Ice sheets, glaciers, permafrost and ocean salinity are, like sea ice, considered to be ‘essential climate variables’ that we need to monitor in order to understand how the climate is changing."
+        }
+      ]
+    },
+    {
       "type": "imageCarousel",
       "slides": [
         {
@@ -259,14 +259,6 @@
         {
           "text": "Surface meltwater runs across Leverett Glacier, about 50km from the western edge of the Greenland  ice sheet, on 19th August 2009. (Andrew Sole, University of Sheffield)",
           "url": "assets/icesheet_large_01.jpg"
-        }
-      ]
-    },
-    {
-      "type": "textBodyLarge",
-      "slides": [
-        {
-          "text": "Melt-water from the Greenland Ice Sheet has contributed 11mm to sea level rise since 1992 and is tracking the worst-case climate warming predictions. Being fresh water, it is a further disruption to the salinity balance in the Arctic Ocean and surrounding seas. The flow of glaciers has also increased on islands such as Severnaya Zemlya as the surrounding ocean has warmed. Ice sheets, glaciers, permafrost and ocean salinity are, like sea ice, considered to be ‘essential climate variables’ that we need to monitor in order to understand how the climate is changing."
         }
       ]
     },
