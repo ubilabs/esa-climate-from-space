@@ -1,5 +1,9 @@
 .splashWrapper {
+  --story-eei-splashcolor: #062c36;
+  --atmosphere-color: #264d54;
   place-content: center;
+  background-color: var(--story-eei-splashcolor);
+
   .introIconContainer {
     display: grid;
     place-items: center;
@@ -14,6 +18,19 @@
 
     @media (--desktop-viewport) {
       font-size: 5rem;
+    }
+  }
+  .sunContainer {
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    svg {
+      height: 100%;
+      width: 100%;
+      fill: none;
     }
   }
 }
