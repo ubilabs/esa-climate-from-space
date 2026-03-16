@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CameraView } from "@ubilabs/esa-webgl-globe";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { setGlobeSpinning } from "../../../reducers/globe/spinning";
 import { setGlobeTime } from "../../../reducers/globe/time";
@@ -21,6 +22,7 @@ interface Props {
 }
 
 export const GetGlobalDataWidget = ({ className }: Props) => {
+  const { isStoryEEI } = useAppRouteFlags();
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
 
@@ -33,8 +35,8 @@ export const GetGlobalDataWidget = ({ className }: Props) => {
   const { mainId, compareId } = selectedLayerIds;
 
   const onMoveStartHandler = useCallback(
-    () => globeSpinning && dispatch(setGlobeSpinning(false)),
-    [dispatch, globeSpinning],
+    () => globeSpinning && !isStoryEEI && dispatch(setGlobeSpinning(false)),
+    [dispatch, globeSpinning, isStoryEEI],
   );
 
   const onMoveEndHandler = useCallback(
@@ -51,10 +53,10 @@ export const GetGlobalDataWidget = ({ className }: Props) => {
 
   // stop globe spinning when layer is selected
   useEffect(() => {
-    if ((mainId || compareId) && globeSpinning) {
+    if ((mainId || compareId) && globeSpinning && !isStoryEEI) {
       dispatch(setGlobeSpinning(false));
     }
-  }, [dispatch, mainId, compareId, globeSpinning]);
+  }, [dispatch, mainId, compareId, globeSpinning, isStoryEEI]);
 
   const handleSetGlobeTime = useCallback(
     (time: number) => dispatch(setGlobeTime(time)),
