@@ -12,6 +12,7 @@ import { useScrollModule } from "../../base-scroll/use-scroll-module";
 
 import { setSelectedLayerIds } from "../../../../../../../../reducers/layers";
 import { setGlobeRenderOptions } from "../../../../../../../../reducers/globe/render-options";
+import { setGlobeSpinning } from "../../../../../../../../reducers/globe/spinning";
 
 import { TreeMapModule } from "../../../../../../../../types/story";
 
@@ -41,7 +42,7 @@ export default function TreeMapGrid({
     // after scrolling one full screen
     const decreasedProgress = progress - 1 / (data.length + 1);
 
-    // Reset to no mask layer when reaching the top or bottom of the scroll
+    // Reset to no mask layer and stop spinning when reaching the top or bottom of the scroll
     if (decreasedProgress <= 0 || progress >= 1) {
       setSelectedLayerId(Layers.EEI_NO_MASK);
       return;
@@ -67,19 +68,25 @@ export default function TreeMapGrid({
 
   useEffect(() => {
     if (selectedLayerId) {
-      if (onHighlightGridCell) {
-        onHighlightGridCell(selectedLayerId);
+      onHighlightGridCell?.(selectedLayerId);
+
+      let renderOptions = config.globe.renderOptions;
+      let spinning = true;
+
+      if (selectedLayerId === Layers.EEI_NO_MASK) {
+        spinning = false;
+      } else if (selectedLayerId === Layers.EEI_ATMOSPHERE_MASK) {
+        renderOptions = { ...renderOptions, ...ATMOSPHERE_MASK_RENDER_OPTIONS };
       }
 
-      if (selectedLayerId === Layers.EEI_ATMOSPHERE_MASK) {
-        dispatch(setGlobeRenderOptions(ATMOSPHERE_MASK_RENDER_OPTIONS));
-      } else {
-        dispatch(setGlobeRenderOptions(config.globe.renderOptions));
-      }
-
+      dispatch(setGlobeRenderOptions(renderOptions));
+      dispatch(setGlobeSpinning(spinning));
       dispatch(
         setSelectedLayerIds({ layerId: selectedLayerId, isPrimary: true }),
       );
+    } else {
+      dispatch(setGlobeRenderOptions(config.globe.renderOptions));
+      dispatch(setGlobeSpinning(false));
     }
   }, [selectedLayerId, dispatch, onHighlightGridCell]);
 
