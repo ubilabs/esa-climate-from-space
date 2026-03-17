@@ -1,5 +1,6 @@
 import {
   FunctionComponent,
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -19,7 +20,8 @@ import { ImageCarouselModule } from "../../../../../../../types/story";
 import { useAppRouteFlags } from "../../../../../../../hooks/use-app-route-flags";
 import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
 import CarouselNavigation from "./carousel-navigation/carousel-navigation";
-import CarouselSlide from "./carousel-slide/carousel-slide";
+import ImageSlide from "./image-slide/image-slide";
+import LayerSlide from "./layer-slide/layer-slide";
 import ScrollModule from "../../../story-eei/modules/base-scroll/module/scroll-module";
 
 import styles from "./image-carousel.module.css";
@@ -36,6 +38,7 @@ const ImageCarousel: FunctionComponent = () => {
   const { isStoryEEI } = useAppRouteFlags();
 
   const slidesContainerRef = useRef<HTMLDivElement>(null);
+  const firstSlideRef = useRef<HTMLDivElement | null>(null);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [slideWidth, setSlideWidth] = useState(0);
   const [fullscreenSlideIndex, setFullscreenSlideIndex] = useState<
@@ -60,6 +63,16 @@ const ImageCarousel: FunctionComponent = () => {
   useEffect(() => {
     updateNavigationVisibility();
   }, [slideWidth, slides?.length]);
+
+  const setFirstSlideRef = useCallback((node: HTMLDivElement | null) => {
+    firstSlideRef.current = node;
+    if (!node) return;
+
+    const width = node.offsetWidth;
+    setSlideWidth((currentWidth) =>
+      currentWidth === width ? currentWidth : width,
+    );
+  }, []);
 
   const updateXPostion = useEffectEvent(() => {
     controls.set({
@@ -126,19 +139,25 @@ const ImageCarousel: FunctionComponent = () => {
               snapToIndex(currentSlideIndex + direction);
             }}
           >
-            {slides.map((slide, index) => (
-              <CarouselSlide
-                key={slide.url || index}
-                slide={slide}
-                index={index}
-                isFullscreen={isFullscreen}
-                fullscreenSlideIndex={fullscreenSlideIndex}
-                onWidthChange={setSlideWidth}
-                storyId={storyId}
-                setIsSlideTouched={setIsSlideTouched}
-                setFullscreenSlideIndex={setFullscreenSlideIndex}
-              />
-            ))}
+            {slides.map((slide, index) => {
+              const slideProps = {
+                slide,
+                index,
+                isFullscreen,
+                fullscreenSlideIndex,
+                slideElementRef: index === 0 ? setFirstSlideRef : undefined,
+                storyId,
+                setIsSlideTouched,
+                setFullscreenSlideIndex,
+              };
+              const key = slide.url || index;
+
+              return "layer" in slide ? (
+                <LayerSlide key={key} {...slideProps} />
+              ) : (
+                <ImageSlide key={key} {...slideProps} />
+              );
+            })}
           </motion.div>
         </div>
         {!isFullscreen && isNavigationVisible && (
