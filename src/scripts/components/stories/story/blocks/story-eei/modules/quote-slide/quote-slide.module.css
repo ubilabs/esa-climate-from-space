@@ -17,8 +17,5 @@
       font-weight: 700;
       margin-bottom: 1rem;
     }
-    span {
-      color: var(--font-55-esa-teal, #98dbce);
-    }
   }
 }

@@ -1,11 +1,13 @@
 import { motion, useTransform } from "motion/react";
+import ReactMarkdown from "react-markdown";
 import { AnimatedArrowsConfig } from "../../animated-arrows/animated-arrows";
 import { useScrollModule } from "../use-scroll-module";
 
 import cx from "classnames";
 
-import styles from "./scroll-text.module.css";
+import config from "../../../../../../../../config/main";
 
+import styles from "./scroll-text.module.css";
 
 interface Props<T> {
   text: string;
@@ -29,7 +31,10 @@ export default function ScrollText<T extends string | number>({
         y: useTransform(scrollYProgress, inputRange, outputRange),
       }}
     >
-      {text}
+      <ReactMarkdown
+        children={text}
+        allowedElements={config.markdownAllowedElements}
+      />
     </motion.div>
   );
 }

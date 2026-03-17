@@ -50,7 +50,7 @@ export default function BoilCount() {
   return (
     <>
       <ScrollText
-        text="Since you arrived on this page, we have trapped enough heat to boil"
+        text="...we have trapped enough heat to boil"
         inputRange={config.scrollText2.input}
         outputRange={config.scrollText2.output}
       />

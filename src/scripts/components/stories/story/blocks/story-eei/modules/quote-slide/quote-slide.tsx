@@ -1,7 +1,10 @@
 import { motion, useTransform } from "motion/react";
+import ReactMarkdown from "react-markdown";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 import ScrollModule from "../base-scroll/module/scroll-module";
 import { useScrollModule } from "../base-scroll/use-scroll-module";
+
+import config from "../../../../../../../config/main";
 
 import styles from "./quote-slide.module.css";
 
@@ -17,7 +20,7 @@ export type QuoteSlideAnimationConfig = typeof animationConfig;
 function QuoteContent() {
   const { module } = useModuleContent();
 
-  const { scrollYProgress, config } =
+  const { scrollYProgress, config: animationConfig } =
     useScrollModule<QuoteSlideAnimationConfig>();
 
   return (
@@ -25,13 +28,17 @@ function QuoteContent() {
       style={{
         opacity: useTransform(
           scrollYProgress,
-          config.fadeIn.input,
-          config.fadeIn.output,
+          animationConfig.fadeIn.input,
+          animationConfig.fadeIn.output,
         ),
       }}
     >
-      <p>{module.quote?.text}</p>
-      <span>{module.quote?.author}</span>
+      <p>
+        <ReactMarkdown
+          children={module.quote?.text}
+          allowedElements={config.markdownAllowedElements}
+        />
+      </p>
     </motion.div>
   );
 }
