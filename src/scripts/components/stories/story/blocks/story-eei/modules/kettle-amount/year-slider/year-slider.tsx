@@ -7,8 +7,8 @@ import styles from "./year-slider.module.css";
 export default function YearSlider() {
   const { config, scrollYProgress } =
     useScrollModule<KettleAmountAnimationConfig>();
-  const startYear = 2000;
-  const numberOfYears = 26;
+  const startYear = 1991;
+  const numberOfYears = 35;
 
   return (
     <motion.div
