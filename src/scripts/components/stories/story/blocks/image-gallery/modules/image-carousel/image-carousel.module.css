@@ -18,6 +18,10 @@
     grid-column: 2 / -1;
   }
 
+  @media screen and (--mobile-viewport) {
+    height: 100%;
+  }
+
   .slidesContainer {
     position: relative;
     width: 100%;
