@@ -33,7 +33,7 @@
         }
       }
     ],
-    "lengthFactor": 3
+    "lengthFactor": 1
   },
   "modules": [
     {
@@ -185,7 +185,7 @@
           }
         }
       ],
-      "lengthFactor": 20,
+      "lengthFactor": 24,
       "type": "kettleAmountModule"
     },
     {
