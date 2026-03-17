@@ -13,36 +13,36 @@ import ScrollText from "../base-scroll/scroll-text/scroll-text";
 const animationConfig = {
   initial: {
     scale: {
-      input: [0, 0.1, 0.4, 0.9, 1],
-      output: [0.01, 0.1, 1, 1, 0.01],
+      input: [0, 0.04, 0.05, 0.17, 0.3, 0.9, 1],
+      output: [0.01, 0.01, 0.4, 0.4, 1, 1, 0.01],
     },
     yPosition: {
-      input: [0, 0.04, 0.1, 0.2],
-      output: ["50%", "50%", "50%", "0%"],
+      input: [0, 0.04, 0.16, 0.2],
+      output: ["-40%", "60%", "60%", "0%"],
     },
     opacity: {
       input: [0, 0.88, 1],
       output: [1, 1, 0],
     },
     bulbOpacity: {
-      input: [0, 0.045, 0.057, 0.06],
-      output: [0, 0, 0.8, 1],
+      input: [0, 0.09, 0.12],
+      output: [0, 0, 1],
     },
     text1: {
-      input: [0, 0.05, 0.055],
-      output: [1, 0.8, 0],
+      input: [0, 0.065, 0.09],
+      output: [1, 1, 0],
     },
     text2: {
-      input: [0, 0.055, 0.06, 0.08, 0.1],
-      output: [0, 0, 1, 1, 0],
+      input: [0, 0.09, 0.12],
+      output: [0, 0, 1],
     },
   },
   bulbExit: {
-    input: [0.1, 0.12],
+    input: [0.16, 0.2],
     output: ["0vh", "-100vh"],
   },
   squareMeterScale: {
-    input: [0.1, 0.45, 0.5],
+    input: [0.15, 0.45, 0.5],
     output: ["8", "8", "1"],
   },
   satellite: {
