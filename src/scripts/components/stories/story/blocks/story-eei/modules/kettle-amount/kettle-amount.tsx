@@ -13,15 +13,15 @@ import ScrollText from "../base-scroll/scroll-text/scroll-text";
 const animationConfig = {
   initial: {
     scale: {
-      input: [0, 0.04, 0.05, 0.17, 0.3, 0.96, 1],
+      input: [0, 0.04, 0.05, 0.17, 0.3, 0.94, 1],
       output: [0.01, 0.01, 0.4, 0.4, 1, 1, 0.01],
     },
     yPosition: {
       input: [0, 0.04, 0.16, 0.2],
-      output: ["-40%", "60%", "60%", "0%"],
+      output: ["-40px", "200px", "200px", "0px"],
     },
     opacity: {
-      input: [0, 0.96, 1],
+      input: [0, 0.94, 1],
       output: [1, 1, 0],
     },
     bulbOpacity: {
@@ -47,36 +47,36 @@ const animationConfig = {
   },
   satellite: {
     xPosition: {
-      input: [0, 0.64, 0.7, 0.94, 1],
-      output: ["-400%", "-400%", "-50%", "-50%", "200%"],
+      input: [0, 0.64, 0.7, 0.9, 0.92],
+      output: ["-400%", "-400%", "-50%", "-50%", "400%"],
     },
     opacity: {
-      input: [0, 0.32, 0.34, 0.99, 1],
+      input: [0, 0.32, 0.34, 0.94, 0.96],
       output: ["0", "0", "1", "1", "0"],
     },
   },
   kettleRows: {
     entryRangeStart: 0.35,
     entryRangeEnd: 0.55,
-    exitRangeStart: 0.9,
-    exitRangeEnd: 0.94,
+    exitRangeStart: 0.87,
+    exitRangeEnd: 0.89,
     opacity: {
-      input: [0, 0.94, 0.96],
+      input: [0, 0.89, 0.9],
       output: ["1", "1", "0"],
     },
   },
   yearSlider: {
     fadeIn: {
-      input: [0, 0.4, 0.45, 0.94, 0.95],
+      input: [0, 0.4, 0.45, 0.89, 0.9],
       output: ["0", "0", "1", "1", "0"],
     },
     slide: {
-      input: [0, 0.84, 0.9],
+      input: [0, 0.84, 0.87],
       output: ["-49%", "-49%", "37.5%"],
     },
   },
   scrollText: {
-    input: [0, 0.97, 0.97, 0.99, 1],
+    input: [0, 0.91, 0.92, 0.99, 1],
     output: ["100%", "100%", "30%", "0%", "-100%"],
   },
 };
@@ -100,7 +100,7 @@ export default function KettleAmountModule() {
       text: intl.formatMessage({ id: "story.eei.kettle.overlay2" }),
     },
     {
-      inputRange: [0.85, 0.9, 0.92, 0.94],
+      inputRange: [0.85, 0.86, 0.88, 0.9],
       text: intl.formatMessage({ id: "story.eei.kettle.overlay3" }),
     },
   ];
