@@ -49,12 +49,6 @@ export default function BoilCount() {
 
   return (
     <>
-      <ScrollText
-        text="…we have trapped enough heat to boil"
-        inputRange={config.scrollText2.input}
-        outputRange={config.scrollText2.output}
-      />
-
       <motion.div
         className={styles.countWrapper}
         style={{
@@ -65,6 +59,11 @@ export default function BoilCount() {
           ),
         }}
       >
+        <ScrollText
+          inputRange={[1]}
+          outputRange={[1]}
+          text="…we have trapped enough heat to boil"
+        ></ScrollText>
         <div className={styles.countContainer}>
           <span className={styles.count}>
             {formatNumber(deferredCount, isMobile)}
@@ -74,12 +73,12 @@ export default function BoilCount() {
             kettles of water
           </span>
         </div>
+        <ScrollText
+          inputRange={[1]}
+          outputRange={[1]}
+          text="since you arrived on this page."
+        ></ScrollText>
       </motion.div>
-      <ScrollText
-        text="since you arrived on this page."
-        inputRange={config.scrollText2.input}
-        outputRange={config.scrollText2.output}
-      />
     </>
   );
 }
