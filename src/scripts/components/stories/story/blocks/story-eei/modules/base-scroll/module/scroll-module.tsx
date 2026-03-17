@@ -6,7 +6,6 @@ import {
   useRef,
 } from "react";
 
-import { useMotionValueEvent } from "motion/react";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 
 import { StorySectionProps } from "../../../../../../../../types/story";
@@ -56,10 +55,6 @@ const ScrollModule: FunctionComponent<Props> & {
   const { scrollY, scrollYProgress } = useStoryScroll({
     target: moduleRef,
     offset: ["start end", "end end"],
-  });
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("x changed to", latest);
   });
 
   const contextValue = useMemo(

@@ -185,7 +185,7 @@
           }
         }
       ],
-      "lengthFactor": 20,
+      "lengthFactor": 24,
       "type": "kettleAmountModule"
     },
     {
