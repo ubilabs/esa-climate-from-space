@@ -13,7 +13,7 @@ import ScrollText from "../base-scroll/scroll-text/scroll-text";
 const animationConfig = {
   initial: {
     scale: {
-      input: [0, 0.04, 0.05, 0.17, 0.3, 0.94, 1],
+      input: [0, 0.04, 0.05, 0.17, 0.3, 0.96, 1],
       output: [0.01, 0.01, 0.4, 0.4, 1, 1, 0.01],
     },
     yPosition: {
@@ -47,8 +47,8 @@ const animationConfig = {
   },
   satellite: {
     xPosition: {
-      input: [0, 0.64, 0.7, 0.92, 1],
-      output: ["-400%", "-400%", "-50%", "-50%", "400%"],
+      input: [0, 0.64, 0.7, 0.94, 1],
+      output: ["-400%", "-400%", "-50%", "-50%", "200%"],
     },
     opacity: {
       input: [0, 0.32, 0.34, 0.99, 1],
@@ -60,6 +60,10 @@ const animationConfig = {
     entryRangeEnd: 0.55,
     exitRangeStart: 0.9,
     exitRangeEnd: 0.94,
+    opacity: {
+      input: [0, 0.94, 0.96],
+      output: ["1", "1", "0"],
+    },
   },
   yearSlider: {
     fadeIn: {
@@ -67,12 +71,12 @@ const animationConfig = {
       output: ["0", "0", "1", "1", "0"],
     },
     slide: {
-      input: [0, 0.8, 0.94],
-      output: ["-49%", "-49%", "10%"],
+      input: [0, 0.84, 0.9],
+      output: ["-49%", "-49%", "37.5%"],
     },
   },
   scrollText: {
-    input: [0, 0.9, 0.96, 0.98, 1],
+    input: [0, 0.97, 0.97, 0.99, 1],
     output: ["100%", "100%", "30%", "0%", "-100%"],
   },
 };
@@ -96,7 +100,7 @@ export default function KettleAmountModule() {
       text: intl.formatMessage({ id: "story.eei.kettle.overlay2" }),
     },
     {
-      inputRange: [0.85, 0.87, 0.92, 0.94],
+      inputRange: [0.85, 0.9, 0.92, 0.94],
       text: intl.formatMessage({ id: "story.eei.kettle.overlay3" }),
     },
   ];
