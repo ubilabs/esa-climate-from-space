@@ -56,12 +56,10 @@ const animationConfig = {
     },
   },
   kettleRows: {
-    rangeStart: 0.7,
-    rangeEnd: 0.84,
-    fadeIn: {
-      input: [0.45, 0.55],
-      output: [0, 1],
-    },
+    entryRangeStart: 0.45,
+    entryRangeEnd: 0.55,
+    exitRangeStart: 0.7,
+    exitRangeEnd: 0.84,
   },
   yearSlider: {
     fadeIn: {
