@@ -114,7 +114,7 @@ export default function KettleAmountModule() {
           <KettleOverlay key={index} {...overlay} />
         ))}
         <ScrollText
-          text="That square metre is now trapping much more heat."
+          text="That square metre is now trapping three times as much heat"
           inputRange={animationConfig.scrollText.input}
           outputRange={animationConfig.scrollText.output}
         />
