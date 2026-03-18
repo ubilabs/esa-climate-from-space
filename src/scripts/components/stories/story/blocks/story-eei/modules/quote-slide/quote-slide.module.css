@@ -9,7 +9,7 @@
     text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
     height: fit-content;
     border-left: 4px solid var(--Background-ESA-Teal, #00b398);
-    top: 50%;
+    top: 25%;
 
     p {
       line-height: 150%; /* 30px */

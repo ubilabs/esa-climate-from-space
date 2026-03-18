@@ -7,8 +7,19 @@
         "y": -1
       },
       "location": {
-        "lat": 51.5074,
-        "lng": -0.1278,
+        "lat": 23,
+        "lng": -30,
+        "altitude": 18040000
+      }
+    },
+    "desktop": {
+      "containerPosition": {
+        "x": 0,
+        "y": -1
+      },
+      "location": {
+        "lat": 23,
+        "lng": -30,
         "altitude": 18040000
       }
     }
@@ -26,14 +37,14 @@
             "y": -1
           },
           "location": {
-            "lat": 51.5074,
-            "lng": -0.1278,
+            "lat": 23,
+            "lng": -30,
             "altitude": 18040000
           }
         }
       }
     ],
-    "lengthFactor": 1
+    "lengthFactor": 2
   },
   "modules": [
     {
@@ -46,8 +57,8 @@
               "y": -1
             },
             "location": {
-              "lat": 51.5074,
-              "lng": -0.1278,
+              "lat": 23,
+              "lng": -30,
               "altitude": 18040000
             }
           }
@@ -60,8 +71,8 @@
               "y": -0.5
             },
             "location": {
-              "lat": 51.5074,
-              "lng": -0.1278,
+              "lat": 23,
+              "lng": -30,
               "altitude": 18040000
             }
           }
@@ -74,8 +85,8 @@
               "y": -0.5
             },
             "location": {
-              "lat": 51.5074,
-              "lng": -0.1278,
+              "lat": 23,
+              "lng": -30,
               "altitude": 18040000
             }
           }
@@ -88,8 +99,8 @@
               "y": 0
             },
             "location": {
-              "lat": 51.5074,
-              "lng": -0.1278,
+              "lat": 23,
+              "lng": -30,
               "altitude": 18040000
             }
           }
@@ -102,8 +113,8 @@
               "y": 0
             },
             "location": {
-              "lat": 51.5074,
-              "lng": -35.1278,
+              "lat": 23,
+              "lng": -30,
               "altitude": 12040000
             }
           }
@@ -116,8 +127,8 @@
               "y": 0
             },
             "location": {
-              "lat": 51.5074,
-              "lng": -35.1278,
+              "lat": 23,
+              "lng": -30,
               "altitude": 8040000
             }
           }
@@ -130,8 +141,8 @@
               "y": 0
             },
             "location": {
-              "lat": 51.5074,
-              "lng": -35.1278,
+              "lat": 23,
+              "lng": -30,
               "altitude": 80000
             }
           }
@@ -415,7 +426,7 @@
       "lengthFactor": 5,
       "type": "quoteSlide",
       "quote": {
-        "text": "The MOTECUSOMA team is nearing completion of the EEI and TAS estimation official datasets. Scientific analyses using these datasets are scheduled to start in the coming months.",
+        "text": "The CCI project Monitoring the Energy Cycle for a Better Understanding of Climate Change (MOTECUSOMA) is calculating new estimates of Earth’s energy imbalance and surface air temperature. Scientific analyses using these datasets will help climate modelers forecast future changes with more accuracy.",
         "author": "MOTECUSOMA Team"
       }
     },

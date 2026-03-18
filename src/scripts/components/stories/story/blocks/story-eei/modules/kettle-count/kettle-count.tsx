@@ -44,12 +44,12 @@ export default function KettleCount() {
         />
         <BoilCount />
         <ScrollText
-          text="This excess energy fuels the changes we are seeing in Earth’s climate. It is the engine behind stronger storms, floods, droughts, and rising seas."
+          text="This excess energy fuels the changes we are seeing in Earth’s climate. It is the engine behind stronger storms, floods, droughts and rising seas"
           inputRange={animationConfig.scrollText3.input}
           outputRange={animationConfig.scrollText3.output}
         />
         <ScrollText
-          text="ESA’s Climate Change Initiative is using satellite observations of the land, ocean, atmosphere and icecaps to measure individual components of Earth’s energy budget."
+          text="ESA’s Climate Change Initiative is using satellite observations of the land, ocean, icecaps and atmosphere to measure individual components of Earth’s energy budget. "
           inputRange={animationConfig.scrollText4.input}
           outputRange={animationConfig.scrollText4.output}
         />

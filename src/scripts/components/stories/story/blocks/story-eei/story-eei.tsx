@@ -24,6 +24,8 @@ import AnimatedArrowsModule from "./modules/animated-arrows/animated-arrows";
 import KettleCount from "./modules/kettle-count/kettle-count";
 import QuoteSlide from "./modules/quote-slide/quote-slide";
 import TreeMapModule from "./modules/tree-map/tree-map";
+import { setFlyTo } from "../../../../../reducers/fly-to";
+import { useScreenSize } from "../../../../../hooks/use-screen-size";
 
 export type StoryEEICompoundComponents = {
   BaseSlide: typeof ScrollModule;
@@ -41,6 +43,8 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   const { mainId } = useSelector(selectedLayerIdsSelector);
   const { story } = useStory();
 
+  const { isMobile } = useScreenSize();
+
   const initialGlobe = useMemo(
     () => story?.initialglobeConfig ?? undefined,
     [story],
@@ -48,19 +52,34 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
 
   // set initial globe container position
   useLayoutEffect(() => {
+    const device = isMobile ? "mobile" : "desktop";
+
+    const initialContainer = initialGlobe?.[device].containerPosition
+    const initialPosition = initialGlobe?.[device].location
+
     const root = document.documentElement;
-    if (initialGlobe?.containerPosition) {
+
+    if (initialContainer) {
       root.style.setProperty(
         "--globe-container-y",
-        `${initialGlobe?.containerPosition.y * -100}vh`,
+        `${initialContainer.y * -100}vh`,
       );
 
       root.style.setProperty(
         "--globe-container-x",
-        `${initialGlobe?.containerPosition.x * -100}vw`,
+        `${initialContainer.x * -100}vw`,
       );
     }
-  }, [initialGlobe]);
+    if (initialPosition) {
+      dispatch(
+        setFlyTo({
+          lat: initialPosition.lat,
+          lng: initialPosition.lng,
+          altitude: initialPosition.altitude,
+        }),
+      );
+    }
+  }, [initialGlobe, dispatch, isMobile]);
 
   const updateSelectedEEILayer = useEffectEvent(() => {
     dispatch(

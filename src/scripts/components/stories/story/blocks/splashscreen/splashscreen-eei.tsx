@@ -1,29 +1,94 @@
+import { FunctionComponent } from "react";
+import { motion, useTransform } from "motion/react";
+
 import { useScreenSize } from "../../../../../hooks/use-screen-size";
+import { useScrollModule } from "../story-eei/modules/base-scroll/use-scroll-module";
+import { useIntl } from "react-intl";
 import { useStory } from "../../../../../providers/story/use-story";
-import { StoryIcon } from "../../../../main/icons/story-icon";
+
 import ScrollModule from "../story-eei/modules/base-scroll/module/scroll-module";
 import { ArrowUpIcon } from "../../../../main/icons/arrow-up-icon";
 import { MouseIcon } from "../../../../main/icons/mouse-icon";
 import { ArrowDownIcon } from "../../../../main/icons/arrow-down-icon";
 
-import { useIntl } from "react-intl";
-
 import cx from "classnames";
 
 import styles from "./splashscreen-eei.module.css";
 
+
+const animationConfig = {
+  gestureIndicator: {
+    input: [0.5, 0.8],
+    output: ["100%", "0%"],
+  },
+  title: {
+    input: [0.5, 1],
+    output: ["-10vh", "-50vh"],
+  },
+};
+
+export type SplashAnimationConfig = typeof animationConfig;
+
+const GestureIndicator = () => {
+  const { isTouchDevice } = useScreenSize();
+  const intl = useIntl();
+  const { scrollYProgress } = useScrollModule<SplashAnimationConfig>();
+
+  return (
+    <motion.div
+      style={{
+        opacity: useTransform(
+          scrollYProgress,
+          animationConfig.gestureIndicator.input,
+          animationConfig.gestureIndicator.output,
+        ),
+      }}
+      aria-hidden="true"
+      className={cx(
+        // Make sure to show the gesture indicator depending on whether it is touch screen device
+        styles.gestureIndicator,
+        isTouchDevice ? styles.touch : styles.scroll,
+      )}
+      data-content={intl.formatMessage({
+        id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
+      })}
+    >
+      <ArrowUpIcon />
+      <MouseIcon />
+      <ArrowDownIcon />
+    </motion.div>
+  );
+};
+
+const Title: FunctionComponent<{ title: string }> = ({ title }) => {
+  const { scrollYProgress } = useScrollModule<SplashAnimationConfig>();
+  return (
+    <motion.h1
+      className={styles.title}
+      style={{
+        y: useTransform(
+          scrollYProgress,
+          animationConfig.title.input,
+          animationConfig.title.output,
+        ),
+      }}
+    >
+      {title}
+    </motion.h1>
+  );
+};
+
 export default function SplashscreenEei() {
   const { story } = useStory();
   const splashConfig = story?.splashscreen;
-  const { isTouchDevice } = useScreenSize();
-  const intl = useIntl();
 
   return (
-    <ScrollModule config={{}} lengthFactor={splashConfig?.lengthFactor ?? 1}>
-      <ScrollModule.StickyContainer className={styles.splashWrapper}>
+    <ScrollModule
+      config={animationConfig}
+      lengthFactor={splashConfig?.lengthFactor ?? 1}
+    >
+      <ScrollModule.StickyContainer className={styles.splashWrapper} isGrid>
         <div className={styles.introIconContainer}>
-          {<StoryIcon isHollow />}
-          Story
           <div className={styles.sunContainer}>
             <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMin slice">
               <defs>
@@ -75,23 +140,8 @@ export default function SplashscreenEei() {
             </svg>
           </div>
         </div>
-        <div className={styles.title}>{splashConfig?.title}</div>
-
-        <div
-          aria-hidden="true"
-          className={cx(
-            // Make sure to show the gesture indicator depending on whether it is touch screen device
-            styles.gestureIndicator,
-            isTouchDevice ? styles.touch : styles.scroll,
-          )}
-          data-content={intl.formatMessage({
-            id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
-          })}
-        >
-          <ArrowUpIcon />
-          <MouseIcon />
-          <ArrowDownIcon />
-        </div>
+        <Title title={splashConfig?.title ?? ""} />
+        <GestureIndicator />
       </ScrollModule.StickyContainer>
     </ScrollModule>
   );

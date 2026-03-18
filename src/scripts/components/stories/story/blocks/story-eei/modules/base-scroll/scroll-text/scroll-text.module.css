@@ -1,5 +1,6 @@
 .scrollText {
-  width: min(90%, 1200px);
+  text-wrap: pretty;
+  width: min(90%, 1400px);
   margin: 0 auto;
   display: grid;
   place-content: center;
