@@ -14,7 +14,7 @@ import {
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
 import { useStory } from "../../../../../../../../providers/story/use-story";
-import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 
 import config from "../../../../../../../../config/main";
 
@@ -31,7 +31,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
 }) => {
   const { module, storyId, getRefCallback } = useModuleContent();
   const { lenisRef } = useStory();
-  const { isTouchDevice } = useScreenSize();
+  const { isTouchDevice } = useScreenInfo();
 
   const sensitivityFactor = isTouchDevice ? 2.5 : 1
 

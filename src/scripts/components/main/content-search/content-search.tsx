@@ -5,7 +5,7 @@ import { useMatomo } from "@streamr/matomo-tracker-react";
 import debounce from "lodash.debounce";
 
 import { useSearch } from "../../../hooks/use-search";
-import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../hooks/use-screen-info";
 
 import { ActiveSearchState, Filter, FilterType } from "../../../types/search";
 
@@ -29,7 +29,7 @@ export default function ContentSearch() {
   const search = useSearch();
   const intl = useIntl();
   const { trackSiteSearch } = useMatomo();
-  const { isDesktop } = useScreenSize();
+  const { isDesktop } = useScreenInfo();
   const [query, setQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState<FilterType>(FilterType.All);
   const searchResult = search(query);

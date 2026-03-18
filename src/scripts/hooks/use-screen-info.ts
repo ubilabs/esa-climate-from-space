@@ -7,7 +7,7 @@ const DESKTOP_WIDTH = 1024;
 // debounce the time update
 const DELAY = 500;
 
-export function useScreenSize() {
+export function useScreenInfo() {
   const [dimensions, setDimensions] = useState({
     screenHeight: Math.floor(window.innerHeight),
     screenWidth: Math.floor(window.innerWidth),

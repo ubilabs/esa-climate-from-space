@@ -2,7 +2,7 @@ import { useState, useRef, FunctionComponent, SyntheticEvent } from "react";
 import { useIntl } from "react-intl";
 import { motion, useMotionValue, useTransform } from "motion/react";
 import { useGesture } from "@use-gesture/react";
-import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 import { useLenisToggle } from "../../../../../../../../hooks/use-lenis-toggle";
 
@@ -35,7 +35,7 @@ export const ScrollImage: FunctionComponent<Props> = ({
   const [showInstructions, setShowInstructions] = useState(true);
 
   const intl = useIntl();
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useScreenInfo();
 
   useLenisToggle(isFullscreen);
 
