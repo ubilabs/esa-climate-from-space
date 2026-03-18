@@ -9,7 +9,7 @@ import TreeMapGrid from "./tree-map-grid/tree-map-grid";
 import styles from "./tree-map.module.css";
 
 export default function TreeMapModule() {
-  const { module } = useModuleContent();
+  const { module, getRefCallback } = useModuleContent();
   const [highlightedLayerId, setHighlightedLayerId] = useState<string | null>(
     null,
   );
@@ -25,7 +25,7 @@ export default function TreeMapModule() {
 
   return (
     <ScrollModule lengthFactor={module.lengthFactor} config={null}>
-      <ScrollModule.StickyContainer>
+      <ScrollModule.StickyContainer ref={getRefCallback(0, 0)}>
         <div className={styles.slide}>
           <h1 className={styles.label}>{highlightedData?.label}</h1>
           <div className={styles.panelContainer}>

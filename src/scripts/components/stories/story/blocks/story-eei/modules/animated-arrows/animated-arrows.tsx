@@ -31,7 +31,7 @@ const animationConfig = {
 export type AnimatedArrowsConfig = typeof animationConfig;
 
 export default function AnimatedArrowsModule() {
-  const { module } = useModuleContent();
+  const { module, getRefCallback } = useModuleContent();
   const eeiModule = module as StoryEEIModule;
 
   return (
@@ -39,7 +39,7 @@ export default function AnimatedArrowsModule() {
       lengthFactor={eeiModule.lengthFactor}
       config={animationConfig}
     >
-      <ScrollModule.StickyContainer isGrid>
+      <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <Arrows />
 
         <ScrollText

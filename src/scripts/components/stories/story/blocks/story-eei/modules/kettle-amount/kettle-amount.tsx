@@ -84,7 +84,7 @@ const animationConfig = {
 export type KettleAmountAnimationConfig = typeof animationConfig;
 
 export default function KettleAmountModule() {
-  const { module } = useModuleContent();
+  const { module, getRefCallback } = useModuleContent();
   const eeiModule = module as StoryEEIModule;
 
   const overlays: Array<KettleOverlayProps> = [
@@ -107,7 +107,7 @@ export default function KettleAmountModule() {
       config={animationConfig}
       lengthFactor={eeiModule.lengthFactor}
     >
-      <ScrollModule.StickyContainer isGrid>
+      <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <BulbAnimation />
         <KettleBox />
         {overlays.map((overlay, index) => (
