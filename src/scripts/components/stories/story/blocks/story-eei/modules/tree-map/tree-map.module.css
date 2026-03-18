@@ -6,16 +6,11 @@
   padding-left: 5%;
 
   --headline-font-size: 3.875rem;
-  @media screen and (--mobile-viewport) {
-    --headline-font-size: 2.5rem;
-  }
-
   --top-spacing: 3.875rem;
   @media screen and (--mobile-viewport) {
+    --headline-font-size: 2.5rem;
     --top-spacing: 2.5rem;
-  }
 
-  @media screen and (--mobile-viewport) {
     justify-content: center;
     align-items: flex-end;
     padding-left: 0;
