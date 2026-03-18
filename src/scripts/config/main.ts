@@ -231,11 +231,14 @@ export default {
   ],
   lenisOptions: {
     // Gentle mouse wheel for story reading
-    wheelMultiplier: 0.8,
+    wheelMultiplier: 1,
     touchMultiplier: 1,
     smoothTouch: true,
     smoothWheel: true,
-
+    lerp: 0.1,
+    infinite: false,
+    syncTouchLerp: 0.075,
+    touchInertiaMultiplier: 16,
     // Modern iOS touch sync
     syncTouch: !isIos16orLower(),
 
