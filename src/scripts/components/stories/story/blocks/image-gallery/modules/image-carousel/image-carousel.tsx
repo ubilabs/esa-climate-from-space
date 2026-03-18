@@ -10,7 +10,7 @@ import { motion, useAnimationControls } from "motion/react";
 import cx from "classnames";
 import { FormattedMessage } from "react-intl";
 
-import { useScreenSize } from "../../../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 import { useLenisToggle } from "../../../../../../../hooks/use-lenis-toggle";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
@@ -33,7 +33,7 @@ const VELOCITY = 300;
 const ImageCarousel: FunctionComponent = () => {
   const { module, storyId, getRefCallback } = useModuleContent();
   const { slides, lengthFactor } = module as ImageCarouselModule;
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useScreenInfo();
   const controls = useAnimationControls();
   const { isStoryEEI } = useAppRouteFlags();
 

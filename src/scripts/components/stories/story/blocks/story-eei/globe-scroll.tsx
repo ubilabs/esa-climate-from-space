@@ -6,7 +6,7 @@ import {
   useMotionValueEvent,
   useTransform,
 } from "motion/react";
-import { useScreenSize } from "../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../hooks/use-screen-info";
 
 import { quantize } from "../../../../../libs/quantize";
 import { setFlyTo } from "../../../../../reducers/fly-to";
@@ -51,7 +51,7 @@ interface Props {
 const GlobeScroll: FunctionComponent<Props> = ({
   initialGlobeConfiguration,
 }) => {
-  const { isDesktop } = useScreenSize();
+  const { isDesktop } = useScreenInfo();
   const { story } = useStory();
   const modules = story?.modules ?? [];
   const splashscreen = story?.splashscreen;

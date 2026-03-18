@@ -36,7 +36,7 @@ import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
 import { LayerType } from "../../../types/globe-layer-type";
-import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../hooks/use-screen-info";
 
 import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
@@ -224,7 +224,7 @@ function useGlobeLayers(
  * Updates the markers on the globe when they become available.
  */
 function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
-  const { isDesktop } = useScreenSize();
+  const { isDesktop } = useScreenInfo();
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import { motion, useTransform } from "motion/react";
 import ScrollText from "../../base-scroll/scroll-text/scroll-text";
 import { KettleCountConfig } from "../kettle-count";
 import { KettleIcon } from "../../../../../../../main/icons/kettle-icon";
-import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
 import { StoryEEIModule } from "../../../../../../../../types/story";
 
@@ -38,7 +38,7 @@ export default function BoilCount() {
   // let react priorizite other UI updates
   const deferredCount = useDeferredValue(value);
 
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useScreenInfo();
   const { scrollYProgress, config } = useScrollModule<KettleCountConfig>();
   const { module } = useModuleContent();
 

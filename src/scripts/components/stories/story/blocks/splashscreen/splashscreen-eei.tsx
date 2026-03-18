@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { motion, useTransform } from "motion/react";
 
-import { useScreenSize } from "../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../hooks/use-screen-info";
 import { useScrollModule } from "../story-eei/modules/base-scroll/use-scroll-module";
 import { useIntl } from "react-intl";
 import { useStory } from "../../../../../providers/story/use-story";
@@ -30,7 +30,7 @@ const animationConfig = {
 export type SplashAnimationConfig = typeof animationConfig;
 
 const GestureIndicator = () => {
-  const { isTouchDevice } = useScreenSize();
+  const { isTouchDevice } = useScreenInfo();
   const intl = useIntl();
   const { scrollYProgress } = useScrollModule<SplashAnimationConfig>();
 

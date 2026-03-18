@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 import { useIntl } from "react-intl";
 import cx from "classnames";
 
@@ -19,7 +19,7 @@ const CarouselNavigation: FunctionComponent<Props> = ({
   slides,
   snapToIndex,
 }) => {
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useScreenInfo();
   const intl = useIntl();
 
   return (

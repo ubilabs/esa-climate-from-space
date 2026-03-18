@@ -25,7 +25,7 @@ import KettleCount from "./modules/kettle-count/kettle-count";
 import QuoteSlide from "./modules/quote-slide/quote-slide";
 import TreeMapModule from "./modules/tree-map/tree-map";
 import { setFlyTo } from "../../../../../reducers/fly-to";
-import { useScreenSize } from "../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../hooks/use-screen-info";
 
 export type StoryEEICompoundComponents = {
   BaseSlide: typeof ScrollModule;
@@ -43,7 +43,7 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   const { mainId } = useSelector(selectedLayerIdsSelector);
   const { story } = useStory();
 
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useScreenInfo();
 
   const initialGlobe = useMemo(
     () => story?.initialglobeConfig ?? undefined,

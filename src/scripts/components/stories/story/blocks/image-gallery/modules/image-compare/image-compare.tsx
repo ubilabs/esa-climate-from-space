@@ -7,7 +7,7 @@ import { SlideContainer } from "../../../../../layout/slide-container/slide-cont
 import { ComparisonViewer } from "./comparison-viewer/comparison-viewer";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
-import { useScreenSize } from "../../../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 
 import cx from "classnames";
 
@@ -22,7 +22,7 @@ const ImageCompare: FunctionComponent<StorySectionProps> = () => {
 
   const [isComparing, setIsComparing] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useScreenInfo();
   const intl = useIntl();
 
   if (!slides || slides.length < 2) {
