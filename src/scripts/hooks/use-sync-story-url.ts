@@ -10,6 +10,7 @@ import { getCssVarPx } from "../libs/get-css-var-in-px";
 export const useSyncStoryUrl = () => {
   const { getScrollAnchorRefsMap, storyElementRef, story, lenisRef } =
     useStory();
+
   const { trackPageView } = useMatomo();
   const activeNodeKeyRef = useRef<string | null>(null);
 
@@ -30,8 +31,17 @@ export const useSyncStoryUrl = () => {
     const headerHeight = getCssVarPx("--header-height");
 
     if (story && lenisRef.current && initialSlideIndex > 0) {
+      const lengthfactor = story.modules
+        .slice(0, initialSlideIndex - 1)
+        .reduce((sum, current) => {
+          return (
+            sum + (("lengthFactor" in current ? current.lengthFactor : 0) ?? 0)
+          );
+        }, story.splashscreen.lengthFactor ?? 1);
+
       lenisRef.current.scrollTo(
-        initialSlideIndex * (window.innerHeight - headerHeight),
+        (lengthfactor ?? initialSlideIndex) *
+          (window.innerHeight - headerHeight),
         {
           force: true,
           onComplete: () => {
