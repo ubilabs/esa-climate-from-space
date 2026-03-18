@@ -4,32 +4,32 @@ import { motion, useTransform } from "motion/react";
 import ScrollText from "../../base-scroll/scroll-text/scroll-text";
 import { KettleCountConfig } from "../kettle-count";
 import { KettleIcon } from "../../../../../../../main/icons/kettle-icon";
-import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
 import { StoryEEIModule } from "../../../../../../../../types/story";
 
 import styles from "./boil-count.module.css";
 
-function formatNumber(value: number, isMobile: boolean): string {
-  if (isMobile) {
-    // Mobile: always abbreviate with billions
-    const billions = value / 1_000_000_000;
-    const formattedNumber = billions.toFixed(2);
-    const withDots = formattedNumber.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    return `${withDots}B`;
+function formatNumber(value: number): string {
+  // Show up to 12 digits without abbreviation (< 1 trillion)
+  if (value < 1_000_000_000_000) {
+    return value.toLocaleString("en-US");
   }
 
-  // Desktop: show full number until trillions
-  if (value < 1_000_000_000_000) {
-    // Below 1 trillion: show full number with dot separators
-    return value.toLocaleString("de-DE"); // German locale uses dots as thousand separators
-  } else {
-    // 1 trillion and above: abbreviate with T suffix
-    const trillions = value / 1_000_000_000_000;
-    const formattedNumber = trillions.toFixed(3);
-    const withDots = formattedNumber.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    return `${withDots}T`;
-  }
+  // 1 trillion and above: abbreviate with T suffix
+  const trillions = value / 1_000_000_000_000;
+
+  // Calculate decimal places to show ~9-10 significant digits total
+  const decimals = trillions < 10 ? 9 : trillions < 100 ? 8 : 7;
+  const formatted = trillions.toFixed(decimals);
+  const [integer, decimal] = formatted.split(".");
+
+  // Add commas to integer part
+  const integerWithCommas = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  // Add commas to decimal part (every 3 digits)
+  const decimalWithCommas = decimal.replace(/(\d{3})(?=\d)/g, "$1,");
+
+  return `${integerWithCommas}.${decimalWithCommas}T`;
 }
 
 export default function BoilCount() {
@@ -38,7 +38,6 @@ export default function BoilCount() {
   // let react priorizite other UI updates
   const deferredCount = useDeferredValue(value);
 
-  const { isMobile } = useScreenInfo();
   const { scrollYProgress, config } = useScrollModule<KettleCountConfig>();
   const { module } = useModuleContent();
 
@@ -68,9 +67,7 @@ export default function BoilCount() {
       <motion.div className={styles.countWrapper} style={{ y }}>
         <ScrollText text={eeiModule.content.boilText1 || ""}></ScrollText>
         <div className={styles.countContainer}>
-          <span className={styles.count}>
-            {formatNumber(deferredCount, isMobile)}
-          </span>
+          <span className={styles.count}>{formatNumber(deferredCount)}</span>
           <span className={styles.text}>
             <KettleIcon />
             kettles of water
