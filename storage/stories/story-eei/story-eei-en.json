@@ -148,11 +148,12 @@
           }
         }
       ],
-      "lengthFactor": 12,
+      "lengthFactor": 16,
       "type": "animatedArrowsModule",
       "content": {
         "scrollText1": "Earth's energy is out of balance.",
-        "scrollText2": "More energy comes in from the Sun than we lose to space."
+        "scrollText2": "More energy comes in from the Sun than we lose to space.",
+        "scrollText3": "Increasing amounts of greenhouse gases in the atmosphere are trapping some of the incoming energy as heat"
       }
     },
     {

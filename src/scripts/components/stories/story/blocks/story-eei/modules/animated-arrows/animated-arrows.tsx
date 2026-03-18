@@ -26,6 +26,10 @@ const animationConfig = {
     input: [0.29, 0.32158, 0.39, 0.49, 0.5325],
     output: ["100%", "100%", "-40%", "-40%", "-100%"],
   },
+  scrollText3: {
+    input: [0.5, 0.7, 0.75, 1.1, 1.2],
+    output: ["100%", "100%", "0%", "0%", "-100%"],
+  },
 };
 
 export type AnimatedArrowsConfig = typeof animationConfig;
@@ -52,6 +56,11 @@ export default function AnimatedArrowsModule() {
           text={eeiModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
+        />
+        <ScrollText
+          text={eeiModule.content?.scrollText3 || ""}
+          inputRange={animationConfig.scrollText3.input}
+          outputRange={animationConfig.scrollText3.output}
         />
       </ScrollModule.StickyContainer>
     </ScrollModule>
