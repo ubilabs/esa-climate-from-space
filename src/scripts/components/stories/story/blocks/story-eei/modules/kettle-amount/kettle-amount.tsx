@@ -13,7 +13,7 @@ import ScrollText from "../base-scroll/scroll-text/scroll-text";
 const animationConfig = {
   initial: {
     scale: {
-      input: [0, 0.04, 0.05, 0.17, 0.3, 0.88, 0.9],
+      input: [0, 0.04, 0.05, 0.17, 0.3, 0.95, 1],
       output: [0.01, 0.01, 0.4, 0.4, 1, 1, 0.01],
     },
     yPosition: {
@@ -21,7 +21,7 @@ const animationConfig = {
       output: ["-40px", "200px", "200px", "0px"],
     },
     opacity: {
-      input: [0, 0.88, 0.9],
+      input: [0, 0.98, 1],
       output: [1, 1, 0],
     },
     bulbOpacity: {
@@ -76,8 +76,8 @@ const animationConfig = {
     },
   },
   scrollText: {
-    input: [0, 0.89, 0.89, 0.895, 0.9],
-    output: ["100%", "100%", "30%", "0%", "-100%"],
+    input: [0, 0.87, 0.95, 0.98, 1],
+    output: ["100%", "100%", "0%", "0%", "-100%"],
   },
 };
 
