@@ -12,10 +12,16 @@ export default function KettleOverlay({
   text,
 }: KettleOverlayProps) {
   const { scrollYProgress } = useScrollModule();
-  const opacity = useTransform(scrollYProgress, inputRange, [0, 1, 1, 0]);
+
+  const y = useTransform(scrollYProgress, inputRange, [
+    "100vh",
+    "0vh",
+    "0vh",
+    "-100vh",
+  ]);
 
   return (
-    <motion.div className={styles.kettleOverlay} style={{ opacity }}>
+    <motion.div className={styles.kettleOverlay} style={{ y }}>
       {text}
     </motion.div>
   );
