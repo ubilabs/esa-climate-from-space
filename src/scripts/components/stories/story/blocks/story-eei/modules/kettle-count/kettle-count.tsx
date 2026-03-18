@@ -34,6 +34,11 @@ export default function KettleCount() {
   const { module } = useModuleContent();
   const eeiModule = module as StoryEEIModule;
 
+  if (!eeiModule.content) {
+    console.warn("no content provided for ", module.type);
+    return null;
+  }
+
   return (
     <ScrollModule
       config={animationConfig}
@@ -41,18 +46,18 @@ export default function KettleCount() {
     >
       <ScrollModule.StickyContainer isGrid>
         <ScrollText
-          text={eeiModule.content?.scrollText1 || ""}
+          text={eeiModule.content.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
         <BoilCount />
         <ScrollText
-          text={eeiModule.content?.scrollText3 || ""}
+          text={eeiModule.content.scrollText3 || ""}
           inputRange={animationConfig.scrollText3.input}
           outputRange={animationConfig.scrollText3.output}
         />
         <ScrollText
-          text={eeiModule.content?.scrollText4 || ""}
+          text={eeiModule.content.scrollText4 || ""}
           inputRange={animationConfig.scrollText4.input}
           outputRange={animationConfig.scrollText4.output}
         />

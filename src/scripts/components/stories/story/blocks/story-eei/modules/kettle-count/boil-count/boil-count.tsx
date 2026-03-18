@@ -41,6 +41,7 @@ export default function BoilCount() {
   const { isMobile } = useScreenSize();
   const { scrollYProgress, config } = useScrollModule<KettleCountConfig>();
   const { module } = useModuleContent();
+
   const eeiModule = module as StoryEEIModule;
 
   useEffect(() => {
@@ -51,22 +52,24 @@ export default function BoilCount() {
     return () => clearInterval(interval);
   }, []);
 
+  const y = useTransform(
+    scrollYProgress,
+    config.boilCount.input,
+    config.boilCount.output,
+  );
+
+  if (!eeiModule.content) {
+    console.warn("no content provided for ", module.type);
+    return null;
+  }
+
   return (
     <>
-      <motion.div
-        className={styles.countWrapper}
-        style={{
-          y: useTransform(
-            scrollYProgress,
-            config.boilCount.input,
-            config.boilCount.output,
-          ),
-        }}
-      >
+      <motion.div className={styles.countWrapper} style={{ y }}>
         <ScrollText
           inputRange={[1]}
           outputRange={[1]}
-          text={eeiModule.content?.boilText1 || ""}
+          text={eeiModule.content.boilText1 || ""}
         ></ScrollText>
         <div className={styles.countContainer}>
           <span className={styles.count}>
@@ -80,7 +83,7 @@ export default function BoilCount() {
         <ScrollText
           inputRange={[1]}
           outputRange={[1]}
-          text={eeiModule.content?.boilText2 || ""}
+          text={eeiModule.content.boilText2 || ""}
         ></ScrollText>
       </motion.div>
     </>
