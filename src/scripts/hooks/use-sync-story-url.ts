@@ -6,11 +6,13 @@ import { useLocation, useNavigationType } from "react-router-dom";
 import { extractSlideIndex } from "../libs/content-url-parameter";
 import { getHashPathName } from "../libs/get-hash-path";
 import { getCssVarPx } from "../libs/get-css-var-in-px";
+import { useAppRouteFlags } from "./use-app-route-flags";
 
 export const useSyncStoryUrl = () => {
   const { getScrollAnchorRefsMap, storyElementRef, story, lenisRef } =
     useStory();
 
+  const { isStoryEEI } = useAppRouteFlags();
   const { trackPageView } = useMatomo();
   const activeNodeKeyRef = useRef<string | null>(null);
 
@@ -40,38 +42,66 @@ export const useSyncStoryUrl = () => {
         }, story.splashscreen.lengthFactor ?? 1);
 
       lenisRef.current.scrollTo(
-        (lengthfactor ?? initialSlideIndex) *
+        (isStoryEEI ? lengthfactor : initialSlideIndex) *
           (window.innerHeight - headerHeight),
         {
           force: true,
           onComplete: () => {
+            console.log(
+              "starting initial",
+              (isStoryEEI ? lengthfactor : initialSlideIndex) *
+                (window.innerHeight - headerHeight),
+            );
             isInitialScrollPerformed.current = true;
           },
         },
       );
     }
-  }, [storyElementRef, story, lenisRef, initialSlideIndex]);
+  }, [storyElementRef, story, lenisRef, initialSlideIndex, isStoryEEI]);
 
   // Effect for when the url is changed by the user
   useEffect(() => {
     const index = extractSlideIndex(location.pathname);
-    const headerHeight = getCssVarPx("--header-height");
 
-    if (
-      navigationType !== "PUSH" &&
-      isInitialScrollPerformed.current &&
-      index >= 0
-    ) {
-      lenisRef.current?.scrollTo(index * (window.innerHeight - headerHeight), {
-        onStart: () => {
-          isProgrammaticScroll.current = true;
-        },
-        onComplete: () => {
-          isProgrammaticScroll.current = false;
-        },
-      });
+    if (story) {
+      const lengthfactor = story.modules
+        .slice(0, index - 1)
+        .reduce((sum, current) => {
+          return (
+            sum + (("lengthFactor" in current ? current.lengthFactor : 0) ?? 0)
+          );
+        }, story.splashscreen.lengthFactor ?? 1);
+
+      const headerHeight = getCssVarPx("--header-height");
+
+      if (
+        navigationType !== "PUSH" &&
+        isInitialScrollPerformed.current &&
+        index >= 0
+      ) {
+        lenisRef.current?.scrollTo(
+          (isStoryEEI ? lengthfactor : index) *
+            (window.innerHeight - headerHeight),
+          {
+            force: true,
+            onStart: () => {
+              isProgrammaticScroll.current = true;
+            },
+            onComplete: () => {
+              isProgrammaticScroll.current = false;
+            },
+          },
+        );
+      }
     }
-  }, [location, navigationType, lenisRef]);
+  }, [
+    location,
+    navigationType,
+    lenisRef,
+    story,
+    initialSlideIndex,
+    isStoryEEI,
+  ]);
 
   // Effect for Intersection Observer to update URL on scroll
   useEffect(() => {
