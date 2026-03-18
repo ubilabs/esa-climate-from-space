@@ -1,18 +1,21 @@
+import { FunctionComponent } from "react";
+import { motion, useTransform } from "motion/react";
+
 import { useScreenSize } from "../../../../../hooks/use-screen-size";
+import { useScrollModule } from "../story-eei/modules/base-scroll/use-scroll-module";
+import { useIntl } from "react-intl";
 import { useStory } from "../../../../../providers/story/use-story";
+
 import ScrollModule from "../story-eei/modules/base-scroll/module/scroll-module";
 import { ArrowUpIcon } from "../../../../main/icons/arrow-up-icon";
 import { MouseIcon } from "../../../../main/icons/mouse-icon";
 import { ArrowDownIcon } from "../../../../main/icons/arrow-down-icon";
 
-import { useIntl } from "react-intl";
-
 import cx from "classnames";
 
 import styles from "./splashscreen-eei.module.css";
-import { useScrollModule } from "../story-eei/modules/base-scroll/use-scroll-module";
-import { motion, useTransform } from "motion/react";
-import { FunctionComponent } from "react";
+
+
 const animationConfig = {
   gestureIndicator: {
     input: [0.5, 0.8],
