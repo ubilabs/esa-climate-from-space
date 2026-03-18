@@ -48,7 +48,7 @@ const animationConfig = {
   satellite: {
     xPosition: {
       input: [0, 0.64, 0.7, 0.9, 0.92],
-      output: ["-400%", "-400%", "-50%", "-50%", "400%"],
+      output: ["-800%", "-400%", "-50%", "-50%", "500%"],
     },
     opacity: {
       input: [0, 0.32, 0.34, 0.94, 0.96],
