@@ -1,5 +1,5 @@
 .gridContainer {
-  width: min(90%, 600px);
+  width: 90%;
   margin-top: 25px;
   aspect-ratio: 1.2;
   display: flex;
@@ -8,7 +8,7 @@
 
   @media screen and (--mobile-viewport) {
     width: 70%;
-    max-height: 80%;
+    max-height: 70%;
   }
 }
 
