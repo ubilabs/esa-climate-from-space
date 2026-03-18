@@ -8,7 +8,7 @@ import cx from "classnames";
 
 import { categoryTags } from "../../../config/main";
 
-import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../hooks/use-screen-info";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
@@ -71,7 +71,7 @@ const DataViewer: FunctionComponent = () => {
   const intl = useIntl();
 
   const { screenHeight, screenWidth, isMobile, isTouchDevice } =
-    useScreenSize();
+    useScreenInfo();
 
   const { isBaseRoute, isNavigationView, isDataRoute, isContentNavRoute } =
     useAppRouteFlags();

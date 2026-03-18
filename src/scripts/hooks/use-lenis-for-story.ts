@@ -8,7 +8,7 @@ import { getCssVarPx } from "../libs/get-css-var-in-px";
 
 import { useStory } from "../providers/story/use-story";
 import config from "../config/main";
-import { useScreenSize } from "./use-screen-size";
+import { useScreenInfo } from "./use-screen-info";
 import { useAppRouteFlags } from "./use-app-route-flags";
 
 export const DATA_NO_SNAP_ATTR = "data-no-snap";
@@ -18,7 +18,7 @@ export function useLenisForStory() {
     useStory();
   const { isStoryEEI } = useAppRouteFlags();
 
-  const { screenHeight } = useScreenSize();
+  const { screenHeight } = useScreenInfo();
 
   // Any scrolling should be handled by lenis, so we disable the browser's native scroll restoration
   useEffect(() => {

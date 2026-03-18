@@ -6,18 +6,17 @@ import cx from "classnames";
 
 import styles from "./scroll-text.module.css";
 
-
-interface Props<T> {
+interface Props<T extends string | number> {
   text: string;
-  inputRange: Array<number>;
-  outputRange: Array<T>;
+  inputRange?: Array<number>;
+  outputRange?: Array<T>;
   className?: string;
 }
 
 export default function ScrollText<T extends string | number>({
   text,
-  inputRange,
-  outputRange,
+  inputRange = [1],
+  outputRange = [1] as T[],
   className,
 }: Props<T>) {
   const { scrollYProgress } = useScrollModule<AnimatedArrowsConfig>();

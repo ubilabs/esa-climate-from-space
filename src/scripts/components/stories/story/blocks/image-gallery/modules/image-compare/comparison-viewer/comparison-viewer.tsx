@@ -5,7 +5,7 @@ import { useGesture } from "@use-gesture/react";
 import cx from "classnames";
 
 import { ImageModuleSlide } from "../../../../../../../../types/story";
-import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 import { useLenisToggle } from "../../../../../../../../hooks/use-lenis-toggle";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 
@@ -37,7 +37,7 @@ export const ComparisonViewer: FunctionComponent<Props> = ({
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const isMobile = useScreenSize().isMobile;
+  const isMobile = useScreenInfo().isMobile;
 
   // Extract image URLs and alt texts from the slides
   const { url: url1, altText: alt1 } = slide1;

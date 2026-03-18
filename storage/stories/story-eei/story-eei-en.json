@@ -149,7 +149,11 @@
         }
       ],
       "lengthFactor": 12,
-      "type": "animatedArrowsModule"
+      "type": "animatedArrowsModule",
+      "content": {
+        "scrollText1": "Earth's energy is out of balance.",
+        "scrollText2": "More energy comes in from the Sun than we lose to space."
+      }
     },
     {
       "globeKeyframes": [
@@ -197,7 +201,13 @@
         }
       ],
       "lengthFactor": 24,
-      "type": "kettleAmountModule"
+      "type": "kettleAmountModule",
+      "content": {
+        "scrollText": "That square metre is now trapping much more heat.",
+        "overlay1": "But accumulated over a year, it's enough energy to boil 70 kettles of water.",
+        "overlay2": "Satellites have been measuring the solar energy reaching and leaving Earth since the the 1990s. ",
+        "overlay3": "Thirty years ago the energy imbalance was much smaller."
+      }
     },
     {
       "globeKeyframes": [
@@ -231,7 +241,14 @@
         }
       ],
       "lengthFactor": 16,
-      "type": "kettleCount"
+      "type": "kettleCount",
+      "content": {
+        "scrollText1": "And if you apply that increase to the entire surface of the Earth...",
+        "boilText1": "…we have trapped enough heat to boil",
+        "boilText2": "since you arrived on this page.",
+        "scrollText3": "This excess energy fuels the changes we are seeing in Earth's climate. It is the engine behind stronger storms, floods, droughts and rising seas",
+        "scrollText4": "ESA's Climate Change Initiative is using satellite observations of the land, ocean, icecaps and atmosphere to measure individual components of Earth's energy budget."
+      }
     },
     {
       "globeKeyframes": [

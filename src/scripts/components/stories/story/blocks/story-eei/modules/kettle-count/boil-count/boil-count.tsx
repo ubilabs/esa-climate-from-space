@@ -4,7 +4,9 @@ import { motion, useTransform } from "motion/react";
 import ScrollText from "../../base-scroll/scroll-text/scroll-text";
 import { KettleCountConfig } from "../kettle-count";
 import { KettleIcon } from "../../../../../../../main/icons/kettle-icon";
-import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
+import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
+import { StoryEEIModule } from "../../../../../../../../types/story";
 
 import styles from "./boil-count.module.css";
 
@@ -36,8 +38,11 @@ export default function BoilCount() {
   // let react priorizite other UI updates
   const deferredCount = useDeferredValue(value);
 
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useScreenInfo();
   const { scrollYProgress, config } = useScrollModule<KettleCountConfig>();
+  const { module } = useModuleContent();
+
+  const eeiModule = module as StoryEEIModule;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,23 +52,21 @@ export default function BoilCount() {
     return () => clearInterval(interval);
   }, []);
 
+  const y = useTransform(
+    scrollYProgress,
+    config.boilCount.input,
+    config.boilCount.output,
+  );
+
+  if (!eeiModule.content) {
+    console.warn("no content provided for ", module.type);
+    return null;
+  }
+
   return (
     <>
-      <motion.div
-        className={styles.countWrapper}
-        style={{
-          y: useTransform(
-            scrollYProgress,
-            config.boilCount.input,
-            config.boilCount.output,
-          ),
-        }}
-      >
-        <ScrollText
-          inputRange={[1]}
-          outputRange={[1]}
-          text="…we have trapped enough heat to boil"
-        ></ScrollText>
+      <motion.div className={styles.countWrapper} style={{ y }}>
+        <ScrollText text={eeiModule.content.boilText1 || ""}></ScrollText>
         <div className={styles.countContainer}>
           <span className={styles.count}>
             {formatNumber(deferredCount, isMobile)}
@@ -76,7 +79,7 @@ export default function BoilCount() {
         <ScrollText
           inputRange={[1]}
           outputRange={[1]}
-          text="since you arrived on this page."
+          text={eeiModule.content.boilText2 || ""}
         ></ScrollText>
       </motion.div>
     </>
