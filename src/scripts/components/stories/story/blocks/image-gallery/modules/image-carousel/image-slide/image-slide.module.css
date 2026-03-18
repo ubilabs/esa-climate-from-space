@@ -52,23 +52,3 @@
     }
   }
 }
-
-.eeiSlide {
-  flex: 0 0 40%;
-
-  @media screen and (--desktop-viewport) {
-    flex: 0 0 30%;
-  }
-
-  .imageContainer {
-    @media screen and (--desktop-viewport) {
-      margin-left: initial;
-    }
-  }
-
-  .text {
-    @media screen and (--desktop-viewport) {
-      padding-right: initial;
-    }
-  }
-}

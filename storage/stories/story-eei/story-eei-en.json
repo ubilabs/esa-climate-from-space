@@ -470,37 +470,58 @@
       },
       "slides": [
         {
-          "text": "[Sea Surface Temperature](#/ocean/data?globe=SI0.00I25.00I25840000I0.00I1717200000000I0Isst.analysed_sstI)",
+          "layer": {
+            "layerId": "sst.analysed_sst",
+            "name": "Sea Surface Temperature"
+          },
           "altText": "Sea surface temperature",
           "url": "assets/sea_surface_temperature.png"
         },
         {
-          "text": "[Land Surface Temperature](#/land/data?globe=SI0.00I25.00I25840000I0.00I1493596800000I0Iland_surface_temperature.lstI)",
+          "layer": {
+            "layerId": "land_surface_temperature.lst",
+            "name": "Land Surface Temperature"
+          },
           "altText": "Land surface temperature",
           "url": "assets/land_surface_temperature.png"
         },
         {
-          "text": "[Sea Level](#/ocean/data?globe=SI0.00I25.00I25840000I0.00I1450137600000I0Isea_level.slaI)",
+          "layer": {
+            "layerId": "sea_level.sla",
+            "name": "Sea Level"
+          },
           "altText": "Sea level anomalies",
           "url": "assets/sea_level.png"
         },
         {
-          "text": "[Water Vapour](#/water_cycle/data?globe=SI-66.21I-2.26I25840000I0.00I1493596800000I0Iwater_vapour.tcwvI)",
+          "layer": {
+            "layerId": "water_vapour.tcwv",
+            "name": "Water Vapour"
+          },
           "altText": "Water vapour",
           "url": "assets/water_vapour.png"
         },
         {
-          "text": "[Ice Sheet](#/land/data?globe=SI-38.98I73.03I25840000I0.00I1293840000000I0Igreenland_ice.secI)",
+          "layer": {
+            "layerId": "greenland_ice.sec",
+            "name": "Ice Sheet"
+          },
           "altText": "Ice sheet",
           "url": "assets/ice_sheet.png"
         },
         {
-          "text": "[Sea Ice](#/ocean/data?globe=SI-38.98I73.03I25840000I0.00I1493596800000I0Isea_ice.ice_concI)",
+          "layer": {
+            "layerId": "sea_ice.ice_conc",
+            "name": "Sea Ice"
+          },
           "altText": "Sea ice",
           "url": "assets/sea_ice.png"
         },
         {
-          "text": "[Glaciers](#/water_cycle/data?globe=SI-66.21I-2.26I25840000I0.00I1493596800000I0Iglaciers.tcwvI)",
+          "layer": {
+            "layerId": "glaciers.tcwv",
+            "name": "Glaciers"
+          },
           "altText": "Glaciers",
           "url": "assets/glaciers.png"
         }

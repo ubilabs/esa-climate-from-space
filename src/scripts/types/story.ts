@@ -100,6 +100,13 @@ export type ImageModule = BaseModule & {
   type: ImageGalleryModuleType;
 };
 
+export type ImageCarouselSlide = BaseModuleSlide & {
+  layer?: {
+    layerId: string;
+    name: string;
+  };
+};
+
 export type ImageCarouselModule = ImageModule & {
   type: "imageCarousel";
   lengthFactor?: number;
@@ -108,6 +115,7 @@ export type ImageCarouselModule = ImageModule & {
     title: string;
     url: string;
   };
+  slides?: ImageCarouselSlide[];
 };
 
 export type QuoteSlideType = {
