@@ -271,12 +271,12 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0.25
+              "y": 0.2
             },
             "location": {
               "lat": 1.816919,
               "lng": -24.726276,
-              "altitude": 48000000
+              "altitude": 40000000
             }
           },
           "desktop": {
@@ -296,12 +296,12 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0.25
+              "y": 0.2
             },
             "location": {
               "lat": 1.816919,
               "lng": -24.726276,
-              "altitude": 48000000
+              "altitude": 40000000
             }
           },
           "desktop": {
@@ -321,12 +321,12 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0.25
+              "y": 0.2
             },
             "location": {
               "lat": -35.26634,
               "lng": -14.363042,
-              "altitude": 48000000
+              "altitude": 40000000
             }
           },
           "desktop": {
@@ -346,12 +346,12 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0.25
+              "y": 0.2
             },
             "location": {
               "lat": -35.26634,
               "lng": -14.363042,
-              "altitude": 48000000
+              "altitude": 40000000
             }
           },
           "desktop": {
@@ -367,7 +367,7 @@
           }
         }
       ],
-      "lengthFactor": 12,
+      "lengthFactor": 8,
       "type": "treeMapModule",
       "grid": {
         "title": "Energy absorption",
