@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useMatomo } from "@streamr/matomo-tracker-react";
 import { useStory } from "../providers/story/use-story";
 import { getUpdatedStoryUrl } from "../libs/get-updated-story-url";
@@ -17,12 +17,40 @@ export const useSyncStoryUrl = () => {
   const activeNodeKeyRef = useRef<string | null>(null);
 
   const initialSlideIndex = extractSlideIndex(getHashPathName());
-  const isInitialScrollPerformed = useRef(Boolean(!initialSlideIndex)); // Flag to ensure initial scroll only happens once
+  const isInitialScrollPerformed = useRef(false); // Flag to ensure initial scroll only happens once
 
   const isProgrammaticScroll = useRef(false);
 
   const location = useLocation();
   const navigationType = useNavigationType();
+
+  // Helper function to calculate accumulated lengthFactor for a given slide index
+  const calculateLengthFactor = useCallback(
+    (index: number): number => {
+      if (!story) return 0;
+
+      if (index === 0) {
+        return 0; // Splashscreen is at the top
+      }
+
+      return story.modules.slice(0, index - 1).reduce((sum, current) => {
+        return (
+          sum + (("lengthFactor" in current ? current.lengthFactor : 0) ?? 0)
+        );
+      }, story.splashscreen.lengthFactor ?? 1);
+    },
+    [story],
+  );
+
+  // Helper function to calculate scroll position in pixels
+  const calculateScrollPosition = useCallback(
+    (index: number, lengthfactor: number): number => {
+      const headerHeight = getCssVarPx("--header-height");
+      const scrollFactor = isStoryEEI ? lengthfactor : index;
+      return scrollFactor * (window.innerHeight - headerHeight);
+    },
+    [isStoryEEI],
+  );
 
   // Effect for initial scroll on page load
   useEffect(() => {
@@ -30,68 +58,54 @@ export const useSyncStoryUrl = () => {
       return; // Already performed initial scroll
     }
 
-    const headerHeight = getCssVarPx("--header-height");
-
-    if (story && lenisRef.current && initialSlideIndex > 0) {
-      const lengthfactor = story.modules
-        .slice(0, initialSlideIndex - 1)
-        .reduce((sum, current) => {
-          return (
-            sum + (("lengthFactor" in current ? current.lengthFactor : 0) ?? 0)
-          );
-        }, story.splashscreen.lengthFactor ?? 1);
-
-      lenisRef.current.scrollTo(
-        (isStoryEEI ? lengthfactor : initialSlideIndex) *
-          (window.innerHeight - headerHeight),
-        {
-          force: true,
-          onComplete: () => {
-            console.log(
-              "starting initial",
-              (isStoryEEI ? lengthfactor : initialSlideIndex) *
-                (window.innerHeight - headerHeight),
-            );
-            isInitialScrollPerformed.current = true;
-          },
-        },
+    if (story && lenisRef.current && initialSlideIndex >= 0) {
+      const lengthfactor = calculateLengthFactor(initialSlideIndex);
+      const scrollPosition = calculateScrollPosition(
+        initialSlideIndex,
+        lengthfactor,
       );
+
+      lenisRef.current.scrollTo(scrollPosition, {
+        force: true,
+        onComplete: () => {
+          console.log("starting initial", scrollPosition);
+          isInitialScrollPerformed.current = true;
+        },
+      });
     }
-  }, [storyElementRef, story, lenisRef, initialSlideIndex, isStoryEEI]);
+  }, [
+    storyElementRef,
+    story,
+    lenisRef,
+    initialSlideIndex,
+    isStoryEEI,
+    calculateLengthFactor,
+    calculateScrollPosition,
+  ]);
 
   // Effect for when the url is changed by the user
   useEffect(() => {
     const index = extractSlideIndex(location.pathname);
 
     if (story) {
-      const lengthfactor = story.modules
-        .slice(0, index - 1)
-        .reduce((sum, current) => {
-          return (
-            sum + (("lengthFactor" in current ? current.lengthFactor : 0) ?? 0)
-          );
-        }, story.splashscreen.lengthFactor ?? 1);
-
-      const headerHeight = getCssVarPx("--header-height");
+      const lengthfactor = calculateLengthFactor(index);
 
       if (
         navigationType !== "PUSH" &&
         isInitialScrollPerformed.current &&
         index >= 0
       ) {
-        lenisRef.current?.scrollTo(
-          (isStoryEEI ? lengthfactor : index) *
-            (window.innerHeight - headerHeight),
-          {
-            force: true,
-            onStart: () => {
-              isProgrammaticScroll.current = true;
-            },
-            onComplete: () => {
-              isProgrammaticScroll.current = false;
-            },
+        const scrollPosition = calculateScrollPosition(index, lengthfactor);
+
+        lenisRef.current?.scrollTo(scrollPosition, {
+          force: true,
+          onStart: () => {
+            isProgrammaticScroll.current = true;
           },
-        );
+          onComplete: () => {
+            isProgrammaticScroll.current = false;
+          },
+        });
       }
     }
   }, [
@@ -101,6 +115,8 @@ export const useSyncStoryUrl = () => {
     story,
     initialSlideIndex,
     isStoryEEI,
+    calculateLengthFactor,
+    calculateScrollPosition,
   ]);
 
   // Effect for Intersection Observer to update URL on scroll
