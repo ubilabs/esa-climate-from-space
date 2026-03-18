@@ -126,17 +126,18 @@ export type QuoteSlideType = {
 };
 
 export type TreeMapModule = {
-  grid: {
-    title: string;
-    data: {
-      label: string;
-      layerId: string;
-      percentage: number;
-    }[];
+  title: {
+    grid: string;
+    globe: string;
   };
-  globe: {
-    title: string;
-  };
+  data: {
+    label: string;
+    layerId: string;
+    percentage: {
+      grid: number;
+      globe: number;
+    };
+  }[];
 };
 
 export type StoryEEIModule = Pick<BaseModule, "text"> & {

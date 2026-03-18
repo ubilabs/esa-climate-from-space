@@ -14,12 +14,11 @@ export default function TreeMapModule() {
     null,
   );
 
-  if (!("grid" in module)) {
+  if (!("data" in module)) {
     return;
   }
 
-  const gridData = module.grid.data;
-  const highlightedData = gridData.find(
+  const highlightedData = module.data.find(
     ({ layerId }) => layerId === highlightedLayerId,
   );
 
