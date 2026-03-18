@@ -20,6 +20,8 @@ import {
   ScrollGlobeValues,
 } from "../../../../../types/story";
 
+import config from "../../../../../config/main";
+
 function haveMotionValuesChanges(
   values: Partial<Record<keyof Location, MotionValue<unknown> | undefined>>,
 ) {
@@ -193,17 +195,9 @@ const GlobeScroll: FunctionComponent<Props> = ({
 
   const root = document.documentElement;
 
-  const updateGlobeContainerPosition = () => {
-    if (x && y) {
-      root.style.setProperty(
-        "--globe-container-y",
-        `${Number(y.get()) * -100}vh`,
-      );
-      root.style.setProperty(
-        "--globe-container-x",
-        `${Number(x.get()) * -100}vw`,
-      );
-    }
+  const updateGlobeContainerPosition = (x: number, y: number) => {
+    root.style.setProperty("--globe-container-y", `${y * -100}vh`);
+    root.style.setProperty("--globe-container-x", `${x * -100}vw`);
   };
 
   // Dispatch interpolated globe position to store
@@ -220,17 +214,29 @@ const GlobeScroll: FunctionComponent<Props> = ({
   };
 
   const setInitialGlobePositions = useEffectEvent(() => {
-    updateGlobeContainerPosition();
+    if (x && y) {
+      updateGlobeContainerPosition(Number(x.get()), Number(y.get()));
+    }
     updateGlobePosition();
+  });
+
+  const resetGlobePositions = useEffectEvent(() => {
+    updateGlobeContainerPosition(0, 0);
+    dispatch(setFlyTo(config.globe.view));
   });
 
   useEffect(() => {
     // Set initial globe position and container position on mount
     setInitialGlobePositions();
+
+    // Reset globe position and container position on unmount
+    return () => resetGlobePositions();
   }, []);
 
   useMotionValueEvent(scrollYProgress, "change", () => {
-    updateGlobeContainerPosition();
+    if (x && y) {
+      updateGlobeContainerPosition(Number(x.get()), Number(y.get()));
+    }
     updateGlobePosition();
   });
 
