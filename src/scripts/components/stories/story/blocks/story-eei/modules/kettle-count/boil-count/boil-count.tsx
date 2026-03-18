@@ -18,18 +18,16 @@ function formatNumber(value: number): string {
   // 1 trillion and above: abbreviate with T suffix
   const trillions = value / 1_000_000_000_000;
 
-  // Calculate decimal places to show ~9-10 significant digits total
-  const decimals = trillions < 10 ? 9 : trillions < 100 ? 8 : 7;
+  // Calculate decimal places to show (9 for scientific accuracy)
+  const decimals = 9;
   const formatted = trillions.toFixed(decimals);
   const [integer, decimal] = formatted.split(".");
 
-  // Add commas to integer part
+  // Add commas to integer part only
   const integerWithCommas = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-  // Add commas to decimal part (every 3 digits)
-  const decimalWithCommas = decimal.replace(/(\d{3})(?=\d)/g, "$1,");
-
-  return `${integerWithCommas}.${decimalWithCommas}T`;
+  // Return with standard decimal notation (no commas in decimal)
+  return `${integerWithCommas}.${decimal}T`;
 }
 
 export default function BoilCount() {
