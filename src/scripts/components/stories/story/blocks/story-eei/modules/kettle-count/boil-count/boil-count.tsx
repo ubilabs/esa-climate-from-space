@@ -5,6 +5,8 @@ import ScrollText from "../../base-scroll/scroll-text/scroll-text";
 import { KettleCountConfig } from "../kettle-count";
 import { KettleIcon } from "../../../../../../../main/icons/kettle-icon";
 import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
+import { StoryEEIModule } from "../../../../../../../../types/story";
 
 import styles from "./boil-count.module.css";
 
@@ -38,6 +40,8 @@ export default function BoilCount() {
 
   const { isMobile } = useScreenSize();
   const { scrollYProgress, config } = useScrollModule<KettleCountConfig>();
+  const { module } = useModuleContent();
+  const eeiModule = module as StoryEEIModule;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -62,7 +66,7 @@ export default function BoilCount() {
         <ScrollText
           inputRange={[1]}
           outputRange={[1]}
-          text="…we have trapped enough heat to boil"
+          text={eeiModule.content?.boilText1 || ""}
         ></ScrollText>
         <div className={styles.countContainer}>
           <span className={styles.count}>
@@ -76,7 +80,7 @@ export default function BoilCount() {
         <ScrollText
           inputRange={[1]}
           outputRange={[1]}
-          text="since you arrived on this page."
+          text={eeiModule.content?.boilText2 || ""}
         ></ScrollText>
       </motion.div>
     </>

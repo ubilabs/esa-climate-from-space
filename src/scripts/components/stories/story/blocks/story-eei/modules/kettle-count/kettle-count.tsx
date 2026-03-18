@@ -3,6 +3,7 @@ import ScrollText from "../base-scroll/scroll-text/scroll-text";
 import BoilCount from "./boil-count/boil-count";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+import { StoryEEIModule } from "../../../../../../../types/story";
 
 const animationConfig = {
   scrollText1: {
@@ -30,26 +31,28 @@ const animationConfig = {
 export type KettleCountConfig = typeof animationConfig;
 
 export default function KettleCount() {
-  const {
-    module: { lengthFactor },
-  } = useModuleContent();
+  const { module } = useModuleContent();
+  const eeiModule = module as StoryEEIModule;
 
   return (
-    <ScrollModule config={animationConfig} lengthFactor={lengthFactor}>
+    <ScrollModule
+      config={animationConfig}
+      lengthFactor={eeiModule.lengthFactor}
+    >
       <ScrollModule.StickyContainer isGrid>
         <ScrollText
-          text="And if you apply that increase to the entire surface of the Earth..."
+          text={eeiModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
         <BoilCount />
         <ScrollText
-          text="This excess energy fuels the changes we are seeing in Earth’s climate. It is the engine behind stronger storms, floods, droughts and rising seas"
+          text={eeiModule.content?.scrollText3 || ""}
           inputRange={animationConfig.scrollText3.input}
           outputRange={animationConfig.scrollText3.output}
         />
         <ScrollText
-          text="ESA’s Climate Change Initiative is using satellite observations of the land, ocean, icecaps and atmosphere to measure individual components of Earth’s energy budget. "
+          text={eeiModule.content?.scrollText4 || ""}
           inputRange={animationConfig.scrollText4.input}
           outputRange={animationConfig.scrollText4.output}
         />

@@ -1,4 +1,3 @@
-import { useIntl } from "react-intl";
 import ScrollModule from "../base-scroll/module/scroll-module";
 import BulbAnimation from "./bulb-animation/bulb-animation";
 import KettleBox from "./kettle-box/kettle-box";
@@ -7,13 +6,14 @@ import KettleOverlay, {
 } from "./kettle-overlay/kettle-overlay";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+import { StoryEEIModule } from "../../../../../../../types/story";
 
 import ScrollText from "../base-scroll/scroll-text/scroll-text";
 
 const animationConfig = {
   initial: {
     scale: {
-      input: [0, 0.04, 0.05, 0.17, 0.3, 0.94, 1],
+      input: [0, 0.04, 0.05, 0.17, 0.3, 0.88, 0.9],
       output: [0.01, 0.01, 0.4, 0.4, 1, 1, 0.01],
     },
     yPosition: {
@@ -21,7 +21,7 @@ const animationConfig = {
       output: ["-40px", "200px", "200px", "0px"],
     },
     opacity: {
-      input: [0, 0.94, 1],
+      input: [0, 0.88, 0.9],
       output: [1, 1, 0],
     },
     bulbOpacity: {
@@ -51,7 +51,7 @@ const animationConfig = {
       output: ["-800%", "-400%", "-50%", "-50%", "500%"],
     },
     opacity: {
-      input: [0, 0.32, 0.34, 0.94, 0.96],
+      input: [0, 0.32, 0.34, 0.88, 0.9],
       output: ["0", "0", "1", "1", "0"],
     },
   },
@@ -76,7 +76,7 @@ const animationConfig = {
     },
   },
   scrollText: {
-    input: [0, 0.91, 0.92, 0.99, 1],
+    input: [0, 0.89, 0.89, 0.895, 0.9],
     output: ["100%", "100%", "30%", "0%", "-100%"],
   },
 };
@@ -84,29 +84,29 @@ const animationConfig = {
 export type KettleAmountAnimationConfig = typeof animationConfig;
 
 export default function KettleAmountModule() {
-  const intl = useIntl();
-
-  const {
-    module: { lengthFactor },
-  } = useModuleContent();
+  const { module } = useModuleContent();
+  const eeiModule = module as StoryEEIModule;
 
   const overlays: Array<KettleOverlayProps> = [
     {
       inputRange: [0.55, 0.57, 0.62, 0.64],
-      text: intl.formatMessage({ id: "story.eei.kettle.overlay1" }),
+      text: eeiModule.content?.overlay1 || "",
     },
     {
       inputRange: [0.7, 0.77, 0.82, 0.84],
-      text: intl.formatMessage({ id: "story.eei.kettle.overlay2" }),
+      text: eeiModule.content?.overlay2 || "",
     },
     {
-      inputRange: [0.85, 0.86, 0.88, 0.9],
-      text: intl.formatMessage({ id: "story.eei.kettle.overlay3" }),
+      inputRange: [0.85, 0.87, 0.88, 0.89],
+      text: eeiModule.content?.overlay3 || "",
     },
   ];
 
   return (
-    <ScrollModule config={animationConfig} lengthFactor={lengthFactor}>
+    <ScrollModule
+      config={animationConfig}
+      lengthFactor={eeiModule.lengthFactor}
+    >
       <ScrollModule.StickyContainer isGrid>
         <BulbAnimation />
         <KettleBox />
@@ -114,7 +114,7 @@ export default function KettleAmountModule() {
           <KettleOverlay key={index} {...overlay} />
         ))}
         <ScrollText
-          text="That square metre is now trapping three times as much heat"
+          text={eeiModule.content?.scrollText || ""}
           inputRange={animationConfig.scrollText.input}
           outputRange={animationConfig.scrollText.output}
         />

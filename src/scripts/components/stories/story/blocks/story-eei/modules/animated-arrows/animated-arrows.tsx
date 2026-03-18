@@ -3,6 +3,7 @@ import Arrows from "./arrows/arrows";
 import ScrollText from "../base-scroll/scroll-text/scroll-text";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+import { StoryEEIModule } from "../../../../../../../types/story";
 
 const animationConfig = {
   scrollText1: {
@@ -30,23 +31,25 @@ const animationConfig = {
 export type AnimatedArrowsConfig = typeof animationConfig;
 
 export default function AnimatedArrowsModule() {
-  const {
-    module: { lengthFactor },
-  } = useModuleContent();
+  const { module } = useModuleContent();
+  const eeiModule = module as StoryEEIModule;
 
   return (
-    <ScrollModule lengthFactor={lengthFactor} config={animationConfig}>
+    <ScrollModule
+      lengthFactor={eeiModule.lengthFactor}
+      config={animationConfig}
+    >
       <ScrollModule.StickyContainer isGrid>
         <Arrows />
 
         <ScrollText
-          text="Earth’s energy is out of balance."
+          text={eeiModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
 
         <ScrollText
-          text="More energy comes in from the Sun than we lose to space."
+          text={eeiModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
