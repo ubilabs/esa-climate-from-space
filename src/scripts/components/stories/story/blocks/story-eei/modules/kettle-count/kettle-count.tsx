@@ -31,7 +31,7 @@ const animationConfig = {
 export type KettleCountConfig = typeof animationConfig;
 
 export default function KettleCount() {
-  const { module } = useModuleContent();
+  const { module, getRefCallback } = useModuleContent();
   const eeiModule = module as StoryEEIModule;
 
   if (!eeiModule.content) {
@@ -44,7 +44,7 @@ export default function KettleCount() {
       config={animationConfig}
       lengthFactor={eeiModule.lengthFactor}
     >
-      <ScrollModule.StickyContainer isGrid>
+      <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <ScrollText
           text={eeiModule.content.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}

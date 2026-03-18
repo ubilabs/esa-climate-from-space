@@ -39,6 +39,7 @@ function QuoteContent() {
 export default function QuoteSlide() {
   const {
     module: { lengthFactor },
+    getRefCallback,
   } = useModuleContent();
   return (
     <ScrollModule
@@ -46,7 +47,11 @@ export default function QuoteSlide() {
       config={animationConfig}
       lengthFactor={lengthFactor}
     >
-      <ScrollModule.StickyContainer className={styles.quote} isGrid>
+      <ScrollModule.StickyContainer
+        className={styles.quote}
+        isGrid
+        ref={getRefCallback(0, 0)}
+      >
         <QuoteContent />
       </ScrollModule.StickyContainer>
     </ScrollModule>
