@@ -21,7 +21,7 @@ import config from "../../../../../../../../config/main";
 import styles from "./tree-map-grid.module.css";
 
 type TreeMapGridProps = {
-  data: TreeMapModule["grid"]["data"];
+  data: TreeMapModule["data"];
   onHighlightGridCell?: (layerId: string) => void;
 };
 
@@ -90,11 +90,11 @@ export default function TreeMapGrid({
     }
   }, [selectedLayerId, dispatch, onHighlightGridCell]);
 
-  const topRowData = data.filter((item) => item.percentage <= 10);
-  const bottomRowData = data.filter((item) => item.percentage > 10);
+  const topRowData = data.filter((item) => item.percentage.grid <= 10);
+  const bottomRowData = data.filter((item) => item.percentage.grid > 10);
 
   const topRowTotal = topRowData.reduce(
-    (sum, item) => sum + item.percentage,
+    (sum, item) => sum + item.percentage.grid,
     0,
   );
 
@@ -109,9 +109,11 @@ export default function TreeMapGrid({
                 styles.gridCell,
                 item.layerId === selectedLayerId && styles.highlight,
               )}
-              style={{ width: `${(item.percentage / topRowTotal) * 100}%` }}
+              style={{
+                width: `${(item.percentage.grid / topRowTotal) * 100}%`,
+              }}
             >
-              <span className={styles.percentage}>{item.percentage}%</span>
+              <span className={styles.percentage}>{item.percentage.grid}%</span>
             </div>
           ))}
         </div>
@@ -126,10 +128,10 @@ export default function TreeMapGrid({
                 item.layerId === selectedLayerId && styles.highlight,
               )}
               style={{
-                flex: item.percentage,
+                flex: item.percentage.grid,
               }}
             >
-              <span className={styles.percentage}>{item.percentage}%</span>
+              <span className={styles.percentage}>{item.percentage.grid}%</span>
             </div>
           ))}
         </div>
