@@ -8,5 +8,5 @@ export enum Layers {
 
 export const ATMOSPHERE_MASK_RENDER_OPTIONS = {
   atmosphereStrength: 1.8,
-  atmosphereColor: [0, 0.3, 0.2], // {r: 0, g: 77, b: 51}
+  atmosphereColor: [0, 0.3, 0.21], // {r: 0, g: 76, b: 54}
 };

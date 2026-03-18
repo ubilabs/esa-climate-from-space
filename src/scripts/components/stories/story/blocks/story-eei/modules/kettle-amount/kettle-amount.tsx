@@ -13,68 +13,70 @@ import ScrollText from "../base-scroll/scroll-text/scroll-text";
 const animationConfig = {
   initial: {
     scale: {
-      input: [0, 0.1, 0.4, 0.9, 1],
-      output: [0.01, 0.1, 1, 1, 0.01],
+      input: [0, 0.04, 0.05, 0.17, 0.3, 0.94, 1],
+      output: [0.01, 0.01, 0.4, 0.4, 1, 1, 0.01],
     },
     yPosition: {
-      input: [0, 0.04, 0.1, 0.2],
-      output: ["50%", "50%", "50%", "0%"],
+      input: [0, 0.04, 0.16, 0.2],
+      output: ["-40px", "200px", "200px", "0px"],
     },
     opacity: {
-      input: [0, 0.88, 1],
+      input: [0, 0.94, 1],
       output: [1, 1, 0],
     },
     bulbOpacity: {
-      input: [0, 0.045, 0.057, 0.06],
-      output: [0, 0, 0.8, 1],
+      input: [0, 0.09, 0.12],
+      output: [0, 0, 1],
     },
     text1: {
-      input: [0, 0.05, 0.055],
-      output: [1, 0.8, 0],
+      input: [0, 0.065, 0.09],
+      output: [1, 1, 0],
     },
     text2: {
-      input: [0, 0.055, 0.06, 0.08, 0.1],
-      output: [0, 0, 1, 1, 0],
+      input: [0, 0.09, 0.12],
+      output: [0, 0, 1],
     },
   },
   bulbExit: {
-    input: [0.1, 0.12],
+    input: [0.16, 0.2],
     output: ["0vh", "-100vh"],
   },
   squareMeterScale: {
-    input: [0.1, 0.45, 0.5],
-    output: ["8", "8", "1"],
+    input: [0.15, 0.3, 0.5],
+    output: ["6", "6", "1"],
   },
   satellite: {
     xPosition: {
-      input: [0, 0.5, 0.8, 1],
-      output: ["-100vw", "-50vw", "50vw", "200vw"],
+      input: [0, 0.64, 0.7, 0.9, 0.92],
+      output: ["-400%", "-400%", "-50%", "-50%", "400%"],
     },
     opacity: {
-      input: [0, 0.4, 0.45, 0.7, 0.9],
+      input: [0, 0.32, 0.34, 0.94, 0.96],
       output: ["0", "0", "1", "1", "0"],
     },
   },
   kettleRows: {
-    rangeStart: 0.7,
-    rangeEnd: 0.84,
-    fadeIn: {
-      input: [0.45, 0.55],
-      output: [0, 1],
+    entryRangeStart: 0.35,
+    entryRangeEnd: 0.55,
+    exitRangeStart: 0.87,
+    exitRangeEnd: 0.89,
+    opacity: {
+      input: [0, 0.89, 0.9],
+      output: ["1", "1", "0"],
     },
   },
   yearSlider: {
     fadeIn: {
-      input: [0.4, 0.5, 0.7, 0.75],
-      output: ["0", "1", "1", "0"],
+      input: [0, 0.4, 0.45, 0.89, 0.9],
+      output: ["0", "0", "1", "1", "0"],
     },
     slide: {
-      input: [0, 0.7, 0.8],
-      output: ["-46%", "-46%", "0%"],
+      input: [0, 0.84, 0.87],
+      output: ["-49%", "-49%", "37.5%"],
     },
   },
   scrollText: {
-    input: [0, 0.9, 0.92, 0.96, 1],
+    input: [0, 0.91, 0.92, 0.99, 1],
     output: ["100%", "100%", "30%", "0%", "-100%"],
   },
 };
@@ -90,15 +92,15 @@ export default function KettleAmountModule() {
 
   const overlays: Array<KettleOverlayProps> = [
     {
-      inputRange: [0.5, 0.54, 0.58, 0.6],
+      inputRange: [0.55, 0.57, 0.62, 0.64],
       text: intl.formatMessage({ id: "story.eei.kettle.overlay1" }),
     },
     {
-      inputRange: [0.6, 0.62, 0.66, 0.7],
+      inputRange: [0.7, 0.77, 0.82, 0.84],
       text: intl.formatMessage({ id: "story.eei.kettle.overlay2" }),
     },
     {
-      inputRange: [0.8, 0.82, 0.86, 0.9],
+      inputRange: [0.85, 0.86, 0.88, 0.9],
       text: intl.formatMessage({ id: "story.eei.kettle.overlay3" }),
     },
   ];

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import cx from "classnames";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
@@ -28,7 +29,12 @@ export default function TreeMapModule() {
         <div className={styles.slide}>
           <h1 className={styles.label}>{highlightedData?.label}</h1>
           <div className={styles.panelContainer}>
-            <div className={styles.gridPanel}>
+            <div
+              className={cx(
+                styles.gridPanel,
+                !highlightedData && styles.hidden,
+              )}
+            >
               <h2 className={styles.title}>{module.grid.title}</h2>
               <TreeMapGrid
                 data={module.grid.data}
