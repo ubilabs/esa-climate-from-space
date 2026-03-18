@@ -59,16 +59,14 @@ export const useSyncStoryUrl = () => {
     }
 
     if (story && lenisRef.current && initialSlideIndex >= 0) {
-      const lengthfactor = calculateLengthFactor(initialSlideIndex);
       const scrollPosition = calculateScrollPosition(
         initialSlideIndex,
-        lengthfactor,
+        calculateLengthFactor(initialSlideIndex),
       );
 
       lenisRef.current.scrollTo(scrollPosition, {
         force: true,
         onComplete: () => {
-          console.log("starting initial", scrollPosition);
           isInitialScrollPerformed.current = true;
         },
       });
@@ -88,14 +86,15 @@ export const useSyncStoryUrl = () => {
     const index = extractSlideIndex(location.pathname);
 
     if (story) {
-      const lengthfactor = calculateLengthFactor(index);
-
       if (
         navigationType !== "PUSH" &&
         isInitialScrollPerformed.current &&
         index >= 0
       ) {
-        const scrollPosition = calculateScrollPosition(index, lengthfactor);
+        const scrollPosition = calculateScrollPosition(
+          index,
+          calculateLengthFactor(index),
+        );
 
         lenisRef.current?.scrollTo(scrollPosition, {
           force: true,
