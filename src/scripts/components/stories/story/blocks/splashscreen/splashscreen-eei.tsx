@@ -1,6 +1,5 @@
 import { useScreenSize } from "../../../../../hooks/use-screen-size";
 import { useStory } from "../../../../../providers/story/use-story";
-import { StoryIcon } from "../../../../main/icons/story-icon";
 import ScrollModule from "../story-eei/modules/base-scroll/module/scroll-module";
 import { ArrowUpIcon } from "../../../../main/icons/arrow-up-icon";
 import { MouseIcon } from "../../../../main/icons/mouse-icon";
