@@ -38,40 +38,45 @@
     @media screen and (--mobile-viewport) {
       flex-direction: column-reverse;
       align-items: center;
-      justify-content: space-between;
+      justify-content: space-around;
       height: 100%;
     }
 
     .gridPanel {
-      width: 50%;
+      width: 40%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
 
       @media screen and (--mobile-viewport) {
-        height: calc(50% - var(--headline-font-size));
+        height: 40%;
         width: 100%;
-        justify-content: flex-start;
+        justify-content: space-evenly;
       }
     }
 
+    .hidden {
+      visibility: hidden;
+    }
+
     .globePanel {
-      width: 50%;
+      width: 40%;
       display: flex;
       justify-content: start;
 
       @media screen and (--mobile-viewport) {
-        height: 100%;
+        height: calc(50% - var(--headline-font-size));
         justify-content: center;
       }
 
       .title {
-        translate: calc(var(--globe-container-x) - 100%);
+        position: absolute;
+        left: calc((50vw + var(--globe-container-x)));
+        transform: translateX(-50%);
         width: max-content;
 
         @media screen and (--mobile-viewport) {
-          translate: 0 100%;
           height: max-content;
         }
       }
@@ -94,7 +99,7 @@
 .globeOverlay {
   position: fixed;
   left: calc(50vw + var(--globe-container-x));
-  top: calc(50vh + var(--globe-container-y) + 30px);
+  top: calc(50vh + var(--globe-container-y) + 1em);
   transform: translate(-50%, -50%);
   font-size: 1.875rem;
   font-weight: 700;
@@ -102,5 +107,6 @@
   @media screen and (--mobile-viewport) {
     font-size: 0.735rem;
     font-weight: 400;
+    top: calc(50vh + var(--globe-container-y) - 1em);
   }
 }
