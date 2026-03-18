@@ -200,7 +200,7 @@
           }
         }
       ],
-      "lengthFactor": 24,
+      "lengthFactor": 28,
       "type": "kettleAmountModule",
       "content": {
         "scrollText": "That square metre is now trapping much more heat.",
