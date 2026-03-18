@@ -66,11 +66,7 @@ export default function BoilCount() {
   return (
     <>
       <motion.div className={styles.countWrapper} style={{ y }}>
-        <ScrollText
-          inputRange={[1]}
-          outputRange={[1]}
-          text={eeiModule.content.boilText1 || ""}
-        ></ScrollText>
+        <ScrollText text={eeiModule.content.boilText1 || ""}></ScrollText>
         <div className={styles.countContainer}>
           <span className={styles.count}>
             {formatNumber(deferredCount, isMobile)}
