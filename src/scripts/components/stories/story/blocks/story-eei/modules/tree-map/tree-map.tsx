@@ -35,19 +35,19 @@ export default function TreeMapModule() {
                 !highlightedData && styles.hidden,
               )}
             >
-              <h2 className={styles.title}>{module.grid.title}</h2>
+              <h2 className={styles.title}>{module.title.grid}</h2>
               <TreeMapGrid
-                data={module.grid.data}
+                data={module.data}
                 onHighlightGridCell={setHighlightedLayerId}
               />
             </div>
             {highlightedData && (
               <>
                 <div className={styles.globePanel}>
-                  <h2 className={styles.title}>{module.globe?.title}</h2>
+                  <h2 className={styles.title}>{module.title.globe}</h2>
                 </div>
                 <span className={styles.globeOverlay}>
-                  {highlightedData.percentage} %
+                  {highlightedData.percentage.globe} %
                 </span>
               </>
             )}

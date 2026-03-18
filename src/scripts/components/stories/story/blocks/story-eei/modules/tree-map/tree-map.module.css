@@ -10,6 +10,11 @@
     --headline-font-size: 2.5rem;
   }
 
+  --top-spacing: 3.875rem;
+  @media screen and (--mobile-viewport) {
+    --top-spacing: 2.5rem;
+  }
+
   @media screen and (--mobile-viewport) {
     justify-content: center;
     align-items: flex-end;
@@ -20,15 +25,9 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 6vh;
+    top: var(--top-spacing);
     font-size: var(--headline-font-size);
     font-weight: 700;
-
-    @media screen and (--mobile-viewport) {
-      left: initial;
-      top: 50%;
-      transform: translateY(-50%);
-    }
   }
 
   .panelContainer {
@@ -40,6 +39,7 @@
       align-items: center;
       justify-content: space-around;
       height: 100%;
+      padding-top: calc(var(--top-spacing) + var(--headline-font-size));
     }
 
     .gridPanel {
