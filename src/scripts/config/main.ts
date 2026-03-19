@@ -6,6 +6,7 @@ import { GlobeProjection } from "../types/globe-projection";
 import { AppRoute } from "../types/app-routes";
 import { LenisOptions } from "lenis";
 import { isIos16orLower } from "../libs/is-ios-16-or-lower";
+import { isAndroid } from "../libs/is-android";
 
 /**
  * Routes are utilized to manage state transitions within the application.
@@ -230,12 +231,14 @@ export default {
     "strong",
   ],
   lenisOptions: {
-    // Gentle mouse wheel for story reading
-    wheelMultiplier: 0.8,
-    touchMultiplier: 1,
+    touchMultiplier: isAndroid() ? 2 : 1,
+    wheelMultiplier: 1,
     smoothTouch: true,
     smoothWheel: true,
-
+    lerp: 0.1,
+    infinite: false,
+    syncTouchLerp: 0.075,
+    touchInertiaMultiplier: 16,
     // Modern iOS touch sync
     syncTouch: !isIos16orLower(),
 
