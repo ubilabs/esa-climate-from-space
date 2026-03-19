@@ -1,9 +1,9 @@
 import ScrollModule from "../base-scroll/module/scroll-module";
 import Arrows from "./arrows/arrows";
 import ScrollText from "../base-scroll/scroll-text/scroll-text";
+import { StoryEEIModule } from "../../../../../../../types/story";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
-import { StoryEEIModule } from "../../../../../../../types/story";
 
 const animationConfig = {
   scrollText1: {
