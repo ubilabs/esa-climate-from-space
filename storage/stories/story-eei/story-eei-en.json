@@ -148,11 +148,12 @@
           }
         }
       ],
-      "lengthFactor": 12,
+      "lengthFactor": 16,
       "type": "animatedArrowsModule",
       "content": {
         "scrollText1": "Earth's energy is out of balance.",
-        "scrollText2": "More energy comes in from the Sun than we lose to space."
+        "scrollText2": "More energy comes in from the Sun than we lose to space.",
+        "scrollText3": "Increasing amounts of greenhouse gases in the atmosphere are trapping some of the incoming energy as heat"
       }
     },
     {
@@ -200,7 +201,7 @@
           }
         }
       ],
-      "lengthFactor": 24,
+      "lengthFactor": 28,
       "type": "kettleAmountModule",
       "content": {
         "scrollText": "That square metre is now trapping much more heat.",
@@ -271,7 +272,32 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0.2
+              "y": 0.1
+            },
+            "location": {
+              "lat": 1.816919,
+              "lng": -24.726276,
+              "altitude": 40000000
+            }
+          },
+          "desktop": {
+            "containerPosition": {
+              "x": -0.25,
+              "y": -0.03
+            },
+            "location": {
+              "lat": 1.816919,
+              "lng": -24.726276,
+              "altitude": 37000000
+            }
+          }
+        },
+        {
+          "progress": 0.4,
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0.1
             },
             "location": {
               "lat": 1.816919,
@@ -296,32 +322,7 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0.2
-            },
-            "location": {
-              "lat": 1.816919,
-              "lng": -24.726276,
-              "altitude": 40000000
-            }
-          },
-          "desktop": {
-            "containerPosition": {
-              "x": -0.25,
-              "y": -0.03
-            },
-            "location": {
-              "lat": 1.816919,
-              "lng": -24.726276,
-              "altitude": 37000000
-            }
-          }
-        },
-        {
-          "progress": 0.6,
-          "mobile": {
-            "containerPosition": {
-              "x": 0,
-              "y": 0.2
+              "y": 0.1
             },
             "location": {
               "lat": -35.26634,
@@ -346,7 +347,7 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0.2
+              "y": 0.1
             },
             "location": {
               "lat": -35.26634,
@@ -369,34 +370,44 @@
       ],
       "lengthFactor": 8,
       "type": "treeMapModule",
-      "grid": {
-        "title": "Energy absorption",
-        "data": [
-          {
-            "label": "Ocean",
-            "layerId": "eei_water_mask",
-            "percentage": 91
-          },
-          {
-            "label": "Land",
-            "layerId": "eei_land_mask",
-            "percentage": 5
-          },
-          {
-            "label": "Ice",
-            "layerId": "eei_ice_mask",
-            "percentage": 3
-          },
-          {
-            "label": "Atmosphere",
-            "layerId": "eei_atmosphere_mask",
-            "percentage": 1
-          }
-        ]
+      "title": {
+        "grid": "Energy absorption",
+        "globe": "Surface area"
       },
-      "globe": {
-        "title": "Surface area"
-      }
+      "data": [
+        {
+          "label": "Ocean",
+          "layerId": "eei_water_mask",
+          "percentage": {
+            "grid": 91,
+            "globe": 71
+          }
+        },
+        {
+          "label": "Land",
+          "layerId": "eei_land_mask",
+          "percentage": {
+            "grid": 5,
+            "globe": 26
+          }
+        },
+        {
+          "label": "Ice",
+          "layerId": "eei_ice_mask",
+          "percentage": {
+            "grid": 3,
+            "globe": 3
+          }
+        },
+        {
+          "label": "Atmosphere",
+          "layerId": "eei_atmosphere_mask",
+          "percentage": {
+            "grid": 1,
+            "globe": 100
+          }
+        }
+      ]
     },
     {
       "globeKeyframes": [

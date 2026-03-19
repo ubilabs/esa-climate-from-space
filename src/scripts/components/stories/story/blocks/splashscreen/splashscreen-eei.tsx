@@ -15,7 +15,6 @@ import cx from "classnames";
 
 import styles from "./splashscreen-eei.module.css";
 
-
 const animationConfig = {
   gestureIndicator: {
     input: [0.5, 0.8],
@@ -79,7 +78,7 @@ const Title: FunctionComponent<{ title: string }> = ({ title }) => {
 };
 
 export default function SplashscreenEei() {
-  const { story } = useStory();
+  const { story, setScrollAnchorRefs } = useStory();
   const splashConfig = story?.splashscreen;
 
   return (
@@ -87,7 +86,11 @@ export default function SplashscreenEei() {
       config={animationConfig}
       lengthFactor={splashConfig?.lengthFactor ?? 1}
     >
-      <ScrollModule.StickyContainer className={styles.splashWrapper} isGrid>
+      <ScrollModule.StickyContainer
+        className={styles.splashWrapper}
+        isGrid
+        ref={setScrollAnchorRefs("0-0-0")}
+      >
         <div className={styles.introIconContainer}>
           <div className={styles.sunContainer}>
             <svg viewBox="0 0 200 100" preserveAspectRatio="xMidYMin slice">

@@ -9,23 +9,22 @@ import TreeMapGrid from "./tree-map-grid/tree-map-grid";
 import styles from "./tree-map.module.css";
 
 export default function TreeMapModule() {
-  const { module } = useModuleContent();
+  const { module, getRefCallback } = useModuleContent();
   const [highlightedLayerId, setHighlightedLayerId] = useState<string | null>(
     null,
   );
 
-  if (!("grid" in module)) {
+  if (!("data" in module)) {
     return;
   }
 
-  const gridData = module.grid.data;
-  const highlightedData = gridData.find(
+  const highlightedData = module.data.find(
     ({ layerId }) => layerId === highlightedLayerId,
   );
 
   return (
     <ScrollModule lengthFactor={module.lengthFactor} config={null}>
-      <ScrollModule.StickyContainer>
+      <ScrollModule.StickyContainer ref={getRefCallback(0, 0)}>
         <div className={styles.slide}>
           <h1 className={styles.label}>{highlightedData?.label}</h1>
           <div className={styles.panelContainer}>
@@ -35,19 +34,19 @@ export default function TreeMapModule() {
                 !highlightedData && styles.hidden,
               )}
             >
-              <h2 className={styles.title}>{module.grid.title}</h2>
+              <h2 className={styles.title}>{module.title.grid}</h2>
               <TreeMapGrid
-                data={module.grid.data}
+                data={module.data}
                 onHighlightGridCell={setHighlightedLayerId}
               />
             </div>
             {highlightedData && (
               <>
                 <div className={styles.globePanel}>
-                  <h2 className={styles.title}>{module.globe?.title}</h2>
+                  <h2 className={styles.title}>{module.title.globe}</h2>
                 </div>
                 <span className={styles.globeOverlay}>
-                  {highlightedData.percentage} %
+                  {highlightedData.percentage.globe} %
                 </span>
               </>
             )}
