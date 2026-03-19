@@ -65,6 +65,7 @@ export const useSyncStoryUrl = () => {
       );
 
       lenisRef.current.scrollTo(scrollPosition, {
+        immediate: true,
         force: true,
         onComplete: () => {
           isInitialScrollPerformed.current = true;
