@@ -3,8 +3,6 @@ import { frame, cancelFrame } from "motion/react";
 
 import Lenis from "lenis";
 
-import { getCssVarPx } from "../libs/get-css-var-in-px";
-
 import { useStory } from "../providers/story/use-story";
 import config from "../config/main";
 import { useScreenInfo } from "./use-screen-info";
