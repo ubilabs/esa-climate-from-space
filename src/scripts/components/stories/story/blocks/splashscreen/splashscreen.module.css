@@ -2,7 +2,6 @@
   background-color: var(--neutral-esa-background);
   background-size: cover;
   position: relative;
-  scroll-snap-align: start;
 
   &.locationStory {
     background-color: transparent;
@@ -116,6 +115,3 @@
   z-index: 1;
   pointer-events: none;
 }
-
-
-
