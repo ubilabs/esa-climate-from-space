@@ -30,7 +30,18 @@
     "subtitle": "",
     "globeKeyframes": [
       {
-        "progress": 1,
+        "progress": 0.5,
+        "desktop": {
+          "containerPosition": {
+            "x": 0,
+            "y": -1
+          },
+          "location": {
+            "lat": 23,
+            "lng": -30,
+            "altitude": 20040000
+          }
+        },
         "mobile": {
           "containerPosition": {
             "x": 0,
@@ -39,7 +50,32 @@
           "location": {
             "lat": 23,
             "lng": -30,
-            "altitude": 18040000
+            "altitude": 20040000
+          }
+        }
+      },
+      {
+        "progress": 1,
+        "mobile": {
+          "containerPosition": {
+            "x": 0,
+            "y": -0.4
+          },
+          "location": {
+            "lat": 23,
+            "lng": -30,
+            "altitude": 20040000
+          }
+        },
+        "desktop": {
+          "containerPosition": {
+            "x": 0,
+            "y": -0.6
+          },
+          "location": {
+            "lat": 23,
+            "lng": -30,
+            "altitude": 20040000
           }
         }
       }
@@ -54,12 +90,23 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": -1
+              "y": -0.4
             },
             "location": {
               "lat": 23,
               "lng": -30,
-              "altitude": 18040000
+              "altitude": 20040000
+            }
+          },
+          "desktop": {
+            "containerPosition": {
+              "x": 0,
+              "y": -0.6
+            },
+            "location": {
+              "lat": 23,
+              "lng": -30,
+              "altitude": 20040000
             }
           }
         },
@@ -68,12 +115,23 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": -0.5
+              "y": -0.4
             },
             "location": {
               "lat": 23,
               "lng": -30,
-              "altitude": 18040000
+              "altitude": 20040000
+            }
+          },
+          "desktop": {
+            "containerPosition": {
+              "x": 0,
+              "y": -0.6
+            },
+            "location": {
+              "lat": 23,
+              "lng": -30,
+              "altitude": 20040000
             }
           }
         },
@@ -82,12 +140,23 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": -0.5
+              "y": -0.4
             },
             "location": {
               "lat": 23,
               "lng": -30,
-              "altitude": 18040000
+              "altitude": 20040000
+            }
+          },
+          "desktop": {
+            "containerPosition": {
+              "x": 0,
+              "y": -0.6
+            },
+            "location": {
+              "lat": 23,
+              "lng": -30,
+              "altitude": 20040000
             }
           }
         },
