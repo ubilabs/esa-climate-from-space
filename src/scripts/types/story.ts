@@ -94,6 +94,7 @@ type BaseModule = {
   focus?: ImageFocus;
   url?: string;
   globe?: GlobeItem;
+  leading?: boolean;
 };
 
 export type ImageModule = BaseModule & {

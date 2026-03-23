@@ -67,12 +67,12 @@ const ScrollModule: FunctionComponent<Props> & {
       <div
         ref={moduleRef}
         className={cx(styles.baseScrollModule, className)}
-        {...rest}
         style={
           {
             "--scroll-length-factor": lengthFactor,
           } as CSSProperties
         }
+        {...rest}
       >
         {children}
       </div>

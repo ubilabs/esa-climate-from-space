@@ -9,7 +9,7 @@
   --top-spacing: 3.875rem;
   @media screen and (--mobile-viewport) {
     --headline-font-size: 2.5rem;
-    --top-spacing: 2.5rem;
+    --top-spacing: 1.875rem;
 
     justify-content: center;
     align-items: flex-end;
@@ -92,9 +92,9 @@
 }
 
 .globeOverlay {
-  position: fixed;
-  left: calc(50vw + var(--globe-container-x));
-  top: calc(50vh + var(--globe-container-y) + 1em);
+  position: absolute;
+  left: calc(50% + var(--globe-container-x));
+  top: calc(50% + var(--globe-container-y));
   transform: translate(-50%, -50%);
   font-size: 1.875rem;
   font-weight: 700;
@@ -102,6 +102,5 @@
   @media screen and (--mobile-viewport) {
     font-size: 0.735rem;
     font-weight: 400;
-    top: calc(50vh + var(--globe-container-y) - 1em);
   }
 }
