@@ -15,8 +15,6 @@ import cx from "classnames";
 
 import styles from "./scroll-module.module.css";
 
-import { DATA_NO_SNAP_ATTR } from "../../../../../../../../hooks/use-lenis-for-story";
-
 type Props<TConfig = unknown> = PropsWithChildren<
   Omit<
     StorySectionProps & {
@@ -35,8 +33,6 @@ const StickyContainer = ({
 }: PropsWithChildren<StorySectionProps & { isGrid?: boolean }>) => {
   return (
     <div
-      // remove snap from story-eei
-      {...{ [DATA_NO_SNAP_ATTR]: true }}
       className={cx(styles.sticky, isGrid && styles.grid, className)}
       {...rest}
     >
