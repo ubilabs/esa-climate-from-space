@@ -9,6 +9,7 @@
   }
 
   .imageContainer {
+    height: var(--slide-image-height);
     display: flex;
     justify-content: center;
 
