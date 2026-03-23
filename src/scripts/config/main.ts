@@ -176,7 +176,7 @@ const downloadUrls = {
 
 export default {
   api: {
-    searchIndex: `${baseUrlStorage}index/search-index-{lang}.json`,
+    searchIndex: `https://storage.googleapis.com/esa-cfs-storage/${version}/index/search-index-{lang}.json`,
     layers: `${baseUrlStorage}layers/layers-{lang}.json`,
     layer: `${baseUrlTiles}/{id}/metadata.json`,
     layerTiles: `${baseUrlTiles}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,

@@ -30,8 +30,8 @@ function QuoteContent() {
         ),
       }}
     >
-      <p>{module.quote?.text}</p>
-      <span>{module.quote?.author}</span>
+      <p>{module.content?.text}</p>
+      <span>{module.content?.author}</span>
     </motion.div>
   );
 }

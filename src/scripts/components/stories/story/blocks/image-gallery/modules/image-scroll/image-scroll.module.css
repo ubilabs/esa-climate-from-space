@@ -20,11 +20,24 @@
           grid-column: 1 / -1;
           grid-row: 2 / 3;
         }
+
+        &.imageLeading {
+          > .imageScrollText {
+            grid-column: 1 / -1;
+            grid-row: 2 / 3;
+            padding-bottom: 1rem;
+          }
+
+          > .scrollImageContainer {
+            grid-column: 1 / -1;
+            grid-row: 1 / 2;
+          }
+        }
       }
     }
 
     @media screen and (--desktop-viewport) {
-      &:nth-child(odd) {
+      &.imageLeading {
         .imageScrollText {
           grid-column: 9/ 12;
           grid-row: 1/-1;

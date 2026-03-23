@@ -51,7 +51,7 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
           const ModuleComponent = getModuleComponent(type);
           const moduleData = story.modules[moduleIndex];
 
-          /* Assign this to element's ref within modules that should serve as scroll- and snap anchors. Snap anchor is opt-out, i.e. if you want to an element to serve as a scroll anchor, but should not trigger a snap, use the data-no-snap attribute (like for the blend elements)  */
+          /* Assign this to element's ref within modules that should serve as scroll anchor. */
           const generateScrollAnchorRef = (
             nodeIndex: number,
             subIndex: number,

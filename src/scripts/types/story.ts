@@ -94,6 +94,7 @@ type BaseModule = {
   focus?: ImageFocus;
   url?: string;
   globe?: GlobeItem;
+  leading?: boolean;
 };
 
 export type ImageModule = BaseModule & {
@@ -119,7 +120,7 @@ export type ImageCarouselModule = ImageModule & {
 };
 
 export type QuoteSlideType = {
-  quote: {
+  content: {
     text: string;
     author: string;
   };
