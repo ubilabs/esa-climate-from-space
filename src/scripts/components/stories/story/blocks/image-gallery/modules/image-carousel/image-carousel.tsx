@@ -159,14 +159,14 @@ const ImageCarousel: FunctionComponent = () => {
               );
             })}
           </motion.div>
+          {!isFullscreen && isNavigationVisible && (
+            <CarouselNavigation
+              index={currentSlideIndex}
+              slides={slides}
+              snapToIndex={snapToIndex}
+            />
+          )}
         </div>
-        {!isFullscreen && isNavigationVisible && (
-          <CarouselNavigation
-            index={currentSlideIndex}
-            slides={slides}
-            snapToIndex={snapToIndex}
-          />
-        )}
         {"readMore" in module &&
           module.readMore?.url &&
           URL.canParse(module.readMore.url) && (

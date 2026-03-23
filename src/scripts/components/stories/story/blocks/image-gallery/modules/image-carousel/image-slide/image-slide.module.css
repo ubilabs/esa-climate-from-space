@@ -3,6 +3,7 @@
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   position: relative;
 
@@ -18,7 +19,6 @@
       height: 100%;
       width: 100%;
       max-height: 60vh;
-      margin-left: -10vw;
     }
 
     .image {
@@ -41,6 +41,7 @@
     line-height: 1.4;
     gap: 4px;
     z-index: 1;
+    width: min(90%, 600px);
 
     * > a {
       text-decoration: underline;
@@ -48,7 +49,6 @@
 
     @media screen and (--desktop-viewport) {
       font-size: 16px;
-      padding-right: 10vw;
     }
   }
 }
