@@ -22,6 +22,7 @@
 
 @media screen and (min-width: 769px) {
   .navigation {
+    margin-top: 1rem;
     padding: 12px;
     gap: 12px;
   }

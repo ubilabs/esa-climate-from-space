@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  justify-items: center;
   flex-direction: column;
   height: 100vh;
   font-size: 1.25rem;
@@ -12,6 +13,7 @@
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
+  height: fit-content;
 
   @media screen and (--desktop-viewport) {
     padding: 0;
