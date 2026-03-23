@@ -1,6 +1,5 @@
 .container {
   display: flex;
-  justify-items: center;
   flex-direction: column;
   height: 100vh;
   font-size: 1.25rem;
