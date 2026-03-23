@@ -522,7 +522,7 @@
       ],
       "lengthFactor": 5,
       "type": "quoteSlide",
-      "quote": {
+      "content": {
         "text": "The CCI project Monitoring the Energy Cycle for a Better Understanding of Climate Change (MOTECUSOMA) is calculating new estimates of Earth’s energy imbalance and surface air temperature. Scientific analyses using these datasets will help climate modelers forecast future changes with more accuracy.",
         "author": "MOTECUSOMA Team"
       }
@@ -560,9 +560,9 @@
       ],
       "lengthFactor": 1,
       "type": "imageCarousel",
-      "headerText": "ECVs related to MOTECOSUMA",
+      "headerText": "ECVs related to MOTECUSOMA",
       "readMore": {
-        "title": "MOTECOSUMA",
+        "title": "MOTECUSOMA",
         "url": "https://climate.esa.int/en/Cross_ECV_Projects/motecusoma/"
       },
       "slides": [

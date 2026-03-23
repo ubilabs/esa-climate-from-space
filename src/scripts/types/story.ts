@@ -120,7 +120,7 @@ export type ImageCarouselModule = ImageModule & {
 };
 
 export type QuoteSlideType = {
-  quote: {
+  content: {
     text: string;
     author: string;
   };
