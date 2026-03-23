@@ -19,7 +19,7 @@ export const GetLocalDataWidget = ({
   autoplay,
   touchable,
 }: Props) => {
-  const { layer } = globeItem;
+  const { layer, caption } = globeItem;
 
   const [mainLayer, compareLayer] = layer || [];
 
@@ -35,6 +35,7 @@ export const GetLocalDataWidget = ({
   return (
     <GetDataWidget
       className={className}
+      caption={caption}
       mainId={mainId}
       compareId={compareId}
       time={globeTime}

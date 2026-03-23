@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  height: 100%;
+  height: min(var(--story-height), 100%);
   width: 100%;
 
   .interactButton {
