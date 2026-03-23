@@ -23,32 +23,39 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
   } = useModuleContent();
   return (
     <div className={styles.imageScroll}>
-      {slides?.map(({ url, text, altText, caption, focus }, index) => (
-        <SlideContainer
-          ref={getRefCallback?.(index, 0)}
-          className={cx(styles.slide, "story-grid")}
-          key={url || index}
-        >
-          {text && (
-            <TextBlock
-              text={text}
-              hasRichText
-              className={styles.imageScrollText}
-            />
-          )}
-          <div className={styles.scrollImageContainer}>
-            <ScrollImage
-              className={focus}
-              src={getStoryAssetUrl(storyId, url)}
-              alt={altText || text}
-            />
-            <ReactMarkdown
-              children={caption}
-              allowedElements={config.markdownAllowedElements}
-            />
-          </div>
-        </SlideContainer>
-      ))}
+      {slides?.map(
+        // Set leading as default so image appears on the left / on top
+        ({ url, text, altText, caption, focus, leading = true }, index) => (
+          <SlideContainer
+            ref={getRefCallback?.(index, 0)}
+            className={cx(
+              leading && styles.imageLeading,
+              styles.slide,
+              "story-grid",
+            )}
+            key={url || index}
+          >
+            {text && (
+              <TextBlock
+                text={text}
+                hasRichText
+                className={styles.imageScrollText}
+              />
+            )}
+            <div className={styles.scrollImageContainer}>
+              <ScrollImage
+                className={cx(focus)}
+                src={getStoryAssetUrl(storyId, url)}
+                alt={altText || text}
+              />
+              <ReactMarkdown
+                children={caption}
+                allowedElements={config.markdownAllowedElements}
+              />
+            </div>
+          </SlideContainer>
+        ),
+      )}
     </div>
   );
 };
