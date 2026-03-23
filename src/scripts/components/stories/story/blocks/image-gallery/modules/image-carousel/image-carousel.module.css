@@ -32,7 +32,6 @@
     .track {
       display: flex;
       gap: 24px;
-      height: 100%;
     }
   }
 

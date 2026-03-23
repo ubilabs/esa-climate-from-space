@@ -2,6 +2,7 @@ import {
   FunctionComponent,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   useEffectEvent,
@@ -33,7 +34,7 @@ const VELOCITY = 300;
 const ImageCarousel: FunctionComponent = () => {
   const { module, storyId, getRefCallback } = useModuleContent();
   const { slides, lengthFactor } = module as ImageCarouselModule;
-  const { isMobile } = useScreenInfo();
+  const { isMobile, screenWidth } = useScreenInfo();
   const controls = useAnimationControls();
   const { isStoryEEI } = useAppRouteFlags();
 
@@ -57,8 +58,10 @@ const ImageCarousel: FunctionComponent = () => {
   const containerWidthRef = useRef(0);
   const currentSlideIndexRef = useRef(currentSlideIndex);
 
-  stepRef.current = step;
-  currentSlideIndexRef.current = currentSlideIndex;
+  useLayoutEffect(() => {
+    stepRef.current = step;
+    currentSlideIndexRef.current = currentSlideIndex;
+  });
 
   const updateNavigationVisibility = useEffectEvent(() => {
     // Show navigation if the slides are wider than current viewport
@@ -80,12 +83,30 @@ const ImageCarousel: FunctionComponent = () => {
     setSlideWidth((currentWidth) =>
       currentWidth === width ? currentWidth : width,
     );
+  }, []);
 
-    // Capture container width once on mount
+  const reSnapOnResize = useEffectEvent(() => {
     if (slidesContainerRef.current) {
       containerWidthRef.current = slidesContainerRef.current.offsetWidth;
     }
-  }, []);
+    if (firstSlideRef.current) {
+      setSlideWidth(firstSlideRef.current.offsetWidth);
+    }
+    // Re-snap to current index with updated dimensions
+    const currentStep = stepRef.current;
+    const centeringOffset =
+      !isMobile && containerWidthRef.current > 0
+        ? (containerWidthRef.current - currentStep + PADDING) / 2
+        : 0;
+    controls.start({
+      x: centeringOffset - currentSlideIndexRef.current * currentStep,
+      transition: { type: "spring", stiffness: 320, damping: 32 },
+    });
+  });
+
+  useEffect(() => {
+    reSnapOnResize();
+  }, [screenWidth, slideWidth]);
 
   const updateXPostion = useEffectEvent(() => {
     // On desktop (not mobile), center the active slide with the next one peeking
@@ -148,7 +169,7 @@ const ImageCarousel: FunctionComponent = () => {
             animate={controls}
             drag={isMobile && !isFullscreen ? "x" : false}
             dragConstraints={{
-              left: -(slides.length - 1) * stepRef.current,
+              left: -(slides.length - 1) * step,
               right: 0,
             }}
             dragElastic={0.08}
