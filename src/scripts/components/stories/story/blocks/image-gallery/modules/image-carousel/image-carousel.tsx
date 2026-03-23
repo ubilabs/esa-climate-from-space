@@ -34,7 +34,7 @@ const VELOCITY = 300;
 const ImageCarousel: FunctionComponent = () => {
   const { module, storyId, getRefCallback } = useModuleContent();
   const { slides, lengthFactor } = module as ImageCarouselModule;
-  const { isMobile, screenWidth } = useScreenInfo();
+  const { isMobile, screenWidth, isTouchDevice } = useScreenInfo();
   const controls = useAnimationControls();
   const { isStoryEEI } = useAppRouteFlags();
 
@@ -85,12 +85,16 @@ const ImageCarousel: FunctionComponent = () => {
     );
   }, []);
 
-  const reSnapOnResize = useEffectEvent(() => {
+  useEffect(() => {
+    if (firstSlideRef.current) {
+      const newWidth = firstSlideRef.current.offsetWidth;
+      setSlideWidth((current) => (current === newWidth ? current : newWidth));
+    }
+  }, [screenWidth]);
+
+  const reSnap = useEffectEvent(() => {
     if (slidesContainerRef.current) {
       containerWidthRef.current = slidesContainerRef.current.offsetWidth;
-    }
-    if (firstSlideRef.current) {
-      setSlideWidth(firstSlideRef.current.offsetWidth);
     }
     // Re-snap to current index with updated dimensions
     const currentStep = stepRef.current;
@@ -105,8 +109,10 @@ const ImageCarousel: FunctionComponent = () => {
   });
 
   useEffect(() => {
-    reSnapOnResize();
-  }, [screenWidth, slideWidth]);
+    if (slideWidth > 0) {
+      reSnap();
+    }
+  }, [slideWidth]);
 
   const updateXPostion = useEffectEvent(() => {
     // On desktop (not mobile), center the active slide with the next one peeking
@@ -167,7 +173,7 @@ const ImageCarousel: FunctionComponent = () => {
           <motion.div
             className={styles.track}
             animate={controls}
-            drag={isMobile && !isFullscreen ? "x" : false}
+            drag={isTouchDevice && !isFullscreen ? "x" : false}
             dragConstraints={{
               left: -(slides.length - 1) * step,
               right: 0,
