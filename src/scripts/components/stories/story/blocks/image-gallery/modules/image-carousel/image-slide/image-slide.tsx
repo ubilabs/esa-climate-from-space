@@ -48,6 +48,7 @@ const ImageSlide: React.FC<ImageSlideProps> = ({
     >
       <div className={cx(styles.imageContainer)}>
         <ScrollImage
+          focus={slide.focus}
           className={styles.image}
           src={getStoryAssetUrl(storyId, url)}
           alt={altText}

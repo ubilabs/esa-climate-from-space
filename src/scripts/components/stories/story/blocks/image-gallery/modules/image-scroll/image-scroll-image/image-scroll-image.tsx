@@ -6,6 +6,7 @@ import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 import { useLenisToggle } from "../../../../../../../../hooks/use-lenis-toggle";
 
+import { ImageFocus } from "../../../../../../../../types/story";
 import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
 import {
   MAX_ZOOM_SCALE,
@@ -22,6 +23,7 @@ interface Props {
   alt?: string;
   className?: string;
   onFullscreenToggle?: (isFullscreen: boolean) => void;
+  focus?: ImageFocus;
 }
 
 export const ScrollImage: FunctionComponent<Props> = ({
@@ -29,6 +31,7 @@ export const ScrollImage: FunctionComponent<Props> = ({
   alt,
   className,
   onFullscreenToggle,
+  focus,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -142,6 +145,7 @@ export const ScrollImage: FunctionComponent<Props> = ({
           scale: isFullscreen ? scale : 1,
           cursor: isFullscreen ? "grab" : "default",
           clipPath: isFullscreen ? "none" : clipPath,
+          [focus === "contain" ? "objectFit" : "objectPosition"]: focus,
         }}
         draggable={false}
       />
