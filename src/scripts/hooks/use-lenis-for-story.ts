@@ -8,8 +8,6 @@ import config from "../config/main";
 import { useScreenInfo } from "./use-screen-info";
 import { useAppRouteFlags } from "./use-app-route-flags";
 
-export const DATA_NO_SNAP_ATTR = "data-no-snap";
-
 export function useLenisForStory() {
   const { storyElementRef, story, lenisRef, getScrollAnchorRefsMap } =
     useStory();
