@@ -24,15 +24,12 @@ const TextBodyLarge: FunctionComponent<StorySectionProps> = () => {
   const { module, storyId, getRefCallback } = useModuleContent();
   const { slides = [] } = module;
 
-  const totalSlides = calculateTotalSlides(slides);
+  // const totalSlides = calculateTotalSlides(slides);
 
   return (
     <div className={styles.textBodyLarge}>
       <div
         className={cx(styles.slide)}
-        style={{
-          height: `calc(${totalSlides} * var(--story-height))`,
-        }}
       >
         <div className={styles.slidesContainer}>
           {slides?.map((slide, index) => (

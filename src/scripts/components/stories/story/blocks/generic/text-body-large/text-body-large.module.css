@@ -3,7 +3,7 @@
   width: 100%;
   /* As we want the slides to snap, we need to disable the scroll snap alignment on the container. Otherwise, it might not work properly */
   > * {
-    height: var(--story-height);
+    height: min(var(--story-height), 100%);
   }
 }
 
@@ -12,9 +12,9 @@
   color: white;
 
   .slidesContainer {
-    width: 100%;
-    top: 0;
-    position: absolute;
-    overflow: hidden;
+    /* width: 100%; */
+    /* top: 0; */
+    /* position: absolute; */
+    overflow: scroll;
   }
 }
