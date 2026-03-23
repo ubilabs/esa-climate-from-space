@@ -9,6 +9,7 @@ import { setWelcomeScreen } from "../../../reducers/welcome-screen";
 import Button from "../button/button";
 import config from "../../../config/main";
 import Overlay from "../overlay/overlay";
+import { markdownComponents } from "../../../libs/markdown-components";
 
 import styles from "./welcome-screen.module.css";
 
@@ -35,6 +36,7 @@ const WelcomeScreen: FunctionComponent<Props> = ({ onStartOnboarding }) => {
           <ReactMarkdown
             children={intl.formatMessage({ id: "welcomeContent" })}
             rehypePlugins={[rehypeRaw]}
+            components={markdownComponents}
             allowedElements={config.markdownAllowedElements}
           />
           <div className={styles.tourButtons}>
