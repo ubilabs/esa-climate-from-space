@@ -27,6 +27,7 @@
   .slidesContainer {
     position: relative;
     width: 100%;
+    overflow: hidden;
 
     .track {
       display: flex;

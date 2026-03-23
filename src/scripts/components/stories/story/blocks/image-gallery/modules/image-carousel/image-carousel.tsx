@@ -52,6 +52,14 @@ const ImageCarousel: FunctionComponent = () => {
 
   const step = slideWidth + PADDING;
 
+  // Refs so event handlers always read the latest values without stale closures
+  const stepRef = useRef(step);
+  const containerWidthRef = useRef(0);
+  const currentSlideIndexRef = useRef(currentSlideIndex);
+
+  stepRef.current = step;
+  currentSlideIndexRef.current = currentSlideIndex;
+
   const updateNavigationVisibility = useEffectEvent(() => {
     // Show navigation if the slides are wider than current viewport
     setIsNavigationVisible(
@@ -72,11 +80,23 @@ const ImageCarousel: FunctionComponent = () => {
     setSlideWidth((currentWidth) =>
       currentWidth === width ? currentWidth : width,
     );
+
+    // Capture container width once on mount
+    if (slidesContainerRef.current) {
+      containerWidthRef.current = slidesContainerRef.current.offsetWidth;
+    }
   }, []);
 
   const updateXPostion = useEffectEvent(() => {
+    // On desktop (not mobile), center the active slide with the next one peeking
+    const centeringOffset =
+      !isMobile && containerWidthRef.current > 0
+        ? (containerWidthRef.current - stepRef.current + PADDING) / 2
+        : 0;
     controls.set({
-      x: !isFullscreen ? -currentSlideIndex * step : 0,
+      x: !isFullscreen
+        ? centeringOffset - currentSlideIndexRef.current * stepRef.current
+        : 0,
     });
   });
 
@@ -93,11 +113,18 @@ const ImageCarousel: FunctionComponent = () => {
   }
 
   const snapToIndex = (i: number) => {
+    const currentStep = stepRef.current;
     const clamped = Math.max(0, Math.min(slides.length - 1, i));
     setCurrentSlideIndex(clamped);
 
+    // On desktop, center the active slide; on mobile align flush left
+    const centeringOffset =
+      !isMobile && containerWidthRef.current > 0
+        ? (containerWidthRef.current - currentStep + PADDING) / 2
+        : 0;
+
     controls.start({
-      x: -clamped * step,
+      x: centeringOffset - clamped * currentStep,
       transition: {
         type: "spring",
         stiffness: 320,
@@ -121,22 +148,23 @@ const ImageCarousel: FunctionComponent = () => {
             animate={controls}
             drag={isMobile && !isFullscreen ? "x" : false}
             dragConstraints={{
-              left: -(slides.length - 1) * step,
+              left: -(slides.length - 1) * stepRef.current,
               right: 0,
             }}
             dragElastic={0.08}
             onDragEnd={(_, info) => {
+              const currentStep = stepRef.current;
               const dragged = info.offset.x;
               const velocity = info.velocity.x;
 
               const direction =
-                dragged < -step / 4 || velocity < -VELOCITY
+                dragged < -currentStep / 4 || velocity < -VELOCITY
                   ? 1
-                  : dragged > step / 4 || velocity > VELOCITY
+                  : dragged > currentStep / 4 || velocity > VELOCITY
                     ? -1
                     : 0;
 
-              snapToIndex(currentSlideIndex + direction);
+              snapToIndex(currentSlideIndexRef.current + direction);
             }}
           >
             {slides.map((slide, index) => {
