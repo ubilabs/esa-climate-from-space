@@ -129,6 +129,7 @@ export const ScrollImage: FunctionComponent<Props> = ({
     <motion.div
       ref={ref}
       layout
+      className={styles.scrollImageWrapper}
       data-status={isFullscreen ? "fullscreenOverlay" : "imageContainer"}
       role={isFullscreen ? "dialog" : undefined}
       aria-modal={isFullscreen ? "true" : undefined}
