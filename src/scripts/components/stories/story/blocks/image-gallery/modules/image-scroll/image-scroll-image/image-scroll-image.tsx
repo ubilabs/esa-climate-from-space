@@ -1,10 +1,4 @@
-import {
-  useState,
-  useRef,
-  FunctionComponent,
-  SyntheticEvent,
-  CSSProperties,
-} from "react";
+import { useState, useRef, FunctionComponent, SyntheticEvent } from "react";
 import { useIntl } from "react-intl";
 import { motion, useMotionValue, useTransform } from "motion/react";
 import { useGesture } from "@use-gesture/react";
@@ -146,7 +140,7 @@ export const ScrollImage: FunctionComponent<Props> = ({
       role={isFullscreen ? "dialog" : undefined}
       aria-modal={isFullscreen ? "true" : undefined}
       style={{
-        backgroundColor
+        backgroundColor,
       }}
     >
       <motion.img
