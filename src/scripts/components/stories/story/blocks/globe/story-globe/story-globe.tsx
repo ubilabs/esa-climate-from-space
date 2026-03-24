@@ -96,9 +96,10 @@ const StoryGlobe: FunctionComponent = () => {
         {time_slider && (
           <div className={styles.layerDetails}>
             <LayerDescription
-              layerDescription={formatLayerNames(
-                globe?.layer?.map((layer) => layer.id),
-              )}
+              layerDescription={
+                globe.title ??
+                formatLayerNames(globe?.layer?.map((layer) => layer.id))
+              }
             />
           </div>
         )}

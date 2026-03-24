@@ -4,6 +4,7 @@ import {
   useMemo,
   useEffect,
   useEffectEvent,
+  CSSProperties,
 } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FormattedDate } from "react-intl";
@@ -33,6 +34,7 @@ interface Props {
   setGlobeTime: (time: number) => void;
   noTimeClamp?: boolean;
   autoplay?: boolean;
+  customStyles?: CSSProperties;
 }
 
 // debounce the time update
@@ -46,6 +48,7 @@ const TimeSlider: FunctionComponent<Props> = ({
   setGlobeTime,
   noTimeClamp,
   autoplay = false,
+  customStyles,
 }) => {
   const dispatch = useDispatch();
   const [time, setTime] = useState(propsTime);
@@ -87,9 +90,10 @@ const TimeSlider: FunctionComponent<Props> = ({
 
   // update app state
   const debouncedSetGlobeTime = useMemo(
-    () => debounce((newTime: number) => setGlobeTime(newTime), DELAY, {
-      maxWait: DELAY,
-    }),
+    () =>
+      debounce((newTime: number) => setGlobeTime(newTime), DELAY, {
+        maxWait: DELAY,
+      }),
     [setGlobeTime],
   );
 
@@ -101,7 +105,9 @@ const TimeSlider: FunctionComponent<Props> = ({
     }
   }, [noTimeClamp, clampedTime, time, setGlobeTime]);
 
-  const togglePlayback = useEffectEvent((autoplay: boolean) => setIsPlaying(autoplay));
+  const togglePlayback = useEffectEvent((autoplay: boolean) =>
+    setIsPlaying(autoplay),
+  );
 
   // stop playback when layer changes
   useEffect(() => {
@@ -142,7 +148,7 @@ const TimeSlider: FunctionComponent<Props> = ({
   const classes = cx(styles.timeSlider, className);
 
   return (
-    <div className={classes}>
+    <div className={classes} style={customStyles}>
       {isPlaying && (
         <TimePlayback
           time={time}

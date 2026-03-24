@@ -48,4 +48,6 @@ export interface GlobeItem {
   layer?: StoryLayer[];
   layerDescription?: string;
   layerAutoplay?: boolean;
+  title?: string;
+  caption?: string;
 }
