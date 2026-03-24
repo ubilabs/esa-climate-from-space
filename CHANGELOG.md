@@ -1,3 +1,33 @@
+## [2.1.3](https://github.com/ubilabs/esa-climate-from-space/compare/v2.1.2...v2.1.3) (2026-03-24)
+
+
+### Bug Fixes
+
+* **content-search:** height of results container not expanding ([fbe60bb](https://github.com/ubilabs/esa-climate-from-space/commit/fbe60bb6802ef4ea192c01e119f07b8010dc81b1))
+* **content-search:** height of results container not expanding ([#2041](https://github.com/ubilabs/esa-climate-from-space/issues/2041)) ([d374745](https://github.com/ubilabs/esa-climate-from-space/commit/d37474582f4eb142f6a51c63f411f1d709684fd7))
+* **data-widget:** update dependencie for tracking event ([#2074](https://github.com/ubilabs/esa-climate-from-space/issues/2074)) ([98aa82b](https://github.com/ubilabs/esa-climate-from-space/commit/98aa82b5f10f11181904e2dec175735c5fcac541))
+* **matomo:** load matomo video analytics tracker ([#2070](https://github.com/ubilabs/esa-climate-from-space/issues/2070)) ([5c2731e](https://github.com/ubilabs/esa-climate-from-space/commit/5c2731e5d601f217dc0d1e27b585acaf172d6deb))
+* replace useEffectEvent with useEffect ([7e2c3fb](https://github.com/ubilabs/esa-climate-from-space/commit/7e2c3fba7b7289dc4fe77bc8a3f2293b6eeda9c6))
+* **search-result:** left align search result title ([#2051](https://github.com/ubilabs/esa-climate-from-space/issues/2051)) ([c6d4241](https://github.com/ubilabs/esa-climate-from-space/commit/c6d4241d73f30846bc222503b20479a3715c3008))
+* **servies:** handle story id undefined case ([6606fc2](https://github.com/ubilabs/esa-climate-from-space/commit/6606fc2e7e83acd3c53c45d957c9408c637d2d71))
+* **time-playback:** step index initialized with zero ([#2033](https://github.com/ubilabs/esa-climate-from-space/issues/2033)) ([24072c7](https://github.com/ubilabs/esa-climate-from-space/commit/24072c76083af1a841d2191a44eec171787fb006))
+* **use-globe-route-state:** interactivity not enabled reliably ([#2042](https://github.com/ubilabs/esa-climate-from-space/issues/2042)) ([98eceea](https://github.com/ubilabs/esa-climate-from-space/commit/98eceea933845be84fa5740169badf8191b4d5dd))
+
+
+### Features
+
+* **content-search:** implement focus and hover styles ([852a632](https://github.com/ubilabs/esa-climate-from-space/commit/852a63268aa5fbb2a3efae72557559617733cc40))
+* **content-search:** increase font size for query input ([#2066](https://github.com/ubilabs/esa-climate-from-space/issues/2066)) ([3fe9a94](https://github.com/ubilabs/esa-climate-from-space/commit/3fe9a943667eeb5148e612cb5f48f006caa28947))
+* **content:** Auto content commit for story id: story-45 ([0d876f3](https://github.com/ubilabs/esa-climate-from-space/commit/0d876f3b06706bee629405173539050b3fcea5cc))
+* **cookie-consent:** adjust order of buttons ([03a35a7](https://github.com/ubilabs/esa-climate-from-space/commit/03a35a79b9923c22ee5cf38d992b16392934e623))
+* **cookie-consent:** dialog with multiple privacy settings ([#2024](https://github.com/ubilabs/esa-climate-from-space/issues/2024)) ([55f1502](https://github.com/ubilabs/esa-climate-from-space/commit/55f15025dd6ec35cea872d64bd44b796b6363a88))
+* **electron:** multi platform and architecture builds ([#2028](https://github.com/ubilabs/esa-climate-from-space/issues/2028)) ([204e487](https://github.com/ubilabs/esa-climate-from-space/commit/204e487f4341e7fd2a8b834a3cdf00693c6305da))
+* **matomo:** replace matomo integration and update tracking ([#2065](https://github.com/ubilabs/esa-climate-from-space/issues/2065)) ([04cd8b0](https://github.com/ubilabs/esa-climate-from-space/commit/04cd8b012dbcc92142881f30345a7635dc21fa92))
+* **search:** content search for datasets and layers ([#1933](https://github.com/ubilabs/esa-climate-from-space/issues/1933)) ([850efc3](https://github.com/ubilabs/esa-climate-from-space/commit/850efc3ff5dbabf023e60968acb753ba5717d4ff))
+* **stories:** update story: story-35 ([#2027](https://github.com/ubilabs/esa-climate-from-space/issues/2027)) ([2e27149](https://github.com/ubilabs/esa-climate-from-space/commit/2e27149c158c0b3c1cd4938a6bb5049b42fdb29e))
+
+
+
 ## [2.1.2](https://github.com/ubilabs/esa-climate-from-space/compare/v2.1.0...v2.1.2) (2026-03-24)
 
 
