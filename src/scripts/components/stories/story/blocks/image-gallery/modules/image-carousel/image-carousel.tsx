@@ -167,7 +167,7 @@ const ImageCarousel: FunctionComponent = () => {
     >
       <div className={cx(styles.wrapper)}>
         {"headerText" in module && module.headerText && (
-          <h1>{module.headerText}</h1>
+          <h2 className={styles.headerText}>{module.headerText}</h2>
         )}
         <div className={styles.slidesContainer} ref={slidesContainerRef}>
           <motion.div
