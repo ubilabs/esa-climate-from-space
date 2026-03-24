@@ -22,7 +22,7 @@ interface Props {
 }
 
 export const GetGlobalDataWidget = ({ className }: Props) => {
-  const { isStoryEEI } = useAppRouteFlags();
+  const { isStoryEEI, isBaseRoute } = useAppRouteFlags();
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
 
@@ -34,9 +34,14 @@ export const GetGlobalDataWidget = ({ className }: Props) => {
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
   const { mainId, compareId } = selectedLayerIds;
 
+  // todo: refactor
   const onMoveStartHandler = useCallback(
-    () => globeSpinning && !isStoryEEI && dispatch(setGlobeSpinning(false)),
-    [dispatch, globeSpinning, isStoryEEI],
+    () =>
+      globeSpinning &&
+      !isStoryEEI &&
+      !isBaseRoute &&
+      dispatch(setGlobeSpinning(false)),
+    [dispatch, globeSpinning, isStoryEEI, isBaseRoute],
   );
 
   const onMoveEndHandler = useCallback(
@@ -64,7 +69,7 @@ export const GetGlobalDataWidget = ({ className }: Props) => {
   );
 
   return (
-    <GetDataWidget 
+    <GetDataWidget
       className={className}
       globeView={globalGlobeView}
       mainId={mainId}

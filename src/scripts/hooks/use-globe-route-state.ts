@@ -12,6 +12,7 @@ import { setSelectedContentAction } from "../reducers/content";
 import { setFlyTo } from "../reducers/fly-to";
 import { setSelectedLayerIds } from "../reducers/layers";
 import { setShowLayer } from "../reducers/show-layer-selector";
+import { setGlobeSpinning } from "../reducers/globe/spinning";
 
 import { languageSelector } from "../selectors/language";
 import { selectedLayerIdsSelector } from "../selectors/layers/selected-ids";
@@ -37,14 +38,10 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
   const { data: layers } = useGetLayerListQuery(language);
 
   const updateAutoRotationState = useCallback(
-    (shouldAutoSpin: boolean, globe: WebGlGlobe) => {
-      if (shouldAutoSpin) {
-        globe.startAutoSpin();
-      } else {
-        globe.stopAutoSpin();
-      }
+    (shouldAutoSpin: boolean) => {
+      dispatch(setGlobeSpinning(shouldAutoSpin));
     },
-    [],
+    [dispatch],
   );
 
   const updateUserInteractionEnabledState = useCallback(
@@ -127,7 +124,8 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
       return;
     }
 
-    updateAutoRotationState(appRoute === AppRoute.Base, globe);
+    updateAutoRotationState(appRoute === AppRoute.Base);
+
     updateUserInteractionEnabledState(
       appRoute === AppRoute.Stories || appRoute === AppRoute.Data,
       globe,
