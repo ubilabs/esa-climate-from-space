@@ -616,7 +616,7 @@
         },
         {
           "layer": {
-            "layerId": "glaciers.tcwv",
+            "layerId": "glaciers.ice",
             "name": "Glaciers"
           },
           "altText": "Glaciers",
