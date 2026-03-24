@@ -15,7 +15,7 @@
   z-index: 1;
 }
 .container {
-  background-color: rgba(0, 51, 73, 0.3);
+  background-color: rgba(var(--dark-grey-5), 0.3);
   padding: 2rem;
   padding-top: 3.5rem;
   margin: 0 auto;
