@@ -1,4 +1,4 @@
-import { GlobeState } from "../reducers/globe/index";
+import { GlobeState } from "../reducers/globe/globe-state";
 
 export interface UrlHashState {
   globeState: GlobeState;

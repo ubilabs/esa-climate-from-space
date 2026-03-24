@@ -18,6 +18,7 @@ export const searchableStoryKeys = [
   "subtitle",
   "description",
   "altText",
+  "content",
 ] as const;
 
 export const searchableStorySlideKeys = [

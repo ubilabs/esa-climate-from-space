@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useEffect } from "react";
+import { FunctionComponent, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import { StorySectionProps } from "../../../../../../../types/story";
@@ -7,7 +7,7 @@ import { SlideContainer } from "../../../../../layout/slide-container/slide-cont
 import { ComparisonViewer } from "./comparison-viewer/comparison-viewer";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
-import { useScreenSize } from "../../../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 
 import cx from "classnames";
 
@@ -22,14 +22,8 @@ const ImageCompare: FunctionComponent<StorySectionProps> = () => {
 
   const [isComparing, setIsComparing] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useScreenInfo();
   const intl = useIntl();
-
-  useEffect(() => {
-    if (isComparing) {
-      setShowInstructions(true);
-    }
-  }, [isComparing]);
 
   if (!slides || slides.length < 2) {
     console.error(
@@ -60,7 +54,10 @@ const ImageCompare: FunctionComponent<StorySectionProps> = () => {
           <p className={styles.description}>{text}</p>
           <button
             className={styles.controlButton}
-            onClick={() => setIsComparing(true)}
+            onClick={() => {
+              setIsComparing(true);
+              setShowInstructions(true);
+            }}
           >
             {startButtonText ? (
               startButtonText

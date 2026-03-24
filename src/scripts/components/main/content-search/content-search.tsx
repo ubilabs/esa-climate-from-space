@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
 import { useMatomo } from "@streamr/matomo-tracker-react";
 import debounce from "lodash.debounce";
 
 import { useSearch } from "../../../hooks/use-search";
-import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../hooks/use-screen-info";
 
 import { ActiveSearchState, Filter, FilterType } from "../../../types/search";
 
@@ -29,7 +29,7 @@ export default function ContentSearch() {
   const search = useSearch();
   const intl = useIntl();
   const { trackSiteSearch } = useMatomo();
-  const { isDesktop } = useScreenSize();
+  const { isDesktop } = useScreenInfo();
   const [query, setQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState<FilterType>(FilterType.All);
   const searchResult = search(query);
@@ -49,16 +49,22 @@ export default function ContentSearch() {
     }
   }, [state?.search]);
 
-  useEffect(() => {
-    if (state?.search && typeof state.search === "object") {
-      const { query, filter } = state.search as ActiveSearchState;
-      if (query) {
-        setQuery(query);
+  const updateQueryValues = useEffectEvent(() => {
+    if (state?.search && state.search?.query !== query) {
+      const { query: currentQuery, filter } =
+        state?.search as ActiveSearchState;
+      if (currentQuery) {
+        setQuery(currentQuery);
       }
+
       if (filter) {
         setActiveFilter(filter);
       }
     }
+  });
+
+  useEffect(() => {
+    updateQueryValues();
   }, [state?.search]);
 
   const trackSearchQuery = useMemo(

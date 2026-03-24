@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
+import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 import config, { ALTITUDE_FACTOR_DESKTOP } from "../../../config/main";
 import { useGetStoriesQuery } from "../../../services/api";
 
@@ -20,6 +21,7 @@ import { contentSelector } from "../../../selectors/content";
 
 import { LayerListItem } from "../../../types/layer-list";
 import { StoryListItem } from "../../../types/story-list";
+import { AppRoute } from "../../../types/app-routes";
 
 import useAutoRotate from "../../../hooks/use-auto-content-rotation";
 import { useNavGestures } from "../../../libs/use-nav-gestures";
@@ -31,7 +33,7 @@ import styles from "./content-navigation.module.css";
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
 ): obj is StoryListItem {
-  return obj && "title" in obj && "image" in obj;
+  return obj && obj.id.startsWith("story-");
 }
 
 interface Props {
@@ -66,7 +68,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   // Ref to store and control the auto-rotation interval
   const [lastUserInteractionTime, setLastUserInteractionTime] = useState(
-    Date.now(),
+    Date.now,
   );
 
   useNavGestures(
@@ -131,9 +133,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
     const contentId = contents[currentIndex]?.id;
 
     dispatch(setSelectedContentAction({ contentId }));
-    // We don't want to dispatch a layer action with story ids
+    // We don't want to dispatch a layer action with story ids (except for EEI-story)
     if (isStoryListItem(contents[currentIndex])) {
-      dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+      if (contentId !== AppRoute.StoryEEI) {
+        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+      } else {
+        dispatch(
+          setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
+        );
+      }
       return;
     }
 

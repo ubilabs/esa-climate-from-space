@@ -29,7 +29,15 @@
     }
   }
 
-  &[data-nav-content="stories"] {
+  /* we animate the globe using scroll motions */
+  &[data-nav-content="story-eei"] {
+    .globe {
+      transition: none ;
+    }
+  }
+
+  &[data-nav-content="stories"],
+  &[data-nav-content="story-eei"] {
     .globe {
       margin-bottom: 0;
     }

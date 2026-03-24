@@ -10,6 +10,7 @@ import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { uiEmbedElements } from "../../../config/main";
 import { getEmbedParamsString } from "../../../libs/get-embed-params-string";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 const UrlSync: FunctionComponent = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const UrlSync: FunctionComponent = () => {
   const selectedTags = useSelector(selectedTagsSelector);
   const embedElements = useSelector(embedElementsSelector);
   const { mainId, compareId } = useSelector(selectedLayerIdsSelector);
+  const { isStoriesRoute } = useAppRouteFlags();
 
   const embedParamOptions = useMemo(
     () =>
@@ -50,6 +52,11 @@ const UrlSync: FunctionComponent = () => {
   }, [globeState, mainId, compareId, selectedTags, embedElements]);
 
   useEffect(() => {
+    if (isStoriesRoute) {
+      // Don't sync URL for stories route, as it has its own URL sync logic in useSyncStoryUrl
+      return;
+    }
+
     const currentParams = new URLSearchParams(location.search);
     const targetParams = new URLSearchParams(targetSearch);
 
@@ -88,6 +95,7 @@ const UrlSync: FunctionComponent = () => {
     location.state,
     navigate,
     embedParamOptions,
+    isStoriesRoute,
   ]);
 
   return null;

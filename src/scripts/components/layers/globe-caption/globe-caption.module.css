@@ -1,0 +1,6 @@
+.globeCaption {
+  padding: 3.125em 0;
+  width: min(1200px, 90%);
+  position: absolute;
+  bottom: 0;
+}

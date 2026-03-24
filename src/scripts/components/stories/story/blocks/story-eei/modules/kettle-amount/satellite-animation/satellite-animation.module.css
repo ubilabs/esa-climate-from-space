@@ -1,0 +1,10 @@
+.satellite {
+  height: fit-content;
+  position: absolute;
+  top: -15%;
+  left: 50%;
+
+  > img {
+    width: min(200px, 30vw);
+  }
+}

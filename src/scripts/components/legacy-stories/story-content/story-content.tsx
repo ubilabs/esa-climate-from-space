@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
-import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import cx from "classnames";
 
-import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
+import { StoryMarkdown } from "../../shared/story-markdown/story-markdown";
 import config from "../../../config/main";
 
 import { AppRoute } from "../../../types/app-routes";
@@ -25,29 +25,15 @@ const StoryContent: FunctionComponent<Props> = ({ route, slide, storyId }) => {
       styles.shortTextContent,
   );
 
-  const transformImageUri = (originalSrc: string) =>
-    getStoryAssetUrl(storyId, originalSrc);
-
-  const transformLinkUri = (originalSrc: string) =>
-    getStoryAssetUrl(storyId, originalSrc);
-
-  const getLinkTarget = (originalSrc: string) => {
-    if (originalSrc.startsWith("stories")) {
-      return "_self";
-    }
-
-    return "_blank";
-  };
-
   return (
     <div className={contentClasses}>
-      <ReactMarkdown
-        children={storyText || ""}
-        transformImageUri={transformImageUri}
-        transformLinkUri={transformLinkUri}
-        linkTarget={getLinkTarget}
+      <StoryMarkdown
+        storyId={storyId}
+        rehypePlugins={[rehypeRaw]}
         allowedElements={config.markdownAllowedElements}
-      />
+      >
+        {storyText || ""}
+      </StoryMarkdown>
     </div>
   );
 };

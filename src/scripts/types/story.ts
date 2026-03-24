@@ -1,12 +1,8 @@
 import { ComponentProps, FunctionComponent } from "react";
 
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
-import ImageWavelength from "../components/stories/story/blocks/image-gallery/modules/image-wavelength/image-wavelength";
-import ImageCompare from "../components/stories/story/blocks/image-gallery/modules/image-compare/image-compare";
-import ImageTime from "../components/stories/story/blocks/image-gallery/modules/image-time/image-time";
-import ImageScroll from "../components/stories/story/blocks/image-gallery/modules/image-scroll/image-scroll";
-import TextOverlay from "../components/stories/story/blocks/generic/text-overlay/text-overlay";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
+import { StoryEEI } from "../components/stories/story/blocks/story-eei/story-eei";
 
 export interface Slide {
   text: string;
@@ -15,7 +11,7 @@ export interface Slide {
   splashImage?: string;
 }
 
-export interface LegacyStory {
+export interface LegacyStoryType {
   id: string;
   slides: Slide[];
 }
@@ -24,42 +20,140 @@ export type Story = {
   id: string;
   splashscreen: Splashscreen;
   modules: Module[];
+  // special property for StoryEEI
+  initialGlobeConfig?: ScrollGlobe;
 };
 
-type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
+export type ImageFocus = "center" | "left" | "right" | "top" | "bottom" | "contain"
+
+export interface ScrollGlobe {
+  title?: string;
+  containerPosition: {
+    x: number;
+    y: number;
+  };
+  location: {
+    lng: number;
+    lat: number;
+    altitude: number;
+  };
+}
+
+export interface GlobeKeyframe {
+  progress: number; // 0 to 1, relative to the module
+  mobile: ScrollGlobe;
+  desktop?: ScrollGlobe;
+}
+
+export type Location = ScrollGlobe["location"];
+
+export type ScrollGlobeValues = ScrollGlobe["location"] &
+  ScrollGlobe["containerPosition"];
+
+export type ContainerPosition = {
+  x: number;
+  y: number;
+};
 
 export type Splashscreen = {
-  location?: Record<string, number>;
+  location?: Location;
+  containerPosition?: ContainerPosition;
   url?: string;
-  slides: Array<{ text: string }>;
+  slides?: Array<{ text: string }>;
   title?: string;
   focus?: ImageFocus;
   subtitle?: string;
+  globeKeyframes?: GlobeKeyframe[];
+  lengthFactor?: number;
+  type?: string;
 };
-
-// Extend with union for other block types if needed
-export type Module = ImageModule;
-
-export type ModuleType = ImageModule["type"];
 
 export type ImageGalleryModuleType =
   | "textOverlay"
   | "imageWavelength"
   | "imageCompare"
   | "imageTime"
-  | "imageScroll";
+  | "imageScroll"
+  | "textBodyLarge"
+  | "imageCarousel"
+  | "globe";
 
-export type ImageModule = {
-  type: ImageGalleryModuleType;
+export type StoryEEIModuleType =
+  | "kettleAmountModule"
+  | "kettleCount"
+  | "animatedArrowsModule"
+  | "quoteSlide"
+  | "kettleAmountModule"
+  | "treeMapModule";
+
+type BaseModule = {
   text?: string;
   altText?: string;
-  slides?: ImageModuleSlide[];
+  slides?: BaseModuleSlide[];
   startButtonText?: string;
   focus?: ImageFocus;
   url?: string;
+  globe?: GlobeItem;
+  leading?: boolean;
 };
 
-export type ImageModuleSlide = {
+export type ImageModule = BaseModule & {
+  type: ImageGalleryModuleType;
+};
+
+export type ImageCarouselSlide = BaseModuleSlide & {
+  layer?: {
+    layerId: string;
+    name: string;
+  };
+};
+
+export type ImageCarouselModule = ImageModule & {
+  type: "imageCarousel";
+  lengthFactor?: number;
+  headerText?: string;
+  readMore?: {
+    title: string;
+    url: string;
+  };
+  slides?: ImageCarouselSlide[];
+};
+
+export type QuoteSlideType = {
+  content: {
+    text: string;
+    author: string;
+  };
+};
+
+export type TreeMapModule = {
+  title: {
+    grid: string;
+    globe: string;
+  };
+  data: {
+    label: string;
+    layerId: string;
+    percentage: {
+      grid: number;
+      globe: number;
+    };
+  }[];
+};
+
+export type StoryEEIModule = Pick<BaseModule, "text"> & {
+  globeKeyframes?: GlobeKeyframe[];
+  lengthFactor: number;
+  content?: Record<string, string>;
+} & (
+    | { type: "kettleCount" }
+    | { type: "animatedArrowsModule" }
+    | { type: "kettleAmountModule" }
+    | ({ type: "quoteSlide" } & QuoteSlideType)
+    | ({ type: "treeMapModule" } & TreeMapModule)
+  );
+
+export type BaseModuleSlide = {
   url?: string;
   altText?: string;
   text: string;
@@ -67,6 +161,11 @@ export type ImageModuleSlide = {
   flag: string;
   caption: string;
 };
+
+// Extend with union for other block types if needed
+export type Module = ImageModule | ImageCarouselModule | StoryEEIModule;
+
+export type ModuleType = Module["type"];
 
 export type AnchorKey = `${number}-${number}-${number}`;
 
@@ -86,15 +185,18 @@ export const imageGalleryModuleMap: Record<
   imageTime: ImageGallery.ImageTime,
   imageScroll: ImageGallery.ImageScroll,
   textOverlay: ImageGallery.TextOverlay,
+  textBodyLarge: ImageGallery.TextBodyLarge,
+  imageCarousel: ImageGallery.ImageCarousel,
+  globe: ImageGallery.StoryGlobe,
 };
 
-export const imageGalleryBlockComponentMap: Record<
-  ImageModule["type"],
-  FunctionComponent<StorySectionProps> | undefined
+export const storyEEIModuleMap: Record<
+  StoryEEIModule["type"],
+  FunctionComponent<StorySectionProps>
 > = {
-  imageWavelength: ImageWavelength,
-  imageCompare: ImageCompare,
-  imageTime: ImageTime,
-  imageScroll: ImageScroll,
-  textOverlay: TextOverlay,
+  kettleAmountModule: StoryEEI.KettleAmountModule,
+  animatedArrowsModule: StoryEEI.AnimatedArrowsModule,
+  kettleCount: StoryEEI.KettleCount,
+  quoteSlide: StoryEEI.QuoteSlide,
+  treeMapModule: StoryEEI.TreeMapModule,
 };

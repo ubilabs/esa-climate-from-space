@@ -17,6 +17,7 @@ import { IntlProvider } from "react-intl";
 import { store } from "./create-redux-store";
 
 import { MatomoProvider, createInstance } from "@streamr/matomo-tracker-react";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { SearchProvider } from "../../../providers/search/search-provider";
 import { StoryProvider } from "../../../providers/story/story-provider";
@@ -38,6 +39,7 @@ import PresentationSelector from "../../legacy-stories/presentation-selector/pre
 import ShowcaseSelector from "../../legacy-stories/showcase-selector/showcase-selector";
 import LegacyStory from "../../legacy-stories/story/story";
 import Story from "../../stories/story/story";
+import { StoryEEI } from "../../stories/story/blocks/story-eei/story-eei";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
 import ContentSearch from "../content-search/content-search";
 
@@ -95,11 +97,17 @@ const StoryWrapper: FunctionComponent<{ children?: React.ReactNode }> = ({
   return <StoryProvider story={story || null}>{children}</StoryProvider>;
 };
 
+const StoryOrEEIStory: FunctionComponent = () => {
+  const { isStoryEEI } = useAppRouteFlags();
+
+  return isStoryEEI ? <StoryEEI /> : <Story />;
+};
+
 const LegacyOrRecentStory: FunctionComponent = () => {
   return (
     <StoryWrapper>
       <Header />
-      <Story />
+      <StoryOrEEIStory />
     </StoryWrapper>
   );
 };
@@ -107,12 +115,16 @@ const LegacyOrRecentStory: FunctionComponent = () => {
 const MainContent: FunctionComponent<{
   children?: React.ReactNode;
 }> = ({ children }) => {
+  const { isRegularStory } = useAppRouteFlags();
+
   return (
     <>
       <StoryWrapper>
         <Header />
         {children}
-        <DataViewer />
+        {/* Stories use StoryGlobe component for globe visualization instead of DataViewer */}
+        {/* Keep the global globe in Dataviewer for EEI Story */}
+        {!isRegularStory && <DataViewer />}
         <LayerSelector />
       </StoryWrapper>
     </>
@@ -202,7 +214,7 @@ const TranslatedApp: FunctionComponent = () => {
               <Route path={ROUTES.data.path} element={<MainContent />} />
               <Route
                 path={ROUTES.stories.path}
-                element={<MainContent children={<Story />} />}
+                element={<MainContent children={<StoryOrEEIStory />} />}
               />
             </Route>
           </Routes>

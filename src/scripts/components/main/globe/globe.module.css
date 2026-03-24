@@ -3,6 +3,7 @@
 }
 
 .globe {
+  transform: translate(var(--globe-container-x), var(--globe-container-y));
   transition: transform 1.5s ease;
   height: 100%;
   width: 100%;
@@ -16,6 +17,10 @@
 
 .globe canvas {
   filter: brightness(0.85) saturate(0.85) opacity(0.95);
+}
+
+.globe.notTouchable {
+  pointer-events: none !important;
 }
 
 .marker {

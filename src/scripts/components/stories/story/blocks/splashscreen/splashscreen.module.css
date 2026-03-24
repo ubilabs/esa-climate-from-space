@@ -1,8 +1,7 @@
 .splashscreenContainer {
-  background-color: var(--Neutral-ESA-Background, #011e2b);
+  background-color: var(--neutral-esa-background);
   background-size: cover;
   position: relative;
-  scroll-snap-align: start;
 
   &.locationStory {
     background-color: transparent;
@@ -59,7 +58,7 @@
     padding-inline: var(--story-padding);
 
     p {
-      color: var(--Neutral-ESA-White, #fff);
+      color: var(--neutral-esa-white);
       text-align: center;
       text-shadow: 0 2px 1px rgba(0, 0, 0, 0.48);
       font-family: NotesEsa;
@@ -93,7 +92,7 @@
         text-transform: uppercase;
       }
       p {
-        color: var(--Neutral-ESA-White, #fff);
+        color: var(--neutral-esa-white);
         text-align: center;
         text-shadow: 0 2px 1px rgba(0, 0, 0, 0.48);
         font-family: NotesEsa;

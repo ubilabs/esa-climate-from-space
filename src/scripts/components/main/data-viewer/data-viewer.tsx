@@ -1,4 +1,4 @@
-import { FunctionComponent, useRef, useState, useMemo } from "react";
+import { FunctionComponent, useState, useMemo } from "react";
 
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,7 +8,7 @@ import cx from "classnames";
 
 import { categoryTags } from "../../../config/main";
 
-import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../hooks/use-screen-info";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
@@ -23,9 +23,10 @@ import {
 
 import ContentNavigation from "../content-navigation/content-navigation";
 import Button from "../button/button";
-import { GetDataWidget } from "../data-widget/data-widget";
 import CategoryNavigation from "../category-navigation/category-navigation";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
+import { GetGlobalDataWidget } from "../data-widget/global-data-widget";
+
 import { BackButton } from "../back-button/back-button";
 
 import styles from "./data-viewer.module.css";
@@ -71,13 +72,12 @@ const DataViewer: FunctionComponent = () => {
   const intl = useIntl();
 
   const { screenHeight, screenWidth, isMobile, isTouchDevice } =
-    useScreenSize();
+    useScreenInfo();
 
   const { isBaseRoute, isNavigationView, isDataRoute, isContentNavRoute } =
     useAppRouteFlags();
 
-  // This keeps track of whether the animation has played
-  const hasAnimationPlayed = useRef(false);
+  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
 
   const allCategories = useMemo(
     () =>
@@ -120,7 +120,7 @@ const DataViewer: FunctionComponent = () => {
           isContentNavRoute && styles.showContentList,
         )}
       >
-        <GetDataWidget className={cx(styles.globe)} />
+        <GetGlobalDataWidget className={cx(styles.globe)} />
       </div>
       {isDataRoute && <GlobeNavigation />}
       {isNavigationView && (
@@ -149,11 +149,11 @@ const DataViewer: FunctionComponent = () => {
                 height={screenHeight}
                 isMobile={isMobile}
                 setCategory={setCurrentCategory}
-                isAnimationReady={hasAnimationPlayed}
+                setAnimationReady={setHasAnimationPlayed}
               />
               <Button
                 className={cx(
-                  hasAnimationPlayed.current && styles.showFast,
+                  hasAnimationPlayed && styles.showFast,
                   styles.exploreButton,
                 )}
                 onClick={() => {
@@ -161,7 +161,7 @@ const DataViewer: FunctionComponent = () => {
                 }}
                 label="explore"
               ></Button>
-              {!hasAnimationPlayed.current && (
+              {!hasAnimationPlayed && (
                 <span
                   aria-hidden="true"
                   className={cx(

@@ -1,0 +1,120 @@
+.container {
+  position: relative;
+  height: min(var(--story-height), 100%);
+  width: 100%;
+
+  .interactButton {
+    display: initial;
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    height: 48px;
+    min-width: 76px;
+    text-transform: uppercase;
+    letter-spacing: 3.5px;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 12px 20px;
+    border-radius: 40px;
+    background: #3f6c7d;
+    box-shadow: 0 0 12px 0 rgba(0, 51, 73, 0.25);
+  }
+
+  .closeButton {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    height: auto;
+    margin-inline: auto 1.5rem;
+    top: 1.5rem;
+    color: white;
+    cursor: pointer;
+    z-index: 1;
+
+    &:disabled {
+      /* render button to prevent content from jumping */
+      visibility: hidden;
+      touch-action: none;
+    }
+  }
+
+  @media screen and (--mobile-viewport) {
+    .interactButton {
+      font-size: 0;
+    }
+
+    .interactButton::before {
+      display: flex;
+      justify-content: center;
+      content: var(--icon-touch);
+      width: 100%;
+    }
+  }
+
+  .globeContainer {
+    position: relative;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    background: var(--neutral-esa-background);
+
+    .globe {
+      height: 100%;
+      left: 50%;
+      position: absolute !important;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 1s ease;
+      width: 100%;
+      position: relative;
+      transition: none;
+    }
+
+    /*  Make sure two globes are displayed side by side */
+    /*  in the story slider */
+    &:has(.globe ~ .globe) {
+      .globe {
+        left: auto;
+        transform: none;
+        top: 0;
+        position: relative !important;
+        transition: none;
+
+        canvas {
+          transition: none;
+        }
+      }
+
+      .layerDetails {
+        position: absolute;
+      }
+    }
+  }
+
+  .layerDetails {
+    position: relative;
+    height: inherit;
+    padding: inherit;
+    pointer-events: none;
+  }
+
+  .layerDetails > * {
+    pointer-events: all;
+    font-size: 20px;
+  }
+
+  @media screen and (--desktop-viewport) {
+    .layerDetails {
+      height: inherit;
+      background: none;
+    }
+
+    .layerDetails > * {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}

@@ -1,11 +1,12 @@
 import { FunctionComponent } from "react";
-import ReactMarkdown from "react-markdown";
 
+import { StoryMarkdown } from "../../../../../../shared/story-markdown/story-markdown";
 import config from "../../../../../../../config/main";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
+import { TextBlock } from "../../../generic/text-container/text-block/text-block";
 import { StorySectionProps } from "../../../../../../../types/story";
 import { ScrollImage } from "./image-scroll-image/image-scroll-image";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
@@ -22,28 +23,42 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
   } = useModuleContent();
   return (
     <div className={styles.imageScroll}>
-      {slides?.map(({ url, text, altText, caption, focus }, index) => (
-        <SlideContainer
-          ref={getRefCallback?.(index, 0)}
-          className={cx(styles.slide, "story-grid")}
-          key={url || index}
-        >
-          {text && (
-            <ReactMarkdown children={text} className={styles.imageScrollText} />
-          )}
-          <div className={styles.scrollImageContainer}>
-            <ScrollImage
-              className={focus}
-              src={getStoryAssetUrl(storyId, url)}
-              alt={altText || text}
-            />
-            <ReactMarkdown
-              children={caption}
-              allowedElements={config.markdownAllowedElements}
-            />
-          </div>
-        </SlideContainer>
-      ))}
+      {slides?.map(
+        // Set leading as default so image appears on the left / on top
+        ({ url, text, altText, caption, focus, leading = true }, index) => (
+          <SlideContainer
+            ref={getRefCallback?.(index, 0)}
+            className={cx(
+              leading && styles.imageLeading,
+              styles.slide,
+              "story-grid",
+            )}
+            key={url || index}
+          >
+            {text && (
+              <TextBlock
+                text={text}
+                storyId={storyId}
+                hasRichText
+                className={styles.imageScrollText}
+              />
+            )}
+            <div className={styles.scrollImageContainer}>
+              <ScrollImage
+                focus={focus}
+                src={getStoryAssetUrl(storyId, url)}
+                alt={altText || text}
+              />
+              <StoryMarkdown
+                storyId={storyId}
+                allowedElements={config.markdownAllowedElements}
+              >
+                {caption}
+              </StoryMarkdown>
+            </div>
+          </SlideContainer>
+        ),
+      )}
     </div>
   );
 };

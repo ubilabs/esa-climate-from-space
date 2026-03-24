@@ -2,10 +2,11 @@ import { useState, useRef, FunctionComponent, SyntheticEvent } from "react";
 import { useIntl } from "react-intl";
 import { motion, useMotionValue, useTransform } from "motion/react";
 import { useGesture } from "@use-gesture/react";
-import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 import { useLenisToggle } from "../../../../../../../../hooks/use-lenis-toggle";
 
+import { ImageFocus } from "../../../../../../../../types/story";
 import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
 import {
   MAX_ZOOM_SCALE,
@@ -17,20 +18,27 @@ import {
 import cx from "classnames";
 
 import styles from "./image-scroll-image.module.css";
-
 interface Props {
   src: string;
   alt?: string;
   className?: string;
+  onFullscreenToggle?: (isFullscreen: boolean) => void;
+  focus?: ImageFocus;
 }
 
-export const ScrollImage: FunctionComponent<Props> = ({ src, alt, className }) => {
+export const ScrollImage: FunctionComponent<Props> = ({
+  src,
+  alt,
+  className,
+  onFullscreenToggle,
+  focus,
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
 
   const intl = useIntl();
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useScreenInfo();
 
   useLenisToggle(isFullscreen);
 
@@ -59,6 +67,12 @@ export const ScrollImage: FunctionComponent<Props> = ({ src, alt, className }) =
 
   const buttonOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
 
+  // Maps scroll progress (0 to 1) to colors (red -> blue)
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0, 0.9, 1],
+    ["rgba(1, 30, 43, 1)", "rgba(1, 30, 43, 1)", "rgba(0, 0, 0, 0.9)"],
+  );
   // Gesture bindings
   useGesture(
     {
@@ -101,12 +115,14 @@ export const ScrollImage: FunctionComponent<Props> = ({ src, alt, className }) =
     x.set(0);
     y.set(0);
     setIsFullscreen(false);
+    onFullscreenToggle?.(false);
   };
 
   const handleOpen = (e: SyntheticEvent) => {
     e.stopPropagation();
     setIsFullscreen(true);
     setShowInstructions(true);
+    onFullscreenToggle?.(true);
   };
 
   if (!alt) {
@@ -119,22 +135,27 @@ export const ScrollImage: FunctionComponent<Props> = ({ src, alt, className }) =
     <motion.div
       ref={ref}
       layout
+      className={styles.scrollImageWrapper}
       data-status={isFullscreen ? "fullscreenOverlay" : "imageContainer"}
       role={isFullscreen ? "dialog" : undefined}
       aria-modal={isFullscreen ? "true" : undefined}
+      style={{
+        backgroundColor,
+      }}
     >
       <motion.img
         layout
         ref={imgRef}
         src={src}
         alt={alt}
-        className={cx( styles.image, className)}
+        className={cx(styles.image, className)}
         style={{
           x: isFullscreen ? x : 0,
           y: isFullscreen ? y : 0,
           scale: isFullscreen ? scale : 1,
           cursor: isFullscreen ? "grab" : "default",
           clipPath: isFullscreen ? "none" : clipPath,
+          [focus === "contain" ? "objectFit" : "objectPosition"]: focus,
         }}
         draggable={false}
       />

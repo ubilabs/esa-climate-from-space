@@ -2,12 +2,14 @@ import { FunctionComponent } from "react";
 import { useIntl } from "react-intl";
 import ReactMarkdown from "react-markdown";
 import { useDispatch } from "react-redux";
+import rehypeRaw from "rehype-raw";
 
 import { setWelcomeScreen } from "../../../reducers/welcome-screen";
 
 import Button from "../button/button";
 import config from "../../../config/main";
 import Overlay from "../overlay/overlay";
+import { markdownComponents } from "../../../libs/markdown-components";
 
 import styles from "./welcome-screen.module.css";
 
@@ -33,7 +35,8 @@ const WelcomeScreen: FunctionComponent<Props> = ({ onStartOnboarding }) => {
         <div className={styles.content}>
           <ReactMarkdown
             children={intl.formatMessage({ id: "welcomeContent" })}
-            linkTarget="_blank"
+            rehypePlugins={[rehypeRaw]}
+            components={markdownComponents}
             allowedElements={config.markdownAllowedElements}
           />
           <div className={styles.tourButtons}>

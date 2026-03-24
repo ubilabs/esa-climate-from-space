@@ -53,10 +53,6 @@
 .description {
   color: var(--text-default);
 }
-a {
-  color: var(--text-default);
-  text-decoration: none;
-}
 .present img {
   height: 300px;
 }

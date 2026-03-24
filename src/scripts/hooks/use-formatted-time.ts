@@ -3,16 +3,20 @@ import { useSelector } from "react-redux";
 import { getLayerTimeIndex } from "../libs/get-image-layer-data";
 import { getTimeRanges } from "../libs/get-time-ranges";
 import { State } from "../reducers";
-import { timeSelector } from "../selectors/globe/time";
 import { languageSelector } from "../selectors/language";
 import { layerDetailsSelector } from "../selectors/layers/layer-details";
 import { selectedLayerIdsSelector } from "../selectors/layers/selected-ids";
 
-export const useLayerTimes = () => {
+export const useLayerTimes = (time: number, mainLayerId: string | null, compareLayerId: string | null) => {
   const language = useSelector(languageSelector);
   const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  const time = useSelector(timeSelector);
-  const { mainId, compareId } = selectedLayerIds;
+  let { mainId, compareId } = selectedLayerIds;
+  if (mainLayerId) {
+    mainId = mainLayerId;
+  }
+  if (compareLayerId) {
+    compareId = compareLayerId;
+  }
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),
   );

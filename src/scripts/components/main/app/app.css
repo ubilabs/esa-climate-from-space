@@ -37,6 +37,11 @@ h6 {
   text-wrap: balance;
 }
 
+a {
+  color: var(--text-default);
+  text-decoration: none;
+}
+
 html,
 body,
 #app {
@@ -58,7 +63,7 @@ body {
 }
 
 #app {
-  background-color: var(--Neutral-ESA-Background, #011e2b);
+  background-color: var(--neutral-esa-background);
   display: grid;
   grid-template-areas:
     "header"
@@ -79,6 +84,7 @@ body {
   place-items: center;
   gap: 0.5rem;
   padding-inline: var(--story-padding);
+  z-index: 0;
 
   @media screen and (--desktop-viewport) {
     grid-template-columns: repeat(12, minmax(0, 1fr));

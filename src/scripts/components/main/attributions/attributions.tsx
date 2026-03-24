@@ -1,8 +1,10 @@
 import { FunctionComponent } from "react";
 import { useIntl } from "react-intl";
+import rehypeRaw from "rehype-raw";
 import ReactMarkdown from "react-markdown";
 
 import config from "../../../config/main";
+import { markdownComponents } from "../../../libs/markdown-components";
 
 import styles from "./attributions.module.css";
 
@@ -14,7 +16,8 @@ const Attributions: FunctionComponent = () => {
       <div className={styles.credits}>
         <ReactMarkdown
           children={intl.formatMessage({ id: "attributionDescription" })}
-          linkTarget="_blank"
+          rehypePlugins={[rehypeRaw]}
+          components={markdownComponents}
           allowedElements={config.markdownAllowedElements}
         />
       </div>

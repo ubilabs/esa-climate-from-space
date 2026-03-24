@@ -3,10 +3,10 @@ import { RenderMode } from "@ubilabs/esa-webgl-globe";
 import { UiEmbedElement } from "../types/embed-elements";
 
 import { GlobeProjection } from "../types/globe-projection";
-import { GlobeState } from "../reducers/globe/globe-state";
 import { AppRoute } from "../types/app-routes";
 import { LenisOptions } from "lenis";
 import { isIos16orLower } from "../libs/is-ios-16-or-lower";
+import { isAndroid } from "../libs/is-android";
 
 /**
  * Routes are utilized to manage state transitions within the application.
@@ -34,6 +34,10 @@ export const ROUTES = {
   },
   [AppRoute.ShowcaseStories]: { path: "/showcase/:storyIds", end: true },
   [AppRoute.Showcase]: { path: "/showcase", end: true },
+  [AppRoute.StoryEEI]: {
+    path: "/:category/stories/story-eei/:slideIndex",
+    end: true,
+  },
   [AppRoute.Stories]: {
     path: "/:category/stories/:storyId/:slideIndex",
     end: true,
@@ -72,7 +76,7 @@ export const categoryTags = [
   "improving_models",
 ];
 
-const globeState: GlobeState = {
+const globeState = {
   time: Date.now(),
   projectionState: {
     projection: GlobeProjection.Sphere,
@@ -90,6 +94,12 @@ const globeState: GlobeState = {
   },
   spinning: true,
   layerLoadingState: {},
+  renderOptions: {
+    atmosphereEnabled: true,
+    shadingEnabled: true,
+    atmosphereStrength: 0.8,
+    atmosphereColor: [0.58, 0.79, 1], // {r: 148, g: 201, b: 255}
+  },
 };
 
 export const uiEmbedElements: UiEmbedElement[] = [
@@ -122,7 +132,8 @@ type BasemapId =
   | "dark"
   | "land"
   | "ocean"
-  | "clouds";
+  | "clouds"
+  | "none";
 
 const basemapMaxZoom: { [id in BasemapId]: number } = {
   atmosphere: 4,
@@ -132,9 +143,10 @@ const basemapMaxZoom: { [id in BasemapId]: number } = {
   land: 4,
   ocean: 4,
   clouds: 4,
+  none: 0,
 } as const;
 
-const basemapUrls: { [id in BasemapId]: string } = {
+const basemapUrls: { [id in BasemapId]: string | null } = {
   land: `${baseUrlTiles}/basemaps/land`,
   ocean: `${baseUrlTiles}/basemaps/ocean`,
   atmosphere: `${baseUrlTiles}/basemaps/atmosphere`,
@@ -142,9 +154,10 @@ const basemapUrls: { [id in BasemapId]: string } = {
   dark: `${baseUrlTiles}/basemaps/dark`,
   colored: `${baseUrlTiles}/basemaps/colored`,
   clouds: `${baseUrlTiles}/basemaps/clouds`,
+  none: null,
 } as const;
 
-const basemapUrlsOffline: { [id in BasemapId]: string } = {
+const basemapUrlsOffline: { [id in BasemapId]: string | null } = {
   land: "basemaps/land",
   ocean: "basemaps/ocean",
   atmosphere: "basemaps/atmosphere",
@@ -152,6 +165,7 @@ const basemapUrlsOffline: { [id in BasemapId]: string } = {
   dark: "basemaps/dark",
   colored: "basemaps/colored",
   clouds: "basemaps/clouds",
+  none: null,
 } as const;
 
 const downloadUrls = {
@@ -162,7 +176,7 @@ const downloadUrls = {
 
 export default {
   api: {
-    searchIndex: `${baseUrlStorage}index/search-index-{lang}.json`,
+    searchIndex: `https://storage.googleapis.com/esa-cfs-storage/${version}/index/search-index-{lang}.json`,
     layers: `${baseUrlStorage}layers/layers-{lang}.json`,
     layer: `${baseUrlTiles}/{id}/metadata.json`,
     layerTiles: `${baseUrlTiles}/{id}/tiles/{timeIndex}/{z}/{x}/{reverseY}.png`,
@@ -217,16 +231,19 @@ export default {
     "strong",
   ],
   lenisOptions: {
-    lerp: 0.06, // primary smoothing knob (heavier than default)
-    wheelMultiplier: 0.7, // good for story sites
-    syncTouch: !isIos16orLower(), // keep DOM/IO in sync (disable on old iOS)
+    touchMultiplier: isAndroid() ? 2 : 1,
+    wheelMultiplier: 1,
+    smoothTouch: true,
     smoothWheel: true,
-    smoothTouch: true, // enable smoothing on touch
-    touchMultiplier: 2.5, // smaller per-swipe distance (was 6)
-    // Extra touch-only gravity controls (available in newer Lenis versions):
-    syncTouchLerp: 0.04, // lower => heavier/floatier tail
-    touchInertiaExponent: 0.5, // higher => longer inertia feel
-    easing: (t: number) => 1 - Math.pow(1 - t, 2), // quadOut
+    lerp: 0.1,
+    infinite: false,
+    syncTouchLerp: 0.075,
+    touchInertiaMultiplier: 16,
+    // Modern iOS touch sync
+    syncTouch: !isIos16orLower(),
+
+    // Disable autoRaf -use Framer Motion's RAF loop for sync
+    autoRaf: false,
   } as LenisOptions,
   matomoUrl: "https://matomo-ext.esa.int",
 };

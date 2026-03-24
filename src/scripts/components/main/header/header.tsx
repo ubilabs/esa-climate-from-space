@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import config, { ROUTES } from "../../../config/main";
 
-import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../hooks/use-screen-info";
 import { useThunkDispatch } from "../../../hooks/use-thunk-dispatch";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
@@ -52,7 +52,7 @@ const Header: FunctionComponent = () => {
     isSearchRoute,
   } = useAppRouteFlags();
 
-  const { isMobile, isDesktop } = useScreenSize();
+  const { isMobile, isDesktop } = useScreenInfo();
   const appRoute = useSelector(appRouteSelector);
 
   const { header, logo, back_link, app_menu, layers_menu } = useSelector(
@@ -115,9 +115,9 @@ const Header: FunctionComponent = () => {
             className={styles.backButton}
             icon={ArrowBackIcon}
             label={
-              isMobile ? "" : !isSearchActive ? "backToStories" : "backToSearch"
+              isMobile ? "" : isSearchActive ? "backToSearch" : "backToStories"
             }
-            ariaLabel={!isSearchActive ? "backToStories" : "backToSearch"}
+            ariaLabel={isSearchActive ? "backToSearch" : "backToStories"}
             link={linkPath}
             state={location.state}
             replace={true}

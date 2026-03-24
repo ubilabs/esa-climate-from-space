@@ -7,7 +7,6 @@ import { loadConsent } from "../libs/load-consent";
 import config from "../config/main";
 
 export function useConsent() {
-
   const { pushInstruction } = useMatomo();
   const [consent, setConsent] = useState<CookieConsent | null>(loadConsent());
   // Tracks if requireConsentGiven instruction has initially been pushed
