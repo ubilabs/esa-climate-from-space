@@ -2,6 +2,7 @@ import {
   FunctionComponent,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   useEffectEvent,
@@ -33,7 +34,7 @@ const VELOCITY = 300;
 const ImageCarousel: FunctionComponent = () => {
   const { module, storyId, getRefCallback } = useModuleContent();
   const { slides, lengthFactor } = module as ImageCarouselModule;
-  const { isMobile } = useScreenInfo();
+  const { isMobile, screenWidth, isTouchDevice } = useScreenInfo();
   const controls = useAnimationControls();
   const { isStoryEEI } = useAppRouteFlags();
 
@@ -51,6 +52,16 @@ const ImageCarousel: FunctionComponent = () => {
   useLenisToggle(isSlideTouched);
 
   const step = slideWidth + PADDING;
+
+  // Refs so event handlers always read the latest values without stale closures
+  const stepRef = useRef(step);
+  const containerWidthRef = useRef(0);
+  const currentSlideIndexRef = useRef(currentSlideIndex);
+
+  useLayoutEffect(() => {
+    stepRef.current = step;
+    currentSlideIndexRef.current = currentSlideIndex;
+  });
 
   const updateNavigationVisibility = useEffectEvent(() => {
     // Show navigation if the slides are wider than current viewport
@@ -74,9 +85,45 @@ const ImageCarousel: FunctionComponent = () => {
     );
   }, []);
 
+  useEffect(() => {
+    if (firstSlideRef.current) {
+      const newWidth = firstSlideRef.current.offsetWidth;
+      setSlideWidth((current) => (current === newWidth ? current : newWidth));
+    }
+  }, [screenWidth]);
+
+  const reSnap = useEffectEvent(() => {
+    if (slidesContainerRef.current) {
+      containerWidthRef.current = slidesContainerRef.current.offsetWidth;
+    }
+    // Re-snap to current index with updated dimensions
+    const currentStep = stepRef.current;
+    const centeringOffset =
+      !isMobile && containerWidthRef.current > 0
+        ? (containerWidthRef.current - currentStep + PADDING) / 2
+        : 0;
+    controls.start({
+      x: centeringOffset - currentSlideIndexRef.current * currentStep,
+      transition: { type: "spring", stiffness: 320, damping: 32 },
+    });
+  });
+
+  useEffect(() => {
+    if (slideWidth > 0) {
+      reSnap();
+    }
+  }, [slideWidth]);
+
   const updateXPostion = useEffectEvent(() => {
+    // On desktop (not mobile), center the active slide with the next one peeking
+    const centeringOffset =
+      !isMobile && containerWidthRef.current > 0
+        ? (containerWidthRef.current - stepRef.current + PADDING) / 2
+        : 0;
     controls.set({
-      x: !isFullscreen ? -currentSlideIndex * step : 0,
+      x: !isFullscreen
+        ? centeringOffset - currentSlideIndexRef.current * stepRef.current
+        : 0,
     });
   });
 
@@ -93,11 +140,18 @@ const ImageCarousel: FunctionComponent = () => {
   }
 
   const snapToIndex = (i: number) => {
+    const currentStep = stepRef.current;
     const clamped = Math.max(0, Math.min(slides.length - 1, i));
     setCurrentSlideIndex(clamped);
 
+    // On desktop, center the active slide; on mobile align flush left
+    const centeringOffset =
+      !isMobile && containerWidthRef.current > 0
+        ? (containerWidthRef.current - currentStep + PADDING) / 2
+        : 0;
+
     controls.start({
-      x: -clamped * step,
+      x: centeringOffset - clamped * currentStep,
       transition: {
         type: "spring",
         stiffness: 320,
@@ -119,24 +173,25 @@ const ImageCarousel: FunctionComponent = () => {
           <motion.div
             className={styles.track}
             animate={controls}
-            drag={isMobile && !isFullscreen ? "x" : false}
+            drag={isTouchDevice && !isFullscreen ? "x" : false}
             dragConstraints={{
               left: -(slides.length - 1) * step,
               right: 0,
             }}
             dragElastic={0.08}
             onDragEnd={(_, info) => {
+              const currentStep = stepRef.current;
               const dragged = info.offset.x;
               const velocity = info.velocity.x;
 
               const direction =
-                dragged < -step / 4 || velocity < -VELOCITY
+                dragged < -currentStep / 4 || velocity < -VELOCITY
                   ? 1
-                  : dragged > step / 4 || velocity > VELOCITY
+                  : dragged > currentStep / 4 || velocity > VELOCITY
                     ? -1
                     : 0;
 
-              snapToIndex(currentSlideIndex + direction);
+              snapToIndex(currentSlideIndexRef.current + direction);
             }}
           >
             {slides.map((slide, index) => {
@@ -159,14 +214,14 @@ const ImageCarousel: FunctionComponent = () => {
               );
             })}
           </motion.div>
+          {!isFullscreen && isNavigationVisible && (
+            <CarouselNavigation
+              index={currentSlideIndex}
+              slides={slides}
+              snapToIndex={snapToIndex}
+            />
+          )}
         </div>
-        {!isFullscreen && isNavigationVisible && (
-          <CarouselNavigation
-            index={currentSlideIndex}
-            slides={slides}
-            snapToIndex={snapToIndex}
-          />
-        )}
         {"readMore" in module &&
           module.readMore?.url &&
           URL.canParse(module.readMore.url) && (

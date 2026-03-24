@@ -4,6 +4,7 @@ import rehypeRaw from "rehype-raw";
 import ReactMarkdown from "react-markdown";
 
 import config from "../../../config/main";
+import { markdownComponents } from "../../../libs/markdown-components";
 
 import styles from "./about-project.module.css";
 
@@ -16,6 +17,7 @@ const AboutProject: FunctionComponent = () => {
         <ReactMarkdown
           children={intl.formatMessage({ id: "projectDescription" })}
           rehypePlugins={[rehypeRaw]}
+          components={markdownComponents}
           allowedElements={config.markdownAllowedElements}
         />
       </div>

@@ -10,6 +10,7 @@ import styles from "./text-wrapper.module.css";
 
 interface TextWrapperProps extends PropsWithChildren {
   text: string;
+  storyId?: string;
   className?: string;
   index?: number;
   refProp?: React.Ref<HTMLDivElement>;
@@ -21,6 +22,7 @@ const getTranslateDistance = () => Math.min(window.innerHeight * 0.25, 200);
 export const TextWrapper: FunctionComponent<TextWrapperProps> = ({
   refProp,
   text,
+  storyId,
   index = 0,
   hasRichText,
   className,
@@ -56,7 +58,12 @@ export const TextWrapper: FunctionComponent<TextWrapperProps> = ({
         className={styles.animationWrapper}
         style={{ opacity, y: translateY }}
       >
-        <TextBlock text={text} refProp={refProp} hasRichText={hasRichText} />
+        <TextBlock
+          text={text}
+          refProp={refProp}
+          hasRichText={hasRichText}
+          storyId={storyId}
+        />
       </motion.div>
     </section>
   );

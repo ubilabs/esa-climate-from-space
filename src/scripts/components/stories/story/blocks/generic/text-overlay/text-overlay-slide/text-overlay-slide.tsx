@@ -29,7 +29,11 @@ export const TextOverlaySlide: FunctionComponent<Props> = ({
 
   return (
     <>
-      <TextWrapper text={slide.text} refProp={getRefCallback(0, index)} />
+      <TextWrapper
+        text={slide.text}
+        storyId={storyId}
+        refProp={getRefCallback(0, index)}
+      />
     </>
   );
 };
