@@ -11,7 +11,7 @@ then
 	exit 1
 fi
 
-gcloud storage cp --recursive "gs://esa-cfs-storage/$old/*" "gs://esa-cfs-storage/$new/"
-gcloud storage cp --recursive "gs://esa-cfs-tiles/$old/*" "gs://esa-cfs-tiles/$new/"
+gcloud storage cp -m --recursive "gs://esa-cfs-storage/$old/*" "gs://esa-cfs-storage/$new/"
+gcloud storage cp -m --recursive "gs://esa-cfs-tiles/$old/*" "gs://esa-cfs-tiles/$new/"
 
 echo "Done: version $old successfully copied to $new in esa-cfs-storage and esa-cfs-tiles."
