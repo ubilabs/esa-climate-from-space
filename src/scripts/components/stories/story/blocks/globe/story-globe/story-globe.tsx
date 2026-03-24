@@ -36,6 +36,17 @@ const StoryGlobe: FunctionComponent = () => {
 
   useLenisToggle(isInteractive);
 
+  useEffect(() => {
+    if (!isInteractive) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsInteractive(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isInteractive]);
+
   // Apply time from globeItem if interactive state is enabled
   useEffect(() => {
     if (globe && isInteractive) {
@@ -78,14 +89,14 @@ const StoryGlobe: FunctionComponent = () => {
         >
           {intl.formatMessage({ id: "storyGlobe.interact" })}
         </Button>
-      ) : (
-        <Button
-          icon={CloseIcon}
-          onClick={() => setIsInteractive(false)}
-          className={styles.closeButton}
-          aria-label="storyGlobe.quitInteraction"
-        ></Button>
-      )}
+      ) : null}
+      <Button
+        disabled={!isInteractive}
+        icon={CloseIcon}
+        onClick={() => setIsInteractive(false)}
+        className={styles.closeButton}
+        aria-label="storyGlobe.quitInteraction"
+      ></Button>
       <div className={styles.globeContainer}>
         <GlobeCompareLayer
           className={styles.globe}
