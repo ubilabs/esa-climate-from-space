@@ -16,8 +16,7 @@
 }
 .container {
   background-color: rgba(var(--dark-grey-5), 0.3);
-  padding: 2rem;
-  padding-top: 3.5rem;
+  padding: 3.5rem 2rem 2rem;
   margin: 0 auto;
   position: relative;
   display: flex;
