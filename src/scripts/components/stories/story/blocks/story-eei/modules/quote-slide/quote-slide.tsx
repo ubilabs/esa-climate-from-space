@@ -6,6 +6,10 @@ import { useScrollModule } from "../base-scroll/use-scroll-module";
 import styles from "./quote-slide.module.css";
 
 const animationConfig = {
+  y: {
+    input: [0, 1],
+    output: ["10vh", "-10vh"],
+  },
   fadeIn: {
     input: [0, 0.3, 0.7, 1],
     output: [0, 1, 1, 0.8],
@@ -23,6 +27,7 @@ function QuoteContent() {
   return (
     <motion.div
       style={{
+        y: useTransform(scrollYProgress, config.y.input, config.y.output),
         opacity: useTransform(
           scrollYProgress,
           config.fadeIn.input,
