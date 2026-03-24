@@ -1,9 +1,7 @@
 .slide {
+  --slide-image-height: 50vh;
   flex: 0 0 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   position: relative;
 
   @media screen and (--desktop-viewport) {
@@ -11,20 +9,13 @@
   }
 
   .imageContainer {
+    height: var(--slide-image-height);
     display: flex;
     justify-content: center;
 
-    @media screen and (--desktop-viewport) {
-      height: 100%;
-      width: 100%;
-      max-height: 60vh;
-      margin-left: -10vw;
-    }
-
     .image {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: var(--slide-image-height);
       user-select: none;
       touch-action: pan-x;
     }
@@ -33,6 +24,7 @@
   .text {
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
     padding: 24px 0px;
     color: white;
     font-size: 14px;
@@ -41,6 +33,7 @@
     line-height: 1.4;
     gap: 4px;
     z-index: 1;
+    width: min(90%, 1000px);
 
     * > a {
       text-decoration: underline;
@@ -48,7 +41,6 @@
 
     @media screen and (--desktop-viewport) {
       font-size: 16px;
-      padding-right: 10vw;
     }
   }
 }

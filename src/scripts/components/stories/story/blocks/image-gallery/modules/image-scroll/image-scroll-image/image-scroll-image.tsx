@@ -6,6 +6,7 @@ import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 import { useLenisToggle } from "../../../../../../../../hooks/use-lenis-toggle";
 
+import { ImageFocus } from "../../../../../../../../types/story";
 import { InstructionOverlay } from "../../../../../../../ui/instruction-overlay/instruction-overlay";
 import {
   MAX_ZOOM_SCALE,
@@ -22,6 +23,7 @@ interface Props {
   alt?: string;
   className?: string;
   onFullscreenToggle?: (isFullscreen: boolean) => void;
+  focus?: ImageFocus;
 }
 
 export const ScrollImage: FunctionComponent<Props> = ({
@@ -29,6 +31,7 @@ export const ScrollImage: FunctionComponent<Props> = ({
   alt,
   className,
   onFullscreenToggle,
+  focus,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -64,6 +67,12 @@ export const ScrollImage: FunctionComponent<Props> = ({
 
   const buttonOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
 
+  // Maps scroll progress (0 to 1) to colors (red -> blue)
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0, 0.9, 1],
+    ["rgba(1, 30, 43, 1)", "rgba(1, 30, 43, 1)", "rgba(0, 0, 0, 0.9)"],
+  );
   // Gesture bindings
   useGesture(
     {
@@ -126,9 +135,13 @@ export const ScrollImage: FunctionComponent<Props> = ({
     <motion.div
       ref={ref}
       layout
+      className={styles.scrollImageWrapper}
       data-status={isFullscreen ? "fullscreenOverlay" : "imageContainer"}
       role={isFullscreen ? "dialog" : undefined}
       aria-modal={isFullscreen ? "true" : undefined}
+      style={{
+        backgroundColor,
+      }}
     >
       <motion.img
         layout
@@ -142,6 +155,7 @@ export const ScrollImage: FunctionComponent<Props> = ({
           scale: isFullscreen ? scale : 1,
           cursor: isFullscreen ? "grab" : "default",
           clipPath: isFullscreen ? "none" : clipPath,
+          [focus === "contain" ? "objectFit" : "objectPosition"]: focus,
         }}
         draggable={false}
       />

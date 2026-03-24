@@ -45,7 +45,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
             )}
             <div className={styles.scrollImageContainer}>
               <ScrollImage
-                className={cx(focus)}
+                focus={focus}
                 src={getStoryAssetUrl(storyId, url)}
                 alt={altText || text}
               />
