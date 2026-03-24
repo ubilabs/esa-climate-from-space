@@ -12,9 +12,6 @@
   color: white;
 
   .slidesContainer {
-    /* width: 100%; */
-    /* top: 0; */
-    /* position: absolute; */
     overflow: scroll;
   }
 }

@@ -16,7 +16,7 @@ interface TextWrapperProps extends PropsWithChildren {
   hasRichText?: boolean;
 }
 
-const TRANSLATE_DISTANCE = 300;
+const getTranslateDistance = () => Math.min(window.innerHeight * 0.25, 200);
 
 export const TextWrapper: FunctionComponent<TextWrapperProps> = ({
   refProp,
@@ -32,27 +32,32 @@ export const TextWrapper: FunctionComponent<TextWrapperProps> = ({
     offset: ["start end", "end start"],
   });
 
+  const distance = getTranslateDistance();
+
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
 
+  // Slides in from left for even indices, from right for odd indices
   const translateY = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    // For even indices, move left; for odd indices, move right
-    index % 2 === 0
-      ? [-TRANSLATE_DISTANCE, 0, TRANSLATE_DISTANCE]
-      : [TRANSLATE_DISTANCE, 0, -TRANSLATE_DISTANCE],
+    index % 2 === 0 ? [-distance, 0, distance] : [distance, 0, -distance],
   );
 
   return (
-    <motion.section
+    // The section is the stable layout container — its dimensions are never
+    // affected by the animation, so content is never clipped or cut off.
+    <section
       ref={ref}
-      style={{
-        opacity: opacity,
-        translateY: translateY,
-      }}
       className={cx(styles.textWrapper, "story-grid", className)}
     >
-      <TextBlock text={text} refProp={refProp} hasRichText={hasRichText} />
-    </motion.section>
+      {/* Animation is applied to an inner element only, keeping the outer
+          container's layout box stable and always occupying its full height. */}
+      <motion.div
+        className={styles.animationWrapper}
+        style={{ opacity, y: translateY }}
+      >
+        <TextBlock text={text} refProp={refProp} hasRichText={hasRichText} />
+      </motion.div>
+    </section>
   );
 };

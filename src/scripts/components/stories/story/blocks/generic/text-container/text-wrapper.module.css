@@ -1,9 +1,17 @@
 /* inhereits story grid class */
 .textWrapper {
   color: var(--Neutral-White, #fff);
-  /* height: var(--story-height); */
+  min-height: var(--story-height);
   position: relative;
   z-index: 1000;
 }
 
-
+.animationWrapper {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
