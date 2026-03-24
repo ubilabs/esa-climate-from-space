@@ -1,4 +1,10 @@
-import { useState, useRef, FunctionComponent, SyntheticEvent } from "react";
+import {
+  useState,
+  useRef,
+  FunctionComponent,
+  SyntheticEvent,
+  CSSProperties,
+} from "react";
 import { useIntl } from "react-intl";
 import { motion, useMotionValue, useTransform } from "motion/react";
 import { useGesture } from "@use-gesture/react";
@@ -67,6 +73,12 @@ export const ScrollImage: FunctionComponent<Props> = ({
 
   const buttonOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
 
+  // Maps scroll progress (0 to 1) to colors (red -> blue)
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0, 0.9, 1],
+    ["rgba(1, 30, 43, 1)", "rgba(1, 30, 43, 1)", "rgba(0, 0, 0, 0.9)"],
+  );
   // Gesture bindings
   useGesture(
     {
@@ -133,6 +145,9 @@ export const ScrollImage: FunctionComponent<Props> = ({
       data-status={isFullscreen ? "fullscreenOverlay" : "imageContainer"}
       role={isFullscreen ? "dialog" : undefined}
       aria-modal={isFullscreen ? "true" : undefined}
+      style={{
+        backgroundColor
+      }}
     >
       <motion.img
         layout
