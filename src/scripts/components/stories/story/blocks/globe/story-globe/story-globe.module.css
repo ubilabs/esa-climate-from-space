@@ -33,7 +33,6 @@
     color: white;
     cursor: pointer;
     z-index: 1;
-    align-self: flex-end;
 
     &:disabled {
       /* render button to prevent content from jumping */
