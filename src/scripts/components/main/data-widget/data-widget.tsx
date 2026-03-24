@@ -38,6 +38,7 @@ import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import TimeSlider from "../../layers/time-slider/time-slider";
+import GlobeCaption from "../../layers/globe-caption/globe-caption";
 
 interface Props {
   globeItem?: GlobeItem;
@@ -55,6 +56,7 @@ interface Props {
   onMoveStartHandler: () => void;
   onMoveEndHandler: (view: CameraView) => void;
   onLayerLoadingStateChangeHandler: LayerLoadingStateChangeHandle;
+  caption?: string;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
@@ -72,6 +74,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   onMoveStartHandler,
   onMoveEndHandler,
   onLayerLoadingStateChangeHandler,
+  caption,
 }) => {
   const projectionState = useSelector(projectionSelector);
 
@@ -212,8 +215,10 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         <>
           {!isStoriesRoute && <DataSetInfo />}
           {legend && getLegends()}
+          {caption && <GlobeCaption caption={caption} />}
           {time_slider && (
             <TimeSlider
+              customStyles={{ bottom: caption ? "10%" : "0" }}
               time={time}
               setGlobeTime={setGlobeTime}
               mainId={mainId}
