@@ -47,11 +47,12 @@ const animationConfig = {
   },
   satellite: {
     xPosition: {
-      input: [0, 0.64, 0.7, 0.9, 0.92],
-      output: ["-800%", "-400%", "-50%", "-50%", "500%"],
+      scrollReset: 0.1,
+      scrollStart: 0.3,
+      initial: "-100vw"
     },
     opacity: {
-      input: [0, 0.32, 0.34, 0.88, 0.9],
+      input: [0, 0.28, 0.3, 0.88, 0.9],
       output: ["0", "0", "1", "1", "0"],
     },
   },
