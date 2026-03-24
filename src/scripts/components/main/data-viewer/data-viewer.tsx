@@ -26,6 +26,7 @@ import Button from "../button/button";
 import CategoryNavigation from "../category-navigation/category-navigation";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
 import { GetGlobalDataWidget } from "../data-widget/global-data-widget";
+
 import { BackButton } from "../back-button/back-button";
 
 import styles from "./data-viewer.module.css";

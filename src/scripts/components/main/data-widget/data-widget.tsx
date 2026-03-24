@@ -6,7 +6,7 @@ import {
   useLayoutEffect,
   useState,
 } from "react";
-import { useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
 import { CameraView } from "@ubilabs/esa-webgl-globe";
 import { useMatomo } from "@streamr/matomo-tracker-react";
@@ -83,9 +83,10 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   const [isMainActive, setIsMainActive] = useState(true);
   const { trackEvent } = useMatomo();
 
-  const { isContentNavRoute, isStoriesRoute, isDataRoute } = useAppRouteFlags();
 
   const language = useSelector(languageSelector);
+
+  const { isContentNavRoute, isStoriesRoute, isDataRoute } = useAppRouteFlags();
 
   const mainLayerDetails = useSelector((state: State) =>
     layerDetailsSelector(state, mainId),

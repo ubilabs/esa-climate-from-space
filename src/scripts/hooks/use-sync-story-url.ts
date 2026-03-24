@@ -11,8 +11,8 @@ import { useAppRouteFlags } from "./use-app-route-flags";
 export const useSyncStoryUrl = () => {
   const { getScrollAnchorRefsMap, storyElementRef, story, lenisRef } =
     useStory();
-
   const { isStoryEEI } = useAppRouteFlags();
+
   const { trackPageView } = useMatomo();
   const activeNodeKeyRef = useRef<string | null>(null);
 
