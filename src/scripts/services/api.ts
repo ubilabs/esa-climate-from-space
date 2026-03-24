@@ -86,8 +86,14 @@ export const storiesApi = createApi({
         return url;
       },
     }),
-    getStory: builder.query<Story, { id: string; language: string }>({
+    getStory: builder.query<
+      Story,
+      { id: string | undefined; language: string }
+    >({
       queryFn: async ({ id, language }) => {
+        if (!id) {
+          return { data: null };
+        }
         try {
           const data = await fetchStory(id, language as Language);
           return { data };
