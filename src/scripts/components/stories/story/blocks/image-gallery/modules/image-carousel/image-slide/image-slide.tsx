@@ -1,8 +1,8 @@
 import React from "react";
 import cx from "classnames";
-import ReactMarkdown from "react-markdown";
 
 import { ScrollImage } from "../../image-scroll/image-scroll-image/image-scroll-image";
+import { StoryMarkdown } from "../../../../../../../shared/story-markdown/story-markdown";
 
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 
@@ -48,6 +48,7 @@ const ImageSlide: React.FC<ImageSlideProps> = ({
     >
       <div className={cx(styles.imageContainer)}>
         <ScrollImage
+          focus={slide.focus}
           className={styles.image}
           src={getStoryAssetUrl(storyId, url)}
           alt={altText}
@@ -58,10 +59,12 @@ const ImageSlide: React.FC<ImageSlideProps> = ({
       </div>
       {text && !isFullscreen && (
         <div className={cx(styles.text)}>
-          <ReactMarkdown
-            children={text}
+          <StoryMarkdown
+            storyId={storyId}
             allowedElements={config.markdownAllowedElements}
-          />
+          >
+            {text}
+          </StoryMarkdown>
         </div>
       )}
     </div>

@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
+  height: fit-content;
 
   @media screen and (--desktop-viewport) {
     padding: 0;
@@ -25,11 +26,11 @@
   .slidesContainer {
     position: relative;
     width: 100%;
+    overflow: hidden;
 
     .track {
       display: flex;
       gap: 24px;
-      height: 100%;
     }
   }
 

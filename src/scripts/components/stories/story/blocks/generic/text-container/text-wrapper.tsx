@@ -10,6 +10,7 @@ import styles from "./text-wrapper.module.css";
 
 interface TextWrapperProps extends PropsWithChildren {
   text: string;
+  storyId?: string;
   className?: string;
   index?: number;
   refProp?: React.Ref<HTMLDivElement>;
@@ -21,6 +22,7 @@ const TRANSLATE_DISTANCE = 300;
 export const TextWrapper: FunctionComponent<TextWrapperProps> = ({
   refProp,
   text,
+  storyId,
   index = 0,
   hasRichText,
   className,
@@ -52,7 +54,12 @@ export const TextWrapper: FunctionComponent<TextWrapperProps> = ({
       }}
       className={cx(styles.textWrapper, "story-grid", className)}
     >
-      <TextBlock text={text} refProp={refProp} hasRichText={hasRichText} />
+      <TextBlock
+        text={text}
+        storyId={storyId}
+        refProp={refProp}
+        hasRichText={hasRichText}
+      />
     </motion.section>
   );
 };

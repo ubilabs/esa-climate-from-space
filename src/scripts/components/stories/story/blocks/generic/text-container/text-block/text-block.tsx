@@ -1,13 +1,14 @@
 import { FunctionComponent } from "react";
-import ReactMarkdown from "react-markdown";
 import cx from "classnames";
 
 import config from "../../../../../../../config/main";
+import { StoryMarkdown } from "../../../../../../shared/story-markdown/story-markdown";
 
 import styles from "./text-block.module.css";
 
 interface Props {
   text: string;
+  storyId?: string;
   refProp?: React.Ref<HTMLDivElement>;
   hasRichText?: boolean;
   className?: string;
@@ -15,6 +16,7 @@ interface Props {
 
 export const TextBlock: FunctionComponent<Props> = ({
   text,
+  storyId,
   refProp,
   className,
   hasRichText,
@@ -22,10 +24,12 @@ export const TextBlock: FunctionComponent<Props> = ({
   return (
     <div className={cx(styles.textBlock, className)} ref={refProp}>
       <span className={cx(hasRichText ? styles.richText : styles.simpleText)}>
-        <ReactMarkdown
-          children={text}
+        <StoryMarkdown
+          storyId={storyId}
           allowedElements={config.markdownAllowedElements}
-        />
+        >
+          {text}
+        </StoryMarkdown>
       </span>
     </div>
   );
