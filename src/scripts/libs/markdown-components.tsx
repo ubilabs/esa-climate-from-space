@@ -1,5 +1,6 @@
 import { AnchorHTMLAttributes } from "react";
 
+export const markdownComponents = {
 /**
  * Shared react-markdown `components` override.
  *
@@ -11,7 +12,6 @@ import { AnchorHTMLAttributes } from "react";
  * where internal story links must open in the same tab), define a local
  * `components` override instead.
  */
-export const markdownComponents = {
   a: ({
     href,
     children,
