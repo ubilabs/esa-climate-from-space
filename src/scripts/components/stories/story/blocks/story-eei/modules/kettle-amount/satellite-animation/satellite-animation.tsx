@@ -24,7 +24,7 @@ export default function SatelliteAnimation() {
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     // make sure animation restarts
-    if (latest < 0.1) {
+    if (latest < config.satellite.xPosition.scrollReset) {
       animate(
         scope.current,
         { x: config.satellite.xPosition.initial, y: "0px" },
