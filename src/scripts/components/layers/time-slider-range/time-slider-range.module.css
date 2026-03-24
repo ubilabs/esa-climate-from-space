@@ -12,7 +12,7 @@
   display: flex;
   height: 5px;
   border-radius: 0.125em;
-  background: #fff;
+  background: var(--dark-grey-4);
 }
 .tick {
   position: absolute;
