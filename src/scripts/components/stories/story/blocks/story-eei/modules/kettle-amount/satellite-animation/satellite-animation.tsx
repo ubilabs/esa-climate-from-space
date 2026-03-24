@@ -9,6 +9,7 @@ import { quantize } from "../../../../../../../../libs/quantize";
 import { KettleAmountAnimationConfig } from "../kettle-amount";
 
 import { useStory } from "../../../../../../../../providers/story/use-story";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 
 import styles from "./satellite-animation.module.css";
@@ -19,7 +20,10 @@ export default function SatelliteAnimation() {
 
   const [scope, animate] = useAnimate();
 
+  const { isMobile } = useScreenInfo();
+
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    // make sure animation restarts
     if (latest < 0.1) {
       animate(
         scope.current,
@@ -29,7 +33,7 @@ export default function SatelliteAnimation() {
     }
 
     if (quantize(latest, 0.01) === config.satellite.xPosition.scrollStart) {
-      animate(scope.current, { x: "50vw" }, { duration: 10 });
+      animate(scope.current, { x: "50vw" }, { duration: isMobile ? 10 : 16 });
     }
   });
 
