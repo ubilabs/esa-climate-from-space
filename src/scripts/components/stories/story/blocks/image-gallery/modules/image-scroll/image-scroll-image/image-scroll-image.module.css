@@ -1,6 +1,11 @@
+.scrollImageWrapper {
+  --container-bg: rgba(0, 0, 0, 0.9);
+}
+
 div[data-status="imageContainer"] {
   width: 100%;
   position: relative;
+  background-color: var(--container-bg);
 
   img {
     width: 100%;
@@ -18,7 +23,6 @@ div[data-status="fullscreenOverlay"] {
   position: fixed;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;

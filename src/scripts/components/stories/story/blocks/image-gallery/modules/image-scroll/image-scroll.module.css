@@ -3,7 +3,6 @@
 
   /* recevies story-grid class */
   .slide {
-    height: var(--story-height);
     padding-block: 1rem;
 
     @media screen and (--mobile-viewport) {

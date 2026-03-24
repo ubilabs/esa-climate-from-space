@@ -2,9 +2,12 @@
   position: relative;
   z-index: 1;
   display: flex;
+  margin: 0 auto;
+  justify-content: center;
   align-items: center;
   border-radius: 999px;
   padding: 8px;
+  width: fit-content;
 }
 
 .navigation::before {
@@ -19,6 +22,7 @@
 
 @media screen and (min-width: 769px) {
   .navigation {
+    margin-top: 1rem;
     padding: 12px;
     gap: 12px;
   }
@@ -41,12 +45,12 @@
       height: 24px;
     }
   }
-  
+
   .navButton:disabled {
     cursor: initial;
     background: var(--dark-grey-5);
   }
-  
+
   .counter {
     color: white;
     font-size: 16px;

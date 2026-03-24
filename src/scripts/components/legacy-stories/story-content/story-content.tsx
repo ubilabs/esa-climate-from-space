@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
-import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import cx from "classnames";
 
+import { StoryMarkdown } from "../../shared/story-markdown/story-markdown";
 import config from "../../../config/main";
 
 import { AppRoute } from "../../../types/app-routes";
@@ -16,7 +16,7 @@ interface Props {
   slide: Slide;
 }
 
-const StoryContent: FunctionComponent<Props> = ({ route, slide }) => {
+const StoryContent: FunctionComponent<Props> = ({ route, slide, storyId }) => {
   const storyText = route === AppRoute.Stories ? slide.text : slide.shortText;
 
   const contentClasses = cx(
@@ -27,11 +27,13 @@ const StoryContent: FunctionComponent<Props> = ({ route, slide }) => {
 
   return (
     <div className={contentClasses}>
-      <ReactMarkdown
-        children={storyText || ""}
+      <StoryMarkdown
+        storyId={storyId}
         rehypePlugins={[rehypeRaw]}
         allowedElements={config.markdownAllowedElements}
-      />
+      >
+        {storyText || ""}
+      </StoryMarkdown>
     </div>
   );
 };

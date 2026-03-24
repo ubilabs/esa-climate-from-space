@@ -24,7 +24,7 @@ export type Story = {
   initialGlobeConfig?: ScrollGlobe;
 };
 
-type ImageFocus = "center" | "left" | "right" | "top" | "bottom";
+export type ImageFocus = "center" | "left" | "right" | "top" | "bottom" | "contain"
 
 export interface ScrollGlobe {
   title?: string;

@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
-import ReactMarkdown from "react-markdown";
 
+import { StoryMarkdown } from "../../../../../../shared/story-markdown/story-markdown";
 import config from "../../../../../../../config/main";
 
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
@@ -38,20 +38,23 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
             {text && (
               <TextBlock
                 text={text}
+                storyId={storyId}
                 hasRichText
                 className={styles.imageScrollText}
               />
             )}
             <div className={styles.scrollImageContainer}>
               <ScrollImage
-                className={cx(focus)}
+                focus={focus}
                 src={getStoryAssetUrl(storyId, url)}
                 alt={altText || text}
               />
-              <ReactMarkdown
-                children={caption}
+              <StoryMarkdown
+                storyId={storyId}
                 allowedElements={config.markdownAllowedElements}
-              />
+              >
+                {caption}
+              </StoryMarkdown>
             </div>
           </SlideContainer>
         ),

@@ -1,9 +1,8 @@
 import { FunctionComponent } from "react";
-import ReactMarkdown from "react-markdown";
-
-import config from "../../../config/main";
-
 import cx from "classnames";
+
+import { StoryMarkdown } from "../../shared/story-markdown/story-markdown";
+import config from "../../../config/main";
 
 import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
 
@@ -37,10 +36,12 @@ const SplashScreen: FunctionComponent<Props> = ({ storyId, slide }) => {
       }}
     >
       <div className={contentClasses}>
-        <ReactMarkdown
-          children={slide.text}
+        <StoryMarkdown
+          storyId={storyId}
           allowedElements={config.markdownAllowedElements}
-        />
+        >
+          {slide.text}
+        </StoryMarkdown>
       </div>
     </div>
   );
