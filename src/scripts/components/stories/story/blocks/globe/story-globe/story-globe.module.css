@@ -28,12 +28,18 @@
     flex-direction: column;
     position: sticky;
     height: auto;
+    margin-inline: auto 1.5rem;
     top: 1.5rem;
-    right: 1.5rem;
     color: white;
     cursor: pointer;
     z-index: 1;
     align-self: flex-end;
+
+    &:disabled {
+      /* render button to prevent content from jumping */
+      visibility: hidden;
+      touch-action: none;
+    }
   }
 
   @media screen and (--mobile-viewport) {

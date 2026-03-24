@@ -89,14 +89,14 @@ const StoryGlobe: FunctionComponent = () => {
         >
           {intl.formatMessage({ id: "storyGlobe.interact" })}
         </Button>
-      ) : (
-        <Button
-          icon={CloseIcon}
-          onClick={() => setIsInteractive(false)}
-          className={styles.closeButton}
-          aria-label="storyGlobe.quitInteraction"
-        ></Button>
-      )}
+      ) : null}
+      <Button
+        disabled={!isInteractive}
+        icon={CloseIcon}
+        onClick={() => setIsInteractive(false)}
+        className={styles.closeButton}
+        aria-label="storyGlobe.quitInteraction"
+      ></Button>
       <div className={styles.globeContainer}>
         <GlobeCompareLayer
           className={styles.globe}
