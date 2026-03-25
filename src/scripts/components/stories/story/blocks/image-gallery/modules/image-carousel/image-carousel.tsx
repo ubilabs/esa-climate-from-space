@@ -12,7 +12,6 @@ import cx from "classnames";
 import { FormattedMessage } from "react-intl";
 
 import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
-import { useLenisToggle } from "../../../../../../../hooks/use-lenis-toggle";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 import Button from "../../../../../../main/button/button";
@@ -45,11 +44,8 @@ const ImageCarousel: FunctionComponent = () => {
   const [fullscreenSlideIndex, setFullscreenSlideIndex] = useState<
     number | undefined
   >();
-  const [isSlideTouched, setIsSlideTouched] = useState(false);
   const [isNavigationVisible, setIsNavigationVisible] = useState(true);
   const isFullscreen = fullscreenSlideIndex !== undefined;
-
-  useLenisToggle(isSlideTouched);
 
   const step = slideWidth + PADDING;
 
@@ -202,7 +198,6 @@ const ImageCarousel: FunctionComponent = () => {
                 fullscreenSlideIndex,
                 slideElementRef: index === 0 ? setFirstSlideRef : undefined,
                 storyId,
-                setIsSlideTouched,
                 setFullscreenSlideIndex,
               };
               const key = slide.url || index;
