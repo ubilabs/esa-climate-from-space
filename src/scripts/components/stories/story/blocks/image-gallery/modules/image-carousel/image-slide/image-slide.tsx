@@ -19,7 +19,6 @@ interface ImageSlideProps {
   fullscreenSlideIndex: number | undefined;
   slideElementRef?: React.Ref<HTMLDivElement>;
   storyId: string;
-  setIsSlideTouched: (touched: boolean) => void;
   setFullscreenSlideIndex: (index: number | undefined) => void;
 }
 
@@ -30,15 +29,12 @@ const ImageSlide: React.FC<ImageSlideProps> = ({
   fullscreenSlideIndex,
   slideElementRef,
   storyId,
-  setIsSlideTouched,
   setFullscreenSlideIndex,
 }) => {
   const { url = "", altText = "", text } = slide;
   return (
     <div
       ref={slideElementRef}
-      onTouchStart={() => setIsSlideTouched(true)}
-      onTouchEnd={() => setIsSlideTouched(false)}
       className={cx(styles.slide)}
       style={
         isFullscreen && fullscreenSlideIndex !== index
