@@ -1,4 +1,6 @@
 /* Todo: Check if we can solidate the mobile viewport limits*/
+
+/* be aware that these values are should align with breakpoints defined in use-screen-info.ts */
 @custom-media --mobile-s-viewport (max-width: 480px);
 @custom-media --mobile-viewport (max-width: 767px);
 @custom-media --desktop-viewport (min-width: 768px);
