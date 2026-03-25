@@ -96,6 +96,7 @@ const StoryGlobe: FunctionComponent = () => {
         onClick={() => setIsInteractive(false)}
         className={styles.closeButton}
         aria-label="storyGlobe.quitInteraction"
+
       ></Button>
       <div className={styles.globeContainer}>
         <GlobeCompareLayer

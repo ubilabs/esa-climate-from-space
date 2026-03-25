@@ -18,14 +18,12 @@ interface LayerSlideProps {
   slide: ImageCarouselSlide;
   slideElementRef?: React.Ref<HTMLDivElement>;
   storyId: string;
-  setIsSlideTouched: (touched: boolean) => void;
 }
 
 const LayerSlide: React.FC<LayerSlideProps> = ({
   slide,
   slideElementRef,
   storyId,
-  setIsSlideTouched,
 }) => {
   const dispatch = useDispatch();
   const language = useSelector(languageSelector);
@@ -34,12 +32,7 @@ const LayerSlide: React.FC<LayerSlideProps> = ({
   const category = layers?.find((l) => l.id === layer?.layerId)?.categories[0];
 
   return (
-    <div
-      ref={slideElementRef}
-      onTouchStart={() => setIsSlideTouched(true)}
-      onTouchEnd={() => setIsSlideTouched(false)}
-      className={cx(styles.slide)}
-    >
+    <div ref={slideElementRef} className={cx(styles.slide)}>
       {layer && category && (
         <Link
           to={`/${category}/data`}
