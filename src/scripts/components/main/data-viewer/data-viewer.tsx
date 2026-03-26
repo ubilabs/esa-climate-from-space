@@ -30,6 +30,7 @@ import { GetGlobalDataWidget } from "../data-widget/global-data-widget";
 import { BackButton } from "../back-button/back-button";
 
 import styles from "./data-viewer.module.css";
+import { MouseIcon } from "../icons/mouse-icon";
 
 export type LayerLoadingStateChangeHandle = (
   layerId: string,
@@ -136,44 +137,28 @@ const DataViewer: FunctionComponent = () => {
                 link="/"
               ></BackButton>
             ) : (
-              <span className={styles.chooseHeading}>
-                <FormattedMessage id="category.choose" />
-              </span>
+              <div className={styles.titleWrapper}>
+                <h1 className={styles.welcomeTitle}>
+                  <FormattedMessage id="welcomeTitle" />
+                </h1>
+                <p className={styles.subTitle}>
+                  <FormattedMessage id="welcomeSubtitle" />
+                </p>
+              </div>
             )}
           </header>
           {isBaseRoute && (
             <>
-              <CategoryNavigation
-                arcs={arcs}
-                width={screenWidth}
-                height={screenHeight}
-                isMobile={isMobile}
-                setCategory={setCurrentCategory}
-                setAnimationReady={setHasAnimationPlayed}
-              />
-              <Button
-                className={cx(
-                  hasAnimationPlayed && styles.showFast,
-                  styles.exploreButton,
-                )}
-                onClick={() => {
-                  navigate(`/${currentCategory}`);
-                }}
-                label="explore"
-              ></Button>
-              {!hasAnimationPlayed && (
-                <span
-                  aria-hidden="true"
-                  className={cx(
-                    // Make sure to show the gesture indicator depending on whether it is touch screen device
-                    styles.gestureIndicator,
-                    isTouchDevice ? styles.touch : styles.scroll,
-                  )}
-                  data-content={intl.formatMessage({
-                    id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
-                  })}
-                ></span>
-              )}
+              <CategoryNavigation />
+              {/* <MouseIcon /> */}
+              {/* <MouseIcon /> */}
+              <span
+                aria-hidden="true"
+                className={styles.gestureIndicator}
+                data-content={intl.formatMessage({
+                  id: `category.${isTouchDevice ? "scroll" : "scrollOrArrow"}`,
+                })}
+              ></span>
             </>
           )}
           {isContentNavRoute && (
