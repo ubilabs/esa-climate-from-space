@@ -65,11 +65,8 @@
   grid-template-columns: 1fr;
 
   @media screen and (--desktop-viewport) {
-    grid-template-areas:
-      "globe-nav-area heading "
-      "globe-nav-area title "
-      "globe-nav-area explore ";
-    grid-template-rows: 1fr auto 1fr;
+    grid-template-areas: "globe-nav-area splash-and-nav-area";
+    grid-template-rows: 1fr;
     grid-template-columns: var(--globe) var(--category);
 
     &[data-nav-content="base"] {
@@ -195,29 +192,6 @@
   color: white;
   display: flex;
   justify-content: center;
-
-  .titleWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-inline: min(10vw, 40px);
-    text-align: center;
-
-    .welcomeTitle {
-      font-size: var(--main-headline-size);
-      line-height: var(--main-headline-line-height);
-      font-weight: var(--main-headline-font-weight);
-    }
-    .subTitle {
-      color: var(--main-colours-esa-teal-55);
-      font-size: 1.125rem;
-      line-height: 1.5;
-    }
-
-    @media screen and (--desktop-viewport) {
-      margin-left: 0;
-    }
-  }
 
   @media screen and (--desktop-viewport) {
     grid-area: title;

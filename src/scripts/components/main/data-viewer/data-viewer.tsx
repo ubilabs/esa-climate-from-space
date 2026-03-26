@@ -31,6 +31,8 @@ import { BackButton } from "../back-button/back-button";
 
 import styles from "./data-viewer.module.css";
 import { MouseIcon } from "../icons/mouse-icon";
+import { useRegisterUserInteraction } from "../../../hooks/use-register-user-interaction";
+import InitialSplash from "../initial-splash/initial-splash";
 
 export type LayerLoadingStateChangeHandle = (
   layerId: string,
@@ -70,7 +72,6 @@ const DataViewer: FunctionComponent = () => {
   );
 
   const navigate = useNavigate();
-  const intl = useIntl();
 
   const { screenHeight, screenWidth, isMobile, isTouchDevice } =
     useScreenInfo();
@@ -78,30 +79,9 @@ const DataViewer: FunctionComponent = () => {
   const { isBaseRoute, isNavigationView, isDataRoute, isContentNavRoute } =
     useAppRouteFlags();
 
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
+  const hasUserInteracted = useRegisterUserInteraction();
 
-  const allCategories = useMemo(
-    () =>
-      stories
-        ?.flatMap(({ categories }) => categories)
-        .concat(layers?.flatMap(({ categories }) => categories) ?? [])
-        .filter(Boolean),
-    [stories, layers],
-  );
-
-  // create a list of all tags with their number of occurrences in the stories
-  // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
-  const arcs = useMemo(
-    () =>
-      categoryTags.map((tag) => {
-        const tags = allCategories ? allCategories : [];
-        const count = tags.filter((t) => t === tag).length;
-        return { [tag]: count };
-      }),
-    [allCategories],
-  );
-
-  if (!stories || !layers || !arcs || !contents) {
+  if (!stories || !layers || !contents) {
     return null;
   }
 
@@ -127,7 +107,7 @@ const DataViewer: FunctionComponent = () => {
       {isNavigationView && (
         <>
           <header className={styles.heading}>
-            {isContentNavRoute ? (
+            {isContentNavRoute && (
               <BackButton
                 label={
                   !isMobile
@@ -136,29 +116,14 @@ const DataViewer: FunctionComponent = () => {
                 }
                 link="/"
               ></BackButton>
-            ) : (
-              <div className={styles.titleWrapper}>
-                <h1 className={styles.welcomeTitle}>
-                  <FormattedMessage id="welcomeTitle" />
-                </h1>
-                <p className={styles.subTitle}>
-                  <FormattedMessage id="welcomeSubtitle" />
-                </p>
-              </div>
             )}
           </header>
           {isBaseRoute && (
             <>
+              {/* {!hasUserInteracted ? <CategoryNavigation /> : <InitialSplash />} */}
               <CategoryNavigation />
               {/* <MouseIcon /> */}
               {/* <MouseIcon /> */}
-              <span
-                aria-hidden="true"
-                className={styles.gestureIndicator}
-                data-content={intl.formatMessage({
-                  id: `category.${isTouchDevice ? "scroll" : "scrollOrArrow"}`,
-                })}
-              ></span>
             </>
           )}
           {isContentNavRoute && (
