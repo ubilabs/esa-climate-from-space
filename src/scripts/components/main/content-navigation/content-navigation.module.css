@@ -20,7 +20,7 @@
     animation: showFromCenter 1.5s ease-out 0.5s forwards;
   }
 
-  >span {
+  > span {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -51,12 +51,11 @@
     z-index: 10;
   }
 
-  >li {
+  > li {
     z-index: 2;
     padding-right: 1rem;
     color: var(--font-color);
     position: absolute;
-    transition: all 0.3s ease-out;
     transform-origin: 0 0;
     display: flex;
     align-items: center;
@@ -72,17 +71,17 @@
       line-height: 1.5rem;
     }
 
-    >a {
+    > a {
       display: flex;
       width: 100%;
       justify-content: space-between;
       align-items: center;
       text-align: center;
 
-      >div {
+      > div {
         display: flex;
 
-        >span {
+        > span {
           color: var(--dark-blue);
           max-width: 50vw;
           text-overflow: ellipsis;
@@ -92,7 +91,7 @@
         }
       }
 
-      >span.learnMore {
+      > span.learnMore {
         transition: all 0.3s ease-out;
         transform-origin: right;
         position: relative;
@@ -151,13 +150,13 @@
     }
 
     &.active {
-      >a>div>span {
+      > a > div > span {
         color: var(--primary-color) !important;
         white-space: normal;
         padding-right: 1rem;
       }
 
-      >a>span.learnMore {
+      > a > span.learnMore {
         opacity: 1;
       }
     }

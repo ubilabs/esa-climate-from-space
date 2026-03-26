@@ -28,7 +28,7 @@ import cx from "classnames";
 
 import styles from "./category-navigation.module.css";
 import { languageSelector } from "../../../selectors/language";
-import { motion, useMotionValue, useTransform } from "motion/react";
+import { animate, motion, useMotionValue, useTransform } from "motion/react";
 
 const CategoryNavigation: FunctionComponent = () => {
   const { category } = useContentParams();
@@ -42,6 +42,7 @@ const CategoryNavigation: FunctionComponent = () => {
   const { data: stories } = useGetStoryListQuery(language);
   const { data: layers } = useGetLayerListQuery(language);
 
+  const { isMobile } = useScreenInfo();
   // const appRoute = useSelector(appRouteSelector);
 
   // const contents = useMemo(
@@ -95,23 +96,31 @@ const CategoryNavigation: FunctionComponent = () => {
   //
 
   // Item step: line-height (1.375rem) + gap (1.5rem) = 2.875rem ≈ 46px at 16px base
-  const ITEM_STEP_REM = 2.875;
+  const ITEM_STEP_REM = isMobile ? 2.875 : 5.375;
 
   const input = Array.from({ length: uniqueCategories.length }).map(
     (_, index) => index,
   );
 
   const y = useMotionValue(currentIndex);
+  const scale = useMotionValue(currentIndex);
 
   useEffect(() => {
-    y.set(currentIndex);
-  }, [currentIndex, y]);
+    animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
+    animate(scale, currentIndex, { type: "tween", stiffness: 300, damping: 30 });
+  }, [currentIndex, y, scale]);
 
   return (
     <ul className={styles.categoryNavigation}>
       {uniqueCategories.map((category, index) => {
-        const output = input.map((j) => `${(index - j) * ITEM_STEP_REM}rem`);
+        const output = input.map(
+          (entry) => `${(index - entry) * ITEM_STEP_REM}rem`,
+        );
 
+        const scaleFactor = isMobile ? 1.75 : 3.1;
+        const scaleOutput = input.map((entry) =>
+          entry === index ? scaleFactor : 1,
+        );
         return (
           <motion.li
             key={category}
@@ -120,6 +129,7 @@ const CategoryNavigation: FunctionComponent = () => {
               top: "50%",
             }}
             style={{
+              scale: useTransform(scale, input, scaleOutput),
               y: useTransform(y, input, output),
             }}
           >

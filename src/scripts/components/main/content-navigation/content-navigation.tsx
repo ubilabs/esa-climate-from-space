@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
@@ -30,6 +30,8 @@ import { DownloadButton } from "../download-button/download-button";
 
 import styles from "./content-navigation.module.css";
 
+import { animate, motion, useMotionValue, useTransform } from "motion/react";
+
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
 ): obj is StoryListItem {
@@ -44,6 +46,104 @@ interface Props {
   isMobile: boolean;
 }
 
+// Per-item component so each item can call useTransform at the top level
+interface ItemProps {
+  item: StoryListItem | LayerListItem;
+  index: number;
+  currentIndex: number;
+  y: ReturnType<typeof useMotionValue<number>>;
+  category: string | null;
+  isMobile: boolean;
+  GAP_BETWEEN_ELEMENTS: number;
+  RADIUS: number;
+  stories: ReturnType<typeof useGetStoriesQuery>["data"];
+  onFocus: (index: number) => void;
+}
+
+const ContentNavItem: FunctionComponent<ItemProps> = ({
+  item,
+  index,
+  currentIndex,
+  y,
+  category,
+  isMobile,
+  GAP_BETWEEN_ELEMENTS,
+  RADIUS,
+  stories,
+  onFocus,
+}) => {
+  const { id } = item;
+  const name = "title" in item ? item.title : item.name;
+  const isStory = isStoryListItem(item);
+  const type = isStory ? getStoryMediaType(item, stories) : "layer";
+  const downloadUrl = replaceUrlPlaceholders(
+    isStory ? config.api.storyOfflinePackage : config.api.layerOfflinePackage,
+    { id: item.id },
+  );
+
+  const top = useTransform(y, (v) => {
+    const { y: yCoord } = getNavCoordinates(
+      index - v,
+      GAP_BETWEEN_ELEMENTS,
+      RADIUS,
+      isMobile,
+    );
+    return `${yCoord}%`;
+  });
+
+  const left = useTransform(y, (v) => {
+    const { x } = getNavCoordinates(
+      index - v,
+      GAP_BETWEEN_ELEMENTS,
+      RADIUS,
+      isMobile,
+    );
+    return `${x}%`;
+  });
+
+  const opacity = useTransform(y, (v) => {
+    const d = index - v;
+    return d === 0 ? 1 : Math.pow(0.5, Math.abs(d)) * 0.5;
+  });
+
+  const rotate = useTransform(y, (v) => `${(index - v) * 12}deg`);
+
+  const pointerEvents = useTransform(y, (v) =>
+    Math.round(v) === index ? "auto" : "none",
+  );
+
+  const isActive = currentIndex === index;
+
+  return (
+    <motion.li
+      data-content-type={type}
+      data-content-id={item.id}
+      data-layer-id={isStory ? "" : id}
+      className={cx(styles.contentNavItem, isActive && styles.active)}
+      key={index}
+      aria-label={`${type} content: ${name}`}
+      tabIndex={isActive ? 0 : -1}
+      role="option"
+      aria-selected={isActive}
+      style={{ top, left, opacity, rotate, pointerEvents }}
+      onFocus={() => onFocus(index)}
+    >
+      <Link to={isStory ? `/${category}/stories/${id}/0` : `/${category}/data`}>
+        <div>
+          <span>{name}</span>
+          {/* for electron*/}
+          <DownloadButton url={downloadUrl} id={item.id} />
+        </div>
+        {!isMobile && (
+          <span className={cx(styles.learnMore)}>
+            <FormattedMessage id="learn_more" />
+          </span>
+        )}
+      </Link>
+    </motion.li>
+  );
+};
+
 const ContentNavigation: FunctionComponent<Props> = ({
   category,
   showContentList,
@@ -51,7 +151,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
   className,
   isMobile,
 }) => {
-  const navigationRef = React.useRef<HTMLUListElement | null>(null);
   const dispatch = useDispatch();
   const lang = useSelector(languageSelector);
   const { contentId } = useSelector(contentSelector);
@@ -87,40 +186,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
   // will automatically positioned and re-positioned based on the size of the parent container
   const RADIUS = 42;
 
+  const y = useMotionValue(validInitialIndex);
+
   useEffect(() => {
-    const listItems = navigationRef.current?.querySelectorAll("li");
-
-    if (!listItems) {
-      return;
-    }
-
-    for (const [index, item] of Array.from(listItems).entries()) {
-      const adjustedPosition = index - currentIndex;
-
-      const { x, y } = getNavCoordinates(
-        adjustedPosition,
-        GAP_BETWEEN_ELEMENTS,
-        RADIUS,
-        isMobile,
-      );
-
-      // 12 degrees of rotation per item
-      const _rotationAngle = 12;
-      const rotation = adjustedPosition * _rotationAngle;
-      const opacity =
-        adjustedPosition === 0
-          ? 1
-          : Math.pow(0.5, Math.abs(adjustedPosition)) * 0.5;
-
-      // disalbe pointer events for items that are not in the center
-      item.style.pointerEvents = adjustedPosition === 0 ? "auto" : "none";
-      item.style.top = `${y}%`;
-      item.style.left = `${x}%`;
-      item.style.opacity = `${opacity}`;
-      item.style.rotate = `${rotation}deg`;
-      item.classList.toggle(styles.active, adjustedPosition === 0);
-    }
-  }, [currentIndex, showContentList, contents.length, isMobile]);
+    animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
+  }, [currentIndex, y]);
 
   // Auto initialize auto-rotation on user inactivity
   useAutoRotate({
@@ -200,7 +270,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   return (
     <ul
-      ref={navigationRef}
       className={cx(
         styles.contentNav,
         showContentList && styles.show,
@@ -209,62 +278,21 @@ const ContentNavigation: FunctionComponent<Props> = ({
       role="listbox"
       aria-label="Content navigation"
     >
-      {contents.map((item, index) => {
-        const { id } = item;
-        const name = "title" in item ? item.title : item.name;
-        const isStory = isStoryListItem(item);
-        const type = isStory ? getStoryMediaType(item, stories) : "layer";
-        const downloadUrl = replaceUrlPlaceholders(
-          isStory
-            ? config.api.storyOfflinePackage
-            : config.api.layerOfflinePackage,
-          {
-            id: item.id,
-          },
-        );
-
-        return (
-          <li
-            // Used n CSS to get the correct icon for the content type
-            data-content-type={type}
-            // Used to identify the currently seletected content.
-            // Passed to the globe via props to make sure correct actions are triggered
-            // E.g. flyTo or show the data layer
-            data-content-id={item.id}
-            data-layer-id={isStory ? "" : id}
-            className={styles.contentNavItem}
-            key={index}
-            aria-label={`${type} content: ${name}`}
-            // Make only the current item focusable in the tab order
-            // This creates a "roving tabindex" pattern
-            tabIndex={index === currentIndex ? 0 : -1}
-            role="option"
-            aria-selected={index === currentIndex}
-            onFocus={() => {
-              // When an item receives focus, update the current index
-              setCurrentIndex(index);
-              dispatch(setSelectedContentAction({ contentId: id }));
-            }}
-          >
-            <Link
-              to={
-                isStory ? `/${category}/stories/${id}/0` : `/${category}/data`
-              }
-            >
-              <div>
-                <span>{name}</span>
-                {/* for electron*/}
-                <DownloadButton url={downloadUrl} id={item.id} />
-              </div>
-              {!isMobile && (
-                <span className={cx(styles.learnMore)}>
-                  <FormattedMessage id="learn_more" />
-                </span>
-              )}
-            </Link>
-          </li>
-        );
-      })}
+      {contents.map((item, index) => (
+        <ContentNavItem
+          key={item.id}
+          item={item}
+          index={index}
+          currentIndex={currentIndex}
+          y={y}
+          category={category}
+          isMobile={isMobile}
+          GAP_BETWEEN_ELEMENTS={GAP_BETWEEN_ELEMENTS}
+          RADIUS={RADIUS}
+          stories={stories}
+          onFocus={setCurrentIndex}
+        />
+      ))}
       {/* This is the highlight of the currently selected item.
       It serves a visual purpose only */}
       <span
