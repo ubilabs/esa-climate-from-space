@@ -1,19 +1,16 @@
 import { FunctionComponent, useEffect, useState } from "react";
+import { animate, motion, useMotionValue, useTransform } from "motion/react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
-import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 import config, { ALTITUDE_FACTOR_DESKTOP } from "../../../config/main";
-import { useGetStoriesQuery } from "../../../services/api";
-
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
-import { getStoryMediaType } from "../../../libs/get-story-media-type";
 
-import { setSelectedLayerIds } from "../../../reducers/layers";
 import { setSelectedContentAction } from "../../../reducers/content";
+import { setSelectedLayerIds } from "../../../reducers/layers";
 import { setFlyTo } from "../../../reducers/fly-to";
 
 import { languageSelector } from "../../../selectors/language";
@@ -23,14 +20,12 @@ import { LayerListItem } from "../../../types/layer-list";
 import { StoryListItem } from "../../../types/story-list";
 import { AppRoute } from "../../../types/app-routes";
 
-import useAutoRotate from "../../../hooks/use-auto-content-rotation";
 import { useNavGestures } from "../../../libs/use-nav-gestures";
 
 import { DownloadButton } from "../download-button/download-button";
+import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 
 import styles from "./content-navigation.module.css";
-
-import { animate, motion, useMotionValue, useTransform } from "motion/react";
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -52,15 +47,16 @@ interface ItemProps {
   index: number;
   currentIndex: number;
   y: ReturnType<typeof useMotionValue<number>>;
+  opacity: ReturnType<typeof useMotionValue<number>>;
   category: string | null;
   isMobile: boolean;
   GAP_BETWEEN_ELEMENTS: number;
   RADIUS: number;
-  stories: ReturnType<typeof useGetStoriesQuery>["data"];
   onFocus: (index: number) => void;
 }
 
 const ContentNavItem: FunctionComponent<ItemProps> = ({
+  opacity,
   item,
   index,
   currentIndex,
@@ -69,13 +65,15 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
   isMobile,
   GAP_BETWEEN_ELEMENTS,
   RADIUS,
-  stories,
   onFocus,
 }) => {
   const { id } = item;
   const name = "title" in item ? item.title : item.name;
+
   const isStory = isStoryListItem(item);
-  const type = isStory ? getStoryMediaType(item, stories) : "layer";
+
+  const type = isStory ? "blog" : "layer";
+
   const downloadUrl = replaceUrlPlaceholders(
     isStory ? config.api.storyOfflinePackage : config.api.layerOfflinePackage,
     { id: item.id },
@@ -101,7 +99,7 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
     return `${x}%`;
   });
 
-  const opacity = useTransform(y, (v) => {
+  const opacityValue = useTransform(opacity, (v) => {
     const d = index - v;
     return d === 0 ? 1 : Math.pow(0.5, Math.abs(d)) * 0.5;
   });
@@ -116,7 +114,6 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
 
   return (
     <motion.li
-      data-content-type={type}
       data-content-id={item.id}
       data-layer-id={isStory ? "" : id}
       className={cx(styles.contentNavItem, isActive && styles.active)}
@@ -125,7 +122,10 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
       tabIndex={isActive ? 0 : -1}
       role="option"
       aria-selected={isActive}
-      style={{ top, left, opacity, rotate, pointerEvents }}
+      initial={{
+        y: "-50%",
+      }}
+      style={{ top, left, opacity: opacityValue, rotate, pointerEvents }}
       onFocus={() => onFocus(index)}
     >
       <Link to={isStory ? `/${category}/stories/${id}/0` : `/${category}/data`}>
@@ -134,11 +134,6 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
           {/* for electron*/}
           <DownloadButton url={downloadUrl} id={item.id} />
         </div>
-        {!isMobile && (
-          <span className={cx(styles.learnMore)}>
-            <FormattedMessage id="learn_more" />
-          </span>
-        )}
       </Link>
     </motion.li>
   );
@@ -154,6 +149,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const dispatch = useDispatch();
   const lang = useSelector(languageSelector);
   const { contentId } = useSelector(contentSelector);
+
+  console.log("🚀 ~ content-navigation.tsx:152 → contents:", contents);
 
   // We either use the centerIndex or the index of the selected content if there is one
   const centerIndex = Math.floor((contents.length - 1) / 2);
@@ -187,17 +184,12 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const RADIUS = 42;
 
   const y = useMotionValue(validInitialIndex);
+  const opacity = useMotionValue(validInitialIndex);
 
   useEffect(() => {
     animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
-  }, [currentIndex, y]);
-
-  // Auto initialize auto-rotation on user inactivity
-  useAutoRotate({
-    lastUserInteractionTime,
-    setCurrentIndex,
-    itemsLength: contents.length,
-  });
+    animate(opacity, currentIndex, { duration: 0.1 });
+  }, [currentIndex, y, opacity]);
 
   useEffect(() => {
     const contentId = contents[currentIndex]?.id;
@@ -263,11 +255,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
 
-  const { data: stories } = useGetStoriesQuery({
-    ids: contents.filter((el) => isStoryListItem(el)).map(({ id }) => id),
-    language: lang,
-  });
-
   return (
     <ul
       className={cx(
@@ -285,11 +272,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
           index={index}
           currentIndex={currentIndex}
           y={y}
+          opacity={opacity}
           category={category}
           isMobile={isMobile}
           GAP_BETWEEN_ELEMENTS={GAP_BETWEEN_ELEMENTS}
           RADIUS={RADIUS}
-          stories={stories}
           onFocus={setCurrentIndex}
         />
       ))}

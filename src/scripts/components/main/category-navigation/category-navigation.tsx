@@ -16,21 +16,16 @@ import {
 
 import cx from "classnames";
 
-// interface Props {
-// setFirstInteractionRegistered: React.Dispatch<React.SetStateAction<boolean>>;
-// isMobile: boolean;
-// width: number;
-// setCategory: React.Dispatch<React.SetStateAction<string | null>>;
-// setAnimationReady: React.Dispatch<React.SetStateAction<boolean>>;
-// arcs: { [key: string]: number }[];
-// height: number;
-// }
+interface Props {
+  setCategory: React.Dispatch<React.SetStateAction<string | null>>;
+}
 
 import styles from "./category-navigation.module.css";
 import { languageSelector } from "../../../selectors/language";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
+import { Link } from "react-router-dom";
 
-const CategoryNavigation: FunctionComponent = () => {
+const CategoryNavigation: FunctionComponent<Props> = ({ setCategory }) => {
   const { category } = useContentParams();
 
   const language = useSelector(languageSelector);
@@ -107,37 +102,52 @@ const CategoryNavigation: FunctionComponent = () => {
 
   useEffect(() => {
     animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
-    animate(scale, currentIndex, { type: "tween", stiffness: 300, damping: 30 });
+    animate(scale, currentIndex, {
+      type: "tween",
+      stiffness: 300,
+      damping: 30,
+    });
+    setCategory(uniqueCategories[currentIndex]);
   }, [currentIndex, y, scale]);
 
   return (
-    <ul className={styles.categoryNavigation}>
-      {uniqueCategories.map((category, index) => {
-        const output = input.map(
-          (entry) => `${(index - entry) * ITEM_STEP_REM}rem`,
-        );
+    <nav className={styles.categoryNav}>
+      <ul className={styles.list}>
+        {uniqueCategories.map((category, index) => {
+          const output = input.map(
+            (entry) => `${(index - entry) * ITEM_STEP_REM}rem`,
+          );
 
-        const scaleFactor = isMobile ? 1.75 : 3.1;
-        const scaleOutput = input.map((entry) =>
-          entry === index ? scaleFactor : 1,
-        );
-        return (
-          <motion.li
-            key={category}
-            className={cx(currentIndex === index && styles.selectedEntry)}
-            initial={{
-              top: "50%",
-            }}
-            style={{
-              scale: useTransform(scale, input, scaleOutput),
-              y: useTransform(y, input, output),
-            }}
-          >
-            {<FormattedMessage id={`categories.${category}`} />}
-          </motion.li>
-        );
-      })}
-    </ul>
+          const scaleFactor = isMobile ? 1.75 : 3.1;
+          const scaleOutput = input.map((entry) =>
+            entry === index ? scaleFactor : 1,
+          );
+          return (
+            <motion.li
+              key={category}
+              className={cx(currentIndex === index && styles.selectedEntry)}
+              initial={{
+                top: "50%",
+              }}
+              style={{
+                // it is fine to use a motion hook here
+                // eslint-disable-next-line react-hooks/rules-of-hooks
+                scale: useTransform(scale, input, scaleOutput),
+                // eslint-disable-next-line react-hooks/rules-of-hooks
+                y: useTransform(y, input, output),
+              }}
+            >
+              <Link
+                to={uniqueCategories[currentIndex]}
+                className={styles.categoryLink}
+              >
+                {<FormattedMessage id={`categories.${category}`} />}
+              </Link>
+            </motion.li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 };
 

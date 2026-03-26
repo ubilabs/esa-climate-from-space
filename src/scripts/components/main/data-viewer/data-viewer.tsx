@@ -121,7 +121,7 @@ const DataViewer: FunctionComponent = () => {
           {isBaseRoute && (
             <>
               {/* {!hasUserInteracted ? <CategoryNavigation /> : <InitialSplash />} */}
-              <CategoryNavigation />
+              <CategoryNavigation setCategory={setCurrentCategory} />
               {/* <MouseIcon /> */}
               {/* <MouseIcon /> */}
             </>

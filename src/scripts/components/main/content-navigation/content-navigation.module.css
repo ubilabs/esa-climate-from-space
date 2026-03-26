@@ -82,7 +82,7 @@
         display: flex;
 
         > span {
-          color: var(--dark-blue);
+          color: var(--neutral-esa-white);
           max-width: 50vw;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -139,46 +139,11 @@
       }
     }
 
-    &:before {
-      flex-shrink: 0;
-      content: "";
-      width: 24px;
-      height: 24px;
-      margin-right: 1rem;
-      scale: 0.75;
-      background: var(--secondary-color);
-    }
-
     &.active {
       > a > div > span {
-        color: var(--primary-color) !important;
         white-space: normal;
         padding-right: 1rem;
       }
-
-      > a > span.learnMore {
-        opacity: 1;
-      }
-    }
-
-    &.active:before {
-      background: var(--primary-color);
-    }
-
-    &[data-content-type="image"]:before {
-      mask-image: var(--icon-image);
-    }
-
-    &[data-content-type="video"]:before {
-      mask-image: var(--icon-video);
-    }
-
-    &[data-content-type="layer"]:before {
-      mask-image: var(--icon-layer);
-    }
-
-    &[data-content-type="blog"]:before {
-      mask-image: var(--icon-blog);
     }
   }
 }
