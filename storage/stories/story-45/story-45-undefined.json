@@ -1,0 +1,96 @@
+{
+  "id": "story-45",
+  "slides": [
+    {
+      "type": "splashscreen",
+      "text": "# Koolstofdynamiek op het land\n\nBossen absorberen koolstof uit de atmosfeer en helpen zo de door de mens veroorzaakte koolstofuitstoot te compenseren. Maar metingen vanuit de ruimte tonen aan dat het vermogen van bossen en andere levende biomassa om koolstof te absorberen wereldwijd afneemt.",
+      "shortText": "# Koolstofdynamiek op het land\n\nBossen absorberen koolstof uit de atmosfeer en helpen zo de door de mens veroorzaakte koolstofuitstoot te compenseren. Maar metingen vanuit de ruimte tonen aan dat het vermogen van bossen en andere levende biomassa om koolstof te absorberen wereldwijd afneemt.",
+      "images": [
+        "assets/story45-image01.jpg"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "##  Biomassa meten vanuit de ruimte\n\nKoolstof wordt voortdurend uitgewisseld tussen de atmosfeer en het landoppervlak. Koolstofputten verwijderen koolstof uit de atmosfeer en helpen zo de natuurlijke en door de mens veroorzaakte koolstofuitstoot te compenseren. Of een gebied een koolstofbron of een koolstofput is, kan in de loop van het jaar veranderen, als reactie op veranderingen in het milieu, zoals droogte, bosbranden en landgebruik.\n\nHet Regional Carbon Cycle Analysis and Processes-project (RECCAP2) van ESA maakt gebruik van satellieten om klimaatvariabelen op het land, zoals bodemvochtigheid en biomassa, te meten. De L-band microgolfradiometer op de SMOS-satelliet is gevoelig voor jaarlijkse veranderingen in de vegetatie, waaronder bossen. Deze waarnemingen worden gecombineerd met grondgegevens en computermodellen om de wereldwijde koolstofvoorraden op het land in kaart te brengen.",
+      "shortText": "##  Biomassa meten vanuit de ruimte\n\nKoolstof wordt voortdurend uitgewisseld tussen de atmosfeer en het landoppervlak. Koolstofputten verwijderen koolstof uit de atmosfeer en helpen zo de natuurlijke en door de mens veroorzaakte koolstofuitstoot te compenseren. Of een gebied een koolstofbron of een koolstofput is, kan in de loop van het jaar veranderen, als reactie op veranderingen in het milieu, zoals droogte, bosbranden en landgebruik.\n\nHet Regional Carbon Cycle Analysis and Processes-project (RECCAP2) van ESA maakt gebruik van satellieten om klimaatvariabelen op het land, zoals bodemvochtigheid en biomassa, te meten. De L-band microgolfradiometer op de SMOS-satelliet is gevoelig voor jaarlijkse veranderingen in de vegetatie, waaronder bossen. Deze waarnemingen worden gecombineerd met grondgegevens en computermodellen om de wereldwijde koolstofvoorraden op het land in kaart te brengen.",
+      "images": [
+        "assets/story45-image02.jpg",
+        "assets/story45-image03.jpg",
+        "assets/story45-image04.jpg"
+      ],
+      "imageCaptions": [
+        "# Koolstofflux aan het landoppervlak juli 2022\n\nKoolstofputten worden weergegeven in blauw en koolstofbronnen in geel en rood. Pieken komen overeen met extreme koolstofuitstootgebeurtenissen, zoals bosbranden. (Global Carbon Project/Planetary Visions)",
+        "De Soil Moisture and Ocean Salinity (SMOS)-satelliet van ESA gebruikt microgolven om veranderingen in de vegetatie te detecteren. (ESA/Planetary Visions)",
+        "# Global Biomass 2022\n\nLive bovengrondse koolstof op basis van SMOS L-band Vegetation Optical Depth (L-VOD)  (ESA-CCI)"
+      ],
+      "imageFits": [
+        "contain",
+        "cover",
+        "contain",
+        "contain",
+        "contain"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "## Amazonebekken\n\nHet Amazonebekken is goed voor 14% van de koolstof die jaarlijks door planten uit de atmosfeer wordt opgenomen. Maar de regio heeft in de periode 2010-2020 370 miljoen ton koolstof verloren en het zuidoostelijke deel is nu een netto koolstofbron. De koolstofopname door groeiende bossen wordt tenietgedaan door ontbossing, aantasting en landbouwgebruik.",
+      "shortText": "## Amazonebekken\n\nHet Amazonebekken is goed voor 14% van de koolstof die jaarlijks door planten uit de atmosfeer wordt opgenomen. Maar de regio heeft in de periode 2010-2020 370 miljoen ton koolstof verloren en het zuidoostelijke deel is nu een netto koolstofbron. De koolstofopname door groeiende bossen wordt tenietgedaan door ontbossing, aantasting en landbouwgebruik.",
+      "images": [
+        "assets/story45-image05.jpg",
+        "assets/story45-image06.jpg",
+        "assets/story45-image07.png"
+      ],
+      "imageCaptions": [
+        "Ontboste grond voor landbouw in het Amazonegebied, gezien vanuit het internationale ruimtestation ISS door ESA-astronaut Thomas Pasquet (ESA/NASA – T Pasquet)",
+        "# Biomassaverandering 2010-2020 voor het Amazonebekken\n\n(ESA-CCI)",
+        "# Cumulatieve verandering in biomassa voor het Amazonebekken\n\n(ESA-CCI)"
+      ],
+      "imageFits": [
+        "cover",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "##  Noordelijke bossen\n\n41% van het wereldwijde bosareaal bevindt zich op het noordelijk halfrond. Noordelijke bossen hebben de afgelopen decennia biomassa opgebouwd. Maar sinds 2016 hebben toenemende droogte en bosbranden hun vermogen om koolstof op te nemen verzwakt.",
+      "shortText": "##  Noordelijke bossen\n\n41% van het wereldwijde bosareaal bevindt zich op het noordelijk halfrond. Noordelijke bossen hebben de afgelopen decennia biomassa opgebouwd. Maar sinds 2016 hebben toenemende droogte en bosbranden hun vermogen om koolstof op te nemen verzwakt.",
+      "images": [
+        "assets/story45-image08.jpg",
+        "assets/story45-image09.jpg",
+        "assets/story45-image10.png"
+      ],
+      "imageCaptions": [
+        "Rook van talrijke bosbranden vult riviervalleien in Siberië op deze Copernicus Sentinel-2-afbeelding uit september 2016. (bevat gewijzigde Copernicus Sentinel-gegevens (2016), verwerkt door ESA)",
+        "# Netto L-VOD-biomassawijziging 2016-2022\n\nWijzigingen in biomassa op het noordelijk halfrond worden weergegeven met biomassaverlies in rood en biomassatoename in groen (ESA-CCI)",
+        "# Cumulatieve verandering in biomassa in gematigde streken \n\nDe biomassa van de noordelijke bossen neemt sinds 2016 af (ESA-CCI)."
+      ],
+      "imageFits": [
+        "contain",
+        "contain",
+        "contain",
+        "contain",
+        "contain"
+      ]
+    },
+    {
+      "type": "image",
+      "text": "##  Europese emissierechten\n\nTussen 1990 en 2022 hebben bossen in heel Europa ongeveer 10% van de broeikasgasemissies van de EU geabsorbeerd. Maar in de afgelopen tien jaar is deze compensatie van emissies met bijna 30% afgenomen als gevolg van boskap en veroudering, frequentere droogtes, hittegolven en bosbranden, plus insectenplagen en plantenziekten. Deze afname vormt een risico voor het behalen van toekomstige Europese klimaatdoelstellingen.\n\nBetere kennis van de koolstofdynamiek in de bodem zal ons helpen inschatten hoeveel koolstofbudget er nog over is binnen de temperatuurlimieten van het Akkoord van Parijs, of dat we te maken zullen krijgen met de ernstigere gevolgen van verdere opwarming.",
+      "shortText": "##  Europese emissierechten\n\nTussen 1990 en 2022 hebben bossen in heel Europa ongeveer 10% van de broeikasgasemissies van de EU geabsorbeerd. Maar in de afgelopen tien jaar is deze compensatie van emissies met bijna 30% afgenomen als gevolg van boskap en veroudering, frequentere droogtes, hittegolven en bosbranden, plus insectenplagen en plantenziekten. Deze afname vormt een risico voor het behalen van toekomstige Europese klimaatdoelstellingen.\n\nBetere kennis van de koolstofdynamiek in de bodem zal ons helpen inschatten hoeveel koolstofbudget er nog over is binnen de temperatuurlimieten van het Akkoord van Parijs, of dat we te maken zullen krijgen met de ernstigere gevolgen van verdere opwarming.",
+      "images": [
+        "assets/story45-image11.jpg",
+        "assets/story45-image12.png"
+      ],
+      "imageCaptions": [
+        "# Koolstofstroom aan het landoppervlak juni 2018\n\nHet grootste deel van Europa is in juni 2018 een koolstofput, omdat de groeiende vegetatie koolstof uit de atmosfeer opneemt. Aan de horizon in Siberië stijgt de koolstofuitstoot sterk als gevolg van bosbranden na een warme, droge winter.  (Global Carbon Project/Planetary Visions)",
+        "# Emissiecompensatie voor Europa 2005-2030\n\nDe compensatie door land en bossen overschreed tot 2016 de beoogde compensatie, maar is sindsdien onder de doelstelling gedaald. De verwachte toekomstige compensatie zal naar verwachting niet voldoende herstellen om de doelstelling te halen. (ESA-CCI)"
+      ],
+      "imageFits": [
+        "contain",
+        "contain"
+      ]
+    }
+  ]
+}
