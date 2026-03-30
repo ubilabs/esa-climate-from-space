@@ -1,13 +1,23 @@
-import { FormattedMessage, useIntl } from "react-intl";
-import styles from "./initial-splash.module.css";
+import { FormattedMessage } from "react-intl";
 import { useScreenInfo } from "../../../hooks/use-screen-info";
 
-import cx from "classnames";
+import { MouseIcon } from "../icons/mouse-icon";
+import { ArrowKeysIcon } from "../icons/arrow-keys-icon";
+import { SwipeVerticalIcon } from "../icons/swipe-vertical-icon";
+
+import styles from "./initial-splash.module.css";
 
 export default function InitialSplash() {
-  const intl = useIntl();
-
   const { isTouchDevice } = useScreenInfo();
+
+  const icons = isTouchDevice ? (
+    <SwipeVerticalIcon />
+  ) : (
+    <>
+      <MouseIcon rounded />
+      <ArrowKeysIcon />
+    </>
+  );
 
   return (
     <>
@@ -19,23 +29,15 @@ export default function InitialSplash() {
           <FormattedMessage id="welcomeSubtitle" />
         </p>
       </div>
-      <nav className={styles.chosenCategory}></nav>
 
-      <div
-        className={cx(
-          styles["category-navigation"],
-          styles["reveal-from-left"],
-        )}
-        aria-label="Circle Navigation"
-      ></div>
-
-      <span
-        aria-hidden="true"
-        className={styles.gestureIndicator}
-        data-content={intl.formatMessage({
-          id: `category.${isTouchDevice ? "scroll" : "scrollOrArrow"}`,
-        })}
-      ></span>
+      <div className={styles.gestureIndicator}>
+        <div className={styles.iconContainer}>{icons}</div>
+        <div>
+          <FormattedMessage
+            id={isTouchDevice ? "category.swipe" : "category.scrollOrArrow"}
+          />
+        </div>
+      </div>
     </>
   );
 }

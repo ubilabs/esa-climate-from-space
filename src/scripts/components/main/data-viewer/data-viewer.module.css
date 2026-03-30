@@ -151,34 +151,7 @@
   }
 }
 
-.gestureIndicator {
-  grid-area: explore;
-  margin-top: 1rem;
-  place-self: start center;
-  position: relative;
-  height: 24px;
-  width: 24px;
 
-  &:after {
-    bottom: -2rem;
-    left: 50%;
-    white-space: nowrap;
-    transform: translateX(-50%);
-    position: absolute;
-    content: attr(data-content);
-    color: var(--dark-blue);
-    font-family: NotesEsa;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22px;
-  }
-
-  @media screen and (--desktop-viewport) {
-    grid-area: 3 / 1 / 4 / 3;
-    place-self: center;
-  }
-}
 
 .heading {
   padding: 0 1.5rem;

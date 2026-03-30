@@ -24,3 +24,37 @@
     margin-left: 0;
   }
 }
+.gestureIndicator {
+  color: var(--dark-blue);
+  grid-area: explore;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  place-self: start center;
+  position: relative;
+
+  /* &:after { */
+  /*   bottom: 40px; */
+  /*   left: 50%; */
+  /*   white-space: nowrap; */
+  /*   transform: translateX(-50%); */
+  /*   position: absolute; */
+  /*   content: attr(data-content); */
+  /*   color: var(--dark-blue); */
+  /*   font-family: NotesEsa; */
+  /*   font-size: 14px; */
+  /*   font-style: normal; */
+  /*   font-weight: 400; */
+  /*   line-height: 22px; */
+  /* } */
+
+  @media screen and (--desktop-viewport) {
+    grid-area: 1 / 1 / -1 / -1;
+    place-self: end center;
+    margin-bottom: 2.5rem;
+  }
+
+  .iconContainer {
+    margin: 0 auto;
+    width: fit-content;
+  }
+}

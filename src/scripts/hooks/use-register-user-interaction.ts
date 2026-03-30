@@ -11,11 +11,11 @@ export const useRegisterUserInteraction = (): boolean => {
     };
 
     window.addEventListener("wheel", handleInteraction);
-    window.addEventListener("pointermove", handleInteraction);
+    window.addEventListener("click", handleInteraction);
 
     return () => {
       window.removeEventListener("wheel", handleInteraction);
-      window.removeEventListener("pointermove", handleInteraction);
+      window.removeEventListener("click", handleInteraction);
     };
   }, [hasInteracted]);
 
