@@ -32,11 +32,11 @@ export default function InitialSplash() {
 
       <div className={styles.gestureIndicator}>
         <div className={styles.iconContainer}>{icons}</div>
-        <div>
+        <span className={styles.info}>
           <FormattedMessage
             id={isTouchDevice ? "category.swipe" : "category.scrollOrArrow"}
           />
-        </div>
+        </span>
       </div>
     </>
   );

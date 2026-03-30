@@ -1,8 +1,7 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
 import cx from "classnames";
 
 import config, { ALTITUDE_FACTOR_DESKTOP } from "../../../config/main";
@@ -26,6 +25,8 @@ import { DownloadButton } from "../download-button/download-button";
 import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 
 import styles from "./content-navigation.module.css";
+import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
+import { getStorySplashImage } from "../../../libs/get-story-splash-image";
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -147,10 +148,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
   isMobile,
 }) => {
   const dispatch = useDispatch();
-  const lang = useSelector(languageSelector);
+  // const lang = useSelector(languageSelector);
   const { contentId } = useSelector(contentSelector);
-
-  console.log("🚀 ~ content-navigation.tsx:152 → contents:", contents);
 
   // We either use the centerIndex or the index of the selected content if there is one
   const centerIndex = Math.floor((contents.length - 1) / 2);
@@ -185,6 +184,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const y = useMotionValue(validInitialIndex);
   const opacity = useMotionValue(validInitialIndex);
+  const sourceRef = useRef<string>("");
+
+  console.log("i render");
 
   useEffect(() => {
     animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
@@ -198,8 +200,14 @@ const ContentNavigation: FunctionComponent<Props> = ({
     // We don't want to dispatch a layer action with story ids (except for EEI-story)
     if (isStoryListItem(contents[currentIndex])) {
       if (contentId !== AppRoute.StoryEEI) {
+        sourceRef.current = getStorySplashImage(contentId);
+        console.log(
+          "🚀 ~ content-navigation.tsx:202 → sourceRef.current:",
+          sourceRef.current,
+        );
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
       } else {
+        sourceRef.current = "";
         dispatch(
           setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
         );
@@ -226,7 +234,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
         const previewedContent = contents.find(({ id }) => id === contentId);
 
         const altitude =
-          config.globe.view.altitude * (isMobile ? 1 : ALTITUDE_FACTOR_DESKTOP);
+          config.globe.view.altitude *
+          (isMobile ? 1.2 : ALTITUDE_FACTOR_DESKTOP);
 
         dispatch(
           setFlyTo({
@@ -256,40 +265,43 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
 
   return (
-    <ul
-      className={cx(
-        styles.contentNav,
-        showContentList && styles.show,
-        className,
-      )}
-      role="listbox"
-      aria-label="Content navigation"
-    >
-      {contents.map((item, index) => (
-        <ContentNavItem
-          key={item.id}
-          item={item}
-          index={index}
-          currentIndex={currentIndex}
-          y={y}
-          opacity={opacity}
-          category={category}
-          isMobile={isMobile}
-          GAP_BETWEEN_ELEMENTS={GAP_BETWEEN_ELEMENTS}
-          RADIUS={RADIUS}
-          onFocus={setCurrentIndex}
-        />
-      ))}
-      {/* This is the highlight of the currently selected item.
+    <>
+      <img src={sourceRef.current} alt="" className={styles.splashImage} />
+      <ul
+        className={cx(
+          styles.contentNav,
+          showContentList && styles.show,
+          className,
+        )}
+        role="listbox"
+        aria-label="Content navigation"
+      >
+        {contents.map((item, index) => (
+          <ContentNavItem
+            key={item.id}
+            item={item}
+            index={index}
+            currentIndex={currentIndex}
+            y={y}
+            opacity={opacity}
+            category={category}
+            isMobile={isMobile}
+            GAP_BETWEEN_ELEMENTS={GAP_BETWEEN_ELEMENTS}
+            RADIUS={RADIUS}
+            onFocus={setCurrentIndex}
+          />
+        ))}
+        {/* This is the highlight of the currently selected item.
       It serves a visual purpose only */}
-      <span
-        aria-hidden="true"
-        style={{
-          // The 8px or 24px is the offset of the highlight to the left
-          left: `calc(${x}% - ${isMobile ? "8" : "24"}px)`,
-        }}
-      ></span>
-    </ul>
+        <span
+          aria-hidden="true"
+          style={{
+            // The 8px or 24px is the offset of the highlight to the left
+            left: `calc(${x}% - ${isMobile ? "8" : "24"}px)`,
+          }}
+        ></span>
+      </ul>
+    </>
   );
 };
 

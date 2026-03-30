@@ -133,8 +133,10 @@
       }
 
       .heading {
+        margin-top: 2rem;
         place-self: start;
         grid-area: globe;
+
 
         @media screen and (--desktop-xxl-viewport) {
           a {
@@ -167,7 +169,6 @@
   justify-content: center;
 
   @media screen and (--desktop-viewport) {
-    grid-area: title;
     padding: 0;
     justify-content: start;
     font-family: NotesEsa;
@@ -182,15 +183,3 @@
     margin: 0 auto;
   }
 }
-
-/* @keyframes headerAnimation { */
-/*   0% { */
-/*     transform: translateY(-10px); */
-/*     opacity: 0.2; */
-/*   } */
-/**/
-/*   100% { */
-/*     transform: translateY(0); */
-/*     opacity: 1; */
-/*   } */
-/* } */
