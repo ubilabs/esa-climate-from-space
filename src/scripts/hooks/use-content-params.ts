@@ -60,8 +60,16 @@ export const useContentParams = () => {
   );
 
   const initialCategory = paramCategory || null;
+  console.log(
+    "🚀 ~ use-content-params.ts:62 → initialCategory:",
+    initialCategory,
+  );
 
   const { category: persistedCategory } = useSelector(contentSelector);
+  console.log(
+    "🚀 ~ use-content-params.ts:64 → persistedCategory:",
+    persistedCategory,
+  );
 
   const category = initialCategory || persistedCategory || undefined;
 

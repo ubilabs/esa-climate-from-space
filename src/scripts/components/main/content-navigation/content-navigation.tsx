@@ -1,4 +1,10 @@
-import { FunctionComponent, useEffect, useRef, useState } from "react";
+import {
+  FunctionComponent,
+  useEffect,
+  useEffectEvent,
+  useRef,
+  useState,
+} from "react";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -27,6 +33,7 @@ import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 import styles from "./content-navigation.module.css";
 import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
 import { getStorySplashImage } from "../../../libs/get-story-splash-image";
+import { useContentParams } from "../../../hooks/use-content-params";
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -101,8 +108,8 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
   });
 
   const opacityValue = useTransform(opacity, (v) => {
-    const d = index - v;
-    return d === 0 ? 1 : Math.pow(0.5, Math.abs(d)) * 0.5;
+    const diff = Math.abs(index - v);
+    return diff === 0 ? 1 : Math.pow(0.4, diff) * 1;
   });
 
   const rotate = useTransform(y, (v) => `${(index - v) * 12}deg`);
@@ -136,18 +143,19 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
           <DownloadButton url={downloadUrl} id={item.id} />
         </div>
       </Link>
+      <span className={styles.typeInfo}>{isStory ? "Story" : "Dataset"}</span>
     </motion.li>
   );
 };
 
 const ContentNavigation: FunctionComponent<Props> = ({
-  category,
   showContentList,
   contents,
   className,
   isMobile,
 }) => {
   const dispatch = useDispatch();
+  const { category } = useContentParams();
   // const lang = useSelector(languageSelector);
   const { contentId } = useSelector(contentSelector);
 
@@ -180,13 +188,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
   // 0 - 100 because the coordinates are used as the top and left values
   // in a absolute positioned element. The advantage here is that the the elements
   // will automatically positioned and re-positioned based on the size of the parent container
-  const RADIUS = 42;
+  const RADIUS = isMobile ? 41 : 60;
 
   const y = useMotionValue(validInitialIndex);
   const opacity = useMotionValue(validInitialIndex);
   const sourceRef = useRef<string>("");
-
-  console.log("i render");
 
   useEffect(() => {
     animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
@@ -197,14 +203,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
     const contentId = contents[currentIndex]?.id;
 
     dispatch(setSelectedContentAction({ contentId }));
+
     // We don't want to dispatch a layer action with story ids (except for EEI-story)
     if (isStoryListItem(contents[currentIndex])) {
       if (contentId !== AppRoute.StoryEEI) {
         sourceRef.current = getStorySplashImage(contentId);
-        console.log(
-          "🚀 ~ content-navigation.tsx:202 → sourceRef.current:",
-          sourceRef.current,
-        );
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
       } else {
         sourceRef.current = "";
@@ -267,7 +270,14 @@ const ContentNavigation: FunctionComponent<Props> = ({
   return (
     <>
       <div className={styles.splashImageWrapper}>
-        <img src={sourceRef.current} alt="" className={styles.splashImage} />
+        {sourceRef.current ? (
+          <img
+            src={sourceRef.current}
+            alt=""
+            className={styles.splashImage}
+            rel="preload"
+          />
+        ) : null}
       </div>
       <ul
         className={cx(
@@ -299,7 +309,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
           aria-hidden="true"
           style={{
             // The 8px or 24px is the offset of the highlight to the left
-            left: `calc(${x}% - ${isMobile ? "8" : "24"}px)`,
+            left: `calc(${x}% - ${isMobile ? "16" : "12"}px)`,
           }}
         ></span>
       </ul>

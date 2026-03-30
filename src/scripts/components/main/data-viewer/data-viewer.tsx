@@ -33,6 +33,7 @@ import styles from "./data-viewer.module.css";
 import { MouseIcon } from "../icons/mouse-icon";
 import { useRegisterUserInteraction } from "../../../hooks/use-register-user-interaction";
 import InitialSplash from "../initial-splash/initial-splash";
+import { useContentParams } from "../../../hooks/use-content-params";
 
 export type LayerLoadingStateChangeHandle = (
   layerId: string,
@@ -47,11 +48,13 @@ export type LayerLoadingStateChangeHandle = (
  * @returns {JSX.Element} The rendered DataViewer component.
  */
 const DataViewer: FunctionComponent = () => {
-  const { category } = useParams();
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoryListQuery(language);
 
   const appRoute = useSelector(appRouteSelector);
+
+  const { category } = useContentParams();
+console.log("🚀 ~ data-viewer.tsx:56 → category:", category);
 
   const { data: layers } = useGetLayerListQuery(language);
 
@@ -67,9 +70,10 @@ const DataViewer: FunctionComponent = () => {
     [stories, layers, category],
   );
 
-  const [currentCategory, setCurrentCategory] = useState<string | null>(
-    category || null,
-  );
+  // const [currentCategory, setCurrentCategory] = useState<string | null>(
+  //   category || null,
+  // );
+
 
   const { isMobile } = useScreenInfo();
 
@@ -107,9 +111,7 @@ const DataViewer: FunctionComponent = () => {
             {isContentNavRoute && (
               <BackButton
                 label={
-                  !isMobile
-                    ? "back_to_overview"
-                    : `categories.${currentCategory}`
+                  !isMobile ? "back_to_overview" : `categories.${category}`
                 }
                 link="/"
               ></BackButton>
@@ -117,11 +119,7 @@ const DataViewer: FunctionComponent = () => {
           </header>
           {isBaseRoute && (
             <>
-              {hasUserInteracted ? (
-                <CategoryNavigation setCategory={setCurrentCategory} />
-              ) : (
-                <InitialSplash />
-              )}
+              {hasUserInteracted ? <CategoryNavigation /> : <InitialSplash />}
             </>
           )}
           {isContentNavRoute && (
@@ -129,13 +127,12 @@ const DataViewer: FunctionComponent = () => {
               <ContentNavigation
                 isMobile={isMobile}
                 className={styles.contentNav}
-                category={currentCategory}
                 showContentList
                 contents={contents}
               />
               {!isMobile && (
                 <span className={styles.currentCategory}>
-                  <FormattedMessage id={`categories.${currentCategory}`} />
+                  <FormattedMessage id={`categories.${category}`} />
                 </span>
               )}
             </>

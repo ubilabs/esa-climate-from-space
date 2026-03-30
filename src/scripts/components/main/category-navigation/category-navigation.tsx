@@ -24,9 +24,12 @@ import styles from "./category-navigation.module.css";
 import { languageSelector } from "../../../selectors/language";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
 import { Link } from "react-router-dom";
+import { setSelectedContentAction } from "../../../reducers/content";
+import { useDispatch } from "react-redux";
 
-const CategoryNavigation: FunctionComponent<Props> = ({ setCategory }) => {
+const CategoryNavigation: FunctionComponent<Props> = () => {
   const { category } = useContentParams();
+  console.log("🚀 ~ category-navigation.tsx:29 → category:", category);
 
   const language = useSelector(languageSelector);
 
@@ -38,6 +41,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({ setCategory }) => {
   const { data: layers } = useGetLayerListQuery(language);
 
   const { isMobile } = useScreenInfo();
+  const dispatch = useDispatch();
   // const appRoute = useSelector(appRouteSelector);
 
   // const contents = useMemo(
@@ -53,29 +57,30 @@ const CategoryNavigation: FunctionComponent<Props> = ({ setCategory }) => {
   // );
   //
   // console.log("🚀 ~ category-navigation.tsx:44 → contents:", contents);
-  const uniqueCategories = useMemo(
-    () => [
-      ...new Set(
-        [
-          ...(stories?.flatMap(({ categories }) => categories) ?? []),
-          ...(layers?.flatMap(({ categories }) => categories) ?? []),
-        ].filter(Boolean),
-      ),
-    ],
-    [stories, layers],
-  );
+  // const uniqueCategories = useMemo(
+  //   () => [
+  //     ...new Set(
+  //       [
+  //         ...(stories?.flatMap(({ categories }) => categories) ?? []),
+  //         ...(layers?.flatMap(({ categories }) => categories) ?? []),
+  //       ].filter(Boolean),
+  //     ),
+  //   ],
+  //   [stories, layers],
+  // );
 
   const categoryIndex = category
     ? categoryTags.indexOf(category)
-    : Math.round(uniqueCategories.length / 2);
+    : Math.round(categoryTags.length / 2);
 
+console.log("🚀 ~ category-navigation.tsx:72 → categoryIndex:", categoryIndex);
   const [currentIndex, setCurrentIndex] = useState(
     categoryIndex !== -1 ? categoryIndex : 0,
   );
 
   // Custom hook to handle wheel and drag gestures for navigation
   useNavGestures(
-    uniqueCategories.length,
+    categoryTags.length,
     setCurrentIndex,
     setLastUserInteractionTime,
     "y",
@@ -93,7 +98,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({ setCategory }) => {
   // Item step: line-height (1.375rem) + gap (1.5rem) = 2.875rem ≈ 46px at 16px base
   const ITEM_STEP_REM = isMobile ? 2.875 : 5.375;
 
-  const input = Array.from({ length: uniqueCategories.length }).map(
+  const input = Array.from({ length: categoryTags.length }).map(
     (_, index) => index,
   );
 
@@ -107,13 +112,17 @@ const CategoryNavigation: FunctionComponent<Props> = ({ setCategory }) => {
       stiffness: 300,
       damping: 30,
     });
-    setCategory(uniqueCategories[currentIndex]);
+
+    dispatch(
+      setSelectedContentAction({ category: categoryTags[currentIndex] }),
+    );
+
   }, [currentIndex, y, scale]);
 
   return (
     <nav className={styles.categoryNav}>
       <ul className={styles.list}>
-        {uniqueCategories.map((category, index) => {
+        {categoryTags.map((category, index) => {
           const output = input.map(
             (entry) => `${(index - entry) * ITEM_STEP_REM}rem`,
           );
@@ -138,7 +147,7 @@ const CategoryNavigation: FunctionComponent<Props> = ({ setCategory }) => {
               }}
             >
               <Link
-                to={uniqueCategories[currentIndex]}
+                to={categoryTags[currentIndex]}
                 className={styles.categoryLink}
               >
                 {<FormattedMessage id={`categories.${category}`} />}
