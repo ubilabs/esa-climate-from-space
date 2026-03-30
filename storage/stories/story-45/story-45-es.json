@@ -3,25 +3,25 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Dinámica del carbono terrestre\r\n\r\nLos bosques absorben carbono de la atmósfera, lo que ayuda a compensar las emisiones de carbono producidas por los seres humanos. Sin embargo, las mediciones realizadas desde el espacio muestran que la capacidad de los bosques y otras biomasas vivas para absorber carbono está disminuyendo en todo el mundo.",
-      "shortText": "# Dinámica del carbono terrestre\r\n\r\nLos bosques absorben carbono de la atmósfera, lo que ayuda a compensar las emisiones de carbono producidas por los seres humanos. Sin embargo, las mediciones realizadas desde el espacio muestran que la capacidad de los bosques y otras biomasas vivas para absorber carbono está disminuyendo en todo el mundo.",
+      "text": "# Dinámica del carbono terrestre\n\nLos bosques absorben carbono de la atmósfera, lo que ayuda a compensar las emisiones de carbono producidas por los seres humanos. Sin embargo, las mediciones realizadas desde el espacio muestran que la capacidad de los bosques y otras biomasas vivas para absorber carbono está disminuyendo en todo el mundo.",
+      "shortText": "# Dinámica del carbono terrestre\n\nLos bosques absorben carbono de la atmósfera, lo que ayuda a compensar las emisiones de carbono producidas por los seres humanos. Sin embargo, las mediciones realizadas desde el espacio muestran que la capacidad de los bosques y otras biomasas vivas para absorber carbono está disminuyendo en todo el mundo.",
       "images": [
         "assets/story45-image01.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "##  Medición de la biomasa desde el espacio\r\n\r\nEl carbono se intercambia continuamente entre la atmósfera y la superficie terrestre. Los sumideros de carbono eliminan el carbono de la atmósfera, lo que ayuda a compensar las emisiones naturales y humanas de carbono. El hecho de que una zona sea una fuente o un sumidero de carbono puede cambiar a lo largo del año, en respuesta a cambios ambientales como sequías, incendios forestales y uso del suelo.\r\n\r\nEl proyecto de Análisis y Procesos del Ciclo Regional del Carbono (RECCAP2) de la ESA utiliza satélites para medir variables climáticas terrestres como la humedad del suelo y la biomasa. El radiómetro de microondas en banda L del satélite SMOS es sensible a los cambios anuales en la vegetación, incluidos los bosques. Estas observaciones se combinan con datos terrestres y modelos informáticos para cartografiar las reservas globales de carbono terrestre.",
-      "shortText": "##  Medición de la biomasa desde el espacio\r\n\r\nEl carbono se intercambia continuamente entre la atmósfera y la superficie terrestre. Los sumideros de carbono eliminan el carbono de la atmósfera, lo que ayuda a compensar las emisiones naturales y humanas de carbono. El hecho de que una zona sea una fuente o un sumidero de carbono puede cambiar a lo largo del año, en respuesta a cambios ambientales como sequías, incendios forestales y uso del suelo.\r\n\r\nEl proyecto de Análisis y Procesos del Ciclo Regional del Carbono (RECCAP2) de la ESA utiliza satélites para medir variables climáticas terrestres como la humedad del suelo y la biomasa. El radiómetro de microondas en banda L del satélite SMOS es sensible a los cambios anuales en la vegetación, incluidos los bosques. Estas observaciones se combinan con datos terrestres y modelos informáticos para cartografiar las reservas globales de carbono terrestre.",
+      "text": "##  Medición de la biomasa desde el espacio\n\nEl carbono se intercambia continuamente entre la atmósfera y la superficie terrestre. Los sumideros de carbono eliminan el carbono de la atmósfera, lo que ayuda a compensar las emisiones naturales y humanas de carbono. El hecho de que una zona sea una fuente o un sumidero de carbono puede variar en el transcurso del año, en respuesta a cambios ambientales como sequías, incendios forestales y uso del suelo.\n\nEl proyecto de Análisis y Procesos del Ciclo Regional del Carbono (RECCAP2) de la ESA utiliza satélites para medir variables climáticas terrestres como la humedad del suelo y la biomasa. El radiómetro de microondas en banda L del satélite SMOS es sensible a los cambios anuales en la vegetación, incluidos los bosques. Estas observaciones se combinan con datos terrestres y modelos informáticos para cartografiar las reservas globales de carbono terrestre.",
+      "shortText": "##  Medición de la biomasa desde el espacio\n\nEl carbono se intercambia continuamente entre la atmósfera y la superficie terrestre. Los sumideros de carbono eliminan el carbono de la atmósfera, lo que ayuda a compensar las emisiones naturales y humanas de carbono. El hecho de que una zona sea una fuente o un sumidero de carbono puede variar en el transcurso del año, en respuesta a cambios ambientales como sequías, incendios forestales y uso del suelo.\n\nEl proyecto de Análisis y Procesos del Ciclo Regional del Carbono (RECCAP2) de la ESA utiliza satélites para medir variables climáticas terrestres como la humedad del suelo y la biomasa. El radiómetro de microondas en banda L del satélite SMOS es sensible a los cambios anuales en la vegetación, incluidos los bosques. Estas observaciones se combinan con datos terrestres y modelos informáticos para cartografiar las reservas globales de carbono terrestre.",
       "images": [
         "assets/story45-image02.jpg",
         "assets/story45-image03.jpg",
         "assets/story45-image04.jpg"
       ],
       "imageCaptions": [
-        "# Flujo de carbono en la superficie terrestre, julio de 2022.\r\n\r\nLos sumideros de carbono se muestran en azul y las fuentes de carbono en amarillo y rojo. Los picos corresponden a eventos extremos de liberación de carbono, como incendios forestales. (Global Carbon Project/Planetary Visions)",
+        "# Flujo de carbono en la superficie terrestre, julio de 2022.\n\nLos sumideros de carbono se muestran en azul y las fuentes de carbono en amarillo y rojo. Los picos corresponden a eventos extremos de liberación de carbono, como incendios forestales. (Global Carbon Project/Planetary Visions)",
         "El satélite SMOS (Soil Moisture and Ocean Salinity) de la ESA utiliza microondas para detectar cambios en la vegetación. (ESA/Planetary Visions)",
-        "# Biomasa global 2022\r\n\r\nCarbono vivo sobre el suelo basado en la profundidad óptica de la vegetación en banda L (L-VOD) del SMOS  (ESA-CCI)"
+        "# Biomasa global 2022\n\nCarbono vivo sobre el suelo ,  basado en la profundidad óptica de la vegetación en banda L (L-VOD) del SMOS  (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
@@ -33,8 +33,8 @@
     },
     {
       "type": "image",
-      "text": "## Cuenca del Amazonas\r\n\r\nLa cuenca del Amazonas representa el 14 % del carbono atmosférico absorbido por las plantas cada año. Sin embargo, la región ha perdido 370 millones de toneladas de carbono durante la década 2010-2020, y la parte sureste es ahora una fuente neta de carbono. La absorción de carbono por parte de los bosques en crecimiento se ha visto superada por la deforestación, la degradación y el uso agrícola.",
-      "shortText": "## Cuenca del Amazonas\r\n\r\nLa cuenca del Amazonas representa el 14 % del carbono atmosférico absorbido por las plantas cada año. Sin embargo, la región ha perdido 370 millones de toneladas de carbono durante la década 2010-2020, y la parte sureste es ahora una fuente neta de carbono. La absorción de carbono por parte de los bosques en crecimiento se ha visto superada por la deforestación, la degradación y el uso agrícola.",
+      "text": "## Cuenca del Amazonas\n\nLa cuenca del Amazonas representa el 14 % del carbono atmosférico absorbido por las plantas cada año. Sin embargo, la región ha perdido 370 millones de toneladas de carbono durante la década 2010-2020, y la parte sureste es ahora una fuente neta de carbono. La absorción de carbono por parte de los bosques en crecimiento, se ha visto sobrepasada por la deforestación, la degradación y el uso agrícola.",
+      "shortText": "## Cuenca del Amazonas\n\nLa cuenca del Amazonas representa el 14 % del carbono atmosférico absorbido por las plantas cada año. Sin embargo, la región ha perdido 370 millones de toneladas de carbono durante la década 2010-2020, y la parte sureste es ahora una fuente neta de carbono. La absorción de carbono por parte de los bosques en crecimiento, se ha visto sobrepasada  por la deforestación, la degradación y el uso agrícola.",
       "images": [
         "assets/story45-image05.jpg",
         "assets/story45-image06.jpg",
@@ -42,8 +42,8 @@
       ],
       "imageCaptions": [
         "Bosque talado para la agricultura en la cuenca del Amazonas, visto desde la Estación Espacial Internacional por el astronauta de la ESA Thomas Pasquet (ESA/NASA – T Pasquet)",
-        "# Cambio en la biomasa 2010-2020 para la cuenca del Amazonas\r\n\r\n(ESA-CCI)",
-        "# Cambio acumulativo de la biomasa en la cuenca del Amazonas\r\n\r\n(ESA-CCI)"
+        "# Cambio en la biomasa 2010-2020 para la cuenca del Amazonas\n\n(ESA-CCI)",
+        "# Cambio acumulativo de la biomasa en la cuenca del Amazonas\n\n(ESA-CCI)"
       ],
       "imageFits": [
         "cover",
@@ -55,8 +55,8 @@
     },
     {
       "type": "image",
-      "text": "##  Bosques del norte\r\n\r\nEl 41 % de la superficie forestal mundial se encuentra en el hemisferio norte. Los bosques del norte han acumulado biomasa en las últimas décadas. Sin embargo, desde 2016, el aumento de las sequías y los incendios forestales ha debilitado su capacidad para absorber carbono.",
-      "shortText": "##  Bosques del norte\r\n\r\nEl 41 % de la superficie forestal mundial se encuentra en el hemisferio norte. Los bosques del norte han acumulado biomasa en las últimas décadas. Sin embargo, desde 2016, el aumento de las sequías y los incendios forestales ha debilitado su capacidad para absorber carbono.",
+      "text": "##  Bosques del norte\n\nEl 41 % de la superficie forestal mundial se encuentra en el hemisferio norte. Los bosques del norte han acumulado biomasa en las últimas décadas. Sin embargo, desde 2016, el aumento de las sequías y los incendios forestales han debilitado su capacidad para absorber carbono.",
+      "shortText": "##  Bosques del norte\n\nEl 41 % de la superficie forestal mundial se encuentra en el hemisferio norte. Los bosques del norte han acumulado biomasa en las últimas décadas. Sin embargo, desde 2016, el aumento de las sequías y los incendios forestales han debilitado su capacidad para absorber carbono.",
       "images": [
         "assets/story45-image08.jpg",
         "assets/story45-image09.jpg",
@@ -64,8 +64,8 @@
       ],
       "imageCaptions": [
         "El humo de numerosos incendios forestales llena los valles fluviales de Siberia en esta imagen del Copernicus Sentinel-2 de septiembre de 2016. (Contiene datos modificados del Copernicus Sentinel (2016), procesados por la ESA).",
-        "# Cambio neto en la biomasa L-VOD 2016-2022\r\n\r\nLos cambios en la biomasa del hemisferio norte se muestran con la pérdida de biomasa en rojo y el aumento de biomasa en verde (ESA-CCI).",
-        "# Cambio acumulativo de la biomasa en las regiones templadas \r\n\r\nLa biomasa de los bosques del norte ha ido disminuyendo desde 2016 (ESA-CCI)."
+        "# Cambio neto en la biomasa L-VOD 2016-2022\n\nLos cambios en la biomasa del hemisferio norte se muestran con la pérdida de biomasa en rojo y el aumento de biomasa en verde (ESA-CCI).",
+        "# Cambio acumulativo de la biomasa en las regiones templadas \n\nLa biomasa de los bosques del norte ha ido disminuyendo desde 2016 (ESA-CCI)."
       ],
       "imageFits": [
         "contain",
@@ -77,15 +77,15 @@
     },
     {
       "type": "image",
-      "text": "##  Compensación de emisiones en Europa\r\n\r\nEn toda Europa, los bosques absorbieron alrededor del 10 % de las emisiones de gases de efecto invernadero de la UE entre 1990 y 2022. Sin embargo, en los últimos diez años, esta compensación de emisiones ha disminuido casi un 30 % debido a la tala y el envejecimiento de los bosques, las sequías, olas de calor e incendios forestales más frecuentes, además de plagas de insectos y enfermedades de las plantas. Esta disminución supone un riesgo para la consecución de los futuros objetivos climáticos europeos.\r\n\r\nUn mejor conocimiento de la dinámica del carbono terrestre nos ayudará a evaluar cuánto presupuesto de carbono queda dentro de los límites de temperatura del Acuerdo de París, o si tendremos que hacer frente a las consecuencias más graves de un mayor calentamiento.",
-      "shortText": "##  Compensación de emisiones en Europa\r\n\r\nEn toda Europa, los bosques absorbieron alrededor del 10 % de las emisiones de gases de efecto invernadero de la UE entre 1990 y 2022. Sin embargo, en los últimos diez años, esta compensación de emisiones ha disminuido casi un 30 % debido a la tala y el envejecimiento de los bosques, las sequías, olas de calor e incendios forestales más frecuentes, además de plagas de insectos y enfermedades de las plantas. Esta disminución supone un riesgo para la consecución de los futuros objetivos climáticos europeos.\r\n\r\nUn mejor conocimiento de la dinámica del carbono terrestre nos ayudará a evaluar cuánto presupuesto de carbono queda dentro de los límites de temperatura del Acuerdo de París, o si tendremos que hacer frente a las consecuencias más graves de un mayor calentamiento.",
+      "text": "##  Compensación de emisiones en Europa\n\nEn toda Europa, los bosques absorbieron alrededor del 10 % de las emisiones de gases con efecto invernadero de la UE entre 1990 y 2022. Sin embargo, en los últimos diez años, esta compensación de emisiones ha disminuido casi un 30 % debido a la tala y el envejecimiento de los bosques, las sequías , olas de calor e incendios forestales más frecuentes, además de plagas de insectos y enfermedades de las plantas. Esta disminución supone un riesgo para la consecución de los futuros objetivos climáticos europeos.\n\nUn mejor conocimiento de la dinámica del carbono terrestre, nos ayudará a evaluar cuánto presupuesto de carbono queda dentro de los límites de temperatura del Acuerdo de París, o si tendremos que hacer frente a las consecuencias más graves de un mayor calentamiento.",
+      "shortText": "##  Compensación de emisiones en Europa\n\nEn toda Europa, los bosques absorbieron alrededor del 10 % de las emisiones de gases con efecto invernadero de la UE entre 1990 y 2022. Sin embargo, en los últimos diez años, esta compensación de emisiones ha disminuido casi un 30 % debido a la tala y el envejecimiento de los bosques, las sequías, olas de calor e incendios forestales más frecuentes, además de plagas de insectos y enfermedades de las plantas. Esta disminución supone un riesgo para la consecución de los futuros objetivos climáticos europeos.\n\nUn mejor conocimiento de la dinámica del carbono terrestre, nos ayudará a evaluar cuánto presupuesto de carbono queda dentro de los límites de temperatura del Acuerdo de París, o si tendremos que hacer frente a las consecuencias más graves de un mayor calentamiento.",
       "images": [
         "assets/story45-image11.jpg",
         "assets/story45-image12.png"
       ],
       "imageCaptions": [
-        "# Flujo de carbono en la superficie terrestre, junio de 2018\r\n\r\nLa mayor parte de Europa es un sumidero de carbono en junio de 2018, ya que la vegetación en crecimiento absorbe el carbono de la atmósfera. En el horizonte de Siberia, las emisiones de carbono se disparan debido a los incendios forestales que arden tras un invierno cálido y seco.  (Global Carbon Project/Planetary Visions)",
-        "# Compensación de emisiones para Europa 2005-2030\r\n\r\nLa compensación por tierra y bosques superó el objetivo de compensación hasta 2016, pero desde entonces ha caído por debajo del objetivo. No se espera que la compensación futura prevista se recupere lo suficiente como para alcanzar el objetivo. (ESA-CCI)"
+        "# Flujo de carbono en la superficie terrestre, junio de 2018\n\nLa mayor parte de Europa es un sumidero de carbono en junio de 2018, ya que la vegetación en crecimiento absolve el carbono de la atmósfera. En el horizonte de Siberia, las emisiones de carbono se disparan debido a los incendios forestales que Arden tras un invierno cálido y seco.  (Global Carbon Project/Planetary Visions)",
+        "# Compensación de emisiones para Europa 2005-2030\n\nLa compensación por tierra y bosques superó el objetivo de compensación hasta 2016, pero desde entonces ha caído por debajo del objetivo. No se espera que la compensación futura prevista se recupere lo suficiente como para alcanzar el objetivo. (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
