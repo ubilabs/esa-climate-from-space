@@ -266,7 +266,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   return (
     <>
-      <img src={sourceRef.current} alt="" className={styles.splashImage} />
+      <div className={styles.splashImageWrapper}>
+        <img src={sourceRef.current} alt="" className={styles.splashImage} />
+      </div>
       <ul
         className={cx(
           styles.contentNav,
