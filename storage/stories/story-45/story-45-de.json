@@ -3,25 +3,25 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Kohlenstoffdynamik an Land\r\n\r\nWälder absorbieren Kohlenstoff aus der Atmosphäre und tragen so dazu bei, die vom Menschen verursachten Kohlenstoffemissionen auszugleichen. Messungen aus dem Weltraum zeigen jedoch, dass die Fähigkeit von Wäldern und anderer lebender Biomasse, Kohlenstoff zu absorbieren, weltweit abnimmt.",
-      "shortText": "# Kohlenstoffdynamik an Land\r\n\r\nWälder absorbieren Kohlenstoff aus der Atmosphäre und tragen so dazu bei, die vom Menschen verursachten Kohlenstoffemissionen auszugleichen. Messungen aus dem Weltraum zeigen jedoch, dass die Fähigkeit von Wäldern und anderer lebender Biomasse, Kohlenstoff zu absorbieren, weltweit abnimmt.",
+      "text": "# Kohlenstoffdynamik an Land\n\nWälder absorbieren Kohlenstoff aus der Atmosphäre und helfen so, die menschenverursachten Kohlenstoffemissionen zu kompensieren. Satellitengestützte Messungen zeigen jedoch, dass die Fähigkeit der Wälder und anderer Biomasse, Kohlenstoff zu absorbieren, weltweit abnimmt.",
+      "shortText": "# Kohlenstoffdynamik an Land\n\nWälder absorbieren Kohlenstoff aus der Atmosphäre und helfen so, die menschenverursachten Kohlenstoffemissionen zu kompensieren. Satellitengestützte Messungen zeigen jedoch, dass die Fähigkeit der Wälder und anderer Biomasse, Kohlenstoff zu absorbieren, weltweit abnimmt.",
       "images": [
         "assets/story45-image01.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "##  Messung der Biomasse aus dem Weltraum\r\n\r\nKohlenstoff wird kontinuierlich zwischen der Atmosphäre und der Landoberfläche ausgetauscht. Kohlenstoffsenken entfernen Kohlenstoff aus der Atmosphäre und tragen so dazu bei, natürliche und vom Menschen verursachte Kohlenstoffemissionen auszugleichen. Ob ein Gebiet eine Kohlenstoffquelle oder eine Kohlenstoffsenke ist, kann sich im Laufe des Jahres und als Reaktion auf Umweltveränderungen wie Dürren, Waldbrände und Landnutzung ändern.\r\n\r\nDas Projekt „Regional Carbon Cycle Analysis and Processes“ (RECCAP2) der ESA nutzt Satelliten zur Messung von Klimavariablen wie Bodenfeuchte und Biomasse. Das L-Band-Mikrowellenradiometer auf dem SMOS-Satelliten reagiert empfindlich auf jährliche Veränderungen der Vegetation, einschließlich der Wälder. Diese Beobachtungen werden mit Bodendaten und Computermodellen kombiniert, um die globalen Kohlenstoffvorräte an Land zu kartieren.",
-      "shortText": "##  Messung der Biomasse aus dem Weltraum\r\n\r\nKohlenstoff wird kontinuierlich zwischen der Atmosphäre und der Landoberfläche ausgetauscht. Kohlenstoffsenken entfernen Kohlenstoff aus der Atmosphäre und tragen so dazu bei, natürliche und vom Menschen verursachte Kohlenstoffemissionen auszugleichen. Ob ein Gebiet eine Kohlenstoffquelle oder eine Kohlenstoffsenke ist, kann sich im Laufe des Jahres und als Reaktion auf Umweltveränderungen wie Dürren, Waldbrände und Landnutzung ändern.\r\n\r\nDas Projekt „Regional Carbon Cycle Analysis and Processes“ (RECCAP2) der ESA nutzt Satelliten zur Messung von Klimavariablen wie Bodenfeuchte und Biomasse. Das L-Band-Mikrowellenradiometer auf dem SMOS-Satelliten reagiert empfindlich auf jährliche Veränderungen der Vegetation, einschließlich der Wälder. Diese Beobachtungen werden mit Bodendaten und Computermodellen kombiniert, um die globalen Kohlenstoffvorräte an Land zu kartieren.",
+      "text": "## Erfassung der Biomasse aus dem All\n\nKohlenstoff wird kontinuierlich zwischen Atmosphäre und Landoberfläche ausgetauscht. Kohlenstoffsenken entfernen Kohlenstoff aus der Atmosphäre und helfen dabei die natürlichen und menschengemachten Emissionen zu kompensieren. Ob ein Gebiet eine Kohlenstoffquelle oder Kohlenstoffsenke ist, kann sich im Laufe des Jahres aufgrund von Umweltveränderungen wie Dürren, Waldbränden und Landnutzung ändern. \n\nDas „Regional Carbon Cycle Analysis and Processes Project\" (RECAPP2) der ESA nutzt Satelliten, um Klimavariablen wie Bodenfeuchte und Biomasse zu messen. Das L-Band Mikrowellenradiometer auf dem SMOS-Satelliten weist eine hohe Sensitivität gegenüber jährlicher Veränderungen der Vegetation auf, einschließlich der Wälder. Diese Beobachtungen werden mit Bodendaten und Computermodellen kombiniert, um die globalen Kohlenstoffvorräte an Land zu kartieren.",
+      "shortText": "## Erfassung der Biomasse aus dem All\n\nKohlenstoff wird kontinuierlich zwischen Atmosphäre und Landoberfläche ausgetauscht. Kohlenstoffsenken entfernen Kohlenstoff aus der Atmosphäre und helfen dabei die natürlichen und menschengemachten Emissionen zu kompensieren. Ob ein Gebiet eine Kohlenstoffquelle oder Kohlenstoffsenke ist, kann sich im Laufe des Jahres aufgrund von Umweltveränderungen wie Dürren, Waldbränden und Landnutzung ändern. \n\nDas „Regional Carbon Cycle Analysis and Processes Project\" (RECAPP2) der ESA nutzt Satelliten, um Klimavariablen wie Bodenfeuchte und Biomasse zu messen. Das L-Band Mikrowellenradiometer auf dem SMOS-Satelliten weist eine hohe Sensitivität gegenüber jährlicher Veränderungen der Vegetation auf, einschließlich der Wälder. Diese Beobachtungen werden mit Bodendaten und Computermodellen kombiniert, um die globalen Kohlenstoffvorräte an Land zu kartieren.",
       "images": [
         "assets/story45-image02.jpg",
         "assets/story45-image03.jpg",
         "assets/story45-image04.jpg"
       ],
       "imageCaptions": [
-        "# Kohlenstofffluss an der Landoberfläche Juli 2022\r\n\r\nKohlenstoffsenken sind blau dargestellt, Kohlenstoffquellen gelb und rot. Spitzen entsprechen extremen Ereignissen mit hoher Kohlenstofffreisetzung, wie beispielsweise Waldbränden. (Global Carbon Project/Planetary Visions)",
+        "# Kohlenstofffluss an der Landoberfläche Juli 2022\n\nKohlenstoffsenken sind blau dargestellt, Kohlenstoffquellen gelb und rot. Spitzen entsprechen extremen Ereignissen mit hoher Kohlenstofffreisetzung, beispielsweise Waldbränden. (Global Carbon Project/Planetary Visions)",
         "Der Satellit „Soil Moisture and Ocean Salinity” (SMOS) der ESA nutzt Mikrowellen, um Veränderungen in der Vegetation zu erfassen. (ESA/Planetary Visions)",
-        "# Globale Biomasse 2022\r\n\r\nLebender oberirdischer Kohlenstoff basierend auf SMOS L-Band Vegetation Optical Depth (L-VOD)  (ESA-CCI)"
+        "# Globale Biomasse 2022\n\nOberirdischer Kohlenstoff in lebender Vegetation basierend auf SMOS L-Band Vegetation Optical Depth (L-VOD) (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
@@ -33,8 +33,8 @@
     },
     {
       "type": "image",
-      "text": "## Amazonasbecken\r\n\r\nDas Amazonasbecken ist für 14 % des Kohlenstoffs verantwortlich, den Pflanzen jedes Jahr aus der Atmosphäre aufnehmen. Allerdings hat die Region zwischen 2010 und 2020 370 Millionen Tonnen Kohlenstoff verloren, und der südöstliche Teil ist nun eine Netto-Kohlenstoffquelle. Die Kohlenstoffaufnahme durch wachsende Wälder wurde durch Abholzung, Degradation und landwirtschaftliche Nutzung überkompensiert.",
-      "shortText": "## Amazonasbecken\r\n\r\nDas Amazonasbecken ist für 14 % des Kohlenstoffs verantwortlich, den Pflanzen jedes Jahr aus der Atmosphäre aufnehmen. Allerdings hat die Region zwischen 2010 und 2020 370 Millionen Tonnen Kohlenstoff verloren, und der südöstliche Teil ist nun eine Netto-Kohlenstoffquelle. Die Kohlenstoffaufnahme durch wachsende Wälder wurde durch Abholzung, Degradation und landwirtschaftliche Nutzung überkompensiert.",
+      "text": "## Amazonasbecken\n\nDas Amazonasbecken nimmt jährlich 14 Prozent des atmosphärischen Kohlenstoffs über Pflanzen auf. Allerdings hat die Region zwischen 2010 und 2020 370 Millionen Tonnen Kohlenstoff verloren und der südöstliche Teil ist nun eine Netto-Kohlenstoffquelle. Trotz der Kohlenstoffaufnahme durch wachsende Wälder überwiegen die Emissionen aus Abholzung, Degradation und landwirtschaftlicher Nutzung.",
+      "shortText": "## Amazonasbecken\n\nDas Amazonasbecken nimmt jährlich 14 Prozent des atmosphärischen Kohlenstoffs über Pflanzen auf. Allerdings hat die Region zwischen 2010 und 2020 370 Millionen Tonnen Kohlenstoff verloren und der südöstliche Teil ist nun eine Netto-Kohlenstoffquelle. Trotz der Kohlenstoffaufnahme durch wachsende Wälder überwiegen die Emissionen aus Abholzung, Degradation und landwirtschaftlicher Nutzung.",
       "images": [
         "assets/story45-image05.jpg",
         "assets/story45-image06.jpg",
@@ -42,8 +42,8 @@
       ],
       "imageCaptions": [
         "Von der Internationalen Raumstation aus gesehen: Abgeholzte Waldflächen für die Landwirtschaft im Amazonasbecken, aufgenommen vom ESA-Astronauten Thomas Pasquet (ESA/NASA – T Pasquet)",
-        "# Biomasseänderung 2010–2020 für das Amazonasbecken\r\n\r\n(ESA-CCI)",
-        "# Kumulative Biomasseänderung für das Amazonasbecken\r\n\r\n(ESA-CCI)"
+        "# Biomasseänderung 2010–2020 im Amazonasbecken\n\n(ESA-CCI)",
+        "# Kumulative Biomasseänderung im Amazonasbecken\n\n(ESA-CCI)"
       ],
       "imageFits": [
         "cover",
@@ -55,17 +55,17 @@
     },
     {
       "type": "image",
-      "text": "##  Nördliche Wälder\r\n\r\n41 % der weltweiten Waldfläche befinden sich auf der Nordhalbkugel. In den letzten Jahrzehnten haben die nördlichen Wälder Biomasse angesammelt. Seit 2016 haben jedoch zunehmende Dürren und Waldbrände ihre Fähigkeit zur Kohlenstoffaufnahme geschwächt.",
-      "shortText": "##  Nördliche Wälder\r\n\r\n41 % der weltweiten Waldfläche befinden sich auf der Nordhalbkugel. In den letzten Jahrzehnten haben die nördlichen Wälder Biomasse angesammelt. Seit 2016 haben jedoch zunehmende Dürren und Waldbrände ihre Fähigkeit zur Kohlenstoffaufnahme geschwächt.",
+      "text": "## Nördliche Wälder\n\n41 Prozent der weltweiten Waldfläche befindet sich auf der Nordhalbkugel. In den letzten Jahrzehnten hat die Biomasse der nördlichen Wälder zugenommen. Seit 2016 jedoch haben zunehmende Dürren und Waldbrände deren Fähigkeit zur Kohlenstoffaufnahme geschwächt.",
+      "shortText": "## Nördliche Wälder\n\n41 Prozent der weltweiten Waldfläche befindet sich auf der Nordhalbkugel. In den letzten Jahrzehnten hat die Biomasse der nördlichen Wälder zugenommen. Seit 2016 jedoch haben zunehmende Dürren und Waldbrände deren Fähigkeit zur Kohlenstoffaufnahme geschwächt.",
       "images": [
         "assets/story45-image08.jpg",
         "assets/story45-image09.jpg",
         "assets/story45-image10.png"
       ],
       "imageCaptions": [
-        "Auf diesem Copernicus Sentinel-2-Bild vom September 2016 füllt Rauch von zahlreichen Waldbränden die Flusstäler Sibiriens. (Enthält modifizierte Copernicus Sentinel-Daten (2016), verarbeitet von der ESA)",
-        "# Netto-L-VOD-Biomasseänderung 2016–2022\r\n\r\nVeränderungen der Biomasse in der nördlichen Hemisphäre werden dargestellt, wobei Biomasseverluste rot und Biomassegewinne grün dargestellt sind (ESA-CCI).",
-        "# Kumulative Veränderung der Biomasse in gemäßigten Regionen \r\n\r\nDie Biomasse der nördlichen Wälder ist seit 2016 rückläufig (ESA-CCI)"
+        "Auf diesem Copernicus Sentinel-2-Bild vom September 2016 füllt Rauch zahlreicher Waldbrände die Flusstäler Sibiriens. (Enthält modifizierte Copernicus Sentinel-Daten (2016), verarbeitet von der ESA)",
+        "# Netto-L-VOD-Biomasseänderung 2016–2022\n\nZu sehen ist die Biomasseänderung in der nördlichen Hemisphäre.  Biomasseverluste sind rot und Biomassegewinne grün dargestellt (ESA-CCI).",
+        "# Kumulative Veränderung der Biomasse in gemäßigten Regionen \n\nDie Biomasse der nördlichen Wälder ist seit 2016 rückläufig (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
@@ -77,15 +77,15 @@
     },
     {
       "type": "image",
-      "text": "##  Europäischer Emissionsausgleich\r\n\r\nZwischen 1990 und 2022 haben die Wälder in Europa etwa 10 % der Treibhausgasemissionen der EU absorbiert. In den letzten zehn Jahren ist dieser Emissionsausgleich jedoch um fast 30 % zurückgegangen, was auf Holzeinschlag und Alterung der Wälder, häufigere Dürren, Hitzewellen und Waldbrände sowie Insektenbefall und Pflanzenkrankheiten zurückzuführen ist. Dieser Rückgang gefährdet die Erreichung der künftigen europäischen Klimaziele.\r\n\r\nVerbesserte Kenntnisse über die Kohlenstoffdynamik des Bodens werden uns helfen, abzuschätzen, wie viel Kohlenstoffbudget innerhalb der Temperaturgrenzen des Pariser Abkommens noch übrig ist oder ob wir mit den schwerwiegenderen Folgen einer weiteren Erwärmung rechnen müssen.",
-      "shortText": "##  Europäischer Emissionsausgleich\r\n\r\nZwischen 1990 und 2022 haben die Wälder in Europa etwa 10 % der Treibhausgasemissionen der EU absorbiert. In den letzten zehn Jahren ist dieser Emissionsausgleich jedoch um fast 30 % zurückgegangen, was auf Holzeinschlag und Alterung der Wälder, häufigere Dürren, Hitzewellen und Waldbrände sowie Insektenbefall und Pflanzenkrankheiten zurückzuführen ist. Dieser Rückgang gefährdet die Erreichung der künftigen europäischen Klimaziele.\r\n\r\nVerbesserte Kenntnisse über die Kohlenstoffdynamik des Bodens werden uns helfen, abzuschätzen, wie viel Kohlenstoffbudget innerhalb der Temperaturgrenzen des Pariser Abkommens noch übrig ist oder ob wir mit den schwerwiegenderen Folgen einer weiteren Erwärmung rechnen müssen.",
+      "text": "## Europäischer Emissionsausgleich\n\nZwischen 1990 und 2022 haben die Wälder in Europa etwa zehn Prozent der Treibhausgasemissionen der EU absorbiert. In den letzten zehn Jahren ist dieser Emissionsausgleich jedoch um fast 30 Prozent zurückgegangen, was auf Holzschlag, die Alterung der Wälder, häufigere Dürren, Hitzewellen und Waldbrände sowie Insektenbefall und Pflanzenkrankheiten zurückzuführen ist. Dieser Rückgang gefährdet das Erreichen der künftigen europäischen Klimaziele. \n\nEin verbessertes Verständnis der Kohlenstoffdynamik von Landflächen wird uns dabei helfen, abschätzen zu können, wie viel Kohlenstoffbudget innerhalb der Temperaturgrenzen des Pariser Abkommens noch verfügbar ist und ob wir mit den schwerwiegenderen Folgen einer weiteren Erwärmung umgehen müssen.",
+      "shortText": "## Europäischer Emissionsausgleich\n\nZwischen 1990 und 2022 haben die Wälder in Europa etwa zehn Prozent der Treibhausgasemissionen der EU absorbiert. In den letzten zehn Jahren ist dieser Emissionsausgleich jedoch um fast 30 Prozent zurückgegangen, was auf Holzschlag, die Alterung der Wälder, häufigere Dürren, Hitzewellen und Waldbrände sowie Insektenbefall und Pflanzenkrankheiten zurückzuführen ist. Dieser Rückgang gefährdet das Erreichen der künftigen europäischen Klimaziele. \n\nEin verbessertes Verständnis der Kohlenstoffdynamik von Landflächen wird uns dabei helfen, abschätzen zu können, wie viel Kohlenstoffbudget innerhalb der Temperaturgrenzen des Pariser Abkommens noch verfügbar ist und ob wir mit den schwerwiegenderen Folgen einer weiteren Erwärmung umgehen müssen.",
       "images": [
         "assets/story45-image11.jpg",
         "assets/story45-image12.png"
       ],
       "imageCaptions": [
-        "# Kohlenstofffluss an der Landoberfläche Juni 2018\r\n\r\nDer größte Teil Europas ist im Juni 2018 eine Kohlenstoffsenke, da die wachsende Vegetation Kohlenstoff aus der Atmosphäre aufnimmt. Am Horizont in Sibirien steigen die Kohlenstoffemissionen aufgrund von Waldbränden nach einem warmen, trockenen Winter sprunghaft an.  (Global Carbon Project/Planetary Visions)",
-        "# Emissionsausgleich für Europa 2005–2030\r\n\r\nDer Ausgleich durch Land und Wald übertraf bis 2016 das Ausgleichsziel, ist seitdem jedoch unter das Ziel gefallen. Es ist nicht zu erwarten, dass sich der prognostizierte künftige Ausgleich so weit erholen wird, dass das Ziel erreicht wird. (ESA-CCI)"
+        "# Kohlenstofffluss an der Landoberfläche Juni 2018\n\nDer größte Teil Europas ist im Juni 2018 eine Kohlenstoffsenke, da die wachsende Vegetation Kohlenstoff aus der Atmosphäre bindet. Am Horizont in Sibirien steigen die Kohlenstoffemissionen aufgrund von Waldbränden nach einem warmen, trockenen Winter sprunghaft an.  (Global Carbon Project/Planetary Visions)",
+        "# Emissionsausgleich für Europa 2005–2030\n\nDer Ausgleich durch Land und Wald übertraf bis 2016 das Ausgleichsziel, ist seitdem jedoch unter den Zielwert gefallen. Es ist nicht zu erwarten, dass sich der prognostizierte künftige Ausgleich so weit erholen wird, dass das Ziel erreicht wird. (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
