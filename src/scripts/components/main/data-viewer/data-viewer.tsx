@@ -7,6 +7,8 @@ import cx from "classnames";
 
 import { useScreenInfo } from "../../../hooks/use-screen-info";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
+import { useRegisterUserInteraction } from "../../../hooks/use-register-user-interaction";
+import { useContentParams } from "../../../hooks/use-content-params";
 
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
@@ -22,13 +24,11 @@ import ContentNavigation from "../content-navigation/content-navigation";
 import CategoryNavigation from "../category-navigation/category-navigation";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
 import { GetGlobalDataWidget } from "../data-widget/global-data-widget";
+import InitialSplash from "../initial-splash/initial-splash";
 
 import { BackButton } from "../back-button/back-button";
 
 import styles from "./data-viewer.module.css";
-import { useRegisterUserInteraction } from "../../../hooks/use-register-user-interaction";
-import InitialSplash from "../initial-splash/initial-splash";
-import { useContentParams } from "../../../hooks/use-content-params";
 
 export type LayerLoadingStateChangeHandle = (
   layerId: string,
@@ -49,7 +49,6 @@ const DataViewer: FunctionComponent = () => {
   const appRoute = useSelector(appRouteSelector);
 
   const { category } = useContentParams();
-  console.log("🚀 ~ data-viewer.tsx:56 → category:", category);
 
   const { data: layers } = useGetLayerListQuery(language);
 
@@ -64,10 +63,6 @@ const DataViewer: FunctionComponent = () => {
     ],
     [stories, layers, category],
   );
-
-  // const [currentCategory, setCurrentCategory] = useState<string | null>(
-  //   category || null,
-  // );
 
   const { isMobile } = useScreenInfo();
 
