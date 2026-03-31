@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   height: 100vh;
   font-size: 1.25rem;
 }
@@ -16,8 +17,7 @@
   gap: 2rem;
 
   @media screen and (--desktop-viewport) {
-    padding: 0;
-    grid-column: 2 / -1;
+    padding-right: 0;
   }
 
   @media screen and (--mobile-viewport) {
@@ -69,6 +69,7 @@
 
       > span {
         font-size: 0.75rem;
+        text-shadow: none;
       }
 
       > svg {

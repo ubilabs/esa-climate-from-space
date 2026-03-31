@@ -17,7 +17,6 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 import Button from "../../../../../../main/button/button";
 import { LinkIcon } from "../../../../../../main/icons/link-icon";
 import { ImageCarouselModule } from "../../../../../../../types/story";
-import { useAppRouteFlags } from "../../../../../../../hooks/use-app-route-flags";
 import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
 import CarouselNavigation from "./carousel-navigation/carousel-navigation";
 import ImageSlide from "./image-slide/image-slide";
@@ -35,7 +34,6 @@ const ImageCarousel: FunctionComponent = () => {
   const { slides, lengthFactor } = module as ImageCarouselModule;
   const { isMobile, screenWidth, isTouchDevice } = useScreenInfo();
   const controls = useAnimationControls();
-  const { isStoryEEI } = useAppRouteFlags();
 
   const slidesContainerRef = useRef<HTMLDivElement>(null);
   const firstSlideRef = useRef<HTMLDivElement | null>(null);
@@ -51,7 +49,6 @@ const ImageCarousel: FunctionComponent = () => {
 
   // Refs so event handlers always read the latest values without stale closures
   const stepRef = useRef(step);
-  const containerWidthRef = useRef(0);
   const currentSlideIndexRef = useRef(currentSlideIndex);
 
   useLayoutEffect(() => {
@@ -63,7 +60,7 @@ const ImageCarousel: FunctionComponent = () => {
     // Show navigation if the slides are wider than current viewport
     setIsNavigationVisible(
       (slidesContainerRef.current?.offsetWidth || 0) <
-        (slides?.length || 0) * slideWidth,
+        (slides?.length || 0) * slideWidth + PADDING * 2,
     );
   });
 
@@ -88,38 +85,11 @@ const ImageCarousel: FunctionComponent = () => {
     }
   }, [screenWidth]);
 
-  const reSnap = useEffectEvent(() => {
-    if (slidesContainerRef.current) {
-      containerWidthRef.current = slidesContainerRef.current.offsetWidth;
-    }
-    // Re-snap to current index with updated dimensions
-    const currentStep = stepRef.current;
-    const centeringOffset =
-      !isMobile && containerWidthRef.current > 0
-        ? (containerWidthRef.current - currentStep + PADDING) / 2
-        : 0;
-    controls.start({
-      x: centeringOffset - currentSlideIndexRef.current * currentStep,
-      transition: { type: "spring", stiffness: 320, damping: 32 },
-    });
-  });
-
-  useEffect(() => {
-    if (slideWidth > 0) {
-      reSnap();
-    }
-  }, [slideWidth]);
-
   const updateXPostion = useEffectEvent(() => {
     // On desktop (not mobile), center the active slide with the next one peeking
-    const centeringOffset =
-      !isMobile && containerWidthRef.current > 0
-        ? (containerWidthRef.current - stepRef.current + PADDING) / 2
-        : 0;
+    const currentIndex = currentSlideIndexRef.current;
     controls.set({
-      x: !isFullscreen
-        ? centeringOffset - currentSlideIndexRef.current * stepRef.current
-        : 0,
+      x: !isFullscreen ? -currentIndex * stepRef.current : 0,
     });
   });
 
@@ -136,18 +106,13 @@ const ImageCarousel: FunctionComponent = () => {
   }
 
   const snapToIndex = (i: number) => {
-    const currentStep = stepRef.current;
-    const clamped = Math.max(0, Math.min(slides.length - 1, i));
-    setCurrentSlideIndex(clamped);
+    const clampedIndex = Math.max(0, Math.min(slides.length - 1, i));
+    setCurrentSlideIndex(clampedIndex);
 
     // On desktop, center the active slide; on mobile align flush left
-    const centeringOffset =
-      !isMobile && containerWidthRef.current > 0
-        ? (containerWidthRef.current - currentStep + PADDING) / 2
-        : 0;
 
     controls.start({
-      x: centeringOffset - clamped * currentStep,
+      x: -clampedIndex * stepRef.current,
       transition: {
         type: "spring",
         stiffness: 320,
@@ -159,7 +124,7 @@ const ImageCarousel: FunctionComponent = () => {
   const content = (
     <SlideContainer
       ref={getRefCallback(0, 0)}
-      className={cx(styles.container, !isMobile && !isStoryEEI && "story-grid")}
+      className={cx(styles.container, !isMobile)}
     >
       <div className={cx(styles.wrapper)}>
         {"headerText" in module && module.headerText && (
