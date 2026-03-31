@@ -1,12 +1,9 @@
-import { FunctionComponent, useState, useMemo } from "react";
+import { FunctionComponent, useMemo } from "react";
 
-import { FormattedMessage, useIntl } from "react-intl";
-import { useNavigate, useParams } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 
 import cx from "classnames";
-
-import { categoryTags } from "../../../config/main";
 
 import { useScreenInfo } from "../../../hooks/use-screen-info";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
@@ -22,7 +19,6 @@ import {
 } from "../../../services/api";
 
 import ContentNavigation from "../content-navigation/content-navigation";
-import Button from "../button/button";
 import CategoryNavigation from "../category-navigation/category-navigation";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
 import { GetGlobalDataWidget } from "../data-widget/global-data-widget";
@@ -30,7 +26,6 @@ import { GetGlobalDataWidget } from "../data-widget/global-data-widget";
 import { BackButton } from "../back-button/back-button";
 
 import styles from "./data-viewer.module.css";
-import { MouseIcon } from "../icons/mouse-icon";
 import { useRegisterUserInteraction } from "../../../hooks/use-register-user-interaction";
 import InitialSplash from "../initial-splash/initial-splash";
 import { useContentParams } from "../../../hooks/use-content-params";
@@ -54,7 +49,7 @@ const DataViewer: FunctionComponent = () => {
   const appRoute = useSelector(appRouteSelector);
 
   const { category } = useContentParams();
-console.log("🚀 ~ data-viewer.tsx:56 → category:", category);
+  console.log("🚀 ~ data-viewer.tsx:56 → category:", category);
 
   const { data: layers } = useGetLayerListQuery(language);
 
@@ -73,7 +68,6 @@ console.log("🚀 ~ data-viewer.tsx:56 → category:", category);
   // const [currentCategory, setCurrentCategory] = useState<string | null>(
   //   category || null,
   // );
-
 
   const { isMobile } = useScreenInfo();
 
