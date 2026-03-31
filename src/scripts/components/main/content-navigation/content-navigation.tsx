@@ -1,7 +1,7 @@
 import {
   FunctionComponent,
   useEffect,
-  useEffectEvent,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -10,15 +10,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import cx from "classnames";
 
+import { useContentParams } from "../../../hooks/use-content-params";
+
 import config, { ALTITUDE_FACTOR_DESKTOP } from "../../../config/main";
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
+import { getStorySplashImage } from "../../../libs/get-story-splash-image";
 
 import { setSelectedContentAction } from "../../../reducers/content";
 import { setSelectedLayerIds } from "../../../reducers/layers";
 import { setFlyTo } from "../../../reducers/fly-to";
 
-import { languageSelector } from "../../../selectors/language";
 import { contentSelector } from "../../../selectors/content";
 
 import { LayerListItem } from "../../../types/layer-list";
@@ -31,9 +33,6 @@ import { DownloadButton } from "../download-button/download-button";
 import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 
 import styles from "./content-navigation.module.css";
-import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
-import { getStorySplashImage } from "../../../libs/get-story-splash-image";
-import { useContentParams } from "../../../hooks/use-content-params";
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -159,9 +158,25 @@ const ContentNavigation: FunctionComponent<Props> = ({
   // const lang = useSelector(languageSelector);
   const { contentId } = useSelector(contentSelector);
 
-  // We either use the centerIndex or the index of the selected content if there is one
-  const centerIndex = Math.floor((contents.length - 1) / 2);
-  const initialIndex = contents.findIndex(
+  // Split contents into stories and datasets, placing stories first so they
+  // appear above the active item on the arc and datasets below.
+  const stories = contents.filter((c) => isStoryListItem(c));
+  const datasets = contents.filter((c) => !isStoryListItem(c));
+
+  // We want to show the datasets and stories seperately, with the default (active) element being a dataset (if availabe)
+  const reordered = useMemo(
+    () => (datasets.length > 0 ? [...stories, ...datasets] : [...stories]),
+    [stories, datasets],
+  );
+
+  // When datasets exist the first dataset should be the active/center item.
+  // When there are only stories, fall back to the current behavior (center the middle story).
+  const centerIndex =
+    datasets.length > 0 && stories.length > 0
+      ? stories.length // first dataset, right after all stories
+      : Math.floor((reordered.length - 1) / 2); // center of whichever group exists
+
+  const initialIndex = reordered.findIndex(
     (content) => content.id === contentId,
   );
 
@@ -169,17 +184,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const [currentIndex, setCurrentIndex] = useState<number>(validInitialIndex);
 
-  // Ref to store and control the auto-rotation interval
-  const [lastUserInteractionTime, setLastUserInteractionTime] = useState(
-    Date.now,
-  );
-
-  useNavGestures(
-    contents.length,
-    setCurrentIndex,
-    setLastUserInteractionTime,
-    "y",
-  );
+  useNavGestures(reordered.length, setCurrentIndex, "y");
 
   // The spread between the elements in the circle
   const GAP_BETWEEN_ELEMENTS = 16;
@@ -200,12 +205,12 @@ const ContentNavigation: FunctionComponent<Props> = ({
   }, [currentIndex, y, opacity]);
 
   useEffect(() => {
-    const contentId = contents[currentIndex]?.id;
+    const contentId = reordered[currentIndex]?.id;
 
     dispatch(setSelectedContentAction({ contentId }));
 
     // We don't want to dispatch a layer action with story ids (except for EEI-story)
-    if (isStoryListItem(contents[currentIndex])) {
+    if (isStoryListItem(reordered[currentIndex])) {
       if (contentId !== AppRoute.StoryEEI) {
         sourceRef.current = getStorySplashImage(contentId);
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
@@ -225,16 +230,16 @@ const ContentNavigation: FunctionComponent<Props> = ({
     return () => {
       clearTimeout(timeout);
     };
-  }, [dispatch, currentIndex, contents]);
+  }, [dispatch, currentIndex, reordered]);
 
   // Trigger flyTo when the user remains on the previewed list item for 1 second
   // Checks if the position is given
   useEffect(() => {
-    const contentId = contents[currentIndex]?.id;
+    const contentId = reordered[currentIndex]?.id;
 
     const timeout = setTimeout(() => {
       if (contentId) {
-        const previewedContent = contents.find(({ id }) => id === contentId);
+        const previewedContent = reordered.find(({ id }) => id === contentId);
 
         const altitude =
           config.globe.view.altitude *
@@ -262,7 +267,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
     return () => {
       clearTimeout(timeout);
     };
-  }, [dispatch, currentIndex, contents, isMobile]);
+  }, [dispatch, currentIndex, reordered, isMobile]);
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
@@ -288,7 +293,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
         role="listbox"
         aria-label="Content navigation"
       >
-        {contents.map((item, index) => (
+        {reordered.map((item, index) => (
           <ContentNavItem
             key={item.id}
             item={item}
