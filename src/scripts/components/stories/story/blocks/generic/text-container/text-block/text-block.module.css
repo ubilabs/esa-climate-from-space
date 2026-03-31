@@ -24,7 +24,6 @@
     }
 
     @media screen and (--desktop-viewport) {
-      grid-column: 2 / -2;
       text-shadow: 0 2px 1px rgba(0, 0, 0, 0.48);
     }
 
