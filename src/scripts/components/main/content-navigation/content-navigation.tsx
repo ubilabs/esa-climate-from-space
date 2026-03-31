@@ -37,7 +37,6 @@ function isStoryListItem(
 interface Props {
   showContentList: boolean;
   contents: (StoryListItem | LayerListItem)[];
-  category: string | null;
   className?: string;
   isMobile: boolean;
 }

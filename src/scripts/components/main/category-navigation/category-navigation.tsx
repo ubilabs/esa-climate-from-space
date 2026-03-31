@@ -13,11 +13,7 @@ import { setSelectedContentAction } from "../../../reducers/content";
 
 import styles from "./category-navigation.module.css";
 
-interface Props {
-  setCategory: React.Dispatch<React.SetStateAction<string | null>>;
-}
-
-const CategoryNavigation: FunctionComponent<Props> = () => {
+const CategoryNavigation: FunctionComponent = () => {
   const { category } = useContentParams();
 
   const { isMobile } = useScreenInfo();
