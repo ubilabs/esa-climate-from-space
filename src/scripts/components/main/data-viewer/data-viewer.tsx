@@ -29,6 +29,7 @@ import InitialSplash from "../initial-splash/initial-splash";
 import { BackButton } from "../back-button/back-button";
 
 import styles from "./data-viewer.module.css";
+import { AnimatePresence } from "motion/react";
 
 export type LayerLoadingStateChangeHandle = (
   layerId: string,
@@ -84,15 +85,15 @@ const DataViewer: FunctionComponent = () => {
         The globe is the main component and is always visible
         The category navigation is visible when the content navigation is not visible
       */}
-      <div
-        id="globeWrapper"
-        className={cx(
-          styles.globeWrapper,
-          isContentNavRoute && styles.showContentList,
-        )}
-      >
-        <GetGlobalDataWidget className={cx(styles.globe)} />
-      </div>
+      {/* <div */}
+      {/*   id="globeWrapper" */}
+      {/*   className={cx( */}
+      {/*     styles.globeWrapper, */}
+      {/*     isContentNavRoute && styles.showContentList, */}
+      {/*   )} */}
+      {/* > */}
+      {/*   <GetGlobalDataWidget className={cx(styles.globe)} /> */}
+      {/* </div> */}
       {isDataRoute && <GlobeNavigation />}
       {isNavigationView && (
         <>
@@ -106,26 +107,29 @@ const DataViewer: FunctionComponent = () => {
               ></BackButton>
             )}
           </header>
-          {isBaseRoute && (
-            <>
-              {hasUserInteracted ? <CategoryNavigation /> : <InitialSplash />}
-            </>
-          )}
-          {isContentNavRoute && (
-            <>
-              <ContentNavigation
-                isMobile={isMobile}
-                className={styles.contentNav}
-                showContentList
-                contents={contents}
-              />
-              {!isMobile && (
-                <span className={styles.currentCategory}>
-                  <FormattedMessage id={`categories.${category}`} />
-                </span>
-              )}
-            </>
-          )}
+          <AnimatePresence>
+            {isBaseRoute &&
+              (hasUserInteracted ? (
+                <CategoryNavigation key="category-navigation" />
+              ) : (
+                <InitialSplash key="initial-splash"/>
+              ))}
+            {isContentNavRoute && (
+              <>
+                <ContentNavigation
+                  key="content-nav"
+                  isMobile={isMobile}
+                  className={styles.contentNav}
+                  contents={contents}
+                />
+                {!isMobile && (
+                  <span className={styles.currentCategory}>
+                    <FormattedMessage id={`categories.${category}`} />
+                  </span>
+                )}
+              </>
+            )}
+          </AnimatePresence>
         </>
       )}
     </div>

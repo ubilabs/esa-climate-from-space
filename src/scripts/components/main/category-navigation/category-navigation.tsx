@@ -54,7 +54,12 @@ const CategoryNavigation: FunctionComponent = () => {
   }, [currentIndex, y, scale, dispatch]);
 
   return (
-    <nav className={styles.categoryNav}>
+    <motion.nav
+      className={styles.categoryNav}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <ul className={styles.list}>
         {categoryTags.map((category, index) => {
           const output = input.map(
@@ -90,7 +95,7 @@ const CategoryNavigation: FunctionComponent = () => {
           );
         })}
       </ul>
-    </nav>
+    </motion.nav>
   );
 };
 

@@ -1,4 +1,5 @@
 import { FormattedMessage } from "react-intl";
+import { AnimatePresence, motion } from "motion/react";
 import { useScreenInfo } from "../../../hooks/use-screen-info";
 
 import { MouseIcon } from "../icons/mouse-icon";
@@ -20,15 +21,19 @@ export default function InitialSplash() {
   );
 
   return (
-    <>
-      <div className={styles.titleWrapper}>
+    <motion.div
+      className={styles.splashScreen}
+      exit={{ opacity: 0 }}
+      key="splash"
+    >
+      <motion.div className={styles.titleWrapper}>
         <h1 className={styles.welcomeTitle}>
           <FormattedMessage id="welcomeTitle" />
         </h1>
         <p className={styles.subTitle}>
           <FormattedMessage id="welcomeSubtitle" />
         </p>
-      </div>
+      </motion.div>
 
       <div className={styles.gestureIndicator}>
         <div className={styles.iconContainer}>{icons}</div>
@@ -38,6 +43,6 @@ export default function InitialSplash() {
           />
         </span>
       </div>
-    </>
+    </motion.div>
   );
 }

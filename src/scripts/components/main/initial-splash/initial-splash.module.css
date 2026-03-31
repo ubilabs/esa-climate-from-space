@@ -1,55 +1,63 @@
-.titleWrapper {
+.splashScreen {
   z-index: 1;
   grid-area: globe-nav-area;
-  color: var(--neutral-esa-white);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-inline: min(10vw, 40px);
-  text-align: center;
-
-  .welcomeTitle {
-    font-size: var(--main-headline-size);
-    line-height: var(--main-headline-line-height);
-    font-weight: var(--main-headline-font-weight);
-  }
-  .subTitle {
-    color: var(--main-colours-esa-teal-55);
-    font-size: 1.125rem;
-    line-height: 1.5;
-  }
 
   @media screen and (--desktop-viewport) {
     grid-area: splash-and-nav-area;
-    margin-left: 0;
-  }
-}
-.gestureIndicator {
-  color: var(--dark-blue);
-  grid-area: explore;
-  margin-bottom: 2rem;
-  place-self: start center;
-  position: relative;
-  margin-bottom: 1.5rem;
-
-  svg:first-child:has(~ svg) {
-    margin-right: 2.5rem;
   }
 
-  .info {
-    text-transform: uppercase;
-    display: inline-block;
-    margin-top: 1rem;
+  .titleWrapper {
+    color: var(--neutral-esa-white);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-inline: min(10vw, 40px);
+    text-align: center;
+
+    .welcomeTitle {
+      font-size: var(--main-headline-size);
+      line-height: var(--main-headline-line-height);
+      font-weight: var(--main-headline-font-weight);
+    }
+    .subTitle {
+      color: var(--main-colours-esa-teal-55);
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+
+    @media screen and (--desktop-viewport) {
+      grid-area: splash-and-nav-area;
+      margin-left: 0;
+    }
   }
 
-  @media screen and (--desktop-viewport) {
-    grid-area: 1 / 1 / -1 / -1;
-    place-self: end center;
-    margin-bottom: 2.5rem;
-  }
+  .gestureIndicator {
+    color: var(--dark-blue);
+    grid-area: explore;
+    margin-bottom: 2rem;
+    place-self: start center;
+    position: relative;
+    margin-bottom: 1.5rem;
 
-  .iconContainer {
-    margin: 0 auto;
-    width: fit-content;
+    svg:first-child:has(~ svg) {
+      margin-right: 2.5rem;
+    }
+
+    .info {
+      text-transform: uppercase;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    @media screen and (--desktop-viewport) {
+      grid-area: 1 / 1 / -1 / -1;
+      place-self: end center;
+      margin-bottom: 2.5rem;
+    }
+
+    .iconContainer {
+      margin: 0 auto;
+      width: fit-content;
+    }
   }
 }

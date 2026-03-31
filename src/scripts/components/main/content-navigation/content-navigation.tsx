@@ -35,7 +35,6 @@ function isStoryListItem(
 }
 
 interface Props {
-  showContentList: boolean;
   contents: (StoryListItem | LayerListItem)[];
   className?: string;
   isMobile: boolean;
@@ -141,14 +140,12 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
 };
 
 const ContentNavigation: FunctionComponent<Props> = ({
-  showContentList,
   contents,
   className,
   isMobile,
 }) => {
   const dispatch = useDispatch();
   const { category } = useContentParams();
-  // const lang = useSelector(languageSelector);
   const { contentId } = useSelector(contentSelector);
 
   // Split contents into stories and datasets, placing stories first so they
@@ -283,10 +280,13 @@ const ContentNavigation: FunctionComponent<Props> = ({
           />
         ) : null}
       </div>
-      <ul
+      <motion.ul
+        key="content-ul"
+        initial={{ scale: 5 }}
+        animate={{ scale: 0.1 }}
+        exit={{opacity: 0}}
         className={cx(
           styles.contentNav,
-          showContentList && styles.show,
           className,
         )}
         role="listbox"
@@ -316,7 +316,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             left: `calc(${x}% - ${isMobile ? "16" : "12"}px)`,
           }}
         ></span>
-      </ul>
+      </motion.ul>
     </>
   );
 };
