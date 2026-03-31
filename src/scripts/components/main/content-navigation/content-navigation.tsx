@@ -1,10 +1,4 @@
-import {
-  FunctionComponent,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { FunctionComponent, useEffect, useMemo, useState } from "react";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -197,7 +191,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const y = useMotionValue(validInitialIndex);
   const opacity = useMotionValue(validInitialIndex);
-  const sourceRef = useRef<string>("");
+  const splashSource = useMemo(() => {
+    const contentId = reordered[currentIndex]?.id;
+    if (isStoryListItem(reordered[currentIndex])) {
+      if (contentId !== AppRoute.StoryEEI) {
+        return getStorySplashImage(contentId);
+      }
+    }
+    return "";
+  }, [currentIndex, reordered]);
 
   useEffect(() => {
     animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
@@ -212,10 +214,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
     // We don't want to dispatch a layer action with story ids (except for EEI-story)
     if (isStoryListItem(reordered[currentIndex])) {
       if (contentId !== AppRoute.StoryEEI) {
-        sourceRef.current = getStorySplashImage(contentId);
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
       } else {
-        sourceRef.current = "";
         dispatch(
           setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
         );
@@ -275,9 +275,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
   return (
     <>
       <div className={styles.splashImageWrapper}>
-        {sourceRef.current ? (
+        {splashSource ? (
           <img
-            src={sourceRef.current}
+            src={splashSource}
             alt=""
             className={styles.splashImage}
             rel="preload"
