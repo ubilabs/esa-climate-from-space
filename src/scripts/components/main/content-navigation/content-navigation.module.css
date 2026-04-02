@@ -31,8 +31,6 @@
   }
 
   @media (--desktop-viewport) {
-    grid-area: content-nav;
-
     &:after {
       background-image:
         linear-gradient(
@@ -70,11 +68,10 @@
   padding: 0;
   color: white;
   margin: auto 0;
-  opacity: 0;
   z-index: 1;
 
-  &.show {
-    animation: showFromCenter 1.5s ease-out 0.5s forwards;
+  @media screen and (--desktop-viewport) {
+    grid-area: splash-and-nav-area;
   }
 
   > span {
@@ -216,15 +213,5 @@
         padding-right: 1rem;
       }
     }
-  }
-}
-
-@keyframes showFromCenter {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
