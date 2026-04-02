@@ -20,7 +20,7 @@
     &:last-child {
       transform: translateY(-100%);
       &:after {
-        content: "99.89%";
+        content: "99.90%";
         left: 23%;
         position: absolute;
         rotate: -45deg;
