@@ -21,29 +21,44 @@ export default function InitialSplash() {
   );
 
   return (
-    <motion.div
-      className={styles.splashScreen}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      key="splash"
-    >
+    <>
       <motion.div
-        className={styles.titleWrapper}
-        exit={{ y: -40, opacity: 0 }}
-        transition={{ duration: 0.25, ease: "easeIn" }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeIn", delay: 1.5 }}
+        className={styles.splashScreen}
+        exit={{ opacity: 0, transition: { duration: 0.5, ease: "easeIn" } }}
+        key="splash"
       >
-        <h1 className={styles.welcomeTitle}>
-          <FormattedMessage id="welcomeTitle" />
-        </h1>
-        <p className={styles.subTitle}>
-          <FormattedMessage id="welcomeSubtitle" />
-        </p>
+        <motion.div
+          className={styles.titleWrapper}
+          exit={{
+            y: -40,
+            opacity: 0,
+            transition: { duration: 0.25, ease: "easeIn" },
+          }}
+        >
+          <h1 className={styles.welcomeTitle}>
+            <FormattedMessage id="welcomeTitle" />
+          </h1>
+          <p className={styles.subTitle}>
+            <FormattedMessage id="welcomeSubtitle" />
+          </p>
+        </motion.div>
       </motion.div>
 
       <motion.div
+        key="gestureIndicator"
+        initial={{ scale: 0.8, opacity: 0 }}
         className={styles.gestureIndicator}
-        exit={{ y: 40, opacity: 0 }}
-        transition={{ duration: 0.25, ease: "easeIn" }}
+        exit={{
+          y: 40,
+          opacity: 0,
+          scale: 0.2,
+          transition: { duration: 0.5, ease: "easeIn" },
+        }}
+        transition={{ duration: 0.5, ease: "easeIn", delay: 2.5 }}
+        animate={{ scale: 1, opacity: 1 }}
       >
         <div className={styles.iconContainer}>{icons}</div>
         <span className={styles.info}>
@@ -52,6 +67,6 @@ export default function InitialSplash() {
           />
         </span>
       </motion.div>
-    </motion.div>
+    </>
   );
 }

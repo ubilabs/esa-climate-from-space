@@ -30,34 +30,34 @@
       margin-left: 0;
     }
   }
+}
 
-  .gestureIndicator {
-    color: var(--dark-blue);
-    grid-area: explore;
-    margin-bottom: 2rem;
-    place-self: start center;
-    position: relative;
-    margin-bottom: 1.5rem;
+.gestureIndicator {
+  color: var(--dark-blue);
+  grid-area: explore;
+  margin-bottom: 2rem;
+  place-self: start center;
+  position: relative;
+  margin-bottom: 1.5rem;
 
-    svg:first-child:has(~ svg) {
-      margin-right: 2.5rem;
-    }
+  svg:first-child:has(~ svg) {
+    margin-right: 2.5rem;
+  }
 
-    .info {
-      text-transform: uppercase;
-      display: inline-block;
-      margin-top: 1rem;
-    }
+  .info {
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 1rem;
+  }
 
-    @media screen and (--desktop-viewport) {
-      grid-area: 1 / 1 / -1 / -1;
-      place-self: end center;
-      margin-bottom: 2.5rem;
-    }
+  @media screen and (--desktop-viewport) {
+    grid-area: 1 / 1 / -1 / -1;
+    place-self: end center;
+    margin-bottom: 2.5rem;
+  }
 
-    .iconContainer {
-      margin: 0 auto;
-      width: fit-content;
-    }
+  .iconContainer {
+    margin: 0 auto;
+    width: fit-content;
   }
 }
