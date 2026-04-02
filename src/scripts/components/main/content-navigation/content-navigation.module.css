@@ -31,8 +31,6 @@
   }
 
   @media (--desktop-viewport) {
-    grid-area: content-nav;
-
     &:after {
       background-image:
         linear-gradient(
@@ -59,7 +57,7 @@
   --primary-color: var(--main);
   --secondary-color: var(--dark-blue);
   --background-color: var(--dark-grey-5);
-  grid-area: splash-and-nav-area;
+  grid-area: globe-nav-area;
   width: 100%;
   height: 100%;
   position: relative;
@@ -71,6 +69,10 @@
   color: white;
   margin: auto 0;
   z-index: 1;
+
+  @media screen and (--desktop-viewport) {
+    grid-area: splash-and-nav-area;
+  }
 
   > span {
     position: absolute;

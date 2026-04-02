@@ -283,12 +283,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
       <motion.ul
         key="content-ul"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{opacity: 0}}
-        className={cx(
-          styles.contentNav,
-          className,
-        )}
+        animate={{
+          opacity: 1,
+          transition: { duration: 0.4, ease: "easeOut", delay: 1 },
+        }}
+        exit={{
+          opacity: 0,
+          transition: { duration: 0.2, ease: "easeIn" },
+        }}
+        className={cx(styles.contentNav, className)}
         role="listbox"
         aria-label="Content navigation"
       >

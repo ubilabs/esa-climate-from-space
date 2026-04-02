@@ -107,12 +107,12 @@ const DataViewer: FunctionComponent = () => {
               ></BackButton>
             )}
           </header>
-          <AnimatePresence>
+          <AnimatePresence mode="wait">
             {isBaseRoute &&
               (hasUserInteracted ? (
                 <CategoryNavigation key="category-navigation" />
               ) : (
-                <InitialSplash key="initial-splash"/>
+                <InitialSplash key="initial-splash" />
               ))}
             {isContentNavRoute && (
               <>

@@ -57,8 +57,14 @@ const CategoryNavigation: FunctionComponent = () => {
     <motion.nav
       className={styles.categoryNav}
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        transition: { duration: 0.4, ease: "easeOut" },
+      }}
+      exit={{
+        opacity: 0,
+        transition: { duration: 0.2, ease: "easeIn" },
+      }}
     >
       <ul className={styles.list}>
         {categoryTags.map((category, index) => {
