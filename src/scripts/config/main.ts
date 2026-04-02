@@ -64,16 +64,16 @@ export const WHEEL_SCALE_FACTOR = 0.001,
 
 // The order of these is important for the stories menu
 export const categoryTags = [
-  "welcome",
+  "atmosphere",
+  "carbon_cycle",
+  "climate_action",
+  "climate_risk",
+  "cryosphere",
+  "improving_models",
   "land",
   "ocean",
-  "atmosphere",
-  "cryosphere",
   "water_cycle",
-  "carbon_cycle",
-  "climate_risk",
-  "climate_action",
-  "improving_models",
+  "welcome",
 ];
 
 const globeState = {
