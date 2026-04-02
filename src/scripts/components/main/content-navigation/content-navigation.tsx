@@ -150,8 +150,13 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   // Split contents into stories and datasets, placing stories first so they
   // appear above the active item on the arc and datasets below.
-  const stories = contents.filter((c) => isStoryListItem(c));
-  const datasets = contents.filter((c) => !isStoryListItem(c));
+  const stories = contents
+    .filter((c): c is StoryListItem => isStoryListItem(c))
+    .sort((a, b) => b.title.localeCompare(a.title));
+
+  const datasets = contents
+    .filter((c): c is LayerListItem => !isStoryListItem(c))
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   // We want to show the datasets and stories seperately, with the default (active) element being a dataset (if availabe)
   const reordered = useMemo(
