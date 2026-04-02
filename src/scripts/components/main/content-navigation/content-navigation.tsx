@@ -282,8 +282,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
       </div>
       <motion.ul
         key="content-ul"
-        initial={{ scale: 5 }}
-        animate={{ scale: 0.1 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
         exit={{opacity: 0}}
         className={cx(
           styles.contentNav,

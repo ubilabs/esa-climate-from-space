@@ -59,7 +59,7 @@
   --primary-color: var(--main);
   --secondary-color: var(--dark-blue);
   --background-color: var(--dark-grey-5);
-  grid-area: globe-nav-area;
+  grid-area: splash-and-nav-area;
   width: 100%;
   height: 100%;
   position: relative;
