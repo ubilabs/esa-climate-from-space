@@ -1,3 +1,59 @@
+.splashImageWrapper {
+  --transparency: 10%;
+  position: relative;
+  background-color: var(--neutral-esa-background);
+  grid-area: 1 / 1 / -1 / -1;
+  width: 100%;
+  height: 100%;
+
+  .splashImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(
+        80deg,
+        var(--neutral-esa-background) 10%,
+        transparent 100%
+      ),
+      linear-gradient(
+        135deg,
+        var(--neutral-esa-background) 10%,
+        transparent 100%
+      ),
+      linear-gradient(90deg, var(--neutral-esa-background) 0%, transparent 100%);
+  }
+
+  @media (--desktop-viewport) {
+    grid-area: content-nav;
+
+    &:after {
+      background-image:
+        linear-gradient(
+          60deg,
+          var(--neutral-esa-background) 10%,
+          transparent 50%
+        ),
+        linear-gradient(
+          135deg,
+          var(--neutral-esa-background) 10%,
+          transparent 50%
+        ),
+        linear-gradient(
+          90deg,
+          var(--neutral-esa-background) 0%,
+          transparent 100%
+        );
+    }
+  }
+}
+
 .contentNav {
   --font-color: rgba(0, 179, 152, 1);
   --primary-color: var(--main);
@@ -15,12 +71,13 @@
   color: white;
   margin: auto 0;
   opacity: 0;
+  z-index: 1;
 
   &.show {
     animation: showFromCenter 1.5s ease-out 0.5s forwards;
   }
 
-  >span {
+  > span {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -29,7 +86,7 @@
     background-repeat: no-repeat;
     content: "";
     width: 100%;
-    height: 203px;
+    height: 200px;
 
     @media screen and (--desktop-viewport) {
       width: 785px;
@@ -51,15 +108,16 @@
     z-index: 10;
   }
 
-  >li {
+  > li {
     z-index: 2;
+    margin-left: 2rem;
     padding-right: 1rem;
     color: var(--font-color);
     position: absolute;
-    transition: all 0.3s ease-out;
     transform-origin: 0 0;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     transform: translate(0, -50%);
     font-size: 1rem;
     line-height: 1.5rem;
@@ -67,23 +125,23 @@
     font-weight: 400;
     width: 100%;
 
-    @media screen and (--desktop-xxl-viewport) {
+    @media screen and (--desktop-viewport) {
       font-size: 1.25rem;
       line-height: 1.5rem;
     }
 
-    >a {
+    > a {
       display: flex;
       width: 100%;
       justify-content: space-between;
       align-items: center;
       text-align: center;
 
-      >div {
+      > div {
         display: flex;
 
-        >span {
-          color: var(--dark-blue);
+        > span {
+          color: var(--neutral-esa-white);
           max-width: 50vw;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -92,7 +150,7 @@
         }
       }
 
-      >span.learnMore {
+      > span.learnMore {
         transition: all 0.3s ease-out;
         transform-origin: right;
         position: relative;
@@ -140,46 +198,23 @@
       }
     }
 
-    &:before {
-      flex-shrink: 0;
-      content: "";
-      width: 24px;
-      height: 24px;
-      margin-right: 1rem;
-      scale: 0.75;
-      background: var(--secondary-color);
+    .typeInfo {
+      visibility: hidden;
+      font-size: 0.875rem;
+
+      @media (--desktop-viewport) {
+        font-size: 1.125rem;
+      }
     }
 
     &.active {
-      >a>div>span {
-        color: var(--primary-color) !important;
-        white-space: normal;
+      .typeInfo {
+        visibility: initial;
+      }
+
+      > a > div > span {
         padding-right: 1rem;
       }
-
-      >a>span.learnMore {
-        opacity: 1;
-      }
-    }
-
-    &.active:before {
-      background: var(--primary-color);
-    }
-
-    &[data-content-type="image"]:before {
-      mask-image: var(--icon-image);
-    }
-
-    &[data-content-type="video"]:before {
-      mask-image: var(--icon-video);
-    }
-
-    &[data-content-type="layer"]:before {
-      mask-image: var(--icon-layer);
-    }
-
-    &[data-content-type="blog"]:before {
-      mask-image: var(--icon-blog);
     }
   }
 }

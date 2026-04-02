@@ -25,12 +25,11 @@ const wrap = (value: number, min: number, max: number): number => {
   return value;
 };
 
-const DEBOUNCE_MS = 600; // adjust to taste
+const DEBOUNCE_MS = 200; // adjust to taste
 
 export const useNavGestures = (
   maxIndex: number,
   setCurrentIndex: Dispatch<SetStateAction<number>>,
-  setLastUserInteraction: Dispatch<SetStateAction<number>>,
   direction: "x" | "y" = "x",
   infinite = false,
 ) => {
@@ -51,13 +50,12 @@ export const useNavGestures = (
       // store last trigger time in ref
       if (!lastWheelRef.current || now - lastWheelRef.current > DEBOUNCE_MS) {
         setCurrentIndex((i) => clampFn(i - s, 0, slides.length - 1));
-        setLastUserInteraction(now);
         lastWheelRef.current = now;
         return true;
       }
       return false;
     },
-    [clampFn, setCurrentIndex, setLastUserInteraction, slides.length],
+    [clampFn, setCurrentIndex, slides.length],
   );
   const handleDrag = useCallback(
     ({
@@ -78,7 +76,6 @@ export const useNavGestures = (
         } else {
           setCurrentIndex((i) => clampFn(i - yDir, 0, slides.length - 1));
         }
-        setLastUserInteraction(Date.now());
         cancel();
       }
     },
@@ -86,7 +83,6 @@ export const useNavGestures = (
       clampFn,
       direction,
       setCurrentIndex,
-      setLastUserInteraction,
       slides.length,
     ],
   );
