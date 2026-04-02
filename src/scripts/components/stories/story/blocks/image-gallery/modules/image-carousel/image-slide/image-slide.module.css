@@ -7,6 +7,10 @@
   @media screen and (--desktop-viewport) {
     flex: 0 0 60%;
   }
+
+  @media screen and (--desktop-xxl-viewport) {
+    --slide-image-height: 60vh;
+  }
   
   .imageContainer {
     height: var(--slide-image-height);

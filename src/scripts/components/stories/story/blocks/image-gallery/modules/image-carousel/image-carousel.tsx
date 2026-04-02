@@ -32,7 +32,7 @@ const VELOCITY = 300;
 const ImageCarousel: FunctionComponent = () => {
   const { module, storyId, getRefCallback } = useModuleContent();
   const { slides, lengthFactor } = module as ImageCarouselModule;
-  const { isMobile, screenWidth, isTouchDevice } = useScreenInfo();
+  const { screenWidth, isTouchDevice } = useScreenInfo();
   const controls = useAnimationControls();
 
   const slidesContainerRef = useRef<HTMLDivElement>(null);
@@ -85,17 +85,16 @@ const ImageCarousel: FunctionComponent = () => {
     }
   }, [screenWidth]);
 
-  const updateXPostion = useEffectEvent(() => {
-    // On desktop (not mobile), center the active slide with the next one peeking
-    const currentIndex = currentSlideIndexRef.current;
+  const updateSlideXPosition = useEffectEvent(() => {
+    // In fullscreen mode, reset to initial position; otherwise, align active slide left
     controls.set({
-      x: !isFullscreen ? currentIndex * -stepRef.current : 0,
+      x: !isFullscreen ? currentSlideIndex * -step : 0,
     });
   });
 
-  // In fulllscreen mode update x position to center the current selected slide
+  // update slide position when toggling fullscreen
   useEffect(() => {
-    updateXPostion();
+    updateSlideXPosition();
   }, [isFullscreen]);
 
   if (!slides || slides.length === 0) {
@@ -109,10 +108,9 @@ const ImageCarousel: FunctionComponent = () => {
     const clampedIndex = Math.max(0, Math.min(slides.length - 1, i));
     setCurrentSlideIndex(clampedIndex);
 
-    // On desktop, center the active slide; on mobile align flush left
-
+    // Animate the carousel to align the active slide to the left
     controls.start({
-      x: clampedIndex * -stepRef.current,
+      x: clampedIndex * -step,
       transition: {
         type: "spring",
         stiffness: 320,
@@ -122,10 +120,7 @@ const ImageCarousel: FunctionComponent = () => {
   };
 
   const content = (
-    <SlideContainer
-      ref={getRefCallback(0, 0)}
-      className={cx(styles.container, !isMobile)}
-    >
+    <SlideContainer ref={getRefCallback(0, 0)} className={styles.container}>
       <div className={cx(styles.wrapper)}>
         {"headerText" in module && module.headerText && (
           <h2 className={styles.headerText}>{module.headerText}</h2>
