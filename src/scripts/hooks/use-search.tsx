@@ -139,7 +139,7 @@ export function useSearch() {
     const storyResults: SearchResult[] = storySearcher
       ? storySearcher.search(query).map((result) => ({
           ...result,
-          type: getStoryMediaType(result.item, stories),
+          type: "blog",
           matches: filterMatchesToPerfect(result.matches, query),
         }))
       : [];

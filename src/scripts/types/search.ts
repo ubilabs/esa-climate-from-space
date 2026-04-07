@@ -49,8 +49,6 @@ export enum FilterType {
   All = "all",
   Blog = "blog",
   Layer = "layer",
-  Video = "video",
-  Image = "image",
 }
 
 export type Filter = {
