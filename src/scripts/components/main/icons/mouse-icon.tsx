@@ -19,8 +19,8 @@ export const MouseIcon: FunctionComponent<Props> = ({ rounded }) => {
           fill="#3F6C7D"
         />
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M24 4C30.6274 4 36 9.37258 36 16V32L35.9961 32.3096C35.8345 38.691 30.691 43.8345 24.3096 43.9961L24 44H22L21.6904 43.9961C15.309 43.8345 10.1655 38.691 10.0039 32.3096L10 32V16C10 9.37258 15.3726 4 22 4H24ZM22 6C16.4772 6 12 10.4772 12 16V32C12 37.5228 16.4772 42 22 42H24C29.5228 42 34 37.5228 34 32V16C34 10.4772 29.5228 6 24 6H22Z"
           fill="#3F6C7D"
         />
