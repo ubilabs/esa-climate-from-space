@@ -4,8 +4,6 @@ import type { FuseResult, FuseResultMatch } from "fuse.js";
 
 import removeMarkdown from "remove-markdown";
 
-import { getStoryMediaType } from "../libs/get-story-media-type";
-
 import {
   searchableLayerKeys,
   searchableStorySlideKeys,
