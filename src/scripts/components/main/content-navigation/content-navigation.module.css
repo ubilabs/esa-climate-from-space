@@ -1,8 +1,8 @@
 .splashImageWrapper {
   --transparency: 10%;
-  position: relative;
+  position: absolute;
+  inset: 0;
   background-color: var(--neutral-esa-background);
-  grid-area: 1 / 1 / -1 / -1;
   width: 100%;
   height: 100%;
 
