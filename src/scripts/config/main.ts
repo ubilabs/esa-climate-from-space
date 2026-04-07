@@ -188,6 +188,7 @@ export default {
     storyMediaBase: `${baseUrlStorage}stories/{id}`,
     stories: `${baseUrlStorage}stories/stories-{lang}.json`,
     story: `${baseUrlStorage}stories/{id}/{id}-{lang}.json`,
+    storySplashImage: `${baseUrlStorage}stories/{id}/{image}`,
   },
   defaultBasemap: "colored" as BasemapId,
   defaultLayerBasemap: "land" as BasemapId,

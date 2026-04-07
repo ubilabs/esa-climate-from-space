@@ -192,6 +192,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const y = useMotionValue(validInitialIndex);
   const opacity = useMotionValue(validInitialIndex);
+
   const splashSource = useMemo(() => {
     const contentId = reordered[currentIndex]?.id;
     if (isStoryListItem(reordered[currentIndex])) {
