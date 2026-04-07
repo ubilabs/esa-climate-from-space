@@ -2,6 +2,7 @@ import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useLocation } from "react-router-dom";
 import { useMatomo } from "@streamr/matomo-tracker-react";
+
 import debounce from "lodash.debounce";
 
 import { useSearch } from "../../../hooks/use-search";
@@ -21,8 +22,6 @@ const filters: Filter[] = [
   { type: FilterType.All, labelId: "search.allOptions", icon: "check" },
   { type: FilterType.Blog, labelId: "contentType.blog", icon: "blog" },
   { type: FilterType.Layer, labelId: "contentType.layer", icon: "layer" },
-  { type: FilterType.Video, labelId: "contentType.video", icon: "video" },
-  { type: FilterType.Image, labelId: "contentType.image", icon: "image" },
 ];
 
 export default function ContentSearch() {
