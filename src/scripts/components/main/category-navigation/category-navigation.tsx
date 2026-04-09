@@ -67,7 +67,7 @@ const CategoryNavigation: FunctionComponent = () => {
       }}
     >
       <ul className={styles.list}>
-        {categoryTags.map((category, index) => {
+        {categoryTags.map((cat, index) => {
           const output = input.map(
             (entry) => `${(index - entry) * ITEM_STEP_REM}rem`,
           );
@@ -78,7 +78,7 @@ const CategoryNavigation: FunctionComponent = () => {
           );
           return (
             <motion.li
-              key={category}
+              key={cat}
               className={cx(currentIndex === index && styles.selectedEntry)}
               initial={{
                 top: "50%",
@@ -92,10 +92,10 @@ const CategoryNavigation: FunctionComponent = () => {
               }}
             >
               <Link
-                to={categoryTags[currentIndex]}
+                to={categoryTags[index]}
                 className={styles.categoryLink}
               >
-                {<FormattedMessage id={`categories.${category}`} />}
+                {<FormattedMessage id={`categories.${cat}`} />}
               </Link>
             </motion.li>
           );
