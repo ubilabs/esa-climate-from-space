@@ -1,6 +1,7 @@
 .dataViewer {
   --globe: 55vw;
   --category: calc(100vw - var(--globe));
+  position: relative;
   height: 100%;
   display: grid;
   place-items: center;
