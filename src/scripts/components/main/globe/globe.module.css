@@ -16,7 +16,7 @@
 }
 
 .globe canvas {
-  filter: brightness(0.85) saturate(0.85) opacity(0.95);
+  filter: brightness(0.85) saturate(0.85);
 }
 
 .globe.notTouchable {

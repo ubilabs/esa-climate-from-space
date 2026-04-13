@@ -182,7 +182,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   useNavGestures(reordered.length, setCurrentIndex, "y");
 
   // The spread between the elements in the circle
-  const GAP_BETWEEN_ELEMENTS = 16;
+  const GAP_BETWEEN_ELEMENTS = isMobile ? 16 : 12;
 
   // The radius of the circle. We use a fixed radius here from
   // 0 - 100 because the coordinates are used as the top and left values
@@ -309,7 +309,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             currentIndex={currentIndex}
             y={y}
             opacity={opacity}
-            category={category}
+            category={category ?? null}
             isMobile={isMobile}
             GAP_BETWEEN_ELEMENTS={GAP_BETWEEN_ELEMENTS}
             RADIUS={RADIUS}

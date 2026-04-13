@@ -1,5 +1,6 @@
 .splashImageWrapper {
   --transparency: 10%;
+  --gradient-start: 0%;
   position: absolute;
   inset: 0;
   background-color: var(--neutral-esa-background);
@@ -10,45 +11,37 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
+
+    mask-image: conic-gradient(
+      from -90deg at var(--gradient-start) 50%,
+      transparent 0deg,
+      transparent 90deg,
+      rgb(0 0 0 / 0.1) 130deg,
+      rgb(0 0 0 / 0.5) 168deg,
+      rgb(0 0 0 / 0.5) 192deg,
+      rgb(0 0 0 / 0.1) 230deg,
+      transparent 270deg,
+      transparent 360deg
+    );
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
   }
 
-  &:after {
+  &::after {
     content: "";
     position: absolute;
     inset: 0;
-    background-image:
-      linear-gradient(
-        80deg,
-        var(--neutral-esa-background) 10%,
-        transparent 100%
-      ),
-      linear-gradient(
-        135deg,
-        var(--neutral-esa-background) 10%,
-        transparent 100%
-      ),
-      linear-gradient(90deg, var(--neutral-esa-background) 0%, transparent 100%);
+    pointer-events: none;
+    background-image: linear-gradient(
+      to right,
+      var(--neutral-esa-background) calc(var(--gradient-start) + 20%),
+      rgba(0 0 0 / 0) 90%
+    );
   }
 
   @media (--desktop-viewport) {
-    &:after {
-      background-image:
-        linear-gradient(
-          60deg,
-          var(--neutral-esa-background) 10%,
-          transparent 50%
-        ),
-        linear-gradient(
-          135deg,
-          var(--neutral-esa-background) 10%,
-          transparent 50%
-        ),
-        linear-gradient(
-          90deg,
-          var(--neutral-esa-background) 0%,
-          transparent 100%
-        );
-    }
+    --gradient-start: 30%;
   }
 }
 
