@@ -21,7 +21,7 @@ const CategoryNavigation: FunctionComponent = () => {
 
   const categoryIndex = category
     ? categoryTags.indexOf(category)
-    : Math.round(categoryTags.length / 2);
+    : 0;
 
   const [currentIndex, setCurrentIndex] = useState(
     categoryIndex !== -1 ? categoryIndex : 0,
