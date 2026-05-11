@@ -22,7 +22,8 @@
     container-type: size;
   }
 
-  button.toggleGlobeSync {
+  button.toggleMultiGlobeSync {
+    z-index: 1;
     all: unset;
     color: var(--neutral-esa-white);
     grid-area: globe-nav-area;
