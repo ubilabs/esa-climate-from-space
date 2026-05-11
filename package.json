@@ -103,7 +103,7 @@
     "globals": "^16.5.0",
     "imagemin-cli": "^8.0.0",
     "license-checker": "^25.0.1",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.14",
     "postcss-custom-media": "^11.0.6",
     "prettier": "3.7.4",
     "rollup": "^4.59.0",
