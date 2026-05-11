@@ -30,6 +30,7 @@ import { BackButton } from "../back-button/back-button";
 
 import styles from "./data-viewer.module.css";
 import { AnimatePresence } from "motion/react";
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 
 export type LayerLoadingStateChangeHandle = (
   layerId: string,
@@ -65,6 +66,12 @@ const DataViewer: FunctionComponent = () => {
     [stories, layers, category],
   );
 
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+
+  const isCompareLayerSelected = Boolean(
+    layers?.find((layer) => layer.id === selectedLayerIds.compareId),
+  );
+
   const { isMobile } = useScreenInfo();
 
   const { isBaseRoute, isNavigationView, isDataRoute, isContentNavRoute } =
@@ -94,6 +101,7 @@ const DataViewer: FunctionComponent = () => {
       >
         <GetGlobalDataWidget className={cx(styles.globe)} />
       </div>
+      {isCompareLayerSelected && <button className={styles.toggleGlobeSync}>Decouple Globe Sync</button>}
       {isDataRoute && <GlobeNavigation />}
       {isNavigationView && (
         <>
