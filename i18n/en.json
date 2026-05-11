@@ -63,6 +63,8 @@
   "contentBy": "content by",
   "closeStory": "Close story",
   "removeCompare": "Remove Compare",
+  "multiGlobeSync.disable": "Disable Multi Globe Sync",
+  "multiGlobeSync.enable": "Enable Multi Globe Sync",
   "dataInfo": "Data Information",
   "storiesSelected": "{numberSelected, number} {numberSelected, plural, one {Story} other {Stories}} selected",
   "resetFilters": "Reset Filters",
