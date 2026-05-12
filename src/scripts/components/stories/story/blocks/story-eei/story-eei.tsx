@@ -26,7 +26,7 @@ import QuoteSlide from "./modules/quote-slide/quote-slide";
 import TreeMapModule from "./modules/tree-map/tree-map";
 import { setFlyTo } from "../../../../../reducers/fly-to";
 import { useScreenInfo } from "../../../../../hooks/use-screen-info";
-import SatelliteAnimation from "./modules/kettle-amount/satellite-animation/satellite-animation";
+import SatelliteAnimation from "./satellite-animation/satellite-animation";
 
 export type StoryEEICompoundComponents = {
   BaseSlide: typeof ScrollModule;
