@@ -1,7 +1,7 @@
 import { FunctionComponent, useMemo } from "react";
 
 import { FormattedMessage } from "react-intl";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import cx from "classnames";
 
@@ -14,6 +14,7 @@ import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
 import { languageSelector } from "../../../selectors/language";
 import { appRouteSelector } from "../../../selectors/route-match";
+import { multiGlobeSyncEnabledSelector } from "../../../selectors/globe/multi-globe-sync";
 
 import {
   useGetLayerListQuery,
@@ -30,6 +31,8 @@ import { BackButton } from "../back-button/back-button";
 
 import styles from "./data-viewer.module.css";
 import { AnimatePresence } from "motion/react";
+import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
+import { toggleMultiGlobeSync } from "../../../reducers/globe/multi-globe-sync";
 
 export type LayerLoadingStateChangeHandle = (
   layerId: string,
@@ -45,6 +48,7 @@ export type LayerLoadingStateChangeHandle = (
  */
 const DataViewer: FunctionComponent = () => {
   const language = useSelector(languageSelector);
+  const dispatch = useDispatch();
   const { data: stories } = useGetStoryListQuery(language);
 
   const appRoute = useSelector(appRouteSelector);
@@ -64,6 +68,17 @@ const DataViewer: FunctionComponent = () => {
     ],
     [stories, layers, category],
   );
+
+  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
+  const multiGlobeSyncEnabled = useSelector(multiGlobeSyncEnabledSelector);
+
+  const isCompareLayerSelected = Boolean(
+    layers?.find((layer) => layer.id === selectedLayerIds.compareId),
+  );
+
+  const multiGlobeSyncToggleLabelId = multiGlobeSyncEnabled
+    ? "multiGlobeSync.disable"
+    : "multiGlobeSync.enable";
 
   const { isMobile } = useScreenInfo();
 
@@ -94,6 +109,14 @@ const DataViewer: FunctionComponent = () => {
       >
         <GetGlobalDataWidget className={cx(styles.globe)} />
       </div>
+      {isCompareLayerSelected && (
+        <button
+          className={styles.toggleMultiGlobeSync}
+          onClick={() => dispatch(toggleMultiGlobeSync())}
+        >
+          <FormattedMessage id={multiGlobeSyncToggleLabelId} />
+        </button>
+      )}
       {isDataRoute && <GlobeNavigation />}
       {isNavigationView && (
         <>

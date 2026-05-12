@@ -22,6 +22,21 @@
     container-type: size;
   }
 
+  button.toggleMultiGlobeSync {
+    z-index: 1;
+    all: unset;
+    color: var(--neutral-esa-white);
+    grid-area: globe-nav-area;
+    place-self: start end;
+    margin: 1.5rem;
+    cursor: pointer;
+    background: var(--dark-grey-5);
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    text-align: left;
+  }
+
   /* see globe.module for globe base styles */
   /* The data-nav-content values are based on the current route of the application */
   &[data-nav-content="nav_content"] {
@@ -87,7 +102,6 @@
     }
 
     &[data-nav-content="nav_content"] {
-
       .globe {
         transform: translateX(-40%);
       }

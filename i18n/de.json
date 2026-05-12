@@ -64,6 +64,8 @@
   "contentBy": "content by",
   "closeStory": "Geschichte schließen",
   "removeCompare": "Vergleich entfernen",
+  "multiGlobeSync.disable": "Multi-Globus-Synchronisierung deaktivieren",
+  "multiGlobeSync.enable": "Multi-Globus-Synchronisierung aktivieren",
   "dataInfo": "Dateninformation",
   "storiesSelected": "{numberSelected, number} {numberSelected, plural, one {Geschichte} other {Geschichten}} ausgewählt",
   "resetFilters": "Filter löschen",
