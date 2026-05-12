@@ -1,9 +1,7 @@
 .satellite {
   height: fit-content;
-  position: absolute;
-  top: 10%;
-  left: 5%;
-  transform: translate(-50%, -50%);
+  grid-area: content;
+  margin: 1rem;
   z-index: 2;
 
   > img {
