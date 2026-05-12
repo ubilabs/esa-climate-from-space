@@ -111,6 +111,7 @@ const TimeSlider: FunctionComponent<Props> = ({
 
   // stop playback when layer changes
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     togglePlayback(autoplay);
   }, [mainLayerDetails, compareLayerDetails, autoplay]);
 
@@ -119,6 +120,7 @@ const TimeSlider: FunctionComponent<Props> = ({
   // sync local time
   useEffect(() => {
     if (time !== propsTime) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       syncLocalTime(propsTime);
     }
   }, [time, propsTime]);
