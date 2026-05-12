@@ -26,6 +26,7 @@ import QuoteSlide from "./modules/quote-slide/quote-slide";
 import TreeMapModule from "./modules/tree-map/tree-map";
 import { setFlyTo } from "../../../../../reducers/fly-to";
 import { useScreenInfo } from "../../../../../hooks/use-screen-info";
+import SatelliteAnimation from "./modules/kettle-amount/satellite-animation/satellite-animation";
 
 export type StoryEEICompoundComponents = {
   BaseSlide: typeof ScrollModule;
@@ -54,8 +55,8 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
   useLayoutEffect(() => {
     const device = isMobile ? "mobile" : "desktop";
 
-    const initialContainer = initialGlobe?.[device].containerPosition
-    const initialPosition = initialGlobe?.[device].location
+    const initialContainer = initialGlobe?.[device].containerPosition;
+    const initialPosition = initialGlobe?.[device].location;
 
     const root = document.documentElement;
 
@@ -99,6 +100,8 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
     <Story>
       {/* enable globe to react to scroll event (currently only story-eei)*/}
       <GlobeScroll initialGlobeConfiguration={initialGlobe} />
+      {/* place here any element which overlaps multiple modules */}
+      <SatelliteAnimation />
     </Story>
   );
 };

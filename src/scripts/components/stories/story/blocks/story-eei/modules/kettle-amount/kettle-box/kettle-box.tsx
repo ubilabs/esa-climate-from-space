@@ -37,7 +37,6 @@ export default function KettleBox() {
           <KettleRow index={index} key={index} />
         ))}
         <SquareMeterLabel />
-        <SatelliteAnimation />
       </motion.div>
       <YearSlider />
     </div>
