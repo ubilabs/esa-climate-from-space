@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useMemo, useState } from "react";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import cx from "classnames";
 
 import { useContentParams } from "../../../hooks/use-content-params";
@@ -20,6 +20,7 @@ import { contentSelector } from "../../../selectors/content";
 import { LayerListItem } from "../../../types/layer-list";
 import { StoryListItem } from "../../../types/story-list";
 import { AppRoute } from "../../../types/app-routes";
+import { AppLocationState } from "../../../types/location-state";
 
 import { useNavGestures } from "../../../libs/use-nav-gestures";
 
@@ -66,10 +67,16 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
   RADIUS,
   onFocus,
 }) => {
+  const location = useLocation<AppLocationState>();
   const { id } = item;
   const name = "title" in item ? item.title : item.name;
 
   const isStory = isStoryListItem(item);
+
+  const navigationState: AppLocationState = {
+    ...location.state,
+    backLink: `${location.pathname}${location.search}`,
+  };
 
   const type = isStory ? "blog" : "layer";
 
@@ -127,7 +134,10 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
       style={{ top, left, opacity: opacityValue, rotate, pointerEvents }}
       onFocus={() => onFocus(index)}
     >
-      <Link to={isStory ? `/${category}/stories/${id}/0` : `/${category}/data`}>
+      <Link
+        to={isStory ? `/${category}/stories/${id}/0` : `/${category}/data`}
+        state={navigationState}
+      >
         <div>
           <span>{name}</span>
           {/* for electron*/}
