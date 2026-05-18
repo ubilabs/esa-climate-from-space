@@ -34,7 +34,7 @@ const LayerSlide: React.FC<LayerSlideProps> = ({
   const category = layers?.find((l) => l.id === layer?.layerId)?.categories[0];
   const navigationState: AppLocationState = {
     ...location.state,
-    backLink: `${location.pathname}${location.search}`,
+    backLink: location.state?.backLink || location.pathname + location.search,
   };
 
   return (
