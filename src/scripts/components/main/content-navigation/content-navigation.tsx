@@ -75,7 +75,7 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
 
   const navigationState: AppLocationState = {
     ...location.state,
-    backLink: `${location.pathname}${location.search}`,
+    backLink: location.state?.backLink || location.pathname + location.search,
   };
 
   const type = isStory ? "blog" : "layer";
