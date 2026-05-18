@@ -4,7 +4,6 @@ import { KettleAmountAnimationConfig } from "../kettle-amount";
 import KettleRow from "../kettle-row/kettle-row";
 import YearSlider from "../year-slider/year-slider";
 import SquareMeterLabel from "../square-meter-label/square-meter-label";
-import SatelliteAnimation from "../satellite-animation/satellite-animation";
 
 import styles from "./kettle-box.module.css";
 
@@ -37,7 +36,6 @@ export default function KettleBox() {
           <KettleRow index={index} key={index} />
         ))}
         <SquareMeterLabel />
-        <SatelliteAnimation />
       </motion.div>
       <YearSlider />
     </div>

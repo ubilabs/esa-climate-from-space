@@ -45,17 +45,6 @@ const animationConfig = {
     input: [0.15, 0.3, 0.5],
     output: ["6", "6", "1"],
   },
-  satellite: {
-    xPosition: {
-      scrollReset: 0.1,
-      scrollStart: 0.3,
-      initial: "-100vw"
-    },
-    opacity: {
-      input: [0, 0.28, 0.3, 0.88, 0.9],
-      output: ["0", "0", "1", "1", "0"],
-    },
-  },
   kettleRows: {
     entryRangeStart: 0.35,
     entryRangeEnd: 0.55,
