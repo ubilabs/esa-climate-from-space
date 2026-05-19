@@ -134,10 +134,15 @@ const CategoryNavigation: FunctionComponent = () => {
     },
   });
 
-  const { handleWheel } = useDesktopWheelNavigation({
+  const {
+    handleWheel: handleDesktopWheel,
+    previewIndex: desktopPreviewIndex,
+    isInteracting: isDesktopInteracting,
+  } = useDesktopWheelNavigation({
     enabled: !isMobile,
     currentIndex,
     itemCount: categoryTags.length,
+    stepPx,
     onIndexChange: setCurrentIndex,
   });
 
@@ -160,7 +165,20 @@ const CategoryNavigation: FunctionComponent = () => {
 
   useEffect(() => {
     if (!isMobile) {
-      return;
+      if (!isDesktopInteracting) {
+        return;
+      }
+
+      const unsubscribe = desktopPreviewIndex.on("change", (value) => {
+        y.set(value);
+        scale.set(value);
+      });
+
+      const nextIndex = desktopPreviewIndex.get();
+      y.set(nextIndex);
+      scale.set(nextIndex);
+
+      return unsubscribe;
     }
 
     const unsubscribe = dragIndex.on("change", (value) => {
@@ -172,7 +190,7 @@ const CategoryNavigation: FunctionComponent = () => {
     scale.set(dragIndex.get());
 
     return unsubscribe;
-  }, [dragIndex, isMobile, scale, y]);
+  }, [desktopPreviewIndex, dragIndex, isDesktopInteracting, isMobile, scale, y]);
 
   return (
     <motion.nav
@@ -186,7 +204,7 @@ const CategoryNavigation: FunctionComponent = () => {
         opacity: 0,
         transition: { duration: 0.2, ease: "easeIn" },
       }}
-      onWheel={handleWheel}
+      onWheel={handleDesktopWheel}
       onPanSessionStart={panHandlers.onPanSessionStart}
       onPan={panHandlers.onPan}
       onPanEnd={panHandlers.onPanEnd}

@@ -1,16 +1,24 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WheelEvent as ReactWheelEvent } from "react";
+import { MotionValue, useMotionValue } from "motion/react";
 
-const DESKTOP_WHEEL_STEP_THRESHOLD = 80;
 const DESKTOP_WHEEL_IDLE_MS = 140;
-const DESKTOP_WHEEL_NEW_GESTURE_DELTA = 24;
-const DESKTOP_WHEEL_RETRIGGER_MS = 90;
+const LINE_HEIGHT_PX = 16;
 
 interface UseDesktopWheelNavigationOptions {
   enabled: boolean;
   currentIndex: number;
   itemCount: number;
+  stepPx: number;
   onIndexChange: (nextIndex: number) => void;
+  onGestureStart?: () => void;
+  onGestureEnd?: (committedIndex: number) => void;
+}
+
+interface UseDesktopWheelNavigationResult {
+  handleWheel: (event: ReactWheelEvent<HTMLElement>) => void;
+  previewIndex: MotionValue<number>;
+  isInteracting: boolean;
 }
 
 const clamp = (value: number, min: number, max: number): number => {
@@ -25,16 +33,33 @@ const clamp = (value: number, min: number, max: number): number => {
   return value;
 };
 
+const normalizeWheelDelta = (event: ReactWheelEvent<HTMLElement>): number => {
+  if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) {
+    return event.deltaY * LINE_HEIGHT_PX;
+  }
+
+  if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
+    return event.deltaY * window.innerHeight;
+  }
+
+  return event.deltaY;
+};
+
 export const useDesktopWheelNavigation = ({
   enabled,
   currentIndex,
   itemCount,
+  stepPx,
   onIndexChange,
-}: UseDesktopWheelNavigationOptions) => {
-  const wheelDeltaRef = useRef(0);
-  const wheelLockedRef = useRef(false);
-  const lastWheelTriggerTimeRef = useRef(0);
+  onGestureStart,
+  onGestureEnd,
+}: UseDesktopWheelNavigationOptions): UseDesktopWheelNavigationResult => {
+  const previewIndex = useMotionValue(
+    clamp(currentIndex, 0, Math.max(itemCount - 1, 0)),
+  );
   const wheelIdleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isInteractingRef = useRef(false);
+  const [isInteracting, setIsInteracting] = useState(false);
 
   useEffect(() => {
     return () => {
@@ -50,56 +75,58 @@ export const useDesktopWheelNavigation = ({
     }
 
     wheelIdleTimeoutRef.current = setTimeout(() => {
-      wheelLockedRef.current = false;
-      wheelDeltaRef.current = 0;
+      const committedIndex = clamp(
+        Math.round(previewIndex.get()),
+        0,
+        itemCount - 1,
+      );
+
+      isInteractingRef.current = false;
+      setIsInteracting(false);
       wheelIdleTimeoutRef.current = null;
+
+      previewIndex.set(committedIndex);
+      onGestureEnd?.(committedIndex);
+
+      if (committedIndex !== currentIndex) {
+        onIndexChange(committedIndex);
+      }
     }, DESKTOP_WHEEL_IDLE_MS);
   };
 
-  const handleWheel = (event: ReactWheelEvent<HTMLElement>) => {
-    if (!enabled || itemCount <= 1) {
+  useEffect(() => {
+    const nextIndex = clamp(currentIndex, 0, Math.max(itemCount - 1, 0));
+
+    if (isInteractingRef.current) {
       return;
     }
 
-    const now = performance.now();
+    previewIndex.set(nextIndex);
+  }, [currentIndex, itemCount, previewIndex]);
+
+  const handleWheel = (event: ReactWheelEvent<HTMLElement>) => {
+    if (!enabled || itemCount <= 1 || stepPx <= 0) {
+      return;
+    }
 
     event.preventDefault();
-    refreshWheelIdle();
-
-    if (wheelLockedRef.current) {
-      const isFreshGesture =
-        Math.abs(event.deltaY) >= DESKTOP_WHEEL_NEW_GESTURE_DELTA &&
-        now - lastWheelTriggerTimeRef.current >= DESKTOP_WHEEL_RETRIGGER_MS;
-
-      if (!isFreshGesture) {
-        return;
-      }
-
-      wheelLockedRef.current = false;
-      wheelDeltaRef.current = 0;
+    if (!isInteractingRef.current) {
+      isInteractingRef.current = true;
+      setIsInteracting(true);
+      previewIndex.set(clamp(currentIndex, 0, itemCount - 1));
+      onGestureStart?.();
     }
 
-    wheelDeltaRef.current += event.deltaY;
-
-    if (Math.abs(wheelDeltaRef.current) < DESKTOP_WHEEL_STEP_THRESHOLD) {
-      return;
-    }
-
-    wheelLockedRef.current = true;
-    lastWheelTriggerTimeRef.current = now;
-
+    const delta = normalizeWheelDelta(event);
     const nextIndex = clamp(
-      currentIndex + Math.sign(wheelDeltaRef.current),
+      previewIndex.get() + delta / stepPx,
       0,
       itemCount - 1,
     );
 
-    wheelDeltaRef.current = 0;
-
-    if (nextIndex !== currentIndex) {
-      onIndexChange(nextIndex);
-    }
+    previewIndex.set(nextIndex);
+    refreshWheelIdle();
   };
 
-  return { handleWheel };
+  return { handleWheel, previewIndex, isInteracting };
 };
