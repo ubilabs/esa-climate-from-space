@@ -15,6 +15,7 @@ import { categoryTags } from "../../../config/main";
 import { useMobileMomentumNav } from "../../../libs/use-mobile-momentum-nav";
 import { useContentParams } from "../../../hooks/use-content-params";
 import { useScreenInfo } from "../../../hooks/use-screen-info";
+import { useGlobalKeyboardNavigation } from "../../../hooks/use-global-keyboard-navigation";
 import { setSelectedContentAction } from "../../../reducers/content";
 
 import styles from "./category-navigation.module.css";
@@ -32,6 +33,7 @@ interface CategoryNavItemProps {
   scaleValue: ReturnType<typeof useMotionValue<number>>;
   itemStepRem: number;
   scaleFactor: number;
+  selectedLinkRef?: React.RefObject<HTMLAnchorElement | null>;
 }
 
 const CategoryNavItem: FunctionComponent<CategoryNavItemProps> = ({
@@ -41,6 +43,7 @@ const CategoryNavItem: FunctionComponent<CategoryNavItemProps> = ({
   scaleValue,
   itemStepRem,
   scaleFactor,
+  selectedLinkRef,
 }) => {
   const input = categoryTags.map((_, entry) => entry);
   const yOutput = input.map((entry) => `${(index - entry) * itemStepRem}rem`);
@@ -61,7 +64,11 @@ const CategoryNavItem: FunctionComponent<CategoryNavItemProps> = ({
       }}
       style={{ scale, y }}
     >
-      <Link to={category} className={styles.categoryLink}>
+      <Link
+        ref={selectedLinkRef}
+        to={category}
+        className={styles.categoryLink}
+      >
         <motion.span style={{ opacity, x }}>
           <FormattedMessage id={`categories.${category}`} />
         </motion.span>
@@ -83,6 +90,7 @@ const CategoryNavigation: FunctionComponent = () => {
   const [currentIndex, setCurrentIndex] = useState(
     categoryIndex !== -1 ? categoryIndex : 0,
   );
+  const selectedLinkRef = useRef<HTMLAnchorElement | null>(null);
   const wheelDeltaRef = useRef(0);
   const wheelLockedRef = useRef(false);
   const lastWheelTriggerTimeRef = useRef(0);
@@ -129,6 +137,24 @@ const CategoryNavigation: FunctionComponent = () => {
       wheelIdleTimeoutRef.current = null;
     }, DESKTOP_WHEEL_IDLE_MS);
   };
+
+  const moveIndex = (direction: -1 | 1) => {
+    setCurrentIndex((prevIndex) =>
+      Math.min(
+        categoryTags.length - 1,
+        Math.max(0, prevIndex + direction),
+      ),
+    );
+  };
+
+  useGlobalKeyboardNavigation({
+    enabled: !isMobile && categoryTags.length > 1,
+    onPrevious: () => moveIndex(-1),
+    onNext: () => moveIndex(1),
+    onActivate: () => {
+      selectedLinkRef.current?.click();
+    },
+  });
 
   const handleWheel = (event: ReactWheelEvent<HTMLElement>) => {
     if (isMobile || categoryTags.length <= 1) {
@@ -242,6 +268,7 @@ const CategoryNavigation: FunctionComponent = () => {
             scaleValue={isMobile ? dragIndex : scale}
             itemStepRem={ITEM_STEP_REM}
             scaleFactor={scaleFactor}
+            selectedLinkRef={index === currentIndex ? selectedLinkRef : undefined}
           />
         ))}
       </ul>

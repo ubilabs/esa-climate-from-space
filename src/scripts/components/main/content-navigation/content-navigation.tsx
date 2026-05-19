@@ -30,6 +30,7 @@ import { StoryListItem } from "../../../types/story-list";
 import { AppRoute } from "../../../types/app-routes";
 
 import { useMobileMomentumNav } from "../../../libs/use-mobile-momentum-nav";
+import { useGlobalKeyboardNavigation } from "../../../hooks/use-global-keyboard-navigation";
 
 import { DownloadButton } from "../download-button/download-button";
 import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
@@ -40,7 +41,6 @@ const DESKTOP_WHEEL_STEP_THRESHOLD = 80;
 const DESKTOP_WHEEL_IDLE_MS = 140;
 const DESKTOP_WHEEL_NEW_GESTURE_DELTA = 24;
 const DESKTOP_WHEEL_RETRIGGER_MS = 90;
-const SIDE_EFFECT_IDLE_DELAY_MS = 1000;
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -67,6 +67,7 @@ interface ItemProps {
   GAP_BETWEEN_ELEMENTS: number;
   RADIUS: number;
   onFocus: (index: number) => void;
+  selectedLinkRef?: React.RefObject<HTMLAnchorElement | null>;
 }
 
 const ContentNavItem: FunctionComponent<ItemProps> = ({
@@ -81,6 +82,7 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
   GAP_BETWEEN_ELEMENTS,
   RADIUS,
   onFocus,
+  selectedLinkRef,
 }) => {
   const { id } = item;
   const name = "title" in item ? item.title : item.name;
@@ -150,7 +152,10 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
       }}
       onFocus={() => onFocus(index)}
     >
-      <Link to={isStory ? `/${category}/stories/${id}/0` : `/${category}/data`}>
+      <Link
+        ref={isActive ? selectedLinkRef : undefined}
+        to={isStory ? `/${category}/stories/${id}/0` : `/${category}/data`}
+      >
         <div>
           <span>{name}</span>
           {/* for electron*/}
@@ -210,10 +215,10 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const wheelDeltaRef = useRef(0);
   const wheelLockedRef = useRef(false);
   const lastWheelTriggerTimeRef = useRef(0);
-  const hasInitializedSettledIndexRef = useRef(false);
   const wheelIdleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
   );
+  const hasInitializedSettledIndexRef = useRef(false);
 
   // The spread between the elements in the circle
   const GAP_BETWEEN_ELEMENTS = isMobile ? 16 : 12;
@@ -226,6 +231,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const y = useMotionValue(validInitialIndex);
   const opacity = useMotionValue(validInitialIndex);
+  const activeLinkRef = useRef<HTMLAnchorElement | null>(null);
 
   const { index: dragIndex, panHandlers } = useMobileMomentumNav({
     itemCount: reordered.length,
@@ -247,6 +253,30 @@ const ContentNavigation: FunctionComponent<Props> = ({
       wheelIdleTimeoutRef.current = null;
     }, DESKTOP_WHEEL_IDLE_MS);
   };
+
+  const moveIndex = (direction: -1 | 1) => {
+    setCurrentIndex((prevIndex) => {
+      const nextIndex = Math.min(
+        reordered.length - 1,
+        Math.max(0, prevIndex + direction),
+      );
+
+      if (nextIndex !== prevIndex) {
+        setPreviewIndex(nextIndex);
+      }
+
+      return nextIndex;
+    });
+  };
+
+  useGlobalKeyboardNavigation({
+    enabled: !isMobile && reordered.length > 1,
+    onPrevious: () => moveIndex(-1),
+    onNext: () => moveIndex(1),
+    onActivate: () => {
+      activeLinkRef.current?.click();
+    },
+  });
 
   const handleWheel = (event: ReactWheelEvent<HTMLUListElement>) => {
     if (isMobile || reordered.length <= 1) {
@@ -302,6 +332,24 @@ const ContentNavigation: FunctionComponent<Props> = ({
       }
     };
   }, []);
+
+  useEffect(() => {
+    if (!hasInitializedSettledIndexRef.current) {
+      hasInitializedSettledIndexRef.current = true;
+      setSettledIndex(currentIndex);
+      return;
+    }
+
+    setSettledIndex(null);
+
+    const timeout = setTimeout(() => {
+      setSettledIndex(currentIndex);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [currentIndex]);
 
   useLayoutEffect(() => {
     if (!isMobile || !listRef.current || reordered.length <= 1) {
@@ -360,24 +408,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
   }, [currentIndex]);
 
   useEffect(() => {
-    if (!hasInitializedSettledIndexRef.current) {
-      hasInitializedSettledIndexRef.current = true;
-      setSettledIndex(currentIndex);
-      return;
-    }
-
-    setSettledIndex(null);
-
-    const timeout = setTimeout(() => {
-      setSettledIndex(currentIndex);
-    }, SIDE_EFFECT_IDLE_DELAY_MS);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [currentIndex]);
-
-  useEffect(() => {
     if (!isMobile) {
       return;
     }
@@ -418,12 +448,8 @@ const ContentNavigation: FunctionComponent<Props> = ({
   }, [settledContent, settledContentId]);
 
   useEffect(() => {
-    if (settledIndex === null) {
-      dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-      return;
-    }
-
     if (!settledContentId || !settledContent) {
+      dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
       return;
     }
 
@@ -445,7 +471,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
   }, [dispatch, settledContent, settledContentId, settledIndex]);
 
   useEffect(() => {
-    if (settledIndex === null || !settledContentId || !settledContent) {
+    if (!settledContentId || !settledContent) {
       return;
     }
 
@@ -519,6 +545,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             GAP_BETWEEN_ELEMENTS={GAP_BETWEEN_ELEMENTS}
             RADIUS={RADIUS}
             onFocus={setCurrentIndex}
+            selectedLinkRef={activeLinkRef}
           />
         ))}
         {/* This is the highlight of the currently selected item.
