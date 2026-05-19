@@ -1,4 +1,12 @@
-import { FunctionComponent, useEffect, useMemo, useState } from "react";
+import {
+  FunctionComponent,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+  WheelEvent as ReactWheelEvent,
+} from "react";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -21,12 +29,18 @@ import { LayerListItem } from "../../../types/layer-list";
 import { StoryListItem } from "../../../types/story-list";
 import { AppRoute } from "../../../types/app-routes";
 
-import { useNavGestures } from "../../../libs/use-nav-gestures";
+import { useMobileMomentumNav } from "../../../libs/use-mobile-momentum-nav";
 
 import { DownloadButton } from "../download-button/download-button";
 import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 
 import styles from "./content-navigation.module.css";
+
+const DESKTOP_WHEEL_STEP_THRESHOLD = 80;
+const DESKTOP_WHEEL_IDLE_MS = 140;
+const DESKTOP_WHEEL_NEW_GESTURE_DELTA = 24;
+const DESKTOP_WHEEL_RETRIGGER_MS = 90;
+const SIDE_EFFECT_IDLE_DELAY_MS = 1000;
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -44,7 +58,8 @@ interface Props {
 interface ItemProps {
   item: StoryListItem | LayerListItem;
   index: number;
-  currentIndex: number;
+  dataIndex: number;
+  activeIndex: number;
   y: ReturnType<typeof useMotionValue<number>>;
   opacity: ReturnType<typeof useMotionValue<number>>;
   category: string | null;
@@ -58,7 +73,8 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
   opacity,
   item,
   index,
-  currentIndex,
+  dataIndex,
+  activeIndex,
   y,
   category,
   isMobile,
@@ -109,10 +125,11 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
     Math.round(v) === index ? "auto" : "none",
   );
 
-  const isActive = currentIndex === index;
+  const isActive = activeIndex === index;
 
   return (
     <motion.li
+      data-index={dataIndex}
       data-content-id={item.id}
       data-layer-id={isStory ? "" : id}
       className={cx(styles.contentNavItem, isActive && styles.active)}
@@ -124,7 +141,13 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
       initial={{
         y: "-50%",
       }}
-      style={{ top, left, opacity: opacityValue, rotate, pointerEvents }}
+      style={{
+        top,
+        left,
+        opacity: opacityValue,
+        rotate,
+        pointerEvents: isMobile ? pointerEvents : "auto",
+      }}
       onFocus={() => onFocus(index)}
     >
       <Link to={isStory ? `/${category}/stories/${id}/0` : `/${category}/data`}>
@@ -178,8 +201,19 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const validInitialIndex = initialIndex !== -1 ? initialIndex : centerIndex;
 
   const [currentIndex, setCurrentIndex] = useState<number>(validInitialIndex);
-
-  useNavGestures(reordered.length, setCurrentIndex, "y");
+  const [previewIndex, setPreviewIndex] = useState<number>(validInitialIndex);
+  const [settledIndex, setSettledIndex] = useState<number | null>(
+    validInitialIndex,
+  );
+  const listRef = useRef<HTMLUListElement | null>(null);
+  const [stepPx, setStepPx] = useState(1);
+  const wheelDeltaRef = useRef(0);
+  const wheelLockedRef = useRef(false);
+  const lastWheelTriggerTimeRef = useRef(0);
+  const hasInitializedSettledIndexRef = useRef(false);
+  const wheelIdleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
 
   // The spread between the elements in the circle
   const GAP_BETWEEN_ELEMENTS = isMobile ? 16 : 12;
@@ -193,29 +227,209 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const y = useMotionValue(validInitialIndex);
   const opacity = useMotionValue(validInitialIndex);
 
-  const splashSource = useMemo(() => {
-    const contentId = reordered[currentIndex]?.id;
-    if (isStoryListItem(reordered[currentIndex])) {
-      if (contentId !== AppRoute.StoryEEI) {
-        return getStorySplashImage(contentId);
-      }
+  const { index: dragIndex, panHandlers } = useMobileMomentumNav({
+    itemCount: reordered.length,
+    initialIndex: currentIndex,
+    stepPx,
+    infinite: false,
+    isEnabled: isMobile,
+    onIndexChange: setCurrentIndex,
+  });
+
+  const refreshWheelIdle = () => {
+    if (wheelIdleTimeoutRef.current) {
+      clearTimeout(wheelIdleTimeoutRef.current);
     }
-    return "";
-  }, [currentIndex, reordered]);
+
+    wheelIdleTimeoutRef.current = setTimeout(() => {
+      wheelLockedRef.current = false;
+      wheelDeltaRef.current = 0;
+      wheelIdleTimeoutRef.current = null;
+    }, DESKTOP_WHEEL_IDLE_MS);
+  };
+
+  const handleWheel = (event: ReactWheelEvent<HTMLUListElement>) => {
+    if (isMobile || reordered.length <= 1) {
+      return;
+    }
+
+    const now = performance.now();
+
+    event.preventDefault();
+    refreshWheelIdle();
+
+    if (wheelLockedRef.current) {
+      const isFreshGesture =
+        Math.abs(event.deltaY) >= DESKTOP_WHEEL_NEW_GESTURE_DELTA &&
+        now - lastWheelTriggerTimeRef.current >= DESKTOP_WHEEL_RETRIGGER_MS;
+
+      if (!isFreshGesture) {
+        return;
+      }
+
+      wheelLockedRef.current = false;
+      wheelDeltaRef.current = 0;
+    }
+
+    wheelDeltaRef.current += event.deltaY;
+
+    if (Math.abs(wheelDeltaRef.current) < DESKTOP_WHEEL_STEP_THRESHOLD) {
+      return;
+    }
+
+    const direction = Math.sign(wheelDeltaRef.current);
+    wheelLockedRef.current = true;
+    lastWheelTriggerTimeRef.current = now;
+    const nextIndex = Math.min(
+      reordered.length - 1,
+      Math.max(0, currentIndex + direction),
+    );
+
+    wheelDeltaRef.current = 0;
+
+    if (nextIndex === currentIndex) {
+      return;
+    }
+
+    setPreviewIndex(nextIndex);
+    setCurrentIndex(nextIndex);
+  };
 
   useEffect(() => {
+    return () => {
+      if (wheelIdleTimeoutRef.current) {
+        clearTimeout(wheelIdleTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!isMobile || !listRef.current || reordered.length <= 1) {
+      return;
+    }
+
+    const measureStep = () => {
+      const items = Array.from(
+        listRef.current?.querySelectorAll<HTMLLIElement>("li[data-index]") ??
+          [],
+      );
+
+      if (items.length <= 1) {
+        return;
+      }
+
+      const activeIndex = Math.min(currentIndex, items.length - 2);
+      const currentItem = items[activeIndex];
+      const nextItem = items[activeIndex + 1];
+
+      if (!currentItem || !nextItem) {
+        return;
+      }
+
+      const currentTop = currentItem.getBoundingClientRect().top;
+      const nextTop = nextItem.getBoundingClientRect().top;
+      const nextStep = Math.abs(nextTop - currentTop);
+
+      if (nextStep > 0) {
+        setStepPx(nextStep);
+      }
+    };
+
+    measureStep();
+    window.addEventListener("resize", measureStep);
+
+    return () => {
+      window.removeEventListener("resize", measureStep);
+    };
+  }, [currentIndex, isMobile, reordered.length]);
+
+  useEffect(() => {
+    if (isMobile) {
+      return;
+    }
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPreviewIndex(currentIndex);
     animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
     animate(opacity, currentIndex, { duration: 0.1 });
-  }, [currentIndex, y, opacity]);
+  }, [currentIndex, isMobile, y, opacity]);
 
   useEffect(() => {
-    const contentId = reordered[currentIndex]?.id;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPreviewIndex(currentIndex);
+  }, [currentIndex]);
 
-    dispatch(setSelectedContentAction({ contentId }));
+  useEffect(() => {
+    if (!hasInitializedSettledIndexRef.current) {
+      hasInitializedSettledIndexRef.current = true;
+      setSettledIndex(currentIndex);
+      return;
+    }
+
+    setSettledIndex(null);
+
+    const timeout = setTimeout(() => {
+      setSettledIndex(currentIndex);
+    }, SIDE_EFFECT_IDLE_DELAY_MS);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [currentIndex]);
+
+  useEffect(() => {
+    if (!isMobile) {
+      return;
+    }
+
+    const unsubscribe = dragIndex.on("change", (value) => {
+      y.set(value);
+      opacity.set(value);
+      setPreviewIndex(Math.round(value));
+    });
+
+    const nextIndex = dragIndex.get();
+    y.set(nextIndex);
+    opacity.set(nextIndex);
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setPreviewIndex(Math.round(nextIndex));
+    return unsubscribe;
+  }, [dragIndex, isMobile, opacity, y]);
+
+  const settledContent =
+    settledIndex === null ? null : (reordered[settledIndex] ?? null);
+  const settledContentId = settledContent?.id;
+
+  useEffect(() => {
+    dispatch(setSelectedContentAction({ contentId: settledContentId ?? null }));
+  }, [dispatch, settledContentId]);
+
+  const splashSource = useMemo(() => {
+    if (
+      settledContent &&
+      isStoryListItem(settledContent) &&
+      settledContentId !== AppRoute.StoryEEI
+    ) {
+      return getStorySplashImage(settledContentId);
+    }
+
+    return "";
+  }, [settledContent, settledContentId]);
+
+  useEffect(() => {
+    if (settledIndex === null) {
+      dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+      return;
+    }
+
+    if (!settledContentId || !settledContent) {
+      return;
+    }
 
     // We don't want to dispatch a layer action with story ids (except for EEI-story)
-    if (isStoryListItem(reordered[currentIndex])) {
-      if (contentId !== AppRoute.StoryEEI) {
+    if (isStoryListItem(settledContent)) {
+      if (settledContentId !== AppRoute.StoryEEI) {
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
       } else {
         dispatch(
@@ -225,51 +439,36 @@ const ContentNavigation: FunctionComponent<Props> = ({
       return;
     }
 
-    const timeout = setTimeout(() => {
-      dispatch(setSelectedLayerIds({ layerId: contentId, isPrimary: true }));
-    }, 100);
+    dispatch(
+      setSelectedLayerIds({ layerId: settledContentId, isPrimary: true }),
+    );
+  }, [dispatch, settledContent, settledContentId, settledIndex]);
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [dispatch, currentIndex, reordered]);
-
-  // Trigger flyTo when the user remains on the previewed list item for 1 second
-  // Checks if the position is given
   useEffect(() => {
-    const contentId = reordered[currentIndex]?.id;
+    if (settledIndex === null || !settledContentId || !settledContent) {
+      return;
+    }
 
-    const timeout = setTimeout(() => {
-      if (contentId) {
-        const previewedContent = reordered.find(({ id }) => id === contentId);
+    const altitude =
+      config.globe.view.altitude * (isMobile ? 1.2 : ALTITUDE_FACTOR_DESKTOP);
 
-        const altitude =
-          config.globe.view.altitude *
-          (isMobile ? 1.2 : ALTITUDE_FACTOR_DESKTOP);
-
-        dispatch(
-          setFlyTo({
-            ...(previewedContent?.position?.length === 2
-              ? {
-                  lat: previewedContent.position[1],
-                  lng: previewedContent.position[0],
-                  isAnimated: true,
-                  altitude,
-                }
-              : {
-                  ...config.globe.view,
-                  isAnimated: true,
-                  altitude,
-                }),
-          }),
-        );
-      }
-    }, 100);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [dispatch, currentIndex, reordered, isMobile]);
+    dispatch(
+      setFlyTo({
+        ...(settledContent?.position?.length === 2
+          ? {
+              lat: settledContent.position[1],
+              lng: settledContent.position[0],
+              isAnimated: true,
+              altitude,
+            }
+          : {
+              ...config.globe.view,
+              isAnimated: true,
+              altitude,
+            }),
+      }),
+    );
+  }, [dispatch, isMobile, settledContent, settledContentId, settledIndex]);
 
   // Get the middle x coordinate for the highlight of the active item
   const { x } = getNavCoordinates(0, GAP_BETWEEN_ELEMENTS, RADIUS, isMobile);
@@ -287,6 +486,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
         ) : null}
       </div>
       <motion.ul
+        ref={listRef}
         key="content-ul"
         initial={{ opacity: 0 }}
         animate={{
@@ -300,13 +500,18 @@ const ContentNavigation: FunctionComponent<Props> = ({
         className={cx(styles.contentNav, className)}
         role="listbox"
         aria-label="Content navigation"
+        onWheel={handleWheel}
+        onPanSessionStart={panHandlers.onPanSessionStart}
+        onPan={panHandlers.onPan}
+        onPanEnd={panHandlers.onPanEnd}
       >
         {reordered.map((item, index) => (
           <ContentNavItem
             key={item.id}
             item={item}
             index={index}
-            currentIndex={currentIndex}
+            dataIndex={index}
+            activeIndex={previewIndex}
             y={y}
             opacity={opacity}
             category={category ?? null}
@@ -318,13 +523,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
         ))}
         {/* This is the highlight of the currently selected item.
       It serves a visual purpose only */}
-        <span
-          aria-hidden="true"
-          style={{
-            // The 8px or 24px is the offset of the highlight to the left
-            left: `calc(${x}% - ${isMobile ? "16" : "12"}px)`,
-          }}
-        ></span>
+        {settledIndex !== null ? (
+          <span
+            aria-hidden="true"
+            style={{
+              // The 8px or 24px is the offset of the highlight to the left
+              left: `calc(${x}% - ${isMobile ? "16" : "12"}px)`,
+            }}
+          ></span>
+        ) : null}
       </motion.ul>
     </>
   );
