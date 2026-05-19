@@ -1,17 +1,74 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import {
+  FunctionComponent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  WheelEvent as ReactWheelEvent,
+} from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import cx from "classnames";
 import { FormattedMessage } from "react-intl";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
 
 import { categoryTags } from "../../../config/main";
-import { useNavGestures } from "../../../libs/use-nav-gestures";
+import { useMobileMomentumNav } from "../../../libs/use-mobile-momentum-nav";
 import { useContentParams } from "../../../hooks/use-content-params";
 import { useScreenInfo } from "../../../hooks/use-screen-info";
 import { setSelectedContentAction } from "../../../reducers/content";
 
 import styles from "./category-navigation.module.css";
+
+const CATEGORY_NAV_INFINITE = false;
+const DESKTOP_WHEEL_STEP_THRESHOLD = 80;
+const DESKTOP_WHEEL_IDLE_MS = 140;
+const DESKTOP_WHEEL_NEW_GESTURE_DELTA = 24;
+const DESKTOP_WHEEL_RETRIGGER_MS = 90;
+
+interface CategoryNavItemProps {
+  category: string;
+  index: number;
+  positionValue: ReturnType<typeof useMotionValue<number>>;
+  scaleValue: ReturnType<typeof useMotionValue<number>>;
+  itemStepRem: number;
+  scaleFactor: number;
+}
+
+const CategoryNavItem: FunctionComponent<CategoryNavItemProps> = ({
+  category,
+  index,
+  positionValue,
+  scaleValue,
+  itemStepRem,
+  scaleFactor,
+}) => {
+  const input = categoryTags.map((_, entry) => entry);
+  const yOutput = input.map((entry) => `${(index - entry) * itemStepRem}rem`);
+  const y = useTransform(positionValue, input, yOutput);
+
+  const scale = useTransform(
+    scaleValue,
+    [index - 1, index, index + 1],
+    [1, scaleFactor, 1],
+  );
+  const opacity = useTransform(scaleValue, [index - 1, index, index + 1], [0.8, 1, 0.8]);
+  const x = useTransform(scaleValue, [index - 1, index, index + 1], [0, 10, 0]);
+
+  return (
+    <motion.li
+      initial={{
+        top: "50%",
+      }}
+      style={{ scale, y }}
+    >
+      <Link to={category} className={styles.categoryLink}>
+        <motion.span style={{ opacity, x }}>
+          <FormattedMessage id={`categories.${category}`} />
+        </motion.span>
+      </Link>
+    </motion.li>
+  );
+};
 
 const CategoryNavigation: FunctionComponent = () => {
   const { category } = useContentParams();
@@ -26,32 +83,137 @@ const CategoryNavigation: FunctionComponent = () => {
   const [currentIndex, setCurrentIndex] = useState(
     categoryIndex !== -1 ? categoryIndex : 0,
   );
-
-  // Custom hook to handle wheel and drag gestures for navigation
-  useNavGestures(categoryTags.length, setCurrentIndex, "y", true);
+  const wheelDeltaRef = useRef(0);
+  const wheelLockedRef = useRef(false);
+  const lastWheelTriggerTimeRef = useRef(0);
+  const wheelIdleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
 
   // Gap between category elements: line-height (1.375rem) + gap (1.5rem) = 2.875rem ≈ 46px at 16px base
   const ITEM_STEP_REM = isMobile ? 2.875 : 5.375;
 
-  const input = Array.from({ length: categoryTags.length }).map(
-    (_, index) => index,
-  );
-
   const y = useMotionValue(currentIndex);
   const scale = useMotionValue(currentIndex);
+  const scaleFactor = isMobile ? 1.75 : 3.1;
+
+  const stepPx = useMemo(() => {
+    if (typeof window === "undefined") {
+      return 1;
+    }
+
+    const rootFontSize = parseFloat(
+      window.getComputedStyle(document.documentElement).fontSize,
+    );
+
+    return ITEM_STEP_REM * rootFontSize;
+  }, [ITEM_STEP_REM]);
+
+  const { index: dragIndex, panHandlers } = useMobileMomentumNav({
+    itemCount: categoryTags.length,
+    initialIndex: currentIndex,
+    stepPx,
+    infinite: CATEGORY_NAV_INFINITE,
+    isEnabled: isMobile,
+    onIndexChange: setCurrentIndex,
+  });
+
+  const refreshWheelIdle = () => {
+    if (wheelIdleTimeoutRef.current) {
+      clearTimeout(wheelIdleTimeoutRef.current);
+    }
+
+    wheelIdleTimeoutRef.current = setTimeout(() => {
+      wheelLockedRef.current = false;
+      wheelDeltaRef.current = 0;
+      wheelIdleTimeoutRef.current = null;
+    }, DESKTOP_WHEEL_IDLE_MS);
+  };
+
+  const handleWheel = (event: ReactWheelEvent<HTMLElement>) => {
+    if (isMobile || categoryTags.length <= 1) {
+      return;
+    }
+
+    const now = performance.now();
+
+    event.preventDefault();
+    refreshWheelIdle();
+
+    if (wheelLockedRef.current) {
+      const isFreshGesture =
+        Math.abs(event.deltaY) >= DESKTOP_WHEEL_NEW_GESTURE_DELTA &&
+        now - lastWheelTriggerTimeRef.current >= DESKTOP_WHEEL_RETRIGGER_MS;
+
+      if (!isFreshGesture) {
+        return;
+      }
+
+      wheelLockedRef.current = false;
+      wheelDeltaRef.current = 0;
+    }
+
+    wheelDeltaRef.current += event.deltaY;
+
+    if (Math.abs(wheelDeltaRef.current) < DESKTOP_WHEEL_STEP_THRESHOLD) {
+      return;
+    }
+
+    const direction = Math.sign(wheelDeltaRef.current);
+    wheelLockedRef.current = true;
+    lastWheelTriggerTimeRef.current = now;
+    const nextIndex = Math.min(
+      categoryTags.length - 1,
+      Math.max(0, currentIndex + direction),
+    );
+
+    wheelDeltaRef.current = 0;
+
+    if (nextIndex !== currentIndex) {
+      setCurrentIndex(nextIndex);
+    }
+  };
 
   useEffect(() => {
-    animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
-    animate(scale, currentIndex, {
-      type: "tween",
-      stiffness: 300,
-      damping: 30,
-    });
+    return () => {
+      if (wheelIdleTimeoutRef.current) {
+        clearTimeout(wheelIdleTimeoutRef.current);
+      }
+    };
+  }, []);
 
+  useEffect(() => {
     dispatch(
       setSelectedContentAction({ category: categoryTags[currentIndex] }),
     );
-  }, [currentIndex, y, scale, dispatch]);
+
+    if (isMobile) {
+      return;
+    }
+
+    animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
+    animate(scale, currentIndex, {
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
+    });
+  }, [currentIndex, y, scale, dispatch, isMobile]);
+
+  useEffect(() => {
+    if (!isMobile) {
+      return;
+    }
+
+    const unsubscribe = dragIndex.on("change", (value) => {
+      y.set(value);
+      scale.set(value);
+    });
+
+    y.set(dragIndex.get());
+    scale.set(dragIndex.get());
+
+    return unsubscribe;
+  }, [dragIndex, isMobile, scale, y]);
 
   return (
     <motion.nav
@@ -65,41 +227,23 @@ const CategoryNavigation: FunctionComponent = () => {
         opacity: 0,
         transition: { duration: 0.2, ease: "easeIn" },
       }}
+      onWheel={handleWheel}
+      onPanSessionStart={panHandlers.onPanSessionStart}
+      onPan={panHandlers.onPan}
+      onPanEnd={panHandlers.onPanEnd}
     >
       <ul className={styles.list}>
-        {categoryTags.map((cat, index) => {
-          const output = input.map(
-            (entry) => `${(index - entry) * ITEM_STEP_REM}rem`,
-          );
-
-          const scaleFactor = isMobile ? 1.75 : 3.1;
-          const scaleOutput = input.map((entry) =>
-            entry === index ? scaleFactor : 1,
-          );
-          return (
-            <motion.li
-              key={cat}
-              className={cx(currentIndex === index && styles.selectedEntry)}
-              initial={{
-                top: "50%",
-              }}
-              style={{
-                // it is fine to use a motion hook here
-                // eslint-disable-next-line react-hooks/rules-of-hooks
-                scale: useTransform(scale, input, scaleOutput),
-                // eslint-disable-next-line react-hooks/rules-of-hooks
-                y: useTransform(y, input, output),
-              }}
-            >
-              <Link
-                to={categoryTags[index]}
-                className={styles.categoryLink}
-              >
-                {<FormattedMessage id={`categories.${cat}`} />}
-              </Link>
-            </motion.li>
-          );
-        })}
+        {categoryTags.map((cat, index) => (
+          <CategoryNavItem
+            key={cat}
+            category={cat}
+            index={index}
+            positionValue={isMobile ? dragIndex : y}
+            scaleValue={isMobile ? dragIndex : scale}
+            itemStepRem={ITEM_STEP_REM}
+            scaleFactor={scaleFactor}
+          />
+        ))}
       </ul>
     </motion.nav>
   );
