@@ -155,12 +155,21 @@ const CategoryNavigation: FunctionComponent = () => {
       return;
     }
 
-    animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
-    animate(scale, currentIndex, {
-      type: "spring",
-      stiffness: 300,
-      damping: 30,
+    const yAnimation = animate(y, currentIndex, {
+      type: "tween",
+      duration: 0.2,
+      ease: [0.22, 1, 0.36, 1],
     });
+    const scaleAnimation = animate(scale, currentIndex, {
+      type: "tween",
+      duration: 0.18,
+      ease: [0.22, 1, 0.36, 1],
+    });
+
+    return () => {
+      yAnimation.stop();
+      scaleAnimation.stop();
+    };
   }, [currentIndex, y, scale, dispatch, isMobile]);
 
   useEffect(() => {

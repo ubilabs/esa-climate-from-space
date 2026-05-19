@@ -80,17 +80,20 @@ export const useDesktopWheelNavigation = ({
         0,
         itemCount - 1,
       );
+      const hasIndexChanged = committedIndex !== currentIndex;
 
       isInteractingRef.current = false;
       setIsInteracting(false);
       wheelIdleTimeoutRef.current = null;
 
-      previewIndex.set(committedIndex);
       onGestureEnd?.(committedIndex);
 
-      if (committedIndex !== currentIndex) {
+      if (hasIndexChanged) {
         onIndexChange(committedIndex);
+        return;
       }
+
+      previewIndex.set(committedIndex);
     }, DESKTOP_WHEEL_IDLE_MS);
   };
 

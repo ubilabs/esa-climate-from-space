@@ -379,8 +379,20 @@ const ContentNavigation: FunctionComponent<Props> = ({
     }
 
     setPreviewIndex(currentIndex);
-    animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
-    animate(opacity, currentIndex, { duration: 0.1 });
+    const yAnimation = animate(y, currentIndex, {
+      type: "tween",
+      duration: 0.2,
+      ease: [0.22, 1, 0.36, 1],
+    });
+    const opacityAnimation = animate(opacity, currentIndex, {
+      duration: 0.12,
+      ease: "easeOut",
+    });
+
+    return () => {
+      yAnimation.stop();
+      opacityAnimation.stop();
+    };
   }, [currentIndex, isMobile, y, opacity]);
 
   useEffect(() => {

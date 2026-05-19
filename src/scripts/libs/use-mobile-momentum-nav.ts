@@ -10,6 +10,10 @@ const DRAG_RESISTANCE = 1.35;
 const DRAG_SNAP_DURATION = 0.22;
 const EXTERNAL_SYNC_EPSILON = 0.001;
 const MAX_DRAG_STEPS_FOR_SWIPE = 0.75;
+const SWIPE_SETTLE_STIFFNESS = 180;
+const SWIPE_SETTLE_DAMPING = 34;
+const EXTERNAL_SYNC_STIFFNESS = 320;
+const EXTERNAL_SYNC_DAMPING = 40;
 
 const clamp = (value: number, min: number, max: number): number => {
   if (value < min) {
@@ -141,8 +145,8 @@ export const useMobileMomentumNav = ({
     commitIndex(nextIndex);
     animationRef.current = animate(index, nextIndex, {
       type: "spring",
-      stiffness: 220,
-      damping: 30,
+      stiffness: SWIPE_SETTLE_STIFFNESS,
+      damping: SWIPE_SETTLE_DAMPING,
       mass: 1,
       velocity: -velocity / stepPx,
       onComplete: () => {
@@ -169,8 +173,8 @@ export const useMobileMomentumNav = ({
     stop();
     animationRef.current = animate(index, normalizedInitial, {
       type: "spring",
-      stiffness: 420,
-      damping: 42,
+      stiffness: EXTERNAL_SYNC_STIFFNESS,
+      damping: EXTERNAL_SYNC_DAMPING,
       mass: 0.8,
       onComplete: () => {
         animationRef.current = null;
