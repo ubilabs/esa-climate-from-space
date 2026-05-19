@@ -5,7 +5,6 @@ import {
   useMemo,
   useRef,
   useState,
-  WheelEvent as ReactWheelEvent,
 } from "react";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,16 +30,12 @@ import { AppRoute } from "../../../types/app-routes";
 
 import { useMobileMomentumNav } from "../../../libs/use-mobile-momentum-nav";
 import { useGlobalKeyboardNavigation } from "../../../hooks/use-global-keyboard-navigation";
+import { useDesktopWheelNavigation } from "../../../hooks/use-desktop-wheel-navigation";
 
 import { DownloadButton } from "../download-button/download-button";
 import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 
 import styles from "./content-navigation.module.css";
-
-const DESKTOP_WHEEL_STEP_THRESHOLD = 80;
-const DESKTOP_WHEEL_IDLE_MS = 140;
-const DESKTOP_WHEEL_NEW_GESTURE_DELTA = 24;
-const DESKTOP_WHEEL_RETRIGGER_MS = 90;
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -212,12 +207,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
   );
   const listRef = useRef<HTMLUListElement | null>(null);
   const [stepPx, setStepPx] = useState(1);
-  const wheelDeltaRef = useRef(0);
-  const wheelLockedRef = useRef(false);
-  const lastWheelTriggerTimeRef = useRef(0);
-  const wheelIdleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
-    null,
-  );
   const hasInitializedSettledIndexRef = useRef(false);
 
   // The spread between the elements in the circle
@@ -241,18 +230,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
     isEnabled: isMobile,
     onIndexChange: setCurrentIndex,
   });
-
-  const refreshWheelIdle = () => {
-    if (wheelIdleTimeoutRef.current) {
-      clearTimeout(wheelIdleTimeoutRef.current);
-    }
-
-    wheelIdleTimeoutRef.current = setTimeout(() => {
-      wheelLockedRef.current = false;
-      wheelDeltaRef.current = 0;
-      wheelIdleTimeoutRef.current = null;
-    }, DESKTOP_WHEEL_IDLE_MS);
-  };
 
   const moveIndex = (direction: -1 | 1) => {
     setCurrentIndex((prevIndex) => {
@@ -278,60 +255,15 @@ const ContentNavigation: FunctionComponent<Props> = ({
     },
   });
 
-  const handleWheel = (event: ReactWheelEvent<HTMLUListElement>) => {
-    if (isMobile || reordered.length <= 1) {
-      return;
-    }
-
-    const now = performance.now();
-
-    event.preventDefault();
-    refreshWheelIdle();
-
-    if (wheelLockedRef.current) {
-      const isFreshGesture =
-        Math.abs(event.deltaY) >= DESKTOP_WHEEL_NEW_GESTURE_DELTA &&
-        now - lastWheelTriggerTimeRef.current >= DESKTOP_WHEEL_RETRIGGER_MS;
-
-      if (!isFreshGesture) {
-        return;
-      }
-
-      wheelLockedRef.current = false;
-      wheelDeltaRef.current = 0;
-    }
-
-    wheelDeltaRef.current += event.deltaY;
-
-    if (Math.abs(wheelDeltaRef.current) < DESKTOP_WHEEL_STEP_THRESHOLD) {
-      return;
-    }
-
-    const direction = Math.sign(wheelDeltaRef.current);
-    wheelLockedRef.current = true;
-    lastWheelTriggerTimeRef.current = now;
-    const nextIndex = Math.min(
-      reordered.length - 1,
-      Math.max(0, currentIndex + direction),
-    );
-
-    wheelDeltaRef.current = 0;
-
-    if (nextIndex === currentIndex) {
-      return;
-    }
-
-    setPreviewIndex(nextIndex);
-    setCurrentIndex(nextIndex);
-  };
-
-  useEffect(() => {
-    return () => {
-      if (wheelIdleTimeoutRef.current) {
-        clearTimeout(wheelIdleTimeoutRef.current);
-      }
-    };
-  }, []);
+  const { handleWheel } = useDesktopWheelNavigation({
+    enabled: !isMobile,
+    currentIndex,
+    itemCount: reordered.length,
+    onIndexChange: (nextIndex) => {
+      setPreviewIndex(nextIndex);
+      setCurrentIndex(nextIndex);
+    },
+  });
 
   useEffect(() => {
     if (!hasInitializedSettledIndexRef.current) {

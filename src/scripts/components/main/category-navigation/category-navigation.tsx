@@ -4,7 +4,6 @@ import {
   useMemo,
   useRef,
   useState,
-  WheelEvent as ReactWheelEvent,
 } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -16,15 +15,12 @@ import { useMobileMomentumNav } from "../../../libs/use-mobile-momentum-nav";
 import { useContentParams } from "../../../hooks/use-content-params";
 import { useScreenInfo } from "../../../hooks/use-screen-info";
 import { useGlobalKeyboardNavigation } from "../../../hooks/use-global-keyboard-navigation";
+import { useDesktopWheelNavigation } from "../../../hooks/use-desktop-wheel-navigation";
 import { setSelectedContentAction } from "../../../reducers/content";
 
 import styles from "./category-navigation.module.css";
 
 const CATEGORY_NAV_INFINITE = false;
-const DESKTOP_WHEEL_STEP_THRESHOLD = 80;
-const DESKTOP_WHEEL_IDLE_MS = 140;
-const DESKTOP_WHEEL_NEW_GESTURE_DELTA = 24;
-const DESKTOP_WHEEL_RETRIGGER_MS = 90;
 
 interface CategoryNavItemProps {
   category: string;
@@ -91,12 +87,6 @@ const CategoryNavigation: FunctionComponent = () => {
     categoryIndex !== -1 ? categoryIndex : 0,
   );
   const selectedLinkRef = useRef<HTMLAnchorElement | null>(null);
-  const wheelDeltaRef = useRef(0);
-  const wheelLockedRef = useRef(false);
-  const lastWheelTriggerTimeRef = useRef(0);
-  const wheelIdleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
-    null,
-  );
 
   // Gap between category elements: line-height (1.375rem) + gap (1.5rem) = 2.875rem ≈ 46px at 16px base
   const ITEM_STEP_REM = isMobile ? 2.875 : 5.375;
@@ -126,18 +116,6 @@ const CategoryNavigation: FunctionComponent = () => {
     onIndexChange: setCurrentIndex,
   });
 
-  const refreshWheelIdle = () => {
-    if (wheelIdleTimeoutRef.current) {
-      clearTimeout(wheelIdleTimeoutRef.current);
-    }
-
-    wheelIdleTimeoutRef.current = setTimeout(() => {
-      wheelLockedRef.current = false;
-      wheelDeltaRef.current = 0;
-      wheelIdleTimeoutRef.current = null;
-    }, DESKTOP_WHEEL_IDLE_MS);
-  };
-
   const moveIndex = (direction: -1 | 1) => {
     setCurrentIndex((prevIndex) =>
       Math.min(
@@ -156,57 +134,12 @@ const CategoryNavigation: FunctionComponent = () => {
     },
   });
 
-  const handleWheel = (event: ReactWheelEvent<HTMLElement>) => {
-    if (isMobile || categoryTags.length <= 1) {
-      return;
-    }
-
-    const now = performance.now();
-
-    event.preventDefault();
-    refreshWheelIdle();
-
-    if (wheelLockedRef.current) {
-      const isFreshGesture =
-        Math.abs(event.deltaY) >= DESKTOP_WHEEL_NEW_GESTURE_DELTA &&
-        now - lastWheelTriggerTimeRef.current >= DESKTOP_WHEEL_RETRIGGER_MS;
-
-      if (!isFreshGesture) {
-        return;
-      }
-
-      wheelLockedRef.current = false;
-      wheelDeltaRef.current = 0;
-    }
-
-    wheelDeltaRef.current += event.deltaY;
-
-    if (Math.abs(wheelDeltaRef.current) < DESKTOP_WHEEL_STEP_THRESHOLD) {
-      return;
-    }
-
-    const direction = Math.sign(wheelDeltaRef.current);
-    wheelLockedRef.current = true;
-    lastWheelTriggerTimeRef.current = now;
-    const nextIndex = Math.min(
-      categoryTags.length - 1,
-      Math.max(0, currentIndex + direction),
-    );
-
-    wheelDeltaRef.current = 0;
-
-    if (nextIndex !== currentIndex) {
-      setCurrentIndex(nextIndex);
-    }
-  };
-
-  useEffect(() => {
-    return () => {
-      if (wheelIdleTimeoutRef.current) {
-        clearTimeout(wheelIdleTimeoutRef.current);
-      }
-    };
-  }, []);
+  const { handleWheel } = useDesktopWheelNavigation({
+    enabled: !isMobile,
+    currentIndex,
+    itemCount: categoryTags.length,
+    onIndexChange: setCurrentIndex,
+  });
 
   useEffect(() => {
     dispatch(
