@@ -378,6 +378,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
       return;
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview index is kept in sync with the current item
     setPreviewIndex(currentIndex);
     const yAnimation = animate(y, currentIndex, {
       type: "tween",
@@ -413,12 +414,14 @@ const ContentNavigation: FunctionComponent<Props> = ({
     const nextIndex = desktopPreviewIndex.get();
     y.set(nextIndex);
     opacity.set(nextIndex);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview index mirrors the animated value
     setPreviewIndex(Math.round(nextIndex));
 
     return unsubscribe;
   }, [desktopPreviewIndex, isDesktopInteracting, isMobile, opacity, y, currentIndex]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview index follows the current item
     setPreviewIndex(currentIndex);
   }, [currentIndex]);
 
@@ -437,6 +440,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
     y.set(nextIndex);
     opacity.set(nextIndex);
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview index mirrors the drag position
     setPreviewIndex(Math.round(nextIndex));
     return unsubscribe;
   }, [dragIndex, isMobile, opacity, y]);
