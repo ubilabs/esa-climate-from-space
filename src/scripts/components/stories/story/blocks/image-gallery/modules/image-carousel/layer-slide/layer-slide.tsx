@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import cx from "classnames";
 
 import { setSelectedLayerIds } from "../../../../../../../../reducers/layers";
@@ -11,6 +11,7 @@ import { useGetLayerListQuery } from "../../../../../../../../services/api";
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 
 import { ImageCarouselSlide } from "../../../../../../../../types/story";
+import { AppLocationState } from "../../../../../../../../types/location-state";
 
 import styles from "./layer-slide.module.css";
 
@@ -26,16 +27,22 @@ const LayerSlide: React.FC<LayerSlideProps> = ({
   storyId,
 }) => {
   const dispatch = useDispatch();
+  const location = useLocation<AppLocationState>();
   const language = useSelector(languageSelector);
   const { data: layers } = useGetLayerListQuery(language);
   const { url = "", altText = "", layer } = slide;
   const category = layers?.find((l) => l.id === layer?.layerId)?.categories[0];
+  const navigationState: AppLocationState = {
+    ...location.state,
+    backLink: location.state?.backLink || location.pathname + location.search,
+  };
 
   return (
     <div ref={slideElementRef} className={cx(styles.slide)}>
       {layer && category && (
         <Link
           to={`/${category}/data`}
+          state={navigationState}
           onClick={() =>
             dispatch(
               setSelectedLayerIds({
