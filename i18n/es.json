@@ -162,7 +162,7 @@
   "category.swipe": "desliza para navegar",
   "category.scroll": "desplázate para \nnavegar",
   "category.scrollOrArrow": "desplázate o usa las teclas de flecha para explorar",
-  "contentNav.scrollHint": "arriba para datos, abajo para historias.",
+  "contentNav.scrollHint": "arriba para historias, abajo para datos.",
   "contentNav.hintDatasets": "Datos",
   "contentNav.hintStories": "Historias",
   "learn_more": "más información",
