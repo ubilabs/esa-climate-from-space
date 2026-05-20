@@ -222,7 +222,7 @@
       "content": {
         "scrollText1": "Earth's energy is out of balance.",
         "scrollText2": "More energy comes in from the Sun than we lose to space.",
-        "scrollText3": "Increasing amounts of greenhouse gases in the atmosphere are trapping some of the incoming energy as heat."
+        "scrollText3": "Increasing levels of greenhouse gases in the atmosphere are trapping some of the incoming energy as heat."
       }
     },
     {
@@ -273,8 +273,8 @@
       "lengthFactor": 28,
       "type": "kettleAmountModule",
       "content": {
-        "scrollText": "That square metre is now trapping much more heat.",
-        "overlay1": "But accumulated over a year, it's enough energy to boil 70 kettles of water.",
+        "scrollText": "That square metre is now trapping almost 3 times as much heat.",
+        "overlay1": "But accumulated over a year, 1.4 Watts is enough energy to boil 70 kettles of water.",
         "overlay2": "Satellites have been measuring the solar energy reaching and leaving Earth since the the 1990s. ",
         "overlay3": "Thirty years ago the energy imbalance was much smaller."
       }
@@ -440,8 +440,7 @@
       "lengthFactor": 8,
       "type": "treeMapModule",
       "title": {
-        "grid": "Energy absorption",
-        "globe": "Surface area"
+        "grid": "Although the ocean covers 71% of Earth’s surface, it absorbs 91% of the incoming energy."
       },
       "data": [
         {
@@ -523,7 +522,7 @@
       "lengthFactor": 6,
       "type": "quoteSlide",
       "content": {
-        "text": "The CCI project Monitoring the Energy Cycle for a Better Understanding of Climate Change (MOTECUSOMA) is calculating new estimates of Earth’s energy imbalance and surface air temperature. Scientific analyses using these datasets will help climate modelers forecast future changes with more accuracy.",
+        "text": "ESA’s Climate Change Initiative project MOTECUSOMA (Monitoring the Energy Cycle for a Better Understanding of Climate Change) is calculating new estimates of Earth’s energy imbalance and surface air temperature. Scientific analyses using these datasets will help climate modelers forecast future changes with more accuracy.",
         "author": "MOTECUSOMA Team"
       }
     },

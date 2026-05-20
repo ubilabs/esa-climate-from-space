@@ -31,7 +31,6 @@ function QuoteContent() {
       }}
     >
       <p>{module.content?.text}</p>
-      <span>{module.content?.author}</span>
     </motion.div>
   );
 }

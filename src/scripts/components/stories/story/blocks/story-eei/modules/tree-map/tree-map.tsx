@@ -28,13 +28,13 @@ export default function TreeMapModule() {
         <div className={styles.slide}>
           <h1 className={styles.label}>{highlightedData?.label}</h1>
           <div className={styles.panelContainer}>
+            <h2 className={styles.title}>{module.title.grid}</h2>
             <div
               className={cx(
                 styles.gridPanel,
                 !highlightedData && styles.hidden,
               )}
             >
-              <h2 className={styles.title}>{module.title.grid}</h2>
               <TreeMapGrid
                 data={module.data}
                 onHighlightGridCell={setHighlightedLayerId}
