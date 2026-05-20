@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 export const GlobeSyncIcon: FunctionComponent = () => (
   <svg
     width="24"
-    height="24"
+    height="10"
     viewBox="0 0 20 10"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
