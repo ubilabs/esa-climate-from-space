@@ -29,6 +29,18 @@
     display: flex;
     width: 100%;
 
+    .title {
+      position: absolute;
+      transform: translateX(-50%);
+      left: 50%;
+      bottom: 70%;
+
+      @media screen and (--mobile-viewport) {
+        bottom: 80%;
+        width: 90%;
+      }
+    }
+
     @media screen and (--mobile-viewport) {
       flex-direction: column-reverse;
       align-items: center;
@@ -63,17 +75,6 @@
       @media screen and (--mobile-viewport) {
         height: calc(50% - var(--headline-font-size));
         justify-content: center;
-      }
-
-      .title {
-        position: absolute;
-        left: calc((50vw + var(--globe-container-x)));
-        transform: translateX(-50%);
-        width: max-content;
-
-        @media screen and (--mobile-viewport) {
-          height: max-content;
-        }
       }
     }
 
