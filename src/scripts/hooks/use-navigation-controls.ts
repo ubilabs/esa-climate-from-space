@@ -50,6 +50,7 @@ export const useNavigationControls = ({
   const [stepPx, setStepPx] = useState(1);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reset when the initial index changes
     setCurrentIndex(initialIndex);
     setPreviewIndex(initialIndex);
   }, [initialIndex]);
@@ -149,6 +150,7 @@ export const useNavigationControls = ({
       return;
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview state mirrors the current index during desktop navigation
     setPreviewIndex(currentIndex);
 
     return onAnimateToCurrentIndex?.(currentIndex);
@@ -166,6 +168,7 @@ export const useNavigationControls = ({
 
     const nextIndex = desktopPreviewIndex.get();
     onSyncPreviewValue(nextIndex);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview state mirrors the animated motion value
     setPreviewIndex(Math.round(nextIndex));
 
     return unsubscribe;
@@ -177,6 +180,7 @@ export const useNavigationControls = ({
   ]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview state mirrors the committed index
     setPreviewIndex(currentIndex);
   }, [currentIndex]);
 
@@ -192,6 +196,7 @@ export const useNavigationControls = ({
 
     const nextIndex = dragIndex.get();
     onSyncPreviewValue(nextIndex);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview state mirrors the drag motion value
     setPreviewIndex(Math.round(nextIndex));
 
     return unsubscribe;
