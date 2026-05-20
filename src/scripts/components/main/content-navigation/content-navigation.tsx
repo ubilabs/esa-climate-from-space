@@ -39,6 +39,8 @@ import { DownloadButton } from "../download-button/download-button";
 import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 import { SwipeUpIcon } from "../icons/swipe-up-icon";
 import { SwipeDownIcon } from "../icons/swipe-down-icon";
+import { MouseScrollIcon } from "../icons/mouse-scroll-icon";
+import { KeyboardNavIcon } from "../icons/keyboard-nav-icon";
 
 import styles from "./content-navigation.module.css";
 
@@ -497,73 +499,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
         <div className={styles.scrollHintDesktop}>
           <div className={styles.scrollHintIcons}>
             {/* Mouse scroll icon */}
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M23 12C24.1046 12 25 12.8954 25 14V18C25 19.1046 24.1046 20 23 20C21.8954 20 21 19.1046 21 18V14C21 12.8954 21.8954 12 23 12Z"
-                fill="white"
-              />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M24 4C30.6274 4 36 9.37258 36 16V32L35.9961 32.3096C35.8345 38.691 30.691 43.8345 24.3096 43.9961L24 44H22L21.6904 43.9961C15.309 43.8345 10.1655 38.691 10.0039 32.3096L10 32V16C10 9.37258 15.3726 4 22 4H24ZM22 6C16.4772 6 12 10.4772 12 16V32C12 37.5228 16.4772 42 22 42H24C29.5228 42 34 37.5228 34 32V16C34 10.4772 29.5228 6 24 6H22Z"
-                fill="white"
-              />
-            </svg>
+            <MouseScrollIcon />
             {/* Keyboard navigation keys icon */}
-            <svg
-              width="68"
-              height="46"
-              viewBox="0 0 68 46"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="24"
-                y="1"
-                width="18"
-                height="18"
-                rx="3"
-                stroke="white"
-                strokeWidth="2"
-              />
-              <path d="M33 6l-5 6h10l-5-6z" fill="white" />
-              <rect
-                x="1"
-                y="27"
-                width="18"
-                height="18"
-                rx="3"
-                stroke="white"
-                strokeWidth="2"
-              />
-              <path d="M6 36l6-5v10l-6-5z" fill="white" />
-              <rect
-                x="25"
-                y="27"
-                width="18"
-                height="18"
-                rx="3"
-                stroke="white"
-                strokeWidth="2"
-              />
-              <path d="M34 42l5-6H29l5 6z" fill="white" />
-              <rect
-                x="49"
-                y="27"
-                width="18"
-                height="18"
-                rx="3"
-                stroke="white"
-                strokeWidth="2"
-              />
-              <path d="M62 36l-6-5v10l6-5z" fill="white" />
-            </svg>
+            <KeyboardNavIcon />
           </div>
           <p className={styles.scrollHintText}>
             <FormattedMessage id="contentNav.scrollHint" />
