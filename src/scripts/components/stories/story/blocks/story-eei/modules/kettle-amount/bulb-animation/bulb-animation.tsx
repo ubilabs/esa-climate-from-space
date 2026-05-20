@@ -105,7 +105,7 @@ export default function BulbAnimation() {
           className={styles.bulbInfo}
           initial={{ opacity: 0 }}
         >
-          It’s a tiny amount of power. Less than a nightlight.
+          It’s a tiny amount of power. Less than an LED light a nightlight.
         </motion.span>
       </div>
     </motion.div>
