@@ -37,6 +37,8 @@ import { useNavigationControls } from "../../../hooks/use-navigation-controls";
 
 import { DownloadButton } from "../download-button/download-button";
 import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
+import { SwipeUpIcon } from "../icons/swipe-up-icon";
+import { SwipeDownIcon } from "../icons/swipe-down-icon";
 
 import styles from "./content-navigation.module.css";
 
@@ -479,37 +481,13 @@ const ContentNavigation: FunctionComponent<Props> = ({
         {/* Mobile: swipe gesture hints */}
         <div className={styles.scrollHintMobile}>
           <div className={styles.scrollHintSwipeItem}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9 11.5V8.5C9 8.22 9.22 8 9.5 8s.5.22.5.5v3h1V7.5c0-.28.22-.5.5-.5s.5.22.5.5V11h1V8.5c0-.28.22-.5.5-.5s.5.22.5.5V11h1V9.5c0-.28.22-.5.5-.5s.5.22.5.5V13c0 2.76-2.24 5-5 5s-5-2.24-5-5v-1.5c0-.28.22-.5.5-.5s.5.22.5.5V13H9v-1.5z"
-                fill="white"
-              />
-              <path d="M11.5 2L9 5h2v3h1V5h2l-2.5-3z" fill="white" />
-            </svg>
+            <SwipeUpIcon />
             <span className={styles.scrollHintLabel}>
               <FormattedMessage id="contentNav.hintDatasets" />
             </span>
           </div>
           <div className={styles.scrollHintSwipeItem}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9 11.5V8.5C9 8.22 9.22 8 9.5 8s.5.22.5.5v3h1V7.5c0-.28.22-.5.5-.5s.5.22.5.5V11h1V8.5c0-.28.22-.5.5-.5s.5.22.5.5V11h1V9.5c0-.28.22-.5.5-.5s.5.22.5.5V13c0 2.76-2.24 5-5 5s-5-2.24-5-5v-1.5c0-.28.22-.5.5-.5s.5.22.5.5V13H9v-1.5z"
-                fill="white"
-              />
-              <path d="M11.5 9l2.5 3h-2v3h-1v-3H9l2.5-3z" fill="white" />
-            </svg>
+            <SwipeDownIcon />
             <span className={styles.scrollHintLabel}>
               <FormattedMessage id="contentNav.hintStories" />
             </span>
