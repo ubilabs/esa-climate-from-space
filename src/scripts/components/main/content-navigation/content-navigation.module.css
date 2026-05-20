@@ -208,3 +208,82 @@
     }
   }
 }
+
+.scrollHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.scrollHintHidden {
+  opacity: 0 !important;
+}
+
+.scrollHintMobile {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (--desktop-viewport) {
+    display: none;
+  }
+}
+
+.scrollHintSwipeItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.scrollHintLabel {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: white;
+  white-space: nowrap;
+}
+
+.scrollHintDesktop {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  @media screen and (--desktop-viewport) {
+    display: flex;
+    padding: 24px 0;
+  }
+}
+
+.scrollHintIcons {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.scrollHintText {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  margin: 0;
+}
