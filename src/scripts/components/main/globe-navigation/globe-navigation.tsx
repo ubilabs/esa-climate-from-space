@@ -11,6 +11,7 @@ import { timeSelector } from "../../../selectors/globe/time";
 import Button from "../button/button";
 import { CompassIcon } from "../icons/compass-icon";
 import { GlobeSyncIcon } from "../icons/globe-sync-icon";
+import { GlobeSyncOffIcon } from "../icons/globe-sync-off-icon";
 import { DownloadIcon } from "../icons/download-icon";
 import { LocationIcon } from "../icons/location-icon";
 
@@ -22,6 +23,7 @@ import { GlobeProjection } from "../../../types/globe-projection";
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
 import { toggleMultiGlobeSync } from "../../../reducers/globe/multi-globe-sync";
+import { multiGlobeSyncEnabledSelector } from "../../../selectors/globe/multi-globe-sync";
 
 import styles from "./globe-navigation.module.css";
 
@@ -46,6 +48,7 @@ const GlobeNavigation: FunctionComponent = () => {
   );
 
   const isCompareLayerSelected = Boolean(compareLayer);
+  const multiGlobeSyncEnabled = useSelector(multiGlobeSyncEnabledSelector);
 
   const onProjectionHandler = () => {
     const newProjection =
@@ -91,7 +94,7 @@ const GlobeNavigation: FunctionComponent = () => {
       {isCompareLayerSelected && (
         <Button
           className={styles.toggleMultiGlobeSync}
-          icon={GlobeSyncIcon}
+          icon={multiGlobeSyncEnabled ? GlobeSyncIcon : GlobeSyncOffIcon}
           label="multiGlobeSync.label"
           ariaLabel="multiGlobeSync.label"
           hideLabelOnMobile
