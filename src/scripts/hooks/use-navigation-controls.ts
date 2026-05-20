@@ -15,6 +15,7 @@ interface UseNavigationControlsOptions {
   onDesktopGestureEnd?: (currentIndex: number) => void;
   onMobilePanSessionStart?: () => void;
   onMobilePanEnd?: (currentIndex: number) => void;
+  onKeyboardNavigation?: () => void;
 }
 
 interface UseNavigationControlsResult {
@@ -42,6 +43,7 @@ export const useNavigationControls = ({
   onDesktopGestureEnd,
   onMobilePanSessionStart,
   onMobilePanEnd,
+  onKeyboardNavigation,
 }: UseNavigationControlsOptions): UseNavigationControlsResult => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [previewIndex, setPreviewIndex] = useState(initialIndex);
@@ -66,6 +68,7 @@ export const useNavigationControls = ({
     });
 
   const moveIndex = (direction: -1 | 1) => {
+    onKeyboardNavigation?.();
     setCurrentIndex((previousIndex) => {
       const nextIndex = Math.min(
         itemCount - 1,
@@ -113,7 +116,8 @@ export const useNavigationControls = ({
 
     const measureStep = () => {
       const items = Array.from(
-        listRef.current?.querySelectorAll<HTMLLIElement>("li[data-index]") ?? [],
+        listRef.current?.querySelectorAll<HTMLLIElement>("li[data-index]") ??
+          [],
       );
 
       if (items.length <= 1) {
@@ -172,12 +176,7 @@ export const useNavigationControls = ({
     setPreviewIndex(Math.round(nextIndex));
 
     return unsubscribe;
-  }, [
-    desktopPreviewIndex,
-    isDesktopInteracting,
-    isMobile,
-    onSyncPreviewValue,
-  ]);
+  }, [desktopPreviewIndex, isDesktopInteracting, isMobile, onSyncPreviewValue]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- preview state mirrors the committed index
