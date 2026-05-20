@@ -483,13 +483,13 @@ const ContentNavigation: FunctionComponent<Props> = ({
           <div className={styles.scrollHintSwipeItem}>
             <SwipeUpIcon />
             <span className={styles.scrollHintLabel}>
-              <FormattedMessage id="contentNav.hintDatasets" />
+              <FormattedMessage id="contentNav.hintStories" />
             </span>
           </div>
           <div className={styles.scrollHintSwipeItem}>
             <SwipeDownIcon />
             <span className={styles.scrollHintLabel}>
-              <FormattedMessage id="contentNav.hintStories" />
+              <FormattedMessage id="contentNav.hintDatasets" />
             </span>
           </div>
         </div>
