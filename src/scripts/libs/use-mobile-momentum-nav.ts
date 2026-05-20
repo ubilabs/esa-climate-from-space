@@ -1,18 +1,31 @@
 import { useEffect, useRef } from "react";
 import { animate, MotionValue, PanInfo, useMotionValue } from "motion/react";
 
+// Scales swipe velocity into index movement.
 const MOMENTUM_FACTOR = 24;
+// Minimum vertical velocity for a drag to count as a swipe.
 const MIN_SWIPE_VELOCITY = 0.6;
+// Minimum drag distance before swipe logic can apply.
 const MIN_SWIPE_DISTANCE_PX = 18;
+// Caps how many indices a swipe can release at once.
 const MAX_RELEASE_STEPS = 2;
+// Small drags below this threshold are ignored.
 const MIN_DRAG_DISTANCE_PX = 10;
+// Softens drag distance so motion feels less linear.
 const DRAG_RESISTANCE = 1.35;
+// Duration for snapping back to the nearest index.
 const DRAG_SNAP_DURATION = 0.22;
+// Tolerance for skipping external sync when values are already aligned.
 const EXTERNAL_SYNC_EPSILON = 0.001;
+// Maximum drag distance, in steps, that still counts as a swipe.
 const MAX_DRAG_STEPS_FOR_SWIPE = 0.75;
+// Spring stiffness for the swipe settle animation.
 const SWIPE_SETTLE_STIFFNESS = 180;
+// Spring damping for the swipe settle animation.
 const SWIPE_SETTLE_DAMPING = 34;
+// Spring stiffness for syncing to external index changes.
 const EXTERNAL_SYNC_STIFFNESS = 320;
+// Spring damping for syncing to external index changes.
 const EXTERNAL_SYNC_DAMPING = 40;
 
 const clamp = (value: number, min: number, max: number): number => {

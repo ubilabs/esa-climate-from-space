@@ -13,7 +13,7 @@ import cx from "classnames";
 
 import { useContentParams } from "../../../hooks/use-content-params";
 
-import config, { ALTITUDE_FACTOR_DESKTOP } from "../../../config/main";
+import config, { ALTITUDE_FACTOR_DESKTOP, ALTITUDE_FACTOR_MOBILE } from "../../../config/main";
 import { getNavCoordinates } from "../../../libs/get-navigation-position";
 import { replaceUrlPlaceholders } from "../../../libs/replace-url-placeholders";
 import { getStorySplashImage } from "../../../libs/get-story-splash-image";
@@ -367,7 +367,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
     }
 
     const altitude =
-      config.globe.view.altitude * (isMobile ? 1.2 : ALTITUDE_FACTOR_DESKTOP);
+      config.globe.view.altitude * (isMobile ? ALTITUDE_FACTOR_MOBILE : ALTITUDE_FACTOR_DESKTOP);
 
     dispatch(
       setFlyTo({
@@ -445,7 +445,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
           <span
             aria-hidden="true"
             style={{
-              // The 8px or 24px is the offset of the highlight to the left
               left: `calc(${x}% - ${isMobile ? "16" : "12"}px)`,
             }}
           ></span>
