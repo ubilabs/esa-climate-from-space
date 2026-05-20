@@ -8,6 +8,8 @@
   height: 100%;
   width: 100%;
   left: 10vw;
+  touch-action: none;
+  user-select: none;
 
   @media (--desktop-viewport) {
     grid-area: splash-and-nav-area;
