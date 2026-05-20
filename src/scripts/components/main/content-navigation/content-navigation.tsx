@@ -2,7 +2,6 @@ import {
   useCallback,
   FunctionComponent,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -30,9 +29,7 @@ import { StoryListItem } from "../../../types/story-list";
 import { AppRoute } from "../../../types/app-routes";
 import { AppLocationState } from "../../../types/location-state";
 
-import { useMobileMomentumNav } from "../../../libs/use-mobile-momentum-nav";
-import { useGlobalKeyboardNavigation } from "../../../hooks/use-global-keyboard-navigation";
-import { useDesktopWheelNavigation } from "../../../hooks/use-desktop-wheel-navigation";
+import { useNavigationControls } from "../../../hooks/use-navigation-controls";
 
 import { DownloadButton } from "../download-button/download-button";
 import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
@@ -220,13 +217,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const validInitialIndex = initialIndex !== -1 ? initialIndex : centerIndex;
 
-  const [currentIndex, setCurrentIndex] = useState<number>(validInitialIndex);
-  const [previewIndex, setPreviewIndex] = useState<number>(validInitialIndex);
   const [settledIndex, setSettledIndex] = useState<number | null>(
     validInitialIndex,
   );
-  const listRef = useRef<HTMLUListElement | null>(null);
-  const [stepPx, setStepPx] = useState(1);
   const hasInitializedSettledIndexRef = useRef(false);
   const settledIndexTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
@@ -243,40 +236,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const y = useMotionValue(validInitialIndex);
   const opacity = useMotionValue(validInitialIndex);
-  const activeLinkRef = useRef<HTMLAnchorElement | null>(null);
-
-  const { index: dragIndex, panHandlers } = useMobileMomentumNav({
-    itemCount: reordered.length,
-    initialIndex: currentIndex,
-    stepPx,
-    infinite: false,
-    isEnabled: isMobile,
-    onIndexChange: setCurrentIndex,
-  });
-
-  const moveIndex = (direction: -1 | 1) => {
-    setCurrentIndex((prevIndex) => {
-      const nextIndex = Math.min(
-        reordered.length - 1,
-        Math.max(0, prevIndex + direction),
-      );
-
-      if (nextIndex !== prevIndex) {
-        setPreviewIndex(nextIndex);
-      }
-
-      return nextIndex;
-    });
-  };
-
-  useGlobalKeyboardNavigation({
-    enabled: !isMobile && reordered.length > 1,
-    onPrevious: () => moveIndex(-1),
-    onNext: () => moveIndex(1),
-    onActivate: () => {
-      activeLinkRef.current?.click();
-    },
-  });
 
   const clearSettledIndexTimeout = useCallback(() => {
     if (settledIndexTimeoutRef.current) {
@@ -294,23 +253,49 @@ const ContentNavigation: FunctionComponent<Props> = ({
   }, [clearSettledIndexTimeout]);
 
   const {
-    handleWheel,
-    previewIndex: desktopPreviewIndex,
-    isInteracting: isDesktopInteracting,
-  } = useDesktopWheelNavigation({
-    enabled: !isMobile,
     currentIndex,
+    setCurrentIndex,
+    previewIndex,
+    listRef,
+    selectedLinkRef: activeLinkRef,
+    handleWheel,
+    panHandlers,
+  } = useNavigationControls({
     itemCount: reordered.length,
-    stepPx,
-    onIndexChange: (nextIndex) => {
-      setPreviewIndex(nextIndex);
-      setCurrentIndex(nextIndex);
+    initialIndex: validInitialIndex,
+    isMobile,
+    onSyncPreviewValue: (value) => {
+      y.set(value);
+      opacity.set(value);
     },
-    onGestureStart: () => {
+    onAnimateToCurrentIndex: (nextIndex) => {
+      const yAnimation = animate(y, nextIndex, {
+        type: "tween",
+        duration: 0.2,
+        ease: [0.22, 1, 0.36, 1],
+      });
+      const opacityAnimation = animate(opacity, nextIndex, {
+        duration: 0.12,
+        ease: "easeOut",
+      });
+
+      return () => {
+        yAnimation.stop();
+        opacityAnimation.stop();
+      };
+    },
+    onDesktopGestureStart: () => {
       clearSettledIndexTimeout();
       setSettledIndex(null);
     },
-    onGestureEnd: (nextIndex) => {
+    onDesktopGestureEnd: (nextIndex) => {
+      scheduleSettledIndex(nextIndex);
+    },
+    onMobilePanSessionStart: () => {
+      clearSettledIndexTimeout();
+      setSettledIndex(null);
+    },
+    onMobilePanEnd: (nextIndex) => {
       scheduleSettledIndex(nextIndex);
     },
   });
@@ -332,118 +317,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
       clearSettledIndexTimeout();
     };
   }, [currentIndex, clearSettledIndexTimeout, scheduleSettledIndex]);
-
-  useLayoutEffect(() => {
-    if (!listRef.current || reordered.length <= 1) {
-      return;
-    }
-
-    const measureStep = () => {
-      const items = Array.from(
-        listRef.current?.querySelectorAll<HTMLLIElement>("li[data-index]") ??
-          [],
-      );
-
-      if (items.length <= 1) {
-        return;
-      }
-
-      const activeIndex = Math.min(currentIndex, items.length - 2);
-      const currentItem = items[activeIndex];
-      const nextItem = items[activeIndex + 1];
-
-      if (!currentItem || !nextItem) {
-        return;
-      }
-
-      const currentTop = currentItem.getBoundingClientRect().top;
-      const nextTop = nextItem.getBoundingClientRect().top;
-      const nextStep = Math.abs(nextTop - currentTop);
-
-      if (nextStep > 0) {
-        setStepPx(nextStep);
-      }
-    };
-
-    measureStep();
-    window.addEventListener("resize", measureStep);
-
-    return () => {
-      window.removeEventListener("resize", measureStep);
-    };
-  }, [currentIndex, reordered.length]);
-
-  useEffect(() => {
-    if (isMobile) {
-      return;
-    }
-
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview index is kept in sync with the current item
-    setPreviewIndex(currentIndex);
-    const yAnimation = animate(y, currentIndex, {
-      type: "tween",
-      duration: 0.2,
-      ease: [0.22, 1, 0.36, 1],
-    });
-    const opacityAnimation = animate(opacity, currentIndex, {
-      duration: 0.12,
-      ease: "easeOut",
-    });
-
-    return () => {
-      yAnimation.stop();
-      opacityAnimation.stop();
-    };
-  }, [currentIndex, isMobile, y, opacity]);
-
-  useEffect(() => {
-    if (isMobile) {
-      return;
-    }
-
-    if (!isDesktopInteracting) {
-      return;
-    }
-
-    const unsubscribe = desktopPreviewIndex.on("change", (value) => {
-      y.set(value);
-      opacity.set(value);
-      setPreviewIndex(Math.round(value));
-    });
-
-    const nextIndex = desktopPreviewIndex.get();
-    y.set(nextIndex);
-    opacity.set(nextIndex);
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview index mirrors the animated value
-    setPreviewIndex(Math.round(nextIndex));
-
-    return unsubscribe;
-  }, [desktopPreviewIndex, isDesktopInteracting, isMobile, opacity, y, currentIndex]);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview index follows the current item
-    setPreviewIndex(currentIndex);
-  }, [currentIndex]);
-
-  useEffect(() => {
-    if (!isMobile) {
-      return;
-    }
-
-    const unsubscribe = dragIndex.on("change", (value) => {
-      y.set(value);
-      opacity.set(value);
-      setPreviewIndex(Math.round(value));
-    });
-
-    const nextIndex = dragIndex.get();
-    y.set(nextIndex);
-    opacity.set(nextIndex);
-
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- preview index mirrors the drag position
-    setPreviewIndex(Math.round(nextIndex));
-    return unsubscribe;
-  }, [dragIndex, isMobile, opacity, y]);
 
   const settledContent =
     settledIndex === null ? null : (reordered[settledIndex] ?? null);
@@ -545,22 +418,9 @@ const ContentNavigation: FunctionComponent<Props> = ({
         role="listbox"
         aria-label="Content navigation"
         onWheel={handleWheel}
-        onPanSessionStart={() => {
-          if (isMobile) {
-            clearSettledIndexTimeout();
-            setSettledIndex(null);
-          }
-
-          panHandlers.onPanSessionStart();
-        }}
+        onPanSessionStart={panHandlers.onPanSessionStart}
         onPan={panHandlers.onPan}
-        onPanEnd={(event, info) => {
-          panHandlers.onPanEnd(event, info);
-
-          if (isMobile) {
-            scheduleSettledIndex(Math.round(dragIndex.get()));
-          }
-        }}
+        onPanEnd={panHandlers.onPanEnd}
       >
         {reordered.map((item, index) => (
           <ContentNavItem
