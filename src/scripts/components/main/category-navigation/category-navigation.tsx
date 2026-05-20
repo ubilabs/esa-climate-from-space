@@ -1,7 +1,7 @@
 import {
   FunctionComponent,
   useEffect,
-  useMemo,
+  useLayoutEffect,
   useRef,
   useState,
 } from "react";
@@ -29,6 +29,8 @@ interface CategoryNavItemProps {
   scaleValue: ReturnType<typeof useMotionValue<number>>;
   itemStepRem: number;
   scaleFactor: number;
+  isActive: boolean;
+  isMobile: boolean;
   selectedLinkRef?: React.RefObject<HTMLAnchorElement | null>;
 }
 
@@ -39,6 +41,8 @@ const CategoryNavItem: FunctionComponent<CategoryNavItemProps> = ({
   scaleValue,
   itemStepRem,
   scaleFactor,
+  isActive,
+  isMobile,
   selectedLinkRef,
 }) => {
   const input = categoryTags.map((_, entry) => entry);
@@ -52,18 +56,27 @@ const CategoryNavItem: FunctionComponent<CategoryNavItemProps> = ({
   );
   const opacity = useTransform(scaleValue, [index - 1, index, index + 1], [0.8, 1, 0.8]);
   const x = useTransform(scaleValue, [index - 1, index, index + 1], [0, 10, 0]);
+  const pointerEvents = useTransform(positionValue, (value) =>
+    Math.round(value) === index ? "auto" : "none",
+  );
 
   return (
     <motion.li
+      data-index={index}
       initial={{
         top: "50%",
       }}
-      style={{ scale, y }}
+      style={{
+        scale,
+        y,
+        pointerEvents: isMobile ? pointerEvents : "auto",
+      }}
     >
       <Link
-        ref={selectedLinkRef}
+        ref={isActive ? selectedLinkRef : undefined}
         to={category}
         className={styles.categoryLink}
+        tabIndex={isActive ? 0 : -1}
       >
         <motion.span style={{ opacity, x }}>
           <FormattedMessage id={`categories.${category}`} />
@@ -86,7 +99,12 @@ const CategoryNavigation: FunctionComponent = () => {
   const [currentIndex, setCurrentIndex] = useState(
     categoryIndex !== -1 ? categoryIndex : 0,
   );
+  const [previewIndex, setPreviewIndex] = useState(
+    categoryIndex !== -1 ? categoryIndex : 0,
+  );
   const selectedLinkRef = useRef<HTMLAnchorElement | null>(null);
+  const listRef = useRef<HTMLUListElement | null>(null);
+  const [stepPx, setStepPx] = useState(1);
 
   // Gap between category elements: line-height (1.375rem) + gap (1.5rem) = 2.875rem ≈ 46px at 16px base
   const ITEM_STEP_REM = isMobile ? 2.875 : 5.375;
@@ -94,18 +112,6 @@ const CategoryNavigation: FunctionComponent = () => {
   const y = useMotionValue(currentIndex);
   const scale = useMotionValue(currentIndex);
   const scaleFactor = isMobile ? 1.75 : 3.1;
-
-  const stepPx = useMemo(() => {
-    if (typeof window === "undefined") {
-      return 1;
-    }
-
-    const rootFontSize = parseFloat(
-      window.getComputedStyle(document.documentElement).fontSize,
-    );
-
-    return ITEM_STEP_REM * rootFontSize;
-  }, [ITEM_STEP_REM]);
 
   const { index: dragIndex, panHandlers } = useMobileMomentumNav({
     itemCount: categoryTags.length,
@@ -146,6 +152,45 @@ const CategoryNavigation: FunctionComponent = () => {
     onIndexChange: setCurrentIndex,
   });
 
+  useLayoutEffect(() => {
+    if (!listRef.current || categoryTags.length <= 1) {
+      return;
+    }
+
+    const measureStep = () => {
+      const items = Array.from(
+        listRef.current?.querySelectorAll<HTMLLIElement>("li[data-index]") ?? [],
+      );
+
+      if (items.length <= 1) {
+        return;
+      }
+
+      const activeItemIndex = Math.min(currentIndex, items.length - 2);
+      const currentItem = items[activeItemIndex];
+      const nextItem = items[activeItemIndex + 1];
+
+      if (!currentItem || !nextItem) {
+        return;
+      }
+
+      const currentTop = currentItem.getBoundingClientRect().top;
+      const nextTop = nextItem.getBoundingClientRect().top;
+      const nextStep = Math.abs(nextTop - currentTop);
+
+      if (nextStep > 0) {
+        setStepPx(nextStep);
+      }
+    };
+
+    measureStep();
+    window.addEventListener("resize", measureStep);
+
+    return () => {
+      window.removeEventListener("resize", measureStep);
+    };
+  }, [currentIndex]);
+
   useEffect(() => {
     dispatch(
       setSelectedContentAction({ category: categoryTags[currentIndex] }),
@@ -154,6 +199,8 @@ const CategoryNavigation: FunctionComponent = () => {
     if (isMobile) {
       return;
     }
+
+    setPreviewIndex(currentIndex);
 
     const yAnimation = animate(y, currentIndex, {
       type: "tween",
@@ -181,11 +228,13 @@ const CategoryNavigation: FunctionComponent = () => {
       const unsubscribe = desktopPreviewIndex.on("change", (value) => {
         y.set(value);
         scale.set(value);
+        setPreviewIndex(Math.round(value));
       });
 
       const nextIndex = desktopPreviewIndex.get();
       y.set(nextIndex);
       scale.set(nextIndex);
+      setPreviewIndex(Math.round(nextIndex));
 
       return unsubscribe;
     }
@@ -193,13 +242,19 @@ const CategoryNavigation: FunctionComponent = () => {
     const unsubscribe = dragIndex.on("change", (value) => {
       y.set(value);
       scale.set(value);
+      setPreviewIndex(Math.round(value));
     });
 
     y.set(dragIndex.get());
     scale.set(dragIndex.get());
+    setPreviewIndex(Math.round(dragIndex.get()));
 
     return unsubscribe;
   }, [desktopPreviewIndex, dragIndex, isDesktopInteracting, isMobile, scale, y]);
+
+  useEffect(() => {
+    setPreviewIndex(currentIndex);
+  }, [currentIndex]);
 
   return (
     <motion.nav
@@ -218,17 +273,19 @@ const CategoryNavigation: FunctionComponent = () => {
       onPan={panHandlers.onPan}
       onPanEnd={panHandlers.onPanEnd}
     >
-      <ul className={styles.list}>
+      <ul ref={listRef} className={styles.list}>
         {categoryTags.map((cat, index) => (
           <CategoryNavItem
             key={cat}
             category={cat}
             index={index}
-            positionValue={isMobile ? dragIndex : y}
-            scaleValue={isMobile ? dragIndex : scale}
+            positionValue={y}
+            scaleValue={scale}
             itemStepRem={ITEM_STEP_REM}
             scaleFactor={scaleFactor}
-            selectedLinkRef={index === currentIndex ? selectedLinkRef : undefined}
+            isActive={index === previewIndex}
+            isMobile={isMobile}
+            selectedLinkRef={selectedLinkRef}
           />
         ))}
       </ul>
