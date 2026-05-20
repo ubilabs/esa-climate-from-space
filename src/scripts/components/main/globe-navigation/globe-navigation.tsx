@@ -1,5 +1,6 @@
 import { RenderMode } from "@ubilabs/esa-webgl-globe";
 import { FunctionComponent, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { Oval } from "svg-loaders-react";
 
@@ -20,6 +21,8 @@ import { GlobeProjection } from "../../../types/globe-projection";
 
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
+import { multiGlobeSyncEnabledSelector } from "../../../selectors/globe/multi-globe-sync";
+import { toggleMultiGlobeSync } from "../../../reducers/globe/multi-globe-sync";
 
 import styles from "./globe-navigation.module.css";
 
@@ -42,6 +45,12 @@ const GlobeNavigation: FunctionComponent = () => {
   const compareLayer = useSelector((state: State) =>
     layerListItemSelector(state, compareId),
   );
+
+  const multiGlobeSyncEnabled = useSelector(multiGlobeSyncEnabledSelector);
+  const isCompareLayerSelected = Boolean(compareLayer);
+  const multiGlobeSyncToggleLabelId = multiGlobeSyncEnabled
+    ? "multiGlobeSync.disable"
+    : "multiGlobeSync.enable";
 
   const onProjectionHandler = () => {
     const newProjection =
@@ -84,50 +93,72 @@ const GlobeNavigation: FunctionComponent = () => {
 
   return (
     <div className={styles.globeNavigation}>
-      {locationLoading ? (
-        <Oval className={styles.locateMe} />
-      ) : (
-        <Button
-          icon={LocationIcon}
-          className={styles.locateMe}
-          id="locate-me"
-          onClick={onLocateMeHandler}
-        />
+      {isCompareLayerSelected && (
+        <button
+          className={styles.toggleMultiGlobeSync}
+          onClick={() => dispatch(toggleMultiGlobeSync())}
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
+          </svg>
+          <span className={styles.toggleMultiGlobeSyncLabel}>
+            <FormattedMessage id={multiGlobeSyncToggleLabelId} />
+          </span>
+        </button>
       )}
-      <Button
-        className={styles.projection}
-        id="ui-projection"
-        label={label}
-        onClick={onProjectionHandler}
-      />
-      <div
-        className={styles.compass}
-        // id is used in data-widget.tsx to identify compass element
-        id="ui-compass"
-        onClick={() => dispatch(setFlyTo({ ...defaultView }))}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            dispatch(setFlyTo({ ...defaultView }));
+      <div className={styles.navItems}>
+        {locationLoading ? (
+          <Oval className={styles.locateMe} />
+        ) : (
+          <Button
+            icon={LocationIcon}
+            className={styles.locateMe}
+            id="locate-me"
+            onClick={onLocateMeHandler}
+          />
+        )}
+        <Button
+          className={styles.projection}
+          id="ui-projection"
+          label={label}
+          onClick={onProjectionHandler}
+        />
+        <div
+          className={styles.compass}
+          // id is used in data-widget.tsx to identify compass element
+          id="ui-compass"
+          onClick={() => dispatch(setFlyTo({ ...defaultView }))}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              dispatch(setFlyTo({ ...defaultView }));
+            }
+          }}
+          role="button"
+          tabIndex={0}
+        >
+          <CompassIcon />
+        </div>
+        <Button
+          className={styles.downloadIcon}
+          id="ui-download"
+          icon={DownloadIcon}
+          onClick={() =>
+            downloadScreenshot(
+              mainTimeFormat,
+              compareTimeFormat,
+              mainLayer,
+              compareLayer,
+            )
           }
-        }}
-        role="button"
-        tabIndex={0}
-      >
-        <CompassIcon />
+        />
       </div>
-      <Button
-        className={styles.downloadIcon}
-        id="ui-download"
-        icon={DownloadIcon}
-        onClick={() =>
-          downloadScreenshot(
-            mainTimeFormat,
-            compareTimeFormat,
-            mainLayer,
-            compareLayer,
-          )
-        }
-      />
     </div>
   );
 };
