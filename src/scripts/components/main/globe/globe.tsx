@@ -177,7 +177,7 @@ function useWebGlGlobe(view: CameraView, renderOptions: GlobeRenderOptions) {
   });
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- globe initialization stores the created instance
     initGlobe(containerEl);
   }, [containerEl]);
 

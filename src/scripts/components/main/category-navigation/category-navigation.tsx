@@ -1,17 +1,83 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import {
+  FunctionComponent,
+  useEffect,
+} from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import cx from "classnames";
 import { FormattedMessage } from "react-intl";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
 
 import { categoryTags } from "../../../config/main";
-import { useNavGestures } from "../../../libs/use-nav-gestures";
 import { useContentParams } from "../../../hooks/use-content-params";
 import { useScreenInfo } from "../../../hooks/use-screen-info";
+import { useNavigationControls } from "../../../hooks/use-navigation-controls";
 import { setSelectedContentAction } from "../../../reducers/content";
 
 import styles from "./category-navigation.module.css";
+
+interface CategoryNavItemProps {
+  category: string;
+  index: number;
+  positionValue: ReturnType<typeof useMotionValue<number>>;
+  scaleValue: ReturnType<typeof useMotionValue<number>>;
+  itemStepRem: number;
+  scaleFactor: number;
+  isActive: boolean;
+  isMobile: boolean;
+  selectedLinkRef?: React.RefObject<HTMLAnchorElement | null>;
+}
+
+const CategoryNavItem: FunctionComponent<CategoryNavItemProps> = ({
+  category,
+  index,
+  positionValue,
+  scaleValue,
+  itemStepRem,
+  scaleFactor,
+  isActive,
+  isMobile,
+  selectedLinkRef,
+}) => {
+  const input = categoryTags.map((_, entry) => entry);
+  const yOutput = input.map((entry) => `${(index - entry) * itemStepRem}rem`);
+  const y = useTransform(positionValue, input, yOutput);
+
+  const scale = useTransform(
+    scaleValue,
+    [index - 1, index, index + 1],
+    [1, scaleFactor, 1],
+  );
+  const opacity = useTransform(scaleValue, [index - 1, index, index + 1], [0.8, 1, 0.8]);
+  const x = useTransform(scaleValue, [index - 1, index, index + 1], [0, 10, 0]);
+  const pointerEvents = useTransform(positionValue, (value) =>
+    Math.round(value) === index ? "auto" : "none",
+  );
+
+  return (
+    <motion.li
+      data-index={index}
+      initial={{
+        top: "50%",
+      }}
+      style={{
+        scale,
+        y,
+        pointerEvents: isMobile ? pointerEvents : "auto",
+      }}
+    >
+      <Link
+        ref={isActive ? selectedLinkRef : undefined}
+        to={category}
+        className={styles.categoryLink}
+        tabIndex={isActive ? 0 : -1}
+      >
+        <motion.span style={{ opacity, x }}>
+          <FormattedMessage id={`categories.${category}`} />
+        </motion.span>
+      </Link>
+    </motion.li>
+  );
+};
 
 const CategoryNavigation: FunctionComponent = () => {
   const { category } = useContentParams();
@@ -23,35 +89,53 @@ const CategoryNavigation: FunctionComponent = () => {
     ? categoryTags.indexOf(category)
     : 0;
 
-  const [currentIndex, setCurrentIndex] = useState(
-    categoryIndex !== -1 ? categoryIndex : 0,
-  );
-
-  // Custom hook to handle wheel and drag gestures for navigation
-  useNavGestures(categoryTags.length, setCurrentIndex, "y", true);
+  const initialIndex = categoryIndex !== -1 ? categoryIndex : 0;
 
   // Gap between category elements: line-height (1.375rem) + gap (1.5rem) = 2.875rem ≈ 46px at 16px base
   const ITEM_STEP_REM = isMobile ? 2.875 : 5.375;
 
-  const input = Array.from({ length: categoryTags.length }).map(
-    (_, index) => index,
-  );
+  const y = useMotionValue(initialIndex);
+  const scale = useMotionValue(initialIndex);
+  const scaleFactor = isMobile ? 1.75 : 3.1;
+  const {
+    currentIndex,
+    previewIndex,
+    listRef,
+    selectedLinkRef,
+    handleWheel: handleDesktopWheel,
+    panHandlers,
+  } = useNavigationControls({
+    itemCount: categoryTags.length,
+    initialIndex,
+    isMobile,
+    onSyncPreviewValue: (value) => {
+      y.set(value);
+      scale.set(value);
+    },
+    onAnimateToCurrentIndex: (nextIndex) => {
+      const yAnimation = animate(y, nextIndex, {
+        type: "tween",
+        duration: 0.2,
+        ease: [0.22, 1, 0.36, 1],
+      });
+      const scaleAnimation = animate(scale, nextIndex, {
+        type: "tween",
+        duration: 0.18,
+        ease: [0.22, 1, 0.36, 1],
+      });
 
-  const y = useMotionValue(currentIndex);
-  const scale = useMotionValue(currentIndex);
+      return () => {
+        yAnimation.stop();
+        scaleAnimation.stop();
+      };
+    },
+  });
 
   useEffect(() => {
-    animate(y, currentIndex, { type: "spring", stiffness: 500, damping: 35 });
-    animate(scale, currentIndex, {
-      type: "tween",
-      stiffness: 300,
-      damping: 30,
-    });
-
     dispatch(
       setSelectedContentAction({ category: categoryTags[currentIndex] }),
     );
-  }, [currentIndex, y, scale, dispatch]);
+  }, [currentIndex, dispatch]);
 
   return (
     <motion.nav
@@ -65,41 +149,26 @@ const CategoryNavigation: FunctionComponent = () => {
         opacity: 0,
         transition: { duration: 0.2, ease: "easeIn" },
       }}
+      onWheel={handleDesktopWheel}
+      onPanSessionStart={panHandlers.onPanSessionStart}
+      onPan={panHandlers.onPan}
+      onPanEnd={panHandlers.onPanEnd}
     >
-      <ul className={styles.list}>
-        {categoryTags.map((cat, index) => {
-          const output = input.map(
-            (entry) => `${(index - entry) * ITEM_STEP_REM}rem`,
-          );
-
-          const scaleFactor = isMobile ? 1.75 : 3.1;
-          const scaleOutput = input.map((entry) =>
-            entry === index ? scaleFactor : 1,
-          );
-          return (
-            <motion.li
-              key={cat}
-              className={cx(currentIndex === index && styles.selectedEntry)}
-              initial={{
-                top: "50%",
-              }}
-              style={{
-                // it is fine to use a motion hook here
-                // eslint-disable-next-line react-hooks/rules-of-hooks
-                scale: useTransform(scale, input, scaleOutput),
-                // eslint-disable-next-line react-hooks/rules-of-hooks
-                y: useTransform(y, input, output),
-              }}
-            >
-              <Link
-                to={categoryTags[index]}
-                className={styles.categoryLink}
-              >
-                {<FormattedMessage id={`categories.${cat}`} />}
-              </Link>
-            </motion.li>
-          );
-        })}
+      <ul ref={listRef} className={styles.list}>
+        {categoryTags.map((cat, index) => (
+          <CategoryNavItem
+            key={cat}
+            category={cat}
+            index={index}
+            positionValue={y}
+            scaleValue={scale}
+            itemStepRem={ITEM_STEP_REM}
+            scaleFactor={scaleFactor}
+            isActive={index === previewIndex}
+            isMobile={isMobile}
+            selectedLinkRef={selectedLinkRef}
+          />
+        ))}
       </ul>
     </motion.nav>
   );

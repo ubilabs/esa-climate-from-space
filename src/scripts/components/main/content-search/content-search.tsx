@@ -63,7 +63,7 @@ export default function ContentSearch() {
   });
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- query state is synced from router state
     updateQueryValues();
   }, [state?.search]);
 

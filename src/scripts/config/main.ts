@@ -56,6 +56,7 @@ export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interac
 export const CONTENT_NAV_LONGITUDE_OFFSET = -30;
 export const STORY_LATITUDE_OFFSET = 5; // Offset for the latitude when flying to the location
 export const ALTITUDE_FACTOR_DESKTOP = 0.5;
+export const ALTITUDE_FACTOR_MOBILE = 1.2;
 
 export const WHEEL_SCALE_FACTOR = 0.001,
   MIN_ZOOM_SCALE = 1,
