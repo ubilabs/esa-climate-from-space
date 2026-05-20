@@ -27,8 +27,11 @@
   font-weight: 700;
   letter-spacing: 3.5px;
   text-transform: uppercase;
-  gap: 18px;
+  gap: 12px;
   z-index: 1;
+}
+.toggleMultiGlobeSync:hover svg {
+  fill: var(--main);
 }
 @media screen and (max-width: 767px) {
   .globeNavigation {
