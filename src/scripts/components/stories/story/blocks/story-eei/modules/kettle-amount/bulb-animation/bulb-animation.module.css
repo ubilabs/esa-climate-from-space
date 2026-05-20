@@ -42,6 +42,7 @@
       font-size: 1.625rem;
       line-height: 140%;
       width: min(90%, 800px);
+      will-change: clip-path;
     }
   }
 }
