@@ -25,6 +25,7 @@
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.32px;
+  text-transform: uppercase;
   gap: 4px;
   z-index: 1;
 }

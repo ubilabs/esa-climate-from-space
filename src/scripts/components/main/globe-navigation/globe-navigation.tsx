@@ -21,7 +21,6 @@ import { GlobeProjection } from "../../../types/globe-projection";
 
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
-import { multiGlobeSyncEnabledSelector } from "../../../selectors/globe/multi-globe-sync";
 import { toggleMultiGlobeSync } from "../../../reducers/globe/multi-globe-sync";
 
 import styles from "./globe-navigation.module.css";
@@ -46,11 +45,7 @@ const GlobeNavigation: FunctionComponent = () => {
     layerListItemSelector(state, compareId),
   );
 
-  const multiGlobeSyncEnabled = useSelector(multiGlobeSyncEnabledSelector);
   const isCompareLayerSelected = Boolean(compareLayer);
-  const multiGlobeSyncToggleLabelId = multiGlobeSyncEnabled
-    ? "multiGlobeSync.disable"
-    : "multiGlobeSync.enable";
 
   const onProjectionHandler = () => {
     const newProjection =
@@ -97,8 +92,8 @@ const GlobeNavigation: FunctionComponent = () => {
         <Button
           className={styles.toggleMultiGlobeSync}
           icon={GlobeSyncIcon}
-          label={multiGlobeSyncToggleLabelId}
-          ariaLabel={multiGlobeSyncToggleLabelId}
+          label="multiGlobeSync.label"
+          ariaLabel="multiGlobeSync.label"
           hideLabelOnMobile
           onClick={() => dispatch(toggleMultiGlobeSync())}
         />
