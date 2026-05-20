@@ -10,6 +10,7 @@ import { projectionSelector } from "../../../selectors/globe/projection";
 import { timeSelector } from "../../../selectors/globe/time";
 import Button from "../button/button";
 import { CompassIcon } from "../icons/compass-icon";
+import { GlobeSyncIcon } from "../icons/globe-sync-icon";
 import { DownloadIcon } from "../icons/download-icon";
 import { LocationIcon } from "../icons/location-icon";
 
@@ -20,6 +21,7 @@ import { GlobeProjection } from "../../../types/globe-projection";
 
 import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
+import { toggleMultiGlobeSync } from "../../../reducers/globe/multi-globe-sync";
 
 import styles from "./globe-navigation.module.css";
 
@@ -42,6 +44,8 @@ const GlobeNavigation: FunctionComponent = () => {
   const compareLayer = useSelector((state: State) =>
     layerListItemSelector(state, compareId),
   );
+
+  const isCompareLayerSelected = Boolean(compareLayer);
 
   const onProjectionHandler = () => {
     const newProjection =
@@ -84,50 +88,62 @@ const GlobeNavigation: FunctionComponent = () => {
 
   return (
     <div className={styles.globeNavigation}>
-      {locationLoading ? (
-        <Oval className={styles.locateMe} />
-      ) : (
+      {isCompareLayerSelected && (
         <Button
-          icon={LocationIcon}
-          className={styles.locateMe}
-          id="locate-me"
-          onClick={onLocateMeHandler}
+          className={styles.toggleMultiGlobeSync}
+          icon={GlobeSyncIcon}
+          label="multiGlobeSync.label"
+          ariaLabel="multiGlobeSync.label"
+          hideLabelOnMobile
+          onClick={() => dispatch(toggleMultiGlobeSync())}
         />
       )}
-      <Button
-        className={styles.projection}
-        id="ui-projection"
-        label={label}
-        onClick={onProjectionHandler}
-      />
-      <div
-        className={styles.compass}
-        // id is used in data-widget.tsx to identify compass element
-        id="ui-compass"
-        onClick={() => dispatch(setFlyTo({ ...defaultView }))}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            dispatch(setFlyTo({ ...defaultView }));
+      <div className={styles.navItems}>
+        {locationLoading ? (
+          <Oval className={styles.locateMe} />
+        ) : (
+          <Button
+            icon={LocationIcon}
+            className={styles.locateMe}
+            id="locate-me"
+            onClick={onLocateMeHandler}
+          />
+        )}
+        <Button
+          className={styles.projection}
+          id="ui-projection"
+          label={label}
+          onClick={onProjectionHandler}
+        />
+        <div
+          className={styles.compass}
+          // id is used in data-widget.tsx to identify compass element
+          id="ui-compass"
+          onClick={() => dispatch(setFlyTo({ ...defaultView }))}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              dispatch(setFlyTo({ ...defaultView }));
+            }
+          }}
+          role="button"
+          tabIndex={0}
+        >
+          <CompassIcon />
+        </div>
+        <Button
+          className={styles.downloadIcon}
+          id="ui-download"
+          icon={DownloadIcon}
+          onClick={() =>
+            downloadScreenshot(
+              mainTimeFormat,
+              compareTimeFormat,
+              mainLayer,
+              compareLayer,
+            )
           }
-        }}
-        role="button"
-        tabIndex={0}
-      >
-        <CompassIcon />
+        />
       </div>
-      <Button
-        className={styles.downloadIcon}
-        id="ui-download"
-        icon={DownloadIcon}
-        onClick={() =>
-          downloadScreenshot(
-            mainTimeFormat,
-            compareTimeFormat,
-            mainLayer,
-            compareLayer,
-          )
-        }
-      />
     </div>
   );
 };
