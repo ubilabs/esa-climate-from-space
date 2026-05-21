@@ -217,7 +217,7 @@
           }
         }
       ],
-      "lengthFactor": 16,
+      "lengthFactor": 13,
       "type": "animatedArrowsModule",
       "content": {
         "scrollText1": "Earth's energy is out of balance.",
@@ -270,7 +270,7 @@
           }
         }
       ],
-      "lengthFactor": 28,
+      "lengthFactor": 26,
       "type": "kettleAmountModule",
       "content": {
         "scrollText": "That square metre is now trapping almost 3 times as much heat.",
@@ -310,7 +310,7 @@
           }
         }
       ],
-      "lengthFactor": 16,
+      "lengthFactor": 13,
       "type": "kettleCount",
       "content": {
         "scrollText1": "And if you apply that increase to the entire surface of the Earth...",
@@ -351,13 +351,13 @@
           },
           "desktop": {
             "containerPosition": {
-              "x": -0.25,
-              "y": -0.03
+              "x": 0.25,
+              "y": -0.1
             },
             "location": {
               "lat": 1.816919,
               "lng": -24.726276,
-              "altitude": 37000000
+              "altitude": 34000000
             }
           }
         },
@@ -376,13 +376,13 @@
           },
           "desktop": {
             "containerPosition": {
-              "x": -0.25,
-              "y": -0.03
+              "x": 0.25,
+              "y": -0.1
             },
             "location": {
               "lat": 1.816919,
               "lng": -24.726276,
-              "altitude": 37000000
+              "altitude": 34000000
             }
           }
         },
@@ -401,13 +401,13 @@
           },
           "desktop": {
             "containerPosition": {
-              "x": -0.25,
-              "y": -0.03
+              "x": 0.25,
+              "y": -0.1
             },
             "location": {
               "lat": -35.26634,
               "lng": -14.363042,
-              "altitude": 37000000
+              "altitude": 34000000
             }
           }
         },
@@ -426,13 +426,13 @@
           },
           "desktop": {
             "containerPosition": {
-              "x": -0.25,
-              "y": -0.03
+              "x": 0.25,
+              "y": -0.1
             },
             "location": {
               "lat": -35.26634,
               "lng": -14.363042,
-              "altitude": 37000000
+              "altitude": 34000000
             }
           }
         }
@@ -440,7 +440,8 @@
       "lengthFactor": 8,
       "type": "treeMapModule",
       "title": {
-        "grid": "Although the ocean covers 71% of Earth’s surface, it absorbs 91% of the incoming energy."
+        "globe": "Although the ocean covers 71% of Earth’s surface,",
+        "grid": "it absorbs 91% of the incoming energy."
       },
       "data": [
         {
@@ -523,7 +524,7 @@
       "type": "quoteSlide",
       "content": {
         "text": "ESA’s Climate Change Initiative project MOTECUSOMA (Monitoring the Energy Cycle for a Better Understanding of Climate Change) is calculating new estimates of Earth’s energy imbalance and surface air temperature. Scientific analyses using these datasets will help climate modelers forecast future changes with more accuracy.",
-        "author": "MOTECUSOMA Team"
+        "author": "- The MOTECUSOMA Project Team"
       }
     },
     {
