@@ -33,7 +33,7 @@
 }
 
 .gestureIndicator {
-  color: var(--dark-blue);
+  color: var(--neutral-esa-white);
   grid-area: explore;
   margin-bottom: 2rem;
   place-self: start center;
@@ -57,6 +57,7 @@
   }
 
   .iconContainer {
+    color: var(--neutral-esa-white);
     margin: 0 auto;
     width: fit-content;
   }

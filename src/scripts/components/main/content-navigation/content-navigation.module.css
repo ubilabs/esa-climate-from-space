@@ -235,10 +235,6 @@
   gap: 24px;
   align-items: center;
   justify-content: center;
-
-  @media screen and (--desktop-viewport) {
-    display: none;
-  }
 }
 
 .scrollHintSwipeItem {
@@ -260,15 +256,11 @@
 }
 
 .scrollHintDesktop {
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-
-  @media screen and (--desktop-viewport) {
-    display: flex;
-    padding: 24px 0;
-  }
+  padding: 24px 0;
 }
 
 .scrollHintIcons {

@@ -13,6 +13,7 @@ import { Link, useLocation } from "react-router-dom";
 import cx from "classnames";
 
 import { useContentParams } from "../../../hooks/use-content-params";
+import { useScreenInfo } from "../../../hooks/use-screen-info";
 
 import config, {
   ALTITUDE_FACTOR_DESKTOP,
@@ -194,6 +195,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 }) => {
   const dispatch = useDispatch();
   const { category } = useContentParams();
+  const { isTouchDevice } = useScreenInfo();
   const { contentId } = useSelector(contentSelector);
 
   // Split contents into stories and datasets, placing stories first so they
@@ -456,10 +458,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
         className={cx(styles.contentNav, className)}
         role="listbox"
         aria-label="Content navigation"
-        onWheel={(e) => {
-          setHasScrolled(true);
-          handleWheel(e);
-        }}
         onPanSessionStart={() => {
           setHasScrolled(true);
           panHandlers.onPanSessionStart();
@@ -502,33 +500,32 @@ const ContentNavigation: FunctionComponent<Props> = ({
         )}
         aria-hidden="true"
       >
-        {/* Mobile: swipe gesture hints */}
-        <div className={styles.scrollHintMobile}>
-          <div className={styles.scrollHintSwipeItem}>
-            <SwipeUpIcon />
-            <span className={styles.scrollHintLabel}>
-              <FormattedMessage id="contentNav.hintStories" />
-            </span>
+        {isTouchDevice ? (
+          <div className={styles.scrollHintMobile}>
+            <div className={styles.scrollHintSwipeItem}>
+              <SwipeUpIcon />
+              <span className={styles.scrollHintLabel}>
+                <FormattedMessage id="contentNav.hintStories" />
+              </span>
+            </div>
+            <div className={styles.scrollHintSwipeItem}>
+              <SwipeDownIcon />
+              <span className={styles.scrollHintLabel}>
+                <FormattedMessage id="contentNav.hintDatasets" />
+              </span>
+            </div>
           </div>
-          <div className={styles.scrollHintSwipeItem}>
-            <SwipeDownIcon />
-            <span className={styles.scrollHintLabel}>
-              <FormattedMessage id="contentNav.hintDatasets" />
-            </span>
+        ) : (
+          <div className={styles.scrollHintDesktop}>
+            <div className={styles.scrollHintIcons}>
+              <MouseScrollIcon />
+              <ArrowKeysIcon isWhite />
+            </div>
+            <p className={styles.scrollHintText}>
+              <FormattedMessage id="contentNav.scrollHint" />
+            </p>
           </div>
-        </div>
-        {/* Desktop: mouse + keyboard hints */}
-        <div className={styles.scrollHintDesktop}>
-          <div className={styles.scrollHintIcons}>
-            {/* Mouse scroll icon */}
-            <MouseScrollIcon />
-            {/* Keyboard navigation keys icon */}
-            <ArrowKeysIcon isWhite />
-          </div>
-          <p className={styles.scrollHintText}>
-            <FormattedMessage id="contentNav.scrollHint" />
-          </p>
-        </div>
+        )}
       </div>
     </>
   );
