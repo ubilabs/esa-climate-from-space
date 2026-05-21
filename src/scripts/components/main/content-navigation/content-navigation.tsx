@@ -40,10 +40,9 @@ import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 import { SwipeUpIcon } from "../icons/swipe-up-icon";
 import { SwipeDownIcon } from "../icons/swipe-down-icon";
 import { MouseScrollIcon } from "../icons/mouse-scroll-icon";
-import { KeyboardNavIcon } from "../icons/keyboard-nav-icon";
+import { ArrowKeysIcon } from "../icons/arrow-keys-icon";
 
 import styles from "./content-navigation.module.css";
-import { ArrowKeysIcon } from "../icons/arrow-keys-icon";
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
