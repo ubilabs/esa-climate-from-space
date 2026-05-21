@@ -25,7 +25,7 @@ interface UseNavigationControlsResult {
   listRef: RefObject<HTMLUListElement | null>;
   selectedLinkRef: RefObject<HTMLAnchorElement | null>;
   stepPx: number;
-  handleWheel: (event: React.WheelEvent<HTMLElement>) => void;
+  handleWheel: (event: WheelEvent) => void;
   panHandlers: {
     onPanSessionStart: () => void;
     onPan: (_event: PointerEvent, info: PanInfo) => void;

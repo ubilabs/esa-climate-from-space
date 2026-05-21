@@ -13,6 +13,7 @@ import { Link, useLocation } from "react-router-dom";
 import cx from "classnames";
 
 import { useContentParams } from "../../../hooks/use-content-params";
+import { useScreenInfo } from "../../../hooks/use-screen-info";
 
 import config, {
   ALTITUDE_FACTOR_DESKTOP,
@@ -40,7 +41,7 @@ import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
 import { SwipeUpIcon } from "../icons/swipe-up-icon";
 import { SwipeDownIcon } from "../icons/swipe-down-icon";
 import { MouseScrollIcon } from "../icons/mouse-scroll-icon";
-import { KeyboardNavIcon } from "../icons/keyboard-nav-icon";
+import { ArrowKeysIcon } from "../icons/arrow-keys-icon";
 
 import styles from "./content-navigation.module.css";
 
@@ -69,6 +70,7 @@ interface ItemProps {
   GAP_BETWEEN_ELEMENTS: number;
   RADIUS: number;
   onFocus: (index: number) => void;
+  onSelect: (item: StoryListItem | LayerListItem) => void;
   selectedLinkRef?: React.RefObject<HTMLAnchorElement | null>;
 }
 
@@ -84,6 +86,7 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
   GAP_BETWEEN_ELEMENTS,
   RADIUS,
   onFocus,
+  onSelect,
   selectedLinkRef,
 }) => {
   const location = useLocation();
@@ -175,6 +178,7 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
         ref={isActive ? selectedLinkRef : undefined}
         to={to}
         state={navigationState}
+        onClick={() => onSelect(item)}
       >
         <div>
           <span>{name}</span>
@@ -194,6 +198,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 }) => {
   const dispatch = useDispatch();
   const { category } = useContentParams();
+  const { isTouchDevice } = useScreenInfo();
   const { contentId } = useSelector(contentSelector);
 
   // Split contents into stories and datasets, placing stories first so they
@@ -339,8 +344,31 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const settledContentId = settledContent?.id;
 
   useEffect(() => {
-    dispatch(setSelectedContentAction({ contentId: settledContentId ?? null }));
+    if (!settledContentId) {
+      return;
+    }
+
+    dispatch(setSelectedContentAction({ contentId: settledContentId }));
   }, [dispatch, settledContentId]);
+
+  useEffect(() => {
+    const list = listRef.current;
+
+    if (!list || isMobile) {
+      return;
+    }
+
+    const handleNativeWheel = (event: WheelEvent) => {
+      setHasScrolled(true);
+      handleWheel(event);
+    };
+
+    list.addEventListener("wheel", handleNativeWheel, { passive: false });
+
+    return () => {
+      list.removeEventListener("wheel", handleNativeWheel);
+    };
+  }, [handleWheel, isMobile, listRef]);
 
   const splashSource = useMemo(() => {
     if (
@@ -354,28 +382,34 @@ const ContentNavigation: FunctionComponent<Props> = ({
     return "";
   }, [settledContent, settledContentId]);
 
+  const applySelection = useCallback(
+    (content: StoryListItem | LayerListItem) => {
+      dispatch(setSelectedContentAction({ contentId: content.id }));
+
+      if (isStoryListItem(content)) {
+        if (content.id !== AppRoute.StoryEEI) {
+          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+        } else {
+          dispatch(
+            setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
+          );
+        }
+
+        return;
+      }
+
+      dispatch(setSelectedLayerIds({ layerId: content.id, isPrimary: true }));
+    },
+    [dispatch],
+  );
+
   useEffect(() => {
     if (!settledContentId || !settledContent) {
-      dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
       return;
     }
 
-    // We don't want to dispatch a layer action with story ids (except for EEI-story)
-    if (isStoryListItem(settledContent)) {
-      if (settledContentId !== AppRoute.StoryEEI) {
-        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-      } else {
-        dispatch(
-          setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
-        );
-      }
-      return;
-    }
-
-    dispatch(
-      setSelectedLayerIds({ layerId: settledContentId, isPrimary: true }),
-    );
-  }, [dispatch, settledContent, settledContentId, settledIndex]);
+    applySelection(settledContent);
+  }, [applySelection, settledContent, settledContentId, settledIndex]);
 
   useEffect(() => {
     if (!settledContentId || !settledContent) {
@@ -434,10 +468,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
         className={cx(styles.contentNav, className)}
         role="listbox"
         aria-label="Content navigation"
-        onWheel={(e) => {
-          setHasScrolled(true);
-          handleWheel(e);
-        }}
         onPanSessionStart={() => {
           setHasScrolled(true);
           panHandlers.onPanSessionStart();
@@ -459,6 +489,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             GAP_BETWEEN_ELEMENTS={GAP_BETWEEN_ELEMENTS}
             RADIUS={RADIUS}
             onFocus={setCurrentIndex}
+            onSelect={applySelection}
             selectedLinkRef={activeLinkRef}
           />
         ))}
@@ -480,33 +511,32 @@ const ContentNavigation: FunctionComponent<Props> = ({
         )}
         aria-hidden="true"
       >
-        {/* Mobile: swipe gesture hints */}
-        <div className={styles.scrollHintMobile}>
-          <div className={styles.scrollHintSwipeItem}>
-            <SwipeUpIcon />
-            <span className={styles.scrollHintLabel}>
-              <FormattedMessage id="contentNav.hintStories" />
-            </span>
+        {isTouchDevice ? (
+          <div className={styles.scrollHintMobile}>
+            <div className={styles.scrollHintSwipeItem}>
+              <SwipeUpIcon />
+              <span className={styles.scrollHintLabel}>
+                <FormattedMessage id="contentNav.hintStories" />
+              </span>
+            </div>
+            <div className={styles.scrollHintSwipeItem}>
+              <SwipeDownIcon />
+              <span className={styles.scrollHintLabel}>
+                <FormattedMessage id="contentNav.hintDatasets" />
+              </span>
+            </div>
           </div>
-          <div className={styles.scrollHintSwipeItem}>
-            <SwipeDownIcon />
-            <span className={styles.scrollHintLabel}>
-              <FormattedMessage id="contentNav.hintDatasets" />
-            </span>
+        ) : (
+          <div className={styles.scrollHintDesktop}>
+            <div className={styles.scrollHintIcons}>
+              <MouseScrollIcon />
+              <ArrowKeysIcon isWhite />
+            </div>
+            <p className={styles.scrollHintText}>
+              <FormattedMessage id="contentNav.scrollHint" />
+            </p>
           </div>
-        </div>
-        {/* Desktop: mouse + keyboard hints */}
-        <div className={styles.scrollHintDesktop}>
-          <div className={styles.scrollHintIcons}>
-            {/* Mouse scroll icon */}
-            <MouseScrollIcon />
-            {/* Keyboard navigation keys icon */}
-            <KeyboardNavIcon />
-          </div>
-          <p className={styles.scrollHintText}>
-            <FormattedMessage id="contentNav.scrollHint" />
-          </p>
-        </div>
+        )}
       </div>
     </>
   );
