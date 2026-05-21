@@ -346,6 +346,25 @@ const ContentNavigation: FunctionComponent<Props> = ({
     dispatch(setSelectedContentAction({ contentId: settledContentId }));
   }, [dispatch, settledContentId]);
 
+  useEffect(() => {
+    const list = listRef.current;
+
+    if (!list || isMobile) {
+      return;
+    }
+
+    const handleNativeWheel = (event: WheelEvent) => {
+      setHasScrolled(true);
+      handleWheel(event);
+    };
+
+    list.addEventListener("wheel", handleNativeWheel, { passive: false });
+
+    return () => {
+      list.removeEventListener("wheel", handleNativeWheel);
+    };
+  }, [handleWheel, isMobile, listRef]);
+
   const splashSource = useMemo(() => {
     if (
       settledContent &&

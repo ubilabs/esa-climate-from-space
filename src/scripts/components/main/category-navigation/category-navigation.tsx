@@ -137,6 +137,20 @@ const CategoryNavigation: FunctionComponent = () => {
     );
   }, [currentIndex, dispatch]);
 
+  useEffect(() => {
+    const nav = listRef.current?.closest("nav");
+
+    if (!nav || isMobile) {
+      return;
+    }
+
+    nav.addEventListener("wheel", handleDesktopWheel, { passive: false });
+
+    return () => {
+      nav.removeEventListener("wheel", handleDesktopWheel);
+    };
+  }, [handleDesktopWheel, isMobile, listRef]);
+
   return (
     <motion.nav
       className={styles.categoryNav}
@@ -149,7 +163,6 @@ const CategoryNavigation: FunctionComponent = () => {
         opacity: 0,
         transition: { duration: 0.2, ease: "easeIn" },
       }}
-      onWheel={handleDesktopWheel}
       onPanSessionStart={panHandlers.onPanSessionStart}
       onPan={panHandlers.onPan}
       onPanEnd={panHandlers.onPanEnd}

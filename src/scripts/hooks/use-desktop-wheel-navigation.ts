@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { WheelEvent as ReactWheelEvent } from "react";
 import { MotionValue, useMotionValue } from "motion/react";
 
 const DESKTOP_WHEEL_IDLE_MS = 140;
@@ -16,7 +15,7 @@ interface UseDesktopWheelNavigationOptions {
 }
 
 interface UseDesktopWheelNavigationResult {
-  handleWheel: (event: ReactWheelEvent<HTMLElement>) => void;
+  handleWheel: (event: WheelEvent) => void;
   previewIndex: MotionValue<number>;
   isInteracting: boolean;
 }
@@ -33,7 +32,7 @@ const clamp = (value: number, min: number, max: number): number => {
   return value;
 };
 
-const normalizeWheelDelta = (event: ReactWheelEvent<HTMLElement>): number => {
+const normalizeWheelDelta = (event: WheelEvent): number => {
   if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) {
     return event.deltaY * LINE_HEIGHT_PX;
   }
@@ -107,7 +106,7 @@ export const useDesktopWheelNavigation = ({
     previewIndex.set(nextIndex);
   }, [currentIndex, itemCount, previewIndex]);
 
-  const handleWheel = (event: ReactWheelEvent<HTMLElement>) => {
+  const handleWheel = (event: WheelEvent) => {
     if (!enabled || itemCount <= 1 || stepPx <= 0) {
       return;
     }
