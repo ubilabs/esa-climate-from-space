@@ -70,6 +70,7 @@ interface ItemProps {
   GAP_BETWEEN_ELEMENTS: number;
   RADIUS: number;
   onFocus: (index: number) => void;
+  onSelect: (item: StoryListItem | LayerListItem) => void;
   selectedLinkRef?: React.RefObject<HTMLAnchorElement | null>;
 }
 
@@ -85,6 +86,7 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
   GAP_BETWEEN_ELEMENTS,
   RADIUS,
   onFocus,
+  onSelect,
   selectedLinkRef,
 }) => {
   const location = useLocation();
@@ -176,6 +178,7 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
         ref={isActive ? selectedLinkRef : undefined}
         to={to}
         state={navigationState}
+        onClick={() => onSelect(item)}
       >
         <div>
           <span>{name}</span>
@@ -379,27 +382,34 @@ const ContentNavigation: FunctionComponent<Props> = ({
     return "";
   }, [settledContent, settledContentId]);
 
+  const applySelection = useCallback(
+    (content: StoryListItem | LayerListItem) => {
+      dispatch(setSelectedContentAction({ contentId: content.id }));
+
+      if (isStoryListItem(content)) {
+        if (content.id !== AppRoute.StoryEEI) {
+          dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
+        } else {
+          dispatch(
+            setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
+          );
+        }
+
+        return;
+      }
+
+      dispatch(setSelectedLayerIds({ layerId: content.id, isPrimary: true }));
+    },
+    [dispatch],
+  );
+
   useEffect(() => {
     if (!settledContentId || !settledContent) {
       return;
     }
 
-    // We don't want to dispatch a layer action with story ids (except for EEI-story)
-    if (isStoryListItem(settledContent)) {
-      if (settledContentId !== AppRoute.StoryEEI) {
-        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-      } else {
-        dispatch(
-          setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
-        );
-      }
-      return;
-    }
-
-    dispatch(
-      setSelectedLayerIds({ layerId: settledContentId, isPrimary: true }),
-    );
-  }, [dispatch, settledContent, settledContentId, settledIndex]);
+    applySelection(settledContent);
+  }, [applySelection, settledContent, settledContentId, settledIndex]);
 
   useEffect(() => {
     if (!settledContentId || !settledContent) {
@@ -479,6 +489,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             GAP_BETWEEN_ELEMENTS={GAP_BETWEEN_ELEMENTS}
             RADIUS={RADIUS}
             onFocus={setCurrentIndex}
+            onSelect={applySelection}
             selectedLinkRef={activeLinkRef}
           />
         ))}
