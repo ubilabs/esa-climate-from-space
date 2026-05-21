@@ -339,7 +339,11 @@ const ContentNavigation: FunctionComponent<Props> = ({
   const settledContentId = settledContent?.id;
 
   useEffect(() => {
-    dispatch(setSelectedContentAction({ contentId: settledContentId ?? null }));
+    if (!settledContentId) {
+      return;
+    }
+
+    dispatch(setSelectedContentAction({ contentId: settledContentId }));
   }, [dispatch, settledContentId]);
 
   const splashSource = useMemo(() => {
@@ -356,7 +360,6 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   useEffect(() => {
     if (!settledContentId || !settledContent) {
-      dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
       return;
     }
 
