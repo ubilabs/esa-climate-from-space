@@ -1,7 +1,9 @@
 .satellite {
-  height: fit-content;
   grid-area: content;
-  margin: 1rem;
+  place-self: center;
+  margin-bottom: var(--story-eei-box-width);
+  margin-right: var(--story-eei-box-width);
+
   z-index: 2;
 
   > img {

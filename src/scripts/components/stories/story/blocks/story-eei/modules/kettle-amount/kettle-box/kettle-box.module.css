@@ -17,7 +17,7 @@
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(9, 1fr);
     place-items: center;
-    width: min(80vw, 600px);
+    width: var(--story-eei-box-width);
     aspect-ratio: 1/ 1;
 
     > span {
