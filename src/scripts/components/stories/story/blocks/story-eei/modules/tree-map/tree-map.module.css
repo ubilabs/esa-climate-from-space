@@ -1,107 +1,86 @@
 .slide {
   height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding-left: 5%;
+  display: grid;
+  grid-template-areas: "label label" "divider divider" "globeOverlay treemap";
+  place-items: center;
+  grid-template-rows: var(--headline-font-size) 2rem 1fr;
+  grid-template-columns: 1fr 1fr;
+  padding-top: var(--top-spacing);
+  padding-inline: min(5%, 2rem);
 
   --headline-font-size: 3.875rem;
   --top-spacing: 3.875rem;
+
   @media screen and (--mobile-viewport) {
     --headline-font-size: 2.5rem;
-    --top-spacing: 1.875rem;
+    --top-spacing: 1.25rem;
 
-    justify-content: center;
-    align-items: flex-end;
-    padding-left: 0;
+    grid-template-areas:
+      "label"
+      "info"
+      "globeOverlay"
+      "treemap";
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--headline-font-size) 3rem 1fr 1fr;
   }
 
   .label {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: var(--top-spacing);
+    grid-area: label;
     font-size: var(--headline-font-size);
     font-weight: 700;
   }
 
-  .panelContainer {
-    display: flex;
+  .description {
+    margin-top: min(2.5rem, 5vh);
+    grid-area: "info";
+    text-wrap: balance;
+    text-align: center;
+    color: var(--light-green);
+
+    @media (--desktop-viewport) {
+      /* hidden on desktop, but in DOM for screenreaders */
+      visibility: hidden;
+      pointer-events: none;
+      position: absolute;
+    }
+  }
+
+  .treemapContainer {
+    grid-area: treemap;
     width: 100%;
 
-    .title {
-      position: absolute;
-      transform: translateX(-50%);
-      left: 50%;
-      bottom: 70%;
+    @media (--mobile-viewport) {
+      width: 70%;
+      display: grid;
+      place-items: center;
+    }
+  }
 
-      @media screen and (--mobile-viewport) {
-        bottom: 80%;
-        width: 90%;
-      }
+  .info {
+    margin-top: min(5rem, 5vh);
+    color: var(--light-green);
+    font-size: 1.125rem;
+    text-align: center;
+    font-weight: 700;
+    align-self: start;
+
+    &:first-of-type {
+      grid-area: globeOverlay;
     }
 
-    @media screen and (--mobile-viewport) {
-      flex-direction: column-reverse;
-      align-items: center;
-      justify-content: space-around;
-      height: 100%;
-      padding-top: calc(var(--top-spacing) + var(--headline-font-size));
+    &:last-of-type {
+      grid-area: treemap;
     }
-
-    .gridPanel {
-      width: 40%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      @media screen and (--mobile-viewport) {
-        height: 40%;
-        width: 100%;
-        justify-content: space-evenly;
-      }
-    }
-
-    .hidden {
-      visibility: hidden;
-    }
-
-    .globePanel {
-      width: 40%;
-      display: flex;
-      justify-content: start;
-
-      @media screen and (--mobile-viewport) {
-        height: calc(50% - var(--headline-font-size));
-        justify-content: center;
-      }
-    }
-
-    .title {
-      color: var(--light-green);
-      font-size: 1.125rem;
-      font-weight: 700;
-      text-align: center;
-
-      @media screen and (--mobile-viewport) {
-        font-size: 0.875rem;
-        font-weight: 400;
-      }
+    @media (--mobile-viewport) {
+      display: none;
     }
   }
 }
 
 .globeOverlay {
-  position: absolute;
-  left: calc(50% + var(--globe-container-x));
-  top: calc(50% + var(--globe-container-y));
-  transform: translate(-50%, -50%);
-  font-size: 1.875rem;
-  font-weight: 700;
-
-  @media screen and (--mobile-viewport) {
-    font-size: 0.735rem;
+  grid-area: globeOverlay;
+  span {
+    font-size: 1.25rem;
     font-weight: 400;
   }
 }
