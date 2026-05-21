@@ -43,6 +43,7 @@ import { MouseScrollIcon } from "../icons/mouse-scroll-icon";
 import { KeyboardNavIcon } from "../icons/keyboard-nav-icon";
 
 import styles from "./content-navigation.module.css";
+import { ArrowKeysIcon } from "../icons/arrow-keys-icon";
 
 function isStoryListItem(
   obj: StoryListItem | LayerListItem,
@@ -501,7 +502,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
             {/* Mouse scroll icon */}
             <MouseScrollIcon />
             {/* Keyboard navigation keys icon */}
-            <KeyboardNavIcon />
+            <ArrowKeysIcon isWhite />
           </div>
           <p className={styles.scrollHintText}>
             <FormattedMessage id="contentNav.scrollHint" />
