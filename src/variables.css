@@ -49,6 +49,8 @@
   --main-headline-line-height: 1.44;
   --main-headline-font-weight: 700;
 
+  --story-eei-box-width: min(80vw, 600px);
+
   @media (--desktop-viewport) {
     --main-headline-size: 3.875rem;
     --main-headline-line-height: 1.2;
