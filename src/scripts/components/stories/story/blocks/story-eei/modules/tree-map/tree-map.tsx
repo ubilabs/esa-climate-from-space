@@ -1,6 +1,4 @@
 import { useState } from "react";
-import cx from "classnames";
-
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 import ScrollModule from "../base-scroll/module/scroll-module";
@@ -22,35 +20,40 @@ export default function TreeMapModule() {
     ({ layerId }) => layerId === highlightedLayerId,
   );
 
+  const description = highlightedData
+    ? `Although the ${highlightedData.label} covers ${highlightedData.percentage.globe}% of Earth's surface, but absorbs ${highlightedData.percentage.grid}% of the incoming energy.`
+    : null;
+
   return (
     <ScrollModule lengthFactor={module.lengthFactor} config={null}>
-      <ScrollModule.StickyContainer ref={getRefCallback(0, 0)}>
-        <div className={styles.slide}>
-          <h1 className={styles.label}>{highlightedData?.label}</h1>
-          <div className={styles.panelContainer}>
-            <h2 className={styles.title}>{module.title.grid}</h2>
-            <div
-              className={cx(
-                styles.gridPanel,
-                !highlightedData && styles.hidden,
-              )}
-            >
-              <TreeMapGrid
-                data={module.data}
-                onHighlightGridCell={setHighlightedLayerId}
-              />
+      <ScrollModule.StickyContainer
+        ref={getRefCallback(0, 0)}
+        className={styles.slide}
+      >
+        {highlightedData && description && (
+          <>
+            <h1 className={styles.label}>{highlightedData.label}</h1>
+            <p className={styles.description}>{description}</p>
+            <span className={styles.info} aria-hidden="true">
+              {highlightedData.label} covers {highlightedData.percentage.globe}%
+              of Earth's surface...
+            </span>
+            <span className={styles.info} aria-hidden="true">
+              ...but absorbs {highlightedData.percentage.grid}% of the incoming
+              energy.
+            </span>
+            {/* globe positions for this module are actually
+set in the previous module (kettleCount) */}
+            <div className={styles.globeOverlay}>
+              <span>{highlightedData?.percentage.globe}%</span>
             </div>
-            {highlightedData && (
-              <>
-                <div className={styles.globePanel}>
-                  <h2 className={styles.title}>{module.title.globe}</h2>
-                </div>
-                <span className={styles.globeOverlay}>
-                  {highlightedData.percentage.globe} %
-                </span>
-              </>
-            )}
-          </div>
+          </>
+        )}
+        <div className={styles.treemapContainer}>
+          <TreeMapGrid
+            data={module.data}
+            onHighlightGridCell={setHighlightedLayerId}
+          />
         </div>
       </ScrollModule.StickyContainer>
     </ScrollModule>
