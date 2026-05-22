@@ -21,7 +21,7 @@ export default function TreeMapModule() {
   );
 
   const description = highlightedData
-    ? `Although the ${highlightedData.label} covers ${highlightedData.percentage.globe}% of Earth's surface, but absorbs ${highlightedData.percentage.grid}% of the incoming energy.`
+    ? `Although the ${highlightedData.label} covers ${highlightedData.percentage.globe}% of Earth's surface, it absorbs ${highlightedData.percentage.grid}% of the incoming energy.`
     : null;
 
   return (
@@ -35,11 +35,11 @@ export default function TreeMapModule() {
             <h1 className={styles.label}>{highlightedData.label}</h1>
             <p className={styles.description}>{description}</p>
             <span className={styles.info} aria-hidden="true">
-              {highlightedData.label} covers {highlightedData.percentage.globe}%
+              Although the {highlightedData.label} covers {highlightedData.percentage.globe}%
               of Earth's surface...
             </span>
             <span className={styles.info} aria-hidden="true">
-              ...but absorbs {highlightedData.percentage.grid}% of the incoming
+              ...it absorbs {highlightedData.percentage.grid}% of the incoming
               energy.
             </span>
             {/* globe positions for this module are actually
