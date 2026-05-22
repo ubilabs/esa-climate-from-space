@@ -530,7 +530,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
           <div className={styles.scrollHintDesktop}>
             <div className={styles.scrollHintIcons}>
               <MouseScrollIcon />
-              <ArrowKeysIcon isWhite />
+              <ArrowKeysIcon />
             </div>
             <p className={styles.scrollHintText}>
               <FormattedMessage id="contentNav.scrollHint" />

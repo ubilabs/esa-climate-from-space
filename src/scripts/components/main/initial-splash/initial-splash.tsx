@@ -16,7 +16,7 @@ export default function InitialSplash() {
   ) : (
     <>
       <MouseIcon rounded />
-      <ArrowKeysIcon isWhite />
+      <ArrowKeysIcon />
     </>
   );
 
@@ -70,5 +70,3 @@ export default function InitialSplash() {
     </>
   );
 }
-
-
