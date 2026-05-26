@@ -56,7 +56,7 @@ set in the previous module (kettleCount) */}
             </div>
           </>
         )}
-        <div className={styles.treemapContainer}>
+        <div className={cx(styles.treemapContainer, !highlightedData?.percentage && styles.hidden)}>
           <TreeMapGrid
             data={module.data}
             onHighlightGridCell={setHighlightedLayerId}
