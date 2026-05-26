@@ -3,25 +3,25 @@
   "slides": [
     {
       "type": "splashscreen",
-      "text": "# Dynamique du carbone terrestre\r\n\r\nLes forêts absorbent le carbone présent dans l'atmosphère, contribuant ainsi à compenser les émissions de carbone produites par l'homme. Cependant, les mesures effectuées depuis l'espace montrent que la capacité des forêts et autres biomasses vivantes à absorber le carbone diminue à travers le monde.",
-      "shortText": "# Dynamique du carbone terrestre\r\n\r\nLes forêts absorbent le carbone présent dans l'atmosphère, contribuant ainsi à compenser les émissions de carbone produites par l'homme. Cependant, les mesures effectuées depuis l'espace montrent que la capacité des forêts et autres biomasses vivantes à absorber le carbone diminue à travers le monde.",
+      "text": "# Dynamique du carbone terrestre\n\nLes forêts absorbent le carbone présent dans l'atmosphère, contribuant ainsi à compenser les émissions de carbone produites par l'homme. Cependant, les mesures effectuées depuis l'espace montrent que la capacité des forêts et autres biomasses vivantes à absorber le carbone diminue à travers le monde.",
+      "shortText": "# Dynamique du carbone terrestre\n\nLes forêts absorbent le carbone présent dans l'atmosphère, contribuant ainsi à compenser les émissions de carbone produites par l'homme. Cependant, les mesures effectuées depuis l'espace montrent que la capacité des forêts et autres biomasses vivantes à absorber le carbone diminue à travers le monde.",
       "images": [
         "assets/story45-image01.jpg"
       ]
     },
     {
       "type": "image",
-      "text": "##  Mesurer la biomasse depuis l'espace\r\n\r\nLe carbone est constamment échangé entre l'atmosphère et la surface terrestre. Les puits de carbone éliminent le carbone de l'atmosphère, contribuant ainsi à compenser les émissions naturelles et humaines de carbone. Le statut d'une zone en tant que source ou puits de carbone peut changer au cours de l'année, en réponse à des changements environnementaux tels que les sécheresses, les incendies de forêt et l'utilisation des terres.\r\n\r\nLe projet RECCAP2 (Regional Carbon Cycle Analysis and Processes) de l'ESA utilise des satellites pour mesurer les variables climatiques terrestres telles que l'humidité du sol et la biomasse. Le radiomètre micro-ondes en bande L du satellite SMOS est sensible aux changements annuels de la végétation, y compris des forêts. Ces observations sont combinées avec des données au sol et des modèles informatiques afin de cartographier les stocks mondiaux de carbone terrestre.",
-      "shortText": "##  Mesurer la biomasse depuis l'espace\r\n\r\nLe carbone est constamment échangé entre l'atmosphère et la surface terrestre. Les puits de carbone éliminent le carbone de l'atmosphère, contribuant ainsi à compenser les émissions naturelles et humaines de carbone. Le statut d'une zone en tant que source ou puits de carbone peut changer au cours de l'année, en réponse à des changements environnementaux tels que les sécheresses, les incendies de forêt et l'utilisation des terres.\r\n\r\nLe projet RECCAP2 (Regional Carbon Cycle Analysis and Processes) de l'ESA utilise des satellites pour mesurer les variables climatiques terrestres telles que l'humidité du sol et la biomasse. Le radiomètre micro-ondes en bande L du satellite SMOS est sensible aux changements annuels de la végétation, y compris des forêts. Ces observations sont combinées avec des données au sol et des modèles informatiques afin de cartographier les stocks mondiaux de carbone terrestre.",
+      "text": "##  Mesurer la biomasse depuis l'espace\n\nLe carbone est constamment échangé entre l'atmosphère et la surface terrestre. Les puits de carbone éliminent le carbone de l'atmosphère, contribuant ainsi à compenser les émissions naturelles et humaines de carbone. Le rôle d'une zone en tant que source ou puits de carbone peut s’inverser au cours du temps, en réponse à des changements environnementaux tels que les sécheresses, les feux de forêt et l'utilisation des terres.\n\nLe projet « Analyse et processus régionaux du cycle du carbone » de l'ESA utilise des satellites pour mesurer les variables climatiques terrestres telles que l'humidité du sol et la biomasse. Le radiomètre micro-ondes en bande L du satellite SMOS est sensible aux variations annuelles de la végétation, y compris celle des forêts. Ces observations sont combinées avec des mesures in-situ et des modèles informatiques afin de cartographier les stocks globaux de carbone terrestre.",
+      "shortText": "##  Mesurer la biomasse depuis l'espace\n\nLe carbone est constamment échangé entre l'atmosphère et la surface terrestre. Les puits de carbone éliminent le carbone de l'atmosphère, contribuant ainsi à compenser les émissions naturelles et humaines de carbone. Le rôle d'une zone en tant que source ou puits de carbone peut s’inverser au cours du temps, en réponse à des changements environnementaux tels que les sécheresses, les feux de forêt et l'utilisation des terres.\n\nLe projet « Analyse et processus régionaux du cycle du carbone » de l'ESA utilise des satellites pour étudier les variables climatiques terrestres telles que l'humidité du sol et la biomasse. Le radiomètre micro-ondes en bande L du satellite SMOS est sensible aux variations annuelles de la végétation, y compris celle des forêts. Ces observations sont combinées avec des mesures in-situ et des modèles informatiques afin de cartographier les stocks globaux de carbone terrestre.",
       "images": [
         "assets/story45-image02.jpg",
         "assets/story45-image03.jpg",
         "assets/story45-image04.jpg"
       ],
       "imageCaptions": [
-        "# Flux de carbone à la surface terrestre, juillet 2022\r\n\r\nLes puits de carbone sont représentés en bleu et les sources de carbone en jaune et en rouge. Les pics correspondent à des événements extrêmes de libération de carbone, tels que les incendies de forêt. (Global Carbon Project/Planetary Visions)",
-        "Le satellite SMOS (Soil Moisture and Ocean Salinity) de l'ESA utilise des micro-ondes pour détecter les changements dans la végétation. (ESA/Planetary Visions)",
-        "# Biomasse mondiale 2022\r\n\r\nCarbone vivant au-dessus du sol basé sur la profondeur optique de la végétation en bande L (L-VOD) SMOS  (ESA-CCI)"
+        "# Flux de carbone à la surface terrestre, juillet 2022\n\nLes puits de carbone sont représentés en bleu et les sources de carbone en jaune et en rouge. Les pics correspondent à des événements extrêmes de libération de carbone, tels que les incendies de forêt. (Global Carbon Project/Planetary Visions)",
+        "Le satellite SMOS (Soil Moisture and Ocean Salinity) de l'ESA utilise le domaine des micro-ondes pour détecter les changements dans la végétation. (ESA/Planetary Visions)",
+        "# Biomasse mondiale 2022\n\nCarbone issu du monde vivant au-dessus du sol basé sur la profondeur optique de la végétation en bande L (L-VOD) SMOS  (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
@@ -33,8 +33,8 @@
     },
     {
       "type": "image",
-      "text": "## Bassin amazonien\r\n\r\nLe bassin amazonien représente 14 % du carbone atmosphérique absorbé chaque année par les plantes. Mais la région a perdu 370 millions de tonnes de carbone au cours de la décennie 2010-2020, et la partie sud-est est désormais une source nette de carbone. L'absorption de carbone par la forêt en croissance a été compensée par la déforestation, la dégradation et l'utilisation agricole.",
-      "shortText": "## Amazon Basin\r\n\r\nThe Amazon Basin accounts for 14% of the atmospheric carbon taken up by plants each year. But the region has lost 370 million tonnes of carbon over the decade 2010-20, and the southeastern part is now a net carbon source. Carbon absorption by growing forest has been outweighed by deforestation, degradation and agricultural use.",
+      "text": "## Bassin amazonien\n\nLe bassin amazonien représente 14 % du carbone atmosphérique absorbé chaque année par les plantes. Mais la région a perdu 370 millions de tonnes de carbone au cours de la décennie 2010-2020, et la partie sud-est est désormais une source nette de carbone. L'absorption de carbone par les forêts en croissance a été surpassée par la déforestation, la dégradation et l'utilisation agricole.",
+      "shortText": "## Bassin amazonien\n\nLe bassin amazonien représente 14 % du carbone atmosphérique absorbé chaque année par les plantes. Mais la région a perdu 370 millions de tonnes de carbone au cours de la décennie 2010-2020, et la partie sud-est est désormais une source nette de carbone. L'absorption de carbone par les forêts en croissance a été surpassée par la déforestation, la dégradation et l'utilisation agricole.",
       "images": [
         "assets/story45-image05.jpg",
         "assets/story45-image06.jpg",
@@ -42,8 +42,8 @@
       ],
       "imageCaptions": [
         "Forêt défrichée à des fins agricoles dans le bassin amazonien, vue depuis la Station spatiale internationale par l'astronaute de l'ESA Thomas Pasquet (ESA/NASA – T Pasquet)",
-        "# Évolution de la biomasse entre 2010 et 2020 dans le bassin amazonien\r\n\r\n(ESA-CCI)",
-        "# Variation cumulative de la biomasse dans le bassin amazonien\r\n\r\n(ESA-CCI)"
+        "# Évolution de la biomasse entre 2010 et 2020 dans le bassin amazonien\n\n(ESA-CCI)",
+        "# Variation cumulative de la biomasse dans le bassin amazonien\n\n(ESA-CCI)"
       ],
       "imageFits": [
         "cover",
@@ -55,8 +55,8 @@
     },
     {
       "type": "image",
-      "text": "##  Forêts nordiques\r\n\r\n41 % de la superficie forestière mondiale se trouve dans l'hémisphère nord. Les forêts nordiques ont accumulé de la biomasse au cours des dernières décennies. Mais depuis 2016, la multiplication des sécheresses et des incendies de forêt a affaibli leur capacité à absorber le carbone.",
-      "shortText": "##  Forêts nordiques\r\n\r\n41 % de la superficie forestière mondiale se trouve dans l'hémisphère nord. Les forêts nordiques ont accumulé de la biomasse au cours des dernières décennies. Mais depuis 2016, la multiplication des sécheresses et des incendies de forêt a affaibli leur capacité à absorber le carbone.",
+      "text": "##  Forêts nordiques\n\n41% de l’ensemble des forêts mondiale se trouve dans l'hémisphère nord. Les forêts de l’hémisphère Nord ont accumulé de la biomasse au cours des dernières décennies. Mais depuis 2016, l'augmentation des sécheresses et des feux de forêt a affaibli leur capacité à absorber le carbone.",
+      "shortText": "##  Forêts nordiques\n\n41% de l’ensemble des forêts mondiale se trouve dans l'hémisphère nord. Les forêts de l’hémisphère Nord ont accumulé de la biomasse au cours des dernières décennies. Mais depuis 2016, l'augmentation des sécheresses et des feux de forêt a affaibli leur capacité à absorber le carbone.",
       "images": [
         "assets/story45-image08.jpg",
         "assets/story45-image09.jpg",
@@ -64,8 +64,8 @@
       ],
       "imageCaptions": [
         "Forêt défrichée à des fins agricoles dans le bassin amazonien, vue depuis la Station spatiale internationale par l'astronaute de l'ESA Thomas Pasquet (ESA/NASA – T Pasquet)",
-        "# Variation nette de la biomasse L-VOD 2016-2022\r\n\r\nLes variations de la biomasse dans l'hémisphère nord sont représentées en rouge pour les pertes de biomasse et en vert pour les gains de biomasse (ESA-CCI).",
-        "# Évolution cumulative de la biomasse dans les régions tempérées \r\n\r\nLa biomasse forestière nordique est en déclin depuis 2016 (ESA-CCI)"
+        "# Variation nette de la biomasse L-VOD 2016-2022\n\nLes variations de la biomasse dans l'hémisphère nord sont représentées en rouge pour les pertes de biomasse et en vert pour les gains de biomasse (ESA-CCI).",
+        "# Évolution cumulative de la biomasse dans les régions tempérées \n\nLa biomasse forestière nordique est en déclin depuis 2016 (ESA-CCI)"
       ],
       "imageFits": [
         "contain",
@@ -77,15 +77,15 @@
     },
     {
       "type": "image",
-      "text": "##  Compensation des émissions européennes\r\n\r\nDans toute l'Europe, les forêts ont absorbé environ 10 % des émissions de gaz à effet de serre de l'UE entre 1990 et 2022. Mais au cours des dix dernières années, cette compensation des émissions a diminué de près de 30 % en raison de l'exploitation forestière et du vieillissement des forêts, de la fréquence accrue des sécheresses, des vagues de chaleur et des incendies de forêt, ainsi que des infestations d'insectes et des maladies des plantes. Ce déclin compromet la réalisation des futurs objectifs climatiques européens.\r\n\r\nUne meilleure connaissance de la dynamique du carbone terrestre nous aidera à évaluer le budget carbone restant dans les limites de température fixées par l'accord de Paris, ou si nous devrons faire face aux conséquences plus graves d'un réchauffement supplémentaire.",
-      "shortText": "##  Compensation des émissions européennes\r\n\r\nDans toute l'Europe, les forêts ont absorbé environ 10 % des émissions de gaz à effet de serre de l'UE entre 1990 et 2022. Mais au cours des dix dernières années, cette compensation des émissions a diminué de près de 30 % en raison de l'exploitation forestière et du vieillissement des forêts, de la fréquence accrue des sécheresses, des vagues de chaleur et des incendies de forêt, ainsi que des infestations d'insectes et des maladies des plantes. Ce déclin compromet la réalisation des futurs objectifs climatiques européens.\r\n\r\nUne meilleure connaissance de la dynamique du carbone terrestre nous aidera à évaluer le budget carbone restant dans les limites de température fixées par l'accord de Paris, ou si nous devrons faire face aux conséquences plus graves d'un réchauffement supplémentaire.",
+      "text": "##  Compensation des émissions européennes\n\nDans toute l'Europe, les forêts ont absorbé environ 10 % des émissions de gaz à effet de serre de l'UE entre 1990 et 2022. Mais au cours des dix dernières années, cette compensation des émissions a diminué de près de 30 % en raison de l'exploitation forestière et du vieillissement des forêts, de la fréquence accrue des sécheresses, des vagues de chaleur et des feux de forêt, ainsi que des attaques d'insectes et des maladies des plantes.  Ce déclin compromet la réalisation des futurs objectifs climatiques européens.\n\nUne meilleure connaissance de la dynamique du carbone terrestre nous aidera à évaluer le budget carbone restant dans les limites de température fixées par les accords de Paris et à déterminer si nous devrons faire face aux conséquences d'un réchauffement plus fort.",
+      "shortText": "##  Compensation des émissions européennes\n\nDans toute l'Europe, les forêts ont absorbé environ 10 % des émissions de gaz à effet de serre de l'UE entre 1990 et 2022. Mais au cours des dix dernières années, cette compensation des émissions a diminué de près de 30 % en raison de l'exploitation forestière et du vieillissement des forêts, de la fréquence accrue des sécheresses, des vagues de chaleur et des feux de forêt, ainsi que des attaques d'insectes et des maladies des plantes.  Ce déclin compromet la réalisation des futurs objectifs climatiques européens.\n\nUne meilleure connaissance de la dynamique du carbone terrestre nous aidera à évaluer le budget carbone restant dans les limites de température fixées par les accords de Paris et à déterminer si nous devrons faire face aux conséquences d'un réchauffement plus fort.",
       "images": [
         "assets/story45-image11.jpg",
         "assets/story45-image12.png"
       ],
       "imageCaptions": [
-        "# Flux de carbone à la surface terrestre, juin 2018\r\n\r\nEn juin 2018, la majeure partie de l'Europe est un puits de carbone, car la végétation en pleine croissance absorbe le carbone de l'atmosphère. À l'horizon, en Sibérie, les émissions de carbone atteignent des sommets en raison des incendies de forêt qui font rage après un hiver chaud et sec.  (Global Carbon Project/Planetary Visions)",
-        "# Compensation des émissions pour l'Europe 2005-2030\r\n\r\nLa compensation par les terres et les forêts a dépassé l'objectif de compensation jusqu'en 2016, mais est depuis tombée en dessous de cet objectif. La compensation future prévue ne devrait pas être suffisante pour atteindre l'objectif. (ESA-CCI)"
+        "# Flux de carbone à la surface terrestre, juin 2018\n\nEn juin 2018, la majeure partie de l'Europe est un puits de carbone, car la végétation en pleine croissance absorbe le carbone de l'atmosphère. À l'horizon, en Sibérie, les émissions de carbone atteignent des sommets en raison des incendies de forêt qui font rage après un hiver chaud et sec.  (Global Carbon Project/Planetary Visions)",
+        "# Compensation des émissions pour l'Europe 2005-2030\n\nLa compensation par les terres et les forêts a dépassé l'objectif de compensation jusqu'en 2016, mais est depuis tombée en dessous de cet objectif. La compensation future prévue ne devrait pas être suffisante pour atteindre l'objectif. (ESA-CCI)"
       ],
       "imageFits": [
         "contain",

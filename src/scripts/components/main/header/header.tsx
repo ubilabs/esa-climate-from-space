@@ -19,6 +19,7 @@ import { setShowLayer } from "../../../reducers/show-layer-selector";
 import { setWelcomeScreen } from "../../../reducers/welcome-screen";
 
 import { AppRoute } from "../../../types/app-routes";
+import { AppLocationState } from "../../../types/location-state";
 
 import Button from "../button/button";
 import { EsaLogo } from "../icons/esa-logo";
@@ -62,7 +63,7 @@ const Header: FunctionComponent = () => {
   const isLayerSelectorVisible = useSelector(showLayerSelector);
 
   const navigate = useNavigate();
-  const location = useLocation();
+  const location = useLocation<AppLocationState>();
 
   const isSearchActive = Boolean(location.state?.search);
 
@@ -87,6 +88,9 @@ const Header: FunctionComponent = () => {
   })();
 
   const linkPath = (() => {
+    if (location.state?.backLink) {
+      return location.state.backLink;
+    }
     if (isSearchActive) {
       return "/search";
     }

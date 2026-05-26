@@ -28,11 +28,6 @@ function QuoteContent() {
     <motion.div
       style={{
         y: useTransform(scrollYProgress, config.y.input, config.y.output),
-        opacity: useTransform(
-          scrollYProgress,
-          config.fadeIn.input,
-          config.fadeIn.output,
-        ),
       }}
     >
       <p>{module.content?.text}</p>

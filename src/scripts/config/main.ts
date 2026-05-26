@@ -56,6 +56,7 @@ export const USER_INACTIVITY_TIMEOUT = 30000; // Time to wait after user interac
 export const CONTENT_NAV_LONGITUDE_OFFSET = -30;
 export const STORY_LATITUDE_OFFSET = 5; // Offset for the latitude when flying to the location
 export const ALTITUDE_FACTOR_DESKTOP = 0.5;
+export const ALTITUDE_FACTOR_MOBILE = 1.2;
 
 export const WHEEL_SCALE_FACTOR = 0.001,
   MIN_ZOOM_SCALE = 1,
@@ -65,15 +66,15 @@ export const WHEEL_SCALE_FACTOR = 0.001,
 // The order of these is important for the stories menu
 export const categoryTags = [
   "welcome",
+  "atmosphere",
+  "carbon_cycle",
+  "climate_action",
+  "climate_risk",
+  "cryosphere",
+  "improving_models",
   "land",
   "ocean",
-  "atmosphere",
-  "cryosphere",
   "water_cycle",
-  "carbon_cycle",
-  "climate_risk",
-  "climate_action",
-  "improving_models",
 ];
 
 const globeState = {
@@ -86,7 +87,7 @@ const globeState = {
     renderMode: "globe" as RenderMode,
     lat: 25,
     lng: 0,
-    altitude: 25840000,
+    altitude: 22840000,
     zoom: 0,
     // Initially, this should be set to false since isAnimated defaults to true.
     // If set to true, it could cause delays in responding to user interactions.
@@ -188,6 +189,7 @@ export default {
     storyMediaBase: `${baseUrlStorage}stories/{id}`,
     stories: `${baseUrlStorage}stories/stories-{lang}.json`,
     story: `${baseUrlStorage}stories/{id}/{id}-{lang}.json`,
+    storySplashImage: `${baseUrlStorage}stories/{id}/{image}`,
   },
   defaultBasemap: "colored" as BasemapId,
   defaultLayerBasemap: "land" as BasemapId,
