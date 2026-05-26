@@ -1,11 +1,11 @@
 .slide {
   height: 100%;
   display: grid;
-  grid-template-areas: "label label" "divider divider" "globeOverlay treemap";
+  grid-template-areas: "label label" "divider divider" "info1 info2" "globeOverlay treemap";
   place-items: center;
-  grid-template-rows: var(--headline-font-size) 2rem 1fr;
+  grid-template-rows: var(--headline-font-size) min(1rem, 5vh) auto 1fr;
   grid-template-columns: 1fr 1fr;
-  padding-top: var(--top-spacing);
+  padding-block: var(--top-spacing);
   padding-inline: min(5%, 2rem);
 
   --headline-font-size: 3.875rem;
@@ -48,16 +48,17 @@
   .treemapContainer {
     grid-area: treemap;
     width: 100%;
+    height: min(100%, 50vh);
 
     @media (--mobile-viewport) {
-      width: 70%;
       display: grid;
       place-items: center;
+      padding: 1rem;
     }
   }
 
   .info {
-    margin-top: min(5rem, 5vh);
+    margin: min(2.5rem, 2.5vh);
     color: var(--light-green);
     font-size: 1.125rem;
     text-align: center;
@@ -65,11 +66,11 @@
     align-self: start;
 
     &:first-of-type {
-      grid-area: globeOverlay;
+      grid-area: info1;
     }
 
     &:last-of-type {
-      grid-area: treemap;
+      grid-area: info2;
     }
     @media (--mobile-viewport) {
       display: none;
