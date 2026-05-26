@@ -36,7 +36,7 @@ export default function TreeMapModule() {
             <p className={styles.description}>{description}</p>
             <span className={styles.info} aria-hidden="true">
               Although the {highlightedData.label} covers {highlightedData.percentage.globe}%
-              of Earth's surface...
+              of Earth's surface,...
             </span>
             <span className={styles.info} aria-hidden="true">
               ...it absorbs {highlightedData.percentage.grid}% of the incoming
