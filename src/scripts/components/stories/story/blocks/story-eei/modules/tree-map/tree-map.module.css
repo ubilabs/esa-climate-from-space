@@ -36,24 +36,22 @@
     text-wrap: balance;
     text-align: center;
     color: var(--light-green);
-
-    @media (--desktop-viewport) {
-      /* hidden on desktop, but in DOM for screenreaders */
-      visibility: hidden;
-      pointer-events: none;
-      position: absolute;
-    }
   }
 
   .treemapContainer {
     grid-area: treemap;
     width: 100%;
     height: min(100%, 50vh);
+    transition: 0.4s opacity ease-out;
 
     @media (--mobile-viewport) {
       display: grid;
       place-items: center;
       padding: 1rem;
+    }
+
+    &.hidden {
+      opacity: 0;
     }
   }
 

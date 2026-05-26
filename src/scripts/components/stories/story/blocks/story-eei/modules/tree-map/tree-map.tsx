@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+import cx from "classnames";
 
 import ScrollModule from "../base-scroll/module/scroll-module";
 import TreeMapGrid from "./tree-map-grid/tree-map-grid";
+
+import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 
 import styles from "./tree-map.module.css";
 
@@ -11,6 +14,8 @@ export default function TreeMapModule() {
   const [highlightedLayerId, setHighlightedLayerId] = useState<string | null>(
     null,
   );
+
+  const { isDesktop } = useScreenInfo();
 
   if (!("data" in module)) {
     return;
@@ -33,10 +38,12 @@ export default function TreeMapModule() {
         {highlightedData && description && (
           <>
             <h1 className={styles.label}>{highlightedData.label}</h1>
-            <p className={styles.description}>{description}</p>
+            <p className={cx(styles.description, isDesktop && "sr-only")}>
+              {description}
+            </p>
             <span className={styles.info} aria-hidden="true">
-              Although the {highlightedData.label} covers {highlightedData.percentage.globe}%
-              of Earth's surface,...
+              Although the {highlightedData.label} covers{" "}
+              {highlightedData.percentage.globe}% of Earth's surface,...
             </span>
             <span className={styles.info} aria-hidden="true">
               ...it absorbs {highlightedData.percentage.grid}% of the incoming
@@ -49,7 +56,7 @@ set in the previous module (kettleCount) */}
             </div>
           </>
         )}
-        <div className={styles.treemapContainer}>
+        <div className={cx(styles.treemapContainer, !highlightedData?.percentage && styles.hidden)}>
           <TreeMapGrid
             data={module.data}
             onHighlightGridCell={setHighlightedLayerId}
