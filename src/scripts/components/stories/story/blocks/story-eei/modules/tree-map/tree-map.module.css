@@ -36,13 +36,6 @@
     text-wrap: balance;
     text-align: center;
     color: var(--light-green);
-
-    @media (--desktop-viewport) {
-      /* hidden on desktop, but in DOM for screenreaders */
-      visibility: hidden;
-      pointer-events: none;
-      position: absolute;
-    }
   }
 
   .treemapContainer {
