@@ -154,6 +154,17 @@ const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
                 />
               </li>
               <li className={styles.menuListItem}>
+                {/* Link to automatically generated license.md at build time */}
+                <a
+                  href={"licence.md"}
+                  target={"_blank"}
+                  rel="noopener noreferrer"
+                  className={styles.menuButton}
+                >
+                  <FormattedMessage id={"licences"} />
+                </a>
+              </li>
+              <li className={styles.menuListItem}>
                 <a
                   href={config.esaWebsite}
                   target={"_blank"}

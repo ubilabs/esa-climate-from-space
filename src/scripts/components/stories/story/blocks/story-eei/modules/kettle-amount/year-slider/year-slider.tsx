@@ -13,9 +13,8 @@ export default function YearSlider() {
   return (
     <motion.div
       className={styles.yearSlider}
-      initial={{ opacity: 0 }}
       style={{
-        opacity: useTransform(
+        scale: useTransform(
           scrollYProgress,
           config.yearSlider.fadeIn.input,
           config.yearSlider.fadeIn.output,

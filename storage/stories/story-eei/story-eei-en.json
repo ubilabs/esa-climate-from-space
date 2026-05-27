@@ -217,12 +217,12 @@
           }
         }
       ],
-      "lengthFactor": 16,
+      "lengthFactor": 13,
       "type": "animatedArrowsModule",
       "content": {
         "scrollText1": "Earth's energy is out of balance.",
         "scrollText2": "More energy comes in from the Sun than we lose to space.",
-        "scrollText3": "Increasing amounts of greenhouse gases in the atmosphere are trapping some of the incoming energy as heat"
+        "scrollText3": "Increasing levels of greenhouse gases in the atmosphere are trapping some of the incoming energy as heat."
       }
     },
     {
@@ -270,11 +270,11 @@
           }
         }
       ],
-      "lengthFactor": 28,
+      "lengthFactor": 26,
       "type": "kettleAmountModule",
       "content": {
-        "scrollText": "That square metre is now trapping much more heat.",
-        "overlay1": "But accumulated over a year, it's enough energy to boil 70 kettles of water.",
+        "scrollText": "That square metre is now trapping almost 3 times as much heat.",
+        "overlay1": "But accumulated over a year, 1.4 Watts is enough energy to boil 70 kettles of water.",
         "overlay2": "Satellites have been measuring the solar energy reaching and leaving Earth since the the 1990s. ",
         "overlay3": "Thirty years ago the energy imbalance was much smaller."
       }
@@ -310,13 +310,13 @@
           }
         }
       ],
-      "lengthFactor": 16,
+      "lengthFactor": 13,
       "type": "kettleCount",
       "content": {
         "scrollText1": "And if you apply that increase to the entire surface of the Earth...",
         "boilText1": "…we have trapped enough heat to boil",
         "boilText2": "since you arrived on this page.",
-        "scrollText3": "This excess energy fuels the changes we are seeing in Earth's climate. It is the engine behind stronger storms, floods, droughts and rising seas",
+        "scrollText3": "This excess energy fuels the changes we are seeing in Earth's climate. It is the engine behind stronger storms, floods, droughts and rising seas.",
         "scrollText4": "ESA's Climate Change Initiative is using satellite observations of the land, ocean, icecaps and atmosphere to measure individual components of Earth's energy budget."
       }
     },
@@ -351,13 +351,13 @@
           },
           "desktop": {
             "containerPosition": {
-              "x": -0.25,
-              "y": -0.03
+              "x": 0.25,
+              "y": -0.1
             },
             "location": {
               "lat": 1.816919,
               "lng": -24.726276,
-              "altitude": 37000000
+              "altitude": 34000000
             }
           }
         },
@@ -376,13 +376,13 @@
           },
           "desktop": {
             "containerPosition": {
-              "x": -0.25,
-              "y": -0.03
+              "x": 0.25,
+              "y": -0.1
             },
             "location": {
               "lat": 1.816919,
               "lng": -24.726276,
-              "altitude": 37000000
+              "altitude": 34000000
             }
           }
         },
@@ -401,13 +401,13 @@
           },
           "desktop": {
             "containerPosition": {
-              "x": -0.25,
-              "y": -0.03
+              "x": 0.25,
+              "y": -0.1
             },
             "location": {
               "lat": -35.26634,
               "lng": -14.363042,
-              "altitude": 37000000
+              "altitude": 34000000
             }
           }
         },
@@ -426,13 +426,13 @@
           },
           "desktop": {
             "containerPosition": {
-              "x": -0.25,
-              "y": -0.03
+              "x": 0.25,
+              "y": -0.1
             },
             "location": {
               "lat": -35.26634,
               "lng": -14.363042,
-              "altitude": 37000000
+              "altitude": 34000000
             }
           }
         }
@@ -440,8 +440,8 @@
       "lengthFactor": 8,
       "type": "treeMapModule",
       "title": {
-        "grid": "Energy absorption",
-        "globe": "Surface area"
+        "globe": "Although the ocean covers 71% of Earth’s surface,",
+        "grid": "it absorbs 91% of the incoming energy."
       },
       "data": [
         {
@@ -523,8 +523,8 @@
       "lengthFactor": 6,
       "type": "quoteSlide",
       "content": {
-        "text": "The CCI project Monitoring the Energy Cycle for a Better Understanding of Climate Change (MOTECUSOMA) is calculating new estimates of Earth’s energy imbalance and surface air temperature. Scientific analyses using these datasets will help climate modelers forecast future changes with more accuracy.",
-        "author": "MOTECUSOMA Team"
+        "text": "ESA’s Climate Change Initiative project MOTECUSOMA (Monitoring the Energy Cycle for a Better Understanding of Climate Change) is calculating new estimates of Earth’s energy imbalance and surface air temperature. Scientific analyses using these datasets will help climate modelers forecast future changes with more accuracy.",
+        "author": "- The MOTECUSOMA Project Team"
       }
     },
     {

@@ -1,0 +1,12 @@
+.satellite {
+  grid-area: content;
+  place-self: center;
+  margin-bottom: var(--story-eei-box-width);
+  margin-right: var(--story-eei-box-width);
+
+  z-index: 2;
+
+  > img {
+    width: min(200px, 30vw);
+  }
+}

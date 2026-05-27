@@ -42,6 +42,7 @@ import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
 
 import { globeRenderOptionsSelector } from "../../../selectors/globe/render-options";
+import { multiGlobeSyncEnabledSelector } from "../../../selectors/globe/multi-globe-sync";
 import { GlobeRenderOptions } from "../../../reducers/globe/render-options";
 
 import { MarkerMarkup } from "./marker-markup";
@@ -103,6 +104,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     onTouchStart,
   } = props;
   const renderOptions = useSelector(globeRenderOptionsSelector);
+  const multiGlobeSyncEnabled = useSelector(multiGlobeSyncEnabledSelector);
 
   const [containerRef, globe] = useWebGlGlobe(view, renderOptions);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
@@ -115,7 +117,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
 
   useProjectionSwitch(globe, projectionState.projection);
   useGlobeRenderOptions(globe, renderOptions);
-  useMultiGlobeSynchronization(globe, props);
+  useMultiGlobeSynchronization(globe, props, multiGlobeSyncEnabled);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
@@ -175,6 +177,7 @@ function useWebGlGlobe(view: CameraView, renderOptions: GlobeRenderOptions) {
   });
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- globe initialization stores the created instance
     initGlobe(containerEl);
   }, [containerEl]);
 
@@ -316,36 +319,44 @@ function useProjectionSwitch(
  * Integrate the globe with the external view-state events and props
  * (view / flyTo / onChange).
  */
-function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
+function useMultiGlobeSynchronization(
+  globe: WebGlGlobe | null,
+  props: Props,
+  enabled: boolean,
+) {
   const { view, active, flyTo, isMarkerOffset } = props;
 
   // forward camera changes from the active view to the parent component
-  useCameraChangeEvents(globe, props);
+  useCameraChangeEvents(globe, props, enabled);
 
   // set camera-view unless it's the active globe
   useEffect(() => {
-    if (globe && !active) {
+    if (globe && enabled && !active) {
       // make sure the applied is not animated
       globe.setProps({ cameraView: { ...view } });
     }
-  }, [globe, view, active]);
+  }, [globe, view, active, enabled]);
 
   // apply incomfing flyTo props to the globe
   useEffect(() => {
-    if (!globe || !flyTo) return;
+    if (!globe || !enabled || !flyTo) return;
     globe.setProps({
       cameraView: {
         ...flyTo,
         lng: flyTo.lng + (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0),
       },
     });
-  }, [flyTo, globe, isMarkerOffset]);
+  }, [flyTo, globe, isMarkerOffset, enabled]);
 }
 
 /**
  * Call the onChange callback from the props from an active globe.
  */
-function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
+function useCameraChangeEvents(
+  globe: WebGlGlobe | null,
+  props: Props,
+  enabled: boolean,
+) {
   const { active, onMoveStart, onChange, onMoveEnd } = props;
 
   const ref = useRef({
@@ -375,7 +386,7 @@ function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
   );
 
   useEffect(() => {
-    if (!globe || !active) {
+    if (!globe || !active || !enabled) {
       return EMPTY_FUNCTION;
     }
 
@@ -388,7 +399,7 @@ function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
       window.clearTimeout(timerId);
       globe.removeEventListener("cameraViewChanged", handleViewChanged);
     };
-  }, [globe, active, handleViewChanged]);
+  }, [globe, active, enabled, handleViewChanged]);
 }
 
 /**

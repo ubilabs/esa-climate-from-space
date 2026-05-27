@@ -5,6 +5,8 @@ import cx from "classnames";
 
 import styles from "./button.module.css";
 
+import { AppLocationState } from "../../../types/location-state";
+
 interface Props {
   label?: string;
   icon?: FunctionComponent;
@@ -16,7 +18,7 @@ interface Props {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   ariaLabel?: string;
   replace?: boolean;
-  state?: Record<string, string>;
+  state?: AppLocationState;
   isExternalLink?: boolean;
 }
 

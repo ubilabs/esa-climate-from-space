@@ -292,7 +292,8 @@
     "usageInfo": "© ESA",
     "categories": [
       "land",
-      "water_cycle"
+      "water_cycle",
+      "cryosphere"
     ],
     "description": "The ice sheets of Antarctica and Greenland together contain over 99% of Earth’s frozen freshwater. But these long-frozen reservoirs have started to melt, releasing water into the ocean, where it contributes to sea level rise. In recent decades, satellite observations have greatly improved our ability to identify and quantify change across these vast and remote regions. \n\nThe CCI Antarctic Ice Sheets project makes use of measurements acquired by ESA and other space agency satellites dating back to the early 1990s. The key parameters it focuses on are measurements of the Antarctic ice sheet surface elevation change, ice velocity, grounding line location and gravimetric mass balance.\n\nThe Gravimetric Mass Balance (GMB) product for the Antarctic Ice Sheet  is based on monthly snapshots of the Earth’s gravity field provided by the Gravity Recovery and Climate Experiment (GRACE) and its follow-on satellite mission (GRACE-FO). The mass change estimation is based on the tailored sensitivity kernel approach developed at TU Dresden.\n\n**Variable Shown:** Gravimetric Mass Balance (GMB)  \n\n**Time Span:** April 2002 - July 2020   \n\n**Temporal Resolution:** monthly  \n\n**Geographic Extent:** Antarctic \n\n**Spatial Resolution:** 50km x 50km  \n\n**Version:** v3.0  \n\n**DOI:** [10.5285/36dae49c76f845a18062fa96599be719](http://dx.doi.org/10.5285/36dae49c76f845a18062fa96599be719)  \n  \n[ESA CCI Ice Sheets Arctic ECV Project website](https://climate.esa.int/projects/ice-sheets-antarctic/)  \n[Data in the Open Data Portal](https://catalogue.ceda.ac.uk/uuid/36dae49c76f845a18062fa96599be719)",
     "position": [

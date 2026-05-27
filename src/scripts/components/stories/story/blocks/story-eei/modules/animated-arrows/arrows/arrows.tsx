@@ -32,11 +32,6 @@ export default function Arrows() {
     (value: number) => `inset(${value}% ${value}% 0% 0%)`,
   );
 
-  const opacity = useTransform(
-    scrollYProgress,
-    config.opacity.input ,
-    config.opacity.output ,
-  );
 
   return (
     <motion.div className={styles.arrows}>
@@ -44,7 +39,6 @@ export default function Arrows() {
         className={styles.arrow}
         style={{
           clipPath: downArrowClip,
-          opacity,
         }}
       >
         <EEIArrow variant="down" />
@@ -53,7 +47,6 @@ export default function Arrows() {
         className={styles.arrow}
         style={{
           clipPath: upArrowClip,
-          opacity,
         }}
       >
         <EEIArrow variant="up" />

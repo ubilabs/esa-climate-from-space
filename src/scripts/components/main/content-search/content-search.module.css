@@ -96,6 +96,7 @@
     }
 
     .clearButton {
+        color: white;
         background-color: transparent;
         border: none;
         cursor: pointer;
@@ -163,14 +164,6 @@
 
         &[data-icon="blog"]::before {
             mask-image: var(--icon-blog);
-        }
-
-        &[data-icon="image"]::before {
-            mask-image: var(--icon-image);
-        }
-
-        &[data-icon="video"]::before {
-            mask-image: var(--icon-video);
         }
 
         &[data-icon="layer"]::before {

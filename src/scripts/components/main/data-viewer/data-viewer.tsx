@@ -1,15 +1,15 @@
-import { FunctionComponent, useState, useMemo } from "react";
+import { FunctionComponent, useMemo } from "react";
 
-import { FormattedMessage, useIntl } from "react-intl";
-import { useNavigate, useParams } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
+import { AnimatePresence } from "motion/react";
 
 import cx from "classnames";
 
-import { categoryTags } from "../../../config/main";
-
 import { useScreenInfo } from "../../../hooks/use-screen-info";
 import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
+import { useRegisterUserInteraction } from "../../../hooks/use-register-user-interaction";
+import { useContentParams } from "../../../hooks/use-content-params";
 
 import { LayerLoadingState } from "@ubilabs/esa-webgl-globe";
 
@@ -22,10 +22,10 @@ import {
 } from "../../../services/api";
 
 import ContentNavigation from "../content-navigation/content-navigation";
-import Button from "../button/button";
 import CategoryNavigation from "../category-navigation/category-navigation";
 import GlobeNavigation from "../globe-navigation/globe-navigation";
 import { GetGlobalDataWidget } from "../data-widget/global-data-widget";
+import InitialSplash from "../initial-splash/initial-splash";
 
 import { BackButton } from "../back-button/back-button";
 
@@ -44,11 +44,12 @@ export type LayerLoadingStateChangeHandle = (
  * @returns {JSX.Element} The rendered DataViewer component.
  */
 const DataViewer: FunctionComponent = () => {
-  const { category } = useParams();
   const language = useSelector(languageSelector);
   const { data: stories } = useGetStoryListQuery(language);
 
   const appRoute = useSelector(appRouteSelector);
+
+  const { category } = useContentParams();
 
   const { data: layers } = useGetLayerListQuery(language);
 
@@ -64,43 +65,14 @@ const DataViewer: FunctionComponent = () => {
     [stories, layers, category],
   );
 
-  const [currentCategory, setCurrentCategory] = useState<string | null>(
-    category || null,
-  );
-
-  const navigate = useNavigate();
-  const intl = useIntl();
-
-  const { screenHeight, screenWidth, isMobile, isTouchDevice } =
-    useScreenInfo();
+  const { isMobile } = useScreenInfo();
 
   const { isBaseRoute, isNavigationView, isDataRoute, isContentNavRoute } =
     useAppRouteFlags();
 
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
+  const hasUserInteracted = useRegisterUserInteraction();
 
-  const allCategories = useMemo(
-    () =>
-      stories
-        ?.flatMap(({ categories }) => categories)
-        .concat(layers?.flatMap(({ categories }) => categories) ?? [])
-        .filter(Boolean),
-    [stories, layers],
-  );
-
-  // create a list of all tags with their number of occurrences in the stories
-  // For now, we filter out tags with less than 3 occurrences as long as we don't have the new categories
-  const arcs = useMemo(
-    () =>
-      categoryTags.map((tag) => {
-        const tags = allCategories ? allCategories : [];
-        const count = tags.filter((t) => t === tag).length;
-        return { [tag]: count };
-      }),
-    [allCategories],
-  );
-
-  if (!stories || !layers || !arcs || !contents) {
+  if (!stories || !layers || !contents) {
     return null;
   }
 
@@ -126,72 +98,38 @@ const DataViewer: FunctionComponent = () => {
       {isNavigationView && (
         <>
           <header className={styles.heading}>
-            {isContentNavRoute ? (
+            {isContentNavRoute && (
               <BackButton
                 label={
-                  !isMobile
-                    ? "back_to_overview"
-                    : `categories.${currentCategory}`
+                  !isMobile ? "back_to_overview" : `categories.${category}`
                 }
                 link="/"
               ></BackButton>
-            ) : (
-              <span className={styles.chooseHeading}>
-                <FormattedMessage id="category.choose" />
-              </span>
             )}
           </header>
-          {isBaseRoute && (
-            <>
-              <CategoryNavigation
-                arcs={arcs}
-                width={screenWidth}
-                height={screenHeight}
-                isMobile={isMobile}
-                setCategory={setCurrentCategory}
-                setAnimationReady={setHasAnimationPlayed}
-              />
-              <Button
-                className={cx(
-                  hasAnimationPlayed && styles.showFast,
-                  styles.exploreButton,
+          <AnimatePresence mode="wait">
+            {isBaseRoute &&
+              (hasUserInteracted ? (
+                <CategoryNavigation key="category-navigation" />
+              ) : (
+                <InitialSplash key="initial-splash" />
+              ))}
+            {isContentNavRoute && (
+              <>
+                <ContentNavigation
+                  key="content-nav"
+                  isMobile={isMobile}
+                  className={styles.contentNav}
+                  contents={contents}
+                />
+                {!isMobile && (
+                  <span className={styles.currentCategory}>
+                    <FormattedMessage id={`categories.${category}`} />
+                  </span>
                 )}
-                onClick={() => {
-                  navigate(`/${currentCategory}`);
-                }}
-                label="explore"
-              ></Button>
-              {!hasAnimationPlayed && (
-                <span
-                  aria-hidden="true"
-                  className={cx(
-                    // Make sure to show the gesture indicator depending on whether it is touch screen device
-                    styles.gestureIndicator,
-                    isTouchDevice ? styles.touch : styles.scroll,
-                  )}
-                  data-content={intl.formatMessage({
-                    id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
-                  })}
-                ></span>
-              )}
-            </>
-          )}
-          {isContentNavRoute && (
-            <>
-              <ContentNavigation
-                isMobile={isMobile}
-                className={styles.contentNav}
-                category={currentCategory}
-                showContentList
-                contents={contents}
-              />
-              {!isMobile && (
-                <span className={styles.currentCategory}>
-                  <FormattedMessage id={`categories.${currentCategory}`} />
-                </span>
-              )}
-            </>
-          )}
+              </>
+            )}
+          </AnimatePresence>
         </>
       )}
     </div>
