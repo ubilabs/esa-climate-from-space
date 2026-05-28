@@ -1,0 +1,85 @@
+.slide {
+  height: 100%;
+  display: grid;
+  grid-template-areas: "label label" "divider divider" "info1 info2" "globeOverlay treemap";
+  place-items: center;
+  grid-template-rows: var(--headline-font-size) min(1rem, 5vh) auto 1fr;
+  grid-template-columns: 1fr 1fr;
+  padding-block: var(--top-spacing);
+  padding-inline: min(5%, 2rem);
+
+  --headline-font-size: 3.875rem;
+  --top-spacing: 3.875rem;
+
+  @media screen and (--mobile-viewport) {
+    --headline-font-size: 2.5rem;
+    --top-spacing: 1.25rem;
+
+    grid-template-areas:
+      "label"
+      "info"
+      "globeOverlay"
+      "treemap";
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--headline-font-size) 3rem 1fr 1fr;
+  }
+
+  .label {
+    grid-area: label;
+    font-size: var(--headline-font-size);
+    font-weight: 700;
+  }
+
+  .description {
+    margin-top: min(2.5rem, 5vh);
+    grid-area: "info";
+    text-wrap: balance;
+    text-align: center;
+    color: var(--light-green);
+  }
+
+  .treemapContainer {
+    grid-area: treemap;
+    width: 100%;
+    height: min(100%, 50vh);
+    transition: 0.4s opacity ease-out;
+
+    @media (--mobile-viewport) {
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+    }
+
+    &.hidden {
+      opacity: 0;
+    }
+  }
+
+  .info {
+    margin: min(2.5rem, 2.5vh);
+    color: var(--light-green);
+    font-size: 1.125rem;
+    text-align: center;
+    font-weight: 700;
+    align-self: start;
+
+    &:first-of-type {
+      grid-area: info1;
+    }
+
+    &:last-of-type {
+      grid-area: info2;
+    }
+    @media (--mobile-viewport) {
+      display: none;
+    }
+  }
+}
+
+.globeOverlay {
+  grid-area: globeOverlay;
+  span {
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+}

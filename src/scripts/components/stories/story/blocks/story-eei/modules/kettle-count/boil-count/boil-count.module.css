@@ -1,0 +1,43 @@
+.countWrapper {
+  --text-color: #98dbce;
+  text-align: center;
+  transform: translateY(-50%);
+  display: grid;
+  place-content: center;
+
+  > span {
+    display: block;
+  }
+  .count {
+    color: var(--text-color);
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 115%; /* 92px */
+
+    @media screen and (--mobile-viewport) {
+      font-size: 2.5rem;
+    }
+  }
+
+  .text {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    text-align: center;
+    font-size: 1.75rem;
+    font-style: normal;
+    line-height: 150%; /* 42px */
+
+    @media screen and (--mobile-viewport) {
+      font-size: 1.125rem;
+    }
+  }
+
+  .countContainer {
+    margin-block: 1rem;
+  }
+}

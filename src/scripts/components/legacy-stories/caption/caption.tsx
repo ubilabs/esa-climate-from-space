@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import ReactMarkdown from "react-markdown";
 import cx from "classnames";
-import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../hooks/use-screen-info";
 
 import styles from "./caption.module.css";
 import { ImageFit } from "../../../types/image-fit";
@@ -17,7 +17,7 @@ const Caption: FunctionComponent<Props> = ({
   showLightbox,
   imageFit,
 }) => {
-  const { isMobile } = useScreenSize();
+  const { isMobile } = useScreenInfo();
   const classes = cx(styles.caption, showLightbox && styles.lightboxCaption);
 
   return (

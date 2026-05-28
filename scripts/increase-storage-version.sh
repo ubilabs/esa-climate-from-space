@@ -8,7 +8,10 @@ new=$2
 if [ $# -ne 2 ]
 then
 	echo "Error: You have to specify a old and new version number (e.g. increase-storage-version 0.9.3 1.0.0)"
+	exit 1
 fi
 
-gsutil -m cp -r gs://esa-cfs-storage/$old/* gs://esa-cfs-storage/$new/
-gsutil -m cp -r gs://esa-cfs-tiles/$old/* gs://esa-cfs-tiles/$new/
+gcloud storage cp --recursive "gs://esa-cfs-storage/$old/*" "gs://esa-cfs-storage/$new/"
+gcloud storage cp --recursive "gs://esa-cfs-tiles/$old/*" "gs://esa-cfs-tiles/$new/"
+
+echo "Done: version $old successfully copied to $new in esa-cfs-storage and esa-cfs-tiles."

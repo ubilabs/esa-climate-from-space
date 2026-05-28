@@ -2,29 +2,22 @@ import {
   FunctionComponent,
   useCallback,
   useEffect,
+  useEffectEvent,
   useLayoutEffect,
   useState,
 } from "react";
+import {  useSelector } from "react-redux";
 
 import { CameraView } from "@ubilabs/esa-webgl-globe";
-import { useDispatch, useSelector } from "react-redux";
 import { useMatomo } from "@streamr/matomo-tracker-react";
 
 import { embedElementsSelector } from "../../../selectors/embed-elements-selector";
 import { contentSelector } from "../../../selectors/content";
-import { flyToSelector } from "../../../selectors/fly-to";
-import { globeSpinningSelector } from "../../../selectors/globe/spinning";
-import { globeViewSelector } from "../../../selectors/globe/view";
 import { languageSelector } from "../../../selectors/language";
 import { layerDetailsSelector } from "../../../selectors/layers/layer-details";
 import { layerListItemSelector } from "../../../selectors/layers/list-item";
-import { selectedLayerIdsSelector } from "../../../selectors/layers/selected-ids";
 import { projectionSelector } from "../../../selectors/globe/projection";
-import { timeSelector } from "../../../selectors/globe/time";
 
-import { updateLayerLoadingState } from "../../../reducers/globe/layer-loading-state";
-import { setGlobeSpinning } from "../../../reducers/globe/spinning";
-import { setGlobeView } from "../../../reducers/globe/view";
 import { State } from "../../../reducers";
 
 import { useContentMarker } from "../../../hooks/use-story-markers";
@@ -36,38 +29,62 @@ import { GlobeImageLayerData } from "../../../types/globe-image-layer-data";
 import { LayerType } from "../../../types/globe-layer-type";
 import { LegendValueColor } from "../../../types/legend-value-color";
 import { Layer } from "../../../types/layer";
-
+import { GlobeItem } from "../../../types/gallery-item";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
+
 import Gallery from "../gallery/gallery";
 import Globe from "../globe/globe";
 import HoverLegend from "../../layers/hover-legend/hover-legend";
 import LayerLegend from "../../layers/layer-legend/layer-legend";
 import DataSetInfo from "../../layers/data-set-info/data-set-info";
 import TimeSlider from "../../layers/time-slider/time-slider";
+import GlobeCaption from "../../layers/globe-caption/globe-caption";
 
 interface Props {
+  globeItem?: GlobeItem;
   className?: string;
   showMarkers?: boolean;
+  autoplay?: boolean;
+  touchable?: boolean;
+  globeView: CameraView;
+  mainId: string | null;
+  compareId: string | null;
+  time: number;
+  setGlobeTime: (time: number) => void;
+  globeSpinning: boolean;
+  flyTo: CameraView | null;
+  onMoveStartHandler: () => void;
+  onMoveEndHandler: (view: CameraView) => void;
+  onLayerLoadingStateChangeHandler: LayerLoadingStateChangeHandle;
+  caption?: string;
 }
 
 export const GetDataWidget: FunctionComponent<Props> = ({
   className,
   showMarkers = true,
+  autoplay = false,
+  touchable = true,
+  globeView,
+  mainId,
+  compareId,
+  time,
+  setGlobeTime,
+  globeSpinning,
+  flyTo,
+  onMoveStartHandler,
+  onMoveEndHandler,
+  onLayerLoadingStateChangeHandler,
+  caption,
 }) => {
   const projectionState = useSelector(projectionSelector);
-  const globalGlobeView = useSelector(globeViewSelector);
-  const globeSpinning = useSelector(globeSpinningSelector);
-  const [currentView, setCurrentView] = useState(globalGlobeView);
-  const flyTo = useSelector(flyToSelector);
+
+  const [currentView, setCurrentView] = useState(globeView);
+
   const [isMainActive, setIsMainActive] = useState(true);
   const { trackEvent } = useMatomo();
 
-  const language = useSelector(languageSelector);
-  const dispatch = useDispatch();
-  const time = useSelector(timeSelector);
 
-  const selectedLayerIds = useSelector(selectedLayerIdsSelector);
-  const { mainId, compareId } = selectedLayerIds;
+  const language = useSelector(languageSelector);
 
   const { isContentNavRoute, isStoriesRoute, isDataRoute } = useAppRouteFlags();
 
@@ -89,8 +106,7 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const { data: layers } = useGetLayerListQuery(language);
 
-  // todo: use useEffectEvent hook
-  useEffect(() => {
+  const onDatasetChange = useEffectEvent(() => {
     // Only track when on data route to ensure tracking is only done on actively selecting datasets
     if (isDataRoute && layers) {
       const mainLayerName = layers?.find((layer) => layer.id === mainId)?.name;
@@ -111,70 +127,15 @@ export const GetDataWidget: FunctionComponent<Props> = ({
           : `${mainLayerName} - ${compareLayerName}`,
       });
     }
-  }, [mainId, compareId, isDataRoute]); // eslint-disable-line react-hooks/exhaustive-deps
+  });
 
-  const onMoveStartHandler = useCallback(
-    () => globeSpinning && dispatch(setGlobeSpinning(false)),
-    [dispatch, globeSpinning],
-  );
-
-  const onMoveEndHandler = useCallback(
-    (view: CameraView) => dispatch(setGlobeView(view)),
-    [dispatch],
-  );
-
-  const onLayerLoadingStateChangeHandler: LayerLoadingStateChangeHandle =
-    useCallback(
-      (layerId, loadingState) =>
-        dispatch(updateLayerLoadingState({ layerId, loadingState })),
-      [dispatch],
-    );
+  useEffect(() => {
+    onDatasetChange();
+  }, [mainId, compareId, isDataRoute]);
 
   const selectedContentId = useSelector(contentSelector).contentId;
 
   const contentMarker = useContentMarker(selectedContentId ?? null, language);
-
-  const getDataWidget = ({
-    imageLayer,
-    layerDetails,
-    active,
-    action,
-  }: {
-    imageLayer: GlobeImageLayerData | null;
-    layerDetails: Layer | null;
-    active: boolean;
-    action: () => void;
-  }) => {
-    if (imageLayer?.type === LayerType.Gallery) {
-      return <Gallery imageLayer={imageLayer} />;
-    }
-
-    return (
-      <Globe
-        {...(showMarkers &&
-          contentMarker && {
-            markers: [contentMarker],
-          })}
-        backgroundColor={""}
-        // We should offset the markers when user is in content nav
-        isMarkerOffset={isContentNavRoute}
-        active={active}
-        view={currentView}
-        projectionState={projectionState}
-        imageLayer={imageLayer}
-        layerDetails={layerDetails || null}
-        spinning={globeSpinning}
-        flyTo={flyTo}
-        onMouseEnter={action}
-        onTouchStart={action}
-        onChange={onChangeHandler}
-        onMoveStart={onMoveStartHandler}
-        onMoveEnd={onMoveEndHandler}
-        onLayerLoadingStateChange={onLayerLoadingStateChangeHandler}
-        className={className}
-      />
-    );
-  };
 
   const getLegends = () =>
     [mainLayerDetails, compareLayerDetails]
@@ -215,8 +176,9 @@ export const GetDataWidget: FunctionComponent<Props> = ({
   // apply changes in the app state view to our local view copy
   // we don't use the app state view all the time to keep store updates low
   useLayoutEffect(() => {
-    setCurrentView(globalGlobeView);
-  }, [globalGlobeView]);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCurrentView(globeView);
+  }, [globeView]);
 
   const onChangeHandler = useCallback((view: CameraView) => {
     setCurrentView(view);
@@ -228,12 +190,25 @@ export const GetDataWidget: FunctionComponent<Props> = ({
 
   const { legend, time_slider } = useSelector(embedElementsSelector);
 
-  // stop globe spinning when layer is selected
-  useEffect(() => {
-    if ((mainId || compareId) && globeSpinning) {
-      dispatch(setGlobeSpinning(false));
-    }
-  }, [dispatch, mainId, compareId, globeSpinning]);
+  // Shared props for Globe instances
+  const globeProps = {
+    ...(showMarkers && contentMarker && { markers: [contentMarker] }),
+    backgroundColor: "",
+    isMarkerOffset: isContentNavRoute,
+    touchable,
+    view: currentView,
+    projectionState,
+    spinning: globeSpinning,
+    flyTo,
+    onChange: onChangeHandler,
+    onMoveStart: onMoveStartHandler,
+    onMoveEnd: onMoveEndHandler,
+    onLayerLoadingStateChange: onLayerLoadingStateChangeHandler,
+    className,
+  };
+
+  const isGalleryTypeLayer = (layer: GlobeImageLayerData | null | undefined) =>
+    layer?.type === LayerType.Gallery;
 
   return (
     <>
@@ -241,23 +216,47 @@ export const GetDataWidget: FunctionComponent<Props> = ({
         <>
           {!isStoriesRoute && <DataSetInfo />}
           {legend && getLegends()}
-          {time_slider && <TimeSlider />}
+          {caption && <GlobeCaption caption={caption} />}
+          {time_slider && (
+            <TimeSlider
+              customStyles={{ bottom: caption ? "10%" : "0" }}
+              time={time}
+              setGlobeTime={setGlobeTime}
+              mainId={mainId}
+              compareId={compareId}
+              noTimeClamp={isStoriesRoute}
+              autoplay={autoplay}
+            />
+          )}
         </>
       )}
 
-      {getDataWidget({
-        imageLayer: mainImageLayer,
-        layerDetails: mainLayerDetails,
-        active: isMainActive,
-        action: () => setIsMainActive(true),
-      })}
-      {compareLayer &&
-        getDataWidget({
-          imageLayer: compareImageLayer,
-          layerDetails: compareLayerDetails,
-          active: !isMainActive,
-          action: () => setIsMainActive(false),
-        })}
+      {isGalleryTypeLayer(mainImageLayer) ? (
+        <Gallery imageLayer={mainImageLayer} />
+      ) : (
+        <Globe
+          {...globeProps}
+          active={isMainActive}
+          imageLayer={mainImageLayer}
+          layerDetails={mainLayerDetails || null}
+          onMouseEnter={() => setIsMainActive(true)}
+          onTouchStart={() => setIsMainActive(true)}
+        />
+      )}
+      {compareLayer && isGalleryTypeLayer(compareImageLayer) ? (
+        <Gallery imageLayer={compareImageLayer} />
+      ) : (
+        compareLayer && (
+          <Globe
+            {...globeProps}
+            active={!isMainActive}
+            imageLayer={compareImageLayer}
+            layerDetails={compareLayerDetails || null}
+            onMouseEnter={() => setIsMainActive(false)}
+            onTouchStart={() => setIsMainActive(false)}
+          />
+        )
+      )}
     </>
   );
 };

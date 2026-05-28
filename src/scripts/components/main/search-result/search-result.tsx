@@ -6,6 +6,7 @@ import { setSelectedLayerIds } from "../../../reducers/layers";
 import type { SearchResult } from "../../../hooks/use-search";
 
 import { FilterType } from "../../../types/search";
+import { AppLocationState } from "../../../types/location-state";
 
 import styles from "./search-result.module.css";
 
@@ -103,7 +104,8 @@ export default function SearchResult({
 
     const activeSearchState = {
       search: { query, filter },
-    };
+      backLink: "/search",
+    } satisfies AppLocationState;
 
     // Persist search query in navigation state for back navigation
     navigate("/search", { state: activeSearchState });

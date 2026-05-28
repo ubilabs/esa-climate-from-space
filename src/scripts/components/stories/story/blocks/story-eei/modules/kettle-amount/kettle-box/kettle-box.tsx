@@ -1,0 +1,38 @@
+import { motion, useTransform } from "motion/react";
+import { useScrollModule } from "../../base-scroll/use-scroll-module";
+import { KettleAmountAnimationConfig } from "../kettle-amount";
+import KettleRow from "../kettle-row/kettle-row";
+import YearSlider from "../year-slider/year-slider";
+import SquareMeterLabel from "../square-meter-label/square-meter-label";
+
+import styles from "./kettle-box.module.css";
+
+export default function KettleBox() {
+  const { scrollYProgress, config } =
+    useScrollModule<KettleAmountAnimationConfig>();
+
+  const scale = useTransform(
+    scrollYProgress,
+    config.initial.scale.input,
+    config.initial.scale.output,
+  );
+
+  const y = useTransform(
+    scrollYProgress,
+    config.initial.yPosition.input,
+    config.initial.yPosition.output,
+  );
+
+
+  return (
+    <div className={styles.boxContainer}>
+      <motion.div className={styles.box} style={{ scale, y }}>
+        {Array.from({ length: 8 }).map((_, index) => (
+          <KettleRow index={index} key={index} />
+        ))}
+        <SquareMeterLabel />
+      </motion.div>
+      <YearSlider />
+    </div>
+  );
+}

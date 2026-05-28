@@ -1,7 +1,6 @@
 import { useRef, useState, useMemo, FunctionComponent } from "react";
-import ReactMarkdown from "react-markdown";
 import { motion, useMotionValueEvent } from "motion/react";
-import { useGesture } from "@use-gesture/react";
+import { StoryMarkdown } from "../../../../../../../shared/story-markdown/story-markdown";
 import {
   ImageModuleSlide,
   StorySectionProps,
@@ -14,7 +13,8 @@ import {
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
 import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
 import { useStory } from "../../../../../../../../providers/story/use-story";
-import { useScreenSize } from "../../../../../../../../hooks/use-screen-size";
+import { useGesture } from "@use-gesture/react";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 
 import config from "../../../../../../../../config/main";
 
@@ -31,9 +31,9 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
 }) => {
   const { module, storyId, getRefCallback } = useModuleContent();
   const { lenisRef } = useStory();
-  const { isTouchDevice } = useScreenSize();
+  const { isTouchDevice } = useScreenInfo();
 
-  const sensitivityFactor = isTouchDevice ? 2.5 : 1
+  const sensitivityFactor = isTouchDevice ? 2.5 : 1;
 
   const targetRef = useRef<HTMLDivElement | null>(null);
   const images: ImageModuleSlide[] = useMemo(
@@ -115,10 +115,12 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
             <div className={styles.slideIndicator}>
               {activeSlideIndex + 1}/{numSlides}
             </div>
-            <ReactMarkdown
-              children={caption}
+            <StoryMarkdown
+              storyId={storyId}
               allowedElements={config.markdownAllowedElements}
-            />
+            >
+              {caption}
+            </StoryMarkdown>
           </div>
         </div>
       </motion.div>

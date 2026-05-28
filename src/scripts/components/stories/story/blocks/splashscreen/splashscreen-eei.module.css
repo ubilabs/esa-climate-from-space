@@ -1,0 +1,69 @@
+.splashWrapper {
+  --story-eei-splashcolor: #062c36;
+  --atmosphere-color: #264d54;
+  place-content: center;
+  background-color: var(--story-eei-splashcolor);
+
+  .introIconContainer {
+    display: grid;
+    gap: 0.25rem;
+    place-items: center;
+  }
+
+  .title {
+    width: min(800px, 70%);
+    text-align: center;
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 115%; /* 46px */
+    height: fit-content;
+    margin: auto;
+
+    @media (--desktop-viewport) {
+      font-size: 5rem;
+    }
+  }
+
+  .sunContainer {
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    svg {
+      height: 100%;
+      width: 100%;
+      fill: none;
+    }
+  }
+
+  .gestureIndicator {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--main-colours-esa-teal-55);
+    display: grid;
+    place-content: center;
+    margin: 0 auto;
+
+    &:after {
+      color: var(--main-colours-esa-teal-55);
+      text-align: center;
+      font-family: Arial;
+      font-size: 0.75rem;
+      font-weight: 700;
+      line-height: 18px; /* 150% */
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      bottom: -2rem;
+      left: 50%;
+      white-space: nowrap;
+      transform: translateX(-50%);
+      position: absolute;
+      content: attr(data-content);
+    }
+  }
+}

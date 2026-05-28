@@ -5,6 +5,8 @@ import cx from "classnames";
 
 import styles from "./button.module.css";
 
+import { AppLocationState } from "../../../types/location-state";
+
 interface Props {
   label?: string;
   icon?: FunctionComponent;
@@ -16,7 +18,8 @@ interface Props {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   ariaLabel?: string;
   replace?: boolean;
-  state?: Record<string, string>;
+  state?: AppLocationState;
+  isExternalLink?: boolean;
 }
 
 const Button: FunctionComponent<PropsWithChildren<Props>> = ({
@@ -32,6 +35,7 @@ const Button: FunctionComponent<PropsWithChildren<Props>> = ({
   children,
   replace,
   state,
+  isExternalLink = false,
 }) => {
   const classes = cx(
     styles.button,
@@ -50,6 +54,8 @@ const Button: FunctionComponent<PropsWithChildren<Props>> = ({
       to={link}
       state={state}
       replace={replace}
+      target={isExternalLink ? "_blank" : undefined}
+      rel={isExternalLink ? "noopener noreferrer" : undefined}
       aria-label={ariaLabel && formatMessage({ id: ariaLabel })}
     >
       {Icon && <Icon />}

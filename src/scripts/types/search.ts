@@ -18,6 +18,7 @@ export const searchableStoryKeys = [
   "subtitle",
   "description",
   "altText",
+  "content",
 ] as const;
 
 export const searchableStorySlideKeys = [
@@ -48,8 +49,6 @@ export enum FilterType {
   All = "all",
   Blog = "blog",
   Layer = "layer",
-  Video = "video",
-  Image = "image",
 }
 
 export type Filter = {

@@ -3,9 +3,11 @@ import {
   memo,
   useCallback,
   useEffect,
+  useEffectEvent,
   useRef,
   useState,
 } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { renderToStaticMarkup } from "react-dom/server";
 
@@ -34,10 +36,14 @@ import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 import { isElectron } from "../../../libs/electron";
 import { BasemapId } from "../../../types/basemap";
 import { LayerType } from "../../../types/globe-layer-type";
-import { useScreenSize } from "../../../hooks/use-screen-size";
+import { useScreenInfo } from "../../../hooks/use-screen-info";
 
 import { GlobeProjection } from "../../../types/globe-projection";
 import { LayerLoadingStateChangeHandle } from "../data-viewer/data-viewer";
+
+import { globeRenderOptionsSelector } from "../../../selectors/globe/render-options";
+import { multiGlobeSyncEnabledSelector } from "../../../selectors/globe/multi-globe-sync";
+import { GlobeRenderOptions } from "../../../reducers/globe/render-options";
 
 import { MarkerMarkup } from "./marker-markup";
 import { GlobeProjectionState } from "../../../types/globe-projection-state";
@@ -76,6 +82,7 @@ interface Props {
     layerId: string,
     state: LayerLoadingState,
   ) => void;
+  touchable?: boolean;
 }
 
 export type GlobeProps = Partial<Props>;
@@ -87,24 +94,30 @@ const Globe: FunctionComponent<Props> = memo((props) => {
     view,
     projectionState,
     layerDetails,
+    spinning,
     imageLayer,
     markers,
     backgroundColor,
     className,
+    touchable = true,
     onMouseEnter,
     onTouchStart,
   } = props;
+  const renderOptions = useSelector(globeRenderOptionsSelector);
+  const multiGlobeSyncEnabled = useSelector(multiGlobeSyncEnabledSelector);
 
-  const [containerRef, globe] = useWebGlGlobe(view);
+  const [containerRef, globe] = useWebGlGlobe(view, renderOptions);
   const initialTilesLoaded = useInitialBasemapTilesLoaded(globe);
 
   useGlobeRouteState(globe);
 
   useGlobeLayers(globe, layerDetails, imageLayer);
   useGlobeMarkers(globe, markers);
+  useGlobeSpin(globe, spinning);
 
   useProjectionSwitch(globe, projectionState.projection);
-  useMultiGlobeSynchronization(globe, props);
+  useGlobeRenderOptions(globe, renderOptions);
+  useMultiGlobeSynchronization(globe, props, multiGlobeSyncEnabled);
 
   useLayerLoadingStateUpdater(globe, props.onLayerLoadingStateChange);
 
@@ -114,6 +127,7 @@ const Globe: FunctionComponent<Props> = memo((props) => {
       className={cx(
         styles.globe,
         initialTilesLoaded && styles.fadeIn,
+        !touchable && styles.notTouchable,
         className,
       )}
       style={{ backgroundColor }}
@@ -137,49 +151,53 @@ function useCallbackRef() {
 /**
  * Creates the WebGlGlobe instance once the container element becomes available.
  */
-function useWebGlGlobe(view: CameraView) {
+function useWebGlGlobe(view: CameraView, renderOptions: GlobeRenderOptions) {
   const [containerRef, containerEl] = useCallbackRef();
   const [globe, setGlobe] = useState<WebGlGlobe | null>(null);
 
-  useEffect(
-    () => {
-      if (!containerEl) {
-        return EMPTY_FUNCTION;
-      }
+  const initGlobe = useEffectEvent((element: HTMLElement | null) => {
+    if (!element) {
+      return EMPTY_FUNCTION;
+    }
 
-      const newGlobe = new WebGlGlobe(containerEl, {
-        cameraView: view,
-        renderOptions: {
-          atmosphereEnabled: true,
-          shadingEnabled: true,
-          atmosphereStrength: 0.8,
-          atmosphereColor: [0.58, 0.79, 1], // {r: 148, g: 201, b: 255}
-        },
-      });
+    const newGlobe = new WebGlGlobe(element, {
+      cameraView: view,
+      renderOptions,
+    });
 
-      if ("renderer" in newGlobe) {
-        // @TODO: Remove this setting after globe controls have been refactored.
-        // @ts-expect-error Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
-        newGlobe.renderer.globeControls.zoomSpeed = 1.5;
-      }
+    if ("renderer" in newGlobe) {
+      // @TODO: Remove this setting after globe controls have been refactored.
+      // @ts-expect-error Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
+      newGlobe.renderer.globeControls.zoomSpeed = 1.5;
+    }
 
-      if ("renderer" in newGlobe) {
-        // @TODO: Remove this setting after globe controls have been refactored.
-        // @ts-expect-error Property 'renderer' is private and only accessible within class 'WebGlGlobe'.
-        newGlobe.renderer.globeControls.zoomSpeed = 1.5;
-      }
+    setGlobe(newGlobe);
 
-      setGlobe(newGlobe);
+    return () => newGlobe.destroy();
+  });
 
-      return () => newGlobe.destroy();
-    },
-    // we absolutely don't want to react to all view-changes here, so `view`
-    // is left out of dependencies.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [containerEl],
-  );
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- globe initialization stores the created instance
+    initGlobe(containerEl);
+  }, [containerEl]);
 
   return [containerRef, globe] as const;
+}
+
+/**
+ * Applies render option changes that can be updated after globe initialization.
+ */
+function useGlobeRenderOptions(
+  globe: WebGlGlobe | null,
+  renderOptions: GlobeRenderOptions,
+) {
+  useEffect(() => {
+    if (!globe) {
+      return;
+    }
+
+    globe.setProps({ renderOptions });
+  }, [globe, renderOptions]);
 }
 
 /**
@@ -209,7 +227,7 @@ function useGlobeLayers(
  * Updates the markers on the globe when they become available.
  */
 function useGlobeMarkers(globe: WebGlGlobe | null, markers?: Marker[]) {
-  const { isDesktop } = useScreenSize();
+  const { isDesktop } = useScreenInfo();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -301,37 +319,44 @@ function useProjectionSwitch(
  * Integrate the globe with the external view-state events and props
  * (view / flyTo / onChange).
  */
-function useMultiGlobeSynchronization(globe: WebGlGlobe | null, props: Props) {
+function useMultiGlobeSynchronization(
+  globe: WebGlGlobe | null,
+  props: Props,
+  enabled: boolean,
+) {
   const { view, active, flyTo, isMarkerOffset } = props;
 
   // forward camera changes from the active view to the parent component
-  useCameraChangeEvents(globe, props);
+  useCameraChangeEvents(globe, props, enabled);
 
   // set camera-view unless it's the active globe
   useEffect(() => {
-    if (globe && !active) {
+    if (globe && enabled && !active) {
       // make sure the applied is not animated
       globe.setProps({ cameraView: { ...view } });
     }
-  }, [globe, view, active]);
-
+  }, [globe, view, active, enabled]);
 
   // apply incomfing flyTo props to the globe
   useEffect(() => {
-    if (!globe || !flyTo) return;
+    if (!globe || !enabled || !flyTo) return;
     globe.setProps({
       cameraView: {
         ...flyTo,
         lng: flyTo.lng + (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0),
       },
     });
-  }, [flyTo, globe, isMarkerOffset]);
+  }, [flyTo, globe, isMarkerOffset, enabled]);
 }
 
 /**
  * Call the onChange callback from the props from an active globe.
  */
-function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
+function useCameraChangeEvents(
+  globe: WebGlGlobe | null,
+  props: Props,
+  enabled: boolean,
+) {
   const { active, onMoveStart, onChange, onMoveEnd } = props;
 
   const ref = useRef({
@@ -361,19 +386,20 @@ function useCameraChangeEvents(globe: WebGlGlobe | null, props: Props) {
   );
 
   useEffect(() => {
-    if (!globe || !active) {
+    if (!globe || !active || !enabled) {
       return EMPTY_FUNCTION;
     }
+
+    const timerId = ref.current.timerId;
 
     globe.addEventListener("cameraViewChanged", handleViewChanged);
 
     return () => {
       // there could be a leftover timer running
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      window.clearTimeout(ref.current.timerId);
+      window.clearTimeout(timerId);
       globe.removeEventListener("cameraViewChanged", handleViewChanged);
     };
-  }, [globe, active, handleViewChanged]);
+  }, [globe, active, enabled, handleViewChanged]);
 }
 
 /**
@@ -401,6 +427,19 @@ function useLayerLoadingStateUpdater(
   }, [globe, handler]);
 }
 
+/*
+ * Start or stop the globe auto-spin based on the spinning prop.
+ */
+function useGlobeSpin(globe: WebGlGlobe | null, spinning: boolean) {
+  useEffect(() => {
+    if (spinning) {
+      globe?.startAutoSpin();
+    } else {
+      globe?.stopAutoSpin();
+    }
+  }, [spinning, globe]);
+}
+
 // ----
 // utility functions
 // ----
@@ -410,31 +449,37 @@ function getLayerProps(
   includeClouds: boolean = true,
 ) {
   const basemapUrl = getBasemapUrl(layerDetails);
-  const cloudsUrl = getBasemapUrl({ basemap: "clouds" } as Layer);
-
   const basemapMaxZoom = getBasemapMaxZoom(layerDetails);
 
-  const layers = [
-    {
+  const layers = [];
+
+  if (basemapUrl) {
+    layers.push({
       id: "basemap",
       zIndex: 0,
       minZoom: 1,
       maxZoom: basemapMaxZoom,
       urlParameters: {},
       getUrl: ({ x, y, zoom }) => `${basemapUrl}/${zoom}/${x}/${y}.png`,
-    } as LayerProps,
-  ];
+    } as LayerProps);
+  }
 
   if (includeClouds) {
-    layers.push({
-      id: "clouds",
-      zIndex: 1,
-      minZoom: 0,
-      maxZoom: basemapMaxZoom,
-      type: LayerType.Image,
-      urlParameters: {},
-      getUrl: () => `${cloudsUrl}/image.png`,
-    });
+    const cloudsUrl = getBasemapUrl({ basemap: "clouds" } as Layer);
+
+    if (cloudsUrl) {
+      const cloudsMaxZoom = getBasemapMaxZoom({ basemap: "clouds" } as Layer);
+
+      layers.push({
+        id: "clouds",
+        zIndex: 1,
+        minZoom: 0,
+        maxZoom: cloudsMaxZoom,
+        type: LayerType.Image,
+        urlParameters: {},
+        getUrl: () => `${cloudsUrl}/image.png`,
+      });
+    }
   }
 
   if (imageLayer && layerDetails) {
@@ -506,7 +551,7 @@ function getBasemapId(layerDetails: Layer | null): BasemapId {
     return config.defaultBasemap;
   } else if (
     !layerDetails.basemap ||
-    !config.basemapUrls[layerDetails.basemap]
+    !(layerDetails.basemap in config.basemapUrls)
   ) {
     return config.defaultLayerBasemap;
   }

@@ -3,6 +3,7 @@
 }
 
 .globe {
+  transform: translate(var(--globe-container-x), var(--globe-container-y));
   transition: transform 1.5s ease;
   height: 100%;
   width: 100%;
@@ -15,7 +16,11 @@
 }
 
 .globe canvas {
-  filter: brightness(0.85) saturate(0.85) opacity(0.95);
+  filter: brightness(0.85) saturate(0.85);
+}
+
+.globe.notTouchable {
+  pointer-events: none !important;
 }
 
 .marker {
@@ -30,39 +35,6 @@
     opacity: 0.3;
     animation: outerPulse 3s ease-out forwards;
     transform-origin: center;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.1);
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes outerPulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  50% {
-    transform: scale(1.5);
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
   }
 }
 
@@ -98,56 +70,4 @@
   transition: transform 0.1s ease-out;
   transform-origin: 50%;
   fill: #fff;
-}
-
-.fadeIn {
-  animation: fadeIn 1s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-}
-
-.fastFadeIn {
-  animation: fadeIn 0.5s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-}
-
-@-moz-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@-o-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
 }

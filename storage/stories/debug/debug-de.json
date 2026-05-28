@@ -101,6 +101,70 @@
           "alt": "Satelliten im Dienste der Moore. Diese hochauflösende Landbedeckungskarte, abgeleitet aus Copernicus Sentinel-2-Daten, zeigt das Ausmaß der Moore in Violett."
         }
       ]
+    },
+    {
+      "type": "textBodyLarge",
+      "slides": [
+        {
+          "text": "## Eine Passage öffnet sich \n\nSeit Jahrhunderten verspricht die Nordwestpassage zwischen dem kanadischen Festland und seinen arktischen Inseln eine kürzere Seewegverbindung zwischen Europa und Asien. Doch die meiste Zeit erwies sie sich als undurchdringliche Barriere, fest eingeschlossen im Griff eines gefrorenen Meeres."
+        },
+        {
+          "text": "Das Packeis besiegte die Royal Navy im Jahr 1845, als die Expedition von Sir John Franklin verloren ging. Achtzehn Suchtrupps fanden in den folgenden dreißig Jahren keine Spur von ihm und seinen 130 Mannschaftsmitgliedern. Erst 1906 gelang es Roald Amundsen als erstem, eine Route durch die Nordwestpassage zu vollenden, nach einer dreijährigen Reise."
+        }
+      ]
+    },
+    {
+      "type": "imageCarousel",
+      "slides": [
+        {
+          "text": "Junges arktisches Meereis, aufgenommen von einem Flugzeug aus. Meereis mit einer Dicke von weniger als 50 cm ist besonders wichtig für Wetter und Klima, da es den Austausch von Wärme und Wasser zwischen Ozean und Atmosphäre steuert. (S Hendriks/AWI)",
+          "url": "assets/story37-image01.jpg"
+        },
+        {
+          "text": "Pressrücken im dicken arktischen Meereis, entstanden, als zwei Eisschollen aufeinandertreffen. (Seymour Laxon/CPOM/UCL)",
+          "url": "assets/story37-image02.jpg"
+        },
+        {
+          "text": "Meereis in der Resolute Bay, Kanada, aufgenommen von Sentinel-2. (Modifizierte Copernicus Sentinel-Daten (2019), verarbeitet von Pierre Markuse)",
+          "url": "assets/story37-image04.jpg"
+        },
+        {
+          "text": "Schmelzendes Meereis wirbelt vor der Ostküste Grönlands in diesem Sentinel-2-Bild vom 20. April 2020 (enthält modifizierte Copernicus Sentinel-Daten (2020))",
+          "url": "assets/story37-image05.jpg"
+        }
+      ]
+    },
+    {
+      "type": "globe",
+      "globe": {
+        "flyTo": {
+          "position": {
+            "longitude": 54.03,
+            "latitude": 26.9,
+            "height": 24997871.88
+          },
+          "orientation": {
+            "heading": 360
+          }
+        },
+        "layer": [
+          {
+            "id": "greenhouse.xco2",
+            "timestamp": "2007-12-06T00:00:00.000Z"
+          }
+        ],
+        "layerAutoplay": true
+      }
+    },
+    {
+      "type": "textOverlay",
+      "url": "assets/satellite.gif",
+      "focus": "right",
+      "slides": [
+        {
+          "text": "Danke für's Durchscrollen"
+        }
+      ]
     }
   ]
 }

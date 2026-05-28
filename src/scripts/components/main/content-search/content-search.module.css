@@ -82,7 +82,7 @@
         > input {
             flex: 1;
             height: 100%;
-            background: transparent;
+            background-color: transparent;
             border: none;
             outline: none;
             color: white;
@@ -96,7 +96,8 @@
     }
 
     .clearButton {
-        background: transparent;
+        color: white;
+        background-color: transparent;
         border: none;
         cursor: pointer;
         transition: background-color 0.2s ease;
@@ -128,7 +129,7 @@
         align-items: center;
         gap: 0.5rem;
         padding: 0.5rem 1rem;
-        background: transparent;
+        background-color: transparent;
         border: 1px solid var(--light-blue);
         border-radius: 5px;
         color: var(--light-blue);
@@ -137,7 +138,7 @@
         white-space: nowrap;
 
         &:hover {
-            background: rgba(91, 138, 156, 0.1);
+            background-color: rgba(91, 138, 156, 0.1);
             border-color: var(--main);
         }
 
@@ -165,24 +166,16 @@
             mask-image: var(--icon-blog);
         }
 
-        &[data-icon="image"]::before {
-            mask-image: var(--icon-image);
-        }
-
-        &[data-icon="video"]::before {
-            mask-image: var(--icon-video);
-        }
-
         &[data-icon="layer"]::before {
             mask-image: var(--icon-layer);
         }
 
         &.active {
-            background: var(--light-blue);
+            background-color: var(--light-blue);
             color: white;
 
             &:hover {
-                background: var(--main);
+                background-color: var(--main);
             }
         }
     }

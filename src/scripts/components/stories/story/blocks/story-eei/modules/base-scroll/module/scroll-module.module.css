@@ -1,0 +1,21 @@
+.baseScrollModule {
+  --scroll-length-factor: var(--default-scroll-length-factor);
+  height: calc(var(--story-height) * var(--scroll-length-factor));
+  position: relative;
+
+  .sticky {
+    height: var(--story-height);
+    top: 0;
+    position: sticky;
+
+    &.grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+
+      > * {
+        grid-area: 1 / 1 / -1 / -1;
+      }
+    }
+  }
+}

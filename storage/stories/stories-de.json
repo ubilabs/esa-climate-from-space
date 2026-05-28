@@ -1,5 +1,14 @@
 [
   {
+    "id": "story-eei",
+    "title": "Earth Energy Imbalance",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [],
+    "categories": ["improving_models"]
+  },
+  {
     "id": "story-32",
     "title": "Willkommen zu Climate from Space",
     "description": "",
@@ -266,11 +275,20 @@
   },
   {
     "id": "story-45",
-    "title": "Land Carbon Dynamics",
+    "title": "Kohlenstoffdynamik an Land",
+    "description": "",
+    "image": "assets/story45-image01.jpg",
+    "tags": [],
+    "position": [],
+    "categories": ["land", "carbon_cycle"]
+  },
+  {
+    "id": "story-46",
+    "title": "Tipping Points",
     "description": "",
     "image": "",
     "tags": [],
     "position": [],
-    "categories": ["land", "carbon_cycle"]
+    "categories": ["climate_risk"]
   }
 ]

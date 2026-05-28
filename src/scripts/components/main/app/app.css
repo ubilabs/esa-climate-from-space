@@ -24,17 +24,19 @@
 }
 
 /* Improve line wrapping */
-p {
-  text-wrap: pretty;
-}
-
+p,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  text-wrap: balance;
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--text-default);
+  text-decoration: none;
 }
 
 html,
@@ -58,7 +60,7 @@ body {
 }
 
 #app {
-  background-color: var(--Neutral-ESA-Background, #011e2b);
+  background-color: var(--neutral-esa-background);
   display: grid;
   grid-template-areas:
     "header"
@@ -79,6 +81,7 @@ body {
   place-items: center;
   gap: 0.5rem;
   padding-inline: var(--story-padding);
+  z-index: 0;
 
   @media screen and (--desktop-viewport) {
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -110,4 +113,17 @@ body {
     background-position: top;
     object-position: top;
   }
+}
+
+/* visually hides element, keep in DOM (e.g. for accessibility) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

@@ -1,3 +1,50 @@
+.splashImageWrapper {
+  --gradient-start: 0%;
+  --wedge-angle: 30deg;
+  position: absolute;
+  inset: 0;
+  background-color: var(--neutral-esa-background);
+  width: 100%;
+  height: 100%;
+
+  .splashImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    mask-image: conic-gradient(
+      from -90deg at var(--gradient-start) 50%,
+      transparent 0deg,
+      transparent calc(180deg - var(--wedge-angle) - 10deg),
+      rgb(0 0 0 / 0.1) calc(180deg - var(--wedge-angle)),
+      rgb(0 0 0 / 0.5) calc(180deg - (var(--wedge-angle) / 3)),
+      rgb(0 0 0 / 0.5) calc(180deg + (var(--wedge-angle) / 3)),
+      rgb(0 0 0 / 0.1) calc(180deg + var(--wedge-angle)),
+      transparent calc(180deg + var(--wedge-angle) + 10deg),
+      transparent 360deg
+    );
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(
+      to right,
+      var(--neutral-esa-background) calc(var(--gradient-start) + 20%),
+      rgba(0 0 0 / 0) 90%
+    );
+  }
+
+  @media (--desktop-viewport) {
+    --gradient-start: 30%;
+  }
+}
+
 .contentNav {
   --font-color: rgba(0, 179, 152, 1);
   --primary-color: var(--main);
@@ -14,13 +61,13 @@
   padding: 0;
   color: white;
   margin: auto 0;
-  opacity: 0;
+  z-index: 1;
 
-  &.show {
-    animation: showFromCenter 1.5s ease-out 0.5s forwards;
+  @media screen and (--desktop-viewport) {
+    grid-area: splash-and-nav-area;
   }
 
-  >span {
+  > span {
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -29,7 +76,7 @@
     background-repeat: no-repeat;
     content: "";
     width: 100%;
-    height: 203px;
+    height: 200px;
 
     @media screen and (--desktop-viewport) {
       width: 785px;
@@ -45,21 +92,36 @@
   }
 
   /* Focus styles for keyboard navigation */
-  .contentNavItem:focus-visible {
-    outline: 2px solid white;
-    outline-offset: 4px;
-    z-index: 10;
+  .contentNavItem {
+    &:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 4px;
+      z-index: 10;
+    }
+
+    .link {
+      &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 125%;
+        height: calc(100% + 5vh);
+      }
+    }
   }
 
-  >li {
+  > li {
     z-index: 2;
+    margin-left: 2rem;
     padding-right: 1rem;
     color: var(--font-color);
     position: absolute;
-    transition: all 0.3s ease-out;
     transform-origin: 0 0;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     transform: translate(0, -50%);
     font-size: 1rem;
     line-height: 1.5rem;
@@ -67,23 +129,23 @@
     font-weight: 400;
     width: 100%;
 
-    @media screen and (--desktop-xxl-viewport) {
+    @media screen and (--desktop-viewport) {
       font-size: 1.25rem;
       line-height: 1.5rem;
     }
 
-    >a {
+    > a {
       display: flex;
       width: 100%;
       justify-content: space-between;
       align-items: center;
       text-align: center;
 
-      >div {
+      > div {
         display: flex;
 
-        >span {
-          color: var(--dark-blue);
+        > span {
+          color: var(--neutral-esa-white);
           max-width: 50vw;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -92,7 +154,7 @@
         }
       }
 
-      >span.learnMore {
+      > span.learnMore {
         transition: all 0.3s ease-out;
         transform-origin: right;
         position: relative;
@@ -140,56 +202,95 @@
       }
     }
 
-    &:before {
-      flex-shrink: 0;
-      content: "";
-      width: 24px;
-      height: 24px;
-      margin-right: 1rem;
-      scale: 0.75;
-      background: var(--secondary-color);
+    .typeInfo {
+      visibility: hidden;
+      font-size: 0.875rem;
+
+      @media (--desktop-viewport) {
+        font-size: 1.125rem;
+      }
     }
 
     &.active {
-      >a>div>span {
-        color: var(--primary-color) !important;
-        white-space: normal;
+      .typeInfo {
+        visibility: initial;
+      }
+
+      > a > div > span {
         padding-right: 1rem;
       }
-
-      >a>span.learnMore {
-        opacity: 1;
-      }
-    }
-
-    &.active:before {
-      background: var(--primary-color);
-    }
-
-    &[data-content-type="image"]:before {
-      mask-image: var(--icon-image);
-    }
-
-    &[data-content-type="video"]:before {
-      mask-image: var(--icon-video);
-    }
-
-    &[data-content-type="layer"]:before {
-      mask-image: var(--icon-layer);
-    }
-
-    &[data-content-type="blog"]:before {
-      mask-image: var(--icon-blog);
     }
   }
 }
 
-@keyframes showFromCenter {
-  0% {
-    opacity: 0;
-  }
+.scrollHint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
 
-  100% {
-    opacity: 1;
-  }
+.scrollHintHidden {
+  opacity: 0 !important;
+}
+
+.scrollHintMobile {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrollHintSwipeItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: white;
+}
+
+.scrollHintLabel {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: white;
+  white-space: nowrap;
+}
+
+.scrollHintDesktop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+.scrollHintIcons {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.scrollHintText {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  margin: 0;
 }
