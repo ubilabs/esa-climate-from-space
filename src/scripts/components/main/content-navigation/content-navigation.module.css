@@ -92,10 +92,24 @@
   }
 
   /* Focus styles for keyboard navigation */
-  .contentNavItem:focus-visible {
-    outline: 2px solid white;
-    outline-offset: 4px;
-    z-index: 10;
+  .contentNavItem {
+    &:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 4px;
+      z-index: 10;
+    }
+
+    .link {
+      &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 125%;
+        height: calc(100% + 5vh);
+      }
+    }
   }
 
   > li {
