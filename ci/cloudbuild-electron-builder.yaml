@@ -1,42 +1,51 @@
 steps:
   - name: gcr.io/cloud-builders/npm
     entrypoint: npm
-    args: ['ci']
+    args: ["ci"]
 
   - name: stedolan/jq
-    entrypoint: 'bash'
-    args: ['-c', 'jq -r <package.json ".version" > version.txt']
+    entrypoint: "bash"
+    args: ["-c", 'jq -r <package.json ".version" > version.txt']
 
   - name: gcr.io/esa-climate-from-space/electron-builder
-    entrypoint: 'npm'
-    args: ['run', 'electron:prepare-build']
+    entrypoint: "npm"
+    args: ["run", "electron:prepare-build"]
 
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
-    entrypoint: 'bash'
-    args: ['-c', 'gsutil -m cp -r gs://esa-cfs-tiles/$$(cat version.txt)/basemaps ./dist']
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        ulimit -n 65536 || true
+        gsutil -m \
+          -o "GSUtil:parallel_process_count=1" \
+          -o "GSUtil:parallel_thread_count=8" \
+          cp -r \
+          gs://esa-cfs-tiles/$$(cat version.txt)/basemaps \
+          ./dist
 
   - name: gcr.io/esa-climate-from-space/electron-builder
     env:
-      - 'ELECTRON_CACHE=/root/.cache/electron'
-      - 'ELECTRON_BUILDER_CACHE=/root/.cache/electron-builder'
-    entrypoint: 'npm'
-    args: ['run', 'electron:build']
+      - "ELECTRON_CACHE=/root/.cache/electron"
+      - "ELECTRON_BUILDER_CACHE=/root/.cache/electron-builder"
+    entrypoint: "npm"
+    args: ["run", "electron:build"]
 
   - name: gcr.io/esa-climate-from-space/zip
-    entrypoint: 'bash'
+    entrypoint: "bash"
     args:
-    - '-c'
-    - |
-      VERSION=$$(cat version.txt)
-      cd /workspace/dist-electron
-      zip esa-climate-from-space-$$VERSION-win.zip esa-climate-from-space-$$VERSION-win-*.exe
-      zip -r esa-climate-from-space-$$VERSION-mac.zip mac*
-      zip esa-climate-from-space-$$VERSION-linux.zip esa-climate-from-space-$$VERSION-linux-*.AppImage
+      - "-c"
+      - |
+        VERSION=$$(cat version.txt)
+        cd /workspace/dist-electron
+        zip esa-climate-from-space-$$VERSION-win.zip esa-climate-from-space-$$VERSION-win-*.exe
+        zip -r esa-climate-from-space-$$VERSION-mac.zip mac*
+        zip esa-climate-from-space-$$VERSION-linux.zip esa-climate-from-space-$$VERSION-linux-*.AppImage
 
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-    entrypoint: 'bash'
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk:alpine"
+    entrypoint: "bash"
     args:
-      - '-c'
+      - "-c"
       - |
         VERSION=$$(cat version.txt)
         gsutil -m cp ./dist-electron/esa-climate-from-space-$$VERSION-*.zip gs://esa-cfs-versions/electron/$$VERSION/
