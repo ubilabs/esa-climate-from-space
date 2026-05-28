@@ -175,6 +175,7 @@ const ContentNavItem: FunctionComponent<ItemProps> = ({
       onFocus={() => onFocus(index)}
     >
       <Link
+        className={styles.link}
         ref={isActive ? selectedLinkRef : undefined}
         to={to}
         state={navigationState}
