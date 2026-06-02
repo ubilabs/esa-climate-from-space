@@ -18,16 +18,17 @@
   background-color: #000;
 }
 .lightboxStoryGallery .fullscreenExitIcon {
+
   position: absolute;
   top: calc(var(--header-height) + 2.5%);
   right: 1.6rem;
   z-index: 1;
   filter: drop-shadow(3px 2px 2px rgba(16, 22, 26, 0.4));
   cursor: pointer;
-  fill: #fff;
+  color: #fff;
 }
 .lightboxStoryGallery .fullscreenExitIcon:hover {
-  fill: var(--main);
+  color: var(--main);
 }
 .lightboxStoryGallery .buttonContainer .navIcon {
   margin: 0 3.125em;
