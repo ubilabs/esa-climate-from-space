@@ -16,6 +16,9 @@
     /* Keep content from spilling out */
 
     .imageContainer {
+      /* we have a functionality where the user can also use the mouse to control the slider
+       * this fixes an issue where the images would get user selected by accident */
+      user-select: none;
       position: relative;
       /* New container for absolute positioning */
       width: 100%;
