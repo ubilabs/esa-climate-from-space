@@ -7,12 +7,14 @@ import { WebGlGlobe } from "@ubilabs/esa-webgl-globe";
 import config from "../config/main";
 
 import { AppRoute } from "../types/app-routes";
+import { GlobeProjection } from "../types/globe-projection";
 
 import { setSelectedContentAction } from "../reducers/content";
 import { setFlyTo } from "../reducers/fly-to";
 import { setSelectedLayerIds } from "../reducers/layers";
 import { setShowLayer } from "../reducers/show-layer-selector";
 import { setGlobeSpinning } from "../reducers/globe/spinning";
+import { setGlobeProjection } from "../reducers/globe/projection";
 
 import { languageSelector } from "../selectors/language";
 import { selectedLayerIdsSelector } from "../selectors/layers/selected-ids";
@@ -55,6 +57,18 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
     // only call function when the route match *changes*
     if (appRoute && appRoute === previousPathnameRef.current) {
       return;
+    }
+
+    if (
+      previousPathnameRef.current === AppRoute.Data &&
+      appRoute !== AppRoute.Data
+    ) {
+      dispatch(
+        setGlobeProjection({
+          projection: GlobeProjection.Sphere,
+          morphTime: 2,
+        }),
+      );
     }
 
     switch (appRoute) {
