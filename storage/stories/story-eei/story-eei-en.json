@@ -443,6 +443,14 @@
         "globe": "Although the ocean covers 71% of Earth’s surface,",
         "grid": "it absorbs 91% of the incoming energy."
       },
+      "content": {
+        "description": "Although the {label} covers {globe}% of Earth's surface, it absorbs {grid}% of the incoming energy.",
+        "descriptionIce": "{label} covers {globe}% of Earth's surface and it absorbs {grid}% of the incoming energy.",
+        "info1": "Although the {label} covers {globe}% of Earth's surface,...",
+        "info1Ice": "{label} covers {globe}% of Earth's surface,...",
+        "info2": "...it absorbs {grid}% of the incoming energy.",
+        "info2Ice": "...and it absorbs {grid}% of the incoming energy."
+      },
       "data": [
         {
           "label": "Ocean",

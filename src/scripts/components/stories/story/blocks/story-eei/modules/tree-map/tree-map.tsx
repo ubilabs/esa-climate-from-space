@@ -9,6 +9,12 @@ import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 
 import styles from "./tree-map.module.css";
 
+const formatText = (
+  template: string,
+  values: Record<string, string | number>,
+) =>
+  template.replace(/\{(\w+)\}/g, (_, key: string) => String(values[key] ?? ""));
+
 export default function TreeMapModule() {
   const { module, getRefCallback } = useModuleContent();
   const [highlightedLayerId, setHighlightedLayerId] = useState<string | null>(
@@ -25,16 +31,30 @@ export default function TreeMapModule() {
     ({ layerId }) => layerId === highlightedLayerId,
   );
 
-  let description = "";
   const isIceLayer = highlightedData?.layerId === "eei_ice_mask";
 
-  if (highlightedData) {
-    if (isIceLayer) {
-      description = `${highlightedData.label} covers ${highlightedData.percentage.globe}% of Earth's surface and it absorbs ${highlightedData.percentage.grid}% of the incoming energy.`;
-    } else {
-      description = `Although the ${highlightedData.label} covers ${highlightedData.percentage.globe}% of Earth's surface, it absorbs ${highlightedData.percentage.grid}% of the incoming energy.`;
-    }
-  }
+  const treeMapContent = module.content;
+
+  const descriptionTemplate = isIceLayer
+    ? treeMapContent?.descriptionIce
+    : treeMapContent?.description;
+
+  const info1Template = isIceLayer
+    ? treeMapContent?.info1Ice
+    : treeMapContent?.info1;
+
+  const info2Template = isIceLayer
+    ? treeMapContent?.info2Ice
+    : treeMapContent?.info2;
+
+  const description =
+    highlightedData && descriptionTemplate
+      ? formatText(descriptionTemplate, {
+          label: highlightedData.label,
+          globe: highlightedData.percentage.globe,
+          grid: highlightedData.percentage.grid,
+        })
+      : "";
 
   return (
     <ScrollModule lengthFactor={module.lengthFactor} config={null}>
@@ -49,12 +69,22 @@ export default function TreeMapModule() {
               {description}
             </p>
             <span className={styles.info} aria-hidden="true">
-              {!isIceLayer && "Although the"} {highlightedData.label} covers{" "}
-              {highlightedData.percentage.globe}% of Earth's surface,...
+              {info1Template
+                ? formatText(info1Template, {
+                    label: highlightedData.label,
+                    globe: highlightedData.percentage.globe,
+                    grid: highlightedData.percentage.grid,
+                  })
+                : ""}
             </span>
             <span className={styles.info} aria-hidden="true">
-              ...{isIceLayer && "and "}it absorbs {highlightedData.percentage.grid}% of the incoming
-              energy.
+              {info2Template
+                ? formatText(info2Template, {
+                    label: highlightedData.label,
+                    globe: highlightedData.percentage.globe,
+                    grid: highlightedData.percentage.grid,
+                  })
+                : ""}
             </span>
             {/* globe positions for this module are actually
 set in the previous module (kettleCount) */}
