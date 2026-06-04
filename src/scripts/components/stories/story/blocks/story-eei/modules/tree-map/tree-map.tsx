@@ -7,6 +7,8 @@ import TreeMapGrid from "./tree-map-grid/tree-map-grid";
 
 import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 
+import { Layers } from "../../constants/globe";
+
 import styles from "./tree-map.module.css";
 
 const formatText = (
@@ -31,7 +33,7 @@ export default function TreeMapModule() {
     ({ layerId }) => layerId === highlightedLayerId,
   );
 
-  const isIceLayer = highlightedData?.layerId === "eei_ice_mask";
+  const isIceLayer = highlightedData?.layerId === Layers.EEI_ICE_MASK;
 
   const treeMapContent = module.content;
 
