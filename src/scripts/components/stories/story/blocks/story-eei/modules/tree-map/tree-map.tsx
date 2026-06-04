@@ -25,9 +25,16 @@ export default function TreeMapModule() {
     ({ layerId }) => layerId === highlightedLayerId,
   );
 
-  const description = highlightedData
-    ? `Although the ${highlightedData.label} covers ${highlightedData.percentage.globe}% of Earth's surface, it absorbs ${highlightedData.percentage.grid}% of the incoming energy.`
-    : null;
+  let description = "";
+  const isIceLayer = highlightedData?.layerId === "eei_ice_mask";
+
+  if (highlightedData) {
+    if (isIceLayer) {
+      description = `${highlightedData.label} covers ${highlightedData.percentage.globe}% of Earth's surface and it absorbs ${highlightedData.percentage.grid}% of the incoming energy.`;
+    } else {
+      description = `Although the ${highlightedData.label} covers ${highlightedData.percentage.globe}% of Earth's surface, it absorbs ${highlightedData.percentage.grid}% of the incoming energy.`;
+    }
+  }
 
   return (
     <ScrollModule lengthFactor={module.lengthFactor} config={null}>
@@ -42,11 +49,11 @@ export default function TreeMapModule() {
               {description}
             </p>
             <span className={styles.info} aria-hidden="true">
-              Although the {highlightedData.label} covers{" "}
+              {!isIceLayer && "Although the"} {highlightedData.label} covers{" "}
               {highlightedData.percentage.globe}% of Earth's surface,...
             </span>
             <span className={styles.info} aria-hidden="true">
-              ...it absorbs {highlightedData.percentage.grid}% of the incoming
+              ...{isIceLayer && "and "}it absorbs {highlightedData.percentage.grid}% of the incoming
               energy.
             </span>
             {/* globe positions for this module are actually
@@ -56,7 +63,12 @@ set in the previous module (kettleCount) */}
             </div>
           </>
         )}
-        <div className={cx(styles.treemapContainer, !highlightedData?.percentage && styles.hidden)}>
+        <div
+          className={cx(
+            styles.treemapContainer,
+            !highlightedData?.percentage && styles.hidden,
+          )}
+        >
           <TreeMapGrid
             data={module.data}
             onHighlightGridCell={setHighlightedLayerId}
