@@ -18,6 +18,7 @@ import Button from "../../../../../../main/button/button";
 import { LinkIcon } from "../../../../../../main/icons/link-icon";
 import { ImageCarouselModule } from "../../../../../../../types/story";
 import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
+import { StoryMarkdown } from "../../../../../../shared/story-markdown/story-markdown";
 import CarouselNavigation from "./carousel-navigation/carousel-navigation";
 import ImageSlide from "./image-slide/image-slide";
 import LayerSlide from "./layer-slide/layer-slide";
@@ -123,8 +124,11 @@ const ImageCarousel: FunctionComponent = () => {
     <SlideContainer ref={getRefCallback(0, 0)} className={styles.container}>
       <div className={cx(styles.wrapper)}>
         {"headerText" in module && module.headerText && (
-          <h2 className={styles.headerText}>{module.headerText}</h2>
+          <h2 className={styles.headerText}>
+            <StoryMarkdown>{module.headerText}</StoryMarkdown>
+          </h2>
         )}
+
         <div className={styles.slidesContainer} ref={slidesContainerRef}>
           <motion.div
             className={styles.track}
