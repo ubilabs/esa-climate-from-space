@@ -22,11 +22,11 @@ import StoryGlobe from "../globe/story-globe/story-globe";
 import KettleAmountModule from "./modules/kettle-amount/kettle-amount";
 import AnimatedArrowsModule from "./modules/animated-arrows/animated-arrows";
 import KettleCount from "./modules/kettle-count/kettle-count";
-import QuoteSlide from "./modules/quote-slide/quote-slide";
 import TreeMapModule from "./modules/tree-map/tree-map";
 import { setFlyTo } from "../../../../../reducers/fly-to";
 import { useScreenInfo } from "../../../../../hooks/use-screen-info";
 import SatelliteAnimation from "./satellite-animation/satellite-animation";
+import ScrollTextSlide from "./modules/scroll-text-slide/scroll-text-slide";
 
 export type StoryEEICompoundComponents = {
   BaseSlide: typeof ScrollModule;
@@ -34,7 +34,7 @@ export type StoryEEICompoundComponents = {
   KettleAmountModule: typeof KettleAmountModule;
   KettleCount: typeof KettleCount;
   AnimatedArrowsModule: typeof AnimatedArrowsModule;
-  QuoteSlide: typeof QuoteSlide;
+  ScrollTextSlide: typeof ScrollTextSlide;
   TreeMapModule: typeof TreeMapModule;
 };
 
@@ -107,7 +107,7 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
 };
 
 StoryEEI.BaseSlide = ScrollModule;
-StoryEEI.QuoteSlide = QuoteSlide;
+StoryEEI.ScrollTextSlide = ScrollTextSlide;
 StoryEEI.StoryGlobe = StoryGlobe;
 StoryEEI.KettleAmountModule = KettleAmountModule;
 StoryEEI.KettleCount = KettleCount;
