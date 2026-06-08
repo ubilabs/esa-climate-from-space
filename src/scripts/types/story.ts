@@ -24,7 +24,13 @@ export type Story = {
   initialGlobeConfig?: ScrollGlobe;
 };
 
-export type ImageFocus = "center" | "left" | "right" | "top" | "bottom" | "contain"
+export type ImageFocus =
+  | "center"
+  | "left"
+  | "right"
+  | "top"
+  | "bottom"
+  | "contain";
 
 export interface ScrollGlobe {
   title?: string;
@@ -82,7 +88,7 @@ export type StoryEEIModuleType =
   | "kettleAmountModule"
   | "kettleCount"
   | "animatedArrowsModule"
-  | "quoteSlide"
+  | "scrollTextSlide"
   | "kettleAmountModule"
   | "treeMapModule";
 
@@ -119,10 +125,9 @@ export type ImageCarouselModule = ImageModule & {
   slides?: ImageCarouselSlide[];
 };
 
-export type QuoteSlideType = {
+export type ScrollTextSlideType = {
   content: {
     text: string;
-    author: string;
   };
 };
 
@@ -149,7 +154,7 @@ export type StoryEEIModule = Pick<BaseModule, "text"> & {
     | { type: "kettleCount" }
     | { type: "animatedArrowsModule" }
     | { type: "kettleAmountModule" }
-    | ({ type: "quoteSlide" } & QuoteSlideType)
+    | ({ type: "scrollTextSlide" } & ScrollTextSlideType)
     | ({ type: "treeMapModule" } & TreeMapModule)
   );
 
@@ -197,6 +202,6 @@ export const storyEEIModuleMap: Record<
   kettleAmountModule: StoryEEI.KettleAmountModule,
   animatedArrowsModule: StoryEEI.AnimatedArrowsModule,
   kettleCount: StoryEEI.KettleCount,
-  quoteSlide: StoryEEI.QuoteSlide,
+  scrollTextSlide: StoryEEI.ScrollTextSlide,
   treeMapModule: StoryEEI.TreeMapModule,
 };
