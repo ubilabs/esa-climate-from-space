@@ -567,7 +567,7 @@
       ],
       "lengthFactor": 1,
       "type": "imageCarousel",
-      "headerText": "[Essential Climate Variables](https://climate.esa.int/en/about-us-new/climate-change-initiative/essential-climate-variables/) related to MOTECUSOMA",
+      "headerText": "[Essential Climate Variables](https://cfs.climate.esa.int/index.html#/welcome/stories/story-32/3) related to MOTECUSOMA",
       "readMore": {
         "title": "MOTECUSOMA",
         "url": "https://climate.esa.int/en/Cross_ECV_Projects/motecusoma/"
