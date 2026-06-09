@@ -443,6 +443,14 @@
         "globe": "Although the ocean covers 71% of Earth’s surface,",
         "grid": "it absorbs 91% of the incoming energy."
       },
+      "content": {
+        "description": "Although the {label} covers {globe}% of Earth's surface, it absorbs {grid}% of the incoming energy.",
+        "descriptionIce": "{label} covers {globe}% of Earth's surface and it absorbs {grid}% of the incoming energy.",
+        "info1": "Although the {label} covers {globe}% of Earth's surface,...",
+        "info1Ice": "{label} covers {globe}% of Earth's surface,...",
+        "info2": "...it absorbs {grid}% of the incoming energy.",
+        "info2Ice": "...and it absorbs {grid}% of the incoming energy."
+      },
       "data": [
         {
           "label": "Ocean",
@@ -521,7 +529,7 @@
         }
       ],
       "lengthFactor": 6,
-      "type": "quoteSlide",
+      "type": "scrollTextSlide",
       "content": {
         "text": "ESA’s Climate Change Initiative project MOTECUSOMA (Monitoring the Energy Cycle for a Better Understanding of Climate Change) is calculating new estimates of Earth’s energy imbalance and surface air temperature. Scientific analyses using these datasets will help climate modelers forecast future changes with more accuracy.",
         "author": "- The MOTECUSOMA Project Team"
@@ -560,7 +568,7 @@
       ],
       "lengthFactor": 1,
       "type": "imageCarousel",
-      "headerText": "ECVs related to MOTECUSOMA",
+      "headerText": "[Essential Climate Variables](https://cfs.climate.esa.int/index.html#/welcome/stories/story-32/3) related to MOTECUSOMA",
       "readMore": {
         "title": "MOTECUSOMA",
         "url": "https://climate.esa.int/en/Cross_ECV_Projects/motecusoma/"
