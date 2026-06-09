@@ -36,6 +36,10 @@
   }
 
   .headerText {
+    a {
+      color: var(--main-esa-teal);
+    }
+
     @media (--desktop-viewport) {
       font-size: 1.875rem;
       font-weight: 700;
