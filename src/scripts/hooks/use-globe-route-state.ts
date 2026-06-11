@@ -40,6 +40,10 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
   const language = useSelector(languageSelector);
   const { data: layers } = useGetLayerListQuery(language);
 
+  // we check if on the main route is layer is present and re-route that request to layer/data
+  // This structure is used on climate.esa.int website to embed data layers
+  // see e.g. https://climate.esa.int/en/projects/land-surface-temperature/
+  // we need to ensure compatibility for those urls
   const redirectLegacyLayerUrl = useCallback(() => {
     const layerId = mainId;
     if (layerId && !layers) {
