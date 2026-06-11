@@ -42,7 +42,7 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
 
   const redirectLegacyLayerUrl = useCallback(() => {
     const layerId = mainId;
-    if (layerId && !layers?.length) {
+    if (layerId && !layers) {
       return true;
     }
 
