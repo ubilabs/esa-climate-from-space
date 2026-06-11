@@ -3,6 +3,7 @@ export interface EmbedElementsState {
   time_slider?: boolean;
   legend?: boolean;
   header?: boolean;
+  stories_menu?: boolean;
   back_link?: boolean;
   app_menu?: boolean;
   layers_menu?: boolean;
