@@ -56,9 +56,8 @@ const Header: FunctionComponent = () => {
   const { isMobile, isDesktop } = useScreenInfo();
   const appRoute = useSelector(appRouteSelector);
 
-  const { header, logo, back_link, app_menu, layers_menu } = useSelector(
-    embedElementsSelector,
-  );
+  const { header, stories_menu, logo, back_link, app_menu, layers_menu } =
+    useSelector(embedElementsSelector);
 
   const isLayerSelectorVisible = useSelector(showLayerSelector);
 
@@ -67,7 +66,7 @@ const Header: FunctionComponent = () => {
 
   const isSearchActive = Boolean(location.state?.search);
 
-  if (!header) {
+  if (!header || !stories_menu) {
     // The app element determines the layout via grid which is why we should return a DOM element here
     // set css custom property --header-height to 0
     document.documentElement.style.setProperty("--header-height", "0px");

@@ -1,6 +1,6 @@
 import { useEffect, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { WebGlGlobe } from "@ubilabs/esa-webgl-globe";
 
@@ -30,6 +30,7 @@ import { useGetLayerListQuery } from "../services/api";
  */
 export function useGlobeRouteState(globe: WebGlGlobe | null) {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const appRoute = useSelector(appRouteSelector);
   const previousPathnameRef = useRef<string | null>(null);
@@ -38,6 +39,32 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
   const { mainId } = selectedLayerIds;
   const language = useSelector(languageSelector);
   const { data: layers } = useGetLayerListQuery(language);
+
+  // we check if on the main route is layer is present and re-route that request to layer/data
+  // This structure is used on climate.esa.int website to embed data layers
+  // see e.g. https://climate.esa.int/en/projects/land-surface-temperature/
+  // we need to ensure compatibility for those urls
+  const redirectLegacyLayerUrl = useCallback(() => {
+    const layerId = mainId;
+    if (layerId && !layers) {
+      return true;
+    }
+
+    const layer = layers?.find((layer) => layer.id === layerId);
+    if (layer && layer.categories?.length) {
+      dispatch(setSelectedLayerIds({ layerId, isPrimary: true }));
+      navigate(
+        {
+          pathname: `/${layer.categories[0]}/data`,
+          search: location.search,
+        },
+        { replace: true },
+      );
+      return true;
+    }
+
+    return false;
+  }, [dispatch, layers, location.search, mainId, navigate]);
 
   const updateAutoRotationState = useCallback(
     (shouldAutoSpin: boolean) => {
@@ -76,11 +103,8 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
         // On initial load, attempt to select the data layer specified via URL parameters.
         // This ensures backward compatibility with CfS versions prior to 2.0.
         if (!previousPathnameRef.current) {
-          const layerId = selectedLayerIds?.mainId;
-          const layer = layers?.find((layer) => layer.id === layerId);
-          if (layer && layer.categories?.length) {
-            dispatch(setSelectedLayerIds({ layerId, isPrimary: true }));
-            navigate(`/${layer.categories[0]}/data`);
+          if (redirectLegacyLayerUrl()) {
+            return;
           }
           break;
         }
@@ -100,6 +124,16 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
         break;
 
       case AppRoute.NavContent:
+        if (
+          !previousPathnameRef.current &&
+          // Some legacy embed links use /index.html as the hash route. React Router
+          // matches that as a content category, so handle it like the root route here.
+          location.pathname === "/index.html" &&
+          redirectLegacyLayerUrl()
+        ) {
+          return;
+        }
+
         dispatch(setShowLayer(false));
         dispatch(setSelectedLayerIds({ layerId: null, isPrimary: false }));
         break;
@@ -130,7 +164,17 @@ export function useGlobeRouteState(globe: WebGlGlobe | null) {
 
     // Store the current pathname for next comparison
     previousPathnameRef.current = appRoute;
-  }, [appRoute, dispatch, layers, mainId, navigate, selectedLayerIds?.mainId]);
+  }, [
+    appRoute,
+    dispatch,
+    layers,
+    location.search,
+    location.pathname,
+    mainId,
+    navigate,
+    redirectLegacyLayerUrl,
+    selectedLayerIds?.mainId,
+  ]);
 
   // Update globe states based on route changes
   useEffect(() => {

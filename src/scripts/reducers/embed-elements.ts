@@ -10,6 +10,7 @@ const initialState: EmbedElementsState = {
   layers_menu: parseUrl("layers_menu") ?? true,
   legend: parseUrl("legend") ?? true,
   header: parseUrl("header") ?? true,
+  stories_menu: parseUrl("stories_menu") ?? true,
   back_link: parseUrl("back_link") ?? true,
   app_menu: parseUrl("app_menu") ?? true,
   lng: parseLngUrl() ?? "",
