@@ -1,9 +1,9 @@
 steps:
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: 'node:22'
     id: 'ci'
     entrypoint: npm
     args: ['ci']
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: 'node:22'
     id: 'build'
     entrypoint: npm
     args: ['run', 'build']
@@ -41,4 +41,3 @@ steps:
     - 'BRANCH_NAME=${BRANCH_NAME}'
     entrypoint: 'node'
     args: ["./scripts/slack-deployment-notification.js"]
-
