@@ -1,13 +1,13 @@
 steps:
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: 'node:22'
     entrypoint: npm
     args: ['ci']
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: 'node:22'
     entrypoint: npm
     args: ['run', 'eslint']
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: 'node:22'
     entrypoint: npm
     args: ['run', 'electron:compile']
-  - name: 'gcr.io/cloud-builders/npm'
+  - name: 'node:22'
     entrypoint: npm
     args: ['run', 'build']
