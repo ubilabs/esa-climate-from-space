@@ -5,7 +5,10 @@ import fetchStory from "../api/fetch-story";
 import config from "../config/main";
 
 import { convertLegacyStory } from "../libs/convert-legacy-story";
-import { isLegacyStory } from "../libs/is-legacy-story";
+import {
+  isLegacyStory,
+  isMixedContentLegacyStory,
+} from "../libs/is-legacy-story";
 import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
 
 import { setLayerDetails } from "../reducers/layers";
@@ -67,9 +70,11 @@ export const layersApi = createApi({
 
 const fetchAndConvertStory = async (id: string, language: Language) => {
   const rawData = await fetchStory(id, language as Language);
-  const data = isLegacyStory(rawData)
-    ? convertLegacyStory(rawData as LegacyStory)
-    : (rawData as LegacyStoryType);
+  const data =
+    isLegacyStory(rawData) && !isMixedContentLegacyStory(rawData as LegacyStory)
+      ? convertLegacyStory(rawData as LegacyStory)
+      : (rawData as LegacyStoryType);
+
   return data;
 };
 

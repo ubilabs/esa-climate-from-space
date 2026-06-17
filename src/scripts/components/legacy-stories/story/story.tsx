@@ -140,13 +140,15 @@ const Story: FunctionComponent = () => {
               case GalleryItemType.Embedded:
                 return (
                   <StoryEmbedded
+                    storyId={story.id}
                     embeddedItem={item}
                     showLightbox={showLightbox}
                   />
                 );
               default:
                 console.warn(
-                  `Unknown gallery item type ${item["type"]} on slide ${slideIndex + 1
+                  `Unknown gallery item type ${item["type"]} on slide ${
+                    slideIndex + 1
                   } in story ${story.id}`,
                 );
                 return <></>;
