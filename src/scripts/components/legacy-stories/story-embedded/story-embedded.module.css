@@ -13,6 +13,10 @@
   }
 }
 
+.lightboxEmbeddedContent{
+  display: flex;
+}
+
 .embeddedContent > iframe {
   height: 100%;
   width: 100%;
