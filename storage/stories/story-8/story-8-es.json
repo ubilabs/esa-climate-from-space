@@ -10,29 +10,38 @@
       ]
     },
     {
-      "type": "image",
       "text": "## ¿Cómo de bajo puedes llegar?\r\n\r\nA principios de la década de 1980, los ingenieros recibieron datos de un nuevo instrumento en un satélite de investigación estadounidense. El sensor midió tan poco ozono en la atmósfera sobre la Antártida que las lecturas fueron señaladas como posibles errores. Pero poco después, investigadores británicos y japoneses registraron cantidades de ozono igualmente bajas desde sus estaciones de investigación en la Antártida.\r\n \r\nSólo cuando se publicaron los resultados en tierra en la literatura científica se explicaron los bajos valores de los datos del satélite. Estos datos mostraban una amplia zona con cantidades muy bajas de ozono que se desarrollaba cada primavera sobre el Polo Sur. Este \"agujero\" en la capa protectora de ozono de la Tierra atrajo rápidamente la atención de los medios de comunicación y de los responsables políticos. Y, con sus datos verificados, los científicos ganaron confianza en la tecnología emergente de [observación de la Tierra desde el espacio](stories/story-26/0).\r\n\r\n## Capa protectora\r\n\r\nLa capa de ozono en la estratosfera es nuestra principal defensa contra la radiación ultravioleta (UV) del Sol. Sin ella, sufriríamos quemaduras solares a los pocos minutos de estar al aire libre, seguidas de daños oculares y cáncer de piel tras una exposición prolongada. La luz ultravioleta no filtrada habría impedido el desarrollo de la vida en la Tierra.  \r\n\r\nDebido a que también absorbe la radiación solar en las longitudes de onda infrarrojas, el ozono es también un potente gas de efecto invernadero. El cambio en la distribución del ozono es el segundo mayor impacto de los humanos en el clima, después del aumento del dióxido de carbono. Pero, mientras que la *pérdida* de ozono ha sido la preocupación en la estratosfera, el ozono ha estado *aumentando* a nivel del suelo. Aquí, el ozono asociado al transporte y a la contaminación industrial es un peligro para la salud humana. Que el ozono sea bueno o malo para ti depende de dónde lo encuentres.",
       "shortText": "## ¿Cómo de bajo puedes llegar?\r\n\r\nPrincipios de los años 80: se miden cantidades inesperadamente bajas de ozono sobre la Antártida.\r\n \r\nEl \"agujero\" de ozono se desarrolla cada primavera sobre el Polo Sur.\r\n\r\nLa capa de ozono estratosférico es nuestra principal defensa contra la radiación ultravioleta del Sol.\r\n\r\nEl ozono también absorbe la radiación solar infrarroja, por lo que es un potente gas de efecto invernadero.\r\n\r\nEl cambio en el ozono es el segundo mayor impacto climático del ser humano:\r\n- la pérdida de ozono en la estratosfera\r\n- aumento del ozono a nivel del suelo\r\n\r\nEl ozono a nivel del suelo asociado al transporte y a la contaminación industrial es un peligro para la salud humana.\r\n\r\n¿El ozono es bueno o malo? - Depende de dónde se encuentre.",
-      "images": [
-        "assets/ozone_large_11.jpg",
-        "assets/story8_02.png",
-        "assets/ozone_large_03b.jpg",
-        "assets/ozone_large_14.jpg",
-        "assets/story8_04.png"
-      ],
-      "imageCaptions": [
-        "Científicos lanzan un globo de gran altura que lleva un equipo de medición de ozono desde la estación Amundsen-Scott del Polo Sur en septiembre de 2013 (Kelli-Ann Bliss/NOAA)",
-        "El Sol en luz visible (izquierda) y ultravioleta (derecha), visto por el satélite SOHO el 3 de febrero de 2002 (ESA/NASA)",
-        "# El ciclo catalítico del cloro\r\nEl cloro actúa como catalizador para la destrucción del ozono: (1) El monóxido de cloro reacciona con un átomo de oxígeno, produciendo una molécula de oxígeno y un átomo de cloro altamente reactivo. (2) El átomo de cloro reacciona con el ozono para producir oxígeno y monóxido de cloro. (Planetary Visions)",
-        "Un día de observaciones de ozono del ERS-2 GOME. (ESA)",
-        "# Ozono total sobre la Antártida\r\nValores totales de ozono sobre la Antártida registrados en la estación de investigación Halley, y por tres sensores de satélite, TOMS, OMI y OMPS (NASA-GSFC)"
-      ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+      "galleryItems": [
+        {
+          "type": "image",
+          "imageCaption": "Científicos lanzan un globo de gran altura que lleva un equipo de medición de ozono desde la estación Amundsen-Scott del Polo Sur en septiembre de 2013 (Kelli-Ann Bliss/NOAA)",
+          "image": "assets/ozone_large_11.jpg",
+          "imageFit": "cover"
+        },
+        {
+          "type": "image",
+          "imageCaption": "El Sol en luz visible (izquierda) y ultravioleta (derecha), visto por el satélite SOHO el 3 de febrero de 2002 (ESA/NASA)",
+          "image": "assets/story8_02.png",
+          "imageFit": "contain"
+        },
+        {
+          "type": "image",
+          "imageCaption": "# El ciclo catalítico del cloro\r\nEl cloro actúa como catalizador para la destrucción del ozono: (1) El monóxido de cloro reacciona con un átomo de oxígeno, produciendo una molécula de oxígeno y un átomo de cloro altamente reactivo. (2) El átomo de cloro reacciona con el ozono para producir oxígeno y monóxido de cloro. (Planetary Visions)",
+          "image": "assets/ozone_large_03b.jpg",
+          "imageFit": "contain"
+        },
+        {
+          "type": "image",
+          "imageCaption": "Un día de observaciones de ozono del ERS-2 GOME. (ESA)",
+          "image": "assets/ozone_large_14.jpg",
+          "imageFit": "contain"
+        },
+        {
+          "type": "embedded",
+          "description": "# Ozono total sobre la Antártida\r\nValores totales de ozono sobre la Antártida registrados en la estación de investigación Halley, y por tres sensores de satélite, TOMS, OMI y OMPS (NASA-GSFC)",
+          "embeddedSrc": "assets/ozone_du_chart.html"
+        }
       ]
     },
     {

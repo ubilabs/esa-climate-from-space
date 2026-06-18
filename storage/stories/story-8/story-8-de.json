@@ -10,29 +10,38 @@
       ]
     },
     {
-      "type": "image",
       "text": "## Sinken die Ozonwerte?\r\n\r\nIn den frühen 1980er Jahren erhielten Ingenieure Daten von einem neuen Instrument auf einem amerikanischen Forschungssatelliten. Der Sensor maß so wenig Ozon in der Atmosphäre über der Antarktis, dass die Messwerte als mögliche Fehler gewertet wurden. Doch kurz darauf meldeten britische und japanische Forscher ähnlich niedrige Ozonwerte von ihren antarktischen Forschungsstationen.\r\n \r\nErst als die bodengestützten Ergebnisse in der wissenschaftlichen Literatur veröffentlicht wurden, konnten die niedrigen Werte der Satellitendaten erklärt werden. Sie zeigten, dass sich jedes Frühjahr über dem Südpol ein großes Gebiet mit sehr niedrigen Ozonwerten bildet. Dieses \"Loch\" in der schützenden Ozonschicht der Erde erregte schnell die Aufmerksamkeit von Medien und politischen Entscheidungsträgern. Und da ihre Daten bestätigt wurden, fassten die Wissenschaftler und Wissenschaftlerinnen Vertrauen in die aufkommende Technologie der [Erdbeobachtung aus dem Weltraum](stories/story-26/0).\r\n\r\n## Schutzschicht\r\n\r\nDie Ozonschicht hoch oben in der Stratosphäre ist unser wichtigster Schutz gegen die ultraviolette (UV-)Strahlung der Sonne. Ohne sie würden wir schon nach wenigen Minuten im Freien einen Sonnenbrand erleiden, gefolgt von Augenschäden und Hautkrebs bei längerer Exposition. Ungefiltertes ultraviolettes Licht hätte die Entwicklung von Leben auf der Erde verhindert.  \r\n\r\nDa Ozon auch die Sonnenstrahlung im Infrarotbereich absorbiert, ist es auch ein starkes Treibhausgas. Die Veränderung der Ozonverteilung ist nach dem Anstieg des Kohlendioxids die zweitgrößte Auswirkung des Menschen auf das Klima. Der Ozonabbau in der Stratosphäre ist ein Problem, aber ebenso die Zunahme von Ozon am Boden. Ozon stellt in Verbindung mit Abgasen und industrieller Verschmutzung eine Gefahr für die menschliche Gesundheit dar. Ob Ozon gut oder schlecht für Sie ist, hängt also davon ab, wo es sich befindet.",
       "shortText": "## Sinken die Ozonwerte?\r\n\r\nAnfang der 1980er Jahre: Unerwartet niedrige Ozonwerte über der Antarktis gemessen.\r\n \r\nJedes Frühjahr entsteht über dem Südpol ein \"Ozonloch\".\r\n\r\nDie stratosphärische Ozonschicht ist unser wichtigster Schutz gegen die ultraviolette Strahlung der Sonne.\r\n\r\nOzon absorbiert auch die infrarote Sonnenstrahlung und ist somit ein starkes Treibhausgas.\r\n\r\nDie Veränderung der Ozonschicht ist die zweitgrößte Auswirkung des Menschen auf das Klima:\r\n- Ozonverlust in der Stratosphäre\r\n- Ozonzunahme in Bodennähe\r\n\r\nBodennahes Ozon in Verbindung mit Abgasen und industrieller Verschmutzung stellt eine Gefahr für die menschliche Gesundheit dar.\r\n\r\nIst Ozon gut oder schlecht? Das hängt davon ab, wo es sich befindet.",
-      "images": [
-        "assets/ozone_large_11.jpg",
-        "assets/story8_02.png",
-        "assets/ozone_large_03b.jpg",
-        "assets/ozone_large_14.jpg",
-        "assets/story8_04.png"
-      ],
-      "imageCaptions": [
-        "Wissenschaftler und Wissenschaftlerinnen starten im September 2013 einen Höhenballon mit Ozonmessgeräten von der Amundsen-Scott-Südpolstation (Kelli-Ann Bliss/NOAA)",
-        "Die Sonne im sichtbaren (links) und ultravioletten Licht (rechts), aufgenommen vom Satelliten SOHO am 3. Februar 2002 (ESA/NASA)",
-        "# Der katalytische Kreislauf von Chlor\r\nChlor wirkt als Katalysator für die Zerstörung von Ozon: (1) Chlormonoxid reagiert mit einem Sauerstoffatom, wobei ein Sauerstoffmolekül und ein hochreaktives Chloratom entstehen. (2) Das Chloratom reagiert mit Ozon und erzeugt Sauerstoff und Chlormonoxid. (Planetary Visions)",
-        "Ein Tag Ozonbeobachtungen von ERS-2 GOME. (ESA)",
-        "# Gesamtozon über der Antarktis\r\nGesamtozonwerte über der Antarktis, aufgezeichnet von der Halley-Forschungsstation und von drei Satellitensensoren, TOMS, OMI und OMPS (NASA-GSFC)"
-      ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+      "galleryItems": [
+        {
+          "type": "image",
+          "imageCaption": "Wissenschaftler und Wissenschaftlerinnen starten im September 2013 einen Höhenballon mit Ozonmessgeräten von der Amundsen-Scott-Südpolstation (Kelli-Ann Bliss/NOAA)",
+          "image": "assets/ozone_large_11.jpg",
+          "imageFit": "cover"
+        },
+        {
+          "type": "image",
+          "imageCaption": "Die Sonne im sichtbaren (links) und ultravioletten Licht (rechts), aufgenommen vom Satelliten SOHO am 3. Februar 2002 (ESA/NASA)",
+          "image": "assets/story8_02.png",
+          "imageFit": "contain"
+        },
+        {
+          "type": "image",
+          "imageCaption": "# Der katalytische Kreislauf von Chlor\r\nChlor wirkt als Katalysator für die Zerstörung von Ozon: (1) Chlormonoxid reagiert mit einem Sauerstoffatom, wobei ein Sauerstoffmolekül und ein hochreaktives Chloratom entstehen. (2) Das Chloratom reagiert mit Ozon und erzeugt Sauerstoff und Chlormonoxid. (Planetary Visions)",
+          "image": "assets/ozone_large_03b.jpg",
+          "imageFit": "contain"
+        },
+        {
+          "type": "image",
+          "imageCaption": "Ein Tag Ozonbeobachtungen von ERS-2 GOME. (ESA)",
+          "image": "assets/ozone_large_14.jpg",
+          "imageFit": "contain"
+        },
+        {
+          "type": "embedded",
+          "description": "# Gesamtozon über der Antarktis\r\nGesamtozonwerte über der Antarktis, aufgezeichnet von der Halley-Forschungsstation und von drei Satellitensensoren, TOMS, OMI und OMPS (NASA-GSFC)",
+          "embeddedSrc": "assets/ozone_du_chart.html"
+        }
       ]
     },
     {
