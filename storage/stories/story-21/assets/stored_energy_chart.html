@@ -152,7 +152,7 @@
 
     vegaEmbed("#vis", spec, { actions: false }).then(({ view }) => {
       window.addEventListener("resize", () => {
-        view.resize().run();
+        view.width(container.clientWidth).height(container.clientHeight).run();
       });
     });
   }

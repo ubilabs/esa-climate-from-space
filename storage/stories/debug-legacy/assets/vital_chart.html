@@ -31,7 +31,7 @@
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     background: "rgba(0,0,0,0)",
     width: "container",
-    height: { step: 40 },
+    height: 520,
     autosize: { type: "fit", contains: "padding", resize: true },
     data: {
       values: [
@@ -130,7 +130,7 @@
 
     vegaEmbed("#vis", spec, { actions: false }).then(({ view }) => {
       window.addEventListener("resize", () => {
-        view.resize().run();
+        view.width(container.clientWidth).height(container.clientHeight).run();
       });
     });
   }

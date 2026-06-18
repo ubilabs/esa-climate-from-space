@@ -4,7 +4,6 @@ import { EmbeddedItem } from "../../../types/gallery-item";
 
 import styles from "./story-embedded.module.css";
 import Caption from "../caption/caption";
-import { ImageFit } from "../../../types/image-fit";
 import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
 
 interface Props {
@@ -35,8 +34,8 @@ const StoryEmbedded: FunctionComponent<Props> = ({
       {description && (
         <Caption
           showLightbox={showLightbox}
-          imageFit={ImageFit.Cover}
           content={description}
+          position={showLightbox ? "relative" : "static"}
         />
       )}
     </div>

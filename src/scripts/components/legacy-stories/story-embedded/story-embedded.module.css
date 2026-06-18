@@ -9,12 +9,15 @@
 @media screen and (--mobile-viewport) {
   .embeddedContent {
     display: flex;
+    flex-direction: column;
     padding: initial;
   }
 }
 
 .lightboxEmbeddedContent{
   display: flex;
+  flex-direction: column;
+  padding: 3em 0;
 }
 
 .embeddedContent > iframe {
