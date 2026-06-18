@@ -10,29 +10,38 @@
       ]
     },
     {
-      "type": "image",
       "text": "## Jusqu'à quel point peut-on descendre ?\r\n\r\nAu début des années 1980, des ingénieurs ont reçu les données d'un nouvel instrument embarqué sur un satellite de recherche américain. Le capteur a mesuré si peu d'ozone dans l'atmosphère au-dessus de l'Antarctique que les relevés ont été signalés comme des erreurs possibles. Mais peu de temps après, des chercheurs britanniques et japonais ont enregistré des quantités d'ozone tout aussi faibles dans leurs stations de recherche en Antarctique.\r\n \r\nCe n'est que lorsque les résultats obtenus au sol ont été publiés dans la littérature scientifique que les faibles valeurs des données satellitaires ont été expliquées. Elles ont montré qu'une vaste zone présentant de très faibles quantités d'ozone se développait chaque printemps au-dessus du pôle Sud. Ce \"trou\" dans la couche d'ozone protectrice de la Terre a rapidement attiré l'attention des médias et des décideurs. Et, grâce à la vérification de leurs données, les scientifiques ont pris confiance dans la technologie émergente de [l'observation de la Terre depuis l'espace] (stories/story-26/0).\r\n\r\n## Couche protectrice\r\n\r\nLa couche d'ozone située dans la stratosphère est notre principale défense contre les rayons ultraviolets (UV) du soleil. Sans elle, nous souffririons de coups de soleil après quelques minutes en plein air, puis de lésions oculaires et de cancers de la peau après une exposition prolongée. Non filtrée, la lumière ultraviolette aurait empêché le développement de la vie sur Terre.  \r\n\r\nParce qu'il absorbe également le rayonnement solaire dans les longueurs d'onde infrarouges, l'ozone est aussi un puissant gaz à effet de serre. La modification de la répartition de l'ozone est le deuxième impact humain sur le climat, après l'augmentation du dioxyde de carbone. Mais, alors que la perte d'ozone est le problème dans la stratosphère, l'ozone augmente au niveau du sol. Ici, l'ozone associé aux transports et à la pollution industrielle constitue un danger pour la santé humaine. Que l'ozone soit bon ou mauvais pour vous dépend de l'endroit où vous le trouvez.",
       "shortText": "## Jusqu'à quel point peut-on descendre ?\r\n\r\nDébut des années 1980 : des quantités d'ozone étonnamment faibles sont mesurées au-dessus de l'Antarctique.\r\n \r\nUn \"trou\" d'ozone se forme chaque printemps au-dessus du pôle Sud.\r\n\r\nLa couche d'ozone stratosphérique est notre principale défense contre les rayons ultraviolets du soleil.\r\n\r\nL'ozone absorbe également le rayonnement solaire infrarouge et constitue donc un puissant gaz à effet de serre.\r\n\r\nLa modification de l'ozone est le deuxième impact climatique humain le plus important :\r\n- perte d'ozone dans la stratosphère\r\n- augmentation de l'ozone au niveau du sol\r\n\r\nL'ozone troposphérique associé aux transports et à la pollution industrielle constitue un danger pour la santé humaine.\r\n\r\nL'ozone est-il bon ou mauvais ? - Cela dépend de l'endroit où vous le trouvez.",
-      "images": [
-        "assets/ozone_large_11.jpg",
-        "assets/story8_02.png",
-        "assets/ozone_large_03b.jpg",
-        "assets/ozone_large_14.jpg",
-        "assets/story8_04.png"
-      ],
-      "imageCaptions": [
-        "Des scientifiques lancent un ballon de haute altitude transportant du matériel de mesure de l'ozone depuis la station du pôle Sud d'Amundsen-Scott en septembre 2013 (Kelli-Ann Bliss/NOAA).",
-        "Le Soleil en lumière visible (à gauche) et ultraviolette (à droite), tel que vu par le satellite SOHO le 3 février 2002 (ESA/NASA)",
-        "# Le cycle catalytique du chlore\r\nLe chlore agit comme un catalyseur pour la destruction de l'ozone : (1) Le monoxyde de chlore réagit avec un atome d'oxygène, produisant une molécule d'oxygène et un atome de chlore hautement réactif. (2) L'atome de chlore réagit avec l'ozone pour produire de l'oxygène et du monoxyde de chlore. (Planetary Visions)",
-        "Une journée d'observations de l'ozone par ERS-2 GOME. (ESA)",
-        "# Ozone total au-dessus de l'Antarctique\r\nValeurs de l'ozone total au-dessus de l'Antarctique enregistrées à la station de recherche de Halley et par trois capteurs satellites, TOMS, OMI et OMPS (NASA-GSFC)."
-      ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
+      "galleryItems": [
+        {
+          "type": "image",
+          "imageCaption": "Des scientifiques lancent un ballon de haute altitude transportant du matériel de mesure de l'ozone depuis la station du pôle Sud d'Amundsen-Scott en septembre 2013 (Kelli-Ann Bliss/NOAA).",
+          "image": "assets/ozone_large_11.jpg",
+          "imageFit": "cover"
+        },
+        {
+          "type": "image",
+          "imageCaption": "Le Soleil en lumière visible (à gauche) et ultraviolette (à droite), tel que vu par le satellite SOHO le 3 février 2002 (ESA/NASA)",
+          "image": "assets/story8_02.png",
+          "imageFit": "contain"
+        },
+        {
+          "type": "image",
+          "imageCaption": "# Le cycle catalytique du chlore\r\nLe chlore agit comme un catalyseur pour la destruction de l'ozone : (1) Le monoxyde de chlore réagit avec un atome d'oxygène, produisant une molécule d'oxygène et un atome de chlore hautement réactif. (2) L'atome de chlore réagit avec l'ozone pour produire de l'oxygène et du monoxyde de chlore. (Planetary Visions)",
+          "image": "assets/ozone_large_03b.jpg",
+          "imageFit": "contain"
+        },
+        {
+          "type": "image",
+          "imageCaption": "Une journée d'observations de l'ozone par ERS-2 GOME. (ESA)",
+          "image": "assets/ozone_large_14.jpg",
+          "imageFit": "contain"
+        },
+        {
+          "type": "embedded",
+          "description": "# Ozone total au-dessus de l'Antarctique\r\nValeurs de l'ozone total au-dessus de l'Antarctique enregistrées à la station de recherche de Halley et par trois capteurs satellites, TOMS, OMI et OMPS (NASA-GSFC).",
+          "embeddedSrc": "assets/ozone_du_chart.html"
+        }
       ]
     },
     {
