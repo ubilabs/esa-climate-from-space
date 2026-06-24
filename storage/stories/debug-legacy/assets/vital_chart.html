@@ -1,0 +1,139 @@
+<style>
+  html,
+  body,
+  #vis {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  @font-face {
+    font-style: normal;
+    font-family: NotesESA;
+    src: url("https://storage.googleapis.com/esa-cfs-cdn/fonts/NotesEsaReg.otf");
+  }
+
+  body {
+    font-family: NotesESA, Arial, Helvetica, sans-serif;
+  }
+</style>
+
+<div id="vis"></div>
+
+<script src="https://storage.googleapis.com/esa-cfs-cdn/vega/v5/vega.min.js"></script>
+<script src="https://storage.googleapis.com/esa-cfs-cdn/vega-lite/v5/vega-lite.min.js"></script>
+<script src="https://storage.googleapis.com/esa-cfs-cdn/vega-embed/v6/vega-embed.min.js"></script>
+
+<script>
+  const spec = {
+    $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+    background: "rgba(0,0,0,0)",
+    width: "container",
+    height: 520,
+    autosize: { type: "fit", contains: "padding", resize: true },
+    data: {
+      values: [
+        { compound: "CFC-12", value: 27.3, source: "Anthropogenic" },
+        { compound: "CFC-11", value: 22.4, source: "Anthropogenic" },
+        { compound: "CH3Cl", value: 15, source: "Natural" },
+        { compound: "CCl4", value: 12, source: "Anthropogenic" },
+        { compound: "CH3CCl3", value: 10, source: "Anthropogenic" },
+        { compound: "CFC-113", value: 6.5, source: "Anthropogenic" },
+        { compound: "HCl", value: 4, source: "Natural" },
+        { compound: "HCFC-22", value: 4, source: "Anthropogenic" },
+      ],
+    },
+    mark: { type: "bar" },
+    encoding: {
+      y: {
+        field: "compound",
+        type: "ordinal",
+        sort: null,
+        axis: {
+          title: null,
+          labelColor: "#cfd8dc",
+          labelFontSize: 18,
+          labelPadding: 10,
+          tickSize: 0,
+          domainColor: "#b0bec5",
+          offset: 1,
+        },
+      },
+      x: {
+        field: "value",
+        type: "quantitative",
+        scale: { domain: [0, 30] },
+        axis: {
+          title: "Unit: %",
+          titleColor: "#cfd8dc",
+          titleFontSize: 16,
+          titleAnchor: "end",
+          titleAlign: "right",
+          titlePadding: -40,
+          titleFontWeight: "normal",
+          values: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30],
+          labelColor: "#cfd8dc",
+          labelFontSize: 16,
+          grid: true,
+          gridColor: "#5d7685",
+          gridDash: [2, 3],
+          gridOpacity: 0.7,
+          domain: false,
+          tickSize: 0,
+        },
+      },
+      color: {
+        field: "source",
+        type: "nominal",
+        scale: {
+          domain: ["Anthropogenic", "Natural"],
+          range: ["#0e9a8b", "#3f6678"],
+        },
+        legend: {
+          title: null,
+          orient: "bottom",
+          labelColor: "#cfd8dc",
+          labelFontSize: 18,
+          symbolType: "square",
+        },
+      },
+      tooltip: [
+        { field: "compound", type: "nominal", title: "Title" },
+        { field: "value", type: "quantitative", title: "Value" },
+      ],
+    },
+    config: { view: { stroke: null }, font: "NotesESA" },
+  };
+
+  async function loadFonts() {
+    if (!document.fonts) {
+      return;
+    }
+
+    try {
+      await document.fonts.load("16px NotesESA");
+      await document.fonts.load("18px NotesESA");
+    } catch (error) {
+      console.error("Error loading fonts:", error);
+    }
+  }
+
+  async function renderChart() {
+    await loadFonts();
+
+    const container = document.getElementById("vis");
+
+    spec.width = container.clientWidth;
+    spec.height = container.clientHeight;
+
+    vegaEmbed("#vis", spec, { actions: false }).then(({ view }) => {
+      window.addEventListener("resize", () => {
+        view.width(container.clientWidth).height(container.clientHeight).run();
+      });
+    });
+  }
+
+  renderChart();
+</script>
