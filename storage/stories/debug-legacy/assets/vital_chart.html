@@ -1,33 +1,5 @@
-<style>
-  html,
-  body,
-  #vis {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-  }
-  @font-face {
-    font-style: normal;
-    font-family: NotesESA;
-    src: url("https://storage.googleapis.com/esa-cfs-cdn/fonts/NotesEsaReg.otf");
-  }
-
-  body {
-    font-family: NotesESA, Arial, Helvetica, sans-serif;
-  }
-</style>
-
-<div id="vis"></div>
-
-<script src="https://storage.googleapis.com/esa-cfs-cdn/vega/v5/vega.min.js"></script>
-<script src="https://storage.googleapis.com/esa-cfs-cdn/vega-lite/v5/vega-lite.min.js"></script>
-<script src="https://storage.googleapis.com/esa-cfs-cdn/vega-embed/v6/vega-embed.min.js"></script>
-
 <script>
-  const spec = {
+  window.spec = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     background: "rgba(0,0,0,0)",
     width: "container",
@@ -106,34 +78,5 @@
     },
     config: { view: { stroke: null }, font: "NotesESA" },
   };
-
-  async function loadFonts() {
-    if (!document.fonts) {
-      return;
-    }
-
-    try {
-      await document.fonts.load("16px NotesESA");
-      await document.fonts.load("18px NotesESA");
-    } catch (error) {
-      console.error("Error loading fonts:", error);
-    }
-  }
-
-  async function renderChart() {
-    await loadFonts();
-
-    const container = document.getElementById("vis");
-
-    spec.width = container.clientWidth;
-    spec.height = container.clientHeight;
-
-    vegaEmbed("#vis", spec, { actions: false }).then(({ view }) => {
-      window.addEventListener("resize", () => {
-        view.width(container.clientWidth).height(container.clientHeight).run();
-      });
-    });
-  }
-
-  renderChart();
 </script>
+<script src="https://storage.googleapis.com/esa-cfs-cdn/esa-vega-chart/index.js"></script>
