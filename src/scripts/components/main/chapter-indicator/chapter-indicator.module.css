@@ -4,11 +4,12 @@
   z-index: 3;
   position: fixed;
   height: calc(var(--story-height) - 25%);
-  width: 20px;
+  width: 24px;
   top: calc(50% + var(--header-offset));
   transform: translate(36px, -50%);
 
   .dotContainer {
+    --dot-size: 10px;
     list-style-type: none;
     height: 100%;
     display: grid;
@@ -16,25 +17,37 @@
     justify-content: center;
     anchor-name: --dot-container;
 
+    .activeIndicator {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      background-color: red;
+      box-sizing: border-box;
+      position: absolute;
+      position-anchor: --dot-4;
+      position-area: center;
+      clip-path: circle(40%);
+      border-radius: 50%;
+    }
+
     > li.dot {
-      --dot-size: 9px;
-      --divider-space: 1rem;
+      --line-offset: min(6px, 6vh);
       display: inline-block;
       width: var(--dot-size);
       height: var(--dot-size);
+      border-radius: 50%;
       background-color: white;
-      border-radius: 100px;
+      display: inline-block;
+      background-color: var(--neutral-esa-white);
 
       &:after {
         width: 1px;
-        background-color: grey;
+        background-color: var(--main-colours-esa-teal-55);
         content: "";
         position: absolute;
         transform: translateX(-50%);
-        width: 2px;
-        inset-block-start: var(--anchor-start);
-        inset-block-end: var(--anchor-end);
-        inset-inline: anchor(--dot-container center);
+        inset: var(--anchor-inset);
+        border-radius: 100px;
       }
     }
   }

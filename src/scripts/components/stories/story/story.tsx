@@ -46,7 +46,7 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
         ref={storyElementRef}
         id="story"
       >
-        <ChapterIndicator length={story.modules.length} />
+        <ChapterIndicator length={story.modules.length + 1} />
         <SplashScreen />
 
         {story.modules.map(({ type }, moduleIndex) => {
