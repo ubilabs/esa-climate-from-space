@@ -1,0 +1,41 @@
+.chapterIndicator {
+  --header-offset: calc(var(--header-height) / 2);
+
+  z-index: 3;
+  position: fixed;
+  height: calc(var(--story-height) - 25%);
+  width: 20px;
+  top: calc(50% + var(--header-offset));
+  transform: translate(36px, -50%);
+
+  .dotContainer {
+    list-style-type: none;
+    height: 100%;
+    display: grid;
+    align-content: space-between;
+    justify-content: center;
+    anchor-name: --dot-container;
+
+    > li.dot {
+      --dot-size: 9px;
+      --divider-space: 1rem;
+      display: inline-block;
+      width: var(--dot-size);
+      height: var(--dot-size);
+      background-color: white;
+      border-radius: 100px;
+
+      &:after {
+        width: 1px;
+        background-color: grey;
+        content: "";
+        position: absolute;
+        transform: translateX(-50%);
+        width: 2px;
+        inset-block-start: var(--anchor-start);
+        inset-block-end: var(--anchor-end);
+        inset-inline: anchor(--dot-container center);
+      }
+    }
+  }
+}

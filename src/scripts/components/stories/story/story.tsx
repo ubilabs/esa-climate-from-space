@@ -9,6 +9,7 @@ import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
+import ChapterIndicator from "../../main/chapter-indicator/chapter-indicator";
 
 import { getModuleComponent } from "../../../libs/get-story-components";
 
@@ -45,6 +46,7 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
         ref={storyElementRef}
         id="story"
       >
+        <ChapterIndicator length={story.modules.length} />
         <SplashScreen />
 
         {story.modules.map(({ type }, moduleIndex) => {
