@@ -10,6 +10,7 @@
 
   .dotContainer {
     --dot-size: 10px;
+    --dot-color: var(--neutral-esa-white);
     list-style-type: none;
     height: 100%;
     display: grid;
@@ -18,15 +19,15 @@
     anchor-name: --dot-container;
 
     .activeIndicator {
-      width: 20px;
-      height: 20px;
+      --indicator-size: calc(anchor-size(width, 100%) * 2);
+      --indicator-ring-offset: calc(var(--dot-size) * 0.8);
+      width: var(--indicator-size);
+      height: var(--indicator-size);
       display: inline-block;
-      background-color: red;
+      background-color: var(--dot-color);
       box-sizing: border-box;
       position: absolute;
-      position-anchor: --dot-4;
-      position-area: center;
-      clip-path: circle(40%);
+      position-area: center center;
       border-radius: 50%;
     }
 
@@ -36,9 +37,22 @@
       width: var(--dot-size);
       height: var(--dot-size);
       border-radius: 50%;
-      background-color: white;
       display: inline-block;
-      background-color: var(--neutral-esa-white);
+      background-color: var(--dot-color);
+
+      .dotButton {
+        all: unset;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        cursor: pointer;
+
+        &:focus-visible {
+          outline: 2px solid var(--neutral-esa-white);
+          outline-offset: 3px;
+        }
+      }
 
       &:after {
         width: 1px;
