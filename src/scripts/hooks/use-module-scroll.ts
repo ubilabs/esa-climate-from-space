@@ -20,6 +20,8 @@ export function useModuleScroll() {
     const maxScrollY =
       Array.from(nodes.values()).at(-1)?.getBoundingClientRect().y || 0;
 
+    // The chapter indicator needs each module's relative position up front so its
+    // dots and active ring stay aligned with the actual scroll path of the story.
     const scrollYPerModule = Array.from(nodes.values()).map((node) => {
       const heigth = quantize(
         (node.getBoundingClientRect().y - minScroll) /
