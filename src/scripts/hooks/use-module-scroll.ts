@@ -1,7 +1,6 @@
 import { useStory } from "../providers/story/use-story";
 import { useEffect, useEffectEvent, useState } from "react";
 import { quantize } from "../libs/quantize";
-import { getCssVarPx } from "../libs/get-css-var-in-px";
 
 export function useModuleScroll() {
   const { getModuleRefsMap, story } = useStory();
@@ -10,8 +9,6 @@ export function useModuleScroll() {
 
   const onMount = useEffectEvent(() => {
     const nodes = getModuleRefsMap();
-
-    const headerHeight = getCssVarPx("--header-height");
 
     const minScroll =
       Array.from(nodes.values()).at(0)?.getBoundingClientRect().y || 0;
@@ -24,8 +21,7 @@ export function useModuleScroll() {
     // dots and active ring stay aligned with the actual scroll path of the story.
     const scrollYPerModule = Array.from(nodes.values()).map((node) => {
       const heigth = quantize(
-        (node.getBoundingClientRect().y - minScroll) /
-          (maxScrollY - headerHeight - minScroll),
+        (node.getBoundingClientRect().y - minScroll) / (maxScrollY - minScroll),
         0.0001,
       );
 
