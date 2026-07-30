@@ -1,5 +1,11 @@
 .chapterIndicator {
   --header-offset: calc(var(--header-height) / 2);
+  --dot-size: 6px;
+  --dot-color: var(--neutral-esa-white);
+
+  --dot-hover-size: calc(var(--dot-size) * 1.5);
+  --dot-active-size: calc(var(--dot-size) * 2);
+  --dot-focus-ring-color: color-mix(in srgb, var(--dot-color) 30%, transparent);
 
   z-index: 3;
   position: fixed;
@@ -9,26 +15,14 @@
   transform: translate(36px, -50%);
 
   .dotContainer {
-    --dot-size: 10px;
-    --dot-color: var(--neutral-esa-white);
     list-style-type: none;
     height: 100%;
-    display: grid;
-    align-content: space-between;
     justify-content: center;
     anchor-name: --dot-container;
+    place-items: start center;
 
-    .activeIndicator {
-      --indicator-size: calc(anchor-size(width, 100%) * 2);
-      --indicator-ring-offset: calc(var(--dot-size) * 0.8);
-      width: var(--indicator-size);
-      height: var(--indicator-size);
-      display: inline-block;
-      background-color: var(--dot-color);
-      box-sizing: border-box;
-      position: absolute;
-      position-area: center center;
-      border-radius: 50%;
+    @media screen and (--desktop-viewport) {
+      --dot-size: 6px;
     }
 
     > li.dot {
@@ -38,7 +32,9 @@
       height: var(--dot-size);
       border-radius: 50%;
       display: inline-block;
-      background-color: var(--dot-color);
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
 
       .dotButton {
         all: unset;
@@ -46,23 +42,115 @@
         width: 100%;
         height: 100%;
         border-radius: inherit;
+        position: relative;
         cursor: pointer;
+        overflow: visible;
+
+        /* increase click area */
+        &:after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: min(250%, 1rem);
+          height: min(250%, 1rem);
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background-color: var(--dot-color);
+          transform: translate(-50%, -50%) scale(1);
+          transition:
+            transform 160ms ease,
+            box-shadow 160ms ease,
+            opacity 160ms ease;
+        }
+
+        &:hover {
+          &:before {
+            transform: translate(-50%, -50%)
+              scale(calc(var(--dot-hover-size) / var(--dot-size)));
+          }
+        }
+
+        &[data-active="true"]:hover {
+          &:before {
+            transform: translate(-50%, -50%)
+              scale(calc(var(--dot-active-size) / var(--dot-size)));
+          }
+        }
+
+        &:active {
+          &:before {
+            transform: translate(-50%, -50%)
+              scale(calc(var(--dot-active-size) / var(--dot-size)));
+          }
+        }
 
         &:focus-visible {
-          outline: 2px solid var(--neutral-esa-white);
-          outline-offset: 3px;
+          &:before {
+            transform: translate(-50%, -50%)
+              scale(calc(var(--dot-active-size) / var(--dot-size)));
+            box-shadow: 0 0 0 4px var(--dot-focus-ring-color);
+          }
         }
       }
+    }
 
-      &:after {
-        width: 1px;
-        background-color: var(--main-colours-esa-teal-55);
-        content: "";
-        position: absolute;
-        transform: translateX(-50%);
-        inset: var(--anchor-inset);
-        border-radius: 100px;
-      }
+    .line {
+      width: 1px;
+      background-color: var(--main-colours-esa-teal-55);
+      content: "";
+      position: absolute;
+      transform: translate(-50%, 0);
+      top: calc(var(--line-start) + 9px);
+      bottom: calc(100% - var(--line-end) + 9px);
+      left: 50%;
+    }
+  }
+  .activeIndicator {
+    --indicator-size: calc(var(--dot-size) * 1);
+    --indicator-ring-offset: 55%;
+    --indicator-ring-size: calc(var(--dot-size) * 2.2);
+    --indicator-ring-scale: 1;
+    transform-origin: center;
+
+    position: absolute;
+    will-change: top;
+    width: var(--indicator-size);
+    height: var(--indicator-size);
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    background-color: var(--dot-color);
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    border-radius: 50%;
+
+    &:after {
+      content: "";
+      width: var(--indicator-ring-size);
+      height: var(--indicator-ring-size);
+      scale: var(--indicator-ring-scale);
+      transform-origin: top left;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: var(--dot-color);
+      border-radius: 50%;
+      mask: radial-gradient(
+        circle,
+        transparent 0 var(--indicator-ring-offset),
+        black var(--indicator-ring-offset) 100%
+      );
     }
   }
 }

@@ -1,102 +1,116 @@
-import { CSSProperties, useRef, useState } from "react";
-import { motion, useAnimate } from "motion/react";
+import { CSSProperties, Fragment } from "react";
+import { motion, useTransform } from "motion/react";
+
+import { useStoryScroll } from "../../../hooks/use-story-scroll";
+import { useModuleScroll } from "../../../hooks/use-module-scroll";
+import { useStory } from "../../../providers/story/use-story";
+
 import styles from "./chapter-indicator.module.css";
 
-interface Props {
-  length: number;
-}
+const ChapterIndicator = () => {
+  const { story, getModuleRefsMap } = useStory();
 
-const ChapterIndicator = ({ length }: Props) => {
-  const [activeIndicator, setActiveIndicator] = useState<number>(0);
-  const resolveLayoutAnimation = useRef<(() => void) | null>(null);
-  const [scope, animate] = useAnimate();
+  const { heightFractionPerModule } = useModuleScroll();
 
-  const variants = {
-    initial: {
-      width: "var(--dot-size)",
-      height: "var(--dot-size)",
-      mask: "radial-gradient(circle, transparent 0 0px, black 0px)",
+  function scrollToNode(index: number) {
+    const nodes = getModuleRefsMap();
+    nodes.get(`${index}`)?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  const { scrollYProgress } = useStoryScroll({});
+
+  const top = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
+  const transitionArea = 0.025;
+  const fractionLength = heightFractionPerModule?.length ?? Infinity;
+
+  // this makes the outer ring of the activeIndicator transform depending the current scroll
+  // we dynamically generate input and output array to pass to useTransform
+  const transformableHeightFractions = heightFractionPerModule?.reduce(
+    (prev, fraction, index) => {
+      //  handle first fraction
+      if (index === 0) {
+        return [
+          [0, fraction + transitionArea],
+          [1, 0],
+        ];
+      }
+
+      // handle last fraction
+      if (index === fractionLength - 1) {
+        return [
+          [...prev[0], fraction - transitionArea, fraction],
+          [...prev[1], 0, 1],
+        ];
+      }
+
+      return [
+        [
+          ...prev[0],
+          fraction - transitionArea,
+          fraction,
+          fraction + transitionArea,
+        ],
+        [...prev[1], 0, 1, 0],
+      ];
     },
-    animate: {
-      width: "var(--indicator-size)",
-      height: "var(--indicator-size)",
-      mask: "radial-gradient(circle, transparent 0 var(--indicator-ring-offset), black var(--indicator-ring-offset))",
-    },
-  };
+    [] as Array<Array<number> | Array<number>>,
+  ) ?? [[1], [1]];
 
-  const waitForLayoutAnimation = () => {
-    // Finish any previous pending wait.
-    resolveLayoutAnimation.current?.();
-
-    return new Promise<void>((resolve) => {
-      resolveLayoutAnimation.current = resolve;
-    });
-  };
-
-  const completeLayoutAnimation = () => {
-    const resolve = resolveLayoutAnimation.current;
-    resolveLayoutAnimation.current = null;
-    resolve?.();
-  };
-
-  const moveIndicatorTo = async (index: number) => {
-    if (!scope.current) {
-      return;
-    }
-
-    // create promise which pauses execution until resolved by onLayoutAnimationComplete callback
-    const layoutFinished = waitForLayoutAnimation();
-
-    // shrink indicator to dot size
-    await animate(scope.current, variants.initial);
-
-    // set active index triggering layout change
-    setActiveIndicator(index);
-    await layoutFinished;
-
-    await animate(scope.current, variants.animate);
-  };
+  const ringScale = useTransform(
+    scrollYProgress,
+    transformableHeightFractions[0],
+    transformableHeightFractions[1],
+  );
 
   return (
-    <motion.nav layoutRoot className={styles.chapterIndicator}>
+    <nav key={story?.id} className={styles.chapterIndicator}>
       <ol className={styles.dotContainer}>
-        {Array.from({ length }, (_, index) => (
-          <li
-            style={
-              {
-                anchorName: `--dot-${index}`,
-                "--anchor-inset": `calc(anchor(--dot-${index} end) + var(--line-offset)) anchor(--dot-container center) calc(anchor(--dot-${index + 1} start) + var(--line-offset))`,
-              } as CSSProperties
-            }
-            className={styles.dot}
-            key={index}
-          >
-            <button
-              type="button"
-              className={styles.dotButton}
-              aria-label={`Go to chapter ${index + 1}`}
-              aria-current={index === activeIndicator ? "step" : undefined}
-              onClick={() => moveIndicatorTo(index)}
-            />
-          </li>
-        ))}
+        {[...(heightFractionPerModule ?? [])]?.map((height, index) => {
+          const lineEnd = (heightFractionPerModule?.[index + 1] ?? 0) * 100;
 
-        <motion.span
-          ref={scope}
-          variants={variants}
-          initial="animate"
-          layout
-          transition={{
-            layout: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
-          }}
-          onLayoutAnimationComplete={completeLayoutAnimation}
-          className={styles.activeIndicator}
-          style={{
-            positionAnchor: `--dot-${activeIndicator}`,
-          }}
-        ></motion.span>
+          return (
+            <Fragment key={index}>
+              <li
+                style={
+                  {
+                    top: `${height * 100}%`,
+                  } as CSSProperties
+                }
+                className={styles.dot}
+              >
+                <button
+                  type="button"
+                  className={styles.dotButton}
+                  aria-label={`Go to chapter ${index + 1}`}
+                  onClick={() => scrollToNode(index)}
+                />
+              </li>
+              <span
+                aria-hidden="true"
+                className={styles.line}
+                style={
+                  {
+                    "--line-start": `${height * 100}%`,
+                    "--line-end": `${lineEnd}%`,
+                  } as CSSProperties
+                }
+              ></span>
+            </Fragment>
+          );
+        })}
       </ol>
-    </motion.nav>
+
+      <motion.span
+        className={styles.activeIndicator}
+        style={
+          {
+            top,
+            "--indicator-ring-scale": ringScale,
+          } as unknown as CSSProperties
+        }
+      ></motion.span>
+    </nav>
   );
 };
 
