@@ -58,7 +58,6 @@
   .globeContainer {
     position: relative;
     display: flex;
-    height: 100%;
     justify-content: center;
     background: var(--neutral-esa-background);
 
