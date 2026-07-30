@@ -23,7 +23,8 @@ import styles from "./story.module.css";
  * The hierarchical structure of a story is organized as follows: story > module > slides
  */
 const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
-  const { storyElementRef, story, setScrollAnchorRefs } = useStory();
+  const { storyElementRef, story, setScrollAnchorRefs, setModuleRefs } =
+    useStory();
 
   // Initialize Lenis for smooth scrolling behavior in the story
   useLenisForStory();
@@ -46,8 +47,8 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
         ref={storyElementRef}
         id="story"
       >
-        <ChapterIndicator length={story.modules.length + 1} />
-        <SplashScreen />
+        <ChapterIndicator />
+        <SplashScreen ref={setModuleRefs(`${0}`)} />
 
         {story.modules.map(({ type }, moduleIndex) => {
           const ModuleComponent = getModuleComponent(type);
@@ -67,12 +68,14 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
               storyId={story.id}
               getRefCallback={generateScrollAnchorRef}
             >
-              <ModuleComponent />
+              <section ref={setModuleRefs(`${moduleIndex + 1}`)}>
+                <ModuleComponent />
+              </section>
             </ModuleContentProvider>
           );
         })}
         {/* Provisional - will be replaced with a proper end screen later */}
-        <ClosingScreen />
+        <ClosingScreen ref={setModuleRefs(`${story.modules.length + 1}`)} />
       </main>
       {children}
     </>
