@@ -15,6 +15,7 @@ import { useStory } from "../../../../../providers/story/use-story";
 
 import { TextWrapper } from "../generic/text-container/text-wrapper";
 import SplashScreenEei from "../../scroll-story/story-eei/splashscreen/splashscreen-eei";
+import SplashScreenXFires from "../../scroll-story/story-x-fires/splashscreen/splashscreen-x-fires";
 import { StorySectionProps } from "../../../../../types/story";
 
 import { SlideContainer } from "../../../layout/slide-container/slide-container";
@@ -25,8 +26,8 @@ import cx from "classnames";
 
 import styles from "./splashscreen.module.css";
 
-export const SplashScreen: FunctionComponent<StorySectionProps> = (rest) => {
-  const { isStoryEEI } = useAppRouteFlags();
+export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
+  const { isStoryEEI, isStoryXFires } = useAppRouteFlags();
   const { story, setScrollAnchorRefs } = useStory();
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -80,9 +81,12 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = (rest) => {
     return null;
   }
 
-  // render SplashScreen for story-eei
+  // Render SplashScreen for scroll stories
   if (isStoryEEI) {
     return <SplashScreenEei />;
+  }
+  if (isStoryXFires) {
+    return <SplashScreenXFires />;
   }
 
   const { id } = story;

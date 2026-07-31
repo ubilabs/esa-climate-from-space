@@ -11,7 +11,7 @@ import { useAppRouteFlags } from "./use-app-route-flags";
 export const useSyncStoryUrl = () => {
   const { getScrollAnchorRefsMap, storyElementRef, story, lenisRef } =
     useStory();
-  const { isStoryEEI } = useAppRouteFlags();
+  const { isScrollStory } = useAppRouteFlags();
 
   const { trackPageView } = useMatomo();
   const activeNodeKeyRef = useRef<string | null>(null);
@@ -46,10 +46,10 @@ export const useSyncStoryUrl = () => {
   const calculateScrollPosition = useCallback(
     (index: number, lengthfactor: number): number => {
       const headerHeight = getCssVarPx("--header-height");
-      const scrollFactor = isStoryEEI ? lengthfactor : index;
+      const scrollFactor = isScrollStory ? lengthfactor : index;
       return scrollFactor * (window.innerHeight - headerHeight);
     },
-    [isStoryEEI],
+    [isScrollStory],
   );
 
   // Effect for initial scroll on page load
@@ -77,7 +77,7 @@ export const useSyncStoryUrl = () => {
     story,
     lenisRef,
     initialSlideIndex,
-    isStoryEEI,
+    isScrollStory,
     calculateLengthFactor,
     calculateScrollPosition,
   ]);
@@ -114,7 +114,7 @@ export const useSyncStoryUrl = () => {
     lenisRef,
     story,
     initialSlideIndex,
-    isStoryEEI,
+    isScrollStory,
     calculateLengthFactor,
     calculateScrollPosition,
   ]);
