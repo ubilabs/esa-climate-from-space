@@ -37,7 +37,7 @@ import { AppLocationState } from "../../../types/location-state";
 import { useNavigationControls } from "../../../hooks/use-navigation-controls";
 
 import { DownloadButton } from "../download-button/download-button";
-import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
+import { Layers } from "../../stories/story/scroll-story/story-eei/constants/globe";
 import { SwipeUpIcon } from "../icons/swipe-up-icon";
 import { SwipeDownIcon } from "../icons/swipe-down-icon";
 import { MouseScrollIcon } from "../icons/mouse-scroll-icon";
@@ -392,7 +392,10 @@ const ContentNavigation: FunctionComponent<Props> = ({
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
         } else {
           dispatch(
-            setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
+            setSelectedLayerIds({
+              layerId: Layers.EEI_NO_MASK,
+              isPrimary: true,
+            }),
           );
         }
 
