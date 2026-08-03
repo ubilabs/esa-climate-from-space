@@ -2,7 +2,7 @@ import { ComponentProps, FunctionComponent } from "react";
 
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
-import { StoryEEI } from "../components/stories/story/blocks/story-eei/story-eei";
+import { StoryEEI } from "../components/stories/story/scroll-story/story-eei/story-eei";
 
 export interface Slide {
   text: string;
@@ -20,8 +20,8 @@ export type Story = {
   id: string;
   splashscreen: Splashscreen;
   modules: Module[];
-  // special property for StoryEEI
-  initialGlobeConfig?: ScrollGlobe;
+  // special property for scroll stories
+  initialglobeConfig?: { mobile: ScrollGlobe; desktop: ScrollGlobe };
 };
 
 export type ImageFocus =

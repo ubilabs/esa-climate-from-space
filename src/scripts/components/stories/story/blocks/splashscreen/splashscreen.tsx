@@ -14,7 +14,7 @@ import { useAppRouteFlags } from "../../../../../hooks/use-app-route-flags";
 import { useStory } from "../../../../../providers/story/use-story";
 
 import { TextWrapper } from "../generic/text-container/text-wrapper";
-import SplashscreenEei from "./splashscreen-eei";
+import SplashScreenEei from "../../scroll-story/story-eei/splashscreen/splashscreen-eei";
 import { StorySectionProps } from "../../../../../types/story";
 
 import { SlideContainer } from "../../../layout/slide-container/slide-container";
@@ -82,7 +82,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = (rest) => {
 
   // render SplashScreen for story-eei
   if (isStoryEEI) {
-    return <SplashscreenEei />;
+    return <SplashScreenEei />;
   }
 
   const { id } = story;

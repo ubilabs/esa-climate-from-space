@@ -39,7 +39,7 @@ import PresentationSelector from "../../legacy-stories/presentation-selector/pre
 import ShowcaseSelector from "../../legacy-stories/showcase-selector/showcase-selector";
 import LegacyStory from "../../legacy-stories/story/story";
 import Story from "../../stories/story/story";
-import { StoryEEI } from "../../stories/story/blocks/story-eei/story-eei";
+import { StoryEEI } from "../../stories/story/scroll-story/story-eei/story-eei";
 import AboutProjectOverlay from "../about-project-overlay/about-project-overlay";
 import ContentSearch from "../content-search/content-search";
 

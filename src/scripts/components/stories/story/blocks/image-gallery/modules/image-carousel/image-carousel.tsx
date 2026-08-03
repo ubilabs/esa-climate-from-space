@@ -22,7 +22,7 @@ import { StoryMarkdown } from "../../../../../../shared/story-markdown/story-mar
 import CarouselNavigation from "./carousel-navigation/carousel-navigation";
 import ImageSlide from "./image-slide/image-slide";
 import LayerSlide from "./layer-slide/layer-slide";
-import ScrollModule from "../../../story-eei/modules/base-scroll/module/scroll-module";
+import ScrollModule from "../../../../scroll-story/modules/base-scroll/module/scroll-module";
 
 import styles from "./image-carousel.module.css";
 
