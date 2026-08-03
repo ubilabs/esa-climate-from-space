@@ -21,6 +21,7 @@ import config from "../../../../../../../../config/main";
 import cx from "classnames";
 
 import styles from "./time-and-wavelength-blend.module.css";
+import StoryLegend from "../../../../../scroll-story/modules/story-legend/story-legend";
 
 interface BlendWrapperProps extends StorySectionProps {
   animationDirection: AnimationDirection;
@@ -124,6 +125,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
           </div>
         </div>
       </motion.div>
+      <StoryLegend />
     </div>
   );
 };
