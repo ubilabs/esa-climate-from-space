@@ -48,7 +48,7 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
         id="story"
       >
         <ChapterIndicator />
-        <SplashScreen ref={setModuleRefs(`${0}`)} />
+        <SplashScreen ref={setModuleRefs('0')} />
 
         {story.modules.map(({ type }, moduleIndex) => {
           const ModuleComponent = getModuleComponent(type);
