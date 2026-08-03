@@ -38,6 +38,10 @@ export const ROUTES = {
     path: "/:category/stories/story-eei/:slideIndex",
     end: true,
   },
+  [AppRoute.StoryXFires]: {
+    path: "/:category/stories/story-x-fires/:slideIndex",
+    end: true,
+  },
   [AppRoute.Stories]: {
     path: "/:category/stories/:storyId/:slideIndex",
     end: true,

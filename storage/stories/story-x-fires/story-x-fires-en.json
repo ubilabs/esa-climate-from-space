@@ -1,0 +1,11 @@
+{
+  "id": "story-x-fires",
+  "splashscreen": {
+    "focus": "center",
+    "title": "Extreme Fires",
+    "subtitle": "Story",
+    "globeKeyframes": [],
+    "lengthFactor": 2
+  },
+  "modules": []
+}

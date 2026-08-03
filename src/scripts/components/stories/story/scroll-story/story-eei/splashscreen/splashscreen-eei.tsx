@@ -1,74 +1,29 @@
 import { FunctionComponent } from "react";
 import { motion, useTransform } from "motion/react";
 
-import { useScreenInfo } from "../../../../../../hooks/use-screen-info";
 import { useScrollModule } from "../../modules/base-scroll/use-scroll-module";
-import { useIntl } from "react-intl";
 import { useStory } from "../../../../../../providers/story/use-story";
 
 import ScrollModule from "../../modules/base-scroll/module/scroll-module";
-import { ArrowUpIcon } from "../../../../../main/icons/arrow-up-icon";
-import { MouseIcon } from "../../../../../main/icons/mouse-icon";
-import { ArrowDownIcon } from "../../../../../main/icons/arrow-down-icon";
-
-import cx from "classnames";
+import GestureIndicator from "../../modules/gesture-indicator/gesture-indicator";
 
 import styles from "./splashscreen-eei.module.css";
 
 const animationConfig = {
-  gestureIndicator: {
-    input: [0.5, 0.8],
-    output: ["100%", "0%"],
-  },
-  title: {
-    input: [0.5, 1],
-    output: ["-10vh", "-50vh"],
-  },
-};
-
-export type SplashAnimationConfig = typeof animationConfig;
-
-const GestureIndicator = () => {
-  const { isTouchDevice } = useScreenInfo();
-  const intl = useIntl();
-  const { scrollYProgress } = useScrollModule<SplashAnimationConfig>();
-
-  return (
-    <motion.div
-      style={{
-        opacity: useTransform(
-          scrollYProgress,
-          animationConfig.gestureIndicator.input,
-          animationConfig.gestureIndicator.output,
-        ),
-      }}
-      aria-hidden="true"
-      className={cx(
-        // Make sure to show the gesture indicator depending on whether it is touch screen device
-        styles.gestureIndicator,
-        isTouchDevice ? styles.touch : styles.scroll,
-      )}
-      data-content={intl.formatMessage({
-        id: `category.${isTouchDevice ? "swipe" : "scroll"}`,
-      })}
-    >
-      <ArrowUpIcon />
-      <MouseIcon />
-      <ArrowDownIcon />
-    </motion.div>
-  );
+  input: [0.5, 1],
+  output: ["-10vh", "-50vh"],
 };
 
 const Title: FunctionComponent<{ title: string }> = ({ title }) => {
-  const { scrollYProgress } = useScrollModule<SplashAnimationConfig>();
+  const { scrollYProgress } = useScrollModule<typeof animationConfig>();
   return (
     <motion.h1
       className={styles.title}
       style={{
         y: useTransform(
           scrollYProgress,
-          animationConfig.title.input,
-          animationConfig.title.output,
+          animationConfig.input,
+          animationConfig.output,
         ),
       }}
     >

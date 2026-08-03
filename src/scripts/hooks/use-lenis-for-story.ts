@@ -11,7 +11,7 @@ import { useAppRouteFlags } from "./use-app-route-flags";
 export function useLenisForStory() {
   const { storyElementRef, story, lenisRef, getScrollAnchorRefsMap } =
     useStory();
-  const { isStoryEEI } = useAppRouteFlags();
+  const { isScrollStory } = useAppRouteFlags();
 
   const { screenHeight } = useScreenInfo();
 
@@ -51,7 +51,7 @@ export function useLenisForStory() {
       lenisRef.current = null;
     };
   }, [
-    isStoryEEI,
+    isScrollStory,
     screenHeight,
     getScrollAnchorRefsMap,
     storyElementRef,
