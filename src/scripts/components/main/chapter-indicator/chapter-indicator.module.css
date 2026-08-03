@@ -18,7 +18,6 @@
     list-style-type: none;
     height: 100%;
     justify-content: center;
-    anchor-name: --dot-container;
     place-items: start center;
 
     @media screen and (--desktop-viewport) {
