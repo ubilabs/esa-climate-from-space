@@ -5,7 +5,9 @@ import { TextWrapper } from "../generic/text-container/text-wrapper";
 import { StorySectionProps } from "../../../../../types/story";
 import { useContentParams } from "../../../../../hooks/use-content-params";
 
-export const ClosingScreen: FunctionComponent<StorySectionProps> = () => {
+export const ClosingScreen: FunctionComponent<StorySectionProps> = ({
+  ref,
+}) => {
   const { story } = useStory();
 
   const { category } = useContentParams();
@@ -18,7 +20,7 @@ export const ClosingScreen: FunctionComponent<StorySectionProps> = () => {
   const message = formatMessage({ id: "exploreMoreInCategory" }, { category });
 
   return (
-    <div style={{ backgroundColor: "#011e2b" }}>
+    <div style={{ backgroundColor: "#011e2b" }} ref={ref}>
       <TextWrapper text={message} />
     </div>
   );

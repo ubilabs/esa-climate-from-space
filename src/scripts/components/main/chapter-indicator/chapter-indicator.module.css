@@ -1,0 +1,155 @@
+.chapterIndicator {
+  --header-offset: calc(var(--header-height) / 2);
+  --dot-size: 6px;
+  --dot-color: var(--neutral-esa-white);
+
+  --dot-hover-size: calc(var(--dot-size) * 1.5);
+  --dot-active-size: calc(var(--dot-size) * 2);
+  --dot-focus-ring-color: color-mix(in srgb, var(--dot-color) 30%, transparent);
+
+  z-index: 3;
+  position: fixed;
+  height: calc(var(--story-height) - 25%);
+  width: 24px;
+  top: calc(50% + var(--header-offset));
+  transform: translate(36px, -50%);
+
+  .dotContainer {
+    list-style-type: none;
+    height: 100%;
+    justify-content: center;
+    place-items: start center;
+
+    @media screen and (--desktop-viewport) {
+      --dot-size: 6px;
+    }
+
+    > li.dot {
+      --line-offset: min(6px, 6vh);
+      display: inline-block;
+      width: var(--dot-size);
+      height: var(--dot-size);
+      border-radius: 50%;
+      display: inline-block;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      .dotButton {
+        all: unset;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        position: relative;
+        cursor: pointer;
+        overflow: visible;
+
+        /* increase click area */
+        &:after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: min(250%, 1rem);
+          height: min(250%, 1rem);
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background-color: var(--dot-color);
+          transform: translate(-50%, -50%) scale(1);
+          transition:
+            transform 160ms ease,
+            box-shadow 160ms ease,
+            opacity 160ms ease;
+        }
+
+        &:hover {
+          &:before {
+            transform: translate(-50%, -50%)
+              scale(calc(var(--dot-hover-size) / var(--dot-size)));
+          }
+        }
+
+        &[data-active="true"]:hover {
+          &:before {
+            transform: translate(-50%, -50%)
+              scale(calc(var(--dot-active-size) / var(--dot-size)));
+          }
+        }
+
+        &:active {
+          &:before {
+            transform: translate(-50%, -50%)
+              scale(calc(var(--dot-active-size) / var(--dot-size)));
+          }
+        }
+
+        &:focus-visible {
+          &:before {
+            transform: translate(-50%, -50%)
+              scale(calc(var(--dot-active-size) / var(--dot-size)));
+            box-shadow: 0 0 0 4px var(--dot-focus-ring-color);
+          }
+        }
+      }
+    }
+
+    .line {
+      width: 1px;
+      background-color: var(--main-colours-esa-teal-55);
+      content: "";
+      position: absolute;
+      transform: translate(-50%, 0);
+      top: calc(var(--line-start) + 9px);
+      bottom: calc(100% - var(--line-end) + 9px);
+      left: 50%;
+    }
+  }
+  .activeIndicator {
+    --indicator-size: calc(var(--dot-size) * 1);
+    --indicator-ring-offset: 55%;
+    --indicator-ring-size: calc(var(--dot-size) * 2.2);
+    --indicator-ring-scale: 1;
+    transform-origin: center;
+
+    position: absolute;
+    will-change: top;
+    width: var(--indicator-size);
+    height: var(--indicator-size);
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    background-color: var(--dot-color);
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    border-radius: 50%;
+
+    &:after {
+      content: "";
+      width: var(--indicator-ring-size);
+      height: var(--indicator-ring-size);
+      scale: var(--indicator-ring-scale);
+      transform-origin: top left;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: var(--dot-color);
+      border-radius: 50%;
+      mask: radial-gradient(
+        circle,
+        transparent 0 var(--indicator-ring-offset),
+        black var(--indicator-ring-offset) 100%
+      );
+    }
+  }
+}
