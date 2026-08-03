@@ -14,6 +14,29 @@
   },
   "modules": [
     {
+      "type": "imageWavelength",
+      "slides": [
+        {
+          "url": "assets/story37-image04.jpg",
+          "caption": "Fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May. (ESA)",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story37-image05.jpg",
+          "caption": "Near-infrared wavelengths highlight healthy vegetation in red and the burn scar in dark brown. (ESA)",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story37-image06.jpg",
+          "caption": "Shortwave infrared reveals the active fire front in bright red. (ESA)",
+          "altText": "",
+          "focus": "left"
+        }
+      ]
+    },
+    {
       "type": "textOverlay",
       "url": "",
       "focus": "right",
