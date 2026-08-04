@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, Ref } from "react";
 import { motion, useTransform } from "motion/react";
 
 import { useScrollModule } from "../../modules/base-scroll/use-scroll-module";
@@ -32,12 +32,17 @@ const Title: FunctionComponent<{ title: string }> = ({ title }) => {
   );
 };
 
-export default function SplashscreenEei() {
+interface Props {
+  ref: Ref<HTMLElement> | undefined;
+}
+
+export default function SplashscreenEei({ ref }: Props) {
   const { story, setScrollAnchorRefs } = useStory();
   const splashConfig = story?.splashscreen;
 
   return (
     <ScrollModule
+      refTarget={ref}
       config={animationConfig}
       lengthFactor={splashConfig?.lengthFactor ?? 1}
     >
