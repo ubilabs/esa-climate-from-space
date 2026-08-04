@@ -93,6 +93,7 @@ type BaseModule = {
   focus?: ImageFocus;
   url?: string;
   globe?: GlobeItem;
+  legend?: Legend;
   leading?: boolean;
 };
 
@@ -156,6 +157,17 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
   lengthFactor: number;
   content?: Record<string, string>;
 } & ({ type: "radiativePowerThreshold" } | { type: "burnedArea" });
+
+type LegendEntry = {
+  value: number | null;
+  color: string;
+};
+
+export type Legend = {
+  unit: string;
+  values: LegendEntry[];
+  description: string;
+};
 
 export type BaseModuleSlide = {
   url?: string;

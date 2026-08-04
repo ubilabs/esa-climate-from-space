@@ -41,6 +41,8 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
     () => module?.slides ?? [],
     [module],
   );
+
+  const { legend } = module;
   const numSlides = images.length;
 
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
@@ -124,8 +126,8 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
             </StoryMarkdown>
           </div>
         </div>
+        {legend && <StoryLegend legend={legend} />}
       </motion.div>
-      <StoryLegend />
     </div>
   );
 };
