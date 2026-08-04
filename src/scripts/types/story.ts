@@ -3,6 +3,7 @@ import { ComponentProps, FunctionComponent } from "react";
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
 import { StoryEEI } from "../components/stories/story/scroll-story/story-eei/story-eei";
+import { StoryXFires } from "../components/stories/story/scroll-story/story-x-fires/story-x-fires";
 
 export interface Slide {
   text: string;
@@ -84,14 +85,6 @@ export type ImageGalleryModuleType =
   | "imageCarousel"
   | "globe";
 
-export type StoryEEIModuleType =
-  | "kettleAmountModule"
-  | "kettleCount"
-  | "animatedArrowsModule"
-  | "scrollTextSlide"
-  | "kettleAmountModule"
-  | "treeMapModule";
-
 type BaseModule = {
   text?: string;
   altText?: string;
@@ -158,6 +151,12 @@ export type StoryEEIModule = Pick<BaseModule, "text"> & {
     | ({ type: "treeMapModule" } & TreeMapModule)
   );
 
+export type StoryXFiresModule = Pick<BaseModule, "text"> & {
+  globeKeyframes?: GlobeKeyframe[];
+  lengthFactor: number;
+  content?: Record<string, string>;
+} & { type: "radiativePowerThreshold" };
+
 export type BaseModuleSlide = {
   url?: string;
   altText?: string;
@@ -168,7 +167,11 @@ export type BaseModuleSlide = {
 };
 
 // Extend with union for other block types if needed
-export type Module = ImageModule | ImageCarouselModule | StoryEEIModule;
+export type Module =
+  | ImageModule
+  | ImageCarouselModule
+  | StoryEEIModule
+  | StoryXFiresModule;
 
 export type ModuleType = Module["type"];
 
@@ -204,4 +207,11 @@ export const storyEEIModuleMap: Record<
   kettleCount: StoryEEI.KettleCount,
   scrollTextSlide: StoryEEI.ScrollTextSlide,
   treeMapModule: StoryEEI.TreeMapModule,
+};
+
+export const storyXFiresModuleMap: Record<
+  StoryXFiresModule["type"],
+  FunctionComponent<StorySectionProps>
+> = {
+  radiativePowerThreshold: StoryXFires.RadiativePowerThreshold,
 };

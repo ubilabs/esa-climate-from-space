@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import {
   storyEEIModuleMap,
+  storyXFiresModuleMap,
   StorySectionProps,
   ModuleType,
   imageGalleryModuleMap,
@@ -11,6 +12,7 @@ import {
 const moduleMap: Record<ModuleType, FunctionComponent<StorySectionProps>> = {
   ...imageGalleryModuleMap,
   ...storyEEIModuleMap,
+  ...storyXFiresModuleMap,
 };
 
 export const getModuleComponent = (moduleType: ModuleType) => {
