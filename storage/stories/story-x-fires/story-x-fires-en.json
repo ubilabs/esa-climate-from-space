@@ -6,5 +6,18 @@
     "globeKeyframes": [],
     "lengthFactor": 2
   },
-  "modules": []
+  "modules": [
+    {
+      "lengthFactor": 9,
+      "type": "radiativePowerThreshold",
+      "content": {
+        "scrollText1": "Satellites orbiting Earth can measure the brightness (or radiative power) of flames on the ground.",
+        "scrollText2": "If the power heavily exceeds the regional average, it may become an extreme event.",
+        "flameIllustrationTitle": "Radiative power of flames on the ground",
+        "flameIllustrationDescription": "Illustration fire event and radiative power threshold.",
+        "legendLabelFireEvent": "Fire event",
+        "legendLabelRadiativePowerThreshold": "Radiative power threshold"
+      }
+    }
+  ]
 }
