@@ -1,11 +1,13 @@
 import { useRef, useState, useMemo, FunctionComponent } from "react";
 import { motion, useMotionValueEvent } from "motion/react";
 import { StoryMarkdown } from "../../../../../../../shared/story-markdown/story-markdown";
+
 import {
   ImageModuleSlide,
   StorySectionProps,
 } from "../../../../../../../../types/story";
 
+import StoryLegend from "../../../../../scroll-story/modules/story-legend/story-legend";
 import {
   AnimationDirection,
   TimeAndWavelengthBlendImage,
@@ -21,7 +23,6 @@ import config from "../../../../../../../../config/main";
 import cx from "classnames";
 
 import styles from "./time-and-wavelength-blend.module.css";
-import StoryLegend from "../../../../../scroll-story/modules/story-legend/story-legend";
 
 interface BlendWrapperProps extends StorySectionProps {
   animationDirection: AnimationDirection;

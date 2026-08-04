@@ -2,15 +2,16 @@ import { useState } from "react";
 import { InfoIcon } from "../../../../../main/icons/info-icon";
 import { AnimatePresence, motion } from "motion/react";
 
+import { Legend } from "../../../../../../types/story";
+
 import styles from "./story-legend.module.css";
-import { BaseModuleSlide } from "../../../../../../types/story";
 
 interface Props {
-  legend: BaseModuleSlide["legend"];
+  legend: Legend;
 }
 
 const StoryLegend = ({ legend }: Props) => {
-  const { values, unit, description } = legend;
+  const { values = [], unit = "", description = "" } = legend;
 
   const [isLegendVisible, setIsLegendVisible] = useState(false);
   return (
@@ -21,12 +22,9 @@ const StoryLegend = ({ legend }: Props) => {
             key="legend"
             className={styles.legend}
             style={{ originX: 1 }}
-            transformTemplate={({ scaleX }) =>
-              `translate(0%, -50%) scaleX(${scaleX ?? 1})`
-            }
-            initial={{ opacity: 0.8, scaleX: 0.8 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            exit={{ opacity: 0, scaleX: 0.8 }}
+            initial={{ opacity: 0.8 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{
               duration: 0.22,
               ease: [0.22, 1, 0.36, 1],
@@ -52,8 +50,6 @@ const StoryLegend = ({ legend }: Props) => {
         )}
       </AnimatePresence>
       <motion.button
-        // This transition will be used when the modal closes
-        transition={{ type: "spring" }}
         className={styles.legendToggle}
         onClick={() => setIsLegendVisible((prev) => !prev)}
       >
@@ -63,5 +59,4 @@ const StoryLegend = ({ legend }: Props) => {
   );
 };
 
-// color-mix(in srgb, plum, #123456)
 export default StoryLegend;

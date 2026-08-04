@@ -86,6 +86,14 @@ export type ImageGalleryModuleType =
   | "globe";
 
 type BaseModule = {
+  | "kettleAmountModule"
+  | "kettleCount"
+  | "animatedArrowsModule"
+  | "scrollTextSlide"
+  | "kettleAmountModule"
+  | "treeMapModule";
+
+export type BaseModule = {
   text?: string;
   altText?: string;
   slides?: BaseModuleSlide[];
