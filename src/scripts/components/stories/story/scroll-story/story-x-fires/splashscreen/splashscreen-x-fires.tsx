@@ -14,14 +14,11 @@ const animationConfig = {
   output: ["-10vh", "-50vh"],
 };
 
-const Header: FunctionComponent<{ title: string; subtitle: string }> = ({
-  title,
-  subtitle,
-}) => {
+const Title: FunctionComponent<{ title: string }> = ({ title }) => {
   const { scrollYProgress } = useScrollModule<typeof animationConfig>();
   return (
-    <motion.header
-      className={styles.header}
+    <motion.h1
+      className={styles.title}
       style={{
         y: useTransform(
           scrollYProgress,
@@ -30,9 +27,8 @@ const Header: FunctionComponent<{ title: string; subtitle: string }> = ({
         ),
       }}
     >
-      <p>{subtitle}</p>
-      <h1>{title}</h1>
-    </motion.header>
+      {title}
+    </motion.h1>
   );
 };
 
@@ -50,10 +46,7 @@ export default function SplashScreenXFires() {
         isGrid
         ref={setScrollAnchorRefs("0-0-0")}
       >
-        <Header
-          title={splashConfig?.title ?? ""}
-          subtitle={splashConfig?.subtitle ?? ""}
-        />
+        <Title title={splashConfig?.title ?? ""} />
         <GestureIndicator />
       </ScrollModule.StickyContainer>
     </ScrollModule>
