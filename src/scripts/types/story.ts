@@ -155,7 +155,7 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
   globeKeyframes?: GlobeKeyframe[];
   lengthFactor: number;
   content?: Record<string, string>;
-} & { type: "radiativePowerThreshold" };
+} & ({ type: "radiativePowerThreshold" } | { type: "burnedArea" });
 
 export type BaseModuleSlide = {
   url?: string;
@@ -214,4 +214,5 @@ export const storyXFiresModuleMap: Record<
   FunctionComponent<StorySectionProps>
 > = {
   radiativePowerThreshold: StoryXFires.RadiativePowerThreshold,
+  burnedArea: StoryXFires.BurnedArea,
 };

@@ -18,6 +18,18 @@
         "legendLabelFireEvent": "Fire event",
         "legendLabelRadiativePowerThreshold": "Radiative power threshold"
       }
+    },
+    {
+      "lengthFactor": 12,
+      "type": "burnedArea",
+      "content": {
+        "scrollText1": "The other key measure is the area of ground burned by the fire.",
+        "scrollText2": "If that also exceeds the regional threshold, we are dealing with an extreme fire event.",
+        "fireRingIllustrationTitle": "Area of ground burned by the fire",
+        "fireRingIllustrationDescription": "Illustration showing burned and ground areas.",
+        "legendLabelBurnedArea": "Burned area",
+        "legendLabelGroundArea": "Ground area"
+      }
     }
   ]
 }
