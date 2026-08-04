@@ -1,12 +1,14 @@
 import { useStory } from "../providers/story/use-story";
 import { useEffect, useEffectEvent, useState } from "react";
 import { quantize } from "../libs/quantize";
+import { useScreenInfo } from "./use-screen-info";
 
 export function useModuleScroll() {
   const { getModuleRefsMap, story } = useStory();
   const [heightFractionPerModule, setHeightFractionPerModule] =
     useState<Array<number>>();
 
+  const { screenWidth, screenHeight } = useScreenInfo();
   const onMount = useEffectEvent(() => {
     const nodes = getModuleRefsMap();
 
@@ -34,7 +36,7 @@ export function useModuleScroll() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     onMount();
-  }, [story]);
+  }, [story, screenWidth, screenHeight]);
 
   return {
     moduleLength: heightFractionPerModule?.length,
