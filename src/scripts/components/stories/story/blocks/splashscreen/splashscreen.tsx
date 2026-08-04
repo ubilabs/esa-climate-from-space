@@ -26,7 +26,7 @@ import cx from "classnames";
 
 import styles from "./splashscreen.module.css";
 
-export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
+export const SplashScreen: FunctionComponent<StorySectionProps> = (rest) => {
   const { isStoryEEI, isStoryXFires } = useAppRouteFlags();
   const { story, setScrollAnchorRefs } = useStory();
   const targetRef = useRef<HTMLDivElement>(null);
