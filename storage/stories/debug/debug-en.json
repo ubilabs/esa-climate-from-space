@@ -15,6 +15,74 @@
   "modules": [
     {
       "type": "imageWavelength",
+      "legend": {
+        "description": "Annual ground displacement in centimetres per year",
+        "unit": "cm/year",
+
+        "values": [
+          {
+            "value": -11,
+
+            "color": "rgb(204, 44, 29)"
+          },
+          {
+            "value": null,
+            "color": "rgb(210, 69, 39)"
+          },
+          {
+            "value": null,
+            "color": "rgb(216, 93, 49)"
+          },
+          {
+            "value": null,
+            "color": "rgb(222, 118, 59)"
+          },
+          {
+            "value": null,
+            "color": "rgb(228, 143, 69)"
+          },
+          {
+            "value": null,
+            "color": "rgb(234, 167, 79)"
+          },
+          {
+            "value": -4,
+            "color": "rgb(240, 192, 89)"
+          },
+          {
+            "value": null,
+            "color": "rgb(226, 213, 120)"
+          },
+          {
+            "value": -2,
+            "color": "rgb(207, 229, 152)"
+          },
+          {
+            "value": null,
+            "color": "rgb(180, 213, 171)"
+          },
+          {
+            "value": 0,
+            "color": "rgb(154, 196, 181)"
+          },
+          {
+            "value": null,
+            "color": "rgb(132, 177, 177)"
+          },
+          {
+            "value": null,
+            "color": "rgb(109, 158, 174)"
+          },
+          {
+            "value": null,
+            "color": "rgb(86, 140, 170)"
+          },
+          {
+            "value": 5,
+            "color": "rgb(63, 121, 167)"
+          }
+        ]
+      },
       "slides": [
         {
           "url": "assets/story37-image04.jpg",
