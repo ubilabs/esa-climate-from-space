@@ -1,5 +1,4 @@
-import { FunctionComponent, useEffect, useRef } from "react";
-import { useInView } from "motion/react";
+import { FunctionComponent } from "react";
 
 import { StoryMarkdown } from "../../../../../../shared/story-markdown/story-markdown";
 import config from "../../../../../../../config/main";
@@ -12,42 +11,11 @@ import { StorySectionProps } from "../../../../../../../types/story";
 import { ScrollImage } from "./image-scroll-image/image-scroll-image";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 import { isVideo } from "../../../../../../../libs/is-video";
+import InViewVideo from "../shared/in-view-video/in-view-video";
 
 import cx from "classnames";
 
 import styles from "./image-scroll.module.css";
-
-const ScrollVideo: FunctionComponent<{ src: string }> = ({ src }) => {
-  const ref = useRef<HTMLVideoElement>(null);
-  const isInView = useInView(ref);
-
-  useEffect(() => {
-    const video = ref.current;
-
-    if (!video) {
-      return;
-    }
-
-    if (isInView) {
-      void video.play().catch(() => undefined);
-      return;
-    }
-
-    video.pause();
-  }, [isInView]);
-
-  return (
-    <video
-      ref={ref}
-      className={styles.scrollVideo}
-      src={src}
-      autoPlay
-      muted
-      controls
-      playsInline
-    />
-  );
-};
 
 const ImageScroll: FunctionComponent<StorySectionProps> = () => {
   const {
@@ -59,7 +27,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
     <div className={styles.imageScroll}>
       {slides?.map(
         // Set leading as default so image appears on the left / on top
-        ({ url, text, altText, caption, focus, leading = true }, index) => (
+        ({ url, track, text, altText, caption, focus, leading = true }, index) => (
           <SlideContainer
             ref={getRefCallback?.(index, 0)}
             className={cx(
@@ -79,7 +47,11 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
             )}
             <figure className={styles.scrollImageContainer}>
               {isVideo(url) ? (
-                <ScrollVideo src={getStoryAssetUrl(storyId, url)} />
+                <InViewVideo
+                  className={styles.scrollVideo}
+                  src={getStoryAssetUrl(storyId, url)}
+                  trackSrc={track ? getStoryAssetUrl(storyId, track) : undefined}
+                />
               ) : (
                 <ScrollImage
                   focus={focus}

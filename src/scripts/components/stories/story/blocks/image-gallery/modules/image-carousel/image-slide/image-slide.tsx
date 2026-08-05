@@ -1,50 +1,18 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import cx from "classnames";
-import { useInView } from "motion/react";
 
 import { ScrollImage } from "../../image-scroll/image-scroll-image/image-scroll-image";
 import { StoryMarkdown } from "../../../../../../../shared/story-markdown/story-markdown";
 
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 import { isVideo } from "../../../../../../../../libs/is-video";
+import InViewVideo from "../../shared/in-view-video/in-view-video";
 
 import config from "../../../../../../../../config/main";
 
 import { ImageCarouselSlide } from "../../../../../../../../types/story";
 
 import styles from "./image-slide.module.css";
-
-const CarouselVideo: React.FC<{ src: string }> = ({ src }) => {
-  const ref = useRef<HTMLVideoElement>(null);
-  const isInView = useInView(ref);
-
-  useEffect(() => {
-    const video = ref.current;
-
-    if (!video) {
-      return;
-    }
-
-    if (isInView) {
-      void video.play().catch(() => undefined);
-      return;
-    }
-
-    video.pause();
-  }, [isInView]);
-
-  return (
-    <video
-      ref={ref}
-      className={styles.image}
-      src={src}
-      autoPlay
-      muted
-      controls
-      playsInline
-    />
-  );
-};
 
 interface ImageSlideProps {
   slide: ImageCarouselSlide;
@@ -65,7 +33,7 @@ const ImageSlide: React.FC<ImageSlideProps> = ({
   storyId,
   setFullscreenSlideIndex,
 }) => {
-  const { url = "", altText = "", text } = slide;
+  const { url = "", track, altText = "", text } = slide;
   return (
     <div
       ref={slideElementRef}
@@ -78,7 +46,11 @@ const ImageSlide: React.FC<ImageSlideProps> = ({
     >
       <div className={cx(styles.imageContainer)}>
         {isVideo(url) ? (
-          <CarouselVideo src={getStoryAssetUrl(storyId, url)} />
+          <InViewVideo
+            className={styles.image}
+            src={getStoryAssetUrl(storyId, url)}
+            trackSrc={track ? getStoryAssetUrl(storyId, track) : undefined}
+          />
         ) : (
           <ScrollImage
             focus={slide.focus}

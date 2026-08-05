@@ -1,0 +1,38 @@
+.container {
+  position: relative;
+  width: 100%;
+
+  video {
+    display: block;
+  }
+
+  .playButton {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 24px;
+    border: none;
+    border-radius: 40px;
+    background-color: var(--dark-blue);
+    box-shadow: 0 0 12px 0 rgba(0, 51, 73, 0.25);
+    color: #fff;
+    transform: translate(-50%, -50%);
+    svg {
+      display: block;
+      fill: currentColor;
+    }
+
+    transition: 200ms ease-out;
+    transition-property: scale;
+    transform-origin: center;
+
+    &
+    :hover {
+      scale: 0.97;
+    }
+  }
+}

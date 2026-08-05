@@ -198,7 +198,7 @@
           "caption": "### Caption \r\n\r\n Contains modified Copernicus Sentinel data (2021), processed by ESA / NASA MODIS"
         }
       ]
-    }
+    },
     {
       "type": "textOverlay",
       "url": "",
