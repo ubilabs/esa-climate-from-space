@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { InfoIcon } from "../../../../../main/icons/info-icon";
+import { InfoIcon } from "../../../../../../main/icons/info-icon";
 import { AnimatePresence, motion } from "motion/react";
 
-import { Legend } from "../../../../../../types/story";
+import { Legend } from "../../../../../../../types/story";
 
-import styles from "./story-legend.module.css";
+import styles from "./continuous-legend.module.css";
 
 interface Props {
   legend: Legend;
 }
 
-const StoryLegend = ({ legend }: Props) => {
+const ContinuousLegend = ({ legend }: Props) => {
   const { values = [], unit = "", description = "" } = legend;
 
   const [isLegendVisible, setIsLegendVisible] = useState(false);
@@ -59,4 +59,4 @@ const StoryLegend = ({ legend }: Props) => {
   );
 };
 
-export default StoryLegend;
+export default ContinuousLegend;

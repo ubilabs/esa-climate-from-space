@@ -7,7 +7,7 @@ import {
   StorySectionProps,
 } from "../../../../../../../../types/story";
 
-import StoryLegend from "../../../../../scroll-story/modules/story-legend/story-legend";
+import ContinuousLegend from "../../../../../scroll-story/modules/legends/continuous-legend/continous-legend";
 import {
   AnimationDirection,
   TimeAndWavelengthBlendImage,
@@ -124,7 +124,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
             </StoryMarkdown>
           </div>
         </div>
-        {legend && <StoryLegend legend={legend} />}
+        {legend && <ContinuousLegend legend={legend} />}
       </motion.figure>
     </div>
   );
