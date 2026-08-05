@@ -14,8 +14,73 @@
   },
   "modules": [
     {
+      "type": "imageTime",
+      "legend": {
+        "type": "categorical",
+        "unit": "Flow Country Land Cover - Sentinel-2 GLC",
+        "values": [
+          {
+            "rgb(255, 255, 255)": "Clouds"
+          },
+          {
+            "rgb(193, 40, 28)": "Artificial surfaces"
+          },
+          {
+            "rgb(246, 213, 81)": "Cultivated areas"
+          },
+          {
+            "rgb(72, 143, 40)": "Broadleaf tree cover"
+          },
+          {
+            "rgb(43, 97, 24)": "Coniferous tree cover"
+          },
+          {
+            "rgb(237, 155, 69)": "Herbaceous vegetation"
+          },
+          {
+            "rgb(143, 142, 44)": "Moors and heathland"
+          },
+          {
+            "rgb(146, 110, 191)": "Marshes"
+          },
+          {
+            "rgb(73, 39, 105)": "Peatbogs"
+          },
+          {
+            "rgb(154, 154, 154)": "Natural material surfaces"
+          },
+          {
+            "rgb(35, 68, 241)": "Water bodies"
+          }
+        ]
+      },
+      "slides": [
+        {
+          "url": "assets/story37-image01.jpg",
+          "focus": "right",
+          "caption": "# Some caption 1",
+          "flag": "2018"
+        },
+        {
+          "url": "assets/story37-image02.jpg",
+          "focus": "right",
+          "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+          "caption": "# Some caption 2",
+          "flag": "2020"
+        },
+        {
+          "url": "assets/story37-image01.jpg",
+          "focus": "right",
+          "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
+          "caption": "# Some caption 3",
+          "flag": "2022"
+        }
+      ]
+    },
+    {
       "type": "imageWavelength",
       "legend": {
+        "type": "continuous",
         "description": "Annual ground displacement in centimetres per year",
         "unit": "cm/year",
 
@@ -113,31 +178,6 @@
         },
         {
           "text": "# Flooding in Australia \r\n\r\n In 2010, Queensland experienced its wettest December on record, leading to a prolonged period of extensive flooding."
-        }
-      ]
-    },
-    {
-      "type": "imageTime",
-      "slides": [
-        {
-          "url": "assets/story37-image01.jpg",
-          "focus": "right",
-          "caption": "# Some caption 1",
-          "flag": "2018"
-        },
-        {
-          "url": "assets/story37-image02.jpg",
-          "focus": "right",
-          "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-          "caption": "# Some caption 2",
-          "flag": "2020"
-        },
-        {
-          "url": "assets/story37-image01.jpg",
-          "focus": "right",
-          "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-          "caption": "# Some caption 3",
-          "flag": "2022"
         }
       ]
     },
