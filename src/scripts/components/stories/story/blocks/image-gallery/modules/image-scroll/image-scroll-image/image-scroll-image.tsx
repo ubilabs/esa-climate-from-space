@@ -1,6 +1,11 @@
 import { useState, useRef, FunctionComponent, SyntheticEvent } from "react";
 import { useIntl } from "react-intl";
-import { motion, useMotionValue, useTransform } from "motion/react";
+import {
+  motion,
+  useMotionValue,
+  useMotionValueEvent,
+  useTransform,
+} from "motion/react";
 import { useGesture } from "@use-gesture/react";
 import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
@@ -59,6 +64,8 @@ export const ScrollImage: FunctionComponent<Props> = ({
     offset: ["start end", "end end"],
   });
 
+  // there seems to be a bug in chrome where the clipPath and opacity are not automatically updated by motion anymore
+  // setting a custom variable here fixes that
   const clipPath = useTransform(
     scrollYProgress,
     [0.5, 1],
@@ -66,6 +73,22 @@ export const ScrollImage: FunctionComponent<Props> = ({
   );
 
   const buttonOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
+
+  useMotionValueEvent(buttonOpacity, "change", (e) => {
+    ref.current?.style?.setProperty("--custom-button-opacity", String(e));
+  });
+
+  useMotionValueEvent(clipPath, "change", (e) => {
+    if (isFullscreen) {
+      ref.current?.style?.setProperty(
+        "--custom-clip-path",
+        "inset(10% 10% 10% 10%)",
+      );
+      return;
+    }
+
+    ref.current?.style?.setProperty("--custom-clip-path", e);
+  });
 
   // Maps scroll progress (0 to 1) to colors (red -> blue)
   const backgroundColor = useTransform(
@@ -154,7 +177,6 @@ export const ScrollImage: FunctionComponent<Props> = ({
           y: isFullscreen ? y : 0,
           scale: isFullscreen ? scale : 1,
           cursor: isFullscreen ? "grab" : "default",
-          clipPath: isFullscreen ? "none" : clipPath,
           [focus === "contain" ? "objectFit" : "objectPosition"]: focus,
         }}
         draggable={false}
@@ -165,7 +187,6 @@ export const ScrollImage: FunctionComponent<Props> = ({
           onClick={handleOpen}
           className={styles.fullscreenButton}
           aria-label={intl.formatMessage({ id: "enterFullscreen" })}
-          style={{ opacity: buttonOpacity }}
         ></motion.button>
       )}
 
