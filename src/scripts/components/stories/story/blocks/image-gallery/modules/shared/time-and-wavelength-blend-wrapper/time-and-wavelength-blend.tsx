@@ -1,11 +1,13 @@
 import { useRef, useState, useMemo, FunctionComponent } from "react";
 import { motion, useMotionValueEvent } from "motion/react";
 import { StoryMarkdown } from "../../../../../../../shared/story-markdown/story-markdown";
+
 import {
-  ImageModuleSlide,
+  ImageModule,
   StorySectionProps,
 } from "../../../../../../../../types/story";
 
+import StoryLegend from "../../../../../scroll-story/modules/story-legend/story-legend";
 import {
   AnimationDirection,
   TimeAndWavelengthBlendImage,
@@ -36,10 +38,9 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
   const sensitivityFactor = isTouchDevice ? 2.5 : 1;
 
   const targetRef = useRef<HTMLDivElement | null>(null);
-  const images: ImageModuleSlide[] = useMemo(
-    () => module?.slides ?? [],
-    [module],
-  );
+  const images: ImageModule[] = useMemo(() => module?.slides ?? [], [module]);
+
+  const { legend } = module;
   const numSlides = images.length;
 
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
@@ -93,7 +94,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
       className={styles.stickySectionWrapper}
       style={{ height: `calc(${numSlides} * var(--story-height))` }}
     >
-      <motion.div className={styles.stickyScroller}>
+      <motion.figure className={styles.stickyScroller}>
         <ul className={styles.imageContainer}>
           {images.map((image, i) => (
             <TimeAndWavelengthBlendImage
@@ -123,7 +124,8 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
             </StoryMarkdown>
           </div>
         </div>
-      </motion.div>
+        {legend && <StoryLegend legend={legend} />}
+      </motion.figure>
     </div>
   );
 };

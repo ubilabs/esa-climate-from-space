@@ -1,4 +1,5 @@
 .stickySectionWrapper {
+  --container-offset: 64px;
   position: relative;
 
   .stickyScroller {
@@ -8,10 +9,10 @@
     top: 0;
     overflow: hidden;
     display: grid;
-    grid-template-rows: 1fr 64px;
+    grid-template-rows: 1fr var(--container-offset);
 
     @media screen and (--desktop-viewport) {
-      grid-template-rows: 1fr 92px;
+      --container-offset: 92px;
     }
     /* Keep content from spilling out */
 

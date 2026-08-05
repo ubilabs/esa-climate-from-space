@@ -1,0 +1,76 @@
+.legendContainer {
+  color: white;
+  --legend-button-size: 2rem;
+  --legend-dot-size: 0.25rem;
+
+  position: absolute;
+  bottom: calc(var(--container-offset) + 12px);
+  right: 12px;
+  transform: translate(-50%, -50%);
+  width: var(--legend-button-size);
+  height: var(--legend-button-size);
+
+  .legend {
+    display: grid;
+    place-content: center;
+    grid-template-columns: 1fr 1fr var(--legend-button-size);
+    background-color: var(--dark-blue-1);
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0%, -50%);
+    border-radius: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .legendToggle {
+    all: unset;
+    display: inline-flex;
+    border-radius: 100%;
+    padding: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--dark-blue-1);
+  }
+
+  .legendMarkers {
+    width: min(200px, 80vw);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0.5rem, auto));
+    grid-template-rows: 1fr;
+    height: 100%;
+    padding: 8px 16px;
+
+    .legendMarker {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: calc(var(--legend-dot-size) + 2px) 1fr;
+      place-items: center;
+      gap: 3px;
+      width: 1rem;
+
+      > .dot {
+        width: var(--legend-dot-size);
+        height: var(--legend-dot-size);
+        border-radius: 100%;
+        grid-row-start: 1;
+      }
+      > .value {
+        grid-row-start: 2;
+        font-size: 0.75rem;
+        line-height: 100%; /* 12px */
+        letter-spacing: 0.15px;
+      }
+    }
+  }
+
+  .unit {
+    place-self: center;
+    font-size: 0.75rem;
+    line-height: 100%; /* 12px */
+    letter-spacing: 0.15px;
+  }
+}
