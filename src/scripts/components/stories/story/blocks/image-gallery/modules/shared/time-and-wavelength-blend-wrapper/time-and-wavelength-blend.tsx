@@ -7,7 +7,7 @@ import {
   StorySectionProps,
 } from "../../../../../../../../types/story";
 
-import ContinuousLegend from "../../../../../scroll-story/modules/legends/continuous-legend/continous-legend";
+import ContinuousLegend from "../../../../../scroll-story/modules/legends/categorical-legend/categorical-legend";
 import {
   AnimationDirection,
   TimeAndWavelengthBlendImage,
