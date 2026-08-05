@@ -110,6 +110,13 @@
       width: 100vw;
     }
 
+    .scrollVideo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: rgba(0, 0, 0, 0.9);
+    }
+
     @media screen and (--desktop-viewport) {
       display: grid;
       grid-column: 6/13;
