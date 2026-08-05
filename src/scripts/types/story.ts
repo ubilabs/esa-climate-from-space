@@ -164,6 +164,7 @@ type LegendEntry = {
 };
 
 export type Legend = {
+  type: "continuous" | "categorical";
   unit: string;
   values: LegendEntry[];
   description: string;
@@ -186,6 +187,7 @@ export type Module =
   | StoryXFiresModule;
 
 export type ModuleType = Module["type"];
+export type LegendType = Legend["type"];
 
 export type AnchorKey = `${number}-${number}-${number}`;
 

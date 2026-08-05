@@ -7,13 +7,15 @@ import styles from "./legends-wrapper.module.css";
 
 interface Props {
   children: ReactNode;
+  description: string;
 }
 
-const LegendsWrapper = ({ children }: Props) => {
+const LegendsWrapper = ({ children, description }: Props) => {
   const [isLegendVisible, setIsLegendVisible] = useState(false);
 
   return (
     <div className={styles.legendContainer}>
+      <span className="sr-only">{description}</span>
       <AnimatePresence>
         {isLegendVisible && (
           <motion.div
