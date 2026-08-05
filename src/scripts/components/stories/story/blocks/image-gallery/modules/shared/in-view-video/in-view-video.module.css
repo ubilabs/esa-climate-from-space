@@ -30,8 +30,7 @@
     transition-property: scale;
     transform-origin: center;
 
-    &
-    :hover {
+    &:hover {
       scale: 0.97;
     }
   }
