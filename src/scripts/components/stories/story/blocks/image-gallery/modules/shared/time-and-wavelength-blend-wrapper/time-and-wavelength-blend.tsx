@@ -18,12 +18,13 @@ import { useStory } from "../../../../../../../../providers/story/use-story";
 import { useGesture } from "@use-gesture/react";
 import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 
+import { legendComponentMap } from "../../../../../../../../libs/get-legend-component";
+
 import config from "../../../../../../../../config/main";
 
 import cx from "classnames";
 
 import styles from "./time-and-wavelength-blend.module.css";
-import { legendComponentMap } from "../../../../../../../../libs/get-legend-component";
 
 interface BlendWrapperProps extends StorySectionProps {
   animationDirection: AnimationDirection;

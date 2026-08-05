@@ -1,48 +1,48 @@
-.legendContainer {
-  color: var(--neutral-esa-white);
+.legend {
+  color: white;
   --legend-button-size: 2rem;
   --legend-dot-size: 0.25rem;
 
   display: grid;
   place-content: center;
   grid-template-columns: 1fr 1fr var(--legend-button-size);
+}
 
-  .legendMarkers {
-    width: min(200px, 80vw);
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0.5rem, auto));
-    grid-template-rows: 1fr;
-    height: 100%;
-    padding: 8px 16px;
+.legendMarkers {
+  width: min(200px, 80vw);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0.5rem, auto));
+  grid-template-rows: 1fr;
+  height: 100%;
+  padding: 8px 16px;
+}
 
-    .legendMarker {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: calc(var(--legend-dot-size) + 2px) 1fr;
-      place-items: center;
-      gap: 3px;
-      width: 1rem;
+.legendMarker {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: calc(var(--legend-dot-size) + 2px) 1fr;
+  place-items: center;
+  gap: 3px;
+  width: 1rem;
+}
 
-      .dot {
-        width: var(--legend-dot-size);
-        height: var(--legend-dot-size);
-        border-radius: 100%;
-        grid-row-start: 1;
-      }
+.dot {
+  width: var(--legend-dot-size);
+  height: var(--legend-dot-size);
+  border-radius: 100%;
+  grid-row-start: 1;
+}
 
-      .value {
-        grid-row-start: 2;
-        font-size: 0.75rem;
-        line-height: 100%; /* 12px */
-        letter-spacing: 0.15px;
-      }
-    }
-  }
+.value {
+  grid-row-start: 2;
+  font-size: 0.75rem;
+  line-height: 100%; /* 12px */
+  letter-spacing: 0.15px;
+}
 
-  .unit {
-    place-self: center;
-    font-size: 0.75rem;
-    line-height: 100%; /* 12px */
-    letter-spacing: 0.15px;
-  }
+.unit {
+  place-self: center;
+  font-size: 0.75rem;
+  line-height: 100%; /* 12px */
+  letter-spacing: 0.15px;
 }

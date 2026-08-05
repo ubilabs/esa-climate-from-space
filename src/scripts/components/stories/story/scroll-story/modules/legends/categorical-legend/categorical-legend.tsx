@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { CSSProperties, FunctionComponent } from "react";
 import { Legend } from "../../../../../../../types/story";
 import LegendsWrapper from "../legends-wrapper/legends-wrapper";
 
@@ -12,8 +12,34 @@ const CategoricalLegend: FunctionComponent<Props> = ({ legend }) => {
   const { values = [], unit = "", description = "" } = legend;
 
   return (
-    <LegendsWrapper description={description}>
-      <figcaption className={styles.legend}>TEST TEST</figcaption>
+    <LegendsWrapper description={description} className={styles.legendWrapper}>
+      <figcaption className={styles.legend}>
+        <span>{unit}</span>
+        {
+          <ul className={styles.list}>
+            {values.map((entry) => {
+
+              const key = Object.keys(entry)[0] as keyof typeof entry;
+              return (
+                <li
+                  className={styles.elementContainer}
+
+                >
+                  <span
+                    className={styles.color}
+                    style={
+                      {
+                        "--category-color": key,
+                      } as CSSProperties
+                    }
+                  ></span>
+                  <span className={styles.value}>{entry[key]}</span>
+                </li>
+              );
+            })}
+          </ul>
+        }
+      </figcaption>
     </LegendsWrapper>
   );
 };

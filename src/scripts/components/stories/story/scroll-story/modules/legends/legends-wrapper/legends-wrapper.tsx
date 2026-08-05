@@ -3,14 +3,17 @@ import { AnimatePresence, motion } from "motion/react";
 
 import { InfoIcon } from "../../../../../../main/icons/info-icon";
 
+import cx from "classnames";
+
 import styles from "./legends-wrapper.module.css";
 
 interface Props {
   children: ReactNode;
   description: string;
+  className?: string;
 }
 
-const LegendsWrapper = ({ children, description }: Props) => {
+const LegendsWrapper = ({ children, description, className }: Props) => {
   const [isLegendVisible, setIsLegendVisible] = useState(false);
 
   return (
@@ -20,7 +23,7 @@ const LegendsWrapper = ({ children, description }: Props) => {
         {isLegendVisible && (
           <motion.div
             key="legend"
-            className={styles.legend}
+            className={cx(styles.legend, className)}
             style={{ originX: 1 }}
             initial={{ opacity: 0.8 }}
             animate={{ opacity: 1 }}
