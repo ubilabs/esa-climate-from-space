@@ -1,4 +1,4 @@
-import { ComponentProps, FunctionComponent, Ref, RefObject } from "react";
+import { ComponentProps, FunctionComponent, Ref } from "react";
 
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";

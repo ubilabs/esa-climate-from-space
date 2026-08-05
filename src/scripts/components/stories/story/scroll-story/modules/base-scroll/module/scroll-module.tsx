@@ -38,8 +38,8 @@ const StickyContainer = ({
 };
 
 /**
- * We use this as a wrapper to for scroll module. It provides us with the current absolute and relative scroll position within the story
- * This component may receive a refTarget from a parent component e.g. to add it to mooduleRefsMap which is used to track progress of story in the chapter-progress-indicator
+ * We use this as a wrapper for the scroll module. It provides us with the current absolute and relative scroll position within the story
+ * This component may receive a refTarget from a parent component e.g. to add it to moduleRefsMap which is used to track progress of story in the chapter-progress-indicator
  * If no ref is passed, we create a local ref in order to still have a reference to the element
  */
 const ScrollModule: FunctionComponent<Props> & {

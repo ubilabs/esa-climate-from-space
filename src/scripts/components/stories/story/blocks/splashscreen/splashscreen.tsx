@@ -1,6 +1,6 @@
-import { FunctionComponent, RefObject, useEffect  } from "react";
+import { FunctionComponent, RefObject, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { motion,  useTransform } from "motion/react";
+import { motion, useTransform } from "motion/react";
 
 import { setFlyTo } from "../../../../../reducers/fly-to";
 
