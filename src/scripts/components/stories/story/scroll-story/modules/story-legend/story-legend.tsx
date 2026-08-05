@@ -53,7 +53,7 @@ const StoryLegend = ({ legend }: Props) => {
         className={styles.legendToggle}
         onClick={() => setIsLegendVisible((prev) => !prev)}
       >
-        {<InfoIcon isCircleBorder small />}
+        <InfoIcon isCircleBorder small />
       </motion.button>
     </div>
   );
