@@ -146,28 +146,59 @@
             "color": "rgb(63, 121, 167)"
           }
         ]
-      },
+      }
+    },
+    {
+      "type": "imageCarousel",
       "slides": [
         {
-          "url": "assets/story37-image04.jpg",
-          "caption": "Fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May. (ESA)",
+          "text": "Video of rocket launch",
           "altText": "",
-          "focus": "left"
+          "url": "assets/launch.mp4"
         },
         {
-          "url": "assets/story37-image05.jpg",
-          "caption": "Near-infrared wavelengths highlight healthy vegetation in red and the burn scar in dark brown. (ESA)",
-          "altText": "",
-          "focus": "left"
+          "text": "Pressure ridge in thick Arctic sea ice, formed as two ice floes converge. (Seymour Laxon/CPOM/UCL)",
+          "altText": "Pressure ridge in Arctic sea ice",
+          "url": "assets/story37-image02.jpg"
         },
         {
-          "url": "assets/story37-image06.jpg",
-          "caption": "Shortwave infrared reveals the active fire front in bright red. (ESA)",
-          "altText": "",
-          "focus": "left"
+          "text": "Sea ice in Resolute Bay, Canada, from Sentinel-2. (Modified Copernicus Sentinel data (2019), processed by Pierre Markuse)",
+          "altText": "Sea ice in Resolute Bay, Canada",
+          "url": "assets/story37-image04.jpg"
+        },
+        {
+          "text": "Melting sea ice swirls off the east coast of Greenland \nin this Sentinel-2 image taken on 20 April, 2020 (contains modified Copernicus Sentinel data (2020))",
+          "altText": "Melting sea ice off the east coast of Greenland",
+          "url": "assets/story37-image05.jpg"
         }
       ]
     },
+    {
+      "type": "imageScroll",
+      "slides": [
+        {
+          "url": "assets/launch.mp4",
+          "focus": "center",
+          "alt": "some alt text",
+          "text": "A cool video",
+
+          "caption": "video of rocket launch"
+        },
+        {
+          "focus": "right",
+          "url": "assets/story21-image06.png",
+          "text": "## Global Mean Sea Level \r\n\r\n The global sea level observed by satellites shows an upward trend of 3.3 mm per year, but a decline in 2011 due to the large amount of excess water on land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. ",
+          "alt": "Copernicus Marine Environment Monitoring Service",
+          "caption": "### Caption \r\n\r\n ESA-CCI/Copernicus Marine Environment Monitoring Service"
+        },
+        {
+          "url": "assets/story21-image12.jpg",
+          "text": "## New South Wales, Australia \r\n\r\n Copernicus Sentinel-1 radar images from March 7 and 19, 2021, show extensive flooded areas in blue. Areas burned by wildfires in the previous year are shown in brown.           ",
+          "alt": "Copernicus Marine Environment Monitoring Service",
+          "caption": "### Caption \r\n\r\n Contains modified Copernicus Sentinel data (2021), processed by ESA / NASA MODIS"
+        }
+      ]
+    }
     {
       "type": "textOverlay",
       "url": "",
@@ -191,32 +222,7 @@
         }
       ]
     },
-    {
-      "type": "imageScroll",
-      "slides": [
-        {
-          "url": "assets/story21-image01.jpg",
-          "focus": "center",
-          "alt": "some alt text",
-          "text": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
 
-          "caption": "## Toowoomba, Queensland, Australia A woman waits on the roof of her car during a flash flood on January 10, 2011 [T Swinson](https://cfs.climate.esa.int/index.html#/stories/story-21/1?globe=SI-1.84I32.38I18523626I0.00I1480550400000I0Icloud.cfcI)"
-        },
-        {
-          "focus": "right",
-          "url": "assets/story21-image06.png",
-          "text": "## Global Mean Sea Level \r\n\r\n The global sea level observed by satellites shows an upward trend of 3.3 mm per year, but a decline in 2011 due to the large amount of excess water on land. \r\n\r\n Lorem ipsum dolor sit amet consectetur. Pellentesque ut blandit massa ut non enim turpis. Venenatis enim nibh turpis potenti fringilla. ",
-          "alt": "Copernicus Marine Environment Monitoring Service",
-          "caption": "### Caption \r\n\r\n ESA-CCI/Copernicus Marine Environment Monitoring Service"
-        },
-        {
-          "url": "assets/story21-image12.jpg",
-          "text": "## New South Wales, Australia \r\n\r\n Copernicus Sentinel-1 radar images from March 7 and 19, 2021, show extensive flooded areas in blue. Areas burned by wildfires in the previous year are shown in brown.           ",
-          "alt": "Copernicus Marine Environment Monitoring Service",
-          "caption": "### Caption \r\n\r\n Contains modified Copernicus Sentinel data (2021), processed by ESA / NASA MODIS"
-        }
-      ]
-    },
     {
       "type": "textOverlay",
       "slides": [
@@ -271,31 +277,6 @@
         },
         {
           "text": "The pack ice defeated the Royal Navy in 1845 when Sir John Franklin’s expedition was lost. Eighteen search parties over the next thirty years failed to find any trace of him and his 130 crewmen. It wasn’t until 1906 that Roald Amundsen became the first to complete a route through the Northwest Passage, after a journey lasting three years."
-        }
-      ]
-    },
-    {
-      "type": "imageCarousel",
-      "slides": [
-        {
-          "text": "Young Arctic sea ice viewed from an aircraft. Sea ice thinner than 50 cm is particularly important for weather and climate as it controls the exchange of heat and water between the ocean and atmosphere. (S Hendriks/AWI)",
-          "altText": "Arctic sea ice viewed from an aircraft",
-          "url": "assets/story37-image01.jpg"
-        },
-        {
-          "text": "Pressure ridge in thick Arctic sea ice, formed as two ice floes converge. (Seymour Laxon/CPOM/UCL)",
-          "altText": "Pressure ridge in Arctic sea ice",
-          "url": "assets/story37-image02.jpg"
-        },
-        {
-          "text": "Sea ice in Resolute Bay, Canada, from Sentinel-2. (Modified Copernicus Sentinel data (2019), processed by Pierre Markuse)",
-          "altText": "Sea ice in Resolute Bay, Canada",
-          "url": "assets/story37-image04.jpg"
-        },
-        {
-          "text": "Melting sea ice swirls off the east coast of Greenland \nin this Sentinel-2 image taken on 20 April, 2020 (contains modified Copernicus Sentinel data (2020))",
-          "altText": "Melting sea ice off the east coast of Greenland",
-          "url": "assets/story37-image05.jpg"
         }
       ]
     },
