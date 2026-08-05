@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, Ref } from "react";
 import { motion, useTransform } from "motion/react";
 
 import { useScrollModule } from "../../modules/base-scroll/use-scroll-module";
@@ -13,6 +13,10 @@ const animationConfig = {
   input: [0.5, 1],
   output: ["-10vh", "-50vh"],
 };
+
+interface Props {
+  ref: Ref<HTMLElement> | undefined;
+}
 
 const Title: FunctionComponent<{ title: string }> = ({ title }) => {
   const { scrollYProgress } = useScrollModule<typeof animationConfig>();
@@ -32,12 +36,13 @@ const Title: FunctionComponent<{ title: string }> = ({ title }) => {
   );
 };
 
-export default function SplashScreenXFires() {
+export default function SplashScreenXFires({ ref }: Props) {
   const { story, setScrollAnchorRefs } = useStory();
   const splashConfig = story?.splashscreen;
 
   return (
     <ScrollModule
+      refTarget={ref}
       config={animationConfig}
       lengthFactor={splashConfig?.lengthFactor ?? 1}
     >

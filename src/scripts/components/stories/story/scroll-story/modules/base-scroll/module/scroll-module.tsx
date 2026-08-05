@@ -2,6 +2,7 @@ import {
   CSSProperties,
   FunctionComponent,
   PropsWithChildren,
+  RefObject,
   useMemo,
   useRef,
 } from "react";
@@ -15,15 +16,10 @@ import cx from "classnames";
 
 import styles from "./scroll-module.module.css";
 
-type Props<TConfig = unknown> = PropsWithChildren<
-  Omit<
-    StorySectionProps & {
-      config: TConfig;
-      lengthFactor: number;
-    },
-    "ref"
-  >
->;
+type Props<TConfig = unknown> = StorySectionProps & {
+  config: TConfig;
+  lengthFactor: number;
+};
 
 const StickyContainer = ({
   children,
@@ -41,16 +37,24 @@ const StickyContainer = ({
   );
 };
 
+/**
+ * We use this as a wrapper for the scroll module. It provides us with the current absolute and relative scroll position within the story
+ * This component may receive a refTarget from a parent component e.g. to add it to moduleRefsMap which is used to track progress of story in the chapter-progress-indicator
+ * If no ref is passed, we create a local ref in order to still have a reference to the element
+ */
 const ScrollModule: FunctionComponent<Props> & {
   StickyContainer: typeof StickyContainer;
-} = ({ children, className, config, lengthFactor, ...rest }) => {
+} = ({ children, className, config, lengthFactor, refTarget, ...rest }) => {
   if (lengthFactor === null || typeof lengthFactor !== "number") {
     console.warn(
       "Warning: lengthFactor is missing or not a number in ScrollModule. This can cause out-of-sync globe movements",
       lengthFactor,
     );
   }
-  const moduleRef = useRef(null);
+
+  const localRef = useRef(null);
+  // local ref only used if no ref prop is passed
+  const moduleRef = (refTarget ?? localRef) as RefObject<HTMLDivElement>;
 
   const { scrollY, scrollYProgress } = useStoryScroll({
     target: moduleRef,

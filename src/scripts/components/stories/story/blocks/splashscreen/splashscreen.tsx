@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useRef } from "react";
+import { FunctionComponent, RefObject, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { motion, useTransform } from "motion/react";
 
@@ -29,12 +29,13 @@ import styles from "./splashscreen.module.css";
 export const SplashScreen: FunctionComponent<StorySectionProps> = (rest) => {
   const { isStoryEEI, isStoryXFires } = useAppRouteFlags();
   const { story, setScrollAnchorRefs } = useStory();
-  const targetRef = useRef<HTMLDivElement>(null);
+
+  const { ref } = rest;
 
   const dispatch = useDispatch();
 
   const { scrollYProgress } = useStoryScroll({
-    target: targetRef,
+    target: ref as RefObject<HTMLElement>,
     offset: ["start start", "end start"],
   });
 
@@ -83,10 +84,10 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = (rest) => {
 
   // Render SplashScreen for scroll stories
   if (isStoryEEI) {
-    return <SplashScreenEei />;
+    return <SplashScreenEei ref={ref} />;
   }
   if (isStoryXFires) {
-    return <SplashScreenXFires />;
+    return <SplashScreenXFires ref={ref} />;
   }
 
   const { id } = story;
@@ -101,7 +102,7 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = (rest) => {
           // plus one to account for the intro slide
           height: `calc(${totalSlides + 1} * var(--story-height))`,
         }}
-        ref={targetRef}
+        ref={ref}
         className={styles.splashBanner}
       >
         {/* needs to be placed outside of the content container, will other interfere with the transition calculation of framer */}
