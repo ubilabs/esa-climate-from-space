@@ -43,7 +43,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
                 className={styles.imageScrollText}
               />
             )}
-            <div className={styles.scrollImageContainer}>
+            <figure className={styles.scrollImageContainer}>
               <ScrollImage
                 focus={focus}
                 src={getStoryAssetUrl(storyId, url)}
@@ -55,7 +55,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
               >
                 {caption}
               </StoryMarkdown>
-            </div>
+            </figure>
           </SlideContainer>
         ),
       )}
