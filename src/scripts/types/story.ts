@@ -1,4 +1,4 @@
-import { ComponentProps, FunctionComponent } from "react";
+import { ComponentProps, FunctionComponent, Ref } from "react";
 
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
@@ -179,7 +179,9 @@ export type GetRefCallback = (
   subIndex: number,
 ) => (node: HTMLElement | null) => void;
 
-export type StorySectionProps = {} & ComponentProps<"div">;
+export type StorySectionProps = ComponentProps<"div"> & {
+  refTarget?: Ref<HTMLElement>;
+};
 
 export const imageGalleryModuleMap: Record<
   ImageModule["type"],
