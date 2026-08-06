@@ -1,38 +1,17 @@
 import { Story } from "../types/story";
+import { SharedScrollStoryConfig } from "./shared-scroll-story-configs";
 
-type SharedScrollStorySegmentConfig = Record<string, unknown>;
-
-type SharedScrollStoryConfig<
-  TSharedSegmentConfig extends SharedScrollStorySegmentConfig,
-  TSharedStoryConfig extends Record<string, unknown> = Record<string, never>,
-> = TSharedStoryConfig & {
-  splashscreen?: TSharedSegmentConfig;
-  modules?: TSharedSegmentConfig[];
-};
-
-type MergeSharedScrollStoryConfigOptions<
-  TSharedSegmentConfig extends SharedScrollStorySegmentConfig,
-  TSharedStoryConfig extends Record<string, unknown> = Record<string, never>,
-> = {
+type MergeSharedScrollStoryConfigOptions = {
   story: Story;
   storyId: string;
-  sharedConfig: SharedScrollStoryConfig<
-    TSharedSegmentConfig,
-    TSharedStoryConfig
-  >;
+  sharedConfig: SharedScrollStoryConfig;
 };
 
-export function mergeSharedScrollStoryConfig<
-  TSharedSegmentConfig extends SharedScrollStorySegmentConfig,
-  TSharedStoryConfig extends Record<string, unknown> = Record<string, never>,
->({
+export function mergeSharedScrollStoryConfig({
   story,
   storyId,
   sharedConfig,
-}: MergeSharedScrollStoryConfigOptions<
-  TSharedSegmentConfig,
-  TSharedStoryConfig
->): Story {
+}: MergeSharedScrollStoryConfigOptions): Story {
   if (story.id !== storyId) {
     return story;
   }
