@@ -1,10 +1,10 @@
 .legendContainer {
   color: white;
-  --legend-button-size: 32px;
+  --legend-button-size: 2rem;
 
   position: absolute;
-  bottom: calc(var(--container-offset) + 12px);
-  right: 12px;
+  bottom: calc(var(--container-offset) + 0.75rem);
+  right: 0.75rem;
   transform: translate(-50%, -50%);
   width: var(--legend-button-size);
   height: var(--legend-button-size);

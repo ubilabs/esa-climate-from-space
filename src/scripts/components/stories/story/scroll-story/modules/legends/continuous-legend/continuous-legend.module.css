@@ -14,7 +14,7 @@
   grid-template-columns: repeat(auto-fit, minmax(0.5rem, auto));
   grid-template-rows: 1fr;
   height: 100%;
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
 }
 
 .legendMarker {
