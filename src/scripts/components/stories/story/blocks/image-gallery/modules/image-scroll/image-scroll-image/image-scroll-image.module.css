@@ -79,13 +79,15 @@ div[data-status="fullscreenOverlay"] {
 
     z-index: 1;
   }
+}
 
-  .image {
-    height: 100%;
-    width: fit-content;
-    user-select: none;
-    touch-action: none;
-  }
+.image {
+  --image-clip-path: inset(10% 10% 10% 10%);
+  clip-path: var(--image-clip-path);
+  height: 100%;
+  width: fit-content;
+  user-select: none;
+  touch-action: none;
 }
 
 .closeButton {
@@ -101,6 +103,7 @@ div[data-status="fullscreenOverlay"] {
 }
 
 .fullscreenButton {
+  --button-opacity: 0;
   transition: none;
   cursor: pointer;
   position: absolute;
@@ -111,6 +114,7 @@ div[data-status="fullscreenOverlay"] {
   right: 1rem;
   background: var(--Supporting-Colours-Deep-Space-1, #3f6c7d);
   border: none;
+  opacity: var(--button-opacity);
 
   &:after {
     content: "";
