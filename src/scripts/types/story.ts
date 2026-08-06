@@ -156,7 +156,11 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
   globeKeyframes?: GlobeKeyframe[];
   lengthFactor: number;
   content?: Record<string, string>;
-} & ({ type: "radiativePowerThreshold" } | { type: "burnedArea" });
+} & (
+    | { type: "radiativePowerThreshold" }
+    | { type: "burnedArea" }
+    | { type: "intro" }
+  );
 
 type LegendEntry = {
   value: number | null;
@@ -231,4 +235,5 @@ export const storyXFiresModuleMap: Record<
 > = {
   radiativePowerThreshold: StoryXFires.RadiativePowerThreshold,
   burnedArea: StoryXFires.BurnedArea,
+  intro: StoryXFires.IntroModule,
 };
