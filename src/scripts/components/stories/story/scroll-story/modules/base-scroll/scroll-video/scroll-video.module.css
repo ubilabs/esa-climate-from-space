@@ -1,4 +1,4 @@
 .scrollVideo {
-  /* height: 100px; */
-  /* width: 100px; */
+  max-height: 100%;
+  max-width: 100%;
 }
