@@ -16,6 +16,8 @@ import { getModuleComponent } from "../../../libs/get-story-components";
 import cx from "classnames";
 
 import styles from "./story.module.css";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
+import GlobeScroll from "./scroll-story/story-eei/globe-scroll";
 
 /**
  * The Story component is responsible for rendering the story's content.
@@ -35,6 +37,7 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
 
   // Synchronize the URL with the current story state
   useSyncStoryUrl();
+  const { isScrollStory } = useAppRouteFlags();
 
   if (!story) {
     return null;
@@ -42,13 +45,15 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
 
   return (
     <>
+      {/* enable globe to react to scroll events. Only needed for scroll stories*/}
+      {isScrollStory && <GlobeScroll />}
       <main
         className={cx(styles.story, styles.fadeIn)}
         ref={storyElementRef}
         id="story"
       >
         <ChapterIndicator />
-        <SplashScreen ref={setModuleRefs('0')} />
+        <SplashScreen ref={setModuleRefs("0")} />
 
         {story.modules.map(({ type }, moduleIndex) => {
           const ModuleComponent = getModuleComponent(type);
