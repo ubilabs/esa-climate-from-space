@@ -6,40 +6,11 @@ import { TextOverlaySlide } from "./text-overlay-slide/text-overlay-slide";
 
 import { calculateTotalSlides } from "../../../../../../libs/split-text";
 import { getStoryAssetUrl } from "../../../../../../libs/get-story-asset-urls";
+import { isVideo } from "../../../../../../libs/is-video";
 
 import cx from "classnames";
 
 import styles from "./text-overlay.module.css";
-
-/**
- * TextOverlay component responsible for rendering plain textual content overlays.
- *
- * This component can be used within any content block (such as ImageGallery, etc.).
- * It supports generating one or multiple slides, with options for:
- * - No background
- * - Image background
- * - Video background
- *
- * The component determines the type of asset (image or video) based on the file extension,
- * and renders the appropriate HTML element. It also handles slide rendering and layout.
- *
- * @component
- * @param {StorySectionProps} props - The props for the TextOverlay component, provided via context.
- * @returns {JSX.Element} The rendered TextOverlay component.
- */
-const isVideo = (url: string | undefined) => {
-  const videoExtensions = [
-    ".mp4",
-    ".webm",
-    ".ogg",
-    ".mov",
-    ".avi",
-    ".wmv",
-    ".flv",
-    ".mkv",
-  ];
-  return videoExtensions.some((ext) => url?.toLowerCase().includes(ext));
-};
 
 const TextOverlay: FunctionComponent<StorySectionProps> = () => {
   const { module, storyId, getRefCallback } = useModuleContent();

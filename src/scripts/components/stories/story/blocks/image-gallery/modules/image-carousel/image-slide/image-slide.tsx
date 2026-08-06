@@ -5,6 +5,8 @@ import { ScrollImage } from "../../image-scroll/image-scroll-image/image-scroll-
 import { StoryMarkdown } from "../../../../../../../shared/story-markdown/story-markdown";
 
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
+import { isVideo } from "../../../../../../../../libs/is-video";
+import InViewVideo from "../../shared/in-view-video/in-view-video";
 
 import config from "../../../../../../../../config/main";
 
@@ -43,15 +45,22 @@ const ImageSlide: React.FC<ImageSlideProps> = ({
       }
     >
       <div className={cx(styles.imageContainer)}>
-        <ScrollImage
-          focus={slide.focus}
-          className={styles.image}
-          src={getStoryAssetUrl(storyId, url)}
-          alt={altText}
-          onFullscreenToggle={(isFullscreen: boolean) =>
-            setFullscreenSlideIndex(isFullscreen ? index : undefined)
-          }
-        />
+        {isVideo(url) ? (
+          <InViewVideo
+            className={styles.image}
+            src={getStoryAssetUrl(storyId, url)}
+          />
+        ) : (
+          <ScrollImage
+            focus={slide.focus}
+            className={styles.image}
+            src={getStoryAssetUrl(storyId, url)}
+            alt={altText}
+            onFullscreenToggle={(isFullscreen: boolean) =>
+              setFullscreenSlideIndex(isFullscreen ? index : undefined)
+            }
+          />
+        )}
       </div>
       {text && !isFullscreen && (
         <div className={cx(styles.text)}>

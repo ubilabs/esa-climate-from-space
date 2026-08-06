@@ -67,13 +67,6 @@
           "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
           "caption": "# Some caption 2",
           "flag": "2020"
-        },
-        {
-          "url": "assets/story37-image01.jpg",
-          "focus": "right",
-          "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-          "caption": "# Some caption 3",
-          "flag": "2022"
         }
       ]
     },
@@ -195,6 +188,13 @@
       "type": "imageScroll",
       "slides": [
         {
+          "url": "assets/launch.mp4",
+          "focus": "center",
+          "alt": "some alt text",
+          "text": "A cool video",
+          "caption": "video of rocket launch"
+        },
+        {
           "url": "assets/story21-image01.jpg",
           "focus": "center",
           "alt": "some alt text",
@@ -232,23 +232,6 @@
       ]
     },
     {
-      "type": "imageWavelength",
-      "slides": [
-        {
-          "url": "assets/story37-image01.jpg",
-          "focus": "center",
-          "alt": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-          "caption": "Satellites for peat's sake. Cloud-free view."
-        },
-        {
-          "url": "assets/story37-image02.jpg",
-          "focus": "center",
-          "alt": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-          "caption": "Satellites for peat's sake. 2"
-        }
-      ]
-    },
-    {
       "type": "imageCompare",
       "text": "Changes in Scotland's Flow Country landscape, pixel by pixel. This slide has not custom button text",
       "startButtonText": "compare now",
@@ -278,9 +261,9 @@
       "type": "imageCarousel",
       "slides": [
         {
-          "text": "Young Arctic sea ice viewed from an aircraft. Sea ice thinner than 50 cm is particularly important for weather and climate as it controls the exchange of heat and water between the ocean and atmosphere. (S Hendriks/AWI)",
-          "altText": "Arctic sea ice viewed from an aircraft",
-          "url": "assets/story37-image01.jpg"
+          "text": "Video of rocket launch",
+          "altText": "",
+          "url": "assets/launch.mp4"
         },
         {
           "text": "Pressure ridge in thick Arctic sea ice, formed as two ice floes converge. (Seymour Laxon/CPOM/UCL)",

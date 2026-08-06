@@ -9,7 +9,9 @@ import { SlideContainer } from "../../../../../layout/slide-container/slide-cont
 import { TextBlock } from "../../../generic/text-container/text-block/text-block";
 import { StorySectionProps } from "../../../../../../../types/story";
 import { ScrollImage } from "./image-scroll-image/image-scroll-image";
+import InViewVideo from "../shared/in-view-video/in-view-video";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
+import { isVideo } from "../../../../../../../libs/is-video";
 
 import cx from "classnames";
 
@@ -44,11 +46,18 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
               />
             )}
             <figure className={styles.scrollImageContainer}>
-              <ScrollImage
-                focus={focus}
-                src={getStoryAssetUrl(storyId, url)}
-                alt={altText || text}
-              />
+              {isVideo(url) ? (
+                <InViewVideo
+                  className={styles.scrollVideo}
+                  src={getStoryAssetUrl(storyId, url)}
+                />
+              ) : (
+                <ScrollImage
+                  focus={focus}
+                  src={getStoryAssetUrl(storyId, url)}
+                  alt={altText || text}
+                />
+              )}
               <StoryMarkdown
                 storyId={storyId}
                 allowedElements={config.markdownAllowedElements}
