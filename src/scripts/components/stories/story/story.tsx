@@ -5,7 +5,9 @@ import { useStory } from "../../../providers/story/use-story";
 import { useLenisForStory } from "../../../hooks/use-lenis-for-story";
 import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
 import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
+import GlobeScroll from "./scroll-story/globe-scroll";
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
@@ -16,8 +18,6 @@ import { getModuleComponent } from "../../../libs/get-story-components";
 import cx from "classnames";
 
 import styles from "./story.module.css";
-import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
-import GlobeScroll from "./scroll-story/story-eei/globe-scroll";
 
 /**
  * The Story component is responsible for rendering the story's content.

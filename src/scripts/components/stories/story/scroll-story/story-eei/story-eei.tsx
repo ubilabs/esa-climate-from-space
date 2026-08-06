@@ -8,7 +8,6 @@ import { setSelectedLayerIds } from "../../../../../reducers/layers";
 import { selectedLayerIdsSelector } from "../../../../../selectors/layers/selected-ids";
 
 import Story from "../../story";
-import GlobeScroll from "./globe-scroll";
 import ScrollModule from "../modules/base-scroll/module/scroll-module";
 import StoryGlobe from "../../blocks/globe/story-globe/story-globe";
 import KettleAmountModule from "./modules/kettle-amount/kettle-amount";
@@ -49,7 +48,6 @@ export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
 
   return (
     <Story>
-      <GlobeScroll />
       {/* place here any element which overlaps multiple modules */}
       <SatelliteAnimation />
     </Story>
