@@ -1,31 +1,52 @@
 import config from "../config/main";
-import sharedStoryEEIConfig from "../../../storage/stories/story-eei/story-eei-config.json";
 
 import { mergeSharedScrollStoryConfig } from "../libs/merge-shared-scroll-story-config";
 import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
+import {
+  SharedScrollStoryConfig,
+  sharedScrollStoryIds,
+} from "../libs/shared-scroll-story-configs";
 
 import { Language } from "../types/language";
-import { GlobeKeyframe, Story, ScrollGlobe } from "../types/story";
+import { Story } from "../types/story";
 
-type SharedStorySegmentConfig = {
-  globeKeyframes?: GlobeKeyframe[];
-  lengthFactor?: number;
-};
+async function fetchSharedScrollStoryConfig(id: string) {
+  if (!sharedScrollStoryIds.has(id as never)) {
+    return null;
+  }
 
-type SharedStoryEEIConfig = {
-  initialglobeConfig?: { mobile: ScrollGlobe; desktop: ScrollGlobe };
-  splashscreen?: SharedStorySegmentConfig;
-  modules?: SharedStorySegmentConfig[];
-};
+  const url = replaceUrlPlaceholders(config.api.storySharedConfig, { id });
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    console.warn(
+      `Could not load shared scroll story config for ${id}: ${response.status} ${response.statusText}`,
+    );
+    return null;
+  }
+
+  return (await response.json()) as SharedScrollStoryConfig;
+}
 
 export default async function fetchStory(id: string, lang: Language) {
   const url = replaceUrlPlaceholders(config.api.story, { id, lang });
-  const response = await fetch(url);
+
+  const [response, sharedConfig] = await Promise.all([
+    fetch(url),
+    fetchSharedScrollStoryConfig(id),
+  ]);
+
   const story = (await response.json()) as Story;
 
-  return mergeSharedScrollStoryConfig({
-    story,
-    storyId: "story-eei",
-    sharedConfig: sharedStoryEEIConfig as SharedStoryEEIConfig,
-  });
+  // scroll stories have a common config file while maintaining a file per language
+  // we want to merge this so the story has the expected shape
+  if (sharedConfig) {
+    return mergeSharedScrollStoryConfig({
+      story,
+      storyId: story.id,
+      sharedConfig,
+    });
+  }
+
+  return story;
 }
