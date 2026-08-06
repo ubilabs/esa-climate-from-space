@@ -11,7 +11,7 @@ import { Language } from "../types/language";
 import { Story } from "../types/story";
 
 async function fetchSharedScrollStoryConfig(id: string) {
-  if (!sharedScrollStoryIds.has(id as never)) {
+  if (!sharedScrollStoryIds.has(id)) {
     return null;
   }
 

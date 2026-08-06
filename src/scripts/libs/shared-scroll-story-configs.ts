@@ -1,4 +1,3 @@
-import { AppRoute } from "../types/app-routes";
 import { GlobeKeyframe, ScrollGlobe } from "../types/story";
 
 export type SharedScrollStorySegmentConfig = {
@@ -12,4 +11,5 @@ export type SharedScrollStoryConfig = {
   modules?: SharedScrollStorySegmentConfig[];
 };
 
-export const sharedScrollStoryIds = new Set<AppRoute>([AppRoute.StoryEEI]);
+// add here any story id with a shared config file
+export const sharedScrollStoryIds = new Set<string>(["story-x-fires"]);
