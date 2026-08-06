@@ -12,4 +12,7 @@ export type SharedScrollStoryConfig = {
 };
 
 // add here any story id with a shared config file
-export const sharedScrollStoryIds = new Set<string>(["story-x-fires"]);
+export const sharedScrollStoryIds = new Set<string>([
+  "story-eei",
+  "story-x-fires",
+]);
