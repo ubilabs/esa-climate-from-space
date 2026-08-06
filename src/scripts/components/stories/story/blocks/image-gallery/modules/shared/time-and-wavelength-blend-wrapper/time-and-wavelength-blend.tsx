@@ -4,10 +4,10 @@ import { StoryMarkdown } from "../../../../../../../shared/story-markdown/story-
 
 import {
   ImageModule,
+  Legend,
   StorySectionProps,
 } from "../../../../../../../../types/story";
 
-import StoryLegend from "../../../../../scroll-story/modules/story-legend/story-legend";
 import {
   AnimationDirection,
   TimeAndWavelengthBlendImage,
@@ -17,6 +17,8 @@ import { useModuleContent } from "../../../../../../../../providers/story/module
 import { useStory } from "../../../../../../../../providers/story/use-story";
 import { useGesture } from "@use-gesture/react";
 import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
+
+import { legendComponentMap } from "../../../../../../../../libs/get-legend-component";
 
 import config from "../../../../../../../../config/main";
 
@@ -40,7 +42,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
   const targetRef = useRef<HTMLDivElement | null>(null);
   const images: ImageModule[] = useMemo(() => module?.slides ?? [], [module]);
 
-  const { legend } = module;
+  const legend = module.legend as Legend;
   const numSlides = images.length;
 
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
@@ -88,6 +90,8 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
     return activeSlide.caption || "";
   }, [activeSlideIndex, images]);
 
+  const Legend = legend?.type ? legendComponentMap[legend.type] : null;
+
   return (
     <div
       ref={targetRef}
@@ -124,7 +128,7 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
             </StoryMarkdown>
           </div>
         </div>
-        {legend && <StoryLegend legend={legend} />}
+        {legend && Legend && <Legend legend={legend} />}
       </motion.figure>
     </div>
   );
