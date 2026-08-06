@@ -33,7 +33,7 @@ const ImageSlide: React.FC<ImageSlideProps> = ({
   storyId,
   setFullscreenSlideIndex,
 }) => {
-  const { url = "", track, altText = "", text } = slide;
+  const { url = "", altText = "", text } = slide;
   return (
     <div
       ref={slideElementRef}
@@ -49,7 +49,6 @@ const ImageSlide: React.FC<ImageSlideProps> = ({
           <InViewVideo
             className={styles.image}
             src={getStoryAssetUrl(storyId, url)}
-            trackSrc={track ? getStoryAssetUrl(storyId, track) : undefined}
           />
         ) : (
           <ScrollImage

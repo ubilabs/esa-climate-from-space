@@ -9,13 +9,27 @@ import styles from "./in-view-video.module.css";
 interface InViewVideoProps {
   src: string;
   className?: string;
-  trackSrc?: string;
 }
+
+const getLocalizedTrackSrc = (src: string, language: string) => {
+  const [srcWithoutHash, hash = ""] = src.split("#");
+  const [srcWithoutQuery, query = ""] = srcWithoutHash.split("?");
+  const extensionIndex = srcWithoutQuery.lastIndexOf(".");
+
+  if (extensionIndex === -1) {
+    return undefined;
+  }
+
+  const sourceName = srcWithoutQuery.slice(0, extensionIndex);
+  const querySuffix = query ? `?${query}` : "";
+  const hashSuffix = hash ? `#${hash}` : "";
+
+  return `${sourceName}-${language}.vtt${querySuffix}${hashSuffix}`;
+};
 
 const InViewVideo: FunctionComponent<InViewVideoProps> = ({
   src,
   className,
-  trackSrc,
 }) => {
   const ref = useRef<HTMLVideoElement>(null);
   const isInView = useInView(ref);
@@ -60,6 +74,7 @@ const InViewVideo: FunctionComponent<InViewVideoProps> = ({
   }, []);
 
   const selectedLanguage = useSelector(languageSelector) ?? "en";
+  const localizedTrackSrc = getLocalizedTrackSrc(src, selectedLanguage);
 
   const handlePlay = () => {
     const video = ref.current;
@@ -81,10 +96,10 @@ const InViewVideo: FunctionComponent<InViewVideoProps> = ({
         controls
         playsInline
       >
-        {trackSrc && (
+        {localizedTrackSrc && (
           <track
             kind="captions"
-            src={trackSrc}
+            src={localizedTrackSrc}
             srcLang={selectedLanguage}
             label={selectedLanguage}
             default

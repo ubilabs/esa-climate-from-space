@@ -172,7 +172,6 @@ export type Legend = {
 
 export type BaseModuleSlide = {
   url?: string;
-  track?: string;
   altText?: string;
   text: string;
   focus?: ImageFocus;

@@ -9,9 +9,9 @@ import { SlideContainer } from "../../../../../layout/slide-container/slide-cont
 import { TextBlock } from "../../../generic/text-container/text-block/text-block";
 import { StorySectionProps } from "../../../../../../../types/story";
 import { ScrollImage } from "./image-scroll-image/image-scroll-image";
+import InViewVideo from "../shared/in-view-video/in-view-video";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 import { isVideo } from "../../../../../../../libs/is-video";
-import InViewVideo from "../shared/in-view-video/in-view-video";
 
 import cx from "classnames";
 
@@ -27,7 +27,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
     <div className={styles.imageScroll}>
       {slides?.map(
         // Set leading as default so image appears on the left / on top
-        ({ url, track, text, altText, caption, focus, leading = true }, index) => (
+        ({ url, text, altText, caption, focus, leading = true }, index) => (
           <SlideContainer
             ref={getRefCallback?.(index, 0)}
             className={cx(
@@ -50,7 +50,6 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
                 <InViewVideo
                   className={styles.scrollVideo}
                   src={getStoryAssetUrl(storyId, url)}
-                  trackSrc={track ? getStoryAssetUrl(storyId, track) : undefined}
                 />
               ) : (
                 <ScrollImage
