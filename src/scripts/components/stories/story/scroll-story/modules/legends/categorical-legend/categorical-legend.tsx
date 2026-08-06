@@ -18,13 +18,9 @@ const CategoricalLegend: FunctionComponent<Props> = ({ legend }) => {
         {
           <ul className={styles.list}>
             {values.map((entry) => {
-
               const key = Object.keys(entry)[0] as keyof typeof entry;
               return (
-                <li
-                  className={styles.elementContainer}
-
-                >
+                <li className={styles.elementContainer}>
                   <span
                     className={styles.color}
                     style={
