@@ -1,11 +1,12 @@
-import { useState, useRef, FunctionComponent, SyntheticEvent } from "react";
-import { useIntl } from "react-intl";
 import {
-  motion,
-  useMotionValue,
-  useMotionValueEvent,
-  useTransform,
-} from "motion/react";
+  useState,
+  useRef,
+  FunctionComponent,
+  SyntheticEvent,
+  CSSProperties,
+} from "react";
+import { useIntl } from "react-intl";
+import { motion, useMotionValue, useTransform } from "motion/react";
 import { useGesture } from "@use-gesture/react";
 import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 import { useStoryScroll } from "../../../../../../../../hooks/use-story-scroll";
@@ -65,7 +66,7 @@ export const ScrollImage: FunctionComponent<Props> = ({
   });
 
   // there seems to be a bug in chrome where the clipPath and opacity are not automatically updated by motion anymore
-  // setting a custom variable here fixes that
+  // setting a custom variable on the element fixes that
   const clipPath = useTransform(
     scrollYProgress,
     [0.5, 1],
@@ -73,22 +74,6 @@ export const ScrollImage: FunctionComponent<Props> = ({
   );
 
   const buttonOpacity = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
-
-  useMotionValueEvent(buttonOpacity, "change", (e) => {
-    ref.current?.style?.setProperty("--custom-button-opacity", String(e));
-  });
-
-  useMotionValueEvent(clipPath, "change", (e) => {
-    if (isFullscreen) {
-      ref.current?.style?.setProperty(
-        "--custom-clip-path",
-        "inset(10% 10% 10% 10%)",
-      );
-      return;
-    }
-
-    ref.current?.style?.setProperty("--custom-clip-path", e);
-  });
 
   // Maps scroll progress (0 to 1) to colors (red -> blue)
   const backgroundColor = useTransform(
@@ -172,13 +157,16 @@ export const ScrollImage: FunctionComponent<Props> = ({
         src={src}
         alt={alt}
         className={cx(styles.image, className)}
-        style={{
-          x: isFullscreen ? x : 0,
-          y: isFullscreen ? y : 0,
-          scale: isFullscreen ? scale : 1,
-          cursor: isFullscreen ? "grab" : "default",
-          [focus === "contain" ? "objectFit" : "objectPosition"]: focus,
-        }}
+        style={
+          {
+            x: isFullscreen ? x : 0,
+            y: isFullscreen ? y : 0,
+            scale: isFullscreen ? scale : 1,
+            cursor: isFullscreen ? "grab" : "default",
+            "--image-clip-path": isFullscreen ? "none" : clipPath,
+            [focus === "contain" ? "objectFit" : "objectPosition"]: focus,
+          } as CSSProperties
+        }
         draggable={false}
       />
 
@@ -187,6 +175,11 @@ export const ScrollImage: FunctionComponent<Props> = ({
           onClick={handleOpen}
           className={styles.fullscreenButton}
           aria-label={intl.formatMessage({ id: "enterFullscreen" })}
+          style={
+            {
+              "--button-opacity": buttonOpacity,
+            } as CSSProperties
+          }
         ></motion.button>
       )}
 

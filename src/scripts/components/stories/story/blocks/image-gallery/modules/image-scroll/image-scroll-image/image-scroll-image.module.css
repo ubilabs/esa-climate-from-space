@@ -1,6 +1,4 @@
 .scrollImageWrapper {
-  --custom-clip-path: inset(10% 10% 10% 10%);
-  --custom-button-opacity: 0;
   --container-bg: rgba(0, 0, 0, 0.9);
 }
 
@@ -84,7 +82,8 @@ div[data-status="fullscreenOverlay"] {
 }
 
 .image {
-  clip-path: var(--custom-clip-path);
+  --image-clip-path: inset(10% 10% 10% 10%);
+  clip-path: var(--image-clip-path);
   height: 100%;
   width: fit-content;
   user-select: none;
@@ -104,6 +103,7 @@ div[data-status="fullscreenOverlay"] {
 }
 
 .fullscreenButton {
+  --button-opacity: 0;
   transition: none;
   cursor: pointer;
   position: absolute;
@@ -114,7 +114,7 @@ div[data-status="fullscreenOverlay"] {
   right: 1rem;
   background: var(--Supporting-Colours-Deep-Space-1, #3f6c7d);
   border: none;
-  opacity: var(--custom-button-opacity);
+  opacity: var(--button-opacity);
 
   &:after {
     content: "";
