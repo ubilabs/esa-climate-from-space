@@ -55,7 +55,7 @@
         "mobile": {
           "containerPosition": {
             "x": 0,
-            "y": -0.4
+            "y": -1
           },
           "location": {
             "lat": -40,
@@ -66,7 +66,7 @@
         "desktop": {
           "containerPosition": {
             "x": 0,
-            "y": -0.6
+            "y": -1
           },
           "location": {
             "lat": -40,
@@ -86,7 +86,7 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": -0.4
+              "y": -1
             },
             "location": {
               "lat": -40,
@@ -97,7 +97,7 @@
           "desktop": {
             "containerPosition": {
               "x": 0,
-              "y": -0.6
+              "y": -1
             },
             "location": {
               "lat": -40,
@@ -111,12 +111,13 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0
+              "y": -1
             },
             "location": {
               "lat": -40,
               "lng": -30,
-              "altitude": 80000
+
+              "altitude": 20040000
             }
           }
         }
@@ -126,35 +127,21 @@
     {
       "globeKeyframes": [
         {
-          "progress": 0,
-          "mobile": {
-            "containerPosition": {
-              "x": 0,
-              "y": 0
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 80000
-            }
-          }
-        },
-        {
           "progress": 1,
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0
+              "y": 1
             },
             "location": {
               "lat": 48.5074,
               "lng": -25.1278,
-              "altitude": 4000000
+              "altitude": 20040000
             }
           }
         }
       ],
-      "lengthFactor": 26
+      "lengthFactor": 10
     }
   ]
 }
