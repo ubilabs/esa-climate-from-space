@@ -3,18 +3,13 @@ import { SharedScrollStoryConfig } from "./shared-scroll-story-configs";
 
 type MergeSharedScrollStoryConfigOptions = {
   story: Story;
-  storyId: string;
   sharedConfig: SharedScrollStoryConfig;
 };
 
 export function mergeSharedScrollStoryConfig({
   story,
-  storyId,
   sharedConfig,
 }: MergeSharedScrollStoryConfigOptions): Story {
-  if (story.id !== storyId) {
-    return story;
-  }
 
   const {
     splashscreen: sharedSplashscreen,
@@ -24,7 +19,7 @@ export function mergeSharedScrollStoryConfig({
 
   if (sharedModules.length !== story.modules.length) {
     console.warn(
-      `Shared ${storyId} config has ${sharedModules.length} modules, but story payload has ${story.modules.length}. Merging available indexes only.`,
+      `Shared ${story.id} config has ${sharedModules.length} modules, but story payload has ${story.modules.length}. Merging available indexes only.`,
     );
   }
 

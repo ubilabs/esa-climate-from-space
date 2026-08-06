@@ -43,7 +43,6 @@ export default async function fetchStory(id: string, lang: Language) {
   if (sharedConfig) {
     return mergeSharedScrollStoryConfig({
       story,
-      storyId: story.id,
       sharedConfig,
     });
   }
