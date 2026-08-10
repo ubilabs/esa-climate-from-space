@@ -23,7 +23,7 @@
   }
 
   @media screen and (--desktop-viewport) {
-    --story-padding: 2.75rem;
+    --story-padding: 4.5rem;
   }
 
   &.fadeIn {
