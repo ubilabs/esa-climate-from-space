@@ -2,14 +2,14 @@ import { StoryXFiresModule } from "../../../../../../../types/story";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
-import ScrollVideo from "../../../modules/base-scroll/scroll-video/scroll-video";
+import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 
 import styles from "./intro-module.module.css";
 
 const animationConfig = {
-  video: {
-    playBack: [0, 1],
+  imageSequence: {
+    playback: [0, 1],
     input: [0, 0.9],
     output: ["0%", "0%"],
   },
@@ -24,7 +24,16 @@ const animationConfig = {
 };
 
 export type IntroAnimationConfig = typeof animationConfig;
-type IntroModuleContent = StoryXFiresModule & { videoSrc: string };
+type IntroModuleContent = StoryXFiresModule & {
+  imageSequence: {
+    path: string;
+    frameCount: number;
+    prefix?: string;
+    extension?: string;
+    padStart?: number;
+    startFrame?: number;
+  };
+};
 
 export default function IntroModule() {
   const { module, getRefCallback } = useModuleContent();
@@ -36,8 +45,8 @@ export default function IntroModule() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
-        <ScrollVideo
-          src={xFiresModule.videoSrc}
+        <ScrollImageSequence
+          sequence={xFiresModule.imageSequence}
           className={styles.scrollText}
         />
         <ScrollText

@@ -1,0 +1,15 @@
+.sequenceContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.scrollImageSequence {
+  display: block;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
