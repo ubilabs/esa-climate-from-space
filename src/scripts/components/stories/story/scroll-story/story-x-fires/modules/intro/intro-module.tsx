@@ -9,7 +9,7 @@ import styles from "./intro-module.module.css";
 
 const animationConfig = {
   video: {
-    playBack: [0.2, 0.8],
+    playBack: [0, 1],
     input: [0, 0.9],
     output: ["0%", "0%"],
   },
