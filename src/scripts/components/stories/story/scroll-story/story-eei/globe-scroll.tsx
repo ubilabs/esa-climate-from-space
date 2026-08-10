@@ -46,17 +46,13 @@ const getDefaultLengthFactor = (): number => {
   return parseFloat(defaultValue) || 1;
 };
 
-interface Props {
-  initialGlobeConfiguration: Omit<GlobeKeyframe, "progress"> | undefined;
-}
-
-const GlobeScroll: FunctionComponent<Props> = ({
-  initialGlobeConfiguration,
-}) => {
+const GlobeScroll: FunctionComponent = () => {
   const { isDesktop } = useScreenInfo();
   const { story } = useStory();
+
   const modules = story?.modules ?? [];
   const splashscreen = story?.splashscreen;
+  const initialGlobeConfiguration = story?.initialglobeConfig;
 
   const dispatch = useDispatch();
 
@@ -66,6 +62,7 @@ const GlobeScroll: FunctionComponent<Props> = ({
     : initialGlobeConfiguration?.mobile;
 
   const initialGlobe = screenSizeSpecificInitialGlobe?.location;
+
   const initialContainerPosition =
     screenSizeSpecificInitialGlobe?.containerPosition;
 
