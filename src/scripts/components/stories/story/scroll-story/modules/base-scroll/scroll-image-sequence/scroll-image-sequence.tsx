@@ -3,20 +3,16 @@ import { motion, useMotionValueEvent, useTransform } from "motion/react";
 import { useScrollModule } from "../use-scroll-module";
 
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
+import {
+  getImageSequenceFrameIndex,
+  getImageSequenceFrameSrc,
+  ImageSequenceSource,
+} from "../../../../../../../libs/image-sequence";
 import { useStory } from "../../../../../../../providers/story/use-story";
 
 import cx from "classnames";
 
 import styles from "./scroll-image-sequence.module.css";
-
-interface ImageSequenceSource {
-  path: string;
-  frameCount: number;
-  prefix?: string;
-  extension?: string;
-  padStart?: number;
-  startFrame?: number;
-}
 
 interface Props<T> {
   className: string;
@@ -33,48 +29,6 @@ interface ScrollImageSequenceConfig<T extends string | number> {
   };
 }
 
-const clamp = (value: number, min: number, max: number) =>
-  Math.min(Math.max(value, min), max);
-
-const getFrameIndexForProgress = (
-  progress: number,
-  playback: [number, number],
-  frameCount: number,
-) => {
-  const [playbackStart, playbackEnd] = playback;
-
-  if (frameCount <= 1) {
-    return 0;
-  }
-
-  if (playbackEnd <= playbackStart) {
-    return progress >= playbackEnd ? frameCount - 1 : 0;
-  }
-
-  const playbackProgress = clamp(
-    (progress - playbackStart) / (playbackEnd - playbackStart),
-    0,
-    1,
-  );
-
-  return Math.round(playbackProgress * (frameCount - 1));
-};
-
-const buildFrameSrc = (
-  basePath: string,
-  sequence: ImageSequenceSource,
-  frameIndex: number,
-) => {
-  const prefix = sequence.prefix ?? "frame";
-  const extension = sequence.extension ?? "webp";
-  const padStart = sequence.padStart ?? 4;
-  const startFrame = sequence.startFrame ?? 1;
-  const frameNumber = startFrame + frameIndex;
-  const normalizedBasePath = basePath.replace(/\/$/, "");
-
-  return `${normalizedBasePath}/${prefix}-${String(frameNumber).padStart(padStart, "0")}.${extension}`;
-};
-
 export default function ScrollImageSequence<T extends string | number>({
   className,
   sequence,
@@ -83,6 +37,7 @@ export default function ScrollImageSequence<T extends string | number>({
 }: Props<T>) {
   const { scrollYProgress, config } =
     useScrollModule<ScrollImageSequenceConfig<T>>();
+
   const { story } = useStory();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const imagesRef = useRef<Array<HTMLImageElement | undefined>>([]);
@@ -90,16 +45,20 @@ export default function ScrollImageSequence<T extends string | number>({
   const pendingFrameRef = useRef(0);
   const playback = config.imageSequence.playback;
 
-  const frameBasePath = story
-    ? getStoryAssetUrl(story.id, sequence.path)
-    : sequence.path;
+  const frameBasePath = getStoryAssetUrl(story?.id ?? "", sequence.path);
 
   const drawFrame = (frameIndex: number) => {
     const image = imagesRef.current[frameIndex];
     const canvas = canvasRef.current;
     const context = canvas?.getContext("2d");
 
-    if (!image || !canvas || !context || !image.complete || !image.naturalWidth) {
+    if (
+      !image ||
+      !canvas ||
+      !context ||
+      !image.complete ||
+      !image.naturalWidth
+    ) {
       return false;
     }
 
@@ -121,7 +80,7 @@ export default function ScrollImageSequence<T extends string | number>({
   useEffect(() => {
     imagesRef.current = new Array(sequence.frameCount);
     lastRenderedFrameRef.current = -1;
-    pendingFrameRef.current = getFrameIndexForProgress(
+    pendingFrameRef.current = getImageSequenceFrameIndex(
       scrollYProgress.get(),
       playback,
       sequence.frameCount,
@@ -133,7 +92,7 @@ export default function ScrollImageSequence<T extends string | number>({
       const image = new Image();
 
       image.decoding = "async";
-      image.src = buildFrameSrc(frameBasePath, sequence, index);
+      image.src = getImageSequenceFrameSrc(frameBasePath, sequence, index);
       image.onload = () => {
         if (isCancelled) {
           return;
@@ -162,7 +121,7 @@ export default function ScrollImageSequence<T extends string | number>({
   }, [frameBasePath, playback, scrollYProgress, sequence]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const frameIndex = getFrameIndexForProgress(
+    const frameIndex = getImageSequenceFrameIndex(
       latest,
       playback,
       sequence.frameCount,
