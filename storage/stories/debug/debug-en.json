@@ -181,6 +181,9 @@
       "slides": [
         {
           "text": "This event shows how different parts of the Earth system – ocean, atmosphere, and land – and places thousands of kilometers apart are connected through the water cycle."
+        },
+        {
+          "text": "This event shows how different parts of the Earth system – ocean, atmosphere, and land – and places thousands of kilometers apart are connected through the water cycle."
         }
       ]
     },
@@ -221,13 +224,7 @@
       "type": "textOverlay",
       "slides": [
         {
-          "url": "",
-          "focus": "center",
-          "slides": [
-            {
-              "text": "After months of high temperatures and low rainfall, the water level of Italy's Po River reached a record low in 2022. The drought in northern Italy impacted the region's agricultural production, which often relies on irrigation."
-            }
-          ]
+          "text": "After months of high temperatures and low rainfall, the water level of Italy's Po River reached a record low in 2022. The drought in northern Italy impacted the region's agricultural production, which often relies on irrigation."
         }
       ]
     },
