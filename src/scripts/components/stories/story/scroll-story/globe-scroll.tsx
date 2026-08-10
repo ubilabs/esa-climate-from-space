@@ -6,21 +6,21 @@ import {
   useMotionValueEvent,
   useTransform,
 } from "motion/react";
-import { useScreenInfo } from "../../../../../hooks/use-screen-info";
+import { useScreenInfo } from "../../../../hooks/use-screen-info";
 
-import { quantize } from "../../../../../libs/quantize";
-import { setFlyTo } from "../../../../../reducers/fly-to";
+import { quantize } from "../../../../libs/quantize";
+import { setFlyTo } from "../../../../reducers/fly-to";
 
-import { useStory } from "../../../../../providers/story/use-story";
-import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
+import { useStory } from "../../../../providers/story/use-story";
+import { useStoryScroll } from "../../../../hooks/use-story-scroll";
 
 import {
   GlobeKeyframe,
   Location,
   ScrollGlobeValues,
-} from "../../../../../types/story";
+} from "../../../../types/story";
 
-import config from "../../../../../config/main";
+import config from "../../../../config/main";
 
 function haveMotionValuesChanges(
   values: Partial<Record<keyof Location, MotionValue<unknown> | undefined>>,
@@ -46,17 +46,13 @@ const getDefaultLengthFactor = (): number => {
   return parseFloat(defaultValue) || 1;
 };
 
-interface Props {
-  initialGlobeConfiguration: Omit<GlobeKeyframe, "progress"> | undefined;
-}
-
-const GlobeScroll: FunctionComponent<Props> = ({
-  initialGlobeConfiguration,
-}) => {
+const GlobeScroll: FunctionComponent = () => {
   const { isDesktop } = useScreenInfo();
   const { story } = useStory();
+
   const modules = story?.modules ?? [];
   const splashscreen = story?.splashscreen;
+  const initialGlobeConfiguration = story?.initialglobeConfig;
 
   const dispatch = useDispatch();
 
@@ -66,6 +62,7 @@ const GlobeScroll: FunctionComponent<Props> = ({
     : initialGlobeConfiguration?.mobile;
 
   const initialGlobe = screenSizeSpecificInitialGlobe?.location;
+
   const initialContainerPosition =
     screenSizeSpecificInitialGlobe?.containerPosition;
 
