@@ -6,21 +6,21 @@ import {
   useMotionValueEvent,
   useTransform,
 } from "motion/react";
-import { useScreenInfo } from "../../../../../hooks/use-screen-info";
+import { useScreenInfo } from "../../../../hooks/use-screen-info";
 
-import { quantize } from "../../../../../libs/quantize";
-import { setFlyTo } from "../../../../../reducers/fly-to";
+import { quantize } from "../../../../libs/quantize";
+import { setFlyTo } from "../../../../reducers/fly-to";
 
-import { useStory } from "../../../../../providers/story/use-story";
-import { useStoryScroll } from "../../../../../hooks/use-story-scroll";
+import { useStory } from "../../../../providers/story/use-story";
+import { useStoryScroll } from "../../../../hooks/use-story-scroll";
 
 import {
   GlobeKeyframe,
   Location,
   ScrollGlobeValues,
-} from "../../../../../types/story";
+} from "../../../../types/story";
 
-import config from "../../../../../config/main";
+import config from "../../../../config/main";
 
 function haveMotionValuesChanges(
   values: Partial<Record<keyof Location, MotionValue<unknown> | undefined>>,

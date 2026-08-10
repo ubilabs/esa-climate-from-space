@@ -8,7 +8,6 @@
   },
   "modules": [
     {
-      "lengthFactor": 9,
       "type": "radiativePowerThreshold",
       "content": {
         "scrollText1": "Satellites orbiting Earth can measure the brightness (or radiative power) of flames on the ground.",
@@ -20,7 +19,6 @@
       }
     },
     {
-      "lengthFactor": 12,
       "type": "burnedArea",
       "content": {
         "scrollText1": "The other key measure is the area of ground burned by the fire.",
