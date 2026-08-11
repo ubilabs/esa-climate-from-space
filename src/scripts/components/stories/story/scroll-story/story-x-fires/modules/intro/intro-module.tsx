@@ -9,7 +9,7 @@ import styles from "./intro-module.module.css";
 
 const animationConfig = {
   imageSequence: {
-    progressRange: [0, 0.7],
+    progressRange: [0, 1],
     input: [0, 0.9],
     output: ["0%", "0%"],
   },
