@@ -3,6 +3,8 @@
 import fs from "fs";
 import path from "path";
 import { spawn, spawnSync } from "child_process";
+import { createInterface } from "readline/promises";
+import { stdin as input, stdout as output } from "process";
 
 const DEFAULTS = {
   fps: 15,
@@ -300,6 +302,48 @@ function validateRequiredOptions(options) {
   }
 }
 
+async function confirmOutputDirectoryReset(outputDir) {
+  if (!fs.existsSync(outputDir)) {
+    return;
+  }
+
+  const outputStat = fs.statSync(outputDir);
+
+  if (!outputStat.isDirectory()) {
+    throw new Error(`Output path is not a directory: ${outputDir}`);
+  }
+
+  const entries = fs.readdirSync(outputDir);
+
+  if (entries.length === 0) {
+    return;
+  }
+
+  if (!input.isTTY || !output.isTTY) {
+    throw new Error(
+      `Output directory is not empty: ${outputDir}. Remove its contents manually or rerun in an interactive shell to confirm deletion.`,
+    );
+  }
+
+  const rl = createInterface({ input, output });
+
+  try {
+    const answer = await rl.question(
+      `Output directory ${outputDir} is not empty. All contents will be deleted and replaced. Continue? (y/N) `,
+    );
+
+    if (answer.trim().toLowerCase() !== "y") {
+      throw new Error("Frame extraction cancelled.");
+    }
+  } finally {
+    rl.close();
+  }
+
+  entries.forEach((entry) => {
+    fs.rmSync(path.join(outputDir, entry), { recursive: true, force: true });
+  });
+}
+
 function printSummary(options, outputPattern) {
   console.log(`Extracting frames from ${options.input}`);
   console.log(`Output directory: ${options.output}`);
@@ -332,6 +376,7 @@ async function main() {
       throw new Error(`Input file not found: ${options.input}`);
     }
 
+    await confirmOutputDirectoryReset(outputDir);
     fs.mkdirSync(outputDir, { recursive: true });
 
     const resolvedOptions = {
