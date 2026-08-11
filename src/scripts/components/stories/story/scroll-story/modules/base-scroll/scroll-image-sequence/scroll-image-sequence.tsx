@@ -1,7 +1,15 @@
-import { useEffect, useState, useRef, useMemo, CSSProperties } from "react";
+import {
+  useEffect,
+  useState,
+  useRef,
+  useMemo,
+  CSSProperties,
+  useCallback,
+} from "react";
 import { motion, useMotionValueEvent, useTransform } from "motion/react";
 import { useScrollModule } from "../use-scroll-module";
 
+import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 import {
   getImageSequenceFrameIndex,
@@ -51,6 +59,7 @@ export default function ScrollImageSequence({ className, sequence }: Props) {
   const { scrollYProgress, config } =
     useScrollModule<ScrollImageSequenceConfig>();
 
+  const { isMobile } = useScreenInfo();
   const { story } = useStory();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const imagesRef = useRef<Array<HTMLImageElement | undefined>>([]);
@@ -66,35 +75,73 @@ export default function ScrollImageSequence({ className, sequence }: Props) {
   const frameBasePath = getStoryAssetUrl(story?.id ?? "", sequence.path);
   const manifestSrc = getImageSequenceManifestSrc(frameBasePath);
 
-  const drawFrame = (frameIndex: number) => {
-    const image = imagesRef.current[frameIndex];
-    const canvas = canvasRef.current;
-    const context = canvas?.getContext("2d");
+  const drawImageCover = useCallback(
+    (
+      context: CanvasRenderingContext2D,
+      image: HTMLImageElement,
+      canvas: HTMLCanvasElement,
+    ) => {
+      // use scale here to preserve aspect ratio
+      const scale = Math.max(
+        canvas.width / image.naturalWidth,
+        canvas.height / image.naturalHeight,
+      );
 
-    if (
-      !image ||
-      !canvas ||
-      !context ||
-      !image.complete ||
-      !image.naturalWidth
-    ) {
-      return false;
-    }
+      const drawWidth = image.naturalWidth * scale;
+      const drawHeight = image.naturalHeight * scale;
+      const offsetX = (canvas.width - drawWidth) / 2;
+      const offsetY = (canvas.height - drawHeight) / 2;
 
-    if (
-      canvas.width !== image.naturalWidth ||
-      canvas.height !== image.naturalHeight
-    ) {
-      canvas.width = image.naturalWidth;
-      canvas.height = image.naturalHeight;
-    }
+      context.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
+    },
+    [],
+  );
 
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(image, 0, 0, canvas.width, canvas.height);
-    lastRenderedFrameRef.current = frameIndex;
+  const drawFrame = useCallback(
+    (frameIndex: number) => {
+      const image = imagesRef.current[frameIndex];
+      const canvas = canvasRef.current;
+      const context = canvas?.getContext("2d");
 
-    return true;
-  };
+      if (
+        !image ||
+        !canvas ||
+        !context ||
+        !image.complete ||
+        !image.naturalWidth
+      ) {
+        return false;
+      }
+
+      const nextCanvasWidth = isMobile
+        ? Math.max(canvas.clientWidth, 1)
+        : image.naturalWidth;
+      const nextCanvasHeight = isMobile
+        ? Math.max(canvas.clientHeight, 1)
+        : image.naturalHeight;
+
+      if (
+        canvas.width !== nextCanvasWidth ||
+        canvas.height !== nextCanvasHeight
+      ) {
+        canvas.width = nextCanvasWidth;
+        canvas.height = nextCanvasHeight;
+      }
+
+      context.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (isMobile) {
+        drawImageCover(context, image, canvas);
+      } else {
+        context.drawImage(image, 0, 0, canvas.width, canvas.height);
+      }
+
+      lastRenderedFrameRef.current = frameIndex;
+
+      return true;
+    },
+    [drawImageCover, isMobile],
+  );
 
   useEffect(() => {
     let isCancelled = false;
@@ -178,7 +225,7 @@ export default function ScrollImageSequence({ className, sequence }: Props) {
       isCancelled = true;
       imagesRef.current = [];
     };
-  }, [frameBasePath, manifest, progressRange, scrollYProgress]);
+  }, [drawFrame, frameBasePath, manifest, progressRange, scrollYProgress]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const frameCount = manifest?.frameCount;
