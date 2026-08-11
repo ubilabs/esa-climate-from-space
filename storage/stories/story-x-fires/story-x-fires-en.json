@@ -14,8 +14,7 @@
         "scrollText2": "If the power heavily exceeds the regional average, it may become an extreme event.",
         "flameIllustrationTitle": "Radiative power of flames on the ground",
         "flameIllustrationDescription": "Illustration fire event and radiative power threshold.",
-        "legendLabelFireEvent": "Fire event",
-        "legendLabelRadiativePowerThreshold": "Radiative power threshold"
+        "legendLabelRadiativePowerThreshold": "Radiative Power Threshold"
       }
     },
     {
