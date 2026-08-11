@@ -10,8 +10,8 @@ import styles from "./intro-module.module.css";
 const animationConfig = {
   imageSequence: {
     progressRange: [0, 1],
-    input: [0, 0.9],
-    output: ["0%", "0%"],
+    input: [0, 0.95, 1],
+    output: [100, 100, 0],
   },
   scrollText1: {
     input: [0, 0.075, 0.225, 0.3],

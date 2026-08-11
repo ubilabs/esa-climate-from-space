@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useMemo } from "react";
+import { useEffect, useState, useRef, useMemo, CSSProperties } from "react";
 import { motion, useMotionValueEvent, useTransform } from "motion/react";
 import { useScrollModule } from "../use-scroll-module";
 
@@ -16,29 +16,22 @@ import cx from "classnames";
 
 import styles from "./scroll-image-sequence.module.css";
 
-interface Props<T> {
+interface Props {
   className: string;
   sequence: ImageSequenceSource;
-  inputRange?: Array<number>;
-  outputRange?: Array<T>;
 }
 
-interface ScrollImageSequenceConfig<T extends string | number> {
+interface ScrollImageSequenceConfig {
   imageSequence: {
     progressRange: [number, number];
     input?: Array<number>;
-    output?: Array<T>;
+    output?: Array<number>;
   };
 }
 
-export default function ScrollImageSequence<T extends string | number>({
-  className,
-  sequence,
-  inputRange = [1],
-  outputRange = [1] as T[],
-}: Props<T>) {
+export default function ScrollImageSequence({ className, sequence }: Props) {
   const { scrollYProgress, config } =
-    useScrollModule<ScrollImageSequenceConfig<T>>();
+    useScrollModule<ScrollImageSequenceConfig>();
 
   const { story } = useStory();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -192,19 +185,23 @@ export default function ScrollImageSequence<T extends string | number>({
     drawFrame(frameIndex);
   });
 
-  const imageSequenceInputRange = config.imageSequence.input ?? inputRange;
-  const imageSequenceOutputRange = config.imageSequence.output ?? outputRange;
+  const imageSequenceInputRange = config.imageSequence.input ?? [];
+  const imageSequenceOutputRange = config.imageSequence.output ?? [];
+
+  const opacity = useTransform(
+    scrollYProgress,
+    imageSequenceInputRange,
+    imageSequenceOutputRange,
+  );
 
   return (
     <motion.div
       className={cx(styles.sequenceContainer, className)}
-      style={{
-        y: useTransform(
-          scrollYProgress,
-          imageSequenceInputRange,
-          imageSequenceOutputRange,
-        ),
-      }}
+      style={
+        {
+          "--sequence-opacity": opacity,
+        } as CSSProperties
+      }
     >
       <canvas
         ref={canvasRef}
