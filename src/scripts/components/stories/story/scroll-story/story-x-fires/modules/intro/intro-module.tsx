@@ -18,7 +18,11 @@ const animationConfig = {
     output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText2: {
-    input: [0.3, 0.375, 0.525, 0.6],
+    input: [0.3, 0.375, 0.525, 0.55],
+    output: ["100%", "0%", "0%", "-100%"],
+  },
+  scrollText3: {
+    input: [0.55, 0.675, 0.825, 0.9],
     output: ["100%", "0%", "0%", "-100%"],
   },
 };
@@ -55,6 +59,12 @@ export default function IntroModule() {
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
+        />
+        <ScrollText
+          className={styles.scrollText}
+          text={xFiresModule.content?.scrollText3 || ""}
+          inputRange={animationConfig.scrollText3.input}
+          outputRange={animationConfig.scrollText3.output}
         />
       </ScrollModule.StickyContainer>
     </ScrollModule>
