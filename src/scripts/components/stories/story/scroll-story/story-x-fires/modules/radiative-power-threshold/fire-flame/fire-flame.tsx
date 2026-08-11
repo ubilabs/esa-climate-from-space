@@ -193,10 +193,8 @@ export const FireFlame: FunctionComponent = () => {
                 }}
               >
                 <span className={styles.value}>{fireEventValue}&nbsp;MW</span>
-                {xFiresModule.content?.legendLabelFireEvent}
               </motion.li>
               <li className={styles.radiativePowerThreshold}>
-                <span className={styles.value}>50&nbsp;MW</span>
                 {xFiresModule.content?.legendLabelRadiativePowerThreshold}
               </li>
             </ul>
