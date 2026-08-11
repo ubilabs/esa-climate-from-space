@@ -187,8 +187,8 @@ export const FireRing: FunctionComponent = () => {
               </radialGradient>
 
               <radialGradient id="fire-ring-stroke-gradient" cx="50%" cy="50%">
-                <stop offset="99%" stopColor="#FBAB18" />
-                <stop offset="100%" stopColor="#F47920" />
+                <stop offset="99%" stopColor="#F47920" />
+                <stop offset="100%" stopColor="#FBAB18" />
               </radialGradient>
             </defs>
 
@@ -331,11 +331,9 @@ export const FireRing: FunctionComponent = () => {
               }}
             >
               <span className={styles.value}>{burnedAreaValue}&nbsp;km²</span>
-              {xFiresModule.content?.legendLabelBurnedArea}
             </motion.li>
             <li className={styles.groundArea}>
-              <span className={styles.value}>50&nbsp;km²</span>
-              {xFiresModule.content?.legendLabelGroundArea}
+              {xFiresModule.content?.legendLabelBurnedAreaThreshold}
             </li>
           </ul>
         </figcaption>

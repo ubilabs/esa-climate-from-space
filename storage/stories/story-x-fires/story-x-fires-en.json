@@ -8,14 +8,21 @@
   },
   "modules": [
     {
+      "type": "intro",
+      "videoSrc": "assets/growing-fire-video1.mp4",
+      "content": {
+        "scrollText1": "Satellites orbiting Earth can measure the brightness (or radiative power) of flames on the ground.",
+        "scrollText2": "If the power heavily exceeds the regional average, it may become an extreme event."
+      }
+    },
+    {
       "type": "radiativePowerThreshold",
       "content": {
         "scrollText1": "Satellites orbiting Earth can measure the brightness (or radiative power) of flames on the ground.",
         "scrollText2": "If the power heavily exceeds the regional average, it may become an extreme event.",
         "flameIllustrationTitle": "Radiative power of flames on the ground",
         "flameIllustrationDescription": "Illustration fire event and radiative power threshold.",
-        "legendLabelFireEvent": "Fire event",
-        "legendLabelRadiativePowerThreshold": "Radiative power threshold"
+        "legendLabelRadiativePowerThreshold": "Radiative Power Threshold"
       }
     },
     {
@@ -25,8 +32,7 @@
         "scrollText2": "If that also exceeds the regional threshold, we are dealing with an extreme fire event.",
         "fireRingIllustrationTitle": "Area of ground burned by the fire",
         "fireRingIllustrationDescription": "Illustration showing burned and ground areas.",
-        "legendLabelBurnedArea": "Burned area",
-        "legendLabelGroundArea": "Ground area"
+        "legendLabelBurnedAreaThreshold": "Burned Area Threshold"
       }
     }
   ]
