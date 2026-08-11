@@ -331,11 +331,9 @@ export const FireRing: FunctionComponent = () => {
               }}
             >
               <span className={styles.value}>{burnedAreaValue}&nbsp;km²</span>
-              {xFiresModule.content?.legendLabelBurnedArea}
             </motion.li>
             <li className={styles.groundArea}>
-              <span className={styles.value}>50&nbsp;km²</span>
-              {xFiresModule.content?.legendLabelGroundArea}
+              {xFiresModule.content?.legendLabelBurnedAreaThreshold}
             </li>
           </ul>
         </figcaption>
