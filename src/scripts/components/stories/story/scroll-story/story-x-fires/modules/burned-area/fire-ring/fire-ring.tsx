@@ -187,8 +187,8 @@ export const FireRing: FunctionComponent = () => {
               </radialGradient>
 
               <radialGradient id="fire-ring-stroke-gradient" cx="50%" cy="50%">
-                <stop offset="99%" stopColor="#FBAB18" />
-                <stop offset="100%" stopColor="#F47920" />
+                <stop offset="99%" stopColor="#F47920" />
+                <stop offset="100%" stopColor="#FBAB18" />
               </radialGradient>
             </defs>
 
