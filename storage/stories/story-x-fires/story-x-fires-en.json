@@ -9,7 +9,9 @@
   "modules": [
     {
       "type": "intro",
-      "videoSrc": "assets/growing-fire-video1.mp4",
+      "imageSequence": {
+        "path": "assets/video-1-sequence"
+      },
       "content": {
         "scrollText1": "Satellites orbiting Earth can measure the brightness (or radiative power) of flames on the ground.",
         "scrollText2": "If the power heavily exceeds the regional average, it may become an extreme event."
