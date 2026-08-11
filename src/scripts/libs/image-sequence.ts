@@ -2,48 +2,49 @@ import clampToRange from "./clamp-to-range";
 
 export interface ImageSequenceSource {
   path: string;
+}
+
+export interface ImageSequenceManifest {
   frameCount: number;
-  prefix?: string;
-  extension?: string;
-  padStart?: number;
-  startFrame?: number;
+  format?: string | null;
+  width?: number | null;
+  height?: number | null;
 }
 
 export function getImageSequenceFrameIndex(
   progress: number,
-  playback: [number, number],
+  progressRange: [number, number],
   frameCount: number,
 ): number {
-  const [playbackStart, playbackEnd] = playback;
+  const [rangeStart, rangeEnd] = progressRange;
 
   if (frameCount <= 1) {
     return 0;
   }
 
-  if (playbackEnd <= playbackStart) {
-    return progress >= playbackEnd ? frameCount - 1 : 0;
+  if (rangeEnd <= rangeStart) {
+    return progress >= rangeEnd ? frameCount - 1 : 0;
   }
 
-  const playbackProgress = clampToRange(
-    (progress - playbackStart) / (playbackEnd - playbackStart),
+  const rangeProgress = clampToRange(
+    (progress - rangeStart) / (rangeEnd - rangeStart),
     0,
     1,
   );
 
-  return Math.round(playbackProgress * (frameCount - 1));
+  return Math.round(rangeProgress * (frameCount - 1));
 }
 
 export function getImageSequenceFrameSrc(
   basePath: string,
-  sequence: ImageSequenceSource,
   frameIndex: number,
 ): string {
-  const prefix = sequence.prefix ?? "frame";
-  const extension = sequence.extension ?? "webp";
-  const padStart = sequence.padStart ?? 4;
-  const startFrame = sequence.startFrame ?? 1;
-  const frameNumber = startFrame + frameIndex;
   const normalizedBasePath = basePath.replace(/\/$/, "");
+  const frameNumber = frameIndex + 1;
 
-  return `${normalizedBasePath}/${prefix}-${String(frameNumber).padStart(padStart, "0")}.${extension}`;
+  return `${normalizedBasePath}/frame-${String(frameNumber).padStart(4, "0")}.webp`;
+}
+
+export function getImageSequenceManifestSrc(basePath: string): string {
+  return `${basePath.replace(/\/$/, "")}/image-sequence.json`;
 }

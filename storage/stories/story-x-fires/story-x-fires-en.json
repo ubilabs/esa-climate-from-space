@@ -10,12 +10,7 @@
     {
       "type": "intro",
       "imageSequence": {
-        "path": "assets/video-1-sequence",
-        "frameCount": 226,
-        "prefix": "frame",
-        "extension": "webp",
-        "padStart": 4,
-        "startFrame": 1
+        "path": "assets/video-1-sequence"
       },
       "content": {
         "scrollText1": "Satellites orbiting Earth can measure the brightness (or radiative power) of flames on the ground.",

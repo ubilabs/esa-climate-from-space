@@ -13,6 +13,8 @@ const DEFAULTS = {
   prefix: "frame",
 };
 
+const MANIFEST_FILE_NAME = "image-sequence.json";
+
 const SUPPORTED_FORMATS = new Set(["webp", "jpg", "jpeg", "png"]);
 
 function printUsage() {
@@ -205,6 +207,74 @@ function resolveOutputPattern(outputDir, prefix, format) {
   return path.join(outputDir, `${prefix}-%04d.${format}`);
 }
 
+function getGeneratedFrameCount(outputDir, prefix, format) {
+  const extension = `.${format}`;
+
+  return fs
+    .readdirSync(outputDir)
+    .filter(
+      (file) => file.startsWith(`${prefix}-`) && file.toLowerCase().endsWith(extension),
+    ).length;
+}
+
+function getGeneratedFrameSize(outputDir, prefix, format) {
+  const extension = `.${format}`;
+  const firstFrame = fs
+    .readdirSync(outputDir)
+    .find(
+      (file) => file.startsWith(`${prefix}-`) && file.toLowerCase().endsWith(extension),
+    );
+
+  if (!firstFrame) {
+    return null;
+  }
+
+  const framePath = path.join(outputDir, firstFrame);
+  const probe = spawnSync(
+    "ffprobe",
+    [
+      "-v",
+      "error",
+      "-select_streams",
+      "v:0",
+      "-show_entries",
+      "stream=width,height",
+      "-of",
+      "json",
+      framePath,
+    ],
+    { encoding: "utf8" },
+  );
+
+  if (probe.error || probe.status !== 0 || !probe.stdout) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(probe.stdout);
+    const stream = parsed.streams?.[0];
+
+    if (!stream?.width || !stream?.height) {
+      return null;
+    }
+
+    return {
+      width: stream.width,
+      height: stream.height,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function writeImageSequenceManifest(outputDir, manifest) {
+  const manifestPath = path.join(outputDir, MANIFEST_FILE_NAME);
+
+  fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+
+  return manifestPath;
+}
+
 function runFfmpeg(args) {
   return new Promise((resolve, reject) => {
     const child = spawn("ffmpeg", args, { stdio: "inherit" });
@@ -289,7 +359,28 @@ async function main() {
 
     printSummary(resolvedOptions, outputPattern);
     await runFfmpeg(ffmpegArgs);
-    console.log("Frame extraction complete.");
+
+    const frameCount = getGeneratedFrameCount(
+      outputDir,
+      resolvedOptions.prefix,
+      resolvedOptions.format,
+    );
+
+    const frameSize = getGeneratedFrameSize(
+      outputDir,
+      resolvedOptions.prefix,
+      resolvedOptions.format,
+    );
+
+    const manifestPath = writeImageSequenceManifest(outputDir, {
+      frameCount,
+      format: resolvedOptions.format,
+      width: frameSize?.width ?? null,
+      height: frameSize?.height ?? null,
+    });
+
+    console.log(`Frame extraction complete. Generated ${frameCount} frames.`);
+    console.log(`Wrote image sequence manifest to ${manifestPath}.`);
   } catch (error) {
     console.error(error.message);
     console.error("Use --help to see the available options.");

@@ -9,7 +9,6 @@ import styles from "./intro-module.module.css";
 
 const animationConfig = {
   imageSequence: {
-    playback: [0, 1],
     input: [0, 0.9],
     output: ["0%", "0%"],
   },
@@ -27,11 +26,6 @@ export type IntroAnimationConfig = typeof animationConfig;
 type IntroModuleContent = StoryXFiresModule & {
   imageSequence: {
     path: string;
-    frameCount: number;
-    prefix?: string;
-    extension?: string;
-    padStart?: number;
-    startFrame?: number;
   };
 };
 
