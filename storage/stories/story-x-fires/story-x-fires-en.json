@@ -13,8 +13,9 @@
         "path": "assets/video-1-sequence"
       },
       "content": {
-        "scrollText1": "Satellites orbiting Earth can measure the brightness (or radiative power) of flames on the ground.",
-        "scrollText2": "If the power heavily exceeds the regional average, it may become an extreme event."
+        "scrollText1": "Fire is a natural part of many ecosystems, clearing dead wood and stimulating new growth. Humans have always lived with fire, using it to manage land and wildlife and to clear forest and shrubs for agriculture",
+        "scrollText2": "But fire is an unreliable tool. As the climate warms, we are increasingly seeing untamed, extreme infernos that rewrite landscapes and pollute the atmosphere.",
+        "scrollText3": "Extreme fires burn out of control and are sometimes only extinguished when the weather conditions change. To understand when an ordinary seasonal fire becomes a catastrophe, we must look beyond the flames."
       }
     },
     {
