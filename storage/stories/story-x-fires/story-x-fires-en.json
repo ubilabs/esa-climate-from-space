@@ -19,6 +19,14 @@
       }
     },
     {
+      "type": "namingTheBeast",
+      "content": {
+        "scrollText1": "Naming the Beast",
+        "scrollText2": "Wildfires occur around the world. Some ecosystems are more fire-prone than others, and in some places “extreme” fires have been recorded.",
+        "scrollText3": "Scientists use precise measurements from space to decide whether a fire is an extreme fire event."
+      }
+    },
+    {
       "type": "radiativePowerThreshold",
       "content": {
         "scrollText1": "Satellites orbiting Earth can measure the brightness (or radiative power) of flames on the ground.",
