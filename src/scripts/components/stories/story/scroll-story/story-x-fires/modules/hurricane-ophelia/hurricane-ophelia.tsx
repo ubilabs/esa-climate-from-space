@@ -19,16 +19,13 @@ const animationConfig = {
     input: [0.3, 0.375, 0.525, 0.55],
     output: ["100%", "0%", "0%", "-100%"],
   },
-  scrollText3: {
-    input: [0.55, 0.675, 0.825, 0.9],
-    output: ["100%", "0%", "0%", "-100%"],
-  },
 };
 
 export type HurricanOpheliaConfig = typeof animationConfig;
 
 export default function HurricanOphelia() {
   const { module, getRefCallback } = useModuleContent();
+
   const xFiresModule = module as StoryXFiresModule & {
     imageSequence: {
       path: string;
@@ -41,9 +38,7 @@ export default function HurricanOphelia() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
-        <ScrollImageSequence
-          sequence={xFiresModule.imageSequence}
-        />
+        <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <ScrollText
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}

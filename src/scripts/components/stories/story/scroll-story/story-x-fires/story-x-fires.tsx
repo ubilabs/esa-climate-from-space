@@ -8,7 +8,7 @@ import RadiativePowerThresholdModule from "./modules/radiative-power-threshold/r
 import BurnedAreaModule from "./modules/burned-area/burned-area";
 import IntroModule from "./modules/intro/intro-module";
 import NamingTheBeast from "./modules/name-the-beast/naming-the-beast";
-import HurricaneOphelia from "./modules/name-the-beast/naming-the-beast";
+import HurricaneOphelia from "./modules/hurricane-ophelia/hurricane-ophelia";
 
 
 export type StoryXFiresCompoundComponents = {
