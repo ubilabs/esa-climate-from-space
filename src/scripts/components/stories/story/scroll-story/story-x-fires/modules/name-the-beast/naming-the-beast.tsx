@@ -1,20 +1,16 @@
 import { StoryXFiresModule } from "../../../../../../../types/story";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
+import { useInView } from "motion/react";
+import { useRef } from "react";
+
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import GlobalFires from "./global-fires/global-fires";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 
 import styles from "./naming-the-beast.module.css";
-import { useInView } from "motion/react";
-import { useRef } from "react";
 
 const animationConfig = {
-  imageSequence: {
-    progressRange: [0, 1],
-    input: [0, 0.95, 1],
-    output: [100, 100, 0],
-  },
   scrollText1: {
     input: [0, 0.075, 0.225, 0.3],
     output: ["100%", "0%", "0%", "-100%"],
