@@ -44,17 +44,19 @@ interface ScrollImageSequenceConfig {
  * 1. Make sure `ffmpeg` is installed.
  * 2. Run `scripts/extract-video-frames.js` with an input video and output directory.
  *    The script generates the frame files and `image-sequence.json` manifest.
- * 3. Add this to the story module content:
+ * 3. upload generated frames to the gcp story storage under assets/
+ * 4. Add this to the story module content:
  *    ```json
  *    "imageSequence": {
  *      "path": "assets/your-path-here"
  *    }
  *    ```
- * 4. Add `ScrollImageSequence` component to the module root and pass props.
- * 5. Optional: set `imageSequence.progressRange` in the animation config to map the
+ *    tiles will be fetched directly from gcp
+ * 5. Add `ScrollImageSequence` component to the module root and pass props.
+ * 6. Optional: set `imageSequence.progressRange` in the animation config to map the
  *    sequence to a subset of the module scroll progress. For example, `[0.2, 0.8]`
  *    starts the sequence at 20% progress and finishes it by 80%. Defaults to `[0, 1]`.
- * 6. Optional: for fade in / out adapt opacity values in animationConfig
+ * 7. Optional: for fade in / out adapt opacity values in animationConfig
  */
 export default function ScrollImageSequence({ className, sequence }: Props) {
   const { scrollYProgress, config } =

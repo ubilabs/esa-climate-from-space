@@ -37,13 +37,6 @@
         "fireRingIllustrationDescription": "Illustration showing burned and ground areas.",
         "legendLabelBurnedAreaThreshold": "Burned Area Threshold"
       }
-    },
-    {
-      "type": "hurricaneOphelia",
-      "content": {
-        "scrollText1": "Four fires broke out on the afternoon of 17 June 2017 and spread rapidly, killing 66 people and injuring 253 by 24 June. 485 homes were destroyed and EUR 52 million of damage done to farms and other businesses.",
-        "scrollText2": "In October another 45 died in another wave of fires fanned by strong winds from Hurricane Ophelia."
-      }
     }
   ]
 }
