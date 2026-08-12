@@ -3,8 +3,14 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
+import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
 
 const animationConfig = {
+  imageSequence: {
+    progressRange: [0, 1],
+    input: [0, 0.95, 1],
+    output: [100, 100, 0],
+  },
   scrollText1: {
     input: [0, 0.075, 0.225, 0.3],
     output: ["100%", "0%", "0%", "-100%"],
@@ -23,7 +29,11 @@ export type HurricanOpheliaConfig = typeof animationConfig;
 
 export default function HurricanOphelia() {
   const { module, getRefCallback } = useModuleContent();
-  const xFiresModule = module as StoryXFiresModule;
+  const xFiresModule = module as StoryXFiresModule & {
+    imageSequence: {
+      path: string;
+    };
+  };
 
   return (
     <ScrollModule
@@ -31,6 +41,9 @@ export default function HurricanOphelia() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
+        <ScrollImageSequence
+          sequence={xFiresModule.imageSequence}
+        />
         <ScrollText
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
