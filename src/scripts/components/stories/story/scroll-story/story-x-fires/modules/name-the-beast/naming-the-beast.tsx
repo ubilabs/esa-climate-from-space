@@ -8,8 +8,6 @@ import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import GlobalFires from "./global-fires/global-fires";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 
-import styles from "./naming-the-beast.module.css";
-
 const animationConfig = {
   scrollText1: {
     input: [0, 0.075, 0.225, 0.3],
@@ -43,19 +41,16 @@ export default function NamingTheBeast() {
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         {isModuleInView && <GlobalFires />}
         <ScrollText
-          className={styles.scrollText}
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
         <ScrollText
-          className={styles.scrollText}
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
         <ScrollText
-          className={styles.scrollText}
           text={xFiresModule.content?.scrollText3 || ""}
           inputRange={animationConfig.scrollText3.input}
           outputRange={animationConfig.scrollText3.output}
