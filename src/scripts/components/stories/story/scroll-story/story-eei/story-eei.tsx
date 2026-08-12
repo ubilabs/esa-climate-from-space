@@ -1,11 +1,8 @@
-import { FunctionComponent, useEffect, useEffectEvent } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { FunctionComponent } from "react";
 
 import { Layers } from "./constants/globe";
 
-import { setSelectedLayerIds } from "../../../../../reducers/layers";
-
-import { selectedLayerIdsSelector } from "../../../../../selectors/layers/selected-ids";
+import { useStoryLayer } from "../../../../../hooks/use-story-layer";
 
 import Story from "../../story";
 import ScrollModule from "../modules/base-scroll/module/scroll-module";
@@ -29,22 +26,7 @@ export type StoryEEICompoundComponents = {
 
 /* Module Wrapper for Earth Engine Imbalance Story Components*/
 export const StoryEEI: FunctionComponent & StoryEEICompoundComponents = () => {
-  const dispatch = useDispatch();
-  const { mainId } = useSelector(selectedLayerIdsSelector);
-
-  const updateSelectedEEILayer = useEffectEvent(() => {
-    dispatch(
-      setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
-    );
-    return () => {
-      // If the current selected layer is part of the story-eei, reset it on unmount
-      if (mainId && Object.values(Layers).includes(mainId as Layers)) {
-        dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
-      }
-    };
-  });
-
-  useEffect(() => updateSelectedEEILayer(), []);
+  useStoryLayer(Layers.EEI_NO_MASK, Object.values(Layers));
 
   return (
     <Story>
