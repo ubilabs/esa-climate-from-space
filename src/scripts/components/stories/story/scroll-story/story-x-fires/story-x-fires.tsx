@@ -8,12 +8,15 @@ import RadiativePowerThresholdModule from "./modules/radiative-power-threshold/r
 import BurnedAreaModule from "./modules/burned-area/burned-area";
 import IntroModule from "./modules/intro/intro-module";
 import NamingTheBeast from "./modules/name-the-beast/naming-the-beast";
+import HurricaneOphelia from "./modules/name-the-beast/naming-the-beast";
+
 
 export type StoryXFiresCompoundComponents = {
   IntroModule: typeof IntroModule;
   RadiativePowerThreshold: typeof RadiativePowerThresholdModule;
   BurnedArea: typeof BurnedAreaModule;
   NamingTheBeast: typeof NamingTheBeast;
+  HurricaneOphelia: typeof HurricaneOphelia
 };
 
 /* Module Wrapper for xFires Story Components */
@@ -28,3 +31,4 @@ StoryXFires.RadiativePowerThreshold = RadiativePowerThresholdModule;
 StoryXFires.BurnedArea = BurnedAreaModule;
 StoryXFires.IntroModule = IntroModule;
 StoryXFires.NamingTheBeast = NamingTheBeast;
+StoryXFires.HurricaneOphelia = HurricaneOphelia

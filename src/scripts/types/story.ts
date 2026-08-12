@@ -161,6 +161,7 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
     | { type: "burnedArea" }
     | { type: "intro" }
     | { type: "namingTheBeast" }
+    | { type: "hurricaneOphelia" }
   );
 
 type LegendEntry = {
@@ -238,4 +239,5 @@ export const storyXFiresModuleMap: Record<
   burnedArea: StoryXFires.BurnedArea,
   intro: StoryXFires.IntroModule,
   namingTheBeast: StoryXFires.NamingTheBeast,
+  hurricaneOphelia: StoryXFires.HurricaneOphelia,
 };
