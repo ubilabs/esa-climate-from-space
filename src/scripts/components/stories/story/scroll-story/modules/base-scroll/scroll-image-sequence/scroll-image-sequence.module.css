@@ -1,5 +1,6 @@
 .sequenceContainer {
-  opacity:  var(--sequence-opacity);
+  height: 100%;
+  opacity: var(--sequence-opacity);
   align-items: center;
   display: flex;
   justify-content: center;
@@ -12,5 +13,16 @@
     max-height: 100%;
     max-width: 100%;
     width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .sequenceContainer {
+    overflow: hidden;
+
+    .scrollImageSequence {
+      height: 100%;
+      width: 100%;
+    }
   }
 }
