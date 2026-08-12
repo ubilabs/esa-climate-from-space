@@ -123,11 +123,12 @@ export const uiEmbedElements: UiEmbedElement[] = [
 // @ts-expect-error - injected via vite
 const version = INFO_VERSION;
 const baseUrlTiles = `https://storage.googleapis.com/esa-cfs-tiles/${version}`;
+const baseUrlStorageCloud = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
 let baseUrlStorage = "/";
 
 // use content from local server
 if (import.meta.env.PROD) {
-  baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}/`;
+  baseUrlStorage = `${baseUrlStorageCloud}/`;
 }
 
 type BasemapId =
@@ -191,6 +192,7 @@ export default {
     layerIcon: `${baseUrlTiles}/{id}/icon.png`,
     storyOfflinePackage: `${baseUrlStorage}stories/{id}/package.zip`,
     storyMediaBase: `${baseUrlStorage}stories/{id}`,
+    storyImageSequenceBase: `${baseUrlStorageCloud}/stories/{id}`,
     stories: `${baseUrlStorage}stories/stories-{lang}.json`,
     story: `${baseUrlStorage}stories/{id}/{id}-{lang}.json`,
     storySharedConfig: `${baseUrlStorage}stories/{id}/{id}-config.json`,

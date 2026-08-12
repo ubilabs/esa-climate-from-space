@@ -10,7 +10,8 @@ import { motion, useMotionValueEvent, useTransform } from "motion/react";
 import { useScrollModule } from "../use-scroll-module";
 
 import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
-import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
+import mainConfig from "../../../../../../../config/main";
+import { replaceUrlPlaceholders } from "../../../../../../../libs/replace-url-placeholders";
 import {
   getImageSequenceFrameIndex,
   getImageSequenceManifestSrc,
@@ -72,7 +73,11 @@ export default function ScrollImageSequence({ className, sequence }: Props) {
     [config.imageSequence.progressRange],
   );
 
-  const frameBasePath = getStoryAssetUrl(story?.id ?? "", sequence.path);
+  const storyImageSequenceBase = replaceUrlPlaceholders(
+    mainConfig.api.storyImageSequenceBase,
+    { id: story?.id ?? "" },
+  );
+  const frameBasePath = `${storyImageSequenceBase}/${sequence.path}`;
   const manifestSrc = getImageSequenceManifestSrc(frameBasePath);
 
   const drawImageCover = useCallback(

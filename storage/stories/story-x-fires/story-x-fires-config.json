@@ -187,6 +187,25 @@
         }
       ],
       "lengthFactor": 10
+    },
+    {
+      "globeKeyframes": [
+        {
+          "progress": 1,
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 1
+            },
+            "location": {
+              "lat": 48.5074,
+              "lng": -25.1278,
+              "altitude": 20040000
+            }
+          }
+        }
+      ],
+      "lengthFactor": 10
     }
   ]
 }
