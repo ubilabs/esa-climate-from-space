@@ -1,4 +1,5 @@
 .scrollText {
+  z-index:1;
   text-wrap: pretty;
   width: min(90%, 1400px);
   margin: 0 auto;
