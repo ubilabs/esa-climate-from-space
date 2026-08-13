@@ -161,7 +161,6 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
     | { type: "radiativePowerThreshold" }
     | { type: "burnedArea" }
     | { type: "namingTheBeast" }
-    | { type: "portugalDataLayers" }
   );
 
 type LegendEntry = {
@@ -239,5 +238,6 @@ export const storyXFiresModuleMap: Record<
   radiativePowerThreshold: StoryXFires.RadiativePowerThreshold,
   burnedArea: StoryXFires.BurnedArea,
   namingTheBeast: StoryXFires.NamingTheBeast,
+  hurricaneOphelia: StoryXFires.HurricaneOphelia,
   portugalDataLayers: StoryXFires.PortugalDataLayers,
 };

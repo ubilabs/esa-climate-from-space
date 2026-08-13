@@ -1,45 +1,44 @@
 import { StoryXFiresModule } from "../../../../../../../types/story";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
-import { useInView } from "motion/react";
-import { useRef } from "react";
-
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
-import GlobalFires from "./global-fires/global-fires";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
+import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
 
 const animationConfig = {
+  imageSequence: {
+    progressRange: [0, 1],
+    input: [0, 0.95, 1],
+    output: [100, 100, 0],
+  },
   scrollText1: {
-    input: [0, 0.225, 0.3],
-    output: ["0%", "0%", "-100%"],
+    input: [0, 0.075, 0.225, 0.3],
+    output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText2: {
     input: [0.3, 0.375, 0.525, 0.55],
     output: ["100%", "0%", "0%", "-100%"],
   },
-  scrollText3: {
-    input: [0.55, 0.675, 0.825, 0.9],
-    output: ["100%", "0%", "0%", "-100%"],
-  },
 };
 
-export type NamingTheBeastConfig = typeof animationConfig;
+export type HurricanOpheliaConfig = typeof animationConfig;
 
-export default function NamingTheBeast() {
+export default function HurricanOphelia() {
   const { module, getRefCallback } = useModuleContent();
-  const xFiresModule = module as StoryXFiresModule;
-  const ref = useRef(null);
 
-  const isModuleInView = useInView(ref);
+  const xFiresModule = module as StoryXFiresModule & {
+    imageSequence: {
+      path: string;
+    };
+  };
 
   return (
     <ScrollModule
-      refTarget={ref}
       config={animationConfig}
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
-        {isModuleInView && <GlobalFires />}
+        <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <ScrollText
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
@@ -49,11 +48,6 @@ export default function NamingTheBeast() {
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
-        />
-        <ScrollText
-          text={xFiresModule.content?.scrollText3 || ""}
-          inputRange={animationConfig.scrollText3.input}
-          outputRange={animationConfig.scrollText3.output}
         />
       </ScrollModule.StickyContainer>
     </ScrollModule>

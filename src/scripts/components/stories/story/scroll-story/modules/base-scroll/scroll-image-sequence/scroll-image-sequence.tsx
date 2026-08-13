@@ -26,7 +26,7 @@ import cx from "classnames";
 import styles from "./scroll-image-sequence.module.css";
 
 interface Props {
-  className: string;
+  className?: string;
   sequence: ImageSequenceSource;
 }
 

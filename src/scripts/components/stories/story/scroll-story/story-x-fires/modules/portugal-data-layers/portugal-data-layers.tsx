@@ -11,8 +11,8 @@ import styles from "./portugal-data-layers.module.css";
 
 const animationConfig = {
   scrollText1: {
-    input: [0.025, 0.05, 0.1, 0.125],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: [0, 0.1, 0.125],
+    output: ["0%", "0%", "-100%"],
   },
   scrollText2: {
     input: [0.175, 0.2, 0.25, 0.275],
