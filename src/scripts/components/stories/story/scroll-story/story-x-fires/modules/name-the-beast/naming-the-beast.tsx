@@ -10,8 +10,8 @@ import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 
 const animationConfig = {
   scrollText1: {
-    input: [0, 0.075, 0.225, 0.3],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: [0, 0.225, 0.3],
+    output: ["0%", "0%", "-100%"],
   },
   scrollText2: {
     input: [0.3, 0.375, 0.525, 0.55],
