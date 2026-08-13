@@ -11,7 +11,7 @@
   grid-auto-rows: 5rem;
   margin: auto 0;
   padding-top: 3rem;
-  perspective: 20000px;
+  perspective: none;
 
   @media (--desktop-viewport) {
     padding-top: 5rem;
