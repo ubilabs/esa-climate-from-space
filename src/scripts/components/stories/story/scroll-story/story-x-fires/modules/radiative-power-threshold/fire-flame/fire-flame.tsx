@@ -9,6 +9,7 @@ import {
 
 import { StoryXFiresModule } from "../../../../../../../../types/story";
 import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 
 import { useScrollModule } from "../../../../modules/base-scroll/use-scroll-module";
 import { RadiativePowerThresholdAnimationConfig } from "../radiative-power-threshold";
@@ -35,6 +36,8 @@ const transitionConfig = {
 };
 
 export const FireFlame: FunctionComponent = () => {
+  const { isMobile } = useScreenInfo();
+
   const { module } = useModuleContent();
   const xFiresModule = module as StoryXFiresModule;
 
@@ -148,7 +151,7 @@ export const FireFlame: FunctionComponent = () => {
               animate={{ y: isFlameExpanded ? -85 : 0 }}
             >
               <path
-                d="M60 115L100 100L100 95"
+                d={`M60 115L100 ${isMobile ? 88 : 100}L100 ${isMobile ? 83 : 95}`}
                 fill="none"
                 stroke="#FFCC4E"
                 strokeWidth="0.5"
@@ -170,7 +173,7 @@ export const FireFlame: FunctionComponent = () => {
 
             {/* Path to radiative power threshold legend */}
             <path
-              d="M60 125L30 135L30 140"
+              d={`M60 125L${isMobile ? 42 : 30} 135L${isMobile ? 42 : 30} 140`}
               fill="none"
               stroke="#ED1B2F"
               strokeWidth="0.5"
@@ -183,13 +186,12 @@ export const FireFlame: FunctionComponent = () => {
               <motion.li
                 className={styles.fireEvent}
                 initial={{
-                  bottom:
-                    "calc(43 / var(--x-fires-flame-illustation-height) * 100%)",
+                  bottom: `calc(${isMobile ? 55 : 43} / var(--x-fires-flame-illustation-height) * 100%)`,
                 }}
                 animate={{
                   bottom: isFlameExpanded
-                    ? "calc(128 / var(--x-fires-flame-illustation-height) * 100%)"
-                    : "calc(43 / var(--x-fires-flame-illustation-height) * 100%)",
+                    ? `calc(${isMobile ? 140 : 128} / var(--x-fires-flame-illustation-height) * 100%)`
+                    : `calc(${isMobile ? 55 : 43} / var(--x-fires-flame-illustation-height) * 100%)`,
                 }}
               >
                 <span className={styles.value}>{fireEventValue}&nbsp;MW</span>

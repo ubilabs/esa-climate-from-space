@@ -9,6 +9,7 @@ import {
 
 import { StoryXFiresModule } from "../../../../../../../../types/story";
 import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 
 import { useScrollModule } from "../../../../modules/base-scroll/use-scroll-module";
 import { BurnedAreaAnimationConfig } from "../burned-area";
@@ -37,6 +38,8 @@ const transitionConfig = {
 };
 
 export const FireRing: FunctionComponent = () => {
+  const { isMobile } = useScreenInfo();
+
   const { module } = useModuleContent();
   const xFiresModule = module as StoryXFiresModule;
 
@@ -307,7 +310,7 @@ export const FireRing: FunctionComponent = () => {
 
             {/* Path to ground area legend */}
             <path
-              d="M60 94L20 130L20 135"
+              d={`M60 94L${isMobile ? 39 : 29} 130L${isMobile ? 39 : 29} 135`}
               fill="none"
               stroke="#ED1B2F"
               strokeWidth="0.5"
