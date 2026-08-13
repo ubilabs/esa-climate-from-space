@@ -10,14 +10,16 @@ import BurnedAreaModule from "./modules/burned-area/burned-area";
 import NamingTheBeast from "./modules/name-the-beast/naming-the-beast";
 import HurricaneOphelia from "./modules/hurricane-ophelia/hurricane-ophelia";
 import PortugalDataLayersModule from "./modules/portugal-data-layers/portugal-data-layers";
+import OutroModule from "./modules/outro/outro";
 
 export type StoryXFiresCompoundComponents = {
   IntroModule: typeof IntroModule;
   RadiativePowerThreshold: typeof RadiativePowerThresholdModule;
   BurnedArea: typeof BurnedAreaModule;
   NamingTheBeast: typeof NamingTheBeast;
-  HurricaneOphelia: typeof HurricaneOphelia
+  HurricaneOphelia: typeof HurricaneOphelia;
   PortugalDataLayers: typeof PortugalDataLayersModule;
+  Outro: typeof OutroModule;
 };
 
 /* Module Wrapper for xFires Story Components */
@@ -32,5 +34,6 @@ StoryXFires.IntroModule = IntroModule;
 StoryXFires.RadiativePowerThreshold = RadiativePowerThresholdModule;
 StoryXFires.BurnedArea = BurnedAreaModule;
 StoryXFires.NamingTheBeast = NamingTheBeast;
-StoryXFires.HurricaneOphelia = HurricaneOphelia
+StoryXFires.HurricaneOphelia = HurricaneOphelia;
 StoryXFires.PortugalDataLayers = PortugalDataLayersModule;
+StoryXFires.Outro = OutroModule;
