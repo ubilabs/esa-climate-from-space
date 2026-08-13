@@ -276,14 +276,14 @@
               "y": -1
             },
             "location": {
-              "lat": 48.5074,
-              "lng": -25.1278,
-              "altitude": 20040000
+              "lat": -40,
+              "lng": -30,
+              "altitude": 18040000
             }
           }
         }
       ],
-      "lengthFactor": 10
+      "lengthFactor": 27
     },
     {
       "globeKeyframes": [
@@ -306,14 +306,14 @@
               "y": -1
             },
             "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 18040000
+              "lat": 48.5074,
+              "lng": -25.1278,
+              "altitude": 20040000
             }
           }
         }
       ],
-      "lengthFactor": 27
+      "lengthFactor": 16
     }
   ]
 }
