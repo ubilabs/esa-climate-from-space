@@ -157,10 +157,11 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
   lengthFactor: number;
   content?: Record<string, string>;
 } & (
+    | { type: "intro" }
     | { type: "radiativePowerThreshold" }
     | { type: "burnedArea" }
-    | { type: "intro" }
     | { type: "namingTheBeast" }
+    | { type: "portugalDataLayers" }
   );
 
 type LegendEntry = {
@@ -234,8 +235,9 @@ export const storyXFiresModuleMap: Record<
   StoryXFiresModule["type"],
   FunctionComponent<StorySectionProps>
 > = {
+  intro: StoryXFires.IntroModule,
   radiativePowerThreshold: StoryXFires.RadiativePowerThreshold,
   burnedArea: StoryXFires.BurnedArea,
-  intro: StoryXFires.IntroModule,
   namingTheBeast: StoryXFires.NamingTheBeast,
+  portugalDataLayers: StoryXFires.PortugalDataLayers,
 };
