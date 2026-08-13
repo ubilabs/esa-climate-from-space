@@ -37,6 +37,18 @@
         "fireRingIllustrationDescription": "Illustration showing burned and ground areas.",
         "legendLabelBurnedAreaThreshold": "Burned Area Threshold"
       }
+    },
+    {
+      "type": "portugalDataLayers",
+      "content": {
+        "scrollText1": "They used a Land Cover map to identify highly flammable vegetation types and Biomass to estimate fuel load.",
+        "scrollText2": "Soil Moisture and Land Surface Temperature datasets reveal the severe drought conditions that primed the landscape for an extreme fire event.",
+        "scrollText3": "By stacking these variables, researchers can reconstruct exactly how a series of extreme events primed, consumed, and altered the landscape.",
+        "labelLayer1": "Land Cover",
+        "labelLayer2": "Biomass",
+        "labelLayer3": "Soil Moisture",
+        "labelLayer4": "Land Surface\nTemperature"
+      }
     }
   ]
 }

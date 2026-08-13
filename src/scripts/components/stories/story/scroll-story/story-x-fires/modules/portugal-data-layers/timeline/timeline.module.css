@@ -1,0 +1,17 @@
+.label {
+  --x-fires-timeline-opacity: 0;
+
+  justify-self: center;
+  margin: 3rem 0 0;
+  opacity: var(--x-fires-timeline-opacity);
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+  font-family: NotesEsa;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+  letter-spacing: 0.175px;
+
+  @media (--desktop-viewport) {
+    margin-top: 4rem;
+  }
+}
