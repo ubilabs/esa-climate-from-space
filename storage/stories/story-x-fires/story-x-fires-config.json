@@ -127,6 +127,51 @@
     {
       "globeKeyframes": [
         {
+          "progress": 0.1,
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 0,
+              "lng": 0,
+              "altitude": 20040000
+            }
+          },
+          "desktop": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 0,
+              "lng": 0,
+              "altitude": 20040000
+            }
+          }
+        },
+        {
+          "progress": 0.9,
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 0,
+              "lng": 0,
+
+              "altitude": 20040000
+            }
+          }
+        }
+      ],
+      "lengthFactor": 22
+    },
+    {
+      "globeKeyframes": [
+        {
           "progress": 0,
           "mobile": {
             "containerPosition": {
