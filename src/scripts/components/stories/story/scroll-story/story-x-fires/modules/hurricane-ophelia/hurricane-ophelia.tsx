@@ -12,11 +12,15 @@ const animationConfig = {
     output: [100, 100, 0],
   },
   scrollText1: {
-    input: [0, 0.075, 0.225, 0.3],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: [0, 0.225, 0.3],
+    output: ["0%", "0%", "-100%"],
   },
   scrollText2: {
     input: [0.3, 0.375, 0.525, 0.55],
+    output: ["100%", "0%", "0%", "-100%"],
+  },
+  scrollText3: {
+    input: [0.55, 0.6, 0.76, 0.85],
     output: ["100%", "0%", "0%", "-100%"],
   },
 };
@@ -48,6 +52,11 @@ export default function HurricanOphelia() {
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
+        />
+        <ScrollText
+          text={xFiresModule.content?.scrollText3 || ""}
+          inputRange={animationConfig.scrollText3.input}
+          outputRange={animationConfig.scrollText3.output}
         />
       </ScrollModule.StickyContainer>
     </ScrollModule>
