@@ -5,12 +5,11 @@ import { setGlobeSpinning } from "../../../../../../../../reducers/globe/spinnin
 import { useEffect, useRef } from "react";
 import { setSelectedLayerIds } from "../../../../../../../../reducers/layers";
 import { Layers } from "../../../constants/globe";
-
-const spinStart = 0.2;
-const spinEnd = 0.8;
+import type { NamingTheBeastConfig } from "../naming-the-beast";
 
 export default function GlobalFires() {
-  const { scrollYProgress } = useScrollModule();
+  const { scrollYProgress, config } =
+    useScrollModule<NamingTheBeastConfig>();
   const isSpinning = useRef(false);
   const hasSelectedLayer = useRef(false);
   const dispatch = useDispatch();
@@ -30,7 +29,8 @@ export default function GlobalFires() {
       hasSelectedLayer.current = false;
     }
 
-    const shouldSpin = progress >= spinStart && progress <= spinEnd;
+    const shouldSpin =
+      progress >= config.spinStart && progress <= config.spinEnd;
 
     if (shouldSpin === isSpinning.current) return;
 

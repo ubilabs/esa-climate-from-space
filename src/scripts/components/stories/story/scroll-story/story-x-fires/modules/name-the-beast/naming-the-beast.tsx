@@ -1,7 +1,6 @@
 import { StoryXFiresModule } from "../../../../../../../types/story";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
-import { useInView } from "motion/react";
 import { useRef } from "react";
 
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
@@ -9,6 +8,8 @@ import GlobalFires from "./global-fires/global-fires";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 
 const animationConfig = {
+  spinStart: 0.2,
+  spinEnd: 0.9,
   scrollText1: {
     input: [0, 0.225, 0.3],
     output: ["0%", "0%", "-100%"],
@@ -30,8 +31,6 @@ export default function NamingTheBeast() {
   const xFiresModule = module as StoryXFiresModule;
   const ref = useRef(null);
 
-  const isModuleInView = useInView(ref);
-
   return (
     <ScrollModule
       refTarget={ref}
@@ -39,7 +38,7 @@ export default function NamingTheBeast() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
-        {<GlobalFires />}
+        <GlobalFires />
         <ScrollText
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
