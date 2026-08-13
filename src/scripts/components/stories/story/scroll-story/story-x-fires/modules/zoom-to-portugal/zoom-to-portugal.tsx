@@ -9,21 +9,29 @@ export default function ZoomToPortugal() {
   const { scrollYProgress } = useScrollModule();
 
   const dispatch = useDispatch();
-  const hasSelectedLayer = useRef(false);
+  const selectedLayer = useRef<string | null>(null);
 
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
     const isInsideModule = progress > 0 && progress < 1;
 
-    if (isInsideModule && !hasSelectedLayer.current) {
-      hasSelectedLayer.current = true;
+    if (!isInsideModule) {
+      selectedLayer.current = null;
+      return;
+    }
+
+    const layerId =
+      progress >= 0.5
+        ? Layers.XFIRES_EARTH_MASK_PORTUGAL
+        : Layers.XFIRES_EARTH_MASK;
+
+    if (layerId !== selectedLayer.current) {
+      selectedLayer.current = layerId;
       dispatch(
         setSelectedLayerIds({
-          layerId: Layers.XFIRES_EARTH_MASK,
+          layerId,
           isPrimary: true,
         }),
       );
-    } else if (!isInsideModule) {
-      hasSelectedLayer.current = false;
     }
   });
 
@@ -31,17 +39,22 @@ export default function ZoomToPortugal() {
     const progress = scrollYProgress.get();
 
     if (progress > 0 && progress < 1) {
-      hasSelectedLayer.current = true;
+      const layerId =
+        progress >= 0.5
+          ? Layers.XFIRES_EARTH_MASK_PORTUGAL
+          : Layers.XFIRES_EARTH_MASK;
+
+      selectedLayer.current = layerId;
       dispatch(
         setSelectedLayerIds({
-          layerId: Layers.XFIRES_EARTH_MASK,
+          layerId,
           isPrimary: true,
         }),
       );
     }
 
     return () => {
-      hasSelectedLayer.current = false;
+      selectedLayer.current = null;
     };
   }, [dispatch, scrollYProgress]);
 
