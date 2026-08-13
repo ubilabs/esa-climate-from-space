@@ -47,6 +47,13 @@
       }
     },
     {
+      "type": "zoomToPortugal",
+      "content": {
+        "scrollText1": "Ground Truth",
+        "scrollText2": "To recognise an extreme fire is only half the story. To understand why they're happening, we have to look at more diverse data. ESA’s Climate Change Initiative is examining several climate variables that can be drivers of wildfires."
+      }
+    },
+    {
       "type": "portugalDataLayers",
       "content": {
         "scrollText1": "They used a Land Cover map to identify highly flammable vegetation types and Biomass to estimate fuel load.",
