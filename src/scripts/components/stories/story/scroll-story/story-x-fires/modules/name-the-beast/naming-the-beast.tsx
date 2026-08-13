@@ -39,7 +39,7 @@ export default function NamingTheBeast() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
-        {isModuleInView && <GlobalFires />}
+        {<GlobalFires />}
         <ScrollText
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
