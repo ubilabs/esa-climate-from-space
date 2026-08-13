@@ -62,8 +62,12 @@
 
     &.radiativePowerThreshold {
       top: calc(138 / var(--x-fires-flame-illustation-height) * 100%);
-      left: calc(30 / var(--x-fires-flame-illustation-width) * 100%);
+      left: calc(42 / var(--x-fires-flame-illustation-width) * 100%);
       background-color: #ed1b2f;
+
+      @media (--desktop-viewport) {
+        left: calc(30 / var(--x-fires-flame-illustation-width) * 100%);
+      }
     }
   }
 }
