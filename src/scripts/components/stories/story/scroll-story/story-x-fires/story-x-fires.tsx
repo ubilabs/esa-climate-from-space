@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useLayoutEffect } from "react";
 
 import { useStoryLayer } from "../../../../../hooks/use-story-layer";
 
@@ -13,6 +13,7 @@ import PortugalDataLayersModule from "./modules/portugal-data-layers/portugal-da
 import ZoomToPortugalModule from "./modules/zoom-to-portugal/zoom-to-portugal-module";
 import AustralianFiresModule from "./modules/australian-fires/australian-fires";
 import OutroModule from "./modules/outro/outro";
+import { setGlobeContainerOpacity } from "../../../../../libs/globe-container";
 
 export type StoryXFiresCompoundComponents = {
   IntroModule: typeof IntroModule;
@@ -30,6 +31,12 @@ export type StoryXFiresCompoundComponents = {
 export const StoryXFires: FunctionComponent &
   StoryXFiresCompoundComponents = () => {
   useStoryLayer(Layers.XFIRES_GLOBAL_FIRES, Object.values(Layers));
+
+  useLayoutEffect(() => {
+    setGlobeContainerOpacity(0);
+
+    return () => setGlobeContainerOpacity(1);
+  }, []);
 
   return <Story />;
 };
