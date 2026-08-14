@@ -17,6 +17,8 @@
     --x-fires-layer-image-scale-factor: 0;
     --x-fires-layer-image-translate-x: 25%;
     --x-fires-layer-image-translate-y: -20%;
+    --x-fires-layer-image-aspect-ratio: 1280/720;
+    --x-fires-layer-image-width: 37vw;
 
     transform: rotate3d(
         calc(var(--x-fires-layer-image-perspective-factor) * 1),
@@ -41,20 +43,26 @@
       scale(
         calc(
           1 + var(--x-fires-layer-image-scale-factor) *
-            var(--x-fires-layer-number)
+            (
+              (
+                  (96 + var(--x-fires-layer-number)) * 1vw /
+                    var(--x-fires-layer-image-width)
+                ) -
+                1
+            )
         )
       );
-    width: 35vw;
-    height: 70vw;
+    width: var(--x-fires-layer-image-width);
+    height: calc(
+      var(--x-fires-layer-image-width) * var(--x-fires-layer-image-aspect-ratio)
+    );
     background-color: #fff;
     box-shadow: 2rem 3rem 1.5rem rgba(0, 0, 0, 0.6);
 
     @media (--desktop-viewport) {
       --x-fires-layer-image-translate-x: -15%;
       --x-fires-layer-image-translate-y: -15%;
-
-      width: 20vw;
-      height: 40vw;
+      --x-fires-layer-image-width: 22.5vw;
     }
   }
 

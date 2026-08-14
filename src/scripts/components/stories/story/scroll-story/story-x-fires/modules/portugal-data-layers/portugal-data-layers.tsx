@@ -83,24 +83,22 @@ export default function PortugalDataLayersModule() {
 
   return (
     <ScrollModule
+      className={styles.scrollModuleContainer}
       config={animationConfig}
       lengthFactor={xFiresModule.lengthFactor}
     >
-      <ScrollModule.StickyContainer
-        className={styles.container}
-        isGrid
-        ref={getRefCallback(0, 0)}
-      >
-        <Timeline />
+      <div className={styles.layers}>
+        {([4, 3, 2, 1] as const).map((layerNumber) => (
+          <DataLayer
+            key={`portugal-data-layer-${layerNumber}`}
+            layerNumber={layerNumber}
+            label={xFiresModule.content?.[`labelLayer${layerNumber}`] || ""}
+          />
+        ))}
+      </div>
 
-        <div className={styles.layers}>
-          {([4, 3, 2, 1] as const).map((layerNumber) => (
-            <DataLayer
-              layerNumber={layerNumber}
-              label={xFiresModule.content?.[`labelLayer${layerNumber}`] || ""}
-            />
-          ))}
-        </div>
+      <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
+        <Timeline />
         <Dimmer />
         <ScrollText
           className={styles.scrollText}

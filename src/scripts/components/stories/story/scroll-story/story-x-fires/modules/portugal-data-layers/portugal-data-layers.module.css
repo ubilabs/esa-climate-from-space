@@ -1,15 +1,19 @@
-.container {
-  overflow: hidden;
+.scrollModuleContainer {
+  z-index: 1;
+  height: calc(var(--story-height) * (var(--scroll-length-factor) + 1));
+  margin-bottom: calc(var(--story-height) * -1);
 }
 
 .layers {
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
   transform-style: preserve-3d;
   display: grid;
   align-items: center;
   justify-content: center;
   grid-auto-columns: 100vw;
   grid-auto-rows: 5rem;
-  margin: auto 0;
   padding-top: 3rem;
   perspective: none;
 
