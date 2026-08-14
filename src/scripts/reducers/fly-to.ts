@@ -1,11 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CameraView } from "@ubilabs/esa-webgl-globe";
 
-export interface FlyToPayload extends CameraView {
-  isAnimated: boolean;
-}
+export type FlyToPayload = Partial<CameraView>;
 // If we pass empty object, the app will stop working. Fix
-const initialState: FlyToPayload | null = null;
+const initialState = null as FlyToPayload | null;
 
 const flyToSlice = createSlice({
   name: "flyTo",

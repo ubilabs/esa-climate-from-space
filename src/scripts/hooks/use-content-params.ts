@@ -48,7 +48,7 @@ export const useContentParams = () => {
   }, [paramStoryIndex]);
 
   const slideIndex = useMemo(() => {
-    return paramSlideIndex ? parseInt(paramSlideIndex, 10) : null;
+    return paramSlideIndex ? parseInt(paramSlideIndex, 10) : 0;
   }, [paramSlideIndex]);
 
   const currentStoryId = useMemo(() => {

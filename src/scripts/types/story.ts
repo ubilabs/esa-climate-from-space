@@ -101,6 +101,8 @@ export type ImageModule = BaseModule & {
   type: ImageGalleryModuleType;
 };
 
+export type ImageModuleSlide = BaseModuleSlide;
+
 export type ImageCarouselSlide = BaseModuleSlide & {
   layer?: {
     layerId: string;
@@ -194,6 +196,7 @@ export type BaseModuleSlide = {
   focus?: ImageFocus;
   flag: string;
   caption: string;
+  leading?: boolean;
 };
 
 // Extend with union for other block types if needed

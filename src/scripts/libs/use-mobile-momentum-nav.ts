@@ -73,7 +73,6 @@ const applyDragResistance = (offset: number, stepPx: number): number => {
 
 const isSwipeGesture = (
   info: PanInfo,
-  stepPx: number,
   draggedSteps: number,
 ): boolean => {
   if (Math.abs(info.velocity.y) < MIN_SWIPE_VELOCITY) {
@@ -139,13 +138,13 @@ export const useMobileMomentumNav = ({
     onIndexChange?.(committedIndex);
   };
 
-  const animateTo = (nextIndex: number, duration: number, ease: string) => {
+  const animateTo = (nextIndex: number, duration: number) => {
     stop();
     commitIndex(nextIndex);
     animationRef.current = animate(index, nextIndex, {
       type: "tween",
       duration,
-      ease,
+      ease: "easeOut",
       onComplete: () => {
         animationRef.current = null;
         finishAt(nextIndex);
@@ -230,11 +229,10 @@ export const useMobileMomentumNav = ({
         const nearestIndex = Math.round(currentIndex);
         const draggedSteps = Math.abs(currentIndex - dragStartIndexRef.current);
 
-        if (!isSwipeGesture(info, stepPx, draggedSteps)) {
+        if (!isSwipeGesture(info, draggedSteps)) {
           animateTo(
             normalizeIndex(nearestIndex, itemCount, infinite),
             DRAG_SNAP_DURATION,
-            "easeOut",
           );
           return;
         }

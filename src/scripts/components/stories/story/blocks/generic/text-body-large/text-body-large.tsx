@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { StorySectionProps } from "../../../../../../types/story";
+import { ImageModule, StorySectionProps } from "../../../../../../types/story";
 
 import { useModuleContent } from "../../../../../../providers/story/module-content/use-module-content";
 import { TextBodyLargeSlide } from "./text-body-large-slide/text-body-large-slide";
@@ -19,7 +19,7 @@ import styles from "./text-body-large.module.css";
  * @returns {JSX.Element} The rendered text body large component.
  */
 const TextBodyLarge: FunctionComponent<StorySectionProps> = () => {
-  const { module, storyId, getRefCallback } = useModuleContent();
+  const { module, storyId, getRefCallback } = useModuleContent<ImageModule>();
   const { slides = [] } = module;
 
   return (
