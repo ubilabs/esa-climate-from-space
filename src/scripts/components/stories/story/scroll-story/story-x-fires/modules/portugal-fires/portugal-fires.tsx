@@ -8,20 +8,20 @@ import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 
 const animationConfig = {
   imageSequence: {
-    progressRange: [0, 1],
+    progressRange: [0.15, 1],
     input: [0, 0.95, 1],
     output: [100, 100, 0],
   },
   scrollText1: {
-    input: [0, 0.075, 0.225, 0.3],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: [0, 0.1, 0.15, 0.225, 0.3],
+    output: ["100%", "100%", "0%", "0%", "-100%"],
   },
   scrollText2: {
-    input: [0.3, 0.375, 0.525, 0.6],
+    input: [0.35, 0.4, 0.5, 0.6],
     output: ["100%", "0%", "0%", "-100%"],
   },
   dimmer: {
-    input: [0.525, 0.6],
+    input: [0.6, 0.675],
     output: [0.5, 0],
   },
 } satisfies DimmerAnimationConfig;

@@ -4,7 +4,7 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
-import { DataLayer } from "./data-layer/data-layer";
+import { Layers } from "./layers/layers";
 import { Timeline } from "./timeline/timeline";
 
 import styles from "./portugal-data-layers.module.css";
@@ -62,6 +62,10 @@ const animationConfig = {
     perspective: [0.875, 0.925],
     translate: [0.925, 0.95],
     scale: [0.875, 0.95],
+    fadeOut: {
+      input: [0.9, 1],
+      output: ["100%", "0%"],
+    },
   },
   dimmer: {
     input: [0.1, 0.125, 0.175, 0.2, 0.25, 0.275, 0.325, 0.35, 0.4, 0.425],
@@ -83,20 +87,10 @@ export default function PortugalDataLayersModule() {
 
   return (
     <ScrollModule
-      className={styles.scrollModuleContainer}
       config={animationConfig}
       lengthFactor={xFiresModule.lengthFactor}
     >
-      <div className={styles.layers}>
-        {([4, 3, 2, 1] as const).map((layerNumber) => (
-          <DataLayer
-            key={`portugal-data-layer-${layerNumber}`}
-            layerNumber={layerNumber}
-            label={xFiresModule.content?.[`labelLayer${layerNumber}`] || ""}
-          />
-        ))}
-      </div>
-
+      <Layers content={xFiresModule.content} />
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <Timeline />
         <Dimmer />
