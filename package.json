@@ -9,7 +9,7 @@
     "clean": "rm -rf ./dist",
     "build": "npm run clean && tsc --build && vite build && npm run copy:assets",
     "copy:assets": "cp assets/images/favicon.ico dist/ && cp assets/images/share.png dist/",
-    "test": "npm run eslint && npm run license-check",
+    "test": "tsc --build && npm run eslint && npm run license-check",
     "eslint": "eslint ./src/scripts",
     "format:js": "prettier 'src/scripts/**/*.{ts,tsx}'",
     "prettier": "prettier ./src/scripts/**/*.{ts,tsx} --write",
