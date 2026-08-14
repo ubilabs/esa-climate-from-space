@@ -99,7 +99,7 @@
         },
         {
           "layer": {
-            "layerId": "soil_moisture.sm",
+            "layerId": "soil_moisture.Anomaly",
             "name": "Soil Moisture"
           },
           "altText": "Soil moisture",
