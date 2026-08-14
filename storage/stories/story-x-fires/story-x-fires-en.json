@@ -77,6 +77,16 @@
       }
     },
     {
+      "type": "australianFires",
+      "imageSequence": {
+        "path": "assets/video-australian-fires"
+      },
+      "content": {
+        "scrollText1": "In 2020, Australian wildfire smoke reached the stratosphere, warming it and prolonging that year’s Antarctic ozone hole.",
+        "scrollText2": "Ash from the fires fertilised plankton blooms thousands of kilometres away in the South Pacific, boosting carbon absorption by the ocean."
+      }
+    },
+    {
       "type": "outro",
       "content": {
         "headline": "Science in Service of Society",
