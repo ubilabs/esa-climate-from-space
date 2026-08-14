@@ -75,6 +75,52 @@
         "scrollText2": "The impact didn't stop at Portugal's borders. The hurricane pulled smoke plumes north across Spain and France to the UK. Black rain was reported falling as far away as Estonia.",
         "scrollText3": "Wildfires should not be seen as isolated events. They are deeply integrated into our changing climate."
       }
+    },
+    {
+      "type": "outro",
+      "content": {
+        "headline": "Science in Service of Society",
+        "description": "The CCI XFires project is not only looking back but forward: They are creating a unified global database of extreme fires and examining their drivers, to test and improve global fire models.\n\nThis allows a transition from reacting to extreme fires, to proactively protecting against future events, safeguarding ecosystems and human lives.\n\nThe ultimate goal of XFires is to help us predict, prepare for, and mitigate future climate risks."
+      },
+      "readMore": {
+        "headline": "Explore the data, the maps, and the science behind XFires",
+        "title": "EXPLORE",
+        "url": "/land"
+      },
+      "slides": [
+        {
+          "layer": {
+            "layerId": "land_cover.lccs_class",
+            "name": "Land Cover"
+          },
+          "altText": "Land cover",
+          "url": "assets/outro/land_cover.png"
+        },
+        {
+          "layer": {
+            "layerId": "biomass.agb",
+            "name": "Biomass"
+          },
+          "altText": "Biomass",
+          "url": "assets/outro/biomass.png"
+        },
+        {
+          "layer": {
+            "layerId": "soil_moisture.Anomaly",
+            "name": "Soil Moisture"
+          },
+          "altText": "Soil moisture",
+          "url": "assets/outro/soil_moisture.png"
+        },
+        {
+          "layer": {
+            "layerId": "land_surface_temperature.lst",
+            "name": "Land Surface Temperature"
+          },
+          "altText": "Land surface temperature",
+          "url": "assets/outro/land_surface_temperature.png"
+        }
+      ]
     }
   ]
 }

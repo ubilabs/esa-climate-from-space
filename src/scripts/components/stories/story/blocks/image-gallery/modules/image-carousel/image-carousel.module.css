@@ -47,12 +47,16 @@
       line-height: 140%; /* 42px */
     }
   }
+
   .readMore {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    max-width: calc(100vw - var(--story-padding) * 2);
     z-index: 1;
+    text-align: center;
+    text-wrap: pretty;
 
     @media (--desktop-viewport) {
       margin-top: 7.5rem;

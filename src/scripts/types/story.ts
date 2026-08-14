@@ -113,6 +113,7 @@ export type ImageCarouselModule = ImageModule & {
   lengthFactor?: number;
   headerText?: string;
   readMore?: {
+    headline?: string;
     title: string;
     url: string;
   };
@@ -164,6 +165,7 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
     | { type: "portugalDataLayers" }
     | { type: "hurricaneOphelia" }
     | { type: "zoomToPortugal" }
+    | { type: "outro" }
   );
 
 type LegendEntry = {
@@ -243,5 +245,6 @@ export const storyXFiresModuleMap: Record<
   namingTheBeast: StoryXFires.NamingTheBeast,
   hurricaneOphelia: StoryXFires.HurricaneOphelia,
   portugalDataLayers: StoryXFires.PortugalDataLayers,
-  zoomToPortugal: StoryXFires.ZoomToPortugal
+  zoomToPortugal: StoryXFires.ZoomToPortugal,
+  outro: StoryXFires.Outro,
 };
