@@ -167,6 +167,7 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
     | { type: "burnedArea" }
     | { type: "namingTheBeast" }
     | { type: "portugalDataLayers" }
+    | { type: "portugalFires" }
     | { type: "hurricaneOphelia" }
     | { type: "canadianFires" }
     | { type: "zoomToPortugal" }
@@ -252,6 +253,7 @@ export const storyXFiresModuleMap: Record<
   hurricaneOphelia: StoryXFires.HurricaneOphelia,
   portugalDataLayers: StoryXFires.PortugalDataLayers,
   canadianFires: StoryXFires.CanadianFires,
+  portugalFires: StoryXFires.PortugalFires,
   zoomToPortugal: StoryXFires.ZoomToPortugal,
   australianFires: StoryXFires.AustralianFires,
   outro: StoryXFires.Outro,
