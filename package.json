@@ -7,7 +7,7 @@
   "scripts": {
     "start": "vite --port 8080",
     "clean": "rm -rf ./dist",
-    "build": "npm run clean && tsc && vite build && npm run copy:assets",
+    "build": "npm run clean && tsc --build && vite build && npm run copy:assets",
     "copy:assets": "cp assets/images/favicon.ico dist/ && cp assets/images/share.png dist/",
     "test": "npm run eslint && npm run license-check",
     "eslint": "eslint ./src/scripts",
