@@ -3,17 +3,34 @@ import { useScrollModule } from "../../../../modules/base-scroll/use-scroll-modu
 import { useDispatch } from "react-redux";
 import { setGlobeSpinning } from "../../../../../../../../reducers/globe/spinning";
 import { useEffect, useRef } from "react";
-
-const spinStart = 0.2;
-const spinEnd = 0.8;
+import { setSelectedLayerIds } from "../../../../../../../../reducers/layers";
+import { Layers } from "../../../constants/globe";
+import type { NamingTheBeastConfig } from "../naming-the-beast";
 
 export default function GlobalFires() {
-  const { scrollYProgress } = useScrollModule();
+  const { scrollYProgress, config } =
+    useScrollModule<NamingTheBeastConfig>();
   const isSpinning = useRef(false);
+  const hasSelectedLayer = useRef(false);
   const dispatch = useDispatch();
 
   useMotionValueEvent(scrollYProgress, "change", (progress) => {
-    const shouldSpin = progress >= spinStart && progress <= spinEnd;
+    const isInsideModule = progress > 0 && progress < 1;
+
+    if (isInsideModule && !hasSelectedLayer.current) {
+      hasSelectedLayer.current = true;
+      dispatch(
+        setSelectedLayerIds({
+          layerId: Layers.XFIRES_GLOBAL_FIRES,
+          isPrimary: true,
+        }),
+      );
+    } else if (!isInsideModule) {
+      hasSelectedLayer.current = false;
+    }
+
+    const shouldSpin =
+      progress >= config.spinStart && progress <= config.spinEnd;
 
     if (shouldSpin === isSpinning.current) return;
 
@@ -22,11 +39,24 @@ export default function GlobalFires() {
   });
 
   useEffect(() => {
+    const progress = scrollYProgress.get();
+
+    if (progress > 0 && progress < 1) {
+      hasSelectedLayer.current = true;
+      dispatch(
+        setSelectedLayerIds({
+          layerId: Layers.XFIRES_GLOBAL_FIRES,
+          isPrimary: true,
+        }),
+      );
+    }
+
     return () => {
       dispatch(setGlobeSpinning(false));
       isSpinning.current = false;
+      hasSelectedLayer.current = false;
     };
-  }, [dispatch]);
+  }, [dispatch, scrollYProgress]);
 
   return null;
 }
