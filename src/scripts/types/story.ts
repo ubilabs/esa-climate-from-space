@@ -157,6 +157,10 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
   globeKeyframes?: GlobeKeyframe[];
   lengthFactor: number;
   content?: Record<string, string>;
+  legend?: {
+    values: LegendEntry[];
+    description: string;
+  };
 } & (
     | { type: "intro" }
     | { type: "radiativePowerThreshold" }
@@ -164,6 +168,7 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
     | { type: "namingTheBeast" }
     | { type: "portugalDataLayers" }
     | { type: "hurricaneOphelia" }
+    | { type: "canadianFires" }
     | { type: "australianFires" }
     | { type: "outro" }
   );
@@ -245,6 +250,7 @@ export const storyXFiresModuleMap: Record<
   namingTheBeast: StoryXFires.NamingTheBeast,
   hurricaneOphelia: StoryXFires.HurricaneOphelia,
   portugalDataLayers: StoryXFires.PortugalDataLayers,
+  canadianFires: StoryXFires.CanadianFires,
   australianFires: StoryXFires.AustralianFires,
   outro: StoryXFires.Outro,
 };
