@@ -4,6 +4,7 @@
 
 .globe {
   transform: translate(var(--globe-container-x), var(--globe-container-y));
+  opacity: var(--globe-container-opacity);
   transition: transform 1.5s ease;
   height: 100%;
   width: 100%;

@@ -9,6 +9,7 @@ import {
 import { useScreenInfo } from "../../../../hooks/use-screen-info";
 
 import { quantize } from "../../../../libs/quantize";
+import { setGlobeContainerPosition } from "../../../../libs/globe-container";
 import { setFlyTo } from "../../../../reducers/fly-to";
 
 import { useStory } from "../../../../providers/story/use-story";
@@ -190,13 +191,6 @@ const GlobeScroll: FunctionComponent = () => {
     },
   );
 
-  const root = document.documentElement;
-
-  const updateGlobeContainerPosition = (x: number, y: number) => {
-    root.style.setProperty("--globe-container-y", `${y * -100}vh`);
-    root.style.setProperty("--globe-container-x", `${x * -100}vw`);
-  };
-
   // Dispatch interpolated globe position to store
   const updateGlobePosition = () => {
     if (haveMotionValuesChanges(globeMotions)) {
@@ -212,13 +206,13 @@ const GlobeScroll: FunctionComponent = () => {
 
   const setInitialGlobePositions = useEffectEvent(() => {
     if (x && y) {
-      updateGlobeContainerPosition(Number(x.get()), Number(y.get()));
+      setGlobeContainerPosition(Number(x.get()), Number(y.get()));
     }
     updateGlobePosition();
   });
 
   const resetGlobePositions = useEffectEvent(() => {
-    updateGlobeContainerPosition(0, 0);
+    setGlobeContainerPosition(0, 0);
     dispatch(setFlyTo(config.globe.view));
   });
 
@@ -232,7 +226,7 @@ const GlobeScroll: FunctionComponent = () => {
 
   useMotionValueEvent(scrollYProgress, "change", () => {
     if (x && y) {
-      updateGlobeContainerPosition(Number(x.get()), Number(y.get()));
+      setGlobeContainerPosition(Number(x.get()), Number(y.get()));
     }
     updateGlobePosition();
   });

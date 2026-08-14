@@ -43,6 +43,7 @@
   /* Globe container position */
   --globe-container-x: 0;
   --globe-container-y: 0;
+  --globe-container-opacity: 1;
 
   /* font defaults */
 

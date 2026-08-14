@@ -10,6 +10,10 @@ import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 const animationConfig = {
   spinStart: 0.2,
   spinEnd: 0.9,
+  globeOpacity: {
+    input: [0, 0.05, 0.1, 0.9, 1],
+    output: [0, 0, 1, 1, 0],
+  },
   scrollText1: {
     input: [0, 0.225, 0.3],
     output: ["0%", "0%", "-100%"],
