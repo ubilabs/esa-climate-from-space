@@ -11,6 +11,7 @@ import NamingTheBeast from "./modules/name-the-beast/naming-the-beast";
 import HurricaneOphelia from "./modules/hurricane-ophelia/hurricane-ophelia";
 import PortugalDataLayersModule from "./modules/portugal-data-layers/portugal-data-layers";
 import CanadianFiresModule from "./modules/canadian-fires/canadian-fires";
+import ZoomToPortugalModule from "./modules/zoom-to-portugal/zoom-to-portugal-module";
 import AustralianFiresModule from "./modules/australian-fires/australian-fires";
 import OutroModule from "./modules/outro/outro";
 
@@ -22,6 +23,7 @@ export type StoryXFiresCompoundComponents = {
   HurricaneOphelia: typeof HurricaneOphelia;
   PortugalDataLayers: typeof PortugalDataLayersModule;
   CanadianFires: typeof CanadianFiresModule;
+  ZoomToPortugal: typeof ZoomToPortugalModule;
   AustralianFires: typeof AustralianFiresModule;
   Outro: typeof OutroModule;
 };
@@ -41,5 +43,6 @@ StoryXFires.NamingTheBeast = NamingTheBeast;
 StoryXFires.HurricaneOphelia = HurricaneOphelia;
 StoryXFires.PortugalDataLayers = PortugalDataLayersModule;
 StoryXFires.CanadianFires = CanadianFiresModule;
+StoryXFires.ZoomToPortugal = ZoomToPortugalModule;
 StoryXFires.AustralianFires = AustralianFiresModule;
 StoryXFires.Outro = OutroModule;
