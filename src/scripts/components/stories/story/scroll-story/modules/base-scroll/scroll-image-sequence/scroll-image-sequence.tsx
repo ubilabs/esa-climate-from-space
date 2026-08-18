@@ -45,6 +45,7 @@ interface ScrollImageSequenceConfig {
  * 1. Make sure `ffmpeg` is installed.
  * 2. Run `scripts/extract-video-frames.js` with an input video and output directory.
  *    The script generates the frame files and `image-sequence.json` manifest.
+ *    (by default, the script will generate image sequence in portrait. For landscape (desktop), add the --landscape flage)
  * 3. upload generated frames to the gcp story storage under assets/
  * 4. Add this to the story module content:
  *    ```json
