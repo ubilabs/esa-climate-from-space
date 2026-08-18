@@ -8,10 +8,11 @@ import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 
 const animationConfig = {
   imageSequence: {
-    progressRange: [0.15, 1],
-    input: [0, 0.95, 1],
-    output: [100, 100, 50],
+    progressRange: [0.2, 1],
+    input: [0, 0.05, 0.08, 0.2],
+    output: ["0%", "0%", "20%", "100%"],
   },
+
   scrollText1: {
     input: [0, 0.1, 0.15, 0.225, 0.3],
     output: ["100%", "100%", "25%", "25%", "-100%"],
