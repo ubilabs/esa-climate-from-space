@@ -139,6 +139,7 @@ type BasemapId =
   | "land"
   | "ocean"
   | "clouds"
+  | "x-fires"
   | "none";
 
 const basemapMaxZoom: { [id in BasemapId]: number } = {
@@ -149,6 +150,7 @@ const basemapMaxZoom: { [id in BasemapId]: number } = {
   land: 4,
   ocean: 4,
   clouds: 4,
+  "x-fires": 3,
   none: 0,
 } as const;
 
@@ -160,6 +162,7 @@ const basemapUrls: { [id in BasemapId]: string | null } = {
   dark: `${baseUrlTiles}/basemaps/dark`,
   colored: `${baseUrlTiles}/basemaps/colored`,
   clouds: `${baseUrlTiles}/basemaps/clouds`,
+  "x-fires": `${baseUrlTiles}/basemaps/x-fires`,
   none: null,
 } as const;
 
@@ -171,6 +174,7 @@ const basemapUrlsOffline: { [id in BasemapId]: string | null } = {
   dark: "basemaps/dark",
   colored: "basemaps/colored",
   clouds: "basemaps/clouds",
+  "x-fires": "basemaps/x-fires",
   none: null,
 } as const;
 
