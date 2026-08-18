@@ -22,12 +22,12 @@ export function connectToStore(
 
   isStoreConnected = true;
 
-  window.cfs.addIpcListener("offline-update", (event, message) => {
+  window.cfs.addIpcListener("offline-update", (_event, message) => {
     const data = JSON.parse(message);
     dispatch(setDownloadedData(data));
   });
 
-  window.cfs.addIpcListener("progress-update", (event, message) => {
+  window.cfs.addIpcListener("progress-update", (_event, message) => {
     const data = JSON.parse(message);
     dispatch(setDownloadProgress(data));
   });

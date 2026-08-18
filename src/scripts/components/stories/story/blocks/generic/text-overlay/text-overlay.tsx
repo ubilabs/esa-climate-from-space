@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { StorySectionProps } from "../../../../../../types/story";
+import { ImageModule, StorySectionProps } from "../../../../../../types/story";
 
 import { useModuleContent } from "../../../../../../providers/story/module-content/use-module-content";
 import { TextOverlaySlide } from "./text-overlay-slide/text-overlay-slide";
@@ -13,7 +13,7 @@ import cx from "classnames";
 import styles from "./text-overlay.module.css";
 
 const TextOverlay: FunctionComponent<StorySectionProps> = () => {
-  const { module, storyId, getRefCallback } = useModuleContent();
+  const { module, storyId, getRefCallback } = useModuleContent<ImageModule>();
   const { url, slides = [], focus, altText } = module;
 
   const assetUrl = getStoryAssetUrl(storyId, url);

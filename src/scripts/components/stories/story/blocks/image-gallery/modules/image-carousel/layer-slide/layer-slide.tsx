@@ -27,14 +27,15 @@ const LayerSlide: React.FC<LayerSlideProps> = ({
   storyId,
 }) => {
   const dispatch = useDispatch();
-  const location = useLocation<AppLocationState>();
+  const location = useLocation();
+  const locationState = location.state as AppLocationState | null;
   const language = useSelector(languageSelector);
   const { data: layers } = useGetLayerListQuery(language);
   const { url = "", altText = "", layer } = slide;
   const category = layers?.find((l) => l.id === layer?.layerId)?.categories[0];
   const navigationState: AppLocationState = {
-    ...location.state,
-    backLink: location.state?.backLink || location.pathname + location.search,
+    ...locationState,
+    backLink: locationState?.backLink || location.pathname + location.search,
   };
 
   return (
