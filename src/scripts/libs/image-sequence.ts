@@ -11,6 +11,8 @@ export interface ImageSequenceManifest {
   height?: number | null;
 }
 
+export type ImageSequenceVariant = "landscape" | "portrait";
+
 export function getImageSequenceFrameIndex(
   progress: number,
   progressRange: [number, number],
@@ -45,6 +47,16 @@ export function getImageSequenceFrameSrc(
   return `${normalizedBasePath}/frame-${String(frameNumber).padStart(4, "0")}.webp`;
 }
 
-export function getImageSequenceManifestSrc(basePath: string): string {
-  return `${basePath.replace(/\/$/, "")}/image-sequence.json`;
+export function getImageSequenceBasePath(
+  basePath: string,
+  variant: ImageSequenceVariant,
+): string {
+  return `${basePath.replace(/\/$/, "")}/${variant}`;
+}
+
+export function getImageSequenceManifestSrc(
+  basePath: string,
+  variant: ImageSequenceVariant,
+): string {
+  return `${getImageSequenceBasePath(basePath, variant)}/image-sequence.json`;
 }

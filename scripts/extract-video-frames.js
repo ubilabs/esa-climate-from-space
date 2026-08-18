@@ -13,6 +13,7 @@ const DEFAULTS = {
   format: "webp",
   quality: 82,
   prefix: "frame",
+  landscape: false,
 };
 
 const MANIFEST_FILE_NAME = "image-sequence.json";
@@ -35,12 +36,13 @@ Optional:
   --format <type>      webp, jpg, jpeg, png (default: ${DEFAULTS.format})
   --quality <1-100>    Output quality for webp/jpg (default: ${DEFAULTS.quality})
   --prefix <name>      Output filename prefix (default: ${DEFAULTS.prefix})
+  --landscape          Generate the landscape sequence (default: portrait)
   --help               Show this help message
 
 Examples:
   node ./scripts/extract-video-frames.js --input ./video.mp4 --output ./frames
   node ./scripts/extract-video-frames.js --input ./video.mp4 --output ./frames --fps 24 --width 1080
-  node ./scripts/extract-video-frames.js --input ./video.mp4 --output ./frames --width 1080 --height 1080 --format png`);
+  node ./scripts/extract-video-frames.js --input ./video.mp4 --output ./frames --landscape --width 1080 --height 1080 --format png`);
 }
 
 function parseArgs(argv) {
@@ -53,6 +55,7 @@ function parseArgs(argv) {
     format: DEFAULTS.format,
     quality: DEFAULTS.quality,
     prefix: DEFAULTS.prefix,
+    landscape: DEFAULTS.landscape,
   };
 
   for (let i = 0; i < argv.length; i += 1) {
@@ -60,6 +63,11 @@ function parseArgs(argv) {
 
     if (arg === "--help" || arg === "-h") {
       options.help = true;
+      continue;
+    }
+
+    if (arg === "--landscape") {
+      options.landscape = true;
       continue;
     }
 
@@ -137,7 +145,9 @@ function normalizeFormat(value) {
   const format = value.toLowerCase();
 
   if (!SUPPORTED_FORMATS.has(format)) {
-    throw new Error(`Unsupported format: ${value}. Use webp, jpg, jpeg, or png.`);
+    throw new Error(
+      `Unsupported format: ${value}. Use webp, jpg, jpeg, or png.`,
+    );
   }
 
   return format === "jpeg" ? "jpg" : format;
@@ -215,7 +225,8 @@ function getGeneratedFrameCount(outputDir, prefix, format) {
   return fs
     .readdirSync(outputDir)
     .filter(
-      (file) => file.startsWith(`${prefix}-`) && file.toLowerCase().endsWith(extension),
+      (file) =>
+        file.startsWith(`${prefix}-`) && file.toLowerCase().endsWith(extension),
     ).length;
 }
 
@@ -224,7 +235,8 @@ function getGeneratedFrameSize(outputDir, prefix, format) {
   const firstFrame = fs
     .readdirSync(outputDir)
     .find(
-      (file) => file.startsWith(`${prefix}-`) && file.toLowerCase().endsWith(extension),
+      (file) =>
+        file.startsWith(`${prefix}-`) && file.toLowerCase().endsWith(extension),
     );
 
   if (!firstFrame) {
@@ -272,7 +284,11 @@ function getGeneratedFrameSize(outputDir, prefix, format) {
 function writeImageSequenceManifest(outputDir, manifest) {
   const manifestPath = path.join(outputDir, MANIFEST_FILE_NAME);
 
-  fs.writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+  fs.writeFileSync(
+    manifestPath,
+    `${JSON.stringify(manifest, null, 2)}\n`,
+    "utf8",
+  );
 
   return manifestPath;
 }
@@ -370,7 +386,10 @@ async function main() {
     ensureFfmpeg();
 
     const inputPath = path.resolve(options.input);
-    const outputDir = path.resolve(options.output);
+    const outputDir = path.join(
+      path.resolve(options.output),
+      options.landscape ? "landscape" : "portrait",
+    );
 
     if (!fs.existsSync(inputPath) || !fs.statSync(inputPath).isFile()) {
       throw new Error(`Input file not found: ${options.input}`);

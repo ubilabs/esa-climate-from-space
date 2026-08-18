@@ -14,6 +14,7 @@ import mainConfig from "../../../../../../../config/main";
 import { replaceUrlPlaceholders } from "../../../../../../../libs/replace-url-placeholders";
 import {
   getImageSequenceFrameIndex,
+  getImageSequenceBasePath,
   getImageSequenceManifestSrc,
   getImageSequenceFrameSrc,
   ImageSequenceManifest,
@@ -79,8 +80,16 @@ export default function ScrollImageSequence({ className, sequence }: Props) {
     mainConfig.api.storyImageSequenceBase,
     { id: story?.id ?? "" },
   );
-  const frameBasePath = `${storyImageSequenceBase}/${sequence.path}`;
-  const manifestSrc = getImageSequenceManifestSrc(frameBasePath);
+  const sequenceBasePath = `${storyImageSequenceBase}/${sequence.path}`;
+  const sequenceVariant = isMobile ? "portrait" : "landscape";
+  const frameBasePath = getImageSequenceBasePath(
+    sequenceBasePath,
+    sequenceVariant,
+  );
+  const manifestSrc = getImageSequenceManifestSrc(
+    sequenceBasePath,
+    sequenceVariant,
+  );
 
   const drawImageCover = useCallback(
     (
