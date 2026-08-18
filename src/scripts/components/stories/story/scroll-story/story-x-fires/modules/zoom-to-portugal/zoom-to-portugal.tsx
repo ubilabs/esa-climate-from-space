@@ -29,16 +29,11 @@ export default function ZoomToPortugal() {
       return;
     }
 
-    const layerId =
-      progress >= config.globeLayerThreshold
-        ? Layers.XFIRES_EARTH_MASK_PORTUGAL
-        : Layers.XFIRES_EARTH_MASK;
-
-    if (layerId !== selectedLayer.current) {
-      selectedLayer.current = layerId;
+    if (Layers.XFIRES_PORTUGAL !== selectedLayer.current) {
+      selectedLayer.current = Layers.XFIRES_PORTUGAL;
       dispatch(
         setSelectedLayerIds({
-          layerId,
+          layerId: Layers.XFIRES_PORTUGAL,
           isPrimary: true,
         }),
       );
@@ -50,21 +45,6 @@ export default function ZoomToPortugal() {
 
     if (progress > 0) {
       setGlobeContainerOpacity(globeOpacity.get());
-    }
-
-    if (progress > 0 && progress < 1) {
-      const layerId =
-        progress >= config.globeLayerThreshold
-          ? Layers.XFIRES_EARTH_MASK_PORTUGAL
-          : Layers.XFIRES_EARTH_MASK;
-
-      selectedLayer.current = layerId;
-      dispatch(
-        setSelectedLayerIds({
-          layerId,
-          isPrimary: true,
-        }),
-      );
     }
 
     return () => {
