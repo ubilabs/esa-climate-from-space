@@ -377,7 +377,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
       isStoryListItem(settledContent) &&
       settledContentId !== AppRoute.StoryEEI
     ) {
-      return getStorySplashImage(settledContentId);
+      return getStorySplashImage(settledContent.id);
     }
 
     return "";

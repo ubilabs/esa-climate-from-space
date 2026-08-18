@@ -68,7 +68,7 @@ interface Props {
   imageLayer: GlobeImageLayerData | null;
   layerDetails: Layer | null;
   spinning: boolean;
-  flyTo: CameraView | null;
+  flyTo: Partial<CameraView> | null;
   markers?: Marker[];
   isMarkerOffset?: boolean;
   backgroundColor: string;
@@ -342,11 +342,14 @@ function useMultiGlobeSynchronization(
     if (!globe || !enabled || !flyTo) return;
     globe.setProps({
       cameraView: {
+        ...view,
         ...flyTo,
-        lng: flyTo.lng + (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0),
+        lng:
+          (flyTo.lng ?? view.lng) +
+          (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0),
       },
     });
-  }, [flyTo, globe, isMarkerOffset, enabled]);
+  }, [flyTo, globe, isMarkerOffset, enabled, view]);
 }
 
 /**
@@ -447,11 +450,11 @@ function getLayerProps(
   imageLayer: GlobeImageLayerData | null,
   layerDetails: Layer | null,
   includeClouds: boolean = true,
-) {
+): LayerProps[] {
   const basemapUrl = getBasemapUrl(layerDetails);
   const basemapMaxZoom = getBasemapMaxZoom(layerDetails);
 
-  const layers = [];
+  const layers: LayerProps[] = [];
 
   if (basemapUrl) {
     layers.push({

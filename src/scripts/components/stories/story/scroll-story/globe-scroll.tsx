@@ -196,9 +196,9 @@ const GlobeScroll: FunctionComponent = () => {
     if (haveMotionValuesChanges(globeMotions)) {
       dispatch(
         setFlyTo({
-          lat: globeMotions.lat?.get(),
-          lng: globeMotions.lng?.get(),
-          altitude: globeMotions.altitude?.get(),
+          lat: Number(globeMotions.lat?.get()),
+          lng: Number(globeMotions.lng?.get()),
+          altitude: Number(globeMotions.altitude?.get()),
         }),
       );
     }

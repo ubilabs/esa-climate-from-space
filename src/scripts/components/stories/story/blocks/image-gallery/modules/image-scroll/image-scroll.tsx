@@ -7,7 +7,7 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 
 import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
 import { TextBlock } from "../../../generic/text-container/text-block/text-block";
-import { StorySectionProps } from "../../../../../../../types/story";
+import { ImageModule, StorySectionProps } from "../../../../../../../types/story";
 import { ScrollImage } from "./image-scroll-image/image-scroll-image";
 import InViewVideo from "../shared/in-view-video/in-view-video";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
@@ -22,7 +22,7 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
     module: { slides },
     storyId,
     getRefCallback,
-  } = useModuleContent();
+  } = useModuleContent<ImageModule>();
   return (
     <div className={styles.imageScroll}>
       {slides?.map(

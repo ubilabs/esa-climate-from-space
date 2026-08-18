@@ -4,6 +4,7 @@ import { StoryMarkdown } from "../../../../../../../shared/story-markdown/story-
 
 import {
   ImageModule,
+  ImageModuleSlide,
   Legend,
   StorySectionProps,
 } from "../../../../../../../../types/story";
@@ -33,14 +34,14 @@ interface BlendWrapperProps extends StorySectionProps {
 const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
   animationDirection,
 }) => {
-  const { module, storyId, getRefCallback } = useModuleContent();
+  const { module, storyId, getRefCallback } = useModuleContent<ImageModule>();
   const { lenisRef } = useStory();
   const { isTouchDevice } = useScreenInfo();
 
   const sensitivityFactor = isTouchDevice ? 2.5 : 1;
 
   const targetRef = useRef<HTMLDivElement | null>(null);
-  const images: ImageModule[] = useMemo(() => module?.slides ?? [], [module]);
+  const images: ImageModuleSlide[] = useMemo(() => module.slides ?? [], [module]);
 
   const legend = module.legend as Legend;
   const numSlides = images.length;

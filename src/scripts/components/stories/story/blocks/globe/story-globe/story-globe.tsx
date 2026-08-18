@@ -20,6 +20,7 @@ import Button from "../../../../../main/button/button";
 import { CloseIcon } from "../../../../../main/icons/close-icon";
 
 import styles from "./story-globe.module.css";
+import { ImageModule } from "../../../../../../types/story";
 
 const StoryGlobe: FunctionComponent = () => {
   const intl = useIntl();
@@ -32,7 +33,7 @@ const StoryGlobe: FunctionComponent = () => {
   const {
     module: { globe },
     getRefCallback,
-  } = useModuleContent();
+  } = useModuleContent<ImageModule>();
 
   useLenisToggle(isInteractive);
 

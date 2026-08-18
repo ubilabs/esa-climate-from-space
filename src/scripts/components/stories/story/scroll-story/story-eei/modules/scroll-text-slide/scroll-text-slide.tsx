@@ -2,6 +2,7 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
+import { StoryEEIModule } from "../../../../../../../types/story";
 
 const animationConfig = {
   y: {
@@ -20,7 +21,7 @@ export default function ScrollTextSlide() {
   const {
     module: { lengthFactor, content },
     getRefCallback,
-  } = useModuleContent();
+  } = useModuleContent<Extract<StoryEEIModule, { type: "scrollTextSlide" }>>();
 
   return (
     <ScrollModule config={animationConfig} lengthFactor={lengthFactor}>
