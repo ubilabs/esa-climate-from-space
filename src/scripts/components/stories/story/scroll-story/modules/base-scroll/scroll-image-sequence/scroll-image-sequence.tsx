@@ -14,6 +14,7 @@ import mainConfig from "../../../../../../../config/main";
 import { replaceUrlPlaceholders } from "../../../../../../../libs/replace-url-placeholders";
 import {
   getImageSequenceFrameIndex,
+  getImageSequenceBasePath,
   getImageSequenceManifestSrc,
   getImageSequenceFrameSrc,
   ImageSequenceManifest,
@@ -44,6 +45,7 @@ interface ScrollImageSequenceConfig {
  * 1. Make sure `ffmpeg` is installed.
  * 2. Run `scripts/extract-video-frames.js` with an input video and output directory.
  *    The script generates the frame files and `image-sequence.json` manifest.
+ *    (by default, the script will generate image sequence in portrait. For landscape (desktop), add the --landscape flage)
  * 3. upload generated frames to the gcp story storage under assets/
  * 4. Add this to the story module content:
  *    ```json
@@ -79,8 +81,16 @@ export default function ScrollImageSequence({ className, sequence }: Props) {
     mainConfig.api.storyImageSequenceBase,
     { id: story?.id ?? "" },
   );
-  const frameBasePath = `${storyImageSequenceBase}/${sequence.path}`;
-  const manifestSrc = getImageSequenceManifestSrc(frameBasePath);
+  const sequenceBasePath = `${storyImageSequenceBase}/${sequence.path}`;
+  const sequenceVariant = isMobile ? "portrait" : "landscape";
+  const frameBasePath = getImageSequenceBasePath(
+    sequenceBasePath,
+    sequenceVariant,
+  );
+  const manifestSrc = getImageSequenceManifestSrc(
+    sequenceBasePath,
+    sequenceVariant,
+  );
 
   const drawImageCover = useCallback(
     (

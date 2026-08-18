@@ -10,7 +10,7 @@ const animationConfig = {
   imageSequence: {
     progressRange: [0.15, 1],
     input: [0, 0.95, 1],
-    output: [100, 100, 0],
+    output: [100, 100, 50],
   },
   scrollText1: {
     input: [0, 0.1, 0.15, 0.225, 0.3],

@@ -1,5 +1,7 @@
 .sequenceContainer {
   height: 100%;
+  position: absolute;
+  inset: 0;
   opacity: var(--sequence-opacity);
   align-items: center;
   display: flex;
