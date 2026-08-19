@@ -1,21 +1,16 @@
 import { FunctionComponent } from "react";
 
-import { StoryMarkdown } from "../../../../../../shared/story-markdown/story-markdown";
-import config from "../../../../../../../config/main";
-
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
-import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
-import { TextBlock } from "../../../generic/text-container/text-block/text-block";
-import { ImageModule, StorySectionProps } from "../../../../../../../types/story";
+import { MediaSlideContainer } from "../../../../../layout/media-slide-container/media-slide-container";
+import {
+  ImageModule,
+  StorySectionProps,
+} from "../../../../../../../types/story";
 import { ScrollImage } from "./image-scroll-image/image-scroll-image";
 import InViewVideo from "../shared/in-view-video/in-view-video";
 import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 import { isVideo } from "../../../../../../../libs/is-video";
-
-import cx from "classnames";
-
-import styles from "./image-scroll.module.css";
 
 const ImageScroll: FunctionComponent<StorySectionProps> = () => {
   const {
@@ -24,48 +19,28 @@ const ImageScroll: FunctionComponent<StorySectionProps> = () => {
     getRefCallback,
   } = useModuleContent<ImageModule>();
   return (
-    <div className={styles.imageScroll}>
+    <div>
       {slides?.map(
         // Set leading as default so image appears on the left / on top
         ({ url, text, altText, caption, focus, leading = true }, index) => (
-          <SlideContainer
+          <MediaSlideContainer
             ref={getRefCallback?.(index, 0)}
-            className={cx(
-              leading && styles.imageLeading,
-              styles.slide,
-              "story-grid",
-            )}
             key={url || index}
+            leading={leading}
+            text={text}
+            caption={caption}
+            storyId={storyId}
           >
-            {text && (
-              <TextBlock
-                text={text}
-                storyId={storyId}
-                hasRichText
-                className={styles.imageScrollText}
+            {isVideo(url) ? (
+              <InViewVideo src={getStoryAssetUrl(storyId, url)} />
+            ) : (
+              <ScrollImage
+                focus={focus}
+                src={getStoryAssetUrl(storyId, url)}
+                alt={altText || text}
               />
             )}
-            <figure className={styles.scrollImageContainer}>
-              {isVideo(url) ? (
-                <InViewVideo
-                  className={styles.scrollVideo}
-                  src={getStoryAssetUrl(storyId, url)}
-                />
-              ) : (
-                <ScrollImage
-                  focus={focus}
-                  src={getStoryAssetUrl(storyId, url)}
-                  alt={altText || text}
-                />
-              )}
-              <StoryMarkdown
-                storyId={storyId}
-                allowedElements={config.markdownAllowedElements}
-              >
-                {caption}
-              </StoryMarkdown>
-            </figure>
-          </SlideContainer>
+          </MediaSlideContainer>
         ),
       )}
     </div>
