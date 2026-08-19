@@ -6,18 +6,23 @@ import type { VisualizationSpec } from "vega-embed";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
 
 import { MediaSlideContainer } from "../../../../../layout/media-slide-container/media-slide-container";
+
+import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
+
 import {
   ChartsModule,
   StorySectionProps,
 } from "../../../../../../../types/story";
 
 import styles from "./story-chart.module.css";
-import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 
 const StoryVegaChart: FunctionComponent<{ spec: VisualizationSpec }> = ({
   spec,
 }) => {
-  // Story data is immutable, while Vega adds internal metadata to its spec.
+  // Redux Toolkit freezes the story JSON in development. Vega mutates the
+  // specification by attaching internal metadata such as Symbol(vega_id), so
+  // passing the stored object directly throws "object is not extensible".
+  // Clone it to give Vega a mutable object without changing the story state.
   const mutableSpec = useMemo(
     () => ({
       ...structuredClone(spec),
