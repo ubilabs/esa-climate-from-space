@@ -1,0 +1,1220 @@
+<script>
+  window.spec = {
+    $schema: "https://vega.github.io/schema/vega-lite/v6.json",
+    description:
+      "Historical atmospheric CO₂ concentration from the supplied merged ice-core and observational dataset, styled to match the supplied ESA-inspired dark Vega-Lite theme.",
+    width: 1040,
+    height: 520,
+    background: "rgba(0,0,0,0)",
+    autosize: {
+      type: "fit",
+      contains: "padding",
+    },
+    data: {
+      values: [
+        {
+          year: 1703.0,
+          ppm: 275.0,
+        },
+        {
+          year: 1710.0,
+          ppm: 276.3,
+        },
+        {
+          year: 1719.0,
+          ppm: 276.4,
+        },
+        {
+          year: 1723.0,
+          ppm: 278.3,
+        },
+        {
+          year: 1723.0,
+          ppm: 277.1,
+        },
+        {
+          year: 1734.0,
+          ppm: 278.4,
+        },
+        {
+          year: 1741.0,
+          ppm: 276.9,
+        },
+        {
+          year: 1746.0,
+          ppm: 275.4,
+        },
+        {
+          year: 1749.0,
+          ppm: 277.6,
+        },
+        {
+          year: 1752.0,
+          ppm: 276.6,
+        },
+        {
+          year: 1752.0,
+          ppm: 278.0,
+        },
+        {
+          year: 1760.0,
+          ppm: 276.6,
+        },
+        {
+          year: 1763.0,
+          ppm: 277.2,
+        },
+        {
+          year: 1764.0,
+          ppm: 276.5,
+        },
+        {
+          year: 1773.0,
+          ppm: 278.0,
+        },
+        {
+          year: 1775.0,
+          ppm: 277.7,
+        },
+        {
+          year: 1779.0,
+          ppm: 280.2,
+        },
+        {
+          year: 1780.0,
+          ppm: 273.2,
+        },
+        {
+          year: 1794.0,
+          ppm: 281.8,
+        },
+        {
+          year: 1796.0,
+          ppm: 282.3,
+        },
+        {
+          year: 1796.0,
+          ppm: 279.3,
+        },
+        {
+          year: 1796.0,
+          ppm: 279.4,
+        },
+        {
+          year: 1799.0,
+          ppm: 281.4,
+        },
+        {
+          year: 1799.0,
+          ppm: 284.4,
+        },
+        {
+          year: 1810.0,
+          ppm: 281.1,
+        },
+        {
+          year: 1814.0,
+          ppm: 284.6,
+        },
+        {
+          year: 1817.0,
+          ppm: 280.9,
+        },
+        {
+          year: 1825.0,
+          ppm: 281.5,
+        },
+        {
+          year: 1826.0,
+          ppm: 281.8,
+        },
+        {
+          year: 1827.0,
+          ppm: 285.9,
+        },
+        {
+          year: 1833.0,
+          ppm: 285.1,
+        },
+        {
+          year: 1833.0,
+          ppm: 284.0,
+        },
+        {
+          year: 1837.0,
+          ppm: 284.3,
+        },
+        {
+          year: 1838.0,
+          ppm: 282.6,
+        },
+        {
+          year: 1841.0,
+          ppm: 283.6,
+        },
+        {
+          year: 1842.0,
+          ppm: 282.8,
+        },
+        {
+          year: 1843.0,
+          ppm: 282.7,
+        },
+        {
+          year: 1844.0,
+          ppm: 280.8,
+        },
+        {
+          year: 1844.0,
+          ppm: 282.0,
+        },
+        {
+          year: 1845.0,
+          ppm: 283.4,
+        },
+        {
+          year: 1845.0,
+          ppm: 283.0,
+        },
+        {
+          year: 1846.0,
+          ppm: 284.5,
+        },
+        {
+          year: 1846.0,
+          ppm: 282.9,
+        },
+        {
+          year: 1847.0,
+          ppm: 286.8,
+        },
+        {
+          year: 1848.0,
+          ppm: 283.6,
+        },
+        {
+          year: 1851.0,
+          ppm: 283.9,
+        },
+        {
+          year: 1851.0,
+          ppm: 288.9,
+        },
+        {
+          year: 1851.0,
+          ppm: 285.5,
+        },
+        {
+          year: 1852.0,
+          ppm: 284.0,
+        },
+        {
+          year: 1854.0,
+          ppm: 288.1,
+        },
+        {
+          year: 1855.0,
+          ppm: 285.6,
+        },
+        {
+          year: 1855.0,
+          ppm: 283.3,
+        },
+        {
+          year: 1857.0,
+          ppm: 283.0,
+        },
+        {
+          year: 1859.0,
+          ppm: 286.8,
+        },
+        {
+          year: 1859.0,
+          ppm: 284.9,
+        },
+        {
+          year: 1862.0,
+          ppm: 287.2,
+        },
+        {
+          year: 1863.0,
+          ppm: 283.0,
+        },
+        {
+          year: 1863.0,
+          ppm: 285.5,
+        },
+        {
+          year: 1864.0,
+          ppm: 286.5,
+        },
+        {
+          year: 1867.0,
+          ppm: 285.5,
+        },
+        {
+          year: 1867.0,
+          ppm: 284.8,
+        },
+        {
+          year: 1868.0,
+          ppm: 288.1,
+        },
+        {
+          year: 1869.0,
+          ppm: 288.2,
+        },
+        {
+          year: 1869.0,
+          ppm: 288.8,
+        },
+        {
+          year: 1870.0,
+          ppm: 288.0,
+        },
+        {
+          year: 1870.0,
+          ppm: 286.2,
+        },
+        {
+          year: 1873.0,
+          ppm: 286.7,
+        },
+        {
+          year: 1874.0,
+          ppm: 291.6,
+        },
+        {
+          year: 1877.0,
+          ppm: 289.2,
+        },
+        {
+          year: 1880.0,
+          ppm: 287.6,
+        },
+        {
+          year: 1883.0,
+          ppm: 292.5,
+        },
+        {
+          year: 1884.0,
+          ppm: 289.9,
+        },
+        {
+          year: 1884.0,
+          ppm: 289.4,
+        },
+        {
+          year: 1886.0,
+          ppm: 288.2,
+        },
+        {
+          year: 1887.0,
+          ppm: 291.1,
+        },
+        {
+          year: 1887.0,
+          ppm: 290.4,
+        },
+        {
+          year: 1887.0,
+          ppm: 289.9,
+        },
+        {
+          year: 1888.0,
+          ppm: 294.3,
+        },
+        {
+          year: 1889.0,
+          ppm: 292.4,
+        },
+        {
+          year: 1889.0,
+          ppm: 292.5,
+        },
+        {
+          year: 1890.0,
+          ppm: 290.8,
+        },
+        {
+          year: 1893.0,
+          ppm: 295.2,
+        },
+        {
+          year: 1893.0,
+          ppm: 295.3,
+        },
+        {
+          year: 1893.0,
+          ppm: 293.9,
+        },
+        {
+          year: 1894.0,
+          ppm: 292.2,
+        },
+        {
+          year: 1894.0,
+          ppm: 293.9,
+        },
+        {
+          year: 1894.0,
+          ppm: 291.9,
+        },
+        {
+          year: 1897.0,
+          ppm: 291.9,
+        },
+        {
+          year: 1897.0,
+          ppm: 297.3,
+        },
+        {
+          year: 1897.0,
+          ppm: 294.7,
+        },
+        {
+          year: 1897.0,
+          ppm: 294.5,
+        },
+        {
+          year: 1897.0,
+          ppm: 291.8,
+        },
+        {
+          year: 1897.0,
+          ppm: 292.0,
+        },
+        {
+          year: 1897.0,
+          ppm: 293.3,
+        },
+        {
+          year: 1899.0,
+          ppm: 295.3,
+        },
+        {
+          year: 1899.0,
+          ppm: 297.1,
+        },
+        {
+          year: 1900.0,
+          ppm: 294.1,
+        },
+        {
+          year: 1902.0,
+          ppm: 297.1,
+        },
+        {
+          year: 1902.0,
+          ppm: 294.5,
+        },
+        {
+          year: 1902.0,
+          ppm: 295.3,
+        },
+        {
+          year: 1904.0,
+          ppm: 296.1,
+        },
+        {
+          year: 1906.0,
+          ppm: 298.9,
+        },
+        {
+          year: 1906.0,
+          ppm: 299.5,
+        },
+        {
+          year: 1906.0,
+          ppm: 297.2,
+        },
+        {
+          year: 1907.0,
+          ppm: 295.4,
+        },
+        {
+          year: 1909.0,
+          ppm: 301.6,
+        },
+        {
+          year: 1910.0,
+          ppm: 297.7,
+        },
+        {
+          year: 1911.0,
+          ppm: 298.0,
+        },
+        {
+          year: 1911.0,
+          ppm: 296.7,
+        },
+        {
+          year: 1911.0,
+          ppm: 298.3,
+        },
+        {
+          year: 1913.0,
+          ppm: 301.3,
+        },
+        {
+          year: 1915.0,
+          ppm: 300.4,
+        },
+        {
+          year: 1915.0,
+          ppm: 301.1,
+        },
+        {
+          year: 1916.0,
+          ppm: 301.9,
+        },
+        {
+          year: 1918.0,
+          ppm: 304.1,
+        },
+        {
+          year: 1918.0,
+          ppm: 303.9,
+        },
+        {
+          year: 1918.0,
+          ppm: 303.5,
+        },
+        {
+          year: 1918.0,
+          ppm: 303.3,
+        },
+        {
+          year: 1919.0,
+          ppm: 304.7,
+        },
+        {
+          year: 1920.0,
+          ppm: 301.7,
+        },
+        {
+          year: 1923.0,
+          ppm: 303.3,
+        },
+        {
+          year: 1923.0,
+          ppm: 307.8,
+        },
+        {
+          year: 1923.0,
+          ppm: 303.1,
+        },
+        {
+          year: 1923.0,
+          ppm: 306.1,
+        },
+        {
+          year: 1923.0,
+          ppm: 307.7,
+        },
+        {
+          year: 1925.0,
+          ppm: 304.6,
+        },
+        {
+          year: 1925.0,
+          ppm: 305.3,
+        },
+        {
+          year: 1926.0,
+          ppm: 302.2,
+        },
+        {
+          year: 1926.0,
+          ppm: 303.6,
+        },
+        {
+          year: 1926.0,
+          ppm: 303.7,
+        },
+        {
+          year: 1926.0,
+          ppm: 306.7,
+        },
+        {
+          year: 1926.0,
+          ppm: 305.5,
+        },
+        {
+          year: 1928.0,
+          ppm: 305.7,
+        },
+        {
+          year: 1928.0,
+          ppm: 308.4,
+        },
+        {
+          year: 1928.0,
+          ppm: 307.6,
+        },
+        {
+          year: 1929.0,
+          ppm: 305.7,
+        },
+        {
+          year: 1929.0,
+          ppm: 305.8,
+        },
+        {
+          year: 1931.0,
+          ppm: 305.6,
+        },
+        {
+          year: 1931.0,
+          ppm: 305.6,
+        },
+        {
+          year: 1933.0,
+          ppm: 308.2,
+        },
+        {
+          year: 1933.0,
+          ppm: 308.3,
+        },
+        {
+          year: 1933.0,
+          ppm: 305.8,
+        },
+        {
+          year: 1934.0,
+          ppm: 307.8,
+        },
+        {
+          year: 1934.0,
+          ppm: 306.6,
+        },
+        {
+          year: 1934.0,
+          ppm: 306.7,
+        },
+        {
+          year: 1935.0,
+          ppm: 306.2,
+        },
+        {
+          year: 1935.0,
+          ppm: 309.6,
+        },
+        {
+          year: 1936.0,
+          ppm: 307.1,
+        },
+        {
+          year: 1936.0,
+          ppm: 309.1,
+        },
+        {
+          year: 1936.0,
+          ppm: 309.5,
+        },
+        {
+          year: 1937.0,
+          ppm: 307.6,
+        },
+        {
+          year: 1937.0,
+          ppm: 306.9,
+        },
+        {
+          year: 1938.0,
+          ppm: 312.4,
+        },
+        {
+          year: 1938.0,
+          ppm: 312.4,
+        },
+        {
+          year: 1938.0,
+          ppm: 310.7,
+        },
+        {
+          year: 1938.0,
+          ppm: 308.5,
+        },
+        {
+          year: 1939.0,
+          ppm: 307.8,
+        },
+        {
+          year: 1939.0,
+          ppm: 308.4,
+        },
+        {
+          year: 1939.0,
+          ppm: 312.3,
+        },
+        {
+          year: 1939.0,
+          ppm: 306.7,
+        },
+        {
+          year: 1939.0,
+          ppm: 311.4,
+        },
+        {
+          year: 1939.0,
+          ppm: 311.0,
+        },
+        {
+          year: 1940.0,
+          ppm: 312.0,
+        },
+        {
+          year: 1940.0,
+          ppm: 309.7,
+        },
+        {
+          year: 1941.0,
+          ppm: 307.6,
+        },
+        {
+          year: 1941.0,
+          ppm: 311.9,
+        },
+        {
+          year: 1941.0,
+          ppm: 310.9,
+        },
+        {
+          year: 1942.0,
+          ppm: 312.1,
+        },
+        {
+          year: 1942.0,
+          ppm: 312.8,
+        },
+        {
+          year: 1943.0,
+          ppm: 312.2,
+        },
+        {
+          year: 1943.0,
+          ppm: 311.7,
+        },
+        {
+          year: 1944.0,
+          ppm: 312.4,
+        },
+        {
+          year: 1944.0,
+          ppm: 313.7,
+        },
+        {
+          year: 1944.0,
+          ppm: 311.8,
+        },
+        {
+          year: 1945.0,
+          ppm: 310.2,
+        },
+        {
+          year: 1945.0,
+          ppm: 311.4,
+        },
+        {
+          year: 1946.0,
+          ppm: 312.6,
+        },
+        {
+          year: 1947.0,
+          ppm: 310.3,
+        },
+        {
+          year: 1947.0,
+          ppm: 312.6,
+        },
+        {
+          year: 1947.0,
+          ppm: 313.3,
+        },
+        {
+          year: 1947.0,
+          ppm: 310.8,
+        },
+        {
+          year: 1948.0,
+          ppm: 311.0,
+        },
+        {
+          year: 1948.0,
+          ppm: 311.6,
+        },
+        {
+          year: 1949.0,
+          ppm: 310.4,
+        },
+        {
+          year: 1949.0,
+          ppm: 309.8,
+        },
+        {
+          year: 1950.0,
+          ppm: 313.7,
+        },
+        {
+          year: 1950.0,
+          ppm: 312.0,
+        },
+        {
+          year: 1953.0,
+          ppm: 312.3,
+        },
+        {
+          year: 1954.0,
+          ppm: 312.8,
+        },
+        {
+          year: 1954.0,
+          ppm: 311.6,
+        },
+        {
+          year: 1954.0,
+          ppm: 312.7,
+        },
+        {
+          year: 1954.0,
+          ppm: 313.1,
+        },
+        {
+          year: 1955.0,
+          ppm: 314.7,
+        },
+        {
+          year: 1955.0,
+          ppm: 314.9,
+        },
+        {
+          year: 1955.0,
+          ppm: 313.7,
+        },
+        {
+          year: 1955.0,
+          ppm: 314.6,
+        },
+        {
+          year: 1956.0,
+          ppm: 315.9,
+        },
+        {
+          year: 1956.0,
+          ppm: 315.4,
+        },
+        {
+          year: 1956.0,
+          ppm: 314.4,
+        },
+        {
+          year: 1957.0,
+          ppm: 314.5,
+        },
+        {
+          year: 1957.0,
+          ppm: 314.4,
+        },
+        {
+          year: 1957.0,
+          ppm: 316.45,
+        },
+        {
+          year: 1957.0,
+          ppm: 315.1,
+        },
+        {
+          year: 1958.0,
+          ppm: 314.2,
+        },
+        {
+          year: 1958.0,
+          ppm: 314.7,
+        },
+        {
+          year: 1959.5,
+          ppm: 315.81,
+        },
+        {
+          year: 1960.5,
+          ppm: 316.68,
+        },
+        {
+          year: 1961.5,
+          ppm: 317.38,
+        },
+        {
+          year: 1962.5,
+          ppm: 318.04,
+        },
+        {
+          year: 1963.5,
+          ppm: 318.65,
+        },
+        {
+          year: 1964.5,
+          ppm: 319.15,
+        },
+        {
+          year: 1965.5,
+          ppm: 319.72,
+        },
+        {
+          year: 1966.5,
+          ppm: 321.06,
+        },
+        {
+          year: 1967.5,
+          ppm: 321.75,
+        },
+        {
+          year: 1968.5,
+          ppm: 322.53,
+        },
+        {
+          year: 1969.5,
+          ppm: 323.87,
+        },
+        {
+          year: 1970.5,
+          ppm: 325.0,
+        },
+        {
+          year: 1971.5,
+          ppm: 325.72,
+        },
+        {
+          year: 1972.5,
+          ppm: 326.74,
+        },
+        {
+          year: 1973.5,
+          ppm: 328.65,
+        },
+        {
+          year: 1974.5,
+          ppm: 329.36,
+        },
+        {
+          year: 1975.5,
+          ppm: 330.34,
+        },
+        {
+          year: 1976.5,
+          ppm: 331.4,
+        },
+        {
+          year: 1977.5,
+          ppm: 332.97,
+        },
+        {
+          year: 1978.5,
+          ppm: 334.61,
+        },
+        {
+          year: 1979.5,
+          ppm: 335.94,
+        },
+        {
+          year: 1980.5,
+          ppm: 337.85,
+        },
+        {
+          year: 1981.5,
+          ppm: 339.11,
+        },
+        {
+          year: 1982.5,
+          ppm: 340.28,
+        },
+        {
+          year: 1983.5,
+          ppm: 341.98,
+        },
+        {
+          year: 1984.5,
+          ppm: 343.48,
+        },
+        {
+          year: 1985.5,
+          ppm: 344.77,
+        },
+        {
+          year: 1986.5,
+          ppm: 346.16,
+        },
+        {
+          year: 1987.5,
+          ppm: 347.85,
+        },
+        {
+          year: 1988.5,
+          ppm: 350.04,
+        },
+        {
+          year: 1989.5,
+          ppm: 351.56,
+        },
+        {
+          year: 1990.5,
+          ppm: 352.84,
+        },
+        {
+          year: 1991.5,
+          ppm: 354.24,
+        },
+        {
+          year: 1992.5,
+          ppm: 355.18,
+        },
+        {
+          year: 1993.5,
+          ppm: 355.97,
+        },
+        {
+          year: 1994.5,
+          ppm: 357.58,
+        },
+        {
+          year: 1995.5,
+          ppm: 359.52,
+        },
+        {
+          year: 1996.5,
+          ppm: 361.26,
+        },
+        {
+          year: 1997.5,
+          ppm: 362.43,
+        },
+        {
+          year: 1998.5,
+          ppm: 365.14,
+        },
+        {
+          year: 1999.5,
+          ppm: 366.96,
+        },
+        {
+          year: 2000.5,
+          ppm: 368.25,
+        },
+        {
+          year: 2001.5,
+          ppm: 369.65,
+        },
+        {
+          year: 2002.5,
+          ppm: 371.87,
+        },
+        {
+          year: 2003.5,
+          ppm: 374.22,
+        },
+        {
+          year: 2004.5,
+          ppm: 376.01,
+        },
+        {
+          year: 2005.5,
+          ppm: 378.16,
+        },
+        {
+          year: 2006.5,
+          ppm: 380.2,
+        },
+        {
+          year: 2007.5,
+          ppm: 382.07,
+        },
+        {
+          year: 2008.5,
+          ppm: 383.99,
+        },
+        {
+          year: 2009.5,
+          ppm: 385.74,
+        },
+        {
+          year: 2010.5,
+          ppm: 388.0,
+        },
+        {
+          year: 2011.5,
+          ppm: 389.85,
+        },
+        {
+          year: 2012.5,
+          ppm: 392.02,
+        },
+        {
+          year: 2013.5,
+          ppm: 394.78,
+        },
+        {
+          year: 2014.5,
+          ppm: 396.89,
+        },
+        {
+          year: 2015.5,
+          ppm: 399.19,
+        },
+        {
+          year: 2016.5,
+          ppm: 402.41,
+        },
+        {
+          year: 2017.5,
+          ppm: 404.54,
+        },
+        {
+          year: 2018.5,
+          ppm: 406.9,
+        },
+        {
+          year: 2019.5,
+          ppm: 409.53,
+        },
+        {
+          year: 2020.5,
+          ppm: 411.99,
+        },
+        {
+          year: 2021.5,
+          ppm: 414.1,
+        },
+        {
+          year: 2022.5,
+          ppm: 416.33,
+        },
+      ],
+    },
+    layer: [
+      {
+        mark: {
+          type: "area",
+          color: "#3F6C7D",
+          opacity: 0.64,
+          clip: true,
+        },
+        encoding: {
+          x: {
+            field: "year",
+            type: "quantitative",
+            scale: {
+              domain: [1700, 2023],
+              nice: false,
+            },
+            axis: {
+              title: "Year",
+              values: [1750, 1800, 1850, 1900, 1950, 2000],
+              format: "d",
+              grid: false,
+              labelFlush: false,
+              labelOverlap: false,
+              tickMinStep: 1,
+            },
+          },
+          y: {
+            field: "ppm",
+            type: "quantitative",
+            scale: {
+              domain: [250, 420],
+              zero: false,
+              nice: false,
+            },
+            axis: {
+              title: "Atmospheric CO₂ concentration (ppm)",
+              values: [250, 300, 350, 400],
+              format: ".0f",
+              grid: true,
+            },
+          },
+          y2: {
+            datum: 250,
+          },
+        },
+      },
+      {
+        mark: {
+          type: "line",
+          color: "#8CA7B1",
+          strokeWidth: 2,
+          opacity: 0.9,
+          clip: true,
+        },
+        encoding: {
+          x: {
+            field: "year",
+            type: "quantitative",
+            scale: {
+              domain: [1700, 2023],
+              nice: false,
+            },
+          },
+          y: {
+            field: "ppm",
+            type: "quantitative",
+            scale: {
+              domain: [250, 420],
+              zero: false,
+              nice: false,
+            },
+          },
+          order: {
+            field: "year",
+            type: "quantitative",
+          },
+          tooltip: [
+            {
+              field: "year",
+              type: "quantitative",
+              title: "Year",
+              format: "0.0f",
+            },
+            {
+              field: "ppm",
+              type: "quantitative",
+              title: "Atmospheric CO₂ (ppm)",
+              format: ".1f",
+            },
+          ],
+        },
+      },
+    ],
+    config: {
+      view: {
+        stroke: null,
+      },
+      axis: {
+        domainColor: "rgba(255,255,255,0.35)",
+        domainWidth: 1,
+        tickColor: "rgba(255,255,255,0.35)",
+        gridColor: "rgba(255,255,255,0.35)",
+        gridDash: [2, 2],
+        gridOpacity: 1,
+        labelColor: "rgba(255,255,255,0.55)",
+        titleColor: "rgba(255,255,255,0.85)",
+        labelFont: "NotesESA",
+        titleFont: "NotesESA",
+        labelFontSize: 12,
+        titleFontSize: 15,
+        titleFontWeight: 700,
+        labelFontWeight: 400,
+        tickSize: 7,
+        tickWidth: 1,
+        titlePadding: 14,
+        labelPadding: 7,
+      },
+      legend: {
+        labelFont: "NotesESA",
+        labelFontSize: 13,
+        labelColor: "rgba(255,255,255,0.85)",
+        symbolType: "circle",
+        symbolSize: 105,
+      },
+    },
+  };
+</script>
+<script src="https://storage.googleapis.com/esa-cfs-cdn/esa-vega-chart/index.js"></script>
