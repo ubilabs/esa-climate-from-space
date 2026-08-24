@@ -123,7 +123,7 @@ const ImageCarousel: FunctionComponent<Props> = (props) => {
         damping: 32,
       },
     });
-  };
+ };
 
   const content = (
     <SlideContainer ref={getRefCallback(0, 0)} className={styles.container}>
