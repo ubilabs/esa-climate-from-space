@@ -5,12 +5,14 @@ import {
   StorySectionProps,
   ModuleType,
   imageGalleryModuleMap,
+  chartsModuleMap,
 } from "../types/story";
 
 // Map of block types to their respective module components
 // Extendable map to include additional modules as needed
 const moduleMap: Record<ModuleType, FunctionComponent<StorySectionProps>> = {
   ...imageGalleryModuleMap,
+  ...chartsModuleMap,
   ...storyEEIModuleMap,
   ...storyXFiresModuleMap,
 };

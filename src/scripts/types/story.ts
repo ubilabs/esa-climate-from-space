@@ -2,6 +2,7 @@ import { ComponentProps, FunctionComponent, Ref } from "react";
 
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
+import { Charts } from "../components/stories/story/blocks/charts/charts";
 import { StoryEEI } from "../components/stories/story/scroll-story/story-eei/story-eei";
 import { StoryXFires } from "../components/stories/story/scroll-story/story-x-fires/story-x-fires";
 
@@ -85,6 +86,8 @@ export type ImageGalleryModuleType =
   | "imageCarousel"
   | "globe";
 
+export type ChartsModuleType = "storyChart";
+
 export type BaseModule = {
   text?: string;
   altText?: string;
@@ -102,6 +105,10 @@ export type ImageModule = BaseModule & {
 };
 
 export type ImageModuleSlide = BaseModuleSlide;
+
+export type ChartsModule = BaseModule & {
+  type: ChartsModuleType;
+};
 
 export type ImageCarouselSlide = BaseModuleSlide & {
   layer?: {
@@ -203,6 +210,7 @@ export type BaseModuleSlide = {
 export type Module =
   | ImageModule
   | ImageCarouselModule
+  | ChartsModule
   | StoryEEIModule
   | StoryXFiresModule;
 
@@ -232,6 +240,13 @@ export const imageGalleryModuleMap: Record<
   textBodyLarge: ImageGallery.TextBodyLarge,
   imageCarousel: ImageGallery.ImageCarousel,
   globe: ImageGallery.StoryGlobe,
+};
+
+export const chartsModuleMap: Record<
+  ChartsModule["type"],
+  FunctionComponent<StorySectionProps>
+> = {
+  storyChart: Charts.StoryChart,
 };
 
 export const storyEEIModuleMap: Record<

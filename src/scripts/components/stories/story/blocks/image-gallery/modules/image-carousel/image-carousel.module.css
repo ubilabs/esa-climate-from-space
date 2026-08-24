@@ -30,9 +30,13 @@
     overflow: hidden;
 
     .track {
-      padding-left: 1rem;
       display: flex;
       gap: 24px;
+
+      > * {
+        max-width: 100%;
+
+      }
     }
   }
 
