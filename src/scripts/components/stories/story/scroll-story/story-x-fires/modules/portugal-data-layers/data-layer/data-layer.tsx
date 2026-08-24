@@ -7,6 +7,7 @@ import {
 } from "motion/react";
 
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 
 import { useScrollModule } from "../../../../modules/base-scroll/use-scroll-module";
 import { PortugalDataLayersAnimationConfig } from "../portugal-data-layers";
@@ -18,8 +19,15 @@ interface Props {
   label: string;
 }
 
+const MOBILE_LAYER_IMAGE_WIDTH_VW = 37;
+const DESKTOP_LAYER_IMAGE_WIDTH_VW = 22.5;
+
 export const DataLayer: FunctionComponent<Props> = (props) => {
   const { layerNumber, label } = props;
+  const { isDesktop } = useScreenInfo();
+  const imageWidthVw = isDesktop
+    ? DESKTOP_LAYER_IMAGE_WIDTH_VW
+    : MOBILE_LAYER_IMAGE_WIDTH_VW;
   const layerId = `layer${layerNumber}` as
     | "layer1"
     | "layer2"
@@ -124,6 +132,8 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
         style={
           {
             "--x-fires-layer-number": layerNumber,
+            "--x-fires-layer-image-width-vw": imageWidthVw,
+            "--x-fires-layer-image-width": `${imageWidthVw}vw`,
             "--x-fires-layer-image-perspective-factor": perspectiveFactor,
             "--x-fires-layer-image-translate-factor": translateFactor,
             "--x-fires-layer-image-scale-factor": scaleFactor,
