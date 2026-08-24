@@ -248,6 +248,16 @@
       }
     },
     {
+      "type": "storyChart",
+      "slides": [
+        {
+          "text": "Satellitenbeobachtungen zeigen einen erheblichen Verlust des arktischen Meereises in den vergangenen Jahrzehnten. Die geringsten Ausdehnungen wurden 2012, gefolgt von 2007 und 2020, beobachtet. Seit Beginn der regelmäßigen Satellitenmessungen des Meereises im Jahr 1978 ist die sommerliche Meereisausdehnung im Arktischen Ozean um fast 40 % zurückgegangen. Im Südlichen Ozean nahm die mittlere Eisausdehnung rund um die Antarktis während des größten Teils dieses Zeitraums um 4–6 % zu, ist jedoch seit 2014 dreimal so schnell eingebrochen wie in der Arktis. Weltweit zeigt der Trend nach unten, und der Eisverlust beschleunigt sich.",
+          "caption": "# Ausdehnung des arktischen Meereises im August 1979–2023 \nDie sommerliche Eisausdehnung in der Arktis nimmt jährlich um 68.000 km² beziehungsweise um 8,9 % pro Jahrzehnt ab (Daten von EUMETSAT OSISAF, mit Forschungs- und Entwicklungsbeiträgen der ESA CCI).",
+          "url": "assets/arctic_sea_ice_extent_chart.json"
+        }
+      ]
+    },
+    {
       "type": "textOverlay",
       "url": "assets/satellite.gif",
       "focus": "right",
