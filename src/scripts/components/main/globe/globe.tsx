@@ -326,6 +326,20 @@ function useMultiGlobeSynchronization(
 ) {
   const { view, active, flyTo, isMarkerOffset } = props;
 
+  const applyFlyTo = useEffectEvent(
+    (globe: WebGlGlobe, flyTo: Partial<CameraView>) => {
+      globe.setProps({
+        cameraView: {
+          ...view,
+          ...flyTo,
+          lng:
+            (flyTo.lng ?? view.lng) +
+            (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0),
+        },
+      });
+    },
+  );
+
   // forward camera changes from the active view to the parent component
   useCameraChangeEvents(globe, props, enabled);
 
@@ -340,16 +354,8 @@ function useMultiGlobeSynchronization(
   // apply incomfing flyTo props to the globe
   useEffect(() => {
     if (!globe || !enabled || !flyTo) return;
-    globe.setProps({
-      cameraView: {
-        ...view,
-        ...flyTo,
-        lng:
-          (flyTo.lng ?? view.lng) +
-          (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0),
-      },
-    });
-  }, [flyTo, globe, isMarkerOffset, enabled, view]);
+    applyFlyTo(globe, flyTo);
+  }, [flyTo, globe, enabled]);
 }
 
 /**

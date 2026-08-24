@@ -328,6 +328,16 @@
       }
     },
     {
+      "type": "storyChart",
+      "slides": [
+        {
+          "text": "Satellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2020. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.",
+          "caption": "# Arctic Sea Ice Extent in August 1979-2023 \nSummer ice extent in the Arctic is down 68,000 sq km per year, or 8.9% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)",
+          "url": "assets/arctic_sea_ice_extent_chart.json"
+        }
+      ]
+    },
+    {
       "type": "textOverlay",
       "url": "assets/satellite.gif",
       "focus": "right",
