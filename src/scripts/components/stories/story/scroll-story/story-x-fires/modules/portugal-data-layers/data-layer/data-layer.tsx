@@ -6,8 +6,7 @@ import {
   useTransform,
 } from "motion/react";
 
-import mainConfig from "../../../../../../../../config/main";
-import { replaceUrlPlaceholders } from "../../../../../../../../libs/replace-url-placeholders";
+import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 
 import { useScrollModule } from "../../../../modules/base-scroll/use-scroll-module";
 import { PortugalDataLayersAnimationConfig } from "../portugal-data-layers";
@@ -30,20 +29,15 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
   const { scrollYProgress, config } =
     useScrollModule<PortugalDataLayersAnimationConfig>();
 
-  const storyMediaBase = replaceUrlPlaceholders(
-    mainConfig.api.storyImageSequenceBase,
-    { id: "story-x-fires" },
-  );
-
   const imageUrls = useMemo(
     () =>
       Array.from({ length: 10 }, (_, index) => {
         const dateTime = `2017-${String(index + 1).padStart(2, "0")}`;
         const fileName = `${layerId}_${dateTime}.webp`;
         const path = `assets/portugal-data-layers/${fileName}`;
-        return `${storyMediaBase}/${path}`;
+        return getStoryAssetUrl("story-x-fires", path, { source: "cloud" });
       }),
-    [layerId, storyMediaBase],
+    [layerId],
   );
 
   // Preload all frames for the animation

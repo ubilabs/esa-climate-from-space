@@ -10,8 +10,7 @@ import { motion, useMotionValueEvent, useTransform } from "motion/react";
 import { useScrollModule } from "../use-scroll-module";
 
 import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
-import mainConfig from "../../../../../../../config/main";
-import { replaceUrlPlaceholders } from "../../../../../../../libs/replace-url-placeholders";
+import { getStoryAssetUrl } from "../../../../../../../libs/get-story-asset-urls";
 import {
   getImageSequenceFrameIndex,
   getImageSequenceBasePath,
@@ -77,11 +76,9 @@ export default function ScrollImageSequence({ className, sequence }: Props) {
     [config.imageSequence.progressRange],
   );
 
-  const storyImageSequenceBase = replaceUrlPlaceholders(
-    mainConfig.api.storyImageSequenceBase,
-    { id: story?.id ?? "" },
-  );
-  const sequenceBasePath = `${storyImageSequenceBase}/${sequence.path}`;
+  const sequenceBasePath = getStoryAssetUrl(story?.id ?? "", sequence.path, {
+    source: "cloud",
+  });
   const sequenceVariant = isMobile ? "portrait" : "landscape";
   const frameBasePath = getImageSequenceBasePath(
     sequenceBasePath,
