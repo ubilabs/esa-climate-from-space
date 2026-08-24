@@ -66,11 +66,15 @@
     "react-markdown": "^10.1.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.18.2",
+    "react-vega": "^8.0.0",
     "react-youtube": "^10.1.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^3.1.0",
     "rehype-raw": "^7.0.0",
     "remove-markdown": "^0.6.2",
+    "vega": "^6.4.0",
+    "vega-embed": "^7.1.0",
+    "vega-lite": "^6.4.3",
     "video.js": "^8.23.4"
   },
   "devDependencies": {
