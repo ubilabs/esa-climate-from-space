@@ -100,7 +100,7 @@
             "nice": false
           },
           "axis": {
-            "title": "Arctic sea ice minimum extent (million km²)",
+            "title": "Arctic sea ice extent (million km²)",
             "values": [3, 4, 5, 6, 7, 8],
             "format": ".0f",
             "grid": true
@@ -120,7 +120,7 @@
           {
             "field": "extent",
             "type": "quantitative",
-            "title": "Minimum sea ice extent (million km²)",
+            "title": "Arctic sea ice extent (million km²)",
             "format": ".2f"
           }
         ]
