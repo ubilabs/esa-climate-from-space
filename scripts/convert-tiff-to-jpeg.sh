@@ -36,6 +36,7 @@ while IFS= read -r -d '' input_file; do
 
     mkdir -p "$(dirname "$output_file")"
     ffmpeg \
+        -nostdin \
         -loglevel error \
         -y \
         -i "$input_file" \
