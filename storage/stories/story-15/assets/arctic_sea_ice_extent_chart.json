@@ -61,12 +61,12 @@
     {
       "mark": {
         "type": "line",
-        "color": "#6AD6C9",
+        "color": "#00ae9d",
         "strokeWidth": 2,
         "opacity": 0.5,
         "point": {
           "filled": true,
-          "fill": "#6AD6C9",
+          "fill": "#00ae9d",
           "size": 105,
           "opacity": 1,
           "stroke": "rgba(255,255,255,0.28)",
