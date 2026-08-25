@@ -30,13 +30,15 @@ export function Layers({ content }: Props) {
         } as MotionStyle
       }
     >
-      {([4, 3, 2, 1] as const).map((layerNumber) => (
-        <DataLayer
-          key={`portugal-data-layer-${layerNumber}`}
-          layerNumber={layerNumber}
-          label={content?.[`labelLayer${layerNumber}`] || ""}
-        />
-      ))}
+      <div className={styles.layerStack}>
+        {([4, 3, 2, 1] as const).map((layerNumber) => (
+          <DataLayer
+            key={`portugal-data-layer-${layerNumber}`}
+            layerNumber={layerNumber}
+            label={content?.[`labelLayer${layerNumber}`] || ""}
+          />
+        ))}
+      </div>
     </motion.div>
   );
 }
