@@ -41,8 +41,9 @@
     box-shadow: 2rem 3rem 1.5rem rgba(0, 0, 0, 0.6);
 
     @media (--desktop-viewport) {
-      width: 500px;
-      aspect-ratio: 4/3;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16/9;
     }
   }
 
