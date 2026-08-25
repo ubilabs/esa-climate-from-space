@@ -1,5 +1,6 @@
 import { StoryXFiresModule } from "../../../../../../../types/story";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
@@ -7,6 +8,8 @@ import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-seque
 import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import { Layers } from "./layers/layers";
 import { Timeline } from "./timeline/timeline";
+
+import cx from "classnames";
 
 import styles from "./portugal-data-layers.module.css";
 
@@ -101,6 +104,7 @@ export type PortugalDataLayersAnimationConfig = typeof animationConfig;
 
 export default function PortugalDataLayersModule() {
   const { module, getRefCallback } = useModuleContent();
+  const { isDesktop } = useScreenInfo();
   const xFiresModule = module as StoryXFiresModule & {
     imageSequence: { path: string };
   };
@@ -116,32 +120,42 @@ export default function PortugalDataLayersModule() {
         <Timeline />
         <Dimmer />
         <ScrollText
-          className={styles.scrollText}
+          className={cx(styles.scrollText, styles.foregroundScrollText)}
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
         <ScrollText
-          className={styles.scrollText}
+          className={cx(styles.scrollText, styles.foregroundScrollText)}
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
         <ScrollText
-          className={styles.scrollText}
+          className={cx(styles.scrollText, styles.foregroundScrollText)}
           text={xFiresModule.content?.scrollText3 || ""}
           inputRange={animationConfig.scrollText3.input}
           outputRange={animationConfig.scrollText3.output}
         />
         <ScrollText
+          className={styles.scrollText}
           text={xFiresModule.content?.scrollText4 || ""}
           inputRange={animationConfig.scrollText4.input}
-          outputRange={animationConfig.scrollText4.output}
+          outputRange={
+            isDesktop
+              ? ["100%", "100%", "0%", "0%", "-100%"]
+              : animationConfig.scrollText4.output
+          }
         />
         <ScrollText
+          className={styles.scrollText}
           text={xFiresModule.content?.scrollText5 || ""}
           inputRange={animationConfig.scrollText5.input}
-          outputRange={animationConfig.scrollText5.output}
+          outputRange={
+            isDesktop
+              ? ["100%", "0%", "0%", "-100%"]
+              : animationConfig.scrollText5.output
+          }
         />
       </ScrollModule.StickyContainer>
     </ScrollModule>
