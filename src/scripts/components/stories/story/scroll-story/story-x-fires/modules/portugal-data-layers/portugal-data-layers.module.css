@@ -1,3 +1,23 @@
 .scrollText {
+  @media (--desktop-viewport) {
+    width: 40%;
+  }
+}
+
+.foregroundScrollText {
   z-index: 2;
+}
+
+.leftScrollText {
+  @media (--desktop-viewport) {
+    margin-right: auto;
+    margin-left: var(--story-padding);
+  }
+}
+
+.rightScrollText {
+  @media (--desktop-viewport) {
+    margin-right: var(--story-padding);
+    margin-left: auto;
+  }
 }
