@@ -71,7 +71,7 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
       (threshold) => progress < threshold,
     );
 
-    setImageUrlIndex(index);
+    setImageUrlIndex(index === -1 ? 9 : index);
   });
 
   const perspectiveFactor = useTransform(

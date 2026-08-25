@@ -56,7 +56,7 @@ const animationConfig = {
       output: ["-100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.3453,
+      visibilityThreshold: 0.7453,
     },
   },
   outro: {
@@ -64,7 +64,7 @@ const animationConfig = {
     translate: [0.5808, 0.5965],
     scale: [0.5494, 0.5965],
     fadeOut: {
-      input: [0.5651, 0.735],
+      input: [0.5651, 0.65],
       output: ["100%", "0%"],
     },
   },
