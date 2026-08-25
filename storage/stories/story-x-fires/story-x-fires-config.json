@@ -272,7 +272,7 @@
     {
       "globeKeyframes": [
         {
-          "progress": 0.1,
+          "progress": 0.0628,
           "desktop": {
             "containerPosition": {
               "x": 0,
@@ -295,14 +295,9 @@
               "altitude": 1400400
             }
           }
-        }
-      ],
-      "lengthFactor": 27
-    },
-    {
-      "globeKeyframes": [
+        },
         {
-          "progress": 0.1,
+          "progress": 0.6651,
           "desktop": {
             "containerPosition": {
               "x": 0,
@@ -327,7 +322,7 @@
           }
         }
       ],
-      "lengthFactor": 16
+      "lengthFactor": 43
     },
     {
       "globeKeyframes": [
