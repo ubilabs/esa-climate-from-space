@@ -18,10 +18,9 @@
           "imageFit": "cover"
         },
         {
-          "type": "image",
-          "imageCaption": "# Global Mean Sea Level \r\nGlobal sea level observed by satellites shows a rising trend of 3.3 mm per year, but a drop in 2011 due to the large amount of excess water on land.  (ESA-CCI/Copernicus Marine Environment Monitoring Service)",
-          "image": "assets/story21-image06.png",
-          "imageFit": "contain"
+          "type": "embedded",
+          "description": "# Global Mean Sea Level \r\nGlobal sea level observed by satellites shows a rising trend of 3.3 mm per year, but a drop in 2011 due to the large amount of excess water on land.  (ESA-CCI/Copernicus Marine Environment Monitoring Service)",
+          "embeddedSrc": "assets/global_mean_sea_level_chart.html"
         },
         {
           "type": "image",

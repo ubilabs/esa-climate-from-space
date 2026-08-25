@@ -1,0 +1,839 @@
+<script>
+  window.spec = {
+    $schema: "https://vega.github.io/schema/vega-lite/v6.json",
+    width: 1040,
+    height: 520,
+    background: "rgba(0,0,0,0)",
+    autosize: {
+      type: "fit",
+      contains: "padding",
+    },
+    data: {
+      values: [
+        {
+          year: 2002.287,
+          mm: 0,
+        },
+        {
+          year: 2002.371,
+          mm: 0.48,
+        },
+        {
+          year: 2002.454,
+          mm: 2.88,
+        },
+        {
+          year: 2002.538,
+          mm: 5.04,
+        },
+        {
+          year: 2002.623,
+          mm: 5.31,
+        },
+        {
+          year: 2002.706,
+          mm: 3.91,
+        },
+        {
+          year: 2002.79,
+          mm: 3.62,
+        },
+        {
+          year: 2002.873,
+          mm: 2.7,
+        },
+        {
+          year: 2002.957,
+          mm: 4.01,
+        },
+        {
+          year: 2003.042,
+          mm: 0,
+        },
+        {
+          year: 2003.123,
+          mm: -0.78,
+        },
+        {
+          year: 2003.204,
+          mm: -2.11,
+        },
+        {
+          year: 2003.287,
+          mm: -0.86,
+        },
+        {
+          year: 2003.371,
+          mm: -2.26,
+        },
+        {
+          year: 2003.454,
+          mm: -1.78,
+        },
+        {
+          year: 2003.538,
+          mm: -2.36,
+        },
+        {
+          year: 2003.623,
+          mm: 0.17,
+        },
+        {
+          year: 2003.706,
+          mm: -1.1,
+        },
+        {
+          year: 2003.79,
+          mm: -0.99,
+        },
+        {
+          year: 2003.873,
+          mm: -0.86,
+        },
+        {
+          year: 2003.957,
+          mm: -1.56,
+        },
+        {
+          year: 2004.042,
+          mm: 0.35,
+        },
+        {
+          year: 2004.125,
+          mm: -0.2,
+        },
+        {
+          year: 2004.207,
+          mm: 0.86,
+        },
+        {
+          year: 2004.29,
+          mm: 1.11,
+        },
+        {
+          year: 2004.374,
+          mm: 0.14,
+        },
+        {
+          year: 2004.457,
+          mm: 1.5,
+        },
+        {
+          year: 2004.541,
+          mm: 0.69,
+        },
+        {
+          year: 2004.626,
+          mm: 1.69,
+        },
+        {
+          year: 2004.709,
+          mm: 3.06,
+        },
+        {
+          year: 2004.793,
+          mm: 3.36,
+        },
+        {
+          year: 2004.876,
+          mm: 2.06,
+        },
+        {
+          year: 2004.96,
+          mm: 4.19,
+        },
+        {
+          year: 2005.042,
+          mm: 5.48,
+        },
+        {
+          year: 2005.123,
+          mm: 5.53,
+        },
+        {
+          year: 2005.204,
+          mm: 6.63,
+        },
+        {
+          year: 2005.287,
+          mm: 5.43,
+        },
+        {
+          year: 2005.371,
+          mm: 7.31,
+        },
+        {
+          year: 2005.454,
+          mm: 6.16,
+        },
+        {
+          year: 2005.538,
+          mm: 7.73,
+        },
+        {
+          year: 2005.623,
+          mm: 5.19,
+        },
+        {
+          year: 2005.706,
+          mm: 5.52,
+        },
+        {
+          year: 2005.79,
+          mm: 7.52,
+        },
+        {
+          year: 2005.873,
+          mm: 8.18,
+        },
+        {
+          year: 2005.957,
+          mm: 9.46,
+        },
+        {
+          year: 2006.042,
+          mm: 6.83,
+        },
+        {
+          year: 2006.123,
+          mm: 7.65,
+        },
+        {
+          year: 2006.204,
+          mm: 6.87,
+        },
+        {
+          year: 2006.287,
+          mm: 8.06,
+        },
+        {
+          year: 2006.371,
+          mm: 9,
+        },
+        {
+          year: 2006.454,
+          mm: 10.51,
+        },
+        {
+          year: 2006.538,
+          mm: 9.45,
+        },
+        {
+          year: 2006.623,
+          mm: 8.84,
+        },
+        {
+          year: 2006.706,
+          mm: 10.64,
+        },
+        {
+          year: 2006.79,
+          mm: 10.15,
+        },
+        {
+          year: 2006.873,
+          mm: 9.12,
+        },
+        {
+          year: 2006.957,
+          mm: 9.01,
+        },
+        {
+          year: 2007.042,
+          mm: 9.39,
+        },
+        {
+          year: 2007.123,
+          mm: 6.91,
+        },
+        {
+          year: 2007.204,
+          mm: 8.77,
+        },
+        {
+          year: 2007.287,
+          mm: 11.27,
+        },
+        {
+          year: 2007.371,
+          mm: 10.41,
+        },
+        {
+          year: 2007.454,
+          mm: 8.3,
+        },
+        {
+          year: 2007.538,
+          mm: 8.43,
+        },
+        {
+          year: 2007.623,
+          mm: 7,
+        },
+        {
+          year: 2007.706,
+          mm: 8.73,
+        },
+        {
+          year: 2007.79,
+          mm: 8.89,
+        },
+        {
+          year: 2007.873,
+          mm: 10.38,
+        },
+        {
+          year: 2007.957,
+          mm: 10.8,
+        },
+        {
+          year: 2008.042,
+          mm: 10.71,
+        },
+        {
+          year: 2008.125,
+          mm: 12.09,
+        },
+        {
+          year: 2008.207,
+          mm: 11.42,
+        },
+        {
+          year: 2008.29,
+          mm: 11.76,
+        },
+        {
+          year: 2008.374,
+          mm: 14.91,
+        },
+        {
+          year: 2008.457,
+          mm: 16.62,
+        },
+        {
+          year: 2008.541,
+          mm: 14.87,
+        },
+        {
+          year: 2008.626,
+          mm: 13.22,
+        },
+        {
+          year: 2008.709,
+          mm: 13.98,
+        },
+        {
+          year: 2008.793,
+          mm: 13.98,
+        },
+        {
+          year: 2008.876,
+          mm: 15.19,
+        },
+        {
+          year: 2008.96,
+          mm: 16.66,
+        },
+        {
+          year: 2009.042,
+          mm: 16.07,
+        },
+        {
+          year: 2009.123,
+          mm: 14.33,
+        },
+        {
+          year: 2009.204,
+          mm: 16.08,
+        },
+        {
+          year: 2009.287,
+          mm: 16.23,
+        },
+        {
+          year: 2009.371,
+          mm: 16.39,
+        },
+        {
+          year: 2009.454,
+          mm: 16.01,
+        },
+        {
+          year: 2009.538,
+          mm: 16.27,
+        },
+        {
+          year: 2009.623,
+          mm: 17.4,
+        },
+        {
+          year: 2009.706,
+          mm: 19.72,
+        },
+        {
+          year: 2009.79,
+          mm: 19.76,
+        },
+        {
+          year: 2009.873,
+          mm: 20.05,
+        },
+        {
+          year: 2009.957,
+          mm: 19.73,
+        },
+        {
+          year: 2010.042,
+          mm: 18.82,
+        },
+        {
+          year: 2010.123,
+          mm: 18.4,
+        },
+        {
+          year: 2010.204,
+          mm: 18.89,
+        },
+        {
+          year: 2010.287,
+          mm: 19.34,
+        },
+        {
+          year: 2010.371,
+          mm: 19.82,
+        },
+        {
+          year: 2010.454,
+          mm: 21.04,
+        },
+        {
+          year: 2010.538,
+          mm: 21.29,
+        },
+        {
+          year: 2010.623,
+          mm: 19.53,
+        },
+        {
+          year: 2010.706,
+          mm: 17.71,
+        },
+        {
+          year: 2010.79,
+          mm: 17.63,
+        },
+        {
+          year: 2010.873,
+          mm: 17.19,
+        },
+        {
+          year: 2010.957,
+          mm: 16.72,
+        },
+        {
+          year: 2011.042,
+          mm: 18.14,
+        },
+        {
+          year: 2011.123,
+          mm: 15.51,
+        },
+        {
+          year: 2011.204,
+          mm: 15.93,
+        },
+        {
+          year: 2011.287,
+          mm: 15.88,
+        },
+        {
+          year: 2011.371,
+          mm: 16.73,
+        },
+        {
+          year: 2011.454,
+          mm: 18.3,
+        },
+        {
+          year: 2011.538,
+          mm: 19.31,
+        },
+        {
+          year: 2011.623,
+          mm: 20.94,
+        },
+        {
+          year: 2011.706,
+          mm: 21.83,
+        },
+        {
+          year: 2011.79,
+          mm: 21.73,
+        },
+        {
+          year: 2011.873,
+          mm: 21.99,
+        },
+        {
+          year: 2011.957,
+          mm: 24.72,
+        },
+        {
+          year: 2012.042,
+          mm: 26.37,
+        },
+        {
+          year: 2012.125,
+          mm: 26.84,
+        },
+        {
+          year: 2012.207,
+          mm: 26.34,
+        },
+        {
+          year: 2012.29,
+          mm: 26.8,
+        },
+        {
+          year: 2012.374,
+          mm: 27.28,
+        },
+        {
+          year: 2012.457,
+          mm: 30.07,
+        },
+        {
+          year: 2012.541,
+          mm: 31.45,
+        },
+        {
+          year: 2012.626,
+          mm: 31.65,
+        },
+        {
+          year: 2012.709,
+          mm: 30.74,
+        },
+        {
+          year: 2012.793,
+          mm: 32.52,
+        },
+        {
+          year: 2012.876,
+          mm: 31.93,
+        },
+        {
+          year: 2012.96,
+          mm: 32.9,
+        },
+        {
+          year: 2013.042,
+          mm: 33,
+        },
+        {
+          year: 2013.123,
+          mm: 33.83,
+        },
+        {
+          year: 2013.204,
+          mm: 33.16,
+        },
+        {
+          year: 2013.287,
+          mm: 32.22,
+        },
+        {
+          year: 2013.371,
+          mm: 32.79,
+        },
+        {
+          year: 2013.454,
+          mm: 31.43,
+        },
+        {
+          year: 2013.538,
+          mm: 30.6,
+        },
+        {
+          year: 2013.623,
+          mm: 30.24,
+        },
+        {
+          year: 2013.706,
+          mm: 29.49,
+        },
+        {
+          year: 2013.79,
+          mm: 31.79,
+        },
+        {
+          year: 2013.873,
+          mm: 32.2,
+        },
+        {
+          year: 2013.957,
+          mm: 31.19,
+        },
+        {
+          year: 2014.042,
+          mm: 32.95,
+        },
+        {
+          year: 2014.123,
+          mm: 34.36,
+        },
+        {
+          year: 2014.204,
+          mm: 34.58,
+        },
+        {
+          year: 2014.287,
+          mm: 33.56,
+        },
+        {
+          year: 2014.371,
+          mm: 33.17,
+        },
+        {
+          year: 2014.454,
+          mm: 34.07,
+        },
+        {
+          year: 2014.538,
+          mm: 36.46,
+        },
+        {
+          year: 2014.623,
+          mm: 35.43,
+        },
+        {
+          year: 2014.706,
+          mm: 35.96,
+        },
+        {
+          year: 2014.79,
+          mm: 36.98,
+        },
+        {
+          year: 2014.873,
+          mm: 35.51,
+        },
+        {
+          year: 2014.957,
+          mm: 37.33,
+        },
+        {
+          year: 2015.042,
+          mm: 40.63,
+        },
+        {
+          year: 2015.123,
+          mm: 42.19,
+        },
+        {
+          year: 2015.204,
+          mm: 43.87,
+        },
+        {
+          year: 2015.287,
+          mm: 42.77,
+        },
+        {
+          year: 2015.371,
+          mm: 43.64,
+        },
+        {
+          year: 2015.454,
+          mm: 42.7,
+        },
+        {
+          year: 2015.538,
+          mm: 44.78,
+        },
+        {
+          year: 2015.623,
+          mm: 45.52,
+        },
+        {
+          year: 2015.706,
+          mm: 48.15,
+        },
+        {
+          year: 2015.79,
+          mm: 48.97,
+        },
+        {
+          year: 2015.873,
+          mm: 47.52,
+        },
+        {
+          year: 2015.957,
+          mm: 47.82,
+        },
+        {
+          year: 2016.042,
+          mm: 48.47,
+        },
+        {
+          year: 2016.125,
+          mm: 50.86,
+        },
+        {
+          year: 2016.207,
+          mm: 50.1,
+        },
+        {
+          year: 2016.29,
+          mm: 48.98,
+        },
+        {
+          year: 2016.374,
+          mm: 48.38,
+        },
+        {
+          year: 2016.457,
+          mm: 50.74,
+        },
+        {
+          year: 2016.541,
+          mm: 48.65,
+        },
+        {
+          year: 2016.626,
+          mm: 47.41,
+        },
+      ],
+    },
+    layer: [
+      {
+        mark: {
+          type: "line",
+          color: "#00ae9d",
+          strokeWidth: 2.5,
+          opacity: 0.95,
+          clip: true,
+        },
+        encoding: {
+          x: {
+            field: "year",
+            type: "quantitative",
+            scale: {
+              domain: [2002, 2017],
+              nice: false,
+            },
+            axis: {
+              title: "Year",
+              values: [2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016],
+              format: "d",
+              grid: false,
+              labelFlush: false,
+              labelOverlap: false,
+              tickMinStep: 1,
+            },
+          },
+          y: {
+            field: "mm",
+            type: "quantitative",
+            scale: {
+              domain: [-5, 55],
+              zero: false,
+              nice: false,
+            },
+            axis: {
+              title: "Global mean sea level (mm)",
+              values: [0, 10, 20, 30, 40, 50],
+              format: ".0f",
+              grid: true,
+            },
+          },
+          order: {
+            field: "year",
+            type: "quantitative",
+          },
+          tooltip: [
+            {
+              field: "year",
+              type: "quantitative",
+              title: "Year",
+              format: ".0f",
+            },
+            {
+              field: "mm",
+              type: "quantitative",
+              title: "Global mean sea level (mm)",
+              format: ".2f",
+            },
+          ],
+        },
+      },
+      {
+        transform: [
+          {
+            regression: "mm",
+            on: "year",
+            method: "linear",
+          },
+        ],
+        mark: {
+          type: "line",
+          color: "rgba(255,255,255,0.72)",
+          strokeWidth: 1.5,
+          opacity: 0.9,
+          clip: true,
+        },
+        encoding: {
+          x: {
+            field: "year",
+            type: "quantitative",
+            scale: {
+              domain: [2002, 2017],
+              nice: false,
+            },
+          },
+          y: {
+            field: "mm",
+            type: "quantitative",
+            scale: {
+              domain: [-5, 55],
+              zero: false,
+              nice: false,
+            },
+          },
+        },
+      },
+    ],
+    config: {
+      view: {
+        stroke: null,
+      },
+      axis: {
+        domainColor: "rgba(255,255,255,0.35)",
+        domainWidth: 1,
+        tickColor: "rgba(255,255,255,0.35)",
+        gridColor: "rgba(255,255,255,0.35)",
+        gridDash: [2, 2],
+        gridOpacity: 1,
+        labelColor: "rgba(255,255,255,0.55)",
+        titleColor: "rgba(255,255,255,0.85)",
+        labelFont: "NotesESA",
+        titleFont: "NotesESA",
+        labelFontSize: 12,
+        titleFontSize: 15,
+        titleFontWeight: 700,
+        labelFontWeight: 400,
+        tickSize: 7,
+        tickWidth: 1,
+        titlePadding: 14,
+        labelPadding: 7,
+      },
+      legend: {
+        labelFont: "NotesESA",
+        labelFontSize: 13,
+        labelColor: "rgba(255,255,255,0.85)",
+        symbolType: "circle",
+        symbolSize: 105,
+      },
+    },
+  };
+</script>
+<script src="https://storage.googleapis.com/esa-cfs-cdn/esa-vega-chart/index.js"></script>
