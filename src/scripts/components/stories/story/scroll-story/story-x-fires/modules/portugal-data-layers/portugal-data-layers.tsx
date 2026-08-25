@@ -64,7 +64,7 @@ const animationConfig = {
     translate: [0.5808, 0.5965],
     scale: [0.5494, 0.5965],
     fadeOut: {
-      input: [0.5651, 0.6279],
+      input: [0.5651, 0.735],
       output: ["100%", "0%"],
     },
   },
@@ -83,9 +83,9 @@ const animationConfig = {
     ],
   },
   imageSequence: {
-    progressRange: [0.7023, 1],
-    input: [0.6279, 0.6465, 0.6577, 0.7023],
-    output: ["0%", "0%", "20%", "100%"],
+    progressRange: [0.7583, 1],
+    input: [0.5651, 0.735],
+    output: ["0%", "100%"],
   },
   scrollText4: {
     input: [0.6279, 0.6651, 0.6837, 0.7116, 0.7395],
