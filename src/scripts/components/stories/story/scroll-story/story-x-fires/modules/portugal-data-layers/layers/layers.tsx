@@ -27,6 +27,11 @@ export function Layers({ content }: Props) {
     config.layerStack.input,
     isDesktop ? config.layerStack.output : ["0vw", "0vw", "0vw"],
   );
+  const stackInsetFactor = useTransform(
+    scrollYProgress,
+    config.layerStack.input,
+    isDesktop ? [1, 1, 0] : [0, 0, 0],
+  );
 
   return (
     <motion.div
@@ -35,6 +40,7 @@ export function Layers({ content }: Props) {
         {
           "--x-fires-layer-wrapper-opacity": opacityFactor,
           "--x-fires-layer-wrapper-x": stackX,
+          "--x-fires-layer-wrapper-inset-factor": stackInsetFactor,
         } as MotionStyle
       }
     >
