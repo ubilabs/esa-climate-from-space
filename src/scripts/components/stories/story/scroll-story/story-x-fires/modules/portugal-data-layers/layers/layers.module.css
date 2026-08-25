@@ -2,15 +2,18 @@
   position: sticky;
   top: 50%;
   transform: translateY(-50%);
-  transform-style: preserve-3d;
+  opacity: var(--x-fires-layer-wrapper-opacity);
+}
+
+.layerStack {
   display: grid;
+  transform-style: preserve-3d;
   align-items: center;
   justify-content: center;
   grid-auto-columns: 100vw;
   grid-auto-rows: 5rem;
   padding-top: 3rem;
   perspective: none;
-  opacity: var(--x-fires-layer-wrapper-opacity);
 
   @media (--desktop-viewport) {
     padding-top: 5rem;
