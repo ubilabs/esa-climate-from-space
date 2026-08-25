@@ -196,7 +196,7 @@ export default {
     layerIcon: `${baseUrlTiles}/{id}/icon.png`,
     storyOfflinePackage: `${baseUrlStorage}stories/{id}/package.zip`,
     storyMediaBase: `${baseUrlStorage}stories/{id}`,
-    storyImageSequenceBase: `${baseUrlStorageCloud}/stories/{id}`,
+    storyCloudMediaBase: `${baseUrlStorageCloud}/stories/{id}`,
     stories: `${baseUrlStorage}stories/stories-{lang}.json`,
     story: `${baseUrlStorage}stories/{id}/{id}-{lang}.json`,
     storySharedConfig: `${baseUrlStorage}stories/{id}/{id}-config.json`,

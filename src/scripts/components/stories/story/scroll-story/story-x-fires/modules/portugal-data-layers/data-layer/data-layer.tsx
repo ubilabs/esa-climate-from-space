@@ -29,16 +29,17 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
   const { scrollYProgress, config } =
     useScrollModule<PortugalDataLayersAnimationConfig>();
 
-  const imageUrls = useMemo(
-    () =>
-      Array.from({ length: 10 }, (_, index) => {
-        const dateTime = `2017-${String(index + 1).padStart(2, "0")}`;
-        const fileName = `${layerId}_${dateTime}.webp`;
-        const path = `assets/portugal-data-layers/${fileName}`;
-        return getStoryAssetUrl("story-x-fires", path);
-      }),
-    [layerId],
-  );
+  const imageUrls = useMemo(() => {
+    // these layers don't have a time sequence, so we will only need to fetch the first frame
+    const isLayer1or2 = layerId === "layer1" || layerId === "layer2";
+    return Array.from({ length: 10 }, (_, index) => {
+      const toBeIndexed = isLayer1or2 ? 1 : index;
+      const dateTime = `2017-${String(toBeIndexed + 1).padStart(2, "0")}`;
+      const fileName = `${layerId}_${dateTime}.webp`;
+      const path = `assets/portugal-data-layers/${fileName}`;
+      return getStoryAssetUrl("story-x-fires", path, { source: "cloud" });
+    });
+  }, [layerId]);
 
   // Preload all frames for the animation
   useEffect(() => {
