@@ -1,7 +1,7 @@
 .layers {
   position: sticky;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(var(--x-fires-layer-wrapper-x, 0), -50%);
   opacity: var(--x-fires-layer-wrapper-opacity);
 }
 

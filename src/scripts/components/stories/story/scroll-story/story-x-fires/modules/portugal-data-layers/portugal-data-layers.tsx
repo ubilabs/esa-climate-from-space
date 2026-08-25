@@ -19,20 +19,20 @@ const animationConfig = {
     output: ["0%", "0%", "-100%"],
   },
   scrollText2: {
-    input: [0.1099, 0.1256, 0.157, 0.1727],
+    input: [0.2041, 0.2198, 0.2512, 0.2669],
     output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText3: {
-    input: [0.2041, 0.2198, 0.2512, 0.2669],
+    input: [0.2826, 0.2983, 0.314, 0.3297],
     output: ["100%", "0%", "0%", "-100%"],
   },
   layer1: {
     figure: {
-      input: [0.0785, 0.0942],
+      input: [0, 0.0157],
       output: ["-100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.0942,
+      visibilityThreshold: 0.0157,
     },
   },
   layer2: {
@@ -62,6 +62,10 @@ const animationConfig = {
       visibilityThreshold: 0.3453,
     },
   },
+  layerStack: {
+    input: [0, 0.3453, 0.361],
+    output: ["25vw", "25vw", "0vw"],
+  },
   outro: {
     perspective: [0.5494, 0.5808],
     translate: [0.5808, 0.5965],
@@ -73,16 +77,16 @@ const animationConfig = {
   },
   dimmer: {
     input: [
-      0.0628, 0.0785, 0.1099, 0.1256, 0.157, 0.1727, 0.2041, 0.2198,
-      0.2512, 0.2669, 0.8512, 0.8791,
+      0.0628, 0.0785, 0.1099, 0.1256, 0.157, 0.1727, 0.2041, 0.2198, 0.2512,
+      0.2669, 0.2826, 0.2983, 0.314, 0.3297, 0.8512, 0.8791,
     ],
-    output: [0.5, 0, 0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0.5, 0],
+    output: [0.5, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0.5, 0],
   },
   timeline: {
     visibilityThreshold: 0.361,
     timeThresholds: [
-      0.3924, 0.4081, 0.4238, 0.4395, 0.4552, 0.4709, 0.4866,
-      0.5023, 0.518, 0.6279,
+      0.3924, 0.4081, 0.4238, 0.4395, 0.4552, 0.4709, 0.4866, 0.5023, 0.518,
+      0.6279,
     ],
   },
   imageSequence: {
@@ -120,25 +124,37 @@ export default function PortugalDataLayersModule() {
         <Timeline />
         <Dimmer />
         <ScrollText
-          className={cx(styles.scrollText, styles.foregroundScrollText)}
+          className={cx(
+            styles.scrollText,
+            styles.foregroundScrollText,
+            styles.leftScrollText,
+          )}
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
         <ScrollText
-          className={cx(styles.scrollText, styles.foregroundScrollText)}
+          className={cx(
+            styles.scrollText,
+            styles.foregroundScrollText,
+            styles.leftScrollText,
+          )}
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
         <ScrollText
-          className={cx(styles.scrollText, styles.foregroundScrollText)}
+          className={cx(
+            styles.scrollText,
+            styles.foregroundScrollText,
+            styles.leftScrollText,
+          )}
           text={xFiresModule.content?.scrollText3 || ""}
           inputRange={animationConfig.scrollText3.input}
           outputRange={animationConfig.scrollText3.output}
         />
         <ScrollText
-          className={styles.scrollText}
+          className={cx(styles.scrollText, styles.rightScrollText)}
           text={xFiresModule.content?.scrollText4 || ""}
           inputRange={animationConfig.scrollText4.input}
           outputRange={
@@ -148,7 +164,7 @@ export default function PortugalDataLayersModule() {
           }
         />
         <ScrollText
-          className={styles.scrollText}
+          className={cx(styles.scrollText, styles.rightScrollText)}
           text={xFiresModule.content?.scrollText5 || ""}
           inputRange={animationConfig.scrollText5.input}
           outputRange={
