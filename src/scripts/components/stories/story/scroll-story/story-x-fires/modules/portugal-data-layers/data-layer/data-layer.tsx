@@ -79,12 +79,39 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
     config.outro.perspective,
     [1, 0],
   );
+  const rotation = useTransform(scrollYProgress, config.outro.perspective, [
+    "70deg",
+    "0deg",
+  ]);
   const translateFactor = useTransform(
     scrollYProgress,
     config.outro.translate,
     [0, 1],
   );
   const scaleFactor = useTransform(scrollYProgress, config.outro.scale, [0, 1]);
+  const translateX = useTransform(perspectiveFactor, [0, 1], ["0%", "25%"]);
+  const translateY = useTransform(perspectiveFactor, [0, 1], ["0%", "-20%"]);
+  const desktopTranslateX = useTransform(
+    perspectiveFactor,
+    [0, 1],
+    ["0%", "-15%"],
+  );
+  const desktopTranslateY = useTransform(
+    perspectiveFactor,
+    [0, 1],
+    ["0%", "-15%"],
+  );
+  const translateZ = useTransform(
+    translateFactor,
+    [0, 1],
+    ["0px", `${layerNumber * 10}px`],
+  );
+  const scale = useTransform(scaleFactor, [0, 1], [1, (96 + layerNumber) / 37]);
+  const desktopScale = useTransform(
+    scaleFactor,
+    [0, 1],
+    [1, (96 + layerNumber) / 22.5],
+  );
 
   return (
     <motion.figure className={styles.layer} style={{ x: figureX }}>
@@ -124,10 +151,14 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
         alt=""
         style={
           {
-            "--x-fires-layer-number": layerNumber,
-            "--x-fires-layer-image-perspective-factor": perspectiveFactor,
-            "--x-fires-layer-image-translate-factor": translateFactor,
-            "--x-fires-layer-image-scale-factor": scaleFactor,
+            "--x-fires-layer-image-rotation": rotation,
+            "--x-fires-layer-image-translate-x": translateX,
+            "--x-fires-layer-image-translate-y": translateY,
+            "--x-fires-layer-image-desktop-translate-x": desktopTranslateX,
+            "--x-fires-layer-image-desktop-translate-y": desktopTranslateY,
+            "--x-fires-layer-image-translate-z": translateZ,
+            "--x-fires-layer-image-scale": scale,
+            "--x-fires-layer-image-desktop-scale": desktopScale,
           } as MotionStyle
         }
       />

@@ -11,47 +11,21 @@
   }
 
   img {
-    --x-fires-layer-number: 0;
-    --x-fires-layer-image-perspective-factor: 1;
-    --x-fires-layer-image-translate-factor: 0;
-    --x-fires-layer-image-scale-factor: 0;
+    --x-fires-layer-image-rotation: 70deg;
     --x-fires-layer-image-translate-x: 25%;
     --x-fires-layer-image-translate-y: -20%;
+    --x-fires-layer-image-translate-z: 0;
+    --x-fires-layer-image-scale: 1;
     --x-fires-layer-image-aspect-ratio: 1280/720;
     --x-fires-layer-image-width: 37vw;
 
-    transform: rotate3d(
-        calc(var(--x-fires-layer-image-perspective-factor) * 1),
-        calc(var(--x-fires-layer-image-perspective-factor) * -0.2),
-        calc(var(--x-fires-layer-image-perspective-factor) * 0.4),
-        calc(var(--x-fires-layer-image-perspective-factor) * 70deg)
-      )
+    transform: rotate3d(1, -0.2, 0.4, var(--x-fires-layer-image-rotation))
       translate3d(
-        calc(
-          var(--x-fires-layer-image-perspective-factor) *
-            var(--x-fires-layer-image-translate-x)
-        ),
-        calc(
-          var(--x-fires-layer-image-perspective-factor) *
-            var(--x-fires-layer-image-translate-y)
-        ),
-        calc(
-          var(--x-fires-layer-image-translate-factor) *
-            var(--x-fires-layer-number) * 10px
-        )
+        var(--x-fires-layer-image-translate-x),
+        var(--x-fires-layer-image-translate-y),
+        var(--x-fires-layer-image-translate-z)
       )
-      scale(
-        calc(
-          1 + var(--x-fires-layer-image-scale-factor) *
-            (
-              (
-                  (96 + var(--x-fires-layer-number)) * 1vw /
-                    var(--x-fires-layer-image-width)
-                ) -
-                1
-            )
-        )
-      );
+      scale(var(--x-fires-layer-image-scale));
     width: var(--x-fires-layer-image-width);
     height: calc(
       var(--x-fires-layer-image-width) * var(--x-fires-layer-image-aspect-ratio)
@@ -60,8 +34,13 @@
     box-shadow: 2rem 3rem 1.5rem rgba(0, 0, 0, 0.6);
 
     @media (--desktop-viewport) {
-      --x-fires-layer-image-translate-x: -15%;
-      --x-fires-layer-image-translate-y: -15%;
+      --x-fires-layer-image-translate-x: var(
+        --x-fires-layer-image-desktop-translate-x
+      );
+      --x-fires-layer-image-translate-y: var(
+        --x-fires-layer-image-desktop-translate-y
+      );
+      --x-fires-layer-image-scale: var(--x-fires-layer-image-desktop-scale);
       --x-fires-layer-image-width: 22.5vw;
     }
   }
