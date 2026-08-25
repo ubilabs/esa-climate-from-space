@@ -56,7 +56,7 @@ const animationConfig = {
       output: ["-100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.7453,
+      visibilityThreshold: 0.3453,
     },
   },
   outro: {

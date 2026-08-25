@@ -1,13 +1,11 @@
 .sequenceContainer {
   height: 100%;
-  position: absolute;
   inset: 0;
   opacity: var(--sequence-opacity);
   align-items: center;
   display: flex;
   justify-content: center;
   max-height: 100%;
-  max-width: 100%;
 
   .scrollImageSequence {
     display: block;
@@ -18,8 +16,10 @@
   }
 }
 
-@media (max-width: 767px) {
+@media screen and (--mobile-viewport) {
   .sequenceContainer {
+    aspect-ratio: 9/16;
+    justify-self: center;
     overflow: hidden;
 
     .scrollImageSequence {

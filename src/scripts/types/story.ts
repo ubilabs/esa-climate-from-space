@@ -163,6 +163,9 @@ export type StoryEEIModule = Pick<BaseModule, "text"> & {
   );
 
 export type StoryXFiresModule = Pick<BaseModule, "text"> & {
+  dataLayer: {
+    path: string;
+  };
   globeKeyframes?: GlobeKeyframe[];
   lengthFactor: number;
   content?: Record<string, string>;

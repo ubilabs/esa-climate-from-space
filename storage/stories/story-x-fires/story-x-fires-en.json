@@ -56,6 +56,9 @@
     },
     {
       "type": "portugalDataLayers",
+      "dataLayer": {
+        "path": "assets/portugal-data-layers"
+      },
       "imageSequence": {
         "path": "assets/video-fires-in-portugal"
       },

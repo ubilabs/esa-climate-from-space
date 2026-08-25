@@ -6,13 +6,13 @@
 }
 
 .layerStack {
+  height: var(--story-height);
   display: grid;
   transform-style: preserve-3d;
   align-items: center;
   justify-content: center;
   grid-auto-columns: 100vw;
   grid-auto-rows: 5rem;
-  padding-top: 3rem;
   perspective: none;
 
   @media (--desktop-viewport) {
