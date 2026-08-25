@@ -67,6 +67,10 @@
     letter-spacing: 0.175px;
     white-space: pre-line;
 
+    @media (--desktop-viewport) {
+      transform: translate3d(-10vh, 4vh, 50vw);
+    }
+
     span {
       z-index: 1;
       padding: 0 0.625rem;
