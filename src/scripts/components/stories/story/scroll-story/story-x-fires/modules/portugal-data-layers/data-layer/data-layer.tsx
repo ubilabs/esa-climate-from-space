@@ -32,20 +32,20 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
 
   const { scrollYProgress, config } =
     useScrollModule<PortugalDataLayersAnimationConfig>();
-  const { screenHeight, screenWidth } = useScreenInfo();
+  const { isDesktop, screenHeight, screenWidth } = useScreenInfo();
 
   const { module } = useModuleContent<StoryXFiresModule>();
   const imageUrls = useMemo(() => {
     // these layers don't have a time sequence, so we will only need to fetch the first frame
     const isLayer1or2 = layerId === "layer1" || layerId === "layer2";
     return Array.from({ length: 10 }, (_, index) => {
-      const toBeIndexed = isLayer1or2 ? 1 : index;
+      const toBeIndexed = isLayer1or2 ? 0 : index;
       const dateTime = `2017-${String(toBeIndexed + 1).padStart(2, "0")}`;
-      const fileName = `${layerId}_${dateTime}.webp`;
+      const fileName = `${layerId}_${dateTime}${isDesktop ? "_16x9" : ""}.webp`;
       const path = `${module.dataLayer.path}/${fileName}`;
       return getStoryAssetUrl("story-x-fires", path, { source: "cloud" });
     });
-  }, [layerId, module.dataLayer.path]);
+  }, [isDesktop, layerId, module.dataLayer.path]);
 
   // Preload all frames for the animation
   useEffect(() => {
@@ -99,8 +99,10 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
   ]);
   const storyHeight = screenHeight - getCssVarPx("--header-height");
   const previewImageWidth = screenWidth * 0.37;
-  const previewImageHeight = previewImageWidth * (1280 / 720);
-  const scaleX = useTransform(scrollYProgress, config.outro.scale, [0.38, 1]);
+  const previewImageHeight =
+    previewImageWidth * (isDesktop ? 720 / 1280 : 1280 / 720);
+
+  const scaleX = useTransform(scrollYProgress, config.outro.scale, [0.30, 1]);
   const scaleY = useTransform(scrollYProgress, config.outro.scale, [
     previewImageHeight / storyHeight,
     1,

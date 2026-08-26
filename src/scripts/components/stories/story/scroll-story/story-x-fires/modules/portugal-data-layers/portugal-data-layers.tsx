@@ -64,7 +64,7 @@ const animationConfig = {
   },
   layerStack: {
     input: [0, 0.3767, 0.3924],
-    output: ["25vw", "25vw", "0vw"],
+    output: ["20vw", "20vw", "0vw"],
   },
   outro: {
     perspective: [0.5494, 0.5808],
