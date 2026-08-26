@@ -272,7 +272,7 @@
     {
       "globeKeyframes": [
         {
-          "progress": 0.0628,
+          "progress": 0.03,
           "desktop": {
             "containerPosition": {
               "x": 0,
@@ -297,7 +297,7 @@
           }
         },
         {
-          "progress": 0.6651,
+          "progress": 0.7221,
           "desktop": {
             "containerPosition": {
               "x": 0,
@@ -322,7 +322,7 @@
           }
         }
       ],
-      "lengthFactor": 46
+      "lengthFactor": 56
     },
     {
       "globeKeyframes": [

@@ -65,10 +65,12 @@
     line-height: 150%; /* 21px */
     letter-spacing: 0.175px;
     white-space: pre-line;
+    margin-bottom: 5vh;
 
     @media (--desktop-viewport) {
       left: 30%;
       width: 25%;
+      margin-bottom: 0;
     }
 
     span {

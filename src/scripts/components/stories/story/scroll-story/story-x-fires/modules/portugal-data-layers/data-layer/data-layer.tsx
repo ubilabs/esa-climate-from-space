@@ -93,16 +93,18 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
     `${layerNumber * 10}px`,
     "0px",
   ]);
+
   const layerOffset = useTransform(scrollYProgress, config.outro.translate, [
     `${(2.5 - layerNumber) * 5}rem`,
     "0rem",
   ]);
+
   const storyHeight = screenHeight - getCssVarPx("--header-height");
   const previewImageWidth = screenWidth * 0.37;
   const previewImageHeight =
     previewImageWidth * (isDesktop ? 720 / 1280 : 1280 / 720);
 
-  const scaleX = useTransform(scrollYProgress, config.outro.scale, [0.30, 1]);
+  const scaleX = useTransform(scrollYProgress, config.outro.scale, [0.3, 1]);
   const scaleY = useTransform(scrollYProgress, config.outro.scale, [
     previewImageHeight / storyHeight,
     1,
