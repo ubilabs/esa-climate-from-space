@@ -5,7 +5,6 @@ import {
   MotionConfig,
   useMotionValue,
   useMotionValueEvent,
-  useTransform,
 } from "motion/react";
 
 import { StoryXFiresModule } from "../../../../../../../../types/story";
@@ -30,7 +29,7 @@ const FLAME_PATHS = {
 
 const FIRE_EVENT_MIN_MW = 1;
 const FIRE_EVENT_MAX_MW = 32.2;
-const FIRE_EVENT_THRESHOLD = 13.5
+const FIRE_EVENT_THRESHOLD = 13.5;
 
 const transitionConfig = {
   ease: [0.34, 0.8, 0.1, 1] as const,
