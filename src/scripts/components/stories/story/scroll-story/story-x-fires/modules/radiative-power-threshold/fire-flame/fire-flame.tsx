@@ -27,8 +27,9 @@ const FLAME_PATHS = {
   ],
 };
 
-const FIRE_EVENT_MIN_MW = 20;
-const FIRE_EVENT_MAX_MW = 125;
+const FIRE_EVENT_MIN_MW = 1;
+const FIRE_EVENT_MAX_MW = 32.2;
+const FIRE_EVENT_THRESHOLD = 13.5;
 
 const transitionConfig = {
   ease: [0.34, 0.8, 0.1, 1] as const,
@@ -194,10 +195,11 @@ export const FireFlame: FunctionComponent = () => {
                     : `calc(${isMobile ? 55 : 43} / var(--x-fires-flame-illustation-height) * 100%)`,
                 }}
               >
-                <span className={styles.value}>{fireEventValue}&nbsp;MW</span>
+                <span className={styles.value}>{fireEventValue}&nbsp;GW</span>
               </motion.li>
               <li className={styles.radiativePowerThreshold}>
                 {xFiresModule.content?.legendLabelRadiativePowerThreshold}
+                :&nbsp;{FIRE_EVENT_THRESHOLD}&nbsp;GW
               </li>
             </ul>
           </figcaption>

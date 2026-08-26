@@ -15,24 +15,24 @@ import styles from "./portugal-data-layers.module.css";
 
 const animationConfig = {
   scrollText1: {
-    input: [0, 0.0628, 0.0785],
-    output: ["0%", "0%", "-100%"],
+    input: [0.2041, 0.2198, 0.2512, 0.2669],
+    output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText2: {
-    input: [0.2669, 0.2826, 0.2983, 0.314],
+    input: [0.3767, 0.3924, 0.4238, 0.4395],
     output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText3: {
-    input: [0.3453, 0.3532, 0.369, 0.3767],
+    input: [0.4552, 0.4709, 0.5023, 0.518],
     output: ["100%", "0%", "0%", "-100%"],
   },
   layer1: {
     figure: {
-      input: [0.0157, 0.0314],
+      input: [0.0157, 0.03],
       output: ["-100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.0314,
+      visibilityThreshold: 0.03,
     },
   },
   layer2: {
@@ -46,60 +46,60 @@ const animationConfig = {
   },
   layer3: {
     figure: {
-      input: [0.2669, 0.2826],
+      input: [0.2826, 0.2983],
       output: ["-100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.2826,
+      visibilityThreshold: 0.2983,
     },
   },
   layer4: {
     figure: {
-      input: [0.3297, 0.3453],
+      input: [0.3453, 0.361],
       output: ["-100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.3453,
+      visibilityThreshold: 0.361,
     },
   },
   layerStack: {
-    input: [0, 0.3767, 0.3924],
-    output: ["25vw", "25vw", "0vw"],
+    input: [0, 0.518, 0.5337],
+    output: ["20vw", "20vw", "0vw"],
   },
   outro: {
-    perspective: [0.5494, 0.5808],
-    translate: [0.5808, 0.5965],
-    scale: [0.5494, 0.5965],
+    perspective: [0.6907, 0.7221],
+    translate: [0.7221, 0.7378],
+    scale: [0.6907, 0.7378],
     fadeOut: {
-      input: [0.5651, 0.65],
+      input: [0.7064, 0.7913],
       output: ["100%", "0%"],
     },
   },
   dimmer: {
     input: [
-      0.0628, 0.0785, 0.2669, 0.2826, 0.2983, 0.314, 0.3453, 0.3532, 0.369,
-      0.3767, 0.8512, 0.8791,
+      0.2041, 0.2198, 0.2512, 0.2669, 0.3767, 0.3924, 0.4238, 0.4395, 0.4552,
+      0.4709, 0.5023, 0.518, 0.98, 1,
     ],
-    output: [0.5, 0, 0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0.5, 0],
+    output: [0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0.5, 0],
   },
   timeline: {
-    visibilityThreshold: 0.3924,
+    visibilityThreshold: 0.5337,
     timeThresholds: [
-      0.3924, 0.4081, 0.4238, 0.4395, 0.4552, 0.4709, 0.4866, 0.5023, 0.518,
-      0.6279,
+      0.5494, 0.5651, 0.5808, 0.5965, 0.6122, 0.6279, 0.6436, 0.6593, 0.675,
+      0.6907,
     ],
   },
   imageSequence: {
-    progressRange: [0.7583, 1],
-    input: [0.5651, 0.735],
+    progressRange: [0.82, 1],
+    input: [0.7064, 0.8064],
     output: ["0%", "100%"],
   },
   scrollText4: {
-    input: [0.6279, 0.6651, 0.6837, 0.7116, 0.7395],
+    input: [0.675, 0.7221, 0.7407, 0.7686, 0.7965],
     output: ["100%", "100%", "25%", "25%", "-100%"],
   },
   scrollText5: {
-    input: [0.7581, 0.7767, 0.814, 0.8512],
+    input: [0.94, 0.96, 0.98, 1],
     output: ["100%", "35%", "35%", "-100%"],
   },
 } satisfies DimmerAnimationConfig;
