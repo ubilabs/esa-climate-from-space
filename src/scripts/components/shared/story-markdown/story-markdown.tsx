@@ -37,6 +37,14 @@ export const StoryMarkdown: FunctionComponent<StoryMarkdownProps> = ({
     ? (url: string) => getStoryAssetUrl(storyId, url)
     : undefined;
 
+  const isAllowedIframeUrl = (url?: string, storyId?: string) => {
+    if (!url || !storyId) return false;
+
+    return (
+      url.startsWith("assets/") || url.startsWith(`/stories/${storyId}/assets/`)
+    );
+  };
+
   const defaultComponents: Options["components"] = {
     a: ({ href, children, ...linkProps }) => (
       <a
@@ -48,6 +56,20 @@ export const StoryMarkdown: FunctionComponent<StoryMarkdownProps> = ({
         {children}
       </a>
     ),
+    iframe: ({ src, ...iframeProps }) => {
+      console.log(src);
+      if (!isAllowedIframeUrl(src, storyId)) {
+        return null;
+      }
+
+      return (
+        <iframe
+          src={src}
+          title={iframeProps.title || "embedded content"}
+          {...iframeProps}
+        />
+      );
+    },
   };
 
   // Merge user-provided components with defaults
