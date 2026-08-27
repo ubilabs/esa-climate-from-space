@@ -57,8 +57,8 @@ export const StoryMarkdown: FunctionComponent<StoryMarkdownProps> = ({
       </a>
     ),
     iframe: ({ src, ...iframeProps }) => {
-      console.log(src);
       if (!isAllowedIframeUrl(src, storyId)) {
+        console.warn(`Blocked iframe in story ${storyId} with src: ${src}`);
         return null;
       }
 
