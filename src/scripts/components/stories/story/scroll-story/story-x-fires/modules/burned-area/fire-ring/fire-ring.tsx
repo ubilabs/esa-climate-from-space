@@ -5,6 +5,7 @@ import {
   MotionConfig,
   useMotionValue,
   useMotionValueEvent,
+  useTransform,
 } from "motion/react";
 
 import { StoryXFiresModule } from "../../../../../../../../types/story";
@@ -16,10 +17,12 @@ import { BurnedAreaAnimationConfig } from "../burned-area";
 
 import styles from "./fire-ring.module.css";
 
-const BURNED_AREA_LEGEND_PATH_END = { x: 60, y: 57.5 };
-const BURNED_AREA_EXPANDED_LEGEND_PATH_END = { x: 85.5, y: 27.2 };
-const BURNED_AREA_MIN_SIZE = 20;
-const BURNED_AREA_MAX_SIZE = 125;
+const BURNED_AREA_LEGEND_PATH_END = { x: 60, y: 46 };
+const BURNED_AREA_EXPANDED_LEGEND_PATH_END = { x: 84.7, y: 28.5 };
+const BURNED_AREA_THRESHOLD_SQ_KM = 63.3;
+const FIRE_EVENT_BURNED_AREA_SQ_KM = 256;
+const BURNED_AREA_THRESHOLD_RADIUS = 24;
+const FIRE_RING_RADIUS = 50;
 
 const transitionConfig = {
   fadeIn: {
@@ -48,14 +51,24 @@ export const FireRing: FunctionComponent = () => {
   const [isBurnedAreaVisible, setIsBurnedAreaVisible] = useState(false);
   const [isBurnedAreaExpanded, setIsBurnedAreaExpanded] = useState(false);
 
-  const burnedAreaSize = useMotionValue(BURNED_AREA_MIN_SIZE);
-  const [burnedAreaValue, setBurnedAreaValue] = useState(BURNED_AREA_MIN_SIZE);
+  const burnedAreaSize = useMotionValue(BURNED_AREA_THRESHOLD_SQ_KM);
+  const burnedAreaScale = useTransform(
+    burnedAreaSize,
+    (value) =>
+      (BURNED_AREA_THRESHOLD_RADIUS / FIRE_RING_RADIUS) *
+      Math.sqrt(value / BURNED_AREA_THRESHOLD_SQ_KM),
+  );
+  const [burnedAreaValue, setBurnedAreaValue] = useState(
+    BURNED_AREA_THRESHOLD_SQ_KM,
+  );
 
   // Animate burned area size value based on flame expansion state
   useEffect(() => {
     const controls = animate(
       burnedAreaSize,
-      isBurnedAreaExpanded ? BURNED_AREA_MAX_SIZE : BURNED_AREA_MIN_SIZE,
+      isBurnedAreaExpanded
+        ? FIRE_EVENT_BURNED_AREA_SQ_KM
+        : BURNED_AREA_THRESHOLD_SQ_KM,
       transitionConfig.expansion,
     );
 
@@ -64,7 +77,7 @@ export const FireRing: FunctionComponent = () => {
 
   // Counter for burned area size value
   useMotionValueEvent(burnedAreaSize, "change", (latest) => {
-    setBurnedAreaValue(Math.round(latest));
+    setBurnedAreaValue(Math.round(latest * 10) / 10);
   });
 
   // Control fire ring visibility and expansion based on scroll progress
@@ -197,9 +210,11 @@ export const FireRing: FunctionComponent = () => {
 
             {/* Burned area */}
             <motion.g
-              style={{ originX: 0.5, originY: 0.5 }}
-              initial={{ scale: 0.25 }}
-              animate={{ scale: isBurnedAreaExpanded ? 1 : 0.25 }}
+              style={{
+                originX: 0.5,
+                originY: 0.5,
+                scale: burnedAreaScale,
+              }}
             >
               <motion.circle
                 cx="60"
@@ -299,7 +314,7 @@ export const FireRing: FunctionComponent = () => {
             <circle
               cx="60"
               cy="70"
-              r="24"
+              r={BURNED_AREA_THRESHOLD_RADIUS}
               fill="none"
               stroke="#ED1B2F"
               strokeLinecap="round"
@@ -337,6 +352,7 @@ export const FireRing: FunctionComponent = () => {
             </motion.li>
             <li className={styles.groundArea}>
               {xFiresModule.content?.legendLabelBurnedAreaThreshold}
+              :&nbsp;{BURNED_AREA_THRESHOLD_SQ_KM}&nbsp;km²
             </li>
           </ul>
         </figcaption>

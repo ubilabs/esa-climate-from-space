@@ -1,81 +1,106 @@
 import { StoryXFiresModule } from "../../../../../../../types/story";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
+import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
 import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import { Layers } from "./layers/layers";
 import { Timeline } from "./timeline/timeline";
+
+import cx from "classnames";
 
 import styles from "./portugal-data-layers.module.css";
 
 const animationConfig = {
   scrollText1: {
-    input: [0, 0.1, 0.125],
-    output: ["0%", "0%", "-100%"],
+    input: [0.2041, 0.2198, 0.2512, 0.2669],
+    output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText2: {
-    input: [0.175, 0.2, 0.25, 0.275],
+    input: [0.3767, 0.3924, 0.4238, 0.4395],
     output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText3: {
-    input: [0.325, 0.35, 0.4, 0.425],
+    input: [0.4552, 0.4709, 0.5023, 0.518],
     output: ["100%", "0%", "0%", "-100%"],
   },
   layer1: {
     figure: {
-      input: [0.125, 0.15],
+      input: [0.0157, 0.03],
       output: ["-100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.15,
+      visibilityThreshold: 0.03,
     },
   },
   layer2: {
     figure: {
-      input: [0.275, 0.3],
+      input: [0.1727, 0.1884],
       output: ["-100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.3,
+      visibilityThreshold: 0.1884,
     },
   },
   layer3: {
     figure: {
-      input: [0.425, 0.45],
+      input: [0.2826, 0.2983],
       output: ["-100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.45,
+      visibilityThreshold: 0.2983,
     },
   },
   layer4: {
     figure: {
-      input: [0.525, 0.55],
+      input: [0.3453, 0.361],
       output: ["-100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.55,
+      visibilityThreshold: 0.361,
     },
   },
+  layerStack: {
+    input: [0, 0.518, 0.5337],
+    output: ["20vw", "20vw", "0vw"],
+  },
   outro: {
-    perspective: [0.875, 0.925],
-    translate: [0.925, 0.95],
-    scale: [0.875, 0.95],
+    perspective: [0.6907, 0.7221],
+    translate: [0.7221, 0.7378],
+    scale: [0.6907, 0.7378],
     fadeOut: {
-      input: [0.9, 1],
+      input: [0.7064, 0.7913],
       output: ["100%", "0%"],
     },
   },
   dimmer: {
-    input: [0.1, 0.125, 0.175, 0.2, 0.25, 0.275, 0.325, 0.35, 0.4, 0.425],
-    output: [0.5, 0, 0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0],
+    input: [
+      0.2041, 0.2198, 0.2512, 0.2669, 0.3767, 0.3924, 0.4238, 0.4395, 0.4552,
+      0.4709, 0.5023, 0.518, 0.98, 1,
+    ],
+    output: [0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0.5, 0],
   },
   timeline: {
-    visibilityThreshold: 0.575,
+    visibilityThreshold: 0.5337,
     timeThresholds: [
-      0.625, 0.65, 0.675, 0.7, 0.725, 0.75, 0.775, 0.8, 0.825, 1,
+      0.5494, 0.5651, 0.5808, 0.5965, 0.6122, 0.6279, 0.6436, 0.6593, 0.675,
+      0.6907,
     ],
+  },
+  imageSequence: {
+    progressRange: [0.82, 1],
+    input: [0.7064, 0.8064],
+    output: ["0%", "100%"],
+  },
+  scrollText4: {
+    input: [0.675, 0.7221, 0.7407, 0.7686, 0.7965],
+    output: ["100%", "100%", "25%", "25%", "-100%"],
+  },
+  scrollText5: {
+    input: [0.94, 0.96, 0.98, 1],
+    output: ["100%", "35%", "35%", "-100%"],
   },
 } satisfies DimmerAnimationConfig;
 
@@ -83,7 +108,10 @@ export type PortugalDataLayersAnimationConfig = typeof animationConfig;
 
 export default function PortugalDataLayersModule() {
   const { module, getRefCallback } = useModuleContent();
-  const xFiresModule = module as StoryXFiresModule;
+  const { isDesktop } = useScreenInfo();
+  const xFiresModule = module as StoryXFiresModule & {
+    imageSequence: { path: string };
+  };
 
   return (
     <ScrollModule
@@ -92,25 +120,58 @@ export default function PortugalDataLayersModule() {
     >
       <Layers content={xFiresModule.content} />
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
+        <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <Timeline />
         <Dimmer />
         <ScrollText
-          className={styles.scrollText}
+          className={cx(
+            styles.scrollText,
+            styles.foregroundScrollText,
+            styles.leftScrollText,
+          )}
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
         <ScrollText
-          className={styles.scrollText}
+          className={cx(
+            styles.scrollText,
+            styles.foregroundScrollText,
+            styles.leftScrollText,
+          )}
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
         <ScrollText
-          className={styles.scrollText}
+          className={cx(
+            styles.scrollText,
+            styles.foregroundScrollText,
+            styles.leftScrollText,
+          )}
           text={xFiresModule.content?.scrollText3 || ""}
           inputRange={animationConfig.scrollText3.input}
           outputRange={animationConfig.scrollText3.output}
+        />
+        <ScrollText
+          className={cx(styles.scrollText, styles.rightScrollText)}
+          text={xFiresModule.content?.scrollText4 || ""}
+          inputRange={animationConfig.scrollText4.input}
+          outputRange={
+            isDesktop
+              ? ["100%", "100%", "0%", "0%", "-100%"]
+              : animationConfig.scrollText4.output
+          }
+        />
+        <ScrollText
+          className={cx(styles.scrollText, styles.rightScrollText)}
+          text={xFiresModule.content?.scrollText5 || ""}
+          inputRange={animationConfig.scrollText5.input}
+          outputRange={
+            isDesktop
+              ? ["100%", "0%", "0%", "-100%"]
+              : animationConfig.scrollText5.output
+          }
         />
       </ScrollModule.StickyContainer>
     </ScrollModule>

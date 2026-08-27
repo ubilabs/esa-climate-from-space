@@ -7,9 +7,13 @@ import {
 } from "motion/react";
 
 import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
+import { getCssVarPx } from "../../../../../../../../libs/get-css-var-in-px";
+import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
 
 import { useScrollModule } from "../../../../modules/base-scroll/use-scroll-module";
+import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
 import { PortugalDataLayersAnimationConfig } from "../portugal-data-layers";
+import { StoryXFiresModule } from "../../../../../../../../types/story";
 
 import styles from "./data-layer.module.css";
 
@@ -28,18 +32,20 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
 
   const { scrollYProgress, config } =
     useScrollModule<PortugalDataLayersAnimationConfig>();
+  const { isDesktop, screenHeight, screenWidth } = useScreenInfo();
 
+  const { module } = useModuleContent<StoryXFiresModule>();
   const imageUrls = useMemo(() => {
     // these layers don't have a time sequence, so we will only need to fetch the first frame
     const isLayer1or2 = layerId === "layer1" || layerId === "layer2";
     return Array.from({ length: 10 }, (_, index) => {
-      const toBeIndexed = isLayer1or2 ? 1 : index;
+      const toBeIndexed = isLayer1or2 ? 0 : index;
       const dateTime = `2017-${String(toBeIndexed + 1).padStart(2, "0")}`;
-      const fileName = `${layerId}_${dateTime}.webp`;
-      const path = `assets/portugal-data-layers/${fileName}`;
+      const fileName = `${layerId}_${dateTime}${isDesktop ? "_16x9" : ""}.webp`;
+      const path = `${module.dataLayer.path}/${fileName}`;
       return getStoryAssetUrl("story-x-fires", path, { source: "cloud" });
     });
-  }, [layerId]);
+  }, [isDesktop, layerId, module.dataLayer.path]);
 
   // Preload all frames for the animation
   useEffect(() => {
@@ -71,7 +77,7 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
       (threshold) => progress < threshold,
     );
 
-    setImageUrlIndex(index);
+    setImageUrlIndex(index === -1 ? 9 : index);
   });
 
   const perspectiveFactor = useTransform(
@@ -80,41 +86,51 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
     [1, 0],
   );
   const rotation = useTransform(scrollYProgress, config.outro.perspective, [
-    "70deg",
+    "62deg",
     "0deg",
   ]);
-  const translateFactor = useTransform(
-    scrollYProgress,
-    config.outro.translate,
-    [0, 1],
+  const translateZ = useTransform(scrollYProgress, config.outro.translate, [
+    `${layerNumber * 10}px`,
+    "0px",
+  ]);
+
+  const layerOffset = useTransform(scrollYProgress, config.outro.translate, [
+    `${(2.5 - layerNumber) * 5}rem`,
+    "0rem",
+  ]);
+
+  const storyHeight = screenHeight - getCssVarPx("--header-height");
+  const previewImageWidth = screenWidth * 0.37;
+  const previewImageHeight =
+    previewImageWidth * (isDesktop ? 720 / 1280 : 1280 / 720);
+
+  const scaleX = useTransform(scrollYProgress, config.outro.scale, [0.3, 1]);
+  const scaleY = useTransform(scrollYProgress, config.outro.scale, [
+    previewImageHeight / storyHeight,
+    1,
+  ]);
+  const translateX = useTransform(
+    [perspectiveFactor, scaleX],
+    ([perspective, imageScaleX]) =>
+      `${Number(perspective) * Number(imageScaleX) * 25}%`,
   );
-  const scaleFactor = useTransform(scrollYProgress, config.outro.scale, [0, 1]);
-  const translateX = useTransform(perspectiveFactor, [0, 1], ["0%", "25%"]);
-  const translateY = useTransform(perspectiveFactor, [0, 1], ["0%", "-20%"]);
-  const desktopTranslateX = useTransform(
-    perspectiveFactor,
-    [0, 1],
-    ["0%", "-15%"],
-  );
-  const desktopTranslateY = useTransform(
-    perspectiveFactor,
-    [0, 1],
-    ["0%", "-15%"],
-  );
-  const translateZ = useTransform(
-    translateFactor,
-    [0, 1],
-    ["0px", `${layerNumber * 10}px`],
-  );
-  const scale = useTransform(scaleFactor, [0, 1], [1, (96 + layerNumber) / 37]);
-  const desktopScale = useTransform(
-    scaleFactor,
-    [0, 1],
-    [1, (96 + layerNumber) / 22.5],
+  const translateY = useTransform(
+    [perspectiveFactor, scaleY],
+    ([perspective, imageScaleY]) =>
+      `${Number(perspective) * Number(imageScaleY) * -20}%`,
   );
 
   return (
-    <motion.figure className={styles.layer} style={{ x: figureX }}>
+    <motion.figure
+      className={styles.layer}
+      style={
+        {
+          x: figureX,
+          zIndex: layerNumber,
+          "--x-fires-layer-stack-offset": layerOffset,
+        } as MotionStyle
+      }
+    >
       <motion.figcaption
         initial={{
           "--x-fires-layer-label-opacity": 0,
@@ -154,11 +170,9 @@ export const DataLayer: FunctionComponent<Props> = (props) => {
             "--x-fires-layer-image-rotation": rotation,
             "--x-fires-layer-image-translate-x": translateX,
             "--x-fires-layer-image-translate-y": translateY,
-            "--x-fires-layer-image-desktop-translate-x": desktopTranslateX,
-            "--x-fires-layer-image-desktop-translate-y": desktopTranslateY,
             "--x-fires-layer-image-translate-z": translateZ,
-            "--x-fires-layer-image-scale": scale,
-            "--x-fires-layer-image-desktop-scale": desktopScale,
+            "--x-fires-layer-image-scale-x": scaleX,
+            "--x-fires-layer-image-scale-y": scaleY,
           } as MotionStyle
         }
       />

@@ -1,18 +1,24 @@
 .layers {
   position: sticky;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(
+    calc(
+      var(--x-fires-layer-wrapper-x, 0px) - var(--story-padding) *
+        var(--x-fires-layer-wrapper-inset-factor, 0)
+    ),
+    -50%
+  );
   opacity: var(--x-fires-layer-wrapper-opacity);
 }
 
 .layerStack {
+  height: var(--story-height);
   display: grid;
   transform-style: preserve-3d;
   align-items: center;
   justify-content: center;
   grid-auto-columns: 100vw;
   grid-auto-rows: 5rem;
-  padding-top: 3rem;
   perspective: none;
 
   @media (--desktop-viewport) {

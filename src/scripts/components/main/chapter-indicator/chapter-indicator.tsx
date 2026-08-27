@@ -1,5 +1,6 @@
 import { CSSProperties, Fragment } from "react";
 import { motion, useTransform } from "motion/react";
+import { MotionStyle } from "motion";
 
 import { useStoryScroll } from "../../../hooks/use-story-scroll";
 import { useModuleScroll } from "../../../hooks/use-module-scroll";
@@ -20,48 +21,6 @@ const ChapterIndicator = () => {
   const { scrollYProgress } = useStoryScroll({});
 
   const top = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
-  const transitionArea = 0.025;
-  const fractionLength = heightFractionPerModule?.length ?? Infinity;
-
-  // this makes the outer ring of the activeIndicator transform depending the current scroll
-  // we dynamically generate input and output array to pass to useTransform
-  const transformableHeightFractions = heightFractionPerModule?.reduce(
-    (prev, fraction, index) => {
-      //  handle first fraction
-      if (index === 0) {
-        return [
-          [0, fraction + transitionArea],
-          [1, 0],
-        ];
-      }
-
-      // handle last fraction
-      if (index === fractionLength - 1) {
-        return [
-          [...prev[0], fraction - transitionArea, fraction],
-          [...prev[1], 0, 1],
-        ];
-      }
-
-      return [
-        [
-          ...prev[0],
-          fraction - transitionArea,
-          fraction,
-          fraction + transitionArea,
-        ],
-        [...prev[1], 0, 1, 0],
-      ];
-    },
-    [] as Array<Array<number> | Array<number>>,
-  ) ?? [[1], [1]];
-
-  const ringScale = useTransform(
-    scrollYProgress,
-    transformableHeightFractions[0],
-    transformableHeightFractions[1],
-  );
 
   return (
     <nav key={story?.id} className={styles.chapterIndicator}>
@@ -106,8 +65,7 @@ const ChapterIndicator = () => {
         style={
           {
             top,
-            "--indicator-ring-scale": ringScale,
-          } as unknown as CSSProperties
+          } as MotionStyle
         }
       ></motion.span>
     </nav>
