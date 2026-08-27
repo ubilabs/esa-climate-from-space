@@ -1,0 +1,812 @@
+<script>
+  window.spec = {
+    $schema: "https://vega.github.io/schema/vega-lite/v5.json",
+    description:
+      "Monthly temperatures at Heathrow and Waddington from 2009 through 2019.",
+    padding: {
+      left: 40,
+      right: 0,
+      top: 20,
+      bottom: 45,
+    },
+    autosize: {
+      type: "pad",
+      contains: "padding",
+    },
+    background: "#030303",
+    data: {
+      values: [
+        {
+          date: 2009.042,
+          Heathrow: 6.95,
+          Waddington: 6.6,
+        },
+        {
+          date: 2009.125,
+          Heathrow: 8.85,
+          Waddington: 5.4,
+        },
+        {
+          date: 2009.208,
+          Heathrow: 14.75,
+          Waddington: 6.0,
+        },
+        {
+          date: 2009.292,
+          Heathrow: 19.7,
+          Waddington: 7.9,
+        },
+        {
+          date: 2009.375,
+          Heathrow: 23.8,
+          Waddington: 13.1,
+        },
+        {
+          date: 2009.458,
+          Heathrow: 28.5,
+          Waddington: 14.5,
+        },
+        {
+          date: 2009.542,
+          Heathrow: 29.85,
+          Waddington: 16.8,
+        },
+        {
+          date: 2009.625,
+          Heathrow: 30.95,
+          Waddington: 17.1,
+        },
+        {
+          date: 2009.708,
+          Heathrow: 26.5,
+          Waddington: 13.9,
+        },
+        {
+          date: 2009.792,
+          Heathrow: 20.95,
+          Waddington: 10.2,
+        },
+        {
+          date: 2009.875,
+          Heathrow: 16.3,
+          Waddington: 7.1,
+        },
+        {
+          date: 2009.958,
+          Heathrow: 7.65,
+          Waddington: 3.6,
+        },
+        {
+          date: 2010.042,
+          Heathrow: 4.35,
+          Waddington: 3.2,
+        },
+        {
+          date: 2010.125,
+          Heathrow: 7.75,
+          Waddington: 4.1,
+        },
+        {
+          date: 2010.208,
+          Heathrow: 12.95,
+          Waddington: 7.3,
+        },
+        {
+          date: 2010.292,
+          Heathrow: 18.6,
+          Waddington: 10.0,
+        },
+        {
+          date: 2010.375,
+          Heathrow: 21.15,
+          Waddington: 12.4,
+        },
+        {
+          date: 2010.458,
+          Heathrow: 29.55,
+          Waddington: 14.8,
+        },
+        {
+          date: 2010.542,
+          Heathrow: 32.55,
+          Waddington: 16.8,
+        },
+        {
+          date: 2010.625,
+          Heathrow: 28.2,
+          Waddington: 17.3,
+        },
+        {
+          date: 2010.708,
+          Heathrow: 25.0,
+          Waddington: 14.7,
+        },
+        {
+          date: 2010.792,
+          Heathrow: 19.35,
+          Waddington: 11.5,
+        },
+        {
+          date: 2010.875,
+          Heathrow: 11.1,
+          Waddington: 8.3,
+        },
+        {
+          date: 2010.958,
+          Heathrow: 3.15,
+          Waddington: 3.1,
+        },
+        {
+          date: 2011.042,
+          Heathrow: 8.8,
+          Waddington: 1.4,
+        },
+        {
+          date: 2011.125,
+          Heathrow: 12.6,
+          Waddington: 2.4,
+        },
+        {
+          date: 2011.208,
+          Heathrow: 14.2,
+          Waddington: 6.5,
+        },
+        {
+          date: 2011.292,
+          Heathrow: 24.0,
+          Waddington: 9.3,
+        },
+        {
+          date: 2011.375,
+          Heathrow: 24.1,
+          Waddington: 11.1,
+        },
+        {
+          date: 2011.458,
+          Heathrow: 26.2,
+          Waddington: 15.4,
+        },
+        {
+          date: 2011.542,
+          Heathrow: 28.0,
+          Waddington: 18.0,
+        },
+        {
+          date: 2011.625,
+          Heathrow: 28.5,
+          Waddington: 15.8,
+        },
+        {
+          date: 2011.708,
+          Heathrow: 27.5,
+          Waddington: 14.3,
+        },
+        {
+          date: 2011.792,
+          Heathrow: 23.15,
+          Waddington: 10.6,
+        },
+        {
+          date: 2011.875,
+          Heathrow: 17.25,
+          Waddington: 5.2,
+        },
+        {
+          date: 2011.958,
+          Heathrow: 11.8,
+          Waddington: -0.6,
+        },
+        {
+          date: 2012.042,
+          Heathrow: 11.5,
+          Waddington: 4.0,
+        },
+        {
+          date: 2012.125,
+          Heathrow: 8.65,
+          Waddington: 6.3,
+        },
+        {
+          date: 2012.208,
+          Heathrow: 17.05,
+          Waddington: 6.9,
+        },
+        {
+          date: 2012.292,
+          Heathrow: 15.75,
+          Waddington: 12.0,
+        },
+        {
+          date: 2012.375,
+          Heathrow: 23.05,
+          Waddington: 12.6,
+        },
+        {
+          date: 2012.458,
+          Heathrow: 25.2,
+          Waddington: 14.6,
+        },
+        {
+          date: 2012.542,
+          Heathrow: 27.9,
+          Waddington: 15.8,
+        },
+        {
+          date: 2012.625,
+          Heathrow: 30.65,
+          Waddington: 16.2,
+        },
+        {
+          date: 2012.708,
+          Heathrow: 25.15,
+          Waddington: 15.8,
+        },
+        {
+          date: 2012.792,
+          Heathrow: 18.2,
+          Waddington: 12.7,
+        },
+        {
+          date: 2012.875,
+          Heathrow: 13.3,
+          Waddington: 9.1,
+        },
+        {
+          date: 2012.958,
+          Heathrow: 10.3,
+          Waddington: 5.5,
+        },
+        {
+          date: 2013.042,
+          Heathrow: 7.5,
+          Waddington: 5.3,
+        },
+        {
+          date: 2013.125,
+          Heathrow: 7.3,
+          Waddington: 4.1,
+        },
+        {
+          date: 2013.208,
+          Heathrow: 7.5,
+          Waddington: 8.4,
+        },
+        {
+          date: 2013.292,
+          Heathrow: 15.85,
+          Waddington: 7.3,
+        },
+        {
+          date: 2013.375,
+          Heathrow: 20.25,
+          Waddington: 11.6,
+        },
+        {
+          date: 2013.458,
+          Heathrow: 25.9,
+          Waddington: 13.7,
+        },
+        {
+          date: 2013.542,
+          Heathrow: 34.6,
+          Waddington: 15.9,
+        },
+        {
+          date: 2013.625,
+          Heathrow: 31.45,
+          Waddington: 17.0,
+        },
+        {
+          date: 2013.708,
+          Heathrow: 25.25,
+          Waddington: 13.5,
+        },
+        {
+          date: 2013.792,
+          Heathrow: 22.3,
+          Waddington: 9.4,
+        },
+        {
+          date: 2013.875,
+          Heathrow: 12.75,
+          Waddington: 6.7,
+        },
+        {
+          date: 2013.958,
+          Heathrow: 11.95,
+          Waddington: 4.5,
+        },
+        {
+          date: 2014.042,
+          Heathrow: 11.9,
+          Waddington: 3.2,
+        },
+        {
+          date: 2014.125,
+          Heathrow: 12.8,
+          Waddington: 3.0,
+        },
+        {
+          date: 2014.208,
+          Heathrow: 16.3,
+          Waddington: 2.4,
+        },
+        {
+          date: 2014.292,
+          Heathrow: 19.85,
+          Waddington: 7.8,
+        },
+        {
+          date: 2014.375,
+          Heathrow: 22.9,
+          Waddington: 10.8,
+        },
+        {
+          date: 2014.458,
+          Heathrow: 28.35,
+          Waddington: 14.0,
+        },
+        {
+          date: 2014.542,
+          Heathrow: 33.3,
+          Waddington: 18.5,
+        },
+        {
+          date: 2014.625,
+          Heathrow: 28.05,
+          Waddington: 17.7,
+        },
+        {
+          date: 2014.708,
+          Heathrow: 27.9,
+          Waddington: 14.2,
+        },
+        {
+          date: 2014.792,
+          Heathrow: 23.1,
+          Waddington: 12.7,
+        },
+        {
+          date: 2014.875,
+          Heathrow: 15.95,
+          Waddington: 6.3,
+        },
+        {
+          date: 2014.958,
+          Heathrow: 10.7,
+          Waddington: 6.0,
+        },
+        {
+          date: 2015.042,
+          Heathrow: 9.6,
+          Waddington: 5.2,
+        },
+        {
+          date: 2015.125,
+          Heathrow: 8.9,
+          Waddington: 6.2,
+        },
+        {
+          date: 2015.208,
+          Heathrow: 13.65,
+          Waddington: 7.8,
+        },
+        {
+          date: 2015.292,
+          Heathrow: 19.3,
+          Waddington: 10.4,
+        },
+        {
+          date: 2015.375,
+          Heathrow: 22.0,
+          Waddington: 12.6,
+        },
+        {
+          date: 2015.458,
+          Heathrow: 27.9,
+          Waddington: 15.4,
+        },
+        {
+          date: 2015.542,
+          Heathrow: 30.6,
+          Waddington: 18.5,
+        },
+        {
+          date: 2015.625,
+          Heathrow: 29.25,
+          Waddington: 15.8,
+        },
+        {
+          date: 2015.708,
+          Heathrow: 23.7,
+          Waddington: 15.1,
+        },
+        {
+          date: 2015.792,
+          Heathrow: 20.45,
+          Waddington: 12.4,
+        },
+        {
+          date: 2015.875,
+          Heathrow: 17.4,
+          Waddington: 8.4,
+        },
+        {
+          date: 2015.958,
+          Heathrow: 18.15,
+          Waddington: 5.1,
+        },
+        {
+          date: 2016.042,
+          Heathrow: 11.0,
+          Waddington: 4.5,
+        },
+        {
+          date: 2016.125,
+          Heathrow: 10.85,
+          Waddington: 4.1,
+        },
+        {
+          date: 2016.208,
+          Heathrow: 12.3,
+          Waddington: 6.5,
+        },
+        {
+          date: 2016.292,
+          Heathrow: 15.95,
+          Waddington: 9.4,
+        },
+        {
+          date: 2016.375,
+          Heathrow: 23.85,
+          Waddington: 11.1,
+        },
+        {
+          date: 2016.458,
+          Heathrow: 27.05,
+          Waddington: 14.1,
+        },
+        {
+          date: 2016.542,
+          Heathrow: 31.25,
+          Waddington: 16.6,
+        },
+        {
+          date: 2016.625,
+          Heathrow: 32.0,
+          Waddington: 17.0,
+        },
+        {
+          date: 2016.708,
+          Heathrow: 29.25,
+          Waddington: 13.1,
+        },
+        {
+          date: 2016.792,
+          Heathrow: 20.25,
+          Waddington: 11.2,
+        },
+        {
+          date: 2016.875,
+          Heathrow: 12.4,
+          Waddington: 9.3,
+        },
+        {
+          date: 2016.958,
+          Heathrow: 11.9,
+          Waddington: 9.5,
+        },
+        {
+          date: 2017.042,
+          Heathrow: 7.95,
+          Waddington: 5.2,
+        },
+        {
+          date: 2017.125,
+          Heathrow: 12.2,
+          Waddington: 5.1,
+        },
+        {
+          date: 2017.208,
+          Heathrow: 17.4,
+          Waddington: 5.8,
+        },
+        {
+          date: 2017.292,
+          Heathrow: 18.75,
+          Waddington: 7.6,
+        },
+        {
+          date: 2017.375,
+          Heathrow: 25.0,
+          Waddington: 12.2,
+        },
+        {
+          date: 2017.458,
+          Heathrow: 30.95,
+          Waddington: 15.0,
+        },
+        {
+          date: 2017.542,
+          Heathrow: 31.25,
+          Waddington: 17.4,
+        },
+        {
+          date: 2017.625,
+          Heathrow: 28.75,
+          Waddington: 17.7,
+        },
+        {
+          date: 2017.708,
+          Heathrow: 24.7,
+          Waddington: 16.2,
+        },
+        {
+          date: 2017.792,
+          Heathrow: 22.25,
+          Waddington: 11.1,
+        },
+        {
+          date: 2017.875,
+          Heathrow: 13.35,
+          Waddington: 6.0,
+        },
+        {
+          date: 2017.958,
+          Heathrow: 10.15,
+          Waddington: 5.9,
+        },
+        {
+          date: 2018.042,
+          Heathrow: 11.6,
+          Waddington: 3.7,
+        },
+        {
+          date: 2018.125,
+          Heathrow: 7.0,
+          Waddington: 6.2,
+        },
+        {
+          date: 2018.208,
+          Heathrow: 11.3,
+          Waddington: 8.7,
+        },
+        {
+          date: 2018.292,
+          Heathrow: 19.45,
+          Waddington: 9.2,
+        },
+        {
+          date: 2018.375,
+          Heathrow: 25.7,
+          Waddington: 13.2,
+        },
+        {
+          date: 2018.458,
+          Heathrow: 30.75,
+          Waddington: 16.7,
+        },
+        {
+          date: 2018.542,
+          Heathrow: 36.5,
+          Waddington: 17.0,
+        },
+        {
+          date: 2018.625,
+          Heathrow: 31.75,
+          Waddington: 16.3,
+        },
+        {
+          date: 2018.708,
+          Heathrow: 26.4,
+          Waddington: 13.9,
+        },
+        {
+          date: 2018.792,
+          Heathrow: 20.75,
+          Waddington: 12.6,
+        },
+        {
+          date: 2018.875,
+          Heathrow: 15.1,
+          Waddington: 6.9,
+        },
+        {
+          date: 2018.958,
+          Heathrow: 13.3,
+          Waddington: 4.8,
+        },
+        {
+          date: 2019.042,
+          Heathrow: 8.6,
+          Waddington: 5.0,
+        },
+        {
+          date: 2019.125,
+          Heathrow: 14.05,
+          Waddington: 2.6,
+        },
+        {
+          date: 2019.208,
+          Heathrow: 16.0,
+          Waddington: 4.9,
+        },
+        {
+          date: 2019.292,
+          Heathrow: 18.65,
+          Waddington: 9.8,
+        },
+        {
+          date: 2019.375,
+          Heathrow: 22.8,
+          Waddington: 13.3,
+        },
+        {
+          date: 2019.458,
+          Heathrow: 27.75,
+          Waddington: 16.1,
+        },
+        {
+          date: 2019.542,
+          Heathrow: 32.95,
+          Waddington: 19.7,
+        },
+        {
+          date: 2019.625,
+          Heathrow: 32.25,
+          Waddington: 17.9,
+        },
+        {
+          date: 2019.708,
+          Heathrow: 27.1,
+          Waddington: 14.2,
+        },
+        {
+          date: 2019.792,
+          Heathrow: 19.8,
+          Waddington: 11.2,
+        },
+        {
+          date: 2019.875,
+          Heathrow: 12.45,
+          Waddington: 7.9,
+        },
+        {
+          date: 2019.958,
+          Heathrow: 12.2,
+          Waddington: 6.6,
+        },
+      ],
+    },
+    transform: [
+      {
+        fold: ["Heathrow", "Waddington"],
+        as: ["station", "temperature"],
+      },
+    ],
+    encoding: {
+      x: {
+        field: "date",
+        type: "quantitative",
+        scale: {
+          domain: [2009, 2027],
+          nice: false,
+        },
+        axis: {
+          title: null,
+          domain: false,
+          ticks: true,
+          grid: false,
+          values: [
+            2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+            2020,
+          ],
+          format: "d",
+          labelColor: "#C9C9C9",
+          labelFont: "NotesESA",
+          labelFontSize: 13,
+          labelFontWeight: 600,
+          labelPadding: 12,
+          tickSize: 3,
+        },
+      },
+      y: {
+        field: "temperature",
+        type: "quantitative",
+        scale: {
+          domain: [-5, 52],
+          nice: false,
+          zero: false,
+        },
+        axis: {
+          title: null,
+          domain: false,
+          ticks: false,
+          grid: true,
+          gridColor: "#4C4C4C",
+          gridOpacity: 0.75,
+          gridWidth: 1,
+          values: [-5, 0, 5, 10, 15, 20, 25, 30, 35, 40],
+          labelColor: "#D2D2D2",
+          labelFont: "NotesESA",
+          labelFontSize: 13,
+          labelFontWeight: 600,
+          labelPadding: 14,
+          labelExpr: "datum.value === 40 ? '40°C' : format(datum.value, '.0f')",
+        },
+      },
+      color: {
+        field: "station",
+        type: "nominal",
+        scale: {
+          domain: ["Heathrow", "Waddington"],
+          range: ["#E7A746", "#149BE8"],
+        },
+        legend: null,
+      },
+    },
+    layer: [
+      {
+        mark: {
+          type: "line",
+          strokeWidth: 2,
+          strokeCap: "round",
+          strokeJoin: "round",
+          clip: false,
+        },
+        encoding: {
+          detail: {
+            field: "station",
+          },
+          tooltip: [
+            {
+              field: "date",
+              type: "quantitative",
+              title: "Year",
+              format: ".0f",
+            },
+            {
+              field: "station",
+              type: "nominal",
+              title: "Station",
+            },
+            {
+              field: "temperature",
+              type: "quantitative",
+              title: "Temperature",
+              format: ".1f",
+            },
+          ],
+        },
+      },
+      {
+        transform: [
+          {
+            filter: "datum.date === 2019.958",
+          },
+        ],
+        mark: {
+          type: "text",
+          align: "left",
+          baseline: "middle",
+          dx: 13,
+          font: "NotesESA",
+          fontSize: 13,
+          fontWeight: 500,
+          clip: false,
+        },
+        encoding: {
+          text: {
+            field: "station",
+          },
+        },
+      },
+    ],
+    config: {
+      view: {
+        stroke: null,
+      },
+    },
+  };
+</script>
+<script src="https://storage.googleapis.com/esa-cfs-cdn/esa-vega-chart/index.js"></script>
