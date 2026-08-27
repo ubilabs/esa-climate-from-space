@@ -71,10 +71,9 @@
           "imageFit": "contain"
         },
         {
-          "type": "image",
-          "imageCaption": "# Évolution cumulative de la biomasse dans les régions tempérées \n\nLa biomasse forestière nordique est en déclin depuis 2016 (ESA-CCI)",
-          "image": "assets/story45-image10.png",
-          "imageFit": "contain"
+          "type": "embedded",
+          "description": "# Évolution cumulative de la biomasse dans les régions tempérées \n\nLa biomasse forestière nordique est en déclin depuis 2016 (ESA-CCI)",
+          "embeddedSrc": "assets/cumulative_biomass_change_temperate.html"
         }
       ]
     },

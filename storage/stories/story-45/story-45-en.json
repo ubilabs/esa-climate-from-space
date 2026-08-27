@@ -71,10 +71,9 @@
           "imageFit": "contain"
         },
         {
-          "type": "image",
-          "imageCaption": "# Cumulative Biomass Change in Temperate Regions \n\nNorthern forest biomass has been declining since 2016 (ESA-CCI)",
-          "image": "assets/story45-image10.png",
-          "imageFit": "contain"
+          "type": "embedded",
+          "description": "# Cumulative Biomass Change in Temperate Regions \n\nNorthern forest biomass has been declining since 2016 (ESA-CCI)",
+          "embeddedSrc": "assets/cumulative_biomass_change_temperate.html"
         }
       ]
     },

@@ -71,10 +71,9 @@
           "imageFit": "contain"
         },
         {
-          "type": "image",
-          "imageCaption": "# Kumulative Veränderung der Biomasse in gemäßigten Regionen \n\nDie Biomasse der nördlichen Wälder ist seit 2016 rückläufig (ESA-CCI)",
-          "image": "assets/story45-image10.png",
-          "imageFit": "contain"
+          "type": "embedded",
+          "description": "# Kumulative Veränderung der Biomasse in gemäßigten Regionen \n\nDie Biomasse der nördlichen Wälder ist seit 2016 rückläufig (ESA-CCI)",
+          "embeddedSrc": "assets/cumulative_biomass_change_temperate.html"
         }
       ]
     },
