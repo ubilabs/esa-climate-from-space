@@ -184,6 +184,24 @@ const downloadUrls = {
   linux: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-linux.zip`,
 } as const;
 
+const markdownAllowedElements = [
+  "p",
+  "h1",
+  "h2",
+  "h3",
+  "a",
+  "br",
+  "b",
+  "em",
+  "img",
+  "fig",
+  "figcaption",
+  "li",
+  "ul",
+  "ol",
+  "strong",
+];
+
 export default {
   api: {
     searchIndex: `https://storage.googleapis.com/esa-cfs-storage/${version}/index/search-index-{lang}.json`,
@@ -226,23 +244,9 @@ export default {
   localStorageWelcomeScreenKey: "welcomeScreenChecked",
   delay: 5000,
   feedbackUrl: "https://climate.esa.int/en/helpdesk/",
-  markdownAllowedElements: [
-    "p",
-    "h1",
-    "h2",
-    "h3",
-    "a",
-    "br",
-    "b",
-    "em",
-    "img",
-    "fig",
-    "figcaption",
-    "li",
-    "ul",
-    "ol",
-    "strong",
-  ],
+  markdownAllowedElements,
+  // allow iframes for interactive assets story content e.g. charts
+  legacyStoryMarkdownElements: [...markdownAllowedElements, "iframe"],
   lenisOptions: {
     touchMultiplier: isAndroid() ? 2 : 1,
     wheelMultiplier: 1,

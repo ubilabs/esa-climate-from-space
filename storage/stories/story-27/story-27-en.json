@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# Urban Heat\r\n\r\nCities are increasingly our home, but they amplify some of the worst affects of climate change, trapping heat and threatening health. As heatwaves become more extreme and more frequent, the inhabitants of the largest cities are most at risk.",
       "shortText": "# Urban Heat\r\n\r\nCities are increasingly our home, but they amplify some of the worst affects of climate change, trapping heat and threatening health. As heatwaves become more extreme and more frequent, the inhabitants of the largest cities are most at risk.",
-      "images": [
-        "assets/story27-image03.jpg"
-      ]
+      "images": ["assets/story27-image03.jpg"]
     },
     {
       "type": "image",
@@ -27,24 +25,13 @@
         "The summer of 2022 saw the green land of England and northern France turned brown after months of high temperature and low rainfall. This image was taken by ESA’s Copernicus Sentinel-3 satellite on 12 August 2022. During that month the satellite’s infrared sensor recorded land surface temperatures over 45°C in the United Kingdom, 50°C in France and 60°C in Spain. (Contains modified Copernicus Sentinel data (2022), processed by ESA)",
         "Land surface temperature during the southern European heatwave of summer 2023. This image uses data from the Copernicus Sentinel-3 satellite’s radiometer to show the land surface temperature on the morning of 17 July 2023. As climate change takes grip, heatwaves such as this are likely to be more frequent and more severe. (Contains modified Copernicus Sentinel data (2023), processed by ESA)"
       ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["contain", "contain", "contain", "contain"]
     },
     {
       "type": "globe",
-      "text": "## Urban Heat Islands\r\n\r\nThe interactive globe shows the extent of different types of land cover, including urban areas as well as natural cover types like forest and desert. Check out the explosive growth of cities like Shanghai in China since the start of the data record in the 1990s. Consistent maps of land cover are derived from satellite observations by the European Space Agency’s [Climate Change Initiative](stories/story-32/3). Other climate variables measured from space are the amount of [moisture in the soil](stories/story-21/5) and the temperature of the land surface, providing a bird’s eye view of the planet’s hotspots.\r\n\r\n![urban and rural temperature profiles graph ](assets/story27-image04.png) \r\n_Comparison of monthly average temperature for urban  and rural weather stations in the UK (Heathrow and Waddington respectively) (KNMI)_    \r\n\r\nAs more and more people move into a city, large areas of vegetation are replaced by roads, parking areas and buildings. Construction materials have a much higher capacity to absorb and store heat from the Sun than plants and soil, whilst densely-packed buildings prevent air from circulating so less heat can escape. Heat generated within factories, offices and homes also raises air temperatures. Cities can be up to 7 degrees Celsius warmer than the surrounding countryside. Places where temperatures are elevated in this way are known as urban heat islands.",
-      "shortText": "## Urban Heat Islands\r\n\r\nThe interactive globe shows the explosive growth of cities like Shanghai in China since the start of the data record in the 1990s. \r\n\r\n- Land cover, land surface temperature and soil moisture are useful climate variables for cities.\r\n- As cities expand, vegetation is replaced by buildings, roads and parking. \r\n- Building materials have a much higher heat capacity than plants and soil.  \r\n- Heat generated within factories, offices and homes also contributes to rising air termperatures.\r\n- Cities can be up to 7°C warmer than the surrounding countryside. \r\n\r\n![urban and rural temperature profiles graph ](assets/story27-image04.png) \r\n_Comparison of monthly average temperature for urban  and rural weather stations in the UK (Heathrow and Waddington respectively) (KNMI)_",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "text": "## Urban Heat Islands\r\n\r\nThe interactive globe shows the extent of different types of land cover, including urban areas as well as natural cover types like forest and desert. Check out the explosive growth of cities like Shanghai in China since the start of the data record in the 1990s. Consistent maps of land cover are derived from satellite observations by the European Space Agency’s [Climate Change Initiative](stories/story-32/3). Other climate variables measured from space are the amount of [moisture in the soil](stories/story-21/5) and the temperature of the land surface, providing a bird’s eye view of the planet’s hotspots.\r\n\r\n<iframe title=\"urban and rural temperature profiles graph\" width=\"100%\" frameBorder=\"0\" src=\"assets/urban_heat_islands_chart.html\"></iframe> \r\n\r\n_Comparison of monthly average temperature for urban  and rural weather stations in the UK (Heathrow and Waddington respectively) (KNMI)_    \r\n\r\nAs more and more people move into a city, large areas of vegetation are replaced by roads, parking areas and buildings. Construction materials have a much higher capacity to absorb and store heat from the Sun than plants and soil, whilst densely-packed buildings prevent air from circulating so less heat can escape. Heat generated within factories, offices and homes also raises air temperatures. Cities can be up to 7 degrees Celsius warmer than the surrounding countryside. Places where temperatures are elevated in this way are known as urban heat islands.",
+      "shortText": "## Urban Heat Islands\r\n\r\nThe interactive globe shows the explosive growth of cities like Shanghai in China since the start of the data record in the 1990s. \r\n\r\n- Land cover, land surface temperature and soil moisture are useful climate variables for cities.\r\n- As cities expand, vegetation is replaced by buildings, roads and parking. \r\n- Building materials have a much higher heat capacity than plants and soil.  \r\n- Heat generated within factories, offices and homes also contributes to rising air termperatures.\r\n- Cities can be up to 7°C warmer than the surrounding countryside. \r\n\r\n<iframe title=\"urban and rural temperature profiles graph\" width=\"100%\" frameBorder=\"0\" src=\"assets/urban_heat_islands_chart.html\"></iframe> \r\n\r\n_Comparison of monthly average temperature for urban  and rural weather stations in the UK (Heathrow and Waddington respectively) (KNMI)_",
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "flyTo": {
         "position": {
           "longitude": 119.04,
@@ -83,13 +70,7 @@
         "Land-surface temperature across Prague, measured on 18 June 2022 by NASA’s ECOSTRESS instrument, shows the cooling effect of parks and waterways. ESA is using this instrument, mounted on the International Space Station, to help with the development of a new Copernicus Sentinel satellite, the Land Surface Temperature Monitoring (LSTM) mission.  (NASA/JPL-Caltech)",
         "The Copernicus Sentinel Land Surface Temperature Monitoring (LSTM) mission will carry a high-resolution thermal infrared sensor to provide observations of land-surface temperature. This will help track extreme heat events within cities, as well as providing information to agricultural users down to the scale of individual fields. (Airbus)"
       ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
     },
     {
       "type": "globe",
@@ -133,13 +114,7 @@
         "Land surface temperatures around Rome, Italy, measured from space at 22:23 CEST on 17 July 2023. The surface temperature reached 35°C in some parts of the city, but the cooling effect of vegetation can be seen, for example, in the Appian Way Park. The temperatures were recorded by NASA's Ecostress instrument on the International Space Station, which is helping in the development of a new Copernicus Sentinel  Expansion satellite – the Land Surface Temperature Monitoring (LSTM) mission. (NASA/JPL)",
         "A pair of oak trees on Hampstead Heath in London, rendered as a point cloud from laser distance measurements. \r\nThe mass of carbon stored by trees can be estimated using 3D tree models based on laser scanning \r\n(lidar – light detection and ranging). (M Disney/P Wilkes/UCL)"
       ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["cover", "contain", "contain", "contain", "contain"]
     }
   ]
 }

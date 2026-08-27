@@ -30,7 +30,7 @@ const StoryContent: FunctionComponent<Props> = ({ route, slide, storyId }) => {
       <StoryMarkdown
         storyId={storyId}
         rehypePlugins={[rehypeRaw]}
-        allowedElements={config.markdownAllowedElements}
+        allowedElements={config.legacyStoryMarkdownElements}
       >
         {storyText || ""}
       </StoryMarkdown>

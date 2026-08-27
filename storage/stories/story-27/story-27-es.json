@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# Calor Urbano\r\n\r\nLas ciudades son cada vez más nuestro hogar, pero amplifican algunos de los peores efectos del cambio climático, atrapando el calor y amenazando la salud. A medida que las olas de calor se vuelven más extremas y frecuentes, los habitantes de las ciudades más grandes son los que más riesgo corren.",
       "shortText": "# Calor Urbano\r\n\r\nLas ciudades son cada vez más nuestro hogar, pero amplifican algunos de los peores efectos del cambio climático, atrapando el calor y amenazando la salud. A medida que las olas de calor se vuelven más extremas y frecuentes, los habitantes de las ciudades más grandes son los que más riesgo corren.",
-      "images": [
-        "assets/story27-image03.jpg"
-      ]
+      "images": ["assets/story27-image03.jpg"]
     },
     {
       "type": "image",
@@ -27,25 +25,13 @@
         "El verano de 2022 vio cómo la tierra verde de Inglaterra y el norte de Francia se volvía marrón tras meses de altas temperaturas y escasas precipitaciones. Esta imagen fue tomada por el satélite Copernicus Sentinel-3 de la ESA el 12 de agosto de 2022. Durante ese mes, el sensor infrarrojo del satélite registró temperaturas en la superficie terrestre superiores a 45°C en el Reino Unido, 50°C en Francia y 60°C en España. (Contiene datos modificados de Copernicus Sentinel (2022), procesados por la ESA)",
         "Temperatura de la superficie terrestre durante la ola de calor del sur de Europa del verano de 2023. Esta imagen utiliza datos del radiómetro del satélite Copernicus Sentinel-3 para mostrar la temperatura de la superficie terrestre en la mañana del 17 de julio de 2023. A medida que se afiance el cambio climático, es probable que olas de calor como ésta sean más frecuentes y más graves. (Contiene datos modificados de Copernicus Sentinel (2023), procesados por la ESA)"
       ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
     },
     {
       "type": "globe",
-      "text": "## Islas de calor urbanas\r\n\r\nEl globo terráqueo interactivo muestra la extensión de los distintos tipos de cubierta terrestre, incluidas las zonas urbanas y los tipos de cubierta natural, como los bosques y los desiertos. Compruebe el crecimiento explosivo de ciudades como Shangai, en China, desde el inicio del registro de datos en la década de 1990. Los mapas consistentes de la cubierta terrestre se derivan de las observaciones por satélite de la [Iniciativa sobre el Cambio Climático] de la Agencia Espacial Europea (stories/story-32/3). Otras variables climáticas que se miden desde el espacio son la cantidad de [humedad en el suelo](stories/story-21/5) y la temperatura de la superficie terrestre, lo que proporciona una vista de pájaro de los puntos calientes del planeta.\r\n\r\n![Gráfico de perfiles de temperatura urbana y rural ](assets/story27-image04.png)\r\n_Comparación de la temperatura media mensual de las estaciones meteorológicas urbanas y rurales del Reino Unido (Heathrow y Waddington, respectivamente) (KNMI)_.\r\n\r\nA medida que aumenta el número de personas que se trasladan a una ciudad, grandes áreas de vegetación son sustituidas por carreteras, zonas de aparcamiento y edificios. Los materiales de construcción tienen una capacidad mucho mayor de absorber y almacenar el calor del Sol que las plantas y el suelo, mientras que los edificios densamente apiñados impiden que el aire circule, por lo que se escapa menos calor. El calor generado dentro de las fábricas, las oficinas y los hogares también eleva la temperatura del aire. Las ciudades pueden estar hasta 7 grados centígrados más calientes que el campo que las rodea. Los lugares en los que las temperaturas se elevan de esta manera se conocen como islas de calor urbanas.",
-      "shortText": "## Islas de calor urbanas\r\n\r\nEl globo interactivo muestra el crecimiento explosivo de ciudades como Shanghái, en China, desde el inicio del registro de datos en la década de 1990.\r\n\r\n- La cubierta vegetal, la temperatura de la superficie del terreno y la humedad del suelo son variables climáticas útiles para las ciudades.\r\n- A medida que las ciudades se expanden, la vegetación es sustituida por edificios, carreteras y aparcamientos.\r\n- Los materiales de construcción tienen una capacidad térmica mucho mayor que las plantas y el suelo.  \r\n- El calor generado dentro de las fábricas, las oficinas y los hogares también contribuye al aumento de las temperaturas del aire.\r\n- Las ciudades pueden ser hasta 7°C más cálidas que el campo circundante.\r\n\r\nGráfico de perfiles de temperatura urbana y rural ](assets/story27-image04.png)\r\nComparación de la temperatura media mensual de las estaciones meteorológicas urbanas y rurales del Reino Unido (Heathrow y Waddington, respectivamente) (KNMI)_.",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "text": "## Islas de calor urbanas\r\n\r\nEl globo terráqueo interactivo muestra la extensión de los distintos tipos de cubierta terrestre, incluidas las zonas urbanas y los tipos de cubierta natural, como los bosques y los desiertos. Compruebe el crecimiento explosivo de ciudades como Shangai, en China, desde el inicio del registro de datos en la década de 1990. Los mapas consistentes de la cubierta terrestre se derivan de las observaciones por satélite de la [Iniciativa sobre el Cambio Climático] de la Agencia Espacial Europea (stories/story-32/3). Otras variables climáticas que se miden desde el espacio son la cantidad de [humedad en el suelo](stories/story-21/5) y la temperatura de la superficie terrestre, lo que proporciona una vista de pájaro de los puntos calientes del planeta.\r\n\r\n<iframe title=\"Gráfico de perfiles de temperatura urbana y rural\" width=\"100%\" frameBorder=\"0\" src=\"assets/urban_heat_islands_chart.html\"></iframe> \r\n\r\n_Comparación de la temperatura media mensual de las estaciones meteorológicas urbanas y rurales del Reino Unido (Heathrow y Waddington, respectivamente) (KNMI)_.\r\n\r\nA medida que aumenta el número de personas que se trasladan a una ciudad, grandes áreas de vegetación son sustituidas por carreteras, zonas de aparcamiento y edificios. Los materiales de construcción tienen una capacidad mucho mayor de absorber y almacenar el calor del Sol que las plantas y el suelo, mientras que los edificios densamente apiñados impiden que el aire circule, por lo que se escapa menos calor. El calor generado dentro de las fábricas, las oficinas y los hogares también eleva la temperatura del aire. Las ciudades pueden estar hasta 7 grados centígrados más calientes que el campo que las rodea. Los lugares en los que las temperaturas se elevan de esta manera se conocen como islas de calor urbanas.",
+      "shortText": "## Islas de calor urbanas\r\n\r\nEl globo interactivo muestra el crecimiento explosivo de ciudades como Shanghái, en China, desde el inicio del registro de datos en la década de 1990.\r\n\r\n- La cubierta vegetal, la temperatura de la superficie del terreno y la humedad del suelo son variables climáticas útiles para las ciudades.\r\n- A medida que las ciudades se expanden, la vegetación es sustituida por edificios, carreteras y aparcamientos.\r\n- Los materiales de construcción tienen una capacidad térmica mucho mayor que las plantas y el suelo.  \r\n- El calor generado dentro de las fábricas, las oficinas y los hogares también contribuye al aumento de las temperaturas del aire.\r\n- Las ciudades pueden ser hasta 7°C más cálidas que el campo circundante.\r\n\r\n<iframe title=\"Gráfico de perfiles de temperatura urbana y rural\" width=\"100%\" frameBorder=\"0\" src=\"assets/urban_heat_islands_chart.html\"></iframe> \r\n\r\nComparación de la temperatura media mensual de las estaciones meteorológicas urbanas y rurales del Reino Unido (Heathrow y Waddington, respectivamente) (KNMI)_.",
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "flyTo": {
         "position": {
           "longitude": 119.04,
@@ -84,13 +70,7 @@
         "En algunas partes de Europa, en el verano de 2022, la temperatura del aire subió más de 10 °C por encima de la media de la época del año. Esta imagen muestra la temperatura de la superficie de París el 18 de junio de 2022, medida por el instrumento experimental ECOSTRESS de la Estación Espacial Internacional. (NASA/JPL-Caltech)",
         "El verano de 2022 vio cómo la verde tierra de Inglaterra y el norte de Francia se volvía marrón tras meses de altas temperaturas y escasas precipitaciones. Esta imagen fue tomada por el satélite Copernicus Sentinel-3 de la ESA el 12 de agosto de 2022. Durante ese mes, el sensor infrarrojo del satélite registró temperaturas en la superficie terrestre superiores a 45°C en el Reino Unido, 50°C en Francia y 60°C en España. (Contiene datos modificados de Copernicus Sentinel (2022), procesados por la ESA)"
       ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
     },
     {
       "type": "globe",
@@ -134,13 +114,7 @@
         "Temperaturas de la superficie terrestre alrededor de Roma, Italia, medidas desde el espacio a las 22:23 CEST del 17 de julio de 2023. La temperatura de la superficie alcanzó los 35 °C en algunas partes de la ciudad, pero el efecto refrigerante de la vegetación puede apreciarse, por ejemplo, en el parque de la Vía Apia. Las temperaturas fueron registradas por el instrumento Ecostress de la NASA en la Estación Espacial Internacional, que está ayudando en el desarrollo de un nuevo satélite Copernicus Sentinel Expansion: la misión Land Surface Temperature Monitoring (LSTM). (NASA/JPL)",
         "Un par de robles en Hampstead Heath (Londres), representados como una nube de puntos a partir de mediciones de distancia por láser.\r\nLa masa de carbono almacenada por los árboles puede estimarse utilizando modelos de árboles en 3D basados en el escaneo láser\r\n(lidar - light detection and ranging). (M Disney/P Wilkes/UCL)"
       ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["cover", "contain", "contain", "contain", "contain"]
     }
   ]
 }
