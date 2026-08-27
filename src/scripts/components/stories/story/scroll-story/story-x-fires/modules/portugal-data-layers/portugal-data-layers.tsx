@@ -15,91 +15,91 @@ import styles from "./portugal-data-layers.module.css";
 
 const animationConfig = {
   scrollText1: {
-    input: [0.2041, 0.2198, 0.2512, 0.2669],
+    input: [0, 0.0197, 0.0789, 0.0986],
     output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText2: {
-    input: [0.3767, 0.3924, 0.4238, 0.4395],
+    input: [0.1972, 0.2169, 0.276, 0.2958],
     output: ["100%", "0%", "0%", "-100%"],
   },
   scrollText3: {
-    input: [0.4552, 0.4709, 0.5023, 0.518],
+    input: [0.3155, 0.3352, 0.5325, 0.5522],
     output: ["100%", "0%", "0%", "-100%"],
   },
   layer1: {
     figure: {
-      input: [0.0157, 0.03],
-      output: ["-100vw", "0vw"],
+      input: [0, 0.0197],
+      output: ["100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.03,
+      visibilityThreshold: 0.0197,
     },
   },
   layer2: {
     figure: {
-      input: [0.1727, 0.1884],
-      output: ["-100vw", "0vw"],
+      input: [0.0197, 0.0395],
+      output: ["100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.1884,
+      visibilityThreshold: 0.0395,
     },
   },
   layer3: {
     figure: {
-      input: [0.2826, 0.2983],
-      output: ["-100vw", "0vw"],
+      input: [0.1972, 0.2169],
+      output: ["100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.2983,
+      visibilityThreshold: 0.2169,
     },
   },
   layer4: {
     figure: {
-      input: [0.3453, 0.361],
-      output: ["-100vw", "0vw"],
+      input: [0.2169, 0.2366],
+      output: ["100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.361,
+      visibilityThreshold: 0.2366,
     },
   },
   layerStack: {
-    input: [0, 0.518, 0.5337],
+    input: [0, 0.5325, 0.5522],
     output: ["20vw", "20vw", "0vw"],
   },
   outro: {
-    perspective: [0.6907, 0.7221],
-    translate: [0.7221, 0.7378],
-    scale: [0.6907, 0.7378],
+    perspective: [0.5522, 0.5917],
+    translate: [0.5917, 0.6114],
+    scale: [0.5522, 0.6114],
     fadeOut: {
-      input: [0.7064, 0.7913],
+      input: [0.6311, 0.7378],
       output: ["100%", "0%"],
     },
   },
   dimmer: {
     input: [
-      0.2041, 0.2198, 0.2512, 0.2669, 0.3767, 0.3924, 0.4238, 0.4395, 0.4552,
-      0.4709, 0.5023, 0.518, 0.98, 1,
+      0, 0.0197, 0.0789, 0.0986, 0.1972, 0.2169, 0.276, 0.2958, 0.3155, 0.3352,
+      0.5325, 0.5522, 0.9749, 1,
     ],
     output: [0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0.5, 0],
   },
   timeline: {
-    visibilityThreshold: 0.5337,
+    visibilityThreshold: 0.3352,
     timeThresholds: [
-      0.5494, 0.5651, 0.5808, 0.5965, 0.6122, 0.6279, 0.6436, 0.6593, 0.675,
-      0.6907,
+      0.3549, 0.3747, 0.3944, 0.4141, 0.4338, 0.4536, 0.4733, 0.493, 0.5128,
+      0.5325,
     ],
   },
   imageSequence: {
-    progressRange: [0.82, 1],
-    input: [0.7064, 0.8064],
+    progressRange: [0.7738, 1],
+    input: [0.6311, 0.7568],
     output: ["0%", "100%"],
   },
   scrollText4: {
-    input: [0.675, 0.7221, 0.7407, 0.7686, 0.7965],
+    input: [0.5917, 0.6508, 0.6742, 0.7093, 0.7443],
     output: ["100%", "100%", "25%", "25%", "-100%"],
   },
   scrollText5: {
-    input: [0.94, 0.96, 0.98, 1],
+    input: [0.9246, 0.9497, 0.9749, 1],
     output: ["100%", "35%", "35%", "-100%"],
   },
 } satisfies DimmerAnimationConfig;
@@ -122,7 +122,7 @@ export default function PortugalDataLayersModule() {
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <Timeline />
-        <Dimmer />
+        {!isDesktop && <Dimmer />}
         <ScrollText
           className={cx(
             styles.scrollText,
