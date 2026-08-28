@@ -88,10 +88,9 @@
           "imageFit": "contain"
         },
         {
-          "type": "image",
-          "imageCaption": "# Compensación de emisiones para Europa 2005-2030\n\nLa compensación por tierra y bosques superó el objetivo de compensación hasta 2016, pero desde entonces ha caído por debajo del objetivo. No se espera que la compensación futura prevista se recupere lo suficiente como para alcanzar el objetivo. (ESA-CCI)",
-          "image": "assets/story45-image12.png",
-          "imageFit": "contain"
+          "type": "embedded",
+          "description": "# Compensación de emisiones para Europa 2005-2030\n\nLa compensación por tierra y bosques superó el objetivo de compensación hasta 2016, pero desde entonces ha caído por debajo del objetivo. No se espera que la compensación futura prevista se recupere lo suficiente como para alcanzar el objetivo. (ESA-CCI)",
+          "embeddedSrc": "assets/emissions_offset_europe_chart.html"
         }
       ]
     }
