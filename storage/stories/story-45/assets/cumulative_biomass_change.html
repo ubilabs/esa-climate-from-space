@@ -1,0 +1,462 @@
+<script>
+  window.spec = {
+    $schema: "https://vega.github.io/schema/vega/v5.json",
+    description: "Cumulative biomass change from 2010 through 2020.",
+    padding: {
+      left: 150,
+      right: 38,
+      top: 48,
+      bottom: 150,
+    },
+    autosize: "none",
+    background: "rgba(0,0,0,0)",
+    data: [
+      {
+        name: "biomass",
+        values: [
+          {
+            year: 2010,
+            change: 0,
+          },
+          {
+            year: 2011,
+            change: 925.083157,
+          },
+          {
+            year: 2012,
+            change: 1035.071432,
+          },
+          {
+            year: 2013,
+            change: 675.2217820000001,
+          },
+          {
+            year: 2014,
+            change: 370.329625,
+          },
+          {
+            year: 2015,
+            change: 3.041069,
+          },
+          {
+            year: 2016,
+            change: 5.242,
+          },
+          {
+            year: 2017,
+            change: -175.898046,
+          },
+          {
+            year: 2018,
+            change: -387.491415,
+          },
+          {
+            year: 2019,
+            change: -572.752876,
+          },
+          {
+            year: 2020,
+            change: -298.764549,
+          },
+        ],
+        transform: [
+          {
+            type: "formula",
+            as: "positive",
+            expr: "max(datum.change, 0)",
+          },
+          {
+            type: "formula",
+            as: "negative",
+            expr: "min(datum.change, 0)",
+          },
+        ],
+      },
+    ],
+    scales: [
+      {
+        name: "x",
+        type: "linear",
+        domain: [2009.5, 2022.5],
+        range: "width",
+        zero: false,
+        nice: false,
+      },
+      {
+        name: "y",
+        type: "linear",
+        domain: [-600, 1550],
+        range: "height",
+        zero: false,
+        nice: false,
+      },
+    ],
+    axes: [
+      {
+        orient: "bottom",
+        scale: "x",
+        domain: true,
+        ticks: true,
+        grid: false,
+        values: [
+          2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
+        ],
+        format: "d",
+        labelColor: "rgba(255,255,255,0.55)",
+        labelFont: "NotesESA",
+        labelFontSize: 12,
+        labelPadding: 7,
+        domainColor: "rgba(255,255,255,0.35)",
+        domainWidth: 1,
+        tickColor: "rgba(255,255,255,0.35)",
+        tickSize: 7,
+        tickWidth: 1,
+        labelFontWeight: 400,
+        titleColor: "rgba(255,255,255,0.85)",
+        titleFont: "NotesESA",
+        titleFontSize: 15,
+        titleFontWeight: 700,
+        titlePadding: 14,
+        title: "Year",
+        titleX: {
+          signal: "width / 2 - 55",
+        },
+        titleY: 35,
+      },
+      {
+        orient: "left",
+        scale: "y",
+        domain: true,
+        ticks: true,
+        grid: true,
+        gridColor: "rgba(255,255,255,0.35)",
+        gridDash: [2, 2],
+        gridOpacity: 1,
+        gridWidth: 1,
+        values: [-1000, -500, 0, 500, 1000],
+        format: "d",
+        labelColor: "rgba(255,255,255,0.55)",
+        labelFont: "NotesESA",
+        labelFontSize: 12,
+        title: "Million tonnes C",
+        titleColor: "rgba(255,255,255,0.85)",
+        titleFont: "NotesESA",
+        titleFontSize: 15,
+        titleFontWeight: 700,
+        titlePadding: 14,
+        titleAngle: -90,
+        domainColor: "rgba(255,255,255,0.35)",
+        domainWidth: 1,
+        tickColor: "rgba(255,255,255,0.35)",
+        tickSize: 7,
+        tickWidth: 1,
+        labelFontWeight: 400,
+        titleY: {
+          signal: "height / 2 + 20",
+        },
+        titleX: -35,
+      },
+    ],
+    marks: [
+      {
+        type: "area",
+        from: {
+          data: "biomass",
+        },
+        sort: {
+          field: "year",
+        },
+        encode: {
+          update: {
+            x: {
+              scale: "x",
+              field: "year",
+            },
+            y: {
+              scale: "y",
+              field: "positive",
+            },
+            y2: {
+              scale: "y",
+              value: 0,
+            },
+            fill: {
+              value: {
+                gradient: "linear",
+                x1: 0,
+                y1: 0,
+                x2: 0,
+                y2: 1,
+                stops: [
+                  {
+                    offset: 0,
+                    color: "#4380A1",
+                  },
+                  {
+                    offset: 0.5,
+                    color: "#77A68C",
+                  },
+                  {
+                    offset: 1,
+                    color: "#C6B78E",
+                  },
+                ],
+              },
+            },
+            fillOpacity: {
+              value: 0.8,
+            },
+          },
+        },
+      },
+      {
+        type: "area",
+        from: {
+          data: "biomass",
+        },
+        sort: {
+          field: "year",
+        },
+        encode: {
+          update: {
+            x: {
+              scale: "x",
+              field: "year",
+            },
+            y: {
+              scale: "y",
+              field: "negative",
+            },
+            y2: {
+              scale: "y",
+              value: 0,
+            },
+            fill: {
+              value: {
+                gradient: "linear",
+                x1: 0,
+                y1: 0,
+                x2: 0,
+                y2: 1,
+                stops: [
+                  {
+                    offset: 0,
+                    color: "#C6B78E",
+                  },
+                  {
+                    offset: 1,
+                    color: "#A35B2F",
+                  },
+                ],
+              },
+            },
+            fillOpacity: {
+              value: 0.8,
+            },
+          },
+        },
+      },
+      {
+        type: "line",
+        from: {
+          data: "biomass",
+        },
+        sort: {
+          field: "year",
+        },
+        encode: {
+          update: {
+            x: {
+              scale: "x",
+              field: "year",
+            },
+            y: {
+              scale: "y",
+              field: "change",
+            },
+            stroke: {
+              value: "#D7DEE0",
+            },
+            strokeWidth: {
+              value: 3,
+            },
+            strokeJoin: {
+              value: "miter",
+            },
+          },
+        },
+      },
+      {
+        type: "symbol",
+        from: {
+          data: "biomass",
+        },
+        encode: {
+          update: {
+            x: {
+              scale: "x",
+              field: "year",
+            },
+            y: {
+              scale: "y",
+              field: "change",
+            },
+            size: {
+              value: 55,
+            },
+            fill: {
+              value: "#D7DEE0",
+            },
+            fillOpacity: {
+              value: 1,
+            },
+            stroke: {
+              value: "#D7DEE0",
+            },
+            strokeWidth: {
+              value: 1,
+            },
+          },
+        },
+      },
+      {
+        type: "symbol",
+        name: "hoverPoints",
+        from: {
+          data: "biomass",
+        },
+        encode: {
+          update: {
+            x: {
+              scale: "x",
+              field: "year",
+            },
+            y: {
+              scale: "y",
+              field: "change",
+            },
+            size: {
+              value: 900,
+            },
+            fill: {
+              value: "#FFFFFF",
+            },
+            fillOpacity: {
+              value: 0.001,
+            },
+            tooltip: {
+              signal:
+                "{'Year': datum.year, 'Cumulative biomass change': format(datum.change, ',.1f') + ' million tonnes C'}",
+            },
+          },
+        },
+      },
+      {
+        type: "text",
+        interactive: false,
+        encode: {
+          update: {
+            x: {
+              scale: "x",
+              value: 2012.17,
+            },
+            y: {
+              scale: "y",
+              value: 385,
+            },
+            text: {
+              value: "carbon gain",
+            },
+            fill: {
+              value: "#F1F3F4",
+            },
+            font: {
+              value: "NotesESA",
+            },
+            fontSize: {
+              value: 16,
+            },
+            fontWeight: {
+              value: "bold",
+            },
+            align: {
+              value: "center",
+            },
+            baseline: {
+              value: "middle",
+            },
+          },
+        },
+      },
+      {
+        type: "text",
+        interactive: false,
+        encode: {
+          update: {
+            x: {
+              scale: "x",
+              value: 2018.5,
+            },
+            y: {
+              scale: "y",
+              value: -220,
+            },
+            text: {
+              value: "carbon loss",
+            },
+            fill: {
+              value: "#F1F3F4",
+            },
+            font: {
+              value: "NotesESA",
+            },
+            fontSize: {
+              value: 16,
+            },
+            fontWeight: {
+              value: "bold",
+            },
+            align: {
+              value: "center",
+            },
+            baseline: {
+              value: "middle",
+            },
+          },
+        },
+      },
+      {
+        type: "rule",
+        encode: {
+          update: {
+            x: {
+              value: 0,
+            },
+            x2: {
+              signal: "width",
+            },
+            y: {
+              scale: "y",
+              value: 0,
+            },
+            stroke: {
+              value: "#AAB3B6",
+            },
+            strokeOpacity: {
+              value: 0.75,
+            },
+            strokeWidth: {
+              value: 1.5,
+            },
+          },
+        },
+      },
+    ],
+    config: {
+      view: {
+        stroke: null,
+      },
+    },
+  };
+</script>
+<script src="https://storage.googleapis.com/esa-cfs-cdn/esa-vega-chart/index.js"></script>
