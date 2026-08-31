@@ -71,10 +71,9 @@
           "imageFit": "contain"
         },
         {
-          "type": "image",
-          "imageCaption": "# Kumulative Veränderung der Biomasse in gemäßigten Regionen \n\nDie Biomasse der nördlichen Wälder ist seit 2016 rückläufig (ESA-CCI)",
-          "image": "assets/story45-image10.png",
-          "imageFit": "contain"
+          "type": "embedded",
+          "description": "# Kumulative Veränderung der Biomasse in gemäßigten Regionen \n\nDie Biomasse der nördlichen Wälder ist seit 2016 rückläufig (ESA-CCI)",
+          "embeddedSrc": "assets/cumulative_biomass_change_temperate.html"
         }
       ]
     },
@@ -89,10 +88,9 @@
           "imageFit": "contain"
         },
         {
-          "type": "image",
-          "imageCaption": "# Emissionsausgleich für Europa 2005–2030\n\nDer Ausgleich durch Land und Wald übertraf bis 2016 das Ausgleichsziel, ist seitdem jedoch unter den Zielwert gefallen. Es ist nicht zu erwarten, dass sich der prognostizierte künftige Ausgleich so weit erholen wird, dass das Ziel erreicht wird. (ESA-CCI)",
-          "image": "assets/story45-image12.png",
-          "imageFit": "contain"
+          "type": "embedded",
+          "description": "# Emissionsausgleich für Europa 2005–2030\n\nDer Ausgleich durch Land und Wald übertraf bis 2016 das Ausgleichsziel, ist seitdem jedoch unter den Zielwert gefallen. Es ist nicht zu erwarten, dass sich der prognostizierte künftige Ausgleich so weit erholen wird, dass das Ziel erreicht wird. (ESA-CCI)",
+          "embeddedSrc": "assets/emissions_offset_europe_chart.html"
         }
       ]
     }

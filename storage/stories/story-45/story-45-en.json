@@ -71,10 +71,9 @@
           "imageFit": "contain"
         },
         {
-          "type": "image",
-          "imageCaption": "# Cumulative Biomass Change in Temperate Regions \n\nNorthern forest biomass has been declining since 2016 (ESA-CCI)",
-          "image": "assets/story45-image10.png",
-          "imageFit": "contain"
+          "type": "embedded",
+          "description": "# Cumulative Biomass Change in Temperate Regions \n\nNorthern forest biomass has been declining since 2016 (ESA-CCI)",
+          "embeddedSrc": "assets/cumulative_biomass_change_temperate.html"
         }
       ]
     },
@@ -89,10 +88,9 @@
           "imageFit": "contain"
         },
         {
-          "type": "image",
-          "imageCaption": "# Emissions Offset for Europe 2005-2030\n\nThe offset by land and forest exceeded the target offset until 2016, but has dropped below the target since then. The projected future offset is not expected to recover enough to hit the target. (ESA-CCI)",
-          "image": "assets/story45-image12.png",
-          "imageFit": "contain"
+          "type": "embedded",
+          "description": "# Emissions Offset for Europe 2005-2030\n\nThe offset by land and forest exceeded the target offset until 2016, but has dropped below the target since then. The projected future offset is not expected to recover enough to hit the target. (ESA-CCI)",
+          "embeddedSrc": "assets/emissions_offset_europe_chart.html"
         }
       ]
     }

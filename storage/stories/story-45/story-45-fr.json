@@ -71,10 +71,9 @@
           "imageFit": "contain"
         },
         {
-          "type": "image",
-          "imageCaption": "# Évolution cumulative de la biomasse dans les régions tempérées \n\nLa biomasse forestière nordique est en déclin depuis 2016 (ESA-CCI)",
-          "image": "assets/story45-image10.png",
-          "imageFit": "contain"
+          "type": "embedded",
+          "description": "# Évolution cumulative de la biomasse dans les régions tempérées \n\nLa biomasse forestière nordique est en déclin depuis 2016 (ESA-CCI)",
+          "embeddedSrc": "assets/cumulative_biomass_change_temperate.html"
         }
       ]
     },
@@ -89,10 +88,9 @@
           "imageFit": "contain"
         },
         {
-          "type": "image",
-          "imageCaption": "# Compensation des émissions pour l'Europe 2005-2030\n\nLa compensation par les terres et les forêts a dépassé l'objectif de compensation jusqu'en 2016, mais est depuis tombée en dessous de cet objectif. La compensation future prévue ne devrait pas être suffisante pour atteindre l'objectif. (ESA-CCI)",
-          "image": "assets/story45-image12.png",
-          "imageFit": "contain"
+          "type": "embedded",
+          "description": "# Compensation des émissions pour l'Europe 2005-2030\n\nLa compensation par les terres et les forêts a dépassé l'objectif de compensation jusqu'en 2016, mais est depuis tombée en dessous de cet objectif. La compensation future prévue ne devrait pas être suffisante pour atteindre l'objectif. (ESA-CCI)",
+          "embeddedSrc": "assets/emissions_offset_europe_chart.html"
         }
       ]
     }
