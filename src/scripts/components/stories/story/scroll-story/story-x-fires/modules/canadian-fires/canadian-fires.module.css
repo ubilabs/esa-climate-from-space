@@ -1,0 +1,9 @@
+.credentialsContainer {
+  place-self: end;
+  margin-bottom: var(--story-padding);
+  z-index: 1;
+
+  .credentials {
+
+  }
+}

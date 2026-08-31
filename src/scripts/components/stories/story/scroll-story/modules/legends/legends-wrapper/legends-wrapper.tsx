@@ -11,13 +11,19 @@ interface Props {
   children: ReactNode;
   description: string;
   className?: string;
+  containerClassName?: string;
 }
 
-const LegendsWrapper = ({ children, description, className }: Props) => {
+const LegendsWrapper = ({
+  children,
+  description,
+  className,
+  containerClassName,
+}: Props) => {
   const [isLegendVisible, setIsLegendVisible] = useState(false);
 
   return (
-    <div className={styles.legendContainer}>
+    <div className={cx(styles.legendContainer, containerClassName)}>
       <span className="sr-only">{description}</span>
       <AnimatePresence>
         {isLegendVisible && (

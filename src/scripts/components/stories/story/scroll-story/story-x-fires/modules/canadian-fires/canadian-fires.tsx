@@ -6,6 +6,9 @@ import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
 import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import LegendFooter from "../legend-footer/legend-footer";
+import LegendsWrapper from "../../../modules/legends/legends-wrapper/legends-wrapper";
+
+import styles from "./canadian-fires.module.css";
 
 const animationConfig = {
   imageSequence: {
@@ -44,6 +47,13 @@ export default function CanadianFiresModule() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
+        <LegendsWrapper
+          containerClassName={styles.credentialsContainer}
+          className={styles.crendentials}
+          description="test"
+        >
+          TEST
+        </LegendsWrapper>
         <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <Dimmer />
         <ScrollText
