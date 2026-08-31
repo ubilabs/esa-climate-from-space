@@ -13,9 +13,9 @@
         "path": "assets/video-sequence-1"
       },
       "content": {
-        "scrollText1": "Fire is a natural part of many ecosystems, clearing dead wood and stimulating new growth. Humans have always lived with fire, using it to manage land and wildlife and to clear forest and shrubs for agriculture",
-        "scrollText2": "But fire is an unreliable tool. As the climate warms, we are increasingly seeing untamed, extreme infernos that rewrite landscapes and pollute the atmosphere.",
-        "scrollText3": "Extreme fires burn out of control and are sometimes only extinguished when the weather conditions change. To understand when an ordinary seasonal fire becomes a catastrophe, we must look beyond the flames."
+        "scrollText1": "Fire is a natural seasonal force in many ecosystems, clearing dead wood and stimulating new growth. People use fire to manage land and wildlife and to clear forest and shrubs for agriculture. ",
+        "scrollText2": "But as the climate warms, untamed, extreme infernos are transforming landscapes and polluting the atmosphere.",
+        "scrollText3": "Extreme fires burn out of control and are at times only extinguished when weather conditions change. To understand why an ordinary seasonal fire becomes a catastrophe, we must look beyond the flames."
       }
     },
     {
@@ -23,13 +23,13 @@
       "content": {
         "scrollText1": "Naming the Beast",
         "scrollText2": "Wildfires occur around the world. Some ecosystems are more fire-prone than others, and in some places “extreme” fires have been recorded.",
-        "scrollText3": "Scientists use precise measurements from space to decide whether a fire is an extreme fire event."
+        "scrollText3": "Scientists use precise measurements from space to determine whether a fire event is “normal” or “extreme”"
       }
     },
     {
       "type": "radiativePowerThreshold",
       "content": {
-        "scrollText1": "Satellites orbiting Earth can measure the brightness (or radiative power) of flames on the ground.",
+        "scrollText1": "Earth-orbiting satellites can measure the brightness (or radiative power) of flames on the ground.",
         "scrollText2": "If the power heavily exceeds the regional average, it may become an extreme event.",
         "flameIllustrationTitle": "Radiative power of flames on the ground",
         "flameIllustrationDescription": "Illustration fire event and radiative power threshold.",
@@ -40,7 +40,7 @@
       "type": "burnedArea",
       "content": {
         "scrollText1": "The other key measure is the area of ground burned by the fire.",
-        "scrollText2": "If that also exceeds the regional threshold, we are dealing with an extreme fire event.",
+        "scrollText2": "If this also exceeds the regional threshold, we are dealing with an extreme fire event.",
         "fireRingIllustrationTitle": "Area of ground burned by the fire",
         "fireRingIllustrationDescription": "Illustration showing burned and ground areas.",
         "legendLabelBurnedAreaThreshold": "Burned Area Threshold"
@@ -50,8 +50,8 @@
       "type": "zoomToPortugal",
       "content": {
         "scrollText1": "Ground Truth",
-        "scrollText2": "To recognise an extreme fire is only half the story. To understand why they're happening, we have to look at more diverse data. ESA’s Climate Change Initiative is examining several climate variables that can be drivers of wildfires.",
-        "scrollText3": "ESA scientists have examined the conditions leading to a series of devastating fires in Portugal in 2017."
+        "scrollText2": "Recognising an extreme fire is only half the story. To understand why they're happening, we have to look at more diverse data. As part of ESA’s Climate Change Initiative, the XFires project is examining several aspects of the climate that can act as drivers of wildfires.",
+        "scrollText3": "The XFires team has examined the conditions leading to a series of devastating fires in Portugal in 2017."
       }
     },
     {
@@ -63,11 +63,11 @@
         "path": "assets/video-fires-in-portugal"
       },
       "content": {
-        "scrollText1": "They used a Land Cover map to identify highly flammable vegetation types and Biomass to estimate fuel load.",
-        "scrollText2": "Soil Moisture and Land Surface Temperature datasets reveal the severe drought conditions that primed the landscape for an extreme fire event.",
-        "scrollText3": "By stacking these variables, researchers can reconstruct exactly how a series of extreme events primed, consumed, and altered the landscape.",
-        "scrollText4": "Four fires broke out on the afternoon of 17 June 2017 and spread rapidly, killing 66 people and injuring 253 by 24 June. 485 homes were destroyed and EUR 52 million of damage done to farms and other businesses.",
-        "scrollText5": "In October another 45 died in another wave of fires fanned by strong winds from Hurricane Ophelia.",
+        "scrollText1": "They used maps of land cover to identify highly flammable vegetation types and biomass to estimate fuel cload.",
+        "scrollText2": "Soil moisture and land surface temperature datasets reveal the drought conditions that primed the landscape for fire.",
+        "scrollText3": "By stacking these variables, researchers can reconstruct the exact conditions that resulted in an extreme fire event that devaststed the landscape.",
+        "scrollText4": "Four fires broke out on the afternoon of 17 June 2017 and spread rapidly, killing 66 people and injuring 253 by 24 June. 485 homes were destroyed and € 52 million of damage was caused to farms and other businesses.",
+        "scrollText5": "The June fires burned a large area, but were not intense enough to be classified as extreme. In October another wave of fires was fanned by strong winds from Hurricane Ophelia. This extreme fire event led to an additional 45 deaths.",
         "labelLayer1": "Land Cover",
         "labelLayer2": "Biomass",
         "labelLayer3": "Soil Moisture",
@@ -82,7 +82,7 @@
       "content": {
         "scrollText1": "Climate Connections",
         "scrollText2": "The impact didn't stop at Portugal's borders. The hurricane pulled smoke plumes north across Spain and France to the UK. Black rain was reported falling as far away as Estonia.",
-        "scrollText3": "Wildfires should not be seen as isolated events. They are deeply integrated into our changing climate."
+        "scrollText3": "Wildfires should not be seen as isolated events. They are shaped by and also influence our changing climate."
       }
     },
     {
@@ -91,8 +91,8 @@
         "path": "assets/video-canadian-fires"
       },
       "content": {
-        "scrollText1": "In 2025, smoke from forest fires in Canada spread at high altitude across the Atlantic Ocean to Europe.",
-        "scrollText2": "In 2023, carbon emissions from Canadian wildfires exceeded the fossil fuel emissions of most nations. Only China, India and the United States put more carbon into the atmosphere."
+        "scrollText1": "In 2023, carbon emissions from Canadian wildfires exceeded the fossil fuel emissions of most nations. Only China, India and the United States released more carbon into the atmosphere.",
+        "scrollText2": "In 2025, smoke from forest fires in Canada was transported at high altitude across the Atlantic Ocean to Europe. "
       },
       "legend": {
         "values": [
@@ -123,12 +123,12 @@
     {
       "type": "outro",
       "content": {
-        "headline": "Science in Service of Society",
-        "description": "The CCI XFires project is not only looking back but forward: They are creating a unified global database of extreme fires and examining their drivers, to test and improve global fire models.\n\nThis allows a transition from reacting to extreme fires, to proactively protecting against future events, safeguarding ecosystems and human lives.\n\nThe ultimate goal of XFires is to help us predict, prepare for, and mitigate future climate risks."
+        "headline": "Building Resilience",
+        "description": ""
       },
       "readMore": {
-        "headline": "Explore the data, the maps, and the science behind XFires",
-        "title": "EXPLORE",
+        "headline": "ESA’s XFires is generating a global database of extreme fires and examining their drivers, to test and improve global fire models. toThis will help decision-makers and communities predict, prepare for, and mitigate future climate risks, safeguarding ecosystems, property and human lives..",
+        "title": "Explore the data, the maps, and the science behind XFires",
         "url": "/land"
       },
       "slides": [
