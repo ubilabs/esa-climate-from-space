@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   max-height: 100%;
+  overflow: hidden;
 
   .scrollImageSequence {
     display: block;
@@ -20,7 +21,6 @@
   .sequenceContainer {
     aspect-ratio: 9/16;
     justify-self: center;
-    overflow: hidden;
 
     .scrollImageSequence {
       height: 100%;
