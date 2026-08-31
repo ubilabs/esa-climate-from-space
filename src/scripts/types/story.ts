@@ -168,6 +168,7 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
   };
   globeKeyframes?: GlobeKeyframe[];
   lengthFactor: number;
+  credentials?: string;
   content?: Record<string, string>;
   legend?: {
     values: LegendEntry[];

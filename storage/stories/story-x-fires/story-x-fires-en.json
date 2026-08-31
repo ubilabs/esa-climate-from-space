@@ -87,6 +87,7 @@
     },
     {
       "type": "canadianFires",
+      "credentials": "Total aerosol optical depth at 550nm for 22 May - 1 Jun 2025 (CAMS/ECMWF)",
       "imageSequence": {
         "path": "assets/video-canadian-fires"
       },
@@ -112,6 +113,7 @@
     },
     {
       "type": "australianFires",
+      "credentials": "Sentinel-5P absorbing aerosol index for 28 Dec 2019 - 8 Jan 2020 (contains modified Copernicus Sentinel data (2019–20), processed by ESA)",
       "imageSequence": {
         "path": "assets/video-australian-fires"
       },
