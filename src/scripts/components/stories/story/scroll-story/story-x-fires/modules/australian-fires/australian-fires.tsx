@@ -7,6 +7,8 @@ import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-seque
 import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import Credentials from "../../../modules/credentials/credentials";
 
+import { ENTERING_TEXT_OUTPUT, TWO_TEXT_TIMING } from "../animation-timings";
+
 const animationConfig = {
   imageSequence: {
     progressRange: [0, 1],
@@ -14,15 +16,15 @@ const animationConfig = {
     output: ["100%", "100%", "50%"],
   },
   scrollText1: {
-    input: [0, 0.075, 0.225, 0.3],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: TWO_TEXT_TIMING.first,
+    output: ENTERING_TEXT_OUTPUT,
   },
   scrollText2: {
-    input: [0.3, 0.375, 0.525, 0.6],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: TWO_TEXT_TIMING.second,
+    output: ENTERING_TEXT_OUTPUT,
   },
   dimmer: {
-    input: [0.525, 0.6],
+    input: [0.7, 0.8],
     output: [0.5, 0],
   },
 } satisfies DimmerAnimationConfig;

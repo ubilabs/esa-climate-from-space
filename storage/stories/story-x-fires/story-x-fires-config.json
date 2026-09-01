@@ -96,7 +96,7 @@
           }
         }
       ],
-      "lengthFactor": 13
+      "lengthFactor": 10
     },
     {
       "globeKeyframes": [
@@ -151,7 +151,7 @@
           }
         }
       ],
-      "lengthFactor": 22
+      "lengthFactor": 12
     },
     {
       "globeKeyframes": [
@@ -182,7 +182,7 @@
           }
         }
       ],
-      "lengthFactor": 9
+      "lengthFactor": 7
     },
     {
       "globeKeyframes": [
@@ -212,7 +212,7 @@
           }
         }
       ],
-      "lengthFactor": 12
+      "lengthFactor": 8
     },
     {
       "globeKeyframes": [
@@ -267,7 +267,7 @@
           }
         }
       ],
-      "lengthFactor": 24
+      "lengthFactor": 12
     },
     {
       "globeKeyframes": [
@@ -322,7 +322,7 @@
           }
         }
       ],
-      "lengthFactor": 45
+      "lengthFactor": 30
     },
     {
       "globeKeyframes": [
@@ -352,7 +352,7 @@
           }
         }
       ],
-      "lengthFactor": 16
+      "lengthFactor": 11
     },
     {
       "globeKeyframes": [
@@ -382,7 +382,7 @@
           }
         }
       ],
-      "lengthFactor": 9
+      "lengthFactor": 7
     },
     {
       "globeKeyframes": [
@@ -412,7 +412,7 @@
           }
         }
       ],
-      "lengthFactor": 9
+      "lengthFactor": 7
     },
     {
       "globeKeyframes": [
@@ -442,7 +442,7 @@
           }
         }
       ],
-      "lengthFactor": 8
+      "lengthFactor": 6
     }
   ]
 }

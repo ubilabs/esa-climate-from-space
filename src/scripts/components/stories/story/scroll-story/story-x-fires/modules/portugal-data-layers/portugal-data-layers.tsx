@@ -7,6 +7,7 @@ import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
 import { Layers } from "./layers/layers";
 import { Timeline } from "./timeline/timeline";
+import { ENTERING_TEXT_OUTPUT } from "../animation-timings";
 
 import cx from "classnames";
 
@@ -14,84 +15,81 @@ import styles from "./portugal-data-layers.module.css";
 
 const animationConfig = {
   scrollText1: {
-    input: [0, 0.0197, 0.0789, 0.0986],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: [0, 0.025, 0.075, 0.1],
+    output: ENTERING_TEXT_OUTPUT,
   },
   scrollText2: {
-    input: [0.1972, 0.2169, 0.276, 0.2958],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: [0.15, 0.175, 0.225, 0.25],
+    output: ENTERING_TEXT_OUTPUT,
   },
   scrollText3: {
-    input: [0.3155, 0.3352, 0.5325, 0.5522],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: [0.275, 0.3, 0.5, 0.525],
+    output: ENTERING_TEXT_OUTPUT,
   },
   layer1: {
     figure: {
-      input: [0, 0.0197],
+      input: [0, 0.025],
       output: ["100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.0197,
+      visibilityThreshold: 0.025,
     },
   },
   layer2: {
     figure: {
-      input: [0.0197, 0.0395],
+      input: [0.025, 0.05],
       output: ["100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.0395,
+      visibilityThreshold: 0.05,
     },
   },
   layer3: {
     figure: {
-      input: [0.1972, 0.2169],
+      input: [0.15, 0.175],
       output: ["100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.2169,
+      visibilityThreshold: 0.175,
     },
   },
   layer4: {
     figure: {
-      input: [0.2169, 0.2366],
+      input: [0.175, 0.2],
       output: ["100vw", "0vw"],
     },
     label: {
-      visibilityThreshold: 0.2366,
+      visibilityThreshold: 0.2,
     },
   },
   layerStack: {
-    input: [0, 0.5325, 0.5522],
+    input: [0, 0.5, 0.525],
     output: ["20vw", "20vw", "0vw"],
   },
   outro: {
-    perspective: [0.5522, 0.5917],
-    translate: [0.5917, 0.6114],
-    scale: [0.5522, 0.6114],
+    perspective: [0.525, 0.575],
+    translate: [0.575, 0.6],
+    scale: [0.525, 0.6],
     fadeOut: {
-      input: [0.6311, 0.7378],
+      input: [0.625, 0.725],
       output: ["100%", "0%"],
     },
   },
   timeline: {
-    visibilityThreshold: 0.3352,
-    timeThresholds: [
-      0.3549, 0.3747, 0.3944, 0.4141, 0.4338, 0.4536, 0.4733, 0.493, 0.5128,
-      0.5325,
-    ],
+    visibilityThreshold: 0.3,
+    timeThresholds: [0.32, 0.34, 0.36, 0.38, 0.4, 0.42, 0.44, 0.46, 0.48, 0.5],
   },
   imageSequence: {
-    progressRange: [0.7738, 1],
-    input: [0.6311, 0.7568],
+    progressRange: [0.75, 1],
+    input: [0.625, 0.75],
     output: ["0%", "100%"],
   },
   scrollText4: {
-    input: [0.5917, 0.6508, 0.6742, 0.7093, 0.7443],
+    input: [0.575, 0.625, 0.65, 0.7, 0.725],
     output: ["100%", "100%", "25%", "25%", "-100%"],
   },
   scrollText5: {
-    input: [0.9246, 0.9497, 0.9749, 1],
+    input: [0.875, 0.9, 0.95, 0.975],
     output: ["100%", "25%", "25%", "-100%"],
   },
 };
