@@ -250,13 +250,14 @@ export default {
   lenisOptions: {
     touchMultiplier: isAndroid() ? 2 : 1,
     // Keep long-form stories responsive without making trackpad input jumpy.
-    wheelMultiplier: 1.2,
+    wheelMultiplier: 1.1,
     smoothTouch: true,
     smoothWheel: true,
-    lerp: 0.14,
+    // Settle more quickly so scrolling feels lighter and carries less momentum.
+    lerp: 0.16,
     infinite: false,
-    syncTouchLerp: 0.1,
-    touchInertiaMultiplier: 12,
+    syncTouchLerp: 0.15,
+    touchInertiaMultiplier: 8,
     // Modern iOS touch sync
     syncTouch: !isIos16orLower(),
 
