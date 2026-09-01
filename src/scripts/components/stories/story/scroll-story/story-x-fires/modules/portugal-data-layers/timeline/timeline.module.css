@@ -1,4 +1,5 @@
 .label {
+  z-index: 1;
   --x-fires-timeline-opacity: 0;
 
   justify-self: center;

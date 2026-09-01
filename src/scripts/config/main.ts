@@ -253,11 +253,12 @@ export default {
     wheelMultiplier: 1.1,
     smoothTouch: true,
     smoothWheel: true,
-    // Settle more quickly so scrolling feels lighter and carries less momentum.
-    lerp: 0.16,
+    // Keep wheel scrolling responsive while allowing a more natural glide.
+    lerp: 0.12,
     infinite: false,
-    syncTouchLerp: 0.15,
-    touchInertiaMultiplier: 8,
+    // Extend the touch release glide further so stronger flicks carry longer.
+    syncTouchLerp: 0.045,
+    touchInertiaMultiplier: 56,
     // Modern iOS touch sync
     syncTouch: !isIos16orLower(),
 
