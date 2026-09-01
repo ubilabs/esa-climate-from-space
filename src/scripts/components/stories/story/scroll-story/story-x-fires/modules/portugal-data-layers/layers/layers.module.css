@@ -1,6 +1,6 @@
 .layers {
   position: sticky;
-  top: 50%;
+  top: var(--x-fires-layer-wrapper-top);
   transform: translate(
     calc(
       var(--x-fires-layer-wrapper-x, 0px) - var(--story-padding) *

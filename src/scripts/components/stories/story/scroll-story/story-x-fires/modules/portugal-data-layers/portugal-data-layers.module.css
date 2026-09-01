@@ -6,6 +6,14 @@
 
 .foregroundScrollText {
   z-index: 2;
+  box-sizing: border-box;
+  place-content: end center;
+  padding: 0 var(--story-padding) clamp(2rem, 8vh, 5rem);
+
+  @media (--desktop-viewport) {
+    place-content: center;
+    padding: 0;
+  }
 }
 
 .leftScrollText {

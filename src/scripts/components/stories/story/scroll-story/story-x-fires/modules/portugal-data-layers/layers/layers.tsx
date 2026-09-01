@@ -22,6 +22,11 @@ export function Layers({ content }: Props) {
     config.outro.fadeOut.input,
     config.outro.fadeOut.output,
   );
+  const stackTop = useTransform(
+    scrollYProgress,
+    config.layerStack.input,
+    isDesktop ? ["50%", "50%", "50%"] : ["40%", "40%", "50%"],
+  );
   const stackX = useTransform(
     scrollYProgress,
     config.layerStack.input,
@@ -39,6 +44,7 @@ export function Layers({ content }: Props) {
       style={
         {
           "--x-fires-layer-wrapper-opacity": opacityFactor,
+          "--x-fires-layer-wrapper-top": stackTop,
           "--x-fires-layer-wrapper-x": stackX,
           "--x-fires-layer-wrapper-inset-factor": stackInsetFactor,
         } as MotionStyle

@@ -5,7 +5,6 @@ import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
-import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import { Layers } from "./layers/layers";
 import { Timeline } from "./timeline/timeline";
 
@@ -75,13 +74,6 @@ const animationConfig = {
       output: ["100%", "0%"],
     },
   },
-  dimmer: {
-    input: [
-      0, 0.0197, 0.0789, 0.0986, 0.1972, 0.2169, 0.276, 0.2958, 0.3155, 0.3352,
-      0.5325, 0.5522, 0.9749, 1,
-    ],
-    output: [0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0.5, 0],
-  },
   timeline: {
     visibilityThreshold: 0.3352,
     timeThresholds: [
@@ -100,9 +92,9 @@ const animationConfig = {
   },
   scrollText5: {
     input: [0.9246, 0.9497, 0.9749, 1],
-    output: ["100%", "35%", "35%", "-100%"],
+    output: ["100%", "25%", "25%", "-100%"],
   },
-} satisfies DimmerAnimationConfig;
+};
 
 export type PortugalDataLayersAnimationConfig = typeof animationConfig;
 
@@ -122,7 +114,6 @@ export default function PortugalDataLayersModule() {
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <Timeline />
-        {!isDesktop && <Dimmer />}
         <ScrollText
           className={cx(
             styles.scrollText,
