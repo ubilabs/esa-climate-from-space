@@ -96,7 +96,7 @@
           }
         }
       ],
-      "lengthFactor": 10
+      "lengthFactor": 9
     },
     {
       "globeKeyframes": [
@@ -151,7 +151,7 @@
           }
         }
       ],
-      "lengthFactor": 12
+      "lengthFactor": 10
     },
     {
       "globeKeyframes": [
@@ -267,7 +267,7 @@
           }
         }
       ],
-      "lengthFactor": 12
+      "lengthFactor": 10
     },
     {
       "globeKeyframes": [
@@ -322,7 +322,7 @@
           }
         }
       ],
-      "lengthFactor": 30
+      "lengthFactor": 24
     },
     {
       "globeKeyframes": [
@@ -352,7 +352,7 @@
           }
         }
       ],
-      "lengthFactor": 11
+      "lengthFactor": 9
     },
     {
       "globeKeyframes": [

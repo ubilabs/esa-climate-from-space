@@ -15,15 +15,15 @@ import styles from "./portugal-data-layers.module.css";
 
 const animationConfig = {
   scrollText1: {
-    input: [0, 0.025, 0.075, 0.1],
+    input: [0, 0.02, 0.06, 0.09, 0.12],
     output: ENTERING_TEXT_OUTPUT,
   },
   scrollText2: {
-    input: [0.15, 0.175, 0.225, 0.25],
+    input: [0.12, 0.145, 0.19, 0.22, 0.25],
     output: ENTERING_TEXT_OUTPUT,
   },
   scrollText3: {
-    input: [0.275, 0.3, 0.5, 0.525],
+    input: [0.25, 0.28, 0.42, 0.47, 0.52],
     output: ENTERING_TEXT_OUTPUT,
   },
   layer1: {
@@ -85,12 +85,12 @@ const animationConfig = {
     output: ["0%", "100%"],
   },
   scrollText4: {
-    input: [0.575, 0.625, 0.65, 0.7, 0.725],
-    output: ["100%", "100%", "25%", "25%", "-100%"],
+    input: [0.56, 0.6, 0.66, 0.72, 0.78],
+    output: ["100%", "100%", "25%", "-20%", "-100%"],
   },
   scrollText5: {
-    input: [0.875, 0.9, 0.95, 0.975],
-    output: ["100%", "25%", "25%", "-100%"],
+    input: [0.78, 0.82, 0.9, 0.94, 0.98],
+    output: ["100%", "25%", "25%", "-20%", "-100%"],
   },
 };
 
@@ -148,7 +148,7 @@ export default function PortugalDataLayersModule() {
           inputRange={animationConfig.scrollText4.input}
           outputRange={
             isDesktop
-              ? ["100%", "100%", "0%", "0%", "-100%"]
+              ? ["100%", "100%", "0%", "-20%", "-100%"]
               : animationConfig.scrollText4.output
           }
         />
@@ -158,7 +158,7 @@ export default function PortugalDataLayersModule() {
           inputRange={animationConfig.scrollText5.input}
           outputRange={
             isDesktop
-              ? ["100%", "0%", "0%", "-100%"]
+              ? ["100%", "0%", "0%", "-20%", "-100%"]
               : animationConfig.scrollText5.output
           }
         />
