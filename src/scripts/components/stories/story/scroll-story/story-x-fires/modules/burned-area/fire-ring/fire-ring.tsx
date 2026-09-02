@@ -8,6 +8,9 @@ import {
   useTransform,
 } from "motion/react";
 
+import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
+import { isIos } from "../../../../../../../../libs/is-ios";
+
 import { StoryXFiresModule } from "../../../../../../../../types/story";
 import { useModuleContent } from "../../../../../../../../providers/story/module-content/use-module-content";
 import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
@@ -46,6 +49,8 @@ export const FireRing: FunctionComponent = () => {
   const { module } = useModuleContent();
   const xFiresModule = module as StoryXFiresModule;
 
+  const imgScr = getStoryAssetUrl("story-x-fires", "assets/ring-of-fire.png");
+
   const { scrollYProgress, config } =
     useScrollModule<BurnedAreaAnimationConfig>();
   const [isBurnedAreaVisible, setIsBurnedAreaVisible] = useState(false);
@@ -62,7 +67,6 @@ export const FireRing: FunctionComponent = () => {
     BURNED_AREA_THRESHOLD_SQ_KM,
   );
 
-  // Animate burned area size value based on flame expansion state
   useEffect(() => {
     const controls = animate(
       burnedAreaSize,
@@ -211,47 +215,78 @@ export const FireRing: FunctionComponent = () => {
             {/* Burned area */}
             <motion.g
               style={{
-                originX: 0.5,
-                originY: 0.5,
                 scale: burnedAreaScale,
               }}
             >
-              <motion.circle
-                cx="60"
-                cy="70"
-                fill="none"
-                filter="url(#fire-ring-glow)"
-                stroke="#FBAB18"
-                initial={{ r: 0, strokeWidth: 4 }}
-                animate={{
-                  r: isBurnedAreaVisible ? 51 : 0,
-                  strokeWidth: isBurnedAreaExpanded ? 2 : 4,
-                }}
-                transition={{
-                  default: transitionConfig.expansion,
-                  r: isBurnedAreaVisible
-                    ? transitionConfig.fadeIn
-                    : transitionConfig.fadeOut,
-                }}
-              />
-              <motion.circle
-                cx="60"
-                cy="70"
-                filter="url(#fire-ring-displacement-filter)"
-                fill="url(#fire-ring-fill-gradient)"
-                stroke="url(#fire-ring-stroke-gradient)"
-                initial={{ r: 0, strokeWidth: 6 }}
-                animate={{
-                  r: isBurnedAreaVisible ? 50 : 0,
-                  strokeWidth: isBurnedAreaExpanded ? 3 : 6,
-                }}
-                transition={{
-                  default: transitionConfig.expansion,
-                  r: isBurnedAreaVisible
-                    ? transitionConfig.fadeIn
-                    : transitionConfig.fadeOut,
-                }}
-              />
+              {/*  the animated ring of fire causes lag on iPhones (android seems to be unaffected). There, we use an png instead */}
+              {isIos() ? (
+                <motion.image
+                  href={imgScr}
+                  x="10"
+                  y="20"
+                  width="100"
+                  height="100"
+                  preserveAspectRatio="xMidYMid meet"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{
+                    opacity: isBurnedAreaVisible ? 1 : 0,
+                    scale: isBurnedAreaVisible ? 1.2 : 0,
+                  }}
+                  transition={{
+                    default: transitionConfig.expansion,
+                    opacity: isBurnedAreaVisible
+                      ? transitionConfig.fadeIn
+                      : transitionConfig.fadeOut,
+                    scale: isBurnedAreaVisible
+                      ? transitionConfig.fadeIn
+                      : transitionConfig.fadeOut,
+                  }}
+                  style={{
+                    originX: 0.5,
+                    originY: 0.5,
+                    transformBox: "fill-box",
+                  }}
+                />
+              ) : (
+                <>
+                  <motion.circle
+                    cx="60"
+                    cy="70"
+                    fill="none"
+                    filter="url(#fire-ring-glow)"
+                    stroke="#FBAB18"
+                    initial={{ r: 0, strokeWidth: 4 }}
+                    animate={{
+                      r: isBurnedAreaVisible ? 51 : 0,
+                      strokeWidth: isBurnedAreaExpanded ? 2 : 4,
+                    }}
+                    transition={{
+                      default: transitionConfig.expansion,
+                      r: isBurnedAreaVisible
+                        ? transitionConfig.fadeIn
+                        : transitionConfig.fadeOut,
+                    }}
+                  />
+                  <motion.circle
+                    cx="60"
+                    cy="70"
+                    filter="url(#fire-ring-displacement-filter)"
+                    fill="url(#fire-ring-fill-gradient)"
+                    stroke="url(#fire-ring-stroke-gradient)"
+                    initial={{ r: 0, strokeWidth: 6 }}
+                    animate={{
+                      r: isBurnedAreaVisible ? 50 : 0,
+                      strokeWidth: isBurnedAreaExpanded ? 3 : 6,
+                    }}
+                    transition={{
+                      default: transitionConfig.expansion,
+                      r: isBurnedAreaVisible
+                        ? transitionConfig.fadeIn
+                        : transitionConfig.fadeOut,
+                    }}
+                  />
+                </>
+              )}
             </motion.g>
 
             {/* Path to burned area legend */}
