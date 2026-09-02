@@ -5,24 +5,25 @@ import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import { FireRing } from "./fire-ring/fire-ring";
+import { ENTERING_TEXT_OUTPUT, TWO_TEXT_TIMING } from "../animation-timings";
 
 import styles from "./burned-area.module.css";
 
 const animationConfig = {
   scrollText1: {
-    input: [0, 0.05, 0.15, 0.2],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: TWO_TEXT_TIMING.first,
+    output: ENTERING_TEXT_OUTPUT,
   },
   scrollText2: {
-    input: [0.4, 0.45, 0.55, 0.6],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: TWO_TEXT_TIMING.second,
+    output: ENTERING_TEXT_OUTPUT,
   },
   burnedArea: {
     visibleThreshold: 0.25,
     expandedThreshold: 0.65,
   },
   dimmer: {
-    input: [0.1, 0.15, 0.15, 0.2, 0.4, 0.45, 0.55, 0.6, 0.95, 1],
+    input: [0.2, 0.3, 0.3, 0.4, 0.4, 0.5, 0.7, 0.8, 0.95, 1],
     output: [1, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0, 1],
   },
 } satisfies DimmerAnimationConfig;

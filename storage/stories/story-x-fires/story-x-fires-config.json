@@ -96,7 +96,7 @@
           }
         }
       ],
-      "lengthFactor": 13
+      "lengthFactor": 9
     },
     {
       "globeKeyframes": [
@@ -151,7 +151,7 @@
           }
         }
       ],
-      "lengthFactor": 22
+      "lengthFactor": 10
     },
     {
       "globeKeyframes": [
@@ -182,7 +182,7 @@
           }
         }
       ],
-      "lengthFactor": 9
+      "lengthFactor": 7
     },
     {
       "globeKeyframes": [
@@ -212,7 +212,7 @@
           }
         }
       ],
-      "lengthFactor": 12
+      "lengthFactor": 8
     },
     {
       "globeKeyframes": [
@@ -267,7 +267,7 @@
           }
         }
       ],
-      "lengthFactor": 24
+      "lengthFactor": 10
     },
     {
       "globeKeyframes": [
@@ -322,7 +322,7 @@
           }
         }
       ],
-      "lengthFactor": 45
+      "lengthFactor": 24
     },
     {
       "globeKeyframes": [
@@ -352,36 +352,6 @@
           }
         }
       ],
-      "lengthFactor": 16
-    },
-    {
-      "globeKeyframes": [
-        {
-          "progress": 1,
-          "desktop": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 20040000
-            }
-          },
-          "mobile": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 18040000
-            }
-          }
-        }
-      ],
       "lengthFactor": 9
     },
     {
@@ -412,7 +382,7 @@
           }
         }
       ],
-      "lengthFactor": 9
+      "lengthFactor": 7
     },
     {
       "globeKeyframes": [
@@ -442,7 +412,37 @@
           }
         }
       ],
-      "lengthFactor": 8
+      "lengthFactor": 7
+    },
+    {
+      "globeKeyframes": [
+        {
+          "progress": 1,
+          "desktop": {
+            "containerPosition": {
+              "x": 0,
+              "y": -1
+            },
+            "location": {
+              "lat": -40,
+              "lng": -30,
+              "altitude": 20040000
+            }
+          },
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": -1
+            },
+            "location": {
+              "lat": -40,
+              "lng": -30,
+              "altitude": 18040000
+            }
+          }
+        }
+      ],
+      "lengthFactor": 6
     }
   ]
 }

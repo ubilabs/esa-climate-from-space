@@ -249,13 +249,16 @@ export default {
   legacyStoryMarkdownElements: [...markdownAllowedElements, "iframe"],
   lenisOptions: {
     touchMultiplier: isAndroid() ? 2 : 1,
-    wheelMultiplier: 1,
+    // Keep long-form stories responsive without making trackpad input jumpy.
+    wheelMultiplier: 1.1,
     smoothTouch: true,
     smoothWheel: true,
-    lerp: 0.1,
+    // Keep wheel scrolling responsive while allowing a more natural glide.
+    lerp: 0.12,
     infinite: false,
-    syncTouchLerp: 0.075,
-    touchInertiaMultiplier: 16,
+    // Extend the touch release glide further so stronger flicks carry longer.
+    syncTouchLerp: 0.045,
+    touchInertiaMultiplier: 56,
     // Modern iOS touch sync
     syncTouch: !isIos16orLower(),
 
