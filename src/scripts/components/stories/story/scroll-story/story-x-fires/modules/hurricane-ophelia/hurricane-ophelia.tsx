@@ -4,6 +4,11 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
+import {
+  ENTERING_TEXT_OUTPUT,
+  THREE_TEXT_TIMING,
+  VISIBLE_TEXT_OUTPUT,
+} from "../animation-timings";
 
 const animationConfig = {
   imageSequence: {
@@ -12,16 +17,16 @@ const animationConfig = {
     output: ["100%", "100%", "50%"],
   },
   scrollText1: {
-    input: [0, 0.2, 0.25],
-    output: ["0%", "0%", "-100%"],
+    input: THREE_TEXT_TIMING.firstVisible,
+    output: VISIBLE_TEXT_OUTPUT,
   },
   scrollText2: {
-    input: [0.3, 0.375, 0.525, 0.55],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: THREE_TEXT_TIMING.second,
+    output: ENTERING_TEXT_OUTPUT,
   },
   scrollText3: {
-    input: [0.55, 0.6, 0.76, 0.85],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: THREE_TEXT_TIMING.third,
+    output: ENTERING_TEXT_OUTPUT,
   },
 };
 

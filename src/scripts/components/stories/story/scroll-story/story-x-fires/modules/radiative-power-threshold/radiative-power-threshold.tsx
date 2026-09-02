@@ -5,23 +5,24 @@ import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import { FireFlame } from "./fire-flame/fire-flame";
+import { ENTERING_TEXT_OUTPUT, TWO_TEXT_TIMING } from "../animation-timings";
 
 import styles from "./radiative-power-threshold.module.css";
 
 const animationConfig = {
   scrollText1: {
-    input: [0, 0.075, 0.225, 0.3],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: TWO_TEXT_TIMING.first,
+    output: ENTERING_TEXT_OUTPUT,
   },
   scrollText2: {
-    input: [0.3, 0.375, 0.525, 0.6],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: TWO_TEXT_TIMING.second,
+    output: ENTERING_TEXT_OUTPUT,
   },
   flame: {
     expandedThreshold: 0.675,
   },
   dimmer: {
-    input: [0.15, 0.225, 0.525, 0.6, 0.925, 1],
+    input: [0.2, 0.3, 0.7, 0.8, 0.925, 1],
     output: [1, 0.5, 0.5, 0, 0, 1],
   },
 } satisfies DimmerAnimationConfig;

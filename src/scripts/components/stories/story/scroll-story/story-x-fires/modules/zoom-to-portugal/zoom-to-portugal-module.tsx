@@ -4,6 +4,11 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ZoomToPortugal from "./zoom-to-portugal";
+import {
+  ENTERING_TEXT_OUTPUT,
+  THREE_TEXT_TIMING,
+  VISIBLE_TEXT_OUTPUT,
+} from "../animation-timings";
 
 const animationConfig = {
   globeLayerThreshold: 0.325,
@@ -12,16 +17,16 @@ const animationConfig = {
     output: [0, 1, 1, 0],
   },
   scrollText1: {
-    input: [0, 0.175, 0.225],
-    output: ["0%", "0%", "-100%"],
+    input: THREE_TEXT_TIMING.firstVisible,
+    output: VISIBLE_TEXT_OUTPUT,
   },
   scrollText2: {
-    input: [0.225, 0.275, 0.325, 0.4],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: THREE_TEXT_TIMING.second,
+    output: ENTERING_TEXT_OUTPUT,
   },
   scrollText3: {
-    input: [0.7, 0.8, 0.9, 0.95],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: THREE_TEXT_TIMING.third,
+    output: ENTERING_TEXT_OUTPUT,
   },
 };
 

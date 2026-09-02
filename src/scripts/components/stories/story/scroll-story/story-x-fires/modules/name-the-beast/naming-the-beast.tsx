@@ -6,6 +6,11 @@ import { useRef } from "react";
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import GlobalFires from "./global-fires/global-fires";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
+import {
+  ENTERING_TEXT_OUTPUT,
+  THREE_TEXT_TIMING,
+  VISIBLE_TEXT_OUTPUT,
+} from "../animation-timings";
 
 const animationConfig = {
   spinStart: 0.2,
@@ -15,16 +20,16 @@ const animationConfig = {
     output: [0, 0, 1, 1, 0],
   },
   scrollText1: {
-    input: [0, 0.225, 0.3],
-    output: ["0%", "0%", "-100%"],
+    input: THREE_TEXT_TIMING.firstVisible,
+    output: VISIBLE_TEXT_OUTPUT,
   },
   scrollText2: {
-    input: [0.3, 0.375, 0.525, 0.55],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: THREE_TEXT_TIMING.second,
+    output: ENTERING_TEXT_OUTPUT,
   },
   scrollText3: {
-    input: [0.55, 0.675, 0.825, 0.9],
-    output: ["100%", "0%", "0%", "-100%"],
+    input: THREE_TEXT_TIMING.third,
+    output: ENTERING_TEXT_OUTPUT,
   },
 };
 
