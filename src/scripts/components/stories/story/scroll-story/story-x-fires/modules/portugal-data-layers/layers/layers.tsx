@@ -17,6 +17,7 @@ export function Layers({ content }: Props) {
   const { scrollYProgress, config } =
     useScrollModule<PortugalDataLayersAnimationConfig>();
   const { isDesktop } = useScreenInfo();
+
   const opacityFactor = useTransform(
     scrollYProgress,
     config.outro.fadeOut.input,

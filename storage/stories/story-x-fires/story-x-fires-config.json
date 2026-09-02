@@ -1,81 +1,30 @@
 {
   "initialglobeConfig": {
-    "mobile": {
-      "containerPosition": {
-        "x": 0,
-        "y": 0
-      },
-      "location": {
-        "lat": -40,
-        "lng": -30,
-        "altitude": 28040000
-      }
-    },
     "desktop": {
       "containerPosition": {
         "x": 0,
         "y": 0
       },
       "location": {
-        "lat": -40,
-        "lng": -30,
-        "altitude": 18040000
+        "lat": 0,
+        "lng": 0,
+        "altitude": 20040000
+      }
+    },
+    "mobile": {
+      "containerPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "location": {
+        "lat": 0,
+        "lng": 0,
+        "altitude": 28040000
       }
     }
   },
   "splashscreen": {
-    "globeKeyframes": [
-      {
-        "progress": 0.5,
-        "desktop": {
-          "containerPosition": {
-            "x": 0,
-            "y": 0
-          },
-          "location": {
-            "lat": -40,
-            "lng": -30,
-            "altitude": 20040000
-          }
-        },
-        "mobile": {
-          "containerPosition": {
-            "x": 0,
-            "y": 0
-          },
-          "location": {
-            "lat": -40,
-            "lng": -30,
-            "altitude": 28040000
-          }
-        }
-      },
-      {
-        "progress": 1,
-        "mobile": {
-          "containerPosition": {
-            "x": 0,
-            "y": 0
-          },
-          "location": {
-            "lat": -40,
-            "lng": -30,
-            "altitude": 28040000
-          }
-        },
-        "desktop": {
-          "containerPosition": {
-            "x": 0,
-            "y": 0
-          },
-          "location": {
-            "lat": -40,
-            "lng": -30,
-            "altitude": 20040000
-          }
-        }
-      }
-    ],
+    "globeKeyframes": [],
     "lengthFactor": 2
   },
   "modules": [
@@ -101,31 +50,6 @@
     {
       "globeKeyframes": [
         {
-          "progress": 0,
-          "desktop": {
-            "containerPosition": {
-              "x": 0,
-              "y": 0
-            },
-            "location": {
-              "lat": 0,
-              "lng": 0,
-              "altitude": 20040000
-            }
-          },
-          "mobile": {
-            "containerPosition": {
-              "x": 0,
-              "y": 0
-            },
-            "location": {
-              "lat": 0,
-              "lng": 0,
-              "altitude": 28040000
-            }
-          }
-        },
-        {
           "progress": 1,
           "desktop": {
             "containerPosition": {
@@ -135,7 +59,7 @@
             "location": {
               "lat": 0,
               "lng": 0,
-              "altitude": 20040000
+              "altitude": 28040000
             }
           },
           "mobile": {
@@ -442,7 +366,7 @@
           }
         }
       ],
-      "lengthFactor": 6
+      "lengthFactor": 2
     }
   ]
 }
