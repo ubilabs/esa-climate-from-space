@@ -1,0 +1,24 @@
+@font-face {
+  font-style: normal;
+  font-family: NotesESA;
+  src: url("../../../../assets/fonts/NotesEsaReg.otf");
+}
+
+.vis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  font-family: NotesESA, Arial, Helvetica, sans-serif;
+}
+
+.error {
+  box-sizing: border-box;
+  max-width: 42rem;
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  font: 13px/1.5 NotesESA, Arial, Helvetica, sans-serif;
+}
