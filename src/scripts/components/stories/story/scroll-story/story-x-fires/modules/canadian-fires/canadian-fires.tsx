@@ -62,7 +62,7 @@ export default function CanadianFiresModule() {
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
-        <LegendFooter />
+        {xFiresModule.legend && <LegendFooter legend={xFiresModule.legend} />}
       </ScrollModule.StickyContainer>
     </ScrollModule>
   );
