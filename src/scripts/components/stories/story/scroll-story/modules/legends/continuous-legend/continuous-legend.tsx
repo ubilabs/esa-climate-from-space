@@ -1,21 +1,25 @@
 import { FunctionComponent } from "react";
-import { Legend } from "../../../../../../../types/story";
+import { Legend, LegendEntry } from "../../../../../../../types/story";
 import LegendsWrapper from "../legends-wrapper/legends-wrapper";
 
 import styles from "./continuous-legend.module.css";
 
 interface Props {
   legend: Legend;
+  legendEntries: LegendEntry[];
 }
 
-const ContinuousLegend: FunctionComponent<Props> = ({ legend }) => {
-  const { values = [], unit = "", description = "" } = legend;
+const ContinuousLegend: FunctionComponent<Props> = ({
+  legend,
+  legendEntries,
+}) => {
+  const { unit = "", description = "" } = legend;
 
   return (
     <LegendsWrapper description={description}>
       <figcaption className={styles.legend}>
         <div className={styles.legendMarkers}>
-          {values.map(({ value, color }) => (
+          {legendEntries.map(({ value, color }) => (
             <div key={value} className={styles.legendMarker}>
               <span
                 className={styles.dot}

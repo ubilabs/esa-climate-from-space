@@ -171,7 +171,7 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
   credentials?: string;
   content?: Record<string, string>;
   legend?: {
-    values: LegendEntry[];
+    entriesUrl: string;
     description: string;
   };
 } & (
@@ -187,7 +187,7 @@ export type StoryXFiresModule = Pick<BaseModule, "text"> & {
     | { type: "outro" }
   );
 
-type LegendEntry = {
+export type LegendEntry = {
   value: number | null;
   color: string;
 };
@@ -195,7 +195,7 @@ type LegendEntry = {
 export type Legend = {
   type: "continuous" | "categorical";
   unit: string;
-  values: LegendEntry[];
+  entriesUrl: string;
   description: string;
 };
 

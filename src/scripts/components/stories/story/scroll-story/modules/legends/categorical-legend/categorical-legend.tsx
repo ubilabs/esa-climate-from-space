@@ -1,15 +1,19 @@
 import { CSSProperties, FunctionComponent } from "react";
-import { Legend } from "../../../../../../../types/story";
+import { Legend, LegendEntry } from "../../../../../../../types/story";
 import LegendsWrapper from "../legends-wrapper/legends-wrapper";
 
 import styles from "./categorical-legend.module.css";
 
 interface Props {
   legend: Legend;
+  legendEntries: LegendEntry[];
 }
 
-const CategoricalLegend: FunctionComponent<Props> = ({ legend }) => {
-  const { values = [], unit = "", description = "" } = legend;
+const CategoricalLegend: FunctionComponent<Props> = ({
+  legend,
+  legendEntries,
+}) => {
+  const { unit = "", description = "" } = legend;
 
   return (
     <LegendsWrapper description={description} className={styles.legendWrapper}>
@@ -17,22 +21,19 @@ const CategoricalLegend: FunctionComponent<Props> = ({ legend }) => {
         <span>{unit}</span>
         {
           <ul className={styles.list}>
-            {values.map((entry) => {
-              const key = Object.keys(entry)[0] as keyof typeof entry;
-              return (
-                <li className={styles.elementContainer}>
-                  <span
-                    className={styles.color}
-                    style={
-                      {
-                        "--category-color": key,
-                      } as CSSProperties
-                    }
-                  ></span>
-                  <span className={styles.value}>{entry[key]}</span>
-                </li>
-              );
-            })}
+            {legendEntries.map(({ value, color }) => (
+              <li key={value} className={styles.elementContainer}>
+                <span
+                  className={styles.color}
+                  style={
+                    {
+                      "--category-color": color,
+                    } as CSSProperties
+                  }
+                ></span>
+                <span className={styles.value}>{value}</span>
+              </li>
+            ))}
           </ul>
         }
       </figcaption>
