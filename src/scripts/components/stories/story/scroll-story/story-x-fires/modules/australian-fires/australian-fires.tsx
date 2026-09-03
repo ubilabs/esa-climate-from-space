@@ -6,6 +6,7 @@ import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
 import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import Credentials from "../../../modules/credentials/credentials";
+import FadeWrapper from "../fade-wrapper/fade-wrapper";
 
 import { ENTERING_TEXT_OUTPUT, TWO_TEXT_TIMING } from "../animation-timings";
 
@@ -45,23 +46,25 @@ export default function AustralianFiresModule() {
       config={animationConfig}
       lengthFactor={xFiresModule.lengthFactor}
     >
-      <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
-        <Credentials description={xFiresModule.legend?.description || ""}>
-          {xFiresModule.credentials}
-        </Credentials>
-        <ScrollImageSequence sequence={xFiresModule.imageSequence} />
-        <Dimmer />
-        <ScrollText
-          text={xFiresModule.content?.scrollText1 || ""}
-          inputRange={animationConfig.scrollText1.input}
-          outputRange={animationConfig.scrollText1.output}
-        />
-        <ScrollText
-          text={xFiresModule.content?.scrollText2 || ""}
-          inputRange={animationConfig.scrollText2.input}
-          outputRange={animationConfig.scrollText2.output}
-        />
-      </ScrollModule.StickyContainer>
+      <FadeWrapper direction="fadeOut">
+        <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
+          <Credentials description={xFiresModule.legend?.description || ""}>
+            {xFiresModule.credentials}
+          </Credentials>
+          <ScrollImageSequence sequence={xFiresModule.imageSequence} />
+          <Dimmer />
+          <ScrollText
+            text={xFiresModule.content?.scrollText1 || ""}
+            inputRange={animationConfig.scrollText1.input}
+            outputRange={animationConfig.scrollText1.output}
+          />
+          <ScrollText
+            text={xFiresModule.content?.scrollText2 || ""}
+            inputRange={animationConfig.scrollText2.input}
+            outputRange={animationConfig.scrollText2.output}
+          />
+        </ScrollModule.StickyContainer>
+      </FadeWrapper>
     </ScrollModule>
   );
 }
