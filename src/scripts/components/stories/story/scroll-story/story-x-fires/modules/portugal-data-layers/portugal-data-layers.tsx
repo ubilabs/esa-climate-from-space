@@ -85,6 +85,10 @@ const animationConfig = {
     input: [0.625, 0.75],
     output: ["0%", "100%"],
   },
+  progressInfoPopover: {
+    startProgress: 0.9,
+    endProgress: 0.92,
+  },
   scrollText4: {
     input: [0.66, 0.7, 0.72, 0.78, 0.8],
     output: ["100%", "100%", "25%", "-20%", "-100%"],
@@ -114,7 +118,6 @@ export default function PortugalDataLayersModule() {
         <ProgressInfoPopover
           description={xFiresModule.infoContent?.description || "TEST"}
           infoContent={xFiresModule.infoContent?.description || "TEST"}
-
           className={styles.infoPopover}
           contentClassName={styles.infoContent}
         >

@@ -5,45 +5,46 @@ import { MotionStyle } from "motion";
 
 import { useScrollModule } from "../../../modules/base-scroll/use-scroll-module";
 import InfoPopover from "../../../modules/info-popover/info-popover";
+import { PortugalDataLayersAnimationConfig } from "../portugal-data-layers/portugal-data-layers";
 
-import styles from "./progress-info-popover.module.css"
+import styles from "./progress-info-popover.module.css";
 
 interface Props {
   children: ReactNode;
   description: string;
   className?: string;
   contentClassName?: string;
-  startProgress?: number;
-  fadeInEndProgress?: number;
-infoContent: string
+  infoContent: string;
 }
 
 const ProgressInfoPopover = ({
   description,
   className,
-  startProgress = 0.9,
-  fadeInEndProgress = 0.92,
-  infoContent
-
+  contentClassName,
+  infoContent,
 }: Props) => {
-  const { scrollYProgress } = useScrollModule();
+  const { scrollYProgress, config } =
+    useScrollModule<PortugalDataLayersAnimationConfig>();
   const opacity = useTransform(
     scrollYProgress,
-    [startProgress, fadeInEndProgress, 1],
+    [config.progressInfoPopover.startProgress, config.progressInfoPopover.endProgress, 1],
     [0, 1, 1],
   );
-  const pointerEvents = useTransform(
-    scrollYProgress,
-    [0, startProgress, fadeInEndProgress, 1],
-    ["none", "none", "auto", "auto"],
-  );
-
 
   return (
     <motion.div
-      className={styles.infoContent}
-      style={{ opacity, pointerEvents } as MotionStyle}>
-      <InfoPopover description={description} className={className}>
+      style={
+        {
+          "--info-container-opacity": opacity,
+        } as MotionStyle
+      }
+      className={styles.container}
+    >
+      <InfoPopover
+        description={description}
+        className={className}
+        contentClassName={contentClassName ?? styles.content}
+      >
         {infoContent}
       </InfoPopover>
     </motion.div>
