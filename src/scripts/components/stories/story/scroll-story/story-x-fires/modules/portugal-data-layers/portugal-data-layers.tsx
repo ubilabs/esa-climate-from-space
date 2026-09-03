@@ -5,6 +5,7 @@ import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
+import ProgressInfoPopover from "../progress-info-popover/progress-info-popover";
 import { Layers } from "./layers/layers";
 import { Timeline } from "./timeline/timeline";
 import { ENTERING_TEXT_OUTPUT } from "../animation-timings";
@@ -110,6 +111,15 @@ export default function PortugalDataLayersModule() {
     >
       <Layers content={xFiresModule.content} />
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
+        <ProgressInfoPopover
+          description={xFiresModule.infoContent?.description || "TEST"}
+          infoContent={xFiresModule.infoContent?.description || "TEST"}
+
+          className={styles.infoPopover}
+          contentClassName={styles.infoContent}
+        >
+          {xFiresModule.credentials}
+        </ProgressInfoPopover>
         <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <Timeline />
         <ScrollText

@@ -62,6 +62,9 @@
       "imageSequence": {
         "path": "assets/video-fires-in-portugal"
       },
+      "infoContent": {
+        "description": "Highlighted blue area: burned area “June and October”"
+      },
       "content": {
         "scrollText1": "They used maps of land cover to identify highly flammable vegetation types and biomass to estimate fuel cload.",
         "scrollText2": "Soil moisture and land surface temperature datasets reveal the drought conditions that primed the landscape for fire.",
