@@ -108,7 +108,7 @@
           { "value": 0.9, "color": "#DC151E" },
           { "value": 1, "color": "#C00225" }
         ],
-        "description": "CAMS Analysis Total Aerosol Optical Depth at 55 nm"
+        "description": "CAMS Analysis Total Aerosol Optical Depth at 550 nm"
       }
     },
     {
