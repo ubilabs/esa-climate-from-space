@@ -2,6 +2,7 @@
   --scroll-length-factor: var(--default-scroll-length-factor);
   height: calc(var(--story-height) * var(--scroll-length-factor));
   position: relative;
+  z-index: 0;
 
   .sticky {
     height: var(--story-height);

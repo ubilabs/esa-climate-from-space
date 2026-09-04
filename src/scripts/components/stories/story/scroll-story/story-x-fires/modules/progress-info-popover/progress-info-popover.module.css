@@ -1,0 +1,17 @@
+.container {
+  --info-container-opacity: 100%;
+  opacity: var(--info-container-opacity);
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.content {
+  right: calc(100% + 0.5rem);
+  transform: translateY(-50%);
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  width: min(70vw, 24rem);
+}
