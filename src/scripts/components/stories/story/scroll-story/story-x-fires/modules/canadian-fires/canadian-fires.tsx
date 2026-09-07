@@ -1,5 +1,6 @@
 import { StoryXFiresModule } from "../../../../../../../types/story";
 import { useModuleContent } from "../../../../../../../providers/story/module-content/use-module-content";
+import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
@@ -13,6 +14,8 @@ import {
   getDimmerConfig,
   TWO_TEXT_TIMING,
 } from "../animation-timings";
+
+import styles from "./canadian-fires.module.css";
 
 const animationConfig = {
   imageSequence: {
@@ -35,6 +38,7 @@ export type CanadianFiresAnimationConfig = typeof animationConfig;
 
 export default function CanadianFiresModule() {
   const { module, getRefCallback } = useModuleContent();
+  const { isMobile } = useScreenInfo();
 
   const xFiresModule = module as StoryXFiresModule & {
     imageSequence: {
@@ -47,25 +51,60 @@ export default function CanadianFiresModule() {
       config={animationConfig}
       lengthFactor={xFiresModule.lengthFactor}
     >
-      <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
+      <ScrollModule.StickyContainer
+        isGrid
+        ref={getRefCallback(0, 0)}
+        className={styles.container}
+      >
         <Credentials description={xFiresModule.legend?.description || ""}>
           {xFiresModule.credentials}
         </Credentials>
-        <ScrollImageSequence
-          sequence={xFiresModule.imageSequence}
-          mobileAspectRatio="720 / 551"
-        />
-        <Dimmer />
-        <ScrollText
-          text={xFiresModule.content?.scrollText1 || ""}
-          inputRange={animationConfig.scrollText1.input}
-          outputRange={animationConfig.scrollText1.output}
-        />
-        <ScrollText
-          text={xFiresModule.content?.scrollText2 || ""}
-          inputRange={animationConfig.scrollText2.input}
-          outputRange={animationConfig.scrollText2.output}
-        />
+        {isMobile ? (
+          <>
+            <div className={styles.mobileSequenceRegion}>
+              <ScrollImageSequence
+                className={styles.sequence}
+                sequence={xFiresModule.imageSequence}
+                mobileAspectRatio="720 / 551"
+              />
+            </div>
+            <div className={styles.mobileTextRegion}>
+              <ScrollText
+                className={styles.mobileScrollText}
+                text={xFiresModule.content?.scrollText1 || ""}
+                inputRange={animationConfig.scrollText1.input}
+                outputRange={animationConfig.scrollText1.output}
+              />
+              <ScrollText
+                className={styles.mobileScrollText}
+                text={xFiresModule.content?.scrollText2 || ""}
+                inputRange={animationConfig.scrollText2.input}
+                outputRange={animationConfig.scrollText2.output}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <ScrollImageSequence
+              className={styles.sequence}
+              sequence={xFiresModule.imageSequence}
+              mobileAspectRatio="720 / 551"
+            />
+            <Dimmer />
+            <ScrollText
+              className={styles.scrollText}
+              text={xFiresModule.content?.scrollText1 || ""}
+              inputRange={animationConfig.scrollText1.input}
+              outputRange={animationConfig.scrollText1.output}
+            />
+            <ScrollText
+              className={styles.scrollText}
+              text={xFiresModule.content?.scrollText2 || ""}
+              inputRange={animationConfig.scrollText2.input}
+              outputRange={animationConfig.scrollText2.output}
+            />
+          </>
+        )}
         <LegendFooter />
       </ScrollModule.StickyContainer>
     </ScrollModule>
