@@ -22,10 +22,6 @@
       },
       "slides": [
         {
-          "legendEntriesUrl": "assets/annual_ground_displacement_legend_entries.csv",
-          "legendDescription": "Annual ground displacement in centimetres per year",
-          "legendType": "continuous",
-          "legendUnit": "cm/year",
           "url": "assets/story37-image04.jpg",
           "focus": "left",
           "caption": "Fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May. (ESA)"
@@ -44,16 +40,18 @@
     },
     {
       "type": "imageWavelength",
+      "legend": {
+        "type": "linear",
+        "unit": "m/year",
+        "entriesUrl": "assets/annual_ground_displacement_legend_entries.csv",
+        "description": "Annual ground displacement in centimetres per year"
+      },
       "slides": [
         {
           "caption": "# Some caption 4",
           "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple."
         },
         {
-          "legendEntriesUrl": "assets/annual_ground_displacement_legend_entries.csv",
-          "legendDescription": "Annual ground displacement in centimetres per year",
-          "legendType": "continuous",
-          "legendUnit": "cm/year",
           "caption": "# caption 1"
         },
         {
