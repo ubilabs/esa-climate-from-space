@@ -1,0 +1,12 @@
+value,color
+Clouds,"rgb(255, 255, 255)"
+Artificial surfaces,"rgb(193, 40, 28)"
+Cultivated areas,"rgb(246, 213, 81)"
+Broadleaf tree cover,"rgb(72, 143, 40)"
+Coniferous tree cover,"rgb(43, 97, 24)"
+Herbaceous vegetation,"rgb(237, 155, 69)"
+Moors and heathland,"rgb(143, 142, 44)"
+Marshes,"rgb(146, 110, 191)"
+Peatbogs,"rgb(73, 39, 105)"
+Natural material surfaces,"rgb(154, 154, 154)"
+Water bodies,"rgb(35, 68, 241)"

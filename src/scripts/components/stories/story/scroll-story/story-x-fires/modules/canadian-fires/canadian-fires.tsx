@@ -37,7 +37,7 @@ const animationConfig = {
 export type CanadianFiresAnimationConfig = typeof animationConfig;
 
 export default function CanadianFiresModule() {
-  const { module, getRefCallback } = useModuleContent();
+  const { storyId, module, getRefCallback } = useModuleContent();
   const { isMobile } = useScreenInfo();
 
   const xFiresModule = module as StoryXFiresModule & {
@@ -105,7 +105,9 @@ export default function CanadianFiresModule() {
             />
           </>
         )}
-        {xFiresModule.legend && <LegendFooter legend={xFiresModule.legend} />}
+        {xFiresModule.legend && (
+          <LegendFooter storyId={storyId} legend={xFiresModule.legend} />
+        )}
       </ScrollModule.StickyContainer>
     </ScrollModule>
   );
