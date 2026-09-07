@@ -106,6 +106,7 @@ export default function PortugalDataLayersModule() {
   const { isDesktop } = useScreenInfo();
   const xFiresModule = module as StoryXFiresModule & {
     imageSequence: { path: string };
+    infoContent?: { description?: string };
   };
 
   return (
@@ -116,12 +117,11 @@ export default function PortugalDataLayersModule() {
       <Layers content={xFiresModule.content} />
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <ProgressInfoPopover
-          description={xFiresModule.infoContent?.description || "TEST"}
-          infoContent={xFiresModule.infoContent?.description || "TEST"}
+          description={xFiresModule.infoContent?.description || ""}
           className={styles.infoPopover}
           contentClassName={styles.infoContent}
         >
-          {xFiresModule.credentials}
+          {xFiresModule.infoContent?.description}
         </ProgressInfoPopover>
         <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <Timeline />
@@ -170,9 +170,7 @@ export default function PortugalDataLayersModule() {
           text={xFiresModule.content?.scrollText5 || ""}
           inputRange={animationConfig.scrollText5.input}
           outputRange={
-            isDesktop
-              ? ["100%", "0%", "0%", "-20%", "-100%"]
-              : animationConfig.scrollText5.output
+            isDesktop ? ["100%", "0%", "0%"] : animationConfig.scrollText5.output
           }
         />
       </ScrollModule.StickyContainer>

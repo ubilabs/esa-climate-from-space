@@ -14,14 +14,13 @@ interface Props {
   description: string;
   className?: string;
   contentClassName?: string;
-  infoContent: string;
 }
 
 const ProgressInfoPopover = ({
+  children,
   description,
   className,
   contentClassName,
-  infoContent,
 }: Props) => {
   const { scrollYProgress, config } =
     useScrollModule<PortugalDataLayersAnimationConfig>();
@@ -45,7 +44,7 @@ const ProgressInfoPopover = ({
         className={className}
         contentClassName={contentClassName ?? styles.content}
       >
-        {infoContent}
+        {children}
       </InfoPopover>
     </motion.div>
   );
