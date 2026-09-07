@@ -6,12 +6,19 @@
   display: grid;
   place-content: center;
   height: 100%;
-  font-size: 1.625rem;
   text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
-  line-height: 140%; /* 36.4px */
   text-align: center;
+  container-type: inline-size;
+}
 
-  @media (--desktop-viewport) {
-    font-size: 3rem;
+.content {
+  display: block;
+  font-size: clamp(1.25rem, 4vw, 2.4rem);
+  line-height: 1.4;
+}
+
+@supports (font-size: 1cqi) {
+  .content {
+    font-size: clamp(1.25rem, 6cqi, 2.4rem);
   }
 }

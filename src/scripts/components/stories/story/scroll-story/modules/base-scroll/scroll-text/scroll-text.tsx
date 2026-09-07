@@ -28,7 +28,7 @@ export default function ScrollText<T extends string | number>({
         y: useTransform(scrollYProgress, inputRange, outputRange),
       }}
     >
-      {text}
+      <span className={styles.content}>{text}</span>
     </motion.div>
   );
 }
