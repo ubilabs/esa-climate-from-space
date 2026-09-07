@@ -9,16 +9,27 @@
   text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
   text-align: center;
   container-type: inline-size;
-}
 
-.content {
-  display: block;
-  font-size: clamp(1.25rem, 4vw, 1.8rem);
-  line-height: 1.4;
-}
-
-@supports (font-size: 1cqi) {
   .content {
-    font-size: clamp(1.25rem, 6cqi, 1.8rem);
+    display: block;
+    margin: 0;
+    font-size: clamp(1.25rem, 4vw, 1.8rem);
+    line-height: 1.4;
+  }
+
+  h2.headlineContent {
+    font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  @supports (font-size: 1cqi) {
+    .content {
+      font-size: clamp(1.25rem, 6cqi, 1.8rem);
+    }
+
+    h2.headlineContent {
+      font-size: clamp(1.5rem, 6.75cqi, 2.1rem);
+    }
   }
 }

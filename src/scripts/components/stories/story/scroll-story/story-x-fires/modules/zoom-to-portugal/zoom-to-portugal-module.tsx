@@ -46,6 +46,7 @@ export default function ZoomToPortugalModule() {
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <ZoomToPortugal />
         <ScrollText
+          isHeadline
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
