@@ -13,12 +13,12 @@
 
 .content {
   display: block;
-  font-size: clamp(1.25rem, 4vw, 2.4rem);
+  font-size: clamp(1.25rem, 4vw, 1.8rem);
   line-height: 1.4;
 }
 
 @supports (font-size: 1cqi) {
   .content {
-    font-size: clamp(1.25rem, 6cqi, 2.4rem);
+    font-size: clamp(1.25rem, 6cqi, 1.8rem);
   }
 }
