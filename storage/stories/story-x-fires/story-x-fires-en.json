@@ -82,6 +82,9 @@
       "imageSequence": {
         "path": "assets/video-hurricane-ophelia"
       },
+      "infoContent": {
+        "description": "Indicated area: smoke over Estonia"
+      },
       "content": {
         "scrollText1": "Climate Connections",
         "scrollText2": "The impact didn't stop at Portugal's borders. The hurricane pulled smoke plumes north across Spain and France to the UK. Black rain was reported falling as far away as Estonia.",

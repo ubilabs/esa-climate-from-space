@@ -6,7 +6,6 @@ import { useRef } from "react";
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import GlobalFires from "./global-fires/global-fires";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
-import FadeWrapper from "../fade-wrapper/fade-wrapper";
 import {
   ENTERING_TEXT_OUTPUT,
   THREE_TEXT_TIMING,
