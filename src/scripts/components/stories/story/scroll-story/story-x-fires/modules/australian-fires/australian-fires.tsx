@@ -4,7 +4,6 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
-import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import Credentials from "../../../modules/credentials/credentials";
 import FadeWrapper from "../fade-wrapper/fade-wrapper";
 
@@ -24,11 +23,7 @@ const animationConfig = {
     input: TWO_TEXT_TIMING.second,
     output: ENTERING_TEXT_OUTPUT,
   },
-  dimmer: {
-    input: [0.7, 0.8],
-    output: [0.5, 0],
-  },
-} satisfies DimmerAnimationConfig;
+}
 
 export type AustralianFiresAnimationConfig = typeof animationConfig;
 
@@ -52,7 +47,6 @@ export default function AustralianFiresModule() {
             {xFiresModule.credentials}
           </Credentials>
           <ScrollImageSequence sequence={xFiresModule.imageSequence} />
-          <Dimmer />
           <ScrollText
             text={xFiresModule.content?.scrollText1 || ""}
             inputRange={animationConfig.scrollText1.input}

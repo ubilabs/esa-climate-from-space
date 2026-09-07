@@ -8,7 +8,11 @@ import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import LegendFooter from "../legend-footer/legend-footer";
 import Credentials from "../../../modules/credentials/credentials";
 
-import { ENTERING_TEXT_OUTPUT, TWO_TEXT_TIMING } from "../animation-timings";
+import {
+  ENTERING_TEXT_OUTPUT,
+  getDimmerConfig,
+  TWO_TEXT_TIMING,
+} from "../animation-timings";
 
 const animationConfig = {
   imageSequence: {
@@ -24,10 +28,7 @@ const animationConfig = {
     input: TWO_TEXT_TIMING.second,
     output: ENTERING_TEXT_OUTPUT,
   },
-  dimmer: {
-    input: [0.7, 0.8],
-    output: [0.5, 0],
-  },
+  dimmer: getDimmerConfig([TWO_TEXT_TIMING.first, TWO_TEXT_TIMING.second]),
 } satisfies DimmerAnimationConfig;
 
 export type CanadianFiresAnimationConfig = typeof animationConfig;

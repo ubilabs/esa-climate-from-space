@@ -18,3 +18,29 @@ export const TWO_TEXT_TIMING = {
   first: [0, 0.08, 0.18, 0.25, 0.31],
   second: [0.31, 0.39, 0.53, 0.61, 0.69],
 };
+
+export function getDimmerConfig(
+  timings: ReadonlyArray<readonly number[]>,
+  dimOpacity = 0.5,
+  transitionDuration = 0.02,
+) {
+  const input = [0];
+  const output = [0];
+
+  for (const timing of timings) {
+    const [, visibleStart, holdEnd, , exitEnd] = timing;
+    const fadeDuration = Math.min(
+      transitionDuration,
+      Math.max((holdEnd - visibleStart) / 2, 0),
+    );
+    const fadeInEnd = visibleStart + fadeDuration;
+
+    input.push(visibleStart, fadeInEnd, holdEnd, exitEnd);
+    output.push(0, dimOpacity, dimOpacity, 0);
+  }
+
+  input.push(1);
+  output.push(0);
+
+  return { input, output };
+}
