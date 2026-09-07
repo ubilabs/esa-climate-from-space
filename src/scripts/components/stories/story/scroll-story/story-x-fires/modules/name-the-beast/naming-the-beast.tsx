@@ -48,7 +48,6 @@ export default function NamingTheBeast() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
-        <FadeWrapper direction="fadeIn" input={[0, 0.2, 1]}>
           <GlobalFires />
           <ScrollText
             text={xFiresModule.content?.scrollText1 || ""}
@@ -65,7 +64,6 @@ export default function NamingTheBeast() {
             inputRange={animationConfig.scrollText3.input}
             outputRange={animationConfig.scrollText3.output}
           />
-        </FadeWrapper>
       </ScrollModule.StickyContainer>
     </ScrollModule>
   );
