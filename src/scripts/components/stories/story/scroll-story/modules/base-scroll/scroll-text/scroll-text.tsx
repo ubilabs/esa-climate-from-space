@@ -11,6 +11,7 @@ interface Props<T extends string | number> {
   inputRange?: Array<number>;
   outputRange?: Array<T>;
   className?: string;
+  isHeadline?: boolean;
 }
 
 export default function ScrollText<T extends string | number>({
@@ -18,8 +19,10 @@ export default function ScrollText<T extends string | number>({
   inputRange = [1],
   outputRange = [1] as T[],
   className,
+  isHeadline = false,
 }: Props<T>) {
   const { scrollYProgress } = useScrollModule<AnimatedArrowsConfig>();
+  const ContentTag = isHeadline ? "h2" : "span";
 
   return (
     <motion.div
@@ -28,7 +31,11 @@ export default function ScrollText<T extends string | number>({
         y: useTransform(scrollYProgress, inputRange, outputRange),
       }}
     >
-      {text}
+      <ContentTag
+        className={cx(styles.content, isHeadline && styles.headlineContent)}
+      >
+        {text}
+      </ContentTag>
     </motion.div>
   );
 }

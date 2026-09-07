@@ -1,0 +1,19 @@
+.infoPopover {
+  place-self: end;
+  position: relative;
+  margin-bottom: 5.5rem;
+  margin-right: 1.5rem;
+  z-index: 2;
+
+  @media (--desktop-viewport) {
+    margin-bottom: 3.5rem;
+  }
+}
+
+.infoContent {
+  right: calc(100% + 0.5rem);
+  transform: translateY(-50%);
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  width: max-content;
+}

@@ -27,4 +27,19 @@
       width: 100%;
     }
   }
+
+  .sequenceContainer[data-custom-mobile-aspect-ratio="true"] {
+    aspect-ratio: var(--sequence-mobile-aspect-ratio);
+    align-self: center;
+    height: auto;
+    width: 100%;
+    max-width: min(
+      100%,
+      calc(var(--story-height) * var(--sequence-mobile-aspect-ratio))
+    );
+
+    .scrollImageSequence {
+      height: auto;
+    }
+  }
 }

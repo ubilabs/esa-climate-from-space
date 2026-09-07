@@ -27,6 +27,7 @@ import styles from "./scroll-image-sequence.module.css";
 
 interface Props {
   className?: string;
+  mobileAspectRatio?: string;
   sequence: ImageSequenceSource;
 }
 
@@ -59,7 +60,11 @@ interface ScrollImageSequenceConfig {
  *    starts the sequence at 20% progress and finishes it by 80%. Defaults to `[0, 1]`.
  * 7. Optional: for fade in / out adapt opacity values in animationConfig
  */
-export default function ScrollImageSequence({ className, sequence }: Props) {
+export default function ScrollImageSequence({
+  className,
+  mobileAspectRatio,
+  sequence,
+}: Props) {
   const { scrollYProgress, config } =
     useScrollModule<ScrollImageSequenceConfig>();
 
@@ -89,17 +94,24 @@ export default function ScrollImageSequence({ className, sequence }: Props) {
     sequenceVariant,
   );
 
-  const drawImageCover = useCallback(
+  const drawImageScaled = useCallback(
     (
       context: CanvasRenderingContext2D,
       image: HTMLImageElement,
       canvas: HTMLCanvasElement,
+      fit: "contain" | "cover",
     ) => {
-      // use scale here to preserve aspect ratio
-      const scale = Math.max(
-        canvas.width / image.naturalWidth,
-        canvas.height / image.naturalHeight,
-      );
+      // Preserve the source aspect ratio while allowing either cropping or full-frame letterboxing.
+      const scale =
+        fit === "contain"
+          ? Math.min(
+              canvas.width / image.naturalWidth,
+              canvas.height / image.naturalHeight,
+            )
+          : Math.max(
+              canvas.width / image.naturalWidth,
+              canvas.height / image.naturalHeight,
+            );
 
       const drawWidth = image.naturalWidth * scale;
       const drawHeight = image.naturalHeight * scale;
@@ -145,7 +157,12 @@ export default function ScrollImageSequence({ className, sequence }: Props) {
       context.clearRect(0, 0, canvas.width, canvas.height);
 
       if (isMobile) {
-        drawImageCover(context, image, canvas);
+        drawImageScaled(
+          context,
+          image,
+          canvas,
+          mobileAspectRatio ? "contain" : "cover",
+        );
       } else {
         context.drawImage(image, 0, 0, canvas.width, canvas.height);
       }
@@ -154,7 +171,7 @@ export default function ScrollImageSequence({ className, sequence }: Props) {
 
       return true;
     },
-    [drawImageCover, isMobile],
+    [drawImageScaled, isMobile, mobileAspectRatio],
   );
 
   useEffect(() => {
@@ -276,9 +293,11 @@ export default function ScrollImageSequence({ className, sequence }: Props) {
   return (
     <motion.div
       className={cx(styles.sequenceContainer, className)}
+      data-custom-mobile-aspect-ratio={mobileAspectRatio ? "true" : undefined}
       style={
         {
           "--sequence-opacity": opacity,
+          "--sequence-mobile-aspect-ratio": mobileAspectRatio,
         } as CSSProperties
       }
     >

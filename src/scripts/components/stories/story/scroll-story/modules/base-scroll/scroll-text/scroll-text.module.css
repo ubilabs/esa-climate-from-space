@@ -6,12 +6,30 @@
   display: grid;
   place-content: center;
   height: 100%;
-  font-size: 1.625rem;
   text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
-  line-height: 140%; /* 36.4px */
   text-align: center;
+  container-type: inline-size;
 
-  @media (--desktop-viewport) {
-    font-size: 3rem;
+  .content {
+    display: block;
+    margin: 0;
+    font-size: clamp(1.25rem, 4vw, 1.8rem);
+    line-height: 1.4;
+  }
+
+  h2.headlineContent {
+    font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  @supports (font-size: 1cqi) {
+    .content {
+      font-size: clamp(1.25rem, 6cqi, 1.8rem);
+    }
+
+    h2.headlineContent {
+      font-size: clamp(1.5rem, 6.75cqi, 2.1rem);
+    }
   }
 }

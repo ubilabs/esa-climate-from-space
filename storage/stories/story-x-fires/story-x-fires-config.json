@@ -189,14 +189,39 @@
               "altitude": 1400400
             }
           }
+        },
+        {
+          "progress": 1,
+          "desktop": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 39.4,
+              "lng": -8.2,
+              "altitude": 100400
+            }
+          },
+          "mobile": {
+            "containerPosition": {
+              "x": 0,
+              "y": 0
+            },
+            "location": {
+              "lat": 39.4,
+              "lng": -8.2,
+              "altitude": 100400
+            }
+          }
         }
       ],
-      "lengthFactor": 10
+      "lengthFactor": 14
     },
     {
       "globeKeyframes": [
         {
-          "progress": 0,
+          "progress": 0.1,
           "desktop": {
             "containerPosition": {
               "x": 0,
@@ -217,31 +242,6 @@
               "lat": 39.4,
               "lng": -8.2,
               "altitude": 1400400
-            }
-          }
-        },
-        {
-          "progress": 0.6508,
-          "desktop": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 20040000
-            }
-          },
-          "mobile": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 18040000
             }
           }
         }
@@ -249,123 +249,19 @@
       "lengthFactor": 24
     },
     {
-      "globeKeyframes": [
-        {
-          "progress": 1,
-          "desktop": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 20040000
-            }
-          },
-          "mobile": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": 48.5074,
-              "lng": -25.1278,
-              "altitude": 20040000
-            }
-          }
-        }
-      ],
+      "globeKeyframes": [],
       "lengthFactor": 9
     },
     {
-      "globeKeyframes": [
-        {
-          "progress": 1,
-          "desktop": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 20040000
-            }
-          },
-          "mobile": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 18040000
-            }
-          }
-        }
-      ],
+      "globeKeyframes": [],
       "lengthFactor": 7
     },
     {
-      "globeKeyframes": [
-        {
-          "progress": 1,
-          "desktop": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 20040000
-            }
-          },
-          "mobile": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 18040000
-            }
-          }
-        }
-      ],
+      "globeKeyframes": [],
       "lengthFactor": 7
     },
     {
-      "globeKeyframes": [
-        {
-          "progress": 1,
-          "desktop": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 20040000
-            }
-          },
-          "mobile": {
-            "containerPosition": {
-              "x": 0,
-              "y": -1
-            },
-            "location": {
-              "lat": -40,
-              "lng": -30,
-              "altitude": 18040000
-            }
-          }
-        }
-      ],
+      "globeKeyframes": [],
       "lengthFactor": 2
     }
   ]

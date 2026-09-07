@@ -6,7 +6,6 @@ import { useRef } from "react";
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import GlobalFires from "./global-fires/global-fires";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
-import FadeWrapper from "../fade-wrapper/fade-wrapper";
 import {
   ENTERING_TEXT_OUTPUT,
   THREE_TEXT_TIMING,
@@ -48,9 +47,9 @@ export default function NamingTheBeast() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
-        <FadeWrapper direction="fadeIn">
           <GlobalFires />
           <ScrollText
+            isHeadline
             text={xFiresModule.content?.scrollText1 || ""}
             inputRange={animationConfig.scrollText1.input}
             outputRange={animationConfig.scrollText1.output}
@@ -65,7 +64,6 @@ export default function NamingTheBeast() {
             inputRange={animationConfig.scrollText3.input}
             outputRange={animationConfig.scrollText3.output}
           />
-        </FadeWrapper>
       </ScrollModule.StickyContainer>
     </ScrollModule>
   );
