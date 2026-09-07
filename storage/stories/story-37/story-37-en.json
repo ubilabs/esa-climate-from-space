@@ -1,17 +1,13 @@
 {
   "id": "story-37",
   "splashscreen": {
-    "url": "assets/story37-image07.jpg",
-    "focus": "center",
-    "title": "Satellites for Peat's Sake",
-    "subtitle": "Flow Country, Scotland",
-    "altText": "Satellites for Peat's Sake in Flow Country, Scotland",
+    "url": "assets/seaice.jpg",
+    "title": "Breaking the Ice",
+    "subtitle": "",
+    "location": {},
     "slides": [
       {
-        "text": "Peatlands make up just 3% of land globally but capture twice as much carbon dioxide as all forests combined. In healthy bogs, peat moss does not fully decay, and instead slowly builds up to form layers of carbon-rich peat. However, if the bog dries out, or is damaged by fire, the carbon is released – adding to the effects of climate change."
-      },
-      {
-        "text": "The Flow Country is the largest remaining expanse of blanket bog in Europe, and it is estimated that the carbon stored equals 100 years’ worth of Scotland’s fossil fuel emissions. Satellite imagery can be used to create maps of peatlands, measure soil moisture, and detect disturbances such as fires, making it cheaper and easier to monitor and preserve these valuable landscapes"
+        "text": "The polar regions are among the most sensitive to variations in global climate, with the Arctic in particular experiencing rapid change on both sea and land."
       }
     ]
   },
@@ -20,16 +16,23 @@
       "type": "imageWavelength",
       "slides": [
         {
-          "url": "assets/story37-image01.jpg",
-          "caption": "This satellite image mosaic, from 28 May 2018, offers a cloud-free view over Scotland's Flow Country. (ESA)",
-          "altText": "",
-          "focus": "right"
+          "legendEntriesUrl": "assets/annual_ground_displacement_legend_entries.csv",
+          "legendDescription": "Annual ground displacement in centimetres per year",
+          "legendType": "continuous",
+          "legendUnit": "cm/year",
+          "url": "assets/story37-image04.jpg",
+          "focus": "left",
+          "caption": "Fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May. (ESA)"
         },
         {
-          "url": "assets/story37-image02.jpg",
-          "caption": "Land cover map derived from Copernicus Sentinel-2 data, showing peatland in purple. (ESA)",
-          "altText": "",
-          "focus": "right"
+          "url": "assets/story37-image05.jpg",
+          "focus": "left",
+          "caption": "Near-infrared wavelengths highlight healthy vegetation in red and the burn scar in dark brown. (ESA)"
+        },
+        {
+          "url": "assets/story37-image06.jpg",
+          "focus": "left",
+          "caption": "Shortwave infrared reveals the active fire front in bright red. (ESA)"
         }
       ]
     },
@@ -37,22 +40,18 @@
       "type": "imageWavelength",
       "slides": [
         {
-          "url": "assets/story37-image04.jpg",
-          "caption": "Fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May. (ESA)",
-          "altText": "",
-          "focus": "left"
+          "caption": "# Some caption 4",
+          "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple."
         },
         {
-          "url": "assets/story37-image05.jpg",
-          "caption": "Near-infrared wavelengths highlight healthy vegetation in red and the burn scar in dark brown. (ESA)",
-          "altText": "",
-          "focus": "left"
+          "legendEntriesUrl": "assets/annual_ground_displacement_legend_entries.csv",
+          "legendDescription": "Annual ground displacement in centimetres per year",
+          "legendType": "continuous",
+          "legendUnit": "cm/year",
+          "caption": "# caption 1"
         },
         {
-          "url": "assets/story37-image06.jpg",
-          "caption": "Shortwave infrared reveals the active fire front in bright red. (ESA)",
-          "altText": "",
-          "focus": "left"
+          "caption": "# caption 2"
         }
       ]
     }
