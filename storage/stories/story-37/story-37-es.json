@@ -14,6 +14,12 @@
   "modules": [
     {
       "type": "imageWavelength",
+      "legend": {
+        "type": "continuous",
+        "unit": "cm/year",
+        "entriesUrl": "assets/annual_ground_displacement_legend_entries.csv",
+        "description": "Annual ground displacement in centimetres per year"
+      },
       "slides": [
         {
           "legendEntriesUrl": "assets/annual_ground_displacement_legend_entries.csv",
