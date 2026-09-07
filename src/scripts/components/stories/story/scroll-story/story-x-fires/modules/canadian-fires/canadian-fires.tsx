@@ -105,7 +105,7 @@ export default function CanadianFiresModule() {
             />
           </>
         )}
-        <LegendFooter />
+        {xFiresModule.legend && <LegendFooter legend={xFiresModule.legend} />}
       </ScrollModule.StickyContainer>
     </ScrollModule>
   );
