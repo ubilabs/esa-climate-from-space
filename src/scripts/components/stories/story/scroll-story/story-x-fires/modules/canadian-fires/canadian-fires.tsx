@@ -50,7 +50,10 @@ export default function CanadianFiresModule() {
         <Credentials description={xFiresModule.legend?.description || ""}>
           {xFiresModule.credentials}
         </Credentials>
-        <ScrollImageSequence sequence={xFiresModule.imageSequence} />
+        <ScrollImageSequence
+          sequence={xFiresModule.imageSequence}
+          mobileAspectRatio="720 / 551"
+        />
         <Dimmer />
         <ScrollText
           text={xFiresModule.content?.scrollText1 || ""}
