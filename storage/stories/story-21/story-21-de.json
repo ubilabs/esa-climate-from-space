@@ -151,9 +151,10 @@
           "imageFit": "contain"
         },
         {
-          "type": "embedded",
+          "type": "image",
+          "image": "assets/story21-image05.png",
+          "imageFit": "contain",
           "description": "# In den Komponenten des Klimasystems gespeicherte Energie\r\nDie seit 1971 in verschiedenen Komponenten des Klimasystems der Erde gespeicherte Wärmeenergie, gemessen in Zettajoule (1 ZJ ist 10^21 J oder eine Milliarde Milliarden J). Das Wasser in den Weltmeeren speichert weit mehr Wärme als die Atmosphäre und das Land.\r\n(UN IPCC, 2013)",
-          "embeddedSrc": "assets/stored_energy_chart.html"
         }
       ]
     }
