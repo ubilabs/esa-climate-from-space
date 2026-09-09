@@ -1,6 +1,8 @@
 .scrollText {
   @media (--desktop-viewport) {
-    width: 40%;
+    &:nth-child(-n + 3 of .scrollText) {
+      width: min(33cqw, 40%);
+    }
   }
 }
 
@@ -13,19 +15,5 @@
   @media (--desktop-viewport) {
     place-content: center;
     padding: 0;
-  }
-}
-
-.leftScrollText {
-  @media (--desktop-viewport) {
-    margin-right: auto;
-    margin-left: var(--story-padding);
-  }
-}
-
-.rightScrollText {
-  @media (--desktop-viewport) {
-    margin-right: var(--story-padding);
-    margin-left: auto;
   }
 }

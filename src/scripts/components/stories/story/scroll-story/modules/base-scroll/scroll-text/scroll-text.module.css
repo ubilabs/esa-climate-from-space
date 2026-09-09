@@ -18,7 +18,7 @@
   }
 
   h2.headlineContent {
-    font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
     font-weight: 700;
     line-height: 1.2;
   }
@@ -30,6 +30,23 @@
 
     h2.headlineContent {
       font-size: clamp(1.5rem, 6.75cqi, 2.1rem);
+    }
+  }
+}
+
+@media (--desktop-viewport) {
+  .left,
+  .right {
+    width: 40%;
+  }
+
+  .left {
+    margin-right: auto;
+    margin-left: var(--story-padding);
+
+    .right {
+      margin-right: var(--story-padding);
+      margin-left: auto;
     }
   }
 }

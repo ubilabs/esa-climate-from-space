@@ -47,23 +47,26 @@ export default function NamingTheBeast() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
-          <GlobalFires />
-          <ScrollText
-            isHeadline
-            text={xFiresModule.content?.scrollText1 || ""}
-            inputRange={animationConfig.scrollText1.input}
-            outputRange={animationConfig.scrollText1.output}
-          />
-          <ScrollText
-            text={xFiresModule.content?.scrollText2 || ""}
-            inputRange={animationConfig.scrollText2.input}
-            outputRange={animationConfig.scrollText2.output}
-          />
-          <ScrollText
-            text={xFiresModule.content?.scrollText3 || ""}
-            inputRange={animationConfig.scrollText3.input}
-            outputRange={animationConfig.scrollText3.output}
-          />
+        <GlobalFires />
+        <ScrollText
+          inlinePlacement="left"
+          isHeadline
+          text={xFiresModule.content?.scrollText1 || ""}
+          inputRange={animationConfig.scrollText1.input}
+          outputRange={animationConfig.scrollText1.output}
+        />
+        <ScrollText
+          inlinePlacement="left"
+          text={xFiresModule.content?.scrollText2 || ""}
+          inputRange={animationConfig.scrollText2.input}
+          outputRange={animationConfig.scrollText2.output}
+        />
+        <ScrollText
+          inlinePlacement="left"
+          text={xFiresModule.content?.scrollText3 || ""}
+          inputRange={animationConfig.scrollText3.input}
+          outputRange={animationConfig.scrollText3.output}
+        />
       </ScrollModule.StickyContainer>
     </ScrollModule>
   );

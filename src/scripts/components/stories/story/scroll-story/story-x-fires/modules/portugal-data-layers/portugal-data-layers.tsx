@@ -126,36 +126,28 @@ export default function PortugalDataLayersModule() {
         <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <Timeline />
         <ScrollText
-          className={cx(
-            styles.scrollText,
-            styles.foregroundScrollText,
-            styles.leftScrollText,
-          )}
+          inlinePlacement="left"
+          className={cx(styles.scrollText, styles.foregroundScrollText)}
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
         <ScrollText
-          className={cx(
-            styles.scrollText,
-            styles.foregroundScrollText,
-            styles.leftScrollText,
-          )}
+          inlinePlacement="left"
+          className={cx(styles.scrollText, styles.foregroundScrollText)}
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
         <ScrollText
-          className={cx(
-            styles.scrollText,
-            styles.foregroundScrollText,
-            styles.leftScrollText,
-          )}
+          inlinePlacement="left"
+          className={cx(styles.scrollText, styles.foregroundScrollText)}
           text={xFiresModule.content?.scrollText3 || ""}
           inputRange={animationConfig.scrollText3.input}
           outputRange={animationConfig.scrollText3.output}
         />
         <ScrollText
+          inlinePlacement="right"
           className={cx(styles.scrollText, styles.rightScrollText)}
           text={xFiresModule.content?.scrollText4 || ""}
           inputRange={animationConfig.scrollText4.input}
@@ -166,11 +158,14 @@ export default function PortugalDataLayersModule() {
           }
         />
         <ScrollText
+          inlinePlacement="right"
           className={cx(styles.scrollText, styles.rightScrollText)}
           text={xFiresModule.content?.scrollText5 || ""}
           inputRange={animationConfig.scrollText5.input}
           outputRange={
-            isDesktop ? ["100%", "0%", "0%"] : animationConfig.scrollText5.output
+            isDesktop
+              ? ["100%", "0%", "0%"]
+              : animationConfig.scrollText5.output
           }
         />
       </ScrollModule.StickyContainer>
