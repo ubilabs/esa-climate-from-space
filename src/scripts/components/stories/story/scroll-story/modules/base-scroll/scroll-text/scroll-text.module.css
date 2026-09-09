@@ -18,9 +18,13 @@
   }
 
   h2.headlineContent {
-    font-size: clamp(1.8rem, 5vw, 2.6rem);
     font-weight: 700;
     line-height: 1.2;
+    text-align: center;
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 120%; /* 38.4px */
   }
 
   @supports (font-size: 1cqi) {
