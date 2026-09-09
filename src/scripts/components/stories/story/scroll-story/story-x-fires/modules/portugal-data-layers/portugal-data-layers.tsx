@@ -86,8 +86,8 @@ const animationConfig = {
     output: ["0%", "100%"],
   },
   progressInfoPopover: {
-    startProgress: 0.9,
-    endProgress: 0.92,
+    startProgress: 0.93,
+    endProgress: 0.95,
   },
   scrollText4: {
     input: [0.66, 0.7, 0.72, 0.78, 0.8],
