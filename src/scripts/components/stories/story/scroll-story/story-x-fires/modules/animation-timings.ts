@@ -4,8 +4,9 @@
  * A beat consists of enter -> brief hold -> exit. Keeping these ranges here
  * prevents individual modules from slowly developing different reading speeds.
  */
-export const ENTERING_TEXT_OUTPUT = ["100%", "0%", "0%", "-20%", "-100%"]; 
-export const VISIBLE_TEXT_OUTPUT = ["0%", "0%", "-20%", "-100%"]; 
+export const ENTERING_TEXT_OUTPUT = ["100%", "0%", "0%", "-20%", "-100%"];
+export const TEXT_TO_REMAIN_OUTPUT = ["100%", "0%", "0%", "0%", "0%"];
+export const VISIBLE_TEXT_OUTPUT = ["0%", "0%", "-20%", "-100%"];
 
 export const THREE_TEXT_TIMING = {
   first: [0, 0.06, 0.16, 0.21, 0.25],
@@ -15,8 +16,8 @@ export const THREE_TEXT_TIMING = {
 };
 
 export const TWO_TEXT_TIMING = {
-  first: [0, 0.08, 0.18, 0.25, 0.31],
-  second: [0.31, 0.39, 0.53, 0.61, 0.69],
+  first: [0, 0.08, 0.18, 0.31, 0.5],
+  second: [0.5, 0.69, 0.79, 0.85, 1],
 };
 
 export function getDimmerConfig(

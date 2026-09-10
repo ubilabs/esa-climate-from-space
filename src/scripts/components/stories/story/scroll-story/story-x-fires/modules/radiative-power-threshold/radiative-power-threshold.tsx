@@ -8,6 +8,7 @@ import { FireFlame } from "./fire-flame/fire-flame";
 import {
   ENTERING_TEXT_OUTPUT,
   getDimmerConfig,
+  TEXT_TO_REMAIN_OUTPUT,
   TWO_TEXT_TIMING,
 } from "../animation-timings";
 
@@ -21,7 +22,7 @@ const animationConfig = {
   },
   scrollText2: {
     input: TWO_TEXT_TIMING.second,
-    output: ENTERING_TEXT_OUTPUT,
+    output: TEXT_TO_REMAIN_OUTPUT,
   },
   flame: {
     expandedThreshold: 0.675,
