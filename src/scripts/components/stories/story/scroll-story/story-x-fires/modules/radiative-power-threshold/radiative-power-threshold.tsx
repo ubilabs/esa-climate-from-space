@@ -12,6 +12,7 @@ import {
 } from "../animation-timings";
 
 import styles from "./radiative-power-threshold.module.css";
+import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 
 const animationConfig = {
   scrollText1: {
@@ -34,6 +35,8 @@ export default function RadiativePowerThresholdModule() {
   const { module, getRefCallback } = useModuleContent();
   const xFiresModule = module as StoryXFiresModule;
 
+  const { isMobile } = useScreenInfo();
+
   return (
     <ScrollModule
       config={animationConfig}
@@ -41,14 +44,16 @@ export default function RadiativePowerThresholdModule() {
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <FireFlame />
-        <Dimmer />
+        {isMobile && <Dimmer />}
         <ScrollText
+          inlinePlacement="right"
           className={styles.scrollText}
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
         <ScrollText
+          inlinePlacement="right"
           className={styles.scrollText}
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
