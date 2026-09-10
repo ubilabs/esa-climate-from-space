@@ -5,7 +5,7 @@ import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
-import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
+import { DimmerAnimationConfig } from "../dimmer/dimmer";
 import LegendFooter from "../legend-footer/legend-footer";
 import Credentials from "../../../modules/credentials/credentials";
 
@@ -70,13 +70,11 @@ export default function CanadianFiresModule() {
             </div>
             <div className={styles.mobileTextRegion}>
               <ScrollText
-                className={styles.mobileScrollText}
                 text={xFiresModule.content?.scrollText1 || ""}
                 inputRange={animationConfig.scrollText1.input}
                 outputRange={animationConfig.scrollText1.output}
               />
               <ScrollText
-                className={styles.mobileScrollText}
                 text={xFiresModule.content?.scrollText2 || ""}
                 inputRange={animationConfig.scrollText2.input}
                 outputRange={animationConfig.scrollText2.output}
@@ -90,14 +88,15 @@ export default function CanadianFiresModule() {
               sequence={xFiresModule.imageSequence}
               mobileAspectRatio="720 / 551"
             />
-            <Dimmer />
             <ScrollText
+              inlinePlacement="left"
               className={styles.scrollText}
               text={xFiresModule.content?.scrollText1 || ""}
               inputRange={animationConfig.scrollText1.input}
               outputRange={animationConfig.scrollText1.output}
             />
             <ScrollText
+              inlinePlacement="left"
               className={styles.scrollText}
               text={xFiresModule.content?.scrollText2 || ""}
               inputRange={animationConfig.scrollText2.input}
