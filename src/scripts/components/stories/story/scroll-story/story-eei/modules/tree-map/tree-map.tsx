@@ -26,7 +26,7 @@ export default function TreeMapModule() {
   const { isDesktop } = useScreenInfo();
 
   if (!("data" in module)) {
-    return;
+    return null;
   }
 
   const highlightedData = module.data.find(
