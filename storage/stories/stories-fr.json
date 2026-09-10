@@ -1,5 +1,14 @@
 [
   {
+    "id": "story-x-fires",
+    "title": "Extreme Fires",
+    "description": "",
+    "image": "",
+    "tags": [],
+    "position": [],
+    "categories": ["land", "climate_risk"]
+  },
+  {
     "id": "story-eei",
     "title": "Earth Energy Imbalance",
     "description": "",
