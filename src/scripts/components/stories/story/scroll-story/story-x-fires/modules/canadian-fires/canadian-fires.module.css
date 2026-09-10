@@ -28,10 +28,9 @@
     align-self: center;
     justify-self: center;
     height: auto;
-    width: calc((var(--story-height) / 2.5 ) * (720 / 551));
+    width: min(40vw, 100%);
     margin-left: auto;
     margin-right: var(--story-padding);
     max-width: none;
   }
 }
-

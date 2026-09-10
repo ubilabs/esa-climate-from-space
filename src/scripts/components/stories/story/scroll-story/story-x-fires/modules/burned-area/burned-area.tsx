@@ -8,10 +8,12 @@ import { FireRing } from "./fire-ring/fire-ring";
 import {
   ENTERING_TEXT_OUTPUT,
   getDimmerConfig,
+  TEXT_TO_REMAIN_OUTPUT,
   TWO_TEXT_TIMING,
 } from "../animation-timings";
 
 import styles from "./burned-area.module.css";
+import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 
 const animationConfig = {
   scrollText1: {
@@ -20,7 +22,7 @@ const animationConfig = {
   },
   scrollText2: {
     input: TWO_TEXT_TIMING.second,
-    output: ENTERING_TEXT_OUTPUT,
+    output: TEXT_TO_REMAIN_OUTPUT,
   },
   burnedArea: {
     visibleThreshold: 0.25,
@@ -34,6 +36,7 @@ export type BurnedAreaAnimationConfig = typeof animationConfig;
 export default function BurnedAreaModule() {
   const { module, getRefCallback } = useModuleContent();
   const xFiresModule = module as StoryXFiresModule;
+  const { isMobile } = useScreenInfo();
 
   return (
     <ScrollModule
@@ -42,14 +45,16 @@ export default function BurnedAreaModule() {
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <FireRing />
-        <Dimmer />
+        {isMobile && <Dimmer />}
         <ScrollText
+          inlinePlacement="left"
           className={styles.scrollText}
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
         <ScrollText
+          inlinePlacement="left"
           className={styles.scrollText}
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}

@@ -8,6 +8,13 @@
   height: var(--story-height);
   padding: 5rem 0;
 
+  @media (--desktop-viewport) {
+    margin-right: auto;
+    margin-block: auto;
+    padding-left: var(--story-padding);
+    width: 50vw;
+  }
+
   figure {
     --x-fires-flame-illustation-width: 120;
     --x-fires-flame-illustation-height: 140;

@@ -45,12 +45,12 @@
   }
 
   .right {
-    margin-right: var(--story-padding);
+    margin-right: calc(var(--story-padding) * 1.5);
     margin-left: auto;
   }
 
   .left {
     margin-right: auto;
-    margin-left: var(--story-padding);
+    margin-left: calc(var(--story-padding) * 1.5);
   }
 }

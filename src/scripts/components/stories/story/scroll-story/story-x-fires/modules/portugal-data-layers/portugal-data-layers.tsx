@@ -118,7 +118,6 @@ export default function PortugalDataLayersModule() {
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <ProgressInfoPopover
           description={xFiresModule.infoContent?.description || ""}
-          className={styles.infoPopover}
           contentClassName={styles.infoContent}
         >
           {xFiresModule.infoContent?.description}

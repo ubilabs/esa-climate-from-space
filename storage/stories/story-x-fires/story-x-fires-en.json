@@ -63,7 +63,7 @@
         "path": "assets/video-fires-in-portugal"
       },
       "infoContent": {
-        "description": "Highlighted blue area: burned area “June and October”"
+        "description": "Highlighted: burned area October"
       },
       "content": {
         "scrollText1": "They used maps of land cover to identify highly flammable vegetation types and biomass to estimate fuel cload.",
@@ -83,7 +83,7 @@
         "path": "assets/video-hurricane-ophelia"
       },
       "infoContent": {
-        "description": "Indicated area: smoke over Estonia"
+        "description": "Highlighted: smoke"
       },
       "content": {
         "scrollText1": "Climate Connections",
@@ -124,7 +124,7 @@
         "description": ""
       },
       "readMore": {
-        "headline": "ESA’s XFires is generating a global database of extreme fires and examining their drivers, to test and improve global fire models. toThis will help decision-makers and communities predict, prepare for, and mitigate future climate risks, safeguarding ecosystems, property and human lives..",
+        "headline": "ESA’s XFires is generating a global database of extreme fires and examining their drivers, to test and improve global fire models. This will help decision-makers and communities predict, prepare for, and mitigate future climate risks, safeguarding ecosystems, property and human lives.",
         "title": "Explore the data, the maps, and the science behind XFires",
         "url": "https://climate.esa.int/en/Cross_ECV_Projects/xfires"
       },
