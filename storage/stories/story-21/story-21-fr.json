@@ -154,7 +154,7 @@
           "type": "image",
           "image": "assets/story21-image05.png",
           "imageFit": "contain",
-          "description": "# Énergie stockée dans les composants du système climatique\r\nÉnergie thermique accumulée dans différents composants du système climatique de la Terre depuis 1971, mesurée en zettajoules (1 ZJ correspond à 10^21 J, soit mille milliards de milliards de J). L'eau des océans du monde stocke beaucoup plus de chaleur que l'atmosphère et les terres.\r\n(ONU IPCC, 2013)"
+          "imageCaption": "# Énergie stockée dans les composants du système climatique\r\nÉnergie thermique accumulée dans différents composants du système climatique de la Terre depuis 1971, mesurée en zettajoules (1 ZJ correspond à 10^21 J, soit mille milliards de milliards de J). L'eau des océans du monde stocke beaucoup plus de chaleur que l'atmosphère et les terres.\r\n(ONU IPCC, 2013)"
         }
       ]
     }

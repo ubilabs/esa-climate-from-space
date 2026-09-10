@@ -38,7 +38,7 @@
         },
         {
           "type": "image",
-          "description": "# Total Ozone Over Antarctica\r\nTotal ozone values over Antarctica recorded at the Halley research station, and by three satellite sensors, TOMS, OMI and OMPS (NASA-GSFC)",
+          "imageCaption": "# Total Ozone Over Antarctica\r\nTotal ozone values over Antarctica recorded at the Halley research station, and by three satellite sensors, TOMS, OMI and OMPS (NASA-GSFC)",
           "image": "assets/story8_04.png",
           "imageFit": "contain"
         }

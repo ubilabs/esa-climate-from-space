@@ -38,7 +38,7 @@
         {
           "type": "image",
           "image": "assets/story8_04.png",
-          "description": "# Ozono total sobre la Antártida\r\nValores totales de ozono sobre la Antártida registrados en la estación de investigación Halley, y por tres sensores de satélite, TOMS, OMI y OMPS (NASA-GSFC)",
+          "imageCaption": "# Ozono total sobre la Antártida\r\nValores totales de ozono sobre la Antártida registrados en la estación de investigación Halley, y por tres sensores de satélite, TOMS, OMI y OMPS (NASA-GSFC)",
           "imageFit": "contain"
         }
       ]

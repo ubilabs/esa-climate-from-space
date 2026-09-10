@@ -149,7 +149,7 @@
           "imageFit": "contain"
         },
         {
-          "description": "# Energy Stored in Climate System Components\r\nHeat energy accumulated in different components of Earth’s climate system since 1971, measured in zettajoules (1 ZJ is 10^21 J, or a thousand billion billion J). Water in the world’s oceans stores far more heat than the atmosphere and the land. \r\n(UN IPCC, 2013)",
+          "imageCaption": "# Energy Stored in Climate System Components\r\nHeat energy accumulated in different components of Earth’s climate system since 1971, measured in zettajoules (1 ZJ is 10^21 J, or a thousand billion billion J). Water in the world’s oceans stores far more heat than the atmosphere and the land. \r\n(UN IPCC, 2013)",
           "type": "image",
           "image": "assets/story21-image05.png",
           "imageFit": "contain"

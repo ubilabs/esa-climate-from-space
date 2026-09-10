@@ -37,7 +37,7 @@
         },
         {
           "type": "image",
-          "description": "# Gesamtozon über der Antarktis\r\nGesamtozonwerte über der Antarktis, aufgezeichnet von der Halley-Forschungsstation und von drei Satellitensensoren, TOMS, OMI und OMPS (NASA-GSFC)",
+          "imageCaption": "# Gesamtozon über der Antarktis\r\nGesamtozonwerte über der Antarktis, aufgezeichnet von der Halley-Forschungsstation und von drei Satellitensensoren, TOMS, OMI und OMPS (NASA-GSFC)",
           "image": "assets/story8_04.png",
           "imageFit": "contain"
         }

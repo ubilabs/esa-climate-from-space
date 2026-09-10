@@ -37,7 +37,7 @@
         },
         {
           "type": "embedded",
-          "description": "# Ozone total au-dessus de l'Antarctique\r\nValeurs de l'ozone total au-dessus de l'Antarctique enregistrées à la station de recherche de Halley et par trois capteurs satellites, TOMS, OMI et OMPS (NASA-GSFC).",
+          "imageCaption": "# Ozone total au-dessus de l'Antarctique\r\nValeurs de l'ozone total au-dessus de l'Antarctique enregistrées à la station de recherche de Halley et par trois capteurs satellites, TOMS, OMI et OMPS (NASA-GSFC).",
           "image": "assets/story8_04.png",
           "imageFit": "contain"
         }
