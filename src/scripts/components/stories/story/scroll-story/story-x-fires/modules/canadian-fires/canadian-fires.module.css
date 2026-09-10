@@ -28,35 +28,10 @@
     align-self: center;
     justify-self: center;
     height: auto;
-    width: min(100%, calc((var(--story-height) - 3rem) * (720 / 551)));
+    width: calc((var(--story-height) / 2.5 ) * (720 / 551));
+    margin-left: auto;
+    margin-right: var(--story-padding);
     max-width: none;
   }
 }
 
-.mobileTextRegion {
-  @media (--mobile-viewport) {
-    grid-area: 2 / 1 / 3 / 2;
-    align-self: stretch;
-    display: grid;
-    padding:
-      clamp(1rem, 3vh, 1.5rem)
-      var(--story-padding)
-      calc(4.375rem + clamp(1rem, 3vh, 1.5rem));
-    box-sizing: border-box;
-  }
-}
-
-.mobileScrollText {
-  @media (--mobile-viewport) {
-    grid-area: 1 / 1;
-    align-self: stretch;
-    height: 100%;
-    width: min(100%, 34rem);
-  }
-}
-
-.scrollText {
-  @media (--mobile-viewport) {
-    display: none;
-  }
-}
