@@ -3,14 +3,11 @@
   opacity: var(--info-container-opacity);
   position: absolute;
   top: 10%;
-  right: 10%;
+  right: 1.5rem;
   z-index: 10;
 
   @media (--desktop-viewport) {
-    top: auto;
-    right: auto;
-    bottom: 60%;
-    left: clamp(5rem, 10vw, 8rem);
+    top: 20%;
   }
 }
 
@@ -20,9 +17,4 @@
   padding: 1rem 1.25rem;
   font-size: 0.875rem;
   width: max-content;
-
-  @media (--desktop-viewport) {
-    right: auto;
-    left: calc(100% + 0.5rem);
-  }
 }

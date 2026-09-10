@@ -19,7 +19,7 @@
 .sequence {
   @media (--mobile-viewport) {
     height: auto;
-    width: 100%;
+    width: 180%;
     max-width: none;
   }
 
