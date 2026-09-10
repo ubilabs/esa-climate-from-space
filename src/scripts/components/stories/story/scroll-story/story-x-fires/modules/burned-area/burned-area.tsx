@@ -5,7 +5,11 @@ import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import { FireRing } from "./fire-ring/fire-ring";
-import { ENTERING_TEXT_OUTPUT, TWO_TEXT_TIMING } from "../animation-timings";
+import {
+  ENTERING_TEXT_OUTPUT,
+  getDimmerConfig,
+  TWO_TEXT_TIMING,
+} from "../animation-timings";
 
 import styles from "./burned-area.module.css";
 
@@ -22,10 +26,7 @@ const animationConfig = {
     visibleThreshold: 0.25,
     expandedThreshold: 0.65,
   },
-  dimmer: {
-    input: [0.2, 0.3, 0.3, 0.4, 0.4, 0.5, 0.7, 0.8, 0.95, 1],
-    output: [1, 0.5, 0.5, 0, 0, 0.5, 0.5, 0, 0, 1],
-  },
+  dimmer: getDimmerConfig([TWO_TEXT_TIMING.first, TWO_TEXT_TIMING.second]),
 } satisfies DimmerAnimationConfig;
 
 export type BurnedAreaAnimationConfig = typeof animationConfig;

@@ -4,11 +4,14 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
+import InfoPopover from "../../../modules/info-popover/info-popover";
 import {
   ENTERING_TEXT_OUTPUT,
   THREE_TEXT_TIMING,
   VISIBLE_TEXT_OUTPUT,
 } from "../animation-timings";
+
+import styles from "./hurricane-ophelia.module.css";
 
 const animationConfig = {
   imageSequence: {
@@ -39,6 +42,9 @@ export default function HurricanOphelia() {
     imageSequence: {
       path: string;
     };
+    infoContent?: {
+      description?: string;
+    };
   };
 
   return (
@@ -47,8 +53,16 @@ export default function HurricanOphelia() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
+        <InfoPopover
+          description={xFiresModule.infoContent?.description || "Indicated area: smoke over Estonia"}
+          className={styles.infoPopover}
+          contentClassName={styles.infoContent}
+        >
+          {xFiresModule.infoContent?.description || "Indicated area: smoke over Estonia"}
+        </InfoPopover>
         <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <ScrollText
+          isHeadline
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}

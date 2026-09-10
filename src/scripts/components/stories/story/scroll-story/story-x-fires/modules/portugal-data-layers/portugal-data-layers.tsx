@@ -5,6 +5,7 @@ import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
+import ProgressInfoPopover from "../progress-info-popover/progress-info-popover";
 import { Layers } from "./layers/layers";
 import { Timeline } from "./timeline/timeline";
 import { ENTERING_TEXT_OUTPUT } from "../animation-timings";
@@ -80,17 +81,21 @@ const animationConfig = {
     timeThresholds: [0.32, 0.34, 0.36, 0.38, 0.4, 0.42, 0.44, 0.46, 0.48, 0.5],
   },
   imageSequence: {
-    progressRange: [0.75, 1],
+    progressRange: [0.75, 0.96],
     input: [0.625, 0.75],
     output: ["0%", "100%"],
   },
+  progressInfoPopover: {
+    startProgress: 0.93,
+    endProgress: 0.95,
+  },
   scrollText4: {
-    input: [0.56, 0.6, 0.66, 0.72, 0.78],
+    input: [0.66, 0.7, 0.72, 0.78, 0.8],
     output: ["100%", "100%", "25%", "-20%", "-100%"],
   },
   scrollText5: {
-    input: [0.78, 0.82, 0.9, 0.94, 0.98],
-    output: ["100%", "25%", "25%", "-20%", "-100%"],
+    input: [0.78, 0.82, 1],
+    output: ["100%", "25%", "25%"],
   },
 };
 
@@ -101,6 +106,7 @@ export default function PortugalDataLayersModule() {
   const { isDesktop } = useScreenInfo();
   const xFiresModule = module as StoryXFiresModule & {
     imageSequence: { path: string };
+    infoContent?: { description?: string };
   };
 
   return (
@@ -110,39 +116,38 @@ export default function PortugalDataLayersModule() {
     >
       <Layers content={xFiresModule.content} />
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
+        <ProgressInfoPopover
+          description={xFiresModule.infoContent?.description || ""}
+          className={styles.infoPopover}
+          contentClassName={styles.infoContent}
+        >
+          {xFiresModule.infoContent?.description}
+        </ProgressInfoPopover>
         <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <Timeline />
         <ScrollText
-          className={cx(
-            styles.scrollText,
-            styles.foregroundScrollText,
-            styles.leftScrollText,
-          )}
+          inlinePlacement="left"
+          className={cx(styles.scrollText, styles.foregroundScrollText)}
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
         <ScrollText
-          className={cx(
-            styles.scrollText,
-            styles.foregroundScrollText,
-            styles.leftScrollText,
-          )}
+          inlinePlacement="left"
+          className={cx(styles.scrollText, styles.foregroundScrollText)}
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
         <ScrollText
-          className={cx(
-            styles.scrollText,
-            styles.foregroundScrollText,
-            styles.leftScrollText,
-          )}
+          inlinePlacement="left"
+          className={cx(styles.scrollText, styles.foregroundScrollText)}
           text={xFiresModule.content?.scrollText3 || ""}
           inputRange={animationConfig.scrollText3.input}
           outputRange={animationConfig.scrollText3.output}
         />
         <ScrollText
+          inlinePlacement="right"
           className={cx(styles.scrollText, styles.rightScrollText)}
           text={xFiresModule.content?.scrollText4 || ""}
           inputRange={animationConfig.scrollText4.input}
@@ -153,12 +158,13 @@ export default function PortugalDataLayersModule() {
           }
         />
         <ScrollText
+          inlinePlacement="right"
           className={cx(styles.scrollText, styles.rightScrollText)}
           text={xFiresModule.content?.scrollText5 || ""}
           inputRange={animationConfig.scrollText5.input}
           outputRange={
             isDesktop
-              ? ["100%", "0%", "0%", "-20%", "-100%"]
+              ? ["100%", "0%", "0%"]
               : animationConfig.scrollText5.output
           }
         />

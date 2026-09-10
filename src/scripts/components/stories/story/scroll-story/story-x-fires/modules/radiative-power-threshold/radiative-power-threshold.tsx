@@ -5,7 +5,11 @@ import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import { FireFlame } from "./fire-flame/fire-flame";
-import { ENTERING_TEXT_OUTPUT, TWO_TEXT_TIMING } from "../animation-timings";
+import {
+  ENTERING_TEXT_OUTPUT,
+  getDimmerConfig,
+  TWO_TEXT_TIMING,
+} from "../animation-timings";
 
 import styles from "./radiative-power-threshold.module.css";
 
@@ -21,10 +25,7 @@ const animationConfig = {
   flame: {
     expandedThreshold: 0.675,
   },
-  dimmer: {
-    input: [0.2, 0.3, 0.7, 0.8, 0.925, 1],
-    output: [1, 0.5, 0.5, 0, 0, 1],
-  },
+  dimmer: getDimmerConfig([TWO_TEXT_TIMING.first, TWO_TEXT_TIMING.second]),
 } satisfies DimmerAnimationConfig;
 
 export type RadiativePowerThresholdAnimationConfig = typeof animationConfig;
