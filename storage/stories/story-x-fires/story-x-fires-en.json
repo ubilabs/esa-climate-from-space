@@ -63,7 +63,7 @@
         "path": "assets/video-fires-in-portugal"
       },
       "infoContent": {
-        "description": "Highlighted blue area: burned area “June and October”"
+        "description": "Highlighted: burned area October"
       },
       "content": {
         "scrollText1": "They used maps of land cover to identify highly flammable vegetation types and biomass to estimate fuel cload.",
@@ -83,7 +83,7 @@
         "path": "assets/video-hurricane-ophelia"
       },
       "infoContent": {
-        "description": "Indicated area: smoke over Estonia"
+        "description": "Highlighted: smoke"
       },
       "content": {
         "scrollText1": "Climate Connections",
