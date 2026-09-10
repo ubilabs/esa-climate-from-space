@@ -151,9 +151,10 @@
           "imageFit": "contain"
         },
         {
-          "type": "embedded",
-          "description": "# Energía almacenada en los componentes del sistema climático\r\nEnergía térmica acumulada en diferentes componentes del sistema climático de la Tierra desde 1971, medida en zettajoules (1 ZJ es 10^21 J, o un billón de billones de J). El agua de los océanos del mundo almacena mucho más calor que la atmósfera y la tierra.\r\n(IPCC DE LAS NACIONES UNIDAS, 2013)",
-          "embeddedSrc": "assets/stored_energy_chart.html"
+          "type": "image",
+          "image": "assets/story21-image05.png",
+          "imageFit": "contain",
+          "imageCaption": "# Energía almacenada en los componentes del sistema climático\r\nEnergía térmica acumulada en diferentes componentes del sistema climático de la Tierra desde 1971, medida en zettajoules (1 ZJ es 10^21 J, o un billón de billones de J). El agua de los océanos del mundo almacena mucho más calor que la atmósfera y la tierra.\r\n(IPCC DE LAS NACIONES UNIDAS, 2013)"
         }
       ]
     }
