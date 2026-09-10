@@ -6,6 +6,9 @@ import { useRef } from "react";
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import GlobalFires from "./global-fires/global-fires";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
+
+import styles from "./naming-the-beast.module.css"
+
 import {
   ENTERING_TEXT_OUTPUT,
   THREE_TEXT_TIMING,
@@ -47,23 +50,29 @@ export default function NamingTheBeast() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
-          <GlobalFires />
-          <ScrollText
-            isHeadline
-            text={xFiresModule.content?.scrollText1 || ""}
-            inputRange={animationConfig.scrollText1.input}
-            outputRange={animationConfig.scrollText1.output}
-          />
-          <ScrollText
-            text={xFiresModule.content?.scrollText2 || ""}
-            inputRange={animationConfig.scrollText2.input}
-            outputRange={animationConfig.scrollText2.output}
-          />
-          <ScrollText
-            text={xFiresModule.content?.scrollText3 || ""}
-            inputRange={animationConfig.scrollText3.input}
-            outputRange={animationConfig.scrollText3.output}
-          />
+        <GlobalFires />
+        <ScrollText
+          className={styles.beastScrollText}
+          inlinePlacement="left"
+          isHeadline
+          text={xFiresModule.content?.scrollText1 || ""}
+          inputRange={animationConfig.scrollText1.input}
+          outputRange={animationConfig.scrollText1.output}
+        />
+        <ScrollText
+          className={styles.beastScrollText}
+          inlinePlacement="left"
+          text={xFiresModule.content?.scrollText2 || ""}
+          inputRange={animationConfig.scrollText2.input}
+          outputRange={animationConfig.scrollText2.output}
+        />
+        <ScrollText
+          className={styles.beastScrollText}
+          inlinePlacement="left"
+          text={xFiresModule.content?.scrollText3 || ""}
+          inputRange={animationConfig.scrollText3.input}
+          outputRange={animationConfig.scrollText3.output}
+        />
       </ScrollModule.StickyContainer>
     </ScrollModule>
   );
