@@ -5,8 +5,10 @@
  * prevents individual modules from slowly developing different reading speeds.
  */
 export const ENTERING_TEXT_OUTPUT = ["100%", "0%", "0%", "-20%", "-100%"];
+export const ENTERING_TEXT_OUTPUT_BELOW = ["100%", "30%", "30%", "-40%", "-100%"];
 export const TEXT_TO_REMAIN_OUTPUT = ["100%", "0%", "0%", "0%", "0%"];
 export const VISIBLE_TEXT_OUTPUT = ["0%", "0%", "-20%", "-100%"];
+export const VISIBLE_TEXT_OUTPUT_BElOW = ["30", "30%", "-20%", "-100%"];
 
 export const THREE_TEXT_TIMING = {
   first: [0, 0.06, 0.16, 0.21, 0.25],

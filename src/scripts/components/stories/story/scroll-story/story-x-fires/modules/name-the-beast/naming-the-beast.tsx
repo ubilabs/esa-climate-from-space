@@ -7,12 +7,16 @@ import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import GlobalFires from "./global-fires/global-fires";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 
-import styles from "./naming-the-beast.module.css"
+import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
+
+import styles from "./naming-the-beast.module.css";
 
 import {
   ENTERING_TEXT_OUTPUT,
   THREE_TEXT_TIMING,
   VISIBLE_TEXT_OUTPUT,
+  ENTERING_TEXT_OUTPUT_BELOW,
+  VISIBLE_TEXT_OUTPUT_BElOW,
 } from "../animation-timings";
 
 const animationConfig = {
@@ -23,16 +27,34 @@ const animationConfig = {
     output: [0, 0, 1, 1, 0],
   },
   scrollText1: {
-    input: THREE_TEXT_TIMING.firstVisible,
-    output: VISIBLE_TEXT_OUTPUT,
+    desktop: {
+      input: THREE_TEXT_TIMING.firstVisible,
+      output: VISIBLE_TEXT_OUTPUT,
+    },
+    mobile: {
+      input: THREE_TEXT_TIMING.firstVisible,
+      output: VISIBLE_TEXT_OUTPUT_BElOW,
+    },
   },
   scrollText2: {
-    input: THREE_TEXT_TIMING.second,
-    output: ENTERING_TEXT_OUTPUT,
+    desktop: {
+      input: THREE_TEXT_TIMING.second,
+      output: ENTERING_TEXT_OUTPUT,
+    },
+    mobile: {
+      input: THREE_TEXT_TIMING.second,
+      output: ENTERING_TEXT_OUTPUT_BELOW,
+    },
   },
   scrollText3: {
-    input: THREE_TEXT_TIMING.third,
-    output: ENTERING_TEXT_OUTPUT,
+    desktop: {
+      input: THREE_TEXT_TIMING.third,
+      output: ENTERING_TEXT_OUTPUT,
+    },
+    mobile: {
+      input: THREE_TEXT_TIMING.third,
+      output: ENTERING_TEXT_OUTPUT_BELOW,
+    },
   },
 };
 
@@ -42,6 +64,10 @@ export default function NamingTheBeast() {
   const { module, getRefCallback } = useModuleContent();
   const xFiresModule = module as StoryXFiresModule;
   const ref = useRef(null);
+
+  const { isMobile } = useScreenInfo();
+
+  const key = isMobile ? "mobile" : "desktop";
 
   return (
     <ScrollModule
@@ -56,22 +82,22 @@ export default function NamingTheBeast() {
           inlinePlacement="left"
           isHeadline
           text={xFiresModule.content?.scrollText1 || ""}
-          inputRange={animationConfig.scrollText1.input}
-          outputRange={animationConfig.scrollText1.output}
+          inputRange={animationConfig.scrollText1[key].input}
+          outputRange={animationConfig.scrollText1[key].output}
         />
         <ScrollText
           className={styles.beastScrollText}
           inlinePlacement="left"
           text={xFiresModule.content?.scrollText2 || ""}
-          inputRange={animationConfig.scrollText2.input}
-          outputRange={animationConfig.scrollText2.output}
+          inputRange={animationConfig.scrollText2[key].input}
+          outputRange={animationConfig.scrollText2[key].output}
         />
         <ScrollText
           className={styles.beastScrollText}
           inlinePlacement="left"
           text={xFiresModule.content?.scrollText3 || ""}
-          inputRange={animationConfig.scrollText3.input}
-          outputRange={animationConfig.scrollText3.output}
+          inputRange={animationConfig.scrollText3[key].input}
+          outputRange={animationConfig.scrollText3[key].output}
         />
       </ScrollModule.StickyContainer>
     </ScrollModule>
