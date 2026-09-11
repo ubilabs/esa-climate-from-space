@@ -1,13 +1,20 @@
 .container {
   --info-container-opacity: 100%;
   opacity: var(--info-container-opacity);
-  position: absolute;
-  top: 10%;
-  right: 1.5rem;
   z-index: 10;
 
+  .info {
+    position: absolute;
+    top: 10%;
+    right: 1.5rem;
+  }
+
   @media (--desktop-viewport) {
-    top: 20%;
+    .info {
+      top: auto;
+      bottom: 3.5rem;
+      right: 1.5rem;
+    }
   }
 }
 

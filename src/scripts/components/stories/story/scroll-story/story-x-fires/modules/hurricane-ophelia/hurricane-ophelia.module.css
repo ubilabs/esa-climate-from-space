@@ -7,7 +7,7 @@
   z-index: 2;
 
   @media (--desktop-viewport) {
-    margin-top: 7.5%;
+    margin-bottom: 3.5rem;
   }
 }
 
