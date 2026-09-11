@@ -20,8 +20,8 @@ import styles from "./canadian-fires.module.css";
 const animationConfig = {
   imageSequence: {
     progressRange: [0, 1],
-    input: [0, 0.95, 1],
-    output: ["100%", "100%", "50%"],
+    input: [0, 1],
+    output: ["100%", "100%"],
   },
   scrollText1: {
     input: TWO_TEXT_TIMING.first,
