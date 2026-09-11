@@ -62,17 +62,20 @@ export default function HurricanOphelia() {
         </InfoPopover>
         <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <ScrollText
+          inlinePlacement="right"
           isHeadline
           text={xFiresModule.content?.scrollText1 || ""}
           inputRange={animationConfig.scrollText1.input}
           outputRange={animationConfig.scrollText1.output}
         />
         <ScrollText
+          inlinePlacement="right"
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
         <ScrollText
+          inlinePlacement="right"
           text={xFiresModule.content?.scrollText3 || ""}
           inputRange={animationConfig.scrollText3.input}
           outputRange={animationConfig.scrollText3.output}
