@@ -10,10 +10,12 @@ import {
   VISIBLE_TEXT_OUTPUT,
 } from "../animation-timings";
 
+import styles from "./hurricane-ophelia.module.css"
+
 const animationConfig = {
   imageSequence: {
-    progressRange: [0, 1],
-    input: [0, 0.95, 1],
+    progressRange: [0.3, 0.9],
+    input: [0, 0.82, 1],
     output: ["100%", "100%", "50%"],
   },
   scrollText1: {
@@ -21,14 +23,15 @@ const animationConfig = {
     output: VISIBLE_TEXT_OUTPUT,
   },
   scrollText2: {
-    input: THREE_TEXT_TIMING.second,
+    input: [0.25, 0.28, 0.8, 0.85, 0.9],
     output: ENTERING_TEXT_OUTPUT,
   },
   scrollText3: {
-    input: THREE_TEXT_TIMING.third,
+    input: [0.9, 0.92, 0.98, 0.99, 1],
     output: ENTERING_TEXT_OUTPUT,
   },
 };
+
 
 export type HurricanOpheliaConfig = typeof animationConfig;
 
@@ -52,6 +55,7 @@ export default function HurricanOphelia() {
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
         <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <ScrollText
+          className={styles.scrollText}
           inlinePlacement="right"
           isHeadline
           text={xFiresModule.content?.scrollText1 || ""}
@@ -59,12 +63,14 @@ export default function HurricanOphelia() {
           outputRange={animationConfig.scrollText1.output}
         />
         <ScrollText
+          className={styles.scrollText}
           inlinePlacement="right"
           text={xFiresModule.content?.scrollText2 || ""}
           inputRange={animationConfig.scrollText2.input}
           outputRange={animationConfig.scrollText2.output}
         />
         <ScrollText
+          className={styles.scrollText}
           inlinePlacement="right"
           text={xFiresModule.content?.scrollText3 || ""}
           inputRange={animationConfig.scrollText3.input}
