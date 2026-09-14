@@ -4,14 +4,11 @@ import { useModuleContent } from "../../../../../../../providers/story/module-co
 import ScrollModule from "../../../modules/base-scroll/module/scroll-module";
 import ScrollText from "../../../modules/base-scroll/scroll-text/scroll-text";
 import ScrollImageSequence from "../../../modules/base-scroll/scroll-image-sequence/scroll-image-sequence";
-import InfoPopover from "../../../modules/info-popover/info-popover";
 import {
   ENTERING_TEXT_OUTPUT,
   THREE_TEXT_TIMING,
   VISIBLE_TEXT_OUTPUT,
 } from "../animation-timings";
-
-import styles from "./hurricane-ophelia.module.css";
 
 const animationConfig = {
   imageSequence: {
