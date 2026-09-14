@@ -81,6 +81,14 @@ export const FireFlame: FunctionComponent = () => {
           >
             <title>{xFiresModule.content?.flameIllustrationTitle}</title>
             <desc>{xFiresModule.content?.flameIllustrationDescription}</desc>
+            {/* Path to radiative power threshold legend */}
+            <path
+              d="M45 118L30 135L30 140"
+              fill="none"
+              stroke="#ED1B2F"
+              strokeWidth="0.5"
+            />
+            <circle cx="60" cy="125" r="1" fill="#ED1B2F" />
 
             <defs>
               <linearGradient
@@ -174,12 +182,13 @@ export const FireFlame: FunctionComponent = () => {
 
             {/* Path to radiative power threshold legend */}
             <path
-              d={`M60 125L${isMobile ? 42 : 30} 135L${isMobile ? 42 : 30} 140`}
+              d="M45 118L30 135L30 140"
               fill="none"
               stroke="#ED1B2F"
               strokeWidth="0.5"
             />
             <circle cx="60" cy="125" r="1" fill="#ED1B2F" />
+
           </svg>
 
           <figcaption>

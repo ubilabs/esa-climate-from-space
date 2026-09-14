@@ -7,22 +7,37 @@ import Dimmer, { DimmerAnimationConfig } from "../dimmer/dimmer";
 import { FireFlame } from "./fire-flame/fire-flame";
 import {
   ENTERING_TEXT_OUTPUT,
+  ENTERING_TEXT_OUTPUT_ABOVE,
   getDimmerConfig,
   TEXT_TO_REMAIN_OUTPUT,
+  TEXT_TO_REMAIN_OUTPUT_ABOVE,
   TWO_TEXT_TIMING,
 } from "../animation-timings";
 
-import styles from "./radiative-power-threshold.module.css";
 import { useScreenInfo } from "../../../../../../../hooks/use-screen-info";
+
+import styles from "./radiative-power-threshold.module.css";
 
 const animationConfig = {
   scrollText1: {
-    input: TWO_TEXT_TIMING.first,
-    output: ENTERING_TEXT_OUTPUT,
+    mobile: {
+      input: TWO_TEXT_TIMING.first,
+      output: ENTERING_TEXT_OUTPUT_ABOVE,
+    },
+    desktop: {
+      input: TWO_TEXT_TIMING.first,
+      output: ENTERING_TEXT_OUTPUT,
+    },
   },
   scrollText2: {
-    input: TWO_TEXT_TIMING.second,
-    output: TEXT_TO_REMAIN_OUTPUT,
+    mobile: {
+      input: TWO_TEXT_TIMING.second,
+      output: TEXT_TO_REMAIN_OUTPUT_ABOVE,
+    },
+    desktop: {
+      input: TWO_TEXT_TIMING.second,
+      output: TEXT_TO_REMAIN_OUTPUT,
+    },
   },
   flame: {
     expandedThreshold: 0.675,
@@ -38,6 +53,8 @@ export default function RadiativePowerThresholdModule() {
 
   const { isMobile } = useScreenInfo();
 
+  const key = isMobile ? "mobile" : "desktop";
+
   return (
     <ScrollModule
       config={animationConfig}
@@ -50,15 +67,15 @@ export default function RadiativePowerThresholdModule() {
           inlinePlacement="right"
           className={styles.scrollText}
           text={xFiresModule.content?.scrollText1 || ""}
-          inputRange={animationConfig.scrollText1.input}
-          outputRange={animationConfig.scrollText1.output}
+          inputRange={animationConfig.scrollText1[key].input}
+          outputRange={animationConfig.scrollText1[key].output}
         />
         <ScrollText
           inlinePlacement="right"
           className={styles.scrollText}
           text={xFiresModule.content?.scrollText2 || ""}
-          inputRange={animationConfig.scrollText2.input}
-          outputRange={animationConfig.scrollText2.output}
+          inputRange={animationConfig.scrollText2[key].input}
+          outputRange={animationConfig.scrollText2[key].output}
         />
       </ScrollModule.StickyContainer>
     </ScrollModule>

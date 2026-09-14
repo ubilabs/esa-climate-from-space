@@ -14,7 +14,7 @@
     "mobile": {
       "containerPosition": {
         "x": 0,
-        "y": 0
+        "y": 0.1
       },
       "location": {
         "lat": 0,
@@ -46,7 +46,7 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0
+              "y": 0.1
             },
             "location": {
               "x": 0,
@@ -76,7 +76,7 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0
+              "y": 0.1
             },
             "location": {
               "lat": 0,
@@ -106,7 +106,7 @@
           "mobile": {
             "containerPosition": {
               "x": 0,
-              "y": 0
+              "y": 0.1
             },
             "location": {
               "lat": 0,

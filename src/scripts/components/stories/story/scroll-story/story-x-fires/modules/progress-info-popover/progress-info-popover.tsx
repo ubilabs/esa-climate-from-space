@@ -41,7 +41,7 @@ const ProgressInfoPopover = ({
     >
       <InfoPopover
         description={description}
-        className={className}
+        className={className ?? styles.info}
         contentClassName={contentClassName ?? styles.content}
       >
         {children}
