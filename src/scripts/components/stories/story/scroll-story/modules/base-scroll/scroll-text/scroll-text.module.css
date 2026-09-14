@@ -1,0 +1,56 @@
+.scrollText {
+  z-index: 1;
+  text-wrap: pretty;
+  width: min(90%, 1400px);
+  margin: 0 auto;
+  display: grid;
+  place-content: center;
+  height: 100%;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  container-type: inline-size;
+
+  .content {
+    display: block;
+    margin: 0;
+    font-size: clamp(1.25rem, 4vw, 1.8rem);
+    line-height: 1.4;
+  }
+
+  h2.headlineContent {
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 120%; /* 38.4px */
+  }
+
+  @supports (font-size: 1cqi) {
+    .content {
+      font-size: clamp(1.25rem, 6cqi, 1.8rem);
+    }
+
+    h2.headlineContent {
+      font-size: clamp(1.5rem, 6.75cqi, 2.1rem);
+    }
+  }
+}
+
+@media (--desktop-viewport) {
+  .left,
+  .right {
+    width: 40%;
+  }
+
+  .right {
+    margin-right: calc(var(--story-padding) * 1.5);
+    margin-left: auto;
+  }
+
+  .left {
+    margin-right: auto;
+    margin-left: calc(var(--story-padding) * 1.5);
+  }
+}

@@ -38,7 +38,7 @@ const SplashScreen: FunctionComponent<Props> = ({ storyId, slide }) => {
       <div className={contentClasses}>
         <StoryMarkdown
           storyId={storyId}
-          allowedElements={config.markdownAllowedElements}
+          allowedElements={config.legacyStoryMarkdownElements}
         >
           {slide.text}
         </StoryMarkdown>

@@ -1,0 +1,45 @@
+.sequenceContainer {
+  height: 100%;
+  inset: 0;
+  opacity: var(--sequence-opacity);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-height: 100%;
+  overflow: hidden;
+
+  .scrollImageSequence {
+    display: block;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media screen and (--mobile-viewport) {
+  .sequenceContainer {
+    aspect-ratio: 9/16;
+    justify-self: center;
+
+    .scrollImageSequence {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .sequenceContainer[data-custom-mobile-aspect-ratio="true"] {
+    aspect-ratio: var(--sequence-mobile-aspect-ratio);
+    align-self: center;
+    height: auto;
+    width: 100%;
+    max-width: min(
+      100%,
+      calc(var(--story-height) * var(--sequence-mobile-aspect-ratio))
+    );
+
+    .scrollImageSequence {
+      height: auto;
+    }
+  }
+}

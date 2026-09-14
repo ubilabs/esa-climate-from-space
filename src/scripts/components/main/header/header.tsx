@@ -62,9 +62,10 @@ const Header: FunctionComponent = () => {
   const isLayerSelectorVisible = useSelector(showLayerSelector);
 
   const navigate = useNavigate();
-  const location = useLocation<AppLocationState>();
+  const location = useLocation();
+  const locationState = location.state as AppLocationState | null;
 
-  const isSearchActive = Boolean(location.state?.search);
+  const isSearchActive = Boolean(locationState?.search);
 
   if (!header || !stories_menu) {
     // The app element determines the layout via grid which is why we should return a DOM element here

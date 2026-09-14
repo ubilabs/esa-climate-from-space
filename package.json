@@ -1,19 +1,19 @@
 {
   "name": "esa-climate-from-space",
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "Climate from Space application for ESAs CCI+ program.",
   "main": "dist-src-electron/main.js",
   "type": "module",
   "scripts": {
     "start": "vite --port 8080",
     "clean": "rm -rf ./dist",
-    "build": "npm run clean && tsc && vite build && npm run copy:assets",
+    "build": "npm run clean && tsc --build && vite build && npm run copy:assets",
     "copy:assets": "cp assets/images/favicon.ico dist/ && cp assets/images/share.png dist/",
-    "test": "npm run eslint && npm run license-check",
+    "test": "tsc --build && npm run eslint && npm run license-check",
     "eslint": "eslint ./src/scripts",
     "format:js": "prettier 'src/scripts/**/*.{ts,tsx}'",
     "prettier": "prettier ./src/scripts/**/*.{ts,tsx} --write",
-    "license-check": "license-checker --excludePackages 'symbol@0.2.3' --summary --onlyAllow='MIT;BSD-2-Clause;BSD-3-Clause;ISC;Apache-2.0;CC-BY-4.0;AFLv2.1;BSD;MPL-2.0;CC0-1.0;CC-BY-3.0;WTFPL;Unlicense;GPL-3.0;Python-2.0;BlueOak-1.0.0;MIT-0;OBSD'",
+    "license-check": "license-checker --excludePackages 'symbol@0.2.3' --summary --onlyAllow='MIT;BSD-2-Clause;BSD-3-Clause;ISC;Apache-2.0;CC-BY-4.0;AFLv2.1;BSD;MPL-2.0;CC0-1.0;CC-BY-3.0;WTFPL;Unlicense;Python-2.0;BlueOak-1.0.0;MIT-0;OBSD'",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "preversion": "npm run test",
     "version": "npm run changelog && git checkout -b chore/release-${npm_package_version} && git add .",
@@ -33,7 +33,8 @@
     "upload-layers": "find ./storage/layers -type f -name \".DS_Store\" -delete && gsutil -m cp -r ./storage/layers/* gs://esa-cfs-storage/$npm_package_version/layers",
     "upload-index": "node ./scripts/create-search-index.js && find ./storage/index -type f -name \".DS_Store\" -delete && bash -c 'shopt -s nullglob; for f in ./storage/index/*.json; do gzip -c \"$f\" > \"$f.gz\"; name=$(basename \"$f\"); gsutil -h \"Content-Type: application/json\" -h \"Content-Encoding: gzip\" cp \"$f.gz\" \"gs://esa-cfs-storage/$npm_package_version/index/$name\"; rm \"$f.gz\"; done'",
     "download-layers": "gsutil -m cp gs://esa-cfs-storage/$npm_package_version/layers/layers-*.json ./storage/layers/",
-    "optimize-story-images": "./scripts/optimize-story-images.sh"
+    "optimize-story-images": "./scripts/optimize-story-images.sh",
+    "extract-video-frames": "node ./scripts/extract-video-frames.js"
   },
   "repository": {
     "type": "git",
@@ -59,17 +60,22 @@
     "lodash.debounce": "^4.0.8",
     "lodash.intersection": "^4.4.0",
     "motion": "^12.34.3",
+    "papaparse": "^5.7.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-intl": "^8.0.4",
     "react-markdown": "^10.1.0",
     "react-redux": "^9.2.0",
-    "react-router-dom": "^7.12.0",
+    "react-router-dom": "^7.18.2",
+    "react-vega": "^8.0.0",
     "react-youtube": "^10.1.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^3.1.0",
     "rehype-raw": "^7.0.0",
     "remove-markdown": "^0.6.2",
+    "vega": "^6.4.0",
+    "vega-embed": "^7.1.0",
+    "vega-lite": "^6.4.3",
     "video.js": "^8.23.4"
   },
   "devDependencies": {
@@ -79,6 +85,7 @@
     "@types/lodash.debounce": "^4.0.9",
     "@types/lodash.intersection": "^4.4.9",
     "@types/node": "^25.0.3",
+    "@types/papaparse": "^5.5.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@types/react-redux": "^7.1.34",
@@ -103,13 +110,13 @@
     "globals": "^16.5.0",
     "imagemin-cli": "^8.0.0",
     "license-checker": "^25.0.1",
-    "postcss": "^8.5.14",
+    "postcss": "^8.5.23",
     "postcss-custom-media": "^11.0.6",
     "prettier": "3.7.4",
     "rollup": "^4.59.0",
     "svg-loaders-react": "^3.1.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.50.0",
-    "vite": "^7.3.2"
+    "vite": "^8.0.16"
   }
 }

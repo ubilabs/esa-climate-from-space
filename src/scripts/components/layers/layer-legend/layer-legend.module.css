@@ -10,6 +10,11 @@
   color: #fff;
   transform: translateY(-50%);
   user-select: none;
+
+  &.inStoryLegend {
+    left: calc(var(--story-padding) + 1vw);
+    transform: translate(0%, -50%);
+  }
 }
 .rightSided {
   right: 1.375em;
@@ -33,7 +38,7 @@
   padding-left: 0.571428571428571em;
   text-shadow: 0px 0px 2px #000;
   font-size: 14px;
-  font-family: 'NotesESA', 'Arial', sans-serif;
+  font-family: "NotesESA", "Arial", sans-serif;
 }
 .legendItem {
   display: flex;

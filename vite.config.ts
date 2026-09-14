@@ -8,7 +8,7 @@ const gitHash =
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
-  const DEFINES = {
+  const DEFINES: Record<string, string> = {
     INFO_VERSION: JSON.stringify(version),
     INFO_BUILD_TIME: JSON.stringify(new Date().toISOString()),
     INFO_GIT_HASH: JSON.stringify(gitHash),

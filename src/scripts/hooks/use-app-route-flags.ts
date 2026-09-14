@@ -26,10 +26,12 @@ export function useAppRouteFlags() {
   const isStoriesRoute =
     appRoute === AppRoute.Stories ||
     appRoute === AppRoute.LegacyStory ||
-    appRoute === AppRoute.StoryEEI;
+    appRoute === AppRoute.StoryEEI ||
+    appRoute === AppRoute.StoryXFires;
 
   const isStoryEEI = appRoute === AppRoute.StoryEEI;
-
+  const isStoryXFires = appRoute === AppRoute.StoryXFires;
+  const isScrollStory = isStoryEEI || isStoryXFires;
   const isRegularStory =
     appRoute === AppRoute.Stories || appRoute === AppRoute.LegacyStory;
 
@@ -51,6 +53,8 @@ export function useAppRouteFlags() {
     isPresentView,
     isSearchRoute,
     isRegularStory,
+    isScrollStory,
     isStoryEEI,
+    isStoryXFires,
   };
 }

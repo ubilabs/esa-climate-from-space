@@ -1,0 +1,51 @@
+/**
+ * Shared text beats for the x-fires story.
+ *
+ * A beat consists of enter -> brief hold -> exit. Keeping these ranges here
+ * prevents individual modules from slowly developing different reading speeds.
+ */
+export const ENTERING_TEXT_OUTPUT = ["100%", "0%", "0%", "-20%", "-100%"];
+export const ENTERING_TEXT_OUTPUT_BELOW = ["100%", "30%", "30%", "-40%", "-100%"];
+export const ENTERING_TEXT_OUTPUT_ABOVE = ["100%", "-30%", "-30%", "-40%", "-100%"];
+export const TEXT_TO_REMAIN_OUTPUT = ["100%", "0%", "0%", "0%", "0%"];
+export const TEXT_TO_REMAIN_OUTPUT_ABOVE = ["100%", "-30%", "-30%", "-30%", "-30%"];
+export const VISIBLE_TEXT_OUTPUT = ["0%", "0%", "-20%", "-100%"];
+export const VISIBLE_TEXT_OUTPUT_BElOW = ["30", "30%", "-20%", "-100%"];
+
+export const THREE_TEXT_TIMING = {
+  first: [0, 0.06, 0.16, 0.21, 0.25],
+  firstVisible: [0, 0.16, 0.21, 0.25],
+  second: [0.25, 0.31, 0.41, 0.46, 0.5],
+  third: [0.5, 0.56, 0.68, 0.74, 0.8],
+};
+
+export const TWO_TEXT_TIMING = {
+  first: [0, 0.08, 0.18, 0.31, 0.5],
+  second: [0.5, 0.69, 0.79, 0.85, 1],
+};
+
+export function getDimmerConfig(
+  timings: ReadonlyArray<readonly number[]>,
+  dimOpacity = 0.5,
+  transitionDuration = 0.02,
+) {
+  const input = [0];
+  const output = [0];
+
+  for (const timing of timings) {
+    const [, visibleStart, holdEnd, , exitEnd] = timing;
+    const fadeDuration = Math.min(
+      transitionDuration,
+      Math.max((holdEnd - visibleStart) / 2, 0),
+    );
+    const fadeInEnd = visibleStart + fadeDuration;
+
+    input.push(visibleStart, fadeInEnd, holdEnd, exitEnd);
+    output.push(0, dimOpacity, dimOpacity, 0);
+  }
+
+  input.push(1);
+  output.push(0);
+
+  return { input, output };
+}

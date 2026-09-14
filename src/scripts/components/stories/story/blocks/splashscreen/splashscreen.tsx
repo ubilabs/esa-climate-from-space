@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useRef } from "react";
+import { FunctionComponent, RefObject, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { motion, useTransform } from "motion/react";
 
@@ -14,7 +14,8 @@ import { useAppRouteFlags } from "../../../../../hooks/use-app-route-flags";
 import { useStory } from "../../../../../providers/story/use-story";
 
 import { TextWrapper } from "../generic/text-container/text-wrapper";
-import SplashscreenEei from "./splashscreen-eei";
+import SplashScreenEei from "../../scroll-story/story-eei/splashscreen/splashscreen-eei";
+import SplashScreenXFires from "../../scroll-story/story-x-fires/splashscreen/splashscreen-x-fires";
 import { StorySectionProps } from "../../../../../types/story";
 
 import { SlideContainer } from "../../../layout/slide-container/slide-container";
@@ -25,15 +26,16 @@ import cx from "classnames";
 
 import styles from "./splashscreen.module.css";
 
-export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
-  const { isStoryEEI } = useAppRouteFlags();
+export const SplashScreen: FunctionComponent<StorySectionProps> = (rest) => {
+  const { isStoryEEI, isStoryXFires } = useAppRouteFlags();
   const { story, setScrollAnchorRefs } = useStory();
-  const targetRef = useRef<HTMLDivElement>(null);
+
+  const { ref } = rest;
 
   const dispatch = useDispatch();
 
   const { scrollYProgress } = useStoryScroll({
-    target: targetRef,
+    target: ref as RefObject<HTMLElement>,
     offset: ["start start", "end start"],
   });
 
@@ -80,9 +82,12 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
     return null;
   }
 
-  // render SplashScreen for story-eei
+  // Render SplashScreen for scroll stories
   if (isStoryEEI) {
-    return <SplashscreenEei />;
+    return <SplashScreenEei ref={ref} />;
+  }
+  if (isStoryXFires) {
+    return <SplashScreenXFires ref={ref} />;
   }
 
   const { id } = story;
@@ -90,13 +95,14 @@ export const SplashScreen: FunctionComponent<StorySectionProps> = () => {
   return (
     <SlideContainer
       className={cx(styles.splashscreenContainer, styles.locationStory)}
+      {...rest}
     >
       <div
         style={{
           // plus one to account for the intro slide
           height: `calc(${totalSlides + 1} * var(--story-height))`,
         }}
-        ref={targetRef}
+        ref={ref}
         className={styles.splashBanner}
       >
         {/* needs to be placed outside of the content container, will other interfere with the transition calculation of framer */}

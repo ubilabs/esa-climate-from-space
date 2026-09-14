@@ -9,7 +9,7 @@ const selectCurrentLanguage = (state: State) => state.language;
 export const storyListSelector = createSelector(
   [selectCurrentLanguage, (state) => state],
   (language, state) => {
-    const storiesResult = storiesApi.endpoints.getStories.select(language)(state);
+    const storiesResult = storiesApi.endpoints.getStoryList.select(language)(state);
     return storiesResult.data ?? [];
   }
 );

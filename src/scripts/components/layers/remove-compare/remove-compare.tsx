@@ -9,12 +9,9 @@ import styles from "./remove-compare.module.css";
 const RemoveCompare: FunctionComponent = () => {
   const intl = useIntl();
   const location = useLocation();
-  const match = matchPath<{ mainLayerId: string; compareLayerId: string }>(
+  const match = matchPath(
+    "/layers/:mainLayerId/:compareLayerId",
     location.pathname,
-    {
-      path: "/layers/:mainLayerId/:compareLayerId",
-      exact: true,
-    },
   );
 
   if (!match) {

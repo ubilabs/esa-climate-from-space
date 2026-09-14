@@ -2,6 +2,6 @@ import { State } from "../reducers/index";
 
 import { CameraView } from "@ubilabs/esa-webgl-globe";
 
-export function flyToSelector(state: State): CameraView | null {
+export function flyToSelector(state: State): Partial<CameraView> | null {
   return state.flyTo
 }

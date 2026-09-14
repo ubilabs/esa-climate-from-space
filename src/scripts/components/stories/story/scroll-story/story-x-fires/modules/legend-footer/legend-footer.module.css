@@ -1,0 +1,56 @@
+.legendFooter {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  gap: 0.25rem 1rem;
+  height: 3rem;
+  padding: 0.75rem var(--story-padding);
+  background-color: var(--neutral-esa-background);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.15);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.35714; /* 19px */
+  letter-spacing: 0.175px;
+
+  @media (--mobile-viewport) {
+    height: 4.375rem;
+  }
+
+  @media (--desktop-viewport) {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  p {
+    font-weight: 700;
+    white-space: nowrap;
+
+    @media (--desktop-viewport) {
+      align-self: center;
+    }
+  }
+}
+
+.scale {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+
+  span {
+    white-space: nowrap;
+  }
+}
+
+.colorSwatches {
+  display: grid;
+  grid-auto-flow: column;
+  height: 0.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}

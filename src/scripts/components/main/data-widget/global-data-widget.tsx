@@ -22,7 +22,7 @@ interface Props {
 }
 
 export const GetGlobalDataWidget = ({ className }: Props) => {
-  const { isStoryEEI, isBaseRoute } = useAppRouteFlags();
+  const { isScrollStory, isBaseRoute } = useAppRouteFlags();
   const globalGlobeView = useSelector(globeViewSelector);
   const globeSpinning = useSelector(globeSpinningSelector);
 
@@ -38,10 +38,10 @@ export const GetGlobalDataWidget = ({ className }: Props) => {
   const onMoveStartHandler = useCallback(
     () =>
       globeSpinning &&
-      !isStoryEEI &&
+      !isScrollStory &&
       !isBaseRoute &&
       dispatch(setGlobeSpinning(false)),
-    [dispatch, globeSpinning, isStoryEEI, isBaseRoute],
+    [dispatch, globeSpinning, isScrollStory, isBaseRoute],
   );
 
   const onMoveEndHandler = useCallback(
@@ -58,10 +58,10 @@ export const GetGlobalDataWidget = ({ className }: Props) => {
 
   // stop globe spinning when layer is selected
   useEffect(() => {
-    if ((mainId || compareId) && globeSpinning && !isStoryEEI) {
+    if ((mainId || compareId) && globeSpinning && !isScrollStory) {
       dispatch(setGlobeSpinning(false));
     }
-  }, [dispatch, mainId, compareId, globeSpinning, isStoryEEI]);
+  }, [dispatch, mainId, compareId, globeSpinning, isScrollStory]);
 
   const handleSetGlobeTime = useCallback(
     (time: number) => dispatch(setGlobeTime(time)),

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 export const useInterval = (callback: () => void, delay: number | null) => {
-  const savedCallback = useRef<() => void | undefined>();
+  const savedCallback = useRef<(() => void) | undefined>(undefined);
 
   // Remember the latest callback.
   useEffect(() => {

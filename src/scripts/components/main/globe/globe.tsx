@@ -68,7 +68,7 @@ interface Props {
   imageLayer: GlobeImageLayerData | null;
   layerDetails: Layer | null;
   spinning: boolean;
-  flyTo: CameraView | null;
+  flyTo: Partial<CameraView> | null;
   markers?: Marker[];
   isMarkerOffset?: boolean;
   backgroundColor: string;
@@ -326,6 +326,20 @@ function useMultiGlobeSynchronization(
 ) {
   const { view, active, flyTo, isMarkerOffset } = props;
 
+  const applyFlyTo = useEffectEvent(
+    (globe: WebGlGlobe, flyTo: Partial<CameraView>) => {
+      globe.setProps({
+        cameraView: {
+          ...view,
+          ...flyTo,
+          lng:
+            (flyTo.lng ?? view.lng) +
+            (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0),
+        },
+      });
+    },
+  );
+
   // forward camera changes from the active view to the parent component
   useCameraChangeEvents(globe, props, enabled);
 
@@ -340,13 +354,8 @@ function useMultiGlobeSynchronization(
   // apply incomfing flyTo props to the globe
   useEffect(() => {
     if (!globe || !enabled || !flyTo) return;
-    globe.setProps({
-      cameraView: {
-        ...flyTo,
-        lng: flyTo.lng + (isMarkerOffset ? CONTENT_NAV_LONGITUDE_OFFSET : 0),
-      },
-    });
-  }, [flyTo, globe, isMarkerOffset, enabled]);
+    applyFlyTo(globe, flyTo);
+  }, [flyTo, globe, enabled]);
 }
 
 /**
@@ -447,11 +456,11 @@ function getLayerProps(
   imageLayer: GlobeImageLayerData | null,
   layerDetails: Layer | null,
   includeClouds: boolean = true,
-) {
+): LayerProps[] {
   const basemapUrl = getBasemapUrl(layerDetails);
   const basemapMaxZoom = getBasemapMaxZoom(layerDetails);
 
-  const layers = [];
+  const layers: LayerProps[] = [];
 
   if (basemapUrl) {
     layers.push({

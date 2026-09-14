@@ -1,0 +1,4 @@
+.fadeWrapper {
+  opacity: var(--fade-wrapper-opacity);
+  height: 100%;
+}

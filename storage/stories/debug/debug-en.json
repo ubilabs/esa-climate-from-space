@@ -8,11 +8,63 @@
     "altText": "An example of all the components",
     "slides": [
       {
-        "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
+        "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
       }
     ]
   },
   "modules": [
+    {
+      "type": "imageTime",
+      "legend": {
+        "type": "categorical",
+        "unit": "Flow Country Land Cover - Sentinel-2 GLC",
+        "entriesUrl": "assets/flow_country_land_cover_legend_entries.csv"
+      },
+      "slides": [
+        {
+          "url": "assets/story37-image01.jpg",
+          "focus": "right",
+          "caption": "# Some caption 1",
+          "flag": "2018"
+        },
+        {
+          "url": "assets/story37-image02.png",
+          "focus": "right",
+          "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
+          "caption": "# Some caption 2",
+          "flag": "2020"
+        }
+      ]
+    },
+    {
+      "type": "imageWavelength",
+      "legend": {
+        "type": "continuous",
+        "description": "Annual ground displacement in centimetres per year",
+        "unit": "cm/year",
+        "entriesUrl": "assets/annual_ground_displacement_legend_entries.csv"
+      },
+      "slides": [
+        {
+          "url": "assets/story37-image04.jpg",
+          "caption": "Fire burned 5,700 hectares of peatland in 2019. This image was taken on 16 May. (ESA)",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story37-image05.jpg",
+          "caption": "Near-infrared wavelengths highlight healthy vegetation in red and the burn scar in dark brown. (ESA)",
+          "altText": "",
+          "focus": "left"
+        },
+        {
+          "url": "assets/story37-image06.jpg",
+          "caption": "Shortwave infrared reveals the active fire front in bright red. (ESA)",
+          "altText": "",
+          "focus": "left"
+        }
+      ]
+    },
     {
       "type": "textOverlay",
       "url": "",
@@ -27,35 +79,13 @@
       ]
     },
     {
-      "type": "imageTime",
-      "slides": [
-        {
-          "url": "assets/story37-image01.jpg",
-          "focus": "right",
-          "caption": "# Some caption 1",
-          "flag": "2018"
-        },
-        {
-          "url": "assets/story37-image02.jpg",
-          "focus": "right",
-          "altText": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-          "caption": "# Some caption 2",
-          "flag": "2020"
-        },
-        {
-          "url": "assets/story37-image01.jpg",
-          "focus": "right",
-          "altText": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-          "caption": "# Some caption 3",
-          "flag": "2022"
-        }
-      ]
-    },
-    {
       "type": "textOverlay",
       "url": "assets/story21-image14.jpg",
       "focus": "right",
       "slides": [
+        {
+          "text": "This event shows how different parts of the Earth system – ocean, atmosphere, and land – and places thousands of kilometers apart are connected through the water cycle."
+        },
         {
           "text": "This event shows how different parts of the Earth system – ocean, atmosphere, and land – and places thousands of kilometers apart are connected through the water cycle."
         }
@@ -64,6 +94,13 @@
     {
       "type": "imageScroll",
       "slides": [
+        {
+          "url": "assets/launch.mp4",
+          "focus": "center",
+          "alt": "some alt text",
+          "text": "A cool video",
+          "caption": "video of rocket launch"
+        },
         {
           "url": "assets/story21-image01.jpg",
           "focus": "center",
@@ -91,30 +128,7 @@
       "type": "textOverlay",
       "slides": [
         {
-          "url": "",
-          "focus": "center",
-          "slides": [
-            {
-              "text": "After months of high temperatures and low rainfall, the water level of Italy's Po River reached a record low in 2022. The drought in northern Italy impacted the region's agricultural production, which often relies on irrigation."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "imageWavelength",
-      "slides": [
-        {
-          "url": "assets/story37-image01.jpg",
-          "focus": "center",
-          "alt": "Satellites for peat's sake. This mosaic, acquired on 28 May 2018, offers a rare cloud-free view over the vast expanses of Scotland's Flow Country.",
-          "caption": "Satellites for peat's sake. Cloud-free view."
-        },
-        {
-          "url": "assets/story37-image02.jpg",
-          "focus": "center",
-          "alt": "Satellites for peat's sake. This high-resolution land cover map derived from Copernicus Sentinel-2 data shows the extent of peatland in purple.",
-          "caption": "Satellites for peat's sake. 2"
+          "text": "After months of high temperatures and low rainfall, the water level of Italy's Po River reached a record low in 2022. The drought in northern Italy impacted the region's agricultural production, which often relies on irrigation."
         }
       ]
     },
@@ -148,9 +162,9 @@
       "type": "imageCarousel",
       "slides": [
         {
-          "text": "Young Arctic sea ice viewed from an aircraft. Sea ice thinner than 50 cm is particularly important for weather and climate as it controls the exchange of heat and water between the ocean and atmosphere. (S Hendriks/AWI)",
-          "altText": "Arctic sea ice viewed from an aircraft",
-          "url": "assets/story37-image01.jpg"
+          "text": "Video of rocket launch",
+          "altText": "",
+          "url": "assets/launch.mp4"
         },
         {
           "text": "Pressure ridge in thick Arctic sea ice, formed as two ice floes converge. (Seymour Laxon/CPOM/UCL)",
@@ -216,6 +230,16 @@
         ],
         "layerAutoplay": true
       }
+    },
+    {
+      "type": "storyChart",
+      "slides": [
+        {
+          "text": "Satellite observations show a significant loss of Arctic sea ice in recent decades, with the lowest extents observed in 2012, followed by 2007 and 2020. Since the advent of regular satellite measurements of sea ice in 1978, the Arctic Ocean’s summer sea ice extent has reduced by almost 40%. In the Southern Ocean the mean ice extent around Antarctica increased 4-6% over most of this period, but has plunged down three times faster than the Arctic from 2014. Globally the trend is down and the loss is accelerating.",
+          "caption": "# Arctic Sea Ice Extent in August 1979-2023 \nSummer ice extent in the Arctic is down 68,000 sq km per year, or 8.9% per decade (EUMETSAT OSISAF data, with R&D input from ESA CCI)",
+          "url": "assets/arctic_sea_ice_extent_chart.json"
+        }
+      ]
     },
     {
       "type": "textOverlay",

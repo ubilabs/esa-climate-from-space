@@ -23,6 +23,7 @@
   --light-green: #98dbce;
   --black: #10161a;
   --dark-blue: #3f6c7d;
+  --dark-blue-1: #021721;
   --light-blue: #5b8a9c;
   --plain-black: #000000;
   --dark-grey-1: #182026;
@@ -42,6 +43,7 @@
   /* Globe container position */
   --globe-container-x: 0;
   --globe-container-y: 0;
+  --globe-container-opacity: 1;
 
   /* font defaults */
 

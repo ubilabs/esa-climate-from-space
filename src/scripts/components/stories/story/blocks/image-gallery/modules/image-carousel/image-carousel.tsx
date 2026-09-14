@@ -22,15 +22,20 @@ import { StoryMarkdown } from "../../../../../../shared/story-markdown/story-mar
 import CarouselNavigation from "./carousel-navigation/carousel-navigation";
 import ImageSlide from "./image-slide/image-slide";
 import LayerSlide from "./layer-slide/layer-slide";
-import ScrollModule from "../../../story-eei/modules/base-scroll/module/scroll-module";
+import ScrollModule from "../../../../scroll-story/modules/base-scroll/module/scroll-module";
 
 import styles from "./image-carousel.module.css";
 
 const PADDING = 24;
 const VELOCITY = 300;
 
+interface Props {
+  className?: string;
+}
+
 // Image carousel component for displaying a series of images with navigation controls
-const ImageCarousel: FunctionComponent = () => {
+const ImageCarousel: FunctionComponent<Props> = (props) => {
+  const { className } = props;
   const { module, storyId, getRefCallback } = useModuleContent();
   const { slides, lengthFactor } = module as ImageCarouselModule;
   const { screenWidth, isTouchDevice } = useScreenInfo();
@@ -118,7 +123,7 @@ const ImageCarousel: FunctionComponent = () => {
         damping: 32,
       },
     });
-  };
+ };
 
   const content = (
     <SlideContainer ref={getRefCallback(0, 0)} className={styles.container}>
@@ -183,13 +188,20 @@ const ImageCarousel: FunctionComponent = () => {
         </div>
         {"readMore" in module &&
           module.readMore?.url &&
-          URL.canParse(module.readMore.url) && (
+          URL.canParse(
+            module.readMore.url,
+            module.readMore.url.startsWith("/")
+              ? window.location.origin
+              : undefined,
+          ) && (
             <div className={styles.readMore}>
-              <FormattedMessage id="story.slide.readMore" />
+              {module.readMore.headline ?? (
+                <FormattedMessage id="story.slide.readMore" />
+              )}
               <Button
                 className={styles.readMoreButton}
                 link={module.readMore.url}
-                isExternalLink
+                isExternalLink={!module.readMore.url.startsWith("/")}
               >
                 <span>{module.readMore.title}</span>
                 <LinkIcon />
@@ -201,7 +213,7 @@ const ImageCarousel: FunctionComponent = () => {
   );
 
   return lengthFactor ? (
-    <ScrollModule lengthFactor={lengthFactor} config={{}}>
+    <ScrollModule className={className} lengthFactor={lengthFactor} config={{}}>
       {content}
     </ScrollModule>
   ) : (

@@ -5,10 +5,13 @@ import { useStory } from "../../../providers/story/use-story";
 import { useLenisForStory } from "../../../hooks/use-lenis-for-story";
 import { useAutoScrollInShowcase } from "../../../hooks/use-auto-scroll-in-showcase";
 import { useSyncStoryUrl } from "../../../hooks/use-sync-story-url";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
+import GlobeScroll from "./scroll-story/globe-scroll";
 import { ModuleContentProvider } from "../../../providers/story/module-content/module-content-provider";
 import { ClosingScreen } from "./blocks/closing-screen/closing-screen";
 import { SplashScreen } from "./blocks/splashscreen/splashscreen";
+import ChapterIndicator from "../../main/chapter-indicator/chapter-indicator";
 
 import { getModuleComponent } from "../../../libs/get-story-components";
 
@@ -22,7 +25,8 @@ import styles from "./story.module.css";
  * The hierarchical structure of a story is organized as follows: story > module > slides
  */
 const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
-  const { storyElementRef, story, setScrollAnchorRefs } = useStory();
+  const { storyElementRef, story, setScrollAnchorRefs, setModuleRefs } =
+    useStory();
 
   // Initialize Lenis for smooth scrolling behavior in the story
   useLenisForStory();
@@ -33,6 +37,7 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
 
   // Synchronize the URL with the current story state
   useSyncStoryUrl();
+  const { isScrollStory } = useAppRouteFlags();
 
   if (!story) {
     return null;
@@ -40,12 +45,15 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
 
   return (
     <>
+      {/* enable globe to react to scroll events. Only needed for scroll stories*/}
+      {isScrollStory && <GlobeScroll />}
       <main
         className={cx(styles.story, styles.fadeIn)}
         ref={storyElementRef}
         id="story"
       >
-        <SplashScreen />
+        <ChapterIndicator />
+        <SplashScreen ref={setModuleRefs("0")} />
 
         {story.modules.map(({ type }, moduleIndex) => {
           const ModuleComponent = getModuleComponent(type);
@@ -65,12 +73,14 @@ const Story: FunctionComponent<{ children?: ReactNode }> = ({ children }) => {
               storyId={story.id}
               getRefCallback={generateScrollAnchorRef}
             >
-              <ModuleComponent />
+              <section ref={setModuleRefs(`${moduleIndex + 1}`)}>
+                <ModuleComponent />
+              </section>
             </ModuleContentProvider>
           );
         })}
         {/* Provisional - will be replaced with a proper end screen later */}
-        <ClosingScreen />
+        <ClosingScreen ref={setModuleRefs(`${story.modules.length + 1}`)} />
       </main>
       {children}
     </>

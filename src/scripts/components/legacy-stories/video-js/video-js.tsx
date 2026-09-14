@@ -1,5 +1,6 @@
 import { FunctionComponent, useEffect, useRef } from "react";
-import videojs, { VideoJsPlayer, VideoJsPlayerOptions } from "video.js";
+import videojs from "video.js";
+import VideoJsPlayer from "video.js/dist/types/player";
 
 import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
 import { Language } from "../../../types/language";
@@ -28,7 +29,7 @@ const VideoJS: FunctionComponent<Props> = ({
   onPlay,
 }) => {
   const videoRef = useRef(null);
-  const playerRef = useRef<VideoJsPlayer | null>();
+  const playerRef = useRef<VideoJsPlayer | null>(null);
   const video = videoSrc[0];
   const videoUrl = videoSrc && getStoryAssetUrl(storyId, video);
   const posterUrl = videoPoster && getStoryAssetUrl(storyId, videoPoster);
@@ -42,7 +43,7 @@ const VideoJS: FunctionComponent<Props> = ({
     );
   };
 
-  const videoJsOptions: VideoJsPlayerOptions = {
+  const videoJsOptions = {
     autoplay: isStoryMode ? false : true,
     controls: true,
     // Make sure subtitles are handled by video.js and displayed consistently across browsers
@@ -87,8 +88,8 @@ const VideoJS: FunctionComponent<Props> = ({
     );
 
     // Show subtitles by default but only if the language is not English
-    if (textTrack && textTrack.track && language !== "en") {
-      textTrack.track.mode = "showing";
+    if (textTrack && language !== "en") {
+      (textTrack as unknown as { track: TextTrack }).track.mode = "showing";
     }
 
     playerRef.current = player;
@@ -145,7 +146,7 @@ const VideoJS: FunctionComponent<Props> = ({
         style={{ height: "100%" }}
         onPlay={(event) => onPlay(event.target as unknown as VideoJsPlayer)}
       >
-        <track kind="captions" src={getCaptionUrl()} srclang={language} label={language} />
+        <track kind="captions" src={getCaptionUrl()} srcLang={language} label={language} />
       </video>
     </div>
   );

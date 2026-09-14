@@ -14,7 +14,7 @@ import styles from "./embed-wizard.module.css";
 const EmbedWizard: FunctionComponent = () => {
   const embedElements = useSelector(embedElementsSelector);
   const [uiElementsChecked, setUiElementsChecked] = useState(
-    embedElements as ElementOptions,
+    embedElements as unknown as ElementOptions,
   );
 
   return (

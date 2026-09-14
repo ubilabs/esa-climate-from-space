@@ -5,6 +5,21 @@
   height: 100%;
   padding: 3em 1.75em 3em 3.5em;
 }
+
+@media screen and (--mobile-viewport) {
+  .embeddedContent {
+    display: flex;
+    flex-direction: column;
+    padding: initial;
+  }
+}
+
+.lightboxEmbeddedContent{
+  display: flex;
+  flex-direction: column;
+  padding: 3em 0;
+}
+
 .embeddedContent > iframe {
   height: 100%;
   width: 100%;

@@ -1,0 +1,36 @@
+.container {
+  @media (--mobile-viewport) {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    align-items: stretch;
+    padding-top: clamp(1rem, 3vh, 1.5rem);
+  }
+}
+
+.mobileSequenceRegion {
+  @media (--mobile-viewport) {
+    grid-area: 1 / 1 / 2 / 2;
+    align-self: start;
+    justify-self: center;
+    width: min(100%, calc(var(--story-height) * 0.48));
+    margin: 0 auto;
+  }
+}
+
+.sequence {
+  @media (--mobile-viewport) {
+    height: auto;
+    width: 100%;
+    max-width: none;
+  }
+
+  @media (--desktop-viewport) {
+    aspect-ratio: 720 / 551;
+    align-self: center;
+    justify-self: center;
+    height: auto;
+    width: min(40vw, 100%);
+    margin-left: auto;
+    margin-right: var(--story-padding);
+    max-width: none;
+  }
+}

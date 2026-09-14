@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { VideoJsPlayer } from "video.js";
+import VideoJsPlayer from "video.js/dist/types/player";
 import { YouTubePlayer } from "youtube-player/dist/types";
 
 import { useContentParams } from "../../../hooks/use-content-params";
@@ -140,13 +140,15 @@ const Story: FunctionComponent = () => {
               case GalleryItemType.Embedded:
                 return (
                   <StoryEmbedded
+                    storyId={story.id}
                     embeddedItem={item}
                     showLightbox={showLightbox}
                   />
                 );
               default:
                 console.warn(
-                  `Unknown gallery item type ${item["type"]} on slide ${slideIndex + 1
+                  `Unknown gallery item type ${item["type"]} on slide ${
+                    slideIndex + 1
                   } in story ${story.id}`,
                 );
                 return <></>;
