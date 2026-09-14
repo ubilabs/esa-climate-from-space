@@ -53,13 +53,6 @@ export default function HurricanOphelia() {
       lengthFactor={xFiresModule.lengthFactor}
     >
       <ScrollModule.StickyContainer isGrid ref={getRefCallback(0, 0)}>
-        <InfoPopover
-          description={xFiresModule.infoContent?.description || "Indicated area: smoke over Estonia"}
-          className={styles.infoPopover}
-          contentClassName={styles.infoContent}
-        >
-          {xFiresModule.infoContent?.description || "Indicated area: smoke over Estonia"}
-        </InfoPopover>
         <ScrollImageSequence sequence={xFiresModule.imageSequence} />
         <ScrollText
           inlinePlacement="right"
