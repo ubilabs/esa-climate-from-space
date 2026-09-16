@@ -79,16 +79,18 @@ A new git branch `chore/release-${VERSION}` will be pushed. Create PR and merge 
 
 Cloud Build will build and upload a new develop version once merged (https://storage.googleapis.com/esa-cfs-versions/web/develop/index.html)
 
-Merge `develop` into `master`. Once merged Cloud Build will build and upload new master version (https://storage.googleapis.com/esa-cfs-versions/web/master/index.html).
+Merge `develop` into `master`. Once merged Cloud Build will build and upload new master version (https://storage.googleapis.com/esa-cfs-versions/web/master/index.html). Also, the Cloud Build config `ci/cloudbuild-deploy-versioned.yaml` will deploy it `gs://esa-cfs-versions/web/{VERSION}/` automatically.
 
-In addition all remote files on cloud storage have to be updated to the new version folder. Run the follwing command with the correct version numbers:
+
+In addition all remote files on cloud storage have to be updated to the new version folder. Run the following command with the correct version numbers:
 
 ```sh
 ./scripts/increase-storage-version.sh <old_version> <new_version> # e.g. increase-storage-version 0.9.3 1.0.0
 ```
 
-Copy the master web application files into a separate version folder
-`gsutil cp -r gs://esa-cfs-versions/web/master/* gs://esa-cfs-versions/web/{VERSION}/`
+As a final step, prepare the next development build by running `npm version patch` and then execute `./scripts/increase-storage-version.sh <old_version> <new_version>` again with the new version numbers.
+
+Once the app is approved and should go live, merge `master` into `live` which will automatically deploy the live version
 
 ### Add new story (content)
 
