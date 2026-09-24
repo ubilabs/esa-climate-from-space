@@ -11,7 +11,7 @@ import { InfoIcon } from "../icons/info-icon";
 import { DownloadIcon } from "../icons/download-icon";
 import { CCILogo } from "../icons/cci-logo";
 import AboutProject from "../about-project/about-project";
-import Overlay from "../overlay/overlay";
+import MenuOverlay from "../menu-overlay/menu-overlay";
 import { WindowsIcon } from "../icons/windows-icon";
 import { LinuxIcon } from "../icons/linux-icon";
 import { AppleIcon } from "../icons/apple-icon";
@@ -42,7 +42,7 @@ const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
     <>
       <nav className={styles.menuContainer}>
         {overlayType ? (
-          <Overlay onClose={() => setOverlayType(null)}>
+          <MenuOverlay onClose={() => setOverlayType(null)}>
             {overlayType === "about" ? (
               <AboutProject />
             ) : overlayType === "attributions" ? (
@@ -50,7 +50,7 @@ const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
             ) : (
               <PrivacyNote />
             )}
-          </Overlay>
+          </MenuOverlay>
         ) : (
           <>
             <ul className={styles.menuList}>
