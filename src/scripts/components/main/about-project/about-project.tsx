@@ -6,22 +6,16 @@ import ReactMarkdown from "react-markdown";
 import config from "../../../config/main";
 import { markdownComponents } from "../../../libs/markdown-components";
 
-import styles from "./about-project.module.css";
-
 const AboutProject: FunctionComponent = () => {
   const intl = useIntl();
 
   return (
-    <div className={styles.aboutProject}>
-      <div className={styles.content}>
-        <ReactMarkdown
-          children={intl.formatMessage({ id: "projectDescription" })}
-          rehypePlugins={[rehypeRaw]}
-          components={markdownComponents}
-          allowedElements={config.markdownAllowedElements}
-        />
-      </div>
-    </div>
+    <ReactMarkdown
+      children={intl.formatMessage({ id: "projectDescription" })}
+      rehypePlugins={[rehypeRaw]}
+      components={markdownComponents}
+      allowedElements={config.markdownAllowedElements}
+    />
   );
 };
 

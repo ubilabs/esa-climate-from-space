@@ -1,4 +1,4 @@
-.privacyNote {
+.menuOverlay {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,14 +7,24 @@
   color: var(--text-default);
   font-family: NotesEsa;
 }
+
 .content {
   overflow-y: scroll;
   color: var(--text-default);
   font-family: Arial, Helvetica, sans-serif;
+  padding: 0 1rem;
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .content h1, .content h2, .content h3 {
   margin: 2rem 0 1rem 0;
+
+  &:first-of-type {
+    margin-top: initial;
+  }
 }
 
 .content p {
@@ -28,14 +38,11 @@
 .content a {
   color: var(--main);
   text-decoration: none;
+  overflow-wrap: break-word;
 }
 
-@media screen and (--mobile-s-viewport) {
-  .privacyNote {
+@media screen and (--mobile-viewport) {
+  .menuOverlay {
     width: 80%;
-  }
-
-  .content a {
-    overflow-wrap: break-word;
   }
 }
