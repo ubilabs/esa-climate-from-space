@@ -105,6 +105,10 @@
   .menuList:first-child {
     display: none;
   }
+  .menuListItem {
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
   .cciLogo {
     justify-content: space-evenly;
     width: 6.25em;
