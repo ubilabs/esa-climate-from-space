@@ -11,7 +11,7 @@ import { InfoIcon } from "../icons/info-icon";
 import { DownloadIcon } from "../icons/download-icon";
 import { CCILogo } from "../icons/cci-logo";
 import AboutProject from "../about-project/about-project";
-import Overlay from "../overlay/overlay";
+import MenuOverlay from "../menu-overlay/menu-overlay";
 import { WindowsIcon } from "../icons/windows-icon";
 import { LinuxIcon } from "../icons/linux-icon";
 import { AppleIcon } from "../icons/apple-icon";
@@ -21,6 +21,7 @@ import Attributions from "../attributions/attributions";
 import { FeedbackIcon } from "../icons/feedback-icon";
 import { ShareIcon } from "../icons/share-icon";
 import Share from "../share/share";
+import PrivacyNote from "../privacy-note/privacy-note";
 
 import config from "../../../config/main";
 
@@ -31,7 +32,9 @@ interface Props {
 }
 
 const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
-  const [overlayType, setOverlayType] = useState<string | null>(null);
+  const [overlayType, setOverlayType] = useState<
+    "about" | "attributions" | "privacyNote" | null
+  >(null);
   // @ts-expect-error - injected via webpack's define plugin
   const version = INFO_VERSION;
 
@@ -39,9 +42,15 @@ const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
     <>
       <nav className={styles.menuContainer}>
         {overlayType ? (
-          <Overlay onClose={() => setOverlayType(null)}>
-            {overlayType === "about" ? <AboutProject /> : <Attributions />}
-          </Overlay>
+          <MenuOverlay onClose={() => setOverlayType(null)}>
+            {overlayType === "about" ? (
+              <AboutProject />
+            ) : overlayType === "attributions" ? (
+              <Attributions />
+            ) : (
+              <PrivacyNote />
+            )}
+          </MenuOverlay>
         ) : (
           <>
             <ul className={styles.menuList}>
@@ -204,6 +213,13 @@ const Menu: FunctionComponent<Props> = ({ onRestartOnboarding }) => {
                   onClick={() =>
                     window.dispatchEvent(new CustomEvent("openPrivacySettings"))
                   }
+                />
+              </li>
+              <li className={styles.menuListItem}>
+                <Button
+                  className={styles.menuButton}
+                  label={"privacyNote"}
+                  onClick={() => setOverlayType("privacyNote")}
                 />
               </li>
             </ul>
