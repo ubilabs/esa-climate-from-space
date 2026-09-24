@@ -39,14 +39,6 @@ export default defineConfig(({ command }) => {
           plugins: ["babel-plugin-react-compiler"],
         },
       }),
-      {
-        name: "raw-transform",
-        transform(code, id) {
-          if (id.endsWith(".md")) {
-            return `export default ${JSON.stringify(code)};`;
-          }
-        },
-      },
     ],
     define: DEFINES,
     publicDir: "../storage",
