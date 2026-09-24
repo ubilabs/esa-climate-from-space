@@ -6,8 +6,6 @@ import ReactMarkdown from "react-markdown";
 import config from "../../../config/main";
 import { markdownComponents } from "../../../libs/markdown-components";
 
-import styles from "./privacy-note.module.css";
-
 const privacyNoteUrls = import.meta.glob<string>(
   "~/assets/markdown/privacy-note-*.md",
   {
@@ -48,16 +46,12 @@ const PrivacyNote: FunctionComponent = () => {
   }, [intl.locale]);
 
   return (
-    <div className={styles.privacyNote}>
-      <div className={styles.content}>
-        <ReactMarkdown
-          children={privacyNoteText}
-          rehypePlugins={[rehypeRaw]}
-          components={markdownComponents}
-          allowedElements={config.markdownAllowedElements}
-        />
-      </div>
-    </div>
+    <ReactMarkdown
+      children={privacyNoteText}
+      rehypePlugins={[rehypeRaw]}
+      components={markdownComponents}
+      allowedElements={config.markdownAllowedElements}
+    />
   );
 };
 
