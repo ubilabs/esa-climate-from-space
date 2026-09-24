@@ -6,22 +6,16 @@ import ReactMarkdown from "react-markdown";
 import config from "../../../config/main";
 import { markdownComponents } from "../../../libs/markdown-components";
 
-import styles from "./attributions.module.css";
-
 const Attributions: FunctionComponent = () => {
   const intl = useIntl();
 
   return (
-    <div className={styles.attributions}>
-      <div className={styles.credits}>
-        <ReactMarkdown
-          children={intl.formatMessage({ id: "attributionDescription" })}
-          rehypePlugins={[rehypeRaw]}
-          components={markdownComponents}
-          allowedElements={config.markdownAllowedElements}
-        />
-      </div>
-    </div>
+    <ReactMarkdown
+      children={intl.formatMessage({ id: "attributionDescription" })}
+      rehypePlugins={[rehypeRaw]}
+      components={markdownComponents}
+      allowedElements={config.markdownAllowedElements}
+    />
   );
 };
 
