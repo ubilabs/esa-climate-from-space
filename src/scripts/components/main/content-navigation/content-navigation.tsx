@@ -5,6 +5,7 @@ import {
   useMemo,
   useRef,
   useState,
+  useEffectEvent,
 } from "react";
 import { FormattedMessage } from "react-intl";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
@@ -271,6 +272,17 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const [hasScrolled, setHasScrolled] = useState(false);
 
+  // make sure pending index update is canceled properly when the component unmounts
+  const onUnmount = useEffectEvent(() => {
+    clearSettledIndexTimeout();
+  });
+
+  useEffect(() => {
+    return () => {
+      onUnmount();
+    };
+  }, []);
+
   const {
     currentIndex,
     setCurrentIndex,
@@ -342,6 +354,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const settledContent =
     settledIndex === null ? null : (reordered[settledIndex] ?? null);
+
   const settledContentId = settledContent?.id;
 
   useEffect(() => {
