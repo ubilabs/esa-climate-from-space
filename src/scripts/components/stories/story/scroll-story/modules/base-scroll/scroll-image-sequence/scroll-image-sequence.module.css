@@ -42,4 +42,15 @@
       height: auto;
     }
   }
+
+  .sequenceContainer[data-auto-mobile-aspect-ratio="true"] {
+    aspect-ratio: auto;
+    max-height: none;
+    max-width: none;
+
+    .scrollImageSequence {
+      height: auto;
+      max-height: none;
+    }
+  }
 }

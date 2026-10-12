@@ -65,7 +65,7 @@ export default function CanadianFiresModule() {
               <ScrollImageSequence
                 className={styles.sequence}
                 sequence={xFiresModule.imageSequence}
-                mobileAspectRatio="720 / 551"
+                mobileAspectRatio="auto"
               />
             </div>
             <div className={styles.mobileTextRegion}>
@@ -86,7 +86,7 @@ export default function CanadianFiresModule() {
             <ScrollImageSequence
               className={styles.sequence}
               sequence={xFiresModule.imageSequence}
-              mobileAspectRatio="720 / 551"
+              mobileAspectRatio="auto"
             />
             <ScrollText
               inlinePlacement="left"
