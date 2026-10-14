@@ -12,16 +12,16 @@ steps:
     args: ["run", "electron:prepare-build"]
 
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    env:
+      - "CLOUDSDK_STORAGE_PROCESS_COUNT=1"
+      - "CLOUDSDK_STORAGE_THREAD_COUNT=8"
     entrypoint: bash
     args:
       - -c
       - |
         ulimit -n 65536 || true
-        gsutil -m \
-          -o "GSUtil:parallel_process_count=1" \
-          -o "GSUtil:parallel_thread_count=8" \
-          cp -r \
-          gs://esa-cfs-tiles/$$(cat version.txt)/basemaps \
+        gcloud storage cp --recursive \
+          "gs://esa-cfs-tiles/$$(cat version.txt)/basemaps" \
           ./dist
 
   - name: gcr.io/esa-climate-from-space/electron-builder
@@ -48,7 +48,7 @@ steps:
       - "-c"
       - |
         VERSION=$$(cat version.txt)
-        gsutil -m cp ./dist-electron/esa-climate-from-space-$$VERSION-*.zip gs://esa-cfs-versions/electron/$$VERSION/
+        gcloud storage cp ./dist-electron/esa-climate-from-space-$$VERSION-*.zip gs://esa-cfs-versions/electron/$$VERSION/
 options:
   machineType: "E2_HIGHCPU_8"
 timeout: 2500s
