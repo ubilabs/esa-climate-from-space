@@ -4,7 +4,7 @@ steps:
     entrypoint: '/bin/bash'
     args:
       - "-c"
-      - "mkdir /data/netcdfs && gsutil -m cp -r gs://esa-cfs-cate-data/${_LAYER_ID}/*.nc /data/netcdfs/"
+      - 'mkdir /data/netcdfs && gcloud storage cp --recursive "gs://esa-cfs-cate-data/${_LAYER_ID}/*.nc" /data/netcdfs/'
 
   - name: gcr.io/esa-climate-from-space/cate:latest
     id: 'cate-export-data-cube'
@@ -46,24 +46,24 @@ steps:
 
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: 'upload-to-storage'
-    entrypoint: 'gsutil'
+    entrypoint: 'gcloud'
     args:
-      - "-m"
-      - "-q"
+      - "storage"
       - "cp"
-      - "-r"
+      - "--verbosity=error"
+      - "--no-user-output-enabled"
+      - "--recursive"
       - "/data/upload/${_LAYER_ID}/*"
       - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/"
 
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     id: 'set-no-cache-on-metadata'
-    entrypoint: 'gsutil'
+    entrypoint: 'gcloud'
     args:
-      - "-m"
-      - "setmeta"
-      - "-r"
-      - "-h"
-      - "Cache-Control: no-cache"
+      - "storage"
+      - "objects"
+      - "update"
+      - "--cache-control=no-cache"
       - "gs://esa-cfs-tiles/${_VERSION}/${_LAYER_ID}/metadata.json"
 
 options:

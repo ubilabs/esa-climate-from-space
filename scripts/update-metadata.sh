@@ -27,13 +27,13 @@ do
     # download metadata file
     path=gs://esa-cfs-tiles/$version/$datasetId/metadata.json
     metadataFileName=$workingDir/$datasetId-metadata.json
-    gsutil -q cp $path $metadataFileName
+    gcloud storage cp --verbosity=error --no-user-output-enabled $path $metadataFileName
 
     # merge layer config into metdata file
-    jq -s ".[0] + .[1].\"$datasetId\"" $metadataFileName $layersConfigFile | gsutil -q cp - $path
+    jq -s ".[0] + .[1].\"$datasetId\"" $metadataFileName $layersConfigFile | gcloud storage cp --verbosity=error --no-user-output-enabled - $path
 
     # set cachhing headers foir remote file
-    gsutil -q setmeta -r -h "cache-control: no-cache" $path
+    gcloud storage objects update --verbosity=error --no-user-output-enabled --cache-control=no-cache $path
 
     # delete files
     rm $metadataFileName
