@@ -90,7 +90,7 @@ def gcs_upload_file(bucket_name: str, layer_id: str, layer_variable: str, layer_
 def gcloud_upload_dir(layer_id: str, layer_variable: str, directory: str):
     return BashOperator(
         task_id='gcloud_upload',
-        bash_command='gcloud auth activate-service-account --key-file $KEY_FILE && gsutil -q -m cp -r $UPLOAD_DIR/* $BUCKET',
+        bash_command='gcloud auth activate-service-account --key-file $KEY_FILE && gsutil -q -m rsync -r -d $UPLOAD_DIR/* $BUCKET',
         env={
             "UPLOAD_DIR": directory,
             "BUCKET": 'gs://{{ dag_run.conf["output_bucket"] }}/{{ dag_run.conf["layer_version"] }}/' + f'{layer_id}.{layer_variable}/',
