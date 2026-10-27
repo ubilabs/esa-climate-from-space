@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { useSelector } from "react-redux";
 import cx from "classnames";
-import { VideoJsPlayer } from "video.js";
+import VideoJsPlayer from "video.js/dist/types/player";
 
 import { languageSelector } from "../../../selectors/language";
 import { AppRoute } from "../../../types/app-routes";

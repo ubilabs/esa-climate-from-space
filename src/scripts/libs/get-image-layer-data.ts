@@ -37,7 +37,7 @@ export function getImageLayerData(
   });
 
   const nextUrls = Array.from({ length: NUM_PRELOAD_URLS })
-    .map((n, index) => timeIndex + index)
+    .map((_, index) => timeIndex + index)
     .filter((index) => index < layer.timestamps.length)
     .map((index) =>
       replaceUrlPlaceholders(url, {

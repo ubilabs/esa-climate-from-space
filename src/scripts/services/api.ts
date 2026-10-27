@@ -5,7 +5,10 @@ import fetchStory from "../api/fetch-story";
 import config from "../config/main";
 
 import { convertLegacyStory } from "../libs/convert-legacy-story";
-import { isLegacyStory } from "../libs/is-legacy-story";
+import {
+  isLegacyStory,
+  isMixedContentLegacyStory,
+} from "../libs/is-legacy-story";
 import { replaceUrlPlaceholders } from "../libs/replace-url-placeholders";
 
 import { setLayerDetails } from "../reducers/layers";
@@ -67,9 +70,12 @@ export const layersApi = createApi({
 
 const fetchAndConvertStory = async (id: string, language: Language) => {
   const rawData = await fetchStory(id, language as Language);
-  const data = isLegacyStory(rawData)
-    ? convertLegacyStory(rawData as LegacyStory)
-    : (rawData as LegacyStoryType);
+  const data =
+    isLegacyStory(rawData) &&
+    !isMixedContentLegacyStory(rawData as unknown as LegacyStory)
+      ? convertLegacyStory(rawData as unknown as LegacyStory)
+      : (rawData as unknown as LegacyStoryType);
+
   return data;
 };
 
@@ -92,7 +98,9 @@ export const storiesApi = createApi({
     >({
       queryFn: async ({ id, language }) => {
         if (!id) {
-          return { data: null };
+          return {
+            error: { status: "CUSTOM_ERROR", error: "Missing story id" },
+          };
         }
         try {
           const data = await fetchStory(id, language as Language);
@@ -110,7 +118,7 @@ export const storiesApi = createApi({
 
     // Fetch legacy stories. Still in use in LegacyStory.tsx
     getLegacyStory: builder.query<
-      LegacyStory,
+      LegacyStoryType,
       { id: string; language: string }
     >({
       queryFn: async ({ id, language }) => {
@@ -128,7 +136,7 @@ export const storiesApi = createApi({
       },
     }),
     getStories: builder.query<
-      LegacyStory[],
+      LegacyStoryType[],
       { ids: string[]; language: string }
     >({
       queryFn: async ({ ids, language }) => {

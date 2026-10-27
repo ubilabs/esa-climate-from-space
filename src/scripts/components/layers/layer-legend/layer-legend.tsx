@@ -7,6 +7,7 @@ import config from "../../../config/main";
 import { isElectron } from "../../../libs/electron/is-electron";
 import { isOffline } from "../../../libs/electron/is-offline";
 import { getOfflineLegendImageUrl } from "../../../libs/electron/get-offline-legend-image-url";
+import { useAppRouteFlags } from "../../../hooks/use-app-route-flags";
 
 import { BasemapId } from "../../../types/basemap";
 
@@ -49,8 +50,10 @@ const LayerLegend: FunctionComponent<Props> = ({
       : config.legendImage;
   const imageUrl = replaceUrlPlaceholders(imageUrlTemplate, { id });
 
+  const { isStoriesRoute } = useAppRouteFlags();
+
   return (
-    <div className={cx(styles.layerLegend, isCompare && styles.rightSided)}>
+    <div className={cx(styles.layerLegend, isCompare && styles.rightSided, isStoriesRoute && styles.inStoryLegend)}>
       <img
         className={styles.image}
         style={{ backgroundColor: getBackgroundColor(basemap) }}

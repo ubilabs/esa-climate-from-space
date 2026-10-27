@@ -1,5 +1,5 @@
 steps:
-  - name: gcr.io/cloud-builders/npm
+  - name: node:22
     entrypoint: npm
     args: ["ci"]
 

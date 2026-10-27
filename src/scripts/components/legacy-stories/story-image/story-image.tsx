@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import cx from "classnames";
+import { useScreenInfo } from "../../../hooks/use-screen-info";
 
 import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
 
@@ -23,6 +24,7 @@ const StoryImage: FunctionComponent<Props> = ({
 }) => {
   const imageUrl = getStoryAssetUrl(storyId, imageItem.image);
   const { imageCaption, imageFit } = imageItem;
+  const { isMobile } = useScreenInfo();
   return (
     <>
       <img
@@ -37,7 +39,11 @@ const StoryImage: FunctionComponent<Props> = ({
         <Caption
           showLightbox={showLightbox}
           content={imageCaption}
-          imageFit={imageFit}
+          position={
+            (showLightbox || isMobile) && imageFit === ImageFit.Cover
+              ? "absolute"
+              : "static"
+          }
         />
       )}
     </>

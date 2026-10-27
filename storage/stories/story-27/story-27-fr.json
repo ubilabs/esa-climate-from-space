@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# Chaleur urbaine\r\n\r\nLes villes sont de plus en plus notre maison, mais elles amplifient certains des pires effets du changement climatique, en emprisonnant la chaleur et en menaçant la santé. Les vagues de chaleur devenant plus extrêmes et plus fréquentes, les habitants des plus grandes villes sont les plus exposés.",
       "shortText": "# Chaleur urbaine\r\n\r\nLes villes sont de plus en plus notre maison, mais elles amplifient certains des pires effets du changement climatique, en emprisonnant la chaleur et en menaçant la santé. Les vagues de chaleur devenant plus extrêmes et plus fréquentes, les habitants des plus grandes villes sont les plus exposés.",
-      "images": [
-        "assets/story27-image03.jpg"
-      ]
+      "images": ["assets/story27-image03.jpg"]
     },
     {
       "type": "image",
@@ -27,25 +25,13 @@
         "Au cours de l'été 2022, les terres vertes de l'Angleterre et du nord de la France sont devenues brunes après des mois de températures élevées et de faibles précipitations. Cette image a été prise par le satellite Copernicus Sentinel-3 de l'ESA le 12 août 2022. Au cours de ce mois, le capteur infrarouge du satellite a enregistré des températures de surface supérieures à 45°C au Royaume-Uni, 50°C en France et 60°C en Espagne. (Contient des données Copernicus Sentinel modifiées (2022), traitées par l'ESA)",
         "Température à la surface du sol pendant la vague de chaleur de l'été 2023 dans le sud de l'Europe. Cette image utilise les données du radiomètre du satellite Copernicus Sentinel-3 pour montrer la température de la surface terrestre le matin du 17 juillet 2023. Avec le changement climatique, les vagues de chaleur comme celle-ci risquent d'être plus fréquentes et plus sévères. (Contient des données modifiées de Copernicus Sentinel (2023), traitées par l'ESA)"
       ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
     },
     {
       "type": "globe",
-      "text": "## Iles de chaleur urbaines\r\n\r\nLe globe interactif montre l'étendue des différents types de couverture terrestre, y compris les zones urbaines ainsi que les types de couverture naturelle comme la forêt et le désert. Observez la croissance explosive de villes comme Shanghai en Chine depuis le début de l'enregistrement des données dans les années 1990. Des cartes cohérentes de l'occupation des sols sont établies à partir d'observations par satellite réalisées par l'[Initiative sur le changement climatique](stories/story-32/3) de l'Agence spatiale européenne. D'autres variables climatiques mesurées depuis l'espace sont la quantité d'[humidité dans le sol](stories/story-21/5) et la température de la surface terrestre, fournissant une vue d'ensemble des points chauds de la planète.\r\n\r\n![Graphique des profils de température en milieu urbain et rural ](assets/story27-image04.png)\r\n_Comparaison de la température moyenne mensuelle pour les stations météorologiques urbaines et rurales au Royaume-Uni (respectivement Heathrow et Waddington) (KNMI)_\r\n\r\nÀ mesure que de plus en plus de personnes s'installent dans une ville, de vastes zones de végétation sont remplacées par des routes, des aires de stationnement et des bâtiments. Les matériaux de construction ont une capacité d'absorption et de stockage de la chaleur du soleil bien plus élevée que les plantes et le sol, tandis que les bâtiments densément peuplés empêchent l'air de circuler, ce qui réduit la quantité de chaleur pouvant s'échapper. La chaleur générée dans les usines, les bureaux et les habitations augmente également la température de l'air. Les villes peuvent être jusqu'à 7 degrés Celsius plus chaudes que la campagne environnante. Les endroits où les températures sont ainsi élevées sont connus sous le nom d'îlots de chaleur urbains.",
-      "shortText": "## Iles de chaleur urbaines\r\n\r\nLe globe interactif montre la croissance explosive de villes comme Shanghai en Chine depuis le début de l'enregistrement des données dans les années 1990.\r\n\r\n- La couverture terrestre, la température de la surface terrestre et l'humidité du sol sont des variables climatiques utiles pour les villes.\r\n- À mesure que les villes s'étendent, la végétation est remplacée par des bâtiments, des routes et des parkings.\r\n- Les matériaux de construction ont une capacité thermique beaucoup plus élevée que les plantes et le sol.  \r\n- La chaleur générée dans les usines, les bureaux et les habitations contribue également à l'augmentation des températures de l'air.\r\n- Les villes peuvent être jusqu'à 7°C plus chaudes que la campagne environnante.\r\n\r\nGraphique des profils de température urbains et ruraux ](assets/story27-image04.png)\r\n_Comparaison de la température moyenne mensuelle pour les stations météorologiques urbaines et rurales au Royaume-Uni (respectivement Heathrow et Waddington) (KNMI)_",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "text": "## Iles de chaleur urbaines\r\n\r\nLe globe interactif montre l'étendue des différents types de couverture terrestre, y compris les zones urbaines ainsi que les types de couverture naturelle comme la forêt et le désert. Observez la croissance explosive de villes comme Shanghai en Chine depuis le début de l'enregistrement des données dans les années 1990. Des cartes cohérentes de l'occupation des sols sont établies à partir d'observations par satellite réalisées par l'[Initiative sur le changement climatique](stories/story-32/3) de l'Agence spatiale européenne. D'autres variables climatiques mesurées depuis l'espace sont la quantité d'[humidité dans le sol](stories/story-21/5) et la température de la surface terrestre, fournissant une vue d'ensemble des points chauds de la planète.\r\n\r\n<iframe title=\"Graphique des profils de température en milieu urbain et rural\" width=\"100%\" frameBorder=\"0\" src=\"assets/urban_heat_islands_chart.html\"></iframe> \r\n\r\n_Comparaison de la température moyenne mensuelle pour les stations météorologiques urbaines et rurales au Royaume-Uni (respectivement Heathrow et Waddington) (KNMI)_\r\n\r\nÀ mesure que de plus en plus de personnes s'installent dans une ville, de vastes zones de végétation sont remplacées par des routes, des aires de stationnement et des bâtiments. Les matériaux de construction ont une capacité d'absorption et de stockage de la chaleur du soleil bien plus élevée que les plantes et le sol, tandis que les bâtiments densément peuplés empêchent l'air de circuler, ce qui réduit la quantité de chaleur pouvant s'échapper. La chaleur générée dans les usines, les bureaux et les habitations augmente également la température de l'air. Les villes peuvent être jusqu'à 7 degrés Celsius plus chaudes que la campagne environnante. Les endroits où les températures sont ainsi élevées sont connus sous le nom d'îlots de chaleur urbains.",
+      "shortText": "## Iles de chaleur urbaines\r\n\r\nLe globe interactif montre la croissance explosive de villes comme Shanghai en Chine depuis le début de l'enregistrement des données dans les années 1990.\r\n\r\n- La couverture terrestre, la température de la surface terrestre et l'humidité du sol sont des variables climatiques utiles pour les villes.\r\n- À mesure que les villes s'étendent, la végétation est remplacée par des bâtiments, des routes et des parkings.\r\n- Les matériaux de construction ont une capacité thermique beaucoup plus élevée que les plantes et le sol.  \r\n- La chaleur générée dans les usines, les bureaux et les habitations contribue également à l'augmentation des températures de l'air.\r\n- Les villes peuvent être jusqu'à 7°C plus chaudes que la campagne environnante.\r\n\r\n<iframe title=\"Graphique des profils de température en milieu urbain et rural\" width=\"100%\" frameBorder=\"0\" src=\"assets/urban_heat_islands_chart.html\"></iframe> \r\n\r\n_Comparaison de la température moyenne mensuelle pour les stations météorologiques urbaines et rurales au Royaume-Uni (respectivement Heathrow et Waddington) (KNMI)_",
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "flyTo": {
         "position": {
           "longitude": 119.04,
@@ -84,13 +70,7 @@
         "La température à la surface du sol à Prague, mesurée le 18 juin 2022 par l'instrument ECOSTRESS de la NASA, montre l'effet rafraîchissant des parcs et des cours d'eau. L'ESA utilise cet instrument, monté sur la Station spatiale internationale, pour contribuer au développement d'un nouveau satellite Copernicus Sentinel, la mission LSTM (Land Surface Temperature Monitoring).  (NASA/JPL-Caltech)",
         "La mission Copernicus Sentinel Land Surface Temperature Monitoring (LSTM) transportera un capteur infrarouge thermique à haute résolution qui fournira des observations de la température à la surface du sol. Cela permettra de suivre les épisodes de chaleur extrême dans les villes et de fournir des informations aux utilisateurs agricoles à l'échelle des champs individuels. (Airbus)"
       ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
     },
     {
       "type": "globe",
@@ -134,13 +114,7 @@
         "Températures à la surface du sol autour de Rome, Italie, mesurées depuis l'espace à 22:23 CEST le 17 juillet 2023. La température de surface a atteint 35°C dans certaines parties de la ville, mais l'effet rafraîchissant de la végétation est visible, par exemple, dans le parc de la Voie Appienne. Les températures ont été enregistrées par l'instrument Ecostress de la NASA à bord de la Station spatiale internationale, qui contribue au développement d'un nouveau satellite Copernicus Sentinel Expansion - la mission Land Surface Temperature Monitoring (LSTM). (NASA/JPL)",
         "Une paire de chênes sur Hampstead Heath à Londres, rendue sous forme de nuage de points à partir de mesures de distance par laser.\r\nLa masse de carbone stockée par les arbres peut être estimée à l'aide de modèles d'arbres en 3D basés sur le balayage laser\r\n(lidar - détection et télémétrie par la lumière). (M Disney/P Wilkes/UCL)"
       ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["cover", "contain", "contain", "contain", "contain"]
     }
   ]
 }

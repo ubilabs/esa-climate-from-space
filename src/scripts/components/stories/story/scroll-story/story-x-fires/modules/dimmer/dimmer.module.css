@@ -1,0 +1,9 @@
+.dimmer {
+  --x-fires-dimmer-opacity: 0.5;
+
+  position: absolute;
+  inset: 0;
+  background-color: #000;
+  opacity: var(--x-fires-dimmer-opacity);
+  pointer-events: none;
+}

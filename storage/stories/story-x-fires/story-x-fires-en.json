@@ -1,0 +1,167 @@
+{
+  "id": "story-x-fires",
+  "splashscreen": {
+    "focus": "center",
+    "title": "Extreme Fires",
+    "globeKeyframes": [],
+    "lengthFactor": 2
+  },
+  "modules": [
+    {
+      "type": "intro",
+      "imageSequence": {
+        "path": "assets/video-sequence-1"
+      },
+      "content": {
+        "scrollText1": "Fire is a natural seasonal force in many ecosystems, clearing dead wood and stimulating new growth. People use fire to manage land and wildlife and to clear forest and shrubs for agriculture. ",
+        "scrollText2": "But as the climate warms, untamed, extreme infernos are transforming landscapes and polluting the atmosphere.",
+        "scrollText3": "Extreme fires burn out of control and are at times only extinguished when weather conditions change. To understand why an ordinary seasonal fire becomes a catastrophe, we must look beyond the flames."
+      }
+    },
+    {
+      "type": "namingTheBeast",
+      "content": {
+        "scrollText1": "Naming the Beast",
+        "scrollText2": "Wildfires occur around the world. Some ecosystems are more fire-prone than others, and in some places “extreme” fires have been recorded.",
+        "scrollText3": "Scientists use precise measurements from space to determine whether a fire event is “normal” or “extreme”"
+      }
+    },
+    {
+      "type": "radiativePowerThreshold",
+      "content": {
+        "scrollText1": "Earth-orbiting satellites can measure the brightness (or radiative power) of flames on the ground.",
+        "scrollText2": "If the power heavily exceeds the regional average, it may become an extreme event.",
+        "flameIllustrationTitle": "Radiative power of flames on the ground",
+        "flameIllustrationDescription": "Illustration fire event and radiative power threshold.",
+        "legendLabelRadiativePowerThreshold": "Radiative Power Threshold"
+      }
+    },
+    {
+      "type": "burnedArea",
+      "content": {
+        "scrollText1": "The other key measure is the area of ground burned by the fire.",
+        "scrollText2": "If this also exceeds the regional threshold, we are dealing with an extreme fire event.",
+        "fireRingIllustrationTitle": "Area of ground burned by the fire",
+        "fireRingIllustrationDescription": "Illustration showing burned and ground areas.",
+        "legendLabelBurnedAreaThreshold": "Burned Area Threshold"
+      }
+    },
+    {
+      "type": "zoomToPortugal",
+      "content": {
+        "scrollText1": "Ground Truth",
+        "scrollText2": "Recognising an extreme fire is only half the story. To understand why they're happening, we have to look at more diverse data. As part of ESA’s Climate Change Initiative, the XFires project is examining several aspects of the climate that can act as drivers of wildfires.",
+        "scrollText3": "The XFires team has examined the conditions leading to a series of devastating fires in Portugal in 2017."
+      }
+    },
+    {
+      "type": "portugalDataLayers",
+      "dataLayer": {
+        "path": "assets/portugal-data-layers"
+      },
+      "imageSequence": {
+        "path": "assets/video-fires-in-portugal"
+      },
+      "infoContent": {
+        "description": "Extreme fire events in October 2017"
+      },
+      "content": {
+        "scrollText1": "They used maps of land cover to identify highly flammable vegetation types and biomass to estimate fuel cload.",
+        "scrollText2": "Soil moisture and land surface temperature datasets reveal the drought conditions that primed the landscape for fire.",
+        "scrollText3": "By stacking these variables, researchers can reconstruct the exact conditions that resulted in an extreme fire event that devaststed the landscape.",
+        "scrollText4": "Four fires broke out on the afternoon of 17 June 2017 and spread rapidly, killing 66 people and injuring 253 by 24 June. 485 homes were destroyed and € 52 million of damage was caused to farms and other businesses.",
+        "scrollText5": "The June fires burned a large area, but were not intense enough to be classified as extreme. In October another wave of fires was fanned by strong winds from Hurricane Ophelia. This extreme fire event led to an additional 45 deaths.",
+        "labelLayer1": "Land Cover",
+        "labelLayer2": "Biomass",
+        "labelLayer3": "Soil Moisture",
+        "labelLayer4": "Land Surface\nTemperature"
+      }
+    },
+    {
+      "type": "hurricaneOphelia",
+      "imageSequence": {
+        "path": "assets/video-hurricane-ophelia"
+      },
+      "infoContent": {
+        "description": "Highlighted: smoke"
+      },
+      "content": {
+        "scrollText1": "Climate Connections",
+        "scrollText2": "The impact didn't stop at Portugal's borders. The hurricane pulled smoke plumes north across Spain and France to the UK. Black rain was reported falling as far away as Estonia.",
+        "scrollText3": "Wildfires should not be seen as isolated events. They are shaped by and also influence our changing climate."
+      }
+    },
+    {
+      "type": "canadianFires",
+      "credentials": "Total aerosol optical depth at 550nm for 22 May - 1 Jun 2025 (CAMS/ECMWF)",
+      "imageSequence": {
+        "path": "assets/video-canadian-fires"
+      },
+      "content": {
+        "scrollText1": "In 2023, carbon emissions from Canadian wildfires exceeded the fossil fuel emissions of most nations. Only China, India and the United States released more carbon into the atmosphere.",
+        "scrollText2": "In 2025, smoke from forest fires in Canada was transported at high altitude across the Atlantic Ocean to Europe. "
+      },
+      "legend": {
+        "entriesUrl": "assets/canadian_fires_legend_entries.csv",
+        "description": "CAMS Analysis Total Aerosol Optical Depth at 550 nm"
+      }
+    },
+    {
+      "type": "australianFires",
+      "credentials": "Sentinel-5P absorbing aerosol index for 28 Dec 2019 - 8 Jan 2020 (contains modified Copernicus Sentinel data (2019–20), processed by ESA)",
+      "imageSequence": {
+        "path": "assets/video-australian-fires"
+      },
+      "content": {
+        "scrollText1": "In 2020, Australian wildfire smoke reached the stratosphere, warming it and prolonging that year’s Antarctic ozone hole.",
+        "scrollText2": "Ash from the fires fertilised plankton blooms thousands of kilometres away in the South Pacific, boosting carbon absorption by the ocean."
+      }
+    },
+    {
+      "type": "outro",
+      "content": {
+        "headline": "Building Resilience",
+        "description": ""
+      },
+      "readMore": {
+        "headline": "ESA’s XFires is generating a global database of extreme fires and examining their drivers, to test and improve global fire models. This will help decision-makers and communities predict, prepare for, and mitigate future climate risks, safeguarding ecosystems, property and human lives.",
+        "title": "Explore the data, the maps, and the science behind XFires",
+        "url": "https://climate.esa.int/en/Cross_ECV_Projects/xfires"
+      },
+      "slides": [
+        {
+          "layer": {
+            "layerId": "land_cover.lccs_class",
+            "name": "Land Cover"
+          },
+          "altText": "Land cover",
+          "url": "assets/outro/land_cover.png"
+        },
+        {
+          "layer": {
+            "layerId": "biomass.agb",
+            "name": "Biomass"
+          },
+          "altText": "Biomass",
+          "url": "assets/outro/biomass.png"
+        },
+        {
+          "layer": {
+            "layerId": "soil_moisture.Anomaly",
+            "name": "Soil Moisture"
+          },
+          "altText": "Soil moisture",
+          "url": "assets/outro/soil_moisture.png"
+        },
+        {
+          "layer": {
+            "layerId": "land_surface_temperature.lst",
+            "name": "Land Surface Temperature"
+          },
+          "altText": "Land surface temperature",
+          "url": "assets/outro/land_surface_temperature.png"
+        }
+      ]
+    }
+  ]
+}

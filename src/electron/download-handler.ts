@@ -63,7 +63,7 @@ export function addDownloadHandler(browserWindow: BrowserWindow) {
 
     console.log(`Downloading file ${item.getFilename()} to ${item.savePath}`);
 
-    item.on("updated", (event, state) => {
+    item.on("updated", (_event, state) => {
       if (state === "interrupted") {
         console.log("Download is interrupted but can be resumed");
       } else if (state === "progressing") {
@@ -81,7 +81,7 @@ export function addDownloadHandler(browserWindow: BrowserWindow) {
       }
     });
 
-    item.once("done", (event, state) => {
+    item.once("done", (_event, state) => {
       if (state === "completed") {
         const match = item.getURL().match(/\/([^/]+)\/package\.zip$/);
         const datasetName = match ? match[1] : null;

@@ -1,0 +1,27 @@
+.container {
+  --info-container-opacity: 100%;
+  opacity: var(--info-container-opacity);
+  z-index: 10;
+
+  .info {
+    position: absolute;
+    top: 10%;
+    right: 1.5rem;
+  }
+
+  @media (--desktop-viewport) {
+    .info {
+      top: auto;
+      bottom: 3.5rem;
+      right: 1.5rem;
+    }
+  }
+}
+
+.content {
+  right: calc(100% + 0.5rem);
+  transform: translateY(-50%);
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  width: max-content;
+}

@@ -1,4 +1,10 @@
-import { useState, useRef, FunctionComponent, SyntheticEvent } from "react";
+import {
+  useState,
+  useRef,
+  FunctionComponent,
+  SyntheticEvent,
+  CSSProperties,
+} from "react";
 import { useIntl } from "react-intl";
 import { motion, useMotionValue, useTransform } from "motion/react";
 import { useGesture } from "@use-gesture/react";
@@ -59,6 +65,8 @@ export const ScrollImage: FunctionComponent<Props> = ({
     offset: ["start end", "end end"],
   });
 
+  // there seems to be a bug in chrome where the clipPath and opacity are not automatically updated by motion anymore
+  // setting a custom variable on the element fixes that
   const clipPath = useTransform(
     scrollYProgress,
     [0.5, 1],
@@ -149,14 +157,16 @@ export const ScrollImage: FunctionComponent<Props> = ({
         src={src}
         alt={alt}
         className={cx(styles.image, className)}
-        style={{
-          x: isFullscreen ? x : 0,
-          y: isFullscreen ? y : 0,
-          scale: isFullscreen ? scale : 1,
-          cursor: isFullscreen ? "grab" : "default",
-          clipPath: isFullscreen ? "none" : clipPath,
-          [focus === "contain" ? "objectFit" : "objectPosition"]: focus,
-        }}
+        style={
+          {
+            x: isFullscreen ? x : 0,
+            y: isFullscreen ? y : 0,
+            scale: isFullscreen ? scale : 1,
+            cursor: isFullscreen ? "grab" : "default",
+            "--image-clip-path": isFullscreen ? "none" : clipPath,
+            [focus === "contain" ? "objectFit" : "objectPosition"]: focus,
+          } as CSSProperties
+        }
         draggable={false}
       />
 
@@ -165,7 +175,11 @@ export const ScrollImage: FunctionComponent<Props> = ({
           onClick={handleOpen}
           className={styles.fullscreenButton}
           aria-label={intl.formatMessage({ id: "enterFullscreen" })}
-          style={{ opacity: buttonOpacity }}
+          style={
+            {
+              "--button-opacity": buttonOpacity,
+            } as CSSProperties
+          }
         ></motion.button>
       )}
 

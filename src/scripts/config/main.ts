@@ -38,6 +38,10 @@ export const ROUTES = {
     path: "/:category/stories/story-eei/:slideIndex",
     end: true,
   },
+  [AppRoute.StoryXFires]: {
+    path: "/:category/stories/story-x-fires/:slideIndex",
+    end: true,
+  },
   [AppRoute.Stories]: {
     path: "/:category/stories/:storyId/:slideIndex",
     end: true,
@@ -119,11 +123,12 @@ export const uiEmbedElements: UiEmbedElement[] = [
 // @ts-expect-error - injected via vite
 const version = INFO_VERSION;
 const baseUrlTiles = `https://storage.googleapis.com/esa-cfs-tiles/${version}`;
+const baseUrlStorageCloud = `https://storage.googleapis.com/esa-cfs-storage/${version}`;
 let baseUrlStorage = "/";
 
 // use content from local server
 if (import.meta.env.PROD) {
-  baseUrlStorage = `https://storage.googleapis.com/esa-cfs-storage/${version}/`;
+  baseUrlStorage = `${baseUrlStorageCloud}/`;
 }
 
 type BasemapId =
@@ -134,6 +139,7 @@ type BasemapId =
   | "land"
   | "ocean"
   | "clouds"
+  | "x-fires"
   | "none";
 
 const basemapMaxZoom: { [id in BasemapId]: number } = {
@@ -144,6 +150,7 @@ const basemapMaxZoom: { [id in BasemapId]: number } = {
   land: 4,
   ocean: 4,
   clouds: 4,
+  "x-fires": 3,
   none: 0,
 } as const;
 
@@ -155,6 +162,7 @@ const basemapUrls: { [id in BasemapId]: string | null } = {
   dark: `${baseUrlTiles}/basemaps/dark`,
   colored: `${baseUrlTiles}/basemaps/colored`,
   clouds: `${baseUrlTiles}/basemaps/clouds`,
+  "x-fires": `${baseUrlTiles}/basemaps/x-fires`,
   none: null,
 } as const;
 
@@ -166,6 +174,7 @@ const basemapUrlsOffline: { [id in BasemapId]: string | null } = {
   dark: "basemaps/dark",
   colored: "basemaps/colored",
   clouds: "basemaps/clouds",
+  "x-fires": "basemaps/x-fires",
   none: null,
 } as const;
 
@@ -174,6 +183,24 @@ const downloadUrls = {
   macOS: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-mac.zip`,
   linux: `https://storage.googleapis.com/esa-cfs-versions/electron/${version}/esa-climate-from-space-${version}-linux.zip`,
 } as const;
+
+const markdownAllowedElements = [
+  "p",
+  "h1",
+  "h2",
+  "h3",
+  "a",
+  "br",
+  "b",
+  "em",
+  "img",
+  "fig",
+  "figcaption",
+  "li",
+  "ul",
+  "ol",
+  "strong",
+];
 
 export default {
   api: {
@@ -187,8 +214,10 @@ export default {
     layerIcon: `${baseUrlTiles}/{id}/icon.png`,
     storyOfflinePackage: `${baseUrlStorage}stories/{id}/package.zip`,
     storyMediaBase: `${baseUrlStorage}stories/{id}`,
+    storyCloudMediaBase: `${baseUrlStorageCloud}/stories/{id}`,
     stories: `${baseUrlStorage}stories/stories-{lang}.json`,
     story: `${baseUrlStorage}stories/{id}/{id}-{lang}.json`,
+    storySharedConfig: `${baseUrlStorage}stories/{id}/{id}-config.json`,
     storySplashImage: `${baseUrlStorage}stories/{id}/{image}`,
   },
   defaultBasemap: "colored" as BasemapId,
@@ -215,32 +244,21 @@ export default {
   localStorageWelcomeScreenKey: "welcomeScreenChecked",
   delay: 5000,
   feedbackUrl: "https://climate.esa.int/en/helpdesk/",
-  markdownAllowedElements: [
-    "p",
-    "h1",
-    "h2",
-    "h3",
-    "a",
-    "br",
-    "b",
-    "em",
-    "img",
-    "fig",
-    "figcaption",
-    "li",
-    "ul",
-    "ol",
-    "strong",
-  ],
+  markdownAllowedElements,
+  // allow iframes for interactive assets story content e.g. charts
+  legacyStoryMarkdownElements: [...markdownAllowedElements, "iframe"],
   lenisOptions: {
     touchMultiplier: isAndroid() ? 2 : 1,
-    wheelMultiplier: 1,
+    // Keep long-form stories responsive without making trackpad input jumpy.
+    wheelMultiplier: 1.1,
     smoothTouch: true,
     smoothWheel: true,
-    lerp: 0.1,
+    // Keep wheel scrolling responsive while allowing a more natural glide.
+    lerp: 0.12,
     infinite: false,
-    syncTouchLerp: 0.075,
-    touchInertiaMultiplier: 16,
+    // Extend the touch release glide further so stronger flicks carry longer.
+    syncTouchLerp: 0.045,
+    touchInertiaMultiplier: 56,
     // Modern iOS touch sync
     syncTouch: !isIos16orLower(),
 

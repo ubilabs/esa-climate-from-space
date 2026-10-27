@@ -13,5 +13,6 @@ export enum AppRoute {
   LegacyStories = "legacy_stories",
   LegacyStory = "legacy_story",
   StoryEEI = "story-eei",
+  StoryXFires = "story-x-fires",
   Unknown = "unknown",
 }

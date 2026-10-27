@@ -1,8 +1,11 @@
-import { useRef, useState, useMemo, FunctionComponent } from "react";
+import { useRef, useState, useMemo, useEffect, FunctionComponent } from "react";
 import { motion, useMotionValueEvent } from "motion/react";
 import { StoryMarkdown } from "../../../../../../../shared/story-markdown/story-markdown";
+
 import {
+  ImageModule,
   ImageModuleSlide,
+  LegendEntry,
   StorySectionProps,
 } from "../../../../../../../../types/story";
 
@@ -15,6 +18,10 @@ import { useModuleContent } from "../../../../../../../../providers/story/module
 import { useStory } from "../../../../../../../../providers/story/use-story";
 import { useGesture } from "@use-gesture/react";
 import { useScreenInfo } from "../../../../../../../../hooks/use-screen-info";
+
+import { legendComponentMap } from "../../../../../../../../libs/get-legend-component";
+import fetchAndParseCSV from "../../../../../../../../libs/fetch-and-parse-csv";
+import { getStoryAssetUrl } from "../../../../../../../../libs/get-story-asset-urls";
 
 import config from "../../../../../../../../config/main";
 
@@ -29,7 +36,7 @@ interface BlendWrapperProps extends StorySectionProps {
 const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
   animationDirection,
 }) => {
-  const { module, storyId, getRefCallback } = useModuleContent();
+  const { module, storyId, getRefCallback } = useModuleContent<ImageModule>();
   const { lenisRef } = useStory();
   const { isTouchDevice } = useScreenInfo();
 
@@ -37,9 +44,20 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
 
   const targetRef = useRef<HTMLDivElement | null>(null);
   const images: ImageModuleSlide[] = useMemo(
-    () => module?.slides ?? [],
+    () => module.slides ?? [],
     [module],
   );
+
+  const legend = module.legend;
+
+  const [legendEntries, setLegendEntries] = useState<LegendEntry[]>([]);
+
+  useEffect(() => {
+    fetchAndParseCSV<LegendEntry>(
+      getStoryAssetUrl(storyId, legend?.entriesUrl),
+    ).then((data) => setLegendEntries(data));
+  }, [storyId, legend?.entriesUrl]);
+
   const numSlides = images.length;
 
   const [activeSlideIndex, setActiveSlideIndex] = useState<number>(0);
@@ -87,13 +105,15 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
     return activeSlide.caption || "";
   }, [activeSlideIndex, images]);
 
+  const Legend = legend?.type ? legendComponentMap[legend.type] : null;
+
   return (
     <div
       ref={targetRef}
       className={styles.stickySectionWrapper}
       style={{ height: `calc(${numSlides} * var(--story-height))` }}
     >
-      <motion.div className={styles.stickyScroller}>
+      <motion.figure className={styles.stickyScroller}>
         <ul className={styles.imageContainer}>
           {images.map((image, i) => (
             <TimeAndWavelengthBlendImage
@@ -123,7 +143,10 @@ const TimeAndWavelengthBlend: FunctionComponent<BlendWrapperProps> = ({
             </StoryMarkdown>
           </div>
         </div>
-      </motion.div>
+        {Legend && legend && legendEntries.length > 0 && (
+          <Legend legend={legend} legendEntries={legendEntries} />
+        )}
+      </motion.figure>
     </div>
   );
 };

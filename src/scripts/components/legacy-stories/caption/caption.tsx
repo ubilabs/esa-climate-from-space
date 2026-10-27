@@ -1,33 +1,27 @@
 import { FunctionComponent } from "react";
 import ReactMarkdown from "react-markdown";
 import cx from "classnames";
-import { useScreenInfo } from "../../../hooks/use-screen-info";
 
 import styles from "./caption.module.css";
-import { ImageFit } from "../../../types/image-fit";
 
 interface Props {
   content: string;
   showLightbox: boolean;
-  imageFit?: ImageFit;
+  position?: "absolute" | "static" | "relative";
 }
 
 const Caption: FunctionComponent<Props> = ({
   content,
   showLightbox,
-  imageFit,
+  position,
 }) => {
-  const { isMobile } = useScreenInfo();
   const classes = cx(styles.caption, showLightbox && styles.lightboxCaption);
 
   return (
     <div
       className={classes}
       style={{
-        position:
-          (showLightbox || isMobile) && imageFit === ImageFit.Cover
-            ? "absolute"
-            : "static",
+        position,
       }}
     >
       <div className={styles.content}>

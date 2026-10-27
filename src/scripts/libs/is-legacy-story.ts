@@ -12,3 +12,12 @@ export const isLegacyStory = (story: LegacyStory | Story): boolean => {
 
   return true;
 };
+
+/**
+ * Checks if a given legacy story contains mixed content, such as image and embedded gallery items.
+ * @param story The story to check.
+ * @returns True if the story is a mixed content legacy story, false otherwise.
+ */
+export const isMixedContentLegacyStory = (story: LegacyStory): boolean => {
+  return story.slides.some((slide) => "galleryItems" in slide);
+};

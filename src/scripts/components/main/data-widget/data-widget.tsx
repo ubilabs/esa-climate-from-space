@@ -52,7 +52,7 @@ interface Props {
   time: number;
   setGlobeTime: (time: number) => void;
   globeSpinning: boolean;
-  flyTo: CameraView | null;
+  flyTo: Partial<CameraView> | null;
   onMoveStartHandler: () => void;
   onMoveEndHandler: (view: CameraView) => void;
   onLayerLoadingStateChangeHandler: LayerLoadingStateChangeHandle;

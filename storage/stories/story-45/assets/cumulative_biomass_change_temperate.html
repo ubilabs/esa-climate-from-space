@@ -1,0 +1,125 @@
+<script>
+  window.spec = {
+    $schema: "https://vega.github.io/schema/vega-lite/v6.json",
+    width: 1040,
+    height: 520,
+    background: "rgba(0,0,0,0)",
+    autosize: {
+      type: "fit",
+      contains: "padding",
+    },
+    view: {
+      stroke: null,
+      fill: "rgba(0,0,0,0)",
+    },
+    data: {
+      values: [
+        { year: 2010, temperate_median: 0 },
+        { year: 2011, temperate_median: -590.18014300298 },
+        { year: 2012, temperate_median: -686.216001982258 },
+        { year: 2013, temperate_median: 370.724756333204 },
+        { year: 2014, temperate_median: 539.548598330757 },
+        { year: 2015, temperate_median: 996.184550446291 },
+        { year: 2016, temperate_median: 1870.57783658346 },
+        { year: 2017, temperate_median: 1685.00931195204 },
+        { year: 2018, temperate_median: 1111.45077957371 },
+        { year: 2019, temperate_median: 772.788655340582 },
+        { year: 2020, temperate_median: 1298.32799498144 },
+        { year: 2021, temperate_median: 990.647329876053 },
+        { year: 2022, temperate_median: 338.87663535595 },
+      ],
+    },
+    mark: {
+      type: "line",
+      color: "#00ae9d",
+      strokeWidth: 2,
+      opacity: 1,
+    },
+    transform: [
+      {
+        calculate:
+          "datum.temperate_median > 0 ? '+' + format(datum.temperate_median, ',.1f') : format(datum.temperate_median, ',.1f')",
+        as: "temperate_median_label",
+      },
+    ],
+    encoding: {
+      x: {
+        field: "year",
+        type: "quantitative",
+        scale: {
+          domain: [2010, 2022],
+          nice: false,
+        },
+        axis: {
+          title: "Year",
+          values: [2010, 2012, 2014, 2016, 2018, 2020, 2022],
+          format: "d",
+          grid: false,
+          labelFlush: false,
+          labelOverlap: false,
+          tickMinStep: 1,
+        },
+      },
+      y: {
+        field: "temperate_median",
+        type: "quantitative",
+        scale: {
+          domain: [-1000, 2000],
+          zero: true,
+          nice: false,
+        },
+        axis: {
+          title: "Million tonnes C",
+          values: [-1000, -500, 0, 500, 1000, 1500, 2000],
+          format: ",.0f",
+          labelExpr:
+            "datum.value > 0 ? '+' + format(datum.value, ',.0f') : format(datum.value, ',.0f')",
+          grid: true,
+        },
+      },
+      order: {
+        field: "year",
+        type: "quantitative",
+      },
+      tooltip: [
+        {
+          field: "year",
+          type: "quantitative",
+          title: "Year",
+          format: "d",
+        },
+        {
+          field: "temperate_median_label",
+          type: "nominal",
+          title: "Million tonnes C",
+        },
+      ],
+    },
+    config: {
+      view: {
+        stroke: null,
+      },
+      axis: {
+        domainColor: "rgba(255,255,255,0.35)",
+        domainWidth: 1,
+        tickColor: "rgba(255,255,255,0.35)",
+        gridColor: "rgba(255,255,255,0.35)",
+        gridDash: [2, 2],
+        gridOpacity: 1,
+        labelColor: "rgba(255,255,255,0.55)",
+        titleColor: "rgba(255,255,255,0.85)",
+        labelFont: "NotesESA",
+        titleFont: "NotesESA",
+        labelFontSize: 12,
+        titleFontSize: 15,
+        titleFontWeight: 700,
+        labelFontWeight: 400,
+        tickSize: 7,
+        tickWidth: 1,
+        titlePadding: 14,
+        labelPadding: 7,
+      },
+    },
+  };
+</script>
+<script src="https://storage.googleapis.com/esa-cfs-cdn/esa-vega-chart/index.js"></script>

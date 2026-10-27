@@ -1,8 +1,10 @@
-import { ComponentProps, FunctionComponent } from "react";
+import { ComponentProps, FunctionComponent, Ref } from "react";
 
 import { EmbeddedItem, GlobeItem, ImageItem, VideoItem } from "./gallery-item";
 import { ImageGallery } from "../components/stories/story/blocks/image-gallery/image-gallery";
-import { StoryEEI } from "../components/stories/story/blocks/story-eei/story-eei";
+import { Charts } from "../components/stories/story/blocks/charts/charts";
+import { StoryEEI } from "../components/stories/story/scroll-story/story-eei/story-eei";
+import { StoryXFires } from "../components/stories/story/scroll-story/story-x-fires/story-x-fires";
 
 export interface Slide {
   text: string;
@@ -20,8 +22,8 @@ export type Story = {
   id: string;
   splashscreen: Splashscreen;
   modules: Module[];
-  // special property for StoryEEI
-  initialGlobeConfig?: ScrollGlobe;
+  // special property for scroll stories
+  initialglobeConfig?: { mobile: ScrollGlobe; desktop: ScrollGlobe };
 };
 
 export type ImageFocus =
@@ -84,15 +86,9 @@ export type ImageGalleryModuleType =
   | "imageCarousel"
   | "globe";
 
-export type StoryEEIModuleType =
-  | "kettleAmountModule"
-  | "kettleCount"
-  | "animatedArrowsModule"
-  | "scrollTextSlide"
-  | "kettleAmountModule"
-  | "treeMapModule";
+export type ChartsModuleType = "storyChart";
 
-type BaseModule = {
+export type BaseModule = {
   text?: string;
   altText?: string;
   slides?: BaseModuleSlide[];
@@ -100,11 +96,18 @@ type BaseModule = {
   focus?: ImageFocus;
   url?: string;
   globe?: GlobeItem;
+  legend?: Legend;
   leading?: boolean;
 };
 
 export type ImageModule = BaseModule & {
   type: ImageGalleryModuleType;
+};
+
+export type ImageModuleSlide = BaseModuleSlide;
+
+export type ChartsModule = BaseModule & {
+  type: ChartsModuleType;
 };
 
 export type ImageCarouselSlide = BaseModuleSlide & {
@@ -119,6 +122,7 @@ export type ImageCarouselModule = ImageModule & {
   lengthFactor?: number;
   headerText?: string;
   readMore?: {
+    headline?: string;
     title: string;
     url: string;
   };
@@ -158,6 +162,43 @@ export type StoryEEIModule = Pick<BaseModule, "text"> & {
     | ({ type: "treeMapModule" } & TreeMapModule)
   );
 
+export type StoryXFiresModule = Pick<BaseModule, "text"> & {
+  dataLayer: {
+    path: string;
+  };
+  globeKeyframes?: GlobeKeyframe[];
+  lengthFactor: number;
+  credentials?: string;
+  content?: Record<string, string>;
+  legend?: {
+    entriesUrl: string;
+    description: string;
+  };
+} & (
+    | { type: "intro" }
+    | { type: "radiativePowerThreshold" }
+    | { type: "burnedArea" }
+    | { type: "namingTheBeast" }
+    | { type: "portugalDataLayers" }
+    | { type: "hurricaneOphelia" }
+    | { type: "canadianFires" }
+    | { type: "zoomToPortugal" }
+    | { type: "australianFires" }
+    | { type: "outro" }
+  );
+
+export type LegendEntry = {
+  value: number | null;
+  color: string;
+};
+
+export type Legend = {
+  type: "continuous" | "categorical";
+  unit: string;
+  entriesUrl: string;
+  description: string;
+};
+
 export type BaseModuleSlide = {
   url?: string;
   altText?: string;
@@ -165,12 +206,19 @@ export type BaseModuleSlide = {
   focus?: ImageFocus;
   flag: string;
   caption: string;
+  leading?: boolean;
 };
 
 // Extend with union for other block types if needed
-export type Module = ImageModule | ImageCarouselModule | StoryEEIModule;
+export type Module =
+  | ImageModule
+  | ImageCarouselModule
+  | ChartsModule
+  | StoryEEIModule
+  | StoryXFiresModule;
 
 export type ModuleType = Module["type"];
+export type LegendType = Legend["type"];
 
 export type AnchorKey = `${number}-${number}-${number}`;
 
@@ -179,7 +227,9 @@ export type GetRefCallback = (
   subIndex: number,
 ) => (node: HTMLElement | null) => void;
 
-export type StorySectionProps = {} & ComponentProps<"div">;
+export type StorySectionProps = ComponentProps<"div"> & {
+  refTarget?: Ref<HTMLElement>;
+};
 
 export const imageGalleryModuleMap: Record<
   ImageModule["type"],
@@ -195,6 +245,13 @@ export const imageGalleryModuleMap: Record<
   globe: ImageGallery.StoryGlobe,
 };
 
+export const chartsModuleMap: Record<
+  ChartsModule["type"],
+  FunctionComponent<StorySectionProps>
+> = {
+  storyChart: Charts.StoryChart,
+};
+
 export const storyEEIModuleMap: Record<
   StoryEEIModule["type"],
   FunctionComponent<StorySectionProps>
@@ -204,4 +261,20 @@ export const storyEEIModuleMap: Record<
   kettleCount: StoryEEI.KettleCount,
   scrollTextSlide: StoryEEI.ScrollTextSlide,
   treeMapModule: StoryEEI.TreeMapModule,
+};
+
+export const storyXFiresModuleMap: Record<
+  StoryXFiresModule["type"],
+  FunctionComponent<StorySectionProps>
+> = {
+  intro: StoryXFires.IntroModule,
+  radiativePowerThreshold: StoryXFires.RadiativePowerThreshold,
+  burnedArea: StoryXFires.BurnedArea,
+  namingTheBeast: StoryXFires.NamingTheBeast,
+  hurricaneOphelia: StoryXFires.HurricaneOphelia,
+  portugalDataLayers: StoryXFires.PortugalDataLayers,
+  canadianFires: StoryXFires.CanadianFires,
+  zoomToPortugal: StoryXFires.ZoomToPortugal,
+  australianFires: StoryXFires.AustralianFires,
+  outro: StoryXFires.Outro,
 };

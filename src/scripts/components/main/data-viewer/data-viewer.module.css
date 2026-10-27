@@ -31,17 +31,23 @@
   }
 
   /* we animate the globe using scroll motions */
-  &[data-nav-content="story-eei"] {
+  &[data-nav-content="story-eei"],
+  &[data-nav-content="story-x-fires"] {
     .globe {
       transition: none;
     }
   }
 
   &[data-nav-content="stories"],
-  &[data-nav-content="story-eei"] {
+  &[data-nav-content="story-eei"],
+  &[data-nav-content="story-x-fires"] {
     .globe {
       margin-bottom: 0;
     }
+  }
+
+  &[data-nav-content="story-x-fires"] {
+    background-color: #000;
   }
 
   &[data-nav-content="data"] {

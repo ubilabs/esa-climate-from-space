@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
-import { StorySectionProps } from "../../../../../../../types/story";
+import { ImageModule, StorySectionProps } from "../../../../../../../types/story";
 import { InstructionOverlay } from "../../../../../../ui/instruction-overlay/instruction-overlay";
 import { SlideContainer } from "../../../../../layout/slide-container/slide-container";
 import { ComparisonViewer } from "./comparison-viewer/comparison-viewer";
@@ -18,7 +18,7 @@ const ImageCompare: FunctionComponent<StorySectionProps> = () => {
     module: { slides, text, startButtonText },
     storyId,
     getRefCallback,
-  } = useModuleContent();
+  } = useModuleContent<ImageModule>();
 
   const [isComparing, setIsComparing] = useState(false);
   const [showInstructions, setShowInstructions] = useState(false);

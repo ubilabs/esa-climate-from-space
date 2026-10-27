@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { FormattedMessage } from "react-intl";
-import YouTube, { Options } from "react-youtube";
+import YouTube, { YouTubeProps } from "react-youtube";
 import { YouTubePlayer } from "youtube-player/dist/types";
 import { Language } from "../../../types/language";
 
@@ -29,28 +29,24 @@ const YoutubePlayer: FunctionComponent<Props> = ({
     );
   }
 
-  const options: Options = {
+  const options: YouTubeProps["opts"] = {
     height: "100%",
     width: "100%",
     playerVars: {
       rel: 0,
       cc_load_policy: 1,
       hl: language,
-      // @ts-expect-error - injected via webpack's define plugin
       cc_lang_pref: language,
       color: "red",
-      controls: 2,
+      controls: 1,
       iv_load_policy: 3,
       modestbranding: 1,
-      showinfo: 0,
-      allow:
-        "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
     },
   };
 
   return (
     <YouTube
-      containerClassName={styles.videoPlayer}
+      className={styles.videoPlayer}
       videoId={videoId}
       opts={options}
       onReady={(event) => !isStoryMode && event.target.playVideo()}

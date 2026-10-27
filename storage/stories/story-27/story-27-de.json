@@ -5,9 +5,7 @@
       "type": "splashscreen",
       "text": "# Hitze in den Städten\r\n\r\nStädte sind zunehmend unser Zuhause, aber sie verstärken einige der schlimmsten Auswirkungen des Klimawandels, indem sie die Hitze einschließen und die Gesundheit gefährden. Da Hitzewellen immer extremer und häufiger werden, sind die Bewohner der größten Städte am meisten gefährdet.",
       "shortText": "# Hitze in den Städten\r\n\r\nStädte sind zunehmend unser Zuhause, aber sie verstärken einige der schlimmsten Auswirkungen des Klimawandels, indem sie die Hitze einschließen und die Gesundheit gefährden. Da Hitzewellen immer extremer und häufiger werden, sind die Bewohner der größten Städte am meisten gefährdet.",
-      "images": [
-        "assets/story27-image03.jpg"
-      ]
+      "images": ["assets/story27-image03.jpg"]
     },
     {
       "type": "image",
@@ -27,25 +25,13 @@
         "Im Sommer 2022 färbte sich das grüne Land in England und Nordfrankreich nach Monaten mit hohen Temperaturen und geringen Niederschlägen braun. Dieses Bild wurde vom Satelliten Copernicus Sentinel-3 der ESA am 12. August 2022 aufgenommen. In diesem Monat registrierte der Infrarotsensor des Satelliten Landoberflächentemperaturen von über 45 °C im Vereinigten Königreich, 50 °C in Frankreich und 60 °C in Spanien. (Enthält modifizierte Copernicus-Sentinel-Daten (2022), verarbeitet von der ESA)",
         "Temperatur der Landoberfläche während der südeuropäischen Hitzewelle im Sommer 2023. Dieses Bild verwendet Daten des Radiometers des Copernicus-Satelliten Sentinel-3 und zeigt die Temperatur der Landoberfläche am Morgen des 17. Juli 2023. Im Zuge des Klimawandels werden Hitzewellen wie diese wahrscheinlich häufiger und heftiger auftreten. (Enthält modifizierte Copernicus-Sentinel-Daten (2023), verarbeitet von der ESA)"
       ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
     },
     {
       "type": "globe",
-      "text": "## Städtische Wärmeinseln\r\n\r\nDer interaktive Globus zeigt die Ausdehnung der verschiedenen Arten von Bodenbedeckung, einschließlich städtischer Gebiete sowie natürlicher Bedeckungsarten wie Wald und Wüste. Sehen Sie sich das explosive Wachstum von Städten wie Shanghai in China seit Beginn der Datenaufzeichnung in den 1990er Jahren an. Konsistente Karten der Bodenbedeckung werden aus Satellitenbeobachtungen der [Initiative zum Klimawandel](stories/story-32/3) der Europäischen Weltraumorganisation abgeleitet. Andere Klimavariablen, die aus dem Weltraum gemessen werden, sind die [Bodenfeuchte](stories/story-21/5) und die Temperatur der Landoberfläche, die einen Überblick über die Hotspots des Planeten aus der Vogelperspektive bieten.\r\n\r\n![Diagramm der städtischen und ländlichen Temperaturprofile](assets/story27-image04.png)\r\n_Vergleich der monatlichen Durchschnittstemperaturen für städtische und ländliche Wetterstationen im Vereinigten Königreich (Heathrow bzw. Waddington) (KNMI)_\r\n\r\nWenn immer mehr Menschen in die Stadt ziehen, werden große Teile der Vegetation durch Straßen, Parkplätze und Gebäude ersetzt. Baumaterialien haben eine viel höhere Kapazität, Sonnenwärme zu absorbieren und zu speichern als Pflanzen und Erde. Außerdem verhindern dicht gedrängte Gebäude die Luftzirkulation, so dass weniger Wärme entweichen kann. Auch die in Fabriken, Büros und Wohnungen erzeugte Wärme erhöht die Lufttemperatur. In Städten kann es bis zu 7 Grad Celsius wärmer sein als im Umland. Orte, an denen die Temperaturen auf diese Weise erhöht sind, werden als städtische Wärmeinseln bezeichnet.",
-      "shortText": "## Städtische Wärmeinseln\r\n\r\nDer interaktive Globus zeigt das explosive Wachstum von Städten wie Shanghai in China seit Beginn der Datenaufzeichnung in den 1990er Jahren.\r\n\r\n- Bodenbedeckung, Oberflächentemperatur und Bodenfeuchte sind wertvolle Klimavariablen für Städte.\r\n- Wenn Städte wachsen, wird die Vegetation durch Gebäude, Straßen und Parkplätze ersetzt.\r\n- Baumaterialien haben eine viel höhere Wärmespeicherkapazität als Pflanzen und Böden.  \r\n- Die in Fabriken, Büros und Wohnungen erzeugte Wärme trägt ebenfalls zum Anstieg der Lufttemperaturen bei.\r\n- In Städten kann es bis zu 7 °C wärmer sein als im Umland.\r\n\r\n![Diagramm der städtischen und ländlichen Temperaturprofile ](assets/story27-image04.png)\r\n_Vergleich der monatlichen Durchschnittstemperatur für städtische und ländliche Wetterstationen im Vereinigten Königreich (Heathrow bzw. Waddington) (KNMI)_",
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ],
+      "text": "## Städtische Wärmeinseln\r\n\r\nDer interaktive Globus zeigt die Ausdehnung der verschiedenen Arten von Bodenbedeckung, einschließlich städtischer Gebiete sowie natürlicher Bedeckungsarten wie Wald und Wüste. Sehen Sie sich das explosive Wachstum von Städten wie Shanghai in China seit Beginn der Datenaufzeichnung in den 1990er Jahren an. Konsistente Karten der Bodenbedeckung werden aus Satellitenbeobachtungen der [Initiative zum Klimawandel](stories/story-32/3) der Europäischen Weltraumorganisation abgeleitet. Andere Klimavariablen, die aus dem Weltraum gemessen werden, sind die [Bodenfeuchte](stories/story-21/5) und die Temperatur der Landoberfläche, die einen Überblick über die Hotspots des Planeten aus der Vogelperspektive bieten.\r\n\r\n<iframe title=\"Diagramm der städtischen und ländlichen Temperaturprofile\" width=\"100%\" frameBorder=\"0\" src=\"assets/urban_heat_islands_chart.html\"></iframe> \r\n\r\n_Vergleich der monatlichen Durchschnittstemperaturen für städtische und ländliche Wetterstationen im Vereinigten Königreich (Heathrow bzw. Waddington) (KNMI)_\r\n\r\nWenn immer mehr Menschen in die Stadt ziehen, werden große Teile der Vegetation durch Straßen, Parkplätze und Gebäude ersetzt. Baumaterialien haben eine viel höhere Kapazität, Sonnenwärme zu absorbieren und zu speichern als Pflanzen und Erde. Außerdem verhindern dicht gedrängte Gebäude die Luftzirkulation, so dass weniger Wärme entweichen kann. Auch die in Fabriken, Büros und Wohnungen erzeugte Wärme erhöht die Lufttemperatur. In Städten kann es bis zu 7 Grad Celsius wärmer sein als im Umland. Orte, an denen die Temperaturen auf diese Weise erhöht sind, werden als städtische Wärmeinseln bezeichnet.",
+      "shortText": "## Städtische Wärmeinseln\r\n\r\nDer interaktive Globus zeigt das explosive Wachstum von Städten wie Shanghai in China seit Beginn der Datenaufzeichnung in den 1990er Jahren.\r\n\r\n- Bodenbedeckung, Oberflächentemperatur und Bodenfeuchte sind wertvolle Klimavariablen für Städte.\r\n- Wenn Städte wachsen, wird die Vegetation durch Gebäude, Straßen und Parkplätze ersetzt.\r\n- Baumaterialien haben eine viel höhere Wärmespeicherkapazität als Pflanzen und Böden.  \r\n- Die in Fabriken, Büros und Wohnungen erzeugte Wärme trägt ebenfalls zum Anstieg der Lufttemperaturen bei.\r\n- In Städten kann es bis zu 7 °C wärmer sein als im Umland.\r\n\r\n<iframe title=\"Diagramm der städtischen und ländlichen Temperaturprofile\" width=\"100%\" frameBorder=\"0\" src=\"assets/urban_heat_islands_chart.html\"></iframe> \r\n\r\n_Vergleich der monatlichen Durchschnittstemperatur für städtische und ländliche Wetterstationen im Vereinigten Königreich (Heathrow bzw. Waddington) (KNMI)_",
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"],
       "flyTo": {
         "position": {
           "longitude": 119.04,
@@ -84,13 +70,7 @@
         "Die vom ECOSTRESS-Instrument der NASA am 18. Juni 2022 in Prag gemessene Landoberflächentemperatur zeigt die kühlende Wirkung von Parks und Wasserwegen. Die ESA nutzt dieses auf der Internationalen Raumstation montierte Instrument, um bei der Entwicklung eines neuen Copernicus-Sentinel-Satelliten, der Land Surface Temperature Monitoring (LSTM)-Mission, zu helfen.  (NASA/JPL-Caltech)",
         "Die Copernicus-Sentinel-Mission zur Überwachung der Landoberflächentemperatur (LSTM) wird einen hochauflösenden thermischen Infrarotsensor zur Beobachtung der Landoberflächentemperatur tragen. Dies wird dazu beitragen, extreme Hitzeereignisse in Städten zu verfolgen und Informationen für landwirtschaftliche Nutzer bis hin zu einzelnen Feldern zu liefern. (Airbus)"
       ],
-      "imageFits": [
-        "contain",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["contain", "contain", "contain", "contain", "contain"]
     },
     {
       "type": "globe",
@@ -134,13 +114,7 @@
         "Landoberflächentemperaturen um Rom, Italien, gemessen aus dem Weltraum um 22:23 MESZ am 17. Juli 2023. Die Oberflächentemperatur erreichte in einigen Teilen der Stadt 35 °C, aber die kühlende Wirkung der Vegetation ist z. B. im Park der Via Appia zu erkennen. Die Temperaturen wurden vom Ecostress-Instrument der NASA auf der Internationalen Raumstation aufgezeichnet, das an der Entwicklung eines neuen \"Copernicus Sentinel Expansion\"-Satelliten – der Land Surface Temperature Monitoring (LSTM)-Mission – beteiligt ist. (NASA/JPL)",
         "Ein Eichenpaar in Hampstead Heath in London, gerendert als Punktwolke aus Laserentfernungsmessungen.\r\nDie Masse des von den Bäumen gespeicherten Kohlenstoffs kann anhand von 3D-Baummodellen auf der Grundlage von Laserscans geschätzt werden\r\n(Lidar: light detection and ranging). (M Disney/P Wilkes/UCL)"
       ],
-      "imageFits": [
-        "cover",
-        "contain",
-        "contain",
-        "contain",
-        "contain"
-      ]
+      "imageFits": ["cover", "contain", "contain", "contain", "contain"]
     }
   ]
 }

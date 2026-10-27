@@ -56,7 +56,7 @@ const StoryFilter: FunctionComponent = () => {
     };
   }, []);
 
-  const allTags: string[] = stories
+  const allTags: string[] = (stories ?? [])
     .map(({ tags }) => tags)
     .filter(Boolean)
     .flat();

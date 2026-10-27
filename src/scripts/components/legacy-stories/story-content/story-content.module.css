@@ -38,7 +38,8 @@
   margin: 0.625em 0;
 }
 .content img,
-.content img + em {
+.content img + em,
+.content iframe + p {
   display: block;
   width: 100%;
   font-weight: bold;

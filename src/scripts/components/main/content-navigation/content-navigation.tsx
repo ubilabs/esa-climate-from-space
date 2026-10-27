@@ -5,6 +5,7 @@ import {
   useMemo,
   useRef,
   useState,
+  useEffectEvent,
 } from "react";
 import { FormattedMessage } from "react-intl";
 import { animate, motion, useMotionValue, useTransform } from "motion/react";
@@ -37,7 +38,7 @@ import { AppLocationState } from "../../../types/location-state";
 import { useNavigationControls } from "../../../hooks/use-navigation-controls";
 
 import { DownloadButton } from "../download-button/download-button";
-import { Layers } from "../../stories/story/blocks/story-eei/constants/globe";
+import { Layers } from "../../stories/story/scroll-story/story-eei/constants/globe";
 import { SwipeUpIcon } from "../icons/swipe-up-icon";
 import { SwipeDownIcon } from "../icons/swipe-down-icon";
 import { MouseScrollIcon } from "../icons/mouse-scroll-icon";
@@ -271,6 +272,17 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const [hasScrolled, setHasScrolled] = useState(false);
 
+  // make sure pending index update is canceled properly when the component unmounts
+  const onUnmount = useEffectEvent(() => {
+    clearSettledIndexTimeout();
+  });
+
+  useEffect(() => {
+    return () => {
+      onUnmount();
+    };
+  }, []);
+
   const {
     currentIndex,
     setCurrentIndex,
@@ -342,6 +354,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
 
   const settledContent =
     settledIndex === null ? null : (reordered[settledIndex] ?? null);
+
   const settledContentId = settledContent?.id;
 
   useEffect(() => {
@@ -377,7 +390,7 @@ const ContentNavigation: FunctionComponent<Props> = ({
       isStoryListItem(settledContent) &&
       settledContentId !== AppRoute.StoryEEI
     ) {
-      return getStorySplashImage(settledContentId);
+      return getStorySplashImage(settledContent.id);
     }
 
     return "";
@@ -392,7 +405,10 @@ const ContentNavigation: FunctionComponent<Props> = ({
           dispatch(setSelectedLayerIds({ layerId: null, isPrimary: true }));
         } else {
           dispatch(
-            setSelectedLayerIds({ layerId: Layers.EEI_NO_MASK, isPrimary: true }),
+            setSelectedLayerIds({
+              layerId: Layers.EEI_NO_MASK,
+              isPrimary: true,
+            }),
           );
         }
 

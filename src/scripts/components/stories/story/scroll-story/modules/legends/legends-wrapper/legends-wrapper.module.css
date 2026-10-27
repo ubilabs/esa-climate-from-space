@@ -1,0 +1,12 @@
+.legendContainer {
+  position: absolute;
+  bottom: calc(var(--container-offset) + 0.75rem);
+  right: 0.75rem;
+  transform: translate(-50%, -50%);
+}
+
+.legend {
+  right: 0;
+  transform: translate(0%, -50%);
+  white-space: nowrap;
+}
