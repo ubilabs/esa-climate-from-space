@@ -140,8 +140,6 @@ export default function ScrollImageSequence({
         return false;
       }
 
-console.log("🚀 ~ scroll-image-sequence.tsx:144 → image:", image);
-console.log("🚀 ~ scroll-image-sequence.tsx:144 → canvas.clientWidth:", canvas.clientWidth);
       const useIntrinsicDimensions = !isMobile || mobileAspectRatio === "auto";
       const nextCanvasWidth = !useIntrinsicDimensions
         ? Math.max(canvas.clientWidth * 1.5, 1)
