@@ -33,7 +33,7 @@ METADATA = {
 # dev
 BUCKET_ORIGIN = 'esa-cfs-cate-data'
 BUCKET_TMP = 'esa-cfs-pipeline-tmp'
-WORKDIR = '/workdir/files'
+WORKDIR = '/workdir/fire.burned_area'
 COLOR_FILE = f'/opt/airflow/plugins/colors/{LAYER_ID}.{LAYER_VARIABLE}.txt'
 DEBUG = False
 
@@ -45,7 +45,7 @@ dag_params = {
     "layer_version": Param(default_layer_version, type="string")
 }
 
-with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, catchup=False, params=dag_params) as dag:
+with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, catchup=False, params=dag_params, max_active_runs=1) as dag:
 
     # create tasks
     clean_workdir = task_factories.clean_dir_skippable(
@@ -66,9 +66,11 @@ with DAG(dag_id=METADATA["id"], start_date=datetime(2022, 1, 1), schedule=None, 
     files = list_files()
     clean_workdir >> files
     downloads = download.expand(filename=files)
-    gdal_transforms(downloads) >> upload()
+    upload_tasks = upload()
+    gdal_transforms(downloads) >> upload_tasks
     clean_workdir >> legend_image
-    metadata(files)
+    metadata(files) >> upload_tasks
+    legend_image >> upload_tasks
 
     if DEBUG:
         downloads >> task_factories.gdal_info()

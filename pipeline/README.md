@@ -30,6 +30,44 @@ All dataset DAGs are triggered manually by the developer. We don't use any form 
 
 ## Setup
 
+### Fire Burned Area v5.1 Toolbox refresh
+
+1. Download with `data/downloads/toolbox-fire.py` in the activated `esa-toolbox`
+   environment. Use `--dry-run`, then `--max-files 1`, before a full export. Its
+   output is `download/fire/v5.1/`; do not stage the manifest or regional samples.
+2. Verify all **264 unique calendar months, January 2001–December 2022**, against
+   the complete downloaded file set. The current development layer contains
+   240 months through December 2020; all must be retained. Verify `burned_area`,
+   units `m2`, and a global 1440 × 720 grid. Toolbox already supplies monthly
+   area sums, so no additional averaging or unit conversion is appropriate.
+3. Before replacing staged source files, back up `gs://esa-cfs-cate-data/fire.burned_area/`
+   and inspect its contents. Stage only validated global NetCDFs there. Old files
+   have month-start names; new files have actual mid-month source dates. Do not
+   leave both sets in the prefix: this would duplicate months. Any source cleanup
+   must be restricted to the backed-up, confirmed obsolete objects.
+4. Manually trigger `fire.burned_area` with the defaults (`max_files=2`,
+   `skip_downloads=false`, `output_bucket=esa-cfs-pipeline-output`) and a unique
+   test `layer_version`. This DAG uses `/workdir/fire.burned_area`, allows only
+   one active run, and waits for images, metadata and legend before packaging.
+   Check its rendered images, metadata, icon, legend and `package.zip`.
+5. For a full run, set `max_files=0`. Only after verification, back up the existing
+   development output `gs://esa-cfs-tiles/2.1.5/fire.burned_area/` before replacing
+   it. Check 264 ordered timestamps, 264 images, the four ancillary objects and
+   uploaded checksums; inspect the offline ZIP as well. Version prefix **2.1.5
+   is development**, despite the bucket name. Do not publish a two-file test to
+   that prefix.
+
+The source product remains release **5.1**; the refresh adds 2021–2022 to the old
+2001–2020 series. Toolbox exports source interval midpoints (15th/16th), not
+the previous month-start labels. The image DAG derives dates from filenames,
+normalizing any source noon timestamp to midnight. Report this exact-date change
+and review consumers before publication; calendar-month coverage is preserved.
+Live checks confirmed that October–December 2019 are read from the provider's
+`new-corrected` files, as required by the legacy FTP downloader.
+
+Keep the layer description's existing version/coverage unchanged until the new
+output is actually published; then update the documented coverage accordingly.
+
 ### Local
 
 To develop pipelines the best way to run Airflow is to start up the Docker Compose file under `/pipeline/docker-compose.yaml` with `docker-compose up`. This starts several containers with one beeing the webserver which can be reached at `http://localhost:8081`. To log into the UI use the username and password from the docker-compose file.
