@@ -12,7 +12,7 @@
 
   .content {
     display: block;
-    margin: 0;
+    margin-inline: 0.5rem;
     font-size: clamp(1.25rem, 4vw, 1.8rem);
     line-height: 1.4;
   }

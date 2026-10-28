@@ -179,6 +179,7 @@
   "categories.atmosphere": "Atmosphere",
   "categories.cryosphere": "Cryosphere",
   "exploreMoreInCategory": "Explore more in this [category](#/{category})",
+  "goBackToTop": "Go back to top",
   "youTube.consentRequired": "To view YouTube videos, please enable media cookies in your privacy settings.",
   "contentType.blog": "Story",
   "contentType.video": "Video",

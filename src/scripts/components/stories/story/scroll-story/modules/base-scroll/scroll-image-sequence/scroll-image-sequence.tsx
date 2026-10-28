@@ -27,6 +27,7 @@ import styles from "./scroll-image-sequence.module.css";
 
 interface Props {
   className?: string;
+  /** Use "auto" to preserve the frames' intrinsic aspect ratio on mobile. */
   mobileAspectRatio?: string;
   sequence: ImageSequenceSource;
 }
@@ -139,11 +140,12 @@ export default function ScrollImageSequence({
         return false;
       }
 
-      const nextCanvasWidth = isMobile
-        ? Math.max(canvas.clientWidth, 1)
+      const useIntrinsicDimensions = !isMobile || mobileAspectRatio === "auto";
+      const nextCanvasWidth = !useIntrinsicDimensions
+        ? Math.max(canvas.clientWidth * 1.5, 1)
         : image.naturalWidth;
-      const nextCanvasHeight = isMobile
-        ? Math.max(canvas.clientHeight, 1)
+      const nextCanvasHeight = !useIntrinsicDimensions
+        ? Math.max(canvas.clientHeight* 1.5, 1)
         : image.naturalHeight;
 
       if (
@@ -156,7 +158,7 @@ export default function ScrollImageSequence({
 
       context.clearRect(0, 0, canvas.width, canvas.height);
 
-      if (isMobile) {
+      if (!useIntrinsicDimensions) {
         drawImageScaled(
           context,
           image,
@@ -293,7 +295,12 @@ export default function ScrollImageSequence({
   return (
     <motion.div
       className={cx(styles.sequenceContainer, className)}
-      data-custom-mobile-aspect-ratio={mobileAspectRatio ? "true" : undefined}
+      data-custom-mobile-aspect-ratio={
+        mobileAspectRatio ? "true" : undefined
+      }
+      data-auto-mobile-aspect-ratio={
+        mobileAspectRatio === "auto" ? "true" : undefined
+      }
       style={
         {
           "--sequence-opacity": opacity,

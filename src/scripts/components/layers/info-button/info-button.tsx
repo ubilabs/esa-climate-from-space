@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from "react";
 
 import Overlay from "../../main/overlay/overlay";
-import { InfoIcon } from "../../main/icons/info-icon";
+import { LayerInfoIcon } from "../../main/icons/layer-info-icon";
 import LayerInfo from "../layer-info/layer-info";
 import Button from "../../main/button/button";
 
@@ -20,7 +20,7 @@ const InfoButton: FunctionComponent<Props> = ({ layer }) => {
     layer && (
       <>
         <Button
-          icon={InfoIcon}
+          icon={LayerInfoIcon}
           className={styles.infoButton}
           onClick={() => setShowMenu(true)}
         />
