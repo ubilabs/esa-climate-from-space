@@ -69,7 +69,7 @@
 
     &.groundArea {
       top: calc(133 / var(--x-fires-flame-illustation-height) * 100%);
-      left: calc(39 / var(--x-fires-flame-illustation-width) * 100%);
+      left: calc(49 / var(--x-fires-flame-illustation-width) * 100%);
       background-color: #ed1b2f;
 
       @media (--desktop-viewport) {

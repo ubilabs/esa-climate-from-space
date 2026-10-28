@@ -1,0 +1,27 @@
+.closingScreen {
+  height: var(--story-height);
+
+  > * {
+    grid-row: 1;
+    grid-column: 1 / -1;
+  }
+
+  > .toTop {
+    z-index: 2;
+    border: none;
+    color: var(--neutral-esa-white);
+    margin-top: 16rem;
+    align-items: center;
+    background: var(--dark-blue);
+    border-radius: 40px;
+    display: flex;
+    gap: 8px;
+    height: 40px;
+    justify-content: center;
+    padding: 0 12px;
+
+    > span {
+      display: flex;
+    }
+  }
+}

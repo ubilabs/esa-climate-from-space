@@ -11,8 +11,10 @@
     grid-area: 1 / 1 / 2 / 2;
     align-self: start;
     justify-self: center;
-    width: min(100%, calc(var(--story-height) * 0.48));
+    width: 90%;
     margin: 0 auto;
+    position: relative;
+    left: 4px;
   }
 }
 
