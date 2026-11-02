@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import ReactMarkdown, { Options } from "react-markdown";
+import ReactMarkdown, { defaultUrlTransform, Options } from "react-markdown";
 import { getStoryAssetUrl } from "../../../libs/get-story-asset-urls";
 
 interface StoryMarkdownProps extends Omit<
@@ -33,16 +33,25 @@ export const StoryMarkdown: FunctionComponent<StoryMarkdownProps> = ({
   children,
   ...props
 }) => {
-  const urlTransform = storyId
-    ? (url: string) => getStoryAssetUrl(storyId, url)
-    : undefined;
-
   const isAllowedIframeUrl = (url?: string, storyId?: string) => {
     if (!url || !storyId) return false;
 
     return (
       url.startsWith("assets/") || url.startsWith(`/stories/${storyId}/assets/`)
     );
+  };
+
+  const urlTransform: Options["urlTransform"] = (url, key, node) => {
+    if (
+      node.tagName === "iframe" &&
+      key === "src" &&
+      // check if the iframe URL is allowed for this story before url transformation
+      !isAllowedIframeUrl(url, storyId)
+    ) {
+      console.warn(`Blocked iframe in story ${storyId} with src: ${url}`);
+      return null;
+    }
+    return storyId ? getStoryAssetUrl(storyId, url) : defaultUrlTransform(url);
   };
 
   const defaultComponents: Options["components"] = {
@@ -56,20 +65,6 @@ export const StoryMarkdown: FunctionComponent<StoryMarkdownProps> = ({
         {children}
       </a>
     ),
-    iframe: ({ src, ...iframeProps }) => {
-      if (!isAllowedIframeUrl(src, storyId)) {
-        console.warn(`Blocked iframe in story ${storyId} with src: ${src}`);
-        return null;
-      }
-
-      return (
-        <iframe
-          src={src}
-          title={iframeProps.title || "embedded content"}
-          {...iframeProps}
-        />
-      );
-    },
   };
 
   // Merge user-provided components with defaults
