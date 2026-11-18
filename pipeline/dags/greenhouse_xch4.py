@@ -11,24 +11,18 @@ METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [],  # will be injected
     "min_value": 1600,
-    "max_value": 2200,
+    "max_value": 2000,
     "type": "tiles",  # 'tiles' or 'image'
     "zoom_levels": '0-5',
     "units": '',
     "basemap": None,
     "legend_values": [
-      "2200 ppb",
-      "2175",
-      "2150",
-      "2125",
-      "2100",
-      "2075",
-      "2050",
-      "2025",
-      "2000",
+      "2000 ppb",
+      "1975",
       "1950",
       "1925",
       "1900",
+      "1875",
       "1850",
       "1825",
       "1800",
@@ -37,7 +31,9 @@ METADATA = {
       "1725",
       "1700",
       "1675",
-      "1650"
+      "1650",
+      "1625",
+      "1600"
      ],
     "time_format": {
         "year": "numeric",
