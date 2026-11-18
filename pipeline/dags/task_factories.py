@@ -90,12 +90,12 @@ def gcs_upload_file(bucket_name: str, layer_id: str, layer_variable: str, layer_
 def gcloud_upload_dir(layer_id: str, layer_variable: str, directory: str):
     return BashOperator(
         task_id='gcloud_upload',
-        bash_command='gcloud auth activate-service-account --key-file $KEY_FILE && gcloud storage rsync --verbosity=error --no-user-output-enabled --recursive --delete-unmatched-destination-objects $UPLOAD_DIR $BUCKET',
+        bash_command='gcloud auth activate-service-account --key-file "$KEY_FILE" && gcloud storage rsync --verbosity=error --no-user-output-enabled --recursive --delete-unmatched-destination-objects "$UPLOAD_DIR" "$BUCKET"',
         env={
             "UPLOAD_DIR": directory,
             "BUCKET": 'gs://{{ dag_run.conf["output_bucket"] }}/{{ dag_run.conf["layer_version"] }}/' + f'{layer_id}.{layer_variable}/',
             "KEY_FILE": '/opt/airflow/plugins/service-account.json',
-            "CLOUDSDK_PYTHON": '/usr/local/bin/python'
+            "CLOUDSDK_PYTHON": '/usr/bin/python3'
         }
     )
 
