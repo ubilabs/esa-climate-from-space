@@ -42,8 +42,36 @@ Now you can start a DAG by selecting a dataset variable under the `DAGs` menu an
 
 ### GCP
 
-Some datasets have very large files and need lots of processing power and RAM. If your local machine or internet connection is not capable of handling a dataset you can process it on a Compute Engine in the Google Cloud. Therefore just start up a VM from the prepared [snapshot](https://console.cloud.google.com/compute/snapshotsDetail/projects/esa-climate-from-space/global/snapshots/airflow-2024-01?project=esa-climate-from-space).
+Some datasets have very large files and need lots of processing power and RAM. If your local machine or internet connection is not capable of handling a dataset you can process it on a Compute Engine in the Google Cloud. Therefore just start up a VM from the prepared [snapshot](https://console.cloud.google.com/compute/snapshotsDetail/projects/esa-climate-from-space/global/snapshots/airflow-2026-11?project=esa-climate-from-space) `airflow-2026-11` (Debian 11, 1 TB disk, repo on `develop`, Airflow Docker images already built). The older snapshot `airflow-2024-01` (500 GB disk) is kept as a fallback.
 
-Once started you can reach the UI of the VM at `http://{EXTERNAL_IP}:8081`. To log into the UI use the username and password from the docker-compose file..
+The machine is not secure and costs money while it exists, so only create it for processing and delete it afterwards. Use the zone `europe-west3-a`: the buckets are in `europe-west3`, so transfers are fast and free. Example for Biomass (18 files of ~19 GB; ~14 h for the full run):
 
-Please note that the machine is not secure and should only be running it while processing the data. You can safely delete the machine after the final image tiles have been uploaded. If you SSH into the machine you can find the checked out git repo at `/opt/esa/`. To update the DAG files pull from origin and the UI will update a few seconds later.
+```bash
+P=esa-climate-from-space; Z=europe-west3-a
+gcloud compute disks create airflow --project $P --zone $Z --source-snapshot airflow-2026-11 --size 1000GB --type pd-balanced
+gcloud compute instances create airflow --project $P --zone $Z --machine-type e2-highmem-16 \
+  --disk name=airflow,boot=yes,auto-delete=yes --max-run-duration=48h --instance-termination-action=STOP
+```
+
+`--max-run-duration` stops the VM automatically as a safety net in case it is forgotten; raise it if a run needs longer. Airflow starts automatically on boot.
+
+- **SSH:** `gcloud compute ssh airflow --zone $Z`. The repo is checked out at `/opt/esa/esa-climate-from-space/`. Update it with `sudo git pull` (it may also need `sudo git config --global --add safe.directory /opt/esa/esa-climate-from-space`); the UI picks up DAG changes a few seconds later.
+- **UI:** port 8081 is not open in the firewall. Use an SSH tunnel and open `http://localhost:8081` (username and password from the docker-compose file):
+  `gcloud compute ssh airflow --zone $Z -- -N -L 8081:localhost:8081`
+- **Docker image:** don't rebuild it on the VM. The Dockerfile installs the aarch64 (Apple Silicon) Miniconda, which fails on the x86 VM. The prebuilt images work for the GDAL based DAGs.
+- **Downloading source data:** the VM's Debian 11 is end of life and `apt` no longer works, but the Airflow containers have Python with `netCDF4` and `gcloud`. Copy the scripts from `/data/downloads` into `pipeline/workdir` (mounted as `/workdir`) and run them inside the worker container, e.g. `sudo docker exec -d pipeline-airflow-worker-1 bash -c "cd /workdir/scripts && python ceda-biomass-agb.py --output-dir /workdir/biomass-ceda > /workdir/scripts/download.log 2>&1"`. Then copy the files to `gs://esa-cfs-cate-data/{layer}/` with `gcloud storage cp --no-clobber`. Don't put downloads into `workdir/files`, which the DAG clears. To authenticate `gcloud` on the VM use `gcloud auth activate-service-account --key-file /opt/esa/esa-climate-from-space/pipeline/plugins/service-account.json`.
+- **Long-running commands** keep running when the SSH session ends if started with `setsid nohup <command> > log 2>&1 < /dev/null &` (there is no `tmux`/`screen` on the VM). DAGs can be triggered from the command line too: `sudo docker exec pipeline-airflow-scheduler-1 airflow dags trigger <dag_id> --conf '{"max_files": 0, "output_bucket": "esa-cfs-tiles", "skip_downloads": false, "layer_version": "2.1.5"}'`.
+- **Test first** with `max_files: 2` and `output_bucket: esa-cfs-pipeline-output` before writing to the live bucket.
+
+When the tiles are uploaded, clean up so nothing keeps costing money:
+
+```bash
+# optional: save an updated machine (repo pulled etc.) as a new snapshot; clear the workdir first to keep it small
+gcloud compute ssh airflow --zone $Z --command 'sudo rm -rf /opt/esa/esa-climate-from-space/pipeline/workdir/files/* && sudo fstrim -av'
+gcloud compute instances stop airflow --zone $Z
+gcloud compute snapshots create airflow-YYYY-MM --source-disk airflow --source-disk-zone $Z --storage-location europe-west3
+
+# delete the VM together with its disk, then check that nothing is left
+gcloud compute instances delete airflow --zone $Z
+gcloud compute instances list; gcloud compute disks list
+```

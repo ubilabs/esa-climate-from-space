@@ -7,7 +7,9 @@ from helper import get_default_layer_version
 # layer
 LAYER_ID = 'vegetation'
 LAYER_VARIABLE = 'lai'
-RESOLUTION = '2240 12320'
+# v2.0 mosaic from data/downloads/ceda-vegetation-lai.py: 3 x 14 tiles of 1120 px
+# (0-30 E, 55 S - 85 N, ~1 km)
+RESOLUTION = '3360 15680'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [],  # will be injected

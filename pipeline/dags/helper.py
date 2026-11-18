@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import datetime
+import tempfile
 import requests
 
 def only_filename(filepath: str):
@@ -23,9 +24,22 @@ def date_to_filename(date_string: str):
     return datetime.fromisoformat(date_string.replace('Z', '')).strftime('%Y%m%d')
 
 # fetch the latest version number from develop branch on github
+# This runs every time a DAG file is parsed, including at the start of each task. A short network
+# outage must not make the DAG fail to import (which kills all running tasks), so the last fetched
+# version is cached and used as a fallback. Runs take the actual version from their own conf.
+LAYER_VERSION_CACHE = Path(tempfile.gettempdir()) / 'esa-cfs-default-layer-version'
+
 def get_default_layer_version():
-    req = requests.get('https://raw.githubusercontent.com/ubilabs/esa-climate-from-space/develop/package.json')
-    package_json = (req.json())
-    return package_json['version']
+    try:
+        req = requests.get('https://raw.githubusercontent.com/ubilabs/esa-climate-from-space/develop/package.json', timeout=10)
+        req.raise_for_status()
+        version = req.json()['version']
+        LAYER_VERSION_CACHE.write_text(version)
+        return version
+    except Exception as error:
+        if LAYER_VERSION_CACHE.exists():
+            return LAYER_VERSION_CACHE.read_text().strip()
+        print(f'Could not fetch the default layer version: {error}')
+        return ''
 
 

@@ -10,21 +10,21 @@ LAYER_VARIABLE = 'xco2'
 METADATA = {
     "id": f'{LAYER_ID}.{LAYER_VARIABLE}',
     "timestamps": [],  # will be injected
-    "min_value": 0.0003599192132242024,
-    "max_value": 0.0004179562965873629,
+    "min_value": 0.00036,
+    "max_value": 0.00043,
     "type": "tiles",  # 'tiles' or 'image'
     "zoom_levels": '0-2',
     "units": '',
     "basemap": None,
     "legend_values": [
-      "420 ppm",
-      "415",
+      "430 ppm",
+      "420",
       "410",
-      "405",
       "400",
-      "395",
       "390",
-      "385"
+      "380",
+      "370",
+      "360"
     ],
     "time_format": {
         "year": "numeric",
